@@ -1,6 +1,6 @@
 ---
-title: "Hinzufügen von Azure Automation-Runbooks zu Wiederherstellungsplänen in Site Recovery | Microsoft-Dokumentation"
-description: "In diesem Artikel erfahren Sie, wie Sie mit Azure Site Recovery und Azure Automation Wiederherstellungspläne erweitern und komplexe Aufgaben bei der Wiederherstellung zu Azure durchführen können."
+title: "Hinzufügen von Azure Automation-Runbooks zu Wiederherstellungsplänen in Azure Site Recovery | Microsoft-Dokumentation"
+description: "Es wird beschrieben, wie Azure Site Recovery Sie beim Erweitern von Wiederherstellungsplänen mit Azure Automation unterstützen kann. Erfahren Sie, wie Sie während der Wiederherstellung in Azure komplexe Aufgaben ausführen können."
 services: site-recovery
 documentationcenter: 
 author: ruturaj
@@ -14,167 +14,171 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 06/23/2017
 ms.author: ruturajd@microsoft.com
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: 0482b104e18a934142f1cd18fd7265132d5b82bc
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: f26f4dda442320c7c224c02a38aa36dbe5d4d1a6
 ms.contentlocale: de-de
-ms.lasthandoff: 06/28/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
-# <a name="add-azure-automation-runbooks-to-recovery-plans"></a>Hinzufügen von Azure Automation-Runbooks zu Wiederherstellungsplänen
-Dieses Lernprogramm beschreibt die Integration von Azure Site Recovery und Azure Automation, um die Erweiterung von Wiederherstellungsplänen zu ermöglichen. Wiederherstellungspläne können die Wiederherstellung Ihrer durch Azure Site Recovery geschützten virtuellen Computer sowohl bei der Replikation zur sekundären Cloud als auch bei der Replikation zu Azure orchestrieren. Darüber hinaus tragen sie zu einer **durchgängig exakten**, **wiederholbaren**, und **automatisierten** Wiederherstellung bei. Beim Failover virtueller Computer zu Azure erweitert die Azure Automation-Integration die Wiederherstellungspläne und ermöglicht die Ausführung von Runbooks für beeindruckende Automatisierungsaufgaben.
+# <a name="add-azure-automation-runbooks-to-recovery-plans"></a>Hinzufügen von Azure Automation-Runbooks zu Wiederherstellungsplänen
+In diesem Artikel wird beschrieben, wie Azure Site Recovery in Azure Automation integriert wird, um Sie bei der Erweiterung Ihrer Wiederherstellungspläne zu unterstützen. Mit Wiederherstellungsplänen kann die Wiederherstellung von VMs orchestriert werden, die mit Site Recovery geschützt werden. Wiederherstellungspläne können sowohl für die Replikation in eine sekundäre Cloud als auch für die Replikation in Azure genutzt werden. Darüber hinaus tragen Wiederherstellungspläne zu einer **durchgängig exakten**, **wiederholbaren** und **automatisierten** Wiederherstellung bei. Wenn Sie für Ihre VMs ein Failover zu Azure durchführen, wird die Integration mit Azure Automation auf Ihre Wiederherstellungspläne erweitert. Sie können sie zum Ausführen von Runbooks verwenden, die leistungsfähige Automatisierungsaufgaben ermöglichen.
 
-Falls Sie noch nicht mit Azure Automation vertraut sind, können Sie sich [hier](https://azure.microsoft.com/services/automation/) registrieren, und [hier](https://azure.microsoft.com/documentation/scripts/) die entsprechenden Beispielskripts herunterladen. Weitere Informationen zu [Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/) sowie zur Orchestrierung der Wiederherstellung in Azure mithilfe von Wiederherstellungsplänen finden Sie [hier](https://azure.microsoft.com/blog/?p=166264).
+Wenn Sie mit Azure Automation noch nicht vertraut sind, können Sie sich [registrieren](https://azure.microsoft.com/services/automation/) und [Beispielskripts herunterladen](https://azure.microsoft.com/documentation/scripts/). Weitere Informationen hierzu und zur Orchestrierung der Wiederherstellung in Azure mit [Wiederherstellungsplänen](https://azure.microsoft.com/blog/?p=166264) finden Sie unter [Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/).
 
-In diesem Tutorial erfahren Sie, wie Sie Azure Automation-Runbooks in Wiederherstellungspläne integrieren. Wir automatisieren einfache Aufgaben, für die zuvor ein manueller Eingriff erforderlich war, und konvertieren eine aus mehreren Schritten bestehende Wiederherstellung in eine Wiederherstellungsaktion, die sich mit nur einem Klick durchführen lässt.
+In diesem Artikel wird beschrieben, wie Sie Azure Automation-Runbooks in Ihre Wiederherstellungspläne integrieren können. Wir verwenden Beispiele zum Automatisieren von einfachen Aufgaben, für die bisher ein manueller Eingriff erforderlich war. Außerdem wird beschrieben, wie Sie eine Wiederherstellung mit mehreren Schritten in eine Single-Click-Wiederherstellungsaktion konvertieren.
 
 ## <a name="customize-the-recovery-plan"></a>Anpassen des Wiederherstellungsplans
-1. Zuerst öffnen wir das Ressourcenblatt des Wiederherstellungsplans. Sie sehen, dass für den Wiederherstellungsplan zwei virtuelle Computer zur Wiederherstellung hinzugefügt wurden.
+1. Navigieren Sie zum **Site Recovery**-Blatt für die Wiederherstellungsplanressource. In diesem Beispiel wurden dem Wiederherstellungsplan zwei VMs für die Wiederherstellung hinzugefügt. Klicken Sie auf die Registerkarte **Anpassen**, um mit dem Hinzufügen eines Runbooks zu beginnen.
 
-    ![](media/site-recovery-runbook-automation-new/essentials-rp.PNG)
-- - -
-1. Klicken Sie auf die Schaltfläche „Anpassen“, um mit dem Hinzufügen eines Runbooks zu beginnen.
-
-    ![](media/site-recovery-runbook-automation-new/customize-rp.PNG)
+    ![Klicken auf die Schaltfläche „Anpassen“](media/site-recovery-runbook-automation-new/essentials-rp.png)
 
 
-1. Klicken Sie mit der rechten Maustaste auf die Startgruppe 1, und wählen Sie die Option „Nachfolgende Aktion hinzufügen“.
-2. Wählen Sie auf dem neuen Blatt ein Skript aus.
-3. Geben Sie dem Skript den Namen „Hello World“.
-4. Wählen Sie einen Automation-Kontonamen aus.
+2. Klicken Sie mit der rechten Maustaste auf **Gruppe 1: Start**, und wählen Sie **Nachfolgende Aktion hinzufügen**.
+
+    ![Klicken auf „Gruppe 1: Start“ mit der rechten Maustaste und Hinzufügen einer nachfolgenden Aktion](media/site-recovery-runbook-automation-new/customize-rp.png)
+
+3. Klicken Sie auf **Choose a script** (Skript auswählen).
+
+4. Geben Sie dem Skript auf dem Blatt **Updateaktion** den Namen **Hello World**.
+
+    ![Blatt „Updateaktion“](media/site-recovery-runbook-automation-new/update-rp.png)
+
+5. Geben Sie einen Automation-Kontonamen ein.
     >[!NOTE]
-    > Ein Automation-Konto kann sich an einem beliebigen geografischen Standort befinden, aber es muss unter demselben Abonnement wie der Site Recovery-Tresor vorhanden sein.
+    > Das Automation-Konto kann sich in einer beliebigen Azure-Region befinden. Das Automation-Konto muss sich in demselben Abonnement wie der Azure Site Recovery-Tresor befinden.
 
-5. Wählen Sie im Automation-Konto ein Runbook aus. Dieses Runbook ist das Skript, das während der Ausführung des Wiederherstellungsplans nach der Wiederherstellung der ersten Gruppe ausgeführt wird.
+6. Wählen Sie in Ihrem Automation-Konto ein Runbook aus. Dieses Runbook ist das Skript, das während der Ausführung des Wiederherstellungsplans nach der Wiederherstellung der ersten Gruppe ausgeführt wird.
 
-    ![](media/site-recovery-runbook-automation-new/update-rp.PNG)
-6. Wählen Sie „OK“, um das Skript zu speichern. Das Skript wird der Gruppe für die nachfolgende Aktion von Startgruppe 1 hinzugefügt.
+7. Klicken Sie auf **OK**, um das Skript zu speichern. Das Skript wird **Gruppe 1: Schritte danach** hinzugefügt.
 
-    ![](media/site-recovery-runbook-automation-new/addedscript-rp.PNG)
-
-
-## <a name="salient-points-of-adding-a-script"></a>Wichtige Punkte beim Hinzufügen eines Skripts
-1. Sie können mit der rechten Maustaste auf das Skript klicken und die Option „Schritt löschen“ oder „Skript aktualisieren“ wählen.
-2. Ein Skript kann unter Azure während des Failovers aus der lokalen Umgebung nach Azure ausgeführt werden, und die Ausführung unter Azure als Skript der primären Seite ist vor dem Herunterfahren während des Failbacks von Azure in die lokale Umgebung möglich.
-3. Wenn ein Skript ausgeführt wird, wird ein Wiederherstellungsplan-Kontext eingefügt.
-
-Hier ist ein Beispiel für die Kontextvariable angegeben:
-
-        {"RecoveryPlanName":"hrweb-recovery",
-
-        "FailoverType":"Test",
-
-        "FailoverDirection":"PrimaryToSecondary",
-
-        "GroupId":"1",
-
-        "VmMap":{"7a1069c6-c1d6-49c5-8c5d-33bfce8dd183":
-
-                { "SubscriptionId":"7a1111111-c1d6-49c5-8c5d-111ce8dd183",
-
-                "ResourceGroupName":"ContosoRG",
-
-                "CloudServiceName":"pod02hrweb-Chicago-test",
-
-                "RoleName":"Fabrikam-Hrweb-frontend-test",
-
-                "RecoveryPointId":"TimeStamp"}
-
-                }
-
-        }
+    ![Nachfolgende Aktion, Gruppe 1: Start](media/site-recovery-runbook-automation-new/addedscript-rp.PNG)
 
 
-Die folgende Tabelle enthält jeweils den Namen und die Beschreibung der einzelnen Variablen im Kontext:
+## <a name="considerations-for-adding-a-script"></a>Hinweise zum Hinzufügen eines Skripts
 
-| **Variablenname** | **Beschreibung** |
-| --- | --- |
-| RecoveryPlanName |Name des ausgeführten Plans. Mit dieser Variablen können Sie unterschiedliche Aktionen basierend auf dem Namen und per Wiederverwendung des Skripts durchführen. |
-| FailoverType |Gibt an, ob es sich um ein Testfailover, um ein geplantes Failover oder um ein nicht geplantes Failover handelt. |
-| FailoverDirection |Gibt an, ob die Wiederherstellung auf den primären oder sekundären Standort erfolgt. |
-| GroupID |Identifiziert die Gruppennummer innerhalb des Wiederherstellungsplans, wenn der Plan ausgeführt wird |
-| VmMap |Array mit allen virtuellen Computern in der Gruppe. |
-| VMMap-Schlüssel |Eindeutiger Schlüssel (GUID) für jeden virtuellen Computer. Die GUID entspricht der VMM-ID des virtuellen Computers, sofern zutreffend. |
-| SubscriptionId |Die ID des Azure-Abonnements, in dem die VM erstellt wurde. |
-| RoleName |Name der Azure-VM, die wiederhergestellt wird. |
-| CloudServiceName |Name des Azure Cloud-Diensts, unter dem der virtuelle Computer erstellt wird. |
-| ResourceGroupName|Name der Azure-Ressourcengruppen, unter der der virtuelle Computer erstellt wird. |
-| RecoveryPointId|Zeitstempel, für den die VM wiederhergestellt wird. |
+* Klicken Sie mit der rechten Maustaste auf das Skript, um Optionen zum **Löschen eines Schritts** oder **Aktualisieren des Skripts** anzuzeigen.
+* Ein Skript kann in Azure während eines Failovers von einem lokalen Computer zu Azure ausgeführt werden. Es kann in Azure während des Failbacks von Azure zu einem lokalen Computer auch als Skript des primären Standorts vor dem Herunterfahren ausgeführt werden.
+* Wenn ein Skript ausgeführt wird, wird ein Wiederherstellungsplan-Kontext eingefügt. Im folgenden Beispiel wird eine Kontextvariable angezeigt:
 
-Sie müssen auch sicherstellen, dass dem Automation-Konto die folgenden Module hinzugefügt werden. Alle Module sollten auf kompatiblen Versionen basieren. Eine einfache Möglichkeit ist die Sicherstellung, dass für alle Module die verfügbare aktuelle Version verwendet wird.
-* AzureRM.profile
-* AzureRM.Resources
-* AzureRM.Automation
-* AzureRM.Network
-* AzureRM.Compute
+    ```
+            {"RecoveryPlanName":"hrweb-recovery",
 
+            "FailoverType":"Test",
 
-### <a name="accessing-all-vms-of-the-vmmap-in-a-loop"></a>Zugreifen auf alle VMs von VmMap in einer Schleife
-Verwenden Sie den folgenden Codeausschnitt, um eine Schleife über alle VMs von VmMap hinweg durchzuführen.
+            "FailoverDirection":"PrimaryToSecondary",
+
+            "GroupId":"1",
+
+            "VmMap":{"7a1069c6-c1d6-49c5-8c5d-33bfce8dd183":
+
+                    { "SubscriptionId":"7a1111111-c1d6-49c5-8c5d-111ce8dd183",
+
+                    "ResourceGroupName":"ContosoRG",
+
+                    "CloudServiceName":"pod02hrweb-Chicago-test",
+
+                    "RoleName":"Fabrikam-Hrweb-frontend-test",
+
+                    "RecoveryPointId":"TimeStamp"}
+
+                    }
+
+            }
+    ```
+
+    In der folgenden Tabelle sind der Name und die Beschreibung der einzelnen Variablen im Kontext aufgeführt:
+
+    | **Variablenname** | **Beschreibung** |
+    | --- | --- |
+    | RecoveryPlanName |Der Name des Plans, der ausgeführt wird. Mit dieser Variablen können Sie basierend auf dem Namen des Wiederherstellungsplans unterschiedliche Aktionen durchführen. Sie können das Skript auch wiederverwenden. |
+    | FailoverType |Gibt an, ob es sich um ein Testfailover, ein geplantes Failover oder ein nicht geplantes Failover handelt. |
+    | FailoverDirection |Gibt an, ob die Wiederherstellung auf einem primären oder sekundären Standort durchgeführt wird. |
+    | GroupID |Identifiziert die Gruppennummer innerhalb des Wiederherstellungsplans, wenn der Plan ausgeführt wird. |
+    | VmMap |Ein Array mit allen VMs der Gruppe. |
+    | VMMap-Schlüssel |Ein eindeutiger Schlüssel (GUID) für jeden virtuellen Computer. Er entspricht der Azure-VMM-ID (Virtual Machine Manager) der VM, falls zutreffend. |
+    | SubscriptionId |Die ID des Azure-Abonnements, unter dem die VM erstellt wurde. |
+    | RoleName |Der Name der Azure-VM, die wiederhergestellt wird. |
+    | CloudServiceName |Der Name des Azure-Clouddiensts, unter dem die VM erstellt wurde. |
+    | ResourceGroupName|Der Name der Azure-Ressourcengruppe, unter der die VM erstellt wurde. |
+    | RecoveryPointId|Der Zeitstempel für den Wiederherstellungszeitpunkt der VM. |
+
+* Stellen Sie sicher, dass das Automation-Konto über die folgenden Module verfügt:
+    * AzureRM.profile
+    * AzureRM.Resources
+    * AzureRM.Automation
+    * AzureRM.Network
+    * AzureRM.Compute
+
+Alle Module sollten auf kompatiblen Versionen basieren. Sie können auf einfache Weise sicherstellen, dass alle Module kompatibel sind, indem Sie die aktuellen Versionen aller Module verwenden.
+
+### <a name="access-all-vms-of-the-vmmap-in-a-loop"></a>Zugreifen auf alle VMs der VMMap in einer Schleife
+Verwenden Sie den folgenden Code, um eine Schleife durch alle VMs von Microsoft VMMap durchzuführen:
 
 ```
-    $VMinfo = $RecoveryPlanContext.VmMap | Get-Member | Where-Object MemberType -EQ NoteProperty | select -ExpandProperty Name
-    $vmMap = $RecoveryPlanContext.VmMap
-     foreach($VMID in $VMinfo)
-     {
-         $VM = $vmMap.$VMID                
+$VMinfo = $RecoveryPlanContext.VmMap | Get-Member | Where-Object MemberType -EQ NoteProperty | select -ExpandProperty Name
+$vmMap = $RecoveryPlanContext.VmMap
+ foreach($VMID in $VMinfo)
+ {
+     $VM = $vmMap.$VMID                
              if( !(($VM -eq $Null) -Or ($VM.ResourceGroupName -eq $Null) -Or ($VM.RoleName -eq $Null))) {
-             #this check is to ensure that we skip when some data is not available else it will fail
-         Write-output "Resource group name ", $VM.ResourceGroupName
-         Write-output "Rolename " = $VM.RoleName
-         }
+         #this check is to ensure that we skip when some data is not available else it will fail
+ Write-output "Resource group name ", $VM.ResourceGroupName
+ Write-output "Rolename " = $VM.RoleName
      }
+ }
 
 ```
 
 > [!NOTE]
-> Die Werte für den Ressourcengruppennamen und den Rollennamen sind leer, wenn es sich bei dem Skript um eine vorausgehende Aktion einer Startgruppe handelt. Die Werte werden nur aufgefüllt, wenn die VM dieser Gruppe in Bezug auf das Failover erfolgreich ist und das Skript eine vorausgehende Aktion der Startgruppe ist.
+> Die Werte für den Ressourcengruppennamen und den Rollennamen sind leer, wenn es sich bei dem Skript um eine vorausgehende Aktion einer Startgruppe handelt. Die Werte werden nur aufgefüllt, wenn das Failover für die VM dieser Gruppe erfolgreich ist. Das Skript ist eine nachfolgende Aktion der Startgruppe.
 
-## <a name="using-the-same-automation-runbook-with-multiple-recovery-plans"></a>Verwenden desselben Automation-Runbooks mit mehreren Wiederherstellungsplänen
+## <a name="use-the-same-automation-runbook-in-multiple-recovery-plans"></a>Verwenden desselben Automation-Runbooks in mehreren Wiederherstellungsplänen
 
-Ein einzelnes Skript kann über mehrere Wiederherstellungspläne genutzt werden, indem externe Variablen verwendet werden. Sie können die [Azure Automation-Variablen](../automation/automation-variables.md) zum Speichern von Parametern verwenden, die Sie für die Ausführung eines Wiederherstellungsplans übergeben können. Indem Sie der Variablen den Namen des Wiederherstellungsplans voranstellen, können Sie einzelne Variablen für jeden Wiederherstellungsplan erstellen und sie als Parameter nutzen. Sie können den Parameter ändern, ohne das Skript zu ändern, und so für eine andere Funktionsweise des Skripts sorgen.
+Sie können ein einzelnes Skript in mehreren Wiederherstellungsplänen nutzen, indem externe Variablen verwendet werden. Sie können [Azure Automation-Variablen](../automation/automation-variables.md) zum Speichern von Parametern verwenden, die Sie für die Ausführung eines Wiederherstellungsplans übergeben können. Indem Sie der Variablen den Namen des Wiederherstellungsplans als Präfix hinzufügen, können Sie für jeden Wiederherstellungsplan einzelne Variablen erstellen. Verwenden Sie die Variablen anschließend als Parameter. Sie können einen Parameter ändern, ohne das Skript zu ändern, und für die Funktionsweise des Skripts trotzdem eine Änderung erzielen.
 
-### <a name="using-simple-string-variables-in-runbook-script"></a>Verwenden von einfachen Zeichenfolgenvariablen im Runbookskript
+### <a name="use-a-simple-string-variable-in-a-runbook-script"></a>Verwenden einer einfachen Zeichenfolgenvariablen in einem Runbookskript
 
-Erwägen Sie die Verwendung eines Skripts, bei dem die Eingabe einer Netzwerksicherheitsgruppe (NSG) auf die VMs eines Wiederherstellungsplans angewendet wird.
+In diesem Beispiel wendet ein Skript die Eingabe einer Netzwerksicherheitsgruppe (NSG) auf die VMs eines Wiederherstellungsplans an.
 
-Damit das Skript über die Information dazu verfügt, welcher Wiederherstellungsplan ausgeführt wird, können Sie den Wiederherstellungsplankontext verwenden.
-
-```
-    workflow AddPublicIPAndNSG {
-        param (
-              [parameter(Mandatory=$false)]
-              [Object]$RecoveryPlanContext
-        )
-
-        $RPName = $RecoveryPlanContext.RecoveryPlanName
-```
-
-Zum Anwenden einer vorhandenen NSG benötigen Sie den NSG-Namen und die NSG-Ressourcengruppe. Wir geben diese Variablen als Eingabe für die Skripts des Wiederherstellungsplans an. Erstellen Sie zu diesem Zweck in den Automation-Kontoassets zwei Variablen, und stellen Sie ihnen den Namen des Wiederherstellungsplans voran, für den Sie die Parameter erstellen.
-
-1. Erstellen Sie eine Variable zum Speichern des NSG-Namens. Stellen Sie ihr den Namen des Wiederherstellungsplans voran.
-    ![Erstellen der Variablen für den NSG-Namen](media/site-recovery-runbook-automation-new/var1.png)
-
-2. Erstellen Sie eine Variable zum Speichern des NSG-Ressourcengruppennamens. Stellen Sie ihr den Namen des Wiederherstellungsplans voran.
-    ![Erstellen des NSG-Ressourcengruppennamens](media/site-recovery-runbook-automation-new/var2.png)
-
-
-Rufen Sie im Skript die Werte der Variablen ab, indem Sie den folgenden Referenzcode verwenden:
+Verwenden Sie den Wiederherstellungsplan-Kontext, damit das Skript erkennt, welcher Wiederherstellungsplan ausgeführt wird:
 
 ```
+workflow AddPublicIPAndNSG {
+    param (
+          [parameter(Mandatory=$false)]
+          [Object]$RecoveryPlanContext
+    )
+
+    $RPName = $RecoveryPlanContext.RecoveryPlanName
+```
+
+Zum Anwenden einer vorhandenen NSG müssen Sie den NSG-Namen und den Namen der NSG-Ressourcengruppe kennen. Verwenden Sie diese Variablen als Eingaben für Wiederholungsplanskripts. Erstellen Sie hierzu in den Automation-Kontoassets zwei Variablen. Fügen Sie den Namen des Wiederherstellungsplans, für den Sie die Parameter erstellen, als Präfix dem Variablennamen hinzu.
+
+1. Erstellen Sie eine Variable zum Speichern des NSG-Namens. Fügen Sie dem Variablennamen ein Präfix hinzu, indem Sie den Namen des Wiederherstellungsplans verwenden.
+
+    ![Erstellen einer Variablen für den NSG-Namen](media/site-recovery-runbook-automation-new/var1.png)
+
+2. Erstellen Sie eine Variable, um den Ressourcengruppennamen der NSG zu speichern. Fügen Sie dem Variablennamen ein Präfix hinzu, indem Sie den Namen des Wiederherstellungsplans verwenden.
+
+    ![Erstellen des Namens einer NSG-Ressourcengruppe](media/site-recovery-runbook-automation-new/var2.png)
+
+
+3.  Verwenden Sie im Skript den folgenden Referenzcode, um die Variablenwerte abzurufen:
+
+    ```
     $NSGValue = $RecoveryPlanContext.RecoveryPlanName + "-NSG"
     $NSGRGValue = $RecoveryPlanContext.RecoveryPlanName + "-NSGRG"
 
     $NSGnameVar = Get-AutomationVariable -Name $NSGValue
     $RGnameVar = Get-AutomationVariable -Name $NSGRGValue
-```
+    ```
 
-Als Nächstes können Sie die Variablen im Runbook einsetzen und die NSG auf die Netzwerkschnittstelle des virtuellen Computers anwenden, für den das Failover durchgeführt wurde.
+4.  Verwenden Sie die Variablen im Runbook, um die NSG auf die Netzwerkschnittstelle der VM anzuwenden, für den das Failover durchgeführt wurde:
 
-```
-     InlineScript {
-        if (($Using:NSGname -ne $Null) -And ($Using:NSGRGname -ne $Null)) {
+    ```
+    InlineScript {
+    if (($Using:NSGname -ne $Null) -And ($Using:NSGRGname -ne $Null)) {
             $NSG = Get-AzureRmNetworkSecurityGroup -Name $Using:NSGname -ResourceGroupName $Using:NSGRGname
             Write-output $NSG.Id
             #Apply the NSG to a network interface
@@ -183,41 +187,44 @@ Als Nächstes können Sie die Variablen im Runbook einsetzen und die NSG auf die
             #  -AddressPrefix 192.168.1.0/24 -NetworkSecurityGroup $NSG
         }
     }
-```
-
-Erstellen Sie für jeden Wiederherstellungsplan unabhängige Variablen, damit Sie das Skript wiederverwenden und den Namen des Wiederherstellungsplans voranstellen können. Ein vollständiges Skript für dieses Beispiel finden Sie [hier](https://gallery.technet.microsoft.com/Add-Public-IP-and-NSG-to-a6bb8fee).
-
-
-### <a name="using-complex-variable-to-store-more-information"></a>Verwenden von komplexen Variablen zum Speichern weiterer Informationen
-
-Stellen Sie sich ein Szenario vor, bei dem nur ein Skript für bestimmte VMs eine öffentliche IP-Adresse aktivieren soll. Ein anderes Beispiel ist die Anwendung von unterschiedlichen NSGs auf unterschiedliche virtuelle Computer (nicht alle). Dieses Skript kann dann für alle anderen Wiederherstellungspläne wiederverwendet werden. Jeder Wiederherstellungsplan kann über eine variable Anzahl von virtuellen Computern verfügen (eine SharePoint-Wiederherstellung verfügt beispielsweise über zwei Front-Ends, während eine einfache Branchenanwendung nur ein Front-End hat). Zur Erreichung dieses Ergebnisses ist es unmöglich, separate Variablen pro Wiederherstellungsplan zu erstellen. Hier verwenden wir ein neues Verfahren und erstellen eine [komplexe Variable](https://msdn.microsoft.com/library/dn913767.aspx?f=255&MSPPError=-2147217396) in den Azure Automation-Kontoassets, indem wir mehrere Werte angeben. Zum Ausführen der folgenden Schritte benötigen Sie Azure PowerShell.
-
-1. Melden Sie sich in Azure PowerShell an Ihrem Abonnement an.
-
-    ```
-        login-azurermaccount
-        $sub = Get-AzureRmSubscription -Name <SubscriptionName>
-        $sub | Select-AzureRmSubscription
     ```
 
-2. Erstellen Sie zum Speichern der Parameter die komplexe Variable, und geben Sie ihr den Namen des Wiederherstellungsplans.
+Erstellen Sie für jeden Wiederherstellungsplan unabhängige Variablen, damit Sie das Skript wiederverwenden können. Fügen Sie ein Präfix hinzu, indem Sie den Namen des Wiederherstellungsplans verwenden. Ein vollständiges End-to-End-Skript für dieses Szenario finden Sie unter [Add a public IP and NSG to VMs during test failover of a Site Recovery recovery plan](https://gallery.technet.microsoft.com/Add-Public-IP-and-NSG-to-a6bb8fee) (Hinzufügen einer öffentlichen IP und NSG zu VMs während des Testfailovers eines Site Recovery-Wiederherstellungsplans).
+
+
+### <a name="use-a-complex-variable-to-store-more-information"></a>Verwenden einer komplexen Variablen zum Speichern von weiteren Informationen
+
+Stellen Sie sich ein Szenario vor, bei dem mit nur einem Skript für bestimmte VMs eine öffentliche IP aktiviert werden soll. In einem anderen Szenario kann es sein, dass Sie verschiedene NSGs unterschiedlichen VMs (nicht auf allen VMs) zuordnen möchten. Sie können ein Skript erstellen, das für alle Wiederherstellungspläne wiederverwendet werden kann. Jeder Wiederherstellungsplan kann über eine variable Anzahl von VMs verfügen. Eine SharePoint-Wiederherstellung verfügt über zwei Front-Ends. Eine einfache Branchenanwendung (LOB-Anwendung) hat nur ein Front-End. Sie können nicht für jeden Wiederherstellungsplan separate Variablen erstellen. 
+
+Im folgenden Beispiel verwenden wir ein neues Verfahren und erstellen eine [komplexe Variable](https://msdn.microsoft.com/library/dn913767.aspx?f=255&MSPPError=-2147217396) in den Azure Automation-Kontoassets. Hierzu geben Sie mehrere Werte an. Verwenden Sie Azure PowerShell, um die folgenden Schritte auszuführen:
+
+1. Melden Sie sich in PowerShell bei Ihrem Azure-Abonnement an:
 
     ```
-        $VMDetails = @{"VMGUID"=@{"ResourceGroupName"="RGNameOfNSG";"NSGName"="NameOfNSG"};"VMGUID2"=@{"ResourceGroupName"="RGNameOfNSG";"NSGName"="NameOfNSG"}}
+    login-azurermaccount
+    $sub = Get-AzureRmSubscription -Name <SubscriptionName>
+    $sub | Select-AzureRmSubscription
+    ```
+
+2. Erstellen Sie zum Speichern der Parameter die komplexe Variable, indem Sie den Namen des Wiederherstellungsplans verwenden:
+
+    ```
+    $VMDetails = @{"VMGUID"=@{"ResourceGroupName"="RGNameOfNSG";"NSGName"="NameOfNSG"};"VMGUID2"=@{"ResourceGroupName"="RGNameOfNSG";"NSGName"="NameOfNSG"}}
         New-AzureRmAutomationVariable -ResourceGroupName <RG of Automation Account> -AutomationAccountName <AA Name> -Name <RecoveryPlanName> -Value $VMDetails -Encrypted $false
     ```
 
-    In dieser komplexen Variablen ist *VMDetails* die VM-ID für den geschützten virtuellen Computer. Sie ist unter den Eigenschaften des virtuellen Computers im Portal angegeben. Hier haben wir eine Variable zum Speichern der Details von zwei virtuellen Computern erstellt.
+3. In dieser komplexen Variablen ist **VMDetails** die VM-ID für die geschützte VM. Zeigen Sie im Azure-Portal die VM-Eigenschaften an, um die VM-ID zu erhalten. Im folgenden Screenshot ist eine Variable dargestellt, in der die Details von zwei VMs gespeichert werden:
 
-    ![VM-ID zur Verwendung als GUID](media/site-recovery-runbook-automation-new/vmguid.png)
+    ![Verwenden der VM-ID als GUID](media/site-recovery-runbook-automation-new/vmguid.png)
 
-3. Verwenden Sie diese Variable in Ihrem Runbook, und wenden Sie die NSG auf dem virtuellen Computer an, wenn eine VMGUID im Wiederherstellungsplankontext enthalten ist.
+4. Verwenden Sie diese Variable in Ihrem Runbook. Wenn sich die angegebene VM-GUID im Kontext des Wiederherstellungsplans befindet, können Sie die NSG auf die VM anwenden:
 
     ```
-        $VMDetailsObj = Get-AutomationVariable -Name $RecoveryPlanContext.RecoveryPlanName
+    $VMDetailsObj = Get-AutomationVariable -Name $RecoveryPlanContext.RecoveryPlanName
     ```
 
-4. Führen Sie in Ihrem Runbook einen Schleife durch die VMs des Wiederherstellungsplankontexts durch, und überprüfen Sie, ob die VM auch in **$VMDetailsObj** enthalten ist. Wenn ja, wenden Sie die NSG an, indem Sie auf die Eigenschaften der Variablen zugreifen.
+4. Führen Sie in Ihrem Runbook eine Schleife durch die VMs des Wiederherstellungsplan-Kontexts durch. Überprüfen Sie, ob die VM in **$VMDetailsObj** vorhanden ist. Wenn ja, greifen Sie auf die Eigenschaften der Variablen zu, um die NSG anzuwenden:
+
     ```
         $VMinfo = $RecoveryPlanContext.VmMap | Get-Member | Where-Object MemberType -EQ NoteProperty | select -ExpandProperty Name
         $vmMap = $RecoveryPlanContext.VmMap
@@ -236,23 +243,23 @@ Stellen Sie sich ein Szenario vor, bei dem nur ein Skript für bestimmte VMs ein
         }
     ```
 
-Sie können dasselbe Skript mit unterschiedlichen Wiederherstellungsplänen verwenden und andere Parameter angeben, indem Sie den Wert für unterschiedliche Wiederherstellungspläne in verschiedenen Variablen speichern.
+Sie können dasselbe Skript für unterschiedliche Wiederherstellungspläne verwenden. Geben Sie unterschiedliche Parameter ein, indem Sie den Wert, der einem Wiederherstellungsplan entspricht, in unterschiedlichen Variablen speichern.
 
 ## <a name="sample-scripts"></a>Beispielskripts
-Stellen Sie Beispielskripts mithilfe der unten stehenden Schaltfläche zum Bereitstellen in Azure in Ihrem Automation-Konto bereit.
 
-[![Bereitstellen in Azure](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
+Klicken Sie auf die Schaltfläche **Deploy to Azure**, um Beispielskripts für Ihr Automation-Konto bereitzustellen.
 
-Schauen Sie sich zudem ein kurzes Video zum Wiederherstellen einer WordPress-Anwendung mit zwei Ebenen in Azure an.
+![Schaltfläche zum Bereitstellen in Azure](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)
+
+Ein weiteres Beispiel ist im folgenden Video enthalten. Es wird veranschaulicht, wie Sie eine WordPress-Anwendung mit zwei Ebenen in Azure wiederherstellen:
+
 
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/One-click-failover-of-a-2-tier-WordPress-application-using-Azure-Site-Recovery/player]
 
 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
-[Authentifizieren von Runbooks mit der Azure-Option „Ausführendes Konto“](../automation/automation-sec-configure-azure-runas-account.md)
-
-[Übersicht über Azure Automation](http://msdn.microsoft.com/library/azure/dn643629.aspx "Übersicht über Azure Automation")
-
-[Beispielskripts für Azure Automation](http://gallery.technet.microsoft.com/scriptcenter/site/search?f\[0\].Type=User&f\[0\].Value=SC%20Automation%20Product%20Team&f\[0\].Text=SC%20Automation%20Product%20Team "Beispielskripts für Azure Automation")
+* [Authentifizieren von Runbooks mit der Azure-Option „Ausführendes Konto“](../automation/automation-sec-configure-azure-runas-account.md)
+* [Übersicht über Azure Automation](http://msdn.microsoft.com/library/azure/dn643629.aspx "Übersicht über Azure Automation")
+* [Azure Automation-Beispielskripts](http://gallery.technet.microsoft.com/scriptcenter/site/search?f\[0\].Type=User&f\[0\].Value=SC%20Automation%20Product%20Team&f\[0\].Text=SC%20Automation%20Product%20Team "Azure Automation-Beispielskripts")
 

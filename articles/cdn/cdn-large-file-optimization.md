@@ -1,6 +1,6 @@
 ---
-title: "Optimieren großer Dateidownloads mit Azure CDN"
-description: "Fundierte Einblicke in die Optimierung großer Dateidownloads"
+title: "Optimierung großer Dateidownloads über das Azure Content Delivery Network"
+description: "Ausführliche Informationen zur Optimierung von großen Dateidownloads"
 services: cdn
 documentationcenter: 
 author: smcevoy
@@ -14,67 +14,70 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: v-semcev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: 27e202b05f86eeee7071f3fae145caeba3d66827
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 7a5d5d1d0de24ebb0a5115ede1e572f38454bd78
 ms.contentlocale: de-de
-ms.lasthandoff: 06/28/2017
+ms.lasthandoff: 07/21/2017
 
 ---
-# <a name="large-file-download-optimization-via-azure-cdn"></a>Optimieren großer Dateidownloads mit Azure CDN
+# <a name="large-file-download-optimization-via-the-azure-content-delivery-network"></a>Optimierung großer Dateidownloads über das Azure Content Delivery Network
 
-Die Dateigrößen von Inhalten, die über das Internet übermittelt werden, sind aufgrund immer umfangreicherer Funktionalität, verbesserter Grafik und umfassenderer Medieninhalte stetig gewachsen. Dies wird durch viele Faktoren beeinflusst, einschließlich Breitbandversorgung, größerer und kostengünstiger Speichergeräte, Verbreitung von High-Definition-Videos, mit dem Internet verbundener Geräte (IoT) usw.  Die Bereitstellung eines schnelleren und effizienteren Übermittlungsverfahrens für solche großen Dateien ist unerlässlich, um eine unterbrechungsfreie und angenehme Kundenerfahrung sicherzustellen. 
+Die Dateigrößen von Inhalten, die über das Internet übermittelt werden, wachsen aufgrund von immer umfangreicherer Funktionalität, verbesserter Grafik und umfassenden Medieninhalten stetig weiter. Dieses Wachstum wird durch viele Faktoren gefördert, z.B. bessere Breitbandversorgung, größere kostengünstige Speichergeräte, vermehrte Nutzung von High-Definition-Videos und mit dem Internet verbundene Geräte (IoT). Für große Dateien bedarf es daher eines schnelleren und effizienteren Übermittlungsverfahrens, um eine reibungslose und angemessene Kundenerfahrung zu gewährleisten.
 
-Die Übermittlung großer Dateien stellt mehrere Herausforderungen dar. Zum einen kann die durchschnittliche Zeit zum Herunterladen einer großen Datei von Bedeutung sein, da viele Anwendungen nicht alle Daten sequenziell herunterladen. In einigen Fällen laden Anwendungen den letzten Teil der Datei vor dem ersten herunter. Wenn nur ein kleiner Teil einer Datei angefordert wird oder ein Benutzer einen Download unterbricht, kann es daher passieren, dass der Download zu einem Fehler führt oder verzögert wird, bis die gesamte Datei vom CDN von der Quelle abgerufen wurde. 
+Für die Bereitstellung von großen Dateien müssen mehrere Anforderungen erfüllt werden. Erstens kann die durchschnittliche Zeit zum Herunterladen einer großen Datei von Bedeutung sein, da Anwendungen ggf. nicht alle Daten sequenziell herunterladen. In einigen Fällen laden Anwendungen den letzten Teil der Datei unter Umständen vor dem ersten Teil herunter. Wenn nur eine kleine Datenmenge einer Datei angefordert wird oder ein Benutzer einen Download anhält, ist der Download ggf. nicht erfolgreich. Außerdem kann der Download verzögert werden, bis das Content Delivery Network (CDN) die gesamte Datei vom Ursprungsserver erhalten hat. 
 
-Zum anderen beobachten viele Benutzer durch die zunehmende Verbreitung großer Dateien im Internet häufig Wartezeiten bei der Anzeige aufgrund des Durchsatzes oder der Geschwindigkeit zwischen Benutzer und Datei. Darüber hinaus haben auch Netzwerküberlastung und Kapazitätsprobleme Auswirkungen auf den Durchsatz. Diese Probleme, gekoppelt mit den größeren Abständen zwischen Server und Endbenutzer, stellen zusätzliche Auslöser für Paketverluste dar, durch die die Qualität weiter reduziert wird. Der Qualitätsverlust aufgrund von begrenztem Durchsatz und erhöhten Paketverlusten kann selbst zu einer erheblich höheren Wartezeit bis zum Abschluss eines Dateidownloads führen. 
+Zweitens bestimmt die Wartezeit zwischen dem Computer eines Benutzers und der Datei die Geschwindigkeit, mit der Inhalte angezeigt werden können. Darüber hinaus können sich auch Netzwerküberlastungen und Kapazitätsprobleme auf den Durchsatz auswirken. Je größer die Entfernungen zwischen Servern und Benutzern sind, desto größer ist die Wahrscheinlichkeit für das Auftreten von Paketverlusten. Dies führt zu einer Verringerung der Qualität. Die reduzierte Qualität aufgrund von begrenztem Durchsatz und vermehrten Paketverlusten kann dazu führen, dass sich die Wartezeit bis zum Abschluss eines Dateidownloads verlängert. 
 
-Und schließlich werden viele große Dateien nicht vollständig übermittelt. Benutzer können einen Download bei der Hälfte abbrechen oder sich nur die ersten Minuten eines langen MP4-Videos ansehen. Aus diesem Grund ist es für viele Unternehmen, die Software und Medien übermitteln, hilfreich, nur einen Teil einer Datei, die vom Benutzer angefordert wird, zuzustellen. Auf diese Weise werden nur die angeforderten Teile effizient an die am weitesten entfernten Bereiche des Internets übermittelt, womit der an der Quelle ausgehende Datenverkehr und damit auch die Speicher- und E/A-Auslastung auf dem Ursprungsserver reduziert werden. 
+Drittens werden viele große Dateien nicht vollständig übermittelt. Benutzer brechen einen Download ggf. nach der Hälfte ab oder sehen sich nur die ersten Minuten eines langen MP4-Videos an. Aus diesem Grund möchten Unternehmen, die Software und Medien liefern, möglichst nur den Teil einer Datei bereitstellen, der angefordert wurde. Durch die effiziente Verteilung der angeforderten Teile reduziert sich der ausgehende Datenverkehr vom Ursprungsserver. Außerdem führt eine effiziente Verteilung dazu, dass der Arbeitsspeicher- und E/A-Druck auf dem Ursprungsserver hoch ist. 
 
-Azure CDN von Akamai bietet jetzt ein Feature zur effizienten Übermittlung von großen Dateien an Endbenutzer weltweit – und das bei skalierbaren und verkürzten Wartezeiten und einer reduzierten Last auf dem Ursprungsserver. Dieses Feature steht über das Feature „Optimiert für“ auf Azure CDN-Endpunkten zur Verfügung, die unter einem Azure CDN-Profil mit dem Tarif „Standard Akamai“ erstellt wurden.
+Für das Azure Content Delivery Network von Akamai wird jetzt ein Feature angeboten, mit dem große Dateien effizient an Benutzer auf der ganzen Welt übermittelt werden. Es entlastet die Ursprungsserver und verkürzt so die Wartezeiten. Das Feature steht im Tarif „Akamai Standard“ zur Verfügung.
 
-## <a name="configuring-cdn-endpoint-to-optimize-delivery-of-large-files"></a>Konfigurieren von CDN-Endpunkten zur Optimierung der Übermittlung großer Dateien
+## <a name="configure-a-cdn-endpoint-to-optimize-delivery-of-large-files"></a>Konfigurieren eines CDN-Endpunkts zur Optimierung der Übermittlung großer Dateien
 
-Sie können Ihren CDN-Endpunkt über das Azure-Portal für eine optimierte Übermittlung großer Dateien konfigurieren, indem Sie einfach während der Erstellung des Endpunkts die Option „Download großer Dateien“ unter der Eigenschaftenauswahl „Optimiert für“ auswählen. Sie können dafür auch unsere REST-APIs oder eines der Client-SDKs verwenden. Die folgenden Screenshots veranschaulichen die Vorgehensweise über das Azure-Portal.
+Sie können Ihren CDN-Endpunkt über das Azure-Portal für die Übertragung großer Dateien optimieren. Sie können dafür auch unsere REST-APIs oder eines der Client-SDKs verwenden. Die folgenden Schritte veranschaulichen die Vorgehensweise im Azure-Portal:
 
-![Neuer CDN-Endpunkt](./media/cdn-large-file-optimization/01_Adding.png)  
+1. Wählen Sie zum Hinzufügen eines neuen Endpunkts auf der Seite **CDN-Profil** die Option **Endpunkt** aus.
+
+    ![Neuer Endpunkt](./media/cdn-large-file-optimization/01_Adding.png)  
  
-*Abbildung 1: Hinzufügen eines neuen CDN-Endpunkts aus dem CDN-Profil*
- 
-![LFO ausgewählt](./media/cdn-large-file-optimization/02_Creating.png)
+2. Wählen Sie in der Dropdownliste **Optimiert für** die Option **Download großer Dateien** aus.
 
-*Abbildung 2: Erstellen eines CDN-Endpunkts mit Optimierung für den Download großer Datei*
+    ![Auswahl der Optimierung großer Dateien](./media/cdn-large-file-optimization/02_Creating.png)
 
-Nachdem der CDN-Endpunkt erstellt wurde, werden die Optimierungen für große Dateien auf alle Dateien angewendet, die bestimmte Kriterien erfüllen. Im folgenden Abschnitt wird dies im Detail beschrieben.
 
-## <a name="optimizing-for-delivery-of-large-files-with-azure-cdn-from-akamai"></a>Optimieren für die Übermittlung großer Dateien mit Azure CDN von Akamai
+Nachdem Sie den CDN-Endpunkt erstellt haben, werden die Optimierungen für große Dateien auf alle Dateien angewendet, die bestimmte Kriterien erfüllen. Dies wird im folgenden Abschnitt beschrieben.
 
-Für Azure CDN von Akamai können Sie das Feature zur Optimierung für große Dateien verwenden, um Netzwerkoptimierungen und -konfigurationen zu aktivieren, die das Übermitteln großer Dateien schneller und flexibler machen. Bei der allgemeinen Webbereitstellung mit Akamai können nur Dateien unter 1,8 GB zwischengespeichert werden. Ein Tunneling (nicht Caching) ist für Dateien bis zu 150 GB möglich. Mit der Optimierung für große Dateien können auch Dateien mit bis zu 150 GB zwischengespeichert werden.
+## <a name="optimize-for-delivery-of-large-files-with-the-azure-content-delivery-network-from-akamai"></a>Optimieren der Übermittlung von großen Dateien mit dem Azure Content Delivery Network von Akamai
 
-Die Optimierung für große Dateien ist besonders effektiv, wenn bestimmte Bedingungen im Hinblick auf den Betrieb des Ursprungsservers, die angeforderten Dateitypen und die Größe der angeforderten Dateien erfüllt sind. Bevor wir im Einzelnen ins Detail gehen, ist eine allgemeine Übersicht über die Funktionsweise der Optimierung notwendig. 
+Mit dem Feature zum Optimieren von großen Dateien werden Netzwerkoptimierungen und Konfigurationen aktiviert, um große Dateien schneller und reaktionsschneller bereitzustellen. Bei der allgemeinen Webbereitstellung mit Akamai werden nur Dateien mit einer Größe von weniger als 1,8 GB zwischengespeichert, und für Dateien mit bis zu 150 GB kann ein Tunnel eingerichtet werden (keine Zwischenspeicherung). Bei der Optimierung großer Dateien werden Dateien mit einer Größe von bis zu 150 GB zwischengespeichert.
+
+Die Optimierung großer Dateien ist effektiv, wenn bestimmte Bedingungen erfüllt sind. Zu diesen Bedingungen gehören die Funktionsweise des Ursprungsservers und die Größen und Arten von Dateien, die angefordert werden. Bevor wir auf die Details dieser Punkte eingehen, sollten Sie wissen, wie die Optimierung funktioniert. 
 
 ### <a name="object-chunking"></a>Objektblockerstellung 
 
-Azure CDN von Akamai verwendet eine Technik namens Objektblockerstellung, bei der das CDN kleinere Teile der Datei vom Ursprung abruft, wenn eine große Datei angefordert wird. Wenn der CDN-Edge-/POP-Server vom Endbenutzer eine Anforderung für eine vollständige Datei oder einen Bytebereich daraus empfängt, prüft er zunächst, ob der Dateityp der Liste der Dateitypen angehört, die für diese Optimierung unterstützt werden, und ob die Datei den Größenanforderungen entspricht. Wenn die Datei größer als 10 MB ist, beginnt der CDN-Edgeserver mit dem Anfordern der Datei vom Ursprungsserver in Blöcken von 2 MB. Wenn der CDN-Edgeserver einen Block empfängt, wird dieser zwischengespeichert und sofort für den Endbenutzer bereitgestellt, während das CDN den nächsten Block parallel abruft. Dieses Vorababrufen stellt sicher, dass der Inhalt früher verfügbar ist, da der Server dem Endbenutzer so immer einen Block voraus ist und damit die Wartezeit reduzieren kann. Dieser Prozess wird fortgesetzt, bis die gesamte Datei heruntergeladen wurde (wenn der Endbenutzer die gesamte Datei angefordert hat), bis alle angeforderten Bytebereiche verfügbar sind (wenn der Endbenutzer Bytebereiche angefordert hat) oder bis der Client die Verbindung beendet. 
+Für das Azure Content Delivery Network von Akamai wird ein Verfahren verwendet, das als „Objektblockerstellung“ (Object Chunking) bezeichnet wird. Wenn eine große Datei angefordert wird, ruft das CDN kleinere Teile der Datei vom Ursprung ab. Nachdem der CDN-Edgeserver bzw. POP-Server eine vollständige oder auf einen Bytebereich beschränkte Dateianforderung empfangen hat, wird überprüft, ob der Dateityp für diese Optimierung unterstützt wird. Außerdem wird überprüft, ob der Dateityp die Größenanforderungen für Dateien erfüllt. Wenn die Datei größer als 10 MB ist, fordert der CDN-Edgeserver die Datei vom Ursprung in Blöcken von 2 MB an. 
 
-Details zur Anforderung von Bytebereichen finden Sie in der [RFC 7233](https://tools.ietf.org/html/rfc7233).
+Nachdem der Block im CDN-Edgebereich angekommen ist, wird er zwischengespeichert und sofort für den Benutzer bereitgestellt. Das CDN ruft den nächsten Block dann parallel dazu ab. Durch dieses Vorab-Abrufen wird sichergestellt, dass der Inhalt dem Benutzer immer einen Block voraus ist, sodass sich die Wartezeit reduziert. Dieser Prozess wird fortgesetzt, bis die gesamte Datei heruntergeladen wurde (falls angefordert), alle Bytebereiche verfügbar sind (falls angefordert) oder der Client die Verbindung beendet. 
 
-Das CDN speichert alle Blöcke so zwischen, wie sie empfangen werden. Daher muss nicht die gesamte Datei im CDN-Cache zwischengespeichert werden. Nachfolgende Anforderungen für die Datei oder für Bytebereiche werden aus dem CDN-Cache übermittelt. Falls nicht alle Blöcke auf dem CDN zwischengespeichert wurden, erfolgt erneut ein Vorababruf einzelner Blöcke. Wie Sie sehen, hängt diese Optimierung davon ab, dass der Ursprungsserver Anforderungen für Bytebereiche unterstützt. _Wenn der Ursprungsserver keine Anforderungen für Bytebereiche unterstützt, ist diese Optimierung nicht sehr effektiv._ 
+Weitere Informationen zur Bytebereichsanforderung finden Sie unter [RFC 7233](https://tools.ietf.org/html/rfc7233).
+
+Das CDN speichert alle Blöcke zwischen, sobald sie eingetroffen sind. Es ist nicht erforderlich, die gesamte Datei im CDN-Cache zwischenzuspeichern. Nachfolgende Anforderungen für die Datei- oder Bytebereiche werden aus dem CDN-Cache bereitgestellt. Wenn nicht alle Blöcke im CDN zwischengespeichert werden, wird das Vorab-Abrufen verwendet, um Blöcke vom Ursprung anzufordern. Diese Optimierung beruht auf der Fähigkeit des Ursprungsservers, Bytebereichsanforderungen zu unterstützen. _Wenn der Ursprungsserver keine Anforderungen für Bytebereiche unterstützt, ist diese Optimierung nicht effektiv._ 
 
 ### <a name="caching"></a>Caching
-Bei großen Dateien werden andere Standardablaufzeiten für die Zwischenspeicherung verwendet als für die allgemeine Übermittlung. Die Unterscheidung erfolgt zwischen der positiven und negativen Zwischenspeicherung basierend auf HTTP-Antwortcodes. Wenn der Ursprungsserver eine Ablaufzeit per Cache-Control- oder Expires-Header in der Antwort angibt, berücksichtigt das CDN diesen Wert immer. Macht der Ursprungsserver keine Angabe und entspricht die Datei nach Dateityp und -größe den Bedingungen der Liste großer Dateien für diesen Optimierungstyp, dann verwendet das CDN die Standardwerte für die Optimierung großer Dateien. Andernfalls verwendet das CDN die Standardeinstellungen für die allgemeine Webbereitstellung.
+Für die Optimierung großer Dateien werden unterschiedliche Standardzeiten für den Ablauf der Zwischenspeicherung verwendet, die von der allgemeinen Webbereitstellung abweichen. Die Unterscheidung erfolgt zwischen der positiven und negativen Zwischenspeicherung basierend auf HTTP-Antwortcodes. Wenn der Ursprungsserver in der Antwort eine Ablaufzeit per Cache-Control- oder Expires-Header angibt, wird dieser Wert vom CDN berücksichtigt. Macht der Ursprungsserver keine Angabe und erfüllt die Datei die Typ- und Größenbedingungen für diesen Optimierungstyp, dann verwendet das CDN die Standardwerte für die Optimierung großer Dateien. Andernfalls verwendet das CDN die Standardeinstellungen für die allgemeine Webbereitstellung.
 
- 
+
 |    | Allgemeine Webübermittlung | Optimierung großer Dateien 
 --- | --- | --- 
-Caching – positiv <br> HTTP 200, 203, 300, <br> 301, 302 und 410 | 7 Tage |1 Tag  
-Caching – negativ <br> HTTP 204, 305, 404 <br> und 405 | (Keine) | 1 Sekunde 
+Caching: positiv <br> HTTP 200, 203, 300, <br> 301, 302 und 410 | 7 Tage |1 Tag  
+Caching: negativ <br> HTTP 204, 305, 404 <br> und 405 | Keine | 1 Sekunde 
 
-### <a name="dealing-with-origin-failure"></a>Umgang mit Fehlern im Original
+### <a name="deal-with-origin-failure"></a>Behandeln eines Ausfalls des Ursprungsservers
 
-Bei der Optimierung für große Dateien wird das Lesezeitlimit an der Quelle von 2 Sekunden bei allgemeinen Webbereitstellung auf 2 Minuten erhöht, damit größere Dateien nicht zu vorzeitigen Verbindungstimeouts führen.
+Die Dauer der Lesezeitüberschreitung des Ursprungs erhöht sich von zwei Sekunden für die allgemeine Webbereitstellung auf zwei Minuten für den Typ „Optimierung großer Dateien“. Diese Erhöhung deckt die Zunahme der Dateigrößen ab, um eine zu frühe Zeitüberschreitung für die Verbindung zu vermeiden.
 
-Wie bei allgemeinen Webbereitstellungen wird bei einem Verbindungstimeout eine bestimmte Anzahl an Wiederholungen versucht, bis schließlich ein 504-Gateway-Timeoutfehler an den Client gesendet wird. 
+Bei einem Verbindungstimeout führt das CDN eine bestimmte Anzahl von Wiederholungen aus und sendet schließlich den Fehler „504 - Gateway-Timeout“ an den Client. 
 
 ### <a name="conditions-for-large-file-optimization"></a>Bedingungen für die Optimierung großer Dateien
 
@@ -87,38 +90,41 @@ Minimale Dateigröße | 10 MB
 Maximale Dateigröße | 150 GB 
 Merkmale des Ursprungsservers | Muss Bytebereichsanforderungen unterstützen 
 
-## <a name="optimizing-for-delivery-of-large-files-with-azure-cdn-from-verizon"></a>Optimieren für die Übermittlung großer Dateien mit Azure CDN von Verizon
+## <a name="optimize-for-delivery-of-large-files-with-the-azure-content-delivery-network-from-verizon"></a>Optimieren der Übermittlung von großen Dateien mit dem Azure Content Delivery Network von Verizon
 
-Azure CDN von Verizon kann große Dateien ohne eine Obergrenze bei der Dateigröße übermitteln und verfügt über verschiedene Features, die eine schnellere Aktivierung der Übermittlung großer Dateien möglich machen.
+Mit dem Azure Content Delivery Network von Verizon werden große Dateien ohne Beschränkung der Dateigröße bereitgestellt. Die zusätzlichen Features werden standardmäßig aktiviert, um die Bereitstellung von großen Dateien zu beschleunigen.
 
 ### <a name="complete-cache-fill"></a>Complete Cache Fill
 
-Azure CDN von Verizon weist über ein Standardfeature zur vollständigen Cacheauffüllung auf, bei dem das CDN per Pull eine Datei in den Cache abruft, wenn die ursprüngliche Anforderung abgebrochen wird oder verloren geht. 
+Mit dem Feature „Complete Cache Fill“ kann das CDN eine Datei im Cache ablegen, wenn die erste Anforderung vorzeitig beendet wird oder verloren geht. 
 
-Dieses Feature eignet sich am besten für große Medienobjekte, die von den Benutzern in der Regel nicht vollständig heruntergeladen werden (z.B. Videos mit progressivem Download). Dieses Feature ist daher bei Azure CDN von Verizon standardmäßig aktiviert. Standardmäßig wird der Edgeserver gezwungen, einen Hintergrundabruf des Medienobjekts vom Ursprungsserver zu initiieren. Anschließend befindet sich das Asset im lokalen Cache des Edgeservers. Sobald sich das vollständige Medienobjekt im Cache befindet, kann der Edgeserver Bytebereichsanforderungen an das CDN für das zwischengespeicherte Objekt beantworten.
+Complete Cache Fill ist für große Assets am nützlichsten. Normalerweise werden diese von Benutzern nicht von Anfang bis Ende heruntergeladen. Es wird ein progressiver Download verwendet. Standardmäßig wird der Edgeserver gezwungen, einen Hintergrundabruf des Assets vom Ursprungsserver zu initiieren. Anschließend befindet sich das Asset im lokalen Cache des Edgeservers. Nachdem sich das vollständige Objekt im Cache befindet, kann der Edgeserver Bytebereichsanforderungen an das CDN für das zwischengespeicherte Objekt beantworten.
 
-Das Standardverhalten zum vollständigen Auffüllen des Caches kann über das Regelmodul im Tarif Verizon Premium deaktiviert werden.
+Das Standardverhalten kann über das Regelmodul im Tarif Verizon Premium deaktiviert werden.
 
-### <a name="peer-cache-fill-hotfiling"></a>Peercache-Auffüllung bei häufig verwendeten Dateien
+### <a name="peer-cache-fill-hot-filing"></a>Peercache-Auffüllung bei häufig verwendeten Dateien
 
-Dies ist ein Standardfeature von Azure CDN von Verizon, bei dem ein komplexer proprietärer Algorithmus basierend auf Metriken wie Bandbreite und aggregierten Anforderungen zusätzliche Edgeserver für das Caching nutzen kann, um Clientanforderungen für große und beliebte Objekte zu beantworten. Dies verhindert Situationen, in denen eine große Anzahl von zusätzlichen Anforderungen an den Ursprungsserver eines Kunden gesendet werden würden. 
+Beim Standardfeature „Peercache-Auffüllung bei häufig verwendeten Dateien“ wird ein eigener anspruchsvoller Algorithmus verwendet. Es werden zusätzliche Edgezwischenspeicherungsserver basierend auf der Bandbreite und den Metriken von Aggregatanforderungen verwendet, um Clientanforderungen für große, beliebte Objekte zu erfüllen. Mit diesem Feature werden Situationen verhindert, in denen eine große Anzahl von zusätzlichen Anforderungen an den Ursprungsserver eines Benutzers gesendet werden. 
 
 ### <a name="conditions-for-large-file-optimization"></a>Bedingungen für die Optimierung großer Dateien
 
-Die Optimierungsfeatures für Verizon sind standardmäßig aktiviert, und es gelten keine Beschränkungen für die maximale Dateigröße. 
+Die Optimierungsfeatures für Verizon werden standardmäßig aktiviert. Es gilt keine Beschränkung in Bezug auf die maximale Dateigröße. 
 
-## <a name="additional-considerations"></a>Weitere Überlegungen
+## <a name="additional-considerations"></a>Zusätzliche Überlegungen
 
-Es gibt einige zusätzliche Aspekte, die bei der Verwendung dieses Optimierungstyps berücksichtigt werden müssen.
+Berücksichtigen Sie für diesen Optimierungstyp die folgenden weiteren Aspekte.
  
-### <a name="azure-cdn-from-akamai"></a>Azure CDN von Akamai
+### <a name="azure-content-delivery-network-from-akamai"></a>Azure Content Delivery Network von Akamai
 
-- Die Aufteilung in Blöcke führt zu zusätzlichen Anforderungen an den Ursprungsserver, dafür ist aber die gesamte Datenmenge, die vom Ursprungsserver übermittelt werden muss, wesentlich kleiner, da eine Aufteilung in Blöcke zu besseren Cachingergebnissen im CDN führt.
-- Ein weiterer Vorteil ist die geringere Arbeitsspeicher- und E/A-Auslastung am Ursprungsserver, da kleinere Teile der Datei übermittelt werden. 
-- Für die Blöcke, die im CDN zwischengespeichert werden, sind keine zusätzlichen Anforderungen an den Ursprungsserver erforderlich, bis der Inhalt im Cache abläuft oder aus anderen Gründen aus dem Cache entfernt wird. 
-- Der Benutzer kann Bereichsanforderungen an das CDN übermitteln, die wie bei normalen Dateien behandelt werden. Die Optimierung wird nur angewendet, wenn es sich um einen gültigen Dateityp handelt und der Bytebereich zwischen 10 MB und 150 GB liegt. Wenn die durchschnittlich angeforderte Dateigröße kleiner als 10 MB ist, empfiehlt es sich, stattdessen die allgemeine Webbereitstellung zu verwenden.
+- Beim Prozess der Objekterstellung werden zusätzliche Anforderungen für den Ursprungsserver generiert. Das Gesamtvolumen der Daten, die vom Ursprung bereitgestellt werden, ist aber deutlich kleiner. Die Blockerstellung führt zu besseren Zwischenspeicherungsmerkmalen im CDN.
 
-### <a name="azure-cdn-from-verizon"></a>Azure CDN von Verizon
+- Der Arbeitsspeicher- und E/A-Druck am Ursprung verringert sich, da kleinere Teile der Datei übermittelt werden.
 
-Die Optimierung für allgemeine Webbereitstellungen kann auch für große Dateien verwendet werden.
+- Für Blöcke, die im CDN zwischengespeichert werden, gibt es keine zusätzlichen Anforderungen an den Ursprung, bis der Inhalt abgelaufen ist oder aus dem Cache entfernt wird.
+
+- Benutzer können Bereichsanforderungen an das CDN übermitteln, die dann wie normale Dateien behandelt werden. Die Optimierung gilt nur, wenn es sich um einen gültigen Dateityp handelt und der Bytebereich zwischen 10 MB und 150 GB liegt. Wenn die durchschnittliche Größe der angeforderten Dateien unter 10 MB liegt, empfiehlt sich stattdessen die Verwendung der allgemeinen Webbereitstellung.
+
+### <a name="azure-content-delivery-network-from-verizon"></a>Azure Content Delivery Network von Verizon
+
+Beim Optimierungstyp „Allgemeine Webbereitstellung“ können große Dateien übermittelt werden.
 
