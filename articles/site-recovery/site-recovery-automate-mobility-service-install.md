@@ -12,7 +12,7 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/06/2017
+ms.date: 08/01/2017
 ms.author: krnese
 ms.translationtype: HT
 ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
@@ -60,8 +60,7 @@ Dieser Artikel enthält ein Beispiel dafür, wie Sie Azure Automation DSC (Desir
 
   > [!NOTE]
   > Informationen zum Verwenden von DSC für Windows-Computer, auf denen WMF 4.0 installiert ist, finden Sie im Abschnitt [Verwenden von DSC in getrennten Umgebungen](## Use DSC in disconnected environments).
-  >
-  >
+  
 
 Der Mobility Service kann über die Befehlszeile installiert werden und akzeptiert mehrere Argumente. Daher müssen Sie die Binärdateien (nachdem sie aus dem Setup extrahiert wurden) an einem Ort speichern, von dem Sie sie mit einer DSC-Konfiguration abrufen können.
 
