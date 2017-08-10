@@ -13,16 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: cfreeman
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 6c8df6b9804d082c8044cdb2420cc5ea42b9774f
+ms.translationtype: HT
+ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
+ms.openlocfilehash: 28d32d1e2d82519fc7b2ad4edca8435c3759594f
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 08/02/2017
 
 ---
 # <a name="using-analytics-in-application-insights"></a>Verwenden von Analytics in Application Insights
-[Analytics](app-insights-analytics.md) ist die leistungsfähige Suchfunktion von [Application Insights](app-insights-overview.md). Auf diesen Seiten wird die Analytics-Abfragesprache beschrieben.
+[Analytics](app-insights-analytics.md) ist die leistungsfähige Suchfunktion von [Application Insights](app-insights-overview.md). Auf diesen Seiten wird die Log Analytics-Abfragesprache beschrieben.
 
 * **[Sehen Sie sich das Einführungsvideo an.](https://applicationanalytics-media.azureedge.net/home_page_video.mp4)**
 * **[Testen Sie Analytics mit unseren simulierten Daten](https://analytics.applicationinsights.io/demo)**, wenn Ihre App noch keine Daten an Application Insights sendet.
@@ -40,7 +39,7 @@ Eine [ausführlichere Einführung finden Sie hier](app-insights-analytics-tour.m
 ### <a name="write-a-query"></a>Schreiben Sie eine Abfrage.
 ![Schemaanzeige](./media/app-insights-analytics-using/150.png)
 
-Beginnen Sie mit den Namen der Tabellen auf der linken Seite (oder mit den Operatoren [range](app-insights-analytics-reference.md#range-operator) oder [union](app-insights-analytics-reference.md#union-operator)). Verwenden Sie `|` , um eine Pipeline von [Operatoren](app-insights-analytics-reference.md#queries-and-operators)zu erstellen. 
+Beginnen Sie mit den Namen der Tabellen auf der linken Seite (oder mit den Operatoren [range](https://docs.loganalytics.io/queryLanguage/query_language_rangeoperator.html) oder [union](https://docs.loganalytics.io/queryLanguage/query_language_unionoperator.html)). Verwenden Sie `|` , um eine Pipeline von [Operatoren](https://docs.loganalytics.io/learn/cheatsheets/useful_operators.html)zu erstellen. 
 
 IntelliSense schlägt Ihnen die Operatoren und Ausdruckselemente vor, die Sie verwenden können. Klicken Sie auf das Informationssymbol (oder drücken Sie STRG+LEERTASTE), um eine längere Beschreibung und Beispiele zum Verwenden der einzelnen Elemente anzuzeigen.
 
@@ -51,7 +50,7 @@ Weitere Informationen finden Sie in der [Einführung in Analytics in Application
 
 1. Einzelne Zeilenumbrüche können Sie in einer Abfrage verwenden.
 2. Platzieren Sie den Cursor in oder am Ende der Abfrage, die Sie ausführen möchten.
-3. Überprüfen Sie den Zeitbereich der Abfrage. (Diesen können Sie ändern oder überschreiben, indem Sie eine eigene [`where...timestamp...`](app-insights-analytics-tour.md#time-range)-Klausel in der Abfrage einfügen.)
+3. Überprüfen Sie den Zeitbereich der Abfrage. (Diesen können Sie ändern oder überschreiben, indem Sie eine eigene [`where...timestamp...`](https://docs.loganalytics.io/concepts/concepts_datatypes_timespan.html)-Klausel in der Abfrage einfügen.)
 3. Klicken Sie auf „Los“, um die Abfrage auszuführen.
 4. Verwenden Sie keine Leerzeilen in Ihrer Abfrage. Mehrere separate Abfragen können auf einer Abfrageregisterkarte durch Leerzeilen getrennt werden. Es wird nur die Abfrage ausgeführt, in der der Cursor platziert ist.
 
@@ -73,7 +72,7 @@ Die zurückgegebenen Abfrageergebnisse können sortiert, gefiltert, umgebrochen 
 > [!NOTE]
 > Beim Sortieren, Gruppieren und Filtern im Browser wird Ihre Abfrage nicht erneut ausgeführt. Hierbei werden lediglich die Ergebnisse Ihrer letzten Abfrage neu angeordnet. 
 > 
-> Wenn diese Aufgaben auf dem Server ausgeführt werden sollen, bevor die Ergebnisse zurückgegeben werden, verwenden Sie in Ihrer Abfrage die Operatoren [sort](app-insights-analytics-reference.md#sort-operator), [summarize](app-insights-analytics-reference.md#summarize-operator) und [where](app-insights-analytics-reference.md#where-operator).
+> Wenn diese Aufgaben auf dem Server ausgeführt werden sollen, bevor die Ergebnisse zurückgegeben werden, verwenden Sie in Ihrer Abfrage die Operatoren [sort](https://docs.loganalytics.io/queryLanguage/query_language_sortoperator.html), [summarize](https://docs.loganalytics.io/queryLanguage/query_language_summarizeoperator.html) und [where](https://docs.loganalytics.io/queryLanguage/query_language_whereoperator.html).
 > 
 > 
 
@@ -101,7 +100,7 @@ Wenn Sie denken, dass nicht alle erwarteten Ergebnisse angezeigt werden, kann di
 
     Den Zeitbereichsfilter können Sie im entsprechenden Dropdownmenü jedoch ändern.
 
-    Oder Sie können den automatischen Bereich überschreiben, indem Sie eine eigene [`where  ... timestamp ...`-Klausel](app-insights-analytics-reference.md#where-operator) in die Abfrage einfügen. Beispiel:
+    Oder Sie können den automatischen Bereich überschreiben, indem Sie eine eigene [`where  ... timestamp ...`-Klausel](https://docs.loganalytics.io/queryLanguage/query_language_whereoperator.html) in die Abfrage einfügen. Beispiel:
 
     `requests | where timestamp > ago('2d')`
 
@@ -109,10 +108,10 @@ Wenn Sie denken, dass nicht alle erwarteten Ergebnisse angezeigt werden, kann di
 
     Daher empfiehlt es sich, eine Überschreitung des Grenzwerts zu vermeiden. Verwenden Sie den Zeitbereichsfilter oder beispielsweise die folgenden Operatoren:
 
-  * [top 100 by timestamp](app-insights-analytics-reference.md#top-operator) 
-  * [take 100](app-insights-analytics-reference.md#take-operator)
-  * [summarize ](app-insights-analytics-reference.md#summarize-operator) 
-  * [where timestamp > ago(3d)](app-insights-analytics-reference.md#where-operator)
+  * [top 100 by timestamp](https://docs.loganalytics.io/queryLanguage/query_language_topoperator.html) 
+  * [take 100](https://docs.loganalytics.io/queryLanguage/query_language_takeoperator.html)
+  * [summarize ](https://docs.loganalytics.io/queryLanguage/query_language_summarizeoperator.html) 
+  * [where timestamp > ago(3d)](https://docs.loganalytics.io/queryLanguage/query_language_whereoperator.html)
 
 (Sollen mehr als 10.000 Zeilen zurückgegeben werden? Stattdessen können Sie den [fortlaufenden Export](app-insights-export-telemetry.md) verwenden. Analytics ist für Analysen und nicht zum Abrufen von Rohdaten vorgesehen.)
 
@@ -123,7 +122,7 @@ Wählen Sie den gewünschten Diagrammtyp:
 
 Wenn Sie über mehrere Spalten mit den richtigen Typen verfügen, können Sie die X- und Y-Achse sowie eine Spalte mit Dimensionen auswählen, um die Ergebnisse aufzuteilen.
 
-Die Ergebnisse werden standardmäßig zunächst als Tabelle angezeigt. Sie wählen die Diagrammdarstellung dann manuell aus. Sie können jedoch die [render-Anweisung](app-insights-analytics-reference.md#render-directive) am Ende einer Abfrage verwenden, um ein Diagramm auszuwählen.
+Die Ergebnisse werden standardmäßig zunächst als Tabelle angezeigt. Sie wählen die Diagrammdarstellung dann manuell aus. Sie können jedoch die [render-Anweisung](https://docs.loganalytics.io/queryLanguage/query_language_renderoperator.html) am Ende einer Abfrage verwenden, um ein Diagramm auszuwählen.
 
 ### <a name="analytics-diagnostics"></a>Analytics-Diagnose
 

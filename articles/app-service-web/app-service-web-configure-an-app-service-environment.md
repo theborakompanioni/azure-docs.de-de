@@ -1,6 +1,6 @@
 ---
-title: Konfigurieren einer App Service-Umgebung | Microsoft-Dokumentation
-description: "Konfiguration, Verwaltung und Überwachung von App Service-Umgebungen"
+title: Konfigurieren einer App Service-Umgebung v1
+description: "Konfiguration, Verwaltung und Überwachung der App Service-Umgebung v1"
 services: app-service
 documentationcenter: 
 author: ccompy
@@ -12,17 +12,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/17/2016
+ms.date: 07/11/2017
 ms.author: ccompy
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 85a4c87447681bd21698143b4228d94c0877d1b9
+ms.translationtype: HT
+ms.sourcegitcommit: 3b15d6645b988f69f1f05b27aff6f726f34786fc
+ms.openlocfilehash: ae99f5a412f73cddc28543ba12c66c82f1a7835a
 ms.contentlocale: de-de
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 07/26/2017
 
 ---
-# <a name="configuring-an-app-service-environment"></a>Konfigurieren einer App Service-Umgebung
+# <a name="configuring-an-app-service-environment-v1"></a>Konfigurieren einer App Service-Umgebung v1
+
+> [!NOTE]
+> In diesem Artikel wird die App Service-Umgebung v1 behandelt.  Für die App Service-Umgebung steht eine neuere Version zur Verfügung. Diese ist benutzerfreundlicher und basiert auf einer leistungsfähigeren Infrastruktur. Weitere Informationen zu dieser neuen Version finden Sie unter [Einführung in die App Service-Umgebung](../app-service/app-service-environment/intro.md).
+> 
+
 ## <a name="overview"></a>Übersicht
 Eine Azure App Service-Umgebung (ASE) besteht aus mehreren Hauptkomponenten:
 
@@ -44,25 +48,25 @@ Das Ändern der Menge oder Größe wird als Skalierungsvorgang bezeichnet.  Es k
 
 * Eine ASE verfügt anfänglich über zwei P2-Einheiten. Diese Größe ist für Entwicklungs-/Testworkloads und einfache Produktionsworkloads ausreichend. P3-Einheiten werden dringend für mittlere bis große Produktionsworkloads empfohlen.
 * Für mittlere bis große Produktionsworkloads werden mindestens vier P3-Einheiten empfohlen, um sicherzustellen, dass bei einer geplanten Wartung genügend Front-Ends ausgeführt werden. Bei geplanten Wartungsaktivitäten wird jeweils ein Front-End heruntergefahren. Die insgesamt verfügbare Front-End-Kapazität wird durch Wartungsaktivitäten also verringert.
-* Es ist nicht möglich, umgehend eine neue Front-End-Instanz hinzuzufügen. Die Bereitstellung dieser Instanzen kann zwei bis drei Stunden dauern.
+* Die Bereitstellung von Front-Ends kann bis zu einer Stunde dauern. 
 * Um eine noch genauere Skalierung zu erzielen, sollten Sie den CPU-Prozentsatz, den Arbeitsspeicher-Prozentsatz und Metriken zu aktiven Anforderungen für den Front-End-Pool überwachen. Wenn die CPU- oder Arbeitsspeicher-Prozentsätze beim Ausführen von P3-Einheiten über einem Wert von 70 liegen, sollten Sie mehr Front-Ends hinzufügen. Wenn der Wert für die aktiven Anforderungen durchschnittlich bei 15.000 bis 20.000 Anforderungen pro Front-End liegt, sollten Sie ebenfalls weitere Front-Ends hinzufügen. Bei der Ausführung von P3-Einheiten ist das Ziel also, für CPU und Arbeitsspeicher einen Prozentsatz von weniger als 70% und für aktive Anforderungen im Durchschnitt eine Anzahl von weniger als 15.000 Anforderungen pro Front-End zu erreichen.  
 
 **Worker**: In den Workern werden Ihre Apps ausgeführt. Wenn Sie Ihre App Service-Pläne zentral hochskalieren, werden für diesen Vorgang Worker im zugeordneten Workerpool genutzt.
 
-* Es ist nicht möglich, umgehend Worker hinzuzufügen. Unabhängig von der Anzahl von Workern, die hinzugefügt werden, kann die Bereitstellung zwei bis drei Stunden dauern.
-* Die Skalierung der Größe einer Computeressource dauert bei jedem Pool zwei bis drei Stunden pro Updatedomäne. Eine App Service-Umgebung verfügt über 20 Updatedomänen. Wenn Sie die Computegröße eines Workerpools mit zehn Instanzen skalieren, kann der Vorgang also 20 bis 30 Stunden dauern.
+* Es ist nicht möglich, umgehend Worker hinzuzufügen. Die Bereitstellung kann bis zu einer Stunde dauern.
+* Die Skalierung der Größe einer Computeressource für einen Pool dauert weniger als eine Stunde pro Updatedomäne. Eine App Service-Umgebung verfügt über 20 Updatedomänen. Wenn Sie die Computegröße eines Workerpools mit zehn Instanzen skalieren, kann der Vorgang also bis zu zehn Stunden dauern.
 * Wenn Sie die Größe der Computeressourcen in einem Workerpool ändern, verursacht dies möglicherweise einen Kaltstart der Apps, die in diesem Workerpool ausgeführt werden.
 
 Die Größe von Computeressourcen eines Workerpools, in dem keine Apps ausgeführt werden, lässt sich wie folgt am schnellsten ändern:
 
-* Skalieren Sie die Anzahl von Instanzen zentral auf 0 herunter. Das Aufheben der Zuordnung Ihrer Instanzen dauert ca. 30 Minuten.
-* Wählen Sie die neue Computegröße und die Anzahl von Instanzen. Anschließend dauert es noch zwei bis drei Stunden, bis der Vorgang abgeschlossen ist.
+* Skalieren Sie die Workermenge zentral auf „2“ herunter.  „2“ ist die Mindestgröße für zentrales Herunterskalieren im Portal. Das Aufheben der Zuordnung Ihrer Instanzen dauert einige Minuten. 
+* Wählen Sie die neue Computegröße und die Anzahl von Instanzen. Anschließend dauert es noch bis zu zwei Stunden, bis der Vorgang abgeschlossen ist.
 
 Wenn für Ihre Apps mehr Computeressourcen erforderlich sind, sind die vorstehenden Schritte keine geeignete Lösung. Anstatt die Größe des Workerpools zu ändern, in dem die Apps gehostet werden, können Sie einen anderen Workerpool mit Workern der gewünschten Größe füllen und Ihre Apps in diesen Pool verschieben.
 
-* Erstellen Sie die zusätzlichen Instanzen der erforderlichen Computegröße in einem anderen Workerpool. Dieser Vorgang dauert 2 bis 3 Stunden.
+* Erstellen Sie die zusätzlichen Instanzen der erforderlichen Computegröße in einem anderen Workerpool. Dies dauert bis zu einer Stunde.
 * Weisen Sie Ihre App Service-Pläne, über die die Apps mit den höheren Ressourcenanforderungen gehostet werden, dem neu konfigurierten Workerpool zu. Dies ist ein schneller Vorgang, der in weniger als einer Minute abgeschlossen sein sollte.  
-* Skalieren Sie den ersten Workerpool zentral herunter, wenn Sie die nicht genutzten Instanzen nicht mehr benötigen. Dieser Vorgang dauert ca. 30 Minuten.
+* Skalieren Sie den ersten Workerpool zentral herunter, wenn Sie die nicht genutzten Instanzen nicht mehr benötigen. Dieser Vorgang dauert einige Minuten.
 
 **Automatische Skalierung**: Ein Tool, das Sie beim Verwalten Ihres Computeressourcenverbrauchs unterstützen kann, ist die automatische Skalierung. Sie können die automatische Skalierung für Front-End- oder Workerpools nutzen. Es ist beispielsweise möglich, die Instanzen eines beliebigen Pooltyps am Morgen zu erhöhen und am Abend wieder zu reduzieren. Sie können auch Instanzen hinzufügen, wenn die Anzahl von Workern, die in einem Workerpool verfügbar sind, unter einen bestimmten Schwellenwert fällt.
 

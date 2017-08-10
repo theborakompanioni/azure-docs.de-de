@@ -1,6 +1,6 @@
 ---
-title: 'NoSQL-Tutorial: Azure DocumentDB Java SDK | Microsoft-Dokumentation'
-description: "Ein NoSQL-Tutorial, in dem eine Onlinedatenbank und eine Java-Konsolenanwendung mit dem DocumentDB Java SDK erstellt werden. Azure DocumentDB ist eine NoSQL-Datenbank für JSON."
+title: "NoSQL-Tutorial: DocumentDB-API für das Azure Cosmos DB Java SDK | Microsoft-Dokumentation"
+description: "Ein NoSQL-Tutorial, in dem eine Onlinedatenbank und eine Java-Konsolenanwendung mit der DocumentDB-API für Azure Cosmos DB erstellt werden. Azure DocumentDB ist eine NoSQL-Datenbank für JSON."
 keywords: NoSQL-Tutorial, Onlinedatenbank, Java-Konsolenanwendung
 services: cosmos-db
 documentationcenter: Java
@@ -15,15 +15,14 @@ ms.devlang: java
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: arramac
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
-ms.openlocfilehash: d69e70ae178c9ae889d44998938cb2c215ff10ba
+ms.translationtype: HT
+ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
+ms.openlocfilehash: ce1857395176ef50a16a7291170fb220896fd792
 ms.contentlocale: de-de
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 07/25/2017
 
 ---
-# <a name="nosql-tutorial-build-a-documentdb-java-console-application"></a>NoSQL-Tutorial: Erstellen einer DocumentDB-Java-Konsolenanwendung
+# <a name="nosql-tutorial-build-a-documentdb-api-java-console-application"></a>NoSQL-Tutorial: Erstellen einer Java-Konsolenanwendung mit der DocumentDB-API
 > [!div class="op_single_selector"]
 > * [.NET](documentdb-get-started.md)
 > * [.NET Core](documentdb-dotnetcore-get-started.md)
@@ -34,7 +33,7 @@ ms.lasthandoff: 06/20/2017
 >  
 > 
 
-Willkommen beim NoSQL-Tutorial für das Azure DocumentDB Java SDK! Im Rahmen dieses Lernprogramms erstellen Sie eine Konsolenanwendung, mit der DocumentDB-Ressourcen erstellt und abgefragt werden können.
+Willkommen beim NoSQL-Tutorial für die DocumentDB-API für das Azure Cosmos DB Java SDK. Im Rahmen dieses Tutorials erstellen Sie eine Konsolenanwendung, mit der Azure Cosmos DB-Ressourcen erstellt und abgefragt werden können.
 
 Folgendes wird behandelt:
 
@@ -72,7 +71,7 @@ Sie können beginnen, indem Sie das GitHub-Repository für [Get Started with Azu
 
     cd azure-cosmos-db-documentdb-java-getting-started
 
-Das Verzeichnis enthält die Datei `pom.xml` für das Projekt und den Ordner `src` mit dem Java-Quellcode, einschließlich `Program.java`. Hiermit wird veranschaulicht, wie Sie einfache Vorgänge mit Azure DocumentDB durchführen, z.B. das Erstellen von Dokumenten und Abfragen von Daten in einer Sammlung. Die Datei `pom.xml` enthält eine Abhängigkeit im [DocumentDB Java SDK in Maven](https://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb).
+Das Verzeichnis enthält die Datei `pom.xml` für das Projekt und den Ordner `src` mit dem Java-Quellcode, einschließlich `Program.java`. Hiermit wird veranschaulicht, wie Sie einfache Vorgänge mit Azure Cosmos DB durchführen (beispielsweise das Erstellen von Dokumenten und Abfragen von Daten in einer Sammlung). Die Datei `pom.xml` enthält eine Abhängigkeit im [DocumentDB Java SDK in Maven](https://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb).
 
     <dependency>
         <groupId>com.microsoft.azure</groupId>
@@ -120,7 +119,7 @@ Eine [Sammlung](documentdb-resources.md#collections) kann mithilfe der [createCo
     this.client.createCollection("/dbs/familydb", collectionInfo, requestOptions);
 
 ## <a id="CreateDoc"></a>Schritt 6: Erstellen von JSON-Dokumenten
-Ein [Dokument](documentdb-resources.md#documents) kann mithilfe der [createDocument](/java/api/com.microsoft.azure.documentdb._document_client.createdocument)-Methode der **DocumentClient**-Klasse erstellt werden. Dokumente sind benutzerdefinierter (beliebiger) JSON-Inhalt. Wir können jetzt eines oder mehrere Dokumente einfügen. Wenn Sie bereits über Daten verfügen, die Sie in der Datenbank speichern möchten, können Sie das [Datenmigrationstool](import-data.md) von DocumentDB verwenden, um die Daten in die Datenbank zu importieren.
+Ein [Dokument](documentdb-resources.md#documents) kann mithilfe der [createDocument](/java/api/com.microsoft.azure.documentdb._document_client.createdocument)-Methode der **DocumentClient**-Klasse erstellt werden. Dokumente sind benutzerdefinierter (beliebiger) JSON-Inhalt. Wir können jetzt eines oder mehrere Dokumente einfügen. Wenn Sie bereits über Daten verfügen, die Sie in der Datenbank speichern möchten, können Sie diese mithilfe des [Datenmigrationstools](import-data.md)von Azure Cosmos DB in eine Datenbank importieren.
 
     // Insert your Java objects as documents 
     Family andersenFamily = new Family();

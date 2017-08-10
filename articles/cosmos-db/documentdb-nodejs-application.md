@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 07/06/2017
 ms.author: mimig
 ms.translationtype: HT
-ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
-ms.openlocfilehash: dd5ba797fe973dddc16231f42d5f561e1956b91c
+ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
+ms.openlocfilehash: e5f7697b1069186b9ab6b6594fa5efb069252475
 ms.contentlocale: de-de
-ms.lasthandoff: 07/13/2017
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="_Toc395783175"></a>Erstellen einer Node.js-Webanwendung mithilfe von Azure Cosmos DB
@@ -88,7 +88,7 @@ Die Datei **package.json** ist eine der im Stammverzeichnis des Projekts erstell
 1. Wechseln Sie zum Terminal, und installieren Sie das **async** -Modul über npm.
    
         npm install async --save
-2. Installieren Sie das **documentdb** -Modul über npm. Dieses Modul ist für die DocumentDB-Funktionen zuständig.
+2. Installieren Sie das **documentdb** -Modul über npm. Dieses Modul ist für die Azure Cosmos DB-Funktionen zuständig.
    
         npm install documentdb --save
 3. Bei einer schnellen Überprüfung der Datei **package.json** der Anwendung können Sie die zusätzlichen Module anzeigen. Diese Datei weist Azure beim Ausführen der Anwendung an, welche Pakete heruntergeladen und installiert werden sollen. Sie sollte dem unten stehenden Beispiel ähneln.
@@ -390,8 +390,8 @@ Dies ist für die anfängliche Einrichtung und Konfiguration erforderlich. Jetzt
    
         var config = {}
    
-        config.host = process.env.HOST || "[the URI value from the DocumentDB Keys blade on http://portal.azure.com]";
-        config.authKey = process.env.AUTH_KEY || "[the PRIMARY KEY value from the DocumentDB Keys blade on http://portal.azure.com]";
+        config.host = process.env.HOST || "[the URI value from the Azure Cosmos DB Keys blade on http://portal.azure.com]";
+        config.authKey = process.env.AUTH_KEY || "[the PRIMARY KEY value from the Azure Cosmos DB Keys blade on http://portal.azure.com]";
         config.databaseId = "ToDoList";
         config.collectionId = "Items";
    
@@ -456,45 +456,46 @@ Jetzt konzentrieren wir uns auf die Erstellung der Benutzeroberfläche, um den B
     Speichern und schließen Sie die Datei **layout.jade** .
 
 3. Öffnen Sie nun die Datei **index.jade**, d. h. die Ansicht, die von der Anwendung verwendet wird, und ersetzen Sie den Inhalt der Datei durch Folgendes:
-
-    ```
-    extends layout
-    block content
-      h1 #{title}
-      br
-    
-      form(action="/completetask", method="post")
-        table.table.table-striped.table-bordered
-          tr
-            td Name
-            td Category
-            td Date
-            td Complete
-          if (typeof tasks === "undefined")
-            tr
-              td
-          else
-            each task in tasks
-              tr
-                td #{task.name}
-                td #{task.category}
-                - var date  = new Date(task.date);
-                - var day   = date.getDate();
-                - var month = date.getMonth() + 1;
-                - var year  = date.getFullYear();
-                td #{month + "/" + day + "/" + year}
-                td
-                  input(type="checkbox", name="#{task.id}", value="#{!task.completed}", checked=task.completed)
-        button.btn(type="submit") Update tasks
-      hr
-      form.well(action="/addtask", method="post")
-        label Item Name:
-        input(name="name", type="textbox")
-        label Item Category:
-        input(name="category", type="textbox")
-        br
-        button.btn(type="submit") Add item
-    ```
+   
+        extends layout
+        block content
+           h1 #{title}
+           br
+        
+           form(action="/completetask", method="post")
+             table.table.table-striped.table-bordered
+               tr
+                 td Name
+                 td Category
+                 td Date
+                 td Complete
+               if (typeof tasks === "undefined")
+                 tr
+                   td
+               else
+                 each task in tasks
+                   tr
+                     td #{task.name}
+                     td #{task.category}
+                     - var date  = new Date(task.date);
+                     - var day   = date.getDate();
+                     - var month = date.getMonth() + 1;
+                     - var year  = date.getFullYear();
+                     td #{month + "/" + day + "/" + year}
+                     td
+                       input(type="checkbox", name="#{task.id}", value="#{!task.completed}", checked=task.completed)
+             button.btn.btn-primary(type="submit") Update tasks
+           hr
+           form.well(action="/addtask", method="post")
+             .form-group
+               label(for="name") Item Name:
+               input.form-control(name="name", type="textbox")
+             .form-group
+               label(for="category") Item Category:
+               input.form-control(name="category", type="textbox")
+             br
+             button.btn(type="submit") Add item
+   
 
     Dadurch wird das Layout erweitert und Inhalt für den Platzhalter **content** bereitgestellt, den wir zuvor in der Datei **layout.jade** gesehen haben.
    
@@ -505,27 +506,6 @@ Jetzt konzentrieren wir uns auf die Erstellung der Benutzeroberfläche, um den B
     Das zweite Formular enthält zwei Eingabefelder und eine Schaltfläche, mit der Sie ein neues Element durch Übermittlung an die **/addtask** -Methode des Controllers erstellen können.
 
     Dies sollte jetzt alles sein, damit unsere Anwendung funktioniert.
-4. Öffnen Sie die Datei **style.css** im Verzeichnis **Public\stylesheets**, und ersetzen Sie den Code durch Folgendes:
-   
-        body {
-          padding: 50px;
-          font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-        }
-        a {
-          color: #00B7FF;
-        }
-        .well label {
-          display: block;
-        }
-        .well input {
-          margin-bottom: 5px;
-        }
-        .btn {
-          margin-top: 5px;
-          border: outset 1px #C8C8C8;
-        }
-   
-    Speichern und schließen Sie die Datei **style.css** .
 
 ## <a name="_Toc395783181"></a>Schritt 6: Lokales Ausführen der Anwendung
 1. Um die Anwendung auf dem lokalen Computer zu testen, führen Sie `npm start` über das Terminal aus, um Ihre Anwendung zu starten, und aktualisieren Sie anschließend die Browserseite [http://localhost:3000](http://localhost:3000). Die Seite sollte nun wie folgt aussehen:

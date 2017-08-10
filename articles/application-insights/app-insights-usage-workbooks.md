@@ -12,11 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 06/12/2017
 ms.author: cfreeman
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: 44ea03d30c1f2eabc92af63b549823c03a6901e2
+ms.translationtype: HT
+ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
+ms.openlocfilehash: ecd3d86db1d6b3b65015d1d560027cedb4f2df58
 ms.contentlocale: de-de
-ms.lasthandoff: 06/20/2017
+ms.lasthandoff: 08/02/2017
 
 ---
 
@@ -88,9 +88,9 @@ Mit Abschnitten für Analyseabfragen können Sie Arbeitsmappen beliebige Abfrage
 
 * Wie viele Ausnahmen wurden von Ihrer Website während des Zeitraums ausgelöst, in dem sich die Nutzung verringert hat?
 * Wie waren die Seiteladezeiten für Benutzer verteilt, die eine Seite angezeigt haben?
-* Wie viele Benutzer haben eine Gruppe von Seiten auf Ihrer Website angezeigt, eine andere Gruppe von Seiten aber nicht? Dies kann das Verständnis fördern, ob Sie über Cluster mit Benutzern verfügen, die unterschiedliche Teilmengen der Funktionalität Ihrer Website nutzen. (Verwenden Sie den Operator `join` mit dem Modifizierer `kind=leftanti` in der Analytics-Abfragesprache.)
+* Wie viele Benutzer haben eine Gruppe von Seiten auf Ihrer Website angezeigt, eine andere Gruppe von Seiten aber nicht? Anhand dieser Information können Sie nachvollziehen, ob bestimmte Benutzergruppen unterschiedliche Teilfunktionen Ihrer Website nutzen. (Verwenden Sie den Operator `join` mit dem Modifizierer `kind=leftanti` in der Log Analytics-Abfragesprache.)
 
-Verwenden Sie die [Referenz zur Analytics-Abfragesprache](app-insights-analytics-reference.md), um sich über das Schreiben von Abfragen zu informieren.
+Weitere Informationen zum Schreiben von Abfragen finden Sie in der [Referenz zur Log Analytics-Abfragesprache](https://docs.loganalytics.io/).
 
 ## <a name="adding-text-and-markdown-sections"></a>Hinzufügen von Text und Markdown-Abschnitten
 

@@ -1,5 +1,5 @@
 ---
-title: Automatische Skalierung und App Service-Umgebung | Microsoft-Dokumentation
+title: Automatische Skalierung und App Service-Umgebung v1
 description: Automatische Skalierung und App Service-Umgebung
 services: app-service
 documentationcenter: 
@@ -12,16 +12,21 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2016
-ms.author: byvinyal
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 41ad9eb4d248b1f3e6c888c3037b121511799193
-ms.lasthandoff: 02/16/2017
-
+ms.date: 7/11/2017
+ms.author: ccompy
+ms.translationtype: HT
+ms.sourcegitcommit: 3b15d6645b988f69f1f05b27aff6f726f34786fc
+ms.openlocfilehash: f32affd285f3918feb0e893543f2a28f678b7b10
+ms.contentlocale: de-de
+ms.lasthandoff: 07/26/2017
 
 ---
-# <a name="autoscaling-and-app-service-environment"></a>Automatische Skalierung und App Service-Umgebung
+# <a name="autoscaling-and-app-service-environment-v1"></a>Automatische Skalierung und App Service-Umgebung v1
+
+> [!NOTE]
+> In diesem Artikel wird die App Service-Umgebung v1 behandelt.  Für die App Service-Umgebung steht eine neuere Version zur Verfügung. Diese ist benutzerfreundlicher und basiert auf einer leistungsfähigeren Infrastruktur. Weitere Informationen zu dieser neuen Version finden Sie unter [Einführung in die App Service-Umgebung](../app-service/app-service-environment/intro.md).
+> 
+
 Azure App Service-Umgebungen unterstützen die *automatische Skalierung*. Sie können einzelne Workerpools basierend auf Metriken oder nach einem Zeitplan automatisch skalieren.
 
 ![Optionen für automatische Skalierung für einen Workerpool][intro]

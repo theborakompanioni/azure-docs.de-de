@@ -15,15 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2017
 ms.author: rnagpal
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 196be1e8185a08394944b0f334fcf21f237464dd
+ms.translationtype: HT
+ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
+ms.openlocfilehash: e7b910ae94b178b5370d4938698e8bcce10775ea
 ms.contentlocale: de-de
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 07/25/2017
 
 ---
-# <a name="documentdb-net-examples"></a>DocumentDB .NET-Beispiele
+# <a name="azure-cosmos-db-net-examples-for-the-documentdb-api"></a>Azure Cosmos DB: .NET-Beispiele für die DocumentDB-API
 > [!div class="op_single_selector"]
 > * [.NET-Beispiele](documentdb-dotnet-samples.md)
 > * [Node.js-Beispiele](documentdb-nodejs-samples.md)
@@ -101,7 +100,7 @@ Die Methode [RunIndexDemo](https://github.com/Azure/azure-documentdb-dotnet/blob
 | [Verwenden von Bereichsindizes in Zeichenfolgen](https://github.com/Azure/azure-documentdb-dotnet/blob/2e9a48b6a446b47dd6182606c8608d439b88b683/samples/code-samples/IndexManagement/Program.cs#L342-L405) |[IndexingPolicy.IncludedPaths](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.indexingpolicy.includedpaths.aspx)<br>[RangeIndex](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.rangeindex.aspx) |
 | [Durchführen einer Indextransformation](https://github.com/Azure/azure-documentdb-dotnet/blob/2e9a48b6a446b47dd6182606c8608d439b88b683/samples/code-samples/IndexManagement/Program.cs#L407-L464) |[ReplaceDocumentCollectionAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.replacedocumentcollectionasync.aspx) |
 
-Weitere Informationen zur Indizierung finden Sie unter [Indizierungsrichtlinien für DocumentDB](indexing-policies.md).
+Weitere Informationen zur Indizierung finden Sie unter [Indizierungsrichtlinien für Azure Cosmos DB](indexing-policies.md).
 
 ## <a name="geospatial-examples"></a>Geodatenbeispiele
 Die Geodaten-Beispieldatei [azure-documentdb-dotnet/samples/code-samples/Geospatial/Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Geospatial/Program.cs) veranschaulicht, wie Sie die folgenden Aufgaben durchführen.  
@@ -137,7 +136,7 @@ Die Abfragedokumentdatei [azure-documentdb-dotnet/samples/code-samples/Queries/P
 | [Paralleles Abfragen partitionierter Sammlungen](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs#L664-L734) |[DocumentQueryable.CreateDocumentQuery](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.linq.documentqueryable.createdocumentquery.aspx) |
 | [Abfrage mit ORDER BY für partitionierte Sammlungen](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs#L737-L810) |[DocumentQueryable.CreateDocumentQuery](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.linq.documentqueryable.createdocumentquery.aspx) |
 
-Weitere Informationen zum Schreiben von Abfragen finden Sie unter [SQL-Abfrage in DocumentDB](documentdb-sql-query.md).
+Weitere Informationen zum Schreiben von Abfragen finden Sie unter [SQL-Abfragen für Azure Cosmos DB-DocumentDB-API](documentdb-sql-query.md).
 
 ## <a name="server-side-programming-examples"></a>Serverseitige Programmierbeispiele
 Die Datei [azure-documentdb-dotnet/samples/code-samples/ServerSideScripts/Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ServerSideScripts/Program.cs) für die serverseitige Programmierung veranschaulicht, wie Sie die folgenden Aufgaben durchführen.

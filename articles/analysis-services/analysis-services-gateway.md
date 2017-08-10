@@ -13,17 +13,16 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 05/26/2017
+ms.date: 07/25/2017
 ms.author: owend
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
-ms.openlocfilehash: f8c9e9ab8b8728202ec3f049b309d96d883022f4
+ms.translationtype: HT
+ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
+ms.openlocfilehash: f07d72a18221e7a2838cec3982990dca21c00153
 ms.contentlocale: de-de
-ms.lasthandoff: 06/03/2017
-
+ms.lasthandoff: 07/26/2017
 
 ---
-# <a name="on-premises-data-gateway"></a>Lokales Datengateway
+# <a name="install-on-premises-data-gateway"></a>Installieren eines lokalen Datengateways
 Das lokale Datengateway fungiert als Brücke für eine sichere Datenübertragung zwischen lokalen Datenquellen und dem Azure Analysis Services-Servers in der Cloud.
 
 Die neueste Version des Gateways unterstützt tabellarische Modelle mit Kompatibilitätsgrad 1400, die mithilfe von „Daten abrufen“ und M-Abfragen in SSDT mit lokalen Datenquellen verbunden sind. 
@@ -32,7 +31,7 @@ Weitere Informationen zu unterstützten Datenquellen finden Sie unter [In Azure 
 
 Ein Gateway wird auf einem Computer im Netzwerk installiert. Für jeden Azure Analysis Services-Server im Azure-Abonnement muss ein Gateway installiert werden. Wenn beispielsweise Ihr Azure-Abonnement zwei Server enthält, die mit lokalen Datenquellen verbunden werden, muss auf zwei verschiedenen Computern im Netzwerk ein Gateway installiert werden.
 
-## <a name="requirements"></a>Anforderungen
+## <a name="prerequisites"></a>Voraussetzungen
 **Mindestanforderungen.**
 
 * .NET 4.5 Framework
@@ -61,7 +60,7 @@ Ein Gateway wird auf einem Computer im Netzwerk installiert. Für jeden Azure An
 1. Führen Sie das Setup aus.
 2. Wählen Sie einen Installationsspeicherort aus, und akzeptieren Sie die Lizenzbedingungen.
 3. Melden Sie sich bei Azure an.
-4. Geben Sie den Namen des Azure-Analysis-Servers an. Sie können nur einen Server pro Gateway angeben. Klicken Sie auf **Konfigurieren**, und Sie können loslegen.
+4. Geben Sie den Namen des Azure-Analysis-Servers an, und klicken Sie auf **Konfigurieren**. Sie können nur einen Server pro Gateway angeben.
 
     ![Bei Azure anmelden](./media/analysis-services-gateway/aas-gateway-configure-server.png)
 
@@ -70,7 +69,7 @@ Das Gateway wird als Windows-Dienst mit dem Namen **Lokales Datengateway** auf e
 
 ![So funktioniert's](./media/analysis-services-gateway/aas-gateway-how-it-works.png)
 
-Funktion von Abfragen und Datenfluss:
+Abfragen und Datenfluss:
 
 1. Vom Clouddienst wird eine Abfrage mit den verschlüsselten Anmeldeinformationen für die lokale Datenquelle erstellt. Sie wird dann an eine Warteschlange für die Verarbeitung durch das Gateway gesendet.
 2. Der Gatewayclouddienst analysiert die Abfrage und überträgt die Anforderung per Push an den [Azure Service Bus](https://azure.microsoft.com/documentation/services/service-bus/).
@@ -111,7 +110,7 @@ Nachfolgend sind die vollqualifizierten Domänennamen aufgeführt, die vom Gatew
 | *.microsoftonline-p.com |443 |Wird je nach Konfiguration für die Authentifizierung verwendet. |
 
 ### <a name="forcing-https-communication-with-azure-service-bus"></a>Erzwingen von HTTPS-Kommunikation mit Azure Service Bus
-Sie können erzwingen, dass das Gateway für die Kommunikation mit Azure Service Bus HTTPS statt TCP verwendet; dies kann jedoch die Leistung erheblich beeinträchtigen. Hierzu müssen Sie die Datei *Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config* ändern. Ändern Sie den Wert von `AutoDetect` in `Https`. Diese Datei befindet sich standardmäßig in *C:\Programme\On-premises data gateway*.
+Sie können erzwingen, dass das Gateway mit Azure Service Bus über HTTPS (und nicht direkt über TCP) kommuniziert. Dies kann allerdings erheblich die Leistung beeinträchtigen. Sie können die Datei *Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config* ändern, indem Sie den Wert von `AutoDetect` in `Https` ändern. Diese Datei befindet sich standardmäßig in *C:\Programme\On-premises data gateway*.
 
 ```
 <setting name="ServiceBusSystemConnectivityModeString" serializeAs="String">
@@ -132,8 +131,8 @@ Telemetrie kann zur Überwachung und Problembehandlung verwendet werden.
 
 **So aktivieren Sie Telemetrie**
 
-1.    Überprüfen Sie das Verzeichnis des lokalen Datengateway-Clients auf dem Computer. Es lautet in der Regel „%systemdrive%\Programme\On-premises data gateway“. Alternativ können Sie die Konsole „Dienste“ öffnen und den Pfad zur ausführbaren Datei überprüfen: eine Eigenschaft des Diensts Lokales Datengateway.
-2.    In der Datei „Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config“ im Clientverzeichnis. Ändern Sie die Einstellung „SendTelemetry“ in „true“.
+1.  Überprüfen Sie das Verzeichnis des lokalen Datengateway-Clients auf dem Computer. Es lautet in der Regel **%systemdrive%\Programme\On-premises data gateway**. Alternativ können Sie die Konsole „Dienste“ öffnen und den Pfad zur ausführbaren Datei überprüfen: eine Eigenschaft des Diensts Lokales Datengateway.
+2.  In der Datei „Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config“ im Clientverzeichnis. Ändern Sie die Einstellung „SendTelemetry“ in „true“.
         
     ```
         <setting name="SendTelemetry" serializeAs="String">
@@ -141,7 +140,7 @@ Telemetrie kann zur Überwachung und Problembehandlung verwendet werden.
         </setting>
     ```
 
-3.    Speichern Sie die Änderungen, und starten Sie den folgenden Windows-Dienst neu: Lokales Datengateway.
+3.  Speichern Sie die Änderungen, und starten Sie den folgenden Windows-Dienst neu: Lokales Datengateway.
 
 
 
