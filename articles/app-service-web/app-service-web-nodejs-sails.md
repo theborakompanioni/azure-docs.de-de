@@ -14,12 +14,11 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 09ececc567c09ea4e0b77d4d37445b7c232de23c
+ms.translationtype: HT
+ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
+ms.openlocfilehash: deb9ce304069e6bd92518610a9953fb1f29cb555
 ms.contentlocale: de-de
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="deploy-a-sailsjs-web-app-to-azure-app-service"></a>Bereitstellen einer Sails.js-Web-App in Azure App Service
@@ -73,7 +72,7 @@ Erstellen Sie zuerst schnell eine standardmäßige Sails.js-App in Ihrer Entwick
         logDirectory: iisnode
 
     Die Protokollierung ist jetzt für den Server [iisnode](https://github.com/tjanczuk/iisnode) aktiviert, der von Azure App Service zum Ausführen von Node.js-Apps verwendet wird. 
-    Weitere Informationen zur Funktionsweise finden Sie unter  [Debuggen einer Node.js-Web-App in Azure App Service](web-sites-nodejs-debug.md).
+    Weitere Informationen zur Funktionsweise finden Sie unter [Debuggen einer Node.js-Web-App in Azure App Service](web-sites-nodejs-debug.md).
 
 2. Konfigurieren Sie für die App „Sails.js“ als Nächstes die Verwendung der Azure-Umgebungsvariablen. Öffnen Sie „config/env/production.js“, um Ihre Produktionsumgebung zu konfigurieren, und legen Sie `port` und `hookTimeout` fest:
 
@@ -88,7 +87,7 @@ Erstellen Sie zuerst schnell eine standardmäßige Sails.js-App in Ihrer Entwick
             ...
         };
 
-    Sie finden die Dokumentation für diese Konfigurationseinstellungen in der  [Sails.js-Dokumentation](http://sailsjs.org/documentation/reference/configuration/sails-config).
+    Die Dokumentation für diese Konfigurationseinstellungen finden Sie in der [Sails.js-Dokumentation](http://sailsjs.org/documentation/reference/configuration/sails-config).
 
 4. Führen Sie als Nächstes die Hartcodierung der gewünschten Node.js-Version durch. Fügen Sie in „package.json“ die folgende `engines` -Eigenschaft hinzu, um die gewünschte Node.js-Version festzulegen.
 
@@ -188,7 +187,7 @@ Erstellen Sie zum Herstellen einer Verbindung mit einer Datenbank in Azure die g
 
 1. [Erstellen Sie ein Cosmos DB-Konto mit Protokollunterstützung für MongoDB](../documentdb/documentdb-create-mongodb-account.md).
 2. [Erstellen Sie eine Cosmos DB-Sammlung und -Datenbank](../documentdb/documentdb-create-collection.md). Der Name der Sammlung spielt keine Rolle, aber Sie benötigen den Namen der Datenbank, wenn Sie eine Verbindung von „Sails.js“ herstellen.
-3. [Suchen Sie nach den Verbindungsinformationen für Ihre Cosmos DB-Datenbank](../cosmos-db/connect-mongodb-account.md#a-idgetcustomconnectiona-get-the-mongodb-connection-string-to-customize).
+3. [Suchen Sie nach den Verbindungsinformationen für Ihre Cosmos DB-Datenbank](../cosmos-db/connect-mongodb-account.md#GetCustomConnection).
 2. Installieren Sie den MongoDB-Adapter über das Befehlszeilenterminal:
 
         npm install sails-mongo --save
@@ -245,7 +244,7 @@ Erstellen Sie zum Herstellen einer Verbindung mit einer Datenbank in Azure die g
             migrate: 'alter'
         },
 
-    Mit `migrate: 'alter'` können Sie Features für die Datenbankmigration verwenden, um Datenbanksammlungen oder -tabellen leicht zu erstellen und zu aktualisieren. Für die Azure-Umgebung (Produktion) wird allerdings `migrate: 'safe'` verwendet, da „Sails.js“ die Verwendung von `migrate: 'alter'` in einer Produktionsumgebung nicht zulässt. (Weitere Informationen finden Sie in der  [Sails.js-Dokumentation](http://sailsjs.org/documentation/concepts/models-and-orm/model-settings)).
+    Mit `migrate: 'alter'` können Sie Features für die Datenbankmigration verwenden, um Datenbanksammlungen oder -tabellen leicht zu erstellen und zu aktualisieren. Für die Azure-Umgebung (Produktion) wird allerdings `migrate: 'safe'` verwendet, da „Sails.js“ die Verwendung von `migrate: 'alter'` in einer Produktionsumgebung nicht zulässt. (Weitere Informationen finden Sie in der [Sails.js-Dokumentation](http://sailsjs.org/documentation/concepts/models-and-orm/model-settings)).
 8. [Generieren](http://sailsjs.org/documentation/reference/command-line-interface/sails-generate) Sie über das Terminal wie gewohnt eine Sails.js-[Blaupausen-API](http://sailsjs.org/documentation/concepts/blueprints). Führen Sie dann `sails lift` aus, um die Datenbank mit Sails.js-Datenbankmigration zu erstellen. Beispiel:
 
          sails generate api mywidget

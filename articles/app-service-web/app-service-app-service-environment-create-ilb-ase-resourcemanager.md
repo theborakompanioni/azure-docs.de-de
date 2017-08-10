@@ -12,15 +12,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/21/2016
+ms.date: 07/11/2017
 ms.author: stefsch
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 33d1638dfbf1e314d7ea298a39dd4e646c3faf10
-
+ms.translationtype: HT
+ms.sourcegitcommit: 3b15d6645b988f69f1f05b27aff6f726f34786fc
+ms.openlocfilehash: 147ab76d38c8bbbf34d35ed6c2a194d97fe711ab
+ms.contentlocale: de-de
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="how-to-create-an-ilb-ase-using-azure-resource-manager-templates"></a>Gewusst wie: Erstellen einer ILB-ASE mit Azure Resource Manager-Vorlagen
+
+> [!NOTE] 
+> In diesem Artikel wird die App Service-Umgebung v1 behandelt. Für die App Service-Umgebung steht eine neuere Version zur Verfügung. Diese ist benutzerfreundlicher und basiert auf einer leistungsfähigeren Infrastruktur. Weitere Informationen zu dieser neuen Version finden Sie unter [Einführung in die App Service-Umgebung](../app-service/app-service-environment/intro.md).
+>
+
 ## <a name="overview"></a>Übersicht
 App Service-Umgebungen (ASEs) können mit einer internen Adresse eines virtuellen Netzwerks erstellt werden, anstatt mit einer öffentlichen VIP.  Diese interne Adresse wird von einer Azure-Komponente bereitgestellt, die als interner Load Balancer (ILB) bezeichnet wird.  Eine ILB-ASE kann mit dem Azure-Portal erstellt werden.  Für die Erstellung kann auch eine Automation genutzt werden, indem Azure Resource Manager-Vorlagen eingesetzt werden.  In diesem Artikel werden die Schritte und Syntaxelemente beschrieben, die zum Erstellen einer ILB-ASE mit Azure Resource Manager-Vorlagen benötigt werden.
 
@@ -31,7 +37,7 @@ Die Automatisierung einer ILB-ASE-Erstellung umfasst drei Schritte:
 3. Das hochgeladene SSL-Zertifikat wird der ILB-ASE explizit als SSL-Standardzertifikat zugewiesen.  Dieses SSL-Zertifikat wird für SSL-Datenverkehr zu Apps in der ILB-ASE verwendet, wenn die Apps mit der allgemeinen Stammdomäne adressiert werden, die der ASE zugewiesen ist (z.B. https://someapp.mycustomrootcomain.com).
 
 ## <a name="creating-the-base-ilb-ase"></a>Erstellen der Basis-ILB-ASE
-Eine Azure Resource Manager-Beispielvorlage und die zugeordnete Parameterdatei sind [hier][quickstartilbasecreate] bei GitHub verfügbar.
+Eine Azure Resource Manager-Beispielvorlage und die zugeordnete Parameterdatei stehen auf [GitHub][quickstartilbasecreate] zur Verfügung.
 
 Die meisten Parameter in der Datei *azuredeploy.parameters.json* gelten für die Erstellung beider ILB-ASEs sowie für ASEs, die an eine öffentliche VIP gebunden sind.  In der Liste unten sind die Parameter angegeben, die für die Erstellung einer ILB-ASE eine besondere Bedeutung haben bzw. eindeutig sind:
 
@@ -74,7 +80,7 @@ Der folgende PowerShell-Codeausschnitt veranschaulicht ein Beispiel für das Gen
     $fileContentEncoded = [System.Convert]::ToBase64String($fileContentBytes)
     $fileContentEncoded | set-content ($fileName + ".b64")
 
-Nachdem das SSL-Zertifikat erfolgreich generiert und in eine Base64-codierte Zeichenfolge konvertiert wurde, kann die Azure Resource Manager-Beispielvorlage auf GitHub für das [Konfigurieren des SSL-Standardzertifikats][configuringDefaultSSLCertificate] verwendet werden.
+Nachdem das SSL-Zertifikat erfolgreich generiert und in eine Base64-codierte Zeichenfolge konvertiert wurde, kann die Azure Resource Manager-Beispielvorlage auf GitHub zum [Konfigurieren des SSL-Standardzertifikats][configuringDefaultSSLCertificate] verwendet werden.
 
 Die Parameter in der Datei *azuredeploy.parameters.json* sind nachfolgend aufgeführt:
 
@@ -138,10 +144,5 @@ Alle Artikel und Anleitungen zu App Service-Umgebungen stehen in der [Dokumentat
 [quickstartilbasecreate]: https://azure.microsoft.com/documentation/templates/201-web-app-ase-ilb-create/
 [examplebase64encoding]: http://powershellscripts.blogspot.com/2007/02/base64-encode-file.html 
 [configuringDefaultSSLCertificate]: https://azure.microsoft.com/documentation/templates/201-web-app-ase-ilb-configure-default-ssl/ 
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

@@ -1,6 +1,6 @@
 ---
-title: Erstellen einer Web-App in einer App Service-Umgebung
-description: "Erfahren Sie, wie Web-Apps und App Service-Pläne in einer App Service-Umgebung (App Service Environment, ASE) erstellt werden."
+title: Erstellen einer Web-App in einer App Service-Umgebung v1
+description: "Hier erfahren Sie, wie Sie Web-Apps und App Service-Pläne in einer App Service-Umgebung v1 erstellen."
 services: app-service
 documentationcenter: 
 author: ccompy
@@ -12,18 +12,23 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/17/2016
+ms.date: 7/11/2017
 ms.author: ccompy
-translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: a78d37ee59663896acc3192f8ae03575270101a8
-ms.lasthandoff: 04/06/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 3b15d6645b988f69f1f05b27aff6f726f34786fc
+ms.openlocfilehash: 0779486b040b8dc51cdd42521ba965e58388425a
+ms.contentlocale: de-de
+ms.lasthandoff: 07/26/2017
 
 ---
-# <a name="create-a-web-app-in-an-app-service-environment"></a>Erstellen einer Web-App in einer App Service-Umgebung
+# <a name="create-a-web-app-in-an-app-service-environment-v1"></a>Erstellen einer Web-App in einer App Service-Umgebung v1
+
+> [!NOTE]
+> In diesem Artikel wird die App Service-Umgebung v1 behandelt.  Für die App Service-Umgebung steht eine neuere Version zur Verfügung. Diese ist benutzerfreundlicher und basiert auf einer leistungsfähigeren Infrastruktur. Weitere Informationen zu dieser neuen Version finden Sie unter [Einführung in die App Service-Umgebung](../app-service/app-service-environment/intro.md).
+> 
+
 ## <a name="overview"></a>Übersicht
-Dieses Tutorial zeigt Ihnen, wie Sie Web-Apps und App Service-Pläne in einer [App Service-Umgebung](app-service-app-service-environment-intro.md) (App Service Environment, ASE) erstellen. 
+Dieses Tutorial zeigt, wie Sie Web-Apps und App Service-Pläne in einer [App Service-Umgebung v1](app-service-app-service-environment-intro.md) (App Service Environment, ASE) erstellen. 
 
 > [!NOTE]
 > Wenn Sie wissen möchten, wie eine Web-App erstellt wird, dies jedoch nicht in einer App Service-Umgebung durchführen möchten, finden Sie weitere Informationen unter [Erstellen einer .NET-Web-App](app-service-web-get-started-dotnet.md) oder in einem der zugehörigen Tutorials für andere Sprachen und Frameworks.

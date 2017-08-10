@@ -1,6 +1,6 @@
 ---
-title: Azure DocumentDB .NET Core-API, -SDK und -Ressourcen | Microsoft-Dokumentation
-description: "Wichtige Informationen zu .NET Core-API und .NET Core SDK einschließlich Terminen für Veröffentlichung und Außerbetriebnahme sowie Änderungen an den einzelnen Versionen des DocumentDB .NET Core SDK."
+title: Azure Cosmos DB .NET Core-API, -SDK und -Ressourcen | Microsoft-Dokumentation
+description: "Hier finden Sie umfassende Informationen zur .NET Core-API und zum entsprechenden SDK – einschließlich Veröffentlichungstermine, Deaktivierungstermine und Änderungen der einzelnen Versionen des Azure Cosmos DB .NET Core SDKs."
 services: cosmos-db
 documentationcenter: .net
 author: rnagpal
@@ -16,13 +16,13 @@ ms.date: 06/12/2017
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
-ms.openlocfilehash: 4e842bf237bf51b020218d1f612af55939b2deb9
+ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
+ms.openlocfilehash: 28eb505bf58943f7a687b79af3427a0ee74fe9bb
 ms.contentlocale: de-de
-ms.lasthandoff: 07/13/2017
+ms.lasthandoff: 07/25/2017
 
 ---
-# <a name="documentdb-net-core-sdk-release-notes-and-resources"></a>DocumentDB .NET Core-SDK: Versionshinweise und Ressourcen
+# <a name="azure-cosmos-db-net-core-sdk-release-notes-and-resources"></a>Azure Cosmos DB .NET Core SDK: Versionshinweise und Ressourcen
 > [!div class="op_single_selector"]
 > * [.NET](documentdb-sdk-dotnet.md)
 > * [.NET-Änderungsfeed](documentdb-sdk-dotnet-changefeed.md)
@@ -44,19 +44,19 @@ ms.lasthandoff: 07/13/2017
 
 <tr><td>**Beispiele**</td><td>[.NET-Codebeispiele](documentdb-dotnet-samples.md)</td></tr>
 
-<tr><td>**Erste Schritte**</td><td>[Erste Schritte mit dem DocumentDB .NET Core SDK](documentdb-dotnetcore-get-started.md)</td></tr>
+<tr><td>**Erste Schritte**</td><td>[Azure Cosmos DB: Erste Schritte mit der DocumentDB-API und .NET Core](documentdb-dotnetcore-get-started.md)</td></tr>
 
-<tr><td>**Web-App-Tutorial**</td><td>[Webanwendungsentwicklung mit DocumentDB](documentdb-dotnet-application.md)</td></tr>
+<tr><td>**Web-App-Tutorial**</td><td>[Entwicklung von Webanwendungen mit Azure Cosmos DB](documentdb-dotnet-application.md)</td></tr>
 
 <tr><td>**Aktuelles unterstütztes Framework**</td><td>[.NET Standard 1.6 und .NET Standard 1.5](https://www.nuget.org/packages/NETStandard.Library)</td></tr>
 </table></br>
 
 ## <a name="release-notes"></a>Versionsinformationen
 
-Das DocumentDB .NET Core SDK weist Funktionsparität mit der neuesten Version des [DocumentDB .NET SDK](documentdb-sdk-dotnet.md) auf.
+Die Features des Azure Cosmos DB .NET Core SDKs sind mit den Features der neuesten Version des [Azure Cosmos DB .NET SDKs](documentdb-sdk-dotnet.md) identisch.
 
 > [!NOTE] 
-> Das DocumentDB .NET Core SDK ist noch nicht mit UWP-Apps (Universelle Windows-Plattform) kompatibel. Senden Sie eine E-Mail an [askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com), um Informationen zum .NET Core SDK zu erhalten, mit dem UWP-Apps unterstützt werden.
+> Das Azure Cosmos DB .NET Core SDK ist noch nicht mit UWP-Apps (Universelle Windows-Plattform) kompatibel. Senden Sie eine E-Mail an [askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com), um Informationen zum .NET Core SDK zu erhalten, mit dem UWP-Apps unterstützt werden.
 
 ### <a name="a-name132132"></a><a name="1.3.2"/>1.3.2
 
@@ -64,7 +64,7 @@ Das DocumentDB .NET Core SDK weist Funktionsparität mit der neuesten Version de
 
 ### <a name="a-name131131"></a><a name="1.3.1"/>1.3.1
 
-*   Es wurde ein Problem mit Auswirkung auf x64-Computer behoben, die die SSE4-Anweisung nicht unterstützen und beim Ausführen von DocumentDB-Abfragen SEHException auslösen.
+*   Ein Problem mit x64-Computern, die die SSE4-Anweisung nicht unterstützen und beim Ausführen von Azure Cosmos DB-Abfragen eine SEHException-Ausnahme auslösen, wurde behoben.
 
 ### <a name="a-name130130"></a><a name="1.3.0"/>1.3.0
 
@@ -107,13 +107,13 @@ Das DocumentDB .NET Core SDK weist Funktionsparität mit der neuesten Version de
 
 ### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
 
-Das DocumentDB .NET Core SDK ermöglicht es Ihnen, schnelle, plattformübergreifende [ASP.NET Core](https://www.asp.net/core)- und [.NET Core](https://www.microsoft.com/net/core#windows)-Apps für die Ausführung unter Windows, Mac und Linux zu erstellen. Die neueste Version des DocumentDB .NET Core SDK ist vollständig mit [Xamarin](https://www.xamarin.com) kompatibel. Es kann verwendet werden, um Anwendungen für iOS, Android und Mono (Linux) zu erstellen.  
+Mit dem .NET Core SDK für Azure Cosmos DB können Sie schnelle, plattformübergreifende [ASP.NET Core](https://www.asp.net/core)- und [.NET Core](https://www.microsoft.com/net/core#windows)-Apps für Windows, Mac und Linux erstellen. Die neueste Version des .NET Core SDKs für Azure Cosmos DB ist vollständig mit [Xamarin](https://www.xamarin.com) kompatibel und kann zum Erstellen von Anwendungen für iOS, Android und Mono (Linux) verwendet werden.  
 
 ### <a name="a-name010-preview010-preview"></a><a name="0.1.0-preview"/>0.1.0-preview
 
-Das DocumentDB .NET Core Preview SDK ermöglicht es Ihnen, schnelle, plattformübergreifende [ASP.NET Core](https://www.asp.net/core)- und [.NET Core](https://www.microsoft.com/net/core#windows)-Apps für die Ausführung unter Windows, Mac und Linux zu erstellen.
+Mit der Vorschauversion des .NET Core SDKs für Azure Cosmos DB können Sie schnelle, plattformübergreifende [ASP.NET Core](https://www.asp.net/core)- und [.NET Core](https://www.microsoft.com/net/core#windows)-Apps für Windows, Mac und Linux erstellen.
 
-Das DocumentDB .NET Core Preview SDK weist Funktionsparität mit der neuesten Version des [DocumentDB .NET SDK](documentdb-sdk-dotnet.md) auf und unterstützt Folgendes:
+Die Features der Vorschauversion des Azure Cosmos DB .NET Core SDKs sind mit den Features der neuesten Version des [Azure Cosmos DB .NET SDKs](documentdb-sdk-dotnet.md) identisch und unterstützen Folgendes:
 * Alle [Verbindungsmodi](performance-tips.md#networking): Gatewaymodus, TCP direkt und HTTPs direkt. 
 * Alle [Konsistenzebenen](consistency-levels.md): „stark“, „Sitzung“, „begrenzte Veraltung“ und „letztlich“.
 * [Partitionierte Sammlungen](partition-data.md). 

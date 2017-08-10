@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/09/2017
 ms.author: yurid
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 5d58d9dd6c92c81328f89a703b3bc8529aff8dc0
-
+ms.translationtype: HT
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: bc8ca9bb349f41a6ae7371b4fc33cc09fb179c11
+ms.contentlocale: de-de
+ms.lasthandoff: 07/27/2017
 
 ---
 # <a name="pen-testing"></a>Penetrationstests
@@ -33,7 +34,7 @@ Wenn Sie einen Penetrationstest Ihrer Anwendungen durchführen, kann dies von un
 
 Vorgehensweise
 
-Wenn Sie bereit sind, einen Penetrationstest Ihrer auf Azure gehosteten Anwendungen durchzuführen, müssen Sie uns das mitteilen. Sobald wir wissen, dass Sie bestimmte Tests durchführen möchten, werden wir Sie nicht versehentlich herunterfahren (z.B. die IP-Adresse blockieren, über die Sie testen), solange Ihre Tests den Bedingungen von Azure für Penetrationstests entsprechen.
+Wenn Sie bereit sind, einen Penetrationstest für Ihre in Azure gehosteten Anwendungen durchzuführen, können Sie [uns darüber informieren](https://portal.msrc.microsoft.com/en-us/engage/pentest). Wenn wir wissen, dass Sie bestimmte Tests durchführen möchten, können wir sicherstellen, dass diese reibungslos ablaufen (und nicht beispielsweise die IP-Adresse blockiert wird, die Sie bei Ihrem Test verwenden) – vorausgesetzt, Ihre Tests erfüllen die unter [Microsoft Cloud Unified Penetration Testing Rules of Engagement](https://technet.microsoft.com/en-us/mt784683) (Microsoft Cloud: Einheitliche Verhaltensregeln bei Penetrationstests) beschriebenen Bedingungen für Azure-Penetrationstests.
 Folgende Standardtests können Sie durchführen:
 
 * Tests an Ihren Endpunkten, um die [wichtigsten 10 OWASP-Sicherheitsrisiken (Open Web Application Security Project)](https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project)
@@ -43,9 +44,4 @@ Folgende Standardtests können Sie durchführen:
 Ein Testtyp, den Sie nicht ausführen können, ist jegliche Form eines [Denial-of-Service-Angriffs (DoS)](https://en.wikipedia.org/wiki/Denial-of-service_attack). Dies schließt einen selbst initiierten DoS-Angriff bzw. das Durchführen zugehöriger Tests ein, die einen DoS-Angriff bestimmen, demonstrieren oder simulieren könnten.
 
 Sind Sie bereit für Penetrationstests Ihrer in Microsoft Azure gehosteten Anwendungen? Wenn dies der Fall ist, wechseln Sie zur [Penetrationstest-Übersichtsseite](https://security-forms.azure.com/penetration-testing/terms) (und klicken Sie am unteren Rand der Seite auf die Schaltfläche „Create a Testing Request“ ). Außerdem finden Sie weitere Informationen zu den Bedingungen für Penetrationstests und nützliche Links dazu, wie Sie Sicherheitsprobleme im Zusammenhang mit Azure oder einem anderen Microsoft-Dienst berichten können.
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

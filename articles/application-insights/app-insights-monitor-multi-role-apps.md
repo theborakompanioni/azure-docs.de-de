@@ -12,12 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/17/2017
 ms.author: cfreeman
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e22bd56e0d111add6ab4c08b6cc6e51c364c7f22
-ms.openlocfilehash: 9b26ade6c3a90e6ebe49bfbc6f3fa801dc7f8d20
+ms.translationtype: HT
+ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
+ms.openlocfilehash: d8b466caba7201a5bb8612e773ad61943f6d1cf2
 ms.contentlocale: de-de
-ms.lasthandoff: 05/19/2017
-
+ms.lasthandoff: 07/25/2017
 
 ---
 # <a name="monitor-multi-component-applications-with-application-insights-preview"></a>Überwachen von Anwendungen mit mehreren Komponenten mit Application Insights (Vorschau)
@@ -30,7 +29,9 @@ Wir verwenden „Komponente“ hier für jegliches funktionierende Teil einer um
 
 ### <a name="sharing-a-single-application-insights-resource"></a>Gemeinsames Verwenden einer einzelnen Application Insights-Ressource 
 
-Die wichtigste Technologie ist das Senden von Telemetriedaten von jeder Komponente in der Anwendung an dieselbe Application Insights-Ressource. Verwenden Sie gegebenenfalls die `cloud_RoleName`-Eigenschaft, um zwischen den Komponenten zu unterscheiden. 
+Die wichtigste Technologie ist das Senden von Telemetriedaten von jeder Komponente in der Anwendung an dieselbe Application Insights-Ressource. Verwenden Sie gegebenenfalls die `cloud_RoleName`-Eigenschaft, um zwischen den Komponenten zu unterscheiden. Das Application Insights SDK fügt den von Komponenten ausgegebenen Telemetriedaten die Eigenschaft `cloud_RoleName` hinzu. So fügt das SDK der Eigenschaft `cloud_RoleName` beispielsweise einen Websitenamen oder einen Dienstrollennamen hinzu. Dieser Wert kann mit einem Telemetrie-Initialisierer überschrieben werden. Die Anwendungszuordnung verwendet die Eigenschaft `cloud_RoleName`, um die Komponenten in der Zuordnung zu identifizieren.
+
+Weitere Informationen zum Überschreiben der Eigenschaft `cloud_RoleName` finden Sie unter [Hinzufügen von Eigenschaften: ITelemetryInitializer](app-insights-api-filtering-sampling.md#add-properties-itelemetryinitializer).  
 
 In einigen Fällen ist dies eventuell nicht möglich, sodass Sie bevorzugt unterschiedliche Ressourcen für verschiedene Gruppen von Komponenten verwenden sollten. Möglicherweise müssen Sie z.B. verschiedene Ressourcen für Verwaltungs- und Abrechnungszwecke verwenden. Die Verwendung unterschiedlicher Ressourcen bedeutet, dass nicht alle Komponenten in einer Anwendungszuordnung angezeigt werden. Außerdem können Sie in [Analytics](app-insights-analytics.md) keine Abfragen über mehrere Komponenten durchführen. Darüber hinaus müssen Sie auch separate Ressourcen einrichten.
 
