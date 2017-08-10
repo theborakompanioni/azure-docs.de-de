@@ -1,4 +1,3 @@
-* Wenn sich der nicht verwaltete Datenträger in einem Speicherkonto befindet, das zuvor mit Azure Storage Service Encryption verschlüsselt wurde, kann er nicht in einen verwalteten Datenträger konvertiert werden. Informationen zum Kopieren und Verwenden dieser virtuellen Festplatten (Virtual Hard Disks, VHDs) in verwalteten Datenträgern finden Sie später in diesem Artikel unter [Verwaltete Datenträger und Azure Storage Service Encryption](#managed-disks-and-azure-storage-service-encryption).
 
 * Da für die Konvertierung ein Neustart des virtuellen Computers erforderlich ist, sollten Sie die Migration Ihrer virtuellen Computer während eines bereits vorhandenen Wartungsfensters durchführen. 
 
