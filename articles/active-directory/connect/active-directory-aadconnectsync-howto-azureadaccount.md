@@ -41,12 +41,12 @@ Dieser Abschnitt enthält eine Liste mit Fehlern, die von Kunden gemeldet und du
 - - -
 Ereignis 6900  
 Der Server hat einen unerwarteten Fehler beim Verarbeiten einer Benachrichtigung über eine Kennwortänderung erkannt:  
-AADSTS70002: Fehler beim Überprüfen der Anmeldeinformationen. AADSTS50054: Old password is used for authentication. (Ereignis&6900;: Unerwarteter Serverfehler beim Verarbeiten einer Kennwortänderungsbenachrichtigung. AADSTS70002: Fehler beim Überprüfen der Anmeldeinformationen. AADSTS50054: Für die Authentifizierung wurde ein altes Kennwort verwendet.)
+AADSTS70002: Fehler beim Überprüfen der Anmeldeinformationen. AADSTS50054: Old password is used for authentication. (Ereignis 6900: Unerwarteter Serverfehler beim Verarbeiten einer Kennwortänderungsbenachrichtigung. AADSTS70002: Fehler beim Überprüfen der Anmeldeinformationen. AADSTS50054: Für die Authentifizierung wurde ein altes Kennwort verwendet.)
 
 - - -
 Ereignis 659  
 Fehler beim Abrufen der Konfiguration für die Kennwortrichtliniensynchronisierung. Microsoft.IdentityModel.Clients.ActiveDirectory.AdalServiceException:  
-AADSTS70002: Fehler beim Überprüfen der Anmeldeinformationen. AADSTS50054: Old password is used for authentication. (Ereignis&6900;: Unerwarteter Serverfehler beim Verarbeiten einer Kennwortänderungsbenachrichtigung. AADSTS70002: Fehler beim Überprüfen der Anmeldeinformationen. AADSTS50054: Für die Authentifizierung wurde ein altes Kennwort verwendet.)
+AADSTS70002: Fehler beim Überprüfen der Anmeldeinformationen. AADSTS50054: Old password is used for authentication. (Ereignis 6900: Unerwarteter Serverfehler beim Verarbeiten einer Kennwortänderungsbenachrichtigung. AADSTS70002: Fehler beim Überprüfen der Anmeldeinformationen. AADSTS50054: Für die Authentifizierung wurde ein altes Kennwort verwendet.)
 
 ## <a name="next-steps"></a>Nächste Schritte
 **Übersichtsthemen**
