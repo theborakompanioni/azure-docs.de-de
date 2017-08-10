@@ -9,6 +9,7 @@
 ## [Erhalten eines Azure AD-Mandanten](active-directory-howto-tenant.md)
 ## [Registrieren für Azure AD Premium](active-directory-get-started-premium.md)
 ## [Zuordnen von Azure-Abonnements](active-directory-how-subscriptions-associated-directory.md)
+## [Schnellstart: Self-Service-Kennwortzurücksetzung](active-directory-passwords-getting-started.md)
 ## Verwalten der Azure AD-Lizenzierung
 ### [Azure-Portal](active-directory-licensing-get-started-azure-portal.md)
 ### [Klassisches Portal](active-directory-licensing-what-is.md)
@@ -78,6 +79,7 @@
 #### [Migrieren einzelner lizenzierter Benutzer zur gruppenbasierten Lizenzierung](active-directory-licensing-group-migration-azure-portal.md)
 #### [Zusätzliche Szenarien für die Gruppenbasierte Lizenzierung](active-directory-licensing-group-advanced.md)
 #### [PowerShell-Beispiele für die gruppenbasierte Lizenzierung](active-directory-licensing-ps-examples.md)
+### [Einrichten des Office 365-Gruppenablaufs](active-directory-groups-lifecycle-azure-portal.md)
 ### [Anzeigen aller Gruppen](active-directory-groups-view-azure-portal.md)
 ### [Aktivieren dedizierter Gruppen](active-directory-accessmanagement-dedicated-groups.md)
 ### [Hinzufügen des Gruppenzugriffs auf SaaS-Apps](active-directory-accessmanagement-group-saasapps.md)
@@ -124,7 +126,6 @@
 #### [Zurücksetzen oder Ändern des Kennworts](active-directory-passwords-update-your-own-password.md)
 #### [Bewährte Methoden für Kennwörter](active-directory-secure-passwords.md)
 #### [Registrieren für die Self-Service-Kennwortzurücksetzung](active-directory-passwords-reset-register.md)
-### [Schnellstart: Self-Service-Kennwortzurücksetzung](active-directory-passwords-getting-started.md)
 ### [Lizenzieren von SSPR](active-directory-passwords-licensing.md)
 ### [Bereitstellen von SSPR](active-directory-passwords-best-practices.md)
 ### IT-Administratoren: Zurücksetzen von Kennwörtern

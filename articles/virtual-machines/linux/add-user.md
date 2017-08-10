@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/18/2016
 ms.author: v-livech
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: a95157f57c0cbd1f2a9ed68a0fe83140d7c9ec40
-ms.lasthandoff: 04/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
+ms.openlocfilehash: ddc5446fa6a43bfff05ec251b30175ddd24052c9
+ms.contentlocale: de-de
+ms.lasthandoff: 08/09/2017
 
 ---
 # <a name="add-a-user-to-an-azure-vm"></a>Hinzufügen eines Benutzers zu einer Azure-VM
@@ -78,7 +78,7 @@ Eine der ersten und häufigsten Aufgaben bei einem Server ist das Hinzufügen ei
 Mit dem Befehl `useradd` fügen wir der Linux-VM-Benutzerkonten hinzu.  Ausführen von `useradd` ändert `/etc/passwd`, `/etc/shadow`, `/etc/group` und `/etc/gshadow`.  Wir fügen dem Befehl `useradd` ein Befehlszeilenflag hinzu, um den neuen Benutzer auch der richtigen sudo-Gruppe unter Linux hinzuzufügen.  Mit `useradd` wird zwar ein Eintrag unter `/etc/passwd` erstellt, aber für das neue Benutzerkonto wird kein Kennwort vergeben.  Wir erstellen ein Anfangskennwort für den neuen Benutzer, indem wir den einfachen Befehl `passwd` verwenden.  Im letzten Schritt ändern wir die sudo-Regeln, damit der Benutzer Befehle mit sudo-Berechtigungen ausführen kann, ohne für jeden Befehl ein Kennwort eingeben zu müssen.  Mit der Anmeldung mit dem privaten Schlüssel gehen wir davon aus, dass das Benutzerkonto vor Angreifern sicher ist, und lassen den sudo-Zugriff ohne Kennwort zu.  
 
 ### <a name="adding-a-single-sudo-user-to-an-azure-vm"></a>Hinzufügen eines einzelnen sudo-Benutzers zu einer Azure-VM
-Melden Sie sich mit SSH-Schlüsseln bei der Azure-VM an.  Falls Sie den Zugriff mit einem öffentlichen SSH-Schlüssel noch nicht eingerichtet haben, sollten Sie zuerst den Artikel [Using Public Key Authentication with Azure](http://link.to/article)(Verwenden der Authentifizierung mit öffentlichem Schlüssel für Azure) durcharbeiten.  
+Melden Sie sich mit SSH-Schlüsseln bei der Azure-VM an.  Falls Sie den Zugriff mit einem öffentlichen SSH-Schlüssel noch nicht eingerichtet haben, sollten Sie zuerst den Artikel [Using Public Key Authentication with Azure](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)(Verwenden der Authentifizierung mit öffentlichem Schlüssel für Azure) durcharbeiten.  
 
 Mit dem Befehl `useradd` werden die folgenden Aufgaben durchgeführt:
 

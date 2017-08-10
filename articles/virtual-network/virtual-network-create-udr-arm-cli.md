@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/12/2017
 ms.author: jdial
-translationtype: Human Translation
-ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
-ms.openlocfilehash: 3a85fa624dc55f31822f00910b6d124c1d37323f
-ms.lasthandoff: 03/22/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
+ms.openlocfilehash: e5d9519998346619093f443b740c8904283f76e8
+ms.contentlocale: de-de
+ms.lasthandoff: 08/09/2017
 
 ---
 # <a name="create-user-defined-routes-udr-using-the-azure-cli-20"></a>Erstellen benutzerdefinierter Routen (UDR) mit Azure CLI 2.0
@@ -192,7 +192,7 @@ Führen Sie die folgenden Schritte aus, um die Routingtabelle und die für das B
 
 Führen Sie die folgenden Schritte aus, um die IP-Weiterleitung in der vom virtuellen Computer **FW1** verwendeten NIC zu aktivieren:
 
-1. Führen Sie den Befehl [az network nic show](/cli/az/network/nic#show) mit einem JMESPATH-Filter aus, um den aktuellen **enable-ip-forwarding**-Wert für **Enable IP forwarding** (IP-Weiterleitung aktivieren) anzuzeigen. Er sollte auf *false*festgelegt sein.
+1. Führen Sie den Befehl [az network nic show](/cli/azure/network/nic#show) mit einem JMESPATH-Filter aus, um den aktuellen **enable-ip-forwarding**-Wert für **Enable IP forwarding** (IP-Weiterleitung aktivieren) anzuzeigen. Er sollte auf *false*festgelegt sein.
 
     ```azurecli
     az network nic show \

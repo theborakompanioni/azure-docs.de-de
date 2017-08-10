@@ -12,16 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/01/2017
+ms.date: 08/08/2017
 ms.author: TomSh
 ms.custom: azlog
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 532ff423ff53567b6ce40c0ea7ec09a689cee1e7
-ms.openlocfilehash: 1adabc7f249d9b01f3ad1a819f75b2ef47f72998
+ms.translationtype: HT
+ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
+ms.openlocfilehash: 5e672bd6b9356ce16663e843e4a4e7365cb159c3
 ms.contentlocale: de-de
-ms.lasthandoff: 06/05/2017
-
-
+ms.lasthandoff: 08/09/2017
 
 ---
 # <a name="introduction-to-microsoft-azure-log-integration"></a>Einführung in die Microsoft Azure-Protokollintegration
@@ -48,7 +46,7 @@ Azure führt für jeden Azure-Dienst eine umfassende Protokollierung durch. Dies
 Die Azure-Protokollintegration unterstützt derzeit die Integration von Azure-Aktivitätsprotokollen, Windows-Ereignisprotokollen vom virtuellen Computer unter Windows in Ihr Azure-Abonnement, Azure Security Center-Warnungen, Azure-Diagnoseprotokolle sowie Azure Active Directory-Überwachungsprotokolle.
 
 >[!NOTE]
-Während die Azure-Protokollintegration eine kostenlose Lösung darstellt, ergeben sich durch das Speichern der Protokolldateiinformationen entsprechende Azure-Speicherkosten.
+Während die Azure-Protokollintegration eine kostenlose Lösung darstellt, entstehen durch Speichern der Protokolldateiinformationen entsprechende Azure-Speicherkosten.
 
 In der folgenden Tabelle werden die Protokollkategorie und Details der SIEM-Integration erläutert.
 
@@ -72,7 +70,7 @@ In diesem Dokument wurde die Azure-Protokollintegration vorgestellt. Weitere Inf
 
 * [Microsoft Azure-Protokollintegration](https://www.microsoft.com/download/details.aspx?id=53324): Download Center für Details, Systemanforderungen und Installationsanweisungen für die Azure-Protokollintegration.
 * [Erste Schritte mit der Azure-Protokollintegration:](security-azure-log-integration-get-started.md) In diesem Tutorial erfahren Sie Schritt für Schritt, wie Sie die Azure-Protokollintegration installieren und Protokolle aus Azure-WAD-Speicher sowie Azure-Aktivitätsprotokolle, Azure Security Center-Warnungen und Azure Active Directory-Überwachungsprotokolle integrieren.
-* [Partner configuration steps](https://blogs.msdn.microsoft.com/azuresecurity/2016/08/23/azure-log-siem-configuration-steps/) (Konfigurationsschritte für Partner): In diesem Blogbeitrag erfahren Sie, wie die Azure-Protokollintegration für die Partnerlösungen Splunk, HP ArcSight und IBM QRadar konfiguriert wird.
+* [Partner configuration steps](https://blogs.msdn.microsoft.com/azuresecurity/2016/08/23/azure-log-siem-configuration-steps/) (Konfigurationsschritte für Partner): In diesem Blogbeitrag erfahren Sie, wie die Azure-Protokollintegration für die Partnerlösungen Splunk, HP ArcSight und IBM QRadar konfiguriert wird. Dieses Blog entspricht unserer aktuellen Position zur Konfiguration der Partnerlösungen. Konsultieren Sie in jedem Fall zunächst die Dokumentation zur Partnerlösung.
 * [Activity and ASC alerts over syslog to QRadar (Aktivitäts- und ASC-Warnungen über Syslog an QRadar)](https://blogs.msdn.microsoft.com/azuresecurity/2016/09/24/integrate-azure-logs-to-qradar/): In diesem Blogbeitrag werden die Schritte zum Senden von Aktivitäts- und Azure Security Center-Warnungen über Syslog an QRadar erläutert.
 * [Azure log Integration frequently asked questions (FAQ)](security-azure-log-integration-faq.md) (Häufig gestellte Fragen zur Azure-Protokollintegration): Hier finden Sie Antworten auf häufig gestellte Fragen zur Azure-Protokollintegration.
 * [Integrieren von Security Center-Warnungen mit der Azure-Protokollintegration](../security-center/security-center-integrating-alerts-with-log-integration.md): In diesem Dokument wird gezeigt, wie Azure Security Center-Warnungen mit der Azure-Protokollintegration synchronisiert werden.

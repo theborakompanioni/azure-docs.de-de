@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/09/2016
 ms.author: johnkem
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaa162df8a6cd60cb174242e6a353439f2da58b4
-ms.openlocfilehash: eb3a0ad811a4286df1bac963904bd9154c0ccfa3
+ms.translationtype: HT
+ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
+ms.openlocfilehash: 195751d4c5ac4021eb929e96d39b9d0e72d3070f
 ms.contentlocale: de-de
-ms.lasthandoff: 12/10/2016
+ms.lasthandoff: 08/07/2017
 
 ---
 # <a name="archive-the-azure-activity-log"></a>Archivieren des Azure-Aktivitätsprotokolls
@@ -28,7 +28,7 @@ In diesem Artikel erfahren Sie, wie Sie Ihr [**Azure-Aktivitätsprotokoll**](mon
 Bevor Sie beginnen, müssen Sie [ein Speicherkonto erstellen](../storage/storage-create-storage-account.md#create-a-storage-account) , in dem Sie Ihr Aktivitätsprotokoll archivieren können. Um den Zugriff auf Überwachungsdaten besser steuern zu können, wird dringend davon abgeraten, ein bereits vorhandenes Speicherkonto mit anderen, nicht überwachungsbezogenen Daten zu verwenden. Wenn Sie jedoch auch Diagnoseprotokolle und Metriken in einem Speicherkonto archivieren, ist es unter Umständen sinnvoll, dieses Speicherkonto auch für Ihr Aktivitätsprotokoll zu verwenden, damit sich alle Überwachungsdaten an einem zentralen Ort befinden. Bei dem Speicherkonto muss es sich um ein allgemeines Speicherkonto (nicht um ein Blobspeicherkonto) handeln. Das Speicherkonto muss sich nicht unter demselben Abonnement befinden, das Protokolle ausgibt, sofern der Benutzer, der die Einstellung konfiguriert, den entsprechenden RBAC-Zugriff auf beide Abonnements hat.
 
 ## <a name="log-profile"></a>Protokollprofil
-Legen Sie das **Protokollprofil** für ein Abonnement fest, um das Aktivitätsprotokoll mit einer der weiter unten angegebenen Methoden zu archivieren. Das Protokollprofil definiert die Art der Ereignisse, die gespeichert oder gestreamt werden, sowie die Ausgaben (Speicherkonto und/oder Event Hub). Außerdem definiert es die Aufbewahrungsrichtlinie (Anzahl von Tagen für die Aufbewahrung) für Ereignisse, die in einem Speicherkonto gespeichert werden. Wird die Aufbewahrungsrichtlinie auf Null festgelegt, werden Ereignisse dauerhaft gespeichert. Andernfalls kann sie auf einen beliebigen Wert zwischen 1 und 2.147.483.647 festgelegt werden. Aufbewahrungsrichtlinien werden pro Tag angewendet, sodass Protokolle am Ende eines Tages (UTC) ab dem Tag, der nun außerhalb der Aufbewahrungsrichtlinie liegt, gelöscht werden. Beispiel: Wenn Sie eine Aufbewahrungsrichtlinie für einen Tag verwenden, werden heute am Anfang des Tages die Protokolle von vorgestern gelöscht. Weitere Informationen zu Protokollprofilen finden Sie [hier](monitoring-overview-activity-logs.md#export-the-activity-log-with-log-profiles). 
+Legen Sie das **Protokollprofil** für ein Abonnement fest, um das Aktivitätsprotokoll mit einer der weiter unten angegebenen Methoden zu archivieren. Das Protokollprofil definiert die Art der Ereignisse, die gespeichert oder gestreamt werden, sowie die Ausgaben (Speicherkonto und/oder Event Hub). Außerdem definiert es die Aufbewahrungsrichtlinie (Anzahl von Tagen für die Aufbewahrung) für Ereignisse, die in einem Speicherkonto gespeichert werden. Wird die Aufbewahrungsrichtlinie auf Null festgelegt, werden Ereignisse dauerhaft gespeichert. Andernfalls kann sie auf einen beliebigen Wert zwischen 1 und 2.147.483.647 festgelegt werden. Aufbewahrungsrichtlinien werden pro Tag angewendet, sodass Protokolle am Ende eines Tages (UTC) ab dem Tag, der nun außerhalb der Aufbewahrungsrichtlinie liegt, gelöscht werden. Beispiel: Wenn Sie eine Aufbewahrungsrichtlinie für einen Tag verwenden, werden heute am Anfang des Tages die Protokolle von vorgestern gelöscht. Weitere Informationen zu Protokollprofilen finden Sie [hier](monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile). 
 
 ## <a name="archive-the-activity-log-using-the-portal"></a>Archivieren des Aktivitätsprotokolls über das Portal
 1. Klicken Sie im linken Navigationsbereich des Portals auf den Link **Aktivitätsprotokoll** . Sollte kein Link für das Aktivitätsprotokoll angezeigt werden, klicken Sie zuerst auf den Link **Weitere Dienste** .

@@ -1,5 +1,4 @@
 ---
-
 title: Verwenden eines virtuellen Linux-Computers zur Problembehandlung mithilfe von Azure CLI 2.0 | Microsoft Docs
 description: "Erfahren Sie, wie Sie Probleme auf einer Linux-VM beheben, indem Sie mithilfe von Azure CLI 2.0 den Betriebssystemdatenträger mit einer Wiederherstellungs-VM verbinden."
 services: virtual-machines-linux
@@ -14,11 +13,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/16/2017
 ms.author: iainfou
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 518a21896ddfc34156615907b710b421bcea42c1
-ms.lasthandoff: 04/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
+ms.openlocfilehash: 7a28accce1bd328b2b486b588c44d91b03e42122
+ms.contentlocale: de-de
+ms.lasthandoff: 08/09/2017
 
 ---
 
@@ -169,7 +168,7 @@ Verwenden Sie zum Erstellen einer VM von Ihrer ursprünglichen virtuellen Festpl
 
 - https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vm-specialized-vhd/azuredeploy.json
 
-Mit der Vorlage wird anhand des VHD-URI aus dem Befehl weiter oben ein virtueller Computer bereitgestellt. Stellen Sie mit [az group deployment create](/cli/azure/vm/deployment#create) die Vorlage bereit. Geben Sie wie folgt den URI für Ihre ursprüngliche virtuelle Festplatte und dann den Betriebssystemtyp sowie die Größe und den Namen des virtuellen Computers an:
+Mit der Vorlage wird anhand des VHD-URI aus dem Befehl weiter oben ein virtueller Computer bereitgestellt. Stellen Sie mit [az group deployment create](/cli/azure/group/deployment#create) die Vorlage bereit. Geben Sie wie folgt den URI für Ihre ursprüngliche virtuelle Festplatte und dann den Betriebssystemtyp sowie die Größe und den Namen des virtuellen Computers an:
 
 ```azurecli
 az group deployment create --resource-group myResourceGroup --name myDeployment \

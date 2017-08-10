@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2016
 ms.author: swkrish
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 4b13c040a15bef2f04d2cd2126e2270d061898bd
-ms.openlocfilehash: f7b21cc941f17d0815316dfe7013e9f97a95c223
+ms.translationtype: HT
+ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
+ms.openlocfilehash: 356aaeff3a78fc7b682d621e8e0de9312582b2fe
 ms.contentlocale: de-de
-ms.lasthandoff: 05/05/2017
-
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="azure-active-directory-b2c-use-custom-attributes-to-collect-information-about-your-consumers"></a>Azure Active Directory B2C: Verwenden benutzerdefinierter Attribute zum Erfassen von Informationen über Ihre Kunden
@@ -31,7 +30,7 @@ Das Azure Active Directory (Azure AD) B2C-Verzeichnis bietet einen integrierten
 > 
 
 ## <a name="create-a-custom-attribute"></a>Erstellen eines benutzerdefinierten Attributs
-1. [Führen Sie diese Schritte aus, um im Azure-Portal zum Blatt „B2C-Funktionen“ zu navigieren](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade).
+1. [Führen Sie diese Schritte aus, um im Azure-Portal zum Blatt „B2C-Funktionen“ zu navigieren](active-directory-b2c-app-registration.md#navigate-to-b2c-settings).
 2. Klicken Sie auf **Benutzerattribute**.
 3. Klicken Sie oben auf dem Blatt auf **+Hinzufügen** .
 4. Geben Sie im Feld **Name** den Namen für das benutzerdefinierte Attribut (z.B. „ShoeSize“) und optional eine **Beschreibung** ein. Klicken Sie auf **Erstellen**.
@@ -44,7 +43,7 @@ Das Azure Active Directory (Azure AD) B2C-Verzeichnis bietet einen integrierten
 Das benutzerdefinierte Attribut steht jetzt in der Liste der **Benutzerattribute**zur Verfügung und kann in den Registrierungsrichtlinien verwendet werden.
 
 ## <a name="use-a-custom-attribute-in-your-sign-up-policy"></a>Verwenden eines benutzerdefinierten Attributs in der Registrierungsrichtlinie
-1. [Führen Sie diese Schritte aus, um im Azure-Portal zum Blatt „B2C-Funktionen“ zu navigieren](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade).
+1. [Führen Sie diese Schritte aus, um im Azure-Portal zum Blatt „B2C-Funktionen“ zu navigieren](active-directory-b2c-app-registration.md#navigate-to-b2c-settings).
 2. Klicken Sie auf **Registrierungsrichtlinien**.
 3. Klicken Sie auf die Registrierungsrichtlinie (z. B. „B2C_1_SiUp“), um sie zu öffnen. Klicken Sie oben auf dem Blatt auf **Bearbeiten** .
 4. Klicken Sie auf **Registrierungsattribute**, und wählen Sie das benutzerdefinierte Attribut aus (z.B. „ShoeSize“). Klicken Sie auf **OK**.

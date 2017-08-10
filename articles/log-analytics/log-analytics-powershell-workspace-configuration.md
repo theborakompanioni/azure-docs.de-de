@@ -14,10 +14,11 @@ ms.devlang: powershell
 ms.topic: article
 ms.date: 11/21/2016
 ms.author: richrund
-translationtype: Human Translation
-ms.sourcegitcommit: b39cd142925be91bd7a90183cada7ba040a344c0
-ms.openlocfilehash: b8ebf6a2b3c8d2e5b173e429f39c9836e7d214ac
-
+ms.translationtype: HT
+ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
+ms.openlocfilehash: 6d9509935ad1924845e1e8d13778f4f52335ff89
+ms.contentlocale: de-de
+ms.lasthandoff: 08/07/2017
 
 ---
 # <a name="manage-log-analytics-using-powershell"></a>Verwalten von Log Analytics mit PowerShell
@@ -212,7 +213,7 @@ Für die Überwachung von Azure-Ressourcen ohne Agents müssen die Ressourcen Az
 
 Ausführliche Informationen zu den verfügbaren Metriken finden Sie unter [Supported metrics with Azure Monitor](../monitoring-and-diagnostics/monitoring-supported-metrics.md) (Von Azure Monitor unterstützte Metriken).
 
-Ausführliche Informationen zu den verfügbaren Protokollen finden Sie unter [Supported services and schema for Diagnostic Logs](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#supported-services-and-schema-for-diagnostic-logs) (Unterstützte Dienste und Schema für Diagnoseprotokolle).
+Ausführliche Informationen zu den verfügbaren Protokollen finden Sie unter [Supported services and schema for Diagnostic Logs](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#supported-services-and-schema-for-resource-diagnostic-logs) (Unterstützte Dienste und Schema für Diagnoseprotokolle).
 
 ```
 $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
@@ -265,10 +266,5 @@ Sie können mit dem vorherigen Skript auch Protokolle aus Speicherkonten in vers
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [PowerShell-Cmdlets für Log Analytics](https://msdn.microsoft.com/library/mt188224\(v=azure.300\).aspx) .
-
-
-
-
-<!--HONumber=Nov16_HO4-->
 
 
