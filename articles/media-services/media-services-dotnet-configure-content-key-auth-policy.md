@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2017
+ms.date: 08/09/2017
 ms.author: juliako;mingfeiy
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
 ms.openlocfilehash: 3dcd45307716b7343fbac00e083e8f26c9eb967f
+ms.contentlocale: de-de
 ms.lasthandoff: 01/11/2017
-
 
 ---
 # <a name="dynamic-encryption-configure-content-key-authorization-policy"></a>Dynamische Verschlüsselung: Konfigurieren von Autorisierungsrichtlinien für Inhaltsschlüssel
@@ -102,7 +102,7 @@ In diesem Abschnitt wird beschrieben, wie eine Autorisierungsrichtlinie für Inh
 
 Zur Konfiguration der Token-Einschränkungsoption müssen die Autorisierungsanforderungen des Tokens in XML beschrieben werden. Die XML für die Konfiguration der Token-Einschränkung muss folgendem XML-Schema entsprechen.
 
-#### <a name="a-idschemaatoken-restriction-schema"></a><a id="schema"></a>Schema für die Tokeneinschränkung
+#### <a id="schema"></a>Schema für die Tokeneinschränkung
     <?xml version="1.0" encoding="utf-8"?>
     <xs:schema xmlns:tns="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/TokenRestrictionTemplate/v1" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/TokenRestrictionTemplate/v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
       <xs:complexType name="TokenClaim">
@@ -209,7 +209,7 @@ Im folgenden Beispiel wird eine Autorisierungsrichtlinie mit einer Token-Einschr
         return TokenRestrictionTemplateSerializer.Serialize(template);
     }
 
-#### <a name="a-idtestatest-token"></a><a id="test"></a>Testtoken
+#### <a id="test"></a>Testtoken
 Gehen Sie wie folgt vor, um ein Testtoken abzurufen, das auf der Token-Einschränkung basiert, die für die Schlüssel-Autorisierungsrichtlinie verwendet wurde.
 
     // Deserializes a string containing an Xml representation of a TokenRestrictionTemplate
@@ -390,8 +390,8 @@ Zur Konfiguration der Token-Einschränkungsoption müssen die Autorisierungsanfo
 
 Um ein Testtoken abzurufen, das auf der Token-Einschränkung basiert, die für die Schlüssel-Autorisierungsrichtlinie verwendet wurde, lesen Sie [diesen Abschnitt](#test) . 
 
-## <a name="a-idtypesatypes-used-when-defining-contentkeyauthorizationpolicy"></a><a id="types"></a>Beim Definieren von ContentKeyAuthorizationPolicy verwendete Typen
-### <a name="a-idcontentkeyrestrictiontypeacontentkeyrestrictiontype"></a><a id="ContentKeyRestrictionType"></a>ContentKeyRestrictionType
+## <a id="types"></a>Beim Definieren von ContentKeyAuthorizationPolicy verwendete Typen
+### <a id="ContentKeyRestrictionType"></a>ContentKeyRestrictionType
     public enum ContentKeyRestrictionType
     {
         Open = 0,
@@ -399,7 +399,7 @@ Um ein Testtoken abzurufen, das auf der Token-Einschränkung basiert, die für d
         IPRestricted = 2,
     }
 
-### <a name="a-idcontentkeydeliverytypeacontentkeydeliverytype"></a><a id="ContentKeyDeliveryType"></a>ContentKeyDeliveryType
+### <a id="ContentKeyDeliveryType"></a>ContentKeyDeliveryType
     public enum ContentKeyDeliveryType
     {
       None = 0,
@@ -408,7 +408,7 @@ Um ein Testtoken abzurufen, das auf der Token-Einschränkung basiert, die für d
       Widevine = 3
     }
 
-### <a name="a-idtokentypeatokentype"></a><a id="TokenType"></a>TokenType
+### <a id="TokenType"></a>TokenType
     public enum TokenType
     {
         Undefined = 0,

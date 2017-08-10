@@ -1,5 +1,4 @@
 ---
-
 title: Verwalten von Streamingendpunkten mithilfe des Azure-Portals | Microsoft Docs
 description: Diese Thema zeigt, wie Sie Streamingendpunkte mithilfe des Azure-Portals verwalten.
 services: media-services
@@ -14,12 +13,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2017
+ms.date: 08/09/2017
 ms.author: juliako
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 80ba024cd219b10bce8d88c9f11fd2d14d4ed34f
 ms.openlocfilehash: 223fee8930b1aebff94eddaeb82b5c0e364e067c
-
+ms.contentlocale: de-de
+ms.lasthandoff: 01/11/2017
 
 ---
 
@@ -62,7 +62,7 @@ Führen Sie folgende Schritte aus, um einen Streamingendpunkt mithilfe des Azure
     ![Streamingendpunkt](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints2.png)
 
 
-## <a name="a-idconfigurestreamingendpointsaconfiguring-the-streaming-endpoint"></a><a id="configure_streaming_endpoints"></a>Konfigurieren des Streamingendpunkts
+## <a id="configure_streaming_endpoints"></a>Konfigurieren des Streamingendpunkts
 Mit einem Streamingendpunkt können Sie die folgenden Eigenschaften konfigurieren:
 
 * Zugriffssteuerung
@@ -88,7 +88,7 @@ Eine kurze Beschreibung der Felder folgt.
 
 Weitere Informationen finden Sie in [diesem](media-services-portal-scale-streaming-endpoints.md) Thema.
 
-## <a name="a-idenablecdnaenable-azure-cdn-integration"></a><a id="enable_cdn"></a>Aktivieren der Azure CDN-Integration
+## <a id="enable_cdn"></a>Aktivieren der Azure CDN-Integration
 
 Wenn Sie ein neues Konto erstellen, ist die Streamingendpunkt-/Azure CDN-Integration standardmäßig aktiviert.
 
@@ -121,10 +121,5 @@ Sie können das CDN-Profil konfigurieren, indem Sie oben auf die Schaltfläche *
 
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

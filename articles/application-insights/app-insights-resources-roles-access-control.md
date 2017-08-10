@@ -1,6 +1,6 @@
 ---
 title: Ressourcen, Rollen und Access Control in Application Insights | Microsoft Docs
-description: "&quot;Besitzer&quot;, &quot;Mitwirkende&quot; und &quot;Leser&quot; für die gewonnenen Unternehmensinformationen."
+description: "\"Besitzer\", \"Mitwirkende\" und \"Leser\" für die gewonnenen Unternehmensinformationen."
 services: application-insights
 documentationcenter: 
 author: CFreemanwa
@@ -12,13 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 03/17/2017
-ms.author: cfreeman
+ms.author: sewhee
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
 ms.openlocfilehash: 50a3cb726646c46d1f46767b51428eb751e6d3fe
 ms.contentlocale: de-de
 ms.lasthandoff: 03/21/2017
-
 
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Ressourcen, Rollen und Zugriffssteuerung in Application Insights

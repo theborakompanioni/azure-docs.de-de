@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/27/2017
+ms.date: 08/09/2017
 ms.author: juliako;anilmur
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: ef5db062ac320995ff8bfa64f38c89d860957868
 ms.openlocfilehash: 8179e955ef0c126acb9dab31226bd1e12278f9b6
+ms.contentlocale: de-de
 ms.lasthandoff: 01/28/2017
-
 
 ---
 # <a name="media-encoder-premium-workflow-formats-and-codecs"></a>Media Encoder Premium Workflow-Formate und -Codecs
@@ -37,7 +37,7 @@ Dieses Dokument enthält eine Liste von Eingabe- und Ausgabedateiformaten sowie 
 
 **Medienencoder-Premium-Workflow** unterstützt Untertitel, wie in [diesem](#closed_captioning) Abschnitt beschrieben. 
 
-## <a name="a-idinputformatsamedia-encoder-premium-workflow-input-formats-and-codecs"></a><a id="input_formats"></a>Medienencoder-Premium-Workflow-Eingabeformate und -Codecs
+## <a id="input_formats"></a>Medienencoder-Premium-Workflow-Eingabeformate und -Codecs
 Im folgenden Abschnitt werden die Codecs und Formate aufgeführt, die dieser Medienprozessor als Eingabe unterstützt.
 
 ### <a name="input-containerfile-formats"></a>Eingabecontainer/Dateiformate
@@ -69,7 +69,7 @@ Im folgenden Abschnitt werden die Codecs und Formate aufgeführt, die dieser Med
 * Windows Media Audio
 * WAV/PCM
 
-## <a name="a-idoutputformatamedia-encoder-premium-workflow-output-formats-and-codecs"></a><a id="output_format"></a>Medienencoder-Premium-Workflow-Ausgabeformate und -Codecs
+## <a id="output_format"></a>Medienencoder-Premium-Workflow-Ausgabeformate und -Codecs
 Im folgenden Abschnitt werden die Codecs und Dateiformate aufgelistet, die als Ausgabe für diesen Medienprozessor unterstützt werden.
 
 ### <a name="output-containerfile-formats"></a>Ausgabecontainer/Dateiformate
@@ -104,7 +104,7 @@ Im folgenden Abschnitt werden die Codecs und Dateiformate aufgelistet, die als A
 >[!NOTE]
 >Wenn Sie in Dolby® Digital (AC3) codieren, kann die Ausgabe nur in eine ISO MP4-Datei geschrieben werden.
 
-## <a name="a-idclosedcaptioningasupport-for-closed-captioning"></a><a id="closed_captioning"></a>Unterstützung für Untertitel
+## <a id="closed_captioning"></a>Unterstützung für Untertitel
 Bei der Erfassung unterstützt **Medienencoder-Premium-Workflow** Folgendes:
 
 1. SCC-Dateien
