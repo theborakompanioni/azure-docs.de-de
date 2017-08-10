@@ -71,6 +71,9 @@ ACU: 210 - 250
 <br>
 
 ## <a name="ds-series"></a>DS-Serie
+
+ACU: 160
+
 | Größe | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBit/s (Cachegröße in GiB) | Maximaler Datenträgerdurchsatz ohne Cache: IOPS / MB/s | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (Mbps) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_DS1 |1 |3,5 |7 |2 |4.000/32 (43) |3.200/32 |2/500 |
@@ -79,6 +82,7 @@ ACU: 210 - 250
 | Standard_DS4 |8 |28 |56 |16 |32.000/256 (344) |25.600/256 |8/4000 |
 
 <br>
+
 ## <a name="d-series"></a>D-Serie 
 
 ACU: 160
