@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 2/06/2017
 ms.author: parakhj
-translationtype: Human Translation
-ms.sourcegitcommit: cedc7d3c16dd8acac2700f461305d28a8ba6c802
-ms.openlocfilehash: 5ab121e536479ef5584b222456e127d5bb12e24d
-
+ms.translationtype: HT
+ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
+ms.openlocfilehash: d8e44a8aade60d21734477d60bccc2bd5194436e
+ms.contentlocale: de-de
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="azure-active-directory-b2c-disable-email-verification-during-consumer-sign-up"></a>Azure Active Directory B2C: Deaktivieren der E-Mail-Überprüfung während der Registrierung von Endbenutzern
@@ -27,7 +28,7 @@ Einige Anwendungsentwickler bevorzugen, die E-Mail-Überprüfung während des Re
 
 Standardmäßig ist die E-Mail-Überprüfung in Registrierungsrichtlinien aktiviert. Führen Sie zum Aktivieren der Funktion folgende Schritte aus:
 
-1. [Führen Sie diese Schritte aus, um im Azure-Portal zum Blatt „B2C-Funktionen“ zu navigieren](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade).
+1. [Führen Sie diese Schritte aus, um im Azure-Portal zum Blatt „B2C-Funktionen“ zu navigieren](active-directory-b2c-app-registration.md#navigate-to-b2c-settings).
 2. Klicken Sie auf **Registrierungsrichtlinien** oder auf **Registrierungs- oder Anmelderichtlinien**, je nachdem, welche Art Richtlinien Sie für die Registrierung konfiguriert haben.
 3. Klicken Sie auf Ihre Richtlinie (z.B. „B2C_1_SiUp“), um sie zu öffnen. Klicken Sie oben auf dem Blatt auf **Bearbeiten**.
 4. Klicken Sie auf **Seite für die Benutzeroberflächenanpassung**.
@@ -43,8 +44,3 @@ Standardmäßig ist die E-Mail-Überprüfung in Registrierungsrichtlinien aktivi
 > 
 
 Wir sind stets offen für Feedback und Vorschläge. Wenn Sie Probleme mit diesem Thema oder Vorschläge zur Verbesserung dieses Inhalts haben, würden wir uns über Ihr Feedback unten auf der Seite freuen. Anforderungen neuer Features geben Sie bitte unter [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c) ein.
-
-
-<!--HONumber=Feb17_HO2-->
-
-

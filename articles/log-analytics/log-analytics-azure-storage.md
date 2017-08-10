@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 04/12/2017
 ms.author: magoedte
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 350aa79cf1f41084c33e16b6fcf2ada971b22626
+ms.translationtype: HT
+ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
+ms.openlocfilehash: 79122493a8639dba1c1d6c92072dd682dae040a7
 ms.contentlocale: de-de
-ms.lasthandoff: 04/27/2017
-
+ms.lasthandoff: 08/07/2017
 
 ---
 # <a name="collect-azure-service-logs-and-metrics-for-use-in-log-analytics"></a>Sammeln von Azure-Dienstprotokollen und Metriken zur Verwendung in Log Analytics
@@ -72,7 +71,7 @@ Viele Azure-Ressourcen können Diagnoseprotokolle und Metriken direkt in Log Ana
 Azure-Ressourcen, die [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md) unterstützen, können ihre Protokolle und Metriken direkt an Log Analytics senden.
 
 * Ausführliche Informationen zu den verfügbaren Metriken finden Sie unter [Supported metrics with Azure Monitor](../monitoring-and-diagnostics/monitoring-supported-metrics.md) (Von Azure Monitor unterstützte Metriken).
-* Ausführliche Informationen zu den verfügbaren Protokollen finden Sie unter [Supported services and schema for Diagnostic Logs](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#supported-services-and-schema-for-diagnostic-logs) (Unterstützte Dienste und Schema für Diagnoseprotokolle).
+* Ausführliche Informationen zu den verfügbaren Protokollen finden Sie unter [Supported services and schema for Diagnostic Logs](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#supported-services-and-schema-for-resource-diagnostic-logs) (Unterstützte Dienste und Schema für Diagnoseprotokolle).
 
 ### <a name="enable-diagnostics-with-powershell"></a>Aktivieren der Diagnose mit PowerShell
 Sie benötigen die [Azure PowerShell](/powershell/azure/overview)-Version von November 2016 (v2.3.0) oder höher.

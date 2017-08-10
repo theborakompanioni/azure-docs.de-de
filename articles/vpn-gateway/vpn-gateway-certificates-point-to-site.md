@@ -13,14 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/23/2017
+ms.date: 08/09/2017
 ms.author: cherylmc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
-ms.openlocfilehash: a7594c37a5d8b92144a1984d58ededd04927d189
+ms.translationtype: HT
+ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
+ms.openlocfilehash: f96b9b212b9322d0677e49ff95184d0feccca2df
 ms.contentlocale: de-de
-ms.lasthandoff: 05/25/2017
-
+ms.lasthandoff: 08/10/2017
 
 ---
 # <a name="generate-and-export-certificates-for-point-to-site-connections-using-powershell-on-windows-10"></a>Generieren und Exportieren von Zertifikaten für Punkt-zu-Site-Verbindungen mithilfe von PowerShell unter Windows 10
@@ -39,7 +38,7 @@ Punkt-zu-Standort-Verbindungen verwenden Zertifikate zur Authentifizierung. In d
 
 Sie müssen die in diesem Artikel beschriebenen Schritte auf einem Computer unter Windows 10 ausführen. Die zum Generieren von Zertifikaten verwendeten PowerShell-Cmdlets sind Teil des Windows 10-Betriebssystems und können in anderen Versionen von Windows nicht ausgeführt werden. Der Windows 10-Computer wird lediglich zum Generieren der Zertifikate benötigt. Nachdem die Zertifikate generiert wurden, können sie hochgeladen oder unter jedem unterstützten Clientbetriebssystem installiert werden. 
 
-Wenn Sie keinen Zugriff auf einen Windows 10-Computer haben, können Sie Zertifikate mit [MakeCert](vpn-gateway-certificates-point-to-site-makecert.md) generieren. Mit MakeCert können jedoch keine SHA-2-Zertifikate, sondern lediglich SHA-1-Zertifikate generiert werden. SHA-1-Zertifikate sind für Punkt-zu-Site-Verbindungen noch gültig, SHA-1 verwendet jedoch einen Verschlüsselungshash, der nicht so stark ist wie SHA-2. Aus diesem Grund empfehlen wir die Ausführung dieser PowerShell-Schritte, sofern möglich. Unabhängig davon, mit welcher Methode sie generiert wurden, können die Zertifikate unter jedem [unterstützten](vpn-gateway-howto-point-to-site-resource-manager-portal.md#faq) Clientbetriebssystem installiert werden.
+Wenn Sie keinen Zugriff auf einen Windows 10-Computer haben, können Sie Zertifikate mit [MakeCert](vpn-gateway-certificates-point-to-site-makecert.md) generieren. Unabhängig davon, mit welcher Methode sie generiert wurden, können die Zertifikate unter jedem [unterstützten](vpn-gateway-howto-point-to-site-resource-manager-portal.md#faq) Clientbetriebssystem installiert werden.
 
 ## <a name="rootcert"></a>Erstellen eines selbstsignierten Stammzertifikats
 

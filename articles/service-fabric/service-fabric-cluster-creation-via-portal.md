@@ -16,10 +16,10 @@ ms.workload: NA
 ms.date: 06/21/2017
 ms.author: chackdan
 ms.translationtype: HT
-ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
-ms.openlocfilehash: 37e8d04f1786187a947a435b3cfd299546617c8b
+ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
+ms.openlocfilehash: 7dda9520ce3d93bf0e86bd2481ad06c268d087c7
 ms.contentlocale: de-de
-ms.lasthandoff: 07/12/2017
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Erstellen eines Service Fabric-Clusters in Azure über das Azure-Portal
@@ -42,7 +42,7 @@ Diese Schrittanleitung führt Sie durch die Einrichtung eines sicheren Service F
 
 Ein sicherer Cluster ist ein Cluster, der nicht autorisierten Zugriff auf Verwaltungsvorgänge verhindert, wie z.B. das Bereitstellen, Aktualisieren und Löschen von Anwendungen, Diensten und den darin enthaltenen Daten. Ein unsicherer Cluster ist ein Cluster, mit dem jeder Benutzer jederzeit eine Verbindung herstellen kann, um Verwaltungsvorgänge auszuführen. Die Erstellung eines unsicheren Clusters ist zwar möglich, jedoch **wird dringend empfohlen, einen sicheren Cluster zu erstellen**. Ein unsicherer Cluster **kann nicht zu einem späteren Zeitpunkt gesichert werden**. Stattdessen muss ein neuer Cluster erstellt werden.
 
-Die gleichen Konzepte kommen auch beim Erstellen sicherer Linux- oder Windows-Cluster zur Anwendung. Weitere Informationen und Hilfsskripts zur Erstellung sicherer Linux-Cluster finden Sie unter [Erstellen eines Service Fabric-Clusters in Azure mithilfe von Azure Resource Manager](service-fabric-cluster-creation-via-arm.md#secure-linux-cluster). Die von dem Hilfsskript ermittelten Parameter können direkt im Portal angegeben werden, wie im Abschnitt [Erstellen eines Clusters im Azure-Portal](#create-cluster-portal)beschrieben.
+Die gleichen Konzepte kommen auch beim Erstellen sicherer Linux- oder Windows-Cluster zur Anwendung. Weitere Informationen und Hilfsskripts zur Erstellung sicherer Linux-Cluster finden Sie unter [Erstellen eines Service Fabric-Clusters in Azure mithilfe von Azure Resource Manager](service-fabric-cluster-creation-via-arm.md#secure-linux-clusters). Die von dem Hilfsskript ermittelten Parameter können direkt im Portal angegeben werden, wie im Abschnitt [Erstellen eines Clusters im Azure-Portal](#create-cluster-portal)beschrieben.
 
 ## <a name="log-in-to-azure"></a>Anmelden an Azure
 In diesem Leitfaden wird [Azure PowerShell][azure-powershell] verwendet. Wenn Sie eine neue PowerShell-Sitzung starten, melden Sie sich bei Ihrem Azure-Konto an, und wählen Sie Ihr Abonnement aus, bevor Sie Azure-Befehle ausführen.

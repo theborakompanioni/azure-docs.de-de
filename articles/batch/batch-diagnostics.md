@@ -15,12 +15,11 @@ ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6b6c548ca1001587e2b40bbe9ee2fcb298f40d72
-ms.openlocfilehash: 16a13909079306256ded06f2100815c46ff562a3
+ms.translationtype: HT
+ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
+ms.openlocfilehash: 8221f34641f2e59bbcaf05c3a17f23411df6b634
 ms.contentlocale: de-de
-ms.lasthandoff: 02/28/2017
-
+ms.lasthandoff: 08/07/2017
 
 ---
 # <a name="log-events-for-diagnostic-evaluation-and-monitoring-of-batch-solutions"></a>Protokollereignisse für die Diagnoseauswertung und -überwachung von Batch-Lösungen
@@ -46,7 +45,7 @@ Wie bei vielen Azure-Diensten werden vom Batch-Dienst Protokollereignisse für b
 ## <a name="enable-diagnostic-logging"></a>Aktivieren der Diagnoseprotokollierung
 Die Diagnoseprotokollierung ist für das Batch-Konto nicht standardmäßig aktiviert. Sie müssen die Diagnoseprotokollierung für jedes Batch-Konto, das Sie überwachen möchten, explizit aktivieren:
 
-[Gewusst wie: Aktivieren der Erfassung von Diagnoseprotokollen](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#how-to-enable-collection-of-diagnostic-logs)
+[Gewusst wie: Aktivieren der Erfassung von Diagnoseprotokollen](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#how-to-enable-collection-of-resource-diagnostic-logs)
 
 Es wird empfohlen, den Artikel [Übersicht über Azure-Diagnoseprotokolle](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) ganz zu lesen. In diesem Artikel erfahren Sie nicht nur, wie die Protokollierung aktiviert wird, sondern auch, welche Protokollkategorien von den verschiedenen Azure-Diensten unterstützt werden. So unterstützt Azure Batch beispielsweise derzeit eine Protokollkategorie: **Dienstprotokolle**.
 

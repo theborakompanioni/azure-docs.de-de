@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2016
 ms.author: swkrish
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e37c48d6c92a8a2cd480458abdff0a3a1ca9338f
-ms.openlocfilehash: 866d2b54b0b517cb9984fd5e98840fe3a6c69965
+ms.translationtype: HT
+ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
+ms.openlocfilehash: 59879dc0b3fc1d7af3e2a1f67f1701f451de9126
 ms.contentlocale: de-de
-ms.lasthandoff: 05/05/2017
-
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-microsoft-accounts"></a>Azure Active Directory B2C: Bereitstellen von Registrierung und Anmeldung für Kunden mit Microsoft-Konten
@@ -41,7 +40,7 @@ Um den Dienst „Microsoft-Konto“ als Identitätsanbieter in Azure Active Dire
     ![Microsoft-Konto – Plattform hinzufügen](./media/active-directory-b2c-setup-msa-app/msa-add-platform.png)
    
     ![Microsoft-Konto – Web](./media/active-directory-b2c-setup-msa-app/msa-web.png)
-6. Geben Sie im Feld `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp`Umleitungs-URIs **den Wert**  ein. Ersetzen Sie **{tenant}** durch den Namen Ihres Mandanten (z.B. „contosob2c.onmicrosoft.com“).
+6. Geben Sie im Feld `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp`Umleitungs-URIs **den Wert** ein. Ersetzen Sie **{tenant}** durch den Namen Ihres Mandanten (z.B. „contosob2c.onmicrosoft.com“).
    
     ![Microsoft-Konto – Umleitungs-URL](./media/active-directory-b2c-setup-msa-app/msa-redirect-url.png)
 7. Klicken Sie im Abschnitt **Anwendungsgeheimnisse** auf **Neues Kennwort generieren**. Kopieren Sie das neue Kennwort, das auf dem Bildschirm angezeigt wird. Sie benötigen ihn, um Microsoft-Konto als Identitätsanbieter in Ihrem Mandanten zu konfigurieren. Dieses Kennwort ist eine wichtige Anmeldeinformation.
@@ -54,7 +53,7 @@ Um den Dienst „Microsoft-Konto“ als Identitätsanbieter in Azure Active Dire
     ![Microsoft-Konto – Live SDK-Unterstützung](./media/active-directory-b2c-setup-msa-app/msa-live-sdk-support.png)
 
 ## <a name="configure-microsoft-account-as-an-identity-provider-in-your-tenant"></a>Konfigurieren von Microsoft-Konto als Identitätsanbieter in Ihrem Mandanten
-1. Führen Sie die folgenden Schritte aus, um im Azure-Portal [zum Blatt „B2C-Funktionen“ zu navigieren](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade).
+1. Führen Sie die folgenden Schritte aus, um im Azure-Portal [zum Blatt „B2C-Funktionen“ zu navigieren](active-directory-b2c-app-registration.md#navigate-to-b2c-settings).
 2. Klicken Sie auf dem B2C-Featureblatt auf **Identitätsanbieter**.
 3. Klicken Sie oben auf dem Blatt auf **+Hinzufügen** .
 4. Geben Sie als **Name** einen aussagekräftigen Namen für die Konfiguration des Identitätsanbieters ein. Geben Sie z.B. „MSA“ ein.

@@ -15,10 +15,10 @@ ms.date: 06/15/2017
 ms.author: ahomer
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
-ms.openlocfilehash: da885141a18e9a862c6db1005805fca247b75f25
+ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
+ms.openlocfilehash: 967cd38f0961cd11871c538d753cab9951c2f1f5
 ms.contentlocale: de-de
-ms.lasthandoff: 07/24/2017
+ms.lasthandoff: 08/09/2017
 
 ---
 
@@ -194,7 +194,7 @@ Mit der Aufgabe **Bereitstellung einer Azure-Ressourcengruppe** wird die Bereits
 
 * **Erforderliche Komponenten aktivieren:** `Configure with Deployment Group agent`
 
-* **TFS/VSTS-Endpunkt:** Wählen Sie **Hinzufügen** und im Dialogfeld „Neue Team Foundation Server/Team Services-Verbindung hinzufügen“ die Option **Tokenbasierte Authentifizierung** aus. Geben Sie den Namen der Verbindung und die URL des Teamprojekts ein. Generieren Sie ein [persönliches Zugriffstoken (PAT)]( https://www.visualstudio.com/docs/setup-admin/team-services/use-personal-access-tokens-to-authenticate.md), und geben Sie es dann ein, um die Verbindung mit Ihrem Teamprojekt zu authentifizieren.
+* **TFS/VSTS-Endpunkt:** Wählen Sie **Hinzufügen** und im Dialogfeld „Neue Team Foundation Server/Team Services-Verbindung hinzufügen“ die Option **Tokenbasierte Authentifizierung** aus. Geben Sie den Namen der Verbindung und die URL des Teamprojekts ein. Generieren Sie ein [persönliches Zugriffstoken (PAT)]( https://www.visualstudio.com/docs/setup-admin/team-services/use-personal-access-tokens-to-authenticate), und geben Sie es dann ein, um die Verbindung mit Ihrem Teamprojekt zu authentifizieren.
 
   ![Erstellen eines persönlichen Zugriffstokens](media/tutorial-build-deploy-jenkins/create-a-pat.png)
 
@@ -258,4 +258,4 @@ In diesem Tutorial haben Sie die Bereitstellung einer App in Azure mithilfe eine
 Folgen Sie diesem Link, um sich vordefinierte Skriptbeispiele für virtuelle Computer anzusehen.
 
 > [!div class="nextstepaction"]
-> [Virtueller Linux-Computer – Skriptbeispiele](https://github.com/MicrosoftDocs/azure-docs-pr/pull/cli-samples.md)
+> [Virtueller Linux-Computer – Skriptbeispiele](https://github.com/Azure/azure-docs-cli-python-samples/tree/master/virtual-machine)

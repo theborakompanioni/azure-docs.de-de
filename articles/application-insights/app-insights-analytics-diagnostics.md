@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2017
 ms.author: cfreeman
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: bb836357af6d006c18db578164f02fa7bd043b45
+ms.translationtype: HT
+ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
+ms.openlocfilehash: 5e53bc714d89bf6204681349e7890e0b8fbc7046
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="diagnose-sudden-changes-in-your-app-telemetry"></a>Diagnose von plötzlichen Änderungen in der App-Telemetrie
@@ -61,7 +61,7 @@ Da Sie nun wissen, dass eine spezifische Seite Ihrer Website zu Problemen in ein
 
 ## <a name="how-it-works"></a>So funktioniert's
 
-Die intelligente Diagnose verwendet einen erweiterten, nicht überwachten Machine Learning-Algorithmus auf Basis des Vorgangs [DiffPatterns](app-insights-analytics-reference.md#evaluate-diffpatterns). Sie sucht nach möglichen Mustern, die die Datenänderung erklären könnten. Analysiert werden die Auswirkungen der einzelnen Kandidaten auf die Metrik, und das Muster, das am besten mit der Änderung korreliert, wird angezeigt.
+Die intelligente Diagnose verwendet einen erweiterten, nicht überwachten Machine Learning-Algorithmus auf Basis des Vorgangs [DiffPatterns](app-insights-analytics-reference.md). Sie sucht nach möglichen Mustern, die die Datenänderung erklären könnten. Analysiert werden die Auswirkungen der einzelnen Kandidaten auf die Metrik, und das Muster, das am besten mit der Änderung korreliert, wird angezeigt.
 
 ## <a name="no-diagnostic-points"></a>Keine Diagnosepunkte?
 

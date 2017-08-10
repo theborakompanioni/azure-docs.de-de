@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/31/2017
 ms.author: jdial
-translationtype: Human Translation
-ms.sourcegitcommit: f907f388ecb897c05e822f2abd5431b3976b7987
-ms.openlocfilehash: 10581234a4475d0d3b32c7891fcf97eed55f7a1d
-ms.lasthandoff: 03/02/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
+ms.openlocfilehash: 552f37dd704de25159bc0f0ad34fdae9ed8b73f5
+ms.contentlocale: de-de
+ms.lasthandoff: 08/07/2017
 
 ---
 # <a name="log-analytics-for-network-security-groups-nsgs"></a>Protokollanalysen für Netzwerksicherheitsgruppen (NSGs)
@@ -47,18 +47,18 @@ Diagnoseprotokollierung muss für *jede* NSG aktiviert sein, für die Sie Daten 
 
 ### <a name="azure-portal"></a>Azure-Portal
 
-Um die Protokollierung über das Portal zu aktivieren, melden Sie sich beim [Portal](https://portal.azure.com) an. Klicken Sie auf **Weitere Dienste**, und geben Sie dann *Netzwerksicherheitsgruppen* ein. Wählen Sie die NSG aus, für die Sie die Protokollierung aktivieren möchten. Befolgen Sie die Anweisungen für Nicht-Computeressourcen im Artikel [Enable Diagnostic Logs in the portal](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#enable-diagnostic-logs-in-the-portal) (Aktivieren von Diagnoseprotokollen im Portal). Wählen Sie **NetworkSecurityGroupEvent**, **NetworkSecurityGroupRuleCounter** oder beide Kategorien von Protokollen.
+Um die Protokollierung über das Portal zu aktivieren, melden Sie sich beim [Portal](https://portal.azure.com) an. Klicken Sie auf **Weitere Dienste**, und geben Sie dann *Netzwerksicherheitsgruppen* ein. Wählen Sie die NSG aus, für die Sie die Protokollierung aktivieren möchten. Befolgen Sie die Anweisungen für Nicht-Computeressourcen im Artikel [Enable Diagnostic Logs in the portal](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#how-to-enable-collection-of-resource-diagnostic-logs) (Aktivieren von Diagnoseprotokollen im Portal). Wählen Sie **NetworkSecurityGroupEvent**, **NetworkSecurityGroupRuleCounter** oder beide Kategorien von Protokollen.
 
 ### <a name="powershell"></a>PowerShell
 
-Zur Aktivierung der Protokollierung mit PowerShell führen Sie die Anweisungen im Artikel [Enable diagnostic logs via PowerShell](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#enable-diagnostic-logs-via-powershell) (Aktivieren von Diagnoseprotokollen mit PowerShell) aus. Werten Sie die folgenden Informationen aus, bevor Sie einen Befehl aus dem Artikel eingeben:
+Zur Aktivierung der Protokollierung mit PowerShell führen Sie die Anweisungen im Artikel [Enable diagnostic logs via PowerShell](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#how-to-enable-collection-of-resource-diagnostic-logs) (Aktivieren von Diagnoseprotokollen mit PowerShell) aus. Werten Sie die folgenden Informationen aus, bevor Sie einen Befehl aus dem Artikel eingeben:
 
 - Sie können den für den `-ResourceId`-Parameter zu verwendenden Wert bestimmen, indem Sie den folgenden [Text] nach Bedarf ersetzen und dann den Befehl `Get-AzureRmNetworkSecurityGroup -Name [nsg-name] -ResourceGroupName [resource-group-name]` eingeben. Die ID-Ausgabe des Befehls sieht etwa wie folgt aus: */subscriptions/[Abonnement-ID]/resourceGroups/[Ressourcengruppe]/providers/Microsoft.Network/networkSecurityGroups/[NSG-Name]*.
 - Wenn Sie nur Daten aus der Protokollkategorie erfassen möchten, fügen Sie `-Categories [category]` am Ende des Befehls im Artikel hinzu, wobei die Kategorie entweder *NetworkSecurityGroupEvent* oder *NetworkSecurityGroupRuleCounter* ist. Wenn Sie den `-Categories`-Parameter nicht verwenden, wird die Datensammlung für beide Protokollkategorien aktiviert.
 
 ### <a name="azure-command-line-interface-cli"></a>Azure-Befehlszeilenschnittstelle (CLI)
 
-Zur Aktivierung der Protokollierung mit CLI führen Sie die Anweisungen im Artikel [Enable diagnostic logs via CLI](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#enable-diagnostic-logs-via-cli) (Aktivieren von Diagnoseprotokollen mit CLI) aus. Werten Sie die folgenden Informationen aus, bevor Sie einen Befehl aus dem Artikel eingeben:
+Zur Aktivierung der Protokollierung mit CLI führen Sie die Anweisungen im Artikel [Enable diagnostic logs via CLI](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#how-to-enable-collection-of-resource-diagnostic-logs) (Aktivieren von Diagnoseprotokollen mit CLI) aus. Werten Sie die folgenden Informationen aus, bevor Sie einen Befehl aus dem Artikel eingeben:
 
 - Sie können den für den `-ResourceId`-Parameter zu verwendenden Wert bestimmen, indem Sie den folgenden [Text] nach Bedarf ersetzen und dann den Befehl `azure network nsg show [resource-group-name] [nsg-name]` eingeben. Die ID-Ausgabe des Befehls sieht etwa wie folgt aus: */subscriptions/[Abonnement-ID]/resourceGroups/[Ressourcengruppe]/providers/Microsoft.Network/networkSecurityGroups/[NSG-Name]*.
 - Wenn Sie nur Daten aus der Protokollkategorie erfassen möchten, fügen Sie `-Categories [category]` am Ende des Befehls im Artikel hinzu, wobei die Kategorie entweder *NetworkSecurityGroupEvent* oder *NetworkSecurityGroupRuleCounter* ist. Wenn Sie den `-Categories`-Parameter nicht verwenden, wird die Datensammlung für beide Protokollkategorien aktiviert.

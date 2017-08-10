@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: johnkem
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 26e12a27693fe94ae88b70328ed5dd0d9d5b4c10
+ms.translationtype: HT
+ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
+ms.openlocfilehash: a28f971ae898ffdd1168550a909f2a48e1b3b652
 ms.contentlocale: de-de
-ms.lasthandoff: 11/17/2016
+ms.lasthandoff: 08/07/2017
 
 ---
 # <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Erste Schritte mit Rollen, Berechtigungen und Sicherheit in Azure Monitor
@@ -33,8 +33,8 @@ Personen, denen die Überwachungsleserrolle zugewiesen wird, können alle Überw
 * Anzeigen von Überwachungsdashboards im Portal und Erstellen ihrer eigenen privaten Überwachungsdashboards.
 * Abfragen von Metriken über die [Azure Monitor-REST-API](https://msdn.microsoft.com/library/azure/dn931930.aspx), [PowerShell-Cmdlets](insights-powershell-samples.md) oder die [plattformübergreifende Befehlszeilenschnittstelle](insights-cli-samples.md).
 * Abfragen des Aktivitätsprotokolls über das Portal, die Azure Monitor-REST-API, PowerShell-Cmdlets oder die plattformübergreifende Befehlszeilenschnittstelle.
-* Anzeigen der [Diagnoseeinstellungen](monitoring-overview-of-diagnostic-logs.md#diagnostic-settings) für eine Ressource.
-* Anzeigen des [Protokollprofils](monitoring-overview-activity-logs.md#export-the-activity-log-with-log-profiles) für ein Abonnement.
+* Anzeigen der [Diagnoseeinstellungen](monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings) für eine Ressource.
+* Anzeigen des [Protokollprofils](monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile) für ein Abonnement.
 * Anzeigen von Einstellungen für die automatische Skalierung.
 * Anzeigen von Warnaktivitäten und -einstellungen.
 * Zugreifen auf Application Insights-Daten und Anzeigen von Daten in der AI-Analyse.
@@ -54,8 +54,8 @@ Personen, denen die Überwachungsleserrolle zugewiesen wird, können alle Überw
 Personen, denen die Rolle für Überwachungsmitwirkende zugewiesen wird, können alle Überwachungsdaten in einem Abonnement anzeigen sowie Überwachungseinstellungen erstellen und ändern, aber keine weiteren Ressourcen ändern. Diese Rolle ist eine Obermenge der Überwachungsleserrolle und eignet sich für Mitglieder des Überwachungsteams einer Organisation oder für Anbieter verwalteter Dienste, die neben den oben genannten Berechtigungen auch folgende Aufgaben ausführen müssen:
 
 * Veröffentlichen von Überwachungsdashboards als freigegebenes Dashboard.
-* Festlegen von [Diagnoseeinstellungen](monitoring-overview-of-diagnostic-logs.md#diagnostic-settings) für eine Ressource.*
-* Festlegen des [Protokollprofils](monitoring-overview-activity-logs.md#export-the-activity-log-with-log-profiles) für ein Abonnement.*
+* Festlegen von [Diagnoseeinstellungen](monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings) für eine Ressource.*
+* Festlegen des [Protokollprofils](monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile) für ein Abonnement.*
 * Festlegen von Warnaktivitäten und -einstellungen.
 * Erstellen von Application Insights-Webtests und -Komponenten.
 * Auflisten vorinstallierter Arbeitsbereichsschlüssel aus Log Analytics (OMS).
