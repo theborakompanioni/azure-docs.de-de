@@ -16,10 +16,10 @@ ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.translationtype: HT
-ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
-ms.openlocfilehash: 62221d7d174de128bf0089fb79a143d73fbe550a
+ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
+ms.openlocfilehash: 11244e0044eef8441e3a37ab8aeff0da30dacdb8
 ms.contentlocale: de-de
-ms.lasthandoff: 08/01/2017
+ms.lasthandoff: 08/05/2017
 
 ---
 
@@ -130,7 +130,7 @@ Dies ist ein einfaches Muster. Sie optimieren Hop 3, indem Sie den Connector in 
 
 **Szenario:** Die App befindet sich in den USA im Netzwerk einer Organisation, und die Benutzer sind weltweit verteilt. Zwischen dem Azure-Datencenter und dem Unternehmensnetzwerk besteht keine ExpressRoute- oder VPN-Verbindung.
 
-**Empfehlung:** Verwenden Sie Muster 2, das im vorherigen Abschnitt beschrieben wird. 
+**Empfehlung:** Verwenden Sie Muster 1, das im vorherigen Abschnitt beschrieben wird. 
 
 Das am häufigsten verwendete Muster ist wieder die Optimierung von Hop 3, bei dem Sie den Connector in der Nähe der App anordnen. Hop 3 ist normalerweise nicht mit hohen Kosten verbunden, wenn sich alles in derselben Region abspielt. Die Kosten für Hop 1 können je nach Standort eines Benutzers dagegen höher sein, da Benutzer aus der ganzen Welt auf die Anwendungsproxyinstanz in den USA zugreifen. Hinweis: Alle Proxylösungen verfügen über ähnliche Merkmale, was die weltweite Verteilung von Benutzern betrifft.
 
