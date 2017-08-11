@@ -14,11 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 04/29/2017
 ms.author: joroja
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
-ms.openlocfilehash: c2bbb8058ce335c7568d5260ddd0274ca36c9c52
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: fb4302f028ecacf095adbe1b52e31e0432102776
 ms.contentlocale: de-de
-ms.lasthandoff: 06/01/2017
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="azure-active-directory-b2c-creating-and-using-custom-attributes-in-a-custom-profile-edit-policy"></a>Azure Active Directory B2C: Erstellen und Verwenden von benutzerdefinierten Attributen in einer benutzerdefinierten Richtlinie für die Profilbearbeitung
@@ -50,7 +50,7 @@ Wenn die Anwendung gelöscht wird, werden auch diese Erweiterungseigenschaften z
 >Erweiterungseigenschaften sind nur im Kontext einer registrierten Anwendung im Mandanten vorhanden. Die Objekt-ID dieser Anwendung muss in das jeweils verwendete TechnicalProfile eingefügt werden.
 
 >[!NOTE]
->Normalerweise enthält das Azure AD B2C-Verzeichnis eine Web-API-App mit dem Namen `b2c-extensions-app`.  Diese Anwendung wird hauptsächlich von den integrierten B2C-Richtlinien für die benutzerdefinierten Ansprüche verwendet, die mit dem Azure-Portal erstellt werden.  Die Nutzung dieser Anwendung zum Registrieren von Erweiterungen für benutzerdefinierte B2C-Richtlinien wird nur für fortgeschrittene Benutzer empfohlen.
+>Normalerweise enthält das Azure AD B2C-Verzeichnis eine Web-App mit dem Namen `b2c-extensions-app`.  Diese Anwendung wird hauptsächlich von den integrierten B2C-Richtlinien für die benutzerdefinierten Ansprüche verwendet, die mit dem Azure-Portal erstellt werden.  Die Nutzung dieser Anwendung zum Registrieren von Erweiterungen für benutzerdefinierte B2C-Richtlinien wird nur für fortgeschrittene Benutzer empfohlen.  Eine Anleitung hierzu finden Sie in diesem Artikel im Abschnitt `NEXT STEPS`.
 
 
 ## <a name="creating-a-new-application-to-store-the-extension-properties"></a>Erstellen einer neuen Anwendung zum Speichern der Erweiterungseigenschaften
@@ -71,6 +71,8 @@ Wenn die Anwendung gelöscht wird, werden auch diese Erweiterungseigenschaften z
 1. Kopieren Sie die Daten in die Zwischenablage, und speichern Sie die folgenden Bezeichner aus „WebApp-GraphAPI-DirectoryExtensions“ > „Einstellungen“ > „Eigenschaften“ >
 *  **Anwendungs-ID** Beispiel: `103ee0e6-f92d-4183-b576-8c3739027780`
 * **Objekt-ID** Beispiel: `80d8296a-da0a-49ee-b6ab-fd232aa45201`
+
+
 
 ## <a name="modifying-your-custom-policy-to-add-the-applicationobjectid"></a>Ändern der benutzerdefinierten Richtlinie zum Hinzufügen von `ApplicationObjectId`
 
@@ -270,11 +272,38 @@ Das id-Token, das an Ihre Anwendung zurückgesendet wird, enthält die neue Erwe
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Fügen Sie den neuen Anspruch dem Ablauf für die Anmeldung an Social Media-Konten hinzu, indem Sie die unten aufgeführten TechnicalProfiles ändern. Diese beiden TechnicalProfiles werden von Anmeldungen für Social Media-/Verbundkonten genutzt, um die Benutzerdaten zu schreiben und zu lesen, indem alternativeSecurityId als Locator des Benutzerobjekts verwendet wird.
+### <a name="add-the-new-claim-to-the-flows-for-social-account-logins-by-changing-the-technicalprofiles-listed-below-these-two-technicalprofiles-are-used-by-socialfederated-account-logins-to-write-and-read-the-user-data-using-the-alternativesecurityid-as-the-locator-of-the-user-object"></a>Fügen Sie den neuen Anspruch dem Ablauf für die Anmeldung an Social Media-Konten hinzu, indem Sie die unten aufgeführten TechnicalProfiles ändern. Diese beiden TechnicalProfiles werden von Anmeldungen für Social Media-/Verbundkonten genutzt, um die Benutzerdaten zu schreiben und zu lesen, indem alternativeSecurityId als Locator des Benutzerobjekts verwendet wird.
 ```
   <TechnicalProfile Id="AAD-UserWriteUsingAlternativeSecurityId">
 
   <TechnicalProfile Id="AAD-UserReadUsingAlternativeSecurityId">
+```
+### <a name="using-the-same-extension-attributes-between-built-in-and-custom-policies"></a>Verwenden derselben Erweiterungsattribute zwischen integrierten und benutzerdefinierten Richtlinien
+Beim Hinzufügen von Erweiterungsattributen (benutzerdefinierten Attributen) über die Portaloberfläche werden diese Attribute per **b2c-extensions-app** registriert, die unter jedem B2C-Mandanten vorhanden ist.  Gehen Sie wie folgt vor, um diese Erweiterungsattribute in Ihrer benutzerdefinierten Richtlinie zu verwenden:
+1. Navigieren Sie in Ihrem B2C-Mandanten in „portal.azure.com“ zu **Azure Active Directory**, und wählen Sie die Option **App-Registrierungen**.
+2. Suchen Sie nach **b2c-extensions-app**, und wählen Sie sie aus.
+3. Notieren Sie sich unter „Essentials“ die **Anwendungs-ID** und die **Objekt-ID**.
+4. Fügen Sie diese IDs wie folgt in die Metadaten Ihres technischen AAD-Common-Profils ein:
+
+```xml
+    <ClaimsProviders>
+        <ClaimsProvider>
+              <DisplayName>Azure Active Directory</DisplayName>
+            <TechnicalProfile Id="AAD-Common">
+              <DisplayName>Azure Active Directory</DisplayName>
+              <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.AzureActiveDirectoryProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+              <!-- Provide objectId and appId before using extension properties. -->
+              <Metadata>
+                <Item Key="ApplicationObjectId">insert objectId here</Item> <!-- This is the "Object ID" from the "b2c-extensions-app"-->
+                <Item Key="ClientId">insert appId here</Item> <!--This is the "Application ID" from the "b2c-extensions-app"-->
+              </Metadata>
+```
+
+5. Erstellen Sie diese Attribute mithilfe der Portalbenutzeroberfläche, *bevor* Sie sie in Ihren benutzerdefinierten Richtlinien verwenden, um die Einheitlichkeit mit der Portalumgebung zu wahren.  Wenn Sie im Portal das Attribut „ActivationStatus“ erstellen, müssen Sie wie folgt darauf verweisen:
+
+```
+extension_ActivationStatus in the custom policy
+extension_<app-guid>_ActivationStatus via the Graph API.
 ```
 
 

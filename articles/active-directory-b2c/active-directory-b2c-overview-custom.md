@@ -14,11 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 04/04/2017
 ms.author: parakhj
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
-ms.openlocfilehash: 0a0d91d622ed72ed22cfaaa0350b31ca653de483
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: 33f62a33ea7a3fadb6e7b045de10df25f5edbe83
 ms.contentlocale: de-de
-ms.lasthandoff: 06/01/2017
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="azure-active-directory-b2c-custom-policies"></a>Azure Active Directory B2C: Benutzerdefinierte Richtlinien
@@ -41,7 +41,7 @@ Benutzerdefinierte Richtlinien sind Konfigurationsdateien, die das Verhalten Ihr
 | Anpassung von Attributen | Standard- und benutzerdefinierte Attribute | identisch |
 |Token- und Sitzungsverwaltung | Benutzerdefinierte Token und mehrere Sitzungsoptionen | identisch |
 |Identitätsanbieter| **Heute**: vordefinierter lokaler, Social Media-Anbieter<br><br>**Zukünftig**: standardbasierte OIDC-, SAML-, OAuth-Protokolle | **Heute**: standardbasierte OIDC-, OAUTH-, SAML-Protokolle<br><br>**Zukunft**: WsFed |
-|Identitätsaufgaben (Beispiele) | Registrierung oder Anmeldung mit lokalen und viele Social Media-Konten<br><br>Kennwortzurücksetzung<br><br>Profilbearbeitung<br><br>Multi-Factor Authentication-Szenarien<br><br>Anpassung von Tokens und Sitzungen<br><br>Zugriffstoken-Flows | Führen Sie dieselben Aufgaben wie bei integrierten Richtlinien mit benutzerdefinierten Identitätsanbietern durch, oder verwenden Sie benutzerdefinierte Bereiche.<br><br>Stellen Sie Benutzer bei der Registrierung in einem anderen System bereit.<br><br>Senden Sie mit Ihrem eigenen E-Mail-Dienstanbieter eine Willkommens-E-Mail.<br><br>Verwenden Sie einen Benutzerspeicher außerhalb von B2C.<br><br>Überprüfen Sie die von Benutzern bereitgestellten Informationen mit einem vertrauenswürdigen System über eine API. |
+|Identitätsaufgaben (Beispiele) | Registrierung oder Anmeldung mit lokalen und viele Social Media-Konten<br><br>Self-Service-Kennwortzurücksetzung<br><br>Profilbearbeitung<br><br>Multi-Factor Authentication-Szenarien<br><br>Anpassung von Tokens und Sitzungen<br><br>Zugriffstoken-Flows | Führen Sie dieselben Aufgaben wie bei integrierten Richtlinien mit benutzerdefinierten Identitätsanbietern durch, oder verwenden Sie benutzerdefinierte Bereiche.<br><br>Stellen Sie Benutzer bei der Registrierung in einem anderen System bereit.<br><br>Senden Sie mit Ihrem eigenen E-Mail-Dienstanbieter eine Willkommens-E-Mail.<br><br>Verwenden Sie einen Benutzerspeicher außerhalb von B2C.<br><br>Überprüfen Sie die von Benutzern bereitgestellten Informationen mit einem vertrauenswürdigen System über eine API. |
 
 ## <a name="policy-files"></a>Richtliniendateien
 
@@ -97,7 +97,7 @@ Eine benutzerdefinierte Richtlinie wird als eine oder mehrere XML-formatierte Da
 |---------------------|--------------------|-----------------|---------------|
 | BASIS |TrustFrameworkBase.xml<br><br>Mytenant.onmicrosoft.com-B2C-1A_BASE1.xml | Enthält das Hauptanspruchsschema, Anspruchstransformationen, Anspruchsanbieter und von Microsoft konfigurierte User Journeys<br><br>Ermöglicht minimale Änderungen an dieser Datei | Keine |
 | Erweiterung (EXT) | TrustFrameworkExtensions.xml<br><br>Mytenant.onmicrosoft.com-B2C-1A_EXT.xml | Konsolidiert Ihre Änderungen an der BASISDATEI hier<br><br>Geänderte Anspruchsanbieter<br><br>Geänderte User Journeys<br><br>Ihre eigenen benutzerdefinierten Schemadefinitionen | BASISDATEI |
-| Vertrauende Seite | | | Erweiterungsdatei |
+| Vertrauende Seite | B2C_1A_sign_up_sign_in.xml| Tokenform und Sitzungseinstellungen hier ändern| Erweiterungsdatei (EXT) |
 
 ### <a name="inheritance-model"></a>Vererbungsmodell
 

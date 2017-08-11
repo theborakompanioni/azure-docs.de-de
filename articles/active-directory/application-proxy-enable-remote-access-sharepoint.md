@@ -11,13 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/22/2017
+ms.date: 07/21/2017
 ms.author: kgremban
-translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: 93b36891c960582563a4ff9c622cd5ac3198dfeb
-ms.lasthandoff: 04/17/2017
-
+ms.reviewer: harshja
+ms.custom: it-pro
+ms.translationtype: HT
+ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
+ms.openlocfilehash: 97eeec3b3936bcbef6ac3966b890332901bcb153
+ms.contentlocale: de-de
+ms.lasthandoff: 07/24/2017
 
 ---
 
@@ -29,11 +31,9 @@ Führen Sie die Abschnitte in diesem Artikel Schritt für Schritt aus, um den Re
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-In diesem Artikel wird davon ausgegangen, dass Sie bereits über SharePoint 2013 oder höher verfügen und die Anwendung in Ihrer Umgebung eingerichtet wurde und ausgeführt wird. Beachten Sie auch die folgenden erforderlichen Voraussetzungen:
+In diesem Artikel wird davon ausgegangen, dass Sie in Ihrer Umgebung bereits über SharePoint 2013 oder höher verfügen. Beachten Sie auch die folgenden erforderlichen Voraussetzungen:
 
-* Das Anwendungsproxy-Feature ist nur verfügbar, wenn Sie Azure Active Directory auf die Premium oder Basic Edition upgegradet haben. Weitere Informationen finden Sie unter [Azure Active Directory-Editionen](active-directory-editions.md).
-
-* SharePoint enthält native Kerberos-Unterstützung. Aus diesem Grund können Benutzer, die über den Azure AD-Anwendungsproxy per Remoteverbindung auf interne Websites zugreifen, davon ausgehen, dass sie das nahtlose einmalige Anmelden (seamless single sign-on, SSO) nutzen können.
+* SharePoint enthält native Kerberos-Unterstützung. Aus diesem Grund können Benutzer, die über den Azure AD-Anwendungsproxy per Remoteverbindung auf interne Websites zugreifen, davon ausgehen, dass sie das einmalige Anmelden (Single Sign-On, SSO) nutzen können.
 
 * Sie müssen an Ihrer SharePoint Server-Instanz einige Konfigurationsänderungen vornehmen. Wir empfehlen Ihnen die Verwendung einer Stagingumgebung. Auf diese Weise können Sie zuerst Updates an Ihrem Stagingserver vornehmen und dann einen Testzyklus durchführen, bevor die Produktionsphase beginnt.
 
@@ -45,13 +45,13 @@ Unsere Kunden wünschen sich für ihre Back-End-Anwendungen (hier: SharePoint-Se
 
 Für lokale Anwendungen, für die die Windows-Authentifizierung erforderlich ist oder verwendet wird, können Sie SSO über das Kerberos-Authentifizierungsprotokoll und die Funktion „Eingeschränkte Kerberos-Delegierung“ (Kerberos Constrained Delegation, KCD) erreichen. Bei Konfiguration von KCD kann mit dem Anwendungsproxyconnector ein Windows-Ticket/-Token für einen Benutzer abgerufen werden. Dies gilt auch, wenn sich der Benutzer nicht direkt bei Windows angemeldet hat. Weitere Informationen zu KCD finden Sie unter [Eingeschränkte Kerberos-Delegierung: Übersicht](https://technet.microsoft.com/library/jj553400.aspx).
 
-Um KCD für einen SharePoint-Server einzurichten, verwenden Sie die Verfahren in den folgenden Abschnitten.
+Um KCD für einen SharePoint-Server einzurichten, verwenden Sie die Verfahren in den folgenden Abschnitten:
 
 ### <a name="ensure-that-sharepoint-is-running-under-a-service-account"></a>Sicherstellen, dass SharePoint unter einem Dienstkonto ausgeführt wird
 
-Stellen Sie zuerst sicher, dass SharePoint unter einem definierten Dienstkonto ausgeführt wird, und nicht unter einem lokalen System, lokalen Dienst oder Netzwerkdienst. Dies ist erforderlich, damit Sie die Dienstprinzipalnamen (SPNs) einem gültigen Konto zuordnen können. Mithilfe von SPNs können vom Kerberos-Protokoll verschiedene Dienste identifiziert werden. Außerdem wird das Konto für die spätere Konfiguration von KCD benötigt.
+Stellen Sie zuerst sicher, dass SharePoint unter einem definierten Dienstkonto ausgeführt wird, und nicht unter einem lokalen System, lokalen Dienst oder Netzwerkdienst. Führen Sie dies durch, damit Sie die Dienstprinzipalnamen (SPNs) einem gültigen Konto zuordnen können. Mithilfe von SPNs können vom Kerberos-Protokoll verschiedene Dienste identifiziert werden. Außerdem wird das Konto für die spätere Konfiguration von KCD benötigt.
 
-Gehen Sie wie folgt vor, um sicherzustellen, dass Ihre Websites unter einem definierten Dienstkonto ausgeführt werden:
+Führen Sie die folgenden Schritte aus, um sicherzustellen, dass Ihre Websites unter einem definierten Dienstkonto ausgeführt werden:
 
 1. Öffnen Sie die Website **SharePoint 2013-Zentraladministration**.
 2. Navigieren Sie zu **Sicherheit**, und wählen Sie die Option **Dienstkonten konfigurieren**.
@@ -99,7 +99,7 @@ Im SPN-Format:
 
 * _service class_ ist ein eindeutiger Name für den Dienst. Für SharePoint verwenden Sie **HTTP**.
 
-* _host_ ist die vollqualifizierte Domäne oder der NetBIOS-Name des Hosts, auf dem der Dienst ausgeführt wird. Bei einer SharePoint-Website muss dies unter Umständen die URL der Website sein. Dies richtet sich nach der von Ihnen verwendeten IIS-Version.
+* _host_ ist die vollqualifizierte Domäne oder der NetBIOS-Name des Hosts, auf dem der Dienst ausgeführt wird. Für eine SharePoint-Website muss dieser Text unter Umständen die URL der Website sein. Dies richtet sich nach der von Ihnen verwendeten IIS-Version.
 
 * _port_ ist optional.
 
@@ -183,13 +183,13 @@ Zum Ausführen der folgenden Schritte müssen Sie im Azure Active Directory-Kont
 
  SharePoint verwendet den Wert _Hostheader_, um die Website zu suchen. Es generiert auch Links auf der Grundlage dieses Werts. Hiermit wird Folgendes sichergestellt: Bei allen von SharePoint generierten Links handelt es sich um eine veröffentlichte URL, für die die Verwendung der externen URL korrekt festgelegt ist. Wenn der Wert auf **JA** festgelegt wird, kann der Connector die Anforderung auch an die Back-End-Anwendung weiterleiten. Wenn der Wert jedoch auf **NEIN** festgelegt wird, bedeutet dies, dass der Connector den internen Hostnamen nicht sendet. Stattdessen sendet der Connector den Hostheader als veröffentlichte URL an die Back-End-Anwendung.
 
- Um sicherzustellen, dass diese URL von SharePoint akzeptiert wird, müssen Sie eine weitere Konfiguration für den SharePoint-Server durchführen. Dies erledigen Sie im nächsten Abschnitt.
+ Um sicherzustellen, dass diese URL von SharePoint akzeptiert wird, müssen Sie eine weitere Konfiguration für die SharePoint Server-Instanz durchführen. Dies erledigen Sie im nächsten Abschnitt.
 
 7. Ändern Sie **Interne Authentifizierungsmethode** zu **Integrierte Windows-Authentifizierung**. Wenn für Ihren Azure AD-Mandanten in der Cloud ein anderer UPN als in der lokalen Umgebung verwendet wird, sollten Sie beachten, dass auch **Delegierte Identität für Anmeldung** aktualisiert werden muss.
 8. Legen Sie **Interner Anwendungs-SPN** auf den zuvor festgelegten Wert fest. Beispiel: **http/sharepoint.demo.o365identity.us**.
 9. Weisen Sie die Anwendung Ihren Zielbenutzern zu.
 
-Ihre Anwendung sollte in etwa wie folgt aussehen:
+Ihre Anwendung sollte in etwa wie im folgenden Beispiel aussehen:
 
   ![Fertige Anwendung](./media/application-proxy-remote-sharepoint/remote-sharepoint-internal-application-spn.png)
 

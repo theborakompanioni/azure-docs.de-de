@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2017
 ms.author: cynthn
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
-ms.openlocfilehash: 22f5dda489f94ebb5a22e017b72c2524a8f22d6a
+ms.translationtype: HT
+ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
+ms.openlocfilehash: b382e545e47353a177b3b02b3931001ab22d53c8
 ms.contentlocale: de-de
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 07/26/2017
 
 ---
+
 
 # <a name="move-a-windows-vm-from-amazon-web-services-aws-to-azure-using-powershell"></a>Verschieben einer Windows-VM aus Amazon Web Services (AWS) nach Azure mit PowerShell
 
@@ -57,7 +57,7 @@ aws ec2 create-instance-export-task --instance-id <instanceID> --target-environm
   --export-to-s3-task DiskImageFormat=VHD,ContainerFormat=ova,S3Bucket=<bucket>,S3Prefix=<prefix>
 ```
 
-Befolgen Sie nach dem Exportieren der VHD die Anleitung unter [How Do I Download an Object from an S3 Bucket?](http://docs.aws.amazon.com/AmazonS3/latest/user-guide/download-objects.html) (Wie lade ich ein Objekt aus einem S3-Bucket herunter?), um die VHD-Datei aus dem S3-Bucket herunterzuladen. 
+Befolgen Sie nach dem Exportieren der VHD die Anleitung unter [How Do I Download an Object from an S3 Bucket?](http://docs.aws.amazon.com/AmazonS3/latest/user-guide/download-objects.html) (Gewusst wie: Herunterladen eines Objekts aus einem S3-Bucket), um die VHD-Datei aus dem S3-Bucket herunterzuladen. 
 
 > [!IMPORTANT]
 > Bei AWS fallen bei der Datenübertragung Gebühren für das Herunterladen der VHD an. Weitere Informationen finden Sie unter [Amazon S3 Pricing](https://aws.amazon.com/s3/pricing/) (Amazon S3 – Preise).

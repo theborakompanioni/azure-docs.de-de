@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 07/24/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: 451d4fd24dc506fb4a659edb710ab67a66cbbde7
+ms.translationtype: HT
+ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
+ms.openlocfilehash: 05fb966e3e18b8d5242a2795248b9b72352d894d
 ms.contentlocale: de-de
-ms.lasthandoff: 06/16/2017
+ms.lasthandoff: 07/25/2017
 
 ---
 
@@ -33,6 +33,7 @@ Um die nahtlose einmalige Anmeldung bereitzustellen, führen Sie die folgenden S
 2. *Aktivieren des Features:* Aktivieren Sie das nahtlose einmalige Anmelden für Ihren Mandanten mit Azure AD Connect.
 3. *Ausrollen des Features:* Verwenden Sie die Gruppenrichtlinie, um das Feature für einige oder alle Ihre Benutzer auszurollen.
 4. *Testen des Features:* Testen Sie die Benutzeranmeldung mit dem nahtlosen einmaligen Anmelden.
+5. *Durchführen des Rollovers für Schlüssel:* Führen Sie für die Kerberos-Entschlüsselungsschlüssel von Computerkonten häufig ein Rollover durch.
 
 ## <a name="step-1-check-prerequisites"></a>Schritt 1: Überprüfen der Voraussetzungen
 
@@ -104,14 +105,19 @@ Mozilla Firefox führt nicht automatisch die Kerberos-Authentifizierung aus. Jed
 4. Geben Sie „https://autologon.microsoftazuread-sso.com, https://aadg.windows.net.nsatc.net“ in das Feld ein.
 5. Klicken Sie auf „OK“, und öffnen Sie den Browser erneut.
 
->[!NOTE]
->Das nahtlose einmalige Anmelden funktioniert in Firefox nicht im privaten Modus.
+#### <a name="safari-on-mac-os"></a>Safari unter Mac OS
 
-#### <a name="google-chrome-on-mac"></a>Google Chrome unter macOS
+Stellen Sie sicher, dass der Computer mit Mac OS in AD eingebunden ist. Eine entsprechende Anleitung finden Sie [hier](http://training.apple.com/pdf/Best_Practices_for_Integrating_OS_X_with_Active_Directory.pdf).
 
-Informationen dazu, wie Sie in Google Chrome unter macOS und anderen nicht Windows-basierten Plattformen die Azure AD-URLs für die integrierte Authentifizierung auf eine Whitelist setzen, finden Sie [in diesem Artikel](https://dev.chromium.org/administrators/policy-list-3#AuthServerWhitelist).
+#### <a name="google-chrome-on-mac-os"></a>Google Chrome unter Mac OS
+
+Informationen dazu, wie Sie in Google Chrome unter Mac OS und anderen nicht Windows-basierten Plattformen die Azure AD-URLs für die integrierte Authentifizierung auf eine Whitelist setzen, finden Sie in [diesem Artikel](https://dev.chromium.org/administrators/policy-list-3#AuthServerWhitelist).
 
 Das Ausrollen der Azure AD-URLs für Firefox und Google Chrome unter macOS mithilfe von Active Directory-Gruppenrichtlinienerweiterungen von Drittanbietern kann in diesem Artikel nicht behandelt werden.
+
+#### <a name="known-limitations"></a>Bekannte Einschränkungen
+
+Das nahtlose einmalige Anmelden funktioniert in Firefox- und Edge-Browsern nicht im privaten Modus. Dies gilt auch für Internet Explorer, wenn der Browser im erweiterten Schutzmodus ausgeführt wird.
 
 ## <a name="step-4-test-the-feature"></a>Schritt 4: Testen des Features
 
@@ -127,6 +133,13 @@ So testen Sie das Szenario, wenn der Benutzer nur den Benutzernamen eingibt, jed
 So testen Sie das Szenario, wenn der Benutzer weder den Benutzernamen noch das Kennwort eingeben muss: 
 - Melden Sie sich unter *https://myapps.microsoft.com/contoso.onmicrosoft.com* in einer neuen, privaten Browsersitzung an. Ersetzen Sie „*contoso*“ durch den Namen Ihres Mandanten.
 - Melden Sie sich alternativ unter *https://myapps.microsoft.com/contoso.com* in einer neuen, privaten Browsersitzung an. Ersetzen Sie „*contoso.com*“ durch eine überprüfte Domäne (keine Verbunddomäne) in Ihrem Mandanten.
+
+## <a name="step-5-roll-over-keys"></a>Schritt 5: Durchführen des Rollovers für Schlüssel
+
+In Schritt 2 erstellt Azure AD Connect Computerkonten (die Azure AD repräsentieren) in allen AD-Gesamtstrukturen, für die Sie das nahtlose einmalige Anmelden aktiviert haben. Ausführliche Informationen hierzu finden Sie [hier](active-directory-aadconnect-sso-how-it-works.md). Zur Erhöhung der Sicherheit wird empfohlen, für die Kerberos-Entschlüsselungsschlüssel dieser Computerkonten häufig ein Rollover durchzuführen.
+
+>[!IMPORTANT]
+>Sie müssen diesen Schritt nicht _sofort_ nach der Aktivierung des Features ausführen. Führen Sie für die Kerberos-Entschlüsselungsschlüssel mindestens alle 30 Tage ein Rollover durch.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

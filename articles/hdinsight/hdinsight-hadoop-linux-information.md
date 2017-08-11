@@ -17,10 +17,10 @@ ms.workload: big-data
 ms.date: 07/12/2017
 ms.author: larryfr
 ms.translationtype: HT
-ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
-ms.openlocfilehash: 1477ed13ef0434ed86938c49e6bb815837cb40fb
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: 8c6ff4a6b8617cda9b12be060c7c7bed62cb3f44
 ms.contentlocale: de-de
-ms.lasthandoff: 07/13/2017
+ms.lasthandoff: 07/27/2017
 
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Informationen zur Verwendung von HDInsight unter Linux
@@ -127,9 +127,9 @@ Nutzen Sie bei Verwendung von __Azure Storage__ eines der folgenden URI-Schemas:
 
 * `wasb:///`: Zugriff auf Standardspeicher über unverschlüsselte Verbindungen.
 
-* `wasbs:///`: Zugriff auf Standardspeicher über verschlüsselte Verbindungen.
+* `wasbs:///`: Zugriff auf Standardspeicher über verschlüsselte Verbindungen.  Das wasbs-Schema wir nur ab HDInsight-Version 3.6 unterstützt.
 
-* `wasbs://<container-name>@<account-name>.blob.core.windows.net/`: Wird bei einer Verbindung mit einem nicht standardmäßigen Speicherkonto verwendet. Beispielsweise wenn Sie ein zusätzliches Speicherkonto haben oder auf Daten in einem öffentlich zugänglichen Speicherkonto zugreifen.
+* `wasb://<container-name>@<account-name>.blob.core.windows.net/`: Wird bei einer Verbindung mit einem nicht standardmäßigen Speicherkonto verwendet. Beispielsweise wenn Sie ein zusätzliches Speicherkonto haben oder auf Daten in einem öffentlich zugänglichen Speicherkonto zugreifen.
 
 Nutzen Sie bei Verwendung von __Data Lake Store__ eines der folgenden URI-Schemas:
 
@@ -153,7 +153,7 @@ Mithilfe von Ambari können Sie die Standardspeicherkonfiguration des Clusters a
 
 Dieser Befehl gibt einen Wert zurück, der in etwa wie die folgenden URIs aussieht:
 
-* `wasbs://<container-name>@<account-name>.blob.core.windows.net` bei Verwenden eines Azure Storage-Kontos.
+* `wasb://<container-name>@<account-name>.blob.core.windows.net` bei Verwenden eines Azure Storage-Kontos.
 
     Der Kontoname ist der Name des Azure Storage-Kontos, während der Containername zum Blobcontainer gehört, der das Stammverzeichnis des Clusterspeichers darstellt.
 
