@@ -1,6 +1,6 @@
 ---
-title: "Schützen der Workload eines VMware-Servers mit Azure Backup Server | Microsoft-Dokumentation"
-description: "Sichern Sie mit Azure Backup Server einen VMware-Server in Azure oder auf einem Datenträger. In diesem Artikel erfahren Sie, wie Sie Ihre VMware-Workload schützen."
+title: Sichern von VMware-Servern mit Azure Backup Server | Microsoft-Dokumentation
+description: "Verwenden Sie Azure Backup Server, um VMware vCenter-/ESXi-Server in Azure oder auf Datenträgern zu sichern. Dieser Artikel bietet eine Schrittanleitung zum Sichern (bzw. Schützen) Ihrer VMware-Workloads."
 services: backup
 documentationcenter: 
 author: markgalioto
@@ -11,21 +11,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 04/20/2017
+ms.date: 07/24/2017
 ms.author: markgal;
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
-ms.openlocfilehash: 47728711930703121626c3ed0b654a0f74603ca4
+ms.translationtype: HT
+ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
+ms.openlocfilehash: ad331dffb7c31d12290f4223967c568e4535fe3c
 ms.contentlocale: de-de
-ms.lasthandoff: 06/07/2017
-
+ms.lasthandoff: 07/25/2017
 
 ---
 # <a name="back-up-a-vmware-server-to-azure"></a>Sichern eines VMware-Servers in Azure
 
 Dieser Artikel erläutert, wie Sie Azure Backup Server zum Schutz von VMware-Server-Workloads konfigurieren. In diesem Artikel wird davon ausgegangen, dass Sie Azure Backup Server bereits installiert haben. Falls Sie Azure Backup Server nicht installiert haben, lesen Sie [Vorbereiten der Sicherung von Workloads per Azure Backup Server](backup-azure-microsoft-azure-backup.md).
 
-Azure Backup Server kann die VMware vCenter Server-Versionen 6.0 und 5.5 sichern bzw. schützen.
+Azure Backup Server kann die VMware vCenter Server-Versionen 6.5, 6.0 und 5.5 sichern bzw. schützen.
 
 
 ## <a name="create-a-secure-connection-to-the-vcenter-server"></a>Erstellen einer sichere Verbindung mit dem vCenter-Server
@@ -98,7 +97,7 @@ Um dieses Problem zu beheben und eine sichere Verbindung zu erstellen, laden Sie
 
     ![Speicherordner von Zertifikaten](./media/backup-azure-backup-server-vmware/certificate-import-wizard2.png)
 
-10. Vergewissern Sie sich auf der Seite **Fertigstellen des Assistenten**, das sich das Zertifikat im gewünschten Ordner befindet, und klicken Sie auf **Fertig stellen**, um den Assistenten abzuschließen.
+10. Über Sie auf der Seite **Fertigstellen des Assistenten**, ob sich das Zertifikat im gewünschten Ordner befindet, und klicken Sie auf **Fertig stellen**.
 
     ![Prüfen, ob sich das Zertifikat im richtigen Ordner befindet](./media/backup-azure-backup-server-vmware/cert-wizard-final-screen.png)
 
@@ -250,11 +249,12 @@ Installieren Sie [Update 1 für Azure Backup Server](https://support.microsoft.c
 
 3. Klicken Sie im Dialogfeld **Anmeldeinformationen verwalten** auf **Hinzufügen**, um das Dialogfeld **Anmeldeinformationen hinzufügen** zu öffnen.
 
-4. Geben Sie im Dialogfeld **Anmeldeinformationen hinzufügen** einen Namen und eine Beschreibung der neuen Anmeldeinformationen ein. Geben Sie dann den Benutzernamen und das Kennwort an. Der Anmeldename *Contoso vCenter-Anmeldeinformationen* wird verwendet, um die Anmeldeinformationen im nächsten Schritt zu bestimmen. Verwenden Sie den Benutzernamen samt Kennwort, den Sie auch für den vCenter-Server verwenden. Falls sich der vCenter-Server und Azure Backup Server nicht in der gleichen Domäne befinden, geben Sie in **Benutzername** die Domäne an.
+4. Geben Sie im Dialogfeld **Anmeldeinformationen hinzufügen** einen Namen und eine Beschreibung der neuen Anmeldeinformationen ein. Geben Sie dann den Benutzernamen und das Kennwort an. Der Name *Contoso vCenter-Anmeldeinformationen* wird verwendet, um die Anmeldeinformationen im nächsten Schritt zu identifizieren. Verwenden Sie den Benutzernamen samt Kennwort, den Sie auch für den vCenter-Server verwenden. Falls sich der vCenter-Server und Azure Backup Server nicht in der gleichen Domäne befinden, geben Sie in **Benutzername** die Domäne an.
 
     ![Azure Backup Server-Dialogfeld „Anmeldeinformationen hinzufügen“](./media/backup-azure-backup-server-vmware/mabs-add-credential-dialog2.png)
 
     Klicken Sie auf **Hinzufügen**, um die neuen Anmeldeinformationen zu Azure Backup Server hinzuzufügen. Die neuen Anmeldeinformationen werden in der Liste des Dialogfelds **Anmeldeinformationen verwalten** angezeigt.
+    
     ![Azure Backup Server-Dialogfeld „Anmeldeinformationen verwalten“](./media/backup-azure-backup-server-vmware/new-list-of-mabs-creds.png)
 
 5. Klicken Sie rechts oben auf **X**, um das Dialogfeld **Anmeldeinformationen verwalten** zu schließen.

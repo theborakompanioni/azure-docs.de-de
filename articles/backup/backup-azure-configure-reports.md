@@ -12,15 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 06/30/2017
+ms.date: 07/24/2017
 ms.author: pajosh
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
-ms.openlocfilehash: ea438530808b418e1a3b4673a72de5df0738e797
+ms.translationtype: HT
+ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
+ms.openlocfilehash: 649823705c9680677b84e77676bf7a004e4ed779
 ms.contentlocale: de-de
-ms.lasthandoff: 06/30/2017
-
+ms.lasthandoff: 07/25/2017
 
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurieren von Azure Backup-Berichten
@@ -65,6 +64,11 @@ Mit den folgenden Schritten konfigurieren Sie das Speicherkonto für Recovery Se
 
       ![Schritt 6: Auswählen des Speicherkontos](./media/backup-azure-configure-reports/save-configuration.png)
 7. Überprüfen Sie alle Änderungen, und klicken Sie oben auf die Schaltfläche **Speichern**, wie in der obigen Abbildung gezeigt. Dadurch wird sichergestellt, dass alle Änderungen gespeichert werden und das Speicherkonto nun für das Speichern von Berichtsdaten konfiguriert ist.
+
+> [!NOTE]
+> Nachdem Sie die Speicherung der Berichte im Konto konfiguriert haben **warten Sie 24 Stunden**, bis die erste Pushübertragung von Daten abgeschlossen ist. Importieren Sie das Azure Backup-Inhaltspaket erst nach diesem Zeitraum in Power BI. Weitere Informationen finden Sie im [Abschnitt mit häufig gestellten Fragen](#frequently-asked-questions). 
+>
+>
 
 ## <a name="view-reports-in-power-bi"></a>Anzeigen von Berichten in Power BI 
 Nachdem das Speicherkonto mit dem Recovery Services-Tresor für Berichte konfiguriert wurde, dauert es etwa 24 Stunden, bis die ersten Daten an das Speicherkonto übermittelt werden. Nach Ablauf von 24 Stunden nach dem Konfigurieren des Speicherkontos können Sie mit den folgenden Schritten Berichte in Power BI anzeigen:

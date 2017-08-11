@@ -1,5 +1,5 @@
 ---
-title: "Anzeigen von Diagnoseprotokollen für Azure Data Lake Analytics | Microsoft Docs"
+title: "Anzeigen von Diagnoseprotokollen für Azure Data Lake Analytics | Microsoft-Dokumentation"
 description: "Enthält eine Beschreibung der Grundlagen zum Einrichten von Diagnoseprotokollen und zum damit verbundenen Zugriff für Azure Data Lake Analytics. "
 services: data-lake-analytics
 documentationcenter: 
@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/03/2017
+ms.date: 07/31/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
-ms.openlocfilehash: 2bfd7d8a4c06b1b40a9852d21908e7c1c785b91d
+ms.translationtype: HT
+ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
+ms.openlocfilehash: f5fe6db423f1f2faeaf51e25be9b8f5b551e2a16
 ms.contentlocale: de-de
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 08/01/2017
 
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-analytics"></a>Zugreifen auf Diagnoseprotokolle für Azure Data Lake Analytics
@@ -50,10 +49,10 @@ Die Diagnoseprotokollierung ermöglicht Ihnen das Erfassen von Zugriffsüberwach
 
      * Wählen Sie **An einen Event Hub streamen**, um die Protokolldaten an einen Azure Event Hub zu streamen. Wählen Sie diese Option, wenn Sie eine nachgelagerte Verarbeitungspipeline einsetzen, die eingehende Protokolle in Echtzeit analysiert. Wenn Sie diese Option auswählen, müssen Sie die Details für den Azure Event Hub angeben, den Sie verwenden möchten.
 
-     * Wählen Sie __An Log Analytics senden__, um die Daten an den Log Analytics-Dienst zu senden. Verwenden Sie diese Option, wenn Sie Log Analytics zum Sammeln und Analysieren von Protokollen verwenden möchten.
-   * Geben Sie an, ob Sie Überwachungsprotokolle oder Anforderungsprotokolle oder beides abrufen möchten.  Ein Anforderungsprotokoll erfasst alle API-Anforderungen. Ein Überwachungsprotokoll zeichnet alle Vorgänge auf, die von der jeweiligen API-Anforderung ausgelöst werden.
+     * Wählen Sie __An Log Analytics senden__, um die Daten an den Log Analytics-Dienst zu senden. Verwenden Sie diese Option, wenn Sie Log Analytics zum Erfassen und Analysieren von Protokollen verwenden möchten.
+   * Geben Sie an, ob Sie Überwachungsprotokolle oder Anforderungsprotokolle oder beides abrufen möchten.  Ein Anforderungsprotokoll erfasst jede API-Anforderung. Ein Überwachungsprotokoll zeichnet alle Vorgänge auf, die von dieser API-Anforderung ausgelöst werden.
 
-   * Geben Sie für __In einem Speicherkonto archivieren__ die Anzahl von Tagen an, die die Daten beibehalten werden.
+   * Geben Sie für __In einem Speicherkonto archivieren__ an, wie viele Tage lang die Daten beibehalten werden sollen.
 
    * Klicken Sie auf __Speichern__.
 
@@ -75,7 +74,7 @@ Nachdem Sie die Diagnoseeinstellungen aktiviert haben, können Sie zum Blatt __D
     ![Protokolleinträge](./media/data-lake-analytics-diagnostic-logs/diagnostic-log-entries.png)
 
    * Anforderungsprotokolle erfassen jede API-Anforderung im Data Lake Analytics-Konto.
-   * Überwachungsprotokolle ähneln Anforderungsprotokollen, bieten aber eine viel detailliertere Aufschlüsselung der Vorgänge, die auf dem Data Lake Analytics-Konto ausgeführt werden. Ein einzelner API-Hochladeaufruf in einem Anforderungsprotokoll kann im zugehörigen Überwachungsprotokoll in mehreren Vorgängen des Typs „Anfügen“ resultieren.
+   * Überwachungsprotokolle ähneln Anforderungsprotokollen, bieten aber eine viel detailliertere Aufschlüsselung der Vorgänge. Ein einzelner API-Hochladeaufruf in einem Anforderungsprotokoll kann im zugehörigen Überwachungsprotokoll in mehreren Vorgängen des Typs „Anfügen“ resultieren.
 
 3. Klicken Sie für einen Protokolleintrag auf den Link **Herunterladen**, um das gewünschte Protokoll herunterzuladen.
 
@@ -87,7 +86,7 @@ Nachdem Sie die Diagnoseeinstellungen aktiviert haben, können Sie zum Blatt __D
 
    * Der Container **insights-logs-audit** enthält die Überwachungsprotokolle.
    * Der Container **insights-logs-requests** enthält die Anforderungsprotokolle.
-2. Innerhalb dieser Container werden die Protokolle in der folgenden Struktur gespeichert.
+2. Innerhalb dieser Container werden die Protokolle in der folgenden Struktur gespeichert:
 
         resourceId=/
           SUBSCRIPTIONS/
@@ -235,7 +234,7 @@ Hier ist ein Beispiel für einen Eintrag im JSON-formatierten Überwachungsproto
 | Parallelität |String |Die Anzahl von Data Lake Analytics-Einheiten, die für diesen Auftrag während der Übermittlung angefordert wurden |
 
 > [!NOTE]
-> Die Elemente **SubmitTime**, **StartTime**, **EndTime** und **Parallelism** liefern Informationen zu einem Vorgang und enthalten nur dann einen Wert, wenn der Vorgang gestartet oder abgeschlossen wurde. Beispiel: **SubmitTime** enthält nur einen Wert, sobald **operationName** den Wert **JobSubmitted** hat.
+> **SubmitTime**, **StartTime**, **EndTime** und **Parallelität** bietet Informationen zu einem Vorgang. Diese Einträge enthalten nur dann einen Wert, wenn ein Vorgang gestartet oder beendet wurde. Beispiel: **SubmitTime** enthält nur einen Wert, sobald **operationName** den Wert **JobSubmitted** hat.
 
 ## <a name="process-the-log-data"></a>Verarbeitung der Protokolldaten
 

@@ -1,7 +1,7 @@
 ---
-title: "SAP NetWeaver auf virtuellen Linux-Computern in Azure – DBMS-Bereitstellung | Microsoft-Dokumentation"
-description: "SAP NetWeaver auf virtuellen Linux-Computern (VMs) – DBMS-Bereitstellungshandbuch"
-services: virtual-machines-linux
+title: "Azure Virtual Machines – DBMS-Bereitstellung für SAP NetWeaver | Microsoft-Dokumentation"
+description: "Azure Virtual Machines – DBMS-Bereitstellung für SAP NetWeaver"
+services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: 
 author: MSSedusch
 manager: timlt
@@ -17,19 +17,20 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2016
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 303cb9950f46916fbdd58762acd1608c925c1328
-ms.openlocfilehash: 2cf7f9fd531c7f54d0b39f3b76a1e64516a413aa
-ms.lasthandoff: 04/04/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
+ms.openlocfilehash: 4af0621c4ba0f0c283a6292824cc1ff819c1d232
+ms.contentlocale: de-de
+ms.lasthandoff: 08/03/2017
 
 ---
-# <a name="sap-netweaver-on-azure-virtual-machines--dbms-deployment-guide"></a>SAP NetWeaver auf virtuellen Azure-Computern – DBMS-Bereitstellungshandbuch
+# <a name="azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>Azure Virtual Machines – DBMS-Bereitstellung für SAP NetWeaver
 [767598]:https://launchpad.support.sap.com/#/notes/767598
 [773830]:https://launchpad.support.sap.com/#/notes/773830
 [826037]:https://launchpad.support.sap.com/#/notes/826037
 [965908]:https://launchpad.support.sap.com/#/notes/965908
 [1031096]:https://launchpad.support.sap.com/#/notes/1031096
+[1114181]:https://launchpad.support.sap.com/#/notes/1114181
 [1139904]:https://launchpad.support.sap.com/#/notes/1139904
 [1173395]:https://launchpad.support.sap.com/#/notes/1173395
 [1245200]:https://launchpad.support.sap.com/#/notes/1245200
@@ -63,8 +64,10 @@ ms.lasthandoff: 04/04/2017
 [2002167]:https://launchpad.support.sap.com/#/notes/2002167
 [2015553]:https://launchpad.support.sap.com/#/notes/2015553
 [2039619]:https://launchpad.support.sap.com/#/notes/2039619
+[2069760]:https://launchpad.support.sap.com/#/notes/2069760
 [2121797]:https://launchpad.support.sap.com/#/notes/2121797
 [2134316]:https://launchpad.support.sap.com/#/notes/2134316
+[2171857]:https://launchpad.support.sap.com/#/notes/2171857
 [2178632]:https://launchpad.support.sap.com/#/notes/2178632
 [2191498]:https://launchpad.support.sap.com/#/notes/2191498
 [2233094]:https://launchpad.support.sap.com/#/notes/2233094
@@ -94,6 +97,7 @@ ms.lasthandoff: 04/04/2017
 [dbms-guide-8.4.3]:dbms-guide.md#77cd2fbb-307e-4cbf-a65f-745553f72d2c 
 [dbms-guide-8.4.4]:dbms-guide.md#f77c1436-9ad8-44fb-a331-8671342de818 
 [dbms-guide-900-sap-cache-server-on-premises]:dbms-guide.md#642f746c-e4d4-489d-bf63-73e80177a0a8
+[dbms-guide-managed-disks]:dbms-guide.md#f42c6cb5-d563-484d-9667-b07ae51bce29
 
 [dbms-guide-figure-100]:media/virtual-machines-shared-sap-dbms-guide/100_storage_account_types.png
 [dbms-guide-figure-200]:media/virtual-machines-shared-sap-dbms-guide/200-ha-set-for-dbms-ha.png
@@ -231,7 +235,7 @@ ms.lasthandoff: 04/04/2017
 [planning-guide-microsoft-azure-networking]:planning-guide.md#61678387-8868-435d-9f8c-450b2424f5bd 
 [planning-guide-storage-microsoft-azure-storage-and-data-disks]:planning-guide.md#a72afa26-4bf4-4a25-8cf7-855d6032157f 
 
-[powershell-install-configure]:/powershell/azureps-cmdlets-docs
+[powershell-install-configure]:https://docs.microsoft.com/powershell/azure/install-azurerm-ps
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
 [resource-group-overview]:../../../azure-resource-manager/resource-group-overview.md
 [resource-groups-networking]:../../../virtual-network/resource-groups-networking.md
@@ -272,9 +276,11 @@ ms.lasthandoff: 04/04/2017
 [virtual-machines-linux-how-to-attach-disk-how-to-initialize-a-new-data-disk-in-linux]:../../linux/add-disk.md#connect-to-the-linux-vm-to-mount-the-new-disk
 [virtual-machines-linux-tutorial]:../../linux/quick-create-cli.md
 [virtual-machines-linux-update-agent]:../../linux/update-agent.md
-[virtual-machines-manage-availability]:../../linux/manage-availability.md
+[virtual-machines-manage-availability-linux]:../../linux/manage-availability.md
+[virtual-machines-manage-availability-windows]:../../windows/manage-availability.md
 [virtual-machines-ps-create-preconfigure-windows-resource-manager-vms]:virtual-machines-windows-create-powershell.md
-[virtual-machines-sizes]:../../linux/sizes.md
+[virtual-machines-sizes-linux]:../../linux/sizes.md
+[virtual-machines-sizes-windows]:../../windows/sizes.md
 [virtual-machines-windows-classic-ps-sql-alwayson-availability-groups]:./../../windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups.md
 [virtual-machines-windows-classic-ps-sql-int-listener]:./../../windows/sqlclassic/virtual-machines-windows-classic-ps-sql-int-listener.md
 [virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions]:./../../windows/sql/virtual-machines-windows-sql-high-availability-dr.md
@@ -306,10 +312,10 @@ ms.lasthandoff: 04/04/2017
 
 Dieses Handbuch ist Teil der Dokumentation zur Implementierung und Bereitstellung der SAP-Software in Microsoft Azure. Lesen Sie vor diesem Handbuch das [Planungs- und Implementierungshandbuch][planning-guide]. In diesem Dokument wird die Bereitstellung von verschiedenen Managementsystemen für relationale Datenbanken (Relational Database Management System, RDBMS) und verwandten Produkten mit SAP auf virtuellen Microsoft Azure-Computern mit den Azure-IaaS-Funktionen (Infrastructure as a Service) erläutert.
 
-Das Dokument ergänzt die SAP-Installationsdokumentation und die SAP-Hinweise, die die primäre Ressource für Installationen und Bereitstellungen von SAP-Software auf verschiedenen Plattformen darstellen.
+Das Dokument ergänzt die SAP-Installationsdokumentation und die SAP-Hinweise, die die primären Ressourcen für Installationen und Bereitstellungen von SAP-Software auf bestimmten Plattformen darstellen.
 
 ## <a name="general-considerations"></a>Allgemeine Hinweise
-In diesem Kapitel werden Überlegungen zum Ausführen von DBMS-Systemen für SAP auf virtuellen Azure-Computern vorgestellt. Das Kapitel enthält nur wenige Verweise auf spezifische DBMS-Systeme. Stattdessen werden die spezifischen DBMS-Systeme weiter unten in diesem Artikel behandelt.
+In diesem Kapitel werden Überlegungen zum Ausführen von DBMS-Systemen für SAP auf Azure-VMs vorgestellt. Das Kapitel enthält nur wenige Verweise auf spezifische DBMS-Systeme. Stattdessen werden die spezifischen DBMS-Systeme weiter unten in diesem Artikel behandelt.
 
 ### <a name="definitions-upfront"></a>Definitionen
 Im gesamten Dokument werden die folgenden Begriffe verwendet:
@@ -317,26 +323,26 @@ Im gesamten Dokument werden die folgenden Begriffe verwendet:
 * IaaS: Infrastructure as a Service.
 * PaaS: Platform as a Service.
 * SaaS: Software as a Service.
-* SAP-Komponente: Eine einzelne SAP-Anwendung wie ECC, BW, Solution Manager oder EP.  SAP-Komponenten können auf herkömmlichen ABAP- oder Java-Technologien oder auf einer Nicht-NetWeaver-basierten Anwendung wie Business Objects basieren.
+* SAP-Komponente: eine einzelne SAP-Anwendung wie ECC, BW, Solution Manager oder EP.  SAP-Komponenten können auf herkömmlichen ABAP- oder Java-Technologien oder auf einer Nicht-NetWeaver-basierten Anwendung wie Business Objects basieren.
 * SAP-Umgebung: eine oder mehrere SAP-Komponenten, die logisch gruppiert sind, um eine Geschäftsfunktion wie Entwicklung, QAS, Schulung, DR oder Produktion auszuführen.
 * SAP-Landschaft: Dies bezieht sich auf alle SAP-Assets in der IT-Landschaft eines Kunden. Die SAP-Landschaft umfasst alle Produktions- und anderen Umgebungen.
-* SAP-System: Die Kombination aus DBMS-Ebene und Anwendungsebene, z.B. in einem SAP-ERP-Entwicklungssystem, SAP BW-Testsystem, SAP CRM-Produktionssystem o.ä. In Azure-Bereitstellungen wird die Aufteilung dieser beiden Ebenen zwischen lokalen Systemen und Azure nicht unterstützt. Dies bedeutet, die ein SAP-System entweder lokal oder in Azure bereitgestellt wird. Allerdings können Sie die verschiedenen Systeme einer SAP-Landschaft in Azure oder lokal bereitstellen. Sie konnte z.B. die SAP CRM-Entwicklungs- und Testsysteme in Azure und die SAP CRM-Produktionssysteme lokal bereitstellen.
-* Nur-Cloud-Bereitstellung: Eine Bereitstellung, in der das Azure-Abonnement nicht über eine Site-to-Site- oder ExpressRoute-Verbindung mit der lokalen Netzwerkinfrastruktur verbunden ist. In allgemeinen Azure-Dokumentationen werden diese Arten von Bereitstellungen auch als „Cloud-Only“-Bereitstellungen bezeichnet. Der Zugriff auf mit dieser Methode bereitgestellte virtuelle Computer erfolgt über das Internet und öffentliche Internet-Endpunkte, die den virtuellen Computern in Azure zugewiesen sind. Das lokale Active Directory (AD) und DNS werden in diesen Bereitstellungen nicht auf Azure ausgeweitet. Daher sind die virtuellen Computer nicht Teil des lokalen Active Directory. Hinweis: Nur-Cloud-Bereitstellungen in diesem Dokument sind als vollständige SAP-Landschaften definiert, die ausschließlich in Azure ohne Erweiterung von Active Directory oder Namensauflösung vom lokalen System in die Public Cloud ausgeführt werden. Nur-Cloud-Konfigurationen werden für SAP-Produktionssysteme oder Konfigurationen nicht unterstützt, bei denen SAP STMS oder andere lokale Ressourcen zwischen in Azure gehosteten SAP-Systemen und lokalen Ressourcen verwendet werden müssen.
-* Standortübergreifend: Beschreibt ein Szenario, in dem virtuelle Computer mit einem Azure-Abonnement bereitgestellt werden, das Site-to-Site-, Multisite- oder ExpressRoute-Verbindungen zwischen den lokalen Rechenzentren und Azure umfasst. In allgemeinen Azure-Dokumentationen werden diese Arten von Bereitstellungen auch als „Cross-Premises“-Szenarien bezeichnet. Durch die Verbindung sollen lokale Domänen, das lokale Active Directory und lokales DNS auf Azure ausgeweitet werden. Die lokale Landschaft wird auf die Azure-Ressourcen des Abonnements erweitert. Durch diese Erweiterung können die virtuellen Computer Teil der lokalen Domäne sein. Domänenbenutzer der lokalen Domäne können auf die Server zugreifen und Dienste auf diesen virtuellen Computern ausführen (z.B. DBMS-Dienste). Die Kommunikation und Namensauflösung zwischen lokal bereitgestellten virtuellen Computern und in Azure bereitgestellten virtuellen Computern ist möglich. Wir erwarten, dass dies das häufigste Szenario für die Bereitstellung von SAP-Assets in Azure sein wird. In [diesem Artikel][vpn-gateway-cross-premises-options] und [diesem Artikel][vpn-gateway-site-to-site-create] finden Sie weitere Informationen.
+* SAP-System: Die Kombination aus DBMS-Schicht und Anwendungsschicht, z.B. in einem SAP ERP-Entwicklungssystem, einem SAP BW-Testsystem, einem SAP CRM-Produktionssystem usw. In Azure-Bereitstellungen wird die Aufteilung dieser beiden Ebenen zwischen lokalen Systemen und Azure nicht unterstützt. Das bedeutet, dass ein SAP-System entweder lokal oder in Azure bereitgestellt wird. Allerdings können Sie die verschiedenen Systeme einer SAP-Landschaft in Azure oder lokal bereitstellen. Sie konnte z.B. die SAP CRM-Entwicklungs- und Testsysteme in Azure und die SAP CRM-Produktionssysteme lokal bereitstellen.
+* Nur-Cloud-Bereitstellung: Eine Bereitstellung, in der das Azure-Abonnement nicht über eine Site-to-Site- oder ExpressRoute-Verbindung mit der lokalen Netzwerkinfrastruktur verbunden ist. In allgemeinen Azure-Dokumentationen werden diese Arten von Bereitstellungen auch als „Cloud-Only“-Bereitstellungen bezeichnet. Der Zugriff auf mit dieser Methode bereitgestellte virtuelle Computer erfolgt über das Internet und öffentliche Internet-Endpunkte, die den virtuellen Computern in Azure zugewiesen sind. Das lokale Active Directory (AD) und DNS werden in diesen Bereitstellungen nicht auf Azure ausgeweitet. Daher sind die virtuellen Computer nicht Teil des lokalen Active Directory. Hinweis: Nur-Cloud-Bereitstellungen in diesem Dokument sind als vollständige SAP-Landschaften definiert, die ausschließlich in Azure ohne Erweiterung von Active Directory oder Namensauflösung vom lokalen System in die öffentliche Cloud ausgeführt werden. Nur-Cloud-Konfigurationen werden für die SAP-Produktionssysteme oder Konfigurationen nicht unterstützt, bei denen SAP STMS oder andere lokale Ressourcen zwischen in Azure gehosteten SAP-Systemen und lokalen Ressourcen verwendet werden müssen.
+* Standortübergreifend: Beschreibt ein Szenario, in dem VMs mit einem Azure-Abonnement bereitgestellt werden, das Site-to-Site-, Multi-Site- oder ExpressRoute-Konnektivität zwischen den lokalen Rechenzentren und Azure umfasst. In allgemeinen Azure-Dokumentationen werden diese Arten von Bereitstellungen auch als "Cross-Premises"-Szenarien bezeichnet. Durch die Verbindung sollen lokale Domänen, das lokale Active Directory und das lokale DNS auf Azure ausgeweitet werden. Die lokale Landschaft wird auf die Azure-Ressourcen des Abonnements erweitert. Durch diese Erweiterung können die virtuellen Computer Teil der lokalen Domäne sein. Domänenbenutzer der lokalen Domäne können auf die Server zugreifen und Dienste auf diesen virtuellen Computern ausführen (z.B. DBMS-Dienste). Die Kommunikation und Namensauflösung zwischen lokal bereitgestellten virtuellen Computern und in Azure bereitgestellten virtuellen Computern ist möglich. Wir erwarten, dass dies das häufigste Szenario für die Bereitstellung von SAP-Assets in Azure sein wird. In [diesem Artikel][vpn-gateway-cross-premises-options] und [diesem Artikel][vpn-gateway-site-to-site-create] finden Sie weitere Informationen.
 
 > [!NOTE]
-> Standortübergreifende Bereitstellungen von SAP-Systemen, in denen virtuelle Azure-Computer mit SAP-Systemen Mitglieder einer lokalen Domäne sind, werden für SAP-Produktionssysteme unterstützt. Standortübergreifende Konfigurationen werden für die Bereitstellung von Teilen von SAP-Landschaften oder vollständigen SAP-Landschaften in Azure unterstützt. Auch für das Ausführen von vollständigen SAP-Landschaften in Azure müssen diese virtuellen Computer Teil der lokalen Domäne und ADS sein. In früheren Versionen der Dokumentation wurden Hybrid-IT-Szenarien beschrieben, wobei sich „Hybrid“ darauf bezieht, dass es eine standortübergreifende Verbindung zwischen lokalen Systemen und Azure gibt. In diesem Fall bedeutet „Hybrid“ auch, dass die virtuellen Computer in Azure Teil des lokalen Active Directory sind.
+> Standortübergreifende Bereitstellungen von SAP-Systemen, in denen virtuelle Azure-Computer mit SAP-Systemen Mitglieder einer lokalen Domäne sind, werden für SAP-Produktionssysteme unterstützt. Standortübergreifende Konfigurationen werden für die Bereitstellung von Teilen von SAP-Landschaften oder vollständigen SAP-Landschaften in Azure unterstützt. Auch für das Ausführen von vollständigen SAP-Landschaften in Azure müssen diese virtuellen Computer Teil der lokalen Domäne und ADS sein. In früheren Versionen der Dokumentation wurden Hybrid-IT-Szenarien beschrieben, wobei sich „Hybrid“ darauf bezieht, dass es eine standortübergreifende Konnektivität zwischen lokalen Systemen und Azure gibt. In diesem Fall bedeutet „Hybrid“ auch, dass die virtuellen Computer in Azure Teil des lokalen Active Directory sind.
 > 
 > 
 
-In einigen Microsoft-Dokumentationen werden standortübergreifende Szenarien etwas anders beschrieben, insbesondere bei DBMS-HA-Konfigurationen. In Dokumenten zu SAP bezieht sich ein standortübergreifendes Szenario einfach nur auf eine Site-to-Site- oder private Verbindung (ExpressRoute) und die Tatsache, dass die SAP-Landschaft zwischen lokalen Systemen und Azure verteilt ist.
+In einigen Microsoft-Dokumentationen werden standortübergreifende Szenarien etwas anders beschrieben, insbesondere bei DBMS-HA-Konfigurationen. In Dokumenten zu SAP bezieht sich ein standortübergreifendes Szenario einfach nur auf eine Site-to-Site- oder private Konnektivität (ExpressRoute) und die Tatsache, dass die SAP-Landschaft zwischen lokalen Systemen und Azure verteilt ist.
 
 ### <a name="resources"></a>Ressourcen
 Die folgenden Handbücher zum Thema SAP-Bereitstellungen in Azure sind verfügbar:
 
-* [SAP NetWeaver auf virtuellen Azure-Computern – Planungs- und Implementierungshandbuch][planning-guide]
-* [SAP NetWeaver auf virtuellen Azure-Computern – Bereitstellungshandbuch][deployment-guide]
-* [SAP NetWeaver auf virtuellen Azure-Computern – DBMS-Bereitstellungshandbuch (dieses Dokument)][dbms-guide]
+* [Azure Virtual Machines planning and implementation for SAP NetWeaver][planning-guide] (Azure Virtual Machines – Planung und Implementierung für SAP NetWeaver)
+* [Azure Virtual Machines deployment for SAP NetWeaver][deployment-guide] (Azure Virtual Machines – Bereitstellung für SAP NetWeaver)
+* [Azure Virtual Machines – DBMS-Bereitstellung für SAP NetWeaver (das vorliegende Dokument)][dbms-guide]
 
 Die folgenden SAP-Hinweise beziehen sich auf das Thema SAP in Azure:
 
@@ -353,10 +359,15 @@ Die folgenden SAP-Hinweise beziehen sich auf das Thema SAP in Azure:
 | [2243692] |Linux auf Microsoft Azure-VMs (IaaS): SAP-Lizenzprobleme |
 | [1984787] |SUSE LINUX Enterprise Server 12: Installationshinweise |
 | [2002167] |Red Hat Enterprise Linux 7.x: Installation und Upgrade |
+| [2069760] |Oracle Linux 7.x SAP: Installation und Upgrade |
+| [1597355] |Empfehlung zu Auslagerungsbereichen für Linux |
+| [2171857] |Oracle Database 12c – Dateisystemunterstützung unter Linux |
+| [1114181] |Oracle Database 11g – Dateisystemunterstützung unter Linux |
 
-Lesen Sie bitte auch das [SCN-Wiki](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) , das alle SAP-Hinweise für Linux enthält.
 
-Sie sollten über Kenntnisse zur Microsoft Azure-Architektur sowie zur Bereitstellung und Verwendung von virtuellen Microsoft Azure-Computern verfügen. Weitere Informationen finden Sie hier: <https://azure.microsoft.com/documentation/>.
+Lesen Sie bitte auch das [SCN-Wiki](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes), das alle SAP-Hinweise für Linux enthält.
+
+Sie sollten über Kenntnisse zur Microsoft Azure-Architektur sowie zur Bereitstellung und Verwendung von virtuellen Microsoft Azure-Computern verfügen. Weitere Informationen finden Sie unter <https://azure.microsoft.com/documentation/>.
 
 > [!NOTE]
 > Hier werden **nicht** die Microsoft Azure-PaaS-Angebote (Platform as a Service) der Microsoft Azure Platform erläutert. In diesem Dokument geht es darum, ein Datenbankverwaltungssystem (Database Management System, DBMS) auf virtuellen Microsoft Azure-Computern (IaaS) so wie in Ihrer lokalen Umgebung auszuführen. Die Datenbankfunktionen und -features für diese beiden Angebote unterscheiden sich stark und sollten nicht verwechselt werden. Siehe auch: <https://azure.microsoft.com/services/sql-database/>
@@ -365,9 +376,9 @@ Sie sollten über Kenntnisse zur Microsoft Azure-Architektur sowie zur Bereitste
 
 Da es um IaaS geht, sind Installation und Konfiguration von Windows, Linux und DBMS im Allgemeinen weitgehend identisch mit allen virtuellen Computern oder Bare-Metal-Computern, die Sie lokal installieren. Es gibt jedoch einige Entscheidungen bei der Implementierung der Architektur und Systemverwaltung, die bei der Nutzung von IaaS anders sind. In diesem Dokument sollen die spezifischen Unterschiede bei Architektur und Systemverwaltung beschrieben werden, auf die Sie bei der Verwendung von IaaS vorbereitet sein müssen.
 
-Die allgemeinen Unterschiede werden für die folgenden Bereiche beschrieben:
+Die allgemeinen Unterschiede werden in diesem Dokument für die folgenden Bereiche beschrieben:
 
-* Planen des richtigen VM-/VHD-Layouts der SAP-Systeme, um sicherzustellen, dass Sie das richtige Datendateilayout verwenden und ausreichende IOPS für Ihre Workloads erzielen.
+* Planen des richtigen VM-/Datenträgerlayouts der SAP-Systeme, um sicherzustellen, dass Sie das richtige Datendateilayout verwenden und ausreichende IOPS für Ihre Workloads erzielen.
 * Überlegungen zur Netzwerknutzung bei Verwendung von IaaS.
 * Spezifische Datenbankfunktionen, die für die Optimierung des Datenbanklayouts verwendet werden.
 * Überlegungen zu Sicherung und Wiederherstellung in IaaS.
@@ -377,36 +388,36 @@ Die allgemeinen Unterschiede werden für die folgenden Bereiche beschrieben:
 ## <a name="65fa79d6-a85f-47ee-890b-22e794f51a64"></a>Struktur einer RDBMS-Bereitstellung
 Damit Sie die Informationen in diesem Kapitel nachvollziehen können, müssen Sie [dieses][deployment-guide-3] Kapitel im [Bereitstellungshandbuch][deployment-guide] verstanden haben. Sie sollten Kenntnisse über die verschiedenen VM-Serien und ihre Unterschiede sowie zu den Unterschieden zwischen Azure-Standardspeicher und Storage Premium haben, um dieses Kapitel zu verstehen.
 
-Bis März 2015 waren Azure-VHDs, die ein Betriebssystem enthalten, auf eine Größe von 127 GB beschränkt. Diese Einschränkung wurde im März 2015 aufgehoben (Weitere Informationen finden Sie unter <https://azure.microsoft.com/blog/2015/03/25/azure-vm-os-drive-limit-octupled/>). Seitdem können VHDs mit dem Betriebssystem die gleiche Größe wie jede andere VHD haben. Trotzdem wird eine Bereitstellungsstruktur bevorzugt, bei der das Betriebssystem, DBMS und später SAP-Binärdateien von den Datenbankdateien getrennt sind. Daher gehen wir davon aus, dass bei SAP-Systemen, die auf virtuellen Azure-Computern ausgeführt werden, der virtuelle Basiscomputer (oder die Basis-VHD) mit dem Betriebssystem, den ausführbaren Dateien für das Datenbankverwaltungssystem und den ausführbaren SAP-Dateien installiert wird. Die DBMS-Datendateien und -Protokolldateien werden in Azure-Speicher (Standardspeicher oder Storage Premium) in separaten VHD-Dateien gespeichert und als logische Datenträger an den ursprünglichen virtuellen Azure-Computer mit dem Betriebssystemimage angefügt. 
+Bis März 2015 waren Datenträger, die ein Betriebssystem enthalten, auf eine Größe von 127 GB beschränkt. Diese Einschränkung wurde im März 2015 aufgehoben (weitere Informationen finden Sie unter <https://azure.microsoft.com/blog/2015/03/25/azure-vm-os-drive-limit-octupled/>). Seitdem können Datenträger mit dem Betriebssystem die gleiche Größe wie jeder andere Datenträger haben. Trotzdem wird eine Bereitstellungsstruktur bevorzugt, bei der das Betriebssystem, DBMS und später SAP-Binärdateien von den Datenbankdateien getrennt sind. Daher gehen wir davon aus, dass bei SAP-Systemen, die auf virtuellen Azure-Computern ausgeführt werden, die Basis-VM (oder der Basisdatenträger) mit dem Betriebssystem, den ausführbaren Dateien für das Datenbankverwaltungssystem und den ausführbaren SAP-Dateien installiert wird. Die DBMS-Datendateien und -Protokolldateien werden in Azure Storage (Standardspeicher oder Storage Premium) auf separaten Datenträgern gespeichert und als logische Datenträger an die ursprünglichen Azure-VM mit dem Betriebssystemimage angefügt. 
 
-Abhängig davon, ob Azure Storage Standard oder Storage Premium verwendet wird (z.B. bei virtuellen Computern der DS- oder GS-Serie), gibt es verschiedene Kontingente in Azure. Diese werden [hier][virtual-machines-sizes] dokumentiert. Bei der Planung Ihrer Azure-VHDs müssen Sie den besten Kompromiss zwischen den Kontingenten im Hinblick auf folgende Aspekte ermitteln:
+Abhängig davon, ob Azure Storage Standard oder Storage Premium verwendet wird (z.B. bei VMs der DS- oder GS-Serie), gibt es verschiedene Kontingente in Azure. Diese werden [hier (Linux)][virtual-machines-sizes-linux] und [hier (Windows)][virtual-machines-sizes-windows] dokumentiert. Bei der Planung Ihres Datenträgerlayouts müssen Sie den besten Kompromiss zwischen den Kontingenten im Hinblick auf folgende Aspekte ermitteln:
 
 * Die Anzahl der Datendateien.
-* Die Anzahl von VHDs, die die Dateien enthalten.
-* Die IOPS-Kontingente einer einzelnen VHD.
-* Der Datendurchsatz pro VHD.
-* Die Anzahl der für die jeweilige Größe des virtuellen Computers möglichen zusätzlichen VHDs.
+* Die Anzahl von Datenträgern, die die Dateien enthalten
+* Die IOPS-Kontingente eines einzelnen Datenträgers
+* Den Datendurchsatz pro Datenträger
+* Die Anzahl der für die jeweilige VM-Größe möglichen zusätzlichen Datenträger
 * Der Gesamtspeicherdurchsatz, den ein virtueller Computer bereitstellen kann.
 
-Azure erzwingt ein IOPS-Kontingent pro VHD. Diese Kontingente sind für VHDs, die in Azure-Standardspeicher und Storage Premium gehostet werden, unterschiedlich. Die E/A-Latenzen sind bei den beiden Speichertypen ebenfalls sehr unterschiedlich, wobei Storage Premium um Größenordnungen bessere E/A-Latenzen bietet. Für jeden der verschiedenen Typen von virtuellen Computern können Sie eine begrenzte Anzahl von VHDs anfügen. Eine weitere Einschränkung besteht darin, dass nur bestimmte Typen von virtuellen Computern Azure Storage Premium nutzen können. Dies bedeutet, dass die Entscheidung für einen bestimmten virtuellen Computertyp nicht nur durch die Anforderungen an CPU und Arbeitsspeicher bestimmt wird, sondern auch durch IOPS-Wert, Latenz und Anforderungen an den Datenträgerdurchsatz, die normalerweise abhängig von der Anzahl der VHDs und dem Typ der Storage Premium-Datenträger skaliert werden. Vor allem bei Storage Premium wird die Größe einer virtuellen Festplatte möglicherweise auch von der Anzahl von IOPS und dem Durchsatz diktiert, der von den einzelnen VHD erzielt werden muss.
+Azure erzwingt ein IOPS-Kontingent pro Datenträger. Diese Kontingente sind für Datenträger, die im Azure-Standardspeicher und in Storage Premium gehostet werden, unterschiedlich. Die E/A-Latenzen sind bei den beiden Speichertypen ebenfalls sehr unterschiedlich, wobei Storage Premium um Größenordnungen bessere E/A-Latenzen bietet. Für jeden der verschiedenen VM-Typen können Sie eine begrenzte Anzahl von Datenträgern anfügen. Eine weitere Einschränkung besteht darin, dass nur bestimmte Typen von virtuellen Computern Azure Storage Premium nutzen können. Dies bedeutet, dass die Entscheidung für einen bestimmten VM-Typ nicht nur durch die Anforderungen an CPU und Arbeitsspeicher bestimmt wird, sondern auch durch IOPS-Wert, Latenz und Anforderungen an den Datenträgerdurchsatz, die normalerweise abhängig von der Anzahl der Datenträger und dem Typ der Storage Premium-Datenträger skaliert werden. Vor allem bei Storage Premium wird die Größe eines Datenträgers möglicherweise auch von der Anzahl von IOPS und dem Durchsatz diktiert, der von den einzelnen Datenträgern erzielt werden muss.
 
-Die Tatsache, dass die IOPS-Gesamtrate, die Anzahl der bereitgestellten virtuellen Festplatten und die Größe des virtuellen Computers zusammenhängen, kann dazu führen, dass die Azure-Konfiguration eines SAP-Systems von der in einer lokalen Bereitstellung abweicht. Die IOPS-Grenzwerte pro LUN können bei lokalen Bereitstellungen normalerweise konfiguriert werden. Bei Azure Storage sind diese Grenzwerte fest bzw. bei Storage Premium abhängig vom Datenträgertyp. Daher gibt es bei lokalen Bereitstellungen Kundenkonfigurationen von Datenbankservern, in denen viele verschiedene Volumes für spezielle ausführbare Dateien wie SAP und das DBMS oder spezielle Volumes für temporäre Datenbanken oder Tablespaces verwendet werden. Wenn ein solches lokales System in Azure verschoben wird, kann dies zu einer Verschwendung potenzieller IOPS-Bandbreite führen, indem eine VHD für ausführbare Dateien oder Datenbanken verwendet wird, die keine oder wenige IOPS ausführen. Aus diesem Grund wird bei virtuellen Azure-Computern empfohlen, das DBMS und ausführbare SAP-Dateien möglichst auf dem Datenträger mit dem Betriebssystem zu installieren.
+Die Tatsache, dass die IOPS-Gesamtrate, die Anzahl der bereitgestellten Datenträger und die Größe der VM zusammenhängen, kann dazu führen, dass die Azure-Konfiguration eines SAP-Systems von der in einer lokalen Bereitstellung abweicht. Die IOPS-Grenzwerte pro LUN können bei lokalen Bereitstellungen normalerweise konfiguriert werden. Bei Azure Storage sind diese Grenzwerte fest bzw. bei Storage Premium abhängig vom Datenträgertyp. Daher gibt es bei lokalen Bereitstellungen Kundenkonfigurationen von Datenbankservern, in denen viele verschiedene Volumes für spezielle ausführbare Dateien wie SAP und das DBMS oder spezielle Volumes für temporäre Datenbanken oder Tablespaces verwendet werden. Wenn ein solches lokales System in Azure verschoben wird, kann dies zu einer Verschwendung potenzieller IOPS-Bandbreite führen, indem ein Datenträger für ausführbare Dateien oder Datenbanken verwendet wird, die keine oder wenige IOPS ausführen. Aus diesem Grund wird bei virtuellen Azure-Computern empfohlen, das DBMS und ausführbare SAP-Dateien möglichst auf dem Datenträger mit dem Betriebssystem zu installieren.
 
-Die Platzierung der Datenbankdateien und Protokolldateien und der Typ des verwendeten Azure-Speichers sollten durch die Anforderungen an IOPS, Latenz und Durchsatz bestimmt werden. Damit ausreichende IOPS für das Transaktionsprotokoll verfügbar sind, müssen Sie möglicherweise mehrere VHDs für die Transaktionsprotokolldatei nutzen oder einen größeren Storage Premium-Datenträger verwenden. In solchen Fällen würden Sie einfach ein Software-RAID (z.B. Windows Storage Pool für Windows oder MDADM und LVM [Logical Volume Manager] für Linux) mit den VHDs erstellen, die das Transaktionsprotokoll enthalten.
+Die Platzierung der Datenbankdateien und Protokolldateien und der verwendete Azure Storage-Typ sollten durch die Anforderungen an IOPS, Latenz und Durchsatz bestimmt werden. Damit ausreichende IOPS für das Transaktionsprotokoll verfügbar sind, müssen Sie möglicherweise mehrere Datenträger für die Transaktionsprotokolldatei nutzen oder einen größeren Storage Premium-Datenträger verwenden. In solchen Fällen würden Sie ein Software-RAID (z.B. Windows Storage Pool für Windows oder MDADM und LVM [Logical Volume Manager] für Linux) mit den Datenträgern erstellen, die das Transaktionsprotokoll enthalten.
 
 - - -
 > ![Windows][Logo_Windows] Windows
 > 
-> Laufwerk „D:\“ auf einem virtuellen Azure-Computer ist ein nicht permanentes Laufwerk, das durch einige lokale Datenträger im Azure-Serverknoten gesichert wird. Da es nicht permanent ist, bedeutet dies, dass alle Änderungen am Inhalt auf dem Laufwerk „D:\“ verloren gehen, wenn der virtuelle Computer neu gestartet wird. Änderungen sind hierbei gespeicherte Dateien, erstellte Verzeichnisse, installierte Anwendungen usw.
+> Laufwerk „D:\“ auf einer Azure-VM ist ein nicht permanentes Laufwerk, das durch einige lokale Datenträger im Azure-Serverknoten gesichert wird. Da es nicht permanent ist, bedeutet dies, dass alle Änderungen am Inhalt auf dem Laufwerk „D:\“ verloren gehen, wenn der virtuelle Computer neu gestartet wird. Änderungen sind hierbei gespeicherte Dateien, erstellte Verzeichnisse, installierte Anwendungen usw.
 > 
 > ![Linux][Logo_Linux] Linux
 > 
-> Virtuelle Azure-Computer unter Linux stellen ein Laufwerk automatisch in „/mnt/resource“ bereit. Dies ist ein nicht permanentes Laufwerk, das durch lokale Datenträger im Azure-Serverknoten gesichert wird. Da es nicht permanent ist, bedeutet dies, dass alle Änderungen am Inhalt von „/mnt/resource“ verloren gehen, wenn der virtuelle Computer neu gestartet wird. Änderungen sind hierbei gespeicherte Dateien, erstellte Verzeichnisse, installierte Anwendungen usw.
+> Azure-VMs unter Linux stellen ein Laufwerk automatisch unter „/mnt/resource“ bereit. Dies ist ein nicht permanentes Laufwerk, das durch lokale Datenträger im Azure-Serverknoten gesichert wird. Da es nicht permanent ist, bedeutet dies, dass alle Änderungen am Inhalt unter „/mnt/resource“ verloren gehen, wenn die VM neu gestartet wird. Änderungen sind hierbei gespeicherte Dateien, erstellte Verzeichnisse, installierte Anwendungen usw.
 > 
 > 
 
 - - -
-Abhängig von der Azure VM-Serie weisen die lokalen Datenträger im Computeknoten unterschiedliche Leistungen auf, die wie folgt kategorisiert werden können:
+Abhängig von der Azure VM-Serie weisen die lokalen Datenträger im Serverknoten unterschiedliche Leistungen auf, die wie folgt kategorisiert werden können:
 
 * A0-A7: Sehr eingeschränkte Leistung. Nur für die Windows-Auslagerungsdatei geeignet.
 * A8-A11: Sehr gute Leistungsmerkmale mit mehreren Zehntausend IOPS und > 1 GB/s Durchsatz
@@ -417,8 +428,8 @@ Abhängig von der Azure VM-Serie weisen die lokalen Datenträger im Computeknote
 
 Die Angaben oben beziehen sich auf die für SAP zertifizierten VM-Typen. Die VM-Serien mit hervorragenden Werten für IOPS und Durchsatz können für einige DBMS-Funktionen genutzt werden, z.B. tempdb oder temporärer Tablespace.
 
-### <a name="c7abf1f0-c927-4a7c-9c1d-c7b5b3b7212f"></a>Caching für VMs und VHDs
-Wenn diese Datenträger/VHDs über das Portal erstellt oder hochgeladene VHDs auf virtuellen Computern bereitgestellt werden, kann ausgewählt werden, ob der E/A-Datenverkehr zwischen dem virtuellen Computer und diesen VHDs im Azure-Speicher zwischengespeichert wird. Azure Standard und Storage Premium verwenden zwei unterschiedliche Technologien für diese Art von Cache. In beiden Fällen wird der Cache selbst auf den gleichen Datenträgern gesichert, die vom temporären Datenträger des virtuellen Computers verwendet werden („D:\“ unter Windows oder „/mnt/resource“ unter Linux).
+### <a name="c7abf1f0-c927-4a7c-9c1d-c7b5b3b7212f"></a>Zwischenspeichern für VMs und Datenträger
+Wenn diese Datenträger über das Portal erstellt oder hochgeladene Datenträger auf VMs bereitgestellt werden, kann ausgewählt werden, ob der E/A-Datenverkehr zwischen der VM und diesen Datenträgern in Azure Storage zwischengespeichert wird. Azure Standard und Storage Premium verwenden zwei unterschiedliche Technologien für diese Art von Cache. In beiden Fällen wird der Cache selbst auf den gleichen Datenträgern gesichert, die vom temporären Datenträger der VM verwendet werden („D:\“ unter Windows oder „/mnt/resource“ unter Linux).
 
 Für Azure-Standardspeicher lauten die möglichen Cachetypen wie folgt:
 
@@ -426,30 +437,30 @@ Für Azure-Standardspeicher lauten die möglichen Cachetypen wie folgt:
 * Zwischenspeichern von Lesevorgängen
 * Zwischenspeichern von Lese- und Schreibvorgängen
 
-Um eine konsistente und planbare Leistung zu erzielen, sollten Sie das Zwischenspeichern beim Azure-Standardspeicher für alle virtuellen Festplatten mit **DBMS-bezogenen Datendateien, Protokolldateien und Tablespaces auf „NONE“**festlegen. Für das Zwischenspeichern des virtuellen Computers kann die Standardeinstellung übernommen werden.
+Um eine konsistente und planbare Leistung zu erzielen, sollten Sie das Zwischenspeichern beim Azure-Standardspeicher für alle Datenträger mit **DBMS-bezogenen Datendateien, Protokolldateien und Tablespaces auf „NONE“** festlegen. Für das Zwischenspeichern des virtuellen Computers kann die Standardeinstellung übernommen werden.
 
 Für Azure Storage Premium stehen die folgenden Optionen zum Zwischenspeichern zur Verfügung:
 
 * Kein Zwischenspeichern
 * Zwischenspeichern von Lesevorgängen
 
-Für Azure Storage Premium wird empfohlen, das **Zwischenspeichern von Lesevorgängen für Datendateien** in der SAP-Datenbank zu nutzen und **Kein Zwischenspeichern für die VHDs von Protokolldateien** festzulegen.
+Für Azure Storage Premium wird empfohlen, das **Zwischenspeichern von Lesevorgängen für Datendateien** in der SAP-Datenbank zu nutzen und **Kein Zwischenspeichern für die Datenträger von Protokolldateien** festzulegen.
 
 ### <a name="c8e566f9-21b7-4457-9f7f-126036971a91"></a>Software-RAID
-Wie bereits oben erwähnt, müssen Sie einen Kompromiss zwischen dem benötigten IOPS-Wert für die Datenbankdateien auf der Menge von virtuellen Festplatten, die Sie konfigurieren können, und der maximalen Anzahl von IOPS finden, die ein virtueller Azure-Computer pro VHD beim Storage Premium-Speichertyp bereitstellt. Die einfachste Möglichkeit zum Verwalten der IOPS-Auslastung auf verschiedenen VHDs ist das Erstellen eines Software-RAIDs mit den verschiedenen VHDs. Fügen Sie dann eine Anzahl von Datendateien des SAP-DBMS zu den LUNs im Software-RAID hinzu. Abhängig von den jeweiligen Anforderungen sollten Sie die Verwendung von Storage Premium erwägen, da zwei der drei verschiedenen Storage Premium-Datenträger ein höheres IOPS-Kontingent als VHDs mit Standardspeicher bereitstellen. Dazu kommt die erheblich bessere E/A-Latenz bei Azure Storage Premium. 
+Wie bereits oben erwähnt, müssen Sie einen Kompromiss zwischen dem benötigten IOPS-Wert für die Datenbankdateien auf der Menge von Datenträgern, die Sie konfigurieren können, und der maximalen Anzahl von IOPS finden, die eine Azure-VM pro Datenträger beim Storage Premium-Datenträgertyp bereitstellt. Die einfachste Möglichkeit zum Verwalten der IOPS-Auslastung auf verschiedenen Datenträgern ist das Erstellen eines Software-RAIDs mit den verschiedenen Datenträgern. Fügen Sie dann eine Anzahl von Datendateien des SAP-DBMS zu den LUNs im Software-RAID hinzu. Abhängig von den jeweiligen Anforderungen sollten Sie die Verwendung von Storage Premium erwägen, da zwei der drei verschiedenen Storage Premium-Datenträger ein höheres IOPS-Kontingent als Datenträger mit Standardspeicher bereitstellen. Dazu kommt die erheblich bessere E/A-Latenz bei Azure Storage Premium. 
 
-Dasselbe gilt für das Transaktionsprotokoll der unterschiedlichen DBMS-Systeme. Bei vielen Systemen ist es nicht hilfreich, einfach mehr Tlog-Dateien hinzuzufügen, da die DBMS-Systeme jeweils nur in eine der Dateien schreiben. Wenn höhere IOPS-Raten benötigt werden, als durch eine einfache VHD mit Standardspeicher bereitgestellt werden kann, können Sie ein Stripeset über mehrere VHDs mit Standardspeicher erstellen, oder Sie verwenden einen größeren Storage Premium-Datenträgertyp, der neben höheren IOPS-Raten auch eine um Größenordnungen geringere Latenz für die E/A-Vorgänge im Transaktionsprotokoll bereitstellt.
+Dasselbe gilt für das Transaktionsprotokoll der unterschiedlichen DBMS-Systeme. Bei vielen Systemen ist es nicht hilfreich, einfach mehr Tlog-Dateien hinzuzufügen, da die DBMS-Systeme jeweils nur in eine der Dateien schreiben. Wenn höhere IOPS-Raten benötigt werden, als durch einen einfachen Datenträger mit Standardspeicher bereitgestellt werden kann, können Sie ein Stripeset über mehrere Datenträger mit Standardspeicher erstellen, oder Sie verwenden einen größeren Storage Premium-Datenträgertyp, der neben höheren IOPS-Raten auch eine um Größenordnungen geringere Latenz für die E/A-Schreibvorgänge im Transaktionsprotokoll bereitstellt.
 
 In folgenden Situationen sollte bei Azure-Bereitstellungen ein Software-RAID verwendet werden:
 
-* Das Transaktions-/Wiederholen-Protokoll erfordert mehr IOPS als Azure für eine einzelne VHD bietet. Wie bereits erwähnt, kann dieses Problem behoben werden, indem mit einem Software-RAID eine LUN über mehrere virtuelle Festplatten erstellt wird.
-* Ungleichmäßige Verteilung der E/A-Workload über die verschiedenen Datendateien der SAP-Datenbank. In solchen Fällen kann es vorkommen, dass eine Datendatei das Kontingent recht häufig ausschöpft. Gleichzeitig nutzen andere Datendateien das IOPS-Kontingent einer einzelnen VHD nicht annähernd aus. In solchen Fällen besteht die einfachste Lösung darin, eine LUN über mehrere virtuelle Festplatten mit einem Software-RAID zu erstellen. 
-* Sie kennen die genaue E/A-Workload pro Datendatei nicht und kennen die IOPS-Gesamtworkload für das DBMS nur ungefähr. Die einfachste Lösung ist das Erstellen einer LUN mithilfe eines Software-RAIDs. Die Summe der Kontingente der verschiedenen VHDs hinter dieser LUN sollte dann die bekannte IOPS-Rate erfüllen.
+* Das Transaktions-/Wiederholen-Protokoll erfordert mehr IOPS als Azure für einen einzelnen Datenträger bietet. Wie bereits erwähnt, kann dieses Problem behoben werden, indem mit einem Software-RAID eine LUN über mehrere Datenträger erstellt wird.
+* Ungleichmäßige Verteilung der E/A-Workload über die verschiedenen Datendateien der SAP-Datenbank. In solchen Fällen kann es vorkommen, dass eine Datendatei das Kontingent recht häufig ausschöpft. Gleichzeitig nutzen andere Datendateien das IOPS-Kontingent eines einzelnen Datenträgers nicht annähernd aus. In solchen Fällen besteht die einfachste Lösung darin, eine LUN über mehrere Datenträger mit einem Software-RAID zu erstellen. 
+* Sie kennen die genaue E/A-Workload pro Datendatei nicht und kennen die IOPS-Gesamtworkload für das DBMS nur ungefähr. Die einfachste Lösung ist das Erstellen einer LUN mithilfe eines Software-RAIDs. Die Summe der Kontingente der verschiedenen Datenträger hinter dieser LUN sollte dann die bekannte IOPS-Rate erfüllen.
 
 - - -
 > ![Windows][Logo_Windows] Windows
 > 
-> Die Verwendung von Speicherplätzen in Windows Server 2012 oder höher ist vorzuziehen, da dies effizienter als Windows-Striping in früheren Windows-Versionen ist. Beachten Sie dabei, dass Sie möglicherweise die Windows-Speicherpools und Speicherplätze mit PowerShell-Befehlen erstellen müssen, wenn Sie Windows Server 2012 als Betriebssystem verwenden. Die PowerShell-Befehle finden Sie unter <https://technet.microsoft.com/library/jj851254.aspx>.
+> Es wird empfohlen, Windows-Speicherplätze zu verwenden, wenn Sie Windows Server 2012 oder höher ausführen. Es ist effizienter als das Windows-Striping früherer Windows-Versionen. Wenn Sie Windows Server 2012 als Betriebssystem verwenden, müssen Sie möglicherweise die Windows-Speicherpools und -Speicherplätze mit PowerShell-Befehlen erstellen. Die PowerShell-Befehle finden Sie unter <https://technet.microsoft.com/library/jj851254.aspx>.
 > 
 > ![Linux][Logo_Linux] Linux
 > 
@@ -465,83 +476,97 @@ Für die Nutzung von VM-Serien, die mit Azure Storage Premium verwendet werden k
 
 * Anforderungen für E/A-Latenzen, die der von den SAN-/NAS-Geräten bereitgestellten Leistung möglichst entsprechen.
 * Anforderungen nach einer um Größenordnungen besseren E/A-Latenz als vom Azure-Standardspeicher bereitgestellt werden kann.
-* Mehr IOPS pro virtuellen Computer als mit mehreren Standardspeicher-VHDs für einen bestimmten virtuellen Computertyp erreicht werden könnten.
+* Mehr IOPS pro VM als mit mehreren Standardspeicherdatenträger für einen bestimmten VM-Typ erreicht werden könnten.
 
-Da der zugrunde liegende Azure-Speicher jede VHD in mindestens drei Speicherknoten repliziert, kann einfaches RAID 0-Striping verwendet werden. Es ist nicht erforderlich, RAID5 oder RAID1 zu implementieren.
+Da die zugrunde liegende Azure Storage-Instanz jeden Datenträger in mindestens drei Speicherknoten repliziert, kann einfaches RAID 0-Striping verwendet werden. Es ist nicht erforderlich, RAID5 oder RAID1 zu implementieren.
 
 ### <a name="10b041ef-c177-498a-93ed-44b3441ab152"></a>Microsoft Azure Storage
-In Microsoft Azure Storage werden der virtuelle Basiscomputer (mit dem Betriebssystem) und VHDs oder BLOBs in mindestens 3 getrennten Speicherknoten gespeichert. Beim Erstellen eines Speicherkontos können verschiedene Schutzoptionen ausgewählt werden:
+In Microsoft Azure Storage werden die Basis-VM (mit dem Betriebssystem) und Datenträger oder BLOBs in mindestens drei getrennten Speicherknoten gespeichert. Beim Erstellen eines Speicherkontos oder eines verwalteten Datenträgers können verschiedene Schutzoptionen ausgewählt werden:
 
 ![Georeplikation für Azure-Speicherkonto aktiviert][dbms-guide-figure-100]
 
 Lokale Azure-Speicherreplikation (lokal redundant) bietet einen Schutz vor Datenverlust durch Ausfall der Infrastruktur, dessen Bereitstellung wenige Kunden leisten könnten. Wie oben gezeigt, gibt es vier verschiedene Optionen und eine fünfte Option, die eine Variation der ersten drei Optionen darstellt. Bei einer genaueren Betrachtung kann wie folgt unterschieden werden:
 
-* **Lokal redundanter Storage Premium-Speicher (LRS)**: Azure Storage Premium bietet Datenträgerunterstützung für hohe Leistung mit geringer Latenz für virtuelle Computer mit E/A-intensiven Workloads. Es gibt 3 Replikate der Daten innerhalb des gleichen Azure-Rechenzentrums in einer Azure-Region. Die Kopien befinden sich in verschiedenen Fehler- und Upgradedomänen (die Konzepte werden in [diesem][planning-guide-3.2] Kapitel des [Planungshandbuchs][planning-guide] erläutert). Wenn ein Replikat der Daten aufgrund des Ausfalls eines Speicherknotens oder Datenträgers nicht mehr verwendet werden kann, wird automatisch ein neues Replikat generiert.
-* **Lokal redundanter Speicher (LRS)**: Es gibt in diesem Fall 3 Replikate der Daten innerhalb des gleichen Azure-Rechenzentrums in einer Azure-Region. Die Kopien befinden sich in verschiedenen Fehler- und Upgradedomänen (die Konzepte werden in [diesem][planning-guide-3.2] Kapitel des [Planungshandbuchs][planning-guide] erläutert). Wenn ein Replikat der Daten aufgrund des Ausfalls eines Speicherknotens oder Datenträgers nicht mehr verwendet werden kann, wird automatisch ein neues Replikat generiert. 
-* **Georedundanter Speicher (GRS):** In diesem Fall erfolgt eine asynchrone Replikation, die zusätzlich drei Replikate der Daten in einer anderen Azure-Region speichert. Diese befindet sich in den meisten Fällen in der gleichen geografischen Region (z.B. „Europa, Norden“ und „Europa, Westen“). Dies führt zu drei zusätzlichen Replikaten, sodass insgesamt sechs Replikate vorhanden sind. Eine Variante hiervon ist eine Ergänzung, bei der die Daten in der georeplizierten Azure-Region für Lesezwecke verwendet werden können (georedundant mit Lesezugriff).
-* **Zonenredundanter Speicher (ZRS)**: In diesem Fall bleiben die 3 Replikate der Daten in der gleichen Azure-Region. Wie in [diesem][planning-guide-3.1] Kapitel des [Planungshandbuchs][planning-guide] erläutert, kann es sich bei einer Azure-Region um eine Reihe von Rechenzentren in unmittelbarer Nähe zueinander handeln. Bei LRS werden die Replikate über die verschiedenen Rechenzentren verteilt, die eine Azure-Region darstellen.
+* **Lokal redundanter Storage Premium-Speicher (LRS)**: Azure Storage Premium bietet Datenträgerunterstützung für hohe Leistung mit geringer Latenz für virtuelle Computer mit E/A-intensiven Workloads. Es gibt drei Replikate der Daten innerhalb des gleichen Azure-Rechenzentrums in einer Azure-Region. Die Kopien befinden sich in verschiedenen Fehler- und Upgradedomänen (die Konzepte werden in [diesem][planning-guide-3.2] Kapitel des [Planungshandbuchs][planning-guide] erläutert). Wenn ein Replikat der Daten aufgrund des Ausfalls eines Speicherknotens oder Datenträgers nicht mehr verwendet werden kann, wird automatisch ein neues Replikat generiert.
+* **Lokal redundanter Speicher (LRS)**: Es gibt in diesem Fall drei Replikate der Daten innerhalb des gleichen Azure-Rechenzentrums in einer Azure-Region. Die Kopien befinden sich in verschiedenen Fehler- und Upgradedomänen (die Konzepte werden in [diesem][planning-guide-3.2] Kapitel des [Planungshandbuchs][planning-guide] erläutert). Wenn ein Replikat der Daten aufgrund des Ausfalls eines Speicherknotens oder Datenträgers nicht mehr verwendet werden kann, wird automatisch ein neues Replikat generiert. 
+* **Georedundanter Speicher (GRS)**: In diesem Fall erfolgt eine asynchrone Replikation, die zusätzlich drei Replikate der Daten in einer anderen Azure-Region speichert. Diese befindet sich in den meisten Fällen in der gleichen geografischen Region (z.B. „Europa, Norden“ und „Europa, Westen“). Dies führt zu drei zusätzlichen Replikaten, sodass insgesamt sechs Replikate vorhanden sind. Eine Variante hiervon ist eine Ergänzung, bei der die Daten in der georeplizierten Azure-Region für Lesezwecke verwendet werden können (georedundant mit Lesezugriff).
+* **Zonenredundanter Speicher (ZRS)**: In diesem Fall bleiben die drei Replikate der Daten in der gleichen Azure-Region. Wie in [diesem][planning-guide-3.1] Kapitel des [Planungshandbuchs][planning-guide] erläutert, kann es sich bei einer Azure-Region um eine Reihe von Rechenzentren in unmittelbarer Nähe zueinander handeln. Bei LRS werden die Replikate über die verschiedenen Rechenzentren verteilt, die eine Azure-Region darstellen.
 
 Weitere Informationen finden Sie [hier][storage-redundancy].
 
 > [!NOTE]
 > Bei DBMS-Bereitstellungen wird die Verwendung von georedundantem Speicher nicht empfohlen.
 > 
-> Die Georeplikation von Azure-Speicher ist asynchron. Die Replikation von einzelnen virtuellen Festplatten, die auf einem einzelnen virtuellen Computer bereitgestellt werden, wird nicht gleichzeitig synchronisiert. Es ist daher nicht möglich, DBMS-Dateien zu replizieren, die über verschiedene VHDs verteilt oder in einem Software-RAID bereitgestellt werden, das auf mehreren virtuellen Festplatten basiert. Für DBMS-Software muss der permanente Datenträgerspeicher in verschiedenen LUNs und zugrunde liegenden Datenträgern/VHDs/Spindeln exakt synchronisiert werden. DBMS-Software verwendet verschiedene Mechanismen zum Sequenzieren von E/A-Schreibvorgängen, und ein DBMS meldet bereits eine Beschädigung des Zieldatenträgerspeichers für die Replikation, wenn die Vorgänge um wenige Millisekunden abweichen. Wenn also eine Datenbankkonfiguration mit einer Datenbank auf mehreren VHDs georepliziert werden soll, muss eine solche Replikation mit Funktionen der Datenbank erfolgen. Sie sollten sich für diese Aufgabe nicht auf die Georeplikation von Azure-Speicher verlassen. 
+> Die Georeplikation von Azure-Speicher ist asynchron. Die Replikation von einzelnen Datenträgern, die auf einer einzelnen VM bereitgestellt werden, wird nicht gleichzeitig synchronisiert. Es ist daher nicht möglich, DBMS-Dateien zu replizieren, die über verschiedene Datenträger verteilt oder in einem Software-RAID bereitgestellt werden, das auf mehreren Datenträgern basiert. Für DBMS-Software muss der permanente Datenträgerspeicher in verschiedenen LUNs und zugrunde liegenden Datenträgern/Spindeln exakt synchronisiert werden. DBMS-Software verwendet verschiedene Mechanismen zum Sequenzieren von E/A-Schreibvorgängen, und ein DBMS meldet bereits eine Beschädigung des Zieldatenträgerspeichers für die Replikation, wenn die Vorgänge um wenige Millisekunden abweichen. Wenn also eine Datenbankkonfiguration mit einer Datenbank auf mehreren Datenträgern georepliziert werden soll, muss eine solche Replikation mit Funktionen der Datenbank erfolgen. Sie sollten sich für diese Aufgabe nicht auf die Georeplikation von Azure-Speicher verlassen. 
 > 
-> Das Problem kann am einfachsten anhand eines Beispielsystems erläutert werden. Angenommen, Sie haben ein SAP-System in Azure hochgeladen, das 8 VHDs mit Datendateien des DBMS sowie eine VHD mit der Transaktionsprotokolldatei umfasst. Auf jede dieser neun VHDs werden Daten in konsistenter Weise gemäß dem DBMS geschrieben, unabhängig davon, ob sie in die Daten- oder Transaktionsprotokolldateien geschrieben werden.
+> Das Problem kann am einfachsten anhand eines Beispielsystems erläutert werden. Angenommen, Sie haben ein SAP-System in Azure hochgeladen, das acht Datenträger mit Datendateien des DBMS sowie einen Datenträger mit der Transaktionsprotokolldatei umfasst. Auf jedem dieser neun Datenträger werden Daten in konsistenter Weise gemäß dem DBMS geschrieben, unabhängig davon, ob sie in die Daten- oder Transaktionsprotokolldateien geschrieben werden.
 > 
-> Damit die Daten ordnungsgemäß georepliziert werden und ein konsistentes Datenbankimage beibehalten wird, muss der Inhalt aller neun VHDs in genau der Reihenfolge georepliziert werden, in der die E/A-Vorgänge auf den neun unterschiedlichen VHDs ausgeführt wurden. Allerdings können bei der Georeplikation von Azure-Speicher keine Abhängigkeiten zwischen VHDs deklariert werden. Dies bedeutet, dass bei der Georeplikation von Microsoft Azure Storage nicht bekannt ist, dass die Inhalte dieser neun verschiedenen VHDs zusammenhängen und dass die Datenänderungen nur dann konsistent sind, wenn sie in der Reihenfolge repliziert werden, in der die E/A-Vorgänge auf den neun VHDs ausgeführt wurden.
+> Damit die Daten ordnungsgemäß georepliziert werden und ein konsistentes Datenbankimage beibehalten wird, muss der Inhalt aller neun Datenträger in genau der Reihenfolge georepliziert werden, in der die E/A-Vorgänge auf den neun unterschiedlichen Datenträgern ausgeführt wurden. Allerdings können bei der Georeplikation von Azure Storage keine Abhängigkeiten zwischen Datenträgern deklariert werden. Dies bedeutet, dass bei der Georeplikation von Microsoft Azure Storage nicht bekannt ist, dass die Inhalte dieser neun verschiedenen Datenträger zusammenhängen und dass die Datenänderungen nur dann konsistent sind, wenn sie in der Reihenfolge repliziert werden, in der die E/A-Vorgänge auf den neun Datenträgern ausgeführt wurden.
 > 
 > Neben dem hohen Risiko, dass die georeplizierten Images in diesem Szenario kein konsistentes Datenbankimage bieten, tritt auch eine Leistungsbeeinträchtigung beim georedundanten Speicher auf, die die Leistung erheblich senken kann. Zusammengefasst bedeutet dies, dass Sie diese Art der Speicherredundanz für DBMS-Workloads nicht verwenden sollten.
 > 
 > 
 
 #### <a name="mapping-vhds-into-azure-virtual-machine-service-storage-accounts"></a>Zuordnen von VHDs in Dienstspeicherkonten von virtuellen Azure-Computern
+Dieses Kapitel gilt nur für Azure Storage-Konten. Die in diesem Kapitel beschriebenen Einschränkungen gelten nicht, wenn Sie vorhaben, Managed Disks zu verwenden. Weitere Informationen zu Managed Disks finden Sie im Kapitel [Managed Disks][dbms-guide-managed-disks] dieses Handbuchs.
+
 Ein Azure-Speicherkonto ist nicht nur ein Konzept für Verwaltungsaufgaben, sondern stellt auch eine Gruppe von Einschränkungen dar. Diese Einschränkungen unterscheiden sich abhängig davon, ob sie sich auf ein Konto mit Azure-Standardspeicher oder Azure Storage Premium beziehen. Die genauen Funktionen und Einschränkungen werden [hier][storage-scalability-targets] aufgeführt.
 
-Es ist daher für Azure Storage Standard wichtig festzustellen, dass die IOPS pro Speicherkonto beschränkt sind (siehe Zeile „Gesamtanfragerate“ in [diesem Artikel][storage-scalability-targets]). Es gibt außerdem eine anfängliche Einschränkung von maximal 100 Speicherkonten pro Azure-Abonnement (Stand Juli 2015). Aus diesem Grund wird empfohlen, bei Verwendung von Azure-Standardspeicher die IOPS von virtuellen Computern zwischen mehreren Speicherkonten aufzuteilen. Für einen einzelnen virtuellen Computer wird im Idealfall ein Speicherkonto verwendet. In DBMS-Bereitstellungen, in denen jede virtuelle Festplatte, die in Azure-Standardspeicher gehostet wird, die Kontingentgrenze erreichen kann, sollten Sie nur 30 bis 40 VHDs pro Azure-Speicherkonto bereitstellen, das Azure-Standardspeicher verwendet. Wenn Sie jedoch Azure Storage Premium nutzen und große Datenbankmengen gespeichert werden sollen, sollte es im Hinblick auf IOPS keine Probleme geben. Für ein Azure Storage Premium-Speicherkonto gelten jedoch mehr Einschränkungen für die Datenmenge als für Konten mit Azure-Standardspeicher. Daher können Sie bei einem Konto mit Azure Storage Premium nur eine begrenzte Anzahl von VHDs bereitstellen, bevor die Grenze für das Datenvolumen erreicht wird. Betrachten Sie als Fazit ein Azure-Speicherkonto als „virtuelles SAN“ mit eingeschränkten Funktionen für IOPS und/oder Kapazität. Die Aufgabe besteht daher, wie bei lokalen Bereitstellungen, darin, das Layout der VHDs der unterschiedlichen SAP-Systeme auf den verschiedenen „imaginären SAN-Geräten“ oder Azure-Speicherkonten zu definieren.
+Es ist daher für Azure Storage Standard wichtig festzustellen, dass die IOPS pro Speicherkonto beschränkt sind (siehe Zeile „Gesamtanfragerate“ in [diesem Artikel][storage-scalability-targets]). Es gibt außerdem eine anfängliche Einschränkung von maximal 100 Speicherkonten pro Azure-Abonnement (Stand Juli 2015). Aus diesem Grund wird empfohlen, bei Verwendung von Azure-Standardspeicher die IOPS von virtuellen Computern zwischen mehreren Speicherkonten aufzuteilen. Für einen einzelnen virtuellen Computer wird im Idealfall ein Speicherkonto verwendet. In DBMS-Bereitstellungen, in denen jede virtuelle Festplatte, die in Azure-Standardspeicher gehostet wird, die Kontingentgrenze erreichen kann, sollten Sie nur 30 bis 40 VHDs pro Azure-Speicherkonto bereitstellen, das Azure-Standardspeicher verwendet. Wenn Sie jedoch Azure Storage Premium nutzen und große Datenbankmengen gespeichert werden sollen, sollte es im Hinblick auf IOPS keine Probleme geben. Für ein Azure Storage Premium-Speicherkonto gelten jedoch mehr Einschränkungen für die Datenmenge als für Konten mit Azure-Standardspeicher. Daher können Sie bei einem Konto mit Azure Storage Premium nur eine begrenzte Anzahl von VHDs bereitstellen, bevor die Grenze für das Datenvolumen erreicht wird. Betrachten Sie als Fazit ein Azure Storage-Konto als „virtuelles SAN“ mit eingeschränkten Funktionen für IOPS und/oder Kapazität. Die Aufgabe besteht daher, wie bei lokalen Bereitstellungen, darin, das Layout der VHDs der unterschiedlichen SAP-Systeme auf den verschiedenen „imaginären SAN-Geräten“ oder Azure-Speicherkonten zu definieren.
 
-Für Azure-Standardspeicher wird empfohlen, möglichst keinen Speicher aus verschiedenen Speicherkonten auf einem virtuellen Computer zu präsentieren.
+Für Azure-Standardspeicher wird empfohlen, möglichst keinen Speicher aus verschiedenen Speicherkonten auf einer VM zu präsentieren.
 
-Mit der DS- oder GS-Serie von virtuellen Azure-Computern ist es jedoch möglich, VHDs aus Azure-Standardspeicherkonten und Storage Premium-Konten bereitzustellen. In Anwendungsfällen wie dem Schreiben von Sicherungen auf VHDs mit Standardspeicher, wobei DBMS-Daten- und Protokolldateien in Storage Premium gespeichert sind, könnte eine solche heterogene Speicherung genutzt werden. 
+Mit der DS- oder GS-Serie von Azure-VMs ist es jedoch möglich, VHDs aus Azure-Standardspeicherkonten und Storage Premium-Konten bereitzustellen. In Anwendungsfällen wie dem Schreiben von Sicherungen auf VHDs mit Standardspeicher und DBMS-Daten- und Protokolldateien in Storage Premium könnte eine solche heterogene Speicherung genutzt werden. 
 
 Basierend auf Kundenbereitstellungen und Tests können etwa 30 bis 40 VHDs mit Datenbankdateien und Protokolldateien in einem einzelnen Azure-Standardspeicherkonto bereitgestellt und dabei eine akzeptable Leistung erzielt werden. Wie bereits erwähnt, ergeben sich die Einschränkungen bei Konten mit Azure Storage Premium mit hoher Wahrscheinlichkeit aus der Datenkapazität und nicht aus IOPS.
 
-Wie bei lokalen SAN-Geräten ist für die Freigabe eine Überwachung erforderlich, um Engpässe in einem Azure-Speicherkonto zu erkennen. Mit der Azure-Überwachungserweiterung für SAP und dem Azure-Portal können Azure-Speicherkonten mit hoher Auslastung ermittelt werden, die eine suboptimale E/A-Leistung aufweisen können.  Wenn diese Situation erkannt wird, sollten Sie stark ausgelastete virtuelle Computer in ein anderes Azure-Speicherkonto verschieben. Im [Bereitstellungshandbuch][deployment-guide] finden Sie weitere Informationen zum Aktivieren der Funktionen für die SAP-Hostüberwachung.
+Wie bei lokalen SAN-Geräten ist für die Freigabe eine Überwachung erforderlich, um Engpässe in einem Azure-Speicherkonto zu erkennen. Mit der Azure-Überwachungserweiterung für SAP und dem Azure-Portal können Azure Storage-Konten mit hoher Auslastung ermittelt werden, die eine suboptimale E/A-Leistung aufweisen können.  Wenn diese Situation erkannt wird, sollten Sie stark ausgelastete VMs in ein anderes Azure Storage-Konto verschieben. Im [Bereitstellungshandbuch][deployment-guide] finden Sie weitere Informationen zum Aktivieren der Funktionen für die SAP-Hostüberwachung.
 
 Einen anderen Artikel mit einer Zusammenfassung von Best Practices zu Azure Storage Standard und Azure Storage Standard-Konten finden Sie hier: <https://blogs.msdn.com/b/mast/archive/2014/10/14/configuring-azure-virtual-machines-for-optimal-storage-performance.aspx>.
 
-#### <a name="moving-deployed-dbms-vms-from-azure-standard-storage-to-azure-premium-storage"></a>Verschieben von bereitgestellten virtuellen DBMS-Computern aus dem Azure-Standardspeicher in Azure Storage Premium
-Es gibt einige Szenarien, in denen Sie als Kunde einen bereitgestellten virtuellen Computer aus Azure-Standardspeicher in Azure Storage Premium verschieben möchten. Dies ist nur möglich, wenn die Daten physisch verschoben werden. Es gibt mehrere Möglichkeiten, um dieses Ziel zu erreichen.
+#### <a name="f42c6cb5-d563-484d-9667-b07ae51bce29"></a>Managed Disks
+Bei Managed Disks handelt es sich um einen neuen Ressourcentyp in Azure Resource Manager, der anstelle von in Azure Storage-Konten gespeicherten VHDs verwendet werden kann. Managed Disks lässt sich automatisch an die Verfügbarkeitsgruppe des virtuellen Computers ausrichten, mit der es verbunden ist, und erhöht daher die Verfügbarkeit Ihres virtuellen Computers sowie der Dienste, die auf dem virtuellen Computer ausgeführt werden. Weitere Informationen finden Sie im [Übersichtsartikel](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview).
 
-* Sie können einfach alle virtuellen Festplatten, die Basis-VHD sowie die Daten-VHDs in ein neues Konto mit Azure Storage Premium kopieren. Sehr häufig wird die Anzahl von VHDs in Azure-Standardspeicher nicht aufgrund der Tatsache ausgewählt, dass das Datenvolumen benötigt wird. Die Anzahl der virtuellen Festplatten war vielmehr für den gewünschten IOPS-Wert erforderlich. Bei einem Wechsel zu Azure Storage Premium benötigen Sie deutlich weniger VHDs, um den gleichen IOPS-Durchsatz zu erzielen. Angesichts der Tatsache, dass Sie beim Azure-Standardspeicher für die Datennutzung und nicht für die nominale Datenträgergröße bezahlen, ist die Anzahl der virtuellen Festplatten im Hinblick auf die Kosten nicht ausschlaggebend. Bei Azure Storage Premium bemessen sich die Kosten allerdings nach der nominalen Datenträgergröße. Die meisten Kunden versuchen daher, die Anzahl der Azure-VHDs in Storage Premium auf die Anzahl zu beschränken, die für den erforderlichen IOPS-Durchsatz benötigt wird. Daher entscheiden sie sich in den meisten Fällen dagegen, einfach 1:1 zu kopieren.
+SAP unterstützt derzeit nur Managed Disks Premium. Weitere Informationen finden Sie im SAP-Hinweis [1928533].
+
+#### <a name="moving-deployed-dbms-vms-from-azure-standard-storage-to-azure-premium-storage"></a>Verschieben von bereitgestellten virtuellen DBMS-Computern aus dem Azure-Standardspeicher in Azure Storage Premium
+Es gibt einige Szenarien, in denen Sie als Kunde einen bereitgestellten virtuellen Computer aus Azure-Standardspeicher in Azure Storage Premium verschieben möchten. Wenn Ihre Datenträger in Azure Storage-Konten gespeichert sind, ist dies nur durch physisches Verschieben der Daten möglich. Es gibt mehrere Möglichkeiten, um dieses Ziel zu erreichen.
+
+* Sie können einfach alle virtuellen Festplatten, die Basis-VHD sowie die Daten-VHDs in ein neues Konto mit Azure Storage Premium kopieren. Häufig wird die Anzahl von VHDs in Azure-Standardspeicher nicht aufgrund der Tatsache ausgewählt, dass das Datenvolumen benötigt wird. Die Anzahl der virtuellen Festplatten war vielmehr für den gewünschten IOPS-Wert erforderlich. Bei einem Wechsel zu Azure Storage Premium benötigen Sie deutlich weniger VHDs, um den gleichen IOPS-Durchsatz zu erzielen. Angesichts der Tatsache, dass Sie beim Azure-Standardspeicher für die Datennutzung und nicht für die nominale Datenträgergröße bezahlen, ist die Anzahl der virtuellen Festplatten im Hinblick auf die Kosten nicht ausschlaggebend. Bei Azure Storage Premium bemessen sich die Kosten allerdings nach der nominalen Datenträgergröße. Die meisten Kunden versuchen daher, die Anzahl der Azure-VHDs in Storage Premium auf die Anzahl zu beschränken, die für den erforderlichen IOPS-Durchsatz benötigt wird. Daher entscheiden sie sich in den meisten Fällen dagegen, einfach 1:1 zu kopieren.
 * Wenn noch keine Bereitstellung erfolgt ist, stellen Sie eine einzelne VHD mit einer Datenbanksicherung Ihrer SAP-Datenbank bereit. Nach der Sicherung heben Sie die Bereitstellung aller virtuellen Festplatten auf, einschließlich der virtuellen Festplatte mit der Sicherung, und kopieren die Basis-VHD und die VHD mit der Sicherung in ein Azure Storage Premium-Konto. Dann stellen Sie den virtuellen Computer auf Grundlage der Basis-VHD und die virtuelle Festplatte mit der Sicherung bereit. Jetzt erstellen Sie zusätzliche leere Storage Premium-Datenträger für den virtuellen Computer, die zum Wiederherstellen der Datenbank verwendet werden. Dabei wird davon ausgegangen, dass das DBMS das Ändern von Pfaden für Daten- und Protokolldateien im Rahmen der Wiederherstellung zulässt.
 * Eine andere Möglichkeit ist eine Variante des ersten Verfahrens, wobei Sie nur die Sicherungs-VHD in Azure Storage Premium kopieren und dann an einen virtuellen Computer anfügen, den Sie neu bereitgestellt und installiert haben.
 * Die vierte Möglichkeit wählen Sie, wenn Sie die Anzahl der Datendateien in der Datenbank ändern müssen. In diesem Fall führen Sie eine homogene SAP-Systemkopie mit Export/Import aus. Speichern Sie diese Exportdateien auf einer VHD, die in ein Azure Storage Premium-Konto kopiert wird, und fügen Sie sie an einen virtuellen Computer an, mit dem Sie die Importvorgänge ausführen. Kunden nutzen diese Möglichkeit vor allem dann, wenn die Anzahl der Datendateien verringert werden soll.
 
+Wenn Sie Managed Disks verwenden, können Sie eine Migration auf Storage Premium durchführen:
+
+1. Heben Sie die Zuordnung des virtuellen Computers auf.
+2. Ändern Sie ggf. die Größe des virtuellen Computers in eine Größe, die Storage Premium (z.B. DS oder GS) unterstützt.
+3. Ändern Sie den Kontotyp „Verwalteter Datenträger“ in „Premium (SSD)“.
+4. Starten des virtuellen Computers
+
 ### <a name="deployment-of-vms-for-sap-in-azure"></a>Bereitstellung von virtuellen Computern für SAP in Azure
-Microsoft Azure bietet mehrere Methoden zum Bereitstellen virtueller Computer und zugehöriger Datenträger. Daher ist es wichtig, die Unterschiede zu kennen, da die Vorbereitung der virtuellen Computer abhängig von der Bereitstellungsart ist. Allgemein werden die in den folgenden Kapiteln beschriebenen Szenarien betrachtet.
+Microsoft Azure bietet verschiedene Methoden der Bereitstellung von VMs und der zugehörigen Datenträger. Daher ist es wichtig, die Unterschiede zu kennen, da die Vorbereitung der VMs von der Bereitstellungsart abhängt. Allgemein werden die in den folgenden Kapiteln beschriebenen Szenarien betrachtet.
 
 #### <a name="deploying-a-vm-from-the-azure-marketplace"></a>Bereitstellen eines virtuellen Computers aus dem Azure Marketplace
-Sie möchten ein Image aus dem Azure Marketplace für die Bereitstellung des virtuellen Computers verwenden, das von Microsoft oder einem Drittanbieter stammt. Nachdem Sie Ihren virtuellen Computer in Azure bereitgestellt haben, verwenden Sie dieselben Richtlinien und Tools zum Installieren der SAP-Software auf dem virtuellen Computer wie in einer lokalen Umgebung. Für die Installation der SAP-Software auf dem virtuellen Azure-Computer empfehlen SAP und Microsoft das Hochladen und Speichern der SAP-Installationsmedien in Azure-VHDs oder das Erstellen eines virtuellen Azure-Computers, der als „Dateiserver“ fungiert und die erforderlichen SAP-Installationsmedien enthält.
+Sie möchten ein Image aus dem Azure Marketplace für die Bereitstellung der VM verwenden, die von Microsoft oder einem Drittanbieter stammt. Nachdem Sie Ihren virtuellen Computer in Azure bereitgestellt haben, verwenden Sie dieselben Richtlinien und Tools zum Installieren der SAP-Software auf dem virtuellen Computer wie in einer lokalen Umgebung. Für die Installation der SAP-Software auf der Azure-VM empfehlen SAP und Microsoft das Hochladen und Speichern der SAP-Installationsmedien auf Datenträgern oder das Erstellen einer Azure-VM, die als „Dateiserver“ fungiert und die erforderlichen SAP-Installationsmedien enthält.
 
-#### <a name="deploying-a-vm-with-a-customer-specific-generalized-image"></a>Bereitstellen eines virtuellen Computers mit einem kundenspezifischen generalisierten Image
-Aufgrund spezifischer Patch-Erfordernisse im Hinblick auf die Betriebssystem- oder DBMS-Version sind die im Azure Marketplace erhältlichen Images möglicherweise nicht für Ihren Bedarf geeignet. Daher muss möglicherweise anhand eines eigenen, benutzerdefinierten OS-/DBMS-Images ein virtueller Computer erstellt werden, der anschließend mehrmals bereitgestellt werden kann. Um ein solches „privates“ Image für die Duplizierung vorzubereiten, muss das Betriebssystem auf dem lokalen virtuellen Computer generalisiert werden. Im [Bereitstellungshandbuch][deployment-guide] finden Sie ausführliche Informationen zum Generalisieren eines virtuellen Computers.
+#### <a name="deploying-a-vm-with-a-customer-specific-generalized-image"></a>Bereitstellen einer VM mit einem kundenspezifischen generalisierten Image
+Aufgrund der spezifischen Patchanforderungen Ihrer Betriebssystem- bzw. DBMS-Version sind die im Azure Marketplace erhältlichen Images möglicherweise nicht für Ihren Bedarf geeignet. Daher muss möglicherweise anhand eines eigenen, benutzerdefinierten OS/DBMS-VM-Images eine VM erstellt werden, die anschließend mehrmals bereitgestellt werden kann. Um ein solches „privates“ Image für die Duplizierung vorzubereiten, muss das Betriebssystem auf der lokalen VM generalisiert werden. Im [Bereitstellungshandbuch][deployment-guide] finden Sie ausführliche Informationen zum Generalisieren einer VM.
 
 Wenn Sie auf Ihrer lokalen VM bereits SAP-Inhalte installiert haben (insbesondere bei zweischichtigen Systemen), können Sie die SAP-Systemeinstellungen nach der Bereitstellung der Azure-VM über das vom SAP Software Provisioning Manager unterstützte Verfahren zum Umbenennen von Instanzen anpassen (SAP-Hinweis [1619720]). Andernfalls können Sie die SAP-Software auch später, nach der Bereitstellung des virtuellen Azure-Computers installieren.
 
-Bezüglich des von der SAP-Anwendung verwendeten Datenbankinhalts können Sie den Inhalt entweder durch eine SAP-Installation neu generieren, oder Sie können die Inhalte in Azure importieren, indem Sie eine VHD mit einer DBMS-Datenbanksicherung oder Funktionen des DBMS verwenden, um eine Sicherung direkt in Microsoft Azure Storage durchzuführen. In diesem Fall könnten Sie auch VHDs mit den DBMS Daten- und Protokolldateien lokal vorbereiten und diese dann als Datenträger in Azure importieren. Die Übertragung von DBMS-Daten, die aus einer lokalen Bereitstellung in Azure geladen werden, müsste jedoch über VHDs erfolgen, die lokal vorbereitet werden müssen.
+Bezüglich des von der SAP-Anwendung verwendeten Datenbankinhalts können Sie den Inhalt entweder durch eine SAP-Installation neu generieren, oder Sie können die Inhalte in Azure importieren, indem Sie eine VHD mit einer DBMS-Datenbanksicherung oder Funktionen des DBMS verwenden, um eine Sicherung direkt in Microsoft Azure Storage durchzuführen. In diesem Fall könnten Sie auch VHDs mit den DBMS Daten- und Protokolldateien lokal vorbereiten und diese dann als Datenträger in Azure importieren. Die Übertragung von DBMS-Daten, die aus einer lokalen Bereitstellung in Azure geladen werden, müsste jedoch über VHD-Datenträger erfolgen, die lokal vorbereitet werden müssen.
 
 #### <a name="moving-a-vm-from-on-premises-to-azure-with-a-non-generalized-disk"></a>Verschieben eines virtuellen lokalen Computers mit einem nicht generalisierten Datenträger in Azure
-Sie planen, ein bestimmtes lokales SAP-System in Azure zu verschieben („Lift and Shift“). Dies kann erfolgen, indem Sie die VHD mit dem Betriebssystem, SAP- und DBMS-Binärdateien sowie die VHDs mit den Daten- und Protokolldateien des DBMS in Azure hochladen. Im Gegensatz zu Szenario 2 oben werden Hostname, SAP SID und SAP-Benutzerkonten auf dem virtuellen Azure Computer entsprechend der Konfiguration in der lokalen Umgebung beibehalten. Daher ist eine Generalisierung des Images nicht erforderlich. Dieser Anwendungsfall gilt hauptsächlich für standortübergreifende Szenarien, bei denen ein Teil der SAP-Landschaft lokal und Teile in Azure ausgeführt werden.
+Sie planen, ein bestimmtes lokales SAP-System in Azure zu verschieben („Lift and Shift“). Dies kann erfolgen, indem Sie den Datenträger mit dem Betriebssystem, SAP- und DBMS-Binärdateien sowie die Datenträger mit den Daten- und Protokolldateien des DBMS in Azure hochladen. Im Gegensatz zu Szenario 2 oben werden Hostname, SAP SID und SAP-Benutzerkonten auf der Azure-VM entsprechend der Konfiguration in der lokalen Umgebung beibehalten. Daher ist eine Generalisierung des Images nicht erforderlich. Dieser Anwendungsfall gilt hauptsächlich für standortübergreifende Szenarien, bei denen ein Teil der SAP-Landschaft lokal und Teile in Azure ausgeführt werden.
 
 ## <a name="871dfc27-e509-4222-9370-ab1de77021c3"></a>Hohe Verfügbarkeit und Notfallwiederherstellung mit virtuellen Azure-Computern
-Azure bietet die folgenden Funktionen für hohe Verfügbarkeit (High Availability, HA) und Notfallwiederherstellung (Disaster Recovery, DR), die sich auf verschiedene, in SAP- und DBMS-Bereitstellungen verwendete Komponenten beziehen.
+Azure bietet die folgenden Funktionen für Hochverfügbarkeit (High Availability, HA) und Notfallwiederherstellung (Disaster Recovery, DR), die sich auf verschiedene, in SAP- und DBMS-Bereitstellungen verwendete Komponenten beziehen.
 
 ### <a name="vms-deployed-on-azure-nodes"></a>In Azure-Knoten bereitgestellte virtuelle Computer
-Der Azure-Plattform bietet keine Features wie die Livemigration für bereitgestellte virtuelle Computer. Dies bedeutet, dabei bei Wartungen an einem Servercluster, auf dem ein virtueller Computer bereitgestellt wird, der virtuelle Computer beendet und neu gestartet werden muss. Die Wartung in Azure erfolgt über sogenannte Upgradedomänen innerhalb von Serverclustern. Es wird jeweils nur eine Upgradedomäne gewartet. Bei einem solchen Neustart tritt eine Betriebsunterbrechung auf, während der virtuelle Computer heruntergefahren, die Wartung durchgeführt und der virtuelle Computer neu gestartet wird. Die meisten DBMS-Hersteller bieten jedoch Funktionen für Hochverfügbarkeit und Notfallwiederherstellung, mit denen die DBMS-Dienste schnell auf einem anderen Knoten neu gestartet werden, wenn der primäre Knoten nicht verfügbar ist. Die Azure-Plattform bietet Funktionen zum Verteilen von virtuellen Computern, Speicher und anderen Azure-Diensten auf Upgradedomänen, um sicherzustellen, dass geplante Wartungsarbeiten oder Infrastrukturausfälle nur eine kleine Teilmenge von virtuellen Computern oder Diensten betreffen.  Bei sorgfältiger Planung ist es möglich, Verfügbarkeitsniveaus zu erreichen, die mit lokalen Infrastrukturen vergleichbar sind.
+Der Azure-Plattform bietet keine Features wie die Livemigration für bereitgestellte virtuelle Computer. Dies bedeutet, dabei bei Wartungen an einem Servercluster, auf dem ein virtueller Computer bereitgestellt wird, der virtuelle Computer beendet und neu gestartet werden muss. Die Wartung in Azure erfolgt über sogenannte Upgradedomänen innerhalb von Serverclustern. Es wird jeweils nur eine Upgradedomäne gewartet. Bei einem solchen Neustart tritt eine Unterbrechung des Diensts auf, während die VM heruntergefahren, die Wartung durchgeführt und die VM neu gestartet wird. Die meisten DBMS-Hersteller bieten jedoch Funktionen für Hochverfügbarkeit und Notfallwiederherstellung, mit denen die DBMS-Dienste schnell auf einem anderen Knoten neu gestartet werden, wenn der primäre Knoten nicht verfügbar ist. Die Azure-Plattform bietet Funktionen zum Verteilen von VMs, Speicher und anderen Azure-Diensten auf Upgradedomänen, um sicherzustellen, dass geplante Wartungsarbeiten oder Infrastrukturfehler nur eine kleine Teilmenge von VMs oder Diensten betreffen.  Bei sorgfältiger Planung ist es möglich, Verfügbarkeitsniveaus zu erreichen, die mit lokalen Infrastrukturen vergleichbar sind.
 
-Bei Microsoft Azure-Verfügbarkeitsgruppen handelt es sich um eine logische Gruppierung von virtuellen Computern oder Diensten, mit der sichergestellt wird, dass virtuelle Computer und andere Dienste auf verschiedene Fehler- und Upgradedomänen innerhalb eines Clusters verteilt werden, damit zu jedem Zeitpunkt nur ein Knoten heruntergefahren wird (in [diesem Artikel][virtual-machines-manage-availability] finden Sie weitere Informationen).
+Bei Microsoft Azure-Verfügbarkeitsgruppen handelt es sich um eine logische Gruppierung von VMs oder Diensten, mit der sichergestellt wird, dass VMs und andere Dienste auf verschiedene Fehler- und Upgradedomänen innerhalb eines Clusters verteilt werden, damit zu jedem Zeitpunkt nur ein Knoten heruntergefahren wird (in [diesem Artikel (Linux)][virtual-machines-manage-availability-linux] oder [diesem Artikel (Windows)][virtual-machines-manage-availability-windows] finden Sie weitere Informationen).
 
 Die Konfiguration muss beim Einführen von virtuellen Computern entsprechend dem Zweck erfolgen, wie im Folgenden gezeigt:
 
@@ -550,17 +575,17 @@ Die Konfiguration muss beim Einführen von virtuellen Computern entsprechend dem
 Wenn hochverfügbare Konfigurationen von DBMS-Bereitstellungen erstellt werden sollen (unabhängig von den einzelnen benötigten DBMS-HA-Funktionen), müssen die virtuellen DBMS-Computer Folgendes erfüllen:
 
 * Fügen Sie die virtuellen Computer derselben Azure Virtual Network-Instanz hinzu (<https://azure.microsoft.com/documentation/services/virtual-network/>).
-* Die virtuellen Computer der HA-Konfiguration sollten sich auch im gleichen Subnetz befinden. Die Namensauflösung zwischen den verschiedenen Subnetzen ist in Nur-Cloud-Bereitstellungen nicht möglich, nur die IP-Auflösung. Bei der Verwendung von Site-to-Site- oder ExpressRoute-Verbindungen für standortübergreifende Bereitstellungen ist ein Netzwerk mit mindestens einem Subnetz bereits eingerichtet. Die Auflösung erfolgt gemäß den lokalen AD-Richtlinien und der Netzwerkinfrastruktur. 
+* Die virtuellen Computer der HA-Konfiguration sollten sich auch im gleichen Subnetz befinden. Die Namensauflösung zwischen den verschiedenen Subnetzen ist in Nur-Cloud-Bereitstellungen nicht möglich, nur die IP-Auflösung. Bei der Verwendung von Site-to-Site- oder ExpressRoute-Konnektivität für standortübergreifende Bereitstellungen ist ein Netzwerk mit mindestens einem Subnetz bereits eingerichtet. Die Namensauflösung erfolgt gemäß den lokalen AD-Richtlinien und der Netzwerkinfrastruktur. 
 
 [comment]: <> (MSSedusch TODO Prüfen, ob weiterhin für ARM zutreffend)
 
 #### <a name="ip-addresses"></a>IP-Adressen
 Es wird dringend empfohlen, die virtuellen Computer für HA-Konfigurationen robust einzurichten. Die Adressierung der HA-Partner mit IP-Adressen innerhalb der HA-Konfiguration ist in Azure nur dann zuverlässig, wenn statische IP-Adressen verwendet werden. Es gibt zwei Konzepte von „Herunterfahren“ in Azure:
 
-* Das Herunterfahren über das Azure-Portal oder das Azure PowerShell-Cmdlet „Stop-AzureRmVM“: In diesem Fall wird der virtuelle Computer heruntergefahren, und die Zuordnung wird aufgehoben. Für Ihr Azure-Konto wird dieser virtuelle Computer nicht mehr in Rechnung gestellt, es fallen daher lediglich Kosten für den verwendeten Speicher an. Wenn jedoch die private IP-Adresse der Netzwerkschnittstelle nicht statisch war, wird die IP-Adresse freigegeben, und es ist nicht sichergestellt, dass der Netzwerkschnittstelle nach einem Neustart des virtuellen Computers wieder die alte IP-Adresse zugewiesen wird . Das Herunterfahren über das Azure-Portal oder durch Aufrufen von „Stop-AzureRmVM“ führt automatisch zur Aufhebung der Zuordnung. Wenn die Zuordnung für den Computer nicht aufgehoben werden soll, verwenden Sie „Stop-AzureRmVM -StayProvisioned“. 
-* Wenn Sie den virtuellen Computer auf Betriebssystemebene herunterfahren, wird er heruntergefahren und die Zuordnung wird NICHT aufgehoben. Allerdings wird der virtuelle Computer weiter für Ihr Azure-Konto in Rechnung gestellt, auch wenn er heruntergefahren wurde. In einem solchen Fall bleibt die Zuweisung der IP-Adresse zu einem angehaltenen virtuellen Computer unverändert. Das interne Herunterfahren des virtuellen Computers erzwingt nicht automatisch die Aufhebung der Zuordnung.
+* Das Herunterfahren über das Azure-Portal oder das Azure PowerShell-Cmdlet „Stop-AzureRmVM“: In diesem Fall wird der virtuelle Computer heruntergefahren, und die Zuordnung wird aufgehoben. Für Ihr Azure-Konto wird diese VM nicht mehr in Rechnung gestellt, es fallen daher lediglich Kosten für den verwendeten Speicher an. Wenn jedoch die private IP-Adresse der Netzwerkschnittstelle nicht statisch war, wird die IP-Adresse freigegeben, und es ist nicht sichergestellt, dass der Netzwerkschnittstelle nach einem Neustart des virtuellen Computers wieder die alte IP-Adresse zugewiesen wird . Das Herunterfahren über das Azure-Portal oder durch Aufrufen von „Stop-AzureRmVM“ führt automatisch zur Aufhebung der Zuordnung. Wenn die Zuordnung für den Computer nicht aufgehoben werden soll, verwenden Sie „Stop-AzureRmVM -StayProvisioned“. 
+* Wenn Sie den virtuellen Computer auf Betriebssystemebene herunterfahren, wird er heruntergefahren und die Zuordnung wird NICHT aufgehoben. Allerdings wird die VM weiter für Ihr Azure-Konto in Rechnung gestellt, auch wenn sie heruntergefahren wurde. In einem solchen Fall bleibt die Zuweisung der IP-Adresse zu einer angehaltenen VM unverändert. Das interne Herunterfahren der VM erzwingt nicht automatisch die Aufhebung der Zuordnung.
 
-Auch bei standortübergreifenden Szenarien bedeuten das Herunterfahren und Aufheben der Zuordnung standardmäßig, dass die Zuweisung von IP-Adressen auf dem virtuellen Computer aufgehoben wird, auch wenn dies von den lokalen Richtlinien in den DHCP-Einstellungen abweicht. 
+Auch bei standortübergreifenden Szenarien bedeuten das Herunterfahren und Aufheben der Zuordnung standardmäßig, dass die Zuweisung von IP-Adressen auf der VM aufgehoben wird, auch wenn dies von den lokalen Richtlinien in den DHCP-Einstellungen abweicht. 
 
 * Eine Ausnahme stellt die Situation dar, wenn einer Netzwerkschnittstelle eine statische IP-Adresse zugewiesen wird, wie [hier][virtual-networks-reserved-private-ip] beschrieben.
 * In diesem Fall bleibt die IP-Adresse konstant, solange die Netzwerkschnittstelle nicht gelöscht wird.
@@ -571,35 +596,35 @@ Auch bei standortübergreifenden Szenarien bedeuten das Herunterfahren und Aufhe
 > 
 
 ## <a name="deployment-of-host-monitoring"></a>Bereitstellen der Hostüberwachung
-Für die produktive Verwendung von SAP-Anwendungen auf virtuellen Azure-Computern benötigt SAP die Möglichkeit, Hostüberwachungsdaten von den physischen Hosts abzurufen, auf denen die virtuellen Azure-Computer ausgeführt werden. Es wird eine bestimmte SAP-HostAgent-Patchebene benötigt, die diese Funktion in SAPOSCOL und SAP HostAgent ermöglicht. Die Patchebenen sind in SAP-Hinweis [1409604]genau dokumentiert.
+Für die produktive Verwendung von SAP-Anwendungen auf virtuellen Azure-Computern benötigt SAP die Möglichkeit, Hostüberwachungsdaten von den physischen Hosts abzurufen, auf denen die virtuellen Azure-Computer ausgeführt werden. Es wird eine bestimmte SAP-Host-Agent-Patchebene benötigt, die diese Funktion in SAPOSCOL und SAP-Host-Agent ermöglicht. Die Patchebenen sind in SAP-Hinweis [1409604]genau dokumentiert.
 
-Weitere Informationen zur Bereitstellung von Komponenten, die Hostdaten für SAPOSCOL und SAPHostAgent bereitstellen, sowie zur Verwaltung des Lebenszyklus dieser Komponenten finden Sie im [Bereitstellungshandbuch][deployment-guide].
+Weitere Informationen zur Bereitstellung von Komponenten, die Hostdaten für SAPOSCOL und SAP-Host-Agent bereitstellen, sowie zur Verwaltung des Lebenszyklus dieser Komponenten finden Sie im [Bereitstellungshandbuch][deployment-guide].
 
 ## <a name="3264829e-075e-4d25-966e-a49dad878737"></a>Besonderheiten bei Microsoft SQL Server
 ### <a name="sql-server-iaas"></a>SQL Server-IaaS
 Ab Microsoft Azure lassen sich bestehende SQL Server-Anwendungen auf Grundlage der Windows Server-Plattform einfach zu Azure-VMs migrieren. Wenn Sie SQL Server auf einem virtuellen Computer verwenden, können Sie die Gesamtbetriebskosten der Bereitstellung, Verwaltung und Wartung von unternehmensweiten Anwendungen senken, indem Sie diese Anwendungen einfach zu Microsoft Azure migrieren. Mit SQL Server auf einem virtuellen Azure-Computer stehen Administratoren und Entwicklern die gleichen Entwicklungs- und Verwaltungstools wie in der lokalen Umgebung zur Verfügung. 
 
 > [!IMPORTANT]
-> Hier wird nicht auf Microsoft Azure SQL-Datenbank eingegangen. Dabei handelt es sich um ein PaaS-Angebot (Plattform as a Service) der Microsoft Azure Platform. In diesem Dokument geht es um das Ausführen des bekannten SQL Server-Produkts für lokale Bereitstellungen auf virtuellen Azure-Computern, wobei die IaaS-Funktion (Infrastructure as a Service) von Azure genutzt wird. Die Datenbankfunktionen und -Features für diese beiden Angebote unterscheiden sich und dürfen nicht verwechselt werden. Siehe auch: <https://azure.microsoft.com/services/sql-database/>
+> Hier wird nicht auf Microsoft Azure SQL-Datenbank eingegangen. Dabei handelt es sich um ein PaaS-Angebot (Plattform as a Service) von Microsoft Azure Platform. In diesem Dokument geht es um das Ausführen des bekannten SQL Server-Produkts für lokale Bereitstellungen auf virtuellen Azure-Computern, wobei die IaaS-Funktion (Infrastructure as a Service) von Azure genutzt wird. Die Datenbankfunktionen und -Features für diese beiden Angebote unterscheiden sich und dürfen nicht verwechselt werden. Siehe auch: <https://azure.microsoft.com/services/sql-database/>
 > 
 > 
 
 Sie sollten vor dem Fortfahren [diese Dokumentation][virtual-machines-sql-server-infrastructure-services] lesen.
 
-In den folgenden Abschnitten werden Inhalte aus dieser Dokumentation zusammengefasst bzw. Bezug darauf genommen. Außerdem werden Besonderheiten in Bezug auf SAP erwähnt, und einige Konzepte werden ausführlicher beschrieben. Es wird jedoch dringend empfohlen, zuerst die oben genannte Dokumentation durchzuarbeiten, bevor Sie die SQL Server-spezifische Dokumentation lesen.
+In den folgenden Abschnitten werden Inhalte aus dieser Dokumentation unter dem oben genannten Link zusammengefasst bzw. Bezug darauf genommen. Außerdem werden Besonderheiten in Bezug auf SAP erwähnt, und einige Konzepte werden ausführlicher beschrieben. Es wird jedoch dringend empfohlen, zuerst die oben genannte Dokumentation durchzuarbeiten, bevor Sie die SQL Server-spezifische Dokumentation lesen.
 
 Einige spezifische Informationen für SQL Server in IaaS sollten Sie vor dem Fortfahren kennen:
 
-* **SLA für virtuelle Computer:** Es gibt eine SLA für in Azure ausgeführte virtuelle Computer. Diese finden Sie unter folgendem Link: <https://azure.microsoft.com/support/legal/sla/>.  
+* **SLA für virtuelle Computer**: Es gibt eine SLA für in Azure ausgeführte virtuelle Computer. Diese finden Sie unter folgendem Link: <https://azure.microsoft.com/support/legal/sla/>.  
 * **SQL-Versionsunterstützung:** Für SAP-Kunden wird SQL Server 2008 R2 und höher auf virtuellen Microsoft Azure-Computern unterstützt. Frühere Versionen werden nicht unterstützt. Ausführliche Informationen finden Sie in der allgemeinen [Supporterklärung](https://support.microsoft.com/kb/956893). Beachten Sie, dass im Allgemeinen auch SQL Server 2008 von Microsoft unterstützt wird. Aufgrund spezieller Funktionen für SAP, die in SQL Server 2008 R2 eingeführt wurden, ist die Mindestversion für SAP jedoch SQL Server 2008 R2. Bedenken Sie, dass SQL Server 2012 und 2014 mit einer stärkeren Integration in das IaaS-Szenario erweitert wurden (z.B. direktes Sichern in Azure Storage). Daher beschränkt sich dieses Dokument auf SQL Server 2012 und 2014, d.h. die aktuelle Patchebene für Azure.
 * **Unterstützung für SQL-Features:** Die meisten SQL Server-Features werden von virtuellen Microsoft Azure-Computern unterstützt. Dabei gelten jedoch einige Ausnahmen. **SQL Server-Failovercluster mit freigegebenen Datenträgern werden nicht unterstützt**.  Verteilte Technologien wie Datenbankspiegelung, AlwaysOn-Verfügbarkeitsgruppen, Replikation, Protokollversand und Service Broker werden einer einzelnen Azure-Region unterstützt. SQL Server Always On wird auch zwischen verschiedenen Azure-Regionen unterstützt, wie im folgenden Beitrag beschrieben: <https://blogs.technet.com/b/dataplatforminsider/archive/2014/06/19/sql-server-alwayson-availability-groups-supported-between-microsoft-azure-regions.aspx>.  Ausführliche Informationen finden Sie in der [Supporterklärung](https://support.microsoft.com/kb/956893). Ein Beispiel für die Bereitstellung einer Always On-Konfiguration finden Sie in [diesem Artikel][virtual-machines-workload-template-sql-alwayson]. Darüber hinaus finden Sie [hier][virtual-machines-sql-server-infrastructure-services] Best Practices. 
-* **SQL-Leistung:** Wir sind davon überzeugt, dass in Microsoft Azure gehostete virtuelle Computer im Vergleich zu anderen Virtualisierungsangeboten in der öffentlichen Cloud eine sehr gute Leistung erbringen. Die einzelnen Ergebnisse können allerdings variieren. [Dieser Artikel][virtual-machines-sql-server-performance-best-practices] enthält hierzu Informationen.
-* **Verwenden von Images aus Azure Marketplace**: Die schnellste Möglichkeit zum Bereitstellen eines neuen virtuellen Microsoft Azure-Computers besteht darin, ein Image aus dem Azure Marketplace zu verwenden. Einige Images in Azure Marketplace beinhalten SQL Server. Die Images, bei denen SQL Server bereits installiert ist, können nicht sofort für SAP NetWeaver-Anwendungen verwendet werden. Dies liegt daran, dass innerhalb dieser Images die standardmäßige SQL Server-Sortierung und nicht die für SAP NetWeaver-Systeme erforderliche Sortierung installiert ist. Um solche Images zu verwenden, lesen Sie sich die Schritte im Kapitel [Verwenden eines SQL Server-Images aus dem Microsoft Azure Marketplace][dbms-guide-5.6] durch. 
+* **SQL-Leistung**: Wir sind davon überzeugt, dass in Microsoft Azure gehostete virtuelle Computer im Vergleich zu anderen Virtualisierungsangeboten in der öffentlichen Cloud eine sehr gute Leistung erzielen. Die einzelnen Ergebnisse können allerdings variieren. [Dieser Artikel][virtual-machines-sql-server-performance-best-practices] enthält hierzu Informationen.
+* **Verwenden von Images aus Azure Marketplace**: Die schnellste Möglichkeit zum Bereitstellen eines neuen virtuellen Microsoft Azure-Computers besteht darin, ein Image aus dem Azure Marketplace zu verwenden. Einige Images im Azure Marketplace beinhalten SQL Server. Die Images, bei denen SQL Server bereits installiert ist, können nicht sofort für SAP NetWeaver-Anwendungen verwendet werden. Dies liegt daran, dass innerhalb dieser Images die standardmäßige SQL Server-Sortierung und nicht die für SAP NetWeaver-Systeme erforderliche Sortierung installiert ist. Um solche Images zu verwenden, lesen Sie sich die Schritte im Kapitel [Verwenden eines SQL Server-Images aus dem Microsoft Azure Marketplace][dbms-guide-5.6] durch. 
 * Weitere Informationen finden Sie unter [Preise](https://azure.microsoft.com/pricing/) . Das [SQL Server 2012-Lizenzierungshandbuch](https://download.microsoft.com/download/7/3/C/73CAD4E0-D0B5-4BE5-AB49-D5B886A5AE00/SQL_Server_2012_Licensing_Reference_Guide.pdf) und das [SQL Server 2014-Lizenzierungshandbuch](https://download.microsoft.com/download/B/4/E/B4E604D9-9D38-4BBA-A927-56E4C872E41C/SQL_Server_2014_Licensing_Guide.pdf) sind ebenfalls wichtige Ressourcen.
 
 ### <a name="sql-server-configuration-guidelines-for-sap-related-sql-server-installations-in-azure-vms"></a>SQL Server-Konfigurationsrichtlinien für SAP-bezogene SQL Server-Installationen auf Azure-VMs
 #### <a name="recommendations-on-vmvhd-structure-for-sap-related-sql-server-deployments"></a>Empfehlungen für die VM-/VHD-Struktur für SAP-bezogene SQL Server-Bereitstellungen
-In Übereinstimmung mit der allgemeinen Beschreibung sollten ausführbare SQL Server-Dateien sich im Systemverzeichnis der Basis-VHD (Laufwerk „C:\“\) des virtuellen Computers befinden bzw. bei der Installation dort abgelegt werden.  Üblicherweise werden die meisten SQL Server-Systemdatenbanken durch die SAP NetWeaver-Workload nicht stark genutzt. Daher können die Systemdatenbanken von SQL Server („master“, „msdb“ und „model“) auf dem Laufwerk „C:\“ verbleiben. Als Ausnahme kommt tempdb in Betracht, die im Falle einiger SAP ERP- sowie aller BW-Workloads entweder ein höheres Volumen für Daten oder für E/A-Vorgänge erfordern kann, wodurch die Kapazität der ursprünglichen VM übertroffen wird. Trifft dies auf Ihr System zu, sollten Sie die folgenden Schritte ausführen:
+In Übereinstimmung mit der allgemeinen Beschreibung sollten sich ausführbare SQL Server-Dateien im Systemverzeichnis des Betriebssystemdatenträgers (Laufwerk „C:\“\) der VM befinden bzw. bei der Installation dort abgelegt werden.  Üblicherweise werden die meisten SQL Server-Systemdatenbanken durch die SAP NetWeaver-Workload nicht stark genutzt. Daher können die Systemdatenbanken von SQL Server („master“, „msdb“ und „model“) auf dem Laufwerk „C:\“ verbleiben. Als Ausnahme kommt tempdb in Betracht, die im Falle einiger SAP ERP- sowie aller BW-Workloads entweder ein höheres Volumen für Daten oder für E/A-Vorgänge erfordern kann, wodurch die Kapazität der ursprünglichen VM übertroffen wird. Trifft dies auf Ihr System zu, sollten Sie die folgenden Schritte ausführen:
 
 * Verschieben Sie die primären tempdb-Datendateien auf das logische Laufwerk, auf dem sich die primären Datendateien der SAP-Datenbank befinden.
 * Fügen Sie alle zusätzlichen tempdb-Datendateien den jeweiligen logischen Laufwerken hinzu, die eine Datendatei der SAP-Benutzerdatenbank enthalten.
@@ -614,8 +639,8 @@ Eine VM-Konfiguration, die SQL Server mit einer SAP-Datenbank ausführt und bei 
 
 Beachten Sie, dass die Größe des Laufwerk „D:\“ je nach VM-Typ variieren kann. Abhängig von der erforderlichen Größe von tempdb sind Sie unter Umständen gezwungen, tempdb-Daten und -Protokolldateien mit den Daten und Protokolldateien der SAP-Datenbank zu koppeln, falls das Laufwerk „D:\“ nicht ausreicht.
 
-#### <a name="formatting-the-vhds"></a>Formatieren der VHDs
-Für SQL Server sollte die NTFS-Blockgröße für VHDs, die SQL Server-Daten und -Protokolldateien enthalten, 64 KB betragen. Es ist nicht erforderlich, Laufwerk „D:\“ zu formatieren. Dieses Laufwerk ist bereits vorformatiert.
+#### <a name="formatting-the-disks"></a>Formatieren der Datenträger
+Für SQL Server sollte die NTFS-Blockgröße für Datenträger, die SQL Server-Daten und -Protokolldateien enthalten, 64 KB betragen. Es ist nicht erforderlich, Laufwerk „D:\“ zu formatieren. Dieses Laufwerk ist bereits vorformatiert.
 
 Um sicherzustellen, dass die Wiederherstellung oder Erstellung von Datenbanken die Datendateien nicht initialisiert, indem der Inhalt der Dateien gelöscht wird, sollten Sie sicherstellen, dass der Benutzerkontext, in dem der SQL Server-Dienst ausgeführt wird, über eine bestimmte Berechtigung verfügt. Normalerweise verfügen die Benutzer in der Windows-Administratorengruppe über diese Berechtigungen. Wenn der SQL Server-Dienst im Benutzerkontext eines Benutzers ausgeführt wird, der kein Windows-Administrator ist, müssen Sie diesem Benutzer das Benutzerrecht „Durchführen von Volumewartungsaufgaben“ zuweisen.  Ausführliche Informationen finden Sie im Microsoft Knowledge Base-Artikel <https://support.microsoft.com/kb/2574695>.
 
@@ -630,21 +655,21 @@ Der Empfehlung zur Durchführung der Datenbankkomprimierung vor dem Hochladen in
 
 Die Datenbankkomprimierung funktioniert auf virtuellen Azure-Computern genauso wie in der lokalen Umgebung. Weitere Informationen zum Komprimieren einer vorhandenen SAP SQL Server-Datenbank finden Sie unter <https://blogs.msdn.com/b/saponsqlserver/archive/2010/10/08/compressing-an-sap-database-using-report-msscompress.aspx>.
 
-### <a name="sql-server-2014--storing-database-files-directly-on-azure-blog-storage"></a>SQL Server 2014 – Direktes Speichern von Datenbankdateien im Azure-Blobspeicher
-SQL Server 2014 bietet die Möglichkeit, Datenbankdateien direkt im Azure-Blobspeicher ohne den umschließenden „Wrapper“ einer virtuellen Festplatte zu speichern. Insbesondere bei der Verwendung von standardmäßigem Azure-Speicher oder kleinerer VM-Typen werden hierdurch Szenarien möglich, in denen Sie die IOPS-Einschränkungen überwinden können, die durch eine begrenzte Anzahl von VHDs erzwungen werden können, die auf einigen kleineren VM-Typen bereitgestellt werden können. Dies funktioniert für Benutzerdatenbanken, jedoch nicht für die Systemdatenbanken von SQL Server. Es funktioniert auch für Daten- und Protokolldateien von SQL Server. Wenn Sie eine SAP SQL Server-Datenbank auf diese Weise bereitstellen möchten, statt sie in virtuelle Festplatten „einzuschließen“, bedenken Sie Folgendes:
+### <a name="sql-server-2014--storing-database-files-directly-on-azure-blob-storage"></a>SQL Server 2014 – Direktes Speichern von Datenbankdateien in Azure Blob Storage
+SQL Server 2014 bietet die Möglichkeit, Datenbankdateien direkt im Azure-Blobspeicher ohne den umschließenden „Wrapper“ einer virtuellen Festplatte zu speichern. Insbesondere bei der Verwendung von Azure-Standardspeicher oder kleineren VM-Typen werden hierdurch Szenarien möglich, in denen Sie die IOPS-Einschränkungen überwinden können, die durch eine begrenzte Anzahl von Festplatten erzwungen werden können, die auf einigen kleineren VM-Typen bereitgestellt werden können. Dies funktioniert für Benutzerdatenbanken, jedoch nicht für die Systemdatenbanken von SQL Server. Es funktioniert auch für Daten- und Protokolldateien von SQL Server. Wenn Sie eine SAP SQL Server-Datenbank auf diese Weise bereitstellen möchten, statt sie in VHDs „einzuschließen“, bedenken Sie Folgendes:
 
 * Das verwendete Speicherkonto muss sich in derselben Azure-Region befinden wie das Speicherkonto, das zur Bereitstellung des virtuellen Computers verwendet wird, auf dem SQL Server ausgeführt wird.
-* Die bereits genannten Überlegungen im Hinblick auf die Verteilung virtueller Festplatten auf verschiedene Azure-Speicherkonten gelten auch für diese Bereitstellungsmethode. Dies bedeutet, dass die E/A-Vorgänge für die Grenzwerte des Azure-Speicherkontos eingerechnet werden.
+* Die bereits genannten Überlegungen im Hinblick auf die Verteilung von VHDs auf verschiedene Azure Storage-Konten gelten auch für diese Bereitstellungsmethode. Dies bedeutet, dass die E/A-Vorgänge für die Grenzwerte des Azure-Speicherkontos eingerechnet werden.
 
 [comment]: <> (MSSedusch TODO Dabei wird aber nur die Netzwerkbandbreite und keine Speicherbandbreite genutzt, richtig?)
 
-Ausführliche Informationen zu dieser Art der Bereitstellung finden Sie hier: <https://msdn.microsoft.com/library/dn385720.aspx>.
+Details zu dieser Art der Bereitstellung werden hier aufgeführt: <https://docs.microsoft.com/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure>.
 
-Um SQL Server-Datendateien direkt in Azure Storage Premium zu speichern, müssen Sie über eine minimale SQL Server 2014-Patchversion verfügen, die hier dokumentiert ist: <https://support.microsoft.com/kb/3063054>. Das Speichern von SQL Server-Datendateien im Azure-Standardspeicher funktioniert mit der veröffentlichten Version von SQL Server 2014. Diese Patches enthalten jedoch weitere Fixes, durch die die direkte Verwendung von Azure-Blobspeicher für SQL Server-Datendateien und Sicherungen zuverlässiger wird. Wir empfehlen daher, diese Patches im Allgemeinen zu verwenden.
+Um SQL Server-Datendateien direkt in Azure Storage Premium zu speichern, müssen Sie über eine minimale SQL Server 2014-Patchversion verfügen, die hier dokumentiert ist: <https://support.microsoft.com/kb/3063054>. Das Speichern von SQL Server-Datendateien im Azure-Standardspeicher funktioniert mit der veröffentlichten Version von SQL Server 2014. Diese Patches enthalten jedoch weitere Fixes, durch die die direkte Verwendung von Azure Blob Storage für SQL Server-Datendateien und Sicherungen zuverlässiger wird. Wir empfehlen daher, diese Patches im Allgemeinen zu verwenden.
 
 ### <a name="sql-server-2014-buffer-pool-extension"></a>SQL Server 2014-Pufferpoolerweiterung
-In SQL Server 2014 wurde ein neues Feature eingeführt, die sogenannte Pufferpoolerweiterung. Diese Funktion erweitert den Pufferpool von SQL Server, der im Arbeitsspeicher mit einem Cache zweiter Ebene gespeichert wird, der von lokalen SSDs eines Servers oder des virtuellen Computers unterstützt wird. Auf diese Weise kann ein umfangreicherer Arbeitssatz der Daten „im Arbeitsspeicher“ beibehalten werden. Im Vergleich zum Zugriff auf den Azure-Standardspeicher ist der Zugriff auf die Erweiterung des Pufferpools, der auf lokalen SSDs eines virtuellen Azure-Computers gespeichert wird, um viele Faktoren schneller.  Daher kann es sinnvoll sein, das lokale Laufwerk „D:\“ der VM-Typen mit hervorragenden IOPS und Durchsatz zu verwenden, um die IOPS-Auslastung für den Azure-Speicher zu verringern und die Antwortzeiten von Abfragen deutlich zu verbessern. Dies trifft insbesondere dann zu, wenn nicht Storage Premium verwendet wird. Falls Storage Premium und der Premium-Lesecache von Azure auf dem Computeknoten verwendet werden (wie für Datendateien empfohlen), sind keine großen Unterschiede zu erwarten. Der Grund dafür ist, dass beide Caches (SQL Server-Pufferpoolerweiterung und Lesecache für Storage Premium) die lokalen Datenträger der Computeknoten verwenden.
-Weitere Informationen zu dieser Funktion finden Sie in der folgenden Dokumentation: <https://msdn.microsoft.com/library/dn133176.aspx>. 
+In SQL Server 2014 wurde ein neues Feature eingeführt, die sogenannte Pufferpoolerweiterung. Diese Funktion erweitert den Pufferpool von SQL Server, der im Arbeitsspeicher mit einem Cache zweiter Ebene gespeichert wird, der von lokalen SSDs eines Servers oder der VM unterstützt wird. Auf diese Weise kann ein umfangreicherer Arbeitssatz der Daten „im Arbeitsspeicher“ beibehalten werden. Im Vergleich zum Zugriff auf Azure-Standardspeicher ist der Zugriff auf die Erweiterung des Pufferpools, der auf lokalen SSDs einer Azure-VM gespeichert wird, um viele Faktoren schneller.  Daher kann es sinnvoll sein, das lokale Laufwerk „D:\“ der VM-Typen mit hervorragenden IOPS und Durchsatz zu verwenden, um die IOPS-Auslastung für den Azure-Speicher zu verringern und die Antwortzeiten von Abfragen deutlich zu verbessern. Dies trifft insbesondere dann zu, wenn nicht Storage Premium verwendet wird. Falls Storage Premium und der Premium-Lesecache von Azure auf dem Serverknoten verwendet werden (wie für Datendateien empfohlen), sind keine großen Unterschiede zu erwarten. Der Grund dafür ist, dass beide Caches (SQL Server-Pufferpoolerweiterung und Lesecache für Storage Premium) die lokalen Datenträger der Computeknoten verwenden.
+Weitere Einzelheiten zu dieser Funktionalität finden Sie in der Dokumentation unter folgendem Link: <https://docs.microsoft.com/sql/database-engine/configure-windows/buffer-pool-extension>. 
 
 ### <a name="backuprecovery-considerations-for-sql-server"></a>Überlegungen zur Sicherung und Wiederherstellung für SQL Server
 Bei der Bereitstellung von SQL Server in Azure ist es erforderlich, die Sicherungsmethode zu überprüfen. Auch wenn es sich nicht um ein Produktivsystem handelt, muss die durch SQL Server gehostete SAP-Datenbank regelmäßig gesichert werden. Da Azure Storage drei Images vorhält, ist die Sicherung, um einen etwaigen Speicherabsturz kompensieren zu können, weniger dringlich. Der wichtigste Grund, einen ordnungsgemäßen Sicherungs- und Wiederherstellungsplan zu verfolgen, ist vielmehr, dass Sie mithilfe der Point-in-Time-Wiederherstellung logische und manuelle Fehler beheben können. Das Ziel ist also entweder, Sicherungen für die Wiederherstellung des Zustands der Datenbank zu einem bestimmten Zeitpunkt zu verwenden, oder, mithilfe einer Sicherung in Azure durch Seeding ein anderes System aufzusetzen, indem die bestehende Datenbank kopiert wird. Beispielsweise ließe sich eine Umstellung von einer 2-stufigen SAP-Konfiguration auf ein 3-stufiges Systemsetup desselben Systems durch Wiederherstellung einer Sicherung umsetzen.
@@ -653,90 +678,92 @@ Zum Sichern von SQL Server im Azure-Speicher gibt es drei verschiedene Verfahren
 
 1. SQL Server 2012 CU4 und höher können Datenbanken systemintern unter einer URL sichern. Eine detaillierte Beschreibung finden Sie im Blog [New functionality in SQL Server 2014 – Part 5 – Backup/Restore Enhancements](https://blogs.msdn.com/b/saponsqlserver/archive/2014/02/15/new-functionality-in-sql-server-2014-part-5-backup-restore-enhancements.aspx)(Neue Funktionen in SQL Server 2014 – Teil 5 – Verbesserungen bei Sicherung und Wiederherstellung). Weitere Informationen finden Sie im Kapitel [SQL Server 2012 SP1 CU4 und höher][dbms-guide-5.5.1].
 2. SQL Server-Versionen vor SQL 2012 CU4 können für die Sicherung auf einer virtuellen Festplatte eine Umleitungsfunktion verwenden und den Schreibdatenstrom an einen konfigurierten Azure-Speicherort verschieben. Weitere Informationen finden Sie im Kapitel [SQL Server 2012 SP1 CU3 und frühere Versionen][dbms-guide-5.5.2].
-3. Die letzte Methode besteht darin, auf einem VHD-Datenträgergerät eine herkömmliche SQL Server-Datenträgersicherung durchzuführen.  Dies ist mit dem lokalen Bereitstellungsmuster identisch und wird in diesem Dokument nicht ausführlich erläutert.
+3. Die letzte Methode besteht darin, auf einem Datenträgergerät eine herkömmliche SQL Server-Datenträgersicherung durchzuführen. Dies ist mit dem lokalen Bereitstellungsmuster identisch und wird in diesem Dokument nicht ausführlich erläutert.
 
 #### <a name="0fef0e79-d3fe-4ae2-85af-73666a6f7268"></a>SQL Server 2012 SP1 CU4 und höher
-Diese Funktion ermöglicht Ihnen das direkte Sichern im Azure-BLOB-Speicher. Ohne diese Methode müssen Sie die Sicherungen auf anderen Azure-VHDs durchführen. Dabei werden VHD- und IOPS-Kapazitäten beansprucht. Der grundlegende Ansatz lautet wie folgt:
+Diese Funktion ermöglicht Ihnen das direkte Sichern im Azure-BLOB-Speicher. Ohne diese Methode müssen Sie die Sicherungen auf anderen Datenträgern durchführen. Dabei werden Datenträger- und IOPS-Kapazitäten beansprucht. Der grundlegende Ansatz lautet wie folgt:
 
  ![Verwenden der SQL Server 2012-Sicherung für Microsoft Azure Storage-BLOB][dbms-guide-figure-400]
 
-Der Vorteil besteht in diesem Fall darin, dass zum Speichern von SQL Server-Sicherungen keine virtuelle Festplatten genutzt werden müssen. Somit sind weniger virtuelle Festplatten zugeordnet, und die gesamte VHD-IOPS-Bandbreite kann für Daten-und Protokolldateien verwendet werden. Beachten Sie, dass die maximale Größe einer Sicherung auf 1 TB beschränkt ist, wie im Abschnitt „Einschränkungen“ dieses Artikels dokumentiert: <https://msdn.microsoft.com/library/dn435916.aspx#limitations>. Wenn die Sicherungsgröße trotz der Verwendung der SQL Server-Sicherungskomprimierung eine Größe von 1 TB übersteigen würde, muss die im Kapitel [SQL Server 2012 SP1 CU3 und frühere Versionen][dbms-guide-5.5.2] dieses Dokuments beschriebene Funktion verwendet werden.
+Der Vorteil besteht in diesem Fall darin, dass zum Speichern von SQL Server-Sicherungen keine Datenträger genutzt werden müssen. Somit sind weniger Datenträger zugeordnet, und die gesamte IOPS-Datenträgerbandbreite kann für Daten-und Protokolldateien verwendet werden. Beachten Sie, dass die maximale Größe einer Sicherung auf 1 TB beschränkt ist, wie im Abschnitt „Einschränkungen“ dieses Artikels dokumentiert: <https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url#limitations>. Wenn die Sicherungsgröße trotz der Verwendung der SQL Server-Sicherungskomprimierung eine Größe von 1 TB übersteigen würde, muss die im Kapitel [SQL Server 2012 SP1 CU3 und frühere Versionen][dbms-guide-5.5.2] dieses Dokuments beschriebene Funktion verwendet werden.
 
-[Verwandte Dokumentation:](https://msdn.microsoft.com/library/dn449492.aspx) Hier wird die Wiederherstellung von Datenbanken aus Sicherungen in Azure Blob Storage beschrieben. Die direkte Wiederherstellung aus Azure Blob Storage wird nicht empfohlen, wenn die Sicherungen eine Größe von 25 GB übersteigen. Die Empfehlung in diesem Artikel basiert auf Leistungsüberlegungen und beruht nicht auf funktionalen Einschränkungen. Daher können von Fall zu Fall verschiedene Bedingungen zutreffen.
+Unter [Verwandte Dokumentation](https://docs.microsoft.com/sql/relational-databases/backup-restore/restoring-from-backups-stored-in-microsoft-azure) wird die Wiederherstellung von Datenbanken aus Sicherungen in Azure Blob Storage beschrieben. Die direkte Wiederherstellung aus Azure Blob Storage wird nicht empfohlen, wenn die Sicherungen eine Größe von 25 GB übersteigen. Die Empfehlung in diesem Artikel basiert auf Leistungsüberlegungen und beruht nicht auf funktionalen Einschränkungen. Daher können von Fall zu Fall verschiedene Bedingungen zutreffen.
 
-Eine Dokumentation darüber, wie dieser Sicherungstyp eingerichtet und verwendet wird, finden Sie in [diesem](https://msdn.microsoft.com/library/dn466438.aspx) Tutorial.
+Eine Dokumentation darüber, wie dieser Sicherungstyp eingerichtet und verwendet wird, finden Sie in [diesem](https://docs.microsoft.com/sql/relational-databases/tutorial-use-azure-blob-storage-service-with-sql-server-2016) Tutorial.
 
-Ein Beispiel für die Abfolge der Schritte finden Sie [hier](https://msdn.microsoft.com/library/dn435916.aspx).
+Ein Beispiel für die Abfolge der Schritte finden Sie [hier](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url).
 
 Bei der Automatisierung von Sicherungen muss unbedingt sichergestellt werden, dass die BLOBs für jede Sicherung unterschiedlich benannt werden. Andernfalls werden sie überschrieben, und die Wiederherstellungskette wird unterbrochen.
 
-Um bei den drei verschiedenen Sicherungsarten keine Überlappungen zu erzeugen, ist es ratsam, in dem für die Sicherung verwendeten Speicherkonto mehrere Container zu erstellen. Die Container könnten für jeweils nur einen virtuellen Computer oder für virtuelle Computer und Sicherungstyp erstellt werden. Das Schema könnte wie folgt aussehen:
+Um bei den drei verschiedenen Sicherungsarten keine Überlappungen zu erzeugen, ist es ratsam, in dem für die Sicherung verwendeten Speicherkonto verschiedene Container zu erstellen. Die Container könnten für jeweils nur einen virtuellen Computer oder für virtuelle Computer und Sicherungstyp erstellt werden. Das Schema könnte wie folgt aussehen:
 
  ![Verwenden der SQL Server 2012-Sicherung für Microsoft Azure Storage-BLOB – verschiedene Container unter verschiedenen Speicherkonten][dbms-guide-figure-500]
 
-Im obigen Beispiel würden die Sicherungen nicht unter dem Speicherkonto ausgeführt werden, in dem die virtuellen Computer bereitgestellt werden. Stattdessen gäbe es ein neues Speicherkonto speziell für die Sicherungen. Die Speicherkonten würden unterschiedliche Container enthalten, die mit einer Matrix des Sicherungstyps und des Namens des virtuellen Computers erstellt werden. Eine solche Segmentierung erleichtert die Verwaltung der Sicherungen verschiedener virtueller Computer.
+Im obigen Beispiel würden die Sicherungen nicht unter dem Speicherkonto ausgeführt werden, in dem die virtuellen Computer bereitgestellt werden. Stattdessen gäbe es ein neues Speicherkonto speziell für die Sicherungen. Die Speicherkonten würden unterschiedliche Container enthalten, die mit einer Matrix des Sicherungstyps und des Namens des virtuellen Computers erstellt werden. Eine solche Segmentierung erleichtert die Verwaltung der Sicherungen verschiedener VMs.
 
-Die BLOBs, in die die Sicherungen direkt geschrieben werden, werden für die Anzahl der virtuellen Festplatten eines virtuellen Computers nicht berücksichtigt. Daher ist es möglich, die maximale Anzahl der bereitgestellten VHDs für die spezifische VM-SKU für die Daten- und Transaktionsprotokolldatei zu erhöhen und weiterhin eine Sicherung mit einem Speichercontainer auszuführen. 
+Die BLOBs, in die die Sicherungen direkt geschrieben werden, werden für die Anzahl der Datenträger einer VM nicht berücksichtigt. Daher ist es möglich, die maximale Anzahl der bereitgestellten Datenträger für die spezifische VM-SKU für die Daten- und Transaktionsprotokolldatei zu erhöhen und weiterhin eine Sicherung mit einem Speichercontainer auszuführen. 
 
 #### <a name="f9071eff-9d72-4f47-9da4-1852d782087b"></a>SQL Server 2012 SP1 CU3 und frühere Versionen
-Um eine Sicherung direkt im Azure-Speicher durchzuführen, müssen Sie im ersten Schritt die MSI-Datei herunterladen, die mit [diesem](https://www.microsoft.com/download/details.aspx?id=40740) KBA-Artikel verknüpft ist.
+Um eine Sicherung direkt in Azure Storage durchzuführen, müssen Sie im ersten Schritt die MSI-Datei herunterladen, die mit [diesem](https://www.microsoft.com/download/details.aspx?id=40740) KBA-Artikel verknüpft ist.
 
 Laden Sie die X64-Installationsdatei und die Dokumentation herunter. Die Datei installiert ein Programm namens „Microsoft SQL Server Backup to Microsoft Azure Tool“. Lesen Sie sich die Dokumentation des Produkts sorgfältig durch.  Das Tool funktioniert grundsätzlich wie folgt:
 
 * SQL Server-seitig wird ein Speicherort für die SQL Server-Sicherung definiert (verwenden Sie nicht das Laufwerk „D:\“).
-* Das Tool ermöglicht Ihnen die Definition von Regeln, die verwendet werden können, um verschiedene Sicherungsarten unterschiedlichen Azure-Speichercontainern zuzuordnen.
-* Nach der Erstellung der Regeln leitet das Tool den Schreibdatenstrom der Sicherung zu einer der VHDs/einem der Datenträger an dem zuvor definierten Azure-Speicherort.
+* Das Tool ermöglicht Ihnen die Definition von Regeln, die verwendet werden können, um verschiedene Sicherungsarten unterschiedlichen Azure Storage-Containern zuzuordnen.
+* Nach der Erstellung der Regeln leitet das Tool den Schreibdatenstrom der Sicherung an eine der VHDs bzw. einen der Datenträger an dem zuvor definierten Azure Storage-Speicherort um.
 * Das Tool hinterlässt eine kleine Stubdatei mit einer Größe von wenigen KB auf der VHD/dem Datenträger, die bzw. der für die SQL Server-Sicherung definiert wurde. **Diese Datei sollte im Speicherort verbleiben, da sie für Wiederherstellungen aus Azure Storage benötigt wird.**
-  * Wenn die Stubdatei verloren gegangen ist (z.B. durch den Verlust von Speichermedien, in denen die Stubdatei enthalten war) und Sie die Sicherung in einem Microsoft Azure-Speicherkonto ausgewählt haben, können Sie die Stubdatei über Microsoft Azure Storage wiederherstellen, indem Sie sie aus dem Speichercontainer herunterladen, in dem sie abgelegt wurde. Anschließend sollten Sie die Stubdatei in einem Ordner auf dem lokalen Computer platzieren, auf dem das Tool so konfiguriert ist, dass dieser Container erkannt wird und zum Hochladen verwendet wird. Dabei muss dasselbe Verschlüsselungskennwort verwendet werden, sofern Verschlüsselung für die ursprüngliche Regel verwendet wurde. 
+  * Wenn die Stubdatei verloren gegangen ist (z.B. durch den Verlust von Speichermedien, in denen die Stubdatei enthalten war) und Sie die Sicherung in einem Microsoft Azure Storage-Konto ausgewählt haben, können Sie die Stubdatei über Microsoft Azure Storage wiederherstellen, indem Sie sie aus dem Speichercontainer herunterladen, in dem sie abgelegt wurde. Anschließend sollten Sie die Stubdatei in einem Ordner auf dem lokalen Computer platzieren, auf dem das Tool so konfiguriert ist, dass dieser Container erkannt wird und zum Hochladen verwendet wird. Dabei muss dasselbe Verschlüsselungskennwort verwendet werden, sofern Verschlüsselung für die ursprüngliche Regel verwendet wurde. 
 
-Dies bedeutet, dass das weiter oben für neuere Versionen von SQL Server beschriebene Schema auch für SQL Server-Versionen platziert werden kann, die keine direkte Adressierung eines Azure-Speicherorts zulassen.
+Dies bedeutet, dass das weiter oben für neuere Versionen von SQL Server beschriebene Schema auch für SQL Server-Versionen platziert werden kann, die keine direkte Adressierung eines Azure Storage-Speicherorts zulassen.
 
-Diese Methode sollte nicht für neuere Versionen von SQL Server verwendet werden, die eine systeminterne Sicherung im Azure-Speicher unterstützen. Ausnahmen gelten in Fällen, in denen die Einschränkungen für systemeigene Sicherungen in Azure die Ausführung einer systemeigenen Sicherung in Azure blockieren.
+Diese Methode sollte nicht für neuere Releases von SQL Server verwendet werden, die eine systeminterne Sicherung in Azure Storage unterstützen. Ausnahmen gelten in Fällen, in denen die Einschränkungen für systemeigene Sicherungen in Azure die Ausführung einer systemeigenen Sicherung in Azure blockieren.
 
 #### <a name="other-possibilities-to-backup-sql-server-databases"></a>Weitere Möglichkeiten zum Sichern von SQL Server-Datenbanken
-Eine weitere Möglichkeit zum Sichern von Datenbanken besteht darin, zusätzliche VHDs an einen virtuellen Computer anzufügen, auf dem Sicherungen gespeichert werden. In diesem Fall müssen Sie sicherstellen, dass die virtuellen Festplatten nicht mit voller Auslastung ausgeführt werden. Sollte dies der Fall sein, müssen Sie die Bereitstellung der virtuellen Festplatte aufheben, diese „archivieren“ und durch eine neue leere virtuelle Festplatte ersetzen. Bei diesem Verfahren sollten diese virtuellen Festplatten in Azure-Speicherkonten platziert werden, die von den Speicherkonten mit den Datenbankdateien getrennt sind.
+Eine weitere Möglichkeit zum Sichern von Datenbanken besteht darin, zusätzliche Datenträger an eine VM anzufügen, auf der Sicherungen gespeichert werden. In diesem Fall müssen Sie sicherstellen, dass die Datenträger nicht bei voller Auslastung ausgeführt werden. Sollte dies der Fall sein, müssen Sie die Bereitstellung der Datenträger aufheben, diese „archivieren“ und durch einen neuen leeren Datenträger ersetzen. Bei diesem Verfahren sollten diese virtuellen Festplatten in Azure-Speicherkonten platziert werden, die von den Speicherkonten mit den Datenbankdateien getrennt sind.
 
-Eine zweite Möglichkeit besteht darin, einen großen virtuellen Computer zu verwenden, dem viele VHDs angefügt werden können. Beispiel: D14 mit 32 VHDs. Verwenden Sie Speicherplätze zum Erstellen einer flexiblen Umgebung, in der Sie Freigaben erstellen können, die dann als Sicherungsziele für die verschiedenen DBMS-Server verwendet werden.
+Die zweite Möglichkeit besteht darin, eine große VM zu verwenden, die viele Datenträger umfassen kann (z.B. D14 mit 32 VHDs). Verwenden Sie Speicherplätze zum Erstellen einer flexiblen Umgebung, in der Sie Freigaben erstellen können, die dann als Sicherungsziele für die verschiedenen DBMS-Server verwendet werden.
 
 Weitere bewährte Methoden finden Sie [hier](https://blogs.msdn.com/b/sqlcat/archive/2015/02/26/large-sql-server-database-backup-on-an-azure-vm-and-archiving.aspx) . 
 
 #### <a name="performance-considerations-for-backupsrestores"></a>Einfluss der Sicherung und Wiederherstellung auf die Leistung
-Wie bei der Bare-Metal-Bereitstellung hängt die Leistung bei der Sicherung und Wiederherstellung davon ab, wie viele Volumes parallel ausgelesen werden können und wie hoch deren Durchsatz ist. Bei virtuellen Computern mit nur bis zu acht CPU-Threads sollte unter Umständen auch der CPU-Verbrauch durch die Sicherungskomprimierung beachtet werden. Es gilt also Folgendes:
+Wie bei der Bare-Metal-Bereitstellung hängt die Leistung bei der Sicherung und Wiederherstellung davon ab, wie viele Volumes parallel ausgelesen werden können und wie hoch deren Durchsatz ist. Bei VMs mit nur bis zu acht CPU-Threads sollte unter Umständen auch der CPU-Verbrauch durch die Sicherungskomprimierung beachtet werden. Es gilt also Folgendes:
 
-* Je geringer die Anzahl an VHDs, auf denen Datendateien gespeichert sind, desto geringer der Durchsatz beim Auslesen insgesamt.
+* Je geringer die Anzahl an Datenträgern, auf denen Datendateien gespeichert sind, desto geringer der Durchsatz beim Auslesen insgesamt.
 * Je geringer die Anzahl der CPU-Threads auf dem virtuellen Computer, desto größere Auswirkungen hat die Sicherungskomprimierung.
-* Je weniger Sicherungsziele (BLOBs oder VHDs), desto geringer der Durchsatz.
+* Je weniger Sicherungsziele (BLOBs, VHDs oder Datenträger), desto geringer der Durchsatz.
 * Je kleiner die Größe des virtuellen Computers, desto geringer das Speicherdurchsatzkontingent beim Schreiben und Lesen aus dem Azure-Speicher. Dies gilt unabhängig davon, ob die Sicherungen direkt im Azure-Blob oder auf virtuellen Festplatten gespeichert werden, die wiederum in Azure-Blobs gespeichert werden.
 
 Wenn Sie in neueren Versionen ein Microsoft Azure Storage-BLOB als Sicherungsziel verwenden, können Sie nur ein URL-Ziel für jede Sicherung festlegen.
 
 Bei Verwendung von „Microsoft SQL Server Backup to Microsoft Azure Tool“ in älteren Versionen können Sie hingegen mehrere Dateiziele definieren. Bei mehreren Zielen kann die Sicherung skaliert werden, und der Durchsatz der Sicherung ist höher. In Folge enthält das Azure-Speicherkonto dann ebenfalls mehrere Dateien. Unsere Tests haben ergeben, dass bei der Verwendung mehrerer Dateiziele ein Durchsatz erzielt werden kann, der auch mit den ab SQL Server 2012 SP1 CU4 implementierten Sicherungserweiterungen erreicht wird. Darüber hinaus gilt hier nicht die Einschränkung von 1 TB wie in der systemeigenen Sicherung in Azure.
 
-Bedenken Sie jedoch, dass der Durchsatz auch vom Standort des Azure-Speicherkontos abhängig ist, das Sie für die Sicherung verwenden. Möglich wäre es, das Speicherkonto in einer anderen Region als der Region zu platzieren, in der die virtuellen Computer ausgeführt werden. Beispiel: Sie können die VM-Konfiguration in „Europa, Westen“ ausführen, aber das für die Sicherung verwendete Speicherkonto in „Europa, Norden“ platzieren. Dies wirkt sich definitiv auf den Sicherungsdurchsatz aus und generiert höchstwahrscheinlich keinen Durchsatz von 150 MB/s, wie es in Fällen möglich zu sein scheint, in denen der Zielspeicher und die virtuellen Computer in demselben regionalen Datencenter ausgeführt werden.
+Bedenken Sie jedoch, dass der Durchsatz auch vom Standort des Azure-Speicherkontos abhängig ist, das Sie für die Sicherung verwenden. Möglich wäre es, das Speicherkonto in einer anderen Region als der Region zu platzieren, in der die virtuellen Computer ausgeführt werden. Sie können die VM-Konfiguration z.B. in „Europa, Westen“ ausführen, aber das für die Sicherung verwendete Speicherkonto in „Europa, Norden“ platzieren. Dies wirkt sich definitiv auf den Sicherungsdurchsatz aus und generiert höchstwahrscheinlich keinen Durchsatz von 150 MB/s, wie es in Fällen möglich zu sein scheint, in denen der Zielspeicher und die VMs im selben regionalen Rechenzentrum ausgeführt werden.
 
 #### <a name="managing-backup-blobs"></a>Verwalten von Sicherungs-BLOBs
-Es gibt die Anforderung, Sicherungen selbst zu verwalten. Da bei der regelmäßigen Ausführung von Transaktionsprotokollsicherungen erwartungsgemäß viele Blobs erstellt werden, kann die Verwaltung dieser Blobs das Azure-Portal schnell überlasten. Daher wird empfohlen, einen Azure-Speicher-Explorer zu verwenden. Es sind mehrere gute Azure-Speicher-Explorer verfügbar, die dabei helfen können, ein Azure-Speicherkonto zu verwalten.
+Es gibt die Anforderung, Sicherungen selbst zu verwalten. Da bei der regelmäßigen Ausführung von Transaktionsprotokollsicherungen erwartungsgemäß viele Blobs erstellt werden, kann die Verwaltung dieser Blobs das Azure-Portal schnell überlasten. Daher wird empfohlen, einen Azure Storage-Explorer zu verwenden. Es sind mehrere gute Azure Storage-Explorer verfügbar, die dabei helfen können, ein Azure Storage-Konto zu verwalten.
 
 * Microsoft Visual Studio mit installiertem Azure SDK (<https://azure.microsoft.com/downloads/>)
 * Microsoft Azure-Speicher-Explorer (<https://azure.microsoft.com/downloads/>)
-* Tools von Drittanbietern: Eine umfassendere Erläuterung zur Sicherung und zu SAP in Azure finden Sie im [SAP-Sicherungshandbuch](sap-hana-backup-guide.md).
+* Drittanbietertools
+
+Eine umfassendere Erläuterung zur Sicherung und zu SAP in Azure finden Sie im [SAP-Sicherungshandbuch](sap-hana-backup-guide.md).
 
 ### <a name="1b353e38-21b3-4310-aeb6-a77e7c8e81c8"></a>Verwenden eines SQL Server-Images aus dem Microsoft Azure Marketplace
-Microsoft bietet im Azure Marketplace virtuelle Computer an, die bereits Versionen von SQL Server enthalten. Für SAP-Kunden, die Lizenzen für SQL Server und Windows benötigen, ist dies möglicherweise eine Gelegenheit, diese Lizenzen durch Einrichten virtueller Computer abzudecken, auf denen SQL Server bereits installiert ist. Um solche Images für SAP zu verwenden, müssen die folgenden Aspekte berücksichtigt werden:
+Microsoft bietet im Azure Marketplace VMs an, die bereits Versionen von SQL Server enthalten. Für SAP-Kunden, die Lizenzen für SQL Server und Windows benötigen, ist dies möglicherweise eine Gelegenheit, diese Lizenzen durch Einrichten virtueller Computer abzudecken, auf denen SQL Server bereits installiert ist. Um solche Images für SAP zu verwenden, müssen die folgenden Aspekte berücksichtigt werden:
 
-* Die Nicht-Evaluierungsversionen von SQL Server verursachen höhere Kosten als ein virtueller Computer mit einer „Nur-Windows-Bereitstellung“ aus dem Azure Marketplace. Sie können die Preise in diesen Artikeln vergleichen: <https://azure.microsoft.com/pricing/details/virtual-machines/> und <https://azure.microsoft.com/pricing/details/virtual-machines/#Sql>. 
-* Sie können nur SQL Server-Versionen verwenden, die von SAP unterstützt werden, z.B. SQL Server 2012.
-* Die Sortierung der SQL Server-Instanz, die auf den im Azure Marketplace verfügbaren virtuellen Computern installiert ist, ist nicht die Sortierung, die SAP NetWeaver zum Ausführen der SQL Server-Instanz benötigt. Sie können die Sortierung aber mithilfe der Anleitung im folgenden Abschnitt ändern.
+* Die Nicht-Evaluierungsversionen von SQL Server verursachen höhere Kosten als ein virtueller Computer mit einer „Nur-Windows-Bereitstellung“ aus dem Azure Marketplace. Sie können die Preise in diesen Artikeln vergleichen: <https://azure.microsoft.com/pricing/details/virtual-machines/windows/> und <https://azure.microsoft.com/pricing/details/virtual-machines/sql-server-enterprise/>. 
+* Sie können nur SQL Server-Releases verwenden, die von SAP unterstützt werden, z.B. SQL Server 2012.
+* Die Sortierung der SQL Server-Instanz, die auf den im Azure Marketplace verfügbaren VMs installiert ist, ist nicht die Sortierung, die SAP NetWeaver zum Ausführen der SQL Server-Instanz benötigt. Sie können die Sortierung aber mithilfe der Anleitung im folgenden Abschnitt ändern.
 
 #### <a name="changing-the-sql-server-collation-of-a-microsoft-windowssql-server-vm"></a>Ändern der SQL Server-Sortierung eines virtuellen Microsoft Windows-/SQL Server-Computers
-Da die SQL Server-Images im Azure Marketplace nicht die Sortierung verwenden, die für SAP NetWeaver-Clientanwendungen erforderlich ist, muss diese sofort nach der Bereitstellung geändert werden. Für SQL Server 2012 können Sie hierzu die folgenden Schritte durchführen, sobald der virtuelle Computer bereitgestellt wurde und ein Administrator sich am bereitgestellten virtuellen Computer anmelden kann:
+Da die SQL Server-Images im Azure Marketplace nicht die Sortierung verwenden, die für SAP NetWeaver-Anwendungen erforderlich ist, muss diese sofort nach der Bereitstellung geändert werden. Für SQL Server 2012 können Sie hierzu die folgenden Schritte durchführen, sobald der virtuelle Computer bereitgestellt wurde und ein Administrator sich am bereitgestellten virtuellen Computer anmelden kann:
 
 * Öffnen Sie ein Windows-Befehlsfenster als Administrator.
 * Ändern Sie das Verzeichnis in „C:\Program Files\Microsoft SQL Server\110\Setup Bootstrap\SQLServer2012“.
 * Führen Sie den folgenden Befehl aus: Setup.exe /QUIET /ACTION=REBUILDDATABASE /INSTANCENAME=MSSQLSERVER /SQLSYSADMINACCOUNTS=`<local_admin_account_name`> /SQLCOLLATION=SQL_Latin1_General_Cp850_BIN2   
-  * `<local_admin_account_name`> ist das Konto, das als Administratorkonto definiert wurde, als der virtuelle Computer zum ersten Mal über den Katalog bereitgestellt wurde.
+  * `<local_admin_account_name`> ist das Konto, das als Administratorkonto definiert wurde, als die VM zum ersten Mal über den Katalog bereitgestellt wurde.
 
-Dieser Vorgang sollte nur wenige Minuten dauern. Um sicherzustellen, dass dieser Schritt zum richtigen Ergebnis geführt hat, führen Sie die folgenden Schritte aus:
+Dieser Vorgang sollte nur wenige Minuten dauern. Um sicherzustellen, dass dieser Schritt zum richtigen Ergebnis geführt hat, führen Sie die folgenden Schritte durch:
 
 * Öffnen Sie SQL Server Management Studio.
 * Öffnen Sie ein Abfragefenster.
@@ -751,38 +778,35 @@ Wenn dies nicht das Ergebnis ist, BEENDEN Sie die SAP-Bereitstellung, und unters
 ### <a name="sql-server-high-availability-for-sap-in-azure"></a>SQL Server-Hochverfügbarkeit für SAP in Azure
 Wie weiter oben in diesem Artikel erwähnt, besteht keine Möglichkeit zum Erstellen von freigegebenem Speicher, der erforderlich ist, um die älteste Hochverfügbarkeitsfunktion von SQL Server zu verwenden. Mit dieser Funktion würden zwei oder mehr SQL Server-Instanzen in einem Windows Server-Failovercluster (WSFC) mit einem freigegebenen Datenträger für die Benutzerdatenbanken (und u.U. tempdb) installiert werden. Dies ist die seit langer Zeit verwendete standardmäßige Hochverfügbarkeitsmethode, die auch von SAP unterstützt wird. Da Azure keinen freigegebenen Speicher unterstützt, ist die Konfiguration von SQL Server-Hochverfügbarkeit mit einer Clusterkonfiguration mit freigegebenen Datenträgern nicht möglich. Es können jedoch viele andere Hochverfügbarkeitsmethoden verwendet werden. Diese werden in den folgenden Abschnitten beschrieben.
 
-[comment]: <> (Artikel verweist immer noch auf ASM)
-[comment]: <> (Bevor der Benutzer die Beschreibung der verschiedenen Technologien für Hochverfügbarkeit für SQL Server in Azure liest, sollte er das empfehlenswerte Dokument [hier][virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions] mit weiteren Details und Hinweisen lesen.)
-
 #### <a name="sql-server-log-shipping"></a>SQL Server-Protokollversand
-Eine der Methoden für hohe Verfügbarkeit (HA) ist der SQL Server-Protokollversand. Wenn die an der Hochverfügbarkeitskonfiguration teilnehmenden VMs über eine funktionierende Namensauflösung verfügen, besteht kein Problem, und die Einrichtung in Azure unterscheidet sich nicht von anderen, lokal ausgeführten Einrichtungen. Es wird nicht empfohlen, ausschließlich die IP-Auflösung zugrunde zu legen. Informationen zur Einrichtung des Protokollversands und zu den Prinzipien des Protokollversands finden Sie in dieser Dokumentation:
+Eine der Methoden für hohe Verfügbarkeit (HA) ist der SQL Server-Protokollversand. Wenn die an der Hochverfügbarkeitskonfiguration beteiligten VMs über eine funktionierende Namensauflösung verfügen, besteht kein Problem, und die Einrichtung in Azure unterscheidet sich nicht von anderen, lokal ausgeführten Einrichtungen. Es wird nicht empfohlen, ausschließlich die IP-Auflösung zugrunde zu legen. Informationen zur Einrichtung des Protokollversands und zu den Prinzipien des Protokollversands finden Sie in dieser Dokumentation:
 
-<https://technet.microsoft.com/library/ms187103.aspx>
+<https://docs.microsoft.com/sql/database-engine/log-shipping/about-log-shipping-sql-server>
 
 Um die Hochverfügbarkeit tatsächlich zu erreichen, müssen die VMs mit einer Protokollversandkonfiguration innerhalb derselben Azure-Verfügbarkeitsgruppe bereitgestellt werden.
 
-#### <a name="database-mirroring"></a>Datenbankspiegelung
-Die von SAP unterstützte Datenbankspiegelung (siehe SAP-Hinweis [965908]) basiert auf der Definition eines Failoverpartners in der SAP-Verbindungszeichenfolge. Bei standortübergreifenden Fällen wird davon ausgegangen, dass sich die beiden virtuellen Computer in derselben Domäne befinden und dass es sich bei dem Benutzerkontext, unter dem die beiden SQL Server-Instanzen ausgeführt werden, ebenfalls um Domänenbenutzer handelt, die über ausreichende Berechtigungen für die zwei beteiligten SQL Server-Instanzen verfügen. Daher unterscheidet sich die Einrichtung der Datenbankspiegelung in Azure nicht von einer typischen lokalen Einrichtung/Konfiguration.
+#### <a name="database-mirroring"></a>Spiegeln von Datenbanken
+Die von SAP unterstützte Datenbankspiegelung (siehe SAP-Hinweis [965908]) basiert auf der Definition eines Failoverpartners in der SAP-Verbindungszeichenfolge. Bei standortübergreifenden Fällen wird davon ausgegangen, dass sich die beiden VMs in derselben Domäne befinden und dass es sich bei dem Benutzerkontext, unter dem die beiden SQL Server-Instanzen ausgeführt werden, ebenfalls um Domänenbenutzer handelt, die über ausreichende Berechtigungen für die zwei beteiligten SQL Server-Instanzen verfügen. Daher unterscheidet sich die Einrichtung der Datenbankspiegelung in Azure nicht von einer typischen lokalen Einrichtung/Konfiguration.
 
 Für Nur-Cloud-Bereitstellungen besteht die einfachste Methode darin, eine weitere Domäne in Azure einzurichten, damit sich die DBMS-VMs (und im Idealfall die dedizierten SAP-VMs) innerhalb einer Domäne befinden.
 
-Wenn keine weitere Domäne möglich ist, können Sie auch Zertifikate für die Endpunkte der Datenbankspiegelung verwenden, wie unter <https://technet.microsoft.com/library/ms191477.aspx> beschrieben.
+Wenn eine Domäne nicht möglich ist, können auch Zertifikate für die Datenbankspiegelungsendpunkte verwendet werden, wie unter folgendem Link beschrieben wird: <https://docs.microsoft.com/sql/database-engine/database-mirroring/use-certificates-for-a-database-mirroring-endpoint-transact-sql>.
 
-Ein Tutorial zum Einrichten der Datenbankspiegelung in Azure finden Sie hier: <https://technet.microsoft.com/library/ms189852.aspx>. 
+Ein Tutorial zum Einrichten der Datenbankspiegelung in Azure finden Sie hier: <https://docs.microsoft.com/sql/database-engine/database-mirroring/database-mirroring-sql-server>. 
 
-#### <a name="alwayson"></a>AlwaysOn
-Da Always On für lokale SAP-Bereitstellungen unterstützt wird (siehe SAP-Hinweis [1772688]), wird Always On auch in Kombination mit SAP in Azure unterstützt. Die Tatsache, dass Sie keine freigegebenen Datenträger in Azure erstellen können, bedeutet nicht, dass Sie keine AlwaysOn-WSFC-Konfiguration (Windows Server-Failovercluster) zwischen verschiedenen VMs erstellen können. Es bedeutet lediglich, dass Sie keine Möglichkeit haben, einen freigegebenen Datenträger als Quorum in der Clusterkonfiguration zu verwenden. Folglich können Sie eine AlwaysOn-WSFC-Konfiguration in Azure erstellen. Wählen Sie dabei nicht den Quorumtyp aus, der freigegebene Datenträger verwendet. Der Azure-Umgebung, in der diese VMs bereitgestellt werden, sollte die VMs nach Namen auflösen, und die VMs sollten sich in derselben Domäne befinden. Dies gilt nur für Azure und für standortübergreifende Bereitstellungen. Bei der Bereitstellung des SQL Server-Verfügbarkeitsgruppenlisteners (nicht zu verwechseln mit der Azure-Verfügbarkeitsgruppe) gibt es einige Besonderheiten zu beachten, da Azure derzeit nicht die Erstellung eines AD-/DNS-Objekts zulässt, wie es lokal möglich ist. Daher sind einige abweichende Installationsschritte notwendig, um das spezifische Verhalten von Azure zu umgehen.
+#### <a name="sql-server-always-on"></a>SQL Server Always On
+Da Always On für lokale SAP-Bereitstellungen unterstützt wird (siehe SAP-Hinweis [1772688]), wird Always On auch in Kombination mit SAP in Azure unterstützt. Die Tatsache, dass Sie keine freigegebenen Datenträger in Azure erstellen können, bedeutet nicht, dass Sie keine Always On-WSFC-Konfiguration (Windows Server-Failovercluster) zwischen verschiedenen VMs erstellen können. Es bedeutet lediglich, dass Sie keine Möglichkeit haben, einen freigegebenen Datenträger als Quorum in der Clusterkonfiguration zu verwenden. Folglich können Sie eine Always On-WSFC-Konfiguration in Azure erstellen. Wählen Sie dabei nicht den Quorumtyp aus, der freigegebene Datenträger verwendet. Der Azure-Umgebung, in der diese VMs bereitgestellt werden, sollte die VMs nach Namen auflösen, und die VMs sollten sich in derselben Domäne befinden. Dies gilt nur für Azure und für standortübergreifende Bereitstellungen. Bei der Bereitstellung des SQL Server-Verfügbarkeitsgruppenlisteners (nicht zu verwechseln mit der Azure-Verfügbarkeitsgruppe) gibt es einige Besonderheiten zu beachten, da Azure derzeit nicht die Erstellung eines AD-/DNS-Objekts zulässt, wie es lokal möglich ist. Daher sind einige abweichende Installationsschritte notwendig, um das spezifische Verhalten von Azure zu umgehen.
 
 Im Folgenden finden Sie einige Überlegungen zur Verwendung eines Verfügbarkeitsgruppenlisteners:
 
-* Die Verwendung eines Verfügbarkeitsgruppenlisteners ist nur mit Windows Server 2012 oder Windows Server 2012 R2 als Gastbetriebssystem des virtuellen Computers möglich. Bei Windows Server 2012 müssen Sie sicherstellen, dass der folgende Patch angewendet wurde: <https://support.microsoft.com/kb/2854082>. 
+* Die Verwendung eines Verfügbarkeitsgruppenlisteners ist nur mit Windows Server 2012 oder höheren Version als Gastbetriebssystem der VM möglich. Bei Windows Server 2012 müssen Sie sicherstellen, dass der folgende Patch angewendet wurde: <https://support.microsoft.com/kb/2854082>. 
 * Dieser Patch ist für Windows Server 2008 R2 nicht vorhanden, und Always On müsste auf die gleiche Weise wie die Datenbankspiegelung verwendet werden, indem ein Failoverpartner in der Verbindungszeichenfolge angegeben wird (über den SAP-default.pfl-Parameter „dbs/mss/server“ – siehe SAP-Hinweis [965908]).
-* Bei der Verwendung eines Verfügbarkeitsgruppenlisteners müssen die Datenbank-VMs mit einem dedizierten Lastenausgleich verbunden sein. Die Namensauflösung in Nur-Cloud-Bereitstellungen erfordert entweder, dass sich alle VMs eines SAP-Systems (Anwendungsserver, DBMS-Server und (A)SCS-Server) in demselben virtuellen Netzwerk befinden, oder die Wartung der Datei „etc\host“ durch eine SAP-Anwendungsebene ist erforderlich, um die VM-Namen der SQL Server-VMs aufzulösen. Um zu vermeiden, dass Azure neue IP-Adressen in Fällen zuweist, in denen beide virtuelle Computer durch Zufall heruntergefahren werden, sollten Sie den Netzwerkschnittstellen dieser VMs in der Always On-Konfiguration statische IP-Adressen zuweisen (die Definition einer statischen IP-Adresse wird in [diesem Artikel][virtual-networks-reserved-private-ip] beschrieben).
+* Bei der Verwendung eines Verfügbarkeitsgruppenlisteners müssen die Datenbank-VMs mit einem dedizierten Lastenausgleich verbunden sein. Die Namensauflösung in Nur-Cloud-Bereitstellungen erfordert entweder, dass sich alle VMs eines SAP-Systems (Anwendungsserver, DBMS-Server und (A)SCS-Server) in demselben virtuellen Netzwerk befinden, oder die Wartung der Datei „etc\host“ durch eine SAP-Anwendungsebene ist erforderlich, um die VM-Namen der SQL Server-VMs aufzulösen. Um zu vermeiden, dass Azure neue IP-Adressen in Fällen zuweist, in denen beide VMs durch Zufall heruntergefahren werden, sollten Sie den Netzwerkschnittstellen dieser VMs in der Always On-Konfiguration statische IP-Adressen zuweisen (die Definition einer statischen IP-Adresse wird in [diesem Artikel][virtual-networks-reserved-private-ip] beschrieben).
 
 [comment]: <> (Alte Blogs)
 [comment]: <> (<https://blogs.msdn.com/b/alwaysonpro/archive/2014/08/29/recommendations-and-best-practices-when-deploying-sql-server-alwayson-availability-groups-in-windows-azure-iaas.aspx>, <https://blogs.technet.com/b/rmilne/archive/2015/07/27/how-to-set-static-ip-on-azure-vm.aspx>) 
 * Beim Erstellen der WSFC-Clusterkonfiguration, in der dem Cluster eine spezielle IP-Adresse zugewiesen muss, sind spezielle Schritte notwendig, da Azure dem Clusternamen derzeit dieselbe IP-Adresse zuweisen würde wie dem Knoten, auf dem der Cluster erstellt wird. Das bedeutet, dass ein manueller Schritt ausgeführt werden muss, um dem Cluster eine andere IP-Adresse zuzuweisen.
-* Der Verfügbarkeitsgruppenlistener wird in Azure mit TCP/IP-Endpunkten erstellt, die den virtuellen Computern zugewiesen werden, auf denen die primären und sekundären Replikate der Verfügbarkeitsgruppe ausgeführt werden.
+* Der Verfügbarkeitsgruppenlistener wird in Azure mit TCP/IP-Endpunkten erstellt, die den VMs zugewiesen werden, auf denen die primären und sekundären Replikate der Verfügbarkeitsgruppe ausgeführt werden.
 * Möglicherweise müssen diese Endpunkte mit Zugriffssteuerungslisten (ACLs) gesichert werden.
 
 [comment]: <> (TODO alter Blog)
@@ -795,7 +819,7 @@ Im Folgenden finden Sie einige Überlegungen zur Verwendung eines Verfügbarkeit
 [comment]: <> (*    <https://blogs.technet.com/b/heyscriptingguy/archive/2013/09/01/weekend-scripter-creating-acls-for-windows-azure-endpoints-part-2-of-2.aspx>)  
 [comment]: <> (*    <https://blogs.technet.com/b/heyscriptingguy/archive/2013/09/18/creating-acls-for-windows-azure-endpoints.aspx>) 
 
-Es ist auch möglich, eine SQL Server-AlwaysOn-Verfügbarkeitsgruppe über verschiedene Azure-Regionen hinweg bereitzustellen. Bei dieser Funktion wird die Azure-VNET-zu-VNET-Konnektivität verwendet ([weitere Details][virtual-networks-configure-vnet-to-vnet-connection]).
+Es ist auch möglich, eine SQL Server Always On-Verfügbarkeitsgruppe über verschiedene Azure-Regionen hinweg bereitzustellen. Bei dieser Funktion wird die Azure-VNET-zu-VNET-Konnektivität verwendet (weitere Details finden Sie [hier][virtual-networks-configure-vnet-to-vnet-connection]).
 
 [comment]: <> (TODO alter Blog)
 [comment]: <> (Die Einrichtung von SQL Server-Always On-Verfügbarkeitsgruppen in einem solchen Szenario wird hier beschrieben: <https://blogs.technet.com/b/dataplatforminsider/archive/2014/06/19/sql-server-alwayson-availability-groups-supported-between-microsoft-azure-regions.aspx>.) 
@@ -807,9 +831,9 @@ Da der Azure-Speicher Inhalte schützt, gibt es einen Grund weniger, der für ei
 * Softwareprobleme bei der SQL Server-Instanz
 * Schutz vor manuellen Fehlern, wenn Daten gelöscht werden und eine Point-in-Time-Wiederherstellung erforderlich ist
 
-Bei der Betrachtung entsprechender Technologien wäre die Aussage möglich, dass die ersten beiden Fälle durch die Datenbankspiegelung oder AlwaysOn und der dritte Fall nur durch den Protokollversand abgedeckt werden können.
+Bei der Betrachtung entsprechender Technologien wäre die Aussage möglich, dass die ersten beiden Fälle durch die Datenbankspiegelung oder Always On und der dritte Fall nur durch den Protokollversand abgedeckt werden können.
 
-Sie sollten die im Vergleich zur Datenbankspiegelung komplexere Einrichtung von AlwaysOn mit den durch AlwaysOn gebotenen Vorteilen abwägen. Zu diesen Vorteilen zählen:
+Sie sollten die im Vergleich zur Datenbankspiegelung komplexere Einrichtung von Always On mit den durch Always On gebotenen Vorteilen abwägen. Zu diesen Vorteilen zählen:
 
 * Lesbare sekundäre Replikate
 * Sicherungen aus sekundären Replikaten
@@ -820,13 +844,13 @@ Sie sollten die im Vergleich zur Datenbankspiegelung komplexere Einrichtung von 
 In diesem Handbuch finden Sie eine Reihe von Empfehlungen. Es ist ratsam, das Handbuch mehrmals zu lesen, bevor Sie Ihre Azure-Bereitstellung planen. Im Allgemeinen jedoch sollten Sie die zehn wichtigsten Punkte für DBMS in Azure befolgen:
 
 [comment]: <> (2.3 hat einen höheren Durchsatz als was? Als eine virtuelle Festplatte?)
-1. Verwenden Sie die neueste DBMS-Version wie SQL Server 2014, die die meisten Vorteile in Azure bietet. Bei SQL Server ist dies SQL Server 2012 SP1 CU4, worin auch das Feature zur Sicherung im Azure-Speicher enthalten ist. Gemeinsam mit SAP empfehlen wir jedoch, mindestens SQL Server 2014 SP1 CU1 oder SQL Server 2012 SP2 und die neueste CU zu verwenden.
+1. Verwenden Sie die neueste DBMS-Version wie SQL Server 2014, die die meisten Vorteile in Azure bietet. Bei SQL Server ist dies SQL Server 2012 SP1 CU4, worin auch das Feature zur Sicherung in Azure Storage enthalten ist. Gemeinsam mit SAP empfehlen wir jedoch, mindestens SQL Server 2014 SP1 CU1 oder SQL Server 2012 SP2 und die neueste CU zu verwenden.
 2. Planen Sie Ihre SAP-Systemlandschaft in Azure sorgfältig, um das Layout von Datendateien und die Einschränkungen von Azure gegeneinander abzuwägen:
-   * Verwenden Sie nicht zu viele VHDs, aber ausreichend viele, um sicherzustellen, dass die erforderlichen IOPS erzielt werden können.
-   * Denken Sie daran, dass IOPS pro Azure Storage-Konto beschränkt sind und dass Speicherkonten innerhalb jedes Azure-Abonnements beschränkt sind ([weitere Details][azure-subscription-service-limits]). 
-   * Erstellen Sie nur Stripesets für VHDs, wenn Sie einen höheren Durchsatz erzielen müssen.
+   * Verwenden Sie nicht zu viele Datenträger, aber ausreichend viele, um sicherzustellen, dass die erforderlichen IOPS erzielt werden können.
+   * Wenn Sie nicht Managed Disks verwenden, denken Sie daran, dass IOPS pro Azure Storage-Konto beschränkt sind und dass Speicherkonten innerhalb jedes Azure-Abonnements beschränkt sind (weitere Details finden Sie [hier][azure-subscription-service-limits]). 
+   * Erstellen Sie nur Stripesets für Datenträger, wenn Sie einen höheren Durchsatz erzielen müssen.
 3. Auf dem Laufwerk „D:\“ sollten Sie nie Software installieren oder Dateien speichern, die Persistenz erfordern, da dieses Laufwerk nicht permanent ist und somit sämtliche Inhalte bei einem Windows-Neustart verloren gehen.
-4. Verwenden Sie kein Azure-VHD-Caching für den Azure-Standardspeicher.
+4. Verwenden Sie keine Datenträgerzwischenspeicherung für Azure-Standardspeicher.
 5. Verwenden Sie keine georeplizierten Azure-Speicherkonten.  Verwenden Sie die Option „Lokal redundant“ für DBMS-Workloads.
 6. Verwenden Sie die Hochverfügbarkeits- und Notfallwiederherstellungslösung Ihres DBMS-Herstellers, um Datenbankdaten zu replizieren.
 7. Verwenden Sie immer die Namensauflösung, und verlassen Sie sich nicht auf IP-Adressen.
@@ -837,9 +861,9 @@ In diesem Handbuch finden Sie eine Reihe von Empfehlungen. Es ist ratsam, das Ha
 ## <a name="specifics-to-sap-ase-on-windows"></a>Besonderheiten bei SAP ASE unter Windows
 Ab Microsoft Azure lassen sich bestehende SAP ASE-Anwendungen einfach zu virtuellen Azure-Computern migrieren. Wenn Sie SAP ASE auf einem virtuellen Computer betreiben, können Sie die Gesamtbetriebskosten der Bereitstellung, Verwaltung und Wartung von unternehmensweiten Anwendungen senken, indem Sie diese Anwendungen einfach zu Microsoft Azure migrieren. Bei SAP ASE auf einem virtuellen Azure-Computer stehen Administratoren und Entwicklern die vertrauten Entwicklungs- und Verwaltungstools aus der lokalen Umgebung zur Verfügung.
 
-Es gibt eine SLA für Azure Virtual Machines. Diese finden Sie unter <https://azure.microsoft.com/support/legal/sla>.
+Es gibt eine SLA für virtuelle Azure-Computer. Diese finden Sie unter <https://azure.microsoft.com/support/legal/sla/virtual-machines>.
 
-Wir sind davon überzeugt, dass unter Microsoft Azure gehostete virtuelle Computer im Vergleich zu anderen Virtualisierungsangeboten in der Public Cloud sehr gute Leistung erbringen. Die einzelnen Ergebnisse können allerdings variieren. Informationen zur SAP-Größe für SAPS-Zahlen der verschiedenen SAP-zertifizierten VM-SKUs finden Sie im separaten SAP-Hinweis [1928533].
+Wir sind davon überzeugt, dass unter Microsoft Azure gehostete virtuelle Computer im Vergleich zu anderen Virtualisierungsangeboten in der öffentlichen Cloud sehr gute Leistung erbringen. Die einzelnen Ergebnisse können allerdings variieren. Informationen zur SAP-Größe für SAPS-Zahlen der verschiedenen SAP-zertifizierten VM-SKUs finden Sie im separaten SAP-Hinweis [1928533].
 
 Aussagen und Empfehlungen betreffend die Verwendung von Azure Storage, die Bereitstellung von SAP-VMs oder SAP Monitoring gelten auch für Bereitstellungen von SAP ASE in Verbindung mit SAP-Anwendungen (siehe die ersten vier Kapitel dieses Dokuments).
 
@@ -851,13 +875,13 @@ Wie für alle lokalen Installationen gilt: Laden Sie Updates für SAP ASE-Server
 * [1590719]
 * [1973241]
 
-Allgemeine Informationen zum Ausführen der SAP Business Suite in SAP ASE finden Sie im [SCN](https://scn.sap.com/community/ase)
+Allgemeine Informationen zum Ausführen der SAP Business Suite in SAP ASE finden Sie im [SCN](https://www.sap.com/community/topic/ase.html)
 
 ### <a name="sap-ase-configuration-guidelines-for-sap-related-sap-ase-installations-in-azure-vms"></a>SAP ASE-Konfigurationsrichtlinien für SAP-bezogene SAP ASE-Installationen auf Azure-VMs
 #### <a name="structure-of-the-sap-ase-deployment"></a>Struktur der SAP ASE-Bereitstellung
-In Übereinstimmung mit der allgemeinen Beschreibung sollten ausführbare SAP ASE-Dateien sich im Systemverzeichnis der Basis-VHD (Laufwerk „C:\“\) des virtuellen Computers befinden bzw. bei der Installation dort abgelegt werden. Üblicherweise werden die meisten System- und Tooldatenbanken von SAP ASE durch die SAP NetWeaver-Workload nicht stark in Anspruch genommen. Daher können auch die System- und Tooldatenbanken („master“, „model“, „saptools“, „sybmgmtdb“, „sybsystemdb“) auf dem Laufwerk „C:\“ verbleiben. 
+In Übereinstimmung mit der allgemeinen Beschreibung sollten sich ausführbare SAP ASE-Dateien im Systemverzeichnis des Betriebssystemdatenträgers (Laufwerk „C:\“\) der VM befinden bzw. bei der Installation dort abgelegt werden. Üblicherweise werden die meisten System- und Tooldatenbanken von SAP ASE durch die SAP NetWeaver-Workload nicht stark in Anspruch genommen. Daher können auch die System- und Tooldatenbanken („master“, „model“, „saptools“, „sybmgmtdb“, „sybsystemdb“) auf dem Laufwerk „C:\“ verbleiben. 
 
-Als Ausnahme kommt die temporäre Datenbank in Betracht, die sämtliche Arbeitstabellen und temporären Tabellen enthält, die in SAP ASE erstellt werden. Im Falle einiger SAP ERP- sowie aller BW-Workloads kann die temporäre Datenbank ein höheres Volumen für Daten oder für E/A-Vorgänge erfordern, wodurch die Speicherkapazität der Basis-VHD (Laufwerk „C:\“\) der ursprünglichen VM übertroffen wird.
+Als Ausnahme kommt die temporäre Datenbank in Betracht, die sämtliche Arbeitstabellen und temporären Tabellen enthält, die in SAP ASE erstellt werden. Im Falle einiger SAP ERP- sowie aller BW-Workloads kann die temporäre Datenbank entweder ein höheres Volumen für Daten oder für E/A-Vorgänge erfordern, wodurch die Speicherkapazität des Betriebssystemdatenträgers der ursprünglichen VM (Laufwerk „C:“\) übertroffen wird.
 
 Abhängig von der Version von SAPInst/SWPM, die für die Installation des Systems verwendet wurde, kann die Datenbank Folgendes enthalten:
 
@@ -865,14 +889,14 @@ Abhängig von der Version von SAPInst/SWPM, die für die Installation des System
 * Eine bei der Installation von SAP ASE erstellte SAP ASE-tempdb sowie eine zusätzliche saptempdb, die durch die SAP-Installationsroutine erstellt wird
 * Eine SAP ASE-tempdb, die bei der Installation von SAP ASE erstellt wird, sowie eine zusätzliche, (z.B. durch Befolgen der Schritte in SAP-Hinweis [1752266]) manuell erstellte tempdb, um bestimmte ERP/BW-spezifische Anforderungen an tempdb zu erfüllen
 
-Im Falle von bestimmten ERP- und bei allen BW-Workloads ist es hinsichtlich der Leistung sinnvoll, die tempdb-Geräte der zusätzlich (durch SWPM oder manuell) erstellten tempdb auf einem anderen Laufwerk als „C:\“ zu speichern\. Wenn keine zusätzliche tempdb vorhanden ist, sollten Sie diese erstellen (siehe SAP-Hinweis [1752266]).
+Im Falle von bestimmten ERP- oder bei allen BW-Workloads ist es hinsichtlich der Leistung sinnvoll, die tempdb-Geräte der zusätzlich erstellten tempdb (durch SWPM oder manuell erstellt) auf einem anderen Laufwerk als „C:\“ zu speichern. Wenn keine zusätzliche tempdb vorhanden ist, sollten Sie diese erstellen (siehe SAP-Hinweis [1752266]).
 
 Trifft dies auf Ihr System zu, sollten Sie für die zusätzlich erstellte tempdb die folgenden Schritte ausführen:
 
 * Verschieben Sie das erste tempdb-Gerät auf das erste Gerät der SAP-Datenbank.
 * Fügen Sie tempdb-Geräte zu jeder der VHDs hinzu, die ein Gerät der SAP-Datenbank enthält.
 
-Mithilfe dieser Konfiguration kann tempdb einerseits mehr Speicherplatz nutzen, als auf dem Systemlaufwerk vorhanden ist. (Als Vergleichsmaßstab können Sie die tempdb-Verzeichnisgrößen bestehender lokaler Systeme heranziehen.) Eine solche Konfiguration ermöglicht andererseits IOPS-Größenordnungen für tempdb, die das Systemlaufwerk nicht erzielen kann. Auch hier können lokal ausgeführte Systeme zur Überwachung des E/A-Workloads für tempdb verwendet werden.
+Mithilfe dieser Konfiguration kann tempdb einerseits mehr Speicherplatz nutzen, als auf dem Systemlaufwerk vorhanden ist. Als Vergleichsmaßstab können Sie die tempdb-Gerätegrößen bestehender lokaler Systeme heranziehen. Eine solche Konfiguration ermöglicht andererseits IOPS-Größenordnungen für tempdb, die das Systemlaufwerk nicht erzielen kann. Auch hier können lokal ausgeführte Systeme zur Überwachung des E/A-Workloads für tempdb verwendet werden.
 
 Platzieren Sie niemals SAP ASE-Geräte auf dem Laufwerk „D:\“ des virtuellen Computers. Dies gilt auch für die tempdb, auch wenn die Objekte in der tempdb nur temporär sind.
 
@@ -890,7 +914,7 @@ Die Daten- und LOB-Komprimierung funktioniert auf einer VM, die auf einem virtue
 #### <a name="using-dbacockpit-to-monitor-database-instances"></a>Verwenden von DBACockpit für die Überwachung von Datenbankinstanzen
 Bei SAP-Systemen, bei denen SAP ASE als Datenbankplattform verwendet wird, erfolgt der Zugriff auf das DBACockpit über eingebettete Browserfenster im Transaktions-DBACockpit oder über Webdynpro. Die vollständige Funktionalität für die Überwachung und Verwaltung der Datenbank steht allerdings nur über die Webdynpro-Implementierung von DBACockpit zur Verfügung.
 
-Wie bei lokalen Systemen sind einige Schritte erforderlich, um die gesamte SAP NetWeaver-Funktionalität zu aktivieren, die durch die Webdynpro-Implementierung von DBACockpit genutzt wird. Befolgen Sie die Schritte in SAP-Hinweis [1245200] , um die Verwendung von Webdynpros zu aktivieren und die erforderlichen Webdynpros zu generieren. Beim Befolgen der Anweisungen in den obigen Hinweisen werden Sie auch den Internet Communication Manager (ICM) zusammen mit den Ports konfigurieren, die für HTTP- und HTTPS-Verbindungen verwendet werden. Die Standardeinstellung für HTTP sieht wie folgt aus:
+Wie bei lokalen Systemen sind einige Schritte erforderlich, um die gesamte SAP NetWeaver-Funktionalität zu aktivieren, die durch die Webdynpro-Implementierung von DBACockpit genutzt wird. Befolgen Sie die Schritte in SAP-Hinweis [1245200], um die Verwendung von Webdynpros zu aktivieren und die erforderlichen Webdynpros zu generieren. Beim Befolgen der Anweisungen in den obigen Hinweisen werden Sie auch den Internet Communication Manager (ICM) zusammen mit den Ports konfigurieren, die für HTTP- und HTTPS-Verbindungen verwendet werden. Die Standardeinstellung für HTTP sieht wie folgt aus:
 
 > icm/server_port_0 = PROT=HTTP,PORT=8000,PROCTIMEOUT=600,TIMEOUT=600
 > 
@@ -908,7 +932,7 @@ Die im Transaktions-DBACockpit generierten Links sehen so aus:
 
 Der virtuelle Azure-Computer, auf dem das SAP-System gehostet wird, kann auf verschiedene Arten verbunden sein: Site-to-Site, mehrere Standorte oder ExpressRoute (standortübergreifende Bereitstellung). In Abhängigkeit davon muss ICM einen vollqualifizierten Hostnamen verwenden, der von dem Computer, von dem aus DBACockpit geöffnet werden soll, aufgelöst werden kann. In SAP-Hinweis [773830] erfahren Sie, wie ICM den vollqualifizierten Hostnamen in Abhängigkeit von Profilparametern ermittelt. Legen Sie explizit den Parameter „icm/host_name_full“ fest, falls erforderlich.
 
-Wird die VM in einem Nur-Cloud-Szenario ohne standortübergreifende Konnektivität zwischen der lokalen Umgebung und Azure bereitgestellt, müssen eine öffentliche IP-Adresse und eine Domänenbezeichnung festgelegt werden. Das Format des öffentlichen DNS-Namens der VM sieht dann so aus:
+Wird die VM in einem Nur-Cloud-Szenario ohne standortübergreifende Konnektivität zwischen der lokalen Umgebung und Azure bereitgestellt, müssen eine öffentliche IP-Adresse und eine Domänenbezeichnung festgelegt werden. Das Format des öffentlichen DNS-Namens der VM sieht wie folgt aus:
 
 > `<custom domainlabel`>.`<azure region`>.cloudapp.azure.com
 > 
@@ -954,25 +978,25 @@ Sicherung und Wiederherstellung einer Datenbank in Azure funktionieren wie bei l
 * [1588316]
 * [1585981]
 
-Darin wird erläutert, wie Abbildkonfigurationen erstellt und Sicherungen geplant werden. Je nach Ihrer Strategie und Ihren Anforderungen können Sie Datenbank- und Protokollabbilder für Datenträger konfigurieren und auf einer der vorhandenen VHDs speichern. Außerdem lässt sich eine zusätzliche VHD zur Sicherung hinzufügen.  Um die Gefahr von Datenverlusten bei einem Fehler zu reduzieren, wird empfohlen, eine VHD zu verwenden, auf der sich kein Datenbankgerät befindet.
+Darin wird erläutert, wie Abbildkonfigurationen erstellt und Sicherungen geplant werden. Je nach Ihrer Strategie und Ihren Anforderungen können Sie Datenbank- und Protokollsicherungen für Datenträger konfigurieren und auf einer der vorhandenen Datenträger speichern. Außerdem lässt sich ein zusätzlicher Datenträger zur Sicherung hinzufügen. Um die Gefahr von Datenverlusten bei einem Fehler zu reduzieren, wird empfohlen, einen Datenträger zu verwenden, auf dem sich kein Datenbankgerät befindet.
 
-Neben der Daten- und LOB-Komprimierung lässt sich in SAP ASE auch die Sicherung komprimieren. Um den Platzbedarf der Datenbank- und Protokollabbilder zu senken, empfiehlt es sich, die Sicherungskomprimierung zu verwenden. Weitere Informationen finden Sie in SAP-Hinweis [1588316] . Für den Fall, dass Sie zukünftig Sicherungen oder VHDs mit Sicherungsabbildungen vom virtuellen Azure-Computer auf lokale Rechner herunterladen möchten, wird durch Komprimieren der Sicherung auch die zu übertragende Datenmenge gesenkt.
+Neben der Daten- und LOB-Komprimierung lässt sich in SAP ASE auch die Sicherung komprimieren. Um den Platzbedarf der Datenbank- und Protokollabbilder zu senken, empfiehlt es sich, die Sicherungskomprimierung zu verwenden. Weitere Informationen finden Sie in SAP-Hinweis [1588316]. Für den Fall, dass Sie zukünftig Sicherungen oder VHDs mit Sicherungsabbildungen vom virtuellen Azure-Computer auf lokale Rechner herunterladen möchten, wird durch Komprimieren der Sicherung auch die zu übertragende Datenmenge gesenkt.
 
 Verwenden Sie das Laufwerk „D:\“ nicht als Speicherziel für Datenbank- oder Protokolldateien.
 
 #### <a name="performance-considerations-for-backupsrestores"></a>Einfluss der Sicherung und Wiederherstellung auf die Leistung
-Wie bei der Bare-Metal-Bereitstellung hängt die Leistung bei der Sicherung und Wiederherstellung davon ab, wie viele Volumes parallel ausgelesen werden können und wie hoch deren Durchsatz ist. Bei virtuellen Computern mit nur bis zu acht CPU-Threads sollte unter Umständen auch der CPU-Verbrauch durch die Sicherungskomprimierung beachtet werden. Es gilt also Folgendes:
+Wie bei der Bare-Metal-Bereitstellung hängt die Leistung bei der Sicherung und Wiederherstellung davon ab, wie viele Volumes parallel ausgelesen werden können und wie hoch deren Durchsatz ist. Bei VMs mit nur bis zu acht CPU-Threads sollte unter Umständen auch der CPU-Verbrauch durch die Sicherungskomprimierung beachtet werden. Es gilt also Folgendes:
 
-* Je geringer die Anzahl an VHDs, auf denen sich Datenbankgeräte befinden, desto geringer der Durchsatz beim Auslesen insgesamt.
+* Je geringer die Anzahl an Datenträgern, auf denen sich Datenbankgeräte befinden, desto geringer der Durchsatz beim Auslesen insgesamt.
 * Je weniger CPU-Threads in der VM, desto schwerwiegender der Einfluss der Sicherungskomprimierung.
-* Je weniger Ziele (Stripeset-Verzeichnisse, VHDs), auf die Sicherungen geschrieben werden, desto geringer der Durchsatz.
+* Je weniger Ziele (Stripesetverzeichnisse, Datenträger), in bzw. auf die Sicherungen geschrieben werden, desto geringer der Durchsatz.
 
 Wenn Sie die Anzahl der Ziele erhöhen möchten, stehen Ihnen je nach Anforderungen zwei Optionen zur Verfügung, die Sie verwenden bzw. kombinieren können:
 
-* Striping des Zielvolumes der Sicherung auf mehrere bereitgestellte VHDs, wodurch der IOPS-Durchsatz auf den betreffenden Volumes verbessert wird
-* Erstellen einer Abbildkonfiguration auf SAP ASE-Ebene, bei der mehr als ein Zielverzeichnis für das Speichern des Abbilds angegeben wird
+* Striping des Zielvolumes der Sicherung auf mehreren bereitgestellten Datenträgern, wodurch der IOPS-Durchsatz auf den betreffenden Stripesetvolumes verbessert wird
+* Erstellen einer Speicherabbildkonfiguration auf SAP ASE-Ebene, bei der mehr als ein Zielverzeichnis für das Speichern des Abbilds angegeben wird
 
-Informationen zum Striping eines Volumes auf mehrere bereitgestellte VHDs finden Sie oben in dieser Anleitung. Einzelheiten zur Verwendung mehrerer Verzeichnisse in der SAP ASE-Speicherabbildkonfiguration finden Sie in der Dokumentation zur gespeicherten Prozedur „sp_config_dump“. Diese Funktion wird verwendet, um die Speicherabbildkonfiguration im [Sybase Infocenter](http://infocenter.sybase.com/help/index.jsp) zu erstellen.
+Informationen zum Striping eines Volumes auf mehreren bereitgestellten Datenträgern finden Sie oben in dieser Anleitung. Einzelheiten zur Verwendung mehrerer Verzeichnisse in der SAP ASE-Speicherabbildkonfiguration finden Sie in der Dokumentation zur gespeicherten Prozedur „sp_config_dump“. Diese Funktion wird verwendet, um die Speicherabbildkonfiguration im [Sybase Infocenter](http://infocenter.sybase.com/help/index.jsp) zu erstellen.
 
 ### <a name="disaster-recovery-with-azure-vms"></a>Notfallwiederherstellung mit Azure-VMs
 #### <a name="data-replication-with-sap-sybase-replication-server"></a>Datenreplikation mit SAP Sybase Replication Server
@@ -987,7 +1011,7 @@ Ab Microsoft Azure lassen sich bestehende SAP ASE-Anwendungen einfach zu virtuel
 
 Wichtig bei der Bereitstellung von Azure-VMs ist die Kenntnis der offiziellen SLAs. Diese finden Sie unter <https://azure.microsoft.com/support/legal/sla>.
 
-Informationen zur jeweils empfohlenen SAP-Größe sowie eine Liste mit SAP-zertifizierten VM-SKUs erhalten Sie demnächst in SAP-Hinweis [1928533]. Zusätzliche Dokumente zum Festlegen der SAP-Größe für Azure-VMs finden Sie unter <http://blogs.msdn.com/b/saponsqlserver/archive/2015/06/19/how-to-size-sap-systems-running-on-azure-vms.aspx> und unter <http://blogs.msdn.com/b/saponsqlserver/archive/2015/12/01/new-white-paper-on-sizing-sap-solutions-on-azure-public-cloud.aspx>.
+Informationen zur jeweils empfohlenen SAP-Größe sowie eine Liste mit SAP-zertifizierten VM-SKUs erhalten Sie in SAP-Hinweis [1928533]. Zusätzliche Dokumente zum Festlegen der SAP-Größe für Azure-VMs finden Sie unter <http://blogs.msdn.com/b/saponsqlserver/archive/2015/06/19/how-to-size-sap-systems-running-on-azure-vms.aspx> und unter <http://blogs.msdn.com/b/saponsqlserver/archive/2015/12/01/new-white-paper-on-sizing-sap-solutions-on-azure-public-cloud.aspx>.
 
 Aussagen und Empfehlungen betreffend die Verwendung von Azure Storage, die Bereitstellung von SAP-VMs oder SAP Monitoring gelten auch für Bereitstellungen von SAP ASE in Verbindung mit SAP-Anwendungen (siehe die ersten vier Kapitel dieses Dokuments).
 
@@ -1004,7 +1028,7 @@ Wie für alle lokalen Installationen gilt: Laden Sie Updates für SAP ASE-Server
 * [1590719]
 * [1973241]
 
-Allgemeine Informationen zum Ausführen der SAP Business Suite in SAP ASE finden Sie im [SCN](https://scn.sap.com/community/ase)
+Allgemeine Informationen zum Ausführen der SAP Business Suite in SAP ASE finden Sie im [SCN](https://www.sap.com/community/topic/ase.html)
 
 ### <a name="sap-ase-configuration-guidelines-for-sap-related-sap-ase-installations-in-azure-vms"></a>SAP ASE-Konfigurationsrichtlinien für SAP-bezogene SAP ASE-Installationen auf Azure-VMs
 #### <a name="structure-of-the-sap-ase-deployment"></a>Struktur der SAP ASE-Bereitstellung
@@ -1023,9 +1047,9 @@ Was den Fall der spezifischen ERP- bzw. der BW-Workloads insgesamt betrifft, ist
 Trifft dies auf Ihr System zu, sollten Sie für die zusätzlich erstellte tempdb die folgenden Schritte ausführen:
 
 * Verschieben Sie das Verzeichnis der ersten tempdb in das erste Dateisystem der SAP-Datenbank.
-* Fügen Sie ein tempdb-Verzeichnis zu jeder der VHDs hinzu, die ein Dateisystem der SAP-Datenbank enthält.
+* Fügen Sie tempdb-Verzeichnisse zu jedem Datenträger hinzu, der ein Dateisystem der SAP-Datenbank enthält.
 
-Mithilfe dieser Konfiguration kann tempdb einerseits mehr Speicherplatz nutzen, als auf dem Systemlaufwerk vorhanden ist. (Als Vergleichsmaßstab können Sie die tempdb-Verzeichnisgrößen bestehender lokaler Systeme heranziehen.) Eine solche Konfiguration ermöglicht andererseits IOPS-Größenordnungen für tempdb, die das Systemlaufwerk nicht erzielen kann. Auch hier können lokal ausgeführte Systeme zur Überwachung des E/A-Workloads für tempdb verwendet werden.
+Mithilfe dieser Konfiguration kann tempdb einerseits mehr Speicherplatz nutzen, als auf dem Systemlaufwerk vorhanden ist. Als Vergleichsmaßstab können Sie die tempdb-Verzeichnisgrößen bestehender lokaler Systeme heranziehen. Eine solche Konfiguration ermöglicht andererseits IOPS-Größenordnungen für tempdb, die das Systemlaufwerk nicht erzielen kann. Auch hier können lokal ausgeführte Systeme zur Überwachung des E/A-Workloads für tempdb verwendet werden.
 
 SAP ASE-Verzeichnisse dürfen sich unter keinen Umständen auf „/mnt“ oder „/mnt/resource“ der VM befinden. Dies gilt auch für tempdb, auch wenn die in tempdb enthaltenen Objekte sich nur temporär darin befinden, da es sich bei „/mnt“ und „/mnt/resource“ um standardmäßige temporäre Speicherplätze für Azure-VMs handelt, die nicht persistent sind. Weitere Informationen zu temporären Speicherplätzen von virtuellen Azure-Computern erhalten Sie in [diesem Artikel][virtual-machines-linux-how-to-attach-disk].
 
@@ -1043,7 +1067,7 @@ Die Daten- und LOB-Komprimierung funktioniert auf einer VM, die auf einem virtue
 #### <a name="using-dbacockpit-to-monitor-database-instances"></a>Verwenden von DBACockpit für die Überwachung von Datenbankinstanzen
 Bei SAP-Systemen, bei denen SAP ASE als Datenbankplattform verwendet wird, erfolgt der Zugriff auf das DBACockpit über eingebettete Browserfenster im Transaktions-DBACockpit oder über Webdynpro. Die vollständige Funktionalität für die Überwachung und Verwaltung der Datenbank steht allerdings nur über die Webdynpro-Implementierung von DBACockpit zur Verfügung.
 
-Wie bei lokalen Systemen sind einige Schritte erforderlich, um die gesamte SAP NetWeaver-Funktionalität zu aktivieren, die durch die Webdynpro-Implementierung von DBACockpit genutzt wird. Befolgen Sie die Schritte in SAP-Hinweis [1245200] , um die Verwendung von Webdynpros zu aktivieren und die erforderlichen Webdynpros zu generieren. Beim Befolgen der Anweisungen in den obigen Hinweisen werden Sie auch den Internet Communication Manager (ICM) zusammen mit den Ports konfigurieren, die für HTTP- und HTTPS-Verbindungen verwendet werden. Die Standardeinstellung für HTTP sieht wie folgt aus:
+Wie bei lokalen Systemen sind einige Schritte erforderlich, um die gesamte SAP NetWeaver-Funktionalität zu aktivieren, die durch die Webdynpro-Implementierung von DBACockpit genutzt wird. Befolgen Sie die Schritte in SAP-Hinweis [1245200], um die Verwendung von Webdynpros zu aktivieren und die erforderlichen Webdynpros zu generieren. Beim Befolgen der Anweisungen in den obigen Hinweisen werden Sie auch den Internet Communication Manager (ICM) zusammen mit den Ports konfigurieren, die für HTTP- und HTTPS-Verbindungen verwendet werden. Die Standardeinstellung für HTTP sieht wie folgt aus:
 
 > icm/server_port_0 = PROT=HTTP,PORT=8000,PROCTIMEOUT=600,TIMEOUT=600
 > 
@@ -1061,7 +1085,7 @@ Die im Transaktions-DBACockpit generierten Links sehen so aus:
 
 Der virtuelle Azure-Computer, auf dem das SAP-System gehostet wird, kann auf verschiedene Arten verbunden sein: Site-to-Site, mehrere Standorte oder ExpressRoute (standortübergreifende Bereitstellung). In Abhängigkeit davon muss ICM einen vollqualifizierten Hostnamen verwenden, der von dem Computer, von dem aus DBACockpit geöffnet werden soll, aufgelöst werden kann. In SAP-Hinweis [773830] erfahren Sie, wie ICM den vollqualifizierten Hostnamen in Abhängigkeit von Profilparametern ermittelt. Legen Sie explizit den Parameter „icm/host_name_full“ fest, falls erforderlich.
 
-Wird die VM in einem Nur-Cloud-Szenario ohne standortübergreifende Konnektivität zwischen der lokalen Umgebung und Azure bereitgestellt, müssen eine öffentliche IP-Adresse und eine Domänenbezeichnung festgelegt werden. Das Format des öffentlichen DNS-Namens der VM sieht dann so aus:
+Wird die VM in einem Nur-Cloud-Szenario ohne standortübergreifende Konnektivität zwischen der lokalen Umgebung und Azure bereitgestellt, müssen eine öffentliche IP-Adresse und eine Domänenbezeichnung festgelegt werden. Das Format des öffentlichen DNS-Namens der VM sieht wie folgt aus:
 
 > `<custom domainlabel`>.`<azure region`>.cloudapp.azure.com
 > 
@@ -1107,25 +1131,25 @@ Sicherung und Wiederherstellung einer Datenbank in Azure funktionieren wie bei l
 * [1588316]
 * [1585981]
 
-Darin wird erläutert, wie Abbildkonfigurationen erstellt und Sicherungen geplant werden. Je nach Ihrer Strategie und Ihren Anforderungen können Sie Datenbank- und Protokollabbilder für Datenträger konfigurieren und auf einer der vorhandenen VHDs speichern. Außerdem lässt sich eine zusätzliche VHD zur Sicherung hinzufügen.  Um die Gefahr von Datenverlusten bei einem Fehler zu reduzieren, wird empfohlen, eine VHD zu verwenden, auf der sich kein Datenbankverzeichnis bzw. keine Datenbankdatei befindet.
+Darin wird erläutert, wie Abbildkonfigurationen erstellt und Sicherungen geplant werden. Je nach Ihrer Strategie und Ihren Anforderungen können Sie Datenbank- und Protokollsicherungen für Datenträger konfigurieren und auf einer der vorhandenen Datenträger speichern. Außerdem lässt sich ein zusätzlicher Datenträger zur Sicherung hinzufügen. Um die Gefahr von Datenverlusten bei einem Fehler zu reduzieren, wird empfohlen, einen Datenträger zu verwenden, auf dem sich kein Datenbankverzeichnis bzw. keine Datenbankdatei befindet.
 
-Neben der Daten- und LOB-Komprimierung lässt sich in SAP ASE auch die Sicherung komprimieren. Um den Platzbedarf der Datenbank- und Protokollabbilder zu senken, empfiehlt es sich, die Sicherungskomprimierung zu verwenden. Weitere Informationen finden Sie in SAP-Hinweis [1588316] . Für den Fall, dass Sie zukünftig Sicherungen oder VHDs mit Sicherungsabbildungen vom virtuellen Azure-Computer auf lokale Rechner herunterladen möchten, wird durch Komprimieren der Sicherung auch die zu übertragende Datenmenge gesenkt.
+Neben der Daten- und LOB-Komprimierung lässt sich in SAP ASE auch die Sicherung komprimieren. Um den Platzbedarf der Datenbank- und Protokollabbilder zu senken, empfiehlt es sich, die Sicherungskomprimierung zu verwenden. Weitere Informationen finden Sie in SAP-Hinweis [1588316]. Für den Fall, dass Sie zukünftig Sicherungen oder VHDs mit Sicherungsabbildungen vom virtuellen Azure-Computer auf lokale Rechner herunterladen möchten, wird durch Komprimieren der Sicherung auch die zu übertragende Datenmenge gesenkt.
 
 Verwenden Sie nicht die von der Azure-VM verwendeten temporären Speicherorte „/mnt“ oder „/mnt/resource“ als Ziel für Datenbank- oder Protokollabbilder.
 
 #### <a name="performance-considerations-for-backupsrestores"></a>Einfluss der Sicherung und Wiederherstellung auf die Leistung
-Wie bei der Bare-Metal-Bereitstellung hängt die Leistung bei der Sicherung und Wiederherstellung davon ab, wie viele Volumes parallel ausgelesen werden können und wie hoch deren Durchsatz ist. Bei virtuellen Computern mit nur bis zu acht CPU-Threads sollte unter Umständen auch der CPU-Verbrauch durch die Sicherungskomprimierung beachtet werden. Es gilt also Folgendes:
+Wie bei der Bare-Metal-Bereitstellung hängt die Leistung bei der Sicherung und Wiederherstellung davon ab, wie viele Volumes parallel ausgelesen werden können und wie hoch deren Durchsatz ist. Bei VMs mit nur bis zu acht CPU-Threads sollte unter Umständen auch der CPU-Verbrauch durch die Sicherungskomprimierung beachtet werden. Es gilt also Folgendes:
 
-* Je geringer die Anzahl an VHDs, auf denen sich Datenbankgeräte befinden, desto geringer der Durchsatz beim Auslesen insgesamt.
+* Je geringer die Anzahl an Datenträgern, auf denen sich Datenbankgeräte befinden, desto geringer der Durchsatz beim Auslesen insgesamt.
 * Je weniger CPU-Threads in der VM, desto schwerwiegender der Einfluss der Sicherungskomprimierung.
-* Je weniger Sicherungsziele (Linux-Software-RAID, VHDs), desto geringer der Durchsatz.
+* Je weniger Sicherungsziele (Linux-Software-RAID, Datenträger), desto geringer der Durchsatz.
 
 Wenn Sie die Anzahl der Ziele erhöhen möchten, stehen Ihnen je nach Anforderungen zwei Optionen zur Verfügung, die Sie verwenden bzw. kombinieren können:
 
-* Striping des Zielvolumes der Sicherung auf mehrere bereitgestellte VHDs, wodurch der IOPS-Durchsatz auf den betreffenden Volumes verbessert wird
-* Erstellen einer Abbildkonfiguration auf SAP ASE-Ebene, bei der mehr als ein Zielverzeichnis für das Speichern des Abbilds angegeben wird
+* Striping des Zielvolumes der Sicherung auf mehreren bereitgestellten Datenträgern, wodurch der IOPS-Durchsatz auf den betreffenden Stripesetvolumes verbessert wird
+* Erstellen einer Speicherabbildkonfiguration auf SAP ASE-Ebene, bei der mehr als ein Zielverzeichnis für das Speichern des Abbilds angegeben wird
 
-Informationen zum Striping eines Volumes auf mehrere bereitgestellte VHDs finden Sie oben in dieser Anleitung. Einzelheiten zur Verwendung mehrerer Verzeichnisse in der SAP ASE-Speicherabbildkonfiguration finden Sie in der Dokumentation zur gespeicherten Prozedur „sp_config_dump“. Diese Funktion wird verwendet, um die Speicherabbildkonfiguration im [Sybase Infocenter](http://infocenter.sybase.com/help/index.jsp) zu erstellen.
+Informationen zum Striping eines Volumes auf mehreren bereitgestellten Datenträgern finden Sie oben in dieser Anleitung. Einzelheiten zur Verwendung mehrerer Verzeichnisse in der SAP ASE-Speicherabbildkonfiguration finden Sie in der Dokumentation zur gespeicherten Prozedur „sp_config_dump“. Diese Funktion wird verwendet, um die Speicherabbildkonfiguration im [Sybase Infocenter](http://infocenter.sybase.com/help/index.jsp) zu erstellen.
 
 ### <a name="disaster-recovery-with-azure-vms"></a>Notfallwiederherstellung mit Azure-VMs
 #### <a name="data-replication-with-sap-sybase-replication-server"></a>Datenreplikation mit SAP Sybase Replication Server
@@ -1136,39 +1160,76 @@ Installation und Betrieb von SRS funktionieren in einer VM, die in Azure Virtual
 ASE HADR per SAP Replication Server wird derzeit nicht unterstützt. Gegebenenfalls wird dieses zu einem späteren Zeitpunkt für Microsoft Azure-Plattformen getestet und veröffentlicht.
 
 ## <a name="specifics-to-oracle-database-on-windows"></a>Besonderheiten bei Oracle Database unter Windows
-Seit Mitte 2013 wird die Oracle-Software von Oracle für die Verwendung mit Microsoft Windows Hyper-V und Azure unterstützt. In diesem Artikel erfahren Sie Einzelheiten zur allgemeinen Unterstützung von Windows Hyper-V und Azure durch Oracle: <https://blogs.oracle.com/cloud/entry/oracle_and_microsoft_join_forces>. 
+Die Oracle-Software wird von Oracle für die Verwendung mit Microsoft Windows Hyper-V und Azure unterstützt. In diesem Artikel erfahren Sie Einzelheiten zur allgemeinen Unterstützung von Windows Hyper-V und Azure: <https://blogs.oracle.com/cloud/entry/oracle_and_microsoft_join_forces>. 
 
 Neben der allgemeinen Unterstützung wird auch das spezielle Szenario der gemeinsamen Verwendung von SAP-Anwendungen und Oracle Database unterstützt. Details finden Sie in diesem Teil des Dokumentes.
 
 ### <a name="oracle-version-support"></a>Versionsunterstützung für Oracle
-Eine detaillierte Übersicht über die verschiedenen Oracle-Versionen und die entsprechenden Betriebssystemversionen, die für den Betrieb von SAP unter Oracle auf einem virtuellen Azure-Computer unterstützt werden, erhalten Sie in SAP-Hinweis [2039619]
+Die verschiedenen Oracle-Versionen und die entsprechenden Betriebssystemversionen, die für den Betrieb von SAP unter Oracle auf einem virtuellen Azure-Computer unterstützt werden, finden Sie in SAP-Hinweis [2039619].
 
-Allgemeine Informationen zum Ausführen der SAP Business Suite unter Oracle finden Sie im SCN: <https://scn.sap.com/community/oracle>.
+Allgemeine Informationen zum Ausführen der SAP Business Suite unter Oracle finden Sie in 1DX: <https://www.sap.com/community/topic/oracle.html>.
 
 ### <a name="oracle-configuration-guidelines-for-sap-installations-in-azure-vms"></a>Oracle-Konfigurationsrichtlinien für SAP-Installationen auf Azure-VMs
 #### <a name="storage-configuration"></a>Speicherkonfiguration
-Unterstützt wird ausschließlich eine einzige Instanz von Oracle unter Verwendung von NTFS-formatierten Datenträgern. Sämtliche Datenbankdateien müssen auf dem NTFS-Dateisystem auf VHD-Datenträgern gespeichert werden. Diese VHDs werden in die Azure-VM eingebunden und basieren auf Azure Page Blob Storage (<https://msdn.microsoft.com/library/azure/ee691964.aspx>). Jegliche Arten von Netzlaufwerken und Remotefreigaben wie Azure-Dateidienste
+Unterstützt wird ausschließlich eine einzige Instanz von Oracle unter Verwendung von NTFS-formatierten Datenträgern. Sämtliche Datenbankdateien müssen im NTFS-Dateisystem auf VHDs oder in Managed Disks gespeichert werden. Diese Datenträger werden auf der Azure-VM eingebunden und basieren auf Azure Page Blob Storage (<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) oder Managed Disks (<https://docs.microsoft.com/azure/storage/storage-managed-disks-overview>). Jegliche Arten von Netzlaufwerken und Remotefreigaben wie Azure-Dateidienste
 
 * <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx> 
 * <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx>
 
 werden **NICHT** für Oracle-Datenbankdateien unterstützt!
 
-Die Aussagen, die in diesem Dokument in den Kapiteln [Caching für VMs und VHDs][dbms-guide-2.1] und [Microsoft Azure Storage][dbms-guide-2.3] gemacht werden, gelten auch für Bereitstellungen mit der Oracle Database, wenn Azure-VHDs auf Basis von Azure Page Blob Storage verwendet werden.
+Die Aussagen, die in diesem Dokument in den Kapiteln [Caching für VMs und Datenträger][dbms-guide-2.1] und [Microsoft Azure Storage][dbms-guide-2.3] gemacht werden, gelten auch für Bereitstellungen mit der Oracle-Datenbank, wenn Datenträger auf Basis von Azure Page Blob Storage oder Managed Disks verwendet werden.
 
-Wie weiter oben im allgemeinen Teil dieses Dokuments erläutert wurde, gelten für Azure-VHDs Kontingente für den IOPS-Durchsatz. Die jeweilige Größe der Kontingente hängt vom Typ der verwendeten VM ab. Eine Liste mit VM-Typen und den entsprechenden Kontingenten finden Sie [hier][virtual-machines-sizes].
+Wie weiter oben im allgemeinen Teil dieses Dokuments erläutert wurde, gelten für Azure-Datenträger Kontingente für den IOPS-Durchsatz. Die jeweilige Größe der Kontingente hängt vom Typ der verwendeten VM ab. Eine Liste mit VM-Typen und den entsprechenden Kontingenten finden Sie [hier (Linux)][virtual-machines-sizes-linux] und [hier (Windows)][virtual-machines-sizes-windows].
 
-Die unterstützten Typen der Azure-VM werden in SAP-Hinweis [1928533]
+Die unterstützten Typen der Azure-VMs werden in SAP-Hinweis [1928533] aufgeführt.
 
-Solange das bestehende IOPS-Kontingent pro Datenträger den Anforderungen entspricht, ist es möglich, alle Datenbankdateien auf einer einzelnen eingebundenen Azure-VHD zu speichern. 
+Solange das bestehende IOPS-Kontingent pro Datenträger den Anforderungen entspricht, ist es möglich, alle Datenbankdateien auf einem einzelnen bereitgestellten Datenträger zu speichern. 
 
-Wenn mehr IOPS erforderlich sind, wird ausdrücklich empfohlen, Windows-Speicherpools (nur verfügbar unter Windows Server 2012 und höher) oder Windows-Striping für Windows 2008 R2 zu verwenden, um ein einzelnes großes, logisches Gerät aus mehreren eingebundenen VHD-Datenträgern zu erstellen. Weitere Informationen finden Sie in diesem Dokument im Kapitel [Software-RAID][dbms-guide-2.2]. Durch diese Herangehensweise wird der Aufwand verringert, der zur Verwaltung des Speicherplatzes notwendig ist. Außerdem müssen Dateien nicht mehr manuell auf mehrere eingebundene VHDs verteilt werden.
+Wenn mehr IOPS erforderlich sind, wird ausdrücklich empfohlen, Windows-Speicherpools (nur verfügbar unter Windows Server 2012 und höher) oder Windows-Striping für Windows 2008 R2 zu verwenden, um ein einzelnes großes, logisches Gerät aus mehreren bereitgestellten Datenträgern zu erstellen (siehe auch Kapitel [Software-RAID][dbms-guide-2.2] dieses Dokuments). Durch diese Herangehensweise wird der Aufwand verringert, der zur Verwaltung des Speicherplatzes notwendig ist. Außerdem müssen Dateien nicht mehr manuell auf mehrere bereitgestellte Datenträger verteilt werden.
 
 #### <a name="backup--restore"></a>Sichern und Wiederherstellen
 Die Funktionen zum Sichern und Wiederherstellen werden für die SAP BR-Tools für Oracle genauso unterstützt wie auf standardmäßigen Windows Server-Betriebssystemen und Hyper-V. Auch Oracle Recovery Manager (RMAN) wird für die Sicherung auf einen Datenträger und die Wiederherstellung von einem Datenträger unterstützt.
 
 #### <a name="high-availability"></a>Hohe Verfügbarkeit
-[comment]: <> (Link verweist auf ASM)
+Oracle Data Guard wird aus Gründen der hohen Verfügbarkeit und der Notfallwiederherstellung unterstützt. Einzelheiten finden Sie in [dieser Dokumentation][virtual-machines-windows-classic-configure-oracle-data-guard].
+
+#### <a name="other"></a>Sonstige
+Bezüglich aller weiteren allgemeinen Themen wie Azure-Verfügbarkeitsgruppen oder SAP-Überwachung gelten die Angaben in den ersten drei Kapiteln dieses Dokuments auch für Bereitstellungen von VMs mit Oracle Database.
+
+## <a name="specifics-to-oracle-database-on-oracle-linux"></a>Besonderheiten bei Oracle Database unter Oracle Linux
+Die Oracle-Software wird von Oracle für die Verwendung mit Microsoft Windows Hyper-V und Azure unterstützt. In diesem Artikel erfahren Sie Einzelheiten zur allgemeinen Unterstützung von Windows Hyper-V und Azure: <https://blogs.oracle.com/cloud/entry/oracle_and_microsoft_join_forces>. 
+
+Neben der allgemeinen Unterstützung wird auch das spezielle Szenario der gemeinsamen Verwendung von SAP-Anwendungen und Oracle Database unterstützt. Details finden Sie in diesem Teil des Dokumentes.
+
+### <a name="oracle-version-support"></a>Versionsunterstützung für Oracle
+Die verschiedenen Oracle-Versionen und die entsprechenden Betriebssystemversionen, die für den Betrieb von SAP unter Oracle auf einem virtuellen Azure-Computer unterstützt werden, finden Sie in SAP-Hinweis [2039619].
+
+Allgemeine Informationen zum Ausführen der SAP Business Suite unter Oracle finden Sie in 1DX: <https://www.sap.com/community/topic/oracle.html>.
+
+### <a name="oracle-configuration-guidelines-for-sap-installations-in-azure-vms"></a>Oracle-Konfigurationsrichtlinien für SAP-Installationen auf Azure-VMs
+#### <a name="storage-configuration"></a>Speicherkonfiguration
+Unterstützt wird ausschließlich eine einzige Instanz von Oracle unter Verwendung von ext3-, ext4- und xfs-formatierten Datenträgern. Sämtliche Datenbankdateien müssen in diesen Dateisystemen auf VHDs oder in Managed Disks gespeichert werden. Diese Datenträger werden auf der Azure-VM eingebunden und basieren auf Azure Page Blob Storage (<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) oder Managed Disks (<https://docs.microsoft.com/azure/storage/storage-managed-disks-overview>). Jegliche Arten von Netzlaufwerken und Remotefreigaben wie Azure-Dateidienste
+
+* <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx> 
+* <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx>
+
+werden **NICHT** für Oracle-Datenbankdateien unterstützt!
+
+Die Aussagen, die in diesem Dokument in den Kapiteln [Caching für VMs und Datenträger][dbms-guide-2.1] und [Microsoft Azure Storage][dbms-guide-2.3] gemacht werden, gelten auch für Bereitstellungen mit der Oracle-Datenbank, wenn Datenträger auf Basis von Azure Page Blob Storage oder Managed Disks verwendet werden.
+
+Wie weiter oben im allgemeinen Teil dieses Dokuments erläutert wurde, gelten für Azure-Datenträger Kontingente für den IOPS-Durchsatz. Die jeweilige Größe der Kontingente hängt vom Typ der verwendeten VM ab. Eine Liste mit VM-Typen und den entsprechenden Kontingenten finden Sie [hier (Linux)][virtual-machines-sizes-linux] und [hier (Windows)][virtual-machines-sizes-windows].
+
+Die unterstützten Typen der Azure-VMs werden in SAP-Hinweis [1928533] aufgeführt.
+
+Solange das bestehende IOPS-Kontingent pro Datenträger den Anforderungen entspricht, ist es möglich, alle Datenbankdateien auf einem einzelnen bereitgestellten Datenträger zu speichern. 
+
+Wenn mehr IOPS erforderlich sind, wird dringend empfohlen, LVM (Logical Volume Manager) oder MDADM zu verwenden, um ein großes logisches Volume über mehrere bereitgestellte Datenträger zu erstellen. Weitere Informationen finden Sie in diesem Dokument im Kapitel [Software-RAID][dbms-guide-2.2]. Durch diese Herangehensweise wird der Aufwand verringert, der zur Verwaltung des Speicherplatzes notwendig ist. Außerdem müssen Dateien nicht mehr manuell auf mehrere bereitgestellte Datenträger verteilt werden.
+
+#### <a name="backup--restore"></a>Sichern und Wiederherstellen
+Die Funktionen zum Sichern und Wiederherstellen werden für die SAP BR-Tools für Oracle genauso unterstützt wie auf Bare-Metal-Systemen und Hyper-V. Auch Oracle Recovery Manager (RMAN) wird für die Sicherung auf einen Datenträger und die Wiederherstellung von einem Datenträger unterstützt.
+
+#### <a name="high-availability"></a>Hohe Verfügbarkeit
 Oracle Data Guard wird aus Gründen der hohen Verfügbarkeit und der Notfallwiederherstellung unterstützt. Einzelheiten finden Sie in [dieser Dokumentation][virtual-machines-windows-classic-configure-oracle-data-guard].
 
 #### <a name="other"></a>Sonstige
@@ -1177,7 +1238,7 @@ Bezüglich aller weiteren allgemeinen Themen wie Azure-Verfügbarkeitsgruppen od
 ## <a name="specifics-for-the-sap-maxdb-database-on-windows"></a>Einzelheiten zur SAP MaxDB-Datenbank unter Windows
 ### <a name="sap-maxdb-version-support"></a>Versionsunterstützung für SAP MaxDB
 SAP unterstützt derzeit SAP MaxDB Version 7.9 für die Verwendung mit SAP NetWeaver-basierten Produkten in Azure. Jegliche Updates für SAP MaxDB-Server sowie JDBC- und ODBC-Treiber für die Verwendung mit SAP NetWeaver-basierten Produkten werden ausschließlich über den SAP Service Marketplace bereitgestellt: <https://support.sap.com/swdc>.
-Allgemeine Informationen zur gemeinsamen Verwendung von SAP NetWeaver und SAP MaxDB erhalten Sie unter <https://scn.sap.com/community/maxdb>.
+Allgemeine Informationen zur gemeinsamen Verwendung von SAP NetWeaver und SAP MaxDB erhalten Sie unter <https://www.sap.com/community/topic/maxdb.html>.
 
 ### <a name="supported-microsoft-windows-versions-and-azure-vm-types-for-sap-maxdb-dbms"></a>Unterstützte Microsoft Windows-Versionen und Azure-VM-Typen für SAP MaxDB-DBMS
 Die unterstützten Microsoft Windows-Versionen für SAP MaxDB-DBMS auf Azure finden Sie unter:
@@ -1201,11 +1262,11 @@ Die Best Practices für Azure Storage mit SAP MaxDB orientieren sich an den allg
 
 Folgende Schritte müssen ausgeführt werden:
 
-* Richten Sie das Azure Storage-Konto mit den Daten- und Protokollvolumes (d.h. Dateien) von SAP MaxDB als **lokal redundanten Speicher** (Local Redundant Storage, LRS) ein. Eine Anleitung hierfür finden Sie im Kapitel [Microsoft Azure Storage][dbms-guide-2.3].
+* Wenn Sie Azure Storage-Konten verwenden, richten Sie das Azure Storage-Konto mit den Daten- und Protokollvolumes (d.h. Dateien) von SAP MaxDB als **lokal redundanten Speicher** (Local Redundant Storage, LRS) ein. Eine Anleitung hierfür finden Sie im Kapitel [Microsoft Azure Storage][dbms-guide-2.3].
 * Grenzen Sie den E/A-Pfad für SAP MaxDB-Datenvolumes (also Dateien) vom E/A-Pfad für Protokollvolumes (d. h. Dateien) ab. Dies bedeutet, dass SAP MaxDB-Datenvolumes (Dateien) auf einem und SAP MaxDB-Protokollvolumes (Dateien) auf einem anderen logischen Laufwerk installiert werden müssen.
-* Legen Sie, wie im Kapitel [Caching für VMs][dbms-guide-2.1] erläutert wird, für jedes Azure-Blob die Dateizwischenspeicherung entsprechend fest, je nachdem, ob Sie SAP MaxDB-Daten- oder Protokollvolumes (d.h. Dateien) verwenden, und abhängig davon, ob Sie Azure Storage Standard oder Azure Storage Premium nutzen.
-* Solange die bestehenden IOPS-Kontingente pro Datenträger den Anforderungen genügen, ist es möglich, alle Datenvolumes auf einer einzigen, eingebundenen Azure-VHD und alle Protokollvolumes der Datenbank auf einer einzigen anderen, eingebundenen Azure-VHD zu speichern.
-* Wenn mehr IOPS und oder Speicherplatz erforderlich sind, wird ausdrücklich empfohlen, Microsoft Windows-Speicherpools (nur verfügbar unter Microsoft Windows Server 2012 und höher) oder Microsoft Windows-Striping für Microsoft Windows 2008 R2 zu verwenden, um ein einzelnes großes, logisches Gerät aus mehreren eingebundenen VHD-Datenträgern zu erstellen. Weitere Informationen finden Sie in diesem Dokument im Kapitel [Software-RAID][dbms-guide-2.2]. Durch diese Herangehensweise wird der Aufwand verringert, der zur Verwaltung des Speicherplatzes notwendig ist. Außerdem müssen Dateien nicht mehr manuell auf mehrere eingebundene VHDs verteilt werden.
+* Legen Sie, wie im Kapitel [Zwischenspeichern für VMs und Datenträger][dbms-guide-2.1] erläutert wird, für jeden Datenträger den Zwischenspeicherungstyp entsprechend fest, je nachdem, ob Sie SAP MaxDB-Daten- oder Protokollvolumes (d.h. Dateien) verwenden, und abhängig davon, ob Sie den Azure-Standardspeicher oder Azure Storage Premium nutzen.
+* Solange die bestehenden IOPS-Kontingente pro Datenträger den Anforderungen genügen, ist es möglich, alle Datenvolumes auf einem einzigen, bereitgestellten Datenträger und alle Protokollvolumes der Datenbank auf einem anderen einzelnen, bereitgestellten Datenträger zu speichern.
+* Wenn mehr IOPS und/oder Speicherplatz erforderlich sind, wird ausdrücklich empfohlen, Microsoft Windows-Speicherpools (nur verfügbar unter Microsoft Windows Server 2012 und höher) oder Microsoft Windows-Striping für Microsoft Windows 2008 R2 zu verwenden, um ein einzelnes großes, logisches Gerät aus mehreren bereitgestellten Datenträgern zu erstellen. Weitere Informationen finden Sie in diesem Dokument im Kapitel [Software-RAID][dbms-guide-2.2]. Durch diese Herangehensweise wird der Aufwand verringert, der zur Verwaltung des Speicherplatzes notwendig ist. Außerdem müssen Dateien nicht mehr manuell auf mehrere bereitgestellte Datenträger verteilt werden.
 * Für besonders hohe IOPS-Anforderungen steht Azure Storage Premium zur Verfügung, das für VMs der DS-Serie und der GS-Serie angeboten wird.
 
 ![Referenzkonfiguration der Azure-IaaS-VM für SAP MaxDB-DBMS][dbms-guide-figure-600]
@@ -1216,22 +1277,22 @@ Bei der Bereitstellung von SAP MaxDB in Azure ist es erforderlich, die Sicherung
 Sicherung und Wiederherstellung einer Datenbank in Azure funktionieren wie bei lokalen Umgebungen. Sie können also die standardmäßigen Tools in SAP MaxDB zum Sichern und Wiederherstellen verwenden. Diese werden in einer SAP MaxDB-Dokumentation beschrieben, die im SAP-Hinweis [767598] aufgeführt wird. 
 
 #### <a name="77cd2fbb-307e-4cbf-a65f-745553f72d2c"></a>Leistungsüberlegungen hinsichtlich Sicherung und Wiederherstellung
-Wie bei der Bare-Metal-Bereitstellung hängt die Leistung bei der Sicherung und Wiederherstellung davon ab, wie viele Volumes parallel ausgelesen werden können und wie hoch deren Durchsatz ist. Bei virtuellen Computern mit bis zu acht CPU-Threads sollte unter Umständen auch der CPU-Verbrauch durch die Sicherungskomprimierung beachtet werden. Es gilt also Folgendes:
+Wie bei der Bare-Metal-Bereitstellung hängt die Leistung bei der Sicherung und Wiederherstellung davon ab, wie viele Volumes parallel ausgelesen werden können und wie hoch deren Durchsatz ist. Bei VMs mit bis zu acht CPU-Threads sollte unter Umständen auch der CPU-Verbrauch durch die Sicherungskomprimierung beachtet werden. Es gilt also Folgendes:
 
-* Je geringer die Anzahl an VHDs, auf denen Datenbankgeräte gespeichert sind, desto geringer der Durchsatz beim Auslesen insgesamt.
+* Je geringer die Anzahl an Datenträgern, auf denen Datenbankgeräte gespeichert sind, desto geringer der Durchsatz beim Auslesen insgesamt.
 * Je weniger CPU-Threads in der VM, desto schwerwiegender der Einfluss der Sicherungskomprimierung.
-* Je weniger Ziele (Stripeset-Verzeichnisse, VHDs), auf die die Sicherung geschrieben wird, desto geringer der Durchsatz.
+* Je weniger Ziele (Stripesetverzeichnisse, Datenträger), in bzw. auf die die Sicherung geschrieben wird, desto geringer der Durchsatz.
 
 Wenn Sie die Anzahl der Ziele erhöhen möchten, stehen Ihnen je nach Anforderungen zwei Optionen zur Verfügung, die Sie verwenden bzw. kombinieren können:
 
 * Getrennte, dedizierte Volumes für das Sichern
-* Striping des Zielvolumes der Sicherung auf mehrere bereitgestellte VHDs, wodurch der IOPS-Durchsatz auf den betreffenden Datenträgervolumes verbessert wird
+* Striping des Zielvolumes der Sicherung auf mehrere bereitgestellte Datenträger, wodurch der IOPS-Durchsatz auf den betreffenden Datenträgervolumes verbessert wird
 * Abgegrenzte, dedizierte logische Datenträger für:
   * SAP MaxDB-Sicherungsvolumes (also Dateien)
-  * SAP MaxDB-Datenvolumes (d. h. Dateien)
-  * SAP MaxDB-Protokollvolumes (gleich Dateien)
+  * SAP MaxDB-Datenvolumes (d.h. Dateien)
+  * SAP MaxDB-Protokollvolumes (d.h. Dateien)
 
-Informationen zum Striping eines Volumes auf mehrere eingebundene VHDs finden Sie in diesem Dokument im Kapitel [Software-RAID][dbms-guide-2.2]. 
+Informationen zum Striping eines Volumes über mehrere bereitgestellte Datenträger finden Sie in diesem Dokument im Kapitel [Software-RAID][dbms-guide-2.2]. 
 
 #### <a name="f77c1436-9ad8-44fb-a331-8671342de818"></a>Sonstige
 Bezüglich aller weiteren allgemeinen Themen wie Azure-Verfügbarkeitsgruppen oder SAP-Überwachung gelten die Angaben in den ersten drei Kapiteln dieses Dokuments auch für Bereitstellungen von VMs mit der SAP MaxDB-Datenbank.
@@ -1251,7 +1312,7 @@ Die unterstützten Microsoft Windows-Versionen für SAP liveCache auf Azure find
 * [SAP-Produktverfügbarkeitsmatrix (PAM)][sap-pam]
 * SAP-Hinweis [1928533]
 
-Es wird ausdrücklich empfohlen, stets die neueste Version des Betriebssystems Microsoft Windows zu verwenden. Derzeit ist dies Windows 2012 R2. 
+Es wird ausdrücklich empfohlen, stets die neueste Version des Betriebssystems Microsoft Windows Server zu verwenden. 
 
 ### <a name="sap-livecache-configuration-guidelines-for-sap-installations-in-azure-vms"></a>SAP liveCache-Konfigurationsrichtlinien für SAP-Installationen in Azure-VMs
 #### <a name="recommended-azure-vm-types"></a>Empfohlene Typen der Azure-VM
@@ -1259,7 +1320,7 @@ Da es sich bei SAP liveCache um eine Anwendung handelt, die für umfangreiche Be
 
 Bei den von SAP unterstützten Typen der Azure-VM (siehe SAP-Hinweis [1928533]) werden alle virtuellen CPU-Ressourcen von dedizierten physischen CPU-Ressourcen des Hypervisors gestützt. Eine Überversorgung (und damit eine Konkurrenz um CPU-Ressourcen) findet nicht statt.
 
-Analog wird bei den von SAP unterstützten Typen der Azure-VM der gesamte VM-Arbeitsspeicher dem physischen Arbeitsspeicher zugeordnet. Es erfolgt z.B. keine Überbereitstellung (Over-Commitment).
+Analog wird bei den von SAP unterstützten Typen der Azure-VM-Instanzen der gesamte VM-Speicher dem physischen Speicher zugeordnet. Es erfolgt z.B. keine Überbereitstellung (Over-Commitment).
 
 Aus dieser Perspektive ist besonders empfehlenswert, die neue D-Serie oder DS-Serie (in Verbindung mit Azure Storage Premium) der Azure-VM zu verwenden, da die Prozessoren 60 % schneller als die der A-Serie sind. Für die höchste RAM- und CPU-Last stehen die virtuellen Computer der G-Serie oder GS-Serie (in Kombination mit Azure Storage Premium) bereit, die über die aktuelle Intel® Xeon®-Prozessorfamilie (E5 v3) verfügen und die im Vergleich zu den D/DS-Serien das Doppelte an Arbeitsspeicher und das Vierfache an SSD-Speicher (Festkörperlaufwerk) bieten.
 
@@ -1297,13 +1358,13 @@ Die für den SAP Content Server auf Azure unterstützten Windows-Versionen finde
 * [SAP-Produktverfügbarkeitsmatrix (PAM)][sap-pam]
 * SAP-Hinweis [1928533]
 
-Es wird nachdrücklich empfohlen, Microsoft Windows stets in der neuesten Version zu verwenden. Zum Zeitpunkt des Abfassens dieses Dokuments ist dies **Windows Server 2012 R2**.
+Es wird ausdrücklich empfohlen, stets die neueste Version von Microsoft Windows Server zu verwenden.
 
 ### <a name="sap-content-server-configuration-guidelines-for-sap-installations-in-azure-vms"></a>SAP Content Server-Konfigurationsrichtlinien für SAP-Installationen in Azure-VMs
 #### <a name="storage-configuration"></a>Speicherkonfiguration
 Wenn Sie SAP Content Server so konfigurieren, dass Dateien in der SAP MaxDB-Datenbank gespeichert werden, gelten alle Best Practices für Azure Storage, die im Kapitel [Speicherkonfiguration][dbms-guide-8.4.1] für SAP MaxDB beschrieben wurden, auch für das SAP Content Server-Szenario. 
 
-Konfigurieren Sie SAP Content Server so, dass Dateien im Dateisystem gespeichert werden, empfiehlt es sich, ein dediziertes logisches Laufwerk zu verwenden. Wenn Sie Speicherplätze nutzen, können Sie auch die logische Datenträgergröße und den IOPS-Durchsatz erhöhen, wie im Kapitel [Software-RAID][dbms-guide-2.2] beschrieben. 
+Konfigurieren Sie SAP Content Server so, dass Dateien im Dateisystem gespeichert werden, empfiehlt es sich, ein dediziertes logisches Laufwerk zu verwenden. Wenn Sie Windows-Speicherplätze nutzen, können Sie auch die logische Datenträgergröße und den IOPS-Durchsatz erhöhen, wie im Kapitel [Software-RAID][dbms-guide-2.2] beschrieben. 
 
 #### <a name="sap-content-server-location"></a>Speicherort für den SAP Content Server
 SAP Content Server muss in derselben Azure-Region und im selben Azure-VNET wie das SAP-System bereitgestellt werden. Sie haben die Möglichkeit, die SAP Content Server-Komponenten auf einer dedizierten Azure-VM oder auf derselben VM wie das SAP-System zu installieren. 
@@ -1336,7 +1397,7 @@ Andere, für den SAP Content Server spezifische Einstellungen sind für Azure-VM
 
 ## <a name="specifics-to-ibm-db2-for-luw-on-windows"></a>Besonderheiten bei IBM DB2 für LUW unter Windows
 Mit Microsoft Azure können Sie Ihre bestehende SAP-Anwendung unter IBM DB2 für Linux, UNIX und Windows (LUW) einfach zu virtuellen Azure-Computern migrieren. Bei SAP unter IBM DB2 für LUW stehen Administratoren und Entwicklern die vertrauten Entwicklungs- und Verwaltungstools aus der lokalen Umgebung zur Verfügung.
-Allgemeine Informationen zum Ausführen der SAP Business Suite unter IBM DB2 für LUW finden Sie im SAP Community Network (SCN) unter <https://scn.sap.com/community/db2-for-linux-unix-windows>.
+Allgemeine Informationen zum Ausführen der SAP Business Suite unter IBM DB2 für LUW finden Sie im SAP Community Network (SCN) unter <https://www.sap.com/community/topic/db2-for-linux-unix-and-windows.html>.
 
 Weitere Informationen und Updates zu SAP unter DB2 für LUW auf Azure erhalten Sie in SAP-Hinweis [2233094]. 
 
@@ -1347,36 +1408,36 @@ Informationen zu den unterstützten SAP-Produkten und Typen der Azure-VM erhalte
 
 ### <a name="ibm-db2-for-linux-unix-and-windows-configuration-guidelines-for-sap-installations-in-azure-vms"></a>Konfigurationsrichtlinien für IBM DB2 für Linux, UNIX und Windows für SAP-Installationen in Azure-VMs
 #### <a name="storage-configuration"></a>Speicherkonfiguration
-Sämtliche Datenbankdateien müssen auf dem NTFS-Dateisystem auf VHD-Datenträgern gespeichert werden. Diese VHDs werden in eine Azure-VM eingebunden und basieren auf Azure Page Blob Storage (<https://msdn.microsoft.com/library/azure/ee691964.aspx>). Jegliche Arten von Netzlaufwerken und Remotefreigaben wie die folgenden Azure-Dateidienste werden für Datenbankdateien **NICHT** unterstützt: 
+Sämtliche Datenbankdateien müssen im NTFS-Dateisystem auf direkt angefügten Datenträgern gespeichert werden. Diese Datenträger werden auf der Azure-VM eingebunden und basieren auf Azure Page Blob Storage (<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) oder Managed Disks (<https://docs.microsoft.com/azure/storage/storage-managed-disks-overview>). Jegliche Arten von Netzlaufwerken und Remotefreigaben wie die folgenden Azure-Dateidienste werden für Datenbankdateien **NICHT** unterstützt: 
 
 * <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx>
 * <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx>
 
-Die Aussagen, die in diesem Dokument im Kapitel [Struktur einer RDBMS-Bereitstellung][dbms-guide-2] gemacht wurden, gelten auch für Bereitstellungen mit Datenbanken basierend auf IBM DB2 für LUW, wenn Azure-VHDs auf Basis von Azure Page Blob Storage verwendet werden. 
+Die Aussagen, die in diesem Dokument im Kapitel [Struktur einer RDBMS-Bereitstellung][dbms-guide-2] gemacht wurden, gelten auch für Bereitstellungen mit Datenbanken basierend auf IBM DB2 für LUW, wenn Datenträger auf Basis von Azure Page Blob Storage oder Managed Disks verwendet werden. 
 
-Wie weiter oben im allgemeinen Teil dieses Dokuments erläutert wurde, gelten für Azure-VHDs Kontingente für den IOPS-Durchsatz. Die jeweilige Größe der Kontingente hängt vom Typ der verwendeten VM ab. Eine Liste mit VM-Typen und den entsprechenden Kontingenten finden Sie [hier][virtual-machines-sizes].
+Wie weiter oben im allgemeinen Teil dieses Dokuments erläutert wurde, gelten für Datenträger Kontingente für den IOPS-Durchsatz. Die jeweilige Größe der Kontingente hängt vom Typ der verwendeten VM ab. Eine Liste mit VM-Typen und den entsprechenden Kontingenten finden Sie [hier (Linux)][virtual-machines-sizes-linux] und [hier (Windows)][virtual-machines-sizes-windows].
 
-Solange das bestehende IOPS-Kontingent pro Datenträger ausreicht, ist es möglich, alle Datenbankdateien auf einer einzelnen eingebundenen Azure-VHD zu speichern. 
+Solange das bestehende IOPS-Kontingent pro Datenträger ausreicht, ist es möglich, alle Datenbankdateien auf einem einzelnen eingebundenen Datenträger zu speichern. 
 
 Überlegungen zur Leistung finden Sie auch im Kapitel „Data Safety and Performance Considerations for Database Directories“ (Aspekte der Datensicherheit und Leistung bei Datenbankverzeichnissen) in den SAP-Installationshandbüchern.
 
-Sie können auch Windows-Speicherpools (nur verfügbar unter Windows Server 2012 und höher) oder Windows-Striping für Windows 2008 R2 verwenden, wie im Kapitel [Software-RAID][dbms-guide-2.2] in diesem Dokument beschrieben, um ein einzelnes großes, logisches Gerät aus mehreren eingebundenen VHD-Datenträgern zu erstellen.
-Legen Sie für die Datenträger, die die DB2-Speicherpfade für die Verzeichnisse „sapdata“ und „saptmp“ enthalten, eine physische Datenträgersektorgröße von 512 KB fest. Wenn Sie Windows-Speicherpools verwenden, müssen die Speicherpools über die Befehlszeilenschnittstelle manuell erstellt werden. Der Parameter hierfür lautet „-LogicalSectorSizeDefault“. Weitere Informationen finden Sie unter <https://technet.microsoft.com/library/hh848689.aspx>.
+Sie können auch Windows-Speicherpools (nur verfügbar unter Windows Server 2012 und höher) oder Windows-Striping für Windows 2008 R2 verwenden, wie im Kapitel [Software-RAID][dbms-guide-2.2] in diesem Dokument beschrieben, um ein einzelnes großes, logisches Gerät aus mehreren Datenträgern zu erstellen.
+Legen Sie für die Datenträger, die die DB2-Speicherpfade für die Verzeichnisse „sapdata“ und „saptmp“ enthalten, eine physische Datenträgersektorgröße von 512 KB fest. Wenn Sie Windows-Speicherpools verwenden, müssen die Speicherpools über die Befehlszeilenschnittstelle manuell erstellt werden. Der Parameter hierfür lautet „-LogicalSectorSizeDefault“. Weitere Informationen finden Sie unter <https://technet.microsoft.com/itpro/powershell/windows/storage/new-storagepool>.
 
 #### <a name="backuprestore"></a>Sichern und Wiederherstellen
 Die Funktionen zum Sichern und Wiederherstellen werden für IBM DB2 für LUW genauso unterstützt wie auf standardmäßigen Windows Server-Betriebssystemen und Hyper-V.
 
 Eine gültige Sicherungsstrategie für die Datenbank ist unerlässlich. 
 
-Wie bei der Bare-Metal-Bereitstellung hängt die Leistung bei der Sicherung und Wiederherstellung davon ab, wie viele Volumes parallel ausgelesen werden können und wie hoch deren Durchsatz ist. Bei virtuellen Computern mit nur bis zu acht CPU-Threads sollte unter Umständen auch der CPU-Verbrauch durch die Sicherungskomprimierung beachtet werden. Es gilt also Folgendes:
+Wie bei der Bare-Metal-Bereitstellung hängt die Leistung bei der Sicherung und Wiederherstellung davon ab, wie viele Volumes parallel ausgelesen werden können und wie hoch deren Durchsatz ist. Bei VMs mit nur bis zu acht CPU-Threads sollte unter Umständen auch der CPU-Verbrauch durch die Sicherungskomprimierung beachtet werden. Es gilt also Folgendes:
 
-* Je geringer die Anzahl an VHDs, auf denen sich Datenbankgeräte befinden, desto geringer der Durchsatz beim Auslesen insgesamt.
+* Je geringer die Anzahl an Datenträgern, auf denen sich Datenbankgeräte befinden, desto geringer der Durchsatz beim Auslesen insgesamt.
 * Je weniger CPU-Threads in der VM, desto schwerwiegender der Einfluss der Sicherungskomprimierung.
-* Je weniger Ziele (Stripeset-Verzeichnisse, VHDs), auf die die Sicherung geschrieben wird, desto geringer der Durchsatz.
+* Je weniger Ziele (Stripesetverzeichnisse, Datenträger), in bzw. auf die die Sicherung geschrieben wird, desto geringer der Durchsatz.
 
 Wenn Sie die Anzahl der Ziele erhöhen möchten, stehen Ihnen je nach Anforderungen zwei Optionen zur Verfügung, die Sie verwenden bzw. kombinieren können:
 
-* Striping des Zielvolumes der Sicherung auf mehrere bereitgestellte VHDs, wodurch der IOPS-Durchsatz auf den betreffenden Volumes verbessert wird
+* Striping des Zielvolumes der Sicherung auf mehreren Datenträgern, wodurch der IOPS-Durchsatz auf den betreffenden Stripesetvolumes verbessert wird
 * Verwenden von mehr als einem Zielverzeichnis für das Sichern
 
 #### <a name="high-availability-and-disaster-recovery"></a>Hohe Verfügbarkeit und Notfallwiederherstellung
@@ -1384,15 +1445,15 @@ Microsoft Cluster Server (MSCS) wird nicht unterstützt.
 
 Hohe Verfügbarkeit und Notfallwiederherstellung (HADR) in DB2 wird unterstützt. Wenn die an der Hochverfügbarkeitskonfiguration teilnehmenden virtuellen Computer über eine funktionierende Namensauflösung verfügen, unterscheidet sich die Einrichtung in Azure nicht von anderen, lokal ausgeführten Einrichtungen. Es wird nicht empfohlen, ausschließlich die IP-Auflösung zugrunde zu legen.
 
-Verwenden Sie nicht die Azure Store-Georeplikation. Weitere Informationen erhalten Sie in den Kapiteln [Microsoft Azure Storage][dbms-guide-2.3] und [Hohe Verfügbarkeit und Notfallwiederherstellung mit virtuellen Azure-Computern][dbms-guide-3].
+Verwenden Sie nicht die geografische Replikation für die Speicherkonten, in denen die Datenbankdatenträger gespeichert werden. Weitere Informationen erhalten Sie in den Kapiteln [Microsoft Azure Storage][dbms-guide-2.3] und [Hochverfügbarkeit und Notfallwiederherstellung mit Azure-VMs][dbms-guide-3].
 
-#### <a name="other"></a>Andere
+#### <a name="other"></a>Sonstige
 Bezüglich aller weiteren allgemeinen Themen wie Azure-Verfügbarkeitsgruppen oder SAP-Überwachung gelten die Angaben in den ersten drei Kapiteln dieses Dokuments auch für Bereitstellungen von VMs mit IBM DB2 für LUW. 
 
 Weitere Informationen finden Sie auch im Kapitel [SQL Server für SAP in Azure – Allgemeine Zusammenfassung][dbms-guide-5.8].
 
 ## <a name="specifics-to-ibm-db2-for-luw-on-linux"></a>Besonderheiten bei IBM DB2 für LUW unter Linux
-Mit Microsoft Azure können Sie Ihre bestehende SAP-Anwendung unter IBM DB2 für Linux, UNIX und Windows (LUW) einfach zu virtuellen Azure-Computern migrieren. Bei SAP unter IBM DB2 für LUW stehen Administratoren und Entwicklern die vertrauten Entwicklungs- und Verwaltungstools aus der lokalen Umgebung zur Verfügung. Allgemeine Informationen zum Ausführen der SAP Business Suite unter IBM DB2 für LUW finden Sie im SAP Community Network (SCN) unter <https://scn.sap.com/community/db2-for-linux-unix-windows>.
+Mit Microsoft Azure können Sie Ihre bestehende SAP-Anwendung unter IBM DB2 für Linux, UNIX und Windows (LUW) einfach zu virtuellen Azure-Computern migrieren. Bei SAP unter IBM DB2 für LUW stehen Administratoren und Entwicklern die vertrauten Entwicklungs- und Verwaltungstools aus der lokalen Umgebung zur Verfügung. Allgemeine Informationen zum Ausführen der SAP Business Suite unter IBM DB2 für LUW finden Sie im SAP Community Network (SCN) unter <https://www.sap.com/community/topic/db2-for-linux-unix-and-windows.html>.
 
 Weitere Informationen und Updates zu SAP unter DB2 für LUW auf Azure erhalten Sie in SAP-Hinweis [2233094].
 
@@ -1403,21 +1464,20 @@ Informationen zu den unterstützten SAP-Produkten und Typen der Azure-VM erhalte
 
 ### <a name="ibm-db2-for-linux-unix-and-windows-configuration-guidelines-for-sap-installations-in-azure-vms"></a>Konfigurationsrichtlinien für IBM DB2 für Linux, UNIX und Windows für SAP-Installationen in Azure-VMs
 #### <a name="storage-configuration"></a>Speicherkonfiguration
-Sämtliche Datenbankdateien müssen auf einem Dateisystem auf VHD-Datenträgern gespeichert werden. Diese VHDs werden in eine Azure-VM eingebunden und basieren auf Azure Page Blob Storage (<https://msdn.microsoft.com/library/azure/ee691964.aspx>).
-Jegliche Arten von Netzlaufwerken und Remotefreigaben wie die folgenden Azure-Dateidienste werden für Datenbankdateien **NICHT** unterstützt:
+Sämtliche Datenbankdateien müssen in einem Dateisystem auf direkt angefügten Datenträgern gespeichert werden. Diese Datenträger werden auf der Azure-VM eingebunden und basieren auf Azure Page Blob Storage (<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) oder Managed Disks (<https://docs.microsoft.com/azure/storage/storage-managed-disks-overview>). Jegliche Arten von Netzlaufwerken und Remotefreigaben wie die folgenden Azure-Dateidienste werden für Datenbankdateien **NICHT** unterstützt:
 
 * <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx>
 * <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx>
 
-Die Aussagen, die in diesem Dokument im Kapitel [Struktur einer RDBMS-Bereitstellung][dbms-guide-2] gemacht wurden, gelten auch für Bereitstellungen mit Datenbanken basierend auf IBM DB2 für LUW, wenn Azure-VHDs auf Basis von Azure Page Blob Storage verwendet werden.
+Die Aussagen, die in diesem Dokument im Kapitel [Struktur einer RDBMS-Bereitstellung][dbms-guide-2] gemacht wurden, gelten auch für Bereitstellungen mit Datenbanken basierend auf IBM DB2 für LUW, wenn Datenträger auf Basis von Azure Page Blob Storage verwendet werden.
 
-Wie weiter oben im allgemeinen Teil dieses Dokuments erläutert wurde, gelten für Azure-VHDs Kontingente für den IOPS-Durchsatz. Die jeweilige Größe der Kontingente hängt vom Typ der verwendeten VM ab. Eine Liste mit VM-Typen und den entsprechenden Kontingenten finden Sie [hier][virtual-machines-sizes].
+Wie weiter oben im allgemeinen Teil dieses Dokuments erläutert wurde, gelten für Datenträger Kontingente für den IOPS-Durchsatz. Die jeweilige Größe der Kontingente hängt vom Typ der verwendeten VM ab. Eine Liste mit VM-Typen und den entsprechenden Kontingenten finden Sie [hier (Linux)][virtual-machines-sizes-linux] und [hier (Windows)][virtual-machines-sizes-windows].
 
-Solange das bestehende IOPS-Kontingent pro Datenträger ausreicht, ist es möglich, alle Datenbankdateien auf einer einzelnen eingebundenen Azure-VHD zu speichern.
+Solange das bestehende IOPS-Kontingent pro Datenträger ausreicht, ist es möglich, alle Datenbankdateien auf einem einzelnen Datenträger zu speichern.
 
 Überlegungen zur Leistung finden Sie auch im Kapitel „Data Safety and Performance Considerations for Database Directories“ (Aspekte der Datensicherheit und Leistung bei Datenbankverzeichnissen) in den SAP-Installationshandbüchern.
 
-Alternativ können Sie LVM (Logical Volume Manager) oder MDADM verwenden, wie im Kapitel [Software-RAID][dbms-guide-2.2] dieses Dokuments beschrieben, um ein großes logisches Gerät aus mehreren eingebundenen VHD-Datenträgern zu erstellen.
+Alternativ können Sie LVM (Logical Volume Manager) oder MDADM verwenden, wie im Kapitel [Software-RAID][dbms-guide-2.2] dieses Dokuments beschrieben, um ein großes logisches Gerät aus mehreren bereitgestellten Datenträgern zu erstellen.
 Legen Sie für die Datenträger, die die DB2-Speicherpfade für die Verzeichnisse „sapdata“ und „saptmp“ enthalten, eine physische Datenträgersektorgröße von 512 KB fest.
 
 #### <a name="backuprestore"></a>Sichern und Wiederherstellen
@@ -1425,23 +1485,23 @@ Die Funktionen zum Sichern und Wiederherstellen werden für IBM DB2 für LUW gen
 
 Eine gültige Sicherungsstrategie für die Datenbank ist unerlässlich.
 
-Wie bei der Bare-Metal-Bereitstellung hängt die Leistung bei der Sicherung und Wiederherstellung davon ab, wie viele Volumes parallel ausgelesen werden können und wie hoch deren Durchsatz ist. Bei virtuellen Computern mit nur bis zu acht CPU-Threads sollte unter Umständen auch der CPU-Verbrauch durch die Sicherungskomprimierung beachtet werden. Es gilt also Folgendes:
+Wie bei der Bare-Metal-Bereitstellung hängt die Leistung bei der Sicherung und Wiederherstellung davon ab, wie viele Volumes parallel ausgelesen werden können und wie hoch deren Durchsatz ist. Bei VMs mit nur bis zu acht CPU-Threads sollte unter Umständen auch der CPU-Verbrauch durch die Sicherungskomprimierung beachtet werden. Es gilt also Folgendes:
 
-* Je geringer die Anzahl an VHDs, auf denen sich Datenbankgeräte befinden, desto geringer der Durchsatz beim Auslesen insgesamt.
+* Je geringer die Anzahl an Datenträgern, auf denen sich Datenbankgeräte befinden, desto geringer der Durchsatz beim Auslesen insgesamt.
 * Je weniger CPU-Threads in der VM, desto schwerwiegender der Einfluss der Sicherungskomprimierung.
-* Je weniger Ziele (Stripeset-Verzeichnisse, VHDs), auf die die Sicherung geschrieben wird, desto geringer der Durchsatz.
+* Je weniger Ziele (Stripesetverzeichnisse, Datenträger), in bzw. auf die die Sicherung geschrieben wird, desto geringer der Durchsatz.
 
 Wenn Sie die Anzahl der Ziele erhöhen möchten, stehen Ihnen je nach Anforderungen zwei Optionen zur Verfügung, die Sie verwenden bzw. kombinieren können:
 
-* Striping des Zielvolumes der Sicherung auf mehrere bereitgestellte VHDs, wodurch der IOPS-Durchsatz auf den betreffenden Volumes verbessert wird
+* Striping des Zielvolumes der Sicherung auf mehreren Datenträgern, wodurch der IOPS-Durchsatz auf den betreffenden Stripesetvolumes verbessert wird
 * Verwenden von mehr als einem Zielverzeichnis für das Sichern
 
 #### <a name="high-availability-and-disaster-recovery"></a>Hohe Verfügbarkeit und Notfallwiederherstellung
 Hohe Verfügbarkeit und Notfallwiederherstellung (HADR) in DB2 wird unterstützt. Wenn die an der Hochverfügbarkeitskonfiguration teilnehmenden virtuellen Computer über eine funktionierende Namensauflösung verfügen, unterscheidet sich die Einrichtung in Azure nicht von anderen, lokal ausgeführten Einrichtungen. Es wird nicht empfohlen, ausschließlich die IP-Auflösung zugrunde zu legen.
 
-Verwenden Sie nicht die Azure Store-Georeplikation. Weitere Informationen erhalten Sie in den Kapiteln [Microsoft Azure Storage][dbms-guide-2.3] und [Hohe Verfügbarkeit und Notfallwiederherstellung mit virtuellen Azure-Computern][dbms-guide-3].
+Verwenden Sie nicht die geografische Replikation für die Speicherkonten, in denen die Datenbankdatenträger gespeichert werden. Weitere Informationen erhalten Sie in den Kapiteln [Microsoft Azure Storage][dbms-guide-2.3] und [Hochverfügbarkeit und Notfallwiederherstellung mit Azure-VMs][dbms-guide-3].
 
-#### <a name="other"></a>Andere
+#### <a name="other"></a>Sonstige
 Bezüglich aller weiteren allgemeinen Themen wie Azure-Verfügbarkeitsgruppen oder SAP-Überwachung gelten die Angaben in den ersten drei Kapiteln dieses Dokuments auch für Bereitstellungen von VMs mit IBM DB2 für LUW.
 
 Weitere Informationen finden Sie auch im Kapitel [SQL Server für SAP in Azure – Allgemeine Zusammenfassung][dbms-guide-5.8].

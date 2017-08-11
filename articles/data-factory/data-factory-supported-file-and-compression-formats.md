@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2017
 ms.author: jingwang
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: 15dc58a1a607ef40c52dcd62ee9ed0df273fc011
+ms.translationtype: HT
+ms.sourcegitcommit: 6e76ac40e9da2754de1d1aa50af3cd4e04c067fe
+ms.openlocfilehash: f4746e0dd249e417b8077a9bc733d2886daafdf2
 ms.contentlocale: de-de
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 07/31/2017
 
 ---
 
@@ -227,7 +226,7 @@ und ihn im folgenden Format in eine Azure SQL-Tabelle kopieren möchten, indem S
 
 Das Eingabedataset vom Typ **JsonFormat** ist wie folgt definiert: (Teildefinition ausschließlich mit den relevanten Teilen). Dies gilt insbesondere in folgenden Fällen:
 
-- Abschnitt `structure` definiert die benutzerdefinierten Spaltennamen und den entsprechenden Datentyp beim Konvertieren in tabellarische Daten. Dieser Abschnitt ist **optional**, solange Sie keine Spaltenzuordnung ausführen müssen. Weitere Details finden Sie im Abschnitt [Angeben der Strukturdefinition für rechteckige Datasets](#specifying-structure-definition-for-rectangular-datasets).
+- Abschnitt `structure` definiert die benutzerdefinierten Spaltennamen und den entsprechenden Datentyp beim Konvertieren in tabellarische Daten. Dieser Abschnitt ist **optional**, solange Sie keine Spaltenzuordnung ausführen müssen. Weitere Informationen finden Sie unter [Zuordnen von Spalten im Quelldataset zu Spalten im Zieldataset](data-factory-map-columns.md).
 - `jsonPathDefinition` gibt den JSON-Pfad für jede Spalte an, die anzeigt, wo die Daten extrahiert werden sollen. Um Daten aus dem Array zu kopieren, können Sie mit **array[x].property** den Wert der angegebenen Eigenschaft aus dem xth-Objekt extrahieren oder mit **array[*].property** in einem beliebigen Objekt mit entsprechender Eigenschaft nach dem Wert suchen.
 
 ```json
@@ -300,7 +299,7 @@ und Sie ihn in eine Azure SQL-Tabelle im folgenden Format kopieren möchten, ind
 
 Das Eingabedataset vom Typ **JsonFormat** ist wie folgt definiert: (Teildefinition ausschließlich mit den relevanten Teilen). Dies gilt insbesondere in folgenden Fällen:
 
-- Abschnitt `structure` definiert die benutzerdefinierten Spaltennamen und den entsprechenden Datentyp beim Konvertieren in tabellarische Daten. Dieser Abschnitt ist **optional**, solange Sie keine Spaltenzuordnung ausführen müssen. Weitere Details finden Sie im Abschnitt [Angeben der Strukturdefinition für rechteckige Datasets](#specifying-structure-definition-for-rectangular-datasets).
+- Abschnitt `structure` definiert die benutzerdefinierten Spaltennamen und den entsprechenden Datentyp beim Konvertieren in tabellarische Daten. Dieser Abschnitt ist **optional**, solange Sie keine Spaltenzuordnung ausführen müssen. Weitere Informationen finden Sie unter [Zuordnen von Spalten im Quelldataset zu Spalten im Zieldataset](data-factory-map-columns.md).
 - `jsonNodeReference` gibt an, dass die Iteration und Extraktion von Daten aus den Objekten mit dem Muster unter **Array** Orderlines erfolgt.
 - `jsonPathDefinition` gibt den JSON-Pfad für jede Spalte an, die anzeigt, wo die Daten extrahiert werden sollen. In diesem Beispiel unterliegen „ordernumber“, „orderdate“ und „city“ dem Stammobjekt mit dem JSON-Pfad, der mit „$.“ beginnt. „order_pd“ und „order_price“ beginnen hingegen mit dem Pfad, der sich aus dem Array-Element ohne „$.“ ableitet.
 
