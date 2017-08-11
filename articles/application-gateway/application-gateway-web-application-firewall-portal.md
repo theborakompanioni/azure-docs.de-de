@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2017
 ms.author: gwallace
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
-ms.openlocfilehash: 224aa0db2feb7a83bec5b4ec46140046d10f012e
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: 3ee146a0be3c3338cf0037e2ec92a3b8d0c05a4e
 ms.contentlocale: de-de
-ms.lasthandoff: 05/04/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
 
@@ -30,7 +29,7 @@ ms.lasthandoff: 05/04/2017
 > * [Azure-Portal](application-gateway-web-application-firewall-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-web-application-firewall-powershell.md)
 
-In diesem Artikel wird erläutert, wie ein Anwendungsgateway mit der Web Application Firewall erstellt wird.
+In diesem Artikel wird erläutert, wie ein Anwendungsgateway mit Web Application Firewall erstellt wird.
 
 Die Web Application Firewall (WAF) in Azure Application Gateway schützt Webanwendungen vor gängigen webbasierten Angriffen wie der Einschleusung von SQL-Code, Angriffen durch websiteübergreifende Skripts und der Übernahme von Sitzungen. Ihr Webanwendung ist vor vielen der (laut OWASP) 10 häufigsten Websicherheitslücken geschützt.
 
@@ -109,11 +108,11 @@ Dieses Szenario umfasst Folgendes:
 
    ![Blatt mit Grundeinstellungen][2-2]
 
-1. Klicken Sie auf dem Blatt **Einstellungen**, das unter **Virtuelles Netzwerk** angezeigt wird, auf **Virtuelles Netzwerk auswählen**. Damit wird das Blatt **Virtuelles Netzwerk auswählen** geöffnet.  Klicken Sie auf **Neu erstellen**, um das Blatt **Virtuelles Netzwerk erstellen** zu öffnen.
+1. Klicken Sie auf dem Blatt **Einstellungen**, das unter **Virtuelles Netzwerk** angezeigt wird, auf **Virtuelles Netzwerk auswählen**. Das Blatt **Virtuelles Netzwerk auswählen** wird geöffnet.  Klicken Sie auf **Neu erstellen**, um das Blatt **Virtuelles Netzwerk erstellen** zu öffnen.
 
    ![Wählen eines virtuellen Netzwerks][2]
 
-1. Geben Sie auf dem Blatt **Virtuelles Netzwerk erstellen** die folgenden Werte ein, und klicken Sie anschließend auf **OK**. Damit werden die Blätter **Virtuelles Netzwerk erstellen** und **Virtuelles Netzwerk auswählen** geschlossen. Auch das Feld **Subnetz** auf dem Blatt **Einstellungen** mit dem ausgewählten Subnetz wird geschlossen.
+1. Geben Sie auf dem Blatt **Virtuelles Netzwerk erstellen** die folgenden Werte ein, und klicken Sie anschließend auf **OK**. Die Blätter **Virtuelles Netzwerk erstellen** und **Virtuelles Netzwerk auswählen** werden geschlossen. Auch das Feld **Subnetz** auf dem Blatt **Einstellungen** mit dem ausgewählten Subnetz wird geschlossen.
 
    |**Einstellung** | **Wert** | **Details** |
    |---|---|---|
@@ -152,6 +151,8 @@ Mit diesen Schritten wird ein einfaches Anwendungsgateway mit Standardeinstellun
 > Anwendungsgateways, die mit der Basiskonfiguration der Web Application Firewall erstellt wurden, werden zum Schutz mit CRS 3.0 konfiguriert.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
+Als Nächstes können Sie sich darüber informieren, wie Sie einen benutzerdefinierten Domänenalias für die [öffentliche IP-Adresse](../dns/dns-custom-domain.md#public-ip-address) konfigurieren, indem Sie Azure DNS oder einen anderen DNS-Anbieter verwenden.
 
 Informationen zum Konfigurieren der Diagnoseprotokollierung zum Protokollieren von Ereignissen, die mit der Web Application Firewall erkannt oder verhindert werden, finden Sie unter [Application Gateway-Diagnose](application-gateway-diagnostics.md).
 

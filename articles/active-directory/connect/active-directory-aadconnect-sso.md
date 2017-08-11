@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 07/18/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: 72b5217bd8de29fdad753d89f34934f64c551ff2
+ms.translationtype: HT
+ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
+ms.openlocfilehash: c4cd80c50dca5b97c36f1c9785d8ea347b35285c
 ms.contentlocale: de-de
-ms.lasthandoff: 06/16/2017
+ms.lasthandoff: 07/25/2017
 
 ---
 
@@ -35,14 +35,14 @@ Die nahtlose SSO kann mit den Anmeldemethoden [Kennworthashsynchronisierung](act
 >[!NOTE]
 >Diese Funktion ist _nicht_ auf Active Directory-Verbunddienste (AD FS) anwendbar, die diese Funktion bereits enthalten.
 
-## <a name="key-benefits-of-using-azure-ad-seamless-sso"></a>Hauptvorteile der nahtlosen einmaligen Anmeldung mit Azure AD
+## <a name="key-benefits"></a>Hauptvorteile
 
-- *Große Benutzerfreundlichkeit*
+- *Die Benutzeroberfläche*
   - Benutzer werden automatisch sowohl bei lokalen als auch bei cloudbasierten Anwendungen angemeldet.
   - Benutzer müssen nicht ständig ihr Kennwort eingeben.
 - *Einfache Bereitstellung und Verwaltung*
   - Keine zusätzlichen lokalen Komponenten erforderlich.
-  - Funktioniert mit jeder verwalteten Authentifizierungsmethode: [Kennworthashsynchronisierung](active-directory-aadconnectsync-implement-password-synchronization.md) oder [Passthrough-Authentifizierung](active-directory-aadconnect-pass-through-authentication.md).
+  - Funktioniert mit jedem Verfahren für die Cloudauthentifizierung: [Kennworthashsynchronisierung](active-directory-aadconnectsync-implement-password-synchronization.md) oder [Passthrough-Authentifizierung](active-directory-aadconnect-pass-through-authentication.md).
   - Kann mithilfe einer Gruppenrichtlinie für einige oder alle Benutzer eingeführt werden.
   - Registrieren Sie Geräte ohne Windows 10 mit Azure AD. Dafür benötigen Sie Version 2.1 oder höher des [Clients für die Arbeitsplatzeinbindung](https://www.microsoft.com/download/details.aspx?id=53554).
 
@@ -57,11 +57,11 @@ Die nahtlose SSO kann mit den Anmeldemethoden [Kennworthashsynchronisierung](act
 
 | Betriebssystem/Browser |Internet Explorer|Edge|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
-|Windows 10|Ja|Nicht unterstützt|Ja|Ja\*|–
-|Windows 8.1|Ja|Nicht unterstützt|Ja|Ja\*|N/V
-|Windows 8|Ja|Nicht unterstützt|Ja|Ja\*|N/V
-|Windows 7|Ja|Nicht unterstützt|Ja|Ja\*|N/V
-|Mac OS X|–|–|Ja\*|Ja\*|Nicht unterstützt
+|Windows 10|Ja|Ja|Ja|Ja\*|–
+|Windows 8.1|Ja|N/V|Ja|Ja\*|N/V
+|Windows 8|Ja|N/V|Ja|Ja\*|N/V
+|Windows 7|Ja|N/V|Ja|Ja\*|N/V
+|Mac OS X|–|–|Ja\*|Ja\*|Ja\*
 
 \*Erfordert [zusätzliche Konfigurationsschritte](active-directory-aadconnect-sso-quick-start.md#browser-considerations)
 
@@ -72,7 +72,7 @@ Die nahtlose SSO kann mit den Anmeldemethoden [Kennworthashsynchronisierung](act
 
 - [**Schnellstart**](active-directory-aadconnect-sso-quick-start.md): Einrichten und Ausführen der nahtlosen SSO mit Azure AD
 - [**Ausführliche technische Informationen**](active-directory-aadconnect-sso-how-it-works.md): Informationen zur Funktionsweise dieser Funktion
-- [**Häufig gestellte Fragen**](active-directory-aadconnect-sso-faq.md): Antworten auf häufig gestellte Fragen
-- [**Problembehandlung**](active-directory-aadconnect-troubleshoot-sso.md): Beheben häufig auftretender Probleme mit dieser Funktion
+- [**Häufig gestellte Fragen**](active-directory-aadconnect-sso-faq.md) – Antworten auf häufig gestellte Fragen
+- [**Problembehandlung**](active-directory-aadconnect-troubleshoot-sso.md) – Beheben von häufig auftretenden Problemen mit diesem Feature
 - [**UserVoice:**](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) Verfassen neuer Feature-Anforderungen
 

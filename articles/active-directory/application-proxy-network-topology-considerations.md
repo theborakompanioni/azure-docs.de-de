@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/21/2017
+ms.date: 07/28/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
-ms.openlocfilehash: e85242e251b53cd45b583429bd25c9ef08d2b101
+ms.translationtype: HT
+ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
+ms.openlocfilehash: 62221d7d174de128bf0089fb79a143d73fbe550a
 ms.contentlocale: de-de
-ms.lasthandoff: 04/21/2017
+ms.lasthandoff: 08/01/2017
 
 ---
 
@@ -32,14 +32,14 @@ In diesem Artikel geht es darum, welche Aspekte der Netzwerktopologie wichtig si
 Wenn eine Anwendung über den Azure AD-Anwendungsproxy veröffentlicht wird, fließt der gesamte Datenverkehr von den Benutzern zu den Anwendungen über drei Verbindungen:
 
 1. Vom Benutzer zum öffentlichen Endpunkt des Azure AD-Anwendungsproxydiensts in Azure
-2. Vom Anwendungsproxy zum Connector
-3. Vom Connector zur Zielanwendung
+2. Vom Anwendungsproxydienst zum Anwendungsproxyconnector
+3. Vom Anwendungsproxyconnector zur Zielanwendung
 
- ![Diagramm mit dem Datenverkehrsfluss vom Benutzer zur Zielanwendung](./media/application-proxy-network-topologies/application-proxy-three-hops.png)
+![Diagramm mit dem Datenverkehrsfluss vom Benutzer zur Zielanwendung](./media/application-proxy-network-topologies/application-proxy-three-hops.png)
 
 ## <a name="tenant-location-and-application-proxy-service"></a>Mandantenstandort und Anwendungsproxydienst
 
-Wenn Sie die Registrierung für einen Azure AD-Mandanten durchführen, wird die Region Ihres Mandanten anhand des von Ihnen angegebenen Lands ermittelt. Bei Aktivierung des Anwendungsproxys werden die Instanzen des Anwendungsproxydiensts für Ihren Mandanten in derselben Region wie Ihr Azure AD-Mandant bzw. in der nächstgelegenen Region angezeigt.
+Wenn Sie die Registrierung für einen Azure AD-Mandanten durchführen, wird die Region Ihres Mandanten anhand des von Ihnen angegebenen Lands ermittelt. Bei Aktivierung des Anwendungsproxys werden die Instanzen des Anwendungsproxydiensts für Ihren Mandanten in derselben Region wie Ihr Azure AD-Mandant bzw. in der nächstgelegenen Region ausgewählt oder erstellt.
 
 Wenn die Region Ihres Azure AD-Mandanten beispielsweise die Europäische Union (EU) ist, werden für alle Anwendungsproxyconnectors Dienstinstanzen in Azure-Rechenzentren in der EU verwendet. Dies bedeutet auch, der Datenverkehr für Ihre Benutzer über die Instanzen des Anwendungsproxydiensts an diesem Standort geleitet wird, wenn sie versuchen, auf veröffentlichte Anwendungen zuzugreifen.
 
@@ -49,9 +49,11 @@ Für alle Proxylösungen kommt es in Bezug auf Ihre Netzwerkverbindungen zu Wart
 
 Organisationen integrieren ihre Serverendpunkte normalerweise in ihr Umkreisnetzwerk. Beim Azure AD-Anwendungsproxy fließt der Datenverkehr jedoch über den Proxydienst in der Cloud, während sich die Connectors in Ihrem Unternehmensnetzwerk befinden. Es ist kein Umkreisnetzwerk erforderlich.
 
+Die nächsten Abschnitte enthalten weitere Vorschläge dazu, wie Sie die Wartezeit noch weiter reduzieren können. 
+
 ### <a name="connector-placement"></a>Platzierung von Connectors
 
-Der Anwendungsproxy wählt den Standort der Instanzen basierend auf Ihrem Mandantenstandort für Sie aus. Sie können entscheiden, wo der Connector installiert werden soll, und die Merkmale der Wartezeit für Ihren Netzwerkdatenverkehr definieren.
+Der Anwendungsproxy wählt den Standort der Instanzen basierend auf Ihrem Mandantenstandort für Sie aus. Sie können aber entscheiden, wo der Connector installiert werden soll, und die Merkmale der Wartezeit für Ihren Netzwerkdatenverkehr definieren.
 
 Beim Einrichten des Anwendungsproxydiensts sollten Sie die folgenden Fragen stellen:
 
@@ -60,27 +62,29 @@ Beim Einrichten des Anwendungsproxydiensts sollten Sie die folgenden Fragen stel
 * Wo befindet sich die Anwendungsproxyinstanz?
 * Verfügen Sie bereits über eine dedizierte Netzwerkverbindung mit Azure-Rechenzentren, z.B. Azure ExpressRoute oder ein ähnliches VPN?
 
-Der Connector muss mit Azure und Ihren Anwendungen kommunizieren. Daher wirkt sich die Platzierung des Connectors auf die Latenz dieser beiden Verbindungen aus. Beachten Sie beim Auswerten der Platzierung des Connectors Folgendes:
+Der Connector muss sowohl mit Azure als auch mit Ihren Anwendungen kommunizieren (Schritte 2 und 3 im Diagramm zum Datenverkehrsfluss). Daher wirkt sich die Platzierung des Connectors auf die Latenz dieser beiden Verbindungen aus. Beachten Sie beim Auswerten der Anordnung des Connectors die folgenden Punkte:
 
-* Wenn Sie die eingeschränkte Kerberos-Delegierung (KCD) für einmaliges Anmelden verwenden möchten, benötigt der Connector eine „Sichtverbindung“ mit einem Rechenzentrum. 
+* Wenn Sie die eingeschränkte Kerberos-Delegierung (KCD) für einmaliges Anmelden verwenden möchten, benötigt der Connector eine „Sichtverbindung“ mit einem Rechenzentrum. Darüber hinaus muss der Connectorserver in die Domäne eingebunden sein.  
 * Installieren Sie im Zweifelsfall den Connector näher an der Anwendung.
 
 ### <a name="general-approach-to-minimize-latency"></a>Allgemeiner Ansatz zum Verringern der Wartezeit
 
-Sie können versuchen, die Wartezeit des End-to-End-Datenverkehrs zu verringern, indem Sie die einzelnen Netzwerkverbindungen optimieren. Jede Verbindung kann wie folgt optimiert werden:
+Sie können die Wartezeit des End-to-End-Datenverkehrs verringern, indem Sie die einzelnen Netzwerkverbindungen optimieren. Jede Verbindung kann wie folgt optimiert werden:
 
 * Reduzieren Sie den Abstand zwischen den beiden Enden des Hops.
 * Wählen Sie das richtige zu durchlaufende Netzwerk. Wenn anstelle des öffentlichen Internet beispielsweise ein privates Netzwerk durchlaufen wird, kann dies aufgrund von dedizierten Links schneller gehen.
 
 Wenn Sie für die Verbindung zwischen Azure und Ihrem Unternehmensnetzwerk über eine dedizierte VPN- oder ExpressRoute-Verbindung verfügen, können Sie diese hierfür nutzen.
 
-## <a name="focus-your-optimizing-strategy"></a>Setzen von Schwerpunkten bei der Optimierungsstrategie
+## <a name="focus-your-optimization-strategy"></a>Präzises Ausrichten Ihrer Optimierungsstrategie
 
-Es gibt nur wenige Möglichkeiten, die Verbindung zwischen den Benutzern und dem Azure AD-Anwendungsproxy zu steuern. Sie können auf Ihre Apps aus einem Heimnetzwerk, einem Internetcafé oder einem anderen Land zugreifen. Stattdessen können Sie jedoch die Verbindungen vom Anwendungsproxy zu den Connectors und weiter zu den Apps optimieren. Halten Sie sich bei der Einrichtung Ihrer Umgebung an folgende Muster.
+Sie können nicht viel tun, um die Verbindung zwischen Ihren Benutzern und dem Anwendungsproxydienst zu steuern. Benutzer können auf Ihre Apps aus einem Heimnetzwerk, einem Café oder einem anderen Land zugreifen. Stattdessen können Sie die Verbindungen vom Anwendungsproxydienst zu den Anwendungsproxyconnectors und den Apps optimieren. Halten Sie sich bei der Einrichtung Ihrer Umgebung an folgende Muster.
 
 ### <a name="pattern-1-put-the-connector-close-to-the-application"></a>Muster 1: Platzieren des Connectors in der Nähe der Anwendung
 
-Platzieren Sie den Connector so nah wie möglich an der Zielanwendung im Kundennetzwerk. Dies ist ein Vorteil, da für den Connector voraussichtlich eine „Sichtverbindung“ mit dem Domänencontroller erforderlich ist. Dieser Ansatz ist in den meisten Szenarien ausreichend, daher befolgen die meisten Kunden dieses Muster. Das Muster kann auch mit Muster 2 kombiniert werden, um den Datenverkehr zwischen dem Anwendungsproxy und dem Connector zu optimieren.
+Platzieren Sie den Connector so nah wie möglich an der Zielanwendung im Kundennetzwerk. Mit dieser Konfiguration wird der Aufwand für Schritt 3 im Topografiediagramm verringert, da der Connector und die Anwendung nicht weit voneinander entfernt sind. 
+
+Wenn Ihr Connector über eine „Sichtlinie“ zum Domänencontroller verfügen muss, ist dieses Muster vorteilhaft. Sehr viele unserer Kunden verwenden dieses Muster, weil es für die meisten Szenarien gut funktioniert. Das Muster kann auch mit Muster 2 kombiniert werden, um den Datenverkehr zwischen dem Dienst und dem Connector zu optimieren.
 
 ### <a name="pattern-2-take-advantage-of-expressroute-with-public-peering"></a>Muster 2: Nutzen von ExpressRoute mit öffentlichem Peering
 
@@ -98,9 +102,9 @@ Die Wartezeit wird nicht negativ beeinträchtigt, weil der Datenverkehr über ei
 
 Der Schwerpunkt dieses Artikels ist zwar die Anordnung des Connectors, aber Sie können die Anordnung der Anwendung auch ändern, um bessere Wartezeiteigenschaften zu erhalten.
 
-Immer mehr Organisationen verschieben ihre Netzwerke in gehostete Umgebungen. Auf diese Weise können sie ihre Apps in einer gehosteten Umgebung anordnen, die gleichzeitig Teil ihres Unternehmensnetzwerks ist und sich noch innerhalb der Domäne befindet. In diesem Fall können die in den vorherigen Abschnitten beschriebenen Muster auf den neuen Anwendungsspeicherort angewendet werden.
+Immer mehr Organisationen verschieben ihre Netzwerke in gehostete Umgebungen. Auf diese Weise können sie ihre Apps in einer gehosteten Umgebung anordnen, die gleichzeitig Teil ihres Unternehmensnetzwerks ist und sich noch innerhalb der Domäne befindet. In diesem Fall können die in den vorherigen Abschnitten beschriebenen Muster auf den neuen Anwendungsspeicherort angewendet werden. Informationen zu diesem Ansatz finden Sie unter [Azure AD Domain Services](../active-directory-domain-services/active-directory-ds-overview.md).
 
-Erwägen Sie die Verwendung von [Connectorgruppen](active-directory-application-proxy-connectors.md) für Apps, die sich an unterschiedlichen Standorten und in unterschiedlichen Netzwerken befinden. Informationen zu diesem Ansatz finden Sie unter [Azure AD Domain Services](../active-directory-domain-services/active-directory-ds-overview.md).
+Erwägen Sie außerdem, Ihre Connectors mithilfe von [Connectorgruppen](active-directory-application-proxy-connectors.md) für Apps zu organisieren, die sich an verschiedenen Standorten bzw. in verschiedenen Netzwerken befinden. 
 
 ## <a name="common-use-cases"></a>Gängige Anwendungsfälle
 
@@ -108,9 +112,9 @@ In diesem Abschnitt werden einige häufige Szenarien beschrieben. Angenommen, de
 
 Für diese Szenarien werden die einzelnen Verbindungen als „Hop“ bezeichnet und zur Vereinfachung der Erklärungen durchnummeriert:
 
-- **Hop 1:** vom Benutzer zum Azure AD-Anwendungsproxy
-- **Hop 2:** vom Azure AD-Anwendungsproxy zum Connector
-- **Hop 3:** vom Connector zur Zielanwendung 
+- **Hop 1**: Vom Benutzer zum Anwendungsproxydienst
+- **Hop 2**: Vom Anwendungsproxydienst zum Anwendungsproxyconnector
+- **Hop 3**: Vom Anwendungsproxyconnector zur Zielanwendung 
 
 ### <a name="use-case-1"></a>Anwendungsfall 1
 
@@ -136,7 +140,9 @@ Das am häufigsten verwendete Muster ist wieder die Optimierung von Hop 3, bei d
 
 **Szenario:** Die App befindet sich im Netzwerk einer Organisation in den USA. ExpressRoute mit öffentlichem Peering ist zwischen Azure und dem Unternehmensnetzwerk vorhanden.
 
-**Empfehlung:** Platzieren Sie den Connector so nah wie möglich an der App. Für Hop 2 wird automatisch ExpressRoute verwendet. Dies basiert auf Muster 2, das im vorherigen Abschnitt beschrieben wurde.
+**Empfehlung:** Verwenden Sie die Muster 1 und 2, die im vorherigen Abschnitt beschrieben werden.
+
+Platzieren Sie den Connector zuerst so nah wie möglich an der App. Für Hop 2 wird automatisch ExpressRoute verwendet. 
 
 Wenn für die ExpressRoute-Verbindung das öffentliche Peering verwendet wird, fließt der Datenverkehr zwischen dem Proxy und dem Connector über diese Verbindung. Hop 2 verfügt über eine optimierte Wartezeit.
 
@@ -146,7 +152,9 @@ Wenn für die ExpressRoute-Verbindung das öffentliche Peering verwendet wird, f
 
 **Szenario:** Die App befindet sich im Netzwerk einer Organisation in den USA. ExpressRoute mit privatem Peering ist zwischen Azure und dem Unternehmensnetzwerk vorhanden.
 
-**Empfehlung:** Platzieren Sie den Connector in dem Azure-Datencenter, das über das private ExpressRoute-Peering mit dem Unternehmensnetzwerk verbunden ist. Dies basiert auf Muster 3, das im vorherigen Abschnitt beschrieben wurde.
+**Empfehlung:** Verwenden Sie Muster 3, das im vorherigen Abschnitt beschrieben wird.
+
+Platzieren Sie den Connector in dem Azure-Datencenter, das über das private ExpressRoute-Peering mit dem Unternehmensnetzwerk verbunden ist. 
 
 Der Connector kann im Azure-Datencenter angeordnet werden. Da der Connector weiterhin über das private Netzwerk über eine Sichtverbindung mit der Anwendung und dem Datencenter verfügt, bleibt Hop 3 optimiert. Darüber hinaus wird Hop 2 weiter optimiert.
 
@@ -160,7 +168,7 @@ Der Connector kann im Azure-Datencenter angeordnet werden. Da der Connector weit
 
 ![Benutzer und Proxy in den USA, Connector und App in der EU](./media/application-proxy-network-topologies/application-proxy-pattern5b.png)
 
-In dieser Situation können Sie auch eine andere Variante verwenden. Wenn sich die meisten Benutzer der Organisation in den USA befinden, ist die Wahrscheinlichkeit hoch, dass auch Ihr Netzwerk bis in die USA reicht. In diesem Fall kann der Connector in den USA angeordnet und die dedizierte interne Unternehmensnetzwerkleitung zur Anwendung in der EU genutzt werden. Auf diese Weise werden die Hops 2 und 3 optimiert.
+In dieser Situation können Sie auch eine andere Variante verwenden. Wenn sich die meisten Benutzer der Organisation in den USA befinden, ist die Wahrscheinlichkeit hoch, dass auch Ihr Netzwerk bis in die USA reicht. Platzieren Sie den Connector in den USA, und verwenden Sie die dedizierte interne Unternehmensnetzwerkleitung zur Anwendung in der EU. Auf diese Weise werden die Hops 2 und 3 optimiert.
 
 ![Benutzer, Proxy und Connector in den USA, App in der EU](./media/application-proxy-network-topologies/application-proxy-pattern5c.png)
 

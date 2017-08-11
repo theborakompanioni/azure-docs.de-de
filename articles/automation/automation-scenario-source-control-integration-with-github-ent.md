@@ -12,11 +12,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/05/2016
+ms.date: 07/26/2017
 ms.author: magoedte
-translationtype: Human Translation
-ms.sourcegitcommit: f8d515c6a8b1332ccb338cb5ec2c16daa5725281
-ms.openlocfilehash: 9590135c351c4d4355ed208eaae469cac17972fa
+ms.translationtype: HT
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: 62793dcdbbf4c83161e95d1c165d5c231245f7c6
+ms.contentlocale: de-de
+ms.lasthandoff: 07/27/2017
 
 ---
 
@@ -24,7 +26,7 @@ ms.openlocfilehash: 9590135c351c4d4355ed208eaae469cac17972fa
 
 Automation unterstützt aktuell die Integration der Quellcodeverwaltung, wodurch Sie Runbooks in Ihrem Automation-Konto einem GitHub-Repository für die Quellcodeverwaltung zuordnen können.  Allerdings möchten Kunden, die [GitHub Enterprise](https://enterprise.github.com/home) zur Unterstützung ihrer DevOps-Methoden bereitgestellt haben, dieses auch verwenden, um den Lebenszyklus von zur Automatisierung von Geschäftsprozessen und Dienstverwaltungsvorgängen entwickelten Runbooks zu verwalten.  
 
-In diesem Szenario müssen Sie in Ihrem Rechenzentrum einen Windows-Computer als Hybrid Runbook Worker konfigurieren, auf dem Azure-RM-Module und Git-Tools installiert sind.  Der Hybrid Worker-Computer verfügt über einen Klon des lokalen Git-Repositorys.  Beim Ausführen des Runbooks auf dem Hybrid Worker wird das Git-Verzeichnis synchronisiert und der Inhalt der Runbookdatei in das Automation-Konto importiert.
+In diesem Szenario konfigurieren Sie in Ihrem Rechenzentrum einen Windows-Computer als Hybrid Runbook Worker, auf dem Azure Resource Manager-Module und Git-Tools installiert sind.  Der Hybrid Worker-Computer verfügt über einen Klon des lokalen Git-Repositorys.  Beim Ausführen des Runbooks auf dem Hybrid Worker wird das Git-Verzeichnis synchronisiert und der Inhalt der Runbookdatei in das Automation-Konto importiert.
 
 In diesem Artikel wird die Einrichtung dieser Konfiguration in Ihrer Azure-Automation-Umgebung beschrieben. Zunächst wird Automation mit den Sicherheitsanmeldeinformationen, den zur Unterstützung dieses Szenarios erforderlichen Runbooks und der Bereitstellung eines Hybrid Runbook Workers in Ihrem Rechenzentrum konfiguriert, um die Runbooks auszuführen, auf Ihr GitHub Enterprise-Repository zuzugreifen und Runbooks mit Ihrem Automation-Konto zu synchronisieren.  
 
@@ -37,7 +39,7 @@ Dieses Szenario basiert auf zwei PowerShell-Runbooks, die Sie direkt aus dem [Ru
 
 Runbook | Beschreibung| 
 --------|------------|
-Export-RunAsCertificateToHybridWorker | Runbook exportiert ein RunAs-Zertifikat aus einem Automation-Konto in einen Hybrid Worker, damit Runbooks auf dem Worker mit Azure authentifiziert werden können, um sie in das Automation-Konto zu importieren.| 
+Export-RunAsCertificateToHybridWorker | Das Runbook exportiert ein RunAs-Zertifikat aus einem Automation-Konto in einen Hybrid Worker, damit Runbooks auf dem Worker mit Azure authentifiziert werden können, um sie in das Automation-Konto zu importieren.| 
 Sync-LocalGitFolderToAutomationAccount | Das Runbook synchronisiert den lokalen Git-Ordner auf dem Hybridcomputer und importiert anschließend die Runbookdateien (*.ps1) in das Automation-Konto.|
 
 ### <a name="credentials"></a>Anmeldeinformationen
@@ -52,16 +54,16 @@ GitHRWCredential | Anmeldeinformationsobjekt, das Sie erstellen und das den Benu
 
 1. Das Runbook „Sync-LocalGitFolderToAutomationAccount“ authentifiziert sich mit dem [ausführenden Azure-Konto](automation-sec-configure-azure-runas-account.md). 
 
-2. Ein Microsoft OMS-Arbeitsbereich (Operations Management Suite), in dem die Azure Automation-Lösung aktiviert und konfiguriert ist, ist ebenfalls erforderlich.  Wenn Sie über keinen entsprechenden Arbeitsbereich verfügen, der dem zum Installieren und Konfigurieren dieses Szenarios verwendeten Automation-Konto zugeordnet ist, wird er beim Ausführen des Skripts **New-OnPremiseHybridWorker.ps1** über den Hybrid Runbook Worker erstellt und konfiguriert.        
+2. Ein Microsoft OMS-Arbeitsbereich (Operations Management Suite), in dem die Azure Automation-Lösung aktiviert und konfiguriert ist, ist ebenfalls erforderlich.  Wenn Sie nicht über einen entsprechenden Arbeitsbereich verfügen, der dem zum Installieren und Konfigurieren dieses Szenarios verwendeten Automation-Konto zugeordnet ist, wird er beim Ausführen des Skripts **New-OnPremiseHybridWorker.ps1** über den Hybrid Runbook Worker erstellt und konfiguriert.        
 
     > [!NOTE]
-    > Dies sind derzeit die einzigen für die Automation-Integration mit OMS unterstützten Regionen: **Australien, Südosten**, **USA, Osten 2**, **Asien, Südosten**, und **Europa, Westen**. 
+    > Derzeit wird die Automation-Integration mit OMS nur für die folgenden Regionen unterstützt: **Australien, Südosten**, **USA, Osten 2**, **Asien, Südosten** und **Europa, Westen**. 
 
 3. Ein Computer, der als dedizierter Hybrid Runbook Worker dienen kann, auf dem außerdem die GitHub-Software gehostet wird und die Runbookdateien (*runbook*.ps1) in einem Quellverzeichnis im Dateisystem für die Synchronisierung zwischen GitHub und Ihrem Automation-Konto verwaltet werden.
 
 ### <a name="import-and-publish-the-runbooks"></a>Importieren und Veröffentlichen der Runbooks
 
-Zum Importieren der Runbooks *Export-RunAsCertificateToHybridWorker* und *Sync-LocalGitFolderToAutomationAccount* aus dem Runbookkatalog aus Ihrem Automation-Konto im Azure-Portal befolgen Sie die Verfahren unter [Importieren eines Runbooks aus dem Runbookkatalog](automation-runbook-gallery.md#to-import-a-runbook-from-the-runbook-gallery-with-the-azure-portal). Veröffentlichen Sie die Runbooks, nachdem sie erfolgreich in Ihr Automation-Konto importiert wurden.
+Befolgen Sie zum Importieren der Runbooks *Export-RunAsCertificateToHybridWorker* und *Sync-LocalGitFolderToAutomationAccount* aus dem Runbookkatalog Ihres Automation-Kontos im Azure-Portal die Verfahren unter [Importieren eines Runbooks aus dem Runbookkatalog](automation-runbook-gallery.md#to-import-a-runbook-from-the-runbook-gallery-with-the-azure-portal). Veröffentlichen Sie die Runbooks, nachdem sie erfolgreich in Ihr Automation-Konto importiert wurden.
 
 ### <a name="deploy-and-configure-hybrid-runbook-worker"></a>Bereitstellen und Konfigurieren von Hybrid Runbook Worker
 
@@ -72,9 +74,9 @@ Wenn Sie in Ihrem Rechenzentrum noch keinen Hybrid Runbook Worker bereitgestellt
 3. [Bearbeiten Sie das Runbook](automation-edit-textual-runbook.md) **Export RunAsCertificateToHybridWorker** in Ihrem Automation-Konto, und ändern Sie den Wert für die Variable *$Password* in ein sicheres Kennwort.  Nachdem Sie den Wert geändert haben, klicken Sie auf **Veröffentlichen**, um die Entwurfsversion des Runbooks veröffentlichen zu lassen. 
 5. Starten Sie das Runbook **Export-RunAsCertificateToHybridWorker**, und wählen Sie im Blatt **Runbook starten** unter der Option **Laufzeiteinstellungen** die Option **Hybrid Worker** aus. Wählen Sie anschließend aus der Dropdownliste die zuvor für dieses Szenario erstellte Hybrid Worker-Gruppe aus.  
 
-    Dadurch wird ein Zertifikat in den Hybrid Worker exportiert, damit Runbooks auf dem Worker sich mithilfe der ausführenden Verbindung bei Azure authentifizieren können, um Azure-Ressourcen zu verwalten (speziell für dieses Szenario: um Runbooks in das Automation-Konto zu importieren).
+    Hierdurch wird ein Zertifikat in den Hybrid Worker exportiert, damit Runbooks auf dem Worker sich mithilfe der ausführenden Verbindung bei Azure authentifizieren können, um Azure-Ressourcen zu verwalten (speziell für dieses Szenario: um Runbooks in das Automation-Konto zu importieren).
 
-4. Wählen Sie aus Ihrem Automation-Konto die zuvor erstellte Hybrid Worker-Gruppe aus, [geben Sie ein RunAs-Konto](automation-hybrid-runbook-worker.md#runas-account) für die Hybrid Worker-Gruppe an, und wählen Sie das Anmeldeinformationsobjekt aus, das Sie soeben oder zuvor erstellt haben.  Dadurch wird sichergestellt, dass das Synchronisierungsrunbook Git-Befehle ausführen kann. 
+4. Wählen Sie aus Ihrem Automation-Konto die zuvor erstellte Hybrid Worker-Gruppe aus, [geben Sie ein RunAs-Konto](automation-hrw-run-runbooks.md#runas-account) für die Hybrid Worker-Gruppe an, und wählen Sie das Anmeldeinformationsobjekt aus, das Sie soeben oder zuvor erstellt haben.  Dadurch wird sichergestellt, dass das Synchronisierungsrunbook Git-Befehle ausführen kann. 
 5. Starten Sie das Runbook **Sync-LocalGitFolderToAutomationAccount**, geben Sie die folgenden erforderlichen Eingabeparameterwerte ein, und wählen Sie im Blatt **Runbook starten** unter der Option **Laufzeiteinstellungen** die Option **Hybrid Worker** aus. Wählen Sie anschließend aus der Dropdownliste die zuvor für dieses Szenario erstellte Hybrid Worker-Gruppe aus:
     * *ResourceGroup*: der Name der Ressourcengruppe, die Ihrem Automation-Konto zugeordnet ist
     * *AutomationAccountName*: der Name Ihres Automation-Kontos
@@ -90,9 +92,4 @@ Wenn Sie in Ihrem Rechenzentrum noch keinen Hybrid Runbook Worker bereitgestellt
 
 -  Weitere Informationen zu den verschiedenen Runbooktypen sowie zu ihren Vorteilen und Einschränkungen finden Sie unter [Azure Automation-Runbooktypen](automation-runbook-types.md)
 -  Weitere Informationen zur PowerShell-Skriptunterstützung finden Sie unter [Native PowerShell Script Support in Azure Automation (Native PowerShell-Skriptunterstützung in Azure Automation)](https://azure.microsoft.com/blog/announcing-powershell-script-support-azure-automation-2/)
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

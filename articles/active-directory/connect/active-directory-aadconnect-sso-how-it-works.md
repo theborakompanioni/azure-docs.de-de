@@ -12,21 +12,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 07/24/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: 6db2fa2f568c3cf8296bd91214b380a01b85c134
+ms.translationtype: HT
+ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
+ms.openlocfilehash: 1f12a8e3e11bc7eee1fc536e231f71c1d17c3fe4
 ms.contentlocale: de-de
-ms.lasthandoff: 06/16/2017
+ms.lasthandoff: 07/25/2017
 
 ---
 
 # <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Azure Active Directory: Nahtloses einmaliges Anmelden: Technische Einblicke
 
-In diesem Artikel finden Sie technische Details zur Funktionsweise der nahtlosen einmaligen Anmeldung in Azure Active Directory (Azure Active Directory Seamless Single Sign-On).
+In diesem Artikel finden Sie technische Details zur Funktionsweise des nahtlosen einmaligen Anmeldens in Azure Active Directory (Seamless SSO).
 
-## <a name="how-does-azure-ad-seamless-sso-work"></a>Wie funktioniert die nahtlose einmalige Anmeldung mit Azure AD?
+## <a name="how-does-seamless-sso-work"></a>Wie funktioniert das nahtlose einmalige Anmelden?
 
 Dieser Abschnitt enthält zwei Teile:
 1. Die Einrichtung des nahtlosen einmaligen Anmeldens
@@ -41,6 +41,9 @@ Das nahtlose einmalige Anmelden wird mithilfe von Azure AD Connect wie [hier](ac
 
 >[!NOTE]
 > In jeder AD-Gesamtstruktur, die Sie mit Azure AD (über Azure AD Connect) synchronisieren und für deren Benutzer Sie das nahtlose einmalige Anmelden aktivieren möchten, werden das Computerkonto und die Kerberos-SPNs erstellt. Verschieben das `AZUREADSSOACCT`-Computerkonto zu einer Organisationseinheit (Organization Unit, OU), in der andere Computerkonten gespeichert sind, um sicherzustellen, dass es auf die gleiche Weise verwaltet und nicht gelöscht wird.
+
+>[!IMPORTANT]
+>Es wird dringend empfohlen, den [Rollover des Kerberos-Entschlüsselungsschlüssels](active-directory-aadconnect-sso-faq.md#how-can-i-roll-over-the-kerberos-decryption-key-of-the-azureadssoacct-computer-account) für das Computerkonto `AZUREADSSOACCT` mindestens alle 30 Tage durchzuführen.
 
 ### <a name="how-does-sign-in-with-seamless-sso-work"></a>Wie funktioniert die Anmeldung mit dem nahtlosen einmaligen Anmelden?
 
@@ -71,6 +74,6 @@ Das nahtlose einmalige Anmelden ist ein opportunistisches Feature, d.h., wenn ei
 
 - [**Schnellstart:**](active-directory-aadconnect-sso-quick-start.md) Einrichten und Ausführen des nahtlosen einmaligen Anmeldens von Azure AD
 - [**Häufig gestellte Fragen:**](active-directory-aadconnect-sso-faq.md) Antworten auf häufig gestellte Fragen
-- [**Problembehandlung:**](active-directory-aadconnect-troubleshoot-sso.md) Erfahren Sie, wie Sie häufig auftretende Probleme mit diesem Feature beheben.
+- [**Problembehandlung**](active-directory-aadconnect-troubleshoot-sso.md) – Beheben von häufig auftretenden Problemen mit diesem Feature
 - [**UserVoice:**](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) Verfassen neuer Feature-Anforderungen
 
