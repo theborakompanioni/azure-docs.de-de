@@ -1,5 +1,5 @@
 ---
-title: " Löschen eines Azure Backup-Tresors | Microsoft-Dokumentation "
+title: " Löschen eines Recovery Services-Tresors in Azure | Microsoft-Dokumentation "
 description: "Informationen zum Löschen eines Azure Backup- oder Recovery Services-Tresors. Ein Sicherungstresor kann als Azure-Cloud- oder Azure-Wiederherstellungstresor bezeichnet werden. Behandlung von Problemen, wenn Sie einen Sicherungstresor im klassischen oder Azure-Portal nicht löschen können."
 services: service-name
 documentationcenter: dev-center-name
@@ -12,17 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 06/14/2017
+ms.date: 07/21/2017
 ms.author: markgal;trinadhk
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: d8be07fe4cd3fd50827fb7021a75eb05b6f075e0
+ms.translationtype: HT
+ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
+ms.openlocfilehash: e72ccd2efc271956c688e70804cef915c257a2e3
 ms.contentlocale: de-de
-ms.lasthandoff: 06/16/2017
-
+ms.lasthandoff: 07/24/2017
 
 ---
-# <a name="delete-an-azure-backup-vault"></a>Löschen eines Azure Backup-Tresors
+# <a name="delete-a-recovery-services-vault"></a>Löschen eines Recovery Services-Tresors
 Der Azure Backup-Dienst umfasst zwei Arten von Tresoren: den Backup-Tresor und den Recovery Services-Tresor. Der Backup-Tresor wurde zuerst eingeführt. Anschließend folgte der Recovery Services-Tresor als Unterstützung für die erweiterten Resource Manager-Bereitstellungen. Aufgrund der erweiterten Funktionen und Informationsabhängigkeiten, die im Tresor gespeichert werden müssen, kann das Löschen eines Azure Backup- oder Recovery Services-Tresors schwierig erscheinen. In diesem Artikel wird erläutert, wie die Tresore im klassischen und Azure-Portal gelöscht werden.  
 
 | **Bereitstellungstyp** | **Portal** | **Tresorname** |
@@ -86,7 +85,7 @@ Wenn Sie den Recovery Services-Tresor bereits geöffnet haben, können Sie zum z
     ![Sicherungsdaten löschen](./media/backup-azure-delete-vault/stop-backup-blade-delete-backup-data.png)
 
     Optional können Sie einen Grund angeben, warum Sie die Daten löschen, und Sie können Kommentare hinzufügen. Warten Sie nach dem Klicken auf **Sicherung beenden**ab, bis der Löschvorgang abgeschlossen ist, und versuchen Sie dann, den Tresor zu löschen. Um zu überprüfen, ob der Vorgang abgeschlossen wurde, können Sie die Azure-Meldungen anzeigen: ![delete backup data](./media/backup-azure-delete-vault/messages.png). <br/>
-    Nach Abschluss des Vorgangs erhalten Sie eine Meldung mit dem Hinweis, dass der Sicherungsvorgang beendet wurde und die Sicherungsdaten für das Element gelöscht wurden.
+    Nach Abschluss des Vorgangs erhalten Sie eine Meldung mit dem Hinweis, dass der Sicherungsprozess beendet wurde und die Sicherungsdaten für das Element gelöscht wurden.
 
     c. Klicken Sie nach dem Löschen eines Elements aus der Liste auf das Menü **Sicherungselemente** und dann auf **Aktualisieren**, um die restlichen Elemente des Tresors anzuzeigen.
 
