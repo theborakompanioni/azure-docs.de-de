@@ -90,7 +90,7 @@ Es ist aber möglich, dem Benutzer zusätzlich zur geerbten Lizenz die gleiche P
 
 Direkt zugewiesene Lizenzen können entfernt werden und wirken sich nicht auf geerbte Lizenzen aus. Angenommen, ein Benutzer erbt eine Office 365 Enterprise E3-Lizenz von einer Gruppe.
 
-1. Zuerst erbt der Benutzer die Lizenz nur von der Gruppe *E3 basic services* (E3-Basisdienste), sodass sich wie hier gezeigt vier Dienstpläne ergeben:
+1. Zuerst erbt der Benutzer die Lizenz nur von der Gruppe *E3 basic services* (Basic E3-Dienste), sodass sich wie hier gezeigt vier Dienstpläne ergeben:
 
   ![Screenshot mit aktivierten Diensten der E3-Gruppe](media/active-directory-licensing-group-advanced/e3-group-enabled-services.png)
 
@@ -174,7 +174,7 @@ Hier ist ein Beispiel für kürzlich vorgenommene Änderungen der Gruppenlizenze
 
 Wenn sich für eine Gruppe eine Lizenz ändert, beginnt Azure AD damit, die Änderungen auf alle Benutzer anzuwenden.
 
-1. Um anzuzeigen, wann die Verarbeitung für die Gruppen gestartet wurde, legen Sie den Filter **Aktivität** auf *Start applying group based license to users* (Starten der gruppenbasierten Lizenzzuweisung zu Benutzern) fest. Beachten Sie, dass der Akteur für den Vorgang *Microsoft Azure AD Group-Based Licensing* (Gruppenbasierte Microsoft Azure AD-Lizenzierung) lautet. Dies ist ein Systemkonto, das verwendet wird, um alle Gruppenlizenzänderungen durchzuführen.
+1. Um anzuzeigen, wann die Verarbeitung für die Gruppen gestartet wurde, legen Sie den Filter **Aktivität** auf *Start applying group based license to users* (Zuweisung der gruppenbasierten Lizenz an Benutzer starten) fest. Beachten Sie, dass der Akteur für den Vorgang *Microsoft Azure AD Group-Based Licensing* (Gruppenbasierte Microsoft Azure AD-Lizenzierung) lautet. Dies ist ein Systemkonto, das verwendet wird, um alle Gruppenlizenzänderungen durchzuführen.
 >[!TIP]
 > Klicken Sie auf einen Eintrag der Liste, um das Feld *Geänderte Eigenschaften* anzuzeigen. Darin werden die Lizenzänderungen angezeigt, die für die Verarbeitung ausgewählt wurden. Dies ist nützlich, wenn Sie an einer Gruppe mehrere Änderungen vorgenommen haben und nicht sicher sind, welche verarbeitet wurden.
 
