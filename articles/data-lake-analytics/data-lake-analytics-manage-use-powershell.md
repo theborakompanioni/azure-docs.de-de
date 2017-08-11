@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 06/26/2017
+ms.date: 07/23/2017
 ms.author: mahi
 ms.translationtype: HT
-ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
-ms.openlocfilehash: d4e4bb5e18b63a9d9494a2294743fa9f45b64fa1
+ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
+ms.openlocfilehash: b79f6dd20d2e8e298b8d1824b70ff9f0d0fde9aa
 ms.contentlocale: de-de
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 08/01/2017
 
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-powershell"></a>Verwalten von Azure Data Lake Analytics mithilfe von Azure PowerShell
@@ -128,8 +128,6 @@ Get-AdlAnalyticsAccount -ResourceGroupName $rg
 
 ## <a name="managing-firewall-rules"></a>Verwalten von Firewallregeln
 
-### <a name="add-or-remove-firewall-rules"></a>Hinzufügen oder Entfernen von Firewallregeln
-
 Listen Sie Firewallregeln auf.
 
 ```powershell
@@ -158,13 +156,7 @@ Entfernen Sie eine Firewallregel.
 Remove-AdlAnalyticsFirewallRule -Account $adla -Name $ruleName
 ```
 
-### <a name="enable-or-disable-firewall-rules"></a>Aktivieren oder Deaktivieren von Firewallregeln
 
-Aktivieren Sie Firewallregeln.
-
-```powershell
-Set-AdlAnalyticsAccount -Name $adla -FirewallState Enabled
-```
 
 Lassen Sie Azure-IP-Adressen zu.
 
@@ -172,9 +164,8 @@ Lassen Sie Azure-IP-Adressen zu.
 Set-AdlAnalyticsAccount -Name $adla -AllowAzureIpState Enabled
 ```
 
-Deaktivieren Sie Firewallregeln.
-
 ```powershell
+Set-AdlAnalyticsAccount -Name $adla -FirewallState Enabled
 Set-AdlAnalyticsAccount -Name $adla -FirewallState Disabled
 ```
 
@@ -193,26 +184,22 @@ $adla_acct = Get-AdlAnalyticsAccount -Name $adla
 $dataLakeStoreName = $adla_acct.DefaultDataLakeAccount
 ```
 
-Alternativ beim Aufstellen der Liste mit Datenquellen können Sie das Data Lake Store-Standardkonto mithilfe des folgenden Musters ermitteln:
+Sie können das Standardkonto für den Data Lake-Speicher finden, indem Sie die Liste der Datenquellen nach der `IsDefault`-Eigenschaft filtern:
 
 ```powershell
 Get-AdlAnalyticsDataSource -Account $adla  | ? { $_.IsDefault } 
 ```
 
-### <a name="add-data-sources"></a>Hinzufügen von Datenquellen
-
-Fügen Sie ein zusätzliches Storage (Blob)-Konto hinzu.
+### <a name="add-a-data-source"></a>Hinzufügen einer Datenquelle
 
 ```powershell
+
+# Add an additional Storage (Blob) account.
 $AzureStorageAccountName = "<AzureStorageAccountName>"
 $AzureStorageAccountKey = "<AzureStorageAccountKey>"
-
 Add-AdlAnalyticsDataSource -Account $adla -Blob $AzureStorageAccountName -AccessKey $AzureStorageAccountKey
-```
 
-Fügen Sie ein zusätzliches Data Lake Store-Konto hinzu.
-
-```powershell
+# Add an additional Data Lake Store account.
 $AzureDataLakeStoreName = "<AzureDataLakeStoreAccountName"
 Add-AdlAnalyticsDataSource -Account $adla -DataLakeStore $AzureDataLakeStoreName 
 ```
@@ -230,11 +217,9 @@ Get-AdlAnalyticsDataSource -Name $adla | where -Property Type -EQ "DataLakeStore
 Get-AdlAnalyticsDataSource -Name $adla | where -Property Type -EQ "Blob"
 ```
 
-## <a name="managing-jobs"></a>Verwalten von Aufträgen
+## <a name="submit-u-sql-jobs"></a>Übermitteln von U-SQL-Aufträgen
 
-### <a name="submit-a-u-sql-job"></a>Senden eines U-SQL-Auftrags
-
-Senden Sie eine Zeichenfolge als U-SQL-Skript.
+### <a name="submit-a-string-as-a-u-sql-script"></a>Senden Sie eine Zeichenfolge als U-SQL-Skript
 
 ```powershell
 $script = @"
@@ -256,7 +241,7 @@ Submit-AdlJob -AccountName $adla -Script $script -Name "Demo"
 ```
 
 
-Senden Sie eine Datei als U-SQL-Skript.
+### <a name="submit-a-file-as-a-u-sql-script"></a>Senden Sie eine Datei als U-SQL-Skript
 
 ```powershell
 $scriptpath = "d:\test.usql"
@@ -264,13 +249,16 @@ $script | Out-File $scriptpath
 Submit-AdlJob -AccountName $adla –ScriptPath $scriptpath -Name "Demo"
 ```
 
-### <a name="list-jobs"></a>Auflisten von Aufträgen
+## <a name="list-jobs-in-an-account"></a>Auflisten von Aufträgen in einem Konto
 
-Listen Sie alle Aufträge des Kontos auf. Die Ausgabe enthält die derzeit ausgeführten Aufträge sowie die Aufträge, die vor Kurzem abgeschlossen wurden.
+### <a name="list-all-the-jobs-in-the-account"></a>Listen Sie alle Aufträge des Kontos auf. 
+
+Die Ausgabe enthält die derzeit ausgeführten Aufträge sowie die Aufträge, die vor Kurzem abgeschlossen wurden.
 
 ```powershell
 Get-AdlJob -Account $adla
 ```
+
 
 ### <a name="list-a-specific-number-of-jobs"></a>Auflisten einer bestimmten Anzahl von Aufträgen
 
@@ -280,44 +268,83 @@ Die Liste der Aufträge wird standardmäßig nach der Übermittlungszeit sortier
 $jobs = Get-AdlJob -Account $adla -Top 10
 ```
 
+
 ### <a name="list-jobs-based-on-the-value-of-job-property"></a>Auflisten von Aufträgen basierend auf dem Wert der job-Eigenschaft
 
-Listen Sie Aufträge auf, die am letzten Tag übermittelt wurden.
+Mithilfe des Parameters `-State`. Sie können jeden der folgenden Werte kombinieren:
 
-```
-$d = [DateTime]::Now.AddDays(-1)
-Get-AdlJob -Account $adla -SubmittedAfter $d
-```
-
-Listen Sie Aufträge auf, die in den letzten fünf Tagen übermittelt und erfolgreich abgeschlossen wurden.
-
-```
-$d = (Get-Date).AddDays(-5)
-Get-AdlJob -Account $adla -SubmittedAfter $d -State Ended -Result Succeeded
-```
-
-Listen Sie erfolgreiche Vorgänge auf.
-
-```
-Get-AdlJob -Account $adla -State Ended -Result Succeeded
-```
-
-Listen Sie fehlerhaften Aufträge auf.
+* `Accepted`
+* `Compiling`
+* `Ended`
+* `New`
+* `Paused`
+* `Queued`
+* `Running`
+* `Scheduling`
+* `Start`
 
 ```powershell
+# List the running jobs
+Get-AdlJob -Account $adla -State Running
+
+# List the jobs that have completed
+Get-AdlJob -Account $adla -State Ended
+
+# List the jobs that have not started yet
+Get-AdlJob -Account $adla -State Accepted,Compiling,New,Paused,Scheduling,Start
+```
+
+Verwenden Sie den Parameter `-Result`, um zu erkennen, ob die beendeten Aufträge erfolgreich abgeschlossen wurden. Er enthält folgende Werte:
+
+* Abgebrochen
+* Fehler
+* Keine
+* Erfolgreich
+
+``` powershell
+# List Successful jobs.
+Get-AdlJob -Account $adla -State Ended -Result Succeeded
+
+# List Failed jobs.
 Get-AdlJob -Account $adla -State Ended -Result Failed
 ```
 
-Listen Sie alle fehlerhaften Aufträge auf, die in den letzten sieben Tagen von joe@contoso.com übermittelt wurden.
+
+Mithilfe des Parameters `-Submitter` können Sie erkennen, wer einen Auftrag übermittelt hat.
 
 ```powershell
+Get-AdlJob -Account $adla -Submitter "joe@contoso.com"
+```
+
+Der Parameter `-SubmittedAfter` ist nützlich, um nach einem Zeitbereich zu filtern.
+
+
+```powershell
+# List  jobs submitted in the last day.
+$d = [DateTime]::Now.AddDays(-1)
+Get-AdlJob -Account $adla -SubmittedAfter $d
+
+# List  jobs submitted in the last seven day.
+$d = [DateTime]::Now.AddDays(-7)
+Get-AdlJob -Account $adla -SubmittedAfter $d
+```
+
+### <a name="common-scenarios-for-listing-jobs"></a>Häufige Szenarios für das Auflisten von Aufträgen
+
+
+```
+# List jobs submitted in the last five days and that successfully completed.
+$d = (Get-Date).AddDays(-5)
+Get-AdlJob -Account $adla -SubmittedAfter $d -State Ended -Result Succeeded
+
+# List all failed jobs submitted by "joe@contoso.com" within the past seven days.
 Get-AdlJob -Account $adla `
     -Submitter "joe@contoso.com" `
     -SubmittedAfter (Get-Date).AddDays(-7) `
     -Result Failed
 ```
 
-### <a name="filtering-a-list-of-jobs"></a>Filtern einer Liste von Aufträgen
+## <a name="filtering-a-list-of-jobs"></a>Filtern einer Liste von Aufträgen
 
 Nachdem Sie eine Liste von Aufträgen in der aktuellen PowerShell-Sitzung erstellt haben, können Sie sie mit normalen PowerShell-Cmdlets filtern.
 
@@ -383,18 +410,32 @@ $jobs = Get-AdlJob -Account $adla -Top 10
 $jobs = $jobs | %{ annotate_job( $_ ) }
 ```
 
-### <a name="get-information-about-a-job"></a>Abrufen von Informationen zu einem Auftrag
+## <a name="get-information-about-pipelines-and-recurrences"></a>Abrufen von Informationen zu Pipelines und Wiederholungen
+
+Verwenden Sie das Cmdlet `Get-AdlJobPipeline`, um die Pipelineinformationen für zuvor übermittelte Aufträge anzuzeigen.
+
+```powershell
+$pipelines = Get-AdlJobPipeline -Account $adla
+
+$pipeline = Get-AdlJobPipeline -Account $adla -PipelineId "<pipeline ID>"
+```
+
+Verwenden Sie das Cmdlet `Get-AdlJobRecurrence`, um die Wiederholungsinformationen für zuvor übermittelte Aufträge anzuzeigen.
+
+```powershell
+$recurrences = Get-AdlJobRecurrence -Account $adla
+
+$recurrence = Get-AdlJobRecurrence -Account $adla -RecurrenceId "<recurrence ID>"
+```
+
+## <a name="get-information-about-a-job"></a>Abrufen von Informationen zu einem Auftrag
+
+### <a name="get-job-status"></a>Abrufen des Auftragsstatus
 
 Rufen Sie den Status eines bestimmten Auftrags ab.
 
 ```powershell
 Get-AdlJob -AccountName $adla -JobId $job.JobId
-```
-
-Anstatt `Get-AdlAnalyticsJob` zu wiederholen, bis ein Auftrag abgeschlossen ist, können Sie das Cmdlet `Wait-AdlJob` verwenden, um zu warten, bis der Auftrag beendet wurde.
-
-```powershell
-Wait-AdlJob -Account $adla -JobId $job.JobId
 ```
 
 ### <a name="examine-the-job-outputs"></a>Überprüfen der Auftragsausgaben
@@ -405,16 +446,46 @@ Wait-AdlJob -Account $adla -JobId $job.JobId
 Get-AdlStoreChildItem -Account $adls -Path "/"
 ```
 
-Überprüfen Sie das Vorhandensein einer Datei.
-
-```powershell
-Test-AdlStoreItem -Account $adls -Path "/data.csv"
-```
+## <a name="manage-running-jobs"></a>Verwalten ausgeführter Aufträge
 
 ### <a name="cancel-a-job"></a>Abbrechen eines Auftrags
 
 ```powershell
 Stop-AdlJob -Account $adls -JobID $jobID
+```
+
+### <a name="wait-for-a-job-to-finish"></a>Warten auf den Abschluss eines Auftrags
+
+Anstatt `Get-AdlAnalyticsJob` zu wiederholen, bis ein Auftrag abgeschlossen ist, können Sie das Cmdlet `Wait-AdlJob` verwenden, um zu warten, bis der Auftrag beendet wurde.
+
+```powershell
+Wait-AdlJob -Account $adla -JobId $job.JobId
+```
+
+## <a name="manage-compute-policies"></a>Verwalten von Computerichtlinien
+
+### <a name="list-existing-compute-policies"></a>Auflisten vorhandener Computerichtlinien
+
+Durch das Cmdlet `Get-AdlAnalyticsComputePolicy` werden Informationen über Computerichtlinien für ein Data Lake Analytics-Konto abgerufen.
+
+```powershell
+$policies = Get-AdlAnalyticsComputePolicy -Account $adla
+```
+
+### <a name="create-a-compute-policy"></a>Erstellen einer Computerichtlinie
+
+Durch das Cmdlet `New-AdlAnalyticsComputePolicy` werden Informationen über Computerichtlinien für ein Data Lake Analytics-Konto abgerufen. In diesem Beispiel werden die maximalen AUs, die für den angegebenen Benutzer verfügbar sind, auf 50 festgelegt und die minimale Auftragspriorität auf 250.
+
+```powershell
+$userObjectId = (Get-AzureRmAdUser -SearchString "garymcdaniel@contoso.com").Id
+
+New-AdlAnalyticsComputePolicy -Account $adla -Name "GaryMcDaniel" -ObjectId $objectId -ObjectType User -MaxDegreeOfParallelismPerJob 50 -MinPriorityPerJob 250
+```
+
+## <a name="check-for-the-existence-of-a-file"></a>Überprüfen Sie das Vorhandensein einer Datei.
+
+```powershell
+Test-AdlStoreItem -Account $adls -Path "/data.csv"
 ```
 
 ## <a name="uploading-and-downloading"></a>Hoch- und Herunterladen
@@ -447,10 +518,10 @@ Export-AdlStoreItem -AccountName $adls -Path "/" -Destination "c:\myData\" -Recu
 > Wenn der Upload- oder Downloadvorgang unterbrochen wird, können Sie versuchen, den Vorgang fortzusetzen, indem Sie das Cmdlet mit dem Flag ``-Resume`` erneut ausführen.
 
 ## <a name="manage-catalog-items"></a>Verwalten von Katalogelemente
+
 Der U-SQL-Katalog wird zum Strukturieren von Daten und Code verwendet, damit diese von U-SQL-Skripts gemeinsam genutzt werden können. Der Katalog ermöglicht die höchstmögliche Leistung mit Daten in Azure Data Lake. Weitere Informationen finden Sie unter [Verwenden des U-SQL-Katalogs](data-lake-analytics-use-u-sql-catalog.md).
 
 ### <a name="list-items-in-the-u-sql-catalog"></a>Auflisten von Elementen im U-SQL-Katalog
-
 
 ```powershell
 # List U-SQL databases
@@ -530,6 +601,7 @@ Write-Host '$subid' " = ""$adla_subid"" "
 Write-Host '$adla' " = ""$adla_name"" "
 Write-Host '$adls' " = ""$adla_defadlsname"" "
 ```
+
 ## <a name="working-with-azure"></a>Arbeiten mit Azure
 
 ### <a name="get-details-of-azurerm-errors"></a>Abrufen von Details zu AzureRm-Fehlern

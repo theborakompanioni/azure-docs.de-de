@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: database
 ms.date: 06/07/2017
 ms.author: mimig
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7c69630688e4bcd68ab3b4ee6d9fdb0e0c46d04b
-ms.openlocfilehash: 9b117ed5187beeb1207a7ffd484129e5ee830160
+ms.translationtype: HT
+ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
+ms.openlocfilehash: 709d2ccce0f4b9827a8076f683c7e0f74cbdd4ea
 ms.contentlocale: de-de
-ms.lasthandoff: 06/24/2017
+ms.lasthandoff: 07/25/2017
 
 ---
 
@@ -30,7 +30,7 @@ Die folgende Tabelle enthält Links zu Azure CLI-Beispielskripts für Azure Cosm
 | |  |
 |---|---|
 |**Erstellen von Konten, Datenbanken und Containern für Azure Cosmos DB**||
-|[Erstellen von Diagrammen oder Tabellen-API-Konten für DocumentDB](scripts/create-database-account-collections-cli.md?toc=%2fcli%2fazure%2ftoc.json)| Erstellt ein Konto, eine Datenbank und einen Container für eine einzige API von Azure Cosmos DB für die Verwendung mit DocumentDB, Diagrammen oder Tabellen-APIs. |
+|[Erstellen eines Kontos für DocumentDB-, Diagramm- oder Tabellen-APIs](scripts/create-database-account-collections-cli.md?toc=%2fcli%2fazure%2ftoc.json)| Erstellt ein Konto, eine Datenbank und einen Container für eine einzige API von Azure Cosmos DB für die Verwendung mit DocumentDB, Diagrammen oder Tabellen-APIs. |
 | [Erstellen eines Kontos für die MongoDB-API](scripts/create-mongodb-database-account-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Erstellen eines Kontos, einer Datenbank und eines Containers für eine einzige MongoDB-API von Azure Cosmos DB |
 |**Skalieren von Azure Cosmos DB**||
 | [Skalieren des Containerdurchsatzes](scripts/scale-collection-throughput-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Ändern des in einem Container bereitgestellten Durchsatzes|

@@ -15,15 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 04/25/2017
 ms.author: aedwin
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
-ms.openlocfilehash: 9f084dce3f01466aaa0e4c32d339c925d9faccd3
+ms.translationtype: HT
+ms.sourcegitcommit: 6e76ac40e9da2754de1d1aa50af3cd4e04c067fe
+ms.openlocfilehash: 5539623f7ae35e14b6dafe6fdf9efe4bcaba4fd3
 ms.contentlocale: de-de
-ms.lasthandoff: 05/03/2017
-
+ms.lasthandoff: 07/31/2017
 
 ---
-# <a name="reporting-apis-for-enterprise-customers---marketplace-charges-preview"></a>Berichterstellungs-APIs für Unternehmenskunden – Marketplace-Gebühren (Vorschau)
+# <a name="reporting-apis-for-enterprise-customers---marketplace-store-charge"></a>Berichterstellungs-APIs für Unternehmenskunden – Marketplace Store-Gebühren
 
 Die API für Marketplace Store-Gebühren gibt die Aufschlüsselung der nutzungsbasierten Marketplace-Gebühren nach Tag für den angegebenen Abrechnungszeitraum oder die Start- und Enddaten zurück (einmalige Gebühren sind nicht enthalten).
 
@@ -32,9 +31,13 @@ Allgemeine Headereigenschaften, die hinzugefügt werden müssen, werden [hier](b
 
 |Methode | Anforderungs-URI|
 |-|-|
-|GET|https://consumption.azure.com/v1/enrollments/{enrollmentNumber}/marketplacecharges|
-|GET|https://consumption.azure.com/v1/enrollments/{enrollmentNumber}/billingPeriods/{billingPeriod}/marketplacecharges|
-|GET|https://consumption.azure.com/v1/enrollments/{enrollmentNumber}/marketplacechargesbycustomdate?startTime=2017-01-01&endTime=2017-01-10|
+|GET|https://consumption.azure.com/v2/enrollments/{enrollmentNumber}/marketplacecharges|
+|GET|https://consumption.azure.com/v2/enrollments/{enrollmentNumber}/billingPeriods/{billingPeriod}/marketplacecharges|
+|GET|https://consumption.azure.com/v2/enrollments/{enrollmentNumber}/marketplacechargesbycustomdate?startTime=2017-01-01&endTime=2017-01-10|
+
+> [!Note]
+> Ersetzen Sie in der obigen URL v2 durch v1, um die Vorschauversion der API zu verwenden.
+>
 
 ## <a name="response"></a>Antwort
  
@@ -100,6 +103,7 @@ Allgemeine Headereigenschaften, die hinzugefügt werden müssen, werden [hier](b
 |extendedCost|Decimal|Geschätzte Gebühren auf Basis der verbrauchten Menge und den erweiterten Kosten|
 <br/>
 ## <a name="see-also"></a>Weitere Informationen
+
 * [API für Abrechnungszeiträume](billing-enterprise-api-billing-periods.md)
 
 * [API für Verwendungsdetails](billing-enterprise-api-usage-detail.md) 

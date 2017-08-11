@@ -14,16 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
-ms.openlocfilehash: cf2a063acb2a36af2ff71f45159b2e23c9971b32
+ms.translationtype: HT
+ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
+ms.openlocfilehash: f9742efbdf2b74d3ace82d03af6e91122f5eb037
 ms.contentlocale: de-de
-ms.lasthandoff: 05/09/2017
-
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Verwenden von Azure API Management mit virtuellen Netzwerken
-Mit Azure Virtual Networks (VNets) können Sie alle Ihre Azure-Ressourcen in einem Netzwerk platzieren, das nicht über das Internet geroutet werden kann, und zu dem Sie den Zugang kontrollieren. Diese Netzwerke können dann mit verschiedenen VPN-Technologien mit Ihren lokalen Netzwerken verbunden werden. Beginnen Sie mit dem folgenden Thema, um weitere Informationen zu Azure Virtual Networks zu erhalten: [Virtuelle Netzwerke](../virtual-network/virtual-networks-overview.md).
+Mit Azure Virtual Networks (VNets) können Sie alle Ihre Azure-Ressourcen in einem Netzwerk platzieren, das nicht über das Internet geroutet werden kann, und zu dem Sie den Zugang kontrollieren. Diese Netzwerke können dann durch verschiedene VPN-Technologien mit Ihren lokalen Netzwerken verbunden werden. Beginnen Sie mit dem folgenden Thema, um weitere Informationen zu Azure Virtual Networks zu erhalten: [Virtuelle Netzwerke](../virtual-network/virtual-networks-overview.md).
 
 Azure API Management kann im virtuellen Netzwerk (VNET) bereitgestellt werden, damit der Dienst auf Back-End-Dienste im Netzwerk zugreifen kann. Das Entwicklerportal und das API-Gateway können so konfiguriert werden, dass darauf entweder über das Internet oder nur vom virtuellen Netzwerk aus zugegriffen werden kann.
 
@@ -94,7 +93,7 @@ Es folgt eine Liste gängiger Konfigurationsprobleme, die beim Bereitstellen des
 * **Benutzerdefiniertes Setup des DNS-Servers**: Der API Management-Dienst hängt von mehreren Azure-Diensten ab. Wenn API Management in einem VNet mit einem benutzerdefiniertem DNS-Server gehostet wird, muss es die Hostnamen dieser Azure-Dienste auflösen können. Orientieren Sie sich beim benutzerdefinierten DNS-Setup an [diesen](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-using-your-own-dns-server) Anweisungen. Sehen Sie sich zur Bezugnahme die nachstehende Tabelle mit den Ports und anderen Netzwerkanforderungen an.
 
 > [!IMPORTANT]
-> Wenn Sie (einen) benutzerdefinierte DNS-Server für das VNET verwenden, wird empfohlen, diesen **vor** dem Bereitstellen eines API Management-Diensts einzurichten. Andernfalls müssen Sie den API Management-Dienst jedes Mal aktualisieren, wenn Sie den/die DNS-Server durch Ausführen der [Operation „Netzwerkkonfiguration anwenden“](https://docs.microsoft.com/en-us/rest/api/apimanagement/apimanagementservices#ApiManagementServices_ApplyNetworkConfigurationUpdates) ändern.
+> Wenn Sie (einen) benutzerdefinierte DNS-Server für das VNET verwenden, wird empfohlen, diesen **vor** dem Bereitstellen eines API Management-Diensts einzurichten. Andernfalls müssen Sie den API Management-Dienst jedes Mal aktualisieren, wenn Sie den/die DNS-Server durch Ausführen der [Operation „Netzwerkkonfiguration anwenden“](https://docs.microsoft.com/en-us/rest/api/apimanagement/apimanagementservice#ApiManagementService_ApplyNetworkConfigurationUpdates) ändern.
 
 * **Für API Management erforderliche Ports**: Ein- und ausgehender Datenverkehr im Subnetz, in dem API Management bereitgestellt ist, kann mithilfe einer [Netzwerksicherheitsgruppe][Network Security Group] gesteuert werden. Wenn diese Ports nicht verfügbar sind, funktioniert API Management möglicherweise nicht ordnungsgemäß und kann möglicherweise nicht mehr aufgerufen werden. Eine bestehende Sperre für mindestens einen dieser Ports ist eine weitere gängige Fehlkonfiguration, die beim Verwenden von API Management in einem VNet auftritt.
 
@@ -113,7 +112,9 @@ Beim Hosten einer API Management-Dienstinstanz in einem VNET werden die in der f
 | */445 |Ausgehend |TCP |Abhängigkeit von Azure File Share für GIT |VIRTUAL_NETWORK/INTERNET |Extern & Intern |
 | * / * | Eingehend |TCP |Lastenausgleich von Azure-Infrastruktur | AZURE_LOAD_BALANCER/VIRTUAL_NETWORK |Extern & Intern |
 
-* **SSL-Funktionalität**: Zum Aktivieren der Erstellung und Überprüfung von SSL-Zertifikatketten benötigt der API Management-Dienst eine ausgehende Netzwerkverbindung mit ocsp.msocsp.com, mscrl.microsoft.com und crl.microsoft.com.
+* **SSL-Funktionalität**: Zum Aktivieren der Erstellung und Überprüfung von SSL-Zertifikatketten benötigt der API Management-Dienst eine ausgehende Netzwerkverbindung mit ocsp.msocsp.com, mscrl.microsoft.com und crl.microsoft.com. Diese Abhängigkeit ist nicht erforderlich, wenn Zertifikate, die Sie in API Management hochladen, die vollständige Kette zum Stamm der Zertifizierungsstelle enthalten.
+
+* **DNS-Zugriff:** Ausgehender Zugriff über Port 53 ist für die Kommunikation mit DNS-Servern erforderlich. Wenn ein benutzerdefinierter DNS-Server am anderen Ende eines VPN-Gateways vorhanden ist, muss der DNS-Server über das Subnetz, in der sich API Management befindet, erreichbar sein.
 
 * **Metriken und Systemüberwachung**: ausgehende Netzwerkverbindung zu Azure Monitoring-Endpunkten, die zu den folgenden Domänen auflösen: global.metrics.nsatc.net, shoebox2.metrics.nsatc.net, prod3.metrics.nsatc.net.
 
@@ -125,6 +126,10 @@ Beim Hosten einer API Management-Dienstinstanz in einem VNET werden die in der f
 
 >[!WARNING]  
 >Azure API Management wird nicht mit ExpressRoute-Konfigurationen unterstützt, die **fälschlicherweise Routen „über Kreuz“ vom öffentlichen Peeringpfad zum privaten Peeringpfad ankündigen**. ExpressRoute-Konfigurationen, für die öffentliches Peering konfiguriert ist, erhalten Routenankündigungen von Microsoft für zahlreiche Microsoft Azure-IP-Adressbereiche. Wenn diese Adressbereiche fälschlicherweise „über Kreuz“ im privaten Peeringpfad angekündigt werden, führt dies dazu, dass alle ausgehenden Netzwerkpakete aus dem Subnetz des Azure API Management-Diensts fälschlicherweise zwangsweise zur lokalen Netzwerkinfrastruktur eines Kunden getunnelt werden. Dieser Netzwerkdatenfluss unterbricht Azure API Management. Die Lösung für dieses Problem besteht darin, „Über-Kreuz-Ankündigungen“ von Routen vom öffentlichen Peeringpfad zum privaten Peeringpfad zu verhindern.
+
+
+## <a name="troubleshooting"> </a>Problembehandlung
+Wenn Sie Änderungen an Ihrem Netzwerk vornehmen, überprüfen Sie mithilfe der [NetworkStatus-API](https://docs.microsoft.com/en-us/rest/api/apimanagement/networkstatus), ob der API Management-Dienst weiterhin Zugriff auf wichtige Ressourcen hat, von denen er abhängig ist. Der Konnektivitätsstatus sollte alle 15 Minuten aktualisiert werden.
 
 ## <a name="limitations"> </a>Einschränkungen
 * Ein Subnetz, das API Management-Instanzen enthält, kann keine anderen Azure-Ressourcentypen enthalten.

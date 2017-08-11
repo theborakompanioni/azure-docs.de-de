@@ -14,14 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/05/2017
+ms.date: 07/31/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 9adfd92b72eb0ecd5b4811c525d4b6ff6609f60f
+ms.translationtype: HT
+ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
+ms.openlocfilehash: 80df3da4d62feb814ea2dd97c96e57954093c5c5
 ms.contentlocale: de-de
-ms.lasthandoff: 07/08/2017
-
+ms.lasthandoff: 08/02/2017
 
 ---
 # <a name="use-the-hive-view-with-hadoop-in-hdinsight"></a>Verwenden der Hive-Ansicht mit Hadoop in HDInsight
@@ -44,32 +43,24 @@ In diesem Artikel wird das folgende Thema erläutert: Ausführen von Hive-Abfrag
 
 Ambari-Ansichten sind im Azure-Portal verfügbar. Wählen Sie Ihren HDInsight-Cluster, und wählen Sie dann im Abschnitt **Quicklinks** die Option **Ambari-Ansichten**.
 
-![Quicklinks-Abschnitt](./media/hdinsight-hadoop-use-hive-ambari-view/quicklinks.png)
+![Abschnitt „Direktlinks“ des Portals](./media/hdinsight-hadoop-use-hive-ambari-view/quicklinks.png)
 
-Sie können auch direkt zu Ambari navigieren, indem Sie in einem Webbrowser „https://CLUSTERNAME.azurehdinsight.net“ aufrufen. Ersetzen Sie **CLUSTERNAME** durch den Namen Ihres HDInsight-Clusters. Klicken Sie im Menü auf die Gruppe von Quadraten. Wählen Sie zum Öffnen der Ansicht den Eintrag **Hive-Ansicht**.
+Wählen Sie aus der Liste der Ansichten die __Hive View__ (Hive-Ansicht) aus.
 
-![Ambari-Ansichten auswählen](./media/hdinsight-hadoop-use-hive-ambari-view/select-hive-view.png).
+![Die ausgewählte Hive-Ansicht](./media/hdinsight-hadoop-use-hive-ambari-view/select-hive-view.png)
 
 > [!NOTE]
 > Beim Zugriff auf Ambari werden Sie aufgefordert, sich bei der Website zu authentifizieren. Geben Sie den Administratorkontonamen (standardmäßig `admin`) und das Kennwort ein, den bzw. das Sie beim Erstellen des Clusters verwendet haben.
 
 Eine Seite ähnlich der folgenden Abbildung wird angezeigt:
 
-![Bild der Hive-Ansichtenseite, die einen Abfrage-Editor-Abschnitt enthält](./media/hdinsight-hadoop-use-hive-ambari-view/ambari-hive-view.png)
+![Abbildung des Arbeitsblatts „Abfragen“ für die Hive-Ansicht](./media/hdinsight-hadoop-use-hive-ambari-view/ambari-hive-view.png)
 
-## <a name="view-tables"></a>Anzeigen von Tabellen
-
-Wählen Sie im Abschnitt **Datenbank-Explorer** der Seite auf der Registerkarte **Datenbanken** den Eintrag **Standard** aus. Eine Liste mit den Tabellen in der Standarddatenbank wird angezeigt. HDInsight enthält eine Tabelle namens **hivesampletable**.
-
-![Datenbank-Explorer mit erweiterter Standarddatenbank](./media/hdinsight-hadoop-use-hive-ambari-view/database-explorer.png)
-
-Wenn mit den Schritten in diesem Dokument neue Tabellen hinzugefügt werden, können Sie das Symbol „Aktualisieren“ oben rechts im Datenbank-Explorer verwenden, um die Liste zu aktualisieren.
-
-## <a name="hivequery"></a>Abfrage-Editor
+## <a name="hivequery"></a>Ausführen einer Abfrage
 
 Um eine Hive-Abfrage auszuführen, verwenden Sie die folgenden Schritte aus der Hive-Ansicht.
 
-1. Fügen Sie im Abschnitt **Abfrage-Editor** der Seite die folgenden HiveQL-Anweisungen in das Arbeitsblatt ein:
+1. Kopieren Sie folgende HiveQL-Anweisungen aus der Registerkarte __Query__ (Abfrage) in das Arbeitsblatt:
 
     ```hiveql
     DROP TABLE log4jLogs;
@@ -95,12 +86,12 @@ Um eine Hive-Abfrage auszuführen, verwenden Sie die folgenden Schritte aus der 
      > [!NOTE]
      > Externe Tabellen sollten Sie verwenden, wenn Sie erwarten, dass die zugrunde liegenden Daten aus einer externen Quelle aktualisiert werden. Das könnte z.B. ein automatisierter Datenupload oder ein anderer MapReduce-Vorgang sein. Durch das Löschen einer externen Tabelle werden *nicht* die Daten, sondern nur die Tabellendefinitionen gelöscht.
 
-2. Starten Sie die Abfrage mit der Schaltfläche **Ausführen** am unteren Rand des Abfrage-Editors. Sie wird nun orange angezeigt, und der Text ändert sich in **Ausführung beenden**. Der Abschnitt **Abfrageprozessergebnisse** sollte unterhalb des Abfrage-Editors angezeigt werden und Informationen über den Auftrag enthalten.
+    > [!IMPORTANT]
+    > Belassen Sie die Auswahl der __Database__ (Datenbank) bei __default__ (Standard). Die Beispiele in diesem Dokument verwenden die Standarddatenbank, die in HDInsight enthalten ist.
 
-   > [!IMPORTANT]
-   > In einigen Browsern werden das Protokoll oder die Ergebnisdaten möglicherweise nicht korrekt aktualisiert. Wenn Sie einen Auftrag ausführen und eine scheinbar endlose Ausführung ohne Aktualisierung des Protokolls oder Rückgabe von Ergebnissen feststellen, sollten Sie es noch einmal mit Mozilla Firefox oder Google Chrome versuchen.
+2. Klicken Sie auf die Schaltfläche **Execute** (Ausführen) unter dem Arbeitsblatt, um die Abfrage zu starten. Diese wird nun orange angezeigt, und der Text ändert sich in **Stop** (Beenden).
 
-3. Nach Abschluss der Abfrage werden im Abschnitt **Abfrageprozessergebnisse** die Ergebnisse des Vorgangs angezeigt. Die Schaltfläche **Ausführung beenden** wird auch wieder durch die grüne Schaltfläche **Ausführen** ersetzt, wenn die Abfrage ausgeführt ist. Die Registerkarte **Ergebnisse** sollte folgende Informationen enthalten:
+3. Nach Abschluss der Abfrage werden in der Registerkarte **Results** (Ergebnisse) die Ergebnisse des Vorgangs angezeigt. Der folgende Text ist das Ergebnis der Abfrage:
 
         sev       cnt
         [ERROR]   3
@@ -112,7 +103,7 @@ Um eine Hive-Abfrage auszuführen, verwenden Sie die folgenden Schritte aus der 
 
 4. Wählen Sie die ersten vier Zeilen dieser Abfrage aus, und klicken Sie auf **Ausführen**. Beachten Sie, dass keine Ergebnisse vorliegen, wenn der Auftrag abgeschlossen ist. Wenn ein Teil der Abfrage ausgewählt ist, werden bei Verwendung der Schaltfläche **Ausführen** nur die ausgewählten Anweisungen ausgeführt. In diesem Fall enthielt die Auswahl nicht die letzte Anweisung, die Zeilen aus der Tabelle abruft. Wenn Sie nur diese Zeile auswählen und **Ausführen** verwenden, sollten die erwarteten Ergebnisse angezeigt werden.
 
-5. Um ein Arbeitsblatt hinzuzufügen, verwenden Sie die Schaltfläche **Neues Arbeitsblatt** am unteren Rand des **Abfrage-Editors**. Geben Sie in das neue Arbeitsblatt die folgenden HiveQL-Anweisungen ein:
+5. Um ein Arbeitsblatt hinzuzufügen, klicken Sie auf die Schaltfläche **New Worksheet** (Neues Arbeitsblatt) am unteren Rand des **Query Editor** (Abfrage-Editors). Geben Sie in das neue Arbeitsblatt die folgenden HiveQL-Anweisungen ein:
 
     ```hiveql
     CREATE TABLE IF NOT EXISTS errorLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) STORED AS ORC;
@@ -129,78 +120,46 @@ Um eine Hive-Abfrage auszuführen, verwenden Sie die folgenden Schritte aus der 
 
      Verwenden Sie die Schaltfläche **Ausführen**, um diese Abfrage auszuführen. Die Registerkarte **Ergebnisse** enthält keine Informationen, wenn die Abfrage keine Zeilen zurückgibt. Sobald die Abfrage abgeschlossen ist, sollte der Status **ERFOLGREICH** angezeigt werden.
 
-### <a name="hive-settings"></a>Hive-Einstellungen
-
-Wählen Sie rechts vom Editor das Symbol **Einstellungen**.
-
-![Symbol „Einstellungen“ für Hive-Ansicht](./media/hdinsight-hadoop-use-hive-ambari-view/hive-view-settings-icon.png)
-
-Diese Einstellungen können dazu verwendet werden, verschiedene Hive-Einstellungen zu ändern. Beispielsweise kann das Ausführungsmodul für Hive von Tez (Standard) auf MapReduce geändert werden.
-
-### <a name="visualization"></a>Visualisierung
-
-Wählen Sie rechts vom Editor das Symbol __Visuelle Erläuterung__.
-
-![Symbol „Visuelle Erläuterung“ für Hive-Ansicht](./media/hdinsight-hadoop-use-hive-ambari-view/hive-view-visualization-icon.png)
-
-Die Benutzeroberfläche für visuelle Erläuterungen wird angezeigt, wo Sie visuelle Erläuterungen der von der Abfrage zurückgegebenen Daten erstellen können. Die folgenden Bilder sind ein Beispiel für eine visuelle Erläuterung mit Daten aus der in HDInsight enthaltenen `hivesampletable`:
-
-![Beispiel einer visuellen Erläuterung](./media/hdinsight-hadoop-use-hive-ambari-view/hive-view-visualization.png)
-
 ### <a name="visual-explain"></a>Visuelle Erläuterung
 
-Wählen Sie rechts vom Editor das Symbol **Visuelle Erläuterung**.
-
-![Symbol „Visuelle Erläuterung“ für Hive-Ansicht](./media/hdinsight-hadoop-use-hive-ambari-view/hive-view-visual-explain-icon.png)
+Klicken Sie auf die Registerkarte **Visual Explain** (Visuelle Erläuterung) unter dem Arbeitsblatt, um eine Visualisierung des Abfrageplans anzuzeigen.
 
 Die Ansicht **Visuelle Erläuterung** der Abfrage kann das Verständnis des Ablaufs komplexer Abfragen erleichtern. Sie können eine Textentsprechung dieser Ansicht mit der Schaltfläche **Erklären** im Abfrage-Editor anzeigen.
 
-![Bild zur visuellen Erläuterung](./media/hdinsight-hadoop-use-hive-ambari-view/visualexplain.png)
+### <a name="tez-ui"></a>Tez-Benutzeroberfläche
 
-### <a name="tez"></a>Tez
+Klicken Sie auf die Registerkarte **Tez** unter dem Arbeitsblatt, um die Tez-Benutzeroberfläche für die Abfrage anzuzeigen.
 
-Wählen Sie rechts vom Editor das Symbol **Tez**.
-
-![Tez-Symbol für Hive-Ansicht](./media/hdinsight-hadoop-use-hive-ambari-view/hive-view-tez-icon.png)
+> [!IMPORTANT]
+> Tez wird nicht für die Auflösung aller Abfragen verwendet. Viele Abfragen können ohne Tez aufgelöst werden. 
 
 Wenn die Abfrage mit Tez aufgelöst wurde, wird der Directed Acyclic Graph (DAG) angezeigt. Wenn Sie den DAG für Abfragen anzeigen möchten, die Sie in der Vergangenheit ausgeführt haben, oder den Tez-Prozess debuggen möchten, verwenden Sie stattdessen die [Tez-Ansicht](hdinsight-debug-ambari-tez-view.md) .
 
-### <a name="notifications"></a>Benachrichtigungen
+## <a name="view-job-history"></a>Anzeige des Auftragsverlaufs
 
-Wählen Sie rechts vom Editor das Symbol **Benachrichtigungen** aus.
+Die Registerkarte __Jobs__ (Aufträge) zeigt einen Verlauf der Hive-Abfragen an.
 
-![Benachrichtigungensymbol für Hive-Ansicht](./media/hdinsight-hadoop-use-hive-ambari-view/hive-view-notifications-icon.png)
+![Abbildung des Auftragsverlaufs](./media/hdinsight-hadoop-use-hive-ambari-view/job-history.png)
 
-Benachrichtigungen sind Nachrichten, die beim Ausführen von Abfragen generiert werden. Beispielsweise erhalten Sie eine Benachrichtigung, wenn eine Abfrage gesendet wird oder ein Fehler auftritt.
+## <a name="database-tables"></a>Datenbanktabellen
+
+Sie können die Registerkarte __Tables__ (Tabellen) verwenden, um innerhalb einer Hive-Datenbank mit Tabellen zu arbeiten.
+
+![Abbildung der Registerkarte „Tabellen“](./media/hdinsight-hadoop-use-hive-ambari-view/tables.png)
 
 ## <a name="saved-queries"></a>Gespeicherte Abfragen
 
-1. Erstellen Sie im Abfrage-Editor ein Arbeitsblatt, und geben Sie die folgende Abfrage ein:
+In der Registerkarte „Abfragen“ können Sie optional auch Abfragen speichern. Sobald eine Abfrage gespeichert wurde, können Sie diese über die Registerkarte __Saved Queries__ (Gespeicherte Abfragen) erneut verwenden.
 
-    ```hiveql
-    SELECT * from errorLogs;
-    ```
+![Abbildung der Registerkarte „Gespeicherte Abfragen“](./media/hdinsight-hadoop-use-hive-ambari-view/saved-queries.png)
 
-    Führen Sie die Abfrage aus, um zu überprüfen, ob sie funktioniert. Die Ergebnisse entsprechen etwa folgendem Beispiel:
+## <a name="user-defined-functions"></a>Benutzerdefinierte Funktionen
 
-        errorlogs.t1     errorlogs.t2     errorlogs.t3     errorlogs.t4     errorlogs.t5     errorlogs.t6     errorlogs.t7
-        2012-02-03     18:35:34     SampleClass0     [ERROR]     incorrect     id     
-        2012-02-03     18:55:54     SampleClass1     [ERROR]     incorrect     id     
-        2012-02-03     19:25:27     SampleClass4     [ERROR]     incorrect     id
-
-2. Klicken Sie unten im Editor auf die Schaltfläche **Speichern unter**. Geben Sie der Abfrage den Namen **Errorlogs**, und wählen Sie **OK**. Der Name des Arbeitsblatts ändert sich in **Errorlogs**.
-
-3. Wählen Sie oben auf der Seite mit der Hive-Ansicht die Registerkarte **Gespeicherte Abfragen** aus. **Errorlogs** wird jetzt als gespeicherte Abfrage aufgeführt. Sie bleibt in dieser Liste enthalten, bis Sie sie entfernen. Bei Auswahl des Namens wird die Abfrage im Abfrage-Editor geöffnet.
-
-## <a name="query-history"></a>Abfrageverlauf
-
-Mit der Schaltfläche **Verlauf** oben in der Hive-Ansicht können Sie Abfragen anzeigen, die bereits ausgeführt wurden. Verwenden Sie diese Schaltfläche, um eine der Abfragen auszuwählen, die Sie bereits ausgeführt haben. Wenn Sie eine Abfrage auswählen, wird sie im Abfrage-Editor geöffnet.
-
-## <a name="user-defined-functions-udf"></a>Benutzerdefinierte Funktionen (User Defined Functions, UDFs)
-
-Hive kann auch über **benutzerdefinierte Funktionen (UDF)**erweitert werden. Mit einer UDF-Datei können Sie Funktionen oder Logik implementieren, die sich nicht einfach in HiveQL modellieren lässt.
+Hive kann auch über benutzerdefinierte Funktionen (UDF) erweitert werden. Mit einer UDF-Datei können Sie Funktionen oder Logik implementieren, die sich nicht einfach in HiveQL modellieren lässt.
 
 Mit der Registerkarte UDF oben in der Hive-Ansicht können Sie eine Gruppe von UDFs deklarieren und speichern. Diese UDFs können im **Abfrage-Editor** verwendet werden.
+
+![Abbildung der Registerkarte „UDF“](./media/hdinsight-hadoop-use-hive-ambari-view/user-defined-functions.png)
 
 Nachdem Sie der Hive-Ansicht eine benutzerdefinierte Funktion hinzugefügt haben, wird unten im **Abfrage-Editor** die Schaltfläche **UDFs einfügen** angezeigt. Wenn Sie diesen Eintrag wählen, wird eine Dropdownliste mit den UDFs angezeigt, die in der Hive-Ansicht definiert sind. Durch das Auswählen einer UDF werden Ihrer Abfrage HiveQL-Anweisungen hinzugefügt, um die UDF zu aktivieren.
 
@@ -227,6 +186,10 @@ Weitere Informationen zur Verwendung von UDFs mit Hive unter HDInsight finden Si
 
 * [Verwenden von Python mit Hive und Pig in HDInsight](hdinsight-python.md)
 * [How to add a custom Hive UDF to HDInsight (in englischer Sprache)](http://blogs.msdn.com/b/bigdatasupport/archive/2014/01/14/how-to-add-custom-hive-udfs-to-hdinsight.aspx)
+
+## <a name="hive-settings"></a>Hive-Einstellungen
+
+Diese Einstellungen können dazu verwendet werden, verschiedene Hive-Einstellungen zu ändern. Beispielsweise kann das Ausführungsmodul für Hive von Tez (Standard) auf MapReduce geändert werden.
 
 ## <a id="nextsteps"></a>Nächste Schritte
 

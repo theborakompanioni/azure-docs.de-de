@@ -5,21 +5,21 @@ services: multi-factor-authentication
 documentationcenter: 
 author: kgremban
 manager: femila
-editor: yossib
 ms.assetid: 
 ms.service: multi-factor-authentication
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/28/2017
+ms.date: 07/14/2017
 ms.author: kgremban
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
-ms.openlocfilehash: 95c1eb534b4b51db18a2caf46f17a559243ea036
+ms.reviewer: yossib
+ms.custom: it-pro
+ms.translationtype: HT
+ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
+ms.openlocfilehash: 173353d67772c2549aa1b8ec9f2a471bd1c65677
 ms.contentlocale: de-de
-ms.lasthandoff: 05/02/2017
-
+ms.lasthandoff: 07/26/2017
 
 ---
 
@@ -35,11 +35,22 @@ Wenn Fehler in der NPS-Erweiterung für Azure Multi-Factor Authentication auftre
 | **CLIENT_CERT_INSTALL_ERROR** | Möglicherweise gibt es ein Problem damit, wie das Clientzertifikat installiert oder Ihrem Mandanten zugeordnet wurde. Befolgen Sie die Anweisungen unter [Behandeln von Problemen mit der MFA NPS-Erweiterung](multi-factor-authentication-nps-extension.md#troubleshooting), um Clientzertifizierungsprobleme zu untersuchen. |
 | **ESTS_TOKEN_ERROR** | Befolgen Sie die Anweisungen unter [Behandeln von Problemen mit der MFA NPS-Erweiterung](multi-factor-authentication-nps-extension.md#troubleshooting), um Clientzertifizierungs- und ADAL-Tokenprobleme zu untersuchen. |
 | **HTTPS_COMMUNICATION_ERROR** | Der NPS-Server kann keine Antworten von Azure MFA empfangen. Stellen Sie sicher, dass Ihre Firewalls bidirektional für Datenverkehr an und von „https://adnotifications.windowsazure.com“ geöffnet sind. |
-| **HTTP_CONNECT_ERROR** | Überprüfen Sie auf dem Server, auf dem die NPS-Erweiterung ausgeführt wird, ob Sie „https://adnotifications.windowsazure.com“ und „https://login.windows.net/“ erreichen können. Wenn diese Websites nicht geladen werden, beheben Sie Konnektivitätsprobleme auf diesem Server. |
+| **HTTP_CONNECT_ERROR** | Überprüfen Sie auf dem Server, auf dem die NPS-Erweiterung ausgeführt wird, ob Sie https://adnotifications.windowsazure.com und https://login.microsoftonline.com/ erreichen können. Wenn diese Websites nicht geladen werden, beheben Sie Konnektivitätsprobleme auf diesem Server. |
 | **REGISTRY_CONFIG_ERROR** | Ein Schlüssel fehlt in der Registrierung für die Anwendung. Die Ursache kann sein, dass ein [PowerShell-Skript](multi-factor-authentication-nps-extension.md#install-the-nps-extension) nach der Installation nicht ausgeführt wurde. Die Fehlermeldung sollte den fehlenden Schlüssel enthalten. Stellen Sie sicher, dass der Schlüssel unter „HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa“ vorhanden ist. |
 | **REQUEST_FORMAT_ERROR** <br> In der RADIUS-Anforderung fehlt das obligatorische userName\Identifier-Attribut für RADIUS. Stellen Sie sicher, dass NPS RADIUS-Anforderungen empfängt. | Dieser Fehler entsteht normalerweise durch ein Installationsproblem. Die NPS-Erweiterung muss auf NPS-Servern installiert sein, die RADIUS-Anforderungen empfangen können. NPS-Server, die als Abhängigkeiten für Dienste wie RDG und RRAS installiert sind, empfangen keine RADIUS-Anforderungen. Die NPS-Erweiterung funktioniert nicht, wenn sie über solche Installationen installiert wird, und es kommt zu Fehlern, da sie die Details aus der Authentifizierungsanforderung nicht lesen kann. |
-| **REQUEST_MISSING_CODE** | Wenn SMS- oder OATH-Token für die sekundäre Authentifizierungsmethode verwendet werden, muss das Protokoll für die Kennwortverschlüsselung zwischen NPS- und NAS-Servern PAP sein. Die NPS-Erweiterung unterstützt derzeit keine anderen Kennwortverschlüsselungsmethoden.|
+| **REQUEST_MISSING_CODE** | Stellen Sie sicher, dass das Protokoll für die Kennwortverschlüsselung zwischen den NPS- und NAS-Servern die sekundäre Authentifizierungsmethode unterstützt, die Sie verwenden. **PAP** unterstützt alle Authentifizierungsmethoden von Azure MFA in der Cloud: Telefonanruf, unidirektionale Textnachricht, Benachrichtigung über eine mobile App und Überprüfungscode in der mobilen App. **CHAPV2** und **EAP** unterstützt Telefonanruf und Benachrichtigung über eine mobile App. |
 | **USERNAME_CANONICALIZATION_ERROR** | Stellen Sie sicher, dass der Benutzer in Ihrer lokalen Active Directory-Instanz vorhanden ist und dass der NPS-Dienst über Berechtigungen zum Zugriff auf das Verzeichnis verfügt. Wenden Sie sich bei Verwendung von gesamtstrukturübergreifenden Vertrauensstellungen [an den Support](#contact-microsoft-support), um weitere Hilfe zu erhalten. |
+
+
+   
+
+### <a name="alternate-login-id-errors"></a>Alternative Anmelde-ID-Fehler
+
+| Fehlercode | Fehlermeldung | Schritte zur Problembehandlung |
+| ---------- | ------------- | --------------------- |
+| **ALTERNATE_LOGIN_ID_ERROR** | Fehler: userObjectSid lookup failed (Fehler bei der userObjectSid-Suche) | Stellen Sie sicher, dass der Benutzer in Ihrer lokalen Active Directory-Instanz vorhanden ist. Wenden Sie sich bei Verwendung von gesamtstrukturübergreifenden Vertrauensstellungen [an den Support](#contact-microsoft-support), um weitere Hilfe zu erhalten. |
+| **ALTERNATE_LOGIN_ID_ERROR** | Fehler: Alternate LoginId lookup failed (Fehler bei der Suche nach alternativer Anmelde-ID) | Stellen Sie sicher, dass LDAP_ALTERNATE_LOGINID_ATTRIBUTE auf ein [gültiges Active Directory-Attribut](https://msdn.microsoft.com/library/ms675090(v=vs.85).aspx) festgelegt ist. <br><br> Wenn LDAP_FORCE_GLOBAL_CATALOG auf „TRUE“ festgelegt, oder LDAP_LOOKUP_FORESTS mit einem nicht leeren Wert konfiguriert wurde, stellen Sie sicher, dass Sie einen globalen Katalog konfiguriert haben, und dass das AlternateLoginId-Attribut hinzugefügt wurde. <br><br> Wenn LDAP_LOOKUP_FORESTS mit einem nicht leeren Wert konfiguriert wurde, stellen Sie sicher, dass der Wert richtig ist. Wenn mehr als ein Name der Gesamtstruktur vorhanden ist, müssen die Namen durch Semikolons und nicht durch Leerzeichen getrennt werden. <br><br> Wenn diese Schritte das Problem nicht beheben, [wenden Sie sich an den Support](#contact-microsoft-support), um mehr Unterstützung zu erhalten. |
+| **ALTERNATE_LOGIN_ID_ERROR** | Fehler: Alternate LoginId value is empty (Der AlternateLoginId-Wert ist leer) | Stellen Sie sicher, dass das AlternateLoginId-Attribut für den Benutzer konfiguriert ist. |
 
 
 ## <a name="errors-your-users-may-encounter"></a>Fehler, die bei Ihren Benutzern auftreten können

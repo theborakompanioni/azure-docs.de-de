@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 03/28/2017
 ms.author: gwallace
 ms.translationtype: HT
-ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
-ms.openlocfilehash: dbf870ca6e0ab85c96290a93eafd47d4b574dbc7
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: 3a57646922236a10cf51ae3dd86c67c87c6d7f7f
 ms.contentlocale: de-de
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 07/27/2017
 
 ---
 
@@ -36,7 +36,7 @@ Application Gateway unterstützt SSL-Abladung und End-to-End-SSL, Web Applicatio
 
 **F: Was ist der Unterschied zwischen Application Gateway und Azure Load Balancer?**
 
-Application Gateway ist ein Lastenausgleich auf Schicht 7 (Anwendungsschicht). Dies bedeutet, dass Application Gateway nur Webdatenverkehr (HTTP/HTTPS/WebSocket) verarbeitet. Application Gateway unterstützt Funktionen für den Anwendungslastenausgleich wie SSL-Beendigung, cookiebasierte Sitzungsaffinität und Roundrobin für den Lastenausgleich von Datenverkehr. Load Balancer, bewirkt einen Lastenausgleich des Datenverkehrs auf Ebene 4 (TCP/UDP).
+Application Gateway ist ein Lastenausgleich auf Ebene 7, was bedeutet, dass es nur mit Webdatenverkehr (HTTP/HTTPS/WebSocket) funktioniert. Es unterstützt Funktionen wie SSL-Beendigung, cookiebasierte Sitzungsaffinität und Roundrobin für den Lastenausgleich von Datenverkehr. Load Balancer, bewirkt einen Lastenausgleich des Datenverkehrs auf Ebene 4 (TCP/UDP).
 
 **F: Welche Protokolle werden von Application Gateway unterstützt?**
 
@@ -44,11 +44,11 @@ Application Gateway unterstützt HTTP, HTTPS und WebSocket.
 
 **F: Welche Ressourcen werden derzeit als Teil des Back-End-Pools unterstützt?**
 
-Back-End-Pools können Netzwerkkarten, VM-Skalierungsgruppen, öffentliche IP-Adressen, interne IP-Adressen und vollqualifizierte Domänennamen (FQDN) umfassen. Azure-Web-Apps werden derzeit nicht unterstützt. Mitglieder des Application Gateway-Back-End-Pools sind nicht an eine Verfügbarkeitsgruppe gebunden. Mitglieder von Back-End-Pools können auf mehrere Cluster und Rechenzentren verteilt sein oder sich außerhalb von Azure befinden, sofern sie über IP-Konnektivität verfügen.
+Back-End-Pools können Netzwerkkarten, VM-Skalierungsgruppen, öffentliche IP-Adressen, interne IP-Adressen, vollqualifizierte Domänennamen (Fully Qualified Domain Names, FQDN) und Back-Ends mit mehreren Mandanten wie Azure-Web-Apps umfassen. Mitglieder des Application Gateway-Back-End-Pools sind nicht an eine Verfügbarkeitsgruppe gebunden. Mitglieder von Back-End-Pools können auf mehrere Cluster und Rechenzentren verteilt sein oder sich außerhalb von Azure befinden, sofern sie über IP-Konnektivität verfügen.
 
 **F: In welchen Regionen ist der Dienst verfügbar?**
 
-Application Gateway ist in allen Regionen des öffentlichen Azure verfügbar. Er ist auch in [Azure China](https://www.azure.cn/) und [Azure Government](https://azure.microsoft.com/en-us/overview/clouds/government/) verfügbar.
+Application Gateway ist in allen Regionen des globalen Azure verfügbar. Er ist auch in [Azure China](https://www.azure.cn/) und [Azure Government](https://azure.microsoft.com/en-us/overview/clouds/government/) verfügbar.
 
 **F: Ist dies eine dedizierte Bereitstellung für mein Abonnement, oder wird sie zur gemeinsamen Nutzung für Kunden freigegeben?**
 
@@ -106,7 +106,7 @@ Netzwerksicherheitsgruppen werden im Application Gateway-Subnetz mit folgenden E
 
 * Ausnahmen müssen für eingehenden Datenverkehr an den Ports 65503-65534 festgelegt werden, damit die Back-End-Integrität nicht beeinträchtigt wird.
 
-* Die ausgehende Internetverbindung darf nicht blockiert sein.
+* Die ausgehende Internetverbindung kann nicht blockiert sein.
 
 * Datenverkehr vom AzureLoadBalancer-Tag muss zulässig sein.
 
@@ -136,7 +136,7 @@ Benutzerdefinierte Überprüfungen unterstützen keine Platzhalter/regulären Au
 
 **F: Wie werden Regeln verarbeitet?**
 
-Regeln werden gemäß der Konfigurationsreihenfolge verarbeitet. Es empfiehlt sich, Regeln für mehrere Standorte vor einfachen Regeln zu konfigurieren, um zu vermeiden, dass Datenverkehr an das falsche Back-End weitergeleitet wird, weil die einfache Regel auf der Grundlage des Ports zu dem Datenverkehr passen würde, bevor die Regel für mehrere Standorte ausgewertet wurde.
+Regeln werden gemäß der Konfigurationsreihenfolge verarbeitet. Es wird empfohlen, Regeln für mehrere Standorte vor einfachen Regeln zu konfigurieren. Indem Listener mit mehreren Standorten zuerst konfiguriert werden, ist es weniger wahrscheinlich, dass Datenverkehr an das ungeeignete Back-End weitergeleitet wird. Dieses Routingproblem kann auftreten, wenn die einfache Regel auf der Grundlage des Ports dem Datenverkehr zugeordnet wird, bevor die Regel für mehrere Standorte ausgewertet wird.
 
 **F: Was ist im Feld „Host“ für benutzerdefinierte Überprüfungen angegeben?**
 
@@ -144,7 +144,7 @@ Das Feld „Host“ gibt den Namen an, an den die Überprüfung zu senden ist. N
 
 **F: Kann ich für den Application Gateway-Zugriff einige wenige Quell-IPs in eine Positivliste aufnehmen?**
 
-Dies können Sie mithilfe von Netzwerksicherheitsgruppen im Application Gateway-Subnetz erreichen. Die folgenden Einschränkungen sollten für das Subnetz festgelegt werden (nach ihrer Priorität geordnet):
+Dieses Szenario können Sie mithilfe von Netzwerksicherheitsgruppen im Application Gateway-Subnetz erreichen. Die folgenden Einschränkungen sollten für das Subnetz festgelegt werden (nach ihrer Priorität geordnet):
 
 * Zulassen des eingehenden Datenverkehrs von Quell-IP/-IP-Adressbereich.
 
@@ -160,7 +160,7 @@ Dies können Sie mithilfe von Netzwerksicherheitsgruppen im Application Gateway-
 
 **F: Wie unterstützt Application Gateway hohe Verfügbarkeit und Skalierbarkeit?**
 
-Application Gateway unterstützt Szenarien mit hoher Verfügbarkeit, wenn mehrere Instanzen bereitgestellt werden. Azure verteilt diese Instanzen auf Update- und Fehlerdomänen, um sicherzustellen, dass nicht alle Instanzen gleichzeitig ausfallen. Application Gateway unterstützt Skalierbarkeit durch Hinzufügen mehrerer Instanzen des gleichen Gateways, um die Last zu teilen.
+Application Gateway unterstützt Szenarios mit hoher Verfügbarkeit, wenn zwei oder mehr Instanzen bereitgestellt werden. Azure verteilt diese Instanzen auf Update- und Fehlerdomänen, um sicherzustellen, dass nicht alle Instanzen gleichzeitig ausfallen. Application Gateway unterstützt Skalierbarkeit durch Hinzufügen mehrerer Instanzen des gleichen Gateways, um die Last zu teilen.
 
 **F: Wie erziele ich mit Application Gateway ein rechenzentrumsübergreifendes DR-Szenario?**
 
@@ -176,7 +176,7 @@ Es gibt keine Ausfallzeiten, da Instanzen auf Upgrade- und Fehlerdomänen vertei
 
 **F: Kann ich Instanzgröße ohne Unterbrechung von mittel zu groß ändern?**
 
-Ja, Azure verteilt Instanzen auf Update- und Fehlerdomänen, um sicherzustellen, dass nicht alle Instanzen gleichzeitig ausfallen. Application Gateway unterstützt Skalierbarkeit durch Hinzufügen mehrerer Instanzen des gleichen Gateways, um die Last zu teilen.
+Ja, Azure verteilt Instanzen auf Update- und Fehlerdomänen, um sicherzustellen, dass nicht alle Instanzen gleichzeitig ausfallen. Application Gateway unterstützt Skalierung durch Hinzufügen mehrerer Instanzen desselben Gateways, um die Last zu teilen.
 
 ## <a name="ssl-configuration"></a>SSL-Konfiguration
 
@@ -276,7 +276,7 @@ WAF unterstützt derzeit CRS [2.2.9](application-gateway-crs-rulegroups-rules.md
 
 * Verhindern von Bots, Crawlern und Scannern
 
-* Erkennung häufiger Fehler bei der Anwendungskonfiguration (d.h. Apache, IIS usw.)
+* Erkennung häufiger Fehler bei der Anwendungskonfiguration (d. h. Apache, IIS usw.)
 
 **F: Unterstützt WAF auch DDoS-Verhinderung?**
 
@@ -286,11 +286,11 @@ Nein, WAF bietet keinen DDoS-Schutz.
 
 **F: Welche Arten von Protokollen sind bei Application Gateway verfügbar?**
 
-Für Application Gateway sind drei Protokolle verfügbar. Weitere Informationen zu diesen Protokollen und anderen Diagnosefunktionen finden Sie unter [Back-End-Integrität, Diagnoseprotokollierung und Metriken für Application Gateway](application-gateway-diagnostics.md).
+Für Application Gateway sind drei Protokolle verfügbar. Weitere Informationen zu diesen Protokollen und anderen Diagnosefunktionen finden Sie unter [Back-End-Integrität, Diagnoseprotokolle und Metriken für Application Gateway](application-gateway-diagnostics.md).
 
-- **ApplicationGatewayAccessLog**: Dieses Protokoll enthält jede an das Application Gateway-Front-End gesendete Anforderung. Die Daten enthalten die IP des Aufrufers, die angeforderte URL, die Antwortlatenz, den Rückgabecode sowie ein- und ausgehenden Bytes. Das Zugriffsprotokoll wird alle 300 Sekunden erstellt. Dieses Protokoll enthält einen Datensatz pro Instanz von Application Gateway.
-- **ApplicationGatewayPerformanceLog**: In diesem Protokoll werden Leistungsinformationen pro Instanz erfasst, z.B. insgesamt bereitgestellte Anforderungen, Durchsatz in Byte, Anzahl von Anforderungen mit Fehlern, Anzahl von fehlerfreien und fehlerhaften Back-End-Instanzen.
-- **ApplicationGatewayFirewallLog**: Dieses Protokoll enthält Anforderungen, die entweder über den Erkennungs- oder über den Schutzmodus eines Anwendungsgateways protokolliert werden, das mit Web Application Firewall konfiguriert ist.
+- **ApplicationGatewayAccessLog**: Das Zugriffsprotokoll enthält jede an das Application Gateway-Front-End gesendete Anforderung. Die Daten enthalten die IP des Aufrufers, die angeforderte URL, die Antwortlatenz, den Rückgabecode sowie ein- und ausgehenden Bytes. Das Zugriffsprotokoll wird alle 300 Sekunden erstellt. Dieses Protokoll enthält einen Datensatz pro Instanz von Application Gateway.
+- **ApplicationGatewayPerformanceLog**: In diesem Leistungsprotokoll werden Leistungsinformationen pro Instanz erfasst, z.B. insgesamt bereitgestellte Anforderungen, Durchsatz in Byte, Anzahl von Anforderungen mit Fehlern, Anzahl von fehlerfreien und fehlerhaften Back-End-Instanzen.
+- **ApplicationGatewayFirewallLog**: Dieses Firewallprotokoll enthält Anforderungen, die entweder über den Erkennungs- oder über den Schutzmodus eines Anwendungsgateways protokolliert werden, das mit Web Application Firewall konfiguriert ist.
 
 **F: Wie erkenne ich, dass die Mitglieder meines Back-End-Pools fehlerfrei sind?**
 

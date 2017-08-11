@@ -12,13 +12,13 @@ ms.devlang: rest-api
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 04/15/2017
+ms.date: 07/22/2017
 ms.author: eugenesh
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: faa6d403aa130738ae0b58ba1ffc828a1e37e9f4
+ms.translationtype: HT
+ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
+ms.openlocfilehash: b60662cbe655eea11cba2aaaaa4671209bf018f4
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 07/24/2017
 
 ---
 
@@ -34,12 +34,13 @@ Der Blobindexer kann Text aus den folgenden Dokumentformaten extrahieren:
 * XML
 * ZIP
 * EML
-* Nur-Text-Dateien  
-* JSON (siehe Vorschaufeature [Indizierung der JSON-Blobs](search-howto-index-json-blobs.md))
+* RTF
+* Textdateien (Siehe auch [Indizierung von Nur-Text](#IndexingPlainText))
+* JSON (Siehe [Indizierung von JSON-Blobs](search-howto-index-json-blobs.md))
 * CSV (siehe Vorschaufeature [Indizierung der CSV-Blobs](search-howto-index-csv-blobs.md))
 
 > [!IMPORTANT]
-> Die Unterstützung für CSV- und JSON-Arrays befindet sich derzeit in der Vorschauphase. Diese Formate sind nur mit der Version **2015-02-28-Preview** der REST-API oder der Version 2.x-preview des .NET SDKs verfügbar. Beachten Sie hierbei, dass Vorschau-APIs für Tests und Evaluierungen bestimmt sind und nicht in Produktionsumgebungen eingesetzt werden sollten.
+> Die Unterstützung für CSV- und JSON-Arrays befindet sich derzeit in der Vorschauphase. Diese Formate sind nur mit der Version **2016-09-01-Preview** der REST-API oder der Version 2.x-preview des .NET SDKs verfügbar. Beachten Sie hierbei, dass Vorschau-APIs für Tests und Evaluierungen bestimmt sind und nicht in Produktionsumgebungen eingesetzt werden sollten.
 >
 >
 
@@ -88,8 +89,8 @@ Weitere Informationen über die API zum Erstellen einer Datenquelle finden Sie u
 Sie haben folgende Möglichkeiten zum Angeben der Anmeldeinformationen für den Blobcontainer:
 
 - **Verbindungszeichenfolge für den Vollzugriff auf ein Speicherkonto**: `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>`. Sie können die Verbindungszeichenfolge über das Azure-Portal abrufen, indem Sie auf dem Blatt des Speicherkontos zu „Einstellungen“ > „Schlüssel“ (für klassische Speicherkonten) oder zu „Einstellungen“ > „Zugriffsschlüssel“ (für Azure Resource Manager-Speicherkonten) navigieren.
-- Verbindungszeichenfolge für eine **Shared Access Signature (SAS) für ein Speicherkonto**: `BlobEndpoint=https://<your account>.blob.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=b&sp=rl`. Die SAS muss über Listen- und Leseberechtigungen für Container und Objekte (in diesem Fall Blobs) verfügen.
--  **Shared Access Signature des Containers**: `ContainerSharedAccessUri=https://<your storage account>.blob.core.windows.net/<container name>?sv=2016-05-31&sr=c&sig=<the signature>&se=<the validity end time>&sp=rl`. Die SAS muss über Listen- und Leseberechtigungen für den Container verfügen.
+- **Speicherkonto Shared Access Signature-Verbindungszeichenfolge** (SAS): `BlobEndpoint=https://<your account>.blob.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=b&sp=rl` Die SAS sollte über die Berechtigungen zum Auflisten und Lesen für Container und Objekte (in diesem Fall Blobs) verfügen.
+-  **Container und Shared Access Signature**: `ContainerSharedAccessUri=https://<your storage account>.blob.core.windows.net/<container name>?sv=2016-05-31&sr=c&sig=<the signature>&se=<the validity end time>&sp=rl` Die SAS muss über Listen- und Leseberechtigungen für den Container verfügen.
 
 Weitere Informationen zu Shared Access Signatures von Speichern finden Sie unter [Verwenden von Shared Access Signatures (SAS)](../storage/storage-dotnet-shared-access-signature-part-1.md).
 
@@ -141,7 +142,7 @@ Je nach [Indexer-Konfiguration](#PartsOfBlobToIndex), kann der Blobindexer Metad
 
 > [!NOTE]
 > Die Blobs mit strukturiertem Inhalt wie JSON oder CSV werden standardmäßig als ein einzelnes Textsegment indiziert. Wenn Sie JSON- und CSV-Blobs in einem strukturierten Verfahren indizieren möchten, finden Sie unter [Indizierung der JSON-Blobs](search-howto-index-json-blobs.md) und [Indizierung der CSV-Blobs](search-howto-index-csv-blobs.md) Vorschaufeatures.
-> 
+>
 > Ein Verbunddokument oder eingebettetes Dokument (z.B. ein ZIP-Archiv oder ein Word-Dokument mit eingebetteter Outlook-E-Mail mit Anhängen) wird ebenfalls als einzelnes Dokument indiziert.
 
 * Der Textinhalt des Dokuments wird in ein Zeichenfolgefeld mit dem Namen `content` extrahiert.
@@ -339,13 +340,35 @@ Das Indizieren von Blobs kann sehr zeitaufwändig sein. In Fällen, in denen Sie
 
 - Erstellen Sie einen entsprechenden Indexer für jede Datenquelle. Alle Indexer können auf den gleichen Zielsuchindex zeigen.  
 
+- Eine Sucheinheit in Ihrem Dienst kann einen Indexer zu jeder angegebenen Uhrzeit ausführen. Das Erstellen von mehreren Indexern – wie oben beschrieben – ist nur nützlich, wenn sie tatsächlich parallel ausgeführt werden. Um mehrere Indexer parallel auszuführen, skalieren Sie Ihren Suchdienst horizontal hoch, indem Sie eine bestimmte Anzahl von Partitionen und Replikate erstellen. Wenn Ihr Suchdienst beispielsweise über 6 Sucheinheiten verfügt (z.B. 2 Partitionen x 3 Replikate), dann können 6 Indexers simultan ausgeführt werden. Dies führt zu einem sechsfachen Anstieg des Indizierungsdurchsatzes. Um mehr über die Skalierung und Kapazitätsplanung zu erfahren, gehen Sie unter [Skalieren von Ressourcenebenen für Abfrage und Indizierung von Arbeitslasten in Azure Search](search-capacity-planning.md).
+
 ## <a name="indexing-documents-along-with-related-data"></a>Indizieren von Dokumenten zusammen mit den zugehörigen Daten
 
-Ihren Dokumenten sind möglicherweise Metadaten zugeordnet – z.B. die Abteilung, die das Dokument erstellt hat –, die als strukturierte Daten an einem der folgenden Speicherorte gespeichert sind.
--   In einem separaten Datenspeicher wie SQL-Datenbank oder Azure Cosmos DB
--   Als benutzerdefinierte Metadaten in Azure Blob Storage direkt an jedes Dokument angefügt (Weitere Informationen finden Sie unter [Festlegen und Abrufen von Eigenschaften und Metadaten für Blob-Ressourcen](https://docs.microsoft.com/rest/api/storageservices/setting-and-retrieving-properties-and-metadata-for-blob-resources).)
+Sie möchten möglicherweise Dokumente aus mehreren Quellen in Ihrem Index „zusammenbauen“. Womöglich möchten Sie z.B. Text aus Blobs mit anderen Metadaten zusammenführen, die in Cosmos DB gespeichert sind. Sie können auch die Indizierungs-API mit Push zusammen mit unterschiedlichen Indexern zum Erstellen von Suchdokumenten aus mehreren Teilen verwenden. 
 
-Sie können die Dokumente zusammen mit ihren Metadaten indizieren, indem Sie den gleichen eindeutigen Schlüsselwert jedem Dokument und seinen Metadaten zuweisen und für jeden Indexer die Aktion `mergeOrUpload` angeben. Eine ausführliche Beschreibung dieser Lösung finden Sie im externen Artikel [Combine documents with other data in Azure Search](http://blog.lytzen.name/2017/01/combine-documents-with-other-data-in.html) (Zusammenführen von Dokumenten mit anderen Daten in Azure Search).
+Damit dies funktioniert, müssen sich alle Indexer und andere Komponenten auf den Dokumentschlüssel einigen. Eine ausführliche exemplarische Vorgehensweise finden Sie im externen Artikel [Combine documents with other data in Azure Search](http://blog.lytzen.name/2017/01/combine-documents-with-other-data-in.html) (Zusammenführen von Dokumenten mit anderen Daten in Azure Search).
+
+<a name="IndexingPlainText"></a>
+## <a name="indexing-plain-text"></a>Indizierung von Nur-Text 
+
+Wenn alle Ihre Blobs Nur-Text in derselben Codierung enthalten, können Sie die Indizierungsleistung signifikant verbessern, indem Sie den **Textanalysemodus** nutzen. Um den Textanalysemodus zu verwenden, legen Sie die `parsingMode`-Konfigurationseigenschaft auf `text` fest:
+
+    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2016-09-01
+    Content-Type: application/json
+    api-key: [admin key]
+
+    {
+      ... other parts of indexer definition
+      "parameters" : { "configuration" : { "parsingMode" : "text" } }
+    }
+
+Standardmäßig wird von der `UTF-8`-Codierung ausgegangen. Um eine andere Codierung anzugeben, verwenden Sie die `encoding`-Konfigurationseigenschaft. 
+
+    {
+      ... other parts of indexer definition
+      "parameters" : { "configuration" : { "parsingMode" : "text", "encoding" : "windows-1252" } }
+    }
+
 
 <a name="ContentSpecificMetadata"></a>
 ## <a name="content-type-specific-metadata-properties"></a>Inhaltstypspezifische Metadateneigenschaften
@@ -366,7 +389,9 @@ In der folgenden Tabelle sind die Verarbeitungsschritte für jedes Dokumentforma
 | XML (application/xml) |`metadata_content_type`</br>`metadata_content_encoding`</br> |Entfernen von XML-Markup und Extrahieren von Text |
 | JSON (application/json) |`metadata_content_type`</br>`metadata_content_encoding` |Extrahieren von Text<br/>HINWEIS: Wenn Sie mehrere Felder des Dokuments aus einem JSON-Blob extrahieren möchten, helfen Ihnen die ausführlichen Informationen unter [Indizierung der JSON-Blobs](search-howto-index-json-blobs.md) weiter. |
 | EML (message/rfc822) |`metadata_content_type`<br/>`metadata_message_from`<br/>`metadata_message_to`<br/>`metadata_message_cc`<br/>`metadata_creation_date`<br/>`metadata_subject` |Extrahieren von Text, einschließlich Anlagen |
-| Nur-Text (text/plain) |`metadata_content_type`</br>`metadata_content_encoding`</br> | |
+| RTF (application/rtf) |`metadata_content_type`</br>`metadata_author`</br>`metadata_character_count`</br>`metadata_creation_date`</br>`metadata_page_count`</br>`metadata_word_count`</br> | Extrahieren von Text|
+| Nur-Text (text/plain) |`metadata_content_type`</br>`metadata_content_encoding`</br> | Extrahieren von Text|
+
 
 ## <a name="help-us-make-azure-search-better"></a>Helfen Sie uns bei der Verbesserung von Azure Search
 Teilen Sie uns auf unserer [UserVoice-Website](https://feedback.azure.com/forums/263029-azure-search/) mit, wenn Sie sich Features wünschen oder Verbesserungsvorschläge haben.

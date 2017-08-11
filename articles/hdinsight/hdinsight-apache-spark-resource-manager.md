@@ -14,14 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/25/2017
+ms.date: 07/21/2017
 ms.author: nitinme
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
-ms.openlocfilehash: 7acd83cf477f9294c75e1bf11f093be50c32e786
+ms.translationtype: HT
+ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
+ms.openlocfilehash: 952fa15162a40bccb3f8c7a88508556757ca6675
 ms.contentlocale: de-de
-ms.lasthandoff: 06/07/2017
-
+ms.lasthandoff: 07/24/2017
 
 ---
 # <a name="manage-resources-for-apache-spark-cluster-on-azure-hdinsight"></a>Verwalten von Ressourcen für den Apache Spark-Cluster unter Azure HDInsight 
@@ -135,14 +134,14 @@ Da wir die dynamische Zuordnung von Spark verwenden, werden nur die Ressourcen f
 5. Wiederholen Sie diese Schritte auch auf dem anderen Hauptknoten.
 
 ## <a name="my-jupyter-notebooks-are-not-running-as-expected-how-can-i-restart-the-service"></a>Meine Jupyter-Notebooks werden nicht wie erwartet ausgeführt. Wie kann ich den Dienst neu starten?
-1. Starten Sie wie oben gezeigt die Ambari-Webbenutzeroberfläche. Klicken Sie im linken Navigationsbereich auf **Jupyter**, auf **Dienstaktionen** und dann auf **Alle neu starten**. Dadurch wird der Jupyter-Dienst auf allen Stammknoten gestartet.
+Starten Sie wie oben gezeigt die Ambari-Webbenutzeroberfläche. Klicken Sie im linken Navigationsbereich auf **Jupyter**, auf **Dienstaktionen** und dann auf **Alle neu starten**. Dadurch wird der Jupyter-Dienst auf allen Stammknoten gestartet.
 
-    ![Neustarten von Jupyter](./media/hdinsight-apache-spark-resource-manager/restart-jupyter.png "Neustarten von Jupyter")
+    ![Restart Jupyter](./media/hdinsight-apache-spark-resource-manager/restart-jupyter.png "Restart Jupyter")
 
-## <a name="how-do-i-know-if-i-am-running-out-of-resource"></a>Wie erkenne ich, ob mir die Ressourcen ausgehen?
-1. Starten Sie die Benutzeroberfläche von Yarn, wie oben gezeigt. Überprüfen Sie im oberen Bildschirmbereich in der Tabelle mit den Clustermetriken die Werte in den Spalten **Memory Used** (Verwendeter Arbeitsspeicher) und **Memory Total** (Arbeitsspeicher gesamt). Wenn die beiden Werte sehr dicht beieinander liegen, sind unter Umständen nicht genügend Ressourcen für den Start der nächsten Anwendung vorhanden. Gleiches gilt für die Spalten **VCores Used** (Verwendete virtuelle Kerne) und **VCores Total** (Virtuelle Kerne gesamt). Falls in der Hauptansicht eine Anwendung mit dem Zustand **Akzeptiert** nicht in den Zustand **Ausgeführt** oder **Fehler** übergeht, kann dies ebenfalls ein Hinweis darauf sein, dass nicht genügend Ressourcen zum Starten der Anwendung zur Verfügung stehen.
+## <a name="how-do-i-know-if-i-am-running-out-of-resources"></a>Wie erkenne ich, ob mir die Ressourcen ausgehen?
+Starten Sie die Benutzeroberfläche von Yarn, wie oben gezeigt. Überprüfen Sie im oberen Bildschirmbereich in der Tabelle mit den Clustermetriken die Werte in den Spalten **Memory Used** (Verwendeter Arbeitsspeicher) und **Memory Total** (Arbeitsspeicher gesamt). Wenn die beiden Werte sehr dicht beieinander liegen, sind unter Umständen nicht genügend Ressourcen für den Start der nächsten Anwendung vorhanden. Gleiches gilt für die Spalten **VCores Used** (Verwendete virtuelle Kerne) und **VCores Total** (Virtuelle Kerne gesamt). Falls in der Hauptansicht eine Anwendung mit dem Zustand **Akzeptiert** nicht in den Zustand **Ausgeführt** oder **Fehler** übergeht, kann dies ebenfalls ein Hinweis darauf sein, dass nicht genügend Ressourcen zum Starten der Anwendung zur Verfügung stehen.
 
-    ![Ressourcenlimit](./media/hdinsight-apache-spark-resource-manager/resource-limit.png "Ressourcenlimit")
+    ![Resource Limit](./media/hdinsight-apache-spark-resource-manager/resource-limit.png "Resource Limit")
 
 ## <a name="how-do-i-kill-a-running-application-to-free-up-resource"></a>Wie kann ich eine ausgeführte Anwendung beenden, um Ressourcen freizugeben?
 1. Klicken Sie im linken Bereich der Benutzeroberfläche von Yarn auf **Running** (Ausgeführt). Suchen Sie in der Liste mit den ausgeführten Anwendungen nach der Anwendung, die Sie beenden möchten, und klicken auf die **ID**.
@@ -153,38 +152,26 @@ Da wir die dynamische Zuordnung von Spark verwenden, werden nur die Ressourcen f
 
     ![Beenden einer App (2)](./media/hdinsight-apache-spark-resource-manager/kill-app2.png "Beenden einer App (2)")
 
-## <a name="seealso"></a>Weitere Informationen
-* [Übersicht: Apache Spark in Azure HDInsight](hdinsight-apache-spark-overview.md)
+## <a name="see-also"></a>Weitere Informationen
+* [Track and debug jobs running on an Apache Spark cluster in HDInsight(Nachverfolgen und Debuggen von Aufträgen in einem Apache Spark-Cluster unter HDInsight)](hdinsight-apache-spark-job-debugging.md)
 
-### <a name="scenarios"></a>Szenarios
-* [Spark mit BI: Durchführen interaktiver Datenanalysen mithilfe von Spark in HDInsight mit BI-Tools](hdinsight-apache-spark-use-bi-tools.md)
+### <a name="for-data-analysts"></a>Für Datenanalysten
+
 * [Spark mit Machine Learning: Analysieren von Gebäudetemperaturen mithilfe von Spark in HDInsight und HVAC-Daten](hdinsight-apache-spark-ipython-notebook-machine-learning.md)
 * [Spark mit Machine Learning: Vorhersage von Lebensmittelkontrollergebnissen mithilfe von Spark in HDInsight](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
-* [Spark-Streaming: Erstellen von Echtzeitstreaminganwendungen mithilfe von Spark in HDInsight](hdinsight-apache-spark-eventhub-streaming.md)
 * [Websiteprotokollanalyse mithilfe von Spark in HDInsight](hdinsight-apache-spark-custom-library-website-log-analysis.md)
+* [Application Insight telemetry data analysis using Spark in HDInsight (Application Insight-Telemetriedatenanalyse mithilfe von Spark in HDInsight)](hdinsight-spark-analyze-application-insight-logs.md)
+* [Verwenden von Caffe in Azure HDInsight Spark für verteiltes Deep Learning](hdinsight-deep-learning-caffe-spark.md)
 
-### <a name="create-and-run-applications"></a>Erstellen und Ausführen von Anwendungen
+### <a name="for-spark-developers"></a>Für Spark-Entwickler
+
 * [Erstellen einer eigenständigen Anwendung mit Scala](hdinsight-apache-spark-create-standalone-application.md)
 * [Remoteausführung von Aufträgen in einem Spark-Cluster mithilfe von Livy](hdinsight-apache-spark-livy-rest-interface.md)
-
-### <a name="tools-and-extensions"></a>Tools und Erweiterungen
 * [Verwenden des HDInsight-Tools-Plug-Ins für IntelliJ IDEA zum Erstellen und Übermitteln von Spark Scala-Anwendungen](hdinsight-apache-spark-intellij-tool-plugin.md)
+* [Spark-Streaming: Erstellen von Echtzeitstreaminganwendungen mithilfe von Spark in HDInsight](hdinsight-apache-spark-eventhub-streaming.md)
 * [Use HDInsight Tools Plugin for IntelliJ IDEA to debug Spark applications remotely (Verwenden von HDInsight-Tools-Plug-Ins für IntelliJ IDEA zum Remotedebuggen von Spark-Anwendungen)](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [Verwenden von Zeppelin-Notebooks mit einem Spark-Cluster in HDInsight](hdinsight-apache-spark-zeppelin-notebook.md)
 * [Verfügbare Kernels für Jupyter-Notebook im Spark-Cluster für HDInsight](hdinsight-apache-spark-jupyter-notebook-kernels.md)
 * [Verwenden von externen Paketen mit Jupyter Notebooks](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)
 * [Installieren von Jupyter Notebook auf Ihrem Computer und Herstellen einer Verbindung zum Apache Spark-Cluster in Azure HDInsight (Vorschau)](hdinsight-apache-spark-jupyter-notebook-install-locally.md)
-
-### <a name="manage-resources"></a>Verwalten von Ressourcen
-* [Track and debug jobs running on an Apache Spark cluster in HDInsight (Nachverfolgen und Debuggen von Aufträgen in einem Apache Spark-Cluster unter HDInsight)](hdinsight-apache-spark-job-debugging.md)
-
-[hdinsight-versions]: hdinsight-component-versioning.md
-[hdinsight-upload-data]: hdinsight-upload-data.md
-[hdinsight-storage]: hdinsight-hadoop-use-blob-storage.md
-
-
-[azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
-[azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
-[azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
-[azure-create-storageaccount]: storage-create-storage-account.md
 

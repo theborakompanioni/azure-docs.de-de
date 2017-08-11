@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/07/2017
 ms.author: kakhan
 ms.translationtype: HT
-ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
-ms.openlocfilehash: 09de76a9147466f002ceb7faa5b1f9a10a2af75b
+ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
+ms.openlocfilehash: ab95c39a3b5c4ac2c07bf5de36abbdc22fde7e7d
 ms.contentlocale: de-de
-ms.lasthandoff: 07/12/2017
+ms.lasthandoff: 08/01/2017
 
 ---
 # <a name="azure-disk-encryption-for-windows-and-linux-iaas-vms"></a>Azure Disk Encryption für virtuelle Windows- und Linux-IaaS-Computer
@@ -36,7 +36,7 @@ Die Azure-Datenträgerverschlüsselung (Azure Disk Encryption) für Windows- und
 Die Azure Disk Encryption-Lösung unterstützt die folgenden Kundenszenarien:
 
 * Aktivieren der Verschlüsselung auf neuen virtuellen IaaS-Computern, die mit einer vorverschlüsselten VHD und Verschlüsselungsschlüsseln erstellt werden
-* Aktivieren der Verschlüsselung auf neuen virtuellen IaaS-VM-Computern, die über Images aus dem Azure-Katalog erstellt werden
+* Aktivieren der Verschlüsselung auf neuen IaaS-VMs, die über Images aus dem unterstützten Azure-Katalog erstellt werden
 * Aktivieren der Verschlüsselung auf vorhandenen IaaS-VMs, die unter Azure ausgeführt werden
 * Deaktivieren der Verschlüsselung auf Windows-IaaS-VMs
 * Deaktivieren der Verschlüsselung auf Datenlaufwerken für Linux-IaaS-VMs
@@ -48,7 +48,7 @@ Die Lösung unterstützt die folgenden Szenarien für virtuelle IaaS-Computer, w
 
 * Integration in Azure-Schlüsseltresor
 * VMs im Tarif „Standard“: [IaaS-VMs der Reihe A, D, DS, F, G, GS usw.](https://azure.microsoft.com/pricing/details/virtual-machines/)
-* Aktivieren der Verschlüsselung auf Windows- und Linux-IaaS-VMs und VMs auf verwalteten Datenträgern
+* Aktivieren der Verschlüsselung auf IaaS-VMs und VMs auf verwalteten Datenträgern unter Windows und Linux über Images aus dem unterstützten Azure-Katalog
 * Deaktivieren der Verschlüsselung auf Betriebssystem- und Datenlaufwerken für Windows-IaaS-VMs und VMs auf verwalteten Datenträgern
 * Deaktivieren der Verschlüsselung auf Datenlaufwerken für Linux-IaaS-VMs und VMs auf verwalteten Datenträgern
 * Aktivieren der Verschlüsselung auf IaaS-VMs mit dem Windows-Clientbetriebssystem
@@ -63,7 +63,9 @@ Die Lösung unterstützt nicht die folgenden Szenarien, Features und Technologie
 
 * IaaS-VMs des Basic-Tarifs
 * Deaktivieren der Verschlüsselung auf Betriebssystemlaufwerken für virtuelle Linux-IaaS-Computer
+* Deaktivieren der Verschlüsselung auf einem Datenlaufwerk, wenn das Betriebssystemlaufwerk für Linux-IaaS-VMs verschlüsselt ist
 * Virtuelle IaaS-Computer, die mithilfe der klassischen Methode zum Erstellen von virtuellen Computern erstellt werden
+* Das Aktivieren der Verschlüsselung benutzerdefinierter Images auf Windows- und Linux-IaaS-VMs wird NICHT unterstützt. Das Aktivieren der Verschlüsselung auf Linux-LVM-Betriebssystemdatenträgern wird derzeit nicht unterstützt. Diese Unterstützung wird bald erhältlich sein.
 * Integration in den lokalen Schlüsselverwaltungsdienst
 * Azure Files (freigegebenes Dateisystem), Netzwerkdateisystem (NFS), dynamische Volumes und Windows-VMs, die mit softwarebasierten RAID-Systemen konfiguriert sind
 * Sichern und Wiederherstellen verschlüsselter VMs, die ohne Schlüsselverschlüsselungsschlüssel verschlüsselt wurden
@@ -79,7 +81,7 @@ Beim Aktivieren und Bereitstellen von Azure Disk Encryption für virtuelle Azure
 * Verschlüsselung des Betriebssystemvolumes zum Schützen des Startvolumes im Ruhezustand in Ihrem Speicher
 * Verschlüsselung des Datenvolumes zum Schützen des Datenvolumes im Ruhezustand in Ihrem Speicher
 * Deaktivieren der Verschlüsselung auf den Betriebssystem- und Datenlaufwerken für Windows-IaaS-VMs
-* Deaktivieren der Verschlüsselung auf den Datenlaufwerken für Linux-IaaS-VMs
+* Deaktivieren der Verschlüsselung auf den Datenlaufwerken für Linux-IaaS-VMs (nur wenn das Betriebssystemlaufwerk NICHT verschlüsselt ist)
 * Schutz der Verschlüsselungsschlüssel und Geheimnisse in Ihrem Key Vault-Abonnement
 * Meldung des Verschlüsselungsstatus des verschlüsselten virtuellen IaaS-Computers
 * Entfernen der Konfigurationseinstellungen für die Datenträgerverschlüsselung vom virtuellen IaaS-Computer
@@ -129,12 +131,13 @@ Um die Datenträgerverschlüsselung für virtuelle IaaS-Computer zu deaktivieren
 
 1. Aktivieren Sie die Verschlüsselung (Entschlüsselung) auf einem ausgeführten virtuellen IaaS-Computer in Azure über die Azure Disk Encryption-Resource Manager-Vorlage oder mithilfe von PowerShell-Cmdlets, und geben Sie die Entschlüsselungskonfiguration an.
 
- Dieser Schritt deaktiviert die Verschlüsselung des Betriebssystemdatenträgers und/oder Datenträgers für Daten in der ausgeführten Windows-IaaS-VM. Wie jedoch im vorherigen Abschnitt erwähnt, wird die Deaktivierung der Verschlüsselung des Betriebssystemdatenträgers für Linux nicht unterstützt. Der Entschlüsselungsschritt ist nur für Datenlaufwerke auf Linux-VMs zulässig.
+ Dieser Schritt deaktiviert die Verschlüsselung des Betriebssystemdatenträgers und/oder Datenträgers für Daten in der ausgeführten Windows-IaaS-VM. Wie jedoch im vorherigen Abschnitt erwähnt, wird die Deaktivierung der Verschlüsselung des Betriebssystemdatenträgers für Linux nicht unterstützt. Der Schritt der Entschlüsselung ist für Datenlaufwerke auf Linux-VMs nur zulässig, solange der Betriebssystemdatenträger nicht verschlüsselt ist.
 2. Azure aktualisiert das VM-Dienstmodell, und die IaaS-VM wird als entschlüsselt markiert. Der Inhalt des virtuellen Computers wird im Ruhezustand nicht mehr verschlüsselt.
 
 > [!NOTE]
 > Durch den Vorgang zum Deaktivieren der Verschlüsselung werden Ihr Schlüsseltresor und das Verschlüsselungsschlüsselmaterial (BitLocker-Verschlüsselungsschlüssel für Windows-Systeme oder Passphrase für Linux) nicht gelöscht.
  > Das Deaktivieren der Betriebssystem-Datenträgerverschlüsselung für Linux wird nicht unterstützt. Der Entschlüsselungsschritt ist nur für Datenlaufwerke auf Linux-VMs zulässig.
+Das Deaktivieren der Datenträgerverschlüsselung für Linux wird nicht unterstützt, wenn das Betriebssystemlaufwerk verschlüsselt ist.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Bevor Sie Azure Disk Encryption auf virtuellen Azure-IaaS-Computern für die unterstützten Szenarien aktivieren, die im Abschnitt „Übersicht“ erörtert wurden, beachten Sie die folgenden Voraussetzungen:
@@ -146,7 +149,7 @@ Bevor Sie Azure Disk Encryption auf virtuellen Azure-IaaS-Computern für die unt
 > [!NOTE]
 > Für Windows Server 2008 R2 müssen Sie .NET Framework 4.5 installieren, bevor Sie die Verschlüsselung in Azure aktivieren. Sie können die Installation über Windows Update durchführen, indem Sie das optionale Update Microsoft .NET Framework 4.5.2 für Windows Server 2008 R2 x64-basierte Systeme ([KB2901983](https://support.microsoft.com/kb/2901983)) installieren.
 
-* Azure Disk Encryption wird für die folgenden Linux-Serverdistributionen und -Versionen unterstützt:
+* Azure Disk Encryption wird für die folgenden auf dem Azure-Katalog basierenden Linux-Serverdistributionen und -Versionen unterstützt:
 
 | Linux-Distribution | Version | Für die Verschlüsselung unterstützter Volumetyp|
 | --- | --- |--- |
@@ -229,7 +232,7 @@ Bevor Sie Azure Disk Encryption auf virtuellen Azure-IaaS-Computern für die unt
 
 * Rekursiv bereitgestellte Datenträger werden von Azure Disk Encryption für Linux nicht unterstützt. Wenn für das Zielsystem beispielsweise ein Datenträger unter „/foo/bar“ und dann ein weiterer Datenträger unter „/foo/bar/baz“ bereitgestellt wurde, ist die Verschlüsselung von „/foo/bar/baz“ erfolgreich, während dies für „/foo/bar“ nicht der Fall ist. 
 
-* Azure Disk Encryption wird nur für Katalogimages unterstützt, die die oben erwähnten Voraussetzungen erfüllen.  Benutzerdefinierte Images werden aufgrund von benutzerdefinierten Partitionsschemas und Prozessverhalten, die auf diesen Images ggf. vorhanden sind, nicht unterstützt.  Auch auf Katalogimages basierende VMs, die die Voraussetzungen anfänglich erfüllt haben, aber nach der Erstellung geändert wurden, können inkompatibel sein.  Aus diesem Grund besteht das vorgeschlagene Verfahren zum Verschlüsseln einer Linux-VM darin, mit einem sauberen Katalogimage zu beginnen, die VM zu verschlüsseln und der VM dann nach Bedarf benutzerdefinierte Software oder Daten hinzuzufügen.  
+* Azure Disk Encryption wird nur für Images des Azure-Katalogs unterstützt, die die oben erwähnten Voraussetzungen erfüllen. Benutzerdefinierte Images werden aufgrund von benutzerdefinierten Partitionsschemas und Prozessverhalten, die auf diesen Images ggf. vorhanden sind, nicht unterstützt. Auch auf Katalogimages basierende VMs, die die Voraussetzungen anfänglich erfüllt haben, aber nach der Erstellung geändert wurden, können inkompatibel sein.  Aus diesem Grund besteht das vorgeschlagene Verfahren zum Verschlüsseln einer Linux-VM darin, mit einem sauberen Katalogimage zu beginnen, die VM zu verschlüsseln und der VM dann nach Bedarf benutzerdefinierte Software oder Daten hinzuzufügen.  
 
 > [!NOTE]
 > Das Sichern und Wiederherstellen verschlüsselter virtueller Computer wird nur für virtuelle Computer unterstützt, die mit der KEK-Konfiguration (Key Encryption Key, Schlüsselverschlüsselungsschlüssel) verschlüsselt sind. Für virtuelle Computer ohne KEK-Verschlüsselung wird es nicht unterstützt. „KEK“ ist ein optionaler Parameter zum Aktivieren der VM.
@@ -245,7 +248,7 @@ In den folgenden Abschnitten sind die erforderlichen Schritte zum Konfigurieren 
 ##### <a name="create-an-azure-ad-application-by-using-azure-powershell"></a>Erstellen einer Azure AD-Anwendung mit Azure PowerShell
 Verwenden Sie das folgende PowerShell-Cmdlet, um eine Azure AD-Anwendung zu erstellen:
 
-    $aadClientSecret = “yourSecret”
+    $aadClientSecret = "yourSecret"
     $azureAdApplication = New-AzureRmADApplication -DisplayName "<Your Application Display Name>" -HomePage "<https://YourApplicationHomePage>" -IdentifierUris "<https://YouApplicationUri>" -Password $aadClientSecret
     $servicePrincipal = New-AzureRmADServicePrincipal –ApplicationId $azureAdApplication.ApplicationId
 
@@ -699,7 +702,7 @@ Sie können die Verschlüsselung auf einem ausgeführten virtuellen Windows- ode
 Durch den Schritt zum Deaktivieren der Verschlüsselung wird die Verschlüsselung des Betriebssystemdatenträgers und/oder des Datenträgers für Daten in der ausgeführten Windows-IaaS-VM deaktiviert. Sie können das Betriebssystemvolume nicht deaktivieren und das Datenvolume verschlüsselt lassen. Wenn der Verschlüsselungsschritt ausgeführt wird, aktualisiert das klassische Azure-Bereitstellungsmodell das VM-Dienstmodell, und die Windows-IaaS-VM wird als entschlüsselt markiert. Der Inhalt des virtuellen Computers wird im Ruhezustand nicht mehr verschlüsselt. Durch das Entschlüsseln werden Ihr Schlüsseltresor und das Verschlüsselungsschlüsselmaterial (BitLocker-Verschlüsselungsschlüssel für Windows-Systeme oder Passphrase für Linux) nicht gelöscht.
 
 ##### <a name="linux-vm"></a>Linux-VM
-Durch den Schritt zum Deaktivieren der Verschlüsselung wird die Verschlüsselung des Datenträgers für Daten auf der ausgeführten Linux-IaaS-VM deaktiviert.
+Durch den Schritt zum Deaktivieren der Verschlüsselung wird die Verschlüsselung des Datenträgers für Daten auf der ausgeführten Linux-IaaS-VM deaktiviert. Dieser Schritt funktioniert nur, wenn der Betriebssystemdatenträger nicht verschlüsselt ist.
 
 > [!NOTE]
 > Das Deaktivieren der Verschlüsselung auf dem Betriebssystemdatenträger ist auf virtuellen Linux-Computern nicht zulässig.

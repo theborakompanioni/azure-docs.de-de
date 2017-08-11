@@ -14,14 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/03/2017
+ms.date: 07/31/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 7af00e78536907a983285ef271e7945b83bd5619
+ms.translationtype: HT
+ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
+ms.openlocfilehash: eaf6278f97cd5ddd7e049ff4745181f39d7949a0
 ms.contentlocale: de-de
-ms.lasthandoff: 07/08/2017
-
+ms.lasthandoff: 08/01/2017
 
 ---
 # <a name="use-mapreduce-with-hadoop-on-hdinsight-with-ssh"></a>Verwenden von MapReduce mit Hadoop in HDInsight über SSH
@@ -46,11 +45,15 @@ In diesem Artikel wird erläutert, wie MapReduce-Jobs aus einer Secure Shell-Ver
 
 Stellen Sie mithilfe von SSH eine Verbindung zum Cluster her. Mithilfe des folgenden Befehls wird z.B. eine Verbindung mit einem Cluster namens **myhdinsight** hergestellt:
 
-    ssh admin@myhdinsight-ssh.azurehdinsight.net
+```bash
+ssh admin@myhdinsight-ssh.azurehdinsight.net
+```
 
 **Wenn Sie einen Zertifikatschlüssel für die SSH-Authentifizierung** verwenden, müssen Sie möglicherweise den Speicherort des privaten Schlüssels im Clientsystem angeben. Beispiel:
 
-    ssh -i ~/mykey.key admin@myhdinsight-ssh.azurehdinsight.net
+```bash
+ssh -i ~/mykey.key admin@myhdinsight-ssh.azurehdinsight.net
+```
 
 **Wenn Sie ein Kennwort für die SSH-Authentifizierung verwenden**, müssen Sie dieses angeben, wenn Sie dazu aufgefordert werden.
 
@@ -93,7 +96,7 @@ Weitere Informationen zum Verwenden von SSH mit HDInsight finden Sie unter [Verw
     hdfs dfs -cat /example/data/WordCountOutput/part-r-00000
     ```
 
-    Dieser Befehl zeigt eine Liste mit in der Datei **wasbs://example/data/gutenberg/davinci.txt** enthaltenen Wörtern und die Häufigkeit ihres jeweiligen Vorkommens an. Im folgenden Text finden Sie ein Beispiel für die in der Datei enthaltenen Daten:
+    Dieser Befehl zeigt eine Liste mit in der Datei **wasb://example/data/gutenberg/davinci.txt** enthaltenen Wörtern und die Häufigkeit ihres jeweiligen Vorkommens an. Im folgenden Text finden Sie ein Beispiel für die in der Datei enthaltenen Daten:
 
         wreathed        3
         wreathing       1

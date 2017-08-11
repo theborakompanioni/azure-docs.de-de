@@ -14,19 +14,18 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/04/2017
+ms.date: 07/31/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: f4d9336d0a7c4673f5cc2fa5ddf72476d3b9ece2
+ms.translationtype: HT
+ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
+ms.openlocfilehash: fbbbddc47f24a46eac9bc64d4420ee8429ed4ad1
 ms.contentlocale: de-de
-ms.lasthandoff: 07/08/2017
-
+ms.lasthandoff: 08/01/2017
 
 ---
 # <a name="access-yarn-application-logs-on-linux-based-hdinsight"></a>Zugriff auf YARN-Anwendungsprotokolle unter Linux-basiertem HDInsight
 
-Dieser Artikel erläutert den Zugriff auf Protokolle für YARN-Anwendungen (Yet Another Resource Negotiator), die in einem Hadoop-Cluster in Azure HDInsight abgeschlossen wurden.
+Dieser Artikel erläutert den Zugriff auf Protokolle für YARN-Anwendungen (Yet Another Resource Negotiator) in einem Hadoop-Cluster in Azure HDInsight.
 
 > [!IMPORTANT]
 > Die Schritte in diesem Dokument erfordern einen HDInsight-Cluster mit Linux. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [HDInsight-Komponentenversionen](hdinsight-component-versioning.md#hdinsight-windows-retirement).

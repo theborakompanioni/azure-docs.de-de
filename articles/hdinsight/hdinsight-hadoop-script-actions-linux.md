@@ -1,6 +1,6 @@
 ---
 title: "Entwickeln von Skriptaktionen mit Linux-basiertem HDInsight – Azure | Microsoft-Dokumentation"
-description: "Es wird beschrieben, wie Sie mit Skriptaktionen Linux-basierte HDInsight-Cluster anpassen können. Skriptaktionen stellen eine Möglichkeit zum Anpassen von Azure HDInsight-Clustern dar, indem Clusterkonfigurationseinstellungen angegeben oder zusätzliche Dienste, Tools oder andere Software auf dem Cluster installiert werden. "
+description: "Erfahren Sie, wie Sie Bash-Skripts verwenden, um Linux-basierte HDInsight-Cluster anzupassen. Das HDInsight-Feature „Skriptaktionen“ ermöglicht es Ihnen, Skripts während oder nach der Clustererstellung auszuführen. Skripts können verwendet werden, um die Konfigurationseinstellungen von Clustern zu ändern oder um zusätzliche Software zu installieren."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -13,14 +13,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/02/2017
+ms.date: 07/31/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: cc4326a72e2124034606e25fe8f75b330726e68e
+ms.translationtype: HT
+ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
+ms.openlocfilehash: 7f1a0bd8c7e60770d376f10eaea136a55c632c5e
 ms.contentlocale: de-de
-ms.lasthandoff: 07/08/2017
-
+ms.lasthandoff: 08/02/2017
 
 ---
 # <a name="script-action-development-with-hdinsight"></a>Entwickeln von Skriptaktionen mit HDInsight
@@ -62,7 +61,7 @@ Wenn Sie ein benutzerdefiniertes Skript für einen HDInsight-Cluster entwickeln,
 * [Verwenden von Wiederholungsversuchlogik zum Wiederherstellen bei vorübergehenden Fehlern](#bps9)
 
 > [!IMPORTANT]
-> Skriptaktionen müssen innerhalb von 60 Minuten abgeschlossen sein. Andernfalls schlägt das Skript fehl. Während der Knotenbereitstellung wird das Skript gleichzeitig mit anderen Einrichtungs- und Konfigurationsprozessen ausgeführt. Der Wettbewerb um Ressourcen wie CPU-Zeit oder Netzwerkbandbreite kann dazu führen, dass es länger als in Ihrer Entwicklungsumgebung dauert, bis das Skript abgeschlossen ist.
+> Skriptaktionen müssen innerhalb von 60 Minuten abgeschlossen sein, andernfalls schlägt der Prozess fehl. Während der Knotenbereitstellung wird das Skript gleichzeitig mit anderen Einrichtungs- und Konfigurationsprozessen ausgeführt. Der Wettbewerb um Ressourcen wie CPU-Zeit oder Netzwerkbandbreite kann dazu führen, dass es länger als in Ihrer Entwicklungsumgebung dauert, bis das Skript abgeschlossen ist.
 
 ### <a name="bPS1"></a>Auswählen der Hadoop-Version
 
@@ -120,11 +119,11 @@ Die bewährte Methode ist das Herunterladen und Archivieren aller Daten in einem
 > [!IMPORTANT]
 > Bei dem verwendeten Speicherkonto muss es sich um das Standardspeicherkonto des Clusters oder um einen öffentlichen, schreibgeschützten Container eines anderen Speicherkontos handeln.
 
-Die von Microsoft bereitgestellten Beispiele sind beispielsweise im Speicherkonto [https://hdiconfigactions.blob.core.windows.net/](https://hdiconfigactions.blob.core.windows.net/) gespeichert, einem öffentlichen, schreibgeschützten Container, der vom HDInsight-Team verwaltet wird.
+Die von Microsoft bereitgestellten Beispiele sind beispielsweise im Speicherkonto [https://hdiconfigactions.blob.core.windows.net/](https://hdiconfigactions.blob.core.windows.net/) gespeichert. Dabei handelt es sich um einen öffentlichen, schreibgeschützten Container, der vom HDInsight-Team verwaltet wird.
 
 ### <a name="bPS4"></a>Verwenden vorkompilierter Ressourcen
 
-Zur Verringerung des Zeitraums, der für die Ausführung des Skripts benötigt wird, sollten Sie Vorgänge vermeiden, mit denen Ressourcen aus dem Quellcode kompiliert werden. Kompilieren Sie die Ressourcen vor, und speichern Sie diese in Azure Blob Storage, damit sie schnell heruntergeladen werden können.
+Zur Verringerung des Zeitraums, der für die Ausführung des Skripts benötigt wird, sollten Sie Vorgänge vermeiden, mit denen Ressourcen aus dem Quellcode kompiliert werden. Sie können Ressourcen beispielsweise vorkompilieren und sie in einem Azure-Speicherkonto-Blob speicher, das sich im selben Rechenzentrum wie HDInsight befindet.
 
 ### <a name="bPS3"></a>Sicherstellen, dass das Clusteranpassungsskript idempotent ist
 
@@ -134,7 +133,7 @@ Ein Skript, dass Konfigurationsdateien modifiziert, sollte z.B. keine doppelten 
 
 ### <a name="bPS5"></a>Sicherstellen einer hohen Verfügbarkeit der Clusterarchitektur
 
-Linux-basierte HDInsight-Cluster stellen zwei Hauptknoten bereit, die im Cluster aktiv sind. Skriptaktionen werden für beide Knoten ausgeführt. Wenn die von Ihnen installierten Komponenten nur einen Hauptknoten erwarten, installieren Sie die Komponenten nicht auf beiden Hauptknoten.
+Linux-basierte HDInsight-Cluster stellen zwei Hauptknoten bereit, die im Cluster aktiv sind. Skriptaktionen werden auf beiden Knoten ausgeführt. Wenn die von Ihnen installierten Komponenten nur einen Hauptknoten erwarten, installieren Sie die Komponenten nicht auf beiden Hauptknoten.
 
 > [!IMPORTANT]
 > Dienste, die im Rahmen von HDInsight bereitgestellt werden, wurden entwickelt, um bei Bedarf ein Failover zwischen den beiden Hauptknoten auszuführen. Diese Funktion gilt nicht für benutzerdefinierte Komponenten, die mit Skriptaktionen installiert wurden. Wenn Sie eine hohe Verfügbarkeit für benutzerdefinierte Komponenten benötigen, müssen Sie Ihren eigenen Failovermechanismus implementieren.

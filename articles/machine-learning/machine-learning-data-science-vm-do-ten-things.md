@@ -1,5 +1,5 @@
 ---
-title: "Zehn Dinge, die Sie mit der Data Science Virtual Machine machen können | Microsoft Docs"
+title: "Zehn Dinge, die Sie mit der Data Science Virtual Machine machen können | Microsoft-Dokumentation"
 description: "Führen Sie verschiedene Durchsuchungen von Daten und Modellierungsaufgaben auf der Data Science Virtual Machine aus."
 services: machine-learning
 documentationcenter: 
@@ -12,14 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/24/2017
+ms.date: 07/21/2017
 ms.author: gokuma;weig;bradsev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 467626354cff5643f5f6e602b9d7b72c6c1281ec
+ms.translationtype: HT
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: b154bd42c0f8bc6e185fa871b21249cad2869e72
 ms.contentlocale: de-de
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 07/27/2017
 
 ---
 # <a name="ten-things-you-can-do-on-the-data-science-virtual-machine"></a>Zehn Dinge, die Sie mit der Data Science Virtual Machine machen können
@@ -72,7 +71,7 @@ Das Jupyter Notebook ist eine leistungsfähige Umgebung, die eine browserbasiert
 
 Zum Starten des Jupyter Notebooks klicken Sie auf das Symbol **Jupyter Notebook**im Startmenü/auf dem Desktop. Auf der DSVM können Sie auch zu „https://localhost:9999/“ wechseln, um auf das Jupyter Notebook zuzugreifen. Wenn Sie zur Eingabe eines Kennworts aufgefordert werden, verwenden Sie die Anweisungen im Abschnitt ***Erstellen eines sicheren Kennworts für den Jupyter Notebook-Server*** des Themas [Bereitstellen der Microsoft Data Science Virtual Machine](machine-learning-data-science-provision-vm.md), um ein sicheres Kennwort für den Zugriff auf das Jupyter Notebook zu erstellen. 
 
-Sobald Sie das Notebook geöffnet haben, sehen Sie ein Verzeichnis, das einige Beispielnotebooks enthält, die in der DSVM vorkonfiguriert sind. Sie können jetzt:
+Sobald Sie das Notebook geöffnet haben, sollten Sie ein Verzeichnis sehen, das einige Beispielnotebooks enthält, die in der DSVM vorkonfiguriert sind. Sie können jetzt:
 
 * auf das Notebook klicken, um den Code zu sehen
 * Jede Zelle über **UMSCHALT+EINGABE-Taste**ausführen.
@@ -138,7 +137,7 @@ Ein Client kann jetzt den Webdienst aufrufen. Es gibt benutzerfreundliche Wrappe
 ### <a name="build-and-operationalize-r-models"></a>Erstellen und Operationalisieren von R-Modellen
 Sie können R-Modelle, die auf der Data Science Virtual Machine oder anderswo erstellt wurden, auf Azure Machine Learning in einer Weise bereitstellen, die derjenigen für Python ähnelt. Gehen Sie wie folgt vor:
 
-* Erstellen Sie wie unten gezeigt eine Datei „settings.json“, um Ihre Arbeitsbereichs-ID und Ihr Authentifizierungstoken bereitzustellen.
+* Erstellen Sie eine Datei „settings.json“, um Ihre Arbeitsbereichs-ID und Ihr Authentifizierungstoken bereitzustellen, so wie im folgenden Codebeispiel dargestellt.
 * Schreiben Sie einen Wrapper für die Vorhersagefunktion des Modells.
 * Rufen Sie ```publishWebService``` in der Azure Machine Learning-Bibliothek auf, um den Wrapper für die Funktion zu übergeben.  
 
@@ -263,7 +262,7 @@ Azure Blob ist ein zuverlässiger, wirtschaftlicher Cloudspeicher für große un
 
 ![Create_Azure_Blob](./media/machine-learning-data-science-vm-do-ten-things/Create_Azure_Blob.PNG)
 
-* Stellen Sie sicher, dass sich das vorinstallierte Befehlszeilentool AzCopy in ```C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy.exe```befindet. Sie können das Verzeichnis, das „azcopy.exe“ enthält, Ihrer PATH-Umgebungsvariable hinzufügen, damit Sie beim Ausführen des Tools nicht den ganzen Befehlspfad eingeben müssen. Weitere Informationen zu AzCopy finden Sie in der [AzCopy-Dokumentation](../storage/storage-use-azcopy.md)
+* Stellen Sie sicher, dass sich das vorinstallierte Befehlszeilentool AzCopy in ```C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy.exe``` befindet. Sie können das Verzeichnis, das „azcopy.exe“ enthält, Ihrer PATH-Umgebungsvariable hinzufügen, damit Sie beim Ausführen des Tools nicht den ganzen Befehlspfad eingeben müssen. Weitere Informationen zu AzCopy finden Sie in der [AzCopy-Dokumentation](../storage/storage-use-azcopy.md)
 * Starten Sie das Tool Azure-Speicher-Explorer. Das Tool kann von der Seite [Microsoft Azure Storage Explorer](http://storageexplorer.com/)heruntergeladen werden. 
 
 ![AzureStorageExplorer_v4](./media/machine-learning-data-science-vm-do-ten-things/AzureStorageExplorer_v4.png)
@@ -363,7 +362,7 @@ Azure Data Lake Store ist ein Repository mit Hyperskalierung für Big Data-Analy
 
 ![Azure_Data_Lake_Create_v2](./media/machine-learning-data-science-vm-do-ten-things/Azure_Data_Lake_Create_v2.png)
 
-* Die **Azure Data Lake-Tools** in **Visual Studio**, die Sie unter diesem [Link](https://www.microsoft.com/download/details.aspx?id=49504) finden, sind bereits in der Visual Studio Community Edition installiert, die sich auf dem virtuellen Computer befindet. Wenn Sie sich nach dem Start von Visual Studio bei Ihrem Azure-Abonnement angemeldet haben, werden Ihr Azure Data Analytics-Konto und der zugehörige Speicher im linken Bereich von Visual Studio angezeigt.
+* Die **Azure Data Lake-Tools** in **Visual Studio**, die Sie unter diesem [Link](https://www.microsoft.com/download/details.aspx?id=49504) finden, sind bereits in der Visual Studio Community Edition installiert, die sich auf dem virtuellen Computer befindet. Wenn Sie sich nach dem Start von Visual Studio bei Ihrem Azure-Abonnement angemeldet haben, sollten Ihr Azure Data Analytics-Konto und der zugehörige Speicher im linken Bereich von Visual Studio angezeigt werden.
 
 ![Azure_Data_Lake_PlugIn_v2](./media/machine-learning-data-science-vm-do-ten-things/Azure_Data_Lake_PlugIn_v2.PNG)
 
@@ -458,11 +457,11 @@ Azure HDInsight ist ein verwalteter Apache Hadoop-, Spark-, HBase- und Storm-Die
 
 ![Verknüpfen mit dem Speicherkonto, das mit dem HDInsight-Cluster erstellt wurde](./media/machine-learning-data-science-vm-do-ten-things/Create_HDI_v4.PNG)
 
-* Sie müssen nach dem Erstellen den **Remotezugriff** auf den Hauptknoten des Clusters aktivieren. Merken Sie sich die hier angegebenen RAS-Anmeldeinformationen (die sich von denen beim Erstellen des Clusters unterscheiden). Sie werden diese später benötigen.
+* Sie müssen nach dem Erstellen den **Remotezugriff** auf den Hauptknoten des Clusters aktivieren. Merken Sie sich die hier angegebenen RAS-Anmeldeinformationen (die sich von denen beim Erstellen des Clusters unterscheiden). Sie benötigen diese später für die folgende Prozedur.
 
 ![Aktivieren des Remotezugriffs](./media/machine-learning-data-science-vm-do-ten-things/Create_HDI_dashboard_v3.PNG)
 
-* Erstellen Sie einen Azure Machine Learning-Arbeitsbereich. Ihre Machine Learning-Experimente werden in diesem Machine Learning-Arbeitsbereich gespeichert. Wählen Sie die hervorgehobenen Optionen im Portal aus, wie im Screenshot unten dargestellt.
+* Erstellen Sie einen Azure Machine Learning-Arbeitsbereich. Ihre Machine Learning-Experimente werden in diesem Machine Learning-Arbeitsbereich gespeichert. Wählen Sie die hervorgehobenen Optionen im Portal aus, wie im folgenden Screenshot dargestellt:
 
 ![Erstellen eines Azure Machine Learning-Arbeitsbereichs](./media/machine-learning-data-science-vm-do-ten-things/Create_ML_Space.PNG)
 
@@ -687,7 +686,7 @@ Nun bereiten wir komprimierte Daten (1 %) für die Modellierung vor. Wir könne
         """
         cursor.execute(queryString)
 
-        --- now insert contents of the join into the above internal table
+        --- now insert contents of the join into the preceding internal table
 
         queryString = """
         insert overwrite table nyctaxi_downsampled_dataset_testNEW
@@ -786,7 +785,7 @@ Nach einer Weile können Sie sehen, dass die Daten in Hadoop-Cluster geladen wur
 
 **Lesen von Daten aus HDI mithilfe von Machine Learning: Readermodul**
 
-Sie können auch das **Readermodul** in Azure Machine Learning Studio für den Datenbankzugriff in Hadoop-Clustern verwenden. Geben Sie die Anmeldeinformationen für Ihre HDI-Cluster und Ihr Azure Storage-Konto an, und Sie können die Datenbank in HDI-Clustern verwenden, um Machine Learning-Modelle zu erstellen.
+Sie können auch das **Readermodul** in Azure Machine Learning Studio für den Datenbankzugriff in Hadoop-Clustern verwenden. Geben Sie die Anmeldeinformationen für Ihre HDI-Cluster und Ihr Azure Storage-Konto an, um mit Datenbanken in HDI-Clustern Machine Learning-Modelle zu erstellen.
 
 ![Eigenschaften des Readermoduls](./media/machine-learning-data-science-vm-do-ten-things/AML_Reader_Hive.PNG)
 
@@ -807,14 +806,14 @@ Sie müssen die folgenden erforderlichen Schritte ausführen, um über die DSVM 
 1. Installieren Sie das DocumentDB Python SDK (führen Sie ```pip install pydocumentdb``` an der Befehlszeile aus).
 2. Erstellen Sie im [Azure-Portal](https://portal.azure.com) ein Azure Cosmos DB-Konto und eine Datenbank.
 3. Laden Sie [hier](http://www.microsoft.com/downloads/details.aspx?FamilyID=cda7703a-2774-4c07-adcc-ad02ddc1a44d) das Azure Cosmos DB-Migrationstool herunter, und extrahieren Sie es in ein Verzeichnis Ihrer Wahl.
-4. Importieren Sie JSON-Daten, die in einem [öffentlichen Blobspeicher](https://cahandson.blob.core.windows.net/samples/volcano.json) gespeichert sind (Daten zu Vulkanen), mit den folgenden Befehlsparametern des Migrationstools („dtui.exe“ in dem Verzeichnis, in dem Sie das Cosmos DB-Migrationstool installiert haben) in Cosmos DB. Geben Sie die unten stehenden Quell-und Zielpositionsparameter ein.
+4. Importieren Sie JSON-Daten, die in einem [öffentlichen Blobspeicher](https://cahandson.blob.core.windows.net/samples/volcano.json) gespeichert sind (Daten zu Vulkanen), mit den folgenden Befehlsparametern des Migrationstools („dtui.exe“ in dem Verzeichnis, in dem Sie das Cosmos DB-Migrationstool installiert haben) in Cosmos DB. Geben Sie die Quell-und Zielposition mit diesen Parametern ein:
    
     /s:JsonFile /s.Files:https://cahandson.blob.core.windows.net/samples/volcano.json /t:DocumentDBBulk /t.ConnectionString:AccountEndpoint=https://[DocDBAccountName].documents.azure.com:443/;AccountKey=[[KEY];Database=volcano /t.Collection:volcano1
 
 Sobald Sie die Daten importiert haben, können Sie in Jupyter das Notebook namens *DocumentDBSample* öffnen, das den Python-Code für den Zugriff auf DocumentDB und die Ausführung einiger grundlegender Abfragen enthält. Weitere Informationen zu Cosmos DB finden Sie auf der [Dokumentationsseite](https://docs.microsoft.com/azure/cosmos-db/) für den Dienst.
 
 ## <a name="8-build-reports-and-dashboard-using-the-power-bi-desktop"></a>8. Erstellen von Berichten und Dashboard mit Power BI Desktop
-Nun visualisieren wir die Volcano JSON-Datei aus dem obigen Cosmos DB-Beispiel in Power BI, um visuelle Einblicke in die Daten zu erhalten. Eine ausführliche Anleitung finden Sie im [Power BI-Artikel](../cosmos-db/powerbi-visualize.md). Die allgemeinen Schritte sind:
+Nun visualisieren wir die Volcano JSON-Datei aus dem vorherigen Cosmos DB-Beispiel in Power BI, um visuelle Einblicke in die Daten zu erhalten. Eine ausführliche Anleitung finden Sie im [Power BI-Artikel](../cosmos-db/powerbi-visualize.md). Die allgemeinen Schritte sind folgende:
 
 1. Öffnen Sie Power BI Desktop, und führen Sie „Get Data“ aus. Geben Sie die URL an: https://cahandson.blob.core.windows.net/samples/volcano.json
 2. Sie sollten die JSON-Datensätze in einer importierten Liste sehen.
@@ -824,7 +823,7 @@ Nun visualisieren wir die Volcano JSON-Datei aus dem obigen Cosmos DB-Beispiel i
 6. Fügen Sie eine neue Spalte hinzu, um die Listenspalte „coordinates“ in eine kommagetrennte LatLong-Spalte zu konvertieren, wobei die beiden Elemente im Listenfeld „coordinates“ mithilfe der Formel ```Text.From([coordinates]{1})&","&Text.From([coordinates]{0})```verkettet werden.
 7. Konvertieren Sie schließlich die Spalte ```Elevation``` zu „Dezimal“, und wählen Sie **Schließen** und **Anwenden**.
 
-Anstelle der oben beschriebenen Schritte können Sie den folgenden Code, in dem die obigen Schritte ausformuliert sind, in den erweiterten Editor in Power BI einfügen, der Ihnen ermöglicht, die Datentransformationen in einer Abfragesprache zu schreiben.
+Anstelle der vorher beschriebenen Schritte können Sie den folgenden Code einfügen, in dem die im erweiterten Editor in Power BI verwendeten obigen Schritte ausformuliert sind. Damit können Sie die Datentransformationen in einer Abfragesprache zu schreiben.
 
     let
         Source = Json.Document(Web.Contents("https://cahandson.blob.core.windows.net/samples/volcano.json")),
@@ -838,7 +837,7 @@ Anstelle der oben beschriebenen Schritte können Sie den folgenden Code, in dem 
 
 
 
-Jetzt befinden sich die Daten in Ihrem Power BI-Datenmodell. Ihr Power BI-Desktop sollte nun wie unten dargestellt aussehen.
+Jetzt befinden sich die Daten in Ihrem Power BI-Datenmodell. Ihr Power BI Desktop sollte folgendermaßen aussehen:
 
 ![Power BI Desktop](./media/machine-learning-data-science-vm-do-ten-things/PowerBIVolcanoData.png)
 

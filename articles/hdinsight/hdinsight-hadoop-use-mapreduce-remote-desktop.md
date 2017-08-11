@@ -16,12 +16,11 @@ ms.workload: big-data
 ms.date: 01/12/2017
 ms.author: larryfr
 ROBOTS: NOINDEX
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: edb7e6153060bf4b5471bf6c360b16672d5f759d
+ms.translationtype: HT
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: b56674857b013f9bb3d4dd4b6e97b34e0a97b1b2
 ms.contentlocale: de-de
-ms.lasthandoff: 07/08/2017
-
+ms.lasthandoff: 07/27/2017
 
 ---
 # <a name="use-mapreduce-in-hadoop-on-hdinsight-with-remote-desktop"></a>Verwenden von MapReduce in Hadoop in HDInsight über den Remotedesktop
@@ -54,9 +53,9 @@ Wenn Sie mit dem Desktop des HDInsight-Clusters verbunden sind, gehen Sie wie fo
    >
 2. Verwenden Sie den folgenden Befehl, um mit dem **Hadoop** -Befehl einen MapReduce-Beispielauftrag auszuführen.
 
-        hadoop jar hadoop-mapreduce-examples.jar wordcount wasbs:///example/data/gutenberg/davinci.txt wasbs:///example/data/WordCountOutput
+        hadoop jar hadoop-mapreduce-examples.jar wordcount wasb:///example/data/gutenberg/davinci.txt wasb:///example/data/WordCountOutput
 
-    Dadurch wird die Klasse **wordcount** gestartet, die in der Datei **hadoop-mapreduce-examples.jar** im aktuellen Verzeichnis enthalten ist. Sie verwendet als Eingabe das Dokument **wasbs://example/data/gutenberg/davinci.txt**, und die Ausgabe wird im Verzeichnis **wasbs:///example/data/WordCountOutput** gespeichert.
+    Dadurch wird die Klasse **wordcount** gestartet, die in der Datei **hadoop-mapreduce-examples.jar** im aktuellen Verzeichnis enthalten ist. Sie verwendet als Eingabe das Dokument **wasb://example/data/gutenberg/davinci.txt**, und die Ausgabe wird im Verzeichnis **wasb:///example/data/WordCountOutput** gespeichert.
 
    > [!NOTE]
    > Weitere Informationen über diesen MapReduce-Auftrag und die Beispieldaten finden Sie unter <a href="hdinsight-use-mapreduce.md">Verwenden von MapReduce in HDInsight Hadoop</a>.
@@ -68,9 +67,9 @@ Wenn Sie mit dem Desktop des HDInsight-Clusters verbunden sind, gehen Sie wie fo
         Bytes Read=1395666
         File Output Format Counters
         Bytes Written=337623
-4. Sobald der Auftrag abgeschlossen ist, verwenden Sie den folgenden Befehl zum Auflisten der Ausgabedateien, die unter **wasbs://example/data/WordCountOutput** gespeichert sind:
+4. Sobald der Auftrag abgeschlossen ist, verwenden Sie den folgenden Befehl zum Auflisten der Ausgabedateien, die unter **wasb://example/data/WordCountOutput** gespeichert sind:
 
-        hadoop fs -ls wasbs:///example/data/WordCountOutput
+        hadoop fs -ls wasb:///example/data/WordCountOutput
 
     Daraufhin sollten zwei Dateien angezeigt werden: **_SUCCESS** und **part-r-00000**. Die Datei **part-r-00000** enthält die Ausgabe für diesen Auftrag.
 
@@ -80,9 +79,9 @@ Wenn Sie mit dem Desktop des HDInsight-Clusters verbunden sind, gehen Sie wie fo
    >
 5. Verwenden Sie den folgenden Befehl, um die Ausgabe anzuzeigen:
 
-        hadoop fs -cat wasbs:///example/data/WordCountOutput/part-r-00000
+        hadoop fs -cat wasb:///example/data/WordCountOutput/part-r-00000
 
-    Dadurch wird eine Liste mit in der Datei **wasbs://example/data/gutenberg/davinci.txt** enthaltenen Wörtern zusammen mit der Häufigkeit ihres jeweiligen Auftretens angezeigt. Im Folgenden finden Sie ein Beispiel für die in der Datei enthaltenen Daten:
+    Dadurch wird eine Liste mit in der Datei **wasb://example/data/gutenberg/davinci.txt** enthaltenen Wörtern zusammen mit der Häufigkeit ihres jeweiligen Auftretens angezeigt. Im Folgenden finden Sie ein Beispiel für die in der Datei enthaltenen Daten:
 
         wreathed        3
         wreathing       1

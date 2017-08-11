@@ -15,60 +15,62 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 04/25/2017
 ms.author: aedwin
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
-ms.openlocfilehash: 7af4865a5455c314c1bdeb315fb87b0f92c1ddf9
+ms.translationtype: HT
+ms.sourcegitcommit: 6e76ac40e9da2754de1d1aa50af3cd4e04c067fe
+ms.openlocfilehash: f6b149f0e656d2263705048aa5b644f5bb4a5712
 ms.contentlocale: de-de
-ms.lasthandoff: 05/03/2017
-
+ms.lasthandoff: 07/31/2017
 
 ---
-# <a name="reporting-apis-for-enterprise-customers---balance-and-summary-preview"></a>Berichterstellungs-APIs für Unternehmenskunden – Bilanz und Zusammenfassung (Vorschau)
+# <a name="reporting-apis-for-enterprise-customers---balance-and-summary"></a>Berichterstellungs-APIs für Unternehmenskunden – Bilanz und Zusammenfassung
 
-Die API für Bilanz und Gebühren bietet eine monatliche Übersicht über Informationen zu Bilanzen, neuen Käufen, Gebühren für den Azure Marketplace, Korrekturen und Überschreitungsgebühren.
+Die API für Bilanz und Zusammenfassung bietet eine monatliche Übersicht über Informationen zu Bilanzen, neuen Käufen, Gebühren für den Azure Marketplace, Korrekturen und Überschreitungsgebühren.
 
 
-##<a name="request"></a>Anforderung 
+##<a name="request"></a>Request 
 Allgemeine Headereigenschaften, die hinzugefügt werden müssen, werden [hier](billing-enterprise-api.md) angegeben. Wenn kein Abrechnungszeitraum angegeben wurde, werden die Daten für den aktuellen Abrechnungszeitraum zurückgegeben.
 
 |Methode | Anforderungs-URI|
 |-|-|
-|GET| https://consumption.azure.com/v1/enrollments/{enrollmentNumber}/balancesummary|
-|GET| https://consumption.azure.com/v1/enrollments/{enrollmentNumber}/billingPeriods/{billingPeriod}/balancesummary|
+|GET| https://consumption.azure.com/v2/enrollments/{enrollmentNumber}/balancesummary|
+|GET| https://consumption.azure.com/v2/enrollments/{enrollmentNumber}/billingPeriods/{billingPeriod}/balancesummary|
 
+> [!Note]
+> Um die Vorschauversion der API zu verwenden, ersetzen Sie in der obigen URL v2 durch v1.
+>
 
 ## <a name="response"></a>Antwort
 
         {
             "id": "enrollments/100/billingperiods/201507/balancesummaries",
-              "billingPeriodId": 201507,
-              "currencyCode": "USD",
-              "beginningBalance": 0,
-              "endingBalance": 1.1,
-              "newPurchases": 1,
-              "adjustments": 1.1,
-              "utilized": 1.1,
-              "serviceOverage": 1,
-              "chargesBilledSeparately": 1,
-              "totalOverage": 1,
-              "totalUsage": 1.1,
-              "azureMarketplaceServiceCharges": 1,
-              "newPurchasesDetails": [
+            "billingPeriodId": 201507,
+            "currencyCode": "USD",
+            "beginningBalance": 0,
+            "endingBalance": 1.1,
+            "newPurchases": 1,
+            "adjustments": 1.1,
+            "utilized": 1.1,
+            "serviceOverage": 1,
+            "chargesBilledSeparately": 1,
+            "totalOverage": 1,
+            "totalUsage": 1.1,
+            "azureMarketplaceServiceCharges": 1,
+            "newPurchasesDetails": [
                 {
-                  "name": "",
-                  "value": 1
+                "name": "",
+                "value": 1
                 }
-              ],
-              "adjustmentDetails": [
+            ],
+            "adjustmentDetails": [
                 {
-                  "name": "Promo Credit",
-                  "value": 1.1
+                "name": "Promo Credit",
+                "value": 1.1
                 },
                 {
-                  "name": "SIE Credit",
-                  "value": 1.0
+                "name": "SIE Credit",
+                "value": 1.0
                 }
-              ]
+            ]
         }
 
 
@@ -95,6 +97,7 @@ Allgemeine Headereigenschaften, die hinzugefügt werden müssen, werden [hier](b
 
 <br/>
 ## <a name="see-also"></a>Weitere Informationen
+
 * [API für Abrechnungszeiträume](billing-enterprise-api-billing-periods.md)
 
 * [API für Verwendungsdetails](billing-enterprise-api-usage-detail.md) 
