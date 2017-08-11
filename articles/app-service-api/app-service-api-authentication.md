@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2016
 ms.author: alkarche
-translationtype: Human Translation
-ms.sourcegitcommit: b75f7aa757679a29a42cdfc04799873ee30bab2e
-ms.openlocfilehash: cd66296718d8ae3cd2bcd69c66f54684f57d7ece
-ms.lasthandoff: 01/20/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
+ms.openlocfilehash: f9fd533dfbd54517232f9dae5000ed4779baebd4
+ms.contentlocale: de-de
+ms.lasthandoff: 07/24/2017
 
 ---
 # <a name="authentication-and-authorization-for-api-apps-in-azure-app-service"></a>Authentifizierung und Autorisierung für API-Apps in Azure App Service
@@ -98,8 +98,8 @@ Weitere Informationen zur Authentifizierung und Autorisierung in Azure App Servi
 Weitere Informationen zu OAuth 2.0, OpenID Connect und JSON-Webtoken (JWT) finden Sie in den folgenden Ressourcen.
 
 * [Getting started with OAuth 2.0 (in englischer Sprache) (in englischer Sprache) (in englischer Sprache)](http://shop.oreilly.com/product/0636920021810.do "Getting Started with OAuth 2.0") 
-* [Introduction to OAuth2, OpenID Connect and JSON Web Tokens (JWT) - PluralSight Course (in englischer Sprache)](http://www.pluralsight.com/courses/oauth2-json-web-tokens-openid-connect-introduction) 
-* [Building and Securing a RESTful API for Multiple Clients in ASP.NET - PluralSight course (in englischer Sprache)](http://www.pluralsight.com/courses/building-securing-restful-api-aspdotnet)
+* [Introduction to OAuth2, OpenID Connect and JSON Web Tokens (JWT) (Einführung in OAuth2, OpenID Connect und JSON Web Tokens (JWT)) – PluralSight-Schulung](http://www.pluralsight.com/courses/oauth2-json-web-tokens-openid-connect-introduction) 
+* [Building and Securing a RESTful API for Multiple Clients in ASP.NET (Erstellen und Sichern einer RESTful-API für mehrere Clients in ASP.NET) – PluralSight-Schulung](http://www.pluralsight.com/courses/building-securing-restful-api-aspdotnet)
 
 Weitere Informationen zu Azure Active Directory finden Sie in den folgenden Ressourcen:
 

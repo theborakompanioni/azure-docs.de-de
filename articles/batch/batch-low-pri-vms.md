@@ -9,14 +9,13 @@ ms.service: batch
 ms.devlang: multiple
 ms.topic: article
 ms.workload: na
-ms.date: 05/05/2017
+ms.date: 07/21/2017
 ms.author: markscu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 69e26eaf4aedaf17b58091420430ca996c01cf69
+ms.translationtype: HT
+ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
+ms.openlocfilehash: 9bf0ac322020d8a8453011c3207c1930175db6d3
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 07/24/2017
 
 ---
 
@@ -29,6 +28,8 @@ VMs mit niedriger Priorität nutzen überschüssige Kapazitäten in Azure. Wenn 
 Der Nachteil der Verwendung von VMs mit niedriger Priorität ist, dass diese VMs vorzeitig entfernt werden können, wenn keine überschüssigen Kapazitäten in Azure verfügbar sind. Aus diesem Grund sind VMs mit niedriger Priorität am besten für bestimmte Arten von Workloads geeignet. Verwenden Sie VMs mit niedriger Priorität für Batch und asynchrone Verarbeitungsworkloads, bei denen der Zeitpunkt des Auftragsabschlusses flexibel ist und die Arbeit über viele VMs verteilt wird.
 
 VMs mit niedriger Priorität sind deutlich weniger kostenaufwendig als dedizierte VMs. Ausführliche Preisinformationen finden Sie unter [Preise für Batch](https://azure.microsoft.com/pricing/details/batch/).
+
+Zusätzliche Erläuterungen zu VMs mit niedriger Priorität finden Sie in der Blogbeitragsankündigung: [Batchcomputing zu einem Bruchteil des Preises](https://azure.microsoft.com/blog/announcing-public-preview-of-azure-batch-low-priority-vms/).
 
 > [!IMPORTANT]
 > VMs mit niedriger Priorität sind derzeit in der Vorschau verfügbar und stehen nur für in Batch ausgeführte Workloads zur Verfügung. 
@@ -72,6 +73,9 @@ Azure Batch stellt verschiedene Funktionen bereit, die die vorteilhafte Nutzung 
 -   In Batchpools wird automatisch die Zielanzahl von VMs mit niedriger Priorität angestrebt. Wenn VMs vorzeitig entfernt werden, versucht Batch, die verlorene Kapazität auszugleichen und das Ziel wieder zu erreichen.
 
 -   Wenn Aufgaben unterbrochen werden, erkennt Batch dies automatisch und stellt Aufgaben für die erneute Ausführung wieder in die Warteschlange.
+
+-   VMs mit niedriger Priorität verfügen über ein Kernkontingent, das von dem dedizierter VMs abweicht. 
+    Das Kontingent für VMs mit niedriger Priorität ist höher als bei dedizierten VMs, da VMs mit niedriger Priorität weniger kosten. Weitere Informationen finden Sie im Artikel [Batch-Dienst – Kontingente und Grenzwerte](batch-quota-limit.md#resource-quotas).    
 
 > [!NOTE]
 > VMs mit niedriger Priorität werden derzeit für Batch-Konten, in denen der Poolzuteilungsmodus auf [Benutzerabonnement](batch-account-create-portal.md#user-subscription-mode) festgelegt ist, nicht unterstützt.
@@ -167,6 +171,22 @@ VMs werden gelegentlich vorzeitig entfernt. In diesem Fall geschieht in Batch Fo
 -   Die VM wird effektiv gelöscht, sodass alle auf der VM lokal gespeicherten Daten verloren gehen.
 -   Der Pool versucht fortlaufend, die Zielanzahl der verfügbaren Knoten mit niedriger Priorität zu erreichen. Wenn Ersatzkapazitäten gefunden werden, behalten die Knoten ihre IDs bei, werden jedoch erneut initialisiert und durchlaufen wieder die Zustände **Erstellen** und **Starten**, bevor sie zum Planen von Aufgaben verfügbar sind.
 -   Die Anzahl der vorzeitigen Entfernungen ist als Metrik im Azure-Portal verfügbar.
+
+## <a name="metrics"></a>Metriken
+
+Im [Azure-Portal](https://portal.azure.com) sind neue Metriken für Knoten mit niedriger Priorität verfügbar. Diese Metriken sind:
+
+- Anzahl der Knoten mit niedriger Priorität
+- Anzahl von Kernen mit niedriger Priorität 
+- Anzahl der vorzeitig entfernten Knoten
+
+Metriken im Azure-Portal anzeigen:
+
+1. Navigieren Sie zu Ihrem Batch-Konto im Verwaltungsportal, und zeigen Sie die Einstellungen für Ihr Batch-Konto an.
+2. Wählen Sie **Metriken** im Abschnitt **Überwachung** aus.
+3. Wählen Sie die Metriken, die Sie erhalten möchten, aus der Liste **Verfügbare Metriken** aus.
+
+![Metriken für Knoten mit niedriger Priorität](media/batch-low-pri-vms/low-pri-metrics.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -9,11 +9,11 @@ editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
 ms.date: 05/23/2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
-ms.openlocfilehash: 20ca0abab5e17f82b94a31c1b2c9a0942ba9508a
+ms.translationtype: HT
+ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
+ms.openlocfilehash: d9ec4556d57ff1975a93d806237ad0c7416b9988
 ms.contentlocale: de-de
-ms.lasthandoff: 05/25/2017
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="azure-database-for-mysql-options-and-performance-understand-whats-available-in-each-pricing-tier"></a>Optionen und Leistung von Azure-Datenbank für MySQL: Übersicht über die verfügbaren Funktionen in den einzelnen Tarifen
@@ -22,7 +22,7 @@ Wenn Sie einen Azure-Datenbank für MySQL-Server erstellen, treffen Sie drei Hau
 - Compute-Einheiten
 - Speicher (GB)
 
-Für jeden Tarif steht je nach Anforderungen der Workload ein Bereich von Leistungsebenen (Computeeinheiten) zur Auswahl. Bei höheren Leistungsebenen stehen für den Server zusätzliche Ressourcen zur Verfügung, um einen höheren Durchsatz zu ermöglichen. Sie können die Leistungsebene des Servers innerhalb eines Tarifs praktisch ohne Ausfallzeiten der Anwendung ändern.
+Für jeden Tarif stehen je nach Anforderungen der Workload verschiedene Leistungsebenen (Compute-Einheiten) zur Auswahl. Bei höheren Leistungsebenen stehen für den Server zusätzliche Ressourcen zur Verfügung, um einen höheren Durchsatz zu ermöglichen. Sie können die Leistungsebene des Servers innerhalb eines Tarifs praktisch ohne Ausfallzeiten der Anwendung ändern.
 
 > [!IMPORTANT]
 > Solange der Dienst als Public Preview verfügbar ist, besteht keine garantierte Vereinbarung zum Servicelevel (SLA).
@@ -38,11 +38,11 @@ In der folgenden Tabelle sind Beispiele für Tarife aufgeführt, die sich für u
 | :----------- | :----------------|
 | Basic | Diese Option ist am besten für kleine Workloads geeignet, die skalierbare Compute- und Speichereinheiten ohne IOPS-Garantie erfordern. Beispiele hierfür sind Server, die für die Entwicklung, für Tests oder für kleine, selten verwendete Anwendungen verwendet werden. |
 | Standard | Die ideale Wahl für Cloudanwendungen, die eine IOPS-Garantie mit hohem Durchsatz benötigen. Hierzu zählen beispielsweise Web- oder Analyseanwendungen. |
-| Premium | Am besten geeignet für Workloads, die für Transaktionen und E/A-Vorgänge geringe Latenzen benötigen. Sie bietet optimale Unterstützung für viele gleichzeitige Benutzer. Er gilt für Datenbanken, die unternehmenskritische Anwendungen unterstützen.<br />Der Tarif Premium ist in der Vorschauversion nicht verfügbar. |
+| Premium | Am besten geeignet für Workloads, die für Transaktionen und E/A-Vorgänge kurze Wartezeiten benötigen. Sie bietet optimale Unterstützung für viele gleichzeitige Benutzer. Er gilt für Datenbanken, die unternehmenskritische Anwendungen unterstützen.<br />Der Tarif Premium ist in der Vorschauversion nicht verfügbar. |
 
 Um eine Auswahl für einen Tarif zu treffen, müssen Sie zunächst festlegen, ob Ihre Workload eine IOPS-Garantie erfordert. Wenn dies der Fall ist, verwenden Sie den Tarif Standard.
 
-| **Features der Tarife** | **Basic** | **Standard** |
+| **Merkmale der Tarife** | **Basic** | **Standard** |
 | :------------------------ | :-------- | :----------- |
 | Max. Anzahl von Compute-Einheiten | 100 | 800 | 
 | Max. Gesamtspeicher | 1 TB | 1 TB | 
@@ -51,6 +51,9 @@ Um eine Auswahl für einen Tarif zu treffen, müssen Sie zunächst festlegen, ob
 | Aufbewahrungszeitraum von Datenbanksicherungen | 7 Tage | 35 Tage | 
 
 Sie können den Tarif während der Vorschauphase nicht wechseln, nachdem der Server erstellt wurde. In Zukunft wird es jedoch möglich sein, Upgrades oder Downgrades zwischen den Tarifen für Server durchzuführen.
+
+## <a name="understand-the-price"></a>Informationen zum Preis
+Klicken Sie beim Erstellen einer neuen Azure-Datenbank für MySQL im [Azure-Portal](https://portal.azure.com/#create/Microsoft.MySQLServer) auf das Blatt **Tarif**, dann werden die monatlichen Kosten angezeigt, basierend auf den ausgewählten Optionen. Wenn Sie nicht über ein Azure-Abonnement verfügen, verwenden Sie den Azure-Preisrechner, um einen geschätzten Preis zu erhalten. Besuchen Sie die Website des [Azure-Preisrechners](https://azure.microsoft.com/pricing/calculator/), klicken Sie auf **Elemente hinzufügen**, erweitern Sie die Kategorie **Datenbanken**, und wählen Sie **Azure-Datenbank für MySQL** aus, um die Optionen anzupassen.
 
 ## <a name="choose-a-performance-level-compute-units"></a>Auswählen einer Leistungsebene (Computeeinheiten)
 Nachdem Sie den Tarif für Ihren Azure-Datenbank für MySQL-Server ermittelt haben, können Sie die Leistungsebene durch Auswählen der Anzahl von Computeeinheiten festlegen. Die 200 und 400 Computeeinheiten im Tarif Standard sind häufig ein guter Ausgangspunkt für Anwendungen, die eine höhere Benutzerparallelität für ihre Web- oder Analyseworkloads erfordern. Sie werden bei Bedarf inkrementell angepasst. 

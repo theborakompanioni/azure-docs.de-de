@@ -12,17 +12,16 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 05/06/2017
-ms.author: cfreeman
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: baa8880e47c827e09f6027637d73f2522fec60b9
+ms.author: sewhee
+ms.translationtype: HT
+ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
+ms.openlocfilehash: edcf294856582569c00f7cf49beb3a481e28d7d8
 ms.contentlocale: de-de
-ms.lasthandoff: 04/07/2017
-
+ms.lasthandoff: 08/02/2017
 
 ---
 # <a name="a-tour-of-analytics-in-application-insights"></a>Einführung in Analytics in Application Insights
-[Analytics](app-insights-analytics.md) ist die leistungsfähige Suchfunktion von [Application Insights](app-insights-overview.md). Auf diesen Seiten wird die Analytics-Abfragesprache beschrieben.
+[Analytics](app-insights-analytics.md) ist die leistungsfähige Suchfunktion von [Application Insights](app-insights-overview.md). Auf diesen Seiten wird die Log Analytics-Abfragesprache beschrieben.
 
 * **[Sehen Sie sich das Einführungsvideo an.](https://applicationanalytics-media.azureedge.net/home_page_video.mp4)**
 * **[Testen Sie Analytics mit unseren simulierten Daten](https://analytics.applicationinsights.io/demo)**, wenn Ihre App noch keine Daten an Application Insights sendet.
@@ -35,7 +34,7 @@ Sehen Sie sich zu Beginn einige grundlegende Abfragen im Detail an.
 
 ![Öffnen Sie unter „portal.azure.com“ die Application Insights-Ressource, und wählen Sie „Analytics“.](./media/app-insights-analytics-tour/001.png)
 
-## <a name="takeapp-insights-analytics-referencemdtake-operator-show-me-n-rows"></a>[take](app-insights-analytics-reference.md#take-operator): Anzeigen von n Zeilen
+## <a name="takehttpsdocsloganalyticsioquerylanguagequerylanguagetakeoperatorhtml-show-me-n-rows"></a>[take](https://docs.loganalytics.io/queryLanguage/query_language_takeoperator.html): Anzeigen von n Zeilen
 Datenpunkte, mit denen Benutzervorgänge protokolliert werden (normalerweise von der Web-App empfangene HTTP-Anforderungen), werden in einer Tabelle mit dem Namen `requests`gespeichert. Jede Zeile ist ein Telemetriedatenpunkt, der aus dem Application Insights-SDK in Ihrer App empfangen wird.
 
 Wir beginnen, indem wir einige Beispielzeilen der Tabelle untersuchen:
@@ -60,7 +59,7 @@ Erweitern Sie ein Element, um die Details anzuzeigen:
 >
 >
 
-## <a name="topapp-insights-analytics-referencemdtop-operator-and-sortapp-insights-analytics-referencemdsort-operator"></a>[Top](app-insights-analytics-reference.md#top-operator) und [Sort](app-insights-analytics-reference.md#sort-operator)
+## <a name="tophttpsdocsloganalyticsioquerylanguagequerylanguagetopoperatorhtml-and-sorthttpsdocsloganalyticsioquerylanguagequerylanguagesortoperatorhtml"></a>[Top](https://docs.loganalytics.io/queryLanguage/query_language_topoperator.html) und [Sort](https://docs.loganalytics.io/queryLanguage/query_language_sortoperator.html)
 `take` ist hilfreich, um schnell eine Stichprobe abzurufen. Die Zeilen aus der Tabelle werden aber nicht in einer bestimmten Reihenfolge angezeigt. Verwenden Sie für eine sortierte Ansicht `top` (für eine Stichprobe) oder `sort` (für die gesamte Tabelle).
 
 Zeigen Sie die ersten n Zeilen, sortiert nach einer bestimmten Spalte an:
@@ -86,7 +85,7 @@ Das Ergebnis wäre identisch, würde jedoch etwas langsamer ausgeführt. (Sie k�
 
 Die Spaltenüberschriften in der Tabellenansicht können auch zum Sortieren der Ergebnisse auf dem Bildschirm verwendet werden. Wenn Sie aber `take` oder `top` verwendet haben, um nur einen Teil einer Tabelle abzurufen, ordnen Sie nur die Reihenfolge der abgerufenen Datensätze neu.
 
-## <a name="whereapp-insights-analytics-referencemdwhere-operator-filtering-on-a-condition"></a>[where:](app-insights-analytics-reference.md#where-operator)Filtern nach einer Bedingung
+## <a name="wherehttpsdocsloganalyticsioquerylanguagequerylanguagewhereoperatorhtml-filtering-on-a-condition"></a>[where:](https://docs.loganalytics.io/queryLanguage/query_language_whereoperator.html)Filtern nach einer Bedingung
 
 Lassen Sie uns nur Anforderungen prüfen, die einen bestimmten Ergebniscode zurückgegeben haben:
 
@@ -105,7 +104,7 @@ Der `where` -Operator akzeptiert einen booleschen Ausdruck. Dazu einige wichtige
 * `==`, `<>`, `!=`: Gleich und ungleich
 * `=~`, `!~`: Zeichenfolge ohne Beachtung der Groß-/Kleinschreibung, gleich und ungleich Es gibt viele weitere Zeichenfolgenvergleichsoperatoren.
 
-Erfahren Sie mehr über [skalare Ausdrücke](app-insights-analytics-reference.md#scalars).
+<!---Read all about [scalar expressions]().--->
 
 ### <a name="getting-the-right-type"></a>Abrufen des richtigen Typs
 Suchen Sie nach nicht erfolgreichen Anforderungen:
@@ -115,10 +114,11 @@ Suchen Sie nach nicht erfolgreichen Anforderungen:
     requests
     | where isnotempty(resultCode) and toint(resultCode) >= 400
 ```
+<!---
+`resultCode` has type string, so we must cast it app-insights-analytics-reference.md#casts for a numeric comparison.
+--->
 
-`resultCode` ist vom Typ „string“, sodass wir das Element für einen numerischen Vergleich [umwandeln](app-insights-analytics-reference.md#casts) müssen.
-
-## <a name="time-range"></a>Zeitbereich
+## <a name="time"></a>Time
 
 Standardmäßig sind Ihre Abfragen auf die letzten 24 Stunden beschränkt. Doch Sie können diesen Wert ändern:
 
@@ -160,11 +160,11 @@ Weitere Beispiele:
 
 ```
 
-[Verweis auf Datum und Uhrzeit](app-insights-analytics-reference.md#date-and-time).
+[Verweis auf Datum und Uhrzeit](https://docs.loganalytics.io/concepts/concepts_datatypes_datetime.html).
 
 
-## <a name="projectapp-insights-analytics-referencemdproject-operator-select-rename-and-compute-columns"></a>[project](app-insights-analytics-reference.md#project-operator): Auswählen, Umbenennen und Berechnen von Spalten
-Verwenden Sie [`project`](app-insights-analytics-reference.md#project-operator), um nur die gewünschten Spalten auszuwählen:
+## <a name="projecthttpsdocsloganalyticsioquerylanguagequerylanguageprojectoperatorhtml-select-rename-and-compute-columns"></a>[project](https://docs.loganalytics.io/queryLanguage/query_language_projectoperator.html): Auswählen, Umbenennen und Berechnen von Spalten
+Verwenden Sie [`project`](https://docs.loganalytics.io/queryLanguage/query_language_projectoperator.html), um nur die gewünschten Spalten auszuwählen:
 
 ```AIQL
 
@@ -189,15 +189,15 @@ Sie können auch Spalten umbenennen und neue definieren:
 
 ![result](./media/app-insights-analytics-tour/270.png)
 
-* [Spaltennamen](app-insights-analytics-reference.md#names) können Leerzeichen oder Symbole enthalten, wenn diese wie folgt in Klammern stehen: `['...']` oder `["..."]`.
+* Spaltennamen können Leerzeichen oder Symbole enthalten, wenn diese wie folgt in Klammern stehen: `['...']` oder `["..."]`.
 * `%` ist der übliche Modulo-Operator.
 * `1d` (die Ziffer Eins, gefolgt von einem „d“) ist ein Zeitraumliteral für einen Tag. Dies sind einige weitere Zeitraumliterale: `12h`, `30m`, `10s`, `0.01s`.
 * `floor` (Alias `bin`) rundet einen Wert auf das nächste Vielfache des von Ihnen angegebenen Basiswerts ab. `floor(aTime, 1s)` rundet demnach eine Zeit auf die nächstniedrigere Sekunde ab.
 
-[Ausdrücke](app-insights-analytics-reference.md#scalars) können alle üblichen Operatoren (`+`,`-` usw.) enthalten. Zudem gibt es zahlreiche nützliche Funktionen.
+Ausdrücke können alle üblichen Operatoren (`+`, `-`, ...) enthalten. Zudem gibt es zahlreiche nützliche Funktionen.
 
-## <a name="extendapp-insights-analytics-referencemdextend-operator-compute-columns"></a>[extend:](app-insights-analytics-reference.md#extend-operator)Berechnen von Spalten
-Wenn Sie nur neue Spalten den vorhandenen hinzufügen möchten, verwenden Sie [`extend`](app-insights-analytics-reference.md#extend-operator):
+## <a name="extend"></a>Extend
+Wenn Sie nur neue Spalten den vorhandenen hinzufügen möchten, verwenden Sie [`extend`](https://docs.loganalytics.io/queryLanguage/query_language_extendoperator.html):
 
 ```AIQL
 
@@ -206,7 +206,7 @@ Wenn Sie nur neue Spalten den vorhandenen hinzufügen möchten, verwenden Sie [`
     | extend timeOfDay = floor(timestamp % 1d, 1s)
 ```
 
-[`extend`](app-insights-analytics-reference.md#extend-operator) ist weniger ausführlich als [`project`](app-insights-analytics-reference.md#project-operator), wenn Sie alle vorhandenen Spalten beibehalten möchten.
+[`extend`](https://docs.loganalytics.io/queryLanguage/query_language_extendoperator.html) ist weniger ausführlich als [`project`](https://docs.loganalytics.io/queryLanguage/query_language_projectoperator.html), wenn Sie alle vorhandenen Spalten beibehalten möchten.
 
 ### <a name="convert-to-local-time"></a>Konvertieren in die Ortszeit
 
@@ -220,7 +220,7 @@ Zeitstempel werden stets in UTC angegeben. Für die Pazifikküste der USA gilt i
 ```
 
 
-## <a name="summarizeapp-insights-analytics-referencemdsummarize-operator-aggregate-groups-of-rows"></a>[summarize](app-insights-analytics-reference.md#summarize-operator): Aggregieren von Zeilengruppen
+## <a name="summarizehttpsdocsloganalyticsioquerylanguagequerylanguagesummarizeoperatorhtml-aggregate-groups-of-rows"></a>[summarize](https://docs.loganalytics.io/queryLanguage/query_language_summarizeoperator.html): Aggregieren von Zeilengruppen
 `Summarize` wendet eine angegebene *Aggregationsfunktion* auf Zeilengruppen an.
 
 Beispielsweise wird der Zeitraum, den Ihre Web-App zum Antworten auf eine Anforderung benötigt, im Feld `duration`gemeldet. Die durchschnittliche Reaktionszeit für alle Anforderungen lautet:
@@ -258,7 +258,7 @@ Mit dem Summieren von itemCount erhalten Sie daher eine gute Schätzung der ursp
 
 Zudem ist die Aggregation `count()` (und ein Zählvorgang) für die Fälle vorhanden, in denen Sie wirklich die Anzahl von Zeilen in einer Gruppe ermitteln möchten.
 
-Es gibt eine ganze Reihe von [Aggregationsfunktionen](app-insights-analytics-reference.md#aggregations).
+Es gibt eine ganze Reihe von [Aggregationsfunktionen](https://docs.loganalytics.io/learn/tutorials/aggregations.html).
 
 ## <a name="charting-the-results"></a>Darstellen der Ergebnisse in Diagrammen
 ```AIQL
@@ -399,7 +399,7 @@ Die `where` -Klausel schließt einmalige Sitzungen (sessionDuration==0) aus und 
 
 ![](./media/app-insights-analytics-tour/290.png)
 
-## <a name="percentilesapp-insights-analytics-referencemdpercentiles"></a>[Quantile](app-insights-analytics-reference.md#percentiles)
+## <a name="percentileshttpsdocsloganalyticsioquerylanguagequerylanguagepercentilesaggfunctionhtml"></a>[Quantile](https://docs.loganalytics.io/queryLanguage/query_language_percentiles_aggfunction.html)
 Welche Bereichsdauern decken verschiedene Prozentsätze von Sitzungen ab?
 
 Verwenden Sie die obige Abfrage, aber ersetzen Sie die letzte Zeile:
@@ -460,7 +460,7 @@ Um Ausnahmen im Zusammenhang mit einer Anforderung zu suchen, die eine Fehlerant
 Es ist üblich, `project` zu verwenden, um vor dem Verknüpfen nur die Spalten auszuwählen, die wir benötigen.
 In den gleichen Klauseln benennen wir die Zeitstempelspalte um.
 
-## <a name="letapp-insights-analytics-referencemdlet-clause-assign-a-result-to-a-variable"></a>[let](app-insights-analytics-reference.md#let-clause): Zuweisen eines Ergebnisses zu einer Variablen
+## <a name="lethttpsdocsloganalyticsioquerylanguagequerylanguageletstatementhtml-assign-a-result-to-a-variable"></a>[let](https://docs.loganalytics.io/queryLanguage/query_language_letstatement.html): Zuweisen eines Ergebnisses zu einer Variablen
 
 Verwenden Sie `let`, um die einzelnen Teile des vorherigen Ausdrucks zu trennen. Die Ergebnisse sind wie folgt unverändert:
 
@@ -520,7 +520,7 @@ Sie können sie vereinfachen, indem Sie nur die für Sie interessanten Eigenscha
     | extend method1 = tostring(details[0].parsedStack[1].method)
 ```
 
-Beachten Sie, dass eine [Umwandlung](app-insights-analytics-reference.md#casts) in den entsprechenden Typ vorgenommen werden muss.
+Beachten Sie, dass das Ergebnis in den entsprechenden Typ umgewandelt werden muss.
 
 
 ## <a name="custom-properties-and-measurements"></a>Benutzerdefinierte Eigenschaften und Messungen

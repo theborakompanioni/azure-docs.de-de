@@ -12,14 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/06/2017
+ms.date: 07/20/2017
 ms.author: juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
-ms.openlocfilehash: 3bad3219b087523125047f24d643ffdc5e24caa0
+ms.translationtype: HT
+ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
+ms.openlocfilehash: e4bc03c624c9930d7a9b0bef22d3179633de3365
 ms.contentlocale: de-de
-ms.lasthandoff: 06/07/2017
-
+ms.lasthandoff: 07/24/2017
 
 ---
 #  <a name="use-azure-media-encoder-standard-to-auto-generate-a-bitrate-ladder"></a>Verwenden von Azure Media Encoder Standard zum automatischen Generieren einer Reihe von Bitraten
@@ -28,10 +27,13 @@ ms.lasthandoff: 06/07/2017
 
 In diesem Thema wird gezeigt, wie Sie mit Media Encoder Standard (MES) automatisch eine Reihe von Bitraten/Auflösungs-Paaren auf Basis der eingegebenen Auflösung und Bitrate generieren können. Die automatisch generierte Voreinstellung wird nie die eingegebene Auflösung und Bitrate übersteigen. Ist die Eingabe beispielsweise 720p bei 3MBit/s, bleibt die Ausgabe bestenfalls bei 720p, und es beginnt mit niedrigeren Raten als 3MBit/s.
 
-Um dieses Feature verwenden zu können, müssen Sie beim Erstellen einer Codierungsaufgabe die Voreinstellung **Adaptives Streaming** angeben. Bei Verwendung der Voreinstellung **Adaptives Streaming** begrenzt der MES-Encoder eine Reihe von Bitraten/Auflösungs-Paaren intelligent. Allerdings können Sie die Codierungskosten nicht steuern, da der Dienst bestimmt, wie viele Ebenen bei welcher Auflösung verwendet werden. Am [Ende](#output) dieses Themas finden Sie Beispiele von Ausgabeebenen, die von MES als Ergebnis der Codierung mit der Voreinstellung **Adaptives Streaming** erzeugt wurden.
+### <a name="encoding-for-streaming-only"></a>Codierung nur für Streaming
 
->[!NOTE]
-> Diese Voreinstellung sollte nur verwendet werden, wenn ein Ausgabeasset erstellt werden soll, das gestreamt werden kann. Insbesondere wird das Ausgabeasset MP4-Dateien enthalten, wo Audio- und Videodaten sich nicht überlappen. Wenn die Ausgabe MP4-Dateien enthalten muss, wo Audio- und Videodaten sich überlappen (z.B. zur Verwendung als Datei für progressiven Download), verwenden Sie eine der [in diesem Abschnitt](media-services-mes-presets-overview.md) aufgeführten Voreinstellungen.
+Wenn Sie Ihr Quellvideo nur für das Streamen codieren möchten, verwenden Sie die Voreinstellung „Adaptives Streaming“, wenn Sie eine Codierungsaufgabe erstellen. Bei Verwendung der Voreinstellung **Adaptives Streaming** begrenzt der MES-Encoder eine Reihe von Bitraten/Auflösungs-Paaren intelligent. Allerdings können Sie die Codierungskosten nicht steuern, da der Dienst bestimmt, wie viele Ebenen bei welcher Auflösung verwendet werden. Am Ende dieses Themas finden Sie Beispiele von Ausgabeebenen, die von MES als Ergebnis der Codierung mit der Voreinstellung **Adaptives Streaming** erzeugt wurden. Das Ausgabeasset wird MP4-Dateien enthalten, wo Audio- und Videodaten sich nicht überlappen.
+
+### <a name="encoding-for-streaming-and-progressive-download"></a>Codieren für das Streamen und den progressiven Download
+
+Wenn Sie Ihr Quellvideo für das Streamen sowie für das Erstellen von MP4-Dateien für den progressiven Download codieren möchten, sollten Sie die Voreinstellung „Content Adaptive Multiple Bitrate MP4“ (Für den Inhalt angepasste Content Adaptive multiple Bitrate MP4) verwenden, wenn Sie eine Codierungsaufgabe erstellen. Wenn Sie die Voreinstellung **Content Adaptive Multiple Bitrate MP4** verwenden, wendet der MES-Encoder die gleiche Codierungslogik wie oben an. Nun enthält aber das Ausgabeasset MP4-Dateien, wobei sich Audio und Video überlappen. Sie können eine dieser MP4-Dateien als progressive Download-Datei verwenden (z.B. die Version mit der höchsten Bitrate).
 
 ## <a id="encoding_with_dotnet"></a>Codierung mit dem Media Services .NET SDK
 
@@ -44,123 +46,124 @@ Im folgenden Codebeispiel wird das Media Services-.NET-SDK verwendet, um die fol
 - Fügen Sie einen Ereignishandler hinzu, um den Auftragsstatus zu überprüfen.
 - Übermitteln des Auftrags.
 
-        using System;
-        using System.Configuration;
-        using System.IO;
-        using System.Linq;
-        using Microsoft.WindowsAzure.MediaServices.Client;
-        using System.Threading;
+#### <a name="create-and-configure-a-visual-studio-project"></a>Erstellen und Konfigurieren eines Visual Studio-Projekts
 
-        namespace AdaptiveStreamingMESPresest
+Richten Sie Ihre Entwicklungsumgebung ein, und füllen Sie die Datei „app.config“ mit Verbindungsinformationen, wie unter [Media Services-Entwicklung mit .NET](media-services-dotnet-how-to-use.md) beschrieben. 
+
+#### <a name="example"></a>Beispiel
+
+    using System;
+    using System.Configuration;
+    using System.Linq;
+    using Microsoft.WindowsAzure.MediaServices.Client;
+    using System.Threading;
+
+    namespace AdaptiveStreamingMESPresest
+    {
+        class Program
         {
-            class Program
-            {
-            // Read values from the App.config file.
-            private static readonly string _mediaServicesAccountName =
-                ConfigurationManager.AppSettings["MediaServicesAccountName"];
-            private static readonly string _mediaServicesAccountKey =
-                ConfigurationManager.AppSettings["MediaServicesAccountKey"];
+        // Read values from the App.config file.
+        private static readonly string _AADTenantDomain =
+        ConfigurationManager.AppSettings["AADTenantDomain"];
+        private static readonly string _RESTAPIEndpoint =
+        ConfigurationManager.AppSettings["MediaServiceRESTAPIEndpoint"];
 
-            // Field for service context.
-            private static CloudMediaContext _context = null;
-            private static MediaServicesCredentials _cachedCredentials = null;
-            static void Main(string[] args)
-            {
-                // Create and cache the Media Services credentials in a static class variable.
-                _cachedCredentials = new MediaServicesCredentials(
-                        _mediaServicesAccountName,
-                        _mediaServicesAccountKey);
-                // Used the chached credentials to create CloudMediaContext.
-                _context = new CloudMediaContext(_cachedCredentials);
+        // Field for service context.
+        private static CloudMediaContext _context = null;
 
-                // Get an uploaded asset.
-                var asset = _context.Assets.FirstOrDefault();
+        static void Main(string[] args)
+        {
+            var tokenCredentials = new AzureAdTokenCredentials(_AADTenantDomain, AzureEnvironments.AzureCloudEnvironment);
+            var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
 
-                // Encode and generate the output using the "Adaptive Streaming" preset.
-                EncodeToAdaptiveBitrateMP4Set(asset);
+            _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
 
-                Console.ReadLine();
-            }
+            // Get an uploaded asset.
+            var asset = _context.Assets.FirstOrDefault();
 
-            static public IAsset EncodeToAdaptiveBitrateMP4Set(IAsset asset)
-            {
-                // Declare a new job.
-                IJob job = _context.Jobs.Create("Media Encoder Standard Job");
+            // Encode and generate the output using the "Adaptive Streaming" preset.
+            EncodeToAdaptiveBitrateMP4Set(asset);
 
-                // Get a media processor reference, and pass to it the name of the 
-                // processor to use for the specific task.
-                IMediaProcessor processor = GetLatestMediaProcessorByName("Media Encoder Standard");
-
-                // Create a task
-                ITask task = job.Tasks.AddNew("Media Encoder Standard encoding task",
-                processor,
-                "Adaptive Streaming",
-                TaskOptions.None);
-
-                // Specify the input asset to be encoded.
-                task.InputAssets.Add(asset);
-                // Add an output asset to contain the results of the job. 
-                // This output is specified as AssetCreationOptions.None, which 
-                // means the output asset is not encrypted. 
-                task.OutputAssets.AddNew("Output asset",
-                AssetCreationOptions.None);
-
-                job.StateChanged += new EventHandler<JobStateChangedEventArgs>(JobStateChanged);
-                job.Submit();
-                job.GetExecutionProgressTask(CancellationToken.None).Wait();
-
-                return job.OutputMediaAssets[0];
-            }
-            private static void JobStateChanged(object sender, JobStateChangedEventArgs e)
-            {
-                Console.WriteLine("Job state changed event:");
-                Console.WriteLine("  Previous state: " + e.PreviousState);
-                Console.WriteLine("  Current state: " + e.CurrentState);
-                switch (e.CurrentState)
-                {
-                case JobState.Finished:
-                    Console.WriteLine();
-                    Console.WriteLine("Job is finished. Please wait while local tasks or downloads complete...");
-                    break;
-                case JobState.Canceling:
-                case JobState.Queued:
-                case JobState.Scheduled:
-                case JobState.Processing:
-                    Console.WriteLine("Please wait...\n");
-                    break;
-                case JobState.Canceled:
-                case JobState.Error:
-
-                    // Cast sender as a job.
-                    IJob job = (IJob)sender;
-
-                    // Display or log error details as needed.
-                    break;
-                default:
-                    break;
-                }
-            }
-            private static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
-            {
-                var processor = _context.MediaProcessors.Where(p => p.Name == mediaProcessorName).
-                ToList().OrderBy(p => new Version(p.Version)).LastOrDefault();
-
-                if (processor == null)
-                throw new ArgumentException(string.Format("Unknown media processor", mediaProcessorName));
-
-                return processor;
-            }
-
-            }
-
+            Console.ReadLine();
         }
+
+        static public IAsset EncodeToAdaptiveBitrateMP4Set(IAsset asset)
+        {
+            // Declare a new job.
+            IJob job = _context.Jobs.Create("Media Encoder Standard Job");
+
+            // Get a media processor reference, and pass to it the name of the 
+            // processor to use for the specific task.
+            IMediaProcessor processor = GetLatestMediaProcessorByName("Media Encoder Standard");
+
+            // Create a task
+            ITask task = job.Tasks.AddNew("Media Encoder Standard encoding task",
+            processor,
+            "Adaptive Streaming",
+            TaskOptions.None);
+
+            // Specify the input asset to be encoded.
+            task.InputAssets.Add(asset);
+            // Add an output asset to contain the results of the job. 
+            // This output is specified as AssetCreationOptions.None, which 
+            // means the output asset is not encrypted. 
+            task.OutputAssets.AddNew("Output asset",
+            AssetCreationOptions.None);
+
+            job.StateChanged += new EventHandler<JobStateChangedEventArgs>(JobStateChanged);
+            job.Submit();
+            job.GetExecutionProgressTask(CancellationToken.None).Wait();
+
+            return job.OutputMediaAssets[0];
+        }
+        private static void JobStateChanged(object sender, JobStateChangedEventArgs e)
+        {
+            Console.WriteLine("Job state changed event:");
+            Console.WriteLine("  Previous state: " + e.PreviousState);
+            Console.WriteLine("  Current state: " + e.CurrentState);
+            switch (e.CurrentState)
+            {
+            case JobState.Finished:
+                Console.WriteLine();
+                Console.WriteLine("Job is finished. Please wait while local tasks or downloads complete...");
+                break;
+            case JobState.Canceling:
+            case JobState.Queued:
+            case JobState.Scheduled:
+            case JobState.Processing:
+                Console.WriteLine("Please wait...\n");
+                break;
+            case JobState.Canceled:
+            case JobState.Error:
+
+                // Cast sender as a job.
+                IJob job = (IJob)sender;
+
+                // Display or log error details as needed.
+                break;
+            default:
+                break;
+            }
+        }
+        private static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
+        {
+            var processor = _context.MediaProcessors.Where(p => p.Name == mediaProcessorName).
+            ToList().OrderBy(p => new Version(p.Version)).LastOrDefault();
+
+            if (processor == null)
+            throw new ArgumentException(string.Format("Unknown media processor", mediaProcessorName));
+
+            return processor;
+        }
+        }
+    }
 
 ## <a id="output"></a>Ausgabe
 
 Dieser Abschnitt zeigt drei Beispiele von Ausgabeebenen, die von MES als Ergebnis der Codierung mit der Voreinstellung **Adaptives Streaming** erzeugt wurden. 
 
 ### <a name="example-1"></a>Beispiel 1
-Quelle mit Höhe „1080“ und Bildrate „29.970“ produziert 6 Videoebenen:
+Die Quelle mit der Höhe „1080“ und der Bildrate „29,970“ produziert 6 Videoebenen:
 
 |Ebene|Höhe|Breite|Bitrate(KBit/s)|
 |---|---|---|---|
@@ -172,7 +175,7 @@ Quelle mit Höhe „1080“ und Bildrate „29.970“ produziert 6 Videoebenen:
 |6|180|320|380|
 
 ### <a name="example-2"></a>Beispiel 2
-Quelle mit Höhe „720“ und Bildrate „23.970“ produziert 5 Videoebenen:
+Die Quelle mit der Höhe „720“ und der Bildrate „23,970“ produziert 5 Videoebenen:
 
 |Ebene|Höhe|Breite|Bitrate(KBit/s)|
 |---|---|---|---|
@@ -183,7 +186,7 @@ Quelle mit Höhe „720“ und Bildrate „23.970“ produziert 5 Videoebenen:
 |5|180|320|320|
 
 ### <a name="example-3"></a>Beispiel 3
-Quelle mit Höhe „360“ und Bildrate „29.970“ produziert 3 Videoebenen:
+Die Quelle mit der Höhe „360“ und der Bildrate „29,970“ produziert 3 Videoebenen:
 
 |Ebene|Höhe|Breite|Bitrate(KBit/s)|
 |---|---|---|---|

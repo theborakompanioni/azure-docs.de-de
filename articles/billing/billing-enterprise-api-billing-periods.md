@@ -15,15 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 04/25/2017
 ms.author: aedwin
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
-ms.openlocfilehash: ab8d7fefb64b1358bb1b9667d280cb53fc2f636c
+ms.translationtype: HT
+ms.sourcegitcommit: 6e76ac40e9da2754de1d1aa50af3cd4e04c067fe
+ms.openlocfilehash: c6880b79189e0683387a7aafbd6fa4805b3b42ef
 ms.contentlocale: de-de
-ms.lasthandoff: 05/03/2017
-
+ms.lasthandoff: 07/31/2017
 
 ---
-# <a name="reporting-apis-for-enterprise-customers---billing-periods-preview"></a>Berichterstellungs-APIs für Unternehmenskunden – Abrechnungszeiträume (Vorschau)
+# <a name="reporting-apis-for-enterprise-customers---billing-periods"></a>Berichterstellungs-APIs für Unternehmenskunden – Abrechnungszeiträume
 
 Die API für Abrechnungszeiträume gibt eine Liste von Abrechnungszeiträumen zurück, die Verbrauchsdaten für die angegebene Registrierung in umgekehrter chronologischer Reihenfolge enthalten. Jeder Zeitraum enthält eine Eigenschaft, die auf die API-Route für die vier Sätze von Daten verweist: BalanceSummary, UsageDetails, Marketplace Charges und PriceSheet. Wenn der Zeitraum keine Daten enthält, ist die entsprechende Eigenschaft „null“. 
 
@@ -33,25 +32,28 @@ Allgemeine Headereigenschaften, die hinzugefügt werden müssen, werden [hier](b
 
 |Methode | Anforderungs-URI|
 |-|-|
-|GET| https://consumption.azure.com/v1/enrollments/{enrollmentNumber}/billingperiods|
+|GET| https://consumption.azure.com/v2/enrollments/{enrollmentNumber}/billingperiods|
 
+> [!Note]
+> Um die Vorschauversion der API zu verwenden, ersetzen Sie in der obigen URL v2 durch v1.
+>
 
 ## <a name="response"></a>Antwort
  
     
     
-        [
+      [
             {
-                  "billingPeriodId": "201704",
-                  "billingStart": "2017-04-01T00:00:00Z",
-                  "billingEnd": "2017-04-30T11:59:59Z",
+                "billingPeriodId": "201704",
+                "billingStart": "2017-04-01T00:00:00Z",
+                "billingEnd": "2017-04-30T11:59:59Z",
                 "balanceSummary": "/v1/enrollments/100/billingperiods/201704/balancesummary",
-                  "usageDetails": "/v1/enrollments/100/billingperiods/201704/usagedetails",
-                  "marketplaceCharges": "/v1/enrollments/100/billingperiods/201704/marketplacecharges",
-                  "priceSheet": "/v1/enrollments/100/billingperiods/201704/pricesheet"
-            },            
+                "usageDetails": "/v1/enrollments/100/billingperiods/201704/usagedetails",
+                "marketplaceCharges": "/v1/enrollments/100/billingperiods/201704/marketplacecharges",
+                "priceSheet": "/v1/enrollments/100/billingperiods/201704/pricesheet"
+            },          
             ....
-        ]
+      ]
     
 
 **Definitionen der Antworteigenschaft**
@@ -68,6 +70,7 @@ Allgemeine Headereigenschaften, die hinzugefügt werden müssen, werden [hier](b
 
 <br/>
 ## <a name="see-also"></a>Weitere Informationen
+
 * [API für Bilanz und Zusammenfassung](billing-enterprise-api-balance-summary.md)
 
 * [API für Verwendungsdetails](billing-enterprise-api-usage-detail.md) 

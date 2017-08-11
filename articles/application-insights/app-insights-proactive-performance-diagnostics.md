@@ -12,20 +12,19 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 5/04/2017
-ms.author: cfreeman
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: 0e9c10b77110efe90239863ee603acbd54b17ead
+ms.author: sewhee
+ms.translationtype: HT
+ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
+ms.openlocfilehash: dab2e54dedf55f0d9a0b0b4e66d101ed7df94bfa
 ms.contentlocale: de-de
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="smart-detection---performance-anomalies"></a>Intelligente Erkennung – Leistungsabweichungen
 
 [Application Insights](app-insights-overview.md) analysiert die Leistung Ihrer Webanwendung automatisch und kann Sie vor potenziellen Problemen warnen. Sie lesen diese Information möglicherweise, weil Sie eine Benachrichtigung der intelligenten Erkennung erhalten haben.
 
-Für diese Funktion müssen Sie lediglich Ihre App für Application Insights (auf [ASP.NET](app-insights-asp-net.md), Java (app-insights-java-get-started.md) oder [Node.js](app-insights-nodejs.md) und in [Webseitencode](app-insights-javascript.md)) konfigurieren. Sie ist aktiv, wenn Ihre App genügend Telemetriedaten generiert.
+Für diese Funktion müssen Sie lediglich Ihre App für Application Insights (auf [ASP.NET](app-insights-asp-net.md), [Java](app-insights-java-get-started.md) oder [Node.js](app-insights-nodejs.md) und in [Webseitencode](app-insights-javascript.md)) konfigurieren. Sie ist aktiv, wenn Ihre App genügend Telemetriedaten generiert.
 
 ## <a name="when-would-i-get-a-smart-detection-notification"></a>Wann erhalte ich eine Benachrichtigung der intelligenten Erkennung?
 
@@ -192,3 +191,4 @@ Intelligente Erkennungen sind vollkommen automatisch. Vielleicht möchten Sie ab
 
 * [Einrichten von Warnungen in Application Insights](app-insights-alerts.md)
 * [Verfügbarkeitswebtests](app-insights-monitor-web-app-availability.md)
+

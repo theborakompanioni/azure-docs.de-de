@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/19/2016
 ms.author: tomfitz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
-ms.openlocfilehash: e2bfbdd5ca8ec178c2c32c7b52637a8ec7e88a4c
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: dcc31f7a8c85a8f7fbd554371a66fb1e348bca17
 ms.contentlocale: de-de
-ms.lasthandoff: 05/26/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="design-patterns-for-azure-resource-manager-templates-when-deploying-complex-solutions"></a>Entwurfsmuster für Azure Resource Manager-Vorlagen bei der Bereitstellung komplexer Lösungen
@@ -34,7 +33,7 @@ In Vorlagen werden die Vorteile des zugrunde liegenden Azure-Ressourcen-Managers
 * Anwenden der rollenbasierten Zugriffssteuerung, um Benutzern, Gruppen und Diensten den entsprechenden Zugriff zu gewähren
 * Verwenden von Kategoriezuordnungen, um Aufgaben wie z. B. Abrechnungsübersichten zu optimieren
 
-Dieser Artikel bietet Details zu Nutzungsszenarien sowie Architektur- und Implementierungsmustern, die während unserer Entwurfssitzungen und praktischen Vorlagenimplementierungen bei AzureCAT-Kunden (Azure Customer Advisory Team) bestimmt wurden. Diese keineswegs akademischen, bewährten Ansätze wurden von der Entwicklung von Vorlagen für zwölf führende Linux-basierte OSS-Technologien beeinflusst: Apache Kafka und Apache Spark, Cloudera, Couchbase, Hortonworks HDP, DataStax Enterprise powered by Apache Cassandra, Elasticsearch, Jenkins, MongoDB, Nagios, PostgreSQL, Redis und Nagios. 
+Dieser Artikel bietet Details zu Nutzungsszenarien sowie Architektur- und Implementierungsmustern, die während unserer Entwurfssitzungen und praktischen Vorlagenimplementierungen bei AzureCAT-Kunden (Azure Customer Advisory Team) bestimmt wurden. Diese keineswegs akademischen, bewährten Ansätze wurden von der Entwicklung von Vorlagen für zwölf führende Linux-basierte OSS-Technologien beeinflusst: Apache Kafka, Apache Spark, Cloudera, Couchbase, Hortonworks HDP, DataStax Enterprise powered by Apache Cassandra, Elasticsearch, Jenkins, MongoDB, PostgreSQL, Redis und Nagios. 
 
 In diesem Artikel werden diese bewährten Vorgehensweisen vorgestellt, mit denen Sie erstklassige Azure-Ressourcen-Manager-Vorlagen entwickeln können.  
 

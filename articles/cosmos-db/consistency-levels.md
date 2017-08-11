@@ -16,12 +16,11 @@ ms.topic: article
 ms.date: 06/16/2017
 ms.author: mimig
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: abca1eff9d0b79420e70da5a4c551eceda478491
+ms.translationtype: HT
+ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
+ms.openlocfilehash: a1ebec2285982c70aa9dc49950769fe18e2e2d0d
 ms.contentlocale: de-de
-ms.lasthandoff: 06/17/2017
-
+ms.lasthandoff: 07/24/2017
 
 ---
 # <a name="tunable-data-consistency-levels-in-azure-cosmos-db"></a>Einstellbare Datenkonsistenzebenen in Azure Cosmos DB
@@ -48,7 +47,7 @@ Die folgende Tabelle zeigt die speziellen Garantien der einzelnen Konsistenzeben
 | Präfixkonsistenz | Die zurückgegebenen Updates sind ein bestimmtes Präfix aller Updates ohne Lücken |
 | Letztlich (Eventual)  | Lesevorgänge in falscher Reihenfolge |
 
-Sie können die Standardkonsistenzebene für Ihr Cosmos DB-Konto konfigurieren (und die Konsistenz später für eine bestimmte Leseanforderung außer Kraft setzen). Intern gilt die Standardkonsistenzebene für Daten in den Partitionssätzen, die sich auf mehrere Regionen erstrecken können. Ca. 73 % unsere Mandanten arbeiten mit Sitzungskonsistenz, und 20 % bevorzugen begrenzte Veraltung. Wir beobachten, dass ca. 3 % unserer Kunden anfänglich mit verschiedenen Konsistenzebenen experimentieren, ehe sie für ihre Anwendung eine bestimmte Konsistenzoption wählen. Wir beobachten auch, dass nur 2 % unserer Mandanten Konsistenzebenen anforderungsbezogen überschreiben. 
+Sie können die Standardkonsistenzebene für Ihr Cosmos DB-Konto konfigurieren (und die Konsistenz später für eine bestimmte Leseanforderung außer Kraft setzen). Intern gilt die Standardkonsistenzebene für Daten in den Partitionssätzen, die sich über mehrere Regionen erstrecken können. Ca. 73 % unsere Mandanten arbeiten mit Sitzungskonsistenz, und 20 % bevorzugen begrenzte Veraltung. Wir beobachten, dass ca. 3 % unserer Kunden anfänglich mit verschiedenen Konsistenzebenen experimentieren, ehe sie für ihre Anwendung eine bestimmte Konsistenzoption wählen. Wir beobachten auch, dass nur 2 % unserer Mandanten Konsistenzebenen anforderungsbezogen überschreiben. 
 
 In Cosmos DB sind Lesevorgänge mit Sitzungs-, Präfix- und letztlicher Konsistenz zweimal günstiger als Lesevorgänge mit starker Konsistenz oder begrenzter Veraltung. Cosmos DB bietet branchenführende umfassende SLAs für Verfügbarkeit (99,99 %), Durchsatz und Wartezeit sowie Konsistenzgarantien. Wir setzen eine [Linearisierbarkeitsprüfung](http://dl.acm.org/citation.cfm?id=1806634) ein, die fortlaufend auf unsere Diensttelemetriedaten angewendet wird und Ihnen sämtliche Konsistenzverstöße offen meldet. Für die Konsistenzebene „Begrenzte Veraltung“ überwachen und melden wir sämtliche Verstöße gegen die Grenzen „k“ und „t“. Für alle fünf gelockerten Konsistenzebenen melden wir Ihnen direkt die [Metrik „Probabilistisch begrenzte Veraltung“](http://dl.acm.org/citation.cfm?id=2212359).  
 

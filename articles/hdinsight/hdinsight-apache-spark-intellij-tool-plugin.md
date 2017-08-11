@@ -17,10 +17,10 @@ ms.topic: article
 ms.date: 05/10/2017
 ms.author: nitinme
 ms.translationtype: HT
-ms.sourcegitcommit: c999eb5d6b8e191d4268f44d10fb23ab951804e7
-ms.openlocfilehash: a034276b893da2e08c40098090efb72fe9d54da3
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: 2a7d0f2d557f33531a2d11f857594680e064da9f
 ms.contentlocale: de-de
-ms.lasthandoff: 07/17/2017
+ms.lasthandoff: 07/27/2017
 
 ---
 # <a name="use-azure-toolkit-for-intellij-to-create-spark-applications-for-hdinsight-cluster"></a>Erstellen von Spark-Anwendungen für HDInsight-Cluster mit dem Azure Toolkit für IntelliJ
@@ -106,12 +106,12 @@ Installationsanweisungen finden Sie unter [Installieren des Azure-Toolkits für 
                 val conf = new SparkConf().setAppName("MyClusterApp")
                 val sc = new SparkContext(conf)
 
-                val rdd = sc.textFile("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
+                val rdd = sc.textFile("wasb:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
 
                 //find the rows that have only one digit in the seventh column in the CSV file
                 val rdd1 =  rdd.filter(s => s.split(",")(6).length() == 1)
 
-                rdd1.saveAsTextFile("wasbs:///HVACOut")
+                rdd1.saveAsTextFile("wasb:///HVACOut")
               }
 
             }
@@ -156,12 +156,12 @@ Sie können mit dem Azure-Toolkit für IntelliJ verschiedene Vorgänge durchfüh
        ![Knoten „Auftragsansicht“](./media/hdinsight-apache-spark-intellij-tool-plugin/job-view-node.png)
 2. Im rechten Bereich werden auf der Registerkarte **Spark Job View** (Spark-Auftragsansicht) alle Anwendungen angezeigt, die in dem Cluster ausgeführt wurden. Klicken Sie auf den Namen der Anwendung, zu der Sie weitere Details anzeigen möchten.
        ![Anwendungsdetails](./media/hdinsight-apache-spark-intellij-tool-plugin/view-job-logs.png)
-3. Zeigen Sie auf das Auftragsdiagramm, um grundlegende Informationen zum ausgeführten Auftrag einzublenden. Wenn Sie auf das Auftragsdiagramm klicken, werden das Phasendiagramm sowie Informationen, die von den einzelnen Auftrag generiert werden, angezeigt.
+3. Zeigen Sie auf das Auftragsdiagramm, um grundlegende Informationen zum ausgeführten Auftrag einzublenden. Wenn Sie auf das Auftragsdiagramm klicken, werden das Phasendiagramm sowie Informationen, die von den einzelnen Aufträgen generiert werden, angezeigt.
        ![Details zur Auftragsphase](./media/hdinsight-apache-spark-intellij-tool-plugin/Job-graph-stage-info.png)
 
 4. Häufig verwendete Protokolle wie „Driver Stderr“, „Driver Stdout“ und „Directory Info“ werden auf der Registerkarte **Log** (Protokoll) angezeigt.
        ![Protokolldetails](./media/hdinsight-apache-spark-intellij-tool-plugin/Job-log-info.png)
-5. Sie können auch die Spark History UI (Spark-Verlaufsbenutzeroberfläche) und die YARN UI (YARN-Benutzeroberfläche) (auf Anwendungsebene) öffnen, indem Sie auf die entsprechenden Hyperlinks am oberen Rand des Fensters klicken.
+5. Sie können auch die Spark-Verlaufsbenutzeroberfläche und die YARN-Benutzeroberfläche (auf Anwendungsebene) öffnen, indem Sie auf die entsprechenden Hyperlinks am oberen Rand des Fensters klicken.
 
 ### <a name="access-the-spark-history-server"></a>Zugreifen auf den Spark-Verlaufsserver
 1. Erweitern Sie im Azure Explorer die Option **HDInsight**, klicken Sie mit der rechten Maustaste auf den Namen Ihres Spark-Clusters, und wählen Sie dann **Open Spark History UI** (Spark-Verlaufsbenutzeroberfläche öffnen). Geben Sie die Anmeldeinformationen für den Cluster ein, wenn Sie dazu aufgefordert werden. Diese müssen Sie beim Bereitstellen des Clusters angegeben haben.

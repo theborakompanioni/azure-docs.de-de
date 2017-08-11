@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 06bd0112eab46f3347dfb039a99641a37c2b0197
-ms.openlocfilehash: 6355c98f5c50d03b54cb4977bff4e51b8dfa669f
+ms.translationtype: HT
+ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
+ms.openlocfilehash: f2849fe25fd0d5b3dc26598ffba7591cb7433161
 ms.contentlocale: de-de
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 08/01/2017
 
 ---
 # <a name="intro"></a> Integrieren eines Clouddiensts in Azure CDN
@@ -163,11 +162,11 @@ Mit der vorstehenden Konfiguration können Sie den gesamten Clouddienst von **ht
 
 ![](media/cdn-cloud-service-with-cdn/cdn-2-home-page.PNG)
 
-Dies bedeutet jedoch nicht, dass es immer (oder generell) einen gute Idee ist, einen gesamten Clouddienst über Azure CDN zu verarbeiten. Es gibt auch einige Nachteile:
+Das bedeutet jedoch nicht, dass es immer eine gute Idee ist, einen gesamten Clouddienst über Azure CDN zu verarbeiten. 
 
-* Für diesen Ansatz muss die gesamte Website öffentlich sein, da Azure CDN zurzeit noch keine privaten Inhalte verarbeiten kann.
-* Falls der CDN-Endpunkt aus irgendeinem Grund – sei es wegen einer geplanten Wartung oder aufgrund eines Benutzerfehlers – offline geht, wird der gesamte Clouddienst offline geschaltet, sofern die Kunden nicht an die Ursprungs-URL **http://*&lt;<Dienstname>*.cloudapp.net/** umgeleitet werden können.
-* Selbst bei Verwendung der benutzerdefinierten Cachesteuerungseinstellungen (siehe [Konfigurieren von Cacheoptionen für statische Dateien im Clouddienst](#caching)) wird durch einen CDN-Endpunkt die Leistung von besonders dynamischem Inhalt nicht verbessert. Wenn Sie wie oben gezeigt versucht haben, die Startseite vom CDN-Endpunkt aus zu laden, beachten Sie, dass das Laden der Standardstartseite (einer ziemlich einfachen Seite) beim ersten Mal mindestens fünf Sekunden gedauert hat. Stellen Sie sich vor, diese Seite enthält dynamischen Inhalt, der im Minutentakt aktualisiert werden muss – das Ergebnis wäre nicht besonders benutzerfreundlich. Das Verarbeiten von dynamischem Inhalt von einem CDN-Endpunkt aus erfordert einen kurzen Cacheablauf, was zu häufigen Cachefehlern am CDN-Endpunkt führt. Dies beeinträchtigt die Leistung des Clouddiensts und macht den Sinn und Zweck eines CDN zunichte.
+Ein CDN mit statischer Übermittlungsoptimierung sorgt nicht unbedingt für eine beschleunige Übermittlung dynamischer Ressourcen, die nicht für die Zwischenspeicherung gedacht sind oder in sehr kurzen Abständen aktualisiert werden, da das CDN dann sehr häufig eine neue Version der Ressource vom Ursprungsserver abrufen muss. In diesem Szenario können Sie die Optimierung für [Beschleunigung dynamischer Websites](cdn-dynamic-site-acceleration.md) (DSA) auf dem CDN-Endpunkt aktivieren. Dabei werden verschiedene Methoden zum Beschleunigen der Übermittlung nicht zwischenspeicherbarer dynamischer Ressourcen verwendet. 
+
+Wenn Sie eine Website mit einer Kombination aus statischen und dynamischen Inhalten haben, können Sie statische Inhalte vom CDN mit einem statischen Optimierungstyp (z.B. allgemeine Webbereitstellung) und dynamische Inhalte entweder direkt vom Ursprungsserver oder über einen CDN-Endpunkt mit auf Einzelfallbasis aktivierter DSA-Optimierung ausgeben lassen. Zu diesem Zweck haben Sie bereits gelernt, wie Sie vom CDN-Endpunkt aus auf einzelne Inhaltsdateien zugreifen. Im Abschnitt „Bereitstellen von Inhalten aus Controlleraktionen über Azure CDN“ zeige ich Ihnen, wie Sie eine bestimmte Controlleraktion von einem bestimmten CDN-Endpunkt aus verarbeiten.
 
 Alternativ kann der von Azure CDN zu verarbeitende Inhalt von Fall zu Fall im Clouddienst bestimmt werden. Zu diesem Zweck haben Sie bereits gelernt, wie Sie vom CDN-Endpunkt aus auf einzelne Inhaltsdateien zugreifen. Im Abschnitt [Bereitstellen von Inhalten aus Controlleraktionen über Azure CDN](#controller)zeige ich Ihnen, wie Sie eine bestimmte Controlleraktion vom CDN-Endpunkt aus verarbeiten.
 

@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 06/12/2017
 ms.author: nepeters
 ms.translationtype: HT
-ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
-ms.openlocfilehash: 2f3203382c11004bad879709a03b44b6d12eb962
+ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
+ms.openlocfilehash: a9dfb0af80ef018e5e655e6e5c78fb0b7e426794
 ms.contentlocale: de-de
-ms.lasthandoff: 07/12/2017
+ms.lasthandoff: 07/24/2017
 
 ---
 
@@ -191,7 +191,7 @@ Ein Abonnement ist eine logische Gruppierung von Azure-Diensten, die mit einem A
 
 Bevor Sie Azure-Dienste verwenden können, benötigen Sie ein Abonnement. Es sind mehrere Abonnementypen verfügbar.
 
-**Kostenlose Konten**: Der Link zur Registrierung für ein kostenloses Konto befindet sich auf der [Azure-Website](https://azure.microsoft.com/). Sie erhalten damit eine Gutschrift von 200 US-Dollar für 30 Tage, damit Sie in Azure beliebige Kombinationen von Ressourcen ausprobieren können. Wenn Sie Ihren Gutschriftbetrag überschreiten, wird die Nutzung Ihres Kontos beendet. Am Ende des Testzeitraums werden Ihre Dienste außer Betrieb genommen und funktionieren nicht mehr. Sie können jederzeit ein Upgrade auf ein Abonnement mit nutzungsbasierter Bezahlung durchführen.
+**Kostenlose Konten**: Der Link zur Registrierung für ein kostenloses Konto befindet sich auf der [Azure-Website](https://azure.microsoft.com/). Sie erhalten damit eine Gutschrift für 30 Tage, damit Sie in Azure beliebige Kombinationen von Ressourcen ausprobieren können. Wenn Sie Ihren Gutschriftbetrag überschreiten, wird die Nutzung Ihres Kontos beendet. Am Ende des Testzeitraums werden Ihre Dienste außer Betrieb genommen und funktionieren nicht mehr. Sie können jederzeit ein Upgrade auf ein Abonnement mit nutzungsbasierter Bezahlung durchführen.
 
 **MSDN-Abonnements**: Wenn Sie über ein MSDN-Abonnement verfügen, erhalten Sie jeden Monat einen bestimmten Betrag als Azure-Gutschrift. Falls Sie beispielsweise das Abonnement „Microsoft Visual Studio Enterprise mit MSDN“ nutzen, erhalten Sie pro Monat eine Azure-Gutschrift in Höhe von \$150 US-Dollar.
 

@@ -1,5 +1,5 @@
 ---
-title: "Nachverfolgen von benutzerdefinierten Vorgängen mit dem Azure Application Insights .NET-SDK | Microsoft-Dokumentation"
+title: "Nachverfolgen von benutzerdefinierten Vorgängen mit dem Azure Application Insights .NET SDK | Microsoft-Dokumentation"
 description: "Nachverfolgen von benutzerdefinierten Vorgängen mit dem Azure Application Insights .NET-SDK"
 services: application-insights
 documentationcenter: .net
@@ -13,42 +13,41 @@ ms.topic: article
 ms.date: 06/31/2017
 ms.author: sergkanz
 ms.translationtype: HT
-ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
-ms.openlocfilehash: 883750c939aa3bd605189f513e5ce74642f91709
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: 0c4ddfe4533dc232047f0b1a0af270e7f9372c84
 ms.contentlocale: de-de
-ms.lasthandoff: 07/13/2017
+ms.lasthandoff: 07/27/2017
 
 ---
 
-# <a name="tracking-custom-operations-with-application-insights-net-sdk"></a>Nachverfolgen von benutzerdefinierten Vorgängen mit dem Application Insights .NET-SDK
+# <a name="track-custom-operations-with-application-insights-net-sdk"></a>Nachverfolgen von benutzerdefinierten Vorgängen mit dem Application Insights .NET SDK
 
-Mit Application Insights-SDKs werden eingehende HTTP-Anforderungen und Aufrufe abhängiger Dienste, z.B. HTTP-Anforderungen, SQL-Abfragen usw., automatisch nachverfolgt. Stellen Sie sich eine Anwendung vor, die aus mehreren Microservices besteht. Dank der Nachverfolgung und Korrelation von Anforderungen und Abhängigkeiten erhalten Sie Einblicke in die Reaktionsfähigkeit und Zuverlässigkeit der gesamten Anwendung über alle Microservices hinweg. Wir werden die Liste nach und nach erweitern und eine automatische Sammlung mit anderen bekannten Plattformen und Frameworks bereitstellen. 
+Mit Azure Application Insights SDKs werden eingehende HTTP-Anforderungen und Aufrufe abhängiger Dienste wie HTTP-Anforderungen und SQL-Abfragen automatisch nachverfolgt. Dank der Nachverfolgung und Korrelation von Anforderungen und Abhängigkeiten erhalten Sie Einblicke in die Reaktionsfähigkeit und Zuverlässigkeit der gesamten Anwendung für alle Microservices, die diese Anwendung vereint. 
 
-Es gibt eine Klasse von Anwendungsmustern, die nicht generisch unterstützt werden kann. Für die richtige Überwachung dieser Muster ist eine manuelle Codeinstrumentierung erforderlich. In diesem Artikel werden einige Muster beschrieben, für die unter Umständen eine manuelle Instrumentierung benötigt wird. Beispiele hierfür sind die Verarbeitung einer benutzerdefinierten Warteschlange oder die Ausführung von Hintergrundaufgaben mit langer Ausführungsdauer.
+Es gibt eine Klasse von Anwendungsmustern, die nicht generisch unterstützt werden kann. Für die richtige Überwachung dieser Muster ist eine manuelle Codeinstrumentierung erforderlich. In diesem Artikel werden einige Muster behandelt, die möglicherweise manuelle Instrumentierung erfordern, darunter benutzerdefinierte Warteschlangenverarbeitung und das Ausführen von zeitintensiven Hintergrundaufgaben.
 
-Dieses Dokument enthält eine Anleitung zum Nachverfolgen von benutzerdefinierten Vorgängen per ApplicationInsights-SDK.
+Dieser Artikel enthält eine Anleitung zum Nachverfolgen von benutzerdefinierten Vorgängen mit dem Application Insights SDK. Diese Dokumentation ist relevant für:
 
-Das Dokument ist für folgende Versionen relevant:
-- Application Insights für .NET (Basis-SDK), Version `2.4+`
-- Application Insights für Webanwendungen (mit Ausführung von ASP.NET), Version `2.4+`
-- Application Insights für AspNetCore, Version `2.1+`
+- Application Insights für .NET (auch als Basis SDK bezeichnet) Version 2.4+.
+- Application Insights für Webanwendungen (mit Ausführung von ASP.NET) Version 2.4+.
+- Application Insights für ASP.NET Core Version 2.1+.
 
 ## <a name="overview"></a>Übersicht
-Mit einem Vorgang ist eine logische Arbeitsaufgabe gemeint, die von einer Anwendung durchgeführt wird. Sie verfügt über Name, Startzeit/Dauer und Ausführungskontext, z.B. Benutzername, Eigenschaften und Ergebnis. Wenn Vorgang `A` von Vorgang `B` initiiert wurde, wird Vorgang `B` als übergeordneter Vorgang von `A` festgelegt.  Ein Vorgang kann nur über einen übergeordneten Vorgang, aber über viele untergeordnete Vorgänge verfügen. Weitere Informationen zu Vorgängen und zur Telemetriekorrelation finden Sie [hier](application-insights-correlation.md).
+Ein Vorgang ist ein logisches Stück Arbeit, das von einer Anwendung ausgeführt wird. Er verfügt über Name, Startzeit, Dauer, Ergebnis und Ausführungskontext, z.B. Benutzername, Eigenschaften und Ergebnis. Wenn Vorgang A von Vorgang B initiiert wurde, dann ist Vorgang B ein übergeordneter Vorgang von A. Ein Vorgang kann nur über einen übergeordneten Vorgang verfügen, aber über mehrere untergeordnete Vorgänge. Weitere Informationen zu Vorgängen und zur Telemetriekorrelation finden Sie unter [Korrelation der Azure Application Insights-Telemetrie](application-insights-correlation.md).
 
-Im Application Insights .NET-SDK wird ein Vorgang mit der abstrakten [OperationTelemetry](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/Core/Managed/Shared/Extensibility/Implementation/OperationTelemetry.cs)-Klasse und ihren Nachfolgerelementen [RequestTelemetry](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/Core/Managed/Shared/DataContracts/RequestTelemetry.cs) und [DependencyTelemetry](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/Core/Managed/Shared/DataContracts/DependencyTelemetry.cs) beschrieben.
+Im Application Insights .NET SDK wird ein Vorgang mit der abstrakten [OperationTelemetry](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/Core/Managed/Shared/Extensibility/Implementation/OperationTelemetry.cs)-Klasse und ihren Nachfolgerelementen [RequestTelemetry](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/Core/Managed/Shared/DataContracts/RequestTelemetry.cs) und [DependencyTelemetry](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/Core/Managed/Shared/DataContracts/DependencyTelemetry.cs) beschrieben.
 
 ## <a name="incoming-operations-tracking"></a>Nachverfolgen von eingehenden Vorgängen 
-Das Application Insights-Web-SDK sammelt automatisch HTTP-Anforderungen für ASP.NET-Anwendungen, die in der IIS-Pipeline und allen ASP.NET Core-Anwendungen ausgeführt werden. Es sind auch Lösungen mit Community-Support für andere Plattformen und Frameworks vorhanden. Falls die Anwendung von keiner Standardlösung oder Lösung mit Community-Support unterstützt wird, können Sie sie manuell instrumentieren.
+Das Application Insights-Web SDK sammelt automatisch HTTP-Anforderungen für ASP.NET-Anwendungen, die in einer IIS-Pipeline und allen ASP.NET Core-Anwendungen ausgeführt werden. Es sind auch Lösungen mit Community-Support für andere Plattformen und Frameworks vorhanden. Falls die Anwendung von keiner Standardlösung oder Lösung mit Community-Support unterstützt wird, können Sie sie manuell instrumentieren.
 
-Ein weiteres Beispiel, für das die benutzerdefinierte Nachverfolgung erforderlich ist, ist ein Worker, der Elemente aus der Warteschlange erhält. Für einige Warteschlangen wird der Aufruf zum Hinzufügen einer Nachricht zur Warteschlange als Abhängigkeit nachverfolgt. Ein allgemeiner Vorgang, der die Nachrichtenverarbeitung beschreibt, wird aber nicht automatisch erfasst.
+Ein weiteres Beispiel, für das die benutzerdefinierte Nachverfolgung erforderlich ist, ist der Worker, der Elemente aus der Warteschlange erhält. Für einige Warteschlangen wird der Aufruf zum Hinzufügen einer Nachricht zur Warteschlange als Abhängigkeit nachverfolgt. Der allgemeine Vorgang, der die Nachrichtenverarbeitung beschreibt, wird aber nicht automatisch erfasst.
 
 Wir sehen uns nun an, wie diese Vorgänge nachverfolgt werden können.
 
-Im Grunde genommen besteht die Aufgabe darin, `RequestTelemetry` zu erstellen und bekannte Eigenschaften festzulegen. Nachdem der Vorgang abgeschlossen ist, können Sie die Telemetriedaten nachverfolgen. Dies wird im folgenden Beispiel veranschaulicht.
+Auf allgemeiner Ebene besteht die Aufgabe darin, `RequestTelemetry` zu erstellen und bekannte Eigenschaften festzulegen. Nachdem der Vorgang abgeschlossen ist, wird die Telemetrie nachverfolgt. Das folgende Beispiel veranschaulicht diese Aufgabe.
 
 ### <a name="http-request-in-owin-self-hosted-app"></a>HTTP-Anforderung in selbstgehosteter Owin-App
-Wir halten uns an das [HTTP-Protokoll für die Korrelation](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md). Sie können also damit rechnen, die hier beschriebenen Header zu empfangen.
+In diesem Beispiel befolgen wir das [HTTP-Protokoll für die Korrelation](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md). Sie sollten davon ausgehen, die hier beschriebenen Header zu erhalten.
 
 ``` C#
 public class ApplicationInsightsMiddleware : OwinMiddleware
@@ -59,27 +58,27 @@ public class ApplicationInsightsMiddleware : OwinMiddleware
 
     public override async Task Invoke(IOwinContext context)
     {
-        // Let's create and start RequestTelemetry
+        // Let's create and start RequestTelemetry.
         var requestTelemetry = new RequestTelemetry
         {
             Name = $"{context.Request.Method} {context.Request.Uri.GetLeftPart(UriPartial.Path)}"
         };
 
-        // if there is Request-Id recevied from the upstream service, set telemetry context accordingly
+        // If there is a Request-Id received from the upstream service, set the telemetry context accordingly.
         if (context.Request.Headers.ContainsKey("Request-Id"))
         {
             var requestId = context.Request.Headers.Get("Request-Id");
-            // get the operation id from the Request-Id (if you follow the 'Http Protocol for Correlation')
+            // Get the operation ID from the Request-Id (if you follow the HTTP Protocol for Correlation).
             requestTelemetry.Context.Operation.Id = GetOperationId(requestId);
             requestTelemetry.Context.Operation.ParentId = requestId;
         }
 
-        // StartOperation is a helper method that allows to correlate 
+        // StartOperation is a helper method that allows correlation of 
         // current operations with nested operations/telemetry
-        // and initializes start time and duration on telemetry item
+        // and initializes start time and duration on telemetry items.
         var operation = telemetryClient.StartOperation(requestTelemetry);
 
-        // process request
+        // Process the request.
         try
         {
             await Next.Invoke(context);
@@ -92,7 +91,7 @@ public class ApplicationInsightsMiddleware : OwinMiddleware
         }
         finally
         {
-            // update status code and success as appropriate
+            // Update status code and success as appropriate.
             if (context.Response != null)
             {
                 requestTelemetry.ResponseCode = context.Response.StatusCode.ToString();
@@ -103,14 +102,14 @@ public class ApplicationInsightsMiddleware : OwinMiddleware
                 requestTelemetry.Success = false;
             }
 
-            // now it's time to stop operation (and track telemetry)
+            // Now it's time to stop the operation (and track telemetry).
             telemetryClient.StopOperation(operation);
         }
     }
     
     public static string GetOperationId(string id)
     {
-        // returns root Id from the '|' to first '.' if any
+        // Returns the root ID from the '|' to the first '.' if any.
         int rootEnd = id.IndexOf('.');
         if (rootEnd < 0)
             rootEnd = id.Length;
@@ -121,31 +120,31 @@ public class ApplicationInsightsMiddleware : OwinMiddleware
 }
 ```
 
-Mit dem Protokoll für die HTTP-Korrelation wird auch ein `Correlation-Context`-Header deklariert, der aber hier weggelassen wird, um die Komplexität zu verringern.
+Das HTTP-Protokoll für die Korrelation deklariert außerdem den `Correlation-Context`-Header. Es wird jedoch hier aus Gründen der Einfachheit weggelassen.
 
 ## <a name="queue-instrumentation"></a>Warteschlangeninstrumentierung
-Für die HTTP-Kommunikation haben wir ein Protokoll zum Übergeben von Korrelationsdetails erstellt. Mit einigen Warteschlangenprotokollen können Sie zusammen mit der Nachricht zusätzliche Metadaten übergeben, während dies für andere nicht möglich ist.
+Für die HTTP-Kommunikation haben wir ein Protokoll zum Übergeben von Korrelationsdetails erstellt. Mit einigen Warteschlangenprotokollen können Sie zusammen mit der Nachricht zusätzliche Metadaten übergeben, während dies mit anderen nicht möglich ist.
 
 ### <a name="service-bus-queue"></a>Service Bus-Warteschlange
-Bei einer [ServiceBus-Warteschlange](../service-bus-messaging/index.md) können Sie die Eigenschaftensammlung zusammen mit der Nachricht übergeben. Wir nutzen sie zum Übergeben der Korrelations-ID.
+Mit der [Azure Service Bus-Warteschlange](../service-bus-messaging/index.md) können Sie einen Eigenschaftenbehälter zusammen mit der Nachricht übergeben. Wir übergeben damit die Korrelations-ID.
 
-Für die ServiceBus-Warteschlange werden TCP-basierte Protokolle verwendet. Da Warteschlangenvorgänge von Application Insights nicht automatisch nachverfolgt werden, führen wir die Nachverfolgung manuell durch. Der Vorgang zum Entfernen aus der Warteschlange ist eine API im Push-Stil, und es ist keinerlei Nachverfolgung möglich.
+Die Service Bus-Warteschlange verwendet TCP-basierte Protokolle. Da Warteschlangenvorgänge von Application Insights nicht automatisch nachverfolgt werden, führen wir die Nachverfolgung manuell durch. Der Vorgang zum Entfernen aus der Warteschlange ist eine API im Push-Stil, und es ist keine Nachverfolgung möglich.
 
 #### <a name="enqueue"></a>Einreihen in die Warteschlange
 
 ```C#
 public async Task Enqueue(string payload)
 {
-    // StartOperation is a helper method that initializes telemetry item
-    // and allows to correlate this operation with its parent and children
+    // StartOperation is a helper method that initializes the telemetry item
+    // and allows correlation of this operation with its parent and children.
     var operation = telemetryClient.StartOperation<DependencyTelemetry>("enqueue " + queueName);
     operation.Telemetry.Type = "Queue";
     operation.Telemetry.Data = "Enqueue " + queueName;
 
     var message = new BrokeredMessage(payload);
-    // ServiceBus Queue allows to pass property bag along with the message
-    // we will use them to pass our correlation identifiers (and other context)
-    // to the consumer
+    // Service Bus queue allows the property bag to pass along with the message.
+    // We will use them to pass our correlation identifiers (and other context)
+    // to the consumer.
     message.Properties.Add("ParentId", operation.Telemetry.Id);
     message.Properties.Add("RootId", operation.Telemetry.Context.Operation.Id);
 
@@ -153,13 +152,13 @@ public async Task Enqueue(string payload)
     {
         await queue.SendAsync(message);
         
-        // set operation.Telemetry Success and ResponseCode here
+        // Set operation.Telemetry Success and ResponseCode here.
         operation.Telemetry.Success = true;
     }
     catch (Exception e)
     {
         telemetryClient.TrackException(e);
-        // set operation.Telemetry Success and ResponseCode here
+        // Set operation.Telemetry Success and ResponseCode here.
         operation.Telemetry.Success = false;
         throw;
     }
@@ -174,13 +173,13 @@ public async Task Enqueue(string payload)
 ```C#
 public async Task Process(BrokeredMessage message)
 {
-    // once the message is taken from the queue, create ReqeustTelemetry to track its processing
-    // it may also make sense to get name from the message
+    // After the message is taken from the queue, create RequestTelemetry to track its processing.
+    // It might also make sense to get the name from the message.
     RequestTelemetry requestTelemetry = new RequestTelemetry { Name = "Dequeue " + queueName };
 
     var rootId = message.Properties["RootId"].ToString();
     var parentId = message.Properties["ParentId"].ToString();
-    // get the operation id from the Request-Id (if you follow the 'Http Protocol for Correlation')
+    // Get the operation ID from the Request-Id (if you follow the HTTP Protocol for Correlation).
     requestTelemetry.Context.Operation.Id = rootId;
     requestTelemetry.Context.Operation.ParentId = parentId;
 
@@ -197,42 +196,42 @@ public async Task Process(BrokeredMessage message)
     }
     finally
     {
-        // update status code and success as appropriate
+        // Update status code and success as appropriate.
         telemetryClient.StopOperation(operation);
     }
 }
 ```
 
 ### <a name="azure-storage-queue"></a>Azure Storage-Warteschlange
-Im folgenden Beispiel wird veranschaulicht, wie Sie Vorgänge der [Azure Storage-Warteschlange](../storage/storage-dotnet-how-to-use-queues.md) nachverfolgen und die Telemetrie zwischen „Producer“, „Consumer“ und Azure Storage korrelieren. 
+Im folgenden Beispiel wird veranschaulicht, wie Sie Vorgänge der [Azure Storage-Warteschlange](../storage/storage-dotnet-how-to-use-queues.md) nachverfolgen und die Telemetrie zwischen Producer, Consumer und Azure Storage korrelieren. 
 
-Die Azure Storage-Warteschlange verfügt über eine HTTP-API, und alle Aufrufe der Warteschlange werden vom ApplicationInsights DependencyCollector in Bezug auf HTTP-Anforderungen nachverfolgt.
-Stellen Sie sicher, dass `Microsoft.ApplicationInsights.DependencyCollector.HttpDependenciesParsingTelemetryInitializer` in `applicationInsights.config` enthalten ist, oder fügen Sie dieses Element wie [hier](app-insights-api-filtering-sampling.md) beschrieben programmgesteuert hinzu.
+Die Storage-Warteschlange verfügt über eine HTTP-API. Alle Aufrufe der Warteschlange werden von der Application Insights-Abhängigkeitserfassung für HTTP-Anforderungen nachverfolgt.
+Stellen Sie sicher, dass sich `Microsoft.ApplicationInsights.DependencyCollector.HttpDependenciesParsingTelemetryInitializer` in `applicationInsights.config` befindet. Fügen Sie es andernfalls programmgesteuert hinzu, wie unter [Filterung und Vorverarbeitung im Azure Application Insights SDK](app-insights-api-filtering-sampling.md) beschrieben.
 
-Stellen Sie beim manuellen Konfigurieren von ApplicationInsights sicher, dass Sie `Microsoft.ApplicationInsights.DependencyCollector.DependencyTrackingTelemetryModule` in etwa wie folgt erstellen und initialisieren:
+Stellen Sie beim manuellen Konfigurieren von Application Insights sicher, dass Sie `Microsoft.ApplicationInsights.DependencyCollector.DependencyTrackingTelemetryModule` in etwa wie folgt erstellen und initialisieren:
  
 ``` C#
 DependencyTrackingTelemetryModule module = new DependencyTrackingTelemetryModule();
 
-// you can prevent correlation header injection to some domains by adding it to the excluded list.
-// Make sure you add Azure Storage endpoint, otherwise you may experience request signature validation issues on the Storage service side
+// You can prevent correlation header injection to some domains by adding it to the excluded list.
+// Make sure you add a Storage endpoint. Otherwise, you might experience request signature validation issues on the Storage service side.
 module.ExcludeComponentCorrelationHttpHeadersOnDomains.Add("core.windows.net");
 module.Initialize(TelemetryConfiguration.Active);
 
-// do not forget to dispose module during application shutdown
+// Do not forget to dispose of the module during application shutdown.
 ```
 
-Es kann auch ratsam sein, die ID des ApplicationInsights-Vorgangs mit der Azure Storage RequestId zu korrelieren. Informationen dazu, wie Sie den Speicheranforderungsclient und die Serveranforderungs-ID festlegen und abrufen, finden Sie in [diesem Artikel](../storage/storage-monitoring-diagnosing-troubleshooting.md#end-to-end-tracing).
+Möglicherweise wollen Sie auch die Vorgangs-ID von Application Insights mit der Anforderungs-ID von Storage korrelieren. Informationen zum Einrichten eines Storage-Anforderungsclients und Abrufen einer Serveranforderungs-ID erhalten Sie unter [Überwachung, Diagnose und Problembehandlung in Azure Storage](../storage/storage-monitoring-diagnosing-troubleshooting.md#end-to-end-tracing).
 
 #### <a name="enqueue"></a>Einreihen in die Warteschlange
-Da Azure Storage-Warteschlangen die HTTP-API unterstützen, werden alle Vorgänge der Warteschlange von ApplicationInsights automatisch nachverfolgt. In vielen Fällen sollte diese Instrumentierung ausreichend sein.
-Zum Korrelieren von Ablaufverfolgungen auf Consumerseite mit Ablaufverfolgungen für Producer müssen Sie aber auf ähnliche Weise Korrelationskontext übergeben, wie wir dies für das „HTTP-Protokoll für die Korrelation“ getan haben. 
+Da Storage-Warteschlangen die HTTP-API unterstützen, werden alle Vorgänge der Warteschlange von Application Insights automatisch nachverfolgt. In vielen Fällen sollte diese Instrumentierung ausreichend sein. Zum Korrelieren von Ablaufverfolgungen auf Consumerseite mit Ablaufverfolgungen für Producer müssen Sie aber auf ähnliche Weise Korrelationskontext übergeben, wie wir dies für das HTTP-Protokoll für die Korrelation getan haben. 
 
-Im Beispiel unten wird der optionale `Enqueue`-Vorgang nachverfolgt. Dies ermöglicht Folgendes:
- - Korrelieren von erneuten Versuchen (falls vorhanden): Alle verfügen über ein gemeinsames übergeordnetes Element, und zwar den `Enqueue`-Vorgang. Andernfalls werden sie als untergeordnete Elemente der eingehenden Anforderung nachverfolgt. Wenn also mehrere logische Anforderungen für die Warteschlange vorhanden sind, lässt sich unter Umständen nur schwer ermitteln, welcher Aufruf zu den erneuten Versuchen geführt hat.
- - Korrelieren von Azure Storage-Protokollen (falls erforderlich) mit ApplicationInsights-Telemetrie.
+In diesem Beispiel verfolgen wir den optionalen `Enqueue`-Vorgang. Ihre Möglichkeiten:
 
-Der `Enqueue`-Vorgang ist das untergeordnete Element eines übergeordneten Vorgangs (z.B. eingehende HTTP-Anforderung), und der HTTP-Abhängigkeitsaufruf ist das untergeordnete Element des `Enqueue`-Vorgangs und das auf zweiter Ebene untergeordnete Element der eingehenden Anforderung.
+ - **Korrelieren von erneuten Versuchen (falls vorhanden)**: Alle davon verfügen über ein gemeinsames übergeordnetes Element, und zwar den `Enqueue`-Vorgang. Andernfalls werden sie als untergeordnete Elemente der eingehenden Anforderung nachverfolgt. Wenn also mehrere logische Anforderungen für die Warteschlange vorhanden sind, lässt sich unter Umständen nur schwer ermitteln, welcher Aufruf zu den erneuten Versuchen geführt hat.
+ - **Korrelieren von Storage-Protokollen (falls erforderlich)**: Diese werden mit Application Insights-Telemetrie korreliert.
+
+Der `Enqueue`-Vorgang ist einem übergeordneten Vorgang untergeordnet (zum Beispiel einer eingehenden HTTP-Anforderung). Der HTTP-Abhängigkeitsaufruf ist dem `Enqueue`-Vorgang untergeordnet und der eingehenden Anforderung auf zweiter Ebene untergeordnet:
 
 ```C#
 public async Task Enqueue(CloudQueue queue, string message)
@@ -241,8 +240,8 @@ public async Task Enqueue(CloudQueue queue, string message)
     operation.Telemetry.Type = "Queue";
     operation.Telemetry.Data = "Enqueue " + queue.Name;
 
-    // MessagePayload represents your custom message and also serializes correlation identifiers into payload
-    // e.g. if you choose to pass payload serialized to json, it may look like
+    // MessagePayload represents your custom message and also serializes correlation identifiers into payload.
+    // For example, if you choose to pass payload serialized to JSON, it might look like
     // {'RootId' : 'some-id', 'ParentId' : '|some-id.1.2.3.', 'message' : 'your message to process'}
     var jsonPayload = JsonConvert.SerializeObject(new MessagePayload
     {
@@ -253,7 +252,7 @@ public async Task Enqueue(CloudQueue queue, string message)
     
     CloudQueueMessage queueMessage = new CloudQueueMessage(jsonPayload);
 
-    // Add operation.Telemetry.Id to the OperationContext to correlate Azure Storage logs and ApplciationInsights telemetry
+    // Add operation.Telemetry.Id to the OperationContext to correlate Storage logs and Application Insights telemetry.
     OperationContext context = new OperationContext { ClientRequestID = operation.Telemetry.Id};
 
     try
@@ -269,24 +268,24 @@ public async Task Enqueue(CloudQueue queue, string message)
     }
     finally
     {
-        // update status code and success as appropriate
+        // Update status code and success as appropriate.
         telemetryClient.StopOperation(operation);
     }
 }  
 ```
 
-Wenn Sie die Menge an Telemetriedaten, die von Ihrer Anwendung gemeldet werden, reduzieren oder den `enqueue`-Vorgang aus anderen Gründen nachverfolgen möchten, können Sie die `Activity`-API direkt verwenden:
+Wenn Sie die Menge an Telemetriedaten, die von Ihrer Anwendung gemeldet werden, reduzieren oder den `Enqueue`-Vorgang aus anderen Gründen nachverfolgen möchten, können Sie die `Activity`-API direkt verwenden:
 
-- Erstellen (und starten) Sie eine neue `Activity`, anstatt den ApplicationInsights-Vorgang zu starten (bis auf den Vorgangsnamen müssen Sie KEINE weiteren Eigenschaften zuweisen).
+- Erstellen (und starten) Sie eine neue `Activity` anstatt den Application Insights-Vorgang zu starten. Sie müssen ihr dabei *keine* Eigenschaften zuweisen außer den Namen des Vorgangs.
 - Serialisieren Sie `yourActivity.Id` anstelle von `operation.Telemetry.Id` für die Nachrichtennutzlast. Sie können auch `Activity.Current.Id` verwenden.
 
 
 #### <a name="dequeue"></a>Entfernen aus der Warteschlange
-Ähnlich wie bei `Enqueue` werden die tatsächlichen HTTP-Anforderungen für die Azure Storage-Warteschlange von ApplicationInsights automatisch nachverfolgt. Der `Enqueue`-Vorgang wird normalerweise aber im Kontext des übergeordneten Elements durchgeführt, z.B. im Kontext von „eingehenden“ Anforderungen. Application Insights-SDKs korrelieren Vorgänge dieser Art (und den dazugehörigen HTTP-Teil) mit der übergeordneten Anforderung und anderen Telemetriedaten, die für denselben Bereich gemeldet werden.
+Ähnlich wie bei `Enqueue` werden die tatsächlichen HTTP-Anforderungen für die Storage-Warteschlange von Application Insights automatisch nachverfolgt. Der `Enqueue`-Vorgang wird normalerweise aber im Kontext des übergeordneten Elements durchgeführt, z.B. im Kontext einer eingehenden Anforderung. Application Insights SDKs korrelieren Vorgänge dieser Art (und den dazugehörigen HTTP-Teil) automatisch mit der übergeordneten Anforderung und anderen Telemetriedaten, die für denselben Bereich gemeldet werden.
 
-Der `Dequeue`-Vorgang ist nicht ganz einfach: Das Application Insights-SDK führt die automatische Nachverfolgung von HTTP-Anforderungen durch, aber der Korrelationskontext ist erst bekannt, nachdem die Nachricht analysiert wurde. Es ist nicht möglich, die HTTP-Anforderung zu korrelieren, um die Nachricht mit den restlichen Telemetriedaten zu erhalten.
+Der `Dequeue`-Vorgang ist nicht ganz einfach. Das Application Insights SDK verfolgt HTTP-Anforderungen automatisch. Allerdings kennt es den Korrelationskontext erst, wenn die Nachricht analysiert wird. Es ist nicht möglich, die HTTP-Anforderung zu korrelieren, um die Nachricht mit den restlichen Telemetriedaten zu erhalten.
 
-In vielen Fällen kann es nützlich sein, die HTTP-Anforderung zusammen mit anderen Ablaufverfolgungen mit der Warteschlange zu korrelieren. Im nächsten Beispiel wird veranschaulicht, wie Sie dies erreichen.
+In vielen Fällen kann es nützlich sein, die HTTP-Anforderung zusammen mit anderen Ablaufverfolgungen mit der Warteschlange zu korrelieren. Dies wird im folgenden Beispiel veranschaulicht:
 
 ``` C#
 public async Task<MessagePayload> Dequeue(CloudQueue queue)
@@ -307,13 +306,13 @@ public async Task<MessagePayload> Dequeue(CloudQueue queue)
         {
             var payload = JsonConvert.DeserializeObject<MessagePayload>(message.AsString);
 
-            // if there is a message, we want to correlate Dequeue operation with processing
-            // However we will only know what correlation Id to use AFTER we will get it from the message
-            // So we will report telemetry once we know the Ids.
+            // If there is a message, we want to correlate the Dequeue operation with processing.
+            // However, we will only know what correlation ID to use after we get it from the message,
+            // so we will report telemetry after we know the IDs.
             telemetry.Context.Operation.Id = payload.RootId;
             telemetry.Context.Operation.ParentId = payload.ParentId;
 
-            // delete message
+            // Delete the message.
             return payload;
         }
     }
@@ -326,7 +325,7 @@ public async Task<MessagePayload> Dequeue(CloudQueue queue)
     }
     finally
     {
-        // update status code and success as appropriate
+        // Update status code and success as appropriate.
         telemetry.Stop();
         telemetryClient.Track(telemetry);
     }
@@ -337,14 +336,14 @@ public async Task<MessagePayload> Dequeue(CloudQueue queue)
 
 #### <a name="process"></a>Prozess
 
-Im folgenden Beispiel wird die „eingehende“ Nachricht auf ähnliche Weise wie bei eingehenden HTTP-Anforderungen nachverfolgt.
+Im folgenden Beispiel wird eine eingehende Nachricht auf ähnliche Weise wie bei eingehenden HTTP-Anforderungen nachverfolgt:
 
 ```C#
 public async Task Process(MessagePayload message)
 {
-    // once the message is dequeued from the queue, create ReqeustTelemetry to track it's processing
+    // After the message is dequeued from the queue, create RequestTelemetry to track its processing.
     RequestTelemetry requestTelemetry = new RequestTelemetry { Name = "Dequeue " + queueName };
-    // it may also make sense to get name from the message
+    // It might also make sense to get the name from the message.
     requestTelemetry.Context.Operation.Id = message.RootId;
     requestTelemetry.Context.Operation.ParentId = message.ParentId;
 
@@ -361,31 +360,30 @@ public async Task Process(MessagePayload message)
     }
     finally
     {
-        // update status code and success as appropriate
+        // Update status code and success as appropriate.
         telemetryClient.StopOperation(operation);
     }
 }
 ```
 
-Auch andere Warteschlangenvorgänge können so instrumentiert werden. Der Peekvorgang sollte ähnlich wie bei der Entfernung aus der Warteschlange instrumentiert werden. Das Instrumentieren von Vorgängen der Warteschlangenverwaltung ist nicht erforderlich. Mit Application Insights werden Vorgänge als HTTP-Vorgänge nachverfolgt, und in den meisten Fällen ist dies ausreichend.
+Auch andere Warteschlangenvorgänge können so instrumentiert werden. Ein Peekvorgang sollte ähnlich wie ein Vorgang zur Entfernung aus der Warteschlange instrumentiert werden. Das Instrumentieren von Vorgängen der Warteschlangenverwaltung ist nicht erforderlich. Mit Application Insights werden Vorgänge wie HTTP-Vorgänge nachverfolgt, und in den meisten Fällen ist dies ausreichend.
 
-Stellen Sie beim Instrumentieren der Nachrichtenlöschung sicher, dass Sie die Vorgangsbezeichner festlegen (für die Korrelation). Alternativ hierzu können Sie auch die `Activity`-API nutzen (das Festlegen von Vorgangsbezeichnern für die Telemetrieelemente ist dann nicht erforderlich, da ApplicationInsights diese Aufgabe für Sie übernimmt):
+Stellen Sie beim Instrumentieren der Nachrichtenlöschung sicher, dass Sie die Vorgangsbezeichner (für die Korrelation) festlegen. Alternativ können Sie auch die `Activity`-API verwenden. Das Festlegen von Vorgangsbezeichnern für die Telemetrieelemente ist dann nicht erforderlich, da Application Insights diese Aufgabe für Sie übernimmt:
 
 - Erstellen Sie nach Erhalt eines Elements aus der Warteschlange eine neue `Activity`.
 - Verwenden Sie `Activity.SetParentId(message.ParentId)` zum Korrelieren von Consumer- und Producerprotokollen.
 - Starten Sie die `Activity`.
-- Verfolgen Sie Vorgänge vom Typ „Dequeue“, „Process“ und „Delete“ nach, indem Sie `Start/StopOperation`-Hilfsprogramme verwenden. Führen Sie dies über die gleiche asynchrone Ablaufsteuerung (Ausführungskontext) durch. Auf diese Weise wird alles richtig korreliert.
-- Beenden Sie anschließend die `Activity`.
-- Verwenden Sie `Start/StopOperation`, oder rufen Sie die Nachverfolgung der Telemetrie manuell auf. 
+- Verfolgen Sie Vorgänge zum Entfernen aus der Warteschlange, Verarbeiten und Löschen nach, indem Sie `Start/StopOperation`-Hilfsprogramme verwenden. Führen Sie dies über die gleiche asynchrone Ablaufsteuerung (Ausführungskontext) durch. Auf diese Weise werden sie richtig korreliert.
+- Beenden Sie die `Activity`.
+- Verwenden Sie `Start/StopOperation`, oder rufen Sie `Track` der Telemetrie manuell auf.
 
 ### <a name="batch-processing"></a>Batchverarbeitung
-Einige Warteschlangen ermöglichen das Entfernen von mehreren Nachrichten aus der Warteschlange mit einer Anforderung, aber die Verarbeitung dieser Nachrichten erfolgt voraussichtlich unabhängig und gehört zu den unterschiedlichen logischen Vorgängen.
-In diesem Fall ist es nicht möglich, den `Dequeue`-Vorgang mit einer bestimmten Nachrichtenverarbeitung zu korrelieren.
+Bei einigen Warteschlangen können Sie mehrere Nachrichten mit einer Anforderung aus der Warteschlange entfernen. Die Verarbeitung solcher Nachrichten ist vermutlich unabhängig und gehört zu den verschiedenen logischen Vorgängen. In diesem Fall ist es nicht möglich, den `Dequeue`-Vorgang mit einer bestimmten Nachrichtenverarbeitung zu korrelieren.
 
-Jede Nachrichtenverarbeitung sollte in einer eigenen asynchronen Ablaufsteuerung durchgeführt werden. Weitere Details hierzu finden Sie im Abschnitt [Nachverfolgung von ausgehenden Abhängigkeiten](#outgoing-dependencies-tracking).
+Jede Nachricht sollte in einer eigenen asynchronen Ablaufsteuerung verarbeitet werden. Weitere Informationen erhalten Sie im Abschnitt [Nachverfolgung von ausgehenden Abhängigkeiten](#outgoing-dependencies-tracking).
 
 ## <a name="long-running-background-tasks"></a>Hintergrundaufgaben mit langer Ausführungsdauer
-Einige Anwendungen starten einen Vorgang mit langer Ausführungsdauer, der unter Umständen durch Benutzeranforderungen verursacht wird. Aus Sicht der Nachverfolgung bzw. Instrumentierung unterscheidet sich dies nicht von der Instrumentierung von Anforderungen oder Abhängigkeiten. 
+Einige Anwendungen starten einen Vorgang mit langer Ausführungsdauer, der unter Umständen durch Benutzeranforderungen verursacht wird. Aus Sicht der Nachverfolgung bzw. Instrumentierung unterscheidet sich dies nicht von der Instrumentierung von Anforderungen oder Abhängigkeiten: 
 
 ``` C#
 async Task BackgroundTask()
@@ -397,15 +395,15 @@ async Task BackgroundTask()
         int progress = 0;
         while (progress < 100)
         {
-            // process task
+            // Process the task.
             telemetryClient.TrackTrace($"done {progress++}%");
         }
-        // update status code and success as appropriate
+        // Update status code and success as appropriate.
     }
     catch (Exception e)
     {
         telemetryClient.TrackException(e);
-        // update status code and success as appropriate
+        // Update status code and success as appropriate.
         throw;
     }
     finally
@@ -415,23 +413,24 @@ async Task BackgroundTask()
 }
 ```
 
-In diesem Beispiel verwenden wir `telemetryClient.StartOperation`, um `RequestTelemetry` zu erstellen und den Korrelationskontext zu füllen. Angenommen, Sie verfügen über einen übergeordneten Vorgang, der beispielsweise von eingehenden Anforderungen für die Planung des Vorgangs erstellt wurde. Sofern `BackgroundTask` in derselben asynchronen Ablaufsteuerung wie eine eingehende Anforderung gestartet wird, wird die Korrelation mit diesem übergeordneten Vorgang durchgeführt. `BackgroundTask` und alle geschachtelten Telemetriedatenelemente werden automatisch mit der Anforderung korreliert, die der Auslöser war. Dies gilt auch nach Abschluss der Anforderung.
+In diesem Beispiel verwenden wir `telemetryClient.StartOperation`, um `RequestTelemetry` zu erstellen und den Korrelationskontext zu füllen. Angenommen, Sie verfügen über einen übergeordneten Vorgang, der von eingehenden Anforderungen für die Planung des Vorgangs erstellt wurde. Sofern `BackgroundTask` in derselben asynchronen Ablaufsteuerung wie eine eingehende Anforderung gestartet wird, wird die Korrelation mit diesem übergeordneten Vorgang durchgeführt. `BackgroundTask` und alle geschachtelten Telemetrieelemente werden automatisch mit der Anforderung korreliert, die der Auslöser war. Dies gilt auch nach Abschluss der Anforderung.
 
-Wenn die Aufgabe über den Hintergrundthread gestartet wird, dem kein Vorgang (Aktivität) zugeordnet ist, weist `BackgroundTask` kein übergeordnetes Element auf. Sie kann aber geschachtelte Vorgänge enthalten, und alle Telemetriedatenelemente, die von der Aufgabe gemeldet werden, werden mit dem in der `BackgroundTask` erstellten `RequestTelemetry`-Element korreliert.
+Wenn der Task über den Hintergrundthread gestartet wird, dem kein Vorgang (`Activity`) zugeordnet ist, weist `BackgroundTask` kein übergeordnetes Element auf. Geschachtelte Vorgänge können jedoch vorhanden sein. Alle Telemetrieelemente, die von dem Task gemeldet werden, werden mit dem in `BackgroundTask` erstellten `RequestTelemetry`-Element korreliert.
 
 ## <a name="outgoing-dependencies-tracking"></a>Nachverfolgung von ausgehenden Abhängigkeiten
-Es kann sein, dass Sie Ihre eigene Art von „Abhängigkeit“ oder einen Vorgang nachverfolgen möchten, der nicht von ApplicationInsights unterstützt wird.
+Sie können Ihre eigene Art von Abhängigkeit oder einen Vorgang nachverfolgen, der nicht von Application Insights unterstützt wird.
 
-Die `Enqueue`-Methode in der ServiceBus-Warteschlange oder Azure Storage-Warteschlange kann als Beispiel für diese benutzerdefinierte Nachverfolgung dienen.
+Die `Enqueue`-Methode in der Service Bus-Warteschlange oder Storage-Warteschlange kann als Beispiel für diese benutzerdefinierte Nachverfolgung dienen.
 
-Allgemeiner Ansatz für die benutzerdefinierte Nachverfolgung von Abhängigkeiten:
-- Rufen Sie die `TelemetryClient.StartOperation`-Methode (Erweiterungsmethode) auf, mit der erforderliche `DependencyTelemetry`-Eigenschaften für die Korrelation und einige andere Eigenschaften (Startzeitstempel, Dauer) aufgefüllt werden.
-- Legen Sie weitere benutzerdefinierte Eigenschaften für `DependencyTelemetry` fest: Name und anderen benötigten Kontext.
-- Führen Sie einen Abhängigkeitsaufruf durch, und warten Sie auf das Ergebnis.
-- Beenden Sie den Vorgang `StopOperation`, wenn Sie fertig sind.
-- Behandeln von Ausnahmen
+Der allgemeine Ansatz für die benutzerdefinierte Nachverfolgung von Abhängigkeiten lautet wie folgt:
 
-Mit `StopOperation` wird nur der Vorgang beendet, der gestartet wurde: Wenn der derzeit ausgeführte Vorgang nicht mit dem Vorgang übereinstimmt, den Sie beenden möchten, hat StopOperation keinerlei Auswirkung. Dies kann der Fall sein, wenn Sie mehrere Vorgänge parallel in demselben Ausführungskontext starten:
+- Rufen Sie die `TelemetryClient.StartOperation`-Methode (Erweiterungsmethode) auf, mit der die für die Korrelation erforderlichen `DependencyTelemetry`-Eigenschaften und einige andere Eigenschaften (Startzeitstempel, Dauer) aufgefüllt werden.
+- Legen Sie weitere benutzerdefinierte Eigenschaften wie den Namen und anderen benötigten Kontext für `DependencyTelemetry` fest.
+- Rufen Sie eine Abhängigkeit auf und warten Sie darauf.
+- Beenden Sie den Vorgang mit `StopOperation`, wenn er abgeschlossen wurde.
+- Behandeln Sie Ausnahmen.
+
+`StopOperation` beendet nur den Vorgang, der gestartet wurde. Wenn der aktuell ausgeführte Vorgang nicht mit dem zu stoppenden übereinstimmt, wird von `StopOperation` keine Aktion ausgeführt. Dies kann der Fall sein, wenn Sie mehrere Vorgänge parallel in demselben Ausführungskontext starten:
 
 ```C#
 var firstOperation = telemetryClient.StartOperation<DependencyTelemetry>("task 1");
@@ -443,14 +442,14 @@ var secondTask = RunMyTaskAsync();
 
 await firstTask;
 
-// this will do nothing and will not report telemetry for the first operation
-// as currently secondOperation is active
+// This will do nothing and will not report telemetry for the first operation
+// as currently secondOperation is active.
 telemetryClient.StopOperation(firstOperation); 
 
 await secondTask;
 ```
 
-Sie müssen also sicherstellen, dass Sie immer `StartOperation` aufrufen und Ihre Aufgabe in ihrem eigenen Kontext ausführen:
+Stellen Sie sicher, dass Sie immer `StartOperation` aufrufen und Ihren Task in ihrem eigenen Kontext ausführen:
 ```C#
 public async Task RunMyTaskAsync()
 {
@@ -458,11 +457,11 @@ public async Task RunMyTaskAsync()
     try 
     {
         var myTask = await StartMyTaskAsync();
-        // update status code and success as appropriate
+        // Update status code and success as appropriate.
     }
     catch(...) 
     {
-        // update status code and success as appropriate
+        // Update status code and success as appropriate.
     }
     finally 
     {
@@ -476,6 +475,6 @@ public async Task RunMyTaskAsync()
 - Informieren Sie sich über die Grundlagen der [Telemetriekorrelation](application-insights-correlation.md) in Application Insights.
 - Lesen Sie die Informationen zu den Application Insights-Typen und zum Datenmodell unter [Datenmodell](application-insights-data-model.md).
 - Informieren Sie sich über das Melden von benutzerdefinierten [Ereignissen und Metriken](app-insights-api-custom-events-metrics.md) an Application Insights.
-- Informationen zur [Konfiguration](app-insights-configuration-with-applicationinsights-config.md#telemetry-initializers-aspnet) der Sammlung von Standardkontexteigenschaften.
-- Lesen Sie den [System.Diagnostics.Activity User Guide](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) (System.Diagnostics.Activity-Leitfaden), um zu erfahren, wie wir Telemetriedaten korrelieren.
+- Informationen zur [Standardkonfiguration](app-insights-configuration-with-applicationinsights-config.md#telemetry-initializers-aspnet) der Sammlung von Kontexteigenschaften.
+- Lesen Sie den [System.Diagnostics.Activity User Guide](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) (System.Diagnostics.Activity-Benutzerhandbuch), um zu erfahren, wie wir Telemetriedaten korrelieren.
 

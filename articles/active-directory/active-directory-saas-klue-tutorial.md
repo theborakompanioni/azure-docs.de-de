@@ -11,14 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/08/2017
+ms.date: 07/13/2017
 ms.author: jeedes
 ms.translationtype: HT
-ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
-ms.openlocfilehash: 0c44d5bda8eb5b2e667fa888c9afcf58aec13534
+ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
+ms.openlocfilehash: c64417c136340b3ffa5d67c618c6fe037d2992b5
 ms.contentlocale: de-de
-ms.lasthandoff: 07/10/2017
-
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-klue"></a>Tutorial: Azure Active Directory-Integration in Klue
@@ -123,7 +122,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://app.klue.com/account/auth/saml/<Customer UUID>/`.
      
     > [!NOTE] 
-    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Antwort-URL, den tatsächlichen Bezeichner und die tatsächliche Anmelde-URL. Wenden Sie sich an das [Supportteam für den Klue-Client](mailto:gsar@klue.com), um diese Werte zu erhalten.
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Antwort-URL, den tatsächlichen Bezeichner und die tatsächliche Anmelde-URL. Wenden Sie sich an das [Supportteam für den Klue-Client](mailto:support@klue.com), um diese Werte zu erhalten.
 
 5. Die Klue-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Sie können die Werte dieser Attribute über den Abschnitt **Benutzerattribute** auf der Anwendungsintegrationsseite verwalten. 
 
@@ -161,11 +160,10 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-klue-tutorial/tutorial_klue_configure.png) 
 
-10. Zum Konfigurieren des einmaligen Anmeldens bei **Klue** müssen Sie das heruntergeladene **Zertifikat (Base64), SAML-Dienst-URL für einmaliges Anmelden und SAML-Entitäts-ID** an das [Klue-Supportteam](mailto:gsar@klue.com) senden.
+10. Zum Konfigurieren des einmaligen Anmeldens bei **Klue** müssen Sie das heruntergeladene **Zertifikat (Base64), SAML-Dienst-URL für einmaliges Anmelden und SAML-Entitäts-ID** an das [Klue-Supportteam](mailto:support@klue.com) senden.
 
 > [!TIP]
 > Während Sie die App einrichten, können Sie im [Azure-Portal](https://portal.azure.com) eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
-> 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
@@ -200,7 +198,10 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
  
 ### <a name="creating-a-klue-test-user"></a>Erstellen eines Klue-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in Klue einen Benutzer namens Britta Simon. Lassen Sie sich beim Hinzufügen der Benutzer auf der Klue-Plattform ggf. vom [Klue-Supportteam](mailto:gsar@klue.com) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon in Klue. Klue unterstützt die Just-In-Time-Bereitstellung, die standardmäßig aktiviert ist. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Wenn noch kein Benutzer vorhanden ist, wird beim Zugreifen auf Klue ein neuer Benutzer erstellt.
+
+>[!Note]
+>Setzen Sie sich mit dem [Klue-Supportteam](mailto:support@klue.com) in Verbindung, wenn Sie einen Benutzer manuell erstellen müssen.
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

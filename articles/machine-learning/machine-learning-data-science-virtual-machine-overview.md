@@ -1,6 +1,6 @@
 ---
 title: "Was ist ein virtueller Computer für Data Science? | Microsoft Docs"
-description: "Erfahren Sie die wichtigsten Szenarios, Features und ersten Schritte zu virtuellen Computern für Data Science – Umgebung und Toolkit, bereit für Analysen."
+description: "Erfahren Sie, wie Sie Schlüsselanalysen mit virtuellen Computern von Data Science durchführen können."
 keywords: "Data Science-Tools, virtuelle Computer für Data Science, Tools für Data Science, Linux Data Science"
 services: machine-learning
 documentationcenter: 
@@ -13,17 +13,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/13/2017
-ms.author: gokuma
-translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: 77b4f634c2a30d0cbec92d34a7f83866541d7d84
-ms.lasthandoff: 04/15/2017
-
+ms.date: 07/21/2017
+ms.author: gokuma;bradsev
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: d6346419756cb0841c23f3ba63e479ba2397af54
+ms.contentlocale: de-de
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="introduction-to-the-cloud-based-data-science-virtual-machine-for-linux-and-windows"></a>Einführung in den Cloud-basierten virtuellen Computer für Data Science für Linux und Windows
-Der virtuelle Computer für Data Science (DSVM) ist ein benutzerdefiniertes VM-Image in der Microsoft Azure-Cloud, das speziell für Data Science konfiguriert wurde. Es hat viele beliebte Data Science und andere Tools vorinstalliert und vorkonfiguriert, damit Sie sofort intelligente Anwendungen für die erweiterte Analyse erstellen können. Er ist unter Windows Server 2012 und unter Linux verfügbar. Wir bieten eine Linux-Edition des DSVM in Linux-Distributionen auf der Basis von Ubuntu 16.04 LTS oder OpenLogic 7.2 CentOS an. 
+Der virtuelle Computer für Data Science (DSVM) ist ein benutzerdefiniertes VM-Image in der Microsoft Azure-Cloud, das speziell für Data Science konfiguriert wurde. Es hat viele beliebte Data Science und andere Tools vorinstalliert und vorkonfiguriert, damit Sie sofort intelligente Anwendungen für die erweiterte Analyse erstellen können. Er ist unter Windows Server und unter Linux verfügbar. Wir bieten eine Windows-Edition von DSVM für Windows Server 2016 und 2012. Wir bieten eine Linux-Edition des DSVM in Linux-Distributionen auf der Basis von Ubuntu 16.04 LTS und OpenLogic 7.2 CentOS an. 
 
 In diesem Thema wird erläutert, was Sie mit der Data Science-VM tun können, außerdem einige der wichtigsten Szenarios für die Verwendung des virtuellen Computers, sowie die wichtigsten Features für die Windows- und Linux-Versionen, und es enthält Anweisungen zu deren Verwendung.
 
@@ -48,7 +48,7 @@ Data Science Hackathons/Wettbewerbe oder umfangreiche Datenmodelle und Auswertun
 Die Data Science-VM kann zur Auswertung oder zum Lernen von Tools wie Microsoft R Server, SQL Server, Visual Studio Tools, Jupyter, vertieftes Lernen/ML-Toolkits und neue Tools, die in der Community beliebt sind, mit minimalem Einrichtaufwand verwendet werden. Da die Data Science-VM schnell eingerichtet werden kann, kann sie in anderen kurzfristigen Szenarios wie z.B. der Replikation veröffentlichter Experimente, Ausführen von Demos, dem Folgen exemplarischer Vorgehensweisen in Online-Sitzungen oder für Konferenz-Demos verwendet werden.
 
 ### <a name="deep-learning"></a>Deep Learning
-Der virtuelle Computer für Data Science kann zum Modelltraining mit Deep Learning-Algorithmen auf Basis von GPU-Hardware (Grafikprozessoren) verwendet werden. DSVM unterstützt Sie bei Bedarf bei der Verwendung von GPU-basierter Hardware in der Cloud, wenn Sie große Modelle trainieren oder Berechnungen in hoher Geschwindigkeit ausführen müssen, die GPU-Leistung nutzen.  Unter Windows bieten wir derzeit das [Deep Learning-Toolkit für DSVM](http://aka.ms/dsvm/deeplearning) als ein separates Add-On für DSVM an. Mit diesem Add-On werden automatisch GPU-Treiber, Frameworks und die GPU-Version der Deep Learning-Algorithmen beim Erstellen der VM-Instanz installiert. Unter Linux ist Deep Learning für GPUs nur in der Edition [Data Science Virtual Machine für Linux (Ubuntu)](http://aka.ms/dsvm/ubuntu) aktiviert. Sie können die Ubuntu-Edition der Data Science-VM in virtuellen Computern ohne GPU-Aktivierung in Azure bereitstellen. In diesem Fall werden jedoch die Deep Learning-Frameworks auf den CPU-Modus zurückgesetzt. Die DSVM-Edition für Linux auf CentOS-Basis enthält nur die CPU-Builds von einigen Deep Learning-Tools (CNTK, Tensorflow, MXNet). Diese sind jedoch nicht mit dem GPU-Treiber und den Frameworks vorinstalliert. 
+Der virtuelle Computer für Data Science kann zum Modelltraining mit Deep Learning-Algorithmen auf Basis von GPU-Hardware (Grafikprozessoren) verwendet werden. Durch die Skalierungsfunktionen für VMs der Azure-Cloud hilft DSVM Ihnen dabei, GPU-basierte Hardware in der Cloud nach Bedarf einsetzen zu können. Sie können zu einer GPU-basierten VM wechseln, wenn Sie große Modelle trainieren oder schnelle Berechnungen benötigen, während Sie den gleiche Betriebssystem-Datenträger beibehalten.  Die Windows Server 2016-Edition von DSVM enthält vorinstallierte GPU-Treiber und -Frameworks und eine GPU-Version der Deep Learning-Algorithmen. Unter Linux ist Deep Learning für GPUs nur in der Edition [Data Science Virtual Machine für Linux (Ubuntu)](http://aka.ms/dsvm/ubuntu) aktiviert. Sie können die Ubuntu-Edition oder die Windows Server 2016-Editionen der Data Science-VM in virtuellen Computern ohne GPU-Aktivierung in Azure bereitstellen. In diesem Fall werden jedoch die Deep Learning-Frameworks auf den CPU-Modus zurückgesetzt. Wir haben bereits in der Vergangenheit für Windows Server 2012 ein [Deep Learning-Toolkit](http://aka.ms/dsvm/deeplearning) veröffentlicht. Nun wird allerdings empfohlen, dass Sie Windows Server 2016 für Windows-basierte Deep Learning-Workloads verwenden. Die DSVM-Edition für Linux auf CentOS-Basis enthält nur die CPU-Builds von einigen Deep Learning-Tools (CNTK, Tensorflow, MXNet). Diese sind jedoch nicht mit dem GPU-Treiber und den Frameworks vorinstalliert. 
 
 ## <a name="whats-included-in-the-data-science-vm"></a>Was ist in der Data Science-VM enthalten?
 Der virtuelle Computer für Data Science hat viele beliebte Data Science- und Deep Learning-Tools bereits installiert und konfiguriert. Darüber hinaus enthält er Tools, die die Arbeit mit verschiedenen Azure-Daten und Analyse-Produkten erleichtern. Sie können Vorhersagemodelle für umfangreiche Datasets mithilfe von Microsoft R Server oder SQL Server 2016 untersuchen und erstellen. Eine Reihe von anderen Tools der Open-Source-Community und von Microsoft sind ebenfalls enthalten, sowie Beispiel-Code und Notebooks. Die folgende Tabelle enthält eine Aufzählung und einen Vergleich der wichtigsten Komponenten Windows- und Linux-Editionen des virtuellen Computers für Data Science.
@@ -58,6 +58,7 @@ Der virtuelle Computer für Data Science hat viele beliebte Data Science- und De
 | :------------------------------------------------------------------ |:-------------------:|:------------------:|
 | [Microsoft R Open](https://mran.microsoft.com/open/) mit verbreiteten vorinstallierten Paketen   |J                      | J             |
 | [Microsoft R Server](https://msdn.microsoft.com/microsoft-r/) Developer Edition enthält: <br />  &nbsp;&nbsp;&nbsp;&nbsp;* [ScaleR](https://msdn.microsoft.com/microsoft-r/scaler-getting-started) – paralleles und verteiltes Hochleistungs-R-Framework<br />  &nbsp;&nbsp;&nbsp;&nbsp;* [MicrosoftML](https://msdn.microsoft.com/microsoft-r/microsoftml-introduction) – neue moderne ML-Algorithmen von Microsoft <br />  &nbsp;&nbsp;&nbsp;&nbsp;* [Operationalisierung von R](https://msdn.microsoft.com/microsoft-r/operationalize/about)                                            |J                      | J <br/> (MicrosoftML noch nicht verfügbar)|
+| [Microsoft Office](https://products.office.com/en-us/business/office-365-proplus-business-software) Pro-Plus mit gemeinsamer Aktivierung: Excel, Word und PowerPoint   |J                      |N              |
 | [Anaconda Python](https://www.continuum.io/) 2.7 und 3.5 mit beliebten vorinstallierten Paketen    |J                      |J              |
 | [JuliaPro](https://juliacomputing.com/products/juliapro.html) mit beliebten vorinstallierten Paketen                         |J                      |J              |
 | Relationale Datenbanken                                                            | [SQL Server 2016 SP1](https://www.microsoft.com/sql-server/sql-server-2016) <br/> Developer Edition| [PostgreSQL](https://www.postgresql.org/) |
@@ -72,7 +73,7 @@ Der virtuelle Computer für Data Science hat viele beliebte Data Science- und De
 |     &nbsp;&nbsp;&nbsp;&nbsp;* SparkR     | N | J |
 | JupyterHub (Notebook-Server für mehrere Benutzer)| N | J |
 | **Entwicklungstools, IDEs und Code-Editoren**| | |
-| &nbsp;&nbsp;&nbsp;&nbsp;* [Visual Studio 2015 (Community Edition)](https://www.visualstudio.com/community/) mit Git-Plug-In, Azure HDInsight (Hadoop), Data Lake, SQL Server Data Tools, [Node.js](https://github.com/Microsoft/nodejstools), [Python](http://aka.ms/ptvs) und [R-Tools für Visual Studio (RTVS)](http://microsoft.github.io/RTVS-docs/) | J | N |
+| &nbsp;&nbsp;&nbsp;&nbsp;* [Visual Studio 2017 (Community Edition)](https://www.visualstudio.com/community/) > mit Git-Plug-In, Azure HDInsight (Hadoop), Data Lake, SQL Server Data-Tools, [Node.js](https://github.com/Microsoft/nodejstools), [Python](http://aka.ms/ptvs), und [R Tools für Visual Studio (RTVS)](http://microsoft.github.io/RTVS-docs/) | J | N |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Visual Studio Code](https://code.visualstudio.com/) | J | J |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [RStudio Desktop](https://www.rstudio.com/products/rstudio/#Desktop) | J | J |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [RStudio Server](https://www.rstudio.com/products/rstudio/#Server) | N | J |
@@ -103,7 +104,7 @@ Der virtuelle Computer für Data Science hat viele beliebte Data Science- und De
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Rattle](http://rattle.togaware.com/) | J | J |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [LightGBM](https://github.com/Microsoft/LightGBM) | N | Y (nur Ubuntu) |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [H2O](https://www.h2o.ai/h2o/) | N | Y (nur Ubuntu) |
-| **GPU-basierte Deep Learning-Tools** |[Deep Learning-Toolkit für DSVM](http://aka.ms/dsvm/deeplearning) verwenden |Nur Ubuntu-Edition|
+| **GPU-basierte Deep Learning-Tools** |Windows Server 2016-Edition  |Ubuntu-Edition |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Microsoft Cognitive Toolkit (CNTK)](http://cntk.ai) | J | J |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Tensorflow](https://www.tensorflow.org/) | J | J |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [MXNet](http://mxnet.io/) | J | J|
@@ -120,14 +121,25 @@ Der virtuelle Computer für Data Science hat viele beliebte Data Science- und De
 
 
 ## <a name="how-to-get-started-with-the-windows-data-science-vm"></a>Erste Schritte mit der Windows Data Science-VM
-* Erstellen Sie eine Instanz des virtuellen Computers unter Windows auf [dieser Seite](https://azure.microsoft.com/marketplace/partners/microsoft-ads/standard-data-science-vm/) und wählen Sie die grüne Schaltfläche **Virtuellen Computer erstellen**.
+* Erstellen Sie eine Instanz der gewünschten Windows DSVM-Edition, indem Sie zur
+  * [Windows Server 2016-basierten DSVM](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-ads.windows-data-science-vm) navigieren.
+  
+  or 
+  * zur [Windows Server 2012-basierten DSVM](https://azure.microsoft.com/marketplace/partners/microsoft-ads/standard-data-science-vm/). 
+* Klicken Sie auf **JETZT HERUNTERLADEN**.
 * Melden Sie sich an dem virtuellen Computer aus Ihrem Remotedesktop unter Verwendung der Anmeldeinformationen an, die Sie beim Erstellen des virtuellen Computers angegeben haben.
 * Die verfügbaren Tools sehen Sie durch Anklicken des **Start**-Menüs und können sie dort starten.
 
 ## <a name="get-started-with-the-linux-data-science-vm"></a>Erste Schritte mit der Linux Data Science-VM
-* Erstellen einer Instanz des virtuellen Computers unter Linux
-  * Navigieren Sie für die OpenLogic CentOS-basierte Edition zu [dieser Seite](http://aka.ms/dsvm/centos), und wählen Sie die Schaltfläche **Jetzt anfordern** aus.
-  * Navigieren Sie für die Ubuntu-Edition zu [dieser Seite](http://aka.ms/dsvm/ubuntu), und wählen Sie die Schaltfläche **Jetzt anfordern** aus.
+* Erstellen Sie eine Instanz der gewünschten Linux DSVM-Edition, indem Sie zur 
+  * [Ubuntu-basierten DSVM](http://aka.ms/dsvm/ubuntu)
+
+  or
+
+  * [OpenLogic CentOS-basierten DSVM](http://aka.ms/dsvm/centos) navigieren.
+
+  
+* Klicken Sie auf **Jetzt herunterladen**.
 * Melden Sie sich an dem virtuellen Computer von einem SSH-Client wie Putty oder SSH Command unter Verwendung der Anmeldeinformationen an, die Sie beim Erstellen des virtuellen Computers angegeben haben.
 * Geben Sie in der Shell-Aufforderung „dsvm-more-info“ ein.
 * Für einen grafischen Desktop laden Sie den X2Go-Client für die Clientplattform [hier](http://wiki.x2go.org/doku.php/doc:installation:x2goclient) herunter und befolgen Sie die Anweisungen im Linux Data Science VM Dokument [Bereitstellen der Linux Data Science Virtual Machine](machine-learning-data-science-linux-dsvm-intro.md#installing-and-configuring-x2go-client).
