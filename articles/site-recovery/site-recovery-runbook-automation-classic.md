@@ -12,8 +12,8 @@ ms.devlang: powershell
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.workload: storage-backup-recovery
-ms.date: 08/01/2017
-ms.author: ruturajd@microsoft.com
+ms.date: 08/11/2017
+ms.author: ruturajd
 ms.translationtype: Human Translation
 ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
 ms.openlocfilehash: c91a1210e84d215449b98aae14bda490aa2cb156
@@ -21,6 +21,7 @@ ms.contentlocale: de-de
 ms.lasthandoff: 04/27/2017
 
 ---
+
 # <a name="add-azure-automation-runbooks-to-recovery-plans-in-the-classic-portal"></a>Hinzufügen von Azure Automation-Runbooks zu Wiederherstellungsplänen im klassischen Portal
 Dieses Lernprogramm beschreibt die Integration von Azure Site Recovery und Azure Automation, um die Erweiterung von Wiederherstellungsplänen zu ermöglichen. Wiederherstellungspläne können die Wiederherstellung Ihrer durch Azure Site Recovery geschützten virtuellen Computer sowohl bei der Replikation zur sekundären Cloud als auch bei der Replikation zu Azure orchestrieren. Darüber hinaus tragen sie zu einer **durchgängig exakten**, **wiederholbaren**, und **automatisierten** Wiederherstellung bei. Beim Failover virtueller Computer zu Azure erweitert die Azure Automation-Integration die Wiederherstellungspläne und ermöglicht die Ausführung von Runbooks für beeindruckende Automatisierungsaufgaben.
 
