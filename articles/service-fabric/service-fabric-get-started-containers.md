@@ -35,14 +35,14 @@ Ein Entwicklungscomputer, auf dem Folgendes ausgeführt wird:
 * [Service Fabric-SDK und -Tools](service-fabric-get-started.md)
 *  Docker für Windows  [Laden Sie „Docker CE for Windows (stable)“ herunter](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description). Klicken Sie nach dem Installieren und Starten von Docker mit der rechten Maustaste auf das Taskleistensymbol, und wählen Sie **Switch to Windows containers** (Zu Windows-Containern wechseln). Dies ist erforderlich, um Docker-Images auszuführen, die auf Windows basieren.
 
-Ein Windows-Cluster mit mindestens drei Knoten, die unter Windows Server 2016 mit Containern ausgeführt werden – [erstellen Sie einen Cluster](service-fabric-cluster-creation-via-portal.md), oder [testen Sie Service Fabric kostenlos](https://aka.ms/tryservicefabric). 
+Ein Windows-Cluster mit mindestens drei Knoten, die unter Windows Server 2016 mit Containern ausgeführt werden – [erstellen Sie einen Cluster](service-fabric-cluster-creation-via-portal.md), oder [testen Sie Service Fabric kostenlos](https://aka.ms/tryservicefabric).
 
-Eine Registrierung in Azure Container Registry – erstellen Sie in Ihrem Azure-Abonnement eine [Containerregistrierung](../container-registry/container-registry-get-started-portal.md). 
+Eine Registrierung in Azure Container Registry – erstellen Sie in Ihrem Azure-Abonnement eine [Containerregistrierung](../container-registry/container-registry-get-started-portal.md).
 
 ## <a name="define-the-docker-container"></a>Definieren des Docker-Containers
-Erstellen Sie ein Image auf Grundlage des [Python-Image](https://hub.docker.com/_/python/) in Docker Hub. 
+Erstellen Sie ein Image auf Grundlage des [Python-Image](https://hub.docker.com/_/python/) in Docker Hub.
 
-Definieren Sie Ihren Docker-Container in einer Dockerfile-Datei. Die Dockerfile-Datei enthält eine Anleitung zum Einrichten der Umgebung in Ihrem Container, Laden der auszuführenden Anwendung und Zuordnen von Ports. Die Dockerfile-Datei ist die Eingabe für den Befehl `docker build`, der das Image erstellt. 
+Definieren Sie Ihren Docker-Container in einer Dockerfile-Datei. Die Dockerfile-Datei enthält eine Anleitung zum Einrichten der Umgebung in Ihrem Container, Laden der auszuführenden Anwendung und Zuordnen von Ports. Die Dockerfile-Datei ist die Eingabe für den Befehl `docker build`, der das Image erstellt.
 
 Erstellen Sie ein leeres Verzeichnis, und erstellen Sie die Datei *Dockerfile* (ohne Dateierweiterung). Fügen Sie der *Dockerfile* Folgendes hinzu, und speichern Sie Ihre Änderungen:
 
@@ -86,13 +86,14 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    
+
     return 'Hello World!'
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=80)
 ```
 
+<a id="Build-Containers"></a>
 ## <a name="build-the-image"></a>Erstellen des Image
 Führen Sie den Befehl `docker build` aus, um das Image zu erstellen, mit dem Ihre Webanwendung ausgeführt wird. Öffnen Sie ein PowerShell-Fenster, und navigieren Sie zu dem Verzeichnis, das die Dockerfile-Datei enthält. Führen Sie den folgenden Befehl aus:
 
@@ -106,7 +107,7 @@ Wenn der Buildbefehl abgeschlossen ist, rufen Sie den Befehl `docker images` ab,
 
 ```
 $ docker images
-    
+
 REPOSITORY                    TAG                 IMAGE ID            CREATED             SIZE
 helloworldapp                 latest              8ce25f5d6a79        2 minutes ago       10.4 GB
 ```
@@ -141,6 +142,7 @@ Löschen Sie den Container von Ihrem Entwicklungscomputer:
 docker rm my-web-site
 ```
 
+<a id="Push-Containers"></a>
 ## <a name="push-the-image-to-the-container-registry"></a>Übertragen des Images an die Containerregistrierung mithilfe von Push
 Wenn Sie überprüft haben, ob der Container auf dem Entwicklungscomputer ausgeführt wird, übertragen Sie das Image mithilfe von Push an Ihre Registrierung in Azure Container Registry.
 
@@ -170,7 +172,7 @@ Das Service Fabric-SDK und die Tools stellen eine Dienstvorlage bereit, um Sie b
 1. Starten Sie Visual Studio.  Wählen Sie **Datei** > **Neu** > **Projekt**.
 2. Wählen Sie **Service Fabric-Anwendung**, benennen Sie sie „MyFirstContainer“, und klicken Sie auf **OK**.
 3. Wählen Sie **Gastcontainer** aus der Liste der **Dienstvorlagen** aus.
-4. Geben Sie unter **Imagename** „myregistry.azurecr.io/samples/helloworldapp“ ein, das Image, das Sie mithilfe von Push an Ihr Containerrepository übertragen haben. 
+4. Geben Sie unter **Imagename** „myregistry.azurecr.io/samples/helloworldapp“ ein, das Image, das Sie mithilfe von Push an Ihr Containerrepository übertragen haben.
 5. Geben Sie dem Dienst einen Namen, und klicken Sie auf **OK**.
 
 ## <a name="configure-communication"></a>Konfigurieren der Kommunikation
@@ -183,8 +185,8 @@ Der im Container ausgeführte Dienst erfordert einen Endpunkt für die Kommunika
   </Endpoints>
 </Resources>
 ```
-    
-Durch die Definition eines Endpunkts veröffentlicht Service Fabric den Endpunkt an den Naming Service.  Dieser Container kann von anderen im Cluster ausgeführten Diensten aufgelöst werden.  Mithilfe des [Reverseproxys](service-fabric-reverseproxy.md) können Sie auch Container-zu-Container-Kommunikation durchführen.  Die Kommunikation erfolgt, indem der HTTP-Lauschport für den Reverseproxy und die Namen der Dienste, mit denen Sie kommunizieren möchten, als Umgebungsvariablen angegeben werden. 
+
+Durch die Definition eines Endpunkts veröffentlicht Service Fabric den Endpunkt an den Naming Service.  Dieser Container kann von anderen im Cluster ausgeführten Diensten aufgelöst werden.  Mithilfe des [Reverseproxys](service-fabric-reverseproxy.md) können Sie auch Container-zu-Container-Kommunikation durchführen.  Die Kommunikation erfolgt, indem der HTTP-Lauschport für den Reverseproxy und die Namen der Dienste, mit denen Sie kommunizieren möchten, als Umgebungsvariablen angegeben werden.
 
 ## <a name="configure-and-set-environment-variables"></a>Konfigurieren und Festlegen von Umgebungsvariablen
 Zu jedem Codepaket im Dienstmanifest können Umgebungsvariablen angegeben werden. Diese Funktion ist für alle Dienste verfügbar, unabhängig davon, ob diese als Container, Prozesse oder ausführbare Gastdateien bereitgestellt werden. Die können die Werte von Umgebungsvariablen im Anwendungsmanifest überschreiben oder während der Bereitstellung als Anwendungsparameter angeben.
@@ -211,7 +213,7 @@ Diese Umgebungsvariablen können im Anwendungsmanifest überschrieben werden:
 ```
 
 ## <a name="configure-container-port-to-host-port-mapping-and-container-to-container-discovery"></a>Konfigurieren der Zuordnung vom Containerport zum Hostport und der Container-zu-Container-Ermittlung
-Konfigurieren Sie einen Hostport für die Kommunikation mit dem Container. Über die Portbindung wird der Port, über den der Dienst im Container lauscht, einem Port auf dem Host zugeordnet. Fügen Sie dem `ContainerHostPolicies`-Element der Datei „ApplicationManifest.xml“ ein `PortBinding`-Element hinzu.  In diesem Artikel ist `ContainerPort` 80 (der Container macht Port 80 verfügbar, wie in der Dockerfile-Datei angegeben), und `EndpointRef` ist „Guest1TypeEndpoint“ (der zuvor im Dienstmanifest angegebene Endpunkt).  Über Port 8081 an den Dienst eingehende Anforderungen werden Port 80 im Container zugeordnet. 
+Konfigurieren Sie einen Hostport für die Kommunikation mit dem Container. Über die Portbindung wird der Port, über den der Dienst im Container lauscht, einem Port auf dem Host zugeordnet. Fügen Sie dem `ContainerHostPolicies`-Element der Datei „ApplicationManifest.xml“ ein `PortBinding`-Element hinzu.  In diesem Artikel ist `ContainerPort` 80 (der Container macht Port 80 verfügbar, wie in der Dockerfile-Datei angegeben), und `EndpointRef` ist „Guest1TypeEndpoint“ (der zuvor im Dienstmanifest angegebene Endpunkt).  Über Port 8081 an den Dienst eingehende Anforderungen werden Port 80 im Container zugeordnet.
 
 ```xml
 <Policies>
@@ -312,7 +314,7 @@ Speichern Sie alle Änderungen, und erstellen Sie die Anwendung. Klicken Sie zum
 
 Geben Sie in **Verbindungsendpunkt** den Verwaltungsendpunkt für den Cluster ein,  z.B. „containercluster.westus2.cloudapp.azure.com:19000“. Sie finden den Client-Verbindungsendpunkt im [Azure-Portal](https://portal.azure.com) auf dem Blatt „Übersicht“ für Ihren Cluster.
 
-Klicken Sie auf **Veröffentlichen**. 
+Klicken Sie auf **Veröffentlichen**.
 
 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) ist ein webbasiertes Tool zum Untersuchen und Verwalten von Anwendungen und Knoten in einem Service Fabric-Cluster. Öffnen Sie einen Browser, navigieren Sie zu „http://containercluster.westus2.cloudapp.azure.com:19080/Explorer/“, und führen Sie die Anwendungsbereitstellung aus.  Die Anwendung wird bereitgestellt, befindet sich bis zum Herunterladen des Image auf die Clusterknoten aber in einem Fehlerzustand (je nach Imagegröße kann dies einige Zeit in Anspruch nehmen): ![Fehler][1]
 
@@ -360,17 +362,17 @@ Dies sind die vollständigen Dienst- und Anwendungsmanifeste, die in diesem Arti
       <EnvironmentVariable Name="HttpGatewayPort" Value=""/>
       <EnvironmentVariable Name="BackendServiceName" Value=""/>
     </EnvironmentVariables>
-    
+
   </CodePackage>
 
-  <!-- Config package is the contents of the Config directoy under PackageRoot that contains an 
+  <!-- Config package is the contents of the Config directoy under PackageRoot that contains an
        independently-updateable and versioned set of custom configuration settings for your service. -->
   <ConfigPackage Name="Config" Version="1.0.0" />
 
   <Resources>
     <Endpoints>
-      <!-- This endpoint is used by the communication listener to obtain the port on which to 
-           listen. Please note that if your service is partitioned, this port is shared with 
+      <!-- This endpoint is used by the communication listener to obtain the port on which to
+           listen. Please note that if your service is partitioned, this port is shared with
            replicas of different partitions that are placed in your code. -->
       <Endpoint Name="Guest1TypeEndpoint" UriScheme="http" Port="8081" Protocol="http"/>
     </Endpoints>
@@ -388,8 +390,8 @@ Dies sind die vollständigen Dienst- und Anwendungsmanifeste, die in diesem Arti
   <Parameters>
     <Parameter Name="Guest1_InstanceCount" DefaultValue="-1" />
   </Parameters>
-  <!-- Import the ServiceManifest from the ServicePackage. The ServiceManifestName and ServiceManifestVersion 
-       should match the Name and Version attributes of the ServiceManifest element defined in the 
+  <!-- Import the ServiceManifest from the ServicePackage. The ServiceManifestName and ServiceManifestVersion
+       should match the Name and Version attributes of the ServiceManifest element defined in the
        ServiceManifest.xml file. -->
   <ServiceManifestImport>
     <ServiceManifestRef ServiceManifestName="Guest1Pkg" ServiceManifestVersion="1.0.0" />
@@ -411,10 +413,10 @@ NtTvlzhk11LIlae/5kjPv95r3lw6DHmV4kXLwiCNlcWPYIWBGIuspwyG+28EWSrHmN7Dt2WqEWqeNQ==
     </Policies>
   </ServiceManifestImport>
   <DefaultServices>
-    <!-- The section below creates instances of service types, when an instance of this 
-         application type is created. You can also create one or more instances of service type using the 
+    <!-- The section below creates instances of service types, when an instance of this
+         application type is created. You can also create one or more instances of service type using the
          ServiceFabric PowerShell module.
-         
+
          The attribute ServiceTypeName below must match the name defined in the imported ServiceManifest.xml file. -->
     <Service Name="Guest1">
       <StatelessService ServiceTypeName="Guest1Type" InstanceCount="[Guest1_InstanceCount]">
