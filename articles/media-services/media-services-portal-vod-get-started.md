@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/12/2017
+ms.date: 08/07/2017
 ms.author: juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 555e0b6340d09517bfd87efe209f0304f3266788
-ms.openlocfilehash: 76fd245f91e1bfab3df68120859c69e459283e5b
+ms.translationtype: HT
+ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
+ms.openlocfilehash: cbb67ef92386a6288b3317bf77ebb67f15ce7fb2
 ms.contentlocale: de-de
-ms.lasthandoff: 02/17/2017
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-the-azure-portal"></a>Erste Schritte zum Bereitstellen von Inhalten nach Bedarf mit dem Azure-Portal
@@ -79,6 +79,7 @@ Zum Streamen von Videos mit Azure Media Services müssen Sie die Quellvideos hoc
 Nach Abschluss des Uploadvorgangs wird das neue Objekt im Fenster **Ressourcen** angezeigt. 
 
 ## <a name="encode-assets"></a>Codieren von Medienobjekten
+
 Bei der Arbeit mit Azure Media Services ist eines der häufigsten Szenarios das Streaming mit adaptiver Bitrate an Clients. Media Services unterstützt die folgenden Technologien mit Adaptive Bitrate Streaming: HTTP Live Streaming (HLS), Smooth Streaming und MPEG DASH. Um die Videos für das Adaptive Bitrate Streaming vorzubereiten, müssen Sie das Quellvideo in Dateien mit mehreren Bitraten codieren. Videos sollten mit dem Encoder **Media Encoder Standard** codiert werden.  
 
 Media Services bietet auch eine dynamische Paketerstellung, bei der Sie MP4-Dateien mit variablen Bitraten in den folgenden Streamingformaten bereitstellen können: MPEG DASH, HLS und Smooth Streaming. Hierbei ist es nicht erforderlich, diese Streamingformate neu zu verpacken. Mit der dynamischen Paketerstellung müssen Sie die Dateien nur in einem einzelnen Speicherformat speichern und bezahlen. Media Services erstellt und verarbeitet die entsprechende Antwort basierend auf Anforderungen von einem Client.
@@ -91,7 +92,7 @@ In diesem Abschnitt werden die Schritte beschrieben, die Sie ausführen können,
 1. Wählen Sie im Fenster **Einstellungen** die Option **Assets** aus.  
 2. Wählen Sie im Fenster **Ressourcen** das Objekt aus, das Sie codieren möchten.
 3. Klicken Sie auf die Schaltfläche **Codieren** .
-4. Wählen Sie im Fenster **Medienobjekt codieren** den Prozessor „Media Encoder Standard“ und eine Voreinstellung aus. Wenn Sie beispielsweise wissen, dass das Eingabevideo eine Auflösung von 1920x1080 Pixel hat, können Sie die Voreinstellung „H264 Multiple Bitrate 1080p“ wählen. Weitere Informationen zu Voreinstellungen finden Sie in [diesem Artikel](media-services-mes-presets-overview.md). Es ist wichtig, dass Sie die Voreinstellung auswählen, die für Ihr Eingabevideo am besten geeignet ist. Wenn Sie über ein Video mit niedriger Auflösung (640x360) verfügen, sollten Sie nicht die standardmäßige Voreinstellung „H264 Multiple Bitrate 1080p“ verwenden.
+4. Wählen Sie im Fenster **Medienobjekt codieren** den Prozessor „Media Encoder Standard“ und eine Voreinstellung aus. Informationen zu Voreinstellungen finden Sie unter [Verwenden von Azure Media Encoder Standard zum automatischen Generieren einer Reihe von Bitraten](media-services-autogen-bitrate-ladder-with-mes.md) und [Aufgabenvoreinstellungen für MES (Media Encoder Standard)](media-services-mes-presets-overview.md). Wenn Sie steuern möchten, welche Codierungsvoreinstellung verwendet werden soll, beachten Sie Folgendes: Es ist wichtig, die Voreinstellung auszuwählen, die sich am besten für Ihr Eingabevideo eignet. Wenn Sie beispielsweise wissen, dass das Eingabevideo eine Auflösung von 1920x1080 Pixel hat, können Sie die Voreinstellung „H264 Multiple Bitrate 1080p“ wählen. Wenn Sie über ein Video mit niedriger Auflösung (640x360) verfügen, sollten Sie nicht die Voreinstellung „H264 Multiple Bitrate 1080p“ verwenden.
    
    Zur Vereinfachung der Verwaltung besteht die Möglichkeit, den Namen des Ausgabemedienobjekts und den Namen des Auftrags zu bearbeiten.
    
@@ -155,6 +156,7 @@ Klicken Sie auf das gewünschte Video und dann auf die Schaltfläche **Wiedergeb
 
 Folgende Überlegungen sollten berücksichtigt werden:
 
+* Starten Sie die Ausführung des Streamingendpunkts **Standard**, um das Streaming zu starten.
 * Vergewissern Sie sich, dass das Video veröffentlicht wurde.
 * Dieser **Media Player** verwendet für die Wiedergabe den standardmäßigen Streamingendpunkt. Wenn Sie die Wiedergabe von einem anderen Streamingendpunkt starten möchten, können Sie die URL per Klick kopieren und einen anderen Player verwenden. Sie können beispielsweise den [Azure Media Services-Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html)nutzen.
 

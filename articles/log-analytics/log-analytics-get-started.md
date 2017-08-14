@@ -12,14 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/12/2017
+ms.date: 08/08/2017
 ms.author: magoedte
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: 9147d2f349f59417e44e288ef057e5857a266815
+ms.translationtype: HT
+ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
+ms.openlocfilehash: 7bdbdf8654ae22ba143d5f87384e04fe4a11d10e
 ms.contentlocale: de-de
-ms.lasthandoff: 06/16/2017
-
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="get-started-with-a-log-analytics-workspace"></a>Erste Schritte mit einem Log Analytics-Arbeitsbereich
@@ -59,7 +58,12 @@ Im nächsten Schritt erstellen Sie einen Arbeitsbereich.
 4. Wählen Sie einen Arbeitsbereich aus, um dessen Details im Azure-Portal anzuzeigen.       
     ![Informationen zum Arbeitsbereich](./media/log-analytics-get-started/oms-onboard-workspace-details.png)         
 
-## <a name="3-add-solutions-and-solution-offerings"></a>3. Hinzufügen von Lösungen und Lösungsangeboten
+## <a name="3-upgrade-workspace-to-new-log-search"></a>3. Upgrade des Arbeitsbereichs auf eine neue Protokollsuche
+Eine neue Log Analytics-Abfragesprache wurde veröffentlicht. Damit Sie sie nutzen können, müssen Sie Ihren Arbeitsbereich konvertieren.  Wenn die Region, in der Ihr Arbeitsbereich gehostet wird, aktualisiert wurde, wird oben im Arbeitsbereich normalerweise ein violettes Banner mit der Einladung zum Konvertieren angezeigt. Das Upgrade ist freiwillig und wirkt sich nicht auf Ihre Verwendung von Log Analytics und hinzugefügte Lösungen aus.  
+
+Weitere Informationen zu den Vorteilen, Überlegungen und Upgradeschritten finden Sie unter [Upgrade des Azure Log Analytics-Arbeitsbereichs auf die neue Protokollsuche](log-analytics-log-search-upgrade.md).  
+
+## <a name="4-add-solutions-and-solution-offerings"></a>4. Hinzufügen von Lösungen und Lösungsangeboten
 
 Fügen Sie als Nächstes Verwaltungslösungen und Lösungsangebote hinzu. Bei Verwaltungslösungen handelt es sich um eine Sammlung von Logik-, Visualisierungs- und Datenerfassungsregeln, die Metriken zu einem bestimmten Problembereich bereitstellen. In einem Lösungsangebot werden mehrere Verwaltungslösungen zusammengefasst.
 
@@ -95,11 +99,11 @@ Erstellen Sie als Nächstes einen einfachen virtuellen Computer in Azure. Integr
 
 - Führen Sie die unter [Verbinden von virtuellen Azure-Computern mit Log Analytics](log-analytics-azure-vm-extension.md) beschriebenen Schritte aus, um über das Azure-Portal eine Verbindung zwischen dem virtuellen Computer und Log Analytics herzustellen.
 
-## <a name="5-view-and-act-on-data"></a>5. Anzeigen und Nutzen der Daten
+## <a name="6-view-and-act-on-data"></a>6. Anzeigen und Nutzen der Daten
 
 Sie haben bereits die Activity Log Analytics-Lösung und die Dienstangebote „Sicherheit und Compliance“ und „Automation & Control“ aktiviert. Als Nächstes sehen wir uns von den Lösungen gesammelte Daten und Ergebnisse in Protokollsuchen an.
 
-Sehen Sie sich zunächst Daten an, die innerhalb der Lösungen angezeigt werden. Sehen Sie dann einige Protokollsuchen an, auf die über Protokollsuchen zugegriffen wird. Protokollsuchen ermöglichen Ihnen das Kombinieren und Korrelieren beliebiger Computerdaten aus mehreren Quellen in Ihrer Umgebung. Weitere Informationen finden Sie unter [Protokollsuchen in Log Analytics](log-analytics-log-searches.md). Verwenden Sie schließlich Daten, die wir außerhalb des Azure-Portals mithilfe des OMS-Portals finden, als Grundlage für Aktionen.
+Sehen Sie sich zunächst Daten an, die innerhalb der Lösungen angezeigt werden. Sehen Sie dann einige Protokollsuchen an, auf die über Protokollsuchen zugegriffen wird. Protokollsuchen ermöglichen Ihnen das Kombinieren und Korrelieren beliebiger Computerdaten aus mehreren Quellen in Ihrer Umgebung. Weitere Informationen finden Sie unter [Suchen von Daten mit Protokollsuchen in Log Analytics](log-analytics-log-searches.md). Wenn Sie den Arbeitsbereich in die neue Abfragesprache konvertiert haben, lesen Sie die Informationen unter [Grundlegendes zu Protokollsuchvorgängen in Log Analytics](log-analytics-log-search-new.md). 
 
 ### <a name="to-view-antimalware-data"></a>So zeigen Sie Antischadsoftware-Daten an
 

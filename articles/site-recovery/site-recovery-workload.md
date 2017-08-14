@@ -14,30 +14,26 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 05/08/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 6037c1ea1655aa027a0933b1eea5f864103cfd5b
+ms.translationtype: HT
+ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
+ms.openlocfilehash: 88f20287e2a6935b9694a25a21b607d658b8eb68
 ms.contentlocale: de-de
-ms.lasthandoff: 07/08/2017
-
+ms.lasthandoff: 08/08/2017
 
 ---
-# Welche Workloads können mit Azure Site Recovery geschützt werden?
-<a id="what-workloads-can-you-protect-with-azure-site-recovery" class="xliff"></a>
+# <a name="what-workloads-can-you-protect-with-azure-site-recovery"></a>Welche Workloads können mit Azure Site Recovery geschützt werden?
 In diesem Artikel werden Workloads und Anwendungen beschrieben, die Sie mit dem Azure Site Recovery-Dienst replizieren können.
 
 Kommentare oder Fragen können Sie am Ende dieses Artikels oder im [Forum zu Azure Recovery Services](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)veröffentlichen.
 
-## Übersicht
-<a id="overview" class="xliff"></a>
+## <a name="overview"></a>Übersicht
 Unternehmen benötigen eine Strategie für die Bereiche Geschäftskontinuität und Notfallwiederherstellung (Business Continuity and Disaster Recovery, BCDR), damit Workloads und Daten bei geplanten und ungeplanten Ausfallzeiten gesichert bleiben und die regulären Arbeitsbedingungen so schnell wie möglich wiederhergestellt werden können.
 
 Site Recovery ist ein Azure-Dienst als Beitrag zu Ihrer BCDR-Strategie. Mithilfe von Site Recovery können Sie anwendungsorientierte Replikation in der Cloud oder an einem sekundären Standort bereitstellen. Unabhängig davon, ob Ihre Apps Windows- oder Linux-basiert sind, auf physischen Servern ausgeführt werden oder virtuelle VMware- oder Hyper-V-Computer sind, gilt Folgendes: Sie können Site Recovery verwenden, um die Replikation zu orchestrieren, Tests für die Notfallwiederherstellung durchzuführen und Failover und Failbacks auszuführen.
 
 Site Recovery ist in Microsoft-Anwendungen wie SharePoint, Exchange, Dynamics, SQL Server und Active Directory integriert. Microsoft arbeitet außerdem eng mit führenden Herstellern wie Oracle, SAP, IBM und Red Hat zusammen. Sie können Replikationslösungen für jede App speziell anpassen.
 
-## Gründe für die Verwendung von Site Recovery für die Anwendungsreplikation
-<a id="why-use-site-recovery-for-application-replication" class="xliff"></a>
+## <a name="why-use-site-recovery-for-application-replication"></a>Gründe für die Verwendung von Site Recovery für die Anwendungsreplikation
 Site Recovery trägt wie folgt zum Schutz und zur Wiederherstellung auf Anwendungsebene bei:
 
 * App-unabhängige Bereitstellung von Replikation für alle Workloads, die auf einem unterstützten Computer ausgeführt werden
@@ -48,8 +44,7 @@ Site Recovery trägt wie folgt zum Schutz und zur Wiederherstellung auf Anwendun
 * Erweiterte Netzwerkverwaltung in Site Recovery und Azure, um die App-Netzwerkanforderungen zu vereinfachen, z. B. das Reservieren von IP-Adressen, Konfigurieren des Lastenausgleichs und Integrieren in Azure Traffic Manager, um Netzwerk-Switchovers mit niedrigem RTO zu erzielen.
 * Eine umfassende Automatisierungsbibliothek bietet produktionsbereite, anwendungsspezifische Skripts, die heruntergeladen und in Wiederherstellungspläne integriert werden können.
 
-## Übersicht über Workloads
-<a id="workload-summary" class="xliff"></a>
+## <a name="workload-summary"></a>Übersicht über Workloads
 Mit Site Recovery können alle Apps repliziert werden, die auf einem unterstützten Computer ausgeführt werden. Außerdem haben wir mit Produktteams zusammengearbeitet, um zusätzliche App-spezifische Tests durchzuführen.
 
 | **Workload** | **Replizieren von Hyper-V-VMs an einem sekundären Standort** | **Replizieren von Hyper-V-VMs in Azure** | **Replizieren von VMware-VMs an einem sekundären Standort** | **Replizieren von VMware-VMs in Azure** |
@@ -68,16 +63,14 @@ Mit Site Recovery können alle Apps repliziert werden, die auf einem unterstütz
 | Windows-Dateiserver |J |J |J |J |
 | Citrix XenApp und XenDesktop |N/V |J |N/V |J |
 
-## Replizieren von Active Directory und DNS
-<a id="replicate-active-directory-and-dns" class="xliff"></a>
+## <a name="replicate-active-directory-and-dns"></a>Replizieren von Active Directory und DNS
 Eine Infrastruktur mit Active Directory und DNS ist für die meisten Unternehmens-Apps wichtig. Während der Notfallwiederherstellung müssen Sie diese Infrastrukturkomponenten schützen und wiederherstellen, bevor Sie Ihre Workloads und Apps wiederherstellen.
 
 Sie können Site Recovery verwenden, um für Active Directory und DNS einen vollständigen automatisierten Notfallwiederherstellungsplan zu erstellen. Wenn Sie beispielsweise für SharePoint und SAP ein Failover von einem primären auf einen sekundären Standort durchführen möchten, können Sie einen Wiederherstellungsplan einrichten, bei dem das Failover zuerst für Active Directory erfolgt. Anschließend erstellen Sie einen weiteren App-spezifischen Wiederherstellungsplan, um das Failover für die anderen Apps durchzuführen, die auf Active Directory basieren.
 
 [Erfahren Sie mehr](site-recovery-active-directory.md) zum Schutz von Active Directory und DNS.
 
-## Schützen von SQL Server
-<a id="protect-sql-server" class="xliff"></a>
+## <a name="protect-sql-server"></a>Schützen von SQL Server
 SQL Server stellt die Grundlage für Datendienste vieler Unternehmens-Apps in einem lokalen Rechenzentrum dar.  Site Recovery kann zusammen mit SQL Server-Technologie für hohe Verfügbarkeit und Notfallwiederherstellung verwendet werden, um Unternehmens-Apps mit mehreren Ebenen zu schützen, für die SQL Server verwendet wird. Site Recovery bietet Folgendes:
 
 * Eine einfache und kostengünstige Notfallwiederherstellungslösung für SQL Server. Replikation mehrerer Versionen und Editionen von eigenständigen SQL Server-Servern- und -Clustern zu Azure oder einem sekundären Standort.  
@@ -88,8 +81,7 @@ SQL Server stellt die Grundlage für Datendienste vieler Unternehmens-Apps in ei
 
 [Erfahren Sie mehr](site-recovery-sql.md) über das Schützen von SQL Server.
 
-## Schützen von SharePoint
-<a id="protect-sharepoint" class="xliff"></a>
+## <a name="protect-sharepoint"></a>Schützen von SharePoint
 Mit Azure Site Recovery können SharePoint-Bereitstellungen wie folgt geschützt werden:
 
 * Wegfall der Notwendigkeit und zugehörigen Infrastrukturkosten einer Standbyfarm für die Notfallwiederherstellung. Verwenden Sie Site Recovery, um eine gesamte Farm (Web-, App- und Datenbankebenen) zu Azure oder einem sekundären Standort zu replizieren.
@@ -99,8 +91,7 @@ Mit Azure Site Recovery können SharePoint-Bereitstellungen wie folgt geschützt
 
 [Erfahren Sie mehr](site-recovery-sharepoint.md) über das Schützen von SharePoint.
 
-## Schützen von Dynamics AX
-<a id="protect-dynamics-ax" class="xliff"></a>
+## <a name="protect-dynamics-ax"></a>Schützen von Dynamics AX
 Azure Site Recovery trägt wie folgt zum Schutz Ihrer Dynamics AX ERP-Lösung bei:
 
 * Orchestrieren der Replikation der gesamten Dynamics AX-Umgebung (Web- und AOS-Ebene, Datenbankebenen, SharePoint) zu Azure oder einem sekundären Standort.
@@ -109,8 +100,7 @@ Azure Site Recovery trägt wie folgt zum Schutz Ihrer Dynamics AX ERP-Lösung be
 
 [Erfahren Sie mehr](site-recovery-dynamicsax.md) über das Schützen von Dynamics AX.
 
-## Schützen von RDS
-<a id="protect-rds" class="xliff"></a>
+## <a name="protect-rds"></a>Schützen von RDS
 Mit Remotedesktopdiensten (RDS) werden eine Virtual Desktop Infrastructure (VDI) sowie sitzungsbasierte Desktops und Anwendungen ermöglicht, damit Benutzer an jedem Ort arbeiten können. Mit Azure Site Recovery haben Sie folgende Möglichkeiten:
 
 * Replizieren von verwalteten oder nicht verwalteten virtuellen Desktops eines Pools an einem sekundären Standort und von Remoteanwendungen und -sitzungen an einem sekundären Standort oder in Azure.
@@ -124,8 +114,7 @@ Mit Remotedesktopdiensten (RDS) werden eine Virtual Desktop Infrastructure (VDI)
 
 [Erfahren Sie mehr](https://gallery.technet.microsoft.com/Remote-Desktop-DR-Solution-bdf6ddcb) über das Schützen von RDS.
 
-## Schützen von Exchange
-<a id="protect-exchange" class="xliff"></a>
+## <a name="protect-exchange"></a>Schützen von Exchange
 Mit Site Recovery können Sie Exchange wie schützen:
 
 * Für kleine Exchange-Bereitstellungen, z. B. einen einzelnen oder eigenständigen Server, können mit Site Recovery die Replikation und das Failover in Azure oder an einem sekundären Standort durchgeführt werden.
@@ -134,18 +123,17 @@ Mit Site Recovery können Sie Exchange wie schützen:
 
 [Erfahren Sie mehr](https://gallery.technet.microsoft.com/Exchange-DR-Solution-using-11a7dcb6) über das Schützen von Exchange.
 
-## Schützen von SAP
-<a id="protect-sap" class="xliff"></a>
+## <a name="protect-sap"></a>Schützen von SAP
 Verwenden Sie Site Recovery wie folgt zum Schützen Ihrer SAP-Bereitstellung:
 
-* Sie können für den Schutz der gesamten SAP-Bereitstellung sorgen, indem Sie unterschiedliche Bereitstellungsebenen in Azure oder an einem sekundären Standort replizieren.
+* Ermöglichen Sie den Schutz von SAP NetWeaver und Produktionsanwendungen, die nicht von NetWeaver stammen und lokal ausgeführt werden, indem Sie die Komponenten in Azure replizieren.
+* Ermöglichen Sie den Schutz von SAP NetWeaver und Produktionsanwendungen, die nicht von NetWeaver stammen und Azure ausführen, indem Sie die Komponenten in einem anderen Azure-Datencenter replizieren.
 * Vereinfachen der Cloudmigration mithilfe von Site Recovery zum Migrieren Ihrer SAP-Bereitstellung in Azure.
-* Vereinfachen Sie Entwicklung und Tests von SAP-Anwendungen, indem Sie für Test- und Debugzwecke eine der Produktionsversion ähnliche Kopie bedarfsgesteuert erstellen.
+* Vereinfachen Sie SAP-Projektupgrades, Testläufe und Prototyperstellung, indem Sie bei Bedarf einen Produktionsklon zum Testen von SAP-Anwendungen erstellen.
 
-[Erfahren Sie mehr](http://aka.ms/asr-sap) über das Schützen von SAP.
+[Erfahren Sie mehr](site-recovery-sap.md) über das Schützen von SAP.
 
-## Schützen von IIS
-<a id="protect-iis" class="xliff"></a>
+## <a name="protect-iis"></a>Schützen von IIS
 Verwenden Sie Site Recovery wie folgt zum Schützen Ihrer IIS-Bereitstellung:
 
 Azure Site Recovery stellt die Notfallwiederherstellung bereit, indem die kritischen Komponenten in Ihrer Umgebung an einem „kalten“ Remotestandort oder in einer öffentlichen Cloud wie Microsoft Azure repliziert werden. Da der virtuelle Computer mit dem Webserver und der Datenbank am Wiederherstellungsstandort repliziert werden, ist es nicht erforderlich, Konfigurationsdateien oder Zertifikate separat zu sichern. Die Anwendungszuordnungen und Bindungen sind von Umgebungsvariablen abhängig, die nach dem Failover geändert werden. Sie können mithilfe von Skripts aktualisiert werden, die in die Pläne für die Notfallwiederherstellung integriert sind. Virtuelle Computer werden am Wiederherstellungsstandort nur bei einem Failover genutzt. Außerdem werden Sie von Azure Site Recovery beim Orchestrieren des End-to-End-Failovers unterstützt, indem die folgenden Funktionen bereitgestellt werden:
@@ -158,19 +146,17 @@ Azure Site Recovery stellt die Notfallwiederherstellung bereit, indem die kritis
 
 [Hier finden Sie weitere Informationen](https://aka.ms/asr-iis) zum Schützen einer IIS-Webfarm.
 
-## Schützen von Citrix XenApp und XenDesktop
-<a id="protect-citrix-xenapp-and-xendesktop" class="xliff"></a>
+## <a name="protect-citrix-xenapp-and-xendesktop"></a>Schützen von Citrix XenApp und XenDesktop
 Gehen Sie wie folgt vor, um Ihre Bereitstellungen von Citrix XenApp und XenDesktop mithilfe von Site Recovery zu schützen:
 
 * Aktivieren Sie den Schutz der Citrix XenApp- und XenDesktop-Bereitstellung, indem Sie verschiedene Bereitstellungsebenen in Azure replizieren. Zu diesen zählen unter anderem AD-DNS-Server, SQL-Datenbankserver, Citrix Delivery Controller, StoreFront-Server, XenApp Master (VDA) und Citrix XenApp-Lizenzserver.
 * Vereinfachen Sie die Cloudmigration, indem Sie Ihre Citrix XenApp- und XenDesktop-Bereitstellung mithilfe von Site Recovery zu Azure migrieren.
 * Vereinfachen Sie das Testen von Citrix XenApp/XenDesktop, indem Sie bei Bedarf eine der Produktionsversion ähnliche Kopie zu Test- und Debugzwecken erstellen.
-* Diese Lösung ist nur für virtuelle Desktopcomputer unter dem Windows Server-Betriebssystem relevant und nicht für virtuelle Clientdesktopcomputer, da diese noch nicht für die Lizenzierung in Azure unterstützt werden. 
+* Diese Lösung ist nur für virtuelle Desktopcomputer unter dem Windows Server-Betriebssystem relevant und nicht für virtuelle Clientdesktopcomputer, da diese noch nicht für die Lizenzierung in Azure unterstützt werden.
 Weitere Informationen zur Lizenzierung für Client-/Serverdesktopcomputer in Azure finden Sie [hier](https://azure.microsoft.com/pricing/licensing-faq/).
 
-Weitere Informationen zum Schutz von Citrix XenApp- und XenDesktop-Bereitstellungen finden Sie [hier](site-recovery-citrix-xenapp-and-xendesktop.md). Alternativ können Sie das [Whitepaper von Citrix](https://aka.ms/citrix-xenapp-xendesktop-with-asr) lesen. Es enthält die gleichen Informationen. 
+Weitere Informationen zum Schutz von Citrix XenApp- und XenDesktop-Bereitstellungen finden Sie [hier](site-recovery-citrix-xenapp-and-xendesktop.md). Alternativ können Sie das [Whitepaper von Citrix](https://aka.ms/citrix-xenapp-xendesktop-with-asr) lesen. Es enthält die gleichen Informationen.
 
-## Nächste Schritte
-<a id="next-steps" class="xliff"></a>
-[Überprüfen der Voraussetzungen](site-recovery-prereq.md) 
+## <a name="next-steps"></a>Nächste Schritte
+[Überprüfen der Voraussetzungen](site-recovery-prereq.md)
 
