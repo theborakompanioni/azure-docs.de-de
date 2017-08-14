@@ -105,9 +105,6 @@
       href: consistency-levels.md
     - name: Durchsatz
       href: request-units.md
-      items:
-        - name: Anforderungseinheiten pro Sekunde
-          href: request-units-per-minute.md
     - name: APIs mit mehreren Modellen
       items:
         - name: DocumentDB

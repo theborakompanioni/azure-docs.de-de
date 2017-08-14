@@ -10,6 +10,8 @@
 ### [Cloud Services](cdn-cloud-service-with-cdn.md)
 ### [Speicher](cdn-create-a-storage-account-with-cdn.md)
 ### [Cross-Origin Resource Sharing](cdn-cors.md)
+### [Zuordnen einer benutzerdefinierten Domäne zu CDN](cdn-map-content-to-custom-domain.md)
+### [Aktivieren von HTTPS für eine benutzerdefinierte Domäne](cdn-custom-ssl.md)
 ## Optimieren von Inhalten
 ### [Übersicht über die Optimierung](cdn-optimization-overview.md)
 ####[Optimierung großer Dateien](cdn-large-file-optimization.md)
@@ -17,12 +19,10 @@
 ####[Beschleunigung dynamischer Websites](cdn-dynamic-site-acceleration.md)
  
 ## Verwalten
-### [Aktivieren von HTTPS für eine benutzerdefinierte Domäne](cdn-custom-ssl.md)
 ### [Verwalten mit PowerShell](cdn-manage-powershell.md)
 ### Konfigurieren der Gültigkeitsdauer
 #### [Web-Apps/Cloud Services, ASP.NET oder IIS-Inhalt](cdn-manage-expiration-of-cloud-service-content.md)
 #### [Storage Blob-Dienstinhalt](cdn-manage-expiration-of-blob-content.md)
-### [Zuordnen einer benutzerdefinierten Domäne zu CDN](cdn-map-content-to-custom-domain.md)
 ### [Einschränken des Zugriffs nach Land](cdn-restrict-access-by-country.md)
 ### [Verbessern der Leistung durch Komprimieren von Dateien](cdn-improve-performance.md)
 ### Zwischenspeichern von Inhalten nach Abfragezeichenfolge
