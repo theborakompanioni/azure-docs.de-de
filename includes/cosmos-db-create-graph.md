@@ -1,7 +1,7 @@
-Sie können jetzt den Daten-Explorer verwenden, um einen Graph-Container zu erstellen und Daten zu Ihrer Datenbank hinzuzufügen. 
+Sie können nun mithilfe des Daten-Explorer-Tools im Azure-Portal eine Diagrammdatenbank erstellen. 
 
-1. Klicken Sie im Azure-Portal im Navigationsmenü auf **Daten-Explorer**. 
-2. Klicken Sie auf dem Blatt „Daten-Explorer“ auf **Neues Diagramm**, und füllen Sie dann die Seite mit den folgenden Informationen aus.
+1. Klicken Sie im Azure-Portal im linken Navigationsmenü auf **Daten-Explorer (Vorschau)**. 
+2. Klicken Sie auf dem Blatt **Daten-Explorer (Vorschau)** auf **Neues Diagramm**, und füllen Sie dann die Seite mit den folgenden Informationen aus:
 
     ![Daten-Explorer im Azure-Portal](./media/cosmos-db-create-graph/azure-cosmosdb-data-explorer.png)
 

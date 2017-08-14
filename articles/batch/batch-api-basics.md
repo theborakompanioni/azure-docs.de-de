@@ -16,10 +16,10 @@ ms.date: 06/28/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: 824f900545136428f6e377c52e2dda7e3ab97cfe
+ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
+ms.openlocfilehash: 233965bf54cbca79c7ff059aaccfa5780d672cab
 ms.contentlocale: de-de
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/09/2017
 
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Entwickeln von parallelen Computelösungen in größerem Umfang mit Batch
@@ -98,17 +98,18 @@ Wenn Sie ein Batch-Konto erstellen, können Sie angeben, wie [Pools](#pool) mit 
 
 Die folgende Tabelle enthält eine Gegenüberstellung der Poolzuordnungsmodi „Batch-Dienst“ und „Benutzerabonnement“:
 
-| **Poolzuordnungsmodus:**                 | **Batch-Dienst**                                                                                       | **Benutzerabonnement**                                                              |
+| **Poolzuordnungsmodus**                 | **Batch-Dienst**                                                                                       | **Benutzerabonnement**                                                              |
 |-------------------------------------------|---------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------|
-| **Poolzuordnung in:**               | Von Azure verwaltetes Abonnement                                                                           | Benutzerabonnement, unter dem das Batch-Konto erstellt wird                        |
-| **Unterstützte Konfigurationen:**             | <ul><li>Clouddienstkonfiguration</li><li>VM-Konfiguration (Linux und Windows)</li></ul> | <ul><li>VM-Konfiguration (Linux und Windows)</li></ul>                |
-| **Unterstützte VM-Images:**                  | <ul><li>Azure Marketplace-Images</li></ul>                                                              | <ul><li>Azure Marketplace-Images</li><li>Benutzerdefinierte Images</li></ul>                   |
-| **Unterstützte Computeknotentpyen:**         | <ul><li>Dedizierte Knoten</li><li>Knoten mit niedriger Priorität</li></ul>                                            | <ul><li>Dedizierte Knoten</li></ul>                                                  |
-| **Unterstützte Authentifizierung:**             | <ul><li>Gemeinsam verwendeter Schlüssel</li><li>Azure AD</li></ul>                                                           | <ul><li>Azure AD</li></ul>                                                         |
-| **Azure-Schlüsseltresor erforderlich:**             | Nein                                                                                                      | Ja                                                                                |
-| **Kernkontingent:**                           | Abhängig vom Batch-Kernkontingent                                                                          | Abhängig vom Kernkontingent des Abonnements                                              |
-| **Unterstützung von Azure Virtual Network (VNET):** | Mit der Clouddienstkonfiguration erstellte Pools                                                      | Mit der VM-Konfiguration erstellte Pools                               |
-| **Unterstütztes VNET-Bereitstellungsmodell:**      | VNETs, die mit dem klassischen Bereitstellungsmodell erstellt wurden                                                             | VNETs, die mit dem klassischen Bereitstellungsmodell oder mit Azure Resource Manager erstellt wurden |
+| **Poolzuordnung in**               | Von Azure verwaltetes Abonnement                                                                           | Benutzerabonnement, unter dem das Batch-Konto erstellt wird                        |
+| **Unterstützte Konfigurationen**             | <ul><li>Clouddienstkonfiguration</li><li>VM-Konfiguration (Linux und Windows)</li></ul> | <ul><li>VM-Konfiguration (Linux und Windows)</li></ul>                |
+| **Unterstützte VM-Images**                  | <ul><li>Azure Marketplace-Images</li></ul>                                                              | <ul><li>Azure Marketplace-Images</li><li>Benutzerdefinierte Images</li></ul>                   |
+| **Unterstützte Computeknotentypen**         | <ul><li>Dedizierte Knoten</li><li>Knoten mit niedriger Priorität</li></ul>                                            | <ul><li>Dedizierte Knoten</li></ul>                                                  |
+| **Unterstützte Authentifizierung**             | <ul><li>Gemeinsam verwendeter Schlüssel</li><li>Azure AD</li></ul>                                                           | <ul><li>Azure AD</li></ul>                                                         |
+| **Azure Key Vault erforderlich**             | Nein                                                                                                      | Ja                                                                                |
+| **Kernkontingent**                           | Abhängig vom Batch-Kernkontingent                                                                          | Abhängig vom Kernkontingent des Abonnements                                              |
+| **Unterstützung von Azure Virtual Network (VNET)** | Mit der Clouddienstkonfiguration erstellte Pools                                                      | Mit der VM-Konfiguration erstellte Pools                               |
+| **Unterstütztes VNET-Bereitstellungsmodell**      | VNETs, die mit dem klassischen Bereitstellungsmodell erstellt wurden                                                             | VNETs, die mit dem klassischen Bereitstellungsmodell oder mit Azure Resource Manager erstellt wurden |
+
 ## <a name="azure-storage-account"></a>Azure-Speicherkonto
 
 Die meisten Batch-Lösungen verwenden Azure Storage zum Speichern von Ressourcen- und Ausgabedateien.  
@@ -171,6 +172,8 @@ Wenn Sie einen Batch-Pool erstellen, können Sie die Konfiguration für virtuell
     * Genau wie bei Workerrollen innerhalb von Cloud Services können Sie eine *Betriebssystemversion* angeben. (Weitere Informationen zu Workerrollen finden Sie im Abschnitt [Informationen zu Cloud Services](../cloud-services/cloud-services-choose-me.md#tell-me-about-cloud-services) in der [Übersicht über Cloud Services](../cloud-services/cloud-services-choose-me.md).)
     * Und genau wie bei Workerrollen empfiehlt sich auch bei der *Betriebssystemversion* die Angabe von `*`, damit die Knoten automatisch per Upgrade aktualisiert werden und für neue Versionen kein Zusatzaufwand entsteht. Mit der Wahl einer bestimmten Betriebssystemversion wird in erster Linie die Anwendungskompatibilität sichergestellt. Hierzu wird die Überprüfung der Abwärtskompatibilität vor der Versionsaktualisierung ermöglicht. Nach der Überprüfung kann die *Betriebssystemversion* für den Pool aktualisiert und das neue Betriebssystemimage installiert werden. Dabei werden alle ausgeführten Tasks unterbrochen und wieder der Warteschlange hinzugefügt.
 
+Wenn Sie einen Pool erstellen, müssen Sie je nach dem Betriebssystem des Basisimages Ihrer VHD die entsprechende **nodeAgentSkuId** auswählen. Eine Zuordnung der verfügbaren Knoten-Agent-SKU-IDs zu ihren Betriebssystemimages erhalten Sie durch den Aufruf des Vorgangs unter [List Supported Node Agent SKUs](https://docs.microsoft.com/rest/api/batchservice/list-supported-node-agent-skus) (Auflisten der unterstützten Knoten-Agent-SKUs).
+
 Im Abschnitt [Konto](#account) finden Sie Informationen zum Festlegen des Poolzuordnungsmodus beim Erstellen eines Batch-Kontos.
 
 #### <a name="custom-images-for-virtual-machine-pools"></a>Benutzerdefinierte Images für Pools virtueller Computer
@@ -195,8 +198,6 @@ Stellen Sie sicher, dass Ihre Speicherkonten die folgenden Kriterien erfüllen:
 - Zurzeit werden nur allgemeine Storage Standard-Konten unterstützt. Azure Storage Premium wird in der Zukunft unterstützt.
 - Sie können ein Speicherkonto mit mehreren Blobs mit benutzerdefinierten VHDs oder mehrere Speicherkonten mit jeweils einem einzelnen Blob angeben. Es wird empfohlen, mehrere Speicherkonten zu verwenden, um eine bessere Leistung zu erzielen.
 - Ein eindeutiges Blob für benutzerdefinierte Images unterstützt bis zu 40 Linux-VM-Instanzen oder 20 Windows-VM-Instanzen. Sie müssen Kopien des VHD-Blobs erstellen, um Pools mit mehr virtuellen Computern zu erstellen. Ein Pool mit 200 virtuellen Windows-Computern benötigt beispielsweise 10 eindeutige VHD-Blobs, die in der **osDisk**-Eigenschaft angegeben werden.
-
-Wenn Sie einen Pool erstellen, müssen Sie je nach dem Betriebssystem des Basisimages Ihrer VHD die entsprechende **nodeAgentSkuId** auswählen. Eine Zuordnung der verfügbaren Knoten-Agent-SKU-IDs zu ihren Betriebssystemimages erhalten Sie durch den Aufruf des Vorgangs unter [List Supported Node Agent SKUs](https://docs.microsoft.com/rest/api/batchservice/list-supported-node-agent-skus) (Auflisten der unterstützten Knoten-Agent-SKUs).
 
 So erstellen Sie ein benutzerdefiniertes Image mithilfe des Azure-Portals
 

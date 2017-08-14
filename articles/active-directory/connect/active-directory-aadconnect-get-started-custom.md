@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 08/02/2017
 ms.author: billmath
 ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
-ms.openlocfilehash: 1580e2841790b7c1b6c9540da4940eef2c487256
+ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
+ms.openlocfilehash: 51906e8d68b5f951a75b8141644bbaf4cf6a43ce
 ms.contentlocale: de-de
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Benutzerdefinierte Installation von Azure AD Connect
@@ -278,6 +278,9 @@ Der AD FS-Dienst erfordert ein Domänendienstkonto zur Authentifizierung von Ben
 * **Domänenbenutzerkonto** : Bei diesem Kontotyp müssen Sie ein Kennwort angeben und das Kennwort regelmäßig aktualisieren, wenn sich das Kennwort ändert oder abläuft. Verwenden Sie diese Option nur, wenn Sie in der Domäne, der die AD FS-Server angehören, über keine Windows Server 2012-Domänencontroller verfügen.
 
 Wenn Sie das gruppenverwaltete Dienstkonto ausgewählt haben und dieses Feature in Active Directory noch nie verwendet wurde, werden Sie zur Eingabe von Enterprise-Administratoranmeldeinformationen aufgefordert. Diese werden zum Initiieren des Schlüsselspeichers und zum Aktivieren des Features in Active Directory verwendet.
+
+> [!NOTE]
+> Azure AD Connect überprüft, ob der AD FS-Dienst bereits als Dienstprinzipalname in der Domäne registriert ist.  Die gleichzeitige Registrierung von doppelten Dienstprinzipalnamen ist in AD DS nicht zulässig.  Wenn ein doppelter Dienstprinzipalname gefunden wird, können Sie den Vorgang erst fortsetzen, wenn der Dienstprinzipalname entfernt wurde.
 
 ![AD FS-Dienstkonto](./media/active-directory-aadconnect-get-started-custom/adfs5.png)
 

@@ -12,14 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/12/2017
+ms.date: 08/06/2017
 ms.author: magoedte
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
-ms.openlocfilehash: 5b4a2b7646a2ead1df459c5d9a17d125821c86a5
+ms.translationtype: HT
+ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
+ms.openlocfilehash: ff4c937fe06d88c6189d39cf799a5d349d0e280a
 ms.contentlocale: de-de
-ms.lasthandoff: 04/21/2017
-
+ms.lasthandoff: 08/07/2017
 
 ---
 # <a name="manage-workspaces"></a>Verwalten von Arbeitsbereichen
@@ -108,7 +107,60 @@ Für die folgenden Aktivitäten sind ebenfalls Azure-Berechtigungen erforderlich
 ### <a name="managing-access-to-log-analytics-using-azure-permissions"></a>Verwalten des Zugriffs auf Log Analytics mit Azure-Berechtigungen
 Führen Sie die Schritte unter [Verwenden von Rollenzuweisungen zum Verwalten Ihrer Azure-Abonnementressourcen](../active-directory/role-based-access-control-configure.md) aus, um den Zugriff auf den Log Analytics-Arbeitsbereich mit Azure-Berechtigungen zu gewähren.
 
-Wenn Sie mindestens über die Azure-Leseberechtigung für den Log Analytics-Arbeitsbereich verfügen, können Sie das OMS-Portal öffnen, indem Sie beim Anzeigen des Log Analytics-Arbeitsbereichs auf die Aufgabe **OMS-Portal** klicken.
+Azure verfügt über zwei integrierte Benutzerrollen für Log Analytics:
+- Log Analytics-Leser
+- Log Analytics-Mitwirkender
+
+Mitglieder der Rolle *Log Analytics-Leser* können folgende Aktionen ausführen:
+- Anzeigen und Durchsuchen aller Überwachungsdaten 
+- Anzeigen von Überwachungseinstellungen (einschließlich der Konfiguration von Azure-Diagnosen für alle Azure-Ressourcen)
+
+| Typ    | Berechtigung | Beschreibung |
+| ------- | ---------- | ----------- |
+| Aktion | `*/read`   | Anzeigen aller Ressourcen und der Ressourcenkonfiguration, einschließlich: <br> VM-Erweiterungsstatus <br> Konfiguration von Azure-Diagnosen für Ressourcen <br> Sämtliche Eigenschaften und Einstellungen aller Ressourcen |
+| Aktion | `Microsoft.OperationalInsights/workspaces/analytics/query/action` | Ausführen von Protokollsuchabfragen (v2) |
+| Aktion | `Microsoft.OperationalInsights/workspaces/search/action` | Ausführen von Protokollsuchabfragen (v1) |
+| Aktion | `Microsoft.Support/*` | Öffnen von Supportfällen |
+|Keine Aktion | `Microsoft.OperationalInsights/workspaces/sharedKeys/read` | Verhindert das Lesen des Arbeitsbereichsschlüssels, der zum Verwenden der Datensammlungs-API und zum Installieren von Agents erforderlich ist |
+
+
+Mitglieder der Rolle *Log Analytics-Mitwirkender* können folgende Aktionen ausführen:
+- Lesen sämtlicher Überwachungsdaten 
+- Erstellen und Konfigurieren von Automation-Konten
+- Hinzufügen und Entfernen von Verwaltungslösungen
+- Lesen von Speicherkontoschlüsseln 
+- Konfigurieren der Sammlung von Protokollen aus Azure Storage
+- Bearbeiten von Überwachungseinstellungen für Azure-Ressourcen, einschließlich:
+  - Hinzufügen der VM-Erweiterung zu virtuellen Computern
+  - Konfigurieren von Azure-Diagnosen für alle Azure-Ressourcen
+
+> [!NOTE] 
+> Durch Hinzufügen einer VM-Erweiterung zu einem virtuellen Computer können Sie die vollständige Kontrolle über einen virtuellen Computer erlangen.
+
+| Berechtigung | Beschreibung |
+| ---------- | ----------- |
+| `*/read`     | Anzeigen aller Ressourcen und der Ressourcenkonfiguration, einschließlich: <br> VM-Erweiterungsstatus <br> Konfiguration von Azure-Diagnosen für Ressourcen <br> Sämtliche Eigenschaften und Einstellungen aller Ressourcen |
+| `Microsoft.Automation/automationAccounts/*` | Erstellen und Konfigurieren von Azure Automation-Konten (einschließlich Hinzufügen und Bearbeiten von Runbooks) |
+| `Microsoft.ClassicCompute/virtualMachines/extensions/*` <br> `Microsoft.Compute/virtualMachines/extensions/*` | Hinzufügen, Aktualisieren und Entfernen von VM-Erweiterungen (einschließlich Microsoft Monitoring Agent und des OMS-Agents für Linux) |
+| `Microsoft.ClassicStorage/storageAccounts/listKeys/action` <br> `Microsoft.Storage/storageAccounts/listKeys/action` | Anzeigen des Speicherkontoschlüssels. Erforderlich, um Log Analytics für das Lesen von Protokollen aus Azure-Speicherkonten zu konfigurieren |
+| `Microsoft.Insights/alertRules/*` | Hinzufügen, Aktualisieren und Entfernen von Warnungsregeln |
+| `Microsoft.Insights/diagnosticSettings/*` | Hinzufügen, Aktualisieren und Entfernen von Diagnoseeinstellungen für Azure-Ressourcen |
+| `Microsoft.OperationalInsights/*` | Hinzufügen, Aktualisieren und Entfernen der Konfiguration für Log Analytics-Arbeitsbereiche |
+| `Microsoft.OperationsManagement/*` | Hinzufügen und Entfernen von Verwaltungslösungen |
+| `Microsoft.Resources/deployments/*` | Erstellen und Löschen von Bereitstellungen. Erforderlich für das Hinzufügen und Entfernen von Lösungen, Arbeitsbereichen und Automation-Konten |
+| `Microsoft.Resources/subscriptions/resourcegroups/deployments/*` | Erstellen und Löschen von Bereitstellungen. Erforderlich für das Hinzufügen und Entfernen von Lösungen, Arbeitsbereichen und Automation-Konten |
+
+Wenn Sie Benutzer einer Benutzerrolle hinzufügen oder daraus entfernen möchten, müssen Sie über die Berechtigungen `Microsoft.Authorization/*/Delete` und `Microsoft.Authorization/*/Write` verfügen.
+
+Mit diesen Rollen können Sie Benutzern Zugriff auf verschiedenen Ebenen gewähren:
+- Abonnement: Zugriff auf alle Arbeitsbereiche im Abonnement
+- Ressourcengruppe: Zugriff auf alle Arbeitsbereiche in der Ressourcengruppe
+- Ressource: Nur Zugriff auf den angegebenen Arbeitsbereich
+
+Verwenden Sie [benutzerdefinierte Rollen](../active-directory/role-based-access-control-custom-roles.md), um Rollen mit spezifischen Berechtigungen zu erstellen.
+
+### <a name="azure-user-roles-and-log-analytics-portal-user-roles"></a>Azure-Benutzerrollen und Benutzerrollen des Log Analytics-Portals
+Wenn Sie für den Log Analytics-Arbeitsbereich mindestens über die Azure-Leseberechtigung verfügen, können Sie das Log Analytics-Portal öffnen, indem Sie im Log Analytics-Arbeitsbereich auf die Aufgabe **OMS-Portal** klicken.
 
 Beim Öffnen des Log Analytics-Portals wechseln Sie zu den bisher verwendeten Log Analytics-Benutzerrollen. Falls Sie im Log Analytics-Portal nicht über eine Rollenzuweisung verfügen, [überprüft der Dienst Ihre Azure-Berechtigungen für den Arbeitsbereich](https://docs.microsoft.com/rest/api/authorization/permissions#Permissions_ListForResource).
 Ihre Rollenzuweisung im Log Analytics-Portal wird wie folgt ermittelt:
@@ -195,7 +247,7 @@ Führen Sie die unten angegebenen Schritte aus, um einen Benutzer aus einem Arbe
 4. Wählen Sie in der Liste die gewünschte Gruppe aus, und klicken Sie auf **Hinzufügen**.
 
 ## <a name="link-an-existing-workspace-to-an-azure-subscription"></a>Verknüpfen eines vorhandenen Arbeitsbereichs mit einem Azure-Abonnement
-Ab dem 26. September 2016 müssen alle Arbeitsbereiche bei der Erstellung mit einem Azure-Abonnement verknüpft werden. Vor diesem Datum erstellte Arbeitsbereiche müssen bei der nächsten Anmeldung mit einem Abonnement verknüpft werden. Wenn Sie den Arbeitsbereich über das Azure-Portal erstellen oder den Arbeitsbereich mit einem Azure-Abonnement verknüpfen, wird Azure Active Directory als Organisationskonto verknüpft.
+Ab dem 26. September 2016 müssen alle Arbeitsbereiche bei der Erstellung mit einem Azure-Abonnement verknüpft werden. Vor diesem Datum erstellte Arbeitsbereiche müssen bei der Anmeldung mit einem Abonnement verknüpft werden. Wenn Sie den Arbeitsbereich über das Azure-Portal erstellen oder den Arbeitsbereich mit einem Azure-Abonnement verknüpfen, wird Azure Active Directory als Organisationskonto verknüpft.
 
 ### <a name="to-link-a-workspace-to-an-azure-subscription-in-the-oms-portal"></a>So verknüpfen Sie einen Arbeitsbereich mit einem Azure-Abonnement im OMS-Portal
 

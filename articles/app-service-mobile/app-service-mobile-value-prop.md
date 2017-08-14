@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 10/01/2016
 ms.author: glenga
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db034a8151495fbb431f3f6969c08cb3677daa3e
-ms.openlocfilehash: 8ce0a0e7b06f85090c07052056ddd67b97b2ee8b
+ms.translationtype: HT
+ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
+ms.openlocfilehash: dd405eefbd69e1ed2268152017bc1f9992619c5f
 ms.contentlocale: de-de
-ms.lasthandoff: 04/29/2017
+ms.lasthandoff: 08/05/2017
 
 ---
 # <a name="getting-started"></a>Was ist Mobile Apps?
-Azure App Service ist ein vollständig verwaltetes [PaaS](https://azure.microsoft.com/overview/what-is-paas/) -Angebot (Platform as a Service) für professionelle Entwickler, das einen umfangreichen Satz von Funktionen für Web- und Integrationsszenarien sowie mobile Szenarien bereitstellt. *Mobile Apps* in *Azure App Service* bieten eine überaus skalierbare, global verfügbare Entwicklungsplattform für mobile Anwendungen für Unternehmensentwickler und Systemintegratoren, die umfassende Funktionen für mobile Entwickler bereitstellt.
+Azure App Service ist ein vollständig verwaltetes [PaaS](https://azure.microsoft.com/overview/what-is-paas/)-Angebot (Platform as a Service) für professionelle Entwickler, das einen umfangreichen Satz von Funktionen für Web- und Integrationsszenarien sowie mobile Szenarien bereitstellt. *Mobile Apps* in *Azure App Service* bieten eine überaus skalierbare, global verfügbare Entwicklungsplattform für mobile Anwendungen für Unternehmensentwickler und Systemintegratoren, die umfassende Funktionen für mobile Entwickler bereitstellt.
 
 ![Mobile Apps](./media/app-service-mobile-value-prop/overview.png)
 
@@ -50,7 +50,7 @@ Die folgenden Features sind für die cloudfähige mobile Entwicklung wichtig:
 * **Client-SDKs** – Wir stellen einen vollständigen Satz mit Client-SDKs bereit, mit denen die native Entwicklung ([iOS], [Android] und [Windows]), plattformübergreifende Entwicklung [(Xamarin für iOS und Android], [Xamarin Forms]) und Entwicklung von Hybridanwendungen ([Apache Cordova]) abgedeckt wird.  Jedes Client-SDK ist mit einer MIT-Lizenz erhältlich und ist ein Open-Source-SDK.
 
 ## <a name="azure-app-service-features"></a>Azure App Service-Features
-Die folgenden Plattformfeatures sind allgemein nützlich für mobile Produktionswebsites.
+Die folgenden Plattformfeatures sind nützlich für mobile Produktionswebsites.
 
 * **Automatische Skalierung** – App Service ermöglicht Ihnen eine schnelle vertikale oder horizontale Skalierung, um beliebige eingehende Datenlasten zu verarbeiten. Wählen Sie die Anzahl und Größe der VMs manuell aus, oder legen Sie eine automatische Skalierung fest, damit Ihr mobiles App-Back-End basierend auf der Datenlast oder einem Zeitplan automatisch skaliert wird.
 
@@ -64,7 +64,7 @@ Die folgenden Plattformfeatures sind allgemein nützlich für mobile Produktions
 * **Virtuelles Netzwerk** – App Service kann die Verbindung mit lokalen Ressourcen per virtuellem Netzwerk, ExpressRoute oder Hybridverbindungen herstellen.
 
   Erfahren Sie mehr über [Hybridverbindungen], [virtuelle Netzwerke] und [ExpressRoute].
-* **Isolierte/Dedizierte Umgebungen** – App Service kann in einer vollständig isolierten und dedizierten Umgebung ausgeführt werden, um Azure App Service-Apps in großem Umfang sicher auszuführen.  Dies ist für Anwendungsworkloads ideal, für die die Unterstützung sehr vieler Apps, eine Isolierung oder der sichere Netzwerkzugriff erforderlich ist.
+* **Isolierte/Dedizierte Umgebungen** – App Service kann in einer vollständig isolierten und dedizierten Umgebung ausgeführt werden, um Azure App Service-Apps in großem Umfang sicher auszuführen.  Dies ist für Anwendungsworkloads ideal, für die die Unterstützung vieler Apps, eine Isolierung oder der sichere Netzwerkzugriff erforderlich ist.
 
   Erfahren Sie mehr über [App Service-Umgebungen].
 
@@ -73,11 +73,6 @@ Absolvieren Sie zum Einstieg in Mobile Apps das Lernprogramm [Erste Schritte] . 
 
 Weitere Informationen zu Azure Mobile Apps finden Sie in unserem [Lernpfad].
 Weitere Informationen zur Azure App Service-Plattform finden Sie unter [Azure App Service].
-
-> [!NOTE]
-> Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](https://azure.microsoft.com/try/app-service/mobile/)sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
->
->
 
 <!-- URLs. -->
 [Migrate your Mobile Service to App Service]: app-service-mobile-migrating-from-mobile-services.md
