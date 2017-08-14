@@ -59,7 +59,6 @@ Je nach [Supportplan](https://azure.microsoft.com/support/plans/) können Sie Su
     6. Aktivieren Sie **Diagnoseinformationen freigeben**.
     7. Klicken Sie auf **Weiter**.
 
-
        ![Kontaktieren des Supports von MS über das neue Portal](./media/storsimple-8000-contact-microsoft-support/contactsupport3.png) 
 
 4. Klicken Sie auf dem Blatt **Neue Supportanfrage** auf **Schritt 3: Kontaktinformationen**. Führen Sie auf dem Blatt **Kontaktinformationen** folgende Schritte aus:
