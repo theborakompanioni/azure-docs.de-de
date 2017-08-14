@@ -4,13 +4,13 @@
 ## [Verfügbarkeit](configure-availability.md)
 ## [Häufig gestellte Fragen](faq.md)
 
-# [Erste Schritte](../opensource-links.md)
+# Erste Schritte
 ## [Erstellen eines virtuellen Linux-Computers mithilfe des Portals](createportal.md)
 ## [Installieren der Azure-Befehlszeilenschnittstelle](../../../cli-install-nodejs.md)
 ## [Erstellen von SSH-Schlüsseln](../mac-create-ssh-keys.md)
 
 # Anleitung
-## [Compute](../intro-on-azure.md)
+## Compute
 ### [Erstellen einer benutzerdefinierten VM](create-custom.md)
 ### [Erfassen einer VM](capture-image.md)
 ### [Verwenden von Remotedesktop mit einer Linux-VM](remote-desktop.md)

@@ -5,7 +5,7 @@
 
 # [Erste Schritte](iot-hub-get-started.md)
 
-## Einrichten Ihres Geräts
+## Einrichten des Geräts
 ### [Simulieren eines Geräts auf Ihrem PC](iot-hub-get-started-simulated.md)
 #### [.NET](iot-hub-csharp-csharp-getstarted.md)
 #### [Java](iot-hub-java-java-getstarted.md)
