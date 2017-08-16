@@ -12,14 +12,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 02/27/2017
+ms.date: 08/02/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 6b6c548ca1001587e2b40bbe9ee2fcb298f40d72
-ms.openlocfilehash: 791b7a22e5b7edd2e31f6ab01131530a8053ac2b
-ms.lasthandoff: 02/28/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
+ms.openlocfilehash: a80b207f591bd888d4749287527013c5e554fb6e
+ms.contentlocale: de-de
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="create-queries-to-list-batch-resources-efficiently"></a>Erstellen von Abfragen zum effizienten Auflisten von Batch-Ressourcen
@@ -27,6 +27,13 @@ ms.lasthandoff: 02/28/2017
 Hier erfahren Sie, wie Sie die Leistung Ihrer Azure Batch-Anwendung steigern, indem Sie die Datenmenge verringern, die vom Dienst zurückgegeben wird, wenn Sie Aufträge, Aufgaben und Computeknoten mit der [Batch .NET][api_net]-Bibliothek abfragen.
 
 Nahezu alle Batch-Anwendungen führen eine Überwachung oder eine andere Art von Vorgang aus, die den Batch-Dienst (häufig in regelmäßigen Abständen) abfragt. Wenn Sie etwa bestimmen möchten, ob bei einem Auftrag noch Aufgaben in der Warteschlange vorhanden sind, müssen Daten zu allen Aufgaben des Auftrags abgerufen werden. Wenn Sie den Status von Knoten im Pool ermitteln möchten, müssen Daten zu jedem Knoten im Pool abgerufen werden. In diesem Artikel wird erläutert, wie diese Abfragen auf möglichst effiziente Weise ausgeführt werden.
+
+> [!NOTE]
+> Der Batch-Dienst bietet spezielle API-Unterstützung für das allgemeine Szenario zum Zählen von Aufgaben in einem Auftrag. Statt dafür eine list-Abfrage zu verwenden, können Sie den Vorgang [Get Task Counts][rest_get_task_counts] (Taskanzahl abrufen) aufrufen. „Get Task Counts“ (Taskanzahl abrufen) gibt an, wie viele Aufgaben ausstehen, ausgeführt werden oder abgeschlossen sind und wie viele Aufgaben erfolgreich oder fehlerhaft waren. „Get Task Counts“ (Taskanzahl abrufen) ist effizienter als eine list-Abfrage. Weitere Informationen finden Sie unter [Count tasks by state to monitor a job's progress (Preview)](batch-get-task-counts.md) (Zählen von Aufgaben nach Zustand zur Überwachung des Auftragsstatus (Vorschau)). 
+>
+> Der Vorgang „Get Task Counts“ (Taskanzahl abrufen) ist nicht in Versionen des Batch-Diensts verfügbar, die älter als 2017-06-01.5.1 sind. Falls Sie eine ältere Version des Diensts nutzen, können Sie stattdessen eine list-Abfrage zum Zählen von Tasks einsetzen.
+>
+> 
 
 ## <a name="meet-the-detaillevel"></a>DetailLevel
 In einer Batch-Produktionsanwendung kann die Anzahl von Entitäten wie Aufträgen, Aufgaben und Computeknoten leicht in die Tausende gehen. Beim Anfordern von Informationen zu diesen Ressourcen muss häufig für jede Abfrage eine größere Menge von Daten den Weg vom Batch-Dienst zu Ihrer Anwendung zurücklegen. Durch Einschränken der Anzahl von Elementen und der Art der zurückgegebenen Informationen können Sie die Geschwindigkeit Ihrer Abfragen und damit die Leistung der Anwendung steigern.
@@ -179,7 +186,7 @@ Ermitteln Sie beim Erstellen einer Filterzeichenfolge für [ODATADetailLevel.Fil
 |:--- |:--- |:--- |
 | `executionInfo/exitCode` |`eq, ge, gt, le , lt` |`Int` |
 
-Daher lautet die Filterzeichenfolge zum Auflisten aller Aufgaben mit einem Exitcode ungleich&0; wie folgt:
+Daher lautet die Filterzeichenfolge zum Auflisten aller Aufgaben mit einem Exitcode ungleich 0 wie folgt:
 
 `(executionInfo/exitCode lt 0) or (executionInfo/exitCode gt 0)`
 
@@ -293,3 +300,4 @@ Das [Azure Batch-Forum][forum] auf MSDN eignet sich hervorragend, um Information
 [net_schedule]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudjobschedule.aspx
 [net_task]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask.aspx
 
+[rest_get_task_counts]: https://docs.microsoft.com/rest/api/batchservice/get-the-task-counts-for-a-job

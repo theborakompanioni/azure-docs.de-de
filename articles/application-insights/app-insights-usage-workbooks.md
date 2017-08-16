@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 06/12/2017
 ms.author: cfreeman
 ms.translationtype: HT
-ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
-ms.openlocfilehash: ecd3d86db1d6b3b65015d1d560027cedb4f2df58
+ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
+ms.openlocfilehash: 05e3246de51e1c092a7d8a15dddea3c99b6e5b15
 ms.contentlocale: de-de
-ms.lasthandoff: 08/02/2017
+ms.lasthandoff: 08/09/2017
 
 ---
 
@@ -118,9 +118,11 @@ Gehen Sie wie folgt vor, um in einem Azure-Dashboard einen Link zu einer Arbeits
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Nutzungsübersicht](app-insights-usage-overview.md)
-* [Benutzer-, Sitzungs- und Ereignisanalyse in Azure Application Insights](app-insights-usage-segmentation.md)
-* [Bindung](app-insights-usage-retention.md)
-* [Application Insights-API für benutzerdefinierte Ereignisse und Metriken](app-insights-api-custom-events-metrics.md)
-
+## <a name="next-steps"></a>Nächste Schritte
+- Um mit der Nutzung zu beginnen, senden Sie [benutzerdefinierte Ereignisse](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) oder [Seitenansichten](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views).
+- Wenn Sie bereits benutzerdefinierte Ereignisse oder Seitenansichten senden, erkunden Sie mithilfe der Nutzungstools, wie Benutzer den Dienst verwenden.
+    - [Benutzer, Sitzungen, Ereignisse](app-insights-usage-segmentation.md)
+    - [Trichter](usage-funnels.md)
+    - [Bindung](app-insights-usage-retention.md)
+    - [Hinzufügen von Benutzerkontext](app-insights-usage-send-user-context.md)
 

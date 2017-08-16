@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: roopalik;garye
-translationtype: Human Translation
-ms.sourcegitcommit: 6c76311b8ba36ea5dba1c2cd63ee05e1048ca9de
-ms.openlocfilehash: 6ceb50b05075ea9d056a873cf70b13ff85dc6094
-ms.lasthandoff: 02/21/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
+ms.openlocfilehash: 25ec625c1f32fd1477685196ea21ad6f582bc7ce
+ms.contentlocale: de-de
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="discover-competitions-in-the-cortana-intelligence-gallery"></a>Entdecken Sie Wettbewerbe im Cortana Intelligence-Katalog
@@ -34,8 +34,7 @@ Antworten auf häufig gestellte Fragen zu Wettbewerben finden Sie unter [Microso
 
 ![Wählen Sie Competitions auf der Startseite des Katalogs aus](media/machine-learning-gallery-competitions/select-competitions-in-gallery.png)
 
- Die Seite **[Competitions](https://gallery.cortanaintelligence.com/competitions)**
- zeigt eine Liste der am häufigsten verwendeten Wettbewerbe.
+ Die Seite **[Competitions](https://gallery.cortanaintelligence.com/competitions)** (Wettbewerbe) zeigt eine Liste der am häufigsten verwendeten Wettbewerbe.
 Klicken Sie auf **Alle anzeigen**, um alle Wettbewerbe anzuzeigen.
 Auf dieser Seite können Sie alle Wettbewerbe im Katalog durchsuchen. Sie können auch suchen, indem Sie links auf der Seite Filterkriterien auswählen und oben Suchbegriffe eingeben.
 
@@ -48,11 +47,9 @@ Auf dieser Seite können Sie alle Wettbewerbe im Katalog durchsuchen. Sie könne
 ## <a name="enter-a-competition"></a>An einem Wettbewerb teilnehmen
 Wenn der Wettbewerb geöffnet ist, wird der Status **Aktiv** auf der Detailseite angezeigt. Zur Teilnahme am Wettbewerb klicken Sie auf **Am Wettbewerb teilnehmen**. Sie erhalten dann Hinweise zu den erforderlichen Ressourcen und Schritten.
 
-![Wettbewerb ist abgeschlossen](media/machine-learning-gallery-competitions/open-competition.png)
+![Wettbewerb ist aktiv.](media/machine-learning-gallery-competitions/open-competition.png)
 
-Wenn der Wettbewerb nicht mehr geöffnet ist, wird der Status **Abgeschlossen** auf der Detailseite angezeigt, und der Link **Am Wettbewerb teilnehmen** wird durch das Wort **Beendet** ersetzt.
-
-![Wettbewerb ist abgeschlossen](media/machine-learning-gallery-competitions/completed-competition.png)
+Wenn der Wettbewerb abgeschlossen ist, wird eine Liste der Gewinner angezeigt.
 
 **[ZUM KATALOG >>](http://gallery.cortanaintelligence.com)**
 

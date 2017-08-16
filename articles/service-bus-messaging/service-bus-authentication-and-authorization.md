@@ -12,24 +12,24 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/27/2017
+ms.date: 08/09/2017
 ms.author: sethm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: 5ed7558cfff9991734e909e06e8bac9181131381
+ms.translationtype: HT
+ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
+ms.openlocfilehash: 28fb41499c919e5006f1be7daa97610c2a0583af
 ms.contentlocale: de-de
-ms.lasthandoff: 06/28/2017
-
+ms.lasthandoff: 08/10/2017
 
 ---
 # <a name="service-bus-authentication-and-authorization"></a>Service Bus-Authentifizierung und -Autorisierung
 
-Anwendungen können sich bei Azure Service Bus mithilfe der SAS-Authentifizierung (Shared Access Signature) oder über Azure Active Directory Access Control (auch Access Control Service oder ACS genannt) authentifizieren. Die SAS-Authentifizierung ermöglicht Anwendungen die Authentifizierung bei Service Bus mithilfe eines Zugriffsschlüssels, der für den Namespace oder für die Entität konfiguriert wird, welcher bestimmte Rechte zugeordnet sind. Sie können diesen Schlüssel zum Generieren eines SAS-Tokens verwenden, das Clients für die Authentifizierung bei Service Bus verwenden können.
+Anwendungen können mithilfe der SAS-Authentifizierung (Shared Access Signature) bei Azure Service Bus authentifiziert werden. Die SAS-Authentifizierung ermöglicht Anwendungen die Authentifizierung bei Service Bus mithilfe eines Zugriffsschlüssels, der für den Namespace oder für die Entität konfiguriert wird, welcher bestimmte Rechte zugeordnet sind. Sie können diesen Schlüssel zum Generieren eines SAS-Tokens verwenden, das Clients für die Authentifizierung bei Service Bus verwenden können.
 
 > [!IMPORTANT]
-> Von diesen beiden Möglichkeiten wird SAS empfohlen, da diese Authentifizierung ein einfaches, flexibles und komfortables Authentifizierungsschema für Service Bus bereitstellt. Anwendungen können SAS in Szenarios verwenden, in denen kein autorisierter „Benutzer“ verwaltet werden muss. 
+> Sie sollten SAS anstelle von Azure Active Directory Access Control (auch als Access Control Service oder ACS bezeichnet) verwenden, da ACS als veraltet eingestuft wird. SAS stellt ein einfaches, flexibles und komfortables Authentifizierungsschema für Service Bus bereit. Anwendungen können SAS in Szenarios verwenden, in denen kein autorisierter „Benutzer“ verwaltet werden muss. Weitere Informationen finden Sie in [diesem Blogbeitrag](https://blogs.msdn.microsoft.com/servicebus/2017/06/01/upcoming-changes-to-acs-enabled-namespaces/).
 
 ## <a name="shared-access-signature-authentication"></a>SAS-Authentifizierung (Shared Access Signature)
+
 Mit der [SAS-Authentifizierung](service-bus-sas.md) können Sie einem Benutzer Zugriff auf Service Bus-Ressourcen mit spezifischen Rechten gewähren. Die SAS-Authentifizierung in Service Bus umfasst die Konfiguration eines kryptografischen Schlüssels mit den zugehörigen Rechten für eine Service Bus-Ressource. Clients können Zugriff auf diese Ressource erlangen, indem sie ein SAS-Token bereitstellen. Dieses setzt sich aus dem Ressourcen-URI, auf den zugegriffen wird, und einer Ablaufangabe zusammen, die mit dem konfigurierten Schlüssel signiert wird.
 
 Sie können Schlüssel für SAS für einen Service Bus-Namespace konfigurieren. Der betreffende Schlüssel gilt für alle Messagingentitäten in dem jeweiligen Namespace. Sie können auch Schlüssel für Service Bus-Warteschlangen und -Themen konfigurieren. SAS wird in [Azure Relay](../service-bus-relay/relay-authentication-and-authorization.md) ebenfalls unterstützt.
@@ -47,31 +47,10 @@ Für den Zugriff auf eine Entität erfordert der Client ein SAS-Token, das mithi
 
 Die Unterstützung der SAS-Authentifizierung für Service Bus ist im Azure .NET SDK, Version 2.0 oder höher, enthalten. SAS umfasst Unterstützung für eine [SharedAccessAuthorizationRule](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule). Alle APIs, die eine Verbindungszeichenfolge als Parameter akzeptieren, enthalten Unterstützung für SAS-Verbindungszeichenfolgen.
 
-## <a name="acs-authentication"></a>ACS-Authentifizierung
-Die Service Bus-Authentifizierung über ACS wird über den begleitenden ACS-Namespace „-sb“ verwaltet. Wenn Sie einen begleitenden ACS-Namespace für einen Service Bus-Namespace benötigen, können Sie den Service Bus-Namespace nicht über das klassische Azure-Portal erstellen. Sie müssen den Namespace stattdessen mit dem PowerShell-Cmdlet [New-AzureSBNamespace](/powershell/module/azure/new-azuresbnamespace?view=azuresmps-3.7.0) erstellen. Beispiel:
-
-```powershell
-New-AzureSBNamespace <namespaceName> "<Region>” -CreateACSNamespace $true
-```
-
-Verwenden Sie den folgenden Befehl, um zu vermeiden, dass ein ACS-Namespace erstellt wird:
-
-```powershell
-New-AzureSBNamespace <namespaceName> "<Region>” -CreateACSNamespace $false
-```
-
-Wenn Sie z.B. einen Service Bus-Namespace namens **contoso.servicebus.windows.net** erstellen, wird automatisch ein begleitender ACS-Namespace namens **contoso-sb.accesscontrol.windows.net** bereitgestellt. Für alle Namespaces, die vor August 2014 erstellt wurden, wurde ein begleitender ACS-Namespace erstellt.
-
-Ein „Standardbesitzer“ der Dienstidentität (mit allen Rechten) wird standardmäßig in diesem begleitenden ACS-Namespace bereitgestellt. Sie können über ACS eine differenzierte Steuerung jeder Service Bus-Entität erzielen, indem Sie die geeigneten Vertrauensstellungen konfigurieren. Sie können zusätzliche Dienstidentitäten zum Verwalten des Zugriffs auf Service Bus-Entitäten konfigurieren.
-
-Für den Zugriff auf eine Entität fordert der Client ein SWT-Token von ACS mit den entsprechenden Ansprüchen an, indem er seine Anmeldeinformationen bereitstellt. Das SWT-Token muss dann als Teil der Anforderung an Service Bus gesendet werden, um die Autorisierung des Clients für den Zugriff auf die Entität zu aktivieren.
-
-Die Unterstützung der ACS-Authentifizierung für Service Bus ist im Azure .NET SDK, Version 2.0 oder höher, enthalten. Diese Authentifizierung umfasst Unterstützung für einen [SharedSecretTokenProvider](/dotnet/api/microsoft.servicebus.sharedsecrettokenprovider). Alle APIs, die eine Verbindungszeichenfolge als Parameter akzeptieren, enthalten Unterstützung für ACS-Verbindungszeichenfolgen.
-
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu SAS finden Sie unter [Service Bus-Authentifizierung mit Shared Access Signatures](service-bus-sas.md).
-
-Die entsprechenden Informationen zur Azure Relay-Authentifizierung und -Autorisierung finden Sie unter [Azure Relay-Authentifizierung und -Autorisierung](../service-bus-relay/relay-authentication-and-authorization.md). 
+- Weitere Informationen zu SAS finden Sie unter [SAS-Authentifizierung (Shared Access Signature) bei Service Bus](service-bus-sas.md) .
+- [Änderungen an Namespaces mit ACS-Unterstützung](https://blogs.msdn.microsoft.com/servicebus/2017/06/01/upcoming-changes-to-acs-enabled-namespaces/)
+- Die entsprechenden Informationen zur Azure Relay-Authentifizierung und -Autorisierung finden Sie unter [Azure Relay-Authentifizierung und -Autorisierung](../service-bus-relay/relay-authentication-and-authorization.md). 
 
 

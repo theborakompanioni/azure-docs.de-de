@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/31/2017
+ms.date: 08/08/2017
 ms.author: magoedte;bwren
 ms.translationtype: HT
-ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
-ms.openlocfilehash: 5101d0356460160aed8559a314e8287ff5845121
+ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
+ms.openlocfilehash: 8cde51313f683fbf96a89c8335eb75348b05dee6
 ms.contentlocale: de-de
-ms.lasthandoff: 08/01/2017
+ms.lasthandoff: 08/08/2017
 
 ---
 
@@ -41,6 +41,7 @@ Wir wissen, dass jede Neuerung auch immer Arbeit und Mühen mit sich bringt, und
 - **Intelligente Analysen**  Die neue Sprache arbeitet mit erweiterten Algorithmen, um Muster in Datasets zu bewerten und verschiedene Datasets zu vergleichen.
 - **Advanced Analytics-Portal.**  Das Advanced Analytics-Portal bietet Analysefunktionen, die im Log Analytics-Portal nicht verfügbar sind, beispielsweise die Bearbeitung von mehreren Zeilen in Abfragen, zusätzliche Visualisierungen und eine erweiterte Diagnose.
 - **Konsistenz mit anderen Anwendungen.**  Die neue Sprache und das Advanced Analytics-Portal werden bereits für Analysen in Application Insights verwendet.  Durch die Implementierung für Log Analytics sorgen wir für Konsistenz über die Azure-Dienste hinweg.
+- **Bessere Integration in Power BI.** Abfragen in der neuen Sprache können in Power BI Desktop exportiert werden, damit Sie die umfangreichen Funktionen für die Datentransformation nutzen können.
 - **Viele weitere Vorteile.** Auf der Website [Azure Log Analytics Query Language](https://docs.loganalytics.io/index.html) finden Sie alle Informationen und Tutorials für die neue Sprache.
 
 
@@ -60,7 +61,7 @@ Beim Upgrade wird ein vollständiges Backup Ihres Arbeitsbereichs erstellt, eins
 ![Legacyarbeitsbereich wiederherstellen](media/log-analytics-log-search-upgrade/restore-legacy-b.png)
 
 ## <a name="how-do-i-perform-the-upgrade"></a>Wie führe ich das Upgrade durch?
-Sie können das Upgrade für Ihren Arbeitsbereich durchführen, wenn oben im Portal das lilafarbene Banner angezeigt wird.  Beachten Sie, dass Sie das Upgrade nur über das OMS-Portal durchführen können, auch wenn der konvertierte Arbeitsbereich nach Abschluss des Upgrades auch im Azure-Portal verfügbar sein wird.
+Sie können das Upgrade für Ihren Arbeitsbereich durchführen, wenn oben im Portal das lilafarbene Banner angezeigt wird.  
 
 1.  Starten Sie den Upgradeprozess, indem Sie auf das lilafarbene Banner **Weitere Informationen und Upgrade** klicken.<br>![Upgrade 2](media/log-analytics-log-search-upgrade/upgrade-01a.png)<br>
 2.  Lesen Sie die zusätzlichen Informationen auf der Seite „Upgradeinformationen“.<br>![Upgrade 2](media/log-analytics-log-search-upgrade/upgrade-03.png)<br>

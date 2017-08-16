@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/21/2017
 ms.author: LADocs; jehollan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
-ms.openlocfilehash: 8066621670e6e79ff4169253f2a97972e376eaa3
+ms.translationtype: HT
+ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
+ms.openlocfilehash: 6befc5b26f2b01113f1aa813125b33eb66ad6f6a
 ms.contentlocale: de-de
-ms.lasthandoff: 06/07/2017
+ms.lasthandoff: 08/10/2017
 
 ---
 
@@ -49,8 +49,8 @@ Die grundlegende Struktur einer Workflowdefinition sieht wie folgt aus:
 |$schema|Nein|Gibt den Speicherort der JSON-Schemadatei an, die die Version der Definitionssprache beschreibt. Dieser Speicherort ist erforderlich, wenn Sie extern auf eine Definition verweisen. Für dieses Dokument lautet der Speicherort wie folgt: <p>`https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2015-08-01-preview/workflowdefinition.json#`|  
 |contentVersion|Nein|Gibt die Definitionsversion an. Wenn Sie einen Workflow mithilfe der Definition bereitstellen, können Sie mit diesem Wert die Verwendung der richtigen Definition sicherstellen.|  
 |parameters|Nein|Gibt Dateneingabeparameter für die Definition an. Es können bis zu 50 Parameter definiert werden.|  
-|Trigger|Nein|Gibt Informationen für die Trigger an, die den Workflow initiieren. Es können bis zu 250 Trigger definiert werden.|  
-|Aktionen|Nein|Gibt Aktionen an, die im Rahmen des Workflows ausgeführt werden. Es können bis zu 250 Aktionen definiert werden.|  
+|Trigger|Nein|Gibt Informationen für die Trigger an, die den Workflow initiieren. Es können bis zu zehn Trigger definiert werden.|  
+|actions|Nein|Gibt Aktionen an, die im Rahmen des Workflows ausgeführt werden. Es können bis zu 250 Aktionen definiert werden.|  
 |outputs|Nein|Gibt Informationen zur bereitgestellten Ressource an. Es können bis zu zehn Ausgaben definiert werden.|  
   
 ## <a name="parameters"></a>Parameter
@@ -72,7 +72,7 @@ Das folgende Beispiel zeigt die Struktur einer Parameterdefinition:
 
 |Elementname|Erforderlich|Beschreibung|  
 |------------------|--------------|-----------------|  
-|Typ|Ja|**Typ:** string <p> **Deklaration:** `"parameters": {"parameter1": {"type": "string"}` <p> **Spezifikation:** `"parameters": {"parameter1": {"value": "myparamvalue1"}}` <p> **Typ:** securestring <p> **Deklaration:** `"parameters": {"parameter1": {"type": "securestring"}}` <p> **Spezifikation:** `"parameters": {"parameter1": {"value": "myparamvalue1"}}` <p> **Typ:** int <p> **Deklaration:** `"parameters": {"parameter1": {"type": "int"}}` <p> **Spezifikation:** `"parameters": {"parameter1": {"value" : 5}}` <p> **Typ:** bool <p> **Deklaration:** `"parameters": {"parameter1": {"type": "array"}}` <p> **Spezifikation:** `"parameters": {"parameter1": { "value": true }}` <p> **Typ:** array <p> **Deklaration:** `"parameters": {"parameter1": {"type": "array"}}` <p> **Spezifikation:** `"parameters": {"parameter1": { "value": [ array-of-values ]}}` <p> **Typ:** object <p> **Deklaration:** `"parameters": {"parameter1": {"type": "object"}}` <p> **Spezifikation:** `"parameters": {"parameter1": { "value": { JSON-object } }}` <p> **Typ:** secureobject <p> **Deklaration:** `"parameters": {"parameter1": {"type": "object"}}` <p> **Spezifikation:** `"parameters": {"parameter1": { "value": { JSON-object } }}` <p> **Hinweis:** Die Typen `securestring` und `secureobject` werden bei `GET`-Vorgängen nicht zurückgegeben. Dieser Typ muss für alle Kennwörter, Schlüssel und Geheimnisse verwendet werden.|  
+|Typ|Ja|**Typ:** string <p> **Deklaration:** `"parameters": {"parameter1": {"type": "string"}` <p> **Spezifikation:** `"parameters": {"parameter1": {"value": "myparamvalue1"}}` <p> **Typ:** securestring <p> **Deklaration:** `"parameters": {"parameter1": {"type": "securestring"}}` <p> **Spezifikation:** `"parameters": {"parameter1": {"value": "myparamvalue1"}}` <p> **Typ:** int <p> **Deklaration:** `"parameters": {"parameter1": {"type": "int"}}` <p> **Spezifikation:** `"parameters": {"parameter1": {"value" : 5}}` <p> **Typ:** bool <p> **Deklaration:** `"parameters": {"parameter1": {"type": "bool"}}` <p> **Spezifikation:** `"parameters": {"parameter1": { "value": true }}` <p> **Typ:** array <p> **Deklaration:** `"parameters": {"parameter1": {"type": "array"}}` <p> **Spezifikation:** `"parameters": {"parameter1": { "value": [ array-of-values ]}}` <p> **Typ:** object <p> **Deklaration:** `"parameters": {"parameter1": {"type": "object"}}` <p> **Spezifikation:** `"parameters": {"parameter1": { "value": { JSON-object } }}` <p> **Typ:** secureobject <p> **Deklaration:** `"parameters": {"parameter1": {"type": "object"}}` <p> **Spezifikation:** `"parameters": {"parameter1": { "value": { JSON-object } }}` <p> **Hinweis:** Die Typen `securestring` und `secureobject` werden bei `GET`-Vorgängen nicht zurückgegeben. Dieser Typ muss für alle Kennwörter, Schlüssel und Geheimnisse verwendet werden.|  
 |defaultValue|Nein|Gibt den Standardwert für den Parameter an. Dieser wird verwendet, falls zum Zeitpunkt der Ressourcenerstellung kein Wert angegeben wird.|  
 |allowedValues|Nein|Gibt ein Array mit zulässigen Werten für den Parameter an.|  
 |metadata|Nein|Gibt zusätzliche Informationen zum Parameter an. Hierzu zählen beispielsweise eine lesbare Beschreibung oder Entwurfszeitdaten für Visual Studio oder andere Tools.|  

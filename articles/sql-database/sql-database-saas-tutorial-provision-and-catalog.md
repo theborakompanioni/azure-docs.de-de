@@ -14,13 +14,13 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/26/2017
+ms.date: 08/04/2017
 ms.author: sstein
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: 658c316d8d9d14ce11dbb92188afbf0e68c00493
+ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
+ms.openlocfilehash: c019ea9207379ea1b88ec5d990e1c2b8565092a2
 ms.contentlocale: de-de
-ms.lasthandoff: 07/27/2017
+ms.lasthandoff: 08/10/2017
 
 ---
 # <a name="provision-new-tenants-and-register-them-in-the-catalog"></a>Bereitstellen neuer Mandanten und Registrieren der Mandanten im Katalog
@@ -82,7 +82,7 @@ Nach Abschluss des Skripts wird der neue Mandant bereitgestellt und seine *Veran
 
 In dieser Übung wird einen Batch von zusätzlichen Mandanten bereitgestellt. Es wird empfohlen, dass Sie einen Batch von Mandanten bereitstellen, bevor Sie andere Wingtip SaaS-Tutorials abschließen, damit Ihnen mehrere Datenbanken zur Verfügung stehen.
 
-1. Öffnen Sie „...\\Learning Modules\\Utilities\\*Demo-ProvisionAndCatalog.ps1*“ in der *PowerShell-ISE*, und ändern Sie den *$DemoScenario*-Parameter in 3:
+1. Öffnen Sie „...\\Learning Modules\\ProvisionAndCatalog\\*Demo-ProvisionAndCatalog.ps1*“ in der *PowerShell-ISE*, und ändern Sie den *$DemoScenario*-Parameter in „3“:
    * **$DemoScenario** = **3**, geändert in **3** für das *Bereitstellen eines Batches von Mandanten*.
 1. Drücken Sie **F5**, um das Skript auszuführen.
 
@@ -95,24 +95,31 @@ Das Skript stellt einen Batch von zusätzlichen Mandanten bereit. Es verwendet e
    ![Datenbankliste](media/sql-database-saas-tutorial-provision-and-catalog/database-list.png)
 
 
-## <a name="provision-and-catalog-details"></a>Details zum Bereitstellen und Katalogisieren
+## <a name="stepping-through-the-provision-and-catalog-implementation-details"></a>Überprüfen der Details zur Bereitstellung und Katalogimplementierung
 
 Um besser zu verstehen, wie die Wingtip-Anwendung die Bereitstellung neuer Mandanten implementiert, führen Sie das Skript „*Demo-ProvisionAndCatalog*“ erneut aus, und stellen Sie noch einen weiteren Mandanten bereit. Fügen Sie dieses Mal einen Haltepunkt ein, und durchlaufen Sie den Workflow:
 
-1. Öffnen Sie „...\\Learning Modules\Utilities\_Demo-ProvisionAndCatalog.ps1_“, und legen Sie die folgenden Parameter fest:
+1. Öffnen Sie „...\\Learning Modules\\ProvisionAndCatalog\\_Demo-ProvisionAndCatalog.ps1_“, und legen Sie die folgenden Parameter fest:
    * **$TenantName** = Mandantennamen müssen eindeutig sein. Legen Sie daher einen anderen Namen als für bestehende Mandanten fest (z.B. *Hackberry Hitters*).
    * **$VenueType** = verwenden Sie einen der vordefinierten Veranstaltungsorttypen (z.B. *Judo*).
    * **$DemoScenario** = **1**, festgelegt auf **1** für das *Bereitstellen eines einzelnen Mandanten*.
 
-1. Fügen Sie einen Haltepunkt hinzu, indem Sie den Cursor an eine beliebige Stelle in der folgenden Zeile bewegen: *New-Tenant `*, und drücken Sie **F9**.
+1. Fügen Sie einen Haltepunkt hinzu, indem Sie den Cursor an eine beliebige Stelle in Zeile 48 bewegen (der Zeile mit *New-Tenant `*) und **F9** drücken.
 
    ![Haltepunkt](media/sql-database-saas-tutorial-provision-and-catalog/breakpoint.png)
 
-1. Betätigen Sie **F5**, um das Skript auszuführen. Wenn der Haltepunkt erreicht wird, drücken Sie **F11** für eine schrittweise Ausführung. Verfolgen Sie die Ausführung des Skripts mit den Debugoptionen (**F10** und **F11**) nach, um die aufgerufenen Funktionen zu überspringen oder einzeln auszuführen. Weitere Informationen zum Debuggen von PowerShell-Skripts finden Sie unter [Tipps zum Arbeiten mit und Debuggen von PowerShell-Skripts](https://msdn.microsoft.com/powershell/scripting/core-powershell/ise/how-to-debug-scripts-in-windows-powershell-ise).
+1. Betätigen Sie **F5**, um das Skript auszuführen.
 
-### <a name="examine-the-provision-and-catalog-implementation-in-detail-by-stepping-through-the-script"></a>Überprüfen der Bereitstellung und Katalogimplementierung im Detail durch schrittweises Durchlaufen des Skripts
+1. Nachdem die Skriptausführung am Haltepunkt beendet wurde, drücken Sie **F11**, um den Code schrittweise auszuführen.
 
-Das Skript führt die Bereitstellung und Katalogisierung neuer Mandanten mit den die folgenden Schritten aus:
+   ![Haltepunkt](media/sql-database-saas-tutorial-provision-and-catalog/debug.png)
+
+
+
+Verfolgen Sie die Ausführung des Skripts mit den Optionen (**F10** und **F11**) im Menü **Debug** nach, um die aufgerufenen Funktionen zu überspringen oder einzeln auszuführen. Weitere Informationen zum Debuggen von PowerShell-Skripts finden Sie unter [Tipps zum Arbeiten mit und Debuggen von PowerShell-Skripts](https://msdn.microsoft.com/powershell/scripting/core-powershell/ise/how-to-debug-scripts-in-windows-powershell-ise).
+
+
+Die folgenden Schritte müssen nicht genau befolgt werden, sondern stellen eine Erläuterung des Workflows dar, den Sie beim Debuggen des Skripts schrittweise durchlaufen:
 
 1. **Importieren Sie das Modul „SubscriptionManagement.psm1“**, das Funktionen enthält, um sich bei Azure anzumelden und das Azure-Abonnement auszuwählen, mit dem Sie arbeiten.
 1. **Importieren Sie das Modul „CatalogAndDatabaseManagement.psm1“**, das eine Abstraktion auf Katalog- und Mandantenebene über die [Shardverwaltungsfunktionen](sql-database-elastic-scale-shard-map-management.md) bereitstellt. Dies ist ein wichtiges Modul, das einen Großteil des Katalogmusters kapselt. Es lohnt sich, dieses Modul genauer zu betrachten.

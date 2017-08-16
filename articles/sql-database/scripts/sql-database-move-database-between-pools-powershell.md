@@ -16,15 +16,15 @@ ms.tgt_pltfrm: sql-database
 ms.workload: database
 ms.date: 06/23/2017
 ms.author: janeng
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: a883c3c6156e8e1f6d56c9be4c1e9c8a7990d16a
+ms.translationtype: HT
+ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
+ms.openlocfilehash: 05dede26c870ccda35b1cb8c392ad4abeedde4ac
 ms.contentlocale: de-de
-ms.lasthandoff: 06/28/2017
+ms.lasthandoff: 08/05/2017
 
 ---
 
-# <a name="create-elastic-pools-and-move-databases-between-pools-and-out-of-a-pool-using-powershell"></a>Erstellen von Pools für elastische Datenbanken und Verschieben von Datenbanken zwischen Pools und aus einem Pool heraus mit PowerShell
+# <a name="use-powershell-to-create-elastic-pools-and-move-databases-between-elastic-pools"></a>Erstellen von Pools für elastische Datenbanken und Verschieben von Datenbanken zwischen Pools für elastische Datenbanken mit PowerShell
 
 In diesem PowerShell-Beispielskript werden zwei Pools für elastische Datenbanken erstellt, eine Datenbank aus einem Pool in einen anderen und dann eine Datenbank aus einem Pool auf eine Einzeldatenbank-Leistungsstufe verschoben. 
 

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/12/2017
+ms.date: 08/07/2017
 ms.author: sethm
-translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: d58e9b9dc4771cc69265d02b62cf8fe3c9b7d72e
-ms.lasthandoff: 04/13/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
+ms.openlocfilehash: 2656b3a276c542ca836b3949e4e493d7c7f48f16
+ms.contentlocale: de-de
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="chaining-service-bus-entities-with-auto-forwarding"></a>Verketten von Service Bus-Entitäten mit automatischer Weiterleitung
@@ -60,7 +60,7 @@ Um ein Abonnement zu erstellen, das mit einer anderen Warteschlange oder einem T
 
 Detaillierte Informationen über die automatische Weiterleitung finden Sie in den folgenden Referenzthemen:
 
-* [SubscriptionDescription.ForwardTo][SubscriptionDescription.ForwardTo]
+* [ForwardTo][QueueDescription.ForwardTo]
 * [QueueDescription][QueueDescription]
 * [SubscriptionDescription][SubscriptionDescription]
 
@@ -69,8 +69,8 @@ Weitere Informationen zu Service Bus-Leistungssteigerungen finden Sie unter
 * [Bewährte Methoden für Leistungsoptimierungen mithilfe von Service Bus Messaging](service-bus-performance-improvements.md)
 * [Partitionierte Messagingentitäten][Partitioned messaging entities]
 
-[QueueDescription.ForwardTo]: /dotnet/api/microsoft.servicebus.messaging.queuedescription#Microsoft_ServiceBus_Messaging_QueueDescription_ForwardTo
-[SubscriptionDescription.ForwardTo]: /dotnet/api/microsoft.servicebus.messaging.subscriptiondescription#Microsoft_ServiceBus_Messaging_SubscriptionDescription_ForwardTo
+[QueueDescription.ForwardTo]: /dotnet/api/microsoft.servicebus.messaging.queuedescription.forwardto#Microsoft_ServiceBus_Messaging_QueueDescription_ForwardTo
+[SubscriptionDescription.ForwardTo]: /dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.forwardto#Microsoft_ServiceBus_Messaging_SubscriptionDescription_ForwardTo
 [QueueDescription]: /dotnet/api/microsoft.servicebus.messaging.queuedescription
 [SubscriptionDescription]: /dotnet/api/microsoft.servicebus.messaging.queuedescription
 [0]: ./media/service-bus-auto-forwarding/IC628631.gif

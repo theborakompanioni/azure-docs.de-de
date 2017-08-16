@@ -17,17 +17,17 @@ ms.workload: database
 ms.date: 07/31/2017
 ms.author: douglasl
 ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
-ms.openlocfilehash: b61c7bb9f1991912ebfd1176a07c3dc889d3e089
+ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
+ms.openlocfilehash: ac4dde8c175b1632de8c309f01f8dac7fde6426b
 ms.contentlocale: de-de
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 08/04/2017
 
 ---
-# <a name="use-powershell-to-sync-between-multiple-azure-sql-databases"></a>Verwenden Sie PowerShell, um Daten zwischen mehreren Azure SQL-­Datenbanken zu synchronisieren.
+# <a name="use-powershell-to-sync-between-multiple-azure-sql-databases"></a>Verwenden von PowerShell zum Synchronisieren von Daten zwischen mehreren Azure SQL-­Datenbanken
  
 Dieses PowerShell-Beispiel konfiguriert die Datensynchronisierung zwischen mehreren Azure SQL-­Datenbanken.
 
-Für dieses Beispiel ist das Azure PowerShell-Modul mit Version 4.2 oder höher erforderlich. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die installierte Version zu suchen. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Install and configure Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps) (Installieren des Azure PowerShell-Moduls) Informationen dazu.
+Für dieses Beispiel ist das Azure PowerShell-Modul Version 4.2 oder höher erforderlich. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die installierte Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Install and configure Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps) (Installieren des Azure PowerShell-Moduls) Informationen dazu.
  
 Führen Sie zum Starten `Login-AzureRmAccount` aus, um eine Verbindung mit Azure herzustellen. 
 
@@ -328,7 +328,7 @@ else
 
 ## <a name="clean-up-deployment"></a>Bereinigen der Bereitstellung
 
-Nach Ausführung des Beispielskripts können Sie den folgenden Befehl ausführen, um die Ressourcengruppe und alle damit verbundenen Ressourcen zu entfernen.
+Nach der Ausführung des Beispielskripts können Sie den folgenden Befehl ausführen, um die Ressourcengruppe und alle damit verbundenen Ressourcen zu entfernen.
 
 ```powershell
 Remove-AzureRmResourceGroup -ResourceGroupName "myResourceGroup"
@@ -340,15 +340,15 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 
 | Befehl | Hinweise |
 |---|---|
-| [New-AzureRmSqlSyncAgent](/powershell/module/azurerm.sql/New-AzureRmSqlSyncAgent) |  Erstellt einen neuen Synchronisierungs-Agent. |
-| [New-AzureRmSqlSyncAgentKey](/powershell/module/azurerm.sql/New-AzureRmSqlSyncAgentKey) |  Generiert den Agent-Schlüssel, der dem Synchronisierungs-Agent zugeordnet ist. |
-| [Get-AzureRmSqlSyncAgentLinkedDatabase](/powershell/module/azurerm.sql/Get-AzureRmSqlSyncAgentLinkedDatabase) |  Ruft alle Informationen für den Synchronisierungs-Agent ab. |
-| [New-AzureRmSqlSyncMember](/powershell/module/azurerm.sql/New-AzureRmSqlSyncMember) |  Fügt der Synchronisierungsgruppe ein neues Mitglied hinzu. |
-| [Update-AzureRmSqlSyncSchema](/powershell/module/azurerm.sql/Update-AzureRmSqlSyncSchema) |  Aktualisiert die Schemainformationen der Datenbank. |
-| [Get-AzureRmSqlSyncSchema](/powershell/module/azurerm.sql/Get-AzureRmSqlSyncSchem) |  Ruft die Schemainformationen der Datenbank ab. |
-| [Update-AzureRmSqlSyncGroup](/powershell/module/azurerm.sql/Update-AzureRmSqlSyncGroup) |  Aktualisiert die Synchronisierungsgruppe. |
-| [Start-AzureRmSqlSyncGroupSync](/powershell/module/azurerm.sql/Start-AzureRmSqlSyncGroupSync) | Löst eine Synchronisierung aus. |
-| [Get-AzureRmSqlSyncGroupLog](/powershell/module/azurerm.sql/Get-AzureRmSqlSyncGroupLog) |  Überprüft das Synchronisierungsprotokoll. |
+| [New-AzureRmSqlSyncAgent](/powershell/module/azurerm.sql/New-AzureRmSqlSyncAgent) |  Erstellt einen neuen Synchronisierungs-Agent |
+| [New-AzureRmSqlSyncAgentKey](/powershell/module/azurerm.sql/New-AzureRmSqlSyncAgentKey) |  Generiert den Agent-Schlüssel, der dem Synchronisierungs-Agent zugeordnet ist |
+| [Get-AzureRmSqlSyncAgentLinkedDatabase](/powershell/module/azurerm.sql/Get-AzureRmSqlSyncAgentLinkedDatabase) |  Ruft alle Informationen für den Synchronisierungs-Agent ab |
+| [New-AzureRmSqlSyncMember](/powershell/module/azurerm.sql/New-AzureRmSqlSyncMember) |  Fügt der Synchronisierungsgruppe ein neues Mitglied hinzu |
+| [Update-AzureRmSqlSyncSchema](/powershell/module/azurerm.sql/Update-AzureRmSqlSyncSchema) |  Aktualisiert die Schemainformationen der Datenbank |
+| [Get-AzureRmSqlSyncSchema](/powershell/module/azurerm.sql/Get-AzureRmSqlSyncSchem) |  Ruft die Schemainformationen der Datenbank ab |
+| [Update-AzureRmSqlSyncGroup](/powershell/module/azurerm.sql/Update-AzureRmSqlSyncGroup) |  Aktualisiert die Synchronisierungsgruppe |
+| [Start-AzureRmSqlSyncGroupSync](/powershell/module/azurerm.sql/Start-AzureRmSqlSyncGroupSync) | Löst eine Synchronisierung aus |
+| [Get-AzureRmSqlSyncGroupLog](/powershell/module/azurerm.sql/Get-AzureRmSqlSyncGroupLog) |  Überprüft das Synchronisierungsprotokoll |
 |||
 
 ## <a name="next-steps"></a>Nächste Schritte

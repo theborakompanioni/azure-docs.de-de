@@ -16,10 +16,10 @@ ms.workload: NA
 ms.date: 06/15/2017
 ms.author: chackdan
 ms.translationtype: HT
-ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
-ms.openlocfilehash: 676a46449b1ff5ceb749df876bad614c3804d220
+ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
+ms.openlocfilehash: d71fdcf2a054a9b9ac1d74ddd3a6b43d151fa87d
 ms.contentlocale: de-de
-ms.lasthandoff: 07/12/2017
+ms.lasthandoff: 08/09/2017
 
 ---
 # <a name="customize-service-fabric-cluster-settings-and-fabric-upgrade-policy"></a>Anpassen von Service Fabric-Clustereinstellungen und der Fabric-Upgraderichtlinie
@@ -262,6 +262,7 @@ Es folgen die Fabric-Einstellungen, die Sie anpassen können:
 |IsEnabled|Boolesch, Standardwert „false“ | Aktiviert bzw. deaktiviert httpgateway. Httpgateway ist standardmäßig deaktiviert, und diese Konfiguration muss zur Aktivierung festgelegt werden. |
 |ActiveListeners |Uint, Standardwert 50 | Anzahl der Lesevorgänge, die an die HTTP-Serverwarteschlange gesendet werden sollen. Dadurch wird die Anzahl gleichzeitiger Anforderungen gesteuert, die von HttpGateway erfüllt werden können. |
 |MaxEntityBodySize |Uint, Standardwert 4194304 |  Gibt die maximale Größe des Texts an, der von einer HTTP-Anforderung erwartet werden kann. Der Standardwert ist 4 MB. Httpgateway erzeugt für eine Anforderung einen Fehler, wenn der Text größer als dieser Wert ist. Die minimale Blockgröße beim Lesen beträgt 4096 Bytes. Der Wert muss also größer oder gleich 4096. |
+|HttpGatewayHealthReportSendInterval |Zeit in Sekunden, Standardwert 30 | Geben Sie die Zeitspanne in Sekunden an. Das Intervall, in dem das HTTP-Gateway kumulierte Integritätsberichte an den Integritätsdienst sendet. |
 
 ### <a name="section-name-ktllogger"></a>Name des Abschnitts: KtlLogger
 | **Parameter** | **Zulässige Werte** | **Anleitung oder Kurzbeschreibung** |
@@ -278,10 +279,10 @@ Es folgen die Fabric-Einstellungen, die Sie anpassen können:
 | **Parameter** | **Zulässige Werte** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- |
 |IsEnabled |Boolesch, Standardwert „false“ | Aktiviert bzw. deaktiviert HttpApplicationGateway. HttpApplicationGateway ist standardmäßig deaktiviert, und diese Konfiguration muss zur Aktivierung festgelegt werden. |
-|NumberOfParallelOperations | Uint, Standardwert 1000 | Anzahl der Lesevorgänge, die an die HTTP-Serverwarteschlange gesendet werden sollen. Dadurch wird die Anzahl gleichzeitiger Anforderungen gesteuert, die von HttpGateway erfüllt werden können. |
-|DefaultHttpRequestTimeout |Zeit in Sekunden. Standardwert 60 |Geben Sie die Zeitspanne in Sekunden an.  Gibt das standardmäßige Anforderungstimeout für die HTTP-Anforderungen an, die im HTTP-App-Gateway verarbeitet werden. |
+|NumberOfParallelOperations | Uint, Standardwert 5000 | Anzahl der Lesevorgänge, die an die HTTP-Serverwarteschlange gesendet werden sollen. Dadurch wird die Anzahl gleichzeitiger Anforderungen gesteuert, die von HttpGateway erfüllt werden können. |
+|DefaultHttpRequestTimeout |Zeit in Sekunden. Standardwert 120 |Geben Sie die Zeitspanne in Sekunden an.  Gibt das standardmäßige Anforderungstimeout für die HTTP-Anforderungen an, die im HTTP-App-Gateway verarbeitet werden. |
 |ResolveServiceBackoffInterval |Zeit in Sekunden, Standardwert 5 |Geben Sie die Zeitspanne in Sekunden an.  Gibt das standardmäßige Backoffintervall an, nach dem ein fehlerhafter Vorgang zum Auflösen von Diensten wiederholt wird. |
-|BodyChunkSize |Uint, Standardwert 4096 |  Gibt die Größe des Blocks in Bytes an, der zum Lesen des Texts verwendet wird. |
+|BodyChunkSize |Uint, Standardwert 16384 |  Gibt die Größe des Blocks in Bytes an, der zum Lesen des Texts verwendet wird. |
 |GatewayAuthCredentialType |string, Standardwert „None“ | Gibt den Typ der Sicherheitsanmeldeinformationen an, die am HTTP-App-Gatewayendpunkt verwendet werden sollen. Gültige Werte sind None/X509. |
 |GatewayX509CertificateStoreName |string, Standardwert „My“ | Name des X.509-Zertifikatspeichers, der das Zertifikat für das HTTP-App-Gateway enthält. |
 |GatewayX509CertificateFindType |string, Standardwert „FindByThumbprint“ | Gibt an, wie nach dem Zertifikat im durch GatewayX509CertificateStoreName angegebenen Speicher gesucht werden soll. Unterstützte Werte: FindByThumbprint, FindBySubjectName. |

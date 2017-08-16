@@ -12,20 +12,20 @@ ms.devlang:
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/15/2017
+ms.date: 08/04/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
-ms.openlocfilehash: 74809ce12a2a273a18ff3e0559aefd79fb4d2da7
+ms.translationtype: HT
+ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
+ms.openlocfilehash: 0853e8605e07c28867676e9c13b89263ade67c88
 ms.contentlocale: de-de
-ms.lasthandoff: 05/26/2017
+ms.lasthandoff: 08/04/2017
 
 ---
 
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>Hinzufügen zusätzlicher Speicherkonten zu HDInsight
 
-Erfahren Sie, wie Sie Skriptaktionen verwenden, um einem vorhandenen HDInsight-Cluster mit dem Linux-Betriebssystem zusätzliche Azure-Speicherkonten hinzuzufügen.
+Erfahren Sie, wie Sie Skriptaktionen verwenden, um HDInsight zusätzliche Azure-Speicherkonten hinzuzufügen. Mit den Schritten in diesem Dokument fügen Sie einem vorhandenen Linux-basierten HDInsight-Cluster ein Speicherkonto hinzu.
 
 > [!IMPORTANT]
 > Die Informationen in diesem Dokument beziehen sich auf das Hinzufügen zusätzlichen Speichers zu einem Cluster, nachdem es erstellt wurde. Informationen zum Hinzufügen von Speicherkonten während der Clustererstellung finden Sie unter [Einrichten von Clustern in HDInsight mit Hadoop, Spark, Kafka usw](hdinsight-hadoop-provision-linux-clusters.md).
@@ -50,7 +50,7 @@ Während der Verarbeitung führt dieses Skript folgende Aktionen aus:
 
 * Das Speicherkonto wird der core-site.xml-Datei hinzugefügt.
 
-* Die Dienste Oozie, YARN MapReduce2 und HDFS werden beendet und neu gestartet, damit sie die neuen Speicherkontodaten aufnehmen.
+* Beendet die Dienste Oozie, YARN, MapReduce2 und HDFS und startet sie neu. Durch das Beenden und Starten dieser Dienste wird ihnen die Verwendung des neuen Speicherkontos ermöglicht.
 
 > [!WARNING]
 > Die Verwendung eines Speicherkontos an einem anderen Ort als dem HDInsight-Cluster wird nicht unterstützt.
@@ -65,12 +65,14 @@ __Anforderungen__:
 
 ## <a name="to-use-the-script"></a>So verwenden Sie das Skript
 
-Informationen zum Verwenden von Skriptaktionen über das Azure-Portal, Azure PowerShell und die Azure-CLI finden Sie im Abschnitt „Anwenden einer Skriptaktion auf einen ausgeführten Cluster“ des Dokuments [Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster).
+Das Skript kann über das Azure-Portal, Azure PowerShell oder die Azure CLI 1.0 verwendet werden. Weitere Informationen finden Sie im Dokument [Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster).
 
-Ersetzen Sie bei Verwendung der Informationen im Anpassungsdokument ggf. URIs in der Beispielskriptaktion mit dem URI für dieses Skript (https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh). Ersetzen Sie alle Beispiel-Parameter mit dem Azure-Speicherkontonamen und dem Schlüssel des Speicherkontos, das dem Cluster hinzugefügt werden soll.
-
-> [!NOTE]
-> Sie müssen dieses Skript nicht als __Persistent__ markieren, da es die Ambari-Konfiguration für den Cluster direkt aktualisiert.
+> [!IMPORTANT]
+> Verwenden Sie beim Ausführen der Schritte im Anpassungsdokument die folgenden Informationen, um dieses Skript anzuwenden:
+>
+> * Ersetzen Sie ggf. URIs in der Beispielskriptaktion mit dem URI für dieses Skript (https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh).
+> * Ersetzen Sie alle Beispiel-Parameter mit dem Azure-Speicherkontonamen und dem Schlüssel des Speicherkontos, das dem Cluster hinzugefügt werden soll. Bei Verwendung des Azure-Portals müssen diese Parameter durch eine Leerstelle getrennt werden.
+> * Sie müssen dieses Skript nicht als __Persistent__ markieren, da es die Ambari-Konfiguration für den Cluster direkt aktualisiert.
 
 ## <a name="known-issues"></a>Bekannte Probleme
 
@@ -142,7 +144,7 @@ Wenn das Speicherkonto sich in einer anderen Region als der HDInsight-Cluster be
 
 ### <a name="additional-charges"></a>Zusätzliche Gebühren
 
-Wenn das Speicherkonto sich in einer anderen Region als der HDInsight-Cluster befindet, fallen Ihnen möglicherweise zusätzliche Ausgangsgebühren in Ihrer Azure-Abrechnung auf. Eine Ausgangsgebühr wird fällig, wenn Daten ein regionales Rechenzentrum verlassen, und zwar auch dann, wenn das Ziel des Datenverkehrs ein anderes Azure-Rechenzentrum in einer anderen Region ist.
+Wenn das Speicherkonto sich in einer anderen Region als der HDInsight-Cluster befindet, fallen Ihnen möglicherweise zusätzliche Ausgangsgebühren in Ihrer Azure-Abrechnung auf. Eine Ausgangsgebühr wird fällig, wenn Daten ein regionales Rechenzentrum verlassen. Diese Gebühr fällt auch dann an, wenn das Ziel des Datenverkehrs ein anderes Azure-Rechenzentrum in einer anderen Region ist.
 
 > [!WARNING]
 > Die Verwendung eines Speicherkontos in einer anderen Region als dem HDInsight-Cluster wird nicht unterstützt.

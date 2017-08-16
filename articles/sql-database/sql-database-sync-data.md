@@ -4,7 +4,7 @@ description: "Diese Übersicht enthält eine Einführung in Azure SQL-Datensynch
 services: sql-database
 documentationcenter: 
 author: douglaslms
-manager: jhubbard
+manager: craigg
 editor: 
 ms.assetid: 
 ms.service: sql-database
@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2017
 ms.author: douglasl
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
-ms.openlocfilehash: 075b5563688158289d51f2f0b5da4a3441ddd13a
+ms.translationtype: HT
+ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
+ms.openlocfilehash: 95404f9dbffa08edf12ee6c07f671d5f207ce99a
 ms.contentlocale: de-de
-ms.lasthandoff: 06/29/2017
-
+ms.lasthandoff: 08/05/2017
 
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>Synchronisieren von Daten über mehrere Cloud- und lokale Datenbanken mit SQL-Datensynchronisierung
@@ -29,9 +28,9 @@ SQL-Datensynchronisierung ist ein Dienst, der auf Azure SQL-Datenbank basiert un
 
 Grundlage der Datensynchronisierung ist eine Synchronisierungsgruppe. Eine Synchronisierungsgruppe ist eine Gruppe von Datenbanken, die Sie synchronisieren möchten.
 
-Eine Synchronisierungsgruppe verfügt über mehrere Eigenschaften, z.B.:
+Eine Synchronisierungsgruppe hat die folgenden Eigenschaften:
 
--   Im **Synchronisierungsschema**  wird beschrieben, welche Daten synchronisiert werden.
+-   Im **Synchronisierungsschema** wird beschrieben, welche Daten synchronisiert werden.
 
 -   Die **Synchronisierungsrichtung** kann bidirektional oder unidirektional sein. Für die Synchronisierungsrichtung kann also *Vom Hub zum Mitglied*, *Vom Mitglied zum Hub* oder beides gelten.
 
@@ -39,7 +38,7 @@ Eine Synchronisierungsgruppe verfügt über mehrere Eigenschaften, z.B.:
 
 -   Die **Richtlinie zur Konfliktlösung** ist eine Richtlinie auf Gruppenebene, die den Typ *Hub gewinnt* oder *Mitglied gewinnt* haben kann.
 
-Für die Datensynchronisierung wird eine Topologie der Art „Nabe und Speiche“ genutzt, um Daten zu synchronisieren. Sie müssen eine der Datenbanken in der Gruppe als Hub-Datenbank definieren. Die übrigen Datenbanken sind Mitgliedsdatenbanken. Die Synchronisierung erfolgt nur zwischen dem Hub und den einzelnen Mitgliedern.
+Für die Datensynchronisierung wird eine Topologie der Art „Nabe und Speiche“ genutzt, um Daten zu synchronisieren. Sie definieren eine der Datenbanken in der Gruppe als Hub-Datenbank. Die übrigen Datenbanken sind Mitgliedsdatenbanken. Die Synchronisierung erfolgt nur zwischen dem Hub und den einzelnen Mitgliedern.
 -   Die **Hub-Datenbank** muss eine Azure SQL-Datenbank sein.
 -   Die **Mitgliedsdatenbanken** können entweder SQL-Datenbanken, lokale SQL Server-Datenbanken oder SQL Server-Instanzen auf virtuellen Azure-Computern sein.
 -   Die **Synchronisierungsdatenbank** enthält die Metadaten und das Protokoll für die Datensynchronisierung. Bei der Synchronisierungsdatenbank muss es sich um eine Azure SQL-Datenbank handeln, die in derselben Region wie die Hub-Datenbank angeordnet ist. Die Synchronisierungsdatenbank wird vom Kunden erstellt und befindet sich in seinem Besitz.
@@ -82,7 +81,7 @@ Für die folgenden Szenarien ist die Datensynchronisierung nicht zu empfehlen:
 ## <a name="limitations-and-considerations"></a>Einschränkungen und Aspekte
 
 ### <a name="performance-impact"></a>Auswirkungen auf die Leistung
-Für die Datensynchronisierung werden Auslöser für Einfügen, Aktualisieren und Löschen verwendet, um Änderungen nachzuverfolgen. In der Benutzerdatenbank werden Nebentabellen erstellt. Da sich diese Aktivitäten auf Ihre Datenbankworkload auswirken, sollten Sie Ihre Dienstebene überprüfen und bei Bedarf ein Upgrade durchführen.
+Für die Datensynchronisierung werden Auslöser für Einfügen, Aktualisieren und Löschen verwendet, um Änderungen nachzuverfolgen. In der Benutzerdatenbank werden Nebentabellen für die Änderungsnachverfolgung erstellt. Diese Aktivitäten zur Änderungsnachverfolgung haben Auswirkungen auf Ihre Datenbankworkload. Bewerten Sie Ihren Tarif, und aktualisieren Sie ihn bei Bedarf.
 
 ### <a name="eventual-consistency"></a>Letztliche Konsistenz
 Die Transaktionskonsistenz ist nicht garantiert, da die Datensynchronisierung auf Auslösern basiert. Microsoft gewährleistet, dass alle Änderungen letztlich vorgenommen werden und dass es bei der Datensynchronisierung nicht zu Datenverlusten kommt.
@@ -101,9 +100,9 @@ Die Transaktionskonsistenz ist nicht garantiert, da die Datensynchronisierung au
 
 -   Jede Tabelle muss über einen Primärschlüssel verfügen.
 
--   Eine Tabelle kann keine Identitätsspalten enthalten, die nicht dem Primärschlüssel unterliegen.
+-   Eine Tabelle kann keine Identitätsspalte enthalten, die kein Primärschlüssel ist.
 
--   Ein Datenbankname darf keine Sonderzeichen enthalten.
+-   Die Namen von Objekten (Datenbanken, Tabellen und Spalten) dürfen nicht die druckbaren Zeichen Punkt (.), linke eckige Klammer ([) oder rechte eckige Klammer (]) enthalten.
 
 ### <a name="limitations-on-service-and-database-dimensions"></a>Einschränkungen von Dienst- und Datenbankdimensionen
 
@@ -119,19 +118,45 @@ Die Transaktionskonsistenz ist nicht garantiert, da die Datensynchronisierung au
 | Größe von Datenzeilen in einer Tabelle                                        | 24 Mb                  |                             |
 | Minimales Synchronisierungsintervall                                           | 5 Minuten              |                             |
 
+## <a name="common-questions"></a>Häufig gestellte Fragen
+
+### <a name="how-frequently-can-data-sync-synchronize-my-data"></a>Wie häufig kann die Datensynchronisierung für meine Daten erfolgen? 
+Die Mindesthäufigkeit ist alle fünf Minuten.
+
+### <a name="can-i-use-data-sync-to-sync-between-sql-server-on-premises-databases-only"></a>Kann ich die Datensynchronisierung verwenden, um Daten ausschließlich für lokale SQL Server-Datenbanken synchronisieren zu lassen? 
+Nicht direkt. Sie können Daten zwischen lokalen SQL Server-Datenbanken jedoch indirekt synchronisieren, indem Sie in Azure eine Hub-Datenbank erstellen und anschließend die lokalen Datenbanken der Synchronisierungsgruppe hinzufügen.
+   
+### <a name="can-i-use-data-sync-to-seed-data-from-my-production-database-to-an-empty-database-and-then-keep-them-synchronized"></a>Kann ich mithilfe der Datensynchronisierung ein Seeding für Daten aus meiner Produktionsdatenbank in eine leere Datenbank ausführen und diese dann synchron halten? 
+Ja. Erstellen Sie das Schema in der neuen Datenbank mithilfe eines Skripts manuell, das sich am Original orientiert. Nachdem Sie das Schema erstellt haben, fügen Sie Tabellen einer Synchronisierungsgruppe hinzu, um die Daten zu kopieren und synchron zu halten.
+
+### <a name="why-do-i-see-tables-that-i-did-not-create"></a>Warum sehe ich Tabellen, die ich nicht erstellt habe?  
+Bei der Datensynchronisierung werden Nebentabellen für die Änderungsnachverfolgung erstellt. Löschen Sie diese nicht, da ansonsten die Datensynchronisierung nicht mehr funktioniert.
+   
+### <a name="i-got-an-error-message-that-said-cannot-insert-the-value-null-into-the-column-column-column-does-not-allow-nulls-what-does-this-mean-and-how-can-i-fix-the-error"></a>Ich habe eine Fehlermeldung erhalten, die besagt, dass ich den Wert NULL nicht in die Spalte \<Spalte\> einfügen kann, da die Spalte keine NULL-Werte zulässt. Was bedeutet dies, und wie kann ich das Problem beheben? 
+Diese Fehlermeldung besagt, dass eines der beiden folgenden Probleme vorliegt:
+1.  Es gibt möglicherweise eine Tabelle ohne Primärschlüssel. Um dieses Problem zu beheben, fügen Sie allen Tabellen, die Sie synchronisieren möchten, einen Primärschlüssel hinzu.
+2.  Es gibt möglicherweise in der CREATE INDEX-Anweisung eine WHERE-Klausel. Die Synchronisierung beseitigt diese Bedingung nicht. Um dieses Problem zu beheben, entfernen Sie die WHERE-Klausel, oder nehmen Sie die Änderungen an allen Datenbanken manuell vor. 
+ 
+### <a name="how-does-data-sync-handle-circular-references-that-is-when-the-same-data-is-synced-in-multiple-sync-groups-and-keeps-changing-as-a-result"></a>Wie geht die Datensynchronisierung mit Zirkelbezügen um? Diese liegen vor, wenn dieselben Daten in mehreren Synchronisierungsgruppen synchronisiert werden und sich daher ständig ändern.
+Die Datensynchronisierung beseitigt Zirkelbezüge nicht. Vermeiden Sie sie deshalb unbedingt. 
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu SQL-Datenbank und zur SQL-Datensynchronisierung finden Sie unter:
+Weitere Informationen zur SQL-Datensynchronisierung finden Sie unter:
 
 -   [Erste Schritte mit der SQL-Datensynchronisierung](sql-database-get-started-sql-data-sync.md)
 
+-   Vollständige PowerShell-Beispiele, die die Konfiguration der SQL-Datensynchronisierung veranschaulichen:
+    -   [Verwenden von PowerShell zum Synchronisieren von Daten zwischen mehreren Azure SQL-­Datenbanken](scripts/sql-database-sync-data-between-sql-databases.md)
+    -   [Verwenden von PowerShell zum Synchronisieren zwischen einer Azure SQL-Datenbank und einer lokalen SQL Server-Datenbank](scripts/sql-database-sync-data-between-azure-onprem.md)
+
 -   [Download der gesamten technischen Dokumentation zur SQL-Datensynchronisierung](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_full_documentation.pdf?raw=true)
 
--   [Download: Dokumentation zur SQL-Datensynchronisierung-REST-API](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true)
+-   [Download the SQL Data Sync REST API documentation (Herunterladen der Dokumentation zur REST-API von SQL-Datensynchronisierung)](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true)
+
+Weitere Informationen zu SQL-Datenbank finden Sie unter:
 
 -   [Übersicht über die SQL-Datenbank](sql-database-technical-overview.md)
 
 -   [Datenbank-Lebenszyklusverwaltung](https://msdn.microsoft.com/library/jj907294.aspx)
-
-
 

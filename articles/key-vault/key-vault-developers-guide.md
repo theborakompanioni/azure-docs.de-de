@@ -1,21 +1,19 @@
 ---
-title: Entwicklerhandbuch zu Azure Key Vault | Microsoft-Dokumentation
+title: "Entwicklerhandbuch zu Azure-Schlüsseltresor"
 description: "Mit Azure-Schlüsseltresor können Entwickler kryptografische Schlüssel in der Microsoft Azure-Umgebung verwalten."
 services: key-vault
-documentationcenter: 
 author: BrucePerlerMS
 manager: mbaldwin
 ms.service: key-vault
 ms.topic: article
 ms.workload: identity
-ms.date: 05/10/2017
+ms.date: 08/04/2017
 ms.author: bruceper
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
-ms.openlocfilehash: b046e95e2167009727f6ea8f3dd237619c61434f
+ms.translationtype: HT
+ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
+ms.openlocfilehash: 115862aca98926e354e4703f86cb4a7e1d1f72a2
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 08/05/2017
 
 ---
 # <a name="azure-key-vault-developers-guide"></a>Entwicklerhandbuch zu Azure-Schlüsseltresor
@@ -29,14 +27,18 @@ Mithilfe des Schlüsseltresors können Sie in Ihren Anwendungen sicher auf vertr
 
 Allgemeine Informationen zu Azure Key Vault finden Sie unter [Was ist der Schlüsseltresor?](key-vault-whatis.md).
 
-## <a name="public-preview---may-10-2017"></a>Öffentliche Vorschau – 10. Mai 2017
+## <a name="public-previews"></a>Öffentliche Vorschauversionen
+
+Wir veröffentlichen in regelmäßigen Abständen eine öffentliche Vorschau des neuen Key Vault-Features. Testen Sie diese, und teilen Sie uns Ihre Meinung über azurekeyvault@microsoft.com mit, unsere E-Mail-Adresse für Feedback.
+
+### <a name="storage-account-keys---july-10-2017"></a>Speicherkontoschlüssel – 10. Juli 2017
 
 >[!NOTE]
->Bei dieser Vorschauversion von Azure Key Vault ist nur die Funktion für **vorläufiges Löschen** in der Vorschau. Insgesamt ist Azure Key Vault ein vollständiger Produktionsdienst.
+>Für dieses Update von Azure Key Vault ist nur das Feature **Speicherkontoschlüssel** in der Vorschau enthalten.
 
-Diese Vorschau enthält unsere neue Funktion für vorläufiges Löschen, das wiederherstellbare Löschen von Schlüsseltresoren und Key Vault-Objekten und aktualisierte Schnittstellen für Entwickler, [.NET/C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.keyvault/), [REST](https://docs.microsoft.com/rest/api/keyvault/) und [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.keyvault/). 
+Diese Vorschau enthält unser neues Speicherkontoschlüssel-Feature, das über diese Schnittstellen verfügbar ist: [.NET/C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.keyvault/), [REST](https://docs.microsoft.com/rest/api/keyvault/) und [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.keyvault/). 
 
-Weitere Informationen zur neuen Funktion für vorläufiges Löschen finden Sie unter [Übersicht über die Azure Key Vault-Funktion für vorläufiges Löschen](key-vault-ovw-soft-delete.md).
+Weitere Informationen zum neuen Speicherkontoschlüssel-Feature finden Sie unter [Azure Key Vault storage account keys overview](key-vault-ovw-storage-keys.md) (Übersicht zu Azure Key Vault-Speicherkontoschlüsseln).
 
 ## <a name="videos"></a>Videos
 
@@ -79,6 +81,8 @@ Weitere Informationen über die .NET SDK-Version 2.x finden Sie in den [Anmerkun
 
 #### <a name="nodejs"></a>Node.js
 
+Tresorverwaltungs-API und Tresorobjekt-API sind in Node.js getrennt. Die Key Vault-Verwaltung ermöglicht das Erstellen und Aktualisieren Ihres Schlüsseltresors. Die Key Vault-Betrieb-API ist für die Arbeit mit Tresorobjekten wie Schlüsseln, Geheimnissen und Zertifikaten vorgesehen. 
+
 - [Node.js-API-Referenz für die Key Vault-Verwaltung](http://azure.github.io/azure-sdk-for-node/azure-arm-keyvault/latest/)
 - [Node.js-API-Referenz für den Key Vault-Betrieb](http://azure.github.io/azure-sdk-for-node/azure-keyvault/latest/) 
 
@@ -107,8 +111,9 @@ Die folgenden Artikel und Szenarien bieten aufgabenspezifische Anleitungen für 
 - [Einrichten des Schlüsseltresors mit End-to-End-Schlüsselrotation und Überwachung](key-vault-key-rotation-log-monitoring.md) bietet eine exemplarische Vorgehensweise zum Einrichten der Schlüsselrotation und Protokollüberwachung mit Azure Key Vault.
 - [Deploying Azure Web App Certificate through Key Vault]( https://blogs.msdn.microsoft.com/appserviceteam/2016/05/24/deploying-azure-web-app-certificate-through-key-vault/) (Bereitstellen von Azure-Web-App-Zertifikaten über Key Vault) enthält schrittweise Anleitungen zum Bereitstellen von Zertifikaten, die im Schlüsseltresor gespeichert sind, im Rahmen des [App Service Certificate](https://azure.microsoft.com/blog/internals-of-app-service-certificate/)-Angebots.
 - [Grant permission to many applications to access a key vault](key-vault-group-permissions-for-apps.md) (Erteilen von Berechtigungen für viele Anwendungen für den Zugriff auf einen Schlüsseltresor):Die Key Vault-Zugriffssteuerungsrichtlinie unterstützt nur 16 Einträge. Sie können aber eine Azure Active Directory-Sicherheitsgruppe erstellen. Fügen Sie dieser Sicherheitsgruppe alle zugeordneten Dienstprinzipale hinzu, und gewähren Sie dieser Sicherheitsgruppe dann Zugriff auf Key Vault.
-
-Aufgabenspezifische Anleitungen zum Integrieren und Verwenden von Schlüsseltresoren mit Azure finden Sie in den [Beispielen für Azure Resource Manager-Vorlagen für Key Vault von Ryan Jones](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples).
+- Aufgabenspezifische Anleitungen zum Integrieren und Verwenden von Schlüsseltresoren mit Azure finden Sie in den [Beispielen für Azure Resource Manager-Vorlagen für Key Vault von Ryan Jones](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples).
+- [Verwenden des vorläufigen Löschens in Key Vault mit der CLI](key-vault-soft-delete-cli.md) enthält Informationen zur Verwendung und zum Lebenszyklus eines Schlüsseltresors und verschiedener Schlüsseltresorobjekte, für den bzw. die vorläufiges Löschen aktiviert ist.
+- [Verwenden des vorläufigen Löschens in Key Vault mit PowerShell](key-vault-soft-delete-powershell.md) enthält Informationen zur Verwendung und zum Lebenszyklus eines Schlüsseltresors und verschiedener Schlüsseltresorobjekte, für den bzw. die vorläufiges Löschen aktiviert ist.
 
 ## <a name="integrated-with-key-vault"></a>Key Vault-Integration
 
@@ -120,20 +125,20 @@ Diese Artikel enthalten Informationen zu anderen Szenarien und Diensten, in dene
 
 ## <a name="key-vault-overviews-and-concepts"></a>Key Vault-Übersichten und -Konzepte
 
-- [Key Vault-Sicherheitsumgebungen (Security Worlds)](key-vault-ovw-security-worlds.md)
-- [Übersicht über die Azure Key Vault-Funktion für vorläufiges Löschen](key-vault-ovw-soft-delete.md)
+- [Übersicht über die Azure Key Vault-Funktion für vorläufiges Löschen](key-vault-ovw-soft-delete.md) beschreibt ein Feature, dass die Wiederherstellung gelöschter Objekte unabhängig davon ermöglicht, ob die Löschung versehentlich oder absichtlich erfolgte.
+- [Anleitung zur Drosselung von Azure Key Vault](key-vault-ovw-throttling.md) informiert Sie über die grundlegenden Konzepte der Drosselung und bietet einen Ansatz für Ihre App.
+- [Key Vault storage account keys overview](key-vault-ovw-storage-keys.md) (Übersicht zu Azure-Speicherkontoschlüsseln) beschreibt die Key Vault-Integration in Azure-Speicherkontoschlüssel.
+- [Sicherheitsumgebungen und geografische Grenzen von Azure Key Vault](key-vault-ovw-security-worlds.md) beschreibt die Beziehungen zwischen Regionen und Sicherheitsbereichen.
 
 ## <a name="social"></a>Soziale Netzwerke
 
 - [Key Vault Blog](http://aka.ms/kvblog)
 - [Key Vault Forum](http://aka.ms/kvforum)
 
-
 ## <a name="supporting-libraries"></a>Unterstützung von Bibliotheken
 
 - Die [Microsoft Azure Key Vault-Kernbibliothek](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core) bietet die Schnittstellen **IKey** und **IKeyResolver**, um Schlüssel von Bezeichnern zu ermitteln und mit diesen Schlüsseln Vorgänge auszuführen.
 - [Microsoft Azure Key Vault-Erweiterungen](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Extensions) bieten erweiterte Funktionen für Azure Key Vault.
 
-## <a name="other-key-vault-resources"></a>Weitere Ressourcen für Schlüsseltresore
 
 

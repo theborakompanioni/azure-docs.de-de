@@ -13,14 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/12/2017
+ms.date: 08/08/2017
 ms.author: shlo
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
-ms.openlocfilehash: 870436655c84c0bc53ca41eaa67f6fd32ef93ceb
+ms.translationtype: HT
+ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
+ms.openlocfilehash: 6fd58edd830df8ea3f77a68e8dfcaf6de055b17c
 ms.contentlocale: de-de
-ms.lasthandoff: 05/01/2017
-
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="datasets-in-azure-data-factory"></a>Datasets in Azure Data Factory
@@ -202,7 +201,7 @@ Anhand der folgenden Anleitungen können Sie entscheiden, wann der Abschnitt **s
     Da Typinformationen für strukturierte Datenquellen bereits verfügbar sind, sollten Sie keine Typinformationen einschließen, wenn Sie sich für die Verwendung des Abschnitts „structure“ entscheiden.
 * **Für das Schema von Lesedatenquellen (insbesondere Blob Storage)** können Sie Daten speichern, ohne Schema- oder Typinformationen mit den Daten zu speichern. Für diese Datenquellentypen geben Sie „structure“ an, wenn Sie Quellspalten zu Zielspalten zuordnen möchten. Geben Sie „structure“ auch an, wenn das Dataset eine Eingabe für eine Kopieraktivität ist und die Datentypen des Quelldatasets in systemeigene Typen für das Ziel (Senke) konvertiert werden müssen. 
     
-    Data Factory unterstützt die folgenden Werte für die Bereitstellung von Typinformationen in „structure“: Int16, Int32, Int64, Single, Double, Decimal, Byte[], Bool, String, Guid, Datetime, Datetimeoffset und Timespan. Diese Werte sind CLS-kompatible (Common Language Specification) .NET-basierte Typwerte.
+    Data Factory unterstützt die folgenden Werte für die Bereitstellung von Typinformationen in „structure“: **Int16, Int32, Int64, Single, Double, Decimal, Byte[], Boolean, String, Guid, Datetime, Datetimeoffset und Timespan**. Diese Werte sind CLS-kompatible (Common Language Specification) .NET-basierte Typwerte.
 
 Data Factory führt beim Verschieben von Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher automatisch Typkonvertierungen durch. 
   
@@ -269,7 +268,7 @@ Das folgende Dataset wird monatlich am dritten Tage jedes Monats um 8:00 Uhr ers
 "availability": {
     "frequency": "Month",
     "interval": 1,
-    "offset": "3.08:00:00",    
+    "offset": "3.08:00:00", 
     "style": "StartOfInterval"
 }
 ```

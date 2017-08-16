@@ -12,18 +12,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/12/2017
+ms.date: 08/08/2017
 ms.author: magoedte
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a0c8af30fbed064001c3fd393bf0440aa1cb2835
-ms.openlocfilehash: a8c9766bf066a7f0dfd28ebb4e41bf0eaf3f05bd
+ms.translationtype: HT
+ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
+ms.openlocfilehash: a90d9c620221bffbb225fb060b997af2f5e90390
 ms.contentlocale: de-de
-ms.lasthandoff: 02/28/2017
-
+ms.lasthandoff: 08/09/2017
 
 ---
 # <a name="create-a-custom-dashboard-for-use-in-log-analytics"></a>Erstellen eines benutzerdefinierten Dashboards für die Verwendung in Log Analytics
+
+>[!NOTE]
+> Wenn Ihr Arbeitsbereich auf die [neue Log Analytics-Abfragesprache](log-analytics-log-search-upgrade.md) aktualisiert wurde, können Sie keine neuen Dashboards erstellen bzw. vorhandene Dashboards nicht bearbeiten. 
+
 In diesem Leitfaden wird beschrieben, wie in Log Analytics-Dashboards alle gespeicherten Protokollsuchvorgänge visualisiert werden können, um Ihnen eine zentrale Übersicht über Ihre Umgebung zu ermöglichen.
 
 ![Beispiel-Dashboard](./media/log-analytics-dashboards/oms-dashboards-example-dash.png)

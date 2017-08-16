@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/04/2017
+ms.date: 08/08/2017
 ms.author: dobett
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
-ms.openlocfilehash: 48d1fb8bba10df0960a8fba0b8c283aa3142d881
+ms.translationtype: HT
+ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
+ms.openlocfilehash: e2cd7eae50006717dfc0da358436ae3553a81d00
 ms.contentlocale: de-de
-ms.lasthandoff: 05/16/2017
-
+ms.lasthandoff: 08/09/2017
 
 ---
 
@@ -64,7 +63,7 @@ Melden Sie sich bei Ihrem Azure-Konto an, und wählen Sie Ihr Abonnement aus.
 
 In den folgenden Schritten wird davon ausgegangen, dass Sie Ihr Speicherkonto mit dem **Ressourcen-Manager**-Bereitstellungsmodell und nicht mit dem **klassischen** Bereitstellungsmodell erstellt haben.
 
-Sie benötigen die Verbindungszeichenfolge eines Azure-Speicherkontos im Abonnement, zu dem auch Ihr IoT Hub gehört, um das Hochladen von Dateien von Ihren Geräten zu konfigurieren. Sie benötigen auch den Name des Blobcontainers im Speicherkonto. Verwenden Sie den folgenden Befehl, um Ihre Speicherkontoschlüssel abzurufen:
+Sie benötigen die Verbindungszeichenfolge eines Azure-Speicherkontos, um das Hochladen von Dateien von Ihren Geräten zu konfigurieren. Das Speicherkonto muss sich in demselben Abonnement wie der IoT-Hub befinden. Sie benötigen auch den Name des Blobcontainers im Speicherkonto. Verwenden Sie den folgenden Befehl, um Ihre Speicherkontoschlüssel abzurufen:
 
 ```azurecli
 az storage account show-connection-string --name {your storage account name} --resource-group {your storage account resource group}
@@ -136,7 +135,7 @@ az iot hub show --name {your iot hub name}
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu den Dateiuploadfunktionen von IoT Hub finden Sie unter [Hochladen von Dateien von einem Gerät][lnk-upload] im IoT Hub-Entwicklerhandbuch.
+Weitere Informationen zu den Dateiuploadfunktionen von IoT Hub finden Sie unter [Hochladen von Dateien von einem Gerät][lnk-upload].
 
 Folgen Sie diesen Links, um mehr über das Verwalten von Azure IoT Hub zu erfahren:
 

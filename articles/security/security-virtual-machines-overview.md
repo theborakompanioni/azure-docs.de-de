@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/04/2017
 ms.author: terrylan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
-ms.openlocfilehash: 9307b1688ed9e3dc412d044e72bdf88b7bb4d1ec
+ms.translationtype: HT
+ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
+ms.openlocfilehash: f1fb7f876c7dc010c03f01a4f6698ddc18da1100
 ms.contentlocale: de-de
-ms.lasthandoff: 05/05/2017
-
+ms.lasthandoff: 08/10/2017
 
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Virtuelle Azure-Computer – Sicherheitsübersicht
@@ -77,7 +76,7 @@ Weitere Informationen zu Antischadsoftware zum Schützen Ihrer virtuellen Comput
 * [Willkommen im Azure Marketplace](https://azure.microsoft.com/marketplace/?term=security)
 
 ## <a name="hardware-security-module"></a>Hardwaresicherheitsmodul
-Verschlüsselung und Authentifizierung verbessern die Sicherheit erst dann, wenn die Schlüssel selbst geschützt sind. Sie können die Verwaltung und Sicherheit Ihrer geschäftskritischen geheimen Daten und Schlüssel vereinfachen, indem Sie diese in Azure Key Vault speichern. Mit Key Vault können Sie Ihre Schlüssel in Hardwaresicherheitsmodulen (Hardware Security Modules, HSMs) speichern, die gemäß FIPS 140-2 Level 2-Standards zertifiziert sind. Sie können Ihre SQL Server-Verschlüsselungsschlüssel für Sicherungen oder [transparente Datenverschlüsselung](https://msdn.microsoft.com/library/bb934049.aspx) gemeinsam mit den Schlüsseln oder geheimen Daten Ihrer Anwendungen in Key Vault speichern. Der Zugriff auf diese geschützten Elemente sowie die zugehörigen Berechtigungen werden über [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/)verwaltet.
+Verschlüsselungs- und Authentifizierungsschutzmaßnahmen können durch eine höhere Sicherheit verbessert werden. Sie können die Verwaltung und Sicherheit Ihrer geschäftskritischen geheimen Daten und Schlüssel vereinfachen, indem Sie diese in Azure Key Vault speichern. Mit Key Vault können Sie Ihre Schlüssel in Hardwaresicherheitsmodulen (Hardware Security Modules, HSMs) speichern, die gemäß FIPS 140-2 Level 2-Standards zertifiziert sind. Sie können Ihre SQL Server-Verschlüsselungsschlüssel für Sicherungen oder [transparente Datenverschlüsselung](https://msdn.microsoft.com/library/bb934049.aspx) gemeinsam mit den Schlüsseln oder geheimen Daten Ihrer Anwendungen in Key Vault speichern. Der Zugriff auf diese geschützten Elemente sowie die zugehörigen Berechtigungen werden über [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/)verwaltet.
 
 Weitere Informationen:
 

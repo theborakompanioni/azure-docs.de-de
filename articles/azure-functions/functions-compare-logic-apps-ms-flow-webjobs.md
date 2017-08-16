@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 09/08/2016
+ms.date: 08/03/2017
 ms.author: chrande; glenga
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: 31661e5840a6b65f54f9df027a7e3ecab8768055
+ms.translationtype: HT
+ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
+ms.openlocfilehash: 256bc04684ba337fe8a403d977079c96b63ca61d
 ms.contentlocale: de-de
-ms.lasthandoff: 07/06/2017
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="choose-between-flow-logic-apps-functions-and-webjobs"></a>Auswahl zwischen Flow, Logic Apps, Functions und WebJobs
@@ -82,15 +82,15 @@ In der folgenden Tabelle werden die Unterschiede zwischen Functions und WebJobs 
 | Preise |Nutzungsbasierte Bezahlung oder als Teil eines App Service-Plans |Teil eines App Service-Plans |
 | Ausführungstyp |ausgelöst, geplant (durch Trigger mit Timer) |ausgelöst, fortlaufend, geplant |
 | Auslösende Ereignisse |[Timer](functions-bindings-timer.md), [Azure Cosmos DB](functions-bindings-documentdb.md), [Azure Event Hubs](functions-bindings-event-hubs.md), [HTTP/WebHook (GitHub, Slack)](functions-bindings-http-webhook.md), [Mobile App Service-Apps von Azure](functions-bindings-mobile-apps.md), [Azure Notification Hubs](functions-bindings-notification-hubs.md), [Azure Service Bus](functions-bindings-service-bus.md), [Azure Storage](functions-bindings-storage.md) |[Azure Storage](../app-service-web/websites-dotnet-webjobs-sdk-storage-blobs-how-to.md), [Azure Service Bus](../app-service-web/websites-dotnet-webjobs-sdk-service-bus.md) |
-| Entwicklung im Browser |x | |
-| Windows-Skripterstellung |experimentell |x |
-| PowerShell |experimentell |x |
-| C# |x |x |
-| F# |x | |
-| Bash |experimentell |x |
-| PHP |experimentell |x |
-| Python |experimentell |x |
-| JavaScript |x |x |
+| Entwicklung im Browser |Unterstützt | Nicht unterstützt |
+| Windows-Skripterstellung |experimentell |Unterstützt |
+| PowerShell |experimentell |Unterstützt |
+| C# |Unterstützt |Unterstützt |
+| F# |Unterstützt |Nicht unterstützt |
+| Bash |experimentell |Unterstützt |
+| PHP |experimentell |Unterstützt |
+| Python |experimentell |Unterstützt |
+| JavaScript |Unterstützt |Unterstützt |
 
 Ob Sie Functions oder WebJobs verwenden sollten, hängt letztendlich davon ab, wofür Sie App Service bereits nutzen. Wenn Sie eine App Service-App haben, für die Sie Codeausschnitte ausführen und diese gemeinsam in der gleichen DevOps-Umgebung verwalten möchten, sollten Sie WebJobs verwenden. Wenn Sie Codeausschnitte für andere Azure-Dienste oder sogar Drittanbieter-Apps ausführen, Codeausschnitte unabhängig von Ihren App Service-Apps verwalten oder Ihre Codeausschnitte von einer Logik-App aufrufen möchten, sollten Sie alle Verbesserungen in Functions nutzen.  
 
