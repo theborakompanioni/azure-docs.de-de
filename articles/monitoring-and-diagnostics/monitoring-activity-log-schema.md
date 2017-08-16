@@ -26,7 +26,7 @@ Das **Azure-Aktivitätsprotokoll** ist ein Protokoll, das einen Einblick in alle
 Diese Kategorie enthält die Datensätze aller Erstellungs-, Aktualisierungs-, Lösch- und Aktionsvorgänge, die über Resource Manager ausgeführt wurden. Zu den Ereignissen in dieser Kategorie gehört das Erstellen eines virtuellen Computers und das Löschen einer Netzwerksicherheitsgruppe. Jede Aktion, die von einem Benutzer oder einer Anwendung mithilfe von Resource Manager ausgeführt wird, wird als Vorgang für einen bestimmten Ressourcentyp modelliert. Wenn der Vorgangstyp „Schreiben“, „Löschen“ oder „Aktion“ ist, werden die Datensätze zum Start und zum Erfolg oder Fehler dieses Vorgangs in der Kategorie „Administration“ aufgezeichnet. Die Kategorie „Administration“ enthält außerdem alle Änderungen an der rollenbasierten Zugriffssteuerung in einem Abonnement.
 
 ### <a name="sample-event"></a>Beispielereignis
-```
+```json
 {
   "authorization": {
     "action": "microsoft.support/supporttickets/write",
@@ -128,7 +128,7 @@ Diese Kategorie enthält die Datensätze aller Erstellungs-, Aktualisierungs-, L
 Diese Kategorie enthält Datensätze zu allen Incidents im Zusammenhang mit der Dienstintegrität, die in Azure aufgetreten sind. Ein Beispiel für ein Ereignis in dieser Kategorie ist „Ausfallzeiten bei SQL Azure in der Region „USA, Osten““. Für Ereignisse zur Dienstintegrität gibt es fünf Varianten: Aktion erforderlich, unterstützte Wiederherstellung, Incident, Wartung, Information oder Sicherheit. Sie werden nur angezeigt, wenn eine Ressource in Ihrem Abonnement von dem Ereignis betroffen wäre.
 
 ### <a name="sample-event"></a>Beispielereignis
-```
+```json
 {
   "channels": "Admin",
   "correlationId": "c550176b-8f52-4380-bdc5-36c1b59d3a44",
@@ -217,7 +217,7 @@ Diese Kategorie enthält die Datensätze zu allen Aktivierungen von Azure-Warnun
 
 ### <a name="sample-event"></a>Beispielereignis
 
-```
+```json
 {
   "caller": "Microsoft.Insights/alertRules",
   "channels": "Admin, Operation",
@@ -329,7 +329,7 @@ Das Feld „properties“ enthält abhängig von der Quelle des Warnungsereignis
 Diese Kategorie enthält Datensätze von Ereignissen im Zusammenhang mit automatischen Skalierungsvorgängen basierend auf den Einstellungen für die automatische Skalierung, die Sie in Ihrem Abonnement definiert haben. Ein Beispiel für Ereignisse in dieser Kategorie ist „Fehler beim automatischen zentralen Hochskalieren“. Mit der automatischen Skalierung können Sie die Anzahl der Instanzen eines unterstützten Ressourcentyps basierend auf der Tageszeit und/oder Lastdaten (Metrik) mithilfe einer Einstellung für die automatische Skalierung automatisch horizontal hoch- oder herunterskalieren. Wenn die Bedingungen zum zentralen Hoch- oder Herunterskalieren erfüllt sind, werden Ereignisse zum Start und zum Erfolg oder Fehler in dieser Kategorie aufgezeichnet.
 
 ### <a name="sample-event"></a>Beispielereignis
-```
+```json
 {
   "caller": "Microsoft.Insights/autoscaleSettings",
   "channels": "Admin, Operation",

@@ -5,10 +5,11 @@
 ## [Computesicherheit](security-virtual-machines-overview.md)
 ## [Betriebssicherheit](azure-operational-security-overview.md)
 ## [Sicherheitsverwaltung und -überwachung](security-management-and-monitoring-overview.md)
+## [Service Fabric-Sicherheit](azure-service-fabric-security-overview.md)
 ## [Identitätsverwaltung](security-identity-management-overview.md)
 ## [IoT-Sicherheit](../iot-suite/iot-security-architecture.md#security-in-iot)
 ## [Sicherheitsarchitektur](azure-security-architecture-overview.md)
-### [Betriebssicherheit](azure-operational-security.md)
+### [Gewährleisten von Betriebssicherheit](azure-operational-security.md)
 ### [Erweiterte Bedrohungserkennung](azure-threat-detection.md)
 ### [Protokollierung und Überwachung](azure-log-audit.md)
 ### [Isolation in der öffentlichen Cloud](azure-isolation.md)
@@ -40,6 +41,9 @@
 #### [Behandeln von Problemen mit der Datenträgerverschlüsselung](azure-security-disk-encryption-tsg.md)
 ### [Verschlüsseln eines virtuellen Azure-Computers](../security-center/security-center-disk-encryption.md?toc=%2fazure%2fsecurity%2ftoc.json)
 
+## Betriebssicherheit
+### [Bewährte Methoden für Betriebssicherheit](azure-operational-security-best-practices.md)
+
 ## Sicherheitsverwaltung und -überwachung
 ### [Sicherheitsverwaltung](azure-security-management.md)
 ### [Azure Security Center](../security-center/security-center-intro.md?toc=%2fazure%2fsecurity%2ftoc.json)
@@ -49,6 +53,10 @@
 #### [Integrieren von Security Center-Warnungen](security-azure-log-integration-security-center.md)
 #### [Integrieren von Protokollen aus Key Vault mithilfe von Event Hubs](security-azure-log-integration-keyvault-eventhub.md)
 #### [Häufig gestellte Fragen](security-azure-log-integration-faq.md)
+
+## Service Fabric
+### [Bewährte Methoden für Service Fabric](azure-service-fabric-security-best-practices.md)
+### [Checkliste für Service Fabric](azure-service-fabric-security-checklist.md)
 
 ## Identitätsverwaltung
 ### [Bewährte Methoden für die Sicherheit der Identitätsverwaltung](azure-security-identity-management-best-practices.md)

@@ -69,6 +69,7 @@
 ##### [DNS-Dienst](service-fabric-dnsservice.md)
 ##### [Reverseproxy](service-fabric-reverseproxy.md)
 ##### [Konfigurieren eines Reverseproxys für eine sichere Kommunikation](service-fabric-reverseproxy-configure-secure-communication.md)
+##### [Reverseproxydiagnose](service-fabric-reverse-proxy-diagnostics.md)
 ### [Skalierbarkeit von Anwendungen](service-fabric-concepts-scalability.md)
 ### [ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md)
 
@@ -136,6 +137,7 @@
 #### [Docker Compose (Vorschau)](service-fabric-docker-compose.md)
 #### [Ressourcenkontrolle für Container und Dienste](service-fabric-resource-governance.md)
 #### [Volume- und Protokollierungstreiber](service-fabric-containers-volume-logging-drivers.md)
+#### [Dienste innerhalb von Containern](service-fabric-services-inside-containers.md)
 
 ### Erstellen eines Reliable Services-Diensts
 #### [Übersicht](service-fabric-reliable-services-introduction.md)
@@ -173,10 +175,10 @@
 #### Erste Schritte
 ##### [C# unter Windows](service-fabric-reliable-actors-get-started.md)
 ##### [Java unter Linux](service-fabric-reliable-actors-get-started-java.md)
-#### [Senden von Benachrichtigungen](service-fabric-reliable-actors-events.md) 
+#### [Senden von Benachrichtigungen](service-fabric-reliable-actors-events.md)
 #### [Festlegen von Timern und Erinnerungen](service-fabric-reliable-actors-timers-reminders.md)
 #### [Konfigurieren von „KvsActorStateProvider“](service-fabric-reliable-actors-kvsactorstateprovider-configuration.md)
-#### [Konfigurieren von Kommunikationseinstellungen](service-fabric-reliable-actors-fabrictransportsettings.md) 
+#### [Konfigurieren von Kommunikationseinstellungen](service-fabric-reliable-actors-fabrictransportsettings.md)
 #### [Konfigurieren von „ReliableDictionaryActorStateProvider“](service-fabric-reliable-actors-reliabledictionarystateprovider-configuration.md)
 
 ### [Konfigurieren eines Reverseproxys für eine sichere Kommunikation](service-fabric-reverseproxy-configure-secure-communication.md)
@@ -240,17 +242,17 @@
 
 ## Erstellen und Verwalten von Clustern
 ### Cluster in Azure
-#### Erstellen 
+#### Erstellen
 ##### [Erstellen Ihres ersten Clusters in Azure](service-fabric-get-started-azure-cluster.md)
 ##### [Azure-Portal](service-fabric-cluster-creation-via-portal.md)
 ##### [Azure Resource Manager](service-fabric-cluster-creation-via-arm.md)
-#### Skalieren 
+#### Skalieren
 ##### [Manuell](service-fabric-cluster-scale-up-down.md)
 ##### [Programmgesteuert](service-fabric-cluster-programmatic-scaling.md)
 #### [Upgrade](service-fabric-cluster-upgrade.md)
 #### [Festlegen der Zugriffssteuerung](service-fabric-cluster-security-roles.md)
 #### [Konfigurieren](service-fabric-cluster-fabric-settings.md)
-#### [Verwalten von Clusterzertifikaten](service-fabric-cluster-security-update-certs-azure.md) 
+#### [Verwalten von Clusterzertifikaten](service-fabric-cluster-security-update-certs-azure.md)
 #### [Löschen](service-fabric-cluster-delete.md)
 
 ### Eigenständige Cluster
@@ -264,7 +266,7 @@
 #### [Skalieren](service-fabric-cluster-windows-server-add-remove-nodes.md)
 #### [Festlegen der Zugriffssteuerung](service-fabric-cluster-security-roles.md)
 #### [Konfigurieren](service-fabric-cluster-manifest.md)
-#### [Upgrade](service-fabric-cluster-upgrade-windows-server.md) 
+#### [Upgrade](service-fabric-cluster-upgrade-windows-server.md)
 
 ### [Visualisieren eines Clusters](service-fabric-visualizing-your-cluster.md)
 ### [Herstellen einer Verbindung mit einem sicheren Cluster](service-fabric-connect-to-secure-cluster.md)
@@ -333,4 +335,3 @@
 ## [Supportoptionen](service-fabric-support.md)
 ## [Dienstupdates](https://azure.microsoft.com/updates/?product=service-fabric)
 ## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=service-fabric)
-

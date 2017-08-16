@@ -46,6 +46,7 @@
 ### [Portale für die Protokollsuche](log-analytics-log-search-portals.md)
 #### [Verwenden des Portals für die Protokollsuche](log-analytics-log-search-log-search-portal.md)
 ### [Wechsel von der Legacysprache](log-analytics-log-search-transition.md)
+### [Flow-Connector](log-analytics-flow-tutorial.md)
 
 ## Daten analysieren
 ### [Dashboards](log-analytics-dashboards.md)
