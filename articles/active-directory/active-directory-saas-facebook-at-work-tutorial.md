@@ -2,113 +2,272 @@
 title: 'Tutorial: Azure Active Directory-Integration mit Workplace by Facebook | Microsoft-Dokumentation'
 description: Hier erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Workplace by Facebook konfigurieren.
 services: active-directory
-documentationcenter: 
-author: asmalser-msft
+documentationCenter: na
+author: jeevansd
 manager: femila
-editor: 
+ms.reviewer: joflore
 ms.assetid: 30f2ee64-95d3-44ef-b832-8a0a27e2967c
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/29/2016
-ms.author: asmalser
-translationtype: Human Translation
-ms.sourcegitcommit: efd29518fc207eb3e554f1389a6109ae4f1f3205
-ms.openlocfilehash: 252e7b3c198a3433ecd21aef2222b2ca14b7ac04
-
+ms.date: 08/04/2017
+ms.author: jeedes
+ms.translationtype: HT
+ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
+ms.openlocfilehash: 4889303f07fadef287f0c375923fa8118e276780
+ms.contentlocale: de-de
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workplace-by-facebook"></a>Tutorial: Azure Active Directory-Integration mit Workplace by Facebook
-Dieses Tutorial soll Ihnen zeigen, wie Sie Workplace by Facebook in Azure Active Directory (Azure AD) integrieren können.
 
-Die Integration von Workplace by Facebook in Azure AD bietet die folgenden Vorteile: 
+In diesem Tutorial erfahren Sie, wie Sie Workplace by Facebook in Azure Active Directory (Azure AD) integrieren.
 
-* Sie können in Azure AD den Zugriff auf Workplace by Facebook steuern. 
-* Sie können automatisch Konten für Benutzer bereitstellen, denen Zugriff auf Workplace by Facebook erteilt wurde.
-* Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Workplace by Facebook anzumelden (einmaliges Anmelden).
-* Sie können Ihre Konten an einem zentralen Ort verwalten. 
+Die Integration von Workplace by Facebook in Azure AD bietet die folgenden Vorteile:
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+- Sie können in Azure AD den Zugriff auf Workplace by Facebook steuern.
+- Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Workplace by Facebook anzumelden (einmaliges Anmelden).
+- Sie können Ihre Konten an einem zentralen Ort verwalten – im Azure-Portal.
+
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Um die Azure AD-Integration mit CS Stars konfigurieren zu können, benötigen Sie Folgendes:
 
-* Ein Azure AD-Abonnement
-* Workplace by Facebook mit aktivierter Funktion für einmaliges Anmelden
+Für das Konfigurieren der Azure AD-Integration mit Workplace by Facebook benötigen Sie Folgendes:
+
+- Ein Azure AD-Abonnement
+- Ein Workplace by Facebook-Abonnement mit aktiviertem einmaligem Anmelden
+
+> [!NOTE]
+> Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
 
 Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
 
-* Sie sollten keine Produktionsumgebung verwenden, sofern dies nicht erforderlich ist.
-* Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/)eine einmonatige Testversion anfordern. 
+- Verwenden Sie die Produktionsumgebung nur, wenn dies unbedingt erforderlich ist.
+- Wenn Sie keine Azure AD-Testumgebung haben, können Sie eine [einmonatige Testversion anfordern](https://azure.microsoft.com/pricing/free-trial/).
+
+## <a name="scenario-description"></a>Beschreibung des Szenarios
+In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
+
+1. Hinzufügen von Workplace by Facebook aus dem Katalog
+2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
 ## <a name="adding-workplace-by-facebook-from-the-gallery"></a>Hinzufügen von Workplace by Facebook aus dem Katalog
 Zum Konfigurieren der Integration von Workplace by Facebook in Azure AD müssen Sie Workplace by Facebook aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
 **Um Workplace by Facebook aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**. 
-   
-    ![Active Directory][1]
-2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
-3. Klicken Sie zum Öffnen der Anwendungsansicht in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen** .
-   
-    ![Anwendungen][2]
-4. Klicken Sie unten auf der Seite auf **Hinzufügen** .
-   
-    ![Anwendungen][3]
-5. Klicken Sie im Dialogfeld **Was möchten Sie tun?** auf **Anwendung aus dem Katalog hinzufügen**.
-   
-    ![Anwendungen][4]
-6. Geben Sie im Suchfeld den Suchbegriff **Workplace by Facebook** ein.
-7. Wählen Sie im Ergebnisbereich **Workplace by Facebook** aus, und klicken Sie dann auf **Abschließen**, um die Anwendung hinzuzufügen.
+1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**. 
+
+    ![Schaltfläche „Azure Active Directory“][1]
+
+2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
+
+    ![Blatt „Unternehmensanwendungen“][2]
+    
+3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+
+    ![Schaltfläche „Neue Anwendung“][3]
+
+4. Geben Sie im Suchfeld **Workplace by Facebook** ein, wählen Sie im Ergebnisbereich **Workplace by Facebook** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+
+    ![Workplace by Facebook in der Ergebnisliste](./media/active-directory-saas-facebook-at-work-tutorial/tutorial_workplacebyfacebook_search.png)
+
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Workplace by Facebook mithilfe eines Testbenutzers namens Britta Simon.
+
+Damit das einmalige Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Workplace by Facebook als Entsprechung für einen Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Workplace by Facebook muss eine Linkbeziehung eingerichtet werden.
+
+Diese Linkbeziehung wird hergestellt, indem Sie den **Benutzernamen** in Azure AD als **Benutzernamen** in Workplace by Facebook zuweisen.
+
+Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit Workplace by Facebook müssen Sie die folgenden Bausteine ausführen:
+
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
+2. **[Konfigurieren der Häufigkeit der erneuten Authentifizierung](#configuring-reauthentication-frequency)**, um für Workplace die Anzeige einer SAML-Überprüfung einzurichten.
+3. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** – um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+4. **[Erstellen eines Workplace by Facebook-Testbenutzers](#creating-a-workplace-by-facebook-test-user)**, um eine Entsprechung von Britta Simon in Workplace by Facebook zu erhalten, die mit der Darstellung des Benutzers in Azure AD verknüpft ist.
+5. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+6. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
-In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbundanmeldung auf Basis des SAML-Protokolls ermöglichen, sich mit ihrem Konto in Azure Active Directory bei Workplace by Facebook zu authentifizieren.
+
+In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im Azure-Portal und konfigurieren es in Ihrer Workplace by Facebook-Anwendung.
 
 **Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Workplace by Facebook die folgenden Schritte aus:**
 
-1. Klicken Sie nach dem Hinzufügen von Workplace by Facebook im klassischen Azure-Portal auf **Einmaliges Anmelden konfigurieren**.
-2. Geben Sie auf dem Bildschirm **App-URL konfigurieren** die URL ein, unter der sich Benutzer bei der Anwendung Workplace by Facebook anmelden. Hierbei handelt es sich um die URL Ihres Workplace by Facebook-Mandanten (Beispiel: https://example.facebook.com/). Klicken Sie anschließend auf **Weiter**.
-3. Melden Sie sich in einem anderen Webbrowserfenster bei der Workplace by Facebook-Unternehmenswebsite als Administrator an.
-4. Führen Sie die Schritte unter der folgenden URL aus, um Workplace by Facebook für die Verwendung von Azure AD als Identitätsanbieter zu konfigurieren: [https://developers.facebook.com/docs/facebook-at-work/authentication/cloud-providers](https://developers.facebook.com/docs/facebook-at-work/authentication/cloud-providers)
-5. Kehren Sie anschließend zum Browserfenster mit dem klassischen Azure-Portal zurück, und aktivieren Sie das Kontrollkästchen, um zu bestätigen, dass Sie den Vorgang abgeschlossen haben. Klicken Sie dann auf **Weiter** und **Abschließen**.
+1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Workplace by Facebook** auf **Einmaliges Anmelden**.
+
+    ![Konfigurieren des Links für einmaliges Anmelden][4]
+
+2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
+ 
+    ![Dialogfeld „Einmaliges Anmelden“](./media/active-directory-saas-facebook-at-work-tutorial/tutorial_workplacebyfacebook_samlbase.png)
+
+3. Führen Sie im Abschnitt **Domäne und URLs für Workplace by Facebook** die folgenden Schritte aus:
+
+    ![SSO-Informationen zur Domäne und zu den URLs](./media/active-directory-saas-facebook-at-work-tutorial/tutorial_workplacebyfacebook_url.png)
+
+    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<scim company id>.facebook.com`.
+
+    b. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: `https://www.facebook.com/company/<scim company id>`
+
+    > [!NOTE] 
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Supportteam für den Workplace by Facebook-Client](https://workplace.fb.com/faq/), um diese Werte zu erhalten. 
+
+4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
+
+    ![Downloadlink für das Zertifikat](./media/active-directory-saas-facebook-at-work-tutorial/tutorial_workplacebyfacebook_certificate.png) 
+
+5. Klicken Sie auf die Schaltfläche **Save** .
+
+    ![Schaltfläche „Einmaliges Anmelden konfigurieren“](./media/active-directory-saas-facebook-at-work-tutorial/tutorial_general_400.png)
+
+6. Klicken Sie im Abschnitt **Workplace by Facebook-Konfiguration** auf **Workplace by Facebook konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **Abmelde-URL, die SAML-Entitäts-ID und die URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
+
+    ![Konfiguration von Workplace by Facebook](./media/active-directory-saas-facebook-at-work-tutorial/config.png) 
+
+7. Melden Sie sich in einem anderen Webbrowserfenster bei der Workplace by Facebook-Unternehmenswebsite als Administrator an.
+  
+   > [!NOTE] 
+   > Im Rahmen des SAML-Authentifizierungsprozesses werden von Workplace ggf. Abfragezeichenfolgen mit einer Größe von bis zu 2,5 KB genutzt, um Parameter an Azure AD zu übergeben.
+
+8. Navigieren Sie im **Unternehmensdashboard** zur Registerkarte **Authentifizierung**.
+
+9. Wählen Sie unter **SAML Authentication** (SAML-Authentifizierung) in der Dropdownliste die Option **SSO Only** (Nur SSO).
+
+10. Geben Sie die Werte, die Sie im Azure-Portal aus dem Abschnitt **Workplace by Facebook-Konfiguration** kopiert haben, in die entsprechenden Felder ein:
+
+    *   Fügen Sie in das Textfeld **SAML-URL** den Wert der **Dienst-URL für einmalige Anmeldung** ein, den Sie aus dem Azure-Portal kopiert haben.
+    *   Fügen Sie in das Textfeld **SAML-Aussteller-URL** den Wert der **SAML-Entitäts-ID** ein, den Sie aus dem Azure-Portal kopiert haben.
+    *   Fügen Sie in **SAML Logout Redirect** (SAML-Abmeldeumleitung) (optional) den Wert der **Abmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
+    *   Öffnen Sie im Editor das **Base64-codierte Zertifikat**, das Sie aus dem Azure-Portal heruntergeladen haben, kopieren Sie den Inhalt des Zertifikats in die Zwischenablage, und fügen Sie ihn anschließend in das Textfeld **SAML-Zertifikat** ein.
+
+11. Unter Umständen müssen Sie die Audience-URL, Empfänger-URL und Assertionsverbraucherdienst-URL (ACS) eingeben, die im Abschnitt **SAML-Konfiguration** aufgeführt sind.
+
+12. Scrollen Sie im Abschnitt nach unten, und klicken Sie auf die Schaltfläche **Test SSO** (SSO testen). Ein Popupfenster mit der Azure AD-Anmeldeseite wird angezeigt. Geben Sie Ihre Anmeldeinformationen ein, wie Sie es von der Authentifizierung kennen. 
+
+    **Problembehandlung:** Stellen Sie sicher, das die E-Mail-Adresse, die von Azure AD zurückgegeben wird, mit dem Workplace-Konto übereinstimmt, mit dem Sie angemeldet sind.
+
+13. Nachdem der Test erfolgreich abgeschlossen wurde, können Sie an das Ende der Seite scrollen und auf die Schaltfläche **Speichern** klicken.
+
+14. Allen Benutzern von Workplace wird jetzt die Azure AD-Anmeldeseite für die Authentifizierung angezeigt.
+
+15. **SAML Logout Redirect (optional)** - (SAML-Abmeldeumleitung (optional)) 
+
+    Optional können Sie angeben, dass Sie eine SAML-Abmelde-URL konfigurieren möchten, mit der auf die Azure AD-Abmeldeseite verwiesen werden kann. Wenn diese Einstellung aktiviert und konfiguriert wird, werden Benutzer nicht mehr auf die Workplace-Abmeldeseite verwiesen. Stattdessen werden Benutzer an die URL umgeleitet, die unter der Einstellung für die SAML-Abmeldeumleitung hinzugefügt wurde.
 
 
-## <a name="automatically-provisioning-users-to-workplace-by-facebook"></a>Automatisches Bereitstellen von Benutzern für Workplace by Facebook
-Azure AD unterstützt die Möglichkeit, die Kontodetails zugewiesener Benutzer mit Workplace by Facebook zu synchronisieren. Dank dieser automatischen Synchronisierung kann Workplace by Facebook die erforderlichen Daten für die Autorisierung von Benutzern für den Zugriff abzurufen, bevor sie sich zum ersten Mal anmelden. Sie hebt zudem die Bereitstellung von Benutzern in Workplace by Facebook auf, wenn der Zugriff in Azure AD widerrufen wurde.
+> [!TIP]
+> Während Sie die App einrichten, können Sie im [Azure-Portal](https://portal.azure.com) eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
 
-Die automatische Bereitstellung kann durch Klicken auf **Kontobereitstellung konfigurieren** im Fenster des klassischen Azure-Portals eingerichtet werden.
+### <a name="configuring-reauthentication-frequency"></a>Konfigurieren der Häufigkeit der erneuten Authentifizierung
 
-Weitere Informationen zum Konfigurieren der automatischen Bereitstellung finden Sie unter [https://developers.facebook.com/docs/facebook-at-work/provisioning/cloud-providers](https://developers.facebook.com/docs/facebook-at-work/provisioning/cloud-providers)
+Sie können Workplace so konfigurieren, dass die Aufforderung für die SAML-Überprüfung jeden Tag, alle 3 Tage, einmal pro Woche, einmal alle 2 Wochen, einmal im Monat oder nie angezeigt wird.
 
-## <a name="assigning-users-to-workplace-by-facebook"></a>Zuweisen von Benutzern zu Workplace by Facebook
-Damit bereitgestellten AAD-Benutzern Workplace by Facebook im Zugriffsbereich angezeigt wird, muss ihnen im klassischen Azure-Portal der Zugriff zugewiesen werden.
+> [!NOTE] 
+>Die Mindesteinstellung für die SAML-Überprüfung von mobilen Anwendungen ist auf einmal pro Woche festgelegt.
 
-**Gehen Sie wie folgt vor, um Benutzer Workplace by Facebook zuzuweisen:**
+Sie können auch für alle Benutzer eine SAML-Zurücksetzung erzwingen, indem Sie die Schaltfläche „Require SAML authentication for all users now“ (Jetzt SAML-Authentifizierung für alle Benutzer erzwingen) verwenden.
 
-1. Klicken Sie auf der Startseite für Workplace by Facebook im klassischen Azure-Portal auf **Konten zuweisen**.
-2. Wählen Sie im Menü **Einblenden** aus, ob Sie einen Benutzer oder eine Gruppe Workplace by Facebook zuweisen möchten, und klicken Sie auf die Schaltfläche mit dem Häkchen.
-3. Wählen Sie in der angezeigten Liste die Benutzer oder Gruppen aus, denen Sie Workplace by Facebook zuweisen möchten.
-4. Klicken Sie in der Fußzeile auf die Schaltfläche **Zuweisen** .
 
-## <a name="additional-resources"></a>Weitere Ressourcen
+### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
+Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
+
+![Azure AD-Benutzer erstellen][100]
+
+**Um einen Testbenutzer in Azure AD zu erstellen, führen Sie die folgenden Schritte aus:**
+
+1. Klicken Sie im linken Navigationsbereich des **Azure-Portals** auf das Symbol für **Azure Active Directory**.
+
+    ![Schaltfläche „Azure Active Directory“](./media/active-directory-saas-facebook-at-work-tutorial/create_aaduser_01.png) 
+
+2. Wechseln Sie zu **Benutzer und Gruppen**, und klicken Sie auf **Alle Benutzer**, um die Liste der Benutzer anzuzeigen.
+    
+    ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](./media/active-directory-saas-facebook-at-work-tutorial/create_aaduser_02.png) 
+
+3. Klicken Sie oben im Dialogfeld auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
+ 
+    ![Schaltfläche „Hinzufügen“](./media/active-directory-saas-facebook-at-work-tutorial/create_aaduser_03.png) 
+
+4. Führen Sie auf der Dialogfeldseite **Benutzer** die folgenden Schritte aus:
+ 
+    ![Dialogfeld „Benutzer“](./media/active-directory-saas-facebook-at-work-tutorial/create_aaduser_04.png) 
+
+    a. Geben Sie in das Textfeld **Name** den Namen **BrittaSimon** ein.
+
+    b. Geben Sie in das Textfeld **Benutzername** die **E-Mail-Adresse** von Britta Simon ein.
+
+    c. Wählen Sie **Kennwort anzeigen** aus, und notieren Sie sich den Wert des **Kennworts**.
+
+    d. Klicken Sie auf **Create**.
+ 
+### <a name="creating-a-workplace-by-facebook-test-user"></a>Erstellen eines Workplace by Facebook-Testbenutzers
+
+In diesem Abschnitt wird ein Benutzer mit dem Namen Britta Simon in Workplace by Facebook erstellt. Workplace by Facebook unterstützt die Just-in-Time-Bereitstellung, die standardmäßig aktiviert ist.
+
+Für Sie steht in diesem Abschnitt keine Aktion an. Falls ein Benutzer in Workplace by Facebook nicht vorhanden ist, wird ein neuer Benutzer erstellt, wenn Sie versuchen, auf Workplace by Facebook zuzugreifen.
+
+>[!Note]
+>Wenden Sie sich an das [Supportteam für den Workplace by Facebook-Client](https://workplace.fb.com/faq/), wenn Sie einen Benutzer manuell erstellen müssen.
+
+### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
+
+In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie Zugriff auf Workplace by Facebook gewähren.
+
+![Benutzer zuweisen][200] 
+
+**Führen Sie die folgenden Schritte aus, um Britta Simon zu Workplace by Facebook zuzuweisen:**
+
+1. Öffnen Sie im Azure-Portal die Anwendungsansicht, navigieren Sie zur Verzeichnisansicht, wechseln Sie dann zu **Unternehmensanwendungen**, und klicken Sie auf **Alle Anwendungen**.
+
+    ![Benutzer zuweisen][201] 
+
+2. Wählen Sie in der Anwendungsliste **Workplace by Facebook** aus.
+
+    ![Der Link von Workplace by Facebook in der Anwendungsliste](./media/active-directory-saas-facebook-at-work-tutorial/tutorial_workplacebyfacebook_app.png) 
+
+3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
+
+    ![Link „Benutzer und Gruppen“][202] 
+
+4. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+
+    ![Bereich „Zuweisung hinzufügen“][203]
+
+5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
+
+6. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
+
+7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
+    
+### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
+
+Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich.
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
+
+
+## <a name="additional-resources"></a>Zusätzliche Ressourcen
+
 * [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Konfigurieren der Benutzerbereitstellung](active-directory-saas-facebook-at-work-provisioning-tutorial.md)
+
+
 
 <!--Image references-->
+
 [1]: ./media/active-directory-saas-facebook-at-work-tutorial/tutorial_general_01.png
 [2]: ./media/active-directory-saas-facebook-at-work-tutorial/tutorial_general_02.png
 [3]: ./media/active-directory-saas-facebook-at-work-tutorial/tutorial_general_03.png
 [4]: ./media/active-directory-saas-facebook-at-work-tutorial/tutorial_general_04.png
 
+[100]: ./media/active-directory-saas-facebook-at-work-tutorial/tutorial_general_100.png
 
-
-
-
-
-
-<!--HONumber=Nov16_HO5-->
+[200]: ./media/active-directory-saas-facebook-at-work-tutorial/tutorial_general_200.png
+[201]: ./media/active-directory-saas-facebook-at-work-tutorial/tutorial_general_201.png
+[202]: ./media/active-directory-saas-facebook-at-work-tutorial/tutorial_general_202.png
+[203]: ./media/active-directory-saas-facebook-at-work-tutorial/tutorial_general_203.png
 
 

@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 05/03/2017
 ms.author: cfreeman
 ms.translationtype: HT
-ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
-ms.openlocfilehash: 9ac6ed0d6171b572e0d5729a4fe7c8bd7869525d
+ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
+ms.openlocfilehash: 33aebd002458d40a5a09b6fe334ad43ec578df83
 ms.contentlocale: de-de
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 08/09/2017
 
 ---
 
@@ -41,11 +41,15 @@ Sie erzielen optimale Ergebnisse, wenn Sie Application Insights im Servercode de
 
     Veröffentlichen Sie die App, um die Leistung der App zu überwachen und zu ermitteln, was die Benutzer mit Ihrer App tun.
 
+## <a name="include-user-and-session-id-in-your-telemetry"></a>Einschließen der Benutzer- und Sitzungs-ID in der Telemetrie
+Um im Laufe der Zeit Benutzeraktionen nachzuverfolgen, erfordert Application Insights die Möglichkeit, um diese zu kennzeichnen. Das Ereignistool ist das einzige Nutzungstool, das keine Benutzer- oder Sitzungs-ID erfordert.
+
+Beginnen Sie mit dem Senden dieser IDs, indem Sie die Anweisungen unter [diesem Link](https://docs.microsoft.com/azure/application-insights/app-insights-usage-send-user-context) befolgen.
 
 ## <a name="explore-usage-demographics-and-statistics"></a>Untersuchen von demografische Daten und Statistiken zur Nutzung
 Ermitteln Sie, wann Personen Ihre App verwenden, für welche Seiten sie sich am meisten interessieren, wo sich die Benutzer befinden, welche Browser und Betriebssysteme sie verwenden. 
 
-Die Benutzer- und Sitzungsberichte filtern Ihre Daten nach Seiten oder benutzerdefinierten Ereignissen und segmentieren sie nach Eigenschaften wie Standort, Umgebung und Seite. Sie können auch eigene Filter hinzufügen.
+In Benutzer- und Sitzungsberichte werden Ihre Daten nach Seiten oder benutzerdefinierten Ereignissen gefiltert und nach Eigenschaften wie Speicherort, Umgebung und Seite segmentiert. Sie können auch eigene Filter hinzufügen.
 
 ![Benutzer](./media/app-insights-usage-overview/users.png)  
 
@@ -116,7 +120,7 @@ Oder auf der Serverseite der Web-App:
     tc.TrackEvent("CompletedPurchase");
 ```
 
-Sie können diesen Ereignissen Eigenschaftswerte anfügen, damit Sie die Ereignisse beim Überprüfen im Portal filtern oder teilen können. Außerdem wird jedem Ereignis ein Standardsatz von Eigenschaften angefügt, z.B. eine anonyme Benutzer-ID, die Ihnen das Nachverfolgen der Abfolge von Aktivitäten eines einzelnen Benutzers ermöglicht.
+Sie können diesen Ereignissen Eigenschaftswerte anfügen, damit Sie die Ereignisse beim Überprüfen im Portal filtern oder teilen können. Außerdem wird jedem Ereignis ein Standardsatz von Eigenschaften angefügt, z.B. eine anonyme Benutzer-ID, die Ihnen die Ablaufverfolgung der Sequenz von Aktivitäten eines einzelnen Benutzers ermöglicht.
 
 Erfahren Sie mehr über [benutzerdefinierte Ereignisse](app-insights-api-custom-events-metrics.md#trackevent) und [Eigenschaften](app-insights-api-custom-events-metrics.md#properties).
 
@@ -166,9 +170,9 @@ Im Web-App-Initialisierer wie „Global.asax.cs“:
 Alle neuen TelemetryClients-Elemente fügen automatisch den von Ihnen angegebenen Eigenschaftswert hinzu. Einzelne Telemetrieereignisse können die Standardwerte außer Kraft setzen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-
-* [Benutzer und Sitzungen](app-insights-usage-segmentation.md)
-* [Aufbewahrung](app-insights-usage-retention.md)
-* [Codierung benutzerdefinierter Ereignisse](app-insights-api-custom-events-metrics.md)
-
+   - [Benutzer, Sitzungen, Ereignisse](app-insights-usage-segmentation.md)
+   - [Trichter](usage-funnels.md)
+   - [Aufbewahrung](app-insights-usage-retention.md)
+   - [Arbeitsmappen](app-insights-usage-workbooks.md)
+   - [Hinzufügen von Benutzerkontext](app-insights-usage-send-user-context.md)
 

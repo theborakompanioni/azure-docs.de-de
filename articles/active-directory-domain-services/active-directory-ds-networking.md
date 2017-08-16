@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/06/2017
+ms.date: 08/04/2017
 ms.author: maheshu
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 0749a73569286daf9bbbe2c4064db472f41d7171
-ms.lasthandoff: 11/17/2016
-
+ms.translationtype: HT
+ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
+ms.openlocfilehash: 8306c1ff72d348f5f327b79617e1422a78e26bdb
+ms.contentlocale: de-de
+ms.lasthandoff: 08/05/2017
 
 ---
 # <a name="networking-considerations-for-azure-ad-domain-services"></a>Netzwerkaspekte für die Azure AD Domain Services
@@ -75,6 +75,16 @@ Die folgenden Ports werden für Azure AD Domain Services benötigt, um Ihre verw
 | 5986 |Verwaltung Ihrer Domäne |
 | 636 |LDAPS-Zugriff (sicheres LDAP) auf Ihre verwaltete Domäne |
 
+### <a name="sample-nsg-for-virtual-networks-with-azure-ad-domain-services"></a>Beispiel-NSG für virtuelle Netzwerke in Azure AD Domain Services
+Die folgende Tabelle zeigt ein NSG-Beispiel, das Sie für ein virtuelles Netzwerk mit einer von Azure AD Domain Services verwalteten Domäne konfigurieren können. Diese Regel ermöglicht eingehenden Datenverkehr von den oben angegebenen Ports, um sicherzustellen, dass Ihre verwaltete Domäne gepatcht und aktualisiert bleibt und von Microsoft überwacht werden kann. Die standardmäßige Regel „DenyAll“ gilt für sämtlichen eingehenden Datenverkehr aus dem Internet.
+
+Darüber hinaus veranschaulicht die NSG auch das Sperren sicheren LDAP-Zugriffs über das Internet. Überspringen Sie diese Regel, wenn Sie keinen sicheren LDAP-Zugriff auf Ihre verwaltete Domäne über das Internet aktiviert haben. Die NSG enthält einen Satz von Regeln, die den eingehenden LDAPS-Zugriff über TCP-Port 636 nur aus einer angegebenen Gruppe von IP-Adressen zulassen. Die NSG-Regel zum Zulassen des LDAPS-Zugriffs über das Internet von angegebenen IP-Adressen hat eine höhere Priorität als die NSG-Regel „DenyAll“.
+
+![Beispiel-NSG zum Schutz des sicheren LDAPS-Zugriffs über das Internet](./media/active-directory-domain-services-admin-guide/secure-ldap-sample-nsg.png)
+
+**Weitere Informationen** - [Erstellen einer Netzwerksicherheitsgruppe](../virtual-network/virtual-networks-create-nsg-arm-pportal.md).
+
+
 ## <a name="network-connectivity"></a>Netzwerkverbindung
 Eine mit den Azure AD Domain Services verwaltete Domäne kann nur innerhalb eines einzelnen klassischen virtuellen Netzwerks unter Azure aktiviert werden. Virtuelle Netzwerke, die mit Azure Resource Manager erstellt werden, werden nicht unterstützt.
 
@@ -109,4 +119,5 @@ Sie können ein Resource Manager-basiertes virtuelles Netzwerk mit einem klassis
 * [Peering in virtuellen Azure-Netzwerken](../virtual-network/virtual-network-peering-overview.md)
 * [Konfigurieren einer VNet-zu-VNet-Verbindung für das klassische Bereitstellungsmodell](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)
 * [Azure-Netzwerksicherheitsgruppen](../virtual-network/virtual-networks-nsg.md)
+* [Erstellen einer Netzwerksicherheitsgruppe](../virtual-network/virtual-networks-create-nsg-arm-pportal.md)
 

@@ -12,11 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 05/03/2017
 ms.author: cfreeman
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 912e3e25680034828aee93d23c6a725c2cec0d45
+ms.translationtype: HT
+ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
+ms.openlocfilehash: 1775ddaf548bdc62f37f8bac0b6f3f33870e5dd5
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 08/09/2017
 
 ---
 
@@ -67,9 +67,11 @@ Die Insights-Randleiste zeigt große Cluster von Benutzern, die gemeinsame Eigen
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-
-* [Nutzungsübersicht](app-insights-usage-overview.md)
-* [Aufbewahrung](app-insights-usage-retention.md)
-* [Codierung benutzerdefinierte Ereignisse](app-insights-api-custom-events-metrics.md)
+- Um mit der Nutzung zu beginnen, senden Sie [benutzerdefinierte Ereignisse](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) oder [Seitenansichten](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views).
+- Wenn Sie bereits benutzerdefinierte Ereignisse oder Seitenansichten senden, finden Sie mithilfe der Nutzungstools heraus, wie Benutzer den Dienst verwenden.
+    - [Trichter](usage-funnels.md)
+    - [Aufbewahrung](app-insights-usage-retention.md)
+    - [Arbeitsmappen](app-insights-usage-workbooks.md)
+    - [Hinzufügen von Benutzerkontext](app-insights-usage-send-user-context.md)
 
 

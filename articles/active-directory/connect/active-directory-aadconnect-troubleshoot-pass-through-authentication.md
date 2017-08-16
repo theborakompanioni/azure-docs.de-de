@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/28/2017
+ms.date: 08/04/2017
 ms.author: billmath
 ms.translationtype: HT
-ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
-ms.openlocfilehash: 4a687e1edbb2c9b3db3079a70162886092ede521
+ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
+ms.openlocfilehash: 72bd39bcf720cf5704274fcdfa0f2b8fc44a77bc
 ms.contentlocale: de-de
-ms.lasthandoff: 08/01/2017
+ms.lasthandoff: 08/07/2017
 
 ---
 
@@ -33,11 +33,11 @@ In diesem Artikel hilft Ihnen beim Auffinden von Informationen zur Problembehand
 
 ### <a name="check-status-of-the-feature-and-authentication-agents"></a>Überprüfen des Status der Funktion und der Authentifizierungs-Agents
 
-Stellen Sie sicher, dass die Passthrough-Authentifizierung in Ihrem Mandanten immer noch **aktiviert** ist und der Status der Authentifizierungs-Agents als **aktiv** angezeigt wird, nicht als **inaktiv**. Um diese Informationen anzuzeigen, wechseln Sie im [Azure-Portal](https://portal.azure.com/) zum Blatt **Azure AD Connect**.
+Stellen Sie sicher, dass die Passthrough-Authentifizierung in Ihrem Mandanten immer noch **aktiviert** ist und der Status der Authentifizierungs-Agents als **aktiv** angezeigt wird, nicht als **inaktiv**. Um den Status zu überprüfen, können Sie zum **Azure AD Connect**-Blatt im [Azure Active Directory-Admin Center](https://aad.portal.azure.com/) navigieren.
 
-![Azure-Portal – Blatt „Azure AD Connect“](./media/active-directory-aadconnect-pass-through-authentication/pta7.png)
+![Azure Active Directory-Admin Center – Azure AD Connect-Blatt](./media/active-directory-aadconnect-pass-through-authentication/pta7.png)
 
-![Azure-Portal – Blatt „Passthrough-Authentifizierung“](./media/active-directory-aadconnect-pass-through-authentication/pta11.png)
+![Azure Active Directory-Admin Center – Passthrough-Authentifizierungs-Blatt](./media/active-directory-aadconnect-pass-through-authentication/pta11.png)
 
 ### <a name="user-facing-sign-in-error-messages"></a>Benutzerseitige Fehler bei der Anmeldung
 
@@ -51,13 +51,13 @@ Wenn der Benutzer sich nicht mit der Passthrough-Authentifizierung anmelden kann
 |AADSTS80005|Bei der Überprüfung ist eine unvorhersehbare WebException aufgetreten.|A transient error. (Vorübergehender Fehler.) Wiederholen Sie die Anforderung. Sollte der Fehler weiterhin auftreten, wenden Sie sich an den Microsoft-Support.
 |AADSTS80007|Bei der Kommunikation mit Active Directory ist ein Fehler aufgetreten.|Check the agent logs for more information and verify that Active Directory is operating as expected. (Suchen Sie in den Agent-Protokollen nach weiteren Informationen, und überprüfen Sie, ob Active Directory erwartungsgemäß funktioniert.)
 
-### <a name="sign-in-failure-reasons-on-the-azure-portal"></a>Gründe für Anmeldefehler im Azure-Portal
+### <a name="sign-in-failure-reasons-on-the-azure-active-directory-admin-center"></a>Gründe für Anmeldefehler im Azure Active Directory Admin Center
 
-Beginnen Sie mit der Behebung von Problemen bei der Benutzeranmeldung, indem Sie sich den [Bericht zu Anmeldeaktivitäten](../active-directory-reporting-activity-sign-ins.md) im [Azure-Portal](https://portal.azure.com/) ansehen.
+Beginnen Sie mit der Behebung von Problemen bei der Benutzeranmeldung, indem Sie sich den [Bericht zu Anmeldeaktivitäten](../active-directory-reporting-activity-sign-ins.md) im [Azure Active Directory-Admin Center](https://aad.portal.azure.com/) ansehen.
 
-![Bericht zu Anmeldeaktivitäten](./media/active-directory-aadconnect-pass-through-authentication/pta4.png)
+![Azure Active Directory-Admin Center – Bericht zu Anmeldeaktivitäten](./media/active-directory-aadconnect-pass-through-authentication/pta4.png)
 
-Navigieren Sie im [Azure-Portal](https://portal.azure.com/) zu **Azure Active Directory** -> **Anmeldungen**, und klicken Sie auf die Anmeldeaktivität eines bestimmten Benutzers. Suchen Sie nach dem Feld **Code des Anmeldefehlers**. Ordnen Sie den Wert in diesem Feld mithilfe der folgenden Tabelle einer Ursache und einer Lösung zu:
+Navigieren Sie im [Azure Active Directory Admin Center](https://aad.portal.azure.com/) zu **Azure Active Directory** -> **Anmeldungen**, und klicken Sie auf die Anmeldeaktivität eines bestimmten Benutzers. Suchen Sie nach dem Feld **Code des Anmeldefehlers**. Ordnen Sie den Wert in diesem Feld mithilfe der folgenden Tabelle einer Ursache und einer Lösung zu:
 
 |Anmeldefehler|Grund des Anmeldefehlers|Lösung
 | --- | --- | ---
@@ -97,7 +97,7 @@ Stellen Sie sicher, dass Sie ein ausschließlich für die Cloud geltendes global
 
 Wenn Sie die Passthrough-Authentifizierung für Ihren Mandanten aktiviert haben und Sie versuchen, Azure AD Connect zu deinstallieren, wird folgende Warnmeldung angezeigt: „Users will not be able to sign-in to Azure AD unless you have other Pass-through Authentication agents installed on other servers“ (Benutzern ist es nur gestattet, sich bei Azure AD anzumelden, wenn Sie andere Passthrough-Authentifizierung-Agents auf anderen Servern installiert haben).
 
-Stellen Sie sicher, dass das Setup [hoch verfügbar](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-4-ensure-high-availability) ist, bevor Sie Azure AD Connect deinstallieren, um eine Unterbrechung von Benutzeranmeldungen zu vermeiden.
+Stellen Sie sicher, dass das Setup [hoch verfügbar](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability) ist, bevor Sie Azure AD Connect deinstallieren, um eine Unterbrechung von Benutzeranmeldungen zu vermeiden.
 
 ## <a name="issues-with-enabling-the-feature"></a>Probleme bei der Aktivierung des Features
 
@@ -112,6 +112,18 @@ Stellen Sie sicher, dass der Server, auf dem Azure AD Connect installiert ist, m
 ### <a name="enabling-the-feature-failed-due-to-token-or-account-authorization-errors"></a>Enabling the feature failed due to token or account authorization errors (Beim Aktivieren des Features ist aufgrund von Token- oder Kontoautorisierungsfehlern ein Fehler aufgetreten)
 
 Stellen Sie sicher, dass Sie ein ausschließlich für die Cloud geltendes globales Administratorkonto verwenden, wenn Sie das Feature aktivieren. Es gibt ein bekanntes Problem mit MFA-fähigen (Multi-Factor Authentication) globalen Administratorkonten. Deaktivieren Sie als Umgehungsmaßnahme vorübergehend MFA (nur bis zum Abschluss der Vorgänge).
+
+## <a name="exchange-activesync-configuration-issues"></a>Exchange ActiveSync – Konfigurationsprobleme
+
+Dies sind die allgemeine Probleme beim Konfigurieren der Exchange ActiveSync-Unterstützung für die Passthrough-Authentifizierung.
+
+### <a name="exchange-powershell-issue"></a>Exchange PowerShell-Problem
+
+Wenn Sie die Fehlermeldung „**Es wurde kein Parameter gefunden, der dem Parameternamen ‚PerTenantSwitchToESTSEnabled‘ entspricht\.**“ sehen,  wenn Sie den Exchange PowerShell-Befehl `Set-OrganizationConfig` ausführen, wenden Sie sich an den Microsoft-Support.
+
+### <a name="exchange-activesync-not-working"></a>Exchange ActiveSync funktioniert nicht
+
+Es dauert einige Zeit, bis die Konfiguration wirksam wird – der Zeitraum hängt von Ihrer Umgebung ab. Wenn die Situation längere Zeit anhält, wenden Sie sich an den Microsoft-Support.
 
 ## <a name="collecting-pass-through-authentication-agent-logs"></a>Sammeln von Protokollen von Passthrough-Authentifizierungs-Agent
 
@@ -150,4 +162,13 @@ Weitere Informationen finden Sie auch in den Sicherheitsprotokollen Ihrer Domän
     </Query>
     </QueryList>
 ```
+
+### <a name="performance-monitor-counters"></a>Leistungsüberwachungsindikatoren
+
+Eine weitere Möglichkeit zum Überwachen des Authentifizierung-Agents ist das Nachverfolgen bestimmter Leistungsüberwachungsindikatoren auf jedem Server, auf dem der Authentifizierung-Agent installiert ist. Verwenden Sie die folgenden globalen Indikatoren **# PTA authentications**, **#PTA failed authentications** und **#PTA successful authentications**) und Fehlerzähler (**# PTA authentication errors**):
+
+![Passthrough-Authentifizierungs-Leistungsüberwachungsindikatoren](./media/active-directory-aadconnect-pass-through-authentication/pta12.png)
+
+>[!IMPORTANT]
+>Die Passthrough-Authentifizierung bietet mit mehreren Authentifizierungs-Agents hohe Verfügbarkeit, jedoch _keinen_ Lastenausgleich. Abhängig von Ihrer Konfiguration erhalten _nicht_ alle Ihre Authentifizierungs-Agents ungefähr die _gleiche_ Anzahl von Anforderungen. Es ist möglich, dass ein bestimmter Authentifizierungs-Agent überhaupt keinen Datenverkehr empfängt.
 

@@ -1,6 +1,6 @@
 ---
-title: Verwenden von Azure Files mit Linux | Microsoft Docs
-description: "Erstellen Sie mit diesem Schritt-für-Schritt-Tutorial eine Azure-Dateifreigabe in der Cloud. Verwalten Sie Ihre freigegebenen Inhalte und stellen Sie eine Dateifreigabe aus einem virtuellen Azure-Computer (VM) unter Linux oder einer lokalen Anwendung bereit, die SMB 3.0 unterstützt."
+title: Verwenden von Azure File Storage mit Linux | Microsoft-Dokumentation
+description: "Hier erfahren Sie, wie Sie unter Linux eine Azure-Dateifreigabe über SMB einbinden."
 services: storage
 documentationcenter: na
 author: RenaShahMSFT
@@ -14,150 +14,111 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/8/2017
 ms.author: renash
-translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
-ms.openlocfilehash: 201ceaec874c2367c232076faba25bdae128e7e1
-ms.lasthandoff: 04/06/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
+ms.openlocfilehash: d93c82b9c2e66c7241ddd579c1be74396174fd65
+ms.contentlocale: de-de
+ms.lasthandoff: 08/07/2017
 
 ---
-# <a name="how-to-use-azure-file-storage-with-linux"></a>Verwenden des Azure-Dateispeichers unter Linux
-## <a name="overview"></a>Übersicht
-Der Azure-Dateispeicher verfügt über Dateifreigaben in der Cloud unter Verwendung des standardmäßigen SMB-Protokolls. Mit Azure Files können Sie Unternehmensanwendungen migrieren, die auf Dateiservern in Azure basieren. Anwendungen, die in Azure ausgeführt werden, können Dateifreigaben von virtuellen Azure-Computern unter Linux problemlos einbinden. Mit der neuesten Version des Dateispeichers können Sie außerdem eine Dateifreigabe aus einer lokalen Anwendung einbinden, die SMB 3.0 unterstützt.
+# <a name="use-azure-file-storage-with-linux"></a>Verwenden von Azure File Storage unter Linux
+[Azure File Storage](storage-dotnet-how-to-use-files.md) ist das benutzerfreundliche Clouddateisystem von Microsoft. Azure-Dateifreigaben können in Linux-Distributionen mithilfe des Pakets [cifs-utils](https://wiki.samba.org/index.php/LinuxCIFS_utils) aus dem [Samba-Projekt](https://www.samba.org/) eingebunden werden. Dieser Artikel veranschaulicht zwei Möglichkeiten zum Einbinden einer Azure-Dateifreigabe: bei Bedarf mit dem Befehl `mount` oder beim Start durch Erstellen eines Eintrags in `/etc/fstab`.
 
-Sie können Azure-Dateifreigaben mit dem [Azure-Portal](https://portal.azure.com), den Azure Storage-PowerShell-Cmdlets, den Azure Storage-Clientbibliotheken oder der Azure Storage-REST-API erstellen. Da es sich bei den Dateifreigaben um SMB-Freigaben handelt, können Sie darauf außerdem über standardmäßige Dateisystem-APIs zugreifen.
+> [!NOTE]  
+> Wenn Sie eine Azure-Dateifreigabe außerhalb der Azure-Region einbinden möchten, in der sie gehostet wird (beispielsweise lokal oder in einer anderen Azure-Region), muss das Betriebssystem die Verschlüsselungsfunktionen von SMB 3.0 unterstützen. Die Verschlüsselungsfunktionen für SMB 3.0 für Linux wurden im Kernel 4.11 eingeführt. Diese Funktionen ermöglichen das Einbinden einer Azure-Dateifreigabe aus einer lokalen oder anderen Azure-Region. Zum Zeitpunkt der Veröffentlichung wurden diese Funktionen zu Ubuntu 16.04 und höher zurückportiert.
 
-Der Dateispeicher beruht auf der gleichen Technologie wie Blob-, Tabellen-, und Warteschlangendienste. Dies bedeutet, dass der Dateispeicher die Verfügbarkeit, Dauerhaftigkeit, Skalierbarkeit und geografische Redundanz bietet, die in die Azure Storage-Plattform integriert ist. Weitere Informationen zu Leistungszielen und Grenzwerten des Dateispeichers finden Sie unter [Skalierbarkeits- und Leistungsziele für Azure Storage](storage-scalability-targets.md).
 
-Der Dateispeicher ist jetzt allgemein verfügbar und unterstützt sowohl SMB 2.1 als auch SMB 3.0. Zusätzliche Informationen zu File Storage finden Sie unter [Dateidienst-REST-API](https://msdn.microsoft.com/library/azure/dn167006.aspx).
+## <a name="prerequisities-for-mounting-an-azure-file-share-with-linux-and-the-cifs-utils-package"></a>Voraussetzungen für das Einbinden einer Azure-Dateifreigabe in Linux und das Paket „cifs-utils“
+* **Wählen Sie eine Linux-Distribution, in die das Paket „cifs-utils“ installiert werden kann**: Microsoft empfiehlt die folgenden Linux-Distributionen im Katalog mit den Azure-Images:
 
-> [!NOTE]
-> Weil der Linux-SMB-Client noch keine Verschlüsselung unterstützt, muss sich der Client, wenn eine Dateifreigabe aus Linux eingebunden wird, in derselben Azure-Region befinden wie die Dateifreigabe. Allerdings arbeiten die Linux-Entwickler, die für die SMB-Funktionalität verantwortlich sind, an der Verschlüsselungsunterstützung für Linux. Linux-Distributionen, in denen zukünftig Verschlüsselung unterstützt wird, werden ebenfalls von überall eine Azure-Dateifreigabe einbinden können.
-> 
-> 
+    * Ubuntu Server 14.04+
+    * RHEL 7+
+    * CentOS 7+
+    * Debian 8
+    * openSUSE 13.2+
+    * SUSE Linux Enterprise Server 12   
 
-## <a name="video-using-azure-file-storage-with-linux"></a>Video: Verwenden des Azure-Dateispeichers unter Linux
-Dieses Video veranschaulicht das Erstellen und Verwenden von Azure-Dateifreigaben unter Linux.
+    > [!Note]  
+    > Alle Linux-Distribution, die die neuesten Versionen des Paket „cifs-utils“ herunterladen und installieren bzw. kompilieren können, lassen sich mit Azure File Storage verwenden.
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-File-Storage-with-Linux/player]
-> 
-> 
+* <a id="install-cifs-utils"></a>**Das Paket „cifs-utils“ ist installiert**: Das Paket „cifs-utils“ kann mithilfe des Paket-Managers für die Linux-Distribution Ihre Wahl installiert werden. 
 
-## <a name="choose-a-linux-distribution-to-use"></a>Wählen einer zu verwendenden Linux-Distribution
-Wenn Sie in Azure einen virtuellen Linux-Computer erstellen, können Sie im Azure-Image-Katalog ein Linux-Image angeben, das SMB 2.1 oder höher unterstützt. Dies ist die Liste der empfohlenen Linux-Images:
+    Verwenden Sie bei auf **Ubuntu** und **Debian** basierenden Distributionen den Paket-Manager `apt-get`:
 
-* Ubuntu Server 14.04+
-* RHEL 7+
-* CentOS 7+
-* Debian 8
-* openSUSE 13.2+
-* SUSE Linux Enterprise Server 12
-* SUSE Linux Enterprise Server 12 (Premium-Image)
+    ```
+    sudo apt-get update
+    sudo apt-get install cifs-utils
+    ```
 
-## <a name="mount-the-file-share"></a>Einbinden der Dateifreigabe
-Um die Dateifreigabe aus einem virtuellen Linux-Computer einzubinden, müssen Sie möglicherweise einen SMB/CIFS-Client installieren, wenn die von Ihnen verwendete Distribution keinen integrierten Client hat. Dies ist der aus Ubuntu auszuführende Befehl, wenn cifs-utils als Client installiert werden soll:
+    Verwenden Sie unter **RHEL** und **CentOS**den Paket-Manager `yum`:
 
-```
-sudo apt-get install cifs-utils
-```
+    ```
+    sudo yum install samba-client samba-common cifs-utils
+    ```
 
-Danach müssen Sie einen Bereitstellungspunkt (Einbindepunkt, mkdir mymountpoint) erstellen und schließlich den mount-Befehl ausgeben, der in etwa wie folgt aussieht:
+    Verwenden Sie unter **OpenSUSE** den Paket-Manager `zypper`:
 
-```
-sudo mount -t cifs //myaccountname.file.core.windows.net/mysharename ./mymountpoint -o vers=3.0,username=myaccountname,password=StorageAccountKeyEndingIn==,dir_mode=0777,file_mode=0777,serverino
-```
+    ```
+    sudo zypper install samba*
+    ```
 
-Sie können auch Einstellungen in der Konfigurationsdatei „/etc/fstab“ hinzufügen, um die Freigabe einzubinden.
+    Verwenden Sie bei anderen Distributionen den entsprechenden Paket-Manager, oder [kompilieren Sie den Quellcode](https://wiki.samba.org/index.php/LinuxCIFS_utils#Download).
 
-0777 entspricht hier einem Verzeichnis-/Dateiberechtigungscode, der allen Benutzern die Berechtigungen Ausführen/Lesen/Schreiben erteilt. Sie können diesen Code durch einen anderen Dateiberechtigungscode ersetzen. Weitere Informationen hierzu finden Sie in der Dokumentation zu Linux-Dateiberechtigungen.
+* **Legen Sie die Verzeichnis-/Dateiberechtigungen der eingebundenen Freigabe fest**: In den folgenden Beispielen verwenden wir 0777, um allen Benutzern die Berechtigungen „Lesen“, „Schreiben“ und „Ausführen“ zu erteilen. Sie können dies nach Wunsch durch andere [chmod-Berechtigungen](https://en.wikipedia.org/wiki/Chmod) ersetzen. 
 
-Soll eine Dateifreigabe nach einem Neustart weiterhin eingebunden sein, fügen Sie der „/etc/fstab“ eine Einstellung hinzu, die so aussieht:
+* **Name des Speicherkontos:** Zum Einbinden einer Azure-Dateifreigabe benötigen Sie den Namen des Speicherkontos.
 
-```
-//myaccountname.file.core.windows.net/mysharename /mymountpoint cifs vers=3.0,username=myaccountname,password=StorageAccountKeyEndingIn==,dir_mode=0777,file_mode=0777,serverino
-```
+* **Speicherkontoschlüssel:** Zum Einbinden einer Azure-Dateifreigabe benötigen Sie den primären (oder sekundären) Speicherschlüssel. SAS-Schlüssel können derzeit nicht zum Einbinden verwendet werden.
 
-Wenn Sie z.B. mit dem Linux-Image Ubuntu Server 15.04, das im Azure-Imagekatalog verfügbar ist, einen virtuellen Azure-Computer erstellt haben, können Sie die Datei wie folgt einbinden:
+* **Prüfen Sie, ob Port 445 geöffnet ist**: SMB kommuniziert über den TCP-Port 445. Vergewissern Sie sich, dass der TCP-Port 445 des Clientcomputers nicht durch die Firewall blockiert wird.
 
-```
-azureuser@azureconubuntu:~$ sudo apt-get install cifs-utils
-azureuser@azureconubuntu:~$ sudo mkdir /mnt/mountpoint
-azureuser@azureconubuntu:~$ sudo mount -t cifs //myaccountname.file.core.windows.net/mysharename /mnt/mountpoint -o vers=3.0,user=myaccountname,password=StorageAccountKeyEndingIn==,dir_mode=0777,file_mode=0777,serverino
-azureuser@azureconubuntu:~$ df -h /mnt/mountpoint
-Filesystem  Size  Used Avail Use% Mounted on
-//myaccountname.file.core.windows.net/mysharename  5.0T   64K  5.0T   1% /mnt/mountpoint
-```
+## <a name="mount-the-azure-file-share-on-demand-with-mount"></a>Einbinden der Azure-Dateifreigabe bei Bedarf mit `mount`
+1. **[Installieren Sie das Paket „cifs-utils“ für Ihre Linux-Distribution](#install-cifs-utils)**.
 
-Wenn Sie die CentOS 7.1 verwenden, können Sie die Datei wie folgt einbinden:
+2. **Erstellen Sie einen Ordner für den Einbindungspunkt**: Dies ist an einer beliebigen Stelle im Dateisystem möglich.
 
-```
-[azureuser@AzureconCent ~]$ sudo yum install samba-client samba-common cifs-utils
-[azureuser@AzureconCent ~]$ sudo mount -t cifs //myaccountname.file.core.windows.net/mysharename /mnt/mountpoint -o vers=3.0,user=myaccountname,password=StorageAccountKeyEndingIn==,dir_mode=0777,file_mode=0777,serverino
-[azureuser@AzureconCent ~]$ df -h /mnt/mountpoint
-Filesystem  Size  Used Avail Use% Mounted on
-//myaccountname.file.core.windows.net/mysharename  5.0T   64K  5.0T   1% /mnt/mountpoint
-```
+    ```
+    mkdir mymountpoint
+    ```
 
-Wenn Sie die Open SUSE 13.2 verwenden, können Sie die Datei wie folgt einbinden:
+3. **Verwenden Sie den Befehl „mount“ zum Einbinden der Azure-Dateifreigabe.** Ersetzen Sie dabei `<storage-account-name>`, `<share-name>` und `<storage-account-key>` durch die entsprechenden Angaben.
 
-```
-azureuser@AzureconSuse:~> sudo zypper install samba*  
-azureuser@AzureconSuse:~> sudo mkdir /mnt/mountpoint
-azureuser@AzureconSuse:~> sudo mount -t cifs //myaccountname.file.core.windows.net/mysharename /mnt/mountpoint -o vers=3.0,user=myaccountname,password=StorageAccountKeyEndingIn==,dir_mode=0777,file_mode=0777,serverino
-azureuser@AzureconSuse:~> df -h /mnt/mountpoint
-Filesystem  Size  Used Avail Use% Mounted on
-//myaccountname.file.core.windows.net/mysharename  5.0T   64K  5.0T   1% /mnt/mountpoint
-```
+    ```
+    sudo mount -t cifs //<storage-account-name>.file.core.windows.net/<share-name> ./mymountpoint -o vers=3.0,username=<storage-account-name>,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino
+    ```
 
-Wenn Sie die RHEL 7.3 verwenden, können Sie die Datei wie folgt einbinden:
+> [!Note]  
+> Wenn Sie die Azure-Dateifreigabe nicht mehr benötigen, können Sie `sudo umount ./mymountpoint` verwenden, um die Einbindung der Freigabe aufzuheben.
 
-```
-azureuser@AzureconRedhat:~> sudo yum install cifs-utils
-azureuser@AzureconRedhat:~> sudo mkdir /mnt/mountpoint
-azureuser@AzureconRedhat:~> sudo mount -t cifs //myaccountname.file.core.windows.net/mysharename /mnt/mountpoint -o vers=3.0,user=myaccountname,password=StorageAccountKeyEndingIn==,dir_mode=0777,file_mode=0777,serverino
-azureuser@AzureconRedhat:~> df -h /mnt/mountpoint
-Filesystem  Size  Used Avail Use% Mounted on
-//myaccountname.file.core.windows.net/mysharename  5.0T   64K  5.0T   1% /mnt/mountpoint
-```
+## <a name="create-a-persistent-mount-point-for-the-azure-file-share-with-etcfstab"></a>Erstellen eines dauerhaften Einbindungspunkts für die Azure-Dateifreigabe mit `/etc/fstab`
+1. **[Installieren Sie das Paket „cifs-utils“ für Ihre Linux-Distribution](#install-cifs-utils)**.
 
-## <a name="manage-the-file-share"></a>Verwalten der Dateifreigabe
-Das [Azure-Portal](https://portal.azure.com) bietet eine Benutzeroberfläche zum Verwalten von Azure File Storage. Sie können in Ihrem Webbrowser die folgenden Aktionen ausführen:
+2. **Erstellen Sie einen Ordner für den Einbindungspunkt**: Dies ist an einer beliebigen Stelle im Dateisystem möglich, aber Sie müssen den absoluten Pfad des Ordners notieren. Im folgenden Beispiel wird ein Ordner unter „root“ erstellt.
 
-* Hoch- und Herunterladen von Dateien für die Dateifreigabe
-* Überwachen der tatsächlichen Nutzung der einzelnen Dateifreigaben
-* Anpassen des Kontingents für die Dateifreigabegröße
-* Kopieren Sie den `net use` -Befehl, der zum Einbinden Ihrer Dateifreigabe auf einem Windows-Client verwendet werden soll.
+    ```
+    sudo mkdir /mymountpoint
+    ```
 
-Sie können auch die plattformübergreifende Azure-Befehlszeilenschnittstelle (Azure CLI) von Linux verwenden, um die Dateifreigabe zu verwalten. Die Azure-Befehlszeilenschnittstelle bietet eine Reihe plattformübergreifender Open-Source-Befehle für die Arbeit mit Azure Storage, einschließlich File Storage. Sie bietet im Wesentlichen die gleiche Funktionalität wie das Azure-Portal sowie umfangreiche Datenzugriffsfunktionen. Beispiele finden Sie unter [Verwenden der Azure-Befehlszeilenschnittstelle mit Azure Storage](storage-azure-cli.md).
+3. **Verwenden Sie den folgenden Befehl zum Anfügen der folgenden Zeile an `/etc/fstab`**: Ersetzen Sie dabei `<storage-account-name>`, `<share-name>` und `<storage-account-key>` durch die entsprechenden Angaben.
 
-## <a name="develop-with-file-storage"></a>Entwickeln mit Dateispeicher
-Als Entwickler können Sie eine Anwendung mit File Storage erstellen, indem Sie die [Azure Storage-Clientbibliothek für Java](https://github.com/azure/azure-storage-java)verwenden. Codebeispiele finden Sie unter [Verwenden von File Storage aus Java](storage-java-how-to-use-file-storage.md).
+    ```
+    sudo bash -c 'echo "//<storage-account-name>.file.core.windows.net/<share-name> /mymountpoint cifs vers=3.0,username=<storage-account-name>,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino" >> /etc/fstab'
+    ```
 
-Sie können auch die [Azure Storage-Clientbibliothek für Node.js](https://github.com/Azure/azure-storage-node) zum Entwickeln für File Storage verwenden.
+> [!Note]  
+> Mithilfe von `sudo mount -a` können Sie die Azure-Dateifreigabe nach Bearbeitung von `/etc/fstab` einbinden, anstatt neu zu starten.
 
-## <a name="feedback-and-more-information"></a>Feedback und weitere Informationen
+## <a name="feedback"></a>Feedback
 Linux-Benutzer, wir möchten von Ihnen hören!
 
-Der Gruppe "Azure File Storage for Linux users" bietet ein Forum, in dem Sie Ihr Feedback zu File Storage für Linux geben können. Senden Sie eine E-Mail an [Azure File Storage for Linux Users](mailto:azurefileslinuxusers@microsoft.com) , um der Benutzergruppe beizutreten.
+Der Gruppe "Azure File Storage for Linux users" bietet ein Forum, in dem Sie Ihr Feedback zu File Storage für Linux geben können. Senden Sie eine E-Mail an [Azure File Storage for Linux Users](mailto:azurefileslinuxusers@microsoft.com), um der Benutzergruppe beizutreten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum Azure-Dateispeicher erhalten Sie über diese Links.
-
-### <a name="conceptual-articles-and-videos"></a>Konzeptionelle Artikel und Videos
-* [Azure-Dateispeicher: ein reibungsloses Cloud-SMB-Dateisystem für Windows und Linux](https://azure.microsoft.com/documentation/videos/azurecon-2015-azure-files-storage-a-frictionless-cloud-smb-file-system-for-windows-and-linux/)
-* [Erste Schritte mit Azure File Storage unter Windows](storage-dotnet-how-to-use-files.md)
-
-### <a name="tooling-support-for-file-storage"></a>Toolunterstützung für Dateispeicher
-* [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](storage-use-azcopy.md)
-* [Erstellen und Verwalten von Dateifreigaben](storage-azure-cli.md#create-and-manage-file-shares) mithilfe der Azure-Befehlszeilenschnittstelle
-
-### <a name="reference"></a>Referenz
 * [Referenz zur REST-API des Dateidiensts](http://msdn.microsoft.com/library/azure/dn167006.aspx)
-* [Azure Files Troubleshooting Article](storage-troubleshoot-file-connection-problems.md) (Artikel zur Problembehandlung von Azure-Dateien)
-
-### <a name="blog-posts"></a>Blogbeiträge
-* [Azure-Dateispeicher ist jetzt allgemein verfügbar](https://azure.microsoft.com/blog/azure-file-storage-now-generally-available/)
-* [Azure-Dateispeicher](https://azure.microsoft.com/blog/inside-azure-file-storage/)
-* [Einführung in den Microsoft Azure-Dateidienst](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
-* [Beibehalten von Verbindungen zu Microsoft Azure-Dateien](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
+* [Verwenden von Azure PowerShell mit Azure Storage](storage-powershell-guide-full.md)
+* [Verwenden von AzCopy mit Microsoft Azure Storage](storage-use-azcopy.md)
+* [Verwenden der Azure CLI mit Azure Storage](storage-azure-cli.md#create-and-manage-file-shares)
+* [Häufig gestellte Fragen](storage-files-faq.md)
+* [Problembehandlung](storage-troubleshoot-file-connection-problems.md)
 

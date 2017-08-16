@@ -12,13 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 05/3/2017
-ms.author: cfreeman
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e22bd56e0d111add6ab4c08b6cc6e51c364c7f22
-ms.openlocfilehash: e562e6a1a6c2b8203f3d5a9a2ee5680372499693
+ms.author: sewhee
+ms.translationtype: HT
+ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
+ms.openlocfilehash: 93808e617f33a5c78e5c89f4dac4680d44724d1c
 ms.contentlocale: de-de
-ms.lasthandoff: 05/19/2017
-
+ms.lasthandoff: 08/05/2017
 
 ---
 # <a name="explore-net-trace-logs-in-application-insights"></a>Untersuchen von .NET-Ablaufverfolgungsprotokollen in Application Insights
@@ -197,7 +196,7 @@ Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf `Application
 Manchmal kann es eine Weile dauern, bis alle Ereignisse und Anforderungen über die Pipeline abgerufen werden.
 
 ### <a name="limits"></a>Wie viele Daten werden beibehalten?
-Bis zu 500 Ereignisse pro Sekunde für jede Anwendung. Ereignisse werden sieben Tage lang aufbewahrt.
+Die Menge der beibehaltenen Daten hängt von mehreren Faktoren ab. Weitere Informationen finden Sie auf der Seite mit den Metriken für benutzerdefinierte Ereignisse im Abschnitt [Grenzwerte](app-insights-api-custom-events-metrics.md#limits). 
 
 ### <a name="im-not-seeing-some-of-the-log-entries-that-i-expect"></a>Ich kann einige erwartete Protokolleinträge nicht finden.
 Wenn Ihre Anwendung eine große Menge von Daten sendet und Sie das Application Insights-SDK für ASP.NET Version 2.0.0-beta3 oder höher verwenden, wird möglicherweise die adaptive Stichprobenerstellung verwendet, bei der nur ein bestimmter Prozentsatz der Telemetriedaten übermittelt wird. [Erfahren Sie mehr über das Erstellen von Stichproben.](app-insights-sampling.md)

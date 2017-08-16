@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/07/2016
 ms.author: byvinyal
-translationtype: Human Translation
-ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
-ms.openlocfilehash: d779170030b61540de2c0459e574a72cdc77f342
-ms.lasthandoff: 02/16/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
+ms.openlocfilehash: 25d3776920d683fffedcd8ac6ed0e84dfe875974
+ms.contentlocale: de-de
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="how-to-monitor-apps-in-azure-app-service"></a>Gewusst wie: Überwachen von Apps in Azure App Service
@@ -38,7 +38,7 @@ Wenn die Anwendung unter einem Plan vom Typ **Basic**, **Standard** oder **Premi
 **Kontingente** für **Free**- oder **Shared**-Apps sind:
 
 * **CPU(Short)**
-  * Zulässige CPU-Menge für diese Anwendung in einem 3-Minuten-Intervall. Dieses Kontingent wird alle drei Minuten zurückgesetzt.
+  * Zulässige CPU-Menge für diese Anwendung in einem Fünf-Minuten-Intervall. Dieses Kontingent wird alle fünf Minuten zurückgesetzt.
 * **CPU(Day)**
   * Zulässige CPU-Gesamtmenge für diese Anwendung für einen Tag. Dieses Kontingent wird alle 24 Stunden um Mitternacht (UTC) zurückgesetzt.
 * **Memory**

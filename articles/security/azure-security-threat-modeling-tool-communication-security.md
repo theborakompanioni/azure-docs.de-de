@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: rodsan
 ms.translationtype: HT
-ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
-ms.openlocfilehash: 125a9cd2ac9892a090b729a0a5a5a2f7d4580507
+ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
+ms.openlocfilehash: 955d67795caff67c1ffff55f74f04622c952ed05
 ms.contentlocale: de-de
-ms.lasthandoff: 07/12/2017
+ms.lasthandoff: 08/10/2017
 
 ---
 
@@ -210,38 +210,74 @@ Diese Regel funktioniert durch die Rückgabe eines HTTP-Statuscode von 301 (Perm
 | ----------------------- | ------------ |
 | Komponente               | Azure Storage | 
 | SDL-Phase               | Entwickeln |  
-| Technologien | Allgemein, Windows Phone |
+| Technologien | Allgemein, Windows Mobile |
 | Attribute              | –  |
 | Referenzen              | [Certificate and Public Key Pinning](https://www.owasp.org/index.php/Certificate_and_Public_Key_Pinning#.Net) (Anheften von Zertifikaten und öffentlichen Schlüsseln) |
-| Schritte | <p>Das Anheften von Zertifikaten dient zur Abwehr von MITM-Angriffen (Man-in-the-Middle). Beim Anheften wird ein Host mit dem erwarteten X.509-Zertifikat oder öffentlichen Schlüssel verknüpft. Sobald ein Zertifikat oder öffentlicher Schlüssel für einen Host bekannt ist oder angezeigt wird, wird das Zertifikat oder der öffentliche Schlüssel mit dem Host verknüpft (angeheftet). </p><p>Startet ein Angreifer nun einen SSL-MITM-Angriff, unterscheidet sich der Schlüssel des für den Angriff verwendeten Servers beim SSL-Handshake vom Schlüssel des angehefteten Zertifikats, woraufhin die Anforderung verworfen und der MITM-Angriff abgewehrt wird. Das Anheften von Zertifikaten kann durch Implementieren des ServicePointManager-Delegaten `ServerCertificateValidationCallback` erreicht werden.</p>|
+| Schritte | <p>Das Anheften von Zertifikaten dient zur Abwehr von TLS-basierten MITM-Angriffen (Man-in-the-Middle). Beim Anheften wird eine TLS-Verbindung mit einem erwarteten X.509-Zertifikat oder öffentlichen Schlüssel verknüpft. Diese Verknüpfung kann nach der ersten erfolgreichen Verbindung („Vertrauensstellung bei der ersten Verwendung“) oder bereits zuvor (dafür wäre Vorabladen erforderlich) hergestellt werden.</p><p>Wenn ein Angreifer versucht, einen TLS-basierten MITM-Angriff durchzuführen, überprüft der Client, ob das empfangene Zertifikat/der Schlüssel dem erwarteten Wert entspricht. Auch wenn der Angreifer also über ein ansonsten gültiges und vertrauenswürdiges Zertifikat verfügt, würde die Verbindung trotzdem fehlschlagen.</p><p>Das Anheften von Zertifikaten kann unter .NET durch Implementieren des Delegaten [HttpWebRequest.ServerCertificateValidationCallback](https://docs.microsoft.com/dotnet/api/system.net.httpwebrequest.servercertificatevalidationcallback) (empfohlen) oder [ServicePointManager.ServerCertificateValidationCallback](https://docs.microsoft.com/dotnet/api/system.net.servicepointmanager.servercertificatevalidationcallback) implementiert werden. Im folgenden Beispiel erfolgt die Überprüfung mit einem hartcodierten öffentlichen Schlüssel und Algorithmus. In einer realen Anwendung sollten diese Werte allerdings in einem sicheren Konfigurationsbereich gespeichert und nach Bedarf aktualisiert werden.</p>|
 
 ### <a name="example"></a>Beispiel
 ```C#
-private static String PUB_KEY = "30818902818100C4A06B7B52F8D17DC1CCB47362" +
-    "C64AB799AAE19E245A7559E9CEEC7D8AA4DF07CB0B21FDFD763C63A313A668FE9D764E" +
-    "D913C51A676788DB62AF624F422C2F112C1316922AA5D37823CD9F43D1FC54513D14B2" +
-    "9E36991F08A042C42EAAEEE5FE8E2CB10167174A359CEBF6FACC2C9CA933AD403137EE" +
-    "2C3F4CBED9460129C72B0203010001";
+using System;
+using System.Net;
+using System.Net.Security;
+using System.Security.Cryptography;
 
-public static void Main(string[] args)
+namespace CertificatePinningExample
 {
-  ServicePointManager.ServerCertificateValidationCallback = PinPublicKey;
-  WebRequest wr = WebRequest.Create("https://encrypted.google.com/");
-  wr.GetResponse();
-}
+    class CertificatePinningExample
+    {
+        /* Note: In this example, we're hardcoding a the certificate's public key and algorithm for 
+           demonstration purposes. In a real-world application, this should be stored in a secure
+           configuration area that can be updated as needed. */
 
-public static bool PinPublicKey(object sender, X509Certificate certificate, X509Chain chain,
-                                SslPolicyErrors sslPolicyErrors)
-{
-  if (null == certificate)
-    return false;
+        private static readonly string PINNED_ALGORITHM = "RSA";
 
-  String pk = certificate.GetPublicKeyString();
-  if (pk.Equals(PUB_KEY))
-    return true;
+        private static readonly string PINNED_PUBLIC_KEY = "3082010A0282010100B0E75B7CBE56D31658EF79B3A1" +
+            "294D506A88DFCDD603F6EF15E7F5BCBDF32291EC50B2B82BA158E905FE6A83EE044A48258B07FAC3D6356AF09B2" +
+            "3EDAB15D00507B70DB08DB9A20C7D1201417B3071A346D663A241061C151B6EC5B5B4ECCCDCDBEA24F051962809" +
+            "FEC499BF2D093C06E3BDA7D0BB83CDC1C2C6660B8ECB2EA30A685ADE2DC83C88314010FFC7F4F0F895EDDBE5C02" +
+            "ABF78E50B708E0A0EB984A9AA536BCE61A0C31DB95425C6FEE5A564B158EE7C4F0693C439AE010EF83CA8155750" +
+            "09B17537C29F86071E5DD8CA50EBD8A409494F479B07574D83EDCE6F68A8F7D40447471D05BC3F5EAD7862FA748" +
+            "EA3C92A60A128344B1CEF7A0B0D94E50203010001";
 
-  // Bad dog
-  return false;
+
+        public static void Main(string[] args)
+        {
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://azure.microsoft.com");
+            request.ServerCertificateValidationCallback = (sender, certificate, chain, sslPolicyErrors) =>
+            {
+                if (certificate == null || sslPolicyErrors != SslPolicyErrors.None)
+                {
+                    // Error getting certificate or the certificate failed basic validation
+                    return false;
+                }
+
+                var targetKeyAlgorithm = new Oid(certificate.GetKeyAlgorithm()).FriendlyName;
+                var targetPublicKey = certificate.GetPublicKeyString();
+                
+                if (targetKeyAlgorithm == PINNED_ALGORITHM &&
+                    targetPublicKey == PINNED_PUBLIC_KEY)
+                {
+                    // Success, the certificate matches the pinned value.
+                    return true;
+                }
+                // Reject, either the key or the algorithm does not match the expected value.
+                return false;
+            };
+
+            try
+            {
+                var response = (HttpWebResponse)request.GetResponse();
+                Console.WriteLine($"Success, HTTP status code: {response.StatusCode}");
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine($"Failure, {ex.Message}");
+            }
+            Console.WriteLine("Press any key to end.");
+            Console.ReadKey();
+        }
+    }
 }
 ```
 

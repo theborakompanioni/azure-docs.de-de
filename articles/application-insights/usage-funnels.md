@@ -11,12 +11,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
-ms.author: cfreeman
+ms.author: sewhee
 ms.translationtype: HT
-ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
-ms.openlocfilehash: 8d20995ebb63e8cf1e4d15c57628b80aaf9e036b
+ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
+ms.openlocfilehash: 2b25ffd844507074a8467b1135b1331feb9d3ed7
 ms.contentlocale: de-de
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 08/09/2017
 
 ---
 
@@ -45,4 +45,9 @@ Die folgende Abbildung zeigt die vom Blatt „Trichter“ generierten Daten. Hie
 ![Blatt „Trichter“ mit Daten](./media/app-insights-understand-usage-patterns/funnel1.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Erfahren Sie mehr über [Nutzungsanalyse](app-insights-usage-overview.md).
+  * [Nutzungsübersicht](app-insights-usage-overview.md)
+  * [Benutzer-, Sitzungs- und Ereignisanalyse in Azure Application Insights](app-insights-usage-segmentation.md)
+  * [Aufbewahrung](app-insights-usage-retention.md)
+  * [Arbeitsmappen](app-insights-usage-workbooks.md)
+  * [Hinzufügen von Benutzerkontext](app-insights-usage-send-user-context.md)
+

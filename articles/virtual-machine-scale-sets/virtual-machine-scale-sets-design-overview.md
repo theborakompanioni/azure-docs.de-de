@@ -1,6 +1,6 @@
 ---
-title: "Entwerfen von Skalierungsgruppen virtueller Azure Computer für die Skalierung | Microsoft-Dokumentation"
-description: "Erfahren Sie mehr über das Entwerfen von Skalierungsgruppen virtueller Azure-Computer für die Skalierung"
+title: "Überlegungen zum Entwurf von Azure-VM-Skalierungsgruppen | Microsoft-Dokumentation"
+description: "Erfahren Sie mehr über Überlegungen zum Entwurf Ihrer Azure-VM-Skalierungsgruppen."
 keywords: "virtueller Linux-Computer, Skalierungsgruppen für virtuelle Computer"
 services: virtual-machine-scale-sets
 documentationcenter: 
@@ -16,37 +16,56 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2017
 ms.author: negat
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e869b06935736fae72bd3b5407ebab7c3830098d
-ms.openlocfilehash: de3687a1bf36bf49db400a5660ac631f20b629d0
+ms.translationtype: HT
+ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
+ms.openlocfilehash: 615361975e2ee15ce80f6efb39f57cae381209e5
 ms.contentlocale: de-de
-ms.lasthandoff: 02/14/2017
-
+ms.lasthandoff: 08/09/2017
 
 ---
-# <a name="designing-vm-scale-sets-for-scale"></a>Entwerfen von VM-Skalierungsgruppen für die Skalierung
+# <a name="design-considerations-for-scale-sets"></a>Überlegungen zum Entwurf von Skalierungsgruppen
 In diesem Thema werden Überlegungen zum Entwurf von Skalierungsgruppen für virtuelle Computer erörtert. Informationen darüber, was Skalierungsgruppen für virtuelle Computer sind, finden Sie unter [Übersicht über VM-Skalierungsgruppen](virtual-machine-scale-sets-overview.md).
+
+## <a name="when-to-use-scale-sets-instead-of-virtual-machines"></a>Wann sollten Sie Skalierungsgruppen statt virtuellen Computern verwenden?
+Im Allgemeinen sind Skalierungsgruppen nützlich für das Bereitstellen hochgradig verfügbarer Infrastruktur, wenn eine Reihe Computer ähnlich konfiguriert sind. Jedoch sind einige Funktionen nur in Skalierungsgruppen verfügbar, andere nur bei virtuellen Computern. Um eine fundierte Entscheidung über die jeweils geeignete Technologie treffen zu können, müssen wir uns zunächst mit einigen häufig verwendeten Funktionen beschäftigen, die nur in Skalierungsgruppen und nicht bei virtuellen Computern verfügbar sind:
+
+### <a name="scale-set-specific-features"></a>Skalierungsgruppenspezifische Funktionen
+
+- Nach der Festlegung einer Skalierungsgruppenkonfiguration können Sie einfach die Eigenschaft „Kapazität“ aktualisieren, um mehrere virtuelle Computer parallel bereitzustellen. Dies ist viel einfacher, als ein Skript zu schreiben, um viele einzelne virtuelle Computer parallel zu orchestrieren.
+- Sie können [Azure Autoscale dazu verwenden, Skalierungsgruppen automatisch zu skalieren](./virtual-machine-scale-sets-autoscale-overview.md), nicht jedoch einzelne virtuelle Computer.
+- Sie können [ein Reimaging für virtuelle Computer in einer Skalierungsgruppe ](https://docs.microsoft.com/rest/api/virtualmachinescalesets/manage-a-vm) durchführen, [nicht jedoch für einzelne virtuelle Computer](https://docs.microsoft.com/rest/api/compute/virtualmachines).
+- Sie können virtuelle Computer in einer Skalierungsgruppe [überbereitstellen](./virtual-machine-scale-sets-design-overview.md), um eine höhere Zuverlässigkeit und kürzere Bereitstellungszeiten zu erreichen. Mit einzelnen virtuellen Computern ist dies nur mit benutzerdefiniertem Code möglich.
+- Sie können eine [Upgraderichtlinie](./virtual-machine-scale-sets-upgrade-scale-set.md) festlegen, um Upgrades auf den virtuellen Computern in Ihrer Skalierungsgruppe auf einfache Weise durchzuführen. Bei einzelnen virtuellen Computern müssen Sie die Updates selbst orchestrieren.
+
+### <a name="vm-specific-features"></a>Spezifische Funktionen von virtuellen Computern
+
+Einige Funktionen stehen wiederum nur bei virtuellen Computern zur Verfügung (zumindest zum derzeitigen Zeitpunkt):
+
+- Sie können Datenträger an spezifische einzelne virtuelle Computer anfügen, aber die angefügten Datenträger werden für alle virtuellen Computer in der Skalierungsgruppe konfiguriert.
+- Sie können nicht leere Datenträger an einzelne virtuelle Computer anfügen, nicht jedoch an virtuelle Computer in einer Skalierungsgruppe.
+- Sie können Momentaufnahmen von einzelnen virtuellen Computern erstellen, nicht jedoch von virtuellen Computern in einer Skalierungsgruppe.
+- Sie können ein Image von einem einzelnen virtuellen Computer erfassen, nicht jedoch von einem virtuellen Computer in einer Skalierungsgruppe.
+- Sie können einen einzelnen virtuellen Computer von einem nativen Datenträger zu einem verwalteten Datenträger migrieren, für virtuelle Computer in einer Skalierungsgruppe ist dies hingegen nicht möglich.
+- Sie können den NICs von virtuellen Computern öffentliche IPv6-IP-Adressen zuweisen, für virtuelle Computer in einer Skalierungsgruppe ist dies hingegen nicht möglich. Bitte beachten Sie, dass Sie Load Balancern sowohl bei virtuellen Computern als auch bei virtuellen Computern in einer Skalierungsgruppe öffentliche IPv6-IP-Adressen zuweisen können.
 
 ## <a name="storage"></a>Speicher
 
 ### <a name="scale-sets-with-azure-managed-disks"></a>Skalierungsgruppen mit Azure Managed Disks
-Skalierungsgruppen können jetzt mit [Azure Managed Disks](../storage/storage-managed-disks-overview.md) erstellt werden. Das Feature „Managed Disks“ (Verwaltete Datenträger) bietet die folgenden Vorteile:
+Skalierungsgruppen können mit [Azure Managed Disks](../storage/storage-managed-disks-overview.md) anstatt mit den traditionellen Azure-Speicherkonten erstellt werden. Das Feature „Managed Disks“ (Verwaltete Datenträger) bietet die folgenden Vorteile:
 - Sie müssen für die VMs in der Skalierungsgruppe nicht vorab eine Gruppe von Azure-Speicherkonten erstellen.
 - Sie können in Ihrer Skalierungsgruppe [angefügte Datenträger](virtual-machine-scale-sets-attached-disks.md) für die virtuellen Computer definieren.
 - Skalierungsgruppen können so konfiguriert werden, dass [bis zu 1.000 virtuelle Computer in einer Gruppe unterstützt werden](virtual-machine-scale-sets-placement-groups.md). 
 
-Sie können Skalierungsgruppen mit Managed Disks ab Version „2016-04-30-preview“ der Azure Compute-API erstellen. Informationen zum Konvertieren einer Skalierungsgruppenvorlage zu Managed Disks finden Sie unter [Konvertieren einer Skalierungsgruppenvorlage in eine Skalierungsgruppenvorlage für verwaltete Datenträger](virtual-machine-scale-sets-convert-template-to-md.md).
+Wenn eine Vorlage vorhanden ist, können Sie diese auch [aktualisieren, um Managed Disks zu verwenden](virtual-machine-scale-sets-convert-template-to-md.md).
 
 ### <a name="user-managed-storage"></a>Vom Benutzer verwalteter Speicher
 Eine Skalierungsgruppe, die nicht mit Azure Managed Disks definiert ist, benötigt vom Benutzer erstellte Speicherkonten zum Speichern der Betriebssystem-Datenträger der VMs in der Gruppe. Pro Speicherkonto werden maximal 20 VMs empfohlen, um die maximale E/A-Leistung zu erzielen und von der _Überbereitstellung_ zu profitieren. Außerdem sollten Sie als Anfangszeichen der Speicherkontonamen verschiedene Buchstaben verwenden. Auf diese Weise lässt sich die Last leichter auf verschiedene interne Systeme verteilen. 
 
->[!NOTE]
->Die VM-Skalierungsgruppen-API mit der Version `2016-04-30-preview` unterstützt das Verwenden von Azure Managed Disks für den Betriebssystem-Datenträger und alle zusätzlichen Datenträger. Weitere Informationen finden Sie unter [Übersicht über Azure Managed Disks](../storage/storage-managed-disks-overview.md) und [Verwenden angefügter Datenträger](virtual-machine-scale-sets-attached-disks.md). 
 
 ## <a name="overprovisioning"></a>Überbereitstellung
-Ab API-Version „2016-03-30“ erfolgt die „Überbereitstellung“ virtueller Computer bei VM-Skalierungsgruppen standardmäßig. Wenn die Überbereitstellung aktiviert ist, richtet die Skalierungsgruppe tatsächlich mehr VMs ein, als Sie angefordert haben, und löscht dann die zusätzlichen VMs, nachdem die angeforderte Anzahl von VMs erfolgreich bereitgestellt wurde. Die Überbereitstellung verbessert die Erfolgsquoten bei der Bereitstellung und verkürzt die Bereitstellungsdauer. Die zusätzlichen VMs werden Ihnen nicht berechnet und nicht auf Ihre Kontingentgrenzen angerechnet.
+Skalierungsgruppen übernehmen derzeit die „Überbereitstellung“ virtueller Computer als Standardeinstellung. Wenn die Überbereitstellung aktiviert ist, richtet die Skalierungsgruppe tatsächlich mehr VMs ein, als Sie angefordert haben, und löscht dann die zusätzlichen VMs, nachdem die angeforderte Anzahl von VMs erfolgreich bereitgestellt wurde. Die Überbereitstellung verbessert die Erfolgsquoten bei der Bereitstellung und verkürzt die Bereitstellungsdauer. Die zusätzlichen VMs werden Ihnen nicht berechnet und nicht auf Ihre Kontingentgrenzen angerechnet.
 
-Während die Überbereitstellung die Erfolgsquoten bei der Bereitstellung verbessert, kann sie ein verwirrendes Verhalten bei Anwendungen verursachen, die nicht darauf ausgelegt sind, mit dem Vorhandensein und anschließenden Nichtvorhandensein von VMs umzugehen. Um die Überbereitstellung zu deaktivieren, stellen Sie sicher, dass Ihre Vorlage folgende Zeichenfolge enthält: "overprovision": "false". Weitere Einzelheiten finden Sie in der [REST-API-Dokumentation für VM-Skalierungsgruppen](https://msdn.microsoft.com/library/azure/mt589035.aspx).
+Während die Überbereitstellung die Erfolgsquoten bei der Bereitstellung verbessert, kann sie ein verwirrendes Verhalten bei Anwendungen verursachen, die nicht darauf ausgelegt sind, mit dem Vorhandensein und anschließenden Nichtvorhandensein von VMs umzugehen. Um die Überbereitstellung zu deaktivieren, stellen Sie sicher, dass Ihre Vorlage folgende Zeichenfolge enthält: `"overprovision": "false"`. Weitere Einzelheiten finden Sie in der [REST-API-Dokumentation für Skalierungsgruppen](/rest/api/virtualmachinescalesets/create-or-update-a-set).
 
 Wenn die Skalierungsgruppe vom Benutzer verwalteten Speicher nutzt und Sie die Überbereitstellung deaktivieren, sind mehr als 20 VMs pro Speicherkonto möglich, doch aus Gründen der E/A-Leistung werden nur maximal 40 empfohlen. 
 

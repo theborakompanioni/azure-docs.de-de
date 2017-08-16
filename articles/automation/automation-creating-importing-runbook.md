@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/12/2016
+ms.date: 08/07/2017
 ms.author: magoedte;bwren
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: b590329e204c189ea2ef67b7c6c6bb6dacaf1628
-
+ms.translationtype: HT
+ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
+ms.openlocfilehash: 0264de12caaf62e976673a423df731ad27ab01e0
+ms.contentlocale: de-de
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="creating-or-importing-a-runbook-in-azure-automation"></a>Erstellen oder Importieren eines Runbooks in Azure Automation
@@ -36,7 +37,7 @@ Sie können im Azure-Portal nur [PowerShell-Workflow-Runbooks](automation-runboo
 
 ### <a name="to-create-a-new-azure-automation-runbook-with-the-azure-portal"></a>So erstellen Sie ein neues Azure Automation-Runbook mit dem Azure-Portal
 1. Öffnen Sie im Azure-Portal Ihr Automation-Konto.
-2. Klicken Sie auf die Kachel **Runbooks** , um die Liste mit den Runbooks zu öffnen.
+2. Wählen Sie im Hub **Runbooks** aus, um die Liste der Runbooks zu öffnen.
 3. Klicken Sie auf die Schaltfläche **Runbook hinzufügen** und anschließend auf **Neues Runbook erstellen**.
 4. Geben Sie einen **Namen** für das Runbook ein, und wählen den [Typ](automation-runbook-types.md)aus. Der Runbook-Name muss mit einem Buchstaben beginnen und kann Buchstaben, Zahlen, Unterstriche und Bindestriche enthalten.
 5. Klicken Sie auf **Erstellen** , um das Runbook zu erstellen und den Editor zu öffnen.
@@ -75,7 +76,7 @@ Mit dem folgenden Verfahren können eine Skriptdatei in Azure Automation importi
 > 
 
 1. Öffnen Sie im Azure-Portal Ihr Automation-Konto.
-2. Klicken Sie auf die Kachel **Runbooks** , um die Liste mit den Runbooks zu öffnen.
+2. Wählen Sie im Hub **Runbooks** aus, um die Liste der Runbooks zu öffnen.
 3. Klicken Sie auf die Schaltfläche **Runbook hinzufügen** und anschließend auf **Importieren**.
 4. Klicken Sie auf **Runbook-Datei** , um die zu importierende Datei auszuwählen.
 5. Wenn das Feld **Name** aktiviert ist, haben Sie die Möglichkeit, ihn zu ändern.  Der Runbook-Name muss mit einem Buchstaben beginnen und kann Buchstaben, Zahlen, Unterstriche und Bindestriche enthalten.
@@ -131,10 +132,5 @@ Sie können das Cmdlet [Publish-AzureRmAutomationRunbook](https://msdn.microsoft
 * Informationen dazu, wie Sie vom Katalog mit Runbooks und PowerShell-Modulen profitieren, finden Sie unter [Runbook und Modulkataloge für Azure Automation](automation-runbook-gallery.md).
 * Weitere Informationen zum Bearbeiten von PowerShell- und PowerShell-Workflow-Runbooks mit einem Text-Editor finden Sie unter [Bearbeiten von Textrunbooks in Azure Automation](automation-edit-textual-runbook.md)
 * Weitere Informationen zum Erstellen von grafischen Runbooks finden Sie unter [Grafische Erstellung in Azure Automation](automation-graphical-authoring-intro.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

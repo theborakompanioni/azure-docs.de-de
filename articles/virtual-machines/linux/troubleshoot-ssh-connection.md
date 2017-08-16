@@ -16,12 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: iainfou
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
-ms.openlocfilehash: 24f903c6b8b982599904b95f86d648927a3be5ce
+ms.translationtype: HT
+ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
+ms.openlocfilehash: 3a282c8b2c2ba2749de6a2d3688bd57d75703b22
 ms.contentlocale: de-de
-ms.lasthandoff: 06/01/2017
-
+ms.lasthandoff: 08/09/2017
 
 ---
 # <a name="troubleshoot-ssh-connections-to-an-azure-linux-vm-that-fails-errors-out-or-is-refused"></a>Behandeln von Problemen, Fehlern oder Ablehnungen im Zusammenhang mit der SSH-Verbindung mit einem virtuellen Azure Linux-Computer
@@ -64,7 +63,7 @@ Wählen Sie im Azure-Portal Ihren virtuellen Computer aus. Scrollen Sie nach unt
 ![Zurücksetzen der SSH-Konfiguration oder Anmeldeinformationen im Azure-Portal](./media/troubleshoot-ssh-connection/reset-credentials-using-portal.png)
 
 ### <a name="reset-the-ssh-configuration"></a>Zurücksetzen der SSH-Konfiguration
-Wählen Sie zuerst die Option `Reset SSH configuration only` aus dem Dropdownmenü **Modus**, wie im vorigen Screenshot gezeigt, und klicken Sie dann auf die Schaltfläche **Zurücksetzen**. Nachdem die Aktion abgeschlossen ist, versuchen Sie erneut, auf Ihren virtuellen Computer zuzugreifen.
+Wählen Sie zuerst die Option `Reset configuration only` aus dem Dropdownmenü **Modus**, wie im vorigen Screenshot gezeigt, und klicken Sie dann auf die Schaltfläche **Zurücksetzen**. Nachdem die Aktion abgeschlossen ist, versuchen Sie erneut, auf Ihren virtuellen Computer zuzugreifen.
 
 ### <a name="reset-ssh-credentials-for-a-user"></a>Zurücksetzen von SSH-Anmeldeinformationen für einen Benutzer
 Um die Anmeldeinformationen eines vorhandenen Benutzers zurückzusetzen, wählen Sie entweder `Reset SSH public key` oder `Reset password` aus dem Dropdownmenü **Modus**, wie im vorigen Screenshot gezeigt. Geben Sie den Benutzernamen sowie einen SSH-Schlüssel oder ein neues Kennwort an, und klicken Sie auf die Schaltfläche **Zurücksetzen**.
@@ -76,18 +75,26 @@ Wenn nicht bereits geschehen, installieren Sie die neueste Version von [Azure CL
 
 Wenn Sie ein benutzerdefiniertes Linux-Datenträgerimage erstellt und hochgeladen haben, stellen Sie sicher, dass [Microsoft Azure Linux Agent](../windows/agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Version 2.0.5 oder höher installiert ist. Bei virtuellen Computern, die über Images aus dem Katalog erstellt wurde, ist diese Zugriffserweiterung bereits installiert und konfiguriert.
 
-### <a name="reset-ssh-credentials-for-a-user"></a>Zurücksetzen von SSH-Anmeldeinformationen für einen Benutzer
-Das folgende Beispiel setzt mithilfe von [az vm access set-linux-user](/cli/azure/vm/access#set-linux-user) auf dem virtuellen Computer `myVM` in `myResourceGroup` die Anmeldeinformationen für den Benutzer `myUsername` auf den in `myPassword` angegebenen Wert zurück. Verwenden Sie Ihre eigenen Werte wie folgt:
+### <a name="reset-ssh-configuration"></a>Zurücksetzen der SSH-Konfiguration
+Sie können zunächst versuchen, die SSH-Konfiguration auf die Standardwerte zurückzusetzen und den SSH-Server auf der VM neu zu starten. Beachten Sie, dass hierdurch nicht der Name, das Kennwort oder die SSH-Schlüssel des Benutzerkontos geändert wird bzw. werden.
+Im folgenden Beispiel wird mithilfe von [az vm user reset-ssh](/cli/azure/vm/user#reset-ssh) die SSH-Konfiguration auf der VM mit dem Namen `myVM` in `myResourceGroup` zurückgesetzt. Verwenden Sie Ihre eigenen Werte wie folgt:
 
 ```azurecli
-az vm access set-linux-user --resource-group myResourceGroup --name myVM \
+az vm user reset-ssh --resource-group myResourceGroup --name myVM
+```
+
+### <a name="reset-ssh-credentials-for-a-user"></a>Zurücksetzen von SSH-Anmeldeinformationen für einen Benutzer
+Im folgenden Beispiel werden mithilfe von [az vm user update](/cli/azure/vm/user#update) die Anmeldeinformationen für `myUsername` auf den in `myPassword` angegebenen Wert zurückgesetzt, der auf der VM `myVM` in `myResourceGroup` angegeben ist. Verwenden Sie Ihre eigenen Werte wie folgt:
+
+```azurecli
+az vm user update --resource-group myResourceGroup --name myVM \
      --username myUsername --password myPassword
 ```
 
 Wenn Sie die SSH-Schlüsselauthentifizierung verwenden, können Sie den SSH-Schlüssel für einen bestimmten Benutzer zurücksetzen. Das folgende Beispiel aktualisiert mithilfe von **az vm access set-linux-user** auf dem virtuellen Computer `myVM` in `myResourceGroup` den in `~/.ssh/id_rsa.pub` gespeicherten SSH-Schlüssel für den Benutzer `myUsername`. Verwenden Sie Ihre eigenen Werte wie folgt:
 
 ```azurecli
-az vm access set-linux-user --resource-group myResourceGroup --name myVM \
+az vm user update --resource-group myResourceGroup --name myVM \
     --username myUsername --ssh-key-value ~/.ssh/id_rsa.pub
 ```
 
@@ -95,7 +102,7 @@ az vm access set-linux-user --resource-group myResourceGroup --name myVM \
 Die VM-Zugriffserweiterung für Linux liest eine JSON-Datei, die die auszuführenden Aktionen definiert. Zu diesen Aktionen gehört das Zurücksetzen von SSHD, das Zurücksetzen eines SSH-Schlüssels und das Hinzufügen eines Benutzers. Sie verwenden weiterhin die Azure-Befehlszeilenschnittstelle, um die VM-Zugriffserweiterung aufzurufen, aber Sie können die JSON-Dateien bei Bedarf VM-übergreifend wiederverwenden. Auf diese Weise können Sie ein Repository mit JSON-Dateien erstellen, die für verschiedene Szenarien aufgerufen werden können.
 
 ### <a name="reset-sshd"></a>Zurücksetzen von SSHD
-Erstellen Sie eine Datei namens `PrivateConf.json` mit folgendem Inhalt:
+Erstellen Sie eine Datei namens `settings.json` mit folgendem Inhalt:
 
 ```json
 {  
@@ -103,16 +110,15 @@ Erstellen Sie eine Datei namens `PrivateConf.json` mit folgendem Inhalt:
 }
 ```
 
-Rufen Sie dann über die Azure-Befehlszeilenschnittstelle die `VMAccessForLinux`-Erweiterung auf, und geben Sie die entsprechende JSON-Datei an, um Ihre SSHD-Verbindung zurückzusetzen. Das folgende Beispiel setzt SSHD auf dem virtuellen Computer mit dem Namen `myVM` in `myResourceGroup` zurück. Verwenden Sie Ihre eigenen Werte wie folgt:
+Rufen Sie dann über die Azure-Befehlszeilenschnittstelle die `VMAccessForLinux`-Erweiterung auf, und geben Sie die entsprechende JSON-Datei an, um Ihre SSHD-Verbindung zurückzusetzen. Im folgenden Beispiel wird mithilfe von [az vm extension set](/cli/azure/vm/extension#set) die SSHD auf der VM mit dem Namen `myVM` in `myResourceGroup` zurückgesetzt. Verwenden Sie Ihre eigenen Werte wie folgt:
 
 ```azurecli
-azure vm extension set myResourceGroup myVM \
-    VMAccessForLinux Microsoft.OSTCExtensions "1.2" \
-    --private-config-path PrivateConf.json
+az vm extension set --resource-group philmea --vm-name Ubuntu \
+    --name VMAccessForLinux --publisher Microsoft.OSTCExtensions --version 1.2 --settings settings.json
 ```
 
 ### <a name="reset-ssh-credentials-for-a-user"></a>Zurücksetzen von SSH-Anmeldeinformationen für einen Benutzer
-Wenn SSHD ordnungsgemäß funktioniert, können Sie die Anmeldeinformationen für einen bestimmten Benutzer zurücksetzen. Um das Kennwort für einen Benutzer zurückzusetzen, erstellen Sie eine Datei namens `PrivateConf.json`. Das folgende Beispiel setzt die Anmeldeinformationen für `myUsername` auf den in `myPassword` angegebenen Wert zurück. Geben Sie folgende Zeilen in Ihre `PrivateConf.json`-Datei ein, und verwenden Sie dabei Ihre eigenen Werte:
+Wenn SSHD ordnungsgemäß funktioniert, können Sie die Anmeldeinformationen für einen bestimmten Benutzer zurücksetzen. Um das Kennwort für einen Benutzer zurückzusetzen, erstellen Sie eine Datei namens `settings.json`. Das folgende Beispiel setzt die Anmeldeinformationen für `myUsername` auf den in `myPassword` angegebenen Wert zurück. Geben Sie folgende Zeilen in Ihre `settings.json`-Datei ein, und verwenden Sie dabei Ihre eigenen Werte:
 
 ```json
 {
@@ -120,7 +126,7 @@ Wenn SSHD ordnungsgemäß funktioniert, können Sie die Anmeldeinformationen fü
 }
 ```
 
-Um den SSH-Schlüssel für einen Benutzer zurückzusetzen, erstellen Sie zuerst eine Datei namens `PrivateConf.json`. Das folgende Beispiel setzt auf dem virtuellen Computer `myVM` in `myResourceGroup` die Anmeldeinformationen für den Benutzer `myUsername` auf den in `myPassword` angegebenen Wert zurück. Geben Sie folgende Zeilen in Ihre `PrivateConf.json`-Datei ein, und verwenden Sie dabei Ihre eigenen Werte:
+Um den SSH-Schlüssel für einen Benutzer zurückzusetzen, erstellen Sie zuerst eine Datei namens `settings.json`. Das folgende Beispiel setzt auf dem virtuellen Computer `myVM` in `myResourceGroup` die Anmeldeinformationen für den Benutzer `myUsername` auf den in `myPassword` angegebenen Wert zurück. Geben Sie folgende Zeilen in Ihre `settings.json`-Datei ein, und verwenden Sie dabei Ihre eigenen Werte:
 
 ```json
 {
@@ -131,9 +137,8 @@ Um den SSH-Schlüssel für einen Benutzer zurückzusetzen, erstellen Sie zuerst 
 Nachdem Sie die JSON-Datei erstellt haben, verwenden Sie die Azure-Befehlszeilenschnittstelle, um die `VMAccessForLinux`-Erweiterung aufzurufen, mit der Sie unter Angabe der JSON-Datei die SSH-Benutzeranmeldeinformationen zurücksetzen können. Das folgende Beispiel setzt Anmeldeinformationen auf dem virtuellen Computer mit dem Namen `myVM` in `myResourceGroup` zurück. Verwenden Sie Ihre eigenen Werte wie folgt:
 
 ```azurecli
-azure vm extension set myResourceGroup myVM \
-    VMAccessForLinux Microsoft.OSTCExtensions "1.2" \
-    --private-config-path PrivateConf.json
+az vm extension set --resource-group philmea --vm-name Ubuntu \
+    --name VMAccessForLinux --publisher Microsoft.OSTCExtensions --version 1.2 --settings settings.json
 ```
 
 ## <a name="use-the-azure-cli-10"></a>Verwenden der Azure-Befehlszeilenschnittstelle 1.0
@@ -236,7 +241,7 @@ Führen Sie die folgenden Schritte aus, um die häufigsten SSH-Verbindungsfehler
   * Erstellen eines *sudo*-Benutzerkontos
   * Zurücksetzen der SSH-Konfiguration
 * Überprüfen Sie die Ressourcenintegrität des virtuellen Computers auf etwaige Plattformprobleme.<br>
-     Wählen Sie Ihren virtuellen Computer, und scrollen Sie nach unten zu **Einstellungen** > **Integrität überprüfen**.
+     Wählen Sie Ihre VM aus, und scrollen Sie nach unten zu **Einstellungen** > **Integrität überprüfen**.
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 * Wenn Sie nach Ausführung der Schritte immer noch nicht keine SSH-Verbindung mit Ihrem virtuellen Computer herstellen können, finden Sie unter [Ausführliche Schritte zur Problembehandlung bei SSH](detailed-troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) weitere Hinweise, damit Sie das Problem lösen können.

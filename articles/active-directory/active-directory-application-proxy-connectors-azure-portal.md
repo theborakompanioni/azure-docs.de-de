@@ -11,59 +11,60 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/04/2017
+ms.date: 08/04/2017
 ms.author: kgremban
-ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
-ms.openlocfilehash: 39049c7a1e2a4d61ef62bd06cda9ef1bb2c50c0b
+ms.reviewer: harshja
+ms.custom: H1Hack27Feb2017; it-pro
+ms.translationtype: HT
+ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
+ms.openlocfilehash: a65216e79b7e89da1c9ccd6d002cb7ab6b18190f
 ms.contentlocale: de-de
-ms.lasthandoff: 05/05/2017
+ms.lasthandoff: 08/07/2017
 
 ---
 
 # <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>Veröffentlichen von Anwendungen in getrennten Netzwerken und an getrennten Standorten mithilfe von Connectorgruppen
 > [!div class="op_single_selector"]
 > * [Azure-Portal](active-directory-application-proxy-connectors-azure-portal.md)
-> * [Klassisches Azure-Portal](active-directory-application-proxy-connectors.md)
+> * [klassischen Azure-Portal](active-directory-application-proxy-connectors.md)
 >
 
-## <a name="azure-ad-application-proxy-and-connector-groups"></a>Azure AD-Anwendungsproxy und Connectorgruppen
+Kunden verwenden den Azure AD-Anwendungsproxy für immer mehr Szenarien und Anwendungen. Daher haben wir den Anwendungsproxy durch Aktivieren weiterer Topologien noch flexibler gestaltet. Sie können Anwendungsproxy-Connectorgruppen erstellen, um bestimmte Connectors bestimmten Anwendungen zuzuweisen. Diese Funktion bietet Ihnen mehr Kontrolle sowie Möglichkeiten zur Optimierung der Anwendungsproxybereitstellung. 
 
-Kunden verwenden den Azure AD-Anwendungsproxy für immer mehr Szenarien und Anwendungen. Daher haben wir den Anwendungsproxy durch Aktivieren weiterer Topologien noch flexibler gestaltet. Sie können Anwendungsproxy-Connectorgruppen erstellen – eine neue Funktion, um bestimmte Connectors bestimmten Anwendungen zuzuweisen. Diese Funktion sorgt für eine Vielzahl von Anwendungsfällen für den Anwendungsproxy, die bisher nicht möglich waren. 
+Jeder Anwendungsproxyconnector wird einer Connectorgruppe zugewiesen. Alle Connectors, die zur gleichen Connectorgruppe gehören, fungieren als separate Einheit für Hochverfügbarkeit und Lastenausgleich. Alle Connectors gehören zu einer Connectorgruppe. Wenn Sie keine Gruppen erstellen, befinden sich alle Ihre Connectors in einer Standardgruppe. Ihr Administrator kann im Azure-Portal neue Gruppen erstellen und ihnen Connectors zuweisen. 
 
-Das grundlegende Konzept besteht darin, dass jeder Anwendungsproxyconnector einer Connectorgruppe zugewiesen wird. Alle Connectors, die zur gleichen Connectorgruppe gehören, fungieren als separate Gruppe für Hochverfügbarkeit und Lastenausgleich. Standardmäßig gehören alle Connectors zu einer Standardgruppe. Ein Administrator kann im Azure-Portal neue Gruppen erstellen und deren Zuweisungen ändern. 
+Alle Anwendungen werden einer Connectorgruppe zugewiesen. Wenn Sie keine Gruppen erstellen, befinden sich alle Ihre Anwendungen in einer Standardgruppe. Wenn Sie jedoch Ihre Connectors gruppieren, können Sie festlegen, dass jede Anwendung mit einer bestimmten Connectorgruppe arbeitet. In diesem Fall bedienen nur die Connectors in dieser Gruppe die Anforderungen der Anwendung. Diese Funktion ist nützlich, wenn Ihre Anwendungen an verschiedenen Standorten gehostet werden. Sie können Connectorgruppen standortabhängig erstellen, sodass Anwendungen immer von Connectors bedient werden, die physisch nahe bei ihnen liegen.
 
-Standardmäßig werden alle Anwendungen einer Standardconnectorgruppe zugewiesen. Wenn der Administrator nichts ändert, verhält sich das System weiterhin wie zuvor. In diesem Fall umfassen alle der Standardconnectorgruppe zugewiesenen Anwendungen alle Connectors. Wenn Sie jedoch Ihre Connectors gruppieren, können Sie festlegen, dass jede Anwendung mit einer bestimmten Connectorgruppe arbeitet. In diesem Fall bedienen nur die Connectors in dieser Gruppe die Anforderungen der Anwendung.
+>[!TIP] 
+>Wenn Sie über eine umfangreiche Anwendungsproxy-Bereitstellung verfügen, weisen Sie der Standardconnectorgruppe keine Anwendungen zu. Auf diese Weise erhalten neue Connectors keinen Livedatenverkehr, bis Sie sie einer aktiven Connectorgruppe zuordnen. Mit dieser Konfiguration können Sie Connectors auch in einen Ruhezustand versetzen, indem Sie sie wieder in die Standardgruppe verschieben, damit Sie die Wartung ohne Auswirkungen auf Ihre Benutzer ausführen können.
 
-
->[!NOTE] 
->Da neue Connectors automatisch einer Standardconnectorgruppe zugewiesen werden, empfiehlt es sich in großen Bereitstellungen, der Standardgruppe keine Anwendungen zuzuweisen. So empfangen die neuen Connectors nach der Installation nicht sofort Livedatenverkehr. Erst wenn Sie den Connector einer der aktiven Gruppen zuweisen, kann dieser Livedatenverkehr verarbeiten. Auf diese Weise können Sie auch Connectors zu Wartungszwecken in einen Ruhezustand versetzen.
->
-
-## <a name="prerequisite-create-your-connector-groups"></a>Voraussetzung: Erstellen der Connectorgruppen
+## <a name="prerequisites"></a>Voraussetzungen
 Um Connectors zu gruppieren, müssen Sie sicherstellen, dass [mehrere Connectors installiert sind](active-directory-application-proxy-enable.md). Wenn Sie einen neuen Connector installieren, wird diese automatisch der Connectorgruppe **Standard** hinzugefügt.
 
-## <a name="step-1-create-connector-groups"></a>Schritt 1: Erstellen von Connectorgruppen
-Sie können beliebig viele Connectorgruppen erstellen. Das Erstellen von Connectorgruppen erfolgt im [Azure-Portal](https://portal.azure.com).
+## <a name="create-connector-groups"></a>Erstellen von Connectorgruppen
+Erstellen Sie mit diesen Schritten beliebig viele Connectorgruppen. 
 
-1. Wählen Sie **Azure Active Directory** aus, um zum Verwaltungsdashboard für Ihr Verzeichnis zu wechseln. Wählen Sie dort **Unternehmensanwendungen** > **Anwendungsproxy** aus.
-2. Klicken Sie auf die Schaltfläche **Connectorgruppen** . Das Blatt „Neue Connectorgruppe“ wird geöffnet.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
+1. Wählen Sie **Azure Active Directory** > **Unternehmensanwendungen** > **Anwendungsproxy** aus.
+2. Wählen Sie **Neue Connectorgruppe**. Das Blatt „Neue Connectorgruppe“ wird geöffnet.
+
+   ![Neue Connectorgruppe auswählen](./media/active-directory-application-proxy-connectors-azure-portal/new-group.png)
+
 3. Bennen Sie Ihre neue Connectorgruppe, und verwenden Sie das Dropdownmenü, um auszuwählen, welche Connectoren dieser Gruppe angehören sollen.
-4. Wählen Sie **Speichern** , wenn Sie die Konfiguration Ihrer Connectorgruppe abgeschlossen haben.
+4. Wählen Sie **Speichern** aus.
 
-## <a name="step-2-assign-applications-to-your-connector-groups"></a>Schritt 2: Zuweisen von Anwendungen zu Ihren Connectorgruppen
-Der letzte Schritt besteht darin, jede Anwendung der Connectorgruppe zuzuweisen, von der sie bedient wird.
+## <a name="assign-applications-to-your-connector-groups"></a>Zuweisen von Anwendungen zu Ihren Connectorgruppen
+Verwenden Sie diese Schritte für jede Anwendung, die Sie mit dem Anwendungsproxy veröffentlicht haben. Sie können eine Anwendung einer Connectorgruppe zuweisen, wenn Sie sie zuerst veröffentlichen, oder Sie können mit diesen Schritten jederzeit die Zuweisung ändern.   
 
 1. Klicken Sie im Verwaltungsdashboard Ihres Verzeichnisses auf **Unternehmensanwendungen** > **Alle Anwendungen** > Anwendung, die Sie einer Connectorgruppe zuweisen möchten > **Anwendungsproxy**.
-2. Wählen Sie unter **Connectorgruppe**mithilfe des Dropdownmenüs die Gruppe aus, die die Anwendung verwenden soll.
+2. Wählen Sie im Dropdownmenü **Connectorgruppe** die Gruppe aus, die die Anwendung verwenden soll.
 3. Klicken Sie auf **Speichern** , um die Änderungen zu übernehmen.
 
 ## <a name="use-cases-for-connector-groups"></a>Anwendungsfälle für Connectorgruppen 
 
 Connectorgruppen sind unter anderem in folgenden Szenarien nützlich:
 
-###<a name="sites-with-multiple-interconnected-datacenters"></a>Standorte mit mehreren verbundenen Rechenzentren
+### <a name="sites-with-multiple-interconnected-datacenters"></a>Standorte mit mehreren verbundenen Rechenzentren
 
 Viele Organisationen verfügen über mehrere miteinander verbundene Rechenzentren. In diesem Fall soll jeweils möglichst viel Datenverkehr innerhalb des Rechenzentrums verlaufen, da Verbindungen zwischen Rechenzentren für gewöhnlich teuer und langsam sind. Sie können in jedem Rechenzentrum Connectors bereitstellen, die jeweils nur die lokalen Anwendungen bedienen. Mit diesem Vorgehen werden bei völliger Transparenz für den Benutzer die Verbindungen zwischen den Rechenzentren minimiert.
 
@@ -89,14 +90,14 @@ Dies kann ein Problem werden, da viele Organisationen mehrere Cloudanbieter verw
 
 Die meisten Kunden, die den Anwendungsproxy bereitgestellt haben, verwenden dessen Funktionen zum einmaligen Anmelden (Single Sign-On, SSO) mithilfe der eingeschränkten Kerberos-Delegierung (Kerberos Constrained Delegation, KCD). Zu diesem Zweck müssen die Computer des Connectors einer Domäne beigetreten sein, die die Benutzer an die Anwendung delegieren kann. Die eingeschränkte Kerberos-Delegierung unterstützt gesamtstrukturübergreifende Funktionen. In Unternehmen jedoch, die über Umgebungen mit mehreren Gesamtstrukturen ohne gegenseitige Vertrauensstellung verfügen, kann kein einzelner Connector für alle Gesamtstrukturen verwendet werden. 
 
-In diesem Fall kann für jede Gesamtstruktur ein spezifischer Connector bereitgestellt und für Anwendungen eingerichtet werden, die nur für die Benutzer dieser bestimmten Gesamtstruktur veröffentlicht wurden. Jede Connectorgruppe repräsentiert eine andere Gesamtstruktur. Während der Mandant und der größte Teil der Funktionalität für alle Gesamtstrukturen gleich sind, können Benutzer mithilfe von Azure AD-Gruppen zu ihren spezifischen Gesamtstrukturanwendungen zugewiesen werden.
+In diesem Fall kann für jede Gesamtstruktur ein spezifischer Connector bereitgestellt und für Anwendungen eingerichtet werden, die nur für die Benutzer dieser bestimmten Gesamtstruktur veröffentlicht wurden. Jede Connectorgruppe repräsentiert eine andere Gesamtstruktur. Während der Mandant und der größte Teil der Funktionalität für alle Gesamtstrukturen gleich sind, können Benutzer mithilfe von Azure AD-Gruppen ihren spezifischen Gesamtstrukturanwendungen zugewiesen werden.
  
 ### <a name="disaster-recovery-sites"></a>Standorte für die Notfallwiederherstellung
 
 Bei Standorten für die Notfallwiederherstellung gibt es zwei verschiedene Herangehensweisen, je nach Implementierung Ihrer Standorte:
 
 * Wenn Ihr Standort für die Notfallwiederherstellung im Aktiv-Aktiv-Modus erstellt wurde und exakt die gleichen Netzwerk- und AD-Einstellungen wie Ihr Hauptstandort aufweist, können Sie die Connectors im Standort für die Notfallwiederherstellung in der gleichen Connectorgruppe wie für den Hauptstandort erstellen. So kann Azure AD Failover selbstständig erkennen.
-* Wenn Ihr Standort für die Notfallwiederherstellung von Ihrem Hauptstandort getrennt ist, können Sie im Standort für die Notfallwiederherstellung eine andere Connectorgruppe erstellen. Hierbei gibt es zwei Möglichkeiten: Sie erstellen weitere Anwendungen, oder Sie leiten die vorhandene Anwendung nach Bedarf an die Connectorgruppe für die Notfallwiederherstellung weiter.
+* Wenn Ihr Standort für die Notfallwiederherstellung von Ihrem Hauptstandort getrennt ist, können Sie im Standort für die Notfallwiederherstellung eine andere Connectorgruppe erstellen. Hierbei gibt es zwei Möglichkeiten: Sie erstellen Sicherungsanwendungen, oder Sie leiten die vorhandene Anwendung nach Bedarf an die Connectorgruppe für die Notfallwiederherstellung weiter.
  
 ### <a name="serve-multiple-companies-from-a-single-tenant"></a>Bereitstellen von Diensten für mehrere Unternehmen über einen einzigen Mandanten
 
@@ -129,9 +130,9 @@ Im folgenden Beispiel verfügt das Unternehmen über zwei Rechenzentren: A und B
 ![Azure AD – keine Connectorgruppen](./media/application-proxy-publish-apps-separate-networks/application-proxy-sample-config-3.png)
  
 ## <a name="next-steps"></a>Nächste Schritte
-* [Aktivieren des Anwendungsproxys](active-directory-application-proxy-enable.md)
-* [Aktivieren der einmaligen Anmeldung](active-directory-application-proxy-sso-using-kcd.md)
-* [Aktivieren des bedingten Zugriffs](active-directory-application-proxy-conditional-access.md)
-* [Problembehandlung von Anwendungsproxys](active-directory-application-proxy-troubleshoot.md)
+
+* [Grundlegendes zu Azure AD-Anwendungsproxyconnectors](application-proxy-understand-connectors.md)
+* [Aktivieren der einmaligen Anmeldung](application-proxy-sso-overview.md)
+
 
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/03/2017
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: 303cb9950f46916fbdd58762acd1608c925c1328
-ms.openlocfilehash: 76dfd1c2b2f17e6bc798f4313c4dc4817d2136a4
-ms.lasthandoff: 04/04/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
+ms.openlocfilehash: ba756d3262b9780c5701e69faad860ba32bba08b
+ms.contentlocale: de-de
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="create-an-application-gateway-using-path-based-routing"></a>Erstellen eines Anwendungsgateways mit pfadbasiertem Routing
@@ -26,8 +26,9 @@ ms.lasthandoff: 04/04/2017
 > [!div class="op_single_selector"]
 > * [Azure-Portal](application-gateway-create-url-route-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-create-url-route-arm-ps.md)
+> * [Azure CLI 2.0](application-gateway-create-url-route-cli.md)
 
-Mit Routing auf URL-Pfadbasis können Sie Routen basierend auf dem URL-Pfad einer HTTP-Anforderung zuordnen. Es wird überprüft, ob eine Route zu einem Back-End-Pool für die URL konfiguriert ist, die im Anwendungsgateway angezeigt wird, und der Netzwerkverkehr wird an den definierten Back-End-Pool gesendet. Ein gängiges Szenario für URL-basiertes Routing ist der Lastenausgleich von Anforderungen für verschiedene Inhaltstypen auf verschiedene Back-End-Serverpools.
+Mit Routing auf URL-Pfadbasis können Sie Routen basierend auf dem URL-Pfad einer HTTP-Anforderung zuordnen. Es wird überprüft, ob eine Route zu einem Back-End-Pool für die URL konfiguriert ist, die im Anwendungsgateway angezeigt wird. Dann wird der Netzwerkdatenverkehr an den definierten Back-End-Pool gesendet. Ein gängiges Szenario für URL-basiertes Routing ist der Lastenausgleich von Anforderungen für verschiedene Inhaltstypen auf verschiedene Back-End-Serverpools.
 
 Mit dem URL-basierten Routing wird ein neuer Regeltyp für Anwendungsgateways eingeführt. Anwendungsgateways verfügen über zwei Regeltypen: Basisrouting und PathBasedRouting. Der Basisregeltyp bietet einen Roundrobin-Dienst für die Back-End-Pools, während PathBasedRouting neben der Roundrobin-Verteilung auch Pfadmuster der Anforderungs-URL beim Auswählen des Back-End-Pools berücksichtigt.
 
@@ -35,7 +36,7 @@ Mit dem URL-basierten Routing wird ein neuer Regeltyp für Anwendungsgateways ei
 
 Im folgenden Beispiel verarbeitet das Application Gateway Datenverkehr für „contoso.com“ mit zwei Back-End-Pools: Video-Serverpool und Image-Serverpool.
 
-Anforderungen für „http://contoso.com/image*“ werden an den Imageserverpool (pool1) geleitet, Anforderungen für „http://contoso.com/video*“ an den Videoserverpool (pool2). Wenn keines der Pfadmuster zutrifft, wird ein Standardserverpool (pool1) wird ausgewählt.
+Anforderungen für „http://contoso.com/image*“ werden an den Imageserverpool (pool1) geleitet, Anforderungen für „http://contoso.com/video*“ an den Videoserverpool (pool2). Wenn keines der Pfadmuster zutrifft, wird ein Standardserverpool (pool1) ausgewählt.
 
 ![URL-Route](./media/application-gateway-create-url-route-arm-ps/figure1.png)
 
@@ -110,7 +111,7 @@ Alternativ können Sie auch Tags für eine Ressourcengruppe für das Application
 $resourceGroup = New-AzureRmResourceGroup -Name appgw-RG -Location "West US" -Tags @{Name = "testtag"; Value = "Application Gateway URL routing"} 
 ```
 
-Der Azure-Ressourcen-Manager erfordert, dass alle Ressourcengruppen einen Speicherort angeben. Dieser wird als Standardspeicherort für Ressourcen in dieser Ressourcengruppe verwendet. Stellen Sie sicher, dass alle Befehle, mit denen ein Anwendungsgateway erstellt wird, die gleiche Ressourcengruppe verwenden.
+Der Azure Resource Manager erfordert, dass alle Ressourcengruppen einen Speicherort angeben. Diese Ressourcengruppe wird als Standardspeicherort für Ressourcen in dieser Ressourcengruppe verwendet. Stellen Sie sicher, dass alle Befehle, mit denen ein Anwendungsgateway erstellt wird, die gleiche Ressourcengruppe verwenden.
 
 Im obigen Beispiel haben wir eine Ressourcengruppe namens „appgw-RG“ mit dem Standort „USA, Westen“ erstellt.
 
@@ -149,7 +150,7 @@ $subnet=$vnet.Subnets[0]
 
 ## <a name="create-a-public-ip-address-for-the-front-end-configuration"></a>Erstellen der öffentlichen IP-Adresse für die Front-End-Konfiguration
 
-Erstellen Sie eine öffentliche IP-Ressource namens **publicIP01** in der Ressourcengruppe **appgw-rg** für die Region „USA, Westen“. Das Anwendungsgateway kann eine öffentliche IP-Adresse, eine interne IP-Adresse oder beide Adressen verwenden, um Anforderungen für den Lastenausgleich zu empfangen.  In diesem Beispiel wird nur eine öffentliche IP-Adresse verwendet. Im folgenden Beispiel wird für die Erstellung der öffentlichen IP-Adresse kein DNS-Name konfiguriert.  Das Anwendungsgateway unterstützt keine benutzerdefinierten DNS-Namen für öffentliche IP-Adressen.  Falls für einen öffentlichen Endpunkt ein benutzerdefinierter Name erforderlich ist, muss ein CNAME-Eintrag erstellt werden, um auf den automatisch generierten DNS-Namen für die öffentliche IP-Adresse zu verweisen.
+Erstellen Sie eine öffentliche IP-Ressource namens **publicIP01** in der Ressourcengruppe **appgw-rg** für die Region „USA, Westen“. Das Anwendungsgateway kann eine öffentliche IP-Adresse und/oder eine interne IP-Adresse verwenden, um Anforderungen für den Lastenausgleich zu empfangen.  In diesem Beispiel wird nur eine öffentliche IP-Adresse verwendet. Im folgenden Beispiel wird für die Erstellung der öffentlichen IP-Adresse kein DNS-Name konfiguriert.  Das Anwendungsgateway unterstützt keine benutzerdefinierten DNS-Namen für öffentliche IP-Adressen.  Falls für einen öffentlichen Endpunkt ein benutzerdefinierter Name erforderlich ist, muss ein CNAME-Eintrag erstellt werden, um auf den automatisch generierten DNS-Namen für die öffentliche IP-Adresse zu verweisen.
 
 ```powershell
 $publicip = New-AzureRmPublicIpAddress -ResourceGroupName appgw-RG -name publicIP01 -location "West US" -AllocationMethod Dynamic
@@ -201,7 +202,7 @@ $fipconfig01 = New-AzureRmApplicationGatewayFrontendIPConfig -Name "frontend1" -
 
 ### <a name="step-5"></a>Schritt 5
 
-Konfigurieren Sie den Front-End-Port für ein Application Gateway. Das Front-End-Port-Konfigurationsobjekt wird von einem Listener verwendet, um den Port zu definieren, an dem das Anwendungsgateway auf Datenverkehr des Listeners lauscht.
+Konfigurieren Sie den Front-End-Port für ein Application Gateway. Das Front-End-Port-Konfigurationsobjekt wird von einen Listener verwendet, um den Port zu definieren, an dem das Anwendungsgateway auf Datenverkehr des Listeners lauscht.
 
 ```powershell
 $fp01 = New-AzureRmApplicationGatewayFrontendPort -Name "fep01" -Port 80
@@ -217,12 +218,12 @@ $listener = New-AzureRmApplicationGatewayHttpListener -Name "listener01" -Protoc
 
 ### <a name="step-7"></a>Schritt 7
 
-Konfigurieren Sie URL-Regelpfade für die Back-End-Pools. Dieser Schritt konfiguriert den relativen Pfad, der vom Anwendungsgateway verwendet wird, um die Zuordnung zwischen dem URL-Pfad und dem Back-End-Pool zu definieren, der zum Verarbeiten des eingehenden Datenverkehrs zugewiesen wurde.
+Konfigurieren Sie URL-Regelpfade für die Back-End-Pools. Dieser Schritt konfiguriert den relativen Pfad, der vom Anwendungsgateway verwendet wird, und definiert die Zuordnung zwischen dem URL-Pfad und dem Back-End-Pool, der zum Verarbeiten des eingehenden Datenverkehrs zugewiesen wurde.
 
 > [!IMPORTANT]
 > Jeder Pfad muss mit „/“ beginnen, und ein „\*“ ist nur am Ende zulässig. Gültige Beispiele sind „/xyz“, „/xyz*“ oder „/xyz/*“. Die Zeichenfolge, die in den Pfadabgleicher eingegeben wird, enthält keinen Text nach dem ersten „?“ oder „#“, und diese Zeichen sind nicht zulässig. 
 
-Im folgenden Beispiel werden zwei Regeln erstellt: eine für den „/image/“-Pfad, der Datenverkehr an Back-End „pool1“ leitet, und eine andere für den „/video/“-Pfad, der Datenverkehr an Back-End „pool2“ leitet. Diese Regeln stellen sicher, dass der Datenverkehr für jeden Satz URLs an das Back-End weitergeleitet wird. Beispiel: „http://contoso.com/image/figure1.jpg“ wird an „pool1“ weitergeleitet, „http://contoso.com/video/example.mp4“ an „pool2“.
+Im folgenden Beispiel werden zwei Regeln erstellt: eine für den Pfad „/image/“, der Datenverkehr an Back-End „pool1“ leitet, und eine andere für den Pfad „/video/“, der Datenverkehr an Back-End „pool2“ leitet. Diese Regeln stellen sicher, dass der Datenverkehr für jeden Satz URLs an das Back-End weitergeleitet wird. Beispiel: „http://contoso.com/image/figure1.jpg“ wird an „pool1“ weitergeleitet, „http://contoso.com/video/example.mp4“ an „pool2“.
 
 ```powershell
 $imagePathRule = New-AzureRmApplicationGatewayPathRuleConfig -Name "pathrule1" -Paths "/image/*" -BackendAddressPool $pool1 -BackendHttpSettings $poolSetting01
@@ -262,7 +263,7 @@ $appgw = New-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-
 
 ## <a name="get-application-gateway-dns-name"></a>Abrufen des DNS-Namens des Anwendungsgateways
 
-Nach dem Erstellen des Gateways wird das Front-End für die Kommunikation konfiguriert. Wenn Sie eine öffentliche IP-Adresse verwenden, wird das Anwendungsgateway ein dynamisch zugewiesener DNS-Namen benötigt, der kein Anzeigename ist. Um sicherzustellen, dass die Endbenutzer auf das Anwendungsgateway zugreifen können, kann mit einem CNAME-Eintrag auf den öffentlichen Endpunkt des Anwendungsgateways verwiesen werden. [Konfigurieren eines benutzerdefinierten Domänennamens in Azure](../cloud-services/cloud-services-custom-domain-name-portal.md) Rufen Sie zum Konfigurieren des CNAME-Eintrags für die Front-End-IP mithilfe des PublicIPAddress-Elements, das an das Anwendungsgateway angefügt ist, Details zum Anwendungsgateway und dem zugeordneten IP/DNS-Namen ab. Verwenden Sie den DNS-Namen des Anwendungsgateways zum Erstellen eines CNAME-Eintrags, der die beiden Webanwendungen an diesen DNS-Namen verweist. Die Verwendung von A-Einträgen wird nicht empfohlen, da sich die VIP beim Neustart des Anwendungsgateways möglicherweise verändert.
+Nach dem Erstellen des Gateways wird das Front-End für die Kommunikation konfiguriert. Wenn Sie eine öffentliche IP-Adresse verwenden, wird das Anwendungsgateway ein dynamisch zugewiesener DNS-Namen benötigt, der kein Anzeigename ist. Um sicherzustellen, dass die Endbenutzer auf das Anwendungsgateway zugreifen können, kann mit einem CNAME-Eintrag auf den öffentlichen Endpunkt des Anwendungsgateways verwiesen werden. [Konfigurieren eines benutzerdefinierten Domänennamens in Azure](../cloud-services/cloud-services-custom-domain-name-portal.md) Rufen Sie zum Konfigurieren des CNAME-Eintrags für die Front-End-IP mithilfe des PublicIPAddress-Elements, das an das Anwendungsgateway angefügt ist, Details zum Anwendungsgateway und dem zugeordneten IP/DNS-Namen ab. Der DNS-Name des Anwendungsgateways sollte verwendet werden, um einen CNAME-Eintrag zu erstellen. Die Verwendung von A-Einträgen wird nicht empfohlen, da sich die VIP beim Neustart des Anwendungsgateways möglicherweise verändert.
 
 ```powershell
 Get-AzureRmPublicIpAddress -ResourceGroupName appgw-RG -Name publicIP01

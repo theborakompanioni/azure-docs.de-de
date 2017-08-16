@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: aelnably;wesmc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: 3fb0f6b26f36ef4044c9733ace05c4f59909ddda
+ms.translationtype: HT
+ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
+ms.openlocfilehash: ff4f4ecd12bc26fcc44a20a193d73f952ed56f1a
 ms.contentlocale: de-de
-ms.lasthandoff: 06/16/2017
-
+ms.lasthandoff: 08/07/2017
 
 ---
 
@@ -56,7 +55,7 @@ Wenn Sie eine Frage haben, kommentieren Sie den Artikel, und wir werden so bald 
 
 **F:** Meine Web-App verwendet nach dem Aktualisieren des Images auf DockerHub noch ein altes Docker-Containerimage. Unterstützen Sie Continuous Integration/Bereitstellung von benutzerdefinierten Containern?
 
-**A:** Informationen zum Einrichten von Continuous Integration/Deployment für DockerHub-Images finden Sie im Artikel [Docker Hub Continuous Deployment with Azure Web App on Linux](./app-service-linux-ci-cd.md) (Docker Hub Continuous Deployment mit Azure-Web-App unter Linux). Bei privaten Registrierungen können Sie den Container aktualisieren, indem Sie Ihre Web-App beenden und dann wieder starten. Sie können auch eine Dummyeinstellung in der Anwendung ändern oder hinzufügen, um die Aktualisierung Ihres Containers zu erzwingen.
+**A:** Informationen zum Einrichten von Continuous Integration/Deployment für Azure Container Registry- oder DockerHub-Images finden Sie im Artikel [Continuous Deployment mit Azure-Web-App unter Linux](./app-service-linux-ci-cd.md). Bei privaten Registrierungen können Sie den Container aktualisieren, indem Sie Ihre Web-App beenden und dann wieder starten. Sie können auch eine Dummyeinstellung in der Anwendung ändern oder hinzufügen, um die Aktualisierung Ihres Containers zu erzwingen.
 
 **Q:** Werden Stagingumgebungen unterstützt?
 
@@ -64,7 +63,7 @@ Wenn Sie eine Frage haben, kommentieren Sie den Artikel, und wir werden so bald 
 
 **F:** Kann ich **Web Deploy** zur Bereitstellung meiner Web-App verwenden?
 
-**A:** Ja, Sie müssen die App-Einstellung `UseWebDeployScm` auf `false` festlegen.
+**A:** Ja, Sie müssen die App-Einstellung `WEBSITE_WEBDEPLOY_USE_SCM` auf `false` festlegen.
 
 ## <a name="language-support"></a>Sprachunterstützung
 
@@ -104,7 +103,7 @@ Wenn Sie eine Frage haben, kommentieren Sie den Artikel, und wir werden so bald 
 
 **F:** Mein benutzerdefinierter Container lauscht auf einen anderen Port als Port 80. Wie kann ich meine App so konfigurieren, dass die Anforderungen an diesen Port weitergeleitet werden?
 
-**A:** Ports werden automatisch erkannt. Sie können auch eine Anwendungseinstellung mit dem Namen **PORT** und für diese den Wert der erwarteten Portnummer angeben.
+**A:** Ports werden automatisch erkannt. Zudem können Sie eine Anwendungseinstellung mit dem Namen **WEBSITES_PORT** mit dem Wert der erwarteten Portnummer angeben. Bei der Plattform wurde in der Vergangenheit die App-Einstellung `PORT` verwendet. Es ist geplant, die Verwendung dieser App-Einstellung als veraltet zu markieren und ausschließlich `WEBSITES_PORT` zu verwenden.
 
 **F:** Muss ich HTTPS in meinem benutzerdefinierten Container implementieren?
 
@@ -131,5 +130,5 @@ Wenn Sie eine Frage haben, kommentieren Sie den Artikel, und wir werden so bald 
 * [Erstellen von Web-Apps in Azure-Web-App unter Linux](app-service-linux-how-to-create-web-app.md)
 * [SSH-Unterstützung für Azure-Web-App unter Linux](./app-service-linux-ssh-support.md)
 * [Einrichten von Stagingumgebungen in Azure App Service](./web-sites-staged-publishing.md)
-* [Docker Hub Continuous Deployment mit Azure-Web-App unter Linux](./app-service-linux-ci-cd.md)
+* [Continuous Deployment mit Azure-Web-App unter Linux](./app-service-linux-ci-cd.md)
 
