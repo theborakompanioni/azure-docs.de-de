@@ -57,9 +57,10 @@
 ## Erkennen und Reagieren
 ### [Erkennungsfunktionen](security-center-detection-capabilities.md)
 ### [Verwalten von Sicherheitswarnungen](security-center-managing-and-responding-alerts.md)
+### [Arten von Sicherheitswarnungen](security-center-alerts-type.md)
+### [Warnungsüberprüfung](security-center-alert-validation.md)
 ### [Verwalten von Sicherheitsvorfällen](security-center-incident.md)
 ### [Azure-Protokollintegration](security-center-integrating-alerts-with-log-integration.md)
-### [Arten von Sicherheitswarnungen](security-center-alerts-type.md)
 ### [Bericht über Bedrohungen](security-center-threat-report.md)
 
 ## Problembehandlung
@@ -75,6 +76,7 @@
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/?category=security-identity)
 ## [Azure-Blog zu Sicherheit, Datenschutz und Compliance](http://blogs.msdn.com/b/azuresecurity/)
 ## [Preise](security-center-pricing.md)
+## [Preisrechner](https://azure.microsoft.com/pricing/calculator/)
 ## [Übersicht über den Dienst](https://azure.microsoft.com/services/security-center/)
 ## [Dienstupdates](https://azure.microsoft.com/updates/?product=security-center)
 ## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=security-center)
