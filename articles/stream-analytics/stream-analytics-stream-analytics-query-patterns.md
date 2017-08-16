@@ -1,11 +1,11 @@
 ---
 title: "Abfragebeispiele für gängige Verwendungsmuster in Stream Analytics | Microsoft Docs"
-description: 'Allgemeine Abfragemuster in Azure Stream Analytics  '
+description: Allgemeine Abfragemuster in Azure Stream Analytics
 keywords: Abfragebeispiele
 services: stream-analytics
 documentationcenter: 
 author: jeffstokes72
-manager: jhubbard
+manager: jenniehubbard
 editor: cgronlun
 ms.assetid: 6b9a7d00-fbcc-42f6-9cbb-8bbf0bbd3d0e
 ms.service: stream-analytics
@@ -13,23 +13,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 03/28/2017
-ms.author: jeffstok
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: 3eb5d7e7198dbfbb8ffe47728d0fa532c49a294c
+ms.date: 08/08/2017
+ms.author: jenniehubbard
+ms.translationtype: HT
+ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
+ms.openlocfilehash: bdaaf8fe6d18ba9dcb533864e691f11272dc9f9f
 ms.contentlocale: de-de
-ms.lasthandoff: 07/04/2017
-
+ms.lasthandoff: 08/10/2017
 
 ---
 # <a name="query-examples-for-common-stream-analytics-usage-patterns"></a>Abfragebeispiele für gängige Stream Analytics-Verwendungsmuster
 ## <a name="introduction"></a>Einführung
-Abfragen in Azure Stream Analytics werden in einer SQL-ähnlichen Abfragesprache gestellt, die im [Stream Analytics Query Language Reference](https://msdn.microsoft.com/library/azure/dn834998.aspx) dokumentiert ist.  Dieser Artikel zeigt anhand von Praxisbeispielen Lösungen für mehrere weit verbreitete Abfragemuster.  Das Dokument wird nach und nach mit weiteren Mustern aktualisiert.
+Abfragen in Azure Stream Analytics werden in einer SQL-ähnlichen Abfragesprache ausgedrückt. Diese Abfragen sind im Handbuch [Referenz zur Stream Analytics-Abfragesprache](https://msdn.microsoft.com/library/azure/dn834998.aspx) dokumentiert. Dieser Artikel zeigt anhand von Praxisbeispielen Lösungen für mehrere weit verbreitete Abfragemuster. Das Dokument wird nach und nach mit weiteren Mustern aktualisiert.
 
-## <a name="query-example-data-type-conversions"></a>Abfragebeispiel: Konvertierungen von Datentypen
-**Beschreibung**: Definieren der Arten von Eigenschaften im Eingabedatenstrom.
-Beispiel: Das Fahrzeuggewicht ist im Eingabedatenstrom als Zeichenfolge angegeben und muss zur Summenbildung in INT konvertiert werden.
+## <a name="query-example-convert-data-types"></a>Abfragebeispiel: Konvertieren von Datentypen
+**Beschreibung**: Definieren der Arten von Eigenschaften im Eingabestream.
+Beispiel: Das Fahrzeuggewicht ist im Eingabestream als Zeichenfolge angegeben und muss zur Durchführung von **SUM** in **INT** konvertiert werden.
 
 **Eingabe**:
 
@@ -55,10 +54,11 @@ Beispiel: Das Fahrzeuggewicht ist im Eingabedatenstrom als Zeichenfolge angegebe
         Make,
         TumblingWindow(second, 10)
 
-**Erläuterung**: Verwenden Sie eine CAST-Anweisung für das Gewichtsfeld (Weight), um dessen Typ anzugeben. (Eine Liste mit unterstützten Datentypen finden Sie [hier](https://msdn.microsoft.com/library/azure/dn835065.aspx)).
+**Erläuterung**: Verwenden Sie im Feld **Gewichtung** eine **CAST**-Anweisung, um den jeweiligen Datentyp anzugeben. Die Liste der unterstützten Datentypen finden Sie unter [Datentypen (Azure Stream Analytics)](https://msdn.microsoft.com/library/azure/dn835065.aspx).
 
-## <a name="query-example-using-likenot-like-to-do-pattern-matching"></a>Abfragebeispiel: Musterabgleich mithilfe von „Like“/„Not like“
-**Beschreibung**: Sicherstellen, dass ein Feldwert des Ereignisses einem bestimmten Muster entspricht. Beispiel: Zurückgeben von Nummernschildern, die mit „A“ beginnen und mit „9“ enden.
+## <a name="query-example-use-likenot-like-to-do-pattern-matching"></a>Abfragebeispiel: Musterabgleich mithilfe von „Like“/„Not like“
+**Beschreibung**: Sicherstellen, dass ein Feldwert im Ereignis einem bestimmten Muster entspricht.
+Beispiel: Überprüfen des Ergebnisses, ob Nummernschilder zurückgegeben werden, die mit „A“ beginnen und mit „9“ enden.
 
 **Eingabe**:
 
@@ -84,10 +84,10 @@ Beispiel: Das Fahrzeuggewicht ist im Eingabedatenstrom als Zeichenfolge angegebe
     WHERE
         LicensePlate LIKE 'A%9'
 
-**Erläuterung**: Verwenden Sie die LIKE-Anweisung, um sicherzustellen, dass der Wert im Feld „LicensePlate“ mit „A“ beginnt, anschließend eine beliebige Zeichenfolge mit null oder mehr Zeichen enthält und dann mit „9“ endet. 
+**Erläuterung**: Verwenden Sie die **LIKE**-Anweisung, um den Feldwert von **LicensePlate** zu überprüfen. Dieser sollte mit „A“ beginnen, von einer leeren Zeichenfolge oder einer Zeichenfolge mit einer beliebigen Anzahl von Zeichen gefolgt werden und schließlich mit „9“ enden. 
 
 ## <a name="query-example-specify-logic-for-different-casesvalues-case-statements"></a>Abfragebeispiel: Logik für verschiedene Fälle/Werte (CASE-Anweisungen)
-**Beschreibung**: Angeben einer kriterienbasierten Berechnung für ein Feld.
+**Beschreibung**: Angeben einer abweichenden kriterienbasierten Berechnung für ein Feld.
 Beispiel: Bereitstellen einer Zeichenfolge, die beschreibt, wie viele Fahrzeuge der gleichen Marke vorbeigefahren sind (mit einem Sonderfall für „1“).
 
 **Eingabe**:
@@ -119,11 +119,11 @@ Beispiel: Bereitstellen einer Zeichenfolge, die beschreibt, wie viele Fahrzeuge 
         Make,
         TumblingWindow(second, 10)
 
-**Erläuterung**: Mit der CASE-Klausel kann auf der Grundlage einiger Kriterien (in unserem Fall die Fahrzeuganzahl im Aggregierungszeitraum) eine abweichende Berechnung angegeben werden.
+**Erläuterung**: Mit der **CASE**-Klausel kann auf der Grundlage einiger Kriterien (in unserem Fall der Fahrzeuganzahl im Aggregatfenster) eine abweichende Berechnung angegeben werden.
 
 ## <a name="query-example-send-data-to-multiple-outputs"></a>Abfragebeispiel: Senden von Daten an mehrere Ausgaben
 **Beschreibung**: Senden von Daten an mehrere Ausgabeziele über einen einzelnen Auftrag.
-Beispiel: Analysieren von Daten für eine schwellenwertbasierte Warnung und Archivieren aller Ereignisse im Blob-Speicher.
+Beispiel: Analysieren von Daten für eine schwellenwertbasierte Warnung und Archivieren aller Ereignisse in Blob Storage.
 
 **Eingabe**:
 
@@ -174,10 +174,11 @@ Beispiel: Analysieren von Daten für eine schwellenwertbasierte Warnung und Arch
     HAVING
         [Count] >= 3
 
-**Erläuterung**: Mit der INTO-Klausel wird Stream Analytics mitgeteilt, in welche Ausgabe die Daten aus dieser Anweisung geschrieben werden sollen.
-Bei der ersten Abfrage werden die eingegangenen Daten an eine Ausgabe namens „ArchiveOutput“ weitergereicht.
-Bei der zweiten Abfrage werden die Daten nach einer einfachen Aggregierung und Filterung an ein nachgelagertes Warnsystem gesendet.
-*Hinweis:* Sie können auch die Ergebnisse von CTEs (WITH-Anweisungen) in mehreren Ausgabeanweisungen wiederverwenden. Dies hat zudem den Vorteil, dass weniger Leser für die Eingabequelle geöffnet werden.
+**Erläuterung**: Mit der **INTO**-Klausel wird Stream Analytics mitgeteilt, in welche Ausgabe die Daten aus dieser Anweisung geschrieben werden sollen.
+Bei der ersten Abfrage werden die eingegangenen Daten an eine Ausgabe namens **ArchiveOutput** übergeben.
+Bei der zweiten Abfrage werden die Daten nach einer einfachen Aggregation und Filterung an ein nachgelagertes Warnsystem gesendet.
+
+Beachten Sie, dass die Ergebnisse der allgemeinen Tabellenausdrücke (Common Table Expressions, CTEs) (z.B. **WITH**-Anweisungen) in mehreren Ausgabeanweisungen auch wiederverwendet werden können. Diese Option hat den Vorteil, dass weniger Leser für die Eingabequelle geöffnet werden müssen.
 Beispiel: 
 
     WITH AllRedCars AS (
@@ -191,8 +192,8 @@ Beispiel:
     SELECT * INTO HondaOutput FROM AllRedCars WHERE Make = 'Honda'
     SELECT * INTO ToyotaOutput FROM AllRedCars WHERE Make = 'Toyota'
 
-## <a name="query-example-counting-unique-values"></a>Abfragebeispiel: Zählen eindeutiger Werte
-**Beschreibung**: Zählen der Anzahl eindeutiger Feldwerte, die im Datenstrom innerhalb eines bestimmten Zeitraums vorkommen.
+## <a name="query-example-count-unique-values"></a>Abfragebeispiel: Zählen eindeutiger Werte
+**Beschreibung**: Zählen der Anzahl eindeutiger Feldwerte, die im Stream innerhalb eines bestimmten Zeitfensters vorkommen.
 Beispiel: Wie viele individuelle Fahrzeugmarken passieren in einem Zeitraum von zwei Sekunden die Mautstation?
 
 **Eingabe**:
@@ -224,10 +225,12 @@ GROUP BY
 ````
 
 
-**Erläuterung:** COUNT (DISTINCT Make) gibt die Anzahl der unterschiedlichen Werte der Spalte „Make“ innerhalb eines Zeitfensters zurück.
+**Erläuterung:**
+**COUNT (DISTINCT Make)** gibt die Anzahl der unterschiedlichen Werte der Spalte **Make** innerhalb eines Zeitfensters zurück.
 
 ## <a name="query-example-determine-if-a-value-has-changed"></a>Abfragebeispiel: Ermitteln, ob ein Wert geändert wurde
-**Beschreibung**: Betrachten eines vorherigen Werts, um zu ermitteln, ob er sich vom aktuellen Wert unterscheidet. Beispiel: Handelt es sich beim aktuellen Fahrzeug auf der mautpflichtigen Straße um die gleiche Marke wie beim vorherigen Fahrzeug?
+**Beschreibung**: Überprüfen eines früheren Werts zur Bestimmung, ob er sich von dem aktuellen Wert unterscheidet.
+Beispiel: Weist das vorherige Fahrzeug auf der Mautstraße dieselbe Marke auf wie das aktuelle Fahrzeug?
 
 **Eingabe**:
 
@@ -252,9 +255,9 @@ GROUP BY
     WHERE
         LAG(Make, 1) OVER (LIMIT DURATION(minute, 1)) <> Make
 
-**Erläuterung**: Verwenden Sie „LAG“, um im Eingabedatenstrom einen Blick auf das vorherige Ereignis zu werfen und den Make-Wert zu ermitteln. Vergleichen Sie ihn dann mit dem Make-Wert des aktuellen Ereignisses, und geben Sie das Ereignis aus, falls sich die Werte unterscheiden.
+**Erläuterung**: Verwenden Sie **LAG**, um im Eingabestream einen Blick auf das vorherige Ereignis zu werfen und den **Make**-Wert zu ermitteln. Vergleichen Sie ihn dann mit dem **Make**-Wert des aktuellen Ereignisses, und geben Sie das Ereignis aus, falls sich die Werte unterscheiden.
 
-## <a name="query-example-find-first-event-in-a-window"></a>Abfragebeispiel: Ermitteln des ersten Ereignisses in einem Zeitraum
+## <a name="query-example-find-the-first-event-in-a-window"></a>Abfragebeispiel: Ermitteln des ersten Ereignisses in einem Zeitfenster
 **Beschreibung**: Ermitteln des jeweils ersten Fahrzeugs in einem Zehn-Minuten-Intervall.
 
 **Eingabe**:
@@ -308,7 +311,7 @@ GROUP BY
     WHERE 
         IsFirst(minute, 10) OVER (PARTITION BY Make) = 1
 
-## <a name="query-example-find-last-event-in-a-window"></a>Abfragebeispiel: Ermitteln des letzten Ereignisses in einem Zeitraum
+## <a name="query-example-find-the-last-event-in-a-window"></a>Abfragebeispiel: Ermitteln des letzten Ereignisses in einem Zeitfenster
 **Beschreibung**: Ermitteln des jeweils letzten Fahrzeugs in einem Zehn-Minuten-Intervall.
 
 **Eingabe**:
@@ -351,11 +354,11 @@ GROUP BY
         ON DATEDIFF(minute, Input, LastInWindow) BETWEEN 0 AND 10
         AND Input.Time = LastInWindow.LastEventTime
 
-**Erläuterung**: Die Abfrage umfasst zwei Schritte: Im ersten Schritt wird der neueste Zeitstempel des jeweiligen Zehn-Minuten-Intervalls gesucht. Im zweiten Schritt werden die Ergebnisse der ersten Abfrage mit dem ursprünglichen Datenstrom zusammengeführt, um nach Ereignissen zu suchen, die dem letzten Zeitstempel des jeweiligen Intervalls entsprechen. 
+**Erläuterung**: Es gibt zwei Schritte in der Abfrage. Im ersten Schritt wird in einem Zeitfenster von zehn Minuten nach dem aktuellen Zeitstempel gesucht. Im zweiten Schritt werden die Ergebnisse der ersten Abfrage mit dem ursprünglichen Stream zusammengeführt, um nach Ereignissen zu suchen, die dem letzten Zeitstempel des jeweiligen Zeitfensters entsprechen. 
 
 ## <a name="query-example-detect-the-absence-of-events"></a>Abfragebeispiel: Erkennen der Abwesenheit von Ereignissen
-**Beschreibung**: Überprüfen, ob der Datenstrom einen Wert enthält, der einem bestimmten Kriterium entspricht.
-Beispiel: Wurde die mautpflichtige Straße in einem Zeitraum von 90 Sekunden von zwei aufeinanderfolgenden Fahrzeugen der gleichen Marke befahren?
+**Beschreibung**: Überprüfen, ob der Stream einen Wert enthält, der einem bestimmten Kriterium entspricht.
+Beispiel: Wurde die mautpflichtige Straße innerhalb der letzten 90 Sekunden von zwei aufeinanderfolgenden Fahrzeugen der gleichen Marke befahren?
 
 **Eingabe**:
 
@@ -385,10 +388,10 @@ Beispiel: Wurde die mautpflichtige Straße in einem Zeitraum von 90 Sekunden von
     WHERE
         LAG(Make, 1) OVER (LIMIT DURATION(second, 90)) = Make
 
-**Erläuterung**: Verwenden Sie „LAG“, um im Eingabedatenstrom einen Blick auf das vorherige Ereignis zu werfen und den Make-Wert zu ermitteln. Vergleichen Sie ihn dann mit dem Make-Wert des aktuellen Ereignisses, geben Sie das Ereignis aus, falls die Werte identisch sind, und rufen Sie mithilfe von „LAG“ Daten zum vorherigen Fahrzeug ab.
+**Erläuterung**: Verwenden Sie **LAG**, um im Eingabestream einen Blick auf das vorherige Ereignis zu werfen und den **Make**-Wert zu ermitteln. Vergleichen Sie ihn mit dem **MAKE**-Wert des aktuellen Ereignisses, und geben Sie dann das Ereignis aus, falls die Werte identisch sind. Sie können Daten zum vorherigen Fahrzeug auch mithilfe von **LAG** abrufen.
 
-## <a name="query-example-detect-duration-between-events"></a>Abfragebeispiel: Ermitteln der Dauer zwischen Ereignissen
-**Beschreibung**: Ermitteln der Dauer eines bestimmten Ereignisses. Beispiel: Ermitteln der für eine Funktion aufwendeten Zeit mit einem bestimmten Webclickstream.
+## <a name="query-example-detect-the-duration-between-events"></a>Abfragebeispiel: Ermitteln der Dauer zwischen Ereignissen
+**Beschreibung**: Ermitteln der Dauer eines bestimmten Ereignisses. Beispiel: Ermitteln der für eine Funktion aufgewendeten Zeit mit einem bestimmten Webclickstream.
 
 **Eingabe**:  
 
@@ -403,7 +406,7 @@ Beispiel: Wurde die mautpflichtige Straße in einem Zeitraum von 90 Sekunden von
 | --- | --- | --- |
 | user@location.com |RightMenu |7 |
 
-**Lösung**
+**Lösung**:
 
 ````
     SELECT
@@ -413,11 +416,11 @@ Beispiel: Wurde die mautpflichtige Straße in einem Zeitraum von 90 Sekunden von
         Event = 'end'
 ````
 
-**Erläuterung**: Verwenden Sie die „LAST“-Funktion, um den letzten Zeitpunkt (Time value) mit dem Ereignistyp „Start“ zu ermittelt. Beachten Sie, dass die LAST-Funktion PARTITION BY [user] verwendet, um anzuzeigen, dass das Ergebnis einzeln pro Benutzer berechnet wird.  Die Abfrage hat einen maximalen Schwellenwert von einer Stunde für die Zeitdifferenz zwischen Start- und Stoppereignissen, ist aber nach Bedarf konfigurierbar (LIMIT DURATION(hour, 1).
+**Erläuterung**: Verwenden Sie die **LAST**-Funktion, um den letzten **TIME**-Wert mit dem Ereignistyp **Start** zu ermitteln. Die **LAST**-Funktion verwendet **PARTITION BY [user]**, um anzuzeigen, dass das Ergebnis einzeln pro Benutzer berechnet wird. Die Abfrage hat einen maximalen Schwellenwert von einer Stunde für die Zeitdifferenz zwischen **Start**- und **Stopp**-Ereignissen, ist aber nach Bedarf konfigurierbar **(LIMIT DURATION(hour, 1)**.
 
-## <a name="query-example-detect-duration-of-a-condition"></a>Abfragebeispiel: Ermitteln der Dauer einer Bedingung
+## <a name="query-example-detect-the-duration-of-a-condition"></a>Abfragebeispiel: Ermitteln der Dauer einer Bedingung
 **Beschreibung**: Ermitteln, wie lange eine Bedingung angedauert hat.
-Beispiel: Aufgrund eines Fehlers wurde für alle Fahrzeuge ein falsches Gewicht (über 20.000 Pfund) erfasst, und wir möchten nun ermitteln, wie lange dieser Fehler aufgetreten ist.
+Beispiel: Aufgrund eines Fehlers wurde für alle Fahrzeuge ein falsches Gewicht (über 20.000 Pfund) erfasst. Nun möchten wir ermitteln, wie lange dieser Fehler aufgetreten ist.
 
 **Eingabe**:
 
@@ -459,11 +462,11 @@ Beispiel: Aufgrund eines Fehlers wurde für alle Fahrzeuge ein falsches Gewicht 
         AND previousWeight > 20000
 ````
 
-**Erläuterung**: Verwenden Sie LAG, um den Eingabedatenstrom für 24 Stunden anzusehen, und suchen Sie nach Instanzen, bei denen „StartFault“ und „StopFault“ von Gewichtungen unter 20000 umgeben sind.
+**Erläuterung**: Verwenden Sie **LAG**, um den Eingabestream 24 Stunden lang einzusehen, und suchen Sie nach Instanzen, bei denen **StartFault** und **StopFault** von Gewichtungen unter 20.000 umgeben sind.
 
 ## <a name="query-example-fill-missing-values"></a>Beispiel für eine Abfrage: Ausfüllen der fehlenden Werte
 **Beschreibung**: Erstellen Sie für den Ereignisdatenstrom mit fehlenden Werten einen Ereignisdatenstrom mit regelmäßigen Intervallen.
-Generieren Sie z. B. alle 5 Sekunden ein Ereignis, das den zuletzt angezeigten Datenpunkt meldet.
+Generieren Sie z.B. alle 5 Sekunden ein Ereignis, das den zuletzt angezeigten Datenpunkt meldet.
 
 **Eingabe**:
 
@@ -501,10 +504,10 @@ Generieren Sie z. B. alle 5 Sekunden ein Ereignis, das den zuletzt angezeigten
     GROUP BY HOPPINGWINDOW(second, 300, 5)
 
 
-**Erläuterung**: Diese Abfrage generiert alle fünf Sekunden Ereignisse und gibt das letzte zuvor empfangene Ereignis aus. [springenden Fensters](https://msdn.microsoft.com/library/dn835041.aspx "springenden Fensters - Azure Stream Analytics") legt fest, wie weit die Abfrage zurückreicht, um das letzte Ereignis zu suchen (in diesem Beispiel 300 Sekunden).
+**Erläuterung**: Diese Abfrage generiert alle fünf Sekunden Ereignisse und gibt das letzte zuvor empfangene Ereignis aus. Die Dauer eines [springenden Fensters](https://msdn.microsoft.com/library/dn835041.aspx "Springendes Fenster – Azure Stream Analytics") legt fest, wie weit die Abfrage zurückreicht, um das letzte Ereignis zu suchen (in diesem Beispiel 300 Sekunden).
 
 ## <a name="get-help"></a>Hier erhalten Sie Hilfe
-Um Hilfe zu erhalten, besuchen Sie unser [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)
+Um Hilfe zu erhalten, nutzen Sie unser [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Einführung in Azure Stream Analytics](stream-analytics-introduction.md)

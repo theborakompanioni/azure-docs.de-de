@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 06/20/2017
 ms.author: fryu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1e6f2b9de47d1ce84c4043f5f6e73d462e0c1271
-ms.openlocfilehash: 516618653064fd4e334197bba767a013a805260a
+ms.translationtype: HT
+ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
+ms.openlocfilehash: 78737c681a91f24f73502a9cc25a301efc9304a4
 ms.contentlocale: de-de
-ms.lasthandoff: 06/21/2017
+ms.lasthandoff: 08/07/2017
 
 ---
 # <a name="require-secure-transfer"></a>Vorschreiben einer sicheren Übertragung
@@ -50,6 +50,64 @@ Sie können die Einstellung „Sichere Übertragung erforderlich“ beim Erstell
 1. Wählen Sie unter **Sichere Übertragung erforderlich** die Option **Aktiviert** aus.
 
   ![Screenshot](./media/storage-require-secure-transfer/secure_transfer_field_in_portal_en_2.png)
+
+## <a name="enable-secure-transfer-required-programmatically"></a>Programmgesteuertes Aktivieren der Einstellung „Sichere Übertragung erforderlich“
+
+Der Einstellungsname lautet in Speicherkontoeigenschaften _supportsHttpsTrafficOnly_. Sie können die Einstellung „Sichere Übertragung erforderlich“ mit der REST-API sowie den Tools und Bibliotheken aktivieren:
+
+* **REST-API** (Version: 2016-12-01): [Releasepaket](https://docs.microsoft.com/en-us/rest/api/storagerp/storageaccounts)
+* **PowerShell** (Version: 4.1.0): [Releasepaket](https://docs.microsoft.com/en-us/powershell/module/azurerm.storage/set-azurermstorageaccount?view=azurermps-4.1.0)
+* **CLI** (Version: 2.0.11): [Releasepaket](https://pypi.python.org/pypi/azure-cli-storage/2.0.11)
+* **NodeJS** (Version: 1.1.0): [Releasepaket](https://www.npmjs.com/package/azure-arm-storage/)
+* **.NET-SDK** (Version: 6.3.0): [Releasepaket](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/6.3.0-preview)
+* **Python-SDK** (Version: 1.1.0): [Releasepaket](https://pypi.python.org/pypi/azure-mgmt-storage/1.1.0)
+* **Ruby-SDK** (Version: 0.11.0): [Releasepaket](https://rubygems.org/gems/azure_mgmt_storage)
+
+### <a name="enable-secure-transfer-required-setting-with-rest-api"></a>Aktivieren der Einstellung „Sichere Übertragung erforderlich“ mit der REST-API
+
+Um die Tests mit der REST-API zu vereinfachen, können Sie anhand von [ArmClient](https://github.com/projectkudu/ARMClient) einen Aufruf über die Befehlszeile durchführen.
+
+ Anhand der nachfolgenden Befehlszeile können Sie die Einstellung mit der REST-API überprüfen:
+
+```
+# Login Azure and proceed with your credentials
+> armclient login
+
+> armclient GET  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}?api-version=2016-12-01
+```
+
+In der Antwort finden Sie die Einstellung _supportsHttpsTrafficOnly_. Beispiel:
+
+```Json
+{
+  "id": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}",
+  "kind": "Storage",
+  ...
+  "properties": {
+    ...
+    "supportsHttpsTrafficOnly": false
+  },
+  "type": "Microsoft.Storage/storageAccounts"
+}
+```
+
+Anhand der nachfolgenden Befehlszeile können Sie die Einstellung mit der REST-API aktivieren:
+
+```
+# Login Azure and proceed with your credentials
+> armclient login
+
+> armclient PUT /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}?api-version=2016-12-01 < Input.json
+```
+Beispiel für Input.json:
+```Json
+{
+  "location": "westus",
+  "properties": {
+    "supportsHttpsTrafficOnly": true
+  }
+}
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 Azure Storage bietet einen umfassenden Satz von Sicherheitsfunktionen, die Entwicklern das Erstellen sicherer Anwendungen ermöglichen. Weitere Informationen finden Sie im [Azure Storage-Sicherheitsleitfaden](storage-security-guide.md).

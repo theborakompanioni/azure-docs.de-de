@@ -1,11 +1,11 @@
 ---
-title: 'Azure Active Directory B2C: Erweiterbares Richtlinienframework | Microsoft Docs'
+title: 'Azure Active Directory B2C: Integrierte Richtlinien | Microsoft-Dokumentation'
 description: "Ein Thema über das erweiterbare Richtlinienframework von Azure Active Directory B2C und die Erstellung verschiedener Richtlinientypen"
 services: active-directory-b2c
 documentationcenter: 
-author: swkrish
+author: sama
 manager: mbaldwin
-editor: bryanla
+editor: PatAltimore
 ms.assetid: 0d453e72-7f70-4aa2-953d-938d2814d5a9
 ms.service: active-directory-b2c
 ms.workload: identity
@@ -13,25 +13,26 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2017
-ms.author: swkrish
-translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: 7ad7dce6fc7025a6a6e7935d74b3b71a7bfee097
-ms.lasthandoff: 03/09/2017
-
+ms.author: sama
+ms.translationtype: HT
+ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
+ms.openlocfilehash: daad3af089afdf76b930053728bb11a5cf4c2a92
+ms.contentlocale: de-de
+ms.lasthandoff: 08/08/2017
 
 ---
-# <a name="azure-active-directory-b2c-extensible-policy-framework"></a>Azure Active Directory B2C: Erweiterbares Richtlinienframework
-## <a name="the-basics"></a>Grundlagen
-Das erweiterbare Richtlinienframework von Azure Active Directory (Azure AD) B2C ist der Hauptvorteil des Diensts. Die Richtlinien beschreiben Benutzeroberflächen im Zusammenhang mit der Kundenidentität, z. B. Registrierung, Anmeldung oder Profilbearbeitung. Eine Registrierungsrichtlinie ermöglicht es z. B., das Verhalten zu steuern, indem die folgenden Einstellungen konfiguriert werden:
+# <a name="azure-active-directory-b2c-built-in-policies"></a>Azure Active Directory B2C: Integrierte Richtlinien
 
-* Kontotypen (Konten sozialer Netzwerke wie Facebook oder lokale Konten wie die E-Mail-Adresse), die Kunden zum Registrieren für die Anwendung verwenden können.
-* Attribute (z. B. Vorname, Postleitzahl und Schuhgröße), die der Kunde während des Anmeldeprozesses angeben muss.
-* Verwendung der Multi-Factor Authentication.
-* Das Aussehen und Verhalten aller Registrierungsseiten.
-* Informationen (als Ansprüche im Token ausgedrückt), die die Anwendung nach Abschluss der Richtlinienausführung erhält.
 
-Sie können mehrere Richtlinien verschiedener Typen in Ihrem Mandanten erstellen und bei Bedarf in Ihrer Anwendung verwenden. Richtlinien können anwendungsübergreifend wiederverwendet werden. Dadurch können Entwickler Benutzeroberflächen im Zusammenhang mit der Kundenidentität mit minimalen oder ganz ohne Änderungen an ihrem Code definieren und ändern.
+Das erweiterbare Richtlinienframework von Azure Active Directory (Azure AD) B2C ist der Hauptvorteil des Diensts. Die Richtlinien beschreiben Benutzeroberflächen im Zusammenhang mit der Kundenidentität, z.B. Registrierung, Anmeldung oder Profilbearbeitung. Eine Registrierungsrichtlinie ermöglicht es z. B., das Verhalten zu steuern, indem die folgenden Einstellungen konfiguriert werden:
+
+* Kontotypen (Konten sozialer Netzwerke wie Facebook oder lokale Konten wie die E-Mail-Adressen), die Kunden zum Registrieren für die Anwendung verwenden können
+* Attribute (z.B. Vorname, Postleitzahl und Schuhgröße), die der Kunde während des Anmeldeprozesses angeben muss
+* Verwendung der Azure Multi-Factor Authentication
+* Das Aussehen und Verhalten aller Registrierungsseiten
+* Informationen (als Ansprüche in Token ausgedrückt), die die Anwendung nach Abschluss der Richtlinienausführung erhält
+
+Sie können mehrere Richtlinien verschiedener Typen in Ihrem Mandanten erstellen und bei Bedarf in Ihrer Anwendung verwenden. Richtlinien können anwendungsübergreifend wiederverwendet werden. Durch diese Flexibilität können Entwickler Benutzeroberflächen im Zusammenhang mit der Kundenidentität mit minimalen oder ganz ohne Änderungen an ihrem Code definieren und ändern.
 
 Richtlinien können über eine einfache Entwicklerschnittstelle verwendet werden. Ihre Anwendung löst eine Richtlinie mithilfe einer standardmäßigen HTTP-Authentifizierungsanforderung aus (übergibt einen Richtlinienparameter in der Anforderung) und empfängt ein benutzerdefiniertes Token als Antwort. Der einzige Unterschied zwischen Anforderungen, die eine Registrierungsrichtlinie aufrufen, und Anforderungen, die eine Anmelderichtlinie aufrufen, ist beispielsweise der Richtlinienname, der im Parameter „p“ der Abfragezeichenfolge verwendet wird:
 
@@ -63,111 +64,46 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e      // Your registered Applicati
 
 ```
 
-Weitere Informationen zum Richtlinienframework finden Sie in diesem [Blogbeitrag](http://blogs.technet.com/b/ad/archive/2015/11/02/a-look-inside-azuread-b2c-with-kim-cameron.aspx).
-
-## <a name="create-a-sign-up-policy"></a>Erstellen einer Registrierungsrichtlinie
-Für die Registrierung bei Ihrer Anwendung müssen Sie eine Registrierungsrichtlinie erstellen. Diese Richtlinie beschreibt die Benutzeroberflächen, die Kunden bei der Registrierung durchlaufen, und den Inhalt der Token, die die Anwendung bei erfolgreichen Registrierungen erhält.
-
-1. [Führen Sie diese Schritte aus, um im Azure-Portal zum Blatt „B2C-Funktionen“ zu navigieren](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade).
-2. Klicken Sie auf **Registrierungsrichtlinien**.
-3. Klicken Sie oben auf dem Blatt auf **+Hinzufügen** .
-4. Der **Name** bestimmt den Namen der Registrierungsrichtlinie, die von der Anwendung verwendet wird. Geben Sie beispielsweise "SiUp" ein.
-5. Klicken Sie auf **Identitätsanbieter** , und wählen Sie „E-Mail-Registrierung“ aus. Optional können Sie auch soziale Netzwerke als Identitätsanbieter auswählen, sofern bereits konfiguriert. Klicken Sie auf **OK**.
-6. Klicken Sie auf **Registrierungsattribute**. Hier wählen Sie die Attribute aus, die der Kunde bei der Registrierung angeben soll. Wählen Sie z. B. "Land/Region", "Anzeigename" und "Postleitzahl" aus. Klicken Sie auf **OK**.
-7. Klicken Sie auf **Anwendungsansprüche**. Hier wählen Sie die Ansprüche aus, die in den Token nach einer erfolgreichen Registrierung an die Anwendung zurückgegeben werden sollen. Wählen Sie z. B. "Anzeigename", "Identitätsanbieter", "Postleitzahl", "Benutzer ist neu" und "Objekt-ID des Benutzers" aus.
-8. Klicken Sie auf **Erstellen**. Beachten Sie, dass die soeben erstellte Richtlinie als „**B2C_1_SiUp**“ (das Fragment **B2C\_1\_** wird automatisch hinzugefügt) auf dem Blatt **Registrierungsrichtlinien** angezeigt wird.
-9. Öffnen Sie die Richtlinie, indem Sie auf „**B2C_1_SiUp**“ klicken.
-10. Wählen Sie „Contoso B2C-App“ in der Dropdownliste **Anwendungen** und `https://localhost:44321/` in der Dropdownliste **Antwort-URL/Umleitungs-URI** aus.
-11. Klicken Sie auf **Jetzt ausführen**. Eine neue Browserregisterkarte wird geöffnet, und Sie können die Benutzeroberfläche für die Registrierung bei Ihrer Anwendung durchgehen.
-    
-    > [!NOTE]
-    > Es dauert bis zu einer Minute, bis die Erstellung und Aktualisierung von Richtlinien wirksam wird.
-    > 
-    > 
-
-## <a name="create-a-sign-in-policy"></a>Erstellen einer Anmelderichtlinie
-Für die Anmeldung bei Ihrer Anwendung müssen Sie eine Anmelderichtlinie erstellen. Diese Richtlinie beschreibt die Benutzeroberflächen, die Kunden bei der Anmeldung durchlaufen, und den Inhalt der Token, die die Anwendung bei erfolgreichen Anmeldungen erhält.
-
-1. [Führen Sie diese Schritte aus, um im Azure-Portal zum Blatt „B2C-Funktionen“ zu navigieren](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade).
-2. Klicken Sie auf **Anmelderichtlinien**.
-3. Klicken Sie oben auf dem Blatt auf **+Hinzufügen** .
-4. Der **Name** bestimmt den Namen der Anmelderichtlinie, die von der Anwendung verwendet wird. Geben Sie beispielsweise "SiIn" ein.
-5. Klicken Sie auf **Identitätsanbieter** , und wählen Sie „Anmeldung für lokales Konto“ aus. Optional können Sie auch soziale Netzwerke als Identitätsanbieter auswählen, sofern bereits konfiguriert. Klicken Sie auf **OK**.
-6. Klicken Sie auf **Anwendungsansprüche**. Hier wählen Sie die Ansprüche aus, die in den Token nach einer erfolgreichen Anmeldung an die Anwendung zurückgegeben werden sollen. Wählen Sie z.B. „Anzeigename“, „Identitätsanbieter“, „Postleitzahl“ und „Objekt-ID des Benutzers“ aus. Klicken Sie auf **OK**.
-7. Klicken Sie auf **Erstellen**. Beachten Sie, dass die soeben erstellte Richtlinie als „**B2C_1_SiIn**“ (das Fragment **B2C\_1\_** wird automatisch hinzugefügt) auf dem Blatt **Anmelderichtlinien** angezeigt wird.
-8. Öffnen Sie die Richtlinie, indem Sie auf „**B2C_1_SiIn**“ klicken.
-9. Wählen Sie „Contoso B2C-App“ in der Dropdownliste **Anwendungen** und `https://localhost:44321/` in der Dropdownliste **Antwort-URL/Umleitungs-URI** aus.
-10. Klicken Sie auf **Jetzt ausführen**. Eine neue Browserregisterkarte wird geöffnet, und Sie können die Benutzeroberfläche für die Anmeldung bei Ihrer Anwendung durchgehen.
-    
-    > [!NOTE]
-    > Es dauert bis zu einer Minute, bis die Erstellung und Aktualisierung von Richtlinien wirksam wird.
-    > 
-    > 
+Weitere Informationen zum Richtlinienframework finden Sie in diesem [Blogbeitrag zu Azure AD B2C auf dem englischsprachigen Blog zu Unternehmensmobilität und Sicherheit](http://blogs.technet.com/b/ad/archive/2015/11/02/a-look-inside-azuread-b2c-with-kim-cameron.aspx).
 
 ## <a name="create-a-sign-up-or-sign-in-policy"></a>Erstellen einer Registrierungs- oder Anmelderichtlinie
-Mit dieser Richtlinie werden die Registrierung und Anmeldung von Kunden in ein und derselben Konfiguration verarbeitet. Die Kunden werden je nach Kontext auf den jeweils entsprechenden Pfad geleitet (Registrierung oder Anmeldung). Außerdem wird mit der Richtlinie der Inhalt von Token beschrieben, die die Anwendung nach erfolgreichen Registrierungen oder Abmeldungen erhält.  Ein Codebeispiel für die Richtlinie zur Registrierung oder Anmeldung ist [hier verfügbar](active-directory-b2c-devquickstarts-web-dotnet-susi.md).
 
-1. [Führen Sie diese Schritte aus, um im Azure-Portal zum Blatt „B2C-Funktionen“ zu navigieren](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade).
-2. Klicken Sie auf **Registrierungs- oder Anmelderichtlinien**.
-3. Klicken Sie oben auf dem Blatt auf **+Hinzufügen** .
-4. Der **Name** bestimmt den Namen der Registrierungsrichtlinie, die von der Anwendung verwendet wird. Geben Sie z.B. „SiUpIn“ ein.
-5. Klicken Sie auf **Identitätsanbieter** , und wählen Sie „E-Mail-Registrierung“ aus. Optional können Sie auch soziale Netzwerke als Identitätsanbieter auswählen, sofern bereits konfiguriert. Klicken Sie auf **OK**.
-6. Klicken Sie auf **Registrierungsattribute**. Hier wählen Sie die Attribute aus, die der Kunde bei der Registrierung angeben soll. Wählen Sie z. B. "Land/Region", "Anzeigename" und "Postleitzahl" aus. Klicken Sie auf **OK**.
-7. Klicken Sie auf **Anwendungsansprüche**. Hier wählen Sie die Ansprüche aus, die in den Token nach einer erfolgreichen Registrierung oder Anmeldung an die Anwendung zurückgegeben werden sollen. Wählen Sie z. B. "Anzeigename", "Identitätsanbieter", "Postleitzahl", "Benutzer ist neu" und "Objekt-ID des Benutzers" aus.
-8. Klicken Sie auf **Erstellen**. Beachten Sie, dass die soeben erstellte Richtlinie als „**B2C_1_SiUpIn**“ (das Fragment **B2C\_1\_** wird automatisch hinzugefügt) auf dem Blatt **Registrierungs- oder Anmelderichtlinien** angezeigt wird.
-9. Öffnen Sie die Richtlinie, indem Sie auf „**B2C_1_SiUpIn**“ klicken.
-10. Wählen Sie „Contoso B2C-App“ in der Dropdownliste **Anwendungen** und `https://localhost:44321/` in der Dropdownliste **Antwort-URL/Umleitungs-URI** aus.
-11. Klicken Sie auf **Jetzt ausführen**. Eine neue Browserregisterkarte wird geöffnet, und Sie können entsprechend der Konfiguration die Benutzeroberfläche für die Registrierung oder Anmeldung von Kunden durchgehen.
-    
-    > [!NOTE]
-    > Es dauert bis zu einer Minute, bis die Erstellung und Aktualisierung von Richtlinien wirksam wird.
-    > 
-    > 
+Mit dieser Richtlinie werden die Registrierung und Anmeldung von Kunden in ein und derselben Konfiguration verarbeitet. Die Kunden werden je nach Kontext auf den jeweils entsprechenden Pfad geleitet (Registrierung oder Anmeldung). Außerdem wird mit der Richtlinie der Inhalt von Token beschrieben, die die Anwendung nach erfolgreichen Registrierungen oder Abmeldungen erhält.  Ein Codebeispiel für die Richtlinie zur Registrierung oder Anmeldung ist [hier verfügbar](active-directory-b2c-devquickstarts-web-dotnet-susi.md).  Sie sollten diese Richtlinie anstelle einer Registrierungs- und Anmelderichtlinie verwenden.  
+
+[!INCLUDE [active-directory-b2c-create-sign-in-sign-up-policy](../../includes/active-directory-b2c-create-sign-in-sign-up-policy.md)]
+
+## <a name="create-a-sign-up-policy"></a>Erstellen einer Registrierungsrichtlinie
+
+[!INCLUDE [active-directory-b2c-create-sign-up-policy](../../includes/active-directory-b2c-create-sign-up-policy.md)]
+
+## <a name="create-a-sign-in-policy"></a>Erstellen einer Anmelderichtlinie
+
+[!INCLUDE [active-directory-b2c-create-sign-in-policy](../../includes/active-directory-b2c-create-sign-in-policy.md)]
 
 ## <a name="create-a-profile-editing-policy"></a>Erstellen einer Richtlinie für die Profilbearbeitung
-Um die Profilbearbeitung in Ihrer Anwendung zu ermöglichen, müssen Sie eine Richtlinie für die Profilbearbeitung erstellen. Diese Richtlinie beschreibt die Benutzeroberflächen, die Consumer bei der Profilbearbeitung durchgehen, und den Inhalt der Token, die die Anwendung beim erfolgreichen Abschluss erhält.
 
-1. [Führen Sie diese Schritte aus, um im Azure-Portal zum Blatt „B2C-Funktionen“ zu navigieren](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade).
-2. Klicken Sie auf **Richtlinien für die Profilbearbeitung**.
-3. Klicken Sie oben auf dem Blatt auf **+Hinzufügen** .
-4. Der **Name** bestimmt den Namen der Richtlinie für die Profilbearbeitung, die von der Anwendung verwendet wird. Geben Sie beispielsweise "SiPe" ein.
-5. Klicken Sie auf **Identitätsanbieter** , und wählen Sie „Anmeldung für lokales Konto“ aus. Optional können Sie auch soziale Netzwerke als Identitätsanbieter auswählen, sofern bereits konfiguriert. Klicken Sie auf **OK**.
-6. Klicken Sie auf **Profilattribute**. Hier wählen Sie Attribute aus, die der Kunde anzeigen und bearbeiten kann. Wählen Sie z. B. „Land/Region“, „Anzeigename“ und „Postleitzahl“ aus. Klicken Sie auf **OK**.
-7. Klicken Sie auf **Anwendungsansprüche**. Hier wählen Sie die Ansprüche aus, die in den zurückgegebenen Token nach einer erfolgreichen Profilbearbeitung an die Anwendung zurückgegeben werden sollen. Wählen Sie z. B. "Anzeigename" und "Postleitzahl" aus.
-8. Klicken Sie auf **Erstellen**. Beachten Sie, dass die soeben erstellte Richtlinie als „**B2C_1_SiPe**“ (das Fragment **B2C\_1\_** wird automatisch hinzugefügt) auf dem Blatt **Richtlinien für die Profilbearbeitung** angezeigt wird.
-9. Öffnen Sie die Richtlinie, indem Sie auf „**B2C_1_SiPe**“ klicken.
-10. Wählen Sie „Contoso B2C-App“ in der Dropdownliste **Anwendungen** und `https://localhost:44321/` in der Dropdownliste **Antwort-URL/Umleitungs-URI** aus.
-11. Klicken Sie auf **Jetzt ausführen**. Eine neue Browserregisterkarte wird geöffnet, und Sie können die Benutzeroberfläche für die Profilbearbeitung in Ihrer Anwendung durchgehen.
-    
-    > [!NOTE]
-    > Es dauert bis zu einer Minute, bis die Erstellung und Aktualisierung von Richtlinien wirksam wird.
-    > 
-    > 
+[!INCLUDE [active-directory-b2c-create-profile-editing-policy](../../includes/active-directory-b2c-create-profile-editing-policy.md)]
 
 ## <a name="create-a-password-reset-policy"></a>Erstellen einer Richtlinie zur Kennwortrücksetzung
-Um eine differenzierte Kennwortrücksetzung in Ihrer Anwendung zu aktivieren, müssen Sie eine Richtlinie zur Kennwortrücksetzung erstellen. Beachten Sie, dass die [hier](active-directory-b2c-reference-sspr.md) angegebene Option zur mandantenweiten Kennwortzurücksetzung immer noch für Anmeldungsrichtlinien gültig ist. Diese Richtlinie beschreibt die Benutzeroberflächen, die die Kunden während der Kennwortrücksetzung durchlaufen, und die Inhalte der Token, die die Anwendung beim erfolgreichen Abschluss erhält.
 
-1. [Führen Sie diese Schritte aus, um im Azure-Portal zum Blatt „B2C-Funktionen“ zu navigieren](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade).
-2. Klicken Sie auf **Richtlinien zur Kennwortrücksetzung**.
-3. Klicken Sie oben auf dem Blatt auf **+Hinzufügen** .
-4. Mit **Name** geben Sie den Namen der Richtlinie zur Kennwortzurücksetzung ein, die von der Anwendung verwendet wird. Geben Sie z. B. „SSPR“ ein.
-5. Klicken Sie auf **Identitätsanbieter** , und wählen Sie „Kennwort mittels E-Mail-Adresse zurücksetzen“ aus. Klicken Sie auf **OK**.
-6. Klicken Sie auf **Anwendungsansprüche**. Hier wählen Sie die Ansprüche aus, die in den zurückgegebenen Token nach einer erfolgreichen Kennwortrücksetzung an die Anwendung zurückgegeben werden sollen. Wählen Sie z. B. „Objekt-ID des Benutzers“.
-7. Klicken Sie auf **Erstellen**. Beachten Sie, dass die soeben erstellte Richtlinie als „**B2C_1_SSPR**“ (das Fragment **B2C\_1\_** wird automatisch hinzugefügt) auf dem Blatt **Richtlinien für die Kennwortrücksetzung** angezeigt wird.
-8. Öffnen Sie die Richtlinie, indem Sie auf „**B2C_1_SSPR**“ klicken.
-9. Wählen Sie „Contoso B2C-App“ in der Dropdownliste **Anwendungen** und `https://localhost:44321/` in der Dropdownliste **Antwort-URL/Umleitungs-URI** aus.
-10. Klicken Sie auf **Jetzt ausführen**. Eine neue Browserregisterkarte wird geöffnet, und Sie können die Benutzeroberfläche für die Kennwortrücksetzung in Ihrer Anwendung durchgehen.
-    
-    > [!NOTE]
-    > Es dauert bis zu einer Minute, bis die Erstellung und Aktualisierung von Richtlinien wirksam wird.
-    > 
-    > 
+[!INCLUDE [active-directory-b2c-create-password-reset-policy](../../includes/active-directory-b2c-create-password-reset-policy.md)]
 
-## <a name="how-to-link-a-sign-up-or-sign-in-policy-with-a-password-reset-policy"></a>Wie wird eine Registrierungs- oder Anmelderichtlinie mit einer Richtlinie zum Zurücksetzen von Kennwörtern verknüpft?
-Wenn Sie eine Registrierungs- oder Anmelderichtlinie (für lokale Konten) erstellen, wird dem Endbenutzer auf der ersten Seite der Oberfläche ein Link „Kennwort vergessen?“ angezeigt. Durch Klicken auf diesen Link wird nicht automatisch eine Richtlinie zum Zurücksetzen des Kennworts ausgelöst. Stattdessen wird ein bestimmter Fehlercode `AADB2C90118` an Ihre App zurückgegeben. Ihre App muss diesen Fehler verarbeiten und eine bestimmte Richtlinie zur Kennwortzurücksetzung aufrufen. Ein Beispiel, in dem dieser Ansatz zum Verknüpfen von Richtlinien gezeigt wird, finden Sie [hier](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-DotNet-SUSI).
+## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
-## <a name="additional-resources"></a>Zusätzliche Ressourcen
-* [Token, Sitzung und einmaliges Anmelden – Konfiguration](active-directory-b2c-token-session-sso.md).
+### <a name="how-do-i-link-a-sign-up-or-sign-in-policy-with-a-password-reset-policy"></a>Wie wird eine Registrierungs- oder Anmelderichtlinie mit einer Richtlinie zum Zurücksetzen von Kennwörtern verknüpft?
+Beim Erstellen einer Registrierungs- oder Anmelderichtlinie (für lokale Konten) wird dem Endbenutzer auf der ersten Seite der Oberfläche der Link **Kennwort vergessen?** angezeigt. Durch Klicken auf diesen Link wird nicht automatisch eine Richtlinie zum Zurücksetzen des Kennworts ausgelöst. 
+
+Stattdessen wird der Fehlercode **`AADB2C90118`** an die App zurückgegeben. Ihre App muss mit diesen Fehlercode verarbeiten, indem sie eine bestimmte Richtlinie zur Kennwortzurücksetzung aufruft. Weitere Informationen finden Sie in dem [Beispiel, das das Verknüpfen von Richtlinien veranschaulicht](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-DotNet-SUSI).
+
+### <a name="should-i-use-a-sign-up-or-sign-in-policy-or-a-sign-up-policy-and-a-sign-in-policy"></a>Sollte ich eine Registrierungs- oder Anmelderichtlinie verwenden oder eine Registrierungsrichtlinie und eine Anmelderichtlinie?
+Es wird empfohlen, dass Sie statt zwei Richtlinien eine Registrierungs- oder Anmelderichtlinie verwenden.  
+
+Die Registrierungs- oder Anmelderichtlinie weist mehr Funktionen als die Anmelderichtlinie auf. Außerdem ermöglicht sie Ihnen, die Seite für die Benutzeroberflächenanpassung zu nutzen, und sie hat eine bessere Unterstützung für die Lokalisierung. 
+
+Die Anmelderichtlinie wird empfohlen, wenn Sie Ihre Richtlinien nicht lokalisieren müssen, nur geringfügige Anpassungsfunktionen für das Branding benötigen und eine integrierte Kennwortzurücksetzung möchten.
+
+## <a name="next-steps"></a>Nächste Schritte
+* [Token, Sitzung und einmaliges Anmelden – Konfiguration](active-directory-b2c-token-session-sso.md)
 * [Deaktivieren der E-Mail-Überprüfung während der Registrierung von Endbenutzern](active-directory-b2c-reference-disable-ev.md)
 
 

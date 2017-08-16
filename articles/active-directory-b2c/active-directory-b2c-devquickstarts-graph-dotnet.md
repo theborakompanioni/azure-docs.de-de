@@ -3,27 +3,26 @@ title: 'Azure Active Directory B2C: Verwenden der Graph-API | Microsoft Docs'
 description: "Aufrufen der Graph-API für einen B2C-Mandanten durch Verwenden einer Anwendungsidentität zum Automatisieren des Prozesses."
 services: active-directory-b2c
 documentationcenter: .net
-author: gsacavdm
+author: parakhj
 manager: krassk
-editor: bryanla
+editor: parakhj
 ms.assetid: f9904516-d9f7-43b1-ae4f-e4d9eb1c67a0
 ms.service: active-directory-b2c
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/22/2017
-ms.author: gsacavdm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 27a331562d659212dcd1b775ac06e1e1e4686517
+ms.date: 08/07/2017
+ms.author: parakhj
+ms.translationtype: HT
+ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
+ms.openlocfilehash: c838fcad21875c4f813159ad78d4c87129a40a86
 ms.contentlocale: de-de
-ms.lasthandoff: 05/03/2017
-
+ms.lasthandoff: 08/05/2017
 
 ---
 # <a name="azure-ad-b2c-use-the-graph-api"></a>Azure AD B2C: Verwenden der Graph-API
-Azure Active Directory (Azure AD) B2C-Mandanten sind normalerweise sehr groß. Das bedeutet, dass viele allgemeine Aufgaben zur Mandantenverwaltung programmgesteuert durchgeführt werden müssen. Ein gutes Beispiel ist die Benutzerverwaltung. Unter Umständen müssen Sie einen vorhandenen Benutzerspeicher zu einem B2C-Mandanten migrieren. Sie möchten die Benutzerregistrierung vielleicht auf Ihrer eigenen Seite hosten und Benutzerkonten in Azure AD im Hintergrund erstellen. Diese Arten von Aufgaben erfordern die Fähigkeit zum Erstellen, Lesen, Aktualisieren und Löschen von Benutzerkonten. Hierfür können Sie die Azure AD Graph-API verwenden.
+Azure Active Directory (Azure AD) B2C-Mandanten sind normalerweise sehr groß. Das bedeutet, dass viele allgemeine Aufgaben zur Mandantenverwaltung programmgesteuert durchgeführt werden müssen. Ein gutes Beispiel ist die Benutzerverwaltung. Unter Umständen müssen Sie einen vorhandenen Benutzerspeicher zu einem B2C-Mandanten migrieren. Sie möchten die Benutzerregistrierung vielleicht auf Ihrer eigenen Seite hosten und Benutzerkonten im Azure AD B2C-Verzeichnis im Hintergrund erstellen. Diese Arten von Aufgaben erfordern die Fähigkeit zum Erstellen, Lesen, Aktualisieren und Löschen von Benutzerkonten. Hierfür können Sie die Azure AD Graph-API verwenden.
 
 Für B2C-Mandanten gibt es zwei primäre Modi für die Kommunikation mit der Graph-API.
 

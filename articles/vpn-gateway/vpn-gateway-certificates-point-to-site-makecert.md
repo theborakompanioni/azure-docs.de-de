@@ -13,20 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/19/2017
+ms.date: 08/09/2017
 ms.author: cherylmc
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: 858ce2c748c3383afb6d66ed7b66a5f019902594
+ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
+ms.openlocfilehash: 4c51edac3b1cdafae8f9543bd0e3133b6a050f73
 ms.contentlocale: de-de
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/10/2017
 
 ---
 # <a name="generate-and-export-certificates-for-point-to-site-connections-using-makecert"></a>Generieren und Exportieren von Zertifikaten für Point-to-Site-Verbindungen mithilfe von MakeCert
-
-> [!NOTE]
-> Verwenden Sie die Anweisungen in diesem Artikel nur dann zum Generieren von Zertifikaten, wenn Sie keinen Zugriff auf einem Computer unter Windows 10 haben. Verwenden Sie andernfalls den Artikel [Generieren und Exportieren von Zertifikaten für Punkt-zu-Standort-Verbindungen mithilfe von PowerShell](vpn-gateway-certificates-point-to-site.md).
->
 
 Punkt-zu-Standort-Verbindungen verwenden Zertifikate zur Authentifizierung. In diesem Artikel erfahren Sie, wie Sie mithilfe von MakeCert ein selbstsigniertes Stammzertifikat erstellen und Clientzertifikate generieren. Wenn Sie Informationen zu einzelnen Point-to-Site-Konfigurationsschritten benötigen (beispielsweise zum Hochladen von Stammzertifikaten), wählen Sie in der folgenden Liste einen der Artikel zum Konfigurieren einer Point-to-Site-Verbindung aus:
 
@@ -41,7 +37,6 @@ Punkt-zu-Standort-Verbindungen verwenden Zertifikate zur Authentifizierung. In d
 
 Wir empfehlen, Zertifikate unter Verwendung der [Windows 10-PowerShell-Schritte](vpn-gateway-certificates-point-to-site.md) zu erstellen. Diese MakeCert-Anweisungen werden lediglich als optionale Methode bereitgestellt. Die Zertifikate können jedoch unabhängig von der verwendeten Generierungsmethode unter jedem [unterstützten Clientbetriebssystem](vpn-gateway-howto-point-to-site-resource-manager-portal.md#faq) installiert werden. Für MakeCert gelten allerdings folgende Einschränkungen:
 
-* Mit MakeCert können nur SHA-1-Zertifikate, aber keine SHA-2-Zertifikate generiert werden. SHA-1-Zertifikate sind zwar für Point-to-Point-Verbindungen noch gültig, SHA-1 verwendet jedoch einen weniger sicheren Verschlüsselungshash als SHA-2.
 * MakeCert ist veraltet. Das bedeutet, dass dieses Tool jederzeit entfernt werden kann. Auf Zertifikate, die Sie bereits mithilfe von MakeCert generiert haben, hat die Entfernung von MakeCert keine Auswirkungen. MakeCert wird nur zum Generieren der Zertifikate verwendet, nicht als Überprüfungsmechanismus.
 
 ## <a name="rootcert"></a>Erstellen eines selbstsignierten Stammzertifikats
@@ -57,7 +52,7 @@ In den folgenden Schritten wird das Erstellen eines selbstsignierten Zertifikats
 3. Erstellen und installieren Sie ein Zertifikat im Speicher für persönliche Zertifikate auf dem Computer. Das folgende Beispiel erstellt eine entsprechende *CER* -Datei, die Sie beim Konfigurieren der Punkt-zu-Standort-Verbindung in Azure hochladen. Ersetzen Sie „P2SRootCert“ und „P2SRootCert.cer“ durch den Namen, den Sie für das Zertifikat verwenden möchten. Das Zertifikat befindet sich unter „Zertifikate - Aktueller Benutzer\Eigene Zertifikate\Zertifikate“.
 
   ```cmd
-  makecert -sky exchange -r -n "CN=P2SRootCert" -pe -a sha1 -len 2048 -ss My
+  makecert -sky exchange -r -n "CN=P2SRootCert" -pe -a sha256 -len 2048 -ss My
   ```
 
 ## <a name="cer"></a>Exportieren des öffentlichen Schlüssels (CER-Datei)
@@ -88,7 +83,7 @@ Die folgenden Schritte führen Sie durch das Generieren eines Clientzertifikats 
   Wenn Sie das folgende Beispiel ausführen, ohne es zu ändern, wird in Ihrem persönlichen Zertifikatspeicher ein Clientzertifikat mit dem Namen „P2SChildcert“ anhand des Stammzertifikats „P2SRootCert“ generiert.
 
   ```cmd
-  makecert.exe -n "CN=P2SChildCert" -pe -sky exchange -m 96 -ss My -in "P2SRootCert" -is my -a sha1
+  makecert.exe -n "CN=P2SChildCert" -pe -sky exchange -m 96 -ss My -in "P2SRootCert" -is my -a sha256
   ```
 
 ### <a name="clientexport"></a>Exportieren eines Clientzertifikats

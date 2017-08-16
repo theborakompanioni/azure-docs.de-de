@@ -15,22 +15,21 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 06/14/2017
 ms.author: owend
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: 458459e9bed5ebee6188b5f282e66df1e2a988a8
+ms.translationtype: HT
+ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
+ms.openlocfilehash: 8ff39e31d790b9d7040ec0398a42fb104890915f
 ms.contentlocale: de-de
-ms.lasthandoff: 06/17/2017
-
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="create-an-azure-analysis-services-server-in-azure-portal"></a>Erstellen eines Azure Analysis Services-Servers im Azure-Portal
 In diesem Artikel werden die Schritte zum Erstellen einer Analysis Services-Serverressource in Ihrem Azure-Abonnement beschrieben.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
-Zunächst benötigen Sie Folgendes:
+Für die Durchführung dieses Schnellstarts benötigen Sie Folgendes:
 
 * **Azure-Abonnement:** Besuchen Sie die Webseite [Kostenlose Azure-Testversion](https://azure.microsoft.com/offers/ms-azr-0044p/), und erstellen Sie ein Konto.
-* **Azure Active Directory**: Ihr Abonnement muss einem Azure Active Directory-Mandanten zugeordnet sein. Und Sie müssen bei Azure mit einem Konto in diesem Azure Active Directory angemeldet sein. Microsoft-Konten werden nicht unterstützt. Weitere Informationen finden Sie unter [Benutzerauthentifizierung](analysis-services-overview.md#secure).
+* **Azure Active Directory**: Ihr Abonnement muss einem Azure Active Directory-Mandanten zugeordnet sein. Und Sie müssen bei Azure mit einem Konto in diesem Azure Active Directory angemeldet sein. Microsoft-Konten werden nicht unterstützt. Weitere Informationen finden Sie unter [Authentifizierung und Benutzerberechtigungen](analysis-services-manage-users.md).
 * **Ressourcengruppe:** Verwenden Sie eine bereits vorhandene Ressourcengruppe, oder [erstellen Sie eine neue Ressourcengruppe](../azure-resource-manager/resource-group-overview.md).
 
 > [!NOTE]

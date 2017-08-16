@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/20/2017
+ms.date: 08/02/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.translationtype: HT
-ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
-ms.openlocfilehash: 861921e6bcb7eafdf3e7279eaf09945fc8f38b85
+ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
+ms.openlocfilehash: 77acb23f33fd656a12c27107cb159613a8b2aec4
 ms.contentlocale: de-de
-ms.lasthandoff: 07/24/2017
+ms.lasthandoff: 08/05/2017
 
 ---
 
@@ -57,9 +57,15 @@ Zum Vorbereiten Ihrer Umgebung für den Azure AD-Anwendungsproxy, müssen Sie zu
 
 2. Wenn Ihre Firewall oder ihr Proxy DNS-Whitelisting zulässt, können Sie Verbindungen zu msappproxy.net und servicebus.windows.net mittels Whitelist beschränken. Ist dies nicht der Fall, müssen Sie den Zugriff auf die [IP-Adressbereiche für das Azure-Rechenzentrum](https://www.microsoft.com/download/details.aspx?id=41653) aktivieren, die wöchentlich aktualisiert werden.
 
-3. Ihr Connector benötigt für den Registrierungsprozess Zugriff auf „login.windows.net“ und „login.microsoftonline.net“, daher müssen Sie Ihre Firewall auch für diese URLs öffnen.
+3. Microsoft verwendet vier Adressen, um Zertifikate zu überprüfen. Lassen Sie den Zugriff auf die folgenden URLs zu, sofern Sie ihn nicht bereits für andere Produkte gewährt haben:
+   * mscrl.microsoft.com:80
+   * crl.microsoft.com:80
+   * ocsp.msocsp.com:80
+   * www.microsoft.com:80
 
-4. Verwenden Sie den [Azure AD Application Proxy Connector Ports Test Tool (Testtool der Anwendungsproxy-Connectortools von Azure AD)](https://aadap-portcheck.connectorporttest.msappproxy.net/), um sicherzustellen, dass Ihr Connector den Anwendungsproxydienst erreichen kann. Stellen Sie zumindest sicher, dass die Region USA (Mitte) und die Ihnen am nächsten gelegene Region alle über grüne Häkchen verfügen. Darüber hinaus bedeuten mehr grüne Häkchen größere Resilienz.
+4. Ihr Connector benötigt für den Registrierungsprozess Zugriff auf „login.windows.net“ und „login.microsoftonline.net“.
+
+5. Verwenden Sie den [Azure AD Application Proxy Connector Ports Test Tool (Testtool der Anwendungsproxy-Connectortools von Azure AD)](https://aadap-portcheck.connectorporttest.msappproxy.net/), um sicherzustellen, dass Ihr Connector den Anwendungsproxydienst erreichen kann. Stellen Sie zumindest sicher, dass die Region USA (Mitte) und die Ihnen am nächsten gelegene Region alle über grüne Häkchen verfügen. Darüber hinaus bedeuten mehr grüne Häkchen größere Resilienz.
 
 ## <a name="install-and-register-a-connector"></a>Installieren und Registrieren eines Connectors
 1. Melden Sie sich als Administrator beim [Azure-Portal](https://portal.azure.com/) an.

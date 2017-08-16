@@ -15,16 +15,20 @@ ms.custom:
 ms.workload: infrastructure-services
 ms.date: 03/28/2017
 ms.author: gwallace
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
-ms.openlocfilehash: 094ae187ec8ba5ff38f174ee4cf139d30db7e057
+ms.translationtype: HT
+ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
+ms.openlocfilehash: c3e93614f012eecff0e88f5f2ad13db199406f4a
 ms.contentlocale: de-de
-ms.lasthandoff: 06/14/2017
-
+ms.lasthandoff: 08/04/2017
 
 ---
 
 # <a name="customize-web-application-firewall-rules-through-the-portal"></a>Anpassen von Web Application Firewall-Regeln über das Portal
+
+> [!div class="op_single_selector"]
+> * [Azure-Portal](application-gateway-customize-waf-rules-portal.md)
+> * [PowerShell](application-gateway-customize-waf-rules-powershell.md)
+> * [Azure CLI 2.0](application-gateway-customize-waf-rules-cli.md)
 
 Die Web Application Firewall von Application Gateway bietet Schutz für Webanwendungen. Dieser Schutz wird durch OWASP CRS-Regelsätze bereitgestellt. Einige Regeln können falsche positive Ergebnisse ausgeben und den realen Datenverkehr blockieren.  Aus diesem Grund bietet Application Gateway die Möglichkeit, Regelgruppen und Regeln in einem Web Application Firewall-fähigen Anwendungsgateway anzupassen. Weitere Informationen zu den jeweiligen Regelgruppen und Regeln finden Sie unter [CRS-Regelgruppen und -Regeln der Web Application Firewall](application-gateway-crs-rulegroups-rules.md).
 
@@ -35,7 +39,7 @@ Die Web Application Firewall von Application Gateway bietet Schutz für Webanwen
 
 ## <a name="view-rule-groups-and-rules"></a>Anzeigen von Regelgruppen und Regeln
 
-Navigieren Sie zu einem Anwendungsgateway und wählen Sie **Web Application Firewall** aus.  Klicken Sie auf **Erweiterte Regelkonfiguration**.  Daraufhin wird eine Tabelle auf der Seite aller Regelgruppen angezeigt, die mit dem gewählten Regelsatz bereitgestellt werden.
+Navigieren Sie zu einem Anwendungsgateway und wählen Sie **Web Application Firewall** aus.  Klicken Sie auf **Erweiterte Regelkonfiguration**.  Diese Ansicht zeigt eine Tabelle auf der Seite aller Regelgruppen an, die mit dem gewählten Regelsatz bereitgestellt werden.
 
 ![Deaktivierte Regeln konfigurieren][1]
 
@@ -47,13 +51,13 @@ Das Blatt mit den Web Applicaton Firewall-Einstellungen bietet die Möglichkeit,
 
 ## <a name="disable-rule-groups-and-rules"></a>Deaktivieren von Regelgruppen und Regeln
 
-Bei der Deaktivierung von Regeln können Sie eine gesamte Regelgruppe oder bestimmte Regeln in einer oder in mehreren Regelgruppen deaktivieren.  Sobald die Auswahl für die zu deaktivierenden Regeln aufgehoben wurde, klicken Sie auf **Speichern**.  Hierdurch werden die Änderungen am Anwendungsgateway gespeichert.
+Bei der Deaktivierung von Regeln können Sie eine gesamte Regelgruppe oder bestimmte Regeln in einer oder in mehreren Regelgruppen deaktivieren.  Sobald die Auswahl für die zu deaktivierenden Regeln aufgehoben wurde, klicken Sie auf **Speichern**.  Mit diesem Schritt werden die Änderungen am Anwendungsgateway gespeichert.
 
 ![Änderungen speichern][3]
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nach der Konfiguration der deaktivierten Regeln erfahren Sie über [Application Gateway-Diagnosen](application-gateway-diagnostics.md#diagnostic-logs), wie Sie WAF-Protokolle anzeigen.
+Nach der Konfiguration der deaktivierten Regeln erfahren Sie über [Application Gateway-Diagnosen](application-gateway-diagnostics.md#diagnostic-logging), wie Sie WAF-Protokolle anzeigen.
 
 [fig1]: ./media/application-gateway-customize-waf-rules-portal/1.png
 [1]: ./media/application-gateway-customize-waf-rules-portal/figure1.png

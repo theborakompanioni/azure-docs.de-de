@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/21/2017
+ms.date: 08/02/2017
 ms.author: markvi
 ms.reviewer: calebb
-ms.translationtype: Human Translation
-ms.sourcegitcommit: d4b38f1f90301c971cb6000f46d831047acb220e
-ms.openlocfilehash: 5a1ce66e02943caedd52976c5dcb3cf75c23bd49
+ms.translationtype: HT
+ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
+ms.openlocfilehash: 0f7e00d1fe6e47e4a04eb2853f09e195a03405ce
 ms.contentlocale: de-de
-ms.lasthandoff: 07/17/2017
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="conditional-access-in-azure-active-directory"></a>Bedingter Zugriff in Azure Active Directory
@@ -121,26 +121,54 @@ Durch die Auswahl von „Cloud-Apps“ definieren Sie den Umfang der Cloud-Apps,
 
 In der aktuellen Implementierung von Azure Active Directory können Sie Bedingungen für die folgenden Bereiche definieren:
 
-- **Anmelderisiko:** Das Anmelderisiko ist ein Objekt, mit dem Azure Active Directory die Wahrscheinlichkeit dafür ermittelt, dass ein Anmeldeversuch nicht vom rechtmäßigen Besitzer eines Benutzerkontos durchgeführt wurde. In diesem Objekt wird die Wahrscheinlichkeit (hoch, mittel oder niedrig) in Form eines Attributs mit dem Namen [Risikostufe für die Anmeldung](active-directory-reporting-risk-events.md#risk-level) gespeichert. Dieses Objekt wird bei einer Anmeldung eines Benutzers generiert, wenn von Azure Active Directory Anmelderisiken erkannt wurden. Weitere Informationen finden Sie unter [Riskante Anmeldungen](active-directory-identityprotection.md#risky-sign-ins).  
+- Anmelderisiko
+- Geräteplattformen
+- Standorte
+- Client-Apps
+
+![Bedingungen](./media/active-directory-conditional-access-azure-portal/21.png)
+
+### <a name="sign-in-risk"></a>Anmelderisiko
+
+Ein Anmelderisiko ist ein Objekt, mit dem Azure Active Directory die Wahrscheinlichkeit dafür ermittelt, dass ein Anmeldeversuch nicht vom rechtmäßigen Besitzer eines Benutzerkontos durchgeführt wurde. In diesem Objekt wird die Wahrscheinlichkeit (hoch, mittel oder niedrig) in Form eines Attributs mit dem Namen [Risikostufe für die Anmeldung](active-directory-reporting-risk-events.md#risk-level) gespeichert. Dieses Objekt wird bei einer Anmeldung eines Benutzers generiert, wenn von Azure Active Directory Anmelderisiken erkannt wurden. Weitere Informationen finden Sie unter [Riskante Anmeldungen](active-directory-identityprotection.md#risky-sign-ins).  
 Sie können die berechnete Anmelderisikostufe als Bedingung in einer Richtlinie für den bedingten Zugriff verwenden. 
 
-    ![Bedingungen](./media/active-directory-conditional-access-azure-portal/22.png)
+![Bedingungen](./media/active-directory-conditional-access-azure-portal/22.png)
 
-- **Geräteplattformen**: Die Geräteplattform ist durch das Betriebssystem gekennzeichnet, das auf dem Gerät ausgeführt wird (Android, iOS, Windows Phone, Windows). Sie können die Geräteplattformen angeben, die in eine Richtlinie einbezogen bzw. davon ausgeschlossen werden.  
+### <a name="device-platforms"></a>Geräteplattformen
+
+Die Geräteplattform ist durch das Betriebssystem gekennzeichnet, das auf dem Gerät ausgeführt wird (Android, iOS, Windows Phone, Windows). Sie können die Geräteplattformen angeben, die in eine Richtlinie einbezogen bzw. davon ausgeschlossen werden.  
 Ändern Sie zum Verwenden von Geräteplattformen in der Richtlinie zuerst die Option „Konfigurieren“ in **Ja**, und wählen Sie dann einige oder alle Geräteplattformen aus, für die die Richtlinie gelten soll. Wenn Sie nur eine Geräteplattform auswählen, gilt die Richtlinie nur für die jeweilige Plattform. In diesem Fall sind Anmeldungen an anderen unterstützten Plattformen von der Richtlinie nicht betroffen.
 
-    ![Bedingungen](./media/active-directory-conditional-access-azure-portal/02.png)
+![Bedingungen](./media/active-directory-conditional-access-azure-portal/02.png)
 
-- **Standorte**: Der Standort wird durch die IP-Adresse des Clients identifiziert, den Sie verwendet haben, um eine Verbindung mit Azure Active Directory herzustellen. Für diese Bedingung ist es erforderlich, dass Sie sich mit vertrauenswürdigen IPs auskennen. „Vertrauenswürdige IPs“ ist ein Feature der Multi-Factor Authentication, mit dem Sie Bereiche mit vertrauenswürdigen IP-Adressen definieren können, die für das lokale Intranet Ihrer Organisation stehen. Beim Konfigurieren der Bedingungen eines Standorts können Sie mit der Option „Vertrauenswürdige IPs“ zwischen Verbindungen, die über das Netzwerk Ihrer Organisation hergestellt werden, und allen anderen Standorten unterscheiden. Weitere Informationen finden Sie unter [Vertrauenswürdige IPs](../multi-factor-authentication/multi-factor-authentication-whats-next.md#trusted-ips).  
+### <a name="locations"></a>Standorte
+
+Der Standort wird durch die IP-Adresse des Clients identifiziert, den Sie verwendet haben, um eine Verbindung mit Azure Active Directory herzustellen. Diese Bedingung erfordert, dass Sie sich mit **benannten Orten** und **durch MFA bestätigten IPs** auskennen.  
+
+**Benannte Orte** ist ein Feature von Azure Active Directory, das Ihnen ermöglicht, in Ihrer Organisation vertrauenswürdige IP-Adressbereiche zu bezeichnen. Sie können in Ihrer Umgebung benannte Orte sowohl im Kontext der Erkennung von [Risikoereignissen](active-directory-reporting-risk-events.md) als auch für bedingten Zugriff verwenden. Weitere Informationen zum Konfigurieren von benannten Orten in Azure Active Directory finden Sie unter [Benannte Orte in Azure Active Directory](active-directory-named-locations.md).
+
+Die Anzahl von Orten, die Sie konfigurieren können, wird durch die Größe des verbundenen Objekts in Azure AD eingeschränkt. Sie können Folgendes konfigurieren:
+ 
+ - Einen benannten Ort mit bis zu 500 IP-Adressbereichen
+ - Maximal 60 benannte Orte (Vorschau), wobei jedem ein IP-Adressbereich zugewiesen wird. 
+
+
+**Durch MFA bestätigte IPs** ist ein Feature der Multi-Factor Authentication, mit dem Sie Bereiche mit vertrauenswürdigen IP-Adressen definieren können, die für das lokale Intranet Ihrer Organisation stehen. Beim Konfigurieren der Bedingungen eines Standorts können Sie mit der Option „Vertrauenswürdige IPs“ zwischen Verbindungen, die über das Netzwerk Ihrer Organisation hergestellt werden, und allen anderen Standorten unterscheiden. Weitere Informationen finden Sie unter [Vertrauenswürdige IP-Adressen](../multi-factor-authentication/multi-factor-authentication-whats-next.md#trusted-ips).  
+
+
+
 Sie können entweder alle Standorte oder alle vertrauenswürdigen IPs einbinden, und Sie können alle vertrauenswürdigen IPs ausschließen.
 
-    ![Bedingungen](./media/active-directory-conditional-access-azure-portal/03.png)
+![Bedingungen](./media/active-directory-conditional-access-azure-portal/03.png)
 
 
-- **Client-App**: Die Client-App kann entweder eine allgemeine App (Webbrowser, mobile App, Desktopclient) sein, die Sie zum Herstellen der Verbindung mit Azure Active Directory verwendet haben, oder Sie können die spezifische Option „Exchange Active Sync“ auswählen.  
+### <a name="client-app"></a>Client-App
+
+Die Client-App kann entweder eine allgemeine App (Webbrowser, mobile App, Desktopclient) sein, die Sie zum Herstellen der Verbindung mit Azure Active Directory verwendet haben, oder Sie können die spezifische Option „Exchange Active Sync“ auswählen.  
 Die Legacyauthentifizierung bezieht sich auf Clients, für die eine einfache Authentifizierung verwendet wird, z.B. ältere Office-Clients, für die keine moderne Authentifizierung genutzt wird. Für die Legacyauthentifizierung wird der bedingte Zugriff derzeit nicht unterstützt.
 
-    ![Bedingungen](./media/active-directory-conditional-access-azure-portal/04.png)
+![Bedingungen](./media/active-directory-conditional-access-azure-portal/04.png)
 
 
 ## <a name="common-scenarios"></a>Gängige Szenarien

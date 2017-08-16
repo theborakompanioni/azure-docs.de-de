@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/16/2017
 ms.author: naziml;wesmc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
-ms.openlocfilehash: 5d1dc8caab804914ac7e94be7f080b713674bc0a
+ms.translationtype: HT
+ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
+ms.openlocfilehash: 87b9da134bce20b037e2dce7e1c9f54454fafe9e
 ms.contentlocale: de-de
-ms.lasthandoff: 06/07/2017
-
+ms.lasthandoff: 08/09/2017
 
 ---
 # <a name="introduction-to-azure-web-app-on-linux"></a>Einführung in Azure-Web-App unter Linux
@@ -58,20 +57,20 @@ Kunden haben folgende Möglichkeiten, um ihre Anwendungen bereitzustellen:
 
 Für die Anwendungsskalierung:
 
-* Kunden können Web-Apps zentral hoch- und herunterskalieren, indem sie die Ebene in ihrem App Service-Plan ändern.
+* Kunden können Web-Apps zentral hoch- und herunterskalieren, indem sie den Tarif ihres App Service-Plans ändern.
 * Kunden können Anwendungen horizontal hochskalieren und mehrere App-Instanzen innerhalb der Grenzen ihrer SKU ausführen.
 
 Für Kudu können einige grundlegende Funktionen verwendet werden:
 
 * Umgebungen
 * Bereitstellungen
-* Grundlegende Konsolen
+* Grundlegende Konsole
 * SSH
 
 Für DevOps:
 
 * Stagingumgebungen
-* CI/CD in DockerHub
+* ACR und CI/CD in DockerHub
 
 ## <a name="limitations"></a>Einschränkungen
 Im Azure-Portal werden nur Features angezeigt, die für Web-App unter Linux derzeit funktionieren. Die restlichen Features werden ausgeblendet. Sobald wir weitere Features aktivieren, werden sie im Portal angezeigt.
@@ -81,9 +80,13 @@ Einige Features, z.B. die Integration virtueller Netzwerke, Azure Active Directo
 Diese öffentliche Vorschau ist derzeit nur in den folgenden Regionen verfügbar:
 
 * USA (West)
-* Westeuropa 
-* Südostasien
+* USA (Ost)
+* Westeuropa
+* Europa, Norden
+* Asien, Südosten
 * Australien (Osten)
+* Japan Ost
+* Brasilien Süd
 
 Web-Apps unter Linux wird nur in den App Service-Plänen unterstützt und verfügt nicht über einen Free- oder Shared-Tarif. Außerdem schließen sich App Service-Pläne für reguläre Web-Apps und Linux-Web-Apps gegenseitig aus, sodass es nicht möglich ist, eine Linux-Web-App in einem anderen Plan zu erstellen, bei dem es sich nicht um einen Linux-App Service-Plan handelt.
 

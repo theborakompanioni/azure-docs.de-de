@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/25/2017
+ms.date: 08/04/2017
 ms.author: curtand
 ms.reviewer: rodejo
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
-ms.openlocfilehash: d7be54b508a845d6746fd65887e3339ff371a287
+ms.translationtype: HT
+ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
+ms.openlocfilehash: c2a313c5ad011d03309a962bf2905750a478b890
 ms.contentlocale: de-de
-ms.lasthandoff: 05/05/2017
+ms.lasthandoff: 08/05/2017
 
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>Azure Active Directory-Cmdlets Version 2 für die Gruppenverwaltung
@@ -225,6 +225,22 @@ Das Cmdlet gibt die Liste der Besitzer für die angegebene Gruppe zurück:
 Zum Entfernen eines Besitzers aus einer Gruppe verwenden Sie „Remove-AzureADGroupOwner“:
 
     PS C:\Windows\system32> remove-AzureADGroupOwner -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df -OwnerId e831b3fd-77c9-49c7-9fca-de43e109ef67
+
+## <a name="reserved-aliases"></a>Reservierte Aliase 
+Wenn eine Gruppe erstellt wird, ermöglichen bestimmte Endpunkte dem Benutzer, einen mailNickname oder Alias anzugeben, der als Teil der E-Mail-Adresse der Gruppe verwendet werden soll.   
+Gruppen mit den folgenden weitreichend berechtigten E-Mail-Aliasen können nur von einem globalen Azure AD-Administrator erstellt werden. 
+  
+* abuse 
+* admin 
+* administrator 
+* hostmaster 
+* majordomo 
+* postmaster 
+* root 
+* secure 
+* security 
+* ssl-admin 
+* webmaster 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu Azure Active Directory PowerShell finden Sie unter [Azure Active Directory-Cmdlets](/powershell/azure/install-adv2?view=azureadps-2.0).

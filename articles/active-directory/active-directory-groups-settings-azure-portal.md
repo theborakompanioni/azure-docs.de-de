@@ -12,21 +12,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2017
+ms.date: 08/01/2017
 ms.author: curtand
-ms.custom: H1Hack27Feb2017
+ms.reviewer: kairaz.contractor
+ms.custom: H1Hack27Feb2017;it-pro
 ms.translationtype: HT
-ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
-ms.openlocfilehash: 24f5da884a7d9f1d07c32419316d2c046d54d739
+ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
+ms.openlocfilehash: b4baccafc0a9178223dbf64c664fc34ab9f7f916
 ms.contentlocale: de-de
-ms.lasthandoff: 07/26/2017
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="manage-the-settings-for-a-group-in-azure-active-directory"></a>Verwalten der Einstellungen für eine Gruppe in Azure Active Directory
 In diesem Artikel wird erläutert, wie Sie die Einstellungen für eine Gruppe in Azure Active Directory (Azure AD) ändern.
 
 ## <a name="how-do-i-find-and-change-the-settings"></a>Wie finde und ändere ich die Einstellungen?
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) über ein Konto an, das als globaler Administrator für das Verzeichnis konfiguriert ist.
+1. Melden Sie sich beim [Azure AD Admin Center](https://aad.portal.azure.com) mit dem Konto eines globalen Administrators für das Verzeichnis an.
 2. Wählen Sie **Weitere Dienste** aus, geben Sie **Benutzer und Gruppen** in das Textfeld ein, und drücken Sie die **EINGABETASTE** .
 
    ![Öffnen des Blatts „Benutzer und Gruppen“](./media/active-directory-groups-settings-azure-portal/search-user-management.png)

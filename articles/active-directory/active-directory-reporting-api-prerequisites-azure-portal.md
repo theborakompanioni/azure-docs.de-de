@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 07/15/2017
 ms.author: dhanyahk;markvi
 ms.reviewer: dhanyahk
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
-ms.openlocfilehash: a84f3825d3f019c60f8d875d250fe4cf79f4b04c
+ms.translationtype: HT
+ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
+ms.openlocfilehash: 5fafd83c337e3c73260d89cdad7409a01ce5855b
 ms.contentlocale: de-de
-ms.lasthandoff: 06/20/2017
+ms.lasthandoff: 08/07/2017
 
 ---
 # <a name="prerequisites-to-access-the-azure-ad-reporting-api"></a>Voraussetzungen zum Zugriff auf die Azure AD-Berichterstellungs-API
@@ -74,7 +74,7 @@ Um Ihr Verzeichnis für den Zugriff auf die Azure AD-Berichterstellungs-API zu k
 
     a. Geben Sie im Textfeld **Name** Folgendes ein: `Reporting API application`.
 
-    b. Wählen Sie als **Anwendungstyp** die Option `Web app / API` aus.
+    b. Wählen Sie als **Anwendungstyp** **Web-App/API** aus.
 
     c. Geben Sie im Textfeld **Anmelde-URL** die URL `https://localhost` ein.
 

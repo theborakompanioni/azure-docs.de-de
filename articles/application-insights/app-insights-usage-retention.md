@@ -12,11 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 05/03/2017
 ms.author: cfreeman
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 17f6062537714fbef7c8509261ac4875f8a44b6e
+ms.translationtype: HT
+ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
+ms.openlocfilehash: 75abfb977a47ccef45bcc2124b31fbd06ea7d68e
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 08/09/2017
 
 ---
 
@@ -32,19 +32,12 @@ Wenn Sie im Application Insights-Portal auf dem Blatt „Vermerkdauer“ noch ke
 
 ![Vermerkdauer-Tool](./media/app-insights-usage-retention/retention.png)
 
-a. Die Seite „Übersicht“ ist immer vorhanden. Außerdem können Sie benannte Berichte mit verschiedenen Parametereinstellungen speichern. Speichern Sie Berichte in der Freigabe, um sie für andere Benutzer sichtbar zu machen, die Zugriff auf die Ressource haben.
-
-b. Das Diagramm zählt standardmäßig alle Benutzer, die benutzerdefinierte Ereignisse oder Seitenansichten ausgeführt haben, die von Ihrer App empfangen wurden. Wählen Sie einen oder mehrere aus, um sich auf eine bestimmte Benutzeraktivität zu konzentrieren. 
-
-c. Wenden Sie einen oder mehrere Filter auf Eigenschaften an. Beispielsweise können Sie sich auf Benutzer in einem bestimmten Land oder einer bestimmten Region konzentrieren. Klicken Sie nach dem Festlegen der Filter auf **Aktualisieren**.
-
-d. Mit **Standardeinstellungen wiederherstellen** werden der benutzerdefinierte Filter und die Ereignisfilter immer gelöscht.
-
-e. Das Zusammenfassungsdiagramm zeigt Gesamtwerte für den ausgewählten Zeitraum an.
-
-f. Das Raster zeigt die Anzahl der Benutzer, die zurückgekehrt sind, um die ausgewählten Aktionen innerhalb eines bestimmten Zeitraums zu wiederholen. Jede Zeile stellt eine Kohorte von Benutzern dar, die eine der ausgewählten Aktionen während des angezeigten Zeitraums ausgeführt haben. Jede Zelle in der Zeile zeigt an, wie viele Benutzer dieser Kohorte mindestens einmal in einem späteren Zeitraum zurückgekehrt sind. Einige Benutzer kehren möglicherweise in mehreren Zeiträumen zurück.
-
-Jeder Benutzer, der die App während des Zeitbereichs des Diagramms verwendet hat, wird genau in einer Zeile des Diagramms dargestellt. Jeder Benutzer wird in dem Zeitraum gezählt, in dem er die ausgewählte Aktion erstmals innerhalb des Zeitbereichs des Diagramms ausgeführt hat. Daher enthält die erste Zeile tendenziell eine größere Anzahl.
+1. Über die Symbolleiste kann der Benutzer folgende Aktionen ausführen: Erstellen von neuen Berichten zur Vermerkdauer, Öffnen von vorhandenen Berichten zur Vermerkdauer, Speichern des aktuellen Berichts zur Vermerkdauer oder Speichern unter einem bestimmten Namen, Rückgängigmachen von Änderungen an gespeicherten Berichten, Aktualisieren von Daten im Bericht, Teilen von Berichten per E-Mail oder direktem Link und Zugreifen auf die Dokumentationsseite. 
+2. Standardmäßig werden im Bericht zur Vermerkdauer alle Benutzer aufgeführt, die einen bestimmten Vorgang durchgeführt haben, zu dem Tool zurückgekehrt sind und dann einen anderen Vorgang durchgeführt haben. Sie können Ereignisse in verschiedenen Kombinationen auswählen, um den Schwerpunkt auf bestimmte Benutzeraktivitäten zu setzen.
+3. Wenden Sie einen oder mehrere Filter auf Eigenschaften an. Beispielsweise können Sie sich auf Benutzer in einem bestimmten Land oder einer bestimmten Region konzentrieren. Klicken Sie nach dem Festlegen der Filter auf **Aktualisieren**. 
+4. Das Diagramm mit der gesamten Vermerkdauer zeigt eine Zusammenfassung der Vermerkdauer für die Benutzer im ausgewählten Zeitraum an. 
+5. Das Raster gibt die Anzahl der Benutzer an, die gemäß dem Abfrage-Generator in Punkt 2 vermerkt wurden. Jede Zeile stellt eine Kohorte von Benutzern dar, die ein Ereignis während des angezeigten Zeitraums ausgeführt haben. Jede Zelle in der Zeile zeigt an, wie viele Benutzer dieser Kohorte mindestens einmal in einem späteren Zeitraum zurückgekehrt sind. Einige Benutzer kehren möglicherweise in mehreren Zeiträumen zurück. 
+6. Die Application Insights-Karten zeigen die fünf wichtigsten Initiierungsereignisse sowie die fünf wichtigsten zurückgegebenen Ereignisse an, um Benutzern einen besseren Überblick über ihren Bericht zur Vermerkdauer zu verschaffen. 
 
 
 ## <a name="use-business-events-to-track-retention"></a>Nachverfolgen der Vermerkdauer mithilfe von Geschäftsereignissen
@@ -69,9 +62,10 @@ Oder im ASP.NET-Servercode:
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-
-* [Nutzungsübersicht](app-insights-usage-overview.md)
-* [Benutzer und Sitzungen](app-insights-usage-segmentation.md)
-* [Codierung benutzerdefinierte Ereignisse](app-insights-api-custom-events-metrics.md)
-
+- Um mit der Nutzung zu beginnen, senden Sie [benutzerdefinierte Ereignisse](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) oder [Seitenansichten](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views).
+- Wenn Sie bereits benutzerdefinierte Ereignisse oder Seitenansichten senden, finden Sie mithilfe der Nutzungstools heraus, wie Benutzer den Dienst verwenden.
+    - [Benutzer, Sitzungen, Ereignisse](app-insights-usage-segmentation.md)
+    - [Trichter](usage-funnels.md)
+    - [Arbeitsmappen](app-insights-usage-workbooks.md)
+    - [Hinzufügen von Benutzerkontext](app-insights-usage-send-user-context.md)
 

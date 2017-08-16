@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/18/2017
+ms.date: 08/09/2017
 ms.author: delhan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
-ms.openlocfilehash: 470b2d87ffdc4769bb2963df7dea646901469e00
+ms.translationtype: HT
+ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
+ms.openlocfilehash: e9b833b07556378f17d9aaff0912c7d73dff44eb
 ms.contentlocale: de-de
-ms.lasthandoff: 05/25/2017
+ms.lasthandoff: 08/09/2017
 
 ---
 
@@ -32,7 +32,7 @@ In diesem Leitfaden sind Lösungen für häufig aufgetretene Probleme in Storage
 
 ## <a name="sign-in-issues"></a>Probleme bei der Anmeldung
 
-Bevor Sie fortfahren, starten Sie die Anwendung neu, und prüfen Sie, ob die Probleme so behoben werden können.
+Es werden nur AAD-Konten (Azure Active Directory) unterstützt. Wenn Sie ein AD FS-Konto verwenden, wird davon ausgegangen, dass die Anmeldung beim Storage Explorer nicht funktioniert. Bevor Sie fortfahren, starten Sie die Anwendung neu, und prüfen Sie, ob die Probleme so behoben werden können.
 
 ### <a name="error-self-signed-certificate-in-certificate-chain"></a>Fehler: selbstsigniertes Zertifikat in der Zertifikatkette
 
@@ -152,7 +152,7 @@ Wenn Sie über Netzwerktools verfügen, z.B. Fiddler für Windows, können Sie d
 
 - Überprüfen Sie die vom Netzwerktool verwendete Portnummer.
 
-- Geben Sie die URL des lokalen Hosts und die Portnummer des Netzwerktools als Proxyeinstellungen in Storage Explorer ein. Bei korrekter Eingabe beginnt das Netzwerktool mit der Protokollierung der von Storage Explorer an Verwaltungs- und Dienstendpunkte gesendeten Netzwerkanforderungen. Wenn Sie in einem Browser beispielsweise „https://cawablobgrs.blob.core.windows.net/“ für den Blobendpunkt eingeben, erhalten Sie eine Antwort ähnlich der folgenden, in der angegeben wird, dass die Ressource vorhanden ist, Sie jedoch keinen Zugriff darauf haben.
+- Geben Sie die URL des lokalen Hosts und die Portnummer des Netzwerktools als Proxyeinstellungen in Storage Explorer ein. Bei korrekter Eingabe beginnt das Netzwerktool mit der Protokollierung der vom Storage Explorer an Verwaltungs- und Dienstendpunkte gesendeten Netzwerkanforderungen. Wenn Sie in einem Browser beispielsweise „https://cawablobgrs.blob.core.windows.net/“ für den Blobendpunkt eingeben, erhalten Sie eine Antwort ähnlich der folgenden, in der angegeben wird, dass die Ressource vorhanden ist, Sie jedoch keinen Zugriff darauf haben.
 
 ![Codebeispiel](./media/storage-explorer-troubleshooting/4022502_en_2.png)
 

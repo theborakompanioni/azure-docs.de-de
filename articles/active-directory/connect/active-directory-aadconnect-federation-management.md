@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
-ms.openlocfilehash: 2a64405c0862d09dd487d260a651123eafbcaf99
+ms.translationtype: HT
+ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
+ms.openlocfilehash: 14f03542a6553c5bb697192828368ffe6b96441c
 ms.contentlocale: de-de
-ms.lasthandoff: 04/10/2017
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Verwaltung und Anpassung der Active Directory-Verbunddienste mit Azure AD Connect
@@ -173,9 +173,13 @@ Das Hinzufügen einer Domäne, die einen Verbund mit Azure AD bilden soll, ist m
 
     Nach der Auswahl der Domäne erhalten Sie vom Assistenten die entsprechenden Informationen zu weiteren Aktionen, die er ausführt, sowie zur Auswirkung der Konfiguration. In einigen Fällen – wenn Sie eine Domäne auswählen, die noch nicht in Azure AD überprüft wurde – erhalten Sie vom Assistenten Informationen zur Überprüfung der Domäne. Ausführliche Informationen finden Sie unter [Hinzufügen eines benutzerdefinierten Domänennamens zu Azure Active Directory](../active-directory-add-domain.md) .
 
-5. Klicken Sie auf **Weiter**. Auf der Seite **Bereit zur Konfiguration** wird die Liste mit den Aktionen angezeigt, die von Azure AD Connect ausgeführt werden. Klicken Sie auf **Installieren** , um die Konfiguration abzuschließen.
+5. Klicken Sie auf **Weiter**.
+ Auf der Seite **Bereit zur Konfiguration** wird die Liste mit den Aktionen angezeigt, die von Azure AD Connect ausgeführt werden. Klicken Sie auf **Installieren** , um die Konfiguration abzuschließen.
 
-   ![Bereit zur Konfiguration](media/active-directory-aadconnect-federation-management/AdditionalDomain5.PNG)
+   ![Bereit für Konfiguration](media/active-directory-aadconnect-federation-management/AdditionalDomain5.PNG)
+
+> [!NOTE]
+> Benutzer aus der hinzugefügten Verbunddomäne müssen synchronisiert werden, bevor sie sich bei Azure AD anmelden können.
 
 ## <a name="ad-fs-customization"></a>AD FS-Anpassung
 Die folgenden Abschnitte enthalten detaillierte Informationen zu einigen häufigen Aufgaben, die zum Anpassen der AD FS-Anmeldeseite eventuell erforderlich sind.

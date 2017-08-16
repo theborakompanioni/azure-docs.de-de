@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2017
+ms.date: 08/03/2017
 ms.author: billmath
 ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
-ms.openlocfilehash: 40d07ce6e480924c7c1af601cc25e4a74280141f
+ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
+ms.openlocfilehash: 37c0ea094d02208f2516a4a040f75894e046c670
 ms.contentlocale: de-de
-ms.lasthandoff: 07/26/2017
+ms.lasthandoff: 08/04/2017
 
 ---
 
@@ -34,13 +34,14 @@ Folgende Szenarien werden in der Preview-Version vollständig unterstützt:
 - Benutzeranmeldungen bei allen webbrowserbasierten Anwendungen
 - Benutzeranmeldungen bei Office 365-Clientanwendungen, die die [moderne Authentifizierung](https://aka.ms/modernauthga) unterstützen
 - Azure AD Join für Windows 10-Geräte
+- Unterstützung für Exchange ActiveSync.
 
 ## <a name="unsupported-scenarios"></a>Nicht unterstützte Szenarien
 
 Folgende Szenarien werden in der Vorschauversion _nicht_ unterstützt:
 
-- Benutzeranmeldungen bei älteren Office-Clientanwendungen und bei Exchange ActiveSync (also native E-Mail-Anwendungen auf Mobilgeräten). Organisationen wird empfohlen, möglichst zur modernen Authentifizierung zu wechseln. Die moderne Authentifizierung ermöglicht nicht nur die Unterstützung der Passthrough-Authentifizierung, sondern trägt mit Features für [bedingten Zugriff](../active-directory-conditional-access.md) wie etwa Multi-Factor Authentication (MFA) auch zum Schutz Ihrer Identitäten bei.
-- Benutzeranmeldungen bei Skype for Business-Clientanwendungen
+- Benutzeranmeldungen bei älteren Office-Clientanwendungen (Office 2013 oder früher). Organisationen wird empfohlen, möglichst zur modernen Authentifizierung zu wechseln. Die moderne Authentifizierung ermöglicht nicht nur die Unterstützung der Passthrough-Authentifizierung, sondern trägt mit Features für [bedingten Zugriff](../active-directory-conditional-access.md) wie etwa Multi-Factor Authentication (MFA) auch zum Schutz Ihrer Benutzerkonten bei.
+- Benutzeranmeldungen bei Skype for Business-Clientanwendungen inklusive Skype for Business 2016.
 - Benutzeranmeldungen bei PowerShell v1.0. Es empfiehlt sich, stattdessen PowerShell 2.0 zu verwenden.
 
 >[!IMPORTANT]

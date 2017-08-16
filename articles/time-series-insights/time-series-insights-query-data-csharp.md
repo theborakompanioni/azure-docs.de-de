@@ -16,17 +16,17 @@ ms.workload: big-data
 ms.date: 07/20/2017
 ms.author: ankryach
 ms.translationtype: HT
-ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
-ms.openlocfilehash: 99507a7bf9ca332f0b7adc56c2d8df0240f29b06
+ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
+ms.openlocfilehash: 1444b517664355e8e240ea181d707c464d7ec5bb
 ms.contentlocale: de-de
-ms.lasthandoff: 07/24/2017
+ms.lasthandoff: 08/09/2017
 
 ---
 # <a name="query-data-from-the-azure-time-series-insights-environment-using-c"></a>Abfragen von Daten aus einer Azure Time Series Insights-Umgebung mit C#
 
 Dieses C#-Beispiel veranschaulicht, wie Daten aus einer Azure Time Series Insights-Umgebung abgefragt werden.
 Das Beispiel zeigt einige einfache Beispiele für die Verwendung der Abfrage-API:
-1. Rufen Sie zur Vorbereitung das Zugriffstoken mithilfe der Azure Active Directory-API ab. Übergeben Sie dieses Token im `Authorization`-Header jeder Abfrage-API-Anforderung. Informationen zum Einrichten nicht interaktiver Anwendungen finden Sie unter [Authentifizierung und Autorisierung](time-series-insights-authentication-and-authorization.md).
+1. Rufen Sie zur Vorbereitung das Zugriffstoken mithilfe der Azure Active Directory-API ab. Übergeben Sie dieses Token im `Authorization`-Header jeder Abfrage-API-Anforderung. Informationen zum Einrichten nicht interaktiver Anwendungen finden Sie unter [Authentifizierung und Autorisierung](time-series-insights-authentication-and-authorization.md). Stellen Sie außerdem sicher, dass alle Konstanten, die zu Anfang des Beispiels definiert wurden, ordnungsgemäß festgelegt sind.
 2. Die Liste der Umgebungen, auf die der Benutzer Zugriff hat, wird abgerufen. Eine der Umgebungen wird als relevant übernommen, und für diese Umgebung werden weitere Daten abgefragt.
 3. Als Beispiel für eine HTTPS-Anforderung werden Verfügbarkeitsdaten für die relevante Umgebung abgefragt.
 4. Als Beispiel für eine Websocketanforderung werden aggregierte Ereignisdaten für die relevante Umgebung abgefragt. Daten werden für den gesamten Verfügbarkeitszeitbereich abgefragt.
@@ -60,6 +60,9 @@ namespace TimeSeriesInsightsQuerySample
 
         // SET the application key of the application registered in your Azure Active Directory
         private static string ApplicationClientSecret = "#DUMMY#";
+
+        // SET the Azure Active Directory tenant.
+        private static string Tenant = "#DUMMY#.onmicrosoft.com";
 
         public static async Task SampleAsync()
         {
@@ -261,14 +264,14 @@ namespace TimeSeriesInsightsQuerySample
 
         private static async Task<string> AcquireAccessTokenAsync()
         {
-            if (ApplicationClientId == "#DUMMY#" || ApplicationClientSecret == "#DUMMY#")
+            if (ApplicationClientId == "#DUMMY#" || ApplicationClientSecret == "#DUMMY#" || Tenant.StartsWith("#DUMMY#"))
             {
                 throw new Exception(
-                    $"Use the link {"https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-authentication-and-authorization"} to update the values of 'ApplicationClientId' and 'ApplicationClientSecret'.");
+                    $"Use the link {"https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-authentication-and-authorization"} to update the values of 'ApplicationClientId', 'ApplicationClientSecret' and 'Tenant'.");
             }
 
             var authenticationContext = new AuthenticationContext(
-                "https://login.microsoftonline.com/common",
+                $"https://login.windows.net/{Tenant}",
                 TokenCache.DefaultShared);
 
             AuthenticationResult token = await authenticationContext.AcquireTokenAsync(

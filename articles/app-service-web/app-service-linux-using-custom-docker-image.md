@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/16/2017
 ms.author: naziml;wesmc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
-ms.openlocfilehash: d55cfc354ad5a9fc0f06b671f441ba4a0616bb9a
+ms.translationtype: HT
+ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
+ms.openlocfilehash: f51cacb33251d479f48a39014cc2db60a23358d5
 ms.contentlocale: de-de
-ms.lasthandoff: 06/15/2017
-
+ms.lasthandoff: 08/07/2017
 
 ---
 
@@ -33,7 +32,7 @@ App Service stellt vordefinierte Anwendungsstapel unter Linux mit Unterstützung
 
 
 ## <a name="how-to-set-a-custom-docker-image-for-a-web-app"></a>Festlegen eines benutzerdefinierten Docker-Images für eine Web-App
-Sie können das benutzerdefinierte Docker-Image sowohl für neue als auch für vorhandene Web-Apps festlegen. Klicken Sie beim Erstellen einer Web-App unter Linux im [Azure-Portal](https://portal.azure.com) auf **Container konfigurieren**, um ein benutzerdefiniertes Docker-Image festzulegen:
+Sie können das benutzerdefinierte Docker-Image sowohl für neue als auch für vorhandene Web-Apps festlegen. Klicken Sie beim Erstellen einer Web-App unter Linux im [Azure-Portal](https://portal.azure.com/#create/Microsoft.AppSvcLinux) auf **Container konfigurieren**, um ein benutzerdefiniertes Docker-Image festzulegen:
 
 ![Benutzerdefiniertes Docker-Image für eine neue Web-App unter Linux][1]
 
@@ -65,18 +64,20 @@ So verwenden Sie ein benutzerdefiniertes Docker-Image aus einer privaten Imagere
 
 ## <a name="how-to-set-the-port-used-by-your-docker-image"></a>Festlegen des vom Docker-Image verwendeten Ports ##
 
-Wenn Sie ein benutzerdefiniertes Docker-Image für Ihre Web-App nutzen, können Sie die Umgebungsvariable `PORT` in Ihrer Dockerfile-Datei verwenden. Sie wird dem generierten Container hinzugefügt. Sehen Sie sich das folgende Beispiel mit einer Docker-Datei für eine Ruby-Anwendung an:
+Wenn Sie ein benutzerdefiniertes Docker-Image für Ihre Web-App nutzen, können Sie die Umgebungsvariable `WEBSITES_PORT` in Ihrer Dockerfile-Datei verwenden. Sie wird dem generierten Container hinzugefügt. Sehen Sie sich das folgende Beispiel mit einer Docker-Datei für eine Ruby-Anwendung an:
 
     FROM ruby:2.2.0
     RUN mkdir /app
     WORKDIR /app
     ADD . /app
     RUN bundle install
-    CMD bundle exec puma config.ru -p $PORT -e production
+    CMD bundle exec puma config.ru -p WEBSITES_PORT -e production
 
-In der letzten Zeile des Befehls erkennen Sie, dass die Umgebungsvariable PORT zur Laufzeit übergeben wird. Beachten Sie, dass in Befehlen die Groß-/Kleinschreibung berücksichtigt wird.
+In der letzten Zeile des Befehls können Sie erkennen, dass die Umgebungsvariable „WEBSITES_PORT“ zur Laufzeit übergeben wird. Beachten Sie, dass in Befehlen die Groß-/Kleinschreibung berücksichtigt wird.
 
-Wenn Sie ein vorhandenes Docker-Image nutzen, das von einer anderen Person erstellt wurde, müssen Sie unter Umständen einen anderen Port als Port 80 für die Anwendung angeben. Um den Port zu konfigurieren, fügen Sie eine Anwendungseinstellung mit dem Namen `PORT` und dem unten abgebildeten Wert hinzu:
+Bei der Plattform wurde in der Vergangenheit die App-Einstellung `PORT` verwendet. Es ist geplant, die Verwendung dieser App-Einstellung als veraltet zu markieren und ausschließlich `WEBSITES_PORT` zu verwenden.
+
+Wenn Sie ein vorhandenes Docker-Image nutzen, das von einer anderen Person erstellt wurde, müssen Sie unter Umständen einen anderen Port als Port 80 für die Anwendung angeben. Um den Port zu konfigurieren, fügen Sie eine Anwendungseinstellung mit dem Namen `WEBSITES_PORT` und dem unten abgebildeten Wert hinzu:
 
 ![Konfigurieren der App-Einstellung PORT für das benutzerdefinierte Docker-Image][6]
 
@@ -94,8 +95,8 @@ So wechseln Sie von einem benutzerdefinierten Image zurück zu einem integrierte
 
 ## <a name="troubleshooting"></a>Problembehandlung ##
 
-Überprüfen Sie die Docker-Protokolle im Verzeichnis „LogFiles/docker“, wenn die Anwendung mit Ihrem benutzerdefinierten Docker-Image nicht gestartet werden kann. Sie können auf dieses Verzeichnis entweder über Ihre SCM-Website oder per FTP zugreifen.
-Zum Protokollieren von `stdout` und `stderr` in Ihrem Container müssen Sie unter **Diagnoseprotokolle** die **Webserverprotokollierung** aktivieren.
+Wenn Ihre Anwendung nicht mit Ihrem benutzerdefinierten Docker-Image gestartet werden kann, überprüfen Sie die Docker-Protokolle im Verzeichnis „LogFiles“. Sie können auf dieses Verzeichnis entweder über Ihre SCM-Website oder per FTP zugreifen.
+Zum Protokollieren von `stdout` und `stderr` in Ihrem Container müssen Sie unter **Diagnoseprotokolle** die **Protokollierung von Docker-Containern** aktivieren.
 
 ![Aktivieren der Protokollierung][8]
 

@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/24/2017
+ms.date: 08/04/2017
 ms.author: billmath
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: 39dd859d60e7f1dcf697e3c59b8f084e400bbae0
+ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
+ms.openlocfilehash: bc4ff9125553c8918df3a1f84041560a5b7d4cd8
 ms.contentlocale: de-de
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 08/07/2017
 
 ---
 
@@ -29,14 +29,23 @@ In diesem Artikel finden Sie Informationen zur Problembehandlung bei bekannten P
 ## <a name="known-issues"></a>Bekannte Probleme
 
 - Wenn Sie 30 und mehr AD-Gesamtstrukturen synchronisieren, kann die nahtlose einmalige Anmeldung nicht mit Azure AD Connect aktiviert werden. Zur Problembehebung können Sie die Funktion auf Ihrem Mandanten [manuell aktivieren](#manual-reset-of-azure-ad-seamless-sso).
-- Wenn Sie Dienst-URLs von Azure AD (https://autologon.microsoftazuread-sso.com, https://aadg.windows.net.nsatc.net) statt zur Zone „Lokales Intranet“ zur Zone „Vertrauenswürdige Sites“ hinzufügen, können sich Benutzer nicht anmelden.
-- Das nahtlose einmalige Anmelden funktioniert in Firefox nicht im privaten Modus.
+- Wenn Sie Dienst-URLs von Azure AD (https://autologon.microsoftazuread-sso.com, https://aadg.windows.net.nsatc.net) statt zur Zone „Lokales Intranet“ zur Zone „Vertrauenswürdige Sites“ hinzufügen, **können sich Benutzer nicht anmelden**.
+- Das nahtlose einmalige Anmelden funktioniert in Firefox- und Edge-Browsern nicht im privaten Modus. Dies gilt auch für den Internet Explorer, wenn der erweiterte Schutzmodus aktiviert ist.
+
+>[!IMPORTANT]
+>Wir haben vor kurzem den Support für Edge zurückgesetzt, um von Kunden gemeldete Probleme zu untersuchen.
+
+## <a name="check-status-of-the-feature"></a>Überprüfen des Status des Features
+
+Stellen Sie sicher, dass das nahtlose einmalige Anmelden für Ihren Mandanten noch **Aktiviert** ist. Um den Status zu überprüfen, können Sie zum **Azure AD Connect**-Blatt im [Azure Active Directory-Admin Center](https://aad.portal.azure.com/) navigieren.
+
+![Azure Active Directory-Admin Center – Azure AD Connect-Blatt](./media/active-directory-aadconnect-sso/sso10.png)
 
 ## <a name="sign-in-failure-reasons-on-the-azure-active-directory-admin-center"></a>Gründe für Anmeldefehler im Azure Active Directory Admin Center
 
 Sie sollten die Problembehandlung von benutzerseitigen Anmeldefehlern mit der nahtlosen einmaligen Anmeldung in den [Berichten zu Anmeldeaktivitäten](../active-directory-reporting-activity-sign-ins.md) im [Azure Active Directory Admin Center](https://aad.portal.azure.com/) beginnen.
 
-![Bericht zu Anmeldeaktivitäten](./media/active-directory-aadconnect-sso/sso9.png)
+![Azure Active Directory-Admin Center – Bericht zu Anmeldeaktivitäten](./media/active-directory-aadconnect-sso/sso9.png)
 
 Navigieren Sie im [Azure Active Directory Admin Center](https://aad.portal.azure.com/) zu **Azure Active Directory** -> **Anmeldungen**, und klicken Sie auf die Anmeldeaktivität eines bestimmten Benutzers. Suchen Sie nach dem Feld **Code des Anmeldefehlers**. Ordnen Sie den Wert in diesem Feld mithilfe der folgenden Tabelle einer Ursache und einer Lösung zu:
 
@@ -81,7 +90,7 @@ Wenn die erfolgreiche Überwachung auf Ihrem Domänencontroller aktiviert ist, w
     </QueryList>
 ```
 
-## <a name="manual-reset-of-azure-ad-seamless-sso"></a>Manuelles Zurücksetzen vom nahtlosen SSO in Azure AD
+## <a name="manual-reset-of-the-feature"></a>Manuelle Zurücksetzung des Features
 
 Wenn die Problembehandlung nicht hilft, können Sie die Funktion auf Ihrem Mandanten manuell zurücksetzen. Führen Sie diese Schritte auf dem lokalen Server durch, auf dem Azure AD Connect ausgeführt wird:
 

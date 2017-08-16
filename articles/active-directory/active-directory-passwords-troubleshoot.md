@@ -6,28 +6,41 @@ keywords:
 documentationcenter: 
 author: MicrosoftGuyJFlo
 manager: femila
-editor: gahug
+ms.reviewer: gahug
 ms.assetid: 
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/26/2017
+ms.date: 08/08/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 6d1cfd588ad60cbdf69a432b4f4baa0b13fed0d3
+ms.translationtype: HT
+ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
+ms.openlocfilehash: 4bbfbbe41eb3f70c27f0721a6b35a8f7f1831af4
 ms.contentlocale: de-de
-ms.lasthandoff: 05/11/2017
-
+ms.lasthandoff: 08/09/2017
 
 ---
 
 # <a name="how-to-troubleshoot-self-service-password-reset"></a>Problembehandlung für die Self-Service-Kennwortzurücksetzung
 
 Wenn Probleme mit der Self-Service-Kennwortzurücksetzung auftreten, helfen Ihnen die folgenden Punkte möglicherweise dabei, die Probleme schnell zu beseitigen.
+
+## <a name="troubleshoot-self-service-password-reset-errors-that-a-user-may-see"></a>Problembehandlung bei Self-Service-Kennwortzurücksetzungs-Fehlern, die einem Benutzer angezeigt werden können
+
+| Error | Details | Technische Details |
+| --- | --- | --- |
+| TenantSSPRFlagDisabled = 9 | Es tut uns leid <br> Sie können Ihr Kennwort zu diesem Zeitpunkt nicht zurücksetzen, da Ihr Administrator die Kennwortzurücksetzung für Ihre Organisation deaktiviert hat. Sie können keine weitere Aktion ergreifen, um dieses Problem zu beheben. Wenden Sie sich an Ihren Administrator, und bitten Sie ihn, dieses Feature zu aktivieren. Weitere Informationen finden Sie unter [Ich habe mein Azure AD-Kennwort vergessen. Was nun?](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-passwords-update-your-own-password#common-problems-and-their-solutions). | SSPR_0009: Wir haben festgestellt, dass die Kennwortzurücksetzung nicht von Ihrem Administrator aktiviert wurde. Wenden Sie sich an Ihren Administrator, und bitten Sie ihn, die Kennwortzurücksetzung für Ihre Organisation zu aktivieren. |
+| WritebackNotEnabled = 10 |Es tut uns leid <br> Sie können Ihr Kennwort zu diesem Zeitpunkt nicht zurücksetzen, da Ihr Administrator einen notwendigen Dienst für Ihre Organisation nicht aktiviert hat. Sie können keine weitere Aktion ergreifen, um dieses Problem zu beheben. Wenden Sie sich an Ihren Administrator, und bitten Sie ihn, die Konfiguration für Ihre Organisation zu überprüfen. Weitere Informationen zu diesem erforderlichen Dienst finden Sie unter [Konfigurieren des Kennwortrückschreibens](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-passwords-writeback#configuring-password-writeback). | SSPR_0010: Wir haben festgestellt, dass das Kennwortrückschreiben nicht aktiviert wurde. Wenden Sie sich an Ihren Administrator, und bitten Sie ihn, das Kennwortrückschreiben zu aktivieren. |
+| SsprNotEnabledInUserPolicy = 11 | Es tut uns leid  <br> Sie können Ihr Kennwort zu diesem Zeitpunkt nicht zurücksetzen, da Ihr Administrator die Kennwortzurücksetzung für Ihre Organisation nicht konfiguriert hat. Sie können keine weitere Aktion ergreifen, um dieses Problem zu beheben. Wenden Sie sich an Ihren Administrator, und bitten Sie ihn, die Kennwortzurücksetzung zu konfigurieren. Weitere Informationen zum Konfigurieren der Kennwortzurücksetzung finden Sie im Artikel [Schnellstart: Self-Service-Kennwortzurücksetzung in Azure AD](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-passwords-getting-started). | SSPR_0011: Ihre Organisation hat keine Richtlinie zur Kennwortzurücksetzung definiert. Wenden Sie sich an Ihren Administrator, und bitten Sie ihn, eine Richtlinie zur Kennwortzurücksetzung zu definieren. |
+| UserNotLicensed = 12 | Es tut uns leid <br> Sie können Ihr Kennwort zu diesem Zeitpunkt nicht zurücksetzen, da erforderliche Lizenzen in Ihrer Organisation fehlen. Sie können keine weitere Aktion ergreifen, um dieses Problem zu beheben. Wenden Sie sich an Ihren Administrator, und bitten Sie ihn, die Lizenzzuweisung zu überprüfen. Weitere Informationen zur Lizenzierung finden Sie im Artikel [Lizenzanforderungen für Azure AD-Self-Service-Kennwortzurücksetzung](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-passwords-licensing). | SSPR_0012: Ihre Organisation besitzt nicht die erforderlichen Lizenzen zum Zurücksetzen von Kennwörtern. Wenden Sie sich an Ihren Administrator, und bitten Sie ihn, die Lizenzzuweisung zu überprüfen. |
+| UserNotMemberOfScopedAccessGroup = 13 | Es tut uns leid <br> Sie können Ihr Kennwort zu diesem Zeitpunkt nicht zurücksetzen, da Ihr Administrator Ihr Konto nicht zur Verwendung der Kennwortzurücksetzung konfiguriert hat. Sie können keine weitere Aktion ergreifen, um dieses Problem zu beheben. Wenden Sie sich an Ihren Administrator, und bitten Sie ihn, Ihr Konto für die Kennwortzurücksetzung zu konfigurieren. Weitere Informationen zur Konfiguration des Kontos für die Kennwortzurücksetzung finden Sie im Artikel [Rollout der Kennwortzurücksetzung für Benutzer](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-passwords-best-practices). | SSPR_0012: Sie sind nicht Mitglied einer für die Kennwortzurücksetzung aktivierten Gruppe. Wenden Sie sich an Ihren Administrator, und fordern Sie an, der Gruppe hinzugefügt zu werden. |
+| UserNotProperlyConfigured = 14 | Es tut uns leid <br> Sie können Ihr Kennwort zu diesem Zeitpunkt nicht zurücksetzen, da erforderliche Informationen zu Ihrem Konto fehlen. Sie können keine weitere Aktion ergreifen, um dieses Problem zu beheben. Wenden Sie sich an Ihren Administrator, und bitten Sie ihn, Ihr Kennwort für Sie zurückzusetzen. Sobald Sie wieder Zugriff auf Ihr Konto haben, können Sie erfahren, wie Sie die erforderlichen Informationen registrieren, indem Sie die Schritte im Artikel [Registrieren für die Self-Service-Kennwortzurücksetzung](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-passwords-reset-register) ausführen. | SSPR_0014: Zusätzliche Sicherheitsinformationen sind erforderlich, um Ihr Kennwort zurückzusetzen. Wenden Sie sich an Ihren Administrator, und bitten Sie ihn, Ihr Kennwort zurückzusetzen. Sobald Sie Zugriff auf Ihr Konto haben, können Sie zusätzliche Sicherheitsinformationen unter „https://aka.ms/ssprsetup“ registrieren. Ihr Administrator kann Ihrem Konto mithilfe der Schritte in [Festlegen und Lesen von Authentifizierungsdaten mithilfe von PowerShell](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-data#set-and-read-authentication-data-using-powershell) zusätzliche Sicherheitsinformationen hinzufügen. |
+| OnPremisesAdminActionRequired = 29 | Es tut uns leid <br> Wir können Ihr Kennwort zu diesem Zeitpunkt aufgrund eines Problems mit der Konfiguration Ihrer Organisation zur Kennwortzurücksetzung nicht zurückzusetzen. Sie können keine weitere Aktion ergreifen, um dieses Problem zu beheben. Wenden Sie sich an Ihren Administrator, und bitten Sie ihn, nachzuforschen. Weitere Informationen zu dem potenziellen Problem finden Sie im Artikel [Problembehandlung: Kennwortrückschreiben](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-passwords-troubleshoot#troubleshoot-password-writeback). | SSPR_0029: Wir können Ihr Kennwort aufgrund eines Fehlers in Ihrer lokalen Konfiguration nicht zurücksetzen. Wenden Sie sich an Ihren Administrator, und bitten Sie ihn, nachzuforschen. |
+| OnPremisesConnectivityError = 30 | Es tut uns leid <br> Wir können Ihr Kennwort zu diesem Zeitpunkt aufgrund von Problemen mit der Konnektivität mit Ihrer Organisation nicht zurücksetzen. Es kann jetzt keine Aktion ausgeführt werden, aber das Problem ist möglicherweise behoben, wenn Sie es später erneut versuchen. Wenn das Problem weiterhin auftritt, wenden Sie sich an Ihren Administrator, und bitten Sie ihn, nachzuforschen. Weitere Informationen zu Konnektivitätsproblemen finden Sie unter [Problembehandlung: Konnektivität bei der Kennwortrückschreibung](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-passwords-troubleshoot#troubleshoot-password-writeback-connectivity). | SSPR_0030: Wir können Ihr Kennwort aufgrund einer schlechten Verbindung mit Ihrer lokalen Umgebung nicht zurücksetzen. Wenden Sie sich an Ihren Administrator, und bitten Sie ihn, nachzuforschen.|
+
 
 ## <a name="troubleshoot-password-reset-configuration-in-the-azure-portal"></a>Problembehandlung: Konfiguration der Kennwortzurücksetzung im Azure-Portal
 
@@ -144,7 +157,7 @@ Eine bewährte Methode bei der Problembehandlung für die Kennwortrückschreibun
 
 Wenn es bei Verwendung der Azure AD Connect-Komponente für die Kennwortrückschreibung zu Dienstunterbrechungen kommt, können Sie die folgenden Schritte für eine schnelle Problemlösung einsetzen:
 
-* [Neustarten des Azure AD Connect-Synchronisierungsdiensts](#restart-the-azure-AD-Connect-sync-service)
+* [Neustarten des Azure AD Connect-Synchronisierungsdiensts](#restart-the-azure-ad-connect-sync-service)
 * [Deaktivieren und erneutes Aktivieren der Funktion für die Kennwortrückschreibung](#disable-and-re-enable-the-password-writeback-feature)
 * [Installieren der aktuellen Azure AD Connect-Version](#install-the-latest-azure-ad-connect-release)
 * [Problembehandlung: Kennwortrückschreibung](#troubleshoot-password-writeback)
@@ -199,6 +212,27 @@ Es wird empfohlen, diese Maßnahme erst zu ergreifen, wenn Sie ersten zwei Schri
 Durch Ausführen dieser Schritte wird die Verbindung mit dem Clouddienst erneut hergestellt, und mögliche Unterbrechungen werden behoben.
 
 Wenn das Installieren der aktuellen Version des Azure AD Connect-Servers nicht zur Lösung des Problems führt, empfehlen wir, als letzten Schritt nach dem Installieren der aktuellen Version die Kennwortrückschreibung zu deaktivieren und erneut zu aktivieren.
+
+## <a name="verify-whether-azure-ad-connect-has-the-required-permission-for-password-writeback"></a>Überprüfen, ob Azure AD Connect über die erforderliche Berechtigung für das Kennwortrückschreiben verfügt 
+Azure AD Connect benötigt für das Kennwortrückschreiben die AD-Berechtigung **Kennwort zurücksetzen**. Ob Azure AD Connect diese Berechtigung für ein bestimmtes lokales AD-Benutzerkonto besitzt, können Sie mithilfe des Windows-Features „Effektive Berechtigung“ ermitteln:
+
+1. Melden Sie sich beim Azure AD Connect-Server an, und starten Sie den **Synchronization Service Manager** („Start“ > „Synchronisierungsdienst“).
+2. Wählen Sie auf der Registerkarte **Connectors** den lokalen **AD-Connector** aus, und klicken Sie auf **Eigenschaften**.  
+![Effektive Berechtigung – Schritt 2](./media/active-directory-passwords-troubleshoot/checkpermission01.png)  
+3. Wählen Sie im Popupdialogfeld die Registerkarte **Mit Active Directory-Gesamtstruktur verbinden** aus, und notieren Sie sich die Eigenschaft **Benutzername**. Das ist das AD DS-Konto, das von Azure AD Connect für die Verzeichnissynchronisierung verwendet wird. Damit Azure AD Connect das Kennwortrückschreiben ausführen kann, muss das AD DS-Konto über die Berechtigung „Kennwort zurücksetzen“ verfügen.  
+![Effektive Berechtigung – Schritt 3](./media/active-directory-passwords-troubleshoot/checkpermission02.png)  
+4. Melden Sie sich bei einem lokalen Domänencontroller an, und starten Sie die Anwendung **Active Directory-Benutzer und -Computer**.
+5. Klicken Sie auf **Ansicht**, und vergewissern Sie sich, dass die Option **Erweiterte Features** aktiviert ist.  
+![Effektive Berechtigung – Schritt 5](./media/active-directory-passwords-troubleshoot/checkpermission03.png)  
+6. Suchen Sie nach dem AD-Benutzerkonto, das Sie überprüfen möchten. Klicken Sie mit der rechten Maustaste auf das Konto, und wählen Sie **Eigenschaften** aus.  
+![Effektive Berechtigung – Schritt 6](./media/active-directory-passwords-troubleshoot/checkpermission04.png)  
+7. Navigieren Sie im Popupdialogfeld zur Registerkarte **Sicherheit**, und klicken Sie auf **Erweitert**.  
+![Effektive Berechtigung – Schritt 7](./media/active-directory-passwords-troubleshoot/checkpermission05.png)  
+8. Navigieren Sie im Popupdialogfeld mit den erweiterten Sicherheitseinstellungen zur Registerkarte **Effektiver Zugriff**.
+9. Klicken Sie auf **Benutzer auswählen**, und wählen Sie das von Azure AD Connect verwendete AD DS-Konto aus (siehe Schritt 3). Klicken Sie anschließend auf **Effektiven Zugriff anzeigen**.  
+![Effektive Berechtigung – Schritt 9](./media/active-directory-passwords-troubleshoot/checkpermission06.png)  
+10. Scrollen Sie nach unten, und suchen Sie nach **Kennwort zurücksetzen**. Ist der Eintrag aktiviert, ist das AD DS-Konto zum Zurücksetzen des Kennworts für das ausgewählte AD-Benutzerkonto berechtigt.  
+![Effektive Berechtigung – Schritt 10](./media/active-directory-passwords-troubleshoot/checkpermission07.png)  
 
 ## <a name="azure-ad-forums"></a>Azure AD-Foren
 

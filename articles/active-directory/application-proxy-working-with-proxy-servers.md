@@ -11,14 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/22/2017
+ms.date: 08/04/2017
 ms.author: kgremban
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: ea928ba4d13970a32123a8ada8575658cecde5d8
+ms.translationtype: HT
+ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
+ms.openlocfilehash: bdca442755507c4ffe8d43692c5b7f2aa3a746f3
 ms.contentlocale: de-de
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 08/07/2017
 
 ---
 
@@ -76,7 +75,7 @@ Achten Sie darauf, dass Sie Kopien der Originaldateien erstellen, falls Sie auf 
 
 Bei einigen Kundenumgebungen muss der gesamte ausgehende Datenverkehr ausnahmslos über einen Proxy für ausgehenden Datenverkehr abgewickelt werden. Das Umgehen des Proxys ist also keine Option.
 
-Sie können den Connectordatenverkehr so konfigurieren, dass er wie im folgenden Diagramm dargestellt über den Proxy für ausgehenden Datenverkehr verläuft.
+Sie können den Connectordatenverkehr so konfigurieren, dass er wie im folgenden Diagramm dargestellt über den Proxy für ausgehenden Datenverkehr verläuft:
 
  ![Konfigurieren des Connectordatenverkehrs für den Verlauf über einen Proxy für ausgehenden Datenverkehr für den Azure AD-Anwendungsproxy](./media/application-proxy-working-with-proxy-servers/configure-proxy-settings.png)
 
@@ -126,14 +125,10 @@ Lassen Sie für die erste Registrierung den Zugriff auf die folgenden Endpunkte 
 * login.windows.net
 * login.microsoftonline.com
 
-Für die zugrunde liegenden Service Bus-Steuerungskanäle, die vom Connectordienst verwendet werden, ist eine zusätzliche Verbindung mit bestimmten IP-Adressen erforderlich. Es gibt zwei Optionen, bis für Service Bus zu einem vollqualifizierten Domänennamen (FQDN) gewechselt wird:
+Wenn Sie die Konnektivität nicht über den FQDN zulassen können und stattdessen IP-Adressbereiche angeben müssen, verwenden Sie diese Optionen:
 
 * Lassen Sie für den Connector den ausgehenden Zugriff für alle Ziele zu.
-* Lassen Sie für den Connector den ausgehenden Zugriff auf [IP-Bereiche für das Azure-Datencenter](https://www.microsoft.com/en-gb/download/details.aspx?id=41653) zu.
-
->[!NOTE]
->Die Schwierigkeit besteht bei der Verwendung der Liste mit den IP-Bereichen für Azure-Datencenter darin, dass sie wöchentlich aktualisiert wird. Sie müssen für einen Prozess sorgen, mit dem sichergestellt wird, dass Ihre Zugriffsregeln entsprechend aktualisiert werden.
->
+* Lassen Sie für den Connector den ausgehenden Zugriff auf [IP-Bereiche für das Azure-Datencenter](https://www.microsoft.com/en-gb/download/details.aspx?id=41653) zu. Die Schwierigkeit besteht bei der Verwendung der Liste mit den IP-Bereichen für Azure-Datencenter darin, dass sie wöchentlich aktualisiert wird. Sie müssen einen Prozess implementieren, mit dem sichergestellt wird, dass Ihre Zugriffsregeln entsprechend aktualisiert werden.
 
 #### <a name="proxy-authentication"></a>Proxyauthentifizierung
 
@@ -141,18 +136,15 @@ Die Proxyauthentifizierung wird derzeit nicht unterstützt. Unsere aktuelle Empf
 
 #### <a name="proxy-ports"></a>Proxyports
 
-Der Connector stellt ausgehende SSL-basierte Verbindungen mit der CONNECT-Methode her. Bei dieser Methode wird praktisch ein Tunnel durch den Proxy für ausgehenden Datenverkehr eingerichtet. Einige Proxyserver lassen standardmäßig nur ausgehende Tunnel zu SSL-Standardports zu (z.B. 443). In diesem Fall muss der Proxyserver so konfiguriert werden, dass Tunnel zu zusätzlichen Ports zugelassen werden.
-
-Konfigurieren Sie den Proxyserver für die Verwendung von Tunneln zu den nicht dem Standard entsprechenden SSL-Ports 8080, 9090, 9091 und 10100 bis 10120.
+Der Connector stellt ausgehende SSL-basierte Verbindungen mit der CONNECT-Methode her. Bei dieser Methode wird praktisch ein Tunnel durch den Proxy für ausgehenden Datenverkehr eingerichtet. Konfigurieren Sie den Proxyserver für die Verwendung von Tunneln zu den Ports 443 und 80.
 
 >[!NOTE]
 >Wenn die Service Bus-Daten per HTTPS gesendet werden, wird Port 443 verwendet. Standardmäßig wird für Service Bus aber versucht, direkte TCP-Verbindungen herzustellen, und HTTPS wird nur verwendet, wenn für die direkte Verbindung ein Fehler auftritt.
->
 
 Damit der Service Bus-Datenverkehr auch über den Proxyserver für ausgehenden Datenverkehr gesendet wird, müssen Sie sicherstellen, dass der Connector keine direkte Verbindung mit den Azure-Diensten für die Ports 9350, 9352 und 5671 herstellen kann.
 
 #### <a name="ssl-inspection"></a>SSL-Überprüfung
-Verwenden Sie die SSL-Überprüfung nicht für den Connectordatenverkehr, da dies dafür zu Problemen führt.
+Verwenden Sie die SSL-Überprüfung nicht für den Connectordatenverkehr, da dies zu Problemen für den Connectordatenverkehr führt.
 
 ## <a name="troubleshoot-connector-proxy-problems-and-service-connectivity-issues"></a>Problembehandlung für Proxyprobleme des Connectors und Verbindungsprobleme von Diensten
 Sie sollten jetzt verfolgen können, dass der gesamte Datenverkehr über den Proxy fließt. Bei Problemen helfen Ihnen die folgenden Informationen zur Problembehandlung weiter.
@@ -193,7 +185,7 @@ Dies ist ein geeigneter Filter (wobei 8080 der Proxydienstport ist):
 
 **(http.Request or http.Response) and tcp.port==8080**
 
-Wenn Sie diesen Filtertext im Fenster **Anzeigefilter** eingeben und **Übernehmen** wählen, wird der erfasste Datenverkehr basierend auf diesem Filter gefiltert.
+Wenn Sie diesen Filter im Fenster **Anzeigefilter** eingeben und **Übernehmen** auswählen, wird der erfasste Datenverkehr basierend auf diesem Filter gefiltert.
 
 Mit dem obigen Filter werden nur die HTTP-Anforderungen und -Antworten zum bzw. vom Proxyport angezeigt. Für einen Connectorstart, bei dem der Connector für die Verwendung eines Proxyservers konfiguriert ist, wird mit dem Filter beispielsweise in etwa Folgendes angezeigt:
 
@@ -225,7 +217,7 @@ Wenn eine Antwort der oben angegebenen Art angezeigt wird, versucht der Connecto
 
 Die Analyse per Netzwerkablaufverfolgung ist nicht für alle Fälle geeignet. Es kann aber ein wertvolles Tool sein, wenn es darum geht, schnell Informationen zu den Abläufen in Ihrem Netzwerk zu erhalten.
 
-Falls Sie weiterhin mit Problemen in Bezug auf Connectorverbindungen zu kämpfen haben, ist es ratsam, ein Ticket für unser Supportteam zu erstellen. Das Team kann Ihnen dann bei der weiteren Problembehandlung behilflich sein.
+Falls Sie weiterhin Probleme mit der Connectorkonnektivität haben, erstellen Sie ein Ticket für unser Supportteam. Das Team kann Ihnen dann bei der weiteren Problembehandlung behilflich sein.
 
 Informationen zum Beheben von Fehlern mit dem Anwendungsproxyconnector finden Sie unter [Problembehandlung von Anwendungsproxys](https://azure.microsoft.com/documentation/articles/active-directory-application-proxy-troubleshoot).
 

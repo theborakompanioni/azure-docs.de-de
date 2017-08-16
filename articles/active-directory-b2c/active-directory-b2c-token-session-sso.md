@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2017
 ms.author: swkrish
-translationtype: Human Translation
-ms.sourcegitcommit: 351149296a6d7dfa801b295ec21fc04215c7b051
-ms.openlocfilehash: 766ba894ba2643dec06757a133f8e716aa856161
-
+ms.translationtype: HT
+ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
+ms.openlocfilehash: 4442174a857681adff33001e660809ec7d47ad7d
+ms.contentlocale: de-de
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="azure-active-directory-b2c-token-session-and-single-sign-on-configuration"></a>Azure Active Directory B2C: Token, Sitzung und einmaliges Anmelden – Konfiguration
@@ -30,7 +31,7 @@ Diese Funktion ermöglicht Ihnen eine präzisere Steuerung der folgenden Einstel
 
 Sie können diese Funktion in Ihrem B2C-Mandanten wie folgt verwenden:
 
-1. Führen Sie die folgenden Schritte aus, um im Azure-Portal [zum Blatt „B2C-Funktionen“ zu navigieren](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade).
+1. Führen Sie die folgenden Schritte aus, um im Azure-Portal [zum Blatt „B2C-Funktionen“ zu navigieren](active-directory-b2c-app-registration.md#navigate-to-b2c-settings).
 2. Klicken Sie auf **Anmelderichtlinien**. *Hinweis: Sie können diese Funktion auf jeden Richtlinientyp anwenden, nicht nur auf **Anmelderichtlinien***.
 3. Öffnen Sie eine Richtlinie, indem Sie darauf klicken. Klicken Sie z.B. auf **B2C_1_SiIn**.
 4. Klicken Sie oben auf dem Blatt auf **Bearbeiten**.
@@ -109,10 +110,5 @@ Wenn Sie in Ihrem B2C-Mandanten über mehrere Anwendungen und Richtlinien verfü
     > Diese Einstellungen sind für Richtlinien zur Kennwortzurücksetzung nicht verfügbar.
     > 
     > 
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 
