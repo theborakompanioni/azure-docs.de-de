@@ -95,7 +95,8 @@
 #### [Senden von Benutzerkontext](app-insights-usage-send-user-context.md)
 #### [Benutzer, Sitzungen, Ereignisse](app-insights-usage-segmentation.md)
 #### [Trichter](usage-funnels.md)
-#### [Aufbewahrung](app-insights-usage-retention.md)
+#### [Bindung](app-insights-usage-retention.md)
+#### [Flows](app-insights-usage-flows.md)
 #### [Arbeitsmappen](app-insights-usage-workbooks.md)
 
 ### Analyse

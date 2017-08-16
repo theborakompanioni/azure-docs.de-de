@@ -4,7 +4,7 @@
 ## [Häufig gestellte Fragen](virtual-machines-windows-sql-server-iaas-faq.md)
  
 # Erste Schritte
-## [Bereitstellen eines virtuellen Computers im Azure-Portal](virtual-machines-windows-portal-sql-server-provision.md)
+## [Bereitstellen eines virtuellen Computers über das Azure-Portal](virtual-machines-windows-portal-sql-server-provision.md)
 ## [Bereitstellen eines virtuellen Computers mithilfe von Azure PowerShell](virtual-machines-windows-ps-sql-create.md)
 ## [Herstellen einer Verbindung mit einem virtuellen Computer](virtual-machines-windows-sql-connect.md)
 ## [Migrieren einer SQL Server-Datenbank](virtual-machines-windows-migrate-sql.md)

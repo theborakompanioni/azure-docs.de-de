@@ -3,13 +3,13 @@
 ## [Informationen zur Azure-Identitätsverwaltung](identity-fundamentals.md)
 ## [Grundlegendes zu Azure-Identitätslösungen](understand-azure-identity-solutions.md)
 ## [Auswählen einer Hybrididentitätslösung](choose-hybrid-identity-solution.md)
+## [Zuordnen von Azure-Abonnements](active-directory-how-subscriptions-associated-directory.md)
 ## [Häufig gestellte Fragen](active-directory-faq.md)
 
 # Erste Schritte
-## [Erhalten eines Azure AD-Mandanten](active-directory-howto-tenant.md)
 ## [Registrieren für Azure AD Premium](active-directory-get-started-premium.md)
-## [Zuordnen von Azure-Abonnements](active-directory-how-subscriptions-associated-directory.md)
-## [Schnellstart: Self-Service-Kennwortzurücksetzung](active-directory-passwords-getting-started.md)
+## [Hinzufügen eines benutzerdefinierten Domänennamens](add-custom-domain.md)
+## [Konfigurieren der Self-Service-Kennwortzurücksetzung](active-directory-passwords-getting-started.md)
 ## Verwalten der Azure AD-Lizenzierung
 ### [Azure-Portal](active-directory-licensing-get-started-azure-portal.md)
 ### [Klassisches Portal](active-directory-licensing-what-is.md)
@@ -19,8 +19,7 @@
 #### [Migrieren einzelner lizenzierter Benutzer zur gruppenbasierten Lizenzierung](active-directory-licensing-group-migration-azure-portal.md)
 #### [Zusätzliche Szenarien für die Gruppenbasierte Lizenzierung](active-directory-licensing-group-advanced.md)
 #### [PowerShell-Beispiele für die gruppenbasierte Lizenzierung](active-directory-licensing-ps-examples.md)
-## [Erhalten von Support für Azure Active Directory](active-directory-troubleshooting-support-howto.md)
-## [Tutorials für die Integration von SaaS-Apps](active-directory-saas-tutorial-list.md)
+
 
 # Anleitung
 ## Planen und Entwerfen
@@ -55,7 +54,6 @@
 #### [Migrieren einzelner lizenzierter Benutzer zur gruppenbasierten Lizenzierung](active-directory-licensing-group-migration-azure-portal.md)
 #### [Zusätzliche Szenarien für die Gruppenbasierte Lizenzierung](active-directory-licensing-group-advanced.md)
 #### [PowerShell-Beispiele für die gruppenbasierte Lizenzierung](active-directory-licensing-ps-examples.md)
-
 ### [Hinzufügen von Benutzern aus anderen Verzeichnissen (klassisches Portal)](active-directory-create-users-external.md)
 ### [Löschen von Benutzern](active-directory-users-delete-user-azure-portal.md)
 ### [Verwalten von Benutzerprofilen](active-directory-users-profile-azure-portal.md)
@@ -164,6 +162,7 @@
 ## Verwalten von Apps
 ### [Übersicht](active-directory-enable-sso-scenario.md)
 ### [Erste Schritte](active-directory-integrating-applications-getting-started.md)
+### [Tutorials für die Integration von SaaS-Apps](active-directory-saas-tutorial-list.md)
 ### [Cloud App Discovery](active-directory-cloudappdiscovery-whatis.md)
 #### [Aktualisieren von Registrierungseinstellungen](active-directory-cloudappdiscovery-registry-settings-for-proxy-services.md)
 #### [Grundlegendes zu Sicherheit und Datenschutz](active-directory-cloudappdiscovery-security-and-privacy-considerations.md)
@@ -239,11 +238,6 @@
 ### [Azure AD Connect](./connect/active-directory-aadconnect.md)
 ### Benutzerdefinierte Domänennamen
 #### [Übersicht](active-directory-add-domain-concepts.md)
-#### Hinzufügen Ihres Domänennamens
-##### [Azure-Portal](active-directory-domains-add-azure-portal.md)
-##### [Klassisches Portal](active-directory-add-domain.md)
-##### [Mit AD FS](active-directory-add-domain-federated.md)
-#### [Zuweisen von Benutzern](active-directory-add-domain-add-users.md)
 #### Verwalten von Domänennamen
 ##### [Azure-Portal](active-directory-domains-manage-azure-portal.md)
 ##### [Klassisches Portal](active-directory-add-manage-domain-names.md)
@@ -270,6 +264,7 @@
 #### [Beispiel für Self-Service-Registrierungsportal](active-directory-b2b-self-service-portal.md)
 #### [Einladungs-E-Mail](active-directory-b2b-invitation-email.md)
 #### [Einlösen der Einladung](active-directory-b2b-redemption-experience.md)
+#### [Hinzufügen von B2B-Benutzern ohne Einladung](active-directory-b2b-add-user-without-invite.md)
 #### [Bedingter Zugriff für B2B](active-directory-b2b-mfa-instructions.md)
 #### [B2B-Freigaberichtlinien](active-directory-b2b-delegate-invitations.md)
 #### [Hinzufügen eines B2B-Benutzers zu einer Rolle](active-directory-b2b-add-guest-to-role.md)
@@ -357,7 +352,8 @@
 ### [Hohe Verfügbarkeit](active-directory-adfs-in-azure-with-azure-traffic-manager.md)
 ### [Ändern des Signaturhashalgorithmus](active-directory-federation-sha256-guidance.md)
 
-## [Problembehandlung](active-directory-troubleshooting.md)
+## [Problembehandlung](active-directory-troubleshooting-support-howto.md)
+### [Problembehandlung bei fehlendem oder nicht verfügbarem Active Directory-Element](active-directory-troubleshooting.md)
 
 ## Bereitstellen eines Proof of Concept (PoC) für Azure AD
 ### [PoC-Playbook: Einführen](active-directory-playbook-intro.md)

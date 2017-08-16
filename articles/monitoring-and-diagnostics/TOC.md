@@ -39,6 +39,7 @@
 ### [Streamen von Aktivitätsprotokollen an Event Hubs](monitoring-stream-activity-logs-event-hubs.md)
 ### [Überwachen von Vorgängen mit dem Ressourcen-Manager](../azure-resource-manager/resource-group-audit.md?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json)
 ### [Erstellen von Aktivitätsprotokollwarnungen mit Resource Manager](monitoring-create-activity-log-alerts-with-resource-manager-template.md)
+### [Migrieren zu Aktivitätsprotokollwarnungen](monitoring-migrate-management-alerts.md)
 ## Verwenden von Dienstbenachrichtigungen
 ### [Anzeigen von Dienstbenachrichtigungen](monitoring-service-notifications.md)
 ### [Konfigurieren von Warnungen für Dienstbenachrichtigungen](monitoring-activity-log-alerts-on-service-notifications.md)
