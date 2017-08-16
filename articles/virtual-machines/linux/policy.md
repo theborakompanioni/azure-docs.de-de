@@ -13,14 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 06/28/2017
+ms.date: 08/02/2017
 ms.author: singhkay
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
-ms.openlocfilehash: c1ad80a56627695f3594f4d9b60cd623fa9bcce3
+ms.translationtype: HT
+ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
+ms.openlocfilehash: 58eaab4fa03afc1e6a5e38bef691cce62a921ea9
 ms.contentlocale: de-de
-ms.lasthandoff: 06/30/2017
-
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="apply-policies-to-linux-vms-with-azure-resource-manager"></a>Anwenden von Richtlinien auf virtuelle Linux-Computer mit Azure Resource Manager
@@ -28,7 +27,7 @@ Mithilfe von Richtlinien kann eine Organisation verschiedene Konventionen und Re
 
 Eine Einführung in die Richtlinien finden Sie unter [Verwenden von Richtlinien für Ressourcenverwaltung und Zugriffssteuerung](../../azure-resource-manager/resource-manager-policy.md).
 
-## <a name="define-policy-for-permitted-virtual-machines"></a>Definieren einer Richtlinie für zulässige virtuelle Computer
+## <a name="permitted-virtual-machines"></a>Zugelassene virtuelle Computer
 Um sicherzustellen, dass virtuelle Computer für Ihre Organisation mit einer Anwendung kompatibel sind, können Sie die zulässigen Betriebssysteme einschränken. In der folgenden Beispielrichtlinie lassen Sie nur das Erstellen von virtuellen Ubuntu 14.04.2-LTS-Computern zu.
 
 ```json
@@ -92,7 +91,7 @@ Verwenden Sie einen Platzhalter, um die vorhergehende Richtlinie so zu ändern, 
 
 Informationen zu Richtlinienfeldern finden Sie unter [Richtlinienaliase](../../azure-resource-manager/resource-manager-policy.md#aliases).
 
-## <a name="define-policy-for-using-managed-disks"></a>Definieren einer Richtlinie für die Verwendung verwalteter Datenträger
+## <a name="managed-disks"></a>Verwaltete Datenträger
 
 Um die Verwendung verwalteter Datenträger erforderlich zu machen, verwenden Sie die folgende Richtlinie:
 
@@ -139,6 +138,76 @@ Um die Verwendung verwalteter Datenträger erforderlich zu machen, verwenden Sie
   }
 }
 ```
+
+## <a name="images-for-virtual-machines"></a>Images für virtuelle Computer
+
+Aus Gründen der Sicherheit können Sie festlegen, dass nur genehmigte benutzerdefinierte Images in Ihrer Umgebung bereitgestellt werden. Sie können entweder die Ressourcengruppe mit den genehmigten Images oder die spezifischen genehmigten Images angeben.
+
+Für das folgende Beispiel sind Images aus einer genehmigten Ressourcengruppe erforderlich:
+
+```json
+{
+    "if": {
+        "allOf": [
+            {
+                "field": "type",
+                "in": [
+                    "Microsoft.Compute/virtualMachines",
+                    "Microsoft.Compute/VirtualMachineScaleSets"
+                ]
+            },
+            {
+                "not": {
+                    "field": "Microsoft.Compute/imageId",
+                    "contains": "resourceGroups/CustomImage"
+                }
+            }
+        ]
+    },
+    "then": {
+        "effect": "deny"
+    }
+} 
+```
+
+Im folgenden Beispiel werden die IDs der genehmigten Images angegeben:
+
+```json
+{
+    "field": "Microsoft.Compute/imageId",
+    "in": ["{imageId1}","{imageId2}"]
+}
+```
+
+## <a name="virtual-machine-extensions"></a>VM-Erweiterungen
+
+Möglicherweise möchten Sie die Verwendung bestimmter Erweiterungstypen verbieten. Beispielsweise ist eine Erweiterung unter Umständen nicht mit benutzerdefinierten Images für virtuelle Computer kompatibel. Im folgenden Beispiel wird gezeigt, wie eine bestimmte Erweiterung blockiert wird. Dabei wird mithilfe des Verlegers und des Typs festgelegt, welche Erweiterung blockiert werden soll.
+
+```json
+{
+    "if": {
+        "allOf": [
+            {
+                "field": "type",
+                "equals": "Microsoft.Compute/virtualMachines/extensions"
+            },
+            {
+                "field": "Microsoft.Compute/virtualMachines/extensions/publisher",
+                "equals": "Microsoft.Compute"
+            },
+            {
+                "field": "Microsoft.Compute/virtualMachines/extensions/type",
+                "equals": "{extension-type}"
+
+      }
+        ]
+    },
+    "then": {
+        "effect": "deny"
+    }
+}
+```
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Nach dem Definieren einer Richtlinienregel (wie in den vorherigen Beispielen zu sehen) müssen Sie die Richtliniendefinition erstellen und einem Bereich zuweisen. Bei dem Bereich kann es sich um ein Abonnement, um eine Ressourcengruppe oder um eine Ressource handeln. Wenn Sie Richtlinien über das Portal zuweisen möchten, siehe [Verwenden des Azure-Portals zum Zuweisen und Verwalten von Ressourcenrichtlinien](../../azure-resource-manager/resource-manager-policy-portal.md). Wenn Sie Richtlinien über die REST-API, PowerShell oder die Azure-CLI zuweisen möchten, siehe [Zuweisen und Verwalten von Richtlinien mit Skripts](../../azure-resource-manager/resource-manager-policy-create-assign.md).

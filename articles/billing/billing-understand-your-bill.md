@@ -1,9 +1,9 @@
 ---
 title: "Informationen zu Ihrer Rechnung für Azure | Microsoft-Dokumentation"
-description: Erfahren Sie, wie Sie die Nutzung und Abrechnung Ihres Azure-Abonnements anzeigen und verstehen.
+description: "Es wird beschrieben, wie Sie die Nutzung und Abrechnung Ihres Azure-Abonnements anzeigen und besser verstehen können."
 services: 
 documentationcenter: 
-author: genlin
+author: tonguyen10
 manager: tonguyen
 editor: 
 tags: billing
@@ -13,148 +13,96 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/07/2017
-ms.author: erihur;genli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
-ms.openlocfilehash: b5268239fb4c50e6bdea77323267a42e267268db
+ms.date: 07/14/2017
+ms.author: tonguyen
+ms.translationtype: HT
+ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
+ms.openlocfilehash: 547b035646ccb80d1001591ae59e6a0871d1ed2c
 ms.contentlocale: de-de
-ms.lasthandoff: 05/15/2017
-
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="understand-your-bill-for-microsoft-azure"></a>Informationen zu Ihrer Rechnung für Microsoft Azure
-Um Ihre Azure-Rechnung zu verstehen, schauen Sie sich die Rechnung mit der Zusammenfassung der Gebühren und die separate Datei mit den detaillierten Informationen zur täglichen Nutzung an. In diesem Artikel werden die meisten der in Rechnung und täglichen Nutzungsdaten verwendeten Begriffe beschrieben. Informationen zum Abrufen dieser Dateien finden Sie unter [Abrufen von Azure-Rechnungen und täglichen Nutzungsdaten](billing-download-azure-invoice-daily-usage-date.md). Wenn Sie ein kostenloses Testabonnement verwenden, können Sie Ihre täglichen Nutzungsinformationen abrufen, aber es ist keine Rechnung verfügbar.
+Um Ihre Azure-Rechnung besser zu verstehen, können Sie Ihre Rechnung mit der Datei mit den ausführlichen Daten zur täglichen Nutzung und den Kostenverwaltungsberichten im Azure-Portal vergleichen.
 
-Die Gebühren für Microsoft Azure-Abonnements variieren je nach Preisliste. Einige Tarife, z.B. Visual Studio Enterprise (MPN), umfassen monatliche Guthaben für Abonnenten, die Sie Ihren Anforderungen entsprechend für jeden Azure-Dienst verwenden können.
+Eine PDF-Datei mit Ihrer Rechnung und eine Kopie Ihrer Datei zur ausführlichen täglichen Nutzung (CSV-Download) finden Sie unter [Herunterladen oder Anzeigen Ihrer Azure-Rechnungen und täglichen Nutzungsdaten](billing-download-azure-invoice-daily-usage-date.md). 
 
-In der aktuellen Rechnung können bis zu 24 Stunden der Nutzung am Ende des vorherigen Abrechnungszeitraums angezeigt werden. Bei Abrechnungen für internationale Kunden sind die aufgeführten Gebühren zudem nur Schätzwerte, da Banken unterschiedliche Umrechnungsgebühren erheben.
+Detaillierte Erläuterungen zu den Benennungen und Beschreibungen Ihrer Rechnung und der Datei mit ausführlichen Daten zur täglichen Nutzung finden Sie unter [Grundlegendes über Benennungen in Ihrer Microsoft Azure-Rechnung](billing-understand-your-invoice.md) und [Grundlegendes über Benennungen in der Datei mit ausführlichen Nutzungsdaten zu Microsoft Azure](billing-understand-your-usage.md). 
 
-## <a name="pdf"></a>Informationen zu Ihrer Rechnung (PDF)
-Die Rechnung stellt eine Zusammenfassung der Gebühren bereit. Die Rechnung steht im [Azure-Portal](https://portal.azure.com) im PDF-Format (Portable Document Format) zum Download bereit. Weitere Informationen finden Sie unter [Abrufen von Azure-Rechnungen und täglichen Nutzungsdaten](billing-download-azure-invoice-daily-usage-date.md). 
-
-In den folgenden Abschnitten werden die meisten Begriffe, die Sie auf Ihrer Rechnung finden, sowie die Beschreibungen für jeden Begriff aufgeführt.
-
-### <a name="account-information"></a>Kontoinformationen
-Der Abschnitt mit den Kontoinformationen enthält Angaben zu Ihrer Nutzung und Ihrem Profil.
-
-![Header](./media/billing-understand-your-bill/Header.png)
-
-| Begriff | Beschreibung |
-| --- | --- |
-| Invoice No. |Die eindeutige Rechnungsnummer für die Nachverfolgung |
-| Billing Cycle |Datumsbereich, den diese Rechnung abdeckt |
-| Invoice Date |Das Datum, an dem die Rechnung generiert wurde. |
-| Payment Method |Die Zahlungsart, die für das Konto verwendet wird (Rechnung oder Kreditkarte). Weitere Informationen zum Aktualisieren einer Kreditkarte finden Sie unter [Ändern der für die Zahlung eines Azure-Abonnements verwendeten Kreditkarte](billing-how-to-change-credit-card.md). Wenn Sie Mitarbeiter eines Unternehmens sind, können Sie die Rechnungen für das Azure-Abonnement auch per Scheck, Express-Scheck und Überweisung begleichen. Informationen finden Sie unter [Azure-Abrechnung – Bezahlen per Rechnung](https://azure.microsoft.com/pricing/invoicing/). |
-| Bill to |Anschrift für Microsoft Azure-Rechnungen. Weitere Informationen zum Aktualisieren der Abrechnungsinformationen finden Sie unter [Ändern der für die Zahlung eines Azure-Abonnements verwendeten Kreditkarte](billing-how-to-change-credit-card.md). |
-| Abonnementangebot |Die Art des erworbenen Abonnementangebots (nutzungsbasierte Bezahlung, BizSpark Plus, Azure Pass usw.). Wie Sie von einem nutzungsbasierten Tarif zu einem anderen Abonnementangebot wechseln können, erfahren Sie unter [Umstellen Ihres Azure-Abonnements auf ein anderes Angebot](billing-how-to-switch-azure-offer.md) . |
-| Account Owner Email |Die E-Mail-Adresse, unter der das Microsoft Azure-Konto registriert ist. Weitere Informationen zum Ändern der E-Mail-Adresse finden Sie unter [Ändern von Profilinformationen für Ihr Azure-Konto, beispielsweise Kontakt-E-Mail-Adresse, Adresse und Telefonnummer](billing-how-to-change-azure-account-profile.md). |
-
-### <a name="understand-the-invoice-summary"></a>Grundlegendes zur Rechnungsübersicht
-Die **Rechnungsübersicht** fasst die Transaktionen seit der letzten Rechnung und die aktuellen Nutzungsgebühren zusammen.
-
-![Rechnungsübersicht](./media/billing-understand-your-bill/InvoiceSummary.png)
-
-In den Abschnitten „Previous Balances“, „Payments“ und „Outstanding Balance“ der Rechnung werden die Transaktionen seit Ihrer letzten Rechnung zusammengefasst.
-
-| Begriff | Beschreibung |
-| --- | --- |
-| Previous Balance |Der fällige Gesamtbetrag Ihrer letzten Rechnung. |
-| Payments |Sämtliche mit Ihrer letzten Rechnung verrechneten Zahlungen. |
-| Outstanding balance (from previous billing cycle) |Alle Beträge (Gutschriften oder Restbeträge), die seit Ihrer letzten Rechnung mit Ihrem Konto verrechnet wurden. |
-
-### <a name="understand-the-current-charges"></a>Informationen zu aktuellen Gebühren
-Der Abschnitt „Current Charges“ der Rechnung enthält Details zu Ihren monatlichen Gebühren. 
-
-| Begriff | Beschreibung |
-| --- | --- |
-| Usage Charges |Dies sind die monatlichen Gesamtgebühren für ein Abonnement. Der Verbrauch für den vergangenen Monat wird Ihnen in Rechnung gestellt. |
-| Discounts |Auf Ihre aktuelle Rechnung angewendete Dienstrabatte. |
-| Adjustments |Verschiedene Gutschriften oder ausstehende Gebühren für Ihre aktuelle Rechnung. Wenn Sie beispielsweise den Tarif „Visual Studio Enterprise mit MSDN“ nutzen, wird hier ein monatliches Guthaben angezeigt. Wenn Sie Ihr Abonnement kündigen, werden hier alle monatlichen Nutzungsgebühren angezeigt, die die monatliche Gutschrift überschreiten, die Sie mit Ihrem Abonnementangebot erhalten. Die Gebühren beziehen sich auf den Zeitraum vom Anfang des aktuellen Abrechnungszeitraums bis zum Kündigungsdatum des Abonnements. |
+Einzelheiten zu Kostenverwaltungsberichten finden Sie unter [Verwaltung der Kosten für das Azure-Portal](https://docs.microsoft.com/en-us/azure/billing/billing-getting-started).
 
 
-### <a name="sold-to-and-payment-instructions"></a>Käufer und Zahlungsanweisungen
-In der folgenden Tabelle werden Angaben zu Käufer und Zahlungsanweisungen auf Ihrer Rechnung beschrieben.
+## <a name="charges"></a>Wie stelle ich sicher, dass die in meiner Rechnung aufgeführten Gebühren richtig sind?
+Wenn Sie zu einer Gebühr in Ihrer Rechnung weitere Informationen erhalten möchten, haben Sie folgende Optionen:
 
-| Begriff | Beschreibung |
-| --- | --- |
-| Sold To | Die Profiladresse im Konto. Weitere Informationen zum Ändern dieser Adresse finden Sie unter [Ändern von Profilinformationen für Ihr Azure-Konto, beispielsweise Kontakt-E-Mail-Adresse, Adresse und Telefonnummer](billing-how-to-change-azure-account-profile.md). |
-| Payment Instructions | Wenn Sie per Rechnung bezahlen, erfahren Sie in diesen Anweisungen, wie Sie per Scheck, Überweisung oder Scheckzahlung über Nacht zahlen. Weitere Informationen finden Sie unter [Azure-Abrechnung – Bezahlen per Rechnung](https://azure.microsoft.com/pricing/invoicing/). |
+### <a name="option-1-review-your-invoice-and-compare-the-usage-and-costs-with-the-detailed-usage-csv-file"></a>Option 1: Überprüfen der Rechnung und Vergleichen der Nutzung und der Kosten mithilfe der CSV-Datei mit ausführlichen täglichen Nutzungsdaten
 
-## <a name="csv"></a> Erläuterungen zu den detaillierten Nutzungsgebühren (CSV)
-Die Nutzungsdatei zeigt, welche Menge der einzelnen Ressourcen innerhalb des aktuellen Abrechnungszeitraums verwendet wurde. Sie ist als Datei mit kommagetrennten Werten (CSV) verfügbar, die Sie in einem Tabellenkalkulationsprogramm öffnen können. Wenn zwei Versionen verfügbar sind, laden Sie Version 2 herunter. Das ist das aktuellste Dateiformat. Weitere Informationen finden Sie unter [Abrufen von Azure-Rechnungen und täglichen Nutzungsdaten](billing-download-azure-invoice-daily-usage-date.md).
+Die CSV-Datei mit ausführlichen Nutzungsdaten enthält Ihre Gebühren nach Abrechnungszeitraum und Daten zur täglichen Nutzung. Informationen zum Abrufen der CSV-Datei mit ausführlichen Nutzungsdaten finden Sie unter [Herunterladen oder Anzeigen Ihrer Azure-Rechnungen und täglichen Nutzungsdaten](https://docs.microsoft.com/en-us/azure/billing/billing-download-azure-invoice-daily-usage-date).
 
-Dies sind die **monatlichen** Gesamtgebühren für ein Abonnement nach Abzug von Gutschriften oder Rabatten. Der Verbrauch für den vergangenen Monat wird Ihnen in Rechnung gestellt.  
+Ihre Nutzungsgebühren werden auf der Ebene der Verbrauchseinheiten angezeigt. Die Bedeutung der folgenden Benennungen ist in der Rechnung und in der Datei mit ausführlichen Nutzungsdaten identisch. Beispielsweise entspricht der „Abrechnungszyklus“ in der Rechnung dem „Abrechnungszeitraum“ in der Datei mit ausführlichen Nutzungsdaten.
 
-In den folgenden Abschnitten werden die meisten der in Version 2 der Datei mit den detaillierten Informationen zur Nutzung verwendeten Begriffe beschrieben.
+ | Rechnung (PDF) | Detaillierte Nutzungsdaten (CSV)|
+ | --- | --- |
+|Billing Cycle | Billing Period |
+ |Name |Meter Category |
+ |Typ |Unterkategorie für Verbrauchseinheit |
+ |Ressource |Meter Name |
+ |Region |Meter Region |
+ |Consumed |Consumed Quantity |
+ |Included |Included Quantity |
+ |Billable |Overage Quantity |
 
-### <a name="statement"></a>Anweisung 
-Im obersten Abschnitt der Datei werden die während des Abrechnungszeitraums des vorherigen Monats verwendeten Dienste angezeigt. Die folgende Tabelle enthält die in diesem Abschnitt aufgeführten Begriffe und Beschreibungen.
+Der Abschnitt zu den **Nutzungsgebühren** Ihrer Rechnung enthält den Gesamtwert aller Verbrauchseinheiten, die während des Abrechnungszeitraums genutzt wurden. Im folgenden Screenshot wird beispielsweise eine Nutzungsgebühr für den Azure Scheduler-Dienst gezeigt.
 
-| Begriff | Beschreibung |
-| --- | --- |
-|Billing Period |Der Abrechnungszeitraum, in dem die Ressource verbraucht bzw. der Dienst genutzt wurde. |
-|Meter Category |Gibt den Dienst an, zu dem dieser Verbrauch gehört. |
-|Meter Sub-Category |Definiert den Typ des Azure-Diensts und kann sich auf den Tarif auswirken. |
-|Meter Name |Gibt die Maßeinheit für die Ressource an, für die der Verbrauch gemessen wird. |
-|Meter Region |Gibt den Standort des Rechenzentrums für bestimmte Dienste an, die basierend auf dem Standort des Rechenzentrums berechnet werden. |
-|SKU |Gibt den eindeutigen Systembezeichner für jede Azure-Ressource an. |
-|Unit |Gibt die Einheit an, in der der Dienst in Rechnung gestellt wird. Beispiele sind GB, Stunden oder 10.000 s. |
-|Consumed Quantity |Die Menge der Ressource, die während des Abrechnungszeitraums verbraucht wurde. |
-|Included Quantity |Die Menge der Ressource, die kostenlos in Ihrem Abrechnungszeitraum enthalten ist. |
-|Overage Quantity |Zeigt den Unterschied zwischen der verbrauchten und der enthaltenen Menge an. Dieser Betrag wird Ihnen in Rechnung gestellt. Für nutzungsbasierte Tarife ohne im Tarif enthaltene Menge entspricht der Wert hier dem Wert unter „Consumed Quantity“. |
-|Within Commitment |Zeigt die Gebühren für Ressourcen an, die von Ihrem Verpflichtungsbetrag im Rahmen Ihres 6- oder 12-monatigen Angebots abgezogen werden. Beachten Sie, dass die Gebühren für Ressourcen in chronologischer Reihenfolge von Ihrem Verpflichtungsbetrag abgezogen werden. |
-|Currency |Die für den aktuellen Abrechnungszeitraum verwendete Währung. |
-|Überschreitung |Zeigt die Gebühren für Ressourcen an, die Ihren Verpflichtungsbetrag im Rahmen Ihres 6- oder 12-monatigen Angebots überschreiten. |
-|Commitment Rate |Zeigt den Verpflichtungssatz basierend auf dem Gesamtverpflichtungsbetrag im Rahmen Ihres 6- oder 12-monatigen Angebots an. |
-|Rate |Der Satz, der Ihnen pro abrechenbarer Einheit in Rechnung gestellt wird. |
-|Wert |Zeigt das Ergebnis der Multiplikation der Spalte „Overage Quantity“ mit der Spalte „Rate“ an. Wenn die verbrauchte Menge die enthaltene Menge nicht überschreitet, fallen in dieser Spalte keine Gebühren an. |
+![Nutzungsgebühren (Rechnung)](./media/billing-understand-your-bill/1.png)
 
-### <a name="daily-usage"></a>Tägliche Nutzung 
+Dieselbe Gebühr wird im Abschnitt **Statement** (Auszug) der CSV-Datei mit ausführlichen Nutzungsdaten angezeigt. Sowohl der verbrauchte Betrag (*Verbraucht*) als auch der *Wert* stimmt mit der Rechnung überein.
 
-Im Abschnitt „Daily Usage“ der Datei werden Nutzungsdetails angezeigt, die sich auf die Abrechnung auswirken. Die folgende Tabelle enthält die in diesem Abschnitt aufgeführten Begriffe und Beschreibungen. 
+![Nutzungsgebühren (CSV-Datei)](./media/billing-understand-your-bill/2.png)
 
-| Begriff| Beschreibung |
-| --- | --- |
-|Usage Date |Das Datum, an dem die Ressource verwendet wurde. |
-|Meter Category |Gibt den Dienst an, zu dem dieser Verbrauch gehört. |
-|Meter ID |Der Bezeichner der berechneten Messung, der für die Preisfeststellung für die Nutzung verwendet wird. |
-|Meter Sub-Category |Definiert den Typ des Azure-Diensts, der sich auf den Tarif auswirken kann. |
-|Meter Name |Gibt die Maßeinheit für die Ressource an, für die der Verbrauch gemessen wird. |
-|Meter Region|Gibt den Standort des Rechenzentrums für bestimmte Dienste an, die basierend auf dem Standort des Rechenzentrums berechnet werden. |
-|Unit |Gibt die Einheit an, in der der Dienst in Rechnung gestellt wird. Beispiele sind GB, Stunden oder 10.000 s. |
-|Consumed Quantity |Die Menge der Ressource, die an diesem Tag verbraucht wurde. |
-|Resource Location |Gibt das Rechenzentrum an, in dem die Ressource ausgeführt wird. |
-|Consumed Service |Der verwendete Azure-Plattformdienst. |
-|Ressourcengruppe |Die Ressourcengruppe, in der die bereitgestellte Ressource ausgeführt wird. Weitere Informationen finden Sie unter [Übersicht über den Azure Resource Manager](../azure-resource-manager/resource-group-overview.md). |
-|Instance ID |Der Bezeichner für die Ressource. Der Bezeichner enthält den Namen, den Sie für die Ressource bei der Erstellung angegeben haben. Es ist entweder der Name der Ressource oder die vollqualifizierte Ressourcen-ID. Weitere Informationen finden Sie unter [Azure Resource Manager-API](/rest/api/resources/resources). |
-|Tags |Tag, den Sie der Ressource zuweisen. Verwenden Sie Tags zum Gruppieren von Abrechnungsdatensätzen. Beispielsweise können Sie Tags verwenden, um Kosten nach den Abteilungen zu unterteilen, die die Ressource nutzen. Dienste, die das Ausgeben von Tags unterstützen, sind virtuelle Computer, Speicher und Netzwerkdienste, die mit der [Azure Resource Manager-API](/rest/api/resources/resources) bereitgestellt werden. Weitere Informationen finden Sie unter [Organisieren von Azure-Ressourcen mit Tags](http://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/). |
-|Additional Info |Dienstspezifische Metadaten. Dies kann beispielsweise ein Imagetyp für einen virtuellen Computer sein. |
-|Service Info 1 |Der Name des Projekts, zu dem der Dienst in Ihrem Abonnement gehört. |
-|Service Info 2 |Ein Legacyfeld, in dem optionale dienstspezifische Metadaten erfasst werden. |
+Eine Aufstellung dieser Gebühren pro Tag finden Sie in der CSV-Datei im Abschnitt **Tägliche Nutzung**. Wenn Sie unter *Kategorie für Messung* nach „Scheduler“ filtern, wird angezeigt, an welchen Tagen die Messung durchgeführt wurde und wie hoch der Verbrauch war. Zu Vergleichszwecken sind auch Informationen zu *Ressource* und *Ressourcengruppe* aufgeführt. Die Werte unter *Verbraucht* sollten zusammen die in der Rechnung enthaltene Summe ergeben.
 
-## <a name="tips-for-cost-management"></a>Tipps für das Kostenmanagement
-- Schätzen Sie Kosten mit dem [Preisrechner](https://azure.microsoft.com/pricing/calculator/), dem [Gesamtbetriebskosten-Rechner](https://aka.ms/azure-tco-calculator) und wenn Sie einen Dienst hinzufügen.
-- [Einrichten von Abrechnungswarnungen](billing-set-up-alerts.md)
-- [Regelmäßiges Überprüfen Ihrer Nutzung und Kosten im Azure-Portal](billing-getting-started.md#costs)
+![Abschnitt zur täglichen Nutzung in der CSV-Datei](./media/billing-understand-your-bill/3.png)
 
-Weitere Informationen finden Sie unter [Erste Schritte mit der Abrechnungs- und Kostenverwaltung in Azure](billing-getting-started.md).
+Sie erhalten die Kosten pro Tag, indem Sie die Beträge von *Verbraucht* mit dem Wert *Rate* aus dem Abschnitt **Statement** (Auszug) multiplizieren.
 
-## <a name="how-do-i-make-a-payment"></a>Wie kann ich bezahlen?
-Wenn Sie eine Kredit- oder Debitkarte als Zahlungsmethode festlegen, erfolgt die Zahlung automatisch. Auf Ihrem Kreditkartenbeleg lautet die Postenzeile dann **MSFT Azure**.
+Weitere Informationen zur Rechnung finden Sie unter [Grundlegendes über Ihre Azure-Rechnung](billing-understand-your-invoice.md).
 
-Wenn Sie [auf Rechnung zahlen](https://azure.microsoft.com/pricing/invoicing/), senden Sie Ihre Zahlung an den Empfänger, der unten auf der Rechnung angegeben ist. Sie können den [Support kontaktieren](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), falls Sie weitere Unterstützung benötigen.
+Weitere Informationen zu den einzelnen Spalten in der CSV-Datei finden Sie unter [Grundlegendes über die detaillierte Nutzung in Azure](billing-understand-your-invoice.md).
+
+### <a name="option-2-review-your-invoice-and-compare-with-the-usage-and-costs-in-the-azure-portal"></a>Option 2: Überprüfen der Rechnung und Vergleichen der Nutzung und Kosten im Azure-Portal
+
+Mithilfe des Azure-Portals können Sie auch Ihre Gebühren überprüfen. Das Azure-Portal enthält Kostenverwaltungsdiagramme, um Ihnen einen schnellen Überblick über Ihre Nutzung und die Gebühren in Ihrer Rechnung zu verschaffen.
+
+Gehen Sie wie folgt vor, wenn Sie mit dem obigen Beispiel fortfahren möchten: Navigieren Sie zur [Seite „Abonnements“](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade), und wählen Sie Ihr Abonnement und dann **Kostenanalyse** aus. Sie können nun die Zeitspanne angeben und die Nutzungsgebühren für den Azure Scheduler-Dienst anzeigen.
+
+![Kostenanalyseansicht im Azure-Portal](./media/billing-understand-your-bill/4.png)
+
+Klicken Sie auf die entsprechende Zeile, um unter **Kostenverlauf** die Aufstellung der täglichen Kosten anzuzeigen.
+
+![Ansicht „Kostenverlauf“ im Azure-Portal](./media/billing-understand-your-bill/5.png)
+
+Weitere Informationen finden Sie unter [Vermeiden unerwarteter Kosten bei der Azure-Abrechnung und -Kostenverwaltung](billing-getting-started.md#costs).
+
+## <a name="external"></a>Wie verhält es sich mit Gebühren für externe Dienste?
+Externe Dienste (auch als „Azure Marketplace-Bestellungen“ bezeichnet) werden von unabhängigen Dienstanbietern bereitgestellt und separat in Rechnung gestellt. Die Gebühren werden nicht in Ihrer Azure-Rechnung aufgeführt. Weitere Informationen finden Sie unter [Grundlegendes zu Azure-Gebühren für externe Dienste](billing-understand-your-azure-marketplace-charges.md).
+
+## <a name="payment"></a>Wie tätige ich eine Zahlung?
+
+Wenn Sie eine Kreditkarte oder Debitkarte als Zahlungsmethode eingerichtet haben, wird die Zahlung zehn Tage nach Abschluss des Abrechnungszeitraums automatisch berechnet. Auf Ihrem Kreditkartenbeleg lautet die Postenzeile dann **MSFT Azure**.
+
+Wenn Sie [auf Rechnung zahlen](billing-how-to-pay-by-invoice.md), senden Sie Ihre Zahlung an den Empfänger, der unten auf der Rechnung angegeben ist. Sie können den [Support kontaktieren](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), falls Sie weitere Unterstützung benötigen.
 
 ## <a name="how-do-i-check-the-status-of-a-payment-made-by-credit-card"></a>Wie überprüfe ich den Status einer per Kreditkarte erfolgten Zahlung?
+
 [Erstellen Sie ein Supportticket](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um den Status Ihrer Zahlung zu erfragen. 
 
-## <a name="what-about-marketplace-orders-or-external-service-charges"></a>Was ist mit Marketplace-Bestellungen oder Gebühren für externe Dienste?
-Externe Dienste wurden in der Vergangenheit als Marketplace-Bestellungen bezeichnet. Externe Dienste werden von unabhängigen Dienstanbietern angeboten, sind jedoch in Azure integriert. Weitere Informationen finden Sie unter [Grundlegendes zu Azure-Gebühren für externe Dienste](billing-understand-your-azure-marketplace-charges.md).
+## <a name="tips-for-cost-management"></a>Tipps für das Kostenmanagement
+- Schätzen Sie die Kosten, indem Sie den [Preisrechner](https://azure.microsoft.com/pricing/calculator/) und den [Gesamtkosten-Rechner](https://aka.ms/azure-tco-calculator) nutzen, und rufen Sie die [ausführlichen Preisinformationen zu den einzelnen Diensten](https://azure.microsoft.com/en-us/pricing/) ab.
+- [Richten Sie Abrechnungswarnungen ein](billing-set-up-alerts.md).
+- [Überprüfen Sie Nutzung und Kosten regelmäßig im Azure-Portal](billing-getting-started.md#costs).
 
-## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Wenden Sie sich an den Support. 
+## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Wenden Sie sich an den Support.
+
 [Wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), falls Sie weitere Hilfe benötigen, um das Problem schnell beheben zu lassen.
- 
-
-
-
 

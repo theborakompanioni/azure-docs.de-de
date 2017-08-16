@@ -14,13 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/29/2017
+ms.date: 08/04/2017
 ms.author: nitinme
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: 91620e993ae0413080dad03344290e971bf74949
+ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
+ms.openlocfilehash: 96b2b4976729da5b7d8b75909dbe099090240c08
 ms.contentlocale: de-de
-ms.lasthandoff: 07/27/2017
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="release-notes-for-hadoop-components-on-azure-hdinsight"></a>Versionshinweise zu Hadoop-Komponenten in Azure HDInsight
@@ -29,6 +29,22 @@ Dieser Artikel enthält Informationen zu den **neuesten** Versionsupdates für A
 
 > [!IMPORTANT]
 > Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie im Artikel zur [HDInsight-Versionsverwaltung](hdinsight-component-versioning.md).
+
+
+## <a name="notes-for-08012017-release-of-hdinsight"></a>Hinweise für die HDInsight-Version vom 01.08.2017
+
+| Titel | Beschreibung | Betroffenen Bereich  | Clustertyp  | 
+| --- | --- | --- | --- | --- |
+| Veröffentlichung von Microsoft R Server 9.1 in HDInsight |HDInsight unterstützt nun das Bereitstellen von R Server 9.1-Clustern in HDInsight. Weitere Informationen zu Microsoft R Server 9.1 finden Sie in [diesem Blog](https://blogs.technet.microsoft.com/dataplatforminsider/2017/04/19/introducing-microsoft-r-server-9-1-release/). |Dienst |R Server |
+| HDInsight 3.6 enthält jetzt neuere Versionen des Hadoop-Stapels.|<ul><li>Eine detaillierte Liste der aktualisierten Versionen finden Sie unter [Verfügbare Hadoop-Komponenten in verschiedenen Versionen von HDInsight](hdinsight-component-versioning.md#hadoop-components-available-with-different-hdinsight-versions).</li><li>Eine Liste mit Fehlern, die in den neuesten Versionen des Hadoop-Stapels behoben wurden, finden Sie unter [Apache Patch Information](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/patch_parent.html) (Apache-Patchinformationen).</li><li>Eine Liste mit wichtigen Änderungen im Vergleich zu HDP 2.6.1 (nun in HDInsight 3.6 verfügbar) finden Sie unter [https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/behavior_changes.html](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/behavior_changes.html).</li><li>Eine Liste mit bekannten Probleme in HDP 2.6.1 finden Sie unter [Bekannte Probleme](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/known_issues.html).</li></ul> |Dienst |Alle |N/V |
+| Updates für interaktive Hive-Cluster (Vorschau) |<ul><li><b>Featureverbesserung:</b> Implementierung eines zwischengespeicherten Metastores zur Entlastung des Back-End-SQLs durch Zwischenspeicherung der Metadaten sowie zur Verbesserung der Leistung sämtlicher Metadatenvorgänge.  Diese Verbesserung kommt nun standardmäßig bei allen Interactive Hive-Clustern zur Anwendung. Weitere Informationen finden Sie unter [https://issues.apache.org/jira/browse/HIVE-16520](https://issues.apache.org/jira/browse/HIVE-16520).</li><li><b>Featureverbesserung:</b> Optimiertes Laden von dynamischen Partitionen. Weitere Informationen finden Sie unter [https://issues.apache.org/jira/browse/HIVE-14204] (https://issues.apache.org/jira/browse/HIVE-14204).</li><li><b>Featureverbesserung:</b> Konfigurationsoptimierungen für HDInsight unter Linux.</li><li><b>Fehlerbehebung:</b> `CredentialProviderFactory$getProviders` ist nicht threadsicher. Dieses Problem wurde jetzt behoben. Weitere Informationen finden Sie unter [https://issues.apache.org/jira/browse/HADOOP-14195](https://issues.apache.org/jira/browse/HADOOP-14195).</li><li><b>Fehlerbehebung:</b> Schlechte ATS-Leistung aufgrund von hoher CPU-Auslastung durch die WASB-Treiber-`liststatus`-API. Dieses Problem wurde jetzt behoben. Weitere Informationen finden Sie unter [https://github.com/Azure/azure-storage-java/pull/154](https://github.com/Azure/azure-storage-java/pull/154).</li></ul> |Dienst |Interactive Hive (Vorschau) |
+| Updates für Hadoop-Cluster |Verbesserung der Zuverlässigkeit von Templeton-Auftragsvorgängen. Weitere Informationen finden Sie unter [https://issues.apache.org/jira/browse/HIVE-15947](https://issues.apache.org/jira/browse/HIVE-15947). |Dienst |Hadoop |
+| YARN-Updates | HDInsight erstellt nun eine Ambari-Datenbank mit 250 GB (ohne zusätzliche Kosten), was zu einer besseren Benutzererfahrung führt. Diese Änderung dient zur Verbesserung der Kapazität und Leistung von ATS. |Dienst |Alle |
+| Spark-Updates | Veröffentlichung von Spark 2.1.1. Weitere Informationen finden Sie unter [Spark Release 2.1.1](https://spark.apache.org/releases/spark-release-2-1-1.html) (Spark-Version 2.1.1). | Dienst | Spark |
+
+  
+
+
 
 ## <a name="04062017---general-availability-of-hdinsight-36"></a>06.04.2017: Allgemeine Verfügbarkeit von HDInsight 3.6
 
@@ -88,24 +104,6 @@ Spark 2.0.1 ist nun für Spark-Cluster verfügbar (HDInsight-Version 3.5).
 * R Server in HDInsight steht jetzt als regulärer HDInsight-Clustertyp „R Server“ zur Verfügung und wird nicht mehr als separate HDInsight-Anwendung installiert. Der Edgeknoten und R-Binärdateien werden jetzt als Teil der R Server-Clusterbereitstellung bereitgestellt. Dies verbessert die Geschwindigkeit und die Zuverlässigkeit der Bereitstellung. Das Preismodell für R Server wird entsprechend aktualisiert.
 * Der Preis für den Clustertyp „R Server“ basiert jetzt auf dem Standard-Tarif plus R Server-Zuschlag. Der Premium-Tarif wird jetzt für Premium-Funktionen, die für verschiedene Clustertypen verfügbar sind, reserviert und nicht für R Server-Cluster verwendet. Diese Änderung betrifft keine effektiven Preise für R Server, sondern ändert nur die Angabe der Gebühren auf der Rechnung. Alle vorhandenen R Server-Cluster funktionieren weiterhin, und Resource Manager-Vorlagen können weiterhin genutzt werden, bis Sie einen Hinweis zu veralteten Funktionen erhalten. **Es wird empfohlen, die skriptgesteuerten Bereitstellungen zu aktualisieren, sodass sie die neue Resource Manager-Vorlage verwenden.**
 
-## <a name="08302016---release-of-r-server-on-hdinsight"></a>30.08.2016: Veröffentlichung von R Server in HDInsight
-Die vollständigen Versionsnummern für mit dieser Version bereitgestellte Linux-basierte HDInsight-Cluster lauten:
-
-| HDI | HDI-Clusterversion | HDP | HDP Build | Ambari-Build |
-| --- | --- | --- | --- | --- |
-| 3.2 |3.2.1000.0.8268980 |2.2 |2.2.9.1-19 |2.2.1.12-4 |
-| 3.3 |3.3.1000.0.8268980 |2.3 |2.3.3.1-25 |2.2.1.12-4 |
-| 3.4 |3.4.1000.0.8269383 |2.4 |2.4.2.4-5 |2.2.1.12-4 |
-
-Die vollständigen Versionsnummern für mit dieser Version bereitgestellte Windows-basierte HDInsight-Cluster lauten:
-
-| HDI | HDI-Clusterversion | HDP | HDP Build |
-| --- | --- | --- | --- |
-| 2.1 |2.1.10.1033.2559206 |1.3 |1.3.12.0-01795 |
-| 3.0 |3.0.6.1033.2559206 |2.0 |2.0.13.0-2117 |
-| 3.1 |3.1.4.1033.2559206 |2.1 |2.1.16.0-2374 |
-| 3.2 |3.2.7.1033.2559206 |2.2 |2.2.9.1-11 |
-| 3.3 |3.3.0.1033.2559206 |2.3 |2.3.3.1-25 |
 
 
 
