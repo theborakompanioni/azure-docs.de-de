@@ -12,28 +12,26 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/24/2017
+ms.date: 08/04/2017
 ms.author: billmath
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: 05fb966e3e18b8d5242a2795248b9b72352d894d
+ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
+ms.openlocfilehash: 977108687734a5eb7f7a30419de2a6bdef184d0e
 ms.contentlocale: de-de
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 08/07/2017
 
 ---
 
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure AD Connect: Nahtloses einmaliges Anmelden – Schnellstart
 
+## <a name="how-to-deploy-seamless-sso"></a>Bereitstellen der nahtlosen einmaligen Anmeldung (SSO)
+
 Mit dem nahtlosen einmaligen Anmelden von Azure Active Directory (Azure AD Seamless Single Sign-On) werden Benutzer automatisch im Unternehmensnetzwerk angemeldet, wenn Sie an ihren Unternehmens-Desktops arbeiten. Dieses Feature ermöglicht Ihren Benutzern einen einfachen Zugriff auf Ihre cloudbasierten Dienste, ohne dass zusätzliche lokale Komponenten erforderlich sind.
 
-## <a name="how-to-deploy-azure-ad-seamless-sso"></a>Bereitstellen der nahtlosen einmaligen Anmeldung von Azure AD
+>[!IMPORTANT]
+>Das nahtlose einmalige Anmelden ist aktuell in der Vorschauversion verfügbar.
 
 Um die nahtlose einmalige Anmeldung bereitzustellen, führen Sie die folgenden Schritte aus:
-1. *Überprüfen der Voraussetzungen:* Richten Sie Ihren Mandanten und Ihre lokale Umgebung ordnungsgemäß ein, bevor Sie das Feature aktivieren.
-2. *Aktivieren des Features:* Aktivieren Sie das nahtlose einmalige Anmelden für Ihren Mandanten mit Azure AD Connect.
-3. *Ausrollen des Features:* Verwenden Sie die Gruppenrichtlinie, um das Feature für einige oder alle Ihre Benutzer auszurollen.
-4. *Testen des Features:* Testen Sie die Benutzeranmeldung mit dem nahtlosen einmaligen Anmelden.
-5. *Durchführen des Rollovers für Schlüssel:* Führen Sie für die Kerberos-Entschlüsselungsschlüssel von Computerkonten häufig ein Rollover durch.
 
 ## <a name="step-1-check-prerequisites"></a>Schritt 1: Überprüfen der Voraussetzungen
 
@@ -63,6 +61,15 @@ Nach Abschluss des Assistenten ist das nahtlose einmalige Anmelden für Ihren Ma
 
 >[!NOTE]
 > Die Anmeldeinformationen des Domänenadministrators werden weder in Azure AD Connect noch in Azure AD gespeichert, werden aber für die Aktivierung des Features verwendet.
+
+Befolgen Sie diese Anweisungen, um zu überprüfen, ob die nahtlose SSO ordnungsgemäß aktiviert ist:
+
+1. Melden Sie sich mit den Anmeldeinformationen des globalen Administrators für Ihren Mandanten beim [Azure Active Directory-Admin Center](https://aad.portal.azure.com) an.
+2. Klicken Sie im linken Navigationsmenü auf **Azure Active Directory**.
+3. Wählen Sie **Azure AD Connect** aus.
+4. Überprüfen Sie, dass die Funktion **Nahtloses einmaliges Anmelden** **aktiviert** ist.
+
+![Azure-Portal – Blatt „Azure AD Connect“](./media/active-directory-aadconnect-sso/sso10.png)
 
 ## <a name="step-3-roll-out-the-feature"></a>Schritt 3: Ausrollen des Features
 
@@ -118,6 +125,9 @@ Das Ausrollen der Azure AD-URLs für Firefox und Google Chrome unter macOS mithi
 #### <a name="known-limitations"></a>Bekannte Einschränkungen
 
 Das nahtlose einmalige Anmelden funktioniert in Firefox- und Edge-Browsern nicht im privaten Modus. Dies gilt auch für Internet Explorer, wenn der Browser im erweiterten Schutzmodus ausgeführt wird.
+
+>[!IMPORTANT]
+>Wir haben vor Kurzem ein Rollback für den Support für Edge ausgeführt, um von Kunden gemeldete Probleme zu untersuchen.
 
 ## <a name="step-4-test-the-feature"></a>Schritt 4: Testen des Features
 

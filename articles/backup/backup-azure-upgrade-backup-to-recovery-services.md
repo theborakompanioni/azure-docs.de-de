@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 08/02/2017
-ms.author: markgal;arunak
+ms.date: 08/03/2017
+ms.author: sogup;markgal;arunak
 ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
-ms.openlocfilehash: cf5a7c1ac323a33c5f6985fb25b5b005ae06657c
+ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
+ms.openlocfilehash: dff0bb9b4040ea712519a94bf2bc04de634209c2
 ms.contentlocale: de-de
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="upgrade-a-backup-vault-to-a-recovery-services-vault"></a>Durchführen eines Upgrades für einen Sicherungstresor auf einen Recovery Services-Tresor
@@ -108,11 +108,11 @@ Der Recovery Services-Tresor unterstützt das Angeben von Zeitzoneninformationen
 
 Wenn ein Sicherungstresor auf einen Recovery Services-Tresor aktualisiert wird, werden die Sicherheitseinstellungen für diesen Tresor automatisch aktiviert. Wenn die Sicherheitseinstellungen eingeschaltet sind, erfordern bestimmte Vorgänge wie z.B. das Löschen von Sicherungen oder das Ändern einer Passphrase einen [Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md)-PIN. Weitere Informationen zur erhöhten Sicherheit finden Sie im Artikel [Sicherheitsfeatures für den Schutz von Hybridsicherungen](backup-azure-security-feature.md). 
 
-Wenn die erhöhte Sicherheit aktiviert ist, werden Daten bis zu 14 Tage, nachdem abrechenbare Daten aus dem Tresor gelöscht wurden, beibehalten. Die Beibehaltung der Daten gilt für Daten, die für den Azure Backup-Agent, den Azure Backup-Server und den System Center Data Protection-Manager gesichert wurden.
+Wenn die erhöhte Sicherheit aktiviert ist, werden Daten bis zu 14 Tage beibehalten, nachdem die Wiederherstellungspunktinformationen aus dem Tresor gelöscht wurden. Den Kunden wird das Speichern dieser Sicherheitsdaten in Rechnung gestellt. Die Beibehaltung der Sicherheitsdaten gilt für Wiederherstellungspunkt, die für den Azure Backup-Agent, den Azure Backup Server und den System Center Data Protection-Manager aufgestellt wurden. 
 
 ## <a name="gather-data-on-your-vault"></a>Sammeln von Daten in Ihrem Tresor
 
-Konfigurieren Sie nach einem Upgrade auf einen Recovery Services-Tresor Berichte für die Azure-Sicherung (für IaaS-VMs und Microsoft Azure Recovery Services (MARS)), und verwenden Sie Power BI, um auf die Berichte zuzugreifen.
+Konfigurieren Sie nach einem Upgrade auf einen Recovery Services-Tresor Berichte für die Azure-Sicherung (für IaaS-VMs und Microsoft Azure Recovery Services (MARS)), und verwenden Sie Power BI, um auf die Berichte zuzugreifen. Weitere Informationen zum Sammeln von Daten finden Sie im Artikel [Konfigurieren von Azure Backup-Berichten](backup-azure-configure-reports.md).
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 

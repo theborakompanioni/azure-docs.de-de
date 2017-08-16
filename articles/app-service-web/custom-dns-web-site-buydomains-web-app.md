@@ -12,20 +12,20 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/19/2017
+ms.date: 08/03/2017
 ms.author: robmcm
 ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
-ms.openlocfilehash: c42e419984ee4b7f30c8423b9a0c420e2c981949
+ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
+ms.openlocfilehash: 44d350d2d098be14ad254066a8528fe117200ec4
 ms.contentlocale: de-de
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="buy-a-custom-domain-name-for-azure-web-apps"></a>Kaufen eines benutzerdefinierten Domänennamens für Azure-Web-Apps
 
 App Service-Domänen (Vorschau) sind Domänen der obersten Ebene, die direkt in Azure verwaltet werden. Sie erleichtern die Verwaltung von benutzerdefinierten Domänen für [Azure Web Apps (Azure-Web-Apps)](app-service-web-overview.md). In diesem Tutorial wird gezeigt, wie Sie eine App Service-Domäne kaufen und Azure-Web-Apps einen DNS-Namen zuweisen.
 
-Dieser Artikel bezieht sich auf Azure App Service (Web-Apps, API-Apps, mobile Apps, Logic Apps). Informationen zu Cloud Services finden Sie unter [Konfigurieren eines benutzerdefinierten Domänennamens für einen Azure-Clouddienst](../cloud-services/cloud-services-custom-domain-name-portal.md).
+Dieser Artikel bezieht sich auf Azure App Service (Web-Apps, API-Apps, mobile Apps, Logik-Apps). Informationen zu Azure VMs und Azure Storage finden Sie unter [Assign App Service domain to Azure VM or Azure Storage (Zuweisen einer App Service-Domäne zu einer Azure-VM oder Azure Storage)](https://blogs.msdn.microsoft.com/appserviceteam/2017/07/31/assign-app-service-domain-to-azure-vm-or-azure-storage/). Informationen zu Clouddiensten finden Sie unter [Konfigurieren eines benutzerdefinierten Domänennamens für einen Azure-Clouddienst](../cloud-services/cloud-services-custom-domain-name-portal.md)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

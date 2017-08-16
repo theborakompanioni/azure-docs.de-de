@@ -18,10 +18,10 @@ ms.topic: article
 ms.date: 04/14/2017
 ms.author: bprakash
 ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
-ms.openlocfilehash: 406a1d0af58cb7b9145a836027d470272be17004
+ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
+ms.openlocfilehash: 26512049dba3d4dde575c5a67ba884fb56374236
 ms.contentlocale: de-de
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 08/10/2017
 
 ---
 # <a name="what-are-the-hadoop-components-and-versions-available-with-hdinsight"></a>Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?
@@ -38,7 +38,7 @@ Die den HDInsight-Clusterversionen zugeordneten Komponentenversionen sind in der
 > [!NOTE]
 > Die Standardversion für den HDInsight-Dienst kann ohne vorherige Ankündigung geändert werden. Wenn eine Versionsabhängigkeit vorliegt, geben Sie die HDInsight-Version an, wenn Sie Ihrer Cluster mit dem .NET SDK mit Azure PowerShell und der Azure-Befehlszeilenschnittstelle erstellen.
 
-| Component | HDInsight 3.6 | HDInsight 3.5 (Standard) | HDInsight 3.4 | HDInsight 3.3 | HDInsight 3.2 | HDInsight 3.1 | HDInsight 3.0 |
+| Component | HDInsight 3.6 (Standard) | HDInsight 3.5 | HDInsight 3.4 | HDInsight 3.3 | HDInsight 3.2 | HDInsight 3.1 | HDInsight 3.0 |
 | --- | --- | --- | --- | --- | --- | --- |--- |
 | Hortonworks Data Platform |2.6 |2.5 |2.4 |2.3 |2.2 |2.1.7 |2,0 |
 | Apache Hadoop und YARN |2.7.3 |2.7.3 |2.7.1 |2.7.1 |2.6.0 |2.4.0 |2.2.0 |
@@ -85,7 +85,7 @@ Die folgende Tabelle enthält die Versionen von HDInsight, die derzeit im Azure-
 | HDInsight-Version | HDP-Version | Betriebssystem des virtuellen Computers | Hohe Verfügbarkeit | Herausgabedatum | Die Verfügbarkeit im Azure-Portal | Supportablaufdatum | Deaktivierungstermin |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | HDInsight 3.6 |HDP 2.6 |Ubuntu 16 |Ja |4. April 2017 |Ja | | |
-| HDInsight 3.5 |HDP 2.5 |Ubuntu 16 |Ja |30. September 2016 |Ja |5. Juli 2017 |31. Mai 2018 |
+| HDInsight 3.5 |HDP 2.5 |Ubuntu 16 |Ja |30. September 2016 |Ja |5. September 2017 |31. Mai 2018 |
 | HDInsight 3.4 |HDP 2.4 |Ubuntu 14.0.4 LTS |Ja |29. März 2016 |Ja |29. Dezember 2016 |9. Januar 2018 |
 | HDInsight 3.3 |HDP 2.3 |Windows Server 2012 R2 |Ja |2. Dezember 2015 |Ja |27. Juni 2016 |31. Juli 2018 |
 | HDInsight 3.3 |HDP 2.3 |Ubuntu 14.0.4 LTS |Ja |2. Dezember 2015 |Ja |27. Juni 2016 |31. Juli 2017 |

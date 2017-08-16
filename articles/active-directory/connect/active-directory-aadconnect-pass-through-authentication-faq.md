@@ -12,19 +12,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/28/2017
+ms.date: 08/03/2017
 ms.author: billmath
 ms.translationtype: HT
-ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
-ms.openlocfilehash: b8a08eb8fd036ad07ee6ce4cf624e8b5bc4c3ddc
+ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
+ms.openlocfilehash: ded80330ad323a0019ad59ac54d076a78b70f521
 ms.contentlocale: de-de
-ms.lasthandoff: 08/01/2017
+ms.lasthandoff: 08/04/2017
 
 ---
 
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory Passthrough-Authentifizierung: Häufig gestellte Fragen
 
 In diesem Artikel werden häufig gestellte Fragen zur Passthrough-Authentifizierung in Azure Active Directory (Azure AD) behandelt. Schauen Sie öfter vorbei, da wir regelmäßig neue Fragen hinzufügen.
+
+>[!IMPORTANT]
+>Die Funktion der Passthrough-Authentifizierung befindet sich derzeit in der Vorschauphase.
 
 ## <a name="which-of-the-azure-ad-sign-in-methods---pass-through-authentication-password-hash-synchronization-and-active-directory-federation-services-ad-fs---should-i-choose"></a>Welche der Azure AD-Anmeldemethoden (Passthrough-Authentifizierung, Kennworthashsynchronisierung oder Active Directory-Verbunddienste (AD FS)) sollte ich auswählen?
 
@@ -48,7 +51,7 @@ Ja. Die Passthrough-Authentifizierung unterstützt `Alternate ID` als Benutzerna
 
 ## <a name="does-password-hash-synchronization-act-as-a-fallback-to-pass-through-authentication"></a>Kann die Kennworthashsynchronisierung als Fallback auf die Passthrough-Authentifizierung verwendet werden?
 
-Nein. Die Kennworthashsynchronisierung ist kein generisches Fallback auf die Passthrough-Authentifizierung. Es dient nur als Fallback für [Szenarios, die zurzeit noch nicht von der Passthrough-Authentifizierung unterstützt werden](active-directory-aadconnect-pass-through-authentication-current-limitations.md#unsupported-scenarios). Um Benutzeranmeldefehler zu vermeiden, sollten Sie die Passthrough-Authentifizierung für eine [hohe Verfügbarkeit](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-4-ensure-high-availability) konfigurieren.
+Nein. Die Kennworthashsynchronisierung ist kein generisches Fallback auf die Passthrough-Authentifizierung. Es dient nur als Fallback für [Szenarios, die zurzeit noch nicht von der Passthrough-Authentifizierung unterstützt werden](active-directory-aadconnect-pass-through-authentication-current-limitations.md#unsupported-scenarios). Um Benutzeranmeldefehler zu vermeiden, sollten Sie die Passthrough-Authentifizierung für eine [hohe Verfügbarkeit](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability) konfigurieren.
 
 ## <a name="can-i-install-an-azure-ad-application-proxyactive-directory-application-proxy-get-startedmd-connector-on-the-same-server-as-a-pass-through-authentication-agent"></a>Kann ich einen [Azure AD-Anwendungsproxy](../active-directory-application-proxy-get-started.md)-Connector auf demselben Server wie dem eines Passthrough-Authentifizierungs-Agents installieren?
 
@@ -62,7 +65,7 @@ Sie benötigen Version 1.1.486.0 oder höher für Azure AD Connect und 1.5.58.0 
 
 Wenn Sie [das Kennwortrückschreiben](../active-directory-passwords-update-your-own-password.md) für einen bestimmten Benutzer konfiguriert haben und der Benutzer sich mit der Passthrough-Authentifizierung anmeldet, kann er sein Kennwort ändern oder zurücksetzen. Die Kennwörter werden erwartungsgemäß in das lokale Active Directory zurückgeschrieben.
 
-Wenn das Kennwortrückschreiben jedoch nicht konfiguriert ist oder der Benutzer keine gültige Azure AD keine Lizenz hat, kann der Benutzer sein Kennwort in der Cloud nicht aktualisieren. Das Kennwort lässt sich nicht aktualisiert, auch wenn das Kennwort bereits abgelaufen ist. Der Benutzer sieht dann folgende Meldung: „Eine Kennwortänderung auf dieser Website wird von Ihrer Organisation nicht gestattet. Ändern Sie Ihr Kennwort anhand der von Ihrer Organisation empfohlenen Methode, oder bitten Sie Ihren Administrator um Hilfe.“. Der Benutzer oder der Administrator muss das Kennwort in Ihrem lokalen Active Directory zurücksetzen.
+Wenn das Kennwortrückschreiben jedoch nicht für einen bestimmten Benutzer konfiguriert ist oder der Benutzer keine gültige Azure AD hat, kann der Benutzer sein Kennwort in der Cloud nicht aktualisieren. Das Kennwort lässt sich nicht aktualisiert, auch wenn das Kennwort bereits abgelaufen ist. Der Benutzer sieht dann folgende Meldung: „Eine Kennwortänderung auf dieser Website wird von Ihrer Organisation nicht gestattet. Ändern Sie Ihr Kennwort anhand der von Ihrer Organisation empfohlenen Methode, oder bitten Sie Ihren Administrator um Hilfe.“. Der Benutzer oder der Administrator muss das Kennwort in Ihrem lokalen Active Directory zurücksetzen.
 
 ## <a name="how-does-pass-through-authentication-protect-you-against-brute-force-password-attacks"></a>Wie schützt die Passthrough-Authentifizierung vor Brute-Force-Kennwortangriffen?
 
@@ -70,11 +73,11 @@ Weitere Informationen finden Sie [in diesem Artikel](active-directory-aadconnect
 
 ## <a name="what-do-pass-through-authentication-agents-communicate-over-ports-80-and-443"></a>Was kommunizieren Passthrough-Authentifizierungs-Agents über die Ports 80 und 443?
 
-- Die Authentifizierung-Agents stellen über Port 443 HTTPS-Anforderungen für alle Feature-Vorgänge, z.B. das Aktivieren der Funktion, das Verarbeiten alle Benutzeranforderungen.
+- Die Authentifizierungs-Agents stellen HTTPS-Anforderungen für alle Funktionsvorgänge über Port 443 aus.
 - Die Authentifizierungs-Agents stellen HTTP-Anforderungen über Port 80, um SSL-Zertifikatsperrlisten herunterzuladen.
 
      >[!NOTE]
-     >Während der neuesten Updates haben wir die Anzahl der Ports reduziert, die die Authentifizierungs-Agents für die Kommunikation mit Azure AD erfordern. Wenn Sie eine ältere Versionen von Azure AD Connect und/oder eigenständige Connectors haben, sollten Sie diese zusätzlichen Ports weiterhin geöffnet lassen: 5671, 8080, 9090, 9091, 9350, 9352, 10100–10120.
+     >In kürzlich veröffentlichten Updates haben wir die Zahl an Ports, die für diese Funktion erforderlich sind, gesenkt. Wenn Sie eine ältere Version von Azure AD Connect oder den Authentifizierungs-Agent verwenden, halten Sie auch folgende Ports offen: 5671, 8080, 9090, 9091, 9350, 9352 und 10100-10120.
 
 ## <a name="can-the-pass-through-authentication-agents-communicate-over-an-outbound-web-proxy-server"></a>Können die Passthrough-Authentifizierungs-Agents über einen ausgehenden Webproxyserver kommunizieren?
 
@@ -82,7 +85,7 @@ Ja. Wenn in Ihrer lokalen Umgebung WPAD (Web Proxy Auto-Discovery) aktiviert ist
 
 ## <a name="can-i-install-two-or-more-pass-through-authentication-agents-on-the-same-server"></a>Kann ich zwei oder mehr Passthrough-Authentifizierungs-Agents auf dem gleichen Server installieren?
 
-Nein, Sie können nur einen Passthrough-Authentifizierungs-Agent auf einem einzelnen Server installieren. Wenn Sie die Passthrough-Authentifizierung für hohe Verfügbarkeit konfigurieren möchten, befolgen Sie stattdessen die Anweisungen in diesem [Artikel](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-4-ensure-high-availability).
+Nein, Sie können nur einen Passthrough-Authentifizierungs-Agent auf einem einzelnen Server installieren. Wenn Sie die Passthrough-Authentifizierung für hohe Verfügbarkeit konfigurieren möchten, befolgen Sie stattdessen die Anweisungen in diesem [Artikel](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability).
 
 ## <a name="i-already-use-active-directory-federation-services-ad-fs-for-azure-ad-sign-in-how-do-i-switch-it-to-pass-through-authentication"></a>Ich verwende bereits die Active Directory-Verbunddienste (AD FS) für die Anmeldung in Azure AD. Wie kann ich zur Passthrough-Authentifizierung wechseln?
 
@@ -99,7 +102,7 @@ Ja. Umgebungen mit mehreren Gesamtstrukturen werden unterstützt, wenn Gesamtstr
 
 ## <a name="do-pass-through-authentication-agents-provide-load-balancing-capability"></a>Stellen die Passthrough-Authentifizierungs-Agents Lastenausgleichsfunktionen bereit?
 
-Nein. Die Installation von mehreren Passthrough-Authentifizierungs-Agents stellt eine [hohe Verfügbarkeit](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-4-ensure-high-availability) sicher, jedoch nicht den Lastenausgleich. Letztlich verarbeiten möglicherweise ein oder zwei Authentifizierungs-Agents den Großteil der Anmeldeanforderungen.
+Nein. Die Installation von mehreren Passthrough-Authentifizierungs-Agents stellt eine [hohe Verfügbarkeit](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability) sicher, jedoch nicht den Lastenausgleich. Letztlich verarbeiten möglicherweise ein oder zwei Authentifizierungs-Agents den Großteil der Anmeldeanforderungen.
 
 Die Anforderungen zur Kennwortüberprüfung, die die Authentifizierungs-Agents verarbeiten müssen, sind einfach. Die maximale und durchschnittliche Last wird für die meisten Kunden daher problemlos von insgesamt zwei oder drei Authentifizierungs-Agents bewältigt.
 
@@ -113,11 +116,12 @@ Nein, dieses Szenario wird _nicht_ unterstützt.
 
 Wir empfehlen Folgendes:
 
-- Installieren Sie insgesamt zwei oder drei Authentifizierungs-Agents. Dies ist für die meisten Kunden ausreichend.
+- Installieren Sie insgesamt zwei oder drei Authentifizierungs-Agents. Diese Konfiguration ist für die meisten Kunden ausreichend.
 - Installieren Sie die Authentifizierung-Agents auf den Domänencontrollern (oder so nah wie möglich), um die Anmeldelatenz zu verbessern.
 - Stellen Sie sicher, dass Server (auf denen Authentifizierungs-Agents installiert sind) derselben AD-Gesamtstruktur wie die Benutzer hinzugefügt werden, deren Kennwörter überprüft werden müssen.
 
-Beachten Sie, dass in einem System maximal 12 Authentifizierungs-Agents pro Mandant installiert werden können.
+>[!NOTE]
+>In einem System können maximal 12 Authentifizierungs-Agents pro Mandant installiert werden.
 
 ## <a name="how-can-i-disable-pass-through-authentication"></a>Wie kann ich die Passthrough-Authentifizierung deaktivieren?
 

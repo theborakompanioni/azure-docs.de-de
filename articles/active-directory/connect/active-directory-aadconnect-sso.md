@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/18/2017
+ms.date: 08/04/2017
 ms.author: billmath
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: c4cd80c50dca5b97c36f1c9785d8ea347b35285c
+ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
+ms.openlocfilehash: 5a390208f4b7c22e96d7888bcbbd14d8b27667eb
 ms.contentlocale: de-de
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 08/07/2017
 
 ---
 
@@ -32,8 +32,8 @@ Die nahtlose SSO kann mit den Anmeldemethoden [Kennworthashsynchronisierung](act
 
 ![Nahtloses einmaliges Anmelden](./media/active-directory-aadconnect-sso/sso1.png)
 
->[!NOTE]
->Diese Funktion ist _nicht_ auf Active Directory-Verbunddienste (AD FS) anwendbar, die diese Funktion bereits enthalten.
+>[!IMPORTANT]
+>Die nahtlose einmalige Anmeldung ist aktuell in der Vorschauversion verfügbar. Diese Funktion ist _nicht_ auf Active Directory-Verbunddienste (AD FS) anwendbar.
 
 ## <a name="key-benefits"></a>Hauptvorteile
 
@@ -44,26 +44,29 @@ Die nahtlose SSO kann mit den Anmeldemethoden [Kennworthashsynchronisierung](act
   - Keine zusätzlichen lokalen Komponenten erforderlich.
   - Funktioniert mit jedem Verfahren für die Cloudauthentifizierung: [Kennworthashsynchronisierung](active-directory-aadconnectsync-implement-password-synchronization.md) oder [Passthrough-Authentifizierung](active-directory-aadconnect-pass-through-authentication.md).
   - Kann mithilfe einer Gruppenrichtlinie für einige oder alle Benutzer eingeführt werden.
-  - Registrieren Sie Geräte ohne Windows 10 mit Azure AD. Dafür benötigen Sie Version 2.1 oder höher des [Clients für die Arbeitsplatzeinbindung](https://www.microsoft.com/download/details.aspx?id=53554).
+  - Registrieren Sie Geräte ohne Windows 10 bei Azure AD, ohne dass eine AD FS-Infrastruktur erforderlich ist. Für diese Funktion benötigen Sie Version 2.1 oder höher des [Clients für die Arbeitsplatzeinbindung](https://www.microsoft.com/download/details.aspx?id=53554).
 
 ## <a name="feature-highlights"></a>Wichtige Features
 
-- Beim Anmeldebenutzernamen kann es sich entweder um den lokalen Standard-Benutzernamen (`userPrincipalName`) handeln oder um ein anderes Attribut (`Alternate ID`), das in Azure AD Connect konfiguriert ist.
+- Beim Anmeldebenutzernamen kann es sich entweder um den lokalen Standard-Benutzernamen (`userPrincipalName`) handeln oder um ein anderes Attribut (`Alternate ID`), das in Azure AD Connect konfiguriert ist. Beide Anwendungsfälle funktionieren, weil die nahtloses SSO den `securityIdentifier`-Anspruch im Kerberos-Ticket verwendet, um die entsprechenden Benutzerobjekte in Azure AD zu suchen.
 - Die nahtlose SSO ist eine opportunistische Funktion. Tritt aus irgendeinem Grund ein Fehler auf, wird die reguläre Benutzeranmeldung durchgeführt, d.h. Benutzer müssen ihr Kennwort auf der Anmeldeseite eingeben.
-- Leitet eine Anwendung die Parameter `domain_hint` (zur Identifizierung Ihres Mandanten) oder `login_hint` (zur Identifizierung des Benutzers) in der Azure AD-Anmeldeanforderung weiter, werden Benutzer automatisch ohne Eingabe von Benutzername oder Kennwort angemeldet.
+- Leitet eine Anwendung die Parameter `domain_hint` (OpenID Connect) oder `whr` (SAML) in der Azure AD-Anmeldeanforderung oder einen `login_hint`-Parameter weiter, werden Benutzer automatisch ohne Eingabe von Benutzername oder Kennwort angemeldet.
 - Kann über Azure AD Connect aktiviert werden
 - Es handelt sich um ein kostenloses Feature, sodass Sie für dessen Verwendung keine kostenpflichtigen Editionen von Azure AD benötigen.
 - Ist auf webbrowserbasierten Clients und Office-Clients möglich, die eine [moderne Authentifizierung](https://aka.ms/modernauthga) auf Plattformen und Browsern unterstützen, die eine Kerberos-Authentifizierung ausführen können:
 
 | Betriebssystem/Browser |Internet Explorer|Edge|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
-|Windows 10|Ja|Ja|Ja|Ja\*|–
+|Windows 10|Ja|Nein|Ja|Ja\*|–
 |Windows 8.1|Ja|N/V|Ja|Ja\*|N/V
 |Windows 8|Ja|N/V|Ja|Ja\*|N/V
 |Windows 7|Ja|N/V|Ja|Ja\*|N/V
 |Mac OS X|–|–|Ja\*|Ja\*|Ja\*
 
 \*Erfordert [zusätzliche Konfigurationsschritte](active-directory-aadconnect-sso-quick-start.md#browser-considerations)
+
+>[!IMPORTANT]
+>Wir haben vor Kurzem ein Rollback für den Support für Edge ausgeführt, um von Kunden gemeldete Probleme zu untersuchen.
 
 >[!NOTE]
 >Bei Windows 10 wird empfohlen, [Azure AD Join](../active-directory-azureadjoin-overview.md) zu verwenden, um eine optimale Funktionsweise der nahtlosen SSO mit Azure AD sicherzustellen.

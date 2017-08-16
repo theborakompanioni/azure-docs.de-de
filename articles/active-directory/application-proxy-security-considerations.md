@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/28/2017
+ms.date: 08/03/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.translationtype: HT
-ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
-ms.openlocfilehash: f1ef6c3cc3ad2eda9fbcf79bf729918a847d27d7
+ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
+ms.openlocfilehash: c6ead651133eb17fd55f7567cdb14dc3bcd64245
 ms.contentlocale: de-de
-ms.lasthandoff: 08/01/2017
+ms.lasthandoff: 08/05/2017
 
 ---
 
@@ -61,13 +61,15 @@ Da es sich beim Azure AD-Anwendungsproxy um einen Reverseproxy handelt, wird der
 
 Sie müssen keine eingehenden Verbindungen mit dem Unternehmensnetzwerk öffnen.
 
-Für Azure AD-Connectors werden nur ausgehende Verbindungen mit dem Azure AD-Anwendungsproxydienst verwendet. Dies bedeutet, dass Firewallports nicht für eingehende Verbindungen geöffnet werden müssen. Herkömmliche Proxys erforderten ein Umkreisnetzwerk (auch bekannt als *DMZ*, *demilitarisierte Zone* und *überwachtes Subnetz*) und erlaubten den Zugriff auf nicht authentifizierte Verbindungen am Rand des Netzwerks. Aus diesem Grund mussten viele zusätzliche Investitionen in Web Application Firewall-Produkte getätigt werden, um Datenverkehr zu analysieren und den Schutz der Umgebung auszubauen. Bei Verwenden des Anwendungsproxys benötigen Sie kein Umkreisnetzwerk, da alle Verbindungen ausgehend sind und über einen sicheren Kanal erfolgen.
+Für Anwendungsproxyconnectors werden nur ausgehende Verbindungen mit dem Azure AD-Anwendungsproxydienst verwendet. Dies bedeutet, dass Firewallports nicht für eingehende Verbindungen geöffnet werden müssen. Herkömmliche Proxys erforderten ein Umkreisnetzwerk (auch bekannt als *DMZ*, *demilitarisierte Zone* und *überwachtes Subnetz*) und erlaubten den Zugriff auf nicht authentifizierte Verbindungen am Rand des Netzwerks. Aus diesem Grund mussten viele zusätzliche Investitionen in Web Application Firewall-Produkte getätigt werden, um Datenverkehr zu analysieren und den Schutz der Umgebung auszubauen. Bei Verwenden des Anwendungsproxys benötigen Sie kein Umkreisnetzwerk, da alle Verbindungen ausgehend sind und über einen sicheren Kanal erfolgen.
+
+Informationen zu Connectors finden Sie unter [Understand Azure AD Application Proxy connectors (Grundlegendes zu Azure AD-Anwendungsproxyconnectors)](application-proxy-understand-connectors.md).
 
 ### <a name="cloud-scale-analytics-and-machine-learning"></a>Analysen und Machine Learning auf Cloudebene 
 
 Setzen Sie auf Sicherheit und Schutz auf dem neuesten Stand.
 
-[Azure AD Identity Protection](active-directory-identityprotection.md) mit Intelligence auf Machine Learning-Basis mit Datenfeeds von unserer Digital Crimes Unit und aus dem Microsoft Security Response Center. Zusammen identifizieren wir proaktiv kompromittierte Konten und ermöglichen den Echtzeitschutz vor Anmeldungen mit hohem Risikofaktor. Wir berücksichtigen viele verschiedene Faktoren, z.B. den Zugriff von infizierten Geräten und über Anonymisierungsnetzwerke sowie von ungewöhnlichen und zweifelhaften Standorten.
+Als Teil von Azure AD kann der Anwendungsproxy [Azure AD Identity Protection](active-directory-identityprotection.md) nutzen. Dabei profitiert er von Informationen des Machine Learning und Daten aus dem Microsoft Security Response Center und Digital Crimes Unit. Zusammen identifizieren wir proaktiv kompromittierte Konten und ermöglichen den Echtzeitschutz vor Anmeldungen mit hohem Risikofaktor. Wir berücksichtigen viele verschiedene Faktoren, z.B. den Zugriff von infizierten Geräten und über Anonymisierungsnetzwerke sowie von ungewöhnlichen und zweifelhaften Standorten.
 
 Viele dieser Berichte und Ereignisse sind bereits über eine API für die Integration in Ihre Sicherheitsinformations- und Ereignisverwaltungssysteme (Security Information and Event Management, SIEM) verfügbar.
 
@@ -119,7 +121,7 @@ Wenn der Anwendungsproxydienst die Konfigurationseinstellungen aktualisiert, tre
 
 Wenn Benutzer auf eine veröffentlichte Anwendung zugreifen, treten zwischen dem Anwendungsproxydienst und dem Anwendungsproxyconnector die folgenden Ereignisse ein:
 
-1. [Der Dienst überprüft die Konfigurationseinstellungen für die App.](#the-service-checks-the-configuration-settings-for-the-app)
+1. [Der Dienst authentifiziert den Benutzer für die Anwendung](#the-service-checks-the-configuration-settings-for-the-app)
 2. [Der Dienst fügt eine Anforderung in die Connectorwarteschlange ein.](#The-service-places-a-request-in-the-connector-queue)
 3. [Ein Connector verarbeitet die Anforderung aus der Warteschlange.](#the-connector-receives-the-request-from-the-queue)
 4. [Der Connector wartet auf eine Antwort.](#the-connector-waits-for-a-response)
@@ -128,7 +130,7 @@ Wenn Benutzer auf eine veröffentlichte Anwendung zugreifen, treten zwischen dem
 Lesen Sie weiter, um mehr Informationen dazu zu erhalten, was in den einzelnen Schritten passiert.
 
 
-#### <a name="1-the-service-checks-the-configuration-settings-for-the-app"></a>1. Der Dienst überprüft die Konfigurationseinstellungen für die App.
+#### <a name="1-the-service-authenticates-the-user-for-the-app"></a>1. Der Dienst authentifiziert den Benutzer für die Anwendung
 
 Wenn Sie für die App die Verwendung von Passthrough als Präauthentifizierungsmethode konfiguriert haben, werden die Schritte in diesem Abschnitt übersprungen.
 

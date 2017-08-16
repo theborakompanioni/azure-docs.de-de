@@ -11,16 +11,17 @@ keywords: Docker, Container, Microservices, Kubernetes, DC/OS, Azure
 ms.assetid: 
 ms.service: container-instances
 ms.devlang: azurecli
-ms.topic: sample
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/19/2017
 ms.author: seanmck
+ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
-ms.openlocfilehash: 5f3fc5f3624cf1ef881adf2af0cb69ad67d09ad3
+ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
+ms.openlocfilehash: 7ec6c7fd2125293ba47a48feb83250eeb667d1a6
 ms.contentlocale: de-de
-ms.lasthandoff: 07/26/2017
+ms.lasthandoff: 08/07/2017
 
 ---
 
@@ -61,7 +62,7 @@ Für den Rest dieses Tutorials verwenden wir `<acrname>` als Platzhalter für de
 
 ## <a name="get-azure-container-registry-information"></a>Abrufen von Informationen aus Azure Container Registry
 
-Nachdem die Containerregistrierung erstellt wurde, können Sie ihren Anmeldeserver und das Kennwort abfragen. Der folgende Code gibt diese Werte zurück. Notieren Sie sich diese Werte, auf sie wird im gesamten Tutorial Bezug genommen.
+Nachdem die Containerregistrierung erstellt wurde, können Sie ihren Anmeldeserver und das Kennwort abfragen. Der folgende Code gibt diese Werte zurück. Notieren Sie sich diese Werte für den Anmeldeserver und das Kennwort, da auf diese im gesamten Tutorial Bezug genommen wird.
 
 Anmeldeserver für die Containerregistrierung (durch den Namen Ihrer Registrierung ersetzen):
 
@@ -74,7 +75,7 @@ Für den Rest dieses Tutorials verwenden wir `<acrLoginServer>` als Platzhalter 
 Kennwort der Containerregistrierung:
 
 ```azurecli
-az acr credential show --name <acrName> --query passwords[0].value
+az acr credential show --name <acrName> --query "passwords[0].value"
 ```
 
 Für den Rest dieses Tutorials verwenden wir `<acrPassword>` als Platzhalter für das Kennwort der Containerregistrierung.
@@ -179,3 +180,4 @@ Fahren Sie mit dem nächsten Tutorial fort, um mehr über die Bereitstellung des
 
 > [!div class="nextstepaction"]
 > [Bereitstellen von Containern in Azure Container Instances](./container-instances-tutorial-deploy-app.md)
+

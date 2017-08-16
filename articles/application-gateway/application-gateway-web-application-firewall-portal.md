@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 05/03/2017
 ms.author: gwallace
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: 3ee146a0be3c3338cf0037e2ec92a3b8d0c05a4e
+ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
+ms.openlocfilehash: 650f26d19615d27a94f3947aad7b7904b6c1fabc
 ms.contentlocale: de-de
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/04/2017
 
 ---
 
@@ -27,7 +27,8 @@ ms.lasthandoff: 07/28/2017
 
 > [!div class="op_single_selector"]
 > * [Azure-Portal](application-gateway-web-application-firewall-portal.md)
-> * [Azure Resource Manager PowerShell](application-gateway-web-application-firewall-powershell.md)
+> * [PowerShell](application-gateway-web-application-firewall-powershell.md)
+> * [Azure-CLI](application-gateway-web-application-firewall-cli.md)
 
 In diesem Artikel wird erläutert, wie ein Anwendungsgateway mit Web Application Firewall erstellt wird.
 
@@ -65,7 +66,7 @@ In diesem Beispiel wird ein vorhandenes Anwendungsgateway aktualisiert, sodass e
    | **Einstellung** | **Wert** | **Details**
    |---|---|---|
    |**Upgrade auf WAF-Ebene**| Aktiviert | Dadurch wird die Ebene des Anwendungsgateways auf die WAF-Ebene festgelegt.|
-   |**Firewallstatus**| Aktiviert | Aktiviert | Mit dieser Einstellung aktivieren Sie die Firewall auf der WAF.|
+   |**Firewallstatus**| Aktiviert | Mit dieser Einstellung aktivieren Sie die Firewall auf der WAF.|
    |**Firewallmodus** | Prävention | Diese Einstellung gibt an, wie die Web Application Firewall böswilligen Datenverkehr behandelt. Im **Erkennungsmodus** werden die Ereignisse nur protokolliert. Im **Schutzmodus** werden die Ereignisse protokolliert, und der böswillige Datenverkehr wird beendet.|
    |**Regelsatz**|3.0|Diese Einstellung bestimmt den [Kernregelsatz](application-gateway-web-application-firewall-overview.md#core-rule-sets), der für den Schutz der Mitglieder des Back-End-Pools verwendet wird.|
    |**Deaktivierte Regeln konfigurieren**|Variiert|Zur Verhinderung möglicher falsch positiver Ergebnisse ermöglicht diese Einstellung die Deaktivierung bestimmter [Regeln und Regelgruppen](application-gateway-crs-rulegroups-rules.md).|
@@ -108,35 +109,35 @@ Dieses Szenario umfasst Folgendes:
 
    ![Blatt mit Grundeinstellungen][2-2]
 
-1. Klicken Sie auf dem Blatt **Einstellungen**, das unter **Virtuelles Netzwerk** angezeigt wird, auf **Virtuelles Netzwerk auswählen**. Das Blatt **Virtuelles Netzwerk auswählen** wird geöffnet.  Klicken Sie auf **Neu erstellen**, um das Blatt **Virtuelles Netzwerk erstellen** zu öffnen.
+1. Klicken Sie auf dem Blatt **Einstellungen**, das unter **Virtuelles Netzwerk** angezeigt wird, auf **Virtuelles Netzwerk auswählen**. In diesem Schritt wird Blatt **Virtuelles Netzwerk auswählen** geöffnet.  Klicken Sie auf **Neu erstellen**, um das Blatt **Virtuelles Netzwerk erstellen** zu öffnen.
 
    ![Wählen eines virtuellen Netzwerks][2]
 
-1. Geben Sie auf dem Blatt **Virtuelles Netzwerk erstellen** die folgenden Werte ein, und klicken Sie anschließend auf **OK**. Die Blätter **Virtuelles Netzwerk erstellen** und **Virtuelles Netzwerk auswählen** werden geschlossen. Auch das Feld **Subnetz** auf dem Blatt **Einstellungen** mit dem ausgewählten Subnetz wird geschlossen.
+1. Geben Sie auf dem Blatt **Virtuelles Netzwerk erstellen** die folgenden Werte ein, und klicken Sie anschließend auf **OK**. In diesem Schritt werden die Blätter **Virtuelles Netzwerk erstellen** und **Virtuelles Netzwerk auswählen** geschlossen. Dadurch wird das Feld **Subnetz** auf dem Blatt **Einstellungen** mit dem ausgewählten Subnetz ausgefüllt.
 
    |**Einstellung** | **Wert** | **Details** |
    |---|---|---|
    |**Name**|AdatumAppGatewayVNET|Name des Anwendungsgateways.|
-   |**Adressraum**|10.0.0.0/16| Dies ist der Adressraum für das virtuelle Netzwerk.|
+   |**Adressraum**|10.0.0.0/16| Dieser Wert ist der Adressraum für das virtuelle Netzwerk.|
    |**Subnetzname**|AppGatewaySubnet|Name des Subnetzes für das Anwendungsgateway.|
-   |**Subnetzadressbereich**|10.0.0.0/28| Dieses Subnetz ermöglicht weitere Subnetze im virtuellen Netzwerk für Back-End-Pool Mitglieder.|
+   |**Subnetzadressbereich**|10.0.0.0/28 | Dieses Subnetz ermöglicht weitere Subnetze im virtuellen Netzwerk für Back-End-Pool Mitglieder.|
 
-1. Wählen Sie auf dem Blatt **Einstellungen** unter **Frontend-IP-Konfiguration** den **IP-Adresstyp** **Öffentlich** aus.
+1. Wählen Sie auf dem Blatt **Einstellungen** unter **Front-End-IP-Konfiguration** für **IP-Adresstyp** die Option **Öffentlich** aus.
 
 1. Klicken Sie auf dem Blatt **Einstellungen** unter **Öffentliche IP-Adresse** auf **Öffentliche IP-Adresse auswählen**. Daraufhin wird das Blatt **Öffentliche IP-Adresse auswählen** geöffnet. Klicken Sie auf **Neu erstellen**.
 
    ![Öffentliche IP-Adresse auswählen][3]
 
-1. Akzeptieren Sie auf dem Blatt **Öffentliche IP-Adresse erstellen** den Standardwert, und klicken Sie auf **OK**. Daraufhin werden die Blätter **Öffentliche IP-Adresse auswählen** und **Öffentliche IP-Adresse erstellen** geschlossen, und **Öffentliche IP-Adresse** wird mit der ausgewählten öffentlichen IP-Adresse gefüllt.
+1. Akzeptieren Sie auf dem Blatt **Öffentliche IP-Adresse erstellen** den Standardwert, und klicken Sie auf **OK**. In diesem Schritt werden die Blätter **Öffentliche IP-Adresse auswählen** und **Öffentliche IP-Adresse erstellen** geschlossen, und **Öffentliche IP-Adresse** wird mit der ausgewählten öffentlichen IP-Adresse gefüllt.
 
-1. Klicken Sie auf dem Blatt **Einstellungen** unter **Listenerkonfiguration** unter **Protokoll** auf **HTTP**. Für die Verwendung von **HTTPS**ist ein Zertifikat erforderlich. Da der private Schlüssel des Zertifikats benötigt wird, müssen ein PFX-Export des Zertifikats und das Dateikennwort bereitgestellt werden.
+1. Klicken Sie auf dem Blatt **Einstellungen** unter **Listenerkonfiguration** auf **HTTP** (unter **Protokoll**). Für die Verwendung von **HTTPS**ist ein Zertifikat erforderlich. Da der private Schlüssel des Zertifikats benötigt wird, müssen ein PFX-Export des Zertifikats und das Dateikennwort bereitgestellt werden.
 
 1. Konfigurieren Sie die **WAF** -spezifischen Einstellungen.
 
    |**Einstellung** | **Wert** | **Details** |
    |---|---|---|
    |**Firewallstatus**| Aktiviert| Diese Einstellung aktiviert oder deaktiviert WAF.|
-   |**Firewallmodus** | Prävention| Diese Einstellung bestimmt die Aktionen, die WAF bei böswilligem Datenverkehr unternimmt. Wenn Sie **Erkennung** auswählen, wird der Datenverkehr nur protokolliert.  Wenn Sie **Schutz** auswählen, wird der Datenverkehr protokolliert und mit der Meldung 403 (nicht autorisiert) beendet.|
+   |**Firewallmodus** | Prävention| Diese Einstellung bestimmt die Aktionen, die WAF bei böswilligem Datenverkehr durchführt. Wenn Sie **Erkennung** auswählen, wird der Datenverkehr nur protokolliert.  Wenn Sie **Schutz** auswählen, wird der Datenverkehr protokolliert und mit der Meldung 403 (nicht autorisiert) beendet.|
 
 
 1. Überprüfen Sie die Zusammenfassungsseite, und klicken Sie auf **OK**.  Das Anwendungsgateway wird in der Warteschlange platziert und erstellt.
