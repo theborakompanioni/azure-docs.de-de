@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/28/2017
+ms.date: 08/03/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.translationtype: HT
-ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
-ms.openlocfilehash: f86d37e32b77dc8411138542de573ee840bf9a64
+ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
+ms.openlocfilehash: c18d0a2bff654573e6e28a7cd7fad853b3a11346
 ms.contentlocale: de-de
-ms.lasthandoff: 08/01/2017
+ms.lasthandoff: 08/05/2017
 
 ---
 
@@ -41,7 +41,8 @@ Weitere Informationen zu den Netzwerkanforderungen für den Connectorserver find
 Die Connectors und der Dienst führen alle Aufgaben in Bezug auf die hohe Verfügbarkeit aus. Diese können dynamisch hinzugefügt oder entfernt werden. Jedes Mal, wenn eine neue Anforderung eintrifft, wird diese an einen der gerade verfügbaren Connectors geleitet. Falls ein Connector vorübergehend nicht verfügbar ist, reagiert er nicht auf diesen Datenverkehr.
 
 Die Connectors sind zustandslos und verfügen über keine Konfigurationsdaten auf dem Computer. Die einzigen Daten, die sie speichern, sind die Einstellungen für das Verbinden des Diensts mit dessen Authentifizierungszertifikat. Wenn die Verbindung mit dem Dienst hergestellt wird, werden alle erforderlichen Konfigurationsdaten abgerufen und jeweils nach einigen Minuten aktualisiert.
-Außerdem wird der Server abgefragt, um zu ermitteln, ob eine neuere Version des Connectors vorhanden ist. Wenn ja, führen die Connectors die Aktualisierung selbst durch.
+
+Connectors fragen den Server ab, um zu ermitteln, ob eine neuere Version des Connectors vorhanden ist. Wenn ja, führen die Connectors die Aktualisierung selbst durch.
 
 Sie können Ihre Connectors auf dem Computer überwachen, auf dem sie ausgeführt werden, indem Sie das Ereignisprotokoll und die Leistungsindikatoren verwenden. Alternativ dazu können Sie ihren Status auch im Azure-Portal auf der Seite „Anwendungsproxy“ überwachen:
 
@@ -63,13 +64,11 @@ In folgenden Fällen kann es während der Aktualisierung eines Connectors zu Aus
 
 ## <a name="creating-connector-groups"></a>Erstellen von Connectorgruppen
 
-Es gibt viele Gründe, Connectorgruppen zu erstellen, darunter:
+Mit Connectorgruppen können Sie Anwendungen bestimmte Connectors zuweisen. Sie können mehrere Connectors gruppieren, und dann jede Anwendung einer Gruppe zuweisen. 
 
-* Höhere Verfügbarkeit
-* Bessere Wartezeit für Mandanten mit Anwendungen in mehreren Regionen
-* Strukturierte Ressourcen, die einfacher zu verwalten sind
+Connectorgruppen erleichtern das Verwalten großer Bereitstellungen. Darüber hinaus Verringern Sie Wartezeiten für Mandanten, deren Anwendungen in verschiedenen Regionen gehostet werden, da Sie standortbasierte Connectorgruppen erstellen können, die nur für lokale Anwendungen bestimmt sind. 
 
-Weitere Informationen zu den Vorteilen von Connectorgruppen finden Sie unter [Veröffentlichen von Anwendungen in getrennten Netzwerken und an getrennten Standorten mithilfe von Connectorgruppen](active-directory-application-proxy-connectors-azure-portal.md).
+Weitere Informationen zu Connectorgruppen finden Sie unter [Veröffentlichen von Anwendungen in getrennten Netzwerken und an getrennten Standorten mithilfe von Connectorgruppen](active-directory-application-proxy-connectors-azure-portal.md).
 
 ## <a name="security-and-networking"></a>Sicherheit und Netzwerk
 
@@ -141,7 +140,7 @@ Die Connectors verfügen über Administrator- und Sitzungsprotokolle. Die Admini
 
 Um die Protokolle anzuzeigen, wechseln Sie zur Ereignisanzeige, öffnen Sie das Menü **Ansicht**, und aktivieren Sie die Option **Analytische und Debugprotokolle einblenden**. Aktivieren Sie die Protokolle, um mit dem Erfassen von Ereignissen zu beginnen. Diese Protokolle werden nicht im Webanwendungsproxy in Windows Server 2012 R2 angezeigt, da die Connectors auf einer neueren Version basieren.
 
-Sie können den Zustand des Diensts im Fenster „Dienste“ untersuchen. Der Connector besteht aus zwei Windows-Diensten: dem eigentlichen Connector und dem Updatedienst. Beide Dienste müssen jederzeit ausgeführt werden.
+Sie können den Zustand des Diensts im Fenster „Dienste“ untersuchen. Der Connector besteht aus zwei Windows-Diensten: dem eigentlichen Connector und dem Updatedienst. Beide Dienste müssen immer ausgeführt werden.
 
  ![Lokale Azure AD-Dienste](./media/application-proxy-understand-connectors/aad-connector-services.png)
 

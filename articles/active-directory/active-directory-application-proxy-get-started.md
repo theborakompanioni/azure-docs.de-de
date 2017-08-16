@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/13/2017
+ms.date: 08/04/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: 5f500e1e0d3f9cafa67f255d1603e8db5716d469
+ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
+ms.openlocfilehash: 67f7f5b8d411d11c97a8666d1bfc3c0c5f1174ce
 ms.contentlocale: de-de
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/05/2017
 
 ---
 
@@ -66,15 +66,14 @@ Der Connector ist ein einfacher Agent, der sich auf einem Windows-Server innerha
 
 Der externe Endpunkt bedeutet, wie Ihre Benutzer Ihre Anwendungen erreichen, während sie sich selbst außerhalb des Netzwerks befinden. Sie können direkt zu einer externen URL wechseln, die Sie bestimmen, oder auf die Anwendung über das MyApps-Portal zugreifen. Wenn Benutzer einen dieser Endpunkte erreichen, authentifizieren sie sich in Azure AD und werden dann über den Connector an die lokale Anwendung geleitet.
 
- ![Azure AD-Anwendungsproxy – Diagramm](./media/active-directory-appssoaccess-whatis/azureappproxxy.png)
+ ![Azure AD-Anwendungsproxy – Diagramm](./media/active-directory-application-proxy-get-started/azureappproxxy.png)
 
-1. Der Benutzer greift auf die Anwendung über den Anwendungsproxy zu und wird zur Authentifizierung an die Azure AD-Anmeldeseite geleitet.
-2. Nach der erfolgreichen Anmeldung wird ein Token generiert und an den Benutzer gesendet.
-3. Der Benutzer sendet das Token an den Anwendungsproxy, der den Benutzerprinzipalnamen (User Principal Name, UPN) und den Sicherheitsprinzipalnamen (Security Principal Name, SPN) aus dem Token abruft und die Anforderung dann an den Connector weiterleitet.
-4. Der Connector fordert im Namen des Benutzers ein Kerberos-Ticket an, das für die interne Authentifizierung (Windows) verwendet werden kann. Dieser Schritt wird als eingeschränkte Kerberos-Delegierung bezeichnet.
-5. Active Directory ruft das Kerberos-Ticket ab.
-6. Das Ticket wird an den Anwendungsserver gesendet und überprüft.
-7. Die Antwort wird über den Anwendungsproxy an den Benutzer gesendet.
+1. Der Benutzer greift auf die Anwendung über den Anwendungsproxydienst zu und wird zur Authentifizierung an die Azure AD-Anmeldeseite geleitet.
+2. Nach der erfolgreichen Anmeldung wird ein Token generiert und an das Clientgerät gesendet.
+3. Der Client sendet das Token an den Anwendungsproxydienst, der den Benutzerprinzipalnamen (UPN) und den Sicherheitsprinzipalnamen (SPN) aus dem Token abruft und die Anforderung dann an den Anwendungsproxyconnector leitet.
+4. Wenn Sie das SSO konfiguriert haben, führt der Connector jede weitere erforderliche Authentifizierung im Namen des Benutzers durch.
+5. Der Connector sendet die Anforderung an die lokale Anwendung.  
+6. Die Antwort wird über den Anwendungsproxydienst und -connector an den Benutzer gesendet.
 
 ### <a name="single-sign-on"></a>Einmaliges Anmelden
 Der Azure AD-Anwendungsproxy ermöglicht einmaliges Anmelden (SSO) für Anwendungen, die die integrierte Windows-Authentifizierung (IWA) verwenden oder Ansprüche unterstützen. Wenn Ihre Anwendung die integrierte Windows-Authentifizierung verwendet, nimmt der Anwendungsproxy mithilfe der eingeschränkten Kerberos-Delegierung die Identität des Benutzers an, um das einmalige Anmelden zu ermöglichen. Wenn Sie über eine Anwendung verfügen, die Ansprüche unterstützt und Azure Active Directory vertraut, funktioniert das einmalige Anmelden, da der Benutzer bereits über Azure AD authentifiziert wurde.

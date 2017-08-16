@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2017
+ms.date: 08/08/2017
 ms.author: bwren
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: b4031e5ec5ab38863e1e74f5b6ebb117f23a327e
+ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
+ms.openlocfilehash: 2de9a87390da11a034c6cebaa37d4cc89edf3cad
 ms.contentlocale: de-de
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/09/2017
 
 ---
 
@@ -52,7 +52,6 @@ Kein Problem.  Wir erstellen vor dem Upgrade eine Momentaufnahme Ihres Arbeitsbe
 Sie können den das Tool zum Konvertieren der Sprache auf der Seite der Protokollsuche verwenden, um sie zu konvertieren.  Es gibt keine Möglichkeit, mehrere Suchen automatisch zu konvertieren, ohne ein Upgrade auf den Arbeitsbereich durchzuführen.
 
 
-
 ## <a name="alerts"></a>Warnungen
 
 ### <a name="i-have-a-lot-of-alert-rules-do-i-need-to-create-them-again-in-the-new-language-after-i-upgrade"></a>Ich habe viele Warnungsregeln. Muss ich diese erneut in der neuen Sprache erstellen, nachdem ich das Upgrade durchgeführt habe?  
@@ -63,7 +62,10 @@ Nein, Ihre Warnungsregeln werden während des Upgrades automatisch in die neue S
 ### <a name="does-anything-change-with-powerbi-integration"></a>Ändert sich etwas bei der PowerBI-Integration?
 Ja.  Sobald für Ihren Arbeitsbereich ein Upgrade durchgeführt wurde, funktioniert dieses Verfahren zum Exportieren von Log Analytics-Daten in Power BI nicht mehr.  Alle vorhandenen Zeitpläne, die Sie vor dem Upgrade erstellt haben, werden deaktiviert.  Nach dem Upgrade verwendet Azure Log Analytics dieselbe Plattform wie Application Insights, und Sie verwenden zum Exportieren von Log Analytics-Abfragen nach Power BI dasselbe Verfahren wie zum [Exportieren von Application Insights-Abfragen nach Power BI](../application-insights/app-insights-export-power-bi.md#export-analytics-queries).
 
+## <a name="dashboards"></a>Dashboards
 
+### <a name="can-i-still-use-dashboards"></a>Kann ich trotzdem weiterhin Dashboards verwenden?
+Sie können weiterhin Dashboards verwenden, die Sie erstellt haben, bevor ihr Workspace aktualisiert wurde, aber Sie können diese Dashboards nicht bearbeiten und auch keine neuen erstellen.  Sie können weiterhin Ansichten mit dem [Ansicht-Designer](log-analytics-view-designer.md) bearbeiten. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

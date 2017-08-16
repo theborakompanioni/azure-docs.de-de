@@ -13,10 +13,10 @@ ms.topic: article
 ms.author: markgal,masaran
 manager: carmonm
 ms.translationtype: HT
-ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
-ms.openlocfilehash: ffd19e25e2931ac7af472b4c88eccbce73b10ff4
+ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
+ms.openlocfilehash: 3608c310f43ff9f97563d252437d50d962162f47
 ms.contentlocale: de-de
-ms.lasthandoff: 07/24/2017
+ms.lasthandoff: 08/04/2017
 
 ---
 
@@ -92,6 +92,7 @@ In diesem Artikel sind verschiedene Server und Workloads aufgeführt, die Sie mi
 |Hyper-V-Host – DPM-Schutz-Agent auf Hyper-V-Hostserver, Cluster oder VM|Windows Server 2012 – Datacenter und Standard|Physischer Server<br /><br />Lokaler virtueller Hyper-V-Computer|J|J|Schutz: Hyper-V-Computer, freigegebene Clustervolumes (CSVs)<br /><br />Wiederherstellung: virtueller Computer, Wiederherstellung auf Elementebene von Dateien und Ordnern, Volumes, virtuelle Festplatten|
 |Hyper-V-Host – DPM-Schutz-Agent auf Hyper-V-Hostserver, Cluster oder VM|Windows Server 2008 R2 SP1 – Enterprise und Standard|Physischer Server<br /><br />Lokaler virtueller Hyper-V-Computer|J|J|Schutz: Hyper-V-Computer, freigegebene Clustervolumes (CSVs)<br /><br />Wiederherstellung: virtueller Computer, Wiederherstellung auf Elementebene von Dateien und Ordnern, Volumes, virtuelle Festplatten|
 |Hyper-V-Host – DPM-Schutz-Agent auf Hyper-V-Hostserver, Cluster oder VM|Windows Server 2008|Physischer Server<br /><br />Lokaler virtueller Hyper-V-Computer|N|N|Schutz: Hyper-V-Computer, freigegebene Clustervolumes (CSVs)<br /><br />Wiederherstellung: virtueller Computer, Wiederherstellung auf Elementebene von Dateien und Ordnern, Volumes, virtuelle Festplatten|
+|Virtuelle VMware-Computer|VMware Server 5.5 oder 6.0 oder 6.5 |Lokaler virtueller Hyper-V-Computer|J|Y (mit UR1)|VMware-Ms in freigegebenen Clustervolumen (CSVs), NFS und im SAN-Speicher<br /> Die Wiederherstellung von Dateien und Ordnern auf Elementebene ist nur für Windows verfügbar.<br /> VMware vApp wird nicht unterstützt|
 |Linux|Linux, ausgeführt als Hyper-V- oder VMware-Gast|Lokaler virtueller Hyper-V-Computer|J|J|Hyper-V muss unter Windows Server 2012 R2 oder Windows Server 2016 ausgeführt werden. Schutz: gesamter virtueller Computer<br /><br />Wiederherstellung: gesamter virtueller Computer|
 
 ## <a name="cluster-support"></a>Unterstützung für Cluster

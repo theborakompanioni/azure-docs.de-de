@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/31/2017
 ms.author: juliako;
 ms.translationtype: HT
-ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
-ms.openlocfilehash: 6095135e49a6da3ef37fb566c2fb56702cfd70c9
+ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
+ms.openlocfilehash: 74f38ae61d4a360cabe8a9fbd33d30a6b0751654
 ms.contentlocale: de-de
-ms.lasthandoff: 08/01/2017
+ms.lasthandoff: 08/09/2017
 
 ---
 # <a name="redact-faces-with-azure-media-analytics"></a>Bearbeiten von Gesichtern mit Azure Media Analytics
@@ -133,7 +133,37 @@ Beispiel: „foo_IDList.txt“
      1
      2
      3
+
+## <a name="blur-types"></a>Typen von Weichzeichnern
+
+Im Modus **Kombiniert** oder **Bearbeiten** gibt es fünf verschiedene Weichzeichnermodi, zwischen denen Sie über die JSON-Eingabekonfiguration wählen können: **Low**, **Med**, **High**, **Debug** und **Black** (Niedrig, Medium, Hoch, Debug, Schwarz). Standardmäßig wird **Medium** verwendet.
+
+Untenstehend finden Sie Beispiele für Weichzeichnertypen.
+
+### <a name="example-json"></a>JSON-Beispiel:
+
+    {'version':'1.0', 'options': {'Mode': 'Combined', 'BlurType': 'High'}}
+
+#### <a name="low"></a>Niedrig
+
+![Niedrig](./media/media-services-face-redaction/blur1.png)
  
+#### <a name="med"></a>Medium
+
+![Medium](./media/media-services-face-redaction/blur2.png)
+
+#### <a name="high"></a>Hoch
+
+![Hoch](./media/media-services-face-redaction/blur3.png)
+
+#### <a name="debug"></a>Debuggen
+
+![Debuggen](./media/media-services-face-redaction/blur4.png)
+
+#### <a name="black"></a>Schwarz
+
+![Schwarz](./media/media-services-face-redaction/blur5.png)
+
 ## <a name="elements-of-the-output-json-file"></a>Elemente der JSON-Ausgabedatei
 
 Der Medienprozessor zur Gesichtsbearbeitung ermöglicht eine Gesichtspositionserkennung und -nachverfolgung mit hoher Genauigkeit, sodass bis zu 64 menschliche Gesichter in einem Videobild erkannt werden können. Frontalansichten von Gesichtern bieten die besten Ergebnisse, während Seitenansichten und kleine Gesichter (maximal 24 x 24 Pixel) unter Umständen nicht so genau erkannt werden.

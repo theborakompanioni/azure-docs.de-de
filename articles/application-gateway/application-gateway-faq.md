@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 03/28/2017
 ms.author: gwallace
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: 3a57646922236a10cf51ae3dd86c67c87c6d7f7f
+ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
+ms.openlocfilehash: bb3cf81c9b179e520e58a6fe5e455a136b9bb349
 ms.contentlocale: de-de
-ms.lasthandoff: 07/27/2017
+ms.lasthandoff: 08/04/2017
 
 ---
 
@@ -136,7 +136,7 @@ Benutzerdefinierte Überprüfungen unterstützen keine Platzhalter/regulären Au
 
 **F: Wie werden Regeln verarbeitet?**
 
-Regeln werden gemäß der Konfigurationsreihenfolge verarbeitet. Es wird empfohlen, Regeln für mehrere Standorte vor einfachen Regeln zu konfigurieren. Indem Listener mit mehreren Standorten zuerst konfiguriert werden, ist es weniger wahrscheinlich, dass Datenverkehr an das ungeeignete Back-End weitergeleitet wird. Dieses Routingproblem kann auftreten, wenn die einfache Regel auf der Grundlage des Ports dem Datenverkehr zugeordnet wird, bevor die Regel für mehrere Standorte ausgewertet wird.
+Regeln werden gemäß der Erstellungsreihenfolge verarbeitet. Es wird empfohlen, Regeln für mehrere Standorte vor einfachen Regeln zu konfigurieren. Indem Listener mit mehreren Standorten zuerst konfiguriert werden, ist es weniger wahrscheinlich, dass Datenverkehr an das ungeeignete Back-End weitergeleitet wird. Dieses Routingproblem kann auftreten, wenn die einfache Regel auf der Grundlage des Ports dem Datenverkehr zugeordnet wird, bevor die Regel für mehrere Standorte ausgewertet wird.
 
 **F: Was ist im Feld „Host“ für benutzerdefinierte Überprüfungen angegeben?**
 

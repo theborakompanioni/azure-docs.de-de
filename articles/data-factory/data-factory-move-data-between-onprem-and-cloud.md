@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 07/27/2017
 ms.author: abnarain
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: ca8c94cfe6a76ba169b2ec1f7ab3f49caf562289
+ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
+ms.openlocfilehash: 475c878e34a83d06cffca5e114ccd920c7956256
 ms.contentlocale: de-de
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/10/2017
 
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Verschieben von Daten zwischen lokalen Quellen und der Cloud mit dem Datenverwaltungsgateway
@@ -29,13 +29,18 @@ Dieser Artikel enthält eine Übersicht über die Datenintegration zwischen loka
 Sie müssen das Datenverwaltungsgateway auf dem lokalen Computer installieren, um das Verschieben von Daten in einen bzw. aus einem lokalen Datenspeicher zu ermöglichen. Das Gateway kann auf dem gleichen Computer wie der Datenspeicher oder auf einem anderen Computer installiert werden, solange das Gateway eine Verbindung mit dem Datenspeicher herstellen kann.
 
 > [!IMPORTANT]
-> Im Artikel [Datenverwaltungsgateway](data-factory-data-management-gateway.md) finden Sie Einzelheiten zum Datenverwaltungsgateway.   
->
->
+> Im Artikel [Datenverwaltungsgateway](data-factory-data-management-gateway.md) finden Sie Einzelheiten zum Datenverwaltungsgateway. 
 
 In der folgenden exemplarischen Vorgehensweise wird gezeigt, wie Sie eine Data Factory mit einer Pipeline erstellen, die Daten aus einer lokalen **SQL Server**-Datenbank in eine Azure Blob Storage-Instanz verschiebt. Im Rahmen der exemplarischen Vorgehensweise installieren und konfigurieren Sie das Datenverwaltungsgateway auf Ihrem Computer.
 
 ## <a name="walkthrough-copy-on-premises-data-to-cloud"></a>Exemplarische Vorgehensweise: Kopieren lokaler Daten in die Cloud
+In dieser exemplarischen Vorgehensweise führen Sie die folgenden Schritte aus: 
+
+1. Erstellen einer Data Factory.
+2. Erstellen eines Datenverwaltungsgateways 
+3. Erstellen eines verknüpften Dienstes für Quell- und Senkendatenspeicher
+4. Erstellen von Datasets zur Darstellung von Eingabe- und Ausgabedaten
+5. Erstellen einer Pipeline mit Kopieraktivität zum Verschieben der Daten
 
 ## <a name="prerequisites-for-the-tutorial"></a>Voraussetzungen für das Tutorial
 Bevor Sie mit dieser exemplarischen Vorgehensweise beginnen, müssen folgende Voraussetzungen erfüllt sein:
@@ -51,7 +56,7 @@ In diesem Schritt verwenden Sie das Azure-Portal zum Erstellen einer Azure Data 
 2. Klicken Sie auf **+ NEU**, auf **Intelligence + Analyse** und dann auf **Data Factory**.
 
    ![Neu -> Data Factory](./media/data-factory-move-data-between-onprem-and-cloud/NewDataFactoryMenu.png)  
-3. Geben Sie auf dem Blatt **Neue Data Factory** unter „Name“ die Zeichenfolge **ADFTutorialOnPremDF** ein.
+3. Geben Sie auf der Seite **Neue Data Factory** unter „Name“ die Zeichenfolge **ADFTutorialOnPremDF** ein.
 
     ![Zum Startmenü hinzufügen](./media/data-factory-move-data-between-onprem-and-cloud/OnPremNewDataFactoryAddToStartboard.png)
 
@@ -63,27 +68,30 @@ In diesem Schritt verwenden Sie das Azure-Portal zum Erstellen einer Azure Data 
    >
 4. Wählen Sie das **Azure-Abonnement** , in dem die Data Factory erstellt werden soll.
 5. Wählen Sie eine vorhandene **Ressourcengruppe** aus, oder erstellen Sie eine Ressourcengruppe. Erstellen Sie für das Tutorial eine Ressourcengruppe mit dem Namen **ADFTutorialResourceGroup**.
-6. Klicken Sie auf dem Blatt **Neue Data Factory** auf **Erstellen**.
+6. Klicken Sie auf der Seite **Neue Data Factory** auf **Erstellen**.
 
    > [!IMPORTANT]
    > Zum Erstellen von Data Factory-Instanzen müssen Sie Mitglied der Rolle [Data Factory-Mitwirkender](../active-directory/role-based-access-built-in-roles.md#data-factory-contributor) auf Abonnement- bzw. Ressourcengruppenebene sein.
    >
    >
-7. Nach Abschluss der Erstellung wird das Blatt **Data Factory** wie in der folgenden Abbildung dargestellt angezeigt:
+7. Nach Abschluss der Erstellung wird die Seite **Data Factory** wie in der folgenden Abbildung dargestellt angezeigt:
 
    ![Data Factory-Startseite](./media/data-factory-move-data-between-onprem-and-cloud/OnPremDataFactoryHomePage.png)
 
 ## <a name="create-gateway"></a>Erstellen des Gateways
-1. Klicken Sie auf dem Blatt **Data Factory** auf die Kachel **Erstellen und bereitstellen**, um den **Editor** für die Data Factory zu starten.
+1. Klicken Sie auf der Seite **Data Factory** auf die Kachel **Erstellen und bereitstellen**, um den **Editor** für die Data Factory zu starten.
 
     ![Kachel „Erstellen und bereitstellen“](./media/data-factory-move-data-between-onprem-and-cloud/author-deploy-tile.png)
 2. Klicken Sie im Data Factory-Editor auf der Symbolleiste auf **... Mehr** und dann auf **Neues Datengateway**. Sie können auch in der Strukturansicht mit der rechten Maustaste auf **Datengateways** und dann auf **Neues Datengateway** klicken.
 
    !["Neues Daten-Gateway" auf der Symbolleiste](./media/data-factory-move-data-between-onprem-and-cloud/NewDataGateway.png)
-3. Geben Sie auf dem Blatt **Erstellen** den Namen **adftutorialgateway** unter **Name** ein, und klicken Sie auf **OK**.     
+3. Geben Sie auf der Seite **Erstellen** den Namen **adftutorialgateway** unter **Name** ein, und klicken Sie auf **OK**.     
 
-    ![Blatt "Gateway erstellen"](./media/data-factory-move-data-between-onprem-and-cloud/OnPremCreateGatewayBlade.png)
-4. Klicken Sie auf dem Blatt **Konfigurieren** auf **Direkt auf diesem Computer installieren**. Diese Aktion lädt das Installationspaket für das Gateway herunter und installiert, konfiguriert und registriert das Gateway auf dem Computer.  
+    ![Seite „Gateway erstellen“](./media/data-factory-move-data-between-onprem-and-cloud/OnPremCreateGatewayBlade.png)
+
+    > [!NOTE]
+    > In dieser exemplarischen Vorgehensweise erstellen Sie ein logisches Gateway mit nur einem Knoten (lokaler Windows-Computer). Sie können ein Datenverwaltungsgateway horizontal hochskalieren, indem Sie ihm mehrere lokale Computer zuordnen. Sie können zentral hochskalieren, indem Sie die Anzahl von Datenverschiebungsaufträgen erhöhen, die auf einem Knoten gleichzeitig ausgeführt werden können. Diese Funktion ist auch für ein logisches Gateway mit einem einzelnen Knoten verfügbar. Ausführliche Informationen hierzu finden Sie im Artikel [Skalieren des Datenverwaltungsgateways in Azure Data Factory](data-factory-data-management-gateway-high-availability-scalability.md).  
+4. Klicken Sie auf der Seite **Konfigurieren** auf **Direkt auf diesem Computer installieren**. Diese Aktion lädt das Installationspaket für das Gateway herunter und installiert, konfiguriert und registriert das Gateway auf dem Computer.  
 
    > [!NOTE]
    > Verwenden Sie Internet Explorer oder einen mit Microsoft ClickOnce kompatiblen Webbrowser.
@@ -94,11 +102,11 @@ In diesem Schritt verwenden Sie das Azure-Portal zum Erstellen einer Azure Data 
    >
    >
 
-    ![Blatt "Gateway konfigurieren"](./media/data-factory-move-data-between-onprem-and-cloud/OnPremGatewayConfigureBlade.png)
+    ![Seite „Gateway konfigurieren“](./media/data-factory-move-data-between-onprem-and-cloud/OnPremGatewayConfigureBlade.png)
 
     Dies ist die einfachste Möglichkeit (One-Click) zum Herunterladen, Installieren, Konfigurieren und Registrieren des Gateways in einem einzigen Schritt. Sie können sehen, dass die Anwendung **Microsoft Datenverwaltungsgateway – Konfigurations-Manager** auf Ihrem Computer installiert ist. Die ausführbare Datei **ConfigManager.exe** befindet sich auch im Ordner **C:\Programme\Microsoft Data Management Gateway\2.0\Shared**.
 
-    Sie können das Gateway auch manuell über die Links in diesem Blatt herunterladen und installieren und mit dem Schlüssel im Textfeld **NEUER SCHLÜSSEL** registrieren.
+    Sie können das Gateway auch manuell über die Links auf dieser Seite herunterladen und installieren und mit dem Schlüssel im Textfeld **NEUER SCHLÜSSEL** registrieren.
 
     Im Artikel [Datenverwaltungsgateway](data-factory-data-management-gateway.md) finden Sie alle Informationen zum Gateway.
 
@@ -140,7 +148,7 @@ In diesem Schritt verwenden Sie das Azure-Portal zum Erstellen einer Azure Data 
    * Klicken Sie auf **Protokolle anzeigen** , um das Protokoll des Datenverwaltungsgateways in einem Ereignisanzeigenfenster anzuzeigen.
    * Klicken Sie auf **Protokolle senden** , um eine ZIP-Datei mit den Protokollen der letzten sieben Tage an Microsoft zu senden und dadurch die Behebung Ihrer Probleme zu erleichtern.
 10. Wählen Sie auf der Registerkarte **Diagnose** im Abschnitt **Verbindung testen** als Typ des Datenspeichers die Option **SqlServer** aus, geben Sie den Namen des Datenbankservers, den Namen der Datenbank, den Authentifizierungstyp, den Benutzernamen und das Kennwort ein, und klicken Sie auf **Testen**, um zu prüfen, ob das Gateway eine Verbindung mit der Datenbank herstellen kann.
-11. Wechseln Sie zum Webbrowser, und klicken Sie im **Azure-Portal** auf dem Blatt **Konfigurieren** und dann auf dem Blatt **Neues Datengateway** auf **OK**.
+11. Wechseln Sie zum Webbrowser, und klicken Sie im **Azure-Portal** auf der Seite **Konfigurieren** und dann auf der Seite **Neues Datengateway** auf **OK**.
 12. In der Strukturansicht links sollte **adftutorialgateway** unter **Datengateways** angezeigt werden.  Wenn Sie darauf klicken, sollte die zugehörige JSON angezeigt werden.
 
 ## <a name="create-linked-services"></a>Erstellen von verknüpften Diensten
@@ -157,7 +165,7 @@ In diesem Schritt erstellen Sie zwei verknüpfte Dienste: **AzureStorageLinkedSe
 
       1. Geben Sie für **Servername** den Namen des Servers ein, auf dem die SQL Server-Datenbank gehostet wird.
       2. Geben Sie für **Datenbankname** den Namen der Datenbank ein.
-      3. Klicken Sie auf der Symbolleiste auf die Schaltfläche **Verschlüsseln**. Dadurch wird die Anwendung „Anmeldeinformations-Manager“ heruntergeladen und gestartet.
+      3. Klicken Sie auf der Symbolleiste auf die Schaltfläche **Verschlüsseln**. Jetzt sehen Sie die Anwendung „Anmeldeinformations-Manager“
 
          ![Anwendung „Anmeldeinformations-Manager“](./media/data-factory-move-data-between-onprem-and-cloud/credentials-manager-application.png)
       4. Geben Sie im Dialogfeld **Anmeldeinformationen festlegen** den Authentifizierungstyp, den Benutzernamen und das Kennwort an, und klicken Sie auf **OK**. Wenn die Verbindung erfolgreich hergestellt wurde, werden die verschlüsselten Anmeldeinformationen im JSON-Editor gespeichert, und das Dialogfeld wird geschlossen.
@@ -361,7 +369,7 @@ In diesem Schritt erstellen Sie eine **Pipeline** mit einer **Kopieraktivität**
 
    In diesem Beispiel ergeben sich 24 Datenslices, da jede Stunde ein Datenslice erstellt wird.        
 3. Klicken Sie auf der Befehlsleiste auf **Bereitstellen** , um das Dataset bereitzustellen (eine Tabelle ist ein rechteckiges Dataset). Überprüfen Sie, ob die Pipeline in der Strukturansicht unter dem Knoten **Pipelines** angezeigt wird.  
-4. Klicken Sie nun zweimal auf **X**, um die Blätter zu schließen und zum Blatt **Data Factory** für **ADFTutorialOnPremDF** zurückzukehren.
+4. Klicken Sie nun zweimal auf **X**, um die Seiten zu schließen und zur Seite **Data Factory** für **ADFTutorialOnPremDF** zurückzukehren.
 
 **Glückwunsch!** Sie haben erfolgreich eine Azure Data Factory, verknüpfte Dienste, Datasets und eine Pipeline erstellt und die Pipeline geplant.
 
@@ -382,21 +390,21 @@ In diesem Schritt verwenden Sie das Azure-Portal zur Überwachung der Aktivität
 
     ![EmpOnPremSQLTable-Slices](./media/data-factory-move-data-between-onprem-and-cloud/OnPremSQLTableSlicesBlade.png)
 2. Beachten Sie, dass alle Datenslices den Status **Bereit** aufweisen, da die Dauer der Pipeline (Startzeit bis Endzeit) in der Vergangenheit liegt. Das liegt auch daran, dass Sie die Daten in die SQL Server-Datenbank eingefügt haben und sie dort immer vorhanden sind. Überprüfen Sie, ob keine Slices im Abschnitt **Problemslices** am unteren Rand angezeigt werden. Um alle Slices anzuzeigen, klicken Sie unten in der Liste der Slices auf **Weitere anzeigen**.
-3. Klicken Sie jetzt auf dem Blatt **Datasets** auf **OutputBlobTable**.
+3. Klicken Sie jetzt auf der Seite **Datasets** auf **OutputBlobTable**.
 
     ![OutputBlobTable-Slices](./media/data-factory-move-data-between-onprem-and-cloud/OutputBlobTableSlicesBlade.png)
-4. Klicken Sie in der Liste auf einen beliebigen Datenslice. Das Blatt **Datenslice** wird angezeigt. Die Aktivitätsausführungen für den Slice werden angezeigt. Normalerweise wird nur eine ausgeführte Aktivität angezeigt.  
+4. Klicken Sie in der Liste auf einen beliebigen Datenslice. Die Seite **Datenslice** wird angezeigt. Die Aktivitätsausführungen für den Slice werden angezeigt. Normalerweise wird nur eine ausgeführte Aktivität angezeigt.  
 
     ![Blatt "Datenslice"](./media/data-factory-move-data-between-onprem-and-cloud/DataSlice.png)
 
     Wenn der Slice nicht den Status **Bereit** hat, sehen Sie die vorgelagerten Slices, die nicht bereit sind und das Ausführen des aktuellen Slices blockieren, in der Liste **Vorgelagerte Slices, die nicht bereit sind**.
 5. Klicken Sie in der Liste unten auf die **Aktivitätsausführung**, um **Aktivitätsausführung – Details** anzuzeigen.
 
-   ![Blatt „Aktivitätsausführung – Details“](./media/data-factory-move-data-between-onprem-and-cloud/ActivityRunDetailsBlade.png)
+   ![Detailseite „Aktivitätsausführung“](./media/data-factory-move-data-between-onprem-and-cloud/ActivityRunDetailsBlade.png)
 
    Hier werden Informationen wie z.B. der Durchsatz, die Dauer und das Gateway, über das die Daten übertragen werden, angezeigt.
-6. Klicken Sie auf **X** , um alle Blätter zu schließen, bis wieder
-7. das Startblatt für **ADFTutorialOnPremDF**angezeigt wird.
+6. Klicken Sie auf **X** , um alle Seiten zu schließen, bis wieder
+7. die Startseite für **ADFTutorialOnPremDF** angezeigt wird.
 8. Optional: Klicken Sie auf **Pipelines**, dann auf **ADFTutorialOnPremDF**, und zeigen Sie Details zu den Eingabetabellen (**Genutzt**) oder Ausgabedatasets (**Erstellt**) an.
 9. Verwenden Sie Tools wie z.B. [Microsoft Azure-Speicher-Explorer](http://storageexplorer.com/), um zu überprüfen, ob ein Blob oder eine Datei für jede Stunde erstellt wird.
 

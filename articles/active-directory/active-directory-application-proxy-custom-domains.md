@@ -11,21 +11,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/17/2017
+ms.date: 08/01/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.translationtype: HT
-ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
-ms.openlocfilehash: d0abd789d47b34f3dad206b9862c289d6683a83b
+ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
+ms.openlocfilehash: 1dde300780c8d1f7ea9eee4c92de06bcf70a1f12
 ms.contentlocale: de-de
-ms.lasthandoff: 07/24/2017
+ms.lasthandoff: 08/05/2017
 
 ---
 
 # <a name="working-with-custom-domains-in-azure-ad-application-proxy"></a>Arbeiten mit benutzerdefinierten Domänen im Azure AD-Anwendungsproxy
 
-Wenn Sie eine Anwendung über den Azure Active Directory-Anwendungsproxy veröffentlichen, erstellen Sie eine externe URL, die Ihre Benutzer bei der Remotearbeit verwenden können. Mit dieser URL wird die Standarddomäne *yourtenant-msappproxy.net* aufgerufen. Konfigurieren Sie eine benutzerdefinierte Domäne für Ihre Anwendung, wenn Sie Ihren eigenen Domänennamen verwenden möchten. 
+Wenn Sie eine Anwendung über den Azure Active Directory-Anwendungsproxy veröffentlichen, erstellen Sie eine externe URL, die Ihre Benutzer bei der Remotearbeit verwenden können. Mit dieser URL wird die Standarddomäne *yourtenant.msappproxy.net* aufgerufen. Wenn Sie z.B. eine App mit dem Namen „Expenses“ veröffentlichen, und ihr Mandant „Contoso“ heißt, ist die externe URL https://expenses-contoso.msappproxy.net. Konfigurieren Sie eine benutzerdefinierte Domäne für Ihre Anwendung, wenn Sie Ihren eigenen Domänennamen verwenden möchten. 
 
 Wir empfehlen Ihnen, nach Möglichkeit immer benutzerdefinierte Domänen für Ihre Anwendungen einzurichten. Einige Vorteile von benutzerdefinierten Domänen sind:
 
@@ -36,10 +36,14 @@ Wir empfehlen Ihnen, nach Möglichkeit immer benutzerdefinierte Domänen für Ih
 
 ## <a name="configure-a-custom-domain"></a>Konfigurieren einer benutzerdefinierten Domäne
 
+### <a name="prerequisites"></a>Voraussetzungen
+
 Stellen Sie vor dem Konfigurieren einer benutzerdefinierten Domäne sicher, dass Sie die folgenden Anforderungen erfüllt haben: 
 - Sie haben [Azure Active Directory eine überprüfte Domäne hinzugefügt](active-directory-domains-add-azure-portal.md).
 - Es ist ein benutzerdefiniertes Zertifikat für die Domäne in Form einer PFX-Datei vorhanden. 
 - Es ist eine lokale App vorhanden, [die über den Anwendungsproxy veröffentlicht wurde](application-proxy-publish-azure-portal.md).
+
+### <a name="configure-your-custom-domain"></a>Konfigurieren Ihrer benutzerdefinierten Domäne
 
 Wenn diese drei Anforderungen erfüllt sind, können Sie die folgenden Schritte ausführen, um Ihre benutzerdefinierte Domäne einzurichten:
 
@@ -47,15 +51,16 @@ Wenn diese drei Anforderungen erfüllt sind, können Sie die folgenden Schritte 
 2. Navigieren Sie zu **Azure Active Directory** > **Unternehmensanwendungen** > **Alle Anwendungen**, und wählen Sie die App aus, die Sie verwalten möchten.
 3. Wählen Sie **Anwendungsproxy**. 
 4. Verwenden Sie im Feld für die „Externe URL“ die Dropdownliste, um Ihre benutzerdefinierte Domäne auszuwählen. Wenn Ihre Domäne in der Liste nicht angezeigt wird, wurde sie noch nicht überprüft. 
+5. Wählen Sie **Speichern** aus.
 5. Das Feld **Zertifikat**, das deaktiviert war, wird aktiviert. Wählen Sie dieses Feld aus. 
 
    ![Klicken zum Hochladen eines Zertifikats](./media/active-directory-application-proxy-custom-domains/certificate.png)
 
-   Wenn dieses Feld deaktiviert bleibt, bedeutet dies wahrscheinlich, dass für die Domäne bereits ein Zertifikat hochgeladen wurde. 
+   Wenn Sie bereits ein Zertifikat für diese Domäne hochladen haben, zeigt das Feld „Zertifikat“ die Zertifikatinformationen an. 
 
 6. Laden Sie das PFX-Zertifikat hoch, und geben Sie das Kennwort für das Zertifikat ein. 
 7. Wählen Sie **Speichern**, um Ihre Änderungen zu speichern. 
-8. Fügen Sie einen DNS-Eintrag hinzu, mit dem die neue externe URL an die Domäne „msappproxy.net“ geleitet wird. 
+8. Fügen Sie einen [DNS-Eintrag](../dns/dns-operations-recordsets-portal.md) hinzu, mit dem die neue externe URL an die Domäne „msappproxy.net“ geleitet wird. 
 
 >[!TIP] 
 >Sie müssen nur ein Zertifikat pro benutzerdefinierter Domäne hochladen. Nachdem Sie ein Zertifikat hochgeladen haben, können Sie die benutzerdefinierte Domäne beim Veröffentlichen einer neuen App auswählen. Mit Ausnahme des DNS-Eintrags sind keine weiteren Konfigurationsschritte erforderlich. 
@@ -63,10 +68,14 @@ Wenn diese drei Anforderungen erfüllt sind, können Sie die folgenden Schritte 
 ## <a name="manage-certificates"></a>Verwalten von Zertifikaten
 
 ### <a name="certificate-format"></a>Zertifikatformat
-Es gibt keine Einschränkung für die Zertifikatsignaturmethoden. ECC, SAN und andere allgemeine Zertifikattypen werden unterstützt. Sie können auch Platzhalterzertifikate verwenden. Stellen Sie beim Verwenden eines Platzhalterzertifikats sicher, dass der Platzhalter mit der gewünschten externen URL übereinstimmt. Auch selbstsignierte Zertifikate werden akzeptiert. Wenn Sie eine private Zertifizierungsstelle verwenden, sollte der Verteilungspunkt für die Zertifikatssperrliste (CDP) für das Zertifikat öffentlich sein.
+Es gibt keine Einschränkung für die Zertifikatsignaturmethoden. Elliptic Curve Cryptography (ECC), Subject Alternative Name (SAN) und andere gängige Zertifikattypen werden unterstützt. 
+
+Sie können ein Platzhalterzertifikats verwenden, solange der Platzhalter mit der gewünschten externen URL übereinstimmt. 
+
+Darüber hinaus können Sie auch selbstsignierte Zertifikate verwenden. Wenn Sie eine private Zertifizierungsstelle verwenden, sollte der Verteilungspunkt für die Zertifikatssperrliste (CDP) für das Zertifikat öffentlich sein.
 
 ### <a name="changing-the-domain"></a>Ändern der Domäne
-Alle überprüften Domänen werden in der Dropdownliste „Externe URL“ Ihrer Anwendung angezeigt. Sie können einfach dieses Feld für die Anwendung aktualisieren, um die Domäne zu ändern. Wenn Sie eine Domäne auswählen, der kein Zertifikat zugeordnet ist, können Sie die Schritte 5 bis 7 ausführen, um das Zertifikat hinzuzufügen. [Fügen Sie die gewünschte Domäne als überprüfte Domäne hinzu](active-directory-domains-add-azure-portal.md), falls sie nicht in der Liste enthalten ist. Stellen Sie anschließend sicher, dass Sie den DNS-Eintrag aktualisieren, damit die Umleitung von der neuen externen URL durchgeführt wird. 
+Alle überprüften Domänen werden in der Dropdownliste „Externe URL“ Ihrer Anwendung angezeigt. Sie können einfach dieses Feld für die Anwendung aktualisieren, um die Domäne zu ändern. [Fügen Sie die gewünschte Domäne als überprüfte Domäne hinzu](active-directory-domains-add-azure-portal.md), falls sie nicht in der Liste enthalten ist. Wenn Sie eine Domäne auswählen, der noch kein Zertifikat zugeordnet ist, können Sie die Schritte 5 bis 7 ausführen, um das Zertifikat hinzuzufügen. Stellen Sie anschließend sicher, dass Sie den DNS-Eintrag aktualisieren, damit die Umleitung von der neuen externen URL durchgeführt wird. 
 
 ### <a name="certificate-management"></a>Zertifikatverwaltung
 Sie können dasselbe Zertifikat für mehrere Anwendungen verwenden, sofern für die Anwendungen nicht ein gemeinsamer externer Host genutzt wird. 

@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/27/2017
+ms.date: 08/02/2017
 ms.author: billmath
 ms.translationtype: HT
-ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
-ms.openlocfilehash: 0781a06635219443e8ff794e72d77b967df52c40
+ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
+ms.openlocfilehash: c84b2406e6373701c83c509342129bd6d7d4034b
 ms.contentlocale: de-de
-ms.lasthandoff: 08/01/2017
+ms.lasthandoff: 08/04/2017
 
 ---
 
@@ -38,7 +38,7 @@ Smart Lockout unterscheidet auch zwischen den Anmeldeversuchen echter Benutzer u
 Da die Passthrough-Authentifizierung Kennwortvalidierungsanforderungen an Ihr lokales Active Directory (AD) weiterleitet, müssen Sie Angreifer daran hindern, Ihre Benutzer aus ihren AD-Konten auszusperren. Da Sie Ihre eigenen Richtlinien für AD-Kontosperrungen anwenden (insbesondere die [**Kontosperrschwelle**](https://technet.microsoft.com/library/hh994574(v=ws.11).aspx) und die [**Zurücksetzungsdauer des Kontosperrungszählers**](https://technet.microsoft.com/library/hh994568(v=ws.11).aspx)), müssen Sie die AD-Sperrschwelle und die Sperrdauer geeignet konfigurieren, um Angriffe in der Cloud herausfiltern zu können, bevor diese Ihr lokales AD erreichen.
 
 >[!NOTE]
->Die Smart Lookout-Funktion ist kostenlos und ist standardmäßig für alle Kunden _aktiviert_. Jedoch ist das Verändern der AD-Sperrschwelle und der Sperrdauer mit der Graph-API eine Azure AD Premium P2-Funktion.
+>Die Smart Lookout-Funktion ist kostenlos und ist standardmäßig für alle Kunden _aktiviert_. Zum Modifizieren der Werte der Kontensperrungsschwelle und der Sperrungsdauer von Azure AD mit der Graph-API muss Ihr Mandant mindestens eine Azure AD Premium P2-Lizenz haben. Sie benötigen nicht _pro Benutzer_ eine Azure AD Premium P2-Lizenz zum Verwenden der intelligenten Sperrfunktion mit Pass-Through-Authentifizierung.
 
 Um sicherzustellen, dass die lokalen AD-Konten Ihrer Benutzer gut geschützt sind, müssen Sie folgende Voraussetzungen gewährleisten:
 
