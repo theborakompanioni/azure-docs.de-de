@@ -12,14 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/30/2017
+ms.date: 07/17/2017
 ms.author: dekapur
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: 3337e3ad36792c1dcd0eaf183a2b695503b8f02c
+ms.translationtype: HT
+ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
+ms.openlocfilehash: cea811918147a25947ec654bb06f2c994bae5ce6
 ms.contentlocale: de-de
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 08/09/2017
 
 ---
 
@@ -45,7 +44,7 @@ Diese Tools werden verwendet, um einige Vorgänge in diesem Dokument durchzufüh
 
 ## <a name="log-and-event-sources"></a>Protokoll- und Ereignisquellen
 
-### <a name="service-fabric-infrastructure-events"></a>Service Fabric-Infrastrukturereignisse
+### <a name="service-fabric-platform-events"></a>Service Fabric-Plattformereignisse
 Wie in [diesem Artikel](service-fabric-diagnostics-event-generation-infra.md) erläutert, richtet Service Fabric einige Standardprotokollierungskanäle ein. Die folgenden dieser Kanäle lassen sich mit WAD einfach konfigurieren, um Überwachungs- und Diagnosedaten an eine Speichertabelle oder einen anderen Speicherort zu senden:
   * Betriebsereignisse: Vorgänge einer höheren Ebene, die von der Service Fabric-Plattform durchgeführt werden. Beispiele hierfür wären die Erstellung von Anwendungen und Diensten, Knotenzustandsänderungen und Upgradeinformationen. Diese werden als ETW-Protokolle (Event Tracing for Windows, Ereignisablaufverfolgung für Windows-Ereignisse) ausgegeben.
   * [Ereignisse des Reliable Actors-Programmiermodells](service-fabric-reliable-actors-diagnostics.md)
@@ -192,6 +191,47 @@ Ab Version 5.4 von Service Fabric können Integritäts- und Auslastungsmetrikere
     }
 ```
 
+## <a name="collect-reverse-proxy-events"></a>Sammeln von Reverseproxyereignissen
+
+Ab Version 5.7 von Service Fabric können [Reverseproxyereignisse](service-fabric-reverseproxy.md) gesammelt werden.
+Der Reverseproxy gibt Ereignisse in zwei Kanälen aus, einem mit Fehlerereignissen bezüglich Verarbeitungsfehlern und einem weiteren mit ausführlichen Ereignissen zu allen beim Reverseproxy verarbeiteten Anforderungen. 
+
+1. Sammeln von Fehlerereignissen: Diese Ereignisse können Sie in der Diagnoseereignisansicht von Visual Studio anzeigen, indem Sie der Liste der ETW-Anbieter „Microsoft-ServiceFabric:4:0x4000000000000010“ hinzufügen.
+Ändern Sie zum Sammeln der Ereignisse aus Azure-Clustern die Resource Manager-Vorlage, sodass sie Folgendes enthält:
+
+```json
+  "EtwManifestProviderConfiguration": [
+    {
+      "provider": "cbd93bc2-71e5-4566-b3a7-595d8eeca6e8",
+      "scheduledTransferLogLevelFilter": "Information",
+      "scheduledTransferKeywordFilter": "4611686018427387920",
+      "scheduledTransferPeriod": "PT5M",
+      "DefaultEvents": {
+        "eventDestination": "ServiceFabricSystemEventTable"
+      }
+    }
+```
+
+2. Sammeln aller Anforderungsverarbeitungsereignisse: Aktualisieren Sie in der Diagnoseereignisansicht von Visual Studio den Microsoft Service Fabric-Eintrag in der Liste der ETW-Anbieter in „Microsoft-ServiceFabric:4:0x4000000000000020“.
+Für Azure Service Fabric-Cluster ändern Sie die Resource Manager-Vorlage, sodass sie Folgendes enthält:
+
+```json
+  "EtwManifestProviderConfiguration": [
+    {
+      "provider": "cbd93bc2-71e5-4566-b3a7-595d8eeca6e8",
+      "scheduledTransferLogLevelFilter": "Information",
+      "scheduledTransferKeywordFilter": "4611686018427387936",
+      "scheduledTransferPeriod": "PT5M",
+      "DefaultEvents": {
+        "eventDestination": "ServiceFabricSystemEventTable"
+      }
+    }
+```
+> Es wird empfohlen, das Sammeln von Ereignissen aus diesem Kanal mit Vorsicht zu aktivieren, da hierbei der gesamte Datenverkehr über den Reverseproxy gesammelt wird und dies schnell die Speicherkapazität aufbrauchen kann.
+
+Für Azure Service Fabric-Cluster werden die Ereignisse von allen Knoten gesammelt und in der SystemEventTable aggregiert.
+Eine ausführliche Problembehandlung der Reverseproxyereignisse finden Sie im [Reverseproxy-Diagnosehandbuch](service-fabric-reverse-proxy-diagnostics.md).
+
 ## <a name="collect-from-new-eventsource-channels"></a>Erfassen aus neuen EventSource-Kanälen
 
 Wenn Sie die Diagnose aktualisieren möchten, um Protokolle aus neuen EventSource-Kanälen zu sammeln, die eine neu bereitzustellende Anwendung darstellen, führen Sie die Schritte aus, die zuvor für die Einrichtung der Diagnose für einen vorhandenen Cluster beschrieben wurden.
@@ -218,21 +258,22 @@ Fügen Sie zu „WadCfg“ > „DiagnosticMonitorConfiguration“ in der Resourc
 
 Hier wird beispielsweise ein Leistungsindikator festgelegt, der alle 15 Sekunden als Stichprobe abgerufen wird (dies kann geändert werden, und hat das Format „PT\<Zeit>\<Einheit>“; PT3M bedeutet beispielsweise, dass in Intervallen von drei Minuten Stichproben abgerufen werden) und anschließend einmal pro Minute an die entsprechende Speichertabelle übermittelt wird.
 
-    ```json
-    "PerformanceCounters": {
-        "scheduledTransferPeriod": "PT1M",
-        "PerformanceCounterConfiguration": [
-            {
-                "counterSpecifier": "\\Processor(_Total)\\% Processor Time",
-                "sampleRate": "PT15S",
-                "unit": "Percent",
-                "annotation": [
-                ],
-                "sinks": ""
-            }
-        ]
-    }
-    ```
+  ```json
+  "PerformanceCounters": {
+      "scheduledTransferPeriod": "PT1M",
+      "PerformanceCounterConfiguration": [
+          {
+              "counterSpecifier": "\\Processor(_Total)\\% Processor Time",
+              "sampleRate": "PT15S",
+              "unit": "Percent",
+              "annotation": [
+              ],
+              "sinks": ""
+          }
+      ]
+  }
+  ```
+  
 Wenn Sie eine Application Insights-Senke verwenden (siehe dazu den folgenden Abschnitt) und möchten, dass diese Metriken in Application Insights angezeigt werden, dann fügen Sie den Namen der Senke im Abschnitt „sinks“ (s.o.) ein. Darüber hinaus sollten Sie ggf. eine separate Tabelle erstellen, an die Ihre Leistungsindikatoren gesendet werden, damit sie nicht mit den Daten aus den anderen aktivierten Protokollierungskanälen vermischt werden.
 
 

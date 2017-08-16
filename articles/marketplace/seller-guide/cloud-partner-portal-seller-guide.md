@@ -12,13 +12,11 @@ ms.workload: na
 ms.date: 03/30/2017
 ms.author: rupesk@microsoft.com
 ms.robots: NOINDEX, NOFOLLOW
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
-ms.openlocfilehash: 59a0f0ec1b7b576339a45be26be8543ac0650a8a
+ms.translationtype: HT
+ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
+ms.openlocfilehash: c78708687fbb5716e3e8d62967013310d6ccc735
 ms.contentlocale: de-de
-ms.lasthandoff: 05/03/2017
-
-
+ms.lasthandoff: 08/07/2017
 
 ---
 # <a name="azure-marketplace-seller-guide"></a>Azure Marketplace-Verkäuferhandbuch
@@ -215,7 +213,7 @@ In [diesem Video](https://player.vimeo.com/video/200859918) können Sie schon ei
   - Trendangeboten
   - Marketplace-Lizenztyp
 
-Ausführliche Berichte enthalten Kundeninformationen wie Unternehmensname und den geografischen Standort (bis zur Postleitzahl), damit Sie Ihre Verkäufer bezahlen können. Folgende Kundenattribute werden von uns bereitgestellt:
+Ausführliche Berichte enthalten Kundeninformationen wie Unternehmensname und den geografischen Standort (bis zur Postleitzahl), damit Sie Ihre Verkäufer vergleichen können. Folgende Kundenattribute werden von uns bereitgestellt:
 
 - Reseller
 - FirstName

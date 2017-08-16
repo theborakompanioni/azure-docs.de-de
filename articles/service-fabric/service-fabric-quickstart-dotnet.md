@@ -12,13 +12,13 @@ ms.devlang: dotNet
 ms.topic: get-started
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/21/2017
+ms.date: 08/09/2017
 ms.author: mikhegn
 ms.translationtype: HT
-ms.sourcegitcommit: 2812039649f7d2fb0705220854e4d8d0a031d31e
-ms.openlocfilehash: d1acbc609d1928101eb3e4b9eaa6ea05856e17d3
+ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
+ms.openlocfilehash: 530749275b720caefd7e7e57291b4bc0d313faf0
 ms.contentlocale: de-de
-ms.lasthandoff: 07/22/2017
+ms.lasthandoff: 08/10/2017
 
 ---
 
@@ -94,12 +94,18 @@ Führen Sie die folgenden Schritte aus, um zu ermitteln, was im Code passiert:
 2. Öffnen Sie die Datei **VoteDataController.cs**, und legen Sie in der **Put**-Methode dieser Web-API (Zeile 50) einen Breakpoint fest.
 
 3. Wechseln Sie zurück in den Browser, und klicken Sie auf eine Abstimmungsoption, oder fügen Sie eine neue Abstimmungsoption hinzu. Sie stoßen im API-Controller des Web-Front-Ends auf den ersten Breakpoint.
-    - An diesem Punkt sendet das JavaScript im Browser eine Anforderung an den Web-API-Controller im Front-End-Dienst. Der Controller im Front-End-Dienst nutzt dann den ReverseProxy, um eine PUT-Anforderung an den Back-End-Dienst zu senden.
+    - An diesem Punkt sendet das JavaScript im Browser eine Anforderung an den Web-API-Controller im Front-End-Dienst.
+    
+    ![Front-End-Dienst „Stimme hinzufügen“](./media/service-fabric-quickstart-dotnet/addvote-frontend.png)
+
+    - Zunächst erstellen wir die URL zum Reverseproxy für unseren Back-End-Dienst **(1)**.
+    - Anschließend senden wir die HTTP-Anforderung PUT an den Reverseproxy **(2)**.
+    - Zum Schluss geben wir die Antwort vom Back-End-Dienst an den Client zurück **(3)**.
 
 4. Drücken Sie **F5**, um fortzufahren.
     - Sie befinden sich jetzt am Breakpoint im Back-End-Dienst.
     
-    ![Hinzufügen der asynchronen Vote-Methode](./media/service-fabric-quickstart-dotnet/addvote-backend.png)
+    ![Back-End-Dienst „Stimme hinzufügen“](./media/service-fabric-quickstart-dotnet/addvote-backend.png)
 
     - In der ersten Zeile der Methode **(1)** verwenden wir das `StateManager`-Element, um ein zuverlässiges Wörterbuch mit dem Namen `counts` abzurufen bzw. hinzuzufügen.
     - Für alle Interaktionen mit Werten in einem zuverlässigen Wörterbuch ist eine Transaktion erforderlich. Diese Transaktion wird mithilfe der Anweisung **(2)** erstellt.
@@ -109,7 +115,9 @@ Führen Sie die folgenden Schritte aus, um zu ermitteln, was im Code passiert:
 Drücken Sie **UMSCHALT+F5**, um die Debugsitzung zu beenden.
 
 ## <a name="deploy-the-application-to-azure"></a>Bereitstellen der Anwendung für Azure
-Zum Bereitstellen der Anwendung in einem Cluster in Azure können Sie entweder Ihren eigenen Cluster erstellen oder einen Partycluster verwenden. Partycluster sind kostenlose, zeitlich begrenzte Service Fabric-Cluster, die in Azure gehostet und vom Service Fabric-Team ausgeführt werden und in denen jeder Benutzer Anwendungen bereitstellen und mehr über die Plattform erfahren kann. [Befolgen Sie die Anleitung](http://aka.ms/tryservicefabric), um Zugriff auf einen Partycluster zu erhalten. 
+Zum Bereitstellen der Anwendung in einem Cluster in Azure können Sie entweder Ihren eigenen Cluster erstellen oder einen Partycluster verwenden.
+
+Partycluster sind kostenlose, zeitlich begrenzte Service Fabric-Cluster, die in Azure gehostet und vom Service Fabric-Team ausgeführt werden und in denen jeder Benutzer Anwendungen bereitstellen und mehr über die Plattform erfahren kann. [Befolgen Sie die Anweisungen](http://aka.ms/tryservicefabric), um Zugriff auf einen Partycluster zu erhalten. 
 
 Informationen zum Erstellen Ihres eigenen Clusters finden Sie unter [Erstellen Ihres ersten Service Fabric-Clusters in Azure](service-fabric-get-started-azure-cluster.md).
 

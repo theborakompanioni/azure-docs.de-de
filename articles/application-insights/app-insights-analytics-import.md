@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.author: cfreeman
+ms.author: sewhee
 ms.translationtype: HT
-ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
-ms.openlocfilehash: 7f472bf6669bcf0c1cab048a3a5969fc71aadd8e
+ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
+ms.openlocfilehash: 97db1c51a16fbf62abe8062938beefa16a4f7afd
 ms.contentlocale: de-de
-ms.lasthandoff: 08/02/2017
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="import-data-into-analytics"></a>Importieren von Daten in Analytics
@@ -59,19 +59,13 @@ Anforderungen:
 
  * Es wird empfohlen, ein dediziertes Speicherkonto für Ihre Blobs zu erstellen. Wenn Ihre Blobs mit anderen Prozessen gemeinsam genutzt werden, benötigen unsere Prozesse mehr Zeit zum Lesen Ihrer Blobs.
 
-2. Solange dieses Feature in der Vorschauphase ist, müssen Sie den Zugriff beantragen.
-
- * Öffnen Sie Analytics im [Azure-Portal](https://portal.azure.com) in Ihrer Application Insights-Ressource. 
- * Klicken Sie unten im Schemabereich unter **Andere Datenquellen** auf den Link „Kontakt“. 
- * Wenn „Datenquelle hinzufügen“ angezeigt wird, haben Sie bereits Zugriff.
-
 
 ## <a name="define-your-schema"></a>Definieren des Schemas
 
 Bevor Sie Daten importieren können, müssen Sie eine *Datenquelle* definieren, die das Schema Ihrer Daten angibt.
 Sie können bis zu 50 Datenquellen in einer einzelnen Application Insights-Ressource haben.
 
-1. Starten Sie den Datenquellen-Assistenten.
+1. Starten Sie den Datenquellen-Assistenten. Verwenden Sie die Schaltfläche „Neue Datenquelle hinzufügen“. Alternativ können Sie auf die Schaltfläche „Einstellungen“ in der rechten oberen Ecke klicken und im Dropdownmenü die Option „Datenquellen“ auswählen.
 
     ![Hinzufügen einer neuen Datenquelle](./media/app-insights-analytics-import/add-new-data-source.png)
 

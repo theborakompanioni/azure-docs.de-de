@@ -12,32 +12,36 @@ ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/12/2017
+ms.date: 08/09/2017
 ms.author: ryanwi, mikhegn
 ms.translationtype: HT
-ms.sourcegitcommit: 9afd12380926d4e16b7384ff07d229735ca94aaa
-ms.openlocfilehash: 8f824e451abd2ca87875c416184e4d7265e8c72b
+ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
+ms.openlocfilehash: 71d910bc0e459528805521ba991e5291396a3b8d
 ms.contentlocale: de-de
-ms.lasthandoff: 07/15/2017
+ms.lasthandoff: 08/10/2017
 
 ---
 
 # <a name="create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>Erstellen und Bereitstellen einer Anwendung mit einem ASP.NET Core-Web-API-Front-End-Dienst und einem zustandsbehafteten Back-End-Dienst
-In diesem Tutorial wird gezeigt, wie Sie eine Azure Service Fabric-Anwendung mit einem ASP.NET Core-Web-API-Front-End und einem zustandsbehafteten Back-End-Dienst zum Speichern Ihrer Daten erstellen.
+Dieses Tutorial ist der erste Teil einer Serie und zeigt, wie Sie eine Azure Service Fabric-Anwendung mit einem ASP.NET Core-Web-API-Front-End und einem zustandsbehafteten Back-End-Dienst zum Speichern Ihrer Daten erstellen. 
 
 ![Anwendungsdiagramm](./media/service-fabric-tutorial-create-dotnet-app/application-diagram.png)
 
-In diesem Tutorial lernen Sie Folgendes:
+Im ersten Teil der Serie lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Erstellen eines ASP.NET Core-Web-API-Diensts als zuverlässigen Dienst
 > * Erstellen eines zustandsbehafteten zuverlässigen Diensts
 > * Implementieren von Dienstremoting und Verwenden eines Dienstproxys
 
-Das Tutorial ist in drei Artikel aufgeteilt, von denen dieser Artikel der erste in der Reihe ist.
+In dieser Tutorialserie lernen Sie Folgendes:
+> [!div class="checklist"]
+> * Erstellen einer .NET Service Fabric-Anwendung
+> * [Bereitstellen der Anwendung in einem Remotecluster](service-fabric-tutorial-deploy-app-to-party-cluster.md)
+> * [Konfigurieren von CI/CD mit Visual Studio Team Services](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
+Bevor Sie mit diesem Tutorial beginnen können, müssen Sie Folgendes tun:
 - Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Installieren Sie Visual Studio 2017](https://www.visualstudio.com/) und die Workloads **Azure-Entwicklung** und **ASP.NET und Webentwicklung**.
 - [Installieren Sie das Service Fabric SDK.](service-fabric-get-started.md)

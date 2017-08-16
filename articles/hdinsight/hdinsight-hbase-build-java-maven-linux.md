@@ -1,5 +1,5 @@
 ---
-title: "Java-HBase-Anwendung – Azure HDInsight | Microsoft-Dokumentation"
+title: "Java-HBase-Client – Azure HDInsight | Microsoft-Dokumentation"
 description: "Erfahren Sie, wie Sie mit Apache Maven eine Java-basierte Apache HBase-Anwendung erstellen und anschließend in HBase unter Azure HDInsight bereitstellen können."
 services: hdinsight
 documentationcenter: 
@@ -13,13 +13,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/17/2017
+ms.date: 08/07/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 9cf2a997e3016995b0dbb0e0adf9f388f70c2599
+ms.translationtype: HT
+ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
+ms.openlocfilehash: d6ef6c988533f27338a61a587b3ce5174d8fa806
 ms.contentlocale: de-de
-ms.lasthandoff: 07/08/2017
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>Erstellen von Java-Anwendungen für die Apache-HBase
@@ -27,6 +27,9 @@ ms.lasthandoff: 07/08/2017
 Erfahren Sie, wie Sie eine [Apache HBase](http://hbase.apache.org/)-Anwendung in Java erstellen. Setzen Sie die Anwendung anschließend mit HBase unter Azure HDInsight ein.
 
 Die Schritte in diesem Dokument verwenden [Maven](http://maven.apache.org/) zum Erstellen des Projekts. Maven ist ein Projektmanagement- und Verständnistool, mit dem Sie Software, Dokumentationen und Berichte für Java-Projekte erstellen können.
+
+> [!NOTE]
+> Die Schritte in diesem Dokument wurden zuletzt mit HDInsight 3.6 getestet.
 
 > [!IMPORTANT]
 > Die Schritte in diesem Dokument erfordern einen HDInsight-Cluster mit Linux. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](hdinsight-component-versioning.md#hdinsight-windows-retirement).
@@ -36,7 +39,7 @@ Die Schritte in diesem Dokument verwenden [Maven](http://maven.apache.org/) zum 
 * [Java Platform JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) 8 oder höher
 
     > [!NOTE]
-    > Für HDInsight 3.5 ist Java 8 erforderlich. Für frühere Versionen von HDInsight ist Java 7 erforderlich.
+    > Für HDInsight 3.5 und höhere Versionen ist Java 8 erforderlich. Für frühere Versionen von HDInsight ist Java 7 erforderlich.
 
 * [Maven](http://maven.apache.org/)
 
@@ -47,13 +50,18 @@ Die Schritte in diesem Dokument verwenden [Maven](http://maven.apache.org/) zum 
 
 ## <a name="create-the-project"></a>Erstellen des Projekts
 
-1. Wechseln Sie in der Befehlszeile Ihrer Entwicklungsumgebung zu dem Speicherort, an dem Sie das Projekt erstellen möchten, z.B. `cd code/hdinsight`.
+1. Wechseln Sie in der Befehlszeile Ihrer Entwicklungsumgebung zu dem Speicherort, an dem Sie das Projekt erstellen möchten, z.B. `cd code\hbase`.
 
 2. Verwenden Sie den Befehl **mvn** , der mit Maven installiert wird, um das Gerüst für das Projekt zu erstellen.
 
     ```bash
     mvn archetype:generate -DgroupId=com.microsoft.examples -DartifactId=hbaseapp -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
+
+    > [!NOTE]
+    > Wenn Sie PowerShell verwenden, müssen Sie die `-D`-Parameter in doppelte Anführungszeichen setzen.
+    >
+    > `mvn archetype:generate "-DgroupId=com.microsoft.examples" "-DartifactId=hbaseapp" "-DarchetypeArtifactId=maven-archetype-quickstart" "-DinteractiveMode=false"`
 
     Mit diesem Befehl wird ein Verzeichnis mit dem gleichen Namen wie der Parameter **artifactID** erstellt (in diesem Beispiel **hbaseapp**). Dieses Verzeichnis enthält die folgenden Elemente:
 
@@ -87,7 +95,7 @@ Die Schritte in diesem Dokument verwenden [Maven](http://maven.apache.org/) zum 
    | HDInsight-Clusterversion | Zu verwendende HBase-Version |
    | --- | --- |
    | 3.2 |0.98.4-hadoop2 |
-   | 3.3, 3.4 und 3.5 |1.1.2 |
+   | 3.3, 3.4, 3.5 und 3.6 |1.1.2 |
 
     Weitere Informationen zu HDInsight-Versionen und Komponenten finden Sie unter [Was sind die verschiedenen Hadoop-Komponenten, die in HDInsight verfügbar sind?](hdinsight-component-versioning.md).
 
@@ -153,7 +161,9 @@ Die Schritte in diesem Dokument verwenden [Maven](http://maven.apache.org/) zum 
 
 6. Verwenden Sie den folgenden Befehl, um die HBase-Konfiguration aus dem HBase-Cluster an den Spoeicherort `conf` zu kopieren. Ersetzen Sie `USERNAME` durch den Namen Ihrer SSH-Anmeldung. Ersetzen Sie `CLUSTERNAME` durch den Namen Ihres HDInsight-Clusters:
 
-        scp USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:/etc/hbase/conf/hbase-site.xml ./conf/hbase-site.xml
+    ```bash
+    scp USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:/etc/hbase/conf/hbase-site.xml ./conf/hbase-site.xml
+    ```
 
    Weitere Informationen zur Verwendung von `ssh` und `scp` finden Sie unter [Verwenden von SSH mit HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 
@@ -374,7 +384,9 @@ In den folgenden Schritten wird `scp` zum Kopieren der JAR-Datei auf den primär
 
 2. Stellen Sie mit dem folgenden Befehl eine Verbindung zum HBase-Cluster her:
 
-        ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
+    ```bash
+    ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
+    ```
 
     Ersetzen Sie `USERNAME` durch den Namen Ihrer SSH-Anmeldung. Ersetzen Sie `CLUSTERNAME` durch den Namen Ihres HDInsight-Clusters.
 
@@ -400,6 +412,10 @@ In den folgenden Schritten wird `scp` zum Kopieren der JAR-Datei auf den primär
         Rae Schroeder - rae@contoso.com - ID: 4
         Gabriela Ingram - ID: 6
         Gabriela Ingram - gabriela@contoso.com - ID: 6
+
+5. Verwenden Sie zum Löschen der Tabelle den folgenden Befehl:
+
+    
 
 ## <a name="upload-the-jar-and-run-jobs-powershell"></a>Hochladen der JAR-Datei und Ausführen von Aufträgen (PowerShell)
 
@@ -666,7 +682,7 @@ Wenn Sie mit dem Beispiel fertig sind, verwenden Sie den folgenden Befehl zum L�
 
 __Über eine `ssh`-Sitzung__:
 
-`hadoop jar hbaseapp-1.0-SNAPSHOT.jar com.microsoft.examples.DeleteTable`
+`yarn jar hbaseapp-1.0-SNAPSHOT.jar com.microsoft.examples.DeleteTable`
 
 __In Azure PowerShell__
 

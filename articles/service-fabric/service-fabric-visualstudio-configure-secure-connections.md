@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 10/08/2015
+ms.date: 8/04/2017
 ms.author: cawa
-translationtype: Human Translation
-ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
-ms.openlocfilehash: 3a7f5a4afa8b00801f58776e2cf9d7bff9748925
-ms.lasthandoff: 04/20/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
+ms.openlocfilehash: dc07b2f38d6fd2de941ebbe99303f6e63cbf122d
+ms.contentlocale: de-de
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="configure-secure-connections-to-a-service-fabric-cluster-from-visual-studio"></a>Konfigurieren sicherer Verbindungen mit einem Service Fabric-Cluster aus Visual Studio
@@ -30,13 +30,13 @@ Zwei Arten von Verbindungen werden vom Azure Service Fabric-Cluster unterstützt
 Die Service Fabric-Tools von Visual Studio unterstützen alle Authentifizierungstypen zum Herstellen einer Clusterverbindung für die Veröffentlichung. Anweisungen zum Einrichten eines sicheren Service Fabric-Clusters finden Sie unter [Einrichten eines Service Fabric-Clusters im Azure-Portal](service-fabric-cluster-creation-via-portal.md) .
 
 ## <a name="configure-cluster-connections-in-publish-profiles"></a>Konfigurieren von Clusterverbindungen in Veröffentlichungsprofilen
-Wenn Sie ein Service Fabric-Projekt aus Visual Studio veröffentlichen, können Sie das Dialogfeld **Service Fabric-Anwendung veröffentlichen** verwenden, um einen Azure Service Fabric-Cluster durch Klicken auf die Schaltfläche **Auswählen** im Abschnitt **Verbindungsendpunkt** auszuwählen. Sie können sich bei Ihrem Azure-Konto anmelden und dann in Ihren Abonnements einen vorhandenen Cluster auswählen.
+Wenn Sie ein Service Fabric-Projekt aus Visual Studio veröffentlichen, können Sie das Dialogfeld **Service Fabric-Anwendung veröffentlichen** verwenden, um einen Azure Service Fabric-Cluster auszuwählen. Wählen Sie unter **Verbindungsendpunkt** einen vorhandenen Cluster in Ihrem Abonnement aus.
 
 ![Das Dialogfeld **Service Fabric-Anwendung veröffentlichen** wird verwendet, um eine Service Fabric-Verbindung zu konfigurieren.][publishdialog]
 
-Das Dialogfeld **Service Fabric-Cluster auswählen** überprüft automatisch die Clusterverbindung. Wenn die Überprüfung erfolgreich war, bedeutet dies, dass auf dem System die richtigen Zertifikate für eine sichere Verbindung mit dem Cluster installiert sind oder dass Ihr Cluster nicht sicher ist. Überprüfungsfehler können durch Netzwerkprobleme oder durch eine fehlerhafte Konfiguration des Systems in Bezug auf die Verbindung mit einem sicheren Cluster verursacht werden.
+Das Dialogfeld **Service Fabric-Anwendung veröffentlichen** überprüft automatisch die Clusterverbindung. Melden Sie sich nach Aufforderung bei Ihrem Azure-Konto an. Wenn die Überprüfung erfolgreich war, bedeutet dies, dass auf dem System die richtigen Zertifikate für eine sichere Verbindung mit dem Cluster installiert sind oder dass Ihr Cluster nicht sicher ist. Überprüfungsfehler können durch Netzwerkprobleme oder durch eine fehlerhafte Konfiguration des Systems in Bezug auf die Verbindung mit einem sicheren Cluster verursacht werden.
 
-![Im Dialogfeld **Service Fabric-Cluster auswählen** können Sie eine vorhandene Service Fabric-Clusterverbindung konfigurieren oder eine neue Clusterverbindung erstellen und konfigurieren.][selectsfcluster]
+![Das Dialogfeld **Service Fabric-Anwendung veröffentlichen** überprüft eine vorhandene, korrekt konfigurierte Service Fabric-Clusterverbindung.][selectsfcluster]
 
 ### <a name="to-connect-to-a-secure-cluster"></a>So stellen Sie die Verbindung mit einem sicheren Cluster her
 1. Stellen Sie sicher, dass Sie auf eines der Clientzertifikate zugreifen können, das für den Zielcluster vertrauenswürdig ist. Das Zertifikat ist in der Regel als PFX-Datei (privater Informationsaustausch) freigegeben. Weitere Informationen zum Konfigurieren des Servers für den Zugriff auf einen Client finden Sie unter [Einrichten eines Service Fabric-Clusters im Azure-Portal](service-fabric-cluster-creation-via-portal.md) .

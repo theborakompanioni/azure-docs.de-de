@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/24/2017
+ms.date: 07/19/2017
 ms.author: dekapur
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: ad779784a6a8092ad44f5b564db2d3b207989d86
+ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
+ms.openlocfilehash: 83981d5bec14c06c509f1a8a4153dc23298f5ce0
 ms.contentlocale: de-de
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="report-and-check-service-health"></a>Melden und Überprüfen der Dienstintegrität
@@ -29,10 +29,10 @@ Es gibt drei Möglichkeiten, wie Sie Informationen zur Integrität über den Die
 * Verwenden Sie [Partition](https://docs.microsoft.com/dotnet/api/system.fabric.istatefulservicepartition)- oder [CodePackageActivationContext](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext)-Objekte.  
   Mit den Objekten `Partition` und `CodePackageActivationContext` können Sie Informationen zur Integrität von Elementen melden, die Teil des aktuellen Kontexts sind. Zum Beispiel kann als Teil eines Replikats ausgeführter Code Informationen zur Integrität nur für dieses Replikat, die dazugehörige Partition und für die Anwendung melden, von der er ein Teil ist.
 * Verwenden Sie `FabricClient`.   
-  Sie können Integritätsinformationen über den Dienstcode mit `FabricClient` melden, wenn der Cluster nicht [sicher](service-fabric-cluster-security.md) ist, oder der Dienst mit Administratorrechten ausgeführt wird. In den meisten realen Szenarien wird dies nicht der Fall sein. Mit `FabricClient`können Sie Informationen zur Integrität jeder Entität melden, die Teil des Clusters ist. Im Idealfall sollte der Dienstcode jedoch nur Berichte senden, die im Zusammenhang mit seiner eigenen Integrität stehen.
+  Sie können Integritätsinformationen über den Dienstcode mit `FabricClient` melden, wenn der Cluster nicht [sicher](service-fabric-cluster-security.md) ist, oder der Dienst mit Administratorrechten ausgeführt wird. In den meisten realen Szenarien werden keine unsicheren Cluster verwendet und keine Administratorrechte vergeben. Mit `FabricClient`können Sie Informationen zur Integrität jeder Entität melden, die Teil des Clusters ist. Im Idealfall sollte der Dienstcode jedoch nur Berichte senden, die im Zusammenhang mit seiner eigenen Integrität stehen.
 * Verwenden Sie die REST-APIs auf den Ebenen von Cluster, Anwendung, bereitgestellter Anwendung, Dienst, Dienstpaket, Partition, Replikat oder Knoten. Damit können Sie die Integrität aus einem Container heraus melden.
 
-Dieser Artikel führt Sie durch ein Beispiel, in dem Integritätsberichte auf Basis des Dienstcodes erstellt werden. Das Beispiel zeigt auch, wie die Tools, die Service Fabric bietet, verwendet werden können, um den Integritätsstatus zu überprüfen. Dieser Artikel soll als kurze Einführung in die Funktionen zur Integritätsüberwachung in Service Fabric dienen. Ausführlichere Informationen finden Sie in der Serie detaillierter Artikel zur Integrität, die mit dem Link am Ende dieses Artikels beginnt.
+Dieser Artikel führt Sie durch ein Beispiel, in dem Integritätsberichte auf Basis des Dienstcodes erstellt werden. Das Beispiel zeigt auch, wie die von Service Fabric bereitgestellten Tools verwendet werden können, um den Integritätsstatus zu überprüfen. Dieser Artikel soll als kurze Einführung in die Funktionen zur Integritätsüberwachung in Service Fabric dienen. Ausführlichere Informationen finden Sie in der Serie detaillierter Artikel zur Integrität, die mit dem Link am Ende dieses Artikels beginnt.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Folgendes müssen Sie installiert haben:
@@ -41,7 +41,7 @@ Folgendes müssen Sie installiert haben:
 * Service Fabric-SDK
 
 ## <a name="to-create-a-local-secure-dev-cluster"></a>So erstellen Sie einen lokalen, sicheren Entwicklungscluster
-* Öffnen Sie PowerShell mit Administratorrechten, und führen Sie die folgenden Befehle aus.
+* Öffnen Sie PowerShell mit Administratorrechten, und führen Sie die folgenden Befehle aus:
 
 ![Befehle, die zeigen, wie ein sicherer Dev-Cluster erstellt wird](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/create-secure-dev-cluster.png)
 
@@ -62,7 +62,7 @@ Folgendes müssen Sie installiert haben:
     ![Fehlerfreie Anwendung in PowerShell](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/ps-healthy-app-report.png)
 
 ## <a name="to-add-custom-health-events-to-your-service-code"></a>So fügen Sie dem Dienstcode benutzerdefinierte Integritätsereignisse hinzu
-Die Service Fabric-Projektvorlagen in Visual Studio enthalten Beispielcode. Die folgenden Schritte zeigen, wie Sie Integritätsereignisse aus dem Dienstcode melden können. Diese Berichte werden automatisch in den Standardtools für die Überwachung der Integrität angezeigt, die Service Fabric bietet, z.B. Service Fabric Explorer, Integritätsanzeige im Azure-Portal und PowerShell.
+Die Service Fabric-Projektvorlagen in Visual Studio enthalten Beispielcode. Die folgenden Schritte zeigen, wie Sie Integritätsereignisse aus dem Dienstcode melden können. Diese Berichte werden automatisch in den Standardtools für die Überwachung der Integrität von Service Fabric angezeigt, z.B. Service Fabric Explorer, Integritätsanzeige im Azure-Portal und PowerShell.
 
 1. Öffnen Sie erneut die Anwendung, die Sie zuvor in Visual Studio erstellt haben, oder erstellen Sie eine neue Anwendung, indem Sie die Visual Studio-Vorlage für einen **Zustandsbehafteten Dienst** verwenden.
 2. Öffnen Sie die Datei „Stateful1.cs“, und suchen Sie den`myDictionary.TryGetValueAsync`-Aufruf in der `RunAsync`-Methode. Wie Sie sehen, gibt diese Methode den aktuellen Wert des Zählers als Ergebnis ( `result` ) zurück, da die Schlüssellogik dieser Anwendung einen laufenden Zähler vorsieht. Wenn dies eine reale Anwendung wäre, und das Fehlen des Ergebnisses einen Fehler darstellen würde, würden Sie dieses Ereignis kennzeichnen wollen.

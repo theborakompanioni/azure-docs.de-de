@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 04/26/2017
+ms.date: 08/07/2017
 ms.author: sethm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
-ms.openlocfilehash: b9421e4d899982af5e4caf9d23eebb73188a8db1
+ms.translationtype: HT
+ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
+ms.openlocfilehash: 45fe7584c8b769113da9d287fea56d68d3d6c55a
 ms.contentlocale: de-de
-ms.lasthandoff: 05/09/2017
-
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Storage-Warteschlangen und Service Bus-Warteschlangen – Vergleich und Gegenüberstellung
@@ -28,7 +27,7 @@ In diesem Artikel werden die Unterschiede und Ähnlichkeiten zwischen den beiden
 ## <a name="introduction"></a>Einführung
 Azure unterstützt zwei Typen von Warteschlangen: **Storage-Warteschlangen** und **Service Bus-Warteschlangen**.
 
-**Storage-Warteschlangen** gehören zur Infrastruktur von [Azure Storage](https://azure.microsoft.com/services/storage/). Sie verfügen über eine einfache REST-basierte Get-/Put-/Peek-Oberfläche, die ein zuverlässiges und konsequentes Messaging innerhalb von Diensten und zwischen diesen gewährleistet.
+**Storage-Warteschlangen** gehören zur Infrastruktur von [Azure Storage](https://azure.microsoft.com/services/storage/). Sie verfügen über eine einfache REST-basierte GET/PUT/PEEK-Oberfläche, die ein zuverlässiges und konsequentes Messaging innerhalb von Diensten und zwischen diesen gewährleistet.
 
 **Service Bus-Warteschlangen** gehören der weiter gefassten [Azure-Messaging](https://azure.microsoft.com/services/service-bus/)-Infrastruktur an, die neben Warteschlangen auch Veröffentlichungen/Abonnements und fortgeschrittenere Integrationsmuster unterstützt. Weitere Informationen zu Service Bus-Warteschlangen/Themen/Abonnements finden Sie in der [Übersicht über Service Bus](service-bus-messaging-overview.md).
 
@@ -192,13 +191,12 @@ Da Service Bus-Warteschlangen eine Vielzahl erweiterter Funktionen wie Sitzungen
 ## <a name="next-steps"></a>Nächste Schritte
 Die folgenden Artikel enthalten weitere Anleitungen und Informationen zur Verwendung von Storage-Warteschlangen oder Service Bus-Warteschlangen.
 
-* [Verwenden von Service Bus-Warteschlangen](service-bus-dotnet-get-started-with-queues.md)
+* [Erste Schritte mit Service Bus-Warteschlangen](service-bus-dotnet-get-started-with-queues.md)
 * [Verwenden des Warteschlangenspeicherdiensts](../storage/storage-dotnet-how-to-use-queues.md)
 * [Bewährte Methoden für Leistungsoptimierungen mithilfe von Service Bus-Brokermessaging](service-bus-performance-improvements.md)
-* [Introducing Queues and Topics in Azure Service Bus (Einführung in Warteschlangen und Themen in Azure Service Bus)](http://www.code-magazine.com/article.aspx?quickid=1112041)
+* [Introducing Queues and Topics in Azure Service Bus (Einführung in Warteschlangen und Themen in Azure Service Bus) (Blogbeitrag)](http://www.code-magazine.com/article.aspx?quickid=1112041)
 * [The Developer's Guide to Service Bus (Entwicklerhandbuch für Service Bus)](http://www.cloudcasts.net/devguide/Default.aspx?id=11030)
 * [Using the Queuing Service in Azure (Verwenden des Warteschlangendiensts in Azure)](http://www.developerfusion.com/article/120197/using-the-queuing-service-in-windows-azure/)
-* [Understanding Azure Storage Billing – Bandwidth, Transactions, and Capacity (Grundlagen zur Abrechnung von Azure Storage – Bandbreite, Transaktionen und Kapazität)](http://blogs.msdn.com/b/windowsazurestorage/archive/2010/07/09/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity.aspx)
 
 [Azure portal]: https://portal.azure.com
 

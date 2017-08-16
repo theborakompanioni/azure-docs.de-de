@@ -12,26 +12,26 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/28/2017
+ms.date: 08/07/2017
 ms.author: sethm;hillaryc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e155891ff8dc736e2f7de1b95f07ff7b2d5d4e1b
-ms.openlocfilehash: 3466bbd23cb20df826ad919b8c76289d89375f04
+ms.translationtype: HT
+ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
+ms.openlocfilehash: 5a4e69ea7e13cb017f8fb432c524c6a8ce9228a8
 ms.contentlocale: de-de
-ms.lasthandoff: 05/02/2017
-
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="partitioned-queues-and-topics"></a>Partitionierte Warteschlangen und Themen
 Für Azure Service Bus werden mehrere Nachrichtenbroker verwendet, um Nachrichten zu verarbeiten, sowie mehrere Nachrichtenspeicher, um Nachrichten zu speichern. Eine herkömmliche Warteschlange oder ein Thema werden von einem einzelnen Nachrichtenbroker verarbeitet und in einem Nachrichtenspeicher gespeichert. Service Bus-*Partitionen* ermöglichen das Partitionieren von Warteschlangen und Themen oder *Nachrichtenentitäten* über mehrere Nachrichtenbroker und -speicher. Dies bedeutet, dass der Gesamtdurchsatz einer partitionierten Entität nicht mehr durch die Leistung eines einzelnen Nachrichtenbrokers oder Nachrichtenspeichers beschränkt wird. Außerdem führt ein vorübergehender Ausfall eines Nachrichtenspeichers nicht dazu, dass eine partitionierte Warteschlange oder ein Thema nicht verfügbar ist. Partitionierte Warteschlangen und Themen können alle erweiterten Service Bus-Features enthalten, z. B. die Unterstützung von Transaktionen und Sitzungen.
 
-Weitere Informationen zum inneren Aufbau von Service Bus finden Sie im Artikel [Service Bus-Architektur][Service Bus architecture].
+Informationen zum inneren Aufbau von Service Bus finden Sie im Artikel [Service Bus-Architektur][Service Bus architecture].
 
 Die Partitionierung ist standardmäßig bei der Erstellung von Entitäten für alle Warteschlangen und Themen beim Standard- und Premium-Messaging aktiviert. Sie können die Entitäten des Standard-Messaging-Tarifs ohne Partitionierung erstellen, aber Warteschlangen und Themen in einem Premium-Namespace werden immer partitioniert. Diese Option kann nicht deaktiviert werden. 
 
 Es ist nicht möglich, die Partitionierungsoption für eine vorhandene Warteschlange oder ein Thema in den Standard- oder Premium-Tarif zu ändern. Sie können die Option nur bei der Erstellung der Entität festlegen.
 
 ## <a name="how-it-works"></a>So funktioniert's
+
 Jede partitionierte Warteschlange bzw. jedes Thema besteht aus mehreren Fragmenten. Jedes Fragment wird in einem anderen Nachrichtenspeicher gespeichert und von einem anderen Nachrichtenbroker verarbeitet. Wenn eine Nachricht an eine partitionierte Warteschlange bzw. ein Thema gesendet wird, weist Service Bus die Nachricht einem der Fragmente zu. Service Bus nimmt die Auswahl willkürlich oder mithilfe eines Partitionsschlüssels vor, den der Absender angeben kann.
 
 Wenn ein Client eine Nachricht von einer partitionierten Warteschlange oder von einem Abonnement eines partitionierten Themas empfangen möchte, fragt Service Bus alle Fragmente auf Nachrichten ab. Anschließend wird die erste Nachricht zurückgegeben, die von einem der Nachrichtenspeicher an den Empfänger gesendet wird. Service Bus speichert die anderen Nachrichten zwischen und gibt sie zurück, wenn zusätzliche Empfangsanforderungen eingehen. Ein empfangender Client ist sich der Partitionierung nicht bewusst. Das Verhalten einer partitionierten Warteschlange oder eines Themas (z.B. „read“, „complete“, „defer“, „deadletter“, „prefetching“) dem Client gegenüber ist mit dem Verhalten einer normalen Entität identisch.
@@ -39,6 +39,7 @@ Wenn ein Client eine Nachricht von einer partitionierten Warteschlange oder von 
 Es fallen keine zusätzlichen Kosten an, wenn eine Nachricht an eine partitionierte Warteschlange oder ein Thema gesendet oder von dort empfangen wird.
 
 ## <a name="enable-partitioning"></a>Aktivieren der Partitionierung
+
 Setzen Sie zum Verwenden von partitionierten Warteschlangen und Themen mit Azure Service Bus die Azure SDK-Version 2.2 oder höher ein, oder geben Sie `api-version=2013-10` in Ihren HTTP-Anforderungen an.
 
 ### <a name="standard"></a>Standard

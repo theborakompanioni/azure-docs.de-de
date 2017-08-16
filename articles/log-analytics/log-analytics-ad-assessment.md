@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/13/2017
+ms.date: 08/03/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: 5dbb669d9f78ef7ba3f2668855b08750b7447040
+ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
+ms.openlocfilehash: 2279e609a5d81ecd40bd469a3e98b5cdf81fde2f
 ms.contentlocale: de-de
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-assessment-solution-in-log-analytics"></a>Optimieren Ihrer Active Directory-Umgebung mit der Active Directory Assessment-Lösung in Log Analytics
@@ -53,7 +53,21 @@ Verwenden Sie die folgenden Informationen zum Installieren und Konfigurieren der
   >
 
 ## <a name="active-directory-assessment-data-collection-details"></a>Details zur Active Directory Assessment-Datensammlung
-Active Directory Assessment erfasst WMI-Daten, Registrierungsdaten und Leistungsdaten mithilfe von Agents, die Sie aktiviert haben.
+
+Active Directory-Bewertung erfasst mithilfe der von Ihnen aktivierten Agents Daten aus den folgenden Quellen:
+
+- Registrierungssammler
+- LDAP-Sammler
+- .NET Framework
+- Ereignisprotokollsammler
+- Active Directory Service Interfaces (ADSI)
+- Windows PowerShell
+- Dateidatensammler
+- Windows-Verwaltungsinstrumentation (WMI)
+- API des DCDIAG-Tools
+- API des Dateireplikationsdiensts (NTFRS)
+- Benutzerdefinierter C#-Code
+
 
 Die folgende Tabelle zeigt die Datensammlungsmethoden für Agents und gibt an, ob Operations Manager (SCOM) erforderlich ist und wie häufig Daten von einem Agent gesammelt werden.
 

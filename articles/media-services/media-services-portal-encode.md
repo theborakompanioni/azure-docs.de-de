@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2016
+ms.date: 08/07/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
-ms.openlocfilehash: 50e9095d38c96323db3ccce4e3601eccbb9eb2ab
-ms.lasthandoff: 01/13/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
+ms.openlocfilehash: efe7db8a36273b4755dd057139bb1c673af868d3
+ms.contentlocale: de-de
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="encode-an-asset-using-media-encoder-standard-with-the-azure-portal"></a>Codieren eines Medienobjekts mit Media Encoder Standard mithilfe des Azure-Portals
@@ -42,7 +42,7 @@ In diesem Abschnitt werden die Schritte beschrieben, die Sie ausführen können,
 2. Wählen Sie im Fenster **Einstellungen** die Option **Assets**.  
 3. Wählen Sie im Fenster **Ressourcen** das Objekt aus, das Sie codieren möchten.
 4. Klicken Sie auf die Schaltfläche **Codieren** .
-5. Wählen Sie im Fenster **Medienobjekt codieren** den Prozessor „Media Encoder Standard“ und eine Voreinstellung aus. Wenn Sie beispielsweise wissen, dass das Eingabevideo eine Auflösung von 1920x1080 Pixel hat, können Sie die Voreinstellung „H264 Multiple Bitrate 1080p“ wählen. Weitere Informationen zu Voreinstellungen finden Sie in [diesem Artikel](media-services-mes-presets-overview.md). Es ist wichtig, dass Sie die Voreinstellung auswählen, die für Ihr Eingabevideo am besten geeignet ist. Wenn Sie über ein Video mit niedriger Auflösung (640x360) verfügen, sollten Sie nicht die standardmäßige Voreinstellung „H264 Multiple Bitrate 1080p“ verwenden.
+5. Wählen Sie im Fenster **Medienobjekt codieren** den Prozessor „Media Encoder Standard“ und eine Voreinstellung aus. Informationen zu Voreinstellungen finden Sie unter [Verwenden von Azure Media Encoder Standard zum automatischen Generieren einer Reihe von Bitraten](media-services-autogen-bitrate-ladder-with-mes.md) und [Aufgabenvoreinstellungen für MES (Media Encoder Standard)](media-services-mes-presets-overview.md). Wenn Sie steuern möchten, welche Codierungsvoreinstellung verwendet werden soll, beachten Sie Folgendes: Es ist wichtig, die Voreinstellung auszuwählen, die sich am besten für Ihr Eingabevideo eignet. Wenn Sie beispielsweise wissen, dass das Eingabevideo eine Auflösung von 1920x1080 Pixel hat, können Sie die Voreinstellung „H264 Multiple Bitrate 1080p“ wählen. Wenn Sie über ein Video mit niedriger Auflösung (640x360) verfügen, sollten Sie nicht die Voreinstellung „H264 Multiple Bitrate 1080p“ verwenden.
    
    Zur Vereinfachung der Verwaltung besteht die Möglichkeit, den Namen des Ausgabemedienobjekts und den Namen des Auftrags zu bearbeiten.
    

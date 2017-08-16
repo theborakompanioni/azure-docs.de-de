@@ -14,20 +14,27 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 08/04/2017
 ms.author: larryfr
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: 2327945b5f5fe6b6e63660fd5d607d3cc8092f8b
+ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
+ms.openlocfilehash: b43dd20be9f481270b782de3c889abac762bd9cc
 ms.contentlocale: de-de
-ms.lasthandoff: 07/27/2017
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="use-oozie-with-hadoop-to-define-and-run-a-workflow-on-linux-based-hdinsight"></a>Verwenden von Oozie mit Hadoop zum Definieren und Ausführen eines Workflows in Linux-basiertem HDInsight
 
 [!INCLUDE [oozie-selector](../../includes/hdinsight-oozie-selector.md)]
 
-Informationen zum Verwenden von Apache Oozie mit Hadoop auf HDInsight. Apache Oozie ist ein Workflow-/Koordinationssystem zur Verwaltung von Hadoop-Jobs. Es ist in den Hadoop-Stapel integriert und unterstützt Hadoop-Aufträge für Apache MapReduce, Apache Pig, Apache Hive und Apache Sqoop. Oozie kann auch dazu verwendet werden, bestimmte Aufträge für ein System zu planen, beispielsweise Java-Programme oder Shellskripts.
+Informationen zum Verwenden von Apache Oozie mit Hadoop auf HDInsight. Apache Oozie ist ein Workflow-/Koordinationssystem zur Verwaltung von Hadoop-Jobs. Oozie ist in den Hadoop-Stack integriert und unterstützt die folgenden Aufträge:
+
+* Apache MapReduce
+* Apache Pig
+* Apache Hive
+* Apache Sqoop
+
+Oozie kann auch dazu verwendet werden, bestimmte Aufträge für ein System zu planen, beispielsweise Java-Programme oder Shellskripts.
 
 > [!NOTE]
 > Eine weitere Option zum Definieren von Workflows mit HDInsight ist Azure Data Factory. Weitere Informationen zu Azure Data Factory finden Sie unter [Verwenden von Pig und Hive mit Data Factory][azure-data-factory-pig-hive].
@@ -136,7 +143,7 @@ Führen Sie die folgenden Schritte aus, um ein HiveQL-Skript zu erstellen, das e
     hdfs dfs -put useooziewf.hql /tutorials/useoozie/useooziewf.hql
     ```
 
-    Diese Befehle dienen zum Speichern der Datei **useooziewf.hql** im Azure Storage-Konto, das diesem Cluster zugeordnet ist. Dadurch bleibt die Datei erhalten, selbst wenn der Cluster gelöscht wird.
+    Mit diesen Befehlen wird die Datei **useooziewf.hql** in dem mit HDFS kompatiblen Speicher für den Cluster gespeichert.
 
 ## <a name="define-the-workflow"></a>Definieren des Workflows
 
@@ -467,7 +474,7 @@ Die folgenden Schritte verwenden den Oozie-Befehl zum Übermitteln und Verwalten
     ------------------------------------------------------------------------------------------------------------------------------------
     ```
 
-    Dieser Auftrag hat den Status `PREP`. Das bedeutet, dass er übermittelt, aber noch nicht gestartet wurde.
+    Dieser Auftrag hat den Status `PREP`. Dieser Status gibt an, dass der Auftrag erstellt, aber nicht gestartet wurde.
 
 5. Verwenden Sie den folgenden Befehl zum Starten des Auftrags:
 
@@ -568,9 +575,7 @@ Um auf die Oozie-Webbenutzeroberfläche zuzugreifen, gehen Sie folgendermaßen v
 
 ## <a name="scheduling-jobs"></a>Planen von Aufträgen
 
-Der Koordinator ermöglicht Ihnen das Angeben von Start, Ende und Häufigkeit von Aufträgen, damit sie für bestimmte Zeiten geplant werden können.
-
-Um einen Zeitplan für den Workflow zu definieren, führen Sie die folgenden Schritte aus:
+Der Koordinator ermöglicht Ihnen das Angeben von Start, Ende und Häufigkeit von Aufträgen. Um einen Zeitplan für den Workflow zu definieren, führen Sie die folgenden Schritte aus:
 
 1. Verwenden Sie den folgenden Befehl, um eine Datei namens **coordinator.xml** zu erstellen:
 
@@ -615,9 +620,9 @@ Um einen Zeitplan für den Workflow zu definieren, führen Sie die folgenden Sch
 
     Nehmen Sie die folgenden Änderungen vor:
 
-   * Ändern Sie `<name>oozie.wf.application.path</name>` in `<name>oozie.coord.application.path</name>`. Dieser Wert weist Oozie an, die Koordinatordatei statt der Workflowdatei auszuführen.
+   * Um Oozie anzuweisen, die Koordinatordatei statt des Workflows auszuführen, ändern Sie `<name>oozie.wf.application.path</name>` in `<name>oozie.coord.application.path</name>`.
 
-   * Fügen Sie folgenden XML-Code hinzu. Dadurch wird eine Variable in der Datei „coordinator.xml“ so festgelegt, dass sie auf den Speicherort der Datei „workflow.xml“ verweist:
+   * Fügen Sie zum Festlegen der Variablen `workflowPath`, die vom Koordinator verwendet wird, den folgenden XML-Code hinzu:
 
         ```xml
         <property>
@@ -628,7 +633,7 @@ Um einen Zeitplan für den Workflow zu definieren, führen Sie die folgenden Sch
 
        Ersetzen Sie den Text `wasb://mycontainer@mystorageaccount.blob.core.windows` durch den Wert, der in weiteren Einträgen in der Datei „job.xml“ verwendet wird.
 
-   * Fügen Sie folgenden XML-Code hinzu. Dadurch werden Start, Ende und Häufigkeit für die Verwendung in der coordinator.xml-Datei definiert:
+   * Fügen Sie den folgenden XML-Code hinzu, um Start, Ende und Häufigkeit für den Koordinator festzulegen:
 
         ```xml
         <property>
@@ -652,7 +657,7 @@ Um einen Zeitplan für den Workflow zu definieren, führen Sie die folgenden Sch
         </property>
         ```
 
-       Diese Werte legen die Startzeit auf 12:00 h am 10. Mai 2017 und die Endzeit auf den 12. Mai 2017 fest. Das Intervall für die Auftragsausführung ist täglich. Die Häufigkeit wird in Minuten angegeben. Daher gilt 24 Stunden x 60 Minuten = 1.440 Minuten. Schließlich wird die Zeitzone auf UTC festgelegt.
+       Diese Werte legen die Startzeit auf 12:00 Uhr am 10. Mai 2017 und die Endzeit auf den 12. Mai 2017 fest. Das Intervall für die Auftragsausführung ist täglich. Die Häufigkeit wird in Minuten angegeben. Daher gilt 24 Stunden x 60 Minuten = 1.440 Minuten. Schließlich wird die Zeitzone auf UTC festgelegt.
 
 5. Drücken Sie zum Speichern der Datei STRG+X, **Y** und dann die **EINGABETASTE**.
 
@@ -675,7 +680,7 @@ Um einen Zeitplan für den Workflow zu definieren, führen Sie die folgenden Sch
     ![Informationen zu Koordinatoraufträgen](./media/hdinsight-use-oozie-linux-mac/coordinatorjobinfo.png)
 
     > [!NOTE]
-    > Nur erfolgreiche Ausführungen des Auftrags und nicht einzelne Aktionen innerhalb des geplanten Workflows werden angezeigt. Um diese anzuzeigen, wählen Sie einen der Einträge vom Typ **Aktion** aus.
+    > In dieser Abbildung werden nur erfolgreiche Ausführungen des Auftrags und nicht einzelne Aktionen innerhalb des geplanten Workflows angezeigt. Um diese anzuzeigen, wählen Sie einen der Einträge vom Typ **Aktion** aus.
 
     ![Aktionsinformationen](./media/hdinsight-use-oozie-linux-mac/coordinatoractionjob.png)
 

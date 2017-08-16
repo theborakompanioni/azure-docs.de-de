@@ -11,14 +11,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/12/2017
+ms.date: 08/08/2017
 ms.author: dobett
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e22bd56e0d111add6ab4c08b6cc6e51c364c7f22
-ms.openlocfilehash: f4690097da1b56a7688754294ab63ec88a457761
+ms.translationtype: HT
+ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
+ms.openlocfilehash: 5abf1d80a62344f93d4c5491adba65a3e7400258
 ms.contentlocale: de-de
-ms.lasthandoff: 05/19/2017
-
+ms.lasthandoff: 08/09/2017
 
 ---
 
@@ -48,7 +47,7 @@ Am Ende dieses Tutorials verfügen Sie über zwei Java-Konsolen-Apps:
 * Anzeigen der aktualisierten gemeldeten Eigenschaften
 
 > [!NOTE]
-> Im Artikel [IoT Hub SDKs][lnk-hub-sdks] finden Sie Informationen über die verschiedenen Azure IoT SDKs, mit denen Sie sowohl Anwendungen für Geräte als auch das zugehörige Lösungs-Back-End erstellen können.
+> Informationen zu den verschiedenen SDKs, mit denen Sie Anwendungen für Geräte sowie das zugehörige Lösungs-Back-End erstellen können, finden Sie unter [Azure IoT SDKs][lnk-hub-sdks].
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
@@ -62,11 +61,17 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 ## <a name="trigger-a-remote-reboot-on-the-device-using-a-direct-method"></a>Auslösen eines Remoteneustarts auf dem Gerät über eine direkte Methode
 
-In diesem Abschnitt erstellen Sie eine Java-Konsolen-App, die die direkte Methode für den Neustart in der simulierten Geräte-App aufruft und dann die Antwort anzeigt. Die App fragt dann die gemeldeten Eigenschaften, die vom Gerät gesendet werden, ab, um zu bestimmen, wann der Neustart abgeschlossen ist. Diese Konsolen-App stellt eine Verbindung mit Ihrem IoT Hub her, um die direkte Methode aufzurufen und die gemeldeten Eigenschaften zu lesen.
+In diesem Abschnitt erstellen Sie eine Java-Konsolen-App, die folgende Aufgaben ausführt:
+
+1. Aufrufen der direkten reboot-Methode in der simulierten Geräte-App
+1. Anzeigen der Antwort
+1. Abfragen der gemeldeten Eigenschaften, die vom Gerät gesendet werden, um zu bestimmen, wann der Neustart abgeschlossen ist
+
+Diese Konsolen-App stellt eine Verbindung mit Ihrem IoT Hub her, um die direkte Methode aufzurufen und die gemeldeten Eigenschaften zu lesen.
 
 1. Erstellen Sie einen leeren Ordner mit dem Namen „dm-get-started“.
 
-1. Erstellen Sie im Ordner „dm-get-started“ ein Maven-Projekt namens **trigger-reboot**, indem Sie an der Eingabeaufforderung den folgenden Befehl ausführen. Beachten Sie, dass es sich hierbei um einen einzelnen langen Befehl handelt:
+1. Erstellen Sie im Ordner „dm-get-started“ ein Maven-Projekt namens **trigger-reboot**, indem Sie an der Eingabeaufforderung den folgenden Befehl ausführen. Das folgende Beispiel zeigt einen einzelnen langen Befehl:
 
     `mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=trigger-reboot -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false`
 
@@ -78,7 +83,7 @@ In diesem Abschnitt erstellen Sie eine Java-Konsolen-App, die die direkte Method
     <dependency>
       <groupId>com.microsoft.azure.sdk.iot</groupId>
       <artifactId>iot-service-client</artifactId>
-      <version>1.5.22</version>
+      <version>1.7.23</version>
       <type>jar</type>
     </dependency>
     ```
@@ -123,7 +128,7 @@ In diesem Abschnitt erstellen Sie eine Java-Konsolen-App, die die direkte Method
     import java.util.concurrent.ExecutorService;
     ```
 
-1. Fügen Sie die folgenden Variablen auf Klassenebene der **App** -Klasse die folgende Variable auf Klassenebene hinzu. Ersetzen Sie **{youriothubconnectionstring}** durch die IoT Hub-Verbindungszeichenfolge, die Sie im Abschnitt *Erstellen einer IoT Hub-Instanz* notiert haben:
+1. Fügen Sie die folgenden Variablen auf Klassenebene der **App** -Klasse die folgende Variable auf Klassenebene hinzu. Ersetzen Sie `{youriothubconnectionstring}` durch die IoT Hub-Verbindungszeichenfolge, die Sie im Abschnitt *Erstellen einer IoT Hub-Instanz* notiert haben:
 
     ```java
     public static final String iotHubConnectionString = "{youriothubconnectionstring}";
@@ -207,7 +212,7 @@ In diesem Abschnitt erstellen Sie eine Java-Konsolen-App, die die direkte Method
 
 In diesem Abschnitt erstellen Sie eine Java-Konsolen-App, die ein Gerät simuliert. Die App lauscht auf den Aufruf der direkten Methode für den Neustart aus Ihrer IoT Hub-Instanz und reagiert sofort auf diesen Aufruf. Anschließend wechselt die App für eine Weile in den Ruhezustand, um den Neustartvorgang zu simulieren, bevor sie eine gemeldete Eigenschaft verwendet, um die Back-End-App **trigger-reboot** darüber zu informieren, dass der Neustart abgeschlossen ist.
 
-1. Erstellen Sie im Ordner „dm-get-started“ ein Maven-Projekt namens **simulated-device**, indem Sie an der Eingabeaufforderung den folgenden Befehl ausführen. Beachten Sie, dass es sich hierbei um einen einzelnen langen Befehl handelt:
+1. Erstellen Sie im Ordner „dm-get-started“ ein Maven-Projekt namens **simulated-device**, indem Sie an der Eingabeaufforderung den folgenden Befehl ausführen. Nachfolgend sehen Sie einen einzelnen langen Befehl:
 
     `mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=simulated-device -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false`
 
@@ -219,7 +224,7 @@ In diesem Abschnitt erstellen Sie eine Java-Konsolen-App, die ein Gerät simulie
     <dependency>
       <groupId>com.microsoft.azure.sdk.iot</groupId>
       <artifactId>iot-device-client</artifactId>
-      <version>1.3.30</version>
+      <version>1.3.32</version>
     </dependency>
     ```
 
@@ -262,7 +267,7 @@ In diesem Abschnitt erstellen Sie eine Java-Konsolen-App, die ein Gerät simulie
     import java.util.HashSet;
     ```
 
-1. Fügen Sie die folgenden Variablen auf Klassenebene der **App** -Klasse die folgende Variable auf Klassenebene hinzu. Ersetzen Sie **{yourdeviceconnectionstring}** durch die Geräteverbindungszeichenfolge, die Sie im Abschnitt *Erstellen einer Geräteidentität* notiert haben:
+1. Fügen Sie die folgenden Variablen auf Klassenebene der **App** -Klasse die folgende Variable auf Klassenebene hinzu. Ersetzen Sie `{yourdeviceconnectionstring}` durch die Geräteverbindungszeichenfolge, die Sie im Abschnitt *Erstellen einer Geräteidentität* notiert haben:
 
     ```java
     private static final int METHOD_SUCCESS = 200;
@@ -376,7 +381,7 @@ In diesem Abschnitt erstellen Sie eine Java-Konsolen-App, die ein Gerät simulie
     client = new DeviceClient(connString, protocol);
     ```
 
-1. Fügen Sie der **main**-Methode den folgenden Code zum Starten des Lauschens auf Aufrufe der direkten Methode hinzu:
+1. Um mit dem Lauschen auf Aufrufe der direkten Methode zu beginnen, fügen Sie der **main**-Methode den folgenden Code hinzu:
 
     ```java
     try

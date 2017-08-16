@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
-ms.openlocfilehash: a9cb2d921d1be226661311d91367b2b6f44fa0dc
-ms.lasthandoff: 03/24/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
+ms.openlocfilehash: f61be0cc4c9274c9914f7c468ce48a2a3d0a4f4a
+ms.contentlocale: de-de
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="configure-an-application-gateway-for-ssl-offload-by-using-the-portal"></a>Konfigurieren eines Anwendungsgateways für die SSL-Auslagerung über das Portal
@@ -27,6 +27,7 @@ ms.lasthandoff: 03/24/2017
 > * [Azure-Portal](application-gateway-ssl-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-ssl-arm.md)
 > * [Klassische Azure PowerShell](application-gateway-ssl.md)
+> * [Azure CLI 2.0](application-gateway-ssl-cli.md)
 
 Azure Application Gateway kann so konfiguriert werden, dass damit die Secure Sockets Layer-Sitzung (SSL) auf dem Gateway beendet wird. Auf diese Weise wird die aufwändige SSL-Entschlüsselung in der Webfarm vermieden. Die SSL-Auslagerung vereinfacht zudem die Einrichtung und Verwaltung der Webanwendung auf dem Front-End-Server.
 
@@ -70,7 +71,7 @@ Stellen Sie die erforderlichen Informationen für den Listener bereit, und laden
 
 ## <a name="create-a-rule-and-associate-it-to-the-listener"></a>Erstellen einer Regel und Verknüpfen der Regel mit dem Listener
 
-Der Listener wurde erstellt. Jetzt muss eine Regel erstellt werden, um den Datenverkehr vom Listener zu verarbeiten. Regeln definieren, wie Datenverkehr an die Back-End-Pools weitergeleitet wird. Sie basieren auf mehreren Konfigurationseinstellungen, z.B. ob die cookiebasierte Sitzungsaffinität verwendet wird, sowie auf dem Protokoll, dem Port und Integritätstests.
+Der Listener wurde erstellt. Jetzt muss eine Regel erstellt werden, um den Datenverkehr vom Listener zu verarbeiten. Regeln definieren, wie Datenverkehr an die Back-End-Pools weitergeleitet wird. Sie basieren auf mehreren Konfigurationseinstellungen, etwa ob die cookiebasierte Sitzungsaffinität verwendet wird, sowie auf dem Protokoll, dem Port und Integritätstests.
 
 ### <a name="step-1"></a>Schritt 1
 

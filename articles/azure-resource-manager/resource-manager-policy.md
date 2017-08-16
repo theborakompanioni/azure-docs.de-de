@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/25/2017
+ms.date: 08/02/2017
 ms.author: tomfitz
 ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
-ms.openlocfilehash: ce19c24905c9ea93a7a35134fe6035b788d8af22
+ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
+ms.openlocfilehash: 0ee2624f45a1de0c23cae4538a38ae3e302eedd3
 ms.contentlocale: de-de
-ms.lasthandoff: 07/26/2017
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="resource-policy-overview"></a>Übersicht über Ressourcenrichtlinien
-Mithilfe von Ressourcenrichtlinien können Sie Konventionen für Ressourcen in Ihrer Organisation einrichten. Durch Definieren von Konventionen können Sie Kosten beeinflussen und Ihre Ressourcen einfacher verwalten. So können Sie beispielsweise angeben, dass nur bestimmte Arten von virtuellen Computern zulässig sind, oder festlegen, dass alle Ressourcen über ein bestimmtes Tag verfügen müssen. Richtlinien werden von allen untergeordneten Ressourcen geerbt. Wenn also eine Richtlinie auf eine Ressourcengruppe angewendet wird, gilt sie auch für alle Ressourcen in der Ressourcengruppe.
+Mithilfe von Ressourcenrichtlinien können Sie Konventionen für Ressourcen in Ihrer Organisation einrichten. Durch Definieren von Konventionen können Sie Kosten beeinflussen und Ihre Ressourcen einfacher verwalten. Sie können beispielsweise angeben, dass nur bestimmte Typen virtueller Computer zulässig sind. Oder Sie können festlegen, dass alle Ressourcen ein bestimmtes Tag aufweisen. Richtlinien werden von allen untergeordneten Ressourcen geerbt. Wenn also eine Richtlinie auf eine Ressourcengruppe angewendet wird, gilt sie auch für alle Ressourcen in der Ressourcengruppe.
 
 Im Zusammenhang mit Richtlinien gibt es zwei wichtige Konzepte:
 
@@ -39,7 +39,7 @@ Richtlinien werden beim Erstellen und Aktualisieren von Ressourcen (PUT- und PAT
 > 
 
 ## <a name="how-is-it-different-from-rbac"></a>Worin unterscheidet sich dies von der rollenbasierten Zugriffssteuerung (RBAC)?
-Zwischen einer Richtlinie und der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) gibt es einige entscheidende Unterschiede. Bei RBAC stehen **Benutzeraktionen** in verschiedenen Bereichen im Mittelpunkt. Beispiel: Sie werden der Rolle „Mitwirkender“ für eine Ressourcengruppe in einem bestimmten Bereich hinzugefügt, um Änderungen an der Ressourcengruppe vornehmen zu können. Bei einer Richtlinie stehen **Ressourceneigenschaften** während der Bereitstellung im Mittelpunkt. Beispielsweise können Sie über Richtlinien die Arten von Ressourcen steuern, die bereitgestellt werden können, oder die Standorte beschränken, an denen die Ressourcen bereitgestellt werden können. Im Gegensatz zur RBAC stellen Richtlinien ein Standardsystem für das Zulassen und explizite Verweigern dar. 
+Zwischen einer Richtlinie und der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) gibt es einige entscheidende Unterschiede. Bei RBAC stehen **Benutzeraktionen** in verschiedenen Bereichen im Mittelpunkt. Beispiel: Sie werden der Rolle „Mitwirkender“ für eine Ressourcengruppe in einem bestimmten Bereich hinzugefügt, um Änderungen an der Ressourcengruppe vornehmen zu können. Bei einer Richtlinie stehen **Ressourceneigenschaften** während der Bereitstellung im Mittelpunkt. Sie können beispielsweise über Richtlinien steuern, welche Ressourcentypen bereitgestellt werden können. Oder Sie können die Standorte einschränken, an denen die Ressourcen bereitgestellt werden können. Im Gegensatz zur RBAC stellen Richtlinien ein Standardsystem für das Zulassen und explizite Verweigern dar. 
 
 Zum Verwenden von Richtlinien müssen Sie über die RBAC authentifiziert sein. Ihr Konto benötigt insbesondere Folgendes:
 
@@ -232,7 +232,7 @@ Der Wert kann entweder eine Zeichenfolge oder ein Objekt im JSON-Format sein.
 
 ## <a name="aliases"></a>Aliase
 
-Eigenschaftenaliase dienen zum Zugreifen auf bestimmte Eigenschaften für einen Ressourcentyp. 
+Eigenschaftenaliase dienen zum Zugreifen auf bestimmte Eigenschaften für einen Ressourcentyp. Mithilfe von Aliasen können Sie beschränken, welche Werte oder Bedingungen für eine Eigenschaft einer Ressourcen zulässig sind. Jeder Alias wird Pfaden in verschiedenen API-Versionen für einen bestimmten Ressourcentyp zugeordnet. Bei der Richtlinienauswertung ruft das Richtlinienmodul den Eigenschaftenpfad für diese API-Version ab.
 
 **Microsoft.Cache/Redis**
 
@@ -264,6 +264,7 @@ Eigenschaftenaliase dienen zum Zugreifen auf bestimmte Eigenschaften für einen 
 
 | Alias | Beschreibung |
 | ----- | ----------- |
+| Microsoft.Compute/imageId | Legen Sie den Bezeichner des Images fest, das zum Erstellen des virtuellen Computers verwendet wurde. |
 | Microsoft.Compute/imageOffer | Hiermit wird das Angebot des Plattformimage oder des Marketplace-Image festgelegt, mit dem die VM erstellt wird. |
 | Microsoft.Compute/imagePublisher | Hiermit wird der Herausgeber des Plattformimage oder des Marketplace-Image festgelegt, mit dem die VM erstellt wird. |
 | Microsoft.Compute/imageSku | Hiermit wird die SKU des Plattformimage oder des Marketplace-Image festgelegt, mit dem die VM erstellt wird. |
@@ -288,6 +289,7 @@ Eigenschaftenaliase dienen zum Zugreifen auf bestimmte Eigenschaften für einen 
 
 | Alias | Beschreibung |
 | ----- | ----------- |
+| Microsoft.Compute/imageId | Legen Sie den Bezeichner des Images fest, das zum Erstellen des virtuellen Computers verwendet wurde. |
 | Microsoft.Compute/imageOffer | Hiermit wird das Angebot des Plattformimage oder des Marketplace-Image festgelegt, mit dem die VM erstellt wird. |
 | Microsoft.Compute/imagePublisher | Hiermit wird der Herausgeber des Plattformimage oder des Marketplace-Image festgelegt, mit dem die VM erstellt wird. |
 | Microsoft.Compute/imageSku | Hiermit wird die SKU des Plattformimage oder des Marketplace-Image festgelegt, mit dem die VM erstellt wird. |

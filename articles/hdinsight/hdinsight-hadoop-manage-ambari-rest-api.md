@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/16/2017
+ms.date: 08/07/2017
 ms.author: larryfr
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: 642f40de546600525fb739d8b158f06851d78406
+ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
+ms.openlocfilehash: bc6eee6ff3e6c7006509cdd175b488e320ed912a
 ms.contentlocale: de-de
-ms.lasthandoff: 07/27/2017
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-ambari-rest-api"></a>Verwalten von HDInsight-Clustern mithilfe der Ambari-REST-API
@@ -29,11 +29,11 @@ ms.lasthandoff: 07/27/2017
 
 Erfahren Sie, wie Sie die Ambari-REST-API zum Verwalten und Überwachen von Hadoop-Clustern in Azure HDInsight verwenden.
 
-Apache Ambari vereinfacht die Verwaltung und Überwachung von Hadoop-Clustern durch die Bereitstellung einer benutzerfreundlichen Webbenutzeroberfläche und REST-API. Ambari ist in HDInsight-Clustern mit dem Linux-Betriebssystem enthalten und wird verwendet, um den Cluster zu überwachen und Konfigurationsänderungen vorzunehmen.
+Apache Ambari vereinfacht die Verwaltung und Überwachung von Hadoop-Clustern durch die Bereitstellung einer benutzerfreundlichen Webbenutzeroberfläche und REST-API. Ambari ist in HDInsight-Clustern enthalten, die das Linux-Betriebssystem verwenden. Ambari kann zum Überwachen des Clusters und zum Vornehmen von Änderungen an der Konfiguration verwendet werden.
 
 ## <a id="whatis"></a>Was ist Ambari?
 
-[Apache Ambari](http://ambari.apache.org) vereinfacht die Hadoop-Verwaltung durch die Bereitstellung einer benutzerfreundlichen Webbenutzeroberfläche, die zum Bereitstellen, Verwalten und Überwachen von Hadoop-Clustern verwendet werden kann. Entwickler können diese Funktionen mithilfe der [Ambari-REST-APIs](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)in ihre Anwendungen integrieren.
+Über die Web-Benutzeroberfläche von [Apache Ambari](http://ambari.apache.org) können Hadoop-Cluster bereitgestellt, verwaltet und überwacht werden. Entwickler können diese Funktionen mithilfe der [Ambari-REST-APIs](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)in ihre Anwendungen integrieren.
 
 Ambari wird standardmäßig mit Linux-basierten Clustern bereitgestellt.
 
@@ -69,7 +69,7 @@ Der Basis-URI für die Ambari-REST-API in HDInsight-Clustern lautet https://CLUS
 
 ### <a name="authentication"></a>Authentifizierung
 
-Zum Herstellen einer Verbindung mit Ambari in HDInsight ist HTTPS erforderlich. Bei der Verbindungsauthentifizierung müssen Sie den Administratorkontonamen (standardmäßig **admin**) und das Kennwort verwenden, die Sie bei der Erstellung des Clusters angegeben haben.
+Zum Herstellen einer Verbindung mit Ambari in HDInsight ist HTTPS erforderlich. Verwenden Sie den Administratorkontonamen (Standardname: **Administrator**) und das Kennwort, die Sie während der Clustererstellung bereitgestellt haben.
 
 ## <a name="examples-authentication-and-parsing-json"></a>Beispiele: Authentifizierung und JSON-Analyse
 
@@ -178,7 +178,7 @@ Bei der Arbeit mit HDInsight müssen Sie möglicherweise den vollqualifizierten 
 * **Workerknoten**
 
     ```bash
-    curl -u admin:PASSWORD -sS -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/HDFS/components/DATANODE" \
+    curl -u admin:PASSWORD -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/HDFS/components/DATANODE" \
     | jq '.host_components[].HostRoles.host_name'
     ```
 
@@ -192,7 +192,7 @@ Bei der Arbeit mit HDInsight müssen Sie möglicherweise den vollqualifizierten 
 * **Zookeeper-Knoten**
 
     ```bash
-    curl -u admin:PASSWORD -sS -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER" \
+    curl -u admin:PASSWORD -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER" \
     | jq '.host_components[].HostRoles.host_name'
     ```
 
@@ -210,7 +210,7 @@ Bei der Arbeit mit HDInsight müssen Sie möglicherweise den vollqualifizierten 
 >
 > Informationen zum Arbeiten mit HDInsight und virtuellen Netzwerken finden Sie unter [Erweitern der HDInsight-Funktionen mit Azure Virtual Network](hdinsight-extend-hadoop-virtual-network.md).
 
-Sie müssen den FQDN für den Host kennen, bevor Sie die IP-Adresse abrufen können. Sobald Sie den FQDN kennen, können Sie die IP-Adresse des Hosts abrufen. Die folgenden Beispiele fragen Ambari zuerst nach dem FQDN aller Hostknoten und dann nach der IP-Adresse jedes Hosts ab.
+Zum Ermitteln der IP-Adresse muss Ihnen der interne vollqualifizierte Domänenname (Fully Qualified Domain Name, FQDN) der Clusterknoten bekannt sein. Sobald Sie den FQDN kennen, können Sie die IP-Adresse des Hosts abrufen. Die folgenden Beispiele fragen Ambari zuerst nach dem FQDN aller Hostknoten und dann nach der IP-Adresse jedes Hosts ab.
 
 ```bash
 for HOSTNAME in $(curl -u admin:$PASSWORD -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/hosts" | jq -r '.items[].Hosts.host_name')
@@ -306,8 +306,9 @@ Der Rückgabewert ähnelt einem der folgenden Beispiele:
     ```
 
     ```powershell
-    Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName`?fields=Clusters/desired_configs" `
+    $respObj = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName`?fields=Clusters/desired_configs" `
         -Credential $creds
+    $respObj.Content
     ```
 
     In diesem Beispiel wird ein JSON-Dokument mit der aktuellen Konfiguration (angegeben durch den Wert *tag* ) für die im Cluster installierten Komponenten zurückgegeben. Das folgende Beispiel ist ein Datenauszug aus der Rückgabe eines Spark-Clustertyps:
@@ -379,7 +380,7 @@ Der Rückgabewert ähnelt einem der folgenden Beispiele:
    
     Aus dieser Liste müssen Sie den Namen der Komponente (z.B. **spark\_thrift\_sparkconf**) und den Wert für **tag** kopieren.
 
-2. Rufen Sie die Konfiguration für die Komponente ab, und kennzeichnen Sie sie mit den unten angegebenen Befehlen. Ersetzen Sie **spark-thrift-sparkconf** und **INITIAL** durch die Komponente und das Tag, für die bzw. das Sie die Konfiguration abrufen möchten.
+2. Rufen Sie die Konfiguration für die Komponente ab, und kennzeichnen Sie sie mit den unten angegebenen Befehlen:
    
     ```bash
     curl -u admin:$PASSWORD -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/configurations?type=spark-thrift-sparkconf&tag=INITIAL" \
@@ -394,6 +395,9 @@ Der Rückgabewert ähnelt einem der folgenden Beispiele:
         -Credential $creds
     $resp.Content | jq --arg newtag "version$unixTimeStamp" '.items[] | del(.href, .version, .Config) | .tag |= $newtag | {"Clusters": {"desired_config": .}}' > newconfig.json
     ```
+
+    > [!NOTE]
+    > Ersetzen Sie **spark-thrift-sparkconf** und **INITIAL** durch die Komponente und das Tag, für die bzw. das Sie die Konfiguration abrufen möchten.
    
     Jq wird verwendet, um die aus HDInsight abgerufenen Daten in eine neue Konfigurationsvorlage umzuwandeln. Im Einzelnen führen diese Beispiele folgende Aktionen aus:
    

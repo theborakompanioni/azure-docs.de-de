@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/15/2017
 ms.author: sethm
 ms.translationtype: HT
-ms.sourcegitcommit: cddb80997d29267db6873373e0a8609d54dd1576
-ms.openlocfilehash: 67cb42394a596f9e5c0a5d6a5042363e26ed0ac0
+ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
+ms.openlocfilehash: cb5ec1a105c632626c5caf39e4fd356177883123
 ms.contentlocale: de-de
-ms.lasthandoff: 07/18/2017
+ms.lasthandoff: 08/05/2017
 
 ---
 
@@ -121,7 +121,7 @@ Wenn ein Leser die Verbindung zu eine Partition trennt, beginnt nach dem erneute
 
 ### <a name="common-consumer-tasks"></a>Allgemeine Consumeraufgaben
 
-Alle Event Hubs-Consumer stellen eine Verbindung über eine AMQP 1.0-Sitzung und einen statusaktivierten bidirektionalen Kommunikationskanal her. Jede Partition weist eine AMQP 1.0-Sitzung auf, die den Transport von Ereignissen nach Partition getrennt ermöglicht.
+Alle Event Hubs-Consumer stellen eine Verbindung über eine AMQP 1.0-Sitzung (statusaktivierter bidirektionaler Kommunikationskanal) her. Jede Partition weist eine AMQP 1.0-Sitzung auf, die den Transport von Ereignissen nach Partition getrennt ermöglicht.
 
 #### <a name="connect-to-a-partition"></a>Herstellen einer Verbindung mit einer Partition
 

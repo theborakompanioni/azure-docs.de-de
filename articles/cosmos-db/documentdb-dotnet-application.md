@@ -13,13 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 12/25/2016
+ms.date: 08/03/2017
 ms.author: mimig
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: cc8d26864f455572ad4e2652afbff7447f87f726
+ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
+ms.openlocfilehash: 86b34c6c44b957009610f20ee0b9d7ed7fc441be
 ms.contentlocale: de-de
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="_Toc395809351"></a>ASP.NET MVC-Tutorial: Entwicklung von Webanwendungen mit Azure Cosmos DB
@@ -33,9 +33,9 @@ ms.lasthandoff: 07/28/2017
 
 Um zu verdeutlichen, wie Sie Azure Cosmos DB effizient zum Speichern und Abfragen von JSON-Dokumenten einsetzen, wird in diesem Artikel anhand einer umfassenden exemplarischen Vorgehensweise das Erstellen einer Todo-App mithilfe von Azure Cosmos DB erläutert. Die Aufgaben werden als JSON-Dokumente in Azure Cosmos DB gespeichert.
 
-![Screenshot der in diesem Tutorial erstellten MVC-Webanwendung für Todo-Listen – Schrittanleitung im ASP NET MVC-Tutorial](./media/documentdb-dotnet-application/asp-net-mvc-tutorial-image1.png)
+![Screenshot der in diesem Tutorial erstellten MVC-Webanwendung für Todo-Listen – Schrittanleitung im ASP NET MVC-Tutorial](./media/documentdb-dotnet-application/asp-net-mvc-tutorial-image01.png)
 
-In dieser exemplarischen Vorgehensweise wird veranschaulicht, wie Sie mit dem von Azure bereitgestellten Azure Cosmos DB-Dienst Daten aus einer in Azure gehosteten ASP.NET MVC-Webanwendung speichern und darauf zugreifen. Ein Tutorial, das nur Azure Cosmos DB und nicht die ASP.NET MVC-Komponenten behandelt, finden Sie unter [Erstellen einer Azure Cosmos DB-C#-Konsolenanwendung](documentdb-get-started.md).
+In dieser exemplarischen Vorgehensweise wird veranschaulicht, wie Sie mit dem Azure Cosmos DB-Dienst Daten aus einer in Azure gehosteten ASP.NET MVC-Webanwendung speichern und darauf zugreifen. Ein Tutorial, das nur Azure Cosmos DB und nicht die ASP.NET MVC-Komponenten behandelt, finden Sie unter [Erstellen einer Azure Cosmos DB-C#-Konsolenanwendung](documentdb-get-started.md).
 
 > [!TIP]
 > Dieses Lernprogramm setzt vorherige Erfahrung mit der Verwendung von ASP.NET MVC und Azure-Websites voraus. Wenn Sie noch nicht mit ASP.NET oder den [erforderlichen Tools](#_Toc395637760) vertraut sind, sollten Sie das vollständige Beispielprojekt von [GitHub][GitHub] herunterladen und den Anweisungen in diesem Beispiel folgen. Nachdem Sie das Projekt erstellt haben, können Sie den Artikel lesen, um Einblick in den Code im Kontext des Projekts zu erhalten.
@@ -45,18 +45,18 @@ In dieser exemplarischen Vorgehensweise wird veranschaulicht, wie Sie mit dem vo
 ## <a name="_Toc395637760"></a>Voraussetzungen für dieses Datenbanktutorial
 Bevor Sie diesen Artikel durcharbeiten, sollten Sie sicherstellen, dass Folgendes vorhanden ist:
 
-* Ein aktives Azure-Konto. Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/) 
+* Ein aktives Azure-Konto. Wenn Sie noch kein Konto haben, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Weitere Informationen finden Sie unter [Kostenloses Azure-Testkonto](https://azure.microsoft.com/pricing/free-trial/). 
 
     OR
 
     Lokale Installation des [Azure Cosmos DB-Emulators](local-emulator.md)
-* [Visual Studio 2015](http://www.visualstudio.com/) oder Visual Studio 2013 Update 4 oder höher. Wenn Sie Visual Studio 2013 verwenden, müssen Sie das [Microsoft.Net.Compilers-NuGet-Paket](https://www.nuget.org/packages/Microsoft.Net.Compilers/) installieren, um die Unterstützung für C# 6.0 hinzuzufügen. 
-* Azure SDK für .NET Version 2.5.1 oder höher, verfügbar über [Microsoft-Webplattform-Installer][Microsoft Web Platform Installer].
+* [Visual Studio 2017](http://www.visualstudio.com/).  
+* Microsoft Azure SDK für .NET für Visual Studio-2017, verfügbar über den Visual Studio-Installer.
 
-Alle Screenshots in diesem Artikel wurden unter Verwendung von Visual Studio 2013 mit Update 4 und Azure SDK für .NET Version 2.5.1 aufgenommen. Wenn Ihr System mit anderen Versionen konfiguriert ist, weichen Ihre Bildschirme und Optionen möglicherweise ab. Wenn Sie jedoch die oben aufgeführten Voraussetzungen erfüllen, sollte diese Lösung funktionieren.
+Alle Screenshots in diesem Artikel wurden mithilfe von Microsoft Visual Studio Community 2017 erstellt. Wenn Ihr System mit einer anderen Version konfiguriert ist, weichen Ihre Bildschirme und Optionen möglicherweise leicht ab. Wenn Sie die oben aufgeführten Voraussetzungen erfüllen, sollte diese Lösung jedoch funktionieren.
 
 ## <a name="_Toc395637761"></a>Schritt 1: Erstellen eines Azure Cosmos DB-Datenbankkontos
-Wir beginnen, indem wir ein Azure Cosmos DB-Konto erstellen. Falls Sie bereits ein Konto besitzen oder den Azure Cosmos DB-Emulator für dieses Tutorial verwenden, können Sie mit [Erstellen einer neuen ASP.NET MVC-Anwendung](#_Toc395637762) fortfahren.
+Wir beginnen, indem wir ein Azure Cosmos DB-Konto erstellen. Falls Sie bereits ein SQL-Konto (DocumentDB) für Azure Cosmos DB besitzen oder den Azure Cosmos DB-Emulator für dieses Tutorial verwenden, können Sie mit [Erstellen einer neuen ASP.NET MVC-Anwendung](#_Toc395637762) fortfahren.
 
 [!INCLUDE [create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
@@ -66,34 +66,25 @@ Wir beginnen, indem wir ein Azure Cosmos DB-Konto erstellen. Falls Sie bereits e
 Im Folgenden wird erläutert, wie eine neue ASP.NET MVC-Anwendung von Grund auf erstellt wird. 
 
 ## <a name="_Toc395637762"></a>Schritt 2: Erstellen einer neuen ASP.NET MVC-Anwendung
-Nun, da Sie über ein Konto verfügen, erstellen wir unser neues ASP.NET-Projekt.
 
-1. Zeigen Sie in Visual Studio im Menü **Datei** auf **Neu**, und klicken Sie dann auf **Projekt**.
-   
-       The **New Project** dialog box appears.
+1. Zeigen Sie in Visual Studio im Menü **Datei** auf **Neu**, und klicken Sie dann auf **Projekt**. Das Dialogfeld **Neues Projekt** wird angezeigt.
+
 2. Erweitern Sie im Bereich **Projekttypen** die Einträge **Vorlagen**, **Visual C#** und **Web**, und wählen Sie dann **ASP.NET-Webanwendung** aus.
-   
-      ![Screenshot des Dialogfelds "Neues Projekt", bei dem der Projekttyp der ASP.NET-Webanwendung hervorgehoben ist](./media/documentdb-dotnet-application/asp-net-mvc-tutorial-image10.png)
+
+      ![Screenshot des Dialogfelds "Neues Projekt", bei dem der Projekttyp der ASP.NET-Webanwendung hervorgehoben ist](./media/documentdb-dotnet-application/asp-net-mvc-tutorial-new-project-dialog.png)
+
 3. Geben Sie im Feld **Name** den Namen des Projekts ein. In diesem Lernprogramm wird der Name "Todo" (Aufgabe) verwendet. Wenn Sie einen anderen Namen verwenden, müssen Sie immer dann, wenn im Lernprogramm der Todo-Namespace genannt wird, die bereitgestellten Codebeispiele auf den von Ihnen verwendeten Namen für Ihre Anwendung ändern. 
 4. Klicken Sie auf **Durchsuchen**, um zu dem Ordner zu navigieren, in dem Sie das Projekt erstellen möchten, und klicken Sie dann auf **OK**.
    
-      Das Dialogfeld **Neues ASP.NET-Projekt** wird angezeigt.
+      Das Dialogfeld **Neue ASP.NET-Webanwendung** wird angezeigt.
    
-      ![Screenshot des Dialogfelds "Neues ASP.NET-Projekt", in dem die MVC-Anwendungsvorlage hervorgehoben und das Feld "Host in der Cloud" aktiviert ist](./media/documentdb-dotnet-application/asp-net-mvc-tutorial-image11.png)
+    ![Screenshot des Dialogfelds „Neue ASP.NET-Webanwendung“ mit hervorgehobener MVC-Anwendungsvorlage](./media/documentdb-dotnet-application/asp-net-mvc-tutorial-MVC.png)
 5. Wählen Sie im Vorlagenbereich **MVC**aus.
-6. Wenn Sie Ihre Anwendung in Azure hosten möchten, aktivieren Sie das Kontrollkästchen **In der Cloud hosten** . Wir haben das Hosten in der Cloud und das Ausführen der auf einer Azure-Website gehosteten Anwendung ausgewählt. Wenn diese Option ausgewählt wird, wird eine Azure-Website vorab bereitgestellt, was die spätere Bereitstellung der endgültigen funktionierenden Anwendung wesentlich erleichtert. Wenn das Projekt nicht in der Cloud gehostet oder Azure nicht im Vorfeld konfiguriert werden soll, deaktivieren Sie das Kontrollkästchen **In der Cloud hosten**.
-7. Klicken Sie auf **OK** , und lassen Sie Visual Studio die leere ASP.NET MVC-Gerüstvorlage erstellen. 
 
-    Wenn Sie die Fehlermeldung „Fehler beim Verarbeiten der Anforderung“ erhalten, helfen Ihnen die Informationen im Abschnitt [Problembehandlung](#troubleshooting) weiter.
+6. Klicken Sie auf **OK** , und lassen Sie Visual Studio die leere ASP.NET MVC-Gerüstvorlage erstellen. 
 
-8. Wenn Sie das Hosten in der Cloud ausgewählt haben, wird mindestens ein zusätzlicher Bildschirm angezeigt, in dem Sie dazu aufgefordert werden, sich bei Ihrem Azure-Konto anzumelden und einige Werte für Ihre neue Website anzugeben. Geben Sie alle zusätzlichen Werte an, und fahren Sie fort. 
-   
-      In diesem Beispiel wurde kein „Datenbankserver“ ausgewählt, da kein Azure SQL-Datenbankserver verwendet wird. Ein neues Azure Cosmos DB-Konto wird zu einem späteren Zeitpunkt im Azure-Portal erstellt.
-   
-    Weitere Informationen zum Auswählen eines **App Service-Plans** und einer **Ressourcengruppe** finden Sie unter [Azure App Service-Pläne – Detaillierte Übersicht](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md).
-   
-      ![Screenshot des Dialogfelds "Microsoft Azure-Website konfigurieren"](./media/documentdb-dotnet-application/image11_1.png)
-9. Wenn Visual Studio die Bausteine der MVC-Anwendung erstellt hat, steht Ihnen eine leere ASP.NET-Anwendung zur Verfügung, die lokal ausgeführt werden kann.
+          
+7. Wenn Visual Studio die Bausteine der MVC-Anwendung erstellt hat, steht Ihnen eine leere ASP.NET-Anwendung zur Verfügung, die lokal ausgeführt werden kann.
    
     Die lokale Ausführung des Projekts wird übersprungen, da sicher alle von Ihnen die ASP.NET-Anwendung "Hello World" gesehen haben. Wir fahren jetzt direkt mit dem Hinzufügen von Azure Cosmos DB zu diesem Projekt und dem Erstellen unserer Anwendung fort.
 
@@ -102,21 +93,22 @@ Da nun ein Großteil des für diese Lösung benötigten ASP.NET MVC-Frameworks s
 
 1. Das Azure Cosmos DB .NET SDK wird als NuGet-Paket verteilt. Verwenden Sie zum Abrufen des NuGet-Pakets in Visual Studio den NuGet-Paket-Manager in Visual Studio, indem Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt klicken und dann auf **NuGet-Pakete verwalten** klicken.
    
-      ![Screenshot der Kontextmenüoptionen für das Webanwendungsprojekt im Projektmappen-Explorer mit Hervorhebung von „NuGet-Pakete verwalten“](./media/documentdb-dotnet-application/image21.png)
+    ![Screenshot der Kontextmenüoptionen für das Webanwendungsprojekt im Projektmappen-Explorer mit Hervorhebung von „NuGet-Pakete verwalten“](./media/documentdb-dotnet-application/asp-net-mvc-tutorial-manage-nuget.png)
    
     Das Dialogfeld **NuGet-Pakete verwalten** wird geöffnet.
-2. Geben Sie im NuGet-Feld **Durchsuchen** den Suchbegriff ***Azure Cosmos DB*** ein.
+2. Geben Sie im NuGet-Feld **Durchsuchen** den Suchbegriff ***Azure DocumentDB*** ein. (Der Paketname wurde nicht für Azure Cosmos DB aktualisiert.)
    
-    Installieren Sie das in den Ergebnissen aufgeführte Paket **Microsoft Azure Cosmos DB-Clientbibliothek**. Das Azure Cosmos DB-Paket sowie alle Abhängigkeiten, z.B. Newtonsoft.Json, werden heruntergeladen und installiert. Klicken Sie im **Vorschaufenster** auf **OK** und im Fenster **Zustimmung zur Lizenz** auf **Ich stimme zu**, um die Installation abzuschließen.
+    Installieren Sie das in den Ergebnissen aufgeführte Paket **Microsoft.Azure.DocumentDB** von Microsoft. Das Azure Cosmos DB-Paket sowie alle Abhängigkeiten, z.B. Newtonsoft.Json, werden heruntergeladen und installiert. Klicken Sie im **Vorschaufenster** auf **OK** und im Fenster **Zustimmung zur Lizenz** auf **Ich stimme zu**, um die Installation abzuschließen.
    
-      ![Screenshot des Fensters „NuGet-Pakete verwalten“, auf dem die Microsoft Azure Cosmos DB-Clientbibliothek hervorgehoben ist](./media/documentdb-dotnet-application/nuget.png)
+    ![Screenshot des Fensters "NuGet-Pakete verwalten", bei dem die Microsoft Azure DocumentDB-Clientbibliothek hervorgehoben ist](./media/documentdb-dotnet-application/asp-net-mvc-tutorial-install-nuget.png)
    
       Alternativ können Sie die Paketverwaltungskonsole verwenden, um das Paket zu installieren. Klicken Sie dafür im Menü **Extras** auf **NuGet-Paket-Manager** und dann auf **Paket-Manager-Konsole**. Geben Sie in der Befehlszeile Folgendes ein.
    
         Install-Package Microsoft.Azure.DocumentDB
+        
 3. Wenn das Paket installiert ist, sollte die Visual Studio-Projektmappe ungefähr wie folgt aussehen und die folgenden zwei neuen Verweise enthalten: Microsoft.Azure.Documents.Client und Newtonsoft.Json.
    
-      ![Screenshot der zwei Verweise, die dem JSON-Datenprojekt im Projektmappen-Explorer hinzugefügt wurden](./media/documentdb-dotnet-application/image22.png)
+    ![Screenshot der zwei Verweise, die dem JSON-Datenprojekt im Projektmappen-Explorer hinzugefügt wurden](./media/documentdb-dotnet-application/asp-net-mvc-tutorial-added-references.png)
 
 ## <a name="_Toc395637763"></a>Schritt 4: Einrichten der ASP.NET MVC-Anwendung
 Jetzt werden der MVC-Anwendung die Modelle, Ansichten und Controller hinzugefügt:
@@ -170,14 +162,14 @@ Das **M** ist damit abgedeckt, und nun wird das **C** (eine Controllerklasse) in
     Das Dialogfeld **Gerüst hinzufügen** wird angezeigt.
 2. Wählen Sie **MVC 5-Controller – Leer** aus, und klicken Sie dann auf **Hinzufügen**.
    
-    ![Screenshot des Dialogfelds "Gerüst hinzufügen", bei dem die Option "MVC 5-Controller - Leer" hervorgehoben ist](./media/documentdb-dotnet-application/image14.png)
+    ![Screenshot des Dialogfelds "Gerüst hinzufügen", bei dem die Option "MVC 5-Controller - Leer" hervorgehoben ist](./media/documentdb-dotnet-application/asp-net-mvc-tutorial-controller-add-scaffold.png)
 3. Geben Sie dem neuen Controller den Namen **ItemController.**
    
-    ![Screenshot des Dialogfelds "Controller hinzufügen"](./media/documentdb-dotnet-application/image15.png)
+    ![Screenshot des Dialogfelds "Controller hinzufügen"](./media/documentdb-dotnet-application/asp-net-mvc-tutorial-add-controller.png)
    
     Nachdem die Datei erstellt wurde, sollte die Visual Studio-Projektmappe ungefähr wie folgt aussehen, und die neue Datei "ItemController.cs" sollte im **Projektmappen-Explorer**angezeigt werden. Die neue Item.cs-Datei, die zuvor erstellt wurde, wird ebenfalls angezeigt.
    
-    ![Screenshot der Visual Studio-Projektmappe - Projektmappen-Explorer, in dem die neue ItemController.cs-Datei und die Item.cs-Datei hervorgehoben sind](./media/documentdb-dotnet-application/image16.png)
+    ![Screenshot der Visual Studio-Projektmappe - Projektmappen-Explorer, in dem die neue ItemController.cs-Datei und die Item.cs-Datei hervorgehoben sind](./media/documentdb-dotnet-application/asp-net-mvc-tutorial-new-item-solution-explorer.png)
    
     Sie können ItemController.cs schließen, darauf kommen wir zu einem späteren Zeitpunkt zurück. 
 
@@ -191,16 +183,15 @@ Nun wird das **V** in MVC erstellt, die Ansichten (Views):
 #### <a name="AddItemIndexView"></a>Hinzufügen einer Elementindexansicht
 1. Erweitern Sie im **Projektmappen-Explorer** den Ordner **Ansichten**, klicken Sie mit der rechten Maustaste auf den leeren Ordner **Item**, der zuvor beim Hinzufügen des **ItemController**-Elements von Visual Studio erstellt wurde, und klicken Sie auf **Hinzufügen** und dann auf **Ansicht**.
    
-    ![Screenshot des Projektmappen-Explorers, in dem der von Visual Studio erstellte Ordner "Element" gezeigt wird und die Befehle "Hinzufügen" > "Ansicht" hervorgehoben sind](./media/documentdb-dotnet-application/image17.png)
+    ![Screenshot des Projektmappen-Explorers, in dem der von Visual Studio erstellte Ordner "Element" gezeigt wird und die Befehle "Hinzufügen" > "Ansicht" hervorgehoben sind](./media/documentdb-dotnet-application/asp-net-mvc-tutorial-add-view.png)
 2. Gehen Sie im Dialogfeld **Ansicht hinzufügen** folgendermaßen vor:
    
    * Geben Sie im Feld **Ansichtsname** den Namen ***Index*** ein.
    * Wählen Sie im Feld **Vorlage** die Option ***Liste*** aus.
    * Wählen Sie im Feld **Modellklasse** die Option ***Item (todo.Models)*** aus.
-   * Lassen Sie das Feld **Datenkontextklasse** leer. 
    * Geben Sie im Feld für die Layoutseite ***~/Views/Shared/_Layout.cshtml*** ein.
      
-     ![Screenshot des Dialogfelds "Ansicht hinzufügen"](./media/documentdb-dotnet-application/image18.png)
+   ![Screenshot des Dialogfelds "Ansicht hinzufügen"](./media/documentdb-dotnet-application/asp-net-mvc-tutorial-add-view-dialog.png)
 3. Wenn alle Werte festgelegt sind, klicken Sie auf **Hinzufügen** , und Visual Studio erstellt eine neue Vorlagenansicht. Wenn dies abgeschlossen ist, wird die erstellte CSHTML-Datei geöffnet. Diese Datei kann in Visual Studio geschlossen werden, da wir erst später darauf zurückkommen.
 
 #### <a name="AddNewIndexView"></a>Hinzufügen einer neuen Elementansicht
@@ -212,10 +203,9 @@ Nun wird das **V** in MVC erstellt, die Ansichten (Views):
    * Geben Sie im Feld **Ansichtsname** den Namen ***Create*** ein.
    * Wählen Sie im Feld **Vorlage** die Option ***Erstellen*** aus.
    * Wählen Sie im Feld **Modellklasse** die Option ***Item (todo.Models)*** aus.
-   * Lassen Sie das Feld **Datenkontextklasse** leer.
    * Geben Sie im Feld für die Layoutseite ***~/Views/Shared/_Layout.cshtml*** ein.
    * Klicken Sie auf **Hinzufügen**.
-
+   
 #### <a name="_Toc395888515"></a>Hinzufügen einer Elementbearbeitungsansicht
 Fügen Sie abschließend eine letzte Ansicht zum Bearbeiten eines **Elements** auf dieselbe Art wie vorher hinzu.
 
@@ -225,7 +215,6 @@ Fügen Sie abschließend eine letzte Ansicht zum Bearbeiten eines **Elements** a
    * Geben Sie im Feld **Ansichtsname** den Namen ***Edit*** ein.
    * Wählen Sie im Feld **Vorlage** die Option ***Bearbeiten*** aus.
    * Wählen Sie im Feld **Modellklasse** die Option ***Item (todo.Models)*** aus.
-   * Lassen Sie das Feld **Datenkontextklasse** leer. 
    * Geben Sie im Feld für die Layoutseite ***~/Views/Shared/_Layout.cshtml*** ein.
    * Klicken Sie auf **Hinzufügen**.
 
@@ -252,7 +241,8 @@ Hier muss zunächst eine Klasse hinzugefügt werden, die die gesamte Logik zur V
         using System.Configuration;
         using System.Linq.Expressions;
         using System.Threading.Tasks;
-   
+        using System.Net
+        
     Ersetzen Sie jetzt diesen Code 
    
         public class DocumentDBRepository
@@ -317,7 +307,7 @@ Hier muss zunächst eine Klasse hinzugefügt werden, die die gesamte Logik zur V
         }
    
    > [!TIP]
-   > Beim Erstellen einer neuen Dokumentensammlung können Sie einen optionalen RequestOptions-Parameter vom Angebotstyp bereitstellen, sodass die Leistungsfähigkeit der neuen Sammlung angegeben werden kann. Wenn dieser Parameter nicht übergeben wird, wird der Standardtangebotstyp verwendet. Weitere Informationen zu Azure Cosmos DB-Angebotstypen finden Sie unter [Azure Cosmos DB Performance Levels](performance-levels.md) (Azure Cosmos DB-Leistungsstufen).
+   > Beim Erstellen einer neuen Dokumentensammlung können Sie einen optionalen RequestOptions-Parameter vom Angebotstyp bereitstellen, sodass die Leistungsfähigkeit der neuen Sammlung angegeben werden kann. Wenn dieser Parameter nicht übergeben wird, wird der Standardtangebotstyp verwendet. Weitere Informationen zu Azure Cosmos DB-Angebotstypen finden Sie unter [Azure Cosmos DB-Leistungsstufen](performance-levels.md).
    > 
    > 
 3. Nun werden einige Werte aus der Konfiguration gelesen. Öffnen Sie die Datei **Web.config** Ihrer Anwendung, und fügen Sie die folgenden Zeilen unter dem Abschnitt `<AppSettings>` hinzu.
@@ -389,7 +379,7 @@ Wenn Sie jetzt die Anwendung ausführen, wird Ihr **ItemController** aufgerufen.
 
 Wenn Sie dieses Projekt jetzt erstellen und ausführen, sollte ein Ergebnis ähnlich dem folgenden angezeigt werden.    
 
-![Screenshot der in diesem Datenbanklernprogramm erstellten Aufgabenliste-Webanwendung](./media/documentdb-dotnet-application/image23.png)
+![Screenshot der in diesem Datenbanklernprogramm erstellten Aufgabenliste-Webanwendung](./media/documentdb-dotnet-application/build-and-run-the-project-now.png)
 
 ### <a name="_Toc395637771"></a>Hinzufügen von Elementen
 Als Nächstes werden einige Elemente zur Datenbank hinzugefügt, damit mehr als eine leere Tabelle angezeigt wird.
@@ -516,55 +506,48 @@ Um die Anwendung lokal zu testen, führen Sie die folgenden Schritte aus:
 
 1. Drücken Sie in Visual Studio F5 , um die Anwendung im Debugmodus zu erstellen. Die Anwendung sollte erstellt, und ein Browser mit der zuvor angezeigten leeren Rasterseite sollte geöffnet werden:
    
-    ![Screenshot der in diesem Datenbanklernprogramm erstellten Aufgabenliste-Webanwendung](./media/documentdb-dotnet-application/image24.png)
+    ![Screenshot der in diesem Datenbanklernprogramm erstellten Aufgabenliste-Webanwendung](./media/documentdb-dotnet-application/asp-net-mvc-tutorial-create-an-item-a.png)
    
-    Wenn Sie Visual Studio 2013 verwenden und den Fehler „Kann nicht im Text einer catch-Klausel warten“ erhalten, müssen Sie das [Microsoft.Net.Compilers-NuGet-Paket](https://www.nuget.org/packages/Microsoft.Net.Compilers/) installieren. Sie können Ihren Code auch mit dem Beispielprojekt auf [GitHub][GitHub] vergleichen. 
+     
 2. Klicken Sie auf den Link **Neu erstellen**, und fügen Sie Werte in die Felder **Name** und **Beschreibung** ein. Lassen Sie das Kontrollkästchen **Abgeschlossen** deaktiviert, da das neue hinzugefügte **Element** sonst den Status „Abgeschlossen“ hat und nicht in der Anfangsliste erscheint.
    
-    ![Screenshot der Ansicht "Erstellen"](./media/documentdb-dotnet-application/image25.png)
+    ![Screenshot der Ansicht "Erstellen"](./media/documentdb-dotnet-application/asp-net-mvc-tutorial-create-new-item.png)
 3. Klicken Sie auf **Erstellen**. Sie werden zur Ansicht **Index** zurückgeleitet, und Ihr **Element** wird in der Liste angezeigt.
    
-    ![Screenshot der Ansicht "Index"](./media/documentdb-dotnet-application/image26.png)
+    ![Screenshot der Ansicht "Index"](./media/documentdb-dotnet-application/asp-net-mvc-tutorial-create-an-item.png)
    
     Sie können weitere **Elemente** zu Ihrer "Todo"-Liste hinzufügen.
+    
 4. Wenn Sie auf **Bearbeiten** neben einem **Element** in der Liste klicken, werden Sie zur Ansicht **Edit** weitergeleitet, in der Sie beliebige Eigenschaften Ihres Objekts aktualisieren können, einschließlich der Markierung als **Abgeschlossen**. Wenn Sie das Flag **Abgeschlossen** markieren und auf **Speichern** klicken, wird das **Element** aus der Liste der nicht abgeschlossenen Aufgaben entfernt.
    
-    ![Screenshot der Ansicht "Index" mit dem Feld "Abgeschlossen" aktiviert](./media/documentdb-dotnet-application/image27.png)
+    ![Screenshot der Ansicht "Index" mit dem Feld "Abgeschlossen" aktiviert](./media/documentdb-dotnet-application/asp-net-mvc-tutorial-completed-item.png)
 5. Nachdem Sie die App getestet haben, drücken Sie STRG+F5, um das Debuggen der App zu beenden. Jetzt können Sie Ihre App bereitstellen.
 
-## <a name="_Toc395637774"></a>Schritt 7: Bereitstellen der Anwendung in Azure-Websites
-Nachdem die vollständige Anwendung korrekt mit Azure Cosmos DB zusammenarbeitet, stellen wir diese Web-App in Azure-Websites bereit. Wenn Sie beim Erstellen des leeren ASP.NET MVC-Projekts **In der Cloud hosten** ausgewählt haben, ist das Bereitstellen mit Visual Studio wirklich einfach, da Ihnen die meiste Arbeit abgenommen wird. 
+## <a name="_Toc395637774"></a>Schritt 7: Bereitstellen der Anwendung in Azure App Service 
+Nachdem die vollständige Anwendung korrekt mit Azure Cosmos DB zusammenarbeitet, stellen wir diese Web-App in Azure App Service bereit.  
 
 1. Zum Veröffentlichen der Anwendung müssen Sie lediglich im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt klicken und **Veröffentlichen** wählen.
    
-    ![Screenshot der Option "Veröffentlichen" im Projektmappen-Explorer](./media/documentdb-dotnet-application/image28.png)
-2. Alles sollte bereits Ihren Anmeldeinformationen entsprechend konfiguriert sein. Tatsächlich wurde die Website bereits unter der angezeigten **Ziel-URL** in Azure erstellt, und Sie müssen nur noch auf **Veröffentlichen** klicken.
+    ![Screenshot der Option "Veröffentlichen" im Projektmappen-Explorer](./media/documentdb-dotnet-application/asp-net-mvc-tutorial-publish.png)
+
+2. Klicken Sie im Dialogfeld **Veröffentlichen** auf **Microsoft Azure App Service**, und wählen Sie dann **Neu erstellen** aus, um ein App Service-Profil zu erstellen, oder klicken Sie auf **Vorhandenes auswählen**, um ein vorhandenes Profil zu verwenden.
+
+    ![Dialogfeld „Veröffentlichen“ in Visual Studio](./media/documentdb-dotnet-application/asp-net-mvc-tutorial-publish-to-existing.png)
+
+3. Wenn Sie bereits über ein Azure App Service-Profil verfügen, geben Sie den Abonnementnamen ein. Sortieren Sie mithilfe des Filters **Ansicht** nach der Ressourcengruppe oder dem Ressourcentyp, und wählen Sie dann Ihren Azure App Service aus. 
    
-    ![Screenshot des Dialogfelds "Web veröffentlichen" in Visual Studio – Schrittanleitung im ASP NET MVC-Tutorial](./media/documentdb-dotnet-application/image29.png)
+    ![Dialogfeld „App Service“ in Visual Studio](./media/documentdb-dotnet-application/asp-net-mvc-tutorial-app-service.png)
 
-Dann schließt Visual Studio die Veröffentlichung Ihrer Webanwendung in wenigen Sekunden ab und startet einen Browser, in dem das Ergebnis Ihrer Arbeit in Azure ausgeführt wird!
+4. Um ein neues Azure App Service-Profil zu erstellen, klicken Sie im Dialogfeld **Veröffentlichen** auf **Neu erstellen**. Geben Sie im Dialogfeld **App Service erstellen** den Namen Ihrer Web-App und das entsprechende Abonnement, die Ressourcengruppe und den App Service-Plan ein, und klicken Sie auf **Erstellen**.
 
-## <a name="Troubleshooting"></a>Problembehandlung
+    ![Dialogfeld „App Service erstellen“ in Visual Studio](./media/documentdb-dotnet-application/asp-net-mvc-tutorial-create-app-service.png)
 
-Gehen Sie wie folgt vor, wenn Sie beim Versuch, die Web-App bereitzustellen, die Meldung „Fehler beim Verarbeiten der Anforderung“ erhalten: 
+Visual Studio schließt die Veröffentlichung Ihrer Webanwendung in wenigen Sekunden ab und startet einen Browser, in dem das Ergebnis Ihrer Arbeit in Azure ausgeführt wird.
 
-1. Brechen Sie die Fehlermeldung ab, und wählen Sie erneut **Microsoft Azure-Web-Apps**. 
-2. Melden Sie sich an, und wählen Sie **Neu**, um eine neue Web-App zu erstellen. 
-3. Gehen Sie unter **Erstellen einer Web-App in Microsoft Azure** wie folgt vor: 
-    
-    - Web-App-Name: „todo-net-app“
-    - App Service-Plan: Neu erstellen, Name „todo-net-app“
-    - Ressourcengruppe: Neu erstellen, Name „todo-net-app“
-    - Region: Wählen Sie die Region aus, die für Ihre App-Benutzer am nächsten liegt.
-    - Datenbankserver: Klicken Sie auf „Keine Datenbank“ und dann auf **Erstellen**. 
-
-4. Klicken Sie unter „todo-net-app* auf **Verbindung überprüfen**. Wählen Sie nach der Überprüfung der Verbindung die Option **Veröffentlichen**. 
-    
-    Die App wird in Ihrem Browser angezeigt.
 
 
 ## <a name="_Toc395637775"></a>Nächste Schritte
-Glückwunsch! Sie haben soeben Ihre erste ASP.NET MVC-Webanwendung unter Verwendung von Azure Cosmos DB erstellt und in Azure-Websites veröffentlicht. Der Quellcode für die vollständige Anwendung, einschließlich der Detail- und Löschfunktionen, die in diesem Lernprogramm nicht enthalten waren, kann von [GitHub][GitHub] heruntergeladen oder geklont werden. Wenn Sie diese Funktionen also zu Ihrer App hinzufügen möchten, laden Sie den Code herunter, und fügen Sie ihn dieser App hinzu.
+Glückwunsch! Sie haben soeben Ihre erste ASP.NET MVC-Webanwendung unter Verwendung von Azure Cosmos DB erstellt und in Azure veröffentlicht. Der Quellcode für die vollständige Anwendung, einschließlich der Detail- und Löschfunktionen, die in diesem Lernprogramm nicht enthalten waren, kann von [GitHub][GitHub] heruntergeladen oder geklont werden. Wenn Sie diese Funktionen also zu Ihrer App hinzufügen möchten, laden Sie den Code herunter, und fügen Sie ihn dieser App hinzu.
 
 Wenn Sie Ihrer Anwendung zusätzliche Funktionen hinzufügen möchten, können Sie sich die APIs in der [Azure Cosmos DB .NET-Bibliothek](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet) ansehen. Sie können auch gerne eigene Beiträge zur Azure Cosmos DB .NET-Bibliothek auf [GitHub][GitHub] schreiben. 
 

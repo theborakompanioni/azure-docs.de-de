@@ -12,18 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/17/2016
+ms.date: 08/02/2017
 ms.author: jgao
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
-ms.openlocfilehash: 2e5dbaf595e3d3cd7dee09431fbb1cb6f2403ef4
+ms.translationtype: HT
+ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
+ms.openlocfilehash: 8f1729f84a4fde2a56427a41b356d6263818519e
 ms.contentlocale: de-de
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="use-job-browser-and-job-view-for-azure-data-lake-analytics-jobs"></a>Verwenden des Auftragsbrowsers und der Auftragsansicht für Azure Data Lake Analytics-Aufträge
-Der Dienst „Azure Data Lake Analytics“ archiviert die übermittelten Aufträge in einem [Abfragespeicher](#query-store). In diesem Artikel erfahren Sie, wie Sie den Auftragsbrowser und die Auftragsansicht in Azure Data Lake-Tools für Visual Studio verwenden, um die Verlaufsinformationen zu Aufträgen zu suchen. 
+Der Dienst Azure Data Lake Analytics archiviert die übermittelten Aufträge in einem [Abfragespeicher](#query-store). In diesem Artikel erfahren Sie, wie Sie den Auftragsbrowser und die Auftragsansicht in Azure Data Lake-Tools für Visual Studio verwenden, um die Verlaufsinformationen zu Aufträgen zu suchen. 
 
 Data Lake Analytics archiviert Aufträge standardmäßig für 30 Tage. Der Ablaufzeitraum kann im Azure-Portal über die benutzerdefinierte Ablaufrichtlinie konfiguriert werden. Nach dem Ablauf können Sie nicht mehr auf die Auftragsinformationen zugreifen. 
 
@@ -31,7 +30,7 @@ Data Lake Analytics archiviert Aufträge standardmäßig für 30 Tage. Der Ablau
 Informationen finden Sie unter [Voraussetzungen für Azure Data Lake-Tools für Visual Studio](data-lake-analytics-data-lake-tools-get-started.md#prerequisites).
 
 ## <a name="open-the-job-browser"></a>Öffnen des Auftragsbrowsers
-Sie können den Auftragsbrowser in Visual Studio über **Server-Explorer > Azure > Data Lake Analytics > Aufträge** aufrufen.  Mithilfe des Browsers können Sie auf den Abfragespeicher eines Data Lake Analytics-Kontos zugreifen. Der Auftragsbrowser zeigt den Abfragespeicher mit grundlegenden Informationen zu Aufträgen im linken Bereich und die Auftragsansicht mit detaillierten Informationen zu einem Auftrag im linken Bereich an.
+Rufen Sie den Auftragsbrowser in Visual Studio über **Server-Explorer > Azure > Data Lake Analytics > Aufträge** auf.  Mithilfe des Auftragsbrowsers können Sie auf den Abfragespeicher eines Data Lake Analytics-Kontos zugreifen. Im Auftragsbrowser wird links der Abfragespeicher mit allgemeinen Auftragsinformationen und rechts die Auftragsansicht mit ausführlichen Auftragsinformationen angezeigt.
 
 ## <a name="job-view"></a>Die Auftragsansicht
 Die Auftragsansicht zeigt detaillierte Informationen zu einem Auftrag an. Sie können einen Auftrag öffnen, indem Sie im Auftragsbrowser darauf doppelklicken oder indem Sie im Data Lake-Menü auf die Auftragsansicht klicken. Daraufhin sollte ein Dialogfeld mit der URL des Auftrags angezeigt werden.

@@ -12,14 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/02/2017
+ms.date: 08/08/2017
 ms.author: dobett
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: c3646fef95bc06f8febe45718f4f9aeb9aefb42a
+ms.translationtype: HT
+ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
+ms.openlocfilehash: 0e08557b126620a6c7dbbdb5dece423e7a0c2535
 ms.contentlocale: de-de
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 08/09/2017
 
 ---
 # <a name="glossary-of-iot-hub-terms"></a>Glossar mit IoT Hub-Begriffen
@@ -107,7 +106,7 @@ Bezieht sich auf Informationen zum Gerätezustand, z.B. die derzeit verwendete V
 Gerätedaten sind Daten, die pro Gerät in der IoT Hub-[Identitätsregistrierung](#identity-registry) gespeichert werden. Es ist möglich, diese Daten zu importieren und zu exportieren.
 
 ## <a name="device-explorer"></a>Device Explorer
-Der [Device Explorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) ist ein Tool, das unter Windows ausgeführt wird und Ihnen das Verwalten von Geräten in der [Identitätsregistrierung](#identity-registry) und das Senden und Empfangen von Nachrichten für Ihre Geräte ermöglicht.
+Der [Device Explorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) ist ein Tool, das unter Windows ausgeführt wird und Ihnen das Verwalten von Geräten in der [Identitätsregistrierung](#identity-registry) ermöglicht. Darüber hinaus kann das Tool Nachrichten senden und empfangen.
 
 ## <a name="device-identities-rest-api"></a>Geräteidentitäten – REST-API
 Mit der [REST-API für Geräteidentitäten](https://docs.microsoft.com/rest/api/iothub/iothubresource) können Sie Ihre Geräte, die in der [Identitätsregistrierung](#identity-registry) registriert sind, mit einer REST-API verwalten. Es ist in der Regel ratsam, ein allgemeines [Dienst-SDK](#azure-iot-service-sdks) zu nutzen, wie in den IoT Hub-Tutorials veranschaulicht.
