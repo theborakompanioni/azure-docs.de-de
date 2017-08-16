@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 6/28/2017
 ms.author: danlep
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
-ms.openlocfilehash: 0cb70d36bd6e8d4cf5fcd5ed4a3e85c42f3cf81d
+ms.translationtype: HT
+ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
+ms.openlocfilehash: d4548c6f21d04effd57ea36e4fc0d15f77568903
 ms.contentlocale: de-de
-ms.lasthandoff: 06/30/2017
+ms.lasthandoff: 08/09/2017
 
 ---
 
@@ -57,8 +57,7 @@ ssh-keygen \
 
 `ssh-keygen` = zum Erstellen der Schlüssel verwendetes Programm
 
-`-t rsa` = Typ des zu erstellenden Schlüssels, also RSA-Format [Wikipedia](https://de.wikipedia.org/wiki/RSA-Kryptosystem)
-
+`-t rsa` = Typ des zu erstellenden Schlüssels, also RSA-Format [Wikipedia][Klammern am Ende](`https://en.wikipedia.org/wiki/RSA_(cryptosystem) `)
 `-b 2048` = Bits des Schlüssels
 
 `-C "azureuser@myserver"` = ein Kommentar, der zur einfachen Identifizierung am Ende der Datei mit dem öffentlichen Schlüssel angefügt wird.  Normalerweise wird eine E-Mail-Adresse als Kommentar verwendet, aber Sie können je nach Eignung für Ihre Infrastruktur auch etwas anderes angeben.

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: masaran;markgal
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
-ms.openlocfilehash: bd7694374034faa5ef1df84397580d80e3f40e43
+ms.translationtype: HT
+ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
+ms.openlocfilehash: 1bbb16afef7940933b4c3ae23873f212770137e0
 ms.contentlocale: de-de
-ms.lasthandoff: 06/20/2017
+ms.lasthandoff: 08/04/2017
 
 ---
 
@@ -241,6 +241,39 @@ In den folgenden Abschnitten wird beschrieben, wie Schutz-Agents für Clientcomp
 4. Für einen Clientcomputer, der nicht mit dem Netzwerk verbunden ist, enthält die Spalte **Agent-Status** so lange den Status **Update ausstehend**, bis der Computer mit dem Netzwerk verbunden wird.
 
   Sobald ein Clientcomputer mit dem Netzwerk verbunden ist, enthält die Spalte **Agent-Updates** für den Clientcomputer den Status **Wird aktualisiert**.
+  
+### <a name="move-legacy-protection-groups-from-old-version-and-sync-the-new-version-with-azure"></a>Verschieben von älteren Schutzgruppen aus der alten Version und Synchronisieren der neuen Version mit Azure
+
+Nachdem sowohl Azure Backup Server als auch das Betriebssystem aktualisiert wurden, können Sie neue Datenquellen per Modern Backup Storage schützen. Für bereits geschützte Datenquellen gilt aber weiterhin der Legacyschutz wie unter Azure Backup Server, während für alle neuen Schutzvorgänge Modern Backup Storage genutzt wird.
+
+Die unten angegebenen Schritte dienen zum Migrieren von Datenquellen aus dem Legacyschutzmodus zu Modern Backup Storage.
+
+• Fügen Sie die neuen Volumes dem DPM-Speicherpool hinzu, und weisen Sie Anzeigenamen und Datenquellentags hinzu, falls erforderlich.
+• Beenden Sie für alle Datenquellen, die sich im Legacymodus befinden, den Schutz der Datenquellen, und wählen Sie „Geschützte Daten beibehalten“.  Dies ermöglicht die Wiederherstellung alter Wiederherstellungspunkte nach der Migration.
+
+• Erstellen Sie eine neue Schutzgruppe, und wählen Sie die Datenquellen aus, die im neuen Format gespeichert werden sollen.
+• DPM führt lokal einen Replikatkopiervorgang aus dem Legacysicherungsspeicher auf das Modern Backup Storage-Volume durch.
+Hinweis: Dies wird als Auftrag nach dem Wiederherstellungsvorgang angesehen. • Alle neuen Synchronisierungs- und Wiederherstellungspunkte werden dann in Modern Backup Storage gespeichert.
+• Alte Wiederherstellungspunkte werden ausgesondert, wenn sie ablaufen, damit Speicherplatz auf dem Datenträger freigegeben wird.
+• Nachdem alle Legacyvolumes aus dem alten Speicher gelöscht wurden, kann der Datenträger aus Azure Backup und vom System entfernt werden.
+• Erstellen Sie eine Sicherung der Azure DPMDB.
+
+Teil 2: - Wichtige Elemente: Der neue Server muss den gleichen Namen wie der ursprüngliche Azure Backup-Server erhalten. Sie können den Namen des neuen Azure Backup-Servers nicht ändern, wenn Sie den alten Speicherpool und DPMDB zum Beibehalten von Wiederherstellungspunkten verwenden möchten. - Es muss eine Sicherung von DPMDB vorhanden sein, da eine Wiederherstellung durchgeführt werden muss.
+
+1) Fahren Sie den ursprünglichen Azure Backup-Server herunter, oder stellen Sie ihn außer Dienst.
+2) Setzen Sie das Computerkonto in Active Directory zurück.
+3) Installieren Sie Server 2016 auf dem neuen Computer, und vergeben Sie den gleichen Namen wie für den ursprünglichen Azure Backup-Server.
+4) Führen Sie den Domänenbeitritt durch.
+5) Installieren Sie Azure Backup Server V2. (Verschieben Sie den DPM-Speicherpool vom alten Server, und führen Sie den Import durch.)
+6) Stellen Sie die DPMDB vom Ende von Teil 2 wieder her.
+7) Fügen Sie den Speicher vom ursprünglichen Sicherungsserver an den neuen Server an.
+8) Stellen Sie die DPMDB über SQL wieder her.
+9) Wechseln Sie in der Administrator-Befehlszeile auf dem neuen Server per „cd“ zum Installationsspeicherort von Microsoft Azure Backup und in den Ordner „bin“.
+
+Pfadbeispiel: C:\windows\system32>cd „c:\Programme\Microsoft Azure Backup\DPM\DPM\bin\“
+Zu Azure Backup: DPMSYNC -SYNC ausführen
+
+10) Führen Sie DPMSYNC -SYNC aus. Hinweis: Wenn Sie dem DPM-Speicherpool NEUE Datenträger hinzugefügt haben, anstatt alte zu verschieben, müssen Sie Folgendes ausführen: „DPMSYNC -Reallocatereplica“.
 
 ## <a name="new-powershell-cmdlets-in-v2"></a>Neue PowerShell-Cmdlets in v2
 

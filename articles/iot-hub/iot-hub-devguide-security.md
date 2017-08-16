@@ -12,19 +12,16 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/04/2017
+ms.date: 08/08/2017
 ms.author: dobett
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: 6287fa716c708cf35a5d124756c488929a93b435
+ms.translationtype: HT
+ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
+ms.openlocfilehash: e4fe5400ffcf4446392015aada031dd4dfbf238a
 ms.contentlocale: de-de
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="control-access-to-iot-hub"></a>Verwalten des Zugriffs auf IoT Hub
-
-## <a name="overview"></a>Übersicht
 
 In diesem Artikel werden die Optionen zum Sichern Ihres IoT Hubs beschrieben. IoT Hub verwendet *Berechtigungen*, um Zugriff auf den Endpunkt jedes IoT Hubs zu gewähren. Berechtigungen beschränkten den Zugriff auf einen IoT Hub basierend auf der Funktionalität.
 
@@ -117,15 +114,18 @@ Dieser Mechanismus ist mit einer [Event Hubs-Herausgeberrichtlinie][lnk-event-hu
 
 ## <a name="security-tokens"></a>Sicherheitstoken
 
-IoT Hub verwendet Sicherheitstoken zum Authentifizieren von Geräten und Diensten, um das Senden von Schlüsseln über das Netzwerk zu vermeiden. Darüber hinaus sind Sicherheitstoken im Hinblick auf Gültigkeitszeitraum und Bereich beschränkt. [Azure IoT SDKs][lnk-sdks] generieren Token automatisch, ohne dass eine spezielle Konfiguration erforderlich ist. In einigen Szenarien müssen Sie Sicherheitstoken jedoch direkt generieren und verwenden. Zu diesen Szenarien gehören die direkte Verwendung von MQTT-, AMQP- oder HTTP-Oberflächen oder die Implementierung des Tokendienstmusters, wie unter [Benutzerdefinierte Geräteauthentifizierung][lnk-custom-auth] erläutert.
+IoT Hub verwendet Sicherheitstoken zum Authentifizieren von Geräten und Diensten, um das Senden von Schlüsseln über das Netzwerk zu vermeiden. Darüber hinaus sind Sicherheitstoken im Hinblick auf Gültigkeitszeitraum und Bereich beschränkt. [Azure IoT SDKs][lnk-sdks] generieren Token automatisch, ohne dass eine spezielle Konfiguration erforderlich ist. In einigen Szenarien müssen Sie Sicherheitstoken allerdings direkt generieren und verwenden. Zu diesen Szenarien zählen:
 
-IoT Hub ermöglicht Geräten darüber hinaus die Authentifizierung bei IoT Hub mithilfe von [X.509-Zertifikaten][lnk-x509]. 
+* Die direkte Verwendung von MQTT, AMQP oder HTTP
+* Die Implementierung des Tokendienstmusters, wie unter [Benutzerdefinierte Geräteauthentifizierung][lnk-custom-auth] beschrieben
+
+IoT Hub ermöglicht Geräten darüber hinaus die Authentifizierung bei IoT Hub mithilfe von [X.509-Zertifikaten][lnk-x509].
 
 ### <a name="security-token-structure"></a>Struktur von Sicherheitstoken
 
-Sie verwenden Sicherheitstoken, um zeitlich begrenzten Zugriff auf Geräte und Dienste für bestimmte Funktionen in IoT Hub zu gewähren. Um sicherzustellen, dass nur autorisierte Geräte und Dienste eine Verbindung herstellen können, müssen Sicherheitstoken mit einem Schlüssel für den gemeinsamen Zugriff oder einem symmetrischen Schlüssel signiert werden. Diese Schlüssel werden mit einer Geräteidentität in der Identitätsregistrierung gespeichert.
+Sie verwenden Sicherheitstoken, um zeitlich begrenzten Zugriff auf Geräte und Dienste für bestimmte Funktionen in IoT Hub zu gewähren. Zur Autorisierung der Verbindungsherstellung mit IoT Hub müssen Geräte und Dienste Sicherheitstoken senden, die entweder mit einem freigegebenen Zugriffsschlüssel oder mit einem symmetrischen Schlüssel signiert sind. Diese Schlüssel werden mit einer Geräteidentität in der Identitätsregistrierung gespeichert.
 
-Ein mit einem Schlüssel für den gemeinsamen Zugriff signiertes Token gewährt Zugriff auf alle Funktionen, die den SAS-Richtlinienberechtigungen zugeordnet sind. Dagegen erteilt ein mit einem symmetrischen Schlüssel der Geräteidentität signiertes Token nur die **DeviceConnect** -Berechtigung für die zugeordnete Geräteidentität.
+Ein mit einem Schlüssel für den gemeinsamen Zugriff signiertes Token gewährt Zugriff auf alle Funktionen, die den SAS-Richtlinienberechtigungen zugeordnet sind. Ein Token, das mit einem symmetrischen Schlüssel der Geräteidentität signiert ist, erteilt nur die Berechtigung **DeviceConnect** für die zugeordnete Geräteidentität.
 
 Das Sicherheitstoken weist das folgende Format auf:
 
@@ -242,14 +242,14 @@ Das Ergebnis, das Zugriff auf alle Funktionen für „device1“ gewährt wird, 
 
 ### <a name="use-a-shared-access-policy"></a>Verwenden einer SAS-Richtlinie
 
-Beim Erstellen eines Tokens aus einer SAS-Richtlinie muss das Feld für den Richtliniennamen `skn` auf den Namen der verwendeten Richtlinie festgelegt werden. Darüber hinaus muss die Richtlinie die **DeviceConnect** -Berechtigung erteilen.
+Wenn Sie ein Token auf der Grundlage einer SAS-Richtlinie erstellen, legen Sie das Feld `skn` auf den Namen der Richtlinie fest. Diese Richtlinie muss die Berechtigung **DeviceConnect** erteilen.
 
 Die beiden wichtigsten Szenarien für die Verwendung von SAS-Richtlinien für den Zugriff auf Gerätefunktionen sind:
 
 * [Protokollgateways für Clouds][lnk-endpoints]
 * [Tokendienste][lnk-custom-auth], die verwendet werden, um benutzerdefinierte Authentifizierungsschemas zu implementieren
 
-Da die SAS-Richtlinie potenziell Zugriff gewähren kann, um als ein beliebiges Gerät eine Verbindung herzustellen, ist es wichtig, beim Erstellen von Sicherheitstoken den richtigen Ressourcen-URI zu verwenden. Dies ist besonders wichtig für Tokendienste, die das Token mit dem Ressourcen-URI auf ein bestimmtes Gerät festlegen müssen. Dieser Punkt ist weniger relevant für Protokollgateways, da sie Datenverkehr bereits für alle Geräte vermitteln.
+Da die SAS-Richtlinie potenziell Zugriff gewähren kann, um als ein beliebiges Gerät eine Verbindung herzustellen, ist es wichtig, beim Erstellen von Sicherheitstoken den richtigen Ressourcen-URI zu verwenden. Diese Einstellung ist besonders wichtig für Tokendienste, die das Token mit dem Ressourcen-URI auf ein bestimmtes Gerät festlegen müssen. Dieser Punkt ist weniger relevant für Protokollgateways, da sie Datenverkehr bereits für alle Geräte vermitteln.
 
 Beispielsweise würde ein Tokendienst, der die vorab erstellte SAS-Richtlinie mit dem Namen **device** verwendet, ein Token mit den folgenden Parametern erstellen:
 
@@ -278,7 +278,7 @@ Ein Protokollgateway könnte das gleiche Token für alle Geräte verwenden, inde
 
 Dienstkomponenten können nur Sicherheitstoken mithilfe von SAS-Richtlinien generieren, die die entsprechenden Berechtigungen erteilen, wie bereits erläutert.
 
-Hier sind die Dienstfunktionen, die für die Endpunkte verfügbar gemacht werden:
+Im Anschluss finden Sie die Dienstfunktionen, die für die Endpunkte verfügbar gemacht werden:
 
 | Endpunkt | Funktionalität |
 | --- | --- |
@@ -312,7 +312,7 @@ Sie können ein beliebiges X.509-Zertifikat zum Authentifizieren eines Geräts b
 
 * **Ein vorhandenes X.509-Zertifikat**. Einem Gerät ist möglicherweise bereits ein X.509-Zertifikat zugeordnet. Das Gerät kann dieses Zertifikat für die Authentifizierung bei IoT Hub verwenden.
 * **Ein selbst generiertes und selbstsigniertes X.509-Zertifikat**. Ein Gerätehersteller oder interner Bereitsteller kann diese Zertifikate generieren und den entsprechenden privaten Schlüssel (und das Zertifikat) auf dem Gerät speichern. Sie können dafür Tools wie etwa [OpenSSL][lnk-openssl] und das Windows-Hilfsprogramm [SelfSignedCertificate][lnk-selfsigned] verwenden.
-* **Ein von einer Zertifizierungsstelle signiertes X.509-Zertifikat**. Sie können auch ein von einer Zertifizierungsstelle generiertes und signiertes X.509-Zertifikat verwenden, um ein Gerät zu identifizieren und das Gerät bei IoT Hub zu authentifizieren. IoTHub überprüft lediglich, ob der verwendete Fingerabdruck dem konfigurierten Fingerabdruck entspricht. Die Zertifikatkette wird dagegen nicht überprüft.
+* **Ein von einer Zertifizierungsstelle signiertes X.509-Zertifikat**. Sie können auch ein von einer Zertifizierungsstelle generiertes und signiertes X.509-Zertifikat verwenden, um ein Gerät zu identifizieren und bei IoT Hub zu authentifizieren. IoT Hub überprüft lediglich, ob der verwendete Fingerabdruck dem konfigurierten Fingerabdruck entspricht. Die Zertifikatkette wird dagegen nicht überprüft.
 
 Ein Gerät verwendet entweder ein X.509-Zertifikat oder ein Sicherheitstoken für die Authentifizierung, aber nicht beides.
 
@@ -350,7 +350,7 @@ Das [Azure IoT-Geräte-SDK für .NET][lnk-client-sdk] (mindestens Version 1.0.11
 
 ### <a name="c-support"></a>C\#-Unterstützung
 
-Die Klasse **DeviceAuthenticationWithX509Certificate** unterstützt die Erstellung von  **DeviceClient**-Instanzen mithilfe eines X.509-Zertifikats. Das X.509-Zertifikat muss im PFX-Format (auch als „PKCS #12“ bezeichnet) vorliegen, das den privaten Schlüssel enthält.
+Die Klasse **DeviceAuthenticationWithX509Certificate** unterstützt die Erstellung von **DeviceClient**-Instanzen mithilfe eines X.509-Zertifikats. Das X.509-Zertifikat muss im PFX-Format (auch als „PKCS #12“ bezeichnet) vorliegen, das den privaten Schlüssel enthält.
 
 Hier sehen Sie ein Beispiel für einen Codeausschnitt:
 
@@ -362,7 +362,7 @@ var deviceClient = DeviceClient.Create("<IotHub DNS HostName>", authMethod);
 
 ## <a name="custom-device-authentication"></a>Benutzerdefinierte Geräteauthentifizierung
 
-Mit der [Identitätsregistrierung][lnk-identity-registry] von IoT Hub können Sie Sicherheitsanmeldeinformationen und die Zugriffssteuerung pro Gerät mithilfe von [Token][lnk-sas-tokens] konfigurieren. Auch wenn eine IoT-Lösung bereits erheblichen Anteil an einer benutzerdefinierten Identitätsregistrierung bzw. einem Authentifizierungsschema hat, können Sie diese vorhandene Infrastruktur durch Erstellen eines *Tokendiensts* in IoT Hub integrieren. Auf diese Weise können Sie andere IoT-Features in der Lösung nutzen.
+Mit der [Identitätsregistrierung][lnk-identity-registry] von IoT Hub können Sie Sicherheitsanmeldeinformationen und die Zugriffssteuerung pro Gerät mithilfe von [Token][lnk-sas-tokens] konfigurieren. Wenn eine IoT-Lösung bereits über eine benutzerdefinierte Identitätsregistrierung und/oder über ein Authentifizierungsschema verfügt, können Sie diese Infrastruktur durch Erstellen eines *Tokendiensts* in IoT Hub integrieren. Auf diese Weise können Sie andere IoT-Features in der Lösung nutzen.
 
 Ein Tokendienst ist ein benutzerdefinierter Clouddienst. Er verwendet eine *SAS-Richtlinie* von IoT Hub mit **DeviceConnect**-Berechtigungen, um Token mit *Gerätebereich* zu erstellen. Mit diesen Token kann ein Gerät eine Verbindung mit Ihrem IoT Hub herstellen.
 
@@ -380,11 +380,11 @@ Hier sind die wichtigsten Schritte des Tokendienstmusters:
 
 Der Tokendienst kann die Gültigkeitsdauer für das Token wie gewünscht festlegen. Wenn das Token abläuft, trennt IoT Hub die Geräteverbindung. Das Gerät muss dann ein neues Token vom Tokendienst anfordern. Eine kurze Ablaufzeit erhöht die Last für das Gerät und den Tokendienst gleichermaßen.
 
-Damit ein Gerät eine Verbindung mit Ihrem Hub herstellen kann, müssen Sie es der IoT Hub-Identitätsregistrierung hinzufügen – auch wenn das Gerät für die Verbindung ein Token und keinen Geräteschlüssel verwendet. Aus diesem Grund können Sie weiterhin die Zugriffssteuerung pro Gerät nutzen, indem Sie Geräteidentitäten in der [IoT Hub-Identitätsregistrierung][lnk-identity-registry] aktivieren oder deaktivieren, wenn sich das Gerät mit einem Token authentifiziert. Dieser Ansatz verringert die Risiken der Verwendung von Token mit langen Ablaufzeiten.
+Damit ein Gerät eine Verbindung mit Ihrem Hub herstellen kann, müssen Sie es der IoT Hub-Identitätsregistrierung hinzufügen – auch wenn das Gerät für die Verbindung ein Token und keinen Geräteschlüssel verwendet. Aus diesem Grund können Sie weiterhin die gerätespezifische Zugriffssteuerung nutzen, indem Sie Geräteidentitäten in der [Identitätsregistrierung][lnk-identity-registry] aktivieren oder deaktivieren. Dieser Ansatz verringert die Risiken der Verwendung von Token mit langen Ablaufzeiten.
 
 ### <a name="comparison-with-a-custom-gateway"></a>Vergleich mit einem benutzerdefinierten Gateway
 
-Das Tokendienstmuster ist der empfohlene Weg zur Implementierung einer benutzerdefinierten Identitätsregistrierung bzw. eines Authentifizierungsschemas mit IoT Hub. Dies wird empfohlen, da der größte Teil des Lösungsdatenverkehrs weiterhin über IoT Hub abgewickelt wird. Es gibt aber auch Fälle, in denen das benutzerdefinierte Authentifizierungsschema so eng mit dem Protokoll verknüpft ist, dass ein Dienst zum Verarbeiten des gesamten Datenverkehrs (*benutzerdefiniertes Gateway*) erforderlich ist. Ein Beispiel eines solchen Szenarios ist die Verwendung von [Transport Layer Security (TLS) und vorinstallierten Schlüsseln (PSKs)][lnk-tls-psk]. Weitere Informationen finden Sie im Thema [Protokollgateway][lnk-protocols].
+Das Tokendienstmuster ist der empfohlene Weg zur Implementierung einer benutzerdefinierten Identitätsregistrierung bzw. eines Authentifizierungsschemas mit IoT Hub. Dieses Muster wird empfohlen, da der größte Teil des Lösungsdatenverkehrs weiterhin über IoT Hub abgewickelt wird. Wenn das benutzerdefinierte Authentifizierungsschema allerdings so eng mit dem Protokoll verknüpft ist, muss der gesamte Datenverkehr unter Umständen durch ein *benutzerdefiniertes Gateway* verarbeitet werden. Ein Beispiel eines solchen Szenarios ist die Verwendung von [Transport Layer Security (TLS) und vorinstallierten Schlüsseln (PSKs)][lnk-tls-psk]. Weitere Informationen finden Sie im Thema [Protokollgateway][lnk-protocols].
 
 ## <a name="reference-topics"></a>Referenzthemen:
 
@@ -406,9 +406,9 @@ In der folgenden Tabelle werden die Berechtigungen aufgeführt, die Sie zum Steu
 Weitere Referenzthemen im IoT Hub-Entwicklerhandbuch:
 
 * Unter [IoT Hub-Endpunkte][lnk-endpoints] werden die verschiedenen Endpunkte beschrieben, die jeder IoT-Hub für Laufzeit- und Verwaltungsvorgänge bereitstellt.
-* Unter [Drosselung und Kontingente][lnk-quotas] werden die Kontingente für den IoT Hub-Dienst und das Drosselungsverhalten beschrieben, die bei Verwendung des Diensts zu erwarten sind.
+* Unter [Drosselung und Kontingente][lnk-quotas] werden die Kontingente und das Drosselungsverhalten für den IoT Hub-Dienst beschrieben.
 * Unter [Azure IoT-SDKs für Geräte und Dienste][lnk-sdks] werden die verschiedenen Sprach-SDKs aufgelistet, die Sie bei der Entwicklung von Geräte- und Dienst-Apps für die Interaktion mit IoT Hub verwenden können.
-* Unter [IoT Hub-Abfragesprache für Gerätezwillinge, Aufträge und Nachrichtenrouting][lnk-query] wird die IoT Hub-Abfragesprache beschrieben, mit der Sie von IoT Hub Informationen zu Gerätezwillingen und Aufträgen abrufen können.
+* Unter [Referenz – IoT Hub-Abfragesprache für Gerätezwillinge, Aufträge und Nachrichtenrouting][lnk-query] wird die Abfragesprache beschrieben, mit der Sie von IoT Hub Informationen zu Gerätezwillingen und Aufträgen abrufen können.
 * [IoT Hub-MQTT-Unterstützung][lnk-devguide-mqtt] enthält weitere Informationen zur Unterstützung für das MQTT-Protokoll in IoT Hub.
 
 ## <a name="next-steps"></a>Nächste Schritte
