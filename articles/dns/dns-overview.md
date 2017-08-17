@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/19/2017
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: dadf2ba4121960ae05257197e0b5f222b993ec73
-ms.lasthandoff: 04/25/2017
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 3705457e4c90f8869496f7f5177531bd128d1057
+ms.contentlocale: de-de
+ms.lasthandoff: 07/21/2017
 
 ---
 
@@ -50,5 +51,7 @@ Häufig gestellte Fragen zu Azure DNS finden Sie unter der [Häufig gestellte Fr
 Erfahren Sie mehr zu DNS-Zonen und -Einträgen im folgenden Artikel: [DNS-Zonen und -Einträge: Übersicht](dns-zones-records.md).
 
 Erfahren Sie, wie Sie in Azure DNS [eine DNS-Zone erstellen](./dns-getstarted-create-dnszone-portal.md).
+
+Erfahren Sie mehr über die anderen zentralen [Netzwerkfunktionen](../networking/networking-overview.md) von Azure.
 
 

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 06/23/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
-ms.openlocfilehash: f98b876658c3257ad2b9162dea053f879ba1f1f0
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 57379d318ab01310388f55c8ec0b9751e909cb9e
 ms.contentlocale: de-de
-ms.lasthandoff: 06/23/2017
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="map-an-existing-custom-dns-name-to-azure-web-apps"></a>Zuordnen eines vorhandenen benutzerdefinierten DNS-Namens zu Azure-Web-Apps
@@ -39,7 +39,9 @@ In diesem Tutorial lernen Sie Folgendes:
 Verwenden Sie für die Zuordnung eines benutzerdefinierten DNS-Namens zu App Service entweder einen **CNAME-Eintrag** oder einen **A-Eintrag**. 
 
 > [!NOTE]
-> Es wird empfohlen, einen CNAME-Eintrag für alle benutzerdefinierten DNS-Namen außer für Stammdomänen (z.B. `contoso.com`) zu verwenden. 
+> Es wird empfohlen, einen CNAME-Eintrag für alle benutzerdefinierten DNS-Namen außer für Stammdomänen (z.B. `contoso.com`) zu verwenden.
+
+Informationen zum Migrieren einer Livewebsite und ihres DNS-Domänennamens zu App Service finden Sie unter [Migrieren einer aktiven benutzerdefinierten Domäne zu Azure App Service](app-service-custom-domain-name-migrate.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -69,6 +71,8 @@ Wählen Sie im linken Menü **App Services** und anschließend den Namen der App
 
 Die Verwaltungsseite der App Service-App wird angezeigt.  
 
+<a name="checkpricing"></a>
+
 ### <a name="check-the-pricing-tier"></a>Überprüfen des Tarifs
 
 Scrollen Sie im linken Navigationsbereich der App-Seite zum Abschnitt **Einstellungen**, und wählen Sie **Zentral hochskalieren (App Service-Plan)**.
@@ -80,6 +84,8 @@ Der aktuelle Tarif der App wird durch einen blauen Rahmen hervorgehoben. Stellen
 ![Überprüfen des Tarifs](./media/app-service-web-tutorial-custom-domain/check-pricing-tier.png)
 
 Wenn für den App Service-Plan nicht der Tarif **Free** gilt, können Sie die Seite **Preisstufe auswählen** schließen und zu [Zuordnen eines CNAME-Eintrags](#cname) springen.
+
+<a name="scaleup"></a>
 
 ### <a name="scale-up-the-app-service-plan"></a>Zentrales Hochskalieren des App Service-Plans
 
@@ -99,22 +105,7 @@ Wenn die unten angegebene Benachrichtigung angezeigt wird, ist der Skalierungsvo
 
 Im Tutorialbeispiel fügen Sie einen CNAME-Eintrag für die Unterdomäne `www` (z.B. `www.contoso.com`) hinzu.
 
-### <a name="access-dns-records-with-domain-provider"></a>Zugreifen auf DNS-Einträge mit Domänenanbieter
-
-Melden Sie sich bei der Website Ihres Domänenanbieters an.
-
-Suchen Sie die Seite für die Verwaltung von DSN-Einträgen. Da jeder Domänenanbieter eine eigene Benutzeroberfläche für DNS-Einträge hat, finden Sie Informationen dazu in der Dokumentation des Anbieters. Suchen Sie nach Links oder Bereichen der Website, die als **Domänenname**, **DNS** oder **Namenserververwaltung** bezeichnet werden. 
-
-Häufig finden Sie in Ihren Kontoinformationen die Seite für die Verwaltung von DNS-Einträgen. Suchen Sie anschließend nach einem Link, z.B. **Eigene Domänen**. Navigieren Sie auf diese Seite, und suchen Sie nach einem Link, der beispielsweise den Namen **Zonendatei**, **DNS-Einträge** oder **Erweiterte Konfiguration** hat.
-
-Der folgende Screenshot zeigt ein Beispiel für eine Seite zur Verwaltung von DNS-Einträgen:
-
-![Beispielseite mit DNS-Einträgen](./media/app-service-web-tutorial-custom-domain/example-record-ui.png)
-
-Im Beispielscreenshot würden Sie die Option **Add** (Hinzufügen) wählen, um einen Eintrag zu erstellen. Einige Anbieter verfügen über unterschiedliche Links, um unterschiedliche Arten von Einträgen hinzuzufügen. Informationen hierzu finden Sie ebenfalls in der Dokumentation des Anbieters.
-
-> [!NOTE]
-> Bei einigen Anbietern wie GoDaddy werden Änderungen an DNS-Einträgen erst wirksam, wenn Sie einen gesonderten Link **Änderungen speichern** wählen. 
+[!INCLUDE [Access DNS records with domain provider](../../includes/app-service-web-access-dns-records.md)]
 
 ### <a name="create-the-cname-record"></a>Erstellen des CNAME-Eintrags
 
@@ -178,22 +169,7 @@ Kopieren Sie auf der Seite **Benutzerdefinierte Domänen** die IP-Adresse der Ap
 
 ![Portalnavigation zur Azure-App](./media/app-service-web-tutorial-custom-domain/mapping-information.png)
 
-### <a name="access-dns-records-with-domain-provider"></a>Zugreifen auf DNS-Einträge mit Domänenanbieter
-
-Melden Sie sich bei der Website Ihres Domänenanbieters an.
-
-Suchen Sie die Seite für die Verwaltung von DSN-Einträgen. Da jeder Domänenanbieter eine eigene Benutzeroberfläche für DNS-Einträge hat, finden Sie Informationen dazu in der Dokumentation des Anbieters. Suchen Sie nach Links oder Bereichen der Website, die als **Domänenname**, **DNS** oder **Namenserververwaltung** bezeichnet werden. 
-
-Häufig finden Sie in Ihren Kontoinformationen die Seite für die Verwaltung von DNS-Einträgen. Suchen Sie anschließend nach einem Link, z.B. **Eigene Domänen**. Navigieren Sie auf diese Seite, und suchen Sie nach einem Link, der beispielsweise den Namen **Zonendatei**, **DNS-Einträge** oder **Erweiterte Konfiguration** hat.
-
-Der folgende Screenshot zeigt ein Beispiel für eine Seite zur Verwaltung von DNS-Einträgen:
-
-![Beispielseite mit DNS-Einträgen](./media/app-service-web-tutorial-custom-domain/example-record-ui.png)
-
-Im Beispielscreenshot würden Sie die Option **Add** (Hinzufügen) wählen, um einen Eintrag zu erstellen. Einige Anbieter verfügen über unterschiedliche Links, um unterschiedliche Arten von Einträgen hinzuzufügen. Informationen hierzu finden Sie ebenfalls in der Dokumentation des Anbieters.
-
-> [!NOTE]
-> Bei einigen Anbietern wie GoDaddy werden Änderungen an DNS-Einträgen erst wirksam, wenn Sie einen gesonderten Link **Änderungen speichern** wählen. 
+[!INCLUDE [Access DNS records with domain provider](../../includes/app-service-web-access-dns-records.md)]
 
 ### <a name="create-the-a-record"></a>Erstellen des A-Eintrags
 
@@ -249,22 +225,7 @@ Wenn Sie einen Schritt ausgelassen haben oder Ihnen zu einem früheren Zeitpunkt
 
 Im Beispiel des Tutorials ordnen Sie der App Service-App einen [DNS-Platzhalternamen](https://en.wikipedia.org/wiki/Wildcard_DNS_record) (z.B. `*.contoso.com`) zu, indem Sie einen CNAME-Eintrag hinzufügen. 
 
-### <a name="access-dns-records-with-domain-provider"></a>Zugreifen auf DNS-Einträge mit Domänenanbieter
-
-Melden Sie sich bei der Website Ihres Domänenanbieters an.
-
-Suchen Sie die Seite für die Verwaltung von DSN-Einträgen. Da jeder Domänenanbieter eine eigene Benutzeroberfläche für DNS-Einträge hat, finden Sie Informationen dazu jeweils in der Dokumentation des Anbieters. Suchen Sie nach Links oder Bereichen der Website, die als **Domänenname**, **DNS** oder **Namenserververwaltung** bezeichnet werden. 
-
-Häufig enthalten Ihre Kontoinformationen eine Seite für die Verwaltung von DNS-Einträgen. Suchen Sie anschließend nach einem Link, z.B. **Eigene Domänen**. Navigieren Sie auf diese Seite, und suchen Sie nach einem Link, der beispielsweise den Namen **Zonendatei**, **DNS-Einträge** oder **Erweiterte Konfiguration** hat.
-
-Der folgende Screenshot zeigt ein Beispiel für eine Seite zur Verwaltung von DNS-Einträgen:
-
-![Beispielseite mit DNS-Einträgen](./media/app-service-web-tutorial-custom-domain/example-record-ui.png)
-
-Im Beispielscreenshot würden Sie die Option **Add** (Hinzufügen) wählen, um einen Eintrag zu erstellen. Einige Anbieter verfügen über unterschiedliche Links, um unterschiedliche Arten von Einträgen hinzuzufügen. Informationen hierzu finden Sie ebenfalls in der Dokumentation des Anbieters.
-
-> [!NOTE]
-> Bei einigen Anbietern wie GoDaddy werden Änderungen an DNS-Einträgen erst wirksam, wenn Sie einen gesonderten Link **Änderungen speichern** wählen. 
+[!INCLUDE [Access DNS records with domain provider](../../includes/app-service-web-access-dns-records.md)]
 
 ### <a name="create-the-cname-record"></a>Erstellen des CNAME-Eintrags
 

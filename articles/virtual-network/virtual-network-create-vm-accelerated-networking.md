@@ -16,12 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 05/10/2017
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
-ms.openlocfilehash: 0d74a13968338d5dc88eab3353316c77c7544615
+ms.translationtype: HT
+ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
+ms.openlocfilehash: c852a1297261504015a3a985fe14a38957d1a64a
 ms.contentlocale: de-de
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="create-a-virtual-machine-with-accelerated-networking"></a>Erstellen eines virtuellen Computers mit beschleunigtem Netzwerkbetrieb
@@ -36,7 +35,8 @@ Mit beschleunigtem Netzwerkbetrieb gelangt der Netzwerkdatenverkehr zur Netzwerk
 
 Die Vorteile des beschleunigten Netzwerkbetriebs gelten nur für die VM, auf der dieses Feature aktiviert ist. Die besten Ergebnisse erzielen Sie, wenn Sie dieses Feature auf mindestens zwei VMs aktivieren, die mit demselben virtuellen Azure-Netzwerk (VNet) verbunden sind. Bei der Kommunikation über VNets oder bei lokalen Verbindungen hat dieses Feature nur minimale Auswirkungen auf die Wartezeit.
 
-[!INCLUDE [virtual-network-preview](../../includes/virtual-network-preview.md)]
+> [!WARNING]
+> Diese öffentliche Vorschau für Linux ist unter Umständen nicht so verfügbar und zuverlässig wie Features in Versionen mit allgemeiner Verfügbarkeit. Das Feature wird nicht unterstützt, bietet möglicherweise eingeschränkte Funktionen und ist vielleicht nicht an allen Azure-Standorten verfügbar. Aktuelle Hinweise zur Verfügbarkeit und zum Status dieses Features finden Sie auf der Seite „Azure-Updates“.
 
 ## <a name="benefits"></a>Vorteile
 * **Geringere Latenz/mehr Pakete pro Sekunde (pps):** Durch das Entfernen des virtuellen Switch aus dem Datenpfad wird die Zeit reduziert, die Pakete auf dem Host für die Verarbeitung von Richtlinien warten müssen. Gleichzeitig wird die Anzahl von Paketen erhöht, die im virtuellen Computer verarbeitet werden können.
@@ -51,6 +51,7 @@ Die folgenden Einschränkungen gelten für die Verwendung dieser Funktion:
 * **Regionen:** Windows-VMs mit beschleunigtem Netzwerkbetrieb werden in die meisten Azure-Regionen angeboten. Linux-VMs mit beschleunigtem Netzwerkbetrieb werden in verschiedenen Regionen angeboten. Diese Funktion wird in weiteren Regionen angeboten. Aktuelle Informationen finden Sie im unten angegebenen Azure Virtual Networking Updates-Blog.   
 * **Unterstützte Betriebssysteme:** Windows: Microsoft Windows Server 2012 R2 Datacenter und Windows Server 2016. Linux: Ubuntu Server 16.04 LTS mit dem Kernel 4.4.0-77 oder höher, SLES 12 SP2, RHEL 7.3 und CentOS 7.3 (veröffentlicht von „Rogue Wave Software“).
 * **VM-Größe:** Allzweck- und für Computezwecke optimierte Instanzgrößen mit mindestens acht Kernen. Weitere Informationen finden Sie in den Artikeln zu VM-Größen von [Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) und [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Die Anzahl von unterstützten VM-Instanzgrößen wird in Zukunft erweitert werden.
+* **Bereitstellung nur über Azure Resource Manager (ARM):** Beschleunigter Netzwerkbetrieb ist für die Bereitstellung über ASM/RDFE nicht verfügbar.
 
 Änderungen an diesen Einschränkungen werden auf der Seite mit [Updates für virtuelle Azure-Netzwerke](https://azure.microsoft.com/updates/accelerated-networking-in-preview) bekanntgegeben.
 
@@ -324,11 +325,11 @@ Für die Erstellung einer Red Hat Enterprise Linux- oder CentOS 7.3-VM sind eini
 
 1.  Stellen Sie eine CentOS 7.3-VM ohne SR-IOV in Azure bereit.
 
-2.  Installieren Sie LIS 4.2.1:
+2.  Installieren Sie LIS 4.2.2:
     
     ```bash
-    wget http://download.microsoft.com/download/6/8/F/68FE11B8-FAA4-4F8D-8C7D-74DA7F2CFC8C/lis-rpms-4.2.1-1.tar.gz
-    tar -xvf lis-rpms-4.2.1-1.tar.gz
+    wget http://download.microsoft.com/download/6/8/F/68FE11B8-FAA4-4F8D-8C7D-74DA7F2CFC8C/lis-rpms-4.2.2-2.tar.gz
+    tar -xvf lis-rpms-4.2.2-2.tar.gz
     cd LISISO && sudo ./install.sh
     ```
 
@@ -350,7 +351,7 @@ Für die Erstellung einer Red Hat Enterprise Linux- oder CentOS 7.3-VM sind eini
     sudo waagent -deprovision+user 
     ```
 
-5.  Beenden Sie diese VM im Azure-Portal, wechseln Sie zum Abschnitt „Datenträger“ der VM, und ermitteln Sie den VHD-URI des Betriebssystemdatenträgers. Dieser URI enthält den VHD-Namen des Basisimage und das zugehörige Speicherkonto. 
+5.  Beenden Sie diese VM im Azure-Portal, wechseln Sie zum Abschnitt „Datenträger“ der VM, und ermitteln Sie den VHD-URI des Betriebssystemdatenträgers. Dieser URI enthält den VHD-Namen des Basisimage und das zugehörige Speicherkonto. 
  
 ##### <a name="phase-two-provision-new-vms-on-azure"></a>Phase 2: Bereitstellen der neuen VMs in Azure
 
@@ -402,8 +403,8 @@ Für die Erstellung einer Red Hat Enterprise Linux- oder CentOS 7.3-VM sind eini
 
     # Specify a URI for the location from which the new image binary large object (BLOB) is copied to start the virtual machine. 
     # Must end with ".vhd" extension
-    $destOsDiskName = "MyOsDiskName.vhd" 
-    $destOsDiskUri = "https://myexamplesa.blob.core.windows.net/vhds/" + $destOsDiskName
+    $OsDiskName = "MyOsDiskName.vhd" 
+    $destOsDiskUri = "https://myexamplesa.blob.core.windows.net/vhds/" + $OsDiskName
     
     # Define a credential object for the VM. PowerShell prompts you for a username and password.
     $Cred = Get-Credential
@@ -417,7 +418,7 @@ Für die Erstellung einer Red Hat Enterprise Linux- oder CentOS 7.3-VM sind eini
      -Credential $Cred | `
     Add-AzureRmVMNetworkInterface -Id $Nic.Id | `
     Set-AzureRmVMOSDisk `
-     -Name $OSDiskName `
+     -Name $OsDiskName `
      -SourceImageUri $sourceUri `
      -VhdUri $destOsDiskUri `
      -CreateOption FromImage `

@@ -14,20 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/14/2017
 ms.author: arramac
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
-ms.openlocfilehash: c579b003052045cb78c922265ff1fc6d321a6f86
+ms.translationtype: HT
+ms.sourcegitcommit: 2812039649f7d2fb0705220854e4d8d0a031d31e
+ms.openlocfilehash: da2cb358d196e41656bd7f6a06ff77e77c7315c1
 ms.contentlocale: de-de
-ms.lasthandoff: 06/09/2017
-
+ms.lasthandoff: 07/22/2017
 
 ---
 # <a name="how-to-distribute-data-globally-with-azure-cosmos-db"></a>Wie werden Daten mit Azure Cosmos DB global verteilt?
 Azure ist ubiquitär: Es ist in über 30 geografischen Regionen auf der ganzen Welt präsent und breitet sich kontinuierlich weiter aus. Die weltweite Präsenz von Azure ermöglicht den Entwicklern unter anderem die problemlose Erstellung, Bereitstellung und Verwaltung global verteilter Anwendungen. 
 
-[Azure Cosmos DB](../cosmos-db/introduction.md) ist ein global verteilter Datenbankdienst von Microsoft mit mehreren Modellen für unternehmenskritische Anwendungen. Azure Cosmos DB bietet [sofort einsetzbare globale Verteilung](distribute-data-globally.md), [flexible Skalierung von Durchsatz und Speicher](../cosmos-db/partition-data.md) weltweit, Latenzzeiten im einstelligen Millisekundenbereich beim 99. Perzentil, [fünf wohldefinierte Konsistenzebenen](consistency-levels.md) sowie garantierte hohe Verfügbarkeit, gestützt durch [branchenführende Vereinbarungen zum Servicelevel](https://azure.microsoft.com/support/legal/sla/cosmos-db/) (SLAs, Service Level Agreements). Azure Cosmos DB [indiziert automatisch Daten](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf), sodass Sie sich nicht mit der Schema- und Indexverwaltung befassen müssen. Es unterstützt mehrere Datenmodelle – Dokumente, Schlüsselwerte, Diagramme und spaltenorientierte Datenmodelle. Als aus der Cloud entstandener Dienst wurde Azure Cosmos DB von Grund auf für Mehrinstanzenfähigkeit und globale Verteilung konzipiert.
+[Azure Cosmos DB](../cosmos-db/introduction.md) ist ein global verteilter Datenbankdienst von Microsoft mit mehreren Modellen für unternehmenskritische Anwendungen. Azure Cosmos DB bietet sofort einsetzbare globale Verteilung, [flexible Skalierung von Durchsatz und Speicher](../cosmos-db/partition-data.md) weltweit, Latenzzeiten im einstelligen Millisekundenbereich beim 99. Perzentil, [fünf wohldefinierte Konsistenzebenen](consistency-levels.md) sowie garantierte hohe Verfügbarkeit, gestützt durch [branchenführende Vereinbarungen zum Servicelevel](https://azure.microsoft.com/support/legal/sla/cosmos-db/) (SLAs, Service Level Agreements). Azure Cosmos DB [indiziert automatisch Daten](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf), sodass Sie sich nicht mit der Schema- und Indexverwaltung befassen müssen. Es unterstützt mehrere Datenmodelle – Dokumente, Schlüsselwerte, Diagramme und spaltenorientierte Datenmodelle. Als aus der Cloud entstandener Dienst wurde Azure Cosmos DB von Grund auf für Mehrinstanzenfähigkeit und globale Verteilung konzipiert.
 
-**Eine einzelne Azure Cosmos DB-Sammlung, partitioniert und auf drei Azure-Regionen verteilt**
+**Eine einzelne Azure Cosmos DB-Sammlung, partitioniert und auf mehrere Azure-Regionen verteilt**
 
 ![Azure Cosmos DB-Sammlung, partitioniert und auf drei Regionen verteilt](./media/distribute-data-globally/global-apps.png)
 
@@ -41,7 +40,7 @@ Dieser Artikel enthält eine Übersicht über die Azure Cosmos DB-Funktionen fü
 Folgende Funktionen von Azure Cosmos DB ermöglichen die problemlose Erstellung weltweit skalierbarer Anwendungen. Diese Funktionen stehen über die ressourcenanbieterbasierten [REST-APIs](https://docs.microsoft.com/rest/api/documentdbresourceprovider/) von Azure Cosmos DB sowie über das Azure-Portal zur Verfügung.
 
 ### <a id="RegionalPresence"></a>Ubiquitäre regionale Präsenz 
-Es werden stetig neue Regionen online geschaltet, um die geografische Präsenz von Azure zu erweitern. Azure Cosmos DB ist standardmäßig in allen neuen Azure-Regionen verfügbar. Dadurch können Sie Ihrem Azure Cosmos DB-Datenbankkonto eine geografische Region zuordnen, sobald die neue Azure-Region den Betrieb aufnimmt.
+Es werden stetig [neue Regionen](https://azure.microsoft.com/regions/) online geschaltet, um die geografische Präsenz von Azure zu erweitern. Azure Cosmos DB ist standardmäßig in allen neuen Azure-Regionen verfügbar. Dadurch können Sie Ihrem Azure Cosmos DB-Datenbankkonto eine geografische Region zuordnen, sobald die neue Azure-Region den Betrieb aufnimmt.
 
 **Azure Cosmos DB ist standardmäßig in allen Azure-Regionen verfügbar**
 
@@ -228,7 +227,7 @@ Azure Cosmos DB macht die Durchsatz-, Latenz-, Konsistenz- und Verfügbarkeitsme
 ![Azure Cosmos DB – für Kunden sichtbare SLA-Metriken](./media/distribute-data-globally/customer-slas.png)
 
 ## <a id="Next Steps"></a>Nächste Schritte
-* Informationen zum Implementieren der globalen Replikation für Ihr Azure Cosmos DB-Konto über das Azure-Portal finden Sie unter [Ausführen einer globalen Azure Cosmos DB-Datenbankreplikation mit dem Azure-Portal](../cosmos-db/tutorial-global-distribution-documentdb.md).
+* Informationen zum Implementieren der globalen Replikation für Ihr Azure Cosmos DB-Konto über das Azure-Portal finden Sie unter [Ausführen einer globalen Azure Cosmos DB-Datenbankreplikation mit dem Azure-Portal](tutorial-global-distribution-documentdb.md).
 * Informationen zum Implementieren von Architekturen mit mehreren Mastern mit Azure Cosmos DB finden Sie unter [Multi-master database architectures with Azure Cosmos DB](multi-region-writers.md) (Architekturen mit mehreren Mastern mit Azure Cosmos DB).
 * Weitere Informationen zur Funktionsweise von automatischem und manuellem Failover in Azure Cosmos DB finden Sie unter [Regional Failovers in Azure Cosmos DB](regional-failover.md) (Regionale Failover in Azure Cosmos DB).
 

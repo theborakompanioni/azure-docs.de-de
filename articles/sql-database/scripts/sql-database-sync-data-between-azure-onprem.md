@@ -3,7 +3,7 @@ title: PowerShell-Beispielsynchronisierung zwischen SQL-Datenbank und lokalem SQ
 description: "Azure PowerShell-Beispielskript für die Synchronisierung zwischen einer Azure SQL-Datenbank-Instanz und einer lokalen SQL Server-Datenbank"
 services: sql-database
 documentationcenter: sql-database
-author: douglaslms
+author: jognanay
 manager: jhubbard
 editor: 
 tags: 

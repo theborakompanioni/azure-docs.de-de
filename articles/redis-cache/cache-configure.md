@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
-ms.date: 07/05/2017
+ms.date: 07/13/2017
 ms.author: sdanie
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
-ms.openlocfilehash: f78735afd8aa8f560455c3fd47e6833c37644583
+ms.translationtype: HT
+ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
+ms.openlocfilehash: c1de192c405f2e93483527569c65d368cac40a9b
 ms.contentlocale: de-de
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="how-to-configure-azure-redis-cache"></a>Gewusst wie: Konfigurieren von Azure Redis Cache
@@ -97,8 +96,6 @@ Klicken Sie auf **Diagnose und Problembehandlung** , um gängige Probleme und St
 ## <a name="settings"></a>Einstellungen
 Der Abschnitt **Einstellungen** ermöglicht den Zugriff auf die folgenden Cacheeinstellungen und deren Konfiguration.
 
-![Einstellungen](./media/cache-configure/redis-cache-general-settings.png)
-
 * [Zugriffsschlüssel](#access-keys)
 * [Erweiterte Einstellungen](#advanced-settings)
 * [Redis Cache Advisor](#redis-cache-advisor)
@@ -106,6 +103,7 @@ Der Abschnitt **Einstellungen** ermöglicht den Zugriff auf die folgenden Cachee
 * [Redis-Clustergröße](#cluster-size)
 * [Redis-Datenpersistenz](#redis-data-persistence)
 * [Planen von Updates](#schedule-updates)
+* [Georeplikation](#geo-replication)
 * [Virtual Network](#virtual-network)
 * [Firewall](#firewall)
 * [Eigenschaften](#properties)
@@ -123,7 +121,7 @@ Klicken Sie auf **Zugriffsschlüssel** , um die Zugriffsschlüssel für Ihren Ca
 Die folgenden Einstellungen werden auf dem Blatt **Erweiterte Einstellungen** konfiguriert.
 
 * [Zugriffsports](#access-ports)
-* [maxmemory-policy und maxmemory-reserved](#maxmemory-policy-and-maxmemory-reserved)
+* [Arbeitsspeicherrichtlinien](#memory-policies)
 * [Keyspacebenachrichtigungen (Erweiterte Einstellungen)](#keyspace-notifications-advanced-settings)
 
 #### <a name="access-ports"></a>Zugriffsports
@@ -131,12 +129,13 @@ Der Zugriff ohne SSL ist für neue Caches standardmäßig deaktiviert. Zum Aktiv
 
 ![Redis Cache: Zugriffsports](./media/cache-configure/redis-cache-access-ports.png)
 
-#### <a name="maxmemory-policy-and-maxmemory-reserved"></a>maxmemory-policy und maxmemory-reserved
-Mit den Einstellungen **maxmemory-policy** und **maxmemory-reserved** auf dem Blatt **Erweiterte Einstellungen** konfigurieren Sie die Arbeitsspeicherrichtlinien für den Cache. Mit der Einstellung **maxmemory-policy** wird die Entfernungsrichtlinie für den Cache konfiguriert, und mit **maxmemory-reserved** wird der Arbeitsspeicher konfiguriert, der für andere Prozesse als Cacheprozesse reserviert ist.
+<a name="maxmemory-policy-and-maxmemory-reserved"></a>
+#### <a name="memory-policies"></a>Arbeitsspeicherrichtlinien
+Mit den Einstellungen **Maxmemory policy**, **maxmemory-reserved** und **maxfragmentationmemory-reserved** auf dem Blatt **Erweiterte Einstellungen** konfigurieren Sie die Arbeitsspeicherrichtlinien für den Cache.
 
 ![Redis Cache: Maxmemory-Richtlinie](./media/cache-configure/redis-cache-maxmemory-policy.png)
 
-Unter **Maxmemory-Richtlinie** können Sie eine der folgenden Entfernungsrichtlinien auswählen:
+Mit **Maxmemory policy** wird die Entfernungsrichtlinie für den Cache konfiguriert und die Auswahl zwischen den folgenden Entfernungsrichtlinien ermöglicht:
 
 * `volatile-lru`: Dies ist die Standardoption.
 * `allkeys-lru`
@@ -149,8 +148,12 @@ Weitere Informationen zu `maxmemory`-Richtlinien finden Sie unter [Eviction poli
 
 Mit der Einstellung **maxmemory-reserved** wird die Arbeitsspeichermenge in MB konfiguriert, die für andere Prozesse als Cacheprozesse reserviert ist, z.B. die Replikation während eines Failovers. Mit dem Festlegen dieses Werts können Sie dafür sorgen, dass Sie bei wechselnden Auslastungen eine konsistentere Redis-Servererfahrung erzielen. Für Workloads, die mit hohem Schreibaufwand verbunden sind, sollte ein höherer Wert festgelegt werden. Wenn Arbeitsspeicher für Vorgänge dieser Art reserviert ist, ist er nicht für die Speicherung zwischengespeicherter Daten verfügbar.
 
+Mit der Einstellung **maxfragmentationmemory-reserved** wird der Arbeitsspeicher in MB konfiguriert, der für die Speicherfragmentierung reserviert ist. Durch Festlegen dieses Werts können Sie eine konsistentere Redis-Servererfahrung erzielen, wenn der Cache voll bzw. beinahe voll und das Fragmentierungsverhältnis ebenfalls hoch ist. Wenn Arbeitsspeicher für Vorgänge dieser Art reserviert ist, ist er nicht für die Speicherung zwischengespeicherter Daten verfügbar.
+
+Bei der Auswahl eines neuen Speicherreservierungswerts (**maxmemory-reserved** oder **maxfragmentationmemory-reserved**) sollte berücksichtigt werden, wie sich diese Änderung auf einen Cache auswirkt, der bereits mit einer großen Datenmenge ausgeführt wird. Beispiel: Wenn Ihr Cache über eine Kapazität von 53 GB verfügt und 49 GB an Daten enthält, ändern Sie den Reservierungswert in 8 GB, um den maximal verfügbaren Arbeitsspeicher für das System auf 45 GB zu verringern. Wenn entweder der aktuelle Wert für `used_memory` oder der Wert für `used_memory_rss` höher als der neue Grenzwert von 45 GB ist, muss das System Daten entfernen, bis sowohl `used_memory` als auch `used_memory_rss` unter 45 GB liegen. Durch die Entfernung können sich Serverauslastung und Arbeitsspeicherfragmentierung erhöhen. Weitere Informationen zu Cachemetriken, etwa `used_memory` und `used_memory_rss`, finden Sie unter [Verfügbare Metriken und Berichtsintervalle](cache-how-to-monitor.md#available-metrics-and-reporting-intervals).
+
 > [!IMPORTANT]
-> Die Einstellung **maxmemory-reserved** ist nur für Standard- und Premium-Caches verfügbar.
+> Die Einstellungen **maxmemory-reserved** und **maxfragmentationmemory-reserved** sind nur für Standard- und Premium-Caches verfügbar.
 > 
 > 
 
@@ -412,7 +415,7 @@ Neue Azure Redis Cache-Instanzen werden mit den folgenden standardmäßigen Redi
 | --- | --- | --- |
 | `databases` |16 |Die Standardanzahl von Datenbanken ist 16, Sie können aber basierend auf dem Tarif eine andere Anzahl konfigurieren.<sup>1</sup> Die Standarddatenbank ist „DB 0“. Sie können mithilfe von `connection.GetDatabase(dbid)` pro Verbindung eine andere Datenbank auswählen. Hierbei steht `dbid` für eine Zahl zwischen `0` und `databases - 1`. |
 | `maxclients` |Tarifabhängig<sup>2</sup> |Dies ist die maximale Anzahl von verbundenen Clients, die gleichzeitig zulässig sind. Sobald der Grenzwert erreicht ist, schließt Redis alle neuen Verbindungen und gibt den Fehler „max number of clients reached“ (Maximale Anzahl von Clients erreicht) zurück. |
-| `maxmemory-policy` |`volatile-lru` |Mit der Einstellung „maxmemory-policy“ wird festgelegt, was in Redis entfernt werden soll, wenn der Wert für `maxmemory` (Größe des Caches, die Sie beim Erstellen des Caches ausgewählt haben) erreicht ist. Bei Azure Redis Cache lautet die Standardeinstellung `volatile-lru`. Hierbei werden die Schlüssel anhand eines Ablaufverfahrens mit LRU-Algorithmus entfernt. Diese Einstellung kann im Azure-Portal konfiguriert werden. Weitere Informationen finden Sie unter [maxmemory-policy und maxmemory-reserved](#maxmemory-policy-and-maxmemory-reserved). |
+| `maxmemory-policy` |`volatile-lru` |Mit der Einstellung „maxmemory-policy“ wird festgelegt, was in Redis entfernt werden soll, wenn der Wert für `maxmemory` (Größe des Caches, die Sie beim Erstellen des Caches ausgewählt haben) erreicht ist. Bei Azure Redis Cache lautet die Standardeinstellung `volatile-lru`. Hierbei werden die Schlüssel anhand eines Ablaufverfahrens mit LRU-Algorithmus entfernt. Diese Einstellung kann im Azure-Portal konfiguriert werden. Weitere Informationen finden Sie unter [Arbeitsspeicherrichtlinien](#memory-policies). |
 | `maxmemory-samples` |3 |Zur Einsparung von Arbeitsspeicher sind LRU- und minimale TTL-Algorithmen keine präzisen Algorithmen, sondern angenäherte Algorithmen. Standardmäßig werden von Redis drei Schlüssel geprüft, und es wird der Schlüssel ausgewählt, der vor längerer Zeit verwendet wurde. |
 | `lua-time-limit` |5.000 |Maximale Ausführungszeit eines Lua-Skripts in Millisekunden. Wenn die maximale Ausführungszeit erreicht wird, protokolliert Redis, dass ein Skript nach der maximal zulässigen Ausführungszeit weiterhin ausgeführt wird. Es wird dann damit begonnen, auf Abfragen mit einem Fehler zu antworten. |
 | `lua-event-limit` |500 |Maximale Größe der Skriptereigniswarteschlange. |

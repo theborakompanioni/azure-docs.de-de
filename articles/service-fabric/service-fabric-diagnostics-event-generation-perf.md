@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/30/2017
 ms.author: dekapur
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: ac019d5393e9e9b7edb7960aa50edd5af3b49ebc
+ms.translationtype: HT
+ms.sourcegitcommit: 0425da20f3f0abcfa3ed5c04cec32184210546bb
+ms.openlocfilehash: 9d63148c182c705b6b49733c59ed8fdd13872d72
 ms.contentlocale: de-de
-ms.lasthandoff: 07/06/2017
+ms.lasthandoff: 07/20/2017
 
 ---
 
@@ -32,12 +32,6 @@ Für die Computer in Ihrem Cluster sollten Sie das Erfassen der folgenden Leistu
 
 | Indikatorkategorie | Name des Leistungsindikators |
 | --- | --- |
-| PhysicalDisk (Gesamt) | Durchschn. Warteschlangenlänge der Datenträger-Lesevorgänge |
-| PhysicalDisk (Gesamt) | Durchschn. Warteschlangenlänge der Datenträger-Schreibvorgänge |
-| PhysicalDisk (Gesamt) | Lesevorgänge/s  |
-| PhysicalDisk (Gesamt) | Byte gelesen/s  |
-| PhysicalDisk (Gesamt) | Schreibvorgänge/s |
-| PhysicalDisk (Gesamt) | Byte geschrieben/s |
 | PhysicalDisk (pro Datenträger) | Durchschn. Warteschlangenlänge der Datenträger-Lesevorgänge |
 | PhysicalDisk (pro Datenträger) | Durchschn. Warteschlangenlänge der Datenträger-Schreibvorgänge |
 | PhysicalDisk (pro Datenträger) | Durchschn. Datenträger s/gelesen |
@@ -85,6 +79,6 @@ Wenn Sie Reliable Collections verwenden, wird empfohlen, den `Avg. Transaction m
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Erfahren Sie mehr über [die Ereignisgenerierung auf Infrastrukturebene](service-fabric-diagnostics-event-generation-infra.md) in Service Fabric.
+* Erfahren Sie mehr über [die Ereignisgenerierung auf Plattformebene](service-fabric-diagnostics-event-generation-infra.md) in Service Fabric.
 * Erfassen von Leistungsmetriken über [Azure-Diagnose](service-fabric-diagnostics-event-aggregation-wad.md)
 

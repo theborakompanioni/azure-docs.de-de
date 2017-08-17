@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: compute
 ms.date: 04/26/2017
 ms.author: mbaldwin
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 8bea98274f94853cb52fe8b51fdaa4f224c649e4
-ms.lasthandoff: 04/27/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 2812039649f7d2fb0705220854e4d8d0a031d31e
+ms.openlocfilehash: e6338dc283b5a26f20a467df9582181381967931
+ms.contentlocale: de-de
+ms.lasthandoff: 07/22/2017
 
 ---
 # <a name="use-windows-powershell-cmdlets-with-azure-remoteapp"></a>Verwenden von Windows PowerShell-Cmdlets mit Azure RemoteApp
@@ -45,9 +45,20 @@ Für den Schnelleinstieg können Sie die folgenden Schritte ausführen:
 2. Starten Sie Microsoft Azure PowerShell.
 3. Führen Sie **Add-AzureAccount** aus, um sich bei Ihrem Azure-Abonnement zu authentifizieren. Geben Sie bei der entsprechenden Aufforderung den Benutzernamen und das Kennwort ein, die Sie auch bei der Anmeldung beim Azure-Portal verwenden.  
 4. Führen Sie **Get-AzureSubscription** aus, um die Ihrem Benutzerkonto zugeordneten Abonnements anzuzeigen. 
-5. Führen Sie **Select-AzureSubscription** aus, und geben Sie den Abonnementnamen oder die ID an, der bzw. die in der PowerShell-Konsole verwendet wird.
+5. Führen Sie **Select-AzureSubscription -SubscriptionName &lt;Abonnementname&gt;** oder **Select-AzureSubscription -SubscriptionId &lt;Abonnement-ID&gt;** aus, um das zu verwendende Abonnement anzugeben.
 
 Herzlichen Glückwunsch, damit ist die Azure PowerShell-Konsole konfiguriert und einsatzbereit. Beachten Sie, dass Sie die Schritte 2 bis 5 bei jedem Start der Azure PowerShell-Konsole wiederholen müssen.  
+
+
+## <a name="list-all-collections"></a>Auflisten aller Sammlungen
+- - -
+     Get-AzureRemoteAppCollection
+
+## <a name="delete-a-collection"></a>Löschen einer Sammlung
+- - -
+    Remove-AzureRemoteAppCollection <enter collection name>
+
+Beispiel: `Remove-AzureRemoteAppCollection ContosoProduction`
 
 ## <a name="create-a-cloud-collection"></a>Erstellen einer Cloudsammlung
 - - -

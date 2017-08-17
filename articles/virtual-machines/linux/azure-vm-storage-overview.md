@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 2/7/2017
 ms.author: rasquill
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 0151e188fde38c7a617cf2070939c6498142dd71
-ms.lasthandoff: 04/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 2812039649f7d2fb0705220854e4d8d0a031d31e
+ms.openlocfilehash: 598d6a62fc7c4a769043c4d6d6547e5b8f8a5d5a
+ms.contentlocale: de-de
+ms.lasthandoff: 07/22/2017
 
 ---
 # <a name="azure-and-linux-vm-storage"></a>Azure- und Linux-VM-Speicher
@@ -48,71 +48,37 @@ Beim Erstellen eines virtuellen Computers aus der `azure-cli` können Sie über 
 
 ## <a name="creating-a-vm-with-a-managed-disk"></a>Erstellen eines virtuellen Computers mit einem verwalteten Datenträger
 
-Das folgende Beispiel erfordert Azure CLI 2.0, die Sie [hier installieren] können.
+Das folgende Beispiel erfordert die Azure CLI 2.0, die Sie [hier installieren](/cli/azure/install-azure-cli) können.
 
-Erstellen Sie zuerst eine Ressourcengruppe für die Verwaltung der Ressourcen:
+Erstellen Sie zuerst eine Ressourcengruppe für die Verwaltung der Ressourcen mit [az group create](/cli/azure/group#create):
 
 ```azurecli
 az group create --location westus --name myResourceGroup
 ```
 
-Erstellen Sie dann mit dem Befehl `az vm create` den virtuellen Computer, wie in folgendem Beispiel gezeigt. Denken Sie daran, ein eindeutiges `--public-ip-address-dns-name`-Argument anzugeben, da wahrscheinlich `manageddisks` verwendet wird.
+Jetzt können Sie mit [az vm create](/cli/azure/vm#create) den virtuellen Computer erstellen. Geben Sie einen eindeutigen Wert für das Argument `--public-ip-address-dns-name` ein, da `mypublicdns` wahrscheinlich bereits vergeben ist.
 
 ```azurecli
 az vm create \
---image credativ:Debian:8:latest \
---admin-username azureuser \
---ssh-key-value ~/.ssh/id_rsa.pub
---public-ip-address-dns-name manageddisks \
---resource-group myResourceGroup \
---location westus \
---name myVM
+    --resource-group myResourceGroup \
+    --name myVM
+    --image UbuntuLTS \
+    --admin-username azureuser \
+    --generate-ssh-keys \
+    --public-ip-address-dns-name mypublicdns
 ```
 
 Im vorherigen Beispiel wurde ein virtueller Computer mit einem verwalteten Datenträger in einem Standard-Speicherkonto erstellt. Um ein Premium-Speicherkonto zu verwenden, fügen Sie das `--storage-sku Premium_LRS`-Argument hinzu, wie in diesem Beispiel gezeigt:
 
 ```azurecli
 az vm create \
---storage-sku Premium_LRS
---image credativ:Debian:8:latest \
---admin-username azureuser \
---ssh-key-value ~/.ssh/id_rsa.pub
---public-ip-address-dns-name manageddisks \
---resource-group myResourceGroup \
---location westus \
---name myVM
-```
-
-
-### <a name="create-a-vm-with-an-unmanaged-standard-disk-using-the-azure-cli-10"></a>Erstellen eines virtuellen Computers mit einem nicht verwalteten Standarddatenträger über die Azure-Befehlszeilenschnittstelle 1.0
-
-Sie können natürlich auch die Azure-Befehlszeilenschnittstelle 1.0 verwenden, um virtuelle Computer mit Standard- und Premium-Datenträgern zu erstellen. Zurzeit ist die Erstellung von virtuellen Computern mit verwalteten Datenträgern über die Azure-Befehlszeilenschnittstelle 1.0 nicht möglich.
-
-Die Option `-z` dient zur Auswahl von Standard_A1, einem auf Standardspeicher basierenden virtuellen Linux-Computer.
-
-```azurecli
-azure vm quick-create -g rbg \
-exampleVMname \
--l westus \
--y Linux \
--Q Debian \
--u exampleAdminUser \
--M ~/.ssh/id_rsa.pub
--z Standard_A1
-```
-
-### <a name="create-a-vm-with-premium-storage-using-the-azure-cli-10"></a>Erstellen einer VM mit Storage Premium über die Azure-Befehlszeilenschnittstelle 1.0
-Die Option `-z` dient zur Auswahl von Standard_DS1, einem auf Premium-Speicher basierenden virtuellen Linux-Computer.
-
-```azurecli
-azure vm quick-create -g rbg \
-exampleVMname \
--l westus \
--y Linux \
--Q Debian \
--u exampleAdminUser \
--M ~/.ssh/id_rsa.pub
--z Standard_DS1
+    --resource-group myResourceGroup \
+    --name myVM
+    --image UbuntuLTS \
+    --admin-username azureuser \
+    --generate-ssh-keys \
+    --public-ip-address-dns-name mypublicdns \
+    --storage-sku Premium_LRS
 ```
 
 ## <a name="standard-storage"></a>Standardspeicher
@@ -144,7 +110,7 @@ Nachfolgend sind die Linux-Distributionen aufgeführt, die für Premium-Speicher
 | Centos |6.5, 6.6, 6.7, 7.0, 7.1 |3.10.0-229.1.2.el7+ |
 | RHEL |6.8+, 7.2+ | |
 
-## <a name="file-storage"></a>File Storage
+## <a name="azure-file-storage"></a>Azure-Dateispeicher
 Der Azure-Dateispeicher verfügt über Dateifreigaben in der Cloud unter Verwendung des standardmäßigen SMB-Protokolls. Mit Azure Files können Sie Unternehmensanwendungen migrieren, die auf Dateiservern in Azure basieren. Anwendungen, die in Azure ausgeführt werden, können Dateifreigaben von virtuellen Azure-Computern unter Linux problemlos einbinden. Mit der neuesten Version des Dateispeichers können Sie außerdem eine Dateifreigabe aus einer lokalen Anwendung einbinden, die SMB 3.0 unterstützt.  Da es sich bei den Dateifreigaben um SMB-Freigaben handelt, können Sie darauf über standardmäßige Dateisystem-APIs zugreifen.
 
 Der Dateispeicher beruht auf der gleichen Technologie wie Blob-, Tabellen-, und Warteschlangendienste. Dies bedeutet, dass der Dateispeicher die Verfügbarkeit, Dauerhaftigkeit, Skalierbarkeit und geografische Redundanz bietet, die in die Azure Storage-Plattform integriert ist. Weitere Informationen zu Leistungszielen und Grenzwerten des Dateispeichers finden Sie unter „Skalierbarkeits- und Leistungsziele für Azure Storage“.
@@ -226,7 +192,7 @@ Die Verwaltungsebene besteht aus den Ressourcen, die zum Verwalten Ihres Speiche
 In diesem Abschnitt betrachten wir die Gewährung des Zugriffs auf die tatsächlichen Datenobjekte in Ihrem Speicherkonto, z. B. Blobs, Dateien, Warteschlangen und Tabellen mit SAS und gespeicherten Zugriffsrichtlinien. Wir betrachten SAS sowohl auf Dienst- als auch auf Kontoebene. Wir behandeln auch die Beschränkung des Zugriffs auf eine bestimmte IP-Adresse (oder einen Bereich von IP-Adressen), die Beschränkung des verwendeten HTTPS-Protokolls und das Widerrufen einer SAS, ohne ihren Ablauf abzuwarten.
 
 ## <a name="encryption-in-transit"></a>Verschlüsselung während der Übertragung
-In diesem Abschnitt wird erläutert, wie Sie Daten sichern, wenn Sie sie in oder aus Azure Storage übertragen. Wir behandeln die empfohlene Verwendung von HTTPS und die Verschlüsselung, die SMB 3.0 für Azure-Dateifreigaben verwendet. Wir werfen auch einen Blick auf die clientseitige Verschlüsselung, mit der Sie die Daten verschlüsseln können, bevor sie in einer Clientanwendung in den Speicher übertragen werden, und nach der Übertragung aus dem Speicher entschlüsseln können.
+In diesem Abschnitt wird erläutert, wie Sie Daten sichern, wenn Sie sie in oder aus Azure Storage übertragen. Wir behandeln die empfohlene Verwendung von HTTPS und die Verschlüsselung, die von SMB 3.0 für Azure-Dateifreigaben verwendet wird. Wir werfen auch einen Blick auf die clientseitige Verschlüsselung, mit der Sie die Daten verschlüsseln können, bevor sie in einer Clientanwendung in den Speicher übertragen werden, und nach der Übertragung aus dem Speicher entschlüsseln können.
 
 ## <a name="encryption-at-rest"></a>Verschlüsselung ruhender Daten
 Wir erläutern Storage Service Encryption (SSE) und beschreiben, und wie Sie diese Verschlüsselung für ein Speicherkonto aktivieren können, sodass Ihre Block-, Seiten- und Anfügeblobs beim Schreiben in Azure Storage automatisch verschlüsselt werden. Außerdem erläutern wie die Verwendung von Azure Disk Encryption und untersuchen die grundlegenden Anwendungsfälle von Azure Disk Encryption, SSE und clientseitiger Verschlüsselung sowie deren wesentlichen Unterschiede. Wir betrachten kurz die FIPS-Konformität für die US- Regierungscomputer.
@@ -234,7 +200,7 @@ Wir erläutern Storage Service Encryption (SSE) und beschreiben, und wie Sie die
 * [Azure Storage-Sicherheitsleitfaden](../../storage/storage-security-guide.md)
 
 ## <a name="temporary-disk"></a>Temporärer Datenträger
-Jede VM verfügt über einen temporären Datenträger. Der temporäre Datenträger bietet kurzfristigen Speicher für Anwendungen und Prozesse und ist ausschließlich dafür ausgelegt, Daten wie z.B. Seiten-oder Auslagerungsdateien zu speichern. Daten auf dem temporären Datenträger können während eines [Wartungsereignisses](manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#understand-planned-vs-unplanned-maintenance) verloren gehen, oder wenn Sie [eine VM erneut bereitstellen](redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Während eines standardmäßigen Neustarts der VM sollten die Daten auf dem virtuellen Datenträger erhalten bleiben.
+Jede VM verfügt über einen temporären Datenträger. Der temporäre Datenträger bietet kurzfristigen Speicher für Anwendungen und Prozesse und ist ausschließlich dafür ausgelegt, Daten wie z.B. Seiten-oder Auslagerungsdateien zu speichern. Daten auf dem temporären Datenträger können während eines [Wartungsereignisses](manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) verloren gehen, oder wenn Sie [eine VM erneut bereitstellen](redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Während eines standardmäßigen Neustarts der VM sollten die Daten auf dem virtuellen Datenträger erhalten bleiben.
 
 Auf virtuellen Linux-Computern lautet der Datenträger in der Regel **/dev/sdb**. Er wird vom Azure Linux-Agent formatiert und in **/mnt/** eingebunden. Die Größe des temporären Datenträgers variiert basierend auf der Größe des virtuellen Computers. Weitere Informationen finden Sie unter [Größen für virtuelle Computer in Azure](sizes.md).
 

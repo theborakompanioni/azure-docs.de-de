@@ -13,14 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/13/2017
+ms.date: 07/20/2017
 ms.author: genli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: 782489e7551fef3daed4de8212821e93f7777535
+ms.translationtype: HT
+ms.sourcegitcommit: 0425da20f3f0abcfa3ed5c04cec32184210546bb
+ms.openlocfilehash: da5995535d42ed52772cb09e0f4da51bbf878748
 ms.contentlocale: de-de
-ms.lasthandoff: 06/28/2017
-
+ms.lasthandoff: 07/20/2017
 
 ---
 # <a name="add-or-change-azure-administrator-roles-that-manage-the-subscription-or-services"></a>Hinzufügen oder Ändern von Azure-Administratorrollen, die das Abonnement oder die Dienste verwalten
@@ -38,18 +37,24 @@ Um eine Person als Administrator für ein Abonnement im Azure-Portal hinzuzufüg
 
     ![Screenshot mit einem ausgewähltem Abonnement](./media/billing-add-change-azure-subscription-administrator/newselectsub.png)
 
-3. Wählen Sie auf dem Blatt „Abonnement“ **Zugriffssteuerung (IAM)**> **Hinzufügen** aus.
+3. Wählen Sie auf dem Blatt „Abonnement“ die Option **Zugriffssteuerung (IAM)**.
+4. Wählen Sie **Hinzufügen** > **Rolle** > **Besitzer**. Geben Sie die E-Mail-Adresse des Benutzers ein, den Sie als Besitzer hinzufügen möchten, wählen Sie den Benutzer aus, und klicken Sie dann auf **Auswählen**.
 
-    ![Screenshot mit ausgewählter Schaltfläche „Hinzufügen“](./media/billing-add-change-azure-subscription-administrator/newsettings.png)
-4. Wählen Sie **Rolle auswählen** > **Besitzer** aus.
+    ![Screenshot mit ausgewählter Besitzerrolle](./media/billing-add-change-azure-subscription-administrator/add-role.png)
 
-    ![Screenshot mit ausgewählter Besitzerrolle](./media/billing-add-change-azure-subscription-administrator/newselectrole.png)
+5. Wenn Sie das Konto des Besitzers als Co-Administrator hinzufügen möchten, klicken Sie auf der Seite **Zugriffssteuerung (IAM)** mit der rechten Maustaste auf den Benutzer, und wählen Sie **Als Co-Administrator hinzufügen**. Diese Funktion ist nun im [Azure-Vorschauportal](https://preview.portal.azure.com/) verfügbar. 
 
-5. Geben Sie die E-Mail-Adresse des Benutzers ein, den Sie als Besitzer hinzufügen möchten, klicken Sie auf den Benutzer, und klicken Sie dann auf **Auswählen**.
+     ![Screenshot, auf dem der Co-Administrator hinzugefügt wird](./media/billing-add-change-azure-subscription-administrator/add-coadmin.png)
 
-    ![Screenshot mit einer hinzugefügten und ausgewählten E-Mail-Adresse für den Benutzer](./media/billing-add-change-azure-subscription-administrator/newadduser.png)
+    >[!TIP]
+    >Sie müssen den Benutzer „Besitzer“ als Co-Administrator hinzufügen, wenn der Benutzer die Azure-Dienste im [klassischen Azure-Portal](https://manage.windowsazure.com/) verwalten muss.
 
-**Klassisches Azure-Portal**
+    Klicken Sie zum Entfernen der Co-Administratorberechtigung mit der rechten Maustaste auf den Benutzer „Co-Administrator“, und wählen Sie dann **Co-Administrator entfernen**.
+
+    ![Screenshot, auf dem der Co-Administrator entfernt wird](./media/billing-add-change-azure-subscription-administrator/remove-coadmin.png)
+
+
+**klassischen Azure-Portal**
 
 1. Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com/)an.
 2. Wählen Sie im Navigationsbereich die Optionen **Einstellungen**> **Administratoren**> **Hinzufügen**. </br>
@@ -68,14 +73,12 @@ Die folgende E-Mail-Adresse kann als Co-Administrator hinzugefügt werden:
 
     user@&lt;IhreDomäne&gt;.onmicrosoft.com
 
-
-
 ## <a name="change-service-administrator-for-a-subscription"></a>Ändern des Dienstadministrators für ein Abonnement
 Nur der Kontoadministrator kann den Dienstadministrator für ein Abonnement ändern.
 
 1. Melden Sie sich als Kontoadministrator beim [Azure-Kontocenter](https://account.windowsazure.com/subscriptions) an.
 2. Wählen Sie das Abonnement aus, das Sie ändern möchten.
-3. Klicken Sie auf der rechten Seite auf **Abonnementdetails bearbeiten** . </br>
+3. Klicken Sie auf der rechten Seite auf **Abonnementdetails bearbeiten**. </br>
 
     ![editsub](./media/billing-add-change-azure-subscription-administrator/editsub.png)
 4. Geben Sie im Feld **DIENSTADMINISTRATOR** die E-Mail-Adresse des neuen Dienstadministrators ein. </br>

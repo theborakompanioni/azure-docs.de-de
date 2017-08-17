@@ -12,17 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 2/6/2017
+ms.date: 07/20/2017
 ms.author: pullabhk;markgal
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: c65976c7394c7f9691526c0914854ef09184ab07
+ms.translationtype: HT
+ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
+ms.openlocfilehash: ae7c345c11a7db25413d60ad822f16f84ca37362
 ms.contentlocale: de-de
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
-# <a name="recover-files-from-azure-virtual-machine-backup-preview"></a>Wiederherstellen von Dateien aus einem Wiederherstellungspunkt für virtuelle Azure-Computer (Vorschau)
+# <a name="recover-files-from-azure-virtual-machine-backup"></a>Wiederherstellen von Dateien aus einer Sicherung von virtuellen Azure-Computern
 
 Azure Backup bietet die Möglichkeit zum Wiederherstellen von [virtuellen Azure-Computern und Datenträgern](./backup-azure-arm-restore-vms.md) aus Azure-VM-Sicherungen. In diesem Artikel wird erläutert, wie Sie Elemente wie Dateien und Ordner aus einer Azure-VM-Sicherung wiederherstellen können.
 
@@ -35,7 +34,7 @@ Azure Backup bietet die Möglichkeit zum Wiederherstellen von [virtuellen Azure-
 
 1. Melden Sie sich beim [Azure-Portal](http://portal.Azure.com) an. Suchen Sie den entsprechenden Recovery Services-Tresor und das erforderliche Sicherungselement.
 
-2. Klicken Sie auf dem Blatt „Sicherungselement“ auf **Dateiwiederherstellung (Vorschau)**.
+2. Klicken Sie auf dem Blatt „Sicherungselement“ auf **Dateiwiederherstellung**.
 
     ![Öffnen des Sicherungselements im Recovery Services-Tresors](./media/backup-azure-restore-files-from-vm/open-vault-item.png)
 
@@ -49,13 +48,19 @@ Azure Backup bietet die Möglichkeit zum Wiederherstellen von [virtuellen Azure-
 
   Mit der ausführbaren Datei bzw. dem Skript wird eine Verbindung zwischen dem lokalen Computer und angegebenen Wiederherstellungspunkt hergestellt.
 
-5. Führen Sie auf dem Computer, auf dem Sie die Dateien wiederherstellen möchten, die ausführbare Datei bzw. das Skript aus. Die Ausführung muss mit Administratoranmeldeinformationen erfolgen. Wenn Sie das Skript auf einem Computer mit eingeschränktem Zugriff ausführen, stellen Sie sicher, dass Zugriff auf Folgendes besteht:
+5. Sie benötigen ein Kennwort, um das heruntergeladene Skript bzw. die heruntergeladene ausführbare Datei auszuführen. Sie können das Kennwort über die Schaltfläche „Kopieren“ neben dem generierten Kennwort aus dem Portal kopieren.
 
-    - go.microsoft.com
+    ![Generiertes Kennwort](./media/backup-azure-restore-files-from-vm/generated-pswd.png)
+
+6. Führen Sie auf dem Computer, auf dem Sie die Dateien wiederherstellen möchten, die ausführbare Datei bzw. das Skript aus. Die Ausführung muss mit Administratoranmeldeinformationen erfolgen. Wenn Sie das Skript auf einem Computer mit eingeschränktem Zugriff ausführen, stellen Sie sicher, dass Zugriff auf Folgendes besteht:
+
+    - download.microsoft.com
     - Azure-Endpunkte für Azure-VM-Sicherungen
     - Ausgehender Port 3260
 
    Für Linux benötigt das Skript zum Herstellen der Verbindung mit dem Wiederherstellungspunkt die Komponenten „open-iscsi“ und „lshw“. Wenn diese nicht auf dem Computer vorhanden sind, auf dem es ausgeführt wird, wird um die Erlaubnis zum Installieren der entsprechenden Komponenten gebeten, die bei Erteilung installiert werden.
+   
+   Geben Sie das aus dem Portal kopierte Kennwort ein, wenn Sie dazu aufgefordert werden. Nach der Eingabe eines gültigen Kennworts stellen die Skripts eine Verbindung mit dem Wiederherstellungspunkt her.
       
     ![Blatt „Dateiwiederherstellung“](./media/backup-azure-restore-files-from-vm/executable-output.png)
     

@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: cynthn
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: 527f3f33e2b5996c6fa7b7dc874123bba5ab39dd
+ms.translationtype: HT
+ms.sourcegitcommit: 2812039649f7d2fb0705220854e4d8d0a031d31e
+ms.openlocfilehash: 4b2593067193fe928cb8ac2b662fc3fd8ba7aedf
 ms.contentlocale: de-de
-ms.lasthandoff: 05/26/2017
-
+ms.lasthandoff: 07/22/2017
 
 ---
 # <a name="create-a-vm-from-a-managed-image"></a>Erstellen eines virtuellen Computers aus einem verwalteten Image
@@ -32,10 +31,10 @@ Sie können mehrere virtuelle Computer auf der Grundlage eines verwalteten VM-Im
 
 Sie müssen bereits [ein verwaltetes VM-Image erstellt](capture-image-resource.md) haben, das zum Erstellen des neuen virtuellen Computers verwendet werden soll. 
 
-Stellen Sie sicher, dass Sie die neueste Version des AzureRM.Compute-PowerShell-Moduls verwenden. Führen Sie den folgenden Befehl aus, um es zu installieren.
+Stellen Sie sicher, dass Sie die neueste Version des AzureRM.Compute- und des AzureRM.Network PowerShell-Moduls verwenden. Öffnen Sie eine PowerShell-Eingabeaufforderung als Administrator, und führen Sie zur Installation den folgenden Befehl aus:
 
 ```powershell
-Install-Module AzureRM.Compute -RequiredVersion 2.6.0
+Install-Module AzureRM.Compute,AzureRM.Network
 ```
 Weitere Informationen finden Sie unter [Azure PowerShell-Versionsverwaltung](/powershell/azure/overview).
 

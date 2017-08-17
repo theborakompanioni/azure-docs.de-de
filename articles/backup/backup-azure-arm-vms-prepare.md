@@ -13,14 +13,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 2/7/2017
+ms.date: 7/10/2017
 ms.author: markgal;trinadhk;
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: c1185358cc10e450c0c67baab407c49de56ad767
+ms.translationtype: HT
+ms.sourcegitcommit: 0425da20f3f0abcfa3ed5c04cec32184210546bb
+ms.openlocfilehash: eb6a7069da36a462f8dd27454bc1834d2e3844f0
 ms.contentlocale: de-de
-ms.lasthandoff: 06/16/2017
-
+ms.lasthandoff: 07/20/2017
 
 ---
 # <a name="prepare-your-environment-to-back-up-resource-manager-deployed-virtual-machines"></a>Vorbereiten der Umgebung für die Sicherung von mit Resource Manager bereitgestellten virtuellen Computern
@@ -57,10 +56,10 @@ Wenn Sie wissen, dass diese Bedingungen in Ihrer Umgebung bereits erfüllt sind,
 Bitte machen Sie sich vor der Vorbereitung der Umgebung mit den Einschränkungen vertraut.
 
 * Die Sicherung von virtuellen Computern mit mehr als 16 Datenträgern wird nicht unterstützt.
-* Die Sicherung von virtuellen Computern mit 4-TB-Datenträgern wird nicht unterstützt. 
+* Das Sichern virtueller Computer mit Datenträgern, die größer als 1.023 GB sind, wird nicht unterstützt.
 * Die Sicherung von virtuellen Computern mit einer reservierten IP-Adresse und ohne definierten Endpunkt wird nicht unterstützt.
 * Die Sicherung von virtuellen Computern, die nur mit BEK verschlüsselt sind, wird nicht unterstützt. Die Sicherung von virtuellen Linux-Computern, die mit LUKS-Verschlüsselung verschlüsselt sind, wird nicht unterstützt.
-* Das Sichern von virtuellen Linux-Computern mit Docker-Erweiterung wird nicht unterstützt.
+* Die Sicherung von virtuellen Computern in einer Konfiguration mit horizontal hochskalierten Dateiservern wird nicht empfohlen.
 * Im Netzwerk bereitgestellte und an den virtuellen Computer angefügte Laufwerke werden nicht in die Sicherungsdaten einbezogen.
 * Das Ersetzen eines vorhandenen virtuellen Computers während der Wiederherstellung wird nicht unterstützt. Wenn Sie versuchen, die VM wiederherzustellen, obwohl die VM vorhanden ist, wird die Wiederherstellung nicht ausgeführt.
 * Die regionsübergreifende Sicherung und Wiederherstellung wird nicht unterstützt.

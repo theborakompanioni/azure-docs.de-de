@@ -13,14 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/11/2017
+ms.date: 07/19/2017
 ms.author: jingwang
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
-ms.openlocfilehash: b60105297fb84ce1240a33d576653f5fa7c950e9
+ms.translationtype: HT
+ms.sourcegitcommit: 0425da20f3f0abcfa3ed5c04cec32184210546bb
+ms.openlocfilehash: 0cefbe1303de1cfa46cc4b771c0cd3aa7819597c
 ms.contentlocale: de-de
-ms.lasthandoff: 04/27/2017
-
+ms.lasthandoff: 07/20/2017
 
 ---
 # <a name="move-data-by-using-copy-activity"></a>Verschieben von Daten mit der Kopieraktivität
@@ -187,6 +186,12 @@ Sie können mehr als ein Eingabedataset für die Kopieraktivität angeben. Diese
 
 ## <a name="performance-and-tuning"></a>Leistung und Optimierung
 Der Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md)beschreibt wichtige Faktoren, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken. Außerdem wird die beobachtete Leistung bei internen Tests aufgeführt und es werden verschiedene Methoden zur Optimierung der Leistung der Kopieraktivität erläutert.
+
+## <a name="fault-tolerance"></a>Fehlertoleranz
+Standardmäßig werden von der Kopieraktivität keine Daten mehr kopiert, und es wird ein Fehler zurückgegeben, wenn inkompatible Daten zwischen Quelle und Senke auftreten. Sie können das Überspringen und Protokollieren inkompatibler Zeilen explizit konfigurieren und nur die kompatiblen Daten kopieren, damit der Kopiervorgang erfolgreich ist. Weitere Details finden Sie unter [Copy Activity fault tolerance - skip incompatible rows](data-factory-copy-activity-fault-tolerance.md) (Fehlertoleranz der Kopieraktivität – Überspringen inkompatibler Zeilen).
+
+## <a name="security-considerations"></a>Sicherheitshinweise
+Lesen Sie die [Sicherheitsüberlegungen](data-factory-data-movement-security-considerations.md), in denen die Sicherheitsinfrastruktur beschrieben ist, die von Datenverschiebungsdiensten in Azure Data Factory verwendet wird, um Ihre Daten zu schützen.
 
 ## <a name="scheduling-and-sequential-copy"></a>Planen und sequenzielles Kopieren
 Ausführliche Informationen zur Planung und Ausführung in Data Factory finden Sie unter [Planung und Ausführung](data-factory-scheduling-and-execution.md) . Es ist möglich, mehrere Kopiervorgänge nacheinander sequenziell/sortiert auszuführen. Weitere Informationen finden Sie im Abschnitt [Sequenzielles Kopieren](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline).

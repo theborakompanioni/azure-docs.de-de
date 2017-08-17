@@ -3,8 +3,8 @@ title: "Hinzufügen von Authentifizierung auf iOS mit Azure Mobile Apps"
 description: "Erfahren Sie, wie Sie Azure Mobile Apps zum Authentifizieren Ihrer iOS-App über eine Vielzahl von Identitätsanbietern nutzen können, darunter AAD, Google, Facebook, Twitter und Microsoft."
 services: app-service\mobile
 documentationcenter: ios
-author: ysxu
-manager: yochayk
+author: ggailey777
+manager: syntaxc4
 editor: 
 ms.assetid: ef3d3cbe-e7ca-45f9-987f-80c44209dc06
 ms.service: app-service-mobile
@@ -13,11 +13,12 @@ ms.tgt_pltfrm: mobile-ios
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/23/2017
-ms.author: yuaxu
-translationtype: Human Translation
-ms.sourcegitcommit: 604c1f84365954ddd3ba2de21fffa90ba5cc274b
-ms.openlocfilehash: 8ea09b30081c60bbf44f8d929750e9a74f9f97b0
-
+ms.author: glenga
+ms.translationtype: HT
+ms.sourcegitcommit: 0425da20f3f0abcfa3ed5c04cec32184210546bb
+ms.openlocfilehash: 21a2cc6c1eaf4b34cbe8c2d7c4dbb69c8730cf32
+ms.contentlocale: de-de
+ms.lasthandoff: 07/20/2017
 
 ---
 # <a name="add-authentication-to-your-ios-app"></a>Hinzufügen der Authentifizierung zu Ihrer iOS-App
@@ -25,10 +26,10 @@ ms.openlocfilehash: 8ea09b30081c60bbf44f8d929750e9a74f9f97b0
 
 In diesem Lernprogramm fügen Sie dem [iOS-Schnellstartlernprogramm] mithilfe eines unterstützten Identitätsanbieters eine Authentifizierung hinzu. Dieses Lernprogramm baut auf dem [iOS-Schnellstartlernprogramm] auf, das Sie zuerst abschließen müssen.
 
-## <a name="a-nameregisteraregister-your-app-for-authentication-and-configure-the-app-service"></a><a name="register"></a>Registrieren Ihrer App für die Authentifizierung und Konfigurieren von App Service
+## <a name="register"></a>Registrieren Ihrer App für die Authentifizierung und Konfigurieren von App Service
 [!INCLUDE [app-service-mobile-register-authentication](../../includes/app-service-mobile-register-authentication.md)]
 
-## <a name="a-nameredirecturlaadd-your-app-to-the-allowed-external-redirect-urls"></a><a name="redirecturl"></a>Hinzufügen Ihrer App zu den zulässigen externen Umleitungs-URLs
+## <a name="redirecturl"></a>Hinzufügen Ihrer App zu den zulässigen externen Umleitungs-URLs
 
 Eine sichere Authentifizierung erfordert, dass Sie ein neues URL-Schema für Ihre App definieren.  Dies ermöglicht dem Authentifizierungssystem die erneute Umleitung an Ihre App, sobald der Authentifizierungsprozess abgeschlossen ist.  In diesem Tutorial verwenden wir ausschließlich das URL-Schema _appname_.  Sie können jedoch ein beliebiges URL-Schema auswählen und verwenden.  Es sollte für Ihre mobile Anwendung eindeutig sein.  So aktivieren Sie die Umleitung auf der Serverseite:
 
@@ -46,12 +47,12 @@ Eine sichere Authentifizierung erfordert, dass Sie ein neues URL-Schema für Ihr
 
 7. Klicken Sie auf **Speichern**.
 
-## <a name="a-namepermissionsarestrict-permissions-to-authenticated-users"></a><a name="permissions"></a>Einschränken von Berechtigungen für authentifizierte Benutzer
+## <a name="permissions"></a>Einschränken von Berechtigungen für authentifizierte Benutzer
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
 Klicken Sie in Xcode auf **Run** , um die App zu starten. Eine Ausnahme wird ausgelöst, da die App als nicht authentifizierter Benutzer auf das Back-End zugreift, aber die *TodoItem*-Tabelle nun eine Authentifizierung verlangt.
 
-## <a name="a-nameadd-authenticationaadd-authentication-to-app"></a><a name="add-authentication"></a>Hinzufügen von Authentifizierung zur App
+## <a name="add-authentication"></a>Hinzufügen von Authentifizierung zur App
 **Objective-C**:
 
 1. Öffnen Sie auf dem Mac *QSTodoListViewController.m* in Xcode, und fügen Sie folgende Methode hinzu:
@@ -76,8 +77,7 @@ Klicken Sie in Xcode auf **Run** , um die App zu starten. Eine Ausnahme wird aus
     }
     ```
 
-    Wenn Sie Google nicht als Identitätsanbieter nutzen, ändern Sie *google* in *microsoftaccount*, *twitter*, *facebook* oder *windowsazureactivedirectory*. Wenn Sie Facebook verwenden, [müssen Sie die Facebook-Domänen der Positivliste in Ihrer App hinzufügen][1]
-   .
+    Wenn Sie Google nicht als Identitätsanbieter nutzen, ändern Sie *google* in *microsoftaccount*, *twitter*, *facebook* oder *windowsazureactivedirectory*. Wenn Sie Facebook verwenden, [müssen Sie die Facebook-Domänen der Positivliste in Ihrer App hinzufügen][1].
 
     Ersetzen Sie **urlScheme** mit einem eindeutigen Namen für Ihre Anwendung.  Der urlScheme-Wert muss mit dem URL-Schema-Protokoll übereinstimmen, das Sie im Azure-Portal im Feld **Zulässige externe Umleitungs-URLs** angegeben haben. Der urlScheme-Wert wird vom Authentifizierungsrückruf verwendet, um nach Abschluss der Authentifizierungsanforderung zurück zu Ihrer Anwendung zu wechseln.
 
@@ -163,8 +163,7 @@ Klicken Sie in Xcode auf **Run** , um die App zu starten. Eine Ausnahme wird aus
     }
     ```
 
-    Wenn Sie Google nicht als Identitätsanbieter nutzen, ändern Sie *google* in *microsoftaccount*, *twitter*, *facebook* oder *windowsazureactivedirectory*. Wenn Sie Facebook verwenden, [müssen Sie die Facebook-Domänen der Positivliste in Ihrer App hinzufügen][1]
-   .
+    Wenn Sie Google nicht als Identitätsanbieter nutzen, ändern Sie *google* in *microsoftaccount*, *twitter*, *facebook* oder *windowsazureactivedirectory*. Wenn Sie Facebook verwenden, [müssen Sie die Facebook-Domänen der Positivliste in Ihrer App hinzufügen][1].
 
     Ersetzen Sie **urlScheme** mit einem eindeutigen Namen für Ihre Anwendung.  Der urlScheme-Wert muss mit dem URL-Schema-Protokoll übereinstimmen, das Sie im Azure-Portal im Feld **Zulässige externe Umleitungs-URLs** angegeben haben. Der urlScheme-Wert wird vom Authentifizierungsrückruf verwendet, um nach Abschluss der Authentifizierungsanforderung zurück zu Ihrer Anwendung zu wechseln.
 
@@ -221,10 +220,5 @@ Die App Service-Authentifizierung verwendet Inter-App Communication von Apple.  
 [Azure-Portal]: https://portal.azure.com
 
 [iOS-Schnellstartlernprogramm]: app-service-mobile-ios-get-started.md
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 
