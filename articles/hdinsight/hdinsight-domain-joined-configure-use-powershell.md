@@ -1,5 +1,5 @@
 ---
-title: "Konfigurieren von in die Domäne eingebundenen HDInsight-Clustern mit Azure PowerShell| Microsoft Docs"
+title: "Konfigurieren von in die Domäne eingebundenen HDInsight-Clustern mit PowerShell – Azure| Microsoft-Dokumentation"
 description: "Erfahren Sie mehr über das Einrichten und Konfigurieren von in die Domäne eingebundenen HDInsight-Clustern mit Azure PowerShell."
 services: hdinsight
 documentationcenter: 
@@ -16,15 +16,19 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/02/2016
 ms.author: saurinsh
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 6f4189cb30d528a106dd8889c06acd621aebb699
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: d31ad53525ef75bdb61c42409dc07bba4138fc25
+ms.contentlocale: de-de
+ms.lasthandoff: 06/28/2017
 
 
 ---
 # <a name="configure-domain-joined-hdinsight-clusters-preview-using-azure-powershell"></a>Konfigurieren von in die Domäne eingebundenen HDInsight-Clustern (Vorschau) mit Azure PowerShell
 Es wird beschrieben, wie Sie einen Azure HDInsight-Cluster mit Azure Active Directory (Azure AD) und [Apache Ranger](http://hortonworks.com/apache/ranger/) per Azure PowerShell einrichten. Ein Azure PowerShell-Skript wird bereitgestellt, um die Konfiguration schneller und weniger fehleranfällig zu machen. In die Domäne eingebundenes HDInsight kann nur unter Linux-basierten Clustern konfiguriert werden. Weitere Informationen finden Sie unter [Introduce Domain-joined HDInsight clusters (Einführung in HDInsight-Cluster mit Domänenverknüpfung)](hdinsight-domain-joined-introduction.md).
+
+> [!IMPORTANT]
+> Oozie ist auf HDInsight mit Domänenverknüpfung nicht aktiviert.
 
 Die Konfiguration eines typischen in die Domäne eingebundenen HDInsight-Clusters umfasst die folgenden Schritte:
 
@@ -59,7 +63,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 * Azure PowerShell.  Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview).
 
 ## <a name="create-an-azure-classic-vnet-for-your-azure-ad"></a>Erstellen Sie ein klassisches Azure-VNet für Azure AD.
-Eine Anleitung finden Sie [hier](hdinsight-domain-joined-configure.md#create-an-azure-classic-vnet).
+Eine Anleitung finden Sie [hier](hdinsight-domain-joined-configure.md#create-an-azure-virtual-network-classic).
 
 ## <a name="create-and-configure-azure-ad-and-azure-ad-ds"></a>Erstellen und konfigurieren Sie Azure AD und Azure AD DS.
 Eine Anleitung finden Sie [hier](hdinsight-domain-joined-configure.md#create-and-configure-azure-ad-ds-for-your-azure-ad).
@@ -73,7 +77,7 @@ Sie können das PowerShell-Skript von [GitHub](https://github.com/hdinsight/Doma
 2. Geben Sie die Werte für die folgenden Variablen ein:
    
    * **$SubscriptionName**: Der Name des Azure-Abonnements, unter dem Sie den HDInsight-Cluster erstellen möchten. Sie haben unter diesem Abonnement bereits ein klassisches virtuelles Netzwerk erstellt und erstellen zusätzlich ein virtuelles Azure Resource Manager-Netzwerk für den HDInsight-Cluster im Abonnement.
-   * **$ClassicVNetName**: Das klassische virtuelle Netzwerk mit Azure AD DS. Dieses virtuelle Netzwerk muss sich in demselben Abonnement befinden, das oben angegeben ist. Dieses virtuelle Netzwerk muss mit dem Azure-Portal erstellt werden, nicht mit dem klassischen Portal. Wenn Sie die Anleitung unter [Konfigurieren von in die Domäne eingebundenen HDInsight-Clustern (Vorschau)](hdinsight-domain-joined-configure.md#create-an-azure-classic-vnet) verwenden, lautet der Standardname „contosoaadvnet“.
+   * **$ClassicVNetName**: Das klassische virtuelle Netzwerk mit Azure AD DS. Dieses virtuelle Netzwerk muss sich in demselben Abonnement befinden, das oben angegeben ist. Dieses virtuelle Netzwerk muss mit dem Azure-Portal erstellt werden, nicht mit dem klassischen Portal. Wenn Sie die Anleitung unter [Konfigurieren von in die Domäne eingebundenen HDInsight-Clustern (Vorschau)](hdinsight-domain-joined-configure.md#create-an-azure-virtual-network-classic) verwenden, lautet der Standardname „contosoaadvnet“.
    * **$ClassicResourceGroupName**: Der Resource Manager-Gruppenname für das klassische virtuelle Netzwerk, der oben erwähnt wird. Beispiel: contosoaadrg. 
    * **$ArmResourceGroupName**: Der Name der Ressourcengruppe, in der Sie den HDInsight-Cluster erstellen möchten. Sie können dieselbe Ressourcengruppe „$ArmResourceGroupName“ verwenden.  Falls die Ressourcengruppe nicht vorhanden ist, erstellt das Skript die Ressourcengruppe für Sie.
    * **$ArmVNetName**: Der Name des virtuellen Resource Manager-Netzwerks, in dem Sie den HDInsight-Cluster erstellen möchten. Dieses virtuelle Netzwerk wird in „$ArmResourceGroupName“ angeordnet.  Falls das VNet nicht vorhanden ist, wird es mit dem PowerShell-Skript erstellt. Wenn es vorhanden ist, sollte es Teil der oben angegebenen Ressourcengruppe sein.

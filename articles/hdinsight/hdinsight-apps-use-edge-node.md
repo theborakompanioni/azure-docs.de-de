@@ -1,6 +1,6 @@
 ---
-title: Verwenden leerer Edgeknoten in HDInsight | Microsoft Docs
-description: "Sie erfahren, wie Sie HDInsight-Cluster einen leeren Edgeknoten hinzufügen, der als Client verwendet werden kann, und wie Sie Ihre HDInsight-Anwendungen testen/hosten."
+title: "Verwenden leerer Edgeknoten in Hadoop-Clustern in HDInsight – Azure | Microsoft-Dokumentation"
+description: "Hier erfahren Sie, wie Sie einem HDInsight-Cluster einen leeren Edgeknoten hinzufügen, der als Client verwendet werden kann, und wie Sie Ihre HDInsight-Anwendungen testen/hosten."
 services: hdinsight
 editor: cgronlun
 manager: jhubbard
@@ -9,7 +9,7 @@ tags: azure-portal
 documentationcenter: 
 ms.assetid: cdc7d1b4-15d7-4d4d-a13f-c7d3a694b4fb
 ms.service: hdinsight
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,hdiseo17may2017
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,16 +17,16 @@ ms.topic: article
 ms.date: 05/01/2017
 ms.author: jgao
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e155891ff8dc736e2f7de1b95f07ff7b2d5d4e1b
-ms.openlocfilehash: ab888881a841f5a9bf2d47aea946022e6603c585
+ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
+ms.openlocfilehash: 0b5ccfa5da0f6a4aa2ca72eb580e5238f3b262c5
 ms.contentlocale: de-de
-ms.lasthandoff: 05/02/2017
+ms.lasthandoff: 06/30/2017
 
 
 ---
-# <a name="use-empty-edge-nodes-in-hdinsight"></a>Verwenden leerer Edgeknoten in HDInsight
+# <a name="use-empty-edge-nodes-on-hadoop-clusters-in-hdinsight"></a>Verwenden leerer Edgeknoten in Hadoop-Clustern in HDInsight
 
-Erfahren Sie, wie Sie einem Linux-basierten HDInsight-Cluster einen leeren Edgeknoten hinzufügen. Ein leerer Edgeknoten ist ein virtueller Linux-Computer, auf dem die gleichen Clienttools installiert und konfiguriert sind wie im Hauptknoten, aber keine Hadoop-Dienste ausgeführt werden. Sie können den Edgeknoten zum Zugreifen auf den Cluster sowie zum Testen und Hosten Ihrer Clientanwendungen verwenden. 
+Hier erfahren Sie, wie Sie einem HDInsight-Cluster einen leeren Edgeknoten hinzufügen. Ein leerer Edgeknoten ist ein virtueller Linux-Computer, auf dem die gleichen Clienttools installiert und konfiguriert sind wie auf den Hauptknoten, aber keine Hadoop-Dienste ausgeführt werden. Sie können den Edgeknoten zum Zugreifen auf den Cluster, Testen Ihrer Clientanwendungen und Hosten von Clientanwendungen verwenden. 
 
 Sie können einen leeren Edgeknoten zu einem vorhandenen HDInsight-Cluster oder zu einem neuen Cluster hinzufügen, wenn Sie den Cluster erstellen. Einen leeren Edgeknoten fügen Sie mit der Azure Resource Manager-Vorlage hinzu.  Im folgenden Beispiel sehen Sie, wie dies mithilfe einer Vorlage erfolgt:
 
@@ -59,18 +59,26 @@ Sie können einen leeren Edgeknoten zu einem vorhandenen HDInsight-Cluster oder 
         }
     ],
 
-Wie im Beispiel gezeigt, können Sie optional eine [Skriptaktion](hdinsight-hadoop-customize-cluster-linux.md) aufrufen, um zusätzliche Konfigurationsschritte wie z.B. die Installation von [Apache Hue](hdinsight-hadoop-hue-linux.md) in den Edgeknoten auszuführen. Das Skript der Skriptaktionen muss öffentlich im Internet verfügbar sein.  Wenn das Skript beispielsweise in Azure Storage gespeichert ist, verwenden Sie öffentliche Container oder öffentliche Blobs.
+Wie im Beispiel gezeigt, können Sie optional eine [Skriptaktion](hdinsight-hadoop-customize-cluster-linux.md) aufrufen, um zusätzliche Konfigurationsschritte wie z.B. die Installation von [Apache Hue](hdinsight-hadoop-hue-linux.md) in den Edgeknoten auszuführen. Das Skriptaktionsskript muss öffentlich im Internet verfügbar sein.  Wenn das Skript beispielsweise in Azure Storage gespeichert ist, verwenden Sie öffentliche Container oder öffentliche Blobs.
 
 Die Größe des Edgeknotens des virtuellen Computers muss den VM-Größenanforderungen des HDInsight-Clusterworkerknotens entsprechen. Die empfohlene VM-Größe des Workerknotens finden Sie unter [Erstellen von Hadoop-Clustern in HDInsight](hdinsight-hadoop-provision-linux-clusters.md#cluster-types).
 
 Nach der Erstellung eines Edgeknotens können Sie über SSH eine Verbindung zum Edgeknoten herstellen und Client-Tools ausführen, um auf den Hadoop-Cluster in HDInsight zuzugreifen.
+
+> [!WARNING] 
+> Die Verwendung eines leeren Edgeknotens mit HDInsight befindet sich derzeit in der Vorschauphase. Für auf dem Edgeknoten installierte benutzerdefinierte Komponenten stellt Microsoft wirtschaftlich angemessenen Support bereit. Dadurch werden unter Umständen bei Ihnen auftretende Probleme behoben. Alternativ erhalten Sie unter Umständen weitere Unterstützung über Communityressourcen. Im Anschluss finden Sie einige besonders aktive Websites, auf denen Sie Unterstützung von der Community erhalten:
+>
+> * [MSDN-Forum für HDInsight](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight)
+> * [http://stackoverflow.com](http://stackoverflow.com)
+>
+> Bei Verwendung einer Apache-Technologie finden Sie unter Umständen hilfreiche Informationen auf den Apache-Projektwebsites unter [http://apache.org](http://apache.org) (beispielsweise auf der Website für [Hadoop](http://hadoop.apache.org/)).
 
 ## <a name="add-an-edge-node-to-an-existing-cluster"></a>Hinzufügen eines Edgeknotens zu einem vorhandenen Cluster
 In diesem Abschnitt verwenden Sie eine Resource Manager-Vorlage, um einen Edgeknoten zu einem vorhandenen HDInsight-Cluster hinzuzufügen.  Die Resource Manager-Vorlage finden Sie in [GitHub](https://github.com/hdinsight/Iaas-Applications/tree/master/EmptyNode). Die Resource Manager-Vorlage ruft ein Skriptaktionsskript auf, das sich unter https://raw.githubusercontent.com/hdinsight/Iaas-Applications/master/EmptyNode/scripts/EmptyNodeSetup.sh befindet. Das Skript führt keine Aktionen aus.  Es demonstriert das Aufrufen der Skriptaktion aus einer Resource Manager-Vorlage.
 
 **Hinzufügen eines Edgeknotens zu einem vorhandenen Cluster**
 
-1. Erstellen Sie einen HDInsight-Cluster, wenn Sie noch keinen besitzen.  Informationen dazu erhalten Sie im [Hadoop-Tutorial: Erste Schritte bei der Verwendung von Linux-basiertem Hadoop in HDInsight](hdinsight-hadoop-linux-tutorial-get-started.md).
+1. Erstellen Sie einen HDInsight-Cluster, wenn Sie noch keinen besitzen.  Weitere Informationen finden Sie unter [Hadoop-Tutorial: Erste Schritte bei der Verwendung von Hadoop in HDInsight](hdinsight-hadoop-linux-tutorial-get-started.md).
 2. Klicken Sie auf die folgende Abbildung, um sich bei Azure anzumelden und die Azure Resource Manager-Vorlage im Azure-Portal zu öffnen. 
    
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fhdinsight%2FIaas-Applications%2Fmaster%2FEmptyNode%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-apps-use-edge-node/deploy-to-azure.png" alt="Deploy to Azure"></a>
@@ -89,7 +97,7 @@ In diesem Abschnitt verwenden Sie eine Resource Manager-Vorlage, um HDInsight-Cl
 
 **Hinzufügen eines Edgeknotens zu einem vorhandenen Cluster**
 
-1. Erstellen Sie einen HDInsight-Cluster, wenn Sie noch keinen besitzen.  Informationen dazu erhalten Sie im [Hadoop-Tutorial: Erste Schritte bei der Verwendung von Linux-basiertem Hadoop in HDInsight](hdinsight-hadoop-linux-tutorial-get-started.md).
+1. Erstellen Sie einen HDInsight-Cluster, wenn Sie noch keinen besitzen.  Weitere Informationen finden Sie unter [Erste Schritte mit Hadoop in HDInsight](hdinsight-hadoop-linux-tutorial-get-started.md).
 2. Klicken Sie auf die folgende Abbildung, um sich bei Azure anzumelden und die Azure Resource Manager-Vorlage im Azure-Portal zu öffnen. 
    
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-linux-with-edge-node%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-apps-use-edge-node/deploy-to-azure.png" alt="Deploy to Azure"></a>

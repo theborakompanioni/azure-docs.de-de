@@ -1,5 +1,5 @@
 ---
-title: Verstehen von Hadoop mithilfe einer Hadoop-Sandbox | Microsoft-Dokumentation
+title: "Anleitung zur Verwendung einer Hadoop-Sandbox – Emulator – Azure HDInsight | Microsoft-Dokumentation"
 description: "Um sich mit dem Hadoop-Ökosystem vertraut zu machen, können Sie eine Hadoop-Sandbox von Hortonworks auf einem virtuellen Azure-Computer einrichten. "
 keywords: hadoop emulator,hadoop sandbox
 editor: cgronlun
@@ -10,21 +10,22 @@ documentationcenter:
 tags: azure-portal
 ms.assetid: 6ad5bb58-8215-4e3d-a07f-07fcd8839cc6
 ms.service: hdinsight
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,hdiseo17may2017
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/06/2017
+ms.date: 06/29/2017
 ms.author: nitinme
-translationtype: Human Translation
-ms.sourcegitcommit: 1618ed7971ffef0eae55b73b4bdd04f3f14195ba
-ms.openlocfilehash: a070df78bf95173aa48da60d24d14d08d9be8d9a
-ms.lasthandoff: 01/07/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
+ms.openlocfilehash: b701879464205860edd1c097651b532f87bae388
+ms.contentlocale: de-de
+ms.lasthandoff: 07/01/2017
 
 
 ---
-# <a name="get-started-in-the-hadoop-ecosystem-with-a-hadoop-sandbox-on-a-virtual-machine"></a>Erste Schritte im Hadoop-Ökosystem mit einer Hadoop-Sandbox auf einem virtuellen Computer
+# <a name="get-started-with-a-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>Erste Schritte mit einer Hadoop-Sandbox, einem Emulator auf einem virtuellen Computer
 
 Hier erfahren Sie, wie Sie die Hadoop-Sandbox von Hortonworks auf einem virtuellen Computer installieren, um sich mit dem Hadoop-Ökosystem vertraut zu machen. Die Sandbox bietet eine lokale Entwicklungsumgebung, in der Sie Hadoop, Hadoop Distributed File System (HDFS) und die Übermittlung von Aufträgen kennenlernen. Nachdem Sie sich mit Hadoop vertraut gemacht haben, können Sie Hadoop in Azure verwenden und einen HDInsight-Cluster erstellen. Weitere Informationen für Ihren Einstieg finden Sie unter [Erste Schritte mit Hadoop in HDInsight](hdinsight-hadoop-linux-tutorial-get-started.md).
 
@@ -35,7 +36,8 @@ Hier erfahren Sie, wie Sie die Hadoop-Sandbox von Hortonworks auf einem virtuell
 
 ## <a name="download-and-install-the-virtual-machine"></a>Herunterladen und Installieren des virtuellen Computers
 1. Navigieren Sie zur [Downloadseite von Hortonworks](http://hortonworks.com/downloads/#sandbox).
-2. Klicken Sie auf **DOWNLOAD FOR VIRTUALBOX** (Für VIRTUALBOX zum herunterladen), um die neueste Hortonworks Sandbox auf einen virtuellen Computer herunterzuladen. Vor Beginn des Downloads werden Sie aufgefordert, sich bei Hortonworks zu registrieren. Das Herunterladen dauert je nach Geschwindigkeit des Netzwerks ein bis zwei Stunden.
+
+2. Klicken Sie auf **DOWNLOAD FOR VIRTUALBOX** (FÜR VIRTUALBOX HERUNTERLADEN), um die neueste Hortonworks Sandbox auf einen virtuellen Computer herunterzuladen. Vor Beginn des Downloads werden Sie aufgefordert, sich bei Hortonworks zu registrieren. Das Herunterladen dauert je nach Geschwindigkeit des Netzwerks ein bis zwei Stunden.
    
     ![Abbildung des Links zum Herunterladen von Hortonworks Sandbox für VirtualBox](./media/hdinsight-hadoop-emulator-get-started/download-sandbox.png)
 3. Klicken Sie auf der gleichen Webseite auf den Link **Import on Virtual Box** (In VirtualBox importieren), um eine PDF-Datei mit Installationsanweisungen für den virtuellen Computer herunterzuladen.
@@ -62,7 +64,8 @@ Erweitern Sie das Archiv, um eine Sandbox einer älteren HDP-Version herunterzul
    > Sollte kein SSH-Client installiert sein, können Sie die webbasierte SSH verwenden, die vom virtuellen Computer unter **http://localhost:4200/** bereitgestellt wird.
    > 
    
-    Beim erstmaligen Herstellen einer Verbindung über SSH werden Sie aufgefordert, das Kennwort für das Stammkonto zu ändern. Geben Sie ein neues Kennwort ein. Dieses Kennwort wird dann bei zukünftigen SSH-Anmeldungen verwendet.
+    Beim erstmaligen Herstellen einer Verbindung über SSH werden Sie aufgefordert, das Kennwort für das Stammkonto zu ändern. Geben Sie ein neues Kennwort ein, das für die Anmeldung mithilfe von SSH verwenden.
+
 2. Geben Sie nach der Anmeldung den folgenden Befehl ein:
    
         ambari-admin-password-reset

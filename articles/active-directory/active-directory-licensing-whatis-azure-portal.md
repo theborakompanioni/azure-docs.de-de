@@ -1,7 +1,7 @@
 ---
 
-title: Was ist die gruppenbasierte Lizenzierung in Azure Active Directory? | Microsoft-Dokumentation
-description: "Beschreibung des gruppenbasierten Lizenzierung in Azure Active Directory, ihrer Funktionsweise, der ersten Schritte und bewährten Methoden"
+title: Was ist die gruppenbasierte Lizenzierung in Azure Active Directory? | Microsoft Docs
+description: "Beschreibung der gruppenbasierten Lizenzierung in Azure Active Directory sowie ihrer Funktionsweise und bewährter Methoden"
 services: active-directory
 keywords: "Azure AD-Lizenzierung"
 documentationcenter: 
@@ -14,21 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/05/2017
+ms.date: 06/29/2017
 ms.author: curtand
-ms.custom: H1Hack27Feb2017
+ms.reviewer: piotrci
+ms.custom: H1Hack27Feb2017;it-pro
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: 52c3e88689441045c3bd34ea3ab17a8a1d270f23
+ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
+ms.openlocfilehash: 52dd48ce4e4acaf48f31edc51bbb657f8cd249cd
 ms.contentlocale: de-de
-ms.lasthandoff: 04/06/2017
+ms.lasthandoff: 06/30/2017
 
 
 ---
 
 # <a name="group-based-licensing-basics-in-azure-active-directory"></a>Grundlagen der gruppenbasierten Lizenzierung in Azure Active Directory
 
-Microsoft-Clouddienste wie Office 365, Enterprise Mobility + Security, Dynamics CRM und andere ähnliche Produkte erfordern Lizenzen. Diese Lizenzen werden jedem Benutzer zugewiesen, der Zugriff auf diese Dienste benötigt. Administratoren verwalten Lizenzen über eines der Verwaltungsportale (Office, Azure) und PowerShell-Cmdlets. Azure Active Directory (Azure AD) ist die zugrunde liegende Infrastruktur, die die Identitätsverwaltung aller Microsoft-Clouddienste unterstützt. Azure AD speichert Informationen zum Lizenzzuweisungsstatus für Benutzer.
+Die Verwendung von zahlungspflichtigen Microsoft-Clouddiensten wie Office 365, Enterprise Mobility + Security, Dynamics CRM und ähnlichen Produkte erfordern Lizenzen. Diese Lizenzen werden jedem Benutzer zugewiesen, der Zugriff auf diese Dienste benötigt. Administratoren verwalten Lizenzen über eines der Verwaltungsportale (Office, Azure) und PowerShell-Cmdlets. Azure Active Directory (Azure AD) ist die zugrunde liegende Infrastruktur, die die Identitätsverwaltung aller Microsoft-Clouddienste unterstützt. Azure AD speichert Informationen zum Lizenzzuweisungsstatus für Benutzer.
 
 Bislang konnten Lizenzen nur auf Ebene einzelner Benutzer zugewiesen werden, was die umfassende Verwaltung erschweren kann. Um Benutzerlizenzen basierend auf Organisationsänderungen zu vergeben oder zu entziehen, wenn beispielsweise Benutzer der Organisation oder Abteilung beitreten oder diese verlassen, muss ein Administrator häufig ein komplexes PowerShell-Skript schreiben. Dieses Skript richtet einzelne Aufrufe an den Clouddienst.
 
@@ -58,6 +59,7 @@ Hier die Hauptmerkmale der gruppenbasierten Lizenzierung:
 
 Weitere Informationen zu anderen Szenarien für die gruppenbasierte Lizenzverwaltung finden Sie unter:
 
+* [Erste Schritte mit Lizenzen in Azure Active Directory](active-directory-licensing-get-started-azure-portal.md)
 * [Zuweisen von Lizenzen zu einer Gruppe in Azure Active Directory](active-directory-licensing-group-assignment-azure-portal.md)
 * [Bestimmen und Beheben von Lizenzproblemen für eine Gruppe in Azure Active Directory](active-directory-licensing-group-problem-resolution-azure-portal.md)
 * [Migrieren einzelner lizenzierter Benutzer zur gruppenbasierten Lizenzierung in Azure Active Directory](active-directory-licensing-group-migration-azure-portal.md)

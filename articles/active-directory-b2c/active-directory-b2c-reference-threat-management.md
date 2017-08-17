@@ -1,6 +1,6 @@
 ---
-title: "Verwalten von Bedrohungen für Azure B2C | Microsoft-Dokumentation"
-description: Verfahren zur Erkennung und Verhinderung von DoS- und Kennwortangriffen in Azure B2C.
+title: 'Azure Active Directory B2C: Bedrohungsverwaltung | Microsoft-Dokumentation'
+description: "Informieren Sie sich über Verfahren zur Erkennung und Abwehr von Denial-of-Service- und Kennwortangriffen in Azure Active Directory B2C."
 services: active-directory-b2c
 documentationcenter: 
 author: vigunase
@@ -14,22 +14,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2016
 ms.author: 
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 5cca5fcd445e70b4eab9197258bb783e20016f76
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 9472cb01eb713e297053727b1a314293574bb657
+ms.contentlocale: de-de
+ms.lasthandoff: 06/28/2017
 
 
 ---
-# <a name="azure-ad-b2c-threat-management"></a>Azure AD B2C: Verwalten von Bedrohungen
-Die Verwaltung von Bedrohungen umfasst Schutz gegen Angriffe auf das System und auf Netzwerke. Ein Denial-of-Service-Angriff (DoS) kann die Verfügbarkeit beeinträchtigen und Ressourcen für die vorgesehenen Benutzer nicht verfügbar machen. Kennwortangriffe führen zu nicht autorisiertem Zugriff auf Ressourcen. Microsoft Azure Active Directory B2C verfügt über integrierte Features zum Schutz Ihrer Daten vor diesen Bedrohungen auf verschiedene Weise. 
+# <a name="azure-active-directory-b2c-threat-management"></a>Azure Active Directory B2C: Bedrohungsverwaltung
 
-## <a name="denial-of-service-attack"></a>Denial-of-Service-Angriff
+Die Bedrohungsverwaltung umfasst die Planung des Schutzes vor Angriffen auf Ihr System und Ihre Netzwerke. Denial-of-Service-Angriffe können dazu führen, dass Ressourcen nicht mehr für die vorgesehenen Benutzer zur Verfügung stehen. Kennwortangriffe führen zu nicht autorisiertem Zugriff auf Ressourcen. Azure Active Directory B2C (Azure AD B2C) verfügt über integrierte Features, die Sie auf verschiedene Weise dabei unterstützen, Ihre Daten vor diesen Bedrohungen zu schützen.
 
-Azure AD B2C verwendet Erkennungs- und Abwehrtechniken wie SYN-Cookies und Raten- und Verbindungsbeschränkungen, um die zugrunde liegenden Ressourcen vor diesen Angriffen zu schützen.  
+## <a name="denial-of-service-attacks"></a>Denial-of-Service-Angriffe
+
+Azure AD B2C verwendet Erkennungs- und Abwehrmaßnahmen wie SYN-Cookies und Raten-/Verbindungsbeschränkungen, um die zugrunde liegenden Ressourcen vor Denial-of-Service-Angriffen zu schützen.
 
 ## <a name="password-attacks"></a>Kennwortangriffe
 
-Azure AD B2C umfasst auch Maßnahmen für Kennwortangriffe.  Dazu gehören Brute-Force-Kennwortangriffe und Wörterbuchangriffe.  Kennwörter, die vom Benutzer festgelegt werden, müssen eine angemessene Komplexität aufweisen.  Azure AD B2C analysiert die Integrität der Anforderungen anhand unterschiedlicher Signale, um fundiert vorgesehene Benutzer von Hackern und Botnetzen zu unterscheiden. B2C bietet eine anspruchsvolle Strategie zum Sperren von Konten basierend auf den eingegebenen Kennwörtern und nach der Wahrscheinlichkeit eines Angriffs.
+Azure AD B2C umfasst auch Abwehrmaßnahmen für Kennwortangriffe. Diese decken unter anderem Brute-Force-Kennwortangriffe und Wörterbuchangriffe ab. Benutzerkennwörter müssen ausreichend komplex sein. Anhand verschiedener Signale analysiert Azure AD B2C die Integrität von Anforderungen. Azure AD B2C kann auf intelligente Weise zwischen vorgesehenen Benutzern und Hackern oder Botnetzen unterscheiden. Azure AD B2C bietet eine ausgeklügelte Strategie, um Konten auf der Grundlage der eingegebenen Kennwörter und der Wahrscheinlichkeit eines Angriffs zu sperren.
 
-[Weitere Informationen zur Verwaltung von Bedrohungen durch Microsoft](https://www.microsoft.com/trustcenter/security/threatmanagement)
+Weitere Informationen finden Sie im [Microsoft Trust Center](https://www.microsoft.com/trustcenter/security/threatmanagement).
+

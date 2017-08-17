@@ -1,126 +1,257 @@
 ---
 title: 'Tutorial: Azure Active Directory-Integration mit Mindflash | Microsoft Docs'
-description: "Erfahren Sie, wie Sie Mindflash mit Azure Active Directory verwenden können, um einmaliges Anmelden, automatisierte Bereitstellung und vieles mehr zu ermöglichen."
+description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Mindflash konfigurieren.
 services: active-directory
+documentationCenter: na
 author: jeevansd
-documentationcenter: na
 manager: femila
 ms.assetid: bdf91993-aaaa-4598-89b7-77ef8ca065d5
 ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: identity
-ms.date: 02/03/2017
+ms.date: 06/30/2017
 ms.author: jeedes
-translationtype: Human Translation
-ms.sourcegitcommit: 57a6428315a4942a0c6566fef5a4db4ee66cb55a
-ms.openlocfilehash: 89bd515fa988e0347508b739dd0676c5eeb1f44d
-ms.lasthandoff: 02/17/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
+ms.openlocfilehash: 90de7b6a82d88f9407a35fbfebe8a652928d76cd
+ms.contentlocale: de-de
+ms.lasthandoff: 07/04/2017
 
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mindflash"></a>Tutorial: Azure Active Directory-Integration mit Mindflash
-In diesem Tutorial wird die Integration von Azure und Mindflash erläutert. Das in diesem Lernprogramm verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 
-* Ein gültiges Azure-Abonnement
-* Ein Mindflash-Abonnement, für das das einmalige Anmelden (SSO) aktiviert ist
+In diesem Tutorial erfahren Sie, wie Sie Mindflash in Azure Active Directory (Azure AD) integrieren.
 
-Nach Abschluss dieses Tutorials können sich die Azure AD-Benutzer, die Sie Mindflash zugewiesen haben, mittels einmaligen Anmeldens auf Ihrer Mindflash-Unternehmenswebsite bei der Anwendung anmelden (durch den Dienstanbieter initiierte Anmeldung). Alternativ können sie den Zugriffsbereich nutzen (siehe [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md)).
+Die Integration von Mindflash in Azure AD bietet die folgenden Vorteile:
 
-Das in diesem Tutorial beschriebene Szenario besteht aus den folgenden Bausteinen:
+- Sie können in Azure AD steuern, wer Zugriff auf Mindflash hat.
+- Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Mindflash anzumelden (einmaliges Anmelden).
+- Sie können Ihre Konten an einem zentralen Ort verwalten – im Azure-Portal.
 
-1. Aktivieren der Anwendungsintegration für Mindflash
-2. Konfigurieren der einmaligen Anmeldung
-3. Konfigurieren der Benutzerbereitstellung
-4. Zuweisen von Benutzern
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
-![Szenario](./media/active-directory-saas-mindflash-tutorial/IC787132.png "Szenario")
+## <a name="prerequisites"></a>Voraussetzungen
 
-## <a name="enabling-the-application-integration-for-mindflash"></a>Aktivieren der Anwendungsintegration für Mindflash
-In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für Mindflash aktivieren.
+Um die Azure AD-Integration mit Mindflash konfigurieren zu können, benötigen Sie Folgendes:
 
-### <a name="to-enable-the-application-integration-for-mindflash-perform-the-following-steps"></a>So aktivieren Sie die Anwendungsintegration für Mindflash
-1. Klicken Sie im klassischen Azure-Portal im linken Navigationsbereich auf **Active Directory**.
-   
-   ![Active Directory](./media/active-directory-saas-mindflash-tutorial/IC700993.png "Active Directory")
-2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
-3. Klicken Sie zum Öffnen der Anwendungsansicht in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen** .
-   
-   ![Anwendungen](./media/active-directory-saas-mindflash-tutorial/IC700994.png "Anwendungen")
-4. Klicken Sie unten auf der Seite auf **Hinzufügen** .
-   
-   ![Anwendung hinzufügen](./media/active-directory-saas-mindflash-tutorial/IC749321.png "Anwendung hinzufügen")
-5. Klicken Sie im Dialogfeld **Was möchten Sie tun?** auf **Anwendung aus dem Katalog hinzufügen**.
-   
-   ![Anwendung aus dem Katalog hinzufügen](./media/active-directory-saas-mindflash-tutorial/IC749322.png "Anwendung aus dem Katalog hinzufügen")
-6. Geben Sie im **Suchfeld** als Suchbegriff **Mindflash** ein.
-   
-   ![Anwendungskatalog](./media/active-directory-saas-mindflash-tutorial/IC787133.png "Anwendungskatalog")
-7. Wählen Sie im Ergebnisbereich **Mindflash** aus, und klicken Sie dann auf **Abschließen**, um die Anwendung hinzuzufügen.
-   
-   ![Mindflash](./media/active-directory-saas-mindflash-tutorial/IC787134.png "Mindflash")
-   
-## <a name="configuring-single-sign-on"></a>Konfigurieren der einmaligen Anmeldung
+- Ein Azure AD-Abonnement
+- Ein Mindflash-Software-Abonnement, für das das einmalige Anmelden aktiviert ist.
 
-In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbundanmeldung auf Basis des SAML-Protokolls ermöglichen, sich mit ihrem Azure AD-Konto bei Mindflash zu authentifizieren.
+> [!NOTE]
+> Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
 
-### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>So konfigurieren Sie einmaliges Anmelden
-1. Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **Mindflash** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
-   
-   ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-mindflash-tutorial/IC787135.png "Einmaliges Anmelden konfigurieren")
-2. Wählen Sie auf der Seite **Wie sollen sich Benutzer bei Mindflash anmelden?** die Option **Microsoft Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
-   
-   ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-mindflash-tutorial/IC787136.png "Einmaliges Anmelden konfigurieren")
-3. Geben Sie auf der Seite **App-URL konfigurieren** im Textfeld für die **Anmelde-URL** Ihre URL im Format *https://unternehmen.mindflash.com* ein, und klicken Sie dann auf **Weiter**.
-   
-   ![App-URL konfigurieren](./media/active-directory-saas-mindflash-tutorial/IC787137.png "App-URL konfigurieren")
-4. Klicken Sie auf der Seite **Einmaliges Anmelden konfigurieren für Mindflash** auf **Metadaten herunterladen**, und speichern Sie die Metadatendatei auf Ihrem Computer.
-   
-   ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-mindflash-tutorial/IC787138.png "Einmaliges Anmelden konfigurieren")
-5. Senden Sie die Metadatendatei an das Supportteam von Mindflash.
-   
-   > [!NOTE]
-   > Das einmalige Anmelden muss vom Supportteam von Mindflash konfiguriert werden. Sie erhalten eine Benachrichtigung, sobald die Konfiguration abgeschlossen ist.
-   > 
-   > 
-6. Bestätigen Sie im klassischen Azure-Portal die Konfiguration der einmaligen Anmeldung, und klicken Sie dann auf **Abschließen**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu schließen.
-   
-   ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-mindflash-tutorial/IC787139.png "Einmaliges Anmelden konfigurieren")
-   
-## <a name="configuring-user-provisioning"></a>Konfigurieren der Benutzerbereitstellung
+Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
+
+- Verwenden Sie die Produktionsumgebung nur, wenn dies unbedingt erforderlich ist.
+- Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/)eine einmonatige Testversion anfordern.
+
+## <a name="scenario-description"></a>Beschreibung des Szenarios
+In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
+
+1. Hinzufügen von Mindflash aus dem Katalog
+2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+
+## <a name="adding-mindflash-from-the-gallery"></a>Hinzufügen von Mindflash aus dem Katalog
+Zum Konfigurieren der Integration von Mindflash in Azure AD müssen Sie Mindflash aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
+
+**Um Mindflash aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
+
+1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**. 
+
+    ![Active Directory][1]
+
+2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
+
+    ![Anwendungen][2]
+    
+3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+
+    ![Anwendungen][3]
+
+4. Geben Sie im Suchfeld als Suchbegriff **Mindflash** ein.
+
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-mindflash-tutorial/tutorial_mindflash_search.png)
+
+5. Wählen Sie im Ergebnisbereich die Option **Mindflash** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-mindflash-tutorial/tutorial_mindflash_addfromgallery.png)
+
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+In diesem Abschnitt konfigurieren und testen Sie anhand einer Testbenutzerin namens Britta Simon das einmalige Anmelden von Azure AD mit Mindflash.
+
+Für das einmalige Anmelden muss Azure AD wissen, welcher Benutzer in Mindflash als Entsprechung für einen Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Mindflash muss eine Linkbeziehung eingerichtet werden.
+
+Weisen Sie in Mindflash den Wert für **Benutzername** in Azure AD als Wert für **Benutzername** zu, um eine Linkbeziehung herzustellen.
+
+Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Mindflash müssen Sie die folgenden Bausteine ausführen:
+
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
+2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+3. **[Erstellen eines Mindflash-Testbenutzers](#creating-a-mindflash-test-user)**, um eine Entsprechung von Britta Simon in Mindflash zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Testing Single Sign-On](#testing-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
+
+### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
+
+In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-Portal und konfigurieren das einmalige Anmelden in Ihrer Mindflash-Anwendung.
+
+**Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Mindflash die folgenden Schritte aus:**
+
+1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Mindflash** auf **Einmaliges Anmelden**.
+
+    ![Einmaliges Anmelden konfigurieren][4]
+
+2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
+ 
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-mindflash-tutorial/tutorial_mindflash_samlbase.png)
+
+3. Führen Sie die folgenden Schritte auf der Seite **Domäne und URLs für Mindflash** aus:
+
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-mindflash-tutorial/tutorial_mindflash_url.png)
+
+    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<companyname>.mindflash.com`.
+
+    b. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: `https://<companyname>.mindflash.com`
+
+    > [!NOTE] 
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Supportteam von Mindflash](https://www.mindflash.com/contact/), um diese Werte zu erhalten. 
+ 
+
+
+4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
+
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-mindflash-tutorial/tutorial_mindflash_certificate.png) 
+
+5. Klicken Sie auf die Schaltfläche **Save** .
+
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-mindflash-tutorial/tutorial_general_400.png)
+
+6. Zum Konfigurieren des einmaligen Anmeldens bei **Mindflash** müssen Sie die heruntergeladene **Metadaten-XML**-Datei an das [Mindflash-Supportteam](https://www.mindflash.com/contact/) senden.
+
+> [!TIP]
+> Während Sie die App einrichten, können Sie im [Azure-Portal](https://portal.azure.com) eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
+> 
+
+### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
+Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
+
+![Azure AD-Benutzer erstellen][100]
+
+**Um einen Testbenutzer in Azure AD zu erstellen, führen Sie die folgenden Schritte aus:**
+
+1. Klicken Sie im linken Navigationsbereich des **Azure-Portals** auf das Symbol für **Azure Active Directory**.
+
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-mindflash-tutorial/create_aaduser_01.png) 
+
+2. Wechseln Sie zu **Benutzer und Gruppen**, und klicken Sie auf **Alle Benutzer**, um die Liste der Benutzer anzuzeigen.
+    
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-mindflash-tutorial/create_aaduser_02.png) 
+
+3. Klicken Sie oben im Dialogfeld auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
+ 
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-mindflash-tutorial/create_aaduser_03.png) 
+
+4. Führen Sie auf der Dialogfeldseite **Benutzer** die folgenden Schritte aus:
+ 
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-mindflash-tutorial/create_aaduser_04.png) 
+
+    a. Geben Sie in das Textfeld **Name** den Namen **BrittaSimon** ein.
+
+    b. Geben Sie in das Textfeld **Benutzername** die **E-Mail-Adresse** von Britta Simon ein.
+
+    c. Wählen Sie **Kennwort anzeigen** aus, und notieren Sie sich den Wert des **Kennworts**.
+
+    d. Klicken Sie auf **Erstellen**.
+ 
+### <a name="creating-a-mindflash-test-user"></a>Erstellen eines Mindflash-Testbenutzers
 
 Damit sich Azure AD-Benutzer bei Mindflash anmelden können, müssen sie in Mindflash bereitgestellt werden. Im Fall von Mindflash ist die Bereitstellung eine manuelle Aufgabe.
 
 ### <a name="to-provision-a-user-accounts-perform-the-following-steps"></a>Führen Sie zum Bereitstellen von Benutzerkonten die folgenden Schritte aus:
+
 1. Melden Sie sich bei der **Mindflash** -Unternehmenswebsite als Administrator an.
+
 2. Navigieren Sie zu **Benutzer verwalten**.
    
-   ![Benutzer verwalten](./media/active-directory-saas-mindflash-tutorial/IC787140.png "Benutzer verwalten")
+    ![Benutzer verwalten](./media/active-directory-saas-mindflash-tutorial/ic787140.png "Benutzer verwalten")
+
 3. Klicken Sie auf **Benutzer hinzufügen** und dann auf **Neu**.
-4. Führen Sie im Abschnitt **Neue Benutzer hinzufügen** die folgenden Schritte aus:
+
+4. Führen Sie im Abschnitt **Neue Benutzer hinzufügen** die folgenden Schritte für ein gültiges Azure AD-Konto aus, das Sie bereitstellen möchten:
    
-   ![Neue Benutzer hinzufügen](./media/active-directory-saas-mindflash-tutorial/IC787141.png "Neue Benutzer hinzufügen")
+    ![Neue Benutzer hinzufügen](./media/active-directory-saas-mindflash-tutorial/ic787141.png "Neue Benutzer hinzufügen")
    
-   1. Geben Sie **Vorname**, **Nachname** und **E-Mail-Adresse** eines gültigen AAD-Kontos, das Sie bereitstellen möchten, in die entsprechenden Textfelder ein.
-   2. Klicken Sie auf **Hinzufügen**.
+    a. Geben Sie im Textfeld **Vorname** den **Vornamen** des Benutzers ein: **Britta**.
+
+    b. Geben Sie im Textfeld **Nachname** den **Nachnamen** des Benutzers ein: **Simon**.
+    
+    c. Geben Sie im Textfeld **E-Mail** die **E-Mail-Adresse** des Benutzers ein: **BrittaSimon@contoso.com**.
+
+    b. Klicken Sie auf **Hinzufügen**.
 
 >[!NOTE]
 >Sie können AAD-Benutzerkonten auch mithilfe von anderen Tools zum Erstellen von Mindflash-Benutzerkonten oder mithilfe der von Mindflash bereitgestellten APIs erstellen. 
 > 
 
-## <a name="assigning-users"></a>Zuweisen von Benutzern
-Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie die Verwendung Ihrer Anwendung ermöglichen möchten, Zugriff auf die Anwendung gewähren. Weisen Sie dazu der Anwendung Benutzer zu.
+### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
-### <a name="to-assign-users-to-mindflash-perform-the-following-steps"></a>So weisen Sie Mindflash Benutzer zu:
-1. Erstellen Sie im klassischen Azure-Portal ein Testkonto.
-2. Klicken Sie auf der Anwendungsintegrationsseite für **Mindflash** auf **Benutzer zuweisen**.
-   
-   ![Zuweisen von Benutzern](./media/active-directory-saas-mindflash-tutorial/IC787142.png "Zuweisen von Benutzern")
-3. Wählen Sie den Testbenutzer aus, klicken Sie auf **Zuweisen** und anschließend auf **Ja**, um die Zuweisung zu bestätigen.
-   
-   ![Ja](./media/active-directory-saas-mindflash-tutorial/IC767830.png "Ja")
+In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Mindflash gewähren.
 
-Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
+![Benutzer zuweisen][200] 
+
+**Um Britta Simon Mindflash zuzuweisen, führen Sie die folgenden Schritte aus:**
+
+1. Öffnen Sie im Azure-Portal die Anwendungsansicht, navigieren Sie zur Verzeichnisansicht, wechseln Sie dann zu **Unternehmensanwendungen**, und klicken Sie auf **Alle Anwendungen**.
+
+    ![Benutzer zuweisen][201] 
+
+2. Wählen Sie in der Anwendungsliste **Mindflash** aus.
+
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-mindflash-tutorial/tutorial_mindflash_app.png) 
+
+3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
+
+    ![Benutzer zuweisen][202] 
+
+4. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+
+    ![Benutzer zuweisen][203]
+
+5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
+
+6. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
+
+7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
+    
+### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
+
+In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
+
+Wenn Sie im Zugriffsbereich auf die Kachel „Mindflash“ klicken, sollte die Anmeldeseite der Mindflash-Anwendung angezeigt werden.
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
+
+## <a name="additional-resources"></a>Zusätzliche Ressourcen
+
+* [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+
+
+
+<!--Image references-->
+
+[1]: ./media/active-directory-saas-mindflash-tutorial/tutorial_general_01.png
+[2]: ./media/active-directory-saas-mindflash-tutorial/tutorial_general_02.png
+[3]: ./media/active-directory-saas-mindflash-tutorial/tutorial_general_03.png
+[4]: ./media/active-directory-saas-mindflash-tutorial/tutorial_general_04.png
+
+[100]: ./media/active-directory-saas-mindflash-tutorial/tutorial_general_100.png
+
+[200]: ./media/active-directory-saas-mindflash-tutorial/tutorial_general_200.png
+[201]: ./media/active-directory-saas-mindflash-tutorial/tutorial_general_201.png
+[202]: ./media/active-directory-saas-mindflash-tutorial/tutorial_general_202.png
+[203]: ./media/active-directory-saas-mindflash-tutorial/tutorial_general_203.png
 
 

@@ -12,22 +12,24 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/24/2017
+ms.date: 07/05/2017
 ms.author: sethm
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: d1756dee37771941caae781682b342986c7ecbc9
+ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
+ms.openlocfilehash: f3f4a2e721b1a75a5b92a5c17a9939c7013340d4
 ms.contentlocale: de-de
-ms.lasthandoff: 03/27/2017
+ms.lasthandoff: 07/06/2017
 
 
 ---
 
 # <a name="azure-relay-hybrid-connections-net-standard-api-overview"></a>Übersicht über die .NET Standard-APIs für Hybrid Connections in Azure Relay
+
 In diesem Artikel werden einige der wichtigsten .NET Standard-[Client-APIs](/dotnet/api/microsoft.azure.relay) für Hybrid Connections von Azure Relay zusammengefasst.
   
 ## <a name="relay-connection-string-builder"></a>Verbindungszeichenfolgen-Generator von Relay
-Die Klasse [RelayConnectionStringBuilder][RelayConnectionStringBuilder] formatiert Verbindungszeichenfolgen, die speziell für Hybrid Connections von Relay gelten. Anhand dieser Klasse können Sie das Format einer Verbindungszeichenfolge überprüfen oder eine Verbindungszeichenfolge von Grund auf erstellen. Im Folgenden wird ein Beispiel gezeigt.
+
+Die Klasse [RelayConnectionStringBuilder][RelayConnectionStringBuilder] formatiert Verbindungszeichenfolgen, die speziell für Hybrid Connections von Relay gelten. Anhand dieser Klasse können Sie das Format einer Verbindungszeichenfolge überprüfen oder eine Verbindungszeichenfolge von Grund auf erstellen. Der folgende Code enthält ein Beispiel dafür:
 
 ```csharp
 var endpoint = "{Relay namespace}";
@@ -44,7 +46,7 @@ var connectionStringBuilder = new RelayConnectionStringBuilder()
 };
 ```
 
-Sie können eine Verbindungszeichenfolge auch direkt an die `RelayConnectionStringBuilder`-Methode übergeben. Auf diese Weise können Sie überprüfen, ob die Verbindungszeichenfolge ein gültiges Format aufweist. Wenn einer der Parameter ungültig sein sollte, löst der Konstruktor eine `ArgumentException`-Ausnahme aus.
+Sie können eine Verbindungszeichenfolge auch direkt an die `RelayConnectionStringBuilder`-Methode übergeben. Mit diesem Vorgang können Sie sicherstellen, dass das Format der Verbindungszeichenfolge gültig ist. Wenn einer der Parameter ungültig ist, generiert der Konstruktor eine Ausnahme vom Typ `ArgumentException`.
 
 ```csharp
 var myConnectionString = "{RelayConnectionString}";
@@ -67,7 +69,7 @@ Die [HybridConnectionStream][HCStream]-Klasse ist das primäre Objekt, das zum S
 ### <a name="getting-a-hybrid-connection-stream"></a>Abrufen eines Hybrid Connection Stream
 
 #### <a name="listener"></a>Listener
-Mithilfe einer [HybridConnectionListener][HCListener]-Klasse können Sie eine `HybridConnectionStream`-Klasse wie folgt abrufen:
+Mithilfe einer [HybridConnectionListener][HCListener]-Klasse können Sie wie folgt ein `HybridConnectionStream`-Objekt abrufen:
 
 ```csharp
 // Use the RelayConnectionStringBuilder to get a valid connection string
@@ -79,7 +81,7 @@ var hybridConnectionStream = await listener.AcceptConnectionAsync();
 ```
 
 #### <a name="client"></a>Client-
-Mithilfe einer [HybridConnectionClient][HCClient]-Klasse können Sie eine `HybridConnectionStream`-Klasse wie folgt abrufen:
+Mithilfe einer [HybridConnectionClient][HCClient]-Klasse können Sie wie folgt ein `HybridConnectionStream`-Objekt abrufen:
 
 ```csharp
 // Use the RelayConnectionStringBuilder to get a valid connection string
@@ -89,9 +91,9 @@ var hybridConnectionStream = await client.CreateConnectionAsync();
 ```
 
 ### <a name="receiving-data"></a>Empfangen von Daten
-Die [HybridConnectionStream][HCStream]-Klasse ermöglicht eine bidirektionale Kommunikation. In den meisten Anwendungsfällen sollten Daten kontinuierlich vom Stream empfangen werden. Wenn Sie Text aus dem Stream lesen, sollten Sie auch eine [StreamReader](https://msdn.microsoft.com/library/system.io.streamreader(v=vs.110).aspx)-Klasse verwenden, die eine einfachere Analyse der Daten ermöglicht. Beispielsweise können Sie Daten als Text lesen statt als `byte[]`.
+Die [HybridConnectionStream][HCStream]-Klasse ermöglicht eine bidirektionale Kommunikation. In den meisten Fällen werden von Stream kontinuierlich Daten empfangen. Wenn Sie Text aus dem Stream lesen, sollten Sie auch ein [StreamReader](https://msdn.microsoft.com/library/system.io.streamreader(v=vs.110).aspx)-Objekt verwenden, das eine einfachere Analyse der Daten ermöglicht. Beispielsweise können Sie Daten als Text lesen statt als `byte[]`.
 
-Der folgende Code liest einzelne Textzeilen aus dem Stream, bis ein Abbruch angefordert wird.
+Der folgende Code liest einzelne Textzeilen aus dem Stream, bis ein Abbruch angefordert wird:
 
 ```csharp
 // Create a CancellationToken, so that we can cancel the while loop

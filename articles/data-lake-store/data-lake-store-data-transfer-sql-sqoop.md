@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 03/06/2017
+ms.date: 06/29/2017
 ms.author: nitinme
-translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 7f165111cd089d5f32f309235dcbc24d11fb5d64
-ms.lasthandoff: 03/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
+ms.openlocfilehash: 53bf33f6027f1f365bd92251490d5c851fb83f8b
+ms.contentlocale: de-de
+ms.lasthandoff: 07/01/2017
 
 
 ---
@@ -109,7 +110,7 @@ In einem HDInsight-Cluster sind die Sqoop-Pakete bereits verfügbar. Wenn Sie de
         -rwxrwxrwx   0 sshuser hdfs         13 2016-02-26 21:09 adl://hdiadlstore.azuredatalakestore.net/Sqoop/SqoopImportTable1/part-m-00002
         -rwxrwxrwx   0 sshuser hdfs         18 2016-02-26 21:09 adl://hdiadlstore.azuredatalakestore.net/Sqoop/SqoopImportTable1/part-m-00003
 
-    Jede **part-m-***-Datei entspricht einer Zeile in der Quelltabelle**Table1**. Sie können den Inhalt der part-m-*-Dateien anzeigen und überprüfen.
+    Jede **part-m***-Datei entspricht einer Zeile in der Quelltabelle **Table1**. Sie können den Inhalt der part-m-*-Dateien anzeigen und überprüfen.
 
 
 ### <a name="export-data-from-data-lake-store-into-azure-sql-database"></a>Exportieren von Daten aus Data Lake-Speicher in Azure SQL-Datenbank
