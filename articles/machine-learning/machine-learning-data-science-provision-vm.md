@@ -11,18 +11,17 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.devlang: na
 ms.topic: article
-ms.date: 03/24/2017
+ms.date: 07/21/2017
 ms.author: bradsev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 1469e7a2f5f41ef52c0ff77e6e70378951594135
+ms.translationtype: HT
+ms.sourcegitcommit: 2812039649f7d2fb0705220854e4d8d0a031d31e
+ms.openlocfilehash: b1b29ba11bc489a6ad67c2d9043cdb8a2dca7ef8
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 07/22/2017
 
 ---
 # <a name="provision-the-microsoft-data-science-virtual-machine"></a>Bereitstellen der Microsoft Data Science Virtual Machine
-Die Microsoft Data Science Virtual Machine ist das Image eines virtueller Azure-Computers (VM), das vorinstalliert und mit einigen gängigen Tools konfiguriert ist, die häufig für Datenanalysen und Machine Learning verwendet werden. Die enthaltenen Tools sind:
+Der virtuelle Microsoft Data Science-Computer ist das Image eines virtuellen Windows Azure-Computers (VM), das vorinstalliert und mit einigen gängigen Tools konfiguriert ist, die häufig für Datenanalysen und Machine Learning verwendet werden. Die enthaltenen Tools sind:
 
 * Microsoft R Server Developer Edition
 * Anaconda Python Distribution
@@ -42,7 +41,13 @@ Die Microsoft Data Science Virtual Machine ist das Image eines virtueller Azure-
 * Git einschließlich Git Bash für den Einsatz mit Quellcoderepositorys einschließlich GitHub, Visual Studio Team Services
 * Windows-Ports einiger gängiger Linux-Befehlszeilenprogramme (einschließlich awk, sed, perl, grep, find, wget, curl usw.), auf die über die Befehlszeile zugegriffen werden kann. 
 
-Data Science umfasst Iterationen einer Sequenz von Aufgaben: Suchen, Laden und Vorverarbeiten von Daten, Erstellen und Testen von Modellen sowie Bereitstellen der Modelle für die Nutzung in intelligenten Anwendungen. Datenanalysten verwenden verschiedene Tools zum Ausführen dieser Aufgaben. Es kann sehr zeitaufwändig sein, die richtigen Versionen der Software zu finden und dann herunterzuladen und zu installieren. Die Microsoft Data Science Virtual Machine kann hier für Erleichterung sorgen, indem sie ein einsatzbereites Image bietet, das mit allen vorinstallierten und konfigurierten gängigen Tools auf Azure bereitgestellt werden kann. 
+Die Durchführung des Data Science-Vorgangs umfasst eine Aufgabensequenz:
+
+1. Suchen, Laden und Vorverarbeiten von Daten
+2. Erstellen und Testen von Modellen
+3. Bereitstellen der Modelle für die Nutzung in intelligenten Anwendungen
+
+Datenanalysten verwenden verschiedene Tools zum Ausführen dieser Aufgaben. Es kann sehr zeitaufwändig sein, die richtigen Versionen der Software zu finden und dann herunterzuladen und zu installieren. Die Microsoft Data Science Virtual Machine kann hier für Erleichterung sorgen, indem sie ein einsatzbereites Image bietet, das mit allen vorinstallierten und konfigurierten gängigen Tools auf Azure bereitgestellt werden kann. 
 
 Mit der Microsoft Data Science Virtual Machine können Sie gleich mit Ihrem Analyseprojekt loslegen. Sie können in verschiedenen Sprachen arbeiten, z.B. R, Python, SQL und C++. Visual Studio bietet eine benutzerfreundliche IDE zum Entwickeln und Testen von Code. Mit dem Azure SDK der VM können Sie Ihre Anwendungen mit verschiedenen Diensten auf der Cloudplattform von Microsoft erstellen. 
 
@@ -98,12 +103,13 @@ Standardmäßig ist der Jupyter Notebook-Server vorkonfiguriert und auf der VM d
 
 Führen Sie erforderlichen Schritte aus, und wählen Sie ein sicheres Kennwort, wenn Sie dazu aufgefordert werden.
 
-Mit dem obigen Skript wird ein Kennworthash erstellt und in der Jupyter-Konfigurationsdatei an folgendem Speicherort gespeichert: **C:\ProgramData\jupyter\jupyter_notebook_config.py** unter dem Parameternamen ***c.NotebookApp.password***.
+Mit dem vorherigen Skript wird ein Kennworthash erstellt und in der Jupyter-Konfigurationsdatei am Speicherort **C:\ProgramData\jupyter\jupyter_notebook_config.py** unter dem Parameternamen ***c.NotebookApp.password*** gespeichert.
 
 Außerdem wird mit dem Skript der Jupyter-Server im Hintergrund aktiviert und ausgeführt. Der Jupyter-Server wird in der Windows-Aufgabenplanung als Windows-Task unter dem Namen **Start_IPython_Notebook** erstellt.  Unter Umständen müssen Sie nach dem Festlegen des Kennworts einige Sekunden warten, bevor Sie das Notebook in Ihrem Browser öffnen. Der Abschnitt **Jupyter Notebook** weiter unten enthält Informationen zum Zugriff auf den Jupyter Notebook-Server. 
 
 
 ## <a name="tools-installed-on-the-microsoft-data-science-virtual-machine"></a>In der Microsoft Data Science Virtual Machine installierte Tools
+
 ### <a name="microsoft-r-server-developer-edition"></a>Microsoft R Server Developer Edition
 Für die Durchführung Ihrer Analysen ist auf der VM Microsoft R Server Developer Edition vorinstalliert. Microsoft R Server ist eine unterstützte, sichere und in großem Maße bereitstell- und skalierbare Analyseplattform für Unternehmen, die auf R basiert. Dank vielfältiger Big Data-Statistiken, Vorhersagemodellierung und Machine Learning-Funktionen unterstützt R Server Analysen vollumfänglich - von der Exploration über die Analyse bis hin zur Visualisierung und der Modellierung. Die Verwendung und Erweiterung der Open-Source-Sprache R sorgt für die vollständige Kompatibilität zwischen Microsoft R Server und in R geschriebenen Skripten, Funktionen und CRAN-Paketen für die Datenanalyse in Unternehmen. Mit der Möglichkeit, Daten parallel und in großen Stücken verarbeiten zu können, hebt Microsoft R Server die Speicherbeschränkungen der Open-Source-Sprache R auf. Dies ermöglicht Ihnen auch die Analyse von Daten, deren Größe die des Hauptspeichers bei weitem überschreitet.  Die auf dem virtuellen Computer befindliche Visual Studio Community Edition enthält die R-Tools für die Visual Studio-Erweiterung, die eine vollständige IDE für das Arbeiten mit R bietet. Sie können auch andere IDEs wie [RStudio](http://www.rstudio.com) herunterladen und verwenden. 
 

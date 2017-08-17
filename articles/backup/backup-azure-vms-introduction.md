@@ -13,14 +13,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 5/22/2017
+ms.date: 7/18/2017
 ms.author: markgal;trinadhk
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: 6d390a75df51a22aa4e60094f3e4ba945a5725ad
+ms.translationtype: HT
+ms.sourcegitcommit: 0425da20f3f0abcfa3ed5c04cec32184210546bb
+ms.openlocfilehash: d44bb8207edae22ab9d6b1c7b9a3e4da888aa06e
 ms.contentlocale: de-de
-ms.lasthandoff: 06/16/2017
-
+ms.lasthandoff: 07/20/2017
 
 ---
 # <a name="plan-your-vm-backup-infrastructure-in-azure"></a>Planen der Sicherungsinfrastruktur für virtuelle Computer in Azure
@@ -40,6 +39,7 @@ Wenn die Datenübertragung abgeschlossen ist, wird die Momentaufnahme entfernt u
 > [!NOTE]
 > 1. Während des Sicherungsvorgangs berücksichtigt Azure Backup nicht den temporären Datenträger, der an den virtuellen Computer angefügt ist. Weitere Informationen finden Sie im Blogbeitrag zur [temporären Speicherung](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/).
 > 2. Da Azure Backup eine Momentaufnahme auf Speicherebene erstellt und diese Momentaufnahme in den Tresor überträgt, ändern Sie die Speicherkontoschlüssel erst nach Abschluss des Sicherungsauftrags.
+> 3. Bei virtuellen Premium-Computern kopieren wir die Momentaufnahme in das Speicherkonto. Dadurch wird sichergestellt, dass dem Azure Backup-Dienst ausreichend IOPS für die Übertragung von Daten in den Tresor zur Verfügung stehen. Diese zusätzliche Kopie des Speichers wird gemäß der zugeteilten VM-Größe in Rechnung gestellt. 
 >
 
 ### <a name="data-consistency"></a>Datenkonsistenz

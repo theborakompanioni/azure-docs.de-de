@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2017
 ms.author: mbaldwin
-translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: 39dd726078c4dcc55063300bdca998ad822feadd
-ms.lasthandoff: 03/31/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 2812039649f7d2fb0705220854e4d8d0a031d31e
+ms.openlocfilehash: ba3cf4c6834279bbd7f94d666fd8abbb7ac05bf0
+ms.contentlocale: de-de
+ms.lasthandoff: 07/22/2017
 
 ---
 # <a name="how-to-migrate-data-into-and-out-of-azure-remoteapp"></a>Migrieren von Daten in und aus Azure RemoteApp
@@ -61,5 +61,11 @@ Sie können zwar den Synchronisierungs-Agent für OneDrive for Business nicht in
 
 ## <a name="copy-files-by-using-drive-redirection"></a>Kopieren von Dateien mithilfe einer Laufwerkumleitung
 Wenn Sie die [Laufwerkumleitung](remoteapp-redirection.md)aktiviert haben, haben Sie bereits ein zugeordnetes Laufwerk für Ihre Benutzer erstellt. In diesem Fall können die Benutzer ihre Dateien im umgeleiteten Laufwerk zippen und dann auf ihrem lokalen PC speichern.
+
+## <a name="how-administrators-can-export-data"></a>Exportieren von Daten durch Administratoren
+
+Administratoren für Azure RemoteApp können alle Benutzerprofil-Datenträger (User Profile Disk, UPD) für alle Sammlungen in einem Abonnement mithilfe des Azure PowerShell-Cmdlets „Export-AzureRemoteAppUserDisk“ in Azure Storage exportieren.  Es gibt keine Möglichkeit, einzelne UPDs auszuwählen.  Bei Ausführung des PowerShell-Befehls besitzt jeder Benutzerdatenträger eine feste Größe von 50 GB und kann in Azure-Speicher exportiert werden.  Die Kosten für Azure-Speicher fallen für diesen Speicher sofort an.  Stellen Sie bei Ausführung dieses Befehls sicher, dass keine Sitzungen aktivt sind. Andernfalls tritt beim Exportieren ein Fehler auf.
+
+UPDs für in die Domäne eingebundene Azure RemoteApp-Bereitstellungen können nur in einer RDS-Bereitstellung erneut verwendet werden. Nicht in die Domäne eingebundene Bereitstellungen können nicht verwendet werden.  Wenn diese Datenträger in einer RDS-Bereitstellung verwendet werden, wird empfohlen, [automatisierte Skripts](https://github.com/arcadiahlyy/aramigration) zu verwenden, die die UPDs exportieren, konvertieren und in eine RDS-Bereitstellung importieren.
 
 

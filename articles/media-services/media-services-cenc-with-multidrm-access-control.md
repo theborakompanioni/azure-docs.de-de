@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/11/2016
+ms.date: 07/19/2017
 ms.author: willzhan;kilroyh;yanmf;juliako
 ms.translationtype: HT
-ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
-ms.openlocfilehash: 63f2638cd0d50d1aa9a3b6864daba0b8854768d7
+ms.sourcegitcommit: 0425da20f3f0abcfa3ed5c04cec32184210546bb
+ms.openlocfilehash: 527d011476b046add0842b1c7275fc6507be31d4
 ms.contentlocale: de-de
-ms.lasthandoff: 07/12/2017
+ms.lasthandoff: 07/20/2017
 
 ---
 # <a name="cenc-with-multi-drm-and-access-control-a-reference-design-and-implementation-on-azure-and-azure-media-services"></a>CENC mit mehreren DRM-Systemen und Access Control: Referenzentwurf und -implementierung in Azure und Azure Media Services
@@ -57,7 +57,7 @@ In der folgenden Tabelle werden die systemeigene Plattform/App und die Browser v
 | --- | --- | --- | --- |
 | **Smart-TVs, Operator-STBs, OTT-STBs** |Primär PlayReady und/oder Widevine und/oder andere |Linux, Opera, WebKit, andere |Verschiedene Formate |
 | **Windows 10-Geräte (Windows-PC, Windows-Tablets, Windows Phone, Xbox)** |PlayReady |MS Edge/IE11/EME<br/><br/><br/>UWP |DASH (für HLS wird PlayReady nicht unterstützt)<br/><br/>DASH, Smooth Streaming (für HLS wird PlayReady nicht unterstützt) |
-| **Android-Geräte (Telefon, Tablet, TV)** |Widevine |Chrome/EME |DASH |
+| **Android-Geräte (Telefon, Tablet, TV)** |Widevine |Chrome/EME |DASH, HLS |
 | **iOS (iPhone, iPad), OS X-Clients und Apple-TV** |FairPlay |Safari 8+/EME |HLS |
 
 
@@ -457,3 +457,4 @@ In diesem Dokument haben wir uns mit CENC mit mehreren systemeigenen DRM-Systeme
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
  
+

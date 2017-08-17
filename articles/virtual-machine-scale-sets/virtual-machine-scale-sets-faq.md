@@ -13,15 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 7/03/2017
+ms.date: 7/20/2017
 ms.author: negat
 ms.custom: na
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: 718732df4455831454245ea1a80d49e042c20f09
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: f320dd5d1f8c99317792f4ae9e09bc5adaf79e25
 ms.contentlocale: de-de
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 
@@ -511,7 +510,7 @@ Ja. Eine Netzwerksicherheitsgruppe kann direkt auf eine Skalierungsgruppe angewe
 
 ### <a name="how-do-i-do-a-vip-swap-for-virtual-machine-scale-sets-in-the-same-subscription-and-same-region"></a>Wie führe ich ein VIP-Swap für VM-Skalierungsgruppen im gleichen Abonnement und in der gleichen Region aus?
 
-Wenn Sie zwei VM-Skalierungsgruppen mit Front-Ends von Azure Load Balancer haben und diese sich im gleichen Abonnement und der gleichen Region befinden, können Sie die Zuordnung der öffentlichen IP-Adressen aufheben und der jeweils anderen zuordnen. Beispiele finde Sie unter [VIP Swap: Blue-green deployment in Azure Resource Manager (VIP-Tausch: Blaugrünbereitstellung in Azure Resource Manager)](https://msftstack.wordpress.com/2017/02/24/vip-swap-blue-green-deployment-in-azure-resource-manager/). Dies führt jedoch wahrscheinlich zu Verzögerungen, während Ressourcen auf Netzwerkebene zugeordnet werden bzw. während ihre Zuordnungen aufgehoben werden. Eine andere Möglichkeit besteht im Hosten Ihrer Anwendung mit dem [Azure App-Dienst](https://azure.microsoft.com/en-us/services/app-service/), der Unterstützung für das schnelle Wechseln zwischen Staging- und Produktionsslots bietet.
+Wenn Sie zwei VM-Skalierungsgruppen mit Front-Ends von Azure Load Balancer haben und diese sich im gleichen Abonnement und der gleichen Region befinden, können Sie die Zuordnung der öffentlichen IP-Adressen aufheben und der jeweils anderen zuordnen. Beispiele finde Sie unter [VIP Swap: Blue-green deployment in Azure Resource Manager (VIP-Tausch: Blaugrünbereitstellung in Azure Resource Manager)](https://msftstack.wordpress.com/2017/02/24/vip-swap-blue-green-deployment-in-azure-resource-manager/). Dies führt jedoch wahrscheinlich zu Verzögerungen, während Ressourcen auf Netzwerkebene zugeordnet werden bzw. während ihre Zuordnungen aufgehoben werden. Eine schnellere Option ist die Verwendung von Azure Application Gateway mit zwei Back-End-Pools und einer Routingregel. Alternativ können Sie Ihre Anwendung mit [Azure App Service](https://azure.microsoft.com/en-us/services/app-service/) hosten. Dieser Dienst bietet Unterstützung für das schnelle Wechseln zwischen Staging- und Produktionsslots.
  
 ### <a name="how-do-i-specify-a-range-of-private-ip-addresses-to-use-for-static-private-ip-address-allocation"></a>Wie gebe ich einen Bereich privater IP-Adressen für die statische private IP-Adresszuordnung an?
 
@@ -570,6 +569,10 @@ Um eine VM-Skalierungsgruppe zu erstellen, die jeder VM eine öffentliche IP-Adr
         }
     }
 ```
+
+### <a name="can-i-configure-a-scale-set-to-work-with-multiple-application-gateways"></a>Kann ich eine Skalierungsgruppe für die Verwendung mit mehreren Application Gateway-Instanzen konfigurieren?
+
+Ja. Sie können die Ressourcen-IDs für mehrere Application Gateway-Back-End-Adresspools zur Liste _applicationGatewayBackendAddressPools_ im Abschnitt _ipConfigurations_ des Skalierungsgruppen-Netzwerkprofils hinzufügen.
 
 ## <a name="scale"></a>Skalieren
 

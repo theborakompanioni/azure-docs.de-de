@@ -12,14 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 05/26/2017
+ms.date: 07/17/2017
 ms.author: dekapur
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: 571c31b9e6514b44d6a8a69fe8a6a0806e4b80e3
+ms.translationtype: HT
+ms.sourcegitcommit: 0425da20f3f0abcfa3ed5c04cec32184210546bb
+ms.openlocfilehash: 88f4a23f89a1c8fd88db1df3a7ff03ae5df64c0f
 ms.contentlocale: de-de
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 07/20/2017
 
 ---
 
@@ -37,7 +36,7 @@ Die Hauptziele der Überwachung und Diagnose sind:
 
 Der allgemeine Workflow für die Überwachung und Diagnose besteht aus drei Schritten:
 
-1. **Ereignisgenerierung:** Dies schließt Ereignisse (Protokolle, Ablaufverfolgungen, benutzerdefinierte Ereignisse) auf Infrastruktur- (Cluster-) und Anwendungs-/Dienstebene ein.
+1. **Ereignisgenerierung:** Dies schließt Ereignisse (Protokolle, Ablaufverfolgungen, benutzerdefinierte Ereignisse) auf Infrastruktur- (Cluster-), Plattform- und Anwendungs-/Dienstebene ein.
 2. **Ereignisaggregation:** Die generierten Ereignisse müssen gesammelt und aggregiert werden, bevor sie angezeigt werden können.
 3. **Analyse:** Die Ereignisse müssen visualisiert und in einem Format verfügbar sein, das die Analyse und Anzeige je nach Bedarf ermöglicht.
 
@@ -45,9 +44,9 @@ Mehrere Produkte sind erhältlich, die alle drei Bereiche abdecken. Zudem könne
 
 ## <a name="event-generation"></a>Ereignisgenerierung
 
-Der erste Schritt im Workflow für die Überwachung und Diagnose besteht in der Erstellung und Generierung von Ereignissen und Protokollen. Diese Ereignisse, Protokolle und Ablaufverfolgungen werden auf zwei Ebenen generiert: auf Infrastrukturebene (Cluster, Computer oder Service Fabric-Aktionen) oder auf Anwendungsebene (Instrumentierungen in Apps und Diensten, die im Cluster bereitgestellt wurden). Ereignisse auf jeder dieser Ebenen können angepasst werden, Service Fabric umfasst jedoch auch standardmäßig einige Instrumentierungen.
+Der erste Schritt im Workflow für die Überwachung und Diagnose besteht in der Erstellung und Generierung von Ereignissen und Protokollen. Diese Ereignisse, Protokolle und Ablaufverfolgungen werden auf zwei Ebenen generiert: auf Plattformebene (einschließlich Cluster, Computer oder Service Fabric-Aktionen) oder auf Anwendungsebene (Instrumentierungen in Apps und Diensten, die im Cluster bereitgestellt wurden). Ereignisse auf jeder dieser Ebenen können angepasst werden, Service Fabric umfasst jedoch auch standardmäßig einige Instrumentierungen.
 
-Weitere Informationen zu den enthaltenen Instrumentierungen und zum Hinzufügen weiterer Instrumentierungen finden Sie unter [Ereignisse auf Infrastrukturebene](service-fabric-diagnostics-event-generation-infra.md) und [Ereignisse auf Anwendungsebene](service-fabric-diagnostics-event-generation-app.md).
+Weitere Informationen zu den enthaltenen Instrumentierungen und zum Hinzufügen weiterer Instrumentierungen finden Sie unter [Ereignis- und Protokollgenerierung auf Infrastrukturebene](service-fabric-diagnostics-event-generation-infra.md) und [Ereignis- und Protokollgenerierung auf Anwendungs- und Dienstebene](service-fabric-diagnostics-event-generation-app.md).
 
 Nachdem Sie festgelegt haben, welchen Protokollanbieter Sie verwenden möchten, müssen Sie sicherstellen, dass die Protokolle ordnungsgemäß aggregiert und gespeichert werden.
 
@@ -69,7 +68,7 @@ Bei Verwendung von [EventFlow](https://github.com/Azure/diagnostics-eventflow) i
 * Zugriff auf interne Anwendungsdaten und Kontext
     * Das Diagnosesubsystem innerhalb des Anwendungs-/Dienstprozesses kann die Ablaufverfolgungen problemlos mit Kontextinformationen ergänzen.
 
-Dabei ist zu beachten, dass diese beiden Optionen sich nicht gegenseitig ausschließen. Und obwohl sich ähnliche Aufgaben unter Verwendung der einen oder der anderen Option durchführen lassen, kann es auch sinnvoll sein, beide Optionen einzurichten. In den meisten Fällen kann die Kombination eines Agents mit der In-Process-Sammlung zu einem zuverlässigeren Überwachungsworkflow führen. Sie können die Azure-Diagnose-Erweiterung (Agent) beispielsweise als Pfad für Protokolle auf Infrastrukturebene auswählen und EventFlow (In-Process-Sammlung) für Protokolle auf Anwendungsebene verwenden. Wenn Sie herausgefunden haben, welche Option sich am besten für Sie eignet, müssen Sie sich damit befassen, wie Ihre Daten angezeigt und analysiert werden sollen.
+Dabei ist zu beachten, dass diese beiden Optionen sich nicht gegenseitig ausschließen. Und obwohl sich ähnliche Aufgaben unter Verwendung der einen oder der anderen Option durchführen lassen, kann es auch sinnvoll sein, beide Optionen einzurichten. In den meisten Fällen kann die Kombination eines Agents mit der In-Process-Sammlung zu einem zuverlässigeren Überwachungsworkflow führen. Sie können die Azure-Diagnose-Erweiterung (Agent) beispielsweise als Pfad für Protokolle auf Plattformebene auswählen und EventFlow (In-Process-Sammlung) für Protokolle auf Anwendungsebene verwenden. Wenn Sie herausgefunden haben, welche Option sich am besten für Sie eignet, müssen Sie sich damit befassen, wie Ihre Daten angezeigt und analysiert werden sollen.
 
 ## <a name="event-analysis"></a>Ereignisanalyse
 
@@ -93,4 +92,4 @@ Führen Sie die Schritte der Anleitung unter [Überblick über Metriken in Micro
 
 Ein Watchdog ist ein separater Dienst, der die Integrität und die Auslastung von Diensten überwachen und die Integrität für alle Elemente in der Hierarchie des Integritätsmodells melden kann. So können Fehler verhindert werden, die nicht erkannt werden, wenn nur ein einzelner Dienst betrachtet wird. Watchdogs sind auch ein guter Platz zum Hosten von Code, der Aktionen zur Problembehebung ohne Benutzeraktion ausführt (z.B. Bereinigen von Protokolldateien im Speicher in bestimmten Zeitintervallen). Ein Beispiel für eine Watchdog-Dienstimplementierung finden Sie [hier](https://github.com/Azure-Samples/service-fabric-watchdog-service).
 
-Machen Sie sich damit vertraut, wie Ereignisse und Protokolle auf der [Infrastrukturebene](service-fabric-diagnostics-event-generation-infra.md) und der [Anwendungsebene](service-fabric-diagnostics-event-generation-app.md) generiert werden.
+Machen Sie sich damit vertraut, wie Ereignisse und Protokolle auf der [Plattformebene](service-fabric-diagnostics-event-generation-infra.md) und der [Anwendungsebene](service-fabric-diagnostics-event-generation-app.md) generiert werden.

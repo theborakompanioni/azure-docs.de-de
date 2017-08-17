@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/26/2017
 ms.author: dekapur
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: c88b2b5cff70e7a4b3642c53502f348f2e789e81
+ms.translationtype: HT
+ms.sourcegitcommit: 0425da20f3f0abcfa3ed5c04cec32184210546bb
+ms.openlocfilehash: 4085a607b800f4f4f155cdc266bc203b0858fd7c
 ms.contentlocale: de-de
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 07/20/2017
 
 ---
 
@@ -75,7 +74,7 @@ Fügen Sie in „WadCfg“ der Resource Manager-Vorlage durch Einfügen der folg
 
 In beiden Codeausschnitten oben wurde der Name „applicationInsights“ für die Senke verwendet. Dieser Name muss nicht verwendet werden. Solange der Name der Senke in „sinks“ eingefügt wird, können Sie eine beliebige Zeichenfolge als Name festlegen.
 
-Derzeit werden Protokolle vom Cluster als Ablaufverfolgungen in der AI-Protokollanzeige angezeigt. Da die meisten Ablaufverfolgungen aus der Infrastrukturebene den Typ „Informationen“ aufweisen, haben Sie auch die Möglichkeit, die Senkenkonfiguration so zu ändern, dass nur Protokolle der Typen „Kritisch“ und „Fehler“ gesendet werden. Dies kann durch Hinzufügen von „Kanälen“ zur Senke erfolgen, wie in [diesem Artikel](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md) erläutert.
+Derzeit werden Protokolle vom Cluster als Ablaufverfolgungen in der AI-Protokollanzeige angezeigt. Da die meisten Ablaufverfolgungen aus der Plattform die Stufe „Information“ aufweisen, haben Sie auch die Möglichkeit, die Senkenkonfiguration so zu ändern, dass nur Protokolle der Typen „Kritisch“ und „Fehler“ gesendet werden. Dies kann durch Hinzufügen von „Kanälen“ zur Senke erfolgen, wie in [diesem Artikel](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md) erläutert.
 
 >[!NOTE]
 >Wenn Sie im Portal oder in der Resource Manager-Vorlage einen falschen AI-IKey verwenden, müssen Sie ihn manuell ändern und den Cluster aktualisieren und erneut bereitstellen. 

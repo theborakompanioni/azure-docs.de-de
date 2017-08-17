@@ -1,6 +1,6 @@
 ---
-title: "Überwachung auf Azure Service Fabric-Infrastrukturebene | Microsoft-Dokumentation"
-description: "In diesem Artikel erfahren Sie mehr über Ereignisse und Protokolle auf Infrastrukturebene, die zum Überwachen und Diagnostizieren von Azure Service Fabric-Clustern verwendet werden."
+title: "Überwachung auf Azure Service Fabric-Plattformebene | Microsoft-Dokumentation"
+description: "In diesem Artikel erfahren Sie mehr über Ereignisse und Protokolle auf Plattformebene, die zum Überwachen und Diagnostizieren von Azure Service Fabric-Clustern verwendet werden."
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
@@ -12,22 +12,21 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/30/2017
+ms.date: 07/17/2017
 ms.author: dekapur
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: bae1917e7c0f0b247be473f78fedd7753aef6d23
+ms.translationtype: HT
+ms.sourcegitcommit: 0425da20f3f0abcfa3ed5c04cec32184210546bb
+ms.openlocfilehash: 2e320339f60b593c1cff68ca047c95f9cb7b33e2
 ms.contentlocale: de-de
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 07/20/2017
 
 ---
 
-# <a name="infrastructure-level-event-and-log-generation"></a>Ereignis- und Protokollgenerierung auf Infrastrukturebene
+# <a name="platform-level-event-and-log-generation"></a>Ereignis- und Protokollgenerierung auf Plattformebene
 
 ## <a name="monitoring-the-cluster"></a>Überwachen des Clusters
 
-Die Überwachung auf Infrastrukturebene ist wichtig, um festzustellen, ob sich Ihre Hardware und Ihr Cluster erwartungsgemäß verhalten. Durch Service Fabric können Anwendungen bei Hardwareausfällen weiter ausgeführt werden. Sie müssen aber nach wie vor diagnostizieren, ob ein Fehler in einer Anwendung oder in der zugrunde liegenden Infrastruktur auftritt. Zudem sollten Sie zur besseren Kapazitätsplanung Ihre Cluster überwachen, um besser entscheiden zu können, ob Infrastrukturkomponenten hinzugefügt oder entfernt werden sollen.
+Die Überwachung auf Plattformebene ist wichtig, um festzustellen, ob sich Ihre Hardware und Ihr Cluster erwartungsgemäß verhalten. Durch Service Fabric können Anwendungen bei Hardwareausfällen weiter ausgeführt werden. Sie müssen aber nach wie vor diagnostizieren, ob ein Fehler in einer Anwendung oder in der zugrunde liegenden Infrastruktur auftritt. Zudem sollten Sie zur besseren Kapazitätsplanung Ihre Cluster überwachen, um besser entscheiden zu können, ob Hardware hinzugefügt oder entfernt werden soll.
 
 Service Fabric stellt fünf verschiedene vorkonfigurierte Protokollkanäle bereit, die die folgenden Ereignisse generieren:
 
@@ -37,7 +36,7 @@ Service Fabric stellt fünf verschiedene vorkonfigurierte Protokollkanäle berei
 * [Reliable Actors-Ereignisse](service-fabric-reliable-actors-diagnostics.md): spezifische Ereignisse für das Programmierungsmodell und Leistungsindikatoren
 * Supportprotokolle: Systemprotokolle, die von Service Fabric nur für unseren Support generiert werden
 
-Über diese verschiedenen Kanäle wird der Großteil der empfohlenen Protokollierung auf Infrastrukturebene abgewickelt. Um die Protokollierung auf Infrastrukturebene zu verbessern, sollten Sie sich einen besseren Überblick über das Integritätsmodell verschaffen und benutzerdefinierte Integritätsberichte hinzufügen. Fügen Sie außerdem benutzerdefinierte **Leistungsindikatoren** hinzu, um herauszufinden, welche Auswirkungen sich für Ihre Dienste und Anwendungen im Cluster in Echtzeit ergeben.
+Über diese verschiedenen Kanäle wird der Großteil der empfohlenen Protokollierung auf Plattformebene abgewickelt. Um die Protokollierung auf Plattformebene zu verbessern, sollten Sie sich einen besseren Überblick über das Integritätsmodell verschaffen und benutzerdefinierte Integritätsberichte hinzufügen. Fügen Sie außerdem benutzerdefinierte **Leistungsindikatoren** hinzu, um herauszufinden, welche Auswirkungen sich für Ihre Dienste und Anwendungen im Cluster in Echtzeit ergeben.
 
 ### <a name="azure-service-fabric-health-and-load-reporting"></a>Integritäts- und Auslastungsberichte für Azure Service Fabric
 

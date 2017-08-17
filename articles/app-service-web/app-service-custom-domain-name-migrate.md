@@ -1,6 +1,6 @@
 ---
-title: "Migrieren einer aktiven benutzerdefinierten Domäne zu Azure App Service | Microsoft Docs"
-description: "Erfahren Sie, wie Sie eine benutzerdefinierte Domäne, die bereits einer Livewebsite zugewiesen ist, ohne Ausfallzeiten zu Ihrer App in Azure App Service migrieren."
+title: Migrieren eines aktiven DNS-Namens zu Azure App Service | Microsoft-Dokumentation
+description: "Erfahren Sie, wie Sie einen benutzerdefinierte DNS-Domänennamen, der bereits einer Livewebsite zugewiesen ist, ohne Ausfallzeiten zu Azure App Service migrieren."
 services: app-service
 documentationcenter: 
 author: cephalin
@@ -13,25 +13,28 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/30/2017
+ms.date: 06/28/2017
 ms.author: cephalin
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
-ms.openlocfilehash: 5f6537a45bcb092b5ef463e8069b9fc5582c14c2
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 89308c1c684a639950467b72d26703cc07c50c14
 ms.contentlocale: de-de
-ms.lasthandoff: 06/14/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
-# <a name="migrate-an-active-custom-domain-to-azure-app-service"></a>Migrieren einer aktiven benutzerdefinierten Domäne zu Azure App Service
+# <a name="migrate-an-active-dns-name-to-azure-app-service"></a>Migrieren eines aktiven DNS-Namens zu Azure App Service
 
-In diesem Artikel wird erläutert, wie Sie eine aktive benutzerdefinierte Domäne ohne Ausfallzeiten zu [Azure App Service](../app-service/app-service-value-prop-what-is.md) migrieren.
+In diesem Artikel erfahren Sie, wie Sie einen aktiven DNS-Namen ohne Ausfallzeiten zu [Azure App Service](../app-service/app-service-value-prop-what-is.md) migrieren.
 
-Wenn Sie eine Livewebsite und deren Domänenname zu App Service migrieren, wird über diesen Domänennamen bereits Livedatenverkehr abgewickelt, und Sie möchten während des Migrationsprozesses natürlich keine Ausfallzeiten bei der DNS-Auflösung. In diesem Fall müssen Sie den Domänennamen bereits im Vorfeld zur Verifizierung der Domäne an Ihre Azure-App binden.
+Wenn Sie eine Livewebsite und den dazugehörigen DNS-Domänennamen zu App Service migrieren, wird über diesen DNS-Namen bereits Livedatenverkehr abgewickelt. Damit während der Migration keine Ausfallzeiten bei der DNS-Auflösung auftreten, können Sie den aktiven DNS-Namen vorab an Ihre App Service-App binden.
+
+Wenn ein Ausfall der DNS-Auflösung kein Problem darstellt, lesen Sie unter [Zuordnen eines vorhandenen benutzerdefinierten DNS-Namens zu Azure-Web-Apps](app-service-web-tutorial-custom-domain.md) weiter.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-In diesem Artikel wird davon ausgegangen, dass Sie bereits wissen, wie [eine benutzerdefinierte Domäne manuell App Service zugeordnet wird](app-service-web-tutorial-custom-domain.md).
+Führen Sie den folgenden Vorbereitungsschritt aus:
+
+- [Vergewissern Sie sich, dass sich Ihre App Service-App nicht im FREE-Tarif befindet.](app-service-web-tutorial-custom-domain.md#checkpricing)
 
 ## <a name="bind-the-domain-name-preemptively"></a>Binden des Domänennamens bereits im Vorfeld
 
@@ -40,54 +43,90 @@ Wenn Sie eine benutzerdefinierte Domäne bereits im Vorfeld binden, haben Sie di
 - Überprüfen des Domänenbesitzes
 - Aktivieren des Domänennamens für Ihre App
 
-Wenn Sie schließlich den DNS-Eintrag so ändern, dass er auf Ihre App Service-App verweist, werden Clients ohne Ausfallzeiten bei der DNS-Auflösung von Ihrer alten Website zu Ihrer App Service-App umgeleitet.
+Wenn Sie dann Ihren benutzerdefinierten DNS-Namen von der alten Website zur App Service-App migrieren, treten bei der DNS-Auflösung keinerlei Ausfälle auf.
 
-Führen Sie die folgenden Schritte aus:
+[!INCLUDE [Access DNS records with domain provider](../../includes/app-service-web-access-dns-records.md)]
 
-1. Erstellen Sie zunächst einen TXT-Überprüfungseintrag mit Ihrer DNS-Registrierung, wie unter [Erstellen von DNS-Einträgen](app-service-web-tutorial-custom-domain.md) beschrieben.
-Für Ihren zusätzlichen TXT-Eintrag wird die Konvention der Zuordnung von „&lt;*Unterdomäne*>.&lt;*Stammdomäne*>“ zu „&lt;*App-Name*>.azurewebsites.net“ übernommen.
-Die folgende Tabelle enthält einige Beispiele:  
+### <a name="create-domain-verification-record"></a>Erstellen eines Domänenüberprüfungseintrags
 
-    <table cellspacing="0" border="1">
-    <tr>
-    <th>FQDN-Beispiel</th>
-    <th>TXT-Host</th>
-    <th>TXT-Wert</th>
-    </tr>
-    <tr>
-    <td>contoso.com (Stammdomäne)</td>
-    <td>awverify.contoso.com</td>
-    <td>&lt;<i>App-Name</i>>.azurewebsites.net</td>
-    </tr>
-    <tr>
-    <td>www.contoso.com (Unterdomäne)</td>
-    <td>awverify.www.contoso.com</td>
-    <td>&lt;<i>App-Name</i>>.azurewebsites.net</td>
-    </tr>
-    <tr>
-    <td>\*.contoso.com (Platzhalter)</td>
-    <td>awverify\*.contoso.com</td>
-    <td>&lt;<i>App-Name</i>>.azurewebsites.net</td>
-    </tr>
-    </table>
+Fügen Sie zum Überprüfen des Domänenbesitzes einen TXT-Eintrag hinzu. Der TXT-Eintrag dient zur Zuordnung von _awverify.&lt;Unterdomäne>_ zu _&lt;App-Name>.azurewebsites.net_. 
 
-2. Fügen Sie anschließend Ihrer Azure-App den benutzerdefinierten Domänennamen hinzu, wie unter [Aktivieren des benutzerdefinierten Domänennamens für Ihre App](app-service-web-tutorial-custom-domain.md#enable-a) beschrieben.
+Welchen TXT-Eintrag Sie benötigen, hängt vom zu migrierenden DNS-Eintrag ab. Beispiele finden Sie in der folgenden Tabelle. (`@` stellt in der Regel die Stammdomäne dar.)  
 
-    Ihre benutzerdefinierte Domäne ist nun in Ihrer Azure-App aktiviert. Nun müssen Sie nur noch den DNS-Eintrag bei Ihrer Domänenregistrierungsstelle aktualisieren.
+| DNS-Beispieleintrag | TXT-Host | TXT-Wert |
+| - | - | - |
+| @ (Stamm) | _awverify_ | _&lt;App-Name>.azurewebsites.net_ |
+| www (Unterdomäne) | _awverify.www_ | _&lt;App-Name>.azurewebsites.net_ |
+| \* (Platzhalter) | _awverify.\*_ | _&lt;App-Name>.azurewebsites.net_ |
 
-3. Aktualisieren Sie abschließend den DNS-Eintrag Ihrer Domäne, sodass dieser auf Ihre Azure-App verweist, wie in [Erstellen von DNS-Einträgen](app-service-web-tutorial-custom-domain.md) beschrieben.
+Beachten Sie auf der Seite mit den DNS-Einträgen den Eintragstyp des DNS-Namens, den Sie migrieren möchten. App Service unterstützt Zuordnungen von CNAME- und A-Einträgen.
 
-    Der Benutzerdatenverkehr sollte umgehend nach der DNS-Verteilung an Ihre Azure-App umgeleitet werden.
+### <a name="enable-the-domain-for-your-app"></a>Aktivieren der Domäne für Ihre App
+
+Wählen Sie im [Azure-Portal](https://portal.azure.com) im linken Navigationsbereich der App-Seite die Option **Benutzerdefinierte Domänen** aus. 
+
+![Menü „Benutzerdefinierte Domänen“](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
+
+Wählen Sie auf der Seite **Benutzerdefinierte Domänen** neben **Hostname hinzufügen** das Symbol **+** aus.
+
+![Hinzufügen des Hostnamens](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
+
+Geben Sie den vollqualifizierten Domänennamen ein, für den Sie den TXT-Eintrag hinzugefügt haben (beispielsweise `www.contoso.com`). Für eine Platzhalterdomäne (Beispiel: \*.contoso.com), können Sie einen beliebigen DNS-Namen verwenden, der der Platzhalterdomäne entspricht. 
+
+Wählen Sie **Überprüfen**.
+
+Die Schaltfläche **Hostnamen hinzufügen** wird aktiviert. 
+
+Vergewissern Sie sich, dass **Typ des Hostnamenseintrags** auf den DNS-Eintragstyp festgelegt ist, den Sie migrieren möchten.
+
+Wählen Sie **Hostnamen hinzufügen**.
+
+![Hinzufügen des DNS-Namens zur App](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname.png)
+
+Unter Umständen dauert es eine Weile, bis der neue Hostname auf der Seite **Benutzerdefinierte Domänen** der App angezeigt wird. Aktualisieren Sie den Browser, um die Daten zu aktualisieren.
+
+![Hinzugefügter CNAME-Eintrag](./media/app-service-web-tutorial-custom-domain/cname-record-added.png)
+
+Ihr benutzerdefinierter DNS-Name ist nun in Ihrer Azure-App aktiviert. 
+
+## <a name="remap-the-active-dns-name"></a>Neuzuordnen des aktiven DNS-Namens
+
+Nun muss nur noch der aktive DNS-Eintrag neu zugeordnet werden, damit er auf App Service verweist. Momentan verweist er immer noch auf Ihre alte Website.
+
+<a name="info"></a>
+
+### <a name="copy-the-apps-ip-address-a-record-only"></a>Kopieren der IP-Adresse der App (nur A-Eintrag)
+
+Wenn Sie einen CNAME-Eintrag neu zuordnen, überspringen Sie diesen Abschnitt. 
+
+Für die Neuzuordnung eines A-Eintrags benötigen Sie die externe IP-Adresse der App Service-App (zu finden auf der Seite **Benutzerdefinierte Domänen**).
+
+Wählen Sie rechts oben das **X** aus, um die Seite **Hostname hinzufügen** zu schließen. 
+
+Kopieren Sie auf der Seite **Benutzerdefinierte Domänen** die IP-Adresse der App.
+
+![Portalnavigation zur Azure-App](./media/app-service-web-tutorial-custom-domain/mapping-information.png)
+
+### <a name="update-the-dns-record"></a>Aktualisieren des DNS-Eintrags
+
+Wählen Sie auf der DNS-Eintragsseite Ihres Domänenanbieters den neu zuzuordnenden DNS-Eintrag aus.
+
+Ordnen Sie für das Stammdomänenbeispiel `contoso.com` den A- oder CNAME-Eintrag wie bei den Beispielen in der folgenden Tabelle zu: 
+
+| FQDN-Beispiel | Eintragstyp | Host | Wert |
+| - | - | - | - |
+| contoso.com (Stammdomäne) | A | `@` | IP-Adresse aus dem Schritt [Kopieren der IP-Adresse der App](#info) |
+| www.contoso.com (Unterdomäne) | CNAME | `www` | _&lt;App-Name>.azurewebsites.net_ |
+| \*.contoso.com (Platzhalter) | CNAME | _\*_ | _&lt;App-Name>.azurewebsites.net_ |
+
+Speichern Sie die Einstellungen.
+
+DNS-Abfragen werden umgehend nach der DNS-Verteilung zu Ihrer App Service-App aufgelöst.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Erfahren Sie, wie Sie Ihren benutzerdefinierten Domänennamen mit HTTPS sichern, indem Sie [ein SSL-Zertifikat in Azure erwerben](web-sites-purchase-ssl-web-site.md) oder [ein SSL-Zertifikat von einer anderen Stelle verwenden](app-service-web-tutorial-custom-ssl.md).
 
-> [!NOTE]
-> Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](https://azure.microsoft.com/try/app-service/)sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
->
->
+Informieren Sie sich darüber, wie Sie ein benutzerdefiniertes SSL-Zertifikat an App Service binden.
 
-[Erste Schritte mit Azure DNS](../dns/dns-getstarted-create-dnszone.md)  
-[Erstellen von DNS-Einträgen für eine Web-App in einer benutzerdefinierten Domäne](../dns/dns-web-sites-custom-domain.md)  
-[Delegieren von Domänen an Azure DNS](../dns/dns-domain-delegation.md)
+> [!div class="nextstepaction"]
+> [Binden eines vorhandenen benutzerdefinierten SSL-Zertifikats an Azure-Web-Apps](app-service-web-tutorial-custom-ssl.md)
 

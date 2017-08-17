@@ -12,14 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 05/26/2017
+ms.date: 07/17/2017
 ms.author: dekapur
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: 1152893c4c686fa69f7e06ffa7e2d2b2272bc772
+ms.translationtype: HT
+ms.sourcegitcommit: 0425da20f3f0abcfa3ed5c04cec32184210546bb
+ms.openlocfilehash: bcc3a229369a065cfcfbd32eadbf3f6ae6fe0036
 ms.contentlocale: de-de
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 07/20/2017
 
 ---
 
@@ -36,7 +35,7 @@ Eine Möglichkeit zum Hochladen und Sammeln von Protokollen ist die Verwendung d
 
 ## <a name="log-and-event-sources"></a>Protokoll- und Ereignisquellen
 
-### <a name="service-fabric-infrastructure-events"></a>Service Fabric-Infrastrukturereignisse
+### <a name="service-fabric-platform-events"></a>Service Fabric-Plattformereignisse
 Service Fabric gibt über [LTTng](http://lttng.org) einige vordefinierte Protokolle aus, einschließlich Betriebs- oder Laufzeitereignissen. Diese Protokolle werden an dem in der Resource Manager-Vorlage des Clusters angegebenen Speicherort gespeichert. Um Informationen zum Speicherkonto abzurufen oder festzulegen, suchen Sie nach dem Tag **AzureTableWinFabETWQueryable** und dort nach **StoreConnectionString**.
 
 ### <a name="application-events"></a>Anwendungsereignisse

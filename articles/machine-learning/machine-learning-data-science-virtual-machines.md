@@ -1,6 +1,6 @@
 ---
-title: Virtuelle Data Science-Computer in Azure | Microsoft Docs
-description: "Einrichten eines virtuellen Computers für Data Science"
+title: Bereitstellen von virtuellen Azure Data Science-Computern als IPython Notebook-Server | Microsoft-Dokumentation
+description: "Richten Sie einen virtuellen Data Science-Computer als IPython Notebook-Server mit unterstützenden Tools ein."
 services: machine-learning
 documentationcenter: 
 author: bradsev
@@ -12,16 +12,16 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/24/2017
-ms.author: xibingao;bradsev
-translationtype: Human Translation
-ms.sourcegitcommit: a6bc79b2cb5b73109cddd6cf57caeba754b52e2e
-ms.openlocfilehash: 4de0683f2f58cc598a5c37e74a30b7e17aa7fd0d
-ms.lasthandoff: 02/17/2017
-
+ms.date: 07/21/2017
+ms.author: bradsev
+ms.translationtype: HT
+ms.sourcegitcommit: 2812039649f7d2fb0705220854e4d8d0a031d31e
+ms.openlocfilehash: db1ffb2a226a087ecea2ea6f560c6b803e33d8c7
+ms.contentlocale: de-de
+ms.lasthandoff: 07/22/2017
 
 ---
-# <a name="data-science-virtual-machines-in-azure"></a>Virtuelle Data Science-Computer in Azure
+# <a name="provision-azure-data-science-virtual-machines-as-ipython-notebook-servers"></a>Bereitstellen von virtuellen Azure Data Science-Computern als IPython Notebook-Server
 Sie erhalten hier Anweisungen zum Einrichten einer Azure-VM und einer Azure-VM mit SQL Server als IPython Notebook-Server. Der virtuelle Windows-Computer wird mit Unterstützung von Tools wie IPython Notebook, Azure-Speicher-Explorer und AzCopy sowie anderer Hilfsprogramme, die für Data Science-Projekte hilfreich sind, konfiguriert. Azure-Speicher-Explorer und AzCopy stellen z. B. hilfreiche Möglichkeiten zum Hochladen von Daten von Ihrem lokalen Computer in den Azure-Speicher oder das Herunterladen aus dem Speicher auf Ihren lokalen Computer bereit. 
 
 Dieses Menü enthält Links zu Themen, in denen das Einrichten der verschiedenen Data Science-Umgebungen, die vom [Team Data Science-Prozess (TDSP)](data-science-process-overview.md)verwendet werden, beschrieben wird.

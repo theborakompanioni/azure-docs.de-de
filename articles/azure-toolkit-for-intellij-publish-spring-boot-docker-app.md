@@ -14,66 +14,65 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 06/21/2017
 ms.author: robmcm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8be2bcb9179e9af0957fcee69680ac803fd3d918
-ms.openlocfilehash: 8d1f0f0f95647c85b2b5f3550e306e3ce35e81c3
+ms.translationtype: HT
+ms.sourcegitcommit: 2812039649f7d2fb0705220854e4d8d0a031d31e
+ms.openlocfilehash: 4f9c118fbfe445dd38670e3b7549a0d89681e5db
 ms.contentlocale: de-de
-ms.lasthandoff: 06/23/2017
-
+ms.lasthandoff: 07/22/2017
 
 ---
 
-# <a name="publish-a-spring-boot-app-as-a-docker-container-using-the-azure-toolkit-for-intellij"></a>Veröffentlichen einer Spring Boot-App als Docker-Container mit dem Azure-Toolkit für IntelliJ
+# <a name="publish-a-spring-boot-app-as-a-docker-container-by-using-the-azure-toolkit-for-intellij"></a>Veröffentlichen einer Spring Boot-App als Docker-Container mit dem Azure-Toolkit für IntelliJ
 
-Das **[Spring-Framework]** ist eine Open-Source-Lösung, die Java-Entwickler beim Erstellen von Anwendungen auf Unternehmensebene unterstützt. Eines der gängigsten Projekte, das auf dieser Plattform aufbaut, ist [Spring Boot]. Es bietet einen vereinfachten Ansatz für das Erstellen eigenständiger Java-Anwendungen.
+[Spring Framework] ist eine Open Source-Lösung, die Java-Entwickler bei der Erstellung professioneller Anwendungen unterstützt. Eines der gängigsten Projekte, das auf dieser Plattform aufbaut, ist [Spring Boot]. Es bietet einen vereinfachten Ansatz für das Erstellen eigenständiger Java-Anwendungen.
 
-**[Docker]** ist eine Open Source-Lösung, die Entwicklern beim Automatisieren der Bereitstellung, Skalieren und Verwalten ihrer Anwendungen hilft, die in Containern ausgeführt werden.
+[Docker] ist eine Open Source-Lösung, die Entwickler beim Automatisieren der Bereitstellung, Skalierung und Verwaltung ihrer in Containern ausgeführten Anwendungen unterstützt.
 
-Dieses Tutorial führt Sie durch die Schritte zum Bereitstellen einer Spring Boot-Anwendung als Docker-Container in Microsoft Azure mithilfe des Azure Toolkits für IntelliJ.
+In diesem Tutorial erfahren Sie, wie Sie mithilfe des Azure-Toolkits für IntelliJ eine Spring Boot-Anwendung als Docker-Container in Microsoft Azure bereitstellen.
 
 [!INCLUDE [azure-toolkit-for-intellij-prerequisites](../includes/azure-toolkit-for-intellij-prerequisites.md)]
 
-## <a name="cloning-the-default-spring-boot-docker-app-repo"></a>Klonen des Spring Boot-Docker-App-Repositorys
+## <a name="clone-the-default-spring-boot-docker-repo"></a>Klonen des standardmäßigen Spring Boot-Docker-Repositorys
 
-Die folgenden Schritte führen Sie durch den Klonprozess des Spring Boot-Docker-Repositorys mithilfe von IntelliJ. Wenn Sie eine Befehlszeile verwenden möchten, finden Sie weitere Informationen unter [Bereitstellen einer Spring Boot-Anwendung unter Linux in Azure Container Service][Deploy Spring Boot on Linux in ACS].
+Mit den folgenden Schritten wird das Spring Boot-Docker-Repository mithilfe von IntelliJ geklont. Informationen zur Verwendung einer Befehlszeile finden unter [Deploy a Spring Boot application on Linux in the Azure Container Service][Deploy Spring Boot on Linux in ACS] (Bereitstellen einer Spring Boot-Anwendung unter Linux in Azure Container Service).
 
 1. Öffnen Sie IntelliJ.
 
-1. Wählen Sie auf der Willkommensseite die Option **GitHub** im Dropdownmenü **Check out from version control** (Von Versionskontrolle auschecken) aus.
+1. Wählen Sie auf der Willkommensseite in der Liste **Check out from version control** (Von Versionskontrolle auschecken) die Option **GitHub** aus.
 
-   ![Von Versionskontrolle auschecken][CL01]
+   ![GitHub-Option für die Versionskontrolle][CL01]
 
 1. Geben Sie Ihre Anmeldeinformationen ein, wenn Sie dazu aufgefordert werden.
 
-   * Wenn Sie sich mit Benutzername/Kennwort bei GitHub anmelden:
+   * GitHub-Anmeldung unter Verwendung von Benutzername und Kennwort:
 
-      ![Geben Sie Ihre Daten im Dialogfeld „GitHub-Anmeldeinformationen“ ein][CL02a]
+      ![Dialogfeld für die Eingabe von Benutzername und Kennwort für GitHub][CL02a]
 
-   * Wenn Sie sich per Token bei GitHub anmelden:
+   * Tokenbasierte GitHub-Anmeldung:
 
-      ![Geben Sie Ihre Daten im Dialogfeld „GitHub-Anmeldeinformationen“ ein][CL02b]
+      ![Dialogfeld für die Eingabe eines GitHub-Tokens][CL02b]
 
-1. Geben Sie `https://github.com/spring-guides/gs-spring-boot-docker.git` für die URL des Repositorys ein, geben Sie Ihren lokalen Pfad und Ordnerinformationen an, und klicken Sie auf **Klonen**.
+1. Geben Sie **https://github.com/spring-guides/gs-spring-boot-docker.git** als Repository-URL sowie Ihren lokalen Pfad und Ordner an, und klicken Sie anschließend auf **Klonen**.
 
    ![Dialogfeld „Repository klonen“][CL03]
 
-1. Wählen Sie **Nein** aus, wenn Sie aufgefordert werden, ein IntelliJ-Projekt zu erstellen.
+1. Wenn Sie zum Erstellen eines IntelliJ-Projekts aufgefordert werden, wählen Sie **Nein** aus.
 
-   ![Erstellen eines IntelliJ-Projekts][CL04]
+   ![Ablehnen der Erstellung eines IntelliJ-Projekts][CL04]
 
 1. Klicken Sie auf der Willkommensseite auf **Projekt importieren**.
 
-   ![Importieren des Projekts][CL05]
+   ![Klicken auf „Projekt importieren“][CL05]
 
-1. Suchen Sie den Pfad, in den Sie das Spring Boot-Repository geklont haben, markieren Sie den **vollständigen** Ordner unter dem Stammordner, und klicken Sie auf **OK**.
+1. Suchen Sie den Pfad, an dem Sie das Spring Boot-Repository geklont haben, wählen Sie den **gesamten** Ordner unter dem Stammverzeichnis aus, und klicken Sie auf **OK**.
 
-   ![Importieren des Projekts][CL06]
+   ![Auswählen eines zu importierenden Ordners][CL06]
 
 1. Wählen Sie **Create project from existing sources** (Projekt aus vorhandenen Quellen erstellen) aus, wenn Sie dazu aufgefordert werden.
 
-   ![Projekt aus vorhandenen Quellen erstellen][CL07]
+   ![Option zum Erstellen eines Projekts auf der Grundlage vorhandener Quellen][CL07]
 
-1. Geben Sie einen Projektnamen ein, oder übernehmen Sie den Standardnamen, überprüfen Sie den korrekten Pfad für den **vollständigen** Ordner, und klicken Sie auf **Weiter**.
+1. Geben Sie einen Projektnamen ein, oder übernehmen Sie den Standardnamen, überprüfen Sie den Pfad für den **gesamten** Ordner, und klicken Sie auf **Weiter**.
 
    ![Angeben des Projektnamens][CL08]
 
@@ -91,61 +90,61 @@ Die folgenden Schritte führen Sie durch den Klonprozess des Spring Boot-Docker-
 
 1. Geben Sie Ihr JDK, an und klicken Sie dann auf **Weiter**.
 
-   ![JDK angeben][CL12]
+   ![Angeben eines JDKs][CL12]
 
 1. Klicken Sie auf **Fertig stellen**.
 
-   ![Finish][CL13]
+   ![Schaltfläche „Fertig stellen“][CL13]
 
-1. IntilliJ importiert die Spring Boot-App als Projekt und zeigt die Struktur an, sobald der Import abgeschlossen ist.
+IntelliJ importiert die Spring Boot-App als Projekt und zeigt nach Abschluss des Importvorgangs die Struktur an.
 
-   ![Spring Boot-App in IntelliJ][CL14]
+![Spring Boot-App in IntelliJ][CL14]
 
-## <a name="building-your-spring-boot-app"></a>Erstellen einer Spring Boot-App
+## <a name="build-your-spring-boot-app"></a>Erstellen Ihrer Spring Boot-App
 
-### <a name="build-the-app-using-the-maven-pom"></a>Erstellen der App mithilfe der Maven-POM-Datei
+### <a name="build-the-app-by-using-the-maven-pom"></a>Erstellen der App mithilfe des Maven-POMs
 
-1. Öffnen Sie, falls noch nicht geschehen, das Maven-Toolfenster. Klicken Sie hierfür auf **Anzeige**, **Toolfenster** und anschließend auf **Maven Projects** (Maven-Projekte).
+1. Öffnen Sie das Maven-Toolfenster, sofern es nicht bereits geöffnet ist. Klicken Sie auf **Ansicht** > **Toolfenster** > **Maven-Projekte**.
 
-   ![Ansicht Maven-Toolfenster][BU01]
+   ![Befehle „Toolfenster“ und „Maven-Projekte“][BU01]
 
-1. Klicken Sie im Maven-Toolfenster mit der rechten Maustaste auf **Paket**, und wählen Sie **Run Maven Build** (Maven-Build ausführen) aus. (Wenn das Maven-Projekt nicht automatisch angezeigt wird, müssen Sie möglicherweise auf das Symbol **Reimport** (Erneut importieren) auf der Maven-Symbolleiste klicken.)
+1. Klicken Sie im Maven-Toolfenster mit der rechten Maustaste auf **Paket**, und wählen Sie **Run Maven Build** (Maven-Build ausführen) aus. (Sollte Ihr Maven-Projekt nicht automatisch angezeigt werden, klicken Sie auf der Maven-Symbolleiste auf das Symbol **Reimport** (Erneut importieren).)
 
-   ![Ausführen des Maven-Build][BU02]
+   ![Befehl zum Ausführen des Maven-Builds][BU02]
 
-1. IntelliJ sollte die Meldung BUILD SUCCESS (Builderfolg) anzeigen, wenn Ihre Spring Boot-App erfolgreich erstellt wurde.
+1. Wenn Ihre Spring Boot-App erfolgreich erstellt wurde, zeigt IntelliJ eine entsprechende**** Meldung an.
 
-   ![Builderfolg][BU03]
+   ![Meldung nach erfolgreicher Erstellung][BU03]
 
 ### <a name="create-a-deployment-ready-artifact"></a>Erstellen eines bereitstellungsfähigen Artefakts
 
-Um Ihre Spring Boot-App zu veröffentlichen, müssen Sie ein bereitstellungsfähiges Artefakt erstellen. Führen Sie dazu die folgenden Schritte aus:
+Zum Veröffentlichen Ihrer Spring Boot-App müssen Sie ein bereitstellungsfähiges Artefakt erstellen. Führen Sie die folgenden Schritte aus:
 
 1. Öffnen Sie Ihr Web-App-Projekt in IntelliJ.
 
 1. Klicken Sie auf **Datei** und dann auf **Projektstruktur**.
 
-   ![Menü „Projektstruktur“][ART01]
+   ![Befehl „Projektstruktur“][ART01]
 
-1. Klicken Sie auf das grüne Pluszeichen („**+**“), um ein Artefakt hinzuzufügen, klicken Sie auf **JAR** und anschließend auf **Leer**.
+1. Klicken Sie auf das grüne Plussymbol (**+**), um ein Artefakt hinzuzufügen. Klicken Sie anschließend auf **JAR** und dann auf **Leer**.
 
-   ![Artefakt hinzufügen][ART02]
+   ![Hinzufügen eines Artefakts][ART02]
 
 1. Benennen Sie Ihr Artefakt und stellen Sie dabei sicher, dass Sie nicht die Erweiterung „.jar“ anfügen. Geben Sie anschließend den Zielordner für die Maven-Ausgabe an.
 
    ![Angeben der Eigenschaften des Artefakts][ART03]
 
-1. OPTIONAL: Erstellen eines Manifests für Ihr Artefakt:
+1. Erstellen Sie ein Manifest für Ihr Artefakt (optional):
 
    a. Klicken Sie auf **Create Manifest** (Manifest erstellen).
 
-      ![Angeben des Pfads des Artefakts][ART04a]
+      ![Klicken auf die Schaltfläche „Create Manifest“ (Manifest erstellen)][ART04a]
 
    b. Wählen Sie den Standardpfad für das Artefakt aus, und klicken Sie dann auf **OK**.
 
-      ![Angeben des Pfads des Artefakts][ART04b]
+      ![Angeben des Artefaktpfads][ART04b]
 
-   c. Klicken Sie auf die Auslassungspunkte **...**, um die Hauptklasse anzugeben.
+   c. Klicken Sie auf die Auslassungspunkte (**...**), um die Hauptklasse zu suchen.
 
       ![Suchen der Hauptklasse][ART04c]
 
@@ -155,10 +154,9 @@ Um Ihre Spring Boot-App zu veröffentlichen, müssen Sie ein bereitstellungsfäh
 
 1. Klicken Sie auf **OK**.
 
-   ![Dialogfeld „Eigenschaften des Artefakts“ schließen][ART05]
+   ![Schließen des Dialogfelds mit der Projektstruktur][ART05]
 
 > [!NOTE]
->
 > Weitere Informationen zum Erstellen von Artefakten in IntelliJ finden Sie auf der JetBrains-Website unter [Konfigurieren von Artefakten].
 >
 
@@ -166,31 +164,31 @@ Um Ihre Spring Boot-App zu veröffentlichen, müssen Sie ein bereitstellungsfäh
 
 1. Klicken Sie auf **Erstellen** und anschließend auf **Artefakte**.
 
-   ![Menü „Artefakt erstellen“][BU04]
+   ![Befehl zum Erstellen von Artefakten][BU04]
 
 1. Klicken Sie auf **Erstellen**, wenn das Kontextmenü **Build Artifact** (Artefakt erstellen) angezeigt wird.
 
-   ![Kontextmenü „Artefakt erstellen“][BU05]
+   ![Kontextmenü für die Artefakterstellung][BU05]
 
-1. IntelliJ sollte das vollständige Artefakt für Ihre Spring Boot-App im Toolfenster „Projekt“ anzeigen.
+IntelliJ zeigt das vollständige Artefakt für Ihre Spring Boot-App im Projekt-Toolfenster an.
 
    ![Erstelltes Artefakt][BU06]
 
-## <a name="publishing-your-web-app-to-azure-using-a-docker-container"></a>Veröffentlichen Ihrer Web-App in Azure mithilfe eines Docker-Containers
+## <a name="publish-your-web-app-to-azure-by-using-a-docker-container"></a>Veröffentlichen Ihrer Web-App in Azure mithilfe eines Docker-Containers
 
-1. Falls noch nicht geschehen, melden Sie sich beim Azure-Konto gemäß den Anweisungen im Artikel [Anleitung zur Anmeldung für das Azure-Toolkit für IntelliJ][Azure Sign In for IntelliJ] an.
+1. Melden Sie sich gemäß der [Anleitung zur Anmeldung für das Azure-Toolkit für IntelliJ][Azure Sign In for IntelliJ] bei Ihrem Azure-Konto an, sofern noch nicht geschehen.
 
 1. Klicken Sie im Toolfenster „Project Explorer“ mit der rechten Maustaste auf das Projekt, und wählen Sie dann **Azure** > **Publish as Docker Container** (Als Docker-Container veröffentlichen) aus.
 
-   ![Als Docker-Container veröffentlichen][PU01]
+   ![Befehl zum Veröffentlichen als Docker-Container][PU01]
 
-1. Wenn das Dialogfeld **Deploy Docker Container on Azure** (Bereitstellen des Docker-Containers in Azure) angezeigt wird, werden alle vorhandenen Docker-Hosts angezeigt. Wenn Sie in einem vorhandenen Host bereitstellen möchten, fahren Sie mit Schritt 4 fort. Gehen Sie andernfalls folgendermaßen vor, um einen neuen Host zu erstellen:
+1. Wenn das Dialogfeld **Deploy Docker Container on Azure** (Bereitstellen des Docker-Containers in Azure) erscheint, werden alle vorhandenen Docker-Hosts angezeigt. Wenn Sie in einem vorhandenen Host bereitstellen möchten, fahren Sie mit Schritt 4 fort. Führen Sie andernfalls die folgenden Schritte aus, um einen Host zu erstellen:
 
-   a. Klicken Sie auf das grüne Plussymbol („**+**“).
+   a. Klicken Sie auf das grüne Plussymbol (**+**).
 
       ![Hinzufügen eines neuen Docker-Hosts][PU02]
 
-   b. Wenn das Dialogfeld **Erstellen eines Docker-Hosts** angezeigt wird, können Sie wahlweise die Standardeinstellungen übernehmen oder beliebige benutzerdefinierte Einstellungen für den neuen Docker-Host angeben. (Eine ausführliche Beschreibung der verschiedenen Einstellungen finden Sie im Artikel [Veröffentlichen einer Web-App als Docker-Container mit dem Azure-Toolkit für IntelliJ][Publish Container with Azure Toolkit].) Klicken Sie auf **Weiter**, nachdem Sie die gewünschten Einstellungen eingegeben haben.
+   b. Wenn das Dialogfeld **Create Docker Host** (Docker-Host erstellen) angezeigt wird, können Sie wahlweise die Standardeinstellungen übernehmen oder beliebige benutzerdefinierte Einstellungen für den neuen Docker-Host angeben. (Ausführliche Beschreibungen der verschiedenen Einstellungen finden Sie unter [Veröffentlichen einer Web-App als Docker-Container mit dem Azure-Toolkit für IntelliJ][Publish Container with Azure Toolkit].) Klicken Sie auf **Weiter**, nachdem Sie die gewünschten Einstellungen eingegeben haben.
 
       ![Angeben von Docker-Hostoptionen][PU03a]
 
@@ -198,21 +196,21 @@ Um Ihre Spring Boot-App zu veröffentlichen, müssen Sie ein bereitstellungsfäh
 
       ![Angeben von Docker-Hostanmeldeinformationen][PU03b]
 
-1. Markieren Sie Ihren Docker-Host, und klicken Sie dann auf **Weiter**.
+1. Wählen Sie Ihren Docker-Host aus, und klicken Sie dann auf **Weiter**.
 
-   ![Auswählen des Docker-Hosts, der verwendet werden soll][PU04]
+   ![Auswählen des zu verwendenden Docker-Hosts][PU04]
 
-1. Auf der letzten Seite des Dialogfelds **Deploy Docker Container on Azure** (Docker-Container in Azure bereitstellen) müssen Sie die folgenden Optionen angeben:
+1. Geben Sie auf der letzten Seite des Dialogfelds **Deploy Docker Container on Azure** (Bereitstellen des Docker-Containers in Azure) folgende Optionen an:
 
-   a. Sie können wahlweise einen benutzerdefinierten Namen für den Container angeben, der Ihren Docker-Container hostet, oder Sie können die Standardeinstellung übernehmen.
+   a. Sie können entweder einen benutzerdefinierten Namen für den Container angeben, der Ihren Docker-Container hostet, oder die Standardeinstellung übernehmen.
 
-   b. Sie müssen die TCP-Ports für Ihren Docker-Host mithilfe der folgenden Syntax eingeben: „*[externer Port]*:*[interner Port]*“. „80:8080“ gibt z.B. einen externen Port „80“ und den internen Spring Boot-Standardport „8080“ an.
+   b. Geben Sie die TCP-Ports für Ihren Docker-Host mit folgender Syntax ein: *[externer Port]*:*[interner Port]*. **80:8080** gibt beispielsweise den externen Port 80 und den internen Spring Boot-Standardport 8080 an.
    
-      Wenn Sie den internen Port angepasst haben (z.B. durch Bearbeiten der Datei *application.yml*), müssen Sie die Portnummer für das richtige Routing in Azure angeben.
+      Wenn Sie den internen Port angepasst haben (beispielsweise durch Bearbeiten der Datei „application.yml“), müssen Sie diese Portnummer angeben, damit das Routing in Azure ordnungsgemäß funktioniert.
 
-   c. Nachdem Sie diese Optionen konfiguriert haben, klicken Sie auf **Fertig stellen**.
+   c. Klicken Sie nach dem Konfigurieren dieser Optionen auf **Fertig stellen**.
 
-   ![Bereitstellen des Docker-Containers in Azure][PU05]
+   ![Bereitstellen eines Docker-Containers in Azure][PU05]
 
 1. Nachdem die Veröffentlichung des Azure-Toolkits abgeschlossen ist, zeigt das Azure-Aktivitätsprotokoll den Status **Veröffentlicht** an.
 
@@ -222,18 +220,18 @@ Um Ihre Spring Boot-App zu veröffentlichen, müssen Sie ein bereitstellungsfäh
 
 [!INCLUDE [azure-toolkit-additional-resources](../includes/azure-toolkit-additional-resources.md)]
 
-Auf der JetBrain-Website finden Sie unter [Creating Spring Boot Projects (Erstellen von Spring Boot-Projekten)](https://www.jetbrains.com/help/idea/creating-spring-boot-projects.html) Informationen zu weiteren Methoden zum Erstellen von Spring Boot-Anwendungen mithilfe von IntelliJ.
+Informationen zu weiteren Spring Boot-App-Erstellungsmethoden mit IntelliJ finden Sie auf der JetBrains-Website unter [Creating Spring Boot Projects](https://www.jetbrains.com/help/idea/creating-spring-boot-projects.html) (Erstellen von Spring Boot-Projekten).
 
 <!-- URL List -->
 
 [Azure Management Portal]: http://go.microsoft.com/fwlink/?LinkID=512959
 [Azure Sign In for IntelliJ]: ./azure-toolkit-for-intellij-sign-in-instructions.md
 [Konfigurieren von Artefakten]: https://www.jetbrains.com/help/idea/2016.1/configuring-artifacts.html
-[Deploy Spring Boot on Linux in ACS]: ./container-service/container-service-deploy-spring-boot-app-on-linux.md
+[Deploy Spring Boot on Linux in ACS]:container-service/kubernetes/container-service-deploy-spring-boot-app-on-linux.md
 [Docker]: https://www.docker.com/
 [Publish Container with Azure Toolkit]: ./azure-toolkit-for-intellij-publish-as-docker-container.md
 [Spring Boot]: http://projects.spring.io/spring-boot/
-[Spring-Framework]: https://spring.io/
+[Spring Framework]: https://spring.io/
 
 <!-- IMG List -->
 

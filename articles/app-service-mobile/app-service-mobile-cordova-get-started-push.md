@@ -3,9 +3,9 @@ title: "Hinzufügen von Pushbenachrichtigungen zur Apache Cordova-App mit Azure 
 description: "Erfahren Sie mehr über die Verwendung von Azure Mobile Apps zum Senden von Pushbenachrichtigungen an Ihre Apache Cordova-App."
 services: app-service\mobile
 documentationcenter: javascript
-manager: adrianha
+manager: syntaxc4
 editor: 
-author: ysxu
+author: ggailey777
 ms.assetid: 92c596a9-875c-4840-b0e1-69198817576f
 ms.service: app-service-mobile
 ms.workload: mobile
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: mobile-html
 ms.devlang: javascript
 ms.topic: article
 ms.date: 10/30/2016
-ms.author: yuaxu
-translationtype: Human Translation
-ms.sourcegitcommit: 47063276d7bb6bb3b3aac0cca4290dfbea5488f7
-ms.openlocfilehash: 99b23de962f7ba338fcf3f9b2e96d58c3dcbe7bc
-ms.lasthandoff: 12/01/2016
-
+ms.author: glenga
+ms.translationtype: HT
+ms.sourcegitcommit: 0425da20f3f0abcfa3ed5c04cec32184210546bb
+ms.openlocfilehash: dc3cab0a6a8b4a56ab0fba1a02e5bba9d0ed1b1f
+ms.contentlocale: de-de
+ms.lasthandoff: 07/20/2017
 
 ---
 # <a name="add-push-notifications-to-your-apache-cordova-app"></a>Hinzufügen von Pushbenachrichtigungen zu Ihrer Apache Cordova-App
@@ -156,7 +156,7 @@ Zu Beginn fügen wir etwas Code für Android ein. Die App kann später für die 
 
         pushRegistration.on('error', handleError);
         }
-3. (Android) Ersetzen Sie im vorherigen Code `Your_Project_ID` durch die numerische Projekt-ID für Ihre App aus der  [Google Developers Console][18].
+3. (Android) Ersetzen Sie im vorherigen Code `Your_Project_ID` durch die numerische Projekt-ID für Ihre App aus der [Google Developers Console][18].
 
 ## <a name="optional-configure-and-run-the-app-on-android"></a>(Optional) Konfigurieren und Ausführen der App unter Android
 Arbeiten Sie diesen Abschnitt durch, um Pushbenachrichtigungen für Android zu aktivieren.
@@ -187,7 +187,7 @@ Da dieses Tutorial ursprünglich für die Google Android-Plattform bestimmt war,
 #### <a name="configure-device"></a>Konfigurieren Ihres Android-Geräts für USB-Debugging
 Bevor Sie Ihre Anwendung auf Ihrem Android-Gerät bereitstellen können, müssen Sie das USB-Debugging aktivieren.  Führen Sie die folgenden Schritte auf Ihrem Android-Telefon aus:
 
-1. Navigieren Sie zu **Einstellungen** > **Geräteinformationen**, und tippen Sie dann mehrfach auf die **Build-Nummer**, bis der Entwicklermodus aktiviert wird (ungefähr siebenmal).
+1. Navigieren Sie zu **Einstellungen** > **Geräteinformationen**, und tippen Sie dann mehrfach auf die **Buildnummer**, bis der Entwicklermodus aktiviert wird (ungefähr siebenmal).
 2. Wechseln Sie zurück zu **Einstellungen** > **Entwickleroptionen**, und aktivieren Sie dort **USB-Debugging**. Schließen Sie dann Ihr Android-Telefon mit einem USB-Kabel an den Entwicklungs-PC an.
 
 Wir haben diese Vorgehensweise mit einem Google Nexus 5X-Gerät unter Android 6.0 (Marshmallow) getestet.  Das Verfahren ist jedoch für alle modernen Android-Versionen gleich.
@@ -266,12 +266,11 @@ Wenn die App-ID, die Sie unter Ihrem Apple-Entwicklerkonto erstellt haben, berei
 5. Erstellen Sie das Projekt neu.
 
 ##### <a name="test-push-notifications-in-your-ios-app"></a>Testen von Pushbenachrichtigungen in der iOS-App
-1. Vergewissern Sie sich in Visual Studio, dass **iOS** als Bereitstellungsziel ausgewählt ist, und wählen Sie dann die Option **Gerät**
-    für die Ausführung auf Ihrem verbundenen iOS-Gerät.
+1. Stellen Sie in Visual Studio sicher, dass **iOS** als Bereitstellungsziel ausgewählt ist, und wählen Sie dann die Option **Gerät** für die Ausführung auf Ihrem verbundenen iOS-Gerät.
 
     Die Ausführung ist auf einem iOS-Gerät möglich, das per iTunes mit dem PC verbunden ist. Der iOS-Simulator unterstützt keine Pushbenachrichtigungen.
 
-2. Klicken Sie in Visual Studio auf die Schaltfläche **Ausführen**, oder drücken Sie** **F5, um das Projekt zu erstellen und die App auf einem iOS-Gerät zu starten. Klicken Sie dann auf **OK**, um Pushbenachrichtigungen zu akzeptieren.
+2. Klicken Sie in Visual Studio auf die Schaltfläche **Ausführen**, oder drücken Sie**** F5, um das Projekt zu erstellen und die App auf einem iOS-Gerät zu starten. Klicken Sie dann auf **OK**, um Pushbenachrichtigungen zu akzeptieren.
 
    > [!NOTE]
    > Bei der erstmaligen Ausführung fordert die App eine Bestätigung für Pushbenachrichtigungen an.
