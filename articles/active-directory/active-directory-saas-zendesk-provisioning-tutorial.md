@@ -76,7 +76,7 @@ Dieser Abschnitt führt Sie durch das Herstellen einer Verbindung von Azure AD m
 
     ![ZenDesk-Bereitstellung](./media/active-directory-saas-zendesk-provisioning-tutorial/ZenDesk1.png)
 
-5. Geben Sie im Abschnitt **Admin Credentials** (Administratoranmeldeinformationen) den von Ihrem ZenDesk-Konto generierten Administratorbenutzernamen, den generierten Tokenschlüssel und die erstellte Domäne ****ein. (Sie finden das Token in Ihrem Konto: **Admin** > **API** > **Einstellungen**). 
+5. Geben Sie im Abschnitt **Admin Credentials** (Administratoranmeldeinformationen) den von Ihrem ZenDesk-Konto generierten **Administratorbenutzernamen, den generierten Tokenschlüssel und die erstellte Domäne** ein. (Sie finden das Token in Ihrem Konto: **Admin** > **API** > **Einstellungen**). 
 
     ![ZenDesk-Bereitstellung](./media/active-directory-saas-zendesk-provisioning-tutorial/ZenDesk2.png)
 

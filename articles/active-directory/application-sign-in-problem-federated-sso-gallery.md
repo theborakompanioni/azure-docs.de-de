@@ -194,11 +194,11 @@ Fügen Sie der Azure AD-Konfiguration den Wert des eindeutigen Bezeichners hinzu
 
 7.  Nachdem die Anwendung geladen wurde, klicken Sie im linken Navigationsmenü der Anwendung auf **Einmaliges Anmelden**.
 
-8.  Überprüfen Sie unter dem Abschnitt **Domäne und URL** die**** erweiterten URL-Einstellungen.
+8.  Überprüfen Sie unter dem Abschnitt **Domäne und URL** die **erweiterten URL-Einstellungen**.
 
 9.  Geben Sie im Textfeld **Bezeichner** einen eindeutigen Bezeichner für die Anwendung ein.
 
-10. Speichern**** Sie die Konfiguration.
+10. **Speichern** Sie die Konfiguration.
 
 
 **Lösungsoption 2**
