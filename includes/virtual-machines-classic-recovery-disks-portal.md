@@ -57,5 +57,5 @@ Verwenden Sie das [klassische Azure-Portal](https://manage.windowsazure.com), um
 
 1. Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com) an.
 2. Wählen Sie am unteren Rand des Portals **Neu** > **Compute** > **Virtueller Computer** > **Aus Katalog** aus.
-3. Wählen Sie im Abschnitt **Image auswählen** die Option für Ihre eigenen Datenträger**** und anschließend die ursprüngliche virtuelle Festplatte aus. Überprüfen Sie den Standort. Hierbei handelt es sich um die Region, in der der virtuelle Computer bereitgestellt werden muss. Wählen Sie „Weiter“ aus.
+3. Wählen Sie im Abschnitt **Image auswählen** die Option für Ihre **eigenen Datenträger** und anschließend die ursprüngliche virtuelle Festplatte aus. Überprüfen Sie den Standort. Hierbei handelt es sich um die Region, in der der virtuelle Computer bereitgestellt werden muss. Wählen Sie „Weiter“ aus.
 4. Geben Sie im Abschnitt **Konfiguration des virtuellen Computers** den Namen des virtuellen Computers ein, und wählen Sie eine Größe für den virtuellen Computer aus.
