@@ -9,6 +9,7 @@
 # Erste Schritte
 ## [Registrieren für Azure AD Premium](active-directory-get-started-premium.md)
 ## [Hinzufügen eines benutzerdefinierten Domänennamens](add-custom-domain.md)
+## [Konfigurieren des Unternehmensbrandings](customize-branding.md)
 ## [Konfigurieren der Self-Service-Kennwortzurücksetzung](active-directory-passwords-getting-started.md)
 ## Verwalten der Azure AD-Lizenzierung
 ### [Azure-Portal](active-directory-licensing-get-started-azure-portal.md)
@@ -142,6 +143,7 @@
 
 
 ## Verwalten von Geräten
+### [Einführung](device-management-introduction.md)
 ### [Registrieren von Geräten](active-directory-device-registration-overview.md)
 #### [Einrichtung](active-directory-conditional-access-automatic-device-registration-setup.md)
 #### [Lokale Bereitstellung](active-directory-device-registration-on-premises-setup.md)
@@ -241,10 +243,6 @@
 #### Verwalten von Domänennamen
 ##### [Azure-Portal](active-directory-domains-manage-azure-portal.md)
 ##### [Klassisches Portal](active-directory-add-manage-domain-names.md)
-### Anpassen der Anmeldeseite
-#### [Azure-Portal](active-directory-branding-custom-signon-azure-portal.md)
-#### [Sprachspezifisch](active-directory-branding-localize-azure-portal.md)
-#### [Klassisches Portal](active-directory-add-company-branding.md)
 ### [Verwalten Ihres Verzeichnisses](active-directory-administer.md)
 ### [Mehrere Verzeichnisse](active-directory-licensing-directory-independence.md)
 ### [O365-Verzeichnisse](active-directory-manage-o365-subscription.md)

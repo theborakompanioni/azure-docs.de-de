@@ -33,6 +33,7 @@
 # Anleitungen
 ## [Anwendungsregistrierung](active-directory-integrating-applications.md)
 ## [Mehrinstanzenfähige Apps](active-directory-devhowto-multi-tenant-overview.md)
+## [Bedingter Zugriff](active-directory-conditional-access-developer.md)
 ## OAuth und OpenID Connect
 ### [OpenID Connect-Protokoll](active-directory-protocols-openid-connect-code.md)
 ### [OAuth 2.0-Autorisierungscodeberechtigung](active-directory-protocols-oauth-code.md)

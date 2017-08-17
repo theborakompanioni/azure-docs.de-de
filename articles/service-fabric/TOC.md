@@ -133,11 +133,12 @@
 ### Erstellen eines Containerdiensts
 #### [Erstellen einer Windows-Containeranwendung](service-fabric-get-started-containers.md)
 #### [Erstellen einer Linux-Containeranwendung](service-fabric-get-started-containers-linux.md)
-#### [Bereitstellen von Linux-Containern](service-fabric-deploy-container-linux.md)
+#### [Containersicherheit](service-fabric-securing-containers.md)
 #### [Docker Compose (Vorschau)](service-fabric-docker-compose.md)
 #### [Ressourcenkontrolle für Container und Dienste](service-fabric-resource-governance.md)
 #### [Volume- und Protokollierungstreiber](service-fabric-containers-volume-logging-drivers.md)
 #### [Dienste innerhalb von Containern](service-fabric-services-inside-containers.md)
+#### [Containernetzwerkmodi](service-fabric-networking-modes.md)
 
 ### Erstellen eines Reliable Services-Diensts
 #### [Übersicht](service-fabric-reliable-services-introduction.md)
