@@ -7,6 +7,7 @@
 ## [URL-Routing](application-gateway-url-route-overview.md)
 ## [Multi-Site](application-gateway-multi-site-overview.md)
 ## [End-to-End-SSL](application-gateway-backend-ssl.md)
+## [SSL-Richtlinie](application-gateway-ssl-policy-overview.md)
 ## [Umleitung](application-gateway-redirect-overview.md)
 ## [Unterstützung mehrerer Mandanten](application-gateway-web-app-overview.md)
 ## [WebSocket](application-gateway-websocket.md)
@@ -31,12 +32,13 @@
 ## Anpassen von Web Application Firewall-Regeln
 ### [Portal](application-gateway-customize-waf-rules-portal.md)
 ### [Azure CLI 2.0](application-gateway-customize-waf-rules-cli.md)
-## Konfigurieren der SSL-Auslagerung
+## Konfigurieren von SSL
 ### [Portal](application-gateway-ssl-portal.md)
 ### [PowerShell](application-gateway-ssl-arm.md)
 ### [PowerShell (klassisch)](application-gateway-ssl.md)
 ### [Azure CLI 2.0](application-gateway-ssl.md)
-### [Richtlinie und End-to-End](application-gateway-end-to-end-ssl-powershell.md)
+### [End-to-End](application-gateway-end-to-end-ssl-powershell.md)
+### [SSL-Richtlinie](application-gateway-configure-ssl-policy-powershell.md)
 ## Konfigurieren von Routing auf URL-Pfadbasis
 ### [Portal](application-gateway-create-url-route-portal.md)
 ### [PowerShell](application-gateway-create-url-route-arm-ps.md)

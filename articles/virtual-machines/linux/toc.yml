@@ -31,9 +31,9 @@
       href: tutorial-load-balancer.md
     - name: '8: Verwalten von Netzwerken'
       href: tutorial-virtual-network.md
-    - name: '9: Sichern virtueller Computer'
+    - name: 9 – Sichern virtueller Computer
       href: tutorial-backup-vms.md
-    - name: '10: Überwachen virtueller Computer'
+    - name: 10 – Überwachen virtueller Computer
       href: tutorial-monitoring.md
     - name: '11: Verwalten der Sicherheit virtueller Computer'
       href: tutorial-azure-security.md
@@ -59,8 +59,6 @@
       href: azure-vm-network-overview.md
     - name: VM-Skalierungsgruppen
       href: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md
-    - name: Instanzmetadatendienst
-      href: ../virtual-machines-instancemetadataservice-overview.md
     - name: Container
       href: containers.md
     - name: Ressourcen-Manager
@@ -167,6 +165,10 @@
               href: agent-user-guide.md
             - name: Agent-Aktualisierung
               href: update-agent.md
+        - name: Geplante Ereignisse
+          href: scheduled-events.md
+        - name: Überwachen von Metadaten
+          href: instance-metadata-service.md
     - name: Verwenden von Images
       items:
         - name: Suchen und Verwenden von Images

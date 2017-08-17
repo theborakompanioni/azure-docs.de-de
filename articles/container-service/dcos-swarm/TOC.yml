@@ -7,6 +7,8 @@
 - name: Schnellstarts
   expanded: true
   items:
+    - name: Docker Swarm – Linux
+      href: container-service-swarm-walkthrough.md
     - name: DC/OS – Linux
       href: container-service-dcos-quickstart.md
 - name: Lernprogramme
@@ -29,7 +31,7 @@
       href: container-service-connect.md
     - name: Skalieren eines ACS-Clusters
       href: container-service-scale.md
-    - name: Verwalten mit DC/OS
+    - name: DC/OS
       items:
         - name: Containerverwaltung – DC/OS-Benutzeroberfläche
           href: container-service-mesos-marathon-ui.md
@@ -55,8 +57,10 @@
               href: container-service-monitoring-sysdig.md
             - name: Überwachen mit Dynatrace
               href: container-service-monitoring-dynatrace.md
-    - name: Verwalten mit Docker Swarm
+    - name: Docker Swarm
       items:
+        - name: 'Swarm-Modus: Schnellstart'
+          href: container-service-swarm-mode-walkthrough.md
         - name: Docker und Docker Compose
           href: container-service-docker-swarm.md
         - name: CD/CI mit Docker Swarm und VSTS
