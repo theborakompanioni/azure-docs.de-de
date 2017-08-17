@@ -57,7 +57,7 @@ In Media Services laden Sie Ihre digitalen Dateien in ein Medienobjekt hoch. Das
    
     Der Upload beginnt, und der Status wird unter dem Dateinamen angezeigt.  
 
-Nach Abschluss des Uploads sehen Sie, dass das neue Objekt im Fenster mit den Medienobjekten **** aufgeführt ist. 
+Nach Abschluss des Uploads sehen Sie, dass das neue Objekt im Fenster mit den **Medienobjekten** aufgeführt ist. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Sie können nun Ihre hochgeladenen Medienobjekte codieren. Weitere Informationen finden Sie unter [Codieren von Medienobjekten](media-services-portal-encode.md).
