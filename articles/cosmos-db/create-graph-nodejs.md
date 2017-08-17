@@ -141,7 +141,7 @@ module.exports = config;
 
 Sie können nun zum Daten-Explorer im Azure-Portal zurückkehren, um mit den neuen Graph-Daten zu arbeiten und um diese anzuzeigen, abzufragen und zu ändern.
 
-Im Daten-Explorer wird die neue Datenbank im Diagrammbereich**** angezeigt. Erweitern Sie die Datenbank und die Sammlung, und klicken Sie anschließend auf **Graph**.
+Im Daten-Explorer wird die neue Datenbank im **Diagrammbereich** angezeigt. Erweitern Sie die Datenbank und die Sammlung, und klicken Sie anschließend auf **Graph**.
 
 Die von der Beispiel-App generierten Daten werden im nächsten Bereich auf der Registerkarte **Graph** angezeigt, wenn Sie auf **Filter anwenden** klicken.
 
