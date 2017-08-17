@@ -2,14 +2,14 @@
 1. [Installieren Sie Git][install-git]. Unter Windows muss die ausführbare Git-Datei zu Ihrer PATH-Umgebungsvariablen hinzugefügt werden. 
 2. Erstellen Sie im Stammverzeichnis Ihres Projekts eine Datei namens **composer.json** , und fügen Sie zu dieser den folgenden Code hinzu:
    
-    ```
+    ```json
     {
       "require": {
         "microsoft/windowsazure": "^0.4"
       }
     }
     ```
-3. Laden Sie **[composer.phar][composer-phar]** in Ihr Projektverzeichnis herunter.
+3. Laden Sie **[composer.phar][composer-phar]** in das Stammverzeichnis Ihres Projekts herunter.
 4. Öffnen Sie eine Eingabeaufforderung und führen Sie in Ihrem Projektverzeichnis folgenden Befehl aus
    
     ```

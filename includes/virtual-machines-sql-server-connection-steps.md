@@ -28,19 +28,8 @@
 Öffnen Sie gegebenenfalls zusätzliche Ports für andere Komponenten. Weitere Informationen finden Sie unter [Konfigurieren der Windows-Firewall für den SQL Server-Zugriff](http://msdn.microsoft.com/library/cc646023.aspx).
 
 ### <a name="configure-sql-server-to-listen-on-the-tcp-protocol"></a>Konfigurieren von SQL Server für das Lauschen des TCP-Protokolls
-1. Geben Sie während der Verbindung mit dem virtuellen Computer auf der Startseite **SQL Server-Konfigurations-Manager** ein, und drücken Sie die EINGABETASTE.
-   
-    ![SSCM öffnen](./media/virtual-machines-sql-server-connection-steps/9Click-SSCM.png)
-2. Erweitern Sie im SQL Server-Konfigurationsmanager im Konsolenbereich **SQL Server-Netzwerkkonfiguration**.
-3. Klicken Sie im Konsolenbereich auf **Protokolle für MSSQLSERVER** (der Standardinstanzenname). Klicken Sie im Detailbereich mit der rechten Maustaste auf **TCP**, und klicken Sie auf **Aktivieren**, wenn die Option noch nicht aktiviert ist.
-   
-    ![TCP aktivieren](./media/virtual-machines-sql-server-connection-steps/10Enable-TCP.png)
-4. Klicken Sie im linken Bereich auf **SQL Server-Dienste**. Klicken Sie im Detailbereich mit der rechten Maustaste auf **SQL Server (*Instanzenname*)** (die Standardinstanz ist **SQL Server (MSSQLSERVER)**), und klicken Sie dann auf **Neu starten**, um die Instanz von SQL Server zu stoppen und neu zu starten.
-   
-    ![Datenbankmodul neu starten](./media/virtual-machines-sql-server-connection-steps/11Restart.png)
-5. Schließen Sie den SQL Server-Konfigurations-Manager.
 
-Weitere Informationen zur Aktivierung von Protokollen für SQL Server-Datenbankmodule finden Sie unter [Aktivieren oder Deaktivieren eines Servernetzwerkprotokolls](http://msdn.microsoft.com/library/ms191294.aspx).
+[!INCLUDE [Enable TCP](virtual-machines-sql-server-connection-tcp-protocol.md)]
 
 ### <a name="configure-sql-server-for-mixed-mode-authentication"></a>Konfigurieren von SQL Server für die Authentifizierung mit gemischtem Modus
 Das SQL Server-Datenbankmodul kann ohne Domänenumgebung keine Windows-Authentifizierung nutzen. Um eine Verbindung zum Datenbankmodul von einem anderen Computer aus herzustellen, konfigurieren Sie SQL Server für die Authentifizierung mit gemischtem Modus. Die Authentifizierung mit gemischtem Modus ermöglicht sowohl die SQL Server-Authentifizierung als auch die Windows-Authentifizierung.

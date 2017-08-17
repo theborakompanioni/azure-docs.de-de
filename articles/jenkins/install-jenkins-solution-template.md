@@ -16,10 +16,10 @@ ms.date: 6/7/2017
 ms.author: mlearned
 ms.custom: Jenkins
 ms.translationtype: HT
-ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
-ms.openlocfilehash: f892ec7bd61124f7958a50ebdfb49c7310d4ee18
+ms.sourcegitcommit: 80fd9ee9b9de5c7547b9f840ac78a60d52153a5a
+ms.openlocfilehash: 06d6d305eb9711768dc62a04726359e6280d1b69
 ms.contentlocale: de-de
-ms.lasthandoff: 08/01/2017
+ms.lasthandoff: 08/14/2017
 
 ---
 
@@ -48,7 +48,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Mit Azure-Schnellstartvorlagen können Sie schnell und zuverlässig komplexe Technologien in Azure bereitstellen.  Mit dem Azure Resource Manager können Sie Ihre Anwendungen mit einer [deklarativen Vorlage](https://azure.microsoft.com/en-us/resources/templates/?term=jenkins) bereitstellen. In einer Vorlage können Sie mehrere Dienste zusammen mit ihren Abhängigkeiten bereitstellen. Sie verwenden die gleiche Vorlage, um Ihre Anwendung während jeder Phase des Anwendungslebenszyklus wiederholt bereitzustellen.
 
-Unter [Pläne + Preise](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.jenkins?tab=PlansAndPrice) finden Sie Informationen zu dieser Vorlage und den Tarifoptionen.
+Unter [Pläne + Preise](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/azure-oss.jenkins?tab=Overview) finden Sie Informationen zu dieser Vorlage und den Tarifoptionen.
 
 Navigieren Sie zum [Marketplace-Image für Jenkins](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/azure-oss.jenkins?tab=Overview), und klicken Sie auf **JETZT ANFORDERN**.  
 

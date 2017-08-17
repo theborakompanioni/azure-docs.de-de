@@ -17,10 +17,10 @@ ms.date: 08/07/2017
 ms.author: joflore
 ms.custom: it-pro
 ms.translationtype: HT
-ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
-ms.openlocfilehash: c41a16a3c43064a094b0980bc1a8294b093c6130
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: 07c7f3ad066c735054cb339f6e09aa4d7d23f23a
 ms.contentlocale: de-de
-ms.lasthandoff: 08/08/2017
+ms.lasthandoff: 08/11/2017
 
 ---
 # <a name="quickstart-azure-ad-self-service-password-reset"></a>Schnellstart: Self-Service-Kennwortzurücksetzung in Azure AD
@@ -79,13 +79,7 @@ Um die lokale Identitätssynchronisierung mit Azure AD zu aktivieren, müssen Si
 
 Das Deaktivieren der Self-Service-Kennwortzurücksetzung ist einfach. Öffnen Sie Ihren Azure AD-Mandanten, und navigieren Sie zu **Kennwortzurücksetzung > Eigenschaften**, und wählen Sie unter **Self-Service-Kennwortzurücksetzung aktiviert** die Option **Keine**.
 
-## <a name="next-steps"></a>Nächste Schritte
-
-In diesem Schnellstart haben Sie gelernt, wie Sie die Self-Service-Kennwortzurücksetzung für Ihre Benutzer konfigurieren. Klicken Sie auf den Link unten zum Portal, um diese Schritte im Azure-Portal auszuführen.
-
-> [!div class="nextstepaction"]
-> [Aktivieren der Self-Service-Kennwortzurücksetzung](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/PasswordReset)
-
+### <a name="learn-more"></a>Weitere Informationen
 Die folgenden Links führen zu weiteren Informationen zur Kennwortzurücksetzung mit Azure AD:
 
 * [**Lizenzierung:**](active-directory-passwords-licensing.md) Konfigurieren Sie Ihre Azure AD-Lizenzierung.
@@ -97,4 +91,12 @@ Die folgenden Links führen zu weiteren Informationen zur Kennwortzurücksetzung
 * [**Ausführliche technische Informationen:**](active-directory-passwords-how-it-works.md) Steigen Sie tiefer ein, um zu verstehen, wie alles funktioniert.
 * [**Häufig gestellte Fragen (FAQ):**](active-directory-passwords-faq.md) Wie? Warum? Was? Wo? Wer? Wann? - Antworten auf Fragen, die Sie schon immer stellen wollten
 * [**Problembehandlung:**](active-directory-passwords-troubleshoot.md) Erfahren Sie, wie Sie häufig auftretende Probleme bei SSPR beheben.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+In diesem Schnellstart haben Sie gelernt, wie Sie die Self-Service-Kennwortzurücksetzung für Ihre Benutzer konfigurieren. Klicken Sie auf den Link unten zum Portal, um diese Schritte im Azure-Portal auszuführen.
+
+> [!div class="nextstepaction"]
+> [Aktivieren der Self-Service-Kennwortzurücksetzung](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/PasswordReset)
+
 

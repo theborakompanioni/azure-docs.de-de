@@ -16,11 +16,11 @@ ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.author: davidmu
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: 7ddd9244558479f1fc77c0a9f3d02d0d3b95ca9f
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: 4d8e3f1252bc71cbf4bbbd30a16897bf4a0444d7
 ms.contentlocale: de-de
-ms.lasthandoff: 05/31/2017
+ms.lasthandoff: 08/11/2017
 
 ---
 # <a name="overview-of-windows-virtual-machines-in-azure"></a>Übersicht über virtuelle Windows-Computer in Azure
@@ -38,7 +38,7 @@ Virtuelle Azure-Computer können auf vielfältige Weise genutzt werden. Hier ein
 Die Anzahl virtueller Computer, die von Ihrer Anwendung genutzt werden, kann zentral oder horizontal hochskaliert werden, um Ihren jeweiligen Anforderungen gerecht zu werden.
 
 ## <a name="what-do-i-need-to-think-about-before-creating-a-vm"></a>Was muss ich vor dem Erstellen eines virtuellen Computers berücksichtigen?
-Beim Einrichten einer Anwendungsinfrastruktur in Azure müssen immer zahlreiche [Designaspekte](infrastructure-virtual-machine-guidelines.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) berücksichtigt werden. Machen Sie sich daher zunächst Gedanken über Folgendes:
+Beim Einrichten einer Anwendungsinfrastruktur in Azure müssen immer zahlreiche [Designaspekte](/architecture/reference-architectures/virtual-machines-linux?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) berücksichtigt werden. Machen Sie sich daher zunächst Gedanken über Folgendes:
 
 * Die Namen Ihrer Anwendungsressourcen
 * Den Speicherort der Ressourcen
@@ -49,7 +49,7 @@ Beim Einrichten einer Anwendungsinfrastruktur in Azure müssen immer zahlreiche 
 * Die zugehörigen Ressourcen, die der virtuelle Computer benötigt
 
 ### <a name="naming"></a>Benennung
-Einem virtuellen Computer wird ein [Name](infrastructure-naming-guidelines.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) zugewiesen, und im Zusammenhang mit dem Betriebssystem wird ein Computername konfiguriert. Der Name eines virtuellen Computers kann bis zu 15 Zeichen lang sein.
+Einem virtuellen Computer wird ein [Name](/architecture/best-practices/naming-conventions#naming-rules-and-restrictions?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) zugewiesen, und im Zusammenhang mit dem Betriebssystem wird ein Computername konfiguriert. Der Name eines virtuellen Computers kann bis zu 15 Zeichen lang sein.
 
 Wenn Sie den Betriebssystem-Datenträger mithilfe von Azure erstellen, sind der Computername und der Name des virtuellen Computers identisch. Wenn Sie [ein eigenes Image hochladen und verwenden](upload-generalized-managed.md), das ein vorab konfiguriertes Betriebssystem enthält, und auf dessen Grundlage einen virtuellen Computer erstellen, können die Namen unterschiedlich sein. Beim Hochladen einer eigenen Imagedatei empfiehlt es sich, für den Computernamen im Betriebssystem und für den Namen des virtuellen Computers den gleichen Namen zu verwenden.
 
@@ -106,7 +106,7 @@ Die Ressourcen in der folgenden Tabelle werden vom virtuellen Computer verwendet
 | [Virtuelles Netzwerk](../../virtual-network/virtual-networks-overview.md) |Ja |Der virtuelle Computer muss einem virtuellen Netzwerk angehören. |
 | [Öffentliche IP-Adresse](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) |Nein |Für den Remotezugriff kann dem virtuellen Computer eine öffentliche IP-Adresse zugewiesen werden. |
 | [Netzwerkschnittstelle](../../virtual-network/virtual-network-network-interface.md) |Ja |Der virtuelle Computer benötigt die Netzwerkschnittstelle für die Kommunikation im Netzwerk. |
-| [Datenträger](attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |Nein |Der virtuelle Computer kann Datenträger enthalten, um die Speicherkapazität zu erhöhen. |
+| [Datenträger](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |Nein |Der virtuelle Computer kann Datenträger enthalten, um die Speicherkapazität zu erhöhen. |
 
 ## <a name="how-do-i-create-my-first-vm"></a>Wie erstelle ich meinen ersten virtuellen Computer?
 Ein virtueller Computer kann auf unterschiedliche Weise erstellt werden. Die Vorgehensweise hängt von Ihrer Umgebung ab. 
@@ -142,7 +142,7 @@ Verwenden Sie zum [Starten einer Remotedesktopsitzung](connect-logon.md?toc=%2fa
 ### <a name="manage-availability"></a>Verwalten der Verfügbarkeit
 Informieren Sie sich darüber, wie Sie eine [hohe Verfügbarkeit für Ihre Anwendung sicherstellen](manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Diese Konfiguration umfasst das Erstellen mehrerer virtueller Computer, um zu gewährleisten, dass mindestens einer davon aktiv ist.
 
-Damit Ihre Bereitstellung den Verfügbarkeitswert von 99,95 Prozent unserer VM-Vereinbarung zum Servicelevel erreicht, müssen Sie mindestens zwei virtuelle Computer bereitstellen, die Ihre Workload innerhalb einer [Verfügbarkeitsgruppe](infrastructure-availability-sets-guidelines.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) ausführen. So wird sichergestellt, dass Ihre virtuellen Computer auf mehrere Fehlerdomänen verteilt und auf Hosts mit unterschiedlichen Wartungsfenstern bereitgestellt werden. Die vollständige [Azure-SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_0/) erläutert die garantierte Verfügbarkeit von Azure insgesamt.
+Damit Ihre Bereitstellung den Verfügbarkeitswert von 99,95 Prozent unserer VM-Vereinbarung zum Servicelevel erreicht, müssen Sie mindestens zwei virtuelle Computer bereitstellen, die Ihre Workload innerhalb einer [Verfügbarkeitsgruppe](tutorial-availability-sets.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) ausführen. So wird sichergestellt, dass Ihre virtuellen Computer auf mehrere Fehlerdomänen verteilt und auf Hosts mit unterschiedlichen Wartungsfenstern bereitgestellt werden. Die vollständige [Azure-SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_0/) erläutert die garantierte Verfügbarkeit von Azure insgesamt.
 
 ### <a name="back-up-the-vm"></a>Sichern des virtuellen Computers
 Ein [Recovery Services-Tresor](../../backup/backup-introduction-to-azure-backup.md) dient zum Schutz von Daten und Assets in Azure Backup und Azure Site Recovery. Mit einem Recovery Services-Tresor können Sie [Sicherungen für mit Resource Manager bereitgestellte virtuelle Computer mithilfe von PowerShell bereitstellen und verwalten](../../backup/backup-azure-vms-automation.md). 
@@ -150,6 +150,3 @@ Ein [Recovery Services-Tresor](../../backup/backup-introduction-to-azure-backup.
 ## <a name="next-steps"></a>Nächste Schritte
 * Wenn Sie virtuelle Linux-Computer verwenden möchten, sehen Sie sich [Azure und Linux](../linux/overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) an.
 * Weitere Informationen zu den Richtlinien im Zusammenhang mit der Einrichtung Ihrer Infrastruktur finden Sie unter [Exemplarische Vorgehensweise für eine Azure-Beispielinfrastruktur](infrastructure-example.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-* Bewährte Methoden für das Ausführen eines virtuellen Windows-Computers in Azure finden Sie [hier](guidance-compute-single-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-
-

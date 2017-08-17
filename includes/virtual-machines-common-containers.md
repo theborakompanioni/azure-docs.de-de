@@ -92,8 +92,7 @@ Diese Fähigkeiten werden dann oft zu Tools wie [Puppet](https://puppetlabs.com/
 Vor Kurzem wurde die REST-API der [Azure-Ressourcenverwaltung](../articles/resource-manager-deployment-model.md) veröffentlicht, und die PowerShell- und Azure-Befehlszeilenschnittstellen-Tools wurden aktualisiert, um die Verwendung zu erleichtern. Sie können komplette Anwendungstopologien bereitstellen, ändern oder erneut bereitstellen, indem Sie die [Azure Resource Manager-Vorlagen](../articles/resource-group-authoring-templates.md) mit der Azure-Ressourcenverwaltungs-API verwenden. Nutzen Sie hierbei Folgendes:
 
 * Das [Azure-Portal mit Vorlagen](https://github.com/Azure/azure-quickstart-templates) (Tipp: Verwenden Sie die Schaltfläche „DeployToAzure“.)
-* Die [Azure-Befehlszeilenschnittstelle](../articles/virtual-machines/linux/cli-deploy-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* Die [Azure PowerShell-Module](../articles/virtual-machines/linux/cli-deploy-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* Die [Azure-Befehlszeilenschnittstelle](../articles/virtual-machines/linux/create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ### <a name="deployment-and-management-of-entire-groups-of-azure-vms-and-containers"></a>Bereitstellung und Verwaltung vollständiger Gruppen von Azure-VMs und Containern
 Es gibt mehrere beliebte Systeme, die ganze Gruppen von virtuellen Computern bereitstellen und auf diesen Docker (oder andere Linux-Containerhostsysteme) als automatisierbare Gruppe installieren können. Direkte Links finden Sie weiter unten im Abschnitt [Container und Tools](#containers-and-vm-technologies). Es gibt eine Reihe von Systemen, die dies in größerem oder weniger großem Umfang können. Diese Liste ist nicht vollständig. Wie nützlich sie sind, hängt von Ihren Kenntnissen und Szenarios ab.
@@ -104,7 +103,7 @@ Außerdem können Sie auch [Data Center Operating System (DCOS) von Mesosphere](
 
 Darüber hinaus ist [kubernetes](https://azure.microsoft.com/blog/2014/08/28/hackathon-with-kubernetes-on-azure/) ein Open-Source-System für die VM- und Containergruppenverwaltung, das auf Grundlage der gewonnenen Erkenntnisse bei Google entstand. Möglich ist auch die [Verwendung von kubernetes mit weave, um Netzwerkunterstützung bereitzustellen](https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/getting-started-guides/coreos/azure/README.md#kubernetes-on-azure-with-coreos-and-weave).
 
-[Deis](http://deis.com/) ist eine Open-Source-"Plattform-as-a-Service" (PaaS), die das Bereitstellen und Verwalten von Anwendungen auf Ihren eigenen Servern erleichtert. Deis baut auf Docker und CoreOS auf, um eine einfache PaaS mit einem durch Heroku inspirierten Workflow bereitzustellen. Sie können in Azure auf einfache Weise [eine Azure-VM-Gruppe mit drei Knoten erstellen und Deis installieren](../articles/virtual-machines/linux/deis-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) und dann [eine Hello World-Go-Anwendung installieren](../articles/virtual-machines/linux/deis-cluster.md#deploy-and-scale-a-hello-world-application).
+[Deis](http://deis.io/overview/) ist eine Open-Source-"Plattform-as-a-Service" (PaaS), die das Bereitstellen und Verwalten von Anwendungen auf Ihren eigenen Servern erleichtert. Deis baut auf Docker und CoreOS auf, um eine einfache PaaS mit einem durch Heroku inspirierten Workflow bereitzustellen.
 
 [CoreOS](https://coreos.com/os/docs/latest/booting-on-azure.html), eine Linux-Distribution mit optimiertem Ressourcenbedarf, Docker-Unterstützung und einem eigenen Containersystem namens [rkt](https://github.com/coreos/rkt) verfügt ebenfalls über ein Verwaltungstool für Containergruppen namens [fleet](https://coreos.com/fleet/docs/latest/).
 
@@ -163,9 +162,6 @@ Konfiguration, Clusterverwaltung und Containerorchestrierung:
 
 * [Fleet in CoreOS](https://coreos.com/fleet/docs/latest/)
 * Deis
-
-  * [Erstellen einer Gruppe von virtuellen Azure-Computern mit drei Knoten, Installieren von Deis und Starten einer Hello World-Go-Anwendung](../articles/virtual-machines/linux/deis-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* kubernetes
 
   * [Vollständige Anleitung für die automatisierte Kubernetes- Clusterbereitstellung mit CoreOS und Weave](https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/getting-started-guides/coreos/azure/README.md#kubernetes-on-azure-with-coreos-and-weave)
   * [Kubernetes Visualizer](https://azure.microsoft.com/blog/2014/08/28/hackathon-with-kubernetes-on-azure/)

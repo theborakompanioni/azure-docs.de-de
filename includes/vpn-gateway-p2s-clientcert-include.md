@@ -7,7 +7,7 @@ Sie können mithilfe der folgenden Methoden Clientzertifikate generieren:
 - **Unternehmenszertifikat:**
 
   - Generieren Sie bei Verwendung einer Unternehmenszertifikatlösung ein Clientzertifikat mit dem gängigen Name-Wert-Format „name@yourdomain.com“ (anstatt des Formats „Domänenname\Benutzername“).
-  - Stellen Sie sicher, dass das Clientzertifikat auf der Zertifikatvorlage „Benutzer“ basiert, die in der Nutzungsliste als ersten Eintrag „Clientauthentifizierung“ enthält (anstatt „Smartcard-Anmeldung“ usw.). Sie können das Zertifikat überprüfen, indem Sie auf das Clientzertifikat doppelklicken und *Details > Erweiterte Schlüsselverwendung* anzeigen.
+  - Stellen Sie sicher, dass das Clientzertifikat auf der Zertifikatvorlage „Benutzer“ basiert, die in der Nutzungsliste als ersten Eintrag „Clientauthentifizierung“ enthält (anstatt „Smartcard-Anmeldung“ usw.). Sie können das Zertifikat überprüfen, indem Sie auf das Clientzertifikat doppelklicken und **Details > Erweiterte Schlüsselverwendung** anzeigen.
 
 - **Selbstsigniertes Stammzertifikat:** Führen Sie unbedingt die Schritte in einem der unten aufgeführten Artikel zu P2S-Zertifikaten aus. Andernfalls sind die erstellten Clientzertifikate nicht mit P2S-Verbindungen kompatibel, und an Clients wird beim Herstellen einer Verbindung ein Fehler zurückgegeben. Mit den Schritten in einem der folgenden Artikeln wird ein kompatibles Clientzertifikat generiert: 
 
