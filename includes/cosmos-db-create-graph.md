@@ -11,7 +11,7 @@ Sie können nun mithilfe des Daten-Explorer-Tools im Azure-Portal eine Diagrammd
     Diagramm-ID|sample-graph|Die ID Ihres neuen Diagramms. Für Diagrammnamen gelten dieselben Zeichenanforderungen wie für Datenbank-IDs.
     Speicherkapazität| 10 GB|Behalten Sie den Standardwert bei. Dies ist die Speicherkapazität der Datenbank.
     Durchsatz|400 RUs|Behalten Sie den Standardwert bei. Sie können den Durchsatz später zentral hochskalieren, wenn Sie Latenzen reduzieren möchten.
-    RU/Minute|Aus|Behalten Sie den Standardwert bei. Wenn Sie später Workloads mit Lastspitzen verarbeiten müssen, können Sie dann das Feature [RU/Minute](../articles/cosmos-db/request-units-per-minute.md) aktivieren.
+    RU/Minute|Aus|Behalten Sie den Standardwert bei. 
     Partitionsschlüssel|/userid|Ein Partitionsschlüssel, der Daten gleichmäßig auf alle Partitionen verteilt. Die Auswahl des richtigen Partitionsschlüssels ist wichtig für die Erstellung eines leistungsfähigen Diagramms. Weitere Informationen finden Sie unter [Entwerfen für Partitionierung](../articles/cosmos-db/partition-data.md#designing-for-partitioning).
 
 3. Wenn das Formular ausgefüllt ist, klicken Sie auf **OK**.

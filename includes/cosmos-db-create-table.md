@@ -10,6 +10,6 @@ Sie können jetzt den Daten-Explorer verwenden, um eine Tabelle zu erstellen und
     Tabellen-ID|sample-table|Die ID Ihrer neuen Tabelle. Für Tabellennamen gelten dieselben Zeichenanforderungen wie für Datenbank-IDs. Datenbanknamen müssen zwischen 1 und 255 Zeichen lang sein und dürfen weder `/ \ # ?` noch nachgestellte Leerzeichen enthalten.
     Speicherkapazität| 10 GB|Behalten Sie den Standardwert bei. Dies ist die Speicherkapazität der Datenbank.
     Durchsatz|400 RUs|Behalten Sie den Standardwert bei. Sie können den [Durchsatz](../articles/cosmos-db/request-units.md) später zentral hochskalieren, wenn Sie Latenzen reduzieren möchten.
-    RU/Minute|Aus|Verwenden Sie den Standardwert. Sie können das Feature [RU/Minute](../articles/cosmos-db/request-units-per-minute.md) später aktivieren, wenn Sie Workloads mit Lastspitzen verarbeiten müssen.
+    RU/Minute|Aus|Verwenden Sie den Standardwert.
 
 3. Wenn das Formular ausgefüllt ist, klicken Sie auf **OK**.
