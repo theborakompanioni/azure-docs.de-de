@@ -41,7 +41,7 @@ Für diese Vorschau können Sie auf das Feature über die OMS-Suchoption sowie �
     ![Bewertung der Websicherheitsbaseline der Sicherheits- und Überwachungslösung von OMS](./media/oms-security-web-baseline/oms-security-web-baseline-fig5.png)
 
 3. Der linke Bereich zeigt die Anzahl von Webservern relativ zur Basislinie, den durchschnittlichen Prozentsatz erfolgreicher Regeln auf allen ausgewerteten Servern und die Liste mit den ausgewerteten Servern an.
-4. Im rechten Bereich werden die einzelnen nicht erfolgreichen Regeln nach *Schweregrad* und *Regeltyp* aufgeführt. Wenn Sie im rechten Bereich auf eine der Regeln klicken, erhalten Sie weitere Informationen zu der Regel. Das Bild weiter unten zeigt ein entsprechendes Beispiel. Die ausgewertete Regel ist unter *Regeleinstellung* angegeben. Das Feld *AzId* enthält einen eindeutigen Bezeichner für jede Regel, die von Microsoft zum Nachverfolgen von Baselineregeln verwendet wird. Darüber hinaus werden das erwartete Ergebnis** (von Microsoft empfohlener Wert) sowie weitere Details zu den Sicherheitsauswirkungen der Regel angezeigt.
+4. Im rechten Bereich werden die einzelnen nicht erfolgreichen Regeln nach *Schweregrad* und *Regeltyp* aufgeführt. Wenn Sie im rechten Bereich auf eine der Regeln klicken, erhalten Sie weitere Informationen zu der Regel. Das Bild weiter unten zeigt ein entsprechendes Beispiel. Die ausgewertete Regel ist unter *Regeleinstellung* angegeben. Das Feld *AzId* enthält einen eindeutigen Bezeichner für jede Regel, die von Microsoft zum Nachverfolgen von Baselineregeln verwendet wird. Darüber hinaus werden das *erwartete Ergebnis* (von Microsoft empfohlener Wert) sowie weitere Details zu den Sicherheitsauswirkungen der Regel angezeigt.
     
     ![Abfrage](./media/oms-security-web-baseline/oms-security-web-baseline-fig6.png)
 
@@ -56,7 +56,7 @@ Die erste Abfrage, die Sie verwenden können, ist die **Web Baseline Assessment 
 
 Wenn Sie sich in der **Protokollsuche** befinden, können Sie verschiedene Abfragen eingeben, um weitere Informationen zur Web-Baselinebewertung zu erhalten. Zusätzlich zur obigen Abfrage können Sie in dieser Vorschau auch die folgenden Abfragen verwenden:
 
-**Web Baseline Rule Assessment** (Bewertung einer Web-Baselineregel): Jeder Datensatz steht für die Bewertung einer einzelnen Web-Baselineregel auf einem Server. Er enthält alle Daten für eine nicht erfolgreiche Regel, den Standortpfad (*SitePath*), auf dessen Grundlage die Regel ausgewertet wurde, sowie das erwartete** und das tatsächliche** Ergebnis.
+**Web Baseline Rule Assessment** (Bewertung einer Web-Baselineregel): Jeder Datensatz steht für die Bewertung einer einzelnen Web-Baselineregel auf einem Server. Er enthält alle Daten für eine nicht erfolgreiche Regel, den Standortpfad (*SitePath*), auf dessen Grundlage die Regel ausgewertet wurde, sowie *das erwartete* und *das tatsächliche Ergebnis*.
 
 Abfrage: *Type=SecurityBaseline BaselineType=Web AnalyzeResult=Failed*
 

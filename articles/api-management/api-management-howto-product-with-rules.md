@@ -232,7 +232,7 @@ Wählen Sie **Kostenlose Testversion**, und klicken Sie dann auf **Abonnieren**.
 
 ![Abonnement hinzufügen][api-management-add-subscription-multiple]
 
-Nach dem Klicken auf **Abonnieren** wird das Produkt in der Abonnementliste**** für den Benutzer angezeigt.
+Nach dem Klicken auf **Abonnieren** wird das Produkt in der **Abonnementliste** für den Benutzer angezeigt.
 
 ![Abonnement hinzugefügt][api-management-subscription-added]
 
