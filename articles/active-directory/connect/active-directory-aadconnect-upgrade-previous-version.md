@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: Identity
-ms.date: 02/08/2017
+ms.date: 07/12/2017
 ms.author: billmath
-translationtype: Human Translation
-ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
-ms.openlocfilehash: 085706dacdcb0cd5a4169ccac4dc7fd8b8ddb6e0
-ms.lasthandoff: 03/03/2017
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
+ms.openlocfilehash: 03de42352b92692a0fa5c6ee3f335592cb2b66c1
+ms.contentlocale: de-de
+ms.lasthandoff: 06/30/2017
 
 ---
 # <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Azure AD Connect: Aktualisieren von einer früheren Version auf die aktuelle Version
@@ -46,6 +46,8 @@ Dies ist die bevorzugte Methode, wenn Sie über einen einzelnen Server und wenig
 ![Direktes Upgrade](./media/active-directory-aadconnect-upgrade-previous-version/inplaceupgrade.png)
 
 Wenn Sie vordefinierte Synchronisierungsregeln geändert haben, werden diese Regeln beim Upgrade wieder auf die Standardkonfiguration zurückgesetzt. Um sicherzustellen, dass Ihre Konfiguration zwischen Upgrades erhalten bleibt, achten Sie darauf, dass die Änderungen wie in [Best Practices zum Ändern der Standardkonfiguration](active-directory-aadconnectsync-best-practices-changing-default-configuration.md) beschrieben vorgenommen werden.
+
+Bei einem direkten Upgrade werden unter Umständen Änderungen eingeführt, für die nach Abschluss des Upgrades bestimmte Synchronisierungsaktivitäten durchgeführt werden müssen (einschließlich vollständigem Import und vollständiger Synchronisierung). Wie Sie solche Aktivitäten zurückstellen, erfahren Sie im Abschnitt [Zurückstellen der vollständigen Synchronisierung nach dem Upgrade](#how-to-defer-full-synchronization-after-upgrade).
 
 ## <a name="swing-migration"></a>Swing-Migration
 Wenn Sie über eine komplexe Bereitstellung oder viele Objekte verfügen, kann möglicherweise ein direktes Upgrade auf einem Livesystem nicht ausgeführt werden. Dieser Prozess könnte für einige Kunden mehrere Tage dauern, und während dieser Zeit werden keine Deltaänderungen verarbeitet. Sie können diese Methode auch anwenden, wenn Sie wesentliche Änderungen an Ihrer Konfiguration planen und diese vor der Übertragung in die Cloud testen möchten.
@@ -89,6 +91,42 @@ Gehen Sie folgendermaßen vor, um benutzerdefinierte Synchronisierungsregeln zu 
 3. Die Connector-GUID weicht auf dem Stagingserver ab und muss von Ihnen geändert werden. Um die GUID abzurufen, starten Sie den **Synchronisierungsregel-Editor**. Wählen Sie eine der vordefinierten Regeln aus, die das gleiche verbundene System darstellen, und klicken Sie auf **Exportieren**. Ersetzen Sie die GUID in der PS1-Datei durch die GUID des Stagingservers.
 4. Führen Sie die PS1-Datei an einer PowerShell-Eingabeaufforderung aus. Dadurch wird die benutzerdefinierte Synchronisierungsregel auf dem Stagingserver erstellt.
 5. Wiederholen Sie diesen Schritt für alle Ihre benutzerdefinierten Regeln.
+
+## <a name="how-to-defer-full-synchronization-after-upgrade"></a>Zurückstellen der vollständigen Synchronisierung nach dem Upgrade
+Bei einem direkten Upgrade werden unter Umständen Änderungen eingeführt, für die bestimmte Synchronisierungsaktivitäten durchgeführt werden müssen (einschließlich vollständigem Import und vollständiger Synchronisierung). Bei Connectorschemaänderungen muss beispielsweise der Schritt **Vollständiger Import** und bei Änderungen an den standardmäßigen Synchronisierungsregeln der Schritt **Vollständige Synchronisierung** für die betroffenen Connectors ausgeführt werden. Während des Upgrades ermittelt Azure AD Connect die erforderlichen Synchronisierungsaktivitäten und erfasst sie als *Außerkraftsetzungen*. Im folgenden Synchronisierungszyklus greift der Synchronisierungsplaner diese Außerkraftsetzungen auf und führt sie aus. Erfolgreich ausgeführte Außerkraftsetzungen werden entfernt.
+
+Manchmal sollen diese Außerkraftsetzungen aber möglicherweise nicht direkt nach dem Upgrade stattfinden. Beispielsweise, wenn Sie über zahlreiche synchronisierte Objekte verfügen und die Synchronisierungsschritte außerhalb der Geschäftszeiten ausgeführt werden sollen. Gehen Sie zum Entfernen dieser Außerkraftsetzungen wie folgt vor:
+
+1. **Deaktivieren** Sie während des Upgrades die Option **Starten Sie den Synchronisierungsvorgang, nachdem die Konfiguration abgeschlossen wurde**. Dadurch wird der Synchronisierungsplaner deaktiviert und sichergestellt, dass der Synchronisierungszyklus nicht automatisch beginnt, bevor die Außerkraftsetzungen entfernt wurden.
+
+   ![DisableFullSyncAfterUpgrade](./media/active-directory-aadconnect-upgrade-previous-version/disablefullsync01.png)
+
+2. Führen Sie nach Abschluss des Upgrades das folgende Cmdlet aus, um zu ermitteln, welche Außerkraftsetzungen hinzugefügt wurden: `Get-ADSyncSchedulerConnectorOverride | fl`
+
+   >[!NOTE]
+   > Die Außerkraftsetzungen sind connectorspezifisch. Im folgenden Beispiel wurden die Schritte „Vollständiger Import“ und „Vollständige Synchronisierung“ dem lokalen AD-Connector und dem Azure AD-Connector hinzugefügt.
+
+   ![DisableFullSyncAfterUpgrade](./media/active-directory-aadconnect-upgrade-previous-version/disablefullsync02.png)
+
+3. Notieren Sie sich die vorhandenen Außerkraftsetzungen, die hinzugefügt wurden.
+   
+4. Führen Sie das folgende Cmdlet aus, um die Außerkraftsetzungen für den vollständigen Import und die vollständige Synchronisierung von einem beliebigen Connector zu entfernen: `Set-ADSyncSchedulerConnectorOverride -ConnectorIdentifier <Guid-of-ConnectorIdentifier> -FullImportRequired $false -FullSyncRequired $false`
+
+   Wenn Sie die Außerkraftsetzungen für alle Connectors entfernen möchten, führen Sie das folgende PowerShell-Skript aus:
+
+   ```
+   foreach ($connectorOverride in Get-ADSyncSchedulerConnectorOverride)
+   {
+       Set-ADSyncSchedulerConnectorOverride -ConnectorIdentifier $connectorOverride.ConnectorIdentifier.Guid -FullSyncRequired $false -FullImportRequired $false
+   }
+   ```
+
+5. Führen Sie das folgende Cmdlet aus, um den Planer fortzusetzen: `Set-ADSyncScheduler -SyncCycleEnabled $true`
+
+   >[!IMPORTANT]
+   > Die erforderlichen Synchronisierungsschritte sollten zum frühestmöglichen Zeitpunkt ausgeführt werden. Sie können die Schritte entweder manuell mit dem Synchronization Service Manager ausführen oder die Außerkraftsetzungen mithilfe des Cmdlets „Set-ADSyncSchedulerConnectorOverride“ wieder hinzufügen.
+
+Führen Sie das folgende Cmdlet aus, um die Außerkraftsetzungen für den vollständigen Import und die vollständige Synchronisierung eines beliebigen Connectors hinzuzufügen: `Set-ADSyncSchedulerConnectorOverride -ConnectorIdentifier <Guid> -FullImportRequired $true -FullSyncRequired $true`
 
 ## <a name="next-steps"></a>Nächste Schritte
 Erfahren Sie mehr zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).

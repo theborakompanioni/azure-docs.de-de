@@ -12,12 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2017
+ms.date: 07/12/2017
 ms.author: billmath
-translationtype: Human Translation
-ms.sourcegitcommit: ce4d51c4ed38645ee81325404ff7214f845d5bf0
-ms.openlocfilehash: 317f3be6cb39da7c7c57f7f368c750672609726e
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
+ms.openlocfilehash: 37df8d66d0a3ce738db2960d4283bdc672fb0fc4
+ms.contentlocale: de-de
+ms.lasthandoff: 07/04/2017
 
 ---
 # <a name="azure-ad-connect-special-considerations-for-instances"></a>Azure AD Connect: Besondere Überlegungen zu Instanzen
@@ -38,7 +39,7 @@ In der Microsoft Cloud Deutschland derzeit nicht enthaltene Features:
 
 * **Azure AD Connect Health** ist nicht verfügbar.
 * **Automatische Updates** sind nicht verfügbar.
-* **Kennwortrückschreiben** ist nicht verfügbar.
+* **Kennwortrückschreiben** ist für die Vorschauversion mit Azure AD Connect-Version 1.1.570.0 und höher verfügbar.
 * Andere Azure AD Premium-Dienste sind nicht verfügbar.
 
 ## <a name="microsoft-azure-government-cloud"></a>Microsoft Azure Government-Cloud
@@ -49,6 +50,7 @@ Diese Cloud wurde von früheren Versionen von DirSync unterstützt. Ab Build 1.1
 | URLs, die im Proxyserver geöffnet werden müssen |
 | --- |
 | \*.microsoftonline.com |
+| \*.microsoftonline.us |
 | \*.gov.us.microsoftonline.com |
 | +Zertifikatsperrlisten |
 
@@ -63,14 +65,9 @@ In der Microsoft Azure Government-Cloud derzeit nicht enthaltene Features:
 
 * **Azure AD Connect Health** ist nicht verfügbar.
 * **Automatische Updates** sind nicht verfügbar.
-* **Kennwortrückschreiben** ist nicht verfügbar.
+* **Kennwortrückschreiben** ist für die Vorschauversion mit Azure AD Connect-Version 1.1.570.0 und höher verfügbar.
 * Andere Azure AD Premium-Dienste sind nicht verfügbar.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

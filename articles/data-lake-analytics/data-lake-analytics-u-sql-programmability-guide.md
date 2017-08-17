@@ -3,189 +3,86 @@ title: "U-SQL-Programmierbarkeitshandbuch für Azure Data Lake | Microsoft-Dokum
 description: "Hier finden Sie Informationen zu den Diensten in Azure Data Lake, mit denen Sie eine cloudbasierte Big Data-Plattform erstellen können."
 services: data-lake-analytics
 documentationcenter: 
-author: MikeRys
-manager: arindamc
+author: saveenr
+manager: saveenr
 ms.assetid: 63be271e-7c44-4d19-9897-c2913ee9599d
 ms.service: data-lake-analytics
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/15/2016
-ms.author: mrys
-translationtype: Human Translation
-ms.sourcegitcommit: 9553c9ed02fa198d210fcb64f4657f84ef3df801
-ms.openlocfilehash: ca9937d4c0d87827f8b78ecc495fdad791d139e8
-ms.lasthandoff: 03/23/2017
+ms.date: 06/30/2017
+ms.author: saveenr
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
+ms.openlocfilehash: e4e298475d7be7d51c8bd55be498371ed6ce77a9
+ms.contentlocale: de-de
+ms.lasthandoff: 07/04/2017
 
 
 ---
 
 # <a name="u-sql-programmability-guide"></a>U-SQL-Programmierbarkeitshandbuch
-## <a name="azure-data-lake"></a>Azure Data Lake
-Azure Data Lake bietet Funktionen, mit denen Entwickler und (Daten-)Analysten komfortabel Daten beliebiger Größe, Art und Geschwindigkeit speichern können. Darüber hinaus stehen Entwicklern zahlreiche plattform- und sprachübergreifende Verarbeitungs- und Analysemöglichkeiten zur Verfügung. Data Lake vereinfacht die Erfassung und Speicherung Ihrer Daten und ermöglicht eine schnellere Verwendung von Batches, Streaming und interaktiven Analysen.
 
-Bei Azure Data Lake handelt es sich um eine Sammlung von Diensten, die gemeinsam eine cloudbasierte Big Data-Plattform bereitstellen. Zu diesen Diensten gehören:
-
-- Azure HDInsight
-- Azure Data Lake Store
-- Azure Data Lake Analytics
-
-U-SQL ist eine für Big Data-Workloads konzipierte Abfragesprache. Eines der einzigartigen Features von U-SQL ist die Kombination der SQL-ähnlichen deklarativen Sprache mit dem Erweiterungs- und Programmierbarkeitspotenzial von C#. Darüber hinaus besteht die Möglichkeit, auf Schemametadaten zuzugreifen, sie zu bearbeiten und benutzerdefinierte Komponenten wie Datenprozessoren und Reducer zu erstellen.
-
-In diesem Handbuch konzentrieren wir uns auf die durch C# ermöglichte Erweiterbarkeit und Programmierbarkeit der U-SQL-Sprache.
+U-SQL ist eine für Big Data-Workloads konzipierte Abfragesprache. Eines der einzigartigen Features von U-SQL ist die Kombination der SQL-ähnlichen deklarativen Sprache mit dem Erweiterungs- und Programmierbarkeitspotenzial von C#. In diesem Handbuch konzentrieren wir uns auf die durch C# ermöglichte Erweiterbarkeit und Programmierbarkeit der U-SQL-Sprache.
 
 ## <a name="requirements"></a>Anforderungen
-Für die Azure Data Lake-Entwicklung müssen Sie [Azure Data Lake-Tools für Visual Studio](https://www.microsoft.com/download/details.aspx?id=49504) herunterladen und installieren.
+
+Laden Sie [Azure Data Lake Tools für Visual Studio](https://www.microsoft.com/download/details.aspx?id=49504) herunter, und installieren Sie es.
 
 ## <a name="get-started-with-u-sql"></a>Erste Schritte mit U-SQL  
-Die U-SQL-Sprache wird in diesem Dokument nicht erläutert. Es werden jedoch grundlegende U-SQL-Konstrukte zur schrittweisen Einführung von U-SQL-Programmierbarkeitsfeatures beschrieben. Weitere Informationen finden Sie in der [U-SQL Language Reference](http://aka.ms/usql_reference) (Referenz zur U-SQL-Sprache).
 
-Betrachten Sie das folgende Beispiel:
+Sehen Sie sich das folgende U-SQL-Skript an:
 
-```sql
-DECLARE @input_file string = @"\usql-programmability\input_file.tsv";
-DECLARE @output_file string = @"\usql-programmability\output_file.tsv";
-
-@rs0 =
-    EXTRACT
-        guid Guid,
-        dt DateTime,
-        user String,
-        des String
-    FROM @input_file USING Extractors.Tsv();
-
-@rs1 =
+```
+@a  = 
+    SELECT * FROM 
+        (VALUES
+            ("Contoso",   1500.0, "2017-03-39"),
+            ("Woodgrove", 2700.0, "2017-04-10")
+        ) AS 
+              D( customer, amount );
+@results =
     SELECT
-        MAX(guid) AS start_id,
-        MIN(dt) AS start_time,
-        user,
-        des
-    FROM @rs0
-    GROUP BY user, des;
-
-OUTPUT @rs1 TO @output_file USING Outputters.Text();
+        customer,
+    amount,
+    date
+    FROM @a;    
 ```
 
-Im diesem Beispiel haben wir eine **Eingabedatei** („input_file.tsv“), die durch die **lokale Variable** @input_file definiert wird.
-
-Das in diesem Beispiel gezeigte U-SQL-Skript führt folgende Aktionen aus:
-
-* Zu Anfang lädt die **EXTRACT**-Anweisung Daten durch Konvertieren der Eingabedatei in das **Arbeitsspeicherrowset** in den Arbeitsspeicher.
-* **SELECT** aggregiert Daten aus dem Datenrowset und bereitet sie zum Exportieren vor.
-* **OUTPUT** exportiert das Datenrowset in die (externe) **Ausgabedatei**.
-
-Betrachten wir zunächst einige Optionen zur direkten Verwendung eines C#-Ausdrucks in einem U-SQL-Skript.
+Es definiert ein Rowset namens „@a“ und erstellt ein Rowset namens „@results“ auf der Grundlage von „@a“.
 
 ## <a name="c-types-and-expressions-in-u-sql-script"></a>C#-Typen und -Ausdrücke in einem U-SQL-Skript
-Bei einem U-SQL-C#-Ausdruck handelt es sich (ähnlich wie bei einem Ausdruck im allgemeinem C#) um eine Sequenz mit mindestens einem Operator, die zu einem einzelnen Wert, Objekt, einer einzelnen Methode oder einem einzelnen Namespace ausgewertet werden kann. Ausdrücke können aus einem Literalwert, einem Methodenaufruf, einem Operator oder einem einfachen Name bestehen. Einfache Namen können der Name einer Variablen, eines Typmembers, Methodenparameters, Namespaces oder Typs sein.
 
-Wenn wir über U-SQL-C#-Ausdrücke sprechen, beziehen wir uns spezifisch auf die C#-Ausdrücke im U-SQL-Basisskript. Der zugrunde liegende C#-CodeBehind-Abschnitt, der im weiteren Verlauf dieses Dokuments behandelt wird, kann auch C#-Ausdrücke als reguläre C#-codebasierte Elemente enthalten.
+Bei einem U-SQL-Ausdruck handelt es sich um eine Kombination aus einem C#-Ausdruck und logischen U-SQL-Operatoren wie `AND`, `OR` und `NOT`. U-SQL-Ausdrücke können mit SELECT, EXTRACT, WHERE, HAVING, GROUP BY und DECLARE verwendet werden.
 
-Ausdrücke können Operatoren verwenden, die andere Ausdrücke als Parameter verwenden. Sie können auch Methodenaufrufe mit Parametern verwenden, bei denen es sich um andere Methodenaufrufe handelt. Beispiele für einen Ausdruck:  
+Das folgende Skript analysiert beispielsweise eine Zeichenfolge (einen DateTime-Wert) in der SELECT-Klausel:
 
-```c#
-    Convert.ToDateTime(Convert.ToDateTime(dt).ToString("yyyy-MM-dd"))
 ```
-
-Die U-SQL-Sprache ermöglicht die Verwendung standardmäßiger C#-Ausdrücke aus integrierten Namespaces.  
-
-```c#
-    Microsoft.Analytics.Interfaces;  
-    Microsoft.Analytics.Types.Sql;  
-    System;  
-    System.Collections.Generic;  
-    System.Linq;  
-    System.Text;  
-```
-
-Allgemeine C#-Ausdrücke können in U-SQL in SELECT und EXTRACT verwendet werden.
-
-Die C#-Ausdrücke können auch in DECLARE- oder IF-Anweisungen verwendet werden. Ein Beispiel für diese Art von Ausdruck:   
-
-```c#
-    DateTime.Today.Day   
-    Convert.ToDateTime
-```
-
-U-SQL-basiertes Skriptbeispiel:  
-
-```sql
-    DECLARE @default_dt DateTime = Convert.ToDateTime("06/01/2016");
-```
-
-C#-Ausdrücke können erweiterte Funktionen bieten, wenn Sie Spalten als Teil eines Rowsets bearbeiten. Wenn Sie also etwa eine DateTime-Spalte in das Datum mit null Stunden konvertieren möchten, können Sie den folgenden SELECT-Teil eines U-SQL-basierten Skripts verwenden:
-
-```sql
-@rs1 =
+@results =
     SELECT
-        MAX(guid) AS start_id,
-     MIN(dt) AS start_time,
-        MIN(Convert.ToDateTime(Convert.ToDateTime(dt).ToString("yyyy-MM-dd")))
-AS start_zero_time,
-        user,
-        des
-    FROM @rs0
-    GROUP BY user, des;
+        customer,
+    amount,
+    DateTime.Parse(date) AS date
+    FROM @a;    
 ```
 
-Wie Sie sehen, verwenden wir die `System.Convert.ToDateTime`-Methode, um die Konvertierung zu durchlaufen.
+Das folgende Skript analysiert eine Zeichenfolge (einen DateTime-Wert) in einer DECLARE-Anweisung:
 
-Im Anschluss finden Sie ein etwas komplizierteres Szenario, das die Verwendung einiger grundlegender C#-Operatoren veranschaulicht:
-
-```sql
-@rs1 =
-    SELECT
-        MAX(guid) AS start_id,
-        MIN(dt) AS start_time,
-          MIN(Convert.ToDateTime(Convert.ToDateTime(dt<@default_dt?@default_dt:dt).ToString("yyyy-MM-dd"))) AS start_zero_time,
-        user,
-        des
-    FROM @rs0
-    GROUP BY user, des;
 ```
-
-Hier sehen Sie ein Beispiel für einen Ausdruck mit einem bedingten C#-Operator.
-
-Die vorherigen Beispiele veranschaulichen die Verwendung von C#-Ausdrücken im U-SQL-Basisskript. U-SQL bietet jedoch noch umfangreichere Programmierbarkeitsfeatures. Diese werden im weiteren Verlauf dieses Dokuments behandelt.  
-
-Vollständiges Skript:
-
-```sql
-DECLARE @input_file string = @"\usql-programmability\input_file.tsv";
-DECLARE @output_file string = @"\usql-programmability\output_file.tsv";
-
-@rs0 =
-    EXTRACT
-        guid Guid,
-        dt DateTime,
-        user String,
-        des String
-    FROM @input_file USING Extractors.Tsv();
-
-DECLARE @default_dt DateTime = Convert.ToDateTime("06/01/2016");
-
-@rs1 =
-    SELECT
-        MAX(guid) AS start_id,
-    MIN(dt) AS start_time,
-        MIN(Convert.ToDateTime(Convert.ToDateTime(dt<@default_dt?@default_dt:dt).ToString("yyyy-MM-dd"))) AS start_zero_time,
-        user,
-        des
-    FROM @rs0
-    GROUP BY user, des;
-
-OUTPUT @rs1 TO @output_file USING Outputters.Text();
+DECLARE @d DateTime = ToDateTime.Date("2016/01/01");
 ```
 
 ### <a name="use-c-expressions-for-data-type-conversions"></a>Verwenden von C#-Ausdrücken für Datentypkonvertierungen
 Im folgenden Beispiel sehen Sie, wie Sie mithilfe von C#-Ausdrücken eine DateTime-Datenkonvertierung durchführen. In diesem speziellen Szenario werden DateTime-Zeichenfolgendaten in das Standard-DateTime-Format mit der Zeitnotation „00:00:00“ für Mitternacht konvertiert.
 
-```sql
+```
 DECLARE @dt String = "2016-07-06 10:23:15";
+
 @rs1 =
-    SELECT Convert.ToDateTime(Convert.ToDateTime(@dt).ToString("yyyy-MM-dd")) AS dt,
-           dt AS olddt
+    SELECT 
+        Convert.ToDateTime(Convert.ToDateTime(@dt).ToString("yyyy-MM-dd")) AS dt,
+        dt AS olddt
     FROM @rs0;
 OUTPUT @rs1 TO @output_file USING Outputters.Text();
 ```
@@ -193,13 +90,13 @@ OUTPUT @rs1 TO @output_file USING Outputters.Text();
 ### <a name="use-c-expressions-for-todays-date"></a>Verwenden von C#-Ausdrücken für das aktuelle Datum
 Das aktuelle Datum können wir mithilfe des folgenden C#-Ausdrucks abrufen:
 
-```c#
+```
 DateTime.Now.ToString("M/d/yyyy")
 ```
 
 Das folgende Beispiel zeigt, wie Sie diesen Ausdruck in einem Skript verwenden:
 
-```sql
+```
 @rs1 =
     SELECT
         MAX(guid) AS start_id,
@@ -213,317 +110,29 @@ Das folgende Beispiel zeigt, wie Sie diesen Ausdruck in einem Skript verwenden:
     GROUP BY user, des;
 ```
 
-## <a name="use-inline-c-function-expressions"></a>Verwenden von C#-Inlinefunktionsausdrücken
-Mit U-SQL können Sie Inlinefunktionsausdrücke als Teil von C#-Ausdrücken definieren. Dadurch entstehen zusätzliche Verwendungsmöglichkeiten für C#-Funktionen mit Ausgabeverweisparametern.
 
-Das folgende Beispiel zeigt eine allgemeine Definition für einen Inlinefunktionsausdruck:
 
-```c#
-    (Func<type of param1, type of param2>)
-    (param1 =>
-         { … return param2}
-    ) (Rowset Column)
-```
+## <a name="using-net-assemblies"></a>Verwenden von .NET-Assemblys
+Das U-SQL-Erweiterbarkeitsmodell hängt stark davon ab, benutzerdefinierten Code hinzufügen zu können. Mit U-SQL können Sie derzeit komfortabel Ihren eigenen, Microsoft .NET-basierten Code hinzuzufügen. Das gilt insbesondere für C#. Aber auch benutzerdefinierter Code in anderen .NET-Sprachen (wie VB.NET oder F#) kann hinzugefügt werden. 
 
-Beispiel:
+### <a name="register-a-net-assembly"></a>Registrieren einer .NET-Assembly
 
-```c#
-    (Func<string, DateTime?>)
-    (input_p =>
-         {
-            DateTime dt_result;
-            return DateTime.TryParse(input_p, out dt_result)
-                   ? (DateTime?) dt_result : (DateTime?) null;
-         }
-    )
-    ) (dt)
-```
+Verwenden Sie die CREATE ASSEMBLY-Anweisung, um eine .NET-Assembly in einer U-SQL-Datenbank zu platzieren. Sobald sich eine Assembly in einer Datenbank befindet, können U-SQL-Skripts diese mithilfe der REFERENCE ASSEMBLY-Anweisung verwenden. 
 
-In diesem Beispiel wird eine Inlinefunktion mit dem Zeichenfolgen-Eingabeparameter „input_p“ definiert. Innerhalb dieser Funktion überprüfen wir, ob die Eingabezeichenfolge ein gültiger DateTime-Wert ist. Falls ja, wird sie zurückgegeben; andernfalls wird NULL zurückgegeben.
-
-Die Inlinefunktion ist in diesem Szenario notwendig, da die Funktion „DateTime.TryParse“ den Ausgabeparameter `out dt_result` enthält. Wir definieren ihn als `DateTime dt_result;`.
-
-
-## <a name="verify-data-type-values"></a>Überprüfen von Datentypwerten
-Einige C#-Funktionen können in U-SQL-Basisskripts nicht direkt als C#-Ausdrücke verwendet werden. Das gilt insbesondere für Funktionen, die einen Ausgabeverweisparameter erfordern. Diese Funktionen können jedoch, wie bereits erläutert, als Teil eines Inlinefunktionsausdrucks definiert und verwendet werden.
-
-### <a name="use-inline-function-expressions"></a>Verwenden von Inlinefunktionsausdrücken
-Um die Gültigkeit des DateTime-Werts zu überprüfen, können wir `DateTime.TryParse` verwenden.
-
-Das folgende vollständige Beispiel zeigt, wie Sie mithilfe eines Inlinefunktionsausdrucks den Datentypwert mit `DateTime.TryParse` überprüfen.
-
-In diesem Szenario überprüfen wir den DateTime-Datentypwert:
-
-```sql
-DECLARE @input_file string = @"\usql-programmability\input_file.tsv";
-DECLARE @output_file string = @"\usql-programmability\output_file.tsv";
-
-@rs0 =
-    EXTRACT
-        guid Guid,
-        dt string,
-        user String,
-        des String
-    FROM @input_file USING Extractors.Tsv();
-
-@rs1 =
-    SELECT
-        MAX(guid) AS start_id,
-        MIN((
-             (Func<string, DateTime?>)
-             (input_parameter =>
-                { DateTime dt_result;
-                  return
-                     DateTime.TryParse(input_parameter, out dt_result)
-                       ?(DateTime?) dt_result : (DateTime?) null;
-                }
-             )
-             ) (dt)) AS start_time,
-        DateTime.Now.ToString("M/d/yyyy") AS Nowdate,
-        user,
-        des
-    FROM @rs0
-    GROUP BY user, des;
-
-OUTPUT @rs1 TO @output_file USING Outputters.Text();
-```
-
-### <a name="use-code-behind"></a>Verwenden des CodeBehinds
-Um die gleiche Funktion im CodeBehind-Abschnitt des U-SQL-Programms zu verwenden, definieren wir die C#-Funktion „ToDateTime“.
-
-Hier ist der Abschnitt des U-SQL-Basisskripts, in dem wir die erforderlichen Änderungen vorgenommen haben:
-
-```sql
-     @rs1 =
-        SELECT
-          MAX(guid) AS start_id,
-          MIN(USQL_Programmability.CustomFunctions.ToDateTime(dt)) AS start_time,
-          DateTime.Now.ToString("M/d/yyyy") AS Nowdate,
-          user,
-          des
-          FROM @rs0
-        GROUP BY user, des;
-```
-
-Hier ist die CodeBehind-Funktion:
-
-```c#
-        static public DateTime? ToDateTime(string dt)
-        {
-            DateTime dtValue;
-
-            if (!DateTime.TryParse(dt, out dtValue))
-                return Convert.ToDateTime(dt);
-            else
-                return null;
-        }
-```
-
-## <a name="use-code-behind"></a>Verwenden des CodeBehinds
-CodeBehind ist ein C#-Programmierbarkeitsabschnitt des U-SQL-Projekts. Grundsätzlich ist CodeBehind eine kompilierte Assembly (DLL), auf die im U-SQL-Skript verwiesen wird. Mit Visual Studio-Tools können Sie einen C#-Programmierbarkeitsabschnitt als Teil des U-SQL-Projekts verwalten und debuggen.
-
-Ein typisches in Visual Studio erstelltes U-SQL-Projekt besteht aus zwei Teilen: einem Basisskript und einer Datei mit der Erweiterung **.usql**.
-
-![Basisskriptdatei](./media/data-lake-analytics-u-sql-programmability-guide/base-script-file.png)
-
-
-Typisches Projektmappenprojekt:   
-![Typisches Projektmappenprojekt](./media/data-lake-analytics-u-sql-programmability-guide/typical-solution-project.png)
-
-
-Im zweiten Teil des Projekts rufen wir die CodeBehind-Datei „Script.usql.cs“ auf.  
-![CodeBehind](./media/data-lake-analytics-u-sql-programmability-guide/code-behind.png)
-
-Diese Datei enthält eine Namespace-Standarddefinition für Programmierbarkeitsobjekte.
-
-```c#
-using Microsoft.Analytics.Interfaces;
-using Microsoft.Analytics.Types.Sql;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace USQL_Programmability
-{
-
-}
-```
-
-Die Vorschau der CodeBehind-Vorlage wird automatisch generiert. Diese Datei enthält eine Namespace-Standarddefinition für Programmierbarkeitsobjekte. Während der Ausführung des Projekts wird sie kompiliert, und in einem U-SQL-Basisskript wird auf sie verwiesen.
-
-Um mit der Entwicklung von Programmierbarkeitsobjekten zu beginnen, müssen wir eine **öffentliche** Klasse erstellen.
-
-```c#
-namespace USQL_Programmability
-{
-    public class MyClass
-    {
-        public static string MyFunction(string param1)
-        {
-            return "my result";
-        }
-
-    }
-
-}
-```
-
-Mögliche Optionen für Programmierbarkeitsobjekte sind unter anderem UDF (User-Defined Function; benutzerdefinierte Funktion), UDT (User-Defined Type; benutzerdefinierter Typ) PROCESS und REDUCER.
-
-## <a name="register-u-sql-assemblies"></a>Registrieren von U-SQL-Assemblys
-Das U-SQL-Erweiterbarkeitsmodell hängt stark davon ab, benutzerdefinierten Code hinzufügen zu können. Mit U-SQL können Sie derzeit komfortabel Ihren eigenen, Microsoft .NET-basierten Code hinzuzufügen. Das gilt insbesondere für C#. Aber auch benutzerdefinierter Code in anderen .NET-Sprachen (wie VB.NET oder F#) kann hinzugefügt werden.
-
-Sie können sogar eine eigene Laufzeit für andere Sprachen bereitstellen, müssen aber weiterhin selbst über eine .NET-Ebene für Interoperabilität sorgen. Falls Sie sich die Unterstützung einer bestimmten Sprache wünschen, reichen Sie eine Featureanforderung ein, oder hinterlassen Sie einen Kommentar: http://aka.ms/adlfeedback.
-
-### <a name="learn-the-difference-between-code-behind-and-assembly-registration-through-azure-data-lake-tools-in-visual-studio"></a>Unterschied zwischen CodeBehind und Assemblyregistrierung über Azure Data Lake-Tools in Visual Studio
-Die einfachste Möglichkeit zur Verwendung von benutzerdefiniertem Code ist die Verwendung der Azure Data Lake-Tools für die CodeBehind-Funktionen von Visual Studio.
-
-Wie bereits erwähnt, tragen Sie den benutzerdefinierten Code für das Skript (z.B. „Script.usql“) in die zugehörige CodeBehind-Datei (z.B. „Script.usql.cs“) ein.
-
-![CodeBehind-Beispiel](./media/data-lake-analytics-u-sql-programmability-guide/code-behind-example.jpg)
-**Abbildung 1:** CodeBehind-Beispiel in Azure Data Lake-Tools in Visual Studio. (Klicken Sie auf das Bild, um es zu vergrößern. Beispielcode steht [hier](https://github.com/Azure/usql/tree/master/Examples/TweetAnalysis) zur Verfügung.)
-
-
-Der Vorteil von CodeBehind ist, dass die Tools die folgenden Schritte für Sie übernehmen, wenn Sie Ihr Skript übermitteln:  
-
-1. Sie erstellen die Assembly für die CodeBehind-Datei.  
-
-2. Sie fügen dem Skript einen Prolog hinzu, der die Assemblydatei mithilfe der Anweisung [CREATE ASSEMBLY](https://msdn.microsoft.com/library/azure/mt763293.aspx) registriert. Sie verwenden außerdem [REFERENCE ASSEMBLY] (https://msdn.microsoft.com/library/azure/mt763294.aspx), um die Assembly in den Kontext des Skripts zu laden.
-
-3. Sie fügen dem Skript einen Epilog hinzu, der die vorübergehend registrierte Assembly mithilfe von [DROP ASSEMBLY](https://msdn.microsoft.com/library/azure/mt763295.aspx) wieder entfernt.
-
-Sie können den generierten Prolog und Epilog anzeigen, wenn Sie das Skript öffnen:
-
-![Generierter Prolog](./media/data-lake-analytics-u-sql-programmability-guide/generated-prologue.png)
-
-**Abbildung 2**: Automatisch für CodeBehind generierter Prolog und Epilog
-<br />
-
-CodeBehind hat unter anderem folgende Nachteile:
-
-* Der Code wird für jede Skriptübermittlung hochgeladen.
-* Die Funktionen können nicht mit anderen geteilt werden.
-
-Daher können Sie Ihrer Projektmappe ein separates C#-Klassenbibliotheksprojekt (für U-SQL) hinzufügen (Abbildung 3), den Code entwickeln oder vorhandenen CodeBehind-Code kopieren (ohne Änderungen am C#-Code vornehmen zu müssen, wie in Abbildung 4 zu sehen). Verwenden Sie dann für das Projekt die Menüoption **Assembly registrieren**, um die Assembly zu registrieren (wie in Schritt 1 der Abbildung 5 zu sehen).
-
-![Erstellen des Projekts](./media/data-lake-analytics-u-sql-programmability-guide/creating-project.png)
-**Abbildung 3:** Erstellen eines U-SQL-C#-Codeprojekts  
-<br />
-
-![Klassenbibliothek](./media/data-lake-analytics-u-sql-programmability-guide/class-library.png)
-**Abbildung 4:** U-SQL-C#-Klassenbibliothek neben der CodeBehind-Datei
-<br />
-
-![Registrieren des Codes](./media/data-lake-analytics-u-sql-programmability-guide/register-code.png)
-**Abbildung 5:** Registrieren des U-SQL-C#-Codeprojekts
-<br />
-
-Das Registrierungsdialogfeld (siehe Schritt 2 der Abbildung 5) enthält die Registrierungsoptionen für die Assembly. Hier können Sie beispielsweise das zu verwendende Data Lake Analytics-Konto und die zu verwendende Datenbank angeben. Darüber hinaus enthält es Informationen zur Benennung der Assembly. (Der lokale Assemblypfad wird vom Tool automatisch ausgefüllt.) Des Weiteren stehen eine Option zum erneuten Registrieren einer bereits registrierten Assembly und zwei Optionen zum Hinzufügen zusätzlicher Abhängigkeiten zur Verfügung:
-
-**Verwaltete Abhängigkeiten:** Zeigt die benötigten verwalteten Assemblys an. Jede ausgewählte Assembly wird einzeln registriert, und Skripts können darauf verweisen. Dies wird für andere .NET-Assemblys benötigt.
-
-**Zusätzliche Dateien:** Ermöglicht das Hinzufügen zusätzlicher Ressourcendateien, die von der Assembly benötigt werden. Diese werden zusammen mit der Assembly registriert und automatisch geladen, wenn auf die Assembly verwiesen wird. Verwenden Sie diese Option unter anderem für Konfigurationsdateien, native Assemblys sowie für Laufzeiten anderer Sprachen und für deren Ressourcen.
-
-In den folgenden Beispielen werden beide Optionen verwendet. Der [aktuelle Blogeintrag zur Bildverarbeitung](https://blogs.msdn.microsoft.com/azuredatalake/2016/08/18/introducing-image-processing-in-u-sql/) ist ein weiteres Beispiel für die Verwendung einer vordefinierten Assembly, die diese Optionen zur Registrierung verwenden kann.
-
-Nun können Sie in einem beliebigen U-SQL-Skript, das über Berechtigungen für die Datenbank der registrierten Assemblys verfügt, auf die registrierten Assemblys verweisen. (Weitere Informationen finden Sie im Code des U-SQL-Skripts in Abbildung 4.) Für jede separat registrierte Assembly muss ein Verweis hinzugefügt werden. Die zusätzlichen Ressourcendateien werden automatisch bereitgestellt. Dieses Skript sollte nicht mehr über eine CodeBehind-Datei für den Code in referenzierten Assemblys verfügen, die CodeBehind-Datei kann jedoch weiterhin anderen Code bereitstellen.
-
-### <a name="register-assemblies-via-azure-data-lake-tools-in-visual-studio-and-in-u-sql-scripts"></a>Registrieren von Assemblys über Azure Data Lake-Tools in Visual Studio und in U-SQL-Skripts
-Die Azure Data Lake-Tools in Visual Studio vereinfachen zwar die Registrierung einer Assembly, die Registrierung kann allerdings auch per Skript erfolgen. (Dabei werden die gleichen Schritte ausgeführt, die sonst von den Tools übernommen werden.). Diese Vorgehensweise kann beispielsweise gewählt werden, wenn Sie die Entwicklung auf einer anderen Plattform durchführen oder bereits Assemblys kompiliert haben, die Sie hochladen und registrieren möchten. Führen Sie die folgenden Schritte aus:
-
-1. Laden Sie Ihre Assembly-DLL sowie alle erforderlichen systemfremden DLLs und Ressourcendateien in einen Speicherort Ihrer Wahl hoch. Sie können sie auch in Ihr Azure Data Lake-Speicherkonto oder in ein mit Ihrem Azure Data Lake-Konto verknüpftes Microsoft Azure Blob Storage-Konto hochladen. Dazu können Sie ein beliebiges verfügbares Uploadtool verwenden – beispielsweise Windows PowerShell-Befehle, den Data Lake Explorer-Upload der Azure Data Lake-Tools von Visual Studio, den Uploadbefehl Ihres bevorzugten SDKs oder Tools, auf die Sie über das Azure-Portal zugreifen.
-
-1. Nachdem Sie die DLLs hochgeladen haben, registrieren Sie sie mithilfe der Anweisungen vom Typ [CREATE ASSEMBLY](https://msdn.microsoft.com/library/azure/mt763293.aspx).
-
-Wir verwenden diesen Ansatz im folgenden spatial-Beispiel.
-
-### <a name="register-assemblies-that-use-other-net-assemblies-based-on-the-json-and-xml-sample-library"></a>Registrieren von Assemblys, die andere .NET-Assemblys verwenden (auf der Grundlage der JSON- und XML-Beispielbibliothek)
-Auf unserer [U-SQL-GitHub-Website](https://github.com/Azure/usql/) steht eine Reihe von freigegebenen Beispielassemblys zur Verfügung, die Sie verwenden können. Eine der Assemblys ([Microsoft.Analytics.Samples.Formats](https://github.com/Azure/usql/tree/master/Examples/DataFormats)) bietet Extraktoren, Funktionen und Outputter zur Verarbeitung von JSON- und XML-Dokumenten. Für die JSON- bzw. XML-Verarbeitung ist die Assembly „Microsoft.Analytics.Samples.Formats“ auf zwei vorhandene domänenspezifische Assemblys angewiesen. Sie verwendet die Bibliothek [Newtonsoft Json.Net](http://www.newtonsoft.com/) für die Verarbeitung der JSON-Dokumente und die Assembly [System.Xml](https://msdn.microsoft.com/data/bb291078.aspx) für die XML-Verarbeitung. Wir verwenden sie, um zu zeigen, wie sie registriert wird und wie die Assemblys in unseren Skripts verwendet werden.
-
-Erst laden wir das [Visual Studio-Projekt](https://github.com/Azure/usql/tree/master/Examples/DataFormats) in unsere lokale Entwicklungsumgebung herunter (beispielsweise in Form einer lokalen Kopie, die wir mithilfe des GitHub-Tools für Windows erstellen). Anschließend öffnen wir die Projektmappe in Visual Studio, und klicken wie zuvor erläutert mit der rechten Maustaste auf das Projekt, um die Assembly zu registrieren.
-
-Diese Assembly besitzt zwar zwei Abhängigkeiten, wir müssen jedoch nur die Abhängigkeit „Newtonsoft“ einbeziehen, da „System.xml“ bereits in Azure Data Lake verfügbar ist. (Es muss jedoch explizit darauf verwiesen werden.) Abbildung 6 zeigt, wie wir die Assembly benennen und die Newtonsoft-DLL hinzufügen. (Sie können auch einen anderen Namen ohne Punkte verwenden.) Die beiden Assemblys werden nun einzeln in der angegebenen Datenbank (beispielsweise „JSONBlog“) registriert.
-
-![Registrieren der Assembly](./media/data-lake-analytics-u-sql-programmability-guide/register-assembly.png)
-
-**Abbildung 6**: Registrieren der Microsoft.Analytics.Samples.Formats-Assembly aus Visual Studio
-<br />
-
-Wenn Sie selbst oder andere Benutzer, für die Sie die registrierten Assemblys durch Gewähren von Lesezugriff auf die Datenbank freigegeben haben, nun die JSON-Funktionen in ihren Skripts verwenden möchten, müssen Sie Ihrem Skript die beiden folgenden Verweise hinzufügen:
+Der folgende Code zeigt, wie Sie eine Assembly registrieren:
 
 ```
-REFERENCE ASSEMBLY JSONBlog.[NewtonSoft.Json];
-REFERENCE ASSEMBLY JSONBlog.[Microsoft.Analytics.Samples.Formats];
+CREATE ASSEMBLY MyDB.[MyAssembly]
+    FROM "/myassembly.dll";
 ```
 
-Falls Sie die XML-Funktionen verwenden möchten, müssen Sie einen Systemassemblyverweis und einen Verweis auf die registrierte Assembly hinzufügen:
+Der folgende Code zeigt, wie Sie auf eine Assembly verweisen:
 
 ```
-REFERENCE SYSTEM ASSEMBLY [System.Xml];
-REFERENCE ASSEMBLY JSONBlog.[Microsoft.Analytics.Samples.Formats];
+REFERENCE ASSEMBLY MyDB.[MyAssembly];
 ```
 
-Weitere Informationen zur Verwendung der JSON-Funktionen finden Sie in [diesem Blogbeitrag](https://blogs.msdn.microsoft.com/mrys/?p=755).
-
-### <a name="register-assemblies-that-use-native-c-assemblies-using-the-sql-server-2016-spatial-type-assembly-from-the-feature-pack"></a>Registrieren von Assemblys, die native C++-Assemblys verwenden (unter Verwendung der SQL Server 2016-Assembly vom Typ „spatial“ aus dem Feature Pack)
-Jetzt untersuchen wir ein etwas anderes Szenario. Angenommen, die zu verwendende Assembly ist von Code abhängig, der nicht auf .NET basiert. Genauer gesagt: Die Assembly ist von einer nativen C++-Assembly abhängig. Ein Beispiel für eine solche Assembly ist die SQL Server-Typassembly [Microsoft.SqlServer.Types.dll](https://www.microsoft.com/download/details.aspx?id=52676). Sie stellt .NET-basierte Implementierungen der SQL Server-Typen „hierarchyID“, „geometry“ und „geography“ bereit, die von clientseitigen SQL Server-Anwendungen für die Behandlung der SQL Server-Typen verwendet werden. (Vor SQL Server 2016 war dies ursprünglich die Assembly zur Implementierung der räumlichen SQL Server-Typen.)
-
-Hier erfahren Sie, wie Sie diese Assembly in U-SQL registrieren.
-
-Zuerst laden wir die Assembly aus dem [SQL Server 2016 Feature Pack](https://www.microsoft.com/download/details.aspx?id=52676) herunter und installieren sie. Wählen Sie die 64-Bit-Version des Installationsprogramms („ENU\x64\SQLSysClrTypes.msi“) aus, um die 64-Bit-Version der Bibliotheken zu erhalten.
-
-Das Installationsprogramm installiert die verwaltete Assembly „Microsoft.SqlServer.Types.dll“ in „C:\Program Files (x86)\Microsoft SQL Server\130\SDK\Assemblies“ und die native Assembly „SqlServerSpatial130.dll“ in „\Windows\System32“\. Nun laden wir die Assemblys in unseren Azure Data Lake Store hoch (z.B. in einen Ordner mit dem Namen „/upload/asm/spatial“).
-
-Da das Installationsprogramm die native Bibliothek im Systemordner „c:\Windows\System32“ installiert hat, müssen wir entweder „SqlServerSpatial130.dll“ vor dem Hochladen aus diesem Ordner herauskopieren oder darauf achten, dass das von uns verwendete Tool keine [Dateisystemumleitung](https://msdn.microsoft.com/library/windows/desktop/aa384187(v=vs.85).aspx) des Systemordners ausführt.
-
-Wenn Sie sie also beispielsweise mit dem aktuellen Azure Data Lake-Explorer von Visual Studio hochladen möchten, müssen Sie die Datei zuerst in ein anderes Verzeichnis kopieren. Andernfalls wird die 32-Bit-Version hochgeladen (Stand zum Zeitpunkt der Artikelerstellung). Der Grund: Visual Studio ist eine 32-Bit-Anwendung mit Dateisystemumleitung im Auswahlfenster für die Azure Data Lake -Uploaddatei. Beim Ausführen eines U-SQL-Skripts mit Aufrufen für die native Assembly tritt dann zur Laufzeit der folgende (interne) Fehler auf:
-
-**Interne Ausnahme von Benutzerausdruck: Es wurde versucht, ein Programm mit einem falschen Format zu laden. (Ausnahme von HRESULT:0x8007000B)**
-
-Nach dem Hochladen der beiden Assemblydateien registrieren wir sie mit dem folgenden Skript in der Datenbank „SQLSpatial“:
-
-```sql
-DECLARE @ASSEMBLY_PATH string = "/upload/asm/spatial/";
-DECLARE @SPATIAL_ASM string = @ASSEMBLY_PATH+"Microsoft.SqlServer.Types.dll";
-DECLARE @SPATIAL_NATIVEDLL string = @ASSEMBLY_PATH+"SqlServerSpatial130.dll";
-
-CREATE DATABASE IF NOT EXISTS SQLSpatial;
-USE DATABASE SQLSpatial;
-
-DROP ASSEMBLY IF EXISTS SqlSpatial;
-CREATE ASSEMBLY SqlSpatial
-FROM @SPATIAL_ASM
-WITH ADDITIONAL_FILES =
-     (
-         @SPATIAL_NATIVEDLL
-     );
-```
-
-In diesem Fall registrieren wir nur eine U-SQL-Assembly und beziehen die native Assembly als Zeichenfolgenabhängigkeit in die U-SQL-Assembly ein. Zur Verwendung der Assemblys vom Typ „spatial“ müssen wir lediglich auf die U-SQL-Assembly verweisen. Die zusätzliche Datei wird automatisch für die Assembly verfügbar gemacht. Hier sehen Sie ein einfaches Beispielskript mit der Assembly vom Typ „spatial“:
-
-```sql
-REFERENCE SYSTEM ASSEMBLY [System.Xml];
-REFERENCE ASSEMBLY SQLSpatial.SqlSpatial;
-
-USING Geometry = Microsoft.SqlServer.Types.SqlGeometry;
-USING Geography = Microsoft.SqlServer.Types.SqlGeography;
-USING SqlChars = System.Data.SqlTypes.SqlChars;
-
-@spatial =
-    SELECT * FROM (VALUES
-                   // The following expression is not using the native DDL
-                   ( Geometry.Point(1.0,1.0,0).ToString()),    
-                   // The following expression is using the native DDL
-                   ( Geometry.STGeomFromText(new SqlChars("LINESTRING (100 100, 20 180, 180 180)"), 0).ToString())
-                  ) AS T(geom);
-
-OUTPUT @spatial
-TO "/output/spatial.csv"
-USING Outputters.Csv();
-```
-
-Die SQL-Typen-Bibliothek hat eine Abhängigkeit von der System.XML-Assembly, daher müssen wir darauf verweisen. Darüber hinaus verwenden einige der Methoden „System.Data.SqlTypes“ anstelle der integrierten C#-Typen. Da „System.Data“ bereits standardmäßig enthalten ist, können wir auf den erforderlichen SQL-Typ verweisen. Den vorherigen Code finden Sie auf unserer [GitHub-Website](https://github.com/Azure/usql/tree/master/Examples/SQLSpatialExample).
+Eine ausführlichere Beschreibung dieses Themas finden Sie unter [How to register U-SQL Assemblies in your U-SQL Catalog](https://blogs.msdn.microsoft.com/azuredatalake/2016/08/26/how-to-register-u-sql-assemblies-in-your-u-sql-catalog/) (Registrieren von U-SQL-Assemblys im U-SQL-Katalog).
 
 
 ### <a name="use-assembly-versioning"></a>Verwenden der Versionsverwaltung für Assemblys
@@ -541,11 +150,11 @@ Benutzerdefinierte Funktionen (User Defined Functions, UDFs) von U-SQL sind Prog
 
 Es empfiehlt sich, benutzerdefinierte U-SQL-Funktionen als **öffentlich** und **statisch** zu initialisieren.
 
-```c#
-        public static string MyFunction(string param1)
-        {
-            return "my result";
-        }
+```
+public static string MyFunction(string param1)
+{
+    return "my result";
+}
 ```
 
 Sehen wir uns zunächst das einfache Beispiel zur UDF-Erstellung an.
@@ -554,39 +163,39 @@ In diesem Szenario müssen wir den Geschäftszeitraum bestimmen – einschließl
 
 Zur Berechnung des Geschäftszeitraums verwenden wir die folgende C#-Funktion:
 
-```c#
-        public static string GetFiscalPeriod(DateTime dt)
-        {
-            int FiscalMonth=0;
-            if (dt.Month < 7)
-            {
-                FiscalMonth = dt.Month + 6;
-            }
-            else
-            {
-                FiscalMonth = dt.Month - 6;
-            }
+```
+public static string GetFiscalPeriod(DateTime dt)
+{
+    int FiscalMonth=0;
+    if (dt.Month < 7)
+    {
+    FiscalMonth = dt.Month + 6;
+    }
+    else
+    {
+    FiscalMonth = dt.Month - 6;
+    }
 
-            int FiscalQuarter=0;
-            if (FiscalMonth >=1 && FiscalMonth<=3)
-            {
-                FiscalQuarter = 1;
-            }
-            if (FiscalMonth >= 4 && FiscalMonth <= 6)
-            {
-                FiscalQuarter = 2;
-            }
-            if (FiscalMonth >= 7 && FiscalMonth <= 9)
-            {
-                FiscalQuarter = 3;
-            }
-            if (FiscalMonth >= 10 && FiscalMonth <= 12)
-            {
-                FiscalQuarter = 4;
-            }
+    int FiscalQuarter=0;
+    if (FiscalMonth >=1 && FiscalMonth<=3)
+    {
+    FiscalQuarter = 1;
+    }
+    if (FiscalMonth >= 4 && FiscalMonth <= 6)
+    {
+    FiscalQuarter = 2;
+    }
+    if (FiscalMonth >= 7 && FiscalMonth <= 9)
+    {
+    FiscalQuarter = 3;
+    }
+    if (FiscalMonth >= 10 && FiscalMonth <= 12)
+    {
+    FiscalQuarter = 4;
+    }
 
-            return "Q" + FiscalQuarter.ToString() + ":P" + FiscalMonth.ToString();
-        }
+    return "Q" + FiscalQuarter.ToString() + ":P" + FiscalMonth.ToString();
+}
 ```
 
 Sie berechnet einfach Geschäftsmonat und -quartal und gibt einen Zeichenfolgenwert zurück. Für Juni (den ersten Monat des ersten Geschäftsquartals) verwenden wir „Q1:P1“. Für Juli verwenden wir „Q1:P2“. Und so weiter.
@@ -595,7 +204,7 @@ Dies ist eine reguläre C#-Funktion, die wir in unserem U-SQL-Projekt verwenden.
 
 Der CodeBehind-Abschnitt sieht in diesem Szenario wie folgt aus:
 
-```c#
+```
 using Microsoft.Analytics.Interfaces;
 using Microsoft.Analytics.Types.Sql;
 using System;
@@ -647,22 +256,22 @@ namespace USQL_Programmability
 
 Jetzt rufen wir diese Funktion aus dem U-SQL-Basisskript heraus auf. Zu diesem Zweck müssen wir für die Funktion einen vollqualifizierten Namen angeben und dabei auch den Namespace einbeziehen. In diesem Fall ist das „NameSpace.Class.Function(parameter)“.
 
-```sql
-    USQL_Programmability.CustomFunctions.GetFiscalPeriod(dt)
+```
+USQL_Programmability.CustomFunctions.GetFiscalPeriod(dt)
 ```
 
 Hier sehen Sie das tatsächliche U-SQL-Basisskript:
 
-```sql
+```
 DECLARE @input_file string = @"\usql-programmability\input_file.tsv";
 DECLARE @output_file string = @"\usql-programmability\output_file.tsv";
 
 @rs0 =
     EXTRACT
-        guid Guid,
+            guid Guid,
         dt DateTime,
-        user String,
-        des String
+            user String,
+            des String
     FROM @input_file USING Extractors.Tsv();
 
 DECLARE @default_dt DateTime = Convert.ToDateTime("06/01/2016");
@@ -670,7 +279,7 @@ DECLARE @default_dt DateTime = Convert.ToDateTime("06/01/2016");
 @rs1 =
     SELECT
         MAX(guid) AS start_id,
-        MIN(dt) AS start_time,
+    MIN(dt) AS start_time,
         MIN(Convert.ToDateTime(Convert.ToDateTime(dt<@default_dt?@default_dt:dt).ToString("yyyy-MM-dd"))) AS start_zero_time,
         MIN(USQL_Programmability.CustomFunctions.GetFiscalPeriod(dt)) AS start_fiscalperiod,
         user,
@@ -678,7 +287,9 @@ DECLARE @default_dt DateTime = Convert.ToDateTime("06/01/2016");
     FROM @rs0
     GROUP BY user, des;
 
-OUTPUT @rs1 TO @output_file USING Outputters.Text();
+OUTPUT @rs1 
+    TO @output_file 
+    USING Outputters.Text();
 ```
 
 Im Anschluss finden Sie die Ausgabedatei der Skriptausführung:
@@ -708,7 +319,7 @@ Diese globale Variable wird bei der Skriptausführung auf das gesamte Rowset ang
 
 Hier ist der CodeBehind-Abschnitt unseres U-SQL-Programms:
 
-```c#
+```
 using Microsoft.Analytics.Interfaces;
 using Microsoft.Analytics.Types.Sql;
 using System;
@@ -727,22 +338,16 @@ namespace USQLApplication21
             if (!string.IsNullOrEmpty(PreviousRow))
             {
                 double timeGap = Convert.ToDateTime(eventTime).Subtract(Convert.ToDateTime(PreviousRow)).TotalMinutes;
-                if (timeGap <= 60)
-                    return Session;
-                else
-                    return Guid.NewGuid().ToString();
+                if (timeGap <= 60) {return Session;}
+                else {return Guid.NewGuid().ToString();}
             }
-            else
-                return Guid.NewGuid().ToString();
+            else {return Guid.NewGuid().ToString();}
 
         }
 
         static public string getStampUserSession(string Session)
         {
-            if (Session != globalSession && !string.IsNullOrEmpty(Session))
-            {
-                globalSession = Session;
-            }
+            if (Session != globalSession && !string.IsNullOrEmpty(Session)) { globalSession = Session; }
             return globalSession;
         }
 
@@ -754,7 +359,7 @@ Dieses Beispiel zeigt die globale Variable `static public string globalSession;`
 
 Das U-SQL-Basisskript sieht wie folgt aus:
 
-```sql
+```
 DECLARE @in string = @"\UserSession\test1.tsv";
 DECLARE @out1 string = @"\UserSession\Out1.csv";
 DECLARE @out2 string = @"\UserSession\Out2.csv";
@@ -770,32 +375,36 @@ DECLARE @out3 string = @"\UserSession\Out3.csv";
     USING Extractors.Tsv();
 
 @rs1 =
-    SELECT EventDateTime,
-           UserName,
-LAG(EventDateTime, 1) OVER(PARTITION BY UserName ORDER BY EventDateTime ASC) AS prevDateTime,          
-           string.IsNullOrEmpty(LAG(EventDateTime, 1) OVER(PARTITION BY UserName ORDER BY EventDateTime ASC)) AS Flag,           
-           USQLApplication21.UserSession.StampUserSession
+    SELECT 
+        EventDateTime,
+        UserName,
+    LAG(EventDateTime, 1) 
+        OVER(PARTITION BY UserName ORDER BY EventDateTime ASC) AS prevDateTime,          
+        string.IsNullOrEmpty(LAG(EventDateTime, 1) 
+        OVER(PARTITION BY UserName ORDER BY EventDateTime ASC)) AS Flag,           
+        USQLApplication21.UserSession.StampUserSession
            (
-               EventDateTime,
-               LAG(EventDateTime, 1) OVER(PARTITION BY UserName ORDER BY EventDateTime ASC),
-               LAG(UserSessionTimestamp, 1) OVER(PARTITION BY UserName ORDER BY EventDateTime ASC)
-           )
-           AS UserSessionTimestamp
+            EventDateTime,
+            LAG(EventDateTime, 1) OVER(PARTITION BY UserName ORDER BY EventDateTime ASC),
+            LAG(UserSessionTimestamp, 1) OVER(PARTITION BY UserName ORDER BY EventDateTime ASC)
+           ) AS UserSessionTimestamp
     FROM @records;
 
 @rs2 =
-    SELECT EventDateTime,
-           UserName,
-           LAG(EventDateTime, 1) OVER(PARTITION BY UserName ORDER BY EventDateTime ASC) AS prevDateTime,
-           string.IsNullOrEmpty(LAG(EventDateTime, 1) OVER(PARTITION BY UserName ORDER BY EventDateTime ASC)) AS Flag,
-           USQLApplication21.UserSession.getStampUserSession(UserSessionTimestamp) AS UserSessionTimestamp
+    SELECT 
+        EventDateTime,
+        UserName,
+        LAG(EventDateTime, 1) 
+        OVER(PARTITION BY UserName ORDER BY EventDateTime ASC) AS prevDateTime,
+        string.IsNullOrEmpty( LAG(EventDateTime, 1) OVER(PARTITION BY UserName ORDER BY EventDateTime ASC)) AS Flag,
+        USQLApplication21.UserSession.getStampUserSession(UserSessionTimestamp) AS UserSessionTimestamp
     FROM @rs1
     WHERE UserName != "UserName";
 
 OUTPUT @rs2
-TO @out2
-ORDER BY UserName, EventDateTime ASC
-USING Outputters.Csv();
+    TO @out2
+    ORDER BY UserName, EventDateTime ASC
+    USING Outputters.Csv();
 ```
 
 Die Funktion `USQLApplication21.UserSession.getStampUserSession(UserSessionTimestamp)` wird hier während der Berechnung des zweiten Arbeitsspeicherrowsets aufgerufen. Sie übergibt die Spalte `UserSessionTimestamp` und gibt den Wert zurück, bis `UserSessionTimestamp` geändert wurde.
@@ -839,29 +448,32 @@ Beliebige UDTs können von U-SQL nicht implizit serialisiert oder deserialisiert
 
 Angenommen, wir versuchen, den UDT in EXTRACTOR oder OUTPUTTER (außerhalb des vorherigen SELECT-Ausdrucks) zu verwenden, wie hier zu sehen:
 
-```sql
+```
 @rs1 =
-    SELECT MyNameSpace.Myfunction_Returning_UDT(filed1) AS myfield
+    SELECT 
+        MyNameSpace.Myfunction_Returning_UDT(filed1) AS myfield
     FROM @rs0;
 
-OUTPUT @rs1 TO @output_file USING Outputters.Text();
+OUTPUT @rs1 
+    TO @output_file 
+    USING Outputters.Text();
 ```
 
 In diesem Fall erhalten wir folgende Fehlermeldung:
 
 ```
-    Error    1    E_CSC_USER_INVALIDTYPEINOUTPUTTER: Outputters.Text was used to output column myfield of type
-    MyNameSpace.Myfunction_Returning_UDT.
+Error   1   E_CSC_USER_INVALIDTYPEINOUTPUTTER: Outputters.Text was used to output column myfield of type
+MyNameSpace.Myfunction_Returning_UDT.
 
-    Description:
+Description:
 
-    Outputters.Text only supports built-in types.
+Outputters.Text only supports built-in types.
 
-    Resolution:
+Resolution:
 
-    Implement a custom outputter that knows how to serialize this type, or call a serialization method on the type in
-    the preceding SELECT.    C:\Users\sergeypu\Documents\Visual Studio 2013\Projects\USQL-Programmability\
-    USQL-Programmability\Types.usql    52    1    USQL-Programmability
+Implement a custom outputter that knows how to serialize this type, or call a serialization method on the type in
+the preceding SELECT.   C:\Users\sergeypu\Documents\Visual Studio 2013\Projects\USQL-Programmability\
+USQL-Programmability\Types.usql 52  1   USQL-Programmability
 ```
 
 Für die Zusammenarbeit von UDT und Outputter müssen wir den UDT entweder mit der ToString()-Methode in eine Zeichenfolge serialisieren oder einen benutzerdefinierten Outputter erstellen.
@@ -869,27 +481,27 @@ Für die Zusammenarbeit von UDT und Outputter müssen wir den UDT entweder mit d
 UDTs können derzeit nicht in der GROUP BY-Klausel verwendet werden. Wenn der UDT in der GROUP BY-Klausel verwendet wird, wird der folgende Fehler ausgelöst:
 
 ```
-    Error    1    E_CSC_USER_INVALIDTYPEINCLAUSE: GROUP BY doesn't support type MyNameSpace.Myfunction_Returning_UDT
-    for column myfield
+Error   1   E_CSC_USER_INVALIDTYPEINCLAUSE: GROUP BY doesn't support type MyNameSpace.Myfunction_Returning_UDT
+for column myfield
 
-    Description:
+Description:
 
-    GROUP BY doesn't support UDT or Complex types.
+GROUP BY doesn't support UDT or Complex types.
 
-    Resolution:
+Resolution:
 
-    Add a SELECT statement where you can project a scalar column that you want to use with GROUP BY.
-    C:\Users\sergeypu\Documents\Visual Studio 2013\Projects\USQL-Programmability\USQL-Programmability\Types.usql
-    62    5    USQL-Programmability
+Add a SELECT statement where you can project a scalar column that you want to use with GROUP BY.
+C:\Users\sergeypu\Documents\Visual Studio 2013\Projects\USQL-Programmability\USQL-Programmability\Types.usql
+62  5   USQL-Programmability
 ```
 
 Folgendermaßen definieren wir einen UDT:
 
 * Fügen Sie die folgenden Namespaces hinzu:
 
-```c#
-    using Microsoft.Analytics.Interfaces
-    using System.IO;
+```
+using Microsoft.Analytics.Interfaces
+using System.IO;
 ```
 
 * Fügen Sie `Microsoft.Analytics.Interfaces` hinzu. Dieses Element wird für die UDT-Schnittstellen benötigt. Außerdem wird `System.IO` unter Umständen zum Definieren der IFormatter-Schnittstelle benötigt.
@@ -906,31 +518,23 @@ Der Konstruktor der Klasse:
 
 * Typformatierung: Erforderlicher Parameter zum Definieren einer UDT-Formatierung. Genauer gesagt muss hier die Art der `IFormatter`-Schnittstelle übergeben werden.
 
-```c#
-    [SqlUserDefinedType(typeof(MyTypeFormatter))]
-      public class MyType
-              {
-             …
-           }
+```
+[SqlUserDefinedType(typeof(MyTypeFormatter))]
+public class MyType
+{ … }
 ```
 
 * Für einen typischen UDT muss außerdem die IFormatter-Schnittstelle definiert werden, wie im folgenden Beispiel zu sehen:
 
-```c#
-       public class MyTypeFormatter : IFormatter<MyType>
-        {
-            public void Serialize(MyType instance, IColumnWriter writer,
-                           ISerializationContext context)
-            {
-        …
-            }
+```
+public class MyTypeFormatter : IFormatter<MyType>
+{
+    public void Serialize(MyType instance, IColumnWriter writer, ISerializationContext context)
+    { … }
 
-            public MyType Deserialize(IColumnReader reader,
-                                  ISerializationContext context)
-            {
-        …
-            }
-        }
+    public MyType Deserialize(IColumnReader reader, ISerializationContext context)
+    { … }
+}
 ```
 
 Die `IFormatter`-Schnittstelle serialisiert und deserialisiert ein Objektdiagramm mit dem Stammtyp \<typeparamref name="T">.
@@ -945,9 +549,9 @@ Die `IFormatter`-Schnittstelle serialisiert und deserialisiert ein Objektdiagram
 `IColumnWriter`-Writer/`IColumnReader`-Reader: Der zugrunde liegende Spaltendatenstrom.  
 `ISerializationContext`-Kontext: Enumeration, die eine Gruppe von Flags definiert, die den Quell- oder Zielkontext für den Datenstrom während der Serialisierung angibt.
 
-   * **Intermediate:** Gibt an, dass der Quell- oder Zielkontext kein permanenter Speicher ist.
+* **Intermediate:** Gibt an, dass der Quell- oder Zielkontext kein permanenter Speicher ist.
 
-   * **Persistence:** Gibt an, dass der Quell- oder Zielkontext ein permanenter Speicher ist.
+* **Persistence:** Gibt an, dass der Quell- oder Zielkontext ein permanenter Speicher ist.
 
 Als regulärer C#-Typ kann eine U-SQL-UDT-Definition Überschreibungen für Operatoren wie +/==/!= enthalten. Sie kann auch statische Methoden enthalten. Wenn wir diesen UDT beispielsweise als Parameter für eine U-SQL-MIN-Aggregatfunktion verwenden, müssen wir die Überschreibung des <-Operators definieren.
 
@@ -955,103 +559,103 @@ Weiter oben in dieser Anleitung haben wir uns mit einem Beispiel zur Identifizie
 
 Im Anschluss sehen Sie ein Beispiel für einen CodeBehind-Abschnitt mit UDT und IFormatter-Schnittstelle:
 
-```c#
-        [SqlUserDefinedType(typeof(FiscalPeriodFormatter))]
-        public struct FiscalPeriod
-        {
-            public int Quarter { get; private set; }
+```
+[SqlUserDefinedType(typeof(FiscalPeriodFormatter))]
+public struct FiscalPeriod
+{
+    public int Quarter { get; private set; }
 
-            public int Month { get; private set; }
+    public int Month { get; private set; }
 
-            public FiscalPeriod(int quarter, int month):this()
-            {
-                this.Quarter = quarter;
-                this.Month = month;
-            }
+    public FiscalPeriod(int quarter, int month):this()
+    {
+    this.Quarter = quarter;
+    this.Month = month;
+    }
 
-            public override bool Equals(object obj)
-            {
-                if (ReferenceEquals(null, obj))
-                {
-                    return false;
-                }
+    public override bool Equals(object obj)
+    {
+    if (ReferenceEquals(null, obj))
+    {
+        return false;
+    }
 
-                return obj is FiscalPeriod && Equals((FiscalPeriod)obj);
-            }
+    return obj is FiscalPeriod && Equals((FiscalPeriod)obj);
+    }
 
-            public bool Equals(FiscalPeriod other)
-            {
+    public bool Equals(FiscalPeriod other)
+    {
 return this.Quarter.Equals(other.Quarter) && this.Month.Equals(other.Month);
-            }
+    }
 
-            public bool GreaterThan(FiscalPeriod other)
-            {
+    public bool GreaterThan(FiscalPeriod other)
+    {
 return this.Quarter.CompareTo(other.Quarter) > 0 || this.Month.CompareTo(other.Month) > 0;
-            }
+    }
 
-            public bool LessThan(FiscalPeriod other)
-            {
+    public bool LessThan(FiscalPeriod other)
+    {
 return this.Quarter.CompareTo(other.Quarter) < 0 || this.Month.CompareTo(other.Month) < 0;
-            }
+    }
 
-            public override int GetHashCode()
-            {
-                unchecked
-                {
-                    return (this.Quarter.GetHashCode() * 397) ^ this.Month.GetHashCode();
-                }
-            }
+    public override int GetHashCode()
+    {
+    unchecked
+    {
+        return (this.Quarter.GetHashCode() * 397) ^ this.Month.GetHashCode();
+    }
+    }
 
-            public static FiscalPeriod operator +(FiscalPeriod c1, FiscalPeriod c2)
-            {
+    public static FiscalPeriod operator +(FiscalPeriod c1, FiscalPeriod c2)
+    {
 return new FiscalPeriod((c1.Quarter + c2.Quarter) > 4 ? (c1.Quarter + c2.Quarter)-4 : (c1.Quarter + c2.Quarter), (c1.Month + c2.Month) > 12 ? (c1.Month + c2.Month) - 12 : (c1.Month + c2.Month));
-            }
+    }
 
-            public static bool operator ==(FiscalPeriod c1, FiscalPeriod c2)
-            {
-                return c1.Equals(c2);
-            }
+    public static bool operator ==(FiscalPeriod c1, FiscalPeriod c2)
+    {
+    return c1.Equals(c2);
+    }
 
-            public static bool operator !=(FiscalPeriod c1, FiscalPeriod c2)
-            {
-                return !c1.Equals(c2);
-            }
-            public static bool operator >(FiscalPeriod c1, FiscalPeriod c2)
-            {
-                return c1.GreaterThan(c2);
-            }
-            public static bool operator <(FiscalPeriod c1, FiscalPeriod c2)
-            {
-                return c1.LessThan(c2);
-            }
-            public override string ToString()
-            {
-                return (String.Format("Q{0}:P{1}", this.Quarter, this.Month));
-            }
+    public static bool operator !=(FiscalPeriod c1, FiscalPeriod c2)
+    {
+    return !c1.Equals(c2);
+    }
+    public static bool operator >(FiscalPeriod c1, FiscalPeriod c2)
+    {
+    return c1.GreaterThan(c2);
+    }
+    public static bool operator <(FiscalPeriod c1, FiscalPeriod c2)
+    {
+    return c1.LessThan(c2);
+    }
+    public override string ToString()
+    {
+    return (String.Format("Q{0}:P{1}", this.Quarter, this.Month));
+    }
 
-        }
+}
 
-        public class FiscalPeriodFormatter : IFormatter<FiscalPeriod>
-        {
-public void Serialize(FiscalPeriod instance, IColumnWriter writer, ISerializationContext context)
-            {
-                using (var binaryWriter = new BinaryWriter(writer.BaseStream))
-                {
-                    binaryWriter.Write(instance.Quarter);
-                    binaryWriter.Write(instance.Month);
-                    binaryWriter.Flush();
-                }
-            }
+public class FiscalPeriodFormatter : IFormatter<FiscalPeriod>
+{
+    public void Serialize(FiscalPeriod instance, IColumnWriter writer, ISerializationContext context)
+    {
+    using (var binaryWriter = new BinaryWriter(writer.BaseStream))
+    {
+        binaryWriter.Write(instance.Quarter);
+        binaryWriter.Write(instance.Month);
+        binaryWriter.Flush();
+    }
+    }
 
-public FiscalPeriod Deserialize(IColumnReader reader, ISerializationContext context)
-            {
-                using (var binaryReader = new BinaryReader(reader.BaseStream))
-                {
+    public FiscalPeriod Deserialize(IColumnReader reader, ISerializationContext context)
+    {
+    using (var binaryReader = new BinaryReader(reader.BaseStream))
+    {
 var result = new FiscalPeriod(binaryReader.ReadInt16(), binaryReader.ReadInt16());
-                    return result;
-                }
-            }
-        }
+        return result;
+    }
+    }
+}
 ```
 
 Der definierte Typ umfasst zwei Zahlen: Quartal und Monat. Die Operatoren ==/!=/>/< und die statische Methode ToString() sind hier definiert.
@@ -1060,46 +664,46 @@ Wie bereits erwähnt, kann der UDT in SELECT-Ausdrücken verwendet werden. In OU
 
 Jetzt betrachten wird die Verwendung des UDT. In einem CodeBehind-Abschnitt haben wir unsere GetFiscalPeriod-Funktion wie folgt geändert:
 
-```c#
-        public static FiscalPeriod GetFiscalPeriodWithCustomType(DateTime dt)
-        {
-            int FiscalMonth = 0;
-            if (dt.Month < 7)
-            {
-                FiscalMonth = dt.Month + 6;
-            }
-            else
-            {
-                FiscalMonth = dt.Month - 6;
-            }
+```
+public static FiscalPeriod GetFiscalPeriodWithCustomType(DateTime dt)
+{
+    int FiscalMonth = 0;
+    if (dt.Month < 7)
+    {
+    FiscalMonth = dt.Month + 6;
+    }
+    else
+    {
+    FiscalMonth = dt.Month - 6;
+    }
 
-            int FiscalQuarter = 0;
-            if (FiscalMonth >= 1 && FiscalMonth <= 3)
-            {
-                FiscalQuarter = 1;
-            }
-            if (FiscalMonth >= 4 && FiscalMonth <= 6)
-            {
-                FiscalQuarter = 2;
-            }
-            if (FiscalMonth >= 7 && FiscalMonth <= 9)
-            {
-                FiscalQuarter = 3;
-            }
-            if (FiscalMonth >= 10 && FiscalMonth <= 12)
-            {
-                FiscalQuarter = 4;
-            }
+    int FiscalQuarter = 0;
+    if (FiscalMonth >= 1 && FiscalMonth <= 3)
+    {
+    FiscalQuarter = 1;
+    }
+    if (FiscalMonth >= 4 && FiscalMonth <= 6)
+    {
+    FiscalQuarter = 2;
+    }
+    if (FiscalMonth >= 7 && FiscalMonth <= 9)
+    {
+    FiscalQuarter = 3;
+    }
+    if (FiscalMonth >= 10 && FiscalMonth <= 12)
+    {
+    FiscalQuarter = 4;
+    }
 
-            return new FiscalPeriod(FiscalQuarter, FiscalMonth);
-        }
+    return new FiscalPeriod(FiscalQuarter, FiscalMonth);
+}
 ```
 
 Wie Sie sehen, wird der Wert unseres FiscalPeriod-Typs zurückgegeben.
 
 Hier finden Sie ein Beispiel zur weiteren Verwendung im U-SQL-Basisskript. Dieses Beispiel zeigt verschiedene Möglichkeiten des UDT-Aufrufs im U-SQL-Skript.
 
-```sql
+```
 DECLARE @input_file string = @"c:\work\cosmos\usql-programmability\input_file.tsv";
 DECLARE @output_file string = @"c:\work\cosmos\usql-programmability\output_file.tsv";
 
@@ -1112,18 +716,20 @@ DECLARE @output_file string = @"c:\work\cosmos\usql-programmability\output_file.
     FROM @input_file USING Extractors.Tsv();
 
 @rs1 =
-    SELECT guid AS start_id,
-           dt,
-           DateTime.Now.ToString("M/d/yyyy") AS Nowdate,
-           USQL_Programmability.CustomFunctions.GetFiscalPeriodWithCustomType(dt).Quarter AS fiscalquarter,
-           USQL_Programmability.CustomFunctions.GetFiscalPeriodWithCustomType(dt).Month AS fiscalmonth,
-           USQL_Programmability.CustomFunctions.GetFiscalPeriodWithCustomType(dt) + new USQL_Programmability.CustomFunctions.FiscalPeriod(1,7) AS fiscalperiod_adjusted,
-           user,
-           des
+    SELECT 
+        guid AS start_id,
+        dt,
+        DateTime.Now.ToString("M/d/yyyy") AS Nowdate,
+        USQL_Programmability.CustomFunctions.GetFiscalPeriodWithCustomType(dt).Quarter AS fiscalquarter,
+        USQL_Programmability.CustomFunctions.GetFiscalPeriodWithCustomType(dt).Month AS fiscalmonth,
+        USQL_Programmability.CustomFunctions.GetFiscalPeriodWithCustomType(dt) + new USQL_Programmability.CustomFunctions.FiscalPeriod(1,7) AS fiscalperiod_adjusted,
+        user,
+        des
     FROM @rs0;
 
 @rs2 =
-    SELECT start_id,
+    SELECT 
+           start_id,
            dt,
            DateTime.Now.ToString("M/d/yyyy") AS Nowdate,
            fiscalquarter,
@@ -1136,12 +742,14 @@ DECLARE @output_file string = @"c:\work\cosmos\usql-programmability\output_file.
            des
     FROM @rs1;
 
-OUTPUT @rs2 TO @output_file USING Outputters.Text();
+OUTPUT @rs2 
+    TO @output_file 
+    USING Outputters.Text();
 ```
 
 Im Anschluss folgt ein Beispiel für einen vollständigen CodeBehind-Abschnitt:
 
-```c#
+```
 using Microsoft.Analytics.Interfaces;
 using Microsoft.Analytics.Types.Sql;
 using System;
@@ -1295,7 +903,6 @@ var result = new FiscalPeriod(binaryReader.ReadInt16(), binaryReader.ReadInt16()
                 }
             }
         }
-
     }
 }
 ```
@@ -1324,27 +931,20 @@ Das SqlUserDefinedType-Attribut ist für die UDAGG-Definition **optional**.
 
 Mithilfe der Basisklasse können Sie drei abstrakte Parameter übergeben: zwei als Eingabe und einen als Ergebnis. Die Datentypen sind variabel und sollten während der Klassenvererbung definiert werden.
 
-```c#
-    public class GuidAggregate : IAggregate<string, string, string>
-    {
-        string guid_agg;
+```
+public class GuidAggregate : IAggregate<string, string, string>
+{
+    string guid_agg;
 
-        public override void Init()
-        {
-        …
-        }
+    public override void Init()
+    { … }
 
-        public override void Accumulate(string guid, string user)
-        {
-        …
-        }
+    public override void Accumulate(string guid, string user)
+    { … }
 
-        public override string Terminate()
-        {
-        …
-        }
-
-    }
+    public override string Terminate()
+    { … }
+}
 ```
 
 * **Init** wird während der Berechnung für jede Gruppe einmal aufgerufen. Bietet eine Initialisierungsroutine für jede Aggregationsgruppe.  
@@ -1353,8 +953,8 @@ Mithilfe der Basisklasse können Sie drei abstrakte Parameter übergeben: zwei a
 
 Verwenden Sie die Klassendefinition wie folgt, um korrekte Ein- und Ausgabedatentypen zu deklarieren:
 
-```c#
-    public abstract class IAggregate<T1, T2, TResult> : IAggregate
+```
+public abstract class IAggregate<T1, T2, TResult> : IAggregate
 ```
 
 * T1: Erster Parameter für „accumulate“
@@ -1363,14 +963,14 @@ Verwenden Sie die Klassendefinition wie folgt, um korrekte Ein- und Ausgabedaten
 
 Beispiel:
 
-```c#
-    public class GuidAggregate : IAggregate<string, int, int>
+```
+public class GuidAggregate : IAggregate<string, int, int>
 ```
 
 oder
 
-```c#
-    public class GuidAggregate : IAggregate<string, string, string>
+```
+public class GuidAggregate : IAggregate<string, string, string>
 ```
 
 ### <a name="use-udagg-in-u-sql"></a>Verwenden von UDAGGs in U-SQL
@@ -1378,51 +978,52 @@ Wenn Sie ein UDAGG verwenden möchten, definieren Sie es zuerst im CodeBehind, o
 
 Verwenden Sie dann die folgende Syntax:
 
-```c#
-    AGG<UDAGG_functionname>(param1,param2)
+```
+AGG<UDAGG_functionname>(param1,param2)
 ```
 
 Hier sehen Sie ein UDAGG-Beispiel:
 
-```c#
-    public class GuidAggregate : IAggregate<string, string, string>
+```
+public class GuidAggregate : IAggregate<string, string, string>
+{
+    string guid_agg;
+
+    public override void Init()
     {
-        string guid_agg;
-
-        public override void Init()
-        {
-            guid_agg = "";
-        }
-
-        public override void Accumulate(string guid, string user)
-        {
-            if (user.ToUpper()== "USER1")
-            {
-                guid_agg += "{" + guid + "}";
-            }
-        }
-
-        public override string Terminate()
-        {
-            return guid_agg;
-        }
-
+        guid_agg = "";
     }
+
+    public override void Accumulate(string guid, string user)
+    {
+        if (user.ToUpper()== "USER1")
+        {
+        guid_agg += "{" + guid + "}";
+        }
+    }
+
+    public override string Terminate()
+    {
+        return guid_agg;
+    }
+
+}
 ```
 
 U-SQL-Basisskript:
 
-```sql
+```
 DECLARE @input_file string = @"\usql-programmability\input_file.tsv";
 DECLARE @output_file string = @" \usql-programmability\output_file.tsv";
 
 @rs0 =
     EXTRACT
-        guid string,
+            guid string,
         dt DateTime,
-        user String,
-        des String
-    FROM @input_file USING Extractors.Tsv();
+            user String,
+            des String
+    FROM @input_file 
+    USING Extractors.Tsv();
 
 @rs1 =
     SELECT
@@ -1472,6 +1073,9 @@ UDOs werden im U-SQL-Skript in der Regel explizit als Teil der folgenden U-SQL-A
 * COMBINE
 * REDUCE
 
+> [!NOTE]  
+> UDOs können maximal 0,5 GB Arbeitsspeicher beanspruchen.  Diese Beschränkung des Arbeitsspeichers gilt nicht für lokale Ausführungen.
+
 ## <a name="use-user-defined-extractors"></a>Verwenden benutzerdefinierter Extraktoren
 In U-SQL können Sie externe Daten mithilfe einer EXTRACT-Anweisung importieren. Eine EXTRACT-Anweisung kann integrierte UDO-Extraktoren verwenden:  
 
@@ -1489,21 +1093,16 @@ Es empfiehlt sich unter Umständen, einen benutzerdefinierten Extraktor zu entwi
 
 Um einen benutzerdefinierten Extraktor (User-Defined Extractor, UDE) zu definieren, müssen wir eine `IExtractor`-Schnittstelle erstellen. Alle Eingabeparameter des Extraktors (wie etwa Spalten-/Zeilentrennzeichen und die Codierung) müssen im Konstruktor der Klasse definiert werden. Die `IExtractor`-Schnittstelle muss auch eine Definition für die `IEnumerable<IRow>`-Überschreibung enthalten:
 
-```c#
-     [SqlUserDefinedExtractor]
-     public class SampleExtractor : IExtractor
-     {
-         public SampleExtractor(string row_delimiter, char col_delimiter)
-         {
-            …
+```
+[SqlUserDefinedExtractor]
+public class SampleExtractor : IExtractor
+{
+     public SampleExtractor(string row_delimiter, char col_delimiter)
+     { … }
 
-         }
-
-         public override IEnumerable<IRow> Extract(IUnstructuredReader input, IUpdatableRow output)
-         {
-             …
-         }
-     }
+     public override IEnumerable<IRow> Extract(IUnstructuredReader input, IUpdatableRow output)
+     { … }
+}
 ```
 
 Das Attribut **SqlUserDefinedExtractor** gibt an, dass der Typ als benutzerdefinierter Extraktor registriert werden muss. Diese Klasse kann nicht vererbt werden.
@@ -1521,112 +1120,110 @@ Der Zugriff auf die Eingabedaten erfolgt über `System.IO.Stream` und `System.IO
 
 Für die Eingabespaltenenumeration teilen wir zunächst den Eingabedatenstrom mit Zeilentrennzeichen auf.
 
-```c#
-    foreach (Stream current in input.Split(my_row_delimiter))
-    {
-    …
-    }
+```
+foreach (Stream current in input.Split(my_row_delimiter))
+{
+…
+}
 ```
 
 Dann teilen wir die Eingabezeile weiter in Spaltenteile auf.
 
-```c#
-    foreach (Stream current in input.Split(my_row_delimiter))
-    {
-    …
-        string[] parts = line.Split(my_column_delimiter);
-               foreach (string part in parts)
-        {
-        …
-        }
-    }
+```
+foreach (Stream current in input.Split(my_row_delimiter))
+{
+…
+    string[] parts = line.Split(my_column_delimiter);
+    foreach (string part in parts)
+    { … }
+}
 ```
 
 Zum Festlegen der Ausgabedaten verwenden wir die `output.Set`-Methode.
 
 Wichtig: Der benutzerdefinierte Extraktor gibt nur Spalten und Werte aus, die mit der Ausgabe definiert wurden. Wir legen den Methodenaufruf fest.
 
-```c#
-    output.Set<string>(count, part);
+```
+output.Set<string>(count, part);
 ```
 
 Die tatsächliche Extraktorausgabe wird durch Aufrufen von `yield return output.AsReadOnly();` ausgelöst.
 
 Hier sehen Sie das Extraktorbeispiel:
 
-```c#
-    [SqlUserDefinedExtractor(AtomicFileProcessing = true)]
-    public class FullDescriptionExtractor : IExtractor
+```
+[SqlUserDefinedExtractor(AtomicFileProcessing = true)]
+public class FullDescriptionExtractor : IExtractor
+{
+     private Encoding _encoding;
+     private byte[] _row_delim;
+     private char _col_delim;
+
+    public FullDescriptionExtractor(Encoding encoding, string row_delim = "\r\n", char col_delim = '\t')
     {
-         private Encoding _encoding;
-         private byte[] _row_delim;
-         private char _col_delim;
+         this._encoding = ((encoding == null) ? Encoding.UTF8 : encoding);
+         this._row_delim = this._encoding.GetBytes(row_delim);
+         this._col_delim = col_delim;
 
-        public FullDescriptionExtractor(Encoding encoding, string row_delim = "\r\n", char col_delim = '\t')
-        {
-             this._encoding = ((encoding == null) ? Encoding.UTF8 : encoding);
-             this._row_delim = this._encoding.GetBytes(row_delim);
-             this._col_delim = col_delim;
+    }
 
-        }
-
-        public override IEnumerable<IRow> Extract(IUnstructuredReader input, IUpdatableRow output)
-        {
-             string line;
-             //Read the input line by line
-             foreach (Stream current in input.Split(_encoding.GetBytes("\r\n")))
+    public override IEnumerable<IRow> Extract(IUnstructuredReader input, IUpdatableRow output)
+    {
+         string line;
+         //Read the input line by line
+         foreach (Stream current in input.Split(_encoding.GetBytes("\r\n")))
+         {
+        using (System.IO.StreamReader streamReader = new StreamReader(current, this._encoding))
+         {
+             line = streamReader.ReadToEnd().Trim();
+             //Split the input by the column delimiter
+             string[] parts = line.Split(this._col_delim);
+             int count = 0; // start with first column
+             foreach (string part in parts)
              {
-                using (System.IO.StreamReader streamReader = new StreamReader(current, this._encoding))
-                 {
-                     line = streamReader.ReadToEnd().Trim();
-                     //Split the input by the column delimiter
-                     string[] parts = line.Split(this._col_delim);
-                     int count = 0; // start with first column
-                     foreach (string part in parts)
-                     {
     if (count == 0)
-                         {  // for column “guid”, re-generated guid
-                             Guid new_guid = Guid.NewGuid();
-                             output.Set<Guid>(count, new_guid);
-                         }
-                         else if (count == 2)
-                         {
-                             // for column “user”, convert to UPPER case
-                             output.Set<string>(count, part.ToUpper());
-
-                         }
-                         else
-                         {
-                             // keep the rest of the columns as-is
-                             output.Set<string>(count, part);
-                         }
-                         count += 1;
-                     }
-
-                 }
-                 yield return output.AsReadOnly();
+             {  // for column “guid”, re-generated guid
+                 Guid new_guid = Guid.NewGuid();
+                 output.Set<Guid>(count, new_guid);
              }
-             yield break;
+             else if (count == 2)
+             {
+                 // for column “user”, convert to UPPER case
+                 output.Set<string>(count, part.ToUpper());
+
+             }
+             else
+             {
+                 // keep the rest of the columns as-is
+                 output.Set<string>(count, part);
+             }
+             count += 1;
+             }
+
          }
+         yield return output.AsReadOnly();
+         }
+         yield break;
      }
+}
 ```
 
 In diesem Szenario generiert der Extraktor die GUID für die Spalte „guid“ neu und konvertiert die Werte der Spalte „user“ in Großbuchstaben. Benutzerdefinierte Extraktoren können durch Analysieren der Eingabedaten und deren Bearbeitung kompliziertere Ergebnisse hervorbringen.
 
 Im Anschluss sehen Sie ein U-SQL-Basisskript mit einem benutzerdefinierten Extraktor:
 
-```sql
+```
 DECLARE @input_file string = @"\usql-programmability\input_file.tsv";
 DECLARE @output_file string = @"\usql-programmability\output_file.tsv";
 
 @rs0 =
     EXTRACT
-        guid Guid,
+            guid Guid,
         dt String,
-        user String,
-        des String
+            user String,
+            des String
     FROM @input_file
-    USING new USQL_Programmability.FullDescriptionExtractor(Encoding.UTF8);
+        USING new USQL_Programmability.FullDescriptionExtractor(Encoding.UTF8);
 
 OUTPUT @rs0 TO @output_file USING Outputters.Text();
 ```
@@ -1648,38 +1245,38 @@ Um einen benutzerdefinierten Outputter zu definieren, müssen wir die `IOutputte
 
 Im Anschluss sehen Sie die `IOutputter`-Basisklassenimplementierung:
 
-```c#
-    public abstract class IOutputter : IUserDefinedOperator
-    {
-        protected IOutputter();
+```
+public abstract class IOutputter : IUserDefinedOperator
+{
+    protected IOutputter();
 
-        public virtual void Close();
-        public abstract void Output(IRow input, IUnstructuredWriter output);
-    }
+    public virtual void Close();
+    public abstract void Output(IRow input, IUnstructuredWriter output);
+}
 ```
 
 Alle Eingabeparameter des Outputters (wie etwa Spalten-/Zeilentrennzeichen und die Codierung) müssen im Konstruktor der Klasse definiert werden. Die `IOutputter`-Schnittstelle muss auch eine Definition für die `void Output`-Überschreibung enthalten. Das `[SqlUserDefinedOutputter(AtomicFileProcessing = true)`-Attribut kann optional für die Verarbeitung atomischer Dateien festgelegt werden. Ausführlichere Informationen finden Sie im weiteren Verlauf.
 
-```c#
-        [SqlUserDefinedOutputter(AtomicFileProcessing = true)]
-        public class MyOutputter : IOutputter
-        {
+```
+[SqlUserDefinedOutputter(AtomicFileProcessing = true)]
+public class MyOutputter : IOutputter
+{
 
-            public MyOutputter(myparam1, myparam2)
-            {
-              …
-            }
+    public MyOutputter(myparam1, myparam2)
+    {
+      …
+    }
 
-            public override void Close()
-            {
-              …
-            }
+    public override void Close()
+    {
+      …
+    }
 
-            public override void Output(IRow row, IUnstructuredWriter output)
-            {
-              …
-            }
-        }
+    public override void Output(IRow row, IUnstructuredWriter output)
+    {
+      …
+    }
+}
 ```
 
 * `Output` wird für jede Eingabezeile aufgerufen. Es gibt das Rowset `IUnstructuredWriter output` zurück.
@@ -1701,16 +1298,16 @@ Der Zugriff auf die Ausgabedaten erfolgt über die `IRow`-Schnittstelle. Ausgabe
 
 Die einzelnen Werte werden durch den Aufruf der Get-Methode der IRow-Schnittstelle aufgezählt:
 
-```c#
-    row.Get<string>("column_name")
+```
+row.Get<string>("column_name")
 ```
 
 Einzelne Spaltennamen können durch Aufrufen von `row.Schema` ermittelt werden:
 
-```c#
-    ISchema schema = row.Schema;
-    var col = schema[i];
-    string val = row.Get<string>(col.Name)
+```
+ISchema schema = row.Schema;
+var col = schema[i];
+string val = row.Get<string>(col.Name)
 ```
 
 Dieser Ansatz ermöglicht die Erstellung eines flexiblen Outputters für alle Metadatenschemas.
@@ -1719,11 +1316,11 @@ Die Ausgabedaten werden mithilfe von `System.IO.StreamWriter` in eine Datei gesc
 
 Wichtig: Der Datenpuffer muss nach jeder Zeileniteration in die Datei geleert werden. Darüber hinaus muss das `StreamWriter`-Objekt mit aktiviertem Disposable-Attribut (Standardeinstellung) und mit dem Schlüsselwort **using** verwendet werden:
 
-```c#
-    using (StreamWriter streamWriter = new StreamWriter(output.BaseStream, this._encoding))
-            {
-        …
-            }
+```
+using (StreamWriter streamWriter = new StreamWriter(output.BaseStream, this._encoding))
+{
+…
+}
 ```
 
 Rufen Sie andernfalls nach jeder Iteration explizit die Flush()-Methode auf. Dies wird im folgenden Beispiel veranschaulicht.
@@ -1731,23 +1328,23 @@ Rufen Sie andernfalls nach jeder Iteration explizit die Flush()-Methode auf. Die
 ### <a name="set-headers-and-footers-for-user-defined-outputter"></a>Festlegen von Kopf- und Fußzeilen für benutzerdefinierte Outputter
 Verwenden Sie zum Festlegen einer Kopfzeile einen einzelnen Durchlauf der Iterationsausführung.
 
-```c#
-            public override void Output(IRow row, IUnstructuredWriter output)
-            {
-             …
-                if (isHeaderRow)
-                {
-                    …                
-                }
+```
+public override void Output(IRow row, IUnstructuredWriter output)
+{
+ …
+if (isHeaderRow)
+{
+    …                
+}
 
-             …
-                if (isHeaderRow)
-                {
-                    isHeaderRow = false;
-                }
-             …
-            }
-        }
+ …
+if (isHeaderRow)
+{
+    isHeaderRow = false;
+}
+ …
+}
+}
 ```
 
 Der Code im ersten `if (isHeaderRow)`-Block wird nur einmal ausgeführt.
@@ -1756,127 +1353,129 @@ Verwenden Sie für die Fußzeile den Verweis auf die Instanz des `System.IO.Stre
 
 Das folgende Beispiel zeigt einen benutzerdefinierten Outputter:
 
-```c#
-        [SqlUserDefinedOutputter(AtomicFileProcessing = true)]
-        public class HTMLOutputter : IOutputter
+```
+[SqlUserDefinedOutputter(AtomicFileProcessing = true)]
+public class HTMLOutputter : IOutputter
+{
+    // Local variables initialization
+    private string row_delimiter;
+    private char col_delimiter;
+    private bool isHeaderRow;
+    private Encoding encoding;
+    private bool IsTableHeader = true;
+    private Stream g_writer;
+
+    // Parameters definition            
+    public HTMLOutputter(bool isHeader = false, Encoding encoding = null)
+    {
+    this.isHeaderRow = isHeader;
+    this.encoding = ((encoding == null) ? Encoding.UTF8 : encoding);
+    }
+
+    // The Close method is used to write the footer to the file. It's executed only once, after all rows
+    public override void Close().
+    {
+    //Reference to IO.Stream object - g_writer
+    StreamWriter streamWriter = new StreamWriter(g_writer, this.encoding);
+    streamWriter.Write("</table>");
+    streamWriter.Flush();
+    streamWriter.Close();
+    }
+
+    public override void Output(IRow row, IUnstructuredWriter output)
+    {
+    System.IO.StreamWriter streamWriter = new StreamWriter(output.BaseStream, this.encoding);
+
+    // Metadata schema initialization to enumerate column names
+    ISchema schema = row.Schema;
+
+    // This is a data-independent header--HTML table definition
+    if (IsTableHeader)
+    {
+        streamWriter.Write("<table border=1>");
+        IsTableHeader = false;
+    }
+
+    // HTML table attributes
+    string header_wrapper_on = "<th>";
+    string header_wrapper_off = "</th>";
+    string data_wrapper_on = "<td>";
+    string data_wrapper_off = "</td>";
+
+    // Header row output--runs only once
+    if (isHeaderRow)
+    {
+        streamWriter.Write("<tr>");
+        for (int i = 0; i < schema.Count(); i++)
         {
-            // Local variables initialization
-            private string row_delimiter;
-            private char col_delimiter;
-            private bool isHeaderRow;
-            private Encoding encoding;
-            private bool IsTableHeader = true;
-            private Stream g_writer;
-
-            // Parameters definition            
-            public HTMLOutputter(bool isHeader = false, Encoding encoding = null)
-            {
-                this.isHeaderRow = isHeader;
-                this.encoding = ((encoding == null) ? Encoding.UTF8 : encoding);
-            }
-
-            // The Close method is used to write the footer to the file. It's executed only once, after all rows
-            public override void Close().
-            {
-                //Reference to IO.Stream object - g_writer
-                StreamWriter streamWriter = new StreamWriter(g_writer, this.encoding);
-                streamWriter.Write("</table>");
-                streamWriter.Flush();
-                streamWriter.Close();
-            }
-
-            public override void Output(IRow row, IUnstructuredWriter output)
-            {
-                System.IO.StreamWriter streamWriter = new StreamWriter(output.BaseStream, this.encoding);
-
-                // Metadata schema initialization to enumerate column names
-                ISchema schema = row.Schema;
-
-                // This is a data-independent header--HTML table definition
-                if (IsTableHeader)
-                {
-                    streamWriter.Write("<table border=1>");
-                    IsTableHeader = false;
-                }
-
-                // HTML table attributes
-                string header_wrapper_on = "<th>";
-                string header_wrapper_off = "</th>";
-                string data_wrapper_on = "<td>";
-                string data_wrapper_off = "</td>";
-
-                // Header row output--runs only once
-                if (isHeaderRow)
-                {
-                    streamWriter.Write("<tr>");
-                    for (int i = 0; i < schema.Count(); i++)
-                    {
-                        var col = schema[i];
-                        streamWriter.Write(header_wrapper_on + col.Name + header_wrapper_off);
-                    }
-                    streamWriter.Write("</tr>");
-                }
-
-                // Data row output
-                streamWriter.Write("<tr>");                
-                for (int i = 0; i < schema.Count(); i++)
-                {
-                    var col = schema[i];
-                    string val = "";
-                    try
-                    {
-                        // Data type enumeration--required to match the distinct list of types from OUTPUT statement
-                        switch (col.Type.Name.ToString().ToLower())
-                        {
-                            case "string": val = row.Get<string>(col.Name).ToString(); break;
-                            case "guid": val = row.Get<Guid>(col.Name).ToString(); break;
-                            default: break;
-                        }
-                    }
-                    // Handling NULL values--keeping them empty
-                    catch (System.NullReferenceException)
-                    {
-                    }
-                    streamWriter.Write(data_wrapper_on + val + data_wrapper_off);
-                }
-                streamWriter.Write("</tr>");
-
-                if (isHeaderRow)
-                {
-                    isHeaderRow = false;
-                }
-                // Reference to the instance of the IO.Stream object for footer generation
-                g_writer = output.BaseStream;
-                streamWriter.Flush();
-            }
+        var col = schema[i];
+        streamWriter.Write(header_wrapper_on + col.Name + header_wrapper_off);
         }
+        streamWriter.Write("</tr>");
+    }
 
-        // Define the factory classes
-        public static class Factory
+    // Data row output
+    streamWriter.Write("<tr>");                
+    for (int i = 0; i < schema.Count(); i++)
+    {
+        var col = schema[i];
+        string val = "";
+        try
         {
-            public static HTMLOutputter HTMLOutputter(bool isHeader = false, Encoding encoding = null)
-            {
-                return new HTMLOutputter(isHeader, encoding);
-            }
+        // Data type enumeration--required to match the distinct list of types from OUTPUT statement
+        switch (col.Type.Name.ToString().ToLower())
+        {
+            case "string": val = row.Get<string>(col.Name).ToString(); break;
+            case "guid": val = row.Get<Guid>(col.Name).ToString(); break;
+            default: break;
         }
+        }
+        // Handling NULL values--keeping them empty
+        catch (System.NullReferenceException)
+        {
+        }
+        streamWriter.Write(data_wrapper_on + val + data_wrapper_off);
+    }
+    streamWriter.Write("</tr>");
+
+    if (isHeaderRow)
+    {
+        isHeaderRow = false;
+    }
+    // Reference to the instance of the IO.Stream object for footer generation
+    g_writer = output.BaseStream;
+    streamWriter.Flush();
+    }
+}
+
+// Define the factory classes
+public static class Factory
+{
+    public static HTMLOutputter HTMLOutputter(bool isHeader = false, Encoding encoding = null)
+    {
+    return new HTMLOutputter(isHeader, encoding);
+    }
+}
 ```
 
 U-SQL-Basisskript:
 
-```sql
+```
 DECLARE @input_file string = @"\usql-programmability\input_file.tsv";
 DECLARE @output_file string = @"\usql-programmability\output_file.html";
 
 @rs0 =
     EXTRACT
-        guid Guid,
+            guid Guid,
         dt String,
-        user String,
-        des String
-    FROM @input_file
-    USING new USQL_Programmability.FullDescriptionExtractor(Encoding.UTF8);
+            user String,
+            des String
+         FROM @input_file
+         USING new USQL_Programmability.FullDescriptionExtractor(Encoding.UTF8);
 
-OUTPUT @rs0 TO @output_file USING new USQL_Programmability.HTMLOutputter(isHeader: true);
+OUTPUT @rs0 
+    TO @output_file 
+    USING new USQL_Programmability.HTMLOutputter(isHeader: true);
 ```
 
 Hierbei handelt es sich um einen HTML-Outputter, der eine HTML-Datei mit Tabellendaten erstellt.
@@ -1903,8 +1502,10 @@ Um die Erstellung einer Instanz des Objekts im Basisskript zu vermeiden, können
 
 In diesem Fall sieht der ursprüngliche Aufruf wie folgt aus:
 
-```sql
-OUTPUT @rs0 TO @output_file USING USQL_Programmability.Factory.HTMLOutputter(isHeader: true);
+```
+OUTPUT @rs0 
+TO @output_file 
+USING USQL_Programmability.Factory.HTMLOutputter(isHeader: true);
 ```
 
 ## <a name="use-user-defined-processors"></a>Verwenden benutzerdefinierter Prozessoren
@@ -1914,15 +1515,15 @@ Um einen UDP zu definieren, müssen wir eine `IProcessor`-Schnittstelle mit dem 
 
 Diese Schnittstelle muss die Definition für die Überschreibung des `IRow`-Schnittstellenrowsets enthalten, wie im folgenden Beispiel zu sehen:
 
-```c#
-    [SqlUserDefinedProcessor]
-     public class MyProcessor: IProcessor
-     {
-        public override IRow Process(IRow input, IUpdatableRow output)
-         {
-            …
-         }
-     }
+```
+[SqlUserDefinedProcessor]
+public class MyProcessor: IProcessor
+{
+public override IRow Process(IRow input, IUpdatableRow output)
+ {
+        …
+ }
+}
 ```
 
 **SqlUserDefinedProcessor** gibt an, dass der Typ als benutzerdefinierter Prozessor registriert werden muss. Diese Klasse kann nicht vererbt werden.
@@ -1933,8 +1534,8 @@ Die wichtigsten Programmierbarkeitsobjekte sind **input** und **output**. Das Ei
 
 Zur Eingabespaltenenumeration verwenden wir die `input.Get`-Methode.
 
-```c#
-    string column_name = input.Get<string>("column_name");
+```
+string column_name = input.Get<string>("column_name");
 ```
 
 Der Parameter für die `input.Get`-Methode ist eine Spalte, die als Teil der `PRODUCE`-Klausel der `PROCESS`-Anweisung des U-SQL-Basisskripts übergeben wird. Wir müssen hier den richtigen Datentyp verwenden.
@@ -1943,30 +1544,30 @@ Verwenden Sie für die Ausgabe die `output.Set`-Methode.
 
 Wichtig: Der benutzerdefinierte Producer gibt nur Spalten und Werte aus, die mit dem `output.Set`-Methodenaufruf definiert wurden.
 
-```c#
-    output.Set<string>("mycolumn", mycolumn);
+```
+output.Set<string>("mycolumn", mycolumn);
 ```
 
 Die tatsächliche Prozessorausgabe wird durch Aufrufen von `return output.AsReadOnly();` ausgelöst.
 
 Im Anschluss finden Sie ein Prozessorbeispiel:
 
-```c#
-     [SqlUserDefinedProcessor]
-     public class FullDescriptionProcessor : IProcessor
-     {
-        public override IRow Process(IRow input, IUpdatableRow output)
-         {
-             string user = input.Get<string>("user");
-             string des = input.Get<string>("des");
-             string full_description = user.ToUpper() + "=>" + des;
-             output.Set<string>("dt", input.Get<string>("dt"));
-             output.Set<string>("full_description", full_description);
-             output.Set<Guid>("new_guid", Guid.NewGuid());
-             output.Set<Guid>("guid", input.Get<Guid>("guid"));
-             return output.AsReadOnly();
-         }
-     }
+```
+[SqlUserDefinedProcessor]
+public class FullDescriptionProcessor : IProcessor
+{
+public override IRow Process(IRow input, IUpdatableRow output)
+ {
+     string user = input.Get<string>("user");
+     string des = input.Get<string>("des");
+     string full_description = user.ToUpper() + "=>" + des;
+     output.Set<string>("dt", input.Get<string>("dt"));
+     output.Set<string>("full_description", full_description);
+     output.Set<Guid>("new_guid", Guid.NewGuid());
+     output.Set<Guid>("guid", input.Get<Guid>("guid"));
+     return output.AsReadOnly();
+ }
+}
 ```
 
 In diesem Szenario erzeugt der Prozessor eine neue Spalte namens „full_description“, indem er die vorhandenen Spalten kombiniert (in diesem Fall: „user“ in Großbuchstaben und „des“). Darüber hinaus generiert er eine neue GUID und gibt den ursprünglichen und neuen GUID-Wert zurück.
@@ -1975,16 +1576,16 @@ Wie im vorherigen Beispiel zu sehen, können Sie C#-Methoden im Rahmen eines `ou
 
 Bei dem folgenden Beispiel handelt es sich um ein U-SQL-Basisskript mit einem benutzerdefinierten Prozessor:
 
-```sql
+```
 DECLARE @input_file string = @"\usql-programmability\input_file.tsv";
 DECLARE @output_file string = @"\usql-programmability\output_file.tsv";
 
 @rs0 =
     EXTRACT
-        guid Guid,
+            guid Guid,
         dt String,
-        user String,
-        des String
+            user String,
+            des String
     FROM @input_file USING Extractors.Tsv();
 
 @rs1 =
@@ -2005,43 +1606,42 @@ Der benutzerdefinierte Applier wird im Rahmen des U-SQL SELECT-Ausdrucks aufgeru
 
 Ein typischer Aufruf des benutzerdefinierten Appliers sieht wie folgt aus:
 
-```sql
-    SELECT …
-    FROM …
-    CROSS APPLYis used to pass parameters
-    new MyScript.MyApplier(param1, param2) AS alias(output_param1 string, …);
+```
+SELECT …
+FROM …
+CROSS APPLYis used to pass parameters
+new MyScript.MyApplier(param1, param2) AS alias(output_param1 string, …);
 ```
 
 Weitere Informationen zur Verwendung von Appliers in einem SELECT-Ausdruck finden Sie unter [U-SQL SELECT Selecting from CROSS APPLY and OUTER APPLY](https://msdn.microsoft.com/library/azure/mt621307.aspx) (U-SQL SELECT: Auswählen aus CROSS APPLY und OUTER APPLY).
 
 Die Basisklassendefinition eines benutzerdefinierten Appliers sieht wie folgt aus:
 
-```c#
-    public abstract class IApplier : IUserDefinedOperator
-    {
-        protected IApplier();
+```
+public abstract class IApplier : IUserDefinedOperator
+{
+protected IApplier();
 
-        public abstract IEnumerable<IRow> Apply(IRow input, IUpdatableRow output);
-    }
+public abstract IEnumerable<IRow> Apply(IRow input, IUpdatableRow output);
+}
 ```
 
 Um einen benutzerdefinierten Applier zu definieren, müssen wir die `IApplier`-Schnittstelle mit dem [`SqlUserDefinedApplier`]-Attribut (für die Definition eines benutzerdefinierten Appliers optional) erstellen.
 
-```c#
-    [SqlUserDefinedApplier]
-    public class ParserApplier : IApplier
+```
+[SqlUserDefinedApplier]
+public class ParserApplier : IApplier
+{
+    public ParserApplier()
     {
-
-        public ParserApplier()
-        {
         …
-        }
-
-        public override IEnumerable<IRow> Apply(IRow input, IUpdatableRow output)
-        {
-        …
-        }
     }
+
+    public override IEnumerable<IRow> Apply(IRow input, IUpdatableRow output)
+    {
+        …
+    }
+}
 ```
 
 * „Apply“ wird für jede Zeile der äußeren Tabelle aufgerufen. Es gibt das `IUpdatableRow`-Ausgaberowset zurück.
@@ -2054,36 +1654,36 @@ Um einen benutzerdefinierten Applier zu definieren, müssen wir die `IApplier`-S
 
 Die wichtigsten Programmierbarkeitsobjekte sind:
 
-```c#
-        public override IEnumerable<IRow> Apply(IRow input, IUpdatableRow output)
+```
+public override IEnumerable<IRow> Apply(IRow input, IUpdatableRow output)
 ```
 
 Eingaberowsets werden als `IRow`-Eingabe übergeben. Die Ausgabezeilen werden als `IUpdatableRow`-Ausgabeschnittstelle generiert.
 
 Einzelne Spaltennamen können durch Aufrufen der `IRow`-Schemamethode ermittelt werden.
 
-```c#
-    ISchema schema = row.Schema;
-    var col = schema[i];
-    string val = row.Get<string>(col.Name)
+```
+ISchema schema = row.Schema;
+var col = schema[i];
+string val = row.Get<string>(col.Name)
 ```
 
 Um die tatsächlichen Datenwerte aus dem eingehenden `IRow`-Element abzurufen, verwenden wir die Get()-Methode der `IRow`-Schnittstelle.
 
-```c#
-    mycolumn = row.Get<int>("mycolumn")
+```
+mycolumn = row.Get<int>("mycolumn")
 ```
 
 Alternativ können wir auch den Schemaspaltennamen verwenden:
 
-```c#
-    row.Get<int>(row.Schema[0].Name)
+```
+row.Get<int>(row.Schema[0].Name)
 ```
 
 Die Ausgabewerte müssen mit der `IUpdatableRow`-Ausgabe festgelegt werden:
 
-```c#
-    output.Set<int>("mycolumn", mycolumn)
+```
+output.Set<int>("mycolumn", mycolumn)
 ```
 
 Wichtig: Benutzerdefinierte Applier geben nur Spalten und Werte aus, die mit dem `output.Set`-Methodenaufruf definiert wurden.
@@ -2092,71 +1692,71 @@ Die tatsächliche Ausgabe wird durch Aufrufen von `yield return output.AsReadOnl
 
 Die Parameter des benutzerdefinierten Appliers können an den Konstruktor übergeben werden. Der Applier kann eine variable Anzahl von Spalten zurückgeben, die während des Applieraufrufs im U-SQL-Basisskript definiert werden müssen.
 
-```c#
-  new USQL_Programmability.ParserApplier ("all") AS properties(make string, model string, year string, type string, millage int);
+```
+new USQL_Programmability.ParserApplier ("all") AS properties(make string, model string, year string, type string, millage int);
 ```
 
 Hier sehen Sie das Beispiel für den benutzerdefinierten Applier:
 
-```c#
-   [SqlUserDefinedApplier]
-    public class ParserApplier : IApplier
+```
+[SqlUserDefinedApplier]
+public class ParserApplier : IApplier
+{
+private string parsingPart;
+
+public ParserApplier(string parsingPart)
+{
+    if (parsingPart.ToUpper().Contains("ALL")
+    || parsingPart.ToUpper().Contains("MAKE")
+    || parsingPart.ToUpper().Contains("MODEL")
+    || parsingPart.ToUpper().Contains("YEAR")
+    || parsingPart.ToUpper().Contains("TYPE")
+    || parsingPart.ToUpper().Contains("MILLAGE")
+    )
     {
-        private string parsingPart;
-
-        public ParserApplier(string parsingPart)
-        {
-            if (parsingPart.ToUpper().Contains("ALL")
-                || parsingPart.ToUpper().Contains("MAKE")
-                || parsingPart.ToUpper().Contains("MODEL")
-                || parsingPart.ToUpper().Contains("YEAR")
-                || parsingPart.ToUpper().Contains("TYPE")
-                || parsingPart.ToUpper().Contains("MILLAGE")
-                )
-            {
-                this.parsingPart = parsingPart;
-            }
-            else
-            {
-                throw new ArgumentException("Incorrect parameter. Please use: 'ALL[MAKE|MODEL|TYPE|MILLAGE]'");
-            }
-        }
-
-        public override IEnumerable<IRow> Apply(IRow input, IUpdatableRow output)
-        {
-
-            string[] properties = input.Get<string>("properties").Split(',');
-
-            //  only process with correct number of properties
-            if (properties.Count() == 5)
-            {
-
-                string make = properties[0];
-                string model = properties[1];
-                string year = properties[2];
-                string type = properties[3];
-                int millage = -1;
-
-                // Only return millage if it is number, otherwise, -1
-                if (!int.TryParse(properties[4], out millage))
-                {
-                    millage = -1;
-                }
-
-                if (parsingPart.ToUpper().Contains("MAKE") || parsingPart.ToUpper().Contains("ALL")) output.Set<string>("make", make);
-                if (parsingPart.ToUpper().Contains("MODEL") || parsingPart.ToUpper().Contains("ALL")) output.Set<string>("model", model);
-                if (parsingPart.ToUpper().Contains("YEAR") || parsingPart.ToUpper().Contains("ALL")) output.Set<string>("year", year);
-                if (parsingPart.ToUpper().Contains("TYPE") || parsingPart.ToUpper().Contains("ALL")) output.Set<string>("type", type);
-                if (parsingPart.ToUpper().Contains("MILLAGE") || parsingPart.ToUpper().Contains("ALL")) output.Set<int>("millage", millage);
-            }
-            yield return output.AsReadOnly();            
-        }
+    this.parsingPart = parsingPart;
     }
+    else
+    {
+    throw new ArgumentException("Incorrect parameter. Please use: 'ALL[MAKE|MODEL|TYPE|MILLAGE]'");
+    }
+}
+
+public override IEnumerable<IRow> Apply(IRow input, IUpdatableRow output)
+{
+
+    string[] properties = input.Get<string>("properties").Split(',');
+
+    //  only process with correct number of properties
+    if (properties.Count() == 5)
+    {
+
+    string make = properties[0];
+    string model = properties[1];
+    string year = properties[2];
+    string type = properties[3];
+    int millage = -1;
+
+    // Only return millage if it is number, otherwise, -1
+    if (!int.TryParse(properties[4], out millage))
+    {
+        millage = -1;
+    }
+
+    if (parsingPart.ToUpper().Contains("MAKE") || parsingPart.ToUpper().Contains("ALL")) output.Set<string>("make", make);
+    if (parsingPart.ToUpper().Contains("MODEL") || parsingPart.ToUpper().Contains("ALL")) output.Set<string>("model", model);
+    if (parsingPart.ToUpper().Contains("YEAR") || parsingPart.ToUpper().Contains("ALL")) output.Set<string>("year", year);
+    if (parsingPart.ToUpper().Contains("TYPE") || parsingPart.ToUpper().Contains("ALL")) output.Set<string>("type", type);
+    if (parsingPart.ToUpper().Contains("MILLAGE") || parsingPart.ToUpper().Contains("ALL")) output.Set<int>("millage", millage);
+    }
+    yield return output.AsReadOnly();            
+}
+}
 ```
 
 Im Anschluss finden Sie das U-SQL-Basisskript für diesen benutzerdefinierten Applier:
 
-```sql
+```
 DECLARE @input_file string = @"c:\usql-programmability\car_fleet.tsv";
 DECLARE @output_file string = @"c:\usql-programmability\output_file.tsv";
 
@@ -2186,9 +1786,9 @@ OUTPUT @rs1 TO @output_file USING Outputters.Text();
 In diesem Szenario fungiert der benutzerdefinierte Applier als Parser mit Werttrennung durch Trennzeichen für die Eigenschaften der Autoflotte. Die Zeilen der Eingabedatei sehen wie folgt aus:
 
 ```
-103    Z1AB2CD123XY45889    Ford,Explorer,2005,SUV,152345
-303    Y0AB2CD34XY458890    Shevrolet,Cruise,2010,4Dr,32455
-210    X5AB2CD45XY458893    Nissan,Altima,2011,4Dr,74000
+103 Z1AB2CD123XY45889   Ford,Explorer,2005,SUV,152345
+303 Y0AB2CD34XY458890   Shevrolet,Cruise,2010,4Dr,32455
+210 X5AB2CD45XY458893   Nissan,Altima,2011,4Dr,74000
 ```
 
 Es handelt sich um eine typische TSV-Datei mit Tabstopptrennzeichen und einer Eigenschaftenspalte, die Fahrzeugeigenschaften wie Marke und Modell enthält. Diese Eigenschaften müssen für die Tabellenspalten analysiert werden. Der bereitgestellte Applier ermöglicht auch die Generierung einer dynamischen Anzahl von Eigenschaften im Ergebnisrowset auf der Grundlage des übergebenen Parameters. Sie können entweder alle Eigenschaften generieren oder nur einen bestimmten Satz von Eigenschaften.
@@ -2199,8 +1799,8 @@ Es handelt sich um eine typische TSV-Datei mit Tabstopptrennzeichen und einer Ei
 
 Der benutzerdefinierte Applier kann als neue Instanz des Applierobjekts aufgerufen werden:
 
-```c#
-    CROSS APPLY new MyNameSpace.MyApplier (parameter: “value”) AS alias([columns types]…);
+```
+CROSS APPLY new MyNameSpace.MyApplier (parameter: “value”) AS alias([columns types]…);
 ```
 
 Eine weitere Möglichkeit ist das Aufrufen einer Wrapper-Factorymethode:
@@ -2216,7 +1816,7 @@ Ein Combiner wird mit dem COMBINE-Ausdruck aufgerufen, der die erforderlichen In
 
 Um einen Combiner in einem U-SQL-Basisskript aufzurufen, verwenden Sie die folgende Syntax:
 
-```sql
+```
 Combine_Expression :=
     'COMBINE' Combine_Input
     'WITH' Combine_Input
@@ -2233,30 +1833,30 @@ Um einen benutzerdefinierten Combiner zu definieren, müssen wir die `ICombiner`
 
 `ICombiner`-Basisklassendefinition:
 
-```c#
-    public abstract class ICombiner : IUserDefinedOperator
-    {
-        protected ICombiner();
-        public virtual IEnumerable<IRow> Combine(List<IRowset> inputs,
-               IUpdatableRow output);
-        public abstract IEnumerable<IRow> Combine(IRowset left, IRowset right,
-               IUpdatableRow output);
-    }
+```
+public abstract class ICombiner : IUserDefinedOperator
+{
+protected ICombiner();
+public virtual IEnumerable<IRow> Combine(List<IRowset> inputs,
+       IUpdatableRow output);
+public abstract IEnumerable<IRow> Combine(IRowset left, IRowset right,
+       IUpdatableRow output);
+}
 ```
 
 Die benutzerdefinierte Implementierung einer `ICombiner`-Schnittstelle muss die Definition für eine Combine-Überschreibung für `IEnumerable<IRow>` enthalten.
 
-```c#
-    [SqlUserDefinedCombiner]
-    public class MyCombiner : ICombiner
-    {
+```
+[SqlUserDefinedCombiner]
+public class MyCombiner : ICombiner
+{
 
-        public override IEnumerable<IRow> Combine(IRowset left, IRowset right,
-        IUpdatableRow output)
-        {
-        …
-        }
-    }
+public override IEnumerable<IRow> Combine(IRowset left, IRowset right,
+    IUpdatableRow output)
+{
+    …
+}
+}
 ```
 
 Das Attribut **SqlUserDefinedCombiner** gibt an, dass der Typ als benutzerdefinierter Combiner registriert werden muss. Diese Klasse kann nicht vererbt werden.
@@ -2293,27 +1893,27 @@ Unter [Introduction to LINQ Queries (C#)](https://msdn.microsoft.com/library/bb3
 
 Um die tatsächlichen Datenwerte aus dem eingehenden `IRowset`-Element abzurufen, verwenden wir die Get()-Methode der `IRow`-Schnittstelle.
 
-```c#
-    mycolumn = row.Get<int>("mycolumn")
+```
+mycolumn = row.Get<int>("mycolumn")
 ```
 
 Einzelne Spaltennamen können durch Aufrufen der `IRow`-Schemamethode ermittelt werden.
 
-```c#
-    ISchema schema = row.Schema;
-    var col = schema[i];
-    string val = row.Get<string>(col.Name)
+```
+ISchema schema = row.Schema;
+var col = schema[i];
+string val = row.Get<string>(col.Name)
 ```
 
 Alternativ können wir auch den Schemaspaltennamen verwenden:
 
 ```
-    c# row.Get<int>(row.Schema[0].Name)
+c# row.Get<int>(row.Schema[0].Name)
 ```
 
 Die allgemeine Enumeration mit LINQ sieht wie folgt aus:
 
-```c#
+```
 var myRowset =
             (from row in left.Rows
                           select new
@@ -2326,64 +1926,64 @@ Nach dem Aufzählen beider Rowsets durchlaufen wir alle Zeilen mithilfe einer Sc
 
 Die Ausgabewerte müssen mit der `IUpdatableRow`-Ausgabe festgelegt werden.
 
-```c#
-    output.Set<int>("mycolumn", mycolumn)
+```
+output.Set<int>("mycolumn", mycolumn)
 ```
 
 Die tatsächliche Ausgabe wird durch Aufrufen von `yield return output.AsReadOnly();` ausgelöst.
 
 Im Anschluss finden Sie ein Beispiel für den Combiner:
 
-```c#
-    [SqlUserDefinedCombiner]
-    public class CombineSales : ICombiner
+```
+[SqlUserDefinedCombiner]
+public class CombineSales : ICombiner
+{
+
+public override IEnumerable<IRow> Combine(IRowset left, IRowset right,
+    IUpdatableRow output)
+{
+    var internetSales =
+    (from row in left.Rows
+          select new
+          {
+              ProductKey = row.Get<int>("ProductKey"),
+              OrderDateKey = row.Get<int>("OrderDateKey"),
+              SalesAmount = row.Get<decimal>("SalesAmount"),
+              TaxAmt = row.Get<decimal>("TaxAmt")
+          }).ToList();
+
+    var resellerSales =
+    (from row in right.Rows
+     select new
+     {
+     ProductKey = row.Get<int>("ProductKey"),
+     OrderDateKey = row.Get<int>("OrderDateKey"),
+     SalesAmount = row.Get<decimal>("SalesAmount"),
+     TaxAmt = row.Get<decimal>("TaxAmt")
+     }).ToList();
+
+    foreach (var row_i in internetSales)
+    {
+    foreach (var row_r in resellerSales)
     {
 
-        public override IEnumerable<IRow> Combine(IRowset left, IRowset right,
-        IUpdatableRow output)
+        if (
+        row_i.OrderDateKey > 0
+        && row_i.OrderDateKey < row_r.OrderDateKey
+        && row_i.OrderDateKey == 20010701
+        && (row_r.SalesAmount + row_r.TaxAmt) > 20000)
         {
-            var internetSales =
-            (from row in left.Rows
-                          select new
-                          {
-                              ProductKey = row.Get<int>("ProductKey"),
-                              OrderDateKey = row.Get<int>("OrderDateKey"),
-                              SalesAmount = row.Get<decimal>("SalesAmount"),
-                              TaxAmt = row.Get<decimal>("TaxAmt")
-                          }).ToList();
-
-            var resellerSales =
-            (from row in right.Rows
-             select new
-             {
-                 ProductKey = row.Get<int>("ProductKey"),
-                 OrderDateKey = row.Get<int>("OrderDateKey"),
-                 SalesAmount = row.Get<decimal>("SalesAmount"),
-                 TaxAmt = row.Get<decimal>("TaxAmt")
-             }).ToList();
-
-            foreach (var row_i in internetSales)
-            {
-                foreach (var row_r in resellerSales)
-                {
-
-                    if (
-                        row_i.OrderDateKey > 0
-                        && row_i.OrderDateKey < row_r.OrderDateKey
-                        && row_i.OrderDateKey == 20010701
-                        && (row_r.SalesAmount + row_r.TaxAmt) > 20000)
-                    {
-                        output.Set<int>("OrderDateKey", row_i.OrderDateKey);
-                        output.Set<int>("ProductKey", row_i.ProductKey);
-                        output.Set<decimal>("Internet_Sales_Amount", row_i.SalesAmount + row_i.TaxAmt);
-                        output.Set<decimal>("Reseller_Sales_Amount", row_r.SalesAmount + row_r.TaxAmt);
-                    }
-
-                }
-            }
-            yield return output.AsReadOnly();
+        output.Set<int>("OrderDateKey", row_i.OrderDateKey);
+        output.Set<int>("ProductKey", row_i.ProductKey);
+        output.Set<decimal>("Internet_Sales_Amount", row_i.SalesAmount + row_i.TaxAmt);
+        output.Set<decimal>("Reseller_Sales_Amount", row_r.SalesAmount + row_r.TaxAmt);
         }
+
     }
+    }
+    yield return output.AsReadOnly();
+}
+}
 ```
 
 In diesem Szenario erstellen wir einen Analysebericht für den Einzelhandel. Es sollen alle Produkte gefunden werden, deren Preis über 20.000 USD liegt und die innerhalb eines bestimmten Zeitraums schneller über die Website verkauft werden als über den regulären Einzelhandel.
@@ -2485,18 +2085,19 @@ OUTPUT @rs2 TO @output_file2 USING Outputters.Tsv();
 
 Ein benutzerdefinierter Combiner kann als neue Instanz des Applierobjekts aufgerufen werden:
 
-```c#
-    USING new MyNameSpace.MyCombiner();
+```
+USING new MyNameSpace.MyCombiner();
 ```
 
 
 Eine weitere Möglichkeit ist das Aufrufen einer Wrapper-Factorymethode:
 
-```c#
-    USING MyNameSpace.MyCombiner();
+```
+USING MyNameSpace.MyCombiner();
 ```
 
 ## <a name="use-user-defined-reducers"></a>Verwenden benutzerdefinierter Reducer
+
 Mit U-SQL können Sie benutzerdefinierte Rowsetreducer in C# schreiben. Hierzu müssen Sie das Erweiterbarkeitsframework des benutzerdefinierten Operators verwenden und eine IReducer-Schnittstelle implementieren.
 
 Mit einem benutzerdefinierten Reducer (User-Defined Reducer, UDR) können Sie überflüssige Zeilen während der Datenextraktion (Import) entfernen. Darüber hinaus kann er zur Bearbeitung und Auswertung von Zeilen und Spalten verwendet werden. Auf der Grundlage der Programmierbarkeitslogik kann er zudem die zu extrahierenden Zeilen definieren.
@@ -2505,17 +2106,17 @@ Zum Definieren einer UDR-Klasse müssen wir eine `IReducer`-Schnittstelle mit op
 
 Diese Klassenschnittstelle muss eine Definition für die Überschreibung des `IEnumerable`-Schnittstellenrowsets enthalten.
 
-```c#
-        [SqlUserDefinedReducer]
-        public class EmptyUserReducer : IReducer
-        {
+```
+[SqlUserDefinedReducer]
+public class EmptyUserReducer : IReducer
+{
 
-            public override IEnumerable<IRow> Reduce(IRowset input, IUpdatableRow output)
-            {
-            …
-            }
+    public override IEnumerable<IRow> Reduce(IRowset input, IUpdatableRow output)
+    {
+        …
+    }
 
-        }
+}
 ```
 
 Das Attribut **SqlUserDefinedReducer** gibt an, dass der Typ als benutzerdefinierter Reducer registriert werden muss. Diese Klasse kann nicht vererbt werden.
@@ -2528,11 +2129,11 @@ Die wichtigsten Programmierbarkeitsobjekte sind **input** und **output**. Das Ei
 
 Zum Aufzählen der Eingabezeilen verwenden wir die `Row.Get`-Methode.
 
-```c#
-            foreach (IRow row in input.Rows)
-            {
-                        row.Get<string>("mycolumn");
-            }
+```
+foreach (IRow row in input.Rows)
+{
+    row.Get<string>("mycolumn");
+}
 ```
 
 Der Parameter für die `Row.Get`-Methode ist eine Spalte, die als Teil der `PRODUCE`-Klasse der `REDUCE`-Anweisung des U-SQL-Basisskripts übergeben wird. Wir müssen hier ebenfalls den richtigen Datentyp verwenden.
@@ -2541,63 +2142,64 @@ Verwenden Sie für die Ausgabe die `output.Set`-Methode.
 
 Wichtig: Benutzerdefinierte Reducer geben nur Werte aus, die mit dem `output.Set`-Methodenaufruf definiert wurden.
 
-```c#
-    output.Set<string>("mycolumn", guid);
+```
+output.Set<string>("mycolumn", guid);
 ```
 
 Die tatsächliche Reducerausgabe wird durch Aufrufen von `yield return output.AsReadOnly();` ausgelöst.
 
 Im Anschluss finden Sie ein Beispiel für den Reducer:
 
-```c#
-        [SqlUserDefinedReducer]
-        public class EmptyUserReducer : IReducer
+```
+[SqlUserDefinedReducer]
+public class EmptyUserReducer : IReducer
+{
+
+    public override IEnumerable<IRow> Reduce(IRowset input, IUpdatableRow output)
+    {
+    string guid;
+    DateTime dt;
+    string user;
+    string des;
+
+    foreach (IRow row in input.Rows)
+    {
+        guid = row.Get<string>("guid");
+        dt = row.Get<DateTime>("dt");
+        user = row.Get<string>("user");
+        des = row.Get<string>("des");
+
+        if (user.Length > 0)
         {
+        output.Set<string>("guid", guid);
+        output.Set<DateTime>("dt", dt);
+        output.Set<string>("user", user);
+        output.Set<string>("des", des);
 
-            public override IEnumerable<IRow> Reduce(IRowset input, IUpdatableRow output)
-            {
-                string guid;
-                DateTime dt;
-                string user;
-                string des;
-
-                foreach (IRow row in input.Rows)
-                {
-                    guid = row.Get<string>("guid");
-                    dt = row.Get<DateTime>("dt");
-                    user = row.Get<string>("user");
-                    des = row.Get<string>("des");
-
-                    if (user.Length > 0)
-                    {
-                        output.Set<string>("guid", guid);
-                        output.Set<DateTime>("dt", dt);
-                        output.Set<string>("user", user);
-                        output.Set<string>("des", des);
-
-                        yield return output.AsReadOnly();
-                    }
-                }
-            }
-
+        yield return output.AsReadOnly();
         }
+    }
+    }
+
+}
 ```
 
 In diesem Szenario überspringt der Reducer Zeilen mit leerem Benutzernamen. Er liest für jede Zeile im Rowset die einzelnen erforderlichen Spalten und wertet dann die Länge des Benutzernamens aus. Die eigentliche Zeile wird nur ausgegeben, wenn der Längenwert des Benutzernamens größer 0 ist.
 
 Im Anschluss sehen Sie ein U-SQL-Basisskript mit einem benutzerdefinierten Reducer:
 
-```sql
+```
 DECLARE @input_file string = @"\usql-programmability\input_file_reducer.tsv";
 DECLARE @output_file string = @"\usql-programmability\output_file.tsv";
 
 @rs0 =
     EXTRACT
-        guid string,
+            guid string,
         dt DateTime,
-        user String,
-        des String
-    FROM @input_file USING Extractors.Tsv();
+            user String,
+            des String
+    FROM @input_file 
+    USING Extractors.Tsv();
 
 @rs1 =
     REDUCE @rs0 PRESORT guid
@@ -2614,6 +2216,8 @@ DECLARE @output_file string = @"\usql-programmability\output_file.tsv";
            des
     FROM @rs1;
 
-OUTPUT @rs2 TO @output_file USING Outputters.Text();
+OUTPUT @rs2 
+    TO @output_file 
+    USING Outputters.Text();
 ```
 

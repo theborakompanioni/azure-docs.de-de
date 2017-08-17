@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/13/2017
+ms.date: 06/28/2017
 ms.author: sethm;shvija
 ms.translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 7bae4ae6d41e6dc6515a3fcdf574ffd193ae1aa3
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: e0e33882acc90130ef93cd66c3d57bb90f78ccee
 ms.contentlocale: de-de
-ms.lasthandoff: 03/14/2017
+ms.lasthandoff: 06/28/2017
 
 
 ---
@@ -28,15 +28,17 @@ ms.lasthandoff: 03/14/2017
 ## <a name="general"></a>Allgemein
 
 ### <a name="what-is-the-difference-between-event-hubs-basic-and-standard-tiers"></a>Was ist der Unterschied zwischen den Event Hubs-Ebenen Basic und Standard?
+
 Im Standard-Tarif von Azure Event Hubs stehen Ihnen mehr Funktionen als im Basic-Tarif zur Verfügung. Die folgenden Features sind in Standard enthalten:
 * Längere Aufbewahrung von Ereignissen
 * Zusätzliche Brokerverbindungen (Bei Überschreitung der enthaltenen Anzahl fällt eine Zusatzgebühr an.)
 * Mehr als eine Consumergruppe
-* [Archivieren](https://docs.microsoft.com/azure/event-hubs/event-hubs-archive-overview)
+* [Capture](https://docs.microsoft.com/azure/event-hubs/event-hubs-archive-overview)
 
-Ausführliche Informationen zu den Tarifen, u.a. für Dedicated Event Hubs, finden Sie unter [Event Hubs – Preise](https://azure.microsoft.com/pricing/details/event-hubs/).
+Weitere Informationen zu Tarifen, u.a. für Event Hubs Dedicated, finden Sie unter [Event Hubs – Preisdetails](https://azure.microsoft.com/pricing/details/event-hubs/).
 
 ### <a name="what-are-event-hubs-throughput-units"></a>Was sind Event Hubs-Durchsatzeinheiten?
+
 Sie wählen die Event Hubs-Durchsatzeinheiten explizit aus, entweder über das Azure-Portal oder mithilfe von Event Hubs Resource Manager-Vorlagen. Durchsatzeinheiten betreffen alle Event Hubs in einem Event Hubs-Namespace, und durch jede Durchsatzeinheit erhält der Namespace die Berechtigung für folgende Funktionen:
 
 * Eingangsereignisse bis zu 1 MB pro Sekunde (Ereignisse, die an einen Event Hub gesendet werden), aber nicht mehr als 1.000 Eingangsereignisse, Verwaltungsvorgänge oder Steuer-API-Aufrufe pro Sekunde.
@@ -57,7 +59,7 @@ Es gibt ein Kontingent von 20 Durchsatzeinheiten pro Namespace. Sie können ein 
 Ja, solange sich alle Event Hubs im gleichen Namespace befinden.
 
 ### <a name="what-is-the-maximum-retention-period-for-events"></a>Was ist die maximale Beibehaltungsdauer für Ereignisse?
-Die Standard-Ebene für Event Hubs unterstützt derzeit einen maximalen Aufbewahrungszeitraum von 7 Tagen. Beachten Sie, dass Event Hubs nicht als dauerhafter Datenspeicher vorgesehen sind. Beibehaltungsdauern größer als 24 Stunden sind für Szenarien vorgesehen, in denen es praktisch ist, einen Stream von Ereignissen in die gleichen Systeme wiederzugeben, wenn Sie beispielsweise ein neues Computerlernmodell für vorhandene Daten trainieren oder überprüfen wollen. Wenn Sie Nachrichten länger als 7 Tage aufbewahren möchten, werden die Daten durch Aktivieren von [Archive](https://docs.microsoft.com/azure/event-hubs/event-hubs-archive-overview) in Ihrem Event Hub von Ihrem Event Hub per Pull in den von Ihnen gewünschten Speicher übertragen. Abhängig von Ihrer Durchsatzeinheit entstehen durch das aktivieren von „Archive“ Kosten.
+Die Standard-Ebene für Event Hubs unterstützt derzeit einen maximalen Aufbewahrungszeitraum von 7 Tagen. Beachten Sie, dass Event Hubs nicht als dauerhafter Datenspeicher vorgesehen sind. Beibehaltungsdauern größer als 24 Stunden sind für Szenarien vorgesehen, in denen es praktisch ist, einen Stream von Ereignissen in die gleichen Systeme wiederzugeben, wenn Sie beispielsweise ein neues Computerlernmodell für vorhandene Daten trainieren oder überprüfen wollen. Wenn Sie Nachrichten länger als 7 Tage aufbewahren möchten, werden die Daten durch Aktivieren von [Event Hubs Capture](https://docs.microsoft.com/azure/event-hubs/event-hubs-archive-overview) in Ihrem Event Hub von Ihrem Event Hub per Pull in den von Ihnen gewünschten Speicher übertragen. Abhängig von Ihrer Durchsatzeinheit entstehen durch das aktivieren von „Capture“ Kosten.
 
 ### <a name="where-is-azure-event-hubs-available"></a>Wo steht Azure Event Hubs zur Verfügung?
 Azure Event Hubs ist in allen unterstützten Azure-Regionen verfügbar. Eine Liste finden Sie auf der Seite [Azure-Regionen](https://azure.microsoft.com/regions/).  
@@ -69,7 +71,7 @@ Denken Sie daran, dass die Partitionszahl auf einem Event Hub nach der Installat
 
 Event Hubs ist für einen einzelnen Partitionsleser pro Verbrauchergruppe ausgelegt. In den meisten Fällen reicht die Standardeinstellung von vier Partitionen aus. Wenn Sie Ihre Ereignisverarbeitung skalieren möchten, möchten Sie vielleicht die Möglichkeit haben, das Hinzufügen weiterer Partitionen zu erwägen. Es gibt keine bestimmte Durchsatzbegrenzung für eine Partition, aber der aggregierte Durchsatz in Ihrem Namespace ist durch die Anzahl der Durchsatzeinheiten beschränkt. Wenn Sie die Anzahl der Durchsatzeinheiten in Ihrem Namespace erhöhen, wünschen Sie vielleicht zusätzliche Partitionen, um gleichzeitigen Lesern zu ermöglichen, ihren eigenen maximalen Durchsatz zu erzielen.
 
-Aber wenn Sie über ein Modell verfügen, in dem die Anwendung eine bestimmte Partition bevorzugt, ist eine höhere Anzahl von Partitionen für Sie nicht unbedingt von Vorteil. Weitere Informationen zu diesem Thema finden Sie unter [Availability and consistency in Event Hubs](event-hubs-availability-and-consistency.md) (Verfügbarkeit und Konsistenz in Event Hubs).
+Aber wenn Sie über ein Modell verfügen, in dem die Anwendung eine bestimmte Partition bevorzugt, ist eine höhere Anzahl von Partitionen für Sie nicht unbedingt von Vorteil. Weitere Informationen hierzu finden Sie unter [Verfügbarkeit und Konsistenz](event-hubs-availability-and-consistency.md).
 
 ## <a name="pricing"></a>Preise
 
@@ -88,14 +90,13 @@ Jedes an einen Event Hub gesendete Ereignis wird als abrechenbare Nachricht gez�
 Von einem Event Hub genutzte Ereignisse sowie Verwaltungsvorgänge und Kontrollaufrufe wie etwa Checkpoints werden nicht als abzurechnende Eingangsereignisse gezählt, sondern bis zur erlaubten Durchsatzeinheit angesammelt.
 
 ### <a name="do-brokered-connection-charges-apply-to-event-hubs"></a>Gelten vermittelte Verbindungsgebühren für Event Hubs?
-Verbindungsgebühren fallen nur an, wenn das AMQP-Protokoll verwendet wird. Es gibt keine Verbindungsgebühren für das Senden von Ereignissen über HTTP, unabhängig von der Anzahl der sendenden Systeme oder Geräte. Wenn Sie AMQP verwenden möchten (z.B. um effizienteres Ereignisstreaming zu erreichen oder bidirektionale Kommunikation in Befehls- und -Steuerungsszenarios von IoT zu ermöglichen), lesen Sie sich bitte die Seite [Event Hubs Preise](https://azure.microsoft.com/pricing/details/event-hubs/) durch, um Näheres darüber zu erfahren, wie viele Verbindungen in jeder Dienstebene enthalten sind.
+Verbindungsgebühren fallen nur an, wenn das AMQP-Protokoll verwendet wird. Es gibt keine Verbindungsgebühren für das Senden von Ereignissen über HTTP, unabhängig von der Anzahl der sendenden Systeme oder Geräte. Wenn Sie AMQP verwenden möchten (z.B. um effizienteres Ereignisstreaming zu erreichen oder bidirektionale Kommunikation in Befehls- und Steuerungsszenarios von IoT zu ermöglichen), lesen Sie sich bitte die Seite [Event Hubs Preise](https://azure.microsoft.com/pricing/details/event-hubs/) durch, um Näheres darüber zu erfahren, wie viele Verbindungen in jeder Dienstebene enthalten sind.
 
-### <a name="how-is-event-hubs-archive-billed"></a>Wie erfolgt die Abrechnung für Event Hubs Archive?
-Event Hubs Archive wird aktiviert, wenn für eine Event Hub-Instanz im Namespace das Feature „Archive“ aktiviert wird. Das Feature „Archive“ wird stundenweise pro erworbener Durchsatzeinheit abgerechnet. Wenn die Anzahl von Durchsatzeinheiten erhöht oder verringert wird, werden diese Änderungen bei der Abrechnung für Event Hubs Archive in Schritten ganzer Stunden übernommen.
-Auf der Seite [Event Hubs Preise](https://azure.microsoft.com/pricing/details/event-hubs/) finden Sie weitere Informationen zur Abrechnung von Event Hubs Archive.
+### <a name="how-is-event-hubs-capture-billed"></a>Wie erfolgt die Abrechnung für Event Hubs Capture?
+Capture wird aktiviert, wenn für eine Event Hub-Instanz im Namespace die Capture-Option aktiviert wird. Event Hubs Capture wird stundenweise pro erworbener Durchsatzeinheit abgerechnet. Wenn die Anzahl von Durchsatzeinheiten erhöht oder verringert wird, werden diese Änderungen bei der Abrechnung für Event Hubs Capture in Schritten ganzer Stunden übernommen. Weitere Informationen zur Abrechnung von Event Hubs Capture finden Sie unter [Event Hubs Preise](https://azure.microsoft.com/pricing/details/event-hubs/).
 
-### <a name="will-i-be-billed-for-the-storage-account-i-select-for-event-hubs-archive"></a>Werden Speichergebühren für das für Event Hubs Archive ausgewählte Speicherkonto abgerechnet?
-Archive verwendet ein Speicherkonto, das Sie angeben, wenn es auf einem Event Hub aktiviert ist. Da es sich um Ihr Speicherkonto handelt, werden die Nutzungsgebühren für dieses Speicherkonto über Ihr Azure-Abonnement abgerechnet.
+### <a name="will-i-be-billed-for-the-storage-account-i-select-for-event-hubs-capture"></a>Werden Speichergebühren für das für Event Hubs Capture ausgewählte Speicherkonto abgerechnet?
+Capture verwendet ein Speicherkonto, das Sie angeben, wenn es auf einem Event Hub aktiviert ist. Da es sich um Ihr Speicherkonto handelt, werden alle Änderungen an dieser Konfiguration über Ihr Azure-Abonnement abgerechnet.
 
 ## <a name="quotas"></a>Kontingente
 
@@ -108,7 +109,7 @@ Eine Liste aller Kontingente für Event Hubs finden Sie unter [Event Hubs-Kontin
 Eine Liste der möglichen Event Hubs-Ausnahmen finden Sie unter [Event Hubs-Messagingausnahmen](event-hubs-messaging-exceptions.md).
 
 ### <a name="diagnostic-logs"></a>Diagnoseprotokolle
-Event Hubs unterstützt zwei Arten von [Diagnoseprotokollen](event-hubs-diagnostic-logs.md): Archivfehlerprotokolle und Betriebsprotokolle. Beide werden im JSON-Format dargestellt und können über das Azure-Portal aktiviert werden.
+Event Hubs unterstützt zwei Arten von [Diagnoseprotokollen](event-hubs-diagnostic-logs.md): Erfassungsfehlerprotokolle und Betriebsprotokolle. Beide werden im JSON-Format dargestellt und können über das Azure-Portal aktiviert werden.
 
 ### <a name="support-and-sla"></a>Support und SLA
 Technischer Support für Event Hubs steht über die [Communityforen](https://social.msdn.microsoft.com/forums/azure/home)bereit. Der Support für die Abrechnungs- und Abonnementverwaltung wird kostenlos bereitgestellt.

@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/11/2017
+ms.date: 07/12/2017
 ms.author: billmath
 ms.translationtype: Human Translation
-ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
-ms.openlocfilehash: 3c91cb00d6535a4bc01a3b95547ef940cbff7fcb
+ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
+ms.openlocfilehash: e9699abe0c1bdb6ea449c99e087ae56adb717b8d
 ms.contentlocale: de-de
-ms.lasthandoff: 05/12/2017
-
+ms.lasthandoff: 06/30/2017
 
 ---
 # <a name="connector-version-release-history"></a>Connector – Versionsveröffentlichungsverlauf
@@ -39,7 +38,25 @@ Verwandte Links:
 * [PowerShell-Connector](active-directory-aadconnectsync-connector-powershell.md) – Referenzdokumentation
 * [Lotus Domino-Connector](active-directory-aadconnectsync-connector-domino.md) – Referenzdokumentation
 
-## <a name="115220"></a>1.1.522.0
+## <a name="115510-aadconnect-115530"></a>1.1.551.0 (AADConnect 1.1.553.0)
+
+### <a name="fixed-issues"></a>Behobene Probleme:
+
+* Webdienste (generisch):
+  * Das Tool „Wsconfig“ hat das JSON-Array nicht korrekt von „Beispielanforderung“ für die REST-Dienstmethode konvertiert. Dies hatte Probleme bei der Serialisierung dieses JSON-Arrays für die REST-Anforderung zur Folge.
+  * Die Verwendung von Leersymbolen in JSON-Attributnamen wird vom Webdienstconnector-Konfigurationstool nicht unterstützt. Der Datei „WSConfigTool.exe.config“ kann manuell ein Ersetzungsmuster hinzugefügt werden. Beispiel: ```<appSettings> <add key=”JSONSpaceNamePattern” value="__" /> </appSettings>```
+
+* Lotus Notes:
+  * Wenn die Option zum Zulassen benutzerdefinierter Zertifizierer für Organisationen/Organisationseinheiten**** deaktiviert ist, tritt für den Connector ein Fehler beim Export auf. Update: Nach dem Exportfluss werden alle Attribute in Domino exportiert, zum Zeitpunkt des Exports wird jedoch ein KeyNotFoundException-Fehler an Sync zurückgegeben. Der Grund: Beim Umbenennungsvorgang tritt ein Fehler auf, wenn versucht wird, DN (UserName-Attribut) durch Ändern eines der folgenden Attribute zu ändern:  
+    - LastName
+    - FirstName
+    - MiddleInitial
+    - AltFullName
+    - AltFullNameLanguage
+    - ou
+    - altcommonname
+
+  * Wenn die Option zum Zulassen benutzerdefinierter Zertifizierer für Organisationen/Organisationseinheiten**** aktiviert ist, die erforderlichen Zertifizierer aber noch leer sind, tritt ein KeyNotFoundException-Fehler auf.
 
 ### <a name="enhancements"></a>Verbesserungen:
 

@@ -12,13 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/17/2016
+ms.date: 07/20/2017
 ms.author: billmath
-translationtype: Human Translation
-ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
-ms.openlocfilehash: 7d0c5f83d907af9109e27d69806d6106d4bc3214
-ms.lasthandoff: 03/28/2017
-
+ms.custom: aaddev
+ms.reviewer: anchitn
+ms.translationtype: Human Translation
+ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
+ms.openlocfilehash: d1d72932d8156fdada44ad6f375fe81c0428846c
+ms.contentlocale: de-de
+ms.lasthandoff: 07/06/2017
 
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-public-preview"></a>Konfigurierbare Tokengültigkeitsdauern in Azure Active Directory (öffentliche Vorschau)
@@ -73,8 +75,8 @@ Eine Tokengültigkeitsdauer-Richtlinie ist ein Richtlinienobjekt, das Regeln fü
 | --- | --- | --- | --- | --- | --- |
 | Gültigkeitsdauer Zugriffstoken |AccessTokenLifetime |Zugriffstoken, ID-Token, SAML2-Token |1 Stunde |10 Minuten |1 Tag |
 | Max. Zeit der Inaktivität für Aktualisierungstoken |MaxInactiveTime |Aktualisierungstoken |14 Tage |10 Minuten |90 Tage |
-| Max. Alter Single-Factor-Aktualisierungstoken |MaxAgeSingleFactor |Aktualisierungstoken (für alle Benutzer) |90 Tage |10 Minuten |Bis zum Widerruf<sup>1</sup> |
-| Max. Alter Multi-Factor-Aktualisierungstoken |MaxAgeMultiFactor |Aktualisierungstoken (für alle Benutzer) |90 Tage |10 Minuten |Bis zum Widerruf<sup>1</sup> |
+| Max. Alter Single-Factor-Aktualisierungstoken |MaxAgeSingleFactor |Aktualisierungstoken (für alle Benutzer) |Bis zum Widerruf |10 Minuten |Bis zum Widerruf<sup>1</sup> |
+| Max. Alter Multi-Factor-Aktualisierungstoken |MaxAgeMultiFactor |Aktualisierungstoken (für alle Benutzer) |Bis zum Widerruf |10 Minuten |Bis zum Widerruf<sup>1</sup> |
 | Max. Alter Single-Factor-Sitzungstoken |MaxAgeSessionSingleFactor<sup>2</sup> |Sitzungstoken (beständig und nicht beständig) |Bis zum Widerruf |10 Minuten |Bis zum Widerruf<sup>1</sup> |
 | Max. Alter Multi-Factor-Sitzungstoken |MaxAgeSessionMultiFactor<sup>3</sup> |Sitzungstoken (beständig und nicht beständig) |Bis zum Widerruf |10 Minuten |Bis zum Widerruf<sup>1</sup> |
 
@@ -85,9 +87,11 @@ Eine Tokengültigkeitsdauer-Richtlinie ist ein Richtlinienobjekt, das Regeln fü
 ### <a name="exceptions"></a>Ausnahmen
 | Eigenschaft | Betrifft | Standard |
 | --- | --- | --- |
-| Max. Zeit der Inaktivität für Aktualisierungstoken (für Verbundbenutzer mit unzureichenden Widerrufsinformationen ausgestellt) |Aktualisierungstoken (für Verbundbenutzer mit unzureichenden Widerrufsinformationen ausgestellt) |12 Stunden |
+| Maximales Alter des Aktualisierungstokens (für Verbundbenutzer mit unzureichenden Widerrufsinformationen ausgestellt<sup>1</sup>) |Aktualisierungstoken (für Verbundbenutzer mit unzureichenden Widerrufsinformationen ausgestellt<sup>1</sup>) |12 Stunden |
 | Max. Zeit der Inaktivität für Aktualisierungstoken (für vertrauliche Clients ausgestellt) |Aktualisierungstoken (für vertrauliche Clients ausgestellt) |90 Tage |
 | Max. Alter Aktualisierungstoken (für vertrauliche Clients ausgestellt) |Aktualisierungstoken (für vertrauliche Clients ausgestellt) |Bis zum Widerruf |
+
+* <sup>1</sup>Zu Verbundbenutzern mit unzureichenden Widerrufsinformationen zählen Benutzer, bei denen das Attribut „LastPasswordChangeTimestamp“ nicht synchronisiert ist. Für diese Benutzer gilt dieses kurze maximale Alter, da AAD nicht überprüfen kann, wann Token widerrufen werden müssen, die an alte Anmeldeinformationen (z.B. ein Kennwort, das geändert wurde) gebunden sind, und häufiger sicherstellen muss, dass zwischen dem Benutzer und den zugeordneten Token keine Probleme bestehen. Zum Verbessern dieses Verfahrens müssen Mandantenadministratoren sicherstellen, dass das Attribut „LastPasswordChangeTimestamp“ synchronisiert wird (dies kann für das Benutzerobjekt über Powershell oder AADSync festgelegt werden).
 
 ### <a name="policy-evaluation-and-prioritization"></a>Richtlinienauswertung und Priorisierung
 Sie können eine Richtlinie für die Gültigkeitsdauer von Token erstellen und dann einer bestimmten Anwendung, Ihrer Organisation und Dienstprinzipalen zuweisen. Für eine bestimmte Anwendung können mehrere Richtlinien gelten. Folgende Regeln bestimmen, welche Tokengültigkeitsdauer-Richtlinie wirksam wird:

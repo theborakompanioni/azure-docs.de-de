@@ -14,16 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/16/2017
 ms.author: casoper
-translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: 905357b9e2262b86cde31874287cc0b89eef4815
-ms.lasthandoff: 03/17/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 9f6e1980bf5ea5b41da98a135d89f1c5159921a7
+ms.contentlocale: de-de
+ms.lasthandoff: 06/28/2017
 
 ---
 
 # <a name="understand-shared-ip-addresses-in-azure-devtest-labs"></a>Grundlegendes zu freigegebenen IP-Adressen in Azure DevTest Labs
 
-Azure DevTest Labs verwendet freigegebene IP-Adressen, um die Anzahl von öffentlichen IP-Adressen zu minimieren, die für den Zugriff auf die einzelnen virtuellen Computer Ihres Labs erforderlich sind.  Dieser Artikel beschreibt die Funktionsweise von freigegebenen IP-Adressen und die zugehörigen Konfigurationsoptionen.
+Azure DevTest Labs ermöglicht virtuellen Lab-Computern die Verwendung der gleichen öffentlichen IP-Adresse, um die Anzahl von öffentlichen IP-Adressen zu minimieren, die für den Zugriff auf die einzelnen virtuellen Lab-Computer erforderlich sind.  Dieser Artikel beschreibt die Funktionsweise von freigegebenen IP-Adressen und die zugehörigen Konfigurationsoptionen.
 
 ## <a name="shared-ip-setting"></a>Einstellung für freigegebene IP-Adressen
 
@@ -31,17 +32,25 @@ Wenn Sie ein Lab erstellen, befindet dieses sich in einem Subnetz eines virtuell
 
 ![Neues Labsubnetz](media/devtest-lab-shared-ip/lab-subnet.png)
 
+Für bereits vorhandene Labs können Sie diese Option durch Auswählen von **Konfiguration und Richtlinien > Virtuelle Netzwerke** aktivieren. Wählen Sie in der Liste ein virtuelles Netzwerk und anschließend für ein bestimmtes Subnetz die Option **FREIGEGEBENE ÖFFENTLICHE IP-ADRESSE AKTIVIEREN** aus. Falls Sie keine öffentliche IP-Adresse für mehrere virtuelle Lab-Computer freigeben möchten, können Sie diese Option auch in jedem beliebigen Lab deaktivieren.
+
 Alle in diesem Lab erstellten virtuellen Computer verwenden standardmäßig eine freigegebene IP-Adresse.  Beim Erstellen des virtuellen Computers können Sie diese Einstellung auf dem Blatt **Erweiterte Einstellungen** unter **IP-Adresskonfiguration** anzeigen.
 
 ![Neuer virtueller Computer](media/devtest-lab-shared-ip/new-vm.png)
 
-Wenn ein virtueller Computer mit einer aktivierten freigegebenen IP-Adresse zum Subnetz hinzugefügt wird, wird der öffentlichen IP-Adresse ein TCP-Port zugewiesen, der Datenverkehr an den RDP-Port des virtuellen Computers weiterleitet.  
+- **Freigegeben:** Alle als **Freigegeben** erstellten virtuellen Computer werden in einer einzelnen Ressourcengruppe (RG) platziert. Dieser RG wird eine einzelne IP-Adresse zugewiesen, und diese IP-Adresse wird von allen virtuellen Computern in der RG verwendet.
+- **Öffentlich:** Jeder virtuelle Computer, den Sie erstellen, besitzt eine eigene IP-Adresse und wird in seiner eigenen Ressourcengruppe erstellt.
+- **Privat:** Jeder virtuelle Computer, den Sie erstellen, verwendet eine private IP-Adresse. Mit diesem virtuellen Computer kann keine direkte Remotedesktopverbindung über das Internet hergestellt werden.
+
+Wenn dem Subnetz ein virtueller Computer mit aktivierter IP-Adressfreigabe hinzugefügt wird, fügt DevTest Labs den virtuellen Computer automatisch einem Load Balancer hinzu und weist eine TCP-Portnummer für die öffentliche IP-Adresse zu, um eine Weiterleitung an den RDP-Port des virtuellen Computers einzurichten.  
 
 ## <a name="using-the-shared-ip"></a>Verwenden der freigegebenen IP-Adresse
 
-Zum Herstellen einer Verbindung mit Remotedesktop auf dem virtuellen Computer eines RDP-Clients verwenden Sie die IP-Adresse oder den vollqualifizierten Domänennamen, gefolgt von einem Doppelpunkt und dem Port.  In der folgenden Abbildung lautet die RDP-Adresse für die Verbindung mit dem virtuellen Computer `doclab-lab13998814308000.centralus.cloudapp.azure.com:51686`.  Alternativ dazu wählen Sie im Azure-Portal die Schaltfläche **Verbinden**, um eine vorkonfigurierte RDP-Datei herunterzuladen.
+- **Linux-Benutzer:** Verwenden Sie die IP-Adresse oder den vollqualifizierten Domänennamen gefolgt von einem Doppelpunkt und dem Port, um eine SSH-Verbindung mit dem virtuellen Computer herzustellen. In der folgenden Abbildung lautet die RDP-Adresse für die Verbindung mit dem virtuellen Computer `doclab-lab13998814308000.centralus.cloudapp.azure.com:51686`.
 
-![Beispiel für einen virtuellen Computer](media/devtest-lab-shared-ip/vm-info.png)
+  ![Beispiel für einen virtuellen Computer](media/devtest-lab-shared-ip/vm-info.png)
+
+- **Windows-Benutzer:** Verwenden Sie im Azure-Portal die Schaltfläche **Verbinden**, um eine vorkonfigurierte RDP-Datei herunterzuladen und auf den virtuellen Computer zuzugreifen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
