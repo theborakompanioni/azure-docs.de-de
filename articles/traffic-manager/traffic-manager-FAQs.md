@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/15/2017
+ms.date: 06/15/2017
 ms.author: kumud
-translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 8c4c8db3cf57537dd77d33b3ded2dc24167f511f
-ms.lasthandoff: 03/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: 44762864e0a5adf568fcd4928b48661196f05b9e
+ms.contentlocale: de-de
+ms.lasthandoff: 06/16/2017
 
 ---
 
@@ -55,7 +56,7 @@ Mit der leistungsorientierten Methode wird der Datenverkehr an den nächstgelege
 
 ### <a name="what-application-protocols-can-i-use-with-traffic-manager"></a>Welche Anwendungsprotokolle kann ich mit Traffic Manager verwenden?
 
-Traffic Manager arbeitet, wie unter [Funktionsweise von Traffic Manager](../traffic-manager/traffic-manager-overview.md#how-traffic-manager-works) erläutert, auf der DNS-Ebene. Nach Abschluss des DNS-Lookups stellen Clients eine direkte Verbindung mit dem Dienstendpunkt her (nicht über Traffic Manager). Daher kann für diese Verbindung ein beliebiges Anwendungsprotokoll verwendet werden. Für die Endpunkt-Integritätsprüfungen von Traffic Manager wird jedoch entweder ein HTTP- oder ein HTTPS-Endpunkt benötigt. Für die Integritätsprüfung kann ein anderer Endpunkt als der Anwendungsendpunkt verwendet werden, mit dem Clients eine Verbindung herstellen.
+Traffic Manager arbeitet, wie unter [Funktionsweise von Traffic Manager](../traffic-manager/traffic-manager-overview.md#how-traffic-manager-works) erläutert, auf der DNS-Ebene. Nach Abschluss des DNS-Lookups stellen Clients eine direkte Verbindung mit dem Dienstendpunkt her (nicht über Traffic Manager). Daher kann für diese Verbindung ein beliebiges Anwendungsprotokoll verwendet werden. Bei Auswahl von TCP als Überwachungsprotokoll kann die Endpunkt-Systemüberwachung durch Traffic Manager ohne Anwendungsprotokolle erfolgen. Wenn Sie wünschen, dass die Integrität mithilfe eines Anwendungsprotokolls überprüft wird, muss der Endpunkt entweder auf HTTP oder HTTPS GET-Anforderungen reagieren können.
 
 ### <a name="can-i-use-traffic-manager-with-a-naked-domain-name"></a>Kann ich Traffic Manager mit einem reinen Domänennamen verwenden?
 
@@ -68,9 +69,20 @@ Um dieses Problem zu umgehen, wird empfohlen, eine HTTP-Umleitung zu verwenden, 
 Die uneingeschränkte Unterstützung von Naked-Domänen in Traffic Manager ist Teil unseres Feature-Backlogs. Sie können die Unterstützung für diese Funktionsanforderung registrieren, indem Sie [auf unserer Community-Feedbackwebsite dafür abstimmen](https://feedback.azure.com/forums/217313-networking/suggestions/5485350-support-apex-naked-domains-more-seamlessly).
 
 ### <a name="does-traffic-manager-consider-the-client-subnet-address-when-handling-dns-queries"></a>Berücksichtigt Traffic Manager beim Verarbeiten von DNS-Abfragen die Clientsubnetzadresse? 
-Nein, momentan berücksichtigt Traffic Manager beim Ausführen von Lookups mithilfe der geografischen und der leistungsbezogenen Routingmethode nur die Quell-IP-Adresse der empfangenen DNS-Abfrage, bei der es sich in den meisten Fällen um die IP-Adresse des DNS-Resolvers handelt.  
+Nein, momentan berücksichtigt Traffic Manager beim Ausführen von Suchen mithilfe der geografischen und der leistungsbezogenen Routingmethode nur die Quell-IP-Adresse der empfangenen DNS-Abfrage, bei der es sich in den meisten Fällen um die IP-Adresse des DNS-Resolvers handelt.  
 Insbesondere [RFC 7871 – Client Subnet in DNS Queries](https://tools.ietf.org/html/rfc7871), über den ein [Extension Mechanism for DNS (EDNS0)](https://tools.ietf.org/html/rfc2671) bereitgestellt wird, der die Clientsubnetzadresse vom unterstützenden Resolver an die DNS-Server ermöglicht, wird in Traffic Manager zurzeit nicht unterstützt. Sie können auf der [Community-Feedbackwebsite](https://feedback.azure.com/forums/217313-networking) für die Unterstützung für diese Funktionsanforderung abstimmen.
 
+
+### <a name="what-is-dns-ttl-and-how-does-it-impact-my-users"></a>Was ist DNS TTL, und wie wirkt DNS TTL sich auf meine Benutzer aus?
+
+Wenn eine DNS-Abfrage bei Traffic Manager eingeht, legt er in der Antwort einen als Gültigkeitsdauer (Time To Live, TTL) bezeichneten Wert fest. Dieser Wert gibt Downstream-DNS-Resolvern in der Einheit Sekunden an, wie lange diese Antwort zwischengespeichert werden soll. Es ist zwar nicht garantiert, dass die DNS-Resolver dieses Ergebnis zwischenspeichern, doch das Zwischenspeichern ermöglicht ihnen, auf etwaige weiteren Abfragen aus dem Cache heraus zu antworten, anstatt zu Traffic Manager-DNS-Servern zu gehen. Dies wirkt sich wie folgt auf die Antworten aus:
+- Eine höhere Gültigkeitsdauer (TTL) reduziert die Anzahl der bei den Traffic Manager-DNS-Servern eingehenden Abfragen, was die Kosten für einen Kunden verringern kann, da die Anzahl der verarbeiteten Abfragen eine abrechenbare Nutzung ist.
+- Eine höhere Gültigkeitsdauer (TTL) kann möglicherweise den Zeitaufwand für eine DNS-Suche reduzieren.
+- Eine höhere Gültigkeitsdauer (TTL) bedeutet auch, dass Ihre Daten nicht die aktuellen Integritätsinformationen wiedergeben, die Traffic Manager mithilfe seiner Test-Agents ermittelt hat.
+
+### <a name="how-high-or-low-can-i-set-the-ttl-for-traffic-manager-responses"></a>Wie hoch oder niedrig kann ich die Gültigkeitsdauer (TTL) für Traffic Manager-Antworten festlegen?
+
+Sie können die DNS-TTL pro Profil auf minimal 0 und maximal 2.147.483.647 Sekunden festlegen (der mit [RFC-1035](https://www.ietf.org/rfc/rfc1035.txt ) kompatible Maximalbereich). Der TTL-Wert 0 bedeutet, dass Downstream-DNS-Resolver Abfrageantworten nicht zwischenspeichern und alle Abfragen zur Auflösung an den Traffic Manager-DNS-Server gesendet werden.
 
 ## <a name="traffic-manager-geographic-traffic-routing-method"></a>Geografische Methode für das Datenverkehrsrouting in Traffic Manager
 
@@ -81,12 +93,12 @@ Der geografische Routingtyp kann in jedem Szenario verwendet werden, in dem ein 
 Die Landes/Regionshierarchie, die von Traffic Manager verwendet wird, finden Sie [hier](traffic-manager-geographic-regions.md). Diese Seite wird jeweils auf dem neuesten Änderungsstatus gehalten, jedoch können Sie die gleichen Informationen auch programmgesteuert mithilfe der [Azure Traffic Manager-REST-API](https://docs.microsoft.com/rest/api/trafficmanager/) abrufen. 
 
 ### <a name="how-does-traffic-manager-determine-where-a-user-is-querying-from"></a>Wie bestimmt Traffic Manager, woher die Abfrage eines Benutzers stammt? 
-Traffic Manager untersucht die IP-Quelladresse der Abfrage (dabei handelt es sich mit größter Wahrscheinlichkeit um einen lokalen DNS-Auflöser, der die Abfrage im Auftrag des Benutzers ausführt) und verwendet eine interne Zuordnung von IPs zu Regionen, um den Standort zu bestimmen. Diese Zuordnung wird fortlaufend aktualisiert, um Änderungen im Internet Rechnung zu tragen. 
+Traffic Manager untersucht die IP-Quelladresse der Abfrage (dabei handelt es sich mit größter Wahrscheinlichkeit um einen lokalen DNS-Resolver, der die Abfrage im Auftrag des Benutzers ausführt) und verwendet eine interne Zuordnung von IPs zu Regionen, um den Standort zu bestimmen. Diese Zuordnung wird fortlaufend aktualisiert, um Änderungen im Internet Rechnung zu tragen. 
 
-### <a name="is-it-guaranteed-that-traffic-manager-will-correctly-determine-the-exact-geographic-location-of-the-user-in-every-case"></a>Ist garantiert, dass Traffic Manager immer den genauen geografischen Standort des Benutzers ermittelt?
+### <a name="is-it-guaranteed-that-traffic-manager-can-correctly-determine-the-exact-geographic-location-of-the-user-in-every-case"></a>Ist garantiert, dass Traffic Manager immer den genauen geografischen Standort des Benutzers ermitteln kann?
 Nein, Traffic Manager kann aus den folgenden Gründen nicht garantieren, dass die geografische Region, die aus der Quell-IP-Adresse einer DNS-Abfrage abgeleitet wird, immer dem Benutzerstandort entspricht: 
 
-- 1. Wie in der vorherigen Frage beschrieben wurde, ist die erkannte Quell-IP-Adresse die eines DNS-Resolvers, der das Lookup im Namen des Benutzers durchführt. Wenngleich der geografische Standort des DNS-Resolvers ein guter Anhaltspunkt für den geografischen Standort des Benutzers ist, kann er je nach Speicherort des DNS-Resolverdients und dem vom Kunden verwendeten spezifischen DNS-Resolverdienst abweichen. Hier ein Beispiel: Ein in Malaysia ansässiger Kunde könnte in den Geräteeinstellungen einen DNS-Resolverdienst angeben, dessen zugehöriger DNS-Server in Singapur möglicherweise ausgewählt wird, um die Abfrageauflösungen für diesen Benutzer/Dienst durchzuführen. In diesem Fall sieht Traffic Manager nur die IP-Adresse des Resolvers, die dem Standort in Singapur entspricht. Siehe hierzu auch die Frage zur Unterstützung von Clientsubnetzadressen auf dieser Seite.
+- 1. Wie in der vorherigen Frage beschrieben wurde, ist die erkannte Quell-IP-Adresse die eines DNS-Resolvers, der das Lookup im Namen des Benutzers durchführt. Wenngleich der geografische Standort des DNS-Resolvers ein guter Anhaltspunkt für den geografischen Standort des Benutzers ist, kann er je nach Speicherort des DNS-Resolverdients und dem vom Kunden verwendeten spezifischen DNS-Resolverdienst abweichen. Hier ein Beispiel: Ein in Malaysia ansässiger Kunde könnte in den Geräteeinstellungen einen DNS-Resolverdienst angeben, dessen zugehöriger DNS-Server in Singapur möglicherweise ausgewählt wird, um die Abfrageauflösungen für diesen Benutzer/Dienst durchzuführen. In diesem Fall kann Traffic Manager nur die IP-Adresse des Resolvers sehen, die dem Standort in Singapur entspricht. Siehe hierzu auch die Frage zur Unterstützung von Clientsubnetzadressen auf dieser Seite.
 
 - 2. Traffic Manager verwendet eine interne Zuordnung zur Übersetzung der IP-Adressen in geografische Regionen. Wenngleich diese Zuordnung regelmäßig überprüft und aktualisiert wird, um ihre Genauigkeit zu erhöhen und der ständigen Weiterentwicklung des Internets Rechnung zu tragen, besteht dennoch die Möglichkeit, dass unsere Informationen den geografischen Standort nicht für alle IP-Adressen genau abbilden.
 
@@ -95,14 +107,17 @@ Nein, Traffic Manager kann aus den folgenden Gründen nicht garantieren, dass di
 Nein, der Standort des Endpunkts bringt keine Einschränkungen hinsichtlich der ihm zuzuordnenden Regionen mit sich. Beispielsweise können einem Endpunkt in der Azure-Region „US-Central“ alle Benutzer aus Indien zugeleitet werden.
 
 ### <a name="can-i-assign-geographic-regions-to-endpoints-in-a-profile-that-is-not-configured-to-do-geographic-routing"></a>Kann ich geografische Regionen Endpunkten in einem Profil zuordnen, das nicht für geografisches Routing konfiguriert ist? 
-Ja, falls die Routingmethode eines Profils nicht geografisch ist, können Sie die [Azure Traffic Manager-REST-API](https://docs.microsoft.com/rest/api/trafficmanager/) verwenden, um Endpunkten im betreffenden Profil geografische Regionen zuzuweisen. Diese Konfiguration wird für Profile von nicht geografischen Routingtypen ignoriert. Wenn Sie ein derartiges Profil zu einem späteren Zeitpunkt auf den geografischen Routingtyp umstellen, verwendet Traffic Manager diese Zuordnungen.
+
+Ja, falls die Routingmethode eines Profils nicht geografisch ist, können Sie die [Azure Traffic Manager-REST-API](https://docs.microsoft.com/rest/api/trafficmanager/) verwenden, um Endpunkten im betreffenden Profil geografische Regionen zuzuweisen. Diese Konfiguration wird für Profile von nicht geografischen Routingtypen ignoriert. Wenn Sie ein derartiges Profil zu einem späteren Zeitpunkt auf den geografischen Routingtyp umstellen, kann Traffic Manager diese Zuordnungen verwenden.
 
 
-### <a name="when-i-try-to-change-the-routing-method-of-an-existing-profile-to-geographic-i-am-getting-an-error"></a>Führt es zu einem Fehler, wenn ich versuche, die Routingmethode eines vorhandenen Profils in geografisch zu ändern?
-Allen Endpunkten in einem Profil mit geografischem Routing muss mindestens eine geografische Region zugeordnet sein. Um ein vorhandenes Profil in den geografischen Routingtyp zu konvertieren, müssen Sie zuerst mithilfe der [Azure Traffic Manager-REST-API](https://docs.microsoft.com/rest/api/trafficmanager/) allen seinen Endpunkten geografische Regionen zuordnen, bevor Sie den Routingtyp in geografisch ändern. Wenn Sie das Portal verwenden, müssen Sie zuerst die Endpunkte löschen, die Routingmethode des Profils in geografisch ändern und anschließend alle Endpunkte zusammen mit ihrer geografischen Regionszuordnung hinzufügen. 
+### <a name="why-am-i-getting-an-error-when-i-try-to-change-the-routing-method-of-an-existing-profile-to-geographic"></a>Warum tritt ein Fehler auf, wenn ich versuche, die Routingmethode eines vorhandenen Profils in geografisch zu ändern?
+
+Allen Endpunkten in einem Profil mit geografischem Routing muss mindestens eine geografische Region zugeordnet sein. Um ein vorhandenes Profil in den geografischen Routingtyp zu konvertieren, müssen Sie zuerst mithilfe der [Azure Traffic Manager-REST-API](https://docs.microsoft.com/rest/api/trafficmanager/) allen seinen Endpunkten geografische Regionen zuordnen, bevor Sie den Routingtyp in geografisch ändern. Wenn Sie das Portal verwenden, löschen Sie zuerst die Endpunkte, ändern Sie die Routingmethode des Profils in geografisch und fügen Sie anschließend alle Endpunkte zusammen mit ihrer geografischen Regionszuordnung hinzu. 
 
 
 ###  <a name="why-is-it-strongly-recommended-that-customers-create-nested-profiles-instead-of-endpoints-under-a-profile-with-geographic-routing-enabled"></a>Warum wird es Kunden dringend empfohlen, in einem Profil mit aktiviertem geografischem Routing geschachtelte Profile anstelle von Endpunkten zu erstellen? 
+
 Beim geografischen Routingtyp kann eine Region nur einem Endpunkt innerhalb eines Profils zugeordnet sein. Wenn der betreffende Endpunkt kein geschachtelter Typ mit zugeordnetem untergeordnetem Profil ist, fährt Traffic Manager auch bei nicht intaktem Integritätsstatus des betreffenden Endpunkts fort, Verkehr an den Endpunkt zu senden, da die Alternative, gar keinen Verkehr zu senden, nicht besser ist. Traffic Manager führt kein Failover zu einem anderen Endpunkt aus, selbst wenn die zugeordnete Region dem nicht mehr intakten Endpunkt „übergeordnet“ ist (z.B. erfolgt kein Failover auf einen anderen Endpunkt mit der Region „Europa“, wenn ein Endpunkt mit der Region „Spanien“ nicht mehr intakt ist). Dies erfolgt, um sicherzustellen, dass Traffic Manager die geografischen Grenzen beachtet, die Kunden in ihren Profilen konfiguriert haben. Um den Vorzug des Failovers auf einen anderen Endpunkt nutzen zu können, wenn die Integrität eines Endpunkts nicht mehr intakt ist, wird empfohlen, dass geografische Regionen geschachtelten Profilen, die mehrere Endpunkte enthalten, anstelle von einzelnen Endpunkten zugeordnet werden. Wenn ein Endpunkt innerhalb des untergeordneten Profils ausfällt, kann auf diese Weise ein Failover des Datenverkehrs auf einen anderen Endpunkt innerhalb des gleichen geschachtelten untergeordneten Profils erfolgen.
 
 ### <a name="are-there-any-restrictions-on-the-api-version-that-supports-this-routing-type"></a>Gibt es Einschränkungen hinsichtlich der API-Version, die diesen Routingtyp unterstützt?
@@ -117,10 +132,8 @@ Ja, nur die API-Version 2017-03-01 und höhere Versionen unterstützen den geogr
 
 Die Verwendung von Endpunkten aus mehreren Abonnements ist mit Azure-Web-Apps nicht möglich. Für Azure-Web-Apps dürfen mit Web-Apps verwendete, benutzerdefinierte Domänennamen nur innerhalb eines einzelnen Abonnements genutzt werden. Es ist nicht möglich, Web-Apps aus mehreren Abonnements mit dem gleichen Domänennamen zu verwenden.
 
-Für andere Endpunkttypen kann Traffic Manager mit Endpunkten aus mehreren Abonnements verwendet werden. Das Konfigurieren von Traffic Manager hängt davon ab, ob Sie mit dem klassischen Bereitstellungsmodell oder der Resource Manager-Umgebung arbeiten.
+Für andere Endpunkttypen kann Traffic Manager mit Endpunkten aus mehreren Abonnements verwendet werden. In Resource Manager können Endpunkte aus jedem Abonnement zu Traffic Manager hinzugefügt werden, solange die Person, die das Traffic Manager-Profil konfiguriert, über Lesezugriff für den Endpunkt verfügt. Diese Berechtigungen können über die [rollenbasierte Zugriffssteuerung (RBAC) von Azure Resource Manager](../active-directory/role-based-access-control-configure.md)gewährt werden.
 
-* In Resource Manager können Endpunkte aus jedem Abonnement zu Traffic Manager hinzugefügt werden, solange die Person, die das Traffic Manager-Profil konfiguriert, über Lesezugriff für den Endpunkt verfügt. Diese Berechtigungen können über die [rollenbasierte Zugriffssteuerung (RBAC) von Azure Resource Manager](../active-directory/role-based-access-control-configure.md)gewährt werden.
-* In dem klassischen Bereitstellungsmodell ist es für Traffic Manager erforderlich, dass sich der als Azure-Endpunkt konfigurierte Clouddienst bzw. die Web-App im gleichen Abonnement wie das Traffic Manager-Profil befindet. Clouddienstendpunkte in anderen Abonnements können als „externe“ Endpunkte zu Traffic Manager hinzugefügt werden. Diese externen Endpunkte werden als Azure-Endpunkte berechnet, nicht mit der externen Rate.
 
 ### <a name="can-i-use-traffic-manager-with-cloud-service-staging-slots"></a>Kann ich Traffic Manager mit „Stagingslots“ des Clouddiensts verwenden?
 
@@ -135,15 +148,6 @@ Traffic Manager antwortet mit dem DNS-Namen des Endpunkts. Ein IPv6-Endpunkt kan
 ### <a name="can-i-use-traffic-manager-with-more-than-one-web-app-in-the-same-region"></a>Kann ich Traffic Manager mit mehr als einer Web-App in derselben Region verwenden?
 
 Normalerweise wird Traffic Manager verwendet, um Datenverkehr an Anwendungen zu leiten, die in verschiedenen Regionen bereitgestellt wurden. Traffic Manager kann aber auch eingesetzt werden, wenn eine Anwendung über mehr als eine Bereitstellung in derselben Region verfügt. Die Traffic Manager-Azure-Endpunkte lassen es nicht zu, dass demselben Traffic Manager-Profil mehr als ein Web-App-Endpunkt für dieselbe Azure-Region hinzugefügt wird.
-
-Die folgenden Schritte stellen eine Umgehung dieser Einschränkung dar:
-
-1. Überprüfen Sie, ob sich Ihre Endpunkte in verschiedenen Web-App-„Skalierungseinheiten“ befinden. Ein Domänenname muss zu einem einzelnen Standort in einer bestimmten Skalierungseinheit zugeordnet werden. Aus diesem Grund können sich zwei Web-Apps in der gleichen Skalierungseinheit nicht ein Traffic Manager-Profil teilen.
-2. Fügen Sie Ihren Vanity-Domänennamen als einen benutzerdefinierten Hostnamen zu jeder Web-App hinzu. Jede Web-App muss sich in einer anderen Skalierungseinheit befinden. Alle Web-Apps müssen zu demselben Abonnement gehören.
-3. Fügen Sie (nur) einen Web-App-Endpunkt dem Traffic Manager-Profil als Azure-Endpunkt hinzu.
-4. Fügen Sie jeden weiteren Web-App-Endpunkt dem Traffic Manager-Profil als externen Endpunkt hinzu. Externe Endpunkte können nur mit dem Resource Manager-Bereitstellungsmodell hinzugefügt werden.
-5. Erstellen Sie einen DNS CNAME-Eintrag in Ihrer Vanity-Domäne, der auf den DNS-Namen des Traffic Manager-Profils verweist (<…>.trafficmanager.net).
-6. Greifen Sie über den Vanity-Domänennamen auf Ihre Website zu, nicht über den DNS-Namen des Traffic Manager-Profils.
 
 ##  <a name="traffic-manager-endpoint-monitoring"></a>Traffic Manager-Endpunktüberwachung
 
@@ -178,6 +182,28 @@ Traffic Manager kann keine Zertifikatüberprüfung bereitstellen. Dazu zählt Fo
 * Serverseitige SNI-Zertifikate werden nicht unterstützt.
 * Clientzertifikate werden nicht unterstützt.
 
+### <a name="can-i-use-traffic-manager-even-if-my-application-does-not-have-support-for-http-or-https"></a>Kann ich Traffic Manager auch dann verwenden, wenn meine Anwendung HTTP oder HTTPS nicht unterstützt?
+
+Ja. Wenn Sie TCP als Überwachungsprotokoll angeben, kann Traffic Manager eine TCP-Verbindung initiieren und auf eine Antwort vom Endpunkt warten. Wenn der Endpunkt auf die Verbindungsanforderung innerhalb des Zeitlimits mit einer Antwort zum Herstellen der Verbindung antwortet, wird dieser Endpunkt als fehlerfrei markiert.
+
+### <a name="what-specific-responses-are-required-from-the-endpoint-when-using-tcp-monitoring"></a>Welche bestimmten Antworten vom Endpunkt sind bei Verwendung der TCP-Überwachung erforderlich?
+
+Bei Verwendung der TCP-Überwachung startet Traffic Manager durch Senden einer SYN-Anforderung an den Endpunkt am angegebenen Port ein Drei-Wege-TCP-Handshake. Er wartet dann eine bestimmte Zeit (wie in den Timeouteinstellungen angegeben) auf eine Antwort vom Endpunkt. Wenn der Endpunkt innerhalb des in den Überwachungseinstellungen angegeben Timeoutzeitraums auf die SYN-Anforderung mit einer SYN-ACK-Antwort reagiert, wird dieser Endpunkt als fehlerfrei angesehen. Bei Empfang der SYN-ACK-Antwort setzt Traffic Manager die Verbindung mit einer RST-Antwort zurück.
+
+### <a name="how-fast-does-traffic-manager-move-my-users-away-from-an-unhealthy-endpoint"></a>Wie schnell verschiebt Traffic Manager meine Benutzer von einem fehlerhaften Endpunkt weg?
+
+Traffic Manager bietet mehrere Einstellungen, mit denen Sie wie folgt das Failoververhalten Ihres Traffic Manager-Profils steuern können:
+- Sie können angeben, dass Traffic Manager die Endpunkte häufiger prüft, indem Sie das Testintervall auf 10 Sekunden festlegen. Dadurch wird sichergestellt, dass jeder fehlerhafte Endpunkt so bald wie möglich erkannt werden kann. 
+- Sie können einen Timeoutwert für die Anforderung einer Integritätsprüfung festlegen (der Minimalwert sind 5 Sekunden).
+- Sie können angeben, wie viele Fehler auftreten können, bevor der Endpunkt als fehlerhaft markiert wird. Dieser Wert kann niedriger als 0 (null) sein. In diesem Fall wird der Endpunkt als fehlerhaft anzeigt, sobald die erste Integritätsprüfung negativ ausfällt. Jedoch kann ein Mindestwert von 0 für die zulässige Anzahl von Fehlern dazu führen, dass Endpunkte aufgrund vorübergehender, zum Zeitpunkt der Überprüfung auftretender Probleme aus der Rotation herausgenommen werden.
+- Sie können für die DNS-Antwort eine minimale Gültigkeitsdauer (TTL) von 0 angeben. Dies bedeutet, dass die DNS-Resolver die Antwort nicht zwischenspeichern können, und jede neue Abfrage eine Antwort erhält, die die aktuellen Integritätsinformationen wiedergibt, über die Traffic Manager verfügt.
+
+Mithilfe dieser Einstellungen kann Traffic Manager Failover in weniger als 10 Sekunden bereitstellen, nachdem ein Endpunkt fehlerhaft ist und eine DNS-Abfrage des entsprechenden Profils erfolgt.
+
+### <a name="how-can-i-specify-different-monitoring-settings-for-different-endpoints-in-a-profile"></a>Wie kann ich verschiedene Überwachungseinstellungen für verschiedene Endpunkte in einem Profil angeben?
+
+Traffic Manager-Überwachungseinstellungen werden pro Profil festgelegt. Wenn Sie nur für einen Endpunkt eine andere Überwachungseinstellung verwenden müssen, kann dieser Endpunkt als [geschachteltes Profil](traffic-manager-nested-profiles.md) konfiguriert werden, dessen Überwachungseinstellungen sich vom übergeordneten Profil unterscheiden.
+
 ### <a name="what-host-header-do-endpoint-health-checks-use"></a>Welcher Hostheader wird für die Integritätsprüfungen für Endpunkte verwendet?
 
 Traffic Manager verwendet Hostheader in HTTP- und HTTPS-Integritätsprüfungen. Der von Traffic Manager verwendete Hostheader ist der Name des Endpunktziels, das im Profil konfiguriert wurde. Der im Hostheader verwendete Wert kann nicht separat von der Zieleigenschaft („target“) angegeben werden.
@@ -210,6 +236,12 @@ Die folgende Liste enthält die IP-Adressen, aus denen Traffic Manager-Integrit�
 * 13.75.152.253
 * 104.41.187.209
 * 104.41.190.203
+
+### <a name="how-many-health-checks-to-my-endpoint-can-i-expect-from-traffic-manager"></a>Wie viele Integritätsprüfungen meines Endpunkts kann ich von Traffic Manager erwarten?
+
+Die Anzahl der Traffic Manager-Integritätsprüfungen Ihres Endpunkts hängt von Folgendem ab:
+- dem Wert, den Sie für das Überwachungsintervall festgelegt haben (ein kleineres Intervall bedeutet, dass in einem bestimmten Zeitraum mehr Anforderungen auf dem Endpunkt eingehen).
+- der Anzahl der Standorte, von denen die Integritätsprüfungen ausgehen (die IP-Adressen, von denen aus diese Überprüfungen durchgeführt werden können, sind in der vorherigen FAQ aufgelistet).
 
 ## <a name="traffic-manager-nested-profiles"></a>Geschachtelte Profile in Traffic Manager
 

@@ -14,19 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/01/2016
 ms.author: mlearned
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: b178359d2f55e9137b39f42f5562e7bb8a642c57
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: e7d98ca3fa281a136595c37ed9b7e71de0cf7bff
+ms.contentlocale: de-de
+ms.lasthandoff: 06/01/2017
 
 
 ---
 # <a name="continuous-integration-in-visual-studio-team-services-using-azure-resource-group-deployment-projects"></a>Continuous Integration in Visual Studio Team Services mit Azure-Ressourcengruppen-Bereitstellungsprojekten
-Zum Bereitstellen einer Azure-Vorlage müssen Sie Aufgaben ausführen, um die verschiedenen Phasen zu durchlaufen: „Erstellen“, „Testen“, „Nach Azure kopieren“ (auch als „Staging“ bezeichnet) und „Vorlage bereitstellen“.  Zum Bereitstellen von Vorlagen in Visual Studio Team Services (VS Team Services) gibt es zwei Möglichkeiten. Da beide Verfahren zum gleichen Ergebnis führen, können Sie das Verfahren wählen, das am besten in Ihren Workflow passt.
+Zum Bereitstellen einer Azure-Vorlage führen Sie Aufgaben in verschiedenen Phasen aus: „Erstellen“, „Testen“, „Nach Azure kopieren“ (auch als „Staging“ bezeichnet) und „Vorlage bereitstellen“. Zum Bereitstellen von Vorlagen in Visual Studio Team Services (VS Team Services) gibt es zwei Möglichkeiten. Da beide Verfahren zum gleichen Ergebnis führen, können Sie das Verfahren wählen, das am besten in Ihren Workflow passt.
 
 1. Fügen Sie Ihrer Builddefinition einen Schritt hinzu, mit dem das PowerShell-Skript ausgeführt wird, das im Azure-Ressourcengruppen-Bereitstellungsprojekt (Deploy-AzureResourceGroup.ps1) enthalten ist. Mit dem Skript werden Artefakte kopiert, und anschließend wird die Vorlage bereitgestellt.
 2. Fügen Sie mehrere VS Team Services-Buildschritte hinzu, mit denen jeweils eine Stagingaufgabe ausgeführt wird.
 
-In diesem Artikel werden beide Optionen veranschaulicht.  Der Vorteil der ersten Option liegt in der Verwendung des Skripts, das von Entwicklern in Visual Studio verwendet wird. Auf diese Weise wird die Konsistenz im gesamten Lebenszyklus sichergestellt.  Die zweite Option bietet eine praktische Alternative zum integrierten Skript.  Bei beiden Verfahren wird vorausgesetzt, dass Sie bereits ein Visual Studio-Bereitstellungsprojekt in VS Team Services eingecheckt haben.
+In diesem Artikel werden beide Optionen veranschaulicht. Der Vorteil der ersten Option liegt in der Verwendung des Skripts, das von Entwicklern in Visual Studio verwendet wird. Auf diese Weise wird die Konsistenz im gesamten Lebenszyklus sichergestellt. Die zweite Option bietet eine praktische Alternative zum integrierten Skript. Bei beiden Verfahren wird vorausgesetzt, dass Sie bereits ein Visual Studio-Bereitstellungsprojekt in VS Team Services eingecheckt haben.
 
 ## <a name="copy-artifacts-to-azure"></a>Kopieren von Artefakten nach Azure
 Unabhängig vom Szenario gilt Folgendes: Falls Sie über Artefakte verfügen, die für die Vorlagenbereitstellung benötigt werden, müssen Sie Azure Resource Manager Zugriff darauf gewähren. Diese Artefakte können folgende Dateien umfassen:
@@ -47,7 +49,7 @@ Zum Aufrufen des PowerShell-Skripts in VS Team Services müssen Sie Ihre Buildde
 4. Legen Sie den Wert des Parameters *-ArtifactsStagingDirectory* fest, um mit einem Projekt zu arbeiten, das in VS Team Services erstellt wurde.
 
 ### <a name="detailed-walkthrough-for-option-1"></a>Ausführliche exemplarische Vorgehensweise für Option 1
-Hier werden Sie durch die erforderlichen Schritte der Continuous Deployment-Konfiguration in VS Team Services geführt. Hierzu wird eine einzelne Aufgabe verwendet, über die das PowerShell-Skript in Ihrem Projekt ausgeführt wird. 
+Hier werden Sie durch die erforderlichen Prozeduren der Continuous Deployment-Konfiguration in VS Team Services geführt. Hierzu wird eine einzelne Aufgabe verwendet, über die das PowerShell-Skript in Ihrem Projekt ausgeführt wird. 
 
 1. Bearbeiten Sie die VS Team Services-Builddefinition, und fügen Sie einen Azure PowerShell-Buildschritt hinzu. Wählen Sie die Builddefinition in der Kategorie **Builddefinitionen** aus, und wählen Sie dann den Link **Bearbeiten**.
    
@@ -109,7 +111,7 @@ Hier werden Sie durch die erforderlichen Schritte der Continuous Deployment-Konf
    | -ResourceGroupLocation |Der Wert für den geografischen Standort, an dem sich die Ressourcengruppe befindet, z.B. **eastus** oder **'USA, Osten'**. (Verwenden Sie einfache Anführungszeichen oben, wenn der Name ein Leerzeichen enthält.) Weitere Informationen finden Sie unter [Azure-Regionen](https://azure.microsoft.com/en-us/regions/). |
    | -ResourceGroupName |Der Name der Ressourcengruppe, die für diese Bereitstellung verwendet wird. |
    | -UploadArtifacts |Mit diesem Parameter wird (falls vorhanden) angegeben, dass Artefakte aus dem lokalen System in Azure hochgeladen werden müssen. Sie müssen diesen Switch nur festlegen, falls für Ihre Vorlagenbereitstellung zusätzliche Artefakte erforderlich sind, die Sie mit dem PowerShell-Skript bereitstellen möchten (z. B. Konfigurationsskripts oder geschachtelte Vorlagen). |
-   | -StorageAccountName |Der Name des Speicherkontos, das zum Bereitstellen von Artefakten für diese Bereitstellung verwendet wird.  Dieser Parameter wird nur verwendet, wenn Sie Artefakte zur Bereitstellung nach Azure kopieren. Wenn dieser Parameter angegeben wird, wird ein neues Speicherkonto erstellt, sofern über das Skript nicht bereits eines während einer vorherigen Bereitstellung erstellt wurde.  Wenn der Parameter angegeben wird, muss das Speicherkonto bereits vorhanden sein. |
+   | -StorageAccountName |Der Name des Speicherkontos, das zum Bereitstellen von Artefakten für diese Bereitstellung verwendet wird. Dieser Parameter wird nur verwendet, wenn Sie Artefakte zur Bereitstellung nach Azure kopieren. Wenn dieser Parameter angegeben wird, wird ein neues Speicherkonto erstellt, sofern über das Skript nicht bereits eines während einer vorherigen Bereitstellung erstellt wurde. Wenn der Parameter angegeben wird, muss das Speicherkonto bereits vorhanden sein. |
    | -StorageAccountResourceGroupName |Der Name der Ressourcengruppe, die dem Speicherkonto zugeordnet ist. Dieser Parameter ist nur erforderlich, wenn Sie einen Wert für den Parameter „StorageAccountName“ angeben. |
    | -TemplateFile |Der Pfad zur Vorlagendatei im Azure-Ressourcengruppen-Bereitstellungsprojekt. Zur Steigerung der Flexibilität verwenden Sie für diesen Parameter anstelle eines absoluten Pfads einen Pfad, der relativ zum Speicherort des PowerShell-Skripts ist. |
    | -TemplateParametersFile |Gibt den Pfad zur Parameterdatei im Azure-Ressourcengruppen-Bereitstellungsprojekt an. Zur Steigerung der Flexibilität verwenden Sie für diesen Parameter anstelle eines absoluten Pfads einen Pfad, der relativ zum Speicherort des PowerShell-Skripts ist. |
@@ -129,7 +131,7 @@ Hier werden Sie durch die erforderlichen Schritte der Continuous Deployment-Konf
 9. Nachdem Sie alle erforderlichen Komponenten für den Azure PowerShell-Buildschritt hinzugefügt haben, wählen Sie die Schaltfläche **Build zur Warteschlange hinzufügen** , um das Projekt zu erstellen. Im **Buildfenster** wird die Ausgabe des PowerShell-Skripts angezeigt.
 
 ### <a name="detailed-walkthrough-for-option-2"></a>Ausführliche exemplarische Vorgehensweise für Option 2
-Hier werden Sie durch die erforderlichen Schritte der Continuous Deployment-Konfiguration in VS Team Services geführt. Hierzu werden die integrierten Aufgaben verwendet.
+Hier werden Sie durch die erforderlichen Prozeduren der Continuous Deployment-Konfiguration in VS Team Services geführt. Hierzu werden die integrierten Aufgaben verwendet.
 
 1. Bearbeiten Sie die VS Team Services-Builddefinition, und fügen Sie zwei neue Buildschritte hinzu. Wählen Sie die Builddefinition in der Kategorie **Builddefinitionen** aus, und wählen Sie dann den Link **Bearbeiten**.
    
@@ -145,7 +147,7 @@ Hier werden Sie durch die erforderlichen Schritte der Continuous Deployment-Konf
    ![Hinzufügen der Aufgabe „Bereitstellung einer Azure-Ressourcengruppe“][15]
 5. Wählen Sie die Aufgabe **Azure-Dateikopiervorgang** aus, und geben Sie die zugehörigen Werte ein.
    
-   Falls Sie bereits über einen Azure-Dienstendpunkt verfügen, der VS Team Services hinzugefügt wurde, wählen Sie das Abonnement im Dropdown-Listenfeld **Azure-Abonnement** aus.  Wenn Sie noch kein Abonnement haben, finden Sie unter [Option 1](#detailed-walkthrough-for-option-1) Anweisungen zum Einrichten eines Abonnements in VS Team Services.
+   Falls Sie bereits über einen Azure-Dienstendpunkt verfügen, der VS Team Services hinzugefügt wurde, wählen Sie das Abonnement im Dropdown-Listenfeld **Azure-Abonnement** aus. Wenn Sie noch kein Abonnement haben, finden Sie unter [Option 1](#detailed-walkthrough-for-option-1) Anweisungen zum Einrichten eines Abonnements in VS Team Services.
    
    * Quelle: Geben Sie **$(Build.StagingDirectory)** ein.
    * Azure-Verbindungstyp: Wählen Sie **Azure Resource Manager** aus.
@@ -196,9 +198,4 @@ Weitere Informationen zu Azure Resource Manager und Azure-Ressourcengruppen find
 [15]: ./media/vs-azure-tools-resource-groups-ci-in-vsts/walkthrough16.png
 [16]: ./media/vs-azure-tools-resource-groups-ci-in-vsts/walkthrough17.png
 [17]: ./media/vs-azure-tools-resource-groups-ci-in-vsts/walkthrough18.png
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 
