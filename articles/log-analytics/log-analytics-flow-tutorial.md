@@ -37,7 +37,7 @@ Im Tutorial in diesem Artikel wird gezeigt, wie Sie einen Flow erstellen, bei de
 2. Klicken Sie auf **+ Ohne Vorlage erstellen**.
 
 ## <a name="step-2-create-a-trigger-for-your-flow"></a>Schritt 2: Erstellen eines Triggers für Ihren Flow
-1. Klicken Sie auf **Search hundreds of connectors and triggers** (Nach Hunderten von Connectors und Triggern suchen).
+1. Klicken Sie auf **Search hundreds of connectors and triggers** (Mehrere hundert Connectors und Trigger durchsuchen).
 2. Geben Sie im Suchfeld den Suchbegriff **Zeitplan** ein.
 3. Wählen Sie **Zeitplan** und anschließend **Zeitplan – Wiederholung** aus.
 4. Wählen Sie im Feld **Häufigkeit** die Option **Tag** aus, und geben Sie im Feld **Intervall** den Wert **1** ein.<br><br>![Trigger-Dialogfeld für Microsoft Flow](media/log-analytics-flow-tutorial/flow01.png)

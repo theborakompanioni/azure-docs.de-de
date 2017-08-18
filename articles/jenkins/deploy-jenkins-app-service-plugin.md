@@ -96,7 +96,7 @@ az webapp config set \
 
 1. Erstellen Sie im Jenkins-Dashboard ein neues **Freestyle**-Projekt.
 2. Konfigurieren Sie die **Quellcodeverwaltung** so, dass Ihre lokale Verzweigung von [Simple Java Web App for Azure](https://github.com/azure-devops/javawebappsample) (Einfache Java-Web-App für Azure) verwendet wird, indem Sie die **Repository-URL** angeben. Beispiel: http://github.com/&lt;IhreID>/javawebappsample.
-3. Fügen Sie einen Buildschritt hinzu, um das Projekt mit Maven zu erstellen. Fügen Sie hierzu eine **Execute shell** (Shell für die Ausführung) hinzu. Für dieses Beispiel benötigen wir einen zusätzlichen Schritt, um die WAR-Datei im Zielordner in „ROOT.war“ umzubenennen.   
+3. Fügen Sie einen Buildschritt hinzu, um das Projekt mit Maven zu erstellen. Fügen Sie hierzu eine **Execute shell** (Ausführungsshell) hinzu. Für dieses Beispiel benötigen wir einen zusätzlichen Schritt, um die WAR-Datei im Zielordner in „ROOT.war“ umzubenennen.   
 ```bash
 mvn clean package
 mv target/*.war target/ROOT.war
@@ -149,7 +149,7 @@ Vor dem Einrichten des Auftrags in Jenkins benötigen Sie eine Azure App Service
 
 1. Erstellen Sie im Jenkins-Dashboard ein neues Freestyle-Projekt.
 2. Konfigurieren Sie die **Quellcodeverwaltung** so, dass Ihre lokale Verzweigung von [Simple Java Web App for Azure](https://github.com/azure-devops/javawebappsample) (Einfache Java-Web-App für Azure) verwendet wird, indem Sie die **Repository-URL** angeben. Beispiel: http://github.com/&lt;IhreID>/javawebappsample.
-Fügen Sie einen Buildschritt hinzu, um das Projekt mit Maven zu erstellen. Fügen Sie hierzu eine **Execute shell** (Shell für die Ausführung) und dann unter **Befehl** die folgende Zeile hinzu:    
+Fügen Sie einen Buildschritt hinzu, um das Projekt mit Maven zu erstellen. Fügen Sie hierzu eine **Execute shell** (Ausführungsshell) und dann unter **Befehl** die folgende Zeile hinzu:    
 ```bash
 mvn clean package
 ```
