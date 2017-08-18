@@ -14,12 +14,11 @@ ms.devlang: python
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: lmazuel
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
-ms.openlocfilehash: 90c8c6d91de667f2d234b1d4e89ce7336813fb62
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: 3e6bcf301a9257a60e6b921934bb6a04b4dd5d53
 ms.contentlocale: de-de
-ms.lasthandoff: 06/09/2017
-
+ms.lasthandoff: 08/11/2017
 
 ---
 # <a name="installing-python-and-the-sdk"></a>Installieren von Python und SDK
@@ -112,7 +111,7 @@ Für Linux oder Mac OS werden die folgenden wichtigen Azure-Szenarien unterstüt
 
 Beim ersten Szenario können Sie vielseitige Web-Apps erstellen, die von den Vorteilen der Azure PaaS-Funktionen profitieren, wie beispielsweise [Blobspeicher](virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json), [Warteschlangenspeicher](storage/storage-python-how-to-use-queue-storage.md), [Tabellenspeicher](storage/storage-python-how-to-use-table-storage.md) usw. über Python-Wrapper für die Azure-REST-APIs. Diese funktionieren unter Windows, Mac und Linux identisch.  Sie können diese Clientbibliotheken auch von Ihrem lokalen Entwicklungscomputer oder einem virtuellen Linux-Computer verwenden, der auf Azure ausgeführt wird.
 
-Bei dem VM-Szenario starten Sie einen virtuellen Linux-Computer Ihrer Wahl (Ubuntu, CentOS, Suse) und führen eine beliebige Anwendung aus bzw. verwalten diese.  Beispielsweise können Sie [IPython][IPython]-REPL/Notebook auf Ihrem Windows-/Mac-/Linux-Computer ausführen und Ihren Browser auf einen virtuellen Linux- oder Windows-Computer mit Multi-Proc verweisen, der die IPython-Engine in Azure ausführt. Weitere Informationen finden Sie im Tutorial [IPython-Notizbuch in Azure](virtual-machines/linux/jupyter-notebook.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Bei dem VM-Szenario starten Sie einen virtuellen Linux-Computer Ihrer Wahl (Ubuntu, CentOS, Suse) und führen eine beliebige Anwendung aus bzw. verwalten diese.  Beispielsweise können Sie [IPython][IPython]-REPL/Notebook auf Ihrem Windows-/Mac-/Linux-Computer ausführen und Ihren Browser auf einen virtuellen Linux- oder Windows-Computer mit Multi-Proc verweisen, der die IPython-Engine in Azure ausführt.
 
 Informationen zur Einrichtung eines virtuellen Linux-Computers finden Sie im Tutorial [Erstellen eines virtuellen Linux-Computers](virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) .
 
@@ -131,7 +130,6 @@ Weitere Informationen zum Entwickeln und Veröffentlichen von Azure-Websites fin
 * [NumPy – numerische Bibliothek für Python][NumPy - A numerics library for Python]
 * [Django-Projekt – ein ausgereiftes Web-Framework/CMS][Django Project - A mature web framework/CMS]
 * [IPython – ein erweitertes REPL/Notebook für Python][IPython - an advanced REPL/Notebook for Python]
-* [IPython Notebook in Azure](virtual-machines/linux/jupyter-notebook.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Python-Tools für Visual Studio auf GitHub][Python Tools for Visual Studio on GitHub]
 * [Python Developer Center](/develop/python/)
 

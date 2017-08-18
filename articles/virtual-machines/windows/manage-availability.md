@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 03/21/2017
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: dccbe3c15d974a29750ca6a1fefd3b947b7f1b8d
-ms.lasthandoff: 04/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: 408d030a7c26fea47669a690b0487e0868fbc2c9
+ms.contentlocale: de-de
+ms.lasthandoff: 08/11/2017
 
 ---
 # <a name="manage-the-availability-of-windows-virtual-machines-in-azure"></a>Verwalten der Verfügbarkeit virtueller Windows-Computer in Azure 
@@ -34,6 +34,6 @@ Anweisungen zum Erstellen und Verwenden von Verfügbarkeitsgruppe im klassischen
 [!INCLUDE [virtual-machines-common-manage-availability](../../../includes/virtual-machines-common-manage-availability.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zum Lastenausgleich zwischen virtuellen Computern finden Sie unter [Lastenausgleich für virtuelle Computer](load-balance.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Weitere Informationen zum Lastenausgleich zwischen virtuellen Computern finden Sie unter [Lastenausgleich für virtuelle Computer](tutorial-load-balancer.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 

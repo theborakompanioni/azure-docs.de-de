@@ -15,25 +15,17 @@ ms.devlang: python
 ms.topic: article
 ms.date: 05/31/2017
 ms.author: huvalo
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6adaf7026d455210db4d7ce6e7111d13c2b75374
-ms.openlocfilehash: a9ccbb3da29670da9a377be2212905c67b3ec7d0
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: 283a296fb39863c2801be1093cc4f56904786abd
 ms.contentlocale: de-de
-ms.lasthandoff: 06/22/2017
-
+ms.lasthandoff: 08/11/2017
 
 ---
 # <a name="django-hello-world-web-app-on-a-windows-server-vm"></a>Django-Web-App „Hello World“ auf einer Windows Server-VM
-> [!div class="op_single_selector"]
-> * [Windows](python-django-web-app.md)
-> * [Mac/Linux](../../linux/python-django-web-app.md)
-> 
-> 
-
-<br>
 
 > [!IMPORTANT] 
-> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Azure Resource Manager und das klassische Bereitstellungsmodell](../../../resource-manager-deployment-model.md). Dieser Artikel beschreibt das klassische Bereitstellungsmodell. Wir empfehlen für die meisten Neubereitstellungen das Resource Manager-Modell. Eine Resource Manager-Vorlage, die Sie zum Bereitstellen von Django verwenden können, finden Sie unter [Bereitstellen einer Django-App](https://azure.microsoft.com/documentation/templates/django-app/).
+> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Azure Resource Manager und das klassische Bereitstellungsmodell](../../../resource-manager-deployment-model.md). Dieser Artikel beschreibt das klassische Bereitstellungsmodell. Wir empfehlen für die meisten Neubereitstellungen das Resource Manager-Modell.
 
 In diesem Tutorial wird gezeigt, wie eine Django-basierte Website in Windows Server in Azure Virtual Machines gehostet wird. In diesem Tutorial werden keine Erfahrungen mit Azure vorausgesetzt. Wenn Sie dieses Tutorial abschließen, verfügen Sie über eine aktive Django-basierte Anwendung in der Cloud.
 
@@ -110,7 +102,7 @@ Der folgende Screenshot zeigt die fertige Anwendung:
    * `helloworld\manage.py` hilft Ihnen, das Hosting für Ihre Django-basierte Website zu starten und zu beenden.
    * `helloworld\helloworld\settings.py` enthält Django-Einstellungen für Ihre Anwendung.
    * `helloworld\helloworld\urls.py` enthält den Zuordnungscode zwischen den einzelnen URLs und deren Ansicht.
-3. Erstellen Sie im Verzeichnis „C:\inetpub\wwwroot\helloworld\helloworld“ eine neue Datei mit dem Namen „views.py“. Diese Datei enthält die Ansicht, mit der die Seite „Hello World“ gerendert wird. Geben Sie in Ihrem Code-Editor die folgenden Befehle ein:
+3. Erstellen Sie im Verzeichnis „C:\inetpub\wwwroot\helloworld\helloworld“ eine neue Datei mit dem Namen „views.py“. Diese Datei enthält die Ansicht, mit der die Seite „Hello World“ gerendert wird. Geben Sie im Code-Editor die folgenden Befehle ein:
    
        from django.http import HttpResponse
        def home(request):
@@ -175,7 +167,7 @@ Der folgende Screenshot zeigt die fertige Anwendung:
 ![Ein Browserfenster zeigt die Seite „Hello World“ in Azure an][1]
 
 ## <a name="shut-down-your-azure-virtual-machine"></a>Herunterfahren des virtuellen Azure-Computers
-Wenn Sie mit diesem Tutorial fertig sind, empfiehlt es sich, die Azure-VM, die Sie für das Tutorial erstellt haben, herunterzufahren oder zu entfernen. Dadurch werden Ressourcen für andere Tutorials freigegeben, und Sie können zusätzliche Gebühren für die Azure-Nutzung vermeiden.
+Wenn Sie dieses Tutorial durchgearbeitet haben, empfiehlt es sich, die für das Tutorial erstellte Azure-VM herunterzufahren oder zu entfernen. Dadurch werden Ressourcen für andere Tutorials freigegeben, und Sie können zusätzliche Gebühren für die Azure-Nutzung vermeiden.
 
 [1]: ./media/python-django-web-app/django-helloworld-browser-azure.png
 

@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 03/06/2017
 ms.author: nepeters
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 09b4a34a45ad676a5279dad85fc84578f40a212a
-ms.lasthandoff: 03/31/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: 1ce0eebd2585c9457d7f922898d7f2fa3e7ffad7
+ms.contentlocale: de-de
+ms.lasthandoff: 08/11/2017
 
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Erweiterungen und Features für virtuelle Computer für Windows
@@ -40,7 +40,6 @@ Es sind viele verschiedene Azure VM-Erweiterungen für jeweils spezifische Anwen
 
 Über prozessspezifische Erweiterungen hinaus ist sowohl für virtuelle Windows- als auch für virtuelle Linux-Computer eine benutzerdefinierte Skripterweiterung verfügbar. Die benutzerdefinierte Skripterweiterung für Windows ermöglicht die Ausführung beliebiger PowerShell-Skripts auf virtuellen Computern. Dies ist beim Entwerfen von Azure-Bereitstellungen nützlich, die Konfiguration über das Maß hinaus erfordern, das mithilfe von Azure-Tools erreicht werden kann. Weitere Informationen finden Sie unter [Benutzerdefinierte Skripterweiterung für Windows-VMs](extensions-customscript.md).
 
-Wenn Sie ein Beispiel für den Einsatz einer VM-Erweiterung in einer End-to-End-Anwendungsbereitstellung durcharbeiten möchten, lesen Sie [Automatisieren von Anwendungsbereitstellungen auf virtuellen Azure-Computern](dotnet-core-1-landing.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -159,7 +158,7 @@ Weitere Informationen finden Sie in der vollständigen [Resource Manager-Vorlage
 }
 ```
 
-Weitere Informationen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen mit Erweiterungen für virtuelle Windows-Computer](extensions-authoring-templates.md).
+Weitere Informationen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen mit Erweiterungen für virtuelle Windows-Computer](template-description.md#extensions).
 
 ## <a name="secure-vm-extension-data"></a>Schützen der Daten von VM-Erweiterungen
 

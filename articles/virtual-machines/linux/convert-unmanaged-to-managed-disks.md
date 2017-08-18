@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 06/23/2017
 ms.author: iainfou
 ms.translationtype: HT
-ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
-ms.openlocfilehash: 3109da1dac6ebb6564c94b5c6635ded77ea9be8d
+ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
+ms.openlocfilehash: f7ba456a0d23560ee70f14ecb61c0d016e24e7e1
 ms.contentlocale: de-de
-ms.lasthandoff: 08/09/2017
+ms.lasthandoff: 08/10/2017
 
 ---
 
@@ -96,17 +96,6 @@ Für alle VMs in der Verfügbarkeitsgruppe muss die Zuordnung aufgehoben werden,
     ```azurecli
     az vm start --resource-group myResourceGroup --name myVM
     ```
-
-## <a name="managed-disks-and-azure-storage-service-encryption"></a>Verwaltete Datenträger und Azure Storage Service Encryption
-Mit den obigen Schritten können Sie einen nicht verwalteten Datenträger nicht in einen verwalteten Datenträger konvertieren, wenn sich der nicht verwaltete Datenträger in einem Speicherkonto befindet, das mithilfe von [Azure Storage Service Encryption](../../storage/storage-service-encryption.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) verschlüsselt wurde. Die folgenden Schritte beschreiben, wie Sie nicht verwaltete Datenträger kopieren und verwenden, die sich in einem verschlüsselten Speicherkonto befanden:
-
-1. Kopieren Sie die virtuelle Festplatte (VHD) mit [az storage blob copy start](/cli/azure/storage/blob/copy#start) in ein Speicherkonto, das nie für Azure Storage Service Encryption aktiviert wurde.
-
-2. Verwenden Sie die kopierte VM wie folgt:
-
-   * Erstellen Sie eine VM, die verwaltete Datenträger verwendet, und geben Sie diese VHD-Datei während der Erstellung mit [az vm create](/cli/azure/vm#create) an.
-
-   * Fügen Sie die kopierte VHD mit [az vm disk attach](/cli/azure/vm/disk#attach) an eine ausgeführte VM an, die verwaltete Datenträger verwendet.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu Speicheroptionen finden Sie in der [Übersicht über Managed Disks](../../storage/storage-managed-disks-overview.md).

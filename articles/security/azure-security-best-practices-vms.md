@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/19/2017
 ms.author: yurid
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: c306000e898f5fe0260ef3347988923266ed096e
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: c8a920a0523cb4737e6bbca7e49d0b9e2c942565
 ms.contentlocale: de-de
-ms.lasthandoff: 03/31/2017
+ms.lasthandoff: 08/11/2017
 
 ---
 # <a name="best-practices-for-azure-vm-security"></a>Bewährte Methoden für die Sicherheit virtueller Azure-Computer
@@ -65,7 +65,7 @@ Organisationen, die keine Datenzugriffssteuerung mit Funktionen wie RBAC erzwing
 
 ## <a name="vm-availability-and-network-access"></a>Verfügbarkeit und Netzwerkzugriff für virtuelle Computer
 
-Falls Ihr virtueller Computer kritische Anwendungen ausführt, die eine hohe Verfügbarkeit erfordern, empfiehlt sich die Verwendung mehrerer virtueller Computer. Erstellen Sie für eine höhere Verfügbarkeit mindestens zwei VMs in der [Verfügbarkeitsgruppe](../virtual-machines/windows/infrastructure-availability-sets-guidelines.md).
+Falls Ihr virtueller Computer kritische Anwendungen ausführt, die eine hohe Verfügbarkeit erfordern, empfiehlt sich die Verwendung mehrerer virtueller Computer. Erstellen Sie für eine höhere Verfügbarkeit mindestens zwei VMs in der [Verfügbarkeitsgruppe](../virtual-machines/windows/tutorial-availability-sets.md).
 
 [Azure Load Balancer](../load-balancer/load-balancer-overview.md) setzt außerdem voraus, dass virtuelle Computer mit Lastenausgleich der gleichen Verfügbarkeitsgruppe angehören. Falls auf diese virtuellen Computer über das Internet zugegriffen werden muss, müssen Sie einen [Load Balancer mit Internetzugriff](../load-balancer/load-balancer-internet-overview.md) konfigurieren.
 

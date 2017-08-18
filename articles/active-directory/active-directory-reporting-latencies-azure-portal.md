@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/05/2017
+ms.date: 07/15/2017
 ms.author: markvi;dhanyahk
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 1c6b79c5f67cee5d62c9879bdeec926091253af6
+ms.reviewer: dhanyahk
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 93cb0baeab8f13f81257ed1bd32ed08561c54b72
 ms.contentlocale: de-de
-ms.lasthandoff: 04/12/2017
-
+ms.lasthandoff: 08/16/2017
 
 ---
-# <a name="azure-active-directory-reporting-latencies---preview"></a>Latenzen bei Azure Active Directory-Berichten – Vorschau
+# <a name="azure-active-directory-reporting-latencies"></a>Latenzen bei Azure Active Directory-Berichten
 
-Mit der Berichterstellungsfunktion in Azure Active Directory [(Vorschau)](active-directory-preview-explainer.md) erhalten Sie alle Informationen, die Sie zum Ermitteln des Zustands Ihrer Umgebung benötigen. Die Dauer bis zur Anzeige von Berichtsdaten im Azure-Portal wird auch als Latenz bezeichnet. 
+Mit der [Berichterstellungsfunktion](active-directory-preview-explainer.md) in Azure Active Directory erhalten Sie alle Informationen, die Sie zum Ermitteln des Zustands Ihrer Umgebung benötigen. Die Dauer bis zur Anzeige von Berichtsdaten im Azure-Portal wird auch als Latenz bezeichnet. 
 
 Dieses Thema enthält Informationen zur Latenz für alle Berichtskategorien im Azure-Portal. 
 
@@ -72,7 +72,7 @@ Die folgende Tabelle enthält Latenzzeitinformationen für Risikoereignisse.
 | Anmeldungen von anonymen IP-Adressen |5 Minuten |15 Minuten |2 Stunden |
 | Anmeldungen von unbekannten Standorten |5 Minuten |15 Minuten |2 Stunden |
 | Benutzer mit kompromittierten Anmeldeinformationen |2 Stunden |4 Stunden |8 Stunden |
-| Unmöglicher Ortswechsel zu atypischen Orten |2 Stunden |4 Stunden |8 Stunden  |
+| Unmöglicher Ortswechsel zu atypischen Orten |5 Minuten |1 Stunde |8 Stunden  |
 | Anmeldungen von infizierten Geräten |2 Stunden |4 Stunden |8 Stunden  |
 | Anmeldungen von IP-Adressen mit verdächtigen Aktivitäten |2 Stunden |4 Stunden |8 Stunden  |
 
@@ -91,3 +91,4 @@ Weitere Informationen zu Sicherheitsberichten im Azure-Portal finden Sie unter:
 - [Bericht „Riskante Anmeldungen“ im Azure Active Directory-Portal](active-directory-reporting-security-risky-sign-ins.md)
 
 Weitere Informationen zu Risikoereignissen finden Sie unter [Azure Active Directory-Risikoereignisse](active-directory-reporting-risk-events.md).
+

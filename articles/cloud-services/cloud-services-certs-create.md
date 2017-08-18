@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: adegeo
-translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: 7e68a738feff2eb2330b74d942b0a7f42d07df78
-ms.lasthandoff: 04/20/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: f760bfd93b19c43d12889b5dd38015c5eba0a8ac
+ms.contentlocale: de-de
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Übersicht über Zertifikate für Azure Cloud Services
@@ -36,7 +36,7 @@ Sie können Dienstzertifikate entweder über das klassische Azure-Portal oder mi
 Dienstzertifikate können gesondert von Ihren Diensten sowie von verschiedenen Personen verwaltet werden. Beispielsweise kann ein Entwickler ein Dienstpaket hochladen, das auf ein Zertifikat verweist, das ein IT-Manager zuvor in Azure hochgeladen hat. Ein IT-Manager kann dieses Zertifikat verwalten und erneuern (die Konfiguration des Diensts ändern), ohne ein neues Dienstpaket hochladen zu müssen. Das Aktualisieren ohne ein neues Dienstpaket ist möglich, da der logische Name, der Speichername und der Speicherort des Zertifikats in der Dienstdefinitionsdatei angegeben sind, während der Zertifikatfingerabdruck in der Dienstkonfigurationsdatei angegeben ist. Um das Zertifikat zu aktualisieren, muss lediglich ein neues Zertifikat hochgeladen und der Fingerabdruckwert in der Dienstkonfigurationsdatei geändert werden.
 
 >[!Note]
->Der Artikel [Häufig gestellte Fragen zu Cloud Services](cloud-services-faq.md#certificates) enthält einige nützliche Informationen zu Zertifikaten.
+>Der Artikel [Häufig gestellte Fragen zu Cloud Services](cloud-services-faq.md) enthält einige nützliche Informationen zu Zertifikaten.
 
 ## <a name="what-are-management-certificates"></a>Was sind Verwaltungszertifikate?
 Verwaltungszertifikate ermöglichen Ihnen die Authentifizierung mit dem klassischen Bereitstellungsmodell. Diese Zertifikate werden in vielen Programmen und Tools (z.B. Visual Studio oder Azure SDK) zum Automatisieren der Konfiguration und Bereitstellung verschiedener Azure-Dienste verwendet. Diese stehen eigentlich nicht in Zusammenhang mit Clouddiensten. 

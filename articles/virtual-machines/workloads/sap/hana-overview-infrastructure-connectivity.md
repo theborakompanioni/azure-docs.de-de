@@ -15,10 +15,10 @@ ms.date: 12/01/2016
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 0425da20f3f0abcfa3ed5c04cec32184210546bb
-ms.openlocfilehash: abc3f5ee70130b6be093e63afb495c86b921ba26
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: 177627d8f72dbd04fb918ac7ece18321246a9c62
 ms.contentlocale: de-de
-ms.lasthandoff: 07/20/2017
+ms.lasthandoff: 08/12/2017
 
 ---
 
@@ -171,7 +171,7 @@ Am Ende des Bereitstellungsprozesses stellt Microsoft Ihnen die folgenden Daten 
      - ExpressRoute-Peer-ID
 - Daten, um auf SAP HANA (große Instanzen) zuzugreifen, nachdem Sie die ExpressRoute-Leitung und das Azure-VNet eingerichtet haben
 
-Die Sequenz für das Verbinden von HANA (große Instanzen) finden Sie auch im Dokument [End to End Setup for SAP HANA Large Instances](https://msdnshared.blob.core.windows.net/media/2017/06/End-to-End-Setup-of-SAP-HANA-Large-Instances.pdf) (End-to-End-Setup für SAP HANA (große Instanzen)). Viele der folgenden Schritte werden in diesem Dokument in einer Beispielbereitstellung dargestellt. 
+Die Sequenz für das Verbinden von HANA (große Instanzen) finden Sie auch im Dokument [End to End Setup for SAP HANA Large Instances](https://azure.microsoft.com/resources/sap-hana-on-azure-large-instances-setup/) (End-to-End-Setup für SAP HANA (große Instanzen)). Viele der folgenden Schritte werden in diesem Dokument in einer Beispielbereitstellung dargestellt. 
 
 
 ## <a name="connecting-a-vnet-to-hana-large-instance-expressroute"></a>Verbinden eines VNets mit HANA (große Instanzen)-ExpressRoute

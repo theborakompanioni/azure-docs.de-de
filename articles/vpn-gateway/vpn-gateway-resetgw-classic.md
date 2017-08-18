@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/24/2017
 ms.author: cherylmc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
-ms.openlocfilehash: 4315e9168a1ad724a6c28bd9bab065d6ffdabb5d
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 7c5ba9310568571991708ab54a5275df6ea84a39
 ms.contentlocale: de-de
-ms.lasthandoff: 05/25/2017
-
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="reset-a-vpn-gateway"></a>Zurücksetzen einer VPN Gateway-Instanz
@@ -37,7 +36,7 @@ Wenn die Verbindung nach dem ersten Neustart nicht wiederhergestellt wird, führ
 
 Wenn nach den beiden Neustarts weiterhin standortübergreifende Konnektivitätsprobleme auftreten, erstellen Sie über das Azure-Portal ein Supportticket.
 
-## <a name="before-you-begin"></a>Voraussetzungen
+## <a name="before"></a>Voraussetzungen
 
 Überprüfen Sie vor dem Zurücksetzen des Gateways die unten aufgeführten Elemente für die einzelnen IPsec-Site-to-Site-VPN-Tunnel (S2S). Treten bei diesen Elementen Konflikte auf, werden S2S-VPN-Tunnelverbindungen unterbrochen. Indem Sie die Konfigurationen für Ihre lokalen VPN-Gateways und Azure VPN Gateway-Instanzen überprüfen und korrigieren, werden nicht erforderliche Neustarts und Unterbrechungen anderer funktionierender Verbindungen der Gateways verhindert.
 
@@ -47,7 +46,7 @@ Wenn nach den beiden Neustarts weiterhin standortübergreifende Konnektivitätsp
 * Der vorinstallierte Schlüssel muss sowohl bei der Azure VPN Gateway-Instanz als auch auf dem lokalen VPN-Gateway identisch sein.
 * Wenn Sie eine bestimmte IPsec/IKE-Konfiguration – z.B. Verschlüsselung, Hashalgorithmus oder PFS (Perfect Forward Secrecy) – anwenden, müssen Sie sicherstellen, dass die Azure VPN Gateway-Instanz und das lokale VPN-Gateway dieselbe Konfiguration aufweisen.
 
-## <a name="azure-portal"></a>Azure-Portal
+## <a name="portal"></a>Azure-Portal
 
 Sie können im Ressourcen-Manager-Bereitstellungsmodell ein VPN Gateway im Azure-Portal zurücksetzen. Wenn Sie ein klassisches Gateway zurücksetzen möchten, befolgen Sie die Schritte in [PowerShell](#resetclassic).
 
@@ -59,7 +58,7 @@ Sie können im Ressourcen-Manager-Bereitstellungsmodell ein VPN Gateway im Azure
   ![VPN Gateway zurücksetzen](./media/vpn-gateway-howto-reset-gateway/reset-vpn-gateway-portal.png)
 3. Klicken Sie auf dem Blatt „Zurücksetzen“ auf die Schaltfläche **Zurücksetzen**.
 
-## <a name="powershell"></a>PowerShell
+## <a name="ps"></a>PowerShell
 
 ### <a name="resource-manager-deployment-model"></a>Ressourcen-Manager-Bereitstellungsmodell
 
@@ -93,7 +92,7 @@ RequestId      : 9ca273de2c4d01e986480ce1ffa4d6d9
 StatusCode     : OK
 ```
 
-## <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+## <a name="cli"></a>Azure CLI
 
 Verwenden Sie zum Zurücksetzen des Gateways den Befehl [az network vnet-gateway reset](https://docs.microsoft.com/cli/azure/network/vnet-gateway#reset). Im folgenden Beispiel wird das Gateway des virtuellen Netzwerks mit dem Namen „VNet5GW“ in der Ressourcengruppe „TestRG5“ zurückgesetzt:
 

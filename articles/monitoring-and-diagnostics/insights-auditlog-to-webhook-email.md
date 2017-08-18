@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: johnkem
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8c9c9dea1248205aa6303e11e1166d5d38786c1b
-ms.openlocfilehash: 4ee65a10616fff81044c181fce8708a596e9e6de
+ms.translationtype: HT
+ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
+ms.openlocfilehash: 341ab32ad0ec691285fbf1537ee298ab30156a5d
 ms.contentlocale: de-de
-ms.lasthandoff: 01/31/2017
+ms.lasthandoff: 08/10/2017
 
 ---
 # <a name="call-a-webhook-on-azure-activity-log-alerts"></a>Aufrufen eines Webhooks für Azure-Aktivitätsprotokollwarnungen
@@ -29,7 +29,7 @@ Mithilfe von Webhooks können Benutzer eine Azure-Warnbenachrichtigung zur Nachb
 >
 >
 
-Aktivitätsprotokollwarnungen können mithilfe von [Azure PowerShell-Cmdlets](insights-powershell-samples.md#create-alert-rules), mithilfe der [plattformübergreifenden Befehlszeilenschnittstelle](insights-cli-samples.md#work-with-alerts) oder mithilfe der [Azure Monitor-REST-API](https://msdn.microsoft.com/library/azure/dn933805.aspx) eingerichtet werden. Derzeit können Sie keine mithilfe des Azure-Portals festlegen.
+Aktivitätsprotokollwarnungen können mithilfe von [Azure PowerShell-Cmdlets](insights-powershell-samples.md#create-metric-alerts), mithilfe der [plattformübergreifenden Befehlszeilenschnittstelle](insights-cli-samples.md#work-with-alerts) oder mithilfe der [Azure Monitor-REST-API](https://msdn.microsoft.com/library/azure/dn933805.aspx) eingerichtet werden. Derzeit können Sie keine mithilfe des Azure-Portals festlegen.
 
 ## <a name="authenticating-the-webhook"></a>Authentifizieren des Webhooks
 Der Webhook kann mithilfe folgender Methoden authentifiziert werden:

@@ -12,12 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 11/11/2016
+ms.date: 8/11/2017
 ms.author: tarcher
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: c83d779797493f6ec48d61563aa7448db7c9b917
-
+ms.translationtype: HT
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: b939f2af75723739ffab16d9a75ea8f6484e5e05
+ms.contentlocale: de-de
+ms.lasthandoff: 08/12/2017
 
 ---
 # <a name="how-to-manage-service-configurations-and-profiles"></a>Verwalten von Dienstkonfigurationen und Profilen
@@ -60,7 +61,7 @@ Sie können das Dialogfeld **Konfigurationen verwalten** auch über die Eigensch
     Der Name der Dienstkonfigurationsdatei wird im Azure-Projekt im Projektmappen-Explorer geändert.
 
 ### <a name="to-change-a-service-configuration"></a>So ändern Sie eine Dienstkonfiguration
-* Wenn Sie eine Dienstkonfiguration ändern möchten, öffnen Sie das Kontextmenü für die jeweilige Rolle, die Sie im Azure-Projekt ändern möchten. Klicken Sie dann auf **Eigenschaften**. Weitere Informationen finden Sie unter [Konfigurieren der Rollen für einen Azure-Clouddienst mit Visual Studio](https://msdn.microsoft.com/library/azure/hh369931.aspx).
+* Wenn Sie eine Dienstkonfiguration ändern möchten, öffnen Sie das Kontextmenü für die jeweilige Rolle, die Sie im Azure-Projekt ändern möchten. Klicken Sie dann auf **Eigenschaften**. Weitere Informationen finden Sie unter [Konfigurieren der Rollen für einen Azure-Clouddienst mit Visual Studio](https://docs.microsoft.com/azure/vs-azure-tools-configure-roles-for-cloud-service).
 
 ## <a name="make-different-setting-combinations-by-using-profiles"></a>Erstellen verschiedener Einstellungskombinationen mithilfe von Profilen
 Mithilfe eines Profils können Sie den **Veröffentlichungs-Assistenten** mit verschiedenen Kombinationen von Einstellungen für unterschiedliche Verwendungszwecke automatisch auffüllen. Beispielsweise können Sie ein Profil für Debugging und ein weiteres für Releasebuilds verwenden. In diesem Fall ist im **Debug**-Profil **IntelliTrace** aktiviert und die **Debug**-Konfiguration ausgewählt, und im **Release**-Profil wäre **IntelliTrace** deaktiviert und die **Release**-Konfiguration ausgewählt. Sie können auch verschiedene Profile verwenden, um einen Dienst mithilfe eines anderen Speicherkontos bereitzustellen.
@@ -101,10 +102,5 @@ Wenn Sie den Assistenten zum ersten Mal ausführen, wird ein Standardprofil erst
 
 ## <a name="next-steps"></a>Nächste Schritte
 Informationen zum Konfigurieren anderer Teile des Azure-Projekts in Visual Studio finden Sie unter [Konfigurieren eines Azure-Projekts](http://go.microsoft.com/fwlink/p/?LinkID=623075)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

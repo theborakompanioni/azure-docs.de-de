@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 07/31/2017
 ms.author: mimig
 ms.translationtype: HT
-ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
-ms.openlocfilehash: 9d14022f46c15db531bb3430f302eb49e1335083
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: e9808af4aa875c5199279825325688afc69e6de6
 ms.contentlocale: de-de
-ms.lasthandoff: 08/01/2017
+ms.lasthandoff: 08/11/2017
 
 ---
 # <a name="azure-cosmos-db-faq"></a>Azure Cosmos DB – Häufig gestellte Fragen
@@ -337,9 +337,6 @@ Sie sollten TableThroughput ändern, wenn eine der folgenden Bedingungen gilt:
 ### <a name="can-i-scale-up-or-scale-down-the-throughput-of-my-table-api-preview-table"></a>Lässt sich der Durchsatz meiner Tabelle der Table-API (Vorschauversion) zentral hoch- oder herunterskalieren? 
 Ja. Sie können den Skalierungsbereich des Azure Cosmos DB-Portals verwenden, um den Durchsatz zu skalieren. Weitere Informationen finden Sie unter [Festlegen von Durchsatz für Azure Cosmos DB-Container](set-throughput.md).
 
-### <a name="can-the-premium-table-api-preview-take-advantage-of-the-ru-per-minute-offering"></a>Kann für die Premium-Table-API (Vorschauversion) das Angebot „RUs pro Minute“ genutzt werden? 
-Ja. Die Premium-Table-API (Vorschauversion) nutzt die Funktionen der Azure Cosmos DB, um SLAs für die Bereiche Leistung, Wartezeit, Verfügbarkeit und Konsistenz bereitzustellen. Mit dieser Funktion wird sichergestellt, dass für die Tabelle das Angebot „RUs pro Minute“ genutzt werden kann. Weitere Informationen finden Sie unter [Anforderungseinheiten in Azure Cosmos DB](request-units.md). Mit dieser Funktion können Kunden die Bereitstellung für Zeiten mit sehr hoher Auslastung vermeiden und die Spitzen der Workload glätten.
-
 ### <a name="is-a-default-tablethroughput-set-for-newly-provisioned-tables"></a>Wird für neu bereitgestellte Tabellen ein TableThroughput-Standardwert festgelegt?
 Ja. Wenn Sie TableThroughput nicht mithilfe von „app.config“ außer Kraft setzen und keinen fertig konfigurierten Container in Azure Cosmos DB verwenden, erstellt der Dienst eine Tabelle mit einem Durchsatz von 400.
  
@@ -400,7 +397,7 @@ Für Entwickler ist dies derzeit durch die neue Unterstützung für [Gremlin](..
 
 In diesem Zusammenhang ist der Hinweis wichtig, dass der [SQL-Dialekt](../documentdb/documentdb-sql-query.md) von DocumentDB schon immer nur eine der vielen APIs gewesen ist, die von der zugrunde liegenden Azure Cosmos DB-Technologie unterstützt werden können. Für Entwickler, die einen vollständig verwalteten Dienst wie Azure Cosmos DB nutzen, stellen die vom Dienst verfügbar gemachten APIs die einzige Schnittstelle zum Dienst dar. Für vorhandene DocumentDB-Kunden ergeben sich keine größeren Änderungen. In Azure Cosmos DB erhalten Sie genau die gleiche SQL-API wie bei DocumentDB. Zudem können Sie jetzt (und in Zukunft) auf andere Funktionen zugreifen, die vorher nicht zugänglich waren. 
 
-Ein weiterer Beweis für unsere fortwährende Arbeit ist das erweiterte Fundament für die globale und elastische Skalierbarkeit des Durchsatzes und Speichers. Eine der ersten Funktionen der Skalierbarkeit ist [RU/m](../cosmos-db/request-units-per-minute.md), aber wir planen die Ankündigung weiterer Funktionen, mit denen die Kosten für unsere Kunden für verschiedene Workloads verringert werden können. Wir haben am globalen Verteilungssystem einige grundlegende Verbesserungen vorgenommen. Eines von vielen Features dieser Art für Entwickler ist das Präfixkonsistenz-Modell, sodass sich insgesamt fünf gut definierte Konsistenzmodelle ergeben. Wir werden noch viele weitere interessante Funktionen bereitstellen, sobald sie für die Veröffentlichung geeignet sind. 
+Ein weiterer Beweis für unsere fortwährende Arbeit ist das erweiterte Fundament für die globale und elastische Skalierbarkeit des Durchsatzes und Speichers. Wir haben am globalen Verteilungssystem einige grundlegende Verbesserungen vorgenommen. Eines von vielen Features dieser Art für Entwickler ist das Präfixkonsistenz-Modell, sodass sich insgesamt fünf gut definierte Konsistenzmodelle ergeben. Wir werden noch viele weitere interessante Funktionen bereitstellen, sobald sie für die Veröffentlichung geeignet sind. 
 
 ### <a name="what-do-i-need-to-do-to-ensure-that-my-documentdb-resources-continue-to-run-on-azure-cosmos-db"></a>Was muss ich tun, um sicherzustellen, dass meine DocumentDB-Ressourcen unter Azure Cosmos DB weiterhin ausgeführt werden können?
 
@@ -418,7 +415,7 @@ DocumentDB wird im Portal nicht mehr als Azure-Dienst angezeigt. Stattdessen wir
 
 ### <a name="are-there-changes-to-pricing"></a>Haben sich die Preise geändert?
 
-Nein. Die Kosten für die Ausführung Ihrer App unter Azure Cosmos DB sind genauso hoch wie vorher. Sie haben aber die Möglichkeit, vom neuen Feature „Anforderungseinheiten pro Minute“ zu profitieren. Weitere Informationen finden Sie im Artikel zur [minutenbezogenen Skalierung des Durchsatzes](../cosmos-db/request-units-per-minute.md).
+Nein. Die Kosten für die Ausführung Ihrer App unter Azure Cosmos DB sind genauso hoch wie vorher.
 
 ### <a name="are-there-changes-to-the-slas"></a>Haben sich die SLAs geändert?
 

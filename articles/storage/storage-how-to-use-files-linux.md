@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 3/8/2017
 ms.author: renash
 ms.translationtype: HT
-ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
-ms.openlocfilehash: d93c82b9c2e66c7241ddd579c1be74396174fd65
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: 27b393a899c60a3a0393619f338a396dff659498
 ms.contentlocale: de-de
-ms.lasthandoff: 08/07/2017
+ms.lasthandoff: 08/17/2017
 
 ---
 # <a name="use-azure-file-storage-with-linux"></a>Verwenden von Azure File Storage unter Linux
@@ -36,10 +36,7 @@ ms.lasthandoff: 08/07/2017
     * CentOS 7+
     * Debian 8
     * openSUSE 13.2+
-    * SUSE Linux Enterprise Server 12   
-
-    > [!Note]  
-    > Alle Linux-Distribution, die die neuesten Versionen des Paket „cifs-utils“ herunterladen und installieren bzw. kompilieren können, lassen sich mit Azure File Storage verwenden.
+    * SUSE Linux Enterprise Server 12
 
 * <a id="install-cifs-utils"></a>**Das Paket „cifs-utils“ ist installiert**: Das Paket „cifs-utils“ kann mithilfe des Paket-Managers für die Linux-Distribution Ihre Wahl installiert werden. 
 
