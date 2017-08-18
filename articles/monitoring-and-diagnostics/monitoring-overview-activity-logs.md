@@ -84,7 +84,7 @@ Im Azure-Portal können Sie Ihr Aktivitätsprotokoll nach diesen Feldern filtern
 * Vorgangsname: Der Name eines Azure Resource Manager-Vorgangs, z.B. „Microsoft.SQL/servers/Write“.
 * Schweregrad: Der Schweregrad des Ereignisses (Information, Warnung, Fehler, Kritisch).
 * Ereignis initiiert von: Der „Aufrufer“ oder Benutzer, der den Vorgang durchgeführt hat.
-* Open search (Offene Suche): Dies ist ein Feld für eine offene Textsuche, bei der in allen Feldern aller Ereignisse nach der Zeichenfolge gesucht wird.
+* Open search (Freie Suche): Dies ist ein Feld für eine offene Textsuche, bei der in allen Feldern aller Ereignisse nach der Zeichenfolge gesucht wird.
 
 Nachdem Sie eine Gruppe mit Filtern definiert haben, können Sie diese als Abfrage speichern. Sie wird für den Fall beibehalten, dass Sie die gleiche Abfrage mit diesen Filtern zu einem späteren Zeitpunkt noch einmal durchführen müssen. Sie haben auch die Möglichkeit, eine Abfrage in Ihrem Azure-Dashboard anzuheften, um immer den Überblick über bestimmte Ereignisse zu haben.
 
