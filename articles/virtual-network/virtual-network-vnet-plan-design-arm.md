@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/08/2016
 ms.author: jdial
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
-ms.openlocfilehash: f40ceb542a0ee51e17ee539db4dbc91c11e056f2
+ms.translationtype: HT
+ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
+ms.openlocfilehash: 9a0126235c9ff3fec05d7709bdee95ab4832a33b
 ms.contentlocale: de-de
-ms.lasthandoff: 06/29/2017
-
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="plan-and-design-azure-virtual-networks"></a>Planen und Entwerfen von Azure Virtual Networks
@@ -36,7 +35,7 @@ Machen Sie sich Folgendes klar, bevor Sie die Fragen zur Planung weiter unten be
 * Virtuelle Netzwerke können über folgende Methoden untereinander verbunden werden:
     * **[Peering virtueller Netzwerke](virtual-network-peering-overview.md)**: Die virtuellen Netzwerke müssen sich in derselben Azure-Region befinden. Zwischen Ressourcen in virtuellen Netzwerken, die mittels Peering miteinander verknüpft sind, ist dieselbe Bandbreitenmenge verfügbar wie bei Ressourcen, die mit demselben virtuellen Netzwerk verbunden sind.
     * **Azure [VPN Gateway](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)**: Die virtuellen Netzwerke können sich in derselben Azure-Region oder in verschiedenen Azure-Regionen befinden. Die Bandbreite zwischen den Ressourcen in virtuellen Netzwerken, die über ein VPN-Gateway verbunden sind, wird durch die Bandbreite des VPN-Gateways beschränkt.
-* Sie können VNETs mit Ihrem lokalen Netzwerk verbinden, indem Sie eine der [Konnektivitätsoptionen](../vpn-gateway/vpn-gateway-about-vpngateways.md#site-to-site-and-multi-site-ipsecike-vpn-tunnel) in Azure verwenden.
+* Sie können VNETs mit Ihrem lokalen Netzwerk verbinden, indem Sie eine der [Konnektivitätsoptionen](../vpn-gateway/vpn-gateway-about-vpngateways.md#s2smulti) in Azure verwenden.
 * Unterschiedliche Ressourcen können in [Ressourcengruppen](../azure-resource-manager/resource-group-overview.md#resource-groups) zusammengefasst werden, um die Verwaltung der Ressource als Einheit zu vereinfachen. Eine Ressourcengruppe kann Ressourcen aus mehreren Regionen enthalten, solange die Ressourcen demselben Abonnement angehören.
 
 ### <a name="define-requirements"></a>Definieren von Anforderungen
@@ -124,7 +123,7 @@ In den folgenden Fällen sollten Sie die Verwendung mehrerer Subnetze in einem V
 
 * **Nicht genügend private IP-Adressen für alle Netzwerkkarten in einem Subnetz**. Wenn Ihr Subnetz-Adressbereich nicht genügend IP-Adressen für die Anzahl von Netzwerkkarten im Subnetz enthält, müssen Sie mehrere Subnetze erstellen. Beachten Sie, dass Azure für jedes Subnetz fünf private IP-Adressen reserviert, die nicht verwendet werden können: die erste und letzte Adresse des Adressbereichs (für die Subnetzadresse und Multicast) und drei Adressen für die interne Verwendung (für DHCP- und DNS-Zwecke).
 * **Sicherheit**: Sie können Subnetze verwenden, um VM-Gruppen für Workloads voneinander zu trennen, die über eine Struktur mit mehreren Schichten verfügen. Für diese Subnetze können Sie unterschiedliche [Netzwerksicherheitsgruppen (NSGs)](virtual-networks-nsg.md#subnets) anwenden.
-* **Hybridkonnektivität**. Sie können VPN-Gateways und ExpressRoute-Verbindungen verwenden, um Ihre VNETs miteinander und mit Ihren lokalen Rechenzentren zu [verbinden](../vpn-gateway/vpn-gateway-about-vpngateways.md#site-to-site-and-multi-site-ipsecike-vpn-tunnel). VPN Gateways und ExpressRoute-Verbindungen benötigen für ihre Erstellung ein eigenes Subnetz.
+* **Hybridkonnektivität**. Sie können VPN-Gateways und ExpressRoute-Verbindungen verwenden, um Ihre VNETs miteinander und mit Ihren lokalen Rechenzentren zu [verbinden](../vpn-gateway/vpn-gateway-about-vpngateways.md#s2smulti). VPN Gateways und ExpressRoute-Verbindungen benötigen für ihre Erstellung ein eigenes Subnetz.
 * **Virtuelle Geräte**. Sie können ein virtuelles Gerät, z. B. eine Firewall, einen WAN Accelerator oder ein VPN Gateway in einem Azure VNET verwenden. In diesem Fall müssen Sie [Datenverkehr an diese Geräte weiterleiten](virtual-networks-udr-overview.md) und sie in einem eigenen Subnetz isolieren.
 
 ### <a name="subnet-and-nsg-design-patterns"></a>Subnetz- und NSG-Entwurfsmuster
@@ -253,5 +252,5 @@ Basierend auf diesen Anforderungen können Sie Benutzer aus dem Netzwerkteam in 
 * [Stellen Sie basierend auf einem bestimmten Szenario ein virtuelles Netzwerk bereit](virtual-networks-create-vnet-arm-template-click.md) .
 * Informieren Sie sich, wie Sie den [Lastenausgleich](../load-balancer/load-balancer-overview.md) für IaaS-VMs durchführen und das [Routing über mehrere Azure-Regionen hinweg verwalten](../traffic-manager/traffic-manager-overview.md).
 * Erfahren Sie mehr über [NSGs und das Planen und Entwerfen](virtual-networks-nsg.md) einer NSG-Lösung.
-* Erfahren Sie mehr über Ihre [standortübergreifenden und VNET-Verbindungsoptionen](../vpn-gateway/vpn-gateway-about-vpngateways.md#site-to-site-and-multi-site-ipsecike-vpn-tunnel).
+* Erfahren Sie mehr über Ihre [standortübergreifenden und VNET-Verbindungsoptionen](../vpn-gateway/vpn-gateway-about-vpngateways.md#s2smulti).
 

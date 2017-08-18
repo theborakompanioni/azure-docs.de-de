@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: tomfitz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 24c2b27948e9373bc3957f706ed802cc36c04148
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: 8a9d7c7f3f8aefa5312e5e3313dbd581d6df900a
 ms.contentlocale: de-de
-ms.lasthandoff: 05/11/2017
-
+ms.lasthandoff: 08/11/2017
 
 ---
 # <a name="best-practices-for-creating-azure-resource-manager-templates"></a>Bewährte Methoden für das Erstellen von Azure Resource Manager-Vorlagen
@@ -32,7 +31,7 @@ Im Allgemeinen arbeiten Sie in Resource Manager mit drei Arten von Ressourcennam
 * Ressourcennamen, die nicht eindeutig sein müssen. Sie möchten jedoch einen Namen angeben, der Sie beim Ermitteln eines ressourcenbasierten Kontexts unterstützt.
 * Ressourcennamen, die allgemein sein können.
 
-Hilfe zum Festlegen einer Benennungskonvention finden Sie unter [Benennungsrichtlinien für die Azure-Infrastruktur für Windows-VMs](../virtual-machines/windows/infrastructure-naming-guidelines.md). Informationen zu Einschränkungen für Ressourcennamen finden Sie unter [Empfohlene Benennungskonventionen für Azure-Ressourcen](../guidance/guidance-naming-conventions.md).
+ Informationen zu Einschränkungen für Ressourcennamen finden Sie unter [Empfohlene Benennungskonventionen für Azure-Ressourcen](../guidance/guidance-naming-conventions.md).
 
 ### <a name="unique-resource-names"></a>Eindeutige Ressourcennamen
 Sie müssen einen eindeutigen Ressourcennamen für alle Ressourcentypen angeben, die einen Datenzugriffsendpunkt haben. Es folgen allgemeine Ressourcentypen, für die ein eindeutiger Name erforderlich ist:
@@ -396,7 +395,6 @@ Es ist auch eine gute Idee, Ihren JSON-Code für eine bessere Lesbarkeit zu form
 ## <a name="next-steps"></a>Nächste Schritte
 * Eine Anleitung zum Gestalten Ihrer Lösung für virtuelle Computer finden Sie unter [Run a Windows VM on Azure](../guidance/guidance-compute-single-vm.md) (Ausführen eines virtuellen Windows-Computers in Azure) und [Run a Linux VM on Azure](../guidance/guidance-compute-single-vm-linux.md) (Ausführen eines virtuellen Linux-Computers in Azure).
 * Eine Anleitung zum Einrichten eines Speicherkontos finden Sie unter [Checkliste zu Leistung und Skalierbarkeit von Microsoft Azure Storage](../storage/storage-performance-checklist.md).
-* Hilfe zu virtuellen Netzwerken finden Sie unter [Richtlinien für die Azure-Netzwerkinfrastruktur für Windows-VMs](../virtual-machines/windows/infrastructure-networking-guidelines.md).
 * Anleitungen dazu, wie Unternehmen Abonnements mit Resource Manager effektiv verwalten können, finden Sie unter [Azure-Unternehmensgerüst – präskriptive Abonnementgovernance](resource-manager-subscription-governance.md).
 
 

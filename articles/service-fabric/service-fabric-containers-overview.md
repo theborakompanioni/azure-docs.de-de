@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 5/16/2017
 ms.author: msfussell
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8be2bcb9179e9af0957fcee69680ac803fd3d918
-ms.openlocfilehash: be8504b492bdbdf7445abcdf1fb55e375eda133e
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: f770b6181a99d24ea6a6e945d505da914e1b6128
 ms.contentlocale: de-de
-ms.lasthandoff: 06/23/2017
-
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="service-fabric-and-containers"></a>Service Fabric und Container
@@ -48,13 +47,13 @@ Service Fabric unterstützt Container unter Linux und Windows. Unter Windows wir
 
 ### <a name="docker-containers-on-linux"></a>Docker-Container unter Linux
 Docker bietet High-Level-APIs zum Erstellen und Verwalten von Containern oberhalb von Linux-Kernelcontainern. Docker Hub ist ein zentrales Repository zum Speichern und Abrufen von Containerimages.
-Ein Tutorial finden Sie unter [Bereitstellen eines Docker-Containers in Service Fabric](service-fabric-deploy-container-linux.md).
+Ein Tutorial finden Sie unter [Bereitstellen eines Docker-Containers in Service Fabric](service-fabric-get-started-containers-linux.md).
 
 ### <a name="windows-server-containers"></a>Windows Server-Container
 Unter Windows Server 2016 werden zwei verschiedene Arten von Containern bereitgestellt, die sich anhand des Isolationsgrads unterscheiden. Windows Server-Container und Docker-Containern ähneln sich, da beide über eine Namespace- und Dateisystemisolation verfügen, den Kernel aber gemeinsam mit dem Host nutzen, auf dem sie ausgeführt werden. Unter Linux wurde diese Isolation üblicherweise mit `cgroups` und `namespaces` erzielt. Windows Server-Container verhalten sich ähnlich.
 
 Windows Hyper-V-Container bieten mehr Isolation und Sicherheit, da kein Container den Betriebssystemkernel mit anderen Containern oder mit dem Host gemeinsam verwendet. Aufgrund dieses höheren Grads an Sicherheitsisolation sind Hyper-V-Container für kritischere Szenarien mit mehreren Mandanten geeignet.
-Ein Tutorial finden Sie unter [Bereitstellen eines Windows-Containers in Service Fabric](service-fabric-deploy-container.md).
+Ein Tutorial finden Sie unter [Bereitstellen eines Windows-Containers in Service Fabric](service-fabric-get-started-containers.md).
 
 In der folgenden Abbildung sind die unterschiedlichen Arten der Virtualisierung und der Isolationsgrade dargestellt, die unter dem Betriebssystem verfügbar sind.
 ![Service Fabric-Plattform][Image1]
@@ -88,9 +87,9 @@ Service Fabric verfügt über mehrere Containerfunktionen für die Erstellung vo
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel wurde beschrieben, was Container sind, dass Service Fabric ein Containerorchestrator ist und dass Service Fabric Features zur Unterstützung von Containern bereitstellt. Im nächsten Schritt arbeiten wir Beispiele für die einzelnen Funktionen durch, um deren Nutzung zu veranschaulichen.
 
-[Bereitstellen eines Windows-Containers in Service Fabric unter Windows Server 2016](service-fabric-deploy-container.md)
+[Bereitstellen eines Windows-Containers in Service Fabric unter Windows Server 2016](service-fabric-get-started-containers.md)
 
-[Bereitstellen eines Docker-Containers in Service Fabric unter Linux](service-fabric-deploy-container-linux.md)
+[Bereitstellen eines Docker-Containers in Service Fabric unter Linux](service-fabric-get-started-containers-linux.md)
 
 [Image1]: media/service-fabric-containers/Service-Fabric-Types-of-Isolation.png
 
