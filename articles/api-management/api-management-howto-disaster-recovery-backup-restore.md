@@ -14,16 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: c0413f9c83fd6dceb4a1d956c0f32712e29bdc58
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: 07c0265490cfae733133b6e0c938f90f9b392da4
 ms.contentlocale: de-de
-ms.lasthandoff: 03/31/2017
+ms.lasthandoff: 08/11/2017
 
 ---
-<a id="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management" class="xliff"></a>
-
-# So implementieren Sie die Notfallwiederherstellung mit Sichern und Wiederherstellen von Diensten in Azure API Management
+# <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>So implementieren Sie die Notfallwiederherstellung mit Sichern und Wiederherstellen von Diensten in Azure API Management
 Indem Sie Ihre APIs über Azure API Management veröffentlichen und verwalten, profitieren Sie von vielen Fehlertoleranz- und Infrastrukturfunktionen, die Sie sonst erst entwickeln, implementieren und verwalten müssten. Die Azure-Plattform minimiert einen Großteil der potenziellen Ausfälle zu einem Bruchteil der Kosten.
 
 Bei Verfügbarkeitsproblemen in der Region, in der Ihr API Management-Dienst gehostet wird, sollten Sie jederzeit dazu in der Lage sein, Ihren Dienst in einer anderen Region wiederherzustellen. Je nach Verfügbarkeitsziel und Wiederherstellungszeitfenster möchten Sie möglicherweise einen Sicherungsdienst in einer oder mehreren Regionen reservieren, dessen Konfiguration und Inhalt möglichst mit dem aktiven Dienst synchron sind. Die Funktion zum Sichern und Wiederherstellen von Diensten ist grundlegend für die Implementierung Ihrer Strategie zur Notfallwiederherstellung.
@@ -37,9 +35,7 @@ In dieser Anleitung wird erläutert, wie Anforderungen des Azure-Ressourcen-Mana
 >
 >
 
-<a id="authenticating-azure-resource-manager-requests" class="xliff"></a>
-
-## Authentifizieren von Anforderungen des Azure-Ressourcen-Managers
+## <a name="authenticating-azure-resource-manager-requests"></a>Authentifizieren von Anforderungen des Azure-Ressourcen-Managers
 > [!IMPORTANT]
 > Die REST-API für die Sicherung und Wiederherstellung verwendet den Azure-Ressourcen-Manager und weist eine andere Authentifizierungsmethode als die REST-APIs für die Verwaltung von API Management-Entitäten auf. In den Schritten in diesem Abschnitt wird beschrieben, wie Anforderungen des Azure-Ressourcen-Managers authentifiziert werden. Weitere Informationen finden Sie unter [Authentifizieren von Anforderungen des Azure-Ressourcen-Managers](http://msdn.microsoft.com/library/azure/dn790557.aspx).
 >
@@ -54,9 +50,7 @@ Alle Aufgaben, die Sie mithilfe des Azure-Ressourcen-Managers für Ressourcen au
 Im ersten Schritt wird eine Azure Active Directory-Anwendung erstellt. Melden Sie sich mit dem Abonnement, das Ihre API Management-Dienstinstanz enthält, beim [klassischen Azure-Portal](http://manage.windowsazure.com/) an, und navigieren Sie zu der Registerkarte **Anwendungen** für Ihr Azure Active Directory-Standardverzeichnis.
 
 > [!NOTE]
-> Wenn das Azure Active Directory-Standardverzeichnis in Ihrem Konto nicht angezeigt wird, bitten Sie den Administrator des Azure-Abonnements, die erforderlichen Berechtigungen für das Konto zu erteilen. Informationen zum Ermitteln des Standardverzeichnisses finden Sie unter „Suchen des Standardverzeichnisses im klassischen Azure-Portal“ in [Erstellen einer Arbeits- oder Schulidentität in Azure Active Directory zur Verwendung mit Windows-VMs](../virtual-machines/windows/create-aad-work-id.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
->
->
+> Wenn das Azure Active Directory-Standardverzeichnis in Ihrem Konto nicht angezeigt wird, bitten Sie den Administrator des Azure-Abonnements, die erforderlichen Berechtigungen für das Konto zu erteilen.
 
 ![Erstellen der Azure Active Directory-Anwendung][api-management-add-aad-application]
 
@@ -193,9 +187,7 @@ Die Wiederherstellung ist ein länger anhaltender Vorgang, der bis zum Abschluss
 >
 >
 
-<a id="next-steps" class="xliff"></a>
-
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 Sehen Sie sich die folgenden Microsoft-Blogs für zwei verschiedene Vorgehensweisen des Sicherungs- und Wiederherstellungsvorgangs an.
 
 * [Replicate Azure API Management Accounts (in englischer Sprache)](https://www.returngis.net/en/2015/06/replicate-azure-api-management-accounts/)

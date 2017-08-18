@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
-translationtype: Human Translation
-ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
-ms.openlocfilehash: 30d02322f302ca58e6c1b2b674d9f242b7c40518
-ms.lasthandoff: 04/20/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: e690e87df92bd3614e575010d90b7a40521dadc9
+ms.contentlocale: de-de
+ms.lasthandoff: 08/11/2017
 
 ---
 
@@ -87,7 +87,7 @@ Wenn diese Voraussetzungen erfüllt sind, können Sie mit dem Erstellen Ihres Fa
 
 1. Melden Sie sich mit den Daten Ihres Abonnements am [Azure-Portal](http://portal.azure.com) an.
 
-1. [Erstellen Sie eine Azure-Verfügbarkeitsgruppe](../create-availability-set.md).
+1. [Erstellen Sie eine Azure-Verfügbarkeitsgruppe](../tutorial-availability-sets.md).
 
    Mit der Verfügbarkeitsgruppe werden virtuelle Computer über Fehler- und Updatedomänen hinweg gruppiert. Mithilfe einer Verfügbarkeitsgruppe wird sichergestellt, dass Ihre Anwendung nicht durch Ausfälle einzelner Komponenten, z.B. des Netzwerkswitchs oder der Stromversorgungseinheit eines Serverracks, beeinträchtigt wird.
 
@@ -224,13 +224,16 @@ Führen Sie die folgenden Schritte auf einem der beiden virtuellen Computer aus,
 1. Klicken Sie in **Server-Manager** auf **Tools** und dann auf **Failovercluster-Manager**.
 1. Klicken Sie im **Failovercluster-Manager** auf **Aktion** und dann auf **Konfiguration überprüfen...**.
 1. Klicken Sie auf **Weiter**.
+
 1. Geben Sie unter **Server oder Cluster auswählen** den Namen der beiden virtuellen Computer ein.
 1. Wählen Sie unter **Testoptionen** die Option **Nur ausgewählte Tests ausführen**. Klicken Sie auf **Weiter**.
+
 1. Schließen Sie unter **Testauswahl** alle Tests mit Ausnahme von **Speicher** ein. Sehen Sie sich die folgende Abbildung an:
 
    ![Durchführen von Validierungstests](./media/virtual-machines-windows-portal-sql-create-failover-cluster/10-validate-cluster-test.png)
 
 1. Klicken Sie auf **Weiter**.
+
 1. Klicken Sie unter **Bestätigung** auf **Weiter**.
 
 Mit dem **Konfigurationsüberprüfungs-Assistenten** werden die Validierungstests durchgeführt.

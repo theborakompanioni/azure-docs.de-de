@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2016
 ms.author: adegeo
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 7d67ae1bd0c53f99d9c298f5ae8f161e6a484359
-ms.lasthandoff: 04/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: 3a8a5d25123905e6c5cf91c4bc0c04258e442b5c
+ms.contentlocale: de-de
+ms.lasthandoff: 08/11/2017
 
 ---
 # <a name="automatically-scale-linux-machines-in-a-virtual-machine-scale-set"></a>Automatisches Skalieren von Linux-Computern in einer VM-Skalierungsgruppe
@@ -55,7 +55,7 @@ Wechseln Sie an Ihrer Befehlszeilenschnittstelle (Bash, Terminal, Eingabeaufford
     ```
    
     > [!NOTE]
-    > Wenn Sie über eine Geschäfts-, Schul- oder Uni-ID verfügen und die zweistufige Authentifizierung nicht aktiviert ist, verwenden Sie `azure login -u` zusammen mit der ID, um sich ohne interaktive Sitzung anzumelden. Wenn Sie nicht über eine Geschäfts-, Schul- oder Unikonto-ID verfügen, können Sie eine [Geschäfts-, Schul- oder Unikonto-ID mit Ihrem persönlichen Microsoft-Konto erstellen](../virtual-machines/linux/create-aad-work-id.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+    > Wenn Sie über eine Geschäfts-, Schul- oder Uni-ID verfügen und die zweistufige Authentifizierung nicht aktiviert ist, verwenden Sie `azure login -u` zusammen mit der ID, um sich ohne interaktive Sitzung anzumelden. Wenn Sie nicht über eine Geschäfts-, Schul- oder Unikonto-ID verfügen, können Sie eine [Geschäfts-, Schul- oder Unikonto-ID mit Ihrem persönlichen Microsoft-Konto erstellen](../active-directory/active-directory-users-create-azure-portal.md).
     
 2. **Erstellen einer Ressourcengruppe**  
 Alle Ressourcen müssen in einer Ressourcengruppe bereitgestellt werden. Geben Sie der Ressourcengruppe für dieses Tutorial den Namen **vmsstest1**.

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2017
 ms.author: davidmu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
-ms.openlocfilehash: a7370598dd6570d2e124ed2a10d92cfcd1d5087a
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: 0f2c6ce3e5df6c513d8077b3dfcca0beb4a247bf
 ms.contentlocale: de-de
-ms.lasthandoff: 06/30/2017
+ms.lasthandoff: 08/11/2017
 
 ---
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 06/30/2017
 
 In diesem Artikel erfahren Sie, wie Sie mithilfe des Azure-Portals eine [Windows-VHD-Datei (virtuelle Festplatte)](../../storage/storage-about-disks-and-vhds-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) von Azure herunterladen. 
 
-Virtuelle Computer (VMs) in Azure verwenden [Datenträger](../../storage/storage-managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) als Speicherplatz für ein Betriebssystem, Anwendungen und Daten. Alle Azure-VMs verfügen über mindestens zwei Datenträger – einen Datenträger mit dem Windows-Betriebssystem und einen temporären Datenträger. Der Betriebssystem-Datenträger wird ursprünglich aus einem Image erstellt. Sowohl der Betriebssystem-Datenträger als auch das Image sind VHDs, die in einem Azure-Speicherkonto gespeichert sind. Virtuelle Computer können auch über einen oder mehrere Datenträger verfügen, die ebenfalls als VHDs gespeichert werden.
+Virtuelle Computer (VMs) in Azure verwenden [Datenträger](../../storage/storage-managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) als Speicherplatz für ein Betriebssystem, Anwendungen und Daten. Alle virtuellen Azure-Computer verfügen über mindestens zwei Datenträger – einen Datenträger mit dem Windows-Betriebssystem und einen temporären Datenträger. Der Betriebssystem-Datenträger wird aus einem Image erstellt. Sowohl der Betriebssystem-Datenträger als auch das Image sind virtuelle Festplatten (VHDs), die in einem Azure-Speicherkonto gespeichert sind. Virtuelle Computer können auch über einen oder mehrere Datenträger verfügen, die ebenfalls als VHDs gespeichert werden.
 
 ## <a name="stop-the-vm"></a>Beenden des virtuellen Computers
 
@@ -79,7 +79,7 @@ Um die VHD-Datei herunterzuladen, müssen Sie eine [SAS-URL (Shared Access Signa
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Erfahren Sie, wie Sie eine [VHD-Datei in Azure hochladen](upload-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
-- [Erstellen verwalteter Datenträger auf der Grundlage nicht verwalteter Datenträger in einem Speicherkonto](create-managed-disk-ps.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+- [Erstellen verwalteter Datenträger auf der Grundlage nicht verwalteter Datenträger in einem Speicherkonto](attach-disk-ps.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 - [Verwalten von Azure-Datenträgern mit PowerShell](tutorial-manage-data-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 

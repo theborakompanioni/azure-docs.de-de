@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: davidmu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
-ms.openlocfilehash: 907e5b80aeeee4ab2eb0466490ba9ef9b0348144
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: 61e9cab7ba0b1b86a54b5282662bef3bdfba6e7d
 ms.contentlocale: de-de
-ms.lasthandoff: 05/17/2017
+ms.lasthandoff: 08/11/2017
 
 ---
 
@@ -281,7 +281,7 @@ Zum Festlegen dieser Eigenschaft muss die Netzwerkschnittstelle vorhanden sein. 
 Beim Definieren einer VM-Ressource werden mehrere Profilelemente verwendet. Einige sind erforderlich, und einige sind optional. Die Elemente „hardwareProfile“, „osProfile“, „storageProfile“ und „networkProfile“ sind erforderlich, aber „diagnosticsProfile“ ist optional. Mit diesen Profilen werden beispielsweise folgende Einstellungen definiert:
    
 - [Größe](sizes.md)
-- [Name](../linux/infrastructure-naming-guidelines.md) und Anmeldeinformationen
+- [Name](/architecture/best-practices/naming-conventions) und Anmeldeinformationen
 - Datenträger- und [Betriebssystemeinstellungen](cli-ps-findimage.md)
 - [Netzwerkschnittstelle](../../virtual-network/virtual-networks-multiple-nics.md) 
 - Startdiagnose

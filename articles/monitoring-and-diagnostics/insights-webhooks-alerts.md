@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/03/2017
 ms.author: johnkem
-ms.translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 7282de704a1053e2052a189990fb2b30b2adad6f
+ms.translationtype: HT
+ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
+ms.openlocfilehash: 1a885166e5c71f13da222bfc22b0fc579096c52f
 ms.contentlocale: de-de
-ms.lasthandoff: 04/03/2017
+ms.lasthandoff: 08/10/2017
 
 ---
 # <a name="configure-a-webhook-on-an-azure-metric-alert"></a>Konfigurieren eines Webhooks für eine Azure-Metrikwarnung
@@ -31,7 +31,7 @@ Den Webhook-URI können Sie im [Portal](https://portal.azure.com/)im Bildschirm 
 
 ![Hinzufügen einer Warnungsregel](./media/insights-webhooks-alerts/Alertwebhook.png)
 
-Sie können auch [Azure PowerShell-Cmdlets](insights-powershell-samples.md#create-alert-rules), die [plattformübergreifende Befehlszeilenschnittstelle](insights-cli-samples.md#work-with-alerts) oder die [Azure Monitor-REST-API](https://msdn.microsoft.com/library/azure/dn933805.aspx) verwenden, um eine Warnung mit Veröffentlichung an einen Webhook-URI zu konfigurieren.
+Sie können auch [Azure PowerShell-Cmdlets](insights-powershell-samples.md#create-metric-alerts), die [plattformübergreifende Befehlszeilenschnittstelle](insights-cli-samples.md#work-with-alerts) oder die [Azure Monitor-REST-API](https://msdn.microsoft.com/library/azure/dn933805.aspx) verwenden, um eine Warnung mit Veröffentlichung an einen Webhook-URI zu konfigurieren.
 
 ## <a name="authenticating-the-webhook"></a>Authentifizieren des Webhooks
 Die Authentifizierung des Webhooks kann mithilfe der Token-basierten Autorisierung erfolgen. Der Webhook-URI wird z.B. mit einer Token-ID gespeichert. `https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`

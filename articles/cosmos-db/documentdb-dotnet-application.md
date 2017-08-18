@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 08/03/2017
 ms.author: mimig
 ms.translationtype: HT
-ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
-ms.openlocfilehash: 86b34c6c44b957009610f20ee0b9d7ed7fc441be
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: 3f2950fe25feb8f3ee81cc0a79bf624f0ee33bd5
 ms.contentlocale: de-de
-ms.lasthandoff: 08/08/2017
+ms.lasthandoff: 08/12/2017
 
 ---
 # <a name="_Toc395809351"></a>ASP.NET MVC-Tutorial: Entwicklung von Webanwendungen mit Azure Cosmos DB
@@ -306,10 +306,7 @@ Hier muss zunächst eine Klasse hinzugefügt werden, die die gesamte Logik zur V
             }
         }
    
-   > [!TIP]
-   > Beim Erstellen einer neuen Dokumentensammlung können Sie einen optionalen RequestOptions-Parameter vom Angebotstyp bereitstellen, sodass die Leistungsfähigkeit der neuen Sammlung angegeben werden kann. Wenn dieser Parameter nicht übergeben wird, wird der Standardtangebotstyp verwendet. Weitere Informationen zu Azure Cosmos DB-Angebotstypen finden Sie unter [Azure Cosmos DB-Leistungsstufen](performance-levels.md).
-   > 
-   > 
+    
 3. Nun werden einige Werte aus der Konfiguration gelesen. Öffnen Sie die Datei **Web.config** Ihrer Anwendung, und fügen Sie die folgenden Zeilen unter dem Abschnitt `<AppSettings>` hinzu.
    
         <add key="endpoint" value="enter the URI from the Keys blade of the Azure Portal"/>

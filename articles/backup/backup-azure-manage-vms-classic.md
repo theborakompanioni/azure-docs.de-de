@@ -16,10 +16,10 @@ ms.date: 08/02/2017
 ms.author: trinadhk;markgal;
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
-ms.openlocfilehash: eb94f7222476af3d15089589a5e69556f7d6888b
+ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
+ms.openlocfilehash: d876bb1759600fa29a26730bfa8b4ec19db1e442
 ms.contentlocale: de-de
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 08/10/2017
 
 ---
 # <a name="manage-common-azure-backup-jobs-and-trigger-alerts-in-the-classic-portal"></a>Verwalten von häufigen Azure Backup-Sicherungsaufträgen und Warnungen im klassischen Portal
@@ -244,7 +244,7 @@ PS C:\> Add-AzureRmLogAlertRule -Name backupFailedAlert -Location "East US" -Res
 Ereignisbasierte Warnungen unterliegen den folgenden Einschränkungen:
 
 1. Warnungen werden auf allen virtuellen Computern im Sicherungstresor ausgelöst. Sie können diese Einstellung nicht so anpassen, dass Sie Warnungen für eine bestimmte Gruppe von virtuellen Computern in einem Sicherungstresor erhalten.
-2. Dieses Feature befindet sich in der Vorschau. [Weitere Informationen](../monitoring-and-diagnostics/insights-powershell-samples.md#create-alert-rules)
+2. Dieses Feature befindet sich in der Vorschau. [Weitere Informationen](../monitoring-and-diagnostics/insights-powershell-samples.md#create-metric-alerts)
 3. Sie erhalten Warnungen von „alerts-noreply@mail.windowsazure.com“. Sie können den E-Mail-Absender derzeit nicht ändern.
 
 ## <a name="next-steps"></a>Nächste Schritte

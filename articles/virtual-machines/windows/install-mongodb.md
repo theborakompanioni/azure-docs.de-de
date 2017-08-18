@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: iainfou
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
-ms.openlocfilehash: 5fdf061d6bf9961455377935304e9075ef4e59fa
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: db1a550b9273925b304fe4280f2a1b0e115f856d
 ms.contentlocale: de-de
-ms.lasthandoff: 05/12/2017
-
+ms.lasthandoff: 08/11/2017
 
 ---
 # <a name="install-and-configure-mongodb-on-a-windows-vm-in-azure"></a>Installieren und Konfigurieren von MongoDB auf einem virtuellen Windows-Computer in Azure
@@ -29,7 +28,7 @@ ms.lasthandoff: 05/12/2017
 Vor der Installation und Konfiguration von MongoDB müssen Sie zunächst einen virtuellen Computer erstellen und ihm im Idealfall einen Datenträger hinzufügen. Informationen zum Erstellen eines virtuellen Computers und Hinzufügen eines Datenträgers finden Sie in den folgenden Artikeln:
 
 * Erstellen Sie eine Windows Server-VM über das [Azure-Portal](quick-create-portal.md) oder per [Azure PowerShell](quick-create-powershell.md).
-* Fügen Sie einen Datenträger an eine Windows Server-VM an, indem Sie das [Azure-Portal](attach-disk-portal.md) oder [Azure PowerShell](attach-disk-ps.md) verwenden.
+* Fügen Sie einen Datenträger an eine Windows Server-VM an, indem Sie das [Azure-Portal](attach-managed-disk-portal.md) oder [Azure PowerShell](attach-disk-ps.md) verwenden.
 
 Um mit der Installation und Konfiguration von MongoDB zu beginnen, [melden Sie sich mit Remotedesktop bei Ihrem virtuellen Windows Server-Computer an](connect-logon.md).
 
@@ -155,7 +154,7 @@ New-NetFirewallRule `
     -Action Allow
 ```
 
-Sie können die Regel auch mithilfe des grafischen Verwaltungstools **Windows-Firewall mit erweiterter Sicherheit**  erstellen. Erstellen Sie eine neue eingehende Regel zum Zulassen von TCP-Port 27017.
+Sie können die Regel auch mithilfe des grafischen Verwaltungstools **Windows-Firewall mit erweiterter Sicherheit** erstellen. Erstellen Sie eine neue eingehende Regel zum Zulassen von TCP-Port 27017.
 
 Erstellen Sie ggf. eine Netzwerksicherheitsgruppen-Regel, um den Zugriff auf MongoDB von außerhalb des vorhandenen Subnetzes Ihres virtuellen Azure-Netzwerks zuzulassen. Sie können die Netzwerksicherheitsgruppen-Regeln im [Azure-Portal](nsg-quickstart-portal.md) oder mit [Azure PowerShell](nsg-quickstart-powershell.md) erstellen. Lassen Sie wie bei den Windows-Firewallregeln TCP-Port 27017 für die virtuelle Netzwerkschnittstelle des virtuellen MongoDB-Computers zu.
 

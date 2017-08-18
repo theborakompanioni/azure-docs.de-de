@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 04/27/2017
 ms.author: richrund
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f291186c6a68dea8aa00b846a2e6f3ad0d7996c
-ms.openlocfilehash: 1cab9d2f814e0c36dadcdd7bbc3cdc736de0af49
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: cdae291b546fef4d7fdb8b067c8e4f4c9708d43f
 ms.contentlocale: de-de
-ms.lasthandoff: 04/28/2017
-
+ms.lasthandoff: 08/11/2017
 
 ---
 # <a name="connect-azure-virtual-machines-to-log-analytics-with-a-log-analytics-agent"></a>Verbinden von virtuellen Azure-Computern mit Log Analytics mithilfe eines Log Analytics-Agents
@@ -414,8 +413,6 @@ Wenn die VM-Agent-Erweiterung *OMS-Agent für Linux* nicht installiert ist oder 
    * [Installieren des Azure-VM-Agents auf Linux-VMs](../virtual-machines/linux/agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 2. Bei einem anderen fehlerhaften Status überprüfen Sie die Protokolldateien der VM-Erweiterung OMS-Agent für Linux in `/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/*/extension.log` und `/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/*/CommandExecution.log`.
 3. Wenn der Status der Erweiterung fehlerfrei ist, aber keine Daten hochgeladen werden, überprüfen Sie Protokolldateien des OMS-Agents für Linux in `/var/opt/microsoft/omsagent/log/omsagent.log`.
-
-Weitere Informationen finden Sie unter [Behandeln von Problemen bei Linux-Erweiterungen](../virtual-machines/linux/extensions-troubleshoot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Konfigurieren Sie [Datenquellen in Log Analytics](log-analytics-data-sources.md) , um die zu sammelnden Protokolle und Metriken anzugeben.

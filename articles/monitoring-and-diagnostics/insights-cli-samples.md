@@ -1,8 +1,8 @@
 ---
-title: "CLI-Beispiele für den Schnellstart mit Azure Monitor | Microsoft Docs"
-description: "Beispiel-CLI-Befehle für Azure Monitor-Features Azure Monitor ist ein Microsoft Azure-Dienst, der das Senden von Warnbenachrichtigungen, das Aufrufen von Web-URLs basierend auf Werten konfigurierter Telemetriedaten und die automatische Skalierung von Clouddiensten, virtuellen Computern und Web-Apps ermöglicht."
+title: "CLI 1.0-Beispiele für den Schnellstart mit Azure Monitor. | Microsoft Docs"
+description: "Beispiel-CLI 1.0-Befehle für Azure Monitor-Features. Azure Monitor ist ein Microsoft Azure-Dienst, der das Senden von Warnbenachrichtigungen, das Aufrufen von Web-URLs basierend auf Werten konfigurierter Telemetriedaten und die automatische Skalierung von Clouddiensten, virtuellen Computern und Web-Apps ermöglicht."
 author: kamathashwin
-manager: carolz
+manager: orenr
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/08/2016
+ms.date: 08/09/2017
 ms.author: ashwink
-translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 0e629dac553f576f2dd3059453b00d6b10e48fd7
-ms.lasthandoff: 03/21/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
+ms.openlocfilehash: ec4512500dc3c77a40d2ebd1e6b460d5bb005811
+ms.contentlocale: de-de
+ms.lasthandoff: 08/10/2017
 
 ---
-# <a name="azure-monitor--cross-platform-cli-quick-start-samples"></a>Azure Monitor – Schnellstartbeispiele für die plattformübergreifende Befehlszeilenschnittstelle
+# <a name="azure-monitor--cross-platform-cli-10-quick-start-samples"></a>Azure Monitor – Schnellstartbeispiele für die plattformübergreifende CLI 1.0
 In diesem Artikel werden Beispielbefehle für die Befehlszeilenschnittstelle (Command Line Interface, CLI) beschrieben, mit denen Sie auf Azure Monitor-Features zugreifen können. Azure Monitor ermöglicht die automatische Skalierung von Clouddiensten, virtuellen Computern und Web-Apps sowie das Senden von Warnbenachrichtigungen oder das Aufrufen von Web-URLs basierend auf Werten konfigurierter Telemetriedaten.
 
 > [!NOTE]
@@ -122,11 +122,6 @@ azure insights alerts rule list abhingrgtest123 --ruleName andy0323
 azure insights alerts actions email create --customEmails foo@microsoft.com
 azure insights alerts actions webhook create https://someuri.com
 azure insights alerts rule metric set andy0323 eastus abhingrgtest123 PT5M GreaterThan 2 /subscriptions/df602c9c-7aa0-407d-a6fb-eb20c8bd1192/resourceGroups/Default-Web-EastUS/providers/Microsoft.Web/serverfarms/Default1 BytesReceived Total
-```
-
-### <a name="create-a-log-alert-rule"></a>Erstellen einer Warnungsregel für ein Protokoll
-```console
-azure insights alerts rule log set ruleName eastus resourceGroupName someOperationName
 ```
 
 ### <a name="create-webtest-alert-rule"></a>Erstellen einer Webtest-Warnungsregel
