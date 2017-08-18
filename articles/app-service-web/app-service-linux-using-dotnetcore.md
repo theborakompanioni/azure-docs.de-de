@@ -158,7 +158,7 @@ To https://hellodotnetcore.scm.azurewebsites.net/
 
 ```
 
-Starten Sie Ihre Web-App nach Abschluss der Bereitstellung neu, damit die Bereitstellung wirksam wird. Navigieren Sie hierzu im Azure-Portal zur Übersichtsseite**** Ihrer Web-App. Wählen Sie auf der Seite die Schaltfläche **Neu starten** aus. Wenn ein Popupfenster erscheint, wählen Sie zur Bestätigung **Ja** aus. Anschließend können Sie Ihre Web-App verwenden, wie hier zu sehen:
+Starten Sie Ihre Web-App nach Abschluss der Bereitstellung neu, damit die Bereitstellung wirksam wird. Navigieren Sie hierzu im Azure-Portal zur **Übersichtsseite** Ihrer Web-App. Wählen Sie auf der Seite die Schaltfläche **Neu starten** aus. Wenn ein Popupfenster erscheint, wählen Sie zur Bestätigung **Ja** aus. Anschließend können Sie Ihre Web-App verwenden, wie hier zu sehen:
 
 ![Verwenden einer für Azure App Service bereitgestellten .NET Core-App unter Linux][10]
 
