@@ -12,14 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 05/11/2017
+ms.date: 08/09/2017
 ms.author: motanv
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
-ms.openlocfilehash: 00f703cf9e727cd5981c4f8254fc11330e41a470
+ms.translationtype: HT
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: 3b3b93bc9ec5ecdcfc289e5b62e84de6aa4172ed
 ms.contentlocale: de-de
-ms.lasthandoff: 05/12/2017
-
+ms.lasthandoff: 08/12/2017
 
 ---
 # <a name="induce-controlled-chaos-in-service-fabric-clusters"></a>Auslösen von kontrolliertem Chaos in Service Fabric-Clustern
@@ -53,10 +52,6 @@ Wenn Sie herausfinden möchten, welche Fehler Chaos induziert hat, können Sie d
 
 ## <a name="important-configuration-options"></a>Wichtige Konfigurationsoptionen
 * **TimeToRun**: Gesamtdauer der Ausführung des Chaostests, bevor er erfolgreich abgeschlossen wird. Sie können den Chaostest mit der StopChaos-API vor Ablauf des Zeitraums von „TimeToRun“ beenden.
-
-> [!NOTE]
-> Chaos wird möglicherweise weiterhin ausgeführt, nachdem die *TimeToRun* abgelaufen ist. Es kann zusätzlich bis zu (MaxClusterStabilizationTime + MaxConcurrentFaults * WaitTimeBetweenFaults + WaitTimeBetweenIterations) dauern, bis eine automatische Beendigung erfolgt.
->
 
 * **MaxClusterStabilizationTimeout:** maximale Dauer für das Warten auf die Wiederherstellung der Integrität des Clusters, bevor ein ValidationFailedEvent ausgelöst wird. Mit diesem Wartezeitraum soll die Auslastung des Clusters während der Wiederherstellung reduziert werden. Die folgenden Prüfungen erfolgen:
   * Ob die Clusterintegrität in Ordnung ist

@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/24/2017
+ms.date: 8/10/2017
 ms.author: chackdan;maburlik;dekapur
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
-ms.openlocfilehash: 7543d98030ea143d537e0028801fd3efe3e4ff32
+ms.translationtype: HT
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: 6aa2905a97ec6b8c125f2ab9572a8e40bf525b27
 ms.contentlocale: de-de
-ms.lasthandoff: 06/07/2017
+ms.lasthandoff: 08/12/2017
 
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>Erstellen eines eigenständigen Clusters unter Windows Server
@@ -113,9 +113,9 @@ Das Service Fabric-Laufzeitpaket wird bei der Clustererstellung automatisch heru
 Das Laufzeitpaket kann über einen anderen Computer, der über eine Internetverbindung verfügt, heruntergeladen werden (unter [Downloadlink: Service Fabric Runtime – Windows Server](https://go.microsoft.com/fwlink/?linkid=839354)). Kopieren Sie das Laufzeitpaket an den Ort, von dem aus Sie den Offlinecluster bereitstellen, und erstellen Sie den Cluster, indem Sie `CreateServiceFabricCluster.ps1` mit dem Parameter `-FabricRuntimePackagePath` ausführen, wie hier dargestellt: 
 
 ```powershell
-CreateServiceFabricCluster.ps1 -ClusterConfigurationFilePath <path to ClusterConfig.json> -FabricRuntimePackagePath <path to MicrosoftAzureServiceFabric.cab>
+.\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.json -FabricRuntimePackagePath .\MicrosoftAzureServiceFabric.cab
 ```
-`<path to ClusterConfig.json>` und `<path to MicrosoftAzureServiceFabric.cab>` sind hierbei die Pfade zur Clusterkonfiguration bzw. zur CAB-Datei der Laufzeit.
+`.\ClusterConfig.json` und `.\MicrosoftAzureServiceFabric.cab` sind hierbei die Pfade zur Clusterkonfiguration bzw. zur CAB-Datei der Laufzeit.
 
 
 ### <a name="step-2-connect-to-the-cluster"></a>Schritt 2: Herstellen einer Verbindung mit dem Cluster
@@ -125,7 +125,9 @@ Führen Sie den folgenden PowerShell-Befehl aus, um eine Verbindung mit einem un
 
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint <*IPAddressofaMachine*>:<Client connection end point port>
-
+```
+Beispiel:
+```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint 192.13.123.2345:19000
 ```
 ### <a name="step-3-bring-up-service-fabric-explorer"></a>Schritt 3: Aufrufen von Service Fabric Explorer
