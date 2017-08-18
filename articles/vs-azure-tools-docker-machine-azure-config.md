@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/08/2016
 ms.author: mlearned
-translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: a5b845a93f318b991e14705f0fadea3acd802ced
-ms.lasthandoff: 03/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: 766d327a87ed13e04166d71c3d9ae0a1e7a66d19
+ms.contentlocale: de-de
+ms.lasthandoff: 06/07/2017
 
 
 ---
@@ -37,7 +38,7 @@ Für den Azure-Treiber wird Ihre Abonnement-ID benötigt. Sie können die [Azure
 
 **Verwenden des Azure-Portals**
 
-* Wählen Sie auf der linken Seite „Abonnements“ aus, und kopieren Sie die Abonnement-ID.
+* Wählen Sie auf der linken Seite **Abonnements** aus, und kopieren Sie die Abonnement-ID.
 
 **Verwenden der Azure-Befehlszeilenschnittstelle**
 
@@ -48,7 +49,7 @@ In der [Dokumentation für den Azure-Treiber für Docker](https://docs.docker.co
 
 Im folgenden Beispiel werden die [Standardwerte](https://github.com/docker/machine/blob/master/drivers/azure/azure.go#L22) verwendet, es werden jedoch optional die folgenden Werte festgelegt: 
 
-* azure-dns für den Namen, der der öffentlichen IP-Adresse und den generierten Zertifikaten zugeordnet wird.  Es ist dann sicher, den virtuellen Computer zu beenden, die dynamische IP-Adresse freizugeben und eine erneute Verbindung zu erlauben, nachdem der virtuelle Computer mit einer neuen IP-Adresse neu gestartet wurde.  Das Namenspräfix muss für die Region UNIQUE_DNSNAME_PREFIX.westus.cloudapp.azure.com eindeutig sein.
+* azure-dns für den Namen, der der öffentlichen IP-Adresse und den generierten Zertifikaten zugeordnet wird. Dies ist der DNS-Name Ihres virtuellen Computers. Es ist dann sicher, den virtuellen Computer zu beenden, die dynamische IP-Adresse freizugeben und eine erneute Verbindung zu erlauben, nachdem der virtuelle Computer mit einer neuen IP-Adresse neu gestartet wurde. Das Namenspräfix muss für die Region „UNIQUE_DNSNAME_PREFIX.westus.cloudapp.azure.com“ eindeutig sein.
 * Öffnen von Port 80 auf dem virtuellen Computer für ausgehenden Internetzugriff
 * Größe des virtuellen Computers für schnelleres Storage Premium
 * Storage Premium wird für den VM-Datenträger verwendet
@@ -107,7 +108,7 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 d5b78f27b335        nginx               "nginx -g 'daemon off"   5 minutes ago       Up 5 minutes        0.0.0.0:80->80/tcp, 443/tcp   goofy_mahavira
 ```
 
-Prüfen Sie auch, ob Sie den ausgeführten Container sehen. Geben Sie `docker-machine ip <VM name>` ein, um die IP-Adresse zu suchen, die in den Browser eingegeben werden soll:
+Zum Anzeigen des ausgeführten Containers geben Sie außerdem `docker-machine ip <VM name>` ein, um die IP-Adresse zu suchen, die in den Browser eingegeben werden soll:
 
 ```
 PS C:\> docker-machine ip MyDockerHost
@@ -117,7 +118,7 @@ PS C:\> docker-machine ip MyDockerHost
 ![Ausführen des ngnix-Containers](./media/vs-azure-tools-docker-machine-azure-config/nginxsuccess.png)
 
 ## <a name="summary"></a>Zusammenfassung
-Mit docker-machine können Sie Docker-Hosts mühelos für einzelne Überprüfungen von Docker-Hosts bereitstellen.
+Mit „docker-machine“ können Sie Docker-Hosts mühelos für einzelne Überprüfungen von Docker-Hosts bereitstellen.
 Informationen zum Hosten von Containern in der Produktion finden Sie unter [Azure-Containerdienst](http://aka.ms/AzureContainerService)
 
 Informationen zum Entwickeln von .NET Core-Anwendungen mit Visual Studio finden Sie unter [Docker-Tools für Visual Studio](http://aka.ms/DockerToolsForVS)

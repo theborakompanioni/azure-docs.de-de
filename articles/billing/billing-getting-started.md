@@ -3,7 +3,7 @@ title: "Vermeiden unerwarteter Kosten, Verwalten der Abrechnung – Azure | Micr
 description: "Hier erwarten Sie, wie Sie unerwartete Gebühren in Ihrer Azure-Abrechnung vermeiden. Verwenden Sie Kostenüberwachungs- und Kostenverwaltungsfunktionen für ein Microsoft Azure-Abonnement."
 services: 
 documentationcenter: 
-author: jlian
+author: tonguyen10
 manager: tonguyen
 editor: 
 tags: billing
@@ -13,19 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/20/2017
-ms.author: jlian
+ms.date: 08/10/2017
+ms.author: tonguyen
+experimental_id: a2b2579c-cd2e-41
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
 ms.openlocfilehash: 539a3e628dfec1088f683652bc9b743b87875d36
 ms.contentlocale: de-de
 ms.lasthandoff: 04/26/2017
 
-
 ---
-<a id="prevent-unexpected-costs-with-azure-billing-and-cost-management" class="xliff"></a>
 
-# Vermeiden unerwarteter Kosten bei der Azure-Abrechnung und -Kostenverwaltung
+# <a name="prevent-unexpected-costs-with-azure-billing-and-cost-management"></a>Vermeiden unerwarteter Kosten bei der Azure-Abrechnung und -Kostenverwaltung
 
 Wenn Sie sich für Azure registrieren, sollten Sie sich einen Überblick über Ihre Ausgaben verschaffen. Im [Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) finden Sie nach Auswahl Ihres Abonnements Ihre aktuelle Kostenaufschlüsselung und Verbrauchsrate. Außerdem können Sie [ältere Rechnungen sowie Dateien mit detaillierten Nutzungsinformationen herunterladen](billing-download-azure-invoice-daily-usage-date.md). Wenn Sie Kosten für Ressourcen zusammenfassen möchten, die für unterschiedliche Projekte oder Teams verwendet werden, beschäftigen Sie sich mit [Tags für Ressourcen](../azure-resource-manager/resource-group-using-tags.md). Falls Sie das Berichtssystem Ihrer Organisation verwenden möchten, informieren Sie sich über die [Abrechnung-APIs](billing-usage-rate-card-overview.md). 
 
@@ -35,23 +34,17 @@ Viele Features in diesem Artikel sind für Abonnements von EA-Kunden (Enterprise
 
 Wenn Ihr Abonnement eine kostenlose Testversion ist oder für [Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), Azure in Open (AIO) oder BizSpark gilt, sollten Sie sich über [Ausgabenlimits](#spending-limit) informieren, um zu vermeiden, dass Ihr Abonnement unerwartet deaktiviert wird. 
 
-<a id="day-0-before-you-add-azure-services" class="xliff"></a>
+## <a name="day-0-before-you-add-azure-services"></a>Tag 0: Vor dem Hinzufügen von Azure-Diensten
 
-## Tag 0: Vor dem Hinzufügen von Azure-Diensten
-
-<a id="estimate-cost-online-using-the-pricing-calculator" class="xliff"></a>
-
-### Schätzen der Kosten mithilfe des Onlinepreisrechners
+### <a name="estimate-cost-online-using-the-pricing-calculator"></a>Schätzen der Kosten mithilfe des Onlinepreisrechners
 
 Verschaffen Sie sich mit dem [Preisrechner](https://azure.microsoft.com/pricing/calculator/) und dem [Gesamtbetriebskosten-Rechner](https://aka.ms/azure-tco-calculator) einen ungefähren Eindruck von den monatlichen Kosten des Diensts, für den Sie sich interessieren. So fallen beispielsweise für die Computestunden eines virtuellen A1-Windows-Computers voraussichtlich 66,96 USD/Monat an, wenn der Computer durchgehend in Betrieb ist:
 
-![Screenshot des Preisrechners, der zeigt, dass für einen virtuellen A1-Windows-Computer pro Monat voraussichtlich Kosten in Höhe von 66,96 USD anfallen](./media/billing-getting-started/pricing-calc.PNG)
+![Screenshot des Preisrechners, der zeigt, dass für einen virtuellen A1-Windows-Computer pro Monat voraussichtlich Kosten in Höhe von 66,96 USD anfallen](./media/billing-getting-started/pricing-calcVM.png)
 
 Weitere Informationen finden Sie in den [häufig gestellten Fragen zu Preisen](https://azure.microsoft.com/pricing/faq/). Wenn Sie stattdessen lieber mit einer Person sprechen möchten, können Sie sich unter 1 800 867 1389 auch telefonisch informieren.
 
-<a id="check-your-subscription-and-access" class="xliff"></a>
-
-### Überprüfen von Abonnement und Zugriff
+### <a name="check-your-subscription-and-access"></a>Überprüfen von Abonnement und Zugriff
 
 Zum Anzeigen der Kosten benötigen Sie [Zugriff auf Abrechnungsinformationen auf Abonnementebene](billing-manage-access.md), aber nur der Kontoadministrator kann auf das [Kontocenter](https://account.windowsazure.com/Home/Index) zugreifen, Abrechnungsinformationen ändern und Abonnements verwalten. Der Kontoadministrator ist die Person, die den Registrierungsprozess durchlaufen hat. Weitere Informationen finden Sie unter [Hinzufügen oder Ändern von Azure-Administratorrollen, die das Abonnement oder die Dienste verwalten](billing-add-change-azure-subscription-administrator.md).
 
@@ -75,9 +68,7 @@ Um zu ermitteln, ob ein Ausgabenlimit aktiviert ist, [navigieren Sie im Kontocen
 
 Klicken Sie auf das Banner, und folgen Sie den Anweisungen, um das Ausgabenlimit zu entfernen. Falls Sie bei der Registrierung keine Kreditkarteninformationen eingegeben haben, müssen Sie dies nun nachholen, um das Ausgabenlimit entfernen zu können. Weitere Informationen finden Sie unter [Azure-Ausgabenlimit – Funktionsweise und Aktivierung/Deaktivierung](https://azure.microsoft.com/pricing/spending-limits/).
 
-<a id="set-up-billing-alerts" class="xliff"></a>
-
-### Einrichten von Abrechnungswarnungen
+### <a name="set-up-billing-alerts"></a>Einrichten von Abrechnungswarnungen
 
 Richten Sie Abrechnungswarnungen ein, um sich per E-Mail benachrichtigen zu lassen, wenn Ihre Nutzungskosten einen bestimmten Betrag übersteigen. Falls Sie über monatliches Guthaben verfügen, richten Sie Warnungen für den Verbrauch eines bestimmten Betrags ein. Weitere Informationen finden Sie unter [Einrichten von Abrechnungswarnungen für Microsoft Azure-Abonnements](billing-set-up-alerts.md).
 
@@ -88,19 +79,13 @@ Richten Sie Abrechnungswarnungen ein, um sich per E-Mail benachrichtigen zu lass
 
 Bei Ihrer ersten Warnung können Sie sich an der Kostenschätzung des Preisrechners orientieren.
 
-<a id="understand-limits-and-quotas-for-your-subscription" class="xliff"></a>
-
-### Grundlegendes zu Grenzwerten und Kontingenten für Ihr Abonnement
+### <a name="understand-limits-and-quotas-for-your-subscription"></a>Grundlegendes zu Grenzwerten und Kontingenten für Ihr Abonnement
 
 Bei jedem Abonnement gelten standardmäßig bestimmte Einschränkungen für Aspekte wie die Anzahl von CPU-Kernen und die IP-Adresse. Berücksichtigen Sie diese Grenzwerte. Weitere Informationen finden Sie unter [Grenzwerte für Azure-Abonnements, -Dienste und -Kontingente sowie allgemeine Beschränkungen](../azure-subscription-service-limits.md). Falls Sie einen höheren Grenzwert oder ein höheres Kontingent benötigen, [wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
-<a id="day-1-as-you-add-services" class="xliff"></a>
+## <a name="day-1-as-you-add-services"></a>Tag 1: Hinzufügen von Diensten
 
-## Tag 1: Hinzufügen von Diensten
-
-<a id="review-the-estimated-cost-in-the-portal" class="xliff"></a>
-
-### Überprüfen der voraussichtlichen Kosten im Portal
+### <a name="review-the-estimated-cost-in-the-portal"></a>Überprüfen der voraussichtlichen Kosten im Portal
 
 Wenn Sie im Azure-Portal einen Dienst hinzufügen, erscheint üblicherweise eine ähnliche Schätzung der monatlichen Kosten. Wenn Sie also etwa die Größe Ihres virtuellen Windows-Computers auswählen, werden die voraussichtlichen monatlichen Kosten für die Computestunden angezeigt:
 
@@ -116,9 +101,7 @@ Die Tags werden in den unterschiedlichen Kostenberichtsansichten angezeigt. So s
 
 Weitere Informationen finden Sie unter [Verwenden von Tags zum Organisieren von Azure-Ressourcen](../azure-resource-manager/resource-group-using-tags.md).
 
-<a id="consider-enabling-cost-cutting-features-like-auto-shutdown-for-vms" class="xliff"></a>
-
-### Aktivieren von Kostensenkungsfeatures wie dem automatischen Herunterfahren für virtuelle Computer
+### <a name="consider-enabling-cost-cutting-features-like-auto-shutdown-for-vms"></a>Aktivieren von Kostensenkungsfeatures wie dem automatischen Herunterfahren für virtuelle Computer
 
 Abhängig von Ihrem Szenario können Sie im Azure-Portal ggf. das automatische Herunterfahren für Ihre virtuellen Computer konfigurieren. Weitere Informationen finden Sie unter [Announcing auto-shutdown for VMs using Azure Resource Manager](https://azure.microsoft.com/blog/announcing-auto-shutdown-for-vms-using-azure-resource-manager/) (Ankündigung des automatischen Herunterfahrens für virtuelle Computer mit Azure Resource Manager).
 
@@ -154,21 +137,17 @@ Informationen zu weiteren Kostensenkungsfeatures für Ihre Entwicklungs- und Tes
 
 7. Klicken Sie auf eine Ressource, um den Ausgabenverlauf und die Kosten pro Tag anzuzeigen.
 
-    ![Screenshot der Ausgabenverlaufsansicht im Azure-Portal](./media/billing-getting-started/spend-history.PNG)
+    ![Screenshot der Ausgabenverlaufsansicht im Azure-Portal](./media/billing-getting-started/costhistory.PNG)
 
 Es empfiehlt sich, die angezeigten Kosten mit den voraussichtlichen Kosten zu vergleichen, die beim Auswählen der Dienste angezeigt wurden. Sollten die Kosten stark von den Schätzungen abweichen, überprüfen Sie noch einmal den Tarif (etwa A1 im Vergleich zu A0), den Sie für Ihre Ressourcen ausgewählt haben. 
 
-<a id="view-costs-for-all-your-subscriptions-in-the-billing-blade" class="xliff"></a>
-
-#### Anzeigen der Kosten für alle Abonnements auf dem Blatt „Abrechnung“
+#### <a name="view-costs-for-all-your-subscriptions-in-the-billing-blade"></a>Anzeigen der Kosten für alle Abonnements auf dem Blatt „Abrechnung“
 
 Falls Sie als Kontoadministrator mehrere Abonnements verwalten, werden auf dem Blatt [Abrechnung](https://portal.azure.com/#blade/Microsoft_Azure_Billing/BillingBlade) der aggregierte Rechnungsbetrag und die Aufschlüsselung für alle Ihre Abonnements angezeigt. 
 
 <!-- Add screenshots of multiple subs each with billed usage -->
 
-<a id="turn-on-and-check-out-azure-advisor-recommendations" class="xliff"></a>
-
-### Aktivieren und Überprüfen von Azure Advisor-Empfehlungen
+### <a name="turn-on-and-check-out-azure-advisor-recommendations"></a>Aktivieren und Überprüfen von Azure Advisor-Empfehlungen
 
 [Azure Advisor](../advisor/advisor-overview.md) ist ein Vorschaufeature, das wenig genutzte Ressourcen identifiziert und Sie so bei der Senkung Ihrer Kosten unterstützt. Aktivieren Sie das Feature im Azure-Portal:
 
@@ -190,9 +169,7 @@ Die zuvor festgelegten Tags werden in den CSV-Dateien mit den Nutzungsdetails an
 
 ![Screenshot mit Tags in der CSV-Datei zur Nutzung](./media/billing-getting-started/csv.png)
 
-<a id="billing-api" class="xliff"></a>
-
-### Abrechnungs-API
+### <a name="billing-api"></a>Abrechnungs-API
 
 Über unsere Abrechnungs-API können Sie Nutzungsdaten programmgesteuert abrufen. Verwenden Sie die RateCard-API und die Usage-API, um Ihre abgerechnete Nutzung abzurufen. Weitere Informationen finden Sie unter [Gewinnen von Einblicken in den Ressourcenverbrauch unter Microsoft Azure](billing-usage-rate-card-overview.md).
 
@@ -208,8 +185,7 @@ Wenden Sie sich an Ihren Kundenbetreuer oder Azure-Partner.
 
 Für IT-Manager großer Organisationen empfehlen wir den Artikel zum [Azure-Unternehmensgerüst](../azure-resource-manager/resource-manager-subscription-governance.md) und das [Whitepaper zu Enterprise IT](http://download.microsoft.com/download/F/F/F/FFF60E6C-DBA1-4214-BEFD-3130C340B138/Azure_Onboarding_Guide_for_IT_Organizations_EN_US.pdf) (PDF-Download, nur auf Englisch verfügbar).
 
-<a id="need-help-contact-support" class="xliff"></a>
-
-## Sie brauchen Hilfe? Support kontaktieren
+## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Support kontaktieren
 
 [Wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), falls Sie weitere Hilfe benötigen, um das Problem schnell beheben zu lassen.
+
