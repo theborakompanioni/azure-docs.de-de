@@ -70,7 +70,7 @@ Verwenden Sie Code wie diesen, um die Integrität zu melden:
 Verwenden Sie Code wie diesen, um eine Metrik zu melden:
 
   ```csharp
-    this.ServicePartition.ReportLoad(new List<LoadMetric> { new LoadMetric("MemoryInMb", 1234), new LoadMetric("metric1", 42) });
+    this.Partition.ReportLoad(new List<LoadMetric> { new LoadMetric("MemoryInMb", 1234), new LoadMetric("metric1", 42) });
   ```
 
 ### <a name="service-fabric-support-logs"></a>Service Fabric-Supportprotokolle

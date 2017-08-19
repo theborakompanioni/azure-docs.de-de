@@ -41,7 +41,8 @@ In diesem Thema wird demonstriert, wie Sie Azure App Services zur Verwendung ein
    > 
 7. Klicken Sie unter „Anwendungsgeheimnisse“ auf **Neues Kennwort generieren**. Notieren Sie sich den angezeigten Wert. Er wird nicht wieder angezeigt, nachdem Sie die Seite verlassen haben.
 
-    > [AZURE.IMPORTANT] Bei dem Kennwort handelt es sich um eine wichtige Information für die Anmeldung. Teilen Sie das Kennwort keiner anderen Person mit, und geben Sie es nicht in einer Clientanwendung weiter.
+    > [!IMPORTANT]
+    > Bei dem Kennwort handelt es sich um eine wichtige Information für die Anmeldung. Teilen Sie das Kennwort keiner anderen Person mit, und geben Sie es nicht in einer Clientanwendung weiter.
 
 ## <a name="secrets"> </a>Hinzufügen von Microsoft-Kontoinformationen zu Ihrer App Service-Anwendung
 1. Navigieren Sie im [Azure-Portal] zu Ihrer Anwendung, und klicken Sie auf **Einstellungen** > **Authentifizierung/Autorisierung**.
