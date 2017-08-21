@@ -199,7 +199,6 @@
 #### [Hadoop-Arbeitsspeicher- und Leistung](hdinsight-hadoop-stack-trace-error-messages.md)
 #### [Zugriff auf Hadoop YARN-Anwendungsprotokolle unter Linux](hdinsight-hadoop-access-yarn-app-logs-linux.md)
 #### [Aktivieren von Heapdumps für Hadoop-Dienste](hdinsight-hadoop-collect-debug-heap-dump-linux.md)
-#### [Analysieren von HDInsight-Protokollen](hdinsight-debug-jobs.md)
 #### [Verstehen und Beheben von WebHCat-Fehlern](hdinsight-hadoop-templeton-webhcat-debug-errors.md)
 #### [Hive-Einstellungen: Beheben von Fehlern vom Typ „Nicht genügend Arbeitsspeicher“](hdinsight-hadoop-hive-out-of-memory-error-oom.md)
 #### [Debuggen von Tez-Aufträgen mithilfe von Ambari-Ansichten](hdinsight-debug-ambari-tez-view.md)
