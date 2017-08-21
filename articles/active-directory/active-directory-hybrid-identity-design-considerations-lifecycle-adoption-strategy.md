@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/14/2017
+ms.date: 07/18/2017
 ms.author: billmath
-translationtype: Human Translation
-ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
-ms.openlocfilehash: 14e78eca1e03125143b8814c5652c43f3f3fd3a8
-
+ms.translationtype: HT
+ms.sourcegitcommit: 26c07d30f9166e0e52cb396cdd0576530939e442
+ms.openlocfilehash: 18b40486a66d8e092a8af299460145989a1ab99d
+ms.contentlocale: de-de
+ms.lasthandoff: 07/19/2017
 
 ---
 # <a name="determine-hybrid-identity-lifecycle-adoption-strategy"></a>Ermitteln der Strategie für die Übernahme des Hybrididentitätslebenszyklus
@@ -89,7 +90,7 @@ Vergleichen Sie die Synchronisierungsoptionen anhand folgender Tabelle:
 
 | Synchronisierungsverwaltungsoption | Vorteile | Nachteile |
 | --- | --- | --- |
-| Synchronisierungsbasiert (über DirSync oder AADConnect) |Benutzer und Gruppen, die lokal und in der Cloud synchronisiert werden  <br>  **Richtliniensteuerung**: Kontorichtlinien können über Active Directory festgelegt werden, was dem Administrator ermöglicht, Richtlinien für Kennwörter, Workstations, Einschränkungen, Sperrsteuerungen und mehr zu verwalten, ohne zusätzliche Aufgaben in der Cloud ausführen zu müssen.  <br>  **Zugriffssteuerung**: Kann den Zugriff auf den Clouddienst einschränken, sodass der Zugriff auf die Dienste über die Unternehmensumgebung, über Onlineserver oder beides erfolgen kann. <br>   Weniger Supportanrufe: Wenn Benutzer sich weniger Kennwörter merken müssen, ist die Wahrscheinlichkeit geringer, dass sie sie vergessen. <br>   Sicherheit: Benutzeridentitäten und -informationen sind geschützt, da alle Server und Dienste mit einmaligem Anmelden verwendet und lokal verwaltet und gesteuert werden. <br>   Unterstützung für strenge Authentifizierung: Sie können strenge Authentifizierung (auch als zweistufige Authentifizierung bezeichnet) mit dem Clouddienst nutzen. Wenn Sie jedoch strenge Authentifizierung verwenden, müssen Sie einmaliges Anmelden verwenden. | |
+| Synchronisierungsbasiert (über DirSync oder AADConnect) |Benutzer und Gruppen, die lokal und in der Cloud synchronisiert werden  <br>  **Richtliniensteuerung**: Kontorichtlinien können über Active Directory festgelegt werden, was dem Administrator ermöglicht, Richtlinien für Kennwörter, Workstations, Einschränkungen, Sperrsteuerungen und mehr zu verwalten, ohne zusätzliche Aufgaben in der Cloud ausführen zu müssen.  <br>  **Zugriffssteuerung**: Kann den Zugriff auf den Clouddienst einschränken, sodass der Zugriff auf die Dienste über die Unternehmensumgebung, über Onlineserver oder beides erfolgen kann. <br>  Weniger Supportanrufe: Wenn Benutzer sich weniger Kennwörter merken müssen, ist die Wahrscheinlichkeit geringer, dass sie sie vergessen. <br>  Sicherheit: Benutzeridentitäten und -informationen sind geschützt, da alle Server und Dienste mit einmaligem Anmelden verwendet und lokal verwaltet und gesteuert werden. <br>  Unterstützung für strenge Authentifizierung: Sie können strenge Authentifizierung (auch als zweistufige Authentifizierung bezeichnet) mit dem Clouddienst nutzen. Wenn Sie jedoch strenge Authentifizierung verwenden, müssen Sie einmaliges Anmelden verwenden. | |
 | Verbundbasiert (über AD FS) |Aktiviert durch Sicherheitstokendienst (Security Token Service, STS). Wenn Sie einen STS konfigurieren, um Zugriff mit einmaligem Anmelden mit einem Microsoft-Clouddienst zu bieten, erstellen Sie eine Verbundvertrauensstellung zwischen Ihrem lokalen STS und der Verbunddomäne, die Sie in Ihrem Azure AD-Mandanten angegeben haben. <br> Ermöglicht Endbenutzern, mit den gleichen Anmeldeinformationen auf mehrere Ressourcen zuzugreifen. <br>Endbenutzer müssen nicht mehrere Sätze von Anmeldeinformationen verwalten. Dennoch müssen die Benutzer ihre Anmeldeinformationen jeder der beteiligten Ressourcen bereitstellen. B2B- und B2C-Szenarien werden unterstützt. |Setzt spezialisierte Mitarbeiter für die Bereitstellung und Wartung von dedizierten lokalen AD FS-Servern voraus. Es gibt Einschränkungen für die Verwendung der starken Authentifizierung, wenn Sie AD FS für Ihren STS verwenden möchten. Weitere Informationen finden Sie unter [Konfigurieren erweiterter Optionen für AD FS 2.0](http://go.microsoft.com/fwlink/?linkid=235649). |
 
 > [!NOTE]
@@ -99,10 +100,5 @@ Vergleichen Sie die Synchronisierungsoptionen anhand folgender Tabelle:
 
 ## <a name="see-also"></a>Weitere Informationen
 [Überlegungen zum Entwurf – Übersicht](active-directory-hybrid-identity-design-considerations-overview.md)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

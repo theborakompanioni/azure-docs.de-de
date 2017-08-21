@@ -4,7 +4,7 @@ description: "Ausführen eines Cassandra-Clusters unter Linux auf virtuellen Azu
 services: virtual-machines-linux
 documentationcenter: nodejs
 author: hanuk
-manager: erikre
+manager: routlaw
 editor: 
 tags: azure-service-management
 ms.assetid: 30de1f29-e97d-492f-ae34-41ec83488de0
@@ -13,14 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 04/25/2017
-ms.author: hanuk;robmcm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: 7dc61a4ea5f7ce9749a3280562e42223dfdbde17
+ms.date: 08/17/2017
+ms.author: hanuk;tarcher
+ms.translationtype: HT
+ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
+ms.openlocfilehash: acfa9f6f0166167341fc54c4d55fb37e0a338024
 ms.contentlocale: de-de
-ms.lasthandoff: 06/28/2017
-
+ms.lasthandoff: 07/10/2017
 
 ---
 # <a name="running-cassandra-with-linux-on-azure-and-accessing-it-from-nodejs"></a>Ausführen von Cassandra mit Linux auf Azure und Zugreifen darauf mit Node.js
@@ -80,7 +79,7 @@ Cassandra-Clusterkonfiguration mit einer Region:
 
 **Azure-Überlegungen zum Cassandra-Cluster**: Microsoft Azure Virtual Machines verwendet Azure-Blobspeicher für die Dauerhaftigkeit von Datenträgern. Azure Storage speichert für eine hohe Dauerhaftigkeit drei Replikate der Datenträger. Dies bedeutet, dass jede Zeile mit Daten, die in eine Cassandra-Tabelle eingefügt wird, bereits in drei Replikaten gespeichert ist und somit die Datenkonsistenz bereits sichergestellt wurde, selbst wenn der Replikationsfaktor (RF) 1 ist. Das Hauptproblem beim Replikationsfaktor 1 besteht darin, dass bei der Anwendung bereits Ausfallzeiten auftreten, wenn nur ein Cassandra-Knoten ausfällt. Wenn ein Knoten jedoch aufgrund von durch Azure Fabric Controller erkannten Problemen (z. B. Hardware- oder Systemsoftwarefehlern) ausfällt, wird ein neuer Knoten an seiner Stelle mithilfe der gleichen Speicherlaufwerke bereitgestellt. Die Bereitstellung eines neuen Knotens zum Ersetzen des alten Knotens kann einige Minuten in Anspruch nehmen.  Für geplante Wartungsaktivitäten (z. B. Änderungen am Gastbetriebssystem, Cassandra-Upgrades und Anwendungsänderungen) führt Azure Fabric Controller parallele Upgrades der Knoten im Cluster aus.  Durch parallele Upgrades können ebenfalls mehrere Knoten gleichzeitig ausfallen. Der Cluster kann daher kurzzeitig für mehrere Partitionen ausfallen. Die Daten gehen jedoch durch die integrierte Redundanz von Azure Storage nicht verloren.  
 
-Für Systeme, die in Azure bereitgestellt werden und keine hohe Verfügbarkeit benötigen (z.B. ungefähr 99,9 % – entspricht 8,76 Stunden/Jahr, Details finden Sie unter [Hohe Verfügbarkeit](http://en.wikipedia.org/wiki/High_availability)), können Sie für die Ausführung ggf. RF=1 und Konsistenzebene=ONE verwenden.  Für Anwendungen mit Anforderungen für hohe Verfügbarkeit können RF=3 und Konsistenzebene=QUORUM den Ausfall eines der Knoten für eines der Replikate tolerieren. RF=1 in herkömmlichen Bereitstellungen (z. B. lokal) kann aufgrund möglicher Datenverluste nicht verwendet werden, die durch Probleme wie etwa Datenträgerfehler verursacht werden.   
+Für Systeme, die in Azure bereitgestellt werden und keine hohe Verfügbarkeit benötigen (z.B. ungefähr 99,9 % – entspricht 8,76 Stunden/Jahr, Details finden Sie unter [Hohe Verfügbarkeit](http://en.wikipedia.org/wiki/High_availability)), können Sie für die Ausführung ggf. RF=1 und Konsistenzebene=ONE verwenden.  Für Anwendungen mit Anforderungen für hohe Verfügbarkeit können RF=3 und Konsistenzebene=QUORUM den Ausfall eines der Knoten für eines der Replikate tolerieren. RF=1 in herkömmlichen (z.B. lokalen) Bereitstellungen kann aufgrund möglicher Datenverluste nicht verwendet werden, die durch Probleme wie etwa Datenträgerfehler verursacht werden.   
 
 ## <a name="multi-region-deployment"></a>Bereitstellung in mehreren Regionen
 Das oben beschriebene auf das Rechenzentrum ausgelegte Replikations- und Konsistenzmodell von Cassandra unterstützt die integrierte Bereitstellung in mehreren Regionen ohne externe Tools. Dies unterscheidet sich wesentlich von den herkömmlichen relationalen Datenbanken, in denen die Einrichtung der Datenbankspiegelung für Multimasterschreibvorgänge sehr komplex sein kann. Die Einrichtung von Cassandra in mehreren Regionen kann z. B. die folgenden Nutzungsszenarien unterstützen:

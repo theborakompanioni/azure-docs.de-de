@@ -12,19 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 03/27/2017
+ms.date: 07/20/2017
 ms.author: pratshar
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: 2d8d0feb5c391017e02413b009aafe4d5c012976
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 51ef04e1de3337bf3505124923b4774bfb6c07f0
 ms.contentlocale: de-de
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 07/08/2017
 
 ---
 # <a name="designing-your-network-for-disaster-recovery"></a>Entwerfen Ihres Netzwerks für die Notfallwiederherstellung
 
-Dieser Artikel richtet sich an IT-Experten, die für die Erstellung der Architektur, Implementierung und Unterstützung der Infrastruktur für Geschäftskontinuität und Notfallwiederherstellung (Business Continuity and Disaster Recovery, BCDR) verantwortlich sind und Microsoft Azure Site Recovery (ASR) einsetzen möchten, um ihre BCDR-Dienste zu unterstützen und zu verbessern. In diesem Artikel werden Praxisaspekte für die System Center Virtual Machine Manager-Serverbereitstellung, die Vor- und Nachteile von gestreckten Subnetzen im Vergleich mit dem Subnetzfailover und der Aufbau einer Notfallwiederherstellung für virtuelle Websites unter Microsoft Azure beschrieben.
+Dieser Artikel richtet sich an IT-Experten, die für die Erstellung der Architektur, Implementierung und Unterstützung der Infrastruktur für Geschäftskontinuität und Notfallwiederherstellung (Business Continuity and Disaster Recovery, BCDR) verantwortlich sind und Microsoft Azure Site Recovery (ASR) einsetzen möchten, um ihre BCDR-Dienste zu unterstützen und zu verbessern. In diesem Artikel werden die praktischen Aspekte bei der Strukturierung des Netzwerks am Standort der Notfallwiederherstellung behandelt, bei dem es sich um Azure oder einen lokalen Standort handeln kann. 
 
 ## <a name="overview"></a>Übersicht
 [Azure Site Recovery (ASR)](https://azure.microsoft.com/services/site-recovery/) ist ein Microsoft Azure-Dienst, der den Schutz und die Wiederherstellung Ihrer virtualisierten Anwendungen zum Zweck der Geschäftskontinuität und Notfallwiederherstellung (Business Continuity and Disaster Recovery, BCDR) orchestriert. Mit diesem Dokument sollen Leser durch den Prozess zum Entwerfen von Netzwerken geführt werden. Der Schwerpunkt liegt hierbei auf der Einrichtung von IP-Bereichen und Subnetzen am Standort der Notfallwiederherstellung, wenn virtuelle Computer (VMs) per Site Recovery repliziert werden.
@@ -37,12 +36,13 @@ Für die BCDR-Planung ist es von entscheidender Bedeutung, dass „Recovery Time
 
 Das Failover wird durch ASR ermöglicht. Zuerst werden die angegebenen virtuellen Computer aus dem primären Rechenzentrum in das sekundäre Rechenzentrum oder in Azure (je nach Szenario) kopiert, und anschließend werden die Replikate regelmäßig aktualisiert. Während der Infrastrukturplanung sollte der Netzwerkentwurf als potenzieller Engpass angesehen werden, der verhindern kann, dass Sie Ihre Unternehmensziele in Bezug auf die Werte für RTO und RPO erreichen.  
 
-Wenn Administratoren die Bereitstellung einer Lösung für die Notfallwiederherstellung planen, ist eine der wichtigsten Fragen, wie der virtuelle Computer nach Abschluss des Failovers erreichbar ist. ASR ermöglicht dem Administrator, das Netzwerk auszuwählen, mit dem ein virtueller Computer nach einem Failover verbunden werden soll. Wenn der primäre Standort von einem VMM-Server verwaltet wird, erfolgt dies über Netzwerkzuordnungen. Weitere Informationen finden Sie unter [Vorbereiten für die Netzwerkzuordnung](site-recovery-vmm-to-vmm.md#prepare-for-network-mapping) .
+Wenn Administratoren die Bereitstellung einer Lösung für die Notfallwiederherstellung planen, ist eine der wichtigsten Fragen, wie der virtuelle Computer nach Abschluss des Failovers erreichbar ist. ASR ermöglicht dem Administrator, das Netzwerk auszuwählen, mit dem ein virtueller Computer nach einem Failover verbunden werden soll. Wenn der primäre Standort Azure oder ein lokaler Standort ist, der von einem VMM-Server verwaltet wird, erfolgt dies über Netzwerkzuordnungen. Unter [Netzwerkzuordnung zwischen zwei Azure-Regionen](site-recovery-network-mapping-azure-to-azure.md) und [Planen der Netzwerkzuordnung für die Hyper-V-VM-Replikation mit Site Recovery](site-recovery-network-mapping.md) erfahren Sie mehr.
+
 
 Beim Entwerfen des Netzwerks für den Wiederherstellungsstandort haben Administratoren zwei Möglichkeiten:
 
-* Verwenden eines anderen IP-Adressbereichs für das Netzwerk am Wiederherstellungsstandort. Bei diesem Szenario erhält der virtuelle Computer nach dem Failover eine neue IP-Adresse, und der Administrator muss ein DNS-Update durchführen. Weitere Informationen finden Sie [hier](site-recovery-test-failover-vmm-to-vmm.md#prepare-the-infrastructure-for-test-failover).
-* Verwenden des gleichen IP-Adressbereichs für das Netzwerk am Wiederherstellungsstandort. Bei bestimmten Szenarien ziehen es Administratoren vor, die IP-Adressen beizubehalten, die sie am primären Standort verwenden, und zwar auch nach dem Failover. Bei einem normalen Szenario muss ein Administrator die Routen aktualisieren, um den neuen Standort der IP-Adressen anzugeben. Aber bei diesem Szenario, bei dem ein gestrecktes VLAN zwischen dem primären und sekundären Standort bereitgestellt wird, ist das Beibehalten der IP-Adressen für die virtuellen Computer eine attraktive Option. Das Beibehalten der gleichen IP-Adressen vereinfacht den Wiederherstellungsprozess, da alle netzwerkbezogenen Schritte nach dem Failover entfallen.
+* Verwenden eines anderen IP-Adressbereichs für das Netzwerk am Wiederherstellungsstandort. Bei diesem Szenario erhält der virtuelle Computer nach dem Failover eine neue IP-Adresse, und der Administrator muss ein DNS-Update durchführen. 
+* Verwenden des gleichen IP-Adressbereichs für das Netzwerk am Wiederherstellungsstandort. Bei bestimmten Szenarien ziehen es Administratoren vor, die IP-Adressen beizubehalten, die sie am primären Standort verwenden, und zwar auch nach dem Failover. Bei einem normalen Szenario muss ein Administrator die Routen aktualisieren, um den neuen Standort der IP-Adressen anzugeben. Aber bei diesem Szenario, bei dem ein gestrecktes Subnetz zwischen dem primären und sekundären Standort bereitgestellt wird, ist das Beibehalten der IP-Adressen für die virtuellen Computer eine attraktive Option. Das Strecken eines Subnetzes aus einem lokalen Netzwerk in ein Azure-Netzwerk oder zwischen zwei Azure-Netzwerken ist nicht möglich.  
 
 Wenn Administratoren die Bereitstellung einer Lösung für die Notfallwiederherstellung planen, ist eine der wichtigsten Fragen, wie die Anwendungen nach Abschluss des Failovers erreichbar sind. Moderne Anwendungen sind fast immer zu einem gewissen Grad von Netzwerken abhängig, sodass mit dem physischen Verschieben eines Diensts von einem Standort zum anderen fast immer besondere Netzwerkanforderungen verbunden sind. Es gibt zwei Hauptverfahren, wie dieses Problem bei Lösungen für die Notfallwiederherstellung gelöst wird. Der erste Ansatz besteht in der Verwaltung fester IP-Adressen. Trotz der Verschiebung der Dienste und der Tatsache, dass sich die Hostserver an verschiedenen physischen Standorten befinden, nehmen die Anwendungen die IP-Adresskonfiguration mit sich an den neuen Speicherort. Beim zweiten Ansatz ist eine vollständige Änderung der IP-Adresse während des Übergangs auf den wiederhergestellten Standort erforderlich. Jeder Ansatz verfügt über mehrere Implementierungsvarianten, die unten zusammengefasst sind.
 
@@ -62,51 +62,10 @@ Die Implementierung des Subnetzfailovers ist möglich, um von den oben beschrieb
 
 Wir untersuchen nun, wie ein fiktives Unternehmen mit dem Namen Contoso seine virtuellen Computer während der Ausführung eines Failovers des gesamten Subnetzes an einen Wiederherstellungsstandort replizieren kann. Zuerst sehen wir uns an, wie Contoso seine Subnetze während der Replikation von virtuellen Computern zwischen zwei lokalen Standorten verwaltet. Anschließend wird erläutert, wie ein Subnetzfailover funktioniert, wenn [Azure als Standort für die Notfallwiederherstellung verwendet wird](#failover-to-azure).
 
-#### <a name="failover-to-a-secondary-on-premises-site"></a>Failover zu einem sekundären lokalen Standort
-Wir sehen uns nun ein Szenario an, bei dem wir die IP-Adresse aller VMs beibehalten und das Failover für das gesamte Subnetz zusammen durchführen möchten. Der primäre Standort verfügt über Anwendungen, die im Subnetz 192.168.1.0/24 ausgeführt werden. Wenn das Failover erfolgt, wird für alle virtuellen Computer, die Teil dieses Subnetzes sind, der Failoverschritt zum Wiederherstellungsstandort durchgeführt, und ihre IP-Adressen werden beibehalten. Die Routen müssen entsprechend geändert werden, um die Tatsache widerzuspiegeln, dass alle virtuellen Computer, die zum Subnetz 192.168.1.0/24 gehören, jetzt an den Wiederherstellungsstandort verschoben wurden.
+#### <a name="failover-from-on-premises-to-azure"></a>Failover von einem lokalen Standort nach Azure 
+Mit Azure Site Recovery (ASR) kann Azure für virtuelle Computer als Standort für die Notfallwiederherstellung genutzt werden.  
 
-In der folgenden Abbildung müssen die Routen zwischen primärem Standort und Wiederherstellungsstandort, drittem Standort und primärem Standort und drittem Standort und Wiederherstellungsstandort entsprechend geändert werden.
-
-Die folgenden Bilder zeigen die Subnetze vor dem Failover. Subnetz 192.168.0.1/24 ist am primären Standort vor dem Failover aktiv und wird am Wiederherstellungsstandort nach dem Failover aktiviert
-
-![Vor dem Failover](./media/site-recovery-network-design/network-design2.png)
-
-Vor dem Failover
-
-Die nachstehende Abbildung zeigt die Netzwerke und Subnetze nach dem Failover.
-
-![Nach dem Failover](./media/site-recovery-network-design/network-design3.png)
-
-Nach dem Failover
-
-Wenn Ihr sekundärer Standort lokal ist und Sie einen VMM-Server für die Verwaltung verwenden, weist ASR beim Aktivieren des Schutzes für einen bestimmten virtuellen Computer Netzwerkressourcen anhand des folgenden Workflows zu:
-
-* ASR weist jeder Netzwerkschnittstelle auf dem virtuellen Computer eine IP-Adresse aus dem statischen IP-Adresspool zu, der im relevanten Netzwerk für jede System Center VMM-Instanz definiert ist.
-* Wenn der Administrator für das Netzwerk am Wiederherstellungsstandort den gleichen IP-Adresspool definiert, der für das Netzwerk am primären Standort festgelegt wurde, würde ASR beim Zuweisen der IP-Adresse zum virtuellen Replikatcomputer die gleiche IP-Adresse wie für den primären virtuellen Computer zuordnen.  Die IP-Adresse ist in VMM reserviert, aber nicht als Failover-IP-Adresse festgelegt. Die Failover-IP-Adresse wird erst unmittelbar vor dem Failover festgelegt.
-
-![IP-Adresse beibehalten](./media/site-recovery-network-design/network-design4.png)
-
-
-Die Abbildung oben zeigt die TCP/IP-Failovereinstellungen für den virtuellen Replikatcomputer (auf der Hyper-V-Konsole). Diese Einstellungen werden unmittelbar vor dem Starten des virtuellen Computers nach einem Failover aufgefüllt.
-
-Falls die gleiche IP-Adresse nicht verfügbar ist, ordnet ASR eine andere verfügbare IP-Adresse aus dem definierten IP-Adresspool zu.
-
-Nachdem der virtuelle Computer für den Schutz aktiviert wurde, können Sie das folgende Beispielskript verwenden, um die IP-Adresse zu überprüfen, die dem virtuellen Computer zugewiesen wurde. Die gleiche IP-Adresse würde als Failover-IP-Adresse festgelegt und dem virtuellen Computer zum Zeitpunkt des Failovers zugewiesen werden:
-
-        $vm = Get-SCVirtualMachine -Name <VM_NAME>
-        $na = $vm[0].VirtualNetworkAdapters>
-        $ip = Get-SCIPAddress -GrantToObjectID $na[0].id
-        $ip.address  
-
-> [!NOTE]
-> Bei diesem Szenario, bei dem virtuelle Computer DHCP verwenden, liegt die Verwaltung von IP-Adressen vollständig außerhalb der Kontrolle von ASR. Ein Administrator muss sicherstellen, dass der DHCP-Server, über den die IP-Adressen am Wiederherstellungsstandort bereitgestellt werden, den gleichen Bereich wie für den primären Standort nutzen kann.
->
->
-
-#### <a name="failover-to-azure"></a>Failover zu Azure
-Mit Azure Site Recovery (ASR) kann Microsoft Azure für virtuelle Computer als Standort für die Notfallwiederherstellung genutzt werden. In diesem Fall muss eine weitere Einschränkung berücksichtigt werden.
-
-Wir sehen uns ein Szenario an, bei dem das fiktive Unternehmen Woodgrove Bank über eine lokale Infrastruktur zum Hosten seiner Branchenanwendungen verfügt und die mobilen Anwendungen unter Azure gehostet werden. Die Verbindung zwischen den VMs der Woodgrove Bank in Azure und den lokalen Servern wird mit einem virtuellen privaten Netzwerk (Virtual Private Network, VPN) vom Typ „Standort-zu-Standort“ (S2S) sichergestellt. Dank S2S-VPN kann das virtuelle Netzwerk der Woodgrove Bank in Azure als Erweiterung des lokalen Netzwerks der Woodgrove Bank angesehen werden. Diese Kommunikation wird per S2S-VPN zwischen dem Woodgrove Bank-Edgenetzwerk und dem virtuellen Azure-Netzwerk ermöglicht. Woodgrove möchte nun ASR einsetzen, um seine Workloads, die im eigenen Rechenzentrum ausgeführt werden, zu Azure zu replizieren. Diese Option erfüllt die Anforderungen von Woodgrove, nämlich eine wirtschaftliche Option für die Notfallwiederherstellung und die Speicherung von Daten in Public Cloud-Umgebungen. Bei der Woodgrove Bank sind Anwendungen und Konfigurationen vorhanden, die von hartcodierten IP-Adressen abhängig sind. Daher besteht die Anforderung, dass IP-Adressen der Anwendungen nach einem Failover zu Azure beibehalten werden müssen.
+Wir sehen uns ein Szenario an, bei dem das fiktive Unternehmen Woodgrove Bank über eine lokale Infrastruktur zum Hosten seiner Branchenanwendungen verfügt und die mobilen Anwendungen unter Azure gehostet werden. Die Verbindung zwischen den VMs der Woodgrove Bank in Azure und den lokalen Servern wird mit einem virtuellen privaten Netzwerk (Virtual Private Network, VPN) vom Typ „Standort-zu-Standort“ (S2S) oder ExpressRoute sichergestellt. Dank S2S-VPN kann das virtuelle Netzwerk der Woodgrove Bank in Azure als Erweiterung des lokalen Netzwerks der Woodgrove Bank angesehen werden. Diese Kommunikation wird per S2S-VPN zwischen dem Woodgrove Bank-Edgenetzwerk und dem virtuellen Azure-Netzwerk ermöglicht. Woodgrove möchte nun ASR einsetzen, um seine Workloads, die in der primären Azure-Region ausgeführt werden, in eine andere Azure-Region zu replizieren. Diese Option erfüllt die Anforderungen von Woodgrove, nämlich eine wirtschaftliche Option für die Notfallwiederherstellung und die Speicherung von Daten in Public Cloud-Umgebungen. Bei der Woodgrove Bank sind Anwendungen und Konfigurationen vorhanden, die von hartcodierten IP-Adressen abhängig sind. Daher besteht die Anforderung, dass IP-Adressen der Anwendungen nach einem Failover in eine andere Region in Azure beibehalten werden müssen.
 
 Die Woodgrove Bank hat sich dafür entschieden, ihren in Azure ausgeführten Ressourcen IP-Adressen aus dem IP-Adressbereich (172.16.1.0/24, 172.16.2.0/24) zuzuweisen.
 
@@ -131,6 +90,46 @@ Nach dem Failover
 
 Wenn „Azure Network“ nicht wie in der Abbildung oben dargestellt wird, können Sie nach dem Failover eine Standort-zu-Standort-VPN-Verbindung zwischen Ihrem primären Standort und dem Wiederherstellungsnetzwerk herstellen.  
 
+
+#### <a name="failover-to-a-secondary-on-premises-site"></a>Failover zu einem sekundären lokalen Standort
+Wir sehen uns nun ein Szenario an, bei dem wir die IP-Adresse aller VMs beibehalten und das Failover für das gesamte Subnetz zusammen durchführen möchten. Der primäre Standort verfügt über Anwendungen, die im Subnetz 192.168.1.0/24 ausgeführt werden. Wenn das Failover erfolgt, wird für alle virtuellen Computer, die Teil dieses Subnetzes sind, der Failoverschritt zum Wiederherstellungsstandort durchgeführt, und ihre IP-Adressen werden beibehalten. Die Routen müssen entsprechend geändert werden, um die Tatsache widerzuspiegeln, dass alle virtuellen Computer, die zum Subnetz 192.168.1.0/24 gehören, jetzt an den Wiederherstellungsstandort verschoben wurden.
+
+In der folgenden Abbildung müssen die Routen zwischen primärem Standort und Wiederherstellungsstandort, drittem Standort und primärem Standort und drittem Standort und Wiederherstellungsstandort entsprechend geändert werden.
+
+Die folgenden Bilder zeigen die Subnetze vor dem Failover. Subnetz 192.168.0.1/24 ist am primären Standort vor dem Failover aktiv und wird am Wiederherstellungsstandort nach dem Failover aktiviert
+
+![Vor dem Failover](./media/site-recovery-network-design/network-design2.png)
+
+Vor dem Failover
+
+Die nachstehende Abbildung zeigt die Netzwerke und Subnetze nach dem Failover.
+
+![Nach dem Failover](./media/site-recovery-network-design/network-design3.png)
+
+Nach dem Failover
+
+Wenn Ihr sekundärer Standort lokal ist und Sie einen VMM-Server für die Verwaltung verwenden, weist ASR beim Aktivieren des Schutzes für einen bestimmten virtuellen Computer Netzwerkressourcen anhand des folgenden Workflows zu:
+
+* ASR weist jeder Netzwerkschnittstelle auf dem virtuellen Computer eine IP-Adresse aus dem statischen IP-Adresspool zu, der im relevanten Netzwerk für jede System Center VMM-Instanz definiert ist.
+* Wenn der Administrator für das Netzwerk am Wiederherstellungsstandort den gleichen IP-Adresspool definiert, der für das Netzwerk am primären Standort festgelegt wurde, würde ASR beim Zuweisen der IP-Adresse zum virtuellen Replikatcomputer die gleiche IP-Adresse wie für den primären virtuellen Computer zuordnen.  Die IP-Adresse ist in VMM reserviert, aber auf dem Hyper-V-Host nicht als Failover-IP-Adresse festgelegt. Die Failover-IP-Adresse auf dem Hyper-V-Host wird erst unmittelbar vor dem Failover festgelegt.
+
+
+Falls die gleiche IP-Adresse nicht verfügbar ist, ordnet ASR eine andere verfügbare IP-Adresse aus dem definierten IP-Adresspool zu.
+
+Nachdem der virtuelle Computer für den Schutz aktiviert wurde, können Sie das folgende Beispielskript verwenden, um die IP-Adresse zu überprüfen, die dem virtuellen Computer zugewiesen wurde. Die gleiche IP-Adresse würde als Failover-IP-Adresse festgelegt und dem virtuellen Computer zum Zeitpunkt des Failovers zugewiesen werden:
+
+        $vm = Get-SCVirtualMachine -Name <VM_NAME>
+        $na = $vm[0].VirtualNetworkAdapters>
+        $ip = Get-SCIPAddress -GrantToObjectID $na[0].id
+        $ip.address  
+
+> [!NOTE]
+> Bei diesem Szenario, bei dem virtuelle Computer DHCP verwenden, liegt die Verwaltung von IP-Adressen vollständig außerhalb der Kontrolle von ASR. Ein Administrator muss sicherstellen, dass der DHCP-Server, über den die IP-Adressen am Wiederherstellungsstandort bereitgestellt werden, den gleichen Bereich wie für den primären Standort nutzen kann.
+>
+>
+
+
+
 ## <a name="option-2-changing-ip-addresses"></a>Option 2: Ändern der IP-Adressen
 Dieser Ansatz scheint nach unserem Erkenntnisstand am weitesten verbreitet zu sein. Hierbei wird die IP-Adresse jedes virtuellen Computers geändert, der am Failover beteiligt ist. Ein Nachteil bei diesem Ansatz ist, dass das eingehende Netzwerk „lernen“ muss, dass sich die Anwendung, die sich unter IPx befunden hat, jetzt unter IPy befindet. Auch wenn IPx und IPy logische Namen sind, müssen DNS-Einträge normalerweise im gesamten Netzwerk geändert oder gelöscht werden, und zwischengespeicherte Einträge in Netzwerktabellen müssen aktualisiert oder gelöscht werden. Aus diesem Grund kann es je nach Einrichtung der DNS-Infrastruktur zu Ausfallzeiten kommen. Sie können diese Probleme minimieren, indem Sie für Intranetanwendungen niedrige TTL-Werte und für internetbasierte Anwendungen [Azure Traffic Manager mit ASR](http://azure.microsoft.com/blog/2015/03/03/reduce-rto-by-using-azure-traffic-manager-with-azure-site-recovery/) verwenden.
 
@@ -153,6 +152,7 @@ Nach dem Failover weist die Replikat-VM möglicherweise eine IP-Adresse auf, die
 * Durch Verwenden von Azure Traffic Manager mit ASR für internetbasierte Anwendungen.
 * Durch Verwenden des folgende Skripts in Ihrem Wiederherstellungsplan zum Aktualisieren der DNS-Server, um ein rechtzeitiges Update sicherzustellen. (Das Skript ist nicht erforderlich, wenn die dynamische DNS-Registrierung konfiguriert ist wird.)
 
+        param(
         string]$Zone,
         [string]$name,
         [string]$IP

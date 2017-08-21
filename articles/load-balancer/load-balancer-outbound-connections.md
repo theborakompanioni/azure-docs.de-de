@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 5/31/2017
 ms.author: kumud
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
-ms.openlocfilehash: bb490e7ba64f4db454e1bd7171d600ed9dd9e257
+ms.translationtype: HT
+ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
+ms.openlocfilehash: 03cb14b5710b6dd17599a3c4eab21380c76c2b40
 ms.contentlocale: de-de
-ms.lasthandoff: 06/01/2017
+ms.lasthandoff: 07/13/2017
 
 ---
 
@@ -72,7 +72,9 @@ Sie müssen sicherstellen, dass die VM Anforderungen von Integritätstests von A
 
 ## <a name="limitations"></a>Einschränkungen
 
-Die maximal verfügbare Anzahl von SNAT-Ports ist zurzeit 64.511 (65.535 - 1.024 privilegierte Ports) – allerdings kann diese Anzahl nicht garantiert werden.  Diese Anzahl kann nicht direkt auf die Verbindungen übertragen werden. Weiter oben finden Sie Angaben darüber, wann und wie SNAT-Ports zugeordnet werden und wie diese begrenzte Ressource verwaltet wird.
-
 Wenn [einem Lastenausgleich mehrere (öffentliche) IP-Adressen zugeordnet sind](load-balancer-multivip-overview.md), sind diese öffentlichen IP-Adressen Kandidaten für ausgehende Datenflüsse.
+
+Azure verwendet einen Algorithmus, um basierend auf der Größe des Pools die Anzahl der verfügbaren SNAT-Ports zu bestimmen.  Dies ist zu diesem Zeitpunkt nicht konfigurierbar.
+
+Es ist wichtig, zu beachten, dass die Anzahl der verfügbaren SNAT-Ports nicht direkt in die Anzahl der Verbindungen übersetzt wird. Weiter oben finden Sie Angaben darüber, wann und wie SNAT-Ports zugeordnet werden und wie diese begrenzte Ressource verwaltet wird.
 

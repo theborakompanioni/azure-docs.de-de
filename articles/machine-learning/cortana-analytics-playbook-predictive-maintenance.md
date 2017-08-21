@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: fboylu
-translationtype: Human Translation
-ms.sourcegitcommit: c78604783bb21f9162939637e04e60aa8131ce11
-ms.openlocfilehash: 1fc824c65e68c70ace589e788a0c470c475e66b4
-ms.lasthandoff: 01/25/2017
+ms.translationtype: HT
+ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
+ms.openlocfilehash: a1e7b95e6dcbf46d83ce3bf10a38d6a572f4497d
+ms.contentlocale: de-de
+ms.lasthandoff: 07/10/2017
 
 
 ---
@@ -361,7 +362,7 @@ Außerdem liefern Deziltabellen und Prognosegütediagramme für die binäre Klas
 Sie erhalten Deziltabellen, indem Sie die Testbeispielwerte gemäß den vorhergesagten Wahrscheinlichkeiten von Fehlern sortieren. Diese werden vom Modell berechnet, bevor der Schwellenwert festgelegt und die Entscheidung über die endgültige Bezeichnung getroffen wird. Die sortierten Beispielwerte werden dann zu Dezilen gruppiert (also die 10 % der Beispielwerte mit der höchsten Wahrscheinlichkeit und dann 20 %, 30 % usw.). Indem das Verhältnis zwischen der tatsächlichen Positivrate jedes Dezils und dessen zufälliger Baseline (also 0,1, 0,2...) berechnet wird, kann geschätzt werden, wie sich die Algorithmusleistung bei jedem Dezil ändert. Prognosegütediagramme werden verwendet, um Dezilwerte auszugeben. Hierfür werden für alle Dezile Wertpaare vom Typ „Tatsächliche Positivrate eines Dezils gegenüber der zufälligen tatsächlichen Positivrate“ ausgegeben. Normalerweise stehen bei den Ergebnissen die ersten Dezile im Vordergrund, da hiermit die größten Vorteile erzielt werden. Die ersten Dezile können auch als repräsentativ für den „risikobehafteten“ Zustand angesehen werden, wenn sie für die vorbeugende Wartung verwendet werden.
 
 ## <a name="sample-solution-architecture"></a>Beispiel für eine Lösungsarchitektur
-Beim Bereitstellen einer Lösung für die vorbeugende Wartung sind wir an einer End-to-End-Lösung interessiert, die Folgendes bietet: einen fortlaufenden Zyklus der Datenerfassung, Datenspeicherung für Modelltraining, Featuregenerierung und Vorhersage und Visualisierung der Ergebnisse mit einem Mechanismus zum Generieren von Warnungen, z. B. einem Dashboard zur Überwachung von Assets. Wir wünschen uns eine Datenpipeline, die Benutzern für die Zukunft Einblicke ermöglicht – auf kontinuierliche automatisierte Weise. Eine Beispielarchitektur für die vorbeugende Wartung für solch eine IoT-Datenpipeline ist unten in Abbildung 8 dargestellt. In der Architektur werden Echtzeit-Telemetriedaten in einem Event Hub erfasst, in dem die Daten eines Datenstroms gespeichert werden. Diese Daten werden von der Stream Analytics-Einrichtung für die Echtzeitverarbeitung von Daten erfasst, z. B. die Featuregenerierung. Die Features werden dann verwendet, um den Vorhersagemodell-Webdienst aufzurufen, und die Ergebnisse werden auf dem Dashboard angezeigt. Gleichzeitig werden erfasste Daten auch in einer Verlaufsdatenbank gespeichert und mit externen Datenquellen zusammengeführt, z. B. lokale Datenbanken zum Erstellen von Trainingsbeispielwerten für die Modellierung.
+Beim Bereitstellen einer Lösung für die vorbeugende Wartung sind wir an einer End-to-End-Lösung interessiert, die Folgendes bietet: einen fortlaufenden Zyklus der Datenerfassung, Datenspeicherung für Modelltraining, Featuregenerierung und Vorhersage und Visualisierung der Ergebnisse mit einem Mechanismus zum Generieren von Warnungen, z. B. einem Dashboard zur Überwachung von Assets. Wir wünschen uns eine Datenpipeline, die Benutzern für die Zukunft Einblicke ermöglicht – auf kontinuierliche automatisierte Weise. Eine Beispielarchitektur für die vorbeugende Wartung für solch eine IoT-Datenpipeline ist unten in Abbildung 8 dargestellt. In der Architektur werden Echtzeit-Telemetriedaten in einem Event Hub erfasst, in dem die Daten eines Datenstroms gespeichert werden. Diese Daten werden von der Stream Analytics-Einrichtung für die Echtzeitverarbeitung von Daten erfasst, z. B. die Featuregenerierung. Die Features werden dann verwendet, um den Vorhersagemodell-Webdienst aufzurufen, und die Ergebnisse werden auf dem Dashboard angezeigt. Gleichzeitig werden erfasste Daten auch in einer Verlaufsdatenbank gespeichert und mit externen Datenquellen zusammengeführt, z.B. lokale Datenbanken zum Erstellen von Trainingsbeispielwerten für die Modellierung.
 Dieselben Data Warehouses können für die Batchbewertung der Beispielwerte und die Speicherung der Ergebnisse verwendet werden, die wieder genutzt werden können, um Vorhersageberichte im Dashboard bereitzustellen.
 
 ![Abbildung 8. Beispiel für eine Lösungsarchitektur für die vorbeugende Wartung](media/cortana-analytics-playbook-predictive-maintenance/example-solution-architecture-for-predictive-maintenance.png)

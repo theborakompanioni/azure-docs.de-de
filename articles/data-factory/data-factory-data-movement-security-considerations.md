@@ -3,7 +3,7 @@ title: "Sicherheitsüberlegungen für Datenverschiebung in Azure Data Factory | 
 description: "Sie erhalten Informationen über das Schützen von Datenverschiebung in Azure Data Factory."
 services: data-factory
 documentationcenter: 
-author: abnarain
+author: nabhishek
 manager: jhubbard
 editor: monicar
 ms.service: data-factory
@@ -11,14 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/28/2017
-ms.author: jingwang
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: de9453e6764279c481e569542433d095772f304d
+ms.date: 07/27/2017
+ms.author: abnarain
+ms.translationtype: HT
+ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
+ms.openlocfilehash: 33ccb820b786b9aa28f9e10c35ef1d2c00eaf7f1
 ms.contentlocale: de-de
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 07/10/2017
 
 ---
 
@@ -142,7 +141,7 @@ Die folgenden Abbildungen veranschaulichen die Verwendung von Datenverwaltungsga
 
 ### <a name="firewall-configurations-and-whitelisting-ip-address-of-gateway"></a>Firewallkonfigurationen und Whitelist-IP-Adresse des Gateways
 
-#### <a name="firewall-requirements-for-on-premiseprivate-network"></a>Firewallanforderungen für lokales/privates Netzwerk   
+#### <a name="firewall-requirements-for-on-premisesprivate-network"></a>Firewallanforderungen für lokales/privates Netzwerk  
 In einem Unternehmen wird eine **Unternehmensfirewall** auf dem zentralen Router der Organisation ausgeführt. Außerdem wird die **Windows-Firewall** als Daemon auf dem lokalen Computer ausgeführt, auf dem das Gateway installiert ist. 
 
 Die folgende Tabelle enthält die Anforderungen für **ausgehende Ports** und die Domänenanforderungen für die **Unternehmensfirewall**.

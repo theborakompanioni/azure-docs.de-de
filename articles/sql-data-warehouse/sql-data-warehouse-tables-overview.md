@@ -13,14 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: tables
-ms.date: 10/31/2016
+ms.date: 06/29/2016
 ms.author: shigu;jrj
-ms.translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 914d85267e82ce6a2e60f3841889935046f17c87
+ms.translationtype: HT
+ms.sourcegitcommit: 19be73fd0aec3a8f03a7cd83c12cfcc060f6e5e7
+ms.openlocfilehash: c16fef2f302dbc56f257eaf2f0d2b68b6a3c1852
 ms.contentlocale: de-de
-ms.lasthandoff: 04/03/2017
-
+ms.lasthandoff: 07/13/2017
 
 ---
 # <a name="overview-of-tables-in-sql-data-warehouse"></a>Übersicht über Tabellen in SQL Data Warehouse
@@ -50,7 +49,7 @@ RENAME OBJECT Customer TO CustomerOrig;
  ```
 
 ## <a name="distributed-tables"></a>Verteilte Tabellen
-Ein neues grundlegendes Attribut, das mit verteilten Systemen wie SQL Data Warehouse eingeführt wird, ist die **Verteilungsspalte**.  Der Zweck der Verteilungsspalte lässt sich schon am Namen erkennen.  Anhand dieser Spalte wird bestimmt, wie Ihre Daten im Hintergrund verteilt bzw. aufgeteilt werden.  Wenn Sie eine Tabelle erstellen, ohne die Verteilungsspalte anzugeben, wird für die Tabelle automatisch die **Roundrobin**-Verteilung verwendet.  In einigen Szenarien können Roundrobin-Tabellen ausreichend sein, aber durch das Definieren von Verteilungsspalten kann die Datenverschiebung bei Abfragen deutlich reduziert werden, was zu einer Leistungssteigerung führt.  Weitere Informationen zum Auswählen einer Verteilungsspalte finden Sie unter [Verteilen einer Tabelle][Distribute].
+Ein neues grundlegendes Attribut, das mit verteilten Systemen wie SQL Data Warehouse eingeführt wird, ist die **Verteilungsspalte**.  Der Zweck der Verteilungsspalte lässt sich schon am Namen erkennen.  Anhand dieser Spalte wird bestimmt, wie Ihre Daten im Hintergrund verteilt bzw. aufgeteilt werden.  Wenn Sie eine Tabelle erstellen, ohne die Verteilungsspalte anzugeben, wird für die Tabelle automatisch die **Roundrobin**-Verteilung verwendet.  In einigen Szenarien können Roundrobin-Tabellen ausreichend sein, aber durch das Definieren von Verteilungsspalten kann die Datenverschiebung bei Abfragen deutlich reduziert werden, was zu einer Leistungssteigerung führt.  In Situationen mit einer kleinen Menge von Daten in einer Tabelle werden beim Erstellen der Tabelle mit dem Verteilungstyp **Replikat** Daten auf jeden Computeknoten kopiert und die Datenverschiebung zum Zeitpunkt der Ausführung der Abfrage gespeichert. Weitere Informationen zum Auswählen einer Verteilungsspalte finden Sie unter [Verteilen einer Tabelle][Distribute].
 
 ## <a name="indexing-and-partitioning-tables"></a>Indizieren und Partitionieren von Tabellen
 Wenn Sie Erfahrung mit der Verwendung von SQL Data Warehouse gesammelt haben und die Leistung optimieren möchten, ist es ratsam, sich über den Tabellenentwurf zu informieren.  Weitere Informationen finden Sie in den Artikeln [Tabellendatentypen][Data Types], [Verteilen einer Tabelle][Distribute], [Indizieren einer Tabelle][Index] und [Partitionieren einer Tabelle][Partition].
@@ -69,7 +68,6 @@ SQL Data Warehouse enthält zwar viele Tabellenfunktionen, die auch für andere 
 
 | Nicht unterstützte Funktionen |
 | --- |
-| [Identity-Eigenschaft][Identity Property] (siehe [Assigning Surrogate Key Workaround][Assigning Surrogate Key Workaround]) |
 | Primary Key, Foreign Key, Unique und Check – [Tabelleneinschränkungen][Table Constraints] |
 | [Eindeutige Indizes][Unique Indexes] |
 | [Berechnete Spalten][Computed Columns] |
@@ -202,7 +200,7 @@ FROM size
 ```
 
 ### <a name="table-space-summary"></a>Tabellenspeicherplatz – Zusammenfassung
-Diese Abfrage gibt die Zeilen und den Speicherplatz nach Tabelle zurück.  Diese Abfrage eignet sich hervorragend dazu, anzuzeigen, welche Tabellen die größten Tabellen sind und ob es sich um Roundrobin-Tabellen oder Tabellen mit Hashverteilung handelt.  Für Tabellen mit Hashverteilung wird zudem die Verteilungsspalte angezeigt.  In den meisten Fällen sollte es sich bei der größten Tabelle um eine Tabelle mit Hashverteilung mit einem gruppierten Columnstore-Index ausgeführt handeln.
+Diese Abfrage gibt die Zeilen und den Speicherplatz nach Tabelle zurück.  Diese Abfrage eignet sich hervorragend dazu anzuzeigen, welche Tabellen am größten sind und ob es sich um Roundrobintabellen, replizierte Tabellen oder Tabellen mit Hashverteilung handelt.  Für Tabellen mit Hashverteilung wird zudem die Verteilungsspalte angezeigt.  In den meisten Fällen sollte es sich bei der größten Tabelle um eine Tabelle mit Hashverteilung mit einem gruppierten Columnstore-Index ausgeführt handeln.
 
 ```sql
 SELECT 
@@ -295,8 +293,6 @@ Weitere Informationen finden Sie in den Artikeln [Tabellendatentypen][Data Types
 [CREATE TABLE]: https://msdn.microsoft.com/library/mt203953.aspx
 [RENAME]: https://msdn.microsoft.com/library/mt631611.aspx
 [DBCC PDW_SHOWSPACEUSED]: https://msdn.microsoft.com/library/mt204028.aspx
-[Identity Property]: https://msdn.microsoft.com/library/ms186775.aspx
-[Assigning Surrogate Key Workaround]: https://blogs.msdn.microsoft.com/sqlcat/2016/02/18/assigning-surrogate-key-to-dimension-tables-in-sql-dw-and-aps/
 [Table Constraints]: https://msdn.microsoft.com/library/ms188066.aspx
 [Computed Columns]: https://msdn.microsoft.com/library/ms186241.aspx
 [Sparse Columns]: https://msdn.microsoft.com/library/cc280604.aspx

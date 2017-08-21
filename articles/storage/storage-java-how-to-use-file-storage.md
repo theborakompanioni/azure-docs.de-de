@@ -1,6 +1,6 @@
 ---
-title: Verwenden des Dateispeichers mit Java | Microsoft Docs
-description: "Erfahren Sie, wie Sie den Azure-Dateispeicherdienst zum Hochladen, Herunterladen, Auflisten und Löschen von Dateien verwenden. Die Beispiele wurden in Java geschrieben."
+title: "Entwickeln für Azure File Storage mit Java | Microsoft-Dokumentation"
+description: Hier erfahren Sie, wie Sie Java-Anwendungen und -Dienste entwickeln, die Azure File Storage zum Speichern von Dateidaten verwenden.
 services: storage
 documentationcenter: java
 author: robinsh
@@ -12,32 +12,36 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
-ms.date: 12/08/2016
+ms.date: 05/27/2017
 ms.author: robinsh
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 33630644e2b3b6565d009276145ecf220802cc63
-ms.openlocfilehash: 49b35ff1b82f5384b105d99ce95773648a11f6f4
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: 16924599e49990265e07f7a58613756d93c46942
 ms.contentlocale: de-de
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 07/12/2017
 
 ---
-# <a name="how-to-use-file-storage-from-java"></a>Verwenden des Dateispeichers mit Java
+
+# <a name="develop-for-azure-file-storage-with-java"></a>Entwickeln für Azure File Storage mit Java
 [!INCLUDE [storage-selector-file-include](../../includes/storage-selector-file-include.md)]
 
 [!INCLUDE [storage-check-out-samples-java](../../includes/storage-check-out-samples-java.md)]
 
-## <a name="overview"></a>Übersicht
-In dieser Anleitung erfahren Sie, wie allgemeine Vorgänge im Microsoft Azure File Storage-Dienst ausgeführt werden. Anhand von in Java geschriebenen Beispielen lernen Sie, wie Freigaben und Verzeichnisse erstellt sowie Dateien hochgeladen, aufgelistet und gelöscht werden. Wenn Sie noch nicht mit dem Microsoft Azure-Dateispeicherdienst vertraut sind, sind die in den folgenden Abschnitten erläuterten Konzepte sehr hilfreich zum besseren Verständnis der Beispiele.
+## <a name="about-this-tutorial"></a>Informationen zu diesem Tutorial
+Dieses Tutorial veranschaulicht die grundlegende Verwendung von Java bei der Entwicklung von Anwendungen oder Diensten, die Azure File Storage zum Speichern von Dateidaten verwenden. In diesem Tutorial erstellen wir eine einfache Konsolenanwendung und zeigen Ihnen, wie Sie grundlegende Aktionen mit Java und Azure File Storage ausführen:
 
-[!INCLUDE [storage-file-concepts-include](../../includes/storage-file-concepts-include.md)]
+* Erstellen und Löschen von Azure-Dateifreigaben
+* Erstellen und Löschen von Verzeichnissen
+* Auflisten von Dateien und Verzeichnissen in einer Azure-Dateifreigabe
+* Hochladen, Herunterladen und Löschen einer Datei
 
-[!INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
+> [!Note]  
+> Da auf Azure File Storage über SMB zugegriffen werden kann, können Sie unter Verwendung der standardmäßigen Java-E/A-Klassen einfache Anwendungen mit Zugriff auf die Azure-Dateifreigabe schreiben. In diesem Artikel erfahren Sie, wie Sie Anwendungen schreiben, die das Azure Storage Java SDK verwenden, das über die [Azure File Storage-REST-API](https://docs.microsoft.com/rest/api/storageservices/fileservices/file-service-rest-api) mit Azure File Storage kommuniziert.
 
 ## <a name="create-a-java-application"></a>Erstellen einer Java-Anwendung
 Zum Erstellen der Beispiele benötigen Sie das Java Development Kit (JDK) und das [Azure Storage-SDK für Java][]. Sie sollten auch ein Azure-Speicherkonto erstellt haben.
 
-## <a name="setup-your-application-to-use-file-storage"></a>Einrichten der Anwendung zur Verwendung des Dateispeichers
+## <a name="setup-your-application-to-use-azure-file-storage"></a>Einrichten der Anwendung für das Verwenden von Azure File Storage
 Um die Azure-Speicher-APIs zu verwenden, fügen Sie die folgende Anweisung am Anfang der Java-Datei dort ein, wo der Zugriff auf den Speicherdienst erfolgen soll.
 
 ```java
@@ -47,7 +51,7 @@ import com.microsoft.azure.storage.file.*;
 ```
 
 ## <a name="setup-an-azure-storage-connection-string"></a>Einrichten einer Azure-Speicherverbindungszeichenfolge
-Zur Verwendung des Dateidiensts müssen Sie eine Verbindung mit Ihrem Azure-Speicherkonto herstellen. Im ersten Schritt muss eine Verbindungszeichenfolge konfiguriert werden, über die die Verbindung mit dem Speicherkonto hergestellt wird. Definieren Sie dazu eine statische Variable.
+Zur Verwendung von Azure File Storage müssen Sie eine Verbindung mit Ihrem Azure-Speicherkonto herstellen. Im ersten Schritt muss eine Verbindungszeichenfolge konfiguriert werden, über die die Verbindung mit dem Speicherkonto hergestellt wird. Definieren Sie dazu eine statische Variable.
 
 ```java
 // Configure the connection-string with your values
@@ -76,15 +80,15 @@ try {
 
 **CloudStorageAccount.parse** löst eine InvalidKeyException aus, daher müssen Sie sie in einem try/catch-Block platzieren.
 
-## <a name="how-to-create-a-share"></a>Erstellen einer Freigabe
-Alle Dateien und Verzeichnisse im Dateispeicher befinden sich in einem Container mit dem Namen **Share**. Das Speicherkonto kann so viele Freigaben aufweisen, wie es die Kapazität des Kontos zulässt. Für den Zugriff auf eine Freigabe und ihren Inhalt muss ein Dateispeicherclient verwendet werden.
+## <a name="create-an-azure-file-share"></a>Erstellen einer Azure-Dateifreigabe
+Alle Dateien und Verzeichnisse in Azure File Storage befinden sich in einem Container mit dem Namen **Freigabe**. Das Speicherkonto kann so viele Freigaben aufweisen, wie es die Kapazität des Kontos zulässt. Für den Zugriff auf eine Freigabe und ihren Inhalt muss ein Azure File Storage-Client verwendet werden.
 
 ```java
-// Create the file storage client.
+// Create the Azure File storage client.
 CloudFileClient fileClient = storageAccount.createCloudFileClient();
 ```
 
-Mit dem Dateispeicherclient können Sie dann einen Verweis auf die Freigabe abrufen.
+Mit dem Azure File Storage-Client können Sie dann einen Verweis auf die Freigabe abrufen.
 
 ```java
 // Get a reference to the file share
@@ -101,108 +105,7 @@ if (share.createIfNotExists()) {
 
 An diesem Punkt enthält **share** einen Verweis auf eine Freigabe mit dem Namen **sampleshare**.
 
-## <a name="how-to-upload-a-file"></a>Hochladen einer Datei
-Eine Azure-Dateispeicherfreigabe enthält mindestens ein Stammverzeichnis, in dem Dateien gespeichert werden können. In diesem Abschnitt erfahren Sie, wie Sie eine Datei vom lokalen Speicher in das Stammverzeichnis einer Freigabe hochladen.
-
-Im ersten Schritt beim Hochladen einer Datei wird ein Verweis auf das Verzeichnis abgerufen, in dem sie gespeichert werden soll. Rufen Sie dazu die **getRootDirectoryReference** -Methode des Freigabeobjekts auf.
-
-```java
-//Get a reference to the root directory for the share.
-CloudFileDirectory rootDir = share.getRootDirectoryReference();
-```
-
-Da Sie nun einen Verweis auf das Stammverzeichnis der Freigabe erstellt haben, können Sie mit dem folgenden Code eine Datei in dieses Verzeichnis hochladen.
-
-```java
-        // Define the path to a local file.
-        final String filePath = "C:\\temp\\Readme.txt";
-    
-        CloudFile cloudFile = rootDir.getFileReference("Readme.txt");
-        cloudFile.uploadFromFile(filePath);
-```
-
-## <a name="how-to-create-a-directory"></a>Erstellen eines Verzeichnisses
-Sie können zudem den Speicher organisieren, indem Sie Dateien in Unterverzeichnissen ablegen, anstatt alle Dateien im Stammverzeichnis zu speichern. Mit dem Azure-Dateispeicherdienst können Sie so viele Verzeichnisse erstellen, wie in Ihrem Konto zugelassen sind. Mit dem folgenden Code wird ein Unterverzeichnis mit dem Namen **sampledir** im Stammverzeichnis erstellt.
-
-```java
-//Get a reference to the root directory for the share.
-CloudFileDirectory rootDir = share.getRootDirectoryReference();
-
-//Get a reference to the sampledir directory
-CloudFileDirectory sampleDir = rootDir.getDirectoryReference("sampledir");
-
-if (sampleDir.createIfNotExists()) {
-    System.out.println("sampledir created");
-} else {
-    System.out.println("sampledir already exists");
-}
-```
-
-## <a name="how-to-list-files-and-directories-in-a-share"></a>Auflisten von Dateien und Verzeichnissen in einer Freigabe
-Eine Liste von Dateien und Verzeichnissen in einer Freigabe kann einfach durch Aufrufen von **listFilesAndDirectories** in einem CloudFileDirectory-Verweis abgerufen werden. Die Methode gibt eine Liste von ListFileItem-Objekten zurück, die Sie durchlaufen können. Mit dem folgenden Code werden beispielsweise Dateien und Verzeichnisse im Stammverzeichnis aufgelistet.
-
-```java
-//Get a reference to the root directory for the share.
-CloudFileDirectory rootDir = share.getRootDirectoryReference();
-
-for ( ListFileItem fileItem : rootDir.listFilesAndDirectories() ) {
-    System.out.println(fileItem.getUri());
-}
-```
-
-## <a name="how-to-download-a-file"></a>Herunterladen einer Datei
-Ein Vorgang, den Sie in Bezug auf den Dateispeicher häufiger durchführen werden, ist das Herunterladen von Dateien. Im folgenden Beispiel wird mit dem Code die Datei "SampleFile.txt" heruntergeladen und ihr Inhalt angezeigt.
-
-```java
-//Get a reference to the root directory for the share.
-CloudFileDirectory rootDir = share.getRootDirectoryReference();
-
-//Get a reference to the directory that contains the file
-CloudFileDirectory sampleDir = rootDir.getDirectoryReference("sampledir");
-
-//Get a reference to the file you want to download
-CloudFile file = sampleDir.getFileReference("SampleFile.txt");
-
-//Write the contents of the file to the console.
-System.out.println(file.downloadText());
-```
-
-## <a name="how-to-delete-a-file"></a>Löschen von Dateien
-Ein weiterer häufig durchgeführter Vorgang ist das Löschen von Dateien im Dateispeicher. Mit dem folgenden Code wird die Datei "SampleFile.txt" gelöscht, die im Verzeichnis **sampledir**gespeichert ist.
-
-```java
-// Get a reference to the root directory for the share.
-CloudFileDirectory rootDir = share.getRootDirectoryReference();
-
-// Get a reference to the directory where the file to be deleted is in
-CloudFileDirectory containerDir = rootDir.getDirectoryReference("sampledir");
-
-String filename = "SampleFile.txt"
-CloudFile file;
-
-file = containerDir.getFileReference(filename)
-if ( file.deleteIfExists() ) {
-    System.out.println(filename + " was deleted");
-}
-```
-
-## <a name="how-to-delete-a-directory"></a>Löschen von Verzeichnissen
-Das Löschen eines Verzeichnisses ist eine ziemlich einfache Angelegenheit. Dabei ist jedoch zu beachten, dass Verzeichnisse, die noch Dateien oder andere Verzeichnisse enthalten, nicht gelöscht werden können.
-
-```java
-// Get a reference to the root directory for the share.
-CloudFileDirectory rootDir = share.getRootDirectoryReference();
-
-// Get a reference to the directory you want to delete
-CloudFileDirectory containerDir = rootDir.getDirectoryReference("sampledir");
-
-// Delete the directory
-if ( containerDir.deleteIfExists() ) {
-    System.out.println("Directory deleted");
-}
-```
-
-## <a name="how-to-delete-a-share"></a>Löschen von Freigaben
+## <a name="delete-an-azure-file-share"></a>Löschen einer Azure-Dateifreigabe
 Das Löschen einer Freigabe erfolgt durch Aufrufen der **deleteIfExists** -Methode für ein CloudFileShare-Objekt. Hier ein Beispielcode dazu.
 
 ```java
@@ -225,6 +128,107 @@ try
 }
 ```
 
+## <a name="create-a-directory"></a>Erstellen eines Verzeichnisses
+Sie können zudem den Speicher organisieren, indem Sie Dateien in Unterverzeichnissen ablegen, anstatt alle Dateien im Stammverzeichnis zu speichern. Mit Azure File Storage können Sie so viele Verzeichnisse erstellen wie in Ihrem Konto zugelassen. Mit dem folgenden Code wird ein Unterverzeichnis mit dem Namen **sampledir** im Stammverzeichnis erstellt.
+
+```java
+//Get a reference to the root directory for the share.
+CloudFileDirectory rootDir = share.getRootDirectoryReference();
+
+//Get a reference to the sampledir directory
+CloudFileDirectory sampleDir = rootDir.getDirectoryReference("sampledir");
+
+if (sampleDir.createIfNotExists()) {
+    System.out.println("sampledir created");
+} else {
+    System.out.println("sampledir already exists");
+}
+```
+
+## <a name="delete-a-directory"></a>Löschen eines Verzeichnisses
+Das Löschen eines Verzeichnisses ist eine ziemlich einfache Angelegenheit. Dabei ist jedoch zu beachten, dass Verzeichnisse, die noch Dateien oder andere Verzeichnisse enthalten, nicht gelöscht werden können.
+
+```java
+// Get a reference to the root directory for the share.
+CloudFileDirectory rootDir = share.getRootDirectoryReference();
+
+// Get a reference to the directory you want to delete
+CloudFileDirectory containerDir = rootDir.getDirectoryReference("sampledir");
+
+// Delete the directory
+if ( containerDir.deleteIfExists() ) {
+    System.out.println("Directory deleted");
+}
+```
+
+## <a name="enumerate-files-and-directories-in-an-azure-file-share"></a>Auflisten von Dateien und Verzeichnissen in einer Azure-Dateifreigabe
+Eine Liste von Dateien und Verzeichnissen in einer Freigabe kann einfach durch Aufrufen von **listFilesAndDirectories** in einem CloudFileDirectory-Verweis abgerufen werden. Die Methode gibt eine Liste von ListFileItem-Objekten zurück, die Sie durchlaufen können. Mit dem folgenden Code werden beispielsweise Dateien und Verzeichnisse im Stammverzeichnis aufgelistet.
+
+```java
+//Get a reference to the root directory for the share.
+CloudFileDirectory rootDir = share.getRootDirectoryReference();
+
+for ( ListFileItem fileItem : rootDir.listFilesAndDirectories() ) {
+    System.out.println(fileItem.getUri());
+}
+```
+
+## <a name="upload-a-file"></a>Hochladen einer Datei
+Eine Azure-Dateifreigabe enthält mindestens ein Stammverzeichnis, in dem Dateien gespeichert werden können. In diesem Abschnitt erfahren Sie, wie Sie eine Datei vom lokalen Speicher in das Stammverzeichnis einer Freigabe hochladen.
+
+Im ersten Schritt beim Hochladen einer Datei wird ein Verweis auf das Verzeichnis abgerufen, in dem sie gespeichert werden soll. Rufen Sie dazu die **getRootDirectoryReference** -Methode des Freigabeobjekts auf.
+
+```java
+//Get a reference to the root directory for the share.
+CloudFileDirectory rootDir = share.getRootDirectoryReference();
+```
+
+Da Sie nun einen Verweis auf das Stammverzeichnis der Freigabe erstellt haben, können Sie mit dem folgenden Code eine Datei in dieses Verzeichnis hochladen.
+
+```java
+        // Define the path to a local file.
+        final String filePath = "C:\\temp\\Readme.txt";
+    
+        CloudFile cloudFile = rootDir.getFileReference("Readme.txt");
+        cloudFile.uploadFromFile(filePath);
+```
+
+## <a name="download-a-file"></a>Herunterladen einer Datei
+Ein Vorgang, den Sie in Bezug auf Azure File Storage häufiger durchführen werden, ist das Herunterladen von Dateien. Im folgenden Beispiel wird mit dem Code die Datei "SampleFile.txt" heruntergeladen und ihr Inhalt angezeigt.
+
+```java
+//Get a reference to the root directory for the share.
+CloudFileDirectory rootDir = share.getRootDirectoryReference();
+
+//Get a reference to the directory that contains the file
+CloudFileDirectory sampleDir = rootDir.getDirectoryReference("sampledir");
+
+//Get a reference to the file you want to download
+CloudFile file = sampleDir.getFileReference("SampleFile.txt");
+
+//Write the contents of the file to the console.
+System.out.println(file.downloadText());
+```
+
+## <a name="delete-a-file"></a>Löschen von Dateien
+Ein weiterer häufiger Azure File Storage-Vorgang ist das Löschen von Dateien. Mit dem folgenden Code wird die Datei "SampleFile.txt" gelöscht, die im Verzeichnis **sampledir**gespeichert ist.
+
+```java
+// Get a reference to the root directory for the share.
+CloudFileDirectory rootDir = share.getRootDirectoryReference();
+
+// Get a reference to the directory where the file to be deleted is in
+CloudFileDirectory containerDir = rootDir.getDirectoryReference("sampledir");
+
+String filename = "SampleFile.txt"
+CloudFile file;
+
+file = containerDir.getFileReference(filename)
+if ( file.deleteIfExists() ) {
+    System.out.println(filename + " was deleted");
+}
+```
+
 ## <a name="next-steps"></a>Nächste Schritte
 Folgen Sie diesen Links, wenn Sie mehr über andere Azure-Speicher-APIs erfahren möchten.
 
@@ -235,5 +239,3 @@ Folgen Sie diesen Links, wenn Sie mehr über andere Azure-Speicher-APIs erfahren
 * [REST-API für Azure-Speicherdienste](https://msdn.microsoft.com/library/azure/dd179355.aspx)
 * [Azure Storage-Teamblog](http://blogs.msdn.com/b/windowsazurestorage/)
 * [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](storage-use-azcopy.md)
-
-

@@ -1,5 +1,5 @@
 ---
-title: "Sind Ihre Daten für Data Science bereit? Datenbewertung – Azure | Microsoft-Dokumentation"
+title: "Sind Ihre Daten für Data Science bereit? Datenauswertung in Azure Machine Learning | Microsoft-Dokumentation"
 description: "Lernen Sie die vier Kriterien zum Prüfen der Bereitschaft Ihrer Daten für Data Science kennen. Das 2. Video von „Data Science für Einsteiger“ bietet konkrete Beispiele für eine grundlegende Bewertung von Daten."
 keywords: relevante Daten,Bewerten von Daten,Vorbereiten von Daten,Kriterien von Daten,vorbereitete Daten
 services: machine-learning
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/09/2017
-ms.author: cgronlun;garye
-translationtype: Human Translation
-ms.sourcegitcommit: b167b88d227bf239fd5d3676e48e04436f140c34
-ms.openlocfilehash: 3d2b259c29a52394ac42afba0c5572364cfeea39
-ms.lasthandoff: 02/10/2017
-
+ms.date: 07/13/2017
+ms.author: cgronlun
+ms.translationtype: HT
+ms.sourcegitcommit: 19be73fd0aec3a8f03a7cd83c12cfcc060f6e5e7
+ms.openlocfilehash: 8c27159e75482e5d3b2048298b118c55574c6b57
+ms.contentlocale: de-de
+ms.lasthandoff: 07/13/2017
 
 ---
 # <a name="is-your-data-ready-for-data-science"></a>Sind Ihre Daten für Data Science bereit?
@@ -27,6 +27,7 @@ ms.lasthandoff: 02/10/2017
 Erfahren Sie, wie Sie Ihre Daten bewerten können, um sicherzustellen, dass sie die Basiskriterien erfüllen und für Data Science bereit sind.
 
 Die Reihe bietet den größten Nutzen, wenn Sie sich alle Videos ansehen. [Zur Liste der Videos wechseln](#other-videos-in-this-series)
+<br>
 
 > [!VIDEO https://channel9.msdn.com/Shows/SupervisionNotRequired/9/player]
 >
@@ -44,7 +45,7 @@ Die Reihe bietet den größten Nutzen, wenn Sie sich alle Videos ansehen. [Zur L
 ## <a name="transcript-is-your-data-ready-for-data-science"></a>Aufzeichnung: Sind Ihre Daten für Data Science bereit?
 Willkommen bei „Sind Ihre Daten für Data Science bereit?“, dem zweiten Video der Reihe *Data Science für Einsteiger*.  
 
-Bevor Sie sich mit Data Science die gewünschten Antworten verschaffen können, müssen Sie Rohdatenmaterial hoher Qualität zum Verarbeiten zur Verfügung stellen. Es ist wie beim Backen einer Pizza: je besser die Ausgangszutaten, desto besser das Endprodukt.
+Bevor Sie sich mit Data Science die gewünschten Antworten verschaffen können, müssen Sie Rohdatenmaterial hoher Qualität zum Verarbeiten zur Verfügung stellen. Es ist wie beim Backen einer Pizza: je besser die Ausgangszutaten, desto besser das Endprodukt. 
 
 ## <a name="criteria-for-data"></a>Kriterien für Daten
 Im Fall von Data Science gibt es also verschiedene Zutaten, die wir zusammenbringen müssen.
@@ -59,7 +60,7 @@ Wir benötigen Daten mit folgenden Kriterien:
 ## <a name="is-your-data-relevant"></a>Sind Ihre Daten relevant?
 Die erste Zutat sind also Daten, die relevant sind.
 
-![Relevante Daten im Vergleich mit nicht relevanten Daten: Bewerten von Daten](./media/machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science/machine-learning-data-science-relevant-and-irrelevant-data.png)
+![Relevante Daten im Vergleich mit nicht relevanten Daten: Bewerten von Daten](./media/machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science/relevant-and-irrelevant-data.png)
 
 Sehen Sie sich die Tabelle auf der linken Seite an. Hier sehen wir den Blutalkoholspiegel, den wir bei sieben Personen vor der Tür von Bars in Boston gemessen haben, die Durchschnittsleistung des Schlägers der Baseballmannschaft Boston Red Sox im letzten Spiel und den Milchpreis im Mini-Markt um die Ecke.
 
@@ -70,7 +71,7 @@ Sehen wir uns nun die Tabelle auf der rechten Seite an. Dieses Mal haben wir die
 ## <a name="do-you-have-connected-data"></a>Sind Ihre Daten verbunden?
 Die nächste Zutat sind verbundene Daten.
 
-![Verbundene Daten im Vergleich mit nicht verbundenen Daten: Kriterien von Daten, Daten bereit](./media/machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science/machine-learning-data-science-connected-vs-disconnected-data.png)
+![Verbundene Daten im Vergleich mit nicht verbundenen Daten: Kriterien von Daten, Daten bereit](./media/machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science/connected-vs-disconnected-data.png)
 
 Hier einige relevante Daten zur Qualität von Hamburgern: Grilltemperatur, Fleischgewicht und Bewertung im lokalen Gastroführer. Beachten Sie jedoch die Lücken in der Tabelle auf der linken Seite.
 
@@ -83,7 +84,7 @@ Die Tabelle auf der rechten Seite ist dagegen vollständig und deshalb ein Beisp
 ## <a name="is-your-data-accurate"></a>Sind Ihre Daten genau?
 Die nächste benötigte Zutat ist Genauigkeit. Hier sind vier Ziele, die wir mit Pfeilen treffen möchten.
 
-![Genaue Daten im Vergleich mit ungenauen Daten: Kriterien von Daten](./media/machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science/machine-learning-data-science-inaccurate-vs-accurate-data.png)
+![Genaue Daten im Vergleich mit ungenauen Daten: Kriterien von Daten](./media/machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science/inaccurate-vs-accurate-data.png)
 
 Sehen Sie sich das Ziel rechts oben an. Wir sehen eine enge Gruppierung ganz in der Nähe der Zielscheibenmitte. Das ist natürlich genau. Seltsamerweise wird in der Data Science-Sprache unsere Treffleistung beim Ziel direkt darunter auch als genau bezeichnet.
 
@@ -94,7 +95,7 @@ Sehen Sie sich nun das Ziel links oben an. Hier sind unsere Pfeil nah nebeneinan
 ## <a name="do-you-have-enough-data-to-work-with"></a>Haben Sie genügend Daten, mit denen Sie arbeiten können?
 Die vierte Zutat ist schließlich eine ausreichend große Datenmenge.
 
-![Haben Sie genügend Daten für die Analyse? Bewertung von Daten](./media/machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science/machine-learning-data-science-barely-enough-data.png)
+![Haben Sie genügend Daten für die Analyse? Bewertung von Daten](./media/machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science/barely-enough-data.png)
 
 Stellen Sie sich jeden Datenpunkt in Ihrer Tabelle als einen Pinselstrich auf einem Gemälde vor. Wenn es nur wenige davon gibt, kann das Gemälde ziemlich unscharf sein, sodass man nicht erkennt, was es ist.
 

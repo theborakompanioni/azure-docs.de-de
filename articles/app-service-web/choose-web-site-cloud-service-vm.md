@@ -11,15 +11,15 @@ ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: overview
 ms.date: 07/07/2016
 ms.author: glenga
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
-ms.openlocfilehash: 2d6e1ba60d1f81aa1a9d3afde4ac9b621b01f04d
+ms.translationtype: HT
+ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
+ms.openlocfilehash: ec6f0b10e68e024292384e9b45891ccd905372ff
 ms.contentlocale: de-de
-ms.lasthandoff: 06/03/2017
+ms.lasthandoff: 07/10/2017
 
 ---
 # <a name="azure-app-service-virtual-machines-service-fabric-and-cloud-services-comparison"></a>Azure App Service, Azure Virtual Machines, Service Fabric und Azure Cloud Services im Vergleich
@@ -67,7 +67,7 @@ In der folgenden Tabelle werden die Funktionen von App Service, Cloud Services, 
 ## <a name="scenarios"></a>Szenarien und Empfehlungen
 Im Folgenden sind einige Anwendungsszenarien mit Empfehlungen zur Auswahl der geeigneten Azure-Webhostingoption aufgeführt.
 
-* [Ich benötige ein Web-Front-End mit Hintergrundverarbeitung und Datenbank-Back-End, um Geschäftsanwendungen mit integrierten lokalen Medienobjekten auszuführen.](#onprem)
+* [Ich benötige ein Web-Front-End mit Hintergrundverarbeitung und Datenbank-Back-End, um Geschäftsanwendungen mit integrierten lokalen Ressourcen auszuführen.](#onprem)
 * [Ich benötige eine zuverlässige Möglichkeit zum Hosten meiner Unternehmenswebsite, die eine problemlose Skalierung und einen globalen Einsatz ermöglicht.](#corp)
 * [Ich verfüge über eine IIS6-Anwendung, die unter Windows Server 2003 ausgeführt wird.](#iis6)
 * [Ich bin Inhaber eines kleinen Unternehmens und suche nach einem kostengünstigen Weg, meine Website zu hosten. Dabei sollen zukünftige Wachstumsmöglichkeiten berücksichtigt werden.](#smallbusiness)
@@ -78,7 +78,7 @@ Im Folgenden sind einige Anwendungsszenarien mit Empfehlungen zur Auswahl der ge
 * [Ich verfüge über eine Branchenanwendung, die eine Verbindung mit dem Unternehmensnetzwerk herstellen muss.](#lob)
 * [Ich möchte eine REST-API oder einen Webdienst für mobile Clients hosten.](#mobile)
 
-### <a id="onprem"></a> Ich benötige ein Web-Front-End mit Hintergrundverarbeitung und Datenbank-Back-End, um Geschäftsanwendungen mit integrierten lokalen Medienobjekten auszuführen.
+### <a id="onprem"></a> Ich benötige ein Web-Front-End mit Hintergrundverarbeitung und Datenbank-Back-End, um Geschäftsanwendungen mit integrierten lokalen Ressourcen auszuführen.
 Azure App Service stellt eine hervorragende Lösung für komplexe Geschäftsanwendungen dar. Mit Azure App Service können Sie Apps entwickeln, die automatisch auf einer Lastenausgleichsplattform skaliert, mit Active Directory geschützt und mit Ihren lokalen Ressourcen verbunden werden können. Das Verwalten dieser Apps wird dank eines erstklassigen Portals und mithilfe von APIs erleichtert. Sie erhalten außerdem mithilfe von App Insight-Tools Einblicke darin, wie Kunden die Apps verwenden. Mithilfe des Features [WebJobs][Webjobs] können Sie Hintergrundprozesse und Aufgaben als Teil der Webebene ausführen, während Hybridkonnektivität und VNET-Funktionen die erneute Verbindung mit lokalen Ressourcen ermöglichen. Azure App Service bietet eine SLA mit 99,9 % Verfügbarkeit für Web-Apps und stellt folgende Möglichkeiten bereit:
 
 * Zuverlässige Ausführung Ihrer Anwendungen auf einer Cloudplattform mit Selbstreparatur und automatischem Patching.
@@ -101,7 +101,7 @@ Azure App Service stellt eine hervorragende Lösung für das Hosten von Unterneh
 Mit Azure App Service lassen sich die mit dem Migrieren von älteren IIS6-Anwendungen verbundenen Infrastrukturkosten ganz einfach vermeiden. Microsoft hat [einfach zu verwendende Migrationstools und eine detaillierte Migrationsanleitung](https://www.movemetowebsites.net/) erstellt, mit deren Hilfe Sie die Kompatibilität überprüfen und etwaige vorzunehmende Änderungen identifizieren können. Die Integration in Visual Studio, TFS oder allgemeine CMS-Tools erleichtert die Bereitstellung von IIS6-Anwendungen direkt in der Cloud. Sobald eine Bereitstellung erfolgt ist, stellt das Azure-Portal stabile Verwaltungstools zur Verfügung. Mit diesen können Sie eine Skalierung nach unten oder oben vornehmen, um je nach Bedarf Kosten zu verwalten oder Anforderungen zu erfüllen. Mit dem Migrationstool können Sie folgende Aktionen vornehmen:
 
 * Schnelles und einfaches Migrieren der Windows Server 2003 Legacy-Webanwendungen zur Cloud.
-* Optionale lokale Konfiguration der angehängten SQL-Datenbank, um eine Hybridanwendung zu erstellen.
+* Auswählen der lokalen angefügten SQL-Datenbank für die Erstellung einer Hybridanwendung
 * Automatisches Verschieben der SQL-Datenbank zusammen mit der Legacyanwendung.
 
 ### <a id="smallbusiness"></a>Ich bin Inhaber eines kleinen Unternehmens und suche nach einem kostengünstigen Weg, meine Website zu hosten. Dabei sollen zukünftige Wachstumsmöglichkeiten berücksichtigt werden.

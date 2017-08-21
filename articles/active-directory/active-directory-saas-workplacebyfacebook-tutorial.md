@@ -84,7 +84,7 @@ In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden mit Azur
 
 Damit das einmalige Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Workplace by Facebook als Entsprechung für einen Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Workplace by Facebook muss eine Linkbeziehung eingerichtet werden.
 
-Diese Linkbeziehung wird hergestellt, indem Sie den Benutzernamen**** in Azure AD als Benutzernamen**** in Workplace by Facebook zuweisen.
+Diese Linkbeziehung wird hergestellt, indem Sie den **Benutzernamen** in Azure AD als **Benutzernamen** in Workplace by Facebook zuweisen.
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Workplace by Facebook müssen Sie die folgenden Bausteine ausführen:
 

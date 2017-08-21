@@ -84,7 +84,7 @@ In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden mit Azur
 
 Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Workday als Pendant zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Workday muss eine Linkbeziehung eingerichtet werden.
 
-Diese Linkbeziehung wird hergestellt, indem Sie den Benutzernamen**** in Azure AD als Benutzernamen ****in Workday zuweisen.
+Diese Linkbeziehung wird hergestellt, indem Sie den **Benutzernamen** in Azure AD als **Benutzernamen** in Workday zuweisen.
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Workday müssen Sie die folgenden Bausteine ausführen:
 

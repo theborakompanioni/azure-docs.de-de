@@ -2,7 +2,7 @@
 title: Erstellen von Aktionsgruppen mit Resource Manager-Vorlagen | Microsoft-Dokumentation
 description: "Aktivitätsgruppen ermöglichen Benachrichtigungen per E-Mail oder SMS oder den Anruf von Webhooks, wenn bestimmte Ereignisse eintreten."
 author: anirudhcavale
-manager: carmonm
+manager: orenr
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: ancav
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 2dd7b14f1466fa7244a2af2c030d8b794658aaad
+ms.translationtype: HT
+ms.sourcegitcommit: cddb80997d29267db6873373e0a8609d54dd1576
+ms.openlocfilehash: 88e7b2e7781b80ea360531f4c3a45256de83b594
 ms.contentlocale: de-de
-ms.lasthandoff: 04/12/2017
-
+ms.lasthandoff: 07/18/2017
 
 ---
 
@@ -28,10 +27,10 @@ In diesem Artikel erfahren Sie, wie Sie mit [Azure Resource Manager-Vorlagen](ht
 
 Die grundlegenden Schritte lauten wie folgt:
 
-1.    Erstellen Sie eine Vorlage als JSON-Datei, die die Erstellung der Aktionsgruppe beschreibt.
-2.    [Stellen Sie die Vorlage mithilfe einer beliebigen Bereitstellungsmethode bereit.](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy)
+1.  Erstellen Sie eine Vorlage als JSON-Datei, die die Erstellung der Aktionsgruppe beschreibt.
+2.  [Stellen Sie die Vorlage mithilfe einer beliebigen Bereitstellungsmethode bereit.](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy)
 
-Im Folgenden wird beschrieben, wie Sie eine Resource Manager-Vorlage zunächst für eine Aktionsgruppe allein und dann im Rahmen der Erstellung einer weiteren Ressource erstellen.
+Im Folgenden wird beschrieben, wie Sie eine Resource Manager-Vorlage erstellen. Zuerst für eine Aktionsgruppe, in der die Aktionsdefinitionen in der Vorlage hartkodiert sind, und dann für eine Vorlage, die beim Bereitstellen der Vorlage die Webhook-Konfigurationsinformation als Eingabeparameter verwendet.
 
 ## <a name="resource-manager-template-for-an-action-group"></a>Resource Manager-Vorlage für eine Aktionsgruppe
 

@@ -16,10 +16,10 @@ ms.date: 05/09/2017
 ms.author: andret
 ms.custom: aaddev
 ms.translationtype: Human Translation
-ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
-ms.openlocfilehash: 8523f46d6a352c9a6625ddeacc5abe2b4bbf977e
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6df64f4820f8409bd8897d5ac24f81bffeeef102
 ms.contentlocale: de-de
-ms.lasthandoff: 07/06/2017
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -43,8 +43,8 @@ Angezeigt werden sollten die Ergebnisse eines Aufrufs des Microsoft Graph-API-En
 
 <!--start-collapse-->
 ### <a name="more-information-about-scopes-and-delegated-permissions"></a>Weitere Informationen zu Bereichen und delegierten Berechtigungen
-Die Graph-API erfordert den Bereich `user.read` zum Lesen des Benutzerprofils. Dieser Bereich wird jeder Anwendung, die über unser Registrierungsportal registriert wird, standardmäßig hinzugefügt. Einige andere Graph-APIs sowie benutzerdefinierte APIs für Ihren Back-End-Server erfordern zusätzliche Bereiche. Beispielsweise ist für Graph `Calendars.Read` erforderlich, um Kalender von Benutzern aufzulisten. Um auf den Kalender des Benutzers im Kontext einer Anwendung zugreifen zu können, müssen Sie diese Informationen zur delegierten Anwendungsregistrierung und dann `Calendars.Read` dem Aufruf von `AcquireTokenAsync` hinzufügen. Wenn Sie die Anzahl der Bereiche weiter erhöhen, werden Benutzer ggf. zu weiteren Genehmigungen aufgefordert.
 
-Wenn eine Back-End-API keinen Bereich erfordert (nicht empfohlen), können Sie `ClientId` als Bereich im `AcquireTokenAsync`-Aufruf verwenden.
+Die Microsoft Graph-API benötigt den Bereich `user.read`, um das Benutzerprofil zu lesen. Dieser Bereich wird standardmäßig jeder Anwendung automatisch hinzugefügt, die in unserem Registrierungsportal registriert wird. Einige andere Graph-APIs sowie benutzerdefinierte APIs für Ihren Back-End-Server erfordern zusätzliche Bereiche. Für Microsoft Graph ist es z.B. erforderlich, dass der Bereich `Calendars.Read` die Kalender des Benutzers auflistet. Um auf den Kalender des Benutzers im Kontext einer Anwendung zugreifen zu können, müssen Sie `Calendars.Read` den Informationen zur delegierten Anwendungsregistrierung und dann `Calendars.Read` dem Aufruf von `acquireTokenSilentAsync` hinzufügen. Wenn Sie die Anzahl der Bereiche weiter erhöhen, werden Benutzer ggf. zu weiteren Genehmigungen aufgefordert.
+
 <!--end-collapse-->
 

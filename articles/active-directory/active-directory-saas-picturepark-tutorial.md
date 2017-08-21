@@ -227,17 +227,17 @@ Damit sich Azure AD-Benutzer bei Picturepark anmelden können, müssen sie in Pi
    
     b. Geben Sie in den Textfeldern **Kennwort** und **Kennwort bestätigen** das **Kennwort** von Britta Simon ein. 
    
-    c. Geben Sie im Textfeld **Vorname** den Vornamen ****des Benutzers ein, z.B. **Britta**. 
+    c. Geben Sie im Textfeld **Vorname** den **Vornamen** des Benutzers ein, z.B. **Britta**. 
    
-    d. Geben Sie im Textfeld **Nachname** den Nachnamen ****des Benutzers ein, z.B. **Simon**.
+    d. Geben Sie im Textfeld **Nachname** den **Nachnamen** des Benutzers ein, z.B. **Simon**.
    
-    e. Geben Sie im Textfeld **Unternehmen** den Unternehmensnamen ****des Benutzers ein. 
+    e. Geben Sie im Textfeld **Unternehmen** den **Unternehmensnamen** des Benutzers ein. 
    
-    f. Wählen Sie im Textfeld **Land** das Land **** des Benutzers aus.
+    f. Wählen Sie im Textfeld **Land** das **Land** des Benutzers aus.
   
-    g. Geben Sie im Textfeld **PLZ** die Postleitzahl ****des Orts ein.
+    g. Geben Sie im Textfeld **PLZ** die **Postleitzahl** des Orts ein.
    
-    h. Geben Sie im Textfeld **Ort** den Ortsnamen ****des Benutzers ein.
+    h. Geben Sie im Textfeld **Ort** den **Ortsnamen** des Benutzers ein.
 
     i. Wählen Sie eine **Sprache**aus.
    

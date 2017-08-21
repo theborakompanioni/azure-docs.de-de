@@ -16,8 +16,8 @@ ms.date: 05/09/2017
 ms.author: andret
 ms.custom: aaddev
 ms.translationtype: Human Translation
-ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
-ms.openlocfilehash: ad4160abfef748033eeb84a2f07a37124ce3b4b1
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0c627802ccfba230dcde2dafffee26cb1c895791
 ms.contentlocale: de-de
 
 
@@ -26,21 +26,20 @@ ms.contentlocale: de-de
 ## <a name="create-an-application-express"></a>Erstellen einer Anwendung (Express)
 Nun müssen Sie Ihre Anwendung im *Microsoft-Anwendungsregistrierungsportal* registrieren:
 1. Registrieren Sie Ihre Anwendung im [Microsoft-Anwendungsregistrierungsportal](https://apps.dev.microsoft.com/portal/register-app?appType=serverSideWebApp&appTech=aspNetWebAppOwin&step=configure).
-2.    Geben Sie einen Namen für Ihre Anwendung und Ihre E-Mail-Adresse ein.
-3.    Stellen Sie sicher, dass die Option für geführtes Setup aktiviert ist.
-4.    Befolgen Sie die Anweisungen, um Ihrer Anwendung eine Umleitungs-URL hinzufügen.
+2.  Geben Sie einen Namen für Ihre Anwendung und Ihre E-Mail-Adresse ein.
+3.  Stellen Sie sicher, dass die Option für geführtes Setup aktiviert ist.
+4.  Befolgen Sie die Anweisungen, um Ihrer Anwendung eine Umleitungs-URL hinzufügen.
 
 ## <a name="add-your-application-registration-information-to-your-solution-advanced"></a>Hinzufügen der Registrierungsinformationen Ihrer Anwendung zur Projektmappe (für Fortgeschrittene)
 Nun müssen Sie Ihre Anwendung im *Microsoft-Anwendungsregistrierungsportal* registrieren:
 1. Registrieren Sie Ihre Anwendung im [Microsoft-Anwendungsregistrierungsportal](https://apps.dev.microsoft.com/portal/register-app).
 2. Geben Sie einen Namen für Ihre Anwendung und Ihre E-Mail-Adresse ein. 
-3.    Stellen Sie sicher, dass die Option für geführtes Setup deaktiviert ist.
-4.    Klicken Sie auf `Add Platforms`, und wählen Sie dann `Web` aus.
-5.    Kehren Sie zurück zu Visual Studio, und wählen Sie im Projektmappen-Explorer das Projekt aus. Untersuchen Sie das Fenster „Eigenschaften“ (wenn es nicht angezeigt wird, drücken Sie F4).
-6.    Ändern Sie „SSL-fähig“ in `True`:<br/><br/>![Projekteigenschaften](media/active-directory-serversidewebapp-aspnetwebappowin-configure/vsprojectproperties.png)<br />
-
-7.    Kopieren Sie die SSL-URL, und fügen Sie diese URL zur Liste der Umleitungs-URLs im Registrierungsportal hinzu.
-8.    Fügen Sie im Stammordner der Datei `web.config` im Abschnitt `configuration\appSettings` Folgendes hinzu:
+3.  Stellen Sie sicher, dass die Option für geführtes Setup deaktiviert ist.
+4.  Klicken Sie auf `Add Platform`, und wählen Sie dann `Web` aus.
+5.  Kehren Sie zurück zu Visual Studio, und wählen Sie im Projektmappen-Explorer das Projekt aus. Untersuchen Sie das Fenster „Eigenschaften“ (wenn es nicht angezeigt wird, drücken Sie F4).
+6.  Ändern Sie „SSL-aktiviert“ in `True`.
+7.  Kopieren Sie die SSL-URL, und fügen Sie diese URL zur Liste der Umleitungs-URLs im Registrierungsportal hinzu:<br/><br/>![Projekteigenschaften](media/active-directory-serversidewebapp-aspnetwebappowin-configure/vsprojectproperties.png)<br />
+8.  Fügen Sie im Stammordner der Datei `web.config` im Abschnitt `configuration\appSettings` Folgendes hinzu:
 
 ```xml
 <add key="ClientId" value="Enter_the_Application_Id_here" />

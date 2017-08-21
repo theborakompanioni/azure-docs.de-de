@@ -1,6 +1,6 @@
 ---
-title: "Die fünf Data Science-Fragen – Data Science für Einsteiger – Azure | Microsoft-Dokumentation"
-description: "Kurze Einführung in Data Science mithilfe der aus fünf Kurzvideos bestehenden Reihe „Data Science für Einsteiger“, die mit „Die 5 Fragen, die Data Science beantwortet“ beginnt."
+title: "Die fünf Data Science-Fragen – Data Science für Einsteiger – Azure Machine Learning | Microsoft-Dokumentation"
+description: "Data Science für Anfänger erläutert die grundlegenden Konzepte in fünf kurzen Videos, beginnend mit den fünf Fragen, die Data Science beantwortet. Aus Azure Machine Learning."
 keywords: "Ausführen von Data Science,Data Science-Einsteiger,Data Science für Einsteiger,Data Science-Grundlagen,Data Science-Fragen,Data Science-Video,Data Science-Einführung"
 services: machine-learning
 documentationcenter: na
@@ -13,27 +13,27 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/09/2017
-ms.author: cgronlun;garye
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 50d1f8dfc7ce2d8bf4b04cff68698eafd56ce9c2
-ms.openlocfilehash: 518a7d2b5e43d8133d54ab583e4545a3ee9b3cba
+ms.date: 07/13/2017
+ms.author: cgronlun
+ms.translationtype: HT
+ms.sourcegitcommit: 19be73fd0aec3a8f03a7cd83c12cfcc060f6e5e7
+ms.openlocfilehash: e77e7e99747995a4a6ad800e391f0c063bded82f
 ms.contentlocale: de-de
-ms.lasthandoff: 05/05/2017
-
+ms.lasthandoff: 07/13/2017
 
 ---
 # <a name="data-science-for-beginners-video-1-the-5-questions-data-science-answers"></a>Data Science für Einsteiger, 1. Video: Die 5 Fragen, die Data Science beantwortet
 In den fünf kurzen Videos der Reihe *Data Science für Einsteiger* von einem Data Science-Experten erhalten Sie eine kurze Einführung in Data Science. In diesen Videos werden zwar nur die Grundlagen behandelt, sie sind aber hilfreich, wenn Sie sich selbst mit Data Science beschäftigen möchten oder mit Data Scientists arbeiten.
 
 In diesem ersten Video geht es um die Arten von Fragen, die Data Science beantworten kann. Die Reihe bietet den größten Nutzen, wenn Sie sich alle Videos ansehen. [Zur Liste der Videos wechseln](#other-videos-in-this-series)
+<br>
 
 > [!VIDEO https://channel9.msdn.com/Shows/SupervisionNotRequired/8/player]
 >
 >
 
 ## <a name="other-videos-in-this-series"></a>Andere Videos in dieser Reihe
-In *Data Science für Einsteiger* erhalten Sie eine ca. 25 Minuten dauernde Schnelleinführung in Data Science. Sehen Sie sich die anderen vier Videos an:
+In *Data Science für Einsteiger* erhalten Sie eine ca. 25 Minuten dauernde Schnelleinführung in Data Science. Sehen Sie sich alle fünf Videos an:
 
 * Video 1: Die 5 Fragen, die Data Science beantwortet
 * Video 2: [Sind Ihre Daten für Data Science bereit?](machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4:56 Min.)*
@@ -58,14 +58,14 @@ Es mag Sie vielleicht überraschen, doch *es gibt nur fünf Fragen, die Data Sci
 * Wie ist dies organisiert?
 * Was soll ich als Nächstes tun?
 
-  Jede dieser Fragen wird mithilfe einer eigenen Gruppe von Machine Learning-Methoden beantwortet, die Algorithmen genannt werden.
+Jede dieser Fragen wird mithilfe einer eigenen Gruppe von Machine Learning-Methoden beantwortet, die Algorithmen genannt werden.
 
 Es ist hilfreich, sich einen Algorithmus als Rezept und Ihre Daten als die Zutaten vorzustellen. Ein Algorithmus gibt vor, wie die Daten zu kombinieren und zu mischen sind, um eine Antwort zu erhalten. Computer fungieren dabei als ein Mixer. Sie übernehmen einen Großteil der harten Arbeit des Algorithmus für Sie, und zwar ziemlich schnell.
 
 ## <a name="question-1-is-this-a-or-b-uses-classification-algorithms"></a>Für die 1. Frage „Ist dies A oder B?“ werden Klassifizierungsalgorithmen verwendet.
 Lassen Sie uns mit der Frage beginnen: Ist dies A oder B?
 
-![Klassifizierungsalgorithmen: Ist dies A oder B?](./media/machine-learning-data-science-for-beginners-the-5-questions-data-science-answers/machine-learning-data-science-classification-algorithms.png)
+![Klassifizierungsalgorithmen: Ist dies A oder B?](./media/machine-learning-data-science-for-beginners-the-5-questions-data-science-answers/classification-algorithms.png)
 
 Diese Gruppe von Algorithmen wird als Klassifizierung mit zwei Klassen bezeichnet.
 
@@ -81,9 +81,9 @@ Diese Frage kann auch so umformuliert werden, dass es mehr als zwei Optionen gib
 ## <a name="question-2-is-this-weird-uses-anomaly-detection-algorithms"></a>Für die 2. Frage „Ist dies merkwürdig?“ werden Algorithmen zur Erkennung von Anomalien verwendet.
 Die nächste Frage, die Data Science beantworten kann, lautet: Ist dies merkwürdig? Diese Frage wird mithilfe einer Gruppe von Algorithmen zur Erkennung von Anomalien beantwortet.
 
-![Algorithmen zur Erkennung von Anomalien: Ist dies merkwürdig?](./media/machine-learning-data-science-for-beginners-the-5-questions-data-science-answers/machine-learning-data-science-anomaly-detection-algorithms.png)
+![Algorithmen zur Erkennung von Anomalien: Ist dies merkwürdig?](./media/machine-learning-data-science-for-beginners-the-5-questions-data-science-answers/anomaly-detection-algorithms.png)
 
-Wenn Sie eine Kreditkarte haben, haben Sie bereits von der Erkennung von Anomalien profitiert. Ihr Kreditkartenunternehmen analysiert Ihre Einkaufsmuster, damit es Sie bei einem möglichen Betrug warnen kann. „Merkwürdige“ Abrechnungspositionen sind z.B. ein Kauf in einem Geschäft, in dem Sie normalerweise nicht einkaufen, oder der Kauf eines ungewöhnlich teuren Artikels.
+Wenn Sie eine Kreditkarte besitzen, haben Sie bereits von der Anomalieerkennung profitiert. Ihr Kreditkartenunternehmen analysiert Ihre Einkaufsmuster, damit es Sie bei einem möglichen Betrug warnen kann. „Merkwürdige“ Abrechnungspositionen sind z.B. ein Kauf in einem Geschäft, in dem Sie normalerweise nicht einkaufen, oder der Kauf eines ungewöhnlich teuren Artikels.
 
 Diese Frage kann auf viele Weisen nützlich sein. Beispiel:
 
@@ -95,7 +95,7 @@ Die Erkennung von Anomalien dient zum Kennzeichnen unerwarteter oder ungewöhnli
 ## <a name="question-3-how-much-or-how-many-uses-regression-algorithms"></a>Für die 3. Frage „Wie viel? oder Wie viele?“ wird ein Regressionsalgorithmus verwendet.
 Machine Learning kann auch die Antwort auf die Fragen „Wie viel?“ oder „Wie viele?“ vorhersagen. Die Gruppe von Algorithmen, die diese Frage beantwortet, wird als Regression bezeichnet.
 
-![Regressionsalgorithmus: Wie viel? oder Wie viele?](./media/machine-learning-data-science-for-beginners-the-5-questions-data-science-answers/machine-learning-data-science-regression-algorithms.png)
+![Regressionsalgorithmus: Wie viel? oder Wie viele?](./media/machine-learning-data-science-for-beginners-the-5-questions-data-science-answers/regression-algorithms.png)
 
 Regressionsalgorithmen treffen numerische Vorhersagen, wie z.B.:
 
@@ -111,7 +111,7 @@ Mitunter möchten Sie die Struktur eines Datasets verstehen, d.h. wie es organis
 
 Es gibt viele Möglichkeiten, die Struktur von Daten zu ermitteln. Ein Ansatz ist das Clustering. Es dient zum Trennen von Daten in natürliche „Haufen“ zur Vereinfachung der Interpretation. Beim Clustering gibt es nicht die eine richtige Antwort.
 
-![Clusteringalgorithmen: Wie ist dies organisiert?](./media/machine-learning-data-science-for-beginners-the-5-questions-data-science-answers/machine-learning-data-science-clustering-algorithms.png)
+![Clusteringalgorithmen: Wie ist dies organisiert?](./media/machine-learning-data-science-for-beginners-the-5-questions-data-science-answers/clustering-algorithms.png)
 
 Gängige Beispiele für Clusteringfragen sind u.a.:
 
@@ -127,7 +127,7 @@ Vertiefendes Lernen wurde dadurch inspiriert, wie die Gehirne von Ratten und Men
 
 Vertiefendes Lernen ist in der Regel gut für automatisierte Systeme geeignet, die viele kleine Entscheidungen ohne menschliche Anleitung treffen müssen.
 
-![Algorithmen für vertiefendes Lernen: Was soll ich als Nächstes tun?](./media/machine-learning-data-science-for-beginners-the-5-questions-data-science-answers/machine-learning-data-science-reinforcement-learning-algorithms.png)
+![Algorithmen für vertiefendes Lernen: Was soll ich als Nächstes tun?](./media/machine-learning-data-science-for-beginners-the-5-questions-data-science-answers/reinforcement-learning-algorithms.png)
 
 Fragen, die beantwortet werden, drehen sich stets darum, welche Aktion ausgeführt werden sollte, meist von einer Maschine oder einem Roboter. Beispiele:
 

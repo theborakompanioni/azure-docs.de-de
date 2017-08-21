@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: web
 ms.date: 09/01/2016
 ms.author: cephalin
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
-ms.openlocfilehash: 2576b658eaf1df95aa9700e06559edf6066cc534
+ms.translationtype: HT
+ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
+ms.openlocfilehash: 6eadf0a521a32c5bc580908e4e4b7f4305e2bf7e
 ms.contentlocale: de-de
-ms.lasthandoff: 06/01/2017
+ms.lasthandoff: 07/10/2017
 
 
 ---
 # <a name="create-a-line-of-business-azure-app-with-azure-active-directory-authentication"></a>Erstellen einer Azure-Branchen-App mit Azure Active Directory-Authentifizierung
 In diesem Artikel erfahren Sie, wie Sie eine .NET-Branchen-App in [Azure App Service-Web-Apps](http://go.microsoft.com/fwlink/?LinkId=529714) mithilfe der Funktion [Authentifizierung/Autorisierung](../app-service/app-service-authentication-overview.md) erstellen. Außerdem lernen Sie, wie Sie die [Azure Active Directory Graph-API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog) zum Abfragen von Verzeichnisdaten in der Anwendung verwenden.
 
-Der Azure Active Directory-Mandant, den Sie verwenden, kann ein reines Azure-Verzeichnis sein. Er kann aber auch [mit Ihrem lokalen Active Directory synchronisiert sein](../active-directory/active-directory-aadconnect.md) , um das einmalige Anmelden für lokale und Remote-Worker zu ermöglichen. In diesem Artikel wird das Standardverzeichnis für Ihr Azure-Konto verwendet.
+Der Azure Active Directory-Mandant, den Sie verwenden, kann ein reines Azure-Verzeichnis sein. Er kann aber auch [mit Ihrem lokalen Active Directory synchronisiert sein](../active-directory/active-directory-aadconnect.md), um das einmalige Anmelden für lokale und Remote-Worker zu ermöglichen. In diesem Artikel wird das Standardverzeichnis für Ihr Azure-Konto verwendet.
 
 <a name="bkmk_build"></a>
 

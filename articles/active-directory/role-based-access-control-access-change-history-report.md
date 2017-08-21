@@ -5,27 +5,28 @@ services: active-directory
 documentationcenter: 
 author: kgremban
 manager: femila
-editor: 
 ms.assetid: 2bc68595-145e-4de3-8b71-3a21890d13d9
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/27/2017
+ms.date: 07/17/2017
 ms.author: kgremban
+ms.reviewer: rqureshi
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 015cc28903bfd366c653a51b0f73512bf8b578ea
-ms.openlocfilehash: 433dc731c342924d962e2f08e392556558a0168d
-ms.lasthandoff: 02/28/2017
+ms.translationtype: HT
+ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
+ms.openlocfilehash: 43ddeebfea4c914b8377d3363ba3d0c12db0adca
+ms.contentlocale: de-de
+ms.lasthandoff: 07/19/2017
 
 ---
 # <a name="create-an-access-report-for-role-based-access-control"></a>Erstellen eines Zugriffsberichts für die rollenbasierte Zugriffssteuerung
 Jedes Mal, wenn ein Benutzer in Ihren Abonnement Zugriff gewährt bzw. widerruft, werden die Änderungen in Azure-Ereignissen protokolliert. Sie können Verlaufsberichte zu Zugriffsänderungen erstellen, um alle Änderungen der letzten 90 Tage anzuzeigen.
 
 ## <a name="create-a-report-with-azure-powershell"></a>Erstellen eines Berichts mit Azure PowerShell
-Verwenden Sie zum Erstellen eines Verlaufsberichts zu Zugriffsänderungen in PowerShell den `Get-AzureRMAuthorizationChangeLog` -Befehl. Weitere Informationen zu diesem Cmdlet finden Sie im [PowerShell-Katalog](https://www.powershellgallery.com/packages/AzureRM.Storage/1.0.6/Content/ResourceManagerStartup.ps1).
+Verwenden Sie zum Erstellen eines Verlaufsberichts zu Zugriffsänderungen in PowerShell den Befehl [Get-AzureRMAuthorizationChangeLog](/powershell/module/azurerm.resources/get-azurermauthorizationchangelog).
 
 Wenn Sie diesen Befehl aufrufen, können Sie angeben, welche Eigenschaft der Zuweisungen aufgeführt werden soll, u.a.:
 
@@ -33,16 +34,15 @@ Wenn Sie diesen Befehl aufrufen, können Sie angeben, welche Eigenschaft der Zuw
 | --- | --- |
 | **Aktion** |Gibt an, ob der Zugriff erteilt oder widerrufen wurde. |
 | **Caller** |Der für die Zugriffsänderung verantwortliche Besitzer |
-| **Date** |Das Datum und die Uhrzeit, an dem bzw. zu der der Zugriff geändert wurde |
-| **DirectoryName** |Das Azure Active Directory-Verzeichnis |
+| **PrincipalId** | Der eindeutige Bezeichner des Benutzers, der Gruppe oder der Anwendung, dem bzw. der die Rolle zugewiesen wurde |
 | **PrincipalName** |Der Name des Benutzers, der Gruppe oder der Anwendung |
 | **PrincipalType** |Gibt an, ob die Zuordnung für einen Benutzer, eine Gruppe oder eine Anwendung erfolgt ist. |
-| **RoleId** |Die GUID der Rolle, die erteilt oder widerrufen wurde |
+| **RoleDefinitionId** |Die GUID der Rolle, die erteilt oder widerrufen wurde |
 | **RoleName** |Die Rolle, die erteilt oder widerrufen wurde |
+| **Umfang** | Der eindeutige Bezeichner des Abonnements, der Ressourcengruppe oder der Ressource, für das bzw. die die Zuordnung gilt | 
 | **ScopeName** |Der Name des Abonnements, der Ressourcengruppe oder der Ressource |
 | **ScopeType** |Gibt an, ob die Zuweisung im Abonnement-, Ressourcengruppen- oder Ressourcenbereich erfolgt ist. |
-| **SubscriptionId** |Die GUID des Azure-Abonnements |
-| **SubscriptionName** |Der Name des Azure-Abonnements |
+| **Timestamp** |Das Datum und die Uhrzeit, an dem bzw. zu der der Zugriff geändert wurde |
 
 Mit dem folgenden Beispielbefehl werden alle Zugriffsänderungen im Abonnement für die letzten sieben Tage aufgeführt:
 

@@ -12,12 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/25/2016
+ms.date: 06/30/2017
 ms.author: harikm
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 012bfc7d8431e2edb2b1056fb465421fad58193a
-ms.lasthandoff: 11/17/2016
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c4b19cc76ca11f606ca8af6b0f3277b5aa46ac5a
+ms.contentlocale: de-de
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -28,7 +29,7 @@ Wir haben die MyDriving-Lösung als Starthilfe für die Erstellung Ihres eigenen
 
 Falls Sie die App noch nicht ausprobiert haben, können Sie sich den [Leitfaden zu den ersten Schritten](iot-solution-get-started.md)ansehen.
 
-Der [MyDriving-Referenzleitfaden](http://aka.ms/mydrivingdocs)enthält ausführliche Informationen zur Architektur. Zusammenfassung: Wir haben mehrere Komponenten eingerichtet, die Sie beim Einrichten eines ähnlichen Projekts auch erstellen würden:
+Der [MyDriving-Referenzleitfaden](http://aka.ms/mydrivingdocs)enthält ausführliche Informationen zur Architektur. Zusammenfassung: Wir haben mehrere Komponenten eingerichtet, um ein ähnliches Projekt zu erstellen:
 
 * Eine **Client-App** wird auf Android-, iOS- und Windows 10-Smartphones ausgeführt. Wir verwenden die Xamarin-Plattform, um einen Großteil des Codes freizugeben, der bei GitHub unter `src/MobileApp`gespeichert ist. Mit der App werden eigentlich zwei separate Funktionen erfüllt:
   * Sie leitet Telemetriedaten vom Gerät für die On-Board-Diagnose (OBD) und vom eigenen Ortsdienst an das Cloud-Back-End des Systems weiter.
@@ -42,7 +43,12 @@ Der [MyDriving-Referenzleitfaden](http://aka.ms/mydrivingdocs)enthält ausführl
 * **HockeyApp** wird genutzt, um Versionen des Gerätecodes zu verteilen. Außerdem werden damit Absturz- und Nutzungsberichte und Benutzerfeedback gesammelt.
 * **Visual Studio Application Insights** wird der mobile Webdienst überwacht.
 
-Wir sehen uns nun an, wie diese Komponenten eingerichtet werden. Beachten Sie, dass viele Schritte optional sind.
+Wir sehen uns nun an, wie wir diese Komponenten eingerichtet haben. 
+
+> [!NOTE] 
+> Viele der folgenden Schritte sind optional.
+>
+>
 
 ## <a name="sign-up-for-accounts"></a>Anmelden für Konten
 * [Visual Studio Dev Essentials](https://www.visualstudio.com/products/visual-studio-dev-essentials-vs.aspx). Mit diesem kostenlosen Programm ist der einfache Zugriff auf viele Entwicklertools und Dienste möglich, z.B. Visual Studio, Visual Studio Team Services und Azure. Sie erhalten für Azure zwölf Monate lang eine Gutschrift von 25 USD pro Monat Außerdem sind darin Abonnements für Pluralsight-Training und Xamarin University enthalten. Sie können sich auch separat für Free-Tarife von [Azure](https://azure.com) und [Visual Studio Team Services](https://www.visualstudio.com/products/visual-studio-team-services-vs.aspx) registrieren, aber dies ist dann nicht mit dem Erhalt einer Azure-Gutschrift verbunden.
@@ -70,12 +76,12 @@ Xamarin, Git, Emulatoren und andere nützliche Komponenten sind in Visual Studio
 
 Installation:
 
-* [Visual Studio 2015 mit Xamarin](https://www.visualstudio.com/products/visual-studio-community-vs) (beliebige Edition – Community Edition ist kostenlos)
+* [Visual Studio mit Xamarin](https://www.visualstudio.com/products/visual-studio-community-vs) (beliebige Edition – Community Edition ist kostenlos).
 * [SQLite for Universal Windows Platform](https://visualstudiogallery.msdn.microsoft.com/4913e7d5-96c9-4dde-a1a1-69820d615936)(SQLite für universelle Windows-Plattform). Erforderlich, um den Windows 10 Mobile-Code zu erstellen.
-* [Azure SDK für Visual Studio 2015](https://go.microsoft.com/fwlink/?linkid=518003&clcid=0x409). Dies ist das SDK zum Ausführen von Apps in Azure, und Sie erhalten Befehlszeilentools für die Verwaltung von Azure.
+* [Azure SDK für Visual Studio](https://www.visualstudio.com/vs/azure-tools/). Dies ist das SDK zum Ausführen von Apps in Azure, und Sie erhalten Befehlszeilentools für die Verwaltung von Azure.
 * [Azure Service Fabric SDK](http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric). Wird zum Erstellen der [Microservice](../service-fabric/service-fabric-get-started.md) erweiterung benötigt.
 
-Stellen Sie außerdem sicher, dass Sie über die richtigen Visual Studio-Erweiterungen verfügen. Überprüfen Sie, ob unter **Extras** die Option **Android, iOS, Xamarin…** angezeigt wird. Falls nicht, öffnen Sie die Systemsteuerung, und wählen Sie **Programme und Funktionen** > **Microsoft** > **Visual Studio 2015** > **Ändern** aus. Wählen Sie unter **Plattformübergreifende Entwicklung** die Option **C\#/.NET (Xamarin)** aus. Überprüfen Sie an dieser Stelle auch gleich, ob **GitHub für Windows** installiert ist.
+Stellen Sie sicher, dass Sie über die richtigen Visual Studio-Erweiterungen verfügen. Überprüfen Sie, ob unter **Extras** die Option **Android, iOS, Xamarin…** angezeigt wird. Wenn dies nicht der Fall ist, öffnen Sie Visual Studio, suchen Sie nach Xamarin, und befolgen Sie die Anweisungen zur Installation. Überprüfen Sie auch, ob **Git für Windows** installiert ist. Wenn dies nicht der Fall ist, öffnen Sie Visual Studio, suchen Sie danach, und befolgen Sie die Anweisungen zur Installation. 
 
 ### <a name="mac-development-machine"></a>Macintosh-Entwicklungscomputer
 Ein Mac-Computer (Yosemite oder höher) ist erforderlich, wenn Sie für iOS entwickeln möchten. Wir verwenden zwar Visual Studio mit Xamarin unter Windows, um den gesamten Code zu entwickeln und zu verwalten, aber für Xamarin wird ein auf einem Mac installierter Agent genutzt, um den iOS-Code zu erstellen und zu signieren.
@@ -127,7 +133,7 @@ Erstellen Sie die Projektmappe neu.
 
 Falls Sie Probleme bei der Erstellung haben, können Sie versuchen, die unten angegebenen Lösungen für diese ermittelten Fehler zu verwenden:
 
-* *Das VINLookupApplication-Projekt kann nicht geladen werden*: Stellen Sie sicher, dass Sie das [Azure SDK für Visual Studio 2015](https://go.microsoft.com/fwlink/?linkid=518003&clcid=0x409)installiert haben.
+* *Das VINLookupApplication-Projekt kann nicht geladen werden*: Stellen Sie sicher, dass Sie das [Azure SDK für Visual Studio](https://www.visualstudio.com/vs/azure-tools/) installiert haben.
 * *Das Service Fabric-Projekt kann nicht erstellt werden*: Erstellen Sie zuerst die Schnittstellenprojekte, und stellen Sie sicher, dass Sie das Service Fabric SDK installiert haben.
 * *Android-App wird nicht erstellt*:
   
@@ -362,19 +368,19 @@ Wir treffen folgende Annahmen:
 | --- | --- | --- |
 | [Visual Studio 2015 Community](https://www.visualstudio.com/products/visual-studio-community-vs) mit [Xamarin](https://visualstudiogallery.msdn.microsoft.com/dcd5b7bd-48f0-4245-80b6-002d22ea6eee) <br/>Plattformübergreifende Entwicklungsumgebung |Visual Studio Community: ([Visual Studio Professional](https://www.visualstudio.com/vs-2015-product-editions) ist erforderlich für [Xamarin.Forms](https://xamarin.com/forms), um plattformübergreifend über eine zentrale Codebasis entwerfen zu können.) |0 USD |
 | [Azure IoT Hub](https://azure.microsoft.com/pricing/details/iot-hub/) <br/>Bidirektionale Datenverbindung mit Geräten |8.000 Nachrichten + 0,5 KB/Nachricht kostenlos |0 USD |
-| [Stream Analytics](https://azure.microsoft.com/pricing/details/stream-analytics/)  <br/>    Verarbeitung eines hohen Datenstromvolumens |0,031 USD pro Streamingeinheit pro Stunde bei Aktivierung. Sie wählen die gewünschte Anzahl von Streamingeinheiten aus, zentrales Hochskalieren möglich. |23 USD |
-| [Machine Learning](https://azure.microsoft.com/documentation/services/machine-learning/)<br/>  Adaptive Antworten |10 USD pro Arbeitsplatz und Monat <br/>                                                                                                                                                                                 + 3 Stunden Experiment \* 1 USD pro Experimentierstunde <br/>                                                                                                                                                           + 3,5 Stunden API-CPU \* 2 USD pro Produktions-CPU-Stunde <br/>                                                                                                                                                          Bei der API-CPU-Zeit werden 5 Min. erneutes Trainieren pro Tag angenommen. Dieser Wert steigt bei mehr Eingabedaten an.                   <br/>                                                                                                                                                                     + 2 Min. pro Tag Bewertung zur Verarbeitung von 400 Fahrten pro Tag |20 USD |
-| [App Service](https://azure.microsoft.com/pricing/details/app-service/)  <br/>  Host für mobiles Back-End |Tarif B1 – Web-Apps für Produktion |56 USD |
-| [Visual Studio Team Services ](https://azure.microsoft.com/pricing/details/visual-studio-team-services/)  <br/>  Buildvorgang, Komponententest und Releaseverwaltung, Aufgabenverwaltung |Private Agents, fünf Benutzer |0 USD |
+| [Stream Analytics](https://azure.microsoft.com/pricing/details/stream-analytics/)  <br/>   Verarbeitung eines hohen Datenstromvolumens |0,031 USD pro Streamingeinheit pro Stunde bei Aktivierung. Sie wählen die gewünschte Anzahl von Streamingeinheiten aus, zentrales Hochskalieren möglich. |23 USD |
+| [Machine Learning](https://azure.microsoft.com/documentation/services/machine-learning/)<br/> Adaptive Antworten |10 USD pro Arbeitsplatz und Monat <br/>                                                                                                                                                                                 + 3 Stunden Experiment \* 1 USD pro Experimentierstunde <br/>                                                                                                                                                           + 3,5 Stunden API-CPU \* 2 USD pro Produktions-CPU-Stunde <br/>                                                                                                                                                          Bei der API-CPU-Zeit werden 5 Min. erneutes Trainieren pro Tag angenommen. Dieser Wert steigt bei mehr Eingabedaten an.                   <br/>                                                                                                                                                                     + 2 Min. pro Tag Bewertung zur Verarbeitung von 400 Fahrten pro Tag |20 USD |
+| [App Service](https://azure.microsoft.com/pricing/details/app-service/)  <br/> Host für mobiles Back-End |Tarif B1 – Web-Apps für Produktion |56 USD |
+| [Visual Studio Team Services ](https://azure.microsoft.com/pricing/details/visual-studio-team-services/)  <br/> Buildvorgang, Komponententest und Releaseverwaltung, Aufgabenverwaltung |Private Agents, fünf Benutzer |0 USD |
 | [Application Insights](https://azure.microsoft.com/pricing/details/application-insights/) <br/>Überwachung der Leistung und Nutzung von Webdiensten und Standorten |Free-Tarif |0 USD |
-| [HockeyApp](http://hockeyapp.net/pricing/) <br/>  Verteilung von Beta-Apps sowie Erfassung von Feedback-, Nutzungs- und Absturzdaten |Zwei kostenlose Apps für neue Benutzer.<br/>  Danach 30 USD/Monat. |0 USD |
-| [Xamarin](https://store.xamarin.com/)<br/>  Codeerstellung auf einer einheitlichen Plattform für mehrere Geräte |Kostenlose Testversion. <br/>Danach 25 USD/Monat. |0 USD |
+| [HockeyApp](http://hockeyapp.net/pricing/) <br/> Verteilung von Beta-Apps sowie Erfassung von Feedback-, Nutzungs- und Absturzdaten |Zwei kostenlose Apps für neue Benutzer.<br/> Danach 30 USD/Monat. |0 USD |
+| [Xamarin](https://store.xamarin.com/)<br/> Codeerstellung auf einer einheitlichen Plattform für mehrere Geräte |Kostenlose Testversion. <br/>Danach 25 USD/Monat. |0 USD |
 | [SQL-Datenbank](https://azure.microsoft.com/pricing/details/sql-database/) für Azure App Service |Basic-Tarif, Modell mit Einzeldatenbank |5 USD |
 | [Service Fabric](https://azure.microsoft.com/pricing/details/service-fabric/) (optional) |Ausführung eines lokalen Clusters |0 USD |
-| [Power BI](https://powerbi.microsoft.com/pricing/)<br/>  Vielseitige Anzeigemöglichkeiten und Untersuchung von Datenstrom- und statischen Daten |Free-Tarif: 1 GB, 10.000 Zeilen pro Stunde, tägliche Aktualisierung <br/> 10 USD/Benutzer/Monat für [höhere Limits](https://powerbi.microsoft.com/documentation/powerbi-power-bi-pro-content-what-is-it/), mehr Verbindungsoptionen, Zusammenarbeit |0 USD |
+| [Power BI](https://powerbi.microsoft.com/pricing/)<br/> Vielseitige Anzeigemöglichkeiten und Untersuchung von Datenstrom- und statischen Daten |Free-Tarif: 1 GB, 10.000 Zeilen pro Stunde, tägliche Aktualisierung <br/> 10 USD/Benutzer/Monat für [höhere Limits](https://powerbi.microsoft.com/documentation/powerbi-power-bi-pro-content-what-is-it/), mehr Verbindungsoptionen, Zusammenarbeit |0 USD |
 | [Speicher](https://azure.microsoft.com/pricing/details/storage/) |L (lokal redundant) &lt; 100 G 0,024 USD/GB |3 USD |
 | [Data Factory](https://azure.microsoft.com/pricing/details/data-factory/) |0,60 USD pro Aktivität \* (8–5 FOC) |2 USD |
-| [HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/) <br/>   Bedarfsgesteuerter Cluster für tägliches erneutes Trainieren |Drei A3-Knoten zu 0,32 USD/h für 1 Stunde täglich * 31 Tage |30 USD |
+| [HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/) <br/>  Bedarfsgesteuerter Cluster für tägliches erneutes Trainieren |Drei A3-Knoten zu 0,32 USD/h für 1 Stunde täglich * 31 Tage |30 USD |
 | [Event Hubs](https://azure.microsoft.com/pricing/details/event-hubs/) |Basic mit 11 USD/Monat Durchsatzeinheit + 0,028 USD Eingang |11 USD |
 | OBD-Dongle | |12 USD |
 | **Gesamt** | |**157 USD** |

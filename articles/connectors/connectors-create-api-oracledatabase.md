@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/29/2017
 ms.author: mandia; ladocs
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 014b726c2e960029cf5896e07063e807e9ae1915
+ms.translationtype: HT
+ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
+ms.openlocfilehash: cc64441617eb5e7d5e70c1cf5c491a672428bc51
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 07/10/2017
 
 
 ---
@@ -54,7 +54,7 @@ In diesem Thema wird veranschaulicht, wie Sie den Oracle-Datenbankconnector in e
 ## <a name="add-the-connector"></a>Hinzufügen des Connectors
 
 > [!IMPORTANT]
-> Dieser Connector verfügt über keine Trigger. Es weist lediglich Aktionen auf. Fügen Sie daher bei der Erstellung Ihrer Logik-App einen anderen Trigger hinzu, um Ihre Logik-App zu starten, z. B. **Zeitplan - Wiederholung** oder **Anforderung/Antwort - Antwort**. 
+> Dieser Connector verfügt über keine Trigger. Es weist lediglich Aktionen auf. Fügen Sie daher bei der Erstellung Ihrer Logik-App einen anderen Trigger hinzu, um Ihre Logik-App zu starten, z.B. **Zeitplan - Wiederholung** oder **Anforderung/Antwort - Antwort**. 
 
 1. Erstellen Sie im [Azure-Portal](https://portal.azure.com) eine leere Logik-App.
 
@@ -69,9 +69,9 @@ In diesem Thema wird veranschaulicht, wie Sie den Oracle-Datenbankconnector in e
     ![](./media/connectors-create-api-oracledatabase/oracledb-actions.png)
 
     > [!TIP]
-    > Dies ist auch die schnellste Methode, um die Trigger und Aktionen anzuzeigen, die für Connectors verfügbar sind. Geben Sie einen Teil des Connectornamens ein, z. B. `oracle`. Der Designer führt alle Trigger und Aktionen auf. 
+    > Dies ist auch die schnellste Methode, um die Trigger und Aktionen anzuzeigen, die für Connectors verfügbar sind. Geben Sie einen Teil des Connectornamens ein, z.B. `oracle`. Der Designer führt alle Trigger und Aktionen auf. 
 
-5. Wählen Sie eine der Aktionen aus, z. B. **Oracle-Datenbank - Zeile abrufen**. Wählen Sie **Über lokales Datengateway verbinden**. Geben Sie den Oracle-Servernamen, die Authentifizierungsmethode, den Benutzernamen und das Kennwort ein, und wählen Sie das Gateway aus:
+5. Wählen Sie eine der Aktionen aus, z.B. **Oracle-Datenbank - Zeile abrufen**. Wählen Sie **Verbinden über lokales Datengateway**. Geben Sie den Oracle-Servernamen, die Authentifizierungsmethode, den Benutzernamen und das Kennwort ein, und wählen Sie das Gateway aus:
 
     ![](./media/connectors-create-api-oracledatabase/create-oracle-connection.png)
 
@@ -81,7 +81,7 @@ In diesem Thema wird veranschaulicht, wie Sie den Oracle-Datenbankconnector in e
 
     ![](./media/connectors-create-api-oracledatabase/table-rowid.png)
 
-7. Beim nächsten Schritt können Sie einen der anderen Connectors verwenden, um Ihren Workflow zu erstellen. Wenn Sie den Abruf von Daten von Oracle prüfen möchten, senden Sie durch einen der Connectors zum Senden von E-Mails (z. B. Office 365 oder Gmail) eine E-Mail mit den Oracle-Daten an sich selbst. Erstellen Sie mithilfe der dynamischen Token von der Oracle-Tabelle `Subject` und `Body` Ihrer E-Mail:
+7. Beim nächsten Schritt können Sie einen der anderen Connectors verwenden, um Ihren Workflow zu erstellen. Wenn Sie den Abruf von Daten von Oracle prüfen möchten, senden Sie durch einen der Connectors zum Senden von E-Mails (z.B. Office 365 oder Gmail) eine E-Mail mit den Oracle-Daten an sich selbst. Erstellen Sie mithilfe der dynamischen Token von der Oracle-Tabelle `Subject` und `Body` Ihrer E-Mail:
 
     ![](./media/connectors-create-api-oracledatabase/oracle-send-email.png)
 
@@ -124,8 +124,9 @@ In diesem Thema wird veranschaulicht, wie Sie den Oracle-Datenbankconnector in e
 * Tabellen mit zusammengesetzten Schlüsseln
 * Geschachtelte Objekttypen in Tabellen
  
-## <a name="view-the-swagger"></a>Anzeigen von Swagger
-Weitere Informationen finden Sie unter [Details zu Swagger](/connectors/oracle/). 
+## <a name="connector-specific-details"></a>Connectorspezifische Details
+
+Zeigen Sie die in Swagger definierten Trigger und Aktionen sowie mögliche Beschränkungen in den [Connectordetails](/connectors/oracle/) an. 
 
 ## <a name="get-some-help"></a>Anfordern von Hilfe
 

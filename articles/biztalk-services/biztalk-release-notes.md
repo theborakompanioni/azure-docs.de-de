@@ -14,13 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2016
 ms.author: deonhe
-translationtype: Human Translation
-ms.sourcegitcommit: 9cf1faabe3ea12af0ee5fd8a825975e30947b03a
-ms.openlocfilehash: 84ad965ed6ef1711fda983220cf004fdd48d290d
+ms.translationtype: HT
+ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
+ms.openlocfilehash: 18ed891a9bba2b4011d3492722a2366d96fb3c01
+ms.contentlocale: de-de
+ms.lasthandoff: 07/10/2017
 
 
 ---
 # <a name="release-notes-for-azure-biztalk-services"></a>Versionshinweise für Azure BizTalk Services
+
+> [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
+
 Die Versionshinweise für Microsoft Azure BizTalk Services enthalten die bekannten Probleme dieser Version.
 
 ## <a name="whats-new-in-the-november-update-of-biztalk-services"></a>Neuerungen im November-Update von BizTalk Services
@@ -30,7 +35,7 @@ Die Versionshinweise für Microsoft Azure BizTalk Services enthalten die bekannt
 ### <a name="october-update"></a>Update vom Oktober
 * Unterstützung von Organisationskonten:  
   * **Szenario**: Sie haben eine BizTalk Service-Bereitstellung mit einem Microsoft-Konto registriert (z.B. user@live.com). In diesem Szenario können nur Microsoft-Kontobenutzer den BizTalk Service im BizTalk Services-Portal verwalten. Ein Organisationskonto kann nicht verwendet werden.  
-  * **Szenario**: Sie haben eine BizTalk Service-Bereitstellung mithilfe eines Organisationskontos in Azure Active Directory registriert (z.B. user@fabrikam.com oder user@contoso.com). In diesem Szenario können nur Azure Active Directory-Benutzer innerhalb derselben Organisation den BizTalk Service im BizTalk Services-Portal verwalten. Ein Microsoft-Konto kann nicht verwendet werden.  
+  * **Szenario**: Sie haben eine BizTalk Service-Bereitstellung, mithilfe eines Organisationskontos in Azure Active Directory registriert (z.B. user@fabrikam.com oder user@contoso.com). In diesem Szenario können nur Azure Active Directory-Benutzer innerhalb derselben Organisation den BizTalk Service im BizTalk Services-Portal verwalten. Ein Microsoft-Konto kann nicht verwendet werden.  
 * Wenn Sie einen BizTalk Service im klassischen Azure-Portal erstellen, werden Sie automatisch beim BizTalk Services-Portal registriert.
   * **Szenario**: Sie melden sich beim klassischen Azure-Portal an, erstellen einen BizTalk Service und wählen dann zum ersten Mal **Verwalten** aus. Beim Öffnen des BizTalk Services-Portals wird der BizTalk Service automatisch registriert und steht für Ihre Bereitstellungen zur Verfügung.  
     Weitere Informationen finden Sie unter [Registrieren und Aktualisieren einer BizTalk Service-Bereitstellung im BizTalk Services-Portal](https://msdn.microsoft.com/library/azure/hh689837.aspx).  
@@ -134,7 +139,7 @@ Kopieren Sie bei Verwendung benutzerdefinierter Datentypen die DLL-Dateien in da
 > 
 
 ### <a name="restarting-the-biztalk-adapter-service-web-site"></a>Neustarten der BizTalk Adapter Service-Website
-Bei der Installation der **BizTalk Adapter Service-Laufzeit*** wird in ISS die Website **BizTalk Adapter Service** mit der Anwendung **BAService** erstellt. Die Anwendung **BAService** verwendet intern eine Relaybindung, um die Reichweite des lokalen Dienstendpunkts auf die Cloud auszudehnen. Für einen lokal gehosteten Dienst wird der entsprechende Relayendpunkt nur beim Service Bus registriert, wenn der lokale Dienst gestartet wird.  
+Bei der Installation der **BizTalk Adapter Service-Runtime*** wird in IIS die Website **BizTalk Adapter Service** mit der Anwendung **BAService** erstellt. Die Anwendung **BAService** verwendet intern eine Relaybindung, um die Reichweite des lokalen Dienstendpunkts auf die Cloud auszudehnen. Für einen lokal gehosteten Dienst wird der entsprechende Relayendpunkt nur beim Service Bus registriert, wenn der lokale Dienst gestartet wird.  
 
 Beim Beenden und Starten einer Anwendung wird die Konfiguration für das automatische Starten einer Anwendung nicht berücksichtigt. Wenn **BAService** beendet wird, müssen Sie also immer die Website **BizTalk Adapter Service** (BizTalk-Adapterdienst) neu starten. Daher sollten Sie die Anwendung **BAService** nicht starten oder beenden.
 
@@ -218,10 +223,5 @@ In diesem Dokument werden die Begriffe „Pipelines“ und „Bridges“ synonym
 
 ### <a name="concepts"></a>Konzepte
 [BizTalk Services](https://msdn.microsoft.com/library/azure/hh689864.aspx)   
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

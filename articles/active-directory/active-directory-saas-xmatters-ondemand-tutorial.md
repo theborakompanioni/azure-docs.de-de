@@ -160,7 +160,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
    
     b. Fügen Sie den Wert der **SAML-Entitäts-ID**, den Sie aus dem Azure-Portal kopiert haben, in das Textfeld **Identitätsanbieter-ID** ein.
    
-    c. Fügen Sie den Wert der URL für den SAML-SSO-Dienst****, den Sie aus dem Azure-Portal kopiert haben, in das Textfeld **Single Sign On URL** (URL für einmaliges Anmelden) ein.
+    c. Fügen Sie den Wert der URL für den **SAML-SSO-Dienst** , den Sie aus dem Azure-Portal kopiert haben, in das Textfeld **Single Sign On URL** (URL für einmaliges Anmelden) ein.
    
     d. Fügen Sie die **Abmelde-URL**, die Sie aus dem Azure-Portal kopiert haben, in das Textfeld **Single Logout URL** (URL für einmaliges Abmelden) ein.
    

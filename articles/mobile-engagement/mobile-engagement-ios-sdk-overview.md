@@ -12,12 +12,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 12/13/2016
+ms.date: 07/17/2017
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: c8bb1161e874a3adda4a71ee889ca833db881e20
-ms.openlocfilehash: cd70b0b5656bef08a8be1c1a67754b203cceb905
-
+ms.translationtype: HT
+ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
+ms.openlocfilehash: 6acd343782a3ee07750e27ec3022ff81cedfadee
+ms.contentlocale: de-de
+ms.lasthandoff: 07/19/2017
 
 ---
 # <a name="ios-sdk-for-azure-mobile-engagement"></a>iOS SDK für Azure Mobile Engagement
@@ -31,8 +32,11 @@ Klicken Sie, um den [SDK-Inhalt](mobile-engagement-ios-sdk-content.md)
 3. Tag-Plan-Implementierung: [Verwenden der erweiterten Mobile Engagement-Tagging-API in Ihrer iOS-App](mobile-engagement-ios-use-engagement-api.md)
 
 ## <a name="release-notes"></a>Versionshinweise
-### <a name="401-12132016"></a>4.0.1 (13.12.2016)
-* Verbesserte Protokollübermittlung im Hintergrund.
+### <a name="410-07172017"></a>4.1.0 (07/17/2017)
+* Behobene Badges werden im Hintergrund gelöscht.
+* Warnungen in XCode 9 über APIs, die nicht in der Hauptwarteschlange aufgerufen werden, wurden behoben.
+* Speicherverlust in Reach-Umfragen wurde behoben.
+* Unterstützung für iOS 6.X eingestellt. Ab dieser Version muss das Bereitstellungsziel Ihrer Anwendung mindestens über iOS 7 verfügen.
 
 Eine frühere Version finden Sie unter [Vollständige Versionshinweise](mobile-engagement-ios-release-notes.md)
 
@@ -49,8 +53,8 @@ Ab Version 4.0.0 des SDK ist XCode 8 zwingend erforderlich.
 
 > [!NOTE]
 > Wenn Sie auf XCode 7 tatsächlich nicht verzichten können, bietet sich das [iOS Engagement SDK 3.2.4](https://aka.ms/r6oouh)an. Im Reichweitenmodul dieser Vorgängerversion tritt bei Ausführung auf iOS 10-Geräten ein bekannter Fehler auf: Systembenachrichtigungen werden nicht umgesetzt. Zur Behebung dieses Problems müssen Sie die veraltete API `application:didReceiveRemoteNotification:` wie folgt in Ihrem App-Delegaten implementieren:
-> 
-> 
+>
+>
 
     - (void)application:(UIApplication*)application
     didReceiveRemoteNotification:(NSDictionary*)userInfo
@@ -60,8 +64,8 @@ Ab Version 4.0.0 des SDK ist XCode 8 zwingend erforderlich.
 
 > [!IMPORTANT]
 > **Wir empfehlen diese Problemumgebung nicht** , weil diese iOS-API veraltet ist und sich dieses Verhalten in anstehenden (auch kleineren) iOS-Versionsupgrades ändern kann. Sie sollten so bald wie möglich zu XCode 8 wechseln.
-> 
-> 
+>
+>
 
 #### <a name="usernotifications-framework"></a>„UserNotifications“-Framework
 Sie müssen in den Buildphasen das `UserNotifications`-Framework hinzufügen.
@@ -72,7 +76,7 @@ Sie müssen in den Buildphasen das `UserNotifications`-Framework hinzufügen.
 XCode 8 setzt u.U. die Pushfunktion Ihrer App zurück. Überprüfen Sie dies auf der Registerkarte `capability` des ausgewählten Zielgeräts.
 
 #### <a name="add-the-new-ios-10-notification-registration-code"></a>Hinzufügen des neuen iOS 10-Benachrichtigungsregistrierungscodes
-Der ältere Codeausschnitt zum Registrieren der App für Benachrichtigungen funktioniert zwar noch, er verwendet unter iOS 10 jedoch veraltete APIs. 
+Der ältere Codeausschnitt zum Registrieren der App für Benachrichtigungen funktioniert zwar noch, er verwendet unter iOS 10 jedoch veraltete APIs.
 
 Importieren Sie das `User Notification` -Framework:
 
@@ -115,7 +119,7 @@ Ein `UNUserNotificationCenter`-Delegat wird vom SDK verwendet, um den Lebenszykl
 
 Hierfür gibt es zwei Möglichkeiten.
 
-Vorschlag 1: durch einfaches Weiterleiten der Delegataufrufe an das SDK:
+Vorschlag 1: Durch einfaches Weiterleiten der Delegataufrufe an das SDK:
 
     #import <UIKit/UIKit.h>
     #import "EngagementAgent.h"
@@ -142,7 +146,7 @@ Vorschlag 1: durch einfaches Weiterleiten der Delegataufrufe an das SDK:
     }
     @end
 
-Oder Vorschlag 2: durch Erben von der `AEUserNotificationHandler`-Klasse
+Oder Vorschlag 2: Durch Erben von der `AEUserNotificationHandler`-Klasse
 
     #import "AEUserNotificationHandler.h"
     #import "EngagementAgent.h"
@@ -176,14 +180,8 @@ Wenn Sie z.B. den oben genannten Vorschlag 1 implementiert haben:
 
       - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
         // Any other code
-  
+
         [UNUserNotificationCenter currentNotificationCenter].delegate = self;
         return YES;
       }
-
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

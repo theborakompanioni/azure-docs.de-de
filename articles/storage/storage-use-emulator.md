@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/08/2017
 ms.author: marsma
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1e6f2b9de47d1ce84c4043f5f6e73d462e0c1271
-ms.openlocfilehash: 9820cef564e291d1c8aee7c360198de1dc05379e
+ms.translationtype: HT
+ms.sourcegitcommit: 818f7756189ed4ceefdac9114a0b89ef9ee8fb7a
+ms.openlocfilehash: 5b9e497078fe0b276ec8a717b43a0080e1667592
 ms.contentlocale: de-de
-ms.lasthandoff: 06/21/2017
-
+ms.lasthandoff: 07/14/2017
 
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Verwenden des Azure-Speicheremulators für Entwicklung und Tests
@@ -209,6 +208,10 @@ Die folgenden Unterschiede gelten für Tabellenspeicher im Emulator:
 Es bestehen keine Unterschiede beim Warteschlangenspeicher im Emulator.
 
 ## <a name="storage-emulator-release-notes"></a>Speicheremulator – Versionshinweise
+### <a name="version-52"></a>Version 5.2
+* Der Speicheremulator unterstützt nun Version 2017-04-17 der Speicherdienste auf Blob-, Warteschlangen- und Tabellenspeicherdienst-Endpunkten.
+* Korrektur eines Fehlers, aufgrund dessen Tabelleneigenschaftswerte nicht ordnungsgemäß codiert wurden.
+
 ### <a name="version-51"></a>Version 5.1
 * Es wurde ein Fehler behoben, bei dem der Speicheremulator in einigen Antworten den Header `DataServiceVersion` zurückgegeben hat, während der Dienst dies nicht getan hat.
 

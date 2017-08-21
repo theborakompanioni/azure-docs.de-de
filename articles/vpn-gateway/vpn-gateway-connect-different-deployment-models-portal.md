@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/21/2017
 ms.author: cherylmc
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 9e0dbb028c668aad182e2c1c54fb397ffe99a0a0
-ms.lasthandoff: 04/27/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
+ms.openlocfilehash: 1b7b67ec28986b7c20b3e990e3565265f74c28e6
+ms.contentlocale: de-de
+ms.lasthandoff: 07/14/2017
 
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>Verbinden von virtuellen Netzwerken aus unterschiedlichen Bereitstellungsmodellen über das Portal
@@ -84,7 +84,16 @@ Die folgende Tabelle enthält ein Beispiel dafür, wie die Beispiel-VNETs und lo
 
 ## <a name="classicvnet"></a>1. Konfigurieren der Einstellungen für klassische VNETs
 
-In diesem Abschnitt erstellen Sie das lokale Netzwerk (den lokalen Standort) und das Gateway des virtuellen Netzwerks für das klassische VNET. Wenn Sie nicht über ein klassisches VNET verfügen und diese Schritte als Übung ausführen, können Sie mithilfe der Informationen [dieses Artikels](../virtual-network/virtual-networks-create-vnet-classic-pportal.md) und den oben genannten [Beispieleinstellungswerten](#values) ein VNET erstellen. Wenn Sie bereits ein VNET mit einem VPN-Gateway besitzen, stellen Sie sicher, dass das Gateway dynamisch ist. Falls es sich um ein statisches Gateway handelt, müssen Sie das VPN-Gateway zuerst löschen. Anschließend können Sie fortfahren.
+In diesem Abschnitt erstellen Sie das lokale Netzwerk (den lokalen Standort) und das Gateway des virtuellen Netzwerks für das klassische VNET. Wenn Sie nicht über ein klassisches VNET verfügen und diese Schritte als Übung ausführen, können Sie mithilfe der Informationen [dieses Artikels](../virtual-network/virtual-networks-create-vnet-classic-pportal.md) und den oben genannten [Beispieleinstellungswerten](#values) ein VNET erstellen.
+
+Wenn Sie das Portal verwenden, um ein klassisches virtuelles Netzwerk zu erstellen, müssen Sie mit den folgenden Schritten zum Blatt „Virtuelles Netzwerk“ navigieren, da sonst die Option für das Erstellen eines klassischen virtuellen Netzwerks nicht angezeigt wird:
+
+1. Klicken Sie auf „+“, um das Blatt „Neu“ zu öffnen.
+2. Geben Sie im Feld „Marketplace durchsuchen“ die Zeichenfolge „Virtuelles Netzwerk“ ein. Wenn Sie stattdessen „Netzwerk“ -> „Virtuelles Netzwerk“ auswählen, wird die Option für das Erstellen eines klassischen virtuellen Netzwerks nicht angezeigt.
+3. Klicken Sie in der zurückgegebenen Liste auf „Virtuelles Netzwerk“, um das Blatt „Virtuelles Netzwerk“ zu öffnen. 
+4. Wählen Sie im Blatt „Virtuelles Netzwerk“ die Option „Klassisch“ aus, um ein klassisches virtuelles Netzwerk zu erstellen. 
+
+Wenn Sie bereits ein VNET mit einem VPN-Gateway besitzen, stellen Sie sicher, dass das Gateway dynamisch ist. Falls es sich um ein statisches Gateway handelt, müssen Sie das VPN-Gateway zuerst löschen. Anschließend können Sie fortfahren.
 
 Die Screenshots dienen lediglich zur Veranschaulichung. Achten Sie darauf, dass Sie die Werte durch Ihre eigenen Werte ersetzen oder die [Beispielwerte](#values) verwenden.
 

@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 06/23/2017
 ms.author: jdial
 ms.custom: 
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7c69630688e4bcd68ab3b4ee6d9fdb0e0c46d04b
-ms.openlocfilehash: 6baf1a642778bdd281ae641611bc09ee26aaec70
+ms.translationtype: HT
+ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
+ms.openlocfilehash: f1e3ae26b6525f2235a6b0d53546b334dc027b94
 ms.contentlocale: de-de
-ms.lasthandoff: 06/24/2017
+ms.lasthandoff: 07/10/2017
 
 
 ---
@@ -32,7 +32,7 @@ Sie können ein virtuelles Netzwerk (klassisch) mit einer Netzwerkkonfigurations
 
 Um ein virtuelles Netzwerk (klassisch) mithilfe einer Netzwerkkonfigurationsdatei zu erstellen und zu ändern, müssen Sie die Datei exportieren, ändern und importieren.
 
-## <a name="export-a-network-configuration-file"></a>Exportieren einer Netzwerkkonfigurationsdatei
+## <a name="export"></a>Exportieren einer Netzwerkkonfigurationsdatei
 
 Sie können PowerShell oder die Azure CLI verwenden, um eine Netzwerkkonfigurationsdatei zu exportieren. PowerShell exportiert eine XML-Datei, während die Azure CLI eine JSON-Datei exportiert.
 
@@ -120,7 +120,7 @@ Die folgende Beispiel-Netzwerkkonfigurationsdatei erstellt ein virtuelles Netzwe
 
 Wenn die Netzwerkkonfigurationsdatei, die Sie exportiert haben, keinen Inhalt hat, können Sie die JSON im vorherigen Beispiel kopieren und in eine neue Datei einfügen.
 
-## <a name="import-a-network-configuration-file"></a>Importieren einer Netzwerkkonfigurationsdatei
+## <a name="import"></a>Importieren einer Netzwerkkonfigurationsdatei
 
 Sie können PowerShell oder die Azure CLI verwenden, um eine Netzwerkkonfigurationsdatei zu importieren. PowerShell importiert eine XML-Datei während die Azure CLI eine JSON-Datei importiert. Wenn beim Import ein Fehler auftritt, bestätigen Sie, dass die Datei dem [Netzwerkkonfigurationsschema](https://msdn.microsoft.com/library/azure/jj157100.aspx) entspricht. 
 
@@ -143,3 +143,4 @@ Sie können PowerShell oder die Azure CLI verwenden, um eine Netzwerkkonfigurati
     ```azurecli
     azure network import c:\azure\networkconfig.json
     ```
+

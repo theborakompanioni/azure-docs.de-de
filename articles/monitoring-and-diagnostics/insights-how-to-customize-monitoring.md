@@ -2,7 +2,7 @@
 title: "Überblick über Metriken in Microsoft Azure | Microsoft Docs"
 description: "Erfahren Sie, wie Sie Überwachungsdiagramme in Azure anpassen."
 author: rboucher
-manager: carolz
+manager: carmonm
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2017
 ms.author: robb
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
-ms.openlocfilehash: 5ccb5c0b3c2ffaf8aba855a9dbe3da9691ab149b
+ms.translationtype: HT
+ms.sourcegitcommit: cddb80997d29267db6873373e0a8609d54dd1576
+ms.openlocfilehash: 3f9ebb0f5737714dd685f0dcc1ff4b1c0c89528f
 ms.contentlocale: de-de
-ms.lasthandoff: 06/07/2017
-
+ms.lasthandoff: 07/18/2017
 
 ---
 # <a name="overview-of-metrics-in-microsoft-azure"></a>Überblick über Metriken in Microsoft Azure
@@ -31,7 +30,7 @@ Für einige Dienste müssen Sie möglicherweise die Diagnose aktivieren, um Metr
 Sie können für beliebige Metriken und einen gewählten Zeitraum ein Diagramm erstellen.
 
 1. Klicken Sie im [Azure-Portal](https://portal.azure.com/)auf **Durchsuchen**und anschließend auf eine Ressource, die Sie überwachen möchten.
-2. Der Bereich **Überwachen** enthält die wichtigsten Metriken zu jeder Azure-Ressource. Für eine Web-App ist dies beispielsweise **Anforderungen und Fehler**, während für einen virtuellen Computer **CPU-Prozentsatz** und **Lese- und Schreibvorgänge auf dem Datenträger** angezeigt wird:  ![Überwachungsfokus](./media/insights-how-to-customize-monitoring/Insights_MonitoringChart.png)
+2. Der Bereich **Überwachen** enthält die wichtigsten Metriken zu jeder Azure-Ressource. Für eine Web-App ist dies beispielsweise **Anforderungen und Fehler**, während für einen virtuellen Computer **CPU-Prozentsatz** und **Lese- und Schreibvorgänge auf dem Datenträger** angezeigt wird: ![Überwachungsfokus](./media/insights-how-to-customize-monitoring/Insights_MonitoringChart.png)
 3. Wenn Sie auf eines dieser Diagramme klicken, wird das Blatt **Metrik** geöffnet. Auf diesem Blatt wird neben dem Diagramm eine Tabelle angezeigt, die Aggregationen der Metriken enthält (z. B. Durchschnitt, Mindest- und Maximalwert für den gewählten Zeitraum). Darunter werden die Warnregeln für die Ressource angezeigt.
     ![Blatt „Metrik“](./media/insights-how-to-customize-monitoring/Insights_MetricBlade.png)
 4. Zum Anpassen der angezeigten Zeilen klicken Sie auf die Schaltfläche **Bearbeiten** im Diagramm, oder klicken Sie auf den Befehl **Bearbeiten** auf dem Blatt „Metrik“.
@@ -50,7 +49,7 @@ Dank der umfangreichen Anpassungsmöglichkeiten im Portal können Sie so viele D
 
 1. Klicken Sie im oberen Bereich des Blatts im Menü **...** auf **Kacheln hinzufügen**:  
     ![Menü „Hinzufügen“](./media/insights-how-to-customize-monitoring/Insights_AddMenu.png)
-2. Anschließend können Sie ein Diagramm aus dem **Katalog** auf der rechten Bildschirmseite auswählen:  ![Katalog](./media/insights-how-to-customize-monitoring/Insights_Gallery.png)
+2. Anschließend können Sie ein Diagramm aus dem **Katalog** auf der rechten Bildschirmseite auswählen: ![Katalog](./media/insights-how-to-customize-monitoring/Insights_Gallery.png)
 3. Wenn die gewünschte Metrik nicht angezeigt wird, können Sie einfach eine der voreingestellten Metriken hinzufügen und durch **Bearbeiten** des Diagramms die Metrik anzeigen, die Sie benötigen.
 
 ## <a name="monitoring-usage-quotas"></a>Überwachen mithilfe von Kontingenten

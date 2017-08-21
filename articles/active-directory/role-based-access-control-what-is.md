@@ -5,21 +5,20 @@ services: active-directory
 documentationcenter: 
 author: kgremban
 manager: femila
-editor: 
 ms.assetid: 8f8aadeb-45c9-4d0e-af87-f1f79373e039
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/13/2017
+ms.date: 07/13/2017
 ms.author: kgremban
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
-ms.openlocfilehash: 06daecfe8cd61cbb3ab9d2307acb07e30270d921
+ms.reviewer: rqureshi
+ms.translationtype: HT
+ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
+ms.openlocfilehash: 68213a40755ae7dc675556c595da032b408be261
 ms.contentlocale: de-de
-ms.lasthandoff: 04/27/2017
-
+ms.lasthandoff: 07/19/2017
 
 ---
 # <a name="get-started-with-role-based-access-control-in-the-azure-portal"></a>Erste Schritte mit der rollenbasierten Zugriffssteuerung im Azure-Portal
@@ -48,7 +47,7 @@ Die verbleibenden RBAC-Rollen in Azure ermöglichen die Verwaltung von bestimmte
 [Integrierte RBAC-Rollen](role-based-access-built-in-roles.md) sind die Rollen aufgeführt, die in Azure verfügbar sind. Hierbei werden die Vorgänge und der Bereich angegeben, die mit jeder integrierten Rolle für Benutzer gewährt werden. Wenn Sie Ihre eigenen Rollen definieren möchten, um eine noch bessere Kontrolle zu haben, helfen Ihnen die Informationen zum Erstellen von [benutzerdefinierten Rollen in Azure RBAC](role-based-access-control-custom-roles.md)weiter.
 
 ## <a name="resource-hierarchy-and-access-inheritance"></a>Ressourcenhierarchie und Zugriffsvererbung
-* Jedes **Abonnement** in Azure gehört jeweils nur zu einem Verzeichnis.
+* Jedes **Abonnement** in Azure gehört jeweils nur zu einem Verzeichnis. (Aber jedes Verzeichnis kann über mehrere Abonnements verfügen.)
 * Jede **Ressourcengruppe** gehört jeweils nur zu einem Abonnement.
 * Jede **Ressource** gehört jeweils nur zu einer Ressourcengruppe.
 

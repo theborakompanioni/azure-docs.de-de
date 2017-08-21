@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2017
 ms.author: v-donglo
-translationtype: Human Translation
-ms.sourcegitcommit: 247d370c1f80729856e53690045991127ad54351
-ms.openlocfilehash: dc4716a26ba5c2ba93dda83890dbff81f22cbd2a
-ms.lasthandoff: 03/02/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
+ms.openlocfilehash: bdc994daf441d397157f8e6cbcf84d72584927f0
+ms.contentlocale: de-de
+ms.lasthandoff: 07/14/2017
 
 ---
 # <a name="retrain-an-existing-predictive-web-service"></a>Einen vorhandenen prädiktiven Webdienst erneut trainieren
@@ -64,7 +64,7 @@ In diesem Beispiel dient C# zum Erstellen der Anwendung für erneutes Trainieren
 
 So rufen Sie die APIs zum erneuten Trainieren auf:
 
-1. Erstellen Sie eine neue C#-Konsolenanwendung in Visual Studio (**Neu** > **Projekt** > **Windows-Desktop** > **Konsolenanwendung**).
+1. Erstellen Sie eine C#-Konsolenanwendung in Visual Studio: **Neu** > **Projekt** > **Visual C#** > **Klassischer Windows-Desktop** > **Konsolen-App (.NET Framework)**.
 2. Melden Sie sich beim Machine Learning-Webdienstportal an.
 3. Klicken Sie auf den verwendeten Webdienst.
 4. Klicken Sie auf **Consume**.
@@ -95,7 +95,7 @@ Zum Aktualisieren von Azure Storage Informationen müssen Sie den Namen des Spei
 2. Klicken Sie im linken Navigationsbereich auf **Storage**.
 3. Wählen Sie in der Speicherkontenliste ein Speicherkonto zum Speichern des neu trainierten Modells aus.
 4. Klicken Sie im unteren Bereich der Seite auf **Zugriffsschlüssel verwalten**.
-5. Kopieren und speichern Sie den primären **Zugriffsschlüssel** , und schließen Sie anschließend das Dialogfeld.
+5. Kopieren und speichern Sie den **primären Zugriffsschlüssel**, und schließen Sie anschließend das Dialogfeld.
 6. Klicken Sie im oberen Bereich der Seite auf **Container**.
 7. Wählen Sie einen vorhandenen Container aus, oder erstellen Sie einen neuen, und speichern Sie den Namen.
 

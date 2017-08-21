@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2017
 ms.author: yuemlu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: 82485e569d91a082f72725ecfb04e75f0820cf02
+ms.translationtype: HT
+ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
+ms.openlocfilehash: 373dde7b751156490fafd3e052b32310c497b43b
 ms.contentlocale: de-de
-ms.lasthandoff: 06/28/2017
+ms.lasthandoff: 07/10/2017
 
 
 ---
@@ -238,7 +238,7 @@ Wenn Sie virtuelle Festplatten aus anderen Cloud-Speichern als Azure zu Azure mi
 ##### <a name="copy-a-vhd-from-other-non-azure-cloud"></a>Kopieren einer VHD aus einer anderen Cloud als Azure
 Wenn Sie virtuelle Festplatten aus anderen Cloud-Speichern als Azure zu Azure migrieren möchten, müssen Sie zuerst die VHD-Datei in ein lokales Verzeichnis exportieren. Kopieren Sie den vollständigen Quellpfad des lokalen Verzeichnisses, in dem die VHD-Datei gespeichert ist.
 
-##### <a name="copy-a-vhd-from-on-premise"></a>Kopieren einer lokalen VHD aus einer lokalen Umgebung
+##### <a name="copy-a-vhd-from-on-premises"></a>Kopieren einer VHD aus einer lokalen Umgebung
 Wenn Sie die VHD aus einer lokalen Umgebung migrieren, benötigen Sie den vollständigen Quellpfad, in dem die VHD gespeichert ist. Der Quellpfad kann ein Serverspeicherort oder eine Dateifreigabe sein.
 
 #### <a name="step-2-create-the-destination-for-your-vhd"></a>Schritt 2. Erstellen des Ziels für die virtuelle Festplatte

@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/22/2017
+ms.date: 07/12/2017
 ms.author: markvi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 61fd58063063d69e891d294e627ae40cb878d65b
-ms.openlocfilehash: 9cecbfd1fd5db8fffc9fbdfb2d6ca949b6ff385a
+ms.reviewer: calebb
+ms.translationtype: HT
+ms.sourcegitcommit: 26c07d30f9166e0e52cb396cdd0576530939e442
+ms.openlocfilehash: 3e524c116479c1af6eb6a601c9b57d27a697c5a2
 ms.contentlocale: de-de
-ms.lasthandoff: 06/23/2017
-
+ms.lasthandoff: 07/19/2017
 
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Best Practices für den bedingten Zugriff in Azure Active Directory
@@ -29,11 +29,28 @@ In diesem Thema erfahren Sie, was Sie wissen sollten und was Sie beim Konfigurie
 
 ## <a name="what-you-should-know"></a>Wichtige Informationen
 
-### <a name="do-i-need-to-assign-a-user-to-my-policy"></a>Muss ich meiner Richtlinie einen Benutzer zuweisen?
+### <a name="whats-required-to-make-a-policy-work"></a>Was ist erforderlich, damit eine Richtlinie funktioniert?
 
-Beim Konfigurieren einer Richtlinie für den bedingten Zugriff sollten Sie ihr mindestens eine Gruppe zuweisen. Eine Richtlinie für den bedingten Zugriff, der keine Benutzer und Gruppen zugewiesen sind, wird niemals angewendet.
+Wenn Sie eine neue Richtlinie erstellen, wurden keine Benutzer, Gruppen, Anwendungen oder Zugriffssteuerungen ausgewählt.
 
-Wenn Sie einer Richtlinie mehrere Benutzer und Gruppen zuweisen möchten, sollten Sie klein anfangen, indem Sie nur einen Benutzer oder eine Gruppe zuweisen und anschließend die Konfiguration testen. Wenn die Richtlinie wie erwartet funktioniert, können Sie ihr weitere Zuweisungen hinzufügen.  
+![Cloud-Apps](./media/active-directory-conditional-access-best-practices/02.png)
+
+
+Damit Ihre Richtlinie funktioniert, müssen Sie Folgendes konfigurieren:
+
+
+|Was           | Vorgehensweise                                  | Warum|
+|:--            | :--                                  | :-- |
+|**Cloud-Apps** |Sie müssen eine oder mehrere Apps auswählen.  | Das Ziel einer Richtlinie für bedingten Zugriff liegt darin, es Ihnen zu ermöglichen, genau festzulegen, wie autorisierte Benutzer auf Ihre Apps zugreifen können.|
+| **Benutzer und Gruppen** | Sie müssen mindestens einen Benutzer oder eine Gruppe auswählen, die autorisiert ist, auf die ausgewählten Cloud-Apps zuzugreifen. | Eine Richtlinie für den bedingten Zugriff, der keine Benutzer und Gruppen zugewiesen sind, wird niemals angewendet. |
+| **Steuerelemente** | Wählen Sie mindestens eine Zugriffssteuerung aus. | Ihr Richtlinienprozessor muss wissen, was er zu tun hat, wenn die Bedingungen erfüllt sind.|
+
+
+Zusätzlich zu diesen grundlegenden Anforderungen sollten Sie in vielen Fällen auch eine Bedingung konfigurieren. Während eine Richtlinie auch ohne eine konfigurierte Bedingung funktionieren würde, sind die Bedingungen ausschlaggebend für die Optimierung des Zugriffs auf Ihre Apps.
+
+
+![Cloud-Apps](./media/active-directory-conditional-access-best-practices/04.png)
+
 
 
 ### <a name="how-are-assignments-evaluated"></a>Wie werden Zuweisungen ausgewertet?

@@ -5,20 +5,20 @@ services: active-directory
 documentationcenter: 
 author: kgremban
 manager: femila
-editor: 
 ms.assetid: 9e225dba-9044-4b13-b573-2f30d77925a9
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/02/2017
+ms.date: 07/12/2017
 ms.author: kgremban
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 5de7b134d99a0b7887acb9d7f87991056e4d608a
-ms.lasthandoff: 04/27/2017
-
+ms.reviewer: rqureshi
+ms.translationtype: HT
+ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
+ms.openlocfilehash: e7323325c303c26e2ea4d9f2a8ac5178fa33b875
+ms.contentlocale: de-de
+ms.lasthandoff: 07/19/2017
 
 ---
 # <a name="manage-role-based-access-control-with-azure-powershell"></a>Verwalten der rollenbasierten Zugriffssteuerung mit Azure PowerShell
@@ -128,7 +128,7 @@ So entfernen Sie den Zugriff für Benutzer, Gruppen und Anwendungen:
 ## <a name="create-a-custom-role"></a>Erstellen einer benutzerdefinierten Rolle
 Verwenden Sie zum Erstellen einer benutzerdefinierten Rolle den Befehl ```New-AzureRmRoleDefinition``` . Es gibt zwei Methoden zum Strukturieren der Rolle: mithilfe von „PSRoleDefinitionObject“ oder einer JSON-Vorlage. 
 
-## <a name="get-actions-from-particular-resource-provider"></a>Abrufen von Aktionen von einem bestimmten Ressourcenanbieter
+## <a name="get-actions-for-a-resource-provider"></a>Abrufen von Aktionen für einen Ressourcenanbieter
 Wenn Sie benutzerdefinierte Rollen von Grund auf neu erstellen, ist es wichtig, alle möglichen Vorgänge der Ressourcenanbieter zu kennen.
 Verwenden Sie den Befehl „```Get-AzureRMProviderOperation```“, um diese Informationen abzurufen.
 Wenn Sie beispielsweise alle verfügbaren Vorgänge für den virtuellen Computer überprüfen möchten, verwenden Sie folgenden Befehl:
@@ -166,7 +166,7 @@ New-AzureRmRoleDefinition -Role $role
 ![RBAC PowerShell – Get-AzureRmRoleDefinition – Screenshot](./media/role-based-access-control-manage-access-powershell/2-new-azurermroledefinition.png)
 
 ### <a name="create-role-with-json-template"></a>Erstellen der Rolle mit einer JSON-Vorlage
-Eine JSON-Vorlage kann als Quelldefinition für die benutzerdefinierte Rolle verwendet werden. Im folgenden Beispiel wird eine benutzerdefinierte Rolle erstellt, die Lesezugriff auf Speicher- und Computeressourcen und Zugriff auf den Support ermöglicht. Außerdem wird diese Rolle zwei Abonnements hinzugefügt. Erstellen Sie die neue Datei `C:\CustomRoles\customrole1.json` mit folgendem Inhalt. Die ID muss bei der Ersterstellung der Rolle auf `null` festgelegt werden, da eine neue ID automatisch generiert wird. 
+Eine JSON-Vorlage kann als Quelldefinition für die benutzerdefinierte Rolle verwendet werden. Im folgenden Beispiel wird eine benutzerdefinierte Rolle erstellt, die Lesezugriff auf Speicher- und Computeressourcen und Zugriff auf den Support ermöglicht. Außerdem wird diese Rolle zwei Abonnements hinzugefügt. Erstellen Sie eine neue Datei `C:\CustomRoles\customrole1.json` anhand des folgenden Beispiels. Die ID muss bei der Ersterstellung der Rolle auf `null` festgelegt werden, da eine neue ID automatisch generiert wird. 
 
 ```
 {

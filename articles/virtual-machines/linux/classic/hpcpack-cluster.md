@@ -15,12 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: big-compute
 ms.date: 10/12/2016
 ms.author: danlep
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: c65a932d0bf9bfb00f138997babc1bd642bcf879
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: 048854b440f939077a7a95fa1db9ba42daf55ede
 ms.contentlocale: de-de
-ms.lasthandoff: 04/27/2017
-
+ms.lasthandoff: 07/12/2017
 
 ---
 # <a name="get-started-with-linux-compute-nodes-in-an-hpc-pack-cluster-in-azure"></a>Erste Schritte mit Linux-Computeknoten in einem HPC Pack-Cluster in Azure
@@ -53,7 +52,7 @@ Weitere Informationen zur den Optionen für HPC Pack-Clusterbereitstellungen in 
   * **Ubuntu Server:** 14.04 LTS, 16.04 LTS
     
     > [!TIP]
-    > Geben Sie ein SUSE Linux Enterprise Server 12-HPC-Image oder ein CentOS-basiertes HPC-Image aus dem Azure Marketplace an, um das Azure RDMA-Netzwerk mit einer der RDMA-fähigen VM-Größen zu nutzen. Weitere Informationen finden Sie unter [Informationen zu virtuellen Computern der H-Serie und der rechenintensiven A-Serie](../a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+    > Geben Sie ein SUSE Linux Enterprise Server 12-HPC-Image oder ein CentOS-basiertes HPC-Image aus dem Azure Marketplace an, um das Azure RDMA-Netzwerk mit einer der RDMA-fähigen VM-Größen zu nutzen. Weitere Informationen finden Sie unter [Größen von virtuellen HPC-Computern (High Performance Computing)](../sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
     > 
     > 
 
@@ -187,7 +186,7 @@ Sie haben mehrere Optionen zum Verschieben von Daten zwischen Linux-Knoten und d
 ### <a name="azure-file-storage"></a>Azure-Dateispeicher
 Der [Azure-Dateidienst](https://azure.microsoft.com/services/storage/files/) stellt Dateifreigaben mit dem SMB 2.1-Standardprotokoll bereit. Azure-VMs und Clouddienste können Dateidaten in verschiedenen Anwendungskomponenten über eingebundene Freigaben teilen, und lokale Anwendungen können über die Dateispeicher-API auf freigegebene Dateien zugreifen. 
 
-Die Schritte zum Erstellen einer Azure-Dateifreigabe sowie zum Einbinden der Freigabe auf dem Hauptknoten sind im Detail unter [Erste Schritte mit Azure File Storage unter Windows](../../../storage/storage-dotnet-how-to-use-files.md)beschrieben. Informationen zum Einbinden der Azure-Dateifreigabe auf den Linux-Knoten finden Sie unter [Verwenden von Azure File Storage unter Linux](../../../storage/storage-how-to-use-files-linux.md). Informationen zum Einrichten bestehender Verbindungen finden Sie unter [Beibehalten der Verbindung mit Microsoft Azure-Dateien](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx).
+Die Schritte zum Erstellen einer Azure-Dateifreigabe sowie zum Einbinden der Freigabe auf dem Hauptknoten sind im Detail unter [Erste Schritte mit Azure File Storage unter Windows](../../../storage/storage-file-how-to-use-files-windows.md)beschrieben. Informationen zum Einbinden der Azure-Dateifreigabe auf den Linux-Knoten finden Sie unter [Verwenden von Azure File Storage unter Linux](../../../storage/storage-how-to-use-files-linux.md). Informationen zum Einrichten bestehender Verbindungen finden Sie unter [Beibehalten der Verbindung mit Microsoft Azure-Dateien](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx).
 
 Im folgenden Beispiel erstellen Sie eine Azure-Dateifreigabe für ein Speicherkonto. Um die Freigabe auf dem Hauptknoten einzubinden, öffnen Sie eine Eingabeaufforderung, und geben Sie die folgenden Befehle ein:
 
@@ -300,7 +299,7 @@ Das HPC Pack-Tool [clusrun](https://technet.microsoft.com/library/cc947685.aspx)
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Versuchen Sie, den Cluster auf eine größere Anzahl von Knoten zu skalieren, oder versuchen Sie, eine Linux-Workload auf dem Cluster auszuführen. Ein Beispiel finden Sie unter [Ausführen von NAMD mit dem Microsoft HPC Pack auf Linux-Computeknoten in Azure](hpcpack-cluster-namd.md).
-* Verwenden Sie einen Cluster mit [RDMA-fähigen, rechenintensiven VMs](../../windows/a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) zum Ausführen von MPI-Workloads. Ein Beispiel finden Sie unter [Ausführen von OpenFOAM mit Microsoft HPC Pack auf einem Linux-RDMA-Cluster in Azure](hpcpack-cluster-openfoam.md).
+* Verwenden Sie einen Cluster mit [RDMA-fähigen, rechenintensiven VMs](../../windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) zum Ausführen von MPI-Workloads. Ein Beispiel finden Sie unter [Ausführen von OpenFOAM mit Microsoft HPC Pack auf einem Linux-RDMA-Cluster in Azure](hpcpack-cluster-openfoam.md).
 * Wenn Sie sich für das Arbeiten mit Linux-Knoten in einem lokalen HPC Pack-Cluster interessieren, finden Sie im [TechNet-Leitfaden](https://technet.microsoft.com/library/mt595803.aspx)weitere Informationen.
 
 <!--Image references-->

@@ -1,6 +1,6 @@
 ---
-title: Verwenden von File Storage mit C++ | Microsoft Docs
-description: Speichern Sie Dateidaten in der Cloud mit Azure File Storage.
+title: "Entwickeln für Azure File Storage mit C++ | Microsoft-Dokumentation"
+description: Hier erfahren Sie, wie Sie C++-Anwendungen und -Dienste entwickeln, die Azure File Storage zum Speichern von Dateidaten verwenden.
 services: storage
 documentationcenter: .net
 author: renashahmsft
@@ -12,29 +12,35 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/11/2017
+ms.date: 05/27/2017
 ms.author: renashahmsft
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
-ms.openlocfilehash: f8ecb68fddf4293592e546c0c10d0c86664bd090
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: fc0d8451442f1337db4a36718c3fc746f8eb5125
 ms.contentlocale: de-de
-ms.lasthandoff: 04/06/2017
-
+ms.lasthandoff: 07/12/2017
 
 ---
-# <a name="how-to-use-file-storage-from-c"></a>Verwenden von File Storage mit C++
+
+# <a name="develop-for-azure-file-storage-with-c"></a>Entwickeln für Azure File Storage mit C++
 [!INCLUDE [storage-selector-file-include](../../includes/storage-selector-file-include.md)]
 
 [!INCLUDE [storage-try-azure-tools-files](../../includes/storage-try-azure-tools-files.md)]
 
-[!INCLUDE [storage-file-overview-include](../../includes/storage-file-overview-include.md)]
-
 ## <a name="about-this-tutorial"></a>Informationen zu diesem Lernprogramm
-In diesem Tutorial erfahren Sie, wie Sie grundlegende Vorgänge im Microsoft Azure File Storage-Dienst ausführen. Anhand von in C++ geschriebenen Beispielen lernen Sie, wie Sie Freigaben und Verzeichnisse erstellen sowie Dateien hochladen, auflisten und löschen. Wenn Sie noch nicht mit dem Microsoft Azure File Storage-Dienst vertraut sind, helfen die in den folgenden Abschnitten erläuterten Konzepte beim besseren Verständnis der Beispiele.
 
-[!INCLUDE [storage-file-concepts-include](../../includes/storage-file-concepts-include.md)]
+In diesem Tutorial erfahren Sie, wie Sie grundlegende Vorgänge in Azure File Storage ausführen. Anhand von in C++ geschriebenen Beispielen lernen Sie, wie Sie Freigaben und Verzeichnisse erstellen sowie Dateien hochladen, auflisten und löschen. Wenn Sie noch nicht mit Azure File Storage vertraut sind, helfen die in den folgenden Abschnitten erläuterten Konzepte, die Beispiele besser zu verstehen.
 
-[!INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
+
+* Erstellen und Löschen von Azure-Dateifreigaben
+* Erstellen und Löschen von Verzeichnissen
+* Auflisten von Dateien und Verzeichnissen in einer Azure-Dateifreigabe
+* Hochladen, Herunterladen und Löschen einer Datei
+* Festlegen des Kontingents (der maximalen Größe) einer Azure-Dateifreigabe
+* Erstellen eines SAS-Schlüssels (Shared Access Signature) für eine Datei, die eine für die Freigabe definierte SAS-Richtlinie verwendet
+
+> [!Note]  
+> Da auf Azure File Storage über SMB zugegriffen werden kann, können Sie unter Verwendung der standardmäßigen C++-Klassen und -Funktionen für die Ein- und Ausgabe einfache Anwendungen mit Zugriff auf die Azure-Dateifreigabe schreiben. In diesem Artikel erfahren Sie, wie Sie Anwendungen schreiben, die das Azure Storage C++ SDK verwenden, das über die [Azure File Storage-REST-API](https://docs.microsoft.com/rest/api/storageservices/fileservices/file-service-rest-api) mit Azure File Storage kommuniziert.
 
 ## <a name="create-a-c-application"></a>Erstellen einer C++-Anwendung
 Zum Erstellen der Beispiele müssen Sie die Azure Storage-Clientbibliothek 2.4.0 für C++ installieren. Sie sollten auch ein Azure-Speicherkonto erstellt haben.
@@ -48,8 +54,8 @@ Zum Installieren der Azure Storage-Clientbibliothek 2.4.0 für C++ können Sie e
 Install-Package wastorage
 ```
 
-## <a name="set-up-your-application-to-use-file-storage"></a>Einrichten der Anwendung zur Verwendung von File Storage
-Fügen Sie die folgenden include-Anweisungen am Anfang der C++-Datei hinzu, um die Stellen anzugeben, an denen Sie die Azure Storage-APIs zum Zugriff auf Dateien verwenden möchten:
+## <a name="set-up-your-application-to-use-azure-file-storage"></a>Einrichten der Anwendung für das Verwenden von Azure File Storage
+Fügen Sie die folgenden „include“-Anweisungen an den Stellen am Anfang der C++-Quelldatei hinzu, an denen Sie Azure File Storage bearbeiten möchten:
 
 ```cpp
 #include <was/storage_account.h>
@@ -74,16 +80,16 @@ azure::storage::cloud_storage_account storage_account =
   azure::storage::cloud_storage_account::parse(storage_connection_string);
 ```
 
-## <a name="how-to-create-a-share"></a>Erstellen einer Freigabe
-Alle Dateien und Verzeichnisse im Dateispeicher befinden sich in einem Container mit dem Namen **Share**. Das Speicherkonto kann über so viele Freigaben verfügen, wie es die Kapazität des Kontos zulässt. Für den Zugriff auf eine Freigabe und ihren Inhalt muss ein Dateispeicherclient verwendet werden.
+## <a name="create-an-azure-file-share"></a>Erstellen einer Azure-Dateifreigabe
+Alle Dateien und Verzeichnisse in Azure File Storage befinden sich in einem Container mit dem Namen **Freigabe**. Das Speicherkonto kann über so viele Freigaben verfügen, wie es die Kapazität des Kontos zulässt. Für den Zugriff auf eine Freigabe und ihren Inhalt muss ein Azure File Storage-Client verwendet werden.
 
 ```cpp
-// Create the file storage client.
+// Create the Azure File storage client.
 azure::storage::cloud_file_client file_client = 
   storage_account.create_cloud_file_client();
 ```
 
-Mit dem Dateispeicherclient können Sie dann einen Verweis auf die Freigabe abrufen.
+Mit dem Azure File Storage-Client können Sie dann einen Verweis auf die Freigabe abrufen.
 
 ```cpp
 // Get a reference to the file share
@@ -101,8 +107,84 @@ if (share.create_if_not_exists()) {
 
 An diesem Punkt enthält **share** einen Verweis auf eine Freigabe mit dem Namen **my-sample-share**.
 
-## <a name="how-to-upload-a-file"></a>Hochladen einer Datei
-Eine Azure File Storage-Freigabe enthält mindestens ein Stammverzeichnis, in dem Dateien gespeichert werden können. In diesem Abschnitt erfahren Sie, wie Sie eine Datei vom lokalen Speicher in das Stammverzeichnis einer Freigabe hochladen.
+## <a name="delete-an-azure-file-share"></a>Löschen einer Azure-Dateifreigabe
+Das Löschen einer Freigabe erfolgt durch Aufrufen der **delete_if_exists** -Methode für ein cloud_file_share-Objekt. Hier ein Beispielcode dazu.
+
+```cpp
+// Get a reference to the share.
+azure::storage::cloud_file_share share = 
+  file_client.get_share_reference(_XPLATSTR("my-sample-share"));
+
+// delete the share if exists
+share.delete_share_if_exists();
+```
+
+## <a name="create-a-directory"></a>Erstellen eines Verzeichnisses
+Sie können den Speicher organisieren, indem Sie Dateien in Unterverzeichnissen ablegen, anstatt alle Dateien im Stammverzeichnis zu speichern. Mit Azure File Storage können Sie so viele Verzeichnisse erstellen wie in Ihrem Konto zugelassen. Der unten stehende Code erstellt ein Verzeichnis namens **my-sample-directory** im Stammverzeichnis sowie ein Unterverzeichnis namens **my-sample-subdirectory**.
+
+```cpp
+// Retrieve a reference to a directory
+azure::storage::cloud_file_directory directory = share.get_directory_reference(_XPLATSTR("my-sample-directory"));
+
+// Return value is true if the share did not exist and was successfully created.
+directory.create_if_not_exists();
+
+// Create a subdirectory.
+azure::storage::cloud_file_directory subdirectory = 
+  directory.get_subdirectory_reference(_XPLATSTR("my-sample-subdirectory"));
+subdirectory.create_if_not_exists();
+```
+
+## <a name="delete-a-directory"></a>Löschen eines Verzeichnisses
+Das Löschen eines Verzeichnisses ist eine einfache Angelegenheit. Dabei ist jedoch zu beachten, dass Verzeichnisse, die noch Dateien oder andere Verzeichnisse enthalten, nicht gelöscht werden können.
+
+```cpp
+// Get a reference to the share.
+azure::storage::cloud_file_share share = 
+  file_client.get_share_reference(_XPLATSTR("my-sample-share"));
+
+// Get a reference to the directory.
+azure::storage::cloud_file_directory directory = 
+  share.get_directory_reference(_XPLATSTR("my-sample-directory"));
+
+// Get a reference to the subdirectory you want to delete.
+azure::storage::cloud_file_directory sub_directory =
+  directory.get_subdirectory_reference(_XPLATSTR("my-sample-subdirectory"));
+
+// Delete the subdirectory and the sample directory.
+sub_directory.delete_directory_if_exists();
+
+directory.delete_directory_if_exists();
+```
+
+## <a name="enumerate-files-and-directories-in-an-azure-file-share"></a>Auflisten von Dateien und Verzeichnissen in einer Azure-Dateifreigabe
+Eine Liste von Dateien und Verzeichnissen in einer Freigabe kann einfach durch Aufrufen von **list_files_and_directories** in einem **cloud_file_directory**-Verweis abgerufen werden. Um auf den umfassenden Satz an Eigenschaften und Methoden für ein zurückgegebenes **list_file_and_directory_item**-Objekt zuzugreifen, müssen Sie die **list_file_and_directory_item.as_file**-Methode aufrufen, um ein **cloud_file**-Objekt abzurufen, oder Sie müssen die **list_file_and_directory_item.as_directory**-Methode aufrufen, um ein **cloud_file_directory**-Objekt abzurufen.
+
+Der folgende Code zeigt, wie Sie den URI der einzelnen Elemente im Stammverzeichnis der Freigabe abrufen und ausgeben.
+
+```cpp
+//Get a reference to the root directory for the share.
+azure::storage::cloud_file_directory root_dir = 
+  share.get_root_directory_reference();
+
+// Output URI of each item.
+azure::storage::list_file_and_diretory_result_iterator end_of_results;
+
+for (auto it = directory.list_files_and_directories(); it != end_of_results; ++it)
+{
+    if(it->is_directory())
+    {
+        ucout << "Directory: " << it->as_directory().uri().primary_uri().to_string() << std::endl;
+    }
+    else if (it->is_file())
+    {
+        ucout << "File: " << it->as_file().uri().primary_uri().to_string() << std::endl;
+    }        
+}
+```
+
+## <a name="upload-a-file"></a>Hochladen einer Datei
+Eine Azure-Dateifreigabe enthält mindestens ein Stammverzeichnis, in dem Dateien gespeichert werden können. In diesem Abschnitt erfahren Sie, wie Sie eine Datei vom lokalen Speicher in das Stammverzeichnis einer Freigabe hochladen.
 
 Im ersten Schritt beim Hochladen einer Datei wird ein Verweis auf das Verzeichnis abgerufen, in dem sie gespeichert werden soll. Rufen Sie dazu die **get_root_directory_reference**-Methode des Freigabeobjekts auf.
 
@@ -133,49 +215,7 @@ azure::storage::cloud_file file4 =
 file4.upload_from_file(_XPLATSTR("DataFile.txt"));    
 ```
 
-## <a name="how-to-create-a-directory"></a>Erstellen eines Verzeichnisses
-Sie können zudem den Speicher organisieren, indem Sie Dateien in Unterverzeichnissen ablegen, anstatt alle Dateien im Stammverzeichnis zu speichern. Mit Azure File Storage können Sie so viele Verzeichnisse erstellen, wie in Ihrem Konto zugelassen sind. Der unten stehende Code erstellt ein Verzeichnis namens **my-sample-directory** im Stammverzeichnis sowie ein Unterverzeichnis namens **my-sample-subdirectory**.
-
-```cpp
-// Retrieve a reference to a directory
-azure::storage::cloud_file_directory directory = share.get_directory_reference(_XPLATSTR("my-sample-directory"));
-
-// Return value is true if the share did not exist and was successfully created.
-directory.create_if_not_exists();
-
-// Create a subdirectory.
-azure::storage::cloud_file_directory subdirectory = 
-  directory.get_subdirectory_reference(_XPLATSTR("my-sample-subdirectory"));
-subdirectory.create_if_not_exists();
-```
-
-## <a name="how-to-list-files-and-directories-in-a-share"></a>Auflisten von Dateien und Verzeichnissen in einer Freigabe
-Eine Liste von Dateien und Verzeichnissen in einer Freigabe kann einfach durch Aufrufen von **list_files_and_directories** in einem **cloud_file_directory**-Verweis abgerufen werden. Um auf den umfassenden Satz an Eigenschaften und Methoden für ein zurückgegebenes **list_file_and_directory_item**-Objekt zuzugreifen, müssen Sie die **list_file_and_directory_item.as_file**-Methode aufrufen, um ein **cloud_file**-Objekt abzurufen, oder Sie müssen die **list_file_and_directory_item.as_directory**-Methode aufrufen, um ein **cloud_file_directory**-Objekt abzurufen.
-
-Der folgende Code zeigt, wie Sie den URI der einzelnen Elemente im Stammverzeichnis der Freigabe abrufen und ausgeben.
-
-```cpp
-//Get a reference to the root directory for the share.
-azure::storage::cloud_file_directory root_dir = 
-  share.get_root_directory_reference();
-
-// Output URI of each item.
-azure::storage::list_file_and_diretory_result_iterator end_of_results;
-
-for (auto it = directory.list_files_and_directories(); it != end_of_results; ++it)
-{
-    if(it->is_directory())
-    {
-        ucout << "Directory: " << it->as_directory().uri().primary_uri().to_string() << std::endl;
-    }
-    else if (it->is_file())
-    {
-        ucout << "File: " << it->as_file().uri().primary_uri().to_string() << std::endl;
-    }        
-}
-```
-
-## <a name="how-to-download-a-file"></a>Herunterladen einer Datei
+## <a name="download-a-file"></a>Herunterladen einer Datei
 Zum Herunterladen von Dateien rufen Sie zuerst einen Dateiverweis ab und dann die **download_to_stream**-Methode auf, um den Dateiinhalt in ein Datenstromobjekt zu übertragen, das Sie dann dauerhaft in einer lokalen Datei speichern können. Alternativ können Sie die **download_to_file**-Methode verwenden, um den Inhalt einer Datei in eine lokale Datei herunterzuladen. Sie können die **download_text**-Methode verwenden, um den Inhalt einer Datei als Textzeichenfolge herunterzuladen.
 
 Das folgende Beispiel verwendet die Methoden **download_to_stream** und **download_text**, um das Herunterladen der Dateien zu veranschaulichen, die in den vorherigen Abschnitten erstellt wurden.
@@ -200,8 +240,8 @@ outfile.write((char *)&data[0], buffer.size());
 outfile.close();
 ```
 
-## <a name="how-to-delete-a-file"></a>Löschen von Dateien
-Ein weiterer häufig durchgeführter Vorgang ist das Löschen von Dateien im Dateispeicher. Der folgende Code löscht eine Datei namens „my-sample-file-3“, die im Stammverzeichnis gespeichert ist.
+## <a name="delete-a-file"></a>Löschen von Dateien
+Ein weiterer häufiger Azure File Storage-Vorgang ist das Löschen von Dateien. Der folgende Code löscht eine Datei namens „my-sample-file-3“, die im Stammverzeichnis gespeichert ist.
 
 ```cpp
 // Get a reference to the root directory for the share.    
@@ -217,41 +257,7 @@ azure::storage::cloud_file file =
 file.delete_file_if_exists();
 ```
 
-## <a name="how-to-delete-a-directory"></a>Löschen von Verzeichnissen
-Das Löschen eines Verzeichnisses ist eine einfache Angelegenheit. Dabei ist jedoch zu beachten, dass Verzeichnisse, die noch Dateien oder andere Verzeichnisse enthalten, nicht gelöscht werden können.
-
-```cpp
-// Get a reference to the share.
-azure::storage::cloud_file_share share = 
-  file_client.get_share_reference(_XPLATSTR("my-sample-share"));
-
-// Get a reference to the directory.
-azure::storage::cloud_file_directory directory = 
-  share.get_directory_reference(_XPLATSTR("my-sample-directory"));
-
-// Get a reference to the subdirectory you want to delete.
-azure::storage::cloud_file_directory sub_directory =
-  directory.get_subdirectory_reference(_XPLATSTR("my-sample-subdirectory"));
-
-// Delete the subdirectory and the sample directory.
-sub_directory.delete_directory_if_exists();
-
-directory.delete_directory_if_exists();
-```
-
-## <a name="how-to-delete-a-share"></a>Löschen von Freigaben
-Das Löschen einer Freigabe erfolgt durch Aufrufen der **delete_if_exists** -Methode für ein cloud_file_share-Objekt. Hier ein Beispielcode dazu.
-
-```cpp
-// Get a reference to the share.
-azure::storage::cloud_file_share share = 
-  file_client.get_share_reference(_XPLATSTR("my-sample-share"));
-
-// delete the share if exists
-share.delete_share_if_exists();
-```
-
-## <a name="set-the-maximum-size-for-a-file-share"></a>Festlegen der maximalen Größe für eine Dateifreigabe
+## <a name="set-the-quota-maximum-size-for-an-azure-file-share"></a>Festlegen des Kontingents (der maximalen Größe) einer Azure-Dateifreigabe
 Sie können das Kontingent (also die maximale Größe) für eine Dateifreigabe in Gigabytes festlegen. Sie können auch überprüfen, wie viele Daten sich aktuell auf der Freigabe befinden.
 
 Durch Festlegen des Kontingents für eine Freigabe können Sie die Gesamtgröße der Dateien einschränken, die in der Freigabe gespeichert werden. Überschreitet die Gesamtgröße der Dateien in der Freigabe das für die Freigabe festgelegte Kontingent, können die Clients weder die Größe von vorhandenen Dateien ändern noch neue Dateien erstellen – es sei denn, diese sind leer.
@@ -349,9 +355,6 @@ if (share.exists())
 
 }
 ```
-
-Weitere Informationen zum Erstellen und Verwenden von Shared Access Signatures finden Sie unter [Verwenden von Shared Access Signatures (SAS)](storage-dotnet-shared-access-signature-part-1.md).
-
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu Azure Storage finden Sie in den folgenden Ressourcen:
 
@@ -359,5 +362,3 @@ Weitere Informationen zu Azure Storage finden Sie in den folgenden Ressourcen:
 * [Beispiele für den Azure Storage File-Dienst in C++] (https://github.com/Azure-Samples/storage-file-cpp-getting-started)
 * [Azure-Speicher-Explorer](http://go.microsoft.com/fwlink/?LinkID=822673&clcid=0x409)
 * [Azure-Speicherdokumentation](https://azure.microsoft.com/documentation/services/storage/)
-
-

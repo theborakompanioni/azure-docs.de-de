@@ -83,7 +83,7 @@ In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden mit Azur
 
 Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Salesforce Sandbox als Pendant für einen Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Salesforce Sandbox muss eine Linkbeziehung eingerichtet werden.
 
-Diese Linkbeziehung wird hergestellt, indem Sie den Wert Benutzernamen**** in Azure AD als Benutzernamen**** in Salesforce Sandbox zuweisen.
+Diese Linkbeziehung wird hergestellt, indem Sie den Wert **Benutzernamen** in Azure AD als **Benutzernamen** in Salesforce Sandbox zuweisen.
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei Salesforce Sandbox müssen die folgenden Schritte ausgeführt werden:
 

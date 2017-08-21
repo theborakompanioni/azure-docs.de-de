@@ -12,23 +12,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/15/2017
+ms.date: 07/19/2017
 ms.author: dhanyahk;markvi
 ms.reviewer: dhanyahk
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: 7f6d82d211e9b3d25b0efe62ab8dd32f827b08ef
+ms.translationtype: HT
+ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
+ms.openlocfilehash: f1875582476c3817b9eb0082b6548cc15043cb98
 ms.contentlocale: de-de
-ms.lasthandoff: 05/08/2017
+ms.lasthandoff: 07/19/2017
 
 ---
-# Speicherorte von Aktivitätsberichten im Azure-Portal
-<a id="find-activity-reports-in-the-azure-portal" class="xliff"></a>
+# <a name="find-activity-reports-in-the-azure-portal"></a>Speicherorte von Aktivitätsberichten im Azure-Portal
 
 Wenn Sie vom klassischen Azure-Portal zum Azure-Portal wechseln, ändert sich die Anzeige der Aktivitätsprotokolle in Azure Active Directory (Azure AD). In einem kürzlich veröffentlichten [Blogbeitrag](https://blogs.technet.microsoft.com/enterprisemobility/2016/11/08/azuread-weve-just-turned-on-detailed-auditing-and-sign-in-logs-in-the-new-azure-portal/) erläutern wir, wie Sie Aktivitätsprotokolle im Kontext der Ressource, mit der Sie im Azure-Portal arbeiten, anzeigen können. In diesem Artikel beschrieben wir, wie Sie die im klassischen Azure-Portal vorhandenen Berichte in das neue Azure-Portal übertragen.
 
-## Neuigkeiten
-<a id="whats-new" class="xliff"></a>
+## <a name="whats-new"></a>Neuigkeiten
 
 Die Berichte im klassischen Azure-Portal sind in Kategorien unterteilt:
 
@@ -36,8 +34,7 @@ Die Berichte im klassischen Azure-Portal sind in Kategorien unterteilt:
 2.  Aktivitätsberichte
 3.  Berichte zu integrierten Apps
 
-### Aktivitätsberichte und Berichte zu integrierten Apps
-<a id="activity-and-integrated-app-reports" class="xliff"></a>
+### <a name="activity-and-integrated-app-reports"></a>Aktivitätsberichte und Berichte zu integrierten Apps
 
 Mit der kontextbasierten Berichterstellung im Azure-Portal werden die vorhandenen Berichte in einer zentralen Ansicht zusammengeführt. Eine einzelne zugrunde liegende API stellt die Daten in der Ansicht bereit.
 
@@ -65,13 +62,11 @@ Die Ansicht **Anmeldungen** enthält alle Benutzeranmeldungen. Sie können diese
 
 ![Unternehmensanwendungen](./media/active-directory-reporting-migration/484.png "Unternehmensanwendungen")
 
-## Zugreifen auf einen bestimmten Bericht
-<a id="access-a-specific-report" class="xliff"></a>
+## <a name="access-a-specific-report"></a>Zugreifen auf einen bestimmten Bericht
 
 Obwohl das Azure-Portal eine einzige Ansicht bietet, können Sie auch bestimmte Berichte prüfen.
 
-### Überwachungsprotokolle
-<a id="audit-logs" class="xliff"></a>
+### <a name="audit-logs"></a>Überwachungsprotokolle
 
 Als Reaktion auf Kundenfeedback Kunden können Sie im Azure-Portal nun über erweiterte Filter auf die gewünschten Daten zugreifen. Ein möglicher Filter ist die *Aktivitätskategorie*. Damit werden die verschiedenen Arten von Aktivitätsprotokollen in Azure AD aufgelistet. Durch Auswahl der gewünschten Kategorie können Sie die Ergebnisse Ihrer Suche eingrenzen.
 
@@ -86,18 +81,15 @@ Zu Aktivitätskategorien zählen:
 - Self-Service-Gruppenverwaltung
 - Kontobereitstellung
 
-### Anwendungsnutzung
-<a id="application-usage" class="xliff"></a>
+### <a name="application-usage"></a>Anwendungsnutzung
 
 Wählen Sie unter **Aktivität** die Option **Anmeldungen**, um die Anwendungsnutzung für alle oder eine einzelne App anzuzeigen. Wenn Sie die Ergebnisse eingrenzen möchten, können Sie anhand des Benutzer- oder Anwendungsnamens filtern.
 
 ![Seite mit Filter nach Anmeldeereignissen](./media/active-directory-reporting-migration/07.png "Seite mit Filter nach Anmeldeereignissen")
 
-### Sicherheitsberichte
-<a id="security-reports" class="xliff"></a>
+### <a name="security-reports"></a>Sicherheitsberichte
 
-#### Azure AD-Berichte zu anomalen Aktivitäten
-<a id="azure-ad-anomalous-activity-reports" class="xliff"></a>
+#### <a name="azure-ad-anomalous-activity-reports"></a>Azure AD-Berichte zu anomalen Aktivitäten
 
 Die Sicherheitsberichte zur anormalen Aktivität von Azure AD im klassischen Azure-Portal wurden zusammengestellt, um Ihnen einen zentralen Blick auf alle sicherheitsrelevanten Risikoereignisse zu gewähren, die Azure AD ermitteln und melden kann.
 
@@ -122,8 +114,7 @@ Diese Berichte sind im klassischen Azure-Portal weiterhin verfügbar, werden all
 Weitere Informationen finden Sie unter [Azure Active Directory-Risikoereignisse](active-directory-identity-protection-risk-events.md).  
 
 
-#### Erkannte Risikoereignisse
-<a id="detected-risk-events" class="xliff"></a>
+#### <a name="detected-risk-events"></a>Erkannte Risikoereignisse
 
 Sie können im Azure-Portal auf dem Blatt **Azure Active Directory** unter **SICHERHEIT** auf die Berichte zu erkannten Risikoereignissen zugreifen. Die erkannten Risikoereignisse werden in den folgenden Berichten nachverfolgt:   
 
@@ -138,8 +129,7 @@ Weitere Informationen zu Sicherheitsberichten finden Sie unter:
 - [Bericht „Riskante Anmeldungen“ im Azure Active Directory-Portal](active-directory-reporting-security-risky-sign-ins.md)
 
 
-## Aktivitätsberichte im klassischen Azure-Portal im Vergleich zum Azure-Portal
-<a id="activity-reports-in-the-azure-classic-portal-vs-the-azure-portal" class="xliff"></a>
+## <a name="activity-reports-in-the-azure-classic-portal-vs-the-azure-portal"></a>Aktivitätsberichte im klassischen Azure-Portal im Vergleich zum Azure-Portal
 
 Die Tabelle in diesem Abschnitt enthält vorhandene Berichte im klassischen Azure-Portal. Außerdem wird erläutert, wie Sie diese Informationen im Azure-Portal abrufen können.
 
@@ -162,4 +152,8 @@ Wählen Sie zum Anzeigen des Berichts zur **Anwendungsnutzung** auf dem Blatt **
 
 
 ![Bericht zu Anmeldungen bei Unternehmensanwendungen](./media/active-directory-reporting-migration/199.png "Bericht zu Anmeldungen bei Unternehmensanwendungen")
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Eine Übersicht über die Berichterstellung finden Sie unter [Azure Active Directory-Berichterstellung](active-directory-reporting-azure-portal.md).
 

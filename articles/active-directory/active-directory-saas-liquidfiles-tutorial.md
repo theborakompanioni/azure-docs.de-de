@@ -136,7 +136,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 8. Klicken Sie im Menü unter **Admin > Konfiguration** auf **Einmaliges Anmelden**.
 
-9. Führen Sie auf der Konfigurationsseite für einmaliges Anmelden ****die folgenden Schritte aus:
+9. Führen Sie auf der **Konfigurationsseite für einmaliges Anmelden** die folgenden Schritte aus:
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-liquidfiles-tutorial/tutorial_single_01.png)
 

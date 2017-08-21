@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2017
 ms.author: robinsh
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 7b91be16b5820f379f7408b477311ea86b213ccd
+ms.translationtype: HT
+ms.sourcegitcommit: 19be73fd0aec3a8f03a7cd83c12cfcc060f6e5e7
+ms.openlocfilehash: dcd843ae1ba768ce02256dcc91c61693730c60e4
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 07/13/2017
 
 ---
 # <a name="azure-storage-service-encryption-for-data-at-rest"></a>Azure Storage Service Encryption für ruhende Daten
@@ -40,7 +39,7 @@ SSE verschlüsselt die Daten, wenn sie in Azure Storage geschrieben werden, und 
 
 Weitere Informationen erhalten Sie in den FAQ.
 
-Melden Sie sich zum Aktivieren oder Deaktivieren der Speicherdienstverschlüsselung für ein Speicherkonto beim [Azure-Portal](https://azure.portal.com) an, und wählen Sie ein Speicherkonto aus. Suchen Sie auf dem Blatt „Einstellungen“ nach dem Abschnitt mit dem Blobdienst, und klicken Sie auf „Verschlüsselung“.
+Melden Sie sich zum Aktivieren oder Deaktivieren der Speicherdienstverschlüsselung für ein Speicherkonto beim [Azure-Portal](https://portal.azure.com) an, und wählen Sie ein Speicherkonto aus. Suchen Sie auf dem Blatt „Einstellungen“ nach dem Abschnitt mit dem Blobdienst, und klicken Sie auf „Verschlüsselung“.
 
 ![Portal-Screenshot mit der Verschlüsselungsoption](./media/storage-service-encryption/image1.png)
 <br/>*Abbildung 1: Aktivieren von SSE für Blob-Dienst (Schritt 1)*
@@ -85,7 +84,7 @@ AzCopy ist ein Windows Befehlszeilenprogramm, das zum Kopieren von Daten zu und 
 Weitere Informationen finden Sie unter [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](storage-use-azcopy.md).
 
 #### <a name="using-smb"></a>Verwendung von SMB
-Der Azure-Dateispeicher verfügt über Dateifreigaben in der Cloud unter Verwendung des standardmäßigen SMB-Protokolls. Sie können eine Dateifreigabe auf einem Client lokal oder in Azure bereitstellen. Nach der Bereitstellung können Tools wie Robocopy zum Kopieren von Dateien auf Azure-Dateifreigaben verwendet werden. Weitere Informationen finden Sie unter [Bereitstellen der Azure-Dateifreigabe unter Windows](https://docs.microsoft.com/en-us/azure/storage/storage-dotnet-how-to-use-files#mount-the-file-share) und [Bereitstellen der Azure-Dateifreigabe unter Linux](https://docs.microsoft.com/en-us/azure/storage/storage-how-to-use-files-linux#mount-the-file-share).
+Der Azure-Dateispeicher verfügt über Dateifreigaben in der Cloud unter Verwendung des standardmäßigen SMB-Protokolls. Sie können eine Dateifreigabe auf einem Client lokal oder in Azure bereitstellen. Nach der Bereitstellung können Tools wie Robocopy zum Kopieren von Dateien auf Azure-Dateifreigaben verwendet werden. Weitere Informationen finden Sie unter [Bereitstellen der Azure-Dateifreigabe unter Windows](storage-file-how-to-use-files-windows.md) und [Bereitstellen der Azure-Dateifreigabe unter Linux](storage-how-to-use-files-linux.md).
 
 
 #### <a name="using-the-storage-client-libraries"></a>Verwenden von Speicherclientbibliotheken

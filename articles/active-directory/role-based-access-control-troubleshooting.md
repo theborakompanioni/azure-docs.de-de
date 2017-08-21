@@ -5,20 +5,20 @@ services: azure-portal
 documentationcenter: na
 author: kgremban
 manager: femila
-editor: 
 ms.assetid: df42cca2-02d6-4f3c-9d56-260e1eb7dc44
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/02/2017
+ms.date: 07/12/2017
 ms.author: kgremban
-translationtype: Human Translation
-ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
-ms.openlocfilehash: 32b335d8a1f84348ab28bcc081cc42fd79fb08fc
-ms.lasthandoff: 03/04/2017
-
+ms.reviewer: rqureshi
+ms.translationtype: HT
+ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
+ms.openlocfilehash: 9ad194308d30ca652b32ec3b76750b0e838472f4
+ms.contentlocale: de-de
+ms.lasthandoff: 07/19/2017
 
 ---
 # <a name="role-based-access-control-troubleshooting"></a>Behandlung von Problemen bei der rollenbasierten Zugriffssteuerung
@@ -53,7 +53,7 @@ Web-Apps können aufgrund verschiedener miteinander verknüpfter Ressourcen komp
 
 ![Web-App-Ressourcengruppe](./media/role-based-access-control-troubleshooting/website-resource-model.png)
 
-Wenn Sie daher lediglich auf die Web-App Zugriff gewähren, sind viele Funktionen des Blatts "Website" im Azure-Portal deaktiviert.
+Wenn Sie daher lediglich auf die Web-App Zugriff gewähren, sind viele Funktionen des Blatts „Website“ im Azure-Portal deaktiviert.
 
 Die folgenden Elemente erfordern **Schreibzugriff** auf den **App Service-Plan** für Ihre Website:  
 
@@ -63,8 +63,8 @@ Die folgenden Elemente erfordern **Schreibzugriff** auf den **App Service-Plan**
 
 Die folgenden Elemente erfordern **Schreibzugriff** auf die gesamte **Ressourcengruppe**, die Ihre Website umfasst:  
 
-* SSL-Zertifikate und -Bindungen (Der Grund dafür ist, dass SSL-Zertifikate von Websites derselben Ressourcengruppe und desselben geografischen Standorts gemeinsam genutzt werden können).  
-* Warnregeln  
+* SSL-Zertifikate und -Bindungen (SSL-Zertifikate können von Websites derselben Ressourcengruppe und desselben geografischen Standorts gemeinsam genutzt werden)  
+* Warnungsregeln  
 * Einstellungen für automatische Skalierung  
 * Application Insights-Komponenten  
 * Webtests  
@@ -85,7 +85,7 @@ Die folgenden Elemente erfordern **Schreibzugriff** auf den **virtuellen Compute
 
 * Verfügbarkeitsgruppe  
 * Satz mit Lastenausgleich  
-* Warnregeln  
+* Warnungsregeln  
 
 Wenn Sie auf keine dieser Kacheln zugreifen können, fragen Sie den Administrator nach Zugriff als Mitwirkender auf diese Ressourcengruppe.
 
