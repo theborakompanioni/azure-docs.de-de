@@ -4,10 +4,10 @@ hide_bc: true
 title: Microsoft Azure-Dokumentation
 description: Erfahren Sie, wie Sie mit Microsoft Azure-Clouddiensten leistungsstarke Anwendungen erstellen und verwalten. Laden Sie die Dokumentation, Beispielcode, Tutorials und vieles mehr herunter.
 ms.translationtype: HT
-ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
-ms.openlocfilehash: 745c7bdc2898d20ac361f4d0fb92b4c1313a89f1
+ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
+ms.openlocfilehash: c9bb109df050041aaff861adfa8dfcd2947d981d
 ms.contentlocale: de-de
-ms.lasthandoff: 08/02/2017
+ms.lasthandoff: 08/16/2017
 
 ---
 <div id="main" class="v2">
@@ -1039,7 +1039,13 @@ ms.lasthandoff: 08/02/2017
                                         <li>
                                             <a href="/azure/azure-resource-manager/">
                                                 <img src="media/index/AzureDefaultBlack.svg" alt="" />
-                                                <p>Azure-Ressourcen-Manager</p>
+                                                <p>Azure Resource Manager</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/azure/event-grid/">
+                                                <img src="media/index/azure_event_grid.svg" alt="" />
+                                                <p>Azure Event Grid</p>
                                             </a>
                                         </li>
                                     </ul>
@@ -3066,6 +3072,25 @@ ms.lasthandoff: 08/02/2017
                                     </div>
                                 </a>
                             </li>
+                            <li>
+                                <a href="/azure/event-grid/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/azure_event_grid.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Azure Event Grid</h3>
+                                                    <p>Von zuverlässiger Übermittlung in sehr großem Umfang profitieren</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
                         </ul>
                     </li>
                     <li>
@@ -3628,4 +3653,3 @@ ms.lasthandoff: 08/02/2017
         </ul>
     </div>
 </div>
-
