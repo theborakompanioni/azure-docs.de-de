@@ -76,11 +76,6 @@
       href: ../virtual-machines-disaster-recovery-guidance.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
     - name: Geplante Wartung
       href: planned-maintenance.md
-      items:
-        - name: Beibehalten der Wartung
-          href: maintenance-in-place.md
-        - name: Neustarten der Wartung
-          href: impactful-maintenance.md
     - name: VM-Größen
       items:
         - name: Übersicht über VM-Größen

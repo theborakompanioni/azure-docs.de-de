@@ -3,8 +3,8 @@ title: Staging einer Clouddienstbereitstellung (Node.js) | Microsoft Docs
 description: "Hier erfahren Sie, wie Sie eine Azure-Anwendung durch einen Austausch der virtuellen IP (VIP) zu einer Stagingumgebung und anschließend zu einer Produktionsumgebung bereitstellen."
 services: cloud-services
 documentationcenter: nodejs
-author: rmcmurray
-manager: erikre
+author: TomArcher
+manager: routlaw
 editor: 
 ms.assetid: d65d26a6-b424-49cd-a88c-7ef46bb112a8
 ms.service: cloud-services
@@ -12,13 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 04/25/2017
-ms.author: robmcm
-translationtype: Human Translation
+ms.date: 08/17/2017
+ms.author: tarcher
+ms.translationtype: Human Translation
 ms.sourcegitcommit: ff60ebaddd3a7888cee612f387bd0c50799496ac
 ms.openlocfilehash: a015c4a2f5dccb8cae49b739e5d8c342daec54cf
+ms.contentlocale: de-de
 ms.lasthandoff: 02/09/2017
-
 
 ---
 # <a name="staging-an-application-in-azure"></a>Staging von Anwendungen in Azure
