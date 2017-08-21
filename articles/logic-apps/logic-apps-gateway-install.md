@@ -13,14 +13,13 @@ ms.devlang:
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
-ms.date: 06/9/2017
+ms.date: 07/13/2017
 ms.author: LADocs; dimazaid; estfan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
-ms.openlocfilehash: 7122b970c2e4703df9771e8ace4e710399ca3e6c
+ms.translationtype: HT
+ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
+ms.openlocfilehash: 34e68ae7d35019848b35c785a2715ec458dc6e73
 ms.contentlocale: de-de
-ms.lasthandoff: 06/13/2017
-
+ms.lasthandoff: 07/14/2017
 
 ---
 # <a name="install-the-on-premises-data-gateway-for-azure-logic-apps"></a>Installieren des lokalen Datengateways für Azure-Logik-Apps
@@ -29,7 +28,7 @@ Damit Ihre Logik-Apps auf lokale Datenquellen zugreifen können, müssen Sie das
 
 Das Gateway unterstützt Verbindungen mit diesen lokalen Datenquellen:
 
-*   BizTalk Server
+*   BizTalk Server 2016
 *   DB2  
 *   Dateisystem
 *   Informix
@@ -39,21 +38,21 @@ Das Gateway unterstützt Verbindungen mit diesen lokalen Datenquellen:
 *   PostgreSQL
 *   SAP-Anwendungsserver 
 *   SAP-Nachrichtenserver
-*   SharePoint nur für HTTP, nicht für HTTPS
+*   SharePoint
 *   SQL Server
 *   Teradata
 
 In diesen Schritten wird gezeigt, wie Sie zunächst das lokale Datengateway installieren, bevor Sie [eine Verbindung zwischen dem Gateway und Ihren Logik-Apps einrichten](./logic-apps-gateway-connection.md). Weitere Informationen zu unterstützten Connectors finden Sie unter [Connectors für Azure Logic Apps](https://docs.microsoft.com/azure/connectors/apis-list). 
 
-Weitere Informationen zu Datengateways für andere Microsoft-Dienste finden Sie in den folgenden Artikeln:
+Informationen zum Verwenden des Gateways mit anderen Diensten finden Sie in den folgenden Artikeln:
 
-*   [Azure Application Gateway](https://azure.microsoft.com/services/application-gateway/): [Übersicht über Application Gateway](../application-gateway/application-gateway-introduction.md)
 *   [Microsoft Power BI | Lokales Datengateway](https://powerbi.microsoft.com/documentation/powerbi-gateway-onprem/)
 *   [Azure Analysis Services | Lokales Datengateway](../analysis-services/analysis-services-gateway.md)
 *   [Microsoft Flow | Lokales Datengateway](https://flow.microsoft.com/documentation/gateway-manage/)
+*   [Microsoft Power Apps lokales Datengateway](https://powerapps.microsoft.com/tutorials/gateway-management/)
 
 <a name="requirements"></a>
-## <a name="requirements"></a>Requirements (Anforderungen)
+## <a name="requirements"></a>Anforderungen
 
 **Minimum**:
 

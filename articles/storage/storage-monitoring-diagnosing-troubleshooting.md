@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: fhryo-msft
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 8598e18aeb0552455a6e5344f10eb48382e8c2f4
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: c6bf7cd3bd16d8af30fed09f7878a0e68748a971
 ms.contentlocale: de-de
-ms.lasthandoff: 05/16/2017
-
+ms.lasthandoff: 07/12/2017
 
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure-Speicher: Überwachung, Diagnose und Problembehandlung
@@ -31,7 +30,7 @@ Diagnose und Problembehandlung können in einer verteilten Anwendung, die in ein
 Um solche Anwendungen erfolgreich zu verwalten, sollten Sie sie proaktiv überwachen und verstehen, wie die Diagnose und Problembehandlung aller Anwendungsaspekte und ihrer abhängigen Technologien durchzuführen sind. Als Nutzer des Azure-Speicherdiensts sollten Sie ständig die von Ihrer Anwendung verwendeten Speicherdienste überwachen, um unerwartete Verhaltensveränderungen zu erkennen (beispielsweise langsamere Antwortzeiten als üblich), und Protokollierung verwenden, um detailliertere Daten zu sammeln und ein Problem in der Tiefe zu analysieren. Die Diagnoseinformationen, die Sie sowohl aus der Überwachung als auch der Protokollierung erhalten, werden Ihnen helfen, die Ursache des Problems, das bei Ihrer Anwendung auftritt, zu bestimmen. Dann können Sie das Problem behandeln und die entsprechenden Schritte, die Sie für seine Beseitigung ergreifen können, festlegen. Azure-Speicher ist ein Kerndienst von Azure und ein wichtiger Bestandteil der meisten Lösungen, die Kunden auf der Azure-Infrastruktur bereitstellen. Azure-Speicher beinhaltet Funktionen zur vereinfachten Überwachung, Diagnose und Problembehandlung von Speicherproblemen in Ihren cloudbasierten Anwendungen.
 
 > [!NOTE]
-> Der Dienst Azure Files unterstützt derzeit keine Protokollierung.
+> Azure File Storage unterstützt derzeit keine Protokollierung.
 > 
 
 Eine praktische Anleitung für die End-to-End-Problembehandlung in Azure-Speicheranwendungen finden Sie unter [End-to-End-Problembehandlung mit Azure-Speichermetriken und -Protokollierung, AzCopy und Message Analyzer](storage-e2e-troubleshooting.md).
@@ -72,7 +71,7 @@ Eine praktische Anleitung für die End-to-End-Problembehandlung in Azure-Speiche
   * [Ihre Probleme entstehen aus der Verwendung des Speicheremulators für Entwicklung oder Test]
   * [Sie stoßen bei der Installation von Azure SDK für .NET auf Probleme]
   * [Sie haben ein anderes Problem mit einem Speicherdienst]
-  * [Problembehandlung bei Azure-Dateien unter Windows und Linux](storage-troubleshoot-file-connection-problems.md)
+  * [Behandeln von Azure File Storage-Problemen unter Windows und Linux](storage-troubleshoot-file-connection-problems.md)
 * [Anhängen]
   * [Anhang 1: Verwendung von Fiddler zur Erfassung von HTTP- und HTTPS-Verkehr]
   * [Anhang 2: Verwendung von Wireshark zur Erfassung von Netzwerkverkehr]
@@ -570,11 +569,11 @@ Die folgende Tabelle zeigt eine Muster-Serverprotokollierungsnachricht aus der S
 | Anfragestartzeit | 2014-05-30T06:17:48.4473697Z |
 | Vorgangsart     | GetBlobProperties            |
 | Anfragestatus     | SASAuthorizationError        |
-| HTTP-Statuscode   | 404                            |
+| HTTP-Statuscode   | 404                          |
 | Authentifizierungsart| SAS                          |
 | Dienstart       | Blob                         |
-| Anfrage-URL         | https://domemaildist.blob.core.windows.net/azureimblobcontainer/blobCreatedViaSAS.txt |
-| nbsp;                 |   ?sv=2014-02-14&sr=c&si=mypolicy&sig=XXXXX&;api-version=2014-02-14 |
+| Anfrage-URL        | https://domemaildist.blob.core.windows.net/azureimblobcontainer/blobCreatedViaSAS.txt |
+| nbsp;              |   ?sv=2014-02-14&sr=c&si=mypolicy&sig=XXXXX&;api-version=2014-02-14 |
 | Request ID header  | a1f348d5-8032-4912-93ef-b393e5252a3b |
 | Clientanfrage-ID  | 2d064953-8436-4ee0-aa0c-65cb874f7929 |
 

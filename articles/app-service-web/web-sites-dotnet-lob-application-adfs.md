@@ -1,6 +1,6 @@
 ---
 title: Erstellen einer Azure-Branchen-App mit AD FS-Authentifizierung | Microsoft Docs
-description: "Erfahren Sie, wie Sie eine Branchen-App in Azure App Service erstellen, die mit lokalem STS authentifiziert wird. Für dieses Lernprogramm gilt AD FS als lokaler STS."
+description: "Erfahren Sie, wie Sie eine Branchen-App in Azure App Service erstellen, die mit lokalem STS authentifiziert wird. Für dieses Tutorial gilt AD FS als lokaler STS."
 services: app-service\web
 documentationcenter: .net
 author: cephalin
@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: web
 ms.date: 08/31/2016
 ms.author: cephalin
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
-ms.openlocfilehash: 1895094b28d9596eec644078b6f9a877b526b89e
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: f9a8984400378d154a504af8a41609900128d052
 ms.contentlocale: de-de
-ms.lasthandoff: 06/01/2017
-
+ms.lasthandoff: 07/12/2017
 
 ---
 # <a name="create-a-line-of-business-azure-app-with-ad-fs-authentication"></a>Erstellen einer Azure-Branchen-App mit AD FS-Authentifizierung
@@ -105,7 +104,7 @@ Die Beispielanwendung in diesem Lernprogramm ( [WebApp-WSFederation-DotNet](http
    &lt;add key="ClientValidationEnabled" value="true" /&gt;
    &lt;add key="UnobtrusiveJavaScriptEnabled" value="true" /&gt;
    <mark><del>&lt;add key="ida:Wtrealm" value="[Enter the App ID URI of WebApp-WSFederation-DotNet https://contoso.onmicrosoft.com/WebApp-WSFederation-DotNet]" /&gt;</del></mark>
-   <mark><del>&lt;add key="ida:AADInstance" value="https://login.windows.net" /&gt;</del></mark>
+   <mark><del>&lt;add key="ida:AADInstance" value="https://login.microsoftonline.com" /&gt;</del></mark>
    <mark><del>&lt;add key="ida:Tenant" value="[Enter tenant name, e.g. contoso.onmicrosoft.com]" /&gt;</del></mark>
    <mark>&lt;add key="ida:RPIdentifier" value="[Enter the relying party identifier as configured in AD FS, e.g. https://localhost:44320/]" /&gt;</mark>
    <mark>&lt;add key="ida:ADFS" value="[Enter the FQDN of AD FS service, e.g. adfs.contoso.com]" /&gt;</mark>
@@ -132,7 +131,7 @@ Sie veröffentlichen hier eine Anwendung in einer Web-App in App Service-Web-App
 5. Füllen Sie alle erforderlichen Felder aus. Da Sie später eine Verbindung mit lokalen Daten herstellen, erstellen Sie keine Datenbank für diese Web-App.
    
     ![](./media/web-sites-dotnet-lob-application-adfs/02-create-website.png)
-6. Klicken Sie auf **Create**. Nachdem die Web-App erstellt wurde, wird das Dialogfeld "Web veröffentlichen" geöffnet.
+6. Klicken Sie auf **Erstellen**. Nachdem die Web-App erstellt wurde, wird das Dialogfeld "Web veröffentlichen" geöffnet.
 7. Ändern Sie **http** unter **Ziel-URL** in **https**. Kopieren Sie die gesamte URL zur späteren Verwendung in einen Text-Editor. Klicken Sie dann auf **Veröffentlichen**.
    
     ![](./media/web-sites-dotnet-lob-application-adfs/03-destination-url.png)

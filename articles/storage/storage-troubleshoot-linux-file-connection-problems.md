@@ -12,14 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/24/2017
+ms.date: 07/11/2017
 ms.author: genli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: 5c22c2d8c00882c45ecc2991916e389b2a00586d
+ms.translationtype: HT
+ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
+ms.openlocfilehash: 62cd62ec3a2900f06acacc0852a48b5e3ff1c8cd
 ms.contentlocale: de-de
-ms.lasthandoff: 06/17/2017
-
+ms.lasthandoff: 07/13/2017
 
 ---
 # <a name="troubleshoot-azure-file-storage-problems-in-linux"></a>Beheben von Problemen mit Azure File Storage unter Linux
@@ -84,11 +83,11 @@ Wenn Sie kein Upgrade auf die neuesten Kernelversionen vornehmen können, könne
 
 ### <a name="cause"></a>Ursache
 
-Linux-Distributionen unterstützen die Verschlüsselungsfunktionen in SMB 3.0 noch nicht. In manchen Distributionen können Benutzer eine „115“-Fehlermeldung erhalten, wenn sie aufgrund eines fehlenden Features versuchen, Azure File Storage mithilfe von SMB 3.0 einzubinden.
+Bei einigen Linux-Distributionen, die noch nicht die Verschlüsselungsfunktionen in SMB 3.0 unterstützen, können Benutzer die Fehlermeldung „115“ aufgrund einer fehlenden Funktion erhalten, wenn sie versuchen, Azure File Storage mithilfe von SMB 3.0 einzubinden.
 
 ### <a name="solution"></a>Lösung
 
-Wenn der Linux-SMB-Client die Verschlüsselung nicht unterstützt, binden Sie Azure File Storage mithilfe von SMB 2.1 von einer Azure Linux-VM aus ein, die sich im gleichen Rechenzentrum wie das File Storage-Konto befindet.
+Die Verschlüsselungsfunktionen für SMB 3.0 für Linux wurden im Kernel 4.11 eingeführt. Diese Funktionen ermöglichen das Einbinden einer Azure-Dateifreigabe aus einer lokalen oder anderen Azure-Region. Zum Zeitpunkt der Veröffentlichung wurden diese Funktionen zu Ubuntu 17.04 und Ubuntu 16.10 zurückportiert. Wenn Ihr Linux-SMB-Client die Verschlüsselung nicht unterstützt, binden Sie Azure File Storage mithilfe von SMB 2.1 von einer Azure Linux-VM aus ein, die sich im gleichen Rechenzentrum wie das File Storage-Konto befindet.
 
 <a id="slowperformance"></a>
 ## <a name="slow-performance-on-an-azure-file-share-mounted-on-a-linux-vm"></a>Langsame Leistung in einer Azure-Dateifreigabe, die in einer Linux-VM bereit gestellt ist
@@ -111,18 +110,7 @@ Sie können auch überprüfen, ob die richtigen Optionen verwendet werden, indem
 
 `//mabiccacifs.file.core.windows.net/cifs on /cifs type cifs (rw,relatime,vers=3.0,sec=ntlmssp,cache=strict,username=xxx,domain=X,uid=0,noforceuid,gid=0,noforcegid,addr=192.168.10.1,file_mode=0777, dir_mode=0777,persistenthandles,nounix,serverino,mapposix,rsize=1048576,wsize=1048576,actimeo=1)`
 
-Wenn die Optionen **cache=strict** oder **serverino** nicht vorhanden sind, heben Sie die Bereitstellung von Azure File Storage auf, und stellen Sie sie wieder her, indem Sie den „mount“-Befehl aus der [Dokumentation](storage-how-to-use-files-linux.md#mount-the-file-share) ausführen. Überprüfen Sie dann erneut, ob der **/etc/fstab**-Eintrag die richtigen Optionen hat.
-
-<a id="error11"></a>
-## <a name="mount-error11-resource-temporarily-unavailable-when-youre-mounting-to-an-ubuntu-48-kernel"></a>„Bereitstellungsfehler (11): Ressource vorübergehend nicht verfügbar“, beim Bereitstellen von Ubuntu-Kerneln ab Version 4.8
-
-### <a name="cause"></a>Ursache
-
-Im Ubuntu 16.10-Kernel (Version 4.8) wird der Client dokumentiert, um die Verschlüsselung zu unterstützen, tut dies aber eigentlich nicht.
-
-### <a name="solution"></a>Lösung
-
-Geben Sie bis zur Behebung des Problems in Ubuntu 16.10 die `vers=2.1`-Bereitstellungsoption an, oder verwenden Sie Ubuntu 16.04.
+Wenn die Optionen **cache=strict** oder **serverino** nicht vorhanden sind, heben Sie die Bereitstellung von Azure File Storage auf, und stellen Sie sie wieder her, indem Sie den „mount“-Befehl aus der [Dokumentation](storage-how-to-use-files-linux.md) ausführen. Überprüfen Sie dann erneut, ob der **/etc/fstab**-Eintrag die richtigen Optionen hat.
 
 <a id="timestampslost"></a>
 ## <a name="time-stamps-were-lost-in-copying-files-from-windows-to-linux"></a>Zeitstempel gingen beim Kopieren von Dateien von Windows auf Linux verloren

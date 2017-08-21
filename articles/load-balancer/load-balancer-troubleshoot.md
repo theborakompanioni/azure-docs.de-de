@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/17/2017
+ms.date: 07/10/2017
 ms.author: kumud
-translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: 53425eaf388e5164d2664c163f56a33d48cf8a36
-ms.lasthandoff: 04/20/2017
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: df5c836abbf09889f4859170359c0ee6c1b03378
+ms.contentlocale: de-de
+ms.lasthandoff: 07/12/2017
 
 ---
 
@@ -119,9 +120,9 @@ Wenn die auf der Back-End-VM eines Load Balancers gehostete Anwendung versucht, 
 * Konfigurieren Sie separate Back-End-Pool-VMs für jede Anwendung. 
 * Konfigurieren Sie die Anwendung in VMs mit zwei NICs, damit jede Anwendung eine eigene Netzwerkschnittstelle und IP-Adresse verwendet. 
 
-### <a name="cause-4-accessing-the-internet-load-balancer-vip-from-the-participating-load-balancer-backend-pool-vm"></a>Ursache 4: Zugreifen auf die Internet Load Balancer-VIP über die beteiligte VM des Load Balancer-Back-End-Pools
+### <a name="cause-4-accessing-the-internal-load-balancer-vip-from-the-participating-load-balancer-backend-pool-vm"></a>Ursache 4: Zugreifen auf die Internal Load Balancer-VIP über die beteiligte VM des Load Balancer-Back-End-Pools
 
-Wenn eine ILB-VIP in einem VNET konfiguriert ist und eine der beteiligten Back-End-VMs auf die Internet Load Balancer-VIP zugreifen möchte, führt dies zu einem Fehler. Dieses Szenario wird nicht unterstützt.
+Wenn eine ILB-VIP in einem VNET konfiguriert ist und eine der beteiligten Back-End-VMs auf die Internal Load Balancer-VIP zugreifen möchte, führt dies zu einem Fehler. Dieses Szenario wird nicht unterstützt.
 **Lösung:** Prüfen Sie Application Gateway oder andere Proxys (z.B. nginx oder HAProxy), um diese Art von Szenario zu unterstützen. Weitere Informationen zu Application Gateway finden Sie unter [Übersicht über Application Gateway](../application-gateway/application-gateway-introduction.md).
 
 ## <a name="additional-network-captures"></a>Zusätzliche Netzwerkerfassungen

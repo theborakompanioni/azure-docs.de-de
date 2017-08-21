@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: tomfitz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
-ms.openlocfilehash: 4c373eef77605ab45c9a08ed7f60476abafa229c
+ms.translationtype: HT
+ms.sourcegitcommit: c999eb5d6b8e191d4268f44d10fb23ab951804e7
+ms.openlocfilehash: fe6a28afbee573351186e361126ddca7db764311
 ms.contentlocale: de-de
-ms.lasthandoff: 06/30/2017
-
+ms.lasthandoff: 07/17/2017
 
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement
@@ -125,6 +124,7 @@ Derzeit ermöglichen die folgenden Dienste das Verschieben in eine neue Ressourc
 ## <a name="services-that-do-not-enable-move"></a>Dienste, die keine Verschiebung ermöglichen
 Die folgenden Dienste ermöglichen das Verschieben einer Ressource derzeit nicht:
 
+* AD Domain Services
 * AD Hybrid Health Service
 * Application Gateway
 * Verfügbarkeitsgruppen mit virtuellen Computern mit Managed Disks

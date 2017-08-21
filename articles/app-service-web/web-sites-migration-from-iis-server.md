@@ -15,10 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/01/2016
 ms.author: cephalin
-translationtype: Human Translation
-ms.sourcegitcommit: 9553c9ed02fa198d210fcb64f4657f84ef3df801
-ms.openlocfilehash: 6fdee57d33b19569ef892d0d32ea7007fd69faaf
-ms.lasthandoff: 03/23/2017
+ms.translationtype: HT
+ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
+ms.openlocfilehash: 18d6a8da38b42dcf5c1500f7fc26638aea26a809
+ms.contentlocale: de-de
+ms.lasthandoff: 07/10/2017
 
 
 ---
@@ -55,7 +56,7 @@ Der Migrations-Assistent erstellt einen Bereitschaftsbericht, um alle möglichen
 * Andere Komponenten wie z. B. SharePoint, FrontPage-Servererweiterungen (FPSE), FTP oder SSL-Zertifikate werden nicht migriert.
 
 ## <a name="how-to-use-the-web-apps-migration-assistant"></a>Verwenden des Migrations-Assistenten für Web-Apps
-In diesem Abschnitt werden Sie schrittweise durch ein Beispiel zum Migrieren einiger Websites geführt, die eine SQL Server-Datenbank verwenden und auf einem lokalen Computer mit Windows Server 2003 R2 (IIS 6.0) ausgeführt werden:
+In diesem Abschnitt werden Sie ausführlich durch ein Beispiel zum Migrieren einiger Websites geführt, die eine SQL Server-Datenbank verwenden und auf einem lokalen Computer mit Windows Server 2003 R2 (IIS 6.0) ausgeführt werden:
 
 1. Navigieren Sie auf dem IIS-Server oder Client-Computer zu [https://www.movemetothecloud.net/](https://www.movemetothecloud.net/) 
    

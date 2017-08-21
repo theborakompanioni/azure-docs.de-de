@@ -1,9 +1,32 @@
+---
+title: "Empfangen von Aktivitätsprotokollwarnungen zu Azure-Dienstbenachrichtigungen | Microsoft-Dokumentation"
+description: Lassen Sie sich per SMS, E-Mail oder Webhook benachrichtigen, wenn Ereignisse beim Azure-Dienst auftreten.
+author: johnkemnetz
+manager: orenr
+editor: 
+services: monitoring-and-diagnostics
+documentationcenter: monitoring-and-diagnostics
+ms.assetid: 
+ms.service: monitoring-and-diagnostics
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 03/31/2017
+ms.author: johnkem
+ms.translationtype: HT
+ms.sourcegitcommit: cddb80997d29267db6873373e0a8609d54dd1576
+ms.openlocfilehash: c8339c08333aaa471b42f6468ca2a59ee4efacf9
+ms.contentlocale: de-de
+ms.lasthandoff: 07/18/2017
+
+---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Webhook für Azure-Aktivitätsprotokollwarnungen
 Als Teil der Definition einer Aktionsgruppe können Sie Webhook-Endpunkte für dem Empfang von Aktivitätsprotokollwarnungen konfigurieren. Mithilfe von Webhooks können Sie diese Benachrichtigung zur Nachbearbeitung oder Ausführung benutzerdefinierter Aktionen an andere Systeme weiterleiten. In diesem Artikel erfahren Sie, wie die Nutzlast für die HTTP POST-Methode für einen Webhook aussieht.
 
-Informationen zur Einrichtung und zum Schema von Azure-Aktivitätsprotokollwarnungen finden Sie auf [dieser Seite](monitoring-activity-log-alerts.md).
+Informationen zu Azure-Aktivitätsprotokollwarnungen finden Sie auf [dieser Seite](monitoring-activity-log-alerts.md).
 
-Informationen zur Einrichtung und zum Schema von Aktionsgruppen finden Sie auf [dieser Seite](monitoring-action-groups.md).
+Weitere Informationen zum Erstellen von Aktionsgruppen [finden Sie auf dieser Seite](monitoring-action-groups.md)
 
 ## <a name="authenticating-the-webhook"></a>Authentifizieren des Webhooks
 Der Webhook kann mithilfe der tokenbasierten Autorisierung authentifiziert werden. Der Webhook-URI wird mit einer Token-ID gespeichert, z.B. `https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`.
@@ -90,7 +113,7 @@ Die JSON-Nutzlast des POST-Vorgangs variiert in Abhängigkeit vom Feld „data.c
                     "stage": "Active",
                     "communicationId": "...",
                     "version": "0.1"
-                },
+                }
             }
         },
         "properties": {}
@@ -136,3 +159,4 @@ Spezifische Informationen zu Aktivitätsprotokollwarnungen zu Dienstintegritäts
 * [Senden einer SMS über Twilio auf der Grundlage einer Azure-Warnung mithilfe einer Logik-App](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app). Dieses Beispiel ist eigentlich für Metrikwarnungen konzipiert, kann jedoch für Aktivitätsprotokollwarnungen angepasst werden.
 * [Senden einer Slack-Nachricht auf der Grundlage einer Azure-Warnung mithilfe einer Logik-App](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app). Dieses Beispiel ist eigentlich für Metrikwarnungen konzipiert, kann jedoch für Aktivitätsprotokollwarnungen angepasst werden.
 * [Senden einer Nachricht an eine Azure-Warteschlange auf der Grundlage einer Azure-Warnung mithilfe einer Logik-App](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app). Dieses Beispiel ist eigentlich für Metrikwarnungen konzipiert, kann jedoch für Aktivitätsprotokollwarnungen angepasst werden.
+

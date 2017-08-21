@@ -12,16 +12,26 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
 ms.devlang: Java
 ms.topic: article
-ms.date: 03/30/2017
+ms.date: 07/17/2017
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: e50c1c70a4378560f8ce3182069cba4832fa4d22
-ms.lasthandoff: 03/31/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 94d1d4c243bede354ae3deba7fbf5da0652567cb
+ms.openlocfilehash: c179c39a43da0aa35e945acceacbf27fe8e328f3
+ms.contentlocale: de-de
+ms.lasthandoff: 07/18/2017
 
 ---
 # <a name="release-notes"></a>Versionshinweise
+
+## <a name="431-07172017"></a>4.3.1 (07/17/2017)
+* Beheben eines Absturzes, der in seltenen Fällen beim Abrufen von `EngagementAgentUtils.isInDedicatedEngagementProcess` auftritt, worauf ebenfalls die `EngagementApplication`-Klasse zugreift.
+
+## <a name="430-06272017"></a>4.3.0 (06/27/2017)
+* Android 8-Unterstützung (frühere Versionen des SDK funktionieren nicht auf Android 8).
+* Keine Abhängigkeit von der Support-Bibliothek mehr.
+* Entfernen der `EngagementFragmentActivity`-Klasse.
+* Wegen der [Einschränkungen von Ausführungen im Hintergrund](https://developer.android.com/preview/features/background.html) auf Android 8 können Protokolle im Hintergrund verzögert werden, bis der Benutzer mit dem Gerät interagiert. Dies wirkt sich auf die Statistiken der Pushkampagnen **Delivered** (Übermittelt) und **System notification displayed** (Systembenachrichtigung angezeigt) aus, die verzögert werden, wenn sich das Gerät im Ruhezustand befindet (die Benachrichtigung wird dennoch angezeigt und in Echtzeit ohne Probleme klingeln und vibrieren).
+* Wegen der [Einschränkungen des Standorts im Hintergrund](https://developer.android.com/preview/features/background-location-limits.html), wird der Aufenthaltsort in Echtzeit auf Android 8 im Hintergrund nicht regelmäßig aktualisiert.
 
 ## <a name="424-03302017"></a>4.2.4 (30.03.2017)
 * Die Textfarben von In-App-Benachrichtigungen unter Android 7 wurden so korrigiert, dass sie denen in älteren Android-Versionen entsprechen.

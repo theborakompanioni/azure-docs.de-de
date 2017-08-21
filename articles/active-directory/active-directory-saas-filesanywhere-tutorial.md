@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/17/2017
 ms.author: jeedes
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 40164cfba8b54634278194c599a4493a5b7910b2
-ms.lasthandoff: 04/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
+ms.openlocfilehash: 4153056bd21006061c6ad8ff9cf3c17de9248628
+ms.contentlocale: de-de
+ms.lasthandoff: 07/19/2017
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-filesanywhere"></a>Tutorial: Azure Active Directory-Integration mit FilesAnywhere
@@ -117,6 +117,8 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-FilesAnywhere-tutorial/tutorial_filesanywhere_url.png)
     
     a. Geben Sie im Textfeld **Antwort-URL** eine URL nach folgendem Muster ein: `https://<company name>.filesanywhere.com/saml20.aspx?c=215`
+> [!NOTE]
+> Beachten Sie, dass der Wert **215** für **clientid** nur ein Beispiel ist. Sie müssen es durch den tatsächlichen clientid-Wert ersetzen.
 
 4. Führen Sie im Abschnitt **Domäne und URLs für FilesAnywhere** die folgenden Schritte aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
     
@@ -170,7 +172,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-FilesAnywhere-tutorial/tutorial_FilesAnywhere_configuresignon.png)
 
-10.    Um die SSO-Konfiguration für Ihre Anwendung aufseiten von FilesAnywhere abzuschließen, wenden Sie sich an das [FilesAnywhere-Supportteam](mailto:support@FilesAnywhere.com), und geben Sie das heruntergeladene SAML-Tokensignaturzertifikat und die URL für einmaliges Anmelden (SSO) an.
+10. Um die SSO-Konfiguration für Ihre Anwendung aufseiten von FilesAnywhere abzuschließen, wenden Sie sich an das [FilesAnywhere-Supportteam](mailto:support@FilesAnywhere.com), und geben Sie das heruntergeladene SAML-Tokensignaturzertifikat und die URL für einmaliges Anmelden (SSO) an.
 
 ### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 In diesem Abschnitt wird im Azure-Verwaltungsportal eine Testbenutzerin namens Britta Simon erstellt.

@@ -1,5 +1,5 @@
 ---
-title: "Kopieren der Data Science-Beispiele von anderen – Machine Learning | Microsoft-Dokumentation"
+title: "Kopieren der Data Science-Beispiele von anderen – Azure Machine Learning | Microsoft-Dokumentation"
 description: 'Branchengeheimnis von Data Science: Lassen Sie andere Ihre Arbeit erledigen. Abrufen von Machine Learning-Beispielen aus dem Cortana Analytics-Katalog.'
 keywords: Data Science-Beispiele,Machine Learning-Beispiel,Clusteringalgorithmus,Beispiel eines Clusteringalgorithmus
 services: machine-learning
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/09/2017
-ms.author: cgronlun;garye
-translationtype: Human Translation
-ms.sourcegitcommit: 1e941778c194462b311e6347c56670d3e0193e90
-ms.openlocfilehash: ebc44a4190bac697697e0b651039a0e8ee8e4a95
-ms.lasthandoff: 02/10/2017
-
+ms.date: 07/13/2017
+ms.author: cgronlun
+ms.translationtype: HT
+ms.sourcegitcommit: 19be73fd0aec3a8f03a7cd83c12cfcc060f6e5e7
+ms.openlocfilehash: 440a1ded1f1dc1b8fbe73e3bbcbbd68ec9422bf8
+ms.contentlocale: de-de
+ms.lasthandoff: 07/13/2017
 
 ---
 # <a name="copy-other-peoples-work-to-do-data-science"></a>Kopieren der Arbeit anderer für Ihre Data Science
@@ -27,6 +27,7 @@ ms.lasthandoff: 02/10/2017
 Eines der Branchengeheimnisse von Data Science besteht darin, Ihre Arbeit von anderen erledigen zu lassen. Suchen Sie im Cortana Analytics-Katalog ein Beispiel für einen Clusteringalgorithmus, das Sie für Ihr eigenes Machine Learning-Experiment verwenden können.
 
 Die Reihe bietet den größten Nutzen, wenn Sie sich alle Videos ansehen. [Zur Liste der Videos wechseln](#other-videos-in-this-series)
+<br>
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/data-science-for-beginners-series-copy-other-peoples-work-to-do-data-science/player]
 >
@@ -51,7 +52,7 @@ Eines der Branchengeheimnisse von Data Science besteht darin, Ihre Arbeit von an
 ## <a name="find-examples-in-the-cortana-intelligence-gallery"></a>Suchen nach Beispielen im Cortana Intelligence-Katalog
 Microsoft bietet einen cloudbasierten Dienst namens [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/), den Sie kostenlos testen können. Dabei wird ein Arbeitsbereich bereitgestellt, in dem Sie mit unterschiedlichen Machine Learning-Algorithmen experimentieren können. Nachdem Sie Ihre Lösung erstellt haben, können Sie sie als Webdienst starten.
 
-Eine Komponente dieses Diensts ist der **[Cortana Intelligence-Katalog](http://aka.ms/CortanaIntelligenceGallery)**. Er enthält viele verschiedene Ressourcen, z.B. eine Sammlung mit Azure Machine Learning-Experimenten oder Modelle, die von Benutzern erstellt und für andere Benutzer zur Verfügung gestellt wurden. Diese Experimente stellen eine hervorragende Möglichkeit dar, die investierte Arbeit anderer Benutzer als Starthilfe für Ihre eigenen Lösungen zu nutzen.
+Eine Komponente dieses Diensts ist der **[Cortana Intelligence-Katalog](http://aka.ms/CortanaIntelligenceGallery)**. Er enthält Ressourcen, z.B. eine Sammlung mit Azure Machine Learning-Experimenten oder Modelle, die von Benutzern erstellt und für andere Benutzer zur Verfügung gestellt wurden. Diese Experimente stellen eine hervorragende Möglichkeit dar, die investierte Arbeit anderer Benutzer als Starthilfe für Ihre eigenen Lösungen zu nutzen.
 
 Sie finden diesen Katalog unter [aka.ms/CortanaIntelligenceGallery](http://aka.ms/CortanaIntelligenceGallery). Er ist für alle interessierten Benutzer zugänglich.
 
@@ -60,7 +61,7 @@ Sie finden diesen Katalog unter [aka.ms/CortanaIntelligenceGallery](http://aka.m
 Wenn Sie oben auf **Experimente** klicken, werden die neuesten und beliebtesten Experimente im Katalog angezeigt. Sie können die restlichen Experimente durchsuchen, indem Sie oben im Fenster auf **Alle durchsuchen** klicken. Sie können Suchbegriffe eingeben und Suchfilter auswählen.
 
 ## <a name="find-and-use-a-clustering-algorithm-example"></a>Suchen und Verwenden eines Beispiels eines Clusteringalgorithmus
-Angenommen, Sie möchten ein Beispiel für die Funktionsweise des Clusterings anzeigen. Sie suchen dann nach Experimenten mit dem Begriff **Clustering**.
+Angenommen, Sie möchten ein Beispiel für die Funktionsweise des Clusterings anzeigen. Sie suchen dann nach Experimenten mit dem Begriff **„Clustering-Sweep“**.
 
 ![Nach Clusteringexperimenten suchen](./media/machine-learning-data-science-for-beginners-copy-other-peoples-work-to-do-data-science/search-for-clustering-experiments.png)
 

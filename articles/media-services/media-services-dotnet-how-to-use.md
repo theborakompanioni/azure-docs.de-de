@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/07/2017
+ms.date: 07/16/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: 612b58db48e160cb1b4cfef1f8f4c2b203061064
-ms.lasthandoff: 03/10/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: c999eb5d6b8e191d4268f44d10fb23ab951804e7
+ms.openlocfilehash: ca5e537bd4347e17190ff4f66cc4d42a36870936
+ms.contentlocale: de-de
+ms.lasthandoff: 07/17/2017
 
 ---
 # <a name="media-services-development-with-net"></a>Media Services-Entwicklung mit .NET
@@ -37,13 +37,13 @@ Die Bibliothek für das **Azure Media Services .NET SDK** ermöglicht es Ihnen, 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Erstellen und Konfigurieren eines Visual Studio-Projekts
 Dieser Abschnitt beschreibt, wie Sie ein Projekt in Visual Studio erstellen und für die Mediendienste-Entwicklung einrichten.  Es handelt sich um eine C# Windows-Konsolenanwendung, allerdings gelten für andere Typen von Projekten für Media Services-Anwendungen (z.B. eine Windows Forms-Anwendung oder ASP.NET-Webanwendung) dieselben Schritte.
 
-In diesem Abschnitt wird beschrieben, wie Sie mithilfe von **NuGet** das Media Services .NET SDK und andere abhängige Bibliotheken hinzufügen.
+In diesem Abschnitt wird beschrieben, wie Sie mithilfe von **NuGet** Media Services .NET SDK-Erweiterungen und andere abhängige Bibliotheken hinzufügen.
 
 Sie können auch die neuesten Media Services .NET SDK-Komponenten von GitHub ([github.com/Azure/azure-sdk-for-media-services](https://github.com/Azure/azure-sdk-for-media-services) oder [github.com/Azure/azure-sdk-for-media-services-extensions](https://github.com/Azure/azure-sdk-for-media-services-extensions)) herunterladen, die Projektmappe erstellen und die Verweise dem Clientprojekt hinzufügen. Alle erforderlichen Abhängigkeiten werden automatisch heruntergeladen und extrahiert.
 
 1. Erstellen Sie eine neue C#-Konsolenanwendung in Visual Studio. Geben Sie **Name**, **Speicherort** und **Projektmappenname** ein und klicken Sie auf „OK“.
 2. Erstellen Sie die Projektmappe.
-3. Verwenden Sie **NuGet**, um **Azure Media Services .NET SDK-Erweiterungen** zu installieren und hinzuzufügen. Durch Installieren dieses Pakets werden auch das **Media Services .NET SDK** installiert und alle anderen erforderlichen Abhängigkeiten hinzugefügt.
+3. Verwenden Sie **NuGet**, um die **Azure Media Services .NET SDK-Erweiterungen** (**windowsazure.mediaservices.extensions**) zu installieren. Durch Installieren dieses Pakets werden auch das **Media Services .NET SDK** installiert und alle anderen erforderlichen Abhängigkeiten hinzugefügt.
    
     Stellen Sie sicher, dass Sie die neueste Version von NuGet installiert haben. Weitere Informationen und Installationsanweisungen finden Sie unter [NuGet](http://nuget.codeplex.com/).
 4. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf den Namen des Projekts, und wählen Sie „NuGet-Pakete verwalten“ aus.
@@ -59,33 +59,68 @@ Sie können auch die neuesten Media Services .NET SDK-Komponenten von GitHub ([g
    
     Das Dialogfeld „Verweise verwalten“ wird angezeigt.
 8. Suchen Sie unter den .NET Framework-Assemblys die System.Configuration-Assembly, und wählen Sie sie aus. Klicken Sie anschließend auf „OK“.
-9. Öffnen Sie die Datei "App.config" (fügen Sie die Datei dem Projekt hinzu, wenn sie nicht standardmäßig hinzugefügt wurde), und fügen Sie einen *appSettings* -Abschnitt in der Datei hinzu.     
-   Legen Sie die Werte für Ihren Azure Media Services-Kontonamen und Schlüssel fest, wie im folgenden Beispiel gezeigt.
+9. Öffnen Sie die Datei „App.config“, und fügen Sie der Datei einen *appSettings*-Abschnitt hinzu.     
    
-    Um die Werte für den Namen und den Schlüssel zu suchen, öffnen Sie das Azure-Portal und wählen Ihr Konto aus. Das Fenster „Einstellungen“ wird auf der rechten Seite angezeigt. Wählen Sie im Fenster „Einstellungen“ die Option „Schlüssel“ aus. Klicken Sie auf die Symbole neben den Textfeldern, um den jeweiligen Wert in die Systemzwischenablage zu kopieren.
+    Legen Sie die Werte fest, die zur Verbindung mit der Media Services-API erforderlich sind. Weitere Informationen finden Sie unter [Access the Azure Media Services API with Azure AD authentication (Zugriff auf die Azure Media Services-API mit der Azure AD-Authentifizierung)](media-services-use-aad-auth-to-access-ams-api.md). 
+
+    Sollten Sie [Benutzerauthentifizierung](media-services-use-aad-auth-to-access-ams-api.md#types-of-authentication) verwenden, weist Ihre Config-Datei vermutlich Werte für Ihre Azure AD-Mandanten-Domäne und den AMS-REST-API-Endpunkt auf.
+    
+    >[!Important]
+    >Beispiele im Azure Media Services-Dokumentationssatz, verwenden Sie einen Benutzer-Authentifizierungstyp (interaktiv) für die Verbindung mit der AMS-API. Diese Authentifizierungsmethode eignet sich gut für die Verwaltung und Überwachung von nativen Apps: Mobile Apps, Windows-Apps und Konsolenanwendungen. Diese Authentifizierungsmethode eignet sich nicht für Server, Webdienste oder API-Anwendungen.  Weitere Informationen finden Sie unter [Access the AMS API with Azure AD authentication (Zugriff auf die AMS-API mit der Azure AD-Authentifizierung)](media-services-use-aad-auth-to-access-ams-api.md).
 
         <configuration>
         ...
             <appSettings>
-              <add key="MediaServicesAccountName" value="Media-Services-Account-Name" />
-              <add key="MediaServicesAccountKey" value="Media-Services-Account-Key" />
+              <add key="AADTenantDomain" value="YourAADTenantDomain" />
+              <add key="MediaServiceRESTAPIEndpoint" value="YourRESTAPIEndpoint" />
             </appSettings>
 
         </configuration>
 
-1. Überschreiben Sie die existierenden **using** -Anweisungen am Anfang der Datei "Program.cs" durch den folgenden Code.
-   
+10. Überschreiben Sie die existierenden **using** -Anweisungen am Anfang der Datei "Program.cs" durch den folgenden Code.
+           
         using System;
-        using System.Collections.Generic;
-        using System.Linq;
-        using System.Text;
-        using System.Threading.Tasks;
         using System.Configuration;
-        using System.Threading;
         using System.IO;
         using Microsoft.WindowsAzure.MediaServices.Client;
+        using System.Threading;
+        using System.Collections.Generic;
+        using System.Linq;
 
 Nun können Sie mit der Entwicklung einer Mediendienste-Anwendung beginnen.    
+
+## <a name="example"></a>Beispiel
+
+Hier ist ein kurzes Beispiel, bei dem eine Verbindung mit der AMS-API hergestellt wird und alle verfügbaren Medienprozessoren aufgelistet werden.
+    
+    class Program
+    {
+        // Read values from the App.config file.
+        private static readonly string _AADTenantDomain =
+            ConfigurationManager.AppSettings["AADTenantDomain"];
+        private static readonly string _RESTAPIEndpoint =
+            ConfigurationManager.AppSettings["MediaServiceRESTAPIEndpoint"];
+    
+        private static CloudMediaContext _context = null;
+        static void Main(string[] args)
+        {
+            var tokenCredentials = new AzureAdTokenCredentials(_AADTenantDomain, AzureEnvironments.AzureCloudEnvironment);
+            var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
+    
+            _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
+    
+            // List all available Media Processors
+            foreach (var mp in _context.MediaProcessors)
+            {
+                Console.WriteLine(mp.Name);
+            }
+    
+        }
+
+##<a name="next-steps"></a>Nächste Schritte
+
+Jetzt [können Sie sich mit der API AMS verbinden](media-services-use-aad-auth-to-access-ams-api.md) und mit dem [Entwickeln](media-services-dotnet-get-started.md) beginnen.
+
 
 ## <a name="media-services-learning-paths"></a>Media Services-Lernpfade
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

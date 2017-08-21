@@ -71,7 +71,7 @@ In diesem Abschnitt wird das Herstellen einer Verbindung von Azure AD mit der Lu
 
     ![LucidChart-Bereitstellung](./media/active-directory-saas-lucidchart-provisioning-tutorial/LucidChart1.png)
 
-5. Geben Sie im Abschnitt **Admin Credentials** (Administratoranmeldeinformationen) das von Ihrem LucidChart-Konto generierte geheime Token ****ein. (Sie finden das Token in Ihrem Konto: **Team** > **App-Integration** > **SCIM**). 
+5. Geben Sie im Abschnitt **Admin Credentials** (Administratoranmeldeinformationen) das von Ihrem LucidChart-Konto generierte **geheime Token** ein. (Sie finden das Token in Ihrem Konto: **Team** > **App-Integration** > **SCIM**). 
 
     ![LucidChart-Bereitstellung](./media/active-directory-saas-lucidchart-provisioning-tutorial/LucidChart2.png)
 

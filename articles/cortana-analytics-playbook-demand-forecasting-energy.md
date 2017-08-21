@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2016
 ms.author: ilanr9;yijichen;garye
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c0e2324a2b2e6294df6e502f2e7a0ae36ff94158
-ms.openlocfilehash: 0c07495a932c8bfdabb97e8eebe8d99de19fbd15
+ms.translationtype: HT
+ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
+ms.openlocfilehash: 275e387878900154660d044b26ff5ac03a17a65a
 ms.contentlocale: de-de
-ms.lasthandoff: 01/30/2017
+ms.lasthandoff: 07/10/2017
 
 
 ---
@@ -173,7 +173,7 @@ Es sind schließlich auch keine Investitionen in IT-Wartung oder die Entwicklung
 Für ein Unternehmen, das noch am Anfang der Umstellung auf die Cloud steht, empfehlen wir dringend einen Schritt-für-Schritt-Ansatz und die Implementierung einer Roadmap für die Cloudmigration. Wir sind der Meinung, dass die in diesem Playbook beschriebenen Anwendungsfälle für Versorger und Unternehmen der Energiebranche eine hervorragende Möglichkeit zur Durchführung von Pilotprojekten für Predictive Analytics-Lösungen in der Cloud darstellen.
 
 #### <a name="business-case-justification-considerations"></a>Aspekte der Business Case-Rechtfertigung
-In vielen Fällen sind Kunden unter Umständen daran interessiert, eine Business Case-Rechtfertigung für einen bestimmten Anwendungsfall anzufertigen, bei dem eine cloudbasierte Lösung und Machine Learning wichtige Bestandteile sind. Im Gegensatz zu einer lokalen Lösung sind die Vorabkosten bei einer cloudbasierten Lösung minimal, und die meisten Kostenelemente richten sich nach der eigentlichen Nutzung. Bei der Bereitstellung einer Lösung zum Vorhersagen des Energiebedarfs über die Cortana Intelligence Suite können mehrere Dienste in eine gemeinsame Kostenstruktur eingebunden werden. Datenbanken (*z.B.* SQL Azure) können beispielsweise zum Speichern von Rohdaten verwendet werden, und anschließend wird für die eigentlichen Vorhersagen Azure ML zum Hosten der Vorhersagedienste genutzt. In diesem Beispiel kann die Kostenstruktur zum Beispiel Speicher- und Transaktionskomponenten enthalten.
+In vielen Fällen sind Kunden unter Umständen daran interessiert, eine Business Case-Rechtfertigung für einen bestimmten Anwendungsfall anzufertigen, bei dem eine cloudbasierte Lösung und Machine Learning wichtige Bestandteile sind. Im Gegensatz zu einer lokalen Lösung sind die Vorabkosten bei einer cloudbasierten Lösung minimal, und die meisten Kostenelemente richten sich nach der tatsächlichen Nutzung. Bei der Bereitstellung einer Lösung zum Vorhersagen des Energiebedarfs über die Cortana Intelligence Suite können mehrere Dienste in eine gemeinsame Kostenstruktur eingebunden werden. Datenbanken (*z.B.* SQL Azure) können beispielsweise zum Speichern von Rohdaten verwendet werden, und anschließend wird für die eigentlichen Vorhersagen Azure ML zum Hosten der Vorhersagedienste genutzt. In diesem Beispiel kann die Kostenstruktur zum Beispiel Speicher- und Transaktionskomponenten enthalten.
 
 Andererseits ist ein gutes Verständnis des geschäftlichen Nutzens einer Vorhersage des Energiebedarfs (kurz- oder langfristig) unerlässlich. Es ist sogar wichtig, sich den geschäftlichen Nutzen jedes Vorhersagevorgangs klar zu machen. Durch das genaue Vorhersagen der Stromlast für die nächsten 24 Stunden kann beispielsweise eine Überproduktion verhindert werden, oder es können Überlastungen im Netz vermieden werden. Dies kann dann in Form von täglichen Kosteneinsparungen quantifiziert werden.
 

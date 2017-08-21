@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/30/2017
 ms.author: asaxton
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
-ms.openlocfilehash: 1d35dc01aba57dcf8a37db757138abbd7b22c8c5
+ms.translationtype: HT
+ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
+ms.openlocfilehash: 65bada117e7d005362b0ac0ce7cc5336a92e0889
 ms.contentlocale: de-de
-ms.lasthandoff: 06/01/2017
+ms.lasthandoff: 07/10/2017
 
 
 ---
@@ -227,7 +227,7 @@ Wenn Sie über einen Remotecomputer eine Verbindung mit dem Webportal oder Beric
 2. Öffnen Sie Port 80 in der Firewall des virtuellen Computers.
 3. Navigieren Sie zum Webportal oder Berichts-Manager, indem Sie den **DNS-Namen** des virtuellen Azure-Computers als Servernamen in der URL verwenden. Beispiel:
    
-    **Berichtsserver:** http://uebi.cloudapp.net/reportserver  **Webportal:** http://uebi.cloudapp.net/reports
+    **Berichtsserver:** http://uebi.cloudapp.net/reportserver **Webportal:** http://uebi.cloudapp.net/reports
    
     [Konfigurieren einer Firewall für den Zugriff auf den Berichtsserver](https://msdn.microsoft.com/library/bb934283.aspx)
 

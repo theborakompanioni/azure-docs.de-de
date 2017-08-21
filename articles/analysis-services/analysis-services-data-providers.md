@@ -13,14 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 04/14/2016
+ms.date: 08/15/2017
 ms.author: owend
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
-ms.openlocfilehash: 6457b7d30b12a7bb138f9912e21418742814be09
+ms.translationtype: HT
+ms.sourcegitcommit: 19be73fd0aec3a8f03a7cd83c12cfcc060f6e5e7
+ms.openlocfilehash: 949f34158f4fc8ee6d86cf3dd408c3c903234109
 ms.contentlocale: de-de
-ms.lasthandoff: 05/05/2017
-
+ms.lasthandoff: 07/13/2017
 
 ---
 
@@ -30,19 +29,11 @@ Damit Clientanwendungen und Tools eine Verbindung mit Analysis Services-Servern 
 
 Analysis Services verwenden drei Clientbibliotheken. ADOMD.NET und Analysis Services Management Objects (AMO) sind verwaltete Clientbibliotheken. Der Analysis Services OLE DB-Anbieter (MSOLAP DLL) ist eine native Clientbibliothek. In der Regel werden alle drei gleichzeitig installiert. Für Azure Analysis Services sind die neuesten Versionen erforderlich. 
 
-Microsoft-Clientanwendungen wie Power BI Desktop und Excel installieren die drei Clientbibliotheken. Abhängig von der Version von Excel oder davon, ob neuere Versionen von Excel und Power BI Desktop monatlich aktualisiert werden, werden die installierten Clientbibliotheken jedoch möglicherweise nicht auf die neuesten Versionen aktualisiert, die für Azure Analysis Services erforderlich sind. Dies gilt auch für benutzerdefinierte Anwendungen oder andere Schnittstellen wie AsCmd, TOM, ADOMD.NET. Für diese Anwendungen müssen die Bibliotheken manuell installiert werden. Die Clientbibliotheken für die manuelle Installation sind in Feature Packs für SQL Server als verteilbare Pakete enthalten. Allerdings sind sie mit der SQL Server-Version verknüpft, und sie weisen möglicherweise nicht die neuesten Versionen auf.  
+Microsoft-Clientanwendungen wie Power BI Desktop und Excel installieren die drei Clientbibliotheken. Abhängig von der Version oder der Updatehäufigkeit weisen die Clientbibliotheken dabei jedoch unter Umständen nicht die neuesten, von Azure Analysis Services benötigten Versionen auf. Dies gilt auch für benutzerdefinierte Anwendungen oder andere Schnittstellen wie AsCmd, TOM, ADOMD.NET. Für diese Anwendungen müssen die Bibliotheken manuell installiert werden. Die Clientbibliotheken für die manuelle Installation sind in SQL Server-Funktionspaketen wie verteilbaren Paketen enthalten. Allerdings sind diese Clientbibliotheken an die SQL Server-Version gebunden und möglicherweise nicht auf dem neuesten Stand.  
 
 Clientbibliotheken für Clientverbindungen unterscheiden sich von Datenanbietern, die für die Verbindung eines Azure Analysis Services-Servers mit einer Datenquelle erforderlich sind. Weitere Informationen zu den Datenquellenverbindungen finden Sie unter [Datenquellenverbindungen](analysis-services-datasource.md).
 
-## <a name="download-the-latest-preview-client-libraries"></a>Herunterladen der neuesten **Vorschau**-Clientbibliotheken  
-Verwenden Sie die folgenden Clientbibliotheken, um die neuesten Programmfehlerbehebungen und Updates zu erhalten. Diese werden empfohlen, wenn eine Verbindung mit Azure Analysis Services oder mit SQL Server 2017 Analysis Services hergestellt wird.
-
-[MSOLAP (amd64) Vorschau](http://download.microsoft.com/download/4/8/2/482E5799-9B8E-4724-8A4C-F301BAE788EE/14.0.500.170/amd64/SQL_AS_OLEDB.msi)</br>
-[MSOLAP (x86) Vorschau](http://download.microsoft.com/download/4/8/2/482E5799-9B8E-4724-8A4C-F301BAE788EE/14.0.500.170/x86/SQL_AS_OLEDB.msi)</br>
-[AMO Vorschau](http://download.microsoft.com/download/4/8/2/482E5799-9B8E-4724-8A4C-F301BAE788EE/14.0.500.170/SQL_AS_AMO.msi)</br>
-[ADOMD Vorschau](http://download.microsoft.com/download/4/8/2/482E5799-9B8E-4724-8A4C-F301BAE788EE/14.0.500.170/SQL_AS_ADOMD.msi)</br>
-
-## <a name="download-the-latest-rtm-client-libraries"></a>Herunterladen der neuesten **RTM**-Clientbibliotheken  
+## <a name="download-the-latest-client-libraries"></a>Herunterladen der neuesten Clientbibliotheken  
 Verwenden Sie die folgenden Clientbibliotheken, wenn Sie sich in einer Produktionsumgebung befinden und vollständig freigegebene und unterstützte Versionen benötigen.
 
 [MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)</br>
@@ -51,5 +42,6 @@ Verwenden Sie die folgenden Clientbibliotheken, wenn Sie sich in einer Produktio
 [ADOMD](https://go.microsoft.com/fwlink/?linkid=829577)</br>
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Herstellen einer Verbindung mit einem Azure Analysis Services-Server](analysis-services-connect.md)
+[Herstellen einer Verbindung mit Excel](analysis-services-connect-excel.md)    
+[Herstellen einer Verbindung mit Power BI](analysis-services-connect-pbi.md)
 

@@ -5,6 +5,14 @@
 - #### <a name="android-configureactive-directory-mobileanddesktopapp-android-configuremd"></a>[Android: Konfiguration](active-directory-mobileanddesktopapp-android-configure.md)
 - #### <a name="android-test--validateactive-directory-mobileanddesktopapp-android-testmd"></a>[Android: Testen und Überprüfen](active-directory-mobileanddesktopapp-android-test.md)
 
+## <a name="ios"></a>iOS
+
+- ### <a name="ios-introactive-directory-mobileanddesktopapp-ios-introductionmd"></a>[iOS: Einführung](active-directory-mobileanddesktopapp-ios-introduction.md)
+- #### <a name="ios-setupactive-directory-mobileanddesktopapp-ios-setupmd"></a>[iOS: Setup](active-directory-mobileanddesktopapp-ios-setup.md)
+- #### <a name="ios-useactive-directory-mobileanddesktopapp-ios-usemd"></a>[iOS: Verwendung](active-directory-mobileanddesktopapp-ios-use.md)
+- #### <a name="ios-configureactive-directory-mobileanddesktopapp-ios-configuremd"></a>[iOS: Konfiguration](active-directory-mobileanddesktopapp-ios-configure.md)
+- #### <a name="ios-test--validateactive-directory-mobileanddesktopapp-ios-testmd"></a>[iOS: Testen und Überprüfen](active-directory-mobileanddesktopapp-ios-test.md)
+
 ## <a name="windows-desktop"></a>Windows Desktop
 
 - ### <a name="windows-desktop-introactive-directory-mobileanddesktopapp-windowsdesktop-introductionmd"></a>[Windows Desktop: Einführung](active-directory-mobileanddesktopapp-windowsdesktop-introduction.md)
@@ -16,7 +24,16 @@
 ## <a name="aspnet-web-app"></a>ASP.NET-Web-App
 
 - ### <a name="aspnet-web-app-introactive-directory-serversidewebapp-aspnetwebappowin-introductionmd"></a>[ASP.NET-Web-App: Einführung](active-directory-serversidewebapp-aspnetwebappowin-introduction.md)
-- ### <a name="aspnet-web-app-setupactive-directory-serversidewebapp-aspnetwebappowin-setupmd"></a>[ASP.NET-Web-App: Setup](active-directory-serversidewebapp-aspnetwebappowin-setup.md)
-- ### <a name="aspnet-web-app-useactive-directory-serversidewebapp-aspnetwebappowin-usemd"></a>[ASP.NET-Web-App: Verwendung](active-directory-serversidewebapp-aspnetwebappowin-use.md)
-- ### <a name="aspnet-web-app-configureactive-directory-serversidewebapp-aspnetwebappowin-configuremd"></a>[ASP.NET-Web-App: Konfiguration](active-directory-serversidewebapp-aspnetwebappowin-configure.md)
-- ### <a name="aspnet-web-app-testactive-directory-serversidewebapp-aspnetwebappowin-testmd"></a>[ASP.NET-Web-App: Testen](active-directory-serversidewebapp-aspnetwebappowin-test.md)
+- #### <a name="aspnet-web-app-setupactive-directory-serversidewebapp-aspnetwebappowin-setupmd"></a>[ASP.NET-Web-App: Setup](active-directory-serversidewebapp-aspnetwebappowin-setup.md)
+- #### <a name="aspnet-web-app-useactive-directory-serversidewebapp-aspnetwebappowin-usemd"></a>[ASP.NET-Web-App: Verwendung](active-directory-serversidewebapp-aspnetwebappowin-use.md)
+- #### <a name="aspnet-web-app-configureactive-directory-serversidewebapp-aspnetwebappowin-configuremd"></a>[ASP.NET-Web-App: Konfiguration](active-directory-serversidewebapp-aspnetwebappowin-configure.md)
+- #### <a name="aspnet-web-app-testactive-directory-serversidewebapp-aspnetwebappowin-testmd"></a>[ASP.NET-Web-App: Testen](active-directory-serversidewebapp-aspnetwebappowin-test.md)
+
+
+## <a name="javascript-spa"></a>JavaScript SPA
+
+- ### <a name="javascript-spa-introactive-directory-singlepageapp-javascriptspa-introductionmd"></a>[JavaScript SPA: Einführung](active-directory-singlepageapp-javascriptspa-introduction.md)
+- #### <a name="javascript-spa-setupactive-directory-singlepageapp-javascriptspa-setupmd"></a>[JavaScript SPA: Setup](active-directory-singlepageapp-javascriptspa-setup.md)
+- #### <a name="javascript-spa-useactive-directory-singlepageapp-javascriptspa-usemd"></a>[JavaScript SPA: Verwendung](active-directory-singlepageapp-javascriptspa-use.md)
+- #### <a name="javascript-spa-configureactive-directory-singlepageapp-javascriptspa-configuremd"></a>[JavaScript SPA: Konfiguration](active-directory-singlepageapp-javascriptspa-configure.md)
+- #### <a name="javascript-spa-testactive-directory-singlepageapp-javascriptspa-testmd"></a>[JavaScript SPA: Testen](active-directory-singlepageapp-javascriptspa-test.md)

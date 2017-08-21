@@ -12,13 +12,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
 ms.devlang: Java
 ms.topic: article
-ms.date: 03/30/2017
+ms.date: 07/17/2017
 ms.author: piyushjo;ricksal
-translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: 1438b9479b3bbb8b7599d7d05b48e4cd6d981e0c
-ms.lasthandoff: 03/31/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 94d1d4c243bede354ae3deba7fbf5da0652567cb
+ms.openlocfilehash: 35935e911f1f17989beb71978396c6d1b7d601d6
+ms.contentlocale: de-de
+ms.lasthandoff: 07/18/2017
 
 ---
 # <a name="android-sdk-integration-for-azure-mobile-engagement"></a>Integration des Android SDK für Azure Mobile Engagement
@@ -53,8 +53,16 @@ Sie können die folgenden Funktionen hinzufügen:
 [Verwenden der erweiterten Kennzeichnungs-API von Mobile Engagement in Ihrer Android-App](mobile-engagement-android-use-engagement-api.md)
 
 ## <a name="release-notes"></a>Versionshinweise
-### <a name="424-03302017"></a>4.2.4 (30.03.2017)
-* Die Textfarben von In-App-Benachrichtigungen unter Android 7 wurden so korrigiert, dass sie denen in älteren Android-Versionen entsprechen.
+
+### <a name="431-07172017"></a>4.3.1 (07/17/2017)
+* Beheben eines Absturzes, der in seltenen Fällen beim Abrufen von `EngagementAgentUtils.isInDedicatedEngagementProcess` auftritt, worauf ebenfalls die `EngagementApplication`-Klasse zugreift.
+
+### <a name="430-06272017"></a>4.3.0 (06/27/2017)
+* Android 8-Unterstützung (frühere Versionen des SDK funktionieren nicht auf Android 8).
+* Keine Abhängigkeit von der Support-Bibliothek mehr.
+* Entfernen der `EngagementFragmentActivity`-Klasse.
+* Wegen der [Einschränkungen von Ausführungen im Hintergrund](https://developer.android.com/preview/features/background.html) auf Android 8 können Protokolle im Hintergrund verzögert werden, bis der Benutzer mit dem Gerät interagiert. Dies wirkt sich auf die Statistiken der Pushkampagnen **Delivered** (Übermittelt) und **System notification displayed** (Systembenachrichtigung angezeigt) aus, die verzögert werden, wenn sich das Gerät im Ruhezustand befindet (die Benachrichtigung wird dennoch angezeigt und löst in Echtzeit ohne Probleme ein Klingeln und Vibrieren aus).
+* Wegen der [Einschränkungen des Standorts im Hintergrund](https://developer.android.com/preview/features/background-location-limits.html) wird der Speicherort im Hintergrund auf Android 8 nicht in Echtzeit regelmäßig aktualisiert.
 
 Alle Versionen finden Sie unter [Vollständige Versionshinweise](mobile-engagement-android-release-notes.md).
 

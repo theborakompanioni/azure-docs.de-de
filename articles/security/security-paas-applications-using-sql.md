@@ -1,5 +1,5 @@
 ---
-title: "Schützen webbasierter und mobiler PaaS-Anwendungen mit SQL-Datenbank und SQL Data Warehouse | Microsoft-Dokumentation"
+title: "Schützen von PaaS-Datenbanken in Azure | Microsoft-Dokumentation"
 description: " Erfahren Sie etwas zu den Best Practices im Hinblick auf die Sicherheit bei Azure SQL-Datenbank und SQL Data Warehouse zum Schutz Ihrer webbasierten und mobilen PaaS-Anwendungen. "
 services: security
 documentationcenter: na
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/21/2017
+ms.date: 07/11/2017
 ms.author: terrylan
-translationtype: Human Translation
-ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
-ms.openlocfilehash: be00c1427d57b96506ec8b0ac881b7c1bd09e4de
-ms.lasthandoff: 03/22/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: cddb80997d29267db6873373e0a8609d54dd1576
+ms.openlocfilehash: 18509b3fc3a73118f67583a0b087c58f0e51993c
+ms.contentlocale: de-de
+ms.lasthandoff: 07/18/2017
 
 ---
-# <a name="securing-paas-web-and-mobile-applications-using-sql-database-and-sql-data-warehouse"></a>Schützen webbasierter und mobiler PaaS-Anwendungen mit SQL-Datenbank und SQL Data Warehouse
+# <a name="securing-paas-databases-in-azure"></a>Schützen von PaaS-Datenbanken in Azure
 
 In diesem Artikel erläutern wir eine Sammlung empfohlener Vorgehensweisen im Hinblick auf die Sicherheit bei [Azure SQL-Datenbank](https://azure.microsoft.com/services/sql-database/) und [SQL Data Warehouse](https://azure.microsoft.com/services/sql-data-warehouse/) zum Schutz Ihrer webbasierten und mobilen PaaS-Anwendungen. Diese empfohlenen Vorgehensweisen sind aus unseren Erfahrungen mit Azure und den Erfahrungen von Kunden wie Ihnen abgeleitet.
 
@@ -77,15 +77,15 @@ Weitere Informationen zu Azure SQL-Firewall- und IP-Einschränkungen finden Sie 
 - [Konfigurieren einer Firewallregel auf Serverebene für Azure SQL-Datenbank mithilfe des Azure-Portals](../sql-database/sql-database-configure-firewall-settings.md)
 
 ### <a name="encryption-of-data-at-rest"></a>Verschlüsselung für ruhende Daten
-[Transparent Data Encryption (TDE)](https://msdn.microsoft.com/library/azure/bb934049) verschlüsselt SQL Server-, Azure SQL-Datenbank- und Azure SQL Data Warehouse-Datendateien. Dies wird als Verschlüsselung ruhender Daten bezeichnet. Sie können verschiedene Vorsichtsmaßnahmen zum Schützen der Datenbank treffen, z.B. Entwerfen eines sicheren Systems, Verschlüsseln vertraulicher Datenbestände und Erstellen einer Firewall für die Datenbankserver. In einem Szenario, in dem physische Medien (wie etwa Festplatten oder Sicherungsbänder) gestohlen werden, kann eine böswillige Partei jedoch die Datenbank wiederherstellen oder anfügen und die Daten durchsuchen. Eine Lösung besteht darin, die vertraulichen Daten in der Datenbank zu verschlüsseln und die Schlüssel zu schützen, die zum Verschlüsseln der Daten mit einem Zertifikat verwendet werden. Dadurch wird verhindert, dass Personen ohne Schlüssel die Daten verwenden. Diese Art des Schutzes muss allerdings im Voraus geplant werden.
+[Transparent Data Encryption (TDE)](https://msdn.microsoft.com/library/azure/bb934049) ist standardmäßig aktiviert. TDE verschlüsselt auf transparente Weise Daten und Protokolldateien für SQL Server, Azure SQL-Datenbank und Azure SQL Data Warehouse. TDE schützt vor der Gefährdung eines direkten Zugriffs auf die Dateien oder ihrer Sicherungen. Dadurch können Sie ruhende Daten verschlüsseln, ohne vorhandene Anwendungen zu ändern. TDE sollte immer aktiviert sein. Beachten Sie jedoch, dass dies einen Angreifer, der den normalen Zugriffspfad verwendet, nicht aufhalten wird. TDE ermöglicht die Einhaltung von Gesetzen, Bestimmungen und Richtlinien, die in vielen Branchen etabliert sind.
 
-TDE schützt ruhende Daten, also die Daten und die Protokolldateien. Sie ermöglicht die Einhaltung von Gesetzen, Bestimmungen und Richtlinien, die in vielen Branchen etabliert sind. Dadurch können Softwareentwickler Daten mithilfe von in der Branche üblichen Verschlüsselungsalgorithmen ohne Änderung vorhandener Anwendungen verschlüsseln.
+Azure SQL verwaltet die schlüsselbezogenen Probleme für TDE. Wie bei TDE auch muss bei lokaler Verwendung und beim Verschieben von Datenbanken besonders sorgfältig vorgegangen werden. In komplexeren Szenarios können die Schlüssel explizit über die erweiterte Schlüsselverwaltung in Azure Key Vault verwaltet werden (siehe [Enable TDE on SQL Server Using EKM (Aktivieren von TDE in SQL Server mithilfe von EKM)](/security/encryption/enable-tde-on-sql-server-using-ekm)). Dadurch wird auch Bring Your Own Key (BYOK) über die BYOK-Funktion von Azure Key Vault ermöglicht.
 
-TDE muss verwendet werden, wenn Bestimmungen eine derartige Verschlüsselung explizit festlegen. Beachten Sie jedoch, dass dies einen Angreifer, der den normalen Zugriffspfad verwendet, nicht aufhalten wird. TDE wird zum Schutz vor dem höchst unwahrscheinlichen Fall eingesetzt, dass Sie eine zusätzliche Verschlüsselung auf Anwendungsebene verwenden müssen, entweder über eine mit Azure SQL bereitgestellte Verschlüsselung für Zeilen und Spalten oder über eine Verschlüsselung auf Anwendungsebene.
+Azure SQL ermöglicht auch die Verschlüsselung von Spalten über [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine). Hierdurch wird nur autorisierten Anwendungen der Zugriff auf vertrauliche Spalten gewährt. Das Verwenden dieser Verschlüsselungsart begrenzt SQL-Abfragen für verschlüsselte Spalten auf gleichheitsbasierte Werte.
 
-Die Verschlüsselung auf Anwendungsebene muss auch für selektive Daten verwendet werden. Sorgen in Bezug auf die Datenhoheit können durch das Verschlüsseln von Daten mit einem Schlüssel verringert werden, der im richtigen Land aufbewahrt wird. Dadurch wird sogar verhindert, dass versehentliche Datenübertragungen Probleme verursachen, da die Daten ohne den Schlüssel nicht entschlüsselt werden können. Voraussetzung dafür ist jedoch, dass ein starker Algorithmus (z.B. AES-256) verwendet wird.
+Die Verschlüsselung auf Anwendungsebene muss auch für selektive Daten verwendet werden. Bedenken in Bezug auf die Datenhoheit können durch das Verschlüsseln von Daten mit einem Schlüssel verringert werden, der im richtigen Land aufbewahrt wird. Dadurch wird verhindert, dass durch eine versehentliche Datenübertragung Probleme verursacht werden, da die Daten ohne den Schlüssel nicht entschlüsselt werden können. Voraussetzung dafür ist jedoch, dass ein starker Algorithmus (z.B. AES-256) verwendet wird.
 
-Die in Azure SQL bereitgestellte Verschlüsselung für Zeilen und Spalten kann nur ausgeführt werden, um autorisierten Benutzern ([RBAC](../active-directory/role-based-access-built-in-roles.md)) Zugriff zu erteilen, und verhindert, dass Benutzer mit niedrigeren Rechten Spalten oder Zeilen anzeigen können.
+Sie können zusätzliche Vorsichtsmaßnahmen zum Schützen der Datenbank treffen, z.B.das Entwerfen eines sicheren Systems, das Verschlüsseln vertraulicher Datenbestände und das Erstellen einer Firewall für die Datenbankserver.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Dieser Artikel stellt eine Sammlung empfohlener Vorgehensweisen im Hinblick auf die Sicherheit bei der SQL-Datenbank und SQL Data Warehouse zum Schutz Ihrer webbasierten und mobilen PaaS-Anwendungen vor. Weitere Informationen zum Schutz Ihrer PaaS-Bereitstellungen finden Sie unter:

@@ -74,7 +74,7 @@ In diesem Abschnitt wird das Herstellen einer Verbindung von Azure AD mit der Th
 
     ![ThousandEyes-Bereitstellung](./media/active-directory-saas-thousandeyes-provisioning-tutorial/ThousandEyes1.png)
 
-5. Geben Sie im Abschnitt **Admin Credentials** (Administratoranmeldeinformationen) das von Ihrem ThousandEyes-Konto generierte geheime Token ****ein. (Sie finden das Token in Ihrem ThousandEyes-Konto: **Sicherheit und Authentifizierung**). 
+5. Geben Sie im Abschnitt **Admin Credentials** (Administratoranmeldeinformationen) das von Ihrem ThousandEyes-Konto generierte **geheime Token** ein. (Sie finden das Token in Ihrem ThousandEyes-Konto: **Sicherheit und Authentifizierung**). 
 
     ![ThousandEyes-Bereitstellung](./media/active-directory-saas-thousandeyes-provisioning-tutorial/ThousandEyes2.png)
 

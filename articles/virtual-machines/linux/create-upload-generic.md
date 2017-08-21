@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2017
 ms.author: szark
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: f0a1717219bfc33033bdb827e66e80dd18388e64
-ms.lasthandoff: 04/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 9afd12380926d4e16b7384ff07d229735ca94aaa
+ms.openlocfilehash: ccadf55c492c097ef96f25e469dbf36fc87b6102
+ms.contentlocale: de-de
+ms.lasthandoff: 07/15/2017
 
 ---
 # <a name="information-for-non-endorsed-distributions"></a>Informationen zu nicht unterstützten Verteilungen
@@ -53,8 +53,8 @@ Der Rest dieses Artikels bietet eine allgemeine Hilfe für das Ausführen Ihrer 
 * Konfigurieren Sie keine SWAP-Partition auf einem Betriebssystemdatenträger. Der Linux-Agent kann konfiguriert werden, eine Auslagerungsdatei auf dem temporären Ressourcendatenträger zu erstellen.  Weitere Informationen dazu finden Sie in den folgenden Schritten.
 * Alle virtuellen Festplatten müssen eine Größe aufweisen, die ein Vielfaches von 1 MB ist.
 
-### <a name="installing-linux-without-hyper-v"></a>Installieren von Linux ohne Hyper-V
-In einigen Fällen enthalten Linux-Installationsprogramme möglicherweise keine Treiber für Hyper-V in der anfänglichen Ramdisk (initrd oder initramfs), bis sie erkennen, dass sie eine Hyper-V-Umgebung ausführen.  Wenn ein anderes Virtualisierungssystem (z. B. Virtualbox oder KVM) zur Vorbereitung des Linux-Image verwendet wird, müssen Sie möglicherweise das Image "initrd" neu erstellen, um sicherzustellen, dass mindestens die Kernelmodule `hv_vmbus` und `hv_storvsc` auf der anfänglichen Ramdisk verfügbar sind.  Dies ist ein bekanntes Problem, zumindest auf Systemen, die auf der Red Hat-Upstream-Verteilung basieren.
+### <a name="installing-kernel-modules-without-hyper-v"></a>Installieren von Kernelmodulen ohne Hyper-V
+Azure wird auf dem Hyper-V-Hypervisor ausgeführt, weshalb Linux anfordert, dass für die Ausführung in Azure bestimmte Kernelmodule installiert sind. Wenn Sie über eine außerhalb von Hyper-V erstellte VM verfügen, enthalten Linux-Installationsprogramme möglicherweise in der anfänglichen Ramdisk (initrd oder initramfs) keine Treiber für Hyper-V, bis sie erkennen, dass die Ausführung in einer Hyper-V-Umgebung erfolgt. Wenn ein anderes Virtualisierungssystem (z. B. Virtualbox oder KVM) zur Vorbereitung des Linux-Image verwendet wird, müssen Sie möglicherweise das Image "initrd" neu erstellen, um sicherzustellen, dass mindestens die Kernelmodule `hv_vmbus` und `hv_storvsc` auf der anfänglichen Ramdisk verfügbar sind.  Dies ist ein bekanntes Problem, zumindest auf Systemen, die auf der Red Hat-Upstream-Verteilung basieren.
 
 Der Mechanismus für die Neuerstellung des Images "initrd" oder "initramfs" variiert je nach der Verteilung. In der Dokumentation zu Ihrer Verteilung oder über den Support erhalten Sie Informationen zur geeigneten Vorgehensweise.  Es folgt ein Beispiel für das Neuerstellen des Image "initrd" mit dem Hilfsprogramm `mkinitrd` :
 

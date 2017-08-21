@@ -1,11 +1,12 @@
 ---
-title: "Migrieren eines virtuellen Azure-Netzwerks aus einer Affinitätsgruppe in eine Region | klassisch | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie ein virtuelles Netzwerk aus einer Affinitätsgruppe in eine Region migrieren."
+title: "Migrieren eines (klassischen) virtuellen Azure-Netzwerks aus einer Affinitätsgruppe in eine Region | Microsoft-Dokumentation"
+description: "Erfahren Sie, wie Sie ein (klassisches) virtuelles Netzwerk aus einer Affinitätsgruppe in eine Region migrieren."
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: carmonm
-editor: tysonn
+manager: timlt
+editor: 
+tags: azure-service-management
 ms.assetid: 84febcb9-bb8b-4e79-ab91-865ad9de41cb
 ms.service: virtual-network
 ms.devlang: na
@@ -14,37 +15,36 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f74379c3e310a7bbcf659ef610727bff19639022
-ms.openlocfilehash: c495af3e818758cc5fe99af9b5f07506a16b59ef
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: b9b3bd0f2184ac85261166d5fe2ab67e1bf319d4
 ms.contentlocale: de-de
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 07/12/2017
 
 ---
-# <a name="how-to-migrate-a-virtual-network-from-an-affinity-group-to-a-region"></a>Migrieren eines virtuellen Netzwerks aus einer Affinitätsgruppe in eine Region
-Mit einer Affinitätsgruppe können Sie sicherstellen, dass Ressourcen, die innerhalb der gleichen Affinitätsgruppe erstellt werden, physisch von Servern gehostet werden, die sich in geringem Abstand zueinander befinden. Auf diese Weise können die Ressourcen schneller miteinander kommunizieren. In der Vergangenheit waren Affinitätsgruppen eine Voraussetzung für die Erstellung virtueller Netzwerke (VNets). Damals konnte der Netzwerk-Manager-Dienst, der die VNets verwaltete, nur innerhalb einer Gruppe physischer Server oder innerhalb einer Skalierungseinheit verwendet werden. Aufgrund von Verbesserungen bei der Architektur konnte die Netzwerkverwaltung inzwischen jedoch auf eine Region ausgeweitet werden.
-
-Deshalb ist die Verwendung von Affinitätsgruppen nicht mehr empfehlenswert und für virtuelle Netzwerke auch nicht mehr erforderlich. Die Verwendung von Affinitätsgruppen für VNets wird durch Regionen ersetzt. VNets mit regionaler Zuordnung werden als regionale VNets bezeichnet.
-
-Darüber hinaus raten wir grundsätzlich von der Verwendung von Affinitätsgruppen ab. Abgesehen von der VNet-Anforderung wurde mit Affinitätsgruppen auch sichergestellt, dass etwa Compute- und Speicherressourcen nah beieinander platziert wurden. Dank der aktuellen Netzwerkarchitektur von Azure ist dies jedoch nicht mehr erforderlich. Informationen zu den wenigen Sonderfällen, in denen sich unter Umständen noch die Verwendung einer Affinitätsgruppe empfiehlt, finden Sie unter [Affinitätsgruppen und virtuelle Computer](#Affinity-groups-and-VMs) .
-
-## <a name="creating-and-migrating-to-regional-vnets"></a>Erstellen regionaler VNets und Migrieren zu regionalen VNets
-Verwenden Sie bei der Erstellung neuer VNets ab sofort die Option *Region*. Diese Option steht im Verwaltungsportal zur Verfügung. In der Netzwerkkonfigurationsdatei wird die Option dagegen als *Location*angezeigt.
+# <a name="migrate-a-virtual-network-classic-from-an-affinity-group-to-a-region"></a>Migrieren eines (klassischen) virtuellen Netzwerks aus einer Affinitätsgruppe in eine Region
 
 > [!IMPORTANT]
-> Die Erstellung eines virtuellen Netzwerks mit Zuordnung zu einer Affinitätsgruppe ist zwar weiterhin technisch möglich, aber nicht mehr notwendig. Viele neue Features wie etwa Netzwerksicherheitsgruppen stehen nur bei Verwendung eines regionalen VNets und nicht bei Verwendung virtueller Netzwerke mit Affinitätsgruppenzuordnung zur Verfügung.
+> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Ressourcen-Manager und klassische Bereitstellungen](../resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung des Resource Manager-Bereitstellungsmodells.
+
+Mit einer Affinitätsgruppe können Sie sicherstellen, dass Ressourcen, die innerhalb der gleichen Affinitätsgruppe erstellt werden, physisch von Servern gehostet werden, die sich in geringem Abstand zueinander befinden. Auf diese Weise können die Ressourcen schneller miteinander kommunizieren. In der Vergangenheit waren Affinitätsgruppen eine Voraussetzung für die Erstellung (klassischer) virtueller Netzwerke. Damals konnte der Netzwerk-Manager-Dienst, der die (klassischen) virtuellen Netzwerke verwaltete, nur innerhalb einer Gruppe physischer Server oder innerhalb einer Skalierungseinheit verwendet werden. Aufgrund von Verbesserungen bei der Architektur konnte die Netzwerkverwaltung inzwischen jedoch auf eine Region ausgeweitet werden.
+
+Deshalb ist die Verwendung von Affinitätsgruppen nicht mehr empfehlenswert und für (klassische) virtuelle Netzwerke auch nicht mehr erforderlich. Die Verwendung von Affinitätsgruppen für (klassische) virtuelle Netzwerke wird durch Regionen ersetzt. (Klassische) virtuelle Netzwerke mit regionaler Zuordnung werden als regionale virtuelle Netzwerke bezeichnet.
+
+Es wird grundsätzlich von der Verwendung von Affinitätsgruppen abgeraten. Abgesehen von der virtuellen Netzwerkanforderung wurde mit Affinitätsgruppen auch sichergestellt, dass etwa (klassische) Compute- und (klassische) Speicherressourcen nah beieinander platziert wurden. Dank der aktuellen Netzwerkarchitektur von Azure ist dies jedoch nicht mehr erforderlich.
+
+> [!IMPORTANT]
+> Die Erstellung eines virtuellen Netzwerks mit Zuordnung zu einer Affinitätsgruppe ist zwar weiterhin technisch möglich, aber nicht mehr notwendig. Viele neue Funktionen von virtuellen Netzwerken wie etwa Netzwerksicherheitsgruppen stehen nur bei Verwendung eines regionalen virtuellen Netzwerks und nicht bei Verwendung virtueller Netzwerke mit Affinitätsgruppenzuordnung zur Verfügung.
 > 
 > 
 
-### <a name="about-vnets-currently-associated-with-affinity-groups"></a>Informationen zu VNets mit bestehender Affinitätsgruppenzuordnung
-Für VNets mit bestehender Affinitätsgruppenzuordnung ist die Migration zu regionalen VNets möglich. Gehen Sie folgendermaßen vor, um zu einem regionalen VNet zu migrieren:
+## <a name="edit-the-network-configuration-file"></a>Bearbeiten Sie die Netzwerkkonfigurationsdatei
 
-1. Exportieren Sie die Netzwerkkonfigurationsdatei. Dafür können Sie entweder PowerShell oder das Verwaltungsportal verwenden. Informationen zur Verwendung des Verwaltungsportals finden Sie unter [Konfigurieren eines virtuellen Netzwerks mithilfe einer Netzwerkkonfigurationsdatei](virtual-networks-using-network-configuration-file.md).
-2. Bearbeiten Sie die Netzwerkkonfigurationsdatei, und ersetzen Sie dabei die alten Werte durch die neuen Werte. 
+1. Exportieren Sie die Netzwerkkonfigurationsdatei. Um zu erfahren, wie Sie eine Netzwerkkonfigurationsdatei mit PowerShell oder der Azure-Befehlszeilenschnittstelle (CLI) 1.0 exportieren können, konsultieren Sie [Konfigurieren eines virtuellen Netzwerks mithilfe einer Netzwerkkonfigurationsdatei](virtual-networks-using-network-configuration-file.md#export).
+2. Bearbeiten Sie die Netzwerkkonfigurationsdatei, und ersetzen Sie dabei **AffinityGroup** durch **Location**. Geben Sie eine Azure-[Region](https://azure.microsoft.com/regions) für **Location** (Standort) an.
    
    > [!NOTE]
-   > Geben Sie für **Location** die Region an, die Sie auch für die Affinitätsgruppe angegeben haben, die Ihrem VNet zugeordnet ist. Ist Ihr VNet also beispielsweise einer Affinitätsgruppe im Westen der USA zugeordnet, müssen Sie bei der Migration als Ort ebenfalls den Westen der USA angeben. 
+   > Geben Sie für **Location** die Region an, die Sie auch für die Affinitätsgruppe angegeben haben, die Ihrem (klassischen) virtuellen Netzwerk zugeordnet ist. Ist Ihr (klassisches) virtuelles Netzwerk also beispielsweise einer Affinitätsgruppe im Westen der USA zugeordnet, müssen Sie bei der Migration für **Location** ebenfalls den Westen der USA angeben. 
    > 
    > 
    
@@ -53,24 +53,13 @@ Für VNets mit bestehender Affinitätsgruppenzuordnung ist die Migration zu regi
     **Alter Wert:** \<VirtualNetworkSitename="VNetUSWest" AffinityGroup="VNetDemoAG"\> 
    
     **Neuer Wert:** \<VirtualNetworkSitename="VNetUSWest" Location="West US"\>
-3. Speichern Sie die Änderungen, und [importieren](virtual-networks-using-network-configuration-file.md) Sie die Netzwerkkonfiguration in Azure.
+3. Speichern Sie die Änderungen, und [importieren](virtual-networks-using-network-configuration-file.md#import) Sie die Netzwerkkonfiguration in Azure.
 
 > [!NOTE]
 > Bei dieser Migration kommt es zu keinerlei Ausfallzeiten für Ihre Dienste.
 > 
 > 
 
-## <a name="affinity-groups-and-vms"></a>Affinitätsgruppen und virtuelle Computer
-Wie bereits erwähnt, wird grundsätzlich von der Verwendung von Affinitätsgruppen für virtuelle Computer abgeraten. Affinitätsgruppen sollten nur dann noch verwendet werden, wenn bei einer Gruppe virtueller Computer unbedingt eine geringstmögliche Netzwerklatenz zwischen den virtuellen Computern erreicht werden muss. Durch die Platzierung virtueller Computer in einer Affinitätsgruppe werden alle virtuellen Computer im gleichen Computecluster bzw. in der gleichen Skalierungseinheit platziert.
-
-Beachten Sie, dass die Verwendung einer Affinitätsgruppe zwei (möglicherweise negative) Auswirkungen hat:
-
-* Der Satz der VM-Größen ist auf den Satz der VM-Größen beschränkt, der von der Compute-Skalierungseinheit bereitgestellt wird.
-* Die Wahrscheinlichkeit, dass sich kein neuer virtueller Computer zuweisen lässt, nimmt zu. Dieser Fall tritt ein, wenn die Kapazität der spezifischen Skalierungseinheit für die Affinitätsgruppe erschöpft ist.
-
-### <a name="what-to-do-if-you-have-a-vm-in-an-affinity-group"></a>Vorgehensweise bei Verwendung eines virtuellen Computers in einer Affinitätsgruppe
-Virtuelle Computer, die sich derzeit in einer Affinitätsgruppe befinden, müssen nicht aus der Gruppe entfernt werden.
-
-Die Bereitstellung eines virtuellen Computers erfolgt in einer einzelnen Skalierungseinheit. Affinitätsgruppen können zwar den Satz verfügbarer VM-Größen für eine neue VM-Bereitstellung einschränken, alle vorhandenen und bereits bereitgestellten virtuellen Computer sind jedoch bereits auf den Satz von VM-Größen beschränkt, der in der entsprechenden Skalierungseinheit verfügbar ist. Daher hat das Entfernen eines virtuellen Computers aus der Affinitätsgruppe keinerlei Auswirkungen.
-
+## <a name="what-to-do-if-you-have-a-vm-classic-in-an-affinity-group"></a>Vorgehensweise bei Verwendung eines (klassischen) virtuellen Computers in einer Affinitätsgruppe
+(Klassische) Virtuelle Computer, die sich derzeit in einer Affinitätsgruppe befinden, müssen nicht aus der Gruppe entfernt werden. Die Bereitstellung eines virtuellen Computers erfolgt in einer einzelnen Skalierungseinheit. Affinitätsgruppen können zwar den Satz verfügbarer VM-Größen für eine neue VM-Bereitstellung einschränken, alle vorhandenen und bereits bereitgestellten virtuellen Computer sind jedoch bereits auf den Satz von VM-Größen beschränkt, der in der entsprechenden Skalierungseinheit verfügbar ist. Da der virtuelle Computer bereits für eine Skalierungseinheit bereitgestellt wurde, hat das Entfernen eines virtuellen Computers aus der Affinitätsgruppe keine Auswirkung auf den virtuellen Computer.
 

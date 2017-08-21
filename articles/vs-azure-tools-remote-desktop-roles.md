@@ -14,14 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/11/2016
 ms.author: tarcher
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 99c8067cf08b8ae7650c240c9d69d2fe1c18f9c8
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 50c463588356cc4725b038cbf89a49b6ce2bdc3b
+ms.contentlocale: de-de
+ms.lasthandoff: 07/08/2017
 
 
 ---
 # <a name="using-remote-desktop-with-azure-roles"></a>Verwendung von Remotedesktop mit Azure-Rollen
-Mit dem Azure SDK und Remotedesktopdiensten greifen Sie auf Azure-Rollen und virtuelle Computer zu, die von Azure gehostet werden. In Visual Studio können Sie Remotedesktopdienste in einem Azure-Projekt konfigurieren. Zum Aktivieren von Remotedesktopdiensten müssen Sie ein Arbeitsprojekt mit einer Rolle oder mehreren Rollen erstellen und es anschließend in Azure veröffentlichen.
+Mit dem Azure SDK und Remotedesktopdiensten greifen Sie auf Azure-Rollen und virtuelle Computer zu, die von Azure gehostet werden. In Visual Studio können Sie Remotedesktopdienste in einem Azure-Clouddienstprojekt konfigurieren. Zum Aktivieren von Remotedesktopdiensten müssen Sie ein Arbeitsprojekt mit einer Rolle oder mehreren Rollen erstellen und es anschließend in Azure veröffentlichen.
 
 > [!IMPORTANT]
 > Greifen Sie auf Azure-Rollen nur zum Zweck der Problembehandlung oder Entwicklung zu. Der Zweck aller virtuellen Computer besteht in der Ausführung einer bestimmten Rolle in der Azure-Anwendung und nicht in der Ausführung anderer Clientanwendungen. Wenn Sie Azure zum Hosten eines virtuellen Computers für beliebige Zwecke verwenden möchten, finden Sie weitere Informationen unter "Zugreifen auf virtuelle Computer in Azure über den Server-Explorer".
@@ -29,7 +31,7 @@ Mit dem Azure SDK und Remotedesktopdiensten greifen Sie auf Azure-Rollen und vir
 > 
 
 ## <a name="to-enable-and-use-remote-desktop-for-an-azure-role"></a>So aktivieren und verwenden Sie Remotedesktop für eine Azure-Rolle
-1. Öffnen Sie im Projektmappen-Explorer das Kontextmenü für das Projekt, und wählen Sie dann **Veröffentlichen**aus.
+1. Öffnen Sie im Projektmappen-Explorer das Kontextmenü für Ihr Azure-Clouddienstprojekt, und wählen Sie anschließend **Veröffentlichen**aus.
    
     Der **Assistent zum Veröffentlichen einer Azure-Anwendung** wird angezeigt.
    
@@ -76,10 +78,5 @@ Nach der Veröffentlichung des Clouddiensts in Azure können Sie sich mit dem Se
    
     ![Herstellen einer Verbindung über Remotedesktop](./media/vs-azure-tools-remote-desktop-roles/IC799162.png)
 3. Geben Sie den Benutzernamen und das zuvor erstellte Kennwort ein. Sie sind nun bei Ihrer Remotesitzung angemeldet.
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

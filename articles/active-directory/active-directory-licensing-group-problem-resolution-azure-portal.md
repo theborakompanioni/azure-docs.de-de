@@ -14,13 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/28/2017
+ms.date: 06/05/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 9553c9ed02fa198d210fcb64f4657f84ef3df801
-ms.openlocfilehash: 68155ebaa6af36500bfe856c9bcd49f5efb6cbc2
-ms.lasthandoff: 03/23/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: bfa951a897c9b383072c0d29c9a4266c163fe753
+ms.contentlocale: de-de
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -33,7 +34,26 @@ Wenn Sie Lizenzen direkt einzelnen Benutzern zuweisen, ohne die gruppenbasierte 
 
 Bei Verwendung der gruppenbasierten Lizenzierung können die gleichen Fehler auftreten, aber dies geschieht im Hintergrund, wenn der Azure AD-Dienst Lizenzen zuweist. Daher können Ihnen die Fehler nicht sofort gemeldet werden. Stattdessen werden sie im Benutzerobjekt aufgezeichnet und anschließend über das Verwaltungsportal gemeldet. Beachten Sie, dass das ursprüngliche Ziel der Lizenzierung des Benutzers nicht in Vergessenheit gerät, sondern bei einem Fehlerzustand zur künftigen Untersuchung und Behebung aufgezeichnet wird.
 
-Öffnen Sie jeweils das Blatt für eine Gruppe, um nach Benutzern zu suchen, für die ein Fehlerzustand gilt. Unter **Lizenzen** wird eine Benachrichtigung angezeigt, falls Benutzer mit Fehlerzustand vorhanden sind. Wählen Sie die Benachrichtigung aus, um eine Liste mit allen betroffenen Benutzern zu öffnen. Sie können die Benutzer einzeln anzeigen, um das zugrunde liegende Problem zu verstehen. In diesem Artikel werden alle möglichen Probleme und die Möglichkeit zur Behebung beschrieben.
+## <a name="how-to-find-license-assignment-errors"></a>Vorgehensweise: Fehlersuche bei der Lizenzzuweisung
+
+1. Um Benutzer, die sich im Fehlerzustand befinden, in einer bestimmten Gruppe zu suchen, öffnen Sie das Blatt der Gruppe. Unter **Lizenzen** wird eine Benachrichtigung angezeigt, falls Benutzer mit Fehlerzustand vorhanden sind.
+
+![Fehlerbenachrichtigung in einer Gruppe](media/active-directory-licensing-group-problem-resolution-azure-portal/group-error-notification.png)
+
+2. Klicken Sie auf die Benachrichtigung, um eine Liste aller betroffenen Benutzer zu öffnen. Sie können jeden Benutzer einzeln anklicken, um weitere Einzelheiten anzuzeigen.
+
+![Liste der Benutzer im Fehlerzustand in einer Gruppe](media/active-directory-licensing-group-problem-resolution-azure-portal/list-of-users-with-errors.png)
+
+3. Um alle Gruppen zu suchen, die mindestens einen Fehler enthalten, klicken Sie auf dem **Azure Active Directory**-Blatt erst auf **Licenses** (Lizenzen) und dann auf **Overview** (Übersicht). Ein Feld mit Informationen wird angezeigt, wenn einige Gruppen Ihre Aufmerksamkeit erfordern.
+
+![Übersicht: Information zu Gruppen im Fehlerzustand](media/active-directory-licensing-group-problem-resolution-azure-portal/group-errors-widget.png)
+
+4. Klicken Sie auf das Feld, um eine Liste aller Gruppen mit Fehlern anzuzeigen. Für weitere Einzelheiten können Sie jede Gruppe einzeln anklicken.
+
+![Übersicht: Liste der Gruppen mit Fehlern](media/active-directory-licensing-group-problem-resolution-azure-portal/list-of-groups-with-errors.png)
+
+
+Im Folgenden finden Sie eine Beschreibung aller möglichen Probleme und der Möglichkeiten, diese zu beheben.
 
 ## <a name="not-enough-licenses"></a>Nicht genügend Lizenzen
 
@@ -88,6 +108,20 @@ Sie können einer Gruppe mehr als eine Produktlizenz zuweisen. Beispielsweise k�
 Azure AD versucht, den einzelnen Benutzern alle in der Gruppe angegebenen Lizenzen zuzuweisen. Wenn Azure AD eines der Produkte nicht zuweisen kann, weil Probleme mit der Geschäftslogik vorliegen (z.B. wenn die Lizenzen nicht ausreichen oder wenn Konflikte mit anderen Diensten bestehen, die vom Benutzer aktiviert wurden), werden die anderen Lizenzen in der Gruppe auch nicht zugewiesen.
 
 Sie können die Benutzer anzeigen, für die die Zuweisung fehlgeschlagen ist, und prüfen, welche Produkte davon betroffen sind.
+
+## <a name="license-assignment-fails-silently-for-a-user-due-to-duplicate-proxy-addresses-in-exchange-online"></a>Die Lizenzzuweisung zu einem Benutzer schlägt ohne Fehlermeldung fehl wegen doppelter Proxyadressen in Exchange Online
+
+Wenn Sie Exchange Online verwenden, sind u.U. einige Benutzer in Ihrem Mandanten fälschlicherweise mit demselben Proxyadresswert konfiguriert. Wenn durch die gruppenbasierte Lizenzierung versucht wird, einem solchen Benutzer eine Lizenz zuzuweisen, schlägt dies fehl ohne einen Fehler zu erfassen (anders als bei den anderen oben beschriebenen Fehlern). Dabei handelt es sich um eine Einschränkung in der Vorschauversion, die vor der *allgemeinen Verfügbarkeit* behoben wird.
+
+> [!TIP]
+> Wenn Sie feststellen, dass einige Benutzer keine Lizenz erhalten haben und kein Fehler bei diesen Benutzern aufgezeichnet wurde, überprüfen Sie zunächst, ob bei diesen doppelte Proxyadressen vorhanden sind.
+> Dies kann durch die Ausführung des folgenden PowerShell-Cmdlets in Exchange Online erfolgen:
+```
+Run Get-Recipient | where {$_.EmailAddresses -match "user@contoso.onmicrosoft.com"} | fL Name, RecipientType,emailaddresses
+```
+> [This article (Dieser Artikel)](https://support.microsoft.com/help/3042584/-proxy-address-address-is-already-being-used-error-message-in-exchange-online) enthält weitere Einzelheiten zu diesem Problem, einschließlich der Informationen, [how to connect to Exchange Online using remote PowerShell (wie eine Verbindung zu Exchange Online mithilfe von Remote-PowerShell hergestellt wird)](https://technet.microsoft.com/library/jj984289.aspx).
+
+Sobald die Probleme mit den Proxyadressen bei den betroffenen Benutzern gelöst wurden, erzwingen Sie die Lizenzverarbeitung für diese Gruppe, um sicherzustellen, dass Lizenzen nun wieder zugewiesen werden können.
 
 ## <a name="how-do-you-force-license-processing-in-a-group-to-resolve-errors"></a>Wie können Sie die Lizenzverarbeitung für eine Gruppe durchsetzen, um Fehler zu beheben?
 

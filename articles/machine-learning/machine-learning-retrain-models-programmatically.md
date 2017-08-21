@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: raymondl;garye;v-donglo
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0dc0f84ed65e76a95dcac523e42268039212773c
-ms.openlocfilehash: 5032e66556622e44e5f5bba84c4ddf5318b1e194
+ms.translationtype: HT
+ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
+ms.openlocfilehash: cf7a39e14a935d0d0e0df07e66a8f37480ec9687
 ms.contentlocale: de-de
-ms.lasthandoff: 03/02/2017
-
+ms.lasthandoff: 07/14/2017
 
 ---
 # <a name="retrain-machine-learning-models-programmatically"></a>Programmgesteuertes erneutes Trainieren von Machine Learning-Modellen
@@ -92,7 +91,7 @@ In diesem Beispiel verwenden Sie C# zum Erstellen der Anwendung für erneutes Tr
 
 So rufen Sie die APIs zum erneuten Trainieren auf
 
-1. Erstellen Sie eine neue C#-Konsolenanwendung in Visual Studio (Neu > Projekt > Windows-Desktop > Konsolenanwendung).
+1. Erstellen Sie eine C#-Konsolenanwendung in Visual Studio: **Neu** > **Projekt** > **Visual C#** > **Klassischer Windows-Desktop** > **Konsolen-App (.NET Framework)**.
 2. Melden Sie sich beim Machine Learning-Webdienstportal an.
 3. Klicken Sie bei Verwendung eines klassischen Webdiensts auf **Classic Web Services**.
    1. Klicken Sie auf den verwendeten Webdienst.

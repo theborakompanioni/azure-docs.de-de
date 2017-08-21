@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/14/2016
 ms.author: kumud
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8827793d771a2982a3dccb5d5d1674af0cd472ce
-ms.openlocfilehash: 397f3e75830acf46b29ac864c77ed3160f4e01e4
+ms.translationtype: HT
+ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
+ms.openlocfilehash: 8cca857314ecf37ef51700fd25aef228515ecd0a
 ms.contentlocale: de-de
-ms.lasthandoff: 07/06/2017
+ms.lasthandoff: 07/14/2017
 
 ---
 
@@ -73,7 +73,9 @@ Einschränkungen
 * Azure-VMs können nicht über IPv6 Verbindungen mit anderen VMs, anderen Azure-Diensten oder lokalen Geräten herstellen. Sie können über IPv6 nur mit Azure Load Balancer kommunizieren. Allerdings können sie mit diesen anderen Ressourcen über IPv4 kommunizieren.
 * Schutz durch Netzwerksicherheitsgruppen (NSG) für IPv4 wird in Bereitstellungen mit dualem Stapel (IPv4 und IPv6) unterstützt. NSGs gelten nicht für die IPv6-Endpunkte.
 * Auf den IPv6-Endpunkt auf der VM kann nicht direkt über das Internet zugegriffen werden. Er befindet sich hinter einem Load Balancer. Nur auf die Ports, die in den Load Balancer-Regeln angegeben sind, kann über IPv6 zugegriffen werden.
-* Das Ändern des Parameters „IdleTimeout“ wird für IPv6 **derzeit nicht unterstützt**. Der Standardwert ist vier Minuten.
+* Das Ändern des Parameters IdleTimeout wird für IPv6 **derzeit nicht unterstützt**. Der Standardwert ist vier Minuten.
+* Das Ändern des Parameters loadDistributionMethod wird für IPv6 **derzeit nicht unterstützt**.
+* Reservierte IPv6-IP-Adressen (wobei IPAllocationMethod = static) werden **derzeit nicht unterstützt**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

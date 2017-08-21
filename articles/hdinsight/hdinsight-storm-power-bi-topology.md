@@ -1,5 +1,5 @@
 ---
-title: Verwenden von Apache Storm mit Power BI | Microsoft-Dokumentation
+title: "Verwenden von Apache Storm mit Power BI – Azure HDInsight | Microsoft-Dokumentation"
 description: Erstellen Sie einen Power BI-Bericht aus Daten einer C#-Topologie auf einem Apache Storm-Cluster in HDInsight.
 services: hdinsight
 documentationcenter: 
@@ -14,12 +14,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 03/01/2017
+ms.date: 05/31/2017
 ms.author: larryfr
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: bedb6816e4f203687529e95ffa24688e86b5a3cb
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 36487c0c34e5a4bb955bbc15c8c96b9e838aeb44
+ms.contentlocale: de-de
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -28,7 +29,7 @@ ms.lasthandoff: 04/12/2017
 Mit Power BI können Sie Daten als Berichte anzeigen. Dieses Dokument enthält ein Beispiel für die Verwendung von Apache Storm HDInsight zum Generieren von Daten für Power BI.
 
 > [!NOTE]
-> Während Sie für die Schritte in diesem Dokument eine Windows-Entwicklungsumgebung mit Visual Studio benötigen, kann das kompilierte Projekt an einen Linux- oder Windows-basierten HDInsight-Cluster übermittelt werden. Nur Linux-basierte Cluster, die nach dem 28.10.2016 erstellt wurden, unterstützen SCP.NET-Topologien.
+> Die Schritte in diesem Dokument basieren auf einer Windows-Entwicklungsumgebung mit Visual Studio. Das kompilierte Projekt kann an einen Linux-basierten HDInsight-Cluster gesendet werden. Nur Linux-basierte Cluster, die nach dem 28.10.2016 erstellt wurden, unterstützen SCP.NET-Topologien.
 >
 > Aktualisieren Sie das NuGet-Paket „Microsoft.SCP.Net.SDK“, das vom Projekt verwendet wird, auf Version 0.10.0.6 oder höher, um eine C#-Topologie mit einem Linux-basierten Cluster zu verwenden. Die Version des Pakets muss zudem mit der Hauptversion der Storm-Installation auf HDInsight übereinstimmen. Beispielsweise verwenden die Storm in HDInsight-Versionen 3.3 und 3.4 die Storm-Version 0.10.x, während HDInsight 3.5 Storm 1.0.x verwendet.
 >
@@ -42,7 +43,7 @@ Mit Power BI können Sie Daten als Berichte anzeigen. Dieses Dokument enthält e
 * Einen HDInsight-Cluster Weitere Informationen finden Sie unter [Erste Schritte mit Storm in HDInsight](hdinsight-apache-storm-tutorial-get-started-linux.md).
 
   > [!IMPORTANT]
-  > Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Ende des Lebenszyklus von HDInsight unter Windows](hdinsight-component-versioning.md#hdi-version-33-nearing-deprecation-date).
+  > Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 * Visual Studio (eine der folgenden Versionen):
 
@@ -108,7 +109,7 @@ Herunterladen des [HDInsight C# Storm Power BI-Beispiels](https://github.com/Azu
 
         select * from iislogs;
 
-    Führen Sie mit STRG+UMSCHALT+E die Abfrage aus, und Sie sollten Ergebnisse wie die folgenden erhalten:
+    Wenn Sie mit STRG+UMSCHALT+E die Abfrage ausführen, sollten die Ergebnisse folgenden Daten ähneln:
 
         1    2016-05-27 17:57:14.797    255.255.255.255    /bar    GET    200
         2    2016-05-27 17:57:14.843    127.0.0.1    /spam/eggs    POST    500
@@ -121,11 +122,17 @@ Herunterladen des [HDInsight C# Storm Power BI-Beispiels](https://github.com/Azu
 
 ## <a name="create-a-report"></a>Erstellen eines Berichts
 
-1. Stellen Sie eine Verbindung mit dem [Azure SQL-Datenbank-Connector](https://app.powerbi.com/getdata/bigdata/azure-sql-database-with-live-connect) für Power BI her.
+1. Stellen Sie eine Verbindung mit dem [Azure SQL-Datenbank-Connector](https://app.powerbi.com/getdata/bigdata/azure-sql-database-with-live-connect) für Power BI her. 
 
 2. Wählen Sie unter **Datenbanken** die Option **Abrufen** aus.
 
 3. Wählen Sie **Azure SQL-Datenbank** und dann **Verbinden** aus.
+
+    > [!NOTE]
+    > Möglicherweise werden Sie aufgefordert, den Power BI Desktop herunterzuladen, um den Vorgang fortzusetzen. Stellen Sie dann mit folgenden Schritten die Verbindung her:
+    >
+    > 1. Öffnen Sie Power BI Desktop, und wählen Sie __Daten abrufen__ aus.
+    > 2  Wählen Sie __Azure__ und dann __Azure SQL-Datenbank__ aus.
 
 4. Geben Sie die Informationen zum Herstellen der Verbindung mit der Azure SQL-Datenbank ein. Sie finden diese Information, indem Sie im [Azure-Portal](https://portal.azure.com) Ihre SQL-Datenbank auswählen.
 
@@ -134,7 +141,7 @@ Herunterladen des [HDInsight C# Storm Power BI-Beispiels](https://github.com/Azu
 
 5. Nachdem Sie eine Verbindung hergestellt haben, wird ein neues Dataset mit dem gleichen Namen wie die Datenbank, mit der Sie verbunden sind, angezeigt. Wählen Sie das Dataset aus, um mit dem Entwerfen eines Berichts zu beginnen.
 
-6. Erweitern Sie unter **Felder** den Eintrag **IISLOGS**. Aktivieren Sie das Kontrollkästchen für **URISTEM**. Dadurch wird ein Bericht erstellt, der URI-Stämme (/foo, /bar usw.) aufführt, die in der Datenbank protokolliert wurden.
+6. Erweitern Sie unter **Felder** den Eintrag **IISLOGS**. Um einen Bericht zu erstellen, der die URI-Stämme auflistet, aktivieren Sie das Kontrollkästchen für **URISTEM**.
 
     ![Erstellen eines Berichts](./media/hdinsight-storm-power-bi-topology/createreport.png)
 
@@ -142,7 +149,7 @@ Herunterladen des [HDInsight C# Storm Power BI-Beispiels](https://github.com/Azu
 
     ![Hinzufügen der Methodendaten](./media/hdinsight-storm-power-bi-topology/uristemandmethod.png)
 
-8. Wählen Sie in der Spalte **Visualisierungen** das Symbol **Felder** aus, und wählen Sie dann im Abschnitt **Werte** den Pfeil nach unten neben **METHODE** aus. Wählen Sie in der angezeigten Liste **Anzahl**aus. Dadurch wird im Bericht angezeigt, wie oft auf einen bestimmten URI zugegriffen wurde.
+8. Wählen Sie in der Spalte **Visualisierungen** das Symbol **Felder** aus, und wählen Sie dann im Abschnitt **Werte** den Pfeil nach unten neben **METHODE** aus. Um anzuzeigen, wie oft auf einen URI zugegriffen wurde, wählen Sie **Anzahl**.
 
     ![Ändern in die Anzahl der Methoden](./media/hdinsight-storm-power-bi-topology/count.png)
 
@@ -154,7 +161,7 @@ Herunterladen des [HDInsight C# Storm Power BI-Beispiels](https://github.com/Azu
 
 ## <a name="stop-the-topology"></a>Beenden der Topologie
 
-Die Topologie wird weiterhin ausgeführt, bis Sie sie beenden oder das Storm-Cluster in HDInsight löschen. Führen Sie folgende Schritte aus, um die Topologie anzuhalten.
+Die Topologie wird weiterhin ausgeführt, bis Sie sie beenden oder das Storm-Cluster in HDInsight löschen. Um die Topologie anzuhalten, führen Sie die folgenden Schritte aus:
 
 1. Kehren Sie in Visual Studio zum Topologie-Viewer zurück, und wählen Sie die Topologie aus.
 
@@ -168,7 +175,7 @@ Die Topologie wird weiterhin ausgeführt, bis Sie sie beenden oder das Storm-Clu
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Dokument haben Sie erfahren, wie Daten aus einer Storm-Topologie an eine SQL-Datenbank gesendet und dann mit Power BI visualisiert werden. Informationen zum Arbeiten mit anderen Azure-Technologien mithilfe von Storm in HDInsight finden Sie hier:
+In diesem Dokument haben Sie erfahren, wie Daten aus einer Storm-Topologie an eine SQL-Datenbank gesendet und dann mit Power BI visualisiert werden. Informationen zum Arbeiten mit anderen Azure-Technologien mithilfe von Storm in HDInsight finden Sie im folgenden Dokument:
 
 * [Beispiele für Storm-Topologien für Storm in HDInsight](hdinsight-storm-example-topology.md)
 

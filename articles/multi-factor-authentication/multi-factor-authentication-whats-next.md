@@ -1,6 +1,6 @@
 ---
 title: Konfigurieren von Azure MFA | Microsoft-Dokumentation
-description: "Dies ist die Seite &quot;Azure Multi-Factor Authentication&quot;, auf der beschrieben wird, was die nächsten Schritte mit Multi-Factor Authentication sind.  Dazu gehören Berichte, Betrugswarnung, Einmalumgehung, benutzerdefinierte Sprachnachrichten, Zwischenspeicherung, vertrauenswürdige IP-Adressen und App-Kennwörter."
+description: "Dies ist die Seite \"Azure Multi-Factor Authentication\", auf der beschrieben wird, was die nächsten Schritte mit Multi-Factor Authentication sind.  Dazu gehören Berichte, Betrugswarnung, Einmalumgehung, benutzerdefinierte Sprachnachrichten, Zwischenspeicherung, vertrauenswürdige IP-Adressen und App-Kennwörter."
 services: multi-factor-authentication
 documentationcenter: 
 author: kgremban
@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/21/2017
 ms.author: kgremban
-translationtype: Human Translation
-ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
-ms.openlocfilehash: 2e7c1ddedaa11fb614f2e8cf6d1644ae2a2beae3
-ms.lasthandoff: 04/28/2017
+ms.translationtype: HT
+ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
+ms.openlocfilehash: 92e4c7d5a873cd75cdc32e1feeede71bd5e37f40
+ms.contentlocale: de-de
+ms.lasthandoff: 07/10/2017
 
 
 ---
@@ -236,13 +237,13 @@ Azure AD unterstützt den Verbund (Einmaliges Anmelden) mit lokalen Windows Serv
 * Im Gegensatz zum passiven Ablauf gehen wir bei Verbundbenutzern (SSO) nie zum Identitätsanbieter (Identity Provider, IdP). Die Kennwörter werden in der Organisations-ID gespeichert. Wenn der Benutzer das Unternehmen verlässt, muss diese Information zur Organisations-ID übertragen werden, und zwar mithilfe von DirSync in Echtzeit. Nach dem Deaktivieren oder Löschen von Konten kann die Synchronisierung bis zu drei Stunden dauern, sodass das Deaktivieren bzw. Löschen des App-Kennworts in Azure AD verzögert wird.
 * Lokale Einstellungen für die Clientzugriffssteuerung werden vom App-Kennwort nicht berücksichtigt.
 * Für das App-Kennwort ist keine lokale Funktion zur Protokollierung oder Überwachung der Authentifizierung verfügbar.
-* In bestimmten erweiterten Architekturentwürfen ist bei der Verwendung der Überprüfung in zwei Schritten mit Clients möglicherweise eine Kombination aus Organisationsbenutzername/-kennwörtern und App-Kennwörtern erforderlich, je nachdem, wo die Authentifizierung stattfindet. Bei Clients, die eine lokale Infrastruktur authentifizieren, verwenden Sie einen Organisationsbenutzernamen und -kennwort. Für Clients, die bei Azure AD authentifizieren, verwenden Sie das App-Kennwort.
+* In bestimmten erweiterten Architekturentwürfen ist bei der Verwendung der Überprüfung in zwei Schritten mit Clients möglicherweise eine Kombination aus Organisationsbenutzername/-kennwörtern und App-Kennwörtern erforderlich, je nachdem, wo die Authentifizierung stattfindet. Bei Clients, die sich bei einer lokalen Infrastruktur authentifizieren, verwenden Sie einen Organisationsbenutzernamen und ein Organisationskennwort. Für Clients, die bei Azure AD authentifizieren, verwenden Sie das App-Kennwort.
 
   Nehmen wir beispielsweise an, Sie verfügen über eine Architektur, die Folgendes umfasst:
 
-  * Sie werden Ihre lokale Instanz von Active Directory mit Azure AD in Verbund setzen.
+  * Sie werden Ihre lokale Instanz von Active Directory mit Azure AD in Verbund setzen
   * Sie verwenden Exchange online.
-  * Sie verwenden Lync, das speziell lokal ist.
+  * Sie verwenden Lync, das speziell lokal ist
   * Sie verwenden Azure Multi-Factor Authentication,
 
   ![Proofup](./media/multi-factor-authentication-whats-next/federated.png)

@@ -211,9 +211,9 @@ Damit sich Azure AD-Benutzer bei Small Improvements anmelden können, müssen si
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-smallimprovements-tutorial/tutorial_smallimprovements_12.png)
     
-    a. Geben Sie ****den Vornamen des Benutzers ein, z.B. **Britta**.
+    a. Geben Sie den **Vornamen** des Benutzers ein, z.B. **Britta**.
 
-    b. Geben Sie ****den Nachnamen des Benutzers ein, z.B. **Simon**.
+    b. Geben Sie den **Nachnamen** des Benutzers ein, z.B. **Simon**.
 
     c. Geben Sie die **E-Mail-Adresse** des Benutzers ein, z.B. **brittasimon@contoso.com**. 
 

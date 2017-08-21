@@ -10,16 +10,16 @@ ms.assetid: cf9a9631-56aa-4985-a565-1cacc297871d
 ms.service: sql-database
 ms.custom: load & move data
 ms.devlang: NA
-ms.date: 04/07/2017
+ms.date: 06/26/2017
 ms.author: carlrab
 ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: 4ddbeb78208d8e32fe5e505f396fbfec4e5d6c0a
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d42df0cbfa20741d4848dbefabb9028128b42ae1
 ms.contentlocale: de-de
-ms.lasthandoff: 06/28/2017
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -48,8 +48,7 @@ Um den Status des Importvorgangs zu überwachen, öffnen Sie die Seite für den 
 
 Um den Status des Importvorgangs zu überwachen, öffnen Sie die Seite für den logischen Server, in den die Datenbank importiert wird. Scrollen Sie nach unten bis zu **Vorgänge**, und klicken Sie dann auf **Import-/Exportverlauf**.
    
-   ![Importieren](./media/sql-database-import/import-history.png)
-   ![Importstatus](./media/sql-database-import/import-status.png)
+   ![Importieren](./media/sql-database-import/import-history.png) ![Importstatus](./media/sql-database-import/import-status.png)
 
 Zum Überprüfen, ob die Datenbank auf dem Server aktiv ist, klicken Sie auf **SQL-Datenbanken** und prüfen, ob der Status der neuen Datenbank **Online** ist.
 

@@ -12,14 +12,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 09/14/2016
+ms.date: 07/17/2017
 ms.author: piyushjo
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 58baae6fb3d338ef94caca79b9248afc0fb7f841
+ms.translationtype: HT
+ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
+ms.openlocfilehash: 01fdbb43c21ac6932e8462f4a6507fc63e50542d
 ms.contentlocale: de-de
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 07/19/2017
 
 ---
 # <a name="how-to-integrate-engagement-on-ios"></a>Integrieren von Mobile Engagement unter iOS
@@ -28,17 +27,17 @@ ms.lasthandoff: 07/06/2017
 > * [Windows Phone Silverlight](mobile-engagement-windows-phone-integrate-engagement.md)
 > * [iOS](mobile-engagement-ios-integrate-engagement.md)
 > * [Android](mobile-engagement-android-integrate-engagement.md)
-> 
-> 
+>
+>
 
 In diesem Verfahren wird die einfachste Art der Aktivierung der Analyse- und Überwachungsfunktionen von Mobile Engagement in Ihrer iOS-Anwendung beschrieben.
 
-Das Engagement SDK erfordert mindestens iOS6 und Xcode 8: Das Bereitstellungsziel Ihre Anwendung muss mindestens iOS 6 sein.
+Das Engagement SDK erfordert mindestens iOS7+ und Xcode 8+: Das Bereitstellungsziel Ihrer Anwendung muss mindestens iOS 7 sein.
 
 > [!NOTE]
 > Wenn Sie auf XCode 7 tatsächlich nicht verzichten können, bietet sich das [iOS Engagement SDK 3.2.4](https://aka.ms/r6oouh)an. Im Reichweitenmodul dieser Vorgängerversion tritt bei Ausführung auf iOS 10-Geräten ein bekannter Fehler auf. Weitere Details finden Sie unter [Integration des Reichweitenmoduls](mobile-engagement-ios-integrate-engagement-reach.md). Wenn Sie das SDK mit der Version 3.2.4 nutzen, können Sie das Importieren von `UserNotifications.framework` im nächsten Schritt überspringen.
-> 
-> 
+>
+>
 
 Die folgenden Schritte sind ausreichend, um den Bericht von Protokollen zu aktivieren, die zur Berechnung aller Statistiken zu Benutzern, Sitzungen, Aktivitäten, Abstürzen und technischen Informationen notwendig sind. Der Bericht von Protokollen, die zur Berechnung anderer Statistiken wie Ereignisse, Fehler und Aufträge erforderlich sind, muss manuell mithilfe der Engagement-API erfolgen (siehe [Verwenden der Engagement-API auf iOS](mobile-engagement-ios-use-engagement-api.md)), da diese Statistiken von der Anwendung abhängig sind.
 
@@ -46,7 +45,7 @@ Die folgenden Schritte sind ausreichend, um den Bericht von Protokollen zu aktiv
 * Laden Sie das iOS-SDK [hier](http://aka.ms/qk2rnj)herunter.
 * Fügen Sie das Engagement-SDK zum iOS-Projekt hinzu. Klicken Sie in Xcode mit der rechten Maustaste auf das Projekt, und wählen Sie **„Add files to ...“** und anschließend den Ordner `EngagementSDK` aus.
 * Engagement erfordert, dass zusätzliche Frameworks funktionieren: Öffnen Sie im Projektexplorer Ihren Projektbereich, und wählen Sie das richtige Ziel aus. Öffnen Sie dann die Registerkarte **„Build phases“**. Fügen Sie anschließend im Menü **„Link Binary With Libraries“** die folgenden Frameworks hinzu:
-  
+
   * `UserNotifications.framework` – Legen Sie den Link als `Optional` fest.
   * `AdSupport.framework` – Legen Sie den Link als `Optional` fest.
   * `SystemConfiguration.framework`
@@ -57,18 +56,18 @@ Die folgenden Schritte sind ausreichend, um den Bericht von Protokollen zu aktiv
 
 > [!NOTE]
 > Das AdSupport-Framework kann entfernt werden. Dieses Framework ist für Engagement zum Erfassen der IDFA erforderlich. Die IDFA-Erfassung kann jedoch mit \<ios-sdk-engagement-idfa\> deaktiviert werden, um der neuen Apple-Richtlinie zu dieser ID zu entsprechen.
-> 
-> 
+>
+>
 
 ## <a name="initialize-the-engagement-sdk"></a>Initialisieren des Engagement-SDK
 Sie müssen Ihre Anwendungsstellvertretung ändern:
 
 * Importieren Sie am Anfang der Implementierungsdatei den Engagement-Agent.
-  
+
       [...]
       #import "EngagementAgent.h"
 * Initialisieren Sie Engagement innerhalb der Methode „**applicationDidFinishLaunching:**“ oder „**application:didFinishLaunchingWithOptions:**“:
-  
+
       - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
       {
         [...]
@@ -110,13 +109,13 @@ Wenn Sie die `UIViewController`-Klassen nicht überladen können oder möchten, 
 
 > [!IMPORTANT]
 > Das iOS SDK ruft die `endActivity()`-Methode automatisch auf, wenn die Anwendung geschlossen wird. Daher wird *dringend* empfohlen, bei jeder Änderung der Benutzeraktivität die Methode `startActivity` und *niemals* die Methode `endActivity` aufzurufen, da hierdurch die Beendigung der aktuellen Sitzung erzwungen wird.
-> 
-> 
+>
+>
 
 ## <a name="location-reporting"></a>Speicherortberichte
 Die Apple-Nutzungsbedingungen gestatten es nicht, dass Anwendungen die Standortnachverfolgung nur für statistische Zwecke verwenden. Daher wird empfohlen, die Standortberichte nur zu aktivieren, wenn Ihre Anwendung die Standortnachverfolgung auch aus einem anderen Grund verwendet.
 
-Ab iOS 8 müssen Sie eine Beschreibung für die Verwendung der Standortdienste durch Ihre App bereitstellen, indem Sie für den Schlüssel [NSLocationWhenInUseUsageDescription] oder [NSLocationAlwaysUsageDescription] in der Datei „Info.plist“ Ihrer App eine Zeichenfolge festlegen. Wenn Sie mit Engagement im Hintergrund einen Standortbericht erstellen möchten, fügen Sie den Schlüssel „NSLocationAlwaysUsageDescription“ hinzu. In allen anderen Fällen fügen Sie den Schlüssel „NSLocationWhenInUseUsageDescription“ hinzu.
+Ab iOS 8 müssen Sie eine Beschreibung für die Verwendung der Standortdienste durch Ihre App bereitstellen, indem Sie für den Schlüssel [NSLocationWhenInUseUsageDescription] oder [NSLocationAlwaysUsageDescription] in der Datei „Info.plist“ Ihrer App eine Zeichenfolge festlegen. Wenn Sie mit Engagement im Hintergrund einen Standortbericht erstellen möchten, fügen Sie den Schlüssel „NSLocationAlwaysUsageDescription“ hinzu. In allen anderen Fällen fügen Sie den Schlüssel „NSLocationWhenInUseUsageDescription“ hinzu. Beachten Sie, dass Sie auf iOS 11 für die Berichterstellung im Hintergrund sowohl NSLocationAlwaysAndWhenInUseUsageDescription als auch NSLocationWhenInUseUsageDescription benötigen.
 
 ### <a name="lazy-area-location-reporting"></a>Verzögerte Bereichsspeicherortberichte
 Die verzögerte Berichterstellung für Bereichsspeicherorte ermöglicht es Ihnen, das Land, die Region und den Ort zu melden, die Geräten zugeordnet sind. Diese Art der Berichterstellung für Speicherorte verwendet ausschließlich Netzwerkspeicherorte (auf Basis von Zell-ID oder WLAN). Der Gerätebereich wird höchstens einmal pro Sitzung gemeldet. Das GPS wird niemals verwendet, daher hat diese Art von Standortbericht sehr geringe (oder fast keine) Auswirkungen auf den Akku.
@@ -153,8 +152,8 @@ Die Echtzeit-Berichterstellung für Speicherorte ist standardmäßig nur aktiv, 
 
 > [!NOTE]
 > Wenn die Anwendung im Hintergrund ausgeführt wird, werden nur netzwerkbasierte Speicherorte gemeldet, auch wenn Sie das GPS aktiviert haben.
-> 
-> 
+>
+>
 
 Durch die Implementierung dieser Funktion wird [startMonitoringSignificantLocationChanges] aufgerufen, wenn die Anwendung in den Hintergrund wechselt. Beachten Sie, dass Ihre Anwendung im Hintergrund automatisch neu gestartet wird, wenn ein neues Standortereignis eintrifft.
 

@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: backup-restore
 ms.date: 10/31/2016
 ms.author: lakshmir;barbkess
-translationtype: Human Translation
-ms.sourcegitcommit: 43ab6a2f71ab51c50847b1ba5249f51c48e03fea
-ms.openlocfilehash: 104986e88ededf2137725fe258b6ce51f608b37d
-ms.lasthandoff: 01/24/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: ea42b7135d0695b66d569095e70bb3d9f8b9594b
+ms.contentlocale: de-de
+ms.lasthandoff: 07/12/2017
 
 ---
 # <a name="sql-data-warehouse-restore"></a>SQL Data Warehouse-Wiederherstellung
@@ -58,7 +58,12 @@ Yes, you can restore the last available restore point.
 Yes, for the next seven calendar days. When you delete a data warehouse, SQL Data Warehouse actually keeps the data warehouse and its snapshots for seven days just in case you need the data. After seven days, you won't be able to restore to any of the restore points. -->
 
 ## <a name="geo-redundant-restore"></a>Georedundante Wiederherstellung
-Wenn Sie georedundanten Speicher verwenden, können Sie das Data Warehouse im [gekoppelten Rechenzentrum](../best-practices-availability-paired-regions.md) in einer anderen geografischen Region wiederherstellen. Das Data Warehouse wird aus der letzten täglichen Sicherung wiederhergestellt. 
+Sie können Ihr Data Warehouse in einer beliebigen Region wiederherstellen, die Azure SQL Data Warehouse auf der gewählten Leistungsebene unterstützt. Beachten Sie, dass 9000 und 18000 DWU in der Vorschauversion nicht in allen Regionen unterstützt werden.
+
+> [!NOTE]
+> Zum Ausführen einer georedundanten Wiederherstellung müssen Sie dieses Feature nicht deaktiviert haben.
+> 
+> 
 
 ## <a name="restore-timeline"></a>Zeitachse der Wiederherstellung
 Sie können eine Datenbank auf jeden verfügbaren Wiederherstellungspunkt innerhalb der letzten sieben Tage wiederherstellen. Momentaufnahmen werden alle vier bis acht Stunden gestartet und sind sieben Tage lang verfügbar. Wenn eine Momentaufnahme älter als sieben Tage ist, läuft sie ab, und ihr Wiederherstellungspunkt ist nicht mehr verfügbar.

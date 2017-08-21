@@ -15,12 +15,11 @@ ms.workload: big-data
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: 4371092aa31db444c4ca0374b4b2e7d700029a8b
+ms.translationtype: HT
+ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
+ms.openlocfilehash: 024b70df99fdefa1598225ebb1fbfee85ea375d0
 ms.contentlocale: de-de
-ms.lasthandoff: 05/26/2017
-
+ms.lasthandoff: 07/13/2017
 
 ---
 # <a name="use-apache-phoenix-and-squirrel-with-windows-based-hbase-clusters-in-hdinsight"></a>Verwenden von Apache Phoenix und SQuirreL mit Windows-basierten HBase-Clustern in HDInsight
@@ -31,7 +30,7 @@ Erfahren Sie, wie Sie [Apache Phoenix](http://phoenix.apache.org/) in HDInsight 
 >
 
 > [!IMPORTANT]
-> Die Schritte in diesem Dokument funktionieren nur mit Windows-basierten HDInsight-Clustern. HDInsight ist unter Windows nur für HDInsight-Versionen vor 3.4 verfügbar. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date). Informationen zur Verwendung von Phoenix in Linux-basierten HDInsight-Clustern finden Sie unter [Verwenden von Apache Phoenix mit Linux-basierten HBase-Clustern in HDInsight](hdinsight-hbase-phoenix-squirrel-linux.md).
+> Die Schritte in diesem Dokument funktionieren nur mit Windows-basierten HDInsight-Clustern. HDInsight ist unter Windows nur für HDInsight-Versionen vor 3.4 verfügbar. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](hdinsight-component-versioning.md#hdinsight-windows-retirement). Informationen zur Verwendung von Phoenix in Linux-basierten HDInsight-Clustern finden Sie unter [Verwenden von Apache Phoenix mit Linux-basierten HBase-Clustern in HDInsight](hdinsight-hbase-phoenix-squirrel-linux.md).
 >
 
 
@@ -89,7 +88,7 @@ Bevor Sie die Vorgehensweise befolgen, müssen Sie über Folgendes verfügen:
 * Rufen Sie das verbindungsspezifische DNS-Suffix des HBase-Clusters ab. Rufen Sie dazu mittels RDP den Cluster auf und führen Sie IPConfig aus.  Das DNS-Suffix ähnelt:
 
         myhbase.b7.internal.cloudapp.net
-* Laden Sie [Microsoft Visual Studio Express 2013 für Windows Desktop](https://www.visualstudio.com/products/visual-studio-express-vs.aspx) herunter und installieren Sie es auf Ihrer Arbeitsstation. Sie benötigen Makecert aus dem Paket, um Ihr Zertifikat zu erstellen.  
+* Laden Sie [Microsoft Visual Studio Express für Windows Desktop](https://www.visualstudio.com/products/visual-studio-express-vs.aspx) herunter, und installieren Sie es auf Ihrer Arbeitsstation. Sie benötigen Makecert aus dem Paket, um Ihr Zertifikat zu erstellen.  
 * Laden Sie [Java Laufzeitumgebung](http://www.oracle.com/technetwork/java/javase/downloads/jre7-downloads-1880261.html) herunter und installieren Sie es auf Ihrer Arbeitsstation.  SQuirreL SQL-Client Version 3.0 und höher erfordert JRE-Version 1.6 oder höher.  
 
 ### <a name="configure-a-point-to-site-vpn-connection-to-the-azure-virtual-network"></a>Konfigurieren Sie eine Punkt-zu-Standort-VPN-Verbindung mit dem virtuellen Azure-Netzwerk
@@ -128,7 +127,7 @@ Stellen Sie sicher, dass Sie einen HBase-Cluster in einem virtuellen Azure Netzw
     Die Darstellung zeigt 0 Clientverbindungen. Nachdem Sie eine Verbindung mit dem virtuellen Netzwerk hergestellt haben, wird die Anzahl auf eins aktualisiert.
 
 #### <a name="create-your-certificates"></a>Erstellen Ihrer Zertifikate
-Eine Möglichkeit zum Erstellen eines X.509-Zertifikats ist mithilfe des Tools zur Erstellung von Zertifikaten (makecert.exe), das im Lieferumfang von [Microsoft Visual Studio Express 2013 für Windows Desktop](https://www.visualstudio.com/products/visual-studio-express-vs.aspx)enthalten ist.
+Eine Möglichkeit zum Erstellen eines X.509-Zertifikats ist die Verwendung des Tools zur Erstellung von Zertifikaten (makecert.exe), das im Lieferumfang von [Microsoft Visual Studio Express für Windows Desktop](https://www.visualstudio.com/products/visual-studio-express-vs.aspx) enthalten ist.
 
 **So erstellen Sie ein selbstsigniertes Stammzertifikat**
 

@@ -13,14 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: tables
-ms.date: 06/29/2017
+ms.date: 07/12/2017
 ms.author: jrj;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
-ms.openlocfilehash: ec9b3cc391a75b4f3a75f95a2ff9613c0317bfa2
+ms.translationtype: HT
+ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
+ms.openlocfilehash: 3c166acb17193caae32d7bad133ec510ff679353
 ms.contentlocale: de-de
-ms.lasthandoff: 06/30/2017
-
+ms.lasthandoff: 07/13/2017
 
 ---
 # <a name="distributed-data-and-distributed-tables-for-massively-parallel-processing-mpp"></a>Verteilte Daten und verteilte Tabellen für MPP (Massively Parallel Processing)
@@ -68,7 +67,7 @@ Jeder Computeknoten verfügt über eine Knoten-ID und ist in den Systemsichten v
 ## <a name="Replicated"></a>Replizierte Tabellen
 In einer Tabelle, die repliziert wird, muss eine vollständig Kopie der Tabelle auf jedem Computeknoten gespeichert sein. Durch das Replizieren einer Tabelle müssen Daten vor einem Join oder einer Aggregation nicht mehr auf Computeknoten übertragen werden. Für die Replikation von Tabellen sind nur kleine Tabellen geeignet, weil mehr Speicherplatz zum Speichern der vollständigen Tabelle auf jedem Computeknoten erforderlich ist.  
 
-Im folgenden Diagramm ist eine replizierte Tabelle dargestellt, die auf jedem Computeknoten gespeichert wird. Für SQL Data Warehouse wird die replizierte Tabelle durch eine Roundrobin-Tabelle beibehalten und vollständig in die erste Verteilungsdatenbank auf jedem Computeknoten kopiert. In Parallel Data Warehouse wird die replizierte Tabelle auf allen Datenträgern gespeichert, die dem Computeknoten zugewiesen sind.  Diese Datenträgerstrategie wird implementiert, indem SQL Server-Dateigruppen verwendet werden.  
+Im folgenden Diagramm ist eine replizierte Tabelle dargestellt, die auf jedem Computeknoten gespeichert wird. Für SQL Data Warehouse wird die replizierte Tabelle vollständig in eine Verteilungsdatenbank auf jedem Computeknoten kopiert. In Parallel Data Warehouse wird die replizierte Tabelle auf allen Datenträgern gespeichert, die dem Computeknoten zugewiesen sind.  Diese Datenträgerstrategie wird implementiert, indem SQL Server-Dateigruppen verwendet werden.  
 
 ![Replizierte Tabelle](media/sql-data-warehouse-distributed-data/replicated-table.png "Replizierte Tabelle") 
 

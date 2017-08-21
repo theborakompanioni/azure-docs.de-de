@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2017
+ms.date: 08/09/2017
 ms.author: juliako;anilmur
-translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: 138598ce20459b7d4975c6640b28e9a999de30cd
-ms.lasthandoff: 03/06/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
+ms.openlocfilehash: 2f052ea5ff50cf584f9116f2802eca1fd077dcbb
+ms.contentlocale: de-de
+ms.lasthandoff: 07/10/2017
 
 ---
 
@@ -53,7 +53,7 @@ In der folgenden Tabelle ist dargestellt, wie Kanalzustände den Abrechnungszust
 Um die weitere Gebührenberechnung für den Kanal zu beenden, müssen Sie den Kanal über die API oder im Azure-Portal beenden.
 Sie sind für das Beenden Ihrer Kanäle verantwortlich, wenn Sie die Nutzung des Live Encoding-Kanals abgeschlossen haben.  Wenn Sie einen Codierkanal nicht beenden, werden weiter Gebühren berechnet.
 
-### <a name="a-idstatesachannel-states-and-how-they-map-to-the-billing-mode"></a><a id="states"></a>Kanalstatus und ihre Zuordnung zum Abrechnungsmodus
+### <a id="states"></a>Kanalstatus und ihre Zuordnung zum Abrechnungsmodus
 Dies ist der aktuelle Status des Kanals. Mögliche Werte sind:
 
 * **Stopped**(Beendet): Dies ist der anfängliche Status des Kanals nach seiner Erstellung (es sei denn, im Portal wurde das automatische Starten gewählt). Dies ist der anfängliche Status des Kanals nach seiner Erstellung (es sei denn, im Portal wurde das automatische Starten gewählt). In diesem Status werden keine Gebühren berechnet. Ein Streaming ist jedoch nicht zulässig.
@@ -81,7 +81,7 @@ Im folgenden Diagramm ist ein Livedatenstrom-Workflow dargestellt, bei dem ein S
 
 ![Liveworkflow][live-overview]
 
-## <a name="a-idscenarioacommon-live-streaming-scenario"></a><a id="scenario"></a>Allgemeines Livestreamingszenario
+## <a id="scenario"></a>Allgemeines Livestreamingszenario
 Im Folgenden werden grundlegende Schritte zum Erstellen allgemeiner Livestreaminganwendungen erläutert.
 
 > [!NOTE]
@@ -119,8 +119,8 @@ Im Folgenden werden grundlegende Schritte zum Erstellen allgemeiner Livestreamin
 > 
 > 
 
-## <a name="a-idchannelachannels-input-ingest-configurations"></a><a id="channel"></a>Eingabe-/Erfassungskonfigurationen des Kanals
-### <a name="a-idingestprotocolsaingest-streaming-protocol"></a><a id="Ingest_Protocols"></a>Erfassungsstreamingprotokoll
+## <a id="channel"></a>Eingabe-/Erfassungskonfigurationen des Kanals
+### <a id="Ingest_Protocols"></a>Erfassungsstreamingprotokoll
 Wenn der **Encodertyp** die Einstellung **Standard** aufweist, gibt es folgende gültige Optionen:
 
 * **RTP** (MPEG-TS): MPEG-2-Transportdatenstrom über RTP  
@@ -166,7 +166,7 @@ Professionelle Sendeanstalten arbeiten in der Regel mit lokalen High-End-Liveenc
   * Imagine Communications Selenio ENC 2
   * Elemental Live
 
-#### <a name="a-idsinglebitratertmpasingle-bitrate-rtmp"></a><a id="single_bitrate_RTMP"></a>Single-Bitrate-RTMP
+#### <a id="single_bitrate_RTMP"></a>Single-Bitrate-RTMP
 Überlegungen:
 
 * Der eingehende Datenstrom darf kein Multi-Bitrate-Video enthalten.
@@ -237,7 +237,7 @@ In diesem Abschnitt wird beschrieben, wie die Einstellungen für den Liveencoder
 ### <a name="ad-marker-source"></a>Quelle für AD-Marker
 Sie können die Quelle für AD-Markersignale angeben. Der Standardwert lautet **Api**, der Liveencoder im Kanal soll also eine asynchrone **AD-Marker-API** überwachen.
 
-Die andere gültige Option lautet **Scte35** (nur zulässig, wenn das Erfassungsstreamingprotokoll die Einstellung „RTP (MPEG-TS)“ aufweist. Wenn die Einstellung „Scte35“ lautet, werden Encoder SCTE&35;-Signale aus dem RTP (MPEG TS)-Eingabedatenstrom analysiert.
+Die andere gültige Option lautet **Scte35** (nur zulässig, wenn das Erfassungsstreamingprotokoll die Einstellung „RTP (MPEG-TS)“ aufweist. Wenn die Einstellung „Scte35“ lautet, werden Encoder SCTE 35-Signale aus dem RTP (MPEG TS)-Eingabedatenstrom analysiert.
 
 ### <a name="cea-708-closed-captions"></a>CEA 708-Untertitel
 Dies ist ein optionales Kennzeichen für den Liveencoder, CEA 708-Untertiteldaten, die in das eingehende Video eingebettet sind, zu ignorieren. Wenn das Kennzeichen die Einstellung „False“ (Standard) aufweist, werden CEA 708-Daten erkannt und in die Ausgabe-Videodatenströme eingefügt.
@@ -261,7 +261,7 @@ Dies ist die Sprachen-ID des Audiodatenstroms entsprechend ISO 639-2, z. B. „
 
 Es können bis zu 8 Audiodatenstrom-Sätze angegeben werden, wenn die Eingabe an den Kanal als MPEG-2 TS über RTP erfolgt. Zwei Einträge mit dem gleichen Indexwert sind jedoch nicht möglich.
 
-### <a name="a-idpresetasystem-preset"></a><a id="preset"></a>Systemvoreinstellung
+### <a id="preset"></a>Systemvoreinstellung
 Hier ist die Voreinstellung angegeben, die vom Liveencoder in diesem Kanal verwendet werden soll. Derzeit lautet der einzig zulässige Wert **Default720p** (Standard).
 
 Beachten Sie, dass Sie sich an „AMSLiveD at Microsoft.com“ wenden müssen, wenn Sie benutzerdefinierte Voreinstellungen verwenden möchten.
@@ -314,7 +314,7 @@ Dies ist die Dauer des Slates in Sekunden. Es muss sich um einen positiven Wert 
 ### <a name="insert-slate-on-ad-marker"></a>Insert slate on ad marker (Slate bei AD-Marker einfügen)
 Wenn für diese Einstellung der Wert „true“ festgelegt ist, wird der Liveencoder zum Einfügen eines Slatebilds während Werbepausen konfiguriert. Der Standardwert lautet „true“. 
 
-### <a name="a-iddefaultslateadefault-slate-asset-id"></a><a id="default_slate"></a>Default slate Asset Id (ID des Slate-Standardmedienobjekts)
+### <a id="default_slate"></a>Default slate Asset Id (ID des Slate-Standardmedienobjekts)
 
 Optional. Hier wird die ID des Media Services-Medienobjekts angegeben, welches das Slatebild enthält. Der Standardwert lautet null. 
 
@@ -352,7 +352,7 @@ Wenn Sie die archivierten Inhalte beibehalten möchten, diese aber nicht für da
 ## <a name="getting-a-thumbnail-preview-of-a-live-feed"></a>Abrufen einer Miniaturansicht des Livefeeds
 Wenn Livecodierung aktiviert ist, können Sie jetzt eine Vorschau des Livefeeds abrufen, sobald er den Kanal erreicht. Dies kann ein wertvolles Tool sein, um zu überprüfen, ob Ihre Livefeed den Kanal tatsächlich erreicht. 
 
-## <a name="a-idstatesachannel-states-and-how-states-map-to-the-billing-mode"></a><a id="states"></a>Kanalstatus und ihre Zuordnung zum Abrechnungsmodus
+## <a id="states"></a>Kanalstatus und ihre Zuordnung zum Abrechnungsmodus
 Dies ist der aktuelle Status des Kanals. Mögliche Werte sind:
 
 * **Stopped**(Beendet): Dies ist der anfängliche Status des Kanals nach seiner Erstellung (es sei denn, im Portal wurde das automatische Starten gewählt). In diesem Status können die Eigenschaften des Kanals aktualisiert werden. Ein Streaming ist jedoch nicht zulässig.
@@ -375,7 +375,7 @@ In der folgenden Tabelle ist die Zuordnung der Kanalstatus mit den Abrechnungsmo
 > 
 > 
 
-## <a name="a-idconsiderationsaconsiderations"></a><a id="Considerations"></a>Überlegungen
+## <a id="Considerations"></a>Überlegungen
 * Tritt für einen Kanal des Codierungstyps **Standard** ein Verlust des Eingabequellen-/Beitragsfeeds auf, wird der Verlust kompensiert, indem der Quellvideo-/-audiodatenstrom durch eine Fehlertafel (Fehlerslate) und Stille ersetzt wird. Der Kanal gibt solange eine Tafel aus, bis der Eingabe-/Beitragsfeed fortgesetzt wird. Es empfiehlt sich, einen Livekanal nicht länger als 2 Stunden in diesem Zustand zu belassen. Nach diesem Punkt ist weder das Verhalten des Kanals nach erneuter Verbindung der Eingabe noch sein Verhalten als Reaktion auf einen Rücksetzungsbefehl vorhersagbar. Sie müssen den Kanal beenden, ihn löschen und dann einen neuen erstellen.
 * Sie können das Eingabeprotokoll nicht ändern, während der Kanal oder seine zugehörigen Programme ausgeführt werden. Wenn Sie andere Protokolle benötigen, erstellen Sie für jedes Eingabeprotokoll einen separaten Kanal.
 * Rufen Sie bei jeder Neukonfiguration des Liveencoders die **Reset** -Methode für den Kanal auf. Bevor Sie den Kanal zurückzusetzen, müssen Sie das Programm beenden. Wenn Sie den Kanal zurückgesetzt haben, starten Sie das Programm neu.

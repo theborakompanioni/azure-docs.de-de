@@ -16,16 +16,15 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/22/2016
 ms.author: sashan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
-ms.openlocfilehash: 84e95127ae2951ec5d1e0727801fc598d7e78227
+ms.translationtype: HT
+ms.sourcegitcommit: 818f7756189ed4ceefdac9114a0b89ef9ee8fb7a
+ms.openlocfilehash: 25e651203f804fbf32d632b5f83145a3f3f72a7f
 ms.contentlocale: de-de
-ms.lasthandoff: 05/25/2017
-
+ms.lasthandoff: 07/14/2017
 
 ---
 # <a name="store-azure-sql-database-backups-for-up-to-10-years"></a>Speichern von Sicherungen von Azure SQL-Datenbank bis zu 10 Jahre lang
-Viele Anwendungen dienen gesetzlichen, ordnungsgemäßen oder anderen geschäftlichen Zwecken, die voraussetzen, dass vollständige automatische Datenbanksicherungen länger als der Zeitraum von 7–35 Tagen, der für [automatischen Sicherungen](sql-database-automated-backups.md) von Azure SQL-Datenbank zur Verfügung gestellt wird, aufbewahrt werden. Mit dem Feature zur langfristigen Aufbewahrung von Sicherungen können Sie Ihre Sicherungen von SQL-Datenbank bis zu 10 Jahre lang in einem Azure Recovery Services-Tresor speichern. Sie können bis zu 1.000 Datenbanken pro Tresor speichern. Sie können jede Sicherung im Tresor auswählen, um sie als eine neue Datenbank wiederherzustellen.
+Viele Anwendungen dienen gesetzlichen, ordnungsgemäßen oder anderen geschäftlichen Zwecken, die voraussetzen, dass Datenbanksicherungen länger als der Zeitraum von 7–35 Tagen, der für [automatischen Sicherungen](sql-database-automated-backups.md) von Azure SQL-Datenbank zur Verfügung gestellt wird, aufbewahrt werden. Mit dem Feature zur langfristigen Aufbewahrung von Sicherungen können Sie Ihre Sicherungen von SQL-Datenbank bis zu 10 Jahre lang in einem Azure Recovery Services-Tresor speichern. Sie können bis zu 1.000 Datenbanken pro Tresor speichern. Sie können dann jede Sicherung im Tresor auswählen, um sie als eine neue Datenbank wiederherzustellen.
 
 > [!IMPORTANT]
 > Langfristige Aufbewahrung der Sicherung ist zurzeit in den folgenden Regionen als Vorschauversion verfügbar: „Australien, Osten“, „Australien, Südosten“, „Brasilien, Süden“, „USA, Mitte“, „Asien, Osten“, „USA, Osten“, „USA, Osten 2“, „Indien, Mitte“, „Indien, Süden“, „Japan, Osten“, „Japan, Westen“, „USA, Norden-Mitte“, „Europa, Norden“, „USA, Süden-Mitte“, „Asien, Südosten“, „Europa, Westen“ und „USA, Westen“.

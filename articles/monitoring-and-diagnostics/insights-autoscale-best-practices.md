@@ -1,8 +1,8 @@
 ---
 title: "Empfohlene Methoden für die Autoskalierung| Microsoft-Dokumentation"
-description: Lernen Sie Prinzipien zur effektiven automatischen Skalierung von virtuellen Computern, VM-Skalierungsgruppen und Clouddiensten kennen.
-author: kamathashwin
-manager: carmonm
+description: "Autoskalierungsmuster in Azure für Web-Apps, VM-Skalierungsgruppen und Clouddienste"
+author: anirudhcavale
+manager: orenr
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -12,14 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/20/2017
-ms.author: ashwink
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: f1e4a60cd98d40794c63dc334f242415445e0d6d
+ms.date: 07/07/2017
+ms.author: ancav
+ms.translationtype: HT
+ms.sourcegitcommit: cddb80997d29267db6873373e0a8609d54dd1576
+ms.openlocfilehash: 54dad831287376db7fb2dc46e4591be1499dc072
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 07/18/2017
 
 ---
 # <a name="best-practices-for-autoscale"></a>Bewährte Methoden für die automatische Skalierung
@@ -151,4 +150,10 @@ Die automatische Skalierung benachrichtigt die Administratoren und die Mitwirken
 * Für den Autoskalierungsdienst stehen keine Metriken zur Verfügung, auf deren Grundlage eine Skalierungsentscheidung getroffen werden kann.
 * Metriken stehen wieder zur Verfügung (Wiederherstellung), um eine Skalierungsentscheidung zu treffen.
   Zusätzlich zu den oben aufgeführten Bedingungen, können Sie E-Mail- oder Webhook-Benachrichtigungen konfigurieren, um bei erfolgreichen Skalierungsaktionen informiert zu werden.
+  
+Sie können auch eine Aktivitätsprotokollwarnung zur Überwachung der Integrität des Autoskalierungs-Moduls verwenden. Es folgen Beispiele zum [Erstellen einer Aktivitätsprotokollwarnung zum Überwachen aller Autoskalierungs-Modul-Vorgänge in Ihrem Abonnement](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert) oder [Erstellen einer Aktivitätsprotokollwarnung zum Überwachen aller Autoskalierungs-Vorgänge zum horizontalen Herunterskalieren und horizontalen Hochskalieren in Ihrem Abonnement, bei denen Fehler aufgetreten sind](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert).
+
+## <a name="next-steps"></a>Nächste Schritte
+- [Erstellen Sie eine Aktivitätsprotokollwarnung, um alle Autoskalierungs-Modul-Vorgänge für Ihr Abonnement zu überwachen.](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)
+- [Erstellen Sie eine Aktivitätsprotokollwarnung, um alle Autoskalierungs-Vorgänge zum horizontalen Herunterskalieren und horizontalen Hochskalieren in Ihrem Abonnement, bei denen Fehler aufgetreten sind, zu überwachen.](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)
 

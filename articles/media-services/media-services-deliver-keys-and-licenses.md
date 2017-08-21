@@ -12,12 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 07/18/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 02bf743d310519477bb87a2930a2afe687c62c4e
-
+ms.translationtype: HT
+ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
+ms.openlocfilehash: 69019f41bcc72b71bcc7d0bf8a66fe37d5243b7b
+ms.contentlocale: de-de
+ms.lasthandoff: 07/19/2017
 
 ---
 # <a name="use-azure-media-services-to-deliver-drm-licenses-or-aes-keys"></a>Übermitteln von DRM-Lizenzen oder AES-Schlüsseln mithilfe von Azure Media Services
@@ -35,31 +36,34 @@ Das folgende Diagramm zeigt die wichtigsten Schritte, die erfolgen müssen, dami
 ## <a name="download-sample"></a>Beispiel herunterladen
 Sie können das in diesem Artikel beschriebene Beispiel [hier](https://github.com/Azure/media-services-dotnet-deliver-drm-licenses)herunterladen.
 
+## <a name="create-and-configure-a-visual-studio-project"></a>Erstellen und Konfigurieren eines Visual Studio-Projekts
+
+1. Richten Sie Ihre Entwicklungsumgebung ein, und füllen Sie die Datei „app.config“ mit Verbindungsinformationen, wie unter [Media Services-Entwicklung mit .NET](media-services-dotnet-how-to-use.md) beschrieben. 
+2. Fügen Sie den **appSettings** in Ihrer Datei „app.config“ die folgenden Elemente hinzu:
+
+    <add key="Issuer" value="http://testacs.com"/> <add key="Audience" value="urn:test"/>
+
 ## <a name="net-code-example"></a>Codebeispiel für .NET
-Das Codebeispiel in diesem Thema zeigt, wie ein allgemeiner Inhaltsschlüssel erstellt und Lizenzerwerbs-URLs für PlayReady oder Widevine abgerufen werden. Sie müssen die folgenden Angaben von AMS abrufen und Ihren lokalen Server konfigurieren: **Inhaltsschlüssel**, **Schlüssel-ID**, **Lizenzerwerbs-URL**. Nach dem Konfigurieren Ihres lokalen Servers können Sie auf Ihrem eigenen Streamingserver das Streamen aktivieren. Da der verschlüsselte Stream auf den AMS-Lizenzserver zeigt, fordert Ihr Player eine Lizenz von AMS an. Wenn Sie die Tokenauthentifizierung wählen, überprüft der AMS-Lizenzserver das von Ihnen über HTTPS gesendete Token und übermittelt (sofern gültig) die Lizenz zurück an Ihren Player. (Das Codebeispiel in diesem Thema zeigt nur, wie ein allgemeiner Inhaltsschlüssel erstellt und Lizenzerwerbs-URLs für PlayReady und Widevine abgerufen werden. Wenn Sie AES-128 Schlüssel übermitteln möchten, müssen Sie einen Umschlagsinhaltsschlüssel erstellen und eine Schlüsselerwerbs-URL abrufen, was in [diesem](media-services-protect-with-aes128.md) Artikel gezeigt wird).
+
+Das folgende Codebeispiel zeigt, wie ein allgemeiner symmetrischer Schlüssel erstellt und Lizenzerwerbs-URLs für PlayReady und Widevine abgerufen werden. Sie müssen die folgenden Angaben von AMS abrufen und Ihren lokalen Server konfigurieren: **Inhaltsschlüssel**, **Schlüssel-ID**, **Lizenzerwerbs-URL**. Nach dem Konfigurieren Ihres lokalen Servers können Sie auf Ihrem eigenen Streamingserver das Streamen aktivieren. Da der verschlüsselte Stream auf den AMS-Lizenzserver zeigt, fordert Ihr Player eine Lizenz von AMS an. Wenn Sie die Tokenauthentifizierung wählen, überprüft der AMS-Lizenzserver das von Ihnen über HTTPS gesendete Token und übermittelt (sofern gültig) die Lizenz zurück an Ihren Player. (Das Codebeispiel in diesem Thema zeigt nur, wie ein allgemeiner Inhaltsschlüssel erstellt und Lizenzerwerbs-URLs für PlayReady und Widevine abgerufen werden. Wenn Sie AES-128 Schlüssel übermitteln möchten, müssen Sie einen Umschlagsinhaltsschlüssel erstellen und eine Schlüsselerwerbs-URL abrufen, was in [diesem](media-services-protect-with-aes128.md) Artikel gezeigt wird).
 
     using System;
     using System.Collections.Generic;
     using System.Configuration;
-    using System.IO;
-    using System.Linq;
-    using System.Threading;
     using Microsoft.WindowsAzure.MediaServices.Client;
     using Microsoft.WindowsAzure.MediaServices.Client.ContentKeyAuthorization;
-    using Microsoft.WindowsAzure.MediaServices.Client.DynamicEncryption;
     using Microsoft.WindowsAzure.MediaServices.Client.Widevine;
     using Newtonsoft.Json;
-
 
     namespace DeliverDRMLicenses
     {
         class Program
         {
             // Read values from the App.config file.
-            private static readonly string _mediaServicesAccountName =
-                ConfigurationManager.AppSettings["MediaServicesAccountName"];
-            private static readonly string _mediaServicesAccountKey =
-                ConfigurationManager.AppSettings["MediaServicesAccountKey"];
+            private static readonly string _AADTenantDomain =
+                ConfigurationManager.AppSettings["AADTenantDomain"];
+            private static readonly string _RESTAPIEndpoint =
+                ConfigurationManager.AppSettings["MediaServiceRESTAPIEndpoint"];
 
             private static readonly Uri _sampleIssuer =
                 new Uri(ConfigurationManager.AppSettings["Issuer"]);
@@ -68,16 +72,13 @@ Das Codebeispiel in diesem Thema zeigt, wie ein allgemeiner Inhaltsschlüssel er
 
             // Field for service context.
             private static CloudMediaContext _context = null;
-            private static MediaServicesCredentials _cachedCredentials = null;
 
             static void Main(string[] args)
             {
-                // Create and cache the Media Services credentials in a static class variable.
-                _cachedCredentials = new MediaServicesCredentials(
-                                _mediaServicesAccountName,
-                                _mediaServicesAccountKey);
-                // Used the cached credentials to create CloudMediaContext.
-                _context = new CloudMediaContext(_cachedCredentials);
+                var tokenCredentials = new AzureAdTokenCredentials(_AADTenantDomain, AzureEnvironments.AzureCloudEnvironment);
+                var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
+
+                _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
 
                 bool tokenRestriction = true;
                 string tokenTemplateString = null;
@@ -86,10 +87,10 @@ Das Codebeispiel in diesem Thema zeigt, wie ein allgemeiner Inhaltsschlüssel er
                 IContentKey key = CreateCommonTypeContentKey();
 
                 // Print out the key ID and Key in base64 string format
-                Console.WriteLine("Created key {0} with key value {1} ", 
+                Console.WriteLine("Created key {0} with key value {1} ",
                     key.Id, System.Convert.ToBase64String(key.GetClearKeyValue()));
 
-                Console.WriteLine("PlayReady License Key delivery URL: {0}", 
+                Console.WriteLine("PlayReady License Key delivery URL: {0}",
                     key.GetKeyDeliveryUrl(ContentKeyDeliveryType.PlayReadyLicense));
 
                 Console.WriteLine("Widevine License Key delivery URL: {0}",
@@ -100,7 +101,7 @@ Das Codebeispiel in diesem Thema zeigt, wie ein allgemeiner Inhaltsschlüssel er
                 else
                     AddOpenAuthorizationPolicy(key);
 
-                Console.WriteLine("Added authorization policy: {0}", 
+                Console.WriteLine("Added authorization policy: {0}",
                     key.AuthorizationPolicyId);
                 Console.WriteLine();
                 Console.ReadLine();
@@ -112,15 +113,15 @@ Das Codebeispiel in diesem Thema zeigt, wie ein allgemeiner Inhaltsschlüssel er
                 // Create ContentKeyAuthorizationPolicy with Open restrictions 
                 // and create authorization policy          
 
-                List<ContentKeyAuthorizationPolicyRestriction> restrictions = 
+                List<ContentKeyAuthorizationPolicyRestriction> restrictions =
                     new List<ContentKeyAuthorizationPolicyRestriction>
                 {
-                    new ContentKeyAuthorizationPolicyRestriction
-                    {
-                        Name = "Open",
-                        KeyRestrictionType = (int)ContentKeyRestrictionType.Open,
-                        Requirements = null
-                    }
+                        new ContentKeyAuthorizationPolicyRestriction
+                        {
+                            Name = "Open",
+                            KeyRestrictionType = (int)ContentKeyRestrictionType.Open,
+                            Requirements = null
+                        }
                 };
 
                 // Configure PlayReady and Widevine license templates.
@@ -155,15 +156,15 @@ Das Codebeispiel in diesem Thema zeigt, wie ein allgemeiner Inhaltsschlüssel er
             {
                 string tokenTemplateString = GenerateTokenRequirements();
 
-                List<ContentKeyAuthorizationPolicyRestriction> restrictions = 
+                List<ContentKeyAuthorizationPolicyRestriction> restrictions =
                     new List<ContentKeyAuthorizationPolicyRestriction>
                 {
-                    new ContentKeyAuthorizationPolicyRestriction
-                    {
-                        Name = "Token Authorization Policy",
-                        KeyRestrictionType = (int)ContentKeyRestrictionType.TokenRestricted,
-                        Requirements = tokenTemplateString,
-                    }
+                        new ContentKeyAuthorizationPolicyRestriction
+                        {
+                            Name = "Token Authorization Policy",
+                            KeyRestrictionType = (int)ContentKeyRestrictionType.TokenRestricted,
+                            Requirements = tokenTemplateString,
+                        }
                 };
 
                 // Configure PlayReady and Widevine license templates.
@@ -220,7 +221,7 @@ Das Codebeispiel in diesem Thema zeigt, wie ein allgemeiner Inhaltsschlüssel er
                 //and the application (may be useful for custom app logic) 
                 //as well as a list of one or more license templates.
 
-                PlayReadyLicenseResponseTemplate responseTemplate = 
+                PlayReadyLicenseResponseTemplate responseTemplate =
                     new PlayReadyLicenseResponseTemplate();
 
                 // The PlayReadyLicenseTemplate class represents a license template 
@@ -274,14 +275,14 @@ Das Codebeispiel in diesem Thema zeigt, wie ein allgemeiner Inhaltsschlüssel er
                     allowed_track_types = AllowedTrackTypes.SD_HD,
                     content_key_specs = new[]
                     {
-                        new ContentKeySpecs
-                        {
-                            required_output_protection = 
-                                new RequiredOutputProtection { hdcp = Hdcp.HDCP_NONE},
-                            security_level = 1,
-                            track_type = "SD"
-                        }
-                    },
+                            new ContentKeySpecs
+                            {
+                                required_output_protection =
+                                    new RequiredOutputProtection { hdcp = Hdcp.HDCP_NONE},
+                                security_level = 1,
+                                track_type = "SD"
+                            }
+                        },
                     policy_overrides = new
                     {
                         can_play = true,
@@ -310,8 +311,6 @@ Das Codebeispiel in diesem Thema zeigt, wie ein allgemeiner Inhaltsschlüssel er
                 return key;
             }
 
-
-
             static private byte[] GetRandomBuffer(int length)
             {
                 var returnValue = new byte[length];
@@ -324,11 +323,8 @@ Das Codebeispiel in diesem Thema zeigt, wie ein allgemeiner Inhaltsschlüssel er
 
                 return returnValue;
             }
-
-
         }
     }
-
 
 ## <a name="media-services-learning-paths"></a>Media Services-Lernpfade
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
@@ -342,10 +338,5 @@ Das Codebeispiel in diesem Thema zeigt, wie ein allgemeiner Inhaltsschlüssel er
 [Verwenden der dynamischen AES-128-Verschlüsselung und des Schlüsselübermittlungsdiensts](media-services-protect-with-aes128.md)
 
 [Übermitteln von Widevine-Lizenzen an Azure Media Services mithilfe von Partnern](media-services-licenses-partner-integration.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

@@ -3,7 +3,7 @@ title: "Größen von virtuellen Azure Windows-Computern – GPU | Microsoft-Doku
 description: "Auflistung der verschiedenen verfügbaren GPU-optimierten Größen für virtuelle Windows-Computer in Azure."
 services: virtual-machines-windows
 documentationcenter: 
-author: cynthn
+author: jonbeck7
 manager: timlt
 editor: 
 tags: azure-resource-manager,azure-service-management
@@ -13,14 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 03/22/2017
-ms.author: cynthn
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e155891ff8dc736e2f7de1b95f07ff7b2d5d4e1b
-ms.openlocfilehash: 6504ef16922ed376249851a74a4e6908c6123f6a
+ms.date: 07/28/2017
+ms.author: jonbeck
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: 2e11e15d20ecebd881a9b031bb0bc2cb6c5a88d6
 ms.contentlocale: de-de
-ms.lasthandoff: 05/02/2017
-
+ms.lasthandoff: 07/12/2017
 
 ---
 
@@ -28,11 +27,11 @@ ms.lasthandoff: 05/02/2017
 
 [!INCLUDE [virtual-machines-common-sizes-gpu](../../../includes/virtual-machines-common-sizes-gpu.md)]
 
-## <a name="supported-operating-systems"></a>Unterstützte Betriebssysteme
-
-Informationen zu unterstützten Betriebssystemen und Treiberanforderungen finden Sie unter [Einrichten von GPU-Treibern für virtuelle Computer der N-Serie unter Windows](n-series-driver-setup.md).
-
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../../includes/virtual-machines-common-sizes-table-defs.md)]
+
+[!INCLUDE [virtual-machines-n-series-windows-support](../../../includes/virtual-machines-n-series-windows-support.md)]
+
+Informationen zur Installation von Treibern und zu Überprüfungsschritten finden Sie unter [N-series driver setup for Windows](n-series-driver-setup.md) (Einrichtung von Treibern für die N-Serie unter Windows).
 
 [!INCLUDE [virtual-machines-n-series-considerations](../../../includes/virtual-machines-n-series-considerations.md)]
 

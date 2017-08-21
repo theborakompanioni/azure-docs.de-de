@@ -1,10 +1,10 @@
 ---
-title: "Beheben von Fehlern beim Löschen von Azure-Speicherkonten, -Containern oder -VHDs in einer Resource Manager-Bereitstellung | Microsoft Docs"
-description: "Beheben von Fehlern beim Löschen von Azure-Speicherkonten, -Containern oder -VHDs in einer Resource Manager-Bereitstellung"
+title: "Beheben von Fehlern beim Löschen von Azure-Speicherkonten, -Containern oder -VHDs | Microsoft-Dokumentation"
+description: "Beheben von Fehlern beim Löschen von Azure-Speicherkonten, -Containern oder -VHDs"
 services: storage
 documentationcenter: 
 author: genlin
-manager: felixwu
+manager: cshepard
 editor: na
 tags: storage
 ms.assetid: 17403aa1-fe8d-45ec-bc33-2c0b61126286
@@ -15,16 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: genli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 75d5e82e2f4e747747f24376239e23f6512f916a
+ms.translationtype: HT
+ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
+ms.openlocfilehash: 318d7146ea53a806baf813ff7de2fe91f18becc8
 ms.contentlocale: de-de
-ms.lasthandoff: 11/17/2016
-
+ms.lasthandoff: 07/19/2017
 
 ---
-# <a name="troubleshoot-errors-when-you-delete-azure-storage-accounts-containers-or-vhds-in-a-resource-manager-deployment"></a>Beheben von Fehlern beim Löschen von Azure-Speicherkonten, -Containern oder -VHDs in einer Resource Manager-Bereitstellung
-[!INCLUDE [storage-selector-cannot-delete-storage-account-container-vhd](../../includes/storage-selector-cannot-delete-storage-account-container-vhd.md)]
+# <a name="troubleshoot-errors-when-you-delete-azure-storage-accounts-containers-or-vhds"></a>Beheben von Fehlern beim Löschen von Azure-Speicherkonten, -Containern oder -VHDs
 
 Beim Löschen von Azure-Speicherkonten, -Containern oder -VDHs (Virtual Hard Disk, virtuellen Festplatten) im [Azure-Portal](https://portal.azure.com) können Fehler auftreten. Dieser Artikel enthält Anleitungen zum Beheben von Problemen in einer Azure Resource Manager-Bereitstellung.
 
@@ -52,32 +50,94 @@ Wenn Sie versuchen, ein Speicherkonto in einer Resource Manager-Bereitstellung z
 
 Dieses Problem kann auftreten, wenn das Speicherkonto über eine virtuelle Festplatte verfügt, die sich im Leasezustand befindet.
 
-## <a name="solution"></a>Lösung
-Um diese Probleme zu beheben, müssen Sie die virtuelle Festplatte, die den Fehler verursacht, sowie den zugehörigen virtuellen Computer ausfindig machen. Trennen Sie anschließend die virtuelle Festplatte vom virtuellen Computer (für Datenträger) oder löschen Sie den virtuellen Computer, der die virtuelle Festplatte (für Betriebssystemdatenträger) verwendet. Dadurch wird die Lease für die virtuelle Festplatte gelöscht, sodass diese gelöscht werden kann.
+## <a name="solution"></a>Lösung 
+Um diese Probleme zu beheben, müssen Sie die virtuelle Festplatte, die den Fehler verursacht, sowie den zugehörigen virtuellen Computer ausfindig machen. Trennen Sie anschließend die virtuelle Festplatte vom virtuellen Computer (für Datenträger) oder löschen Sie den virtuellen Computer, der die virtuelle Festplatte (für Betriebssystemdatenträger) verwendet. Dadurch wird die Lease für die virtuelle Festplatte gelöscht, sodass diese gelöscht werden kann. 
 
-### <a name="step-1-identify-the-problem-vhd-and-the-associated-vm"></a>Schritt 1: Ausfindigmachen der virtuellen Festplatte, die das Problem verursacht, sowie des zugehörigen virtuellen Computers
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
-2. Wählen Sie im Menü **Hub** die Option **Alle Ressourcen** aus. Wechseln Sie zu dem Speicherkonto, das Sie löschen möchten, und wählen Sie **Blobs** > **vhds** aus.
+Verwenden Sie hierzu eine der folgenden Methoden:
+
+### <a name="method-1---use-azure-storage-explorer"></a>Methode 1: Azure Storage Explorer
+
+### <a name="step-1-identify-the-vhd-that-prevent-deletion-of-the-storage-account"></a>Schritt 1: Bestimmen der VHD, die das Löschen des Speicherkontos verhindert
+
+1. Wenn Sie das Speicherkonto löschen, wird ein Meldungsdialogfeld wie das folgende angezeigt: 
+
+    ![Meldung beim Löschen des Speicherkontos](media/storage-resource-manager-cannot-delete-storage-account-container-vhd/delete-storage-error.png) 
+
+2. Überprüfen Sie die **Datenträger-URL**, um das Speicherkonto und die VHD zu bestimmen, die Sie am Löschen des Speicherkontos hindert. Im folgenden Beispiel ist die Zeichenfolge vor „.blob.core.windows.net“ der Name des Speicherkontos und „SCCM2012-2015-08-28.vhd“ der Name der VHD.  
+
+        https://portalvhds73fmhrw5xkp43.blob.core.windows.net/vhds/SCCM2012-2015-08-28.vhd
+
+### <a name="step-2-delete-the-vhd-by-using-azure-storage-explorer"></a>Schritt 2: Löschen der VHD mithilfe des Azure Storage Explorers
+
+1. Laden Sie die neueste [Azure Storage Explorer](http://storageexplorer.com/)-Version herunter, und installieren Sie sie. Dieses Tool ist eine eigenständige App von Microsoft, mit der Sie unter Windows, macOS und Linux mit Azure Storage-Daten arbeiten können.
+2. Öffnen Sie den Azure Storage Explorer. Klicken Sie auf der linken Leiste auf das ![Symbol für „Konto“,](media/storage-resource-manager-cannot-delete-storage-account-container-vhd/account.png) wählen Sie Ihre Azure-Umgebung aus, und melden Sie sich dann an.
+
+3. Wählen Sie alle Abonnements, oder das Abonnement mit dem Speicherkonto aus, das Sie löschen möchten.
+
+    ![Abonnement hinzufügen](media/storage-resource-manager-cannot-delete-storage-account-container-vhd/addsub.png)
+
+4. Wechseln Sie zum Speicherkonto, das wir zuvor über die Datenträger-URL abgerufen haben. Wählen Sie **Blobcontainer** > **VHDs** aus, und suchen Sie die VHD, die Sie am Löschen des Speicherkontos hindert.
+5. Wenn die VHD gefunden wird, überprüfen Sie die Spalte **VM-Name** auf die VM, die diese VHD verwendet.
+
+    ![Überprüfen der VM](media/storage-resource-manager-cannot-delete-storage-account-container-vhd/check-vm.png)
+
+6. Entfernen Sie im Azure-Portal die Lease von der VHD. Weitere Informationen finden Sie unter [Entfernen der Lease von der VHD](#remove-the-lease-from-the-vhd). 
+
+7. Klicken Sie Azure Storage Explorer mit der rechten Maustaste auf die VHD, und wählen Sie dann „Löschen“ aus.
+
+8. Löschen Sie das Speicherkonto.
+
+### <a name="method-2---use-azure-portal"></a>Methode 2: Azure-Portal 
+
+#### <a name="step-1-identify-the-vhd-that-prevent-deletion-of-the-storage-account"></a>Schritt 1: Bestimmen der VHD, die das Löschen des Speicherkontos verhindert
+
+1. Wenn Sie das Speicherkonto löschen, wird ein Meldungsdialogfeld wie das folgende angezeigt: 
+
+    ![Meldung beim Löschen des Speicherkontos](media/storage-resource-manager-cannot-delete-storage-account-container-vhd/delete-storage-error.png) 
+
+2. Überprüfen Sie die **Datenträger-URL**, um das Speicherkonto und die VHD zu bestimmen, die Sie am Löschen des Speicherkontos hindert. Im folgenden Beispiel ist die Zeichenfolge vor „.blob.core.windows.net“ der Name des Speicherkontos und „SCCM2012-2015-08-28.vhd“ der Name der VHD.  
+
+        https://portalvhds73fmhrw5xkp43.blob.core.windows.net/vhds/SCCM2012-2015-08-28.vhd
+
+2. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
+3. Wählen Sie im Menü „Hub“ die Option **Alle Ressourcen** aus. Wechseln Sie zum Speicherkonto, und wählen Sie **Blobs** > **VHDs** aus.
 
     ![Screenshot des Portals, in dem das Speicherkonto und der Container „vhds“ hervorgehoben sind](./media/storage-resource-manager-cannot-delete-storage-account-container-vhd/opencontainer.png)
-3. Überprüfen Sie die Eigenschaften für jede virtuelle Festplatte im Container. Machen Sie die virtuelle Festplatte ausfindig, die sich im Zustand **Geleast** befindet. Ermitteln Sie anschließend, welcher virtuelle Computer die virtuelle Festplatte verwendet. In der Regel können Sie anhand des Namens der virtuellen Festplatte erkennen, auf welchem virtuellen Computer sich die virtuelle Festplatte befindet:
 
-   * Bei Betriebssystemdatenträgern wird in der Regel folgende Benennungskonvention angewendet: VMNameYYYYMMDDHHMMSS.vhd
-   * Bei Datenträgern wird in der Regel folgende Benennungskonvention angewendet: VMName-YYYYMMDD-HHMMSS.vhd
+4. Suchen Sie die VHD, die wir zuvor über die Datenträger-URL bestimmt haben. Ermitteln Sie anschließend, welcher virtuelle Computer die virtuelle Festplatte verwendet. In der Regel können Sie anhand des Namens der virtuellen Festplatte erkennen, auf welchem virtuellen Computer sich die virtuelle Festplatte befindet:
 
-     ![Screenshot der Containerinformationen im Portal; der Name des virtuellen Computers, der Leasestatus „Gesperrt“ und der Leasezustand „Geleast“ sind hervorgehoben](./media/storage-resource-manager-cannot-delete-storage-account-container-vhd/locatevm.png)
+VM im Ressourcen-Manager-Entwicklungsmodell
 
-### <a name="step-2-remove-the-lease-from-the-vhd"></a>Schritt 2: Entfernen der Lease für die virtuelle Festplatte
-Gehen Sie wie folgt vor, um den virtuellen Computer zu löschen, der die virtuelle Festplatte (für Betriebssystemdatenträger) verwendet:
+   * Bei Betriebssystemdatenträgern wird in der Regel folgende Benennungskonvention befolgt: VMName-YYYY-MM-DD-HHMMSS.vhd
+   * Bei Datenträgern wird in der Regel folgende Benennungskonvention befolgt: VMName-YYYY-MM-DD-HHMMSS.vhd
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
+VM im klassischen Entwicklungsmodell
+
+   * Bei Betriebssystemdatenträgern wird in der Regel folgende Benennungskonvention befolgt: CloudServiceName-VMName-YYYY-MM-DD-HHMMSS.vhd
+   * Bei Datenträgern wird in der Regel folgende Benennungskonvention befolgt: CloudServiceName-VMName-YYYY-MM-DD-HHMMSS.vhd
+
+#### <a name="step-2-remove-the-lease-from-the-vhd"></a>Schritt 2: Entfernen der Lease für die virtuelle Festplatte
+
+[Entfernen Sie die Lease von der VHD](#remove-the-lease-from-the-vhd), und löschen Sie dann das Speicherkonto.
+
+## <a name="what-is-a-lease"></a>Was ist eine Lease?
+Eine Lease ist eine Sperre, die zum Steuern des Zugriffs auf ein Blob (z.B. eine virtuelle Festplatte) verwendet werden kann. Wenn ein Blob geleast wird, können nur die Besitzer der Lease auf das Blob zugreifen. Eine Lease ist aus den folgenden Gründen wichtig:
+
+* Sie verhindert, dass Daten beschädigt werden, wenn mehrere Besitzer gleichzeitig im gleichen Bereich des Blobs schreiben möchten.
+* Sie verhindert, dass das Blob gelöscht wird, wenn es (beispielsweise von einem virtuellen Computer) aktiv verwendet wird.
+* Sie verhindert, dass das Speicherkonto gelöscht wird, wenn es (beispielsweise von einem virtuellen Computer) aktiv verwendet wird.
+
+### <a name="remove-the-lease-from-the-vhd"></a>Entfernen der Lease von der VHD
+Wenn die VHD ein Betriebssystemdatenträger ist, müssen Sie die VM löschen, um die Lease zu entfernen:
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Wählen Sie im Menü **Hub** die Option **Virtuelle Computer** aus.
 3. Wählen Sie den virtuellen Computer aus, der über eine Lease für die virtuelle Festplatte verfügt.
 4. Stellen Sie sicher, dass der virtuelle Computer nicht aktiv verwendet wird und dass Sie den virtuellen Computer nicht mehr benötigen.
 5. Wählen Sie oben auf dem Blatt **Details zum virtuellen Computer** die Option **Löschen** aus, und klicken Sie zur Bestätigung auf **Ja**.
-6. Der virtuelle Computer sollte nun gelöscht sein, die virtuelle Festplatte sollte jedoch noch vorhanden sein. Für die virtuelle Festplatte sollte jedoch keine Lease mehr vorhanden sein. Es kann einige Minuten dauern, bis die Lease freigegeben wird. Wenn Sie sicherstellen möchten, dass die Lease freigegeben wurde, klicken Sie auf **Alle Ressourcen** > **Speicherkontoname** > **Blobs** > **vhds**. Im Bereich **Blob-Eigenschaften** sollte für **Leasestatus** der Wert **Nicht gesperrt** angezeigt werden.
+6. Die VM sollte nun gelöscht, doch die VHD noch vorhanden sein. Für die virtuelle Festplatte sollte jedoch keine Lease mehr vorhanden sein. Es kann einige Minuten dauern, bis die Lease freigegeben wird. Wenn Sie sicherstellen möchten, dass die Lease freigegeben wurde, klicken Sie auf **Alle Ressourcen** > **Speicherkontoname** > **Blobs** > **vhds**. Im Bereich **Blob-Eigenschaften** sollte für **Leasestatus** der Wert **Nicht gesperrt** angezeigt werden.
 
-Gehen Sie wie folgt vor, um die virtuelle Festplatte von dem virtuellen Computer zu trennen, von dem die virtuelle Festplatte (für Datenträger) verwendet wird:
+Wenn die VHD ein Datenträger ist, trennen Sie die VHD von der VM, um die Lease zu entfernen:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
 2. Wählen Sie im Menü **Hub** die Option **Virtuelle Computer** aus.
@@ -87,13 +147,6 @@ Gehen Sie wie folgt vor, um die virtuelle Festplatte von dem virtuellen Computer
 6. Stellen Sie unbedingt sicher, dass der Datenträger nicht aktiv verwendet wird.
 7. Klicken Sie auf dem Blatt **Datenträgerdetails** auf **Trennen**.
 8. Der Datenträger sollte nun vom virtuellen Computer getrennt sein, und die virtuelle Festplatte sollte keine Lease für Datenträger mehr aufweisen. Es kann einige Minuten dauern, bis die Lease freigegeben wird. Wenn Sie sicherstellen möchten, dass die Lease freigegeben wurde, klicken Sie auf **Alle Ressourcen** > **Speicherkontoname** > **Blobs** > **vhds**. Im Bereich **Blob-Eigenschaften** sollte für **Leasestatus** der Wert **Nicht gesperrt** angezeigt werden.
-
-## <a name="what-is-a-lease"></a>Was ist eine Lease?
-Eine Lease ist eine Sperre, die zum Steuern des Zugriffs auf ein Blob (z.B. eine virtuelle Festplatte) verwendet werden kann. Wenn ein Blob geleast wird, können nur die Besitzer der Lease auf das Blob zugreifen. Eine Lease ist aus den folgenden Gründen wichtig:
-
-* Sie verhindert, dass Daten beschädigt werden, wenn mehrere Besitzer gleichzeitig im gleichen Bereich des Blobs schreiben möchten.
-* Sie verhindert, dass das Blob gelöscht wird, wenn es (beispielsweise von einem virtuellen Computer) aktiv verwendet wird.
-* Sie verhindert, dass das Speicherkonto gelöscht wird, wenn es (beispielsweise von einem virtuellen Computer) aktiv verwendet wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Löschen eines Speicherkontos](storage-create-storage-account.md#delete-a-storage-account)

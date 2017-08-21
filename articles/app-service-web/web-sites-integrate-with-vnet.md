@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/11/2016
 ms.author: ccompy
-translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 5c8268a90c5e14839ed97daa6a186d170f5a4cc3
-ms.lasthandoff: 03/28/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
+ms.openlocfilehash: 31b4f69a2870e619255feac6bed3679efb03f568
+ms.contentlocale: de-de
+ms.lasthandoff: 07/14/2017
 
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Integrieren Ihrer App in ein Azure Virtual Network
@@ -95,7 +95,7 @@ Wenn Ihr VNET kein Gateway aufweist und auch nicht über „Punkt-zu-Standort“
 ![][8]
 
 ##### <a name="enabling-point-to-site-in-a-resource-manager-vnet"></a>Aktivieren von „Punkt-zu-Standort“ in einem Resource Manager-VNET
-Um ein Resource Manager-VNET mit einem Gateway und Punkt-zu-Site zu konfigurieren, können Sie entweder PowerShell verwenden, wie unter [Konfigurieren einer Punkt-zu-Site-Verbindung mit einem virtuellen Netzwerk mithilfe von PowerShell][V2VNETP2S] beschrieben, oder das Azure Portal, wie unter [Konfigurieren eine Punkt-zu-Site-Verbindung mit einem VNET über das Azure Portal][V2VNETPortal].  Die Benutzeroberfläche zum Ausführen dieser Funktion ist noch nicht verfügbar. 
+Um ein Resource Manager-VNET mit einem Gateway und Punkt-zu-Site zu konfigurieren, können Sie entweder PowerShell verwenden, wie unter [Konfigurieren einer Punkt-zu-Site-Verbindung mit einem virtuellen Netzwerk mithilfe von PowerShell][V2VNETP2S] beschrieben, oder das Azure Portal, wie unter [Konfigurieren eine Punkt-zu-Site-Verbindung mit einem VNET über das Azure Portal][V2VNETPortal].  Die Benutzeroberfläche zum Ausführen dieser Funktion ist noch nicht verfügbar. Beachten Sie, dass Sie für die Punkt-zu-Standort-Konfiguration keine Zertifikate erstellen müssen. Dies wird automatisch konfiguriert, wenn Sie Ihre WebApp mit dem VNET verbinden. 
 
 ### <a name="creating-a-pre-configured-vnet"></a>Erstellen eines vorkonfigurierten VNET
 Wenn Sie ein neues VNET erstellen möchten, das mit einem Gateway und „Punkt-zu-Standort“ konfiguriert ist, kann dafür die App Service-Netzwerkbenutzeroberfläche verwendet werden. Dies ist allerdings nur bei einem Resource Manager-VNET möglich.  Wenn Sie ein klassisches VNET mit einem Gateway und „Punkt-zu-Standort“ erstellen möchten, müssen Sie es manuell über die Netzwerkbenutzeroberfläche erstellen. 
@@ -177,11 +177,11 @@ In Bezug auf Aktionen gibt es zwei Hauptaktionen.  Erstens die Möglichkeit, Rou
 **Zertifikate** Mit dem Zertifikatstatus wird angegeben, dass von App Service überprüft wird, ob die für die VPN-Verbindung verwendeten Zertifikate noch geeignet sind.  Wenn es sich für Apps des ASP um die erste Integration in das VNET handelt, ist bei aktivierter VNET-Integration ein Zertifikataustausch erforderlich, um die Sicherheit der Verbindung sicherzustellen.  Zusammen mit den Zertifikaten erhalten wir die DNS-Konfiguration, Routen und anderen Elemente, mit denen das Netzwerk beschrieben wird.
 Wenn diese Zertifikate oder Netzwerkinformationen geändert werden, müssen Sie auf „Netzwerk synchronisieren“ klicken.  **HINWEIS**: Wenn Sie auf „Netzwerk synchronisieren“ klicken, bewirkt dies einen kurzen Ausfall der Verbindung zwischen der App und dem VNET.  Die App wird nicht neu gestartet, aber der Verbindungsverlust kann dazu führen, dass Ihre Website nicht richtig funktioniert.  
 
-## <a name="accessing-on-premise-resources"></a>Zugriff auf Betriebsressourcen
+## <a name="accessing-on-premises-resources"></a>Zugriff auf lokale Ressourcen
 Einer der Vorteile der Funktion für die VNET-Integration ist, dass für Ihre Apps Zugriff auf Ihre lokalen Ressourcen bestehen kann, sofern das VNET per Standort-zu-Standort-VPN mit Ihrem lokalen Netzwerk verbunden ist.  Damit dies funktioniert, müssen Sie unter Umständen das lokale VPN Gateway mit den Routen für den Punkt-zu-Standort-IP-Bereich aktualisieren.  Nach dem ersten Einrichten des Standort-zu-Standort-VPN sollten mit den Skripts, die für die Konfiguration verwendet werden, Routen eingerichtet werden, z. B. das Punkt-zu-Standort-VPN.  Wenn Sie das Punkt-zu-Standort-VPN nach dem Erstellen des Standort-zu-Standort-VPN erstellen, müssen Sie die Routen manuell aktualisieren.  Die Details zur Vorgehensweise variieren je nach Gateway und sind hier nicht beschrieben.  
 
 > [!NOTE]
-> Die Funktion für die VNET-Integration funktioniert mit einem Standort-zu-Standort-VPN, was den Zugriff auf lokale Ressourcen betrifft, aber mit einem ExpressRoute-VPN ist dies derzeit nicht möglich.  Dies gilt sowohl beim Integrieren eines klassischen VNETs als auch beim Integrieren eines Resource Manager-VNETs.  Wenn Sie über ein ExpressRoute-VPN auf Ressourcen zugreifen möchten, können Sie dazu eine ASE nutzen, die in Ihrem VNET ausgeführt werden kann. 
+> Die VNET-Integrationsfunktion umfasst keine VNET-App mit einem ExpressRoute-Gateway. Selbst, wenn das ExpressRoute-Gateway im [Koexistenzmodus][VPNERCoex] konfiguriert ist, wird es nicht funktionieren. Wenn Sie über eine ExpressRoute-Verbindung auf Ressourcen zugreifen müssen, können Sie dazu eine [App Service-Umgebung][ASE] nutzen, die in Ihrem VNET ausgeführt werden kann.
 > 
 > 
 
@@ -249,15 +249,15 @@ Weitere Debugschritte:
 
 * Melden Sie sich an einer anderen VM im VNET an, und versuchen Sie, die host:port-Kombination der Ressource von dort aus zu erreichen.  Es gibt einige TCP-ping-Hilfsprogramme, die Sie zu diesem Zweck verwenden können, oder Sie können bei Bedarf auch „telnet“ nutzen.  Hierbei soll bestimmt werden, ob für diese andere VM eine Verbindung besteht. 
 * Rufen Sie eine Anwendung auf einer anderen VM auf, und testen Sie den Zugriff auf den Host und Port über die Konsole der App.  
-  ####<a name="on-premise-resources"></a>Lokale Ressourcen####
+  ####<a name="on-premises-resources"></a>lokale Ressourcen####
   Wenn Sie keine lokalen Ressourcen erreichen können, sollten Sie als Erstes überprüfen, ob Sie eine Ressource in Ihrem VNET erreichen können.  Falls dies funktioniert, sind die weiteren Schritte recht einfach.  Versuchen Sie, die lokale Anwendung von einer VM in Ihrem VNET zu erreichen.  Sie können hierfür „telnet“ oder ein TCP-ping-Hilfsprogramm verwenden.  Wenn Sie die lokale Ressource mit der VM erreichen können, sollten Sie zuerst sicherstellen, dass Ihre Standort-zu-Standort-VPN-Verbindung funktioniert.  Wenn dies der Fall ist, sollten Sie die oben angegebenen Punkte sowie die Konfiguration und den Status des lokalen Gateways überprüfen.  
 
 Wenn die mit VNET gehostete VM auf ein lokales System zugreifen kann, die App jedoch nicht, liegt wahrscheinlich einer der folgenden Gründe vor:
 
-* Die Routen des lokalen Gateways enthalten keine Punkt-zu-Standort-IP-Bereiche.
+* Die Routen des lokalen Gateways enthalten keine Punkt-zu-Standort-IP-Bereiche
 * Die Netzwerksicherheitsgruppen blockieren den Zugriff auf den Punkt-zu-Standort-IP-Bereich.
-* Ihre lokalen Firewalls blockieren den Datenverkehr des Punkt-zu-Standort-IP-Bereichs.
-* Es liegt eine benutzerdefinierte Route (UDR) im VNET vor, die den Punkt-zu-Standort-basierten Datenverkehr nicht auf das lokale Netzwerk lässt.
+* Ihre lokalen Firewalls blockieren den Datenverkehr des Punkt-zu-Standort-IP-Bereichs
+* Es liegt eine benutzerdefinierte Route (UDR) im VNET vor, die den Punkt-zu-Standort-basierten Datenverkehr nicht auf das lokale Netzwerk lässt
 
 ## <a name="hybrid-connections-and-app-service-environments"></a>Hybridverbindungen und App Service-Umgebungen
 Es gibt drei Funktionen, die den Zugriff auf im VNET gehostete Ressourcen ermöglichen.  Sie lauten wie folgt:
@@ -301,4 +301,6 @@ Bei den Anwendungsfällen gibt es zwar einige Überschneidungen, aber diese Funk
 [ASEintro]: http://azure.microsoft.com/documentation/articles/app-service-app-service-environment-intro/
 [ILBASE]: http://azure.microsoft.com/documentation/articles/app-service-environment-with-internal-load-balancer/
 [V2VNETPortal]: https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal
+[VPNERCoex]: http://docs.microsoft.com/en-us/azure/expressroute/expressroute-howto-coexist-resource-manager
+[ASE]: http://docs.microsoft.com/azure/app-service/app-service-environment/intro
 

@@ -13,14 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
-ms.date: 06/9/2017
+ms.date: 07/13/2017
 ms.author: LADocs; dimazaid; estfan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
-ms.openlocfilehash: 4b6f21c7949493ac1f95e7c0f255e5c96613adf1
+ms.translationtype: HT
+ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
+ms.openlocfilehash: 24793b83ca284fe9510fe21bc2d13b0589209d36
 ms.contentlocale: de-de
-ms.lasthandoff: 06/13/2017
-
+ms.lasthandoff: 07/14/2017
 
 ---
 # <a name="access-data-sources-on-premises-from-logic-apps-with-the-on-premises-data-gateway"></a>Zugreifen aus Logik-Apps auf lokale Datenquellen mit dem lokalen Datengateway
@@ -29,7 +28,7 @@ Um aus Ihren Logik-Apps auf lokale Datenquellen zuzugreifen, richten Sie ein lok
 
 Das Gateway unterstützt Verbindungen mit diesen lokalen Datenquellen:
 
-*   BizTalk Server
+*   BizTalk Server 2016
 *   DB2  
 *   Dateisystem
 *   Informix
@@ -39,20 +38,20 @@ Das Gateway unterstützt Verbindungen mit diesen lokalen Datenquellen:
 *   PostgreSQL
 *   SAP-Anwendungsserver 
 *   SAP-Nachrichtenserver
-*   SharePoint nur für HTTP, nicht für HTTPS
+*   SharePoint
 *   SQL Server
 *   Teradata
 
 In diesen Schritten wird gezeigt, wie das lokale Datengateway einzurichten ist, damit es mit Ihren Logik-Apps funktioniert. Weitere Informationen zu unterstützten Connectors finden Sie unter [Connectors für Azure Logic Apps](../connectors/apis-list.md). 
 
-Weitere Informationen zu Datengateways für andere Microsoft-Dienste finden Sie in den folgenden Artikeln:
+Informationen zum Verwenden des Gateways mit anderen Diensten finden Sie in den folgenden Artikeln:
 
-*   [Azure Application Gateway](https://azure.microsoft.com/services/application-gateway/): [Übersicht über Application Gateway](../application-gateway/application-gateway-introduction.md)
 *   [Microsoft Power BI | Lokales Datengateway](https://powerbi.microsoft.com/documentation/powerbi-gateway-onprem/)
 *   [Azure Analysis Services | Lokales Datengateway](../analysis-services/analysis-services-gateway.md)
 *   [Microsoft Flow | Lokales Datengateway](https://flow.microsoft.com/documentation/gateway-manage/)
+*   [Microsoft Power Apps lokales Datengateway](https://powerapps.microsoft.com/tutorials/gateway-management/)
 
-## <a name="requirements"></a>Requirements (Anforderungen)
+## <a name="requirements"></a>Anforderungen
 
 * Sie müssen [das Datengateway bereits auf einem lokalen Computer installiert](logic-apps-gateway-install.md) haben.
 
@@ -105,7 +104,7 @@ Nachdem Sie das Gateway auf einem lokalen Computer installiert haben, müssen Si
 
     ![Angeben von Details zum Erstellen Ihres lokalen Datengateways](./media/logic-apps-gateway-connection/createblade.png)
 
-    Um Ihr Datengateway jederzeit zu finden oder anzuzeigen, navigieren Sie über das Azure Hauptmenü auf der linken Seite zu  **Weitere Dienste** > **Unternehmensintegration** > **Lokale Datengateways**.
+    Um Ihr Datengateway jederzeit zu finden oder anzuzeigen, navigieren Sie über das Azure Hauptmenü auf der linken Seite zu **Weitere Dienste**>**Enterprise-Integration**>**Lokale Datengateways**.
 
     ![Wechseln zu „Weitere Dienste“, „Unternehmensintegration“, „Lokale Datengateways“](./media/logic-apps-gateway-connection/find-on-premises-data-gateway-enterprise-integration.png)
 
@@ -142,7 +141,7 @@ Nach dem Sie eine Gatewayverbindung für Ihre Logik-App erstellt haben, kann es 
 
      ![Navigieren zu Ihrer Logik-App, Auswählen von „API-Verbindungen“](./media/logic-apps-gateway-connection/logic-app-find-api-connections.png)
 
-   * Oder wechseln Sie über das Azure-Hauptmenü auf der linken Seite zu **Weitere Dienste** > **Web & Mobile Services** > **API Verbindungen**, um alle API-Verbindungen anzuzeigen, einschließlich der Gatewayverbindungen, die Ihrem Azure-Abonnement zugeordnet sind. 
+   * Oder wechseln Sie über das Azure-Hauptmenü auf der linken Seite zu **Weitere Dienste**>**Web & Mobile Services**>**API-Verbindungen**, um alle API-Verbindungen anzuzeigen, einschließlich der Gatewayverbindungen, die Ihrem Azure-Abonnement zugeordnet sind. 
 
    * Alternativ können Sie über das Azure-Hauptmenü auf der linken Seite zu **Alle Ressourcen** für alle API-Verbindungen wechseln, darunter die Gatewayverbindungen, die Ihrem Azure-Abonnement zugeordnet sind.
 

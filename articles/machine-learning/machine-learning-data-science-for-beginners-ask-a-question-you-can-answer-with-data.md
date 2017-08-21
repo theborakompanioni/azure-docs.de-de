@@ -1,5 +1,5 @@
 ---
-title: "Stellen Sie eine Frage, die durch Daten beantwortet werden kann – Data Science-Probleme – Azure | Microsoft-Dokumentation"
+title: "Stellen Sie eine Frage, die durch Daten beantwortet werden kann – Data Science-Probleme – Azure Machine Learning | Microsoft-Dokumentation"
 description: "Erfahren Sie im 3. Video von „Data Science für Einsteiger“, wie Sie eine gezielte Data Science-Frage formulieren. Enthält einen Vergleich von Klassifizierungs- und Regressionsfragen."
 keywords: Data Science-Probleme,Data Science-Fragen,Formulieren von Fragen,Regressionsfragen,Klassifizierungsfragen,genaue Frage
 services: machine-learning
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/09/2017
-ms.author: cgronlun;garye
-translationtype: Human Translation
-ms.sourcegitcommit: b167b88d227bf239fd5d3676e48e04436f140c34
-ms.openlocfilehash: 3c476cf99ebfe78f5681019fc055d1a07b61ef02
-
+ms.date: 07/13/2017
+ms.author: cgronlun
+ms.translationtype: HT
+ms.sourcegitcommit: 19be73fd0aec3a8f03a7cd83c12cfcc060f6e5e7
+ms.openlocfilehash: 403c496d4f032d1f373dacc16868abb40f968b6f
+ms.contentlocale: de-de
+ms.lasthandoff: 07/13/2017
 
 ---
 # <a name="ask-a-question-you-can-answer-with-data"></a>Stellen einer Frage, die Sie mit Daten beantworten können
@@ -26,6 +27,7 @@ ms.openlocfilehash: 3c476cf99ebfe78f5681019fc055d1a07b61ef02
 Erfahren Sie im 3. Video von „Data Science für Einsteiger“, wie Sie ein Data Science-Problem in einer Frage formulieren. Dieses Video enthält einen Vergleich von Fragen zu Klassifizierungs- und Regressionsalgorithmen.
 
 Die Reihe bietet den größten Nutzen, wenn Sie sich alle Videos ansehen. [Zur Liste der Videos wechseln](#other-videos-in-this-series)
+<br>
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Data-science-for-beginners-Ask-a-question-you-can-answer-with-data/player]
 >
@@ -65,7 +67,7 @@ Ist unsere Frage „Wie hoch ist der Verkaufspreis meiner Aktien nächste Woche?
 
 Ist unsere Frage „Welches Auto in meinem Fuhrpark fällt zuerst aus?“, dann müssen wir sicherstellen, dass unsere Daten Informationen zu früheren Mängeln enthalten.
 
-![Zieldaten: Beispiele für Ihre Antwort Formulieren einer Data Science-Frage](./media/machine-learning-data-science-for-beginners-ask-a-question-you-can-answer-with-data/machine-learning-data-science-target-data.png)
+![Zieldaten: Beispiele für Ihre Antwort Formulieren einer Data Science-Frage](./media/machine-learning-data-science-for-beginners-ask-a-question-you-can-answer-with-data/target-data.png)
 
 Diese Beispiele von Antworten werden als „Ziel“ bezeichnet. Ein Ziel ist, was wir zu künftigen Datenpunkten vorhersagen möchten, sei es eine Kategorie oder eine Zahl.
 
@@ -82,7 +84,7 @@ Um zu prüfen, wie wir diese transformieren können, lassen Sie uns einen Blick 
 
 Doch diese Frage lässt sich ggf. einfacher beantworten, wenn Sie sie so umformulieren: „Wie interessant ist jeder Artikel in dieser Liste für diesen Leser?“ Nun können Sie jedem Artikel einen numerischen Wert zuordnen, wodurch es einfach ist, den Artikel mit dem höchsten Wert zu bestimmen. Dies ist das Umformulieren der Klassifizierungsfrage in eine Regressionsfrage (bzw. „Wie viel?“).
 
-![Umformulieren Ihrer Frage Klassifizierungsfrage im Vergleich mit Regressionsfrage](./media/machine-learning-data-science-for-beginners-ask-a-question-you-can-answer-with-data/machine-learning-data-science-classification-question-vs-regression-question.png)
+![Umformulieren Ihrer Frage Klassifizierungsfrage im Vergleich mit Regressionsfrage](./media/machine-learning-data-science-for-beginners-ask-a-question-you-can-answer-with-data/classification-question-vs-regression-question.png)
 
 Wie Sie eine Frage stellen, bestimmt, welcher Algorithmus Ihnen eine Antwort liefern kann.
 
@@ -97,9 +99,4 @@ Sehen Sie sich unbedingt auch die anderen Videos in der Reihe „Data Science f�
 ## <a name="next-steps"></a>Nächste Schritte
 * [Durchführen eines ersten Data Science-Experiments mit Machine Learning Studio](machine-learning-create-experiment.md)
 * [Einführung in Machine Learning in Microsoft Azure](machine-learning-what-is-machine-learning.md)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

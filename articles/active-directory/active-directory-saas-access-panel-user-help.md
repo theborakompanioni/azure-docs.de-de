@@ -1,5 +1,5 @@
 ---
-title: "Allgemeine Aufgaben für den Zugriffsbereich | Microsoft-Dokumentation"
+title: "Hilfe zum Portal „Meine Apps“ in Azure Active Directory | Microsoft-Dokumentation"
 description: Hier finden Sie eine Anleitung zu allgemeinen Aufgaben im Zugriffsbereich.
 services: active-directory
 documentationcenter: 
@@ -12,82 +12,102 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/12/2017
+ms.date: 07/15/2017
 ms.author: markvi
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 53ec54def52a6d0659dc12286148213d88e9ae24
-ms.lasthandoff: 04/27/2017
-
+ms.reviewer: japere
+ms.translationtype: HT
+ms.sourcegitcommit: c999eb5d6b8e191d4268f44d10fb23ab951804e7
+ms.openlocfilehash: 613c68d5c13793a3b696b6afbfc0e1a31595e201
+ms.contentlocale: de-de
+ms.lasthandoff: 07/17/2017
 
 ---
-# <a name="do-you-need-help-with-myapps"></a>Benötigen Sie Hilfe zu MyApps?
+# <a name="do-you-need-help-with-the-my-apps-portal"></a>Hilfe zum Portal „Meine Apps“ in Azure Active Directory
 
-Wahrscheinlich haben Sie diese Seite aufgerufen, weil Sie leider bei der Nutzung des MyApps-Portals auf ein Problem gestoßen sind. In manchen Fällen ist es erforderlich, dass Sie sich an den Helpdesk oder Ihren Administrator wenden, um ein Problem zu beheben, doch in diesem Thema zeigen wir Ihnen Schritte zu häufig gestellten Fragen, die Sie zunächst selbst ausprobieren können.
+Wahrscheinlich haben Sie diese Seite aufgerufen, weil Sie leider bei der Nutzung des Portals „Meine Apps“ auf ein Problem gestoßen sind. In manchen Fällen ist es nötig, den Helpdesk oder Ihren Administrator um Hilfe bei der Problemlösung zu bitten. Vielleicht finden Sie aber auch in den nachstehenden Abschnitten eine Lösung.
 
-Wenn Sie Hilfe im Zusammenhang mit der Kennwortverwaltung suchen, könnten Sie [hier](active-directory-passwords-update-your-own-password.md) eine Antwort finden.
+## <a name="i-am-having-trouble-signing-into-the-my-apps-portal"></a>Ich habe Probleme bei der Anmeldung im Portal „Meine Apps“
 
+Führen Sie Folgendes aus:
 
-## <a name="what-is-the-myapps-portal"></a>Was ist das MyApps-Portal?
+- Überprüfen Sie, ob Sie sich über die richtige URL anmelden: [https://myapps.microsoft.com](https://myapps.microsoft.com)
 
+- Fügen Sie die URL in Ihrem Browser zu den vertrauenswürdigen Seiten hinzu.
 
-MyApps ist ein Webportal, über das Sie folgende Aufgaben ausführen können:
+- Vergewissern Sie sich, dass Sie Ihr Kennwort kennen und es nicht abgelaufen ist. Weitere Informationen zu Aktualisieren Ihres Kennwort finden Sie [hier](active-directory-passwords-update-your-own-password.md).
 
-- Verwalten und Starten cloudbasierter Anwendungen
-- Verwalten von Gruppenmitgliedschaften
-- Verwalten von Profileinstellungen
+- Überprüfen Sie, ob Ihre Kontaktinformationen für die Authentifizierung korrekt sind und den Zugriff nicht blockieren. Weitere Informationen zum Einrichten der Authentifizierungsinformationen finden Sie [hier](https://docs.microsoft.com/en-us/azure/multi-factor-authentication/end-user/multi-factor-authentication-end-user).
 
-![Anpassung des Zugriffsbereichs][1]
+- Löschen Sie in Ihrem Browser die Cookies und versuchen Sie dann noch einmal, sich anzumelden.
 
-
-
-
-## <a name="how-can-i-change-my-password"></a>Wie kann ich mein Kennwort ändern?
-
-1.    Klicken Sie rechts oben in **MyApps** auf das Benutzersteuerelement und anschließend auf **Profil**.
-2.    Klicken Sie unter **Konto verwalten** auf **Kennwort ändern**.
-3.    Geben Sie Ihr altes Kennwort ein, geben Sie Ihr neues Kennwort ein, und bestätigen Sie das neue Kennwort.
-4.    Klicken Sie auf **Senden**.
-
-Ausführlichere Informationen finden Sie unter [Aktualisieren Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md).
+Wenn beim Anmelden weiterhin Probleme auftreten, wenden Sie sich bitte an Ihren Administrator.
 
 
-## <a name="how-do-i-setup-password-reset"></a>Wie richte ich die Kennwortzurücksetzung ein?
+## <a name="how-do-i-update-my-password"></a>Wie kann ich mein Kennwort aktualisieren?
 
-1.    Klicken Sie rechts oben in **MyApps** auf das Benutzersteuerelement und anschließend auf **Profil**.
-2.    Klicken Sie unter **Konto verwalten** auf **Self-Service-Kennwortzurücksetzung einrichten**.
-3.    Führen Sie die im Dialogfeld angegebenen Schritte aus, und übermitteln Sie die Daten.
+Falls Sie Ihr Kennwort ändern möchten, es vergessen oder nie von der IT-Abteilung erhalten haben oder aus Ihrem Konto ausgesperrt wurden, finden Sie unter [Ich habe mein Azure AD-Kennwort vergessen. Was nun?](active-directory-passwords-update-your-own-password.md) weitere Informationen.
 
-Ausführlichere Informationen finden Sie unter [Zurücksetzen des Kennworts](active-directory-passwords-update-your-own-password.md).
+## <a name="how-do-i-register-for-password-reset"></a>Wie registrierte ich mich für die Zurücksetzung meines Kennworts?
+
+Endbenutzer können mithilfe der Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) selbstständig ihr Kennwort zurücksetzen oder ihr Konto entsperren. Um diese Funktion verwenden zu können, müssen Sie zunächst Authentifizierungsmethoden registrieren oder die vordefinierten Authentifizierungsmethoden bestätigen, die Ihr Administrator angegeben hat. Weitere Informationen finden Sie unter [Registrieren für die Self-Service-Kennwortzurücksetzung](active-directory-passwords-reset-register.md).
 
 
-## <a name="how-can-i-add-a-new-app"></a>Wie kann ich eine neue App hinzufügen?
+## <a name="i-am-having-trouble-installing-the-my-apps-portal-browser-extension"></a>Ich habe Probleme bei der Installation der Browsererweiterung für das Portal „Meine Apps“
 
-1.    Klicken Sie in **MyApps** auf **App hinzufügen**.
-2.    Suchen Sie nach der App, die Sie hinzufügen möchten, und klicken Sie auf **Hinzufügen**.
+Überprüfen Sie, ob Sie den erforderlichen Browser verwenden:
+
+- Für das Portal benötigen Sie einen Browser der JavaScript unterstützt und in dem CSS aktiviert ist. Wenn Sie kennwortbasierte Apps für einmaliges Anmelden verwenden, muss die dazugehörige Browsererweiterung auch installiert werden. Diese Erweiterung wird automatisch heruntergeladen, wenn Sie eine Anwendung starten, die für kennwortbasierte Apps für einmaliges Anmelden konfiguriert ist.
+
+- Die Erweiterung erfordert folgenden Browser:
+    - Internet Explorer 8, 9, 10, 11 unter Windows 7 oder höher
+    - Edge unter Windows 10 Anniversary Edition oder höher
+    - Chrome unter Windows 7 oder höher und macOS X oder höher
+    - Firefox 26.0 oder höher unter Windows XP SP2 oder höher und Mac OS X 10.6 oder höher
+
+Sie können die Erweiterung für Chrome und Firefox auch direkt über die folgenden Links herunterladen:
+
+- [Chrome-Erweiterung](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
+
+- [Edge-Erweiterung](https://www.microsoft.com/store/apps/9pc9sckkzk84)
+
+Wenn nach der Installation Probleme auftreten, führen Sie die folgenden Schritte aus:
+
+- Prüfen Sie in den Einstellungen Ihres Browsers, ob die Erweiterung auch wirklich installiert wurde.
+
+- Starten Sie Ihren Browser neu und melden Sie sich im Portal „Meine Apps“ an.
+
+- Löschen Sie über Ihren Browser die Cookies und melden Sie sich im Portal „Meine Apps“ an.
+
+## <a name="how-do-i-add-a-new-app"></a>Wie füge ich eine neue App hinzu?
+
+1.  Klicken Sie auf der Seite **Apps** auf **App hinzufügen**.
+
+2.  Suchen Sie nach der App, die Sie hinzufügen möchten, und klicken Sie auf **Hinzufügen**.
 
 **Hinweise:**
 
 - Sie haben nur dann Zugriff auf diese Option, wenn Ihr Administrator dies für Ihr Konto aktiviert hat.
+
 - Falls die App eine Berechtigung erfordert, ist unter Umständen eine Administratorgenehmigung erforderlich.
 
 
+## <a name="how-do-i-manage-my-group-memberships"></a>Wie verwalte ich meine Gruppenmitgliedschaften?
 
-## <a name="how-can-i-manage-group-memberships"></a>Wie kann ich Gruppenmitgliedschaften verwalten?
-
-1.    Klicken Sie in **MyApps** auf die App-Kachel **Gruppen**.
-2.    Klicken Sie zum Erstellen einer Gruppe unter **Gruppen in meinem Besitz** auf **Gruppe erstellen**, und folgen Sie den Anweisungen.
-3.    Klicken Sie zum Beitreten zu einer Gruppe unter **Groups I'm in** (Gruppen, denen ich angehöre) auf **Gruppe beitreten**, und folgen Sie den Anweisungen.
+1. Klicken Sie auf die App-Kachel „Gruppen“. 
+2. Klicken Sie zum Erstellen einer Gruppe unter „Gruppen in meinem Besitz“ auf „Gruppe erstellen“ und folgen Sie den Anweisungen.
+3. Um einer Gruppe beizutreten, klicken Sie unter „Gruppen in meinem Besitz“ auf „Gruppe beitreten“ und befolgen Sie die Anweisungen.
 
 **Hinweise:**
 
-- Wenn Sie auf eine Gruppe klicken, der Sie bereits angehören, können Sie Details anzeigen und die Gruppe verlassen.
-- Wenn Sie auf eine Gruppe klicken, die sich in Ihrem Besitz befindet, können Sie Details anzeigen, Mitglieder hinzufügen/entfernen und die Gruppe verlassen.
+- Sie haben nur dann Zugriff auf diese Option, wenn Ihr Administrator dies für Ihr Konto aktiviert hat.
+
+- Zu einer Gruppe, in der Sie Mitglied sind, lassen sich Details anzeigen und Sie können aus ihr austreten.
+
+- Bei Gruppen, die sich in Ihrem Besitz befinden, lassen sich Details anzeigen. Darüber hinaus lassen sich Mitglieder hinzufügen und entfernen und Sie können aus der Gruppe austreten.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Informationen zur Problembehandlung finden Sie unter [Probleme bei der Verwendung der Website mit dem Anwendungszugriffsbereich oder der mobilen Anwendung](active-directory-application-access-panel-content-map.md).
 
-<!--Image references-->
-[1]: ./media/active-directory-saas-access-panel-user-help/01.png
 

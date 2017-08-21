@@ -1,10 +1,10 @@
 ---
 title: "Intel Edison an Cloud (C) – Verbinden von Intel Edison mit Azure IoT Hub | Microsoft-Dokumentation"
-description: Verbinden Sie Intel Edition mit Azure IoT Hub, damit Intel Edison Daten an die Azure-Cloud sendet.
+description: Erfahren Sie in diesem Tutorial, wie Sie Intel Edison einrichten und eine Verbindung mit Azure IoT Hub herstellen, damit Intel Edison Daten an die Azure-Cloudplattform senden kann.
 services: iot-hub
 documentationcenter: 
 author: shizn
-manager: timtl
+manager: timlt
 tags: 
 keywords: Azure IoT Intel Edison, Intel Edison IoT Hub, Intel Edison Daten an Cloud senden, Intel Edison an Cloud
 ms.assetid: 4885fa2c-c2ee-4253-b37f-ccd55f92b006
@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 4/17/2017
 ms.author: xshi
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: fd6d04159c46439b5f1a91be7d2fa1b500bc92b3
-ms.lasthandoff: 04/20/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 19be73fd0aec3a8f03a7cd83c12cfcc060f6e5e7
+ms.openlocfilehash: edbdbe0230f742cd7228f04a4a83c9bd567527e8
+ms.contentlocale: de-de
+ms.lasthandoff: 07/13/2017
 
 ---
 # <a name="connect-intel-edison-to-azure-iot-hub-c"></a>Verbinden von Intel Edison mit Azure IoT Hub (C)
@@ -181,7 +181,7 @@ Glückwunsch! Sie haben Edison erfolgreich konfiguriert.
 
 1. Verwenden Sie einen der folgenden SSH-Clients auf Ihrem Hostcomputer, um die Verbindung mit dem Intel Edison herzustellen. Verwenden Sie dabei die IP-Adresse des Konfigurationstools und das Kennwort, das Sie in diesem Tool festgelegt haben.
     - [PuTTY](http://www.putty.org/) für Windows.
-    - Den integrierten SSH-Client unter Ubuntu oder macOS.
+    - Den integrierten SSH-Client unter Ubuntu oder macOS (führen Sie `ssh root@"the IP address"` aus).
 
 2. Klonen Sie die Beispiel-Client-App auf Ihrem Gerät. 
    
@@ -241,3 +241,4 @@ Die folgende Ausgabe sollte angezeigt werden, die die Sensordaten und Nachrichte
 Sie haben eine Beispielanwendung ausgeführt, die Sensordaten sammelt und an Ihren IoT Hub sendet.
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]
+

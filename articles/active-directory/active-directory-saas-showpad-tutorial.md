@@ -150,7 +150,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
    
     c. Kopieren Sie den Inhalt der aus dem Azure-Portal heruntergeladenen XML-Metadatendatei, und fügen Sie ihn in das Textfeld **Metadaten-XML** ein.
    
-    d. Wählen Sie die Option **Auto-provision accounts for new users when they log in**.
+    d. Wählen Sie die Option **Automatisch Bereitstellen von Konten für neue Benutzer bei der Anmeldung**.
    
     e. Klicken Sie auf **Senden**.
 

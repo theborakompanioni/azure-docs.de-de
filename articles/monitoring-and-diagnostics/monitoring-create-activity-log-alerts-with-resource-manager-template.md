@@ -2,7 +2,7 @@
 title: "Erstellen einer Aktivitätsprotokollwarnung mithilfe einer Resource Manager-Vorlage | Microsoft-Dokumentation"
 description: Lassen Sie sich benachrichtigen, wenn Ihre Azure-Ressourcen erstellt werden.
 author: anirudhcavale
-manager: carmonm
+manager: orenr
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -12,14 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/31/2017
+ms.date: 07/06/2017
 ms.author: ancav
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 239b8fe2a7724bb34e7060c90af73825e61d8398
+ms.translationtype: HT
+ms.sourcegitcommit: cddb80997d29267db6873373e0a8609d54dd1576
+ms.openlocfilehash: 26b140fef46a176b21bddbd7588543e71c251ed6
 ms.contentlocale: de-de
-ms.lasthandoff: 04/12/2017
-
+ms.lasthandoff: 07/18/2017
 
 ---
 # <a name="create-an-activity-log-alert-with-a-resource-manager-template"></a>Erstellen einer Aktivitätsprotokollwarnung mithilfe einer Resource Manager-Vorlage
@@ -27,10 +26,8 @@ In diesem Artikel erfahren Sie, wie Sie mit einer [Azure Resource Manager-Vorlag
 
 Die grundlegenden Schritte lauten wie folgt:
 
-1.    Erstellen Sie eine Vorlage als JSON-Datei, die die Erstellung der Aktivitätsprotokollwarnung beschreibt.
-2.    [Stellen Sie die Vorlage mithilfe einer beliebigen Bereitstellungsmethode bereit.](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy)
-
-Im Folgenden wird beschrieben, wie Sie eine Resource Manager-Vorlage zunächst für eine Aktivitätsprotokollwarnung allein und dann im Rahmen der Erstellung einer weiteren Ressource erstellen.
+1.  Erstellen Sie eine Vorlage als JSON-Datei, die die Erstellung der Aktivitätsprotokollwarnung beschreibt.
+2.  [Stellen Sie die Vorlage mithilfe einer beliebigen Bereitstellungsmethode bereit.](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy)
 
 ## <a name="resource-manager-template-for-an-activity-log-alert"></a>Resource Manager-Vorlage für eine Aktivitätsprotokollwarnung
 Um eine Aktivitätsprotokollwarnung mithilfe einer Resource Manager-Vorlage zu erstellen, müssen Sie eine Ressource des Typs `microsoft.insights/activityLogAlerts` erstellen und alle zugehörigen Eigenschaften eingeben. Unten sehen Sie eine Vorlage, mit der eine Aktivitätsprotokollwarnung erstellt wird.
@@ -101,7 +98,11 @@ Um eine Aktivitätsprotokollwarnung mithilfe einer Resource Manager-Vorlage zu e
 }
 ```
 
+Sie können auch [unseren Schnellstart-Katalog besuchen](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Insights), um einige Beispiele für Aktivitätsprotokollwarnungs-Vorlagen zu erhalten.
+
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zu [Warnungen](monitoring-overview-alerts.md)  
-Hinzufügen von [Aktivitätsgruppen mithilfe einer Resource Manager-Vorlage](monitoring-create-action-group-with-resource-manager-template.md)
+- Weitere Informationen zu [Warnungen](monitoring-overview-alerts.md)  
+- Hinzufügen von [Aktivitätsgruppen mithilfe einer Resource Manager-Vorlage](monitoring-create-action-group-with-resource-manager-template.md)
+- [Erstellen Sie eine Aktivitätsprotokollwarnung, um alle automatischen Modulskalierungsvorgänge für Ihr Abonnement zu überwachen.](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)
+- [Erstellen Sie eine Aktivitätsprotokollwarnung, um alle fehlgeschlagenen automatischen Herunter- und Hochskalierungsvorgänge für Ihr Abonnement zu überwachen](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)
 
