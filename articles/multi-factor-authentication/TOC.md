@@ -17,7 +17,7 @@
 ### [Verwenden vorhandener Netzwerkrichtlinienserver](multi-factor-authentication-nps-extension.md)
 #### [Erweiterte Konfiguration für NPS-Erweiterung](nps-extension-advanced-configuration.md)
 ### [Erstellen eines Authentifizierungsanbieters](multi-factor-authentication-get-started-auth-provider.md)
-### Lokale Azure MFA
+### Lokale MFA-Bereitstellung
 #### [Installieren des Benutzerportals](multi-factor-authentication-get-started-portal.md)
 #### [Erweiterte VPN-Konfigurationen](multi-factor-authentication-advanced-vpn-configurations.md)
 #### [Webdienst der mobilen App](multi-factor-authentication-get-started-server-webservice.md)
@@ -31,16 +31,19 @@
 ### [MFA-Benutzerhandbuch](./end-user/multi-factor-authentication-end-user.md)
 
 ## Integrieren
-### [Verbunddienste](multi-factor-authentication-get-started-adfs.md)
-#### [Verwenden von AD FS](multi-factor-authentication-get-started-adfs-cloud.md)
-#### [Verwenden von AD FS 2.0](multi-factor-authentication-get-started-adfs-adfs2.md)
-#### [Verwenden von Windows Server 2012 R2 AD FS](multi-factor-authentication-get-started-adfs-w2k12.md)
-### Verzeichnisse
-#### [LDAP-Authentifizierung](multi-factor-authentication-get-started-server-ldap.md)
-#### [RADIUS-Authentifizierung](multi-factor-authentication-get-started-server-radius.md)
-#### [Active Directory](multi-factor-authentication-get-started-server-dirint.md)
-### [IIS-Web-Apps](multi-factor-authentication-get-started-server-iis.md)
-### [Remotedesktopgateway](multi-factor-authentication-get-started-server-rdg.md)
+### [Remotedesktopgateway](nps-extension-remote-desktop-gateway.md)
+### [VPN](nps-extension-vpn.md)
+### Lokale Integration von MFA
+#### [Verbunddienste](multi-factor-authentication-get-started-adfs.md)
+##### [Verwenden von AD FS](multi-factor-authentication-get-started-adfs-cloud.md)
+##### [Verwenden von AD FS 2.0](multi-factor-authentication-get-started-adfs-adfs2.md)
+##### [Verwenden von Windows Server 2012 R2 AD FS](multi-factor-authentication-get-started-adfs-w2k12.md)
+#### Verzeichnisse
+##### [LDAP-Authentifizierung](multi-factor-authentication-get-started-server-ldap.md)
+##### [RADIUS-Authentifizierung](multi-factor-authentication-get-started-server-radius.md)
+##### [Active Directory](multi-factor-authentication-get-started-server-dirint.md)
+#### [IIS-Web-Apps](multi-factor-authentication-get-started-server-iis.md)
+#### [Remotedesktopgateway](multi-factor-authentication-get-started-server-rdg.md)
 
 ## Entwickeln
 ### [Integrieren in benutzerdefinierte Apps (SDK)](multi-factor-authentication-sdk.md)
@@ -49,6 +52,7 @@
 ### [Häufig gestellte Fragen](multi-factor-authentication-faq.md)
 ### [Stellen einer Frage](https://social.msdn.microsoft.com/Forums/newthread?category=windowsazureplatform&forum=windowsazureactiveauthentication&prof=required)
 ### [NPS-Erweiterungsfehler](multi-factor-authentication-nps-errors.md)
+
 # Ressourcen
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/?category=security-identity)
 ## [Preisrechner](https://azure.microsoft.com/pricing/calculator/)

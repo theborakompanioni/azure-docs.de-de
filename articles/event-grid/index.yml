@@ -1,0 +1,47 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Dokumentation zu Azure Event Grid
+metadata:
+  title: 'Dokumentation zu Azure Event Grid – Tutorials, API-Referenz'
+  description: Reagieren Sie mit Azure Event Grid nahezu in Echtzeit auf wichtige Ereignisse in Azure-Diensten und anderen Diensten.
+  services: event-grid
+  author: banisadr
+  manager: timlt
+  ms.service: event-grid
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 08/10/2017
+  ms.author: banisadr
+abstract:
+  description: 'Azure Event Grid ist ein vollständig verwalteter intelligenter Dienst für das Ereignisrouting, der eine einheitliche Ereignisnutzung mithilfe eines Veröffentlichen/Abonnieren-Modells ermöglicht. Reagieren Sie mit Azure Event Grid nahezu in Echtzeit auf wichtige Ereignisse in Azure-Diensten und anderen Diensten. Hier erfahren Sie anhand unserer Schnellstarts, Tutorials und Beispiele, wie Sie Azure Event Grid verwenden.'
+sections:
+  - title: Fünfminütige Schnellstarts
+    items:
+      - type: paragraph
+        text: 'Erfahren Sie, wie Sie benutzerdefinierte Ereignisse erstellen und abonnieren.'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: /azure/app-service-api/media/index/cli.svg
+            text: Azure-Befehlszeilenschnittstelle
+            href: /azure/event-grid/custom-event-quickstart
+  - title: Schritt-für-Schritt-Tutorials
+    items:
+      - type: paragraph
+        text: 'Erfahren Sie, wie Sie Anwendungen entwickeln, die auf Ereignisse reagieren.'
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/event-grid/monitor-virtual-machine-changes-event-grid-logic-app">Überwachen von Änderungen an virtuellen Computern mit Logik-Apps</a>
+  - title: Referenz
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: REST-APIs
+            html: <p><a href="/rest/api/eventgrid">REST</a></p>
+          - title: Schemas
+            html: <p><a href="/azure/event-grid/subscription-creation-schema ">Abonnementschema</a></p><p><a href="/azure/event-grid/event-schema">Ereignisschema</a></p>

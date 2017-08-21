@@ -83,6 +83,7 @@
 ## [Aktivieren der Abrechnung](active-directory-b2c-how-to-enable-billing.md)
 ## [Verwaltung von Bedrohungen](active-directory-b2c-reference-threat-management.md)
 ## [Probleme beim Erstellen eines Verzeichnisses](active-directory-b2c-support-create-directory.md)
+## [Erweiterungs-App](active-directory-b2c-reference-extensions-app.md)
 
 # Verwandte Themen
 ## [Azure Active Directory](../active-directory/active-directory-whatis.md)
