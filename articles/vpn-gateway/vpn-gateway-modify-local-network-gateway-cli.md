@@ -15,36 +15,35 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: cherylmc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: cbcb0b626aceccf9c5a29e60e5b0c66e7812dee1
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 7db1ad970ebb93d46d5a861f9a9b27bf121531a3
 ms.contentlocale: de-de
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="modify-local-network-gateway-settings-using-the-azure-cli"></a>Ändern der Einstellungen des lokalen Netzwerkgateways mithilfe der Azure CLI
 
-Manchmal ändern sich die Einstellungen für das Adresspräfix oder die Gateway-IP-Adresse Ihres lokalen Netzwerkgateways. In diesem Artikel wird gezeigt, wie Sie die Einstellungen Ihres lokalen Netzwerkgateways ändern. Sie können diese Einstellungen auch mithilfe einer anderen Methode ändern, indem Sie in der folgenden Liste eine Option auswählen:
+Manchmal ändern sich die Einstellungen für das Adresspräfix oder die Gateway-IP-Adresse Ihres lokalen Netzwerkgateways. In diesem Artikel wird gezeigt, wie Sie die Einstellungen Ihres lokalen Netzwerkgateways ändern. Sie können diese Einstellungen auch über eine andere Option aus der folgenden Liste ändern:
 
 > [!div class="op_single_selector"]
 > * [Azure-Portal](vpn-gateway-modify-local-network-gateway-portal.md)
 > * [PowerShell](vpn-gateway-modify-local-network-gateway.md)
-> * [Azure-Befehlszeilenschnittstelle](vpn-gateway-modify-local-network-gateway-cli.md)
+> * [Azure-CLI](vpn-gateway-modify-local-network-gateway-cli.md)
 >
 >
 
-## <a name="before-you-begin"></a>Voraussetzungen
+## <a name="before"></a>Voraussetzungen
 
 Installieren Sie die aktuelle Version der CLI-Befehle (2.0 oder höher). Informationen zur Installation der CLI-Befehle finden Sie unter [Install Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) (Installieren von Azure CLI 2.0).
 
 [!INCLUDE [CLI-login](../../includes/vpn-gateway-cli-login-include.md)]
 
-## <a name="modify-ip-address-prefixes"></a>Ändern von IP-Adresspräfixen
+## <a name="ipaddprefix"></a>Ändern von IP-Adresspräfixen
 
 [!INCLUDE [modify-prefix](../../includes/vpn-gateway-modify-ip-prefix-cli-include.md)]
 
-## <a name="modify-the-gateway-ip-address"></a>Ändern der Gateway-IP-Adresse
+## <a name="gwip"></a>Ändern der Gateway-IP-Adresse
 
 [!INCLUDE [modify-gateway-IP](../../includes/vpn-gateway-modify-lng-gateway-ip-cli-include.md)]
 

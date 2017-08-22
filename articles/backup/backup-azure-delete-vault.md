@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 07/21/2017
+ms.date: 08/11/2017
 ms.author: markgal;trinadhk
 ms.translationtype: HT
-ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
-ms.openlocfilehash: e72ccd2efc271956c688e70804cef915c257a2e3
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: ae4a73d12898c62fe2c5cf3683bc7c1c8c845fdf
 ms.contentlocale: de-de
-ms.lasthandoff: 07/24/2017
+ms.lasthandoff: 08/12/2017
 
 ---
 # <a name="delete-a-recovery-services-vault"></a>Löschen eines Recovery Services-Tresors
@@ -34,7 +34,7 @@ Der Azure Backup-Dienst umfasst zwei Arten von Tresoren: den Backup-Tresor und d
 >
 
 > [!IMPORTANT]
-> Sie können nun ein Upgrade für Ihre Sicherungstresore auf Recovery Services-Tresore durchführen. Detaillierte Informationen finden Sie im Artikel [Durchführen eines Upgrades für einen Sicherungstresor auf einen Recovery Services-Tresor](backup-azure-upgrade-backup-to-recovery-services.md). Microsoft empfiehlt, ein Upgrade für Ihre Sicherungstresore auf Recovery Services-Tresore durchzuführen.<br/> **Ab dem 1. November 2017**:
+> Sie können nun ein Upgrade für Ihre Sicherungstresore auf Recovery Services-Tresore durchführen. Detaillierte Informationen finden Sie im Artikel [Durchführen eines Upgrades für einen Sicherungstresor auf einen Recovery Services-Tresor](backup-azure-upgrade-backup-to-recovery-services.md). Microsoft empfiehlt, ein Upgrade für Ihre Sicherungstresore auf Recovery Services-Tresore durchzuführen.<br/> Nach dem **15. Oktober 2017** können mit PowerShell keine Sicherungstresore mehr erstellt werden. <br/> **Ab dem 1. November 2017**:
 >- Für alle verbleibenden Sicherungstresore wird automatisch ein Upgrade auf Recovery Services-Tresore durchgeführt.
 >- Der Zugriff auf Ihre Sicherungsdaten im klassischen Portal wird nicht möglich sein. Verwenden Sie stattdessen das Azure-Portal, um auf Ihre Sicherungsdaten in Recovery Services-Tresoren zuzugreifen.
 >

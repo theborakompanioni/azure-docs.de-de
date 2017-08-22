@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: azurecli
 ms.topic: article
-ms.date: 05/02/2017
+ms.date: 08/11/2017
 ms.author: iainfou
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: fceaf1b1d1c243ef8cff6ba6b188bb66514d0591
+ms.translationtype: HT
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: 2b8d519e11f70eda164bd8f6e131a3989f242ab0
 ms.contentlocale: de-de
-ms.lasthandoff: 06/20/2017
+ms.lasthandoff: 08/12/2017
 
 ---
 
@@ -49,7 +49,9 @@ Bei Verwendung eines Azure-Plattformimages unterstützen Skalierungsgruppen bis 
 ## <a name="create-an-app-to-scale"></a>Erstellen einer App für die Skalierung
 Für die Verwendung in einer Produktionsumgebung können Sie [ein benutzerdefiniertes VM-Image erstellen](tutorial-custom-images.md), das Ihre installierte und konfigurierte Anwendung umfasst. In diesem Tutorial werden die virtuellen Computer beim ersten Start angepasst, sodass eine Skalierungsgruppe schnell in Aktion zu sehen ist.
 
-In einem vorherigen Tutorial haben Sie erfahren, wie [ein virtueller Linux-Computer beim ersten Start mit cloud-init angepasst wird](tutorial-automate-vm-deployment.md). Mithilfe der gleichen cloud-init-Konfigurationsdatei können Sie NGINX installieren und eine einfache Node.js-App „Hello World“ ausführen. Erstellen Sie eine Datei namens *cloud-init.txt*, und fügen Sie die folgende Konfiguration ein:
+In einem vorherigen Tutorial haben Sie erfahren, wie [ein virtueller Linux-Computer beim ersten Start mit cloud-init angepasst wird](tutorial-automate-vm-deployment.md). Mithilfe der gleichen cloud-init-Konfigurationsdatei können Sie NGINX installieren und eine einfache Node.js-App „Hello World“ ausführen. 
+
+Erstellen Sie in der aktuellen Shell eine Datei namens *cloud-init.txt*, und fügen Sie die folgende Konfiguration ein: Erstellen Sie die Datei beispielsweise in Cloud Shell, nicht auf dem lokalen Computer. Geben Sie `sensible-editor cloud-init.txt` ein, um die Datei zu erstellen und eine Liste der verfügbaren Editoren anzuzeigen. Stellen Sie sicher, dass die gesamte Datei „cloud-init“ ordnungsgemäß kopiert wird, insbesondere die erste Zeile:
 
 ```yaml
 #cloud-config
@@ -107,14 +109,14 @@ Erstellen Sie dann mit [az vmss create](/cli/azure/vmss#create) eine VM-Skalieru
 az vmss create \
   --resource-group myResourceGroupScaleSet \
   --name myScaleSet \
-  --image Canonical:UbuntuServer:14.04.4-LTS:latest \
+  --image UbuntuLTS \
   --upgrade-policy-mode automatic \
   --custom-data cloud-init.txt \
   --admin-username azureuser \
   --generate-ssh-keys      
 ```
 
-Die Erstellung und Konfiguration aller Ressourcen und virtuellen Computer der Skalierungsgruppe dauert einige Minuten.
+Die Erstellung und Konfiguration aller Ressourcen und virtuellen Computer der Skalierungsgruppe dauert einige Minuten. Es gibt Hintergrundaufgaben, die weiterhin ausgeführt werden, wenn Ihnen von der Azure CLI wieder eine Eingabeaufforderung angezeigt wird. Unter Umständen dauert es einige Minuten, bis Sie auf die App zugreifen können.
 
 
 ## <a name="allow-web-traffic"></a>Zulassen von Webdatenverkehr
@@ -215,14 +217,14 @@ Fügen Sie zum Erstellen einer Skalierungsgruppe und zum Anfügen von Datenträg
 
 ```azurecli-interactive 
 az vmss create \
-  --resource-group myResourceGroupScaleSet \
-  --name myScaleSetDisks \
-  --image Canonical:UbuntuServer:14.04.4-LTS:latest \
-  --upgrade-policy-mode automatic \
-  --custom-data cloud-init.txt \
-  --admin-username azureuser \
-  --generate-ssh-keys \
-  --data-disk-sizes-gb 50
+    --resource-group myResourceGroupScaleSet \
+    --name myScaleSetDisks \
+    --image UbuntuLTS \
+    --upgrade-policy-mode automatic \
+    --custom-data cloud-init.txt \
+    --admin-username azureuser \
+    --generate-ssh-keys \
+    --data-disk-sizes-gb 50
 ```
 
 Bei Entfernen von Instanzen aus einer Skalierungsgruppe werden angefügte Datenträger ebenfalls entfernt.
@@ -231,10 +233,10 @@ Bei Entfernen von Instanzen aus einer Skalierungsgruppe werden angefügte Datent
 Verwenden Sie [az vmss disk attach](/cli/azure/vmss/disk#attach) zum Hinzufügen eines Datenträgers zu Instanzen in Ihrer Skalierungsgruppe. Im folgenden Beispiel wird jeder Instanz ein *50*-GB-Datenträger hinzugefügt:
 
 ```azurecli-interactive 
-az vmss disk attach `
-    --resource-group myResourceGroupScaleSet `
-    --name myScaleSet `
-    --size-gb 50 `
+az vmss disk attach \
+    --resource-group myResourceGroupScaleSet \
+    --name myScaleSet \
+    --size-gb 50 \
     --lun 2
 ```
 
@@ -242,9 +244,9 @@ az vmss disk attach `
 Verwenden Sie [az vmss disk detach](/cli/azure/vmss/disk#detach) zum Entfernen eines Datenträgers von Instanzen in Ihrer Skalierungsgruppe. Im folgenden Beispiel wird der Datenträger mit LUN *2* aus jeder Instanz entfernt:
 
 ```azurecli-interactive 
-az vmss disk detach `
-    --resource-group myResourceGroupScaleSet `
-    --name myScaleSet `
+az vmss disk detach \
+    --resource-group myResourceGroupScaleSet \
+    --name myScaleSet \
     --lun 2
 ```
 

@@ -13,14 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/21/2017
+ms.date: 08/02/2017
 ms.author: cherylmc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: f5db73d93276f8da223f03fa672af02a3bc9b54d
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 77097d59077cd8e199acdb5dc0d8427369565eea
 ms.contentlocale: de-de
-ms.lasthandoff: 06/17/2017
-
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="configure-a-vnet-to-vnet-connection-classic"></a>Konfigurieren einer VNet-zu-VNet-Verbindung (klassisch)
@@ -49,7 +48,7 @@ Die VNets, die Sie verbinden, können sich in verschiedenen Abonnements und Regi
 
 ![VNet-zu-VNet-Verbindungen](./media/vpn-gateway-howto-vnet-vnet-portal-classic/aboutconnections.png)
 
-### <a name="why-connect-virtual-networks"></a>Gründe für Verbindungen zwischen virtuellen Netzwerken
+### <a name="why"></a>Gründe für Verbindungen zwischen virtuellen Netzwerken
 
 Aus den folgenden Gründen empfiehlt sich das Herstellen von Verbindungen zwischen virtuellen Netzwerken:
 
@@ -71,7 +70,7 @@ Weitere Informationen zu VNet-zu-VNet-Verbindungen finden Sie am Ende dieses Art
 
 Ehe Sie diese Übung beginnen, laden Sie die aktuelle Version der PowerShell-Cmdlets der Azure-Dienstverwaltung herunter, und installieren Sie sie. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview). Wir verwenden für die meisten Schritte das Portal. Sie müssen jedoch PowerShell verwenden, um die Verbindungen zwischen den VNets herzustellen. Sie können die Verbindungen nicht im Azure-Portal erstellen.
 
-## <a name="step1"></a>Schritt 1: Planen der IP-Adressbereiche
+## <a name="plan"></a>Schritt 1: Planen der IP-Adressbereiche
 
 Eine wichtige Entscheidung betrifft die Bereiche, die Sie zum Konfigurieren Ihrer virtuellen Netzwerke verwenden. Bei dieser Konfiguration müssen Sie sicherstellen, dass sich die VNet-Bereiche weder untereinander überlappen, noch mit lokalen Netzwerken, mit denen sie eine Verbindung herstellen.
 
@@ -86,7 +85,16 @@ Die folgende Tabelle zeigt ein Beispiel zur Definition von VNets. Verwenden Sie 
 
 ## <a name="vnetvalues"></a>Schritt 2 – Erstellen der virtuellen Netzwerke
 
-Erstellen Sie zwei virtuelle Netzwerke im [Azure-Portal](https://portal.azure.com). Informationen zu den Schritten, um klassische virtuelle Netzwerke zu erstellen, finden Sie unter [Erstellen eines klassischen virtuellen Netzwerks](../virtual-network/virtual-networks-create-vnet-classic-pportal.md). Sie können die folgenden Beispielwerte nutzen, wenn Sie diesen Artikel als Übung verwenden:
+Erstellen Sie zwei virtuelle Netzwerke im [Azure-Portal](https://portal.azure.com). Informationen zu den Schritten, um klassische virtuelle Netzwerke zu erstellen, finden Sie unter [Erstellen eines klassischen virtuellen Netzwerks](../virtual-network/virtual-networks-create-vnet-classic-pportal.md). 
+
+Wenn Sie das Portal verwenden, um ein klassisches virtuelles Netzwerk zu erstellen, müssen Sie mit den folgenden Schritten zum Blatt „Virtuelles Netzwerk“ navigieren, da sonst die Option für das Erstellen eines klassischen virtuellen Netzwerks nicht angezeigt wird:
+
+1. Klicken Sie auf „+“, um das Blatt „Neu“ zu öffnen.
+2. Geben Sie im Feld „Marketplace durchsuchen“ die Zeichenfolge „Virtuelles Netzwerk“ ein. Wenn Sie stattdessen „Netzwerk“ -> „Virtuelles Netzwerk“ auswählen, wird die Option für das Erstellen eines klassischen virtuellen Netzwerks nicht angezeigt.
+3. Klicken Sie in der zurückgegebenen Liste auf „Virtuelles Netzwerk“, um das Blatt „Virtuelles Netzwerk“ zu öffnen. 
+4. Wählen Sie im Blatt „Virtuelles Netzwerk“ die Option „Klassisch“ aus, um ein klassisches virtuelles Netzwerk zu erstellen. 
+
+Sie können die folgenden Beispielwerte nutzen, wenn Sie diesen Artikel als Übung verwenden:
 
 **Werte für TestVNet1**
 
@@ -160,11 +168,11 @@ Jedes virtuelle Netzwerk muss über ein Gateway für virtuelle Netzwerke verfüg
 6. Klicken Sie auf **OK**.
 7. Klicken Sie auf dem Blatt **Neue VPN-Verbindung** auf **OK**, um mit dem Erstellen des Gateways für virtuelle Netzwerke zu beginnen. Häufig kann die Erstellung eines Gateways je nach ausgewählter Gateway-SKU mindestens 45 Minuten dauern.
 
-## <a name="step-5---configure-testvnet4-settings"></a>Schritt 5 – Konfigurieren von TestVNet4-Einstellungen
+## <a name="vnet4settings"></a>Schritt 5 – Konfigurieren von TestVNet4-Einstellungen
 
 Wiederholen Sie die Schritte zum [Erstellen eines lokales Standorts](#localsite) und [Erstellen des Gateways für virtuelle Netzwerke](#gw), um TestVNet4 zu konfigurieren. Ersetzen Sie die Werte bei Bedarf. Wenn Sie diese Schritte als Übung durchführen, verwenden Sie die [Beispielwerte](#vnetvalues).
 
-## <a name="step-6---update-the-local-sites"></a>Schritt 6 – Aktualisieren der lokalen Standorte
+## <a name="updatelocal"></a>Schritt 6 – Aktualisieren der lokalen Standorte
 
 Nachdem die Gateways für Ihre virtuellen Netzwerke für beide VNETs erstellt wurden, müssen Sie die Werte für **IP-Adresse des VPN-Gateways** der lokalen Standorte anpassen.
 
@@ -200,7 +208,7 @@ Nachdem die Gateways für Ihre virtuellen Netzwerke für beide VNETs erstellt wu
 6. Schließen Sie die anderen Blätter.
 7. Wiederholen Sie diese Schritte für TestVNet4.
 
-## <a name="step-7---retrieve-values-from-the-network-configuration-file"></a>Schritt 7 – Abrufen von Werten aus der Netzwerkkonfigurationsdatei
+## <a name="getvalues"></a>Schritt 7 – Abrufen von Werten aus der Netzwerkkonfigurationsdatei
 
 Beim Erstellen von klassischen VNETs im Azure-Portal ist der angezeigte Name nicht der vollständige Name, den Sie für PowerShell verwenden. Beispielsweise kann ein VNET, das im Azure-Portal als **TestVNet1** angezeigt wird, in der Netzwerkkonfigurationsdatei einen viel längeren Namen haben. Der Name kann etwa wie folgt aussehen: **Group ClassicRG TestVNet1**. Bei der Erstellung Ihrer Verbindungen ist es wichtig, dass Sie die in der Netzwerkkonfigurationsdatei angezeigten Werte verwenden.
 
@@ -238,7 +246,7 @@ In den folgenden Schritten stellen Sie eine Verbindung zu Ihrem Azure-Konto her.
   ```
 4. Öffnen Sie die Datei mit einem Texteditor und zeigen Sie die Namen für Ihre VNETs und Standorte an. Dies sind die Namen, die Sie beim Erstellen Ihrer Verbindungen verwenden.<br>VNET-Namen werden unter **VirtualNetworkSite name =** aufgelistet.<br>Standortnamen werden unter **LocalNetworkSiteRef name =** aufgelistet.
 
-## <a name="step-8---create-the-vpn-gateway-connections"></a>Schritt 8 – Erstellen von VPN-Gatewayverbindungen
+## <a name="createconnections"></a>Schritt 8 – Erstellen von VPN-Gatewayverbindungen
 
 Nach Abschluss aller zuvor beschriebenen Schritte können Sie die vorinstallierten IPSec/IKE-Schlüssel festlegen und die Verbindung erstellen. Bei dieser Gruppe von Schritten wird auf PowerShell zurückgegriffen. Im Azure-Portal können keine VNet-zu-VNet-Verbindungen für das klassische Bereitstellungsmodell konfiguriert werden.
 

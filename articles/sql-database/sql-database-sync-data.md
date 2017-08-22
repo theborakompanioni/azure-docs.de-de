@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 06/27/2017
 ms.author: douglasl
 ms.translationtype: HT
-ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
-ms.openlocfilehash: 95404f9dbffa08edf12ee6c07f671d5f207ce99a
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: 926938a8ed20167e1f17a9883007cd993897f14a
 ms.contentlocale: de-de
-ms.lasthandoff: 08/05/2017
+ms.lasthandoff: 08/17/2017
 
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>Synchronisieren von Daten über mehrere Cloud- und lokale Datenbanken mit SQL-Datensynchronisierung
@@ -52,7 +52,7 @@ Für die Datensynchronisierung wird eine Topologie der Art „Nabe und Speiche�
 
 Die Datensynchronisierung ist in Fällen nützlich, in denen Daten über mehrere Azure SQL-Datenbanken oder SQL Server-Datenbanken aktuell gehalten werden müssen. Hier sind die wichtigsten Anwendungsfälle für die Datensynchronisierung aufgeführt:
 
--   **Hybrid-Datensynchronisierung:** Bei der Datensynchronisierung können Sie Daten zwischen Ihren lokalen Datenbanken und Azure SQL-Datenbanken synchron halten, um Hybridanwendungen mit Datenebene in SQL zu ermöglichen. Diese Funktion ist unter Umständen gut für Kunden geeignet, die eine Umstellung auf die Cloud erwägen und einen Teil ihrer Anwendung in Azure anordnen möchten.
+-   **Hybrid-Datensynchronisierung:** Bei der Datensynchronisierung können Sie Daten zwischen Ihren lokalen Datenbanken und Azure SQL-Datenbanken synchron halten, um Hybridanwendungen zu ermöglichen. Diese Funktion ist unter Umständen gut für Kunden geeignet, die eine Umstellung auf die Cloud erwägen und einen Teil ihrer Anwendung in Azure anordnen möchten.
 
 -   **Verteilte Anwendungen:** In vielen Fällen ist es vorteilhaft, unterschiedliche Workloads auf verschiedene Datenbanken aufzuteilen. Wenn Sie beispielsweise über eine große Produktionsdatenbank verfügen, aber gleichzeitig die Berichterstellung oder Analyse für diese Daten durchführen müssen, ist für diese zusätzliche Workload die Verwendung einer zweiten Datenbank hilfreich. Bei diesem Ansatz werden die Auswirkungen auf die Leistung Ihrer Produktionsworkload reduziert. Sie können die Datensynchronisierung nutzen, um diese beiden Datenbanken synchron zu halten.
 

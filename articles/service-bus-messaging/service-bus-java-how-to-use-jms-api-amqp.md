@@ -12,14 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
-ms.date: 04/27/2017
+ms.date: 08/10/2017
 ms.author: sethm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f291186c6a68dea8aa00b846a2e6f3ad0d7996c
-ms.openlocfilehash: cfd4822820270dbaf44a25f3e0fe749492765df8
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: 0848facd764c4fb0d7f95c1ae89ecb02a32257e1
 ms.contentlocale: de-de
-ms.lasthandoff: 04/28/2017
-
+ms.lasthandoff: 08/11/2017
 
 ---
 # <a name="how-to-use-the-java-message-service-jms-api-with-service-bus-and-amqp-10"></a>Verwenden der JMS (Java Message Service)-API mit Service Bus und AMQP 1.0
@@ -313,7 +312,7 @@ Bei der Verwendung von JMS über AMQP 1.0 mit Service Bus gelten die folgenden E
 * Pro **Sitzung** ist nur ein **MessageConsumer** oder **MessageProducer** erlaubt. Falls Sie mehrere **MessageProducer** oder **MessageConsumer** in einer Anwendung benötigen, müssen Sie für diese jeweils eine eigene **Sitzung** erstellen.
 * Flüchtige Themenabonnements werden momentan nicht unterstützt.
 * **MessageSelectors** werden momentan nicht unterstützt.
-* Temporäre Ziele (z.B. **TemporaryQueue** und **TemporaryTopic** werden ebenso wie die **QueueRequestor**- und **TopicRequestor**-APIs, die diese verwenden, nicht unterstützt.
+* Temporäre Ziele (z.B. **TemporaryQueue** und **TemporaryTopic**) werden ebenso wie die **QueueRequestor**- und **TopicRequestor**-APIs, die diese verwenden, nicht unterstützt.
 * Durchgeführte Sitzungen und verteilte Transaktionen werden nicht unterstützt.
 
 ## <a name="summary"></a>Zusammenfassung

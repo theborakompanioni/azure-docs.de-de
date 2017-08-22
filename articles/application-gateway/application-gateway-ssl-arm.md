@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/23/2017
+ms.date: 07/19/2017
 ms.author: gwallace
 ms.translationtype: HT
-ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
-ms.openlocfilehash: 21a45f8ac5b4cb5fd0f5513fb43f7ca263977393
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: ededabc7c665d6bb05b91e4d21d01fb1379add32
 ms.contentlocale: de-de
-ms.lasthandoff: 08/04/2017
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="configure-an-application-gateway-for-ssl-offload-by-using-azure-resource-manager"></a>Konfigurieren eines Anwendungsgateways für die SSL-Auslagerung mit Azure Resource Manager
@@ -217,10 +217,18 @@ In diesem Beispiel wird die Instanzgröße des Anwendungsgateways konfiguriert.
 > [!NOTE]
 > Der Standardwert für *InstanceCount* ist 2, der Maximalwert ist 10. Der Standardwert für *GatewaySize* ist "Medium". Sie können zwischen „Standard_Small“, „Standard_Medium“ und „Standard_Large“ wählen.
 
+### <a name="step-10"></a>Schritt 10
+
+```powershell
+$policy = New-AzureRmApplicationGatewaySslPolicy -PolicyType Predefined -PolicyName AppGwSslPolicy20170401S
+```
+
+In diesem Schritt wird die SSL-Richtlinie festgelegt, die für das Anwendungsgateway verwendet werden soll. Weitere Informationen finden Sie unter [Configure SSL policy versions and cipher suites on Application Gateway](application-gateway-configure-ssl-policy-powershell.md) (Konfigurieren von SSL-Richtlinienversionen und Verschlüsselungssammlungen für Application Gateway).
+
 ## <a name="create-an-application-gateway-by-using-new-azureapplicationgateway"></a>Erstellen eines Anwendungsgateways mit dem New-AzureApplicationGateway-Cmdlet
 
 ```powershell
-$appgw = New-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg -Location "West US" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig  -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku -SslCertificates $cert
+$appgw = New-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg -Location "West US" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig  -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku -SslCertificates $cert -SslPolicy $policy
 ```
 
 In diesem Beispiel wird ein Anwendungsgateway mit allen Konfigurationselementen aus den vorherigen Schritten erstellt. Im Beispiel heißt das Anwendungsgateway **appgwtest**.

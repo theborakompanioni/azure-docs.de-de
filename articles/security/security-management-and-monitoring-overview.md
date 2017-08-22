@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: terrylan
-translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: f0c174d7d845dd7e48de6388270dde2469d89a12
-ms.lasthandoff: 03/25/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: 6787877deabafd0b7308e190cb45b4036049b05b
+ms.contentlocale: de-de
+ms.lasthandoff: 08/12/2017
 
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Azure-Sicherheitsverwaltung und -Überwachung – Übersicht
@@ -26,7 +26,7 @@ Azure verfügt über Sicherheitsmechanismen, die als Hilfe bei der Verwaltung un
 
 Die Sicherheit Ihrer Microsoft-Clouddienste basiert auf einer Partnerschaft zwischen Ihnen und Microsoft, und beide Parteien sind gemeinsam dafür verantwortlich. Diese gemeinsame Verantwortung bedeutet, dass Microsoft für Microsoft Azure und die physische Sicherheit seiner Rechenzentren verantwortlich ist (durch den Einsatz von Sicherheitsmaßnahmen wie Türen mit elektronischer Zugangskontrolle, Zäunen und Wachpersonal). Außerdem bietet Azure eine umfassende Cloudsicherheit auf Softwareebene, die auch die Anforderungen der anspruchsvollsten Kunden an Sicherheit, Datenschutz und Compliance erfüllt.
 
-Sie sind der Eigentümer Ihrer Daten und Identitäten und für deren Schutz verantwortlich. Außerdem müssen Sie für die Sicherheit Ihrer lokalen Ressourcen und der Cloudkomponenten sorgen, die Ihrer Kontrolle unterliegen. Microsoft stellt Sicherheitskontrollen und -funktionen bereit, um Sie beim Schützen Ihrer Daten und Anwendungen zu unterstützen. Ihre Zuständigkeit für die Sicherheit basiert auf dem Typ des Clouddiensts.
+Sie sind der Eigentümer Ihrer Daten und Identitäten und für deren Schutz verantwortlich. Außerdem müssen Sie für die Sicherheit Ihrer lokalen Ressourcen und der Cloudkomponenten sorgen, die Ihrer Kontrolle unterliegen. Microsoft stellt Sicherheitskontrollen und -funktionen bereit, um Sie beim Schützen Ihrer Daten und Anwendungen zu unterstützen. Der Umfang Ihrer Zuständigkeit für die Sicherheit basiert auf dem Typ des Clouddiensts.
 
 Im folgenden Diagramm sind die Informationen zur Verteilung der Zuständigkeiten für Microsoft und den Kunden zusammengefasst.
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/21/2016
 ms.author: markgal;trinadhk;giridham;
-translationtype: Human Translation
-ms.sourcegitcommit: e12d533ac5befe020c0aad4aa64ca9ed50349c3d
-ms.openlocfilehash: aefc65d42e3c23e35793be8af1751bb48dfaa84f
-ms.lasthandoff: 02/17/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
+ms.openlocfilehash: b9dc3f52e5fc275bc56b9964f2115833f2dde42e
+ms.contentlocale: de-de
+ms.lasthandoff: 08/10/2017
 
 ---
 # <a name="monitor-alerts-for-azure-virtual-machine-backups"></a>Überwachen von Warnungen für Sicherungen von virtuellen Azure-Computern
@@ -194,8 +194,8 @@ PS C:\> Add-AzureRmLogAlertRule -Name backupFailedAlert -Location "East US" -Res
 Ereignisbasierte Warnungen unterliegen den folgenden Einschränkungen:
 
 1. Warnungen werden auf allen virtuellen Computern im Recovery Services-Tresor ausgelöst. Es ist nicht möglich, die Warnung für eine Teilmenge von virtuellen Computern in einem Recovery Services-Tresor anzupassen.
-2. Dieses Feature befindet sich in der Vorschau. [Weitere Informationen](../monitoring-and-diagnostics/insights-powershell-samples.md#create-alert-rules)
-3. Warnungen werden von "alerts-noreply@mail.windowsazure.com" gesendet. Sie können den E-Mail-Absender derzeit nicht ändern.
+2. Dieses Feature befindet sich in der Vorschau. [Weitere Informationen](../monitoring-and-diagnostics/insights-powershell-samples.md#create-metric-alerts)
+3. Warnungen werden von alerts-noreply@mail.windowsazure.com gesendet. Sie können den E-Mail-Absender derzeit nicht ändern.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Ereignisprotokolle bieten eine hervorragende Grundlage für Nachbesprechungen und für die Überwachung von Sicherungsvorgängen. Die folgenden Vorgänge werden protokolliert:
