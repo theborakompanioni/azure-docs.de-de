@@ -15,14 +15,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 06/26/2017
+ms.date: 07/28/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: f8f58f7007b6a52f0955232ad1492b25f3e851f0
+ms.translationtype: HT
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: 56dd07de81e322aa66587ee160beb734811285dc
 ms.contentlocale: de-de
-ms.lasthandoff: 07/08/2017
-
+ms.lasthandoff: 07/27/2017
 
 ---
 # <a name="availability-and-reliability-of-hadoop-clusters-in-hdinsight"></a>Verfügbarkeit und Zuverlässigkeit von Hadoop-Clustern in HDInsight
@@ -36,12 +35,10 @@ Hadoop erzielt hohe Verfügbarkeit und Zuverlässigkeit durch das Replizieren vo
 
 ## <a name="availability-and-reliability-of-nodes"></a>Verfügbarkeit und Zuverlässigkeit von Knoten
 
-Knoten in einem HDInsight-Cluster werden mithilfe von virtuellen Azure-Computern implementiert. Falls ein Knoten ausfällt, wird er offline geschaltet, und es wird ein neuer Knoten erstellt, um den fehlerhaften Knoten zu ersetzen. Während der Knoten offline ist, wird ein anderer Knoten identischen Typs verwendet, bis der neue Knoten online geschaltet wird.
+Knoten in einem HDInsight-Cluster werden mithilfe von virtuellen Azure-Computern implementiert. In den folgenden Abschnitten werden die einzelnen Arten von Knoten erläutert, die mit HDInsight verwendet werden. 
 
 > [!NOTE]
-> Wenn auf dem Knoten zum Zeitpunkt des Ausfalls Daten analysiert wurden, gehen die Fortschritte dieses Auftrags verloren. Der Auftrag wird einem anderen Knoten übertragen.
-
-In den folgenden Abschnitten werden die einzelnen Arten von Knoten erläutert, die mit HDInsight verwendet werden. Es werden nicht alle Knotentypen für alle Clustertypen verwendet. Ein Hadoop-Cluster weist z.B. keine Nimbusknoten auf. Weitere Informationen zu den von den HDInsight-Clustertypen verwendeten Knoten finden Sie im Dokument [Erstellen von Linux-basierten Hadoop-Clustern in HDInsight](hdinsight-hadoop-provision-linux-clusters.md#cluster-types) im Abschnitt „Clustertypen“.
+> Es werden nicht alle Knotentypen für alle Clustertypen verwendet. Ein Hadoop-Cluster weist z.B. keine Nimbusknoten auf. Weitere Informationen zu den von den HDInsight-Clustertypen verwendeten Knoten finden Sie im Dokument [Erstellen von Linux-basierten Hadoop-Clustern in HDInsight](hdinsight-hadoop-provision-linux-clusters.md#cluster-types) im Abschnitt „Clustertypen“.
 
 ### <a name="head-nodes"></a>Hauptknoten
 

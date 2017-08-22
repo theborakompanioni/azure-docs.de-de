@@ -6,6 +6,7 @@
 ### [Reaktion auf Vorfälle](security-center-incident-response.md)
 ### [Verwenden von Empfehlungen zur Verbesserung der Sicherheit](security-center-using-recommendations.md)
 ## [Plattformmigration](security-center-platform-migration.md)
+### [Plattformmigration – häufig gestellte Fragen](security-center-platform-migration-faq.md)
 
 # Erste Schritte
 ## [Schnellstart](security-center-get-started.md)

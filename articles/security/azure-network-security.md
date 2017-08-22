@@ -1,5 +1,4 @@
 ---
-
 title: Azure-Netzwerksicherheit | Microsoft-Dokumentation
 description: "Enthält Informationen zu cloudbasierten Computingdiensten mit einer großen Auswahl an Computeinstanzen und -diensten, die automatisch zentral hoch- und herunterskaliert werden können, um die Anforderungen Ihrer Anwendung bzw. Ihres Unternehmens zu erfüllen."
 services: security
@@ -16,11 +15,10 @@ ms.workload: na
 ms.date: 05/24/2017
 ms.author: TomSh
 ms.translationtype: HT
-ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
-ms.openlocfilehash: bec61dd630348e4657862077f07b1313ed0ed373
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 6ab59dd02391287a1effc0b51502bb7eb90db319
 ms.contentlocale: de-de
-ms.lasthandoff: 07/10/2017
-
+ms.lasthandoff: 08/16/2017
 
 ---
 
@@ -80,7 +78,7 @@ In diesem Dokument werden die folgenden Unternehmensfunktionen für Azure-Netzwe
 
 ### <a name="basic-network-connectivity"></a>Grundlegende Netzwerkkonnektivität
 
-Mit dem Dienst [Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) können Sie Azure-Ressourcen über virtuelle Netzwerke (VNets) sicher miteinander verbinden. Ein VNet ist eine Darstellung Ihres eigenen Netzwerks in der Cloud. Es handelt sich hierbei um eine logische Isolation der Azure-Netzwerkinfrastruktur für Ihr Abonnement. Sie können VNets auch miteinander und mit Ihren lokalen Netzwerken verbinden, indem Sie Site-to-Site-VPN-Verbindungen und dedizierte [WAN-Verbindungen](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) verwenden.
+Mit dem Dienst [Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) können Sie Azure-Ressourcen über virtuelle Netzwerke (VNets) sicher miteinander verbinden. Ein VNet ist eine Darstellung Ihres eigenen Netzwerks in der Cloud. Es handelt sich hierbei um eine logische Isolation der Azure-Netzwerkinfrastruktur für Ihr Abonnement. Sie können VNETs auch miteinander und mit Ihren lokalen Netzwerken verbinden, indem Sie Site-to-Site-VPN-Verbindungen und dedizierte [WAN-Verbindungen](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) verwenden.
 
 ![Grundlegende Netzwerkkonnektivität](media/azure-network-security/azure-network-security-fig-2.png)
 
@@ -316,7 +314,7 @@ Dieser Kommunikationsfluss ist möglich, weil Azure eine Reihe von Systemrouten 
 
 -   Aus einem VNet in ein lokales Netzwerk über ein VPN-Gateway.
 
-In vielen Unternehmen gelten strenge Sicherheits- und Konformitätsanforderungen, für die eine lokale Untersuchung aller Netzwerkpakete zur Durchsetzung bestimmter Richtlinien erforderlich ist. Azure verfügt über den Mechanismus der [Tunnelerzwingung](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-forced-tunneling). Hierbei wird Datenverkehr von den VMs zum lokalen Standort geleitet, indem eine benutzerdefinierte Route erstellt wird oder [BGP](https://docs.microsoft.com/windows-server/remote/remote-access/bgp/border-gateway-protocol-bgp)-Ankündigungen (Border Gateway Protocol) per ExpressRoute oder VPN genutzt werden.
+In vielen Unternehmen gelten strenge Sicherheits- und Konformitätsanforderungen, für die eine lokale Untersuchung aller Netzwerkpakete zur Durchsetzung bestimmter Richtlinien erforderlich ist. Azure verfügt über den Mechanismus der [Tunnelerzwingung](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-forced-tunneling). Hierbei wird Datenverkehr von den VMs zum lokalen Standort geleitet, indem eine benutzerdefinierte Route erstellt wird oder [BGP](https://docs.microsoft.com/windows-server/remote/remote-access/bgp/border-gateway-protocol-bgp)-Ankündigungen (Border Gateway Protocol)
 
 Die Tunnelerzwingung in Azure wird über benutzerdefinierte Routen im virtuellen Netzwerk konfiguriert. Das Umleiten von Datenverkehr an einen lokalen Standort wird als eine Standardroute zum Azure-VPN-Gateway umgesetzt.
 
@@ -388,7 +386,6 @@ Mithilfe von Application Gateway können Sie die Leistung und Verfügbarkeit von
 
 
 Eine [Web Application Firewall (WAF)](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-application-firewall-overview) wird als Teil des Anwendungsgateways ebenfalls bereitgestellt. Sie bietet Schutz für Webanwendungen vor allgemeinen Onlinesicherheitsrisiken und Exploits. Application Gateway kann als
-Gateway mit Internetanbindung, rein internes Gateway oder als Kombination dieser beiden Optionen konfiguriert werden.
 
 Die Application Gateway-WAF kann im Erkennungs- oder Schutzmodus ausgeführt werden. Ein häufiger Anwendungsfall für Administratoren ist die Ausführung im Erkennungsmodus, um Datenverkehr zu beobachten und auf schädliche Muster zu prüfen. Nachdem potenzielle Exploits erkannt wurden, kann verdächtiger eingehender Datenverkehr blockiert werden, indem der Schutzmodus aktiviert wird.
 
