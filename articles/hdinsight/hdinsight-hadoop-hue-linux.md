@@ -16,12 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: nitinme
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 9bccb28934415d3ff6d363d35b604056b28cb6b9
+ms.translationtype: HT
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: 41a5c652a89c85f248039fc617c84a2b6b230f56
 ms.contentlocale: de-de
-ms.lasthandoff: 07/08/2017
-
+ms.lasthandoff: 07/27/2017
 
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>Installieren und Verwenden von Hue in HDInsight Hadoop-Clustern
@@ -129,7 +128,7 @@ SSH-Tunneling ist die einzige Möglichkeit für den Zugriff auf Hue auf dem Clus
 3. Klicken Sie mit der rechten Maustaste auf eine Datei oder einen Ordner, um die verfügbaren Vorgänge anzuzeigen. Verwenden Sie die Schaltfläche **Upload** in der rechten Ecke, um Dateien in das aktuelle Verzeichnis hochzuladen. Über die Schaltfläche **New** können Sie neue Dateien oder Verzeichnisse erstellen.
 
 > [!NOTE]
-> Im Hue-Dateibrowser können nur die Inhalte des Standardcontainers angezeigt werden, der dem HDInsight-Cluster zugeordnet ist. Auf alle anderen Speicherkonten und Container, die Sie eventuell mit dem Cluster verknüpft haben, können Sie mit dem Dateibrowser nicht zugreifen. Die zusätzlichen mit dem Cluster verknüpften Container sind jedoch für Hive-Aufträge immer verfügbar. Wenn Sie beispielsweise im Hive-Editor den Befehl `dfs -ls wasbs://newcontainer@mystore.blob.core.windows.net` eingeben, werden auch die Inhalte der zusätzlichen Container angezeigt. In diesem Befehl ist **newcontainer** nicht der mit einem Cluster verknüpfte Standardcontainer.
+> Im Hue-Dateibrowser können nur die Inhalte des Standardcontainers angezeigt werden, der dem HDInsight-Cluster zugeordnet ist. Auf alle anderen Speicherkonten und Container, die Sie eventuell mit dem Cluster verknüpft haben, können Sie mit dem Dateibrowser nicht zugreifen. Die zusätzlichen mit dem Cluster verknüpften Container sind jedoch für Hive-Aufträge immer verfügbar. Wenn Sie beispielsweise im Hive-Editor den Befehl `dfs -ls wasb://newcontainer@mystore.blob.core.windows.net` eingeben, werden auch die Inhalte der zusätzlichen Container angezeigt. In diesem Befehl ist **newcontainer** nicht der mit einem Cluster verknüpfte Standardcontainer.
 >
 >
 
@@ -146,7 +145,7 @@ SSH-Tunneling ist die einzige Möglichkeit für den Zugriff auf Hue auf dem Clus
    ![Fehler im Hue-Portal](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-error.png "Fehler im Hue-Portal")
 
    Dies ist auf ein bekanntes Problem zurückzuführen. Zur Umgehung dieses Problems können Sie Ambari so konfigurieren, dass die aktive Resource Manager-Instanz auch auf dem primären Hauptknoten ausgeführt wird.
-5. Hue verarbeitet WebHDFS, während HDInsight-Cluster Azure Storage mit `wasbs://` verwenden. Daher installiert das mit der Skriptaktion verwendete benutzerdefinierte Skript WebWasb, einen WebHDFS-kompatiblen Dienst für die Kommunikation mit WASB. Auch wenn im Hue-Portal an bestimmten Stellen HDFS angegeben ist (etwa beim Bewegen des Mauszeigers über den **Dateibrowser**), sollte dies als WASB interpretiert werden.
+5. Hue verarbeitet WebHDFS, während HDInsight-Cluster Azure Storage mit `wasb://` verwenden. Daher installiert das mit der Skriptaktion verwendete benutzerdefinierte Skript WebWasb, einen WebHDFS-kompatiblen Dienst für die Kommunikation mit WASB. Auch wenn im Hue-Portal an bestimmten Stellen HDFS angegeben ist (etwa beim Bewegen des Mauszeigers über den **Dateibrowser**), sollte dies als WASB interpretiert werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Installieren von Giraph in HDInsight-Clustern](hdinsight-hadoop-giraph-install-linux.md). Verwenden Sie die Clusteranpassung, um Giraph in HDInsight Hadoop-Clustern zu installieren. Giraph ermöglicht Ihnen, mithilfe von Hadoop Graphverarbeitungen durchzuführen. Es kann zudem mit Azure HDInsight eingesetzt werden.

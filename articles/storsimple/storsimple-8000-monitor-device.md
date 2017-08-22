@@ -12,19 +12,18 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 06/15/2017
+ms.date: 08/02/2017
 ms.author: alkohli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 337da13d4448090f320fa53a789d97f9843804d3
+ms.translationtype: HT
+ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
+ms.openlocfilehash: ac11c6c8532007ee40db128dd9933c99a32a9420
 ms.contentlocale: de-de
-ms.lasthandoff: 07/08/2017
-
+ms.lasthandoff: 08/03/2017
 
 ---
 # <a name="use-the-storsimple-device-manager-service-to-monitor-your-storsimple-device"></a>Verwenden des StorSimple-Geräte-Manager-Diensts zum Überwachen von StorSimple-Geräten
 ## <a name="overview"></a>Übersicht
-Sie können den StorSimple-Geräte-Manager-Dienst verwenden, um bestimmte Geräte innerhalb Ihrer StorSimple-Lösung zu überwachen. Sie können benutzerdefinierte Diagramme basierend auf Metriken zu EA-Leistung, Kapazitätsauslastung, Netzwerkdurchsatz und Geräteleistung erstellen und an das Dashboard anheften. Weitere Informationen finden Sie unter [Anpassen des Portals-Dashboards](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards.md).
+Sie können den StorSimple-Geräte-Manager-Dienst verwenden, um bestimmte Geräte innerhalb Ihrer StorSimple-Lösung zu überwachen. Sie können benutzerdefinierte Diagramme basierend auf Metriken zu EA-Leistung, Kapazitätsauslastung, Netzwerkdurchsatz und Geräteleistung erstellen und an das Dashboard anheften. Weitere Informationen finden Sie unter [Anpassen des Portals-Dashboards](/articles/azure-portal/azure-portal-dashboards.md).
 
 Um die Überwachungsinformationen für ein bestimmtes Gerät anzuzeigen, wählen Sie im Azure-Portal den StorSimple-Geräte-Manager-Dienst aus. Wählen Sie in der Geräteliste Ihr Gerät aus, und navigieren Sie dann zu **Überwachung**. Es werden dann Diagramme zu **Kapazität**, **Verwendung** und **Leistung** für das ausgewählte Gerät angezeigt.
 

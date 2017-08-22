@@ -15,19 +15,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/07/2017
 ms.author: cherylmc;ganesr
-translationtype: Human Translation
-ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
-ms.openlocfilehash: 2e6c204a1b520f5994c30c518f7ced11d77bde24
-ms.lasthandoff: 05/02/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: e3721cd3c031622788f553e71a6555b844f3f7dc
+ms.contentlocale: de-de
+ms.lasthandoff: 07/27/2017
 
 ---
 # <a name="create-and-modify-an-expressroute-circuit"></a>Erstellen und Ändern einer ExpressRoute-Verbindung
 > [!div class="op_single_selector"]
-> * [Resource Manager – Azure-Portal](expressroute-howto-circuit-portal-resource-manager.md)
-> * [Resource Manager – PowerShell](expressroute-howto-circuit-arm.md)
+> * [Azure-Portal](expressroute-howto-circuit-portal-resource-manager.md)
+> * [PowerShell](expressroute-howto-circuit-arm.md)
+> * [Azure-CLI](howto-circuit-cli.md)
 > * [Video – Azure-Portal](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
-> 
+> * [PowerShell (klassisch)](expressroute-howto-circuit-classic.md)
 >
 
 In diesem Artikel wird beschrieben, wie Sie eine Azure ExpressRoute-Verbindung mithilfe des Azure-Portals und des Azure Resource Manager-Bereitstellungsmodells erstellen. In den folgenden Schritten wird auch veranschaulicht, wie Sie den Status der Verbindung prüfen, aktualisieren, löschen oder deren Bereitstellung aufheben.

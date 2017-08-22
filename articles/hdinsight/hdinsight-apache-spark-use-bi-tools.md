@@ -72,7 +72,7 @@ In diesem Abschnitt verwenden wir das [Jupyter](https://jupyter.org) Notebook au
 
 6. Laden Sie Beispieldaten in eine temporäre Tabelle. Wenn Sie einen Spark-Cluster in HDInsight erstellen, wird die Beispieldatendatei **hvac.csv** in das zugeordnete Speicherkonto unter **\HdiSamples\HdiSamples\SensorSampleData\hvac** kopiert.
 
-    Fügen Sie den folgenden Codeausschnitt in eine leere Zelle ein, und drücken Sie UMSCHALT+EINGABE****. Mit diesem Codeausschnitt werden die Daten in einer Tabelle mit dem Namen **hvac** registriert.
+    Fügen Sie den folgenden Codeausschnitt in eine leere Zelle ein, und drücken Sie **UMSCHALT+EINGABE** . Mit diesem Codeausschnitt werden die Daten in einer Tabelle mit dem Namen **hvac** registriert.
 
         # Create an RDD from sample data
         hvacText = sc.textFile("wasb:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
@@ -107,7 +107,7 @@ In diesem Abschnitt verwenden wir das [Jupyter](https://jupyter.org) Notebook au
 
     Nur die Tabellen, für die in der Spalte **isTemporary** die Option „false“ angegeben ist, sind Hive-Tabellen, die im Metastore gespeichert werden und auf die mit den BI-Tools zugegriffen werden kann. In diesem Tutorial stellen wir eine Verbindung mit der erstellten **hvac**-Tabelle her.
 
-8. Stellen Sie sicher, dass die Tabelle die gewünschten Daten enthält. Kopieren Sie den folgenden Codeausschnitt in eine leere Zelle im Notebook, und drücken Sie UMSCHALT+EINGABETASTE ****.
+8. Stellen Sie sicher, dass die Tabelle die gewünschten Daten enthält. Kopieren Sie den folgenden Codeausschnitt in eine leere Zelle im Notebook, und drücken Sie UMSCHALT+ **EINGABETASTE**.
 
         %%sql
         SELECT * FROM hvac LIMIT 10

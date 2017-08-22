@@ -15,14 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/03/2017
+ms.date: 07/31/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 72d7aefc6a51944eac8075760486dc1a583a171d
+ms.translationtype: HT
+ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
+ms.openlocfilehash: b86605c49291a99f49c4b2841d46324cfd0db56d
 ms.contentlocale: de-de
-ms.lasthandoff: 07/08/2017
-
+ms.lasthandoff: 08/01/2017
 
 ---
 # <a name="develop-python-streaming-mapreduce-programs-for-hdinsight"></a>Entwickeln von Streaming-MapReduce-Programmen für HDInsight mit Python
@@ -80,7 +79,7 @@ Python kann diese Anforderungen einfach mithilfe des Moduls `sys` zum Lesen von 
    def main(separator='\t'):
        # Read the data using read_input
        data = read_input(sys.stdin)
-       # Process each words returned from read_input
+       # Process each word returned from read_input
        for words in data:
            # Process each word
            for word in words:
@@ -153,7 +152,7 @@ Verwenden Sie das folgende PowerShell-Skript, um Dateien hochzuladen, den Auftra
     Dieser Befehl kopiert die Dateien aus dem lokalen System auf den Stammknoten.
 
     > [!NOTE]
-    > Wenn Sie zum Schutz Ihres SSH-Kontos ein Kennwort verwendet haben, werden Sie zur Eingabe dieses Kennworts aufgefordert. Wenn Sie einen SSH-Schlüssel verwendet haben, müssen Sie möglicherweise den Parameter `-i` und den Pfad zum privaten Schlüssel, z. B. `scp -i /path/to/private/key mapper.py reducer.py username@clustername-ssh.azurehdinsight.net:`, angeben.
+    > Wenn Sie zum Schutz Ihres SSH-Kontos ein Kennwort verwendet haben, werden Sie zur Eingabe dieses Kennworts aufgefordert. Wenn Sie einen SSH-Schlüssel verwendet haben, müssen Sie möglicherweise den `-i` -Parameter und den Pfad zum privaten Schlüssel angeben. Beispiel: `scp -i /path/to/private/key mapper.py reducer.py username@clustername-ssh.azurehdinsight.net:`.
 
 2. Herstellen einer Verbindung zum Cluster mithilfe von SSH:
 

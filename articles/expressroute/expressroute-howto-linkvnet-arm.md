@@ -13,23 +13,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/12/2017
+ms.date: 07/05/2017
 ms.author: ganesr
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: b8c23a623a5c6c65c5239e6af694bc92c4de4682
-ms.lasthandoff: 04/27/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: 8c2f3036f754a98090ab860f95900416690ebf83
+ms.contentlocale: de-de
+ms.lasthandoff: 07/27/2017
 
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit"></a>Verbinden eines virtuellen Netzwerks mit einer ExpressRoute-Verbindung
 > [!div class="op_single_selector"]
-> * [Resource Manager – Azure-Portal](expressroute-howto-linkvnet-portal-resource-manager.md)
-> * [Resource Manager – PowerShell](expressroute-howto-linkvnet-arm.md)
-> * [Klassisch – PowerShell](expressroute-howto-linkvnet-classic.md)
+> * [Azure-Portal](expressroute-howto-linkvnet-portal-resource-manager.md)
+> * [PowerShell](expressroute-howto-linkvnet-arm.md)
+> * [Azure-CLI](howto-linkvnet-cli.md)
 > * [Video – Azure-Portal](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
-> 
-> 
+> * [PowerShell (klassisch)](expressroute-howto-linkvnet-classic.md)
+>
 
 Dieser Artikel unterstützt Sie beim Verknüpfen virtueller Netzwerke (VNETs) mit Azure ExpressRoute-Verbindungen über das Resource Manager-Bereitstellungsmodell und PowerShell. Virtuelle Netzwerke können Teil desselben Abonnements sein oder zu einem anderen Abonnement gehören. In diesem Artikel erfahren Sie auch, wie eine Verknüpfung mit einem virtuellen Netzwerk aktualisiert wird. 
 
@@ -62,7 +62,7 @@ Sie können eine ExpressRoute-Verbindung für mehrere Abonnements freigeben. Die
 Jede der kleineren Clouds innerhalb der großen Cloud stellt Abonnements dar, die zu verschiedenen Abteilungen innerhalb einer Organisation gehören. Jede der Abteilungen innerhalb der Organisation kann ihr eigenes Abonnement zum Bereitstellen von Diensten verwenden, für die Verbindung mit dem lokalen Netzwerk kann jedoch eine einzelne gemeinsam genutzte ExpressRoute-Verbindung verwendet werden. Eine einzelne Abteilung (in diesem Beispiel: IT) kann die ExpressRoute-Verbindung besitzen. Andere Abonnements innerhalb der Organisation können die ExpressRoute-Verbindung nutzen.
 
 > [!NOTE]
-> Konnektivitäts- und Bandbreitengebühren für die dedizierte Verbindung werden dem Besitzer der ExpressRoute-Verbindung in Rechnung gestellt. Alle virtuellen Netzwerke verwenden gemeinsam dieselbe Bandbreite.
+> Konnektivitäts- und Bandbreitengebühren für die ExpressRoute-Verbindung werden dem Abonnementbesitzer in Rechnung gestellt. Alle virtuellen Netzwerke verwenden gemeinsam dieselbe Bandbreite.
 > 
 > 
 
