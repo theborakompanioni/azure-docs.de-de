@@ -2,7 +2,9 @@
 title: "Erstellen einer Funktionen-App und Bereitstellen von Funktionscode über GitHub | Microsoft-Dokumentation"
 description: "Erstellen einer Funktionen-App und Bereitstellen von Funktionscode über GitHub"
 services: functions
+ms.service: functions
 keywords: 
+ms.devlang: azurecli
 author: syntaxc4
 ms.author: cfowler
 ms.date: 04/27/2017

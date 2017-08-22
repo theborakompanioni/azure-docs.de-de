@@ -37,8 +37,7 @@ In diesem Thema wird demonstriert, wie Sie Azure App Services zur Verwendung ein
    > [!NOTE]
    > Der Umleitungs-URI ist die URL Ihrer Anwendung mit angefügtem Pfad */.auth/login/microsoftaccount/callback*. Beispiel: `https://contoso.azurewebsites.net/.auth/login/microsoftaccount/callback`.   
    > Stellen Sie sicher, dass Sie das HTTPS-Schema verwenden.
-   > 
-   > 
+   
 7. Klicken Sie unter „Anwendungsgeheimnisse“ auf **Neues Kennwort generieren**. Notieren Sie sich den angezeigten Wert. Er wird nicht wieder angezeigt, nachdem Sie die Seite verlassen haben.
 
     > [!IMPORTANT]
