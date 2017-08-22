@@ -142,7 +142,7 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im Azur
 
     e. Wenn das Setup erfolgreich war, wird Administratoren ein Bestätigungsdialogfeld angezeigt. Zudem wird die URL der SSO-Anmeldung für Endbenutzer angezeigt. 
 
-    f. Kopieren Sie die Werte für die Heroku-Anmelde-URL**** und für die Heroku-Entitäts-ID,**** wechseln Sie zurück zum Abschnitt **Domäne und URLs für Heroku** des Azure-Portals, und fügen Sie die Werte in das Textfeld **Anmelde-URL** bzw. **Bezeichner** ein.
+    f. Kopieren Sie die Werte für die **Heroku-Anmelde-URL** und für die Heroku-Entitäts-**ID**wechseln Sie zurück zum Abschnitt **Domäne und URLs für Heroku** des Azure-Portals, und fügen Sie die Werte in das Textfeld **Anmelde-URL** bzw. **Bezeichner** ein.
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-heroku-tutorial/tutorial_heroku_52.png) 
     
