@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 06/12/2017
 ms.author: nepeters
 ms.translationtype: HT
-ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
-ms.openlocfilehash: a9dfb0af80ef018e5e655e6e5c78fb0b7e426794
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: 3440c350d50e3344f0b220ca3d8de6369bc824a4
 ms.contentlocale: de-de
-ms.lasthandoff: 07/24/2017
+ms.lasthandoff: 08/11/2017
 
 ---
 
@@ -452,7 +452,7 @@ Der Zugriff auf Azure Storage ist auf verschiedene Arten möglich, z.B. über da
 
 **VM-Datenträger**
 
-Beim Bereitstellen eines virtuellen Computers müssen Sie auch ein Speicherkonto erstellen, unter dem der Betriebssystemdatenträger des virtuellen Computers und alle weiteren Datenträger angeordnet sind. Sie können ein vorhandenes Speicherkonto auswählen oder ein neues erstellen. Da die maximale Größe eines Blobs 1.024 GB beträgt, kann ein einzelner VM-Datenträger eine maximale Größe von 1.023 GB haben. Zum Konfigurieren eines größeren Datenträgers können Sie für den virtuellen Computer mehrere Datenträger für Daten bereitstellen und zusammen als logischen Einzeldatenträger in einem Pool anordnen. Weitere Informationen finden Sie unter „Richtlinien für die Speicherinfrastruktur“ für [Windows](../../virtual-machines/windows/infrastructure-storage-solutions-guidelines.md) und [Linux](../../virtual-machines/linux/infrastructure-storage-solutions-guidelines.md).
+Beim Bereitstellen eines virtuellen Computers müssen Sie auch ein Speicherkonto erstellen, unter dem der Betriebssystemdatenträger des virtuellen Computers und alle weiteren Datenträger angeordnet sind. Sie können ein vorhandenes Speicherkonto auswählen oder ein neues erstellen. Da die maximale Größe eines Blobs 1.024 GB beträgt, kann ein einzelner VM-Datenträger eine maximale Größe von 1.023 GB haben. Zum Konfigurieren eines größeren Datenträgers können Sie für den virtuellen Computer mehrere Datenträger für Daten bereitstellen und zusammen als logischen Einzeldatenträger in einem Pool anordnen. Weitere Informationen finden Sie im Artikel zur Verwaltung von Azure-Datenträgern für [Windows](../../virtual-machines/windows/tutorial-manage-data-disk.md) und [Linux](../../virtual-machines/linux/tutorial-manage-disks.md).
 
 **Speichertools**
 

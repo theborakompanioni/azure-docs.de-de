@@ -7,24 +7,24 @@ author: jluk
 manager: timlt
 tags: azure-resource-manager
 ms.assetid: 
-ms.service: 
+ms.service: azure
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 07/13/2017
 ms.author: juluk
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
-ms.openlocfilehash: 69316d271fc4847565d183293013580b61695731
+ms.translationtype: HT
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: a47961dfdaf178a6b793bd68105d9792a9275bb3
 ms.contentlocale: de-de
-ms.lasthandoff: 05/17/2017
+ms.lasthandoff: 08/17/2017
 
 ---
 
 # <a name="using-the-azure-cloud-shell-window"></a>Verwenden des Azure Cloud Shell-Fensters
 
-Dieses Dokument erläutert, wie das Fenster der Azure Cloud Shell verwendet wird.
+Dieses Dokument erläutert, wie das Cloud Shell-Fenster verwendet wird.
 
 ## <a name="concurrent-sessions"></a>Gleichzeitige Sitzungen
 Cloud Shell ermöglicht mehrere gleichzeitige Sitzungen auf individuellen Browserregisterkarten, wobei jede Sitzung als separater Bash-Prozess vorhanden sein kann.
@@ -32,9 +32,10 @@ Achten Sie beim Beenden einer Sitzung darauf, jedes Sitzungsfenster zu schließe
 
 ## <a name="restart-cloud-shell"></a>Neustarten der Cloud Shell
 ![](media/recycle.png)
-* Klicken Sie auf das Neustartsymbol auf der Symbolleiste, um den Cloud Shell-Computer zurückzusetzen.
+> [!WARNING]
+> Durch Neustart der Cloud Shell wird der Computerstatus zurückgesetzt und alle Dateien, die nicht von Ihrer Dateifreigabe beibehalten werden, gehen verloren.
 
-> ![WARNUNG] Durch den Neustart der Cloud Shell wird der Computerstatus zurückgesetzt, und alle Dateien, die nicht von clouddrive beibehalten werden, gehen verloren.
+* Klicken Sie auf das Neustartsymbol in der Symbolleiste, um eine neue Cloud Shell-Umgebung zu empfangen.
 
 ## <a name="minimize--maximize-cloud-shell-window"></a>Minimieren und Maximieren des Cloud Shell-Fensters
 ![](media/minmax.png)
@@ -42,18 +43,19 @@ Achten Sie beim Beenden einer Sitzung darauf, jedes Sitzungsfenster zu schließe
 * Klicken Sie auf das Symbol „Maximieren“, um die maximale Höhe des Fensters festzulegen. Klicken Sie auf „Wiederherstellen“, um das Fenster in vorheriger Größe wiederherstellen.
 
 ## <a name="copy-and-paste"></a>Kopieren und Einfügen
-* Windows: `Ctrl-insert` und `Shift-insert`, oder durch Klicken mit der rechten Maustaste zum Kopieren und Einfügen die Dropdownliste öffnen.
+* Windows: Drücken Sie `Ctrl-insert` zum Kopieren und `Shift-insert` zum Einfügen. Das Kopieren und Einfügen ist auch durch Öffnen der Dropdownliste mittels Rechtsklick möglich.
   * FireFox/IE unterstützen die Berechtigungen für die Zwischenablage möglicherweise nicht ordnungsgemäß.
-* Mac OS: `Cmd-c` und `Cmd-v`, oder durch Klicken mit der rechten Maustaste zum Kopieren und Einfügen die Dropdownliste öffnen.
+* Mac OS: Drücken Sie `Cmd-c` zum Kopieren und `Cmd-v` zum Einfügen. Das Kopieren und Einfügen ist auch durch Öffnen der Dropdownliste mittels Rechtsklick möglich.
 
 ## <a name="resize-cloud-shell-window"></a>Ändern der Größe des Cloud Shell-Fensters
 * Klicken Sie auf den oberen Rand der Symbolleiste, und ziehen Sie ihn nach oben oder unten, um die Größe des Cloud Shell-Fensters zu ändern.
 
 ## <a name="scrolling-text-display"></a>Scrollen der Textanzeige
-* Scrollen mit Maus oder Touchpad
+* Scrollen Sie mit Ihrer Maus oder Ihrem Touchpad, um Terminaltext zu verschieben.
 
 ## <a name="exit-command"></a>Befehl „Beenden“
-Ausführen von `exit` beendet die aktive Sitzung. Dieses Verhalten tritt standardmäßig nach 10 Minuten ohne Interaktion auf.
+Ausführen von `exit` beendet die aktive Sitzung. Dieses Verhalten tritt standardmäßig nach 20 Minuten ohne Interaktion auf.
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Cloud Shell-Schnellstart](quickstart.md)  
+[Cloud Shell-Schnellstart](quickstart.md)
+

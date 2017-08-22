@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: cherylmc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: ebe57f497a007c5219c3b7f543ffb3bae9d161a8
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: bdd6f90fe97408bd45a72adf58bfdc190207de46
 ms.contentlocale: de-de
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="modify-local-network-gateway-settings-using-the-azure-portal"></a>Ändern der Einstellungen des lokalen Netzwerkgateways mithilfe des Azure-Portals
@@ -30,18 +29,18 @@ Manchmal ändern sich die Einstellungen für „AddressPrefix“ oder „Gateway
 > [!div class="op_single_selector"]
 > * [Azure-Portal](vpn-gateway-modify-local-network-gateway-portal.md)
 > * [PowerShell](vpn-gateway-modify-local-network-gateway.md)
-> * [Azure-Befehlszeilenschnittstelle](vpn-gateway-modify-local-network-gateway-cli.md)
+> * [Azure-CLI](vpn-gateway-modify-local-network-gateway-cli.md)
 >
 >
 
 
-## <a name="modify-ip-address-prefixes"></a>Ändern von IP-Adresspräfixen
+## <a name="ipaddprefix"></a>Ändern von IP-Adresspräfixen
 
 Wenn Sie IP-Adresspräfixe ändern, hängen die Schritte davon ab, ob Ihr lokales Netzwerkgateway über eine Verbindung verfügt.
 
 [!INCLUDE [modify prefix](../../includes/vpn-gateway-modify-ip-prefix-portal-include.md)]
 
-## <a name="modify-the-gateway-ip-address"></a>Ändern der Gateway-IP-Adresse
+## <a name="gwip"></a>Ändern der Gateway-IP-Adresse
 
 Wenn für das VPN-Gerät, mit dem Sie eine Verbindung herstellen möchten, die öffentliche IP-Adresse geändert wurde, müssen Sie das Gateway des lokalen Netzwerks entsprechend anpassen. Wenn Sie die öffentliche IP-Adresse ändern, hängen die Schritte davon ab, ob Ihr lokales Netzwerkgateway über eine Verbindung verfügt.
 

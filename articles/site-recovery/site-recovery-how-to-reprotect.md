@@ -15,10 +15,10 @@ ms.workload: storage-backup-recovery
 ms.date: 06/05/2017
 ms.author: ruturajd
 ms.translationtype: HT
-ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
-ms.openlocfilehash: 9687b8342723239d1ab07bcaf59176f4a0911215
+ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
+ms.openlocfilehash: 181ed544ae4697753490642fea8eef636322a114
 ms.contentlocale: de-de
-ms.lasthandoff: 07/14/2017
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="reprotect-from-azure-to-an-on-premises-site"></a>Erneutes Schützen von Azure zu einem lokalen Standort
@@ -58,7 +58,10 @@ Unternehmen oder erwägen Sie die folgenden erforderlichen Aktionen, wenn Sie de
 
     Für das Masterziel gelten andere Voraussetzungen, die unter [Allgemeine Überprüfungen nach der Installation des Masterziels](site-recovery-how-to-reprotect.md#common-things-to-check-after-completing-installation-of-the-master-target-server) aufgeführt sind.
 
-* Ein Konfigurationsserver ist lokal erforderlich, wenn Sie ein Failback durchführen. Während des Failbacks muss der virtuelle Computer in der Konfigurationsserverdatenbank vorhanden sein. Andernfalls ist das Failback nicht erfolgreich. Stellen Sie sicher, dass Sie die regelmäßigen geplanten Sicherungen des Servers durchführen. Stellen Sie im Notfall den Server mit der gleichen IP-Adresse wieder her, damit das Failback funktioniert.
+* Ein Konfigurationsserver ist lokal erforderlich, wenn Sie ein Failback durchführen. Während des Failbacks muss der virtuelle Computer in der Konfigurationsserverdatenbank vorhanden sein. Andernfalls ist das Failback nicht erfolgreich. 
+
+> [!IMPORTANT]
+> Stellen Sie sicher, dass Sie die regelmäßigen geplanten Sicherungen des Konfigurationsservers durchführen. Stellen Sie im Notfall den Server mit der gleichen IP-Adresse wieder her, damit das Failback funktioniert.
 
 * Legen Sie die Einstellung `disk.EnableUUID=true` in den Konfigurationsparametern des virtuellen Masterzielcomputers in VMware fest. Wenn diese Zeile nicht vorhanden ist, fügen Sie sie hinzu. Diese Einstellung ist erforderlich, um für den Datenträger des virtuellen Computers (VMDK) eine einheitliche UUID festzulegen, damit er richtig bereitgestellt wird.
 
@@ -115,7 +118,7 @@ Informationen zum Installieren eines Masterzielserver finden Sie unter:
 
 #### <a name="what-datastore-types-are-supported-on-the-on-premises-esxi-host-during-failback"></a>Welche Datenspeichertypen werden auf dem lokalen ESXi-Host bei einem Failback unterstützt?
 
-Zurzeit unterstützt Azure Site Recovery nur Failbacks auf einen VMFS-Datenspeicher (Dateisystem für virtuelle Computer). Ein vSAN- oder NFS-Datenspeicher wird nicht unterstützt. Aufgrund dieser Einschränkung ist bei NFS-Datenspeichern das Auswahleingabefeld auf der Anzeige für den erneuten Schutz leer, oder es wird der vSAN-Datenspeicher angezeigt, der Auftrag schlägt dann aber fehl. Wenn Sie ein Failback durchführen möchten, können Sie einen VMFS-Datenspeicher lokal erstellen und diesen für das Failback verwenden. Dieses Failback verursacht den vollständigen VMDK-Download.
+Zurzeit unterstützt Azure Site Recovery nur Failbacks auf einen VMFS-Datenspeicher (Dateisystem für virtuelle Computer) oder vSAN-Datenspeicher. Ein NFS-Datenspeicher wird nicht unterstützt. Aufgrund dieser Einschränkung ist bei NFS-Datenspeichern das Auswahleingabefeld auf der Anzeige für den erneuten Schutz leer, oder es wird der vSAN-Datenspeicher angezeigt, der Auftrag schlägt dann aber fehl. Wenn Sie ein Failback durchführen möchten, können Sie einen VMFS-Datenspeicher lokal erstellen und diesen für das Failback verwenden. Dieses Failback verursacht den vollständigen VMDK-Download.
 
 ### <a name="common-things-to-check-after-completing-installation-of-the-master-target-server"></a>Allgemeine Überprüfungen nach der Installation des Masterzielservers
 

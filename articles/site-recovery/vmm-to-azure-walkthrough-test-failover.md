@@ -15,10 +15,10 @@ ms.workload: storage-backup-recovery
 ms.date: 07/25/2017
 ms.author: raynew
 ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
-ms.openlocfilehash: 8d7b3b8293120bb7e9f00a90da09f94ca7cba29b
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: 1f45c6b04fa2c1520b9ae7dd63d873a6f4dffbd5
 ms.contentlocale: de-de
-ms.lasthandoff: 07/26/2017
+ms.lasthandoff: 08/11/2017
 
 ---
 
@@ -66,9 +66,9 @@ Es wird empfohlen, dass Sie die Eigenschaften des Quellcomputers überprüfen, b
     ![Replikation aktivieren](./media/vmm-to-azure-walkthrough-test-failover/test-failover2.png)
 3. Unter **Compute und Netzwerk** können Sie Folgendes:
     - den Namen der Azure-VM ändern Der Name muss die [Azure-Anforderungen](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements) erfüllen.
-    - Angeben einer [Ressourcengruppe](../virtual-machines/windows/infrastructure-resource-groups-guidelines.md) nach dem Failover
+    - Geben Sie eine [Ressourcengruppe] nach dem Failover an.
     - Angeben einer Zielgröße für den virtuellen Azure-Computer
-    - Auswählen einer [Verfügbarkeitsgruppe](../virtual-machines/windows/infrastructure-availability-sets-guidelines.md)
+    - Auswählen einer [Verfügbarkeitsgruppe](../virtual-machines/windows/tutorial-availability-sets.md)
     - angeben, ob [verwaltete Datenträger](#managed-disk-considerations) verwendet werden sollen Wählen Sie **Ja** aus, wenn Sie Ihrem Computer bei der Migration zu Azure verwaltete Datenträger hinzufügen möchten.
     - Netzwerkeinstellungen, einschließlich des Netzwerks/Subnetzes anzeigen oder ändern, in dem der virtuelle Azure-Computer nach dem Failover platziert wird, sowie die IP-Adresse, die ihm zugewiesen wird.
 

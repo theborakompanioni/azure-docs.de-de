@@ -4,7 +4,7 @@ description: "Dieses Tutorial führt Entwickler durch die Schritte zum Bereitste
 services: app-service\web
 documentationcenter: java
 author: rmcmurray
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: 
 ms.service: multiple
@@ -12,14 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: multiple
 ms.devlang: Java
 ms.topic: article
-ms.date: 05/20/2017
+ms.date: 08/04/2017
 ms.author: asirveda;robmcm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
-ms.openlocfilehash: ec6982f41d1e04d737c0f47571c30d813a390ea7
+ms.translationtype: HT
+ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
+ms.openlocfilehash: 0c388862d927a1492745832225c686670c071f86
 ms.contentlocale: de-de
-ms.lasthandoff: 05/26/2017
-
+ms.lasthandoff: 08/10/2017
 
 ---
 
@@ -197,11 +196,9 @@ Die folgende Anleitung führt Sie durch die Schritte zum Bereitstellen Ihrer Spr
 
 Weitere Informationen zur Verwendung von Spring Boot in Azure finden Sie in den folgenden Artikeln:
 
-* [Bereitstellen einer Spring Boot-Anwendung unter Linux in Azure Container Service](../container-service/container-service-deploy-spring-boot-app-on-linux.md)
+* [Bereitstellen einer Spring Boot-Anwendung unter Linux in Azure Container Service](../container-service/kubernetes/container-service-deploy-spring-boot-app-on-linux.md)
 
-* [Ausführen einer Spring Boot-Anwendung in einem Kubernetes-Cluster in Azure Container Service](../container-service/container-service-deploy-spring-boot-app-on-kubernetes.md)
-
-## <a name="additional-resources"></a>Weitere Ressourcen
+* [Deploy a Spring Boot Application on a Kubernetes Cluster in the Azure Container Service](../container-service/kubernetes/container-service-deploy-spring-boot-app-on-kubernetes.md) (Bereitstellen einer Spring Boot-Anwendung in einem Kubernetes-Cluster in Azure Container Service)
 
 Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java Developer Center] und in den [Java-Tools für Visual Studio Team Services].
 
