@@ -22,7 +22,6 @@ ms.openlocfilehash: 5102d44ebd447b638ab6e26fa1826bad224ed6c3
 ms.contentlocale: de-de
 ms.lasthandoff: 06/09/2017
 
-
 ---
 # <a name="manage-hadoop-clusters-in-hdinsight-using-the-azure-cli"></a>Verwalten von Hadoop-Clustern in HDInsight mit der Azure-Befehlszeilenschnittstelle
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
@@ -95,7 +94,7 @@ Sie sind nun in der Lage, verschiedene Verwaltungsaufgaben für HDInsight-Cluste
 * [Verwenden der Azure-Befehlszeilenschnittstelle][azure-command-line-tools]
 
 [azure-command-line-tools]: ../cli-install-nodejs.md
-[azure-create-storageaccount]: ../storage-create-storage-account.md
+[azure-create-storageaccount]:../storage/common/storage-create-storage-account.md
 [azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
 [azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
 [azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
