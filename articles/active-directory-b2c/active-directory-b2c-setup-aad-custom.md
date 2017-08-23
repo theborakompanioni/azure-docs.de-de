@@ -15,10 +15,10 @@ ms.devlang: na
 ms.date: 04/04/2017
 ms.author: parakhj
 ms.translationtype: HT
-ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
-ms.openlocfilehash: 976c4752cc3c3cc1c74adf7d57c3539d39aef556
+ms.sourcegitcommit: 495a695466c47c6030716d97c52b3bbf5ce9bf99
+ms.openlocfilehash: 6c073d70debfdc3560405955d65fa9ccaa7d8b1f
 ms.contentlocale: de-de
-ms.lasthandoff: 07/12/2017
+ms.lasthandoff: 08/23/2017
 
 ---
 # <a name="azure-active-directory-b2c-sign-in-by-using-azure-ad-accounts"></a>Azure Active Directory B2C: Anmelden mithilfe von Azure AD-Konten
@@ -142,7 +142,7 @@ Um ein Token vom Azure AD-Endpunkt zu erhalten, müssen Sie die Protokolle defin
 
 Sie müssen den Abschnitt `<Metadata>` im zuvor erwähnten XML-Dokument entsprechend den Konfigurationseinstellungen für Ihren speziellen Azure AD-Mandanten aktualisieren. Aktualisieren Sie wie folgt die Metadatenwerte in der XML-Datei:
 
-1. Legen Sie `<Item Key="METADATA">` auf `https://login.microsoftonline.com/yourAzureADtenant/.well-known/openid-configuration` fest, wobei `yourAzureADtenant` der Name Ihres Azure AD-Mandanten (contoso.com) ist.
+1. Legen Sie `<Item Key="METADATA">` auf `https://login.windows.net/yourAzureADtenant/.well-known/openid-configuration` fest, wobei `yourAzureADtenant` der Name Ihres Azure AD-Mandanten (contoso.com) ist.
 1. Öffnen Sie Ihren Browser, und rufen Sie die URL `METADATA` auf, die Sie gerade aktualisiert haben.
 1. Suchen Sie im Browser nach dem Objekt „Aussteller“, und kopieren Sie dessen Wert. Es sollte in etwa wie folgt aussehen: `https://sts.windows.net/{tenantId}/`.
 1. Fügen Sie den Wert für `<Item Key="ProviderName">` in die XML-Datei ein.
