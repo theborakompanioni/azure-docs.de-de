@@ -6,7 +6,7 @@ Verwenden Sie zum Registrieren der mobilen oder nativen Anwendung die in der Tab
 
 | Einstellung      | Beispielwert  | Beschreibung                                        |
 | ------------ | ------- | -------------------------------------------------- |
-| **Name** | Contoso B2C-App | Geben Sie einen Namen**** für die Anwendung ein, der die Funktion der Anwendung für Kunden beschreibt. |
+| **Name** | Contoso B2C-App | Geben Sie einen **Namen** für die Anwendung ein, der die Funktion der Anwendung für Kunden beschreibt. |
 | **Nativer Client** | Ja | Wählen Sie **Ja** für eine mobile oder native Anwendung. |
 | **Benutzerdefinierter Umleitungs-URI** | `com.onmicrosoft.contoso.appname://redirect/path` | Geben Sie einen Umleitungs-URI mit einem benutzerdefinierten Schema ein. Stellen Sie sicher, dass Sie einen [gültigen Umleitungs-URI](../articles/active-directory-b2c/active-directory-b2c-app-registration.md#choosing-a-native-application-redirect-uri) auswählen und keine Sonderzeichen wie Unterstriche eingeben. |
 

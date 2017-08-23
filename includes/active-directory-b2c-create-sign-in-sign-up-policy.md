@@ -6,7 +6,7 @@ Wählen Sie im Richtlinienabschnitt der Einstellungen die Option **Registrierung
 
 ![Registrierungs- oder Anmelderichtlinien auswählen und auf die Schaltfläche „Hinzufügen“ klicken](media/active-directory-b2c-create-sign-in-sign-up-policy/add-b2c-signup-signin-policy.png)
 
-Geben Sie einen Richtliniennamen**** ein, auf den Ihre App verweisen kann. Geben Sie z. B. Folgendes ein: `SiUpIn`.
+Geben Sie einen **Richtliniennamen** ein, auf den Ihre App verweisen kann. Geben Sie z. B. Folgendes ein: `SiUpIn`.
 
 Wählen Sie **Identitätsanbieter** und dann **E-Mail-Registrierung** aus. Optional können Sie auch soziale Netzwerke als Identitätsanbieter auswählen, sofern bereits konfiguriert. Klicken Sie auf **OK**.
 
