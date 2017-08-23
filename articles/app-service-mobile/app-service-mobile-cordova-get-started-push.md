@@ -270,7 +270,7 @@ Wenn die App-ID, die Sie unter Ihrem Apple-Entwicklerkonto erstellt haben, berei
 
     Die Ausführung ist auf einem iOS-Gerät möglich, das per iTunes mit dem PC verbunden ist. Der iOS-Simulator unterstützt keine Pushbenachrichtigungen.
 
-2. Klicken Sie in Visual Studio auf die Schaltfläche **Ausführen**, oder drücken Sie**** F5, um das Projekt zu erstellen und die App auf einem iOS-Gerät zu starten. Klicken Sie dann auf **OK**, um Pushbenachrichtigungen zu akzeptieren.
+2. Klicken Sie in Visual Studio auf die Schaltfläche **Ausführen**, oder drücken Sie **F5** , um das Projekt zu erstellen und die App auf einem iOS-Gerät zu starten. Klicken Sie dann auf **OK**, um Pushbenachrichtigungen zu akzeptieren.
 
    > [!NOTE]
    > Bei der erstmaligen Ausführung fordert die App eine Bestätigung für Pushbenachrichtigungen an.

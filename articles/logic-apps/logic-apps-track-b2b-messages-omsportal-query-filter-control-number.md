@@ -66,7 +66,7 @@ In diesem Beispiel erfahren Sie, wie Sie anhand der Austauschkontrollnummer nach
 
    ![Auswählen von „Protokollsuche“ im OMS-Menü](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/logsearch-2.png)
 
-5. Geben Sie im Suchfeld ein Feld an, nach dem Sie suchen möchten, und drücken Sie die**** EINGABETASTE. Wenn Sie mit der Eingabe beginnen, werden in OMS mögliche Übereinstimmungen und verfügbare Vorgänge angezeigt. Weitere Informationen zur Datensuche in Log Analytics finden Sie [hier](../log-analytics/log-analytics-log-searches.md).
+5. Geben Sie im Suchfeld ein Feld an, nach dem Sie suchen möchten, und drücken Sie die **EINGABETASTE**. Wenn Sie mit der Eingabe beginnen, werden in OMS mögliche Übereinstimmungen und verfügbare Vorgänge angezeigt. Weitere Informationen zur Datensuche in Log Analytics finden Sie [hier](../log-analytics/log-analytics-log-searches.md).
 
    In diesem Beispiel wird nach Ereignissen mit **Type=AzureDiagnostics** gesucht.
 
