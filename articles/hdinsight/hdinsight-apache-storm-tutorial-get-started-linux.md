@@ -13,18 +13,17 @@ ms.devlang: java
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/25/2017
+ms.date: 08/15/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 5121861dc9fa11bbde32c12f3987bb60f2dda057
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 83fc6db1ddb43eb87e7c58684505d7196c1e53d0
 ms.contentlocale: de-de
-ms.lasthandoff: 07/08/2017
+ms.lasthandoff: 08/16/2017
 
 ---
-#Erste Schritte mit Apache Storm in HDInsight mithilfe der Storm-Starter-Beispiele
-<a id="get-started-with-apache-storm-on-hdinsight-using-the-storm-starter-examples" class="xliff"></a>
+#<a name="get-started-with-apache-storm-on-hdinsight-using-the-storm-starter-examples"></a>Erste Schritte mit Apache Storm in HDInsight mithilfe der Storm-Starter-Beispiele
 
 Erfahren Sie, wie Sie Apache Storm in HDInsight mithilfe der Storm-Starter-Beispiele verwenden.
 
@@ -33,8 +32,7 @@ Apache Storm ist ein skalierbares, fehlertolerantes, verteiltes Echtzeit-Berechn
 > [!IMPORTANT]
 > Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
-## Voraussetzungen
-<a id="prerequisites" class="xliff"></a>
+## <a name="prerequisites"></a>Voraussetzungen
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -42,8 +40,7 @@ Apache Storm ist ein skalierbares, fehlertolerantes, verteiltes Echtzeit-Berechn
 
 * **Erfahrung mit SSH und SCP**. Informationen hierzu finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-##  Erstellen eines Storm-Clusters
-<a id="create-a-storm-cluster" class="xliff"></a>
+## <a name="create-a-storm-cluster"></a> Erstellen eines Storm-Clusters
 
 Verwenden Sie die folgenden Schritte, um ein Cluster vom Typ „Storm in HDInsight“ zu erstellen:
 
@@ -68,7 +65,7 @@ Verwenden Sie die folgenden Schritte, um ein Cluster vom Typ „Storm in HDInsig
 
     * **Betriebssystem**: Linux
 
-    * **Version**: Storm 1.0.1 (HDI 3.5)
+    * **Version**: Storm 1.1.0 (HDI 3.6)
 
     * **Clusterebene**: Standard
 
@@ -89,8 +86,7 @@ Verwenden Sie die folgenden Schritte, um ein Cluster vom Typ „Storm in HDInsig
     > [!NOTE]
     > Das Erstellen des Clusters kann bis zu 20 Minuten dauern.
 
-## Ausführen eines Storm-Starter-Beispiels in HDInsight
-<a id="run-a-storm-starter-sample-on-hdinsight" class="xliff"></a>
+## <a name="run-a-storm-starter-sample-on-hdinsight"></a>Ausführen eines Storm-Starter-Beispiels in HDInsight
 
 1. Stellen Sie mithilfe von SSH eine Verbindung mit dem HDInsight-Cluster her:
 
@@ -114,10 +110,9 @@ Verwenden Sie die folgenden Schritte, um ein Cluster vom Typ „Storm in HDInsig
     >
     > Das Beispiel „WordCount“ und andere Storm-Starter-Beispiele sind unter `/usr/hdp/current/storm-client/contrib/storm-starter/` bereits im Cluster enthalten.
 
-Wenn Sie die Quelle für die Storm-Starter-Beispiele anzeigen möchten, finden Sie den Code unter [https://github.com/apache/storm/tree/1.0.x-branch/examples/storm-starter](https://github.com/apache/storm/tree/1.0.x-branch/examples/storm-starter). Dieser Link gilt für Storm 1.0.x, das mit HDInsight 3.5 bereitgestellt wird. Verwenden Sie für andere Versionen von Storm die Schaltfläche __Verzweigung__ am oberen Rand der Seite zum Auswählen einer anderen Storm-Version.
+Wenn Sie die Quelle für die Storm-Starter-Beispiele anzeigen möchten, finden Sie den Code unter [https://github.com/apache/storm/tree/1.1.x-branch/examples/storm-starter](https://github.com/apache/storm/tree/1.1.x-branch/examples/storm-starter). Dieser Link gilt für Storm 1.1.x, das mit HDInsight 3.6 bereitgestellt wird. Verwenden Sie für andere Versionen von Storm die Schaltfläche __Verzweigung__ am oberen Rand der Seite zum Auswählen einer anderen Storm-Version.
 
-## Überwachen der Topologie
-<a id="monitor-the-topology" class="xliff"></a>
+## <a name="monitor-the-topology"></a>Überwachen der Topologie
 
 Die Storm-Benutzeroberfläche bietet eine Weboberfläche zum Arbeiten mit ausgeführten Topologien und befindet sich auf dem HDInsight-Cluster.
 
@@ -187,13 +182,11 @@ Führen Sie die folgenden Schritte aus, um die Topologie mithilfe der Storm-Benu
 
     In diesem Beispiel kam das Wort **sieben** 1493957 Mal vor. So oft wurde dieses Wort seit dem Start der Topologie erkannt.
 
-## Beenden der Topologie
-<a id="stop-the-topology" class="xliff"></a>
+## <a name="stop-the-topology"></a>Beenden der Topologie
 
 Kehren Sie zur **Topologiezusammenfassung** der WordCount-Topologie zurück, und klicken Sie im Abschnitt mit den **Topologieaktionen** auf die Schaltfläche **Beenden**. Geben Sie auf Aufforderung für die Verzögerung vor dem Beenden der Topologie 10 (Sekunden) ein. Nach dieser Wartezeit wird die Topologie im Abschnitt **Storm-UI** des Dashboards nicht mehr angezeigt.
 
-## Löschen des Clusters
-<a id="delete-the-cluster" class="xliff"></a>
+## <a name="delete-the-cluster"></a>Löschen des Clusters
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 

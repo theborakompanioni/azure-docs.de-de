@@ -125,7 +125,7 @@ Um Redundanz bereitzustellen, platzieren Sie zwei oder mehr ähnlich konfigurier
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 [Über virtuelle Azure-Computer](../articles/virtual-machines/virtual-machines-linux-about.md)
 
-[Verschiedene Möglichkeiten zum Erstellen eines virtuellen Linux-Computers](../articles/virtual-machines/linux/creation-choices.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+[Erstellen und Verwalten virtueller Linux-Computer mit der Azure-Befehlszeilenschnittstelle](../articles/virtual-machines/linux/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-[Verschiedene Möglichkeiten zum Erstellen eines virtuellen Windows-Computers](../articles/virtual-machines/windows/creation-choices.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+[Erstellen und Verwalten von virtuellen Windows-Computern mit dem Azure PowerShell-Modul](../articles/virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 

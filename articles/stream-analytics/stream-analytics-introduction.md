@@ -4,7 +4,7 @@ description: "Erfahren Sie mehr über Stream Analytics, einen verwalteten Dienst
 keywords: Analysen als Dienst, verwaltete Dienste, Streamingverarbeitung, Stream Analytics, was ist Stream Analytics
 services: stream-analytics
 documentationcenter: 
-author: jeffstokes72
+author: jenniehubbard
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 613c9b01-d103-46e0-b0ca-0839fee94ca8
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 06/16/2017
-ms.author: jeffstok
+ms.date: 08/08/2017
+ms.author: jhubbard
 ms.translationtype: HT
-ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
-ms.openlocfilehash: 2fda07b8444b196d831e5e9fe7ade3e5017d36f9
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: 5081ecaf569aef9e2f99cc27e91c4b64a25b0deb
 ms.contentlocale: de-de
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 08/11/2017
 
 ---
 
@@ -27,11 +27,11 @@ ms.lasthandoff: 07/19/2017
 
 Azure Stream Analytics ist ein vollständig verwaltetes Modul für die Ereignisverarbeitung, mit dem Sie analytische Echtzeitberechnungen von Datenströmen einrichten können. Die Daten können von Geräten, Sensoren, Websites, Feeds sozialer Medien, Anwendungen, Infrastruktursystemen usw. stammen. 
 
-## <a name="what-can-i-use-stream-analytics-for"></a>Für was kann ich Stream Analytics verwenden?
+## <a name="what-can-i-do-with-stream-analytics"></a>Wofür kann ich Stream Analytics verwenden?
 
 Mit Stream Analytics können Sie hohe Datenvolumina untersuchen, die von Geräten oder Prozessen ausgehen, Informationen aus dem Datenstrom extrahieren und nach Mustern, Trends und Beziehungen suchen. Je nach Inhalt der Daten können Sie dann Anwendungsaufgaben durchführen. Beispielsweise können Sie Warnungen auslösen, Automatisierungsworkflows starten, Informationen an ein Berichtstool wie Power BI leiten oder Daten zur späteren Untersuchung speichern. 
 
-Beispiele für Stream Analytics-Szenarien:
+Beispiele:
 
 * Personalisierte Aktienhandelsanalysen und Warnungen von Finanzdienstleistern in Echtzeit
 * Echtzeit-Betrugserkennung basierend auf der Auswertung von Transaktionsdaten 
@@ -69,7 +69,7 @@ Stream Analytics stellt eine Direktverbindung mit [Azure Event Hubs](https://azu
 
 Die Auftragseingabe kann auch Referenzdaten enthalten (statische oder sich langsam ändernde Daten). Sie können Streamingdaten mit diesen Referenzdaten zusammenführen, um Suchvorgänge auf die gleiche Weise durchzuführen, wie Sie dies mit Datenbankabfragen tun.
 
-Die Ausgabe eines Stream Analytics-Auftrags kann in viele Richtungen geleitet werden. Sie kann in Speicher geschrieben werden, z.B. Azure Storage-Blobs oder -Tabellen, Azure SQL DB, Azure Data Lake Stores oder Azure Cosmos DB. Von dort aus können die Daten beispielsweise zur Batchanalyse per Azure HDInsight weitergeleitet werden. Sie können die Ausgabe zur Nutzung durch einen anderen Prozess an einen anderen Dienst senden, z.B. Event Hubs, Azure Service Bus-Themen oder Warteschlangen. Sie können die Ausgabe auch zur Visualisierung an Power BI senden.
+Leiten Sie die Stream Analytics-Auftragsausgabe in viele verschiedene Richtungen weiter. Sie können in Speicher schreiben, z.B. Azure Storage-Blobs oder -Tabellen, Azure SQL DB, Azure Data Lake Stores oder Azure Cosmos DB. Von dort aus können die Daten beispielsweise zur Batchanalyse per Azure HDInsight weitergeleitet werden. Sie können die Ausgabe zur Nutzung durch einen anderen Prozess an einen anderen Dienst senden, z.B. Event Hubs, Azure Service Bus-Themen oder Warteschlangen. Sie können die Ausgabe auch zur Visualisierung an Power BI senden.
 
 ### <a name="ease-of-use"></a>Einfache Bedienung
 

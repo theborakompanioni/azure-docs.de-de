@@ -16,10 +16,10 @@ ms.date: 07/14/2017
 ms.author: mimig
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 2812039649f7d2fb0705220854e4d8d0a031d31e
-ms.openlocfilehash: 600894bffe367ee1412df6a82f668143829688cc
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: c9d04ae0bc11b99f893e5f003f136fbfe0dfccc9
 ms.contentlocale: de-de
-ms.lasthandoff: 07/22/2017
+ms.lasthandoff: 08/11/2017
 
 ---
 
@@ -50,7 +50,7 @@ Als global verteilter Datenbankdienst bietet Azure Cosmos DB die folgenden Funkt
         * Weitere Datenmodelle folgen in Kürze. 
 
 * **Elastische Skalierung von Durchsatz und Speicher – bedarfsorientiert und weltweit**
-    * Skalieren Sie den Datenbankdurchsatz [sekunden-](request-units.md) und [minutengenau](request-units-per-minute.md), und nehmen Sie Änderungen vor, wann immer sie möchten. 
+    * Skalieren Sie den Datenbankdurchsatz [sekundengenau](request-units.md), und nehmen Sie Änderungen vor, wann immer sie möchten. 
     * Skalieren Sie die Speichergröße [transparent und automatisch](partition-data.md), um jederzeit Ihre Größenanforderungen zu erfüllen.
 
 * **Erstellen extrem reaktionsschneller unternehmenskritischer Anwendungen**

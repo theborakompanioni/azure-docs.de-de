@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/02/2017
+ms.date: 08/010/2017
 ms.author: cherylmc
 ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
-ms.openlocfilehash: e3fa1705e1f4e0805409eee83d5797bee7f6603d
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 0be8dd6d90edb7b32b6777c76c9778cda0dcd5ea
 ms.contentlocale: de-de
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="create-a-site-to-site-connection-using-the-azure-portal-classic"></a>Erstellen einer Site-to-Site-Verbindung über das Azure-Portal (klassisch)
@@ -64,9 +64,9 @@ In den Beispielen dieses Artikels werden die folgenden Werte verwendet. Sie kön
 * **GatewaySubnet:** 10.11.255.0/27
 * **Ressourcengruppe:** TestRG1
 * **Standort:** USA, Osten
-* **DNS-Server:** 8.8.8.8 (für diese Übung optional)
+* **DNS-Server:** 10.11.0.3 (für diese Übung optional)
 * **Name des lokalen Standorts:** Site2
-* **Clientadressraum:** Der Adressraum an Ihrem lokalen Standort.
+* **Clientadressraum:** Der Adressraum an Ihrem lokalen Standort
 
 ## <a name="CreatVNet"></a>1. Erstellen eines virtuellen Netzwerks
 
@@ -79,43 +79,43 @@ Wenn Sie ein virtuelles Netzwerk für eine S2S-Verbindung erstellen, müssen Sie
 ### <a name="to-create-a-virtual-network"></a>So erstellen Sie ein virtuelles Netzwerk
 
 1. Navigieren Sie in einem Browser zum [Azure-Portal](http://portal.azure.com) , und melden Sie sich, falls erforderlich, mit Ihrem Azure-Konto an.
-2. Klicken Sie unten auf der Seite auf **+**. Geben Sie im Feld **Marketplace durchsuchen** die Zeichenfolge „Virtual Network“ ein. Klicken Sie in der zurückgegebenen Liste auf **Virtual Network**, um das Blatt **Virtual Network** zu öffnen.
+2. Klicken Sie unten auf der Seite auf **+**. Geben Sie im Feld **Marketplace durchsuchen** die Zeichenfolge „Virtual Network“ ein. Klicken Sie in der zurückgegebenen Liste auf **Virtual Network**, um die Seite **Virtual Network** zu öffnen.
 
-  ![Blatt für die Suche nach „Virtual Network“](./media/vpn-gateway-howto-site-to-site-classic-portal/newvnetportal700.png)
-3. Wählen Sie im unteren Bereich des Blatts „Virtual Network“ in der Dropdownliste **Bereitstellungsmodell auswählen** die Option **Resource Manager** aus, und klicken Sie dann auf **Erstellen**.
+  ![Seite für die Suche nach einem virtuellen Netzwerk](./media/vpn-gateway-howto-site-to-site-classic-portal/newvnetportal700.png)
+3. Wählen Sie im unteren Bereich der Seite „Virtual Network“ in der Dropdownliste **Bereitstellungsmodell auswählen** die Option **Klassisch** aus, und klicken Sie dann auf **Erstellen**.
 
   ![Bereitstellungsmodell auswählen](./media/vpn-gateway-howto-site-to-site-classic-portal/selectmodel.png)
-4. Konfigurieren Sie auf dem Blatt **Virtuelles Netzwerk erstellen (klassisch)** die VNET-Einstellungen. Auf diesem Blatt fügen Sie Ihren ersten Adressraum und einen Adressbereich des Subnetzes hinzu. Nachdem Sie die Erstellung des VNet abgeschlossen haben, können Sie zurückgehen und weitere Subnetze und Adressräume hinzufügen.
+4. Konfigurieren Sie auf der Seite **Virtuelles Netzwerk erstellen (klassisch)** die VNET-Einstellungen. Auf dieser Seite fügen Sie Ihren ersten Adressraum und einen Adressbereich des Subnetzes hinzu. Nachdem Sie die Erstellung des VNet abgeschlossen haben, können Sie zurückgehen und weitere Subnetze und Adressräume hinzufügen.
 
-  ![Blatt „Virtuelles Netzwerk erstellen“](./media/vpn-gateway-howto-site-to-site-classic-portal/createvnet.png "Blatt „Virtuelles Netzwerk erstellen“")
+  ![Seite „Virtuelles Netzwerk erstellen“](./media/vpn-gateway-howto-site-to-site-classic-portal/createvnet.png "Seite „Virtuelles Netzwerk erstellen“")
 5. Überprüfen Sie, ob es sich um das richtige **Abonnement** handelt. Das Abonnement kann über die Dropdownliste geändert werden.
-6. Klicken Sie auf **Ressourcengruppe** , und wählen Sie entweder eine vorhandene Ressourcengruppe aus, oder erstellen Sie eine neue, indem Sie einen Namen für die neue Ressourcengruppe eingeben. Weitere Informationen zu Ressourcengruppen finden Sie unter [Übersicht über Azure Resource Manager](../azure-resource-manager/resource-group-overview.md#resource-groups).
+6. Klicken Sie auf **Ressourcengruppe**, und wählen Sie entweder eine vorhandene Ressourcengruppe aus, oder erstellen Sie eine neue, indem Sie einen Namen eingeben. Weitere Informationen zu Ressourcengruppen finden Sie unter [Übersicht über Azure Resource Manager](../azure-resource-manager/resource-group-overview.md#resource-groups).
 7. Wählen Sie als Nächstes für das VNet die Einstellungen für **Standort** aus. Der Standort gibt an, wo sich die in diesem VNet bereitgestellten Ressourcen befinden.
-8. Wählen Sie **An Dashboard anheften** aus, wenn das VNet komfortabel auf dem Dashboard zur Verfügung stehen soll, und klicken Sie dann auf **Erstellen**.
+8. Wenn das VNET komfortabel auf dem Dashboard zur Verfügung stehen soll, wählen Sie **An Dashboard anheften** aus. Klicken Sie auf **Erstellen**, um das VNET zu erstellen.
 
   ![An Dashboard anheften](./media/vpn-gateway-howto-site-to-site-classic-portal/pintodashboard150.png "An Dashboard anheften")
 9. Nach dem Klicken auf „Erstellen“ wird im Dashboard eine Kachel angezeigt, die den Status für Ihr VNet anzeigt. Die Kachel verändert sich, wenn das VNet erstellt wird.
 
   ![Kachel „Virtuelles Netzwerk wird erstellt“](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/deploying150.png "Virtuelles Netzwerk wird erstellt")
 
-Nachdem das virtuelle Netzwerk erstellt wurde, wird im klassischen Azure-Portal auf der Seite mit den Netzwerken unter **Status** der Eintrag **Erstellt** angezeigt.
+Nach Erstellung des virtuellen Netzwerks wird im klassischen Azure-Portal auf der Seite mit den Netzwerken unter **Status** der Eintrag **Erstellt** angezeigt.
 
 ## <a name="additionaladdress"></a>2. Hinzufügen weiterer Adressräume
 
 Nach dem Erstellen Ihres virtuellen Netzwerks können Sie weitere Adressräume hinzufügen. Das Hinzufügen von zusätzlichen Adressräumen ist für eine S2S-Konfiguration nicht obligatorisch, aber Sie können die folgenden Schritte ausführen, falls Sie mehrere Adressräume benötigen:
 
 1. Suchen Sie im Portal nach den virtuellen Netzwerken.
-2. Klicken Sie auf dem Blatt für Ihr virtuelles Netzwerk im Abschnitt **Einstellungen** auf **Adressraum**.
-3. Klicken Sie auf dem Blatt „Adressraum“ auf **+Hinzufügen**, und geben Sie weitere Adressräume ein.
+2. Klicken Sie auf der Seite für Ihr virtuelles Netzwerk im Abschnitt **Einstellungen** auf **Adressraum**.
+3. Klicken Sie auf der Seite „Adressraum“ auf **+Hinzufügen**, und geben Sie weitere Adressräume ein.
 
 ## <a name="dns"></a>3. Angeben eines DNS-Servers
 
-Die DNS-Einstellungen sind für eine S2S-Konfiguration nicht obligatorisch, aber das DNS wird benötigt, wenn Sie die Namensauflösung nutzen möchten.
+Die DNS-Einstellungen sind für eine S2S-Konfiguration nicht obligatorisch, aber das DNS wird benötigt, wenn Sie die Namensauflösung nutzen möchten. Wenn ein Wert angegeben wird, wird kein neuer DNS-Server erstellt. Die IP-Adresse des angegebenen DNS-Servers muss dazu in der Lage sein, die Namen für die Ressourcen aufzulösen, mit denen Sie eine Verbindung herstellen möchten. Für die Beispieleinstellungen wurde eine private IP-Adresse verwendet. Die verwendete IP-Adresse ist wahrscheinlich nicht die IP-Adresse Ihres DNS-Servers. Achten Sie darauf, dass Sie Ihre eigenen Werte verwenden.
 
-Nach Erstellung des virtuellen Netzwerks können Sie für die Namensauflösung die IP-Adresse eines DNS-Servers hinzufügen. Öffnen Sie die Einstellungen für Ihr virtuelles Netzwerk, klicken Sie auf „DNS-Server“, und fügen Sie die IP-Adresse des gewünschten DNS-Servers hinzu, den Sie für die Namensauflösung verwenden möchten. Mit dieser Einstellung wird kein DNS-Server erstellt. In den Beispieleinstellungen verwenden wir einen öffentlichen DNS-Server. Meist ist es ratsam, einen privaten DNS-Server zu nutzen. Achten Sie darauf, dass Sie einen DNS-Server hinzufügen, mit dem Ihre Ressourcen kommunizieren können.
+Nach Erstellung des virtuellen Netzwerks können Sie für die Namensauflösung die IP-Adresse eines DNS-Servers hinzufügen. Öffnen Sie die Einstellungen für Ihr virtuelles Netzwerk, klicken Sie auf „DNS-Server“, und fügen Sie die IP-Adresse des gewünschten DNS-Servers hinzu, den Sie für die Namensauflösung verwenden möchten.
 
 1. Suchen Sie im Portal nach den virtuellen Netzwerken.
-2. Klicken Sie auf dem Blatt für Ihr virtuelles Netzwerk im Abschnitt **Einstellungen** auf **DNS-Server**.
+2. Klicken Sie auf der Seite für Ihr virtuelles Netzwerk im Abschnitt **Einstellungen** auf **DNS-Server**.
 3. Fügen Sie einen DNS-Server hinzu.
 4. Klicken Sie oben auf der Seite auf **Speichern**, um Ihre Einstellungen zu speichern.
 
@@ -124,11 +124,11 @@ Nach Erstellung des virtuellen Netzwerks können Sie für die Namensauflösung d
 Mit dem lokalen Standort ist in der Regel Ihr lokaler Standort gemeint. Er enthält die IP-Adresse des VPN-Geräts, mit dem Sie eine Verbindung herstellen, und die IP-Adressbereiche, die über das VPN-Gateway an das VPN-Gerät weitergeleitet werden.
 
 1. Navigieren Sie im Portal zu dem virtuellen Netzwerk, für das Sie ein Gateway erstellen möchten.
-2. Klicken Sie auf dem Blatt für Ihr virtuelles Netzwerk auf dem Blatt **Übersicht** im Abschnitt mit den VPN-Verbindungen auf **Gateway**, um das Blatt **Neue VPN-Verbindung** zu öffnen.
+2. Klicken Sie auf der Seite für Ihr virtuelles Netzwerk auf der Seite **Übersicht** im Abschnitt mit den VPN-Verbindungen auf **Gateway**, um die Seite **Neue VPN-Verbindung** zu öffnen.
 
   ![Klicken zum Konfigurieren der Gatewayeinstellungen](./media/vpn-gateway-howto-site-to-site-classic-portal/beforegw125.png "Klicken zum Konfigurieren der Gatewayeinstellungen")
-3. Wählen Sie auf dem Blatt **Neue VPN-Verbindung** die Option **Standort-zu-Standort**.
-4. Klicken Sie auf **Lokaler Standort – Erforderliche Einstellungen konfigurieren**, um das Blatt **Lokaler Standort** zu öffnen. Konfigurieren Sie die Einstellungen, und klicken Sie dann auf **OK**, um die Einstellungen zu speichern.
+3. Wählen Sie auf der Seite **Neue VPN-Verbindung** die Option **Standort-zu-Standort**.
+4. Klicken Sie auf **Lokaler Standort – Erforderliche Einstellungen konfigurieren**, um die Seite **Lokaler Standort** zu öffnen. Konfigurieren Sie die Einstellungen, und klicken Sie dann auf **OK**, um die Einstellungen zu speichern.
   - **Name:** Erstellen Sie einen Namen für Ihren lokalen Standort, damit Sie ihn leicht identifizieren können.
   - **IP-Adresse des VPN-Gateways:** Dies ist die öffentliche IP-Adresse des VPN-Geräts für Ihr lokales Netzwerk. Für das VPN-Gerät wird eine öffentliche IPv4-IP-Adresse benötigt. Geben Sie eine gültige öffentliche IP-Adresse für das VPN-Gerät an, mit dem Sie eine Verbindung herstellen möchten. Sie darf sich nicht hinter einer NAT befinden und muss für Azure erreichbar sein. Falls Sie die IP-Adresse Ihres VPN-Geräts nicht kennen, können Sie einfach einen Platzhalterwert (im Format einer gültigen öffentlichen IP-Adresse) angeben und den Wert später ändern.
   - **Clientadressraum:** Listen Sie die IP-Adressbereiche auf, die über dieses Gateway an das lokale Netzwerk weitergeleitet werden sollen. Sie können mehrere Adressraumbereiche hinzufügen. Stellen Sie sicher, dass sich die hier angegebenen Bereiche nicht mit den Bereichen anderer Netzwerke, mit denen für Ihr virtuelles Netzwerk Verbindungen hergestellt werden, oder mit den Adressbereichen des virtuellen Netzwerks selbst überlappen.
@@ -139,14 +139,14 @@ Mit dem lokalen Standort ist in der Regel Ihr lokaler Standort gemeint. Er enth�
 
 Sie müssen für Ihr VPN-Gateway ein Gatewaysubnetz erstellen. Das Gatewaysubnetz enthält die IP-Adressen, die von den Diensten des VPN-Gateways verwendet werden.
 
-1. Aktivieren Sie auf dem Blatt **Neue VPN-Verbindung** das Kontrollkästchen **Gateway sofort erstellen**. Das Blatt „Optionale Gatewaykonfiguration“ wird angezeigt. Wenn Sie das Kontrollkästchen nicht aktivieren, wird das Blatt zum Konfigurieren des Gatewaysubnetzes nicht angezeigt.
+1. Aktivieren Sie auf der Seite **Neue VPN-Verbindung** das Kontrollkästchen **Gateway sofort erstellen**. Die Seite „Optionale Gatewaykonfiguration“ wird angezeigt. Wenn Sie das Kontrollkästchen nicht aktivieren, wird die Seite zum Konfigurieren des Gatewaysubnetzes nicht angezeigt.
 
   ![Gatewaykonfiguration – Subnetz, Größe, Routingtyp](./media/vpn-gateway-howto-site-to-site-classic-portal/optional.png "Gatewaykonfiguration – Subnetz, Größe, Routingtyp")
-2. Klicken Sie auf **Optionale Gatewaykonfiguration – Subnetz, Größe und Routingtyp**, um das Blatt **Gatewaykonfiguration** zu öffnen.
-3. Klicken Sie auf dem Blatt **Gatewaykonfiguration** auf **Subnetz – Erforderliche Einstellungen konfigurieren**, um das Blatt **Subnetz hinzufügen** zu öffnen.
+2. Um die Seite **Gatewaykonfiguration** zu öffnen, klicken Sie auf **Optionale Gatewaykonfiguration – Subnetz, Größe und Routingtyp**.
+3. Klicken Sie auf der Seite **Gatewaykonfiguration** auf **Subnetz – Erforderliche Einstellungen konfigurieren**, um die Seite **Subnetz hinzufügen** zu öffnen.
 
   ![Gatewaykonfiguration – Gatewaysubnetz](./media/vpn-gateway-howto-site-to-site-classic-portal/subnetrequired.png "Gatewaykonfiguration – Gatewaysubnetz")
-4. Fügen Sie auf dem Blatt **Subnetz hinzufügen** das Gatewaysubnetz hinzu. Die Größe des von Ihnen angegebenen Gatewaysubnetzes richtet sich nach der VPN-Gatewaykonfiguration, die Sie erstellen möchten. Es ist zwar möglich, ein Gatewaysubnetz mit einer Größe von nur /29 zu erstellen, es wird jedoch empfohlen, /27 oder /28 auszuwählen, um ein größeres Subnetz mit mehr Adressen zu erstellen. Die Verwendung des größeren Gatewaysubnetzes ermöglicht die Vergabe einer ausreichenden Zahl von IP-Adressen für potenzielle zukünftige Konfigurationen.
+4. Fügen Sie auf der Seite **Subnetz hinzufügen** das Gatewaysubnetz hinzu. Die Größe des von Ihnen angegebenen Gatewaysubnetzes richtet sich nach der VPN-Gatewaykonfiguration, die Sie erstellen möchten. Obwohl es möglich ist, ein Gatewaysubnetz mit einer Größe von nur /29 zu erstellen, wird /27 oder /28 empfohlen. Dadurch wird ein größeres Subnetz erstellt, das mehr Adressen enthält. Die Verwendung eines größeren Gatewaysubnetzes ermöglicht die Vergabe einer ausreichenden Zahl von IP-Adressen für potenzielle zukünftige Konfigurationen.
 
   ![Hinzufügen eines Gatewaysubnetzes](./media/vpn-gateway-howto-site-to-site-classic-portal/addgwsubnet.png "Hinzufügen eines Gatewaysubnetzes")
 
@@ -157,7 +157,7 @@ Sie müssen für Ihr VPN-Gateway ein Gatewaysubnetz erstellen. Das Gatewaysubnet
   ![Auswählen der SKU und des VPN-Typs](./media/vpn-gateway-howto-site-to-site-classic-portal/sku.png "Auswählen der SKU und des VPN-Typs")
 2. Wählen Sie den **Routingtyp** für Ihr Gateway aus. Dies wird auch als VPN-Typ bezeichnet. Es ist wichtig, den richtigen Gatewaytyp auszuwählen, weil es nicht möglich ist, das Gateway in einen anderen Typ zu konvertieren. Ihr VPN-Gerät muss mit dem Routingtyp kompatibel sein, den Sie auswählen. Weitere Informationen zum VPN-Typ finden Sie unter [Informationen zu VPN Gateway-Einstellungen](vpn-gateway-about-vpn-gateway-settings.md#vpntype). Es kann sein, dass in Artikeln die VPN-Typen „RouteBased“ und „PolicyBased“ vorkommen. „Dynamisch“ entspricht „RouteBased“, und „Statisch“ entspricht „PolicyBased“.
 3. Klicken Sie auf **OK** , um die Einstellungen zu speichern.
-4. Klicken Sie am unteren Rand des Blatts **Neue VPN-Verbindung** auf **OK**, um mit der Erstellung Ihres virtuellen Netzwerkgateways zu beginnen. Dies kann bis zu 45 Minuten dauern.
+4. Klicken Sie am unteren Rand der Seite **Neue VPN-Verbindung** auf **OK**, um mit der Erstellung Ihres Gateways für virtuelle Netzwerke zu beginnen. Abhängig von der ausgewählten SKU kann die Erstellung eines Gateways für virtuelle Netzwerke bis zu 45 Minuten dauern.
 
 ## <a name="vpndevice"></a>7. Konfigurieren des VPN-Geräts
 
@@ -202,7 +202,7 @@ Beim Verwenden von PowerShell und des klassischen Bereitstellungsmodells sind di
   ```powershell
   Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
   ```
-2. Öffnen Sie die Netzwerkkonfigurationsdatei mit einem XML-Editor, und überprüfen Sie die Werte für „LocalNetworkSite name“ und „VirtualNetworkSite name“. Ändern Sie das Beispiel, um Ihre Werte zu nutzen. Setzen Sie den Wert in einfache Anführungszeichen, wenn ein Name Leerzeichen enthält.
+2. Öffnen Sie die Netzwerkkonfigurationsdatei mit einem XML-Editor, und überprüfen Sie die Werte für „LocalNetworkSite name“ und „VirtualNetworkSite name“. Ändern Sie das Beispiel, um die erforderlichen Werte zu nutzen. Setzen Sie den Wert in einfache Anführungszeichen, wenn ein Name Leerzeichen enthält.
 
 3. Legen Sie den gemeinsam verwendeten Schlüssel fest, und erstellen Sie die Verbindung. „-SharedKey“ ist ein Wert, den Sie generieren und angeben. Im Beispiel wurde „abc123“ verwendet, aber Sie können (und sollten) einen komplexeren Wert generieren und verwenden. Entscheidend ist Folgendes: Der Wert, den Sie hier angeben, muss dem Wert entsprechen, den Sie beim Konfigurieren Ihres VPN-Geräts angegeben haben.
 
@@ -218,11 +218,11 @@ Wenn die Verbindung erstellt wird, lautet das Ergebnis: **Status: Successful** (
 
 Sollten bei der Verbindungsherstellung Probleme auftreten, wechseln Sie über das Inhaltsverzeichnis auf der linken Seite zum Abschnitt **Problembehandlung**.
 
-## <a name="how-to-reset-a-vpn-gateway"></a>Zurücksetzen einer VPN Gateway-Instanz
+## <a name="reset"></a>Zurücksetzen einer VPN Gateway-Instanz
 
 Das Zurücksetzen von Azure VPN Gateway-Instanzen ist nützlich, wenn die standortübergreifende VPN-Verbindung bei mindestens einem Site-to-Site-VPN-Tunnel unterbrochen ist. In diesem Fall funktionieren Ihre lokalen VPN-Geräte ordnungsgemäß, können jedoch keine IPsec-Tunnelverbindungen mit Azure VPN Gateway-Instanzen herstellen. Eine entsprechende Anleitung finden Sie unter [Zurücksetzen einer VPN Gateway-Instanz](vpn-gateway-resetgw-classic.md).
 
-## <a name="how-to-change-a-gateway-sku"></a>Ändern einer Gateway-SKU
+## <a name="changesku"></a>Ändern einer Gateway-SKU
 
 Eine Anleitung zum Ändern einer Gateway-SKU finden Sie unter [Arbeiten mit SKUs für virtuelle Netzwerkgateways (alte SKUs)](vpn-gateway-about-SKUS-legacy.md).
 

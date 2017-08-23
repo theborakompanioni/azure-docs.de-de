@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 08/09/2017
 ms.author: cherylmc
 ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
-ms.openlocfilehash: d97dfa3bc14c54e4c7097b5418c5b61e204e7676
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 019c5421dc470b18c9087417b93c241cc5730f77
 ms.contentlocale: de-de
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="create-a-virtual-network-with-a-site-to-site-vpn-connection-using-cli"></a>Erstellen eines virtuellen Netzwerks mit einer Site-to-Site-VPN-Verbindung per CLI
@@ -48,7 +48,7 @@ Vergewissern Sie sich vor Beginn der Konfiguration, dass die folgenden Vorausset
 * Falls Sie nicht mit den IP-Adressbereichen in Ihrer lokalen Netzwerkkonfiguration vertraut sind, wenden Sie sich an eine Person, die Ihnen diese Informationen zur Verfügung stellen kann. Beim Erstellen dieser Konfiguration müssen Sie die Präfixe für die IP-Adressbereiche angeben, die Azure an Ihren lokalen Standort weiterleitet. Kein Subnetz Ihres lokalen Netzwerks darf sich mit den Subnetzen des virtuellen Netzwerks überschneiden, mit dem Sie eine Verbindung herstellen möchten.
 * Vergewissern Sie sich, dass Sie die aktuelle Version der CLI-Befehle (2.0 oder höher) installiert haben. Informationen zum Installieren der CLI-Befehle finden Sie unter [Install Azure CLI 2.0](/cli/azure/install-azure-cli) (Installieren der Azure CLI 2.) und [Get Started with Azure CLI 2.0](/cli/azure/get-started-with-azure-cli) (Erste Schritte mit der Azure CLI 2.0).
 
-### <a name="example-values"></a>Beispielwerte
+### <a name="example"></a>Beispielwerte
 
 Sie können die folgenden Werte zum Erstellen einer Testumgebung oder zum besseren Verständnis der Beispiele in diesem Artikel nutzen:
 
@@ -77,7 +77,7 @@ ConnectionName          = VNet1toSite2
 
 [!INCLUDE [CLI login](../../includes/vpn-gateway-cli-login-include.md)]
 
-## <a name="2-create-a-resource-group"></a>2. Erstellen einer Ressourcengruppe
+## <a name="rg"></a>2. Erstellen einer Ressourcengruppe
 
 Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen „TestRG1“ am Standort „eastus“ erstellt. Falls Sie in dieser Region bereits über eine Ressourcengruppe verfügen, die Sie zum Erstellen des VNet nutzen möchten, können Sie sie verwenden.
 
@@ -187,7 +187,7 @@ Falls Sie ein anderes Verfahren zum Überprüfen Ihrer Verbindung verwenden möc
 
 [!INCLUDE [Connect to a VM](../../includes/vpn-gateway-connect-vm-s2s-include.md)]
 
-## <a name="common-tasks"></a>Häufige Aufgaben
+## <a name="tasks"></a>Häufige Aufgaben
 
 Dieser Abschnitt enthält allgemeine Befehle, die beim Arbeiten mit Site-to-Site-Konfigurationen hilfreich sind. Die vollständige Liste der CLI-Netzwerkbefehle finden Sie unter [Networking - az network](/cli/azure/network) (Netzwerke – az network).
 

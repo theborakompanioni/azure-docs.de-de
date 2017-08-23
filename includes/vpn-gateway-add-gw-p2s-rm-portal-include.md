@@ -1,17 +1,18 @@
 1. Klicken Sie im Portal auf der linken Seite auf **+**, und geben Sie für die Suche „Virtuelles Netzwerkgateway“ ein. Suchen Sie in der Ausgabe nach **Virtuelles Netzwerkgateway**, und klicken Sie auf den Eintrag. Klicken Sie auf der Seite **Gateway für virtuelle Netzwerke** unten auf **Erstellen**, um die Seite **Gateway für virtuelle Netzwerke erstellen** zu öffnen.
 2. Geben Sie auf der Seite **Gateway für virtuelle Netzwerke erstellen** die Werte für das Gateway für virtuelle Netzwerke an.
 
-  ![Felder der Seite „Gateway für virtuelle Netzwerke erstellen“](./media/vpn-gateway-add-gw-rm-portal-include/gw.png "Felder der Seite „Gateway für virtuelle Netzwerke erstellen“")
-3. **Name**: Benennen Sie Ihr Gateway. Der Name des Gateways ist nicht der gleiche wie der des Gatewaysubnetzes. Hierbei handelt es sich um den Namen des Gatewayobjekts, das Sie erstellen.
+  ![Felder der Seite „Gateway für virtuelle Netzwerke erstellen“](./media/vpn-gateway-add-gw-p2s-rm-portal-include/p2sgw.png "Felder der Seite „Gateway für virtuelle Netzwerke erstellen“")
+3. **Name**: Benennen Sie Ihr Gateway. Das Benennen eines Gateways ist nicht das Gleiche wie das Benennen eines Gatewaysubnetzes. Hierbei handelt es sich um den Namen des Gatewayobjekts, das Sie erstellen.
 4. **Gatewaytyp**: Wählen Sie **VPN** aus. Bei VPN-Gateways wird ein virtuelles Netzwerkgateway vom Typ **VPN** verwendet.
 5. **VPN-Typ**: Wählen Sie den für Ihre Konfiguration angegebenen VPN-Typ aus. Bei den meisten Konfigurationen wird ein routenbasierter VPN-Typ benötigt.
 6. **SKU**: Wählen Sie in der Dropdownliste die Gateway-SKU aus. Welche SKUs in der Dropdownliste aufgeführt werden, hängt vom ausgewählten VPN-Typ ab.
 7. **Standort**: Passen Sie das Feld **Standort** an, um auf den Standort zu verweisen, an dem sich das virtuelle Netzwerk befindet. Wenn der Standort nicht auf die Region verweist, in der sich Ihr virtuelles Netzwerk befindet, wird das virtuelle Netzwerk nicht in der Dropdownliste „Virtuelles Netzwerk auswählen“ angezeigt.
 8. Wählen Sie das virtuelle Netzwerk aus, dem Sie ein Gateway hinzufügen möchten. Klicken Sie auf **Virtuelles Netzwerk**, um die Seite **Virtuelles Netzwerk auswählen** zu öffnen. Wählen Sie das VNet aus. Sollte Ihr VNet nicht angezeigt werden, vergewissern Sie sich, dass das Feld **Speicherort** auf die Region verweist, in dem sich Ihr virtuelles Netzwerk befindet.
 9. **Öffentliche IP-Adresse**: Erstellen Sie ein Objekt für eine öffentliche IP-Adresse, dem eine öffentliche IP-Adresse dynamisch zugewiesen wird. Klicken Sie auf **Öffentliche IP-Adresse**, um die Seite **Öffentliche IP-Adresse wählen** zu öffnen. Klicken Sie auf **+ Neu erstellen**, um die Seite **Öffentliche IP-Adresse erstellen** zu öffnen. Geben Sie einen Namen für die öffentliche IP-Adresse ein. Klicken Sie zum Speichern der Änderungen auf **OK** . Die IP-Adresse wird bei der Erstellung des VPN-Gateways dynamisch zugewiesen. VPN Gateway unterstützt derzeit nur die *dynamische* Zuweisung öffentlicher IP-Adressen. Das bedeutet jedoch nicht, dass sich die IP-Adresse ändert, nachdem sie Ihrem VPN-Gateway zugewiesen wurde. Die öffentliche IP-Adresse ändert sich nur, wenn das Gateway gelöscht und neu erstellt wird. Sie ändert sich nicht, wenn die Größe geändert wird, das VPN-Gateway zurückgesetzt wird oder andere interne Wartungs-/Upgradevorgänge für das VPN-Gateway durchgeführt werden.
-11. **Abonnement**: Vergewissern Sie sich, dass das richtige Abonnement ausgewählt ist.
-12. **Ressourcengruppe**: Die Ressourcengruppeneinstellung wird auf der Grundlage des ausgewählten virtuellen Netzwerks bestimmt.
-1. Passen Sie den **Standort** nach Angabe der vorherigen Einstellungen nicht mehr an.
-2. Überprüfen Sie die Einstellungen. Sie können die Option **An Dashboard anheften** unten auf der Seite auswählen, wenn das Gateway auf dem Dashboard angezeigt werden soll.
-3. Klicken Sie auf **Erstellen** , um das Gateway zu erstellen. Die Einstellungen werden überprüft, und das Gateway wird bereitgestellt. Die Erstellung eines Gateways kann bis zu 45 Minuten dauern.
-4. Zeigen Sie nach der Erstellung des Gateways auf der Seite des virtuellen Netzwerks die zugewiesene IP-Adresse an. Das Gateway wird als verbundenes Gerät angezeigt. Sie können auf das verbundene Gerät (Ihr virtuelles Netzwerkgateway) klicken, um weitere Informationen anzuzeigen.
+10. **Abonnement**: Vergewissern Sie sich, dass das richtige Abonnement ausgewählt ist.
+11. **Ressourcengruppe**: Diese Einstellung wird auf der Grundlage des ausgewählten virtuellen Netzwerks bestimmt.
+12. Passen Sie den **Standort** nach Angabe der vorherigen Einstellungen nicht mehr an.
+13. Überprüfen Sie die Einstellungen. Sie können die Option **An Dashboard anheften** unten auf der Seite auswählen, wenn das Gateway auf dem Dashboard angezeigt werden soll.
+14. Klicken Sie auf **Erstellen** , um das Gateway zu erstellen. Die Einstellungen werden überprüft, und das Gateway wird bereitgestellt. Die Erstellung eines Gateways kann bis zu 45 Minuten dauern.
+
+Nach der Erstellung des Gateways können Sie die zugewiesene IP-Adresse unter dem virtuellen Netzwerk anzeigen. Das Gateway wird als verbundenes Gerät angezeigt. Sie können auf das verbundene Gerät (Ihr virtuelles Netzwerkgateway) klicken, um weitere Informationen anzuzeigen.
