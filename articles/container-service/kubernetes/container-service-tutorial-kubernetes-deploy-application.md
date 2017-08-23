@@ -57,7 +57,7 @@ git clone https://github.com/Azure-Samples/azure-voting-app-redis.git
 Die Manifestdatei befindet sich im folgenden Verzeichnis des geklonten Repositorys.
 
 ```bash
-/azure-voting-app-redis/kubernetes-manifests/
+/azure-voting-app-redis/kubernetes-manifests/azure-vote-all-in-one-redis.yaml
 ```
 
 ## <a name="update-manifest-file"></a>Aktualisieren der Manifestdatei
