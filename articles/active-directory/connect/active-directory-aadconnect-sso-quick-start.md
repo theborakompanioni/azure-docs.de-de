@@ -97,7 +97,7 @@ Der Browser berechnet standardmäßig anhand der URL automatisch die richtige Zo
 >[!NOTE]
 > Wenn Sie das nahtlose einmalige Anmelden z.B. für einige Benutzer verbieten möchten, weil sich diese Benutzer beispielsweise auf freigegebenen Kiosken anmelden, legen Sie die vorherigen Werte auf *4* fest. Diese Aktion fügt der Zone eingeschränkter Sites die Azure AD-URLs hinzu, und löst für das nahtlose einmalige Anmelden ständig einen Fehler aus.
 
-5. Klicken Sie zweimal nacheinander auf **OK******.
+5. Klicken **Sie** zweimal nacheinander auf **OK**.
 
 ![Einmaliges Anmelden](./media/active-directory-aadconnect-sso/sso7.png)
 
