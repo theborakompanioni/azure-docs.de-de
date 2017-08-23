@@ -53,7 +53,7 @@ ADFS-Administratoren können einen Link zu ihrer Anmeldeseite hinzufügen, indem
 
 Wenn Sie den folgenden Befehl auf Ihren ADFS-Server anwenden, wird ein Link zu Ihrer ADFS-Anmeldeseite hinzugefügt, der es Benutzern erlaubt, direkt zum Workflow für die Self-Service-Kennwortzurücksetzung zu gelangen.
 
-``` Set-ADFSGlobalWebContent -SigninPageDescriptionText "<p><A href=’https://passwordreset.microsoftonline.com’>Can’t access your account?<A/></p>" ```
+``` Set-ADFSGlobalWebContent -SigninPageDescriptionText "<p><A href=’https://passwordreset.microsoftonline.com’>Can’t access your account?</A></p>" ```
 
 ## <a name="customize-the-sign-in-and-access-panel-look-and-feel"></a>Anpassen des Aussehens und Verhaltens des Anmelde- und Zugriffsbereichs
 

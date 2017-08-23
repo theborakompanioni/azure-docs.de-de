@@ -5,7 +5,7 @@ metadata:
   document_id: c0fe8cd3-35da-e3e5-718e-8f3cf2f87f34
   title: 'Dokumentation für Azure PostgreSQL – Tutorials, API-Referenz'
   description: 'Die Azure-Datenbank für PostgreSQL ist ein relationaler Datenbankdienst in der Microsoft Cloud für Entwickler, der auf der Open Source-PostgreSQL-Datenbank-Engine basiert.'
-  services: app-service
+  services: postgresql
   author: jasonwhowell
   manager: jhubbard
   ms.service: postgresql
