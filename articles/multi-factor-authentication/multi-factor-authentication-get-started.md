@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 04/23/2017
 ms.author: kgremban
-translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 8c3cc27f1fa708371d415d00cdff59f77712cd41
-ms.lasthandoff: 05/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
+ms.openlocfilehash: 6f8ee3449244b12d2c8b5714e6ad893e2f0b10ee
+ms.contentlocale: de-de
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="choose-the-azure-multi-factor-authentication-solution-for-you"></a>Auswählen einer geeigneten Azure Multi-Factor Authentication-Lösung
@@ -39,7 +39,7 @@ Um die richtige zweistufige Überprüfungslösung zu ermitteln, müssen Sie zun�
 | SaaS-Apps im Appkatalog |● |  |
 | Über den Azure AD-App-Proxy veröffentlichte Webanwendungen |● |  |
 | Nicht über den Azure AD-App-Proxy veröffentlichte IIS-Anwendungen | |● |
-| Remotezugriff, z. B. VPN, RDG | |● |
+| Remotezugriff, z. B. VPN, RDG | ● | ● |
 
 ## <a name="where-are-the-users-located"></a>Wo befinden sich die Benutzer?
 Außerdem hängt die Entscheidung für die richtige Lösung – in der Cloud oder lokal über den MFA-Server – davon ab, wo sich die Benutzer befinden.
@@ -53,9 +53,9 @@ Außerdem hängt die Entscheidung für die richtige Lösung – in der Cloud ode
 | Lokales Active Directory | |● |
 
 ## <a name="what-features-do-i-need"></a>Welche Features benötige ich?
-In der folgenden Tabelle finden Sie einen Vergleich der Features von Multi-Factor Authentication in der Cloud und mit einem Multi-Factor Authentication-Server.
+In der folgenden Tabelle finden Sie einen Vergleich der Features von Multi-Factor Authentication in der Cloud mit einem Multi-Factor Authentication-Server.
 
-| Funktion | MFA in der Cloud | MFA-Server |
+| Feature | MFA in der Cloud | MFA-Server |
 | --- |:---:|:---:|
 | Benachrichtigung in der mobilen App als zweite Stufe | ● | ● |
 | Bestätigungscode in der mobilen App als zweite Stufe | ● | ● |
@@ -76,6 +76,8 @@ In der folgenden Tabelle finden Sie einen Vergleich der Features von Multi-Facto
 | Bedingter Zugriff | ● | ● |
 | Cache |  | ● |
 
+## <a name="next-steps"></a>Nächste Schritte
+
 Sie haben nun ermittelt, ob Sie Multi-Factor Authentication in der Cloud oder den MFA-Server lokal verwenden möchten. Jetzt können Sie mit dem Einrichten und Verwenden von Azure Multi-Factor Authentication beginnen. **Wählen Sie das Symbol aus, das Ihrem Szenario entspricht.**
 
 <center>
@@ -83,6 +85,5 @@ Sie haben nun ermittelt, ob Sie Multi-Factor Authentication in der Cloud oder de
 
 
 
-[![Cloud](./media/multi-factor-authentication-get-started/cloud2.png)](multi-factor-authentication-get-started-cloud.md)  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[![Proofup](./media/multi-factor-authentication-get-started/server2.png)](multi-factor-authentication-get-started-server.md) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</center>
+[![Cloud](./media/multi-factor-authentication-get-started/cloud2.png)](multi-factor-authentication-get-started-cloud.md)  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[![Server](./media/multi-factor-authentication-get-started/server2.png)](multi-factor-authentication-get-started-server.md) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </center>
 

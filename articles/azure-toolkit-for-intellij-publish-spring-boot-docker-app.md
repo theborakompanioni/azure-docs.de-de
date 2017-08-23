@@ -112,7 +112,7 @@ IntelliJ importiert die Spring Boot-App als Projekt und zeigt nach Abschluss des
 
    ![Befehl zum Ausführen des Maven-Builds][BU02]
 
-1. Wenn Ihre Spring Boot-App erfolgreich erstellt wurde, zeigt IntelliJ eine entsprechende**** Meldung an.
+1. Wenn Ihre Spring Boot-App erfolgreich erstellt wurde, zeigt IntelliJ eine entsprechende **Meldung** an.
 
    ![Meldung nach erfolgreicher Erstellung][BU03]
 

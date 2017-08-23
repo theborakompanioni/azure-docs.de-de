@@ -6,7 +6,7 @@ Wählen Sie im Richtlinienabschnitt der Einstellungen die Option **Richtlinien z
 
 ![„Richtlinien zur Profilbearbeitung“ auswählen und auf die Schaltfläche „Hinzufügen“ klicken](media/active-directory-b2c-create-profile-editing-policy/add-b2c-editing-policy.png)
 
-Geben Sie einen Richtliniennamen**** an, auf den Ihre App verweisen kann. Geben Sie z. B. Folgendes ein: `SiPe`.
+Geben Sie einen **Richtliniennamen** an, auf den Ihre App verweisen kann. Geben Sie z. B. Folgendes ein: `SiPe`.
 
 Klicken Sie auf **Identitätsanbieter**, und aktivieren Sie das Kontrollkästchen **Anmeldung für lokales Konto**. Optional können Sie auch soziale Netzwerke als Identitätsanbieter auswählen, sofern bereits konfiguriert. Klicken Sie auf **OK**.
 

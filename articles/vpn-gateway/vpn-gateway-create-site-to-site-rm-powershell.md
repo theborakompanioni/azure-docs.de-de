@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 08/09/2017
 ms.author: cherylmc
 ms.translationtype: HT
-ms.sourcegitcommit: 9afd12380926d4e16b7384ff07d229735ca94aaa
-ms.openlocfilehash: 9edaa81111d9439bfbad4775e49c3e29454ad31f
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 27f4a8fb9a83b98e99df635bf4c80f6048ce348c
 ms.contentlocale: de-de
-ms.lasthandoff: 07/15/2017
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="create-a-vnet-with-a-site-to-site-vpn-connection-using-powershell"></a>Erstellen eines VNET mit einer Site-to-Site-VPN-Verbindung per PowerShell
@@ -40,7 +40,7 @@ Eine Site-to-Site-VPN-Gateway-Verbindung wird verwendet, um Ihr lokales Netzwerk
 
 ![Diagramm für die standortübergreifende Site-to-Site-VPN Gateway-Verbindung](./media/vpn-gateway-create-site-to-site-rm-powershell/site-to-site-diagram.png)
 
-## <a name="before-you-begin"></a>Voraussetzungen
+## <a name="before"></a>Voraussetzungen
 
 Vergewissern Sie sich vor Beginn der Konfiguration, dass die folgenden Voraussetzungen erfüllt sind bzw. Folgendes vorhanden ist:
 
@@ -49,7 +49,7 @@ Vergewissern Sie sich vor Beginn der Konfiguration, dass die folgenden Vorausset
 * Falls Sie nicht mit den IP-Adressbereichen in Ihrer lokalen Netzwerkkonfiguration vertraut sind, wenden Sie sich an eine Person, die Ihnen diese Informationen zur Verfügung stellen kann. Beim Erstellen dieser Konfiguration müssen Sie die Präfixe für die IP-Adressbereiche angeben, die Azure an Ihren lokalen Standort weiterleitet. Kein Subnetz Ihres lokalen Netzwerks darf sich mit den Subnetzen des virtuellen Netzwerks überschneiden, mit dem Sie eine Verbindung herstellen möchten.
 * Installieren Sie die aktuelle Version der PowerShell-Cmdlets für Azure Resource Manager. PowerShell-Cmdlets werden häufig aktualisiert, sodass Sie Ihre PowerShell-Cmdlets normalerweise aktualisieren müssen, um die neuesten Features und Funktionen nutzen zu können. Wenn Sie Ihre PowerShell-Cmdlets nicht aktualisieren, kann es für die angegebenen Werte zu Fehlern kommen. Weitere Informationen zum Herunterladen und Installieren von PowerShell-Cmdlets finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview).
 
-### <a name="example-values"></a>Beispielwerte
+### <a name="example"></a>Beispielwerte
 
 In den Beispielen dieses Artikels werden die folgenden Werte verwendet. Sie können diese Werte zum Erstellen einer Testumgebung verwenden oder zum besseren Verständnis der Beispiele in diesem Artikel heranziehen.
 
@@ -82,13 +82,13 @@ ConnectionName          = VNet1toSite2
 
 ## <a name="VNet"></a>2. Erstellen eines virtuelles Netzwerks und eines Gatewaysubnetzes
 
-Falls Sie noch nicht über ein virtuelles Netzwerk verfügen, erstellen Sie eines. Stellen Sie beim Erstellen eines virtuellen Netzwerks sicher, dass sich die angegebenen Adressräume und die Adressräume im lokalen Netzwerk nicht überschneiden.
+Falls Sie noch nicht über ein virtuelles Netzwerk verfügen, erstellen Sie eines. Stellen Sie beim Erstellen eines virtuellen Netzwerks sicher, dass sich die angegebenen Adressräume und die Adressräume im lokalen Netzwerk nicht überlappen.
 
 [!INCLUDE [About gateway subnets](../../includes/vpn-gateway-about-gwsubnet-include.md)]
 
 [!INCLUDE [No NSG warning](../../includes/vpn-gateway-no-nsg-include.md)]
 
-### <a name="to-create-a-virtual-network-and-a-gateway-subnet"></a>So erstellen Sie ein virtuelles Netzwerk und ein Gatewaysubnetz
+### <a name="vnet"></a>So erstellen Sie ein virtuelles Netzwerk und ein Gatewaysubnetz
 
 In diesem Beispiel werden ein virtuelles Netzwerk und ein Gatewaysubnetz erstellt. Falls Sie bereits über ein virtuelles Netzwerk verfügen, dem Sie ein Gatewaysubnetz hinzufügen möchten, lesen Sie unter [So fügen Sie einem virtuellen Netzwerk, das Sie bereits erstellt haben, ein Gatewaysubnetz hinzu](#gatewaysubnet) weiter.
 

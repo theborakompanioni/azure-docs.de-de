@@ -1,6 +1,6 @@
 ---
-title: "Sicherheitsbericht „Gefährdete Benutzer“ im Azure Active Directory-Portal | Microsoft-Dokumentation"
-description: "Enthält Informationen zum Sicherheitsbericht „Gefährdete Benutzer“ im Azure Active Directory-Portal."
+title: "Sicherheitsbericht „Benutzer mit Risikomarkierung“ im Azure Active Directory-Portal | Microsoft-Dokumentation"
+description: "Hier erfahren Sie mehr über den Sicherheitsbericht „Benutzer mit Risikomarkierung“ im Azure Active Directory-Portal."
 services: active-directory
 author: MarkusVi
 manager: femila
@@ -10,27 +10,27 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/01/2017
+ms.date: 08/15/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.translationtype: HT
-ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
-ms.openlocfilehash: bfcaee441c54453677e7747b0bca55a8afc59391
+ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
+ms.openlocfilehash: 76413d6e9c619a66ae34f032eb0b8f9d42c27c9d
 ms.contentlocale: de-de
-ms.lasthandoff: 08/04/2017
+ms.lasthandoff: 08/16/2017
 
 ---
-# <a name="users-at-risk-security-report-in-the-azure-active-directory-portal"></a>Sicherheitsbericht „Gefährdete Benutzer“ im Azure Active Directory-Portal
+# <a name="users-flagged-for-risk-security-report-in-the-azure-active-directory-portal"></a>Sicherheitsbericht „Benutzer mit Risikomarkierung“ im Azure Active Directory-Portal
 
 Mit den Sicherheitsberichten in Azure Active Directory (Azure AD) erhalten Sie Einblicke in die Wahrscheinlichkeit für kompromittierte Benutzerkonten in Ihrer Umgebung. 
 
-Azure Active Directory erkennt verdächtige Aktionen im Zusammenhang mit Ihren Benutzerkonten. Für jede erkannte Aktion wird ein Datensatz mit der Bezeichnung *Risikoereignis* erstellt. Weitere Details finden Sie unter [Azure Active Directory risk events](active-directory-identity-protection-risk-events.md) (Azure Active Directory-Risikoereignisse). 
+Azure Active Directory erkennt verdächtige Aktionen im Zusammenhang mit Ihren Benutzerkonten. Für jede erkannte Aktion wird ein Datensatz mit der Bezeichnung *Risikoereignis* erstellt. Weitere Informationen finden Sie unter [Azure Active Directory-Risikoereignisse](active-directory-identity-protection-risk-events.md). 
 
 Die erkannten Risikoereignisse werden zum Berechnen folgender Werte verwendet:
 
 - **Riskante Anmeldungen:** Eine riskante Anmeldung ist ein Indikator für einen Anmeldeversuch von einem Benutzer, der nicht der rechtmäßige Besitzer eines Benutzerkontos ist. Weitere Informationen finden Sie unter [Riskante Anmeldungen](active-directory-identityprotection.md#risky-sign-ins). 
 
-- **Benutzer mit Risikomarkierung:** Ein Benutzer mit Risikomarkierung ist ein Indikator für ein möglicherweise kompromittiertes Benutzerkonto. Weitere Informationen finden Sie unter [Benutzer mit Risikomarkierung](active-directory-identityprotection.md#users-flagged-for-risk).  
+- **Benutzer mit Risikomarkierung:** Ein Benutzer mit Risikomarkierung ist ein Indikator für ein möglicherweise kompromittiertes Benutzerkonto. Weitere Informationen finden Sie unter [Benutzer mit Risikokennzeichnung](active-directory-identityprotection.md#users-flagged-for-risk).  
 
 Im Azure-Portal befinden sich die Sicherheitsberichte auf dem Blatt **Azure Active Directory** im Abschnitt **Sicherheit**.  
 
@@ -47,13 +47,13 @@ Die Granularitätsebene von Berichten kann für die einzelnen Editionen aber var
 
 - Mit der Edition **Azure Active Directory Premium 1** wird dieses Modell erweitert, indem Sie zusätzlich jeweils einige zugrunde liegende Risikoereignisse untersuchen können, die für einen Bericht erkannt wurden. 
 
-- In der Edition **Azure Active Directory Premium 2** erhalten Sie die ausführlichsten Informationen zu den zugrunde liegenden Risikoereignissen, und Sie können Sicherheitsrichtlinien konfigurieren, mit denen automatisch auf konfigurierte Risikostufen reagiert wird.
+- In der Edition **Azure Active Directory Premium 2** erhalten Sie die ausführlichsten Informationen zu allen zugrunde liegenden Risikoereignissen, und Sie können Sicherheitsrichtlinien konfigurieren, mit denen automatisch auf konfigurierte Risikostufen reagiert wird.
 
 
 
 ## <a name="azure-active-directory-free-and-basic-edition"></a>Azure Active Directory – Free und Basic Edition
 
-Der Bericht „Gefährdete Benutzer“ in den Editionen Free und Basic von Azure Active Directory enthält eine Liste mit Benutzerkonten, die unter Umständen kompromittiert wurden. 
+Der Bericht „Benutzer mit Risikomarkierung“ in den Editionen Free und Basic von Azure Active Directory enthält eine Liste mit Benutzerkonten, die unter Umständen kompromittiert wurden. 
 
 
 ![Riskante Anmeldungen](./media/active-directory-reporting-security-user-at-risk/03.png)
@@ -65,7 +65,7 @@ Sie können für gefährdete Benutzer den Anmeldeverlauf des Benutzers prüfen u
 
 ## <a name="azure-active-directory-premium-editions"></a>Azure Active Directory – Premium Editionen
 
-Der Bericht „Gefährdete Benutzer“ in den Premium Editionen von Azure Active Directory enthält Folgendes:
+Der Bericht „Benutzer mit Risikomarkierung“ in den Premium-Editionen von Azure Active Directory enthält Folgendes:
 
 - Eine [Liste mit Benutzerkonten](active-directory-identityprotection.md#users-flagged-for-risk), die unter Umständen kompromittiert wurden 
 
@@ -92,8 +92,7 @@ Wenn Sie einen Benutzer auswählen, erhalten Sie eine ausführliche Berichtsansi
 ![Riskante Anmeldungen](./media/active-directory-reporting-security-user-at-risk/324.png)
 
 
-Wählen Sie in der Liste ein Risikoereignis aus, um es zu untersuchen.  
-Das Blatt **Details** wird für das Risikoereignis geöffnet. Auf dem Blatt **Details** können Sie ein [Risikoereignis manuell schließen](active-directory-identityprotection.md#closing-risk-events-manually) oder ein manuell geschlossenes Risikoereignis wieder aktivieren. 
+Um ein Risikoereignis zu untersuchen, wählen Sie es in der Liste aus, um das Blatt **Details** für dieses Risikoereignis zu öffnen. Auf dem Blatt **Details** können Sie ein [Risikoereignis manuell schließen](active-directory-identityprotection.md#closing-risk-events-manually) oder ein manuell geschlossenes Risikoereignis wieder aktivieren. 
 
 
 ![Riskante Anmeldungen](./media/active-directory-reporting-security-user-at-risk/325.png)

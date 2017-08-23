@@ -13,13 +13,13 @@ ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
-ms.date: 07/10/2017
+ms.date: 07/19/2017
 ms.author: gwallace
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: 396d8b9532eb55341670ad61bd4c2a16882b35e4
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 49ca4ed2452d71dec17cedebaf48bbd5ab9e615f
 ms.contentlocale: de-de
-ms.lasthandoff: 07/27/2017
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="overview-of-application-gateway"></a>Übersicht über Application Gateway
@@ -42,6 +42,7 @@ Application Gateway bietet derzeit die folgenden Funktionen:
 * **[Multisiterouting:](application-gateway-multi-site-overview.md)** Mit Application Gateway können Sie bis zu 20 Websites in einem einzelnen Anwendungsgateway zusammenfassen.
 * **[WebSocket-Unterstützung:](application-gateway-websocket.md)** Die native WebSocket-Unterstützung ist ein weiteres tolles Feature von Application Gateway.
 * **[Systemüberwachung:](application-gateway-probe-overview.md)** Application Gateway bietet standardmäßig die Systemüberwachung von Back-End-Ressourcen und benutzerdefinierte Stichproben an, um spezifischere Szenarien zu überwachen.
+* **[SSL-Richtlinie und Verschlüsselungen:](application-gateway-ssl-policy-overview.md)** Mit diesem Feature können Sie die unterstützten SSL-Protokollversionen und Verschlüsselungssammlungen und ihre Verarbeitungsreihenfolge einschränken.
 * **[Umleitung von Anforderungen:](application-gateway-redirect-overview.md)** Mit diesem Feature können Sie HTTP-Anforderungen an einen HTTPS-Listener umleiten.
 * **[Unterstützung mehrinstanzenfähiger Back-Ends:](application-gateway-web-app-overview.md)** Application Gateway unterstützt das Konfigurieren mehrinstanzenfähiger Back-End-Dienste wie Web Apps und API Gateway als Back-End-Poolmitglieder. 
 * **[Erweiterte Diagnose](application-gateway-diagnostics.md)**: Application Gateway bietet umfassende Diagnose- und Zugriffsprotokolle. Firewallprotokolle stehen für Application Gateway-Ressourcen zur Verfügung, für die WAF aktiviert ist.
@@ -105,5 +106,5 @@ Nachdem Sie sich mit Anwendungsgateways vertraut gemacht haben, können Sie [ein
 
 Weitere Informationen zum Erstellen eines Anwendungsgateways mit URL-basiertem Inhaltsrouting finden Sie unter [Erstellen eines Anwendungsgateways mit URL-basiertem Routing](application-gateway-create-url-route-arm-ps.md) .
 
-Weitere Informationen zu einigen anderen wichtigen Netzwerkfunktionen von Azure finden Sie unter [Azure-Netzwerke]((../networking/networking-overview.md).
+Weitere Informationen zu den anderen zentralen Netzwerkfunktionen von Azure finden Sie unter [Azure-Netzwerke](../networking/networking-overview.md).
 

@@ -6,7 +6,7 @@ Wählen Sie im Richtlinienabschnitt der Einstellungen die Option **Richtlinien f
 
 ![Registrierungs- oder Anmelderichtlinien auswählen und auf die Schaltfläche „Hinzufügen“ klicken](media/active-directory-b2c-create-password-reset-policy/add-b2c-password-reset-policy.png)
 
-Geben Sie einen Richtliniennamen**** ein, auf den Ihre App verweisen kann. Geben Sie z. B. Folgendes ein: `SSPR`.
+Geben Sie einen **Richtliniennamen** ein, auf den Ihre App verweisen kann. Geben Sie z. B. Folgendes ein: `SSPR`.
 
 Klicken Sie auf **Identitätsanbieter**, und aktivieren Sie **Kennwort mittels E-Mail-Adresse zurücksetzen**. Klicken Sie auf **OK**.
 

@@ -56,13 +56,13 @@ Aufträge können CodeBehind-Quelldateien oder registrierte Assemblys enthalten.
 Wenn bei einem U-SQL-Auftrag ein Fehler auftritt und der Auftrag Benutzercode enthält (üblicherweise mit der Bezeichnung `Script.usql.cs` in einem U-SQL-Projekt), wird der entsprechende Quellcode in die Debugprojektmappe importiert.  Dort können Sie das Problem mithilfe der Visual Studio-Debugtools (Überwachung, Variablen usw.) behandeln.
 
 > [!NOTE]
-> Vergewissern Sie sich vor dem Debuggen, dass im Fenster mit den Ausnahmeeinstellungen**** (STRG+ALT+E) die Option **Common Language Runtime-Ausnahmen** aktiviert ist.
+> Vergewissern Sie sich vor dem Debuggen, dass im Fenster mit den Ausnahmeeinstellungen(**STRG+ALT+E**) die Option **Common Language Runtime-Ausnahmen** aktiviert ist.
 
 ![Azure Data Lake Analytics, Debuggen von U-SQL-Aufträgen mit Visual Studio, Einstellung](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-clr-exception-setting.png)
 
-1. Drücken Sie**** F5, um den CodeBehind-Code auszuführen. Der Code wird ausgeführt, bis er durch eine Ausnahme beendet wird.
+1. Drücken Sie**F5** um den CodeBehind-Code auszuführen. Der Code wird ausgeführt, bis er durch eine Ausnahme beendet wird.
 
-2. Öffnen Sie die Datei `ADLTool_Codebehind.usql.cs`, legen Sie Haltepunkte fest, und drücken Sie anschließend**** F5, um den Code schrittweise zu debuggen.
+2. Öffnen Sie die Datei `ADLTool_Codebehind.usql.cs`, legen Sie Haltepunkte fest, und drücken Sie anschließend **F5** um den Code schrittweise zu debuggen.
 
     ![Azure Data Lake Analytics-U-SQL-Debugausnahme](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-debug-exception.png)
 
@@ -88,11 +88,11 @@ Wenn Ihr U-SQL-Skript registrierte Assemblys enthält, kann der Quellcode nicht 
 
 1. Klicke Sie mit der rechten Maustaste auf das Projekt mit dem Assemblyquellcode, klicken Sie auf **Erneut erstellen**, um PDB-Dateien im Arbeitsverzeichnis `LocalVertexHost` auszugeben.
 
-2. Drücken Sie**** F5. Das Projekt wird ausgeführt, bis es durch eine Ausnahme beendet wird. Möglicherweise wird die folgende Warnmeldung angezeigt. Diese kann gefahrlos ignoriert werden. Es kann bis zu einer Minute dauern, bis der Debugbildschirm angezeigt wird.
+2. Drücken Sie**F5** . Das Projekt wird ausgeführt, bis es durch eine Ausnahme beendet wird. Möglicherweise wird die folgende Warnmeldung angezeigt. Diese kann gefahrlos ignoriert werden. Es kann bis zu einer Minute dauern, bis der Debugbildschirm angezeigt wird.
 
     ![Azure Data Lake Analytics, Debuggen von U-SQL-Aufträgen mit Visual Studio, Warnung](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-visual-studio-u-sql-debug-warning.png)
 
-3. Öffnen Sie Ihren Quellcode, legen Sie Haltepunkte fest, und drücken Sie anschließend**** F5, um den Code schrittweise zu debuggen.
+3. Öffnen Sie Ihren Quellcode, legen Sie Haltepunkte fest, und drücken Sie anschließend **F5** um den Code schrittweise zu debuggen.
 
 Sie können das Problem auch mithilfe der Visual Studio-Debugtools (Überwachung, Variablen usw.) behandeln.
 

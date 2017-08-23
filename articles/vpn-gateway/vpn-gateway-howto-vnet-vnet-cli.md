@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 08/02/2017
 ms.author: cherylmc
 ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
-ms.openlocfilehash: 85d89568f5022dafd44ae7f8578e0bebb22d472d
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: ae42f661b39e8b6170fd415d758404fb33009ccc
 ms.contentlocale: de-de
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-azure-cli"></a>Konfigurieren einer VNET-zu-VNET-VPN-Gatewayverbindung mithilfe der Azure CLI
@@ -44,7 +44,7 @@ Die VNET-zu-VNET-Kommunikation kann mit Konfigurationen für mehrere Standorte k
 
 ![Informationen zu Verbindungen](./media/vpn-gateway-howto-vnet-vnet-cli/aboutconnections.png)
 
-### <a name="why-connect-virtual-networks"></a>Gründe für Verbindungen zwischen virtuellen Netzwerken
+### <a name="why"></a>Gründe für Verbindungen zwischen virtuellen Netzwerken
 
 Aus den folgenden Gründen empfiehlt sich das Herstellen von Verbindungen zwischen virtuellen Netzwerken:
 
@@ -185,11 +185,11 @@ In den Beispielen werden die folgenden Werte verwendet:
   az network vnet-gateway create -n VNet4GW -l westus --public-ip-address VNet4GWIP -g TestRG4 --vnet TestVNet4 --gateway-type Vpn --sku VpnGw1 --vpn-type RouteBased --no-wait
   ```
 
-### <a name="step-4---create-the-connections"></a>Schritt 4: Erstellen der Verbindungen
+### <a name="createconnect"></a>Schritt 4: Erstellen der Verbindungen
 
 Sie verfügen jetzt über zwei VNETs mit VPN Gateways. Im nächsten Schritt werden VPN Gatewayverbindungen zwischen den Gateways des virtuellen Netzwerks erstellt. Wenn Sie die Beispiele oben verwendet haben, befinden sich Ihre VNET-Gateways in verschiedenen Ressourcengruppen. Wenn Gateways sich in verschiedenen Ressourcengruppen befinden, müssen Sie beim Herstellen einer Verbindung die Ressourcen-IDs der einzelnen Gateways identifizieren und angeben. Wenn sich Ihre VNETs in derselben Ressourcengruppe befinden, können Sie den [zweiten Satz von Anweisungen](#samerg) verwenden, da Sie die Ressourcen-IDs nicht angeben müssen.
 
-### <a name="to-connect-vnets-that-reside-in-different-resource-groups"></a>So verbinden Sie VNETs, die sich in verschiedenen Ressourcengruppen befinden
+### <a name="diffrg"></a>So verbinden Sie VNETs, die sich in verschiedenen Ressourcengruppen befinden
 
 1. Rufen Sie die Ressourcen-ID von „VNet1GW“ aus der Ausgabe des folgenden Befehls ab:
 
@@ -322,7 +322,7 @@ Dieser Schritt muss im Kontext des neuen Abonnements, Abonnement 5, ausgeführt 
   az network vnet-gateway create -n VNet5GW -l japaneast --public-ip-address VNet5GWIP -g TestRG5 --vnet TestVNet5 --gateway-type Vpn --sku VpnGw1 --vpn-type RouteBased --no-wait
   ```
 
-### <a name="step-8---create-the-connections"></a>Schritt 8: Erstellen der Verbindungen
+### <a name="connections5"></a>Schritt 8: Erstellen der Verbindungen
 
 Wir haben diesen Schritt in zwei CLI-Sitzungen mit den Bezeichnungen **[Abonnement 1]** und **[Abonnement 5]** aufgeteilt, da sich die Gateways in unterschiedlichen Abonnements befinden. Zum Wechseln zwischen Abonnements führen Sie „az account list --all“ aus, um alle für Ihr Konto verfügbaren Abonnements aufzulisten, und führen dann „az account set --subscription <subscriptionID>“ aus, um zum Abonnement zu wechseln, das Sie verwenden möchten.
 

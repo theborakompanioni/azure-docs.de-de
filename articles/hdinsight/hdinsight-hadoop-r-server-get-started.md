@@ -13,13 +13,13 @@ ms.devlang: R
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 07/13/2017
+ms.date: 08/14/2017
 ms.author: bradsev
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: f0ee0d23f28df2824ea41f7c9f7490e1ec62d041
+ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
+ms.openlocfilehash: 14e2a14c74e00709e18a80325fbdd3cbcd71da37
 ms.contentlocale: de-de
-ms.lasthandoff: 07/27/2017
+ms.lasthandoff: 08/15/2017
 
 ---
 # <a name="get-started-using-r-server-on-hdinsight"></a>Erste Schritte mit R Server in HDInsight
@@ -240,7 +240,7 @@ Daraufhin sollte Folgendes zurückgegeben werden:
 
 ![Gleichzeitiger Benutzer 3](./media/hdinsight-hadoop-r-server-get-started/concurrent-users-3.png)
 
-Wenn Sie aufgefordert werden, das aktuelle Kerberos-Kennwort einzugeben, drücken Sie einfach die EINGABETASTE, um die Aufforderung zu ignorieren****. Die `-m`-Option im Befehl `useradd` gibt an, dass das System für den Benutzer einen Basisordner erstellt, der für die RStudio Community-Version erforderlich ist.
+Wenn Sie aufgefordert werden, das aktuelle Kerberos-Kennwort einzugeben, drücken Sie einfach die **EINGABETASTE**, um die Aufforderung zu ignorieren. Die `-m`-Option im Befehl `useradd` gibt an, dass das System für den Benutzer einen Basisordner erstellt, der für die RStudio Community-Version erforderlich ist.
 
 
 ### <a name="step-3-use-rstudio-community-version-with-the-user-created"></a>Schritt 3: Verwenden der RStudio Community-Version mit dem erstellten Benutzer
@@ -670,6 +670,26 @@ Als optionalen Schritt können Sie die Diagnoseprüfungen ausführen, indem Sie 
 6. Beenden Sie SSH
 
 ![Diagnose für Operationalisierung](./media/hdinsight-hadoop-r-server-get-started/admin-util-diagnostics.png)
+
+
+>[!NOTE]
+>**Lange Verzögerungen bei der Nutzung des Webdiensts in Spark**
+>
+>Wenn bei der Nutzung eines Webdiensts, der mit mrsdeploy-Funktionen in einem Spark-Computekontext erstellt wurde, lange Verzögerungen auftreten, müssen Sie unter Umständen einige fehlende Ordner hinzufügen. Wenn die Spark-Anwendung von einem Webdienst mit mrsdeploy-Funktionen aufgerufen wird, gehört sie zu einem Benutzer namens *rserve2*. So können Sie dieses Problem umgehen:
+
+    # Create these required folders for user 'rserve2' in local and hdfs:
+
+    hadoop fs -mkdir /user/RevoShare/rserve2
+    hadoop fs -chmod 777 /user/RevoShare/rserve2
+
+    mkdir /var/RevoShare/rserve2
+    chmod 777 /var/RevoShare/rserve2
+
+
+    # Next, create a new Spark compute context:
+ 
+    rxSparkConnect(reset = TRUE)
+
 
 In dieser Phase ist die Konfiguration der Operationalisierung abgeschlossen. Nun können Sie das Paket „mrsdeploy“ auf Ihrem RClient zum Herstellen einer Verbindung mit der Operationalisierung auf dem Edgeknoten verwenden und mit der Verwendung seiner Features wie [Remoteausführung](https://msdn.microsoft.com/microsoft-r/operationalize/remote-execution) und [Webdienste](https://msdn.microsoft.com/microsoft-r/mrsdeploy/mrsdeploy-websrv-vignette) beginnen. Je nachdem, ob Ihr Cluster in einem virtuellen Netzwerk eingerichtet ist, müssen Sie über die SSH-Anmeldung ein Tunneling für die Portweiterleitung einrichten. Die Einrichtung dieses Tunnels wird in den folgenden Abschnitten erläutert.
 

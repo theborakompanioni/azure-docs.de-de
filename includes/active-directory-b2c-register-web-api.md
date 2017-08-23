@@ -6,7 +6,7 @@ Verwenden Sie zum Registrieren Ihrer Web-API die in der Tabelle angegebenen Eins
 
 | Einstellung      | Beispielwert  | Beschreibung                                        |
 | ------------ | ------- | -------------------------------------------------- |
-| **Name** | Contoso B2C-API | Geben Sie für die Anwendung einen Namen**** ein, der Ihre API für Kunden beschreibt. | 
+| **Name** | Contoso B2C-API | Geben Sie für die Anwendung einen **Namen** ein, der Ihre API für Kunden beschreibt. | 
 | **Web-App/Web-API einschließen** | Ja | Wählen Sie für eine Web-API die Option **Ja** aus. |
 | **Impliziten Fluss zulassen** | Ja | Wählen Sie **Ja** aus, wenn Ihre Anwendung [OpenID Connect-Anmeldung](../articles/active-directory-b2c/active-directory-b2c-reference-oidc.md) verwendet. |
 | **Antwort-URL** | `https://localhost:44316/` | Antwort-URLs sind Endpunkte, an denen Azure AD B2C von Ihrer Anwendung angeforderte Token zurückgibt. Geben Sie [eine passende](../articles/active-directory-b2c/active-directory-b2c-app-registration.md#choosing-a-web-app-or-api-reply-url) **Antwort-URL** ein. In diesem Beispiel ist Ihre Web-API lokal und lauscht an Port 44316. |
