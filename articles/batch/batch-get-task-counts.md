@@ -32,7 +32,7 @@ Mit dem Vorgang „Get Task Counts“ (Taskanzahl abrufen) werden Tasks wie folg
 - Ein Task wird als **Ausgeführt** gezählt, wenn er einem Computeknoten zugewiesen, aber noch nicht abgeschlossen wurde. Ein Task wird als **Ausgeführt** gezählt, wenn sein Status entweder `preparing` oder `running` lautet. Dies wird mit dem Vorgang [Get information about a task][rest_get_task] (Informationen zu einem Task abrufen) angegeben.
 - Ein Task wird als **Abgeschlossen** gezählt, wenn er nicht mehr für die Ausführung ansteht. Ein als **Abgeschlossen** gezählter Task wurde in der Regel entweder erfolgreich abgeschlossen oder war nicht erfolgreich und hat das Wiederholungslimit ausgeschöpft. 
 
-Mit dem Vorgang „Get Task Counts“ (Taskanzahl abrufen) wird auch gemeldet, wie viele Tasks erfolgreich waren oder fehlgeschlagen sind. Batch ermittelt, ob ein Task erfolgreich war oder nicht, indem die **result**-Eigenschaft der [executionInfo][https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-task#executionInfo]-Eigenschaft überprüft wird:
+Mit dem Vorgang „Get Task Counts“ (Taskanzahl abrufen) wird auch gemeldet, wie viele Tasks erfolgreich waren oder fehlgeschlagen sind. Batch ermittelt, ob ein Task erfolgreich war oder nicht, indem die **result** -Eigenschaft der [executionInfo](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-task#executionInfo) -Eigenschaft überprüft wird:
 
     - Ein Task wird als **Erfolgreich** gezählt, wenn das Ergebnis der Taskausführung `success` lautet.
     - Ein Task wird als **Fehlgeschlagen** gezählt, wenn das Ergebnis der Taskausführung `failure` lautet.
