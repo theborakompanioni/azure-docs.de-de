@@ -64,12 +64,12 @@
 ### [Linux-VM aus einer Vorlage](../../virtual-machines/virtual-machines-linux-app-frameworks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [Windows-VM aus einer Vorlage](../../virtual-machines/virtual-machines-windows-app-frameworks.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ## Speichern von Daten
-### [Blobs](../../storage/storage-dotnet-how-to-use-blobs.md)
-### [Dateifreigaben](../../storage/storage-dotnet-how-to-use-files.md)
-### [Schlüssel-Wert-Paare](../../storage/storage-dotnet-how-to-use-tables.md)
+### [Blobs](../../storage/blobs/storage-dotnet-how-to-use-blobs.md)
+### [Dateifreigaben](../../storage/files/storage-dotnet-how-to-use-files.md)
+### [Schlüssel-Wert-Paare](../../cosmos-db/table-storage-how-to-use-dotnet.md)
 ### [JSON-Dokumente](../../documentdb/documentdb-get-started.md)
 ### [Relationale Tabellen](../../sql-database/sql-database-get-started.md)
-### [Meldungswarteschlangen](../../storage/storage-dotnet-how-to-use-queues.md)
+### [Meldungswarteschlangen](../../storage/queues/storage-dotnet-how-to-use-queues.md)
 
 ## Skalieren
 ### [Web-Apps und mobile Apps](../../app-service-web/web-sites-scale.md)
