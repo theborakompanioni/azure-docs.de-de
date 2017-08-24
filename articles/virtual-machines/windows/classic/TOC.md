@@ -1,6 +1,6 @@
 # Übersicht
 ## [About virtual machines (Informationen zu virtuellen Computern)](../../virtual-machines-windows-about.md)
-## [Datenträger und VHDs](../../../storage/storage-about-disks-and-vhds-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+## [Datenträger und VHDs](../about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ## [Virtuelle Netzwerke](../../../virtual-network/virtual-networks-overview.md)
 ## [Häufig gestellte Fragen](faq.md)
 ## [Azure App Service, Azure Virtual Machines, Service Fabric und Azure Cloud Services im Vergleich](../../../app-service-web/choose-web-site-cloud-service-vm.md)
