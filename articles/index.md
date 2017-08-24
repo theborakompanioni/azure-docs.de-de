@@ -4,10 +4,10 @@ hide_bc: true
 title: Microsoft Azure-Dokumentation
 description: Erfahren Sie, wie Sie mit Microsoft Azure-Clouddiensten leistungsstarke Anwendungen erstellen und verwalten. Laden Sie die Dokumentation, Beispielcode, Tutorials und vieles mehr herunter.
 ms.translationtype: HT
-ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
-ms.openlocfilehash: c9bb109df050041aaff861adfa8dfcd2947d981d
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: 8d0d10a53be9299931821c75c8c17bb967a05449
 ms.contentlocale: de-de
-ms.lasthandoff: 08/16/2017
+ms.lasthandoff: 08/23/2017
 
 ---
 <div id="main" class="v2">
@@ -699,9 +699,27 @@ ms.lasthandoff: 08/16/2017
                                             </a>
                                         </li>
                                         <li>
+                                            <a href="/azure/storage/blobs/storage-blobs-introduction/">
+                                                <img src="media/index/logo_azure-blob-storage.svg" alt="" />
+                                                <p>Blob Storage</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/azure/storage/files/storage-files-introduction/">
+                                                <img src="media/index/logo_azure-storage-file.svg" alt="" />
+                                                <p>File Storage</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/azure/storage/queues/storage-queues-introduction/">
+                                                <img src="media/index/logo_azure-storage-q.svg" alt="" />
+                                                <p>Queue Storage</p>
+                                            </a>
+                                        </li>
+                                        <li>
                                             <a href="/azure/data-lake-store/">
                                                 <img src="media/index/Azure-Data-Lake-Store-COLOR.svg" alt="" />
-                                                <p>Data Lake Store</p>
+                                                <p>Data Lake-Speicher</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1446,6 +1464,63 @@ ms.lasthandoff: 08/16/2017
                                 </a>
                             </li>
                             <li>
+                                <a href="/azure/storage/blobs/storage-blobs-introduction/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/logo_azure-blob-storage.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Blob Storage</h3>
+                                                    <p>Hochgradig skalierbarer Objektspeicher für unstrukturierte Daten</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/storage/files/storage-files-introduction/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/logo_azure-storage-file.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>File Storage</h3>
+                                                    <p>Einfaches, verteiltes, plattformübergreifendes Dateisystem</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/storage/queues/storage-queues-introduction/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/logo_azure-storage-q.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Queue Storage</h3>
+                                                    <p>Strapazierfähige Warteschlangen für Clouddienste mit großem Volumen</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
                                 <a href="/azure/data-lake-store/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
@@ -1456,7 +1531,7 @@ ms.lasthandoff: 08/16/2017
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Data Lake Store</h3>
+                                                    <h3>Data Lake-Speicher</h3>
                                                     <p>Riesiges Repository für Big Data-Analyseworkloads</p>
                                                 </div>
                                             </div>

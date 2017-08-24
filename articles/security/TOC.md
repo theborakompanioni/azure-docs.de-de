@@ -8,6 +8,7 @@
 ## [Service Fabric-Sicherheit](azure-service-fabric-security-overview.md)
 ## [Identitätsverwaltung](security-identity-management-overview.md)
 ## [IoT-Sicherheit](../iot-suite/iot-security-architecture.md#security-in-iot)
+## [Übersicht über die Azure-Verschlüsselung](security-azure-encryption-overview.md)
 ## [Sicherheitsarchitektur](azure-security-architecture-overview.md)
 ### [Gewährleisten von Betriebssicherheit](azure-operational-security.md)
 ### [Erweiterte Bedrohungserkennung](azure-threat-detection.md)
@@ -30,7 +31,7 @@
 
 ## Speichersicherheit
 ### [Bewährte Methoden für Datensicherheit und Verschlüsselung](azure-security-data-encryption-best-practices.md)
-### [Sicherheitsleitfaden zu Storage](../storage/storage-security-guide.md?toc=%2fazure%2fsecurity%2ftoc.json)
+### [Sicherheitsleitfaden zu Storage](../storage/common/storage-security-guide.md?toc=%2fazure%2fsecurity%2ftoc.json)
 
 ## Computesicherheit
 ### [Bewährte Methoden für virtuelle Computer](azure-security-best-practices-vms.md)
@@ -63,11 +64,12 @@
 
 ## PaaS-Dienste
 ### [Schützen von PaaS-Bereitstellungen](security-paas-deployments.md)
-#### [Schützen webbasierter und mobiler PaaS-Anwendungen mit SQL](security-paas-applications-using-sql.md)
-#### [Bewährte Sicherheitsmethoden für SQL-Datenbank](azure-database-security-best-practices.md)
-#### [Prüfliste für die Sicherheit von SQL-Datenbank](azure-database-security-checklist.md)
 #### [Schützen webbasierter und mobiler PaaS-Anwendungen mit App Services](security-paas-applications-using-app-services.md)
+#### [Schützen webbasierter und mobiler PaaS-Anwendungen mit SQL](security-paas-applications-using-sql.md)
+##### [Bewährte Sicherheitsmethoden für SQL-Datenbank](azure-database-security-best-practices.md)
+##### [Prüfliste für die Sicherheit von SQL-Datenbank](azure-database-security-checklist.md)
 ####[Prüfliste für die Betriebssicherheit](azure-operational-security-checklist.md)
+#### [Schützen webbasierter und mobiler PaaS-Anwendungen mit Azure Storage](security-paas-applications-using-storage.md)
 
 ## Internet der Dinge
 ### [Schützen Ihrer IoT-Bereitstellung](../iot-suite/iot-suite-security-deployment.md)

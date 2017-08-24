@@ -33,17 +33,15 @@
   items:
     - name: Sichere Container
       href: container-service-security.md
-    - name: Dienstprinzipal – Kubernetes
-      href: container-service-kubernetes-service-principal.md
 - name: Anleitungen
   items:
-    - name: 'Kubernetes mit Windows: Schnellstart'
+    - name: Kubernetes mit Windows
       href: container-service-kubernetes-windows-walkthrough.md
-    - name: Containerverwaltung – Kubernetes-Benutzeroberfläche
+    - name: Kubernetes-Weboberfläche
       href: container-service-kubernetes-ui.md
     - name: Bereitstellen von Helm-Diagrammen
       href: container-service-kubernetes-helm.md
-    - name: CI/CD mit Kubernetes und Jenkins
+    - name: Jenkins und ACS Kubernetes
       href: container-service-kubernetes-jenkins.md
     - name: Verwenden von Draft mit ACR und ACS
       href: container-service-draft-up.md

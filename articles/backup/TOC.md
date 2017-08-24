@@ -55,6 +55,7 @@
 #### [Sichern einer SharePoint-Farm mit Azure Backup Server](backup-azure-backup-sharepoint-mabs.md)
 #### [Sichern von SQL mit Azure Backup Server](backup-azure-sql-mabs.md)
 #### [Schützen des Systemstatus und Bare-Metal-Recovery](backup-mabs-system-state-and-bmr.md)
+### [Wiederherstellen von Daten von Azure Backup Server](backup-azure-alternate-dpm-server.md)
 
 ## Data Protection Manager
 ### [Vorbereiten von DPM-Workloads im Azure-Portal](backup-azure-dpm-introduction.md)
