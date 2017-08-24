@@ -39,6 +39,8 @@
       href: tutorial-azure-security.md
     - name: '12: Team Services CI/CD'
       href: tutorial-vsts-iis-cicd.md
+    - name: '13: Sichern von Webservern mit SSL'
+      href: tutorial-secure-web-server.md
 - name: Beispiele
   items:
     - name: PowerShell
@@ -50,7 +52,7 @@
     - name: Regionen und Verfügbarkeit
       href: regions-and-availability.md
     - name: Speicher
-      href: ../../storage/storage-about-disks-and-vhds-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+      href: about-disks-and-vhds.md
     - name: Netzwerk
       href: network-overview.md
     - name: VM-Skalierungsgruppen
@@ -205,6 +207,10 @@
               href: excel-cluster-hpcpack.md
     - name: Verwalten von Speicher
       items:
+        - name: Informationen zu Managed Disks
+          href: managed-disks-overview.md
+        - name: Häufig gestellte Fragen zu Datenträgern
+          href: faq-for-disks.md
         - name: Hinzufügen eines Datenträgers
           items:
             - name: Azure Powershell
@@ -217,12 +223,14 @@
           href: expand-os-disk.md
         - name: Erstellen einer Momentaufnahme eines Datenträgers
           href: snapshot-copy-managed-disk.md
+        - name: Sichern nicht verwalteter Datenträger
+          href: incremental-snapshots.md
         - name: Konvertieren von Datenträgern zwischen Standard und Premium
           href: convert-disk-storage.md
-        - name: Häufig gestellte Fragen zu Datenträgern
-          href: ../../storage/storage-faq-for-disks.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
         - name: Verwenden von File Storage
           href: mount-azure-file-storage.md
+        - name: Bereitstellen von Datenträgern mit Vorlage
+          href: using-managed-disks-template-deployments.md
         - name: Migrieren zu Managed Disks
           href: migrate-to-managed-disks.md
           items:

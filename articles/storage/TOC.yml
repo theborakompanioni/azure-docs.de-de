@@ -1,0 +1,12 @@
+- name: Übersicht
+  items:
+    - name: Einführung
+      href: ./common/storage-introduction.md
+    - name: 'Wählen von Blobs, Dateien oder Datenträgern'
+      href: ./common/storage-decide-blobs-files-disks.md
+- name: Blobs (in englischer Sprache)
+  href: ./blobs/storage-blobs-introduction.md
+- name: Dateien
+  href: ./files/storage-files-introduction.md
+- name: Warteschlangen
+  href: ./queues/storage-queues-introduction.md
