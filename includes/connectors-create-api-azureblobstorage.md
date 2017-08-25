@@ -1,6 +1,6 @@
 ### <a name="prerequisites"></a>Voraussetzungen
 * Ein Azure-Konto. Sie können ein [kostenloses Konto](https://azure.microsoft.com/free) erstellen.
-* Ein [Azure Blob Storage-Konto](../articles/storage/storage-create-storage-account.md) einschließlich Name und Zugriffsschlüssel des Speicherkontos. Diese Informationen werden in den Eigenschaften des Speicherkontos im Azure-Portal aufgeführt. Erfahren Sie mehr über [Azure Storage](../articles/storage/storage-introduction.md).
+* Ein [Azure Blob Storage-Konto](../articles/storage/common/storage-create-storage-account.md) einschließlich Name und Zugriffsschlüssel des Speicherkontos. Diese Informationen werden in den Eigenschaften des Speicherkontos im Azure-Portal aufgeführt. Erfahren Sie mehr über [Azure Storage](../articles/storage/common/storage-introduction.md).
 
 Bevor Sie Ihr Azure Blob Storage-Konto in einer Logik-App verwenden, stellen Sie eine Verbindung mit Ihrem Azure Blob Storage-Konto her. Sie können dies ganz einfach in Ihrer Logik-App im Azure-Portal durchführen.  
 

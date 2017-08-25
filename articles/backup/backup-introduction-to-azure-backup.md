@@ -13,15 +13,14 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 6/14/2017
+ms.date: 8/11/2017
 ms.author: markgal;trinadhk;anuragm
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: 629b3c54a35f939845349e6f2ed7743885e41f3b
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 5a6aad672ddaa43f993daf4cf48975e91d2657da
 ms.contentlocale: de-de
-ms.lasthandoff: 06/16/2017
-
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="overview-of-the-features-in-azure-backup"></a>Übersicht über die Funktionen in Azure Backup
@@ -36,7 +35,7 @@ Herkömmliche Sicherungslösungen haben sich dahingehend entwickelt, dass die Cl
 
 **Unbegrenzte Skalierung**: Für Azure Backup wird die Leistungsstärke und unbegrenzte Skalierung der Azure-Cloud genutzt, um eine hohe Verfügbarkeit sicherzustellen – ohne Wartungs- oder Überwachungsaufwand. Sie können Warnungen einrichten, um Informationen zu Ereignissen bereitzustellen, aber Sie müssen sich nicht um die hohe Verfügbarkeit für Ihre Daten in der Cloud kümmern.
 
-**Mehrere Speicheroptionen**: Ein Aspekt der hohen Verfügbarkeit ist die Speicherreplikation. Azure Backup bietet zwei Arten der Replikation: mit [lokal redundantem Speicher](../storage/storage-redundancy.md#locally-redundant-storage) und mit [georedundantem Speicher](../storage/storage-redundancy.md#geo-redundant-storage). Wählen Sie die Sicherungsspeicheroption aus, die zu Ihren Anforderungen passt:
+**Mehrere Speicheroptionen**: Ein Aspekt der hohen Verfügbarkeit ist die Speicherreplikation. Azure Backup bietet zwei Arten der Replikation: mit [lokal redundantem Speicher](../storage/common/storage-redundancy.md#locally-redundant-storage) und mit [georedundantem Speicher](../storage/common/storage-redundancy.md#geo-redundant-storage). Wählen Sie die Sicherungsspeicheroption aus, die zu Ihren Anforderungen passt:
 
 * Lokal redundanter Speicher (Locally Redundant Storage, LRS) repliziert Ihre Daten dreimal in einem gekoppelten Datencenter in der gleichen Region. (Es werden also drei Kopien Ihrer Daten erstellt.) LRS ist eine kostengünstige Möglichkeit, um Daten vor lokalen Hardwarefehlern zu schützen.
 
@@ -96,10 +95,10 @@ In der folgende Tabellen sind die Azure Backup-Komponenten angegeben, die über 
 | Azure IaaS-VM-Sicherung |Anwendungskonsistente Sicherung per [Pre-Skript- und Post-Skript-Framework](backup-azure-linux-app-consistent.md)<br/> [Präzise Dateiwiederherstellung](backup-azure-restore-files-from-vm.md)<br/> [Wiederherstellen aller VM-Datenträger](backup-azure-arm-restore-vms.md#restore-backed-up-disks)<br/> [VM-Wiederherstellung](backup-azure-arm-restore-vms.md#create-a-new-vm-from-restore-point) |
 
 ## <a name="using-premium-storage-vms-with-azure-backup"></a>Verwenden von Storage Premium-VMs mit Azure Backup
-Azure Backup schützt Storage Premium-VMs. Azure Storage Premium ist ein SSD-basierter Speicher (Solid State Drive, Festkörperlaufwerk), der auf die Unterstützung E/A-intensiver Workloads ausgelegt ist. Storage Premium ist gut für Workloads von virtuellen Computern (VMs) geeignet. Weitere Informationen zu Storage Premium finden Sie im Artikel [Storage Premium: Hochleistungsspeicher für Workloads auf virtuellen Azure-Computern](../storage/storage-premium-storage.md).
+Azure Backup schützt Storage Premium-VMs. Azure Storage Premium ist ein SSD-basierter Speicher (Solid State Drive, Festkörperlaufwerk), der auf die Unterstützung E/A-intensiver Workloads ausgelegt ist. Storage Premium ist gut für Workloads von virtuellen Computern (VMs) geeignet. Weitere Informationen zu Storage Premium finden Sie im Artikel [Storage Premium: Hochleistungsspeicher für Workloads auf virtuellen Azure-Computern](../storage/common/storage-premium-storage.md).
 
 ### <a name="back-up-premium-storage-vms"></a>Sichern virtueller Storage Premium-Computer
-Beim Sichern virtueller Storage Premium-Computer erstellt der Backup-Dienst einen temporären Stagingspeicherort namens „AzureBackup-“ im Storage Premium-Konto. Die Größe des Stagingspeicherorts entspricht der Größe der Momentaufnahme des Wiederherstellungspunkts. Stellen Sie sicher, dass im Storage Premium-Konto ausreichend freier Speicherplatz für den temporären Stagingspeicherort zur Verfügung steht. Weitere Informationen finden Sie im Artikel zu den [Storage Premium-Einschränkungen](../storage/storage-premium-storage.md#scalability-and-performance-targets). Wenn der Sicherungsauftrag abgeschlossen ist, wird der Stagingspeicherort gelöscht. Der Preis für den Speicher, der für den Stagingspeicherort genutzt wird, entspricht den [Preisen für Storage Premium](../storage/storage-premium-storage.md#pricing-and-billing).
+Beim Sichern virtueller Storage Premium-Computer erstellt der Backup-Dienst einen temporären Stagingspeicherort namens „AzureBackup-“ im Storage Premium-Konto. Die Größe des Stagingspeicherorts entspricht der Größe der Momentaufnahme des Wiederherstellungspunkts. Stellen Sie sicher, dass im Storage Premium-Konto ausreichend freier Speicherplatz für den temporären Stagingspeicherort zur Verfügung steht. Weitere Informationen finden Sie im Artikel zu den [Storage Premium-Einschränkungen](../storage/common/storage-premium-storage.md#scalability-and-performance-targets). Wenn der Sicherungsauftrag abgeschlossen ist, wird der Stagingspeicherort gelöscht. Der Preis für den Speicher, der für den Stagingspeicherort genutzt wird, entspricht den [Preisen für Storage Premium](../storage/common/storage-premium-storage.md#pricing-and-billing).
 
 > [!NOTE]
 > Ändern oder bearbeiten Sie den Stagingspeicherort nicht.
@@ -227,7 +226,7 @@ Ein Recovery Services-Tresor ist eine Onlinespeicherentität in Azure, die zum S
 Sicherungstresore, die auf Azure Service Manager basieren, waren die erste Version eines Tresors. Recovery Services-Tresore, die um die Azure Resource Manager-Modellfunktionen ergänzt wurden, sind die zweite Version. Eine vollständige Beschreibung der Funktionsunterschiede finden Sie im [Übersichtsartikel zu Recovery Services-Tresoren](backup-azure-recovery-services-vault-overview.md). Sicherungstresors werden weiterhin unterstützt, Sie können aber keine neuen Sicherungstresore im Azure-Portal mehr erstellen.
 
 > [!IMPORTANT]
-> Sie können nun ein Upgrade für Ihre Sicherungstresore auf Recovery Services-Tresore durchführen. Detaillierte Informationen finden Sie im Artikel [Durchführen eines Upgrades für einen Sicherungstresor auf einen Recovery Services-Tresor](backup-azure-upgrade-backup-to-recovery-services.md). Microsoft empfiehlt, ein Upgrade für Ihre Sicherungstresore auf Recovery Services-Tresore durchzuführen.<br/> **Ab dem 1. November 2017**:
+> Sie können nun ein Upgrade für Ihre Sicherungstresore auf Recovery Services-Tresore durchführen. Detaillierte Informationen finden Sie im Artikel [Durchführen eines Upgrades für einen Sicherungstresor auf einen Recovery Services-Tresor](backup-azure-upgrade-backup-to-recovery-services.md). Microsoft empfiehlt, ein Upgrade für Ihre Sicherungstresore auf Recovery Services-Tresore durchzuführen.<br/> Nach dem **15. Oktober 2017** können mit PowerShell keine Sicherungstresore mehr erstellt werden. <br/> **Ab dem 1. November 2017 gilt Folgendes:**
 >- Für alle verbleibenden Sicherungstresore wird automatisch ein Upgrade auf Recovery Services-Tresore durchgeführt.
 >- Der Zugriff auf Ihre Sicherungsdaten im klassischen Portal wird nicht möglich sein. Verwenden Sie stattdessen das Azure-Portal, um auf Ihre Sicherungsdaten in Recovery Services-Tresoren zuzugreifen.
 >

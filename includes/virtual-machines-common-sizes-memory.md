@@ -74,7 +74,7 @@ ACU: 180 - 240
 | Standard_GS4 |16 |224 |448 |32 |80.000/800 (2.112) |40.000/1.000 |8/6000–16000 &#8224; |
 | Standard_GS5** |32 |448 |896 |64 |160.000/1.600 (4.224) |80.000/2.000 |8/20000 |
 
-* Der mit einer VM der GS-Serie maximal mögliche Datenträgerdurchsatz (IOPS oder MB/s) kann durch Anzahl, Größe und Striping der angefügten Datenträger beschränkt werden. Nähere Informationen finden Sie unter [Premium-Speicher: Hochleistungsspeicher für Arbeitslasten auf virtuellen Azure-Computern](../articles/storage/storage-premium-storage.md). 
+* Der mit einer VM der GS-Serie maximal mögliche Datenträgerdurchsatz (IOPS oder MB/s) kann durch Anzahl, Größe und Striping der angefügten Datenträger beschränkt werden. Nähere Informationen finden Sie unter [Premium-Speicher: Hochleistungsspeicher für Arbeitslasten auf virtuellen Azure-Computern](../articles/storage/common/storage-premium-storage.md). 
 
 **Instanz wird isoliert auf dedizierter Hardware ausgeführt, die für einen einzigen Kunden bereitgestellt wird.
 
@@ -109,7 +109,7 @@ ACU: 210 - 250
 | Standard_DS14_v2 |16 |112 |224 |32 |64.000/512 (576) |51.200/768 |8/6000–12000 &#8224; |
 | Standard_DS15_v2** |20 |140 |280 |40 |80.000/640 (720) |64.000/960 |8/20000***
 
-* Der mit einer VM der DSv2-Serie maximal mögliche Datenträgerdurchsatz (IOPS oder MB/s) kann durch Anzahl, Größe und Striping der angefügten Datenträger beschränkt werden.  Nähere Informationen finden Sie unter [Premium-Speicher: Hochleistungsspeicher für Arbeitslasten auf virtuellen Azure-Computern](../articles/storage/storage-premium-storage.md).
+* Der mit einer VM der DSv2-Serie maximal mögliche Datenträgerdurchsatz (IOPS oder MB/s) kann durch Anzahl, Größe und Striping der angefügten Datenträger beschränkt werden.  Nähere Informationen finden Sie unter [Premium-Speicher: Hochleistungsspeicher für Arbeitslasten auf virtuellen Azure-Computern](../articles/storage/common/storage-premium-storage.md).
 
 **Die Instanz ist ein isolierter Knoten, mit dem dafür gesorgt wird, dass Ihre VM die einzige VM auf unserem Intel Haswell-Knoten ist.
 
@@ -146,7 +146,7 @@ ACU: 160
 | Standard_DS13 |8 |56 |112 |16 |32.000/256 (288) |25.600/256 |8/4000 |
 | Standard_DS14 |16 |112 |224 |32 |64.000/512 (576) |51.200/512 |8/6000–8000 &#8224; |
 
-* Der mit einer VM der DS-Serie maximal mögliche Datenträgerdurchsatz (IOPS oder MB/s) kann durch Anzahl, Größe und Striping der angefügten Datenträger beschränkt werden.  Nähere Informationen finden Sie unter [Premium-Speicher: Hochleistungsspeicher für Arbeitslasten auf virtuellen Azure-Computern](../articles/storage/storage-premium-storage.md).
+* Der mit einer VM der DS-Serie maximal mögliche Datenträgerdurchsatz (IOPS oder MB/s) kann durch Anzahl, Größe und Striping der angefügten Datenträger beschränkt werden.  Nähere Informationen finden Sie unter [Premium-Speicher: Hochleistungsspeicher für Arbeitslasten auf virtuellen Azure-Computern](../articles/storage/common/storage-premium-storage.md).
 
 
 ## <a name="d-series"></a>D-Serie

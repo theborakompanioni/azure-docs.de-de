@@ -14,7 +14,7 @@
     | **Abonnement** | Auswählen Ihres Abonnements | Das zu verwendende Azure-Abonnement. |
     | **[Ressourcengruppe](../articles/azure-resource-manager/resource-group-overview.md)** | myResourceGroup |  Name der Ressourcengruppe, in der die Funktions-App erstellt wird. |
     | **[App Service-Plan](../articles/azure-functions/functions-scale.md)** | Verbrauchsplan | Achten Sie darauf, den **Verbrauch** unter **Größe** zu wählen, wenn Sie einen neuen Plan erstellen.  |
-    | **[Speicherkonto](../articles/storage/storage-create-storage-account.md#create-a-storage-account)** | Global eindeutiger Name | Verwenden ein vorhandenes Speicherkonto aus, oder erstellen Sie ein neues.   |
+    | **[Speicherkonto](../articles/storage/common/storage-create-storage-account.md#create-a-storage-account)** | Global eindeutiger Name | Verwenden ein vorhandenes Speicherkonto aus, oder erstellen Sie ein neues.   |
 
 4. Klicken Sie auf **Erstellen**, um in Azure eine Funktions-App mit diesen Einstellungen zu erstellen. Notieren Sie sich nach Abschluss der Bereitstellung den Wert der **Website-URL**, da es sich dabei um die Adresse Ihrer Funktions-App in Azure handelt. 
 

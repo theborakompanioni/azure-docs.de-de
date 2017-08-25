@@ -16,10 +16,10 @@ ms.date: 06/28/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
-ms.openlocfilehash: 3c7a6ac092854bc2d78ac23079d168cf8b5a2201
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: cf8fdca51a6a4ad1b7cd4fe6980543199f6b36e0
 ms.contentlocale: de-de
-ms.lasthandoff: 08/04/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="get-started-building-solutions-with-the-batch-client-library-for-net"></a>Erste Schritte zum Erstellen von Lösungen mit der Batch-Clientbibliothek für .NET
@@ -31,7 +31,7 @@ ms.lasthandoff: 08/04/2017
 >
 >
 
-Informieren Sie sich in diesem Artikel anhand einer ausführlich beschriebenen C#-Beispielanwendung über die Grundlagen von [Azure Batch][azure_batch] und die [Batch-Bibliothek für .NET][net_api]. Wir sehen uns an, wie diese Beispielanwendung den Batch-Dienst nutzt, um eine parallele Workload in der Cloud zu verarbeiten, und wie sie mit [Azure Storage](../storage/storage-introduction.md) in Bezug auf die Dateibereitstellung und -wiederherstellung interagiert. Sie lernen häufig verwendete Batch-Anwendungsworkflows kennen und erhalten ein besseres Verständnis in Bezug auf die Hauptkomponenten von Batch, wie etwa Aufträge, Aufgaben, Pools und Computeknoten.
+Informieren Sie sich in diesem Artikel anhand einer ausführlich beschriebenen C#-Beispielanwendung über die Grundlagen von [Azure Batch][azure_batch] und die [Batch-Bibliothek für .NET][net_api]. Wir sehen uns an, wie diese Beispielanwendung den Batch-Dienst nutzt, um eine parallele Workload in der Cloud zu verarbeiten, und wie sie mit [Azure Storage](../storage/common/storage-introduction.md) in Bezug auf die Dateibereitstellung und -wiederherstellung interagiert. Sie lernen häufig verwendete Batch-Anwendungsworkflows kennen und erhalten ein besseres Verständnis in Bezug auf die Hauptkomponenten von Batch, wie etwa Aufträge, Aufgaben, Pools und Computeknoten.
 
 ![Batch-Lösungsworkflow (einfach)][11]<br/>
 
@@ -41,10 +41,10 @@ In diesem Artikel wird davon ausgegangen, dass Sie über C#- und Visual Studio-G
 ### <a name="accounts"></a>Konten
 * **Azure-Konto**: Falls Sie noch kein Azure-Abonnement besitzen, können Sie ein [kostenloses Azure-Konto erstellen][azure_free_account].
 * **Batch-Konto**: Wenn Sie über ein Azure-Abonnement verfügen, können Sie ein [Azure Batch-Konto erstellen](batch-account-create-portal.md).
-* **Storage-Konto**: Weitere Informationen finden Sie unter [Informationen zu Azure-Speicherkonten](../storage/storage-create-storage-account.md) im Abschnitt [Erstellen eines Speicherkontos](../storage/storage-create-storage-account.md#create-a-storage-account).
+* **Storage-Konto**: Weitere Informationen finden Sie unter [Informationen zu Azure-Speicherkonten](../storage/common/storage-create-storage-account.md) im Abschnitt [Erstellen eines Speicherkontos](../storage/common/storage-create-storage-account.md#create-a-storage-account).
 
 > [!IMPORTANT]
-> Batch unterstützt derzeit *nur* den Speicherkontotyp **Allgemein** (siehe Schritt 5, [Speicherkonto erstellen](../storage/storage-create-storage-account.md#create-a-storage-account), unter [Informationen zu Azure Storage-Konten](../storage/storage-create-storage-account.md)).
+> Batch unterstützt derzeit *nur* den Speicherkontotyp **Allgemein** (siehe Schritt 5, [Speicherkonto erstellen](../storage/common/storage-create-storage-account.md#create-a-storage-account), unter [Informationen zu Azure Storage-Konten](../storage/common/storage-create-storage-account.md)).
 >
 >
 
@@ -128,7 +128,7 @@ Navigieren Sie zum Anfang der `MainAsync`-Methode in der Datei `Program.cs` des 
 ![Erstellen von Containern in Azure Storage][1]
 <br/>
 
-Batch enthält integrierte Unterstützung für die Interaktion mit Azure Storage. Über Container in Ihrem Storage-Konto werden die Dateien angegeben, die für die in Ihrem Batch-Konto ausgeführten Aufgaben erforderlich sind. Die Container stellen auch einen Ort zum Speichern von Ausgabedaten dar, die von den Aufgaben produziert werden. Als Erstes erstellt die Clientanwendung *DotNetTutorial* drei Container in [Azure Blob Storage](../storage/storage-introduction.md):
+Batch enthält integrierte Unterstützung für die Interaktion mit Azure Storage. Über Container in Ihrem Storage-Konto werden die Dateien angegeben, die für die in Ihrem Batch-Konto ausgeführten Aufgaben erforderlich sind. Die Container stellen auch einen Ort zum Speichern von Ausgabedaten dar, die von den Aufgaben produziert werden. Als Erstes erstellt die Clientanwendung *DotNetTutorial* drei Container in [Azure Blob Storage](../storage/common/storage-introduction.md):
 
 * **application:**Dieser Container dient zum Speichern der Anwendung, die von den Aufgaben ausgeführt wird, sowie aller Abhängigkeiten (etwa DLLs).
 * **input:**Die zu verarbeitenden Datendateien werden von den Aufgaben aus dem Container *input* heruntergeladen.
@@ -188,7 +188,7 @@ private static async Task CreateContainerIfNotExistAsync(
 Nachdem die Container erstellt wurden, kann die Anwendung die Dateien hochladen, die von den Aufgaben verwendet werden.
 
 > [!TIP]
-> [Erste Schritte mit Azure Blob Storage mit .NET](../storage/storage-dotnet-how-to-use-blobs.md) bietet eine gute Übersicht über die Verwendung von Azure Storage-Containern und -Blobs. Es ist ratsam, sich diese Informationen zu Beginn der Nutzung von Batch durchzulesen.
+> [Erste Schritte mit Azure Blob Storage mit .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md) bietet eine gute Übersicht über die Verwendung von Azure Storage-Containern und -Blobs. Es ist ratsam, sich diese Informationen zu Beginn der Nutzung von Batch durchzulesen.
 >
 >
 
@@ -286,7 +286,7 @@ Bei Shared Access Signatures handelt es sich um Zeichenfolgen, die – bei Einbi
 * **Container-Shared Access Signatures:**Wenn die Arbeit einer Aufgabe auf dem Computeknoten abgeschlossen ist, wird die Ausgabedatei in Azure Storage in den Container *output* hochgeladen. Hierfür nutzt TaskApplication eine Container-Shared Access Signature, die im Rahmen des Pfads beim Hochladen der Datei Lese-/Schreibzugriff auf den Container ermöglicht. Das Abrufen der Container-Shared Access Signature ähnelt dem Abrufen der Blob-Shared Access Signature. In DotNetTutorial sehen Sie, dass die `GetContainerSasUrl`-Hilfsmethode für diesen Vorgang [CloudBlobContainer.GetSharedAccessSignature][net_sas_container] aufruft. „Schritt 6: Überwachen von Aufgaben“ enthält weitere Informationen dazu, wie TaskApplication die Container-Shared Access Signature verwendet.
 
 > [!TIP]
-> Sehen Sie sich die zweiteilige Reihe zu Shared Access Signatures an: [Teil 1: Verwenden von Shared Access Signatures (SAS)](../storage/storage-dotnet-shared-access-signature-part-1.md) und [Teil 2: Erstellen und Verwenden einer SAS mit Blob Storage](../storage/storage-dotnet-shared-access-signature-part-2.md). Darin erhalten Sie weitere Informationen zur Bereitstellung des sicheren Zugriffs auf Daten in Ihrem Speicherkonto.
+> Sehen Sie sich die zweiteilige Reihe zu Shared Access Signatures an: [Teil 1: Verwenden von Shared Access Signatures (SAS)](../storage/common/storage-dotnet-shared-access-signature-part-1.md) und [Teil 2: Erstellen und Verwenden einer SAS mit Blob Storage](../storage/blobs/storage-dotnet-shared-access-signature-part-2.md). Darin erhalten Sie weitere Informationen zur Bereitstellung des sicheren Zugriffs auf Daten in Ihrem Speicherkonto.
 >
 >
 

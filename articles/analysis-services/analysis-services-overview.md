@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 08/01/2017
 ms.author: owend
 ms.translationtype: HT
-ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
-ms.openlocfilehash: 94d228f38a760b40f1acb4685702e6244f03bb5d
+ms.sourcegitcommit: 368589509b163cacf495fd0be893a8953fe2066e
+ms.openlocfilehash: ff03ce6463176bad8e8d89985441d23c7d76b183
 ms.contentlocale: de-de
-ms.lasthandoff: 08/05/2017
+ms.lasthandoff: 08/17/2017
 
 ---
 # <a name="what-is-azure-analysis-services"></a>Was ist Azure Analysis Services?
@@ -34,7 +34,7 @@ Mit Analysis Services können Sie Daten aus verschiedenen Quellen zusammenführe
 In [diesem Video](https://sec.ch9.ms/ch9/d6dd/a1cda46b-ef03-4cea-8f11-68da23c5d6dd/AzureASoverview_high.mp4) erfahren Sie, wie sich Azure Analysis Services in die allgemeinen Business Intelligence-Funktionen (BI) von Microsoft einfügt und wie Sie von der Verlagerung Ihrer Datenmodelle in die Cloud profitieren.
 
 ## <a name="built-on-sql-server-analysis-services"></a>Aufbauend auf SQL Server Analysis Services
-Azure Analysis Services ist mit zahlreichen praktischen Features kompatibel, die bereits in SQL Server Analysis Services Enterprise Edition enthalten sind. Azure Analysis Services unterstützt tabellarische Modelle mit den [Kompatibilitätsgraden](https://docs.microsoft.com/sql/analysis-services/tabular-models/compatibility-level-for-tabular-models-in-analysis-services) 1200 und 1400. Partitionen, Sicherheit auf Zeilenebene, bidirektionale Beziehungen und Übersetzungen werden unterstützt. Dank In-Memory- und DirectQuery-Modi können selbst Abfragen für umfangreiche und komplexe Datasets blitzschnell ausgeführt werden.
+Azure Analysis Services ist mit zahlreichen praktischen Features kompatibel, die bereits in SQL Server Analysis Services Enterprise Edition enthalten sind. Azure Analysis Services unterstützt tabellarische Modelle mit den [Kompatibilitätsgraden](analysis-services-compat-level.md) 1200 und 1400. Partitionen, Sicherheit auf Zeilenebene, bidirektionale Beziehungen und Übersetzungen werden unterstützt. Dank In-Memory- und DirectQuery-Modi können selbst Abfragen für umfangreiche und komplexe Datasets blitzschnell ausgeführt werden.
 
 Tabellarische Modelle ermöglichen eine schnelle Entwicklung und sind hochgradig anpassbar. Für Entwickler enthalten tabellarische Modelle das Tabellenobjektmodell (TOM) zur Beschreibung von Modellobjekten. TOM wird in JSON über die [Skriptsprache für Tabellenmodelle (Tabular Model Scripting Language, TMSL)](https://docs.microsoft.com/sql/analysis-services/tabular-model-scripting-language-tmsl-reference) und die AMO-Datendefinitionssprache über den Namespace [Microsoft.AnalysisServices.Tabular](https://msdn.microsoft.com/library/microsoft.analysisservices.tabular.aspx) verfügbar gemacht.
 

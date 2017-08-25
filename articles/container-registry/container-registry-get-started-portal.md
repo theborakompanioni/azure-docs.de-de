@@ -18,10 +18,10 @@ ms.date: 03/24/2017
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
-ms.openlocfilehash: 2cd5a08cc74473be594fc3c7a4fb934d65ffe0ab
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 7fbbb56d775ee96c9a44363a4e41d4fc3c630582
 ms.contentlocale: de-de
-ms.lasthandoff: 07/12/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 
@@ -52,7 +52,7 @@ Hintergrundinformationen und Konzepte finden Sie in der [Übersicht](container-r
       > Neben der Gewährung des Zugriffs über ein Administratorbenutzerkonto unterstützen Containerregistrierungen die Authentifizierung anhand von Azure Active Directory-Dienstprinzipalen. Weitere Informationen und Beschreibungen von Aspekten finden Sie unter [Authenticate with a container registry](container-registry-authentication.md) (Authentifizieren mit einer Containerregistrierung).
       >
 
-    e. **Speicherkonto**: Verwenden Sie die Standardeinstellung, um ein [Speicherkonto](../storage/storage-introduction.md) zu erstellen, oder wählen Sie ein vorhandenes Speicherkonto an demselben Standort aus. Storage Premium wird derzeit nicht unterstützt.
+    e. **Speicherkonto**: Verwenden Sie die Standardeinstellung, um ein [Speicherkonto](../storage/common/storage-introduction.md) zu erstellen, oder wählen Sie ein vorhandenes Speicherkonto an demselben Standort aus. Storage Premium wird derzeit nicht unterstützt.
 
 ## <a name="manage-registry-settings"></a>Verwalten von Registrierungseinstellungen
 Nach dem Erstellen der Registrierung können Sie im Portal über das Blatt **Containerregistrierungen** auf die Registrierungseinstellungen zugreifen. Beispielsweise benötigen Sie die Einstellungen ggf. zum Anmelden an Ihrer Registrierung, oder Sie möchten den Administratorbenutzer aktivieren oder deaktivieren.

@@ -14,27 +14,24 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 08/07/2017
+ms.date: 08/21/2017
 ms.author: jgao
 ms.translationtype: HT
-ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
-ms.openlocfilehash: 5e9cae224e5a36e1529c962ad8cbab77176dda8c
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 370b2f081930fe88527436a1a127309aed6681f0
 ms.contentlocale: de-de
-ms.lasthandoff: 08/07/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="create-hadoop-cluster-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>Erstellen von Hadoop-Clustern mit Speicherkonten mit sicherer Übertragung in Azure HDInsight
 
-Das Feature [Sichere Übertragung erforderlich](../storage/storage-require-secure-transfer.md) erhöht die Sicherheit Ihres Azure Storage-Kontos, indem alle Anforderungen für Ihr Konto über eine sichere Verbindung übertragen werden müssen. Dieses Feature und das WASB-Schema werden erst ab HDInsight-Clusterversion 3.6 unterstützt. 
-
->[!NOTE] 
-> Das Erstellen von Clustern mit Speicherkonten mit sicherer Übertragung unter Verwendung des .NET SDKs wird derzeit nicht unterstützt. Legen Sie zur Umgehung dieses Problems „wasbs“ in der Eigenschaft „fs.defaultFS“ in der core-site-Konfiguration als Teil von „ClusterCreateParametersExtended“ fest.
+Das Feature [Sichere Übertragung erforderlich](../storage/common/storage-require-secure-transfer.md) erhöht die Sicherheit Ihres Azure Storage-Kontos, indem alle Anforderungen für Ihr Konto über eine sichere Verbindung übertragen werden müssen. Dieses Feature und das WASB-Schema werden erst ab HDInsight-Clusterversion 3.6 unterstützt. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
 
 * **Azure-Abonnement:**Um ein kostenloses Testkonto für die Dauer eines Monats zu erstellen, navigieren Sie zu [azure.microsoft.com/free](https://azure.microsoft.com/free).
-* **Ein Azure Storage-Konto mit sicherer Übertragung.** Entsprechende Anleitungen finden Sie unter [Erstellen Sie ein Speicherkonto.](../storage/storage-create-storage-account.md#create-a-storage-account) sowie unter [Vorschreiben einer sicheren Übertragung](../storage/storage-require-secure-transfer.md).
+* **Ein Azure Storage-Konto mit sicherer Übertragung.** Entsprechende Anleitungen finden Sie unter [Erstellen Sie ein Speicherkonto.](../storage/common/storage-create-storage-account.md#create-a-storage-account) sowie unter [Vorschreiben einer sicheren Übertragung](../storage/common/storage-require-secure-transfer.md).
 * **Blobcontainer im Speicherkonto.** 
 ## <a name="create-cluster"></a>Cluster erstellen
 

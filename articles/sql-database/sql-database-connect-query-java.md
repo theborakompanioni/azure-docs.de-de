@@ -135,7 +135,8 @@ Rufen Sie die Verbindungsinformationen ab, die zum Herstellen einer Verbindung m
                                System.out.println(resultSet.getString(1) + " "
                                    + resultSet.getString(2));
                            }
-                   }
+                    connection.close();
+                   }                   
            }
            catch (Exception e) {
                    e.printStackTrace();

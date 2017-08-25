@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/27/2016
 ms.author: jdial
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: c731099cb91512f3bf0ecc2ffa5258788c90cd1b
-ms.lasthandoff: 03/31/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: e653764d7cb514d50b44fadd0cc5963dd404d99e
+ms.contentlocale: de-de
+ms.lasthandoff: 08/21/2017
 
 ---
 
@@ -160,7 +160,7 @@ Sie haben zwar ein VNet und zwei virtuelle Computer erstellt, das Azure-Portal h
 
     ![Inhalt der Ressourcengruppe](./media/virtual-network-get-started-vnet-subnet/resource-group-contents.png)
 
-Weitere Informationen zu virtuellen Computern, Datenträgern und Speicherkonten finden Sie in den Artikeln [Übersicht über virtuelle Windows-Computer in Azure](../virtual-machines/windows/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [Informationen zu Datenträgern und VHDs für Azure-Windows-VMs](../storage/storage-about-disks-and-vhds-windows.md?toc=%2fazure%2fvirtual-network%2ftoc.json) und [Einführung in Microsoft Azure Storage](../storage/storage-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Sie sehen die beiden Standard-NSGs, die das Portal für Sie erstellt hat. Außerdem sehen Sie, dass das Portal zwei Netzwerkschnittstellen (NICs) als Ressourcen erstellt hat. Mithilfe einer Netzwerkschnittstelle kann ein virtueller Computer über das VNet eine Verbindung mit anderen Ressourcen herstellen. Weitere Informationen zu Netzwerkschnittstellen finden Sie im Artikel [Was sind Netzwerkschnittstellen?](virtual-network-network-interface.md). Das Portal hat auch eine öffentliche IP-Adressressource erstellt. Bei öffentlichen IP-Adressen handelt es sich um eine Einstellung für eine öffentliche IP-Adressressource. Weitere Informationen zu öffentlichen IP-Adressen finden Sie im [Artikel zu IP-Adressen](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses).
+Weitere Informationen zu virtuellen Computern, Datenträgern und Speicherkonten finden Sie in den Artikeln [Übersicht über virtuelle Windows-Computer in Azure](../virtual-machines/windows/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [Informationen zu Datenträgern und VHDs für Azure-Windows-VMs](../virtual-machines/windows/about-disks-and-vhds.md?toc=%2fazure%2fvirtual-network%2ftoc.json) und [Einführung in Microsoft Azure Storage](../storage/common/storage-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Sie sehen die beiden Standard-NSGs, die das Portal für Sie erstellt hat. Außerdem sehen Sie, dass das Portal zwei Netzwerkschnittstellen (NICs) als Ressourcen erstellt hat. Mithilfe einer Netzwerkschnittstelle kann ein virtueller Computer über das VNet eine Verbindung mit anderen Ressourcen herstellen. Weitere Informationen zu Netzwerkschnittstellen finden Sie im Artikel [Was sind Netzwerkschnittstellen?](virtual-network-network-interface.md). Das Portal hat auch eine öffentliche IP-Adressressource erstellt. Bei öffentlichen IP-Adressen handelt es sich um eine Einstellung für eine öffentliche IP-Adressressource. Weitere Informationen zu öffentlichen IP-Adressen finden Sie im [Artikel zu IP-Adressen](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses).
 
 ## <a name="connect-to-from-vms"></a>Herstellen einer Verbindung mit den virtuellen Computern
 

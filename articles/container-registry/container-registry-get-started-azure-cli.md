@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 06/06/2017
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
-ms.openlocfilehash: 99bb3db7cc80e8426e1dca14bc3d733ee6c7342c
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 2875f4089231ed12a0312b2c2e077938440365c6
 ms.contentlocale: de-de
-ms.lasthandoff: 06/07/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="create-a-private-docker-container-registry-using-the-azure-cli-20"></a>Erstellen einer privaten Docker-Containerregistrierung mit der Azure CLI 2.0
@@ -35,7 +35,7 @@ Verwenden Sie Befehle von [Azure-CLI 2.0](https://github.com/Azure/azure-cli), u
 ## <a name="prerequisites"></a>Voraussetzungen
 * **Azure CLI 2.0**: Informationen zur Installation und zu den ersten Schritten mit der CLI 2.0 finden Sie in der [Installationsanleitung](/cli/azure/install-azure-cli). Melden Sie sich an Ihrem Azure-Abonnement an, indem Sie `az login` ausführen. Weitere Informationen finden Sie unter [Get started with CLI 2.0](/cli/azure/get-started-with-azure-cli) (Erste Schritte mit der CLI 2.0).
 * **Ressourcengruppe**: Erstellen Sie eine [Ressourcengruppe](../azure-resource-manager/resource-group-overview.md#resource-groups), bevor Sie eine Containerregistrierung erstellen, oder verwenden Sie eine vorhandene Ressourcengruppe. Stellen Sie sicher, dass sich die Ressourcengruppe an einem Standort befindet, für den der Containerregistrierungsdienst [verfügbar](https://azure.microsoft.com/regions/services/) ist. Informationen zum Erstellen einer Ressourcengruppe mit der CLI 2.0 finden Sie in der [Referenz zu CLI 2.0](/cli/azure/group).
-* **Speicherkonto** (optional): Erstellen Sie ein standardmäßiges Azure-[Speicherkonto](../storage/storage-introduction.md) zum Sichern der Containerregistrierung an demselben Standort. Wenn Sie beim Erstellen einer Registrierung mit `az acr create` kein Speicherkonto angeben, führt der Befehl dies für Sie durch. Informationen zum Erstellen eines Speicherkontos mit der CLI 2.0 finden Sie in der [Referenz zu CLI 2.0](/cli/azure/storage/account). Storage Premium wird derzeit nicht unterstützt.
+* **Speicherkonto** (optional): Erstellen Sie ein standardmäßiges Azure-[Speicherkonto](../storage/common/storage-introduction.md) zum Sichern der Containerregistrierung an demselben Standort. Wenn Sie beim Erstellen einer Registrierung mit `az acr create` kein Speicherkonto angeben, führt der Befehl dies für Sie durch. Informationen zum Erstellen eines Speicherkontos mit der CLI 2.0 finden Sie in der [Referenz zu CLI 2.0](/cli/azure/storage/account). Storage Premium wird derzeit nicht unterstützt.
 * **Dienstprinzipal** (optional): Wenn Sie mit der CLI eine Registrierung erstellen, wird der Zugriff standardmäßig nicht eingerichtet. Je nach Ihren Anforderungen können Sie einen vorhandenen Azure Active Directory-Dienstprinzipal einer Registrierung zuweisen (oder einen neuen erstellen und zuweisen) oder das Administratorbenutzerkonto der Registrierung aktivieren. Informationen hierzu finden Sie in den Abschnitten weiter unten in diesem Artikel. Weitere Informationen zum Zugreifen auf die Registrierung finden Sie unter [Authenticate with the container registry](container-registry-authentication.md) (Authentifizieren bei der Containerregistrierung).
 
 ## <a name="create-a-container-registry"></a>Erstellen einer Containerregistrierung

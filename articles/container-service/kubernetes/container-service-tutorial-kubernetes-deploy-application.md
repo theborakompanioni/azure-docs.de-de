@@ -57,7 +57,7 @@ git clone https://github.com/Azure-Samples/azure-voting-app-redis.git
 Die Manifestdatei befindet sich im folgenden Verzeichnis des geklonten Repositorys.
 
 ```bash
-/azure-voting-app-redis/kubernetes-manifests/azure-vote-all-in-one-redis.yaml
+/azure-voting-app-redis/kubernetes-manifests/azure-vote-all-in-one-redis.yml
 ```
 
 ## <a name="update-manifest-file"></a>Aktualisieren der Manifestdatei
@@ -83,7 +83,7 @@ containers:
 Führen Sie die Anwendung mithilfe des Befehls [kubectl create](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#create) aus. Dieser Befehl analysiert die Manifestdatei und erstellt die definierten Kubernetes-Objekte.
 
 ```azurecli-interactive
-kubectl create -f ./azure-voting-app-redis/kubernetes-manifests/azure-vote-all-in-one-redis.yaml
+kubectl create -f ./azure-voting-app-redis/kubernetes-manifests/azure-vote-all-in-one-redis.yml
 ```
 
 Ausgabe:
