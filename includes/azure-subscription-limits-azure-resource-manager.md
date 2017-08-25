@@ -4,7 +4,7 @@
 | Gesamte Kerne pro [Abonnement](../articles/billing-buy-sign-up-azure-subscription.md) |20<sup>1</sup> pro Region | Support kontaktieren |
 | VM-Kerne pro Serie (Dv2, F usw.) pro [Abonnement](../articles/billing-buy-sign-up-azure-subscription.md) |20<sup>1</sup> pro Region | Support kontaktieren |
 | [Co-Administratoren](../articles/billing-add-change-azure-subscription-administrator.md) pro Abonnement |Unbegrenzt |Unbegrenzt |
-| [Speicherkonten](../articles/storage/storage-create-storage-account.md) pro Abonnement |200 |200<sup>2</sup> |
+| [Speicherkonten](../articles/storage/common/storage-create-storage-account.md) pro Abonnement |200 |200<sup>2</sup> |
 | [Ressourcengruppen](../articles/azure-resource-manager/resource-group-overview.md) pro Abonnement |800 |800 |
 | [Verfügbarkeitsgruppen](../articles/virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) pro Abonnement |2.000 pro Region |2.000 pro Region |
 | Ressourcen-Manager-API-Lesevorgänge |15.000 pro Stunde |15.000 pro Stunde |

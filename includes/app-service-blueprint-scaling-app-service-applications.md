@@ -7,7 +7,7 @@
 * App Service-Skalierung – bewährte Methoden
   
   * Portauslastung und Verbindungspooling
-  * [Nutzung von Azure Storage aus Ihrer App Service-App](../articles/storage/storage-dotnet-how-to-use-blobs.md)
+  * [Nutzung von Azure Storage aus Ihrer App Service-App](../articles/storage/blobs/storage-dotnet-how-to-use-blobs.md)
   * [Nutzung von Azure CDN aus Ihrer App Service-App](../articles/cdn/cdn-overview.md)
   * [Nutzung von Azure Redis Cache aus Ihrer App Service-App](../articles/redis-cache/cache-dotnet-how-to-use-azure-redis-cache.md)
 * Geografische Verteilung

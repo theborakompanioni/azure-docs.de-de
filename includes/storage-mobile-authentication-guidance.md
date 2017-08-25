@@ -12,11 +12,11 @@ Bei der Authentifizierung mit gemeinsam verwendetem Schlüssel nutzt die Anwendu
 > 
 > 
 
-Wenn Sie die Authentifizierung mit gemeinsam verwendetem Schlüssel nutzen, erstellen Sie eine [Verbindungszeichenfolge](../articles/storage/storage-configure-connection-string.md). Die Verbindungszeichenfolge besteht aus:  
+Wenn Sie die Authentifizierung mit gemeinsam verwendetem Schlüssel nutzen, erstellen Sie eine [Verbindungszeichenfolge](../articles/storage/common/storage-configure-connection-string.md). Die Verbindungszeichenfolge besteht aus:  
 
 * dem **DefaultEndpointsProtocol** – Sie können zwischen HTTP oder HTTPS wählen. Die Verwendung von HTTPS wird jedoch unbedingt empfohlen.
 * dem **Kontonamen** – der Name Ihres Storage-Kontos
-* dem  **Kontoschlüssel** – navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Speicherkonto, und klicken Sie auf das Symbol **Schlüssel**, um diese Informationen zu erhalten.
+* dem **Kontoschlüssel** – navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Speicherkonto, und klicken Sie auf das Symbol **Schlüssel**, um diese Informationen zu erhalten.
 * (Optional) **EndpointSuffix** – dieser Wert wird für Speicherdienste in Regionen mit anderen Endpunktsuffixen verwendet (etwa Azure China oder Azure Governance).
 
 Hier sehen Sie ein Beispiel einer Verbindungszeichenfolge bei Authentifizierung mit gemeinsam verwendetem Schlüssel:
@@ -36,5 +36,5 @@ Das folgende Beispiel zeigt die Verwendung des Microsoft Azure-Speicher-Explorer
    
    `"SharedAccessSignature=sv=2015-04-05&ss=b&srt=sco&sp=rw&se=2016-07-21T18%3A00%3A00Z&sig=3ABdLOJZosCp0o491T%2BqZGKIhafF1nlM3MzESDDD3Gg%3D;BlobEndpoint=https://youraccount.blob.core.windows.net"`
 
-Wie Sie sehen, machen Sie den Kontoschlüssel in Ihrer Anwendung nicht verfügbar, wenn Sie eine SAS verwenden. Weitere Informationen zu SAS und bewährten Methoden bei der Verwendung von SAS erhalten Sie unter [Shared Access Signatures: Grundlagen zum SAS-Modell](../articles/storage/storage-dotnet-shared-access-signature-part-1.md).
+Wie Sie sehen, machen Sie den Kontoschlüssel in Ihrer Anwendung nicht verfügbar, wenn Sie eine SAS verwenden. Weitere Informationen zu SAS und bewährten Methoden bei der Verwendung von SAS erhalten Sie unter [Shared Access Signatures: Grundlagen zum SAS-Modell](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md).
 

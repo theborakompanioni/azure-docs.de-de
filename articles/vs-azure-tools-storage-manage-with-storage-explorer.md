@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 7/17/2017
 ms.author: tarcher
 ms.translationtype: HT
-ms.sourcegitcommit: 94d1d4c243bede354ae3deba7fbf5da0652567cb
-ms.openlocfilehash: 0b1f7711586cdfacbbfb28af121c7f37ba564cde
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 0abc33bb5b0ffe46397baa5a2d53637bc3f2984c
 ms.contentlocale: de-de
-ms.lasthandoff: 07/18/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="get-started-with-storage-explorer-preview"></a>Erste Schritte mit dem Speicher-Explorer (Vorschau)
@@ -156,7 +156,7 @@ Zum Anfügen an ein externes Speicherkonto benötigen Sie den Namen und Schlüss
 2. Wählen Sie in der Bestätigungsmeldung die Option **Ja** aus, um das Trennen vom externen Speicherkonto zu bestätigen.
 
 ## <a name="attach-a-storage-account-by-using-an-sas"></a>Anfügen eines Speicherkontos unter Verwendung einer SAS
-Mithilfe einer [SAS](storage/storage-dotnet-shared-access-signature-part-1.md) kann ein Administrator eines Azure-Abonnements einem Speicherkonto ohne Angabe von Anmeldeinformationen für das Azure-Abonnement temporären Zugriff auf ein Speicherkonto gewähren.
+Mithilfe einer [SAS](storage/common/storage-dotnet-shared-access-signature-part-1.md) kann ein Administrator eines Azure-Abonnements einem Speicherkonto ohne Angabe von Anmeldeinformationen für das Azure-Abonnement temporären Zugriff auf ein Speicherkonto gewähren.
 
 Ein Beispiel: Benutzer A ist Administrator eines Azure-Abonnements, und Benutzer A möchte Benutzer B für einen begrenzten Zeitraum und mit bestimmten Berechtigungen Zugriff auf ein Speicherkonto gewähren:
 

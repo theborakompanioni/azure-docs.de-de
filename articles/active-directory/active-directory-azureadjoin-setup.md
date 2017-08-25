@@ -3,8 +3,8 @@ title: "Einrichten von Azure AD Join für Ihre Benutzer| Microsoft Docs"
 description: "Erläutert, wie Administratoren Azure AD Join für das lokale Verzeichnis und die Geräteregistrierung einrichten können."
 services: active-directory
 documentationcenter: 
-author: femila
-manager: swadhwa
+author: MarkusVi
+manager: femila
 editor: 
 tags: azure-classic-portal
 ms.assetid: bfc5d415-c918-4d8b-afee-b3f41cc28469
@@ -20,7 +20,6 @@ ms.sourcegitcommit: 0480c4f89b6036897bc8d7eff81b56262ea8806c
 ms.openlocfilehash: e4e0fa77552c4df2ea5bb9ddae916e7c661824d1
 ms.contentlocale: de-de
 ms.lasthandoff: 02/23/2017
-
 
 ---
 # <a name="setting-up-azure-ad-join-in-your-organization"></a>Einrichten von Azure AD Join in Ihrer Organisation

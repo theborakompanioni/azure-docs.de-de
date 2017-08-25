@@ -85,7 +85,7 @@ Das Herunterfahren kann lediglich fünf Minuten dauern, aber auch deutlich läng
 
 Virtuelle Computer werden ggf. vorübergehend heruntergefahren, wenn E/A-Anforderungen dauerhaft aufgrund einer großen Menge von E/A-Vorgängen pro Sekunde (IOPS), die die E/A-Grenzwerte für den Datenträger überschreiten, gedrosselt sind. (Der Standard-Datenträgerspeicher ist auf 500 IOPS beschränkt.) Verwenden Sie zum Umgehen dieses Problems abhängig von der Workload das Datenträgerstriping, oder konfigurieren Sie den Speicherplatz auf der Gast-VM. Weitere Informationen finden Sie unter [Configuring Azure VMs for Optimal Storage Performance](http://blogs.msdn.com/b/mast/archive/2014/10/14/configuring-azure-virtual-machines-for-optimal-storage-performance.aspx) (Konfigurieren von virtuellen Azure-Computern für optimale Speicherleistung).
 
-Höhere IOPS-Grenzwerte von bis zu 80.000 IOPS stehen bei Azure Storage Premium zur Verfügung. Weitere Informationen finden Sie unter [Premium-Hochleistungsspeicher](../articles/storage/storage-premium-storage.md).
+Höhere IOPS-Grenzwerte von bis zu 80.000 IOPS stehen bei Azure Storage Premium zur Verfügung. Weitere Informationen finden Sie unter [Premium-Hochleistungsspeicher](../articles/storage/common/storage-premium-storage.md).
 
 ### <a name="other-incidents"></a>Sonstige Vorfälle
 In seltenen Fällen kann sich ein großflächig auftretendes Problem auf mehrere Server in einem Azure-Datencenter auswirken. In diesem Fall sendet das Azure-Team E-Mail-Benachrichtigungen an die betroffenen Abonnements. Im [Dashboard zur Azure-Dienstintegrität](https://azure.microsoft.com/status/) und im Azure-Portal finden Sie Informationen zum Status aktueller Ausfälle und von Vorfällen in der Vergangenheit.

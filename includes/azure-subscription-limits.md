@@ -2,7 +2,7 @@
 | --- | --- | --- |
 | Prozessorkerne pro [Abonnement](../articles/billing-buy-sign-up-azure-subscription.md) <sup>1</sup> |20 |10.000 |
 | [Co-Administratoren](../articles/billing-add-change-azure-subscription-administrator.md) pro Abonnement |200 |200 |
-| [Speicherkonten](../articles/storage/storage-create-storage-account.md) pro Abonnement<sup>2</sup> |200 |250 |
+| [Speicherkonten](../articles/storage/common/storage-create-storage-account.md) pro Abonnement<sup>2</sup> |200 |250 |
 | [Clouddienste](../articles/cloud-services/cloud-services-choose-me.md) pro Abonnement |20 |200 |
 | [Lokale Netzwerke](http://msdn.microsoft.com/library/jj157100.aspx) pro Abonnement |10 |500 |
 | SQL-Datenbankserver pro Abonnement |6 |150 |

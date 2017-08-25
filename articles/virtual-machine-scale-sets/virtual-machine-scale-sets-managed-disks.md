@@ -16,10 +16,10 @@ ms.topic: get-started-article
 ms.date: 6/01/2017
 ms.author: negat
 ms.translationtype: HT
-ms.sourcegitcommit: 19be73fd0aec3a8f03a7cd83c12cfcc060f6e5e7
-ms.openlocfilehash: 8ec9709bfb553f6ee89611e92330dedb6129055d
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 3ab1d432a2f90db57b99f0e7d419d85e2958c308
 ms.contentlocale: de-de
-ms.lasthandoff: 07/13/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="azure-vm-scale-sets-and-managed-disks"></a>Azure-VM-Skalierungsgruppen und verwaltete Datenträger
@@ -45,7 +45,7 @@ Alternativ dazu können Sie im [GitHub-Repository mit den Azure-Schnellstartvorl
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere allgemeine Informationen zu verwalteten Datenträgern finden Sie in [diesem Artikel](../storage/storage-managed-disks-overview.md).
+Weitere allgemeine Informationen zu verwalteten Datenträgern finden Sie in [diesem Artikel](../virtual-machines/windows/managed-disks-overview.md).
 
 Informationen dazu, wie Sie eine Resource Manager-Vorlage zum Bereitstellen von Skalierungsgruppen mit verwalteten Datenträgern konvertieren, finden Sie in [diesem Artikel](./virtual-machine-scale-sets-convert-template-to-md.md). Die gleichen Änderungen an den Resource Manager-Vorlagen gelten auch für die Azure-REST-API.
 

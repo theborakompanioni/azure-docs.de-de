@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: compute
 ms.date: 04/26/2017
 ms.author: mbaldwin
-translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: d32d91f7bbfcea61caba6ccc3033929d307f14be
-ms.lasthandoff: 03/31/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 348e154f8398b5e60ad5a698cd319fa381de2fa5
+ms.contentlocale: de-de
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="run-any-windows-app-on-any-device-with-azure-remoteapp"></a>Mit Azure RemoteApp jede Windows-Anwendung auf jedem Gerät ausführen
@@ -88,7 +88,7 @@ Den ersten Teil führen Sie als Administrator aus. Dann müssen Ihre Benutzer ei
 1. Legen Sie los, indem Sie die Befehlszeilenschnittstelle (cmd.exe) veröffentlichen. Wählen Sie **cmd** in der Registerkarte **Veröffentlichen** aus, und klicken Sie dann auf **Veröffentlichen > Programm mit Pfad veröffentlichen**.
 2. Geben Sie den Namen der Anwendung und den Pfad ein. Verwenden Sie zu diesem Zweck „File Explorer“ als Namen und „%SYSTEMDRIVE%\windows\explorer.exe“ als Pfad.
    ![Veröffentlichen Sie die Datei „cmd.exe“.](./media/remoteapp-anyapp/ra-publishcmd.png)
-3. Nun müssen Sie ein Azure- [Speicherkonto](../storage/storage-create-storage-account.md)erstellen. Wir haben unseres "accessstorage" genannt. Wählen Sie einen Namen, der für Sie von Bedeutung ist. ![Unser Azure-Speicherkonto.](./media/remoteapp-anyapp/ra-anyappazurestorage.png)
+3. Nun müssen Sie ein Azure- [Speicherkonto](../storage/common/storage-create-storage-account.md)erstellen. Wir haben unseres "accessstorage" genannt. Wählen Sie einen Namen, der für Sie von Bedeutung ist. ![Unser Azure-Speicherkonto.](./media/remoteapp-anyapp/ra-anyappazurestorage.png)
 4. Kehren Sie zurück zu Ihrem Dashboard, sodass Sie den Pfad zu Ihrem Speicherort (Endpunkt) abrufen können. Da Sie diesen gleich benötigen, kopieren Sie ihn irgendwo hin.
    ![Der Speicherkontopfad](./media/remoteapp-anyapp/ra-anyappstoragelocation.png)
 5. Nachdem das Speicherkonto erstellt wurde, benötigen Sie als Nächstes den primären Zugriffsschlüssel. Klicken Sie auf **Zugriffstasten verwalten**und kopieren Sie dann den primären Zugriffsschlüssel.

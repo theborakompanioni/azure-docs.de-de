@@ -10,6 +10,6 @@
     | **[Ressourcengruppe](../articles/azure-resource-manager/resource-group-overview.md)** |  myResourceGroup | Der Name der neuen Ressourcengruppe, in der die Funktionen-App erstellt wird | 
     | **[Hostingplan](../articles/azure-functions/functions-scale.md)** |   Verbrauchsplan | Der Hostingplan, der definiert, wie Ihre Ressourcen der Funktionen-App zugewiesen werden Im **Standard-Verbrauchstarif** werden Ressourcen je nach Bedarf der Funktionen dynamisch hinzugefügt. Sie bezahlen nur die Zeit, in der Ihre Funktionen ausgeführt werden.   |
     | **Standort** | Westeuropa | Wählen Sie einen Standort in Ihrer Nähe oder in der Nähe von anderen Diensten aus, auf die Ihre Funktionen zugreifen. |
-    | **[Speicherkonto](../articles/storage/storage-create-storage-account.md#create-a-storage-account)** |  Global eindeutiger Name |  Der Name des neuen Speicherkontos, das von Ihrer Funktionen-App verwendet wird. Sie können außerdem ein vorhandenes Konto verwenden. |
+    | **[Speicherkonto](../articles/storage/common/storage-create-storage-account.md#create-a-storage-account)** |  Global eindeutiger Name |  Der Name des neuen Speicherkontos, das von Ihrer Funktionen-App verwendet wird. Speicherkontonamen müssen zwischen 3 und 24 Zeichen lang sein und dürfen nur Zahlen und Kleinbuchstaben enthalten. Sie können außerdem ein vorhandenes Konto verwenden. |
 
 1. Klicken Sie auf **Erstellen** , um die neue Funktionen-App bereitzustellen.

@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 05/15/2017
 ms.author: adegeo
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 3c7f97b72f3813abe2357ae3202eaba285583bb8
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: d2c197db73477d06d86d1c4faa8c4a2f58c7b391
 ms.contentlocale: de-de
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Erste Schritte mit Azure-Clouddiensten und ASP.NET
@@ -172,7 +171,7 @@ In einer tatsächlichen Anwendung würden Sie normalerweise separate Konten für
 
 4. Wählen Sie in der Dropdownliste **Replikation** den Wert **Lokal redundanter Speicher** aus.
 
-    Wenn die Georeplikation für ein Speicherkonto aktiviert ist, werden dessen Inhalte in einem sekundären Datencenter repliziert, damit ein Failover möglich ist, falls es am primären Standort zu einem Katastrophenfall kommt. Für die Georeplikation können zusätzliche Kosten anfallen. Für Test- und Entwicklungskonten macht es wenig Sinn, für Georeplikation zu bezahlen. Weitere Informationen finden Sie unter [Erstellen, Verwalten oder Löschen eines Speicherkontos](../storage/storage-create-storage-account.md).
+    Wenn die Georeplikation für ein Speicherkonto aktiviert ist, werden dessen Inhalte in einem sekundären Datencenter repliziert, damit ein Failover möglich ist, falls es am primären Standort zu einem Katastrophenfall kommt. Für die Georeplikation können zusätzliche Kosten anfallen. Für Test- und Entwicklungskonten macht es wenig Sinn, für Georeplikation zu bezahlen. Weitere Informationen finden Sie unter [Erstellen, Verwalten oder Löschen eines Speicherkontos](../storage/common/storage-create-storage-account.md).
 
 5. Klicken Sie in der **Ressourcengruppe** auf **Vorhandene verwenden**, und wählen Sie die Ressourcengruppe aus, die für den Clouddienst verwendet wird.
 6. Wählen Sie in der Dropdownliste **Standort** dieselbe Region aus, die Sie für den Clouddienst ausgewählt haben.
@@ -233,7 +232,7 @@ Die Verbindungszeichenfolgen für das Azure-Speicherkonto für das Web- und Work
 1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf **ContosoAdsWeb** unter **Rollen** im Projekt **ContosoAdsCloudService**, und klicken Sie dann auf **Eigenschaften**.
 
     ![Rolleneigenschaften](./media/cloud-services-dotnet-get-started/roleproperties.png)
-2. Klicken Sie auf die Registerkarte **Einstellungen** . Wählen Sie in der Dropdownliste **Dienstkonfiguration** den Wert **Cloud** aus.
+2. Klicken Sie auf die Registerkarte **Settings** . Wählen Sie in der Dropdownliste **Dienstkonfiguration** den Wert **Cloud** aus.
 
     ![Cloudkonfiguration](./media/cloud-services-dotnet-get-started/sccloud.png)
 3. Wenn Sie den Eintrag **StorageConnectionString** auswählen, sehen Sie am Ende der Zeile eine Schaltfläche mit Auslassungspunkten (**...**). Klicken Sie auf die elliptische Schaltfläche, um das Dialogfeld **Verbindungszeichenfolge für Speicherkonto erstellen** zu öffnen.

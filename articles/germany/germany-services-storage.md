@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/07/2017
 ms.author: ralfwi
 ms.translationtype: HT
-ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
-ms.openlocfilehash: ccc26feea0df4032f1ccdadbb86bd7f05a667783
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 8375ea064ee602af22bb0b46677c840f696bb8a6
 ms.contentlocale: de-de
-ms.lasthandoff: 07/12/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 
@@ -41,13 +41,13 @@ Die Speicherdienstverschlüsselung schützt ruhende Daten in Azure Storage-Konte
 
 | Dienst | Deutschland, Mitte | Deutschland, Nordosten |
 | --- | --- | --- | --- |
-| [Blob Storage](../storage/storage-introduction.md#blob-storage) |Allgemein verfügbar |Allgemein verfügbar |
-| [Table Storage](../storage/storage-introduction.md#table-storage) |Allgemein verfügbar  |Allgemein verfügbar |
-| [Queue Storage](../storage/storage-introduction.md#queue-storage) |Allgemein verfügbar | Allgemein verfügbar |
-| [File Storage](../storage/storage-introduction.md#file-storage) |Allgemein verfügbar |Allgemein verfügbar |
-| [Hot/Cold Blob Storage](../storage/storage-blob-storage-tiers.md) |Allgemein verfügbar |Allgemein verfügbar |
-| [Storage Service Encryption](../storage/storage-service-encryption.md) |Allgemein verfügbar |Allgemein verfügbar |
-| [Storage Premium](../storage/storage-premium-storage.md) |Allgemein verfügbar |Allgemein verfügbar |
+| [Blob Storage](../storage/common/storage-introduction.md#blob-storage) |Allgemein verfügbar |Allgemein verfügbar |
+| [Table Storage](../storage/common/storage-introduction.md#table-storage) |Allgemein verfügbar  |Allgemein verfügbar |
+| [Queue Storage](../storage/common/storage-introduction.md#queue-storage) |Allgemein verfügbar | Allgemein verfügbar |
+| [File Storage](../storage/common/storage-introduction.md#file-storage) |Allgemein verfügbar |Allgemein verfügbar |
+| [Hot/Cold Blob Storage](../storage/blobs/storage-blob-storage-tiers.md) |Allgemein verfügbar |Allgemein verfügbar |
+| [Storage Service Encryption](../storage/common/storage-service-encryption.md) |Allgemein verfügbar |Allgemein verfügbar |
+| [Storage Premium](../storage/common/storage-premium-storage.md) |Allgemein verfügbar |Allgemein verfügbar |
 | Import/Export |Nicht verfügbar |Nicht verfügbar |
 | StorSimple |Nicht verfügbar |Nicht verfügbar |
 
@@ -62,7 +62,7 @@ Die URLs für Speicherkonten in Azure Deutschland unterscheiden sich von denen i
 | File Storage | *.file.core.windows.net | *.file.core.cloudapi.de | 
 
 > [!NOTE]
-> Ihre gesamten Skripts und Ihr Code müssen die passenden Endpunkte berücksichtigen. Weitere Informationen hierzu finden Sie unter [Konfigurieren von Azure Storage-Verbindungszeichenfolgen](../storage/storage-configure-connection-string.md). 
+> Ihre gesamten Skripts und Ihr Code müssen die passenden Endpunkte berücksichtigen. Weitere Informationen hierzu finden Sie unter [Konfigurieren von Azure Storage-Verbindungszeichenfolgen](../storage/common/storage-configure-connection-string.md). 
 >
 >
 
@@ -71,7 +71,7 @@ Weitere Informationen zu APIs finden Sie unter [CloudStorageAccount-Konstruktor]
 Das zu verwendende Endpunktsuffix für diese Überladungen lautet *core.cloudapi.de*.
 
 > [!NOTE]
-> Wenn während der [Einbindung der Dateifreigabe](../storage/storage-dotnet-how-to-use-files.md) der Fehler 53 („Der Netzwerkpfad wurde nicht gefunden.“) zurückgegeben wird, blockiert möglicherweise eine Firewall den ausgehenden Port. Versuchen Sie, die Dateifreigabe auf einem virtuellen Computer einzubinden, der sich im selben Azure-Abonnement wie das Speicherkonto befindet.
+> Wenn während der [Einbindung der Dateifreigabe](../storage/files/storage-dotnet-how-to-use-files.md) der Fehler 53 („Der Netzwerkpfad wurde nicht gefunden.“) zurückgegeben wird, blockiert möglicherweise eine Firewall den ausgehenden Port. Versuchen Sie, die Dateifreigabe auf einem virtuellen Computer einzubinden, der sich im selben Azure-Abonnement wie das Speicherkonto befindet.
 >
 >
 

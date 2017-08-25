@@ -16,10 +16,10 @@ ms.date: 02/27/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
-ms.openlocfilehash: 32569d7e75a7a4ddee28041c0487ff158c20fd78
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: d30c09d23a84200ba81df133c9de5b11910ffb61
 ms.contentlocale: de-de
-ms.lasthandoff: 07/12/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="batch-and-hpc-solutions-for-large-scale-computing-workloads"></a>Batch und HPC-Lösungen für umfangreiche Computeworkloads
@@ -106,7 +106,7 @@ Azure Compute Services sind das Kernstück einer Big Compute-Lösung, und die ve
 ### <a name="storage-services"></a>Speicherdienste
 Big Compute-Lösungen basieren in der Regel auf einem Satz von Eingabedaten und generieren Daten für ihre Ergebnisse. In Big Compute-Lösungen kommen unter anderem folgende Azure-Speicherdienste zum Einsatz:
 
-* [Blob-, Tabellen- und Warteschlangenspeicher](https://azure.microsoft.com/documentation/services/storage/): Dient zum Verwalten großer Mengen unstrukturierter Daten, NoSQL-Daten und Nachrichten für Workflows bzw. für die Kommunikation. Blobspeicher kann beispielsweise für umfangreiche technische Datasets oder für die eingehenden Bilder oder Mediendateien verwendet werden, die Ihre Anwendung verarbeitet. Warteschlangen können für die asynchrone Kommunikation in einer Lösung verwendet werden. Siehe [Einführung in Microsoft Azure Storage](../storage/storage-introduction.md).
+* [Blob-, Tabellen- und Warteschlangenspeicher](https://azure.microsoft.com/documentation/services/storage/): Dient zum Verwalten großer Mengen unstrukturierter Daten, NoSQL-Daten und Nachrichten für Workflows bzw. für die Kommunikation. Blobspeicher kann beispielsweise für umfangreiche technische Datasets oder für die eingehenden Bilder oder Mediendateien verwendet werden, die Ihre Anwendung verarbeitet. Warteschlangen können für die asynchrone Kommunikation in einer Lösung verwendet werden. Siehe [Einführung in Microsoft Azure Storage](../storage/common/storage-introduction.md).
 * [Azure-Dateispeicher](https://azure.microsoft.com/services/storage/files/) : Dient zum Freigeben häufig verwendeter Dateien und Daten in Azure mithilfe des standardmäßigen SMB-Protokolls, das für einige HPC-Clusterlösungen benötigt wird.
 * [Data Lake Store](https://azure.microsoft.com/services/data-lake-store/) : Bietet ein hyperskalierbares Apache Hadoop Distributed File System für die Cloud, das für batch- und echtzeitbasierte sowie für interaktive Analysen hilfreich ist.
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 01/07/2017
 ms.author: ambapat
-translationtype: Human Translation
-ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
-ms.openlocfilehash: c344941c59c52d260999c29f448bb94df24fba1d
-ms.lasthandoff: 04/13/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: b81791f0bce7e6f57782dfe7bc5fb5fc21369e7d
+ms.contentlocale: de-de
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="secure-your-key-vault"></a>Schützen einer Key Vault-Instanz
@@ -197,7 +197,7 @@ Die benutzerdefinierte Rolle kann nur dem Abonnement zugewiesen werden, unter de
 
 Die Zuweisung der benutzerdefinierten Rolle für die Entwickler/Betreiber im Zusammenhang mit der Bereitstellungs-/Aktionsberechtigung ist auf die Ressourcengruppe beschränkt. Dadurch können die Geheimnisse (SSL-Zertifikat und Bootstrap-Zertifikat) nur von virtuellen Computern abgerufen werden, die in der Ressourcengruppe „ContosoAppRG“ erstellt wurden. Virtuelle Computer, die vom Entwickler-/Betreiberteam in einer anderen Ressourcengruppe erstellt werden, können diese Geheimnisse nicht abrufen. Dies gilt auch, wenn ihnen die geheimen URIs bekannt sind.
 
-Bei diesem Beispiel handelt es sich um ein einfaches Szenario. In der Praxis können die Szenarien komplexer ausfallen und eine entsprechende Anpassung der Berechtigungen für Ihre Key Vault-Instanz erfordern. In unserem Beispiel gehen wir etwa davon aus, dass das Sicherheitsteam die Verweise auf Schlüssel und Geheimnisse (URIs und Fingerabdrücke) bereitstellt, die das Entwickler-/Betreiberteam in seinen Anwendungen benötigt. Daher müssen sie den Entwicklern/Betreibern keinerlei Zugriff auf die Datenebene gewähren. Beachten Sie außerdem, dass es in diesem Beispiel in erster Linie um den Schutz Ihrer Key Vault-Instanz geht. Ähnliche Überlegungen sollten auch für den Schutz Ihrer [virtuellen Computer](https://azure.microsoft.com/services/virtual-machines/security/), [Speicherkonten](../storage/storage-security-guide.md) und anderen Azure-Ressourcen angestellt werden.
+Bei diesem Beispiel handelt es sich um ein einfaches Szenario. In der Praxis können die Szenarien komplexer ausfallen und eine entsprechende Anpassung der Berechtigungen für Ihre Key Vault-Instanz erfordern. In unserem Beispiel gehen wir etwa davon aus, dass das Sicherheitsteam die Verweise auf Schlüssel und Geheimnisse (URIs und Fingerabdrücke) bereitstellt, die das Entwickler-/Betreiberteam in seinen Anwendungen benötigt. Daher müssen sie den Entwicklern/Betreibern keinerlei Zugriff auf die Datenebene gewähren. Beachten Sie außerdem, dass es in diesem Beispiel in erster Linie um den Schutz Ihrer Key Vault-Instanz geht. Ähnliche Überlegungen sollten auch für den Schutz Ihrer [virtuellen Computer](https://azure.microsoft.com/services/virtual-machines/security/), [Speicherkonten](../storage/common/storage-security-guide.md) und anderen Azure-Ressourcen angestellt werden.
 
 > [!NOTE]
 > Hinweis: Dieses Beispiel zeigt, wie der Key Vault-Zugriff in der Produktion gesperrt wird. Die Entwickler müssen über ein eigenes Abonnement oder über eine eigene Ressourcengruppe mit uneingeschränkten Berechtigungen verfügen, um ihre Tresore, ihre virtuellen Computer und ihr Speicherkonto für die Anwendungsentwicklung verwalten zu können.

@@ -16,10 +16,10 @@ ms.date: 06/28/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
-ms.openlocfilehash: 233965bf54cbca79c7ff059aaccfa5780d672cab
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: c2f2a878414e4efd626d674ef9a182ae52eeb1ff
 ms.contentlocale: de-de
-ms.lasthandoff: 08/09/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Entwickeln von parallelen Computelösungen in größerem Umfang mit Batch
@@ -46,7 +46,7 @@ Der folgende allgemeine Workflow ist typisch für fast alle Anwendungen und Dien
 In den folgenden Abschnitten werden diese und andere Ressourcen von Batch besprochen, die Ihr verteiltes Computingszenario ermöglichen.
 
 > [!NOTE]
-> Zur Verwendung des Batch-Diensts wird ein [Batch-Konto](#account) benötigt. Die meisten Batch-Lösungen verwenden außerdem ein [Azure-Speicherkonto][azure_storage] zum Speichern und Abrufen von Dateien. Von Batch wird derzeit ausschließlich der Speicherkontotyp **Allgemein** unterstützt, wie in den [Informationen zu Azure-Speicherkonten](../storage/storage-create-storage-account.md) unter Schritt 5 des Abschnitts [Erstellen Sie ein Speicherkonto.](../storage/storage-create-storage-account.md#create-a-storage-account) beschrieben.
+> Zur Verwendung des Batch-Diensts wird ein [Batch-Konto](#account) benötigt. Die meisten Batch-Lösungen verwenden außerdem ein [Azure-Speicherkonto][azure_storage] zum Speichern und Abrufen von Dateien. Von Batch wird derzeit ausschließlich der Speicherkontotyp **Allgemein** unterstützt, wie in den [Informationen zu Azure-Speicherkonten](../storage/common/storage-create-storage-account.md) unter Schritt 5 des Abschnitts [Erstellen Sie ein Speicherkonto.](../storage/common/storage-create-storage-account.md#create-a-storage-account) beschrieben.
 >
 >
 
@@ -114,7 +114,7 @@ Die folgende Tabelle enthält eine Gegenüberstellung der Poolzuordnungsmodi „
 
 Die meisten Batch-Lösungen verwenden Azure Storage zum Speichern von Ressourcen- und Ausgabedateien.  
 
-Von Batch wird derzeit ausschließlich der Speicherkontotyp „Allgemein“ unterstützt, wie in den [Informationen zu Azure Storage-Konten](../storage/storage-create-storage-account.md#create-a-storage-account) unter Schritt 5 von [Speicherkonto erstellen](../storage/storage-create-storage-account.md) beschrieben. In Ihren Batch-Tasks (einschließlich Standardtasks, Starttasks und Tasks zur Auftragsvorbereitung und -freigabe) müssen Ressourcendateien angegeben werden, die sich in Speicherkonten vom Typ „Allgemein“ befinden.
+Von Batch wird derzeit ausschließlich der Speicherkontotyp „Allgemein“ unterstützt, wie in den [Informationen zu Azure Storage-Konten](../storage/common/storage-create-storage-account.md#create-a-storage-account) unter Schritt 5 von [Speicherkonto erstellen](../storage/common/storage-create-storage-account.md) beschrieben. In Ihren Batch-Tasks (einschließlich Standardtasks, Starttasks und Tasks zur Auftragsvorbereitung und -freigabe) müssen Ressourcendateien angegeben werden, die sich in Speicherkonten vom Typ „Allgemein“ befinden.
 
 
 ## <a name="compute-node"></a>Computeknoten

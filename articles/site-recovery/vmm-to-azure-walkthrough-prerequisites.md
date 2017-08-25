@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 07/24/2017
 ms.author: raynew
 ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
-ms.openlocfilehash: 87a5d721ca785329b407d31126bd0b211b17ccf3
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 47c178c66ec98fe5d333edd725b64465026e73ed
 ms.contentlocale: de-de
-ms.lasthandoff: 07/26/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 
@@ -33,7 +33,7 @@ Machen Sie sich in diesem Artikel nach der Überprüfung der [Szenarioarchitektu
 **Anforderung** | **Details**
 --- | ---
 **Azure-Konto** | Sie benötigen ein [Microsoft Azure-Konto](http://azure.microsoft.com/).
-**Azure-Speicher** | Sie benötigen ein Azure Storage-Konto, um replizierte Daten zu speichern.<br/><br/> Das Speicherkonto muss sich in der gleichen Region befinden wie der Azure Recovery Services-Tresor.<br/><br/>Sie können [georedundanten Speicher](../storage/storage-redundancy.md#geo-redundant-storage) oder lokal redundanten Speicher verwenden. Wir empfehlen georedundanten Speicher. Mit georedundantem Speicher sind Ihre Daten geschützt, wenn es zu einem regionalen Ausfall kommt oder die primäre Region nicht wiederhergestellt werden kann.<br/><br/> Sie können ein standardmäßiges Azure-Speicherkonto oder Azure [Storage Premium](../storage/storage-premium-storage.md) verwenden. Storage Premium eignet sich zum Hosten E/A-intensiver Workloads und wird üblicherweise für virtuelle Computer verwendet, die eine konsistent hohe E/A-Leistung und geringe Wartezeit erfordern. Wenn Sie Storage Premium für replizierte Daten verwenden, benötigen Sie auch ein Standard-Speicherkonto. Ein Standard-Speicherkonto dient zum Speichern von Replikationsprotokollen, in denen laufende Änderungen an lokalen Daten erfasst werden.
+**Azure-Speicher** | Sie benötigen ein Azure Storage-Konto, um replizierte Daten zu speichern.<br/><br/> Das Speicherkonto muss sich in der gleichen Region befinden wie der Azure Recovery Services-Tresor.<br/><br/>Sie können [georedundanten Speicher](../storage/common/storage-redundancy.md#geo-redundant-storage) oder lokal redundanten Speicher verwenden. Wir empfehlen georedundanten Speicher. Mit georedundantem Speicher sind Ihre Daten geschützt, wenn es zu einem regionalen Ausfall kommt oder die primäre Region nicht wiederhergestellt werden kann.<br/><br/> Sie können ein standardmäßiges Azure-Speicherkonto oder Azure [Storage Premium](../storage/common/storage-premium-storage.md) verwenden. Storage Premium eignet sich zum Hosten E/A-intensiver Workloads und wird üblicherweise für virtuelle Computer verwendet, die eine konsistent hohe E/A-Leistung und geringe Wartezeit erfordern. Wenn Sie Storage Premium für replizierte Daten verwenden, benötigen Sie auch ein Standard-Speicherkonto. Ein Standard-Speicherkonto dient zum Speichern von Replikationsprotokollen, in denen laufende Änderungen an lokalen Daten erfasst werden.
 **Azure-Netzwerk** | Sie benötigen ein [Azure-Netzwerk](../virtual-network/virtual-network-get-started-vnet-subnet.md), mit dem virtuelle Azure-Computer nach dem Failover eine Verbindung herstellen können. Das Azure-Netzwerk muss sich in der gleichen Region befinden wie der Recovery Services-Tresor.
 **Lokale VMM-Server** | Sie benötigen mindestens einen VMM-Server mit System Center 2012 R2 oder einer höheren Version.<br/><br/> Jeder VMM-Server muss über mindestens eine private Cloud verfügen. Jede Cloud benötigt mindestens eine Hostgruppe.<br/><br/> Der VMM-Server muss über Internetzugriff verfügen.
 **Lokale Hyper-V-Instanz** | Auf Hyper-V-Hostservern muss mindestens Windows Server 2012 R2 mit der Hyper-V-Rolle oder Microsoft Hyper-V Server 2012 R2 ausgeführt werden. Die neuesten Updates müssen installiert sein.<br/><br/> Der Hyper-V-Host muss sich in einer VMM-Hostgruppe (in einer VMM-Cloud) befinden.<br/><br/> Ein Host muss über mindestens einen virtuellen Computer verfügen, den Sie replizieren möchten.<br/><br/> Hyper-V-Hosts müssen für die Replikation in Azure über eine direkte oder proxybasierte Internetverbindung verfügen. Hyper-V-Server müssen über die im Artikel [2961977](https://support.microsoft.com/kb/2961977) beschriebenen Fehlerbehebungen verfügen.
