@@ -2,7 +2,7 @@
 title: "Aufgabenvoreinstellungen für MES (Media Encoder Standard) | Microsoft Docs"
 description: "Das Thema bietet eine Übersicht über die Aufgabenvoreinstellungen für MES (Media Encoder Standard)."
 author: Juliako
-manager: erikre
+manager: SyntaxC4
 editor: 
 services: media-services
 documentationcenter: 

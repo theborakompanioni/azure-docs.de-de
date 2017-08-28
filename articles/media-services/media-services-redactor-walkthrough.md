@@ -4,7 +4,7 @@ description: "In diesem Thema werden Schritt-für-Schritt-Anweisungen zur Ausfü
 services: media-services
 documentationcenter: 
 author: Lichard
-manager: erikre
+manager: SyntaxC4
 editor: 
 ms.assetid: d6fa21b8-d80a-41b7-80c1-ff1761bc68f2
 ms.service: media-services
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/03/2017
 ms.author: rli; juliako;
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: b34502aa75d94da1abcda880bb1a251a8455f3f8
+ms.contentlocale: de-de
 ms.lasthandoff: 04/03/2017
-
 
 ---
 # <a name="redact-faces-with-azure-media-analytics-walkthrough"></a>Exemplarische Vorgehensweise: Bearbeiten von Gesichtern mit Azure Media Analytics
@@ -91,12 +91,12 @@ Wenn Sie als Entwickler versuchen, die JSON-Anmerkungsdaten zu analysieren, such
 
 ### <a name="set-up-the-tool"></a>Einrichten des Tools
 
-1.    Laden Sie die gesamte Lösung herunter, und installieren Sie sie. 
+1.  Laden Sie die gesamte Lösung herunter, und installieren Sie sie. 
 
     ![Gesichtsbearbeitung](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough009.png)
 
-2.    Laden Sie FFMPEG [hier](https://ffmpeg.org/download.html) herunter. Dieses Projekt wurde ursprünglich mit Version be1d324 (2016-10-04) mit statischer Verknüpfung entwickelt. 
-3.    Kopieren Sie „ffmpeg.exe“ und „ffprobe.exe“ in den gleichen Ausgabeordner wie „AzureMediaRedactor.exe“. 
+2.  Laden Sie FFMPEG [hier](https://ffmpeg.org/download.html) herunter. Dieses Projekt wurde ursprünglich mit Version be1d324 (2016-10-04) mit statischer Verknüpfung entwickelt. 
+3.  Kopieren Sie „ffmpeg.exe“ und „ffprobe.exe“ in den gleichen Ausgabeordner wie „AzureMediaRedactor.exe“. 
 
     ![Gesichtsbearbeitung](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough010.png)
 
@@ -114,13 +114,13 @@ Wenn Sie als Entwickler versuchen, die JSON-Anmerkungsdaten zu analysieren, such
     
     ![Gesichtsbearbeitung](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough012.png)
 
-5.    Im Textfeld unten werden die IDs der Gesichter aktualisiert. Erstellen Sie eine Datei namens „idlist.txt“ mit diesen IDs als durch Zeilenvorschübe getrennte Liste. 
+5.  Im Textfeld unten werden die IDs der Gesichter aktualisiert. Erstellen Sie eine Datei namens „idlist.txt“ mit diesen IDs als durch Zeilenvorschübe getrennte Liste. 
 
     >[!NOTE]
     > Die Datei „idlist.txt“ muss im ANSI-Format gespeichert werden. Sie können die Datei in Editor im ANSI-Format speichern.
     
-6.    Laden Sie diese Datei in die Ausgaberessource aus Schritt 1 hoch. Laden Sie das ursprüngliche Video ebenfalls in diese Ressource hoch, und legen Sie es als primäre Ressource fest. 
-7.    Führen Sie die Bearbeitung dieser Ressource im „Redact“-Modus aus, um das abschließend bearbeitete Video zu erhalten. 
+6.  Laden Sie diese Datei in die Ausgaberessource aus Schritt 1 hoch. Laden Sie das ursprüngliche Video ebenfalls in diese Ressource hoch, und legen Sie es als primäre Ressource fest. 
+7.  Führen Sie die Bearbeitung dieser Ressource im „Redact“-Modus aus, um das abschließend bearbeitete Video zu erhalten. 
 
 ## <a name="next-steps"></a>Nächste Schritte 
 

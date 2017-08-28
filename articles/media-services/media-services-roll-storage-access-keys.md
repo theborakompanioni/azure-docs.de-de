@@ -4,7 +4,7 @@ description: "In diesem Artikel lernen Sie, wie Sie Media Services nach dem Aust
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: erikre
+manager: SyntaxC4
 editor: 
 ms.assetid: a892ebb0-0ea0-4fc8-b715-60347cc5c95b
 ms.service: media-services

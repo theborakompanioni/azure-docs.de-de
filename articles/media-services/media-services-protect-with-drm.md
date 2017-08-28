@@ -4,7 +4,7 @@ description: "Mit Microsoft Azure Media Services können Sie MPEG-DASH-, Smooth 
 services: media-services
 documentationcenter: 
 author: juliako
-manager: erikre
+manager: SyntaxC4
 editor: 
 ms.assetid: 548d1a12-e2cb-45fe-9307-4ec0320567a2
 ms.service: media-services

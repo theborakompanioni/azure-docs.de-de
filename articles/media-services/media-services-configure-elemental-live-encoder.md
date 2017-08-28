@@ -4,7 +4,7 @@ description: "In diesem Thema wird beschrieben, wie Sie den Elemental Live-Encod
 services: media-services
 documentationcenter: 
 author: cenkdin
-manager: erikre
+manager: SyntaxC4
 editor: 
 ms.assetid: 9c6bf6a9-6273-4fdd-9477-f0e565280b5b
 ms.service: media-services
@@ -14,10 +14,11 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 01/05/2017
 ms.author: cenkd;anilmur;juliako
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
 ms.openlocfilehash: bb4966cbd2af7a14caeac108a001b0820a67d2a1
-
+ms.contentlocale: de-de
+ms.lasthandoff: 02/17/2017
 
 ---
 # <a name="use-the-elemental-live-encoder-to-send-a-single-bitrate-live-stream"></a>Verwenden des Elemental Live-Encoders zum Senden eines Single-Bitrate-Livedatenstroms
@@ -74,7 +75,7 @@ Während der Kanal gestartet wird, können Sie [den Encoder konfigurieren](media
 >
 >
 
-### <a name="a-idconfigureelementalrtpaconfigure-the-elemental-live-encoder"></a><a id=configure_elemental_rtp></a>Konfigurieren des Elemental Live-Encoders
+### <a id=configure_elemental_rtp></a>Konfigurieren des Elemental Live-Encoders
 In diesem Tutorial werden die folgenden Ausgabeeinstellungen verwendet. Im restlichen Teil dieses Abschnitts werden die Konfigurationsschritte im Detail beschrieben.
 
 **Video**:
@@ -173,9 +174,4 @@ Eine Anleitung finden Sie im Thema [Problembehandlung](media-services-troublesho
 
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

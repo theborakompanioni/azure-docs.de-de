@@ -4,7 +4,7 @@ description: "In diesem Thema wird beschrieben, wie Sie den Flash Media Live Enc
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: erikre
+manager: SyntaxC4
 editor: 
 ms.assetid: 3113f333-517a-47a1-a1b3-57e200c6b2a2
 ms.service: media-services
@@ -14,10 +14,11 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 01/05/2017
 ms.author: juliako;cenkdin;anilmur
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
 ms.openlocfilehash: b94b2f867d30fe2c121904821404b8228ee1e899
-
+ms.contentlocale: de-de
+ms.lasthandoff: 01/11/2017
 
 ---
 # <a name="use-the-fmle-encoder-to-send-a-single-bitrate-live-stream"></a>Verwenden des FMLE zum Senden eines Single-Bitrate-Livedatenstroms
@@ -71,7 +72,7 @@ Während der Kanal gestartet wird, können Sie [den Encoder konfigurieren](media
 >
 >
 
-## <a name="a-idconfigurefmlertmpaconfigure-the-fmle-encoder"></a><a id=configure_fmle_rtmp></a>Konfigurieren des FMLE
+## <a id=configure_fmle_rtmp></a>Konfigurieren des FMLE
 In diesem Tutorial werden die folgenden Ausgabeeinstellungen verwendet. Im restlichen Teil dieses Abschnitts werden die Konfigurationsschritte im Detail beschrieben.
 
 **Video**:
@@ -168,9 +169,4 @@ Eine Anleitung finden Sie im Thema [Problembehandlung](media-services-troublesho
 
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 
