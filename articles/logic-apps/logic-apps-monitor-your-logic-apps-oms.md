@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/9/2017
 ms.author: LADocs; divswa
 ms.translationtype: HT
-ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
-ms.openlocfilehash: 91c747a4fbb3c3c3d799741e7d3b5d4646931136
+ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
+ms.openlocfilehash: 0e9f0ef3c87b5c0da1cc4ad16d37178c8f5c9625
 ms.contentlocale: de-de
-ms.lasthandoff: 08/09/2017
+ms.lasthandoff: 08/16/2017
 
 ---
 
@@ -72,7 +72,7 @@ Sie müssen über einen OMS-Arbeitsbereich verfügen, bevor Sie beginnen können
 
    ![Auswählen von „OMS-Portal“](media/logic-apps-monitor-your-logic-apps-oms/oms-portal-page.png)
 
-4. Wählen Sie auf Ihrer OMS-Startseite die Option **Lösungskatalog**.
+4. Wenn auf Ihrer OMS-Startseite das Upgradebanner angezeigt wird, wählen Sie das Banner aus, um erst ein Upgrade für Ihren OMS-Arbeitsbereich durchzuführen. Wählen Sie dann **Lösungskatalog** aus.
 
    ![Auswählen von „Lösungskatalog“](media/logic-apps-monitor-your-logic-apps-oms/solutions-gallery.png)
 
@@ -91,6 +91,11 @@ Sie müssen über einen OMS-Arbeitsbereich verfügen, bevor Sie beginnen können
 1. Navigieren Sie zur Übersichtsseite für Ihren OMS-Arbeitsbereich, um Anzahl und Status für Ihre Logik-App-Ausführungen anzuzeigen. Überprüfen Sie die Details auf der Kachel **Logic Apps Management** (Logik-App-Verwaltung).
 
    ![Übersichtskachel mit Anzahl und Status der Logik-App-Ausführungen](media/logic-apps-monitor-your-logic-apps-oms/overview.png)
+
+   > [!Note]
+   > Wenn anstelle der Kachel „Logik-App-Verwaltung“ dieses Upgradebanner angezeigt wird, wählen Sie das Banner aus, um zuerst ein Upgrade für Ihren OMS-Arbeitsbereich durchzuführen.
+  
+   > ![Durchführen eines Upgrades für den OMS-Arbeitsbereich](media/logic-apps-monitor-your-logic-apps-oms/oms-upgrade-banner.png)
 
 2. Wählen Sie die Kachel **Logic Apps Management** (Logik-App-Verwaltung), um eine Zusammenfassung mit weiteren Details zu Ihren Logik-App-Ausführungen anzuzeigen.
 

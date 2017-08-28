@@ -1,5 +1,4 @@
 ---
-
 title: Bausteine eines Azure Active Directory-PoC-Playbooks | Microsoft-Dokumentation
 description: "Untersuchen und schnelles Implementieren von Szenarien mit Identitäts- und Zugriffsverwaltung"
 services: active-directory
@@ -15,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
-ms.openlocfilehash: 9c81bc0c702d559eee8b5fbf2a0508697f4276a0
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 671f2d386aca23bc5c02d0e0ab23e6d9d79a8693
 ms.contentlocale: de-de
-ms.lasthandoff: 05/15/2017
-
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Azure Active Directory-PoC-Playbook: Bausteine
@@ -77,7 +75,7 @@ Geschätzter Zeitaufwand: 60 Minuten für unter 1.000 PoC-Benutzer
 1. Die Überlegungen zur Sicherheit der Kennworthashsynchronisierung [finden Sie hier](./connect/active-directory-aadconnectsync-implement-password-synchronization.md).  Wenn die Kennworthashsynchronisierung für Pilotbenutzer keine Option ist, können Sie diese Alternativen in Betracht ziehen:
    * Erstellen Sie Testbenutzer in der Produktionsdomäne. Stellen Sie sicher, dass kein anderes Konto synchronisiert wird.
    * Migrieren Sie zu einer UAT-Umgebung.
-2.    Wenn Sie im Verbund arbeiten möchten, sollten Sie die Kosten einer Verbundlösung in Verbindung mit einem lokalen Identitätsanbieter, die nach dem PoC entstehen, kennen und mit den erstrebten Vorteilen abwiegen:
+2.  Wenn Sie im Verbund arbeiten möchten, sollten Sie die Kosten einer Verbundlösung in Verbindung mit einem lokalen Identitätsanbieter, die nach dem PoC entstehen, kennen und mit den erstrebten Vorteilen abwiegen:
     * Eine solche Lösung ist auf dem kritischen Pfad, sodass Sie für Hochverfügbarkeit planen müssen.
     * Eine solche Lösung umfasst einen lokalen Dienst, der einen Kapazitätsplan erfordert.
     * Eine solche Lösung umfasst einen lokalen Dienst, der überwacht/verwaltet/gepatcht werden muss.
@@ -102,7 +100,7 @@ Geschätzter Zeitaufwand: 15 Minuten
 | Schritt | Ressourcen |
 | --- | --- |
 | Wechseln Sie zum Azure AD-Verwaltungsportal. | [Azure AD-Verwaltungsportal: Unternehmensbranding](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/LoginTenantBranding) |
-| Laden Sie die Assets für die Anmeldeseite hoch (Herologo, kleines Logo, Label usw.). Optional: Wenn Sie über AD FS verfügen, passen Sie diese Assets an die AD FS-Anmeldeseiten an. | [Hinzufügen Ihres Unternehmensbrandings zur Anmelde- und Zugriffsbereichsseite: Anpassbare Elemente](active-directory-add-company-branding.md#customizable-elements) |
+| Laden Sie die Assets für die Anmeldeseite hoch (Herologo, kleines Logo, Label usw.). Optional: Wenn Sie über AD FS verfügen, passen Sie diese Assets an die AD FS-Anmeldeseiten an. | [Hinzufügen Ihres Unternehmensbrandings zur Anmelde- und Zugriffsbereichsseite: Anpassbare Elemente](active-directory-add-company-branding.md) |
 | Warten Sie einige Minuten, bis die Änderung vollständig wirksam wird. |  |
 | Melden Sie sich mit den PoC-Benutzeranmeldeinformationen unter https://myapps.microsoft.com an. |  |
 | Überprüfen Sie das Aussehen und Verhalten im Browser. | [Hinzufügen Ihres Unternehmensbrandings zur Anmelde- und Zugriffsbereichsseite](active-directory-add-company-branding.md) |
@@ -487,7 +485,7 @@ Geschätzter Zeitaufwand: 15 Minuten
 | Hinweis: Wenn GA2 nicht für Azure MFA registriert wurde, muss dies jetzt nachgeholt werden. |  |
 | Wechseln Sie zurück zur ursprünglichen Registerkarte (Schritt 3). Klicken Sie dann auf die Aktualisierungsschaltfläche des Browsers. Sie können die „Benutzereinstellungen“ jetzt ändern. | |
 | Optional: Wenn E-Mail für die globalen Administratoren aktiviert ist, können Sie den Posteingang von GA1 und GA2 überprüfen. Dort finden Sie eine Benachrichtigung darüber, dass die Rolle aktiviert wurde. |  |
-| 8    Überprüfen Sie im Überwachungsverlauf, dass die Beförderung von GA2 im Bericht angezeigt wird. | [Was ist Azure AD Privileged Identity Management?: Überprüfen der Rollenaktivität](active-directory-privileged-identity-management-configure.md#review-role-activity) |
+| 8 Überprüfen Sie im Überwachungsverlauf, ob die Beförderung von GA2 im Bericht angezeigt wird. | [Was ist Azure AD Privileged Identity Management?: Überprüfen der Rollenaktivität](active-directory-privileged-identity-management-configure.md#review-role-activity) |
 
 ### <a name="considerations"></a>Überlegungen
 

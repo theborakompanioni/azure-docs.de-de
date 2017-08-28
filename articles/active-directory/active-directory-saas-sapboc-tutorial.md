@@ -5,19 +5,20 @@ services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: femila
+ms.reviewer: joflore
 ms.assetid: 6c5e44f0-4e52-463f-b879-834d80a55cdf
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/16/2017
+ms.date: 08/14/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: 85723eeb9c030dc51bdad47ea8e0996ff7868336
+ms.translationtype: HT
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: a09e965b6fc9b89023c09092860fcf79773a4518
 ms.contentlocale: de-de
-ms.lasthandoff: 06/16/2017
+ms.lasthandoff: 08/12/2017
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-business-object-cloud"></a>Tutorial: Azure Active Directory-Integration mit SAP Business Object Cloud
@@ -45,7 +46,7 @@ Um die Azure AD-Integration mit SAP Business Object Cloud konfigurieren zu könn
 Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
 
 - Verwenden Sie die Produktionsumgebung nur, wenn dies unbedingt erforderlich ist.
-- Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/)eine einmonatige Testversion anfordern.
+- Wenn Sie keine Azure AD-Testumgebung haben, können Sie eine [einmonatige Testversion anfordern](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
@@ -111,9 +112,17 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-sapboc-tutorial/tutorial_sapboc_url.png)
 
-    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<sub-domain>.projectorca.cloud/`.
+    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: 
+    | |
+    |-|-|
+    | `https://<sub-domain>.sapanalytics.cloud/` |
+    | `https://<sub-domain>.sapbusinessobjects.cloud/` |
 
-    b. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: `<sub-domain>.projectorca.cloud`
+    b. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein:
+    | |
+    |-|-|
+    | `<sub-domain>.sapbusinessobjects.cloud` |
+    | `<sub-domain>.sapanalytics.cloud` |
 
     > [!NOTE] 
     > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Kundensupportteam von SAP Business Object Cloud](https://www.sap.com/product/analytics/cloud-analytics.support.html), um die Anmelde-URL zu erhalten. Sie können den Bezeichner zum Herunterladen der SAP Business Object Cloud-Metadaten über die Verwaltungskonsole erhalten. Dies wird später in diesem Tutorial erläutert. 
@@ -195,8 +204,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
  
 ### <a name="creating-an-sap-business-object-cloud-test-user"></a>Erstellen eines SAP Business Object Cloud-Testbenutzers
 
-Damit sich Azure AD-Benutzer bei SAP Business Object Cloud anmelden können, müssen sie in SAP Business Object Cloud bereitgestellt werden.  
-Bei SAP Business Object Cloud wird die Bereitstellung manuell ausgeführt.
+Damit sich Azure AD-Benutzer bei SAP Business Object Cloud anmelden können, müssen sie in SAP Business Object Cloud bereitgestellt werden. Bei SAP Business Object Cloud wird die Bereitstellung manuell ausgeführt.
 
 **Führen Sie zum Bereitstellen eines Benutzerkontos die folgenden Schritte aus:**
 

@@ -13,13 +13,13 @@ ms.devlang: arduino
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/29/2017
+ms.date: 08/16/2017
 ms.author: xshi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
-ms.openlocfilehash: 74f95d571da2e3066958cf3c5ab1938a5c631f7d
+ms.translationtype: HT
+ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
+ms.openlocfilehash: e037f5c29cabf8e5d0d3e7ded187280a0652d5c3
 ms.contentlocale: de-de
-ms.lasthandoff: 07/06/2017
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-by-using-the-web-apps-feature-of-azure-app-service"></a>Visualisieren von Echtzeit-Sensordaten über Azure IoT Hub mithilfe des Web-Apps-Features von Azure App Service
@@ -83,7 +83,7 @@ Wir haben auf GitHub eine Webanwendung zur Verfügung gestellt, die Echtzeit-Sen
 
    ![Konfigurieren Ihrer Web-App-Bereitstellung zur Verwendung des lokalen Git-Repositorys](media/iot-hub-live-data-visualization-in-web-apps/5_configure-web-app-deployment-local-git-repository-azure.png)
 
-2. Klicken Sie auf **Anmeldeinformationen für die Bereitstellung**. Erstellen Sie einen Benutzernamen und ein Kennwort zum Herstellen der Verbindung mit dem Git-Repository in Azure, und klicken Sie dann auf **OK**.
+2. Klicken Sie auf **Anmeldeinformationen für die Bereitstellung**. Erstellen Sie einen Benutzernamen und ein Kennwort zum Herstellen der Verbindung mit dem Git-Repository in Azure, und klicken Sie dann auf **Speichern**.
 
 3. Klicken Sie auf **Übersicht**, und notieren Sie den Wert von **Git-Klon-URL**.
 
@@ -112,6 +112,9 @@ Klicken Sie auf der Seite **Übersicht** der Web-App auf die URL, um die Web-App
 Die Temperatur- und Luftfeuchtigkeitsdaten in Ihrem IoT Hub sollten in Echtzeit angezeigt werden.
 
 ![Web-App-Seite mit Anzeige von Temperatur und Luftfeuchtigkeit in Echtzeit](media/iot-hub-live-data-visualization-in-web-apps/9_web-app-page-show-real-time-temperature-humidity-azure.png)
+
+> [!NOTE]
+> Stellen Sie sicher, dass die Beispielanwendung auf Ihrem Gerät ausgeführt wird. Ist dies nicht der Fall, wird ein leeres Diagramm angezeigt. Weitere Informationen finden Sie in den Tutorials unter [Einrichten Ihres Geräts](iot-hub-raspberry-pi-kit-node-get-started.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 Sie haben mithilfe Ihrer Web-App erfolgreich Sensordaten in Echtzeit in IoT Hub visualisiert.

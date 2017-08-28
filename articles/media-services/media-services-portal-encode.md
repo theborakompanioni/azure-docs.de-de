@@ -4,7 +4,7 @@ description: "Dieses Tutorial führt Sie durch die Schritte zur Codierung eines 
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: SyntaxC4
+manager: cfowler
 editor: 
 ms.assetid: 107d9e9a-71e9-43e5-b17c-6e00983aceab
 ms.service: media-services

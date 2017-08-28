@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 07/23/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: 618c6fead3dbad385c4ded39352eea0cfcf1b134
+ms.translationtype: HT
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: 1b0d64cd592c4738311797b826e490639340f92a
 ms.contentlocale: de-de
-ms.lasthandoff: 06/16/2017
+ms.lasthandoff: 08/12/2017
 
 ---
 # <a name="create-recovery-plans"></a>Erstellen von Wiederherstellungsplänen
@@ -44,6 +44,7 @@ Kommentare oder Fragen können Sie am Ende dieses Artikels oder im [Forum zu Azu
     - Für VMM zu Azure wählen Sie **Quelltyp** > **VMM**.  Wählen Sie den VMM-Quellserver und als Ziel **Azure** aus.
     - Zur Hyper-V-Replikation zu Azure (ohne VMM) wählen Sie **Quelltyp** > **Hyper-V-Site** aus. Wählen Sie den Standort als Quelle und als Ziel **Azure**  aus.
     - Bei der Replikation eines virtuellen VMware-Computers oder eines physischen lokalen Servers zu Azure wählen Sie einen Konfigurationsserver als Quelle und als Ziel **Azure** aus.
+    - Wählen Sie für einen Azure-zu-Azure-Wiederherstellungsplan eine Azure-Region als Quelle und eine sekundäre Azure-Region als Ziel aus. Die sekundären Azure-Regionen sind nur die Regionen, die zum Schutz virtueller Computer dienen.
 2. Wählen Sie unter **Virtuelle Computer auswählen** die virtuellen Computer (oder die Replikationsgruppe) aus, die Sie der Standardgruppe (Gruppe 1) im Wiederherstellungsplan hinzufügen möchten.
 
 ## <a name="customize-and-extend-recovery-plans"></a>Anpassen und Erweitern von Wiederherstellungsplänen

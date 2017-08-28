@@ -12,26 +12,25 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 12/02/2016
-ms.author: cfreeman
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 003db6e1479be1007dd292555ce5997f1c138809
-ms.openlocfilehash: f73a24993fdeaced422b2f7a1283722a82c2be77
+ms.author: bwren
+ms.translationtype: HT
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: 054e49478e70aeb15a012592fbb9642c39a60496
 ms.contentlocale: de-de
-ms.lasthandoff: 12/13/2016
-
+ms.lasthandoff: 08/17/2017
 
 ---
 # <a name="create-an-application-insights-resource"></a>Erstellen einer Application Insights-Ressource
-Azure Application Insights zeigt Daten über Ihre Anwendung in einer Microsoft Azure-*Ressource* an. Die Erstellung einer neuen Ressource gehört daher zur [Einrichtung von Application Insights für das Überwachen einer neuen Anwendung][start]. In vielen Fällen kann dies automatisch über die IDE erfolgen. Diese Methode wird nach Möglichkeit empfohlen. In einigen Fällen erstellen Sie eine Ressource jedoch manuell – z.B. um separate Ressourcen für die Entwicklungs- und Produktionsbuilds der Anwendung verwenden zu können.
+Azure Application Insights zeigt Daten über Ihre Anwendung in einer Microsoft Azure-*Ressource* an. Die Erstellung einer neuen Ressource gehört daher zur [Einrichtung von Application Insights für das Überwachen einer neuen Anwendung][start]. In vielen Fällen kann eine Ressource automatisch von der IDE erstellt werden. In einigen Fällen erstellen Sie eine Ressource jedoch manuell – z.B. um separate Ressourcen für die Entwicklungs- und Produktionsbuilds der Anwendung verwenden zu können.
 
-Nach dem Erstellen der Ressource erhalten Sie den Instrumentationsschlüssel und verwenden ihn zum Konfigurieren des SDK in der Anwendung. Dadurch wird die Telemetrie an die Ressource gesendet.
+Nach dem Erstellen der Ressource erhalten Sie den Instrumentationsschlüssel und verwenden ihn zum Konfigurieren des SDK in der Anwendung. Der Ressourcenschlüssel verknüpft die Telemetrie mit der Ressource.
 
 ## <a name="sign-up-to-microsoft-azure"></a>Anmelden bei Microsoft Azure
 Wenn Sie noch kein [Microsoft-Konto besitzen, erstellen Sie jetzt eins](http://live.com). (Wenn Sie Dienste wie Outlook.com, OneDrive, Windows Phone oder XBox Live verwenden, besitzen Sie bereits ein Microsoft-Konto.)
 
-Außerdem benötigen Sie ein [Microsoft Azure](http://azure.com)-Abonnement. Wenn Ihr Team oder Ihre Organisation über ein Azure-Abonnement verfügt, kann der Besitzer Sie anhand Ihrer Windows Live ID hinzufügen. Ihnen wird nur die tatsächliche Verwendung berechnet. Darüber hinaus erlaubt der Basic-Standardplan die kostenlose Nutzung für Testzwecke bis zu einem bestimmten Volumen.
+Außerdem benötigen Sie ein Abonnement für [Microsoft Azure](http://azure.com). Wenn Ihr Team oder Ihre Organisation über ein Azure-Abonnement verfügt, kann der Besitzer Sie anhand Ihrer Windows Live ID hinzufügen. Ihnen wird nur die tatsächliche Verwendung in Rechnung gestellt. Darüber hinaus erlaubt der Basic-Standardplan die kostenlose Nutzung zu Testzwecken bis zu einem bestimmten Volumen.
 
-Wenn Sie Zugang zu einem Abonnement besitzen, melden Sie sich über Ihre Live ID unter [http://portal.azure.com](https://portal.azure.com)bei Application Insights an.
+Wenn Sie Zugriff auf ein Abonnement haben, melden Sie sich mit Ihrer Live ID unter [http://portal.azure.com](https://portal.azure.com) bei Application Insights an.
 
 ## <a name="create-an-application-insights-resource"></a>Erstellen einer Application Insights-Ressource
 Fügen Sie unter [portal.azure.com](https://portal.azure.com)eine neue Application Insights-Ressource hinzu:
@@ -44,12 +43,12 @@ Fügen Sie unter [portal.azure.com](https://portal.azure.com)eine neue Applicati
 * **Speicherort** ist der Ort, an dem Ihre Daten aufbewahrt werden.
 * **An Dashboard anheften** legt eine Schnellzugriffskachel für die Ressource auf Ihrer Azure-Startseite ab. Empfohlen.
 
-Wenn Ihre App erstellt wurde, wird ein neues Blatt geöffnet. Dort werden die Leistungs- und Nutzungsdaten über Ihre App angezeigt. 
+Wenn Ihre App erstellt wurde, wird ein neues Blatt geöffnet. Auf diesem Blatt werden die Leistungs- und Nutzungsdaten für Ihre App angezeigt. 
 
-Um bei der nächsten Anmeldung bei Azure dorthin zurückzugelangen, suchen Sie im Startmenü (Startseite) nach der Schnellstart-Kachel für Ihre App. Klicken Sie alternativ dazu auf "Durchsuchen", um sie zu finden.
+Um bei der nächsten Anmeldung bei Azure wieder dorthin zu gelangen, suchen Sie im Startmenü (bzw. auf der Startseite) nach der Schnellstartkachel für Ihre App. Klicken Sie alternativ dazu auf "Durchsuchen", um sie zu finden.
 
 ## <a name="copy-the-instrumentation-key"></a>Kopieren des Instrumentationsschlüssels
-Der Instrumentationsschlüssel identifiziert die Ressource, die Sie erstellt haben. Sie müssen ihn an das SDK übergeben.
+Der Instrumentierungsschlüssel identifiziert die Ressource, die Sie erstellt haben. Er muss an das SDK übergeben werden.
 
 ![Klicken Sie auf "Essentials", klicken Sie auf den Instrumentierungsschlüssel, STRG+C.](./media/app-insights-create-new-resource/02-props.png)
 
@@ -63,9 +62,9 @@ Das SDK enthält die Standardmodule, die Telemetriedaten senden, ohne dass Sie C
 ## <a name="monitor"></a>Anzeigen von Telemetriedaten
 Schließen Sie das Schnellstartblatt, um zum Blatt Ihrer Anwendung im Azure-Portal zurückzukehren.
 
-Klicken Sie auf die Kachel „Search“, um die [Diagnosesuche][diagnostic] zu öffnen. Dort werden die ersten Ereignisse angezeigt. 
+Klicken Sie auf die Suchkachel, um die [Diagnosesuche][diagnostic] zu öffnen. Dort werden die ersten Ereignisse angezeigt. 
 
-Klicken Sie nach einigen Sekunden auf "Aktualisieren", wenn Sie mehr Daten erwarten.
+Klicken Sie nach einigen Sekunden auf **Aktualisieren**, falls Sie mehr Daten erwarten.
 
 ## <a name="creating-a-resource-automatically"></a>Automatisches Erstellen einer Ressource
 Sie können ein [PowerShell-Skript](app-insights-powershell.md) schreiben, um eine Ressource automatisch zu erstellen.

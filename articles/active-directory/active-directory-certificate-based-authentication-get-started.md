@@ -13,11 +13,11 @@ ms.workload: identity
 ms.date: 08/02/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
-ms.openlocfilehash: c32f2ca2c799332652d38d882a4d6337bade4f93
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 8ebc6f2dd7502fd75ffdd4d5d68338382cb1a46b
 ms.contentlocale: de-de
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Erste Schritte mit zertifikatbasierter Authentifizierung in Azure Active Directory
@@ -40,6 +40,8 @@ Dieses Thema:
 ## <a name="requirements"></a>Anforderungen
 
 Damit Sie eine zertifikatbasierte Authentifizierung konfigurieren können, muss Folgendes zutreffen:  
+
+- Die zertifikatbasierte Authentifizierung (Certificate-Based Authentication, CBA) wird nur für Verbundumgebungen für Browseranwendungen oder native Clients mit moderner Authentifizierung (ADAL) unterstützt. Die einzige Ausnahme ist das Protokoll Exchange ActiveSync (EAS) für EXO, das sowohl für Verbund- als auch verwaltete Konten verwendet werden kann. 
 
 - Die Stammzertifizierungsstelle und alle Zwischenzertifizierungsstellen müssen in Azure Active Directory konfiguriert sein.  
 

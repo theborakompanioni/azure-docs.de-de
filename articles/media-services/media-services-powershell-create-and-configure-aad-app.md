@@ -4,7 +4,7 @@ description: "In diesem Artikel erfahren Sie, wie Sie mithilfe von PowerShell ei
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: SyntaxC4
+manager: cfowler
 editor: 
 ms.service: media-services
 ms.workload: media

@@ -4,7 +4,7 @@ description: "In diesem Thema werden verschiedene Aufgaben erläutert, die mit A
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: SyntaxC4
+manager: cfowler
 editor: 
 ms.assetid: 0582628e-a525-4a78-90ac-9f7fc1cd909f
 ms.service: media-services

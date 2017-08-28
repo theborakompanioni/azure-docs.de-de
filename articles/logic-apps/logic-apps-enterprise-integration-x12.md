@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2017
 ms.author: LADocs; padmavc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
-ms.openlocfilehash: 4a41d9eb8b28aed499bb20e17e3c979962c78bcd
+ms.translationtype: HT
+ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
+ms.openlocfilehash: 1bfaa7b31bfed3ada22c83516839ebd95a351854
 ms.contentlocale: de-de
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="exchange-x12-messages-for-enterprise-integration-with-logic-apps"></a>Austauschen von X12-Nachrichten für die Unternehmensintegration mit Logik-Apps
@@ -272,6 +271,9 @@ Anders als beim Zeichensatz können Sie für jeden Nachrichtentyp einen anderen 
 | Ersetzungszeichen |Geben Sie ein Ersetzungszeichen ein, mit dem beim Generieren der ausgehenden X12-Nachricht alle Trennzeichen in den Nutzlastdaten ersetzt werden. |
 | Segmentabschlusszeichen |Geben Sie ein einzelnes Zeichen ein, um das Ende eines EDI-Segments anzugeben. |
 | Suffix |Wählen Sie das Zeichen, das mit dem Segmentbezeichner verwendet wird. Wenn Sie ein Suffix angeben, kann das Segmentabschlusszeichen-Datenelement leer sein. Wenn das Segmentabschlusszeichen leer gelassen wird, müssen Sie ein Suffix angeben. |
+
+> [!TIP]
+> Um Werte für Sonderzeichen bereitzustellen, bearbeiten Sie die Vereinbarung als JSON, und geben Sie den ASCII-Wert für das Sonderzeichen an.
 
 ### <a name="validation"></a>Überprüfen
 

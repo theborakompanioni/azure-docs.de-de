@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/07/2017
+ms.date: 08/11/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: 7e0fa9a83c3c83145a4813422bf73a0e711d0ecc
+ms.translationtype: HT
+ms.sourcegitcommit: 80fd9ee9b9de5c7547b9f840ac78a60d52153a5a
+ms.openlocfilehash: 57af000e47188786a77cdb84ebb6ffb5c50eafaa
 ms.contentlocale: de-de
-ms.lasthandoff: 07/06/2017
+ms.lasthandoff: 08/14/2017
 
 ---
 # <a name="track-software-changes-in-your-environment-with-the-change-tracking-solution"></a>Nachverfolgen von Änderungen an der Software in Ihrer Umgebung mit der Change Tracking-Lösung
@@ -28,13 +28,13 @@ ms.lasthandoff: 07/06/2017
 
 Dieser Artikel unterstützt Sie bei der einfachen Erkennung von Änderungen an Ihrer Umgebung mithilfe der Änderungsnachverfolgungslösung in Log Analytics. Die Lösung verfolgt Änderungen an Windows- und Linux-Software, an Windows-Dateien und Registrierungsschlüsseln, an Windows-Diensten und an Linux-Daemons nach. Durch Ermitteln von Konfigurationsänderungen können Sie Betriebsprobleme präzise bestimmen.
 
-Sie installieren die Lösung, um den Typ des installierten Agents zu aktualisieren. Änderungen an installierter Software, Windows-Diensten und Linux-Daemons auf den überwachten Servern werden gelesen, und di Daten werden Verarbeitung an den Log Analytics-Dienst in der Cloud gesendet. Auf die empfangenen Daten wird Logik angewendet, und der Clouddienst zeichnet die Daten auf. Mithilfe der Informationen im Change Tracking-Dashboard können Sie ganz leicht die Änderungen erkennen, die in Ihrer Serverinfrastruktur vorgenommen wurden.
+Sie installieren die Lösung, um den Typ des installierten Agents zu aktualisieren. Änderungen an installierter Software, Windows-Diensten und Linux-Daemons auf den überwachten Servern werden gelesen. Anschließend werden die Daten zur Verarbeitung an den Log Analytics-Dienst in der Cloud gesendet. Auf die empfangenen Daten wird Logik angewendet, und der Clouddienst zeichnet die Daten auf. Mithilfe der Informationen im Change Tracking-Dashboard können Sie ganz leicht die Änderungen erkennen, die in Ihrer Serverinfrastruktur vorgenommen wurden.
 
 ## <a name="installing-and-configuring-the-solution"></a>Installieren und Konfigurieren der Lösung
 Verwenden Sie die folgenden Informationen zum Installieren und Konfigurieren der Lösung.
 
 * Sie benötigen einen [Windows](log-analytics-windows-agents.md)-, [Operations Manager](log-analytics-om-agents.md)- oder [Linux](log-analytics-linux-agents.md)-Agent auf jedem Computer, auf dem Änderungen überwacht werden sollen.
-* Fügen Sie mithilfe des [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ChangeTrackingOMS?tab=Overview) oder des unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](log-analytics-add-solutions.md) beschriebenen Prozesses Ihrem OMS-Arbeitsbereich die Lösung für die Änderungsnachverfolgung hinzu.  Es ist keine weitere Konfiguration erforderlich.
+* Fügen Sie die Lösung für die Änderungsnachverfolgung über den [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ChangeTrackingOMS?tab=Overview) zum OMS-Arbeitsbereich hinzu. Alternativ können Sie die Lösungen mithilfe der Informationen unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](log-analytics-add-solutions.md) hinzufügen. Es ist keine weitere Konfiguration erforderlich.
 
 ### <a name="configure-linux-files-to-track"></a>Konfigurieren von Linux-Dateien für die Nachverfolgung
 Führen Sie zum Konfigurieren der nachzuverfolgenden Dateien auf Linux-Computern die folgenden Schritte aus.
@@ -43,7 +43,7 @@ Führen Sie zum Konfigurieren der nachzuverfolgenden Dateien auf Linux-Computern
 2. Klicken Sie auf der Seite **Einstellungen** auf **Daten** und dann auf **Nachverfolgung von Linux-Dateien**.
 3. Geben Sie unter „Nachverfolgung von Linux-Dateien“ den vollständigen Pfad ein, und zwar einschließlich des Dateinamens der Datei, die Sie nachverfolgen möchten. Klicken Sie dann auf das Symbol **Hinzufügen**. Beispiel: „/etc/*.conf“
 4. Klicken Sie auf **Speichern**.  
-  
+
 > [!NOTE]
 > Beim Nachverfolgen von Linux-Dateien stehen zusätzliche Funktionen zur Verfügung, darunter das Nachverfolgen von Verzeichnissen, das rekursive durchlaufen von Verzeichnissen und das Nachverfolgen von Platzhaltern.
 
@@ -72,16 +72,16 @@ Führen Sie zum Konfigurieren der nachzuverfolgenden Registrierungsschlüssel au
 2. **Links** (Behandlung von Symlink-Verweisen von Linux auf andere Dateien oder Verzeichnisse)
    * **Ignorieren** (Ignorieren der Symlinks während Rekursionen, um die Verweisdateien/-verzeichnisse nicht einzuschließen)
    * **Folgen** (Während der Rekursion den Symlinks folgen, um auch die Verweisdateien/-verzeichnisse einzuschließen)
-   * **Verwalten** (Den Symlinks folgen und die Verarbeitung des zurückgegebenen Inhalts verändern) 
-   
+   * **Verwalten** (Den Symlinks folgen und die Verarbeitung des zurückgegebenen Inhalts verändern)
+
    > [!NOTE]   
-   > Die Option „Verwalten“ von Links wird nicht empfohlen, da der Abruf des Dateiinhalts derzeit nicht unterstützt wird.
-   
+   > Die Linkoption „Verwalten“ wird nicht empfohlen. Das Abrufen von Dateiinhalten wird nicht unterstützt.
+
 3. **Rekursiv durchlaufen** (Die Dateiebenen rekursiv durchlaufen und alle Dateien nachverfolgen, die die Pfadanweisung erfüllen)
 4. **Sudo** (Den Zugriff auf Dateien oder Verzeichnisse aktivieren, für die eine Sudo-Berechtigung benötigt wird)
 
 ### <a name="limitations"></a>Einschränkungen
-Die Änderungsnachverfolgungslösung unterstützt derzeit Folgendes nicht:
+Die Lösung für die Änderungsnachverfolgung unterstützt derzeit folgende Elemente nicht:
 
 * Ordner (Verzeichnisse) für Windows File Tracking
 * Rekursion für Windows File Tracking
@@ -102,9 +102,9 @@ Die Änderungsnachverfolgung sammelt Softwareinventur- und Windows-Dienst-Metada
 
 Die folgende Tabelle zeigt die Datensammlungsmethoden und andere Details dazu, wie Daten für die Änderungsnachverfolgung erfasst werden.
 
-| Plattform | Direkt-Agent | SCOM-Agent | Linux-Agent | Azure Storage | SCOM erforderlich? | Daten von SCOM-Agent über Verwaltungsgruppe gesendet | Sammlungshäufigkeit |
+| Plattform | Direkt-Agent | Operations Manager-Agent | Linux-Agent | Azure Storage | Operations Manager erforderlich? | Daten vom Operations Manager-Agent über Verwaltungsgruppe gesendet | Sammlungshäufigkeit |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Windows und Linux |![Ja](./media/log-analytics-change-tracking/oms-bullet-green.png) |![Ja](./media/log-analytics-change-tracking/oms-bullet-green.png) |![Ja](./media/log-analytics-change-tracking/oms-bullet-green.png) |![Nein](./media/log-analytics-change-tracking/oms-bullet-red.png) |![Nein](./media/log-analytics-change-tracking/oms-bullet-red.png) |![Ja](./media/log-analytics-change-tracking/oms-bullet-green.png) | Zwischen 5 und 50 Minuten (je nach Art der Änderung) Weitere Informationen finden Sie unten. |
+| Windows und Linux | &#8226; | &#8226; | &#8226; |  |  | &#8226; | Zwischen 5 und 50 Minuten (je nach Art der Änderung) Ausführlichere Informationen finden Sie in der Tabelle weiter unten. |
 
 
 Die folgende Tabelle zeigt die Datensammlungshäufigkeit für die Änderungstypen.
@@ -128,7 +128,7 @@ Log Analytics führt Überwachung und Nachverfolgung der Windows-Registrierung m
 - HKEY\_LOCAL\_MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Shutdown
     - Überwacht Skripts, die beim Herunterfahren ausgeführt werden.
 - HKEY\_LOCAL\_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Run
-    - Überwacht für 32-Bit-Programme, die auf 64-Bit-Computern ausgeführt werden, Schlüssel, die geladen werden, bevor der Benutzer sich bei seinem Windows-Konto anmeldet.
+    - Überwacht Schlüssel, die geladen werden, bevor der Benutzer sich bei seinem Windows-Konto anmeldet. Der Schlüssel wird für 32-Bit-Programme verwendet, die auf 64-Bit-Computern ausgeführt werden.
 - HKEY\_LOCAL\_MACHINE\SOFTWARE\Microsoft\Active Setup\Installed Components
     - Überwacht Änderungen an Anwendungseinstellungen.
 - HKEY\_LOCAL\_MACHINE\Software\Classes\Directory\ShellEx\ContextMenuHandlers
@@ -142,9 +142,9 @@ Log Analytics führt Überwachung und Nachverfolgung der Windows-Registrierung m
 - HKEY\_LOCAL\_MACHINE\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers
     - Überwacht die Symboloverlayhandler-Registrierung für 32-Bit-Programme, die auf 64-Bit-Computern ausgeführt werden.
 - HKEY\_LOCAL\_MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects
-    - Überwacht, ob neue Browserhilfsobjekt-Plug-Ins für Internet Explorer vorliegen, die dann für den Zugriff auf das Dokumentobjektmodell (DOM) der aktuellen Seite und zum Steuern der Navigation verwendet werden können.
+    - Überwacht neue Browserhilfsobjekt-Plug-Ins für Internet Explorer. Wird für den Zugriff auf das Dokumentobjektmodell (DOM) der aktuellen Seite und zum Steuern der Navigation verwendet.
 - HKEY\_LOCAL\_MACHINE\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects
-    - Überwacht, ob neue Browserhilfsobjekt-Plug-Ins für Internet Explorer vorliegen, die dann für den Zugriff auf das Dokumentobjektmodell (DOM) der aktuellen Seite und zum Steuern der Navigation für 32-Bit-Programme, die auf 64-Bit-Computern ausgeführt werden, verwendet werden können.
+    - Überwacht neue Browserhilfsobjekt-Plug-Ins für Internet Explorer. Wird für den Zugriff auf das Dokumentobjektmodell (DOM) der aktuellen Seite und zum Steuern der Navigation für 32-Bit-Programme, die auf 64-Bit-Computern ausgeführt werden, verwendet.
 - HKEY\_LOCAL\_MACHINE\Software\Microsoft\Internet Explorer\Extensions
     - Überwacht, ob neue Internet Explorer-Erweiterungen vorliegen, z.B. benutzerdefinierte Toolmenüs und benutzerdefinierte Symbolleistenschaltflächen.
 - HKEY\_LOCAL\_MACHINE\Software\Wow6432Node\Microsoft\Internet Explorer\Extensions

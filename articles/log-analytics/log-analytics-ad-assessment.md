@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/03/2017
+ms.date: 08/15/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
-ms.openlocfilehash: 2279e609a5d81ecd40bd469a3e98b5cdf81fde2f
+ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
+ms.openlocfilehash: 97368f0b9e89ffd0cd982b6e8670d5a1f62ad42c
 ms.contentlocale: de-de
-ms.lasthandoff: 08/04/2017
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-assessment-solution-in-log-analytics"></a>Optimieren Ihrer Active Directory-Umgebung mit der Active Directory Assessment-Lösung in Log Analytics
@@ -73,7 +73,7 @@ Die folgende Tabelle zeigt die Datensammlungsmethoden für Agents und gibt an, o
 
 | Plattform | Direkt-Agent | SCOM-Agent | Azure Storage | SCOM erforderlich? | Daten von SCOM-Agent über Verwaltungsgruppe gesendet | Sammlungshäufigkeit |
 | --- | --- | --- | --- | --- | --- | --- |
-| Windows |![Ja](./media/log-analytics-ad-assessment/oms-bullet-green.png) |![Ja](./media/log-analytics-ad-assessment/oms-bullet-green.png) |![Nein](./media/log-analytics-ad-assessment/oms-bullet-red.png) |![Nein](./media/log-analytics-ad-assessment/oms-bullet-red.png) |![Ja](./media/log-analytics-ad-assessment/oms-bullet-green.png) |7 Tage |
+| Windows |&#8226; |&#8226; |  |  |&#8226; |7 Tage |
 
 ## <a name="understanding-how-recommendations-are-prioritized"></a>Grundlegendes zum Priorisieren von Empfehlungen
 Jede vorgenommene Empfehlung erhält einen Gewichtungswert, der die relative Wichtigkeit der Empfehlung angibt. Es werden nur die zehn wichtigsten Empfehlungen angezeigt.
@@ -176,13 +176,6 @@ Nach Ausführung der nächsten geplanten Bewertung – standardmäßig alle 7 Ta
 *Wie lange dauert das Sammeln der Daten?*
 
 * Die eigentliche Datensammlung auf dem Server dauert etwa eine Stunde. Auf Servern mit vielen Active Directory-Servern kann der Vorgang auch mehr Zeit in Anspruch nehmen.
-
-*Welche Art von Daten wird gesammelt?*
-
-* Die folgenden Datentypen werden gesammelt:
-  * WMI
-  * Registrierung
-  * Leistungsindikatoren
 
 *Gibt es eine Möglichkeit, den Zeitpunkt der Datensammlung zu konfigurieren?*
 

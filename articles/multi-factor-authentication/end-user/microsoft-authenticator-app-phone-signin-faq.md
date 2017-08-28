@@ -5,20 +5,21 @@ services: multi-factor-authentication
 documentationcenter: 
 author: kgremban
 manager: femila
-editor: librown
 ms.assetid: 
 ms.service: multi-factor-authentication
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/02/2017
+ms.date: 08/12/2017
 ms.author: kgremban
+ms.reviewer: librown
 ms.custom: end-user
-translationtype: Human Translation
-ms.sourcegitcommit: ec52f719f33db0d893d707b59293fa75a8ff4314
-ms.openlocfilehash: 033392783fd98cbdb23fd0254c93687754808286
-ms.lasthandoff: 02/10/2017
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 002b850221c25111c33c145cb45973488bbbb4e1
+ms.contentlocale: de-de
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="sign-in-with-your-phone-not-your-password"></a>Anmelden per Smartphone anstelle Ihres Kennworts
@@ -29,7 +30,7 @@ Dieses Feature steht auf IOS- und Android-Geräten zur Verfügung und kann für 
 
 ## <a name="how-it-works"></a>So funktioniert's
 
-Viele Benutzer verwenden die Microsoft Authenticator-App für die Überprüfung in zwei Schritten, wenn sie sich bei ihrem Microsoft-Konto anmelden. Hierzu geben sie ihr Kennwort ein und wechseln anschließend in die App, um entweder eine Benachrichtigung zu bestätigen oder einen Überprüfungscode abzurufen. Bei der Anmeldung per Telefon wird die Kennworteingabe übersprungen, und die gesamte Identitätsüberprüfung findet auf Ihrem Smartphone statt. Das Verfahren funktioniert immer noch wie die Überprüfung in zwei Schritten: Es wird etwas abgefragt, das Sie wissen, und etwas, das Sie haben. Das Smartphone ist auch hier das, was Sie haben. Als etwas, das Sie wissen, wird nun allerdings die Eingabe der Smartphone-PIN oder des biometrischen Schlüssels angefordert. 
+Viele Benutzer verwenden die Microsoft Authenticator-App für die Überprüfung in zwei Schritten, wenn sie sich bei ihrem Microsoft-Konto anmelden. Hierzu geben sie ihr Kennwort ein und wechseln anschließend in die App, um entweder eine Benachrichtigung zu bestätigen oder einen Überprüfungscode abzurufen. Bei der Anmeldung per Telefon wird die Kennworteingabe übersprungen, und die gesamte Identitätsüberprüfung findet auf Ihrem Smartphone statt. Da die Anmeldung per Telefon eine Art der Überprüfung in zwei Schritten darstellt, müssen Sie zur Überprüfung Ihrer Identität nach wie vor etwas angeben, das Sie wissen, und etwas, das Sie haben. Das Smartphone ist auch hier das, was Sie haben, und die Smartphone-PIN oder der biometrische Schlüssel das, was Sie wissen. 
 
 ## <a name="how-to-get-started"></a>Erste Schritte
 
@@ -39,10 +40,10 @@ Gehen Sie wie folgt vor, um sich mit Ihrem Smartphone bei Ihrem persönlichen Mi
 
   - Falls Sie noch nicht über die Microsoft Authenticator-App verfügen, installieren Sie sie, und fügen Sie Ihr persönliches Microsoft-Konto hinzu, wie auf der [Microsoft Authenticator-Seite](microsoft-authenticator-app-how-to.md) beschrieben. Neu hinzugefügte Konten werden automatisch aktiviert, sodass es gleich losgehen kann.
 
-  - Wenn Sie Microsoft Authenticator bereits für die Überprüfung in zwei Schritten verwenden, wählen Sie auf der Startseite der App Ihr Konto und anschließend im Dropdownmenü die Option „Anmeldung per Telefon aktivieren“ aus.
+  - Wenn Sie Microsoft Authenticator bereits für die Überprüfung in zwei Schritten verwenden, wählen Sie auf der Startseite der App Ihr Konto und anschließend im Dropdownmenü die Option **Anmeldung per Telefon aktivieren** aus.
 
   >[!NOTE] 
-  >Zum Schutz Ihres Kontos muss Ihr Gerät mit einer PIN oder mit einem biometrischen Schlüssel gesperrt sein. Falls Sie Ihr Smartphone ohne Sperre verwenden, werden Sie vor der Aktivierung der Anmeldung per Telefon in einem Popup zur Einrichtung einer Sperre aufgefordert. 
+  >Zum Schutz Ihres Kontos muss Ihr Gerät mit einer PIN oder mit einem biometrischen Schlüssel gesperrt sein. Falls Sie Ihr Smartphone ohne Sperre verwenden, werden Sie vor der Aktivierung der Anmeldung per Telefon in einer Popupmeldung zur Einrichtung einer Sperre aufgefordert. 
 
 3. Auf den meisten Seiten, auf denen Sie für gewöhnlich das Kennwort für Ihr Microsoft-Konto eingeben, steht ein Link vom Typ **Stattdessen eine App verwenden** zur Verfügung. Verwenden Sie diesen Link, um sich mithilfe Ihres Smartphones anzumelden. 
 
@@ -66,7 +67,7 @@ Die Anmeldung per Telefon kann derzeit nicht verwendet werden, um einen Windows-
 
 Manchmal. Wir arbeiten zwar an einer Ausweitung der Anmeldung per Telefon, noch gibt es aber Bereiche im Ökosystem von Microsoft, in denen sie noch nicht unterstützt wird. Dort wird für die sichere Anmeldung weiterhin die Überprüfung in zwei Schritten verwendet. Aus diesem Grund sollten Sie die Überprüfung in zwei Schritten für Ihr Konto nicht deaktivieren. 
  
-### <a name="okay-if-i-keep-two-step-verification-turned-on-for-my-account-will-i-have-to-approve-two-notifications"></a>Kann ich die Überprüfung in zwei Schritten für mein Konto aktiviert lassen, oder muss ich dann zwei Benachrichtigungen bestätigen?
+### <a name="okay-if-i-keep-two-step-verification-turned-on-for-my-account-do-i-have-to-approve-two-notifications"></a>Muss ich zwei Benachrichtigungen bestätigen, wenn ich die Überprüfung in zwei Schritten für mein Konto aktiviert lasse?
 
 Nein, müssen Sie nicht. Wenn Sie sich bei Ihrem Microsoft-Konto mit Ihrem Smartphone anmelden, zählt dies als Überprüfung in zwei Schritten. Anstatt Ihr Kennwort einzugeben und eine Benachrichtigung zu bestätigen, bestätigen Sie Ihre Identität, indem Sie Ihr Smartphone entsperren und eine Benachrichtigung bestätigen. Sie erhalten keine zweite Benachrichtigung, die Sie bestätigen müssen.
 

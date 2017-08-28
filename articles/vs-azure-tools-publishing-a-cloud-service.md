@@ -3,8 +3,8 @@ title: "Veröffentlichen eines Clouddiensts mit den Azure Tools | Microsoft Docs
 description: "Sie erhalten Informationen dazu, wie Sie Azure-Clouddienstprojekte mit Visual Studio veröffentlichen."
 services: visual-studio-online
 documentationcenter: na
-author: TomArcher
-manager: douge
+author: kraigb
+manager: ghogen
 editor: 
 ms.assetid: 1a07b6e4-3678-4cbf-b37e-4520b402a3d9
 ms.service: multiple
@@ -12,12 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 11/11/2016
-ms.author: tarcher
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 5e83532c65c5f6699d401ec9371ac2ad7f3868e8
-
+ms.date: 8/14/2017
+ms.author: kraigb
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 23cea0486a769d4f446f5114016d5accbe8113cf
+ms.contentlocale: de-de
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="publishing-a-cloud-service-using-the-azure-tools"></a>Veröffentlichen eines Clouddiensts mit den Azure Tools
@@ -147,10 +148,5 @@ Unter Umständen müssen Sie bestimmte Dateien in Ihr Dienstpaket einschließen,
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum Veröffentlichen in Azure aus Visual Studio finden Sie unter [Assistent zur Veröffentlichung einer Azure-Anwendung](vs-azure-tools-publish-azure-application-wizard.md).
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

@@ -13,14 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 06/23/2017
+ms.date: 08/11/2017
 ms.author: raprasa
-ms.translationtype: Human Translation
-ms.sourcegitcommit: cb4d075d283059d613e3e9d8f0a6f9448310d96b
-ms.openlocfilehash: a438b5079ae48c82fb2dbd5ce4547302364e0ef5
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 130f0eb259621737d6dbdb151e363915fb334ce1
 ms.contentlocale: de-de
-ms.lasthandoff: 06/26/2017
-
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="automatic-online-backup-and-restore-with-azure-cosmos-db"></a>Automatische Onlinesicherung und -wiederherstellung mit Azure Cosmos DB
@@ -50,13 +49,16 @@ Das folgende Bild veranschaulicht regelmäßige vollständige Sicherungen aller 
 
 ![Regelmäßige vollständige Sicherungen aller Cosmos DB-Entitäten in georedundantem Azure Storage](./media/online-backup-and-restore/automatic-backup.png)
 
-## <a name="retention-period-for-a-given-snapshot"></a>Beibehaltungsdauer einer bestimmten Momentaufnahme
-Wie oben beschrieben erstellen wir alle 4 Stunden Momentaufnahmen Ihrer Daten und behalten die letzten zwei Momentaufnahmen 30 Tage lang bei. Gemäß unseren Konformitätsbestimmungen werden Momentaufnahmen nach 90 Tagen gelöscht.
+## <a name="backup-retention-period"></a>Aufbewahrungszeitraum der Sicherung
+Wie oben beschrieben, erstellt Azure Cosmos DB alle vier Stunden Momentaufnahmen Ihrer Daten und bewahrt die letzten zwei Momentaufnahmen für jede Partition 30 Tage lang auf. Gemäß unseren Konformitätsbestimmungen werden Momentaufnahmen nach 90 Tagen gelöscht.
 
 Wenn Sie eigene Momentaufnahmen beibehalten möchten, können Sie die Option zum Export in eine JSON-Datei im [Datenmigrationstool](import-data.md#export-to-json-file) Azure Cosmos DB verwenden, um zusätzliche Sicherungen zu planen. 
 
-## <a name="restore-database-from-the-online-backup"></a>Wiederherstellen einer Datenbank aus der Onlinesicherung
-Für den Fall, dass Sie Ihre Daten versehentlich löschen, können Sie [ein Supportticket anfordern](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) oder den [Azure Support bitten](https://azure.microsoft.com/support/options/), die Daten aus der letzten automatischen Sicherung wiederherzustellen. Damit eine bestimmte Momentaufnahme Ihrer Sicherung wiederhergestellt wird, fordert Cosmos DB an, dass die Daten mindestens für die Dauer des Sicherungszyklus dieser Momentaufnahme bei uns verfügbar waren.
+## <a name="restoring-a-database-from-an-online-backup"></a>Wiederherstellen einer Datenbank von einer Onlinesicherung
+Falls Sie Ihre Datenbank oder -sammlung versehentlich löschen, können Sie [ein Supportticket anfordern](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) oder den [Azure Support bitten](https://azure.microsoft.com/support/options/), die Daten aus der letzten automatischen Sicherung wiederherzustellen. Wenn Sie die Datenbank aufgrund einer Datenbeschädigung wiederherstellen müssen, erfahren Sie unter [Umgang mit Datenbeschädigung](#handling-data-corruption), wie Sie zusätzliche Schritte ausführen, um zu verhindern, dass die beschädigten Daten in die Sicherungen eindringen. Für die Wiederherstellung einer bestimmten Momentaufnahme Ihrer Sicherung setzt Cosmos DB voraus, dass die Daten für die Dauer des Sicherungszyklus dieser Momentaufnahme verfügbar waren.
+
+## <a name="handling-data-corruption"></a>Umgang mit Datenbeschädigung
+Azure Cosmos DB bewahrt die letzten beiden Sicherungen jeder Partition im System auf. Dieses Modell funktioniert sehr gut, wenn Sie einen Container (Sammlung von Dokumenten, Diagramm, Tabelle) oder eine Datenbank versehentlich gelöscht haben, da eine der letzten Versionen wiederhergestellt werden kann. Wenn jedoch eine Datenbeschädigung auftritt, ist Azure Cosmos DB möglicherweise nicht über die Datenbeschädigung informiert, und sie könnte in die Sicherungen eingedrungen sein. Sobald Sie eine Beschädigung feststellen, sollten Sie den beschädigten Container (Sammlung/Diagramm/Tabelle) löschen, sodass Sicherungen vor dem Überschreiben mit beschädigten Daten geschützt sind. Da die letzte Sicherung vier Stunden alt sein könnte, kann der Benutzer einen [Änderungsfeed](change-feed.md) nutzen, um vor dem Löschen des Containers die geänderten Daten der letzten vier Stunden zu erfassen und zu speichern.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

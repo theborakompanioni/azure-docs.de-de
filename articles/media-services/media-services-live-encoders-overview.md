@@ -4,7 +4,7 @@ description: "Dieses Thema zählt lokale Liveencoder auf, mit denen Sie Ihre Liv
 services: media-services
 documentationcenter: 
 author: juliako
-manager: SyntaxC4
+manager: cfowler
 editor: 
 ms.assetid: 0ec6f046-0841-4673-9057-883bdbc30d5c
 ms.service: media-services

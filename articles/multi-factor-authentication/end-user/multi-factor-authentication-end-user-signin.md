@@ -1,12 +1,11 @@
 ---
-title: "Azure MFA-Anmeldevorgang mit Überprüfung in zwei Schritten | Microsoft-Dokumentation"
+title: "Azure MFA-Anmeldung mit Überprüfung in zwei Schritten | Microsoft-Dokumentation"
 description: "Auf dieser Seite finden Sie eine Anleitung zu den verschiedenen Anmeldemethoden, die mit Azure MFA verfügbar sind."
 keywords: "Benutzerauthentifizierung, Anmeldevorgang, Anmelden mit dem Mobiltelefon, Anmelden mit dem Bürotelefon"
 services: multi-factor-authentication
 documentationcenter: 
 author: kgremban
 manager: femila
-editor: pblachar
 ms.assetid: b310b762-471b-4b26-887a-a321c9e81d46
 ms.service: multi-factor-authentication
 ms.workload: identity
@@ -15,13 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/02/2017
 ms.author: kgremban
+ms.reviewer: librown
 ms.custom: end-user
-translationtype: Human Translation
-ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
-ms.openlocfilehash: e972446ea92e8fd31406c9ccff7832b7441f3a2a
-ms.lasthandoff: 03/04/2017
+ms.translationtype: HT
+ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
+ms.openlocfilehash: d12115be61ca00dfb86dd822ccae9f9096fa796a
+ms.contentlocale: de-de
+ms.lasthandoff: 08/16/2017
 
 ---
+
 # <a name="the-sign-in-experience-with-azure-multi-factor-authentication"></a>Der Anmeldevorgang mit Azure Multi-Factor Authentication
 > [!NOTE]
 > Zweck dieses Artikels ist eine exemplarische Vorgehensweise für einen typischen Anmeldevorgang. Hilfe zur Anmeldung oder zur Behebung von Problemen finden Sie unter [Beheben von Problemen mit Azure Multi-Factor Authentication](multi-factor-authentication-end-user-troubleshoot.md).
@@ -43,18 +45,16 @@ Die folgenden Informationen beschreiben die Überprüfung in zwei Schritten mit 
 1. Melden Sie sich mit Ihrem Benutzernamen und Kennwort bei einer Anwendung oder einem Dienst wie Office 365 an.  
 2. Sie erhalten einen Anruf von Microsoft.  
 3. Nehmen Sie den Anruf entgegen, und drücken Sie die #-Taste.  
-4. Sie sollten jetzt angemeldet sein.  
 
 ## <a name="signing-in-with-a-text-message"></a>Anmeldung mit einer Textnachricht
 Die folgenden Informationen beschreiben die Überprüfung in zwei Schritten mit einer Textnachricht an Ihr Mobiltelefon:
 
 1. Melden Sie sich mit Ihrem Benutzernamen und Kennwort bei einer Anwendung oder einem Dienst wie Office 365 an. 
-2. Sie erhalten von Microsoft eine Textnachricht mit einem Zahlencode. 
+2. Sie erhalten von Microsoft eine SMS mit einem Zahlencode. 
 3. Geben Sie den Code in das auf der Anmeldeseite gezeigte Feld ein. 
-4. Sie sollten jetzt angemeldet sein. 
 
 ## <a name="signing-in-with-the-microsoft-authenticator-app"></a>Anmelden mit der Microsoft Authenticator-App 
-Nachstehend wird der Anmeldevorgang mit der Microsoft Authenticator-App für Überprüfungen in zwei Schritten beschrieben. Es gibt zwei Möglichkeiten, die App zu verwenden. Sie können entweder Pushbenachrichtigungen auf Ihrem Gerät erhalten oder die App öffnen, um einen Prüfcode abzurufen.
+Nachstehend wird der Anmeldevorgang mit der Microsoft Authenticator-App für Überprüfungen in zwei Schritten beschrieben. Es gibt zwei Möglichkeiten, die App zu verwenden. Sie können Pushbenachrichtigungen auf Ihrem Gerät erhalten oder die App öffnen, um einen Prüfcode abzurufen.
 
 ### <a name="to-sign-in-with-a-notification-from-the-microsoft-authenticator-app"></a>So melden Sie sich mit einer von der Microsoft Authenticator-App gesendeten Benachrichtigung an
 1. Melden Sie sich mit Ihrem Benutzernamen und Kennwort bei einer Anwendung oder einem Dienst wie Office 365 an.
@@ -67,7 +67,7 @@ Nachstehend wird der Anmeldevorgang mit der Microsoft Authenticator-App für Üb
 
 ### <a name="to-sign-in-using-a-verification-code-with-the-microsoft-authenticator-app"></a>So melden Sie sich mit der Microsoft Authenticator-App über einen Überprüfungscode an
 
-Wenn Sie die Microsoft-Authenticator-App zum Abrufen von Prüfcodes verwenden, wird Ihnen beim Öffnen der App unter dem Namen Ihres Kontos eine Zahl angezeigt. Diese Zahl ändert sich alle 30 Sekunden, damit Sie die gleiche Zahl nicht zweimal verwenden. Wenn ein Prüfcode angefordert wird, öffnen Sie die App und verwenden die derzeit angezeigte Zahl. 
+Wenn Sie die Microsoft Authenticator-App zum Abrufen von Prüfcodes verwenden, wird Ihnen beim Öffnen der App unter dem Namen Ihres Kontos eine Zahl angezeigt. Diese Zahl ändert sich alle 30 Sekunden, damit Sie die gleiche Zahl nicht zweimal verwenden. Wenn ein Prüfcode angefordert wird, öffnen Sie die App und verwenden die derzeit angezeigte Zahl. 
 
 1. Melden Sie sich mit Ihrem Benutzernamen und Kennwort bei einer Anwendung oder einem Dienst wie Office 365 an.
 2. Sie werden von Microsoft dazu aufgefordert, einen Bestätigungscode einzugeben.
@@ -75,17 +75,15 @@ Wenn Sie die Microsoft-Authenticator-App zum Abrufen von Prüfcodes verwenden, w
   ![Eingeben des Überprüfungscodes](./media/multi-factor-authentication-end-user-signin/verify3.png)
 
 3. Öffnen Sie die Microsoft Authenticator-App auf Ihrem Smartphone, und geben Sie den Code bei der Anmeldung in das entsprechende Feld ein.
-4. Sie sollten jetzt angemeldet sein.
 
 ## <a name="signing-in-with-an-alternate-method"></a>Anmelden mit einer alternativen Methode
 Mitunter verfügen Sie nicht über das Telefon oder Gerät, das Sie als Ihre bevorzugte Überprüfungsmethode festgelegt haben. Genau aus diesem Grund empfehlen wird, alternative Anmeldemethoden für Ihr Konto einzurichten. Im folgenden Abschnitt erfahren Sie, wie Sie sich über eine alternative Methode anmelden, wenn die primäre Methode nicht verfügbar ist.
 
 1. Melden Sie sich mit Ihrem Benutzernamen und Kennwort bei einer Anwendung oder einem Dienst wie Office 365 an.
 2. Wählen Sie **Andere Überprüfungsoption verwenden** aus. Es werden verschiedene Überprüfungsoptionen abhängig davon angezeigt, wie viele Sie eingerichtet haben.
+3. Wählen Sie eine alternative Methode aus, und melden Sie sich an.
 
   ![Anwenden einer alternativen Methode](./media/multi-factor-authentication-end-user-signin/alt.png)
-
-3. Wählen Sie eine alternative Methode aus, und melden Sie sich an.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

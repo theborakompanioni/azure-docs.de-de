@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: dd0382aaec0cdcbd6688d99f7bc0245fae5b963f
+ms.translationtype: HT
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: bc6c77deb02b145cd412e18ba31d724f2b71e4d1
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 08/17/2017
 
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Einrichten von Stagingumgebungen in Azure App Service
@@ -131,7 +130,7 @@ Bei Verwendung der Option **Mit Vorschau austauschen** (siehe [Austauschen von B
 - Nach Abschluss des Austauschs wird der vorbereitete Quellslot in den Zielslot verschoben. Der Zielslot wird wie bei einem manuellen Austausch in den Quellslot verschoben.
 - Wenn Sie den Austausch abbrechen, werden die Konfigurationselemente des Quellslots erneut auf den Quellslot angewendet.
 
-Sie können eine Vorschau anzeigen, wie genau sich die App mit der Konfiguration des Zielslot verhält. Nach Abschluss der Überprüfung schließen Sie den Austausch in einem gesonderten Schritt ab. Dieser Schritt hat den zusätzlichen Vorteil, dass der Quellslot bereits mit der gewünschten Konfiguration vorbereitet ist, sodass auf den Clients keine Ausfallzeiten anfallen.  
+Sie können eine Vorschau anzeigen, wie genau sich die App mit der Konfiguration des Zielslot verhält. Schließen Sie den Austausch nach Abschluss der Validierung in einem gesonderten Schritt ab. Dieser Schritt hat den zusätzlichen Vorteil, dass der Quellslot bereits mit der gewünschten Konfiguration vorbereitet ist, sodass auf den Clients keine Ausfallzeiten anfallen.  
 
 Beispiele für Azure PowerShell-Cmdlets für den mehrstufigen Austausch sind im Abschnitt „Azure-PowerShell-Cmdlets für Bereitstellungsslots“ enthalten.
 

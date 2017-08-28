@@ -4,7 +4,7 @@ description: "In diesem Artikel finden Sie eine Übersicht über die Content Pro
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: SyntaxC4
+manager: cfowler
 editor: 
 ms.assetid: 81bc00e1-dcda-4d69-b9ab-8768b793422b
 ms.service: media-services

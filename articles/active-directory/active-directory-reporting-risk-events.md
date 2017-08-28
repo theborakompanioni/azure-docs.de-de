@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/15/2017
+ms.date: 08/15/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
-ms.openlocfilehash: cb36fdd0032d6d3c47e68a782d3bba427fe9fcd5
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 71ab5cb02ac70871fb8207ab9220b45d1c842dde
 ms.contentlocale: de-de
-ms.lasthandoff: 06/14/2017
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="azure-active-directory-risk-events"></a>Azure Active Directory-Risikoereignisse
@@ -50,7 +50,14 @@ Die laufenden Investitionen von Microsoft in den Erkennungsprozess führen zu:
 
 ### <a name="leaked-credentials"></a>Kompromittierte Anmeldeinformationen
 
-Kompromittierte Anmeldeinformationen sind Anmeldeinformationen, für die von unseren Microsoft-Sicherheitsexperten herausgefunden wird, dass sie öffentlich im Dark Web gepostet werden. Diese Anmeldeinformationen sind dort normalerweise in Klartext zu finden. Sie werden mit Azure AD-Anmeldeinformationen verglichen. Wenn sich eine Übereinstimmung ergibt, werden sie in Identity Protection als „Kompromittierte Anmeldeinformationen“ gemeldet.
+Wenn Internetkriminelle an gültige Kennwörter von berechtigten Benutzern gelangen, geben sie diese Anmeldeinformationen häufig weiter. Dies erfolgt normalerweise durch eine Veröffentlichung im Dark Web oder auf Past Sites oder durch den Handel oder Verkauf der Anmeldeinformationen auf dem Schwarzmarkt. Der Microsoft-Dienst für offengelegte Anmeldeinformationen sammelt Kombinationen aus Benutzername und Kennwort durch die Überwachung von öffentlichen und Dark Web-Websites und die Zusammenarbeit mit:
+
+- Forschern
+- Strafverfolgungsbehörden
+- Sicherheitsteams bei Microsoft
+- Anderen vertrauenswürdigen Quellen 
+
+Wenn der Dienst Benutzername-Kennwort-Paare erwirbt, werden sie mit aktuell gültigen Anmeldeinformationen von AAD-Benutzern verglichen. Falls eine Übereinstimmung gefunden wird, bedeutet dies, dass das Kennwort eines Benutzers kompromittiert wurde, und es wird ein *Risikoereignis zu offengelegten Anmeldeinformationen* erstellt.
 
 ### <a name="sign-ins-from-anonymous-ip-addresses"></a>Anmeldungen von anonymen IP-Adressen
 

@@ -1,5 +1,5 @@
 ---
-title: Konfigurieren der SSL-Richtlinie und von End-to-End-SSL mit Application Gateway | Microsoft Docs
+title: Konfigurieren von End-to-End-SSL mit Azure Application Gateway | Microsoft-Dokumentation
 description: "Dieser Artikel beschreibt das Konfigurieren von End-to-End-SSL mit Application Gateway über Azure Resource Manager-PowerShell"
 services: application-gateway
 documentationcenter: na
@@ -12,21 +12,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/14/2016
+ms.date: 07/19/2017
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: 09aeb63d4c2e68f22ec02f8c08f5a30c32d879dc
-ms.openlocfilehash: c76dc14998ebf01a938c67d6c78384e169f83266
-
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 6d969d6a0c649c263e1d5bb99bdbceec484cb9a3
+ms.contentlocale: de-de
+ms.lasthandoff: 08/16/2017
 
 ---
-# <a name="configure-ssl-policy-and-end-to-end-ssl-with-application-gateway-using-powershell"></a>Konfigurieren der SSL-Richtlinie und von End-to-End-SSL mit Application Gateway über PowerShell
+# <a name="configure-end-to-end-ssl-with-application-gateway-using-powershell"></a>Konfigurieren von End-to-End-SSL mit Application Gateway mithilfe von PowerShell
 
 ## <a name="overview"></a>Übersicht
 
 Application Gateway unterstützt die End-to-End-Verschlüsselung des Datenverkehrs. Hierfür wird in Application Gateway die SSL-Verbindung am Anwendungsgateway beendet. Das Gateway wendet dann die Routingregeln auf den Datenverkehr an, verschlüsselt das Paket erneut und leitet das Paket basierend auf den definierten Routingregeln an das entsprechende Back-End weiter. Antworten vom Webserver durchlaufen denselben Prozess zurück an den Endbenutzer.
 
-Eine weitere Funktion, die von Application Gateway unterstützt wird, ist das Deaktivieren bestimmter Versionen des SSL-Protokolls. Application Gateway unterstützt das Deaktivieren der folgenden Protokollversionen: **TLSv1.0**, **TLSv1.1** und **TLSv1.2**.
+Application Gateway unterstützt auch das Definieren benutzerdefinierter SSL-Optionen. Application Gateway unterstützt das Deaktivieren der Protokollversionen **TLSv1.0**, **TLSv1.1** und **TLSv1.2** sowie das Definieren der zu verwendenden Verschlüsselungssammlungen und der jeweiligen Priorität.  Weitere Informationen zu konfigurierbaren SSL-Optionen finden Sie in der [SSL-Richtlinienübersicht](application-gateway-SSL-policy-overview.md).
 
 > [!NOTE]
 > SSL 2.0 und SSL 3.0 sind standardmäßig deaktiviert und können nicht aktiviert werden. Sie werden als unsicher eingestuft und können mit Application Gateway nicht verwendet werden.
@@ -40,15 +41,15 @@ In diesem Szenario erfahren Sie, wie Sie mithilfe von PowerShell ein Anwendungsg
 Dieses Szenario umfasst Folgendes:
 
 * Erstellen einer Ressourcengruppe namens **appgw-rg**
-* Erstellen eines virtuellen Netzwerks namens **appgwvnet** mit dem reservierten CIDR-Block 10.0.0.0/16.
-* Erstellen zweier Subnetze namens **appgwsubnet** und **appsubnet**.
-* Erstellen eines kleinen Anwendungsgateways mit Unterstützung der End-to-End-SSL-Verschlüsselung, das bestimmte SSL-Protokolle deaktiviert.
+* Erstellen eines virtuellen Netzwerks namens **appgwvnet** mit dem Adressraum 10.0.0.0/16
+* Erstellen zweier Subnetze namens **appgwsubnet** und **appsubnet**
+* Erstellen eines kleinen Anwendungsgateways mit Unterstützung der End-to-End-SSL-Verschlüsselung, die bestimmte SSL-Protokollversionen und Verschlüsselungssammlungen einschränkt
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
 Zum Konfigurieren von End-to-End-SSL mit einem Anwendungsgateway wird ein Zertifikat für das Gateway benötigt, und weitere Zertifikate sind für die Back-End-Server erforderlich. Das Gatewayzertifikat wird zum Verschlüsseln und Entschlüsseln des Datenverkehrs verwendet, der über SSL an das Gateway gesendet wird. Das Gatewayzertifikat muss im PFX-Format (Personal Information Exchange, privater Informationsaustausch) vorliegen. In diesem Dateiformat kann der private Schlüssel exportiert werden, was erforderlich ist, damit das Anwendungsgateway die Ver- und Entschlüsselung des Datenverkehrs durchführen kann.
 
-Für die End-to-End-SSL-Verschlüsselung muss das Back-End beim Anwendungsgateway auf der Whitelist stehen. Dies geschieht durch Hochladen des öffentlichen Zertifikats der Back-Ends auf das Anwendungsgateway. Dadurch wird sichergestellt, dass das Anwendungsgateway nur mit bekannten Back-End-Instanzen kommuniziert. Außerdem wird auf diese Weise die End-to-End-Kommunikation gesichert.
+Für die End-to-End-SSL-Verschlüsselung muss das Back-End der Whitelist des Anwendungsgateways hinzugefügt werden. Dies geschieht durch Hochladen des öffentlichen Zertifikats der Back-Ends auf das Anwendungsgateway. Dadurch wird sichergestellt, dass das Anwendungsgateway nur mit bekannten Back-End-Instanzen kommuniziert. Außerdem wird auf diese Weise die End-to-End-Kommunikation gesichert.
 
 Dieser Prozess wird in den folgenden Schritten beschrieben:
 
@@ -93,7 +94,7 @@ $gwSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name 'appgwsubnet' -AddressPr
 ```
 
 > [!NOTE]
-> Die Größen der für das Anwendungsgateway konfigurierten Subnetze sollten richtig bemessen sein. Ein Anwendungsgateway kann für bis zu 10 Instanzen konfiguriert werden. Jede Instanz erhält dabei eine IP-Adresse vom Subnetz. Ein zu kleines Subnetz kann sich negativ auf die Erweiterungsmöglichkeiten eines Anwendungsgateways auswirken.
+> Die Größen der für das Anwendungsgateway konfigurierten Subnetze sollten richtig bemessen sein. Ein Anwendungsgateway kann für bis zu 10 Instanzen konfiguriert werden. Jede Instanz erhält dabei genau eine IP-Adresse aus dem Subnetz. Ein zu kleines Subnetz kann sich negativ auf die Erweiterungsmöglichkeiten eines Anwendungsgateways auswirken.
 > 
 > 
 
@@ -132,11 +133,11 @@ $publicip = New-AzureRmPublicIpAddress -ResourceGroupName appgw-rg -Name 'public
 ```
 
 > [!IMPORTANT]
-> Application Gateway unterstützt nicht die Verwendung einer öffentlichen IP-Adresse, die mit einer definierten Domänenbezeichnung erstellt wird. Nur eine öffentliche IP-Adresse mit einer dynamisch erstellten Domänenbezeichnung wird unterstützt. Wenn Sie einen benutzerfreundlichen DNS-Namen für das Anwendungsgateway benötigen, wird empfohlen, einen cname-Datensatz als Alias zu verwenden.
+> Application Gateway unterstützt nicht die Verwendung einer öffentlichen IP-Adresse, die mit einer definierten Domänenbezeichnung erstellt wird. Nur eine öffentliche IP-Adresse mit einer dynamisch erstellten Domänenbezeichnung wird unterstützt. Wenn Sie einen benutzerfreundlichen DNS-Namen für das Anwendungsgateway benötigen, empfiehlt es sich, einen CNAME-Eintrag als Alias zu verwenden.
 
 ## <a name="create-an-application-gateway-configuration-object"></a>Erstellen eines Konfigurationsobjekts für das Anwendungsgateway
 
-Sie müssen alle Konfigurationselemente einrichten, bevor Sie das Anwendungsgateway erstellen. Die folgenden Schritten erstellen die Konfigurationselemente, die für eine Application Gateway-Ressource benötigt werden.
+Vor dem Erstellen des Anwendungsgateways werden die Konfigurationselemente festgelegt. Die folgenden Schritten erstellen die Konfigurationselemente, die für eine Application Gateway-Ressource benötigt werden.
 
 ### <a name="step-1"></a>Schritt 1
 
@@ -178,7 +179,7 @@ $fp = New-AzureRmApplicationGatewayFrontendPort -Name 'port01'  -Port 443
 Konfigurieren Sie das Zertifikat für das Anwendungsgateway. Dieses Zertifikat wird zum Entschlüsseln und erneuten Verschlüsseln des Datenverkehrs auf dem Anwendungsgateway verwendet.
 
 ```powershell
-$cert = New-AzureRmApplicationGatewaySslCertificate -Name cert01 -CertificateFile <full path to .pfx file> -Password <password for certificate file>
+$cert = New-AzureRmApplicationGatewaySSLCertificate -Name cert01 -CertificateFile <full path to .pfx file> -Password <password for certificate file>
 ```
 
 > [!NOTE]
@@ -189,15 +190,15 @@ $cert = New-AzureRmApplicationGatewaySslCertificate -Name cert01 -CertificateFil
 Erstellen Sie den HTTP-Listener für das Anwendungsgateway. Weisen Sie die zu verwendende Front-End-IP-Konfiguration, den Port und das SSL-Zertifikat zu.
 
 ```powershell
-$listener = New-AzureRmApplicationGatewayHttpListener -Name listener01 -Protocol Https -FrontendIPConfiguration $fipconfig -FrontendPort $fp -SslCertificate $cert
+$listener = New-AzureRmApplicationGatewayHttpListener -Name listener01 -Protocol Https -FrontendIPConfiguration $fipconfig -FrontendPort $fp -SSLCertificate $cert
 ```
 
 ### <a name="step-7"></a>Schritt 7
 
-Laden Sie das Zertifikat hoch, das auf den SSL-fähigen Ressourcen des Back-End-Pools verwendet werden soll.
+Laden Sie das Zertifikat hoch, das von den SSL-fähigen Ressourcen des Back-End-Pools verwendet werden soll.
 
 > [!NOTE]
-> Der Standardtest ruft den öffentlichen Schlüssel aus der **standardmäßigen** SSL-Bindung in der IP-Adresse des Back-Ends ab und vergleicht den Wert dieses öffentlichen Schlüssels mit dem Wert des öffentlichen Schlüssels, den Sie hier bereitstellen. Der abgerufene öffentliche Schlüssel ist nicht notwendigerweise der Zielort, zu dem der Datenverkehr fließen wird, **wenn** Sie Hostheader und SNI auf dem Back-End verwenden. Öffnen Sie im Zweifelsfall auf den Back-Ends die Seite „https://127.0.0.1/“, um sich zu vergewissern, welches Zertifikat für die **standardmäßige** SSL-Bindung verwendet wird. Verwenden Sie den öffentlichen Schlüssel aus der Aufforderung in diesem Abschnitt. Wenn Sie Hostheader und SNI in HTTPS-Bindungen verwenden und durch eine manuelle Browseranforderung in „https://127.0.0.1/“ auf den Back-Ends keine Antwort und kein Zertifikat erhalten, müssen Sie eine Standard-SSL-Bindung auf den Back-Ends einrichten. Andernfalls werden die Tests nicht erfolgreich sein, und das Back-End wird nicht in die Whitelist aufgenommen.
+> Der Standardtest ruft den öffentlichen Schlüssel aus der **standardmäßigen** SSL-Bindung in der IP-Adresse des Back-Ends ab und vergleicht den Wert dieses öffentlichen Schlüssels mit dem Wert des öffentlichen Schlüssels, den Sie hier bereitstellen. Der abgerufene öffentliche Schlüssel ist nicht zwingend der Zielort für den Datenverkehr, **falls** Sie Hostheader und SNI auf dem Back-End verwenden. Öffnen Sie im Zweifelsfall auf den Back-Ends die Seite „https://127.0.0.1/“, um sich zu vergewissern, welches Zertifikat für die **standardmäßige** SSL-Bindung verwendet wird. Verwenden Sie den öffentlichen Schlüssel aus der Aufforderung in diesem Abschnitt. Wenn Sie Hostheader und SNI in HTTPS-Bindungen verwenden und durch eine manuelle Browseranforderung in „https://127.0.0.1/“ auf den Back-Ends keine Antwort und kein Zertifikat erhalten, müssen Sie eine Standard-SSL-Bindung auf den Back-Ends einrichten. Andernfalls sind die Tests nicht erfolgreich, und das Back-End wird nicht in die Whitelist aufgenommen.
 
 ```powershell
 $authcert = New-AzureRmApplicationGatewayAuthenticationCertificate -Name 'whitelistcert1' -CertificateFile C:\users\gwallace\Desktop\cert.cer
@@ -235,18 +236,18 @@ $sku = New-AzureRmApplicationGatewaySku -Name Standard_Small -Tier Standard -Cap
 
 ### <a name="step-11"></a>Schritt 11
 
-Konfigurieren Sie die SSL-Richtlinie, die auf dem Anwendungsgateway verwendet werden soll. Application Gateway unterstützt die Möglichkeit, bestimmte Versionen des SSL-Protokolls zu deaktivieren.
+Konfigurieren Sie die SSL-Richtlinie, die auf dem Anwendungsgateway verwendet werden soll. Application Gateway ermöglicht das Festlegen einer SSL-Mindestprotokollversion.
 
-Die folgenden Werte sind eine Liste der Protokollversionen, die deaktiviert werden können.
+Die folgenden Werte sind eine Liste mit definierbaren Protokollversionen:
 
 * **TLSv1_0**
 * **TLSv1_1**
 * **TLSv1_2**
 
-Im folgenden Beispiel wird **TLSv1\_0** deaktiviert.
+Legt die Mindestprotokollversion auf **TLSv1_2** fest und aktiviert nur **TLS\_ECDHE\_ECDSA\_WITH\_AES\_128\_GCM\_SHA256**, **TLS\_ECDHE\_ECDSA\_WITH\_AES\_256\_GCM\_SHA384** und **TLS\_RSA\_WITH\_AES\_128\_GCM\_SHA256**.
 
 ```powershell
-$sslPolicy = New-AzureRmApplicationGatewaySslPolicy -DisabledSslProtocols TLSv1_0
+$SSLPolicy = New-AzureRmApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256"
 ```
 
 ## <a name="create-the-application-gateway"></a>Erstellen des Anwendungsgateways
@@ -254,10 +255,10 @@ $sslPolicy = New-AzureRmApplicationGatewaySslPolicy -DisabledSslProtocols TLSv1_
 Erstellen Sie das Anwendungsgateway mithilfe der oben aufgeführten Schritte. Die Erstellung des Gateways ist ein langwieriger Prozess.
 
 ```powershell
-$appgw = New-AzureRmApplicationGateway -Name appgateway -SslCertificates $cert -ResourceGroupName "appgw-rg" -Location "West US" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku -SslPolicy $sslPolicy -AuthenticationCertificates $authcert -Verbose
+$appgw = New-AzureRmApplicationGateway -Name appgateway -SSLCertificates $cert -ResourceGroupName "appgw-rg" -Location "West US" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku -SSLPolicy $SSLPolicy -AuthenticationCertificates $authcert -Verbose
 ```
 
-## <a name="disable-ssl-protocol-versions-on-an-existing-application-gateway"></a>Deaktivieren von SSL-Protokollversionen auf einem vorhandenen Anwendungsgateway
+## <a name="limit-ssl-protocol-versions-on-an-existing-application-gateway"></a>Beschränken von SSL-Protokollversionen für eine vorhandene Application Gateway-Instanz
 
 Die vorangehenden Schritte führen Sie durch die Erstellung einer Anwendung mit End-to-End-SSL und durch das Deaktivieren bestimmter Versionen des SSL-Protokolls. Im folgenden Beispiel werden bestimmte SSL-Richtlinien auf einem vorhandenen Anwendungsgateway deaktiviert.
 
@@ -271,15 +272,16 @@ $gw = Get-AzureRmApplicationGateway -Name AdatumAppGateway -ResourceGroupName Ad
 
 ### <a name="step-2"></a>Schritt 2
 
-Definieren Sie eine SSL-Richtlinie. Im folgenden Beispiel werden TLSv1.0 und TLSv1.1 deaktiviert.
+Definieren Sie eine SSL-Richtlinie. Im folgenden Beispiel werden „TLSv1.0“ und „TLSv1.1“ deaktiviert und nur die Verschlüsselungssammlungen **TLS\_ECDHE\_ECDSA\_WITH\_AES\_128\_GCM\_SHA256**, **TLS\_ECDHE\_ECDSA\_WITH\_AES\_256\_GCM\_SHA384** und **TLS\_RSA\_WITH\_AES\_128\_GCM\_SHA256** zugelassen.
 
 ```powershell
-Set-AzureRmApplicationGatewaySslPolicy -DisabledSslProtocols TLSv1_0, TLSv1_1 -ApplicationGateway $gw
+Set-AzureRmApplicationGatewaySSLPolicy -MinProtocolVersion -PolicyType Custom -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256" -ApplicationGateway $gw
+
 ```
 
 ### <a name="step-3"></a>Schritt 3
 
-Zum Schluss aktualisieren Sie das Gateway. Es ist wichtig zu beachten, dass dieser letzte Schritt einen längeren Zeitraum in Anspruch nimmt. Wenn dies abgeschlossen ist, ist End-to-End-SSL auf dem Anwendungsgateway konfiguriert.
+Zum Schluss aktualisieren Sie das Gateway. Es ist wichtig zu beachten, dass dieser letzte Schritt einen längeren Zeitraum in Anspruch nimmt. Nach Abschluss des Vorgangs ist End-to-End-SSL für das Anwendungsgateway konfiguriert.
 
 ```powershell
 $gw | Set-AzureRmApplicationGateway
@@ -319,10 +321,5 @@ DnsSettings              : {
 
 Informationen über das Verstärken der Sicherheit Ihrer Webanwendungen mit Web Application Firewall über Application Gateway finden Sie unter [Web Application Firewall – Übersicht](application-gateway-webapplicationfirewall-overview.md)
 
-[scenario]: ./media/application-gateway-end-to-end-ssl-powershell/scenario.png
-
-
-
-<!--HONumber=Dec16_HO3-->
-
+[scenario]: ./media/application-gateway-end-to-end-SSL-powershell/scenario.png
 

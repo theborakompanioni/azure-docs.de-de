@@ -2,7 +2,7 @@
 title: "Media Encoder Standard-Voreinstellung „H264 Multiple Bitrate 720p“ – Azure | Microsoft-Dokumentation"
 description: "Das Thema enthält eine Übersicht über die Aufgabenvoreinstellung **H264 Multiple Bitrate 720p**."
 author: Juliako
-manager: SyntaxC4
+manager: cfowler
 editor: 
 services: media-services
 documentationcenter: 

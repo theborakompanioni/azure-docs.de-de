@@ -15,10 +15,10 @@ ms.workload: required
 ms.date: 08/08/2017
 ms.author: bharatn
 ms.translationtype: HT
-ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
-ms.openlocfilehash: cb37c7209a3449047bad97ce50344e1530f0e222
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: 7897458e9e4a0bbe185bd3f7b4c133c1b26769f9
 ms.contentlocale: de-de
-ms.lasthandoff: 08/09/2017
+ms.lasthandoff: 08/12/2017
 
 ---
 # <a name="reverse-proxy-in-azure-service-fabric"></a>Reverseproxy in Azure Service Fabric
@@ -135,6 +135,15 @@ Application Gateway benötigt daher eine Möglichkeit, zwischen diesen beiden F�
 Dieser HTTP-Antwortheader gibt eine normale HTTP 404-Situation an, in der die angeforderte Ressource nicht vorhanden ist und Application Gateway nicht versucht, die Dienstadresse erneut aufzulösen.
 
 ## <a name="setup-and-configuration"></a>Setup und Konfiguration
+
+### <a name="enable-reverse-proxy-via-azure-portal"></a>Aktivieren des Reverseproxys über das Azure-Portal
+
+Das Azure-Portal bietet eine Option, mit der Sie beim Erstellen eines neuen Service Fabric-Clusters den Reverseproxy aktivieren können.
+Aktivieren Sie unter **Service Fabric-Cluster erstellen** in Schritt 2 (Clusterkonfiguration) bei der Knotentypkonfiguration das Kontrollkästchen „Reverseproxy aktivieren“.
+Zum Konfigurieren eines sicheren Reverseproxys können Sie in Schritt 3 (Sicherheit) beim Konfigurieren der Clustersicherheitseinstellungen ein SSL-Zertifikat angeben, indem Sie das Kontrollkästchen „SSL-Zertifikat für Reverseproxy einschließen“ aktivieren und die Zertifikatdetails eingeben.
+
+### <a name="enable-reverse-proxy-via-azure-resource-manager-templates"></a>Aktivieren des Reverseproxys über Azure Resource Manager-Vorlagen
+
 Sie können den Service Fabric-Reverseproxy über die [Azure Resource Manager-Vorlage](service-fabric-cluster-creation-via-arm.md) für den Cluster aktivieren.
 
 Unter [Configure HTTPS Reverse Proxy in a secure cluster](https://github.com/ChackDan/Service-Fabric/tree/master/ARM Templates/ReverseProxySecureSample#configure-https-reverse-proxy-in-a-secure-cluster) (Konfigurieren des HTTPS-Reverseproxys in einem sicheren Cluster) finden Sie Azure Resource Manager-Vorlagenbeispiele zum Konfigurieren eines sicheren Reverseproxys mit einem Zertifikat und Umgang mit einem Zertifikatrollover.

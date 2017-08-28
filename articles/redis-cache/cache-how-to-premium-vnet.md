@@ -1,6 +1,6 @@
 ---
 title: "Konfigurieren eines virtuellen Netzwerks für einen Azure Redis Cache vom Typ „Premium“ | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie die Unterstützung für virtuelle Netzwerke für Azure Redis Cache-Instanzen im Tarif &quot;Premium&quot; erstellen und verwalten."
+description: "Erfahren Sie, wie Sie die Unterstützung für virtuelle Netzwerke für Azure Redis Cache-Instanzen im Tarif \"Premium\" erstellen und verwalten."
 services: redis-cache
 documentationcenter: 
 author: steved0x
@@ -12,14 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
-ms.date: 05/11/2017
+ms.date: 05/15/2017
 ms.author: sdanie
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 945da7ce2ab5f2d479d96a6ed2896a0ba7e0747e
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 59d46990e02c0719d2b4df01e216a97fd649c509
 ms.contentlocale: de-de
-ms.lasthandoff: 05/11/2017
-
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-redis-cache"></a>Konfigurieren der Unterstützung virtueller Netzwerke für Azure Redis Cache vom Typ "Premium"
@@ -40,7 +39,7 @@ Die Unterstützung für ein virtuelles Netzwerk (VNet) wird während der Erstell
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-premium-create.md)]
 
-Nachdem Sie einen Premium-Tarif ausgewählt haben, können Sie die Redis-VNet-Integration konfigurieren, indem Sie ein virtuelles Netzwerk auswählen, das sich im selben Abonnement und am gleichen Speicherort wie Ihr Cache befindet. Um ein neues virtuelles Netzwerk verwenden zu können, müssen Sie es zuerst erstellen. Befolgen Sie dazu die Anleitungen unter [Erstellen eines virtuellen Netzwerks über das Azure-Portal](../virtual-network/virtual-networks-create-vnet-arm-pportal.md) und [Erstellen eines virtuellen Netzwerks (klassisch) über das Azure-Portal](../virtual-network/virtual-networks-create-vnet-classic-portal.md). Kehren Sie anschließend zum Blatt **Neuer Redis Cache** zurück, um Ihrem Premium-Cache zu erstellen und zu konfigurieren.
+Nachdem Sie einen Premium-Tarif ausgewählt haben, können Sie die Redis-VNet-Integration konfigurieren, indem Sie ein virtuelles Netzwerk auswählen, das sich im selben Abonnement und am gleichen Speicherort wie Ihr Cache befindet. Um ein neues virtuelles Netzwerk verwenden zu können, müssen Sie es zuerst erstellen. Befolgen Sie dazu die Anleitungen unter [Erstellen eines virtuellen Netzwerks über das Azure-Portal](../virtual-network/virtual-networks-create-vnet-arm-pportal.md) und [Erstellen eines virtuellen Netzwerks (klassisch) über das Azure-Portal](../virtual-network/virtual-networks-create-vnet-classic-pportal.md). Kehren Sie anschließend zum Blatt **Neuer Redis Cache** zurück, um Ihrem Premium-Cache zu erstellen und zu konfigurieren.
 
 Klicken Sie zum Konfigurieren des virtuellen Netzwerks für Ihren neuen Cache auf dem Blatt **Neuer Redis Cache** auf **Virtuelles Netzwerk**, und wählen Sie das gewünschte virtuelle Netzwerk aus der Dropdownliste aus.
 
@@ -85,6 +84,7 @@ Um bei Verwenden eines VNet eine Verbindung mit Ihrer Azure Redis Cache-Instanz 
 Die folgende Liste enthält Antworten auf häufig gestellte Fragen zur Skalierung von Azure Redis Cache-Instanzen.
 
 * [Welche Probleme treten häufig bei einer fehlerhaften Konfiguration von Azure Redis Cache und VNets auf?](#what-are-some-common-misconfiguration-issues-with-azure-redis-cache-and-vnets)
+* [Wie kann ich sicherstellen, dass mein Cache in einem VNET funktioniert?](#how-can-i-verify-that-my-cache-is-working-in-a-vnet)
 * [Kann ich VNets mit einem Standard-Cache oder Basic-Cache verwenden?](#can-i-use-vnets-with-a-standard-or-basic-cache)
 * [Warum misslingt das Erstellen eines Redis-Caches in einigen Subnetzen, aber in anderen nicht?](#why-does-creating-a-redis-cache-fail-in-some-subnets-but-not-others)
 * [Welche Anforderungen gelten für den Subnetzadressraum?](#what-are-the-subnet-address-space-requirements)
@@ -109,31 +109,31 @@ Es liegen Anforderungen für sieben ausgehende Ports vor.
 - Über drei dieser Ports wird Datenverkehr an Azure-Endpunkte für Azure Storage und Azure DNS weitergeleitet.
 - Die restlichen Ports sind Portbereiche und werden für die interne Kommunikation im Redis-Subnetz verwendet. Für die interne Kommunikation im Redis-Subnetz müssen keine NSG-Regeln für das Subnetz definiert werden.
 
-| Port(s) | Richtung | Transportprotokoll | Zweck | Remote-IP |
-| --- | --- | --- | --- | --- |
-| 80, 443 |Ausgehend |TCP |Redis-Abhängigkeiten von Azure Storage/PKI (Internet) |* |
-| 53 |Ausgehend |TCP/UDP |Redis-Abhängigkeiten von DNS (Internet/VNet) |* |
-| 8443 |Ausgehend |TCP |Interne Kommunikation für Redis | (Redis-Subnetz) |
-| 10221-10231 |Ausgehend |TCP |Interne Kommunikation für Redis | (Redis-Subnetz) |
-| 20226 |Ausgehend |TCP |Interne Kommunikation für Redis |(Redis-Subnetz) |
-| 13000-13999 |Ausgehend |TCP |Interne Kommunikation für Redis |(Redis-Subnetz) |
-| 15000-15999 |Ausgehend |TCP |Interne Kommunikation für Redis |(Redis-Subnetz) |
+| Port(s) | Richtung | Transportprotokoll | Zweck | Lokale IP | Remote-IP |
+| --- | --- | --- | --- | --- | --- |
+| 80, 443 |Ausgehend |TCP |Redis-Abhängigkeiten von Azure Storage/PKI (Internet) | (Redis-Subnetz) |* |
+| 53 |Ausgehend |TCP/UDP |Redis-Abhängigkeiten von DNS (Internet/VNet) | (Redis-Subnetz) |* |
+| 8443 |Ausgehend |TCP |Interne Kommunikation für Redis | (Redis-Subnetz) | (Redis-Subnetz) |
+| 10221-10231 |Ausgehend |TCP |Interne Kommunikation für Redis | (Redis-Subnetz) | (Redis-Subnetz) |
+| 20226 |Ausgehend |TCP |Interne Kommunikation für Redis | (Redis-Subnetz) |(Redis-Subnetz) |
+| 13000-13999 |Ausgehend |TCP |Interne Kommunikation für Redis | (Redis-Subnetz) |(Redis-Subnetz) |
+| 15000-15999 |Ausgehend |TCP |Interne Kommunikation für Redis | (Redis-Subnetz) |(Redis-Subnetz) |
 
 
 ### <a name="inbound-port-requirements"></a>Anforderungen für eingehende Ports
 
 Es liegen Anforderungen für acht eingehende Portbereiche vor. Eingehende Anforderungen in diesen Bereichen gehen entweder von anderen im gleichen VNET gehosteten Diensten ein oder erfolgen über die interne Kommunikation im Redis-Subnetz.
 
-| Port(s) | Richtung | Transportprotokoll | Zweck | Remote-IP |
-| --- | --- | --- | --- | --- |
-| 6379, 6380 |Eingehend |TCP |Clientkommunikation mit Redis, Azure-Lastenausgleich |Virtuelles Netzwerk, Azure Load Balancer |
-| 8443 |Eingehend |TCP |Interne Kommunikation für Redis |(Redis-Subnetz) |
-| 8500 |Eingehend |TCP/UDP |Azure-Lastenausgleich |Azure Load Balancer |
-| 10221-10231 |Eingehend |TCP |Interne Kommunikation für Redis |(Redis-Subnetz), Azure Load Balancer |
-| 13000-13999 |Eingehend |TCP |Clientkommunikation mit Redis-Clustern, Azure-Lastenausgleich |Virtuelles Netzwerk, Azure Load Balancer |
-| 15000-15999 |Eingehend |TCP |Clientkommunikation mit Redis-Clustern, Azure-Lastenausgleich |Virtuelles Netzwerk, Azure Load Balancer |
-| 16001 |Eingehend |TCP/UDP |Azure-Lastenausgleich |Azure Load Balancer |
-| 20226 |Eingehend |TCP |Interne Kommunikation für Redis |(Redis-Subnetz) |
+| Port(s) | Richtung | Transportprotokoll | Zweck | Lokale IP | Remote-IP |
+| --- | --- | --- | --- | --- | --- |
+| 6379, 6380 |Eingehend |TCP |Clientkommunikation mit Redis, Azure-Lastenausgleich | (Redis-Subnetz) |Virtuelles Netzwerk, Azure Load Balancer |
+| 8443 |Eingehend |TCP |Interne Kommunikation für Redis | (Redis-Subnetz) |(Redis-Subnetz) |
+| 8500 |Eingehend |TCP/UDP |Azure-Lastenausgleich | (Redis-Subnetz) |Azure Load Balancer |
+| 10221-10231 |Eingehend |TCP |Interne Kommunikation für Redis | (Redis-Subnetz) |(Redis-Subnetz), Azure Load Balancer |
+| 13000-13999 |Eingehend |TCP |Clientkommunikation mit Redis-Clustern, Azure-Lastenausgleich | (Redis-Subnetz) |Virtuelles Netzwerk, Azure Load Balancer |
+| 15000-15999 |Eingehend |TCP |Clientkommunikation mit Redis-Clustern, Azure-Lastenausgleich | (Redis-Subnetz) |Virtuelles Netzwerk, Azure Load Balancer |
+| 16001 |Eingehend |TCP/UDP |Azure-Lastenausgleich | (Redis-Subnetz) |Azure Load Balancer |
+| 20226 |Eingehend |TCP |Interne Kommunikation für Redis | (Redis-Subnetz) |(Redis-Subnetz) |
 
 ### <a name="additional-vnet-network-connectivity-requirements"></a>Zusätzliche VNET-Netzwerkverbindungsanforderungen
 
@@ -143,6 +143,26 @@ Es gibt Netzwerkverbindungsanforderungen für Azure Redis Cache, die ursprüngli
 * Ausgehende Netzwerkverbindungen mit *ocsp.msocsp.com*, *mscrl.microsoft.com* und *crl.microsoft.com*. Diese Verbindungen sind zur Unterstützung von SSL-Funktionen erforderlich.
 * Die DNS-Konfiguration für das virtuelle Netzwerk muss alle der zuvor genannten Endpunkte und Domänen auflösen können. Diese DNS-Anforderungen können erfüllt werden, indem Sie sicherstellen, dass eine gültige DNS-Infrastruktur für das virtuelle Netzwerk konfiguriert und beibehalten wird.
 * Ausgehende Netzwerkkonnektivität zu den folgenden Azure Monitoring-Endpunkten, die zu den folgenden DNS-Domänen auflösen: shoebox2-black.shoebox2.metrics.nsatc.net, north-prod2.prod2.metrics.nsatc.net, azglobal-black.azglobal.metrics.nsatc.net, shoebox2-red.shoebox2.metrics.nsatc.net, east-prod2.prod2.metrics.nsatc.net, azglobal-red.azglobal.metrics.nsatc.net.
+
+### <a name="how-can-i-verify-that-my-cache-is-working-in-a-vnet"></a>Wie kann ich sicherstellen, dass mein Cache in einem VNET funktioniert?
+
+>[!IMPORTANT]
+>Wenn eine Verbindung mit einer in VNET gehosteten Azure Redis Cache-Instanz hergestellt wird, müssen sich Ihre Cacheclients, einschließlich aller Testanwendungen oder Diagnosepingtools, im selben VNET befinden.
+>
+>
+
+Nachdem die Portanforderungen wie im vorherigen Abschnitt beschrieben konfiguriert wurden, können Sie anhand der folgenden Schritte sicherstellen, dass Ihr Cache funktioniert.
+
+- [Starten Sie alle Cacheknoten neu](cache-administration.md#reboot). Wenn keine der erforderlichen Cacheabhängigkeiten erreicht werden kann (wie unter [Anforderungen für eingehende Ports](cache-how-to-premium-vnet.md#inbound-port-requirements) und [Anforderungen für ausgehende Ports](cache-how-to-premium-vnet.md#outbound-port-requirements) dokumentiert), kann der Cache nicht neu gestartet werden.
+- Nachdem die Cacheknoten neu gestartet wurden (wie durch den Cachestatus im Azure-Portal gemeldet wird), können Sie folgende Tests durchführen:
+  - Pingen Sie mit [Tcping](https://www.elifulkerson.com/projects/tcping.php) den Cacheendpunkt (über Port 6380) von einem Computer, der sich im selben VNET wie der Cache befindet. Beispiel:
+    
+    `tcping.exe contosocache.redis.cache.windows.net 6380`
+    
+    Wenn das Tool `tcping` meldet, dass der Port geöffnet ist, ist der Cache für die Verbindung über Clients im VNET verfügbar.
+
+  - Eine weitere Möglichkeit zum Testen besteht darin, einen Testcacheclient (eventuell eine einfache Konsolenanwendung mit StackExchange.Redis) zu erstellen, der eine Verbindung mit dem Cache herstellt und einige Elemente aus dem Cache hinzufügt und abruft. Installieren Sie die Beispielclientanwendung auf einer VM, die sich im selben VNET wie der Cache befindet, und führen Sie sie aus, um die Konnektivität mit dem Cache zu überprüfen.
+
 
 ### <a name="can-i-use-vnets-with-a-standard-or-basic-cache"></a>Kann ich VNets mit einem Standard-Cache oder Basic-Cache verwenden?
 VNets können nur mit Premium-Caches verwendet werden.
@@ -165,9 +185,9 @@ Wenn der Cache zu einem virtuellen Netzwerk gehört, haben nur Clients in diesem
 ## <a name="use-expressroute-with-azure-redis-cache"></a>Verwenden von ExpressRoute mit Azure Redis Cache
 Kunden können eine [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) -Verbindung mit ihrer virtuellen Netzwerkinfrastruktur verbinden und so ihr lokales Netzwerks auf Azure ausdehnen. 
 
-In der Standardeinstellung kündigt eine neu erstellte ExpressRoute-Verbindung eine Standardroute an, die ausgehende Internetverbindungen zulässt. Bei dieser Konfiguration können Clientanwendungen Verbindungen mit anderen Azure-Endpunkten herstellen, einschließlich Azure Redis Cache.
+Standardmäßig führt eine neu erstellte ExpressRoute-Leitung in einem VNET keine erzwungenes Tunneling durch (Ankündigung einer Standardroute 0.0.0.0/0). Infolgedessen wird ausgehende Internetkonnektivität direkt über das VNET zugelassen, und Clientanwendungen können eine Verbindung mit anderen Azure-Endpunkten, einschließlich Azure Redis Cache, herstellen.
 
-Eine gängige Kundenkonfiguration sieht hingegen das Definieren einer eigenen Standardroute (0.0.0.0/0) vor, die ausgehenden Internetdatenverkehr stattdessen zwingt, die lokale Infrastruktur zu durchlaufen. Dieser Datenverkehrsfluss unterbricht die Verbindung mit Azure Redis Cache, wenn der ausgehende Datenverkehr anschließend lokal so blockiert wird, dass die Azure Redis Cache-Instanz nicht mit ihren Abhängigkeiten kommunizieren kann.
+Eine gängige Kundenkonfiguration sieht hingegen die Verwendung eines erzwungenen Tunnelings (Ankündigung einer Standardroute) vor, das ausgehenden Internetdatenverkehr stattdessen zwingt, die lokale Infrastruktur zu durchlaufen. Dieser Datenverkehrsfluss unterbricht die Verbindung mit Azure Redis Cache, wenn der ausgehende Datenverkehr anschließend lokal so blockiert wird, dass die Azure Redis Cache-Instanz nicht mit ihren Abhängigkeiten kommunizieren kann.
 
 Die Lösung besteht darin, mindestens eine benutzerdefinierte Route (User-Defined Routes, UDRs) in dem Subnetz zu definieren, das den Azure Redis Cache enthält. Eine benutzerdefinierte Route definiert subnetzspezifische Routen, die anstelle der Standardroute berücksichtigt werden.
 

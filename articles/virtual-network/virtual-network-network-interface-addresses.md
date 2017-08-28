@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
 ms.translationtype: HT
-ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
-ms.openlocfilehash: f6722365e5a5e4c58d91dd178de264a403d53c02
+ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
+ms.openlocfilehash: 17ddb30c87d757176ce9428264135252c02bf713
 ms.contentlocale: de-de
-ms.lasthandoff: 08/01/2017
+ms.lasthandoff: 08/15/2017
 
 ---
 
@@ -63,7 +63,7 @@ Einer Netzwerkschnittstelle können beliebig viele [private](#private) und [öff
 |Tool|Befehl|
 |---|---|
 |Befehlszeilenschnittstelle (CLI)|[az network nic ip-config create](/cli/azure/network/nic/ip-config?toc=%2fazure%2fvirtual-network%2ftoc.json#create)|
-|PowerShell|[Add-AzureRmNetworkInterfaceIpConfig](/powershell/resourcemanager/azurerm.network/add-azurermnetworkinterfaceipconfig?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+|PowerShell|[Add-AzureRmNetworkInterfaceIpConfig](/powershell/module/azurerm.network/add-azurermnetworkinterfaceipconfig?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 
 ## <a name="change-ip-address-settings"></a>Ändern von IP-Adresseinstellungen
 
@@ -84,7 +84,7 @@ Sie müssen ggf. die Zuweisungsmethode einer IPv4-Adresse, die statische IPv4-Ad
 |Tool|Befehl|
 |---|---|
 |Befehlszeilenschnittstelle (CLI)|[az network nic ip-config update](/cli/azure/network/nic/ip-config?toc=%2fazure%2fvirtual-network%2ftoc.json#update)|
-|PowerShell|[Set-AzureRMNetworkInterfaceIpConfig](/powershell/resourcemanager/azurerm.network/set-azurermnetworkinterfaceipconfig?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+|PowerShell|[Set-AzureRMNetworkInterfaceIpConfig](/powershell/module/azurerm.network/set-azurermnetworkinterfaceipconfig?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 
 ## <a name="remove-ip-addresses"></a>Entfernen von IP-Adressen
 
@@ -102,7 +102,7 @@ Sie können [private](#private) und [öffentliche](#public) IP-Adressen von eine
 |Tool|Befehl|
 |---|---|
 |Befehlszeilenschnittstelle (CLI)|[az network nic ip-config delete](/cli/azure/network/nic/ip-config?toc=%2fazure%2fvirtual-network%2ftoc.json#delete)|
-|PowerShell|[Remove-AzureRmNetworkInterfaceIpConfig](/powershell/resourcemanager/azurerm.network/remove-azurermnetworkinterfaceipconfig?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+|PowerShell|[Remove-AzureRmNetworkInterfaceIpConfig](/powershell/module/azurerm.network/remove-azurermnetworkinterfaceipconfig?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 
 ## <a name="ip-configurations"></a>IP-Konfigurationen
 
@@ -148,7 +148,7 @@ Es gibt Situationen, in denen die IP-Adresse einer Netzwerkschnittstelle im Betr
 4. Starten Sie den virtuellen Computer.
 5. [Konfigurieren Sie manuell](virtual-network-multiple-ip-addresses-portal.md#os-config) die sekundären IP-Adressen innerhalb des Betriebssystems (und auch die primäre IP-Adresse in Windows), damit diese mit Ihren Einstellungen in Azure übereinstimmen.
  
-Wenn Sie die genannten Schritte befolgen, stimmen die private IP-Adresse der Netzwerkschnittstelle in Azure und die im Betriebssystem des virtuellen Computers immer überein. Zum Nachverfolgen der virtuelle Computer innerhalb Ihres Abonnements, für die Sie manuell IP-Adressen im Betriebssystem festgelegt haben, sollten Sie den virtuellen Computern ein Azure-[Tag](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#tags) hinzufügen. Sie können z.B. „IP-Adresszuweisung: statisch“ verwenden. Auf diese Weise können Sie problemlos die virtuellen Computer in Ihrem Abonnement finden, für die Sie manuell die IP-Adresse innerhalb des Betriebssystems festgelegt haben.
+Wenn Sie die angegebenen Schritte befolgen, bleibt die zugewiesene private IP-Adresse der Netzwerkschnittstelle in Azure und im Betriebssystem des virtuellen Computers unverändert. Zum Nachverfolgen der virtuelle Computer innerhalb Ihres Abonnements, für die Sie manuell IP-Adressen im Betriebssystem festgelegt haben, sollten Sie den virtuellen Computern ein Azure-[Tag](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#tags) hinzufügen. Sie können z.B. „IP-Adresszuweisung: statisch“ verwenden. Auf diese Weise können Sie problemlos die virtuellen Computer in Ihrem Abonnement finden, für die Sie manuell die IP-Adresse innerhalb des Betriebssystems festgelegt haben.
 
 Zusätzlich zum Aktivieren der Kommunikation eines virtuellen Computers mit anderen Ressourcen innerhalb desselben Netzwerks oder in verbundenen virtuellen Netzwerken ermöglicht eine private IP-Adresse einem virtuellen Computer auch die ausgehende Kommunikation mit dem Internet. Für ausgehende Verbindungen erfolgt durch Azure eine Übersetzung der Quellnetzwerkadresse in eine nicht vorhersagbare öffentliche IP-Adresse. Weitere Informationen zu ausgehenden Internetverbindungen in Azure finden Sie im Artikel [Grundlegendes zu ausgehenden Verbindungen in Azure](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Aus dem Internet ist keine eingehende Kommunikation mit dem privaten IP-Adressbereich eines virtuellen Computers möglich.
 
@@ -183,19 +183,17 @@ Jede Netzwerkschnittstelle benötigt eine [primäre](#primary) IP-Konfiguration 
 
 ### <a name="ipv6"></a>IPv6
 
-Sie können der sekundären IP-Konfiguration einer Netzwerkschnittstelle null oder eine private [IPv6](#ipv6)-Adresse zuweisen. Die Netzwerkschnittstelle kann nicht über sekundäre IP-Konfigurationen verfügen. Sie können über das Portal keine IP-Konfiguration mit einer IPv6-Adresse hinzufügen. Sie müssen PowerShell oder die Befehlszeilenschnittstelle verwenden, um einer vorhandenen Netzwerkschnittstelle eine IP-Konfiguration mit einer privaten IPv6-Adresse hinzuzufügen. Die Netzwerkschnittstelle kann nicht an vorhandene virtuelle Computer angefügt werden.
+Sie können der sekundären IP-Konfiguration einer Netzwerkschnittstelle null oder eine private [IPv6](#ipv6)-Adresse zuweisen. Die Netzwerkschnittstelle kann nicht über sekundäre IP-Konfigurationen verfügen. Sie können über das Portal keine IP-Konfiguration mit einer IPv6-Adresse hinzufügen. Verwenden Sie PowerShell oder die Befehlszeilenschnittstelle, um einer vorhandenen Netzwerkschnittstelle eine IP-Konfiguration mit einer privaten IPv6-Adresse hinzuzufügen. Die Netzwerkschnittstelle kann nicht an vorhandene virtuelle Computer angefügt werden.
 
 > [!NOTE]
-> Obwohl Sie im Portal eine Netzwerkschnittstelle mit einer IPv6-Adresse erstellen können, ist es nicht möglich, einen virtuellen Computer mit einer privaten IPv6-Adresse zu erstellen oder beim Erstellen eines virtuellen Computers mithilfe des Portals eine Netzwerkschnittstelle anzufügen. Sie müssen PowerShell oder Azure CLI 2.0 verwenden, um eine Netzwerkschnittstelle mit einer privaten IPv6-Adresse zu erstellen. Anschließend können Sie die Netzwerkschnittstelle beim Erstellen eines virtuellen Computers anfügen. Eine Netzwerkschnittstelle mit einer zugewiesenen privaten IPv6-Adresse kann nicht einem vorhandenen virtuellen Computer angefügt werden. Sie können einer IP-Konfiguration für eine beliebige Netzwerkschnittstelle eines virtuellen Computers keine private IPv6-Adresse hinzufügen (egal ob mit Portal, CLI oder PowerShell).
+> Sie können über das Portal zwar eine Netzwerkschnittstelle mit einer IPv6-Adresse erstellen, es ist jedoch nicht möglich, einem neuen oder vorhandenen virtuellen Computer über das Portal eine vorhandene Netzwerkschnittstelle hinzuzufügen. Verwenden Sie PowerShell oder Azure CLI 2.0, um eine Netzwerkschnittstelle mit einer privaten IPv6-Adresse zu erstellen, und fügen Sie die Netzwerkschnittstelle dann beim Erstellen eines virtuellen Computers an. Eine Netzwerkschnittstelle mit einer zugewiesenen privaten IPv6-Adresse kann nicht einem vorhandenen virtuellen Computer angefügt werden. Sie können einer IP-Konfiguration für eine beliebige Netzwerkschnittstelle eines virtuellen Computers keine private IPv6-Adresse hinzufügen (egal ob mit Portal, CLI oder PowerShell).
 
 Sie können eine öffentliche IPv6-Adresse nicht einer primären oder sekundären IP-Konfiguration zuweisen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Um einen virtuellen Computer mit unterschiedlichen IP-Konfigurationen zu erstellen, lesen Sie die folgenden Artikel:
 
-**Befehle**
-
-|Task|Tool|
+|Aufgabe|Tool|
 |---|---|
 |Erstellen eines virtuellen Computers mit mehreren Netzwerkschnittstellenkarten (NICs)|[CLI](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [PowerShell](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 |Erstellen eines virtuellen Computers mit einer NIC und mehreren IPv4-Adressen|[CLI](virtual-network-multiple-ip-addresses-cli.md), [PowerShell](virtual-network-multiple-ip-addresses-powershell.md)|

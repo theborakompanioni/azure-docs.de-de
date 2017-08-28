@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 08/08/2017
+ms.date: 08/11/2017
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
-ms.openlocfilehash: 2c796156df6ed2a891d423030bdd07b5c19f3235
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: 317792e04244a96cf8e47bc7e4a7f633f7a6d8c3
 ms.contentlocale: de-de
-ms.lasthandoff: 08/09/2017
+ms.lasthandoff: 08/12/2017
 
 ---
 # <a name="azure-cosmos-db-net-sdk-download-and-release-notes"></a>Azure Cosmos DB .NET SDK: Download und Anmerkungen zum Release
@@ -53,6 +53,11 @@ ms.lasthandoff: 08/09/2017
 
 ## <a name="release-notes"></a>Versionshinweise
 
+### <a name="a-name11701170"></a><a name="1.17.0"/>1.17.0 
+
+* Unterstützung für PartitionKeyRangeId als FeedOption für die Bereichsabfrageergebnisse eines bestimmten Werts des Partitionsschlüsselbereichs wurde hinzugefügt. 
+* Unterstützung für StartTime als ChangeFeedOption als Ausgangspunkt für die Änderungen nach diesem Zeitpunkt wurde hinzugefügt.
+
 ### <a name="a-name11611161"></a><a name="1.16.1"/>1.16.1
 * In der JsonSerializable-Klasse wurde ein Problem behoben, das zu einer Ausnahme durch Stapelüberlauf führen konnte.
 
@@ -67,7 +72,6 @@ ms.lasthandoff: 08/09/2017
 *   Es wurde ein Problem mit Auswirkungen auf x64-Computern behoben, die die SSE4-Anweisung nicht unterstützen und beim Ausführen von DocumentDB-API-Abfragen von Azure Cosmos DB eine SEHException-Ausnahme auslösen.
 
 ### <a name="a-name11401140"></a><a name="1.14.0"/>1.14.0
-*   Es wurde Unterstützung für das Feature „Anforderungseinheiten pro Minute“ (RU/m) hinzugefügt.
 *   Es wurde Unterstützung für eine neue Konsistenzebene mit dem Namen „ConsistentPrefix“ hinzugefügt.
 *   Es wurde Unterstützung für Abfragemetriken für einzelne Partitionen hinzugefügt.
 *   Es wurde Unterstützung für die Größenbeschränkung des Fortsetzungstoken für Abfragen hinzugefügt.
@@ -254,6 +258,7 @@ Anforderungen an Azure Cosmos DB mithilfe eines deaktivierten SDK werden vom Die
 
 | Version | Herausgabedatum | Deaktivierungstermine |
 | --- | --- | --- |
+| [1.17.0](#1.17.0) |10. August 2017 |--- |
 | [1.16.1](#1.16.1) |07. August 2017 |--- |
 | [1.16.0](#1.16.0) |02. August 2017 |--- |
 | [1.15.0](#1.15.0) |30. Juni 2017 |--- |

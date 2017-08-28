@@ -2,7 +2,7 @@
 title: "H264 Single Bitrate 720p für Android | Microsoft Docs"
 description: "Das Thema enthält eine Übersicht über die Aufgabenvoreinstellung **H264 Single Bitrate 720p für Android**."
 author: Juliako
-manager: SyntaxC4
+manager: cfowler
 editor: 
 services: media-services
 documentationcenter: 

@@ -1,6 +1,6 @@
 ---
 title: "Konfigurieren einer Spring Boot Initializer-App für die Verwendung von Redis Cache"
-description: Erfahren Sie, wie Sie eine mit dem Spring Boot Initializer erstellte Anwendung so konfigurieren, dass sie Azure Redis Cache verwendet.
+description: Erfahren Sie, wie Sie eine mit dem Spring Initializer erstellte Spring Boot-Anwendung so konfigurieren, dass sie Azure Redis Cache verwendet.
 services: redis-cache
 documentationcenter: java
 author: rmcmurray
@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 7/21/2017
 ms.author: robmcm;zhijzhao;yidon
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: ea85a9cfe7079ade33a437987798a165a056dc02
+ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
+ms.openlocfilehash: fb3fc96a2136b7c326bb0eb291b7204e7acf0190
 ms.contentlocale: de-de
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/10/2017
 
 ---
 
@@ -51,15 +51,15 @@ Für die Durchführung der Schritte in diesem Artikel müssen folgende Vorausset
 
    ![Azure-Portal][AZ02]
 
-1. Geben Sie auf dem Blatt **Neuer Redis Cache** den **DNS-Namen** für Ihren Cache ein, und geben Sie dann Ihr **Abonnement**, Ihre **Ressourcengruppe**, Ihren **Standort** und Ihren **Tarif** an. Wenn Sie diese Optionen angegeben haben, klicken Sie zum Erstellen des Cache auf **Erstellen**.
+1. Geben Sie auf der Seite **Neuer Redis Cache** den **DNS-Namen** für Ihren Cache ein, und geben Sie dann Ihr **Abonnement**, Ihre **Ressourcengruppe**, Ihren **Standort** und Ihren **Tarif** an. Wenn Sie diese Optionen angegeben haben, klicken Sie zum Erstellen des Cache auf **Erstellen**.
 
    ![Azure-Portal][AZ03]
 
-1. Nachdem Ihr Cache abgeschlossen wurde, wird er auf Ihrem Azure-**Dashboard** sowie auf den Blättern **Alle Ressourcen** und **Redis-Caches** aufgeführt. Sie können an jedem dieser Orte auf Ihren Cache klicken, um das Blatt „Eigenschaften“ für den Cache zu öffnen.
+1. Nachdem Ihr Cache abgeschlossen wurde, wird er auf Ihrem Azure-**Dashboard** sowie auf den Seiten **Alle Ressourcen** und **Redis-Caches** aufgeführt. Sie können an jedem dieser Orte auf Ihren Cache klicken, um die Seite „Eigenschaften“ für den Cache zu öffnen.
 
    ![Azure-Portal][AZ04]
 
-1. Wenn das Blatt mit der Liste der Eigenschaften für den Cache angezeigt wird, klicken Sie auf **Zugriffsschlüssel**, und kopieren Sie die Zugriffsschlüssel für Ihren Cache.
+1. Wenn die Seite mit der Liste der Eigenschaften für den Cache angezeigt wird, klicken Sie auf **Zugriffsschlüssel**, und kopieren Sie die Zugriffsschlüssel für Ihren Cache.
 
    ![Azure-Portal][AZ05]
 
@@ -98,10 +98,13 @@ Für die Durchführung der Schritte in diesem Artikel müssen folgende Vorausset
 
    ```yaml
    # Specify the DNS URI of your Redis cache.
-   spring.redisHost=myspringbootcache.redis.cache.windows.net
+   spring.redis.host=myspringbootcache.redis.cache.windows.net
+
+   # Specify the port for your Redis cache.
+   spring.redis.port=6380
 
    # Specify the access key for your Redis cache.
-   spring.redisPassword=447564652c20426f6220526f636b7321
+   spring.redis.password=57686f6120447564652c2049495320526f636b73=
    ```
 
    ![Bearbeiten der Datei „application.properties“][RE02]
@@ -116,7 +119,7 @@ Für die Durchführung der Schritte in diesem Artikel müssen folgende Vorausset
 
    `/users/example/home/myazuredemo/src/main/java/com/contoso/myazuredemo/controller`
 
-1. Erstellen Sie eine Datei mit dem Namen *HelloController.java* im soeben erstellten Ordner *controller*, und fügen Sie in diese den folgenden Code ein:
+1. Erstellen Sie eine neue Datei mit dem Namen *HelloController.java* im *controller*-Ordner. Öffnen Sie die Datei in einem Text-Editor, und fügen Sie den folgenden Code hinzu:
 
    ```java
    package com.contoso.myazuredemo;
@@ -131,11 +134,15 @@ Für die Durchführung der Schritte in diesem Artikel müssen folgende Vorausset
    public class HelloController {
    
       // Retrieve the DNS name for your cache.
-      @Value("${spring.redisHost}")
+      @Value("${spring.redis.host}")
       private String redisHost;
 
+      // Retrieve the port for your cache.
+      @Value("${spring.redis.port}")
+      private int redisPort;
+
       // Retrieve the access key for your cache.
-      @Value("${spring.redisPassword}")
+      @Value("${spring.redis.password}")
       private String redisPassword;
 
       @RequestMapping("/")
@@ -143,7 +150,7 @@ Für die Durchführung der Schritte in diesem Artikel müssen folgende Vorausset
       public String hello() {
       
          // Create a JedisShardInfo object to connect to your Redis cache.
-         JedisShardInfo jedisShardInfo = new JedisShardInfo(redisHost, 6380, true);
+         JedisShardInfo jedisShardInfo = new JedisShardInfo(redisHost, redisPort, true);
          // Specify your access key.
          jedisShardInfo.setPassword(redisPassword);
          // Create a Jedis object to store/retrieve information from your cache.
@@ -165,8 +172,8 @@ Für die Durchführung der Schritte in diesem Artikel müssen folgende Vorausset
 1. Erstellen Sie mit Maven die Spring Boot-Anwendung, und führen Sie sie aus. Beispiel:
 
    ```shell
-   mvn package
-   java -jar target/myazuredemo-0.0.1-SNAPSHOT.jar
+   mvn clean package
+   mvn spring-boot:run
    ```
 
 1. Testen Sie die Web-App, indem Sie zu http://localhost:8080 browsen, oder verwenden Sie die Syntax im folgenden Beispiel – sofern Curl verfügbar ist:

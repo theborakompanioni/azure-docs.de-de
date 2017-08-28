@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/24/2017
+ms.date: 08/15/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: cb4d075d283059d613e3e9d8f0a6f9448310d96b
-ms.openlocfilehash: 8132b4844260a997e62effd167f2f1206f3edbcd
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 0c7a8d68c0df729441e3f7faa5cd06066db1261d
 ms.contentlocale: de-de
-ms.lasthandoff: 06/26/2017
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="azure-active-directory-identity-protection"></a>Azure Active Directory Identity Protection
@@ -122,7 +122,8 @@ Die folgenden Abschnitte enthalten ausführliche Informationen und die Schritte 
 
 ## <a name="risky-sign-ins"></a>Riskante Anmeldungen
 
-Azure Active Directory erkennt einige [Risikoereignistypen](active-directory-reporting-risk-events.md#risk-event-types) in Echtzeit. Alle Echtzeit-Risikoereignisse, die während der Anmeldung eines Benutzers erkannt wurden, tragen zu einem logischen Konzept bei, das als *risikobehaftete Anmeldung* bezeichnet wird. Eine risikobehaftete Anmeldung ist ein Hinweis auf einen Anmeldeversuch, der nicht vom rechtmäßigen Besitzer eines Benutzerkontos durchgeführt wurde. Der Lebenszyklus einer risikobehafteten Anmeldung endet, wenn sich ein Benutzer abmeldet.
+Azure Active Directory erkennt [Risikoereignistypen](active-directory-reporting-risk-events.md#risk-event-types) in Echtzeit und offline. Alle Risikoereignisse, die bei der Anmeldung eines Benutzers erkannt wurden, tragen zu einem logischen Konzept bei, das als „riskante Anmeldung“ bezeichnet wird. Eine risikobehaftete Anmeldung ist ein Hinweis auf einen Anmeldeversuch, der nicht vom rechtmäßigen Besitzer eines Benutzerkontos durchgeführt wurde.
+
 
 ### <a name="sign-in-risk-level"></a>Risikostufe für die Anmeldung
 
@@ -212,7 +213,7 @@ Eine Übersicht über die zugehörige Benutzeroberfläche finden Sie unter:
 
 ## <a name="users-flagged-for-risk"></a>Benutzer mit Risikokennzeichnung
 
-Alle [Risikoereignisse](active-directory-identity-protection-risk-events.md), die von Azure Active Directory für einen Benutzer erkannt wurden, tragen zu einem logischen Konzept bei, das als *Benutzer mit Risikokennzeichnung* bezeichnet wird. Ein *Benutzer mit Risikomarkierung* oder *risikobehafteter Benutzer* ist ein Hinweis auf ein möglicherweise kompromittiertes Benutzerkonto.   
+Alle aktiven [Risikoereignisse](active-directory-identity-protection-risk-events.md), die von Azure Active Directory für einen Benutzer erkannt wurden, tragen zu einem logischen Konzept bei, das als „Benutzerrisiko“ bezeichnet wird. Ein Benutzer mit Risikomarkierung ist ein Indikator für ein möglicherweise kompromittiertes Benutzerkonto.
 
 ![Benutzer mit Risikokennzeichnung](./media/active-directory-identityprotection/1200.png)
 

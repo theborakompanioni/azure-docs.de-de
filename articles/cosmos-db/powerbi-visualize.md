@@ -13,13 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2016
+ms.date: 08/16/2017
 ms.author: mimig
 ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
-ms.openlocfilehash: 398abb0a56f1a12ad563dce889c602af4a5b9bcf
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: 7f56f6d89a9990ab7e7f50a86993e9e22b73d646
 ms.contentlocale: de-de
-ms.lasthandoff: 07/26/2017
+ms.lasthandoff: 08/17/2017
 
 ---
 # <a name="power-bi-tutorial-for-azure-cosmos-db-visualize-data-using-the-power-bi-connector"></a>Power BI-Tutorial für Azure Cosmos DB: Visualisieren von Daten mithilfe des Power BI-Connectors
@@ -34,6 +34,9 @@ Nach Abschluss dieses Power BI-Tutorials können Sie die folgenden Fragen beant
 * Wie kann ich Daten aus einer Sammlung in Power BI Desktop abrufen?
 * Wie kann ich verschachtelte JSON-Daten in Power BI Desktop transformieren?
 * Wie kann ich meine Berichte in PowerBI.com veröffentlichen und freigeben?
+
+> [!NOTE]
+> Für die Extraktion und Transformation von Daten stellt der Power BI-Connector für Azure Cosmos DB eine Verbindung mit Power BI Desktop her. In Power BI Desktop erstellte Berichte können dann auf „PowerBI.com“ veröffentlicht werden. Direkte Extraktion und Transformation von Azure Cosmos DB-Daten kann nicht auf „PowerBI.com“ ausgeführt werden. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Vergewissern Sie sich vor dem Ausführen der Anweisungen dieses Power BI-Tutorials, dass Sie über Zugriff auf folgende Ressourcen verfügen:

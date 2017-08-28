@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 07/25/2017
 ms.author: jdial
 ms.translationtype: HT
-ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
-ms.openlocfilehash: 9f040a87367219a937d4f5a83fd23ce1ba328c8c
+ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
+ms.openlocfilehash: 57f95b765b1b116814683a6643db16091c3041f6
 ms.contentlocale: de-de
-ms.lasthandoff: 08/01/2017
+ms.lasthandoff: 08/15/2017
 
 ---
 
@@ -64,26 +64,26 @@ Sie können Azure PowerShell oder die CLI verwenden, um eine Netzwerkschnittstel
 Bei der Erstellung eines virtuellen Computers im Portal wird eine Netzwerkschnittstelle mit Standardeinstellungen generiert, die für Sie zu dem virtuellen Computer hinzugefügt wird. Über das Azure-Portal ist es nicht möglich, vorhandene Netzwerkschnittstellen an einen neuen virtuellen Computer anzufügen oder einen virtuellen Computer mit mehreren Netzwerkschnittstellen zu erstellen. Verwenden Sie hierfür die CLI oder PowerShell. Sie können einer VM beliebig viele Netzwerkschnittstellen entsprechend der von der erstellten VM-Größe unterstützten Anzahl hinzufügen. Weitere Informationen zur unterstützten Anzahl an Netzwerkschnittstellen der einzelnen VM-Größen finden Sie im entsprechenden Artikel für [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) oder [Windows](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Die Netzwerkschnittstellen, die Sie zu einem virtuellen Computer hinzufügen, können derzeit zu keinem anderen virtuellen Computer hinzugefügt werden. Weitere Informationen zum Erstellen von Netzwerkschnittstellen finden Sie im Artikel [Erstellen, Ändern oder Löschen von Netzwerkschnittstellen](virtual-network-network-interface.md#create-a-network-interface).
 
 > [!WARNING]
-> Wenn der Netzwerkschnittstelle eine private IPv6-Adresse zugewiesen ist, können Sie diese Netzwerkschnittstelle nur dem virtuellen Computer hinzufügen, wenn Sie diesen erstellen. Sie können keine zusätzlichen Netzwerkschnittstellen dem virtuellen Computer hinzufügen, wenn Sie diesen erstellen oder nachdem Sie ihn erstellt haben, solange die IPv6-Adresse der Netzwerkschnittstelle zugewiesen und diese dem virtuellen Computer angefügt ist. Weitere Informationen zum Zuweisen von IP-Adressen an Netzwerkschnittstellen finden Sie unter [IP-Adressen für Netzwerkschnittstellen](virtual-network-network-interface-addresses.md).
+> Wenn einer Netzwerkschnittstelle eine private IPv6-Adresse zugewiesen ist, können Sie diese Netzwerkschnittstelle nur dem virtuellen Computer hinzufügen, wenn Sie diesen erstellen. Beim Erstellen des virtuellen Computer oder nach dem Erstellen des virtuellen Computers können Sie nicht mehrere Netzwerkschnittstellen an den virtuellen Computer anfügen, solange eine IPv6-Adresse einer Netzwerkschnittstelle zugewiesen ist, die an einen virtuellen Computer angefügt ist. Weitere Informationen zum Zuweisen von IP-Adressen an Netzwerkschnittstellen finden Sie unter [IP-Adressen für Netzwerkschnittstellen](virtual-network-network-interface-addresses.md).
 
 **Befehle**
 
 |Tool|Befehl|
 |---|---|
 |Befehlszeilenschnittstelle (CLI)|[az vm create](/cli/azure/vm?toc=%2fazure%2fvirtual-network%2ftoc.json#create)|
-|PowerShell|[New-AzureRmVM](/powershell/resourcemanager/azurerm.compute/new-azurermvm?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+|PowerShell|[New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 
 ## <a name="vm-add-nic"></a>Hinzufügen einer Netzwerkschnittstelle zu einem vorhandenen virtuellen Computer
 
 Sie können einem virtuellen Computer so viele Netzwerkschnittstellen hinzufügen, wie entsprechend der jeweiligen Größe des virtuellen Computers unterstützt werden. Weitere Informationen zur unterstützten Anzahl an Netzwerkschnittstellen der einzelnen VM-Größen finden Sie im entsprechenden Artikel für [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) oder [Windows](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Die VM, zu der Sie eine Netzwerkschnittstelle hinzufügen möchten, muss die Anzahl der Netzwerkschnittstellen unterstützen, die Sie hinzufügen möchten, und sich im Zustand „Beendet (Zuordnung aufgehoben)“ befinden. Die gewünschten Netzwerkschnittstellen können derzeit zu keinem anderen virtuellen Computer hinzugefügt werden. Netzwerkschnittstellen können zu einem vorhandenen virtuellen Computer nicht über das Azure-Portal hinzugefügt werden. Um Netzwerkschnittstellen einem vorhandenen virtuellen Computer hinzuzufügen, müssen Sie die CLI oder PowerShell verwenden. 
 
 > [!WARNING]
-> Eine Netzwerkschnittstelle verfügt über eine zugewiesene private IPv6-Adresse und kann nicht einem vorhandenen virtuellen Computer angefügt werden. Sie können nur eine Netzwerkschnittstelle mit einer zugewiesenen privaten IPv6-Adresse einem virtuellen Computer hinzufügen, wenn Sie diesen erstellen. Weitere Informationen zum Zuweisen von IP-Adressen an Netzwerkschnittstellen finden Sie unter [IP-Adressen für Netzwerkschnittstellen](virtual-network-network-interface-addresses.md).
+> Eine Netzwerkschnittstelle verfügt über eine zugewiesene private IPv6-Adresse und kann nicht einem vorhandenen virtuellen Computer angefügt werden. Sie können nur eine Netzwerkschnittstelle mit einer zugewiesenen privaten IPv6-Adresse an einen virtuellen Computer anfügen, wenn Sie einen virtuellen Computer erstellen. Weitere Informationen zum Zuweisen von IP-Adressen an Netzwerkschnittstellen finden Sie unter [IP-Adressen für Netzwerkschnittstellen](virtual-network-network-interface-addresses.md).
 
 |Tool|Befehl|
 |---|---|
 |Befehlszeilenschnittstelle (CLI)|[az vm nic add](/cli/azure/vm/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#add) (Verweis) or [detaillierte Schritte](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-a-nic-to-a-vm)|
-|PowerShell|[Add-AzureRmVMNetworkInterface](/powershell/resourcemanager/azurerm.compute/add-azurermvmnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json) (Verweis) oder [detaillierte Schritte](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-a-nic-to-an-existing-vm)|
+|PowerShell|[Add-AzureRmVMNetworkInterface](/powershell/module/azurerm.compute/add-azurermvmnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json) (Verweis) oder [detaillierte Schritte](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-a-nic-to-an-existing-vm)|
 
 ## <a name="vm-view-nic"></a>Anzeigen der Netzwerkschnittstellen für einen virtuellen Computer
 
@@ -99,18 +99,25 @@ Sie können die derzeit zu einem virtuellen Computer hinzugefügten Netzwerkschn
 |Tool|Befehl|
 |---|---|
 |Befehlszeilenschnittstelle (CLI)|[az vm show](/cli/azure/vm?toc=%2fazure%2fvirtual-network%2ftoc.json#show)|
-|PowerShell|[Get-AzureRmVM](/powershell/resourcemanager/azurerm.compute/get-azurermvm?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+|PowerShell|[Get-AzureRmVM](/powershell/module/azurerm.compute/get-azurermvm?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 
 ## <a name="vm-remove-nic"></a> Entfernen einer Netzwerkschnittstelle von einem virtuellen Computer
 
-Der virtuelle Computer, von dem Sie eine Netzwerkschnittstelle entfernen möchten, muss sich im Zustand „Beendet (Zuordnung aufgehoben)“ befinden und über mindestens zwei hinzugefügte Netzwerkschnittstellen verfügen. Sie können jede beliebige Netzwerkschnittstelle entfernen, dem virtuellen Computer muss jedoch immer mindestens eine Netzwerkschnittstelle hinzugefügt sein. Wenn Sie eine primäre Netzwerkschnittstelle entfernen, weist Azure das Attribut „Primär“ derjenigen Netzwerkschnittstelle zu, die am längsten zu dem virtuellen Computer hinzugefügt ist. Sie können auch selbst eine beliebige Netzwerkschnittstelle als die primäre festlegen. Über das Azure-Portal können Sie weder Netzwerkschnittstellen von einer VM entfernen noch das Attribut „Primär“ für eine Netzwerkschnittstelle festlegen. Diese beiden Aktionen können jedoch über die CLI oder PowerShell erfolgen. 
+Der virtuelle Computer, von dem Sie eine Netzwerkschnittstelle entfernen (trennen) möchten, muss sich im Zustand „Beendet (Zuordnung aufgehoben)“ befinden und über mindestens zwei angefügte Netzwerkschnittstellen verfügen. Sie können jede beliebige Netzwerkschnittstelle entfernen, dem virtuellen Computer muss jedoch immer mindestens eine Netzwerkschnittstelle hinzugefügt sein. Wenn Sie eine primäre Netzwerkschnittstelle entfernen, weist Azure das Attribut „Primär“ derjenigen Netzwerkschnittstelle zu, die am längsten zu dem virtuellen Computer hinzugefügt ist. 
+
+1. Melden Sie sich mit einem Konto, dem für Ihr Abonnement die Rolle „Besitzer“, „Mitwirkender“ oder „Netzwerkmitwirkender“ zugewiesen ist, beim [Azure-Portal](https://portal.azure.com) an. Weitere Informationen zum Zuweisen von Rollen zu Konten finden Sie unter [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor).
+2. Geben Sie im oberen Bereich des Azure-Portals im Feld mit dem Text *Ressourcen suchen* die Zeichenfolge *Virtuelle Computer* ein. Wenn **Virtuelle Computer** in den Suchergebnissen angezeigt wird, klicken Sie darauf.
+3. Klicken Sie auf dem daraufhin angezeigten Blatt **Virtuelle Computer** auf den Namen des virtuellen Computers, von dem Sie eine Netzwerkschnittstelle entfernen möchten.
+4. Klicken Sie auf dem Blatt „Virtueller Computer“, das für den ausgewählten virtuellen Computer angezeigt wird, im Abschnitt **EINSTELLUNGEN** auf **Netzwerkschnittstellen**. Informationen über Netzwerkschnittstellen finden Sie im Artikel [Erstellen, Ändern oder Löschen von Netzwerkschnittstellen](virtual-network-network-interface.md). Weitere Informationen zum Hinzufügen, Ändern und Entfernen von IP-Adressen, die einer Netzwerkschnittstelle zugewiesen sind, finden Sie im Artikel [Manage IP addresses (Verwalten von IP-Adressen)](virtual-network-network-interface-addresses.md).
+5. Klicken Sie auf dem angezeigten Netzwerkschnittstellenblatt rechts neben der Netzwerkschnittstelle, die Sie trennen möchten, auf die Auslassungspunkte (**...**).
+6. Klicken Sie auf **Trennen**. Falls an den virtuellen Computer nur eine einzelne Netzwerkschnittstelle angefügt ist, steht die Option **Trennen** nicht zur Verfügung. Klicken Sie im angezeigten Bestätigungsfeld auf **Ja** .
 
 **Befehle**
 
 |Tool|Befehl|
 |---|---|
 |Befehlszeilenschnittstelle (CLI)|[az vm nic remove](/cli/azure/vm/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#remove) (Verweis) or [detaillierte Schritte](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#remove-a-nic-from-a-vm)|
-|PowerShell|[Remove-AzureRMVMNetworkInterface](/powershell/resourcemanager/azurerm.compute/remove-azurermvmnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json) (Verweis) oder [detaillierte Schritte](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#remove-a-nic-from-an-existing-vm)|
+|PowerShell|[Remove-AzureRMVMNetworkInterface](/powershell/module/azurerm.compute/remove-azurermvmnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json) (Verweis) oder [detaillierte Schritte](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#remove-a-nic-from-an-existing-vm)|
 
 ## <a name="next-steps"></a>Nächste Schritte
 In den folgenden Artikeln erfahren Sie, wie Sie virtuelle Computer mit mehreren Netzwerkschnittstellen oder IP-Adressen erstellen:

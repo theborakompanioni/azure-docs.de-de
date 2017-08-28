@@ -11,17 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
-ms.date: 04/27/2017
+ms.date: 08/10/2017
 ms.author: sethm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f291186c6a68dea8aa00b846a2e6f3ad0d7996c
-ms.openlocfilehash: 285f3bc3faeffc94c639658ba375910bc4463e25
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: 170f431525ffdc93a01fc085e48e69c3a774968e
 ms.contentlocale: de-de
-ms.lasthandoff: 04/28/2017
-
+ms.lasthandoff: 08/11/2017
 
 ---
-# <a name="how-to-use-service-bus-queues"></a>Verwenden von Service Bus-Warteschlangen
+# <a name="how-to-use-service-bus-queues-with-java"></a>Verwenden von Service Bus-Warteschlangen mit Java
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 
 In diesem Artikel wird beschrieben, wie Sie Service Bus-Warteschlangen verwenden. Die Beispiele wurden in Java geschrieben und verwenden das [Azure-SDK für Java][Azure SDK for Java]. Die Szenarios behandeln die Themen **Erstellen von Warteschlangen**, **Senden und Empfangen von Nachrichten** und **Löschen von Warteschlangen**.
@@ -48,7 +47,7 @@ import javax.xml.datatype.*;
 ## <a name="create-a-queue"></a>Erstellen einer Warteschlange
 Sie können Verwaltungsvorgänge für Service Bus-Warteschlangen über die **ServiceBusContract**-Klasse durchführen. **ServiceBusContract**-Objekte werden mit einer entsprechenden Konfiguration erstellt, die die SAS-Token mit Berechtigungen für deren Verwaltung kapselt. Die **ServiceBusContract**-Klasse ist der einzige Kommunikationspunkt mit Azure.
 
-Die **ServiceBusService**-Klasse enthält Methoden zum Erstellen, Aufzählen und Löschen von Warteschlangen. Das folgende Beispiel zeigt, wie Sie mit einem **ServiceBusService**-Objekt eine Warteschlange mit dem Namen „TestQueue“ in einem Namespace mit dem Namen „HowToSample“ erstellen können:
+Die **ServiceBusService**-Klasse enthält Methoden zum Erstellen, Aufzählen und Löschen von Warteschlangen. Das folgende Beispiel zeigt, wie Sie mit einem Objekt vom Typ **ServiceBusService** eine Warteschlange mit dem Namen `TestQueue` in einem Namespace mit dem Namen `HowToSample` erstellen:
 
 ```java
 Configuration config =
@@ -73,7 +72,7 @@ catch (ServiceException e)
 }
 ```
 
-Mit den Methoden in **QueueInfo** können Sie Eigenschaften der Warteschlange einstellen (z.B. den Standardwert für die Gültigkeitsdauer, der auf an die Warteschlange gesendete Nachrichten angewendet wird). Das folgende Beispiel zeigt, wie eine Warteschlange mit der Bezeichnung `TestQueue` mit einer maximalen Größe von 5 GB erstellt wird:
+Mit den Methoden in `QueueInfo` können Sie Eigenschaften der Warteschlange anpassen (beispielsweise den Standardwert für die Gültigkeitsdauer, der auf an die Warteschlange gesendete Nachrichten angewendet werden soll). Das folgende Beispiel zeigt, wie eine Warteschlange mit der Bezeichnung `TestQueue` mit einer maximalen Größe von 5 GB erstellt wird:
 
 ````java
 long maxSizeInMegabytes = 5120;
@@ -82,7 +81,7 @@ queueInfo.setMaxSizeInMegabytes(maxSizeInMegabytes);
 CreateQueueResult result = service.createQueue(queueInfo);
 ````
 
-Sie können mit der **listQueues**-Methode von **ServiceBusContract**-Objekten überprüfen, ob eine Warteschlange mit einem spezifischen Namen bereits innerhalb eines Dienstnamespaces vorhanden ist.
+Sie können mit der Methode `listQueues` für Objekte vom Typ **ServiceBusContract** prüfen, ob eine Warteschlange mit einem spezifischen Namen bereits innerhalb eines Dienstnamespaces vorhanden ist.
 
 ## <a name="send-messages-to-a-queue"></a>Senden von Nachrichten an eine Warteschlange
 Um eine Nachricht an eine Service Bus-Warteschlange zu senden, ruft Ihre Anwendung ein **ServiceBusContract**-Objekt ab. Der folgende Code zeigt, wie Sie eine Nachricht für die zuvor im Namespace `HowToSample` erstellte Warteschlange `TestQueue` senden können.

@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/07/2017
+ms.date: 08/11/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: 045c4cd49e7b7b1e0b02cc7dc6ede636d0622208
+ms.sourcegitcommit: 80fd9ee9b9de5c7547b9f840ac78a60d52153a5a
+ms.openlocfilehash: d2aed3315fe60ace46dfb4176dc13aa417257b0c
 ms.contentlocale: de-de
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/14/2017
 
 ---
 # <a name="optimize-your-sql-server-environment-with-the-sql-assessment-solution-in-log-analytics"></a>Optimieren der SQL Server-Umgebung mit der SQL Assessment-Lösung in Log Analytics
@@ -66,7 +66,7 @@ Die folgende Tabelle zeigt die Datensammlungsmethoden für Agents und gibt an, o
 
 | Plattform | Direkt-Agent | SCOM-Agent | Azure Storage | SCOM erforderlich? | Daten von SCOM-Agent über Verwaltungsgruppe gesendet | Sammlungshäufigkeit |
 | --- | --- | --- | --- | --- | --- | --- |
-| Windows |![Ja](./media/log-analytics-sql-assessment/oms-bullet-green.png) |![Ja](./media/log-analytics-sql-assessment/oms-bullet-green.png) |![Nein](./media/log-analytics-sql-assessment/oms-bullet-red.png) |![Nein](./media/log-analytics-sql-assessment/oms-bullet-red.png) |![Ja](./media/log-analytics-sql-assessment/oms-bullet-green.png) |7 Tage |
+| Windows | &#8226; | &#8226; |  |  | &#8226; |7 Tage |
 
 ## <a name="operations-manager-run-as-accounts-for-oms"></a>Ausführende Operations Manager-Konten für OMS
 Log Analytics in OMS verwendet den Agent und die Verwaltungsgruppe von Operations Manager, um Daten zu sammeln und an den OMS-Dienst zu senden. OMS basiert auf Management Packs für Workloads, um Dienste bereitzustellen, die einen Mehrwert schaffen. Jede Arbeitsauslastung erfordert spezifische Berechtigungen zum Ausführen von Management Packs in einem anderen Sicherheitskontext, z. B. ein Domänenkonto. Sie müssen Anmeldeinformationen angeben, indem Sie ein ausführendes Operations Manager-Konto konfigurieren.
