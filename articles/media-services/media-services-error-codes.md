@@ -2,7 +2,7 @@
 title: Azure Media Services-Fehlercodes | Microsoft-Dokumentation
 description: "Dieses Thema bietet eine Übersicht über Azure Media Services-Fehlercodes."
 author: Juliako
-manager: erikre
+manager: SyntaxC4
 editor: 
 services: media-services
 documentationcenter: 

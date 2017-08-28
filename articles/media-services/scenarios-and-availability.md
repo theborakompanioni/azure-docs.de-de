@@ -4,7 +4,7 @@ description: "Dieses Thema enthält eine Übersicht über Microsoft Azure Media 
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: erikre
+manager: SyntaxC4
 editor: 
 ms.service: media-services
 ms.workload: media

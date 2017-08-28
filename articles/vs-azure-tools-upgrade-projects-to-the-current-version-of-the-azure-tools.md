@@ -3,8 +3,8 @@ title: Upgraden von Projekten auf die aktuelle Version von Azure Tools | Microso
 description: "Erfahren Sie, wie Sie ein Upgrade von Projekten auf die aktuelle Version von Azure Tools für Visual Studio durchführen."
 services: visual-studio-online
 documentationcenter: na
-author: TomArcher
-manager: douge
+author: kraigb
+manager: ghogen
 editor: 
 ms.assetid: 1d64070a-078d-468a-87f4-e6715de6475f
 ms.service: multiple
@@ -13,11 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 11/18/2016
-ms.author: tarcher
-translationtype: Human Translation
+ms.author: kraigb
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: e346640f6cbf7969bf373b84d8a20a24a74f654e
-
+ms.contentlocale: de-de
+ms.lasthandoff: 11/17/2016
 
 ---
 # <a name="how-to-upgrade-projects-to-the-current-version-of-the-azure-tools-for-visual-studio"></a>Upgrade von Projekten auf die aktuelle Version von Azure Tools für Visual Studio
@@ -46,10 +47,5 @@ Wenn ein Projekt automatisch aktualisiert oder angegeben wird, dass es aktualisi
     Auf der Registerkarte **Anwendung** wird die Tools-Version angezeigt, die dem Projekt zugeordnet ist. Wenn die aktuelle Version von Azure Tools angezeigt wird, wurde das Projekt bereits aktualisiert. Wenn Sie eine neuere Version der Tools installiert haben, als auf der Registerkarte angezeigt wird, wird die Schaltfläche **Aktualisieren** angezeigt.
 3. Klicken Sie auf die Schaltfläche **Aktualisieren** , um ein Projekt auf die aktuelle Version der Tools zu aktualisieren.
 4. Erstellen Sie das Projekt, und beheben Sie Fehler, die sich aus Änderungen an der API ergeben können. Informationen dazu, wie Sie den Code zur Anpassung an die neue Version ändern, finden Sie in der Dokumentation zur jeweiligen API.
-
-
-
-
-<!--HONumber=Nov16_HO3--->
 
 

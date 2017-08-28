@@ -3,8 +3,8 @@ title: "Konfigurieren der Rollen für einen Azure-Clouddienst mit Visual Studio 
 description: "Erfahren Sie, wie Rollen für Azure-Clouddienste mithilfe von Visual Studio eingerichtet und konfiguriert werden."
 services: visual-studio-online
 documentationcenter: na
-author: TomArcher
-manager: douge
+author: kraigb
+manager: ghogen
 editor: 
 ms.assetid: d397ef87-64e5-401a-aad5-7f83f1022e16
 ms.service: multiple
@@ -13,13 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 03/21/2017
-ms.author: tarcher
+ms.author: kraigb
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
 ms.openlocfilehash: 9e79f275b8de045892517ec33581b72195a81f32
 ms.contentlocale: de-de
 ms.lasthandoff: 03/22/2017
-
 
 ---
 # <a name="configure-azure-cloud-service-roles-with-visual-studio"></a>Konfigurieren von Rollen für Azure-Clouddienste mit Visual Studio

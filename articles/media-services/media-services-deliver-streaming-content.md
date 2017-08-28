@@ -2,7 +2,7 @@
 title: "Veröffentlichen von Azure Media Services-Inhalten mit .NET | Microsoft-Dokumentation"
 description: "Erfahren Sie, wie Sie einen Locator erstellen, der zum Generieren einer Streaming-URL verwendet wird. Die Codebeispiele sind in C# geschrieben und verwenden das Media Services SDK für .NET."
 author: juliako
-manager: erikre
+manager: SyntaxC4
 editor: 
 services: media-services
 documentationcenter: 

@@ -4,7 +4,7 @@ description: "In diesem Tutorial erfahren Sie Schritt für Schritt, wie Sie übe
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: erikre
+manager: SyntaxC4
 editor: 
 ms.assetid: 3ad3dcea-95be-4711-9aae-a455a32434f6
 ms.service: media-services

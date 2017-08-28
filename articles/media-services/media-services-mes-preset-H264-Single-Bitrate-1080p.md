@@ -2,7 +2,7 @@
 title: "Media Encoder Standard-Voreinstellung „H264 Single Bitrate 1080p“ – Azure | Microsoft-Dokumentation"
 description: "Das Thema enthält eine Übersicht über die Aufgabenvoreinstellung **H264 Single Bitrate 1080p**."
 author: Juliako
-manager: erikre
+manager: SyntaxC4
 editor: 
 services: media-services
 documentationcenter: 

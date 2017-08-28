@@ -4,7 +4,7 @@ description: "Einrichten der Umgebung für die Entwicklung mit Azure Media Servi
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: erikre
+manager: SyntaxC4
 editor: 
 ms.assetid: 0258a633-8b42-4853-acc7-3b5162d1d8cd
 ms.service: media-services

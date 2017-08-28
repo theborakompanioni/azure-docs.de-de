@@ -2,7 +2,7 @@
 title: Entwickeln von Videoplayeranwendungen
 description: "Das Thema enthält Links zu Player-Frameworks und Plug-Ins, mit denen Sie Ihre eigenen Clientanwendungen entwickeln können, die Streamingmedien aus Media Services nutzen."
 author: Juliako
-manager: erikre
+manager: SyntaxC4
 editor: 
 services: media-services
 documentationcenter: 

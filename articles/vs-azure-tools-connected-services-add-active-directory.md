@@ -1,10 +1,10 @@
 ---
 title: "Hinzufügen von Azure Active Directory mithilfe von verbundenen Diensten in Visual Studio | Microsoft Docs"
-description: "Fügen Sie Azure Active Directory mithilfe des Dialogfelds &quot;Verbundene Dienste hinzufügen&quot; in Visual Studio hinzu"
+description: "Fügen Sie Azure Active Directory mithilfe des Dialogfelds \"Verbundene Dienste hinzufügen\" in Visual Studio hinzu"
 services: visual-studio-online
 documentationcenter: na
-author: TomArcher
-manager: douge
+author: kraigb
+manager: ghogen
 editor: 
 ms.assetid: f599de6b-e369-436f-9cdc-48a0165684cb
 ms.service: active-directory
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/01/2017
-ms.author: tarcher
-translationtype: Human Translation
+ms.author: kraigb
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
 ms.openlocfilehash: 5ff7c4ee612fd1261d85870be4d6fcbd66b64735
+ms.contentlocale: de-de
 ms.lasthandoff: 03/27/2017
-
 
 ---
 # <a name="adding-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>Hinzufügen von Azure Active Directory mithilfe von verbundenen Diensten in Visual Studio

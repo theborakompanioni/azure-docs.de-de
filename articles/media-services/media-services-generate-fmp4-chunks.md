@@ -4,7 +4,7 @@ description: "In diesem Thema wird gezeigt, wie Sie eine Codierungsaufgabe erste
 services: media-services
 documentationcenter: 
 author: juliako
-manager: erikre
+manager: SyntaxC4
 editor: 
 ms.assetid: b7029ac5-eadd-4a2f-8111-1fc460828981
 ms.service: media-services

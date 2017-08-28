@@ -4,7 +4,7 @@ description: "In diesem Thema wird erläutert, wie Sie Filter erstellen, mit den
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: erikre
+manager: SyntaxC4
 editor: 
 ms.assetid: 2f6894ca-fb43-43c0-9151-ddbb2833cafd
 ms.service: media-services

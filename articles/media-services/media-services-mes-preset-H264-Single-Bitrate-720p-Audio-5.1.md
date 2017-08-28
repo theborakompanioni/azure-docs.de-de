@@ -2,7 +2,7 @@
 title: H264 Single Bitrate 720p Audio 5.1 | Microsoft Docs
 description: "Das Thema enthält eine Übersicht über die Aufgabenvoreinstellung **H264 Single Bitrate 720p Audio 5.1**."
 author: Juliako
-manager: erikre
+manager: SyntaxC4
 editor: 
 services: media-services
 documentationcenter: 

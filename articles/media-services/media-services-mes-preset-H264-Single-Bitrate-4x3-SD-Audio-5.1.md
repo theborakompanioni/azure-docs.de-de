@@ -2,7 +2,7 @@
 title: H264 Single Bitrate 4x3 SD Audio 5.1 | Microsoft-Dokumentation
 description: "Das Thema enthält eine Übersicht über die Aufgabenvoreinstellung **H264 Single Bitrate 4x3 SD Audio 5.1**."
 author: Juliako
-manager: erikre
+manager: SyntaxC4
 editor: 
 services: media-services
 documentationcenter: 
