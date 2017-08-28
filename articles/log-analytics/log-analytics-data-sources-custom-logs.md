@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/13/2017
+ms.date: 08/15/2017
 ms.author: bwren
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: 8105cd6ef87a592a0a84ff44a2ce94efcd874a2c
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: b7f28868e3ffdf95dbe39872f382e7c97eae692c
 ms.contentlocale: de-de
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="custom-logs-in-log-analytics"></a>Benutzerdefinierte Protokolle in Log Analytics
@@ -35,6 +35,10 @@ Die zu sammelnden Protokolldateien müssen folgende Kriterien erfüllen:
 - Die Protokolldatei darf keine zirkulären Updates zulassen, bei denen die Datei mit neuen Einträgen überschrieben wird.
 - Die Protokolldatei muss ASCII- oder UTF-8-Codierung verwenden.  Andere Formate wie UTF-16 werden nicht unterstützt.
 
+>[!NOTE]
+>Log Analytics erfasst doppelte Einträge in der Protokolldatei.  Allerdings sind die Suchergebnisse inkonsistent, wenn die Filterergebnisse eine größere Anzahl von Ereignissen als Ergebnissen angezeigt.  Sie müssen unbedingt das Protokoll überprüfen, um festzustellen, ob dieses Verhalten durch die Anwendung, die es erstellt, verursacht wird, und es nach Möglichkeit vor der Erstellung der benutzerdefinierten Protokollsammlungsdefinition beheben.  
+>
+  
 ## <a name="defining-a-custom-log"></a>Definieren eines benutzerdefinierten Protokolls
 Gehen Sie zum Definieren einer benutzerdefinierten Protokolldatei wie folgt vor.  Am Ende dieses Artikels finden Sie eine exemplarische Vorgehensweise für das Hinzufügen eines benutzerdefinierten Protokolls.
 

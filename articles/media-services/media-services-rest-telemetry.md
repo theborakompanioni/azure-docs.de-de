@@ -4,7 +4,7 @@ description: In diesem Artikel erfahren Sie, wie Sie die Azure Media Services-Te
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: SyntaxC4
+manager: cfowler
 editor: 
 ms.assetid: e1a314fb-cc05-4a82-a41b-d1c9888aab09
 ms.service: media-services

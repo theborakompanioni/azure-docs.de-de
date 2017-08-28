@@ -4,7 +4,7 @@ description: "Erfahren Sie, wie Sie Medieninhalte in Media Services mithilfe von
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: 2a7273c6-8a22-4f82-9bfe-4509ff32d4a4
 ms.service: media-services
@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/31/2017
+ms.date: 08/10/2017
 ms.author: juliako
 ms.translationtype: HT
-ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
-ms.openlocfilehash: 50cff5d8e2d88b855bb0297bef1d183ab1533801
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: 4ec324d94717fa1f93eda6f24d9dbd9fc0cdc455
 ms.contentlocale: de-de
-ms.lasthandoff: 08/01/2017
+ms.lasthandoff: 08/12/2017
 
 ---
 # <a name="how-to-encode-an-asset-by-using-media-encoder-standard"></a>Codieren eines Medienobjekts mit Media Encoder Standard
@@ -39,14 +39,22 @@ Je nach Art der Verarbeitung, die Sie durchführen möchten, können einem Auftr
 * Aufgaben können inline über Navigationseigenschaft „Tasks“ in Auftragsentitäten definiert werden.
 * Verwenden Sie OData-Batchverarbeitung.
 
-Wir empfehlen, Zwischendateien immer in einen MP4-Satz mit adaptiver Bitrate zu codieren und anschließend mithilfe der [dynamischen Paketerstellung](media-services-dynamic-packaging-overview.md) in das gewünschte Format zu konvertieren.
+Es wird empfohlen, Ihre Quelldateien immer in einen Satz von MP4-Dateien mit adaptiver Bitrate zu codieren und anschließend mithilfe der [dynamischen Paketerstellung](media-services-dynamic-packaging-overview.md) in das gewünschte Format zu konvertieren.
 
 Wenn Ihr Ausgabemedienobjekt speicherverschlüsselt ist, müssen Sie die Übermittlungsrichtlinien für Medienobjekte konfigurieren. Weitere Informationen finden Sie unter [Konfigurieren von Übermittlungsrichtlinien für Medienobjekte](media-services-rest-configure-asset-delivery-policy.md).
 
-> [!NOTE]
-> Bevor Sie mit dem Verweisen auf Medienprozessoren beginnen, stellen Sie sicher, dass Sie über die richtige Medienprozessor-ID verfügen. Weitere Informationen finden Sie unter [Abrufen von Medienprozessoren](media-services-rest-get-media-processor.md).
->
->
+## <a name="considerations"></a>Überlegungen
+
+Wenn Sie in Media Services auf Entitäten zugreifen, müssen Sie bestimmte Headerfelder und Werte in Ihren HTTP-Anforderungen festlegen. Weitere Informationen finden Sie unter [Installation für die Entwicklung mit der Media Services-REST-API](media-services-rest-how-to-use.md).
+
+Bevor Sie mit dem Verweisen auf Medienprozessoren beginnen, stellen Sie sicher, dass Sie über die richtige Medienprozessor-ID verfügen. Weitere Informationen finden Sie unter [Abrufen von Medienprozessoren](media-services-rest-get-media-processor.md).
+
+## <a name="connect-to-media-services"></a>Verbinden mit Mediendiensten
+
+Informationen zum Herstellen einer Verbindung mit der AMS-API finden Sie unter [Zugreifen auf die Azure Media Services-API per Azure AD-Authentifizierung](media-services-use-aad-auth-to-access-ams-api.md). 
+
+>[!NOTE]
+>Nach der erfolgreichen Verbindung mit „https://media.windows.net“ erhalten Sie eine 301 Redirect-Antwort, in der ein anderer Media Services-URI angegeben ist. Nachfolgende Aufrufe müssen an den neuen URI gesendet werden.
 
 ## <a name="create-a-job-with-a-single-encoding-task"></a>Erstellen eines Auftrags mit einer einzelnen Codierungsaufgabe
 > [!NOTE]

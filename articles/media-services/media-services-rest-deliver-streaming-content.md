@@ -2,7 +2,7 @@
 title: "Veröffentlichen von Azure Media Services-Inhalten mit REST"
 description: Erfahren Sie, wie Sie einen Locator erstellen, der zum Generieren einer Streaming-URL verwendet wird. Der Code verwendet die REST-API.
 author: Juliako
-manager: erikre
+manager: cfowler
 editor: 
 services: media-services
 documentationcenter: 
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: bb3ae3d26d174d0f37cc348cde570250699bf067
+ms.translationtype: HT
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: 3aa6bdac17a78b78490f255b0e86e1c210b64cc6
 ms.contentlocale: de-de
-ms.lasthandoff: 03/14/2017
+ms.lasthandoff: 08/12/2017
 
 ---
 # <a name="publish-azure-media-services-content-using-rest"></a>Veröffentlichen von Azure Media Services-Inhalten mit REST
@@ -37,6 +37,17 @@ Sie können auch einen OnDemand-Streaminglocator zum Erstellen von URLs verwende
 In diesem Thema wird erläutert, wie Sie einen OnDemand-Streaminglocator erstellen, um Ihr Medienobjekt zu veröffentlichen und Smooth-, MPEG-DASH- sowie HLS-Streaming-URLs zu erstellen. Außerdem wird veranschaulicht, wie Sie URLs für progressive Downloads erstellen.
 
 Im [folgenden](#types) Abschnitt finden Sie die Enumerationstypen, deren Werte in REST-Aufrufen verwendet werden.   
+
+> [!NOTE]
+> Wenn Sie in Media Services auf Entitäten zugreifen, müssen Sie bestimmte Headerfelder und Werte in Ihren HTTP-Anforderungen festlegen. Weitere Informationen finden Sie unter [Installation für die Entwicklung mit der Media Services-REST-API](media-services-rest-how-to-use.md).
+> 
+
+## <a name="connect-to-media-services"></a>Verbinden mit Mediendiensten
+
+Informationen zum Herstellen einer Verbindung mit der AMS-API finden Sie unter [Zugreifen auf die Azure Media Services-API per Azure AD-Authentifizierung](media-services-use-aad-auth-to-access-ams-api.md). 
+
+>[!NOTE]
+>Nach der erfolgreichen Verbindung mit „https://media.windows.net“ erhalten Sie eine 301 Redirect-Antwort, in der ein anderer Media Services-URI angegeben ist. Nachfolgende Aufrufe müssen an den neuen URI gesendet werden.
 
 ## <a name="create-an-ondemand-streaming-locator"></a>Erstellen eines OnDemand-Streaminglocators
 Verfahren Sie zum Erstellen des OnDemand-Streaminglocators und Abrufen von URLs wie folgt:
@@ -183,7 +194,9 @@ Beispiel:
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-## <a name="see-also"></a>Siehe auch
+## <a name="see-also"></a>Weitere Informationen
+[Übersicht über die Media Services Operations-REST-API](media-services-rest-how-to-use.md)
+
 [Konfigurieren der Übermittlungsrichtlinie für Medienobjekte](media-services-rest-configure-asset-delivery-policy.md)
 
 

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: nepeters
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: 77f50a830c38b3a90110845e58ee7cbb28742c10
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: 8a5b39351f665c51ae7d83f755329e54ff3cf786
 ms.contentlocale: de-de
-ms.lasthandoff: 06/28/2017
+ms.lasthandoff: 08/11/2017
 
 ---
 
@@ -34,13 +34,12 @@ Dieses Dokument enthält eine Übersicht der VM-Erweiterungen, erläutert Voraus
 Es sind verschiedene Azure VM-Erweiterungen für jeweils spezifische Anwendungsfälle verfügbar. Hier einige Beispiele:
 
 - Anwenden von gewünschten Statuskonfigurationen mit PowerShell auf einen virtuellen Computer mithilfe der DSC-Erweiterung für Linux. Weitere Informationen finden Sie unter [Azure Desired State configuration extension (Azure-Erweiterung für die gewünschte Statuskonfiguration)](https://github.com/Azure/azure-linux-extensions/tree/master/DSC).
-- Konfigurieren der Überwachung eines virtuellen Computers mit der Microsoft Monitoring Agent-VM-Erweiterung. Weitere Informationen finden Sie unter [Aktivieren oder Deaktivierung der Überwachung von virtuellen Computern](vm-monitoring.md).
+- Konfigurieren der Überwachung eines virtuellen Computers mit der Microsoft Monitoring Agent-VM-Erweiterung. Weitere Informationen finden Sie unter [Überwachen einer Linux-VM](tutorial-monitoring.md).
 - Konfigurieren der Überwachung Ihrer Azure-Infrastruktur mit der Datadog-Erweiterung. Weitere Informationen finden Sie im [Datadog-Blog](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/).
 - Konfigurieren eines Docker-Hosts auf einem virtuellen Azure-Computer mithilfe der Docker-VM-Erweiterung. Weitere Informationen finden Sie unter [Docker-VM-Erweiterung](dockerextension.md).
 
 Über prozessspezifische Erweiterungen hinaus ist sowohl für virtuelle Windows- als auch für virtuelle Linux-Computer eine benutzerdefinierte Skripterweiterung verfügbar. Die benutzerdefinierte Skripterweiterung für Linux ermöglicht die Ausführung beliebiger Bash-Skripts auf virtuellen Computern. Benutzerdefinierte Skripts sind beim Entwerfen von Azure-Bereitstellungen nützlich, die Konfiguration über das Maß hinaus erfordern, das mithilfe von Azure-Tools erreicht werden kann. Weitere Informationen finden Sie unter [Benutzerdefinierte Skripterweiterung für Linux-VMs](extensions-customscript.md).
 
-Wenn Sie ein Beispiel für den Einsatz einer VM-Erweiterung in einer End-to-End-Anwendungsbereitstellung durcharbeiten möchten, lesen Sie [Automatisieren von Anwendungsbereitstellungen auf virtuellen Azure-Computern](../linux/dotnet-core-1-landing.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -131,7 +130,7 @@ Weitere Informationen finden Sie in der vollständigen [Resource Manager-Vorlage
 }
 ```
 
-Weitere Informationen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen mit Linux-VM-Erweiterungen](../linux/extensions-authoring-templates.md).
+Weitere Informationen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](../windows/template-description.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#extensions).
 
 ## <a name="secure-vm-extension-data"></a>Schützen der Daten von VM-Erweiterungen
 

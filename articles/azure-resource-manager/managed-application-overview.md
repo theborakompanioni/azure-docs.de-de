@@ -1,6 +1,6 @@
 ---
 title: "Übersicht über verwaltete Azure-Anwendungen | Microsoft-Dokumentation"
-description: "Hier werden die Konzepte für eine verwaltete Azure-Anwendung beschrieben."
+description: "Hier werden die Begriffe für verwaltete Azure-Anwendungen beschrieben."
 services: azure-resource-manager
 author: ravbhatnagar
 manager: rjmax
@@ -8,63 +8,77 @@ ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 05/24/2017
+ms.date: 07/09/2017
 ms.author: gauravbh; tomfitz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
-ms.openlocfilehash: c4e0508e243bd4f0cd57ea1619f7812433329423
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: 7ace8e1ea8038e0748bfed00c0cc0a4fa340588b
 ms.contentlocale: de-de
-ms.lasthandoff: 05/26/2017
-
+ms.lasthandoff: 08/11/2017
 
 ---
+
 # <a name="azure-managed-applications-overview"></a>Übersicht über verwaltete Azure-Anwendungen
 
-Über Azure ist ein zuverlässiger Marketplace verfügbar, in dem ISVs und Start-up-Unternehmen ihre Lösungen für Kunden auf der ganzen Welt anbieten können. Bei Azure Marketplace handelt es sich um einen Katalog, der aus Hunderten komplexer, mehrere Ressourcen umfassender Vorlagen von Erst- und Drittanbietern besteht. Kunden können innerhalb weniger Minuten PaaS- und SaaS-Anwendungen bereitstellen und starten. Ein Angebot kann zwar schnell bereitgestellt werden, für die Wartung und Aktualisierung der Lösung ist jedoch weiterhin der Kunde zuständig. Hersteller haben keine Möglichkeit, Kunden für die Nutzung einer Anwendung über die Kosten des VM-Images hinaus Gebühren in Rechnung zu stellen. Darüber hinaus können Hersteller weder verhindern, dass Kunden wichtige Anwendungsressourcen ändern, noch den Zugriff auf das geistige Eigentum blockieren, das eine Anwendung ausmacht. Verwaltete Azure-Anwendungen bieten eine Lösung für diese Probleme. 
+Anbieter, die Azure verwenden, können Kunden auf der ganzen Welt Lösungen anbieten. Beim Azure Marketplace handelt es sich um einen Katalog, der aus Hunderten komplexer, mehrere Ressourcen umfassender Vorlagen von Erst- und Drittanbietern besteht. Kunden können innerhalb weniger Minuten Bereitstellungen durchführen und mit der Verwendung von Platform as a Service(PaaS)- und Software-as-a-Service(SaaS)-Anwendungen beginnen. 
+
+Ein Angebot kann für Kunden zwar schnell über den Marketplace bereitgestellt werden, für die Wartung und Aktualisierung der Lösung ist jedoch der Kunde zuständig. Anbieter haben keine Möglichkeit, Kunden für die Nutzung einer Anwendung über die Kosten des VM-Images hinaus Gebühren in Rechnung zu stellen. Darüber hinaus können Anbieter Kunden nicht daran hindern, kritische Anwendungsressourcen zu ändern. Auch den Zugriff auf geistiges Eigentum, die eine Anwendung erzeugt, können Anbieter nicht blockieren. Verwaltete Azure-Anwendungen bieten Lösungen für diese Probleme. 
+
+Eine verwaltete Anwendung ähnelt bis auf einen wichtigen Unterschied einer Marketplace-Lösungsvorlage. In einer verwalteten Anwendung werden die Ressourcen in einer Ressourcengruppe bereitgestellt, die vom Anbieter verwaltet wird. Die Ressourcengruppe ist im Abonnement des Kunden vorhanden, aber eine Identität im Mandanten hat Zugriff auf die Ressourcengruppe.
 
 ## <a name="advantages-of-managed-applications"></a>Vorteile von verwalteten Anwendungen
 
-Verwaltete Azure-Anwendungen ermöglichen ein Ökosystem, in dem Hersteller einen PaaS- oder SaaS-Dienst als eigenständige Anwendungen verfügbar machen können. Kunden stellen verwaltete Anwendungen in ihren Abonnements bereit, Hersteller können sie jedoch verwalten. Hersteller können Kunden mithilfe des Azure-Abrechnungssystems die Kosten in Rechnung stellen und mithilfe von Vorlagen den Lebenszyklus bereitgestellter Anwendungen verwalten. Auf der anderen Seite können Kunden automatisch Updates abrufen und für Support und Wartung bezahlen. Sie müssen die Anwendung nicht selbst warten oder aktualisieren oder bei einem Fehler der Anwendung eine Diagnose oder Problembehandlung ausführen.
+Managed Service Provider (MSPs), ISVs und unternehmensinterne IT-Teams können mithilfe verwalteter Anwendungen Lösungen über den Marketplace oder den Dienstkatalog bereitstellen. Obwohl Kunden diese verwalteten Anwendungen in ihren Abonnements bereitstellen, müssen sie diese nicht verwalten, aktualisieren oder betreuen. Da die Verwaltung der Anwendungen und die Bereitstellung des Supports durch die Anbieter erfolgen, müssen sich Kunden kein anwendungsspezifisches Domänenwissen aneignen, um diese Anwendungen zu verwalten. Kunden können automatisch Anwendungsupdates abrufen, ohne sich mit der Problembehandlung und Diagnose von Problemen mit den Anwendungen befassen zu müssen.
 
-Von einem derartigen Ökosystem in Azure profitieren nicht nur PaaS- und SaaS-Hersteller, sondern auch Teams in Unternehmen mit zentraler Plattform und Systemintegratoren, die ihre Lösungen bündeln und weiterverkaufen möchten.
+Für Anbieter erstellen verwaltete Anwendungen einen Kanal zum Verkauf von Infrastruktur und Software über den Marketplace. Verwaltete Anwendungen bieten Azure-Kunden auch die Möglichkeit, Dienste und Support für den Betrieb zur Verfügung zu stellen. Anbieter können Kunden mithilfe des Azure-Abrechnungssystems Rechnungen stellen. Sie können den Lebenszyklus der bereitgestellten Anwendungen mithilfe von Vorlagen steuern. Diese Lösungen sind eigenständig und für den Kunden versiegelt, sodass Lieferanten qualitativ hochwertige Dienste bereitstellen können. Dieser Ansatz kommt PaaS- und SaaS-Anbietern zugute. Auch unternehmensinterne Plattformteams und Systemintegratoren (SIs), die ihre Lösungen verpacken und verkaufen möchten, können davon profitieren.
 
-## <a name="how-managed-applications-work"></a>Funktionsweise von verwalteten Anwendungen
-Es gibt zwei Szenarien beim Arbeiten mit verwalteten Anwendungen:
+## <a name="managed-application-types"></a>Typen von verwalteten Anwendungen
+Verwaltete Azure-Anwendungen gibt es in zwei Varianten – Dienstkatalog und Marketplace.
+ 
+### <a name="service-catalog"></a>Dienstkatalog  
 
-1. Bei einem steht der Hersteller oder unabhängige Softwarehersteller (Independent Software Vendor, ISV), der eine verwaltete Anwendung erstellt und zur allgemeinen Nutzung zur Verfügung stellt, im Mittelpunkt. 
-2. Beim anderen geht es um den Kunden oder Verbraucher, der die veröffentlichte Anwendung erstellen und verwenden möchte. 
+Mit dem Dienstkatalog können Kunden einen Katalog genehmigter Lösungen für Azure erstellen, der von Personen in dieser Organisation verwendet werden kann. Das Führen eines solchen Lösungskatalogs ist für zentrale IT-Teams in Unternehmen hilfreich. Mithilfe des Katalogs können sie die Einhaltung bestimmter Organisationsstandards gewährleisten und gleichzeitig Lösungen für ihre Organisationen bereitstellen. Sie können diese Anwendungen steuern, aktualisieren und verwalten. Mitarbeiter können mithilfe des Katalogs mühelos den umfangreichen Satz von Anwendungen ermitteln, die von den IT-Abteilungen empfohlen werden und von dieser genehmigt sind. Kunden sehen die verwalteten Dienstkataloganwendungen, die sie erstellt haben. Des Weiteren können sie auch die verwalteten Anwendungen sehen, die andere Personen in ihrer Organisation gemeinsam mit ihnen nutzen.
+ 
+Informationen zum Veröffentlichen einer verwalteten Dienstkataloganwendung finden Sie unter [Erstellen und Veröffentlichen einer verwalteten Dienstkataloganwendung](managed-application-publishing.md).
+ 
+Informationen zum Nutzen einer verwalteten Dienstkataloganwendung, finden Sie unter [Nutzen einer verwalteten Dienstkataloganwendung](managed-application-consumption.md).
+ 
+### <a name="marketplace"></a>Marketplace
 
-Dieser Artikel enthält eine Übersicht über beide Szenarien. Sehen wir uns zunächst die Funktionsweise von verwalteten Anwendungen genauer an. 
+Verwaltete Anwendungen stehen über Marketplace im Azure-Portal zur Verfügung. Nachdem der Anbieter diese Anwendungen veröffentlicht hat, können sie von allen Benutzern innerhalb oder außerhalb einer Organisation genutzt werden. Durch diesen Ansatz können MSPs, ISVs und SIs ihre Lösungen für alle Azure-Kunden anbieten. Kunden erhalten den Vorteil, dass sie solche komplexen Lösungen nutzen können, ohne sich um die Aneignung von Wissen und die Verwaltung der Lösungen kümmern zu müssen. 
 
-Eine verwaltete Anwendung ähnelt bis auf einen wichtigen Unterschied einer Marketplace-Lösungsvorlage. In einer verwalteten Anwendung werden die Ressourcen in einer Ressourcengruppe bereitgestellt, die vom ISV/Hersteller verwaltet wird. Die Ressourcengruppe ist im Abonnement des Kunden vorhanden, aber ein Benutzer, eine Benutzergruppe oder eine Anwendung im Mandanten des ISV hat Zugriff auf die Ressourcengruppe. Zum Verwalten und Warten der Anwendung wird die Identität des Herstellers einem Active Directory-Besitzer, -Mitwirkenden oder -Leser bzw. einer anderen integrierten Rolle hinzugefügt. 
+Derzeit können Herausgeber ihre Angebote als verwaltete Anwendung oder als nicht verwaltete Lösungsvorlage zur Verfügung stellen. Zu den Hauptkomponenten bei der Veröffentlichung einer verwalteten Anwendung zählen die Vorlagendatei und die UI-Definitionsdatei. Die Vorlagendatei beschreibt die Ressourcen, die bereitgestellt werden. Die UI-Definitionsdatei beschreibt, wie die erforderlichen Eingaben zur Bereitstellung dieser Ressourcen im Portal angezeigt werden. Die erforderlichen Dateien sind in einer ZIP-Datei verpackt und werden über das Veröffentlichungsportal hochgeladen.
+ 
+Informationen zum Veröffentlichen einer verwalteten Anwendung im Marketplace finden Sie unter [Verwaltete Azure-Anwendungen im Marketplace](managed-application-author-marketplace.md).
 
-Weitere Informationen zur Herstellerlösung finden Sie unter [Erstellen und Veröffentlichen von verwalteten Azure-Anwendungen](managed-application-publishing.md).
-
-Weitere Informationen zur Kundenlösung finden Sie unter [Nutzen einer verwalteten Azure-Anwendung](managed-application-consumption.md).
+Informationen zur Nutzung einer verwalteten Anwendung aus dem Marketplace finden Sie unter [Nutzen verwalteter Azure-Anwendungen im Marketplace](managed-application-consume-marketplace.md).
 
 ## <a name="key-concepts"></a>Wichtige Begriffe
 
 ### <a name="managed-resource-group"></a>Verwaltete Ressourcengruppe
-Die Ressourcengruppe, in der alle in der Vorlage bereitgestellten Azure-Ressourcen erstellt werden. Beispiel: Wenn die Anwendung ein Speicherkonto erstellt, enthält diese Ressourcengruppe die Speicherkontoressource. Sie enthält nicht die Geräteressource.
+In der verwalteten Ressourcengruppe werden alle Azure-Ressourcen, die in der Vorlage bereitgestellt werden, erstellt. Beispiel: Wenn das Gerät zum Erstellen eines Speicherkontos verwendet wird, enthält diese Ressourcengruppe die Speicherkontoressource. Sie enthält nicht die Geräteressource.
 
 ### <a name="appliance-package"></a>Gerätepaket
 Der Herausgeber erstellt ein Paket, das die Vorlagendateien und die createUIDefinition-Datei enthält. Es enthält im Einzelnen die folgenden Dateien:
 
-- **applianceMainTemplate.json**: Die Vorlagendatei, die alle vom Gerät bereitgestellten Ressourcen definiert. Diese Datei ist eine reguläre Vorlagendatei, die zum Erstellen von Ressourcen verwendet wird.
+- **applianceMainTemplate.json**: Die Vorlagendatei definiert alle vom Gerät bereitgestellten Ressourcen. Diese Datei ist eine reguläre Vorlagendatei, die zum Erstellen von Ressourcen verwendet wird.
 
-- **MainTemplate.json**: Eine Vorlagendatei, die die Geräteressource definiert (Microsoft.Solutions/appliances). Eine in dieser Ressource definierte Schlüsseleigenschaft ist „ManagedResourceGroupId“. Diese Eigenschaft gibt an, welche Ressourcengruppe zum Hosten der in „applianceMainTemplate.json“ definierten tatsächlichen Ressourcen verwendet wird.
+- **MainTemplate.json**: Diese Vorlagendatei definiert die Geräteressource (Microsoft.Solutions/appliances). Eine in dieser Ressource definierte Schlüsseleigenschaft ist „ManagedResourceGroupId“. Diese Eigenschaft gibt an, welche Ressourcengruppe zum Hosten der tatsächlichen Ressourcen, die in „applianceMainTemplate.json“ definiert sind, verwendet wird.
 
-- **createUIDefinition.json**: Diese Datei beschreibt, wie die Benutzeroberfläche gerendert wird, die für die in der Vorlage definierten Parameter erforderlich ist.
+- **applianceCreateUIDefinition.json**: Diese Datei beschreibt, wie die Benutzeroberfläche, die für die in der Vorlage definierten Parameter erforderlich ist, gerendert wird.
 
 ### <a name="authorization"></a>Autorisierung
-Der Herausgeber muss die Berechtigungen angeben, die der Hersteller zum Verwalten der Ressourcen im Auftrag des Kunden benötigt. Diese Berechtigung gilt für die verwaltete Ressourcengruppe. Sie legen die folgenden Werte fest:
+Der Herausgeber muss die Berechtigungen angeben, die der Hersteller zum Verwalten der Ressourcen im Auftrag des Kunden benötigt. Diese Berechtigung gilt für die verwaltete Ressourcengruppe. Legen Sie die folgenden Werte fest:
 
-- **PrincipalID**: Der Azure AD-Bezeichner des Benutzers, der Gruppe oder der Anwendung, der zum Gewähren des Zugriffs auf die verwaltete Ressourcengruppe verwendet wird. Dieser Bezeichner gehört zum Mandanten des Herausgebers.
+- **PrincipalID**: Der Azure Active Directory(Azure AD)-Bezeichner des Benutzers, der Gruppe oder der Anwendung, der zum Gewähren des Zugriffs auf die verwaltete Ressourcengruppe verwendet wird. Dieser Bezeichner gehört zum Mandanten des Herausgebers.
 
-- **RoleDefinitionID**: Der Azure AD-Bezeichner der Rolle, die der obigen Prinzipal-ID zugewiesen ist. Dabei kann es sich um eine beliebige integrierte RBAC-Rolle im Mandanten des Herausgebers handeln.
+- **RoleDefinitionID**: Der Azure AD-Bezeichner der Rolle, die der obigen Prinzipal-ID zugewiesen ist. Hierbei kann es sich um eine beliebige integrierte rollenbasierte Zugriffssteuerungsrolle im Mandanten des Herausgebers handeln. Weitere Informationen finden Sie unter [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](../active-directory/role-based-access-built-in-roles.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Grundlegendes zur Anbietererfahrung erfahren Sie unter [Erstellen und Veröffentlichen von verwalteten Azure-Anwendungen](managed-application-publishing.md).
-* Grundlegendes zur Kundenerfahrung erfahren Sie unter [Nutzen einer verwalteten Azure-Anwendung](managed-application-consumption.md).
-* Informationen zum Erstellen einer Benutzeroberflächen-Definitionsdatei finden Sie unter [Erste Schritte mit „CreateUiDefinition“](managed-application-createuidefinition-overview.md).
+* Informationen zum Veröffentlichen von verwalteten Anwendungen im Marketplace finden Sie unter [Verwaltete Azure-Anwendungen im Marketplace](managed-application-author-marketplace.md).
+* Informationen zur Nutzung einer verwalteten Anwendung aus dem Marketplace finden Sie unter [Nutzen verwalteter Azure-Anwendungen im Marketplace](managed-application-consume-marketplace.md).
+* Informationen zum Veröffentlichen einer verwalteten Dienstkataloganwendung finden Sie unter [Erstellen und Veröffentlichen einer verwalteten Dienstkataloganwendung](managed-application-publishing.md).
+* Informationen zum Nutzen einer verwalteten Dienstkataloganwendung, finden Sie unter [Nutzen einer verwalteten Dienstkataloganwendung](managed-application-consumption.md).
+* Informationen zum Erstellen einer UI-Definitionsdatei finden Sie unter [Erste Schritte mit „CreateUiDefinition“](managed-application-createuidefinition-overview.md).
+

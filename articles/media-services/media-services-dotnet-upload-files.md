@@ -4,7 +4,7 @@ description: "Erfahren Sie, wie Sie Medieninhalte in Media Services nutzen könn
 services: media-services
 documentationcenter: 
 author: juliako
-manager: SyntaxC4
+manager: cfowler
 editor: 
 ms.assetid: c9c86380-9395-4db8-acea-507c52066f73
 ms.service: media-services

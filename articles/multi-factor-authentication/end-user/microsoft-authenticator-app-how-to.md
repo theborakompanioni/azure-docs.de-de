@@ -5,38 +5,39 @@ services: multi-factor-authentication
 documentationcenter: 
 author: kgremban
 manager: femila
-editor: librown
 ms.assetid: 3065a1ee-f253-41f0-a68d-2bd84af5ffba
 ms.service: multi-factor-authentication
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/15/2017
+ms.date: 08/15/2017
 ms.author: kgremban
+ms.reviewer: librown
 ms.custom: H1Hack27Feb2017, end-user
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: c5d631aa2f03aee3df7a94bf62c9cd5dadb55eda
+ms.translationtype: HT
+ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
+ms.openlocfilehash: 6bcb6d9f7a1e9b241fa70690016b03d6eb5887ab
 ms.contentlocale: de-de
-ms.lasthandoff: 05/08/2017
+ms.lasthandoff: 08/16/2017
 
 ---
+
 # <a name="get-started-with-the-microsoft-authenticator-app"></a>Erste Schritte mit der Microsoft Authenticator-App
 Die Microsoft Authenticator-App bietet eine zusätzliche Sicherheitsstufe in Ihrem Geschäfts-, Schul- oder Unikonto (z.B. bsimon@contoso.com) oder Ihrem Microsoft-Konto (z.B. bsimon@outlook.com).
 
 Die App funktioniert auf zwei Arten:
 
-* **Benachrichtigung**. Die App kann dazu beitragen, unberechtigten Zugriff auf Konten zu verhindern und betrügerische Transaktionen zu beenden, indem eine Benachrichtigung an Ihr Smartphone oder Tablet gesendet wird. Zeigen Sie einfach die Benachrichtigung an, und wählen Sie **Überprüfen**, wenn Sie den Zugriff zulassen möchten. Wählen Sie andernfalls **Verweigern**. Informationen zum Verweigern von Benachrichtigungen finden Sie im Abschnitt über die Verwendung der Funktion zum Ablehnen und Melden von Betrug für Multi-Factor Authentication.
+* **Benachrichtigung**. Die App kann dazu beitragen, unberechtigten Zugriff auf Konten zu verhindern und betrügerische Transaktionen zu beenden, indem eine Benachrichtigung an Ihr Smartphone oder Tablet gesendet wird. Zeigen Sie einfach die Benachrichtigung an, und wählen Sie **Überprüfen**, wenn Sie den Zugriff zulassen möchten. Wählen Sie andernfalls **Verweigern**. 
 * **Überprüfungscode** Die App kann als Softwaretoken zum Generieren eines OATH-Überprüfungscodes verwendet werden. Nachdem Sie Benutzernamen und Kennwort eingegeben haben, geben Sie auf dem Anmeldebildschirm den von der App bereitgestellten Code ein. Der Überprüfungscode kann als zweite Authentifizierungsmethode eingegeben werden.
 
 Die Microsoft Authenticator-App ersetzt die Azure Authenticator-App. Die Azure Authenticator-App kann weiterhin verwendet werden. Sollten Sie sich jedoch entscheiden, zur neuen Microsoft Authenticator-App zu wechseln, finden Sie in diesem Artikel hilfreiche Informationen.  
 
-## <a name="opt-in-for-two-step-verification"></a>Registrieren für die Überprüfung in zwei Schritten
+## <a name="opt-in-for-two-step-verification"></a>Abonnieren für die Überprüfung in zwei Schritten
 
-Die Microsoft-Authenticator-App kann nicht ohne zusätzliche Konfiguration verwendet werden. Sie müssen Ihre Konten so konfigurieren, dass Sie nach der Anmeldung mir Ihrem Benutzernamen und Kennwort zu einer zweiten Überprüfung aufgefordert werden. 
+Die Microsoft-Authenticator-App kann nicht ohne zusätzliche Konfiguration verwendet werden. Konfigurieren Sie Ihre Konten so, dass Sie nach der Anmeldung mit Ihrem Benutzernamen und Kennwort zu einer zweiten Überprüfungsmethode aufgefordert werden. 
 
-Für ein Geschäfts-, Schul- oder Unikonto können Sie dies in der Regel nicht selbst auswählen. Stattdessen meldet sich ein Sicherheitsadministrator in Ihrem Auftrag an und sendet Ihnen dann eine Benachrichtigung darüber, dass Sie Überprüfungsmethoden für Ihr Konto registrieren müssen. Wenn dieses Szenario auf Sie zutrifft, erhalten Sie weitere Informationen unter [Was ist Azure Multi-Factor Authentication?](multi-factor-authentication-end-user.md).
+Für ein Geschäfts-, Schul- oder Unikonto können Sie diese Funktion in der Regel nicht selbst auswählen. Stattdessen meldet sich ein Sicherheitsadministrator in Ihrem Auftrag an und setzt Sie darüber in Kenntnis, dass Sie Überprüfungsmethoden für Ihr Konto registrieren müssen. Wenn dieses Szenario auf Sie zutrifft, erhalten Sie weitere Informationen unter [Was ist Azure Multi-Factor Authentication?](multi-factor-authentication-end-user.md).
 
 Bei einem persönlichen Konto müssen Sie die Überprüfung in zwei Schritten selbst einrichten. Wenn Sie ein Microsoft-Konto besitzen, finden Sie weitere Informationen unter [Überprüfung in zwei Schritten](https://support.microsoft.com/help/12408/microsoft-account-about-two-step-verification). 
 
@@ -46,7 +47,7 @@ Sie können den Microsoft-Authenticator auch mit Nicht-Microsoft-Konten verwende
 Die Microsoft Authenticator-App ist für [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071), [Android](http://go.microsoft.com/fwlink/?Linkid=825072) und [iOS](http://go.microsoft.com/fwlink/?Linkid=825073) verfügbar.
 
 ## <a name="add-accounts-to-the-app"></a>Hinzufügen von Konten zur App
-Gehen Sie für jedes Konto, das Sie zur Microsoft Authenticator-App hinzufügen möchten, wie folgt vor.
+Verwenden Sie für jedes Konto, das Sie zur Microsoft Authenticator-App hinzufügen möchten, eines der folgenden Verfahren:
 
 ### <a name="add-a-personal-microsoft-account-to-the-app"></a>Hinzufügen eines persönliches Microsoft-Kontos zur App
 
@@ -95,7 +96,7 @@ Für ein persönliches Microsoft-Konto (das Sie zur Anmeldung bei Outlook.com, X
 ### <a name="add-an-account-to-the-app-using-touch-id"></a>Hinzufügen eines Kontos zur App über Touch ID
 Die Microsoft Authenticator-App unter iOS unterstützt Touch ID.  Azure Multi-Factor Authentication ermöglicht Organisationen, für Geräte eine PIN anzufordern. Mit Touch ID müssen iOS-Benutzer keine PIN eingeben. Stattdessen scannen sie ihren Fingerabdruck und wählen **Genehmigen**.
 
-Das Einrichten von Touch ID mit Microsoft Authenticator ist einfach. Sie führen eine normale Überprüfung mit einer PIN durch. Wenn Ihr Gerät Touch ID unterstützt, wird Microsoft Authenticator diese Option automatisch für das Konto einrichten.
+Das Einrichten von Touch ID mit Microsoft Authenticator ist einfach. Sie führen eine normale Überprüfung mit einer PIN durch. Wenn Ihr Gerät Touch ID unterstützt, richtet Microsoft Authenticator diese Option automatisch für dieses Konto ein.
 
 ![Überprüfung der Touch ID-Einrichtung](./media/authenticator-app-how-to/touchid1.png)
 
@@ -107,4 +108,4 @@ Danach müssen Sie zum Überprüfen Ihrer Anmeldung nur noch die erhaltene Pushb
 
 Sobald Sie Ihr Konto der App hinzugefügt haben, werden Sie möglicherweise aufgefordert, eine Testüberprüfung auszuführen, um sicherzustellen, dass alles richtig konfiguriert wurde. Danach sind Sie fertig! Vor der nächsten Anmeldung müssen Sie keine weiteren Schritte durchführen.
 
-Wenn Sie Überprüfungscodes in der App verwenden möchten, werden diese auf der Startseite angezeigt. Sie ändern sich alle 30 Sekunden, sodass Sie stets über einen neuen Code verfügen, wenn Sie einen benötigen. Sie müssen sie jedoch erst beachten, wenn Sie sich anmelden und zur Eingabe eines Überprüfungscodes aufgefordert werden.  
+Wenn Sie die Verwendung von Überprüfungscodes in der App festgelegt haben, werden diese auf der Startseite angezeigt. Sie ändern sich alle 30 Sekunden, sodass Sie stets über einen neuen Code verfügen, wenn Sie einen benötigen. Sie müssen sie jedoch erst beachten, wenn Sie sich anmelden und zur Eingabe eines Überprüfungscodes aufgefordert werden.  

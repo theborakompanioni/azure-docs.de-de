@@ -2,7 +2,7 @@
 title: "Verwalten von Media Services-Entitäten mit REST | Microsoft-Dokumentation"
 description: "Hier erfahren Sie, wie Sie Media Services-Entitäten mit der REST-API verwalten."
 author: juliako
-manager: erikre
+manager: cfowler
 editor: 
 services: media-services
 documentationcenter: 
@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/31/2017
+ms.date: 08/10/2017
 ms.author: juliako
 ms.translationtype: HT
-ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
-ms.openlocfilehash: 68391677b1724f23d52086be0c810385e93c7196
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: 1e4336bef9324b5aa9456135cac9b71d19e02050
 ms.contentlocale: de-de
-ms.lasthandoff: 08/01/2017
+ms.lasthandoff: 08/12/2017
 
 ---
 # <a name="managing-media-services-entities-with-rest"></a>Verwalten von Media Services-Entitäten mit REST 
@@ -28,22 +28,23 @@ ms.lasthandoff: 08/01/2017
 > 
 > 
 
-Microsoft Azure Media Services ist ein REST-basierter Dienst auf Grundlage von OData v3. Aus diesem Grund können Sie Entitäten genauso wie bei anderen OData-Diensten hinzufügen, abfragen, aktualisieren und löschen. Auf Ausnahmen wird ggf. hingewiesen. Weitere Informationen zu OData finden Sie in der [Dokumentation zu Open Data Protocol](http://www.odata.org/documentation/).
+Microsoft Azure Media Services ist ein REST-basierter Dienst auf Grundlage von OData v3. Sie können Entitäten genauso wie bei anderen OData-Diensten hinzufügen, abfragen, aktualisieren und löschen. Auf Ausnahmen wird ggf. hingewiesen. Weitere Informationen zu OData finden Sie in der [Dokumentation zu Open Data Protocol](http://www.odata.org/documentation/).
 
 Dieses Thema veranschaulicht das Verwalten von Azure Media Services-Entitäten mit REST.
 
 >[!NOTE]
 > Ab dem 1. April 2017 werden alle Auftragsdatensätze in Ihrem Konto, die älter als 90 Tage sind, sowie alle zugehörigen Aufgabendatensätze automatisch gelöscht, selbst wenn die Gesamtanzahl von Datensätzen unterhalb des maximalen Kontingents liegt. Beispielsweise wird jeder Auftragsdatensatz in Ihrem Konto, der vor dem 31. Dezember 2016 erstellt wurde, am 1. April 2017 automatisch gelöscht. Wenn Sie die Auftrags-/Aufgabeninformationen archivieren müssen, können Sie dazu den in diesem Thema beschriebenen Code verwenden.
 
-## <a name="considerations-when-working-with-ams-rest"></a>Überlegungen beim Arbeiten mit AMS REST
+## <a name="considerations"></a>Überlegungen  
 
-Beim Verwenden der Media Services REST-API gelten die folgenden Überlegungen:
+Wenn Sie in Media Services auf Entitäten zugreifen, müssen Sie bestimmte Headerfelder und Werte in Ihren HTTP-Anforderungen festlegen. Weitere Informationen finden Sie unter [Installation für die Entwicklung mit der Media Services-REST-API](media-services-rest-how-to-use.md).
 
-> [!NOTE]
-> Wenn Sie in Media Services auf Entitäten zugreifen, müssen Sie bestimmte Headerfelder und Werte in Ihren HTTP-Anforderungen festlegen. Weitere Informationen finden Sie unter [Installation für die Entwicklung mit der Media Services-REST-API](media-services-rest-how-to-use.md).
-> 
-> Nach der erfolgreichen Verbindung mit „https://media.windows.net“ erhalten Sie eine 301 Redirect-Antwort, in der ein anderer Media Services-URI angegeben ist. Nachfolgende Aufrufe müssen an den neuen URI gesendet werden. Informationen zum Herstellen einer Verbindung mit der AMS-API finden Sie unter [Zugreifen auf die Azure Media Services-API per Azure AD-Authentifizierung](media-services-use-aad-auth-to-access-ams-api.md).
-> 
+## <a name="connect-to-media-services"></a>Verbinden mit Mediendiensten
+
+Informationen zum Herstellen einer Verbindung mit der AMS-API finden Sie unter [Zugreifen auf die Azure Media Services-API per Azure AD-Authentifizierung](media-services-use-aad-auth-to-access-ams-api.md). 
+
+>[!NOTE]
+>Nach der erfolgreichen Verbindung mit „https://media.windows.net“ erhalten Sie eine 301 Redirect-Antwort, in der ein anderer Media Services-URI angegeben ist. Nachfolgende Aufrufe müssen an den neuen URI gesendet werden.
 
 ## <a name="adding-entities"></a>Hinzufügen von Entitäten
 Jede Entität in Media Services wird über eine POST-HTTP-Anforderung einer Entitätenmenge hinzugefügt, z. B. Medienobjekten.

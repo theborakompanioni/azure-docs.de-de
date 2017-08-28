@@ -12,14 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/07/2017
+ms.date: 08/11/2017
 ms.author: banders
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
-ms.openlocfilehash: 5c2cb05ced7841899c2bd19f627d13b86a4b05cc
+ms.translationtype: HT
+ms.sourcegitcommit: 80fd9ee9b9de5c7547b9f840ac78a60d52153a5a
+ms.openlocfilehash: c6568e491429f6046ab164ab5eacd0ae5846e201
 ms.contentlocale: de-de
-ms.lasthandoff: 06/09/2017
-
+ms.lasthandoff: 08/14/2017
 
 ---
 # <a name="network-performance-monitor-solution-in-log-analytics"></a>Netzwerkleistungsmonitor-Lösung in Azure Log Analytics
@@ -218,7 +217,7 @@ Die folgende Tabelle zeigt Datensammlungsmethoden und andere Details, wie Daten 
 
 | Plattform | Direkt-Agent | SCOM-Agent | Azure Storage | SCOM erforderlich? | Daten von SCOM-Agent über Verwaltungsgruppe gesendet | Sammlungshäufigkeit |
 | --- | --- | --- | --- | --- | --- | --- |
-| Windows |![Ja](./media/log-analytics-network-performance-monitor/oms-bullet-green.png) |![Ja](./media/log-analytics-network-performance-monitor/oms-bullet-green.png) |![Nein](./media/log-analytics-network-performance-monitor/oms-bullet-red.png) |![Nein](./media/log-analytics-network-performance-monitor/oms-bullet-red.png) |![Nein](./media/log-analytics-network-performance-monitor/oms-bullet-red.png) |TCP-Handshakes/ICMP ECHO-Nachrichten werden alle fünf Sekunden gesendet, Daten alle drei Minuten |
+| Windows | &#8226; | &#8226; |  |  |  |TCP-Handshakes/ICMP ECHO-Nachrichten werden alle fünf Sekunden gesendet, Daten alle drei Minuten |
 
 Die Lösung nutzt synthetische Transaktionen, um die Integrität des Netzwerks zu bewerten. OMS-Agents, die an verschiedenen Punkten im Netzwerk installiert sind, tauschen TCP- oder ICMP Echo-Pakete (je nach dem für die Überwachung ausgewählten Protokoll) miteinander aus. Dabei erhalten Agents Informationen zur Roundtripzeit und ggf. zu Paketverlust. Jeder Agent führt zudem in regelmäßigen Abständen eine Routenverfolgung (Traceroute) zu anderen Agents aus, um alle zu testenden Routen im Netzwerk zu ermitteln. Anhand dieser Daten können die Agents die Netzwerklatenz und die Paketverluste herleiten. Die Tests werden alle fünf Sekunden wiederholt, und die Daten werden von den Agents vor dem Hochladen zum Log Analytics-Dienst für einen Zeitraum von drei Minuten aggregiert.
 

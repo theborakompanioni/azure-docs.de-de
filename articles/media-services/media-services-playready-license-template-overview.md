@@ -2,7 +2,7 @@
 title: "Media Services PlayReady-Lizenzvorlage – Übersicht"
 description: "Dieses Thema bietet einen Überblick über eine PlayReady-Lizenzvorlage, mit der PlayReady-Lizenzen konfiguriert werden können."
 author: juliako
-manager: SyntaxC4
+manager: cfowler
 editor: 
 services: media-services
 documentationcenter: 

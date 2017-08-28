@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/06/2017
+ms.date: 08/09/2017
 ms.author: ashwink
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 8165147d9ff811b26f7fe2626c892f2aba5bb4f8
+ms.translationtype: HT
+ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
+ms.openlocfilehash: f06e5dd7d17c1d7795fb1f112e649cd42d7dd6d4
 ms.contentlocale: de-de
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 08/10/2017
 
 ---
 # <a name="azure-monitor-powershell-quick-start-samples"></a>Azure Monitor – PowerShell-Schnellstartbeispiele
@@ -30,13 +30,13 @@ In diesem Artikel werden PowerShell-Beispielbefehle beschrieben, mit denen Sie a
 > 
 
 ## <a name="set-up-powershell"></a>Einrichten von PowerShell
-Sofern dies noch nicht geschehen ist, richten Sie PowerShell auf Ihrem Computer ein. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview) .
+Sofern dies noch nicht geschehen ist, richten Sie PowerShell auf Ihrem Computer ein. Weitere Informationen finden Sie unter [Vorgehensweise zum Installieren und Konfigurieren von PowerShell](/powershell/azure/overview).
 
 ## <a name="examples-in-this-article"></a>Beispiele in diesem Artikel
 Mit den Beispielen in diesem Artikel wird veranschaulicht, wie Sie Azure Monitor-Cmdlets verwenden können. Die vollständige Liste der PowerShell-Cmdlets für Azure Monitor finden Sie unter [Azure Monitor-Cmdlets (Insights)](https://msdn.microsoft.com/library/azure/mt282452#40v=azure.200#41.aspx).
 
 ## <a name="sign-in-and-use-subscriptions"></a>Anmelden und Verwenden von Abonnements
-Melden Sie sich zuerst bei Ihrem Azure-Abonnement an.
+Melden sich zuerst bei Ihrem Azure-Abonnement an.
 
 ```PowerShell
 Login-AzureRmAccount
@@ -139,14 +139,11 @@ Get-AzureRmAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/
 
 `Get-AzureRmAlertRule` unterstützt weitere Parameter. Weitere Informationen finden Sie unter [Get-AlertRule](https://msdn.microsoft.com/library/mt282459.aspx) .
 
-## <a name="create-alert-rules"></a>Erstellen von Warnungsregeln
+## <a name="create-metric-alerts"></a>Erstellen von Metrikwarnungen
 Sie können das Cmdlet `Add-AlertRule` zum Erstellen, Aktualisieren oder Deaktivieren einer Warnungsregel verwenden.
 
 Sie können die Eigenschaften für E-Mails und Webhooks mit `New-AzureRmAlertRuleEmail` bzw. `New-AzureRmAlertRuleWebhook` erstellen. Weisen Sie der Warnungsregel diese Elemente im Cmdlet für die Warnungsregel als Aktionen der Eigenschaft **Aktionen** zu.
 
-Der nächste Abschnitt enthält ein Beispiel, das zeigt, wie eine Warnungsregel mit verschiedenen Parametern erstellt wird.
-
-### <a name="alert-rule-on-a-metric"></a>Warnungsregel für eine Metrik
 In der folgenden Tabelle werden die Parameter und Werte beschrieben, die zum Erstellen einer Warnung mithilfe einer Metrik verwendet werden.
 
 | Parameter | value |
@@ -155,7 +152,7 @@ In der folgenden Tabelle werden die Parameter und Werte beschrieben, die zum Ers
 | Standort für diese Warnungsregel |USA (Ost) |
 | ResourceGroup |montest |
 | TargetResourceId |/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |
-| „MetricName“ für die Warnung, die erstellt wird |\PhysicalDisk(_Total)\Schreibvorgänge/s Unter den Informationen zum Cmdlet `Get-MetricDefinitions` weiter unten finden Sie Details dazu, wie Sie die genauen Metriknamen abrufen. |
+| „MetricName“ für die Warnung, die erstellt wird |\PhysicalDisk(_Total)\Schreibvorgänge/s Unter den Informationen zum Cmdlet `Get-MetricDefinitions` finden Sie Details dazu, wie Sie die genauen Metriknamen abrufen. |
 | operator |GreaterThan |
 | Schwellenwert (Anzahl/s für diese Metrik) |1 |
 | WindowSize (Format: hh:mm:ss) |00:05:00 |
@@ -189,40 +186,6 @@ Get-AzureRmAlertRule -Name vmcpu_gt_1 -ResourceGroup myrg1 -DetailedOutput
 
 Das Cmdlet zum Hinzufügen einer Warnung aktualisiert die Regel auch, wenn für die angegebenen Eigenschaften bereits eine Warnungsregel vorhanden ist. Um eine Warnungsregel zu deaktivieren, fügen Sie den **-DisableRule**-Parameter hinzu.
 
-### <a name="alert-on-activity-log-event"></a>Warnung bei Aktivitätsprotokollereignis
-> [!NOTE]
-> Dieses Feature befindet sich in der Vorschau und wird zu einem späteren Zeitpunkt entfernt (d.h. ersetzt).
-> 
-> 
-
-In diesem Szenario senden Sie eine E-Mail, wenn eine Website im Abonnement in der Ressourcengruppe *abhingrgtest123*erfolgreich gestartet wurde.
-
-Einrichten einer E-Mail-Regel
-
-```PowerShell
-$actionEmail = New-AzureRmAlertRuleEmail -CustomEmail myname@company.com
-```
-
-Einrichten einer Webhookregel
-
-```PowerShell
-$actionWebhook = New-AzureRmAlertRuleWebhook -ServiceUri https://example.com?token=mytoken
-```
-
-Erstellen einer Regel für das Ereignis
-
-```PowerShell
-Add-AzureRmLogAlertRule -Name superalert1 -Location "East US" -ResourceGroup myrg1 -OperationName microsoft.web/sites/start/action -Status Succeeded -TargetResourceGroup abhingrgtest123 -Actions $actionEmail, $actionWebhook
-```
-
-Abrufen der Warnungsregel
-
-```PowerShell
-Get-AzureRmAlertRule -Name superalert1 -ResourceGroup myrg1 -DetailedOutput
-```
-
-Mit dem Cmdlet `Add-AlertRule` können verschiedene weitere Parameter verwendet werden. Weitere Informationen finden Sie unter [Add-AlertRule](https://msdn.microsoft.com/library/mt282468.aspx).
-
 ## <a name="get-a-list-of-available-metrics-for-alerts"></a>Abrufen einer Liste der verfügbaren Metriken für Warnungen
 Sie können das Cmdlet `Get-AzureRmMetricDefinition` zum Anzeigen der Liste aller Metriken für eine bestimmte Ressource verwenden.
 
@@ -239,8 +202,8 @@ Get-AzureRmMetricDefinition -ResourceId <resource_id> | Format-Table -Property N
 Eine vollständige Liste der verfügbaren Optionen für `Get-AzureRmMetricDefinition` finden Sie unter [Get-MetricDefinitions](https://msdn.microsoft.com/library/mt282458.aspx).
 
 ## <a name="create-and-manage-autoscale-settings"></a>Erstellen und Verwalten von Einstellungen zur automatischen Skalierung
-Für eine Ressource wie eine Web-App, eine VM, ein Clouddienst oder eine VM-Skalierungsgruppe kann nur eine Einstellung zur automatischen Skalierung konfiguriert werden.
-Allerdings kann jede Einstellung zur automatischen Skalierung mehrere Profile aufweisen. Beispielsweise kann ein Profil ein leistungsbasierte Skalierungsprofil und ein zweites ein zeitplanbasiertes Profil sein. Für jedes Profil können mehrere Regeln konfiguriert werden. Weitere Informationen zur automatischen Skalierung finden Sie unter [Automatisches Skalieren einer Anwendung](../cloud-services/cloud-services-how-to-scale.md).
+Für eine Ressource wie eine Web-App, eine VM, einen Clouddienst oder eine VM-Skalierungsgruppe kann nur eine Einstellung zur automatischen Skalierung konfiguriert werden.
+Allerdings kann jede Einstellung zur automatischen Skalierung mehrere Profile aufweisen. Beispielsweise kann ein Profil ein leistungsbasiertes Skalierungsprofil und ein zweites ein zeitplanbasiertes Profil sein. Für jedes Profil können mehrere Regeln konfiguriert werden. Weitere Informationen zur automatischen Skalierung finden Sie unter [Automatisches Skalieren einer Anwendung](../cloud-services/cloud-services-how-to-scale.md).
 
 Führen Sie die folgenden Schritte aus:
 

@@ -3,7 +3,7 @@ title: "Konfigurieren Ihres eigenständigen Azure Service Fabric-Clusters | Micr
 description: "Dieser Artikel beschreibt, wie Sie einen eigenständigen oder privaten Service Fabric-Cluster konfigurieren."
 services: service-fabric
 documentationcenter: .net
-author: rwike77
+author: dkkapur
 manager: timlt
 editor: 
 ms.assetid: 0c5ec720-8f70-40bd-9f86-cd07b84a219d
@@ -13,19 +13,18 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/02/2017
-ms.author: ryanwi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
-ms.openlocfilehash: 3b65f9391a4ff5a641546f8d0048f36386a7efe8
+ms.author: dekapur
+ms.translationtype: HT
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: 30fadddabf89d379beffdf214cfe8a8145d7a29b
 ms.contentlocale: de-de
-ms.lasthandoff: 06/08/2017
-
+ms.lasthandoff: 08/12/2017
 
 ---
 # <a name="configuration-settings-for-standalone-windows-cluster"></a>Konfigurationseinstellungen für eigenständige Windows-Cluster
 In diesem Artikel wird beschrieben, wie Sie einen eigenständigen Service Fabric-Cluster mithilfe der Datei ***ClusterConfig.JSON*** konfigurieren. Sie können diese Datei zum Angeben von Informationen für Ihren eigenständigen Cluster verwenden, z.B. die Service Fabric-Knoten und ihre IP-Adressen, verschiedene Knotentypen im Cluster, die Sicherheitskonfigurationen sowie die Netzwerktopologie in Bezug auf Fehler-/Upgradedomänen.
 
-Wenn Sie [das eigenständige Service Fabric-Paket herunterladen](service-fabric-cluster-creation-for-windows-server.md#downloadpackage), werden einige Beispiele der Datei „ClusterConfig.JSON“ auf Ihren Arbeitscomputer heruntergeladen. Die Beispiele mit *DevCluster* im Namen dienen Ihnen als Hilfe beim Erstellen eines Clusters mit allen drei Knoten auf demselben Computer, z.B. logischen Knoten. Davon muss mindestens ein Knoten als primärer Knoten gekennzeichnet sein. Dieser Cluster ist gut für eine Entwicklungs- oder Testumgebung geeignet und wird nicht als Produktionscluster unterstützt. Die Beispiele mit *MultiMachine* im Namen dienen Ihnen als Hilfe beim Erstellen eines Clusters in Produktionsqualität, bei dem jeder Knoten auf einem separaten Computer angeordnet ist. Die Anzahl von primären Knoten für diesen Cluster basiert jeweils auf der [Zuverlässigkeitsstufe](#reliability).
+Wenn Sie [das eigenständige Service Fabric-Paket herunterladen](service-fabric-cluster-creation-for-windows-server.md#downloadpackage), werden einige Beispiele der Datei „ClusterConfig.JSON“ auf Ihren Arbeitscomputer heruntergeladen. Die Beispiele mit *DevCluster* im Namen dienen Ihnen als Hilfe beim Erstellen eines Clusters mit allen drei Knoten auf demselben Computer, z.B. logischen Knoten. Davon muss mindestens ein Knoten als primärer Knoten gekennzeichnet sein. Dieser Cluster ist gut für eine Entwicklungs- oder Testumgebung geeignet und wird nicht als Produktionscluster unterstützt. Die Beispiele mit *MultiMachine* im Namen dienen Ihnen als Hilfe beim Erstellen eines Clusters in Produktionsqualität, bei dem jeder Knoten auf einem separaten Computer angeordnet ist.
 
 1. Mit *ClusterConfig.Unsecure.DevCluster.JSON* und *ClusterConfig.Unsecure.MultiMachine.JSON* wird veranschaulicht, wie Sie einen ungeschützten Test- bzw. Produktionscluster erstellen. 
 2. Mit *ClusterConfig.Windows.DevCluster.JSON* und *ClusterConfig.Windows.MultiMachine.JSON* wird veranschaulicht, wie Sie einen Test- oder Produktionscluster erstellen, der per [Windows-Sicherheit](service-fabric-windows-cluster-windows-security.md) geschützt ist.
@@ -83,15 +82,7 @@ Im Abschnitt **properties** der Datei „ClusterConfig.JSON“ wird der Cluster 
 <a id="reliability"></a>
 
 ### <a name="reliability"></a>Zuverlässigkeit
-Im Abschnitt **reliabilityLevel** wird die Anzahl von Systemdienstkopien definiert, die auf den primären Knoten des Clusters ausgeführt werden können. Dadurch wird die Zuverlässigkeit dieser Dienste und folglich auch des Clusters erhöht. Sie können diese Variable auf *Bronze*, *Silver*, *Gold* oder *Platinum* festlegen, um 3, 5, 7 bzw. 9 Kopien dieser Dienste auszuführen. Unten finden Sie ein Beispiel hierzu.
-
-    "reliabilityLevel": "Bronze",
-
-Beachten Sie, dass auf einem primären Knoten nur jeweils eine einzige Kopie der Systemdienste ausgeführt wird. Daher benötigen Sie für die Zuverlässigkeitsstufe *Bronze* mindestens 3 primäre Knoten, für *Silver* mindestens 5, für *Gold* mindestens 7 und für *Platinum* mindestens 9 Knoten.
-
-Wenn Sie in Ihrer Datei „clusterConfig.json“ die Eigenschaft „reliabilityLevel“ nicht angeben, berechnet unser System auf Basis der Anzahl Ihrer primären Knotentypen den optimalen „reliabilityLevel“ für Sie. Wenn Sie beispielsweise über vier primäre Kontentypen verfügen, wird der „reliabilityLevel“ auf Bronze gesetzt, und bei fünf Knoten auf Silber. In Kürze werden wir die Option für das Konfigurieren Ihrer Zuverlässigkeitsstufe entfernen, weil der Cluster die optimale Zuverlässigkeitsstufe automatisch erkennt und verwendet.
-
-ReliabilityLevel kann aktualisiert werden. Sie können eine „clusterConfig.json“-Datei v2 erstellen und mit einem [eigenständigen Upgrade der Clusterkonfiguration](service-fabric-cluster-upgrade-windows-server.md) zentral hoch- oder herunterskalieren. Sie können auch auf „clusterConfig.json v2“ ohne Angabe von reliabilityLevel aktualisieren, damit realibilityLevel automatisch berechnet wird. 
+Das Konzept **reliabilityLevel** definiert die Anzahl von Replikaten oder Instanzen der Service Fabric-Systemdienste, die auf den primären Knoten des Clusters ausgeführt werden können. Es bestimmt die Zuverlässigkeit dieser Dienste und damit auch des Clusters. Der Wert wird vom System bei der Clustererstellung und beim Upgraden des Clusters berechnet.
 
 ### <a name="diagnostics"></a>Diagnose
 Im Abschnitt **diagnosticsStore** können Sie Parameter konfigurieren, um bei Knoten- und Clusterausfällen die Diagnose und Fehlerbehandlung zu ermöglichen. Dies wird im folgenden Codeausschnitt veranschaulicht. 
@@ -150,7 +141,7 @@ Im Abschnitt **nodeTypes** werden die Typen der Knoten beschrieben, die in Ihrem
         "isPrimary": true
     }]
 
-**name** ist der Anzeigename für diesen bestimmten Knotentyp. Weisen Sie zum Erstellen eines Knotens dieses Typs seinen Anzeigenamen der Variablen **nodeTypeRef** für den Knoten zu, wie [weiter oben](#clusternodes) beschrieben. Definieren Sie für jeden Knotentyp die zu verwendenden Verbindungsendpunkte. Für diese Verbindungsendpunkte können Sie jede beliebige Portnummer auswählen, sofern dadurch keine Konflikte mit anderen Endpunkten in diesem Cluster entstehen. In einem Cluster mit mehreren Knoten gibt es mindestens einen primären Knoten (**isPrimary** ist *true*). Dies richtet sich nach der Zuverlässigkeitsstufe ([**reliabilityLevel**](#reliability)). Informationen zu den Werten **nodeTypes** und **reliabilityLevel** und zur Unterscheidung von primären Knoten und anderen Knotentypen finden Sie unter [Überlegungen zur Kapazitätsplanung für Service Fabric-Cluster](service-fabric-cluster-capacity.md). 
+**name** ist der Anzeigename für diesen bestimmten Knotentyp. Weisen Sie zum Erstellen eines Knotens dieses Typs seinen Anzeigenamen der Variablen **nodeTypeRef** für den Knoten zu, wie [weiter oben](#clusternodes) beschrieben. Definieren Sie für jeden Knotentyp die zu verwendenden Verbindungsendpunkte. Für diese Verbindungsendpunkte können Sie jede beliebige Portnummer auswählen, sofern dadurch keine Konflikte mit anderen Endpunkten in diesem Cluster entstehen. In einem Cluster mit mehreren Knoten gibt es mindestens einen primären Knoten (**isPrimary** ist *true*). Dies richtet sich nach der Zuverlässigkeitsstufe ([**reliabilityLevel**](#reliability)). Informationen zu **nodeTypes** und **reliabilityLevel** sowie zur Unterscheidung von primären Knoten und anderen Knotentypen finden Sie unter [Überlegungen zur Kapazitätsplanung für Service Fabric-Cluster](service-fabric-cluster-capacity.md). 
 
 #### <a name="endpoints-used-to-configure-the-node-types"></a>Endpunkte zum Konfigurieren der Knotentypen
 * *clientConnectionEndpointPort* ist der Port, der vom Client zum Herstellen der Verbindung mit dem Cluster verwendet wird, wenn die Client-APIs genutzt werden. 

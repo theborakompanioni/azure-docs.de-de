@@ -2,7 +2,7 @@
 title: "Wiederholungslogik im Media Services SDK für .NET | Microsoft Docs"
 description: "Dieses Thema enthält eine Übersicht über die Wiederholungslogik im Media Services SDK für .NET."
 author: Juliako
-manager: SyntaxC4
+manager: cfowler
 editor: 
 services: media-services
 documentationcenter: 

@@ -13,13 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/21/2017
+ms.date: 08/15/2017
 ms.author: arramac
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: d8b0bde3778054042c32dbc9c9e08d0b2f1fd3ca
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: c6c929c568cf7246c2c2e414723a38429727df36
 ms.contentlocale: de-de
-ms.lasthandoff: 07/27/2017
+ms.lasthandoff: 08/17/2017
 
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>Optimieren der Abfrageleistung mit Azure Cosmos DB
@@ -153,7 +153,7 @@ Im Folgenden werden die gängigsten Faktoren vorgestellt, die sich auf die Abfra
 | Abfrageausführungsmetriken | Analysieren Sie die Abfrageausführungsmetriken, um potenzielle Änderungen an Abfrage- und Datenformen zu identifizieren.  |
 
 ### <a name="provisioned-throughput"></a>Bereitgestellter Durchsatz
-In Cosmos DB erstellen Sie Container für Daten, die jeweils mit einem reservierten Durchsatz, ausgedrückt in Anforderungseinheiten (RU) pro Sekunde und pro Minute, ausgestattet sind. Eine Lesevorgang von einem 1-KB-Dokument entspricht 1 RU, und jeder Vorgang (einschließlich Abfragen) wird basierend auf der jeweiligen Komplexität zu einer festen Anzahl von RUs normalisiert. Wenn Sie beispielsweise 1000 RU/s für Ihren Container bereitgestellt und eine Abfrage wie `SELECT * FROM c WHERE c.city = 'Seattle'` haben, für die 5 RUs erforderlich sind, können Sie solche Abfragen pro Sekunde gemäß folgender Formel ausführen: (1000 RU/s) / (5 RU/Abfrage) = 200 Abfragen/s. 
+In Cosmos DB erstellen Sie Container für Daten, die jeweils mit einem reservierten Durchsatz, ausgedrückt in Anforderungseinheiten (RU) pro Sekunde, ausgestattet sind. Eine Lesevorgang von einem 1-KB-Dokument entspricht 1 RU, und jeder Vorgang (einschließlich Abfragen) wird basierend auf der jeweiligen Komplexität zu einer festen Anzahl von RUs normalisiert. Wenn Sie beispielsweise 1000 RU/s für Ihren Container bereitgestellt und eine Abfrage wie `SELECT * FROM c WHERE c.city = 'Seattle'` haben, für die 5 RUs erforderlich sind, können Sie solche Abfragen pro Sekunde gemäß folgender Formel ausführen: (1000 RU/s) / (5 RU/Abfrage) = 200 Abfragen/s. 
 
 Wenn Sie mehr als 200 Abfragen/s übermitteln, beginnt der Dienst, die Rate eingehender Anforderungen bei über 200 Abfragen/s zu begrenzen. Die SDKs verarbeiten diesen Fall automatisch, indem Sie eine Wartezeit/Wiederholung ausführen. Daher werden Sie bei diesen Abfragen möglicherweise eine höhere Latenz feststellen. Durch Erhöhen des bereitgestellten Durchsatzes auf den erforderlichen Wert werden Latenz und Durchsatz Ihrer Abfragen verbessert. 
 
@@ -174,18 +174,73 @@ Weitere Informationen zur Partitionierung und zu Partitionsschlüsseln finden Si
 ### <a name="sdk-and-query-options"></a>SDK und Abfrageoptionen
 Unter [Leistungstipps](performance-tips.md) und [Leistungstests](performance-testing.md) finden Sie Informationen darüber, wie die ideale clientseitige Leistung von Azure Cosmos DB erzielt wird. Dies umfasst die Verwendung aktueller SDKs, die Konfiguration plattformspezifischer Konfigurationen wie die Standardanzahl von Verbindungen, die Häufigkeit von Garbage Collections und die Verwendung einfacher Konnektivitätsoptionen wie Direkt/TCP. 
 
-Optimieren Sie bei Abfragen `MaxBufferedItemCount` und `MaxDegreeOfParallelism`, um die besten Konfigurationen für Ihre Anwendung zu identifizieren, insbesondere, wenn Sie partitionsübergreifende Abfragen (ohne Filter für den Partitionsschlüsselwert) ausführen.
+
+#### <a name="max-item-count"></a>Maximale Elementanzahl
+Für Abfragen kann der Wert für `MaxItemCount` eine erhebliche Auswirkung auf die End-to-End-Abfragezeit haben. Bei jedem Roundtrip an den Server wird nur die in `MaxItemCount` angegebene Anzahl von Elementen zurückgegeben (Standardeinstellung: 100 Elemente). Wenn dies auf einen höheren Wert festgelegt wird (-1 ist der maximale und empfohlene Wert), wird die allgemeine Abfragedauer durch Einschränkung der Anzahl der Roundtrips zwischen Server und Client verbessert, vor allem bei Abfragen mit umfangreichen Resultsets.
+
+```cs
+IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
+    UriFactory.CreateDocumentCollectionUri(DatabaseName, CollectionName), 
+    "SELECT * FROM c WHERE c.city = 'Seattle'", 
+    new FeedOptions 
+    { 
+        MaxItemCount = -1, 
+    }).AsDocumentQuery();
+```
+
+#### <a name="max-degree-of-parallelism"></a>Maximaler Grad an Parallelität
+Optimieren Sie bei Abfragen `MaxDegreeOfParallelism`, um die besten Konfigurationen für Ihre Anwendung zu identifizieren, insbesondere, wenn Sie partitionsübergreifende Abfragen (ohne Filter für den Partitionsschlüsselwert) ausführen. `MaxDegreeOfParallelism` steuert die maximale Anzahl von parallelen Aufgaben, d.h. das Maximum von Partitionen, die parallel besucht werden. 
+
+```cs
+IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
+    UriFactory.CreateDocumentCollectionUri(DatabaseName, CollectionName), 
+    "SELECT * FROM c WHERE c.city = 'Seattle'", 
+    new FeedOptions 
+    { 
+        MaxDegreeOfParallelism = -1, 
+        EnableCrossPartitionQuery = true 
+    }).AsDocumentQuery();
+```
+
+Annahme:
+* D = Standardwert, maximale Anzahl paralleler Aufgaben (= Gesamtzahl der Prozessoren auf dem Clientcomputer)
+* P = Vom Benutzer angegebene maximale Anzahl paralleler Aufgaben
+* N = Anzahl der Partitionen, auf die zur Beantwortung einer Abfrage zugegriffen werden muss
+
+Es folgen die Auswirkungen auf das Verhalten der parallelen Abfragen bei unterschiedlichen Werten für P.
+* (P == 0) => serieller Modus
+* (P == 1) => maximal eine Aufgabe
+* (P > 1) => minimale Anzahl (P, N) paralleler Aufgaben 
+* (P < 1) => minimale Anzahl (N, D) paralleler Aufgaben
 
 SDK-Releasehinweise und Informationen zu implementierten Klassen und Methoden finden Sie unter [DocumentDB-SDKs](documentdb-sdk-dotnet.md).
 
 ### <a name="network-latency"></a>Netzwerklatenz
 Informationen zum Einrichten der globalen Verteilung und Herstellen einer Verbindung mit der nächstgelegenen Region finden Sie unter [Globale Azure Cosmos DB-Verteilung](tutorial-global-distribution-documentdb.md). Die Netzwerklatenz hat einen entscheidenden Einfluss auf die Abfrageleistung, wenn mehrere Roundtrips durchzuführen sind oder ein großes Resultset über die Abfrage abgerufen werden muss. 
 
+Im Abschnitt zu Abfrageausführungsmetriken wird erläutert, wie die Serverausführungszeit für Abfragen (`totalExecutionTimeInMs`) abgerufen wird, sodass Sie zwischen der für die Abfrageausführung aufgewendeten Zeit und der für die Netzwerkübertragung aufgewendeten Zeit unterscheiden können.
+
 ### <a name="indexing-policy"></a>Indizierungsrichtlinie
 Informationen zu Indizierungspfade, -arten und -modi sowie ihren Auswirkungen auf die Abfrageausführung finden Sie unter [Konfigurieren der Indizierungsrichtlinie](indexing-policies.md). Standardmäßig verwendet die Indizierungsrichtlinie Hashindizierung für Zeichenfolgen, was für Gleichheitsabfragen, jedoch nicht für Bereichsabfragen/Order by-Abfragen effizient ist. Wenn Sie Bereichsabfragen für Zeichenfolgen benötigen, wird empfohlen, den Bereichsindextyp für alle Zeichenfolgen anzugeben. 
 
 ## <a name="query-execution-metrics"></a>Abfrageausführungsmetriken
 Sie können ausführliche Metriken zur Abfrageausführung erhalten, indem Sie den optionalen `x-ms-documentdb-populatequerymetrics`-Header (`FeedOptions.PopulateQueryMetrics` im .NET SDK) übergeben. Der zurückgegebene Wert in `x-ms-documentdb-query-metrics` hat folgende Schlüssel/Wert-Paare, die für die erweiterte Problembehandlung bei der Ausführung einer Abfrage vorgesehen sind. 
+
+```cs
+IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
+    UriFactory.CreateDocumentCollectionUri(DatabaseName, CollectionName), 
+    "SELECT * FROM c WHERE c.city = 'Seattle'", 
+    new FeedOptions 
+    { 
+        PopulateQueryMetrics = true, 
+    }).AsDocumentQuery();
+
+FeedResponse<dynamic> result = await query.ExecuteNextAsync();
+
+// Returns metrics by partition key range Id
+IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
+
+```
 
 | Metrik | Einheit | Beschreibung | 
 | ------ | -----| ----------- |

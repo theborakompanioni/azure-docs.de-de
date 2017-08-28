@@ -2,7 +2,7 @@
 title: "Übersicht über die dynamische Paketerstellung mit Azure Media Services | Microsoft-Dokumentation"
 description: "In diesem Thema finden Sie eine Übersicht über die dynamische Paketerstellung."
 author: Juliako
-manager: SyntaxC4
+manager: cfowler
 editor: 
 services: media-services
 documentationcenter: 

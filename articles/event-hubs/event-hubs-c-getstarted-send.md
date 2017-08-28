@@ -12,35 +12,35 @@ ms.workload: na
 ms.tgt_pltfrm: c
 ms.devlang: csharp
 ms.topic: article
-ms.date: 05/03/2017
+ms.date: 08/15/2017
 ms.author: sethm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
-ms.openlocfilehash: e1aeb2708e829480b0e4a520f6f9ee08894bfaf9
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: a615ee39b6c3731cc7df366e9fabeed5219a71b4
 ms.contentlocale: de-de
-ms.lasthandoff: 05/04/2017
+ms.lasthandoff: 08/16/2017
 
 ---
 
 # <a name="send-events-to-azure-event-hubs-using-c"></a>Senden von Ereignissen an Azure Event Hubs mithilfe von C
 
 ## <a name="introduction"></a>Einführung
-Event Hubs sind ein hochgradig skalierbares Aufnahmesystem, das Millionen von Ereignissen pro Sekunde aufnehmen kann, wodurch eine Anwendung die Möglichkeit erhält, die von Ihren verbundenen Geräten und Anwendungen erzeugten immensen Datenmengen zu verarbeiten und zu analysieren. Nach der Erfassung in Event Hubs können Sie Daten über einen beliebigen Echtzeitanalyseanbieter oder ein Speichercluster transformieren und speichern.
+Event Hubs ist ein hochgradig skalierbares Erfassungssystem, das Millionen von Ereignissen pro Sekunde verarbeiten kann. Anwendungen erhalten dadurch die Möglichkeit, die von Ihren verbundenen Geräten und Anwendungen erzeugten immensen Datenmengen zu verarbeiten und zu analysieren. Nach der Erfassung in einem Event Hub können Sie Daten über einen beliebigen Echtzeitanalyseanbieter oder einen Speichercluster transformieren und speichern.
 
-Weitere Informationen finden Sie unter [Übersicht über Event Hubs][Event Hubs overview].
+Weitere Informationen zu Event Hubs finden Sie unter [Übersicht über Event Hubs][Übersicht über Event Hubs].
 
 In diesem Tutorial erfahren Sie, wie Sie mithilfe einer Konsolenanwendung in C Ereignisse an einen Event Hub senden. Klicken Sie zum Empfangen von Ereignissen links im Inhaltsverzeichnis auf die entsprechende Empfangssprache.
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
 * Eine C-Entwicklungsumgebung. In diesem Lernprogramm wird vom GCC-Stack auf einem virtuellen Linux-Computer mit Azure mit Ubuntu 14.04 ausgegangen.
-* Microsoft Visual Studio oder Visual Studio Community Edition
+* [Microsoft Visual Studio](https://www.visualstudio.com/).
 * Ein aktives Azure-Konto. Wenn Sie noch kein Konto haben, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Einzelheiten finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="send-messages-to-event-hubs"></a>Senden von Nachrichten an Ereignis-Hubs
-In diesem Abschnitt schreiben wir eine C-App, um Ereignisse an den Event Hub zu senden. Wir verwenden die Proton AMQP-Bibliothek aus dem [Apache Qpid-Projekt](http://qpid.apache.org/). Dies entspricht der Verwendung von Service Bus-Warteschlangen und -Themen mit AMQP aus C, wie [hier](https://code.msdn.microsoft.com/Using-Apache-Qpid-Proton-C-afd76504)beschrieben. Weitere Informationen finden Sie in der [Qpid Proton-Dokumentation](http://qpid.apache.org/proton/index.html).
+In diesem Abschnitt schreiben wir eine C-App, um Ereignisse an den Event Hub zu senden. Im Code wird die Proton AMQP-Bibliothek aus dem [Apache Qpid-Projekt](http://qpid.apache.org/) verwendet. Dies entspricht der Verwendung von Service Bus-Warteschlangen und -Themen mit AMQP aus C, wie [hier](https://code.msdn.microsoft.com/Using-Apache-Qpid-Proton-C-afd76504)beschrieben. Weitere Informationen finden Sie in der [Qpid Proton-Dokumentation](http://qpid.apache.org/proton/index.html).
 
-1. Klicken Sie auf der Seite [Qpid AMQP Messenger](http://qpid.apache.org/components/messenger/index.html) auf den Link **Installing Qpid Proton** (Installieren von Qpid Proton), und befolgen Sie die Anweisungen für Ihre Umgebung.
+1. Befolgen Sie auf der Seite [Qpid AMQP Messenger](https://qpid.apache.org/proton/messenger.html) die Anweisungen zum Installieren von Qpid Proton für Ihre Umgebung.
 2. Um die Proton-Bibliothek zu kompilieren, installieren Sie die folgenden Pakete:
    
     ```shell
@@ -61,7 +61,7 @@ In diesem Abschnitt schreiben wir eine C-App, um Ereignisse an den Event Hub zu 
     cmake -DCMAKE_INSTALL_PREFIX=/usr ..
     sudo make install
     ```
-5. Erstellen Sie in Ihrem Arbeitsverzeichnis eine Datei namens **sender.c** mit folgendem Inhalt. Vergessen Sie nicht, den Wert für den Namen des Event Hubs und den Namespacenamen (letzterer lautet i. d. R. `{event hub name}-ns`) zu ersetzen. Sie müssen auch eine URL-codierte Version des Schlüssels für das zuvor erstellte **SendRule**-Element eingeben. Die URL-Codierung können Sie [hier](http://www.w3schools.com/tags/ref_urlencode.asp) vornehmen.
+5. Erstellen Sie in Ihrem Arbeitsverzeichnis eine Datei namens **sender.c** mit folgendem Code. Vergessen Sie nicht, den Wert für den Namen des Event Hubs und den Namespacenamen zu ersetzen. Sie müssen auch eine URL-codierte Version des Schlüssels für das zuvor erstellte **SendRule**-Element eingeben. Die URL-Codierung können Sie [hier](http://www.w3schools.com/tags/ref_urlencode.asp) vornehmen.
    
     ```c
     #include "proton/message.h"
@@ -149,23 +149,18 @@ In diesem Abschnitt schreiben wir eine C-App, um Ereignisse an den Event Hub zu 
     ```
 
     > [!NOTE]
-    > In diesem Code verwenden wir ein Ausgabefenster von 1, um eine sofortige Ausgabe der Meldungen zu erzwingen. Im Allgemeinen sollten Anwendungen Nachrichten stapelweise ausgeben, um den Durchsatz zu erhöhen. Weitere Informationen zur Verwendung der Qpid Proton-Bibliothek in dieser und anderen Umgebungen und auf Plattformen, für die Bindungen bereitgestellt werden (derzeit Perl, PHP, Python und Ruby), finden Sie auf der Seite [Qpid AMQP Messenger](http://qpid.apache.org/components/messenger/index.html) (in englischer Sprache).
+    > In diesem Code verwenden wir ein Ausgabefenster von 1, um eine sofortige Ausgabe der Meldungen zu erzwingen. Im Allgemeinen sollten Anwendungen Nachrichten stapelweise ausgeben, um den Durchsatz zu erhöhen. Informationen zur Verwendung der Qpid Proton-Bibliothek in dieser und anderen Umgebungen und auf Plattformen, für die Bindungen bereitgestellt werden (derzeit Perl, PHP, Python und Ruby), finden Sie auf der Seite [Qpid AMQP Messenger](https://qpid.apache.org/proton/messenger.html).
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu Event Hubs finden Sie unter den folgenden Links:
 
-* [Übersicht über Event Hubs][Event Hubs overview]
+* [Übersicht über Event Hubs](event-hubs-what-is-event-hubs.md
+)
 * [Erstellen eines Event Hubs](event-hubs-create.md)
 * [Event Hubs – häufig gestellte Fragen](event-hubs-faq.md)
 
 <!-- Images. -->
 [21]: ./media/event-hubs-c-ephcs-getstarted/run-csharp-ephcs1.png
 [24]: ./media/event-hubs-c-ephcs-getstarted/receive-eph-c.png
-
-<!-- Links -->
-[Event Processor Host]: https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost
-[Event Hubs overview]: event-hubs-what-is-event-hubs.md
-[sample application that uses Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
-[Scale out Event Processing with Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
 

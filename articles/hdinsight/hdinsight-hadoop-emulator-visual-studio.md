@@ -13,25 +13,24 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/22/2017
+ms.date: 08/11/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
-ms.openlocfilehash: da8029f5cd69f3fd9d423c8e3ff22f2a7527f480
+ms.translationtype: HT
+ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
+ms.openlocfilehash: 574ccaa8b2d9448a60ddf8adc7f92fa3683b1d61
 ms.contentlocale: de-de
-ms.lasthandoff: 06/14/2017
-
+ms.lasthandoff: 08/15/2017
 
 ---
 # <a name="use-the-azure-data-lake-tools-for-visual-studio-with-the-hortonworks-sandbox"></a>Verwenden der Azure Data Lake-Tools für Visual Studio mit der Hortonworks Sandbox
 
-Azure Data Lake enthält Tools für die Verwendung von generischen Hadoop-Clustern sowie Tools für Data Lake und Azure HDInsight. Dieses Dokument enthält die erforderlichen Schritte zum Nutzen der Data Lake-Tools mit der Hortonworks Sandbox auf einem lokalen virtuellen Computer.
+Azure Data Lake umfasst Tools für die Verwendung von generischen Hadoop-Clustern. Dieses Dokument enthält die erforderlichen Schritte zum Verwenden der Data Lake-Tools mit der Hortonworks Sandbox auf einem lokalen virtuellen Computer.
 
 Mit der Hortonworks Sandbox können Sie Hadoop lokal in Ihrer Entwicklungsumgebung verwenden. Nachdem Sie eine Lösung entwickelt haben und diese bedarfsorientiert bereitstellen möchten, können Sie dann die Umstellung auf einen HDInsight-Cluster durchführen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Hortonworks Sandbox, die auf einem virtuellen Computer in Ihrer Entwicklungsumgebung ausgeführt wird. Dieses Dokument wurde mit Sandbox in Oracle VirtualBox geschrieben und getestet. Dies wurde anhand der Informationen in [Erste Schritte mit dem Hadoop-Ökosystem](hdinsight-hadoop-emulator-get-started.md) eingerichtet.
+* Hortonworks Sandbox, die auf einem virtuellen Computer in Ihrer Entwicklungsumgebung ausgeführt wird. Dieses Dokument wurde mit Sandbox in Oracle VirtualBox geschrieben und getestet. Das Dokument [Erste Schritte mit Hortonworks Sandbox](hdinsight-hadoop-emulator-get-started.md) enthält Informationen zum Einrichten von Sandbox.
 
 * Visual Studio 2013, Visual Studio 2015 oder Visual Studio 2017 (jede Edition)
 
@@ -41,7 +40,7 @@ Mit der Hortonworks Sandbox können Sie Hadoop lokal in Ihrer Entwicklungsumgebu
 
 ## <a name="configure-passwords-for-the-sandbox"></a>Konfigurieren von Kennwörtern für die Sandbox
 
-Stellen Sie sicher, dass Hortonworks Sandbox ausgeführt wird. Klicken Sie dann die Schritte in [erste Schritte mit den Hadoop-Ökosystem](hdinsight-hadoop-emulator-get-started.md#set-sandbox-passwords). Mit diesen Schritten konfigurieren Sie das Kennwort für das SSH-`root`-Konto und das Ambari-`admin`-Konto. Diese Kennwörter werden verwendet, wenn Sie aus Visual Studio eine Verbindung mit der Sandbox herstellen.
+Stellen Sie sicher, dass Hortonworks Sandbox ausgeführt wird. Führen Sie dann die Schritte im Dokument [Erste Schritte mit Hortonworks Sandbox](hdinsight-hadoop-emulator-get-started.md#set-sandbox-passwords) aus. Mit diesen Schritten konfigurieren Sie das Kennwort für das SSH-`root`-Konto und das Ambari-`admin`-Konto. Diese Kennwörter werden verwendet, wenn Sie aus Visual Studio eine Verbindung mit der Sandbox herstellen.
 
 ## <a name="connect-the-tools-to-the-sandbox"></a>Verbinden der Tools mit der Sandbox
 
@@ -80,19 +79,19 @@ Nach dem Ausführen dieser Schritte enthält der Server-Explorer im Abschnitt **
 
 ## <a name="write-a-hive-query"></a>Schreiben einer Hive-Abfrage
 
-Hive stellt eine SQL-ähnliche Abfragesprache (HiveQL) für die Arbeit mit strukturierten Daten bereit. Führen Sie die folgenden Schritte aus, um zu erfahren, wie Sie Ad-hoc-Abfragen für den lokalen Cluster ausführen.
+Hive stellt eine SQL-ähnliche Abfragesprache (HiveQL) für die Arbeit mit strukturierten Daten bereit. Führen Sie die folgenden Schritte aus, um zu erfahren, wie Sie bedarfsgesteuerte Abfragen für den lokalen Cluster ausführen.
 
 1. Klicken Sie im **Server-Explorer** mit der rechten Maustaste auf den Eintrag für den lokalen Cluster, den Sie zuvor hinzugefügt haben, und klicken Sie dann auf die Option **Hive-Abfrage schreiben**.
 
     ![Screenshot des Server-Explorers mit hervorgehobenem „Hive-Abfrage stellen“](./media/hdinsight-hadoop-emulator-visual-studio/write-hive-query.png)
 
-    Ein neues Abfragefenster wird geöffnet, in dem Sie eine Abfrage schnell schreiben und an den lokalen Cluster senden können.
+    Ein neues Abfragefenster wird angezeigt. Hier können Sie schnell eine Abfrage schreiben und an den lokalen Cluster senden.
 
 2. Geben Sie im neuen Abfragefenster den folgenden Befehl ein:
 
         select count(*) from sample_08;
 
-    Stellen Sie oben im Abfragefenster sicher, dass die Konfiguration für den lokalen Cluster ausgewählt ist, und klicken Sie anschließend auf **Übermitteln**. Behalten Sie für die anderen Werte (**Batch** und Servername) die Standardwerte bei.
+    Wählen Sie zum Ausführen der Abfrage oben im Fenster die Option **Übermitteln** aus. Behalten Sie für die anderen Werte (**Batch** und Servername) die Standardwerte bei.
 
     ![Screenshot des Abfragefenster mit der hervorgehobenen Schaltfläche „Absenden“](./media/hdinsight-hadoop-emulator-visual-studio/submit-hive.png)
 
@@ -124,7 +123,7 @@ Hive stellt eine SQL-ähnliche Abfragesprache (HiveQL) für die Arbeit mit struk
 
 ## <a name="create-a-hive-project"></a>Erstellen eines Hive-Projekts
 
-Sie können auch ein Projekt erstellen, das mehrere Hive-Skripts enthält. Ein Projekt ist hilfreich, wenn Sie über verwandte Skripts verfügen, die zusammenbleiben oder die Sie mit einem Versionskontrollsystem verwalten müssen.
+Sie können auch ein Projekt erstellen, das mehrere Hive-Skripts enthält. Verwenden Sie ein Projekt, wenn Sie über verwandte Skripts verfügen oder Skripts in einem Versionskontrollsystem verwalten möchten.
 
 1. Wählen Sie in Visual Studio die Option **Datei**, **Neu** und dann **Projekt**.
 
@@ -132,7 +131,7 @@ Sie können auch ein Projekt erstellen, das mehrere Hive-Skripts enthält. Ein P
 
     ![Screenshot des Fensters „Neues Projekt“ mit hervorgehobenem Azure Data Lake, HIVE, Hive-Beispiel und OK](./media/hdinsight-hadoop-emulator-visual-studio/new-hive-project.png)
 
-Das Projekt **Hive-Beispiel** enthält zwei Skripts: **WebLogAnalysis.hql** und **SensorDataAnalysis.hql**. Sie können diese Skripts absenden, indem Sie oben im Fenster jeweils die Schaltfläche **Übermitteln** verwenden.
+Das Projekt **Hive-Beispiel** enthält zwei Skripts: **WebLogAnalysis.hql** und **SensorDataAnalysis.hql**. Sie können diese Skripts senden, indem Sie oben im Fenster jeweils die Schaltfläche **Übermitteln** verwenden.
 
 ## <a name="create-a-pig-project"></a>Erstellen eines Pig-Projekts
 
@@ -191,7 +190,7 @@ Mit Data Lake-Tools können Sie leicht Informationen zu Aufträgen anzeigen, die
 
 ### <a name="database-and-table-properties"></a>Datenbank- und Tabelleneigenschaften
 
-Sie können die Eigenschaften einer Datenbank oder Tabelle anzeigen. Die Auswahl von **Eigenschaften** zeigt Details für das ausgewählte Element im Fenster „Eigenschaften“ an. Schauen Sie sich beispielsweise die Informationen im folgenden Screenshot an.
+Sie können die Eigenschaften einer Datenbank oder Tabelle anzeigen. Die Auswahl von **Eigenschaften** zeigt Details für das ausgewählte Element im Fenster „Eigenschaften“ an. Sehen Sie sich beispielsweise die Informationen im folgenden Screenshot an:
 
 ![Screenshot des Eigenschaftenfensters](./media/hdinsight-hadoop-emulator-visual-studio/properties.png)
 

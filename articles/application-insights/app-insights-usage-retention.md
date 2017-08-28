@@ -11,22 +11,22 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
 ms.date: 05/03/2017
-ms.author: cfreeman
+ms.author: bwren
 ms.translationtype: HT
-ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
-ms.openlocfilehash: 75abfb977a47ccef45bcc2124b31fbd06ea7d68e
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: 2363e725d44facc5417c0baf3f80c8b55fdca470
 ms.contentlocale: de-de
-ms.lasthandoff: 08/09/2017
+ms.lasthandoff: 08/17/2017
 
 ---
 
 # <a name="user-retention-analysis-for-web-applications-with-application-insights"></a>Benutzerbindungsanalyse für Webanwendungen mit Azure Application Insights
 
-Das Blatt „Vermerkdauer“ in [Azure Application Insights](app-insights-overview.md) hilft Ihnen beim Analysieren, wie viele Benutzer zu Ihrer App zurückkehren und wie oft sie bestimmte Aufgaben durchführen oder Ziele erreichen. Beispiel: Wenn Sie eine Spielewebsite betreiben, können Sie die Anzahl der Benutzer, die nach einem verlorenen Spiel zurückkehren, mit der Anzahl vergleichen, die nach einem gewonnenen Spiel zurückkehren. Mit diesem Wissen können Sie sowohl die Benutzererfahrung als auch Ihre Geschäftsstrategie verbessern.
+Mithilfe des Vermerkdauer-Features in [Azure Application Insights](app-insights-overview.md) können Sie analysieren, wie viele Benutzer zu Ihrer App zurückkehren und wie oft sie bestimmte Aufgaben durchführen oder Ziele erreichen. Beispiel: Wenn Sie eine Spielewebsite betreiben, können Sie die Anzahl der Benutzer, die nach einem verlorenen Spiel zurückkehren, mit der Anzahl vergleichen, die nach einem gewonnenen Spiel zurückkehren. Mit diesem Wissen können Sie sowohl die Benutzererfahrung als auch Ihre Geschäftsstrategie verbessern.
 
 ## <a name="get-started"></a>Erste Schritte
 
-Wenn Sie im Application Insights-Portal auf dem Blatt „Vermerkdauer“ noch keine Daten sehen, [erfahren Sie mehr zum Einstieg in die Nutzungstools](app-insights-usage-overview.md).
+Wenn im Vermerkdauer-Tool des Application Insights-Portals noch keine Daten zu sehen sind, informieren Sie sich [hier](app-insights-usage-overview.md) über die ersten Schritte mit den Nutzungstools.
 
 ## <a name="the-retention-tool"></a>Das Vermerkdauer-Tool
 
@@ -39,6 +39,9 @@ Wenn Sie im Application Insights-Portal auf dem Blatt „Vermerkdauer“ noch ke
 5. Das Raster gibt die Anzahl der Benutzer an, die gemäß dem Abfrage-Generator in Punkt 2 vermerkt wurden. Jede Zeile stellt eine Kohorte von Benutzern dar, die ein Ereignis während des angezeigten Zeitraums ausgeführt haben. Jede Zelle in der Zeile zeigt an, wie viele Benutzer dieser Kohorte mindestens einmal in einem späteren Zeitraum zurückgekehrt sind. Einige Benutzer kehren möglicherweise in mehreren Zeiträumen zurück. 
 6. Die Application Insights-Karten zeigen die fünf wichtigsten Initiierungsereignisse sowie die fünf wichtigsten zurückgegebenen Ereignisse an, um Benutzern einen besseren Überblick über ihren Bericht zur Vermerkdauer zu verschaffen. 
 
+![Zeigen auf die Vermerkdauer](./media/app-insights-usage-retention/hover.png)
+
+Benutzer können auf die Zellen im Vermerkdauer-Tool zeigen, um auf die Analyseschaltfläche zuzugreifen und QuickInfos zur Bedeutung der Zelle zu erhalten. Über die Analyseschaltfläche gelangen Benutzer zum Analysetool, in dem bereits eine Abfrage zur Generierung von Benutzern auf der Grundlage der Zelle angegeben ist. 
 
 ## <a name="use-business-events-to-track-retention"></a>Nachverfolgen der Vermerkdauer mithilfe von Geschäftsereignissen
 
@@ -66,6 +69,9 @@ Oder im ASP.NET-Servercode:
 - Wenn Sie bereits benutzerdefinierte Ereignisse oder Seitenansichten senden, finden Sie mithilfe der Nutzungstools heraus, wie Benutzer den Dienst verwenden.
     - [Benutzer, Sitzungen, Ereignisse](app-insights-usage-segmentation.md)
     - [Trichter](usage-funnels.md)
+    - [Benutzerabläufe](app-insights-usage-flows.md)
     - [Arbeitsmappen](app-insights-usage-workbooks.md)
     - [Hinzufügen von Benutzerkontext](app-insights-usage-send-user-context.md)
+
+
 

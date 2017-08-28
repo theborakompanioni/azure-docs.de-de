@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 07/17/2017
 ms.author: abnarain
 ms.translationtype: HT
-ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
-ms.openlocfilehash: ed62e35930b64919f4be0f3491f4eda995b81e7f
+ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
+ms.openlocfilehash: b6bf353a2bad28b0db3a88e971e5c6b209b7ab2b
 ms.contentlocale: de-de
 ms.lasthandoff: 08/10/2017
 
@@ -24,7 +24,9 @@ ms.lasthandoff: 08/10/2017
 Dieser Artikel enthält hilfreiche Informationen zum Konfigurieren einer Lösung für hohe Verfügbarkeit und Skalierbarkeit mit dem Datenverwaltungsgateway.    
 
 > [!NOTE]
-> In diesem Artikel wird davon ausgegangen, dass Sie bereits mit den Grundlagen des Datenverwaltungsgateways vertraut sind. Falls nicht, helfen Ihnen die Informationen unter [Datenverwaltungsgateway](data-factory-data-management-gateway.md) weiter.  
+> In diesem Artikel wird davon ausgegangen, dass Sie bereits mit den Grundlagen des Datenverwaltungsgateways vertraut sind. Falls nicht, helfen Ihnen die Informationen unter [Datenverwaltungsgateway](data-factory-data-management-gateway.md) weiter.
+
+>**Dieses Vorschaufeature wird offiziell in Datenverwaltungsgateway Version 2.12.xxxx.x und höher unterstützt**. Stellen Sie sicher, dass Sie Version 2.12.xxxx.x oder höher verwenden. Laden Sie die aktuelle Version von Datenverwaltungsgateway [hier](https://www.microsoft.com/download/details.aspx?id=39717) herunter.
 
 ## <a name="overview"></a>Übersicht
 Sie können Datenverwaltungsgateways, die auf mehreren lokalen Computern installiert sind, einem einzelnen logischen Gateway über das Portal zuordnen. Diese Computer werden als **Knoten** bezeichnet. Sie können bis zu **vier Knoten** verwenden, die einem logischen Gateway zugeordnet sind. Die Vorteile der Nutzung mehrerer Knoten (lokale Computer mit installiertem Gateway) für ein logisches Gateway sind:  
@@ -125,7 +127,7 @@ In diesem Abschnitt wird davon ausgegangen, dass Sie die beiden folgenden Artike
 11. Klicken Sie zum Löschen eines Gatewayknotens in der Symbolleiste auf **Knoten löschen**, wählen Sie den zu löschenden Knoten aus, und klicken Sie dann in der Symbolleiste auf **Löschen**. Mit dieser Aktion wird der ausgewählte Knoten aus der Gruppe gelöscht. Beachten Sie Folgendes: Mit dieser Aktion wird die Datenverwaltungsgateway-Software nicht vom Knoten (lokaler Windows-Computer) deinstalliert. Verwenden Sie auf dem lokalen Computer in der Systemsteuerung die Option **Programme hinzufügen oder entfernen**, um das Gateway zu deinstallieren. Wenn Sie das Gateway vom Knoten deinstallieren, wird es im Portal automatisch gelöscht.   
 
 ## <a name="upgrade-an-existing-gateway"></a>Aktualisieren eines vorhandenen Gateways
-Sie können ein vorhandenes Gateway aktualisieren, um das Feature für hohe Verfügbarkeit und Skalierbarkeit zu verwenden. Dieses Feature funktioniert nur mit Knoten, die über das Datenverwaltungsgateway der Version >= 2.9.xxxx verfügen. Im Datenverwaltungsgateway-Konfigurations-Manager auf der Registerkarte **Hilfe** wird die Version des Datenverwaltungsgateways angezeigt, die auf einem Computer installiert ist. 
+Sie können ein vorhandenes Gateway aktualisieren, um das Feature für hohe Verfügbarkeit und Skalierbarkeit zu verwenden. Dieses Feature funktioniert nur mit Knoten, die über das Datenverwaltungsgateway der Version >= 2.12.xxxx verfügen. Im Datenverwaltungsgateway-Konfigurations-Manager auf der Registerkarte **Hilfe** wird die Version des Datenverwaltungsgateways angezeigt, die auf einem Computer installiert ist. 
 
 1. Aktualisieren Sie das Gateway auf dem lokalen Computer auf die aktuelle Version, indem Sie über das [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=39717) ein MSI-Setuppaket herunterladen und ausführen. Der Abschnitt [Installation](data-factory-data-management-gateway.md#installation) enthält entsprechende Details hierzu.  
 2. Navigieren Sie zum Azure-Portal. Starten Sie die **Data Factory-Seite** für Ihre Data Factory. Klicken Sie auf die Kachel „Verknüpfte Dienste“, um die **Seite „Verknüpfte Dienste“** zu starten. Wählen Sie das Gateway, um die **Seite „Gateway“** zu starten. Klicken Sie wie hier gezeigt auf **Vorschaufeature**, und aktivieren Sie die Option: 
@@ -247,3 +249,4 @@ Klicken Sie nach dem Löschen auf derselben Seite des Azure-Portals auf **Vorsch
 Lesen Sie die folgenden Artikel:
 - [Datenverwaltungsgateway](data-factory-data-management-gateway.md): Liefert eine ausführliche Übersicht über das Gateway.
 - [Verschieben von Daten zwischen lokalen Quellen und der Cloud mit dem Datenverwaltungsgateway](data-factory-move-data-between-onprem-and-cloud.md): Enthält eine exemplarische Vorgehensweise mit einer Schritt-für-Schritt-Anleitung für die Verwendung eines Gateways mit einem einzelnen Knoten. 
+

@@ -1,10 +1,10 @@
 ---
-title: "Übersicht über die Media Services Operations-REST-API | Microsoft Docs"
+title: "Übersicht über die Media Services Operations-REST-API | Microsoft-Dokumentation"
 description: "Übersicht über die Media Services-REST-API"
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: a5f1c5e7-ec52-4e26-9a44-d9ea699f68d9
 ms.service: media-services
@@ -12,12 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 11/29/2016
+ms.date: 08/10/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 8b6e19e3c495eec4e16187524df0b13e4ffce9de
-
+ms.translationtype: HT
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: a874bc48cc94fff32382ccdb832f0fbd3d08e03f
+ms.contentlocale: de-de
+ms.lasthandoff: 08/12/2017
 
 ---
 # <a name="media-services-operations-rest-api-overview"></a>Übersicht über die Media Services Operations-REST-API
@@ -27,6 +28,7 @@ Die **Media Services Operations-REST-API** wird zum Erstellen von Aufträgen, Me
 
 Microsoft Azure Media Services ist ein Dienst, der OData-basierte HTTP-Anforderungen akzeptiert und mit ausführlichem JSON- oder atom+pub-Code darauf antworten kann. Da Media Services mit den Azure-Entwicklungsrichtlinien konform ist, muss jeder Client bei der Verbindung mit Media Services eine Reihe obligatorischer HTTP-Header verwenden. Darüber hinaus stehen verschiedene optionale Header zur Verfügung. In den folgenden Abschnitten werden die Header und HTTP-Verben beschrieben, die Sie verwenden können, um Anforderungen zu erstellen und Antworten von Media Services zu empfangen.
 
+Dieses Thema bietet einen Überblick über die Verwendung von REST v2 mit Media Services.
 
 ## <a name="considerations"></a>Überlegungen
 
@@ -101,23 +103,23 @@ Im Folgenden finden eine vollständige Liste der HTTP-Verben, die für HTTP-Anfo
 | MERGE |Aktualisiert ein vorhandenes Objekt anhand von Änderungen der benannten Eigenschaft. |
 | HEAD |Gibt die Metadaten eines Objekts für eine GET-Antwort zurück. |
 
-## <a name="limitation"></a>Einschränkung
-Beim Abfragen von Entitäten gibt es ein Limit von 1.000 Entitäten, die gleichzeitig zurückgegeben werden können, da die öffentliche REST-Version 2 Abfrageergebnisse auf 1.000 Ergebnisse begrenzt. Sie müssen **Skip** und **Take** (.NET) bzw. **top** (REST) wie in [diesem .NET-Beispiel](media-services-dotnet-manage-entities.md#enumerating-through-large-collections-of-entities) und diesem [REST-API-Beispiel](media-services-rest-manage-entities.md#enumerating-through-large-collections-of-entities) beschrieben verwenden. 
-
-## <a name="discovering-media-services-model"></a>Ermitteln des Media Services-Modells
+## <a name="discover-media-services-model"></a>Ermitteln des Media Services-Modells
 Um Media Services-Entitäten schnell aufzufinden, können Sie den $metadata-Vorgang verwenden. Dadurch können Sie alle gültigen Entitätstypen, Entitätseigenschaften, Zuordnungen, Funktionen, Aktionen usw. abrufen. Im folgenden Beispiel wird gezeigt, wie Sie den URI „https://media.windows.net/API/$metadata“ erstellen.
 
 Sie sollten "?api-version=2.x" an das Ende des URIs anhängen, wenn Sie die Metadaten in einem Browser anzeigen möchten. Andernfalls sollte der x-ms-version-Header nicht in die Anforderung eingeschlossen werden.
+
+## <a name="connect-to-media-services"></a>Verbinden mit Mediendiensten
+
+Informationen zum Herstellen einer Verbindung mit der AMS-API finden Sie unter [Zugreifen auf die Azure Media Services-API per Azure AD-Authentifizierung](media-services-use-aad-auth-to-access-ams-api.md). Nach der erfolgreichen Verbindung mit „https://media.windows.net“ erhalten Sie eine 301 Redirect-Antwort, in der ein anderer Media Services-URI angegeben ist. Nachfolgende Aufrufe müssen an den neuen URI gesendet werden.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Wie Sie mit REST auf AMS APIs zugreifen, erfahren Sie unter [Use Azure AD authentication to access the Azure Media Services API with .NET (Zugreifen auf die Azure Media Services-API mit .NET mithilfe der Azure AD-Authentifizierung)](media-services-rest-connect-with-aad.md).
 
 ## <a name="media-services-learning-paths"></a>Media Services-Lernpfade
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

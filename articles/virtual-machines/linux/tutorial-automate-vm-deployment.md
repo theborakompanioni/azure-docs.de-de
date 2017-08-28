@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/02/2017
+ms.date: 08/11/2017
 ms.author: iainfou
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
-ms.openlocfilehash: c148ca2a2a098f5f0c4ff94846c318b59b4864f4
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: 6adf4e43aa80c28c6f5f8d8a071966323ba85723
 ms.contentlocale: de-de
-ms.lasthandoff: 08/09/2017
+ms.lasthandoff: 08/12/2017
 
 ---
 
@@ -44,20 +44,21 @@ Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für die
 ## <a name="cloud-init-overview"></a>Übersicht zu cloud-init
 [Cloud-init](https://cloudinit.readthedocs.io) ist ein weit verbreiteter Ansatz zum Anpassen einer Linux-VM beim ersten Start. Sie können mit cloud-init Pakete installieren und Dateien schreiben oder Benutzer und Sicherheit konfigurieren. Da cloud-init während des ersten Startvorgangs ausgeführt wird, müssen Sie keine zusätzlichen Schritte oder erforderlichen Agents auf Ihre Konfiguration anwenden.
 
-Cloud-init funktioniert auch Distributionen übergreifend. Verwenden Sie z.B. nicht **apt-get install** oder **yum install**, um ein Paket zu installieren. Stattdessen können Sie eine Liste der zu installierenden Pakete definieren, und cloud-init verwendet automatisch das native Paketverwaltungstool für die Distribution, die Sie auswählen.
+Cloud-init funktioniert auch Distributionen übergreifend. Verwenden Sie z.B. nicht **apt-get install** oder **yum install**, um ein Paket zu installieren. Stattdessen können Sie eine Liste mit zu installierenden Paketen definieren. „cloud-init“ verwendet automatisch das native Paketverwaltungstool für die ausgewählte Distribution.
 
 Wir arbeiten mit unseren Partnern zusammen, damit cloud-init einbezogen wird und in den Images arbeitet, die sie in Azure bereitstellen. In der folgenden Tabelle ist die aktuelle cloud-init-Verfügbarkeit für Azure-Plattformimages aufgeführt:
 
 | Alias | Herausgeber | Angebot | SKU | Version |
 |:--- |:--- |:--- |:--- |:--- |:--- |
-| UbuntuLTS |Canonical |UbuntuServer |14.04.4-LTS |neueste |
+| UbuntuLTS |Canonical |UbuntuServer |16.04-LTS |neueste |
+| UbuntuLTS |Canonical |UbuntuServer |14.04.5-LTS |neueste |
 | CoreOS |CoreOS |CoreOS |Stable |neueste |
 
 
 ## <a name="create-cloud-init-config-file"></a>Erstellen der Konfigurationsdatei „cloud-init.txt“
 Um cloud-init in Aktion zu sehen, erstellen Sie einen virtuellen Computer, der NGINX installiert und eine einfache „Hello World“-Node.js-App ausführt. Die folgende cloud-init-Konfiguration installiert die erforderlichen Pakete, erstellt eine Node.js-App und initialisiert und startet dann die Anwendung.
 
-Erstellen Sie eine Datei namens *cloud-init.txt*, und fügen Sie die folgende Konfiguration ein:
+Erstellen Sie in der aktuellen Shell eine Datei namens *cloud-init.txt*, und fügen Sie die folgende Konfiguration ein. Erstellen Sie die Datei beispielsweise in Cloud Shell, nicht auf dem lokalen Computer. Dazu können Sie einen beliebigen Editor verwenden. Geben Sie `sensible-editor cloud-init.txt` ein, um die Datei zu erstellen und eine Liste der verfügbaren Editoren anzuzeigen. Stellen Sie sicher, dass die gesamte Datei „cloud-init“ ordnungsgemäß kopiert wird, insbesondere die erste Zeile:
 
 ```yaml
 #cloud-config
@@ -116,13 +117,13 @@ Jetzt können Sie mit [az vm create](/cli/azure/vm#create) einen virtuellen Comp
 az vm create \
     --resource-group myResourceGroupAutomate \
     --name myVM \
-    --image Canonical:UbuntuServer:14.04.4-LTS:latest \
+    --image UbuntuLTS \
     --admin-username azureuser \
     --generate-ssh-keys \
     --custom-data cloud-init.txt
 ```
 
-Es dauert einige Minuten, den virtuellen Computer zu erstellen, die Pakete zu installieren und die App zu starten. Sobald der virtuelle Computer erstellt ist, notieren Sie die `publicIpAddress`, die von der Azure-CLI angezeigt wird. Diese Adresse wird verwendet, um über einen Webbrowser auf die Node.js-App zuzugreifen.
+Es dauert einige Minuten, den virtuellen Computer zu erstellen, die Pakete zu installieren und die App zu starten. Es gibt Hintergrundaufgaben, die weiterhin ausgeführt werden, wenn Ihnen von der Azure-Befehlszeilenschnittstelle wieder eine Eingabeaufforderung angezeigt wird. Unter Umständen dauert es einige Minuten, bis Sie auf die App zugreifen können. Sobald der virtuelle Computer erstellt ist, notieren Sie die `publicIpAddress`, die von der Azure-CLI angezeigt wird. Diese Adresse wird verwendet, um über einen Webbrowser auf die Node.js-App zuzugreifen.
 
 Damit Webdatenverkehr Ihren virtuellen Computer erreicht, öffnen Sie Port 80 über das Internet mit [az vm open-port](/cli/azure/vm#open-port):
 
@@ -149,10 +150,10 @@ Die folgenden Schritte zeigen Ihnen, wie Sie Folgendes durchführen können:
 - Erstellen eines virtuellen Computers und Einfügen des Zertifikats
 
 ### <a name="create-an-azure-key-vault"></a>Erstellen einer Azure Key Vault-Instanz
-Erstellen Sie zunächst eine Key Vault-Instanz mit [az keyvault create](/cli/azure/keyvault#create), und aktivieren Sie sie für die Verwendung, wenn Sie einen virtuellen Computer bereitstellen. Jede Key Vault-Instanz benötigt einen eindeutigen Namen, der nur aus Kleinbuchstaben besteht. Ersetzen Sie *<mykeyvault>* im folgenden Beispiel durch Ihren eigenen eindeutigen Key Vault-Namen:
+Erstellen Sie zunächst eine Key Vault-Instanz mit [az keyvault create](/cli/azure/keyvault#create), und aktivieren Sie sie für die Verwendung, wenn Sie einen virtuellen Computer bereitstellen. Jede Key Vault-Instanz benötigt einen eindeutigen Namen, der nur aus Kleinbuchstaben besteht. Ersetzen Sie *mykeyvault* im folgenden Beispiel durch Ihren eigenen eindeutigen Key Vault-Namen:
 
 ```azurecli-interactive 
-keyvault_name=<mykeyvault>
+keyvault_name=mykeyvault
 az keyvault create \
     --resource-group myResourceGroupAutomate \
     --name $keyvault_name \
@@ -171,7 +172,7 @@ az keyvault certificate create \
 
 
 ### <a name="prepare-certificate-for-use-with-vm"></a>Vorbereiten des Zertifikats für die Verwendung mit der VM
-Um das Zertifikat während der Erstellung des virtuellen Computers zu verwenden, rufen Sie die ID des Zertifikats mit [az keyvault secret list-versions](/cli/azure/keyvault/secret#list-versions) ab. Konvertieren Sie das Zertifikat mit [az vm format-secret](/cli/azure/vm#format-secret). Im folgenden Beispiel wird die Ausgabe dieser Befehle Variablen zugewiesen, um die Verwendung in den nächsten Schritten zu vereinfachen:
+Um das Zertifikat während der Erstellung des virtuellen Computers zu verwenden, rufen Sie die ID des Zertifikats mit [az keyvault secret list-versions](/cli/azure/keyvault/secret#list-versions) ab. Das Zertifikat muss in einem bestimmten Format vorliegen, um es beim Systemstart verwenden zu können. Wandeln Sie es daher mit [az vm format-secret](/cli/azure/vm#format-secret) um. Im folgenden Beispiel wird die Ausgabe dieser Befehle Variablen zugewiesen, um die Verwendung in den nächsten Schritten zu vereinfachen:
 
 ```azurecli-interactive 
 secret=$(az keyvault secret list-versions \
@@ -183,9 +184,9 @@ vm_secret=$(az vm format-secret --secret "$secret")
 
 
 ### <a name="create-cloud-init-config-to-secure-nginx"></a>Erstellen der cloud-init-Konfiguration zum Sichern von NGINX
-Wenn Sie einen virtuellen Computer erstellen, werden Zertifikate und Schlüssel im geschützten Verzeichnis */var/lib/waagent/* gespeichert. Um das Hinzufügen des Zertifikats zum virtuellen Computer und Konfigurieren von NGINX zu automatisieren, können Sie auf die cloud-init-Konfigurationsdatei aus dem vorherigen Beispiel zurückgreifen.
+Wenn Sie einen virtuellen Computer erstellen, werden Zertifikate und Schlüssel im geschützten Verzeichnis */var/lib/waagent/* gespeichert. Um das Hinzufügen des Zertifikats zum virtuellen Computer und Konfigurieren von NGINX zu automatisieren, können Sie eine aktualisierte cloud-init-Konfiguration aus dem vorherigen Beispiel verwenden.
 
-Erstellen Sie eine Datei namens *cloud-init-secured.txt*, und fügen Sie die folgende Konfiguration ein:
+Erstellen Sie eine Datei namens *cloud-init-secured.txt*, und fügen Sie die folgende Konfiguration ein. Erstellen Sie bei Verwendung der Cloud Shell die cloud-init-Konfigurationsdatei nicht auf Ihrem lokalen Computer, sondern über die Cloud Shell. Verwenden Sie `sensible-editor cloud-init-secured.txt`, um die Datei zu erstellen und eine Liste mit verfügbaren Editoren anzuzeigen. Stellen Sie sicher, dass die gesamte Datei „cloud-init“ ordnungsgemäß kopiert wird, insbesondere die erste Zeile:
 
 ```yaml
 #cloud-config
@@ -243,14 +244,14 @@ Jetzt können Sie mit [az vm create](/cli/azure/vm#create) einen virtuellen Comp
 az vm create \
     --resource-group myResourceGroupAutomate \
     --name myVMSecured \
-    --image Canonical:UbuntuServer:14.04.4-LTS:latest \
+    --image UbuntuLTS \
     --admin-username azureuser \
     --generate-ssh-keys \
     --custom-data cloud-init-secured.txt \
     --secrets "$vm_secret"
 ```
 
-Es dauert einige Minuten, den virtuellen Computer zu erstellen, die Pakete zu installieren und die App zu starten. Sobald der virtuelle Computer erstellt ist, notieren Sie die `publicIpAddress`, die von der Azure-CLI angezeigt wird. Diese Adresse wird verwendet, um über einen Webbrowser auf die Node.js-App zuzugreifen.
+Es dauert einige Minuten, den virtuellen Computer zu erstellen, die Pakete zu installieren und die App zu starten. Es gibt Hintergrundaufgaben, die weiterhin ausgeführt werden, wenn Ihnen von der Azure-Befehlszeilenschnittstelle wieder eine Eingabeaufforderung angezeigt wird. Unter Umständen dauert es einige Minuten, bis Sie auf die App zugreifen können. Sobald der virtuelle Computer erstellt ist, notieren Sie die `publicIpAddress`, die von der Azure-CLI angezeigt wird. Diese Adresse wird verwendet, um über einen Webbrowser auf die Node.js-App zuzugreifen.
 
 Damit sicherer Webdatenverkehr Ihren virtuellen Computer erreicht, öffnen Sie Port 443 über das Internet mit [az vm open-port](/cli/azure/vm#open-port):
 

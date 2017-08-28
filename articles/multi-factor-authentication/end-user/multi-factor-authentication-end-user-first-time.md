@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 05/15/2017
 ms.author: kgremban
 ms.custom: end-user
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
-ms.openlocfilehash: 58ddf3913a5d00ee9a89a1fa112f3d55d9a815ed
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: b05672744dadb15f2780af100f3dd41412e55265
 ms.contentlocale: de-de
-ms.lasthandoff: 05/25/2017
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="set-up-my-account-for-two-step-verification"></a>Einrichten meines Kontos für die Überprüfung in zwei Schritten
@@ -44,12 +44,12 @@ Die erste Frage bei der Registrierung betrifft die Methode, mit der wir Kontakt 
 
 | Kontaktmethode | Beschreibung |
 | --- | --- |
-| [Mobile App](#use-a-mobile-app-as-the-contact-method) |- **Benachrichtigungen zur Überprüfung empfangen** Mit dieser Option wird eine Benachrichtigung an die Authenticator-App auf Ihrem Smartphone oder Tablet gesendet. Überprüfen Sie die Benachrichtigung, und wählen Sie in der App **Authentifizieren** aus, wenn Sie den Zugriff zulassen möchten. Ihr Unternehmen oder Ihre Bildungseinrichtung erfordert möglicherweise die Eingabe einer PIN, bevor Sie sich authentifizieren.<br>- **Überprüfungscode verwenden** In diesem Modus generiert die Authenticator-App einen Überprüfungscode, der alle 30 Sekunden aktualisiert wird. Geben Sie im Anmeldungsfenster den aktuellen Überprüfungscode ein.<br>Die Microsoft Authenticator-App ist für [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071), [Android](http://go.microsoft.com/fwlink/?Linkid=825072) und [IOS](http://go.microsoft.com/fwlink/?Linkid=825073) verfügbar. |
+| [Mobile App](#use-a-mobile-app-as-the-contact-method) |- **Benachrichtigungen zur Überprüfung empfangen** Mit dieser Option wird eine Benachrichtigung an die Authenticator-App auf Ihrem Smartphone oder Tablet gesendet. Überprüfen Sie die Benachrichtigung, und wählen Sie in der App **Authentifizieren** aus, wenn Sie den Zugriff zulassen möchten. Ihr Unternehmen oder Ihre Bildungseinrichtung erfordert möglicherweise die Eingabe einer PIN, bevor Sie sich authentifizieren.<br>- **Überprüfungscode verwenden** In diesem Modus generiert die Authenticator-App einen Überprüfungscode, der alle 30 Sekunden aktualisiert wird. Geben Sie im Anmeldungsfenster den aktuellen Überprüfungscode ein.<br>Die Microsoft Authenticator-App ist für [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071), [Android](http://go.microsoft.com/fwlink/?Linkid=825072) und [iOS](http://go.microsoft.com/fwlink/?Linkid=825073) verfügbar. |
 | [Anruf beim Mobiltelefon oder Senden einer SMS](#use-your-mobile-phone-as-the-contact-method) |- **Telefonanruf**: Das Telefon mit der von Ihnen angegebenen Telefonnummer empfängt einen automatisierten Anruf. Nehmen Sie den Anruf an, und drücken Sie die #-TASTE auf der Telefontastatur, um sich zu authentifizieren.<br>- **SMS**: Es wird eine SMS gesendet, die einen Überprüfungscode enthält. Je nachdem, wozu Sie in der SMS aufgefordert werden, antworten Sie auf die SMS, oder geben Sie im Anmeldungsfenster den angegebenen Überprüfungscode ein. |
 | [Anruf beim Bürotelefon](#use-your-office-phone-as-the-contact-method) |Das Telefon mit der von Ihnen angegebenen Telefonnummer empfängt einen automatisierten Anruf. Nehmen Sie den Anruf an, und drücken Sie die #-TASTE auf der Telefontastatur, um sich zu authentifizieren. |
 
 ## <a name="use-a-mobile-app-as-the-contact-method"></a>Verwenden einer mobilen App als Kontaktmethode
-Für diese Methode müssen Sie auf Ihrem Smartphone oder Tablet eine Authenticator-App installieren. Die Schritte in diesem Artikel basieren auf der Microsoft Authenticator-App, die für [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071), [Android](http://go.microsoft.com/fwlink/?Linkid=825072) und [IOS](http://go.microsoft.com/fwlink/?Linkid=825073) verfügbar ist.
+Für diese Methode müssen Sie auf Ihrem Smartphone oder Tablet eine Authenticator-App installieren. Die Schritte in diesem Artikel basieren auf der Microsoft Authenticator-App, die für [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071), [Android](http://go.microsoft.com/fwlink/?Linkid=825072) und [iOS](http://go.microsoft.com/fwlink/?Linkid=825073) verfügbar ist.
 
 1. Wählen Sie in der Dropdownliste **Mobile App** aus.
 2. Wählen Sie **Benachrichtigungen zur Überprüfung empfangen** oder **Überprüfungscode verwenden** aus, und wählen Sie dann **Einrichten** aus.

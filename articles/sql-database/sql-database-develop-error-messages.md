@@ -16,12 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2016
 ms.author: sstein
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 407d8cef2508e4b2344953db86bc9829081cda7c
-ms.openlocfilehash: 72faf68d8a9779b612723f9ee6589cc332bf5ed5
+ms.translationtype: HT
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: 2ef879aa31c8ee44a2c6281438f24a8b94649b1b
 ms.contentlocale: de-de
-ms.lasthandoff: 02/16/2017
-
+ms.lasthandoff: 08/17/2017
 
 ---
 # <a name="sql-error-codes-for-sql-database-client-applications-database-connection-error-and-other-issues"></a>SQL-Fehlercodes für SQL-Datenbank-Clientanwendungen: Datenbankverbindungsfehler und andere Probleme
@@ -40,14 +39,15 @@ Die folgende Tabelle enthält die SQL-Fehlercodes für Fehler bei Verbindungsver
 ### <a name="most-common-database-connection-errors-and-transient-fault-errors"></a>Häufigste Datenbankverbindungsfehler und vorübergehende Fehler
 Die Azure-Infrastruktur verfügt über die Möglichkeit, Server dynamisch neu zu konfigurieren, wenn hohe Workloads im SQL-Datenbankdienst auftreten.  Dieses dynamische Verhalten führt jedoch u.U. dazu, dass die Verbindung zwischen Ihrem Clientprogramm und der SQL-Datenbank getrennt wird. Diese Art Fehlerbedingung wird als *vorübergehender Fehler* bezeichnet.
 
-Wenn das Clientprogramm über Wiederholungslogik verfügt, kann es versuchen, erneut eine Verbindung herzustellen, nachdem der vorübergehende Fehler Zeit hatte, sich selbst zu korrigieren.  Es wird empfohlen, dass vor dem ersten Wiederholungsversuch eine Verzögerungszeit von fünf Sekunden verwendet wird. Wiederholungsversuche nach weniger als fünf Sekunden können den Clouddienst überfordern. Für jeden nachfolgenden Wiederholungsversuch sollte die Verzögerung exponentiell steigen, bis zu einem Maximum von 60 Sekunden.
+Es wird dringend empfohlen, das Clientprogramm mit einer Wiederholungslogik zu versehen, sodass erneut eine Verbindung hergestellt werden kann, nachdem sich der vorübergehende Fehler selbst korrigiert hat.  Es wird empfohlen, dass vor dem ersten Wiederholungsversuch eine Verzögerungszeit von fünf Sekunden verwendet wird. Wiederholungsversuche nach weniger als fünf Sekunden können den Clouddienst überfordern. Für jeden nachfolgenden Wiederholungsversuch sollte die Verzögerung exponentiell steigen, bis zu einem Maximum von 60 Sekunden.
 
 Vorübergehende Fehler machen sich in der Regel in Form einer der folgenden Fehlermeldungen von Ihren Clientprogrammen bemerkbar:
 
-* Datenbank <DB-Name> auf <Azure-Instanz>-Server ist zurzeit nicht verfügbar. Wiederholen Sie den Verbindungsversuch später. Falls das Problem weiterhin besteht, wenden Sie sich an den Kundensupport und geben als Ablaufverfolgungs-ID der Sitzung die <Sitzungs-ID> an.
-* Datenbank <DB-Name> auf <Azure-Instanz>-Server ist zurzeit nicht verfügbar. Wiederholen Sie den Verbindungsversuch später. Falls das Problem weiterhin besteht, wenden Sie sich an den Kundensupport und geben als Ablaufverfolgungs-ID der Sitzung die <Sitzungs-ID> an. (Microsoft SQL Server, Fehler: 40613)
+* Die &lt;DB-Name&gt;-Datenbank auf Server "&lt;Azure-Instanz&gt;" ist zurzeit nicht verfügbar. Wiederholen Sie den Verbindungsversuch später. Falls das Problem weiterhin besteht, wenden Sie sich an den Kundensupport und geben als Ablaufverfolgungs-ID der Sitzung "&lt;Sitzungs-ID&gt;" an.
+* Die &lt;DB-Name&gt;-Datenbank auf Server "&lt;Azure-Instanz&gt;" ist zurzeit nicht verfügbar. Wiederholen Sie den Verbindungsversuch später. Falls das Problem weiterhin besteht, wenden Sie sich an den Kundensupport und geben als Ablaufverfolgungs-ID der Sitzung "&lt;Sitzungs-ID&gt;" an. (Microsoft SQL Server, Fehler: 40613)
 * Eine vorhandene Verbindung wurde erzwungenermaßen vom Remotehost geschlossen.
 * System.Data.Entity.Core.EntityCommandExecutionException: Fehler beim Ausführen der Befehlsdefinition. Details siehe innere Ausnahme. ---> System.Data.SqlClient.SqlException: Beim Empfangen von Ergebnissen vom Server ist ein Fehler auf Übertragungsebene aufgetreten. (Anbieter: Sitzungsanbieter, Fehler: 19 – Physische Verbindung kann nicht verwendet werden)
+* Ein Verbindungsversuch mit einer sekundären Datenbank war nicht erfolgreich, da die Konfiguration der Datenbank gerade geändert und neue Seiten angewendet werden, während eine aktive Transaktion in der primären Datenbank ausgeführt wird. 
 
 Codebeispiele zur Wiederholungslogik finden Sie unter:
 
@@ -68,6 +68,7 @@ Die folgenden Fehler sind vorübergehend, und in der Anwendungslogik sollte ein 
 | 49918 |16 |Anforderung kann nicht verarbeitet werden. Zum Verarbeiten der Anforderung sind nicht genügend Ressourcen vorhanden.<br/><br/>Der Dienst ist derzeit ausgelastet. Versuchen Sie die Anforderung später erneut. |
 | 49919 |16 |Die Erstellung oder Aktualisierung der Anforderung kann nicht verarbeitet werden. Für das Abonnement „%ld“ werden derzeit zu viele Erstell- oder Aktualisierungsvorgänge ausgeführt.<br/><br/>Der Dienst ist mit der Verarbeitung mehrerer Erstell- oder Aktualisierungsvorgänge für Ihr Abonnement oder Ihren Server ausgelastet. Zur Ressourcenoptimierung werden Anforderungen derzeit blockiert. Fragen Sie [sys.dm_operation_status](https://msdn.microsoft.com/library/dn270022.aspx) auf ausstehende Vorgänge ab. Warten Sie, bis ausstehende Erstell- oder Aktualisierungsanforderungen abgeschlossen sind, oder löschen Sie eine Ihrer ausstehenden Anforderungen, und wiederholen Sie die Anforderung später. |
 | 49920 |16 |Anforderung kann nicht verarbeitet werden. Für das Abonnement „%ld“ werden derzeit zu viele Vorgänge ausgeführt.<br/><br/>Der Dienst ist mit der Verarbeitung mehrerer Vorgänge für dieses Abonnement ausgelastet. Zur Ressourcenoptimierung werden Anforderungen derzeit blockiert. Fragen Sie [sys.dm_operation_status](https://msdn.microsoft.com/library/dn270022.aspx) auf den Vorgangsstatus ab. Warten Sie, bis ausstehende Anforderungen abgeschlossen sind, oder löschen Sie eine Ihrer ausstehenden Anforderungen, und wiederholen Sie die Anforderung später. |
+| 4221 |16 |Fehler bei der Anmeldung bei lesbarem sekundärem Replikat aufgrund einer zu langen Wartezeit auf "HADR_DATABASE_WAIT_FOR_TRANSITION_TO_VERSIONING". Das Replikat steht zur Anmeldung nicht zur Verfügung, weil Zeilenversionen für Transaktionen fehlen, die beim Neustarten des Replikats in Verarbeitung waren. Dieses Problem kann durch einen Rollback oder durch einen Commit der aktiven Transaktionen auf dem primären Replikat gelöst werden. Vorkommen dieser Bedingung können durch Vermeiden langer Schreibtransaktionen auf dem primären Replikat minimiert werden. |
 
 ## <a name="database-copy-errors"></a>Fehler beim Kopieren von Datenbanken
 Die folgenden Fehler können beim Kopieren einer Datenbank in Azure SQL-Datenbank auftreten. Weitere Informationen finden Sie unter [Kopieren einer Azure SQL-Datenbank](sql-database-copy.md).
@@ -210,7 +211,7 @@ Die folgenden Fehler fallen in keine der vorherigen Kategorien.
 | 40651 |16 |Fehler beim Erstellen des Servers, weil das Abonnement <Abonnement-ID> deaktiviert ist. |
 | 40652 |16 |Der Server kann nicht verschoben oder erstellt werden, weil das <Abonnement-ID>-Abonnement das Serverkontingent überschreitet. |
 | 40671 |17 |Kommunikationsfehler zwischen dem Gateway und dem Verwaltungsdienst. Versuchen Sie es später erneut. |
-| 40852 |16 |Die von der Anmeldung angeforderte Datenbank „%.*ls“ auf Server „%.*ls“ kann nicht geöffnet werden. Der Zugriff auf die Datenbank ist nur mit einer Verbindungszeichenfolge mit aktivierter Sicherheit zulässig. Um auf diese Datenbank zuzugreifen, ändern Sie die Verbindungszeichenfolgen so, dass der Server-FQDN „secure“ enthält – „Servername.database.windows.net“ muss in „Servername.database.`secure`.windows.net“ geändert werden. |
+| 40852 |16 |Die von der Anmeldung angeforderte Datenbank „%.*ls“ auf Server „%.*ls“ kann nicht geöffnet werden. Der Zugriff auf die Datenbank ist nur mit einer Verbindungszeichenfolge mit aktivierter Sicherheit zulässig. Um auf diese Datenbank zuzugreifen, ändern Sie die Verbindungszeichenfolgen so, dass der Server-FQDN „secure“ enthält – „Servername.database.windows.net“ muss in „Servername.database`secure`.windows.net“ geändert werden. |
 | 45168 |16 |Das SQL Azure-System ist ausgelastet und richtet eine Obergrenze bei den gleichzeitigen DB CRUD-Vorgängen für einen Server ein (z. B. CREATE DATABASE). Für den in der Fehlermeldung angegebenen Server wurde die maximale Anzahl von gleichzeitigen Verbindungen überschritten. Versuchen Sie es später erneut. |
 | 45169 |16 |Das SQL Azure-System ist ausgelastet und richtet eine Obergrenze für die Anzahl der gleichzeitigen CRUD-Vorgänge für ein Abonnement ein (z.B. CREATE SERVER). Für das in der Fehlermeldung angegebene Abonnement wurde die maximale Anzahl von gleichzeitigen Verbindungen überschritten, und die Anforderung wurde verweigert. Versuchen Sie es später erneut. |
 

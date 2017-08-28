@@ -13,13 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 07/06/2017
+ms.date: 08/14/2017
 ms.author: mimig
 ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
-ms.openlocfilehash: e5f7697b1069186b9ab6b6594fa5efb069252475
+ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
+ms.openlocfilehash: 1a98509a98bcd2a5de593eb006f905766fe72966
 ms.contentlocale: de-de
-ms.lasthandoff: 07/26/2017
+ms.lasthandoff: 08/15/2017
 
 ---
 # <a name="_Toc395783175"></a>Erstellen einer Node.js-Webanwendung mithilfe von Azure Cosmos DB
@@ -33,7 +33,7 @@ ms.lasthandoff: 07/26/2017
 
 In diesem Node.js-Tutorial erfahren Sie, wie Sie mithilfe von Azure Cosmos DB und der DocumentDB-API Daten aus einer in Azure Websites gehosteten Node.js Express-Anwendung speichern und abrufen. Sie erstellen eine einfache webbasierte Anwendung zur Aufgabenverwaltung (eine To-Do-Anwendung), mit der Sie Aufgaben erstellen, abrufen und durchführen können. Die Aufgaben werden als JSON-Dokumente in Azure Cosmos DB gespeichert. Dieses Lernprogramm führt Sie durch die einzelnen Schritte zur Erstellung und Bereitstellung der App und erläutert die Vorgänge in den einzelnen Ausschnitten.
 
-![Screenshot der in diesem Node.js-Lernprogramm erstellten Anwendung "My Todo List"](./media/documentdb-nodejs-application/image1.png)
+![Screenshot der in diesem Node.js-Lernprogramm erstellten Anwendung "My Todo List"](./media/documentdb-nodejs-application/cosmos-db-node-js-mytodo.png)
 
 Sie haben keine Zeit, um das Lernprogramm abzuschließen, und möchten nur die vollständige Lösung abrufen? Kein Problem, Sie können die vollständige Beispiellösung von [GitHub][GitHub] abrufen. Anweisungen zum Ausführen der App finden Sie in der [Infodatei](https://github.com/Azure-Samples/documentdb-node-todo-app/blob/master/README.md).
 
@@ -78,12 +78,12 @@ Nun erfahren Sie, wie Sie ein einfaches "Hello World"-Node.js-Projekt mithilfe d
         npm start
 6. Sie können die neue Anwendung anzeigen, indem Sie in Ihrem Browser zu [http://localhost:3000](http://localhost:3000) navigieren.
    
-    ![Kennenlernen von Node.js - Screenshot der "Hello World"-Anwendung in einem Browserfenster](./media/documentdb-nodejs-application/image12.png)
+    ![Kennenlernen von Node.js - Screenshot der "Hello World"-Anwendung in einem Browserfenster](./media/documentdb-nodejs-application/cosmos-db-node-js-express.png)
 
     Drücken Sie zum Beenden der Anwendung im Terminalfenster STRG+C, und klicken Sie dann auf **J**, um den Batchauftrag zu beenden.
 
 ## <a name="_Toc395783179"></a>Schritt 3: Installieren zusätzlicher Module
-Die Datei **package.json** ist eine der im Stammverzeichnis des Projekts erstellten Dateien. Diese Datei enthält eine Liste zusätzlicher Module, die für Ihre Node.js-Anwendung erforderlich sind. Wenn Sie später diese Anwendung in Azure-Websites bereitstellen, wird anhand dieser Datei bestimmt, welche Module auf Azure installiert werden müssen, um Ihre Anwendung zu unterstützen. Für dieses Lernprogramm müssen zwei weitere Pakete installiert werden.
+Die Datei **package.json** ist eine der im Stammverzeichnis des Projekts erstellten Dateien. Diese Datei enthält eine Liste zusätzlicher Module, die für Ihre Node.js-Anwendung erforderlich sind. Wenn Sie später diese Anwendung in Azure Websites bereitstellen, wird anhand dieser Datei bestimmt, welche Module in Azure installiert werden müssen, um Ihre Anwendung zu unterstützen. Für dieses Lernprogramm müssen zwei weitere Pakete installiert werden.
 
 1. Wechseln Sie zum Terminal, und installieren Sie das **async** -Modul über npm.
    
@@ -190,12 +190,6 @@ Dies ist für die anfängliche Einrichtung und Konfiguration erforderlich. Jetzt
    
         module.exports = DocDBUtils;
    
-   > [!TIP]
-   > createCollection akzeptiert einen optionalen requestOptions-Parameter, der für die Festlegung des Angebotstyps für die Sammlung verwendet werden kann. Wenn kein requestOptions.offerType-Wert angegeben ist, wird die Sammlung mit den Standardangebotstyp erstellt.
-   > 
-   > Weitere Informationen zu Azure Cosmos DB-Angebotstypen finden Sie unter [Performance levels in Azure Cosmos DB](performance-levels.md) (Leistungsstufen in Azure Cosmos DB). 
-   > 
-   > 
 5. Speichern und schließen Sie die Datei **docdbUtils.js** .
 6. Fügen Sie am Anfang der Datei **taskDao.js** folgenden Code ein, um auf die oben erstellten **DocumentDBClient** und **docdbUtils.js** zu verweisen:
    
@@ -497,20 +491,20 @@ Jetzt konzentrieren wir uns auf die Erstellung der Benutzeroberfläche, um den B
              button.btn(type="submit") Add item
    
 
-    Dadurch wird das Layout erweitert und Inhalt für den Platzhalter **content** bereitgestellt, den wir zuvor in der Datei **layout.jade** gesehen haben.
+Dadurch wird das Layout erweitert und Inhalt für den Platzhalter **content** bereitgestellt, den wir zuvor in der Datei **layout.jade** gesehen haben.
    
-    In diesem Layout haben wir zwei HTML-Formulare erstellt.
+In diesem Layout haben wir zwei HTML-Formulare erstellt.
 
-    Das erste Formular enthält eine Tabelle für unsere Daten sowie eine Schaltfläche, mit der die Elemente durch Übermittlung an die **/completetask** -Methode des Controllers aktualisiert werden können.
+Das erste Formular enthält eine Tabelle für unsere Daten sowie eine Schaltfläche, mit der die Elemente durch Übermittlung an die **/completetask** -Methode des Controllers aktualisiert werden können.
     
-    Das zweite Formular enthält zwei Eingabefelder und eine Schaltfläche, mit der Sie ein neues Element durch Übermittlung an die **/addtask** -Methode des Controllers erstellen können.
+Das zweite Formular enthält zwei Eingabefelder und eine Schaltfläche, mit der Sie ein neues Element durch Übermittlung an die **/addtask** -Methode des Controllers erstellen können.
 
-    Dies sollte jetzt alles sein, damit unsere Anwendung funktioniert.
+Dies sollte jetzt alles sein, damit unsere Anwendung funktioniert.
 
 ## <a name="_Toc395783181"></a>Schritt 6: Lokales Ausführen der Anwendung
 1. Um die Anwendung auf dem lokalen Computer zu testen, führen Sie `npm start` über das Terminal aus, um Ihre Anwendung zu starten, und aktualisieren Sie anschließend die Browserseite [http://localhost:3000](http://localhost:3000). Die Seite sollte nun wie folgt aussehen:
    
-    ![Screenshot der Anwendung "Meine Aufgabenliste" in einem Browserfenster](./media/documentdb-nodejs-application/image18.png)
+    ![Screenshot der Anwendung "Meine Aufgabenliste" in einem Browserfenster](./media/documentdb-nodejs-application/cosmos-db-node-js-localhost.png)
 
     > [!TIP]
     > Sollte eine Fehlermeldung mit einem Hinweis auf den Einzug in der Datei „layout.jade“ oder „index.jade“ ausgegeben werden, vergewissern Sie sich, dass die ersten beiden Zeilen der beiden Dateien ohne Leerzeichen linksbündig ausgerichtet sind. Sollten sich vor den ersten beiden Zeilen Leerzeichen befinden, entfernen Sie sie, speichern Sie beide Dateien, und aktualisieren Sie anschließend Ihr Browserfenster. 
@@ -518,7 +512,7 @@ Jetzt konzentrieren wir uns auf die Erstellung der Benutzeroberfläche, um den B
 2. Geben Sie unter Verwendung der Felder „Element“, „Elementname“ und „Kategorie“ eine neue Aufgabe ein, und klicken Sie anschließend auf **Element hinzufügen**. Dadurch wird in Azure Cosmos DB ein Dokument mit diesen Eigenschaften erstellt. 
 3. Die Seite sollte nun das neu erstellte Element in der Aufgabenliste anzeigen.
    
-    ![Screenshot der Anwendung mit einem neuen Element in der Aufgabenliste](./media/documentdb-nodejs-application/image19.png)
+    ![Screenshot der Anwendung mit einem neuen Element in der Aufgabenliste](./media/documentdb-nodejs-application/cosmos-db-node-js-added-task.png)
 4. Zum Abschließen einer Aufgabe aktivieren Sie einfach das Kontrollkästchen in der entsprechenden Spalte, und klicken Sie dann auf **Aufgaben aktualisieren**. Dadurch wird das bereits erstellte Dokument aktualisiert.
 
 5. Drücken Sie zum Beenden der Anwendung im Terminalfenster STRG+C, und klicken Sie dann auf **J**, um den Batchauftrag zu beenden.
@@ -531,7 +525,7 @@ Jetzt konzentrieren wir uns auf die Erstellung der Benutzeroberfläche, um den B
 3. Stellen Sie sie mittels Push auf Remote bereit.
    
         git push azure master
-4. Dann schließt Git die Veröffentlichung Ihrer Webanwendung in wenigen Sekunden ab und startet einen Browser, in dem Sie das Ergebnis Ihrer Arbeit in Azure sehen können!
+4. Dann schließt Git die Veröffentlichung Ihrer Webanwendung in wenigen Sekunden ab und startet einen Browser, in dem das Ergebnis Ihrer Arbeit in Azure ausgeführt wird.
 
     Glückwunsch! Sie haben Ihre erste Node.js-Express-Webanwendung mit Azure Cosmos DB erstellt und auf Azure-Websites veröffentlicht.
 

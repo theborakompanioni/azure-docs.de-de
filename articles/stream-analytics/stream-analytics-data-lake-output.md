@@ -4,7 +4,7 @@ description: Konfigurieren der Authentifizierung und Autorisierung eines Azure D
 keywords: 
 services: stream-analytics
 documentationcenter: 
-author: jeffstokes72
+author: samacha
 manager: jhubbard
 editor: cgronlun
 ms.assetid: ea5baafa-0054-4c70-973a-6a3a8c6eaffc
@@ -14,23 +14,23 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/28/2017
-ms.author: jeffstok
-translationtype: Human Translation
-ms.sourcegitcommit: 2b4a10c77ae02ac0e9eeecf6d7d6ade6e4c33115
-ms.openlocfilehash: 5d0a86742e4b238b94855464b2528db32b80526b
-ms.lasthandoff: 01/25/2017
-
+ms.author: samacha
+ms.translationtype: HT
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: 3d867df3ef875d5cc41de418c3d1d269ff751fda
+ms.contentlocale: de-de
+ms.lasthandoff: 08/12/2017
 
 ---
 # <a name="stream-analytics-data-lake-store-output"></a>Stream Analytics Data Lake-Speicherausgabe
 Stream Analytics-Aufträge unterstützen mehrere Ausgabemethoden, darunter auch [Azure Data Lake-Speicher](https://azure.microsoft.com/services/data-lake-store/). Azure Data Lake-Speicher ist ein unternehmensweites riesiges Repository für Big Data-Analyseworkloads. Data Lake-Speicher ermöglicht es Ihnen, Daten von beliebiger Größe, Art und Erfassungsgeschwindigkeit zur Durchführung operativer und explorativer Analysen zu speichern.
 
 ## <a name="authorize-a-data-lake-store-account"></a>Autorisieren eines Data Lake-Speicherkontos
-1. Wenn Data Lake Store als Ausgabe im Azure-Verwaltungsportal ausgewählt ist, werden Sie aufgefordert, die Verwendung Ihres vorhandenen Data Lake Stores zu autorisieren oder über das klassische Azure-Portal Zugriff auf den Data Lake Store anzufordern.
+1. Wenn Data Lake Store als Ausgabe im Azure-Portal ausgewählt ist, werden Sie aufgefordert, die Verwendung Ihrer vorhandenen Data Lake Store-Instanz zu autorisieren oder über das klassische Portal Zugriff auf den Data Lake Store anzufordern.
    
    ![](media/stream-analytics-data-lake-output/stream-analytics-data-lake-output-authorization.png)  
    
-2. Falls Sie bereits Zugriff auf Data Lake-Speicher haben, klicken Sie auf „Jetzt autorisieren“, und für einen kurzen Moment wird eine Seite mit „Umleitung an die Autorisierung...“ angezeigt. Diese Seite wird automatisch geschlossen, und Ihnen wird die Seite zum Konfigurieren der Data Lake-Speicherausgabe angezeigt.
+2. Falls Sie bereits Zugriff auf Data Lake Store haben, klicken Sie auf „Jetzt autorisieren“. Daraufhin erscheint für einen kurzen Moment eine Seite mit „Umleitung an die Autorisierung...“. Diese Seite wird automatisch geschlossen, und Ihnen wird die Seite zum Konfigurieren der Data Lake-Speicherausgabe angezeigt.
 
 Falls Sie sich nicht für Data Lake Store angemeldet haben, können Sie dem Link „Jetzt registrieren“ folgen, um die Anfrage zu initiieren. Oder Sie folgen den Anweisungen für [erste Schritte](../data-lake-store/data-lake-store-get-started-portal.md).
 
@@ -49,7 +49,7 @@ Sobald Sie das Data Lake-Speicherkonto authentifiziert haben, können Sie die Ei
 </tr>
 <tr>
 <td>Data Lake-Speicherkonto</td>
-<td>Der Name des Speicherkontos, an das Sie die Ausgabe senden. Ihnen wird eine Dropdown-Liste der Data Lake-Speicherkonten angezeigt, auf die der im Portal angemeldete Benutzer Zugriff hat.</td>
+<td>Der Name des Speicherkontos, an das Sie die Ausgabe senden. Es wird eine Liste mit Data Lake Store-Konten angezeigt, auf die der angemeldete Benutzer Zugriff hat.</td>
 </tr>
 <tr>
 <td>Präfixmuster des Pfads [<I>optional</I>]</td>

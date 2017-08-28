@@ -4,7 +4,7 @@ description: "In diesem Thema wird erläutert, wie mithilfe von CLI 2.0 eine Azu
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: SyntaxC4
+manager: cfowler
 editor: 
 ms.service: media-services
 ms.workload: media

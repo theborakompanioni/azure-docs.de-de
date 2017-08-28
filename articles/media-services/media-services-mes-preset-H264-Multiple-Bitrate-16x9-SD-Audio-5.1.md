@@ -2,7 +2,7 @@
 title: H264 Multiple Bitrate 16x9 SD Audio 5.1 | Microsoft-Dokumentation
 description: "Das Thema enthält eine Übersicht über die Aufgabenvoreinstellung **H264 Multiple Bitrate 16x9 SD Audio 5.1**."
 author: Juliako
-manager: SyntaxC4
+manager: cfowler
 editor: 
 services: media-services
 documentationcenter: 

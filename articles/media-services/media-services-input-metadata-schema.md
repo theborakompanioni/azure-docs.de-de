@@ -2,7 +2,7 @@
 title: Azure Media Services-Eingabemetadaten-Schema | Microsoft Docs
 description: "Dieses Thema enthält eine Übersicht über das Azure Media Services-Eingabemetadaten-Schema."
 author: Juliako
-manager: SyntaxC4
+manager: cfowler
 editor: 
 services: media-services
 documentationcenter: 

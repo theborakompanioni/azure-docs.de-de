@@ -4,7 +4,7 @@ description: Erfahren Sie, wie Sie den Auftragsfortschritt verfolgen.
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: a1a1f956-c035-448a-af9c-5ac15fcce9dd
 ms.service: media-services
@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/01/2017
+ms.date: 08/10/2017
 ms.author: juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
-ms.openlocfilehash: 0f66bb4291d4e8c457f592734437513a727ecc29
+ms.translationtype: HT
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: 23b6c0f7abd40d67792d45e4ea0fae02efeae861
 ms.contentlocale: de-de
-ms.lasthandoff: 02/17/2017
+ms.lasthandoff: 08/12/2017
 
 ---
 # <a name="how-to-check-job-progress"></a>Vorgehensweise: Prüfen des Auftragsfortschritts
@@ -30,6 +30,15 @@ ms.lasthandoff: 02/17/2017
 > 
 
 Beim Ausführen von Aufträgen ist es nützlich, deren Fortschritt verfolgen zu können. Sie können den Auftragsstatus mithilfe der State-Eigenschaft des Auftrags feststellen. Weitere Informationen zur State-Eigenschaft finden Sie unter [Eigenschaften von Auftragsentitäten](https://docs.microsoft.com/rest/api/media/operations/job#job_entity_properties).
+
+## <a name="connect-to-media-services"></a>Verbinden mit Mediendiensten
+
+Informationen zum Herstellen einer Verbindung mit der AMS-API finden Sie unter [Zugreifen auf die Azure Media Services-API per Azure AD-Authentifizierung](media-services-use-aad-auth-to-access-ams-api.md). 
+
+>[!NOTE]
+>Nach der erfolgreichen Verbindung mit „https://media.windows.net“ erhalten Sie eine 301 Redirect-Antwort, in der ein anderer Media Services-URI angegeben ist. Nachfolgende Aufrufe müssen an den neuen URI gesendet werden.
+
+## <a name="check-job-progress"></a>Prüfen des Auftragsstatus
 
 Anforderung:
 
@@ -67,4 +76,7 @@ Antwort:
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
+## <a name="see-also"></a>Weitere Informationen
+
+[Übersicht über die Media Services Operations-REST-API](media-services-rest-how-to-use.md)
 

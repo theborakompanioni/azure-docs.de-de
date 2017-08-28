@@ -11,12 +11,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 07/03/2017
-ms.author: sewhee
+ms.author: bwren
 ms.translationtype: HT
-ms.sourcegitcommit: 26c07d30f9166e0e52cb396cdd0576530939e442
-ms.openlocfilehash: dcc5cc0be4c03ad661cf1539cb98a7d4fc94e778
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: bb6c93557ea26bed721315dc82da917e4727b5f9
 ms.contentlocale: de-de
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 08/17/2017
 
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>Debugmomentaufnahmen von Ausnahmen in .NET-Apps
@@ -115,7 +115,7 @@ Die Momentaufnahmesammlung ist für folgende Anwendungen verfügbar:
 2. Fügen Sie das NuGet-Paket [Microsoft.ApplicationInsights.SnapshotCollector](http://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) in Ihrer App hinzu.
 
 3. Momentaufnahmen werden nur zu Ausnahmen erfasst, die Application Insights gemeldet wurden. Sie müssen möglicherweise den Code ändern, um diese melden zu können. Der Code zur Behandlung von Ausnahmen hängt von der Struktur Ihrer Anwendung ab. Im Folgenden wird jedoch ein Beispiel gezeigt:
-   ```C#
+    ```C#
    TelemetryClient _telemetryClient = new TelemetryClient();
 
    void ExampleRequest()
@@ -132,54 +132,55 @@ Die Momentaufnahmesammlung ist für folgende Anwendungen verfügbar:
             // TODO: Rethrow the exception if desired.
         }
    }
+    ```
+    
+## <a name="grant-permissions"></a>Erteilen von Berechtigungen
 
-## Grant permissions
+Besitzer des Azure-Abonnements können Momentaufnahmen überprüfen. Anderen Benutzern muss durch einen Besitzer eine entsprechende Berechtigung erteilt werden.
 
-Owners of the Azure subscription can inspect snapshots. Other users must be granted permission by an owner.
+Weisen Sie hierzu den Benutzern, die Momentaufnahmen untersuchen, die Rolle `Application Insights Snapshot Debugger` zu. Abonnementbesitzer können diese Rolle einzelnen Benutzern oder Gruppen für die Application Insights-Zielressource oder für die dazugehörige Ressourcengruppe oder das dazugehörige Abonnement zuweisen.
 
-To grant permission, assign the `Application Insights Snapshot Debugger` role to users who will inspect snapshots. This role can be assigned to individual users or groups by subscription owners for the target Application Insights resource or its resource group or subscription.
-
-1. Open the Access Control (IAM) blade.
-1. Click the +Add button.
-1. Select Application Insights Snapshot Debugger from the Roles drop-down list.
-1. Search for and enter a name for the user to add.
-1. Click the Save button to add the user to the role.
+1. Öffnen Sie das Blatt „Zugriffssteuerung (IAM)“.
+1. Klicken Sie auf die Schaltfläche „+Hinzufügen“.
+1. Wählen Sie in der Dropdownliste „Rollen“ die Option „Application Insights-Momentaufnahmedebugger“ aus.
+1. Suchen Sie nach dem hinzuzufügenden Benutzer, und geben Sie einen Namen für ihn ein.
+1. Klicken Sie auf die Schaltfläche „Speichern“, um den Benutzer der Rolle hinzuzufügen.
 
 
 [!IMPORTANT]
-    Snapshots can potentially contain personal and other sensitive information in variable and parameter values.
+    In Variablen- und Parameterwerten von Momentaufnahmen können persönliche und andere vertrauliche Informationen enthalten sein.
 
-## Debug snapshots in the Application Insights portal
+## <a name="debug-snapshots-in-the-application-insights-portal"></a>Debuggen von Momentaufnahmen im Application Insights-Portal
 
-If a snapshot is available for a given exception or a problem ID, an **Open Debug Snapshot** button appears on the [exception](app-insights-asp-net-exceptions.md) in the Application Insights portal.
+Wenn eine Momentaufnahme für eine bestimmte Ausnahme oder eine Problem-ID verfügbar ist, wird unter der [Ausnahme](app-insights-asp-net-exceptions.md) im Application Insights-Portal eine Schaltfläche zum**** Erstellen einer Debug-Momentaufnahme angezeigt.
 
-![Open Debug Snapshot button on exception](./media/app-insights-snapshot-debugger/snapshot-on-exception.png)
+![Schaltfläche zum Erstellen einer Debug-Momentaufnahme für eine Ausnahme](./media/app-insights-snapshot-debugger/snapshot-on-exception.png)
 
-In the Debug Snapshot view, you see a call stack and a variables pane. When you select frames of the call stack in the call stack pane, you can view local variables and parameters for that function call in the variables pane.
+In der Ansicht der Debug-Momentaufnahme sehen Sie eine Aufrufliste und einen Variablenbereich. Wenn Sie Frames der Aufrufliste im Aufruflistenbereich auswählen, können Sie lokale Variablen und Parameter für diesen Funktionsaufruf im Variablenbereich anzeigen.
 
-![View Debug Snapshot in the portal](./media/app-insights-snapshot-debugger/open-snapshot-portal.png)
+![Anzeigen der Debug-Momentaufnahme im Portal](./media/app-insights-snapshot-debugger/open-snapshot-portal.png)
 
-Snapshots might contain sensitive information, and by default they are not viewable. To view snapshots, you must have the `Application Insights Snapshot Debugger` role assigned to you.
+Momentaufnahmen enthalten möglicherweise vertrauliche Informationen und können standardmäßig nicht angezeigt werden. Zum Anzeigen von Momentaufnahmen muss Ihnen die Rolle `Application Insights Snapshot Debugger` zugewiesen sein.
 
-## Debug snapshots with Visual Studio 2017 Enterprise
-1. Click the **Download Snapshot** button to download a `.diagsession` file, which can be opened by Visual Studio 2017 Enterprise. 
+## <a name="debug-snapshots-with-visual-studio-2017-enterprise"></a>Debuggen von Momentaufnahmen mit Visual Studio 2017 Enterprise
+1. Klicken Sie auf die Schaltfläche **Momentaufnahme herunterladen**, um eine Datei vom Typ `.diagsession` herunterzuladen, die von Visual Studio 2017 Enterprise geöffnet werden kann. 
 
-2. To open the `.diagsession` file, you must first [download and install the Snapshot Debugger extension for Visual Studio](https://aka.ms/snapshotdebugger).
+2. Zum Öffnen der Datei vom Typ `.diagsession` müssen Sie zuerst [die Momentaufnahmedebugger-Erweiterung für Visual Studio herunterladen und installieren](https://aka.ms/snapshotdebugger).
 
-3. After you open the snapshot file, the Minidump Debugging page in Visual Studio appears. Click **Debug Managed Code** to start debugging the snapshot. The snapshot opens to the line of code where the exception was thrown so that you can debug the current state of the process.
+3. Nach dem Öffnen der Momentaufnahmedatei erscheint in Visual Studio die Minidump-Debugging-Seite. Klicken Sie auf **Debug Managed Code** (Verwalteten Code debuggen), um mit dem Debuggen der Momentaufnahme zu beginnen. Die Momentaufnahme wird bei der Codezeile geöffnet, in der die Ausnahme ausgelöst wurde, damit Sie den aktuellen Zustand des Prozesses debuggen können.
 
-    ![View debug snapshot in Visual Studio](./media/app-insights-snapshot-debugger/open-snapshot-visualstudio.png)
+    ![Anzeigen der Debugmomentaufnahme in Visual Studio](./media/app-insights-snapshot-debugger/open-snapshot-visualstudio.png)
 
-The downloaded snapshot contains any symbol files that were found on your web application server. These symbol files are required to associate snapshot data with source code. For App Service apps, make sure to enable symbol deployment when you publish your web apps.
+Die heruntergeladene Momentaufnahme enthält alle Symboldateien, die auf Ihrem Webanwendungsserver gefunden wurden. Diese Symboldateien sind zum Zuordnen von Quellcode und Momentaufnahmedaten erforderlich. Achten Sie bei App Service-Apps darauf, dass die Symbolbereitstellung aktiviert ist, wenn Sie Ihre Web-Apps veröffentlichen.
 
-## How snapshots work
+## <a name="how-snapshots-work"></a>Funktionsweise von Momentaufnahmen
 
-When your application starts, a separate snapshot uploader process is created that monitors your application for snapshot requests. When a snapshot is requested, a shadow copy of the running process is made in about 10 to 20 minutes. The shadow process is then analyzed, and a snapshot is created while the main process continues to run and serve traffic to users. The snapshot is then uploaded to Application Insights along with any relevant symbol (.pdb) files that are needed to view the snapshot.
+Beim Starten Ihrer Anwendung wird ein separater Uploader-Prozess für die Momentaufnahme erstellt, der Ihre Anwendung auf Momentaufnahmeanforderungen überwacht. Beim Anfordern einer Momentaufnahme wird innerhalb von etwa 10 bis 20 Minuten eine Schattenkopie des ausgeführten Prozesses erstellt. Der Schattenprozess wird dann analysiert, und eine Momentaufnahme wird erstellt, während der Hauptprozess weiterhin ausgeführt wird und Datenverkehr für Benutzer verarbeitet. Die Momentaufnahme wird dann mit allen relevanten Symboldateien (PDB-Dateien), die zum Anzeigen der Momentaufnahme erforderlich sind, in Application Insights hochgeladen.
 
-## Current limitations
+## <a name="current-limitations"></a>Aktuelle Einschränkungen
 
-### Publish symbols
-The Snapshot Debugger requires symbol files on the production server to decode variables and to provide a debugging experience in Visual Studio. The 15.2 release of Visual Studio 2017 publishes symbols for release builds by default when it publishes to App Service. In prior versions, you need to add the following line to your publish profile `.pubxml` file so that symbols are published in release mode:
+### <a name="publish-symbols"></a>Veröffentlichen von Symbolen
+Für den Momentaufnahmedebugger müssen Symboldateien auf dem Produktionsserver vorhanden sein, um Variablen zu decodieren und eine gute Debugleistung in Visual Studio zu erzielen. Die Version 15.2 von Visual Studio 2017 veröffentlicht Symbole für Releasebuilds standardmäßig im Rahmen der Veröffentlichung für App Service. In Vorgängerversionen müssen Sie der Veröffentlichungsprofildatei vom Typ `.pubxml` die folgende Zeile hinzufügen, um Symbole im Releasemodus zu veröffentlichen:
 
 ```xml
     <ExcludeGeneratedDebugSymbol>False</ExcludeGeneratedDebugSymbol>

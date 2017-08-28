@@ -12,23 +12,25 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/26/2017
-ms.author: rodejo
+ms.date: 08/09/2017
+ms.author: curtand
+ms.reviewer: kairaz.contractor
+ms.custom: it-pro;
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: 7dd4833000e8550b172e0451c48788b1e627a1fb
+ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
+ms.openlocfilehash: 2ee71536257d4349fdf8d80bdcb1899a1d244293
 ms.contentlocale: de-de
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/10/2017
 
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Azure Active Directory-Cmdlets zum Konfigurieren von Gruppeneinstellungen
 
 > [!IMPORTANT]
-> Dieser Inhalt gilt nur für Office 365-Gruppen. 
+> Dieser Inhalt gilt nur für Office 365-Gruppen. Um weitere Informationen dazu zu erhalten, wie Sie Benutzern die Erstellung von Sicherheitsgruppen ermöglichen, legen Sie `Set-MSOLCompanySettings -UsersPermissionToCreateGroupsEnabled $True` wie unter [Set-MSOLCompanySettings](https://docs.microsoft.com/en-us/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0) beschrieben fest. 
 
-Office 365-Gruppeneinstellungen werden mithilfe eines Settings- und eines SettingsTemplate-Objekts konfiguriert. Anfänglich werden keine Settings-Objekte im Verzeichnis angezeigt. Dies bedeutet, dass Ihr Verzeichnis mit den Standardeinstellungen konfiguriert ist. Um die Standardeinstellungen zu ändern, erstellen Sie mithilfe einer Einstellungsvorlage ein neues Einstellungsobjekt. Einstellungsvorlagen werden von Microsoft definiert. Es werden verschiedene Einstellungsvorlagen unterstützt. Zum Konfigurieren von Gruppeneinstellungen für Ihr Verzeichnis verwenden Sie die Vorlage mit dem Namen „Group.Unified“. Zum Konfigurieren von Gruppeneinstellungen für eine einzelne Gruppe verwenden Sie die Vorlage „Group.Unified.Guest“. Diese Vorlage dient zum Verwalten des Gastzugriffs auf eine Gruppe. 
+Office 365-Gruppeneinstellungen werden mithilfe eines Settings- und eines SettingsTemplate-Objekts konfiguriert. Zu Beginn werden keine Einstellungsobjekte in Ihrem Verzeichnis angezeigt, da Ihr Verzeichnis mit den Standardeinstellungen konfiguriert ist. Um die Standardeinstellungen zu ändern, erstellen Sie mithilfe einer Einstellungsvorlage ein neues Einstellungsobjekt. Einstellungsvorlagen werden von Microsoft definiert. Es werden verschiedene Einstellungsvorlagen unterstützt. Zum Konfigurieren von Office 365-Gruppeneinstellungen für Ihr Verzeichnis verwenden Sie die Vorlage mit dem Namen „Group.Unified“. Zum Konfigurieren von Office 365-Gruppeneinstellungen für eine einzelne Gruppe verwenden Sie die Vorlage „Group.Unified.Guest“. Diese Vorlage dient zum Verwalten des Gastzugriffs auf eine Office 365-Gruppe. 
 
-Die Cmdlets gehören zum Modul Azure Active Directory PowerShell V2. Weitere Informationen zu diesem Modul und eine Anleitung zum Herunterladen und Installieren des Moduls auf Ihrem Computer finden Sie unter [Azure Active Directory PowerShell, Version 2](https://docs.microsoft.com/powershell/azuread/). Sie können die Version 2 des Moduls [hier](https://www.powershellgallery.com/packages/AzureAD/) herunterladen.
+Die Cmdlets gehören zum Modul Azure Active Directory PowerShell V2. Weitere Anweisungen zum Herunterladen und Installieren des Moduls auf Ihrem Computer finden Sie im Artikel [Azure Active Directory PowerShell Version 2](https://docs.microsoft.com/powershell/azuread/). Sie können die Version 2 des Moduls über den [PowerShell-Katalog](https://www.powershellgallery.com/packages/AzureAD/) installieren.
 
 ## <a name="retrieve-a-specific-settings-value"></a>Rufen Sie einen speziellen Einstellungswert ab:
 Wenn Sie den Namen der Einstellung kennen, die Sie abrufen möchten, können Sie das untenstehende Cmdlet verwenden, um den aktuellen Einstellungswert abzurufen. In diesem Beispiel rufen wir den Wert für eine Einstellung namens „UsageGuidelinesUrl“ ab. Sie können weiter unten in diesem Artikel mehr zu Verzeichniseinstellungen und deren Namen lesen.
@@ -38,7 +40,7 @@ Wenn Sie den Namen der Einstellung kennen, die Sie abrufen möchten, können Sie
 ```
 
 ## <a name="create-settings-at-the-directory-level"></a>Erstellen von Einstellungen auf Verzeichnisebene
-Über diese Schritte werden auf Verzeichnisebene Einstellungen erstellt, die für alle einheitlichen Gruppen im Verzeichnis gelten.
+Über diese Schritte werden auf Verzeichnisebene Einstellungen erstellt, die für alle einheitlichen Office 365-Gruppen (einheitliche Gruppen) im Verzeichnis gelten.
 
 1. In den DirectorySettings-Cmdlets müssen Sie die ID des SettingsTemplate-Objekts angeben, das Sie verwenden möchten. Wenn Sie diese ID nicht kennen, gibt dieses Cmdlet die Liste aller Einstellungsvorlagen zurück:
   
@@ -97,7 +99,7 @@ Folgende Einstellungen sind im SettingsTemplate-Objekt „Group.Unified“ defin
 |  <ul><li>AllowGuestsToBeGroupOwner<li>Typ: Boolescher Wert<li>Standard: False | Boolescher Wert, der angibt, ob ein Gastbenutzer Besitzer von Gruppen sein kann. |
 |  <ul><li>AllowGuestsToAccessGroups<li>Typ: Boolescher Wert<li>Standard: True | Boolescher Wert, der angibt, ob ein Gastbenutzer Zugriff auf den Inhalt einheitlicher Gruppen hat. |
 |  <ul><li>GuestUsageGuidelinesUrl<li>Typ: Zeichenfolge<li>Standardwert: “” | Die URL eines Links zu den Leitlinien für die Nutzung des Gastzugriffs. |
-|  <ul><li>AllowToAddGuests<li>Typ: Boolescher Wert<li>Standard: True | Boolescher Wert, der angibt, ob das Hinzufügen von Gästen zu diesem Verzeichnis erlaubt ist.|
+|  <ul><li>AllowToAddGuests<li>Typ: Boolescher Wert<li>Standard: True | Ein boolescher Wert, der angibt, ob das Hinzufügen von Gästen zu diesem Verzeichnis erlaubt ist.|
 |  <ul><li>ClassificationList<li>Typ: Zeichenfolge<li>Standardwert: “” |Eine durch Trennzeichen getrennte Liste der gültigen Klassifizierungswerte, die auf einheitliche Gruppen angewendet werden können. |
 |  <ul><li>EnableGroupCreation<li>Typ: Boolescher Wert<li>Standard: True | Boolescher Wert, der angibt, ob Benutzer, die keine Administratoren sind, neue einheitliche Gruppen erstellen können. |
 

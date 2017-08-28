@@ -2,7 +2,7 @@
 title: 264 Multiple Bitrate 4K Audio 5.1 | Microsoft-Dokumentation
 description: "Das Thema enthält eine Übersicht über die Aufgabenvoreinstellung **264 Multiple Bitrate 4K Audio 5.1**."
 author: Juliako
-manager: SyntaxC4
+manager: cfowler
 editor: 
 services: media-services
 documentationcenter: 

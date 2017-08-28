@@ -4,7 +4,7 @@ description: "Dieses Thema bietet einen Überblick über die Aufgabenvoreinstell
 services: media-services
 documentationcenter: 
 author: Asolanki
-manager: SyntaxC4
+manager: cfowler
 editor: 
 ms.service: media-services
 ms.workload: media
