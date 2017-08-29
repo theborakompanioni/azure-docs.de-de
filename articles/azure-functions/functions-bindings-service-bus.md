@@ -4,7 +4,7 @@ description: Erfahren Sie, wie Azure Service Bus-Trigger und -Bindungen in Azure
 services: functions
 documentationcenter: na
 author: christopheranderson
-manager: erikre
+manager: cfowler
 editor: 
 tags: 
 keywords: Azure Functions, Funktionen, Ereignisverarbeitung, dynamisches Compute, serverlose Architektur

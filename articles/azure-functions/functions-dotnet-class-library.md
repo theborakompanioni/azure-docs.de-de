@@ -4,7 +4,7 @@ description: "Erfahren Sie, wie Sie .NET-Klassenbibliotheken für die Verwendung
 services: functions
 documentationcenter: na
 author: lindydonna
-manager: erikre
+manager: cfowler
 editor: 
 tags: 
 keywords: Azure Functions, Funktionen, Ereignisverarbeitung, dynamisches Compute, serverlose Architektur

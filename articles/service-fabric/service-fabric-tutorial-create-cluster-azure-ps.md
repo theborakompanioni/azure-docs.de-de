@@ -72,7 +72,7 @@ Weitere Informationen zum Erstellen von Service Fabric-Clustern finden Sie unter
 5. Erstellen Sie den Cluster und das dazugehörige Zertifikat durch Ausführen des folgenden Befehls:
 
    ```powershell
-      New-AzureRmServiceFabricCluster
+      New-AzureRmServiceFabricCluster `
           -TemplateFile C:\Users\me\Desktop\azuredeploy.json `
           -ParameterFile C:\Users\me\Desktop\azuredeploy.parameters.json `
           -CertificateOutputFolder C:\Users\me\Desktop\ `
