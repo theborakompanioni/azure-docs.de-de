@@ -4,7 +4,7 @@ description: "Erfahren Sie, wie Sie mithilfe von JavaScript Funktionen entwickel
 services: functions
 documentationcenter: na
 author: christopheranderson
-manager: erikre
+manager: cfowler
 editor: 
 tags: 
 keywords: Azure Functions, Functions, Ereignisverarbeitung, Webhooks, dynamisches Compute, serverlose Architektur

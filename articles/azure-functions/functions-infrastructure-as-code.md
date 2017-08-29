@@ -4,7 +4,7 @@ description: Hier erfahren Sie, wie Sie eine Azure Resource Manager-Vorlage erst
 services: Functions
 documtationcenter: na
 author: lindydonna
-manager: erikre
+manager: cfowler
 editor: 
 tags: 
 keywords: Azure Functions, Funktionen, serverlose Architektur, Infrastruktur als Code, Azure Resource Manager

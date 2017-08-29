@@ -4,7 +4,7 @@ description: Hier erfahren Sie, wie Sie mithilfe von Azure Functions in wenigen 
 services: functions
 documentationcenter: na
 author: mattchenderson
-manager: erikre
+manager: cfowler
 editor: 
 tags: 
 keywords: Azure Functions, Functions, Ereignisverarbeitung, Webhooks, dynamisches Compute, serverlose Architektur

@@ -4,7 +4,7 @@ description: Speichern von unstrukturierten Daten mit Azure Functions und Cosmos
 services: functions
 documentationcenter: functions
 author: rachelappel
-manager: erikre
+manager: cfowler
 editor: 
 tags: 
 keywords: Azure Functions, Functions, Ereignisverarbeitung, Cosmos DB, dynamisches Compute, serverlose Architektur
