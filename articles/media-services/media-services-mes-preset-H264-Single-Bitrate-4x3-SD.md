@@ -2,7 +2,7 @@
 title: "Media Encoder Standard-Voreinstellung „H264 Single Bitrate 4x3 SD“ – Azure | Microsoft-Dokumentation"
 description: "Das Thema enthält eine Übersicht über die Aufgabenvoreinstellung **H264 Single Bitrate 4x3 SD**."
 author: Juliako
-manager: SyntaxC4
+manager: cfowler
 editor: 
 services: media-services
 documentationcenter: 
