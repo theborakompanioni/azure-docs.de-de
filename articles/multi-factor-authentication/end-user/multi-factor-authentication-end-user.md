@@ -3,7 +3,7 @@ title: "Erste Schritte mit der Überprüfung in zwei Schritten | Microsoft Docs"
 description: Auf dieser Seite zur Azure Multi-Factor Authentication finden Ihre Endbenutzer Informationen zu den ersten Schritten mit Azure Multi-Factor Authentication.
 services: multi-factor-authentication
 documentationcenter: 
-author: kgremban
+author: barlanmsft
 manager: femila
 ms.assetid: e02cc045-2ac0-41ff-b07f-e9255e320383
 ms.service: multi-factor-authentication
@@ -12,7 +12,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/15/2017
-ms.author: kgremban
+ms.author: barlan
 ms.reviewer: yossib
 ms.custom: end-user
 ms.translationtype: Human Translation
@@ -48,5 +48,4 @@ Wählen Sie eines dieser Themen aus, um zu beginnen.
 | [Ändern der Einstellungen](multi-factor-authentication-end-user-manage-settings.md) |Hier erfahren Sie, wie Sie Ihre Einstellungen wie die Telefonnummer oder die bevorzugte Registrierungsmethode ändern können. |
 | [Hilfe zu App-Kennwörtern](multi-factor-authentication-end-user-app-passwords.md) |Hier erhalten Sie Informationen zum Erstellen und Verwenden von App-Kennwörtern. |
 | [Verwenden der mobilen App](microsoft-authenticator-app-how-to.md) |Die Microsoft Authenticator-App ist für [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071), [Android](http://go.microsoft.com/fwlink/?Linkid=825072) und [IOS](http://go.microsoft.com/fwlink/?Linkid=825073) verfügbar. |
-
 

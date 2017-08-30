@@ -48,9 +48,9 @@ Rufen Sie mithilfe der folgenden Schritte die Self-Service-Kennwortzurücksetzun
 
    > [!NOTE]
    > Falls Ihr IT-Personal diese Funktion nicht aktiviert hat, wird ein Link angezeigt, über den Sie Ihren Administrator kontaktieren können, um Unterstützung vom IT-Personal zu erhalten –entweder per E-Mail oder über ein eigenes Webportal.
-   > 
+   >
    > Wenn Sie Ihr Konto entsperren möchten, wählen Sie an dieser Stelle „Ich kenne mein Kennwort, kann mich aber dennoch nicht anmelden.“ aus.
-   > 
+   >
 
 3. Je nachdem, wie das IT-Personal SSPR konfiguriert hat, wird mindestens eine der folgenden Optionen angezeigt. Einige dieser Informationen wurden vom IT-Personal oder von Ihnen selbst bereits vor Anwendung der Informationen im Artikel [Registrieren für die Self-Service-Kennwortzurücksetzung](active-directory-passwords-reset-register.md) angegeben.
 
