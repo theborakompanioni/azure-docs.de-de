@@ -7,17 +7,17 @@
 ## [Kompatible Drittanbietersoftware](active-directory-ds-compatible-software.md)
 
 # Erste Schritte
-## Klassisches Azure-Portal
-### [Aufgabe 1: Erstellen der Administratorgruppe](active-directory-ds-getting-started-create-group.md)
-### [Aufgabe 2: Erstellen oder Auswählen eines virtuellen Netzwerks](active-directory-ds-getting-started-vnet.md)
-### [Aufgabe 3: Aktivieren von Azure AD Domain Services](active-directory-ds-getting-started-enableaadds.md)
-### [Aufgabe 4: Aktualisieren der DNS-Einstellungen für das virtuelle Netzwerk](active-directory-ds-getting-started-update-dns.md)
-### [Aufgabe 5: Aktivieren der Kennwortsynchronisierung](active-directory-ds-getting-started-password-sync.md)
 ## Azure-Portal (Vorschauversion)
 ### [Aufgabe 1: Konfigurieren der Grundeinstellungen](active-directory-ds-getting-started.md)
 ### [Aufgabe 2: Konfigurieren der Netzwerkeinstellungen](active-directory-ds-getting-started-network.md)
 ### [Aufgabe 3: Konfigurieren der Administratorgruppe und Aktivieren von Azure AD Domain Services](active-directory-ds-getting-started-admingroup.md)
 ### [Aufgabe 4: Aktualisieren der DNS-Einstellungen für das virtuelle Netzwerk](active-directory-ds-getting-started-dns.md)
+### [Aufgabe 5: Aktivieren der Kennwortsynchronisierung](active-directory-ds-getting-started-password-sync.md)
+## Klassisches Azure-Portal (veraltet)
+### [Aufgabe 1: Erstellen der Administratorgruppe](active-directory-ds-getting-started-create-group.md)
+### [Aufgabe 2: Erstellen oder Auswählen eines virtuellen Netzwerks](active-directory-ds-getting-started-vnet.md)
+### [Aufgabe 3: Aktivieren von Azure AD Domain Services](active-directory-ds-getting-started-enableaadds.md)
+### [Aufgabe 4: Aktualisieren der DNS-Einstellungen für das virtuelle Netzwerk](active-directory-ds-getting-started-update-dns.md)
 ### [Aufgabe 5: Aktivieren der Kennwortsynchronisierung](active-directory-ds-getting-started-password-sync.md)
 
 # Anleitung
