@@ -10,10 +10,10 @@ ms.author: bruceper
 manager: mbaldwin
 ms.date: 07/25/2017
 ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
-ms.openlocfilehash: c7b20c83b356dd698e66919483c9ff6f0e8a36ef
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 3148088c88236c64e089fd25c98eb8ac7cdcbfea
 ms.contentlocale: de-de
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="azure-key-vault-storage-account-keys"></a>Azure Key Vault-Speicherkontoschlüssel
@@ -28,13 +28,14 @@ Allgemeinere Informationen zu Azure-Speicherkonten finden Sie unter [Information
 
 Das Azure-Speicherkontoschlüssel-Feature ist zunächst über die REST-, .NET/C#- und PowerShell-Schnittstellen verfügbar. Weitere Informationen finden Sie in der [Dokumentation zu Key Vault](https://docs.microsoft.com/azure/key-vault/).
 
+
 ## <a name="storage-account-keys-behavior"></a>Verhalten von Speicherkontoschlüsseln
 
 ### <a name="what-key-vault-manages"></a>Was Key Vault verwaltet
 
 Key Vault führt mehrere interne Verwaltungsfunktionen in Ihrem Auftrag aus, wenn Sie Speicherkontoschlüssel verwenden.
 
-1. Azure Key Vault verwaltet Schlüssel eines Azure-Speicherkontos (SAS). 
+1. Azure Key Vault verwaltet Schlüssel eines Azure Storage-Kontos. 
     - Intern kann Azure Key Vault die Schlüssel mit einem Azure-Speicherkonto auflisten (synchronisieren).  
     - Azure Key Vault generiert (rotiert) die Schlüssel in regelmäßigen Abständen. 
     - Schlüsselwerte werden nie als Antwort an den Aufrufer zurückgegeben. 
@@ -65,6 +66,9 @@ var blobClient = storageAccount.CreateCloudBlobClient();
 ### <a name="after-azure-key-vault-storage-keys"></a>Ab Azure Key Vault-Speicherschlüsseln 
 
 ```
+//Please make sure to set storage permissions appropriately on your key vault
+Set-AzureRmKeyVaultAccessPolicy -VaultName 'yourVault' -ObjectId yourObjectId -PermissionsToStorage all
+
 //Use PowerShell command to get Secret URI 
 
 Set-AzureKeyVaultManagedStorageSasDefinition -Service Blob -ResourceType Container,Service -VaultName yourKV  

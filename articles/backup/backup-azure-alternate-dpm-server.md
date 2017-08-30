@@ -1,6 +1,6 @@
 ---
 title: Wiederherstellen von Daten von einer Azure Backup Server-Instanz | Microsoft-Dokumentation
-description: Stellen Sie Daten wiederher, die Sie in einem Azure-Sicherungstresor auf einem beliebigen, bei diesem Tresor registrierten Server von Azure Backup Server gesichert haben.
+description: Stellen Sie die Daten wieder her, die Sie in einem Recovery Services-Tresor auf einer beliebigen, bei diesem Tresor registrierten Azure Backup Server-Instanz gesichert haben.
 services: backup
 documentationcenter: 
 author: nkolli1
@@ -12,29 +12,28 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/28/2016
+ms.date: 08/18/2017
 ms.author: adigan;giridham;trinadhk;markgal
-translationtype: Human Translation
-ms.sourcegitcommit: 14cc190a7d1cde1181a6f26ef83095bc601f7fbb
-ms.openlocfilehash: 36c4e1865c99dd1c55be798e1d310a02f2af0864
-ms.lasthandoff: 01/28/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 688d155b68bc2d76d53f78d251bc2f659582845f
+ms.contentlocale: de-de
+ms.lasthandoff: 08/21/2017
 
 ---
-# <a name="recovering-data-from-another-azure-backup-server-in-the-backup-vault"></a>Wiederherstellen von Daten von einem anderen Server von Azure Backup Server im Sicherungstresor
-Sie können nun Daten wiederherstellen, die Sie in einem Azure-Sicherungstresor auf einem beliebigen, bei diesem Tresor registrierten Server von Azure Backup Server gesichert haben. Das entsprechende Verfahren ist vollständig in die ABS-Verwaltungskonsole integriert und ähnelt dem anderer Wiederherstellungsworkflows.
+# <a name="recover-data-from-azure-backup-server"></a>Wiederherstellen von Daten von Azure Backup Server
+Mit Azure Backup Server können Sie die Daten wiederherstellen, die Sie in einem Recovery Services-Tresor gesichert haben. Der entsprechende Prozess ist in der Azure Backup Server-Verwaltungskonsole integriert und ähnelt dem Wiederherstellungsworkflow für andere Azure Backup-Komponenten.
 
 > [!NOTE]
-> Dieser Artikel und die folgenden Schritte gelten auch für [System Center Data Protection Manager UR7] (https://support.microsoft.com/en-us/kb/3065246) mit dem [neuesten Azure Backup-Agent](http://aka.ms/azurebackup_agent).
+> Dieser Artikel gilt für [System Center Data Protection Manager 2012 R2 mit UR7 oder höher] (https://support.microsoft.com/en-us/kb/3065246), kombiniert mit dem [neuesten Azure Backup-Agent](http://aka.ms/azurebackup_agent).
 >
 >
 
-## <a name="recover-data-from-another-azure-backup-server"></a>Wiederherstellen von Daten von einem anderen Server von Azure Backup Server
-Zum Wiederherstellen von Daten von einem anderen Server von Azure Backup Server:
+So stellen Sie Daten von einer Azure Backup Server-Instanz wieder her:
 
-1. Klicken Sie auf der Registerkarte **Wiederherstellung** der ABS-Verwaltungskonsole auf **Externen DPM hinzufügen** (links oben auf dem Bildschirm).   
+1. Klicken Sie auf der Registerkarte **Wiederherstellung** der Azure Backup Server-Verwaltungskonsole auf **Externen DPM hinzufügen** (links oben auf dem Bildschirm).   
     ![Externen DPM hinzufügen](./media/backup-azure-alternate-dpm-server/add-external-dpm.png)
-2. Laden Sie die neuen **Tresoranmeldeinformationen** des mit dem Server von **Azure Backup Server** verknüpften Tresors herunter, wählen Sie den Server von Azure Backup Server aus der Liste der beim Sicherungstresor registrierten DPM-Server aus, und geben Sie die **Verschlüsselungspassphrase** für den Server von Azure Backup Server an, dessen Daten wiederhergestellt werden.
+2. Laden Sie die neuen **Tresoranmeldeinformationen** des mit der **Azure Backup Server**-Instanz verknüpften Tresors herunter, wählen Sie die Azure Backup Server-Instanz aus der Liste der beim Recovery Services-Tresor registrierten Azure Backup Server-Instanzen aus, und geben Sie die **Verschlüsselungspassphrase** für den Server an, dessen Daten wiederhergestellt werden.
 
     ![Anmeldeinformationen des externen DPM](./media/backup-azure-alternate-dpm-server/external-dpm-credentials.png)
 
@@ -64,15 +63,15 @@ Zum Wiederherstellen von Daten von einem anderen Server von Azure Backup Server:
 8. Wählen Sie die gewünschte Option aus: **Kopie erstellen**, **Überspringen** oder **Überschreiben**.
 
    * **Kopie erstellen** erstellt eine Kopie der Datei, falls ein Namenskonflikt besteht.
-   * **Überspringen** überspringt die Wiederherstellung der Datei, falls ein Namenskonflikt besteht.
-   * **Überschreiben** überschreibt die vorhandene Kopie am angegebenen Speicherort, falls ein Namenskonflikt besteht.
+   * **Überspringen**: Bei einem Namenskonflikt wird die Datei nicht wiederhergestellt, sodass die ursprüngliche Datei bleibt.
+   * **Überschreiben**: Bei einem Namenskonflikt wird die vorhandene Kopie der Datei überschrieben.
 
      Wählen Sie die entsprechende Option für **Sicherheit wiederherstellen**aus. Sie können die Sicherheitseinstellungen des Zielcomputers anwenden, auf dem die Daten wiederhergestellt werden, oder die Sicherheitseinstellungen, die für das Produkt zum Zeitpunkt der Erstellung des Wiederherstellungspunkts galten.
 
-     Geben Sie an, ob eine **Benachrichtigung** gesendet werden soll, sobald die Wiederherstellung erfolgreich abgeschlossen wurde.
+     Geben Sie an, ob eine **Benachrichtigung** gesendet wird, sobald die Wiederherstellung erfolgreich abgeschlossen ist.
 
      ![Benachrichtigungen für externe DPM-Wiederherstellung](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-notifications.png)
-9. Auf dem Bildschirm **Zusammenfassung** werden die bisher ausgewählten Optionen aufgelistet. Nach dem Klicken auf **Wiederherstellen**werden die Daten am entsprechenden lokalen Speicherort wiederhergestellt.
+9. Auf dem Bildschirm **Zusammenfassung** werden die bisher ausgewählten Optionen aufgelistet. Nach dem Klicken auf **Wiederherstellen** werden die Daten am entsprechenden lokalen Speicherort wiederhergestellt.
 
     ![Zusammenfassung der Optionen für die externe DPM-Wiederherstellung](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-options-summary.png)
 
@@ -89,20 +88,22 @@ Zum Wiederherstellen von Daten von einem anderen Server von Azure Backup Server:
 ## <a name="troubleshooting-error-messages"></a>Problembehandlung bei Fehlermeldungen
 | Nein. | Fehlermeldung | Schritte zur Problembehandlung |
 |:---:|:--- |:--- |
-| 1. |Dieser Server ist nicht bei dem Tresor registriert, der durch die Tresoranmeldeinformationen angegeben ist. |**Ursache**: Dieser Fehler wird angezeigt, wenn die ausgewählte Datei mit den Tresoranmeldeinformationen nicht zu dem Sicherungstresor gehört, dem der Server von Azure Backup Server zugeordnet ist, auf dem die Wiederherstellung versucht wird. <br> **Lösung**: Laden Sie die Anmeldeinformationsdatei für den Tresor aus dem Sicherungstresor herunter, bei dem der Server von Azure Backup Server registriert ist. |
-| 2. |Die wiederherzustellenden Daten sind nicht verfügbar, oder der ausgewählte Server ist kein DPM-Server. |**Ursache**: Es sind keine anderen Server von Azure Backup Server bei dem Sicherungstresor registriert, oder die Server von Azure Backup Server haben ihre Metadaten noch nicht hochgeladen, oder der ausgewählte Server ist kein Server von Azure Backup Server (also kein Windows-Server oder Windows-Client). <br> **Lösung**: Wenn noch andere Server von Azure Backup Server bei dem Sicherungstresor registriert sind, müssen Sie sicherstellen, dass der neueste Azure Backup-Agent installiert ist. <br>Sind noch andere Server von Azure Backup Server bei dem Sicherungstresor registriert, warten Sie nach der Installation einen Tag, um den Wiederherstellungsprozess zu starten. Während der Nacht werden die Metadaten für geschützte Sicherungen in die Cloud hochgeladen. Die Daten sind dann für die Wiederherstellung verfügbar. |
-| 3. |Es sind keine anderen DPM-Server bei diesem Tresor registriert. |**Ursache:** Bei dem Tresor, von dem aus die Wiederherstellung versucht wird, sind keine weiteren Server von Azure Backup Server registriert.<br>**Lösung**: Wenn noch andere Server von Azure Backup Server bei dem Sicherungstresor registriert sind, müssen Sie sicherstellen, dass der neueste Azure Backup-Agent installiert ist.<br>Sind noch andere Server von Azure Backup Server bei dem Sicherungstresor registriert, warten Sie nach der Installation einen Tag, um den Wiederherstellungsprozess zu starten. Während der Nacht werden die Metadaten für geschützte Sicherungen in die Cloud hochgeladen. Die Daten sind dann für die Wiederherstellung verfügbar. |
+| 1. |Dieser Server ist nicht bei dem Tresor registriert, der durch die Tresoranmeldeinformationen angegeben ist. |**Ursache**: Dieser Fehler wird angezeigt, wenn die ausgewählte Datei mit den Tresoranmeldeinformationen nicht zu dem Recovery Services-Tresor gehört, dem die Azure Backup Server-Instanz zugeordnet ist, auf der die Wiederherstellung versucht wird. <br> **Lösung**: Laden Sie die Anmeldeinformationsdatei für den Tresor aus dem Recovery Services-Tresor herunter, bei dem die Azure Backup Server-Instanz registriert ist. |
+| 2. |Die wiederherzustellenden Daten sind nicht verfügbar, oder der ausgewählte Server ist kein DPM-Server. |**Ursache**: Es sind keine anderen Azure Backup Server-Instanzen bei dem Recovery Services-Tresor registriert, oder die Instanzen haben ihre Metadaten noch nicht hochgeladen, oder der ausgewählte Server ist keine Azure Backup Server-Instanz (also kein Windows-Server oder Windows-Client). <br> **Lösung**: Wenn noch andere Azure Backup Server-Instanzen bei dem Recovery Services-Tresor registriert sind, müssen Sie sicherstellen, dass der neueste Azure Backup-Agent installiert ist. <br>Sind noch andere Azure Backup Server-Instanzen bei dem Recovery Services-Tresor registriert, warten Sie nach der Installation einen Tag, um den Wiederherstellungsprozess zu starten. Während der Nacht werden die Metadaten für geschützte Sicherungen in die Cloud hochgeladen. Die Daten sind dann für die Wiederherstellung verfügbar. |
+| 3. |Es sind keine anderen DPM-Server bei diesem Tresor registriert. |**Ursache:** Bei dem Tresor, von dem aus die Wiederherstellung versucht wird, sind keine weiteren Server von Azure Backup Server registriert.<br>**Lösung**: Wenn noch andere Azure Backup Server-Instanzen bei dem Recovery Services-Tresor registriert sind, müssen Sie sicherstellen, dass der neueste Azure Backup-Agent installiert ist.<br>Sind noch andere Azure Backup Server-Instanzen bei dem Recovery Services-Tresor registriert, warten Sie nach der Installation einen Tag, um den Wiederherstellungsprozess zu starten. Während der Nacht werden die Metadaten für alle geschützten Sicherungen in die Cloud hochgeladen. Die Daten sind dann für die Wiederherstellung verfügbar. |
 | 4. |Die angegebene Verschlüsselungspassphrase stimmt nicht mit der Passphrase überein, die dem folgenden Server zugeordnet ist: **<server name>** |**Ursache:** Die beim Verschlüsseln der wiederherzustellenden Daten auf dem Server von Azure Backup Server verwendete Verschlüsselungspassphrase stimmt nicht mit der angegebenen Verschlüsselungspassphrase überein. Der Agent kann die Daten nicht entschlüsseln. Daher schlägt die Wiederherstellung fehl.<br>**Lösung:** Geben Sie genau dieselbe Verschlüsselungspassphrase an, die dem Server von Azure Backup Server zugeordnet ist, dessen Daten wiederhergestellt werden sollen. |
 
-## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen:
-1. **Warum kann ich nach der Installation von UR7 und dem neuesten Azure Backup-Agent keinen externen DPM-Server von einem anderen DPM-Server hinzufügen? (Gilt für den Fall, dass Sie SC DPM 2012 R2 verwenden)**
+## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
-    A) Für die vorhandene DPM-Server mit Datenquellen, die in der Cloud (mithilfe eines Updaterollups vor Update Rollup 7) geschützt sind, müssen Sie mindestens einen Tag nach der Installation von UR7 und des neuesten Azure Backup-Agents warten, bevor Sie *externe DPM-Server hinzufügen*. Diese Zeit ist erforderlich, um die Metadaten der DPM-Schutzgruppen in Azure hochzuladen. Dies erfolgt das erste Mal während der Nacht.
-2. **Welches ist die erforderliche Mindestversion des Azure Backup-Agents?**
+### <a name="why-cant-i-add-an-external-dpm-server-after-installing-ur7-and-latest-azure-backup-agent"></a>Warum kann ich nach der Installation von UR7 und des neuesten Azure Backup-Agents keinen externen DPM-Server hinzufügen?
 
-    A) Dieses Feature ist ab der Version 2.0.8719.0 des Azure Backup-Agents verfügbar.  Sie können die Version des Azure Backup-Agents überprüfen, indem Sie zu „Systemsteuerung“ **>** „Alle Systemsteuerungselemente“ **>** „Programme und Funktionen“ **>** „Microsoft Azure Recovery Services-Agent“ navigieren. Wenn die Version kleiner als 2.0.8719.0 ist, laden Sie den [neuesten Azure Backup-Agent](https://go.microsoft.com/fwLink/?LinkID=288905) herunter und installieren ihn.
+Für die vorhandenen DPM-Server mit Datenquellen, die in der Cloud (mithilfe eines Updaterollups vor Update Rollup 7) geschützt sind, müssen Sie mindestens einen Tag nach der Installation von UR7 und des neuesten Azure Backup-Agents warten, bevor Sie **externe DPM-Server hinzufügen**. Diese eintägige Frist ist erforderlich, um die Metadaten der DPM-Schutzgruppen in Azure hochzuladen. Schutzgruppen-Metadaten werden erstmalig über einen nächtlichen Auftrags hochgeladen.
 
-    ![Löschen des externen DPM](./media/backup-azure-alternate-dpm-server/external-dpm-azurebackupagentversion.png)
+### <a name="what-is-the-minimum-version-of-the-microsoft-azure-recovery-services-agent-needed"></a>Welche Mindestversion des Microsoft Azure Recovery Services-Agents ist erforderlich?
+
+Die zum Aktivieren dieses Features erforderliche Mindestversion des Microsoft Azure Recovery Services-Agents bzw. Azure Backup-Agents ist 2.0.8719.0.  So können Sie die Version des Agents überprüfen: Öffnen Sie „Systemsteuerung“ **>** „Alle Systemsteuerungselemente“ **>** „Programme und Funktionen“ **>** „Microsoft Azure Recovery Services-Agent“. Wenn die Version kleiner als 2.0.8719.0 ist, laden Sie den [neuesten Azure Backup-Agent](https://go.microsoft.com/fwLink/?LinkID=288905) herunter, und installieren Sie ihn.
+
+![Löschen des externen DPM](./media/backup-azure-alternate-dpm-server/external-dpm-azurebackupagentversion.png)
 
 ## <a name="next-steps"></a>Nächste Schritte:
 •    [Azure Backup – Häufig gestellte Fragen](backup-azure-backup-faq.md)

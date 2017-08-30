@@ -3,7 +3,7 @@ title: "Connector – Versionsveröffentlichungsverlauf | Microsoft Docs"
 description: "Dieses Thema listet alle Versionen des Connectors für Forefront Identity Manager (FIM) und Microsoft Identity Manager (MIM) auf."
 services: active-directory
 documentationcenter: 
-author: AndKjell
+author: fimguy
 manager: femila
 editor: 
 ms.assetid: 6a0c66ab-55df-4669-a0c7-1fe1a091a7f9
@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/12/2017
-ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
-ms.openlocfilehash: e9699abe0c1bdb6ea449c99e087ae56adb717b8d
+ms.date: 08/18/2017
+ms.author: fimguy
+ms.translationtype: HT
+ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
+ms.openlocfilehash: 426f58a24798fd43f5079dd153b9e84d324da622
 ms.contentlocale: de-de
-ms.lasthandoff: 06/30/2017
+ms.lasthandoff: 08/19/2017
 
 ---
 # <a name="connector-version-release-history"></a>Connector – Versionsveröffentlichungsverlauf
 Die Connectors für Forefront Identity Manager (FIM) und Microsoft Identity Manager (MIM) werden regelmäßig aktualisiert.
 
 > [!NOTE]
-> Dieses Thema behandelt nur FIM und MIM. Diese Connectors werden für Azure AD Connect nicht unterstützt.
+> Dieses Thema behandelt nur FIM und MIM. Die Installation dieser Connectors wird für Azure AD Connect nicht unterstützt. Bei einem Upgrade auf den angegebenen Build werden veröffentlichte Connectors in AADConnect vorinstalliert.
 
 In diesem Thema sind alle veröffentlichten Connector-Versionen aufgeführt.
 
@@ -38,23 +38,36 @@ Verwandte Links:
 * [PowerShell-Connector](active-directory-aadconnectsync-connector-powershell.md) – Referenzdokumentation
 * [Lotus Domino-Connector](active-directory-aadconnectsync-connector-domino.md) – Referenzdokumentation
 
+
+## <a name="116040-aadconnect-11xxx0"></a>1.1.604.0 (AADConnect 1.1.XXX.0)
+
+
+### <a name="fixed-issues"></a>Behobene Probleme:
+
+* Webdienste (generisch):
+  * Ein Problem, das die Erstellung eines SOAP-Projekts verhindert, wenn zwei oder mehr Endpunkte vorhanden sind, wurde behoben.
+* SQL (generisch):
+  * Beim Importvorgang wurde die Zeit von GSQL nicht ordnungsgemäß konvertiert, wenn die Speicherung im Connectorbereich erfolgte. Das Standardformat für Datum und Uhrzeit für den Connectorbereich von GSQL wurde von „JJJJ-MM-TT hh:mm:ssZ“ in „JJJJ-MM-TT HH:mm:ssZ“ geändert.
+
 ## <a name="115510-aadconnect-115530"></a>1.1.551.0 (AADConnect 1.1.553.0)
 
 ### <a name="fixed-issues"></a>Behobene Probleme:
 
 * Webdienste (generisch):
-  * Das Tool „Wsconfig“ hat das JSON-Array nicht korrekt von „Beispielanforderung“ für die REST-Dienstmethode konvertiert. Dies hatte Probleme bei der Serialisierung dieses JSON-Arrays für die REST-Anforderung zur Folge.
-  * Die Verwendung von Leersymbolen in JSON-Attributnamen wird vom Webdienstconnector-Konfigurationstool nicht unterstützt. Der Datei „WSConfigTool.exe.config“ kann manuell ein Ersetzungsmuster hinzugefügt werden. Beispiel: ```<appSettings> <add key=”JSONSpaceNamePattern” value="__" /> </appSettings>```
+  * Das Tool „Wsconfig“ hat das JSON-Array nicht korrekt von „Beispielanforderung“ für die REST-Dienstmethode konvertiert. Dadurch wurden Probleme bei der Serialisierung dieses JSON-Arrays für die REST-Anforderung verursacht.
+  * Das Konfigurationstool für Webdienstconnectors unterstützt in Namen von JSON-Attributen keine Bereichssymbole. 
+    * Der Datei „WSConfigTool.exe.config“ kann ein Ersetzungsmuster hinzugefügt werden, z.B. ```<appSettings> <add key=”JSONSpaceNamePattern” value="__" /> </appSettings>```.
 
 * Lotus Notes:
-  * Wenn die Option zum Zulassen benutzerdefinierter Zertifizierer für Organisationen/Organisationseinheiten**** deaktiviert ist, tritt für den Connector ein Fehler beim Export auf. Update: Nach dem Exportfluss werden alle Attribute in Domino exportiert, zum Zeitpunkt des Exports wird jedoch ein KeyNotFoundException-Fehler an Sync zurückgegeben. Der Grund: Beim Umbenennungsvorgang tritt ein Fehler auf, wenn versucht wird, DN (UserName-Attribut) durch Ändern eines der folgenden Attribute zu ändern:  
-    - LastName
-    - FirstName
-    - MiddleInitial
-    - AltFullName
-    - AltFullNameLanguage
-    - ou
-    - altcommonname
+  * Wenn die Option zum Zulassen benutzerdefinierter Zertifizierer für Organisationen/Organisationseinheiten**** deaktiviert ist, tritt für den Connector ein Fehler beim Export auf. Update: Nach dem Exportfluss werden alle Attribute in Domino exportiert, zum Zeitpunkt des Exports wird jedoch ein KeyNotFoundException-Fehler an Sync zurückgegeben. 
+    * Der Grund: Beim Umbenennungsvorgang tritt ein Fehler auf, wenn versucht wird, DN (UserName-Attribut) durch Ändern eines der folgenden Attribute zu ändern:  
+      - LastName
+      - FirstName
+      - MiddleInitial
+      - AltFullName
+      - AltFullNameLanguage
+      - ou
+      - altcommonname
 
   * Wenn die Option zum Zulassen benutzerdefinierter Zertifizierer für Organisationen/Organisationseinheiten**** aktiviert ist, die erforderlichen Zertifizierer aber noch leer sind, tritt ein KeyNotFoundException-Fehler auf.
 
@@ -147,7 +160,7 @@ Erste Version des [Generischer SQL-Connector](active-directory-aadconnectsync-co
   * Zusätzliche Unterstützung für den Deltaimport mit Isode.
 * Webdienst-Connector:
   * Die csEntryChangeResult- und setImportErrorCode-Aktivität wurde aktualisiert, um das Zurückgeben von Fehlern der Objektebene an das Synchronisierungsmodul zu ermöglichen.
-  * Aktualisierte die „SAP6“ und „SAP6User“ Vorlagen dahingehend, das die neue Objektebenenfehler-Funktionalität verwendet wird.
+  * Aktualisierte die „SAP6“ und „SAP6User“ Vorlagen dahingehend, dass die neue Objektebenenfehler-Funktionalität verwendet wird.
 * Lotus Domino-Connector:
   * Für den Export benötigen Sie einen Zertifizierer pro Adressbuch. Sie können jetzt dasselbe Kennwort für alle Zertifizierer verwenden, um die Verwaltung zu vereinfachen.
 

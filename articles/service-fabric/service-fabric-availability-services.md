@@ -12,28 +12,30 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/05/2017
+ms.date: 08/18/2017
 ms.author: masnider
-translationtype: Human Translation
-ms.sourcegitcommit: dafaf29b6827a6f1c043af3d6bfe62d480d31ad5
-ms.openlocfilehash: 1db7b4bcfa4b7c474a4b0eb4ef469a6cb1fe54a0
-
+ms.translationtype: HT
+ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
+ms.openlocfilehash: b0d4615a9b8ab566f69b27e4879b6e2d597b4990
+ms.contentlocale: de-de
+ms.lasthandoff: 08/19/2017
 
 ---
+
 # <a name="availability-of-service-fabric-services"></a>Verfügbarkeit der Service Fabric-Dienste
 Dieser Artikel bietet eine Übersicht darüber, wie Service Fabric die Verfügbarkeit eines Diensts aufrechterhält.
 
 ## <a name="availability-of-service-fabric-stateless-services"></a>Verfügbarkeit zustandsloser Service Fabric-Dienste
-Azure Service Fabric-Dienste können zustandsbehaftet oder zustandslos sein. Eine zustandsloser Dienst ist ein Anwendungsdienst, der keinen [lokale persistenten Zustand](service-fabric-concepts-state.md)aufweist.
+Azure Service Fabric-Dienste können zustandsbehaftet oder zustandslos sein. Ein zustandsloser Dienst ist ein Anwendungsdienst, der keinen [lokalen Zustand](service-fabric-concepts-state.md) aufweist, welcher hoch verfügbar oder zuverlässig sein muss.
 
-Für das Erstellen eines zustandslosen Diensts muss eine Anzahl von Instanzen definiert werden. Dieser Wert legt die Anzahl von Instanzen für die Anwendungslogik des statusfreien Diensts fest, die im Cluster ausgeführt werden sollen. Das Erhöhen der Anzahl der Instanzen ist die empfohlene Vorgehensweise für das Skalieren zustandsloser Dienste.
+Für das Erstellen eines zustandslosen Diensts muss eine `InstanceCount` definiert werden. Dieser Wert legt die Anzahl von Instanzen für die Anwendungslogik des statusfreien Diensts fest, die im Cluster ausgeführt werden sollen. Das Erhöhen der Anzahl der Instanzen ist die empfohlene Vorgehensweise für das Skalieren zustandsloser Dienste.
 
-Wird in einer Instanz eines zustandslosen Diensts ein Fehler erkannt, wird auf einem anderen geeigneten Knoten im Cluster eine neue Instanz erstellt.
+Wird in einer Instanz eines zustandslosen benannten Diensts ein Fehler erkannt, wird auf einem anderen geeigneten Knoten im Cluster eine neue Instanz erstellt. Eine zustandslosen Dienstinstanz kann z.B. auf Knoten1 ausfallen und auf Knoten5 neu erstellt werden.
 
 ## <a name="availability-of-service-fabric-stateful-services"></a>Verfügbarkeit zustandsbehafteter Service Fabric-Dienste
-Einem zustandsbehafteten Dienst ist ein Zustand zugeordnet. In Service Fabric ist ein zustandsbehafteter Dienst als eine Replikatgruppe modelliert. Jedes Replikat ist eine Instanz des Dienstcodes, die über eine Kopie des Status verfügt. Lese- und Schreibvorgänge erfolgen im selben Replikat (primäres Replikat). Änderungen des Zustands aufgrund von Schreibvorgängen werden in mehreren anderen Replikaten (aktive sekundäre Replikate) *repliziert*. Die Kombination aus primärem Replikat und aktiven sekundären Replikaten ist die Replikatgruppe des Diensts.
+Einem zustandsbehafteten Dienst ist ein Zustand zugeordnet. In Service Fabric ist ein zustandsbehafteter Dienst als eine Replikatgruppe modelliert. Jedes Replikat ist eine ausgeführte Instanz des Dienstcodes, die über eine Kopie des Zustands des jeweiligen Diensts verfügt. Lese- und Schreibvorgänge erfolgen im selben Replikat (primäres Replikat). Änderungen des Zustands aufgrund von Schreibvorgängen werden in mehrere andere Replikate (sog. aktive sekundäre Replikate) *repliziert*. 
 
-Nur ein primäres Replikat kann Lese- und Schreibanforderungen verarbeiten, aber es können mehrere aktive sekundäre Replikate vorhanden sein. Die Anzahl der aktiven sekundären Replikate ist konfigurierbar. Eine höhere Anzahl von Replikaten kann eine höhere Anzahl von gleichzeitigen Software- und Hardwarefehlern tolerieren.
+Es kann nur ein primäres Replikat geben, aber es können mehrere aktive sekundäre Replikate vorhanden sein. Die Anzahl der aktiven sekundären Replikate ist konfigurierbar. Eine höhere Anzahl von Replikaten kann eine höhere Anzahl von gleichzeitigen Software- und Hardwarefehlern tolerieren.
 
 Wenn das primäre Replikat ausfällt, macht Service Fabric eines der aktiven sekundären Replikate zum neuen primären Replikat. Dieses aktive sekundäre Replikat verfügt bereits über die aktualisierte Version des Zustands (durch *Replikation*) und kann die Verarbeitung von Lese- und Schreibvorgängen fortsetzen.
 
@@ -43,20 +45,14 @@ Dieses Konzept, bei dem ein Replikat ein primäres oder ein aktives sekundäres 
 Die Rolle eines Replikats wird zum Verwalten des Lebenszyklus des Zustands verwendet, der von diesem Replikat verwaltet wird. Ein Replikat mit der Rolle eines primären Replikats verarbeitet Leseanforderungen. Das primäre Replikat verarbeitet auch alle Schreibanforderungen, indem es seinen Status aktualisiert und die Änderungen repliziert. Diese Änderungen werden auf den aktiven sekundären Replikaten in der Replikatgruppe übernommen. Die Aufgabe eines aktiven sekundären Replikats ist es, die vom primären Replikat replizierten Zustandsänderungen zu empfangen und den eigenen Zustand entsprechend zu aktualisieren.
 
 > [!NOTE]
-> In komplexen Programmiermodellen, wie z.B. im [Reliable Actors-Framework](service-fabric-reliable-actors-introduction.md) und bei [Reliable Services](service-fabric-reliable-services-introduction.md), ist das Konzept der Replikatrolle von den Entwicklern weg abstrahiert. Bei Akteuren sind Rollen unnötig, während sie in Diensten bei Bedarf sichtbar sind, aber stark vereinfacht.
->
+> In komplexen Programmiermodellen, wie z.B. [Reliable Actors](service-fabric-reliable-actors-introduction.md) und [Reliable Services](service-fabric-reliable-services-introduction.md), ist das Konzept der Replikatrolle vor den Entwicklern verborgen. Bei „Reliable Actors“ sind Rollen unnötig, während sie in „Reliable Services“ in den meisten Szenarien stark vereinfacht sind.
 >
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu den Service Fabric-Konzepten finden Sie in den folgenden Artikeln:
 
-* [Scaling Service Fabric Applications (in englischer Sprache)](service-fabric-concepts-scalability.md)
-* [Partitionieren von Service Fabric-Diensten](service-fabric-concepts-partitioning.md)
-* [Definieren und Verwalten von Zuständen](service-fabric-concepts-state.md)
-* [Reliable Services](service-fabric-reliable-services-introduction.md)
-
-
-
-<!--HONumber=Jan17_HO1-->
-
+- [Skalieren von Service Fabric-Diensten](service-fabric-concepts-scalability.md)
+- [Partitionieren von Service Fabric-Diensten](service-fabric-concepts-partitioning.md)
+- [Definieren und Verwalten von Zuständen](service-fabric-concepts-state.md)
+- [Reliable Services](service-fabric-reliable-services-introduction.md)
 

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/15/2017
+ms.date: 08/17/2017
 ms.author: sethm
 ms.translationtype: HT
-ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
-ms.openlocfilehash: cb5ec1a105c632626c5caf39e4fd356177883123
+ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
+ms.openlocfilehash: d790eec30b669469a0837ccdc14b771d1953829b
 ms.contentlocale: de-de
-ms.lasthandoff: 08/05/2017
+ms.lasthandoff: 08/19/2017
 
 ---
 
@@ -151,7 +151,7 @@ Die Durchsatzkapazität von Event Hubs wird durch *Durchsatzeinheiten* gesteuert
 * Eingang: bis zu 1 MB pro Sekunde oder 1.000 Ereignisse pro Sekunde, je nachdem, was zuerst eintritt
 * Ausgang: bis zu 2 MB pro Sekunde
 
-Bei Überschreitung der Kapazität der erworbenen Durchsatzeinheiten wird der Eingang eingeschränkt und [ServerBusyException](/dotnet/api/microsoft.azure.eventhubs.serverbusyexception) zurückgegeben. Der Ausgang erstellt zwar keine Drosselungsausnahmen, die Kapazität der erworbenen Durchsatzeinheiten ist allerdings dennoch beschränkt. Wenn Sie Ausnahmen für die Veröffentlichungsrate erhalten oder einen größeren Ausgang erwarten, überprüfen Sie, wie viele Durchsatzeinheiten Sie für den Namespace erworben haben. Sie können Durchsatzeinheiten auf dem Blatt **Skalierung** der Namespaces im [Azure-Portal](https://portal.azure.com) verwalten. Mithilfe der [Event Hubs-APIs](event-hubs-api-overview.md) können Durchsatzeinheiten auch programmgesteuert verwaltet werden.
+Bei Überschreitung der Kapazität der erworbenen Durchsatzeinheiten wird der Eingang eingeschränkt und [ServerBusyException](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception) zurückgegeben. Der Ausgang erstellt zwar keine Drosselungsausnahmen, die Kapazität der erworbenen Durchsatzeinheiten ist allerdings dennoch beschränkt. Wenn Sie Ausnahmen für die Veröffentlichungsrate erhalten oder einen größeren Ausgang erwarten, überprüfen Sie, wie viele Durchsatzeinheiten Sie für den Namespace erworben haben. Sie können Durchsatzeinheiten auf dem Blatt **Skalierung** der Namespaces im [Azure-Portal](https://portal.azure.com) verwalten. Mithilfe der [Event Hubs-APIs](event-hubs-api-overview.md) können Durchsatzeinheiten auch programmgesteuert verwaltet werden.
 
 Durchsatzeinheiten werden auf Stundenbasis abgerechnet und im Voraus erworben. Nach dem Erwerb werden Durchsatzeinheiten für mit einem Minimum von einer Stunde in Rechnung gestellt. Bis zu 20 Durchsatzeinheiten können für einen Event Hubs-Namespace erworben und in allen Event Hubs im Namespace gemeinsam verwendet werden.
 
@@ -169,8 +169,8 @@ Weitere Informationen zu Event Hubs erhalten Sie unter den folgenden Links:
 * [Programmierleitfaden für Event Hubs](event-hubs-programming-guide.md)
 * [Verfügbarkeit und Konsistenz in Event Hubs](event-hubs-availability-and-consistency.md)
 * [Event Hubs – häufig gestellte Fragen](event-hubs-faq.md)
-* [Beispielanwendungen mit Event Hubs][]
+* [Event Hubs-Beispiele][]
 
 [Event Hubs tutorial]: event-hubs-dotnet-standard-getstarted-send.md
-[Beispielanwendungen mit Event Hubs]: https://github.com/Azure/azure-event-hubs/tree/master/samples
+[Event Hubs-Beispiele]: https://github.com/Azure/azure-event-hubs/tree/master/samples
 

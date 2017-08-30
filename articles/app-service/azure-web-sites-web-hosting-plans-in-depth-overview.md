@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 12/02/2016
 ms.author: byvinyal
 ms.translationtype: HT
-ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
-ms.openlocfilehash: 07d5056fdea9d4975fe91a5b842a9208385e779e
+ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
+ms.openlocfilehash: f97be571d104e3cc1c6ee732886fa7133ba0dc83
 ms.contentlocale: de-de
-ms.lasthandoff: 07/12/2017
+ms.lasthandoff: 08/19/2017
 
 ---
 # <a name="azure-app-service-plans-in-depth-overview"></a>Azure App Service-Pläne – Detaillierte Übersicht
@@ -33,7 +33,7 @@ In App Service-Plänen wird Folgendes definiert:
 - Instanzgröße (klein, mittel, groß)
 - SKU (Free, Shared, Basic, Standard, Premium)
 
-Web-Apps, Mobile Apps, API-Apps und Funktionen-Apps (bzw. Funktionen) in [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) werden jeweils unter einem App Service-Plan ausgeführt.  Apps im gleichen Abonnement, in der gleichen Region und in der gleichen Ressourcengruppe können sich den gleichen App Service-Plan teilen. 
+Web-Apps, Mobile Apps, API-Apps und Funktionen-Apps (bzw. Funktionen) in [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) werden jeweils unter einem App Service-Plan ausgeführt.  Apps im gleichen Abonnement und in der gleichen Region können den gleichen App Service-Plan nutzen. 
 
 Alle einem **App Service-Plan** zugewiesenen Anwendungen teilen sich die durch den Plan definierten Ressourcen. Es spart Kosten, wenn Sie mehrere Apps in einem einzelnen App Service-Plan hosten.
 

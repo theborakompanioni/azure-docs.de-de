@@ -11,18 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/15/2017
+ms.date: 08/22/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e6dcd3f6f9c7c8765409c3b0d50e4b3843bab5c6
-ms.openlocfilehash: e39ee63d190308b87ebeb43adeb8b3e5db86df57
+ms.translationtype: HT
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: accf292f70bf0eafdefc00c3feeaf8e346605401
 ms.contentlocale: de-de
-ms.lasthandoff: 02/22/2017
+ms.lasthandoff: 08/23/2017
 
 ---
-# Häufig gestellte Fragen zu Azure Active Directory-Berichten
-<a id="azure-active-directory-reporting-faq" class="xliff"></a>
+# <a name="azure-active-directory-reporting-faq"></a>Häufig gestellte Fragen zu Azure Active Directory-Berichten
 
 Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Azure Active Directory-Berichten.  
 Weitere Informationen finden Sie unter [Azure Active Directory-Berichte](active-directory-reporting-azure-portal.md). 
@@ -84,9 +83,31 @@ Weitere Informationen finden Sie unter [Azure Active Directory-Berichte](active-
 
 **F:Werden nach Erwerb einer Azure AD-Premium-Lizenz die Daten des letzten Monats angezeigt?**
 
-**A:**: Wenn Sie vor Kurzem zu einer Premium-Version (einschließlich einer Testversion) gewechselt sind, werden Ihnen anfänglich Daten von bis zu 7 Tagen angezeigt. Sobald sich Daten angesammelt haben, werden Daten von bis zu 30 Tagen angezeigt.
+**A:** Wenn Sie vor Kurzem zu einer Premium-Version (einschließlich einer Testversion) gewechselt sind, werden Ihnen anfänglich Daten von bis zu 7 Tagen angezeigt. Sobald sich Daten angesammelt haben, werden Daten von bis zu 30 Tagen angezeigt.
 
- 
 ---
 
+**F: Es gibt ein Risikoereignis in Identity Protection, aber ich sehe keine entsprechende Anmeldung unter „Alle Anmeldungen“. Entspricht dies dem erwarteten Verhalten?**
+
+**A:** Ja, Identity Protection beurteilt das Risiko für alle Authentifizierungsflows, egal ob diese interaktiv oder nicht interaktiv sind. „Alle Anmeldungen“ führt jedoch nur die interaktiven Anmeldungen auf.
+
+---
+
+**F: Wie kann ich den Bericht „Benutzer mit Risikokennzeichnung“ im Azure-Portal herunterladen?**
+
+**A:** Die Möglichkeit zum Herunterladen des Berichts *Benutzer mit Risikokennzeichnung* wird bald hinzugefügt.
+
+---
+
+**F: Wie erfahre ich, warum eine Anmeldung oder ein Benutzer im Azure-Portal als riskant gekennzeichnet wurde?**
+
+**A:** Kunden der Premium Edition können mehr über die zugrunde liegenden Risikoereignisse erfahren, indem Sie auf den Benutzer unter „Benutzer mit Risikokennzeichnung“ oder auf „riskante Anmeldevorgänge“ klicken. Kunden der kostenlosen und der Basic Edition können die riskanten Benutzer und Anmeldungen ohne die zugrunde liegenden Risikoereignisse sehen.
+
+---
+
+**F: Wie werden IP-Adressen im Bericht zu Anmeldungen und riskanten Anmeldungen berechnet?**
+
+**A:** IP-Adressen werden so ausgestellt, dass es keine definitive Verbindung zwischen einer IP-Adresse und dem physischen Standort des Computers mit dieser Adresse gibt. Dies wird durch Faktoren wie Mobilfunkanbieter und VPNs verkompliziert, die IP-Adressen aus zentralen Pools zuweisen, die häufig sehr weit von den Orten entfernt sind, an denen das Clientgerät tatsächlich verwendet wird. Bei Berücksichtigung dieser Vorgaben erfolgt das Konvertieren einer IP-Adresse in einen physischen Standort basierend auf Ablaufverfolgungen, Registrierungsdaten, Reverse-Lookups und anderen Informationen. 
+
+---
 

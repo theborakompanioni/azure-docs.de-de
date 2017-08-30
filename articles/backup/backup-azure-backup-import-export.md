@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 4/20/2017
 ms.author: saurse;nkolli;trinadhk
-translationtype: Human Translation
-ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
-ms.openlocfilehash: 4f5e58713d925d2f7477dc072ecec455dec70792
-ms.lasthandoff: 04/21/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 074d21269206b243f8b0e8747811544132805229
+ms.contentlocale: de-de
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Workflow zur Offlinesicherung in Azure Backup
 Azure Backup verfügt über mehrere integrierte effizienzsteigernde Funktionen, die die Netzwerk- und Speicherkosten bei den ersten vollständigen Datensicherungen in Azure reduzieren. Bei den ersten vollständigen Sicherungen werden meist große Datenmengen übertragen, sodass eine höhere Netzwerkbandbreite als bei den nachfolgenden Sicherungen erforderlich ist, bei denen nur die Deltamengen bzw. Inkremente übertragen werden. Azure Backup komprimiert die Erstsicherungen. Durch den Prozess des Offlineseedings kann Azure Backup Datenträger verwenden, um die komprimierten Daten der Erstsicherungen offline in Azure hochzuladen.  
 
-Der Offlineseeding-Prozess von Azure Backup ist eng in den [Import/Export-Dienst von Azure](../storage/storage-import-export-service.md) integriert, der Ihnen die Übertragung von Daten mithilfe von Datenträgern in Azure ermöglicht. Wenn Sie bei der Erstsicherung mehrere Terabyte an Daten über ein Netzwerk mit hoher Latenz und niedriger Bandbreite übertragen müssen, können Sie die erste Sicherungskopie mithilfe des Offlineseeding-Workflows auf einer oder mehreren Festplatten an ein Azure-Datencenter senden. Dieser Artikel bietet eine Übersicht über die für diesen Workflow erforderlichen Schritte.
+Der Offlineseeding-Prozess von Azure Backup ist eng in den [Import/Export-Dienst von Azure](../storage/common/storage-import-export-service.md) integriert, der Ihnen die Übertragung von Daten mithilfe von Datenträgern in Azure ermöglicht. Wenn Sie bei der Erstsicherung mehrere Terabyte an Daten über ein Netzwerk mit hoher Latenz und niedriger Bandbreite übertragen müssen, können Sie die erste Sicherungskopie mithilfe des Offlineseeding-Workflows auf einer oder mehreren Festplatten an ein Azure-Datencenter senden. Dieser Artikel bietet eine Übersicht über die für diesen Workflow erforderlichen Schritte.
 
 ## <a name="overview"></a>Übersicht
 Mit der Offlineseeding-Funktion von Azure Backup und Azure Import/Export können die Daten einfach mithilfe von Datenträgern offline in Azure hochgeladen werden. Statt die erste vollständige Kopie über das Netzwerk zu übertragen, werden die Sicherungsdaten in einen *Stagingspeicherort*geschrieben. Nachdem die Daten mit dem Azure Import/Export-Tool an den Stagingspeicherort kopiert wurden, werden sie je nach Datenmenge auf eine oder mehrere SATA-Festplatten geschrieben. Diese Festplatten werden später an das nächstgelegene Azure-Datencenter gesendet.
@@ -42,19 +42,19 @@ Nachdem die Sicherungsdaten in Azure hochgeladen wurden, kopiert Azure Backup di
 >
 
 ## <a name="prerequisites"></a>Voraussetzungen
-* [Machen Sie sich mit dem Azure Import/Export-Workflow vertraut](../storage/storage-import-export-service.md).
+* [Machen Sie sich mit dem Azure Import/Export-Workflow vertraut](../storage/common/storage-import-export-service.md).
 * Stellen Sie vor dem Initiieren des Workflows Folgendes sicher:
   * Ein Azure Backup-Tresor wurde erstellt.
   * Tresoranmeldeinformationen wurden heruntergeladen.
   * Der Azure Backup-Agent wurde auf dem Windows-Server/Windows-Client oder System Center Data Protection Manager-Server installiert, und der Computer ist beim Azure Backup-Tresor registriert.
 * [Laden Sie die Datei mit den Azure-Veröffentlichungseinstellungen](https://manage.windowsazure.com/publishsettings) auf den Computer herunter, von dem Ihre Daten gesichert werden sollen.
 * Bereiten Sie einen Stagingspeicherort vor. Dabei kann es sich um eine Netzwerkfreigabe oder ein zusätzliches Laufwerk auf dem Computer handeln. Der Stagingspeicherort ist ein Übergangsspeicher, der während dieses Workflows temporär verwendet wird. Stellen Sie sicher, dass der Stagingspeicherort genügend Speicherplatz für Ihre erste Kopie bietet. Wenn Sie beispielsweise einen 500-GB-Dateiserver sichern möchten, muss der Stagingbereich mindestens 500 GB groß sein. (Aufgrund der Komprimierung wird weniger Speicherplatz genutzt.)
-* Stellen Sie sicher, dass Sie ein unterstütztes Laufwerk verwenden. Für den Import/Export-Dienst werden nur 2,5-Zoll-SSD-Laufwerke bzw. interne 2,5-Zoll- oder 3,5-Zoll-SATA II- oder -III-Festplatten unterstützt. Sie können Festplatten mit bis zu 10 TB verwenden. Schlagen Sie in der [Dokumentation zum Azure Import/Export-Dienst](../storage/storage-import-export-service.md#hard-disk-drives) die aktuell vom Dienst unterstützten Laufwerke nach.
+* Stellen Sie sicher, dass Sie ein unterstütztes Laufwerk verwenden. Für den Import/Export-Dienst werden nur 2,5-Zoll-SSD-Laufwerke bzw. interne 2,5-Zoll- oder 3,5-Zoll-SATA II- oder -III-Festplatten unterstützt. Sie können Festplatten mit bis zu 10 TB verwenden. Schlagen Sie in der [Dokumentation zum Azure Import/Export-Dienst](../storage/common/storage-import-export-service.md#hard-disk-drives) die aktuell vom Dienst unterstützten Laufwerke nach.
 * Aktivieren Sie BitLocker auf dem Computer, an den der SATA-Laufwerkswriter angeschlossen ist.
 * [Laden Sie das Azure Import/Export-Tool](http://go.microsoft.com/fwlink/?LinkID=301900&clcid=0x409) auf den Computer herunter, mit dem der SATA-Laufwerkswriter verbunden ist. Dieser Schritt ist nicht erforderlich, wenn Sie das Update vom August 2016 von Azure Backup (oder höher) heruntergeladen und installiert haben.
 
 ## <a name="workflow"></a>Workflow
-In diesem Abschnitt wird erläutert, wie Sie den Workflow zur Offlinesicherung durchführen, sodass Ihre Daten an ein Azure-Datencenter gesendet und in Azure Storage hochgeladen werden können. Falls Sie Fragen zum Import-Dienst oder zu einem anderen Aspekt des Prozesses haben, finden Sie in der oben erwähnten Dokumentation eine [Übersicht über den Import-Dienst](../storage/storage-import-export-service.md) .
+In diesem Abschnitt wird erläutert, wie Sie den Workflow zur Offlinesicherung durchführen, sodass Ihre Daten an ein Azure-Datencenter gesendet und in Azure Storage hochgeladen werden können. Falls Sie Fragen zum Import-Dienst oder zu einem anderen Aspekt des Prozesses haben, finden Sie in der oben erwähnten Dokumentation eine [Übersicht über den Import-Dienst](../storage/common/storage-import-export-service.md) .
 
 ### <a name="initiate-offline-backup"></a>Initiieren der Offlinesicherung
 1. Beim Planen einer Sicherung wird der folgende Bildschirm angezeigt (in Windows Server, auf dem Windows-Client oder in System Center Data Protection Manager).
@@ -208,6 +208,6 @@ Nach Abschluss des Importauftrags sind die Daten der Erstsicherung in Ihrem Spei
 Sobald die Daten der Erstsicherung im Speicherkonto verfügbar sind, kopiert der Microsoft Azure Recovery Services-Agent den Inhalt der Daten aus diesem Konto in den Sicherungstresor oder den Recovery Services-Tresor (je nach Verfügbarkeit). Zum nächsten geplanten Sicherungszeitpunkt führt der Azure Backup-Agent die inkrementelle Sicherung über die erste Sicherungskopie durch.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Falls Sie Fragen zum Azure Import/Export-Workflow haben, finden Sie unter [Verwenden des Microsoft Azure Import/Export-Diensts zum Übertragen von Daten in den Blobspeicher](../storage/storage-import-export-service.md)weitere Informationen.
+* Falls Sie Fragen zum Azure Import/Export-Workflow haben, finden Sie unter [Verwenden des Microsoft Azure Import/Export-Diensts zum Übertragen von Daten in den Blobspeicher](../storage/common/storage-import-export-service.md)weitere Informationen.
 * Bei Fragen zum Workflow finden Sie im Abschnitt zur Offlinesicherung in den [häufig gestellten Fragen](backup-azure-backup-faq.md) zu Azure Backup weitere Informationen.
 

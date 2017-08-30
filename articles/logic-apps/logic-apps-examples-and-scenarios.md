@@ -15,10 +15,10 @@ ms.workload: integration
 ms.date: 08/9/2017
 ms.author: LADocs; jehollan
 ms.translationtype: HT
-ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
-ms.openlocfilehash: 2d45090b09d83a98cc0811dca8d6f2384d1b11ad
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 50df1e3db239a6aa34ac91bfbd582625c5b0041b
 ms.contentlocale: de-de
-ms.lasthandoff: 08/10/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="examples-and-common-scenarios-for-azure-logic-apps"></a>Beispiele und häufige Szenarien für Logic Apps
@@ -31,7 +31,7 @@ Azure Logic Apps bietet robuste Orchestrierung und Integration für verschiedene
 
 ## <a name="respond-to-triggers-and-extend-actions"></a>Reagieren auf Trigger und Erweitern von Aktionen
 
-Jede Logic App beginnt mit einem Trigger. Beispielsweise kann Ihr Workflow durch ein geplantes Ereignis, einen manuellen Aufruf oder ein Ereignis von einem externen System gestartet werden, etwa mit dem Trigger „wenn einem FTP-Server eine Datei hinzugefügt wird“. Azure Logic Apps unterstützen aktuell mehr als 100 gebrauchsfertige Connectors, die von lokalem SAP bis zu Azure Cognitive Services reichen. Für Systeme und Dienste, für die möglicherweise keine veröffentlichten Connectors verfügbar sind, können Sie Logic Apps darüber hinaus erweitern.
+Jede Logic App beginnt mit einem Trigger. Beispielsweise kann Ihr Workflow durch ein geplantes Ereignis, einen manuellen Aufruf oder ein Ereignis von einem externen System gestartet werden, etwa mit dem Trigger „wenn einem FTP-Server eine Datei hinzugefügt wird“. Azure Logic Apps unterstützen aktuell mehr als 100 gebrauchsfertige Connectors, die von lokalem SAP bis zu Microsoft Cognitive Services reichen. Für Systeme und Dienste, für die möglicherweise keine veröffentlichten Connectors verfügbar sind, können Sie Logic Apps darüber hinaus erweitern.
 
 * [Erstellen von benutzerdefinierten Triggern oder Aktionen](../logic-apps/logic-apps-create-api-app.md)
 * [Einrichten von Aktionen mit langer Ausführungszeit für Workflowausführungen](../logic-apps/logic-apps-create-api-app.md)
@@ -75,6 +75,10 @@ Logic Apps bieten außerdem Integration mit vielen Diensten, wie etwa Azure Func
 * [Aufrufen von Azure Functions aus Logic-Apps](../logic-apps/logic-apps-azure-functions.md)
 * [Szenario: Auslösen von Logic Apps mit Azure Functions](../logic-apps/logic-apps-scenario-function-sb-trigger.md)
 * [Blog: Call SOAP endpoints from logic apps (Aufrufen von SOAP-Endpunkten aus Logic Apps)](https://blogs.msdn.microsoft.com/logicapps/2016/04/07/using-soap-services-with-logic-apps/)
+
+## <a name="end-to-end-scenarios"></a>Komplettszenarien
+
+* [Whitepaper: Nahtlose Fallverwaltung durch Unternehmensintegration mit Azure-Diensten wie Logic Apps](https://aka.ms/enterprise-integration-e2e-case-management-utilities-logic-apps)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

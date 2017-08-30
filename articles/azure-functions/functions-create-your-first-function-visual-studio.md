@@ -1,3 +1,4 @@
+
 ---
 title: Erstellen Ihrer ersten Funktion in Azure mit Visual Studio | Microsoft-Dokumentation
 description: "Es wird beschrieben, wie Sie in Azure eine einfache per HTTP ausgelöste Funktion erstellen und veröffentlichen, indem Sie die Azure Functions-Tools für Visual Studio verwenden."
@@ -11,26 +12,24 @@ keywords: Azure Functions, Funktionen, Ereignisverarbeitung, Compute, serverlose
 ms.assetid: 82db1177-2295-4e39-bd42-763f6082e796
 ms.service: functions
 ms.devlang: multiple
-ms.topic: hero-article
+ms.topic: quickstart
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 07/05/2017
 ms.author: glenga
+ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
-ms.openlocfilehash: 4a6b706b63c4e1b0df3c46bce4ff6877efca4ead
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 7e1fcecbf77da402b8c223caf6a2e81c704c3219
 ms.contentlocale: de-de
-ms.lasthandoff: 08/02/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="create-your-first-function-using-visual-studio"></a>Erstellen Ihrer ersten Funktion mit Visual Studio
 
 Mit Azure Functions können Sie Code in einer serverlosen Umgebung ausführen, ohne vorher eine VM erstellen oder eine Webanwendung veröffentlichen zu müssen.
 
-> [!IMPORTANT]
-> In diesem Thema wird eine Vorschauversion von Visual Studio verwendet, um die Schritte auszuführen. Stellen Sie vor dem Fortfahren sicher, dass Sie [Vorschauversion 15.3 von Visual Studio 2017](https://www.visualstudio.com/vs/preview/) installiert haben.
-
-In diesem Thema erfahren Sie, wie Sie die Azure Functions-Tools für Visual Studio 2017 verwenden, um eine „hello world“-Funktion lokal zu erstellen und zu testen. Anschließend veröffentlichen Sie den Funktionscode in Azure.
+In diesem Thema erfahren Sie, wie Sie die Visual Studio 2017-Tools für Azure Functions verwenden, um eine „hello world“-Funktion lokal zu erstellen und zu testen. Anschließend veröffentlichen Sie den Funktionscode in Azure. Diese Tools sind als Teil der Azure-Entwicklungsworkload in Visual Studio 2017 Version 15.3 oder höher verfügbar.
 
 ![Azure Functions-Code in einem Visual Studio-Projekt](./media/functions-create-your-first-function-visual-studio/functions-vstools-intro.png)
 
@@ -38,17 +37,14 @@ In diesem Thema erfahren Sie, wie Sie die Azure Functions-Tools für Visual Stud
 
 Installieren Sie für dieses Tutorial Folgendes:
 
-* [Visual Studio 2017, Version 15.3 (Vorschau)](https://www.visualstudio.com/vs/preview/), einschließlich der Workload **Azure-Entwicklung**
+* [Visual Studio 2017, Version 15.3](https://www.visualstudio.com/vs/preview/), einschließlich der Workload **Azure-Entwicklung**
 
     ![Installation von Visual Studio 2017 mit der Workload „Azure-Entwicklung“](./media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
+    
+    >[!NOTE]  
+    Nach der Installation von oder dem Upgrade auf Visual Studio 2017 Version 15.3 müssen Sie auch die Visual Studio 2017-Tools für Azure Functions manuell aktualisieren. Sie können die Tools im Menü **Extras** aktualisieren. Navigieren Sie zu **Erweiterungen und Updates...** > **Updates** > **Visual Studio Marketplace** > **Azure Functions and Web Jobs Tools** > **Update**. 
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-
-## <a name="install-azure-functions-tools-for-visual-studio-2017"></a>Installieren von Azure Functions-Tools für Visual Studio 2017
-
-Bevor Sie beginnen, müssen Sie die Azure Functions-Tools für Visual Studio 2017 herunterladen und installieren. Diese Tools können nur mit Visual Studio 2017 Version 15.3 (Vorschau) oder höher genutzt werden. Wenn Sie die Azure Functions-Tools bereits installiert haben, können Sie diesen Abschnitt überspringen.
-
-[!INCLUDE [Install the Azure Functions Tools for Visual Studio](../../includes/functions-install-vstools.md)]   
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
 
 ## <a name="create-an-azure-functions-project-in-visual-studio"></a>Erstellen eines Azure Functions-Projekts in Visual Studio
 

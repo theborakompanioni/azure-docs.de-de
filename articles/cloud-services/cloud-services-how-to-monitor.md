@@ -14,9 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/07/2015
 ms.author: adegeo
-translationtype: Human Translation
-ms.sourcegitcommit: ab97962175f4498200db428736a1cbd124fac285
-ms.openlocfilehash: aab8f3233191c9b3f839e3358902f72499d93ee5
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: c369b22cf068a473343b006eb1b06fdd350d31db
+ms.contentlocale: de-de
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="how-to-monitor-cloud-services"></a>Überwachung von Clouddiensten
@@ -39,7 +41,7 @@ Bei einer ausführlichen Überwachung steigen Ihre Speicherkosten für Datenspei
 Führen Sie die folgenden Schritte aus, um im klassischen Azure-Portal ausführliche oder minimale Überwachung zu konfigurieren. 
 
 ### <a name="before-you-begin"></a>Voraussetzungen
-* Erstellen Sie ein *klassisches* Speicherkonto zum Speichern der Überwachungsdaten. Sie können unterschiedliche Speicherkonten für unterschiedliche Rollen verwenden. Weitere Informationen finden Sie unter [Erstellen eines Speicherkontos](../storage/storage-create-storage-account.md#create-a-storage-account).
+* Erstellen Sie ein *klassisches* Speicherkonto zum Speichern der Überwachungsdaten. Sie können unterschiedliche Speicherkonten für unterschiedliche Rollen verwenden. Weitere Informationen finden Sie unter [Erstellen eines Speicherkontos](../storage/common/storage-create-storage-account.md#create-a-storage-account).
 * Aktivieren Sie die Azure-Diagnose für Ihre Clouddienstrollen. Siehe [Konfigurieren der Diagnose für Cloud Services](cloud-services-dotnet-diagnostics.md).
 
 Stellen Sie sicher, dass die Diagnose-Verbindungszeichenfolge in der Konfiguration der Rolle vorhanden ist. Sie können die ausführliche Überwachung erst aktivieren, wenn die Azure-Diagnose aktiviert ist und eine Diagnoseverbindungszeichenfolge in der Rollenkonfiguration eingeschlossen wurde.   
@@ -74,7 +76,7 @@ Sie können Warnungen auf Basis der Überwachungsmetriken Ihrer Clouddienste emp
 ## <a name="how-to-add-metrics-to-the-metrics-table"></a>Hinzufügen von Metriken zur Metrikentabelle
 1. Öffnen Sie im [klassischen Azure-Portal](http://manage.windowsazure.com/)die Seite **Monitor** für den Clouddienst.
    
-    Standardmäßig zeigt die Metrikentabelle eine Teilmenge der verfügbaren Metriken an. Die Abbildung zeit die Standardmetriken für Clouddienste. Diese sind beschränkt auf die Leistungsindikatoren für Speicher/verfügbare MByte, und die Daten werden auf Rollenebene aggregiert. Unter **Metriken hinzufügen** können Sie weitere aggregierte Metriken oder Metriken auf Rollenebene für die Überwachung im klassischen Azure-Portal auswählen.
+    Standardmäßig zeigt die Metrikentabelle eine Teilmenge der verfügbaren Metriken an. Die Abbildung zeigt die Standardmetriken für Clouddienste. Diese sind beschränkt auf die Leistungsindikatoren für Speicher/verfügbare MByte, und die Daten werden auf Rollenebene aggregiert. Unter **Metriken hinzufügen** können Sie weitere aggregierte Metriken oder Metriken auf Rollenebene für die Überwachung im klassischen Azure-Portal auswählen.
    
     ![Ausführliche Anzeige](./media/cloud-services-how-to-monitor/CloudServices_DefaultVerboseDisplay.png)
 2. Hinzufügen von Metriken zur Metrikentabelle:
@@ -146,7 +148,7 @@ Zum Anzeigen von benutzerdefinierten Leistungsindikatoren im Portal müssen Sie 
 1. Öffnen Sie das Dashboard für den Clouddienst.
 2. Hinzufügen oder Entfernen von Metriken im Diagramm:
    
-   * Markieren Sie das Kontrollkästchen für die Metrik im Tabellenkopf, um eine neue Metrik anzuzeigen. Falls Sie auf einem kleinen Bildschirm arbeiten, klicken Sie auf den Pfeil nach unten neben ***n*??Metriken**, um eine Metrik anzuzeigen, die im Tabellenkopf nicht angezeigt werden kann.
+   * Markieren Sie das Kontrollkästchen für die Metrik im Tabellenkopf, um eine neue Metrik anzuzeigen. Klicken Sie auf einem engen Bildschirm auf den nach unten zeigenden Pfeil neben ***n*??Metriken**, um eine Metrik zu zeichnen, die im Diagrammkopfbereich nicht angezeigt werden kann.
    * Heben Sie die Auswahl des entsprechenden Kontrollkästchens auf, um eine aktuell angezeigte Metrik zu löschen.
    
 3. Umschalten zwischen **relativer** und **absoluter** Anzeige.
@@ -175,9 +177,4 @@ WAD8b7c4233802442b494d0cc9eb9d8dd9fPT1HRTable (hourly aggregations for the role)
 
 WAD8b7c4233802442b494d0cc9eb9d8dd9fPT1HRITable (hourly aggregations for role instances)
 ```
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

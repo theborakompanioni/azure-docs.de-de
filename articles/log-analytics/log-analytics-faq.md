@@ -12,19 +12,24 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/17/2017
+ms.date: 08/18/2017
 ms.author: magoedte
 ms.translationtype: HT
-ms.sourcegitcommit: 94d1d4c243bede354ae3deba7fbf5da0652567cb
-ms.openlocfilehash: 508cf1ebaf4d7ee87c4d6b5e3dd3abd64366f8e8
+ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
+ms.openlocfilehash: 8ddea06b1a90e9b1599466ad4d1c3af7a6dc8ba9
 ms.contentlocale: de-de
-ms.lasthandoff: 07/18/2017
+ms.lasthandoff: 08/19/2017
 
 ---
 # <a name="log-analytics-faq"></a>Häufig gestellte Fragen zu Log Analytics
 Dieser Microsoft-Artikel enthält eine Liste häufig gestellter Fragen zu Log Analytics in Microsoft Operations Management Suite (OMS). Wenn Sie weiteren Fragen zu Log Analytics haben, besuchen Sie das [Diskussionsforum](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights), und stellen Sie Ihre Fragen. Wenn eine Frage häufiger gestellt wird, fügen wir sie diesem Artikel hinzu, damit sie schnell und einfach gefunden werden kann.
 
 ## <a name="general"></a>Allgemein
+
+### <a name="q-does-log-analytics-use-the-same-agent-as-azure-security-center"></a>F: Verwendet Log Analytics denselben Agent wie das Azure Security Center?
+
+A: Seit Anfang Juni 2017 verwendet Azure Security Center den Microsoft Monitoring Agent zum Sammeln und Speichern von Daten. Weitere Informationen finden Sie unter [Plattformmigration des Azure Security Center – FAQs](../security-center/security-center-platform-migration-faq.md).
+
 ### <a name="q-what-checks-are-performed-by-the-ad-and-sql-assessment-solutions"></a>F: Welche Überprüfungen werden von den AD- und SQL-Bewertungslösungen durchgeführt?
 
 A: Die folgende Abfrage zeigt eine Beschreibung aller Überprüfungen, die derzeit ausgeführt werden:

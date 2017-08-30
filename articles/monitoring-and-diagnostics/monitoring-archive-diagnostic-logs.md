@@ -12,37 +12,48 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/26/2016
+ms.date: 08/21/2017
 ms.author: johnkem
 ms.translationtype: HT
-ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
-ms.openlocfilehash: 6ceb95dac5a4037c8f2ff93f8245b36f0842a427
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: dbc5f89001dcb6cd1ab061cb0a9632e4e5d2c1c7
 ms.contentlocale: de-de
-ms.lasthandoff: 08/07/2017
+ms.lasthandoff: 08/24/2017
 
 ---
 # <a name="archive-azure-diagnostic-logs"></a>Archivieren von Azure-Diagnoseprotokollen
-In diesem Artikel erfahren Sie, wie Sie Ihre [Azure-Aktivitätsprotokolle](monitoring-overview-of-diagnostic-logs.md) über das Azure-Portal, mit PowerShell-Cmdlets, der CLI oder der REST-API in einem Speicherkonto archivieren. Diese Option ist hilfreich, wenn Sie Ihre Diagnoseprotokolle mit einer optionalen Aufbewahrungsrichtlinie zur Überwachung, statischen Analyse oder als Sicherungskopie aufbewahren möchten. Das Speicherkonto muss sich nicht unter demselben Abonnement befinden wie die Ressource, die Protokolle ausgibt, sofern der Benutzer, der die Einstellung konfiguriert, den entsprechenden RBAC-Zugriff auf beide Abonnements hat.
+In diesem Artikel erfahren Sie, wie Sie Ihre [Azure-Diagnoseprotokolle](monitoring-overview-of-diagnostic-logs.md) über das Azure-Portal, mit PowerShell-Cmdlets, der CLI oder der REST-API in einem Speicherkonto archivieren. Diese Option ist hilfreich, wenn Sie Ihre Diagnoseprotokolle mit einer optionalen Aufbewahrungsrichtlinie zur Überwachung, statischen Analyse oder als Sicherungskopie aufbewahren möchten. Das Speicherkonto muss sich nicht unter demselben Abonnement befinden wie die Ressource, die Protokolle ausgibt, sofern der Benutzer, der die Einstellung konfiguriert, den entsprechenden RBAC-Zugriff auf beide Abonnements hat.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Bevor Sie beginnen, müssen Sie [ein Speicherkonto erstellen](../storage/storage-create-storage-account.md#create-a-storage-account) , in dem Sie Ihre Diagnoseprotokolle archivieren können. Um den Zugriff auf Überwachungsdaten besser steuern zu können, wird dringend davon abgeraten, ein bereits vorhandenes Speicherkonto mit anderen, nicht überwachungsbezogenen Daten zu verwenden. Wenn Sie jedoch auch Ihr Aktivitätsprotokoll Diagnosemetriken in einem Speicherkonto archivieren, ist es unter Umständen sinnvoll, dieses Speicherkonto auch für Ihre Diagnoseprotokolle zu verwenden, damit sich alle Überwachungsdaten an einem zentralen Ort befinden. Bei dem Speicherkonto muss es sich um ein allgemeines Speicherkonto (nicht um ein Blobspeicherkonto) handeln.
+Bevor Sie beginnen, müssen Sie [ein Speicherkonto erstellen](../storage/storage-create-storage-account.md) , in dem Sie Ihre Diagnoseprotokolle archivieren können. Um den Zugriff auf Überwachungsdaten besser steuern zu können, wird dringend davon abgeraten, ein bereits vorhandenes Speicherkonto mit anderen, nicht überwachungsbezogenen Daten zu verwenden. Wenn Sie jedoch auch Ihr Aktivitätsprotokoll und Ihre Diagnosemetriken in einem Speicherkonto archivieren, ist es unter Umständen sinnvoll, dieses Speicherkonto auch für Ihre Diagnoseprotokolle zu verwenden, damit sich alle Überwachungsdaten an einem zentralen Ort befinden. Bei dem Speicherkonto muss es sich um ein allgemeines Speicherkonto (nicht um ein Blobspeicherkonto) handeln.
 
 ## <a name="diagnostic-settings"></a>Diagnoseeinstellungen
-Legen Sie eine **Diagnoseeinstellung** für eine bestimmte Ressource fest, um die Diagnoseprotokolle mit einer der weiter unten angegebenen Methoden zu archivieren. Eine Diagnoseeinstellung für eine Ressource definiert die Kategorien von Protokollen, die gespeichert oder gestreamt werden, sowie die Ausgaben (Speicherkonto und/oder Event Hub). Außerdem definiert sie die Aufbewahrungsrichtlinie (Anzahl von Tagen für die Aufbewahrung) für Ereignisse jeder Protokollkategorie, die in einem Speicherkonto gespeichert werden. Wird die Aufbewahrungsrichtlinie auf Null festgelegt, werden Ereignisse für diese Protokollkategorie dauerhaft (also für immer) gespeichert. Für eine Aufbewahrungsrichtlinie kann andernfalls eine beliebige Anzahl von Tagen zwischen 1 und 2.147.483.647 festgelegt werden. [Hier](monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings)erfahren Sie mehr über Diagnoseeinstellungen. Aufbewahrungsrichtlinien werden pro Tag angewendet, sodass Protokolle am Ende eines Tages (UTC) ab dem Tag, der nun außerhalb der Aufbewahrungsrichtlinie liegt, gelöscht werden. Beispiel: Wenn Sie eine Aufbewahrungsrichtlinie für einen Tag verwenden, werden heute am Anfang des Tages die Protokolle von vorgestern gelöscht.
+Legen Sie eine **Diagnoseeinstellung** für eine bestimmte Ressource fest, um die Diagnoseprotokolle mit einer der weiter unten angegebenen Methoden zu archivieren. Eine Diagnoseeinstellung für eine Ressource definiert die Kategorien der Protokolle und Metrikdaten, die an ein Ziel (Speicherkonto, Event Hubs-Namespace oder Log Analytics) gesendet werden. Außerdem definiert sie die Aufbewahrungsrichtlinie (Anzahl von Tagen für die Aufbewahrung) für Ereignisse jeder Protokollkategorie und Metrikdaten, die in einem Speicherkonto gespeichert werden. Wird die Aufbewahrungsrichtlinie auf Null festgelegt, werden Ereignisse für diese Protokollkategorie dauerhaft (also für immer) gespeichert. Für eine Aufbewahrungsrichtlinie kann andernfalls eine beliebige Anzahl von Tagen zwischen 1 und 2.147.483.647 festgelegt werden. [Hier](monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings)erfahren Sie mehr über Diagnoseeinstellungen. Aufbewahrungsrichtlinien werden pro Tag angewendet, sodass Protokolle am Ende eines Tages (UTC) ab dem Tag, der nun außerhalb der Aufbewahrungsrichtlinie liegt, gelöscht werden. Beispiel: Wenn Sie eine Aufbewahrungsrichtlinie für einen Tag verwenden, werden heute am Anfang des Tages die Protokolle von vorgestern gelöscht.
 
 ## <a name="archive-diagnostic-logs-using-the-portal"></a>Archivieren von Diagnoseprotokollen mithilfe des Portals
-1. Klicken Sie im Portal auf das Ressourcenblatt für die Ressource, für die Sie die Archivierung von Diagnoseprotokollen aktivieren möchten.
-2. Wählen Sie im Menü mit den Ressourceneinstellungen im Abschnitt **Überwachung** die Option **Diagnose** aus.
+1. Navigieren Sie im Portal zu Azure Monitor, und klicken Sie auf **Diagnoseeinstellungen**.
+
+    ![Abschnitt „Überwachung“ von Azure Monitor](media/monitoring-archive-diagnostic-logs/diagnostic-settings-blade.png)
+
+2. Filtern Sie optional die Liste nach Ressourcengruppe oder Ressourcentyp, und klicken Sie auf die Ressource, für die Sie eine Diagnoseeinstellung festlegen möchten.
+
+3. Wenn keine Einstellungen für die Ressource vorhanden sind, die Sie ausgewählt haben, werden Sie aufgefordert, eine Einstellung zu erstellen. Klicken Sie auf „Diagnose aktivieren“.
+
+   ![Diagnoseeinstellung hinzufügen – keine Einstellungen vorhanden](media/monitoring-archive-diagnostic-logs/diagnostic-settings-none.png)
+
+   Wenn Einstellungen für die Ressource vorhanden sind, sehen Sie eine Liste der Einstellungen, die bereits für diese Ressource konfiguriert sind. Klicken Sie auf „Diagnoseeinstellung hinzufügen“.
+
+   ![Diagnoseeinstellung hinzufügen – Einstellungen vorhanden](media/monitoring-archive-diagnostic-logs/diagnostic-settings-multiple.png)
+
+3. Geben Sie Ihrer Einstellung einen Namen, aktivieren Sie das Kontrollkästchen **In Speicherkonto exportieren**, und wählen Sie dann ein Speicherkonto aus. Legen Sie optional eine Anzahl von Tagen für die Aufbewahrung dieser Protokolle fest. Verwenden Sie dazu die Schieberegler unter **Aufbewahrung (Tage)**. Bei einer Aufbewahrung von 0 Tagen werden die Protokolle dauerhaft gespeichert.
    
-    ![Abschnitt „Überwachung“ des Ressourcenmenüs](media/monitoring-archive-diagnostic-logs/diag-log-monitoring-sec.png)
-3. Aktivieren Sie das Kontrollkästchen **In Speicherkonto exportieren**, und wählen Sie dann ein Speicherkonto aus. Legen Sie optional eine Anzahl von Tagen für die Aufbewahrung dieser Protokolle fest. Verwenden Sie dazu die Schieberegler unter **Aufbewahrung (Tage)**. Bei einer Aufbewahrung von 0 Tagen werden die Protokolle dauerhaft gespeichert.
-   
-    ![Blatt „Diagnoseprotokolle“](media/monitoring-archive-diagnostic-logs/diag-log-monitoring-blade.png)
+   ![Diagnoseeinstellung hinzufügen – Einstellungen vorhanden](media/monitoring-archive-diagnostic-logs/diagnostic-settings-configure.png)
+    
 4. Klicken Sie auf **Speichern**.
 
-Diagnoseprotokolle werden in diesem Speicherkonto archiviert, sobald neue Ereignisdaten generiert werden.
+Nach einigen Augenblicken wird die neue Einstellung in der Liste der Einstellungen für diese Ressource angezeigt, und Diagnoseprotokolle werden in diesem Speicherkonto archiviert, sobald neue Ereignisdaten generiert werden.
 
-## <a name="archive-diagnostic-logs-via-the-powershell-cmdlets"></a>Archivieren von Diagnoseprotokollen mit PowerShell-Cmdlets
+## <a name="archive-diagnostic-logs-via-azure-powershell"></a>Archivieren von Diagnoseprotokollen mit Azure PowerShell
 ```
 Set-AzureRmDiagnosticSetting -ResourceId /subscriptions/s1id1234-5679-0123-4567-890123456789/resourceGroups/testresourcegroup/providers/Microsoft.Network/networkSecurityGroups/testnsg -StorageAccountId /subscriptions/s1id1234-5679-0123-4567-890123456789/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -Categories networksecuritygroupevent,networksecuritygrouprulecounter -Enabled $true -RetentionEnabled $true -RetentionInDays 90
 ```
@@ -64,12 +75,12 @@ azure insights diagnostic set --resourceId /subscriptions/s1id1234-5679-0123-456
 | Eigenschaft | Erforderlich | Beschreibung |
 | --- | --- | --- |
 | ResourceId |Ja |Ressourcen-ID der Ressource, für die Sie eine Diagnoseeinstellung festlegen möchten |
-| storageId |Nein |Ressourcen-ID des Speicherkontos, in dem Diagnoseprotokolle gespeichert werden sollen |
-| Categories |Nein |Durch Trennzeichen getrennte Liste der zu aktivierenden Protokollkategorien |
+| storageId |Nein |Ressourcen-ID des Speicherkontos, in dem Diagnoseprotokolle gespeichert werden sollen. |
+| categories |Nein |Durch Trennzeichen getrennte Liste der zu aktivierenden Protokollkategorien |
 | Aktiviert |Ja |Boolescher Wert, der angibt, ob die Diagnose für diese Ressource aktiviert oder deaktiviert werden soll |
 
 ## <a name="archive-diagnostic-logs-via-the-rest-api"></a>Archivieren von Diagnoseprotokollen mit der REST-API
-[Dieses Dokument](https://msdn.microsoft.com/library/azure/dn931931.aspx) enthält Informationen zum Einrichten einer Diagnoseeinstellung mit der Azure Monitor-REST-API.
+[Dieses Dokument](https://docs.microsoft.com/rest/api/monitor/servicediagnosticsettings) enthält Informationen zum Einrichten einer Diagnoseeinstellung mit der Azure Monitor-REST-API.
 
 ## <a name="schema-of-diagnostic-logs-in-the-storage-account"></a>Schema der Diagnoseprotokolle im Speicherkonto
 Nach dem Einrichten der Archivierung wird in dem Speicherkonto ein Speichercontainer erstellt, sobald ein Ereignis in einer der aktivierten Protokollkategorien auftritt. Bei den Blobs innerhalb des Containers wird sowohl für die Diagnoseprotokolle als auch das Aktivitätsprotokoll ein einheitliches Format verwendet. Die Struktur dieser Blobs sieht wie folgt aus:
@@ -131,8 +142,7 @@ Die einzelnen Ereignisse werden innerhalb der Datei „PT1H.json“ im folgenden
 > 
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Herunterladen von Blobs für die Analyse](../storage/storage-dotnet-how-to-use-blobs.md#download-blobs)
-* [Streamen von Diagnoseprotokollen an Event Hubs](monitoring-stream-diagnostic-logs-to-event-hubs.md)
+* [Herunterladen von Blobs für die Analyse](../storage/storage-dotnet-how-to-use-blobs.md)
+* [Streamen von Diagnoseprotokollen an einen Event Hubs-Namespace](monitoring-stream-diagnostic-logs-to-event-hubs.md)
 * [Weitere Informationen zu Diagnoseprotokollen](monitoring-overview-of-diagnostic-logs.md)
-
 

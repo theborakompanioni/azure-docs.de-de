@@ -14,11 +14,11 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: a967a522ebbdce57fa5b4f938369ddd88253701c
-ms.lasthandoff: 11/17/2016
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 4f3ec837588c6e959e82108ca25ab4289e40d3f5
+ms.contentlocale: de-de
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="adding-a-certificate-to-the-java-ca-certificates-store"></a>Hinzufügen eines Zertifikats zum Java CA-Zertifikatspeicher
@@ -55,6 +55,6 @@ Wenn Sie das Zertifikat "Baltimore CyberTrust Root" hinzufügen müssen, sei dar
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu den von Azure verwendeten Stammzertifikaten finden Sie unter [Azure Root Certificate Migration](http://blogs.msdn.com/b/windowsazure/archive/2013/03/15/windows-azure-root-certificate-migration.aspx)(in englischer Sprache).
 
-Weitere Informationen zu Java finden Sie im [Java Developer Center](/develop/java/).
+Weitere Informationen zu Java finden Sie im Artikel [Azure für Java-Entwickler](/java/azure).
 
 

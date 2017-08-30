@@ -1,27 +1,28 @@
 ---
-title: Installieren des Azure AD-Anwendungsproxyconnectors im Hintergrund | Microsoft-Dokumentation
+title: Automatische Installation des Azure AD-Anwendungsproxyconnectors | Microsoft-Dokumentation
 description: "Dieses Thema erläutert, wie Sie eine unbeaufsichtigte Installation des Azure AD-Anwendungsproxyconnectors durchführen, um sicheren Remotezugriff auf Ihre lokalen Apps zu gewähren."
 services: active-directory
 documentationcenter: 
 author: kgremban
 manager: femila
-editor: harshja
 ms.assetid: 3aa1c7f2-fb2a-4693-abd5-95bb53700cbb
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/03/2017
+ms.date: 08/10/2017
 ms.author: kgremban
 ms.reviewer: harshja
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
-ms.openlocfilehash: f4d72d4d11ee64e3431879f6ad1b5d8d091a0c87
+ms.custom: it-pro
+ms.translationtype: HT
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: 9e28c89d8f64f0ae3d4150017ca544e606075c45
 ms.contentlocale: de-de
-ms.lasthandoff: 05/15/2017
+ms.lasthandoff: 08/24/2017
 
 ---
+
 # <a name="silently-install-the-azure-ad-application-proxy-connector"></a>Installieren des Azure AD-Anwendungsproxyconnectors im Hintergrund
 Sie möchten ein Installationsskript an mehrere Windows-Server senden können oder an Windows-Server, auf denen keine Benutzeroberfläche aktiviert ist. In diesem Thema wird das Erstellen eines Windows PowerShell-Skripts erläutert, das eine unbeaufsichtigte Installation und Registrierung des Azure AD-Anwendungsproxyconnectors ermöglicht.
 
@@ -32,13 +33,13 @@ Diese Funktion ist in folgenden Fällen nützlich:
 * Integrieren der Connectorinstallation und Registrierung als Teil einer anderen Prozedur.
 * Erstellen eines standardmäßigen Serverimages, das die Connectorbits enthält, aber nicht registriert ist.
 
-Um den Anwendungsproxy nutzen zu können, müssen Sie einen als Connector bezeichneten schlanken Windows Server-Dienst in Ihrem Netzwerk installieren. Für das Funktionieren des Anwendungsproxyconnectors muss dieser im Azure AD-Verzeichnis durch einen globalen Administrator mit Kennwort registriert werden. Diese Informationen werden normalerweise während der Installation des Connectors in einem Popupdialogfeld eingegeben. Sie können jedoch mit Windows PowerShell ein Anmeldeinformationsobjekt erstellen, um die Registrierungsinformationen einzugeben, oder auch ein eigenes Token erstellen und zur Eingabe der Registrierungsinformationen verwenden.
+Um den Anwendungsproxy nutzen zu können, müssen Sie einen als Connector bezeichneten schlanken Windows Server-Dienst in Ihrem Netzwerk installieren. Für das Funktionieren des Anwendungsproxyconnectors muss dieser im Azure AD-Verzeichnis durch einen globalen Administrator mit Kennwort registriert werden. Diese Informationen werden normalerweise während der Installation des Connectors in einem Popupdialogfeld eingegeben. Sie können jedoch mit Windows PowerShell ein Anmeldeinformationsobjekt erstellen, um Ihre Registrierungsinformationen einzugeben. Oder Sie können ein eigenes Token erstellen und verwenden, um Ihre Registrierungsinformationen einzugeben.
 
 ## <a name="install-the-connector"></a>Installieren des Connectors
 Installieren Sie die Connector-MSIs wie folgt, ohne den Connector zu registrieren:
 
 1. Öffnen Sie eine Eingabeaufforderung.
-2. Führen Sie den folgenden Befehl aus, in dem die Option „/q“ für die Installation im Hintergrund steht – bei der Installation werden Sie nicht aufgefordert, den Endbenutzer-Lizenzvertrag zu akzeptieren.
+2. Führen Sie den folgenden Befehl aus, bei dem die Option „/q“ für die unbeaufsichtigte Installation steht. Bei der Installation werden Sie nicht aufgefordert, den Endbenutzer-Lizenzvertrag zu akzeptieren.
    
         AADApplicationProxyConnectorInstaller.exe REGISTERCONNECTOR="false" /q
 
@@ -49,7 +50,7 @@ Es gibt zwei Methoden zum Registrieren des Connectors:
 * Registrieren des Connectors mithilfe eines offline erstellten Tokens
 
 ### <a name="register-the-connector-using-a-windows-powershell-credential-object"></a>Registrieren des Connectors mit einem Windows PowerShell-Anmeldeinformationsobjekt
-1. Erstellen Sie das Windows PowerShell-Anmeldeinformationsobjekt, indem Sie den folgenden Befehl ausführen. Ersetzen Sie *\<Benutzername\>* und *\<Kennwort\>* durch den Benutzernamen und das Kennwort für Ihr Verzeichnis:
+1. Erstellen Sie das Windows PowerShell-Anmeldeinformationsobjekt, indem Sie diesen Befehl ausführen. Ersetzen Sie *\<Benutzername\>* und *\<Kennwort\>* durch den Benutzernamen und das Kennwort für Ihr Verzeichnis:
    
         $User = "<username>"
         $PlainPassword = '<password>'

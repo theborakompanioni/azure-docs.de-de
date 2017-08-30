@@ -1,6 +1,6 @@
 ---
 title: Erstellen von Aktionsgruppen mit Resource Manager-Vorlagen | Microsoft-Dokumentation
-description: "Aktivitätsgruppen ermöglichen Benachrichtigungen per E-Mail oder SMS oder den Anruf von Webhooks, wenn bestimmte Ereignisse eintreten."
+description: Erfahren Sie, wie Sie eine Aktionsgruppe mit einer Azure Resource Manager-Vorlage erstellen.
 author: anirudhcavale
 manager: orenr
 editor: 
@@ -15,26 +15,27 @@ ms.topic: article
 ms.date: 03/31/2017
 ms.author: ancav
 ms.translationtype: HT
-ms.sourcegitcommit: cddb80997d29267db6873373e0a8609d54dd1576
-ms.openlocfilehash: 88e7b2e7781b80ea360531f4c3a45256de83b594
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: 76bf353cac13f1c2169380f8dd3c1e163d4f3f41
 ms.contentlocale: de-de
-ms.lasthandoff: 07/18/2017
+ms.lasthandoff: 08/24/2017
 
 ---
 
 # <a name="create-an-action-group-with-a-resource-manager-template"></a>Erstellen einer Aktionsgruppe mithilfe einer Resource Manager-Vorlage
-In diesem Artikel erfahren Sie, wie Sie mit [Azure Resource Manager-Vorlagen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates) Aktionsgruppen konfigurieren können. Mithilfe von Vorlagen können Sie Aktionsgruppen für Ihre Ressourcen beim Erstellen automatisch einrichten, um sicherzustellen, dass die richtigen Beteiligten benachrichtigt werden, wenn eine Warnung ausgelöst wird.
+In diesem Artikel erfahren Sie, wie Sie mit [Azure Resource Manager-Vorlagen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates) Aktionsgruppen konfigurieren können. Mithilfe von Vorlagen können Sie automatisch Aktionsgruppen festlegen, die in bestimmten Warnungstypen wiederverwendet werden können. Diese Aktionsgruppen stellen sicher, dass alle relevanten Parteien benachrichtigt werden, wenn eine Warnung ausgelöst wird.
 
 Die grundlegenden Schritte lauten wie folgt:
 
-1.  Erstellen Sie eine Vorlage als JSON-Datei, die die Erstellung der Aktionsgruppe beschreibt.
-2.  [Stellen Sie die Vorlage mithilfe einer beliebigen Bereitstellungsmethode bereit.](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy)
+1. Erstellen Sie eine Vorlage als JSON-Datei, die die Erstellung der Aktionsgruppe beschreibt.
 
-Im Folgenden wird beschrieben, wie Sie eine Resource Manager-Vorlage erstellen. Zuerst für eine Aktionsgruppe, in der die Aktionsdefinitionen in der Vorlage hartkodiert sind, und dann für eine Vorlage, die beim Bereitstellen der Vorlage die Webhook-Konfigurationsinformation als Eingabeparameter verwendet.
+2. Stellen Sie die Vorlage mithilfe einer [beliebigen Bereitstellungsmethode](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy) bereit.
 
-## <a name="resource-manager-template-for-an-action-group"></a>Resource Manager-Vorlage für eine Aktionsgruppe
+Zunächst erfahren Sie, wie Sie eine Resource Manager-Vorlage für eine Aktionsgruppe erstellen, wobei die Aktionsdefinitionen in der Vorlage hartcodiert sind. Zweitens erfahren Sie, wie Sie eine Vorlage erstellen, die die Daten der Webhookkonfiguration als Eingabeparameter akzeptiert, wenn die Vorlage bereitgestellt wird.
 
-Um eine Aktionsgruppe mithilfe einer Resource Manager-Vorlage zu erstellen, müssen Sie eine Ressource des Typs `Microsoft.Insights/actionGroups` erstellen und alle zugehörigen Eigenschaften eingeben. Im Folgenden finden Sie einige Beispielvorlagen, die eine Aktivitätsgruppe erstellen.
+## <a name="resource-manager-templates-for-an-action-group"></a>Resource Manager-Vorlagen für eine Aktionsgruppe
+
+Um eine Aktionsgruppe mithilfe einer Resource Manager-Vorlage zu erstellen, müssen Sie eine Ressource des Typs `Microsoft.Insights/actionGroups` erstellen. Anschließend tragen Sie alle zugehörigen Eigenschaften ein. Im Folgenden finden Sie zwei Beispielvorlagen, die eine Aktionsgruppe erstellen.
 
 ```json
 {
@@ -170,7 +171,7 @@ Um eine Aktionsgruppe mithilfe einer Resource Manager-Vorlage zu erstellen, müs
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zu [Aktionsgruppen](monitoring-action-groups.md)  
-Weitere Informationen zu [Warnungen](monitoring-overview-alerts.md)  
-Hinzufügen von [Warnungen mithilfe einer Resource Manager-Vorlage](monitoring-create-activity-log-alerts-with-resource-manager-template.md)
+* Weitere Informationen zu [Aktionsgruppen](monitoring-action-groups.md).
+* Weitere Informationen zu [Warnungen](monitoring-overview-alerts.md).
+* Weitere Informationen zum [Erstellen einer Aktivitätsprotokollwarnung mithilfe einer Resource Manager-Vorlage](monitoring-create-activity-log-alerts-with-resource-manager-template.md).
 

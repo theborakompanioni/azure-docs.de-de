@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: adegeo
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
-ms.openlocfilehash: 26e2becf7810950fd5734fd70c1fed225149ec4d
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 72ec71814d3c56d1f1df947329eaf66b7dc8f1cf
 ms.contentlocale: de-de
-ms.lasthandoff: 03/24/2017
-
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="should-i-choose-cloud-services-or-something-else"></a>Sollte ich mich für Clouddienste oder eine andere Lösung entscheiden?
@@ -43,7 +42,7 @@ Ihre App wird mithilfe von IIS automatisch bereitgestellt und gehostet.
 * **Workerrolle**  
 IIS wird nicht verwendet; die App wird eigenständig ausgeführt.
 
-Einfache Anwendungen verwenden beispielsweise lediglich eine einzige Webrolle für eine Website,  während komplexere Anwendungen eine Webrolle für die Verarbeitung eingehender Benutzeranforderungen verwenden und diese Anforderungen an Workerrollen delegieren. (Diese Kommunikation erfolgt über [Service Bus](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md) oder über [Azure-Warteschlangen](../storage/storage-introduction.md).)
+Einfache Anwendungen verwenden beispielsweise lediglich eine einzige Webrolle für eine Website. Komplexere Anwendungen verwenden eine Webrolle für eingehende Benutzeranforderungen und delegieren die Verarbeitung dieser Anforderungen an Workerrollen. (Diese Kommunikation erfolgt über [Service Bus](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md) oder über [Azure-Warteschlangen](../storage/common/storage-introduction.md).)
 
 Die voranstehende Abbildung zeigt, dass alle VMs in einer einzigen Anwendung im gleichen Clouddienst laufen. Benutzer greifen über eine einzige öffentliche IP-Adresse auf die Anwendung zu, und die Anforderungen werden automatisch auf die einzelnen VMs verteilt. Die virtuellen Computer in einer Cloud Services-Anwendung werden von der Plattform so [skaliert und bereitgestellt](cloud-services-how-to-scale.md), dass einzelne Fehlerquellen (Single Points of Failure, SPOF) vermieden werden.
 

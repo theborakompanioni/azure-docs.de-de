@@ -4,7 +4,7 @@ description: "Erfahren Sie, wie Sie Inhalte mit der Speicherverschlüsselung und
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: a0a79f3d-76a1-4994-9202-59b91a2230e0
 ms.service: media-services
@@ -12,16 +12,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/31/2017
+ms.date: 08/10/2017
 ms.author: juliako
 ms.translationtype: HT
-ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
-ms.openlocfilehash: bc7e49c49e9b1b3cd919e665cd0f012c33f312f6
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 17cf10fe1edd46d84806ac4fe09b757c75730356
 ms.contentlocale: de-de
-ms.lasthandoff: 08/01/2017
+ms.lasthandoff: 08/21/2017
 
 ---
-# <a name="encrypting-your-content-with-storage-encryption-using-ams-rest-api"></a>Verschlüsseln von Inhalten mit der Speicherverschlüsselung und AMS-REST-API
+# <a name="encrypting-your-content-with-storage-encryption"></a>Verschlüsseln von Inhalten mit der Speicherverschlüsselung
+
 Es wird dringend empfohlen, Inhalte lokal mithilfe der AES-256-Bit-Verschlüsselung zu verschlüsseln und sie dann in Azure Storage hochzuladen, wo sie verschlüsselt im Ruhezustand gespeichert werden.
 
 Dieser Artikel bietet einen Überblick über die AMS-Speicherverschlüsselung und zeigt, wie Sie die verschlüsselten Inhalte hochladen:
@@ -33,17 +34,18 @@ Dieser Artikel bietet einen Überblick über die AMS-Speicherverschlüsselung un
 * Verknüpfen Sie den Inhaltsschlüssel mit dem Medienobjekt.  
 * Legen Sie die Parameter für die Verschlüsselung in den AssetFile-Entitäten fest.
 
-> [!NOTE]
-> Wenn Sie ein speicherverschlüsseltes Medienobjekt übermitteln möchten, müssen Sie die Übermittlungsrichtlinie des Medienobjekts konfigurieren. Bevor das Medienobjekt gestreamt werden kann, wird die Speicherverschlüsselung vom Streamingserver entfernt und der Inhalt mithilfe der angegebenen Übermittlungsrichtlinie gestreamt. Weitere Informationen finden Sie unter [Konfigurieren von Übermittlungsrichtlinien für Medienobjekte](media-services-rest-configure-asset-delivery-policy.md).
-> 
-> [!NOTE]
-> Beim Verwenden der Media Services REST-API gelten die folgenden Überlegungen:
-> 
-> Wenn Sie in Media Services auf Entitäten zugreifen, müssen Sie bestimmte Headerfelder und Werte in Ihren HTTP-Anforderungen festlegen. Weitere Informationen finden Sie unter [Installation für die Entwicklung mit der Media Services-REST-API](media-services-rest-how-to-use.md).
-> 
-> Nach der erfolgreichen Verbindung mit „https://media.windows.net“ erhalten Sie eine 301 Redirect-Antwort, in der ein anderer Media Services-URI angegeben ist. Nachfolgende Aufrufe müssen an den neuen URI gesendet werden. Informationen zum Herstellen einer Verbindung mit der AMS-API finden Sie unter [Zugreifen auf die Azure Media Services-API per Azure AD-Authentifizierung](media-services-use-aad-auth-to-access-ams-api.md).
-> 
-> 
+## <a name="considerations"></a>Überlegungen 
+
+Wenn Sie ein speicherverschlüsseltes Medienobjekt übermitteln möchten, müssen Sie die Übermittlungsrichtlinie des Medienobjekts konfigurieren. Bevor das Medienobjekt gestreamt werden kann, wird die Speicherverschlüsselung vom Streamingserver entfernt und der Inhalt mithilfe der angegebenen Übermittlungsrichtlinie gestreamt. Weitere Informationen finden Sie unter [Konfigurieren von Übermittlungsrichtlinien für Medienobjekte](media-services-rest-configure-asset-delivery-policy.md).
+
+Wenn Sie in Media Services auf Entitäten zugreifen, müssen Sie bestimmte Headerfelder und Werte in Ihren HTTP-Anforderungen festlegen. Weitere Informationen finden Sie unter [Installation für die Entwicklung mit der Media Services-REST-API](media-services-rest-how-to-use.md). 
+
+## <a name="connect-to-media-services"></a>Verbinden mit Mediendiensten
+
+Informationen zum Herstellen einer Verbindung mit der AMS-API finden Sie unter [Zugreifen auf die Azure Media Services-API per Azure AD-Authentifizierung](media-services-use-aad-auth-to-access-ams-api.md). 
+
+>[!NOTE]
+>Nach der erfolgreichen Verbindung mit „https://media.windows.net“ erhalten Sie eine 301 Redirect-Antwort, in der ein anderer Media Services-URI angegeben ist. Nachfolgende Aufrufe müssen an den neuen URI gesendet werden.
 
 ## <a name="storage-encryption-overview"></a>Übersicht über die Speicherverschlüsselung
 Die AMS-Speicherverschlüsselung wendet die Verschlüsselung im **AES-CTR-Modus** auf die gesamte Datei an.  AES-CTR ist eine Blockchiffre, die Daten beliebiger Länge ohne Auffüllen verschlüsseln kann. AES-CTR verschlüsselt einen Zählerblock mit dem AES-Algorithmus und kombiniert die Ausgabe von AES per XOR-Operation mit den zu verschlüsselnden oder zu entschlüsselnden Daten.  Der verwendete Zählerblock wird erstellt, indem der InitializationVector-Wert in die Bytes 0 bis 7 des Zählerwerts kopiert und die Bytes 8 bis 15 des Zählerwerts auf 0 gesetzt werden. Im 16 Byte langen Zählerblock werden die Bytes 8 bis 15 (also die niedrigstwertigen Bytes) als einfache 64-Bit-Ganzzahl ohne Vorzeichen verwendet, die für jeden nachfolgenden Block verarbeiteter Daten um eins erhöht wird. Die Reihenfolge der Netzwerkbytes wird beibehalten. Beachten Sie Folgendes: Wenn diese Ganzzahl ihren Maximalwert erreicht (0xFFFFFFFFFFFFFFFF), wird durch weitere Erhöhung der Blockzähler auf Null zurückgesetzt (Bytes 8 bis 15), ohne Auswirkung auf die restlichen 64 Bits des Zählers (also Bytes 0 bis 7).   Um die Sicherheit der Verschlüsselung im AES-CTR-Modus zu gewährleisten, muss der InitializationVector-Wert jeder Schlüsselkennung für jeden Inhaltsschlüssel für jede Datei eindeutig sein, und die Dateien müssen weniger als 2^64 Blöcke lang sein.  Damit wird sichergestellt, dass ein Zählerwert nie mit einem vorhandenen Schlüssel wiederverwendet wird. Weitere Informationen zum CTR-Modus finden Sie auf [dieser Wiki-Seite](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#CTR) (der Wiki-Artikel verwendet den Begriff „Nonce“ anstelle von „InitializationVector“).

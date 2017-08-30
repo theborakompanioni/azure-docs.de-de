@@ -14,14 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/27/2017
+ms.date: 08/15/2017
 ms.author: jgao
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
-ms.openlocfilehash: 939571e7c4ce2c26249b5fb21a09a93e4a51a680
+ms.translationtype: HT
+ms.sourcegitcommit: 368589509b163cacf495fd0be893a8953fe2066e
+ms.openlocfilehash: 72c02eac9d627ad642d3e66492c314a2276e9c0a
 ms.contentlocale: de-de
-ms.lasthandoff: 05/16/2017
-
+ms.lasthandoff: 08/17/2017
 
 ---
 # <a name="manage-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Verwalten von Hadoop-Clustern in HDInsight mit dem Azure-Portal
@@ -82,36 +81,31 @@ Wenn der Fehler „NoRegisteredProviderFound“ oder „MissingSubscriptionRegis
 
     ![Azure-Portal – HDInsight-Cluster-Zusammenfassung](./media/hdinsight-administer-use-portal-linux/hdinsight-essentials.png)
 
-    **Menü „Übersicht“:**
-
-   * **Dashboard**: Öffnet das Clusterdashboard (für Linux-basierte Cluster: Ambari Web).
-   * **Secure Shell**: Zeigt die Anweisungen für die Verbindung mit dem Cluster über eine Secure Shell-Verbindung (SSH) an.
-   * **Cluster skalieren**: Dient zum Ändern der Anzahl von Workerknoten für den Cluster.
-   * **Löschen**: Löscht den Cluster.
-
-    **Menü auf der linken Seite:**
-
-   * **Aktivitätsprotokoll**: Dient zum Anzeigen und Abfragen von Aktivitätsprotokollen.
-   * **Zugriffssteuerung (IAM)**: Dient zum Verwenden von Rollenzuweisungen.  Weitere Informationen finden Sie unter [Verwenden von Rollenzuweisungen zum Verwalten Ihrer Azure-Abonnementressourcen](../active-directory/role-based-access-control-configure.md).
-   * **Tags**: Dient zum Festlegen von Schlüssel-Wert-Paaren, um eine benutzerdefinierte Taxonomie für Ihre Clouddienste zu definieren. Sie können z. B. einen Schlüssel mit dem Namen **Projekt** erstellen und dann einen gemeinsamen Wert für alle mit einem bestimmten Projekt verknüpften Dienste verwenden.
-   * **Diagnose und Problembehandlung**: Dient zum Anzeigen von Informationen zur Problembehandlung.
-   * **Sperren**: Dient zum Hinzufügen einer Sperre, um zu verhindern, dass der Cluster geändert oder gelöscht wird.
-   * **Automatisierungsskript**: Dient zum Anzeigen und Exportieren der Azure Resource Manager-Vorlage für den Cluster. Derzeit können Sie nur das abhängige Azure-Speicherkonto exportieren. Weitere Informationen finden Sie unter [Erstellen Linux-basierter Hadoop-Cluster in HDInsight mithilfe von Azure Resource Manager-Vorlagen](hdinsight-hadoop-create-linux-clusters-arm-templates.md).
-   * **Schnellstart**: Zeigt hilfreiche Informationen für die ersten Schritte mit HDInsight an.
-   * **Tools für HDInsight**: Hilfeinformationen für HDInsight-bezogene Tools.
-   * **Clusteranmeldung**: Dient zum Anzeigen von Informationen zur Clusteranmeldung.
-   * **Subscription Core Usage** (Nutzung des Abonnementkernspeichers): Dient zum Anzeigen der verwendeten und verfügbaren Kernspeicher für Ihr Abonnement.
-   * **Cluster skalieren**: Erhöhen und Verringern der Anzahl der Cluster-Workerknoten Weitere Informationen finden Sie unter [Skalieren von Clustern](hdinsight-administer-use-management-portal.md#scale-clusters).
-   * **Secure Shell**: Zeigt die Anweisungen für die Verbindung mit dem Cluster über eine Secure Shell-Verbindung (SSH) an. Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md).
-   * **HDInsight-Partner**: Hinzufügen/Entfernen des aktuellen HDInsight-Partners.
-   * **Externe Metastores**: Anzeigen der Hive- und Oozie-Metastores. Die Metastores können nur während der Clustererstellung konfiguriert werden. Weitere Informationen finden Sie unter [Verwenden des Hive/Oozie-Metastores](hdinsight-hadoop-provision-linux-clusters.md#use-hiveoozie-metastore).
-   * **Skriptaktionen**: Anwenden von Bashskripts auf den Cluster. Weitere Informationen finden Sie unter [Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md).
-   * **Anwendungen**: Dient zum Hinzufügen und Entfernen von HDInsight-Anwendungen.  Weitere Informationen finden Sie unter [Installieren benutzerdefinierter HDInsight-Anwendungen](hdinsight-apps-install-custom-applications.md).
-   * **Eigenschaften**: Anzeigen der Clustereigenschaften
-   * **Speicherkonten**: Dient zum Anzeigen der Speicherkonten und Schlüssel. Die Speicherkonten werden während der Clustererstellung konfiguriert.
-   * **Cluster-AAD-Identität**:
-   * **Neue Supportanfrage**: Ermöglicht die Erstellung eines Supporttickets für den Microsoft-Support.
-
+    * **Dashboard**: Öffnet das Clusterdashboard (für Linux-basierte Cluster: Ambari Web).
+    * **Secure Shell**: Zeigt die Anweisungen für die Verbindung mit dem Cluster über eine Secure Shell-Verbindung (SSH) an.
+    * **Cluster skalieren**: Dient zum Ändern der Anzahl von Workerknoten für den Cluster.
+    * **Löschen**: Löscht den Cluster.
+    * **Aktivitätsprotokoll**: Dient zum Anzeigen und Abfragen von Aktivitätsprotokollen.
+    * **Zugriffssteuerung (IAM)**: Dient zum Verwenden von Rollenzuweisungen.  Weitere Informationen finden Sie unter [Verwenden von Rollenzuweisungen zum Verwalten Ihrer Azure-Abonnementressourcen](../active-directory/role-based-access-control-configure.md).
+    * **Tags**: Dient zum Festlegen von Schlüssel-Wert-Paaren, um eine benutzerdefinierte Taxonomie für Ihre Clouddienste zu definieren. Sie können z. B. einen Schlüssel mit dem Namen **Projekt** erstellen und dann einen gemeinsamen Wert für alle mit einem bestimmten Projekt verknüpften Dienste verwenden.
+    * **Diagnose und Problembehandlung**: Dient zum Anzeigen von Informationen zur Problembehandlung.
+    * **Sperren**: Dient zum Hinzufügen einer Sperre, um zu verhindern, dass der Cluster geändert oder gelöscht wird.
+    * **Automatisierungsskript**: Dient zum Anzeigen und Exportieren der Azure Resource Manager-Vorlage für den Cluster. Derzeit können Sie nur das abhängige Azure-Speicherkonto exportieren. Weitere Informationen finden Sie unter [Erstellen Linux-basierter Hadoop-Cluster in HDInsight mithilfe von Azure Resource Manager-Vorlagen](hdinsight-hadoop-create-linux-clusters-arm-templates.md).
+    * **Schnellstart**: Zeigt hilfreiche Informationen für die ersten Schritte mit HDInsight an.
+    * **Tools für HDInsight**: Hilfeinformationen für HDInsight-bezogene Tools.
+    * **Clusteranmeldung**: Dient zum Anzeigen von Informationen zur Clusteranmeldung.
+    * **Subscription Core Usage** (Nutzung des Abonnementkernspeichers): Dient zum Anzeigen der verwendeten und verfügbaren Kernspeicher für Ihr Abonnement.
+    * **Cluster skalieren**: Erhöhen und Verringern der Anzahl der Cluster-Workerknoten Weitere Informationen finden Sie unter [Skalieren von Clustern](hdinsight-administer-use-management-portal.md#scale-clusters).
+    * **Secure Shell**: Zeigt die Anweisungen für die Verbindung mit dem Cluster über eine Secure Shell-Verbindung (SSH) an. Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md).
+    * **HDInsight-Partner**: Hinzufügen/Entfernen des aktuellen HDInsight-Partners.
+    * **Externe Metastores**: Anzeigen der Hive- und Oozie-Metastores. Die Metastores können nur während der Clustererstellung konfiguriert werden. Weitere Informationen finden Sie unter [Verwenden des Hive/Oozie-Metastores](hdinsight-hadoop-provision-linux-clusters.md#use-hiveoozie-metastore).
+    * **Skriptaktionen**: Anwenden von Bashskripts auf den Cluster. Weitere Informationen finden Sie unter [Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md).
+    * **Anwendungen**: Dient zum Hinzufügen und Entfernen von HDInsight-Anwendungen.  Weitere Informationen finden Sie unter [Installieren benutzerdefinierter HDInsight-Anwendungen](hdinsight-apps-install-custom-applications.md).
+    * **Eigenschaften**: Anzeigen der Clustereigenschaften
+    * **Speicherkonten**: Dient zum Anzeigen der Speicherkonten und Schlüssel. Die Speicherkonten werden während der Clustererstellung konfiguriert.
+    * **Cluster-AAD-Identität**:
+    * **Neue Supportanfrage**: Ermöglicht die Erstellung eines Supporttickets für den Microsoft-Support.
+    
 6. Klicken Sie auf **Eigenschaften**.
 
     Die Eigenschaften sind:
@@ -139,6 +133,10 @@ Wenn Sie einen Cluster löschen, werden das Standardspeicherkonto oder die verkn
 
 Siehe auch [Anhalten/Herunterfahren von Clustern](#pauseshut-down-clusters).
 
+## <a name="add-additional-storage-accounts"></a>Hinzufügen weiterer Speicherkonten
+
+Nachdem ein Cluster erstellt wurde, können Sie weitere Azure Storage- und Azure Data Lake Store-Speicherkonten hinzufügen. Weitere Informationen finden Sie unter [Hinzufügen zusätzlicher Speicherkonten zu HDInsight](./hdinsight-hadoop-add-storage.md).
+
 ## <a name="scale-clusters"></a>Skalieren von Clustern
 Mithilfe der Clusterskalierung können Sie die Anzahl der von einem in Azure HDInsight ausgeführten Cluster verwendeten Workerknoten ändern, ohne den Cluster neu erstellen zu müssen.
 
@@ -153,7 +151,7 @@ Auswirkungen der Änderung der Anzahl von Datenknoten für die von HDInsight unt
 
     Sie können die Anzahl der Workerknoten in einem aktiven Hadoop-Cluster problemlos ohne Auswirkungen auf ausstehende oder aktive Aufträge erhöhen. Neue Aufträge können auch während des Vorgangs gesendet werden. Fehler bei einer Skalierung werden ordnungsgemäß behandelt, sodass der Cluster immer in einem funktionsfähigen Zustand verbleibt.
 
-    Wenn ein Hadoop-Cluster durch Verringern der Anzahl der Datenknoten zentral herunterskaliert wird, werden einige der Dienste im Cluster neu gestartet. Dies führt beim Abschluss des Skalierungsvorgangs bei allen aktiven und ausstehenden Aufträgen zu einem Fehler. Sie können die Aufträge jedoch nach Abschluss des Vorgangs erneut senden.
+    Wenn ein Hadoop-Cluster durch Verringern der Anzahl der Datenknoten zentral herunterskaliert wird, werden einige der Dienste im Cluster neu gestartet. Dieses Verhalten führt beim Abschluss des Skalierungsvorgangs bei allen aktiven und ausstehenden Aufträgen zu einem Fehler. Sie können die Aufträge jedoch nach Abschluss des Vorgangs erneut senden.
 * HBase
 
     Sie können Knoten reibungslos Ihrem HBase-Cluster hinzufügen oder aus diesem entfernen, während er aktiv ist. Regionale Server werden innerhalb weniger Minuten nach Abschluss des Skalierungsvorgangs automatisch ausgeglichen. Allerdings können Sie die regionalen Server auch manuell ausgleichen, indem Sie sich am Hauptknoten des Clusters anmelden und in einem Eingabeaufforderungsfenster die folgenden Befehle ausführen:
@@ -172,7 +170,7 @@ Auswirkungen der Änderung der Anzahl von Datenknoten für die von HDInsight unt
   * Storm-Webbenutzeroberfläche
   * Befehlszeilenschnittstelle (CLI)
 
-    Weitere Informationen finden Sie in der Dokumentation zu [Apache Storm](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html) .
+    Weitere Informationen finden Sie in der [Apache Storm-Dokumentation](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html).
 
     Die Storm-Webbenutzeroberfläche ist für den HDInsight-Cluster verfügbar:
 
@@ -210,13 +208,13 @@ Es gibt viele Methoden, mit denen Sie den Prozess programmieren können:
 Die Preisinformationen finden Sie unter [HDInsight Preise](https://azure.microsoft.com/pricing/details/hdinsight/). Informationen zum Löschen eines Clusters aus dem Portal finden Sie unter [Löschen von Clustern](#delete-clusters)
 
 ## <a name="change-passwords"></a>Ändern von Kennwörtern
-Ein HDInsight-Cluster kann über zwei Benutzerkonten verfügen. Das HDInsight-Clusterbenutzerkonto (auch HTTP-Benutzerkonto genannt) und das SSH-Benutzerkonto werden während des Erstellungsprozesses erstellt. Sie können die Ambari-Webbenutzeroberfläche verwenden, um Benutzername und Kennwort für das Clusterbenutzerkonto zu ändern, und Skriptaktionen, um das SSH-Benutzerkonto zu ändern.
+Ein HDInsight-Cluster kann über zwei Benutzerkonten verfügen. Das HDInsight-Clusterbenutzerkonto (auch HTTP-Benutzerkonto genannt) und das SSH-Benutzerkonto werden während des Erstellungsprozesses erstellt. Sie können die Ambari-Webbenutzeroberfläche verwenden, um den Benutzernamen und das Kennwort für das Clusterbenutzerkonto zu ändern, und Skriptaktionen, um das SSH-Benutzerkonto zu ändern.
 
 ### <a name="change-the-cluster-user-password"></a>Ändern des Clusterbenutzerkennworts
 Sie können die Ambari-Webbenutzeroberfläche verwenden, um das Clusterbenutzerkennwort zu ändern. Zum Anmelden bei Ambari müssen Sie den vorhandenen Benutzernamen und das vorhandene Kennwort verwenden.
 
 > [!NOTE]
-> Wenn Sie das Kennwort für den Clusterbenutzer (Admin) ändern, können Skriptaktionen, die für diesen Cluster ausgeführt werden, möglicherweise fehlschlagen. Wenn Sie Skriptaktionen beibehalten möchten, deren Ziel Workerknoten sind, können sie fehlschlagen, wenn Sie dem Cluster über eine Größenänderung Knoten hinzufügen. Weitere Informationen zu Skriptaktionen finden Sie unter [Anpassen von HDInsight-Clustern mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md).
+> Wenn Sie das Kennwort für den Clusterbenutzer (Admin) ändern, können Skriptaktionen, die für diesen Cluster ausgeführt werden, möglicherweise fehlschlagen. Wenn Sie Skriptaktionen beibehalten möchten, deren Ziel Workerknoten sind, können diese Skripts fehlschlagen, sobald Sie dem Cluster über eine Größenänderung Knoten hinzufügen. Weitere Informationen zu Skriptaktionen finden Sie unter [Anpassen von HDInsight-Clustern mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md).
 >
 >
 
@@ -241,11 +239,11 @@ Ambari ändert anschließend das Kennwort auf allen Knoten im Cluster.
         PASS=$2
 
         usermod --password $(echo $PASS | openssl passwd -1 -stdin) $USER
-2. Laden Sie die Datei an einen Speicherort hoch, auf den von HDInsight über eine HTTP- oder HTTPS-Adresse zugegriffen werden kann. Verwenden Sie z.B. einen öffentlichen Dateispeicher wie OneDrive oder Azure Blob Storage. Speichern Sie den URI (HTTP- oder HTTPS-Adresse) in der Datei, da dieser im nächsten Schritt benötigt wird.
+2. Laden Sie die Datei an einen Speicherort hoch, auf den von HDInsight über eine HTTP- oder HTTPS-Adresse zugegriffen werden kann. Verwenden Sie z.B. einen öffentlichen Dateispeicher wie OneDrive oder Azure Blob Storage. Speichern Sie den URI (HTTP- oder HTTPS-Adresse) in der Datei, da dieser URI im nächsten Schritt benötigt wird.
 3. Klicken Sie im Azure-Portal auf **HDInsight-Cluster**.
 4. Klicken Sie auf Ihren HDInsight-Cluster.
 4. Klicken Sie auf **Skriptaktionen**.
-4. Wählen Sie auf dem Blatt **Skriptaktionen** die Option **Neue übermitteln** aus. Geben Sie auf dem Blatt **Skriptaktion übermitteln** die folgenden Informationen ein.
+4. Wählen Sie auf dem Blatt **Skriptaktionen** die Option **Neue übermitteln** aus. Geben Sie auf dem Blatt **Skriptaktion übermitteln** die folgenden Informationen ein:
 
    | Feld | Wert |
    | --- | --- |
@@ -327,7 +325,7 @@ Der Abschnitt **Nutzung** auf dem Blatt für den HDInsight-Cluster enthält Info
 * [Verwenden von SSH mit HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Artikel haben Sie erfahren, wie ein HDInsight-Cluster mit dem Azure-Portal erstellt und wie das Hadoop-Befehlszeilentool geöffnet wird. Weitere Informationen finden Sie in den folgenden Artikeln:
+In diesem Artikel haben Sie einige grundlegende administrative Funktionen kennengelernt. Weitere Informationen finden Sie in den folgenden Artikeln:
 
 * [Verwalten von HDInsight mit Azure PowerShell](hdinsight-administer-use-powershell.md)
 * [Verwalten von HDInsight mit der Azure-CLI](hdinsight-administer-use-command-line.md)

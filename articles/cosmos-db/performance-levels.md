@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 05/24/2017
 ms.author: mimig
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: 38afe40cf45cf13d587faf13cc5216e4326b84a0
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: c8d4733e57eb760dbb8e8ca96f6ba55671d1742f
 ms.contentlocale: de-de
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="retiring-the-s1-s2-and-s3-performance-levels"></a>Aussondern der Leistungsebenen S1, S2 und S3
@@ -59,7 +58,7 @@ Die folgende Tabelle enthält einen Vergleich der Durchsatz- und Speicheroptione
 |Maximaler Durchsatz|Unbegrenzt|10.000 RU/s|250 RU/s|1.000 RU/s|2.500 RU/s|
 |Minimaler Durchsatz|2.500 RU/s|400 RU/s|250 RU/s|1.000 RU/s|2.500 RU/s|
 |Maximale Speichergröße|Unbegrenzt|10 GB|10 GB|10 GB|10 GB|
-|Preis|Durchsatz: 6 USD/100 RU/s<br><br>Speicher: 0,25 USD/GB|Durchsatz: 6 USD/100 RU/s<br><br>Speicher: 0,25 USD/GB|25 USD|50 USD|100 USD|
+|Preis (monatlich)|Durchsatz: 6 USD/100 RU/s<br><br>Speicher: 0,25 USD/GB|Durchsatz: 6 USD/100 RU/s<br><br>Speicher: 0,25 USD/GB|25 USD|50 USD|100 USD|
 
 Sind Sie EA-Kunde? Wenn ja, helfen Ihnen die Informationen unter [Inwieweit bin ich betroffen, wenn ich EA-Kunde bin?](#ea-customer) weiter.
 
