@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 05/22/2017
+ms.date: 08/17/2017
 ms.author: arramac
 ms.translationtype: HT
-ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
-ms.openlocfilehash: 2d840f1c70e9668ae0a8b76cd9623258c2563d98
+ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
+ms.openlocfilehash: 2c03b498b1530388a48db4d2925debc2e03e30aa
 ms.contentlocale: de-de
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 08/19/2017
 
 ---
 # <a name="how-does-azure-cosmos-db-index-data"></a>Unterstützen von Indexdaten durch Azure Cosmos DB
@@ -59,6 +59,10 @@ Mit dem folgenden .NET-Codeausschnitt wird gezeigt, wie eine benutzerdefinierte 
 > Standardmäßig indiziert Azure Cosmos DB alle Zeichenfolgeneigenschaften in Dokumenten konsistent mit einem Hashindex und numerische Eigenschaften mit einem Bereichsindex.  
 > 
 > 
+
+### <a name="customizing-the-indexing-policy-using-the-portal"></a>Anpassen der Indizierungsrichtlinie mithilfe des Portals
+
+Sie können die Indizierungsrichtlinie einer Auflistung mithilfe des Azure-Portals ändern. Öffnen Sie im Azure-Portal Ihr Azure Cosmos DB-Konto, und wählen Sie Ihre Auflistung aus. Klicken Sie im Navigationsmenü auf der linken Seite auf **Einstellungen** und dann auf **Indizierungsrichtlinie**. Ändern Sie auf dem Blatt **Indizierungsrichtlinie** Ihre Indizierungsrichtlinie, und klicken Sie dann auf **OK** zum Speichern der Änderungen. 
 
 ### <a id="indexing-modes"></a>Datenbank-Indizierungsmodi
 Azure Cosmos DB unterstützt drei Indizierungsmodi, welche über die Indizierungsrichtlinie in einer Azure Cosmos DB-Sammlung konfiguriert werden können – Konsistent, Verzögert und Keine.

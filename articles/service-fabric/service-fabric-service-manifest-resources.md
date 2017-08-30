@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: subramar
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 9cfdb94d1e030fe9d467389acf8894d79efd17d1
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 08141edfbc8be9bf7bf303419e1e482d5f884860
 ms.contentlocale: de-de
-ms.lasthandoff: 03/28/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>Angeben von Ressourcen in einem Dienstmanifest
@@ -138,4 +138,64 @@ Hier sehen Sie ein Beispiel für ein Anwendungsmanifest, das Sie für HTTPS fest
   </Certificates>
 </ApplicationManifest>
 ```
+
+## <a name="overriding-endpoints-in-servicemanifestxml"></a>Außerkraftsetzen von Endpunkten in „ServiceManifest.xml“
+
+Fügen Sie dem Anwendungsmanifest einen Abschnitt vom Typ „ResourceOverrides“ hinzu, der dem Abschnitt „ConfigOverrides“ gleichgestellt ist. In diesem Abschnitt können Sie die Außerkraftsetzung für den Abschnitt „Endpoints“ im Ressourcenabschnitt des Dienstmanifests angeben.
+
+Wenn Sie „EndPoint“ im Dienstmanifest mithilfe von „ApplicationParameters“ außer Kraft setzen möchten, ändern Sie das Anwendungsmanifest wie folgt:
+
+Fügen Sie im Abschnitt „ServiceManifestImport“ einen neuen Abschnitt namens „ResourceOverrides“ hinzu.
+
+```xml
+<ServiceManifestImport>
+    <ServiceManifestRef ServiceManifestName="Stateless1Pkg" ServiceManifestVersion="1.0.0" />
+    <ConfigOverrides />
+    <ResourceOverrides>
+      <Endpoints>
+        <Endpoint Name="ServiceEndpoint" Port="[Port]" Protocol="[Protocol]" Type="[Type]" />
+        <Endpoint Name="ServiceEndpoint1" Port="[Port1]" Protocol="[Protocol1] "/>
+      </Endpoints>
+    </ResourceOverrides>
+        <Policies>
+           <EndpointBindingPolicy CertificateRef="TestCert1" EndpointRef="ServiceEndpoint"/>
+        </Policies>
+  </ServiceManifestImport>
+```
+
+Fügen Sie unter „Parameters“ Folgendes hinzu:
+
+```xml
+  <Parameters>
+    <Parameter Name="Port" DefaultValue="" />
+    <Parameter Name="Protocol" DefaultValue="" />
+    <Parameter Name="Type" DefaultValue="" />
+    <Parameter Name="Port1" DefaultValue="" />
+    <Parameter Name="Protocol1" DefaultValue="" />
+  </Parameters>
+```
+
+Beim Bereitstellen der Anwendung können Sie nun beispielsweise die folgenden Werte als Anwendungsparameter übergeben:
+
+```powershell
+PS C:\> New-ServiceFabricApplication -ApplicationName fabric:/myapp -ApplicationTypeName "AppType" -ApplicationTypeVersion "1.0.0" -ApplicationParameter @{Port='1001'; Protocol='https'; Type='Input'; Port1='2001'; Protocol='http'}
+```
+
+Hinweis: Wenn für die Anwendungsparameter keine Werte angegeben wurden, wird der Standardwert für den entsprechenden Endpunktnamen aus dem Dienstmanifest verwendet.
+
+Beispiel:
+
+Angenommen, Sie haben im Dienstmanifest Folgendes angegeben:
+
+```xml
+  <Resources>
+    <Endpoints>
+      <Endpoint Name="ServiceEndpoint1" Protocol="tcp"/>
+    </Endpoints>
+  </Resources>
+```
+
+Und nehmen wir weiter an, der Port1- und der Protocol1-Wert für die Anwendungsparameter sind NULL oder leer. Der Port wird weiterhin von ServiceFabric bestimmt. Und das TCP-Protokoll wird verwendet.
+
+Angenommen, Sie geben einen falschen Wert an – beispielsweise den Zeichenfolgenwert „Foo“ anstelle einer ganzen Zahl für den Port.  Für den Befehl „New-ServiceFabricApplication“ tritt ein Fehler mit dem Hinweis auf, dass der Außerkraftsetzungsparameter mit dem Namen „ServiceEndpoint1“ und dem Attribut „Port1“ im Abschnitt „ResourceOverrides“ ungültig ist. Außerdem werden Sie darauf hingewiesen, dass „Foo“ angegeben wurde, aber eine ganze Zahl erforderlich ist.
 

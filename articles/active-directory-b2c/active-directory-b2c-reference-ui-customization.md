@@ -1,86 +1,86 @@
 ---
-title: "Azure Active Directory B2C: Anpassung der Benutzeroberfläche (UI) | Microsoft Docs"
+title: "Anpassen der Benutzeroberfläche: Azure AD B2C | Microsoft-Dokumentation"
 description: "Ein Thema über die Anpassungsfeatures für die Benutzeroberfläche (UI) in Azure Active Directory B2C"
 services: active-directory-b2c
 documentationcenter: 
-author: swkrish
-manager: mbaldwin
-editor: bryanla
+author: saeedakhter-msft
+manager: krassk
+editor: parakhj
 ms.assetid: 99f5a391-5328-471d-a15c-a2fafafe233d
 ms.service: active-directory-b2c
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/26/2017
-ms.author: swkrish
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
-ms.openlocfilehash: 8e71a7462a0cbdbd177b088e6757c70eeef31fc7
+ms.date: 08/16/2017
+ms.author: saeedakhter-msft
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 122fa997ea11b369aae3c59edf0043ab19d21aea
 ms.contentlocale: de-de
-ms.lasthandoff: 05/08/2017
-
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="azure-active-directory-b2c-customize-the-azure-ad-b2c-user-interface-ui"></a>Azure Active Directory B2C: Anpassen der Azure AD B2C-Benutzeroberfläche (UI)
-Benutzerfreundlichkeit ist in einer kundenorientierten Anwendung entscheidend. Dies ist der Unterschied zwischen einer guten Anwendung und einer hervorragenden – und zwischen lediglich aktiven Consumern und wirklich engagierten. Azure Active Directory (Azure AD) B2C ermöglicht es Ihnen, die Seiten für die Registrierung und Anmeldung von Endkunden (*siehe Hinweis unten*), für die Profilbearbeitung und für die Kennwortzurücksetzung mit einer präzisen Kontrolle anzupassen.
+
+Benutzerfreundlichkeit ist in einer kundenorientierten Anwendung entscheidend.  Vergrößern Sie Ihren Kundenstamm, indem Sie zu Ihrem Unternehmen passende Benutzeroberflächen entwickeln. Azure Active Directory B2C (Azure AD B2C) ermöglicht Ihnen, die Seiten für Registrierung und Anmeldung, Profilbearbeitung und Kennwortzurücksetzung mit präziser Kontrolle anzupassen.
 
 > [!NOTE]
-> Derzeit können Anmeldeseiten für lokale Konten, die zugehörigen Seiten für die Kennwortzurücksetzung und Überprüfungs-E-Mails nur mithilfe des [Features für Unternehmensbranding](../active-directory/active-directory-add-company-branding.md) angepasst werden. Mit den Mechanismen, die in diesem Artikel beschrieben werden, ist dies nicht möglich.
-> 
-> 
+> Das in diesem Artikel beschriebene Feature „Seite für die Benutzeroberflächenanpassung“ gilt nicht für die Anmeldungsrichtlinie, die dazugehörige Seite zum Zurücksetzen des Kennworts und Bestätigungs-E-Mails.  Für diese Features wird stattdessen das [Unternehmensbrandingfeature](../active-directory/active-directory-add-company-branding.md) verwendet.
+>
 
-Dieser Artikel enthält Folgendes:
+In diesem Artikel werden die folgenden Themen behandelt:
 
-* Das Anpassungsfeature für die Seitenbenutzeroberfläche (UI).
-* Ein Tool, mit dem Sie das Anpassungsfeature für die Seiten-UI mit unserem Beispielinhalt testen können.
-* Die wichtigsten UI-Elemente in jedem Seitentyp.
+* Das Feature „Seite für die Benutzeroberflächenanpassung“.
+* Ein Tool zum Hochladen von HTML-Inhalt in Azure Blob Storage für die Verwendung mit dem Feature „Seite für die Benutzeroberflächenanpassung“.
+* Die von Azure AD B2C verwendeten Benutzeroberflächenelemente, die Sie mithilfe von Cascading Stylesheets (CSS) anpassen können.
 * Bewährte Methoden beim Üben des Umgangs mit diesem Feature.
 
-## <a name="the-page-ui-customization-feature"></a>Das Anpassungsfeature für die Seiten-UI
-Mit dem Anpassungsfeature für die Seiten-UI können Sie das Aussehen und Verhalten der Seiten für die Registrierung, Anmeldung, Kennwortzurücksetzung und Profilbearbeitung von Endkunden anpassen (durch Konfigurieren von [Richtlinien](active-directory-b2c-reference-policies.md)). Beim Navigieren zwischen der Anwendung und den Seiten, die von Azure AD B2C verarbeitet werden, wird den Endkunden eine nahtlose Benutzeroberfläche angeboten.
+## <a name="the-page-ui-customization-feature"></a>Das Feature „Seite für die Benutzeroberflächenanpassung“
 
-Im Gegensatz zu anderen Diensten, in denen UI-Optionen beschränkt oder nur über APIs verfügbar sind, verwendet Azure AD B2C eine moderne (und einfachere) Vorgehensweise bei der Anpassung der Seiten-UI.
+Sie können das Aussehen und Verhalten der Seiten für die Registrierung, Anmeldung, Kennwortzurücksetzung und Profilbearbeitung von Kunden (durch Konfigurieren von [Richtlinien](active-directory-b2c-reference-policies.md)) anpassen. Beim Navigieren zwischen der Anwendung und den Seiten, die von Azure AD B2C bereitgestellt werden, wird Kunden eine nahtlose Benutzeroberfläche geboten.
 
-So funktioniert es: Azure AD B2C führt Code im Browser des Consumers aus und verwendet einen modernen Ansatz namens [Cross-Origin Resource Sharing (CORS)](http://www.w3.org/TR/cors/) zum Laden des Inhalts von einer URL, die Sie in einer Richtlinie angeben. Sie können verschiedene URLs für unterschiedliche Seiten angeben. Der Code führt die UI-Elemente aus Azure AD B2C mit dem Inhalt, der von der URL geladen wird, zusammen und zeigt die Seite für den Endkunden an. Sie müssen nur Folgendes durchführen:
+Im Gegensatz zu anderen Diensten mit Benutzeroberflächenoptionen befolgt Azure AD B2C einen einfachen und modernen Ansatz zur Anpassung der Benutzeroberfläche.
 
-1. Erstellen Sie wohlgeformten HTML5-Inhalt mit einem `<div id="api"></div>`-Element (muss ein leeres Element sein) an einer beliebigen Stelle in `<body>`. Dieses Element markiert die Stelle, an der der Azure AD B2C-Inhalt eingefügt wird.
-2. Hosten Sie diese Inhalte auf einem HTTPS-Endpunkt (auf dem CORS zulässig ist). Beachten Sie, dass Sie bei der Konfiguration von CORS die Anforderungsmethoden GET und OPTIONS aktivieren müssen.
-3. Formatieren Sie die Elemente der Benutzeroberfläche, die von Azure AD B2C einfügt werden.
+So funktioniert es: Azure AD B2C führt den Code im Browser Ihres Kunden aus und verwendet einen modernen Ansatz namens [Cross-Origin Resource Sharing (CORS)](http://www.w3.org/TR/cors/) (Ressourcenfreigabe zwischen verschiedenen Ursprüngen).  Zur Laufzeit wird Inhalt über eine URL geladen, die Sie in einer Richtlinie angeben. Sie können verschiedene URLs für unterschiedliche Seiten angeben. Nachdem der über die URL geladene Inhalt mit einem von Azure AD B2C eingefügten HTML-Fragment zusammengeführt wurde, wird die Seite Ihrem Kunden angezeigt. Sie müssen nur Folgendes durchführen:
 
-## <a name="test-out-the-ui-customization-feature"></a>Testen des Anpassungsfeatures für die Benutzeroberfläche (UI)
-Wenn Sie das UI-Anpassungsfeature anhand der HTML- und CSS-Beispielinhalte ausprobieren möchten, können Sie unser [einfaches Hilfsprogramm](active-directory-b2c-reference-ui-customization-helper-tool.md) zum Hochladen und Konfigurieren der Beispielinhalte in Ihren Azure-Blobspeicher verwenden.
+1. Erstellen Sie an einer beliebigen Stelle in `<body>` wohlgeformten HTML5-Inhalt mit einem leeren `<div id="api"></div>`-Element. Dieses Element markiert die Stelle, an der der Azure AD B2C-Inhalt eingefügt wird.
+1. Hosten Sie diese Inhalte auf einem HTTPS-Endpunkt (auf dem CORS zulässig ist). Beachten Sie, dass Sie bei der Konfiguration von CORS die Anforderungsmethoden GET und OPTIONS aktivieren müssen.
+1. Formatieren Sie die Elemente der Benutzeroberfläche, die von Azure AD B2C einfügt werden, mithilfe von CSS.
 
-> [!NOTE]
-> Sie können Ihre UI-Inhalte überall hosten: auf Webservern, CDNs, AWS S3, Dateifreigabesystemen usw. Solange die Inhalte auf einem öffentlich verfügbaren HTTPS-Endpunkt gehostet werden (mit Zulassung von CORS), ist alles in Ordnung. Wir verwenden den Azure-Blobspeicher nur zur Veranschaulichung.
-> 
-> 
+### <a name="a-basic-example-of-customized-html"></a>Ein einfaches Beispiel benutzerdefinierter HTML
 
-### <a name="the-most-basic-html-content-for-testing"></a>Grundlegende HTML-Inhalte für Tests
-Unten sind grundlegende HTML-Inhalte dargestellt, die Sie zum Testen dieser Funktion verwenden können. Nutzen Sie dasselbe Hilfsprogramm wie oben, um diese Inhalte in den Azure-Blobspeicher hochzuladen und zu konfigurieren. So können Sie sicherstellen, dass die grundlegenden unformatierten Schaltflächen und Formularfelder auf jeder Seite angezeigt werden und funktionieren.
+Das folgende Beispiel ist der einfachste HTML-Inhalt, den Sie zum Testen dieser Funktion verwenden können. Nutzen Sie das [Hilfsprogramm](active-directory-b2c-reference-ui-customization-helper-tool.md), um diesen Inhalt in Ihren Azure-Blobspeicher hochzuladen und zu konfigurieren. So können Sie sicherstellen, dass die grundlegenden unformatierten Schaltflächen und Formularfelder auf jeder Seite angezeigt werden und funktionieren.
 
 ```HTML
-
 <!DOCTYPE html>
 <html>
     <head>
         <title>!Add your title here!</title>
     </head>
     <body>
-        <div id="api"></div>    <!-- IMP: This element is intentionally empty; don't enter anything here -->
+        <div id="api"></div>   <!-- Leave this element empty because Azure AD B2C will insert content here. -->
     </body>
 </html>
-
 ```
 
-## <a name="the-core-ui-elements-in-each-type-of-page"></a>Die wichtigsten UI-Elemente in den einzelnen Seitentypen
-In den folgenden Abschnitten finden Sie Beispiele für HTML5-Fragmente, die Azure AD B2C im `<div id="api"></div>` -Element in Ihrem Inhalt zusammenführt. **Fügen Sie diese Fragmente nicht in Ihren HTML5-Inhalt ein.** Sie werden vom Azure AD B2C-Dienst zur Laufzeit eingefügt. Verwenden Sie diese Beispiele, um Ihre eigenen Stylesheets zu entwerfen.
+## <a name="test-out-the-ui-customization-feature"></a>Testen des Anpassungsfeatures für die Benutzeroberfläche (UI)
 
-### <a name="azure-ad-b2c-content-inserted-into-the-identity-provider-selection-page"></a>Auf der „Auswahlseite für Identitätsanbieter“ eingefügte Azure AD B2C-Inhalte
-Diese Seite enthält eine Liste der Identitätsanbieter, aus denen der Benutzer bei der Registrierung oder Anmeldung auswählen kann. Dabei handelt es sich entweder um Identitätsanbieter in Form von sozialen Netzwerken wie Facebook und Google+ oder um lokale Konten (basierend auf E-Mail-Adressen oder Benutzernamen).
+Möchten Sie mit unserem Beispiel-HTML- und CSS-Inhalt die Funktion zum Anpassen der Benutzeroberfläche testen?  Wir haben [ein Hilfsprogramm](active-directory-b2c-reference-ui-customization-helper-tool.md) bereitgestellt, das Beispielinhalte in Ihren Azure-Blobspeicher hochlädt und konfiguriert.
+
+> [!NOTE]
+> Sie können Ihre UI-Inhalte überall hosten: auf Webservern, CDNs, AWS S3, Dateifreigabesystemen usw. Solange die Inhalte auf einem öffentlich verfügbaren HTTPS-Endpunkt (mit aktiviertem CORS) gehostet werden, ist alles in Ordnung. Wir verwenden den Azure-Blobspeicher nur zur Veranschaulichung.
+>
+
+## <a name="the-ui-fragments-embedded-by-azure-ad-b2c"></a>Die von Azure AD B2C eingebetteten Benutzeroberflächenfragmente
+
+In den folgenden Abschnitten finden Sie die HTML5-Fragmente, die Azure AD B2C im `<div id="api"></div>`-Element in Ihrem Inhalt zusammenführt. **Fügen Sie diese Fragmente nicht in Ihren HTML5-Inhalt ein.** Sie werden vom Azure AD B2C-Dienst zur Laufzeit eingefügt. Verwenden Sie diese Fragmente als Referenz beim Entwerfen Ihrer eigenen Cascading Stylesheets (CSS).
+
+### <a name="fragment-inserted-into-the-identity-provider-selection-page"></a>Auf der „Auswahlseite für Identitätsanbieter“ eingefügtes Fragment
+
+Diese Seite enthält eine Liste der Identitätsanbieter, aus denen der Benutzer bei der Registrierung oder Anmeldung auswählen kann. Bei diesen Schaltflächen handelt es sich um Identitätsanbieter in Form von sozialen Netzwerken wie Facebook und Google+ oder um lokale Konten (basierend auf E-Mail-Adressen oder Benutzernamen).
 
 ```HTML
-
 <div id="api" data-name="IdpSelections">
     <div class="intro">
          <p>Sign up</p>
@@ -100,14 +100,13 @@ Diese Seite enthält eine Liste der Identitätsanbieter, aus denen der Benutzer 
         </ul>
     </div>
 </div>
-
 ```
 
-### <a name="azure-ad-b2c-content-inserted-into-the-local-account-sign-up-page"></a>Auf der „Registrierungsseite für lokales Konto“ eingefügte Azure AD B2C-Inhalte
-Diese Seite enthält ein Registrierungsformular, das der Benutzer bei der Registrierung für ein lokales Konto ausfüllen muss, das auf einer E-Mail-Adresse oder einem Benutzernamen basiert.  Das Formular kann verschiedene Eingabesteuerelemente enthalten, z. B. Texteingabefelder, Kennworteingabefelder, Optionsfelder, Dropdownfelder mit einer Auswahlmöglichkeit und Kontrollkästchen mit mehreren Optionen.
+### <a name="fragment-inserted-into-the-local-account-sign-up-page"></a>Auf der „Registrierungsseite für lokales Konto“ eingefügtes Fragment
+
+Diese Seite enthält ein Formular für die Registrierung eines lokalen Kontos, das auf einer E-Mail-Adresse oder einem Benutzernamen basiert. Das Formular kann verschiedene Eingabesteuerelemente enthalten, z. B. Texteingabefelder, Kennworteingabefelder, Optionsfelder, Dropdownfelder mit einer Auswahlmöglichkeit und Kontrollkästchen mit mehreren Optionen.
 
 ```HTML
-
 <div id="api" data-name="SelfAsserted">
     <div class="intro">
         <p>Create your account by providing the following details</p>
@@ -216,17 +215,17 @@ Diese Seite enthält ein Registrierungsformular, das der Benutzer bei der Regist
         <div id="verifying_blurb"></div>
     </div>
 </div>
-
 ```
 
-### <a name="azure-ad-b2c-content-inserted-into-the-social-account-sign-up-page"></a>Auf der „Registrierungsseite für Konten sozialer Netzwerke“ eingefügte Azure AD B2C-Inhalte
-Diese Seite enthält ein Registrierungsformular, das der Consumer ausfüllen muss, wenn die Registrierung mit einem vorhandenen Konto bei einem sozialen Netzwerk wie Facebook oder Google+ als Identitätsanbieter erfolgt. Diese Seite ähnelt der Registrierungsseite für lokale Konten (siehe Abschnitt oben), eine Ausnahme bilden die Kennworteingabefelder.
+### <a name="fragment-inserted-into-the-social-account-sign-up-page"></a>Auf der „Registrierungsseite für Konten sozialer Netzwerke“ eingefügtes Fragment
 
-### <a name="azure-ad-b2c-content-inserted-into-the-unified-sign-up-or-sign-in-page"></a>Auf der „Seite für einheitliche Registrierung oder Anmeldung“ eingefügte Azure AD B2C-Inhalte
-Diese Seite verarbeitet sowohl die Registrierung als auch die Anmeldung von Consumern. Diese können als Identitätsanbieter soziale Netzwerke wie z.B. Facebook oder Google+ oder lokale Konten verwenden.
+Diese Seite kann angezeigt werden, wenn die Registrierung mit einem vorhandenen Konto bei einem sozialen Netzwerk wie Facebook oder Google+ als Identitätsanbieter erfolgt.  Sie wird verwendet, wenn zusätzliche Informationen zum Benutzer mithilfe eines Registrierungsformulars erfasst werden müssen. Diese Seite ähnelt der Registrierungsseite für lokale Konten (siehe Abschnitt oben), eine Ausnahme bilden die Kennworteingabefelder.
+
+### <a name="fragment-inserted-into-the-unified-sign-up-or-sign-in-page"></a>Auf der „Seite für einheitliche Registrierung oder Anmeldung“ eingefügtes Fragment
+
+Diese Seite verarbeitet sowohl die Registrierung als auch die Anmeldung von Kunden. Diese können als Identitätsanbieter soziale Netzwerke wie z.B. Facebook oder Google+ oder lokale Konten verwenden.
 
 ```HTML
-
 <div id="api" data-name="Unified">
         <div class="social" role="form">
                <div class="intro">
@@ -273,14 +272,13 @@ Diese Seite verarbeitet sowohl die Registrierung als auch die Anmeldung von Cons
                </div>
         </div>
 </div>
-
 ```
 
-### <a name="azure-ad-b2c-content-inserted-into-the-multi-factor-authentication-page"></a>Auf der „Seite für die mehrstufige Authentifizierung“ eingefügte Azure AD B2C-Inhalte
+### <a name="fragment-inserted-into-the-multi-factor-authentication-page"></a>Auf der „Seite für die mehrstufige Authentifizierung“ eingefügtes Fragment
+
 Auf dieser Seite können Benutzer während der Registrierung oder Anmeldung ihre Telefonnummern überprüfen (per SMS oder Sprachnachricht).
 
 ```HTML
-
 <div id="api" data-name="Phonefactor">
     <div id="phonefactor_initial">
         <div class="intro">
@@ -318,12 +316,11 @@ Auf dieser Seite können Benutzer während der Registrierung oder Anmeldung ihre
         <div id="dialing_blurb"></div><div id="dialing_number"></div>
     </div>
 </div>
-
 ```
 
-### <a name="azure-ad-b2c-content-inserted-into-the-error-page"></a>Auf der „Fehlerseite“ eingefügte Azure AD B2C-Inhalte
-```HTML
+### <a name="fragment-inserted-into-the-error-page"></a>Auf der „Fehlerseite“ eingefügtes Fragment
 
+```HTML
 <div id="api" class="error-page-content" data-name="GlobalException">
     <h2>Sorry, but we're having trouble signing you in.</h2>
     <div class="error-page-help">We track these errors automatically, but if the problem persists feel free to contact us. In the meantime, please try again.</div>
@@ -334,17 +331,17 @@ Auf dieser Seite können Benutzer während der Registrierung oder Anmeldung ihre
         <div class="error-page-detail">AADB2C90065: A B2C client-side error 'Access is denied.' has occurred requesting the remote resource.</div>
     </div>
 </div>
-
 ```
 
 ## <a name="localizing-your-html-content"></a>Lokalisieren Ihres HTML-Inhalts
-Sie können Ihren HTML-Inhalt lokalisieren, indem Sie die [„Sprachanpassung“](active-directory-b2c-reference-language-customization.md) aktivieren.  Wenn Sie die Sprachanpassung aktivieren, kann Azure AD B2C den OIDC-Parameter `ui-locales` an Ihren Endpunkt weiterleiten.  Sie können ihn verwenden, um sprachspezifische benutzerdefinierte UI-Seiten bereitzustellen.  
+
+Sie können Ihren HTML-Inhalt lokalisieren, indem Sie die [Sprachanpassung](active-directory-b2c-reference-language-customization.md) aktivieren.  Wenn Sie dieses Feature aktivieren, kann Azure AD B2C den Open ID Connect-Parameter `ui-locales` an Ihren Endpunkt weiterleiten.  Ihr Inhaltsserver kann diesen Parameter verwenden, um benutzerdefinierte HTML-Seiten bereitzustellen, die sprachspezifisch sind.
 
 ## <a name="things-to-remember-when-building-your-own-content"></a>Wichtige Aspekte beim Erstellen eigener Inhalte
+
 Wenn Sie das Anpassungsfeature für die Seiten-UI verwenden möchten, beachten Sie die folgenden bewährten Methoden:
 
 * Kopieren und ändern Sie den Azure AD B2C-Standardinhalt nicht. Es wird empfohlen, eigene HTML5-Inhalte von Grund auf neu zu erstellen und den Standardinhalt als Referenz zu verwenden.
-* Auf allen Seiten (mit Ausnahme der Fehlerseiten), die von den Richtlinien für die Registrierung, Anmeldung und Profilbearbeitung bereitgestellt werden, müssen die von Ihnen angegebenen Stylesheets die Standard-Stylesheets außer Kraft setzen, die wir auf diesen Seiten in den <head> -Fragmenten hinzufügen. Für alle Seiten, die von den Richtlinien für die Registrierung, Anmeldung und Kennwortzurücksetzung bereitgestellt werden, und für die Fehlerseiten aller Richtlinien müssen Sie die gesamte Formatierung selbst angeben.
 * Aus Gründen der Sicherheit ist es nicht zulässig, JavaScript in Ihren Inhalt aufzunehmen. Das meiste, was Sie benötigen, sollte im Programmumfang enthalten sein. Falls nicht, fordern Sie über [User Voice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c) neue Funktionen an.
 * Unterstützte Browserversionen:
   * Internet Explorer 11, 10, Edge

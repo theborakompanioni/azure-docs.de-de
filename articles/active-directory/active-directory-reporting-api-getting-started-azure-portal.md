@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/15/2017
+ms.date: 08/18/2017
 ms.author: dhanyahk;markvi
 ms.reviewer: dhanyahk
 ms.translationtype: HT
-ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
-ms.openlocfilehash: b0ff68902f671518ff53772b1956272a7f6e1614
+ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
+ms.openlocfilehash: 9944cbd2b1b7c4acb18d37da1394c0bbc170f77d
 ms.contentlocale: de-de
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 08/19/2017
 
 ---
 # <a name="getting-started-with-the-azure-active-directory-reporting-api"></a>Erste Schritte mit der Berichterstellungs-API von Azure Active Directory
@@ -27,7 +27,7 @@ ms.lasthandoff: 07/19/2017
 Azure Active Directory stellt eine Vielzahl von Berichten zur Verfügung. Die Daten dieser Berichte können für Ihre Anwendungen – beispielsweise SIEM-Systeme, Überwachungs- und Business Intelligence-Tools – sehr nützlich sein. Die Azure AD-Berichterstellungs-APIs bieten über einen Satz von REST-basierten APIs programmgesteuerten Zugriff auf die Daten. Sie können diese APIs über verschiedene Programmiersprachen und Tools aufrufen.
 
 In diesem Artikel erhalten Sie die Informationen, die Sie zum Einstieg in die Azure AD-Berichterstellungs-APIs benötigen.
-Im nächsten Abschnitt finden Sie ausführlichere Informationen zur Verwendung der APIs für Überwachung und Anmeldung. Alle weiteren APIs werden im Artikel [Azure AD reports and events (Azure AD-Berichte und -Ereignisse)](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-reports-and-events-preview) behandelt.
+Im nächsten Abschnitt finden Sie ausführlichere Informationen zur Verwendung der APIs für Überwachung und Anmeldung. 
 
 Lesen Sie unsere häufig gestellten Fragen (FAQ) unter [FAQ](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-reporting-faq). Bei Problemen: [Stellen Sie ein Supportticket aus](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-troubleshooting-support-howto)
 
@@ -43,6 +43,6 @@ Lesen Sie unsere häufig gestellten Fragen (FAQ) unter [FAQ](https://docs.micros
    * [Verwenden der Referenz zur Anmeldeaktivitätsbericht-API](active-directory-reporting-api-sign-in-activity-reference.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
-Wenn Sie alle verfügbaren Azure AD Graph-API-Endpunkte anzeigen möchten, navigieren Sie zu dieser Adresse: [https://graph.windows.net/tenant-name/activities/$metadata?api-version=beta](https://graph.windows.net/tenant-name/activities/$metadata?api-version=beta).
+Wenn Sie alle verfügbaren Azure AD Graph-API-Endpunkte anzeigen möchten, klicken Sie auf diesen Link: [https://graph.windows.net/tenant-name/activities/$metadata?api-version=beta](https://graph.windows.net/tenant-name/activities/$metadata?api-version=beta).
 
 

@@ -1,6 +1,6 @@
 ---
 title: Erstellen und Verwalten von Aktionsgruppen im Azure-Portal | Microsoft-Dokumentation
-description: 
+description: Erfahren Sie, wie Sie Aktionsgruppen im Azure-Portal erstellen und verwalten.
 author: anirudhcavale
 manager: orenr
 editor: 
@@ -15,62 +15,64 @@ ms.topic: article
 ms.date: 05/15/2017
 ms.author: ancav
 ms.translationtype: HT
-ms.sourcegitcommit: cddb80997d29267db6873373e0a8609d54dd1576
-ms.openlocfilehash: 2b2fa2126b9c3f8598ec8fe686846920a4b7c422
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: ea15705bf02d9773507c6cb59f2da4c1dd0f9d77
 ms.contentlocale: de-de
-ms.lasthandoff: 07/18/2017
+ms.lasthandoff: 08/24/2017
 
 ---
-# <a name="create-and-manage-action-groups-in-azure-portal"></a>Erstellen und Verwalten von Aktionsgruppen im Azure-Portal
+# <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Erstellen und Verwalten von Aktionsgruppen im Azure-Portal
 ## <a name="overview"></a>Übersicht ##
 In diesem Artikel wird beschrieben, wie Sie Aktionsgruppen im Azure-Portal erstellen und verwalten.
 
-Mit Aktionsgruppen können Sie eine Aktionsliste konfigurieren. Diese Gruppen können beim Definieren von Aktivitätsprotokollwarnungen genutzt werden, um sicherzustellen, dass eine bestimmte Aktivitätsgruppe aufgerufen wird, wenn die Aktivitätsprotokollwarnung ausgelöst wird.
+Sie können eine Liste von Aktionen mit Aktionsgruppen konfigurieren. Diese Gruppen können Sie dann verwenden, wenn Sie Aktivitätsprotokollwarnungen definieren. Diese Gruppen können Sie dann bei jeder Aktivitätsprotokollwarnung wiederverwenden, die Sie definieren, um sicherzustellen, dass jedes Mal, wenn die Aktivitätsprotokollwarnung ausgelöst wird, die gleichen Aktionen ausgeführt werden.
 
-Eine Aktivitätsgruppe kann bis zu zehn Aktionen jedes Aktionstyps enthalten. Eine Aktion wird durch die Kombination von folgenden Informationen definiert:
+Eine Aktivitätsgruppe kann bis zu zehn Aktionen jedes Aktionstyps enthalten. Jede Aktion besteht aus den folgenden Eigenschaften:
 
-**Name:** ein eindeutiger Bezeichner innerhalb der Aktionsgruppe  
-**Aktionstyp:** definiert die ausgeführte Aktion. Optionen sind das Senden einer SMS oder E-Mail oder das Aufrufen eines Webhooks.  
-**Details:** Geben Sie basierend auf dem Aktionstyp eine Telefonnummer, eine E-Mail-Adresse oder einen Webhook-URI an.
+* **Name:** ein eindeutiger Bezeichner innerhalb der Aktionsgruppe.  
+* **Aktionstyp**: Senden einer SMS, einer E-Mail oder Aufrufen eines Webhooks.  
+* **Details**: entsprechende Telefonnummer, E-Mail-Adresse oder entsprechender Webhook-URI.
 
-Weitere Informationen zum Verwenden von Azure Resource Manager-Vorlagen zur Konfigurierung von Aktionsgruppen: [Aktionsgruppen-Resource Manager-Vorlagen](monitoring-create-action-group-with-resource-manager-template.md)
+Weitere Informationen zum Verwenden von Azure Resource Manager-Vorlagen zur Konfigurierung von Aktionsgruppen finden Sie unter [Aktionsgruppen-Resource Manager-Vorlagen](monitoring-create-action-group-with-resource-manager-template.md).
 
-## <a name="creating-an-action-group-using-the-azure-portal"></a>Erstellen einer Aktionsgruppe mit dem Azure-Portal ##
-1.  Navigieren Sie im [Portal](https://portal.azure.com) zum Dienst **Überwachen**.
+## <a name="create-an-action-group-by-using-the-azure-portal"></a>Erstellen einer Aktionsgruppe mit dem Azure-Portal ##
+1. Wählen Sie im [Portal](https://portal.azure.com) die Option **Überwachen**. Das Blatt **Überwachen** konsolidiert alle Ihre Überwachungseinstellungen und Daten in einer Ansicht.
 
-    ![Überwachen](./media/monitoring-action-groups/home-monitor.png)
-2.  Klicken Sie auf die Option **Überwachen**, um das Blatt „Überwachen“ zu öffnen. Auf diesem Blatt sind alle Überwachungseinstellungen und -daten in einer konsolidierten Ansicht zusammengefasst. Zunächst wird der Abschnitt **Aktivitätsprotokoll** geöffnet.
+    ![Der Dienst „Überwachen“](./media/monitoring-action-groups/home-monitor.png)
+2. Wählen Sie im Abschnitt **Aktivitätsprotokoll** die Option **Aktionsgruppen**.
 
-3.  Klicken Sie jetzt auf den Abschnitt **Aktionsgruppen**.
+    ![Registerkarte „Aktionsgruppen“](./media/monitoring-action-groups/action-groups-blade.png)
+3. Wählen Sie **Aktionsgruppe hinzufügen**, und füllen Sie die Felder aus.
 
-    ![Aktionsgruppe](./media/monitoring-action-groups/action-groups-blade.png)
-4.  Klicken Sie auf den Befehl zum **Hinzufügen** einer Aktionsgruppe, und füllen Sie die Felder aus.
+    ![Der Befehl „Aktionsgruppe hinzufügen“](./media/monitoring-action-groups/add-action-group.png)
+4. Geben Sie jeweils einen Namen in die Felder **Aktionsgruppenname** und **Kurzname** ein. Der Kurzname wird anstelle eines vollständigen Aktionsgruppennamens verwendet, wenn Benachrichtigungen mithilfe dieser Gruppe gesendet werden.
 
-    ![Hinzufügen einer Aktionsgruppe](./media/monitoring-action-groups/add-action-group.png)
-5.  Geben Sie einen **Namen** und **Kurznamen** für die Aktionsgruppe ein. In Benachrichtigungen an diese Gruppe wird auf den Kurznamen verwiesen.
+      ![Das Dialogfeld „Aktionsgruppe hinzufügen“](./media/monitoring-action-groups/action-group-define.png)
 
-      ![Definieren von Aktionsgruppen](./media/monitoring-action-groups/action-group-define.png)
+5. In das Feld **Abonnement** wird automatisch Ihr aktuelles Abonnement eingetragen. In diesem Abonnement wird die Aktionsgruppe gespeichert.
 
-6.  Das **Abonnement** gibt den Speicherort für die Aktionsgruppe an. Es wird automatisch das Abonnement eingetragen, mit dem Sie gerade arbeiten.
+6. Wählen Sie die **Ressourcengruppe**, in der die Aktionsgruppe gespeichert wird.
 
-7.  Wählen Sie die **Ressourcengruppe** aus, die dieser Warnung im **Abonnement** zugeordnet wird.
+7. Definieren Sie eine Liste von Aktionen, indem Sie für jede Aktion Folgendes angeben:
 
-8.  Definieren Sie anschließend eine Liste von Aktionen über eine Kombination aus:
-  1. **Name:** ein eindeutiger Bezeichner innerhalb der Aktionsgruppe
-  2. **Aktionstyp:** definiert die ausgeführte Aktion. Optionen sind das Senden einer SMS oder E-Mail oder das Aufrufen eines Webhooks.
-  3. **Details:** Geben Sie basierend auf dem Aktionstyp eine Telefonnummer, eine E-Mail-Adresse oder einen Webhook-URI an.
+    a. **Name**: Geben Sie einen eindeutigen Bezeichner für diese Aktion an.
 
-9.  Wählen Sie **OK** aus, wenn Sie mit dem Erstellen der Warnung fertig sind.
+    b. **Aktionstyp**: Wählen Sie SMS, E-Mail oder Webhook.
 
-## <a name="managing-your-action-groups"></a>Verwalten von Aktionsgruppen ##
-Nachdem Sie eine Aktionsgruppe erstellt haben, wird diese im Abschnitt „Aktionsgruppen“ des Diensts „Überwachen“ angezeigt. Wählen Sie die Aktionsgruppe aus, die Sie verwalten möchten. Sie haben folgende Möglichkeiten:
+    c. **Details:** Geben Sie basierend auf dem Aktionstyp eine Telefonnummer, eine E-Mail-Adresse oder einen Webhook-URI an.
+
+8. Wählen Sie **OK**, um die Aktionsgruppe zu erstellen.
+
+## <a name="manage-your-action-groups"></a>Verwalten von Aktionsgruppen ##
+Nachdem Sie eine Aktionsgruppe erstellt haben, wird diese im Abschnitt **Aktionsgruppen** des Diensts **Überwachen** angezeigt. Wählen Sie die Aktionsgruppe, die Sie verwalten möchten, um Folgendes zu tun:
+
 * Fügen Sie Aktionen hinzu, bearbeiten oder entfernen Sie diese.
--   Löschen der Aktionsgruppe.
+* Löschen der Aktionsgruppe.
 
-## <a name="next-steps"></a>Nächste Schritte: ##
-Weitere Informationen zum [Verhalten von SMS-Warnungen](monitoring-sms-alert-behavior.md)  
-Weitere Informationen zum [Verständnis des Webhookschemas für Aktivitätsprotokollwarnungen](monitoring-activity-log-alerts-webhook.md)  
-Weitere Informationen zu [Rateneinschränkungen](monitoring-alerts-rate-limiting.md) für Warnungen  
-Verschaffen Sie sich einen [Übersicht über Aktivitätsprotokollwarnungen](monitoring-overview-alerts.md), und erfahren Sie, wie Sie gewarnt werden können.  
-[Konfigurieren von Warnungen, wenn eine Dienstintegritätsbenachrichtigung gesendet wird](monitoring-activity-log-alerts-on-service-notifications.md)
+## <a name="next-steps"></a>Nächste Schritte ##
+* Weitere Informationen zum [Verhalten von SMS-Warnungen](monitoring-sms-alert-behavior.md).  
+* Erweitern Sie Ihr [Verständnis des Webhookschemas für Aktivitätsprotokollwarnungen](monitoring-activity-log-alerts-webhook.md).  
+* Weitere Informationen zu [Ratenlimits](monitoring-alerts-rate-limiting.md) für Warnungen. 
+* Verschaffen Sie sich eine [Übersicht über Aktivitätsprotokollwarnungen](monitoring-overview-alerts.md), und erfahren Sie, wie Sie Warnungen empfangen können.  
+* Erfahren Sie, wie Sie [Warnungen konfigurieren, wenn eine Dienstintegritätsbenachrichtigung gesendet wird](monitoring-activity-log-alerts-on-service-notifications.md).
 

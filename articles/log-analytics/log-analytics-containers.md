@@ -1,6 +1,6 @@
 ---
-title: "Containerlösung in Azure Log Analytics | Microsoft-Dokumentation"
-description: "Die Containerlösung in Log Analytics unterstützt Sie beim Anzeigen und Verwalten Ihrer Docker- und Windows-Containerhosts an einem Ort."
+title: "Containerüberwachungslösung in Azure Log Analytics | Microsoft-Dokumentation"
+description: "Die Containerüberwachungslösung in Log Analytics unterstützt Sie beim Anzeigen und Verwalten Ihrer Docker- und Windows-Containerhosts an einem zentralen Ort."
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
@@ -12,42 +12,50 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/08/2017
+ms.date: 08/18/2017
 ms.author: magoedte;banders
 ms.translationtype: HT
-ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
-ms.openlocfilehash: 5fe0c4c5642fcaa83bcfc830e64600986b8fbf7f
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: b2e03531ee401f4552198e5dd50fbfe1d970f0e5
 ms.contentlocale: de-de
-ms.lasthandoff: 08/09/2017
+ms.lasthandoff: 08/24/2017
 
 ---
-# <a name="containers-preview-solution-in-log-analytics"></a>Containerlösung (Vorschauversion) in Log Analytics
+# <a name="container-monitoring-solution-in-log-analytics"></a>Containerüberwachungslösung in Log Analytics
 
 ![Container-Symbol](./media/log-analytics-containers/containers-symbol.png)
 
-In diesem Artikel wird das Einrichten und Verwenden der Containerlösung in Log Analytics beschrieben, die Sie beim Anzeigen und Verwalten Ihrer Docker- und Windows-Containerhosts an einem zentralen Ort unterstützt. Docker ist ein Softwarevirtualisierungssystem zum Erstellen von Containern, durch die das Bereitstellen von Software in einer IT-Infrastruktur automatisiert werden kann.
+In diesem Artikel wird das Einrichten und Verwenden der Containerüberwachungslösung in Log Analytics beschrieben, die Sie beim Anzeigen und Verwalten Ihrer Docker- und Windows-Containerhosts an einem zentralen Ort unterstützt. Docker ist ein Softwarevirtualisierungssystem zum Erstellen von Containern, durch die das Bereitstellen von Software in einer IT-Infrastruktur automatisiert werden kann.
 
-Mit der Lösung können Sie erkennen, welche Container auf Ihren Containerhosts ausgeführt und welche Images in den Containern ausgeführt werden. Sie können ausführliche Überwachungsinformationen anzeigen, die auch die mit Containern verwendeten Befehle enthalten. Außerdem können Sie die Probleme mit Containern beheben, indem Sie zentralisierte Protokolle anzeigen und durchsuchen, ohne eine Remoteanzeige der Docker- und Windows-Hosts zu benötigen. Sie können Container suchen, die Störungen verursachen und übermäßig viele Ressourcen auf einem Host verbrauchen. Darüber hinaus können Sie an einem zentralen Ort Informationen zur Leistung und Auslastung von CPU, Arbeitsspeicher, Speicher und Netzwerk zu Containern anzeigen. Auf Windows-Computern können Sie die Protokolle von Windows Server-, Hyper-V- und Docker-Containern zentralisieren und vergleichen.
+Die Lösung zeigt, welche Container, welches Containerimage und wo Container ausgeführt werden. Sie können ausführliche Überwachungsinformationen anzeigen, die auch die mit Containern verwendeten Befehle enthalten. Außerdem können Sie die Probleme mit Containern beheben, indem Sie zentralisierte Protokolle anzeigen und durchsuchen, ohne eine Remoteanzeige der Docker- und Windows-Hosts zu benötigen. Sie können Container suchen, die Störungen verursachen und übermäßig viele Ressourcen auf einem Host verbrauchen. Darüber hinaus können Sie an einem zentralen Ort Informationen zur Leistung und Auslastung von CPU, Arbeitsspeicher, Speicher und Netzwerk zu Containern anzeigen. Auf Windows-Computern können Sie die Protokolle von Windows Server-, Hyper-V- und Docker-Containern zentralisieren und vergleichen. Die Lösung unterstützt die folgenden Containerorchestratoren:
+
+- Docker Swarm
+- DC/OS
+- kubernetes
+- Service Fabric
+- Red Hat OpenShift
+
 
 Das folgende Diagramm zeigt die Beziehungen zwischen verschiedenen Containerhosts und Agents mit OMS.
 
 ![Containerdiagramm](./media/log-analytics-containers/containers-diagram.png)
 
 ## <a name="system-requirements"></a>Systemanforderungen
+
 Prüfen Sie zunächst anhand der folgenden Informationen, ob die Voraussetzungen erfüllt sind.
 
-### <a name="container-monitoring-solution-support-for-docker-orchestrator-and-os-platform"></a>Unterstützung der Containerüberwachungslösung für Docker Orchestrator und das Betriebssystem 
+### <a name="container-monitoring-solution-support-for-docker-orchestrator-and-os-platform"></a>Unterstützung der Containerüberwachungslösung für Docker Orchestrator und das Betriebssystem
 In der folgenden Tabelle werden die Docker-Orchestrierung und die Unterstützung der Betriebssystemüberwachung von Containerbestand, Leistung und Protokollen mit Log Analytics aufgeführt.   
 
-| | ACS | Linux | Windows | Container<br>Inventory | Image<br>Inventory | Knoten<br>Inventory | Container<br>Leistung | Container<br>Ereignis | Ereignis<br>Protokoll | Container<br>Protokoll | 
+| | ACS | Linux | Windows | Container<br>Inventory | Image<br>Inventory | Knoten<br>Inventory | Container<br>Leistung | Container<br>Ereignis | Ereignis<br>Protokoll | Container<br>Protokoll |
 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
-| kubernetes | Ja | Ja | | Ja | Ja | Ja | Ja | Ja | Ja | Ja | 
-| Mesosphere<br>DC/OS | Ja | Ja | | Ja | Ja | Ja | Ja| Ja | Ja | Ja | 
-| Docker<br>Swarm | Ja | Ja | Ja | Ja | Ja | Ja | Ja | Ja | | Ja |
-| Dienst<br>Fabric | | | Ja | Ja | Ja | Ja | Ja | Ja | Ja | Ja | 
-| Red Hat Open<br>Shift | | Ja | | Ja | Ja| Ja | Ja | Ja | | Ja | 
-| Windows Server<br>(eigenständig) | | | Ja | Ja | Ja | Ja | Ja | Ja | | Ja |
-| Linux-Server<br>(eigenständig) | | Ja | | Ja | Ja | Ja | Ja | Ja | | Ja |
+| kubernetes | &#8226; | &#8226; | | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; |
+| Mesosphere<br>DC/OS | &#8226; | &#8226; | | &#8226; | &#8226; | &#8226; | &#8226;| &#8226; | &#8226; | &#8226; |
+| Docker<br>Swarm | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | | &#8226; |
+| Dienst<br>Fabric | | | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; |
+| Red Hat Open<br>Shift | | &#8226; | | &#8226; | &#8226;| &#8226; | &#8226; | &#8226; | | &#8226; |
+| Windows Server<br>(eigenständig) | | | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | | &#8226; |
+| Linux-Server<br>(eigenständig) | | &#8226; | | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | | &#8226; |
 
 
 ### <a name="docker-versions-supported-on-linux"></a>Unter Linux unterstützte Docker-Versionen
@@ -78,16 +86,16 @@ In der folgenden Tabelle werden die Docker-Orchestrierung und die Unterstützung
 ### <a name="docker-versions-supported-on-windows"></a>Unter Windows unterstützte Docker-Versionen
 
 - Docker 1.12 und 1.13
-- Docker 17.03.0 
+- Docker 17.03.0 und höher
 
 ## <a name="installing-and-configuring-the-solution"></a>Installieren und Konfigurieren der Lösung
 Verwenden Sie die folgenden Informationen zum Installieren und Konfigurieren der Lösung.
 
-1. Fügen Sie mithilfe des [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ContainersOMS?tab=Overview) oder des unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](log-analytics-add-solutions.md) beschriebenen Prozesses Ihrem OMS-Arbeitsbereich die Containerlösung hinzu.
+1. Fügen Sie mithilfe des [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ContainersOMS?tab=Overview) oder des unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](log-analytics-add-solutions.md) beschriebenen Prozesses Ihrem OMS-Arbeitsbereich die Containerüberwachungslösung hinzu.
 
-2. Installieren und verwenden Sie Docker mit OMS.  Basierend auf dem Betriebssystem können Sie unter den folgenden Methoden wählen:
+2. Installieren und verwenden Sie Docker mit einem OMS-Agent.  Basierend auf Ihrem Betriebssystem können Sie unter den folgenden Methoden wählen:
 
-  * Auf unterstützten Linux-Betriebssystemen installieren Sie zunächst Docker und führen es aus. Anschließend installieren und konfigurieren Sie den OMS-Agent für Linux.  
+  * Auf unterstützten Linux-Betriebssystemen installieren Sie zunächst Docker, und führen Sie es aus. Anschließend installieren und konfigurieren Sie den [OMS-Agent für Linux](log-analytics-agent-linux.md).  
   * Unter CoreOS kann der OMS-Agent für Linux nicht ausgeführt werden. Stattdessen führen Sie eine Containerversion des OMS-Agents für Linux aus. Lesen Sie [Linux-Containerhosts mit CoreOS](#for-all-linux-container-hosts-including-coreos) oder [Azure Government-Linux-Containerhosts mit CoreOS](#for-all-azure-government-linux-container-hosts-including-coreos), wenn Sie in Azure Government Cloud mit Containern arbeiten.
   * Installieren Sie unter Windows Server 2016 und Windows 10 das Docker-Modul und den Client, und stellen Sie dann eine Verbindung mit einem Agent her, um Informationen zu sammeln und sie an Log Analytics zu senden.  
 
@@ -102,14 +110,11 @@ Verwenden Sie die folgenden Informationen zum Installieren und Konfigurieren der
 
 > [!IMPORTANT]
 > Docker muss ausgeführt werden, **bevor** Sie den [OMS-Agent für Linux](log-analytics-agent-linux.md) auf Ihren Containerhosts installieren. Wenn Sie den Agent bereits vor der Installation von Docker installiert haben, müssen Sie den OMS-Agent für Linux erneut installieren. Weitere Informationen zu Docker finden Sie auf der [Docker-Website](https://www.docker.com).
->
->
 
-Sie müssen die folgenden Einstellungen auf den Containerhosts konfigurieren, bevor Sie Container überwachen können.
 
 ## <a name="linux-container-hosts"></a>Linux-Containerhosts
 
-Verwenden Sie nach dem Installieren von Docker die folgenden Einstellungen für den Containerhost, um den Agent für die Verwendung mit Docker zu konfigurieren. Zuerst benötigen Sie Ihre ID und den Schlüssel für den OMS-Arbeitsbereich. Diese Daten erhalten Sie, indem Sie zum [klassischen OMS-Portal](https://mms.microsoft.com) wechseln.  Wählen Sie auf der Seite **Übersicht** im obersten Menü die Option **Einstellungen**, und navigieren Sie anschließend zu **Verbundene Quellen\Windows-Server**.  Der Wert wird jeweils rechts von **Arbeitsbereichs-ID** und **Primärschlüssel** angezeigt.  Kopieren Sie beide Angaben, und fügen Sie sie in den von Ihnen bevorzugten Editor ein.    
+Verwenden Sie nach dem Installieren von Docker die folgenden Einstellungen für den Containerhost, um den Agent für die Verwendung mit Docker zu konfigurieren. Zuerst benötigen Sie Ihre ID und den Schlüssel für den OMS-Arbeitsbereich. Diese Daten finden Sie im Azure-Portal. Klicken Sie in Ihrem Arbeitsbereich auf **Schnellstart** > **Computer**, um Ihre **Arbeitsbereichs-ID** und Ihren **Primärschlüssel** anzuzeigen.  Kopieren Sie beide Angaben, und fügen Sie sie in den von Ihnen bevorzugten Editor ein.
 
 ### <a name="for-all-linux-container-hosts-except-coreos"></a>Für alle Linux-Containerhosts mit Ausnahme von CoreOS
 
@@ -145,8 +150,8 @@ Sie können den OMS-Agent als globalen Dienst in Docker Swarm ausführen. Erstel
     ```
 
 ### <a name="configure-an-oms-agent-for-red-hat-openshift"></a>Konfigurieren eines OMS-Agents für Red Hat OpenShift
-Es gibt drei Möglichkeiten, wie Sie Red Hat OpenShift den OMS-Agent hinzufügen können, um mit dem Sammeln von Daten für die Containerüberwachung zu beginnen. 
- 
+Es gibt drei Möglichkeiten, wie Sie Red Hat OpenShift den OMS-Agent hinzufügen können, um mit dem Sammeln von Daten für die Containerüberwachung zu beginnen.
+
 * [Installieren des OMS-Agents für Linux](log-analytics-agent-linux.md) direkt auf jedem OpenShift-Knoten  
 * [Aktivieren der Log Analytics-VM-Erweiterung](log-analytics-azure-vm-extension.md) auf jedem OpenShift-Knoten in Azure  
 * Installieren des OMS-Agents als OpenShift-DaemonSet  
@@ -164,14 +169,14 @@ In diesem Abschnitt werden die Schritte beschrieben, die zum Installieren des OM
     oadm policy add-scc-to-user privileged system:serviceaccount:omslogging:omsagent  
     ```
 
-4. Führen Sie Folgendes aus, um das DaemonSet bereitzustellen: 
-    
+4. Führen Sie Folgendes aus, um das DaemonSet bereitzustellen:
+
     `oc create -f ocp-omsagent.yaml`
 
-5. Geben Sie Folgendes ein, um zu überprüfen, ob alles richtig konfiguriert ist und funktioniert: 
+5. Geben Sie Folgendes ein, um zu überprüfen, ob alles richtig konfiguriert ist und funktioniert:
 
     `oc describe daemonset omsagent`  
-    
+
     Die Ausgabe sollte in etwa wie folgt aussehen:
 
     ```
@@ -194,7 +199,7 @@ Führen Sie die folgenden Schritte aus, falls Sie Geheimnisse nutzen möchten, u
 
 1. Melden Sie sich am OpenShift-Masterknoten an, und kopieren Sie die YAML-Datei [ocp-ds-omsagent.yaml](https://github.com/Microsoft/OMS-docker/blob/master/OpenShift/ocp-ds-omsagent.yaml) und das Skript [ocp-secretgen.sh](https://github.com/Microsoft/OMS-docker/blob/master/OpenShift/ocp-secretgen.sh) zum Generieren von Geheimnissen aus GitHub.  Mit diesem Skript wird die YAML-Geheimnisdatei für die OMS-Arbeitsbereich-ID und den Primärschlüssel generiert, um Ihre Geheimnisinformationen zu schützen.  
 2. Führen Sie die folgenden Befehle aus, um ein Projekt für OMS zu erstellen, und legen Sie das Benutzerkonto fest. Sie werden vom Skript zum Generieren von Geheimnissen zum Angeben Ihrer OMS-Arbeitsbereich-ID <WSID> und Ihres Primärschlüssels <KEY> aufgefordert. Wenn der Vorgang abgeschlossen ist, wird die Datei „ocp-secret.yaml“ erstellt.  
-    
+
     ```
     oadm new-project omslogging --node-selector='zone=default'  
     oc project omslogging  
@@ -207,12 +212,12 @@ Führen Sie die folgenden Schritte aus, falls Sie Geheimnisse nutzen möchten, u
 
     `oc create -f ocp-secret.yaml`
 
-5. Überprüfen Sie die Bereitstellung, indem Sie Folgendes ausführen: 
+5. Überprüfen Sie die Bereitstellung, indem Sie Folgendes ausführen:
 
     `oc describe secret omsagent-secret`  
 
     Die Ausgabe sollte in etwa wie folgt aussehen:  
-    
+
     ```
     [ocpadmin@khocp-master-0 ~]$ oc describe ds oms  
     Name:           oms  
@@ -229,14 +234,14 @@ Führen Sie die folgenden Schritte aus, falls Sie Geheimnisse nutzen möchten, u
     No events.  
     ```
 
-6. Stellen Sie die YAML-Datei für das OMS-Agent-DaemonSet bereit, indem Sie Folgendes ausführen: 
+6. Stellen Sie die YAML-Datei für das OMS-Agent-DaemonSet bereit, indem Sie Folgendes ausführen:
 
     `oc create -f ocp-ds-omsagent.yaml`  
-  
-7. Überprüfen Sie die Bereitstellung, indem Sie Folgendes ausführen: 
+
+7. Überprüfen Sie die Bereitstellung, indem Sie Folgendes ausführen:
 
     `oc describe ds oms`
-  
+
     Die Ausgabe sollte in etwa wie folgt aussehen:
 
     ```
@@ -245,16 +250,16 @@ Führen Sie die folgenden Schritte aus, falls Sie Geheimnisse nutzen möchten, u
     Namespace:      omslogging  
     Labels:         <none>  
     Annotations:    <none>  
-    
+
     Type:   Opaque  
-    
+
      Data  
      ====  
      KEY:    89 bytes  
      WSID:   37 bytes  
     ```
 
-### <a name="secure-your-secret-information-for-docker-swarm-and-kubernetes"></a>Schützen Ihrer Geheimnisinformationen für Docker Swarm und Kubernetes 
+### <a name="secure-your-secret-information-for-docker-swarm-and-kubernetes"></a>Schützen Ihrer Geheimnisinformationen für Docker Swarm und Kubernetes
 
 Sie können Ihre geheime OMS-Arbeitsbereichs-ID und die Primärschlüssel für Docker Swarm- und Kubernetes-Containerdienste schützen.
 
@@ -424,40 +429,43 @@ Um die Überwachung von Windows- und Hyper-V-Containern zu aktivieren, installie
 
 Sie können Windows-Container überwachen, die unter Service Fabric ausgeführt werden. Allerdings werden derzeit nur [unter Azure ausgeführte virtuelle Computer](log-analytics-azure-vm-extension.md) und [Windows-Computer, die in Ihrer lokalen Umgebung ausgeführt werden](log-analytics-windows-agents.md), für Service Fabric unterstützt.
 
-So überprüfen Sie, ob die Container-Lösung ordnungsgemäß festgelegt ist:
-
-- Überprüfen Sie, ob das Management Pack ordnungsgemäß heruntergeladen wurde, suchen Sie nach *ContainerManagement.xxx*.
-    - Die Dateien sollten sich im Verzeichnis „C:\Program Files\Microsoft Monitoring Agent\Agent\Health Service State\Management Packs“ befinden.
-- Überprüfen Sie in **Systemsteuerung** > **System und Sicherheit**, ob die OMS-Arbeitsbereichs-ID richtig ist.
-    - Öffnen Sie **Microsoft Monitoring Agent**, und stellen Sie sicher, dass die Arbeitsbereichsinformationen richtig sind.
+Sie können überprüfen, ob die Containerüberwachungslösung für Windows korrekt festgelegt ist. Um zu überprüfen, ob das Management Pack ordnungsgemäß heruntergeladen wurde, suchen Sie nach *ContainerManagement.xxx*. Die Dateien sollten sich im Verzeichnis „C:\Program Files\Microsoft Monitoring Agent\Agent\Health Service State\Management Packs“ befinden.
 
 
-## <a name="containers-data-collection-details"></a>Details zur Datensammlung in Containern
-Die Containerlösung sammelt verschiedene Leistungsmetriken und Protokolldaten von Containerhosts und Containern mit Agents, die Sie aktivieren.
+## <a name="solution-components"></a>Lösungskomponenten
 
-Die folgende Tabelle enthält die Datensammlungsmethoden und andere Details dazu, wie Daten für Container erfasst werden.
+Wenn Sie Windows-Agents verwenden, wird auf jedem Computer mit einem Agent beim Hinzufügen dieser Lösung das folgende Management Pack installiert. Für das Management Pack ist keine Konfiguration oder Wartung erforderlich.
 
-| Plattform | [OMS Agent für Linux](log-analytics-linux-agents.md) | SCOM-Agent | Azure Storage | SCOM erforderlich? | Daten von SCOM-Agent über Verwaltungsgruppe gesendet | Sammlungshäufigkeit |
-| --- | --- | --- | --- | --- | --- | --- |
-| Linux |![Ja](./media/log-analytics-containers/oms-bullet-green.png) |![Nein](./media/log-analytics-containers/oms-bullet-red.png) |![Nein](./media/log-analytics-containers/oms-bullet-red.png) |![Nein](./media/log-analytics-containers/oms-bullet-red.png) |![Nein](./media/log-analytics-containers/oms-bullet-red.png) |Alle 3 Minuten |
+- *ContainerManagement.xxx* wird unter „C:\Program Files\Microsoft Monitoring Agent\Agent\Health Service State\Management Packs“ installiert.
 
-| Plattform | [Windows-Agent](log-analytics-windows-agents.md) | SCOM-Agent | Azure Storage | SCOM erforderlich? | Daten von SCOM-Agent über Verwaltungsgruppe gesendet | Sammlungshäufigkeit |
-| --- | --- | --- | --- | --- | --- | --- |
-| Windows |![Ja](./media/log-analytics-containers/oms-bullet-green.png) |![Nein](./media/log-analytics-containers/oms-bullet-red.png) |![Nein](./media/log-analytics-containers/oms-bullet-red.png) |![Nein](./media/log-analytics-containers/oms-bullet-red.png) |![Nein](./media/log-analytics-containers/oms-bullet-red.png) |Alle 3 Minuten |
+## <a name="container-data-collection-details"></a>Details zur Datensammlung in Containern
+Die Containerüberwachungslösung sammelt verschiedene Leistungsmetriken und Protokolldaten von Containerhosts und Containern mit Agents, die Sie aktivieren.
 
-| Plattform | [Log Analytics-VM-Erweiterung](log-analytics-azure-vm-extension.md) | SCOM-Agent | Azure Storage | SCOM erforderlich? | Daten von SCOM-Agent über Verwaltungsgruppe gesendet | Sammlungshäufigkeit |
-| --- | --- | --- | --- | --- | --- | --- |
-| Azure |![Ja](./media/log-analytics-containers/oms-bullet-green.png) |![Nein](./media/log-analytics-containers/oms-bullet-red.png) |![Nein](./media/log-analytics-containers/oms-bullet-red.png) |![Nein](./media/log-analytics-containers/oms-bullet-red.png) |![Nein](./media/log-analytics-containers/oms-bullet-red.png) |Alle 3 Minuten |
+Alle drei Minuten werden von den folgenden Agent-Typen Daten gesammelt.
 
-Die folgende Tabelle enthält Beispiele für von der Containerlösung gesammelte Datentypen, für in Protokollsuchen verwendete Datentypen sowie für Ergebnisse.
+- [OMS Agent für Linux](log-analytics-linux-agents.md)
+- [Windows-Agent](log-analytics-windows-agents.md)
+- [Log Analytics-VM-Erweiterung](log-analytics-azure-vm-extension.md)
+
+
+### <a name="container-records"></a>Containerdatensätze
+
+Die folgende Tabelle enthält Beispiele für von der Containerüberwachungslösung gesammelte Datentypen, die in Protokollsuchergebnissen angezeigt werden.
 
 | Datentyp | Datentyp in der Protokollsuche | Felder |
 | --- | --- | --- |
 | Leistung von Hosts und Containern | `Type=Perf` | Computer, ObjectName, CounterName &#40;%Processor Time, Disk Reads MB, Disk Writes MB, Memory Usage MB, Network Receive Bytes, Network Send Bytes, Processor Usage sec, Network&#41;, CounterValue, TimeGenerated, CounterPath, SourceSystem |
-| Containerinhalt | `Type=ContainerInventory` | TimeGenerated, Computer, Containername, ContainerHostname, Image, ImageTag, ContinerState, ExitCode, EnvironmentVar, Command, CreatedTime, StartedTime, FinishedTime, SourceSystem, ContainerID, ImageID |
+| Containerinhalt | `Type=ContainerInventory` | TimeGenerated, Computer, Containername, ContainerHostname, Image, ImageTag, ContainerState, ExitCode, EnvironmentVar, Command, CreatedTime, StartedTime, FinishedTime, SourceSystem, ContainerID, ImageID |
 | Containerimageinhalt | `Type=ContainerImageInventory` | TimeGenerated, Computer, Image, ImageTag, ImageSize, VirtualSize, Running, Paused, Stopped, Failed, SourceSystem, ImageID, TotalContainer |
 | Containerprotokoll | `Type=ContainerLog` | TimeGenerated, Computer, Image-ID, Containername, LogEntrySource, LogEntry, SourceSystem, ContainerID |
 | Containerdienstprotokoll | `Type=ContainerServiceLog`  | TimeGenerated, Computer, TimeOfCommand, Image, Command, SourceSystem, ContainerID |
+| Containerknotenbestand | `Type=ContainerNodeInventory_CL`| TimeGenerated, Computer, ClassName_s, DockerVersion_s, OperatingSystem_s, Volume_s, Network_s, NodeRole_s, OrchestratorType_s, InstanceID_g, SourceSystem|
+| Kubernetes-Bestand | `Type=KubePodInventory_CL` | TimeGenerated, Computer, PodLabel_deployment_s, PodLabel_deploymentconfig_s, PodLabel_docker_registry_s, Name_s, Namespace_s, PodStatus_s, PodIp_s, PodUid_g, PodCreationTimeStamp_t, SourceSystem |
+| Containerprozess | `Type=ContainerProcess_CL` | TimeGenerated, Computer, Pod_s, Namespace_s, ClassName_s, InstanceID_s, Uid_s, PID_s, PPID_s, C_s, STIME_s, Tty_s, TIME_s, Cmd_s, Id_s, Name_s, SourceSystem |
+| Kubernetes-Ereignisse | `Type=KubeEvents_CL` | TimeGenerated, Computer, Name_s, ObjectKind_s, Namespace_s, Reason_s, Type_s, SourceComponent_s, SourceSystem, Message |
+
+Bezeichnungen, die an *PodLabel*-Datentypen angefügt werden, sind Ihre eigenen benutzerdefinierten Bezeichnungen. Die angefügten PodLabel-Bezeichnungen in der Tabelle stellen Beispiele dar. Deshalb unterscheiden sich `PodLabel_deployment_s`, `PodLabel_deploymentconfig_s`, `PodLabel_docker_registry_s` im Dataset Ihrer Umgebung und ähneln allgemein `PodLabel_yourlabel_s`.
+
 
 ## <a name="monitor-containers"></a>Überwachen von Containern
 Nachdem Sie die Lösung im OMS-Portal aktiviert haben, werden auf der Kachel **Container** zusammenfassende Informationen zu den Containerhosts und den auf den Hosts ausgeführten Containern angezeigt.
@@ -469,57 +477,68 @@ Die Kachel zeigt eine Übersicht über die Anzahl der Container in der Umgebung 
 ### <a name="using-the-containers-dashboard"></a>Verwenden des Containerdashboards
 Klicken Sie auf die Kachel **Container**. Dort sind die Ansichten wie folgt angeordnet:
 
-* Containerereignisse
-* Fehler
-* Containerstatus
-* Containerimageinhalt
-* Leistung von CPU und Arbeitsspeicher
+- **Containerereignisse** – Zeigt den Containerstatus und die Computer mit fehlerhaften Containern an.
+- **Containerprotokolle** – Zeigt ein Diagramm von Containerprotokolldateien, die mit der Zeit generiert wurden, und eine Liste von Computern mit der höchsten Anzahl von Protokolldateien an.
+- **Kubernetes-Ereignisse** – Zeigt ein Diagramm von Kubernetes-Ereignissen, die mit der Zeit generiert wurden, und eine Liste der Gründe an, warum die Ereignisse von Pods generiert wurden. *Dieses Dataset wird nur in Linux-Umgebungen verwendet.*
+- **Kubernetes-Namespacebestand** – Zeigt die Anzahl der Namespaces und Pods und ihre Hierarchie an. *Dieses Dataset wird nur in Linux-Umgebungen verwendet.*
+- **Containerknotenbestand** – Zeigt die Anzahl der Orchestrierungstypen an, die auf Containerknoten/-hosts verwendet werden. Die Computerknoten/-hosts werden auch in der Anzahl von Containern aufgeführt. *Dieses Dataset wird nur in Linux-Umgebungen verwendet.*
+- **Containerimagebestand** – Zeigt die Gesamtanzahl der verwendeten Containerimages und die Anzahl der Imagetypen an. Die Anzahl der Images wird auch im Imagetag aufgeführt.
+- **Containerstatus** – Zeigt die Gesamtanzahl der Containerknoten/Hostcomputer an, auf denen Container ausgeführt werden. Computer werden auch in der Anzahl der ausgeführten Hosts aufgelistet.
+- **Containerprozess** – Zeigt ein Liniendiagramm von Containerprozessen an, die über einen bestimmten Zeitraum ausgeführt werden. Container werden auch durch Ausführen des Befehls bzw. Prozesses in Containern aufgeführt. *Dieses Dataset wird nur in Linux-Umgebungen verwendet.*
+- **Container-CPU-Leistung** – Zeigt ein Liniendiagramm der durchschnittlichen CPU-Auslastung im Zeitverlauf für Computerknoten/-hosts an. Zudem werden die Computerknoten/-hosts basierend auf der durchschnittlichen CPU-Auslastung aufgeführt.
+- **Containerspeicherleistung** – Zeigt ein Liniendiagramm der Speicherauslastung im Zeitverlauf an. Zudem wird die Computerspeicherauslastung basierend auf dem Instanznamen aufgeführt.
+- **Computerleistung** – Zeigt Liniendiagramme zum Prozentsatz der CPU-Leistung im Zeitverlauf, den Prozentsatz der Speicherauslastung im Zeitverlauf und die Menge des freien Speicherplatzes auf dem Datenträger in MB im Zeitverlauf an. Sie können den Mauszeiger über eine beliebige Zeile in einem Diagramm bewegen, um weitere Details anzuzeigen.
 
-Jeder Bereich im Dashboard ist eine visuelle Darstellung einer Suche, die über die gesammelten Daten ausgeführt wird.
+
+Jeder Bereich des Dashboards ist eine visuelle Darstellung einer Suche, die über die gesammelten Daten ausgeführt wird.
 
 ![Containerdashboard](./media/log-analytics-containers/containers-dash01.png)
 
 ![Containerdashboard](./media/log-analytics-containers/containers-dash02.png)
 
-Klicken Sie auf dem Blatt **Container Status** (Containerstatus) auf den oberen Bereich, wie unten dargestellt.
+Klicken Sie im Bereich **Containerstatus** auf den oberen Bereich, wie unten dargestellt.
 
 ![Containerstatus](./media/log-analytics-containers/containers-status.png)
 
-Die Protokollsuche wird geöffnet. Darin werden Informationen zu den Hosts und den Containern, die darauf ausgeführt werden, angezeigt.
+Die Protokollsuche wird geöffnet. Darin werden Informationen zum Status Ihrer Container angezeigt.
 
 ![Protokollsuche für Container](./media/log-analytics-containers/containers-log-search.png)
 
 Hier können Sie die Suchabfrage bearbeiten, um die für Sie interessanten spezifischen Informationen zu suchen. Weitere Informationen zur Verwendung der Protokollsuche finden Sie unter [Protokollsuchvorgänge in Log Analytics](log-analytics-log-searches.md).
 
-Sie können z.B. die Suchabfrage so ändern, dass alle beendeten Container anstelle der ausgeführten Container angezeigt werden. Dazu ändern Sie **Running** in der Abfrage in **Stopped**.
-
 ## <a name="troubleshoot-by-finding-a-failed-container"></a>Beheben von Problemen durch das Suchen fehlerhafter Container
-OMS kennzeichnet einen Container als **Failed**, wenn dieser mit einem anderen Exitcode als null beendet wurde. Auf dem Blatt **Container mit Fehlern** wird eine Übersicht über die Fehler und Ausfälle in der Umgebung angezeigt.
+
+Log Analytics kennzeichnet einen Container als **Fehlerhaft**, wenn dieser mit einem anderen Exitcode als null beendet wurde. Im Bereich **Container mit Fehlern** wird eine Übersicht über die Fehler und Ausfälle in der Umgebung angezeigt.
 
 ### <a name="to-find-failed-containers"></a>So suchen Sie nach Containern mit Fehlern
-1. Klicken Sie auf das Blatt **Container Events** (Containerereignisse).  
-   ![Containerereignisse](./media/log-analytics-containers/containers-events.png)
-2. Die Protokollsuche wird geöffnet. Darin wird der Status von Containern wie folgt angezeigt.  
-   ![Containerzustand](./media/log-analytics-containers/containers-container-state.png)
-3. Klicken Sie anschließend auf den Wert für Container mit Fehlern, um zusätzliche Informationen wie Imagegröße und Anzahl der beendeten und fehlerhaften Images anzuzeigen. Erweitern Sie **Mehr anzeigen**, um die Image-ID anzuzeigen.  
-   ![Container mit Fehlern](./media/log-analytics-containers/containers-state-failed.png)
-4. Suchen Sie als Nächstes den Container, in dem dieses Image ausgeführt wird. Geben Sie Folgendes in die Suchabfrage ein.
-   `Type=ContainerInventory <ImageID>` Dadurch werden die Protokolle angezeigt. Sie können scrollen, um fehlerhafte Container zu finden.  
+1. Klicken Sie auf den Bereich **Containerstatus**.  
+   ![Containerstatus](./media/log-analytics-containers/containers-status.png)
+2. Die Protokollsuche wird geöffnet. Darin wird der Status Ihrer Container wie folgt angezeigt.  
+   ![Containerzustand](./media/log-analytics-containers/containers-log-search.png)
+3. Klicken Sie dann auf den aggregierten Wert der fehlerhaften Container, um zusätzliche Informationen anzuzeigen. Erweitern Sie **Mehr anzeigen**, um die Image-ID anzuzeigen.  
+   ![Container mit Fehlern](./media/log-analytics-containers/containers-state-failed.png)  
+4. Geben Sie als Nächstes Folgendes in die Suchabfrage ein. `Type=ContainerInventory <ImageID>`, um Details zum Image wie Imagegröße sowie Anzahl der beendeten und fehlerhaften Images anzuzeigen.  
    ![Container mit Fehlern](./media/log-analytics-containers/containers-failed04.png)
 
 ## <a name="search-logs-for-container-data"></a>Suchprotokolle für Containerdaten
 Wenn Sie Probleme mit einen bestimmten Fehler beheben möchten, kann es hilfreich sein, herauszufinden, wo dieser in Ihrer Umgebung auftritt. Mit den folgenden Protokolltypen können Sie Abfragen erstellen, die die gewünschten Informationen zurückgeben.
 
-* **ContainerInventory:** Verwenden Sie diesen Typ, wenn Sie Informationen zum Containerspeicherort und -namen sowie zu den darin ausgeführten Images benötigen.
-* **ContainerImageInventory:** Verwenden Sie diesen Typ, wenn Sie die Informationen organisiert nach Image suchen und Imageinformationen wie Image-IDs oder -Größen anzeigen möchten.
-* **ContainerLog:** Verwenden Sie diesen Typ, wenn Sie bestimmte Informationen und Einträge im Fehlerprotokoll suchen möchten.
-* **ContainerServiceLog:** Verwenden Sie diesen Typ, wenn Sie Audit-Trail-Informationen zum Docker-Daemon suchen, z.B. zu den Befehlen „start“, „stop“, „delete“ oder „pull“.
+
+- **ContainerImageInventory:** Verwenden Sie diesen Typ, wenn Sie die Informationen organisiert nach Image suchen und Imageinformationen wie Image-IDs oder -Größen anzeigen möchten.
+- **ContainerInventory:** Verwenden Sie diesen Typ, wenn Sie Informationen zum Containerspeicherort und -namen sowie zu den darin ausgeführten Images benötigen.
+- **ContainerLog:** Verwenden Sie diesen Typ, wenn Sie bestimmte Informationen und Einträge im Fehlerprotokoll suchen möchten.
+- **ContainerNodeInventory_CL** Verwenden Sie diesen Typ, wenn Sie Informationen zum Host bzw. Knoten, auf dem sich Container befinden, benötigen. Dieser gibt Informationen zu Docker-Version, Orchestrierungstyp, Speicher und Netzwerk an.
+- **ContainerProcess_CL** Verwenden Sie diesen Typ, um schnell den Prozess, der im Container ausgeführt wird, anzuzeigen.
+- **ContainerServiceLog:** Verwenden Sie diesen Typ, wenn Sie Audit-Trail-Informationen zum Docker-Daemon suchen, z.B. zu den Befehlen „start“, „stop“, „delete“ oder „pull“.
+- **KubeEvents_CL** Verwenden Sie diesen Typ, um die Kubernetes-Ereignisse anzuzeigen.
+- **KubePodInventory_CL** Verwenden Sie diesen Typ, wenn Sie Informationen zur Clusterhierarchie einsehen möchten.
+
 
 ### <a name="to-search-logs-for-container-data"></a>So durchsuchen Sie Protokolle nach Containerdaten
 * Wählen Sie ein Image aus, bei dem kürzlich ein Fehler aufgetreten ist, und suchen Sie die zugehörigen Fehlerprotokolle. Suchen Sie zunächst mit **ContainerInventory** nach dem Namen eines Containers, in dem das Image ausgeführt wird. Suchen Sie beispielsweise nach `Type=ContainerInventory ubuntu Failed`.  
     ![Durchsuchen von Ubuntu-Containern](./media/log-analytics-containers/search-ubuntu.png)
 
-  Notieren Sie sich den Namen des Containers neben **Namen**, und suchen Sie nach den zugehörigen Protokollen. In diesem Beispiel lautet er `Type=ContainerLog adoring_meitner`.
+  Notieren Sie sich den Namen des Containers neben **Namen**, und suchen Sie nach den zugehörigen Protokollen. In diesem Beispiel lautet er `Type=ContainerLog cranky_stonebreaker`.
 
 **Anzeigen von Leistungsinformationen**
 
@@ -530,10 +549,6 @@ Type=Perf
 ```
 
 ![Containerleistung](./media/log-analytics-containers/containers-perf01.png)
-
-Sie können dies auch grafisch darstellen, indem Sie in den Ergebnissen auf das Wort **Metriken** klicken.
-
-![Containerleistung](./media/log-analytics-containers/containers-perf02.png)
 
 Sie können die angezeigten Leistungsdaten auf einen bestimmten Container einschränken, indem Sie den Namen rechts von Ihrer Abfrage eingeben.
 
@@ -546,7 +561,7 @@ Damit zeigen Sie die Liste der Leistungsmetriken an, die für einen einzelnen Co
 ![Containerleistung](./media/log-analytics-containers/containers-perf03.png)
 
 ## <a name="example-log-search-queries"></a>Beispielabfragen für die Protokollsuche
-Es ist oft hilfreich, die Erstellung von Abfragen ausgehend von einem oder zwei Beispielen zu beginnen und diese dann an die eigene Umgebung anzupassen. Als Ausgangspunkt können Sie auf dem Blatt **Relevante Abfragen** experimentieren, um komplexere Abfragen zu erstellen.
+Es ist oft hilfreich, die Erstellung von Abfragen ausgehend von einem oder zwei Beispielen zu beginnen und diese dann an die eigene Umgebung anzupassen. Als Ausgangspunkt können Sie im Bereich **Beispielabfragen** experimentieren, um komplexere Abfragen zu erstellen.
 
 [!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 

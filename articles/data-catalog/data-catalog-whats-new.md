@@ -13,17 +13,40 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 08/15/2017
+ms.date: 08/22/2017
 ms.author: maroche
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: 4d818112d8b6cc07a73d2521ef229c90e0d5884b
+ms.translationtype: HT
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: 7ee836b4c0c87fc7d271f59dcb16f3293e68dc9a
 ms.contentlocale: de-de
-ms.lasthandoff: 06/17/2017
+ms.lasthandoff: 08/23/2017
 
 ---
 # <a name="whats-new-in-azure-data-catalog"></a>Neuerungen in Azure Data Catalog
 Updates für **Azure Data Catalog** werden in regelmäßigen Abständen veröffentlicht. Nicht jede Version umfasst neue Funktionen für Benutzer, da sich einige Versionen auf Back-End-Dienstfunktionen konzentrieren. Auf dieser Seite werden neue Funktionen für Benutzer aufgezeigt, die dem Dienst Azure Data Catalog hinzugefügt wurden.
+
+## <a name="whats-new-for-august-2017"></a>Neuerungen im August 2017 
+August 2017 wurden Azure Data Catalog folgende Funktionen hinzugefügt:
+
+*   Ein neues Beispiel für Entwickler ist zum Erstellen und Verwalten von Beziehungsmetadaten mithilfe der REST-API von Data Catalog verfügbar. Das Beispiel *Import relationship information into Data Catalog* steht auf der [Seite mit den Data Catalog-Codebeispielen](https://azure.microsoft.com/resources/samples/?service=data-catalog&sort=0) zur Verfügung. 
+* Unterstützung des Extrahierens von Metadaten von Join-Beziehungen aus Teradata-Datenquellen beim Registrieren verknüpfter Tabellen mit dem Registrierungstool für Datenquellen.
+* Unterstützung von SQL Server-Tabellenwertfunktions-Objekten (TVF) beim Registrieren von SQL Server-Datenquellen mit dem Registrierungstool für Datenquellen.
+* Mehrere Aktualisierungen und Überarbeitungen, um Leistung und Nutzbarkeit des Data Catalog-Portals zu steigern.
+
+## <a name="whats-new-for-july-2017"></a>Neuerungen im Juli 2017 
+Juli 2017 wurden Azure Data Catalog folgende Funktionen hinzugefügt:
+*   Unterstützung einer detaillierteren Steuerung zulässiger Vorgänge mit Metadaten:
+    - Katalogadministratoren können die Fähigkeit von Benutzern, dem Katalog Tags und zugehörige Metadaten hinzuzufügen, einschränken, indem sie einen schreibgeschützten Zugriff auf den Katalog aktivieren.
+    - Katalogadministratoren können die Fähigkeit der Benutzer einschränken, neue Datenquellen im Katalog zu registrieren.
+    - Katalogadministratoren können die Fähigkeit der Benutzer einschränken, den Besitz von Metadaten von Datenobjekten im Katalog zu übernehmen.
+    - Zur Vereinfachung der Verwaltung von Berechtigungen können Azure Active Directory-Sicherheitsgruppen und -Benutzern Berechtigungen erteilt werden.
+* Unterstützung von Beziehungen zwischen registrierten Datenobjekten und der Ermittlung verwandter Datenobjekte im Data Catalog-Portal:
+    - Extrahieren von Beziehungsmetadaten aus SQL Server- (einschließlich Azure SQL-Datenbank), Oracle- und MySQL-Datenquellen bei Verwenden des Registrierungstools für Data Catalog-Datenquellen.
+    - Ermittlung verwandter Datenobjekte beim Anzeigen von Objektmetadaten im Data Catalog-Portal.
+    - Vorgänge zum Definieren, Ermitteln und Verwalten von Beziehungen zwischen Datenobjekten mithilfe der REST-API von Data Catalog.
+
+Weitere Informationen zum Verwalten von Berechtigungen in Data Catalog finden Sie unter [Schützen des Zugriffs auf Data Catalog und Datenobjekte](data-catalog-how-to-secure-catalog.md).
+Weitere Informationen zu Beziehungen in Data Catalog finden Sie unter [Anzeigen verknüpfter Datenobjekte in Azure Data Catalog](data-catalog-how-to-view-related-data-assets.md).
 
 ## <a name="whats-new-for-june-2017"></a>Neuerungen im Juni 2017 
 Juni 2017 wurden Azure Data Catalog folgende Funktionen hinzugefügt:

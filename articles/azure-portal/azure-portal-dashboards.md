@@ -1,5 +1,5 @@
 ---
-title: Dashboards im Azure-Portal | Microsoft Docs
+title: Erstellen und Freigeben von Dashboards im Azure-Portal | Microsoft-Dokumentation
 description: In diesem Artikel wird das Erstellen und Bearbeiten von Dashboards im Azure-Portal beschrieben.
 services: azure-portal
 documentationcenter: 
@@ -14,19 +14,15 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 09/06/2016
 ms.author: sewatson
-translationtype: Human Translation
-ms.sourcegitcommit: ebc5dbf790ca6012cfe9a7ea9ccee9fdacb46ffd
-ms.openlocfilehash: dc5b6f194a7e34d5061b9fa2e4a6123f54f6c14a
-
+ms.translationtype: HT
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: 5429e68723448ff5db6ef0ed8da1b927e97e6dd9
+ms.contentlocale: de-de
+ms.lasthandoff: 08/24/2017
 
 ---
-# <a name="creating-and-sharing-dashboards-in-the-azure-portal"></a>Erstellen und Freigeben von Dashboards im Azure-Portal
-Sie können mehrere Dashboards erstellen und für andere Benutzer freigeben, die Zugriff auf Ihre Azure-Abonnements haben.  In diesem Beitrag werden die Grundlagen der Erstellung/Bearbeitung, Veröffentlichung und Verwaltung des Zugriffs auf Dashboards beschrieben.
-
-## <a name="customizing-dashboards-versus-blades"></a>Anpassung von Dashboards und Blättern
-Seit dem Start der Dashboards vor einigen Monaten waren ein stetiger Rückgang von Blattanpassungen und eine rasante Zunahme von Dashboardanpassungen zu beobachten. Dieser starke Trend aus der Praxis weist darauf hin, dass Sie die Anpassung von Dashboards der Anpassung von Blättern vorziehen. Zur Unterstützung dieses Trends wird die Option zum Anpassen von Blättern eingestellt, und wir konzentrieren uns stattdessen auf die Verbesserung der Dashboardfunktionen. Wenn Sie ein Blatt angepasst haben, wird Ihre Anpassung in Kürze entfernt werden. Um die Anpassung beizubehalten, können Sie die angepassten Kacheln an ein Dashboard anheften. Klicken Sie einfach mit der rechten Maustaste auf die Kachel, und wählen Sie die Option **An Dashboard anheften**, wie in der folgenden Abbildung dargestellt.
-
-![Angepasste Kachel speichern](./media/azure-portal-dashboards/save-customization.png)
+# <a name="create-and-share-dashboards-in-the-azure-portal"></a>Erstellen und Freigeben von Dashboards im Azure-Portal
+Sie können mehrere Dashboards erstellen und für andere Benutzer freigeben, die Zugriff auf Ihre Azure-Abonnements haben.  In diesem Artikel werden die Grundlagen der Erstellung, Bearbeitung, Veröffentlichung und Verwaltung des Zugriffs auf Dashboards beschrieben.
 
 ## <a name="create-a-dashboard"></a>Erstellen eines Dashboards
 Wählen Sie zum Erstellen eines Dashboards die Schaltfläche **Neues Dashboard** neben dem Namen des aktuellen Dashboards aus.  
@@ -99,10 +95,5 @@ Nach der Veröffentlichung des Dashboards wird der Steuerungsbereich für **Frei
 ## <a name="next-steps"></a>Nächste Schritte
 * Informationen zum Verwalten von Ressourcen finden Sie unter [Verwalten von Azure-Ressourcen über das Portal](../azure-resource-manager/resource-group-portal.md).
 * Informationen zum Bereitstellen von Ressourcen finden Sie unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure-Portal](../azure-resource-manager/resource-group-template-deploy-portal.md).
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

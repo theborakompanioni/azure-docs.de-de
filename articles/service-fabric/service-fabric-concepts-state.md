@@ -12,27 +12,28 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/05/2017
+ms.date: 08/18/2017
 ms.author: masnider
-translationtype: Human Translation
-ms.sourcegitcommit: 7033955fa9c18b2fa1a28d488ad5268d598de287
-ms.openlocfilehash: d03bd6a4c317da67a4e6d0e8cdb0cbd3f07d5a1f
-
+ms.translationtype: HT
+ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
+ms.openlocfilehash: 103fd6c3d536bc11f4e39444043a332a1d8f6c01
+ms.contentlocale: de-de
+ms.lasthandoff: 08/19/2017
 
 ---
 # <a name="service-state"></a>Dienstzustand
-**Dienstzustand** bezieht sich auf die Daten, die der Dienst für seine Ausführung benötigt. Die Ausführung des Diensts besteht im Lesen und Schreiben der Datenstrukturen und Variablen.
+**Dienstzustand** bezieht sich auf die Daten (im Arbeitsspeicher oder auf einem Datenträger), die der Dienst für seine Ausführung benötigt. Er umfasst unter anderem die Datenstrukturen und Membervariablen, die der Dienst im Rahmen seiner Aufgaben liest und schreibt. Abhängig von der Architektur des Diensts können dazu auch Dateien oder andere Ressourcen gehören, die auf einem Datenträger gespeichert sind. Ein Beispiel wären etwa Dateien, die eine Datenbank zum Speichern von Daten und Transaktionsprotokollen verwendet.
 
-Stellen Sie sich beispielsweise einen Rechnerdienst vor. Der Dienst berechnet die Summe von zwei Zahlen und gibt die Summe zurück. Es handelt sich hierbei eindeutig um einen zustandslosen Dienst, da mit dem Dienst keinerlei Daten assoziiert sind.
+Als Beispieldienst soll ein Rechner dienen. Ein einfacher Rechnerdienst berechnet die Summe zweier Zahlen und gibt sie zurück. Diese Berechnung umfasst keine Membervariablen oder anderen Informationen.
 
-Angenommen, der gleiche Rechner verfügt zusätzlich zur Methode zum Berechnen der Summe über eine Methode zum Zurückgeben der zuletzt berechneten Summe. Dieser Dienst ist nun zustandsbehaftet, da er über einen Zustand verfügt, den er schreibt (beim Berechnen einer neuen Summe) und aus dem er liest (beim Zurückgeben der zuletzt berechneten Summe).
+Nehmen wir nun an, der gleiche Rechner verfügt zusätzlich über eine Methode zum Speichern und Zurückgeben der zuletzt berechneten Summe. Dieser Dienst ist nun zustandsbehaftet. Zustandsbehaftet bedeutet, dass er über einen Zustand verfügt, in den er beim Berechnen einer neuen Summe schreibt und aus dem er beim Zurückgeben der zuletzt berechneten Summe liest.
 
 In Azure Service Fabric wird der erste Dienst als „zustandsloser Dienst“ bezeichnet. Der zweite Dienst wird „zustandsbehafteter Dienst“ genannt.
 
 ## <a name="storing-service-state"></a>Speichern des Dienstzustands
-Der Zustand kann ausgelagert oder mit dem Code, der den Zustand bearbeitet, gespeichert werden. Die Auslagerung des Status erfolgt in der Regel mit einer externen Datenbank oder einem externen Speicher. In unserem Rechnerbeispiel kann beispielsweise eine SQL-Datenbank verwendet werden, in der das aktuelle Ergebnis in einer Tabelle gespeichert ist. Bei jeder Anforderung zum Berechnen der Summe wird diese Zeile aktualisiert.
+Der Zustand kann ausgelagert oder mit dem Code, der den Zustand bearbeitet, gespeichert werden. Die Auslagerung des Zustands erfolgt in der Regel mithilfe einer externen Datenbank oder einem anderen Datenspeicher, der über das Netzwerk auf verschiedenen Computern oder außerhalb des Prozesses auf dem gleichen Computer ausgeführt wird. In unserem Rechnerbeispiel kann es sich bei dem Datenspeicher etwa um eine SQL-Datenbank oder um eine Azure-Tabellenspeicherinstanz handeln. Diese Daten werden bei jeder Summenberechnungsanforderung aktualisiert, und wenn vom Dienst die Rückgabe des Werts angefordert wird, wird der aktuelle Wert aus dem Speicher abgerufen. 
 
-Der Status kann auch gemeinsam mit dem Code gespeichert werden, die diesen Status bearbeitet. Auf diesem Modell können die zustandsbehafteten Dienste in Service Fabric basieren. Eine entsprechende Infrastruktur in Service Fabric sorgt dafür, dass der Zustand bei einem Ausfall hochverfügbar und fehlertolerant ist.
+Der Zustand kann auch gemeinsam mit dem Code gespeichert werden, der den Zustand ändert. Zustandsbehaftete Dienste in Service Fabric basieren für gewöhnlich auf diesem Modell. Die von Service Fabric bereitgestellte Infrastruktur stellt sicher, dass dieser Zustand hoch verfügbar, konsistent und beständig ist und dass die so erstellten Dienste problemlos skalierbar sind.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu den Service Fabric-Konzepten finden Sie in den folgenden Artikeln:
@@ -41,9 +42,4 @@ Weitere Informationen zu den Service Fabric-Konzepten finden Sie in den folgende
 * [Scaling Service Fabric Applications (in englischer Sprache)](service-fabric-concepts-scalability.md)
 * [Partitionieren von Service Fabric-Diensten](service-fabric-concepts-partitioning.md)
 * [Service Fabric Reliable Services](service-fabric-reliable-services-introduction.md)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

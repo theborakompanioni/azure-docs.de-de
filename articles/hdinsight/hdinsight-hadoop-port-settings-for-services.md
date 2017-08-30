@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 06/02/2017
+ms.date: 08/23/2017
 ms.author: larryfr
 ms.translationtype: HT
-ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
-ms.openlocfilehash: b1a4ca17a53a6d337d704bc4eef6d441de1f32d8
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: f4e42ca177ac6c11111d4ffc0d772cafc13f8657
 ms.contentlocale: de-de
-ms.lasthandoff: 07/14/2017
+ms.lasthandoff: 08/24/2017
 
 ---
 # <a name="ports-used-by-hadoop-services-on-hdinsight"></a>Ports für Hadoop-Dienste in HDInsight
@@ -75,13 +75,19 @@ Alle Dienste, die im Internet öffentlich verfügbar gemacht werden, müssen aut
 > [!NOTE]
 > Einige Dienste stehen nur bei bestimmten Clustertypen zur Verfügung. HBase beispielsweise ist nur bei HBase-Clustertypen verfügbar.
 
+> [!IMPORTANT]
+> Einige Dienste werden nur auf einem Hauptknoten gleichzeitig ausgeführt. Wenn Sie versuchen, auf dem primären Hauptknoten eine Verbindung mit dem Dienst herzustellen und den Fehler 404 erhalten, versuchen Sie es mit dem sekundären Hauptknoten erneut.
+
 ### <a name="ambari"></a>Ambari
 
-| Dienst | Nodes | Port | path | Protocol | 
+| Dienst | Nodes | Port | URL-Pfad | Protocol | 
 | --- | --- | --- | --- | --- |
 | Ambari-Webbenutzeroberfläche | Hauptknoten | 8080 | / | HTTP |
 | Ambari-REST-API | Hauptknoten | 8080 | /api/v1 | HTTP |
 
+Beispiele:
+
+* Ambari-REST-API: `curl -u admin "http://10.0.0.11:8080/api/v1/clusters"`
 
 ### <a name="hdfs-ports"></a>HDFS-Ports
 
@@ -161,6 +167,11 @@ Alle Dienste, die im Internet öffentlich verfügbar gemacht werden, müssen aut
 
 ### <a name="spark-ports"></a>Spark-Ports
 
-| Dienst | Nodes | Port | Protocol | Beschreibung |
-| --- | --- | --- | --- | --- |
-| Spark Thrift-Server |Hauptknoten |10002 |Thrift |Dienst für die Verbindung mit Spark SQL (Thrift/JDBC) |
+| Dienst | Nodes | Port | Protocol | URL-Pfad | Beschreibung |
+| --- | --- | --- | --- | --- | --- |
+| Spark Thrift-Server |Hauptknoten |10002 |Thrift | &nbsp; | Dienst für die Verbindung mit Spark SQL (Thrift/JDBC) |
+| Livy-Server | Hauptknoten | 8998 | HTTP | /batches | Dienst für die Ausführung von Anweisungen, Aufträgen und Anwendungen |
+
+Beispiele:
+
+* Livy: `curl "http://10.0.0.11:8998/batches"`. In diesem Beispiel ist `10.0.0.11` die IP-Adresse des Hauptknotens, der den Livy-Dienst hostet.

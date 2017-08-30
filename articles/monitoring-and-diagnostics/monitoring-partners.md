@@ -12,26 +12,26 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 5/9/2017
+ms.date: 8/16/2017
 ms.author: johnkem
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: 5914e8be1cf2671da7af1d190811e0e809039135
+ms.translationtype: HT
+ms.sourcegitcommit: 368589509b163cacf495fd0be893a8953fe2066e
+ms.openlocfilehash: 46b6ec12655b64b8fce6e103d5d71a4e8021890e
 ms.contentlocale: de-de
-ms.lasthandoff: 07/06/2017
+ms.lasthandoff: 08/17/2017
 
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Monitor – integrierte Partnerlösungen
 | Partner |  |  |
 | --- | --- | --- |
 | [![Partner Logo][alertlogic-logo]<br/>**AlertLogic**][alertlogic-anchor] | [![Partner Logo][appdynamics-logo]<br/>**AppDynamics**][appdynamics-anchor] | [![Partner Logo][atlassian-logo]<br/>**Atlassian**][atlassian-anchor] |
-| [![Partner Logo][cloudhealth-logo]<br/>**CloudHealth**][cloudhealth-anchor] | [![Partner Logo][cloudmonix-logo]<br/>**CloudMonix**][cloudmonix-anchor] | [![Partner Logo][cloudyn-logo]<br/>**Cloudyn**][cloudyn-anchor] |
-| [![Partner Logo][datadog-logo]<br/>**Datadog**][datadog-anchor] | [![Partner Logo][dynatrace-logo]<br/>**Dynatrace**][dynatrace-anchor] | [![Partner Logo][newrelic-logo]<br/>**NewRelic**][newrelic-anchor] |
-| [![Partner Logo][opsgenie-logo]<br/>**OpsGenie**][opsgenie-anchor] | [![Partner Logo][pagerduty-logo]<br/>**PagerDuty**][pagerduty-anchor] | [![Partner Logo][sciencelogic-logo]<br/>**ScienceLogic**][sciencelogic-anchor] |
-| [![Partner Logo][splunk-logo]<br/>**Splunk**][splunk-anchor] | [![Partner Logo][sumologic-logo]<br/>**Sumo Logic**][sumologic-anchor] | |
+| [![Partner Logo][circonus-logo]<br/>**Circonus**][circonus-anchor] | [![Partner Logo][cloudhealth-logo]<br/>**CloudHealth**][cloudhealth-anchor] | [![Partner Logo][cloudmonix-logo]<br/>**CloudMonix**][cloudmonix-anchor] |
+| [![Partner Logo][cloudyn-logo]<br/>**Cloudyn**][cloudyn-anchor] | [![Partner Logo][datadog-logo]<br/>**Datadog**][datadog-anchor] | [![Partner Logo][dynatrace-logo]<br/>**Dynatrace**][dynatrace-anchor] |
+| [![Partner Logo][newrelic-logo]<br/>**NewRelic**][newrelic-anchor] | [![Partner Logo][opsgenie-logo]<br/>**OpsGenie**][opsgenie-anchor] | [![Partner Logo][pagerduty-logo]<br/>**PagerDuty**][pagerduty-anchor] |
+| [![Partner Logo][sciencelogic-logo]<br/>**ScienceLogic**][sciencelogic-anchor] | [![Partner Logo][splunk-logo]<br/>**Splunk**][splunk-anchor] | [![Partner Logo][sumologic-logo]<br/>**Sumo Logic**][sumologic-anchor] | |
 
 ## <a name="alertlogic-log-manager"></a>Alert Logic Log Manager
-Alert Logic Log Manager erfasst Protokolldateien von virtuellen Computern, Anwendungen und der Azure-Plattform für Sicherheitsanalysen und zur Datenaufbewahrung. Dies beinhaltet auch Azure-Überwachungsprotokolle über die Azure Monitor-API.  Diese Informationen werden dazu verwendet, Complianceanforderungen zu erfüllen und Verstöße zu erkennen.
+Alert Logic Log Manager erfasst Protokolle von virtuellen Computern, Anwendungen und der Azure-Plattform für Sicherheitsanalysen und zur Datenaufbewahrung, inklusive des Azure-Aktivitätsprotokolls über die Azure Monitor-API.  Diese Informationen werden dazu verwendet, Complianceanforderungen zu erfüllen und Verstöße zu erkennen.
 
 [Zur Dokumentation][alertlogic-doc]
 
@@ -44,6 +44,11 @@ Application Performance Management (APM) von AppDynamics ermöglicht Anwendungsb
 Sie können für Azure Monitor-Warnungen JIRA-Tickets erstellen.
 
 [Zur Dokumentation][atlassian-doc]
+
+## <a name="circonus"></a>Circonus
+Circonus ist eine Mikroservicesüberwachungs- und -analyseplattform für lokale oder SaaS-Bereitstellung. Ihre vollständig automatisierbare API-zentrierte Plattform ist skalierbarer und zuverlässiger als die Systeme, die sie überwacht. Circonus wurde für die Anforderungen von DevOps entwickelt und bietet perzentilbasierte Warnungen, Diagramme, Dashboards und Machine Learning-Intelligenz, die Geschäftsoptimierung ermöglichen. Circonus überwacht Ihre Microsoft Azure-Cloudressourcen und ihre Anwendungen in Echtzeit. Sie können Circonus zum Erfassen und Nachverfolgen von Metriken für die Variablen verwenden, die Sie für Ihre Ressourcen und Anwendungen messen möchten. Mit Circonus erhalten Sie einen systemweiten Einblick in die Ressourcenverwendung, Anwendungsleistung und Betriebsintegrität von Azure.
+
+[Zur Dokumentation][circonus-doc]
 
 ## <a name="cloudhealth"></a>CloudHealth
 Vereinheitlichen und automatisieren Sie Ihre Cloud mit einer Plattform, die extra konzipiert wurde, damit Sie in erheblichem Umfang Zeit und Geld sparen. Mit unvergleichlicher Transparenz, intuitiver Optimierung und extrem stabilen Governancemethoden setzt CloudHealth bei der Cloudverwaltung ganz neue Maßstäbe. Mit der Cloudhealth-Plattform können Unternehmen und MSPs eine maximale Rendite für Cloudinvestitionen erzielen und fundierte Entscheidungen zu Kosten, Nutzung, Leistung und Sicherheit treffen.
@@ -66,7 +71,7 @@ Datadog ist der weltweit führende Überwachungsdienst für Anwendungen in der C
 [Zur Dokumentation][datadog-doc]
 
 ## <a name="dynatrace"></a>Dynatrace
-OneAgent von Dynatrace lässt sich über die entsprechenden Azure-Erweiterungsmechanismen in virtuelle Azure-Computer und Azure App Services integrieren. So kann Dynatrace OneAgent Leistungsmetriken zu Hosts, Netzwerk und Diensten erfassen. Neben der einfachen Anzeige von Metriken kann Dynatrace auch vollständige Umgebungen detailliert visualisieren und so Transaktionen von der Clientseite bis hin zur Datenbankschicht anzeigen. Die auf künstlicher Intelligenz beruhende Korrelation von Problemen und die vollständig integrierte Ursachenanalyse, einschließlich Informationen über Code und Datenbank auf Methodenebene, vereinfachen Problembehandlungen und Leistungsoptimierungen erheblich.
+OneAgent von Dynatrace lässt sich über Azure-Erweiterungsmechanismen in virtuelle Azure-Computer und App Services integrieren. So kann Dynatrace OneAgent Leistungsmetriken zu Hosts, Netzwerk und Diensten erfassen. Neben der einfachen Anzeige von Metriken kann Dynatrace auch vollständige Umgebungen detailliert visualisieren und so Transaktionen von der Clientseite bis hin zur Datenbankschicht anzeigen. Die auf künstlicher Intelligenz beruhende Korrelation von Problemen und die vollständig integrierte Ursachenanalyse, einschließlich Informationen über Code und Datenbank auf Methodenebene, vereinfachen Problembehandlungen und Leistungsoptimierungen erheblich.
 
 [Zur Dokumentation][dynatrace-doc]
 
@@ -108,6 +113,7 @@ Sumo Logic ist ein sicherer, nativ cloudbasierter Dienst für die Computerdatena
 [alertlogic-anchor]: #alertlogic-log-manager "AlertLogic"
 [appdynamics-anchor]: #appdynamics "AppDynamics"
 [atlassian-anchor]: #atlassian-jira "Atlassian"
+[circonus-anchor]: #circonus "Circonus"
 [cloudhealth-anchor]: #cloudhealth "CloudHealth"
 [cloudmonix-anchor]: #cloudmonix "CloudMonix"
 [cloudyn-anchor]: #cloudyn "Cloudyn"
@@ -124,6 +130,7 @@ Sumo Logic ist ein sicherer, nativ cloudbasierter Dienst für die Computerdatena
 [alertlogic-logo]: ./media/partner-logos/alertlogic.png
 [appdynamics-logo]: ./media/partner-logos/appdynamics.png
 [atlassian-logo]: ./media/partner-logos/atlassian.png
+[circonus-logo]: ./media/partner-logos/circonus.png
 [cloudhealth-logo]: ./media/partner-logos/cloudhealth.png
 [cloudmonix-logo]: ./media/partner-logos/cloudmonix.png
 [cloudyn-logo]: ./media/partner-logos/cloudyn.png
@@ -140,6 +147,7 @@ Sumo Logic ist ein sicherer, nativ cloudbasierter Dienst für die Computerdatena
 [alertlogic-doc]: https://docs.alertlogic.com/userGuides/log-manager-collection-sources.htm "AlertLogic-Dokumentation"
 [appdynamics-doc]: https://www.appdynamics.com/net/azure/ "AppDynamics-Dokumentation"
 [atlassian-doc]: https://azure.microsoft.com/blog/automated-notifications-from-azure-monitor-for-atlassian-jira/
+[circonus-doc]: https://support.circonus.com/support/solutions/articles/24000013515-azure-integration 
 [cloudhealth-doc]: https://www.cloudhealthtech.com/azure
 [cloudmonix-doc]: http://cloudmonix.com/features/azure-management/ "Einführung in CloudMonix"
 [cloudyn-doc]: https://www.cloudyn.com/azure-monitoring "Einführung in Cloudyn"

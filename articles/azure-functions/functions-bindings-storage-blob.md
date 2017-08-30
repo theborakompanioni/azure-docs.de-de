@@ -15,13 +15,12 @@ ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/25/2017
-ms.author: donnam, glenga
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: b819bf4461f14033dd2c00331e3c3e4d0fbafde6
+ms.author: glenga
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 24ca844007acf445455714c9a530bfe1ad9a9c32
 ms.contentlocale: de-de
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="azure-functions-blob-storage-bindings"></a>Azure Functions – Blob Storage-Bindungen
@@ -32,7 +31,7 @@ Dieser Artikel erläutert das Konfigurieren von und Arbeiten mit Azure Blob Stor
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 > [!NOTE]
-> Ein [Speicherkonto ausschließlich für Blobs](../storage/storage-create-storage-account.md#blob-storage-accounts) wird nicht unterstützt. Blob Storage-Trigger und -Bindungen erfordern ein allgemeines Speicherkonto. 
+> Ein [Speicherkonto ausschließlich für Blobs](../storage/common/storage-create-storage-account.md#blob-storage-accounts) wird nicht unterstützt. Blob Storage-Trigger und -Bindungen erfordern ein allgemeines Speicherkonto. 
 > 
 
 <a name="trigger"></a>
@@ -140,8 +139,7 @@ Wenn bei allen fünf Versuchen Fehler auftreten, fügt Azure Functions der Stora
 * ETag (eine Blobversions-ID. Beispiel: 0x8D1DC6E70A277EF)
 
 ### <a name="blob-polling-for-large-containers"></a>Abfragen von Blobs für große Container
-Wenn der überwachte Blobcontainer mehr als 10.000 Blobs enthält, überprüft die Functions-Runtime Protokolldateien auf neue oder geänderte Blobs. Dieser Prozess läuft nicht in Echtzeit ab. Eine Funktion wird unter Umständen erst mehrere Minuten nach der Bloberstellung oder noch später ausgelöst. Außerdem erfolgt das [Erstellen von Storage-Protokollen auf bestmögliche Weise](/rest/api/storageservices/About-Storage-Analytics-Logging). Es gibt aber keine Garantie, dass alle Ereignisse erfasst werden. Unter bestimmten Umständen können Protokolle fehlen. Wenn eine schnellere oder zuverlässigere Blobverarbeitung erforderlich ist, sollten Sie beim Erstellen des Blobs eine [Warteschlangennachricht](../storage/storage-dotnet-how-to-use-queues.md) 
- erstellen. Verwenden Sie dann einen [Warteschlangentrigger](functions-bindings-storage-queue.md) anstelle eines Blobtriggers für die Verarbeitung des Blobs.
+Wenn der überwachte Blobcontainer mehr als 10.000 Blobs enthält, überprüft die Functions-Runtime Protokolldateien auf neue oder geänderte Blobs. Dieser Prozess läuft nicht in Echtzeit ab. Eine Funktion wird unter Umständen erst mehrere Minuten nach der Bloberstellung oder noch später ausgelöst. Außerdem erfolgt das [Erstellen von Storage-Protokollen auf bestmögliche Weise](/rest/api/storageservices/About-Storage-Analytics-Logging). Es gibt aber keine Garantie, dass alle Ereignisse erfasst werden. Unter bestimmten Umständen können Protokolle fehlen. Wenn eine schnellere oder zuverlässigere Blobverarbeitung erforderlich ist, sollten Sie beim Erstellen des Blobs eine [Warteschlangennachricht](../storage/queues/storage-dotnet-how-to-use-queues.md) erstellen. Verwenden Sie dann einen [Warteschlangentrigger](functions-bindings-storage-queue.md) anstelle eines Blobtriggers für die Verarbeitung des Blobs.
 
 <a name="triggerusage"></a>
 

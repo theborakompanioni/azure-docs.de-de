@@ -13,13 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/30/2017
+ms.date: 08/22/2017
 ms.author: vikdesai
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
-ms.openlocfilehash: 247782a86a0d20486513dff0dae0c1564b5ecb72
+ms.translationtype: HT
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: c70904097f139bc2178feed83f1cf1274f3c738d
 ms.contentlocale: de-de
-ms.lasthandoff: 05/25/2017
+ms.lasthandoff: 08/23/2017
 
 ---
 # <a name="manage-access-to-billing-information-for-azure-using-role-based-access-control"></a>Verwalten des Zugriffs auf Abrechnungsinformationen für Azure mithilfe der rollenbasierten Zugriffssteuerung
@@ -34,7 +34,11 @@ Der Kontoadministrator muss sich über das [Azure-Portal](https://portal.azure.c
 
 1. Wählen Sie **Rechnungen** und dann **Access to invoices** (Zugriff auf Rechnungen) aus.
 
-1. **Aktivieren** Sie den Zugriff.
+    ![Der Screenshot zeigt das Delegieren des Zugriffs auf Rechnungen](./media/billing-manage-access/AA-optin.png)
+
+1. Schalten Sie den Zugriff **Ein**, gefolgt vom Speichern der Änderungen, damit Benutzer mit Abonnementbereichsrollen die Rechnung herunterladen können.
+
+    ![Der Screenshot zeigt das Ein/Aus-Schalten zum Delegieren des Zugriffs auf Rechnungen](./media/billing-manage-access/AA-optinAllow.png)
 
 Durch Anmeldung können Benutzer mit den Rollen „Dienstadministrator“, „Co-Administrator“, „Besitzer“, „Mitwirkender“, „Leser“ und „Abrechnungsleser“ im Abonnement PDF-Rechnungen im Azure-Portal herunterladen. Allerdings stehen Rechnungen vor Dezember 2016 vorerst nur für den Kontoadministrator zur Verfügung.
 

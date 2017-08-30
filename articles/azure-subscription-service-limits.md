@@ -13,13 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2017
+ms.date: 08/21/2017
 ms.author: byvinyal
 ms.translationtype: HT
-ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
-ms.openlocfilehash: 9c2a5531592591fcd90019a9c0b561566ccbe54a
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: a76acd67e9ba7822f2837b3c08e2ede389047f11
 ms.contentlocale: de-de
-ms.lasthandoff: 08/16/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen
@@ -52,6 +52,7 @@ In den folgenden Grenzwerten wurde eine neue Tabelle hinzugefügt, um alle abwei
 * [Application Gateway](#application-gateway-limits)
 * [Application Insights](#application-insights-limits)
 * [Automation](#automation-limits)
+* [Azure Cosmos DB](#azure-cosmos-db-limits)
 * [Azure Event Grid](#azure-event-grid-limits)
 * [Azure Redis Cache](#azure-redis-cache-limits)
 * [Azure RemoteApp](#azure-remoteapp-limits)
@@ -65,7 +66,6 @@ In den folgenden Grenzwerten wurde eine neue Tabelle hinzugefügt, um alle abwei
 * [Data Lake Analytics](#data-lake-analytics-limits)
 * [Data Lake Store](#data-lake-store-limits)
 * [DNS](#dns-limits)
-* [DocumentDB](#documentdb-limits)
 * [Event Hubs](#event-hubs-limits)
 * [IoT Hub](#iot-hub-limits)
 * [Schlüsseltresor](#key-vault-limits)
@@ -140,7 +140,7 @@ Die folgenden Grenzwerte gelten bei Verwendung des Azure-Ressourcen-Managers und
 [!INCLUDE [dns-limits](../includes/dns-limits.md)]
 
 ### <a name="storage-limits"></a>Speichergrenzwerte
-Weitere Informationen zu Grenzwerten für Speicherkonten finden Sie unter [Skalierbarkeits- und Leistungsziele für Azure Storage](storage/storage-scalability-targets.md).
+Weitere Informationen zu Grenzwerten für Speicherkonten finden Sie unter [Skalierbarkeits- und Leistungsziele für Azure Storage](storage/common/storage-scalability-targets.md).
 <!--like # storage accts --> 
 #### <a name="storage-service-limits"></a>Grenzwerte für den Speicherdienst
 [!INCLUDE [azure-storage-limits](../includes/azure-storage-limits.md)]
@@ -183,8 +183,8 @@ In der folgende Tabelle werden die Grenzwerte für Azure Biztalk Services aufgef
 
 [!INCLUDE [biztalk-services-service-limits](../includes/biztalk-services-service-limits.md)]
 
-### <a name="documentdb-limits"></a>DocumentDB-Grenzwerte
-DocumentDB ist eine Datenbank für globale Skalierung, in der Durchsatz und Speicher je nach den Anforderungen Ihrer Anwendung skaliert werden können. Wenn Sie Fragen zur Skalierung von DocumentDB haben, senden Sie eine E-Mail an askdocdb@microsoft.com.
+### <a name="azure-cosmos-db-limits"></a>Einschränkungen für Azure Cosmos DB
+Azure Cosmos DB ist eine Datenbank für globale Skalierung, in der Durchsatz und Speicher je nach den Anforderungen Ihrer Anwendung skaliert werden können. Wenn Sie Fragen zur Skalierung von Azure Cosmos DB haben, senden Sie eine E-Mail an askcosmosdb@microsoft.com.
 
 ### <a name="mobile-engagement-limits"></a>Mobile Engagement-Grenzwerte
 [!INCLUDE [azure-mobile-engagement-limits](../includes/azure-mobile-engagement-limits.md)]

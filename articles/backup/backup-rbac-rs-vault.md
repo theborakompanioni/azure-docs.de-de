@@ -12,13 +12,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 2/10/2017
+ms.date: 8/22/2017
 ms.author: trinadhk;markgal
-translationtype: Human Translation
-ms.sourcegitcommit: 4bf4814c25f09c4c8637f13753316cd9f200fc42
-ms.openlocfilehash: f7e090916dbe6c6db84c1a110a6627feeb7e20ab
-ms.lasthandoff: 02/23/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: d0b6eb8eea8971eb8f80c6623f9a41a3692241b3
+ms.contentlocale: de-de
+ms.lasthandoff: 08/23/2017
 
 ---
 
@@ -46,7 +46,7 @@ In der folgenden Tabelle sind die Aktionen der Sicherungsverwaltung und die ents
 | Erstellen eines Recovery Services-Tresors | Mitwirkender der Ressourcengruppe des Tresors |
 | Aktivieren der Sicherung von virtuellen Azure-Computern | Sicherungsoperator für den Tresor, Mitwirkender für virtuelle Computer auf virtuellen Computern |
 | Bedarfsgesteuerte Sicherung eines virtuellen Computers | Sicherungsoperator |
-| Wiederherstellen eines virtuellen Computers | Sicherungsoperator, Ressourcengruppenmitwirkender|in der Gruppe, in der der virtuelle Computer und VNETs bereitgestellt werden |
+| Wiederherstellen eines virtuellen Computers | Sicherungsoperator, Mitwirkender der Ressourcengruppe, in der VM und VNETs bereitgestellt werden sollen |
 | Wiederherstellen von Datenträgern, einzelnen Dateien aus VM-Sicherungen | Sicherungsoperator |
 | Erstellen einer Sicherungsrichtlinie für Azure-VM-Sicherungen | Mitwirkender für Sicherungen |
 | Ändern der Sicherungsrichtlinie der Azure-VM-Sicherungen | Mitwirkender für Sicherungen |

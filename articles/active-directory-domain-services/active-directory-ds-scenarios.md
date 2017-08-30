@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/06/2017
+ms.date: 08/23/2017
 ms.author: maheshu
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 359653f29adc538a4fe2f2143e8132bdd9a9d15b
-ms.lasthandoff: 02/11/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: 72514dabf3af0b282d1bb49c542c13f7095e03d8
+ms.contentlocale: de-de
+ms.lasthandoff: 08/24/2017
 
 ---
 # <a name="deployment-scenarios-and-use-cases"></a>Bereitstellungsszenarien und Anwendungsfälle
@@ -38,7 +38,7 @@ Wenn Server und andere Infrastruktur das Ende ihrer Lebensdauer erreichen, verla
 Beachten Sie die folgenden wichtigen Punkte für dieses Bereitstellungsszenario:
 
 * Verwaltete Domänen, die über die Azure AD Domain Services bereitgestellt werden, stellen standardmäßig eine Struktur mit einer einzelnen flachen Organisationseinheit bereit. Alle in die Domäne eingebundenen Computer befinden sich in einer einzelnen flachen Organisationseinheit. Sie können jedoch auch benutzerdefinierte Organisationseinheiten erstellen.
-* Azure AD Domain Services unterstützen jeweils eine einfache Gruppenrichtlinie in Form eines integrierten Gruppenrichtlinienobjekts (GPO) für Benutzer- und Computercontainer. Es ist nicht möglich, die Gruppenrichtlinie nach Organisationseinheit/Abteilung auszurichten, eine WMI-Filterung durchzuführen oder benutzerdefinierte Gruppenrichtlinienobjekte zu erstellen.
+* Azure AD Domain Services unterstützen jeweils eine einfache Gruppenrichtlinie in Form eines integrierten Gruppenrichtlinienobjekts (GPO) für Benutzer- und Computercontainer. Sie können benutzerdefinierte Gruppenrichtlinienobjekte erstellen und auf benutzerdefinierte Organisationseinheiten abstimmen.
 * Azure AD Domain Services unterstützen das grundlegende AD-Computerobjektschema. Sie können das Schema des Computerobjekts nicht erweitern.
 
 ## <a name="lift-and-shift-an-on-premises-application-that-uses-ldap-bind-authentication-to-azure-infrastructure-services"></a>Verlagern einer lokalen Anwendung, die die LDAP-Bindungsauthentifizierung verwendet, auf Azure-Infrastrukturdienste
@@ -77,10 +77,8 @@ Beachten Sie die folgenden wichtigen Punkte für dieses Bereitstellungsszenario:
 * Stellen Sie sicher, dass die Anwendung für die Authentifizierung Benutzername und Kennwort verwendet. Die Authentifizierung per Zertifikat oder Smartcard wird von den Azure AD Domain Services nicht unterstützt.
 * Sie können Kennwörter nicht direkt basierend auf der verwalteten Domäne ändern. Endbenutzer können ihr Kennwort entweder mithilfe des Self-Service-Verfahrens zum Ändern des Kennworts von Azure AD oder basierend auf dem lokalen Verzeichnis ändern. Diese Änderungen werden automatisch mit der verwalteten Domäne synchronisiert und sind darin verfügbar.
 
-## <a name="azure-remoteapp"></a>Azure RemoteApp
-Azure RemoteApp ermöglicht dem Administrator von Contoso die Erstellung einer in die Domäne eingebundenen Sammlung. Dank dieses Features können von Azure RemoteApp bereitgestellte Remoteanwendungen auf in die Domäne eingebundenen Computern ausgeführt werden und mit integrierter Windows-Authentifizierung auf andere Ressourcen zugreifen. Contoso kann mithilfe von Azure AD Domain Services eine verwaltete Domäne bereitstellen, die von in die Domäne eingebundenen Azure RemoteApp-Sammlungen verwendet wird.
+## <a name="windows-server-remote-desktop-services-deployments-in-azure"></a>Bereitstellungen von Windows Server-Remotedesktopdiensten in Azure
+Mit Azure AD Domain Services können Sie für Ihre in Azure bereitgestellten Remotedesktopserver verwaltete AD-Domänendienste bereitstellen.
 
-![Azure RemoteApp](./media/active-directory-domain-services-scenarios/azure-remoteapp.png)
-
-Weitere Informationen zu diesem Bereitstellungsszenario finden Sie im Remotedesktopdienste-Blog im Artikel [Lift-and-shift your workloads with Azure RemoteApp and Azure AD Domain Services](http://blogs.msdn.com/b/rds/archive/2016/01/19/lift-and-shift-your-workloads-with-azure-remoteapp-and-azure-ad-domain-services.aspx)(Verlagern von Workloads mit Azure RemoteApp und Azure AD Domain Services).
+Weitere Informationen zu diesem Bereitstellungsszenario finden Sie unter [Integrieren von Azure AD Domain Services in Ihre RDS-Bereitstellung](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-azure-adds).
 

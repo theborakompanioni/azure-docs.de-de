@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/06/2017
+ms.date: 08/23/2017
 ms.author: maheshu
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: dddcd8baea7694d957820870b2f991a35200d0ca
-ms.lasthandoff: 12/28/2016
-
+ms.translationtype: HT
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: 0a4a08a58302c113405756ad7d3bb6487887a72a
+ms.contentlocale: de-de
+ms.lasthandoff: 08/24/2017
 
 ---
 # <a name="azure-ad-domain-services---contact-us"></a>Azure AD Domain Services – so erreichen Sie uns
@@ -29,7 +29,7 @@ Sie können uns eine E-Mail an [Azure AD Domain Services– Feedback](mailto:aad
 
 Stellen Sie folgende Informationen bereit, damit wir das Problem untersuchen können:
 
-* Die **Mandanten-ID** für Ihr Azure AD-Verzeichnis. Bei der Mandanten-ID handelt es sich um die GUID, die Sie in der Adressleiste des Browsers sehen, wenn Sie auf die Seite navigieren, auf der Sie die Azure AD Domain Services für Ihr Verzeichnis aktivieren.
+* Die **Mandanten-ID/Verzeichnis-ID** Ihres Azure AD-Verzeichnisses. Die Mandanten-ID ist die GUID im Feld „Verzeichnis-ID“ auf der [Seite „Eigenschaften“ Ihres Verzeichnisses](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties).
 * Den **DNS-Domänennamen** , den Sie für Ihre über die Azure AD Domain Services verwaltete Domäne konfiguriert haben.
 
 ## <a name="provide-feedback"></a>Feedback geben

@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/04/2017
+ms.date: 08/23/2017
 ms.author: billmath
 ms.translationtype: HT
-ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
-ms.openlocfilehash: e5fb323090d8c3a533199b396047a1c63b5ae9f4
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: 07063ea53e96c6467e40e8a7ca70e5c03ce53284
 ms.contentlocale: de-de
-ms.lasthandoff: 08/07/2017
+ms.lasthandoff: 08/24/2017
 
 ---
 
@@ -125,6 +125,9 @@ Wenn Sie die Bereitstellung der Passthrough-Authentifizierung in einer Produktio
 ![Azure Active Directory-Admin Center – Schaltfläche zum Herunterladen des Authentifizierungs-Agents](./media/active-directory-aadconnect-pass-through-authentication/pta9.png)
 
 ![Azure Active Directory-Admin Center – Blatt „Agent herunterladen“](./media/active-directory-aadconnect-pass-through-authentication/pta10.png)
+
+>[!NOTE]
+>Sie können den Authentifizierungs-Agent auch [hier](https://aka.ms/getauthagent) herunterladen. _Ehe_ Sie den Authentifizierungs-Agent installieren, müssen Sie die [Nutzungsbedingungen](https://aka.ms/authagenteula) lesen und akzeptieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [**Aktuelle Einschränkungen**](active-directory-aadconnect-pass-through-authentication-current-limitations.md): Diese Funktion befindet sich derzeit in der Vorschauphase. Informieren Sie sich darüber, welche Szenarien unterstützt werden.
