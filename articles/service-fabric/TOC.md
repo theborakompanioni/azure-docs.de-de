@@ -18,7 +18,7 @@
 # Beispiele
 ## [Codebeispiele](https://azure.microsoft.com/en-us/resources/samples/?service=service-fabric)
 ## [PowerShell](service-fabric-powershell-samples.md)
-## [Azure-Befehlszeilenschnittstelle](samples-cli.md)
+## [Service Fabric-Befehlszeilenschnittstelle](samples-cli.md)
 # Konzepte
 ## [Grundlegendes zu Microservices](service-fabric-overview-microservices.md)
 ## [Übersicht](service-fabric-content-roadmap.md)
@@ -113,11 +113,14 @@
 #### [Drosselung](service-fabric-cluster-resource-manager-advanced-throttling.md)
 #### [Dienstverschiebung](service-fabric-cluster-resource-manager-movement-cost.md)
 
+## [Integration in API Management](service-fabric-api-management-overview.md)
+
 ## Überwachen und Diagnostizieren
 ### [Übersicht](service-fabric-diagnostics-overview.md)
 ### [Integritätsmodell](service-fabric-health-introduction.md)
 ### [Diagnose für zustandsbehaftete Reliable Services](service-fabric-reliable-services-diagnostics.md)
 ### [Diagnose in Reliable Actors](service-fabric-reliable-actors-diagnostics.md)
+### [Leistungsindikatoren für Reliable Services-Remoting](service-fabric-reliable-serviceremoting-diagnostics.md)
 
 # Anleitungen
 ## Einrichten der Entwicklungsumgebung
@@ -126,6 +129,7 @@
 ### [Mac OS](service-fabric-get-started-mac.md)
 
 ## Erstellen einer Anwendung
+### [Erstellen Ihrer ersten C#-App in Visual Studio](service-fabric-create-your-first-application-in-visual-studio.md)
 ### Erstellen eines Diensts mit ausführbarer Gastdatei
 #### [Hosten einer Node.js-Anwendung unter Windows](quickstart-guest-app.md)
 #### [Bereitstellen einer ausführbaren Gastanwendungsdatei](service-fabric-deploy-existing-app.md)
@@ -206,9 +210,7 @@
 ### [Debuggen eines Java-Diensts in Eclipse](service-fabric-debugging-your-application-java.md)
 ### [Lokales Überwachen und Diagnostizieren](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md)
 
-## Integration in API Management
-### [Übersicht](service-fabric-api-management-overview.md)
-### [Schnellstart](service-fabric-api-management-quick-start.md)
+## [Bereitstellen von API Management und Service Fabric in Azure](service-fabric-api-management-quick-start.md)
 
 ## Migrieren aus Cloud Services
 ### [Unterschiede zwischen Cloud Services und Service Fabric](service-fabric-cloud-services-migration-differences.md)
@@ -221,7 +223,7 @@
 ### Bereitstellen oder Entfernen von Anwendungen
 #### [Bereitstellen von Anwendungen in einem lokalen Cluster](service-fabric-get-started-with-a-local-cluster.md)
 #### [PowerShell](service-fabric-deploy-remove-applications.md)
-#### [Azure CLI 2.0](service-fabric-application-lifecycle-azure-cli-2-0.md)
+#### [Service Fabric-Befehlszeilenschnittstelle](service-fabric-application-lifecycle-sfctl.md)
 #### [Visual Studio](service-fabric-publish-app-remote-cluster.md)
 #### [FabricClient-APIs](service-fabric-deploy-remove-applications-fabricclient.md)
 
@@ -256,6 +258,7 @@
 #### [Upgrade](service-fabric-cluster-upgrade.md)
 #### [Festlegen der Zugriffssteuerung](service-fabric-cluster-security-roles.md)
 #### [Konfigurieren](service-fabric-cluster-fabric-settings.md)
+#### [Öffnen eines Ports im Lastenausgleichsmodul](create-load-balancer-rule.md)
 #### [Verwalten von Clusterzertifikaten](service-fabric-cluster-security-update-certs-azure.md)
 #### [Löschen](service-fabric-cluster-delete.md)
 
@@ -275,8 +278,7 @@
 ### [Visualisieren eines Clusters](service-fabric-visualizing-your-cluster.md)
 ### [Herstellen einer Verbindung mit einem sicheren Cluster](service-fabric-connect-to-secure-cluster.md)
 
-### [Verwalten eines Clusters mithilfe der XPlat-Befehlszeilenschnittstelle](service-fabric-azure-cli.md)
-### [Verwalten eines Clusters mithilfe von Azure CLI 2.0-Befehlen](service-fabric-azure-cli-2-0.md)
+### [Verwalten eines Clusters mit der Service Fabric-Befehlszeilenschnittstelle](service-fabric-cli.md)
 ### [Patchen von Clusterknoten](service-fabric-patch-orchestration-application.md)
 
 ### Verwalten und Orchestrieren von Clusterressourcen
