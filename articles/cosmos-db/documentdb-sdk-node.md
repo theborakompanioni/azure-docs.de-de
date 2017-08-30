@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 05/24/2017
+ms.date: 08/14/2017
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
-ms.openlocfilehash: 297fe8850499212ca41b0b5ca132b7de8c761297
+ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
+ms.openlocfilehash: 4376a5c07b5f00311ce0fe3c0056efdf79c273f9
 ms.contentlocale: de-de
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 08/15/2017
 
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-release-notes-and-resources"></a>Azure Cosmos DB-Node.js-SDK: Anmerkungen zu Releases und Ressourcen
@@ -62,19 +62,27 @@ ms.lasthandoff: 07/25/2017
 
 ## <a name="release-notes"></a>Versionshinweise
 
+### <a name="1.12.2"/>1.12.2</a>
+*   npm-Dokumentation wurde berichtigt.
+
+### <a name="1.12.1"/>1.12.1</a>
+* Ein Fehler in executeStoredProcedure, durch den beteiligte Dokumente Unicode-Sonderzeichen aufwiesen (LS, PS), wurde behoben.
+* Ein Fehler bei der Verarbeitung von Dokumenten mit Unicode-Zeichen im Partitionsschlüssel wurde behoben.
+* Ein Fehler bei der Unterstützung für das Erstellen von Sammlungen mit den Namensmedien wurde behoben. GitHub-Problem 114.
+* Ein Fehler bei der Unterstützung für die Berechtigung des Autorisierungstokens wurde behoben. GitHub-Problem 178.
+
 ### <a name="1.12.0"/>1.12.0</a>
-* Unterstützung für das Feature [Anforderungseinheiten pro Minute](../cosmos-db/request-units-per-minute.md) (RU/m) hinzugefügt.
 * Unterstützung für eine neue [Konsistenzebene](consistency-levels.md) mit dem Namen „Präfixkonsistenz“ hinzugefügt.
 * Unterstützung für UriFactory hinzugefügt.
-* Korrektur eines Fehlers mit der Unicode-Unterstützung. (GitHub-Problem 171)
+* Ein Fehler bei der Unicode-Unterstützung wurde behoben. GitHub-Problem 171.
 
 ### <a name="1.11.0"/>1.11.0</a>
 * Unterstützung für Aggregationsabfragen (COUNT, MIN, MAX, SUM und AVG) wurde hinzugefügt.
 * Die Option zum Steuern des Parallelitätsgrads für partitionsübergreifende Abfragen wurde hinzugefügt.
 * Die Option zum Deaktivieren der SSL-Überprüfung bei der Ausführung für den Azure Cosmos DB-Emulator wurde hinzugefügt.
 * Minimaler Durchsatz für partitionierte Sammlungen wurde von 10.100 RU/s auf 2.500 RU/s gesenkt.
-* Fehler beim Fortsetzungstoken für Sammlung mit einer Partition wurde behoben (GitHub 107).
-* Fehler bei executeStoredProcedure bei der Verarbeitung von 0 als einzelner Parameter wurde behoben (GitHub 155).
+* Ein Fehler beim Fortsetzungstoken für Sammlung mit einer Partition wurde behoben. GitHub-Problem 107.
+* Ein Fehler bei „executeStoredProcedure“ bei der Verarbeitung von 0 als einzelner Parameter wurde behoben. GitHub-Problem 155.
 
 ### <a name="1.10.2"/>1.10.2</a>
 * Fehler bei Benutzer-Agent-Header zum Einbeziehen der SDK-Version wurde behoben.
@@ -89,8 +97,8 @@ ms.lasthandoff: 07/25/2017
 * Unterstützung für TOP-/ORDER BY-Abfragen für partitionierte Sammlungen hinzugefügt.
 
 ### <a name="1.9.0"/>1.9.0</a>
-* Unterstützung für Wiederholungsrichtlinie für gedrosselte Anforderungen hinzugefügt. (Bei gedrosselten Anforderungen wird die Ausnahme „Anforderungsrate zu groß“, Fehlercode 429, angezeigt.) Standardmäßig führt Azure Cosmos DB für jede Anforderung neun Wiederholungen durch, wenn der Fehlercode 429 auftritt, und berücksichtigt dabei die „retryAfter“-Zeit im Antwortheader. Eine feste Wiederholungsintervalldauer kann jetzt als Teil der „RetryOptions“-Eigenschaft für das „ConnectionPolicy“-Objekt festgelegt werden, wenn Sie die „retryAfter“-Zeit ignorieren möchten, die vom Server zwischen den Wiederholungen zurückgegeben wird. Azure Cosmos DB wartet jetzt bei jeder gedrosselten Anforderung (unabhängig von der Anzahl der Wiederholungen) maximal 30 Sekunden und gibt die Antwort mit dem Fehlercode 429 zurück. Diese Dauer kann auch in der „RetryOptions“-Eigenschaft im „ConnectionPolicy“-Objekt überschrieben werden.
-* Cosmos DB gibt nun „x-ms-throttle-retry-count“ und „x-ms-throttle-retry-wait-time-ms“ als Antwortheader in jeder Anforderung zurück, um die Anzahl der Wiederholungen bei einer Drosselung und die kumulative Zeit anzugeben, die die Anforderung zwischen den Wiederholungen gewartet hat.
+* Unterstützung für Wiederholungsrichtlinie für gedrosselte Anforderungen hinzugefügt. (Bei gedrosselten Anforderungen wird die Ausnahme „Anforderungsrate zu groß“, Fehlercode 429, angezeigt.) Standardmäßig führt Azure Cosmos DB für jede Anforderung neun Wiederholungen durch, wenn der Fehlercode 429 auftritt, und berücksichtigt dabei die „retryAfter“-Zeit im Antwortheader. Eine feste Wiederholungsintervalldauer kann jetzt als Teil der „RetryOptions“-Eigenschaft für das „ConnectionPolicy“-Objekt festgelegt werden, wenn Sie die „retryAfter“-Zeit ignorieren möchten, die vom Server zwischen den Wiederholungen zurückgegeben wird. Azure Cosmos DB wartet jetzt bei jeder gedrosselten Anforderung (unabhängig von der Anzahl der Wiederholungen) maximal 30 Sekunden und gibt die Antwort mit dem Fehlercode 429 zurück. Diese Dauer kann auch in der RetryOptions-Eigenschaft im ConnectionPolicy-Objekt überschrieben werden.
+* Cosmos DB gibt nun „x-ms-throttle-retry-count“ und „x-ms-throttle-retry-wait-time-ms“ als Antwortheader in jeder Anforderung zurück, um die Anzahl der Wiederholungen bei einer Drosselung und die kumulative Zeit, die die Anforderung zwischen den Wiederholungen gewartet hat, anzugeben.
 * Die „RetryOptions“-Klasse wurde hinzugefügt, die die „RetryOptions“-Eigenschaft in der „ConnectionPolicy“-Klasse verfügbar macht, welche zum Überschreiben einiger der Standardwiederholungsoptionen verwendet werden kann.
 
 ### <a name="1.8.0"/>1.8.0</a>
@@ -118,7 +126,7 @@ ms.lasthandoff: 07/25/2017
 * Behebt Problem [Nr. 95](https://github.com/Azure/azure-documentdb-node/issues/95) : Warnung des EventEmitter-Listeners bei Arbeitsspeicherverlusten.
 
 ### <a name="1.5.1"/>1.5.1</a>
-* Behebt Problem [92](https://github.com/Azure/azure-documentdb-node/issues/90) : Umbenennung des Ordners „Hash“ in „hash“ für Systeme, bei denen die Groß-/Kleinschreibung beachtet wird.
+* Behebt Problem [92](https://github.com/Azure/azure-documentdb-node/issues/90): Umbenennung des Ordners „Hash“ in „hash“ für Systeme, bei denen die Groß-/Kleinschreibung beachtet wird.
 
 ### <a name="1.5.0"/>1.5.0</a>
 * Unterstützung für Sharding implementiert, indem Hash- und Bereichspartitionsresolver hinzugefügt wurden.
@@ -160,9 +168,9 @@ ms.lasthandoff: 07/25/2017
 * Allgemeine Verfügbarkeit (GA) des SDK
 
 ## <a name="release--retirement-dates"></a>Veröffentlichungs- und Deaktivierungstermine
-Wenn Microsoft ein SDK deaktiviert, werden Sie mindestens **12 Monate** vorher benachrichtigt, um einen reibungslosen Übergang zu einer neueren/unterstützten Version zu gewährleisten.
+Wenn Microsoft ein SDK deaktiviert, werden Sie mindestens **12 Monate** vorher benachrichtigt, um einen reibungslosen Übergang zu einer neueren/unterstützten Version zu gewährleisten.
 
-Neue Features, Funktionen und Optimierungen werden nur dem aktuellen SDK hinzugefügt. Daher empfiehlt es sich, immer so früh wie möglich auf die neueste SDK-Version zu aktualisieren.
+Neue Features, Funktionen und Optimierungen werden nur dem aktuellen SDK hinzugefügt. Daher wird empfohlen, immer so früh wie möglich auf die neueste SDK-Version zu aktualisieren.
 
 Anforderungen an Cosmos DB mithilfe eines deaktivierten SDK werden vom Dienst abgelehnt.
 
@@ -170,6 +178,8 @@ Anforderungen an Cosmos DB mithilfe eines deaktivierten SDK werden vom Dienst ab
 
 | Version | Herausgabedatum | Deaktivierungstermine |
 | --- | --- | --- |
+| [1.12.2](#1.12.2) |10. August 2017 |--- |
+| [1.12.1](#1.12.1) |10. August 2017 |--- |
 | [1.12.0](#1.12.0) |10. Mai 2017 |--- |
 | [1.11.0](#1.11.0) |16. März 2017 |--- |
 | [1.10.2](#1.10.2) |27. Januar 2017 |--- |

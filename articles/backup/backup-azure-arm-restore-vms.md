@@ -13,14 +13,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 3/12/2017
+ms.date: 8/15/2017
 ms.author: markgal;trinadhk;
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: 2ab86ed8aafb01e97b3ac9ba0411f4b80f88ac5b
+ms.translationtype: HT
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: e1fe2b94d462a30f09cb23ab905542aa121ba46b
 ms.contentlocale: de-de
-ms.lasthandoff: 06/16/2017
-
+ms.lasthandoff: 08/17/2017
 
 ---
 # <a name="use-azure-portal-to-restore-virtual-machines"></a>Wiederherstellen virtueller Computer über das Azure-Portal
@@ -131,7 +130,7 @@ Wenn Sie den virtuellen Computer, der von gesicherten Datenträgern wiederherges
 
 Nachdem der Wiederherstellungsvorgang abgeschlossen wurde, können Sie folgende Schritte ausführen:
 * [Verwenden der Vorlage, um den wiederhergestellten virtuellen Computer anzupassen](#use-templates-to-customize-restore-vm)
-* [Verwenden der wiederhergestellten Datenträger, um sie einem vorhandenen virtuellen Computer anzufügen](../virtual-machines/windows/attach-disk-portal.md)
+* [Verwenden der wiederhergestellten Datenträger, um sie einem vorhandenen virtuellen Computer anzufügen](../virtual-machines/windows/attach-managed-disk-portal.md)
 * [Erstellen eines neuen virtuellen Computers aus wiederhergestellten Datenträgern mithilfe von PowerShell](./backup-azure-vms-automation.md#restore-an-azure-vm)
 
 Klicken Sie auf dem Blatt **Wiederherstellungskonfiguration** auf **OK**, um die Wiederherstellungskonfiguration abzuschließen. Klicken Sie auf dem Blatt **Wiederherstellen** auf **Wiederherstellen**, um den Wiederherstellungsvorgang auszulösen.
@@ -172,19 +171,11 @@ Sobald [das Wiederherstellen von Datenträgern abgeschlossen ist](#Track-the-res
 Gehen Sie wie folgt vor, um die als Teil der Wiederherstellung von Datenträgern generierte Vorlage zu erhalten:
 
 1. Wechseln Sie zu den Details des Wiederherstellungsauftrags für den Auftrag. 
-2. Dadurch wird der Vorlagen-URI aufgeführt, über den Sie die Vorlage herunterladen können. Notieren Sie den in den Werten angegebenen Containernamen. 
+2. Klicken Sie auf dem Detailbildschirm für die Auftragswiederherstellung auf die Schaltfläche *Vorlage bereitstellen*, um die Vorlagenbereitstellung zu initiieren. 
 
      ![Drilldown des Wiederherstellungsauftrags](./media/backup-azure-arm-restore-vms/restore-job-drill-down.png)
-     
-3. Notieren Sie den Namen des Zielspeicherkontos, den Containernamen und den Blob-URI der Vorlage, die in den Werten aufgeführt sind. Wechseln Sie zu *Zielspeicherkonto > Blobs auswählen > Container* und dann zur Datei, und laden Sie die Datei herunter, deren Name mit *azuredeploy* beginnt.
-
-    ![download-template-storage-account](./media/backup-azure-arm-restore-vms/download-template.png)
-    
-   Alternativ können Sie den [Azure-Speicher-Explorer](http://storageexplorer.com/) verwenden, um zum entsprechenden Abonnement, zum Zielspeicherkonto und dann zum Blobcontainer zu wechseln. Wählen Sie dann den Containernamen aus, den Sie im Schritt oben notiert haben. Laden Sie aus dem Bereich auf der rechten Seite, der die Dateien im Container anzeigt, die Datei herunter, deren Name mit *azuredeploy* beginnt. 
    
-   ![download-template-storage-explorer](./media/backup-azure-arm-restore-vms/template-storage-explorer-download.png)
-     
-Sobald die Vorlage heruntergeladen wurde, verwenden Sie die Vorlagenbereitstellung, um [die Vorlage zu bearbeiten und bereitzustellen](../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template), oder fügen Sie vor der Bereitstellung weitere Anpassungen durch [Erstellen einer Vorlage](../azure-resource-manager/resource-group-authoring-templates.md) hinzu. Sie können die Option „Datei laden“ zum Bereitstellen der oben heruntergeladenen Vorlage verwenden. 
+Verwenden Sie auf dem Blatt „Vorlage bereitstellen“ der benutzerdefinierten Bereitstellung die Vorlagenbereitstellung, um [die Vorlage zu bearbeiten und bereitzustellen](../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template), oder fügen Sie durch [Erstellen einer Vorlage](../azure-resource-manager/resource-group-authoring-templates.md) vor der Bereitstellung weitere Anpassungen hinzu. 
 
    ![Vorlagenbereitstellung durch Laden](./media/backup-azure-arm-restore-vms/loading-template.png)
    
@@ -196,7 +187,7 @@ Akzeptieren Sie nach der Eingabe der erforderlichen Werte die *Geschäftsbedingu
 * Bei Verwendung einer Cloud-Init-basierten Linux-Verteilung wie etwa Ubuntu wird das Kennwort aus Sicherheitsgründen nach der Wiederherstellung blockiert. Verwenden Sie zum [Zurücksetzen des Kennworts](../virtual-machines/linux/classic/reset-access.md)die VMAccess-Erweiterung auf dem wiederhergestellten virtuellen Computer. Es wird empfohlen, SSH-Schlüssel für diese Verteilungen zu verwenden, um das Zurücksetzen des Kennworts nach der Wiederherstellung zu vermeiden.
 * Erweiterungen, die während der Konfiguration der Sicherung vorhanden waren, werden zwar installiert, aber nicht aktiviert. Installieren Sie Erweiterungen neu, wenn Probleme auftreten. 
 * Wenn die gesicherte VM über eine statische IP-Adresse verfügt, erhält die wiederhergestellte VM eine dynamische IP-Adresse, um Konflikte beim Erstellen wiederhergestellter virtueller Computer zu vermeiden. Erfahren Sie mehr über das [Hinzufügen einer statischen IP-Adresse für wiederhergestellte virtuelle Computer](../virtual-network/virtual-networks-reserved-private-ip.md#how-to-add-a-static-internal-ip-to-an-existing-vm).
-* Für wiederhergestellte virtuelle Computer ist kein Verfügbarkeitswert festgelegt. Es wird empfohlen, die Option zur Datenträgerwiederherstellung zu verwenden und [Verfügbarkeitsgruppen hinzuzufügen](../virtual-machines/windows/create-availability-set.md#use-powershell-to-create-an-availability-set), wenn Sie einen virtuellen Computer mithilfe von PowerShell oder Vorlagen aus wiederhergestellten Datenträgern erstellen. 
+* Für wiederhergestellte virtuelle Computer ist kein Verfügbarkeitswert festgelegt. Es wird empfohlen, die Option zur Datenträgerwiederherstellung zu verwenden und [Verfügbarkeitsgruppen hinzuzufügen](../virtual-machines/windows/tutorial-availability-sets.md), wenn Sie einen virtuellen Computer mithilfe von PowerShell oder Vorlagen aus wiederhergestellten Datenträgern erstellen. 
 
 
 ## <a name="backup-for-restored-vms"></a>Sicherung für wiederhergestellte virtuelle Computer

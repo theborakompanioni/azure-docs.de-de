@@ -1,5 +1,5 @@
 ---
-title: "Azure Active Directory PowerShell-Cmdlets für die Gruppenverwaltung in Azure AD | Microsoft-Dokumentation"
+title: "PowerShell-Beispiele für die Verwaltung von Gruppen in Azure Active Directory | Microsoft-Dokumentation"
 description: "Auf dieser Seite finden Sie PowerShell-Beispiele für die Verwaltung von Gruppen in Azure Active Directory."
 keywords: Azure AD, Azure Active Directory, PowerShell, Gruppen, Gruppenverwaltung
 services: active-directory
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/04/2017
+ms.date: 08/09/2017
 ms.author: curtand
 ms.reviewer: rodejo
 ms.translationtype: HT
-ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
-ms.openlocfilehash: c2a313c5ad011d03309a962bf2905750a478b890
+ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
+ms.openlocfilehash: f1ce76178baa44428afca5631c749c2739ad779e
 ms.contentlocale: de-de
-ms.lasthandoff: 08/05/2017
+ms.lasthandoff: 08/10/2017
 
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>Azure Active Directory-Cmdlets Version 2 für die Gruppenverwaltung
@@ -31,7 +31,7 @@ ms.lasthandoff: 08/05/2017
 >
 >
 
-Im folgenden Dokument finden Sie Beispiele für die Verwendung von PowerShell zur Verwaltung von Gruppen in Azure Active Directory (Azure AD).  Darüber hinaus erhalten Sie Informationen zum Einrichten des Azure AD PowerShell-Moduls. Zunächst müssen Sie [das Azure AD PowerShell-Modul herunterladen](https://www.powershellgallery.com/packages/AzureAD/).
+Dieser Artikel enthält Beispiele für die Verwendung von PowerShell zur Verwaltung von Gruppen in Azure Active Directory (Azure AD).  Darüber hinaus erfahren Sie, wie das Azure AD PowerShell-Modul eingerichtet wird. Zunächst müssen Sie [das Azure AD PowerShell-Modul herunterladen](https://www.powershellgallery.com/packages/AzureAD/).
 
 ## <a name="installing-the-azure-ad-powershell-module"></a>Installieren des Azure AD PowerShell-Moduls
 Verwenden Sie die folgenden Befehle, um das Azure AD PowerShell-Modul zu installieren:
@@ -46,14 +46,14 @@ Verwenden Sie die folgenden Befehle, um das Azure AD PowerShell-Modul zu install
     ---------- ---------    ----                                ----------------
     Binary     2.0.0.115    azuread                      {Add-AzureADAdministrati...}
 
-Sie können die Cmdlets jetzt im Modul verwenden. Eine ausführliche Beschreibung der Cmdlets im Azure AD-Modul finden Sie in der [Onlinereferenzdokumentation](/powershell/azure/install-adv2?view=azureadps-2.0).
+Sie können die Cmdlets jetzt im Modul verwenden. Eine ausführliche Beschreibung der Cmdlets im Azure AD-Modul finden Sie in der Onlinereferenzdokumentation für [Azure Active Directory PowerShell Version 2](/powershell/azure/install-adv2?view=azureadps-2.0).
 
 ## <a name="connecting-to-the-directory"></a>Herstellen der Verbindung mit dem Verzeichnis
-Bevor Sie Gruppen mithilfe der Azure AD PowerShell-Cmdlets verwalten können, müssen Sie Ihre PowerShell-Sitzung mit dem Verzeichnis verbinden, das verwaltet werden soll. Führen Sie zu diesem Zweck den folgenden Befehl aus:
+Bevor Sie Gruppen mithilfe der Azure AD PowerShell-Cmdlets verwalten können, müssen Sie Ihre PowerShell-Sitzung mit dem Verzeichnis verbinden, das verwaltet werden soll. Verwenden Sie den folgenden Befehl:
 
     PS C:\Windows\system32> Connect-AzureAD
 
-Das Cmdlet fordert Sie zur Eingabe der Anmeldeinformationen auf, die Sie für den Zugriff auf Ihr Verzeichnis verwenden möchten. In diesem Beispiel verwenden wir „ karen@drumkit.onmicrosoft.com “ für den Zugriff auf das Demoverzeichnis. Das Cmdlet zeigt in einer Bestätigung an, dass die Sitzung erfolgreich mit Ihrem Verzeichnis verbunden wurde:
+Das Cmdlet fordert Sie zur Eingabe der Anmeldeinformationen auf, die Sie für den Zugriff auf Ihr Verzeichnis verwenden möchten. In diesem Beispiel verwenden wir „ karen@drumkit.onmicrosoft.com “ für den Zugriff auf das Demoverzeichnis. Das Cmdlet gibt eine Bestätigung zurück, die angibt, dass die Sitzung mit Ihrem Verzeichnis verbunden wurde:
 
     Account                       Environment Tenant
     -------                       ----------- ------
@@ -72,7 +72,7 @@ Zum Abrufen einer bestimmten Gruppe verwenden Sie den Parameter „-objectID“ 
 
     PS C:\Windows\system32> get-azureadgroup -ObjectId e29bae11-4ac0-450c-bc37-6dae8f3da61b
 
-Das Cmdlet gibt die Gruppe zurück, deren Objekt-ID mit dem eingegebenen Wert des Parameters übereinstimmt:
+Das Cmdlet gibt nun die Gruppe zurück, deren objectID-Wert mit dem eingegebenen Wert des Parameters übereinstimmt:
 
     DeletionTimeStamp            :
     ObjectId                     : e29bae11-4ac0-450c-bc37-6dae8f3da61b
@@ -109,7 +109,8 @@ Mithilfe des Parameters „-filter“ können Sie nach einer bestimmten Gruppe s
     ProxyAddresses               : {}
     SecurityEnabled              : True
 
-Beachten Sie, dass die Azure AD PowerShell-Cmdlets den OData-Abfragestandard implementieren. Weitere Informationen finden Sie [hier](https://msdn.microsoft.com/library/gg309461.aspx#BKMK_filter).
+> [!NOTE] 
+> In den Azure AD PowerShell-Cmdlets ist der OData-Abfragestandard implementiert. Weitere Informationen finden Sie unter **$filter** im Artikel [OData-Systemabfrageoptionen mit dem OData-Endpunkt](https://msdn.microsoft.com/library/gg309461.aspx#BKMK_filter).
 
 ## <a name="creating-groups"></a>Erstellen von Gruppen
 Zum Erstellen einer neuen Gruppe in Ihrem Verzeichnis verwenden Sie das Cmdlet „New-AzureADGroup“. Dieses Cmdlet erstellt eine neue Sicherheitsgruppe „Marketing“:
@@ -222,13 +223,12 @@ Das Cmdlet gibt die Liste der Besitzer für die angegebene Gruppe zurück:
     ----------------- --------                             ----------
                           e831b3fd-77c9-49c7-9fca-de43e109ef67 User
 
-Zum Entfernen eines Besitzers aus einer Gruppe verwenden Sie „Remove-AzureADGroupOwner“:
+Zum Entfernen eines Besitzers aus einer Gruppe verwenden Sie das Cmdlet „Remove-AzureADGroupOwner“:
 
     PS C:\Windows\system32> remove-AzureADGroupOwner -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df -OwnerId e831b3fd-77c9-49c7-9fca-de43e109ef67
 
 ## <a name="reserved-aliases"></a>Reservierte Aliase 
-Wenn eine Gruppe erstellt wird, ermöglichen bestimmte Endpunkte dem Benutzer, einen mailNickname oder Alias anzugeben, der als Teil der E-Mail-Adresse der Gruppe verwendet werden soll.   
-Gruppen mit den folgenden weitreichend berechtigten E-Mail-Aliasen können nur von einem globalen Azure AD-Administrator erstellt werden. 
+Wenn eine Gruppe erstellt wird, ermöglichen bestimmte Endpunkte dem Benutzer, einen mailNickname oder Alias anzugeben, der als Teil der E-Mail-Adresse der Gruppe verwendet werden soll. Gruppen mit den folgenden weitreichend berechtigten E-Mail-Aliasen können nur von einem globalen Azure AD-Administrator erstellt werden. 
   
 * abuse 
 * admin 
