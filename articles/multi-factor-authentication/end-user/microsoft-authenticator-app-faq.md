@@ -3,7 +3,7 @@ title: "Hilfe und Support für die Microsoft Authenticator-App | Microsoft-Dokum
 description: "Enthält eine Liste mit häufig gestellten Fragen und Antworten im Zusammenhang mit Microsoft Authenticator-App und Azure Multi-Factor Authentication (MFA)."
 services: multi-factor-authentication
 documentationcenter: 
-author: kgremban
+author: barlanmsft
 manager: femila
 ms.assetid: f04d5bce-e99e-4f75-82d1-ef6369be3402
 ms.service: multi-factor-authentication
@@ -12,7 +12,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/17/2017
-ms.author: kgremban
+ms.author: barlan
 ms.reviewer: librown
 ms.custom: end-user
 ms.translationtype: Human Translation
@@ -48,9 +48,9 @@ Wenn Sie überhaupt keine Benachrichtigungen erhalten, überprüfen Sie Folgende
 
 - Ist Ihr Telefon im Nicht-stören-Modus oder stummgeschaltet? In diesem Modus können Apps am Senden von Benachrichtigungen gehindert werden.
 - Erhalten Sie Benachrichtigungen von anderen Apps? Wenn dies nicht der Fall ist, liegt möglicherweise ein Problem mit den Netzwerkverbindungen auf Ihrem Mobiltelefon oder mit dem Benachrichtigungskanal von Android oder Apple vor. Im ersten Fall können Sie das Problem über die Einstellungen des Mobiltelefons beheben, im zweiten Fall müssen Sie sich jedoch möglicherweise mit Ihrem Mobilfunkanbieter in Verbindung setzen, um Unterstützung zu erhalten.
-- Können Sie Benachrichtigungen nur für bestimmte Konten in der App erhalten? In diesem Fall entfernen Sie die Konten aus der App, die Probleme bereiten, und fügen sie erneut hinzu, um Pushbenachrichtigungen zu aktivieren. 
+- Können Sie Benachrichtigungen nur für bestimmte Konten in der App erhalten? In diesem Fall entfernen Sie die Konten aus der App, die Probleme bereiten, und fügen sie erneut hinzu, um Pushbenachrichtigungen zu aktivieren.
 
-Senden Sie uns Ihre Protokolle zur Diagnose, wenn Sie diese Vorschläge zur Problembehandlung befolgt haben, die Probleme jedoch weiterhin bestehen. Rufen Sie die App-Einstellungen auf. Wählen Sie anschließend **Hilfe und Feedback** und **Protokolle senden** aus. Wechseln Sie anschließend zum [Internetforum zur Microsoft Authenticator-App](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp), und informieren Sie uns über Ihr Problem und darüber, welche Schritte Sie bisher ausgeführt haben. 
+Senden Sie uns Ihre Protokolle zur Diagnose, wenn Sie diese Vorschläge zur Problembehandlung befolgt haben, die Probleme jedoch weiterhin bestehen. Rufen Sie die App-Einstellungen auf. Wählen Sie anschließend **Hilfe und Feedback** und **Protokolle senden** aus. Wechseln Sie anschließend zum [Internetforum zur Microsoft Authenticator-App](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp), und informieren Sie uns über Ihr Problem und darüber, welche Schritte Sie bisher ausgeführt haben.
 
 ### <a name="im-already-using-the-microsoft-authenticator-application-for-verification-codes-how-do-i-switch-to-one-click-push-notifications"></a>Ich verwende für Sicherheitscodes bereits die Microsoft Authenticator-App. Wie wechsle ich zu One-Click-Pushbenachrichtigungen?
 Die Bestätigung einer Anmeldung mittels Pushbenachrichtigungen steht nur für persönliche Microsoft-Konten oder für Geschäfts-, Schul- oder Unikonten von Microsoft zur Verfügung, nicht für Konten von Drittanbietern wie Google oder Facebook. Wenn Sie über ein Geschäfts-, Schul- oder Unikonto von Microsoft verfügen, kann Ihre Organisation diese Option deaktivieren.
@@ -95,7 +95,7 @@ Hier finden Sie eine vollständige Liste der Berechtigungen, die möglicherweise
 
 ### <a name="why-does-the-microsoft-authenticator-app-allow-you-to-approve-a-request-without-unlocking-the-device"></a>Warum ermöglicht die Microsoft Authenticator-App die Genehmigung einer Anforderung ohne Entsperrung des Geräts?
 
-Sie müssen Ihr Gerät nicht entsperren, um Überprüfungsanforderungen zu genehmigen. Das Einzige, was Sie nachweisen können müssen, ist, dass Sie jederzeit über Ihr Mobiltelefon erreichbar sind. Bei der Überprüfung in zwei Schritten werden zwei Dinge überprüft: etwas, das Sie wissen (das Kennwort). und etwas, das Sie haben (Ihr Smartphone; eingerichtet mit der Microsoft Authenticator-App und registriert als MFA-Nachweis.) Somit sind die Kriterien des zweiten Authentifizierungsschritts erfüllt, wenn Sie über das Smartphone verfügen und die Anforderung bestätigen. 
+Sie müssen Ihr Gerät nicht entsperren, um Überprüfungsanforderungen zu genehmigen. Das Einzige, was Sie nachweisen können müssen, ist, dass Sie jederzeit über Ihr Mobiltelefon erreichbar sind. Bei der Überprüfung in zwei Schritten werden zwei Dinge überprüft: etwas, das Sie wissen (das Kennwort). und etwas, das Sie haben (Ihr Smartphone; eingerichtet mit der Microsoft Authenticator-App und registriert als MFA-Nachweis.) Somit sind die Kriterien des zweiten Authentifizierungsschritts erfüllt, wenn Sie über das Smartphone verfügen und die Anforderung bestätigen.
 
 ### <a name="what-does-the-lock-icon-in-the-account-list-mean"></a>Was bedeutet das Schlosssymbol in der Kontoliste?
 
@@ -111,5 +111,4 @@ Falls Ihre Frage hier nicht beantwortet wurde, lassen Sie es uns wissen. Posten 
 * [Überprüfung in zwei Schritten](https://support.microsoft.com/help/12408/microsoft-account-about-two-step-verification) für Microsoft-Konten
 * [Probleme beim Einrichten der Überprüfung in zwei Schritten](multi-factor-authentication-end-user-troubleshoot.md) für Ihr Geschäfts-, Schul- oder Unikonto?
 * [Verwenden von Microsoft Authenticator für die Anmeldung über Ihr Telefon](microsoft-authenticator-app-phone-signin-faq.md)
-
 

@@ -4,7 +4,7 @@ description: "Auf dieser Seite finden Sie eine Anleitung zu den verschiedenen An
 keywords: "Benutzerauthentifizierung, Anmeldevorgang, Anmelden mit dem Mobiltelefon, Anmelden mit dem Bürotelefon"
 services: multi-factor-authentication
 documentationcenter: 
-author: kgremban
+author: barlanmsft
 manager: femila
 ms.assetid: b310b762-471b-4b26-887a-a321c9e81d46
 ms.service: multi-factor-authentication
@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/02/2017
-ms.author: kgremban
+ms.author: barlan
 ms.reviewer: librown
 ms.custom: end-user
 ms.translationtype: HT
@@ -31,7 +31,7 @@ ms.lasthandoff: 08/16/2017
 ## <a name="what-will-your-sign-in-experience-be"></a>Was sieht Ihr Anmeldevorgang aus?
 Ihr Anmeldevorgang hängt davon ab, was Sie als zweiten Faktor wählen: einen Telefonanruf, eine Authentication-App oder Textnachrichten. Wählen Sie die Option aus, die am besten auf Sie zutrifft:
 
-| Wie melden Sie sich an? | 
+| Wie melden Sie sich an? |
 | --- |
 | [Mit einem Telefonanruf an mein Mobil- oder Bürotelefon](#signing-in-with-a-phone-call) |
 | [Mit einer Textnachricht an mein Mobiltelefon](#signing-in-with-a-text-message)
@@ -49,11 +49,11 @@ Die folgenden Informationen beschreiben die Überprüfung in zwei Schritten mit 
 ## <a name="signing-in-with-a-text-message"></a>Anmeldung mit einer Textnachricht
 Die folgenden Informationen beschreiben die Überprüfung in zwei Schritten mit einer Textnachricht an Ihr Mobiltelefon:
 
-1. Melden Sie sich mit Ihrem Benutzernamen und Kennwort bei einer Anwendung oder einem Dienst wie Office 365 an. 
-2. Sie erhalten von Microsoft eine SMS mit einem Zahlencode. 
-3. Geben Sie den Code in das auf der Anmeldeseite gezeigte Feld ein. 
+1. Melden Sie sich mit Ihrem Benutzernamen und Kennwort bei einer Anwendung oder einem Dienst wie Office 365 an.
+2. Sie erhalten von Microsoft eine SMS mit einem Zahlencode.
+3. Geben Sie den Code in das auf der Anmeldeseite gezeigte Feld ein.
 
-## <a name="signing-in-with-the-microsoft-authenticator-app"></a>Anmelden mit der Microsoft Authenticator-App 
+## <a name="signing-in-with-the-microsoft-authenticator-app"></a>Anmelden mit der Microsoft Authenticator-App
 Nachstehend wird der Anmeldevorgang mit der Microsoft Authenticator-App für Überprüfungen in zwei Schritten beschrieben. Es gibt zwei Möglichkeiten, die App zu verwenden. Sie können Pushbenachrichtigungen auf Ihrem Gerät erhalten oder die App öffnen, um einen Prüfcode abzurufen.
 
 ### <a name="to-sign-in-with-a-notification-from-the-microsoft-authenticator-app"></a>So melden Sie sich mit einer von der Microsoft Authenticator-App gesendeten Benachrichtigung an
@@ -67,7 +67,7 @@ Nachstehend wird der Anmeldevorgang mit der Microsoft Authenticator-App für Üb
 
 ### <a name="to-sign-in-using-a-verification-code-with-the-microsoft-authenticator-app"></a>So melden Sie sich mit der Microsoft Authenticator-App über einen Überprüfungscode an
 
-Wenn Sie die Microsoft Authenticator-App zum Abrufen von Prüfcodes verwenden, wird Ihnen beim Öffnen der App unter dem Namen Ihres Kontos eine Zahl angezeigt. Diese Zahl ändert sich alle 30 Sekunden, damit Sie die gleiche Zahl nicht zweimal verwenden. Wenn ein Prüfcode angefordert wird, öffnen Sie die App und verwenden die derzeit angezeigte Zahl. 
+Wenn Sie die Microsoft Authenticator-App zum Abrufen von Prüfcodes verwenden, wird Ihnen beim Öffnen der App unter dem Namen Ihres Kontos eine Zahl angezeigt. Diese Zahl ändert sich alle 30 Sekunden, damit Sie die gleiche Zahl nicht zweimal verwenden. Wenn ein Prüfcode angefordert wird, öffnen Sie die App und verwenden die derzeit angezeigte Zahl.
 
 1. Melden Sie sich mit Ihrem Benutzernamen und Kennwort bei einer Anwendung oder einem Dienst wie Office 365 an.
 2. Sie werden von Microsoft dazu aufgefordert, einen Bestätigungscode einzugeben.
@@ -91,4 +91,5 @@ Wenn Sie Probleme bei der Anmeldung mit der Überprüfung in zwei Schritten habe
 
 Lesen Sie den Artikel [Verwalten der Einstellungen für die Überprüfung in zwei Schritten](multi-factor-authentication-end-user-manage-settings.md).
 
-In [Erste Schritte mit der Microsoft Authenticator-App](microsoft-authenticator-app-how-to.md) erfahren Sie, wie Sie sich mithilfe von Benachrichtigungen anstelle von SMS oder Telefonanrufen anmelden können. 
+In [Erste Schritte mit der Microsoft Authenticator-App](microsoft-authenticator-app-how-to.md) erfahren Sie, wie Sie sich mithilfe von Benachrichtigungen anstelle von SMS oder Telefonanrufen anmelden können.
+

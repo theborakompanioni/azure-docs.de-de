@@ -4,7 +4,7 @@ description: "Verwalten Sie die Verwendung von Azure Multi-Factor Authentication
 services: multi-factor-authentication
 keywords: "Client für Multi-Factor Authentication, Authentifizierungsproblem, Korrelations-ID"
 documentationcenter: 
-author: kgremban
+author: barlanmsft
 manager: femila
 editor: yossib
 ms.assetid: d3372d9a-9ad1-4609-bdcf-2c4ca9679a3b
@@ -14,7 +14,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2017
-ms.author: kgremban
+ms.author: barlan
 ms.custom: end-user
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 847a8bdcf880b56f587f6759058825fd1965d29e
@@ -60,10 +60,10 @@ Konfigurieren Sie unbedingt eine sekundäre Authentifizierungstelefonnummer.  Da
 
 ## <a name="require-two-step-verification-again-on-a-device-youve-marked-as-trusted"></a>Erneutes Anfordern der Überprüfung in zwei Schritten auf einem als vertrauenswürdig markierten Gerät
 
-Abhängig von den Organisationseinstellungen steht möglicherweise ein Kontrollkästchen „Die nächsten **X** Tage nicht erneut fragen“ zur Verfügung, wenn Sie die Überprüfung in zwei Schritten in Ihrem Browser ausführen. Wenn Sie dieses Kontrollkästchen aktivieren und dann Ihr Gerät verlieren oder befürchten, dass Ihr Konto kompromittiert wurde, sollten Sie die Überprüfung in zwei Schritten auf allen Geräten wiederherstellen. 
+Abhängig von den Organisationseinstellungen steht möglicherweise ein Kontrollkästchen „Die nächsten **X** Tage nicht erneut fragen“ zur Verfügung, wenn Sie die Überprüfung in zwei Schritten in Ihrem Browser ausführen. Wenn Sie dieses Kontrollkästchen aktivieren und dann Ihr Gerät verlieren oder befürchten, dass Ihr Konto kompromittiert wurde, sollten Sie die Überprüfung in zwei Schritten auf allen Geräten wiederherstellen.
 
 1. Wählen Sie auf der Seite „Zusätzliche Sicherheitsüberprüfung“ die Option **Multi-Factor Authentication auf Geräten wiederherstellen, die zuvor als vertrauenswürdig eingestuft worden sind**.
-2. Bei der nächsten Anmeldung bei einem Gerät werden Sie aufgefordert, die Überprüfung in zwei Schritten durchzuführen. 
+2. Bei der nächsten Anmeldung bei einem Gerät werden Sie aufgefordert, die Überprüfung in zwei Schritten durchzuführen.
 
 ## <a name="how-do-i-clean-up-microsoft-authenticator-from-my-old-device-and-move-to-a-new-one"></a>Wie kann ich Microsoft Authenticator von meinem alten Gerät entfernen und zu einem neuen Gerät wechseln?
 Wenn Sie die App von Ihrem Gerät deinstallieren oder das Gerät auf die Werkseinstellungen zurücksetzen, wird die Aktivierung im Back-End nicht entfernt. Weitere Informationen finden Sie unter [Microsoft Authenticator](microsoft-authenticator-app-how-to.md).
