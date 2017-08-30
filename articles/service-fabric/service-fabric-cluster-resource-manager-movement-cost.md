@@ -12,34 +12,70 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/05/2017
+ms.date: 08/18/2017
 ms.author: masnider
-translationtype: Human Translation
-ms.sourcegitcommit: dafaf29b6827a6f1c043af3d6bfe62d480d31ad5
-ms.openlocfilehash: f85365a36aea39b4179805e728c7ddafa140f08b
-
+ms.translationtype: HT
+ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
+ms.openlocfilehash: 3063647671fea94da3ce635b887f6f0f7de89f70
+ms.contentlocale: de-de
+ms.lasthandoff: 08/19/2017
 
 ---
-# <a name="service-movement-cost-for-influencing-cluster-resource-manager-choices"></a>Kosten von Dienstverschiebungen zum Beeinflussen der Optionen im Clusterressourcen-Manager
-Ein wichtiger Faktor bei den Überlegungen im Clusterressourcen-Manager für Service Fabric zu Veränderungen an einem Cluster sind die Gesamtkosten, die mit der Umsetzung dieser Lösung verbunden sind. Die „Kosten“ werden dabei gegen den Lastenausgleich abgewogen, der erreicht werden kann.
+# <a name="service-movement-cost"></a>Kosten von Dienstverschiebungen
+Ein Faktor bei den Überlegungen im Cluster Resource Manager von Service Fabric zu Veränderungen an einem Cluster sind die Kosten, die mit diesen Änderungen verbunden sind. Die „Kosten“ werden dabei gegen die mögliche Verbesserung des Clusters abgewogen. Die Kosten werden berücksichtigt, wenn Dienste zum Lastenausgleich, zur Defragmentierung und aufgrund anderer Anforderungen verschoben werden. Ziel ist es, die Anforderungen auf die am wenigsten störende und kostengünstigste Weise zu erfüllen. 
 
-Das Verschieben von Dienstinstanzen oder Replikaten kostet zumindest CPU-Zeit und Netzwerkbandbreite. Für zustandsbehaftete Dienste kostet es auch den Umfang an Speicherplatz auf dem Datenträger und im Arbeitsspeicher, den Sie benötigen, um eine Kopie des Zustands vor dem Herunterfahren alter Replikate zu erstellen. Natürlich möchten Sie die Kosten einer Lösung minimieren, die vom Clusterressourcen-Manager in Azure Service Fabric erstellt wird. Aber Sie möchten auch alle Lösungen kennen, die die Zuordnung von Ressourcen im Cluster erheblich verbessern würden.
+Das Verschieben von Diensten kostet zumindest CPU-Zeit und Netzwerkbandbreite. Für zustandsbehaftete Dienste muss eine Kopie des Zustands der Dienste erstellt werden. Dies erfordert zusätzlichen Speicherplatz im Arbeitsspeicher und auf dem Datenträger. Durch Minimieren der Kosten von Lösungen, die vom Cluster Resource Manager in Azure Service Fabric bereitgestellt werden, kann sichergestellt werden, dass die Ressourcen des Clusters nicht unnötigerweise verbraucht werden. Sie möchten jedoch auch alle Lösungen kennen, die die Zuordnung von Ressourcen im Cluster erheblich verbessern würden.
 
-Der Clusterressourcen-Manager bietet zwei Möglichkeiten, die Kosten zu berechnen und zu beschränken und gleichzeitig den Cluster im Hinblick auf seine anderen Ziele möglichst optimal zu verwalten. Wenn der Clusterressourcen-Manager ein neues Layout für den Cluster plant, zählt er jede einzelne Verschiebung, die bei diesem Vorgang erforderlich ist. Wenn zwei Lösungen mit nahezu identischem Lastenausgleich (Bewertung) generiert werden, sollten Sie sich für den mit den geringsten Kosten entscheiden (Gesamtzahl der Verschiebungen).
+Der Cluster Resource Manager bietet zwei Möglichkeiten, die Kosten zu berechnen und zu beschränken und gleichzeitig den Cluster möglichst optimal zu verwalten. Bei der ersten Möglichkeit wird einfach jede einzelne Verschiebung gezählt, die erforderlich ist. Wenn zwei Lösungen mit nahezu identischem Lastenausgleich (Bewertung) generiert werden, wird im Cluster Resource Manager die Lösung mit den geringsten Kosten (Gesamtzahl der Verschiebungen) bevorzugt.
 
 Diese Strategie funktioniert sehr gut. Aber wie bei standardmäßigen oder statischen Lasten ist es in einem komplexen System unwahrscheinlich, dass alle Verschiebungen gleich sind. Einige sind wahrscheinlich viel teurer.
 
-## <a name="changing-a-replicas-move-cost-and-factors-to-consider"></a>Ändern der Bewegungskosten eines Replikats und zu berücksichtigende Faktoren
-Wie beim Lastenausgleich für die Berichterstellung (ein weiteres Feature des Clusterressourcen-Managers) können auch Dienste dynamisch und selbstständig Berichte dazu erstellen, wie hoch die Kosten für das Verschieben zu einem beliebigen Zeitpunkt sind.
+## <a name="setting-move-costs"></a>Festlegen der Verschiebungskosten 
+Sie können die Standardverschiebungskosten für einen Dienst bei dessen Erstellung angeben:
 
-Code:
+PowerShell:
 
-```csharp
-this.ServicePartition.ReportMoveCost(MoveCost.Medium);
+```posh
+New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 3 -TargetReplicaSetSize 3 -PartitionSchemeSingleton -DefaultMoveCost Medium
 ```
 
-Eine Standardverschiebung kann auch angegeben werden, wenn ein Dienst erstellt wird.
+C#: 
 
+```csharp
+FabricClient fabricClient = new FabricClient();
+StatefulServiceDescription serviceDescription = new StatefulServiceDescription();
+//set up the rest of the ServiceDescription
+serviceDescription.DefaultMoveCost = MoveCost.Medium;
+await fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
+```
+
+Sie können MoveCost für einen Dienst auch nach dessen Erstellung dynamisch angeben oder aktualisieren: 
+
+PowerShell: 
+
+```posh
+Update-ServiceFabricService -Stateful -ServiceName "fabric:/AppName/ServiceName" -DefaultMoveCost High
+```
+
+C#:
+
+```csharp
+StatefulServiceUpdateDescription updateDescription = new StatefulServiceUpdateDescription();
+updateDescription.DefaultMoveCost = MoveCost.High;
+await fabricClient.ServiceManager.UpdateServiceAsync(new Uri("fabric:/AppName/ServiceName"), updateDescription);
+```
+
+## <a name="dynamically-specifying-move-cost-on-a-per-replica-basis"></a>Dynamisches Angeben der Verschiebungskosten pro Replikat
+
+In sämtlichen vorangegangenen Codeausschnitten wird MoveCost direkt für einen gesamten Dienst außerhalb des Diensts angegeben. Verschiebungskosten erweisen sich jedoch als besonders nützlich, wenn sich die Verschiebungskosten eines bestimmten Dienstobjekts im Lauf seiner Lebensdauer ändern. Da die entsprechenden Kosten für die Verschiebung zu einem bestimmten Zeitpunkt wahrscheinlich am besten den jeweiligen Diensten zu entnehmen sind, liegt eine API für Dienste zum Erfassen der individuellen Verschiebungskosten während der Laufzeit vor. 
+
+C#:
+
+```csharp
+this.Partition.ReportMoveCost(MoveCost.Medium);
+```
+
+## <a name="impact-of-move-cost"></a>Auswirkungen von Verschiebungskosten
 MoveCost hat vier Stufen: Zero, Low, Medium und High. Diese MoveCosts stehen zueinander in einem Verhältnis, mit Ausnahme von Zero. Zero bedeutet, dass das Verschieben keine Kosten generiert und die Bewertung der Lösung nicht negativ beeinflussen sollte. Das Festlegen der Verschiebung auf High stellt *keine* Garantie dafür dar, dass das Replikat an einem Ort verbleibt.
 
 <center>
@@ -48,18 +84,41 @@ MoveCost hat vier Stufen: Zero, Low, Medium und High. Diese MoveCosts stehen zue
 
 MoveCost hilft Ihnen dabei, Lösungen zu finden, die insgesamt die geringsten Unterbrechungen verursachen, am leichtesten umzusetzen sind und dabei das beste Gleichgewicht versprechen. Die Kosten für einen Dienst können von Vielem abhängen. Die gängigsten Faktoren bei der Berechnung der Kosten von Verschiebungen sind:
 
-* Die Menge von Zuständen oder Daten, die ein Dienst verschieben soll.
-* Die Kosten der Trennung von Clients. Die Kosten für das Verschieben eines primären Replikats sind normalerweise höher als die für ein sekundäres Replikat.
-* Die Kosten für Unterbrechungen einer sich in der Ausführung befindenden Operation. Einige Operationen auf Datenspeicherebene oder Operationen, die als Antwort auf einen Clientaufruf ausgeführt werden, sind kostenaufwendig. Ab einem bestimmten Punkt werden sie nicht mehr unnötigerweise freiwillig abgebrochen. Sie erhöhen daher während des Vorgangs die Kosten für das Verschieben dieses Dienstobjekts, um die Wahrscheinlichkeit zu verringern, dass es verschoben wird. Wenn der Vorgang abgeschlossen ist, können Sie die Kosten wieder auf den normalen Wert zurückstufen.
+- Die Menge von Zuständen oder Daten, die ein Dienst verschieben soll.
+- Die Kosten der Trennung von Clients. Die Verschiebung eines primären Replikats ist normalerweise kostenintensiver als die Verschiebung eines sekundären Replikats.
+- Die Kosten für Unterbrechungen einer sich in der Ausführung befindenden Operation. Einige Operationen auf Datenspeicherebene oder Operationen, die als Antwort auf einen Clientaufruf ausgeführt werden, sind kostenaufwendig. Ab einem bestimmten Punkt werden sie nicht mehr unnötigerweise freiwillig abgebrochen. Sie erhöhen daher während des Vorgangs die Kosten für das Verschieben dieses Dienstobjekts, um die Wahrscheinlichkeit zu verringern, dass es verschoben wird. Wenn der Vorgang abgeschlossen ist, können Sie die Kosten wieder auf den normalen Wert zurückstufen.
+
+## <a name="enabling-move-cost-in-your-cluster"></a>Aktivieren von Verschiebungskosten in Ihrem Cluster
+Damit die differenzierten MoveCosts berücksichtigt werden können, muss MoveCost in Ihrem Cluster aktiviert werden. Ohne diese Einstellung wird der Standardmodus für das Zählen von Verschiebungen zur Berechnung von MoveCost verwendet. MoveCost-Berichte werden dagegen ignoriert.
+
+
+ClusterManifest.xml
+
+``` xml
+        <Section Name="PlacementAndLoadBalancing">
+            <Parameter Name="UseMoveCostReports" Value="true" />
+        </Section>
+```
+
+Über „ClusterConfig.json“ für eigenständige Bereitstellungen bzw. über „Template.json“ für in Azure gehostete Cluster:
+
+```json
+"fabricSettings": [
+  {
+    "name": "PlacementAndLoadBalancing",
+    "parameters": [
+      {
+          "name": "UseMoveCostReports",
+          "value": "true"
+      }
+    ]
+  }
+]
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Der Clusterressourcen-Manager von Service Fabric verwendet Metriken, um den Ressourcenverbrauch und die Kapazität im Cluster zu verwalten. Weitere Informationen zu Metriken und deren Konfiguration finden Sie unter [Verwalten von Ressourcenverbrauch und Auslastung in Service Fabric mit Metriken](service-fabric-cluster-resource-manager-metrics.md).
-* Informationen darüber, wie der Clusterressourcen-Manager die Auslastung im Cluster verwaltet und verteilt, finden Sie unter [Lastenausgleich für Service Fabric-Cluster](service-fabric-cluster-resource-manager-balancing.md).
+- Der Clusterressourcen-Manager von Service Fabric verwendet Metriken, um den Ressourcenverbrauch und die Kapazität im Cluster zu verwalten. Weitere Informationen zu Metriken und deren Konfiguration finden Sie unter [Verwalten von Ressourcenverbrauch und Auslastung in Service Fabric mit Metriken](service-fabric-cluster-resource-manager-metrics.md).
+- Informationen darüber, wie der Clusterressourcen-Manager die Auslastung im Cluster verwaltet und verteilt, finden Sie unter [Lastenausgleich für Service Fabric-Cluster](service-fabric-cluster-resource-manager-balancing.md).
 
 [Image1]:./media/service-fabric-cluster-resource-manager-movement-cost/service-most-cost-example.png
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

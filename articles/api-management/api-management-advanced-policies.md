@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
-ms.openlocfilehash: f9272946fe4a03a732aa686680bba054c8ef1688
+ms.translationtype: HT
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: 0c65ac74316421a0258f01143baa25ffecb5be3b
 ms.contentlocale: de-de
-ms.lasthandoff: 05/08/2017
+ms.lasthandoff: 08/23/2017
 
 ---
 # <a name="api-management-advanced-policies"></a>API Management – Erweiterte Richtlinien
@@ -28,7 +28,9 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
   
 -   [Ablaufsteuerung](api-management-advanced-policies.md#choose) – Bedingte Anwendung von Richtlinienanweisungen basierend auf den Ergebnissen der Auswertung von booleschen [Ausdrücken](api-management-policy-expressions.md)  
   
--   [Anforderung weiterleiten](#ForwardRequest) – Leitet die Anforderung an den Back-End-Dienst.  
+-   [Anforderung weiterleiten](#ForwardRequest) – Leitet die Anforderung an den Back-End-Dienst.
+
+-   [Parallelität einschränken:](#LimitConcurrency) verhindert die Ausführung der eingeschlossenen Richtlinien durch mehr als die angegebene Anzahl von Anforderungen gleichzeitig.
   
 -   [Protokoll an Event Hub](#log-to-eventhub) – Sendet Nachrichten im angegebenen Format an einen von einem Protokollierungstool definierten Event Hub. 
 
@@ -266,6 +268,56 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
   
 -   **Richtlinienbereiche:** alle Bereiche  
   
+##  Einschränken der Parallelität durch <a name="LimitConcurrency"></a>  
+ Die Richtlinie `limit-concurrency` verhindert die Ausführung der eingeschlossenen Richtlinien durch mehr als die angegebene Anzahl von Anforderungen gleichzeitig. Beim Überschreiten des Schwellenwerts werden einer Warteschlange neue Anforderungen hinzugefügt, bis die maximale Warteschlangenlänge erreicht ist. Wenn die Warteschlange voll ist, wird für neue Anforderungen sofort ein Fehler ausgelöst.
+  
+###  <a name="LimitConcurrencyStatement"></a> Richtlinienanweisung  
+  
+```xml  
+<limit-concurrency key="expression" max-count="number" timeout="in seconds" max-queue-length="number">
+        <!— nested policy statements -->  
+</limit-concurrency>
+``` 
+
+### <a name="examples"></a>Beispiele  
+  
+####  <a name="ChooseExample"></a> Beispiel  
+ Das folgende Beispiel veranschaulicht das Beschränken der Anzahl der Anforderungen, die an ein Back-End weitergeleitet werden, basierend auf dem Wert einer Kontextvariable.
+ 
+```xml  
+<policies>
+  <inbound>…</inbound>
+  <backend>
+    <limit-concurrency key="@((string)context.Variables["connectionId"])" max-count="3" timeout="60">
+      <forward-request timeout="120"/>
+    <limit-concurrency/>
+  </backend>
+  <outbound>…</outbound>
+</policies>
+```
+
+### <a name="elements"></a>Elemente  
+  
+|Element|Beschreibung|Erforderlich|  
+|-------------|-----------------|--------------|    
+|limit-concurrency|Stammelement|Ja|  
+  
+### <a name="attributes"></a>Attribute  
+  
+|Attribut|Beschreibung|Erforderlich|Standard|  
+|---------------|-----------------|--------------|--------------|  
+|key|Eine Zeichenfolge. Ausdruck zulässig. Gibt den Bereich der Parallelität an. Kann von mehreren Richtlinien verwendet werden.|Ja|N/V|  
+|max-count|Eine ganze Zahl. Gibt eine maximale Anzahl von Anforderungen an, die an die Richtlinie weitergeleitet werden können|Ja|N/V|  
+|timeout|Eine ganze Zahl. Ausdruck zulässig. Gibt die Anzahl der Sekunden an, die eine Anforderung warten soll, bevor der Fehler „403 Zu viele Anforderungen“ ausgelöst wird|Nein|Infinity|  
+|max-queue-length|Eine ganze Zahl. Ausdruck zulässig. Gibt die maximale Warteschlangenlänge an. Eingehende Anforderungen für diese Richtlinie werden sofort mit dem Fehler „403 Zu viele Anforderungen“ beendet, wenn die Warteschlange voll ist.|Nein|Infinity|  
+  
+###  <a name="ChooseUsage"></a> Verwendung  
+ Diese Richtlinie kann in den folgenden [Abschnitten](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
+  
+-   **Richtlinienabschnitte:** inbound, outbound, backend, on-error  
+  
+-   **Richtlinienbereiche:** alle Bereiche  
+
 ##  <a name="log-to-eventhub"></a> Protokoll an Event Hub  
  Mit der `log-to-eventhub`-Richtlinie werden Nachrichten im angegebenen Format an ein von einem Protokollierungstool definiertes Nachrichtenziel gesendet. Wie anhand des Namens bereits erkennbar ist, wird diese Richtlinie zum Speichern von ausgewählten Anforderungs- oder Antwortkontextinformationen für die Online- oder Offlineanalyse verwendet.  
   
@@ -963,6 +1015,6 @@ Beachten Sie die Verwendung von [Eigenschaften](api-management-howto-properties.
   
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zur Verwendung von Richtlinien finden Sie unter:
--    [Richtlinien in Azure API Management](api-management-howto-policies.md) 
--    [Richtlinienausdrücke](api-management-policy-expressions.md)
+-   [Richtlinien in Azure API Management](api-management-howto-policies.md) 
+-   [Richtlinienausdrücke](api-management-policy-expressions.md)
 

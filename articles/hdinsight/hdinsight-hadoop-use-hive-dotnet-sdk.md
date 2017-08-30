@@ -14,20 +14,19 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/03/2017
+ms.date: 08/15/2017
 ms.author: jgao
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
-ms.openlocfilehash: c3eac45065bad80fd7b1fd29ac77a162eef3fa28
+ms.translationtype: HT
+ms.sourcegitcommit: 368589509b163cacf495fd0be893a8953fe2066e
+ms.openlocfilehash: 7b1a5f7ea3b2bda438727dc75a85557ea7930280
 ms.contentlocale: de-de
-ms.lasthandoff: 06/10/2017
-
+ms.lasthandoff: 08/17/2017
 
 ---
 # <a name="run-hive-queries-using-hdinsight-net-sdk"></a>Ausführen von Hive-Abfragen per HDInsight .NET-SDK
 [!INCLUDE [hive-selector](../../includes/hdinsight-selector-use-hive.md)]
 
-Erfahren Sie, wie Sie Hive-Abfragen mit dem HDInsight .NET-SDK übermitteln.
+Erfahren Sie, wie Sie Hive-Abfragen mit dem HDInsight .NET-SDK übermitteln. Sie schreiben ein C#-Programm, um eine Hive-Abfrage zum Auflisten von Hive-Tabellen zu senden, und die Ergebnisse werden angezeigt.
 
 > [!NOTE]
 > Die Schritte in diesem Artikel müssen auf einem Windows-Client ausgeführt werden. Informationen zur Verwendung eines Linux-, OS X- oder Unix-Clients für Hive erhalten Sie, indem Sie die Registerkartenauswahl am Anfang des Artikels nutzen.
@@ -37,7 +36,7 @@ Erfahren Sie, wie Sie Hive-Abfragen mit dem HDInsight .NET-SDK übermitteln.
 ## <a name="prerequisites"></a>Voraussetzungen
 Bevor Sie mit diesem Artikel beginnen können, benötigen Sie Folgendes:
 
-* **Einen Hadoop-Cluster in HDInsight**. Siehe [Erste Schritte bei der Verwendung von Linux-basiertem Hadoop in HDInsight](hdinsight-use-sqoop.md#create-cluster-and-sql-database).
+* **Einen Hadoop-Cluster in HDInsight**. Siehe [Erste Schritte bei der Verwendung von Linux-basiertem Hadoop in HDInsight](./hdinsight-hadoop-linux-tutorial-get-started.md).
 * **Visual Studio 2013/2015/2017**.
 
 ## <a name="submit-hive-queries-using-hdinsight-net-sdk"></a>Übermitteln von Hive-Abfragen per HDInsight .NET-SDK

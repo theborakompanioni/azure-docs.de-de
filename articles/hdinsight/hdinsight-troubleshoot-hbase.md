@@ -1,6 +1,6 @@
 ---
-title: "Problembehandlung bei HBase – Azure HDInsight | Microsoft-Dokumentation"
-description: "Problembehandlung zur Ermittlung der Ursache von Lücken in der Kette der Regionen."
+title: Problembehandlung bei HBase mit Azure HDInsight | Microsoft-Dokumentation
+description: "Hier erhalten Sie Antworten auf häufig gestellte Fragen zum Arbeiten mit HBase und Azure HDInsight."
 services: hdinsight
 documentationcenter: 
 author: nitinver
@@ -14,70 +14,65 @@ ms.workload: big-data
 ms.date: 7/7/2017
 ms.author: nitinver
 ms.translationtype: HT
-ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
-ms.openlocfilehash: 29b1776d6b0c456515738aae3c5fd836c9a0295d
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: 15412c3853a2b8436c5e96034c9a92a2a1094662
 ms.contentlocale: de-de
-ms.lasthandoff: 07/10/2017
+ms.lasthandoff: 08/23/2017
 
 ---
 
-# <a name="hbase-troubleshooting"></a>Problembehandlung bei HBASE
+# <a name="troubleshoot-hbase-by-using-azure-hdinsight"></a>Problembehandlung bei HBase mit Azure HDInsight
 
-Dieser Artikel beschreibt die wichtigsten Probleme und ihre Lösungen für die Arbeit mit HBASE-Nutzlasten in Apache Ambari.
+Lernen Sie die wichtigsten Probleme und ihre Lösungen bei der Arbeit mit Apache HBase-Nutzlasten in Apache Ambari kennen.
 
 ## <a name="how-do-i-run-hbck-command-reports-with-multiple-unassigned-regions"></a>Wie führe ich hbck-Befehlsberichte mit mehreren nicht zugewiesenen Regionen aus?
 
-Es ist ein häufig auftretendes Problem, dass „mehrere Regionen nicht zugewiesen werden oder Lücken in der Kette der Regionen auftreten“, wenn der HBase-Benutzer den Befehl „hbase hbck“ ausführt.
+Eine Fehlermeldung, die beim Ausführen des Befehls `hbase hbck` häufig ausgegeben wird, lautet „multiple regions being unassigned or holes in the chain of regions“ (mehrere Regionen sind nicht zugewiesen, oder die Kette der Regionen weist Lücken auf).
 
-Der Benutzer sieht in der HBase-Masterbenutzeroberfläche, dass die Anzahl der Regionen auf allen Regionsservern unausgewogen ist. Danach kann der Benutzer den Befehl „hbase hbck“ ausführen und erkennt Lücken in der Regionskette.
+In der Benutzeroberfläche von HBase-Master wird die Anzahl der Regionen angezeigt, die über alle Regionsserver hinweg nicht ausgeglichen sind. Sie können dann den Befehl `hbase hbck` ausführen, um Lücken in der Kette der Regionen anzuzeigen.
 
-Der Benutzer sollte zunächst die Zuweisungen beheben, da Lücken darauf zurückzuführen sein können, dass diese Regionen offline sind. 
+Lücken können durch Regionen im Offlinezustand bewirkt werden; korrigieren Sie daher zuerst die Zuweisungen. 
 
-Bringen Sie die nicht zugewiesenen Regionen mit folgenden Schritten wieder in den normalen Zustand:
+Führen Sie die folgenden Schritte aus, um die nicht zugewiesenen Regionen wieder in einen normalen Zustand zu versetzen:
 
-1. Melden Sie sich mit SSH beim HDInsight HBase-Cluster an.
-1. Stellen Sie mit dem Befehl „hbase zkcli“ eine Verbindung mit der Zookeeper-Shell her.
-1. Führen Sie den Befehl „rmr /hbase/regions-in-transition“ oder „rmr /hbase-unsecure/regions-in-transition“ aus.
-1. Verlassen Sie die „hbase zkcli“-Shell mit dem Befehl „exit“.
-1. Öffnen Sie die Ambari-Benutzeroberfläche, und starten Sie den Active HBase Master-Dienst von Ambari aus neu.
-1. Führen Sie den Befehl „hbase hbck“ erneut aus (ohne weitere Optionen).
+1. Melden Sie sich mithilfe von SSH beim HDInsight-HBase-Cluster an.
+2. Führen Sie den Befehl `hbase zkcli` aus, um eine Verbindung mit der ZooKeeper-Shell herzustellen.
+3. Führen Sie den Befehl `rmr /hbase/regions-in-transition` oder den Befehl `rmr /hbase-unsecure/regions-in-transition` aus.
+4. Verwenden Sie zum Schließen der `hbase zkcli`-Shell den Befehl `exit`.
+5. Öffnen Sie die Apache Ambari-Benutzeroberfläche, und starten Sie anschließend den Active HBase-Master-Dienst neu.
+6. Führen Sie den Befehl `hbase hbck` erneut aus (ohne Optionen). Überprüfen Sie die Ausgabe des Befehls, um sich zu vergewissern, dass alle Regionen zugewiesen sind.
 
-Überprüfen Sie die Ausgabe des Befehls in Schritt 6, und stellen Sie sicher, dass alle Regionen zugewiesen wurden.
-
----
 
 ## <a name="how-do-i-fix-timeout-issues-with-hbck-commands-for-region-assignments"></a>Wie behebe ich Timeoutprobleme mit hbck-Befehlen für Regionszuweisungen?
 
-### <a name="probable-cause"></a>Wahrscheinliche Ursache
+### <a name="issue"></a>Problem
 
-Die potenzielle Ursache hierfür ist möglicherweise, dass mehrere Regionen sich für einen langen Zeitraum im Status „im Übergang“ befinden. Diese Regionen werden in der HBase Master-Benutzeroberfläche als offline angezeigt. Aufgrund der großen Anzahl von Regionen, die den Übergang versuchen, könnte ein HBase Master-Timeout aufgetreten sein, sodass HBase Master diese Regionen nicht wieder in den Onlinezustand versetzen kann.
+Eine mögliche Ursache für Timeoutprobleme beim Verwenden des Befehls `hbck` kann darin bestehen, dass sich verschiedene Regionen über einen langen Zeitraum im „Übergangszustand“ befinden. Diese Regionen werden in der HBase-Master-Benutzeroberfläche als offline angezeigt. Aufgrund der großen Anzahl von Regionen, die den Übergang versuchen, könnte ein HBase Master-Timeout aufgetreten sein, sodass HBase Master diese Regionen nicht wieder in den Onlinezustand versetzen kann.
 
 ### <a name="resolution-steps"></a>Lösungsschritte
 
-Mit folgenden Schritten beheben Sie das hbck-Timeoutproblem:
+1. Melden Sie sich mithilfe von SSH beim HDInsight-HBase-Cluster an.
+2. Führen Sie den Befehl `hbase zkcli` aus, um eine Verbindung mit der ZooKeeper-Shell herzustellen.
+3. Führen Sie den Befehl `rmr /hbase/regions-in-transition` oder den Befehl `rmr /hbase-unsecure/regions-in-transition` aus.
+4. Verwenden Sie zum Schließen der `hbase zkcli`-Shell den Befehl `exit`.
+5. Starten Sie in der Ambari-Benutzeroberfläche den Active HBase-Master-Dienst neu.
+6. Führen Sie den Befehl `hbase hbck -fixAssignments` erneut aus.
 
-1. Melden Sie sich mit SSH beim HDInsight HBase-Cluster an.
-1. Stellen Sie mit dem Befehl „hbase zkcli“ eine Verbindung mit der Zookeeper-Shell her.
-1. Führen Sie den Befehl „rmr /hbase/regions-in-transition“ oder „rmr /hbase-unsecure/regions-in-transition“ aus.
-1. Verlassen Sie die „hbase zkcli“-Shell mit dem Befehl „exit“.
-1. Öffnen Sie die Ambari-Benutzeroberfläche, und starten Sie den Active HBase Master-Dienst von Ambari aus neu.
-1. Führen Sie den Befehl „hbase hbck -fixAssignments“ erneut aus, und dabei sollte kein Timeout mehr auftreten.
+## <a name="how-do-i-force-disable-hdfs-safe-mode-in-a-cluster"></a>Wie erzwinge ich das Deaktivieren des abgesicherten HDFS-Modus in einem Cluster?
 
-## <a name="how-do-i-force-disable-hdfs-safe-mode-in-an-cluster"></a>Wie erzwinge ich das Deaktivieren des abgesicherten HDFS-Modus in einem Cluster?
+### <a name="issue"></a>Problem
 
-### <a name="issue"></a>Problem:
+Das lokale HDFS (Hadoop Distributed File System) ist im abgesicherten Modus auf dem HDInsight-Cluster hängen geblieben.
 
-Lokales HDFS ist im abgesicherten Modus auf einem HDInsight-Cluster hängen geblieben.   
+### <a name="detailed-description"></a>Detaillierte Beschreibung
 
-### <a name="detailed-description"></a>Detaillierte Beschreibung:
-
-Fehler beim Ausführen des einfachen HDFS-Befehls wie folgt:
+Dieser Fehler kann durch einen Ausfall beim Ausführen des folgenden HDFS-Befehls verursacht werden:
 
 ```apache
 hdfs dfs -D "fs.default.name=hdfs://mycluster/" -mkdir /temp
 ```
 
-Bei dem Versuch, den obigen Befehl auszuführen, ist folgender Fehler aufgetreten:
+Der beim Ausführen des Befehls angezeigte Fehler kann wie folgt aussehen:
 
 ```apache
 hdiuser@hn0-spark2:~$ hdfs dfs -D "fs.default.name=hdfs://mycluster/" -mkdir /temp
@@ -131,306 +126,301 @@ It was turned on manually. Use "hdfs dfsadmin -safemode leave" to turn safe mode
 mkdir: Cannot create directory /temp. Name node is in safe mode.
 ```
 
-### <a name="probable-cause"></a>Wahrscheinliche Ursache:
+### <a name="probable-cause"></a>Wahrscheinliche Ursache
 
-Der HDInsight-Cluster wurde auf sehr wenige Knoten unterhalb oder in der Nähe des HDFS-Replikationsfaktors zentral herunterskaliert.
+Der HDInsight-Cluster wurde zentral auf sehr wenige Knoten herunterskaliert. Die Anzahl der Knoten ist kleiner als der oder nahezu gleich dem HDFS-Replikationsfaktor.
 
-### <a name="resolution-steps"></a>Lösungsschritte: 
+### <a name="resolution-steps"></a>Lösungsschritte 
 
-- Melden Sie den HDFS-Status auf dem HDInsight-Cluster mithilfe der folgenden Befehle:
+1. Rufen Sie den HDFS-Status auf dem HDInsight-Cluster durch Ausführen der folgenden Befehle ab:
 
-```apache
-hdfs dfsadmin -D "fs.default.name=hdfs://mycluster/" -report
-```
+   ```apache
+   hdfs dfsadmin -D "fs.default.name=hdfs://mycluster/" -report
+   ```
 
-```apache
-hdiuser@hn0-spark2:~$ hdfs dfsadmin -D "fs.default.name=hdfs://mycluster/" -report
-Safe mode is ON
-Configured Capacity: 3372381241344 (3.07 TB)
-Present Capacity: 3138625077248 (2.85 TB)
-DFS Remaining: 3102710317056 (2.82 TB)
-DFS Used: 35914760192 (33.45 GB)
-DFS Used%: 1.14%
-Under replicated blocks: 0
-Blocks with corrupt replicas: 0
-Missing blocks: 0
-Missing blocks (with replication factor 1): 0
+   ```apache
+   hdiuser@hn0-spark2:~$ hdfs dfsadmin -D "fs.default.name=hdfs://mycluster/" -report
+   Safe mode is ON
+   Configured Capacity: 3372381241344 (3.07 TB)
+   Present Capacity: 3138625077248 (2.85 TB)
+   DFS Remaining: 3102710317056 (2.82 TB)
+   DFS Used: 35914760192 (33.45 GB)
+   DFS Used%: 1.14%
+   Under replicated blocks: 0
+   Blocks with corrupt replicas: 0
+   Missing blocks: 0
+   Missing blocks (with replication factor 1): 0
 
--------------------------------------------------
-Live datanodes (8):
+   -------------------------------------------------
+   Live datanodes (8):
 
-Name: 10.0.0.17:30010 (10.0.0.17)
-Hostname: 10.0.0.17
-Decommission Status : Normal
-Configured Capacity: 421547655168 (392.60 GB)
-DFS Used: 5288128512 (4.92 GB)
-Non DFS Used: 29087272960 (27.09 GB)
-DFS Remaining: 387172253696 (360.58 GB)
-DFS Used%: 1.25%
-DFS Remaining%: 91.85%
-Configured Cache Capacity: 0 (0 B)
-Cache Used: 0 (0 B)
-Cache Remaining: 0 (0 B)
-Cache Used%: 100.00%
-Cache Remaining%: 0.00%
-Xceivers: 2
-Last contact: Wed Apr 05 16:22:00 UTC 2017
-...
+   Name: 10.0.0.17:30010 (10.0.0.17)
+   Hostname: 10.0.0.17
+   Decommission Status : Normal
+   Configured Capacity: 421547655168 (392.60 GB)
+   DFS Used: 5288128512 (4.92 GB)
+   Non DFS Used: 29087272960 (27.09 GB)
+   DFS Remaining: 387172253696 (360.58 GB)
+   DFS Used%: 1.25%
+   DFS Remaining%: 91.85%
+   Configured Cache Capacity: 0 (0 B)
+   Cache Used: 0 (0 B)
+   Cache Remaining: 0 (0 B)
+   Cache Used%: 100.00%
+   Cache Remaining%: 0.00%
+   Xceivers: 2
+   Last contact: Wed Apr 05 16:22:00 UTC 2017
+   ...
 
-```
-- Sie können auch die HDFS-Integrität auf dem HDInsight-Cluster mithilfe der folgenden Befehle prüfen:
+   ```
+2. Sie können auch die HDFS-Integrität auf dem HDInsight-Cluster mithilfe der folgenden Befehle überprüfen:
 
-```apache
-hdiuser@hn0-spark2:~$ hdfs fsck -D "fs.default.name=hdfs://mycluster/" /
-```
+   ```apache
+   hdiuser@hn0-spark2:~$ hdfs fsck -D "fs.default.name=hdfs://mycluster/" /
+   ```
 
-```apache
-Connecting to namenode via http://hn0-spark2.2oyzcdm4sfjuzjmj5dnmvscjpg.dx.internal.cloudapp.net:30070/fsck?ugi=hdiuser&path=%2F
-FSCK started by hdiuser (auth:SIMPLE) from /10.0.0.22 for path / at Wed Apr 05 16:40:28 UTC 2017
-....................................................................................................
+   ```apache
+   Connecting to namenode via http://hn0-spark2.2oyzcdm4sfjuzjmj5dnmvscjpg.dx.internal.cloudapp.net:30070/fsck?ugi=hdiuser&path=%2F
+   FSCK started by hdiuser (auth:SIMPLE) from /10.0.0.22 for path / at Wed Apr 05 16:40:28 UTC 2017
+   ....................................................................................................
 
-....................................................................................................
-..................Status: HEALTHY
- Total size:    9330539472 B
- Total dirs:    37
- Total files:   2618
- Total symlinks:                0 (Files currently being written: 2)
- Total blocks (validated):      2535 (avg. block size 3680686 B)
- Minimally replicated blocks:   2535 (100.0 %)
- Over-replicated blocks:        0 (0.0 %)
- Under-replicated blocks:       0 (0.0 %)
- Mis-replicated blocks:         0 (0.0 %)
- Default replication factor:    3
- Average block replication:     3.0
- Corrupt blocks:                0
- Missing replicas:              0 (0.0 %)
- Number of data-nodes:          8
- Number of racks:               1
-FSCK ended at Wed Apr 05 16:40:28 UTC 2017 in 187 milliseconds
+   ....................................................................................................
+   ..................Status: HEALTHY
+   Total size:    9330539472 B
+   Total dirs:    37
+   Total files:   2618
+   Total symlinks:                0 (Files currently being written: 2)
+   Total blocks (validated):      2535 (avg. block size 3680686 B)
+   Minimally replicated blocks:   2535 (100.0 %)
+   Over-replicated blocks:        0 (0.0 %)
+   Under-replicated blocks:       0 (0.0 %)
+   Mis-replicated blocks:         0 (0.0 %)
+   Default replication factor:    3
+   Average block replication:     3.0
+   Corrupt blocks:                0
+   Missing replicas:              0 (0.0 %)
+   Number of data-nodes:          8
+   Number of racks:               1
+   FSCK ended at Wed Apr 05 16:40:28 UTC 2017 in 187 milliseconds
+
+   The filesystem under path '/' is HEALTHY
+   ```
+
+3. Wenn festgestellt wird, dass keine Blöcke fehlen, beschädigt oder unterrepliziert sind, bzw. dass diese Blöcke ignoriert werden können, führen Sie den folgenden Befehl aus, um den Namensknoten aus dem abgesicherten Modus herauszunehmen:
+
+   ```apache
+   hdfs dfsadmin -D "fs.default.name=hdfs://mycluster/" -safemode leave
+   ```
 
 
-The filesystem under path '/' is HEALTHY
-```
+## <a name="how-do-i-fix-jdbc-or-sqlline-connectivity-issues-with-apache-phoenix"></a>Wie behebe ich JDBC- oder SQLLine-Konnektivitätsprobleme mit Apache Phoenix?
 
-- Wenn festgestellt wird, dass keine Blöcke fehlen, beschädigt oder unterrepliziert sind, bzw. diese Blöcke ignoriert werden können, führen Sie den folgenden Befehl aus, um den Namensknoten aus dem abgesicherten Modus herauszunehmen:
+### <a name="resolution-steps"></a>Lösungsschritte
 
-```apache
-hdfs dfsadmin -D "fs.default.name=hdfs://mycluster/" -safemode leave
-```
+Um eine Verbindung mit Phoenix herzustellen, müssen Sie die IP-Adresse eines aktiven ZooKeeper-Knotens angeben. Stellen Sie sicher, dass der ZooKeeper-Dienst, mit dem „sqlline.py“ eine Verbindung herstellen soll, ausgeführt wird.
+1. Melden Sie sich mithilfe von SSH beim HDInsight-Cluster an.
+2. Geben Sie den folgenden Befehl ein:
+                
+   ```apache
+           "/usr/hdp/current/phoenix-client/bin/sqlline.py <IP of machine where Active Zookeeper is running"
+   ```
 
+   > [!Note] 
+   > Sie können die IP-Adresse des aktiven ZooKeeper-Knotens aus der Ambari-Benutzeroberfläche abrufen. Wechseln Sie zu **HBase** > **Quick Links** > **ZK\* (Active)** > **ZooKeeper Info**. 
 
-## <a name="how-do-i-fix-jdbc-or-sqlline-connectivity-issues-with-apache-phoenix"></a>Wie behebe ich JDBC- oder sqlline-Konnektivitätsprobleme mit Apache Phoenix?
+3. Wenn „sqlline.py“ versucht, eine Verbindung mit Phoenix herzustellen und kein Timeout auftritt, führen Sie den folgenden Befehl aus, um die Verfügbarkeit und Integrität von Phoenix zu überprüfen:
 
-### <a name="resolution-steps"></a>Lösungsschritte:
+   ```apache
+           !tables
+           !quit
+   ```      
+4. Wenn dieser Befehl erfolgreich ausgeführt wird, liegt kein Problem vor. Die vom Benutzer angegebene IP-Adresse ist möglicherweise falsch. Wenn der Befehl jedoch über einen längeren Zeitraum pausiert und anschließend der folgende Fehler ausgegeben wird, fahren Sie mit Schritt 5 fort.
 
-Um eine Verbindung mit Apache Phoenix herzustellen, müssen Sie die IP-Adresse des aktiven Zookeeper-Knotens bereitstellen. Stellen Sie sicher, dass der Zookeeper-Dienst, mit dem „sqlline.py“ eine Verbindung herzustellen versucht, ausgeführt wird.
-1. Führen Sie die SSH-Anmeldung bei dem HDInsight-Cluster durch.
-1. Versuchen Sie, folgenden Befehl auszuführen:
-        
-```apache
-        "/usr/hdp/current/phoenix-client/bin/sqlline.py <IP of machine where Active Zookeeper is running"
-```     
-    Note: The IP of Active Zooker node can be identified from Ambari UI, by following the links to HBase -> "Quick Links" -> "ZK* (Active)" -> "Zookeeper Info". 
+   ```apache
+           Error while connecting to sqlline.py (Hbase - phoenix) Setting property: [isolation, TRANSACTION_READ_COMMITTED] issuing: !connect jdbc:phoenix:10.2.0.7 none none org.apache.phoenix.jdbc.PhoenixDriver Connecting to jdbc:phoenix:10.2.0.7 SLF4J: Class path contains multiple SLF4J bindings. 
+   ```
 
-Wenn „sqlline.py“ eine Verbindung mit Apache Phoenix herzustellen versucht, und kein Timeout auftritt, führen Sie den folgenden Befehl aus, um die Verfügbarkeit und Integrität von Apache Phoenix zu überprüfen:
+5. Führen Sie die folgenden Befehle vom Hauptknoten (hn0) aus, um den Zustand der Phoenix-Tabelle SYSTEM.CATALOG zu diagnostizieren:
 
-```apache
-        !tables
-        !quit
-```      
-- Wenn die oben aufgeführten Befehle funktionieren, liegt kein Problem vor. Die vom Benutzer bereitgestellte IP-Adresse könnte falsch sein.
-   
-    Wenn jedoch der Befehl zu lange anhält und dann den unten erwähnten Fehler meldet, befolgen Sie die folgenden Anweisungen zur Problembehandlung:
+   ```apache
+            hbase shell
+                
+           count 'SYSTEM.CATALOG'
+   ```
 
-```apache
-        Error while connecting to sqlline.py (Hbase - phoenix) Setting property: [isolation, TRANSACTION_READ_COMMITTED] issuing: !connect jdbc:phoenix:10.2.0.7 none none org.apache.phoenix.jdbc.PhoenixDriver Connecting to jdbc:phoenix:10.2.0.7 SLF4J: Class path contains multiple SLF4J bindings. 
-```
+   Der Befehl sollte eine Fehlermeldung ähnlich der Folgenden zurückgeben: 
 
-- Führen Sie die folgenden Befehle vom Hauptknoten (hn0) aus aus, um die Bedingung der Phoenix-Tabelle SYSTEM.CATALOG zu diagnostizieren:
+   ```apache
+           ERROR: org.apache.hadoop.hbase.NotServingRegionException: Region SYSTEM.CATALOG,,1485464083256.c0568c94033870c517ed36c45da98129. is not online on 10.2.0.5,16020,1489466172189) 
+   ```
+6. Führen Sie in der Ambari-Benutzeroberfläche die folgenden Schritte aus, um den HMaster-Dienst auf allen ZooKeeper-Knoten neu zu starten:
 
-```apache
-        hbase shell
-        
-        count 'SYSTEM.CATALOG'
-```        
-- Der Befehl sollte eine Fehlermeldung ähnlich der folgenden zurückgeben: 
+    1. Wechseln Sie im Abschnitt **Summary** von HBase zu **HBase** > **Active HBase Master**. 
+    2. Starten Sie im Abschnitt **Components** den HBase-Master-Dienst neu.
+    3. Wiederholen Sie diese Schritte für die verbleibenden **Standby HBase Master**-Dienste. 
 
-```apache
-        ERROR: org.apache.hadoop.hbase.NotServingRegionException: Region SYSTEM.CATALOG,,1485464083256.c0568c94033870c517ed36c45da98129. is not online on 10.2.0.5,16020,1489466172189) 
-```
-- Starten Sie den HMaster-Dienst auf allen Zookeeper-Knoten von der Ambari-Benutzeroberfläche aus mit folgenden Schritten neu:
+Es kann bis zu fünf Minuten dauern, bis der HBase-Master-Dienst stabilisiert und der Wiederherstellungsvorgang abgeschlossen ist. Warten Sie einige Minuten, und führen Sie die sqlline.py-Befehle erneut aus, um sich zu vergewissern, dass die Tabelle SYSTEM.CATALOG aufgerufen wurde und abgefragt werden kann. 
 
-    a. Wechseln Sie im zusammenfassenden Abschnitt von HBase zum Link „HBase -> Active HBase-Master“. 
-    a. Starten Sie im Abschnitt „Components“ den HBase-Master-Dienst neu.
-    a. Wiederholen Sie die oben genannten Schritte für die verbleibenden „Standby HBase Master“-Dienste. 
-
-Es kann bis zu fünf Minuten dauern, bis der HBase-Master-Dienst stabilisiert und die Wiederherstellung beendet ist. Wiederholen Sie nach einigen Minuten Wartezeit die sqlline.py-Befehle, um zu bestätigen, dass die Systemkatalogtabelle aufgerufen ist und abgefragt werden kann. 
-
-Sobald die Tabelle „SYSTEM.CATALOG“ wieder in normalem Zustand ist, sollte das Problem der Konnektivität mit Apache Phoenix automatisch gelöst werden.
+Sobald sich die Tabelle „SYSTEM.CATALOG“ wieder im normalen Zustand befindet, sollte das Problem der Konnektivität mit Phoenix automatisch gelöst werden.
 
 
 ## <a name="what-causes-a-master-server-to-fail-to-start"></a>Was ist die Ursache dafür, dass ein Masterserver nicht startet?
 
-### <a name="error"></a>Fehler 
+### <a name="error"></a>Error 
 
-Fehler bei der atomischen Umbenennung
+Ein Fehler bei der atomischen Umbenennung tritt auf.
 
-### <a name="detailed-description"></a>Detaillierte Beschreibung:
+### <a name="detailed-description"></a>Detaillierte Beschreibung
 
-Während des Startprozesses führt HMaster viele Initialisierungsschritte einschließlich des Verschiebens von Daten aus dem von Grund auf neuen Ordner (.tmp) in den Datenordner durch. Außerdem prüft HMaster, ob sich im WALs-Ordner (Write Ahead Logs, Write-Ahead-Protokollen) inaktive Regionsserver usw. befinden. 
+Während des Startvorgangs schließt HMaster eine Vielzahl von Initialisierungsschritten ab. Hierzu zählt das Verschieben von Daten aus dem Scratch-Ordner (.tmp) in den Datenordner. HMaster untersucht zudem den Ordner mit write-ahead-Protokollen (WALs), um festzustellen, ob nicht reagierende Regionsserver vorhanden sind usw. 
 
-In allen diesen Fällen wird ein grundlegender „list“-Befehl für diese Ordner ausgeführt. Wenn zu beliebigem Zeitpunkt eine unerwartete Datei in einem dieser Ordner gefunden wird, wird eine Ausnahme ausgelöst und also kein Start ausgeführt.  
+Während des Starts führt HMaster einen grundlegenden `list`-Befehl für diese Ordner aus. Findet HMaster zu einem beliebigen Zeitpunkt eine unerwartete Datei in einem dieser Ordner, wird eine Ausnahme ausgelöst und kein Start ausgeführt.  
 
-### <a name="probable-cause"></a>Wahrscheinliche Ursache:
+### <a name="probable-cause"></a>Wahrscheinliche Ursache
 
-Versuchen Sie, die Zeitachse der Dateierstellung zu identifizieren, und zu sehen, ob in diesem Zeitraum ein Prozessabsturz in Regionsserverprotokollen verzeichnet ist (bitten Sie hierzu das HBase-Team um Hilfe). So können wir robustere Mechanismen bereitstellen, um diesen Fehler zu vermeiden und das ordnungsgemäße Herunterfahren des Prozesses sicherzustellen.
+Versuchen Sie, in den Regionsserverprotokollen die Zeitachse der Dateierstellung zu ermitteln, und bestimmen Sie dann, ob ungefähr zum Zeitpunkt der Erstellung der betreffenden Datei ein Prozessabsturz aufgetreten ist. (Wenden Sie sich an den HBase-Support, um Unterstützung dabei zu erhalten.) So können wir robustere Mechanismen bereitstellen, um diesen Fehler künftig zu vermeiden und das ordnungsgemäße Herunterfahren von Prozessen sicherzustellen.
 
-### <a name="resolution-steps"></a>Lösungsschritte:
+### <a name="resolution-steps"></a>Lösungsschritte
 
-Versuchen Sie in einer solchen Situation, die Aufrufliste zu überprüfen, und zu sehen, welcher Ordner das Problem verursachen könnte (Ist es z.B. der WALs- oder TMP-Ordner?). Versuchen Sie dann, mittels Cloud-Explorer oder hdfs-Befehlen die Problemdatei zu finden – in der Regel ist dies eine *-renamePending.json-Datei (eine zum Implementieren des Atomic Rename-Vorgangs in WASB-Treiber verwendete Journaldatei; aufgrund von Fehlern in dieser Implementierung können solche Dateien bei Prozessabstürzen usw. übrig bleiben). Erzwingen Sie deren Löschen über den Cloud-Explorer. 
+Überprüfen Sie die Aufrufliste und versuchen Sie festzustellen, welcher Ordner das Problem verursachen könnte (dies können beispielsweise der Ordner mit WALs oder der TMP-Ordner sein). Versuchen Sie anschließend im Cloud-Explorer oder mithilfe von HDFS-Befehlen die problematische Datei zu lokalisieren. Im Allgemeinen handelt es sich um eine Datei „\*-renamePending.json“ . (Die Datei „\*-renamePending.json“ ist eine Journaldatei, mit welcher der Vorgang der atomischen Umbenennung im WASB-Treiber implementiert wird. Aufgrund von Fehlern in dieser Implementierung können derartige Dateien nach Prozessabstürzen usw. weiterhin vorhanden sein.) Erzwingen Sie die Löschung dieser Datei im Cloud-Explorer oder durch Ausführen von HDFS-Befehlen. 
 
-Darüber hinaus könnte sich in einigen Fällen möglicherweise auch eine temporäre Datei der Art „$$$. $$$“ an diesem Speicherort befinden. Dies ist nicht im Cloud-Explorer, sondern nur mit dem hdfs ls-Befehl zu erkennen. Sie können den hdfs-Befehl „hdfs dfs -rm /<the path>/\$\$\$.\$\$\$“ zum Löschen dieser Datei verwenden.  
+Gelegentlich kann auch eine temporäre Datei mit einem Namen wie *$$$.$$$* an diesem Speicherort vorhanden sein. Sie müssen den HDFS-Befehl `ls` verwenden, um diese Datei anzuzeigen; im Cloud-Explorer wird die Datei nicht angezeigt. Führen Sie zum Löschen dieser Datei den HDFS-Befehl `hdfs dfs -rm /\<path>\/\$\$\$.\$\$\$` aus.  
 
-Sobald dies geschehen ist, sollte HMaster sofort starten. 
+Nach dem Ausführen dieser Befehle sollte HMaster sofort gestartet werden. 
 
-### <a name="error-no-server-address-listed-in"></a>Fehler: Keine Serveradresse aufgelistet in 
+### <a name="error"></a>Error
 
-Keine Serveradresse in „hbase:meta“ aufgelistet für Region xxx
+In *hbase: meta* ist für Region xxx keine Serveradresse aufgelistet.
 
-### <a name="detailed-description"></a>Detaillierte Beschreibung:
+### <a name="detailed-description"></a>Detaillierte Beschreibung
 
-Auf dem Linux-Cluster des Kunden ist das Problem aufgetreten, dass hbase:meta-Tabelle nicht online war. Der ausgeführte hbck-Befehl meldete, dass „hbase:meta-Tabelle replicaId 0 in keiner Region gefunden wurde“. Nach dem HBase-Neustart trat das Symptom auf, dass HMaster nicht initialisiert werden konnte. In den HMaster-Protokollen wurde aufgezeichnet, dass „keine Serveradresse in hbase:meta für die Region hbase:backup <region name> aufgelistet ist“.  
+Möglicherweise wird eine Meldung im Linux-Cluster angezeigt, in der darauf hingewiesen wird, dass die Tabelle *hbase: meta* nicht online ist. Beim Ausführen von `hbck` kann folgende Meldung angezeigt werden: „hbase: meta table replicaId 0 is not found on any region“ (hbase: Metatabelle mit replicaId 0 wurde für keine Region gefunden). Das Problem besteht möglicherweise darin, dass HMaster nach dem Neustarten von HBase nicht initialisiert werden konnte. In den HMaster-Protokollen wird möglicherweise folgende Meldung angezeigt: „No server address listed in hbase: meta for region hbase: backup \<region name\>“ (Keine Serveradresse in hbase aufgelistet: Metadaten für Regions-hbase: Region sichern).  
 
-### <a name="resolution-steps"></a>Lösungsschritte:
+### <a name="resolution-steps"></a>Lösungsschritte
 
-- Geben Sie Folgendes in der HBase-Shell ein (mit entsprechend geänderten Istwerten).  
+1. Geben Sie in der HBase-Shell die folgenden Befehle ein (ändern Sie ggf. die Istwerte):  
 
-```apache
-> scan 'hbase:meta'  
-```
+   ```apache
+   > scan 'hbase:meta'  
+   ```
 
-```apache
-> delete 'hbase:meta','hbase:backup <region name>','<column name>'  
-```
+   ```apache
+   > delete 'hbase:meta','hbase:backup <region name>','<column name>'  
+   ```
 
-- Löschen Sie den Eintrag „hbase:namespace“, da der gleiche Fehler bei der Überprüfung der „hbase:namespace“-Tabelle gemeldet werden könnte.
+2. Löschen Sie den Eintrag *hbase: namespace*. Bei diesem Eintrag kann es sich um den gleichen Fehler handeln, der auch beim Überprüfen der Tabelle *hbase: namespace* gemeldet wurde.
 
-- Starten Sie den aktiven HMaster von der Ambari-Benutzeroberfläche aus neu, um HBase hochzufahren.  
+3. Starten Sie in der Ambari-Benutzeroberfläche den Active HMaster-Dienst neu, um HBase hochzufahren.  
 
-- Führen Sie den folgenden Befehl in der HBase-Shell aus, um alle Tabellen hochzufahren, die offline sind:
+4. Führen Sie in der HBase-Shell den folgenden Befehl aus, um alle Tabellen hochzufahren, die offline sind:
 
-```apache 
-hbase hbck -ignorePreCheckPermission -fixAssignments 
-```
+   ```apache 
+   hbase hbck -ignorePreCheckPermission -fixAssignments 
+   ```
 
-### <a name="further-reading"></a>Weitere nützliche Informationen:
+### <a name="additional-reading"></a>Zusätzliche Lektüre
 
 [HBase-Tabelle kann nicht verarbeitet werden](http://stackoverflow.com/questions/4794092/unable-to-access-hbase-table)
 
 
-### <a name="error"></a>Fehler
+### <a name="error"></a>Error
 
-Bei HMaster tritt ein Timeout mit schwerwiegendem Ausnahmefehler auf, Beispiel: java.io.IOException: Timeout nach 300.000 ms Warten auf die Zuweisung der Namespace-Tabelle.
+Bei HMaster tritt ein Timeout mit schwerwiegendem Ausnahmefehler wie „java.io.IOException: Timedout 300000ms waiting for namespace table to be assigned“ (java.io.IOException: Timeout nach 300.000 ms Warten auf die Zuweisung der Namespace-Tabelle).
 
-### <a name="detailed-description"></a>Detaillierte Beschreibung:
+### <a name="detailed-description"></a>Detaillierte Beschreibung
 
-Dieses Problem trat bei Kunden auf, die offensichtlich viele Tabellen und Regionen besaßen und nicht geleert hatten, als sie ihre HMaster-Dienste neu starteten. Beim Neustart trat mit obiger Meldung ein Fehler auf. Kein anderer Fehler wurde gefunden.  
+Dieses Problem kann auftreten, wenn viele Tabellen und Regionen vorhanden sind, die beim Neustart der HMaster-Dienste nicht geleert wurden. Der Neustart kann fehlschlagen, und die vorherige Fehlermeldung wird angezeigt.  
 
-### <a name="probable-cause"></a>Wahrscheinliche Ursache:
+### <a name="probable-cause"></a>Wahrscheinliche Ursache
 
-Dies ist ein bekannter „Defekt“ bei HMaster – allgemeine Clusterstartaufgaben können sehr lange dauern, und HMaster fährt herunter, weil die Namespace-Tabelle noch nicht zugewiesen ist – was nur in diesem Szenario auftritt, wo große Mengen nicht geleerter Daten vorhanden sind und ein Timeout von fünf Minuten nicht ausreicht.
+Dies ist ein bekanntes Problem mit dem HMaster-Dienst. Allgemeine Cluster-Startaufgaben können sehr lange dauern. HMaster wird heruntergefahren, da die Namespace-Tabelle noch nicht zugewiesen ist. Dies ist nur in Szenarien der Fall, in denen eine große Menge an nicht geleerten Daten vorhanden ist, wobei ein Zeitlimit von fünf Minuten nicht ausreichend ist.
   
-### <a name="resolution-steps"></a>Lösungsschritte:
+### <a name="resolution-steps"></a>Lösungsschritte
 
-- Greifen Sie auf die Ambari-Benutzeroberfläche zu, wechseln Sie zu „HBase -> Configs“, und fügen Sie in der benutzerdefinierten Datei „hbase-site.xml“ folgende Einstellung hinzu: 
+1. Wechseln Sie in der Ambari-Benutzeroberfläche zu **HBase** > **Configs**. Fügen Sie in der benutzerdefinierten Datei „hbase-site.xml“ die folgende Einstellung hinzu: 
 
-```apache
-Key: hbase.master.namespace.init.timeout Value: 2400000  
-```
+   ```apache
+   Key: hbase.master.namespace.init.timeout Value: 2400000  
+   ```
 
-- Starten Sie die erforderlichen Dienste neu (hauptsächlich HMaster und möglicherweise andere HBase-Dienste).  
-
+2. Starten Sie die erforderlichen Dienste neu (HMaster und möglicherweise andere HBase-Dienste).  
 
 
 ## <a name="what-causes-a-restart-failure-on-a-region-server"></a>Was verursacht einen Neustartfehler bei einem Regionsserver?
 
-### <a name="probable-cause"></a>Wahrscheinliche Ursache:
+### <a name="issue"></a>Problem
 
-Erstens kann diese Situation mit den folgenden bewährten Methoden verhindert werden. Sie sollten die hohe Workload-Aktivität anhalten, wenn Sie planen, die HBase-Regionsserver neu zu starten. Wenn die Anwendung während des Herunterfahrens weiterhin versucht, Verbindungen mit Regionsservern herzustellen, wird der Regionsserver-Neustart um einige Minuten verlangsamt. Außerdem sollte der Benutzer alle Tabellen wie in [HDInsight HBase: How to Improve HBase cluster restart time by Flushing tables](https://blogs.msdn.microsoft.com/azuredatalake/2016/09/19/hdinsight-hbase-how-to-improve-hbase-cluster-restart-time-by-flushing-tables/) (HDInsight HBase: Verbesserung der HBase-Clusterneustart-Zeit durch Leeren von Tabellen) beschrieben leeren.
+Ein Neustartfehler auf einem Regionsserver kann durch Befolgen der folgenden bewährten Methoden vermieden werden. Es wird empfohlen, hohe Workload-Aktivitäten zu unterbrechen, wenn Sie einen Neustart von HBase-Regionsservern planen. Wenn die Anwendung während des Herunterfahrens weiterhin versucht, Verbindungen mit Regionsservern herzustellen, wird der Regionsserver-Neustart um einige Minuten verlangsamt. Zudem empfiehlt es sich, zuvor alle Tabellen zu leeren. Eine Anleitung zum Leeren von Tabellen finden Sie unter [HDInsight HBase: How to improve the HBase cluster restart time by flushing tables](https://blogs.msdn.microsoft.com/azuredatalake/2016/09/19/hdinsight-hbase-how-to-improve-hbase-cluster-restart-time-by-flushing-tables/) (HDInsight HBase: Verbessern der Neustartdauer von HBase-Clustern durch Leeren von Tabellen).
 
-Wenn ein Benutzer den Neustartvorgang auf HBase-Regionsservern von der Ambari-Benutzeroberfläche aus initiiert. Er würde sofort sehen, dass die Regionsserver heruntergefahren sind, aber zu lange nicht wieder hochfahren. 
+Wenn Sie den Neustartvorgang auf HBase-Regionsservern aus der Ambari-Benutzeroberfläche initiieren, stellen Sie sofort fest, dass die Regionsserver heruntergefahren wurden, sie werden jedoch nicht sofort neu gestartet. 
 
-Im folgenden sehen Sie, was hinter den Kulissen geschieht: 
+Die folgenden Vorgänge laufen im Hintergrund ab: 
 
 1. Der Ambari-Agent sendet eine Beendigungsanforderung an den Regionsserver.
-1. Der Ambari-Agent wartet dann 30 Sekunden auf das ordnungsgemäße Herunterfahren des Regionsservers. 
-1. Wenn die Anwendung des Kunden weiterhin versucht, eine Verbindung mit dem Regionsserver herzustellen, fährt er nicht sofort herunter, und der 30-Sekunden-Timeout läuft also früher ab. 
-1. Nach Ablauf von 30 Sekunden sendet der Ambari-Agent einen Befehl zum erzwungenen Beenden (kill -9) an den Regionsserver. Dies können Sie in „ambari-agent.log“ (im Verzeichnis „/var/log/“ des jeweiligen Workerknotens) wie folgt beobachten:
+2. Der Ambari-Agent wartet 30 Sekunden auf das ordnungsgemäße Herunterfahren des Regionsservers. 
+3. Wenn Ihre Anwendung weiterhin eine Verbindung mit dem Regionsserver unterhält, wird der Server nicht sofort heruntergefahren. Das Zeitlimit von 30 Sekunden läuft ab, bevor der Server heruntergefahren wird. 
+4. Nach 30 Sekunden sendet der Ambari-Agent einen Befehl zum Erzwingen des Beendens (`kill -9`) an den Regionsserver. Dies wird im Ambari-Agent-Protokoll angezeigt (im Verzeichnis „/var/log/“ des jeweiligen Workerknotens):
 
-```apache
-         2017-03-21 13:22:09,171 - Execute['/usr/hdp/current/hbase-regionserver/bin/hbase-daemon.sh --config /usr/hdp/current/hbase-regionserver/conf stop regionserver'] {'only_if': 'ambari-sudo.sh  -H -E t
-         est -f /var/run/hbase/hbase-hbase-regionserver.pid && ps -p `ambari-sudo.sh  -H -E cat /var/run/hbase/hbase-hbase-regionserver.pid` >/dev/null 2>&1', 'on_timeout': '! ( ambari-sudo.sh  -H -E test -
-         f /var/run/hbase/hbase-hbase-regionserver.pid && ps -p `ambari-sudo.sh  -H -E cat /var/run/hbase/hbase-hbase-regionserver.pid` >/dev/null 2>&1 ) || ambari-sudo.sh -H -E kill -9 `ambari-sudo.sh  -H 
-         -E cat /var/run/hbase/hbase-hbase-regionserver.pid`', 'timeout': 30, 'user': 'hbase'}
-         2017-03-21 13:22:40,268 - Executing '! ( ambari-sudo.sh  -H -E test -f /var/run/hbase/hbase-hbase-regionserver.pid && ps -p `ambari-sudo.sh  -H -E cat /var/run/hbase/hbase-hbase-regionserver.pid` >
-         /dev/null 2>&1 ) || ambari-sudo.sh -H -E kill -9 `ambari-sudo.sh  -H -E cat /var/run/hbase/hbase-hbase-regionserver.pid`'. Reason: Execution of 'ambari-sudo.sh su hbase -l -s /bin/bash -c 'export  
-         PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/var/lib/ambari-agent ; /usr/hdp/current/hbase-regionserver/bin/hbase-daemon.sh --config /usr/hdp/curre
-         nt/hbase-regionserver/conf stop regionserver was killed due timeout after 30 seconds
-         2017-03-21 13:22:40,285 - File['/var/run/hbase/hbase-hbase-regionserver.pid'] {'action': ['delete']}
-         2017-03-21 13:22:40,285 - Deleting File['/var/run/hbase/hbase-hbase-regionserver.pid']
-```
-Aufgrund dieses abrupten Herunterfahrens wird der Port, der dem Prozess zugeordnet ist, möglicherweise nicht freigegeben, obwohl der Regionsserverprozess beendet wird. Diese Situation kann, wie in den Protokollen unten dargestellt, beim Starten des Regionsservers zu der AddressBindException-Ausnahme führen. Dies können Sie in „region-server.log“ im Verzeichnis „/var/log/hbase“ des Workerknotens überprüfen, wo beim Start des Regionsservers ein Fehler auftritt. 
+   ```apache
+           2017-03-21 13:22:09,171 - Execute['/usr/hdp/current/hbase-regionserver/bin/hbase-daemon.sh --config /usr/hdp/current/hbase-regionserver/conf stop regionserver'] {'only_if': 'ambari-sudo.sh  -H -E t
+           est -f /var/run/hbase/hbase-hbase-regionserver.pid && ps -p `ambari-sudo.sh  -H -E cat /var/run/hbase/hbase-hbase-regionserver.pid` >/dev/null 2>&1', 'on_timeout': '! ( ambari-sudo.sh  -H -E test -
+           f /var/run/hbase/hbase-hbase-regionserver.pid && ps -p `ambari-sudo.sh  -H -E cat /var/run/hbase/hbase-hbase-regionserver.pid` >/dev/null 2>&1 ) || ambari-sudo.sh -H -E kill -9 `ambari-sudo.sh  -H 
+           -E cat /var/run/hbase/hbase-hbase-regionserver.pid`', 'timeout': 30, 'user': 'hbase'}
+           2017-03-21 13:22:40,268 - Executing '! ( ambari-sudo.sh  -H -E test -f /var/run/hbase/hbase-hbase-regionserver.pid && ps -p `ambari-sudo.sh  -H -E cat /var/run/hbase/hbase-hbase-regionserver.pid` >
+           /dev/null 2>&1 ) || ambari-sudo.sh -H -E kill -9 `ambari-sudo.sh  -H -E cat /var/run/hbase/hbase-hbase-regionserver.pid`'. Reason: Execution of 'ambari-sudo.sh su hbase -l -s /bin/bash -c 'export  
+           PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/var/lib/ambari-agent ; /usr/hdp/current/hbase-regionserver/bin/hbase-daemon.sh --config /usr/hdp/curre
+           nt/hbase-regionserver/conf stop regionserver was killed due timeout after 30 seconds
+           2017-03-21 13:22:40,285 - File['/var/run/hbase/hbase-hbase-regionserver.pid'] {'action': ['delete']}
+           2017-03-21 13:22:40,285 - Deleting File['/var/run/hbase/hbase-hbase-regionserver.pid']
+   ```
+Aufgrund dieses abrupten Herunterfahrens wird der Port, der dem Prozess zugeordnet ist, möglicherweise nicht freigegeben, obwohl der Regionsserverprozess beendet wird. Dieser Umstand kann beim Starten des Servers zu einer AddressBindException führen, wie in den folgenden Protokollen ersichtlich ist. Dies können Sie in „region-server.log“ im Verzeichnis „/var/log/hbase“ der Workerknoten überprüfen, auf denen beim Starten des Regionsservers ein Fehler auftritt. 
 
-```apache
+   ```apache
 
-       2017-03-21 13:25:47,061 ERROR [main] regionserver.HRegionServerCommandLine: Region server exiting
-       java.lang.RuntimeException: Failed construction of Regionserver: class org.apache.hadoop.hbase.regionserver.HRegionServer
-       at org.apache.hadoop.hbase.regionserver.HRegionServer.constructRegionServer(HRegionServer.java:2636)
-       at org.apache.hadoop.hbase.regionserver.HRegionServerCommandLine.start(HRegionServerCommandLine.java:64)
-       at org.apache.hadoop.hbase.regionserver.HRegionServerCommandLine.run(HRegionServerCommandLine.java:87)
-       at org.apache.hadoop.util.ToolRunner.run(ToolRunner.java:76)
-       at org.apache.hadoop.hbase.util.ServerCommandLine.doMain(ServerCommandLine.java:126)
-       at org.apache.hadoop.hbase.regionserver.HRegionServer.main(HRegionServer.java:2651)
-       
-       Caused by: java.lang.reflect.InvocationTargetException
-       at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-       at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
-       at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-       at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
-       at org.apache.hadoop.hbase.regionserver.HRegionServer.constructRegionServer(HRegionServer.java:2634)
-       ... 5 more
-       
-       Caused by: java.net.BindException: Problem binding to /10.2.0.4:16020 : Address already in use
-       at org.apache.hadoop.hbase.ipc.RpcServer.bind(RpcServer.java:2497)
-       at org.apache.hadoop.hbase.ipc.RpcServer$Listener.<init>(RpcServer.java:580)
-       at org.apache.hadoop.hbase.ipc.RpcServer.<init>(RpcServer.java:1982)
-       at org.apache.hadoop.hbase.regionserver.RSRpcServices.<init>(RSRpcServices.java:863)
-       at org.apache.hadoop.hbase.regionserver.HRegionServer.createRpcServices(HRegionServer.java:632)
-       at org.apache.hadoop.hbase.regionserver.HRegionServer.<init>(HRegionServer.java:532)
-       ... 10 more
-       
-       Caused by: java.net.BindException: Address already in use
-       at sun.nio.ch.Net.bind0(Native Method)
-       at sun.nio.ch.Net.bind(Net.java:463)
-       at sun.nio.ch.Net.bind(Net.java:455)
-       at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:223)
-       at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:74)
-       at org.apache.hadoop.hbase.ipc.RpcServer.bind(RpcServer.java:2495)
-       ... 15 more
-```
+   2017-03-21 13:25:47,061 ERROR [main] regionserver.HRegionServerCommandLine: Region server exiting
+   java.lang.RuntimeException: Failed construction of Regionserver: class org.apache.hadoop.hbase.regionserver.HRegionServer
+   at org.apache.hadoop.hbase.regionserver.HRegionServer.constructRegionServer(HRegionServer.java:2636)
+   at org.apache.hadoop.hbase.regionserver.HRegionServerCommandLine.start(HRegionServerCommandLine.java:64)
+   at org.apache.hadoop.hbase.regionserver.HRegionServerCommandLine.run(HRegionServerCommandLine.java:87)
+   at org.apache.hadoop.util.ToolRunner.run(ToolRunner.java:76)
+   at org.apache.hadoop.hbase.util.ServerCommandLine.doMain(ServerCommandLine.java:126)
+   at org.apache.hadoop.hbase.regionserver.HRegionServer.main(HRegionServer.java:2651)
+        
+   Caused by: java.lang.reflect.InvocationTargetException
+   at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+   at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+   at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+   at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+   at org.apache.hadoop.hbase.regionserver.HRegionServer.constructRegionServer(HRegionServer.java:2634)
+   ... 5 more
+        
+   Caused by: java.net.BindException: Problem binding to /10.2.0.4:16020 : Address already in use
+   at org.apache.hadoop.hbase.ipc.RpcServer.bind(RpcServer.java:2497)
+   at org.apache.hadoop.hbase.ipc.RpcServer$Listener.<init>(RpcServer.java:580)
+   at org.apache.hadoop.hbase.ipc.RpcServer.<init>(RpcServer.java:1982)
+   at org.apache.hadoop.hbase.regionserver.RSRpcServices.<init>(RSRpcServices.java:863)
+   at org.apache.hadoop.hbase.regionserver.HRegionServer.createRpcServices(HRegionServer.java:632)
+   at org.apache.hadoop.hbase.regionserver.HRegionServer.<init>(HRegionServer.java:532)
+   ... 10 more
+        
+   Caused by: java.net.BindException: Address already in use
+   at sun.nio.ch.Net.bind0(Native Method)
+   at sun.nio.ch.Net.bind(Net.java:463)
+   at sun.nio.ch.Net.bind(Net.java:455)
+   at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:223)
+   at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:74)
+   at org.apache.hadoop.hbase.ipc.RpcServer.bind(RpcServer.java:2495)
+   ... 15 more
+   ```
 
-### <a name="resolution-steps"></a>Lösungsschritte:
+### <a name="resolution-steps"></a>Lösungsschritte
 
-Versuchen Sie in solchen Fällen die folgende Problemumgehung: 
+1. Versuchen Sie, die Last auf den HBase-Regionsservern zu reduzieren, bevor Sie einen Neustart initiieren. 
+2. Sie können auch versuchen (wenn Schritt 1 nicht erfolgreich war), die Regionsserver auf den Workerknoten mithilfe der folgenden Befehle manuell neu zu starten:
 
-- Versuchen Sie, die Last auf den HBase-Regionsservern zu reduzieren, bevor Sie einen Neustart initiieren. 
-
-- Alternativ (wenn die vorherigen Schritte nicht hilfreich waren) können Sie versuchen, die Regionsserver auf den Workerknoten mithilfe folgender Befehle manuell neu zu starten:
-
-```apache
-      sudo su - hbase -c "/usr/hdp/current/hbase-regionserver/bin/hbase-daemon.sh stop regionserver"
-      sudo su - hbase -c "/usr/hdp/current/hbase-regionserver/bin/hbase-daemon.sh start regionserver"   
-```
-
+   ```apache
+   sudo su - hbase -c "/usr/hdp/current/hbase-regionserver/bin/hbase-daemon.sh stop regionserver"
+   sudo su - hbase -c "/usr/hdp/current/hbase-regionserver/bin/hbase-daemon.sh start regionserver"   
+   ```
 
 

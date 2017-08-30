@@ -4,7 +4,7 @@ description: Testen Sie Ihre Azure-Funktionen mithilfe von Postman, cURL und Nod
 services: functions
 documentationcenter: na
 author: wesmc7777
-manager: erikre
+manager: cfowler
 editor: 
 tags: 
 keywords: Azure Functions, Functions, Ereignisverarbeitung, Webhooks, dynamisches Compute, serverlose Architektur, Tests
@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 02/02/2017
 ms.author: wesmc
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 2fd12dd32ed3c8479c7460cbc0a1cac3330ff4f4
-ms.openlocfilehash: a58bf41ec11b5826b60c1fc999240ea655be6d9d
-ms.lasthandoff: 03/01/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: aca03ba4137893157fcbe6650336782ab88cd234
+ms.contentlocale: de-de
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Strategien zum Testen Ihres Codes in Azure Functions
@@ -234,7 +234,7 @@ Im Portalfenster **Protokolle** wird während der Ausführung der Funktion eine 
 
 
 ### <a name="test-with-a-timer-trigger"></a>Testen mit einem Trigger mit Timer
-Einige Funktionen können mit den zuvor erwähnten Tools nicht angemessen getestet werden. Dies gilt beispielsweise für eine Warteschlangen-Triggerfunktion, die ausgeführt wird, wenn eine Nachricht im [Azure-Warteschlangenspeicher](../storage/storage-dotnet-how-to-use-queues.md) abgelegt wird. Sie können jederzeit Code schreiben, um eine Nachricht in der Warteschlange zu platzieren; ein Beispiel dafür in einem Konsolenprojekt wird später in diesem Artikel präsentiert. Zum direkten Testen von Funktionen ist jedoch ein anderer Ansatz möglich.  
+Einige Funktionen können mit den zuvor erwähnten Tools nicht angemessen getestet werden. Dies gilt beispielsweise für eine Warteschlangen-Triggerfunktion, die ausgeführt wird, wenn eine Nachricht im [Azure-Warteschlangenspeicher](../storage/queues/storage-dotnet-how-to-use-queues.md) abgelegt wird. Sie können jederzeit Code schreiben, um eine Nachricht in der Warteschlange zu platzieren; ein Beispiel dafür in einem Konsolenprojekt wird später in diesem Artikel präsentiert. Zum direkten Testen von Funktionen ist jedoch ein anderer Ansatz möglich.  
 
 Sie können einen Trigger mit Timer verwenden, der mit einer Warteschlangen-Ausgabenbindung konfiguriert ist. Der Code für den Trigger mit Timer kann die Testnachrichten dann in die Warteschlange schreiben. In diesem Abschnitt wird ein Beispiel beschrieben.
 
@@ -378,11 +378,11 @@ Im Portalfenster **Protokolle** wird während der Ausführung der Funktion eine 
 
 
 ### <a name="test-a-queue-trigger-function-with-code-c"></a>Testen einer Warteschlangentrigger-Funktion mit Code: C# #
-Wie bereits erwähnt, können Sie einen Warteschlangentrigger testen, indem Sie mithilfe von Code eine Nachricht in ihrer Warteschlange ablegen. Der folgende Beispielcode basiert auf dem C#-Code im Tutorial [Erste Schritte mit Azure-Warteschlangenspeicher](../storage/storage-dotnet-how-to-use-queues.md) . Code für andere Sprachen ist ebenfalls über diesen Link verfügbar.
+Wie bereits erwähnt, können Sie einen Warteschlangentrigger testen, indem Sie mithilfe von Code eine Nachricht in ihrer Warteschlange ablegen. Der folgende Beispielcode basiert auf dem C#-Code im Tutorial [Erste Schritte mit Azure-Warteschlangenspeicher](../storage/queues/storage-dotnet-how-to-use-queues.md) . Code für andere Sprachen ist ebenfalls über diesen Link verfügbar.
 
 Zum Testen dieses Codes in einer Konsolen-App müssen Sie folgende Schritte durchführen:
 
-* [Konfigurieren Sie die Speicherverbindungszeichenfolge in der Datei „app.config“](../storage/storage-dotnet-how-to-use-queues.md).
+* [Konfigurieren Sie die Speicherverbindungszeichenfolge in der Datei „app.config“](../storage/queues/storage-dotnet-how-to-use-queues.md).
 * Übergeben Sie einen `name` und eine `address` als Parameter an die App. Beispiel: `C:\myQueueConsoleApp\test.exe "Wes testing queues" "in a console app"`. (Dieser Code akzeptiert Name und Adresse für einen neuen Benutzer während der Laufzeit als Befehlszeilenargumente.)
 
 C#-Beispielcode:

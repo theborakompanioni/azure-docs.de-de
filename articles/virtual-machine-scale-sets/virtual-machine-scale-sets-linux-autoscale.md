@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 09/27/2016
 ms.author: adegeo
 ms.translationtype: HT
-ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
-ms.openlocfilehash: 3a8a5d25123905e6c5cf91c4bc0c04258e442b5c
+ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
+ms.openlocfilehash: eff4add1cb16fe25022787668dc1d2277845dd95
 ms.contentlocale: de-de
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 08/19/2017
 
 ---
 # <a name="automatically-scale-linux-machines-in-a-virtual-machine-scale-set"></a>Automatisches Skalieren von Linux-Computern in einer VM-Skalierungsgruppe
@@ -591,6 +591,6 @@ azure group delete vmsstestrg1
 * Beispiele für Überwachungsfeatures von Azure Monitor finden Sie unter [Azure Monitor –Schnellstartbeispiele für die plattformübergreifende Befehlszeilenschnittstelle](../monitoring-and-diagnostics/insights-cli-samples.md).
 * Informationen zu Benachrichtigungsfeatures finden Sie unter [Verwenden von automatischen Skalierungsvorgängen zum Senden von E-Mail- und Webhook-Warnbenachrichtigungen in Azure Monitor](../monitoring-and-diagnostics/insights-autoscale-to-webhook-email.md).
 * Informationen zur Verwendung von Überwachungsprotokollen zum Senden von E-Mail- und Webhook-Warnbenachrichtigungen in Azure Monitor finden Sie [hier](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md).
-* Sehen Sie sich die Vorlage [Autoscale a VM Scale Set running a Ubuntu/Apache/PHP app](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-lapstack-autoscale) (Automatisches Skalieren einer VM-Skalierungsgruppe mit ausgeführter Ubuntu-/Apache-/PHP-App) an: Diese richtet einen LAMP-Stapel ein, um die automatische Skalierungsfunktion von VM-Skalierungsgruppen auszuführen.
+* Sehen Sie sich die Vorlage [Autoscale demo app on Ubuntu 16.04](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale) (Demonstrations-App zum automatischen Skalieren unter Ubuntu 16.04) an. Diese richtet eine Python/bottle-App ein, um die automatische Skalierungsfunktion von VM-Skalierungsgruppen auszuführen.
 
 

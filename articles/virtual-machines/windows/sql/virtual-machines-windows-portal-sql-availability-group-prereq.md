@@ -16,12 +16,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/09/2017
 ms.author: mikeray
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 0def8177e124b5d3ba39f1ae65ab3b41d5827e4a
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 3d508877928e033f24dae62c1042745ea7250033
 ms.contentlocale: de-de
-ms.lasthandoff: 05/11/2017
-
+ms.lasthandoff: 08/21/2017
 
 ---
 
@@ -357,7 +356,7 @@ Bevor Sie fortfahren, sollten Sie die folgenden Designentscheidungen treffen.
 
 * **Speicher – Azure Managed Disks**
 
-   Verwenden Sie als Speicher für virtuelle Computer Azure Managed Disks. Microsoft empfiehlt Managed Disks für virtuelle SQL Server-Computer. Managed Disks verwaltet den Speicher im Hintergrund. Wenn sich virtuelle Computer mit verwalteten Datenträgern in derselben Verfügbarkeitsgruppe befinden, verteilt Azure darüber hinaus die Speicherressourcen so, dass eine ausreichende Redundanz bereitgestellt wird. Weitere Informationen finden Sie in der [Übersicht über Azure Managed Disks](../../../storage/storage-managed-disks-overview.md). Genauere Informationen zu verwalteten Datenträgern in einer Verfügbarkeitsgruppe finden Sie unter [Verwenden von verwalteten Datenträgern für virtuelle Computer in einer Verfügbarkeitsgruppe](../manage-availability.md#use-managed-disks-for-vms-in-an-availability-set).
+   Verwenden Sie als Speicher für virtuelle Computer Azure Managed Disks. Microsoft empfiehlt Managed Disks für virtuelle SQL Server-Computer. Managed Disks verwaltet den Speicher im Hintergrund. Wenn sich virtuelle Computer mit verwalteten Datenträgern in derselben Verfügbarkeitsgruppe befinden, verteilt Azure darüber hinaus die Speicherressourcen so, dass eine ausreichende Redundanz bereitgestellt wird. Weitere Informationen finden Sie in der [Übersicht über Azure Managed Disks](../managed-disks-overview.md). Genauere Informationen zu verwalteten Datenträgern in einer Verfügbarkeitsgruppe finden Sie unter [Verwenden von verwalteten Datenträgern für virtuelle Computer in einer Verfügbarkeitsgruppe](../manage-availability.md#use-managed-disks-for-vms-in-an-availability-set).
 
 * **Netzwerk – private IP-Adressen in der Produktion**
 
@@ -470,7 +469,7 @@ Wiederholen Sie diese Schritte auf dem anderen virtuellen SQL Server-Computer.
 Für die Lösung müssen die folgenden TCP-Ports in der Firewall geöffnet sein:
 
 - **SQL Server-VM**:<br/>
-   Port 1433 für eine Standardinstanz von SQL Server.
+   Port 1433 für eine Standardinstanz von SQL Server
 - **Azure-Lastenausgleichstest**:<br/>
    Ein beliebiger verfügbarer Port. Für Beispiele wird häufig 59999 verwendet.
 - **Datenbankspiegelungs-Endpunkt**: <br/>

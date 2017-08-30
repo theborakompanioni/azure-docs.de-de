@@ -14,11 +14,11 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: df6443bb27285e8ba719c229dd1b12114acc48c7
-ms.lasthandoff: 11/17/2016
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 9c8f9ee7780859f7640ac82d6ebce85082170ad7
+ms.contentlocale: de-de
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="upload-a-custom-java-web-app-to-azure"></a>Hochladen einer benutzerdefinierten Java Web-App in Azure
@@ -201,7 +201,7 @@ Bei der Verwendung von Liferay 6.1.2 Community Edition GA3 in Kombination mit To
 **Server.xml**
 
 * Legen Sie für den Shutdown-Port "-1" fest.
-* Legen Sie für den HTTP-Konnektor       `<Connector port="${port.http}" protocol="HTTP/1.1" connectionTimeout="600000" address="127.0.0.1" URIEncoding="UTF-8" />` fest.
+* Legen Sie für den HTTP-Konnektor `<Connector port="${port.http}" protocol="HTTP/1.1" connectionTimeout="600000" address="127.0.0.1" URIEncoding="UTF-8" />` fest.
 * Kommentieren Sie den AJP-Konnektor.
 
 Erstellen Sie im Ordner **liferay\tomcat-7.0.40\webapps\ROOT\WEB-INF\classes** eine Datei namens **portal-ext.properties**. Die Datei muss die folgende Zeile enthalten:
@@ -241,7 +241,7 @@ Sobald Sie diese Änderungen vorgenommen haben, starten Sie Ihre Website neu mit
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen über Liferay finden Sie unter [http://www.liferay.com](http://www.liferay.com).
 
-Weitere Informationen zu Java finden Sie im [Java Developer Center](/develop/java/).
+Weitere Informationen zu Java finden Sie unter [Azure für Java-Entwickler](/java/azure).
 
 [!INCLUDE [app-service-web-whats-changed](../../includes/app-service-web-whats-changed.md)]
 

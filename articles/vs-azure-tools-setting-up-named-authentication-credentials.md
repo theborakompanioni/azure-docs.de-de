@@ -12,20 +12,21 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 11/18/2016
+ms.date: 8/17/2017
 ms.author: tarcher
-translationtype: Human Translation
-ms.sourcegitcommit: 01623fa76175091439d5a571fb8b8f96aee01c4c
-ms.openlocfilehash: 03875b4215943a8bbabeb15610776a221cbf7b71
-
+ms.translationtype: HT
+ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
+ms.openlocfilehash: 613f17081fcb70b126caaae7ade5739d336662a7
+ms.contentlocale: de-de
+ms.lasthandoff: 08/19/2017
 
 ---
 # <a name="setting-up-named-authentication-credentials"></a>Einrichten benannter Authentifizierungsanmeldeinformationen
-Geben Sie die Anmeldeinformationen an, mit denen Visual Studio Anforderungen für Azure authentifizieren kann, um eine Anwendung von Visual Studio aus in Azure zu veröffentlichen oder einen vorhandenen Clouddienst zu überwachen. Es gibt verschiedene Stellen in Visual Studio, an denen Sie sich anmelden können, um diese Anmeldeinformationen bereitzustellen. Beispielsweise können Sie im Server-Explorer das Kontextmenü des Knotens **Azure** öffnen und **Mit Azure verbinden** auswählen. Wenn Sie sich anmelden, stehen die Abonnementinformationen, die dem Azure-Konto zugeordnet sind, in Visual Studio zur Verfügung. Sie müssen keine weiteren Schritte ausführen.
+Geben Sie die Anmeldeinformationen an, mit denen Visual Studio Anforderungen für Azure authentifizieren kann, um eine Anwendung von Visual Studio aus in Azure zu veröffentlichen oder einen vorhandenen Clouddienst zu überwachen. Es gibt verschiedene Stellen in Visual Studio, an denen Sie sich anmelden können, um diese Anmeldeinformationen bereitzustellen. Beispielsweise können Sie im Server-Explorer das Kontextmenü des Knotens **Azure** öffnen und **Verbindung mit Microsoft Azure-Abonnement herstellen** auswählen. Wenn Sie sich anmelden, stehen die Abonnementinformationen, die dem Azure-Konto zugeordnet sind, in Visual Studio zur Verfügung. Sie müssen keine weiteren Schritte ausführen.
 
 Die Azure-Tools unterstützen auch eine ältere Möglichkeit zum Bereitstellen von Anmeldeinformationen mithilfe der Abonnementdatei (.publishsettings). In diesem Thema wird diese Methode beschrieben, die in Azure SDK 2.2 weiterhin unterstützt wird.
 
-Die folgenden Elemente sind für die Authentifizierung bei Azure erforderlich.
+Die folgenden Elemente sind für die Authentifizierung bei Azure erforderlich:
 
 * Ihre Abonnement-ID
 * Ein gültiges X.509 v3-Zertifikat
@@ -49,7 +50,7 @@ Wenn Sie ein Zertifikat selbst erstellen möchten, finden Sie die entsprechenden
 ## <a name="modify-or-export-authentication-credentials-in-visual-studio"></a>Ändern oder Exportieren von Authentifizierungsinformationen in Visual Studio
 Sie können die Authentifizierungsinformationen auch im Dialogfeld **Neues Abonnement** einrichten, ändern oder exportieren. Dieses Dialogfeld wird angezeigt, wenn Sie eine der folgenden Aktionen ausführen:
 
-* Öffnen Sie im **Server-Explorer** das Kontextmenü des Knotens **Azure**, und wählen Sie **Abonnements verwalten** aus. Wählen Sie die Registerkarte **Zertifikate** aus, und klicken Sie dann auf die Schaltfläche **Neu** bzw. **Bearbeiten**.
+* Öffnen Sie im **Server-Explorer** das Kontextmenü des Knotens **Azure**, und wählen Sie **Abonnements verwalten und filtern** aus. Wählen Sie die Registerkarte **Zertifikate** und dann **Importieren**, **Neu** oder **Bearbeiten** aus.
 * Wenn Sie einen Azure-Clouddienst mit dem **Assistenten zum Veröffentlichen einer Azure-Anwendung** veröffentlichen, wählen Sie in der Liste **Abonnement auswählen** den Eintrag **Verwalten** aus. Wählen Sie dann die Registerkarte „Zertifikate“ aus, und klicken Sie anschließend auf die Schaltfläche **Neu** oder **Bearbeiten**.
 
 Bei der folgenden Vorgehensweise wird davon ausgegangen, dass das Dialogfeld **Neues Abonnement** geöffnet ist.
@@ -73,9 +74,4 @@ Bei der folgenden Vorgehensweise wird davon ausgegangen, dass das Dialogfeld **N
        Die Seite für diesen Dienst wird geöffnet.
    4. Klicken Sie auf der Registerkarte **Zertifikate** auf die Schaltfläche **Hochladen**.
    5. Fügen Sie den vollständigen Pfad der erstellten CER-Datei ein, und geben Sie dann das festgelegte Kennwort ein.
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

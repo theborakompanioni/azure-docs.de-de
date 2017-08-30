@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/04/2017
+ms.date: 08/17/2017
 ms.author: curtand
-ms.reviewer: 
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
-ms.openlocfilehash: b48488719d8bcef54e3742a338f0444db82f76d1
+ms.reviewer: aaronsm
+ms.translationtype: HT
+ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
+ms.openlocfilehash: fc0d297598c334ca8f6f8a2bd3ae948c87956342
 ms.contentlocale: de-de
-ms.lasthandoff: 05/08/2017
+ms.lasthandoff: 08/19/2017
 
 ---
 # <a name="integrate-azure-active-directory-single-sign-on-with-saas-apps"></a>Integrieren des einmaligen Anmeldens mit Azure Active Directory in SaaS-Apps
@@ -33,6 +33,9 @@ ms.lasthandoff: 05/08/2017
 [!INCLUDE [active-directory-sso-use-case-intro](../../includes/active-directory-sso-use-case-intro.md)]
 
 Wenn Sie die einmalige Anmeldung für eine App einrichten, die Sie in Ihre Organisation einbringen möchten, beginnen Sie mit einem vorhandenen Verzeichnis in Azure Active Directory (Azure AD). Sie können ein Azure AD-Verzeichnis verwenden, das Sie über Microsoft Azure, Office 365 oder Windows Intune erhalten haben. Wenn Sie mehrere dieser Verzeichnisse haben, erfahren Sie unter [Verwalten Ihres Azure AD-Verzeichnisses](active-directory-administer.md) , welches Sie am besten verwenden.
+
+> [!IMPORTANT]
+> Microsoft empfiehlt, für die Verwaltung von Azure AD anstelle des in diesem Artikel erwähnten klassischen Azure-Portals das [Azure AD Admin Center](https://aad.portal.azure.com) zu verwenden. Informationen zum Zuweisen von Administratorrollen im Azure AD Admin Center finden Sie unter [Zuweisen von Administratorrollen in Azure Active Directory](active-directory-enterprise-apps-manage-sso.md).
 
 ## <a name="authentication"></a>Authentifizierung
 Für Anwendungen, die die Protokolle SAML 2.0, WS-Verbund oder OpenID Connect unterstützen, verwendet Azure Active Directory Signaturzertifikate zum Herstellen von Vertrauensstellungen. Weitere Informationen hierzu finden Sie unter [Verwalten von Zertifikaten für die einmalige Verbundanmeldung](active-directory-sso-certs.md).
@@ -72,7 +75,7 @@ Für SaaS-Apps, die Sie im App-Katalog finden, bietet Azure AD eine Reihe von [L
 
 Wenn die App sich nicht im App-Katalog befindet, können Sie [sie der Azure AD-App-Galerie als benutzerdefinierte Anwendung hinzufügen](http://blogs.technet.com/b/ad/archive/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-gt-now-in-preview.aspx).
 
-In der Azure.com-Bibliothek finden Sie weitaus umfassendere Informationen zu diesen Problemen, beginnend mit [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory](active-directory-appssoaccess-whatis.md).
+In der Azure.com-Bibliothek finden Sie weitaus umfassendere Informationen zu diesen Problemen, beginnend mit [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
 Übersehen Sie auch nicht den [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md).
 

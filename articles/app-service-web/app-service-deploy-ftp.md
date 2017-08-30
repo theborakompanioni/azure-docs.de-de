@@ -14,18 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/05/2016
 ms.author: cephalin;dariac
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 816113f7635a003e22a5172113e5039dbcc1ceac
-ms.openlocfilehash: 5dc546849bd02ccf4d02f3e6363a3e2fc3898259
+ms.translationtype: HT
+ms.sourcegitcommit: 368589509b163cacf495fd0be893a8953fe2066e
+ms.openlocfilehash: 9078abbc4ed7eff6975201443992f7bbb84bf57c
 ms.contentlocale: de-de
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 08/17/2017
 
 ---
+
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>Bereitstellen der App in Azure App Service mithilfe von FTP/S
+
 In diesem Artikel erfahren Sie, wie Sie eine Web-App, das mobile App-Back-End oder eine API-App mithilfe von FTP oder FTPS in [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) bereitstellen.
 
-Der FTP/S-Endpunkt für Ihre App ist bereits aktiv. Zum Aktivieren der FTP/S-Bereitstellung ist keine Konfiguration erforderlich. 
+Der FTP/S-Endpunkt für Ihre App ist bereits aktiv. Zum Aktivieren der FTP/S-Bereitstellung ist keine Konfiguration erforderlich.
+
+> [!IMPORTANT]
+> Wir arbeiten fortlaufend an der Verbesserung der Sicherheit der Microsoft Azure-Plattform. Aufgrund dieser Maßnahmen ist ein Upgrade von Webanwendungen für die Regionen „Deutschland, Mitte“ und „Deutschland, Nordosten“ geplant. Während dieses Upgrades werden Web-Apps die Verwendung von FTP-Textprotokollen für Bereitstellungen deaktivieren. Wir empfehlen unseren Kunden daher einen Umstieg auf FTPS für Bereitstellungen. Wir erwarten keine Unterbrechung Ihres Diensts während dieses Upgrades, das für den 5.9. geplant ist. Wir danken Ihnen für Ihre Unterstützung bei dieser Maßnahme.
 
 <a name="step1"></a>
 ## <a name="step-1-set-deployment-credentials"></a>Schritt 1: Festlegen von Anmeldeinformationen für die Bereitstellung

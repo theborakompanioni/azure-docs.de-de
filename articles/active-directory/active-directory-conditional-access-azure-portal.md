@@ -13,21 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/02/2017
+ms.date: 08/22/2017
 ms.author: markvi
 ms.reviewer: calebb
 ms.translationtype: HT
-ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
-ms.openlocfilehash: 0f7e00d1fe6e47e4a04eb2853f09e195a03405ce
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: 20572ecbde79bc2722f3a25f297c92d8e722a3e8
 ms.contentlocale: de-de
-ms.lasthandoff: 08/04/2017
+ms.lasthandoff: 08/23/2017
 
 ---
 # <a name="conditional-access-in-azure-active-directory"></a>Bedingter Zugriff in Azure Active Directory
-
-> [!div class="op_single_selector"]
-> * [Azure-Portal](active-directory-conditional-access-azure-portal.md)
-> * [klassischen Azure-Portal](active-directory-conditional-access.md)
 
 In einer Welt, in der Mobilität und die Cloud an erster Stelle stehen, ermöglicht Azure Active Directory das einmalige Anmelden an Geräten, Apps und Diensten an jedem Ort. Aufgrund der steigenden Zahl von Geräten (z.B. „BYOD“), das Arbeiten außerhalb von Unternehmensnetzwerken und der Nutzung von SaaS-Apps von Drittanbietern, gelten für IT-Spezialisten zwei gegensätzliche Zielsetzungen:
 
@@ -73,11 +69,11 @@ Bei der aktuellen Implementierung von Azure Active Directory können Sie die fol
 
 - **Multi-Factor Authentication**: Sie können über die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) eine sichere Authentifizierung erzwingen. Als Anbieter können Sie Azure Multi-Factor oder einen lokalen Multi-Factor Authentication-Anbieter in Kombination mit Active Directory-Verbunddienste (AD FS) verwenden. Die mehrstufige Authentifizierung unterstützt den Schutz Ihrer Ressourcen vor dem Zugriff durch einen nicht autorisierten Benutzer, der möglicherweise Zugriff auf die Anmeldeinformationen eines gültigen Benutzers erlangt hat.
 
-- **Konformes Gerät**: Sie können die Richtlinien für den bedingten Zugriff auf Geräteebene festlegen. Sie können eine Richtlinie einrichten, bei der nur konforme Computer oder mobile Geräte, die in einer Anwendung zur Verwaltung mobiler Geräte registriert sind, auf Ihre Organisationsressourcen zugreifen können. Beispielsweise können Sie Intune verwenden, um die Gerätekompatibilität zu überprüfen und das Ergebnis zur Richtlinienerzwingung an Azure AD übermitteln, wenn der Benutzer versucht, auf eine Anwendung zuzugreifen. Ausführliche Anleitungen dazu, wie Intune zum Schutz von Apps und Daten eingesetzt werden kann, finden Sie unter „Schützen von Apps und Daten mit Microsoft Intune“. Sie können mithilfe von Intune auch Datenschutz für verlorene oder gestohlene Geräte erzwingen. Weitere Informationen finden Sie unter „Schützen Ihrer Daten mit vollständigem oder selektivem Löschen über Microsoft Intune“.
+- **Konformes Gerät**: Sie können die Richtlinien für den bedingten Zugriff auf Geräteebene festlegen. Sie können eine Richtlinie einrichten, bei der nur konforme Computer oder mobile Geräte, die in einer Verwaltung mobiler Geräte registriert sind, auf Ihre Organisationsressourcen zugreifen können. Beispielsweise können Sie Intune verwenden, um die Gerätekompatibilität zu überprüfen und das Ergebnis zur Richtlinienerzwingung an Azure AD übermitteln, wenn der Benutzer versucht, auf eine Anwendung zuzugreifen. Ausführliche Anleitungen dazu, wie Intune zum Schutz von Apps und Daten eingesetzt werden kann, finden Sie unter [Schützen von Apps und Daten mit Microsoft Intune](https://docs.microsoft.com/intune-classic/deploy-use/protect-apps-and-data-with-microsoft-intune). Sie können mithilfe von Intune auch Datenschutz für verlorene oder gestohlene Geräte erzwingen. Weitere Informationen finden Sie unter [Schützen Ihrer Daten mit vollständigem oder selektivem Löschen über Microsoft Intune](https://docs.microsoft.com/intune-classic/deploy-use/use-remote-wipe-to-help-protect-data-using-microsoft-intune).
 
-- **In die Domäne eingebundenes Gerät**: Sie können festlegen, dass das Gerät, das Sie zum Herstellen der Verbindung mit Azure Active Directory verwendet haben, ein in die Domäne eingebundenes Gerät sein muss. Diese Richtlinie gilt für Windows-Desktops, -Laptops und -Unternehmenstablets. Weitere Informationen zum Einrichten der automatischen Registrierung von in die Domäne eingebundenen Geräten bei Azure AD finden Sie unter [Automatische Geräteregistrierung bei Azure Active Directory für in Domänen eingebundene Windows-Geräte](active-directory-conditional-access-automatic-device-registration.md).
+- **In die Domäne eingebundenes Gerät:** Sie können festlegen, dass das Gerät, das Sie zum Herstellen der Verbindung mit Azure Active Directory verwendet haben, ein in die Domäne Ihres lokalen Active Directory (AD) eingebundenes Gerät sein muss. Diese Richtlinie gilt für Windows-Desktops, -Laptops und -Unternehmenstablets. 
 
-Wenn Sie in einer Richtlinie für den bedingten Zugriff mehr als eine Anforderung ausgewählt haben, können Sie auch die Anforderungen für deren Anwendung konfigurieren. Sie können auswählen, ob nur eine oder alle ausgewählten Kontrollen erforderlich sind.
+Wenn Sie mehrere Steuerelemente ausgewählt haben, können Sie auch konfigurieren, ob bei der Verarbeitung der Richtlinie alle erforderlich sind.
 
 ![Kontrolle](./media/active-directory-conditional-access-azure-portal/06.png)
 
@@ -137,10 +133,19 @@ Sie können die berechnete Anmelderisikostufe als Bedingung in einer Richtlinie 
 
 ### <a name="device-platforms"></a>Geräteplattformen
 
-Die Geräteplattform ist durch das Betriebssystem gekennzeichnet, das auf dem Gerät ausgeführt wird (Android, iOS, Windows Phone, Windows). Sie können die Geräteplattformen angeben, die in eine Richtlinie einbezogen bzw. davon ausgeschlossen werden.  
-Ändern Sie zum Verwenden von Geräteplattformen in der Richtlinie zuerst die Option „Konfigurieren“ in **Ja**, und wählen Sie dann einige oder alle Geräteplattformen aus, für die die Richtlinie gelten soll. Wenn Sie nur eine Geräteplattform auswählen, gilt die Richtlinie nur für die jeweilige Plattform. In diesem Fall sind Anmeldungen an anderen unterstützten Plattformen von der Richtlinie nicht betroffen.
+Die Geräteplattform ist durch das Betriebssystem gekennzeichnet, das auf dem Gerät ausgeführt wird:
+
+- Android
+- iOS
+- Windows Phone
+- Windows
+- macOS (Vorschau) 
 
 ![Bedingungen](./media/active-directory-conditional-access-azure-portal/02.png)
+
+Sie können die Geräteplattformen angeben, die in eine Richtlinie einbezogen bzw. davon ausgeschlossen werden.  
+Ändern Sie zum Verwenden von Geräteplattformen in der Richtlinie zuerst die Option „Konfigurieren“ in **Ja**, und wählen Sie dann einige oder alle Geräteplattformen aus, für die die Richtlinie gelten soll. Wenn Sie nur eine Geräteplattform auswählen, gilt die Richtlinie nur für die jeweilige Plattform. In diesem Fall sind Anmeldungen an anderen unterstützten Plattformen von der Richtlinie nicht betroffen.
+
 
 ### <a name="locations"></a>Standorte
 
@@ -198,4 +203,4 @@ Viele Intune-Kunden nutzen den bedingten Zugriff, um sicherzustellen, dass nur v
 
 Wenn Sie wissen möchten, wie Sie eine Richtlinie für den bedingten Zugriff konfigurieren, helfen Ihnen die Informationen unter [Erste Schritte mit dem bedingten Zugriff in Azure Active Directory](active-directory-conditional-access-azure-portal-get-started.md) weiter.
 
-Ausführliche Informationen darüber, was Sie wissen sollten und was Sie beim Konfigurieren von Richtlinien für den bedingten Zugriff vermeiden sollten, finden Sie unter 
+Wenn Sie bereit sind, Richtlinien für den bedingten Zugriff für Ihre Umgebung zu konfigurieren, lesen Sie unter [Best Practices für den bedingten Zugriff in Azure Active Directory](active-directory-conditional-access-best-practices.md) nach. 

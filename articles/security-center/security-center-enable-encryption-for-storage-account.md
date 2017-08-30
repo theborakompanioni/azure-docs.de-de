@@ -14,20 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/20/2016
 ms.author: terrylan
-translationtype: Human Translation
-ms.sourcegitcommit: 7b5df25f46a2824acb361401ab90c960b8e5978f
-ms.openlocfilehash: 5b580183002ae5c42cc08343cea7f659c635d590
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: b7b2e8a12cbab68da9c8fcc348e8e3c543607007
+ms.contentlocale: de-de
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="enable-encryption-for-azure-storage-account-in-azure-security-center"></a>Aktivieren der Verschlüsselung für Azure Storage-Konten in Azure Security Center
 Azure Security Center empfiehlt eventuell die Aktivierung der Azure Storage Service Encryption für ruhende Daten.
 
-Storage Service Encryption (SSE) verschlüsselt die Daten, wenn diese in Azure Storage geschrieben werden, und entschlüsselt sie vor dem Abrufen.  SSE steht zurzeit nur für den Azure Blob-Dienst zur Verfügung und kann für Blockblobs, Seitenblobs und Anfügeblobs verwendet werden.  Weitere Informationen finden Sie unter [Storage Service Encryption für ruhende Daten](../storage/storage-service-encryption.md).
+Storage Service Encryption (SSE) verschlüsselt die Daten, wenn diese in Azure Storage geschrieben werden, und entschlüsselt sie vor dem Abrufen.  SSE steht zurzeit nur für den Azure Blob-Dienst zur Verfügung und kann für Blockblobs, Seitenblobs und Anfügeblobs verwendet werden.  Weitere Informationen finden Sie unter [Storage Service Encryption für ruhende Daten](../storage/common/storage-service-encryption.md).
 
 
 > [!Note]
-> Nach der Aktivierung der Verschlüsselung werden nur neue Daten verschlüsselt. Alle vorhandenen Blobs in Ihrem Speicherkonto bleiben unverschlüsselt. Weitere Informationen zum Verschlüsseln vorhandener Blobs finden Sie unter [Storage Service Encryption – häufig gestellte Fragen](../storage/storage-service-encryption.md#frequently-asked-questions-about-storage-service-encryption-for-data-at-rest).
+> Nach der Aktivierung der Verschlüsselung werden nur neue Daten verschlüsselt. Alle vorhandenen Blobs in Ihrem Speicherkonto bleiben unverschlüsselt. Weitere Informationen zum Verschlüsseln vorhandener Blobs finden Sie unter [Storage Service Encryption – häufig gestellte Fragen](../storage/common/storage-service-encryption.md#frequently-asked-questions-about-storage-service-encryption-for-data-at-rest).
 >
 >
 
@@ -53,7 +54,7 @@ Sie haben nun die Speicherverschlüsselung für **storageacct1** aktiviert.
 ## <a name="see-also"></a>Weitere Informationen
 In diesem Dokument wird erläutert, wie Sie die Security Center-Empfehlungen in „Aktivieren der Verschlüsselung für Azure Storage-Konten“ umsetzen. Weitere Informationen zu Azure Storage Service Encryption finden Sie unter folgenden Ressourcen:
 
-* [Azure Storage Service Encryption für ruhende Daten](../storage/storage-service-encryption.md)
+* [Azure Storage Service Encryption für ruhende Daten](../storage/common/storage-service-encryption.md)
 
 Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
 
@@ -68,9 +69,4 @@ Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
 [1]: ./media/security-center-enable-encryption-for-storage-account/enable-encryption-for-storage-account.png
 [2]: ./media/security-center-enable-encryption-for-storage-account/enable-storage-encryption.png
 [3]: ./media/security-center-enable-encryption-for-storage-account/encryption-blade.png
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

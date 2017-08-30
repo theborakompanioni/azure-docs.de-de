@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 09/06/2016
 ms.author: lmazuel
 ms.translationtype: HT
-ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
-ms.openlocfilehash: 3e6bcf301a9257a60e6b921934bb6a04b4dd5d53
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: c9df4e1f7677b2ed10684f6f3c981f2abf64f171
 ms.contentlocale: de-de
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="installing-python-and-the-sdk"></a>Installieren von Python und SDK
@@ -67,13 +67,13 @@ Sie können jede Bibliothek einzeln für jeden Azure-Dienst installieren:
 Vorschaupakete können mit dem `--pre` -Flag installiert werden:
 
 ```console
-   $ pip install --pre azure-mgmt-compute # will install only the latest Compute Management library
+   $ pip install --pre azure-mgmt-compute # installs only the latest Compute Management library
 ```
 
 Sie können auch eine Gruppe von Azure-Bibliotheken mithilfe des Metapakets `azure` in einer einzelnen Zeile installieren. Da noch nicht alle Pakete in diesem veröffentlichten Metapaket stabil sind, ist das Metapaket `azure` weiter in der Vorschauphase.
 Die Kernpakete gelten jedoch hinsichtlich Qualität und Vollständigkeit des Codes derzeit als stabil.
 
-* Sie werden sobald wie möglich in Übereinstimmung mit anderen Sprachen offiziell so bezeichnet werden.
+* Sie werden sobald wie möglich in Übereinstimmung mit anderen Sprachen offiziell so bezeichnet.
   Bis dahin planen wir keine weiteren größeren Änderungen.
 
 Da es sich um eine Vorabversion handelt, müssen Sie das `--pre` -Flag verwenden:
@@ -109,13 +109,13 @@ Für Linux oder Mac OS werden die folgenden wichtigen Azure-Szenarien unterstüt
 2. Ausführen Ihrer App in einem virtuellen Linux-Computer
 3. Entwickeln und Veröffentlichen auf Azure-Websites mit Git
 
-Beim ersten Szenario können Sie vielseitige Web-Apps erstellen, die von den Vorteilen der Azure PaaS-Funktionen profitieren, wie beispielsweise [Blobspeicher](virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json), [Warteschlangenspeicher](storage/storage-python-how-to-use-queue-storage.md), [Tabellenspeicher](storage/storage-python-how-to-use-table-storage.md) usw. über Python-Wrapper für die Azure-REST-APIs. Diese funktionieren unter Windows, Mac und Linux identisch.  Sie können diese Clientbibliotheken auch von Ihrem lokalen Entwicklungscomputer oder einem virtuellen Linux-Computer verwenden, der auf Azure ausgeführt wird.
+Beim ersten Szenario können Sie vielseitige Web-Apps erstellen, die von den Vorteilen der Azure PaaS-Funktionen profitieren, wie beispielsweise [Blobspeicher](virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json), [Warteschlangenspeicher](storage/queues/storage-python-how-to-use-queue-storage.md), [Tabellenspeicher](cosmos-db/table-storage-how-to-use-python.md) usw. über Python-Wrapper für die Azure-REST-APIs. Diese funktionieren unter Windows, Mac und Linux identisch.  Sie können diese Clientbibliotheken auch von Ihrem lokalen Entwicklungscomputer oder einem virtuellen Linux-Computer verwenden, der auf Azure ausgeführt wird.
 
 Bei dem VM-Szenario starten Sie einen virtuellen Linux-Computer Ihrer Wahl (Ubuntu, CentOS, Suse) und führen eine beliebige Anwendung aus bzw. verwalten diese.  Beispielsweise können Sie [IPython][IPython]-REPL/Notebook auf Ihrem Windows-/Mac-/Linux-Computer ausführen und Ihren Browser auf einen virtuellen Linux- oder Windows-Computer mit Multi-Proc verweisen, der die IPython-Engine in Azure ausführt.
 
 Informationen zur Einrichtung eines virtuellen Linux-Computers finden Sie im Tutorial [Erstellen eines virtuellen Linux-Computers](virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) .
 
-Mit Git-Bereitstellung können Sie eine Python-Webanwendung entwickeln und sie auf einer Azure-Website von jedem beliebigen Betriebssystem aus veröffentlichen.  Wenn Sie das Repository in Azure übertragen, erstellt es automatisch eine virtuelle Umgebung und installiert mit pip die erforderlichen Pakete.
+Mit Git-Bereitstellung können Sie eine Python-Webanwendung entwickeln und sie auf einer Azure-Website von jedem beliebigen Betriebssystem aus veröffentlichen.  Wenn Sie das Repository in Azure übertragen, erstellt es automatisch eine virtuelle Umgebung und installiert die erforderlichen Pakete mit pip.
 
 Weitere Informationen zum Entwickeln und Veröffentlichen von Azure-Websites finden Sie in den Tutorials zum [Erstellen von Websites mit Django](app-service-web/web-sites-python-create-deploy-django-app.md), [Erstellen von Websites mit Bottle](app-service-web/web-sites-python-create-deploy-bottle-app.md) und [Erstellen von Websites mit Flask](app-service-web/web-sites-python-create-deploy-flask-app.md). Weitere allgemeine Informationen zur Verwendung aller kompatiblen WSGI-Frameworks finden Sie unter [Konfigurieren von Python mit Azure-Websites](app-service-web/web-sites-python-configure.md).
 
@@ -162,5 +162,5 @@ Weitere Informationen zum Entwickeln und Veröffentlichen von Azure-Websites fin
 [Configuring Python with Azure Websites]: web-sites-python-configure.md
 [table storage]: storage-python-how-to-use-table-storage.md
 [queue storage]: storage-python-how-to-use-queue-storage.md
-[blob storage]: storage-python-how-to-use-blob-storage.md
+[blob storage]:storage/blobs/storage-python-how-to-use-blob-storage.md
 

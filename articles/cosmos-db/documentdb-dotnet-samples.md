@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 02/22/2017
 ms.author: rnagpal
 ms.translationtype: HT
-ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
-ms.openlocfilehash: e7b910ae94b178b5370d4938698e8bcce10775ea
+ms.sourcegitcommit: 368589509b163cacf495fd0be893a8953fe2066e
+ms.openlocfilehash: 5f0a7f59c114ab65a19617a62d39dcfa93a25c00
 ms.contentlocale: de-de
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 08/17/2017
 
 ---
 # <a name="azure-cosmos-db-net-examples-for-the-documentdb-api"></a>Azure Cosmos DB: .NET-Beispiele für die DocumentDB-API
@@ -137,6 +137,16 @@ Die Abfragedokumentdatei [azure-documentdb-dotnet/samples/code-samples/Queries/P
 | [Abfrage mit ORDER BY für partitionierte Sammlungen](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs#L737-L810) |[DocumentQueryable.CreateDocumentQuery](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.linq.documentqueryable.createdocumentquery.aspx) |
 
 Weitere Informationen zum Schreiben von Abfragen finden Sie unter [SQL-Abfragen für Azure Cosmos DB-DocumentDB-API](documentdb-sql-query.md).
+
+## <a name="change-feed-examples"></a>Beispiel für einen Änderungsfeed 
+Das ChangeFeed-Beispiel [azure-documentdb-dotnet/samples/code-samples/ChangeFeed/Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ServerSideScripts/Program.cs) veranschaulicht, wie Sie die folgenden Aufgaben durchführen. 
+
+| Aufgabe | API-Referenz |
+| --- | --- |
+| [Lesen des Änderungsfeeds](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ChangeFeed/Program.cs#L132) |[DocumentClient.CreateDocumentChangeFeedQuery](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdocumentchangefeedquery.aspx) | 
+| [Lesen der Partitionsschlüsselbereiche](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ChangeFeed/Program.cs#L118) |[DocumentClient.ReadPartitionKeyRangeFeedAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.readpartitionkeyrangefeedasync.aspx) | 
+
+Das Beispiel für den Prozessor für den Änderungfeed [Change Feed Migration Tool](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/ChangeFeedMigrationTool) (Änderungsfeed-Migrationstool) veranschaulicht, wie Sie die Prozessorbibliothek für Änderungsfeeds zum Replizieren von Daten in einer anderen Cosmos DB-Sammlung verwenden.   
 
 ## <a name="server-side-programming-examples"></a>Serverseitige Programmierbeispiele
 Die Datei [azure-documentdb-dotnet/samples/code-samples/ServerSideScripts/Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ServerSideScripts/Program.cs) für die serverseitige Programmierung veranschaulicht, wie Sie die folgenden Aufgaben durchführen.

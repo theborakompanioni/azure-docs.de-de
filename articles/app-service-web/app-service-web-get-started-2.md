@@ -11,14 +11,14 @@ ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.date: 05/12/2016
 ms.author: cephalin
-translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: 34cccf6a0962f72e04a90516fa7643db2533d85d
-ms.lasthandoff: 04/06/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: cf07c4142d025517637e31b27f1f34b6d402d6fe
+ms.contentlocale: de-de
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="add-functionality-to-your-first-web-app"></a>Hinzufügen von Funktionen zu Ihrer ersten Web-App
@@ -58,7 +58,7 @@ In diesem Abschnitt erfahren Sie, wie Sie Ihrer App ganz einfach eine Authentifi
     Wenn Sie nun eine nicht authentifizierte Sitzung in einem anderen Browser öffnen, wird ein Anmeldebildschirm angezeigt, sobald Sie zur gleichen URL navigieren.  
     <!-- ![Authenticate - login page](./media/app-service-web-get-started/aad-login-browse.png)  -->
     Falls Sie Azure Active Directory noch nie verwendet haben, enthält Ihr Standardverzeichnis ggf. keine Azure AD-Benutzer. In diesem Fall ist darin als einziges Konto wahrscheinlich das Microsoft-Konto mit Ihrem Azure-Abonnement vorhanden. Dies ist der Grund dafür, warum Sie in demselben Browser zuvor automatisch an der App angemeldet wurden.
-   Sie können dasselbe Microsoft-Konto verwenden, um sich auf dieser Anmeldeseite anzumelden.
+    Sie können dasselbe Microsoft-Konto verwenden, um sich auf dieser Anmeldeseite anzumelden.
 
 Herzlichen Glückwunsch! Der gesamte eingehende Datenverkehr wird nun für Ihre Web-App authentifiziert.
 
@@ -150,8 +150,8 @@ Sie können sich darüber informieren, welche anderen Möglichkeiten Sie mit der
 * [Zugreifen auf lokale Ressourcen](web-sites-hybrid-connection-get-started.md) : Greifen Sie auf eine bereits vorhandene lokale Datenbank oder auf ein bereits vorhandenes CRM-System zu.
 * [Sichern der App](web-sites-backup.md) : Richten Sie Sicherung und Wiederherstellung für Ihre Web-App ein. Sorgen Sie für unerwartete Ausfälle und für deren Behebung vor.
 * [Aktivieren von Diagnoseprotokollen](web-sites-enable-diagnostic-log.md) : Lesen Sie die IIS-Protokolle von Azure oder aus der Anwendungsablaufverfolgung. Lesen Sie sie in einem Datenstrom, laden Sie sie herunter, oder portieren Sie sie zur direkten Analyse in [Application Insights](../application-insights/app-insights-overview.md) .
-* [Überprüfen der App auf Schwachstellen](https://azure.microsoft.com/blog/web-vulnerability-scanning-for-azure-app-service-powered-by-tinfoil-security/) -
-  : Überprüfen Sie Ihre Web-App mithilfe der Dienste von [Tinfoil Security](https://www.tinfoilsecurity.com/) auf moderne Bedrohungen.
+* [Überprüfen der App auf Schwachstellen:](https://azure.microsoft.com/blog/web-vulnerability-scanning-for-azure-app-service-powered-by-tinfoil-security/) -
+  Überprüfen Sie Ihre Web-App mithilfe der Dienste von [Tinfoil Security](https://www.tinfoilsecurity.com/) auf moderne Bedrohungen.
 * [Ausführen von Hintergrundaufträgen](../azure-functions/functions-overview.md): Führen Sie Aufträge für Datenverarbeitung, Berichterstellung usw. aus.
 * [Informationen zur Funktionsweise von App Service](../app-service/app-service-how-works-readme.md)
 

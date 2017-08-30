@@ -1,6 +1,6 @@
 ---
-title: "Fehlertoleranz der Kopieraktivität von Azure Data Factory – Überspringen inkompatibler Zeilen | Microsoft-Dokumentation"
-description: "Hier finden Sie Informationen zur Fehlertoleranz durch Überspringen der inkompatiblen Zeilen beim Kopieren unter Verwendung von Azure Data Factory."
+title: "Hinzufügen von Fehlertoleranz der Kopieraktivität von Azure Data Factory durch Überspringen inkompatibler Zeilen | Microsoft-Dokumentation"
+description: "Erfahren Sie, wie Sie Fehlertoleranz der Kopieraktivität von Azure Data Factory durch Überspringen inkompatibler Zeilen hinzufügen."
 services: data-factory
 documentationcenter: 
 author: linda33wj
@@ -14,33 +14,36 @@ ms.topic: article
 ms.date: 07/19/2017
 ms.author: jingwang
 ms.translationtype: HT
-ms.sourcegitcommit: 0425da20f3f0abcfa3ed5c04cec32184210546bb
-ms.openlocfilehash: d613537657af3bbe379a53e92532bf6b184d762b
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: e2a108752259d5da3b401666c6bdbaad13b7ea90
 ms.contentlocale: de-de
-ms.lasthandoff: 07/20/2017
+ms.lasthandoff: 08/21/2017
 
 ---
-# <a name="copy-activity-fault-tolerance---skip-incompatible-rows"></a>Fehlertoleranz der Kopieraktivität – Überspringen inkompatibler Zeilen
+# <a name="add-fault-tolerance-in-copy-activity-by-skipping-incompatible-rows"></a>Hinzufügen von Fehlertoleranz der Kopieraktivität durch Überspringen inkompatibler Zeilen
 
-Beim Kopieren von Daten zwischen Quell- und Senkendatenspeichern bietet die [Kopieraktivität](data-factory-data-movement-activities.md) verschiedene Optionen für den Umgang mit inkompatiblen Zeilen. Die Kopieraktivität kann entweder mit einem Fehler abgebrochen werden, wenn sie auf inkompatible Daten stößt (Standardverhalten), oder sie kann den Kopiervorgang für die übrigen Daten fortsetzen und die inkompatiblen Zeilen überspringen. Darüber hinaus können die inkompatiblen Zeilen in Azure Blob Storage protokolliert werden, damit Sie die Fehlerursache ermitteln, die Daten in der Datenquelle korrigieren und den Vorgang wiederholen können.
+Die [Kopieraktivität](data-factory-data-movement-activities.md) von Azure Data Factory bietet beim Kopieren von Daten zwischen Quell- und Senkendatenspeichern zwei Optionen für den Umgang mit inkompatiblen Zeilen:
+
+- Die Kopieraktivität kann mit einem Fehler abgebrochen werden, wenn sie auf inkompatible Daten stößt (Standardverhalten).
+- Der Kopiervorgang kann für alle Daten fortgesetzt werden, indem Fehlertoleranz hinzugefügt wird und die inkompatiblen Datenzeilen übersprungen werden. Darüber hinaus können die inkompatiblen Zeilen in Azure Blob Storage protokolliert werden. Sie können dann das Protokoll überprüfen, um die Ursache des Fehlers zu ermitteln, die Daten in der Datenquelle korrigieren und die Kopieraktivität wiederholen.
 
 ## <a name="supported-scenarios"></a>Unterstützte Szenarien
-Die Kopieraktivität unterstützt momentan die Erkennung, Überspringung und Protokollierung der folgenden inkompatiblen Situationen beim Kopieren:
+Die Kopieraktivität unterstützt drei Szenarien zum Erkennen, Überspringen und Protokollieren inkompatibler Daten:
 
-- **Datentypinkompatibilität zwischen nativen Quell- und Senkentypen**
+- **Inkompatibilität zwischen dem Quelldatentyp und dem nativen Senkentyp**
 
-    Beispiel: Sie möchten Daten aus einer CSV-Datei in Azure Blob Storage an Azure SQL-Datenbank kopieren, und das in Azure SQL-Datenbank definierte Schema enthält drei Spalten vom Typ *INT*. In diesem Fall werden Zeilen mit numerischen Daten (etwa `123,456,789`) erfolgreich aus der CSV-Quelldatei kopiert. Zeilen mit nicht numerischen Wert (etwa `123,456,abc`) werden dagegen als nicht kompatible Zeilen übersprungen.
+    Beispiel: Kopieren von Daten aus einer CSV-Datei in Blob Storage in eine SQL-Datenbank mit einer Schemadefinition, die drei Spalten vom Typ **INT** enthält. Die Zeilen der CSV-Datei, die numerische Daten wie z.B. `123,456,789` enthalten, werden erfolgreich in den Senkenspeicher kopiert. Die Zeilen mit nicht numerischen Werten, z.B. `123,456,abc`, werden dagegen als inkompatibel erkannt und übersprungen.
 
-- **Nicht übereinstimmende Spaltenanzahl zwischen Quelle und Senke**
+- **Fehlende Übereinstimmung bei der Anzahl der Spalten zwischen der Quelle und der Senke**
 
-    Beispiel: Sie möchten Daten aus einer CSV-Datei in Azure Blob Storage an Azure SQL-Datenbank kopieren, und das in SQL Azure definierte Schema umfasst sechs Spalten. In diesem Fall werden Zeilen mit sechs Spalten erfolgreich aus der CSV-Quelldatei kopiert. Zeilen mit einer anderen Spaltenanzahl werden dagegen als nicht kompatible Zeilen übersprungen.
+    Beispiel: Kopieren von Daten aus einer CSV-Datei in Blob Storage in eine SQL-Datenbank mit einer Schemadefinition, die sechs Spalten enthält. Die Zeilen der CSV-Datei, die sechs Spalten enthalten, werden erfolgreich in den Senkenspeicher kopiert. Die Zeilen der CSV-Datei mit weniger oder mehr als sechs Spalten werden als inkompatibel erkannt und übersprungen.
 
-- **Primärschlüsselverletzung beim Schreiben in die relationale Datenbank**
+- **Primärschlüsselverletzung beim Schreiben in eine relationale Datenbank**
 
-    Beispiel: Sie möchten Daten aus SQL Server in Azure SQL-Datenbank kopieren, und in der Senke (Azure SQL-Datenbank) ist ein Primärschlüssel definiert, in der Quelle (SQL Server) jedoch nicht. Die doppelten Zeilen, die in der Quelle vorhanden sein können, sind beim Schreiben in die Senke nicht zulässig. In diesem Fall kopiert die Kopieraktivität nur die erste Zeile in die Senke und überspringt alle weiteren Zeilen mit doppeltem Primärschlüsselwert aus der Quelle.
+    Beispiel: Kopieren von Daten von einer SQL Server-Instanz in eine SQL-Datenbank. In der SQL-Datenbank der Senke ist ein Primärschlüssel definiert, in der SQL Server-Instanz der Quelle ist dagegen kein Primärschlüssel definiert. Die doppelten Zeilen, die in der Quelle vorhanden sind, können nicht in die Senke kopiert werden. Die Kopieraktivität kopiert nur die erste Zeile der Quelldaten in die Senke. Die nachfolgenden Quellzeilen, die den doppelten Primärschlüsselwert enthalten, werden als inkompatibel erkannt und übersprungen.
 
 ## <a name="configuration"></a>Konfiguration
-Das folgende Beispiel bietet eine JSON-Definition zum Konfigurieren des Überspringens inkompatibler Datenzeilen in der Kopieraktivität:
+Das folgende Beispiel umfasst eine JSON-Definition zum Konfigurieren des Überspringens inkompatibler Datenzeilen in der Kopieraktivität:
 
 ```json
 "typeProperties": {
@@ -60,22 +63,22 @@ Das folgende Beispiel bietet eine JSON-Definition zum Konfigurieren des Überspr
 
 | Eigenschaft | Beschreibung | Zulässige Werte | Erforderlich |
 | --- | --- | --- | --- |
-| enableSkipIncompatibleRow | Gibt an, ob inkompatible Zeilen beim Kopieren übersprungen werden sollen. | true<br/>False (Standardwert) | Nein |
-| redirectIncompatibleRowSettings | Eine Gruppe von Eigenschaften, die angegeben werden können, wenn Sie die inkompatiblen Zeilen protokollieren möchten. | &nbsp; | Nein |
-| linkedServiceName | Der verknüpfte Azure Storage-Dienst zum Speichern des Protokolls mit allen übersprungenen Zeilen. | Geben Sie den Namen eines verknüpften Diensts vom Typ [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) oder [AzureStorageSas](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) an, um auf die Storage-Instanz zu verweisen, in der die Protokolldatei gespeichert wird. | Nein |
-| path | Der Pfad der Protokolldatei mit allen übersprungenen Zeilen. | Geben Sie den gewünschten Blob Storage-Pfad für die Protokollierung der inkompatiblen Daten an. Wenn Sie keinen Pfad angeben, erstellt der Dienst automatisch einen Container. | Nein |
+| **enableSkipIncompatibleRow** | Gibt an, ob inkompatible Zeilen beim Kopieren übersprungen werden sollen. | true<br/>False (Standardwert) | Nein |
+| **redirectIncompatibleRowSettings** | Eine Gruppe von Eigenschaften, die angegeben werden können, wenn Sie die inkompatiblen Zeilen protokollieren möchten. | &nbsp; | Nein |
+| **linkedServiceName** | Der verknüpfte Azure Storage-Dienst zum Speichern des Protokolls mit den übersprungenen Zeilen. | Der Name eines verknüpften Diensts vom Typ [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) oder [AzureStorageSas](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service), der auf die Storage-Instanz verweist, in der die Protokolldatei gespeichert werden soll. | Nein |
+| **path** | Der Pfad der Protokolldatei, die die übersprungenen Zeilen enthält. | Geben Sie den gewünschten Blob Storage-Pfad für die Protokollierung der inkompatiblen Daten an. Wenn Sie keinen Pfad angeben, erstellt der Dienst automatisch einen Container. | Nein |
 
 ## <a name="monitoring"></a>Überwachung
 Nach Abschluss der Kopieraktivität wird die Anzahl übersprungener Zeilen im Überwachungsabschnitt angezeigt:
 
-![Überwachung des Überspringens inkompatibler Zeilen](./media/data-factory-copy-activity-fault-tolerance/skip-incompatible-rows-monitoring.png)
+![Überwachen übersprungener inkompatibler Zeilen](./media/data-factory-copy-activity-fault-tolerance/skip-incompatible-rows-monitoring.png)
 
-Wenn Sie das Protokollieren inkompatibler Zeilen konfiguriert haben, können Sie anhand der Protokolldatei unter `https://[your-blob-account].blob.core.windows.net/[path-if-configured]/[copy-activity-run-id]/[auto-generated-GUID].csv` ermitteln, was übersprungen wurde und aus welchem Grund.
+Wenn Sie das Protokollieren inkompatibler Zeilen konfiguriert haben, finden Sie die Protokolldatei unter folgendem Pfad: `https://[your-blob-account].blob.core.windows.net/[path-if-configured]/[copy-activity-run-id]/[auto-generated-GUID].csv` In der Protokolldatei können Sie die übersprungenen Zeilen und die Ursache der Inkompatibilität einsehen.
 
 In der Datei werden sowohl die ursprünglichen Daten als auch der entsprechende Fehler protokolliert. Der Inhalt der Protokolldatei kann beispielsweise wie folgt aussehen:
 ```
 data1, data2, data3, UserErrorInvalidDataValue,Column 'Prop_2' contains an invalid value 'data3'. Cannot convert 'data3' to type 'DateTime'.,
-data4, data5, data6, Violation of PRIMARY KEY constraint 'PK_tblintstrdatetimewithpk'. Cannot insert duplicate key in object 'dbo.tblintstrdatetimewithpk'. The duplicate key value is (data4).,
+data4, data5, data6, Violation of PRIMARY KEY constraint 'PK_tblintstrdatetimewithpk'. Cannot insert duplicate key in object 'dbo.tblintstrdatetimewithpk'. The duplicate key value is (data4).
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

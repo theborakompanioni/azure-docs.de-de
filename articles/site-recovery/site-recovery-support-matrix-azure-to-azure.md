@@ -15,10 +15,10 @@ ms.workload: storage-backup-recovery
 ms.date: 06/10/2017
 ms.author: sujayt
 ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
-ms.openlocfilehash: e8ff96587a840236adfb277b3a33b11db71f7d8e
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 482bcf08b1256e26e15f7093fda621da4fdd5344
 ms.contentlocale: de-de
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="azure-site-recovery-support-matrix-for-replicating-from-azure-to-azure"></a>Azure Site Recovery-Supportmatrix zum Replizieren aus Azure in Azure
@@ -131,10 +131,10 @@ Mit Site Recovery migrierte virtuelle Computer | Unterstützt | Wenn ein VMware-
 
 **Konfiguration** | **Unterstützt/Nicht unterstützt.** | **Hinweise:**
 --- | --- | ---
-Maximale Datenträgergröße für das Betriebssystem | 1023 GB | Weitere Informationen finden Sie unter [Von VMs verwendete Datenträger](../storage/storage-about-disks-and-vhds-windows.md#disks-used-by-vms)
-Maximale Größe des Datenträgers für Daten | 1023 GB | Weitere Informationen finden Sie unter [Von VMs verwendete Datenträger](../storage/storage-about-disks-and-vhds-windows.md#disks-used-by-vms)
+Maximale Datenträgergröße für das Betriebssystem | 1023 GB | Weitere Informationen finden Sie unter [Von VMs verwendete Datenträger](../virtual-machines/windows/about-disks-and-vhds.md#disks-used-by-vms)
+Maximale Größe des Datenträgers für Daten | 1023 GB | Weitere Informationen finden Sie unter [Von VMs verwendete Datenträger](../virtual-machines/windows/about-disks-and-vhds.md#disks-used-by-vms)
 Anzahl von Datenträgern für Daten | Bis zu 64, sofern von einer bestimmten Größe für virtuelle Azure-Computer unterstützt | Weitere Informationen finden Sie unter [Größen für virtuelle Azure-Computer](../virtual-machines/windows/sizes.md).
-Temporärer Datenträger | Immer von der Replikation ausgeschlossen | Temporäre Datenträger sind immer von der Replikation ausgeschlossen. Gemäß den Azure-Richtlinien sollten Sie keine persistenten Daten auf einem temporären Datenträger speichern. Unter [Temporärer Datenträger für virtuelle Azure-Computer](../storage/storage-about-disks-and-vhds-windows.md#temporary-disk) finden Sie weitere Informationen.
+Temporärer Datenträger | Immer von der Replikation ausgeschlossen | Temporäre Datenträger sind immer von der Replikation ausgeschlossen. Gemäß den Azure-Richtlinien sollten Sie keine persistenten Daten auf einem temporären Datenträger speichern. Unter [Temporärer Datenträger für virtuelle Azure-Computer](../virtual-machines/windows/about-disks-and-vhds.md#temporary-disk) finden Sie weitere Informationen.
 Datenänderungsrate auf dem Datenträger | Maximal 6 Mbit/s pro Datenträger | Wenn die durchschnittliche Datenänderungsrate auf dem Datenträger dauerhaft über 6 Mbit/s liegt, kann die Replikation nicht folgen. Wenn nur gelegentlich viele Daten anfallen und die Datenänderungsrate zeitweise über 6 Mbit/s liegt und dann zurückgeht, kann die Replikation folgen. In diesem Fall kann es möglicherweise zu etwas verzögerten Wiederherstellungspunkten kommen.
 Datenträger in Standardspeicherkonten | Unterstützt |
 Datenträger in Storage Premium-Konten | Unterstützt | Wenn ein virtueller Computer Datenträger in Premium- und Standard-Speicherkonten aufweist, können Sie für jeden Datenträger ein eigenes Zielspeicherkonto auswählen, um sicherzustellen, dass die gleiche Speicherkonfiguration in der Zielregion vorhanden ist.
@@ -152,7 +152,7 @@ ZRS | Nicht unterstützt |
 Kalter und heißer Speicher | Nicht unterstützt | Datenträger für virtuelle Computer werden auf kaltem und heißem Speicher nicht unterstützt.
 
 >[!IMPORTANT]
-> Halten Sie sich an die [Speichervorgaben](../storage/storage-scalability-targets.md#scalability-targets-for-virtual-machine-disks) für virtuellen Azure-Quellcomputer, um Leistungsprobleme zu vermeiden. Wenn Sie die Standardeinstellungen übernehmen, erstellt Site Recovery die erforderlichen Speicherkonten auf Basis der Quellkonfiguration. Wenn Sie Einstellungen anpassen, achten Sie darauf, die Speicherempfehlungen für virtuelle-Quellcomputer einzuhalten (../storage/storage-scalability-targets.md#scalability-targets-for-virtual-machine-disks).
+> Halten Sie sich an die [Speichervorgaben](../storage/common/storage-scalability-targets.md#scalability-targets-for-virtual-machine-disks) für virtuellen Azure-Quellcomputer, um Leistungsprobleme zu vermeiden. Wenn Sie die Standardeinstellungen übernehmen, erstellt Site Recovery die erforderlichen Speicherkonten auf Basis der Quellkonfiguration. Wenn Sie Einstellungen anpassen, achten Sie darauf, die Speicherempfehlungen für virtuelle-Quellcomputer einzuhalten (../storage/common/storage-scalability-targets.md#scalability-targets-for-virtual-machine-disks).
 
 ## <a name="support-for-network-configuration"></a>Unterstützung der Netzwerkkonfiguration
 **Konfiguration** | **Unterstützt/Nicht unterstützt.** | **Hinweise:**

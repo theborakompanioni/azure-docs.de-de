@@ -1,6 +1,6 @@
 ---
-title: "Geplante Wartung für virtuelle Linux-Computer in Azure | Microsoft-Dokumentation"
-description: "Grundlagen zur geplanten Wartung in Azure – was sie ist und wie sie sich auf die Verfügbarkeit Ihrer virtuellen in Azure ausgeführten Windows-Computer auswirkt."
+title: "Wartung und Updates für virtuelle Linux-Computer in Azure | Microsoft-Dokumentation"
+description: "Übersicht über Wartung und Updates für virtuelle Linux-Computer, die in Azure ausgeführt werden."
 services: virtual-machines-linux
 documentationcenter: 
 author: zivr
@@ -13,28 +13,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/27/2017
+ms.date: 08/14/2017
 ms.author: zivr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
-ms.openlocfilehash: f5e52f4642b85a75f0c9f1892fbf0e565aa8b35b
+ms.translationtype: HT
+ms.sourcegitcommit: 368589509b163cacf495fd0be893a8953fe2066e
+ms.openlocfilehash: 6ead5f0b6a065710a70f1e44d9672c6d8cc4c1e2
 ms.contentlocale: de-de
-ms.lasthandoff: 06/03/2017
-
+ms.lasthandoff: 08/17/2017
 
 ---
 
 # <a name="planned-maintenance-for-linux-virtual-machines"></a>Geplante Wartung für virtuelle Linux-Computer 
 
-Microsoft Azure führt regelmäßig weltweit Updates aus, um die Zuverlässigkeit, Leistung und Sicherheit der Hostinfrastruktur zu verbessern, die virtuellen Computern unterliegt. Diese Updates reichen von Patches für Softwarekomponenten in der Hostumgebung (Betriebssystem, Hypervisor und diverse auf dem Host bereitgestellte Agents), Aktualisierungen von Netzwerkkomponenten bis hin zur Außerbetriebnahme von Hardware.
+[!INCLUDE [virtual-machines-common-planned-maintenance](../../../includes/virtual-machines-common-planned-maintenance.md)]
 
-Die Mehrheit dieser Updates wird ohne Auswirkungen auf gehostete virtuelle Computer oder Cloud Services ausgeführt.
+## <a name="next-steps"></a>Nächste Schritte
 
-Es gibt jedoch Situationen, in denen Updates Auswirkungen auf gehostete virtuelle Computer haben:
+Der [Azure-Metadatadienst](instance-metadata-service.md) ermöglicht Ihnen das Ermitteln von Informationen zu Ihrem in Azure gehosteten virtuellen Computer. 
 
--   In „Beibehalten der Wartung von virtuellen Computern (direkte Migration von virtuellen Computern)“ wird eine Klasse von Updates beschrieben, bei denen virtuelle Computer während der Wartung nicht neu gestartet werden.
-
--   Neustarten von virtuellen Computern zu Wartungszwecken, wobei ein Neustart oder eine erneute Bereitstellung auf gehosteten virtuellen Computern erforderlich ist.
-
-Beachten Sie, dass auf dieser Seite beschrieben wird, wie Microsoft Azure die geplante Wartung ausführt. Weitere Informationen zu ungeplanten Ereignissen (Ausfällen) finden Sie unter [Verwalten der Verfügbarkeit virtueller Computer](../linux/manage-availability.md).
 

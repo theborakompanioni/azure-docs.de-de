@@ -16,11 +16,11 @@ ms.date: 07/20/2017
 ms.author: lenalepa
 ms.custom: aaddev
 ms.reviewer: luleon
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: e8cc9b790224891a0770b18fe2edb8e1bbfd5b72
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 3be341bcb897a1481f145825429a1a94dfaae3b0
 ms.contentlocale: de-de
-ms.lasthandoff: 03/31/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="integrating-applications-with-azure-active-directory"></a>Integrieren von Anwendungen in Azure Active Directory
@@ -64,7 +64,7 @@ Wenn beispielsweise eine Webclientanwendung Kalenderinformationen über einen Be
 
 Das Consent Framework basiert auf OAuth 2.0 und seinen verschiedenen Datenflüssen, z. B. Authorization Code Grant und Client Credentials Grant. Dabei kommen öffentliche oder vertrauliche Clients zum Einsatz. Durch die Verwendung von OAuth 2.0 ermöglicht Azure AD die Entwicklung zahlreicher verschiedener Typen von Clientanwendungen, z. B. für Telefon, Tablet, Server oder Web, und ermöglicht den Zugriff auf die erforderlichen Ressourcen.
 
-Ausführlichere Informationen zum Consent Framework finden Sie unter [OAuth 2.0 in Azure AD](https://msdn.microsoft.com/library/azure/dn645545.aspx) und [Authentifizierungsszenarien für Azure AD](active-directory-authentication-scenarios.md), und wie Sie autorisierten Zugriff auf Office 365 über Microsoft Graph erhalten, erfahren Sie unter [App-Authentifizierung mit Microsoft Graph](https://graph.microsoft.io/docs/authorization/auth_overview).
+Ausführlichere Informationen zum Consent Framework finden Sie unter [OAuth 2.0 in Azure AD](https://msdn.microsoft.com/library/azure/dn645545.aspx) und [Authentifizierungsszenarien für Azure AD](active-directory-authentication-scenarios.md). Wie Sie autorisierten Zugriff auf Office 365 über Microsoft Graph erhalten, erfahren Sie unter [App-Authentifizierung mit Microsoft Graph](https://graph.microsoft.io/docs/authorization/auth_overview).
 
 #### <a name="example-of-the-consent-experience"></a>Beispiel für die Zustimmungsbenutzeroberfläche
 Die folgenden Schritte zeigen, wie das Consent Framework in der Benutzeroberfläche für den Anwendungsentwickler und für den Benutzer umgesetzt wird.

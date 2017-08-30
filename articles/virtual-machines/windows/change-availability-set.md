@@ -147,8 +147,8 @@ Das folgende Skript zeigt ein Beispiel für das Erfassen der erforderlichen Info
     }
 
     #Add NIC(s)
-    foreach ($nic in $OriginalVM.NetworkInterfaceIDs) {
-        Add-AzureRmVMNetworkInterface -VM $NewVM -Id $nic
+    foreach ($nic in $OriginalVM.NetworkProfile.NetworkInterfaces) {
+        Add-AzureRmVMNetworkInterface -VM $NewVM -Id $nic.Id
     }
 
     #Create the VM
