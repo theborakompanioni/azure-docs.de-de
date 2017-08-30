@@ -4,23 +4,23 @@ description: Erstellen Sie mithilfe von Azure Functions eine serverlose Funktion
 services: azure-functions
 documentationcenter: na
 author: ggailey777
-manager: erikre
+manager: cfowler
 editor: 
 tags: 
 ms.assetid: 0b609bc0-c264-4092-8e3e-0784dcc23b5d
 ms.service: functions
 ms.devlang: multiple
-ms.topic: get-started-article
+ms.topic: quickstart
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 05/02/2017
+ms.date: 08/17/2017
 ms.author: glenga
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
-ms.openlocfilehash: 3eae02f7cf756e8e24d4f1952d12c37f2ad4b400
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 57c59273a9da55f3e357764c522b444ae2d73cb5
 ms.contentlocale: de-de
-ms.lasthandoff: 08/02/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>Hinzufügen von Meldungen in die Warteschlange von Azure Storage mithilfe von Functions
@@ -39,7 +39,7 @@ Eingabe- und Ausgabebindungen bieten in Azure Functions eine deklarative Möglic
  
 1. Erweitern Sie sowohl Ihre Funktionen-App als auch Ihre Funktion.
 
-2. Klicken Sie auf **Integrieren** und **+ Neue Ausgabe**, und klicken Sie anschließend auf **Azure Queue Storage** und **Auswählen**.
+2. Wählen Sie **Integrieren** und **+ Neue Ausgabe** und anschließend **Azure Queue Storage** und dann **Auswählen** aus.
     
     ![Hinzufügen einer Ausgabebindung von Queue Storage in einer Funktion im Azure-Portal](./media/functions-integrate-storage-queue-output-binding/function-add-queue-storage-output-binding.png)
 
@@ -51,7 +51,7 @@ Eingabe- und Ausgabebindungen bieten in Azure Functions eine deklarative Möglic
     | ------------ |  ------- | -------------------------------------------------- |
     | **Warteschlangenname**   | myqueue-items    | Der Name der zu verknüpfenden Warteschlange in Ihrem Speicherkonto. |
     | **Speicherkontoverbindung** | AzureWebJobStorage | Sie können die Speicherkontoverbindung verwenden, die bereits von Ihrer Funktionen-App verwendet wird, oder eine neue erstellen.  |
-    | **Name des Meldungsparameters** | outQueueItem | Der Name des Ausgabebindungsparameters | 
+    | **Name des Meldungsparameters** | outputQueueItem | Der Name des Ausgabebindungsparameters | 
 
 4. Klicken Sie auf **Speichern**, um die Bindung hinzuzufügen.
  
@@ -61,11 +61,11 @@ Nachdem Sie eine Ausgabebindung definiert haben, müssen Sie den Code aktualisie
 
 1. Wählen Sie die Funktion, um den Funktionscode im Editor anzuzeigen. 
 
-2. Aktualisieren Sie für eine C#-Funktion die Definition der Funktion wie folgt, um den Speicherbindungsparameter **outQueueItem** hinzuzufügen. Überspringen Sie diesen Schritt bei einer JavaScript-Funktion.
+2. Aktualisieren Sie für eine C#-Funktion die Definition der Funktion wie folgt, um den Speicherbindungsparameter **outputQueueItem** hinzuzufügen. Überspringen Sie diesen Schritt bei einer JavaScript-Funktion.
 
     ```cs   
     public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, 
-        ICollector<string> outQueueItem, TraceWriter log)
+        ICollector<string> outputQueueItem, TraceWriter log)
     {
         ....
     }
@@ -74,12 +74,12 @@ Nachdem Sie eine Ausgabebindung definiert haben, müssen Sie den Code aktualisie
 3. Fügen Sie folgenden Code der Funktion hinzu, kurz bevor die Methode zurückgibt. Verwenden Sie den Ausschnitt, der der Sprache der Funktion entspricht.
 
     ```javascript
-    context.bindings.outQueueItem = "Name passed to the function: " + 
+    context.bindings.outputQueueItem = "Name passed to the function: " + 
                 (req.query.name || req.body.name);
     ```
 
     ```cs
-    outQueueItem.Add("Name passed to the function: " + name);     
+    outputQueueItem.Add("Name passed to the function: " + name);     
     ```
 
 4. Klicken Sie zum Speichern der Änderungen auf **Speichern**.
@@ -100,7 +100,7 @@ Als Nächstes können Sie Ihr Speicherkonto verknüpfen, um die neue Warteschlan
 
 Überspringen Sie die ersten drei Schritte, wenn Sie Storage-Explorer bereits installiert und mit Ihrem Speicherkonto verbunden haben.    
 
-1. Klicken Sie in der Funktion auf **Integrieren** und auf die neue Ausgabebindung von **Azure Queue Storage**, und erweitern Sie anschließend die **Dokumentation**. Notieren Sie sich sowohl den **Kontonamen** als auch den **Kontoschlüssel**. Diese Anmeldeinformationen benötigen Sie für die Verbindung mit dem Speicherkonto.
+1. Wählen Sie in der Funktion **Integrieren** und die neue Ausgabebindung von **Azure Queue Storage** aus, und erweitern Sie dann **Dokumentation**. Notieren Sie sich sowohl den **Kontonamen** als auch den **Kontoschlüssel**. Diese Anmeldeinformationen benötigen Sie für die Verbindung mit dem Speicherkonto.
  
     ![Beschaffen Sie die Anmeldeinformationen für die Speicherkontenverbindung.](./media/functions-integrate-storage-queue-output-binding/function-get-storage-account-credentials.png)
 
@@ -112,7 +112,7 @@ Als Nächstes können Sie Ihr Speicherkonto verknüpfen, um die neue Warteschlan
   
     ![Fügen Sie die Speicheranmeldeinformationen ein, und stellen Sie eine Verbindung her.](./media/functions-integrate-storage-queue-output-binding/functions-storage-manager-connect-2.png)
 
-4. Erweitern Sie das angefügte Speicherkonto, klicken Sie mit der rechten Maustaste auf **Warteschlangen**, und stellen Sie sicher, dass die Warteschlange **myqueue-items** vorhanden ist. Außerdem sollten Sie bereits eine Meldung in der Warteschlange sehen.  
+4. Erweitern Sie das angefügte Speicherkonto und dann **Warteschlangen**, und überprüfen Sie, ob die Warteschlange **myqueue-items** vorhanden ist. Außerdem sollten Sie bereits eine Meldung in der Warteschlange sehen.  
  
     ![Erstellen Sie eine Speicherwarteschlange.](./media/functions-integrate-storage-queue-output-binding/function-queue-storage-output-view-queue.png)
  

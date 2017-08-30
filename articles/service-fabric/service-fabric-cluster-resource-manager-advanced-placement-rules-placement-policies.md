@@ -12,34 +12,36 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/05/2017
+ms.date: 08/18/2017
 ms.author: masnider
-translationtype: Human Translation
-ms.sourcegitcommit: dafaf29b6827a6f1c043af3d6bfe62d480d31ad5
-ms.openlocfilehash: 7fa35de8b99132ad1c10229a9bb2231f11fdbaa0
-ms.lasthandoff: 02/17/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
+ms.openlocfilehash: c240643d2a7ce98ddd7f7871eeef654cced953f7
+ms.contentlocale: de-de
+ms.lasthandoff: 08/19/2017
 
 ---
 # <a name="placement-policies-for-service-fabric-services"></a>Platzierungsrichtlinien für Service Fabric-Dienste
-Es gibt viele verschiedene weitere Regeln, die Sie möglicherweise in einigen seltenen Szenarien konfigurieren müssen. Einige Beispiele für diese Szenarien:
-* Ihr Service Fabric-Cluster erstreckt sich über eine geografische Entfernung, beispielsweise mehrere lokale Rechenzentren oder Azure-Regionen.
-* Ihre Umgebung erstreckt sich über mehrere geopolitische Grenzen (oder es bestehen rechtliche oder politische Grenzen, die für Sie relevant sind).
-* Es sind praktische Aspekte hinsichtlich Leistung/Wartezeit zu beachten, weil bei der Kommunikation im Cluster weite Entfernungen zurückgelegt bzw. langsame oder weniger zuverlässige Netzwerke durchquert werden müssen.
+Platzierungsrichtlinien sind zusätzliche Regeln, mit denen in einigen besonderen, nicht alltäglichen Szenarien die Dienstplatzierung gesteuert werden kann. Einige Beispiele für diese Szenarien:
 
-In diesen Situationen ist es möglicherweise für einen bestimmten Dienst entscheidend, dass er in bestimmten Regionen immer ausgeführt werden muss oder niemals ausgeführt werden darf. Auf ähnliche Weise kann es wichtig sein, das primäre Replikat in einer bestimmten Region zu platzieren, um die Wartezeit für Endbenutzer auf ein Mindestmaß zu beschränken.
+- Ihr Service Fabric-Cluster erstreckt sich über geografische Entfernungen, beispielsweise mehrere lokale Rechenzentren oder Azure-Regionen.
+- Ihre Umgebung erstreckt sich über mehrere geopolitische oder rechtliche Grenzen, oder ein anderer Fall, in dem politische Grenzen berücksichtigt werden müssen.
+- Aufgrund großer Entfernungen oder wegen der Verwendung langsamer oder nicht besonders zuverlässiger Netzwerkverbindungen muss Leistung oder Wartezeit der Kommunikation berücksichtigt werden.
+- Sie müssen bestimmte Workloads bestmöglich anordnen, entweder zusammen mit anderen Workloads oder in der Nähe von Kunden.
 
-Die erweiterten Platzierungsrichtlinien sind:
+Die meisten dieser Anforderungen werden durch das physische Layout des Clusters wiedergegeben, dargestellt als Fehlerdomänen des Clusters. 
+
+Die erweiterten Platzierungsrichtlinien, mit denen diese Szenarien behandelt werden können, lauten wie folgt:
 
 1. Ungültige Domänen
 2. Erforderliche Domänen
 3. Bevorzugte Domänen
 4. Unterbinden einer Replikatüberlastung
 
-Die meisten der folgenden Steuerelemente können mithilfe von Knoteneigenschaften und Platzierungseinschränkungen konfiguriert werden, aber einige sind komplizierter. Zur Vereinfachung bietet der Service Fabric-Clusterressourcen-Manager diese zusätzliche Platzierungsrichtlinien. Wie bei anderen Platzierungseinschränkungen können Platzierungsrichtlinien auf Dienstinstanzbasis namensbezogen konfiguriert und dynamisch aktualisiert werden.
+Die meisten der folgenden Steuerelemente können mithilfe von Knoteneigenschaften und Platzierungseinschränkungen konfiguriert werden, aber einige sind komplizierter. Zur Vereinfachung bietet der Service Fabric-Clusterressourcen-Manager diese zusätzliche Platzierungsrichtlinien. Platzierungsrichtlinien werden individuell für benannte Dienstinstanzen konfiguriert. Sie können auch dynamisch aktualisiert werden.
 
 ## <a name="specifying-invalid-domains"></a>Angeben ungültiger Domänen
-Die Platzierungsrichtlinie „InvalidDomain“ ermöglicht die Angabe, dass eine bestimmte Fehlerdomäne für diese Workload ungültig ist. Diese Richtlinie stellt sicher, dass ein bestimmter Dienst nie in einer bestimmten Region ausgeführt wird, z. B. aus geopolitischen Gründen oder zur Einhaltung von Unternehmensrichtlinien. Über Richtlinien können mehrere ungültige Domänen angegeben werden.
+Die Platzierungsrichtlinie **InvalidDomain** ermöglicht die Angabe, dass eine bestimmte Fehlerdomäne für einen bestimmten Dienst ungültig ist. Diese Richtlinie stellt sicher, dass ein bestimmter Dienst nie in einer bestimmten Region ausgeführt wird, z. B. aus geopolitischen Gründen oder zur Einhaltung von Unternehmensrichtlinien. Über Richtlinien können mehrere ungültige Domänen angegeben werden.
 
 <center>
 ![Beispiel für eine ungültige Domäne][Image1]
@@ -56,10 +58,10 @@ serviceDescription.PlacementPolicies.Add(invalidDomain);
 Powershell:
 
 ```posh
-New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 2 -TargetReplicaSetSize 3 -PartitionSchemeSingleton -PlacementPolicy @("InvalidDomain,fd:/DCEast”)
+New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 3 -TargetReplicaSetSize 3 -PartitionSchemeSingleton -PlacementPolicy @("InvalidDomain,fd:/DCEast”)
 ```
 ## <a name="specifying-required-domains"></a>Angeben erforderlicher Domänen
-Die Platzierungsrichtlinie für erforderliche Domänen erfordert, dass alle zustandsbehafteten Replikate oder zustandslosen Dienstinstanzen für den Dienst in der angegebenen Domäne vorhanden sind. Über Richtlinien können mehrere erforderliche Domänen angegeben werden.
+Gemäß der Richtlinie für die Platzierung erforderlicher Domänen darf der Dienst nur in der angegebenen Domäne vorhanden sein. Über Richtlinien können mehrere erforderliche Domänen angegeben werden.
 
 <center>
 ![Beispiel für eine erforderliche Domäne][Image2]
@@ -76,11 +78,11 @@ serviceDescription.PlacementPolicies.Add(requiredDomain);
 Powershell:
 
 ```posh
-New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 2 -TargetReplicaSetSize 3 -PartitionSchemeSingleton -PlacementPolicy @("RequiredDomain,fd:/DC01/RK03/BL2")
+New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 3 -TargetReplicaSetSize 3 -PartitionSchemeSingleton -PlacementPolicy @("RequiredDomain,fd:/DC01/RK03/BL2")
 ```
 
-## <a name="specifying-a-preferred-domain-for-the-primary-replicas"></a>Angeben einer bevorzugten Domäne für die primären Replikate
-Die bevorzugte Domäne für primäre Replikate ist ein nützliches Steuerelement, da es die Auswahl der Fehlerdomäne ermöglicht, in der das primäre Replikat nach Möglichkeit platziert werden soll. Wenn alles fehlerfrei ist, befindet sich das primäre Replikat in dieser Domäne. Sollte die Domäne oder das primäre Replikat ausfallen oder aus irgendeinem Grund heruntergefahren werden, wird das primäre Replikat zu einem anderen Ort migriert. Wenn dieser neue Ort nicht die bevorzugte Domäne ist, verschiebt der Clusterressourcen-Manager das Replikat so bald wie möglich in die bevorzugte Domäne zurück. Diese Einstellung ist nur für zustandsbehaftete Dienste sinnvoll. Diese Richtlinie ist besonders hilfreich in Clustern, die sich über Azure-Regionen oder mehrere Rechenzentren erstrecken, in denen die primären Replikate jedoch bevorzugt an einem bestimmten Ort platziert werden sollen. Durch das Platzieren der primären Replikate in der Nähe ihrer Benutzer wird vor allem für Lesevorgänge eine geringere Latenz erzielt.
+## <a name="specifying-a-preferred-domain-for-the-primary-replicas-of-a-stateful-service"></a>Angeben einer bevorzugten Domäne für die primären Replikate eines zustandsbehafteten Diensts
+Die bevorzugte primäre Domäne ist die Standarddomäne, in der das primäre Replikat platziert werden soll. Wenn alles fehlerfrei ist, befindet sich das primäre Replikat in dieser Domäne. Wenn die Domäne oder das primäre Replikat ausfällt oder beendet wird, wird das primäre Replikat an einen anderen Ort verschoben, idealerweise in derselben Domäne. Wenn dieser neue Ort nicht die bevorzugte Domäne ist, verschiebt der Clusterressourcen-Manager das Replikat so bald wie möglich in die bevorzugte Domäne zurück. Diese Einstellung ist nur für zustandsbehaftete Dienste sinnvoll. Diese Richtlinie ist besonders hilfreich in Clustern, die sich über Azure-Regionen oder mehrere Rechenzentren erstrecken, jedoch Dienste enthalten, die bevorzugt an einem bestimmten Ort platziert werden sollen. Die Nähe von primären Replikaten zu ihren Benutzern oder anderen Diensten trägt zu einer geringeren Wartezeit bei, insbesondere für Lesevorgänge, die standardmäßig von primären Replikaten behandelt werden.
 
 <center>
 ![Bevorzugte primäre Domänen und Failover][Image3]
@@ -95,17 +97,21 @@ serviceDescription.PlacementPolicies.Add(invalidDomain);
 Powershell:
 
 ```posh
-New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 2 -TargetReplicaSetSize 3 -PartitionSchemeSingleton -PlacementPolicy @("PreferredPrimaryDomain,fd:/EastUS")
+New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 3 -TargetReplicaSetSize 3 -PartitionSchemeSingleton -PlacementPolicy @("PreferredPrimaryDomain,fd:/EastUS")
 ```
 
-## <a name="requiring-replicas-to-be-distributed-among-all-domains-and-disallowing-packing"></a>Anfordern einer Verteilung von Replikaten auf alle Domänen und Unterbinden einer Überlastung
-Replikate werden _normalerweise_ über die Domänen verteilt, wenn der Cluster fehlerfrei ist, aber es gibt Fälle, in denen Replikate für eine bestimmte Partition vorübergehend in einer einzigen Domäne gruppiert werden. Nehmen wir beispielsweise an, dass der Cluster neun Knoten in drei Fehlerdomänen aufweist (fd:/0, fd:/1 und fd:/2) und dass der Dienst über drei Replikate verfügt. Nehmen wir ferner an, dass die Knoten, die für diese Replikate in fd:/1 und fd:/2 verwendet wurden, ausgefallen sind. Jetzt würde der Clusterressourcen-Manager normalerweise andere Knoten in diesen Fehlerdomänen bevorzugen. In diesem Fall ist jedoch, zum Beispiel aufgrund von Kapazitätsproblemen, keiner der anderen Knoten in diesen Domänen gültig. Wenn der Clusterressourcen-Manager einen Ersatz für diese Replikate erstellt, müsste er die Knoten in fd:/0 auswählen. Allerdings entsteht _dadurch_ eine Situation, in der die Fehlerdomäneneinschränkung verletzt wird. Außerdem steigt das Risiko eines Ausfalls oder Verlusts der gesamten Replikatgruppe (wenn Fehlerdomäne 0 dauerhaft ausfällt). Weitere Informationen zu Einschränkungen und Einschränkungsprioritäten im Allgemeinen finden Sie in [diesem Thema](service-fabric-cluster-resource-manager-management-integration.md#constraint-priorities).
+## <a name="requiring-replica-distribution-and-disallowing-packing"></a>Erfordern von Replikatverteilung und Unterbinden von Überlastung
+Wenn der Cluster fehlerfrei ist, werden Replikate _normalerweise_ auf Fehler- und Upgradedomänen verteilt. Es gibt jedoch Fälle, in denen mehrere Replikate für eine bestimmte Partition vorübergehend in einer einzelnen Domäne überlastet werden. Nehmen wir beispielsweise an, dass der Cluster neun Knoten in den drei Fehlerdomänen fd:/0, fd:/1 und fd:/2 aufweist. Nehmen wir außerdem an, dass der Dienst über drei Replikate verfügt. Nehmen wir ferner an, dass die Knoten, die für diese Replikate in fd:/1 und fd:/2 verwendet wurden, ausgefallen sind. Der Clusterressourcen-Manager würde normalerweise andere Knoten in diesen Fehlerdomänen bevorzugen. In diesem Fall ist jedoch, zum Beispiel aufgrund von Kapazitätsproblemen, keiner der anderen Knoten in diesen Domänen gültig. Wenn der Clusterressourcen-Manager einen Ersatz für diese Replikate erstellt, müsste er die Knoten in fd:/0 auswählen. Allerdings entsteht _dadurch_ eine Situation, in der die Fehlerdomäneneinschränkung verletzt wird. Das Überlasten von Replikaten erhöht das Risiko eines Ausfalls oder Verlusts der gesamten Replikatgruppe. 
 
-Wenn Sie jemals eine Warnung wie die Folgende gesehen haben: `The Load Balancer has detected a Constraint Violation for this Replica:fabric:/<some service name> Secondary Partition <some partition ID> is violating the Constraint: FaultDomain`, ist diese oder eine ähnliche Bedingung erfüllt. Dieser Fall ist selten, kann aber auftreten. Dieser Zustand ist in der Regel vorübergehend, weil die Knoten wieder online gehen. Wenn die Knoten dauerhaft ausfallen und der Clusterressourcen-Manager diese ersetzen muss, stehen in idealen Fehlerdomänen normalerweise andere Knoten zur Verfügung.
+> [!NOTE]
+> Weitere Informationen zu Einschränkungen und Einschränkungsprioritäten im Allgemeinen finden Sie in [diesem Thema](service-fabric-cluster-resource-manager-management-integration.md#constraint-priorities).
+>
 
-Einige Workloads sorgen stattdessen immer dafür, dass die Zielanzahl von Replikaten verfügbar ist, selbst wenn diese auf weniger Domänen verteilt sind. Durch diese Workloads werden gleichzeitige dauerhafte Totalausfälle von Domänen riskiert, und in der Regel kann der lokale Zustand wiederhergestellt werden. Bei anderen Workloads wird stattdessen früher die Downtime in Kauf genommen, als die Richtigkeit oder den Verlust von Daten zu riskieren. Da die meisten Produktionsworkloads mit mehr als drei Replikaten, mehr als drei Fehlerdomänen und vielen gültigen Knoten pro Fehlerdomäne ausgeführt werden, ist standardmäßig keine Domänenverteilung erforderlich. Dadurch können diese Fälle durch normalen Lastenausgleich und Failover abgedeckt werden, selbst wenn dies bedeutet, dass möglicherweise mehrere Replikate vorübergehend in einer Domäne platziert werden.
+Wenn Sie jemals eine Integritätsmeldung wie die Folgende gesehen haben: „`The Load Balancer has detected a Constraint Violation for this Replica:fabric:/<some service name> Secondary Partition <some partition ID> is violating the Constraint: FaultDomain`“, ist diese oder eine ähnliche Bedingung erfüllt. In der Regel werden nur ein oder zwei Replikate vorübergehend überlastet. Solange das Quorum der Replikate in einer bestimmten Domäne unterschritten wird, besteht kein Risiko. Eine Überlastung ist selten, kann aber auftreten. Dieser Zustand ist in der Regel vorübergehend, weil die Knoten wieder online gehen. Wenn die Knoten dauerhaft ausfallen und der Clusterressourcen-Manager diese ersetzen muss, stehen in idealen Fehlerdomänen normalerweise andere Knoten zur Verfügung.
 
-Wenn Sie eine solche Überlastung für eine bestimmte Workload deaktivieren möchten, können Sie die Richtlinie „RequireDomainDistribution“ für den Dienst angeben. Wenn diese Richtlinie festgelegt ist, stellt der Clusterressourcen-Manager sicher, dass keine zwei Replikate aus derselben Partition in derselben Fehler- oder Upgradedomäne platziert werden.
+Bei einigen Workloads soll die Zielanzahl von Replikaten nach Möglichkeit immer verfügbar sein, selbst wenn diese auf weniger Domänen verteilt sind. Durch diese Workloads werden gleichzeitige dauerhafte Totalausfälle von Domänen riskiert, und in der Regel kann der lokale Zustand wiederhergestellt werden. Bei anderen Workloads wird stattdessen früher die Downtime in Kauf genommen, als die Richtigkeit oder den Verlust von Daten zu riskieren. Die meisten Produktionsworkloads werden mit mehr als drei Replikaten, mehr als drei Fehlerdomänen und vielen gültigen Knoten pro Fehlerdomäne ausgeführt. Aus diesem Grund ermöglicht das Standardverhalten das Überlasten von Domänen. Das Standardverhalten ermöglicht das Behandeln dieser extremen Fälle durch normalen Lastenausgleich und normales Failover, auch wenn dies das vorübergehende Überlasten von Domänen erfordert.
+
+Wenn Sie eine solche Überlastung für eine bestimmte Workload deaktivieren möchten, können Sie die Richtlinie `RequireDomainDistribution` für den Dienst angeben. Wenn diese Richtlinie festgelegt ist, stellt der Clusterressourcen-Manager sicher, dass keine zwei Replikate aus derselben Partition in derselben Fehler- oder Upgradedomäne ausgeführt werden.
 
 Code:
 
@@ -117,13 +123,13 @@ serviceDescription.PlacementPolicies.Add(distributeDomain);
 Powershell:
 
 ```posh
-New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 2 -TargetReplicaSetSize 3 -PartitionSchemeSingleton -PlacementPolicy @("RequiredDomainDistribution")
+New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 3 -TargetReplicaSetSize 3 -PartitionSchemeSingleton -PlacementPolicy @("RequiredDomainDistribution")
 ```
 
-Wäre es auch möglich, diese Konfigurationen für Dienste in einem Cluster zu verwenden, der sich nicht über größere Entfernungen erstreckt? Das ist möglich! Es gibt dafür jedoch keinen triftigen Grund. Insbesondere die Konfigurationen erforderlicher, ungültiger und bevorzugter Domänen sollten vermieden werden, solange Sie keinen Cluster betreiben, der sich über weite Entfernungen erstreckt. Es ist nicht sinnvoll, die Ausführung einer bestimmten Workload in einem einzigen Rack zu erzwingen oder ein bestimmtes Segment Ihres Clusters einem anderen gegenüber zu bevorzugen. Unterschiedliche Hardwarekonfigurationen sollten über Domänen hinweg verteilt werden, und diese sollten über normale Platzierungseinschränkungen und Knoteneigenschaften verwaltet werden.
+Wäre es auch möglich, diese Konfigurationen für Dienste in einem Cluster zu verwenden, der sich nicht über größere Entfernungen erstreckt? Es ist möglich, jedoch gibt es dafür keinen triftigen Grund. Die Konfiguration erforderlicher, ungültiger und bevorzugter Domänen sollte vermieden werden, sofern die Szenarien diese nicht erfordern. Es ist nicht sinnvoll, die Ausführung einer bestimmten Workload in einem einzigen Rack zu erzwingen oder ein bestimmtes Segment Ihres Clusters einem anderen gegenüber zu bevorzugen. Unterschiedliche Hardwarekonfigurationen sollten über Fehlerdomänen hinweg verteilt und über normale Platzierungseinschränkungen und Knoteneigenschaften verwaltet werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Weitere Informationen zu den anderen verfügbaren Optionen zum Konfigurieren von Diensten finden Sie unter [Informationen zur Konfiguration von Diensten](service-fabric-cluster-resource-manager-configure-services.md).
+- Weitere Informationen zum Konfigurieren von Diensten finden Sie unter [Konfigurieren von Einstellungen des Clusterressourcen-Managers für Service Fabric-Dienste](service-fabric-cluster-resource-manager-configure-services.md).
 
 [Image1]:./media/service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies/cluster-invalid-placement-domain.png
 [Image2]:./media/service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies/cluster-required-placement-domain.png

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
-translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: 86073f5d15253d658fcb371e913dd3a543a2b075
-ms.lasthandoff: 03/30/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: 20a720833842f9579fd4fccaa39e964def48197e
+ms.contentlocale: de-de
+ms.lasthandoff: 08/23/2017
 
 ---
 
@@ -26,16 +26,16 @@ ms.lasthandoff: 03/30/2017
 
 Das Azure Import/Export-Tool (WAImportExport.exe) verwenden Sie zum Erstellen und Verwalten von Aufträgen für den Azure Import/Export-Dienst, um große Datenmengen in oder aus Azure Blob Storage übertragen zu können.
 
-Diese Dokumentation bezieht sich auf die neueste Version des Azure Import/Export-Tools. Informationen zur Verwendung des V1-Tools finden Sie unter [Verwenden des Azure Import/Export-Tools V1](storage-import-export-tool-how-to-v1.md).
+Diese Dokumentation bezieht sich auf die neueste Version des Azure Import/Export-Tools. Informationen zur Verwendung des klassischen Bereitstellungsmodells finden Sie unter [Verwenden des Azure Import/Export-Tools v1](storage-import-export-tool-how-to-v1.md).
 
-In diesen Artikeln wird erläutert, wie Sie mithilfe des Tools die folgenden Vorgänge durchführen können:  
+In den folgenden Artikeln erfahren Sie Folgendes:  
 
-- Installieren und Einrichten des Import/Export-Tools
+- Installieren und Einrichten des Azure Import/Export-Tools
 - Vorbereiten von Festplatten für einen Auftrag, bei dem Daten von den Festplatten in Azure Blob Storage importiert werden
 - Überprüfen des Status eines Auftrags mit Kopierprotokolldateien 
 - Reparieren eines Importauftrags 
 - Reparieren eines Exportauftrags 
-- Problembehandlung beim Azure Import/Export-Tool für den Fall, dass während des Vorgangs Probleme auftreten 
+- Behandeln von Problemen mit dem Azure Import/Export-Tool 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -12,35 +12,42 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/05/2017
+ms.date: 08/18/2017
 ms.author: masnider
-translationtype: Human Translation
-ms.sourcegitcommit: dafaf29b6827a6f1c043af3d6bfe62d480d31ad5
-ms.openlocfilehash: 5ef6381f7d182c818171eca3e3d32a00bc30268e
-
+ms.translationtype: HT
+ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
+ms.openlocfilehash: 0b8b2bad967532bb0040407dc6a3a7b9599576d2
+ms.contentlocale: de-de
+ms.lasthandoff: 08/19/2017
 
 ---
 # <a name="defragmentation-of-metrics-and-load-in-service-fabric"></a>Defragmentierung von Metriken und Lasten in Service Fabric
-Der Clusterressourcen-Manager von Service Fabric wird hauptsächlich für den Lastenausgleich in Bezug auf die Verteilung der Last eingesetzt und stellt sicher, dass die Knoten im Cluster gleichmäßig genutzt werden. Die Verteilung von Workloads ist das sicherste Konzept im Hinblick auf das Überstehen von Ausfällen, da es sicherstellt, dass bei einem Ausfall kein hoher Prozentsatz einer Workload verloren geht. Der Clusterressourcen-Manager von Service Fabric unterstützt auch eine andere Strategie, die Defragmentierung genannt wird. Defragmentierung bedeutet im Allgemeinen, dass anstatt zu versuchen, die Nutzung einer Metrik auf den Cluster zu verteilen, wir tatsächlich versuchen sollten, sie zu konsolidieren. Die Konsolidierung ist eine Umkehrung unserer normalen Strategie – anstatt die Standardabweichung der Metriklast zu minimieren, zielt der Clusterressourcen-Manager auf eine größere Abweichung ab. Doch was spricht für eine solche Strategie?
+Die Standardstrategie des Clusterressourcen-Managers von Service Fabric beim Verwalten von Auslastungsmetriken besteht darin, die Auslastung zu verteilen. Durch die Sicherstellung der gleichmäßigen Nutzung der Knoten werden Hotspots und Coldspots vermieden, die gleichermaßen zu Konflikten und vergeudeten Ressourcen führen. Die Verteilung von Workloads im Cluster ist zudem das sicherste Konzept im Hinblick auf das Überstehen von Ausfällen, da dadurch sichergestellt wird, dass bei einem Ausfall kein hoher Prozentsatz einer Workload verloren geht. 
 
-Wenn Sie die Last gleichmäßig auf die Knoten im Cluster verteilen, haben Sie einige der Ressourcen belegt, die die Knoten zu bieten haben. Einige Workloads erstellen jedoch Dienste, die außergewöhnlich groß sind und den größten Teil eines Knotens nutzen. In diesen Fällen kann es vorkommen, dass 75 bis 95% der Ressourcen eines Knotens dediziert für ein einzelnes Dienstobjekt benötigt werden. Große Workloads sind kein Problem. Der Clusterressourcen-Manager legt zur Diensterstellungszeit fest, dass der Cluster neu organisiert werden muss, um Platz für diese große Workload zu schaffen. In der Zwischenzeit muss diese Workload jedoch warten, bis sie im Cluster geplant werden kann.
+Der Clusterressourcen-Manager von Service Fabric unterstützt eine andere Strategie, die als Defragmentierung bezeichnet wird. Defragmentierung bedeutet, dass die Nutzung einer Metrik nicht auf den Cluster verteilt wird, sondern dass sie konsolidiert wird. Die Konsolidierung ist lediglich eine Umkehrung der standardmäßigen Ausgleichsstrategie – anstatt die durchschnittliche Standardabweichung der Metriklast zu minimieren, zielt der Clusterressourcen-Manager darauf ab, sie zu vergrößern.
 
-Wenn viele Dienste und Status zu verschieben sind, kann es lange dauern, bis die große Workload im Cluster platziert wird. Dies ist wahrscheinlich, wenn andere Workloads im Cluster groß sind und das Verschieben daher viel Zeit in Anspruch nimmt. Das Service Fabric-Team hat die Erstellungszeiten in Simulationen dieses Szenarios gemessen. Dabei haben wir herausgefunden, dass die Erstellung von Diensten sehr langsam erfolgt, wenn diese Dienste sehr groß sind und der Cluster einen hohen Auslastungsgrad aufweist. Um dieses Szenario zu verarbeiten, haben wir die Defragmentierung als Strategie für den Lastenausgleich eingeführt. Wir haben festgestellt, dass bei großen Workloads – insbesondere solchen, bei denen die Erstellungsdauer eine große Rolle spielt – die Defragmentierung in hohem Maß dazu beiträgt, dass diese neuen Workloads im Cluster geplant werden können.
+## <a name="when-to-use-defragmentation"></a>Situationen, in denen Defragmentierung verwendet wird
+Beim Verteilen der Last auf den Cluster werden einige Ressourcen auf jedem Knoten verbraucht. Einige Workloads erstellen Dienste, die außergewöhnlich groß sind und den größten Teil eines Knotens oder den Knoten komplett nutzen. In solchen Fällen ist es möglich, dass bei der Erstellung großer Workloads kein ausreichender Platz auf einem Knoten vorhanden ist, um sie auszuführen. Große Workloads stellen in Service Fabric kein Problem dar; in derartigen Fällen stellt der Clusterressourcen-Manager fest, dass der Cluster neu organisiert werden muss, um Platz für die große Workload zu schaffen. In der Zwischenzeit muss diese Workload jedoch warten, bis sie im Cluster geplant werden kann.
 
-Sie können Defragmentierungsmetriken konfigurieren, damit der Clusterressourcen-Manager proaktiv versucht, die Last der Dienste auf eine geringere Anzahl von Knoten zu verteilen. So lässt sich sicherstellen, dass (nahezu) immer genügend Platz auch für sehr große Dienste vorhanden ist. So können solche Dienste bei Bedarf sehr schnell erstellt werden.
+Wenn viele Dienste und Status zu verschieben sind, kann es lange dauern, bis die große Workload im Cluster platziert wird. Dies ist wahrscheinlicher, wenn andere Workloads im Cluster ebenfalls groß sind und die Neuorganisation daher länger dauert. Das Service Fabric-Team hat die Erstellungszeiten in Simulationen dieses Szenarios gemessen. Wir haben festgestellt, dass das Erstellen großer Dienste viel länger dauerte, sobald die Clusterauslastung über 30% bis 50% anstieg. Um dieses Szenario zu verarbeiten, haben wir die Defragmentierung als Strategie für den Lastenausgleich eingeführt. Wir haben festgestellt, dass bei großen Workloads – insbesondere solchen, bei denen die Erstellungsdauer eine große Rolle spielt – die Defragmentierung in hohem Maß dazu beiträgt, dass diese neuen Workloads im Cluster geplant werden können.
 
-Die meisten Benutzer benötigen keine Defragmentierung. Dienste sind normalerweise klein, daher ist es nicht schwierig, genügend Platz für sie im Cluster zu finden. Wenn Sie jedoch mit großen Diensten arbeiten und diese schnell erstellen müssen (und die anderen Nachteile akzeptieren können), ist die Defragmentierung die richtige Strategie für Sie.
+Sie können Defragmentierungsmetriken konfigurieren, damit der Clusterressourcen-Manager proaktiv versucht, die Last der Dienste auf eine geringere Anzahl von Knoten zu verteilen. So lässt sich sicherstellen, dass fast immer ausreichend Platz auch für sehr große Dienste vorhanden ist, ohne dass der Cluster neu organisiert werden muss. Wenn keine Neuorganisation des Clusters erforderlich ist, können große Workloads schnell erstellt werden.
 
-Welche Nachteile gibt es? Die Defragmentierung kann die Auswirkungen von Ausfällen verstärken, da mehr Dienste auf einem Knoten ausgeführt werden. Darüber hinaus sorgt die Defragmentierung dafür, dass einige Ressourcen im Cluster nicht genutzt werden, während sie darauf warten, dass Workloads geplant werden.
+Die meisten Benutzer benötigen keine Defragmentierung. Dienste sind normalerweise klein, daher ist es nicht schwierig, genügend Platz für sie im Cluster zu finden. Wenn eine Neuorganisation möglich ist, erfolgt diese schnell, da die meisten Dienste klein sind und schnell und gleichzeitig verschoben werden können. Wenn Sie jedoch mit großen Diensten arbeiten und diese schnell erstellen müssen, ist die Defragmentierung die richtige Strategie für Sie. Im Folgenden werden die Vor- und Nachteile der Defragmentierung erörtert. 
 
-Das folgende Diagramm ist eine visuelle Darstellung von zwei verschiedenen Clustern – einer ist defragmentiert, der andere nicht. Beachten Sie im Cluster mit Lastenausgleich die Anzahl von Verschiebungen, die notwendig wären, um eines der größten Dienstobjekte zu platzieren. Vergleichen Sie dies mit dem defragmentierten Cluster, in dem eine große Workload sofort in den Knoten&4; oder&5; platziert werden könnte.
+## <a name="defragmentation-tradeoffs"></a>Vor- und Nachteile der Defragmentierung
+Die Defragmentierung kann die Auswirkungen von Ausfällen verstärken, da mehr Dienste auf ausgefallenen Knoten ausgeführt werden. Die Defragmentierung kann zudem die Kosten steigern, da Ressourcen im Cluster in Reserve gehalten werden müssen, sodass sie beim Erstellen großer Workloads zur Verfügung stehen.
+
+Die folgende Abbildung veranschaulicht zwei Cluster, von denen der eine defragmentiert und der andere nicht defragmentiert ist. 
 
 <center>
 ![Vergleich zwischen Clustern mit Lastenausgleich und defragmentierten Clustern][Image1]
 </center>
 
+Beachten Sie im Cluster mit Lastenausgleich die Anzahl von Verschiebungen, die notwendig wären, um eines der größten Dienstobjekte zu platzieren. Im defragmentierten Cluster konnte die große Arbeitslast auf dem vierten bzw. fünften Knoten platziert werden, ohne dass abgewartet werden musste, bis alle anderen Dienste verschoben wurden.
+
 ## <a name="defragmentation-pros-and-cons"></a>Vor- und Nachteile der Defragmentierung
-Was sind die anderen grundlegenden Kompromisse? Es wird empfohlen, vor dem Aktivieren von Defragmentierungsmetriken Ihre Workloads gründlich zu messen. Es folgt eine Kurzübersicht der zu beachtenden Aspekte:
+Was sind die anderen grundlegenden Kompromisse? Es folgt eine Kurzübersicht der zu beachtenden Aspekte:
 
 | Vorteile der Defragmentierung | Nachteile der Defragmentierung |
 | --- | --- |
@@ -48,17 +55,23 @@ Was sind die anderen grundlegenden Kompromisse? Es wird empfohlen, vor dem Aktiv
 | Ermöglicht eine langsamere Datenverschiebung während der Erstellung |Ausfälle können sich auf mehr Dienste auswirken und mehr Wechsel verursachen |
 | Ermöglicht eine umfassende Beschreibung der Anforderungen und Freigabe von Speicherplatz |Komplexere allgemeine Konfiguration der Ressourcenverwaltung |
 
-Sie können defragmentierte und normale Metriken im gleichen Cluster kombinieren. Der Clusterressourcen-Manager versucht, die Defragmentierungsmetriken so weit wie möglich zu konsolidieren und die anderen Metriken zu verteilen. Wenn keine Dienste vorhanden sind, die diese Metriken gemeinsam nutzen, können die Ergebnisse gut sein. Die genauen Ergebnisse richten sich nach der Anzahl der Lastenausgleichsmetriken im Vergleich mit der Anzahl und Gewichtung der Defragmentierungsmetriken, dem Maß an Überschneidung, der aktuellen Auslastung und anderen Faktoren. Sie werden ein wenig experimentieren müssen, um die exakte Konfiguration zu ermitteln, die Sie benötigen.
+Sie können defragmentierte und normale Metriken im gleichen Cluster kombinieren. Der Clusterressourcen-Manager versucht, die Defragmentierungsmetriken so weit wie möglich zu konsolidieren und die anderen Metriken zu verteilen. Die Ergebnisse des Kombinierens der Defragmentierungsstrategie und der Ausgleichsstrategie hängen von verschiedenen Faktoren ab. Hierzu zählen Folgende:
+  - die Anzahl der Ausgleichsmetriken und die Anzahl der Defragmentierungsmetriken
+  - der Umstand, ob Dienste beide Typen von Metriken nutzen 
+  - die Metrikgewichtungen
+  - die aktuelle Metriklast
+  
+Sie werden ein wenig experimentieren müssen, um die exakte Konfiguration zu ermitteln, die Sie benötigen. Es wird empfohlen, vor dem Aktivieren von Defragmentierungsmetriken in der Produktion Ihre Workloads gründlich zu messen. Dies gilt insbesondere, wenn in einem Dienst sowohl Defragmentierungsmetriken als auch Ausgleichsmetriken genutzt werden. 
 
 ## <a name="configuring-defragmentation-metrics"></a>Konfigurieren von Defragmentierungsmetriken
-Das Konfigurieren von Defragmentierungsmetriken ist eine globale Entscheidung im Cluster, und einzelne Metriken können für die Defragmentierung ausgewählt werden:
+Das Konfigurieren von Defragmentierungsmetriken ist eine globale Entscheidung im Cluster, und einzelne Metriken können für die Defragmentierung ausgewählt werden. In den folgenden Konfigurationscodeausschnitten wird das Konfigurieren von Metriken für die Defragmentierung veranschaulicht. In diesem Fall wird „Metric1“ als Defragmentierungsmetrik konfiguriert, während „Metric2“ weiterhin normal ausgeglichen wird. 
 
 ClusterManifest.xml
 
 ```xml
 <Section Name="DefragmentationMetrics">
-    <Parameter Name="Disk" Value="true" />
-    <Parameter Name="CPU" Value="false" />
+    <Parameter Name="Metric1" Value="true" />
+    <Parameter Name="Metric2" Value="false" />
 </Section>
 ```
 
@@ -70,11 +83,11 @@ ClusterManifest.xml
     "name": "DefragmentationMetrics",
     "parameters": [
       {
-          "name": "Disk",
+          "name": "Metric1",
           "value": "true"
       },
       {
-          "name": "CPU",
+          "name": "Metric2",
           "value": "false"
       }
     ]
@@ -84,13 +97,8 @@ ClusterManifest.xml
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Der Clusterressourcen-Manager bietet zahlreiche Optionen zum Beschreiben des Clusters. Weitere Informationen hierzu finden Sie in diesem Artikel zum [Beschreiben eines Service Fabric-Clusters](service-fabric-cluster-resource-manager-cluster-description.md).
-* Metriken bestimmen, wie der Clusterressourcen-Manager von Service Fabric den Ressourcenverbrauch und die Kapazität im Cluster verwaltet. Weitere Informationen zu Metriken und deren Konfiguration finden Sie in [diesem Artikel](service-fabric-cluster-resource-manager-metrics.md).
+- Der Clusterressourcen-Manager bietet zahlreiche Optionen zum Beschreiben des Clusters. Weitere Informationen hierzu finden Sie in diesem Artikel zum [Beschreiben eines Service Fabric-Clusters](service-fabric-cluster-resource-manager-cluster-description.md).
+- Metriken bestimmen, wie der Clusterressourcen-Manager von Service Fabric den Ressourcenverbrauch und die Kapazität im Cluster verwaltet. Weitere Informationen zu Metriken und deren Konfiguration finden Sie in [diesem Artikel](service-fabric-cluster-resource-manager-metrics.md).
 
 [Image1]:./media/service-fabric-cluster-resource-manager-defragmentation-metrics/balancing-defrag-compared.png
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

@@ -15,12 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/08/2017
 ms.author: kyliel
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
-ms.openlocfilehash: 7a92105f9d7be88311f2ecd89b22e35f3ad3bbac
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 918f454784a9676297077c2e94c3e49ab2872d2f
 ms.contentlocale: de-de
-ms.lasthandoff: 05/09/2017
-
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="create-and-upload-a-freebsd-vhd-to-azure"></a>Erstellen und Hochladen einer FreeBSD-VHD in Azure
@@ -128,7 +127,7 @@ Sie benötigen ein Speicherkonto in Azure, um eine VHD-Datei hochladen zu könne
 
    * Geben Sie unter **URL** einen Unterdomänennamen ein, der in der Speicherkonto-URL verwendet werden soll. Die Eingabe kann zwischen drei und 24 Zahlen und Kleinbuchstaben enthalten. Dieser Name wird zum Hostnamen in der URL, die zum Adressieren von Azure-Blobspeicher-, Azure-Warteschlangenspeicher- oder Azure-Tabellenspeicherressourcen für das Abonnement verwendet wird.
    * Wählen Sie im Dropdownmenü **Region/Affinitätsgruppe** die **Region oder Affinitätsgruppe** für das Speicherkonto aus. Mit einer Affinitätsgruppe können Sie Ihre Clouddienste und Speicher im gleichen Rechenzentrum platzieren.
-   * Im Feld **Replikation** können Sie wählen, ob Sie die **Georeplikation** für das Speicherkonto verwenden möchten. Georeplikation ist als Standard voreingestellt. Mit dieser Option werden Ihre Daten kostenfrei an einem sekundären Speicherort repliziert. So wird die Speicherung auf jenen Speicherort umgeschaltet, wenn am primären Speicherort ein größerer Ausfall auftritt. Der sekundäre Speicherort wird automatisch zugewiesen und kann nicht geändert werden. Wenn Sie aufgrund gesetzlicher Vorschriften oder Unternehmensrichtlinien mehr Kontrolle über den Speicherort des cloudbasierten Speichers benötigen, können Sie die Georeplikation deaktivieren. Beachten Sie jedoch, dass bei einem späteren Aktivieren der Georeplikation eine einmalige Datenübertragungsgebühr fällig wird, um Ihre vorhandenen Daten in dem sekundären Speicherort zu replizieren. Die Speicherdienste ohne Georeplikation werden mit einem Rabatt angeboten. Ausführliche Informationen zur Verwaltung der Georeplikation für Speicherkonten finden Sie unter [Azure Storage-Replikation](../../../storage/storage-redundancy.md).
+   * Im Feld **Replikation** können Sie wählen, ob Sie die **Georeplikation** für das Speicherkonto verwenden möchten. Georeplikation ist als Standard voreingestellt. Mit dieser Option werden Ihre Daten kostenfrei an einem sekundären Speicherort repliziert. So wird die Speicherung auf jenen Speicherort umgeschaltet, wenn am primären Speicherort ein größerer Ausfall auftritt. Der sekundäre Speicherort wird automatisch zugewiesen und kann nicht geändert werden. Wenn Sie aufgrund gesetzlicher Vorschriften oder Unternehmensrichtlinien mehr Kontrolle über den Speicherort des cloudbasierten Speichers benötigen, können Sie die Georeplikation deaktivieren. Beachten Sie jedoch, dass bei einem späteren Aktivieren der Georeplikation eine einmalige Datenübertragungsgebühr fällig wird, um Ihre vorhandenen Daten in dem sekundären Speicherort zu replizieren. Die Speicherdienste ohne Georeplikation werden mit einem Rabatt angeboten. Ausführliche Informationen zur Verwaltung der Georeplikation für Speicherkonten finden Sie unter [Azure Storage-Replikation](../../../storage/common/storage-redundancy.md).
 
      ![Speicherkontodetails eingeben](./media/freebsd-create-upload-vhd/Storage-create-account.png)
 5. Klicken Sie auf **Speicherkonto erstellen**. Das Konto wird nun unter **Speicher**angezeigt.
@@ -164,12 +163,12 @@ Bevor Sie eine VHD-Datei hochladen können, müssen Sie eine sichere Verbindung 
 
 ### <a name="use-the-certificate-method-to-upload-a-vhd-file"></a>Hochladen einer VHD-Datei mithilfe der Zertifikatmethode
 1. Öffnen Sie die Azure PowerShell-Konsole.
-2. Geben Sie Folgendes ein:  `Get-AzurePublishSettingsFile`.
+2. Geben Sie `Get-AzurePublishSettingsFile` ein.
 3. Es wird ein Browserfenster geöffnet, und Sie werden aufgefordert, eine PUBLISHSETTINGS-Datei herunterzuladen. Diese Datei enthält Informationen und ein Zertifikat für Ihr Azure-Abonnement.
 
     ![Downloadseite des Browsers](./media/freebsd-create-upload-vhd/Browser_download_GetPublishSettingsFile.png)
 4. Speichern Sie die .publishsettings-Datei.
-5. Geben Sie Folgendes ein:  `Import-AzurePublishSettingsFile <PathToFile>`. Dabei ist `<PathToFile>` der vollständige Pfad zur PUBLISHSETTINGS-Datei.
+5. Geben Sie Folgendes ein: `Import-AzurePublishSettingsFile <PathToFile>`. Dabei ist `<PathToFile>` der vollständige Pfad zur PUBLISHSETTINGS-Datei.
 
    Weitere Informationen finden Sie unter [Erste Schritte mit Azure Cmdlets](http://msdn.microsoft.com/library/windowsazure/jj554332.aspx).
 

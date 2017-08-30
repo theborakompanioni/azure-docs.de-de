@@ -1,6 +1,6 @@
 ---
-title: "Zugreifen auf ein Dashboard über das Azure-Portal | Microsoft Docs"
-description: In diesem Artikel wird beschrieben, wie Sie den Zugriff auf ein Dashboard im Azure-Portal freigeben.
+title: Freigeben von Dashboards im Azure-Portal mit RBAC | Microsoft-Dokumentation
+description: In diesem Artikel wird beschrieben, wie Sie ein Dashboard im Azure-Portal mithilfe der rollenbasierten Zugriffssteuerung (Role Based Access Control, RBAC) freigeben.
 services: azure-portal
 documentationcenter: 
 author: tfitzmac
@@ -14,14 +14,15 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 08/01/2016
 ms.author: tomfitz
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: a2f3252aa271c0ec6750c38c6d5060dbfe73a0e2
-
+ms.translationtype: HT
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: 927ec9251b5231a5d9a0e8278f5dc46e9abdde0e
+ms.contentlocale: de-de
+ms.lasthandoff: 08/24/2017
 
 ---
-# <a name="sharing-azure-dashboards"></a>Freigeben von Azure-Dashboards
-Nach der Konfiguration eines Dashboards können Sie es veröffentlichen und für andere Benutzer in Ihrer Organisation freigeben. Sie gewähren anderen Benutzern den Zugriff auf Ihr Dashboard über die [Rollenbasierte Zugriffssteuerung](../active-directory/role-based-access-control-configure.md)von Azure. Sie weisen einem Benutzer oder einer Gruppe von Benutzern einer Rolle zu, und mit dieser Rolle wird dann definiert, ob diese Benutzer das veröffentlichte Dashboard anzeigen oder ändern können. 
+# <a name="share-azure-dashboards-by-using-role-based-access-control"></a>Freigeben von Azure-Dashboards mit rollenbasierter Zugriffssteuerung
+Nach der Konfiguration eines Dashboards können Sie es veröffentlichen und für andere Benutzer in Ihrer Organisation freigeben. Sie gewähren anderen Benutzern den Zugriff auf Ihr Dashboard über die [rollenbasierte Zugriffssteuerung](../active-directory/role-based-access-control-configure.md) von Azure. Sie weisen einem Benutzer oder einer Gruppe von Benutzern einer Rolle zu, und mit dieser Rolle wird dann definiert, ob diese Benutzer das veröffentlichte Dashboard anzeigen oder ändern können. 
 
 Alle veröffentlichten Dashboards werden als Azure-Ressourcen implementiert, d.h., sie sind als verwaltbare Elemente in Ihrem Abonnement vorhanden und in einer Ressourcengruppe enthalten.  Aus Sicht der Zugriffssteuerung unterscheiden sich Dashboards nicht von anderen Ressourcen, z.B. einem virtuellen Computer oder Speicherkonto.
 
@@ -76,10 +77,5 @@ Das Dashboard wurde veröffentlicht. Wenn die aus dem Abonnement geerbten Berech
 ## <a name="next-steps"></a>Nächste Schritte
 * Eine Liste mit den Rollen finden Sie unter [RBAC: Integrierte Rollen](../active-directory/role-based-access-built-in-roles.md).
 * Informationen zum Verwalten von Ressourcen finden Sie unter [Verwalten von Azure-Ressourcen über das Portal](resource-group-portal.md).
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

@@ -12,13 +12,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 07/17/2017
+ms.date: 08/21/2017
 ms.author: juluk
 ms.translationtype: HT
-ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
-ms.openlocfilehash: 26428ad0d3acda959235ffa780294154ba61bca5
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 61a8bfcf3704f361432400771d8fcc8b81927b53
 ms.contentlocale: de-de
-ms.lasthandoff: 08/08/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 
@@ -32,8 +32,8 @@ Beim ersten Start fordert Cloud Shell Sie auf, eine neue oder vorhandene Dateifr
 
 Wenn Sie die grundlegenden Einstellungen verwenden und nur ein Abonnement auswählen, werden von Cloud Shell in der für Sie unterstützten nächstgelegenen Region drei Ressourcen erstellt:
 * Ressourcengruppe: `cloud-shell-storage-<region>`
-* Speicherkonto: `cs-uniqueGuid`
-* Dateifreigabe: `cs-<user>-<domain>-com-uniqueGuid`
+* Speicherkonto: `cs<uniqueGuid>`
+* Dateifreigabe: `cs-<user>-<domain>-com-<uniqueGuid>`
 
 ![Einstellung „Abonnement“](media/basic-storage.png)
 
@@ -41,7 +41,7 @@ Die Dateifreigabe wird in Ihrem Verzeichnis `$Home` als `clouddrive` bereitgeste
 
 ### <a name="use-existing-resources"></a>Verwenden vorhandener Ressourcen
 
-Sie können vorhandene Ressourcen zuordnen, indem Sie die erweiterte Option verwenden. Wählen Sie bei der Anzeige mit der Aufforderung zum Einrichten des Speichers die Option **Erweiterte Einstellungen anzeigen**, um weitere Optionen anzuzeigen. Für vorhandene Dateifreigaben wird ein 5-GB-Benutzerimage bereitgestellt, mit dem Ihr Verzeichnis `$Home` beibehalten wird. Die Dropdownmenüs werden für Ihre zugewiesene Cloud Shell-Region und die Konten für den lokal redundanten und georedundanten Speicher gefiltert.
+Sie können vorhandene Ressourcen zuordnen, indem Sie die erweiterte Option verwenden. Wählen Sie bei der Anzeige mit der Aufforderung zum Einrichten des Speichers die Option **Erweiterte Einstellungen anzeigen**, um weitere Optionen anzuzeigen. Für vorhandene Dateifreigaben wird ein 5-GB-Benutzerimage bereitgestellt, mit dem Ihr Verzeichnis `$Home` beibehalten wird. Die Dropdownmenüs werden für Ihre Cloud Shell-Region und die Konten für den lokal redundanten und georedundanten Speicher gefiltert.
 
 ![Einstellung „Ressourcengruppe“](media/advanced-storage.png)
 
@@ -52,7 +52,7 @@ Speicherkonten, die Sie in Cloud Shell erstellen, erhalten das Tag `ms-resource-
 Cloud Shell nutzt die beiden folgenden Methoden zum Beibehalten von Dateien:
 * Es wird ein Datenträgerimage Ihres Verzeichnisses `$Home` erstellt, um alle Inhalte im Verzeichnis beizubehalten. Das Datenträgerimage wird in der von Ihnen angegebenen Dateifreigabe als `acc_<User>.img` unter `fileshare.storage.windows.net/fileshare/.cloudconsole/acc_<User>.img` gespeichert, und die Änderungen werden automatisch synchronisiert.
 
-* Ihre angegebene Dateifreigabe wird zur direkten Interaktion mit der Freigabe als `clouddrive` in Ihrem Verzeichnis `$Home` eingebunden. `/Home/<User>/clouddrive` wird `fileshare.storage.windows.net/fileshare` zugeordnet.
+* Ihre angegebene Dateifreigabe wird zur direkten Interaktion mit der Freigabe als `clouddrive` in Ihr Verzeichnis `$Home` eingebunden. `/Home/<User>/clouddrive` wird `fileshare.storage.windows.net/fileshare` zugeordnet.
  
 > [!NOTE]
 > Alle Dateien in Ihrem Verzeichnis `$Home`, z.B. SSH-Schlüssel, werden dauerhaft in Ihrem Benutzerdatenträgerimage beibehalten, das in der eingebundenen Dateifreigabe gespeichert ist. Nutzen Sie beim dauerhaften Speichern von Informationen in Ihrem Verzeichnis `$Home` und auf der eingebundenen Dateifreigabe die bewährten Methoden.
@@ -71,7 +71,7 @@ Wenn Sie eine vorhandene Dateifreigabe bereitstellen, müssen die Speicherkonten
 * Das Speicherkonto muss sich in Ihrer zugewiesenen Region befinden. Beim Onboarding wird die Region, der Sie zugewiesen sind, in der Ressourcengruppe mit dem Namen `cloud-shell-storage-<region>` aufgelistet.
 
 ### <a name="supported-storage-regions"></a>Unterstützte Speicherregionen
-Die Azure-Dateien müssen sich in derselben Region wie der Cloud Shell-Computer befinden, auf dem Sie diese bereitstellen. Cloud Shell-Computer sind in folgenden Regionen vorhanden:
+Die Azure-Dateien müssen sich in derselben Region wie der Cloud Shell-Computer befinden, auf dem Sie diese bereitstellen. Cloud Shell-Cluster sind derzeit in folgenden Regionen vorhanden:
 |Bereich|Region|
 |---|---|
 |Amerika|USA, Osten; USA, Süden-Mitte; USA, Westen|
@@ -94,7 +94,7 @@ Führen Sie `clouddrive mount -h` wie hier gezeigt aus, um weitere Details anzuz
 ![Ausführen des Befehls „clouddrive mount“](media/mount-h.png)
 
 ## <a name="unmount-clouddrive"></a>Aufheben der Bereitstellung von `clouddrive`
-Sie können die Bereitstellung einer Dateifreigabe in Cloud Shell jederzeit aufheben. Da für Cloud Shell aber eine bereitgestellte Dateifreigabe erforderlich ist, werden Sie aufgefordert, in der nächsten Sitzung eine neue Dateifreigabe zu erstellen und bereitzustellen, falls die aktuelle Freigabe entfernt wurde.
+Sie können die Bereitstellung einer Dateifreigabe in Cloud Shell jederzeit aufheben. Sobald die Bereitstellung der Dateifreigabe aufgehoben ist, werden Sie aufgefordert, vor der nächsten Sitzung eine neue Dateifreigabe bereitzustellen.
 
 So entfernen Sie eine Dateifreigabe aus Cloud Shell:
 1. Führen Sie `clouddrive unmount`aus.
@@ -107,7 +107,7 @@ Führen Sie `clouddrive unmount -h` wie hier gezeigt aus, um weitere Details anz
 ![Ausführen des Befehls „clouddrive unmount“](media/unmount-h.png)
 
 > [!WARNING]
-> Beim Ausführen dieses Befehls werden keine Ressourcen gelöscht, aber beim manuellen Löschen einer Ressourcengruppe, eines Speicherkontos oder einer Dateifreigabe mit Zuordnung zu Cloud Shell werden Ihr Datenträgerimage im Verzeichnis `$Home` und alle Dateien in Ihrer Dateifreigabe gelöscht. Diese Aktion kann nicht rückgängig gemacht werden.
+> Durch das Ausführen dieses Befehls werden keine Ressourcen gelöscht. Wenn Sie die Ressourcengruppe, das Speicherkonto oder die Dateifreigabe, die bzw. das Cloud Shell zugeordnet ist, manuell löschen, werden das Image des `$Home`-Verzeichnisses und alle anderen Dateien in der Dateifreigabe gelöscht. Diese Aktion kann nicht rückgängig gemacht werden.
 
 ## <a name="list-clouddrive-file-shares"></a>Auflisten von `clouddrive`-Dateifreigaben
 Führen Sie den folgenden `df`-Befehl aus, um zu ermitteln, welche Dateifreigabe als `clouddrive` bereitgestellt wird. 
@@ -116,14 +116,14 @@ Der Dateipfad zu „clouddrive“ zeigt den Namen Ihres Speicherkontos und die D
 
 ```
 justin@Azure:~$ df
-Filesystem                                          1K-blocks   Used  Available Use% Mounted on
-overlay                                             29711408 5577940   24117084  19% /
-tmpfs                                                 986716       0     986716   0% /dev
-tmpfs                                                 986716       0     986716   0% /sys/fs/cgroup
-/dev/sda1                                           29711408 5577940   24117084  19% /etc/hosts
-shm                                                    65536       0      65536   0% /dev/shm
-//mystoragename.file.core.windows.net/fileshareName 5368709120    64 5368709056   1% /home/justin/clouddrive
-justin@Azure:~$
+Filesystem                                               1K-blocks     Used Available Use% Mounted on
+overlay                                                   30428648 15585636  14826628  52% /
+tmpfs                                                       986704        0    986704   0% /dev
+tmpfs                                                       986704        0    986704   0% /sys/fs/cgroup
+/dev/sda1                                                 30428648 15585636  14826628  52% /etc/hosts
+shm                                                          65536        0     65536   0% /dev/shm
+//mystoragename.file.core.windows.net/fileshareName        6291456  5242944   1048512  84% /usr/justin/clouddrive
+/dev/loop0                                                 5160576   601652   4296780  13% /home/justin
 ```
 
 ## <a name="transfer-local-files-to-cloud-shell"></a>Übertragen Sie lokale Dateien auf Cloud Shell

@@ -16,11 +16,10 @@ ms.workload: infrastructure
 ms.date: 07/05/2017
 ms.author: iainfou
 ms.translationtype: HT
-ms.sourcegitcommit: d941879aee6042b38b7f5569cd4e31cb78b4ad33
-ms.openlocfilehash: 3dc48f5dcb50db81d9f461c41570640839fcce26
+ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
+ms.openlocfilehash: 172b4c8f5c098d776cb689543f5d8f163b8895b4
 ms.contentlocale: de-de
-ms.lasthandoff: 07/10/2017
-
+ms.lasthandoff: 08/19/2017
 
 ---
 # <a name="how-to-encrypt-virtual-disks-on-a-linux-vm"></a>Verschlüsseln virtueller Datenträger auf einer Linux-VM
@@ -274,15 +273,13 @@ Der Status sollte jetzt sowohl für den Betriebssystemdatenträger als auch für
 
 
 ## <a name="add-additional-data-disks"></a>Hinzufügen zusätzlicher Datenträger
-Nachdem Sie Ihre Datenträger verschlüsselt haben, können Sie dem virtuellen Computer später weitere virtuelle Datenträger hinzufügen und diese ebenfalls verschlüsseln. Erhöhen Sie beim Ausführen des Befehls `az vm encryption enable` die Sequenzversion mithilfe des `--sequence-version`-Parameters. Mit diesem Sequenzversionsparameter können Sie wiederholte Vorgänge auf dem gleichen virtuellen Computer ausführen.
-
-So können Sie Ihrem virtuellen Computer beispielsweise wie folgt einen zweiten virtuellen Datenträger hinzufügen:
+Nachdem Sie Ihre Datenträger verschlüsselt haben, können Sie dem virtuellen Computer später weitere virtuelle Datenträger hinzufügen und diese ebenfalls verschlüsseln. So können Sie Ihrem virtuellen Computer beispielsweise wie folgt einen zweiten virtuellen Datenträger hinzufügen:
 
 ```azurecli
 az vm disk attach-new --resource-group myResourceGroup --vm-name myVM --size-in-gb 5
 ```
 
-Führen Sie den Befehl erneut aus, um die virtuellen Datenträger zu verschlüsseln. Fügen Sie diesmal allerdings den `--sequence-version`-Parameter hinzu, und erhöhen Sie den Wert aus der ersten Ausführung wie folgt:
+Führen Sie den Befehl zum Verschlüsseln die virtuellen Datenträger erneut wie folgt aus:
 
 ```azurecli
 az vm encryption enable \
@@ -292,8 +289,7 @@ az vm encryption enable \
     --aad-client-secret $sp_password \
     --disk-encryption-keyvault $keyvault_name \
     --key-encryption-key myKey \
-    --volume-type all \
-    --sequence-version 2
+    --volume-type all
 ```
 
 

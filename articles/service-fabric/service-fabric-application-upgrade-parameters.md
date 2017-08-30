@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
-ms.openlocfilehash: aa26d72524f035cca92cd39062873ceb15bffac1
+ms.translationtype: HT
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: f09dad590f32c10f75484bba9afb7ea60f29d81e
 ms.contentlocale: de-de
-ms.lasthandoff: 03/11/2017
+ms.lasthandoff: 08/24/2017
 
 ---
 # <a name="application-upgrade-parameters"></a>Parameter für Anwendungsupgrades
@@ -65,7 +65,7 @@ Die Kriterien für MaxPercentUnhealthyServices, MaxPercentUnhealthyPartitionsPer
 
 [Upgrade Ihrer Anwendung mithilfe von PowerShell](service-fabric-application-upgrade-tutorial-powershell.md) werden Sie schrittweise durch das Upgrade der Anwendung mithilfe von PowerShell geführt.
 
-[Upgraden Ihrer Anwendung](service-fabric-azure-cli.md#upgrading-your-application) führt Sie schrittweise durch ein Anwendungsupgrade mit Azure CLI.
+[Upgraden Ihrer Anwendung mithilfe der Service Fabric CLI unter Linux](service-fabric-application-lifecycle-sfctl.md#upgrade-application) führt Sie in einzelnen Schritten durch ein Anwendungsupgrade mit der Service Fabric CLI.
 
 [Upgrade your Service Fabric Java application](service-fabric-get-started-eclipse.md#upgrade-your-service-fabric-java-application) (Aktualisieren Ihrer Service Fabric-Java-Anwendung)
 

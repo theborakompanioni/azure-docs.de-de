@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 05/08/2017
 ms.author: ccompy
 ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
-ms.openlocfilehash: 891ed3f496ca394c9139ad9f94986a19d8cef769
+ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
+ms.openlocfilehash: cd498198e0f206ddca2e3396813b2f2093ec3731
 ms.contentlocale: de-de
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 08/19/2017
 
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>Überlegungen zum Netzwerkbetrieb in einer App Service-Umgebung #
@@ -62,11 +62,18 @@ Eine eingehende ASE-Zugriffsabhängigkeit ist:
 
 | Verwenden Sie | Aus | To |
 |-----|------|----|
-| Verwaltung | Internet | ASE-Subnetz: 454, 455 |
+| Verwaltung | App Service-Verwaltungsadressen | ASE-Subnetz: 454, 455 |
 |  Interne ASE-Kommunikation | ASE-Subnetz: Alle Ports | ASE-Subnetz: Alle Ports
-|  Azure Load Balancer eingehend zulassen | Azure Load Balancer | Beliebig
+|  Azure Load Balancer eingehend zulassen | Azure Load Balancer | ASE-Subnetz: Alle Ports
+|  Von der App zugewiesene IP-Adressen | Von der App zugewiesene Adressen | ASE-Subnetz: Alle Ports
 
-Zusätzlich zur Systemüberwachung ermöglicht der eingehende Datenverkehr Befehl und Steuerung der ASE. Die Quell-IP-Adressen für diesen Datenverkehr sind nicht konstant. Die Netzwerksicherheitskonfiguration muss den Zugriff über alle IP-Adressen auf den Ports 454 und 455 zulassen.
+Zusätzlich zur Systemüberwachung ermöglicht der eingehende Datenverkehr Befehl und Steuerung der ASE. Die Quell-IP-Adressen für diesen Datenverkehr sind im Dokument [App Service-Umgebung Management-Adressen][ASEManagement] aufgeführt. Die Netzwerksicherheitskonfiguration muss den Zugriff über alle IP-Adressen auf den Ports 454 und 455 zulassen.
+
+Viele Ports im ASE-Subnetz werden für die Kommunikation zwischen internen Komponenten verwendet, und sie können sich ändern.  Deshalb muss auf alle Ports im ASE-Subnetz aus dem ASE-Subnetz zugegriffen werden können. 
+
+Für die Kommunikation zwischen dem Azure Load Balancer und dem ASE-Subnetz müssen mindestens die Ports 454, 455 und 16001 geöffnet sein. Port 16001 wird für Keep-Alive-Datenverkehr zwischen dem Load Balancer und der ASE verwendet. Wenn Sie eine ILB-ASE verwenden, können Sie den Datenverkehr auf die Ports 454, 455 und 16001 beschränken.  Wenn Sie eine externe ASE verwenden, müssen Sie die normalen App-Zugriffsports berücksichtigen.  Wenn Sie von der App zugewiesene Adressen verwenden, müssen Sie sie für alle Ports öffnen.  Wenn eine Adresse einer bestimmten App zugewiesen ist, verwendet der Load Balancer zum Senden von HTTP- und HTTPS-Datenverkehr an die ASE Ports, die nicht im Voraus bekannt sind.
+
+Wenn Sie von der App zugewiesene IP-Adressen verwenden, müssen Sie Datenverkehr von den IP-Adressen, die Ihren Apps zugewiesen sind, an das ASE-Subnetz zulassen.
 
 Eine ASE hängt beim ausgehenden Zugriff von mehreren externen Systemen ab. Diese Systemabhängigkeiten werden über DNS-Namen festgelegt und lassen sich keiner festen IP-Adressengruppe zuordnen. Somit erfordert die ASE den ausgehenden Zugriff aus dem ASE-Subnetz auf alle externen IP-Adressen über eine Vielzahl von Ports. Eine ASE weist die folgenden ausgehenden Abhängigkeiten auf:
 
@@ -245,4 +252,5 @@ Um die ASE in einem VNet bereitzustellen, das mit ExpressRoute integriert ist, n
 [AppDeploy]: ../../app-service-web/web-sites-deploy.md
 [ASEWAF]: ../../app-service-web/app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md
+[ASEManagement]: ./management-addresses.md
 

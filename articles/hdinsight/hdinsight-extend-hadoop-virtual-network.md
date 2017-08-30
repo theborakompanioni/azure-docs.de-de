@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 08/04/2017
+ms.date: 08/23/2017
 ms.author: larryfr
 ms.translationtype: HT
-ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
-ms.openlocfilehash: 19095d65188ff935b99d1b89cefbc92ef06ebc6f
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: 5574a234076797852b32631b90bb563441bbc6e7
 ms.contentlocale: de-de
-ms.lasthandoff: 08/04/2017
+ms.lasthandoff: 08/24/2017
 
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Erweitern von Azure HDInsight per Azure Virtual Network
@@ -60,7 +60,7 @@ Führen Sie die Schritte in diesem Abschnitt aus, um zu erfahren, wie Sie einen 
 
 1. Verwenden Sie das klassische oder das Resource Manager-Bereitstellungsmodell für das virtuelle Netzwerk?
 
-    Für HDInsight 3.4 und höher ist ein virtuelles Resource Manager-Netzwerk erforderlich. Für frühere Versionen von HDInsight war ein klassisches virtuelles Netzwerk erforderlich, aber diese Versionen sind bereits ausgelaufen bzw. laufen in Kürze aus.
+    Für HDInsight 3.4 und höher ist ein virtuelles Resource Manager-Netzwerk erforderlich. In früheren Versionen von HDInsight war ein klassisches virtuelles Netzwerk erforderlich.
 
     Falls Ihr vorhandenes Netzwerk ein klassisches virtuelles Netzwerk ist, müssen Sie ein virtuelles Resource Manager-Netzwerk erstellen und die beiden Netzwerke dann verbinden. [Herstellen einer Verbindung zwischen klassischen VNets und neuen VNets](../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md)
 
@@ -201,7 +201,7 @@ Verwenden Sie die folgenden Schritte, um über das virtuelle Netzwerk eine Verbi
     az network nic list --resource-group <resourcegroupname> --output table --query "[?contains(name,'node')].{NICname:name,InternalIP:ipConfigurations[0].privateIpAddress,InternalFQDN:dnsSettings.internalFqdn}"
     ```
 
-    Suchen Sie in der Liste mit den zurückgegebenen Knoten nach dem FQDN für die Hauptknoten, und verwenden Sie diese, um eine Verbindung mit Ambari und anderen Webdiensten herzustellen. Verwenden Sie beispielsweise `http://<headnode-fqdn>:8080`, um auf Ambari zuzugreifen.
+    Suchen Sie in der Liste mit den zurückgegebenen Knoten nach dem FQDN für die Hauptknoten, und verwenden Sie die FQDNs, um eine Verbindung mit Ambari und anderen Webdiensten herzustellen. Verwenden Sie beispielsweise `http://<headnode-fqdn>:8080`, um auf Ambari zuzugreifen.
 
     > [!IMPORTANT]
     > Einige der auf den Hauptknoten gehosteten Dienste sind jeweils nur auf einem Knoten aktiv. Wenn Sie versuchen, auf einen Dienst auf einem der Hauptknoten zuzugreifen, und der Fehler 404 zurückgegeben wird, wechseln Sie zum anderen Hauptknoten.
@@ -247,47 +247,60 @@ Die Tunnelerzwingung ist eine benutzerdefinierte Routingkonfiguration, bei der f
 
 ## <a id="hdinsight-ip"></a>Erforderliche IP-Adressen
 
-Die folgende Liste enthält die IP-Adresse der Integritäts- und Überwachungsdienste von Azure, mit denen HDInsight-Cluster überwacht werden. Diese Liste ist nur wichtig, wenn Sie Netzwerksicherheitsgruppen oder benutzerdefinierte Routen verwenden. Weitere Informationen finden Sie im Abschnitt [Steuern des Netzwerkdatenverkehrs](#networktraffic).
+Die Azure-Integritäts- und Verwaltungsdienste müssen mit HDInsight kommunizieren können. Wenn Sie Netzwerksicherheitsgruppen oder benutzerdefinierte Routen verwenden, erlauben Sie Datenverkehr von den IP-Adressen für diese Dienste, HDInsight zu erreichen.
 
-Verwenden Sie die folgende Tabelle, um die IP-Adressen für Ihre Region zu ermitteln:
+Es gibt zwei Sätze von IP-Adressen:
 
-| Land | Region | Zulässige IP-Adressen | Zulässiger Port | Richtung |
-| ---- | ---- | ---- | ---- | ----- |
-| Asien | Ostasien | 23.102.235.122</br>52.175.38.134 | 443 | Eingehend |
-| Australien | Australien (Osten) | 104.210.84.115</br>13.75.152.195 | 443 | Eingehend |
-| Brasilien | Brasilien Süd | 191.235.84.104</br>191.235.87.113 | 443 | Eingehend |
-| Kanada | Kanada, Osten | 52.229.127.96</br>52.229.123.172 | 443 | Eingehend |
-| &nbsp; | Kanada, Mitte | 52.228.37.66</br>52.228.45.222 | 443 | Eingehend |
-| China | China, Norden | 42.159.96.170</br>139.217.2.219 | 443 | Eingehend |
-| &nbsp; | China, Osten | 42.159.198.178</br>42.159.234.157 | 443 | Eingehend |
-| Europa | Nordeuropa | 52.164.210.96</br>13.74.153.132 | 443 | Eingehend |
-| Deutschland | Deutschland, Mitte | 51.4.146.68</br>51.4.146.80 | 443 | Eingehend |
-| &nbsp; | Deutschland, Nordosten | 51.5.150.132</br>51.5.144.101 | 443 | Eingehend |
-| Indien | Indien (Mitte) | 52.172.153.209</br>52.172.152.49 | 443 | Eingehend |
-| Japan | Japan Ost | 13.78.125.90</br>13.78.89.60 | 443 | Eingehend |
-| &nbsp; | Japan (Westen) | 40.74.125.69</br>138.91.29.150 | 443 | Eingehend |
-| Korea | Korea, Mitte | 52.231.39.142</br>52.231.36.209 | 433 | Eingehend |
-| &nbsp; | Korea, Süden | 52.231.203.16</br>52.231.205.214 | 443 | Eingehend
-| Vereinigtes Königreich | UK, Westen | 51.141.13.110</br>51.141.7.20 | 443 | Eingehend |
-| &nbsp; | UK, Süden | 51.140.47.39</br>51.140.52.16 | 443 | Eingehend |
-| USA | USA (Mitte) | 13.67.223.215</br>40.86.83.253 | 443 | Eingehend |
-| &nbsp; | USA, Westen-Mitte | 52.161.23.15</br>52.161.10.167 | 443 | Eingehend |
-| &nbsp; | USA, Westen 2 | 52.175.211.210</br>52.175.222.222 | 443 | Eingehend |
+* Ein __globaler__ Satz von vier IP-Adressen, die zugelassen werden müssen:
 
-Informationen zu den IP-Adressen, die für Azure Government verwendet werden, finden Sie im Dokument [Azure Government Intelligence + Analytics](https://docs.microsoft.com/azure/azure-government/documentation-government-services-intelligenceandanalytics) (Azure Government – Daten und Analyse)
+    | IP-Adresse | Zulässiger Port | Richtung |
+    | ---- | ----- | ----- |
+    | 168.61.49.99 | 443 | Eingehend |
+    | 23.99.5.239 | 443 | Eingehend |
+    | 168.61.48.131 | 443 | Eingehend |
+    | 138.91.141.162 | 443 | Eingehend |
 
-__Wenn Ihre Region in der Tabelle nicht aufgeführt ist__, lassen Sie für die folgenden IP-Adressen Datenverkehr über Port __443__ zu:
+* __Regionsspezifische__ IP-Adressen, die zugelassen werden müssen:
 
-* 168.61.49.99
-* 23.99.5.239
-* 168.61.48.131
-* 138.91.141.162
+    > [!IMPORTANT]
+    > Wenn die verwendete Azure-Region nicht aufgeführt ist, verwenden Sie nur die vier bereits genannten globalen IP-Adressen.
 
-> [!IMPORTANT]
+    | Land | Region | Zulässige IP-Adressen | Zulässiger Port | Richtung |
+    | ---- | ---- | ---- | ---- | ----- |
+    | Asien | Ostasien | 23.102.235.122</br>52.175.38.134 | 443 | Eingehend |
+    | &nbsp; | Asien, Südosten | 13.76.245.160</br>13.76.136.249 | 443 | Eingehend |
+    | Australien | Australien (Osten) | 104.210.84.115</br>13.75.152.195 | 443 | Eingehend |
+    | &nbsp; | Australien, Südosten | 13.77.2.56</br>13.77.2.94 | 443 | Eingehend |
+    | Brasilien | Brasilien Süd | 191.235.84.104</br>191.235.87.113 | 443 | Eingehend |
+    | Kanada | Kanada, Osten | 52.229.127.96</br>52.229.123.172 | 443 | Eingehend |
+    | &nbsp; | Kanada, Mitte | 52.228.37.66</br>52.228.45.222 | 443 | Eingehend |
+    | China | China, Norden | 42.159.96.170</br>139.217.2.219 | 443 | Eingehend |
+    | &nbsp; | China, Osten | 42.159.198.178</br>42.159.234.157 | 443 | Eingehend |
+    | Europa | Nordeuropa | 52.164.210.96</br>13.74.153.132 | 443 | Eingehend |
+    | &nbsp; | Europa, Westen| 52.166.243.90</br>52.174.36.244 | 443 | Eingehend |
+    | Deutschland | Deutschland, Mitte | 51.4.146.68</br>51.4.146.80 | 443 | Eingehend |
+    | &nbsp; | Deutschland, Nordosten | 51.5.150.132</br>51.5.144.101 | 443 | Eingehend |
+    | Indien | Indien (Mitte) | 52.172.153.209</br>52.172.152.49 | 443 | Eingehend |
+    | Japan | Japan Ost | 13.78.125.90</br>13.78.89.60 | 443 | Eingehend |
+    | &nbsp; | Japan (Westen) | 40.74.125.69</br>138.91.29.150 | 443 | Eingehend |
+    | Korea | Korea, Mitte | 52.231.39.142</br>52.231.36.209 | 433 | Eingehend |
+    | &nbsp; | Korea, Süden | 52.231.203.16</br>52.231.205.214 | 443 | Eingehend
+    | Vereinigtes Königreich | UK, Westen | 51.141.13.110</br>51.141.7.20 | 443 | Eingehend |
+    | &nbsp; | UK, Süden | 51.140.47.39</br>51.140.52.16 | 443 | Eingehend |
+    | USA | USA (Mitte) | 13.67.223.215</br>40.86.83.253 | 443 | Eingehend |
+    | &nbsp; | USA (Mitte/Norden) | 157.56.8.38</br>157.55.213.99 | 443 | Eingehend |
+    | &nbsp; | USA, Westen-Mitte | 52.161.23.15</br>52.161.10.167 | 443 | Eingehend |
+    | &nbsp; | USA, Westen 2 | 52.175.211.210</br>52.175.222.222 | 443 | Eingehend |
+
+    Informationen zu den IP-Adressen, die für Azure Government verwendet werden, finden Sie im Dokument [Azure Government Intelligence + Analytics](https://docs.microsoft.com/azure/azure-government/documentation-government-services-intelligenceandanalytics) (Azure Government – Daten und Analyse)
+
+> [!WARNING]
 > HDInsight unterstützt keine Einschränkung des ausgehenden Datenverkehrs, nur des eingehenden Datenverkehrs.
 
-> [!NOTE]
+> [!IMPORTANT]
 > Wenn Sie für Ihr virtuelles Netzwerk einen benutzerdefinierten DNS-Server verwenden, müssen Sie auch den Zugriff über __168.63.129.16__ zulassen. Diese Adresse ist der rekursive Resolver von Azure. Weitere Informationen finden Sie im Dokument [Namensauflösung für virtuelle Computer und Rolleninstanzen](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
+
+Weitere Informationen finden Sie im Abschnitt [Steuern des Netzwerkdatenverkehrs](#networktraffic).
 
 ## <a id="hdinsight-ports"></a>Erforderliche Ports
 
@@ -318,7 +331,7 @@ Mit der folgenden Resource Manager-Vorlage wird ein virtuelles Netzwerk erstellt
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Verwenden Sie das folgende PowerShell-Skript, um ein virtuelles Netzwerk zu erstellen, bei dem eingehender Datenverkehr eingeschränkt wird, während Datenverkehr von den IP-Adressen zugelassen wird, die für HDInsight in der Region „Europa, Norden“ erforderlich sind.
+Verwenden Sie das folgende PowerShell-Skript, um ein virtuelles Netzwerk zu erstellen, bei dem eingehender Datenverkehr eingeschränkt und Datenverkehr von den IP-Adressen für die Region „Europa, Norden“ zugelassen wird.
 
 > [!IMPORTANT]
 > Ändern Sie die IP-Adressen, die in diesem Beispiel verwendet werden, damit sie der von Ihnen verwendeten Azure-Region entsprechen. Sie finden diese Informationen im Abschnitt [HDInsight mit Netzwerksicherheitsgruppen und benutzerdefinierten Routen](#hdinsight-ip).
@@ -364,6 +377,50 @@ $nsg = New-AzureRmNetworkSecurityGroup `
         -Priority 301 `
         -Direction Inbound `
     | Add-AzureRmNetworkSecurityRuleConfig `
+        -Name "hdirule2" `
+        -Description "HDI health and management 168.61.49.99" `
+        -Protocol "*" `
+        -SourcePortRange "*" `
+        -DestinationPortRange "443" `
+        -SourceAddressPrefix "168.61.49.99" `
+        -DestinationAddressPrefix "VirtualNetwork" `
+        -Access Allow `
+        -Priority 302 `
+        -Direction Inbound `
+    | Add-AzureRmNetworkSecurityRuleConfig `
+        -Name "hdirule2" `
+        -Description "HDI health and management 23.99.5.239" `
+        -Protocol "*" `
+        -SourcePortRange "*" `
+        -DestinationPortRange "443" `
+        -SourceAddressPrefix "23.99.5.239" `
+        -DestinationAddressPrefix "VirtualNetwork" `
+        -Access Allow `
+        -Priority 303 `
+        -Direction Inbound `
+    | Add-AzureRmNetworkSecurityRuleConfig `
+        -Name "hdirule2" `
+        -Description "HDI health and management 168.61.48.131" `
+        -Protocol "*" `
+        -SourcePortRange "*" `
+        -DestinationPortRange "443" `
+        -SourceAddressPrefix "168.61.48.131" `
+        -DestinationAddressPrefix "VirtualNetwork" `
+        -Access Allow `
+        -Priority 304 `
+        -Direction Inbound `
+    | Add-AzureRmNetworkSecurityRuleConfig `
+        -Name "hdirule2" `
+        -Description "HDI health and management 138.91.141.162" `
+        -Protocol "*" `
+        -SourcePortRange "*" `
+        -DestinationPortRange "443" `
+        -SourceAddressPrefix "138.91.141.162" `
+        -DestinationAddressPrefix "VirtualNetwork" `
+        -Access Allow `
+        -Priority 305 `
+        -Direction Inbound `
+    | Add-AzureRmNetworkSecurityRuleConfig `
         -Name "blockeverything" `
         -Description "Block everything else" `
         -Protocol "*" `
@@ -390,7 +447,7 @@ Set-AzureRmVirtualNetworkSubnetConfig `
 > Im folgenden Beispiel wird veranschaulicht, wie der SSH-Zugriff über das Internet aktiviert wird:
 >
 > ```powershell
-> Add-AzureRmNetworkSecurityRuleConfig -Name "SSH" -Description "SSH" -Protocol "*" -SourcePortRange "*" -DestinationPortRange "22" -SourceAddressPrefix "*" -DestinationAddressPrefix "VirtualNetwork" -Access Allow -Priority 304 -Direction Inbound
+> Add-AzureRmNetworkSecurityRuleConfig -Name "SSH" -Description "SSH" -Protocol "*" -SourcePortRange "*" -DestinationPortRange "22" -SourceAddressPrefix "*" -DestinationAddressPrefix "VirtualNetwork" -Access Allow -Priority 306 -Direction Inbound
 > ```
 
 ### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
@@ -413,6 +470,10 @@ Verwenden Sie die folgenden Schritte, um ein virtuelles Netzwerk zu erstellen, m
     ```azurecli
     az network nsg rule create -g RESOURCEGROUPNAME --nsg-name hdisecure -n hdirule1 --protocol "*" --source-port-range "*" --destination-port-range "443" --source-address-prefix "52.164.210.96" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 300 --direction "Inbound"
     az network nsg rule create -g RESOURCEGROUPNAME --nsg-name hdisecure -n hdirule2 --protocol "*" --source-port-range "*" --destination-port-range "443" --source-address-prefix "13.74.153.132" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 301 --direction "Inbound"
+    az network nsg rule create -g RESOURCEGROUPNAME --nsg-name hdisecure -n hdirule2 --protocol "*" --source-port-range "*" --destination-port-range "443" --source-address-prefix "168.61.49.99" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 302 --direction "Inbound"
+    az network nsg rule create -g RESOURCEGROUPNAME --nsg-name hdisecure -n hdirule2 --protocol "*" --source-port-range "*" --destination-port-range "443" --source-address-prefix "23.99.5.239" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 303 --direction "Inbound"
+    az network nsg rule create -g RESOURCEGROUPNAME --nsg-name hdisecure -n hdirule2 --protocol "*" --source-port-range "*" --destination-port-range "443" --source-address-prefix "168.61.48.131" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 304 --direction "Inbound"
+    az network nsg rule create -g RESOURCEGROUPNAME --nsg-name hdisecure -n hdirule2 --protocol "*" --source-port-range "*" --destination-port-range "443" --source-address-prefix "138.91.141.162" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 305 --direction "Inbound"
     az network nsg rule create -g RESOURCEGROUPNAME --nsg-name hdisecure -n block --protocol "*" --source-port-range "*" --destination-port-range "*" --source-address-prefix "Internet" --destination-address-prefix "VirtualNetwork" --access "Deny" --priority 500 --direction "Inbound"
     ```
 
@@ -442,7 +503,7 @@ Verwenden Sie die folgenden Schritte, um ein virtuelles Netzwerk zu erstellen, m
 > Im folgenden Beispiel wird veranschaulicht, wie der SSH-Zugriff über das Internet aktiviert wird:
 >
 > ```azurecli
-> az network nsg rule create -g RESOURCEGROUPNAME --nsg-name hdisecure -n hdirule5 --protocol "*" --source-port-range "*" --destination-port-range "22" --source-address-prefix "*" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 304 --direction "Inbound"
+> az network nsg rule create -g RESOURCEGROUPNAME --nsg-name hdisecure -n hdirule5 --protocol "*" --source-port-range "*" --destination-port-range "22" --source-address-prefix "*" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 306 --direction "Inbound"
 > ```
 
 ## <a id="example-dns"></a>Beispiel: DNS-Konfiguration

@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/12/2017
+ms.date: 08/16/2017
 ms.author: yushwang
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: ea5546a636bd567853438ae2620ae24ce2d7da23
-ms.lasthandoff: 04/27/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 93873a530ba7190de964b9f5b2e0e63371d95fcc
+ms.contentlocale: de-de
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="configure-active-active-s2s-vpn-connections-with-azure-vpn-gateways"></a>Konfigurieren von Aktiv/Aktiv-S2S-VPN-Verbindungen mit Azure VPN Gateways
@@ -39,7 +39,9 @@ Dieser Artikel enthält die Anleitung zum Einrichten einer standortübergreifend
 Sie können dies kombinieren, um eine komplexere Netzwerktopologie mit hoher Verfügbarkeit zu erstellen, die Ihre Anforderungen erfüllt.
 
 > [!IMPORTANT]
-> Beachten Sie, dass der Aktiv/Aktiv-Modus nur für eine HighPerformance-SKU funktioniert.
+> Beachten Sie, dass im Aktiv-aktiv-Modus nur die folgenden SKUs verwendet werden: 
+  * VpnGw1, VpnGw2, VpnGw3
+  * HighPerformance (für alte SKUs)
 > 
 > 
 
@@ -48,7 +50,7 @@ Mit den folgenden Schritten wird Ihr Azure VPN Gateway in Aktiv/Aktiv-Modi konfi
 
 * Sie müssen zwei Gateway-IP-Konfigurationen mit zwei öffentlichen IP-Adressen erstellen.
 * Sie müssen das EnableActiveActiveFeature-Flag festlegen.
-* Die Gateway-SKU muss den Typ „HighPerformance“ aufweisen.
+* Die Gateway-SKU muss VpnGw1, VpnGw2, VpnGw3 oder HighPerformance (alte SKU) sein.
 
 Die anderen Eigenschaften sind mit den Eigenschaften von anderen Gateways identisch, die nicht den Aktiv/Aktiv-Modus aufweisen. 
 
@@ -122,10 +124,10 @@ $gw1ipconf2 = New-AzureRmVirtualNetworkGatewayIpConfig -Name $GW1IPconf2 -Subnet
 ```
 
 #### <a name="2-create-the-vpn-gateway-with-active-active-configuration"></a>2. Erstellen des VPN-Gateways mit Aktiv/Aktiv-Konfiguration
-Erstellen Sie das virtuelle Netzwerkgateway für Ihr TestVNet1. Beachten Sie, dass zwei GatewayIpConfig-Einträge vorhanden sind und das EnableActiveActiveFeature-Flag festgelegt wurde. Für den Aktiv/Aktiv-Modus ist ein routenbasiertes VPN-Gateway mit einer HighPerformance-SKU erforderlich. Das Erstellen eines Gateways kann einige Zeit dauern (30 Minuten oder mehr).
+Erstellen Sie das virtuelle Netzwerkgateway für Ihr TestVNet1. Beachten Sie, dass zwei GatewayIpConfig-Einträge vorhanden sind und das EnableActiveActiveFeature-Flag festgelegt wurde. Das Erstellen eines Gateways kann einige Zeit dauern (45 Minuten oder mehr).
 
 ```powershell
-New-AzureRmVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1 -Location $Location1 -IpConfigurations $gw1ipconf1,$gw1ipconf2 -GatewayType Vpn -VpnType RouteBased -GatewaySku HighPerformance -Asn $VNet1ASN -EnableActiveActiveFeature -Debug
+New-AzureRmVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1 -Location $Location1 -IpConfigurations $gw1ipconf1,$gw1ipconf2 -GatewayType Vpn -VpnType RouteBased -GatewaySku VpnGw1 -Asn $VNet1ASN -EnableActiveActiveFeature -Debug
 ```
 
 #### <a name="3-obtain-the-gateway-public-ip-addresses-and-the-bgp-peer-ip-address"></a>3. Abrufen der öffentlichen IP-Adressen für das Gateway und der BGP-Peer-IP-Adresse
@@ -253,15 +255,17 @@ New-AzureRmVirtualNetworkGatewayConnection -Name $Connection152 -ResourceGroupNa
 #### <a name="3-vpn-and-bgp-parameters-for-your-second-on-premises-vpn-device"></a>3. VPN- und BGP-Parameter für Ihr zweites lokales VPN-Gerät
 Unten sind wieder die Parameter aufgeführt, die Sie für das zweite VPN-Gerät eingeben:
 
-      - Site5 ASN            : 65050
-      - Site5 BGP IP         : 10.52.255.254
-      - Prefixes to announce : (for example) 10.51.0.0/16 and 10.52.0.0/16
-      - Azure VNet ASN       : 65010
-      - Azure VNet BGP IP 1  : 10.12.255.4 for tunnel to 40.112.190.5
-      - Azure VNet BGP IP 2  : 10.12.255.5 for tunnel to 138.91.156.129
-      - Static routes        : Destination 10.12.255.4/32, nexthop the VPN tunnel interface to 40.112.190.5
-                             Destination 10.12.255.5/32, nexthop the VPN tunnel interface to 138.91.156.129
-      - eBGP Multihop        : Ensure the "multihop" option for eBGP is enabled on your device if needed
+```
+- Site5 ASN            : 65050
+- Site5 BGP IP         : 10.52.255.254
+- Prefixes to announce : (for example) 10.51.0.0/16 and 10.52.0.0/16
+- Azure VNet ASN       : 65010
+- Azure VNet BGP IP 1  : 10.12.255.4 for tunnel to 40.112.190.5
+- Azure VNet BGP IP 2  : 10.12.255.5 for tunnel to 138.91.156.129
+- Static routes        : Destination 10.12.255.4/32, nexthop the VPN tunnel interface to 40.112.190.5
+                         Destination 10.12.255.5/32, nexthop the VPN tunnel interface to 138.91.156.129
+- eBGP Multihop        : Ensure the "multihop" option for eBGP is enabled on your device if needed
+```
 
 Nachdem die Verbindung (Tunnel) hergestellt wurde, verfügen Sie für die Verbindung Ihres lokalen Netzwerks mit Azure über VPN-Geräte und Tunnel mit dualer Redundanz:
 
@@ -331,7 +335,7 @@ $gw2ipconf2 = New-AzureRmVirtualNetworkGatewayIpConfig -Name $GW2IPconf2 -Subnet
 Erstellen Sie das VPN-Gateway mit der ASN und dem Flag „EnableActiveActiveFeature“. Beachten Sie, dass Sie die Standard-ASN auf Ihren Azure VPN Gateways überschreiben müssen. Die ASNs für die verbundenen VNets müssen für die Aktivierung von BGP und Transitrouting unterschiedlich sein.
 
 ```powershell
-New-AzureRmVirtualNetworkGateway -Name $GWName2 -ResourceGroupName $RG2 -Location $Location2 -IpConfigurations $gw2ipconf1,$gw2ipconf2 -GatewayType Vpn -VpnType RouteBased -GatewaySku HighPerformance -Asn $VNet2ASN -EnableActiveActiveFeature
+New-AzureRmVirtualNetworkGateway -Name $GWName2 -ResourceGroupName $RG2 -Location $Location2 -IpConfigurations $gw2ipconf1,$gw2ipconf2 -GatewayType Vpn -VpnType RouteBased -GatewaySku VpnGw1 -Asn $VNet2ASN -EnableActiveActiveFeature
 ```
 
 ### <a name="step-2---connect-the-testvnet1-and-testvnet2-gateways"></a>Schritt 2: Verbinden der TestVNet1 und TestVNet2-Gateways
@@ -366,8 +370,8 @@ Danach wird die Verbindung innerhalb weniger Minuten hergestellt, und die BGP-Pe
 ## <a name ="aaupdate"></a>Teil 4: Aktualisieren des vorhandenen Gateways zwischen Aktiv/Aktiv und Aktiv/Standby
 Im letzten Abschnitt wird beschrieben, wie Sie ein vorhandenes Azure VPN Gateway aus dem Aktiv/Standby-Modus für den Aktiv/Aktiv-Modus konfigurieren (oder umgekehrt).
 
-> [!IMPORTANT]
-> Beachten Sie, dass der Aktiv/Aktiv-Modus nur für eine HighPerformance-SKU funktioniert.
+> [!NOTE]
+> Dieser Abschnitt enthält die Schritte zum Ändern der Größe einer älteren SKU für ein bereits erstelltes VPN-Gateway von Standard in HighPerformance. Mit diesen Schritten wird kein Upgrade einer alten SKU auf eine neue SKU durchgeführt.
 > 
 > 
 
@@ -396,7 +400,7 @@ Add-AzureRmVirtualNetworkGatewayIpConfig -VirtualNetworkGateway $gw -Name $GWIPc
 ```
 
 #### <a name="3-enable-active-active-mode-and-update-the-gateway"></a>3. Aktivieren des Aktiv/Aktiv-Modus und Aktualisieren des Gateways
-Sie müssen das Gatewayobjekt in PowerShell festlegen, um die eigentliche Aktualisierung auszulösen. Die SKU des Gatewayobjekts muss auch zu „HighPerformance“ geändert werden, da sie ursprünglich als „Standard“ erstellt wurde.
+Sie müssen das Gatewayobjekt in PowerShell festlegen, um die eigentliche Aktualisierung auszulösen. Die SKU des Gateways für das virtuelle Netzwerk muss auch in HighPerformance geändert werden, da sie ursprünglich als Standard erstellt wurde.
 
 ```powershell
 Set-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $gw -EnableActiveActiveFeature -GatewaySku HighPerformance
@@ -428,5 +432,3 @@ Diese Aktualisierung kann 30 bis 45 Minuten dauern.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Sobald die Verbindung hergestellt ist, können Sie Ihren virtuellen Netzwerken virtuelle Computer hinzufügen. Für diese Schritte finden Sie Informationen unter [Erstellen eines virtuellen Computers](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) .
-
-

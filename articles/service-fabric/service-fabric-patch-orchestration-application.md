@@ -15,17 +15,16 @@ ms.workload: na
 ms.date: 5/9/2017
 ms.author: nachandr
 ms.translationtype: HT
-ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
-ms.openlocfilehash: db6e654de074fc6651fd0d7479ee52038f944745
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: 2c5842822e347113e388d570f6ae603a313944d6
 ms.contentlocale: de-de
-ms.lasthandoff: 07/10/2017
-
+ms.lasthandoff: 08/24/2017
 
 ---
 
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Patchen des Windows-Betriebssystem in Ihrem Service Fabric-Cluster
 
-Die Anwendung für die Patchorchestrierung ist eine Service Fabric-Anwendung, mit der das Aufspielen von Betriebssystempatches in einem Service Fabric-Cluster in Azure ohne Ausfallzeiten automatisiert werden kann.
+Die Anwendung für die Patchorchestrierung ist eine Azure Service Fabric-Anwendung, mit der das Aufspielen von Betriebssystempatches in einem Service Fabric-Cluster in Azure ohne Ausfallzeiten automatisiert werden kann.
 
 Die App für die Patchorchestrierung bietet Folgendes:
 
@@ -71,9 +70,14 @@ Für die App für die Patchorchestrierung muss der Reparatur-Manager-Systemdiens
 
 In Azure-Clustern auf Dauerhaftigkeitsstufe „Silver“ ist der Reparatur-Manager-Dienst standardmäßig aktiviert. Bei Azure-Clustern mit der Dauerhaftigkeitsstufe „Gold“ ist der Reparatur-Manager-Dienst möglicherweise aktiviert, abhängig davon, wann diese Cluster erstellt wurden. In Azure-Clustern auf Dauerhaftigkeitsstufe „Bronze“ ist der Reparatur-Manager-Dienst standardmäßig nicht aktiviert. Wenn der Dienst bereits aktiviert ist, wird er im Service Fabric Explorer im Abschnitt mit den Systemdiensten aufgeführt.
 
-Sie können den Reparatur-Manager-Dienst über die [Azure Resource Manager-Vorlage](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm) für neue und vorhandene Service Fabric-Cluster aktivieren. Rufen Sie die Vorlage für den Cluster ab, den Sie bereitstellen möchten. Sie können entweder die Beispielvorlagen verwenden oder eine benutzerdefinierte Resource Manager-Vorlage erstellen. 
+##### <a name="azure-portal"></a>Azure-Portal
+Sie können den Reparatur-Manager beim Einrichten des Clusters über das Azure-Portal aktivieren. Wählen Sie beim Konfigurieren des Clusters unter `Add on features` die Option `Include Repair Manager` aus.
+![Abbildung zur Aktivierung des Reparatur-Managers über das Azure-Portal](media/service-fabric-patch-orchestration-application/EnableRepairManager.png)
 
-So aktivieren Sie den Reparatur-Manager-Dienst
+##### <a name="azure-resource-manager-template"></a>Azure Resource Manager-Vorlage
+Alternativ können Sie den Reparatur-Manager-Dienst für neue und vorhandene Service Fabric-Cluster über die [Azure Resource Manager-Vorlage](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm) aktivieren. Rufen Sie die Vorlage für den Cluster ab, den Sie bereitstellen möchten. Sie können entweder die Beispielvorlagen verwenden oder eine benutzerdefinierte Resource Manager-Vorlage erstellen. 
+
+So aktivieren Sie den Reparatur-Manager-Dienst per [Azure Resource Manager-Vorlage](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm):
 
 1. Überprüfen Sie zunächst, ob `apiversion` für die `Microsoft.ServiceFabric/clusters`-Ressource auf `2017-07-01-preview` festgelegt ist, wie im folgenden Codeausschnitt gezeigt. Liegt eine andere Einstellung vor, müssen Sie `apiVersion` auf den Wert `2017-07-01-preview` aktualisieren:
 
@@ -136,9 +140,11 @@ Automatische Windows-Updates können zu einer Verringerung der Verfügbarkeit f�
 
 ### <a name="optional-enable-azure-diagnostics"></a>Optional: Aktivieren der Azure-Diagnose
 
-Protokolle für die App für die Patchorchestrierung werden lokal auf jedem Clusterknoten erfasst. Außerdem werden für Cluster mit Service Fabric-Laufzeitversion `5.6.220.9494` und höher Protokolle im Rahmen der Service Fabric-Protokolle erfasst.
+Cluster mit Service Fabric ab der Laufzeitversion `5.6.220.9494` sammeln Protokolle für die Patchorchestrierungs-App im Rahmen von Service Fabric-Protokollen.
+Wenn Ihr Cluster mindestens über die Service Fabric-Laufzeitversion `5.6.220.9494` verfügt, können Sie diesen Schritt überspringen.
 
-Bei Clustern mit einer Service Fabric-Laufzeitversion unter `5.6.220.9494` sollten Sie die Azure-Diagnose konfigurieren, um Protokolle von allen Knoten an einem zentralen Ort hochzuladen.
+Bei Clustern mit einer niedrigeren Service Fabric-Laufzeitversion als `5.6.220.9494` werden Protokolle für die Patchorchestrierungs-App lokal auf den einzelnen Clusterknoten gesammelt.
+Es empfiehlt sich, die Azure-Diagnose so zu konfigurieren, dass Protokolle von allen Knoten an einen zentralen Ort hochgeladen werden.
 
 Weitere Informationen zum Aktivieren der Azure-Diagnose finden Sie unter [Sammeln von Protokollen mit der Azure-Diagnose](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-how-to-setup-wad).
 
@@ -295,7 +301,7 @@ Für Cluster, auf denen eine Service Fabric-Laufzeitversion vor `5.6.220.9494` a
 
 #### <a name="locally-on-each-node"></a>Lokal auf jedem Knoten
 
-Protokolle werden lokal auf jedem Service Fabric-Clusterknoten gesammelt. Der Speicherort für den Zugriff auf die Protokolle lautet: \[Installationslaufwerk\_für\_Service Fabric\]:\\PatchOrchestrationApplication\\logs.
+Wenn die Service Fabric-Laufzeitversion kleiner als `5.6.220.9494` ist, werden Protokolle lokal auf den einzelnen Service Fabric- Clusterknoten gesammelt. Der Speicherort für den Zugriff auf die Protokolle lautet: \[Installationslaufwerk\_für\_Service Fabric\]:\\PatchOrchestrationApplication\\logs.
 
 Wenn Service Fabric z.B. auf dem Laufwerk „D“ installiert ist, lautet der Pfad folgendermaßen: D:\\PatchOrchestrationApplication\\logs
 
@@ -355,6 +361,10 @@ A: Die Ausführungsdauer der App für die Patchorchestrierung ist größtenteils
 - Durchschnittliche Zeit zum Herunterladen und Installieren eines Updates. Dies sollte nicht länger als einige Stunden dauern.
 - Leistung des virtuellen Computers und Netzwerkbandbreite.
 
+F: **Warum werden in den über REST-APIs abgerufenen Windows Update-Ergebnissen einige Updates angezeigt, nicht aber im Windows Update-Verlauf auf dem Computer?**
+
+A: Einige Produktupdates müssen im jeweiligen Update-/Patchverlauf überprüft werden. So werden beispielsweise Windows Defender-Updates unter Windows Server 2016 nicht im Windows Update-Verlauf angezeigt.
+
 ## <a name="disclaimers"></a>Haftungsausschlüsse
 
 - Die App für die Patchorchestrierung akzeptiert den Endbenutzer-Lizenzvertrag von Windows Update im Namen des Benutzers. Diese Einstellung kann optional in der Konfiguration der Anwendung deaktiviert werden.
@@ -392,4 +402,18 @@ In einem solchen Fall wird ein Integritätsbericht mit Warnstufe für den Knoten
 Ein fehlerhaftes Windows Update kann die Integrität einer Anwendung oder eines Clusters auf einem bestimmten Knoten oder in einer Upgradedomäne verringern. Die App für die Patchorchestrierung reagiert nicht mehr auf folgende Windows Update-Vorgänge, bis der Cluster wieder fehlerfrei ist.
 
 Ein Administrator muss eingreifen und ermitteln, weshalb die Integrität der Anwendung oder des Clusters aufgrund von Windows Update beeinträchtigt wurde.
+
+## <a name="release-notes-"></a>Versionshinweise:
+
+### <a name="version-110"></a>Version 1.1.0
+- Öffentliche Version
+
+### <a name="version-111"></a>Version 1.1.1
+- Korrektur eines Fehlers in „SetupEntryPoint“ von „NodeAgentService“, der die Installation von „NodeAgentNTService“ verhindert hat.
+
+### <a name="version-120-latest"></a>Version 1.2.0 (aktuelle Version)
+
+- Korrektur von Fehler im Zusammenhang mit dem Workflow für den Systemneustart.
+- Korrektur eines Fehlers bei der Erstellung von RM-Aufgaben, durch den die Integritätsüberprüfung während Reparaturvorbereitungsaufgaben nicht wie erwartet erfolgt ist.
+- Änderung des Startmodus für den Windows-Dienst „POANodeSvc“ von automatisch in verzögert automatisch.
 

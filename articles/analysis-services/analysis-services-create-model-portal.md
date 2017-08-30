@@ -13,20 +13,20 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 07/25/2017
+ms.date: 08/21/2017
 ms.author: owend
 ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
-ms.openlocfilehash: 6c76bcb919b08cbd67e93f54dac216ab2aec06b0
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: bd58f1845dabf6afb47ce27236d14479677a8808
 ms.contentlocale: de-de
-ms.lasthandoff: 07/26/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="create-a-model-in-azure-portal"></a>Erstellen eines Modells im Azure-Portal
 
-Die Funktion des Azure Analysis Services-Web-Designers (Vorschau) im Azure-Portal bietet eine schnelle und einfache Möglichkeit zum Erstellen und Bearbeiten von Tabellenmodellen und Abfragen von Modelldaten direkt in Ihrem Browser. 
+Das Feature Azure Analysis Services-Web-Designer (Vorschau) im Azure-Portal bietet eine schnelle und einfache Möglichkeit zum Erstellen und Bearbeiten von Tabellenmodellen und Abfragen von Modelldaten direkt im Browser. 
 
-Beachten Sie, dass der Web-Designer eine **Vorschau** ist. Während immer neue Funktionen hinzugefügt werden, ist in der Vorschau die Funktionalität begrenzt. Bei komplexeren Modellentwicklungen und -tests ist es sinnvoll, Visual Studio (SSDT) und SQL Server Management Studio (SSMS) zu verwenden.
+Beachten Sie, dass der Web-Designer eine **Vorschauversion** ist. Während immer neue Funktionen hinzugefügt werden, ist in der Vorschau die Funktionalität begrenzt. Bei komplexeren Modellentwicklungen und -tests ist es sinnvoll, Visual Studio (SSDT) und SQL Server Management Studio (SSMS) zu verwenden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

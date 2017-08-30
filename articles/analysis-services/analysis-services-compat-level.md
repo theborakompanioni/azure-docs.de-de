@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 08/07/2016
+ms.date: 08/16/2017
 ms.author: owend
 ms.translationtype: HT
-ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
-ms.openlocfilehash: acb69621babf0f562bfafedfe5547e16e8f2c8af
+ms.sourcegitcommit: 368589509b163cacf495fd0be893a8953fe2066e
+ms.openlocfilehash: b11ba54c2cdc2675ec535368e7076613a5290212
 ms.contentlocale: de-de
-ms.lasthandoff: 08/09/2017
+ms.lasthandoff: 08/17/2017
 
 ---
 
@@ -29,7 +29,7 @@ Der *Kompatibilitätsgrad* bezieht sich auf releasespezifische Verhalten im Anal
 
 Azure Analysis Services unterstützt tabellarische Modelle mit den Kompatibilitätsgraden 1200 und 1400.
 
-Der aktuelle Kompatibilitätsgrad ist 1400 (Vorschau). Der jeweilige Grad stimmt mit SQL Server 2017 Analysis Services überein. Zu den wesentlichen Features im Kompatibilitätsgrad 1400 zählen Folgende:
+Der aktuelle Kompatibilitätsgrad ist 1400. Der jeweilige Grad stimmt mit SQL Server 2017 Analysis Services überein. Zu den wesentlichen Features im Kompatibilitätsgrad 1400 zählen Folgende:
 
 *  Neue Infrastruktur für die Datenkonnektivität und den Import in tabellarische Modelle mit Unterstützung für TOM-APIs und TMSL-Skripts. Diese neue Feature aktiviert die Unterstützung für zusätzliche Datenquellen wie etwa Azure Blob Storage.
 *  Datentransformations- und Datenmashupfunktionen mithilfe von Get Data- und M-Ausdrücken
@@ -37,11 +37,6 @@ Der aktuelle Kompatibilitätsgrad ist 1400 (Vorschau). Der jeweilige Grad stimmt
 *  Sicherheit auf Objektebene für Tabellen- und Spaltennamen sowie die darin enthaltenen Daten
 *  Verbesserte Unterstützung für unregelmäßige Hierarchien
 *  Verbesserungen an der Leistung und Überwachung
-
-
-
-> [!IMPORTANT]
-> Der Kompatibilitätsgrad 1400 befindet sich noch in der Vorschauversion. Einige Features funktionieren möglicherweise nicht in vollem Umfang. Von der Verwendung tabellarischer Modelle mit dem Kompatibilitätsgrad 1400 in Produktionsumgebungen wird abgeraten. 
   
 ## <a name="set-compatibility-level"></a>Festlegen des Kompatibilitätsgrads 
  Beim Erstellen eines neuen Projekts für tabellarische Modelle in SSDT können Sie im Dialogfeld **Designer für tabellarische Modelle** den Kompatibilitätsgrad angeben. 
@@ -63,3 +58,4 @@ Der aktuelle Kompatibilitätsgrad ist 1400 (Vorschau). Der jeweilige Grad stimmt
 ## <a name="next-steps"></a>Nächste Schritte
   [Erstellen eines Modells im Azure-Portal](analysis-services-create-model-portal.md)   
   [Verwalten von Analysis Services](analysis-services-manage.md)  
+

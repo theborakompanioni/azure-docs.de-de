@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 05/10/2017
 ms.author: aelnably;wesmc
 ms.translationtype: HT
-ms.sourcegitcommit: 26c07d30f9166e0e52cb396cdd0576530939e442
-ms.openlocfilehash: 6b6c173c6c4bb3f670c54208c80e6d966a1f396e
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: 026c4491818c8719c68a759ee9595ad9c765d526
 ms.contentlocale: de-de
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 08/23/2017
 
 ---
 # <a name="continuous-deployment-with-azure-web-app-on-linux"></a>Continuous Deployment mit Azure-Web-App unter Linux
@@ -32,7 +32,13 @@ In diesem Tutorial konfigurieren Sie Continuous Deployment für ein benutzerdefi
 
 Melden Sie sich unter „http://portal.azure.com“ beim Azure-Portal an.
 
-## <a name="step-2---enable-docker-hub-continuous-deployment"></a>Schritt 2: Aktivieren von Docker Hub Continuous Deployment
+## <a name="step-2---enable-container-continuous-deployment-feature"></a>Schritt 2: Aktivieren von Continuous Deployment für Container
+
+Sie können das Feature Continuous Deployment mit der [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli) durch Ausführen des folgenden Befehls aktivieren.
+
+```azurecli-interactive
+az webapp deployment container config -n sname -g rgname -e true
+``` 
 
 Klicken Sie im **[Azure-Portal](https://portal.azure.com/)** auf der linken Seite auf **App Service**.
 
@@ -43,6 +49,12 @@ Fügen Sie in den **App-Einstellungen** eine App-Einstellung mit dem Namen `DOCK
 ![Abbildung einfügen: App-Einstellung](./media/app-service-webapp-service-linux-ci-cd/step2.png)
 
 ## <a name="step-3---prepare-webhook-url"></a>Schritt 3: Vorbereiten der Webhook-URL
+
+Sie können die Webhook-URL mit der [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli) durch Ausführen des folgenden Befehls abrufen.
+
+```azurecli-interactive
+az webapp deployment container -n sname1 -g rgname -e true --show-cd-url
+``` 
 
 Für die Webhook-URL benötigen Sie den folgenden Endpunkt: `https://<publishingusername>:<publishingpwd>@<sitename>.scm.azurewebsites.net/docker/hook`.
 
@@ -83,6 +95,7 @@ Wenn das Image aktualisiert wird, wird die Web-App automatisch mit dem neuen Ima
 * [Verwenden von Ruby in Azure-Web-App unter Linux](app-service-linux-ruby-get-started.md)
 * [Verwenden eines benutzerdefinierten Docker-Images für Azure-Web-App unter Linux](./app-service-linux-using-custom-docker-image.md)
 * [Häufig gestellte Fragen zu Azure App Service-Web-App unter Linux](./app-service-linux-faq.md) 
+* [Verwalten von Web-Apps unter Linux mit Azure CLI 2.0](./app-service-linux-cli.md)
 
 
 

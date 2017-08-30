@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 05/11/2017
+ms.date: 08/21/2017
 ms.author: iainfou
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 20aa8247a16195310a8cb03c13c34186456fd7af
+ms.translationtype: HT
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: 33bc0be0aeae6d0276fd8999b9ac0a010e3067ba
 ms.contentlocale: de-de
-ms.lasthandoff: 05/11/2017
-
+ms.lasthandoff: 08/23/2017
 
 ---
 # <a name="how-to-open-ports-to-a-virtual-machine-with-the-azure-portal"></a>Öffnen von Ports zu einem virtuellen Computer mit dem Azure-Portal
@@ -28,23 +27,23 @@ ms.lasthandoff: 05/11/2017
 ## <a name="quick-commands"></a>Schnellbefehle
 Sie können [diese Schritte auch über Azure PowerShell ausführen](nsg-quickstart-powershell.md).
 
-Erstellen Sie zuerst Ihre Netzwerksicherheitsgruppe. Wählen Sie im Portal eine Ressourcengruppe aus, klicken Sie auf **Hinzufügen**, suchen Sie nach „Netzwerksicherheitsgruppe“, und wählen Sie diese Option aus:
+Erstellen Sie zuerst Ihre Netzwerksicherheitsgruppe. Wählen Sie im Portal eine Ressourcengruppe aus, wählen Sie **Hinzufügen**, suchen Sie nach **Netzwerksicherheitsgruppe**, und wählen Sie diese Option aus:
 
 ![Hinzufügen einer Netzwerksicherheitsgruppe](./media/nsg-quickstart-portal/add-nsg.png)
 
-Geben Sie einen Namen für die Netzwerksicherheitsgruppe ein, wählen oder erstellen Sie eine Ressourcengruppe, und wählen Sie einen Speicherort aus: Wenn Sie fertig sind, klicken Sie auf **Erstellen**.
+Geben Sie einen Namen für die Netzwerksicherheitsgruppe ein, wählen oder erstellen Sie eine Ressourcengruppe, und wählen Sie einen Speicherort aus: Wenn Sie fertig sind, klicken Sie auf **Erstellen**:
 
 ![Erstellen einer Netzwerksicherheitsgruppe](./media/nsg-quickstart-portal/create-nsg.png)
 
-Wählen Sie die neue Netzwerksicherheitsgruppe aus. Wählen Sie „Inbound security rules“ (Sicherheitsregeln für eingehende Daten), und klicken Sie dann zum Erstellen einer Regel auf die Schaltfläche **Hinzufügen**:
+Wählen Sie die neue Netzwerksicherheitsgruppe aus. Wählen Sie „Eingangssicherheitsregeln“, und wählen Sie dann zum Erstellen einer Regel die Schaltfläche **Hinzufügen** aus:
 
 ![Hinzufügen einer eingehenden Regel](./media/nsg-quickstart-portal/add-inbound-rule.png)
 
-Geben Sie einen Namen für die neue Regel an. Standardmäßig ist Port 80 bereits eingetragen. Auf diesem Blatt können beim Hinzufügen von zusätzlichen Regeln zur Netzwerksicherheitsgruppe die Quelle, das Protokoll und das Ziel geändert werden. Klicken Sie auf **OK** , um die Regel zu erstellen:
+Wählen Sie im Dropdownmenü einen allgemeinen **Dienst**, z.B. *HTTP*, aus. Sie können auch *Benutzerdefiniert* auswählen, um einen bestimmten zu verwendenden Port anzugeben. Sie können die Priorität oder den Namen ggf. ändern. Die Priorität wirkt sich auf die Reihenfolge aus, in der Regeln angewendet werden – je niedriger der numerische Wert, desto früher wird die Regel angewendet. Sie können auch am oberen Rand dieses Bildschirms **Erweitert** auswählen, um z.B. einen bestimmten Quell-IP-Block oder Portbereich einzugeben. Wenn Sie fertig sind, wählen Sie **OK** aus, um die Regel zu erstellen:
 
 ![Erstellen einer eingehenden Regel](./media/nsg-quickstart-portal/create-inbound-rule.png)
 
-Im letzten Schritt muss die Netzwerksicherheitsgruppe einem Subnetz oder einer bestimmten Netzwerkschnittstelle zugeordnet werden. So ordnen Sie die Netzwerksicherheitsgruppe einem Subnetz zu: Wählen Sie „Subnetze“, und klicken Sie dann auf **Zuordnen**:
+Im letzten Schritt muss die Netzwerksicherheitsgruppe einem Subnetz oder einer bestimmten Netzwerkschnittstelle zugeordnet werden. So ordnen Sie die Netzwerksicherheitsgruppe einem Subnetz zu: Wählen Sie **Subnetze** und dann **Zuordnen** aus:
 
 ![Zuordnen einer Netzwerksicherheitsgruppe zu einem Subnetz](./media/nsg-quickstart-portal/associate-subnet.png)
 
@@ -57,15 +56,10 @@ Sie haben nun eine Netzwerksicherheitsgruppe sowie eine eingehende Regel erstell
 ## <a name="more-information-on-network-security-groups"></a>Weitere Informationen zu Netzwerksicherheitsgruppen
 Mit diesen Schnellbefehlen können Sie den Datenverkehr zu Ihrem virtuellen Computer einrichten. Netzwerksicherheitsgruppen bieten eine Vielzahl erstklassiger Funktionen sowie eine differenzierte Steuerung des Ressourcenzugriffs. Weitere Informationen über die [Erstellung von Netzwerksicherheitsgruppen und ACL-Regeln erhalten Sie hier](../../virtual-network/virtual-networks-create-nsg-arm-ps.md).
 
-Sie können Netzwerksicherheitsgruppen und ACL-Regeln auch als Teil von Azure Resource Manager-Vorlagen definieren. Erfahren Sie mehr über [das Erstellen von Netzwerksicherheitsgruppen mit Vorlagen](../../virtual-network/virtual-networks-create-nsg-arm-template.md).
-
-Wenn eine Portweiterleitung notwendig ist, um einem internen Port des virtuellen Computers einen eindeutigen externen Port zuzuweisen, verwenden Sie einen Lastenausgleich sowie NAT-Regeln (Network Address Translation, Netzwerkadressübersetzung). Sie können beispielsweise TCP-Port 8080 extern verfügbar machen und den Datenverkehr an TCP-Port 80 auf einem virtuellen Computer weiterleiten. Hier finden Sie weitere Informationen zum [Erstellen eines Load Balancers mit Internetzugriff](../../load-balancer/load-balancer-get-started-internet-arm-ps.md).
+Bei hoch verfügbaren Webanwendungen sollten Sie die virtuellen Computer hinter einem Azure Load Balancer anordnen. Der Load Balancer verteilt den Datenverkehr auf virtuelle Computer, mit einer Netzwerksicherheitsgruppe, die den Datenverkehr filtert. Weitere Informationen finden Sie unter [Lastenausgleich für virtuelle Linux-Computer in Azure zum Erstellen einer hoch verfügbaren Anwendung](tutorial-load-balancer.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Beispiel haben Sie eine einfache Regel erstellt, die HTTP-Datenverkehr zulässt. Informationen zum Erstellen von detaillierteren Umgebungen finden Sie in den folgenden Artikeln:
 
 * [Übersicht über den Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md)
 * [Was ist eine Netzwerksicherheitsgruppe (NSG)?](../../virtual-network/virtual-networks-nsg.md)
-* [Übersicht über Azure Resource Manager für Load Balancer](../../load-balancer/load-balancer-arm.md)
-
-

@@ -13,37 +13,37 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 08/15/2017
+ms.date: 08/23/2017
 ms.author: owend
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 194910a3e4cb655b39a64d2540994d90d34a68e4
-ms.openlocfilehash: 90a0cfb7c7cd7d3364ff42559dd7fdc7b2951abf
+ms.translationtype: HT
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: 530f3b5c9e90cb45ffb6e12d0d08a35f8d687471
 ms.contentlocale: de-de
-ms.lasthandoff: 02/16/2017
+ms.lasthandoff: 08/24/2017
 
 ---
-# <a name="create-an-office-data-connection-odc-file"></a>Erstellen einer ODC-Datei (Office Data Connection)
+# <a name="create-an-office-data-connection-file"></a>Erstellen einer Office Data Connection-Datei
 
-Die Informationen in diesem Artikel beschreiben, wie Sie eine ODC-Datei erstellen, um aus Excel 2016, Versionsnummer 16.0.7369.2117 oder früher, oder aus Excel 2013 eine Verbindung mit einem Azure Analysis Services-Server herzustellen. Ein aktualisierter [MSOLAP.7-Anbieter](analysis-services-data-providers.md) ist ebenfalls erforderlich.
+Die Informationen in diesem Artikel beschreiben, wie Sie eine Office Data Connection-Datei (ODC) erstellen, um aus Excel 2016, Versionsnummer 16.0.7369.2117 oder früher, oder aus Excel 2013 eine Verbindung mit einem Azure Analysis Services-Server herzustellen. Ein aktualisierter [MSOLAP.7-Anbieter](analysis-services-data-providers.md) ist ebenfalls erforderlich.
 
 
-1. Kopieren Sie die ODC-Beispieldatei für die Verbindung unten, und fügen Sie sie in einem Text-Editor ein. 
+1. Kopieren Sie die Beispieldatei für die Verbindung unten, und fügen Sie sie in einem Text-Editor ein. 
 
-2. Ändern Sie in **odc:ConnectionString** die folgenden Eigenschaften:
+2. Ändern Sie in `odc:ConnectionString` die folgenden Eigenschaften:
 
-    *   In **Data Source=asazure://*region*.asazure.windows.net/*servername*;**: Ändern Sie *region* in die Region Ihres Analysis Services-Server und *servername* in den Namen Ihres Servers.
+    *   Ändern Sie in `Data Source=asazure://<region>.asazure.windows.net/<servername>;` den Wert von `<region>` in die Region des Analysis Services-Servers und `<servername>` in den Namen Ihres Servers.
 
-    *   In **Initial Catalog=*database*;**: Ändern Sie *database* in den Namen Ihrer Datenbank.
+    *   Ändern Sie in `Initial Catalog=<database>;` den Wert von `<database>` in den Namen Ihrer Datenbank.
 
-3. In **&lt;odc:CommandText>*Model*&lt;/odc:CommandText>**: Ändern Sie *Model* in den Namen Ihres Modells oder Ihrer Perspektive. 
+3. Ändern Sie in `<odc:CommandText>Model</odc:CommandText>` den Wert von `Model` in den Namen Ihres Modells oder Ihrer Perspektive. 
 
-4. Speichern Sie die Datei mit der Erweiterung **.odc** im Ordner „C:\Benutzer\\*Benutzername*\Dokumente\My Data Sources“.
+4. Speichern Sie die Datei mit der Erweiterung `.odc` im Ordner „C:\Benutzer\\*Benutzername*\Dokumente\My Data Sources“.
 
 5. Klicken Sie mit der rechten Maustaste auf die Datei, und klicken Sie dann auf **In Excel öffnen**. Oder klicken Sie in Excel auf dem Menüband **Daten** auf **Vorhandene Verbindungen**, wählen Sie Ihre Datei aus, und klicken Sie dann auf **Öffnen**.
 
 
 
-**ODC-Beispielverbindungsdatei**
+**Beispielverbindungsdatei**
 ```
 <html xmlns:o="urn:schemas-microsoft-com:office:office"
 xmlns="http://www.w3.org/TR/REC-html40">

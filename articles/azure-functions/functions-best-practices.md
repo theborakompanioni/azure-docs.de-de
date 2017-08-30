@@ -4,7 +4,7 @@ description: "Enthält Beschreibungen der bewährten Methoden und Muster für Az
 services: functions
 documentationcenter: na
 author: wesmc7777
-manager: erikre
+manager: cfowler
 editor: 
 tags: 
 keywords: "Azure Functions, Muster, bewährte Methoden, Functions, Ereignisverarbeitung, Webhooks, dynamisches Compute, serverlose Architektur"
@@ -17,12 +17,11 @@ ms.workload: na
 ms.date: 06/13/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
-ms.openlocfilehash: 5408bf986b67d420d4d1359961ec83510c97cd05
+ms.translationtype: HT
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: 645a5dd16e72619e7c2470ab8f03098f0fa6c7f8
 ms.contentlocale: de-de
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 08/24/2017
 
 ---
 
@@ -88,9 +87,9 @@ Verwenden Sie im Produktionscode keine ausführliche Protokollierung. Dies wirkt
 
 
 
-## <a name="use-async-code-but-avoid-taskresult"></a>Verwenden von asynchronem Code bei Vermeidung von „Task.Result“
+## <a name="use-async-code-but-avoid-blocking-calls"></a>Verwenden von asynchronem Code bei Vermeidung von blockierenden Aufrufen
 
-Die asynchrone Programmierung wird als bewährte Methode empfohlen. Vermeiden Sie es aber stets, auf die `Task.Result`-Eigenschaft zu verweisen. Dieser Ansatz kann zur Threadauslastung führen.
+Die asynchrone Programmierung wird als bewährte Methode empfohlen. Vermeiden Sie aber immer Verweise auf die `Result`-Eigenschaft oder Aufrufe der `Wait`-Methode für eine `Task`-Instanz. Dieser Ansatz kann zur Threadauslastung führen.
 
 
 [!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
