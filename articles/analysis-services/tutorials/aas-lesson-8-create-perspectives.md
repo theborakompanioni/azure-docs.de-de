@@ -3,7 +3,7 @@ title: "Azure Analysis Services-Tutorial – Lektion 8: Erstellen von Perspektiv
 description: Dieser Artikel beschreibt, wie Perspektiven im Azure Analysis Services-Tutorialprojekt erstellt werden.
 services: analysis-services
 documentationcenter: 
-author: minewiskan
+author: Minewiskan
 manager: erikre
 editor: 
 tags: 

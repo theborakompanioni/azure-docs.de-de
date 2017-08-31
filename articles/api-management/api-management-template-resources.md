@@ -3,7 +3,7 @@ title: Ressourcen von Azure API Management-Vorlagen | Microsoft-Dokumentation
 description: "Enthält Informationen zu den Arten von Ressourcen, die für die Verwendung in Entwicklerportalvorlagen in Azure API Management verfügbar sind."
 services: api-management
 documentationcenter: 
-author: miaojiang
+author: vladvino
 manager: erikre
 editor: 
 ms.assetid: 51a1b4c6-a9fd-4524-9e0e-03a9800c3e94

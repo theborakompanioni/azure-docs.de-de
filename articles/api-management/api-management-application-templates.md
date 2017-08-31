@@ -3,7 +3,7 @@ title: Anwendungsvorlagen in Azure API Management | Microsoft Docs
 description: Erfahren Sie, wie Sie den Inhalt der Anwendungsseiten im Entwicklerportal in Azure API Management anpassen.
 services: api-management
 documentationcenter: 
-author: miaojiang
+author: vladvino
 manager: erikre
 editor: 
 ms.assetid: f3122c4d-e10e-4cdf-977b-36e8f4133fc8
@@ -14,9 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 77fd7b5b339a8ede8a297bec96f91f0a243cc18d
 ms.openlocfilehash: df71d6d36949f457ad95576e37ae3da2fef7d4d7
+ms.contentlocale: de-de
+ms.lasthandoff: 01/12/2017
 
 ---
 # <a name="application-templates-in-azure-api-management"></a>Anwendungsvorlagen in Azure API Management
@@ -31,7 +33,7 @@ Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des En
 > [!NOTE]
 >  Beispielstandardvorlagen sind in der folgenden Dokumentation enthalten, können aber aufgrund der kontinuierlichen Verbesserungen geändert werden. Sie können die aktiven Standardvorlagen im Entwicklerportal anzeigen, indem Sie zu den gewünschten einzelnen Vorlagen navigieren. Weitere Informationen zum Arbeiten mit Vorlagen finden Sie unter [Anpassen des Azure API Management-Entwicklerportals mithilfe von Vorlagen](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
   
-##  <a name="a-nameproductlista-application-list"></a><a name="ProductList"></a> Anwendungsliste  
+##  <a name="ProductList"></a> Anwendungsliste  
  Mit der Vorlage für die **Anwendungsliste** können Sie den Text der Anwendungslistenseite im Entwicklerportal anpassen.  
   
  ![Anwendungslistenseite, Vorlagen im Entwicklerportal](./media/api-management-application-templates/APIM-Application-List-Page-Developer-Portal-Templates.png "APIM-Anwendungslistenseite, Vorlagen im Entwicklerportal")  
@@ -132,7 +134,7 @@ Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des En
 }  
 ```  
   
-##  <a name="a-nameapplicationa-application"></a><a name="Application"></a> Anwendung  
+##  <a name="Application"></a> Anwendung  
  Mit der Vorlage für die **Anwendung** können Sie den Text der Anwendungsseite im Entwicklerportal anpassen.  
   
  ![Anwendungsseite, Vorlagen im Entwicklerportal](./media/api-management-application-templates/APIM-Application-Page-Developer-Portal-Templates.png "APIM-Anwendungsseite, Vorlagen im Entwicklerportal")  
@@ -220,8 +222,3 @@ Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des En
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum Arbeiten mit Vorlagen finden Sie unter [Anpassen des Azure API Management-Entwicklerportals mithilfe von Vorlagen](api-management-developer-portal-templates.md).
-
-
-<!--HONumber=Jan17_HO2-->
-
-

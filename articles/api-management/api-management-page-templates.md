@@ -3,7 +3,7 @@ title: Seitenvorlagen in Azure API Management | Microsoft Docs
 description: Erfahren Sie, wie Sie den Inhalt von Entwicklerportalseiten mithilfe von verschiedenen Vorlagen in Azure API Management anpassen.
 services: api-management
 documentationcenter: 
-author: miaojiang
+author: vladvino
 manager: erikre
 editor: 
 ms.assetid: e57df269-1019-4b74-b74d-53155b809d59
@@ -14,9 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 77fd7b5b339a8ede8a297bec96f91f0a243cc18d
 ms.openlocfilehash: d3c947ec67a6acba3058afcef36a18bf5debd55d
+ms.contentlocale: de-de
+ms.lasthandoff: 01/12/2017
 
 ---
 # <a name="page-templates-in-azure-api-management"></a>Seitenvorlagen in Azure API Management
@@ -33,7 +35,7 @@ Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des En
 > [!NOTE]
 >  Beispielstandardvorlagen sind in der folgenden Dokumentation enthalten, können aber aufgrund der kontinuierlichen Verbesserungen geändert werden. Sie können die aktiven Standardvorlagen im Entwicklerportal anzeigen, indem Sie zu den gewünschten einzelnen Vorlagen navigieren. Weitere Informationen zum Arbeiten mit Vorlagen finden Sie unter [Anpassen des Azure API Management-Entwicklerportals mithilfe von Vorlagen](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
   
-##  <a name="a-namesignina-sign-in"></a><a name="SignIn"></a> Anmelden  
+##  <a name="SignIn"></a> Anmelden  
  Mit der Vorlage zum **Anmelden** können Sie die Anmeldeseite im Entwicklerportal anpassen.  
   
  ![Anmeldeseite](./media/api-management-page-templates/APIM-Sign-In-Page-Developer-Portal-Templates.png "APIM-Anmeldeseite, Vorlagen im Entwicklerportal")  
@@ -132,7 +134,7 @@ Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des En
 }  
 ```  
   
-##  <a name="a-namesignupa-sign-up"></a><a name="SignUp"></a> Registrieren  
+##  <a name="SignUp"></a> Registrieren  
  Mit der Vorlage zum **Registrieren** können Sie die Registrierungsseite im Entwicklerportal anpassen.  
   
  ![Registrierungsseite](./media/api-management-page-templates/APIM-Sign-Up-Page-Developer-Portal-Templates.png "APIM-Registrierungsseite, Vorlagen im Entwicklerportal")  
@@ -180,7 +182,7 @@ Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des En
 }  
 ```  
   
-##  <a name="a-namepagenotfounda-page-not-found"></a><a name="PageNotFound"></a> Seite nicht gefunden  
+##  <a name="PageNotFound"></a> Seite nicht gefunden  
  Mit der Vorlage für **Seite nicht gefunden** können Sie die Seite für eine nicht gefundene Seite im Entwicklerportal anpassen.  
   
  ![Seite nicht gefunden](./media/api-management-page-templates/APIM-Not-Found-Page-Developer-Portal-Templates.png "APIM „Seite nicht gefunden“, Vorlagen im Entwicklerportal")  
@@ -244,8 +246,3 @@ Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des En
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum Arbeiten mit Vorlagen finden Sie unter [Anpassen des Azure API Management-Entwicklerportals mithilfe von Vorlagen](api-management-developer-portal-templates.md).
-
-
-<!--HONumber=Jan17_HO2-->
-
-

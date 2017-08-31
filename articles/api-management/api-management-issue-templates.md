@@ -3,7 +3,7 @@ title: Problemvorlagen in Azure API Management | Microsoft Docs
 description: Erfahren Sie, wie Sie den Inhalt der Problemseiten im Entwicklerportal in Azure API Management anpassen.
 services: api-management
 documentationcenter: 
-author: miaojiang
+author: vladvino
 manager: erikre
 editor: 
 ms.assetid: 47da4bb2-426e-4e53-8fa7-214ee2e3ab37
@@ -14,9 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 77fd7b5b339a8ede8a297bec96f91f0a243cc18d
 ms.openlocfilehash: 6a14bd0cb95f8965ae53ff60fe1e638199a0b5b5
+ms.contentlocale: de-de
+ms.lasthandoff: 01/12/2017
 
 ---
 # <a name="issue-templates-in-azure-api-management"></a>Problemvorlagen in Azure API Management
@@ -29,7 +31,7 @@ Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des En
 > [!NOTE]
 >  Beispielstandardvorlagen sind in der folgenden Dokumentation enthalten, können aber aufgrund der kontinuierlichen Verbesserungen geändert werden. Sie können die aktiven Standardvorlagen im Entwicklerportal anzeigen, indem Sie zu den gewünschten einzelnen Vorlagen navigieren. Weitere Informationen zum Arbeiten mit Vorlagen finden Sie unter [Anpassen des Azure API Management-Entwicklerportals mithilfe von Vorlagen](api-management-developer-portal-templates.md).  
   
-##  <a name="a-nameissuelista-issue-list"></a><a name="IssueList"></a> Problemliste  
+##  <a name="IssueList"></a> Problemliste  
  Mit der Vorlage für die **Problemliste** können Sie den Text der Problemlistenseite im Entwicklerportal anpassen.  
   
  ![Problemliste, Entwicklerportal](./media/api-management-issue-templates/APIM-Issue-List-Developer-Portal.png "APIM-Problemliste, Entwicklerportal")  
@@ -134,8 +136,3 @@ Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des En
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum Arbeiten mit Vorlagen finden Sie unter [Anpassen des Azure API Management-Entwicklerportals mithilfe von Vorlagen](api-management-developer-portal-templates.md).
-
-
-<!--HONumber=Jan17_HO2-->
-
-

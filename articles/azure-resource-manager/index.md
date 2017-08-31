@@ -2,7 +2,7 @@
 title: "Dokumentation für Azure Resource Manager – Tutorials, API-Referenz | Microsoft-Dokumentation"
 description: "Hier erfahren Sie, wie Sie mithilfe von Resource Manager Lösungsressourcen als Gruppe bereitstellen und verwalten und wie Sie Vorlagen für eine konsistente und wiederholbare Ressourcenbereitstellung erstellen."
 services: azure-resource-manager
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 

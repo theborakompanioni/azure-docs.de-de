@@ -2,7 +2,7 @@
 title: "Dokumentation für Azure Search – Tutorials, API-Referenz | Microsoft-Dokumentation"
 description: "Hier erfahren Sie, wie Sie benutzerdefinierten Web- oder Mobilanwendungen stabile Suchfunktionen (einschließlich Aktivitätsüberwachung) hinzufügen. API-Referenzen und anderes Dokumentationsmaterial."
 services: search
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,9 +12,10 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
 ms.openlocfilehash: 7fffe78bebd6799cad544c12c20eb1926975a68f
+ms.contentlocale: de-de
 ms.lasthandoff: 05/03/2017
 
 ---

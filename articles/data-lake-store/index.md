@@ -2,7 +2,7 @@
 title: "Dokumentation für Azure Data Lake Store – Tutorials, API-Referenz | Microsoft-Dokumentation"
 description: "Hier erfahren Sie, wie Sie ein hyperskalierbares, Hadoop-kompatibles Data Lake-Repository für die Analyse von Daten mit beliebiger Größe, Art und Erfassungsgeschwindigkeit einrichten, verwalten und darauf zugreifen."
 services: data-lake-store
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 

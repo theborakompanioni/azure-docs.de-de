@@ -2,7 +2,7 @@
 title: "Dokumentation für Azure Backup – Tutorials, API-Referenz | Microsoft-Dokumentation"
 description: In der Dokumentation zu Backup erfahren Sie, wie Sie Daten in der Cloud sichern. Sehen Sie sich Tutorials und Videos zur Sicherung von Anwendungen, Windows-Servern und virtuellen Azure-Computern an.
 services: backup
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 

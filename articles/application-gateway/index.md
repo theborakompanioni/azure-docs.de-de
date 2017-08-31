@@ -2,7 +2,7 @@
 title: "Dokumentation für Azure Application Gateway – Tutorials, API-Referenz | Microsoft-Dokumentation"
 description: "Hier erfahren Sie, wie Sie einen Cloud-ADC (Application Delivery Controller) bereitstellen. Die Dokumentation zeigt, wie Sie auf Anwendungsebene Routing und Lastenausgleich für ein Web-Front-End einrichten."
 services: application-gateway
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,9 +12,10 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
 ms.openlocfilehash: 535364a9da46b137c4d32e1c3049a5be3496e5d2
+ms.contentlocale: de-de
 ms.lasthandoff: 03/15/2017
 
 ---
@@ -161,7 +162,7 @@ Hier erfahren Sie, wie Sie Application Gateway (Application Delivery Controller-
             </div>
         </div>
     </li>
-</ul>    
+</ul>   
 
 
 

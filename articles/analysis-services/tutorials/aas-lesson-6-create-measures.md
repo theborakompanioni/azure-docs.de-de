@@ -3,7 +3,7 @@ title: "Azure Analysis Services-Tutorial – Lektion 6: Erstellen von Measures |
 description: Dieser Artikel beschreibt, wie Measures im Azure Analysis Services-Tutorialprojekt erstellt werden.
 services: analysis-services
 documentationcenter: 
-author: minewiskan
+author: Minewiskan
 manager: erikre
 editor: 
 tags: 

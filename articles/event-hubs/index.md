@@ -2,7 +2,7 @@
 title: "Azure Event Hubs-Dokumentation – Tutorials, API-Referenz | Microsoft-Dokumentation"
 description: "Hier erfahren Sie, wie Sie mithilfe von Event Hubs pro Sekunde Millionen von Ereignissen von verbundenen IoT-Geräten und -Anwendungen erfassen, die auf einer breiten Palette von Plattformen basieren."
 services: event-hubs
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 

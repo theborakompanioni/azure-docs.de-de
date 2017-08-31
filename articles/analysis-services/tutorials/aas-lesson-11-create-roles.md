@@ -3,7 +3,7 @@ title: "Azure Analysis Services-Tutorial – Lektion 11: Erstellen von Rollen | 
 description: Dieser Artikel beschreibt, wie Rollen im Azure Analysis Services-Tutorialprojekt erstellt werden.
 services: analysis-services
 documentationcenter: 
-author: minewiskan
+author: Minewiskan
 manager: erikre
 editor: 
 tags: 

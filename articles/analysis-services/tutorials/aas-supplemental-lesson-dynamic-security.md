@@ -3,7 +3,7 @@ title: "Ergänzende Lektion zum Azure Analysis Services-Tutorial – Dynamische 
 description: "In diesem Artikel wird beschrieben, wie Sie die dynamische Sicherheit mit Zeilenfiltern im Tutorial zu Azure Analysis Services verwenden können."
 services: analysis-services
 documentationcenter: 
-author: minewiskan
+author: Minewiskan
 manager: erikre
 editor: 
 tags: 

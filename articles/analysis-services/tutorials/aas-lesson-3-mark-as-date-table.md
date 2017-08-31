@@ -3,7 +3,7 @@ title: 'Azure Analysis Services-Tutorial, Lektion 3: Markieren als Datumstabelle
 description: In diesem Tutorial wird beschrieben, wie eine Tabelle im Azure Analysis Services-Tutorialprojekt als Datumstabelle markiert werden kann.
 services: analysis-services
 documentationcenter: 
-author: minewiskan
+author: Minewiskan
 manager: erikre
 editor: 
 tags: 

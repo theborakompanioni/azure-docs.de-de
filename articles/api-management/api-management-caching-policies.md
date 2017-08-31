@@ -3,7 +3,7 @@ title: Cacherichtlinien in Azure API Management | Microsoft-Dokumentation
 description: "Erfahren Sie mehr über die Cacherichtlinien, die für die Verwendung in Azure API Management verfügbar sind."
 services: api-management
 documentationcenter: 
-author: miaojiang
+author: vladvino
 manager: erikre
 editor: 
 ms.assetid: 8147199c-24d8-439f-b2a9-da28a70a890c
@@ -14,15 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 77fd7b5b339a8ede8a297bec96f91f0a243cc18d
 ms.openlocfilehash: 606670068acd407a8f35e991f0cde12b84cdb1bf
+ms.contentlocale: de-de
+ms.lasthandoff: 01/12/2017
 
 ---
 # <a name="api-management-caching-policies"></a>Cacherichtlinien für API Management
 Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](http://go.microsoft.com/fwlink/?LinkID=398186).  
   
-##  <a name="a-namecachingpoliciesa-caching-policies"></a><a name="CachingPolicies"></a> Cacherichtlinien  
+##  <a name="CachingPolicies"></a> Cacherichtlinien  
   
 -   Cacherichtlinien für Antworten  
   
@@ -38,7 +40,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
   
     -   [Wert aus dem Cache entfernen](#RemoveCacheByKey) – Entfernt ein Element im Cache nach Schlüssel.  
   
-##  <a name="a-namegetfromcachea-get-from-cache"></a><a name="GetFromCache"></a> Aus Cache abrufen  
+##  <a name="GetFromCache"></a> Aus Cache abrufen  
  Verwenden Sie die `cache-lookup`-Richtlinie zum Durchführen einer Cachesuche und ggf. zum Zurückgeben einer gültigen Antwort aus dem Cache. Diese Richtlinie kann in Fällen angewendet werden, in denen sich der Inhalt von Antworten über längere Zeit nicht ändert. Das Zwischenspeichern von Antworten senkt die Bandbreitennutzung und die Prozessoranforderungen auf dem Back-End-Webserver und verringert die Latenz für API-Consumer.  
   
 > [!NOTE]
@@ -128,7 +130,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
   
 -   **Richtlinienbereiche:** API, operation, product  
   
-##  <a name="a-namestoretocachea-store-to-cache"></a><a name="StoreToCache"></a> In Cache ablegen  
+##  <a name="StoreToCache"></a> In Cache ablegen  
  Die `cache-store`-Richtlinie speichert Antworten gemäß den angegebenen Cacheeinstellungen zwischen. Diese Richtlinie kann in Fällen angewendet werden, in denen sich der Inhalt von Antworten über längere Zeit nicht ändert. Das Zwischenspeichern von Antworten senkt die Bandbreitennutzung und die Prozessoranforderungen auf dem Back-End-Webserver und verringert die Latenz für API-Consumer.  
   
 > [!NOTE]
@@ -201,7 +203,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
   
 -   **Richtlinienbereiche:** API, operation, product  
   
-##  <a name="a-namegetfromcachebykeya-get-value-from-cache"></a><a name="GetFromCacheByKey"></a> Wert aus Cache abrufen  
+##  <a name="GetFromCacheByKey"></a> Wert aus Cache abrufen  
  Verwenden Sie die `cache-lookup-value`-Richtlinie zum Durchführen einer Cachesuche nach Schlüssel und zum Zurückgeben eines zwischengespeicherten Werts. Der Schlüssel kann einen beliebigen Zeichenfolgenwert aufweisen und wird in der Regel über einen Richtlinienausdruck angegeben.  
   
 > [!NOTE]
@@ -246,7 +248,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
   
 -   **Richtlinienbereiche:** global, API, operation, product  
   
-##  <a name="a-namestoretocachebykeya-store-value-in-cache"></a><a name="StoreToCacheByKey"></a> Wert in Cache ablegen  
+##  <a name="StoreToCacheByKey"></a> Wert in Cache ablegen  
  `cache-store-value` führt die Cachespeicherung nach Schlüssel durch. Der Schlüssel kann einen beliebigen Zeichenfolgenwert aufweisen und wird in der Regel über einen Richtlinienausdruck angegeben.  
   
 > [!NOTE]
@@ -289,7 +291,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
   
 -   **Richtlinienbereiche:** global, API, operation, product  
   
-###  <a name="a-nameremovecachebykeya-remove-value-from-cache"></a><a name="RemoveCacheByKey"></a> Wert aus Cache entfernen  
+###  <a name="RemoveCacheByKey"></a> Wert aus Cache entfernen  
  `cache-remove-value` löscht ein zwischengespeichertes Element, das über seinen Schlüssel identifiziert wird. Der Schlüssel kann einen beliebigen Zeichenfolgenwert aufweisen und wird in der Regel über einen Richtlinienausdruck angegeben.  
   
 #### <a name="policy-statement"></a>Richtlinienanweisung  
@@ -330,8 +332,3 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum Arbeiten mit Richtlinien finden Sie unter [Richtlinien in Azure API Management](api-management-howto-policies.md).  
-
-
-<!--HONumber=Jan17_HO2-->
-
-

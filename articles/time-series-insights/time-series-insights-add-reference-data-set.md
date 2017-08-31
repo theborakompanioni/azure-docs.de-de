@@ -8,7 +8,7 @@ author: venkatgct
 manager: almineev
 editor: cgronlun
 ms.assetid: 
-ms.service: time-series-insights
+ms.service: tsi
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
@@ -23,15 +23,11 @@ ms.lasthandoff: 07/04/2017
 
 ---
 
-<a id="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-ibiza-portal" class="xliff"></a>
-
-# Erstellen eines Verweisdatasets für Ihre Time Series Insights-Umgebung über das Ibiza-Portal
+# <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-ibiza-portal"></a>Erstellen eines Verweisdatasets für Ihre Time Series Insights-Umgebung über das Ibiza-Portal
 
 Ein Verweisdataset ist eine Sammlung von Elementen, die mit den Ereignissen aus Ihrer Ereignisquelle ergänzt werden. Das Time Series Insights-Erfassungsmodul verknüpft ein Ereignis aus Ihrer Ereignisquelle mit einem Element in Ihrem Verweisdataset. Dieses ergänzte Ereignis ist dann für Abfragen verfügbar. Diese Verknüpfung basiert auf den in Ihrem Verweisdataset definierten Schlüsseln.
 
-<a id="steps-to-add-a-reference-data-set-to-your-environment" class="xliff"></a>
-
-## Schritte zum Hinzufügen eines Verweisdatasets zu Ihrer Umgebung
+## <a name="steps-to-add-a-reference-data-set-to-your-environment"></a>Schritte zum Hinzufügen eines Verweisdatasets zu Ihrer Umgebung
 
 1. Melden Sie sich beim [Ibiza-Portal](https://portal.azure.com) an.
 2. Klicken Sie im Ibiza-Portal im Menü auf der linken Seite auf „Alle Ressourcen“.
@@ -50,9 +46,7 @@ Ein Verweisdataset ist eine Sammlung von Elementen, die mit den Ereignissen aus 
 
 7. Klicken Sie auf „Erstellen“.
 
-<a id="next-steps" class="xliff"></a>
-
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 
 * [Verwalten Sie Verweisdaten](time-series-insights-manage-reference-data-csharp.md) programmgesteuert.
 * Die vollständige API-Referenz finden Sie im Dokument zur [Verweisdaten-API](/rest/api/time-series-insights/time-series-insights-reference-reference-data-api).
