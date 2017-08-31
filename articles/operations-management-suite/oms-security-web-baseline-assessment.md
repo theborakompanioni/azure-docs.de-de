@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/28/2017
+ms.date: 08/18/2017
 ms.author: yurid
 ms.translationtype: HT
-ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
-ms.openlocfilehash: 8be49b182df675fe3235d148b87379e1dff3a384
+ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
+ms.openlocfilehash: 40b0c6ca933ea02ac9f5fe3bfaaf87a310542a8d
 ms.contentlocale: de-de
-ms.lasthandoff: 08/01/2017
+ms.lasthandoff: 08/19/2017
 
 ---
 # <a name="web-baseline-assessment-in-operations-management-suite-security-and-audit-solution"></a>Web-Baselinebewertung in der Sicherheits- und Überwachungslösung von Operations Management Suite
@@ -29,6 +29,9 @@ In diesem Dokument erfahren Sie, wie Sie die Web-Baselinebewertungsfunktionen de
 Derzeit ermöglicht die OMS-Sicherheitslösung eine Bewertung der Sicherheitsbaseline für Betriebssysteme. Dabei werden die Betriebssystemeinstellungen Ihrer Server alle 24 Stunden gescannt, und potenziell anfällige Einstellungen werden angezeigt. Weitere Informationen hierzu finden Sie unter [Baselinebewertung in der Sicherheits- und Überwachungslösung von Operations Management Suite](https://docs.microsoft.com/azure/operations-management-suite/oms-security-baseline).
 
 Das Ziel der Web-Baselinebewertung besteht darin, potenziell anfällige Webservereinstellungen zu finden. Die drei Hauptquellen für die Web-Baselinekonfigurationen sind die .NET-, ASP.NET- und IIS-Konfigurationen.  Wie bei der Baselinebewertung für Betriebssysteme auch, werden bei der OMS-Sicherheitslösung alle 24 Stunden Ihre Webserver gescannt, und anschließend wird der entsprechende Sicherheitszustand angezeigt.  In Internetinformationsdienste (IIS) können Konfigurationen stark angepasst werden, sodass verschiedene Standort- und Anwendungsebenen außer Kraft gesetzt werden können. Die Scanfunktion überprüft nicht nur die Einstellungen auf der Standardstammebene, sondern auch auf allen Anwendungs- und Standortebenen. Dadurch können Sie potenziell anfällige Einstellungen ermitteln und schnell beheben sowie unsere Empfehlungen für diese Einstellungen implementieren.
+
+>[!NOTE] 
+>Die bei der OMS-Sicherheit verwendeten allgemeinen Konfigurationsbezeichner und Baselineregeln können auf [dieser Seite](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335?redir=0) heruntergeladen werden.
 
 
 ## <a name="web-security-baseline-assessment"></a>Bewertung der Websicherheitsbaseline

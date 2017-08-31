@@ -14,10 +14,10 @@ ms.topic: get-started-article
 ms.date: 03/14/2017
 ms.author: bwren
 ms.translationtype: HT
-ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
-ms.openlocfilehash: 29e13b51e094047be07843ad3d865290be32446b
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 25d9d914ab27edb548cf6e6139d0d0395208ed24
 ms.contentlocale: de-de
-ms.lasthandoff: 08/17/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Erste Schritte mit Application Insights in einem Java-Webprojekt
@@ -387,7 +387,7 @@ Sie erhalten Diagramme von Reaktionszeiten sowie E-Mail-Benachrichtigungen, fall
 * Schreiben Sie [benutzerdefinierte Telemetriedaten](app-insights-api-custom-events-metrics.md), um die Nutzung im Browser oder auf dem Server nachzuverfolgen.
 * Erstellen Sie [Dashboards](app-insights-dashboards.md), um die wichtigsten Diagramme zur Überwachung Ihres Systems zusammenzuführen.
 * Verwenden Sie [Analytics](app-insights-analytics.md) für leistungsfähige Abfragen über Telemetriedaten in Ihrer App.
-* Weitere Informationen finden Sie im [Java Developer Center](/develop/java/).
+* Weitere Informationen finden Sie im Artikel [Azure für Java-Entwickler](/java/azure).
 
 <!--Link references-->
 

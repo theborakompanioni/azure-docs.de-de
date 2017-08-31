@@ -53,7 +53,7 @@ Sie können eine IPsec/IKE-Richtlinie erstellen und auf eine neue oder vorhanden
 
 ## <a name="ipsecike-policy-faq"></a>Häufig gestellte Fragen zur IPsec/IKE-Richtlinie
 
-[!INCLUDE [vpn-gateway-ipsecikepolicy-faq-include](../../includes/vpn-gateway-ipsecikepolicy-faq-include.md)]
+[!INCLUDE [vpn-gateway-ipsecikepolicy-faq-include](../../includes/vpn-gateway-faq-ipsecikepolicy-include.md)]
 
 
 ## <a name="next-steps"></a>Nächste Schritte

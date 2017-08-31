@@ -6,17 +6,17 @@ keywords:
 author: ggailey777
 ms.author: glenga
 ms.assetid: 674a01a7-fd34-4775-8b69-893182742ae0
-ms.date: 05/02/2017
-ms.topic: quickstart
+ms.date: 08/22/2017
+ms.topic: hero-article
 ms.service: functions
 ms.custom: mvc
 ms.devlang: azure-cli
-manager: erikre
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
-ms.openlocfilehash: 2292b35819c5a98b690041e10f6e6d1a93fa7837
+manager: cfowler
+ms.translationtype: HT
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: 8bd3e4bb7423db44c48b04f25edcf1074e6ea0bd
 ms.contentlocale: de-de
-ms.lasthandoff: 06/20/2017
+ms.lasthandoff: 08/23/2017
 
 ---
 
@@ -44,11 +44,14 @@ Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für die
 
 Erstellen Sie mit dem Befehl [az group create](/cli/azure/group#create) eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen wie Funktionen-Apps, Datenbanken und Speicherkonten bereitgestellt und verwaltet werden.
 
-Im folgenden Beispiel wird eine Ressourcengruppe `myResourceGroup` erstellt:
+Im folgenden Beispiel wird eine Ressourcengruppe namens `myResourceGroup` erstellt.  
+Falls Sie nicht Cloud Shell verwenden, müssen Sie sich erst mithilfe von `az login` anmelden.
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location westeurope
 ```
+
+
 ## <a name="create-an-azure-storage-account"></a>Erstellen eines Azure-Speicherkontos
 
 Functions verwenden ein Azure Storage-Konto, um den Status und andere Informationen über Ihre Funktionen zu verwalten. Erstellen Sie ein Speicherkonto in der Ressourcengruppe, die Sie erstellt haben, indem Sie den Befehl [az storage account create](/cli/azure/storage/account#create) verwenden.
@@ -86,7 +89,8 @@ Sie müssen über eine Funktionen-App verfügen, die die Ausführung Ihrer Funkt
 Ersetzen Sie im folgenden Befehl den Platzhalter `<app_name>` durch Ihren eigenen eindeutigen Namen der Funktionen-App und den Platzhalter `<storage_name>` durch den Speicherkontonamen. Da `<app_name>` als DNS-Standarddomäne für die Funktionen-App verwendet wird, muss der Name für alle Apps in Azure eindeutig sein. 
 
 ```azurecli-interactive
-az functionapp create --name <app_name> --storage-account  <storage_name>  --resource-group myResourceGroup --consumption-plan-location westeurope
+az functionapp create --name <app_name> --storage-account  <storage_name>  --resource-group myResourceGroup \
+--consumption-plan-location westeurope
 ```
 Standardmäßig wird eine Funktionen-App mit dem Hostingplan „Verbrauch“ erstellt, was bedeutet, dass Ressourcen nach Bedarf dynamisch von den Funktionen hinzugefügt werden, und Sie nur dann bezahlen, wenn Funktionen ausgeführt werden. Weitere Informationen finden Sie unter [Auswählen des richtigen Serviceplans](functions-scale.md). 
 
@@ -117,7 +121,9 @@ Nun, da Sie eine Funktionen-App haben, können Sie den eigentlichen Funktionscod
 Es gibt mehrere Möglichkeiten, den Funktionscode in der neuen Funktionen-App zu erstellen. In diesem Thema wird eine Verbindung mit einem Beispielrepository in GitHub hergestellt. Ersetzen Sie wie zuvor im folgenden Code den Platzhalter `<app_name>` durch den Namen der Funktionen-App, die Sie erstellt haben. 
 
 ```azurecli-interactive
-az functionapp deployment source config --name <app_name> --resource-group myResourceGroup --repo-url https://github.com/Azure-Samples/functions-quickstart --branch master --manual-integration
+az functionapp deployment source config --name <app_name> --resource-group myResourceGroup --branch master \
+--repo-url https://github.com/Azure-Samples/functions-quickstart \
+--manual-integration 
 ```
 Nachdem die Bereitstellungsquelle festgelegt wurde, zeigt die Azure-CLI Informationen ähnlich wie im folgenden Beispiel (zwecks besserer Lesbarkeit wurden NULL-Werte entfernt):
 
@@ -146,7 +152,7 @@ curl http://<app_name>.azurewebsites.net/api/HttpTriggerJS1?name=<yourname>
 
 ![Die Funktionsantwort wird in einem Browser angezeigt.](./media/functions-create-first-azure-function-azure-cli/functions-azure-cli-function-test-curl.png)  
 
-Wenn Sie keine cURL in der Befehlszeile zur Verfügung haben, geben Sie einfach dieselbe URL in die Adresse des Webbrowsers ein. Ersetzen Sie erneut den Platzhalter `<app_name>` mit dem Namen der Funktionen-App, fügen Sie die Abfragezeichenfolge `&name=<yourname>` an die URL an, und führen Sie die Anforderung aus. 
+Wenn cURL in der Befehlszeile nicht zur Verfügung steht, geben Sie dieselbe URL in die Adresse des Webbrowsers ein. Ersetzen Sie erneut den Platzhalter `<app_name>` durch den Namen der Funktionen-App, fügen Sie die Abfragezeichenfolge `&name=<yourname>` an die URL an, und führen Sie die Anforderung aus. 
 
     http://<app_name>.azurewebsites.net/api/HttpTriggerJS1?name=<yourname>
    

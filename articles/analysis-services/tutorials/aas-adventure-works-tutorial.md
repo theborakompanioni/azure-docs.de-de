@@ -3,7 +3,7 @@ title: Tutorial mit Adventure Works von Azure Analysis Services | Microsoft-Doku
 description: "Einführung des Tutorials mit Adventure Works für Azure Analysis Services"
 services: analysis-services
 documentationcenter: 
-author: minewiskan
+author: Minewiskan
 manager: erikre
 editor: 
 tags: 
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 06/01/2017
 ms.author: owend
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
-ms.openlocfilehash: a613bbe84a3834ab4fb237779248c7ad8d75b563
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 257e0bc442f29bfe6683fb0511deac50d92c1720
 ms.contentlocale: de-de
-ms.lasthandoff: 06/03/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="azure-analysis-services---adventure-works-tutorial"></a>Azure Analysis Services – Tutorial mit Adventure Works
@@ -53,7 +53,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
   
 -   Eine Instanz von Azure Analysis Services oder SQL Server 2017 Analysis Services, für die Sie Ihr Modell bereitstellen können. Registrieren Sie sich für eine kostenlose [Textversion von Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) und [erstellen Sie einen Server](../analysis-services-create-server.md). Oder registrieren Sie sich und laden Sie [SQL Server 2017 Community Technology Preview](https://www.microsoft.com/evalcenter/evaluate-sql-server-vnext-ctp) herunter. 
 
--   Eine Datenbank von SQL Server oder Azure SQL mit der [Beispieldatenbank „AdventureWorksDW2014“](http://go.microsoft.com/fwlink/?LinkID=335807). Diese Beispieldatenbank beinhaltet die für den Abschluss dieses Tutorials erforderlichen Daten. Laden Sie [kostenlose Versionen von SQL Server](https://www.microsoft.com/sql-server/sql-server-downloads) herunter. Oder registrieren Sie sich für eine kostenlose [Testversion von Azure SQL Database](https://azure.microsoft.com/services/sql-database/). 
+-   Ein SQL Server Data Warehouse oder Azure SQL Data Warehouse mit der [Beispieldatenbank „AdventureWorksDW2014“](http://go.microsoft.com/fwlink/?LinkID=335807). Diese Beispieldatenbank beinhaltet die für den Abschluss dieses Tutorials erforderlichen Daten. Laden Sie [kostenlose Versionen von SQL Server](https://www.microsoft.com/sql-server/sql-server-downloads) herunter. Oder registrieren Sie sich für eine kostenlose [Testversion von Azure SQL Database](https://azure.microsoft.com/services/sql-database/). 
 
     **Wichtig**: Wenn Sie die Beispieldatenbank auf einem lokalen SQL-Server installieren, und Sie Ihr Modell an einen Server mit Azure Analysis Services bereitstellen, benötigen Sie ein [lokales Datengateway](../analysis-services-gateway.md).
 
@@ -64,7 +64,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 -   Eine Client-Anwendung wie z.B. [Power BI Desktop](https://powerbi.microsoft.com/desktop/) oder Excel. 
 
 ## <a name="scenario"></a>Szenario  
-Dieses Tutorial basiert auf Adventure Works Cycles, einem fiktiven Unternehmen. Adventure Works ist ein großes, multinationales Unternehmen, das Metall- und Verbundwerkstoff-Fahrräder herstellt und diese auf den nordamerikanischen, europäischen und asiatischen Handelsmärkten vertreibt. Das Unternehmen beschäftigt 500 Mitarbeiter. Zusätzlich beschäftigt Adventure Works mehrere regionale Verkaufsteams, die über das gesamte Marktgebiet verteilt sind. Sie werden damit beauftragt, ein tabellarisches Modell für Benutzer aus dem Vertrieb und Marketing zu erstellen, um Internetverkaufsdaten in der Datenbank „AdventureWorksDW“ zu analysieren.  
+Dieses Tutorial basiert auf Adventure Works Cycles, einem fiktiven Unternehmen. Adventure Works ist ein großes, multinationales Unternehmen, das Fahrräder, Teile und Zubehör herstellt und diese auf den nordamerikanischen, europäischen und asiatischen Handelsmärkten vertreibt. Das Unternehmen beschäftigt 500 Mitarbeiter. Zusätzlich beschäftigt Adventure Works mehrere regionale Verkaufsteams, die über das gesamte Marktgebiet verteilt sind. Sie werden damit beauftragt, ein tabellarisches Modell für Benutzer aus dem Vertrieb und Marketing zu erstellen, um Internetverkaufsdaten in der Datenbank „AdventureWorksDW“ zu analysieren.  
   
 Sie müssen verschiedene Lektionen bearbeiten, um das Tutorial abzuschließen. Jede Lektion setzt sich aus verschiedenen Aufgaben zusammen. Sie müssen die Aufgaben nacheinander durchführen, um die Lektion abzuschließen. Während sich in einer Lektion möglicherweise mehrere Aufgaben befinden, die zu einem ähnlichen Ergebnis führen, unterscheiden sich die Aufgaben bei der Art und Weise der Ausführung. So wird verdeutlicht, dass es oft mehr als eine Möglichkeit gibt, eine bestimmte Aufgabe durchzuführen. Außerdem sollen Sie Fähigkeiten einsetzen, die Sie in vorherigen Lektionen und Aufgaben gelernt haben.  
   
@@ -78,19 +78,19 @@ Dieses Lernprogramm enthält die folgenden Lektionen:
   
 |Lektion|Geschätzter Zeitaufwand|  
 |----------|------------------------------|  
-|[Lektion 1: Erstellen eines neuen tabellarischen Modellprojekts](../tutorials/aas-lesson-1-create-a-new-tabular-model-project.md)|10 Minuten|  
-|[Lektion 2: Abrufen von Daten](../tutorials/aas-lesson-2-get-data.md)|10 Minuten|  
-|[Lektion 3: Markieren als Datumstabelle](../tutorials/aas-lesson-3-mark-as-date-table.md)|3 Minuten|  
-|[Lektion 4: Erstellen von Beziehungen](../tutorials/aas-lesson-4-create-relationships.md)|10 Minuten|  
-|[Lektion 5: Erstellen berechneter Spalten](../tutorials/aas-lesson-5-create-calculated-columns.md)|15 Minuten|
-|[Lektion 6: Erstellen von Kennzahlen](../tutorials/aas-lesson-6-create-measures.md)|30 Minuten|  
-|[Lektion 7: Erstellen von Key Performance Indicators](../tutorials/aas-lesson-7-create-key-performance-indicators.md)|15 Minuten|  
-|[Lektion 8: Erstellen von Perspektiven](../tutorials/aas-lesson-8-create-perspectives.md)|5 Minuten|  
-|[Lektion 9: Erstellen von Hierarchien](../tutorials/aas-lesson-9-create-hierarchies.md)|20 Minuten|  
-|[Lektion 10: Erstellen von Partitionen](../tutorials/aas-lesson-10-create-partitions.md)|15 Minuten|  
-|[Lektion 11: Erstellen von Rollen](../tutorials/aas-lesson-11-create-roles.md)|15 Minuten|  
-|[Lektion 12: Analysieren in Excel](../tutorials/aas-lesson-12-analyze-in-excel.md)|5 Minuten| 
-|[Lektion 13: Bereitstellen](../tutorials/aas-lesson-13-deploy.md)|5 Minuten|  
+|[1. Erstellen eines neuen tabellarischen Modellprojekts](../tutorials/aas-lesson-1-create-a-new-tabular-model-project.md)|10 Minuten|  
+|[2. Abrufen von Daten](../tutorials/aas-lesson-2-get-data.md)|10 Minuten|  
+|[3. Markieren als Datumstabelle](../tutorials/aas-lesson-3-mark-as-date-table.md)|3 Minuten|  
+|[4. Erstellen von Beziehungen](../tutorials/aas-lesson-4-create-relationships.md)|10 Minuten|  
+|[5. Erstellen berechneter Spalten](../tutorials/aas-lesson-5-create-calculated-columns.md)|15 Minuten|
+|[6. Erstellen von Measures](../tutorials/aas-lesson-6-create-measures.md)|30 Minuten|  
+|[7. Erstellen von Key Performance Indicators (KPI)](../tutorials/aas-lesson-7-create-key-performance-indicators.md)|15 Minuten|  
+|[8. Erstellen von Perspektiven](../tutorials/aas-lesson-8-create-perspectives.md)|5 Minuten|  
+|[9. Erstellen von Hierarchien](../tutorials/aas-lesson-9-create-hierarchies.md)|20 Minuten|  
+|[10. Erstellen von Partitionen](../tutorials/aas-lesson-10-create-partitions.md)|15 Minuten|  
+|[11. Erstellen von Rollen](../tutorials/aas-lesson-11-create-roles.md)|15 Minuten|  
+|[12. Analysen in Excel](../tutorials/aas-lesson-12-analyze-in-excel.md)|5 Minuten| 
+|[13. Bereitstellen](../tutorials/aas-lesson-13-deploy.md)|5 Minuten|  
   
 ## <a name="supplemental-lessons"></a>Ergänzende Lektionen  
 Diese Lektionen sind nicht erforderlich, um das Tutorial abzuschließen. Allerdings tragen sie dazu bei, dass Sie erweiterte Schreibfunktionen für tabellarische Modelle besser verstehen.  
