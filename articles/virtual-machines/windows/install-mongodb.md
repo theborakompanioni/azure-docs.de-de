@@ -52,7 +52,7 @@ Um mit der Installation und Konfiguration von MongoDB zu beginnen, [melden Sie s
     ![MongoDB-Installationsprogramm herunterladen](./media/install-mongodb/download-mongodb.png)
    
     Führen Sie das Installationsprogramm nach Abschluss des Downloads aus.
-6. Lesen und akzeptieren Sie die Lizenzbedingungen. Wählen Sie bei entsprechender Aufforderung die Option zum Abschließen der Installation****.
+6. Lesen und akzeptieren Sie die Lizenzbedingungen. Wählen Sie bei entsprechender Aufforderung die Option zum **Abschließen** der Installation.
 7. Klicken Sie auf dem letzten Bildschirm auf **Installieren**.
 
 ## <a name="configure-the-vm-and-mongodb"></a>Konfigurieren des virtuellen Computers und von MongoDB
