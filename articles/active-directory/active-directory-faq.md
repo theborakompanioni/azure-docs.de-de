@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/12/2017
+ms.date: 08/16/2017
 ms.author: markvi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
-ms.openlocfilehash: 899a45d59099dec147c96e4cd175536e859e88f8
+ms.translationtype: HT
+ms.sourcegitcommit: 2d978248c78b84fe4ad37ecf7429e827a25d896f
+ms.openlocfilehash: 8d4460b3059558de2253c6f6a2d2fc8e7564d6d9
 ms.contentlocale: de-de
-ms.lasthandoff: 05/04/2017
+ms.lasthandoff: 08/18/2017
 
 ---
 # <a name="azure-active-directory-faq"></a>Häufig gestellte Fragen zu Azure Active Directory
@@ -28,7 +28,7 @@ Weitere Informationen finden Sie unter [Was ist Azure Active Directory?](active-
 
 
 ## <a name="access-azure-and-azure-active-directory"></a>Zugreifen auf Azure und Azure Active Directory
-**F: Warum wird „Keine Abonnements gefunden“ angezeigt, wenn ich versuche, über das klassische Azure-Portal auf Azure AD zuzugreifen (https://manage.windowsazure.com)?**
+**F: Warum wird „Keine Abonnements gefunden“ angezeigt, wenn ich versuche, über das klassische Azure-Portal auf Azure AD zuzugreifen?**
 
 **A:** Für den Zugriff auf das klassische Azure-Portal benötigt jeder Benutzer Berechtigungen mit einem Azure-Abonnement. Wenn Sie über ein kostenpflichtiges Office 365- oder Azure AD-Abonnement verfügen, können Sie unter [http://aka.ms/accessAAD](http://aka.ms/accessAAD) einen einmaligen Aktivierungsschritt ausführen. Andernfalls müssen Sie ein kostenloses [Azure-Konto](https://azure.microsoft.com/pricing/free-trial/) oder ein kostenpflichtiges Abonnement aktivieren.
 
@@ -212,5 +212,5 @@ Weitere Informationen finden Sie unter [Automatisieren der Bereitstellung und Be
 - - -
 **F: Kann ich mit Azure AD eine sichere LDAP-Verbindung einrichten?**
 
-**A:** Nein.  Das LDAP-Protokoll wird von Azure AD nicht unterstützt.
+**A:** Nein. Das LDAP-Protokoll wird von Azure AD nicht unterstützt.
 

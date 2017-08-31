@@ -15,12 +15,11 @@ ms.workload: data-services
 ms.custom: quickstart
 ms.date: 01/26/2017
 ms.author: elbutter;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
-ms.openlocfilehash: 75c2e0f119ac5669c3ab5bd528899d6e4b7818c9
+ms.translationtype: HT
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: 95e14824ba3b705bb909ec983652dd3305b98805
 ms.contentlocale: de-de
-ms.lasthandoff: 06/14/2017
-
+ms.lasthandoff: 08/23/2017
 
 ---
 # <a name="get-started-with-sql-data-warehouse"></a>Erste Schritte mit SQL Data Warehouse
@@ -63,8 +62,7 @@ Eine SQL Data Warehouse-Instanz ist eine besondere Art von Datenbank und für ei
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
 2. Klicken Sie auf **Neu** > **Datenbanken** > **SQL Data Warehouse**.
 
-    ![NewBlade](../../includes/media/sql-data-warehouse-create-dw/blade-click-new.png)
-    ![SelectDW](../../includes/media/sql-data-warehouse-create-dw/blade-select-dw.png)
+    ![NewBlade](../../includes/media/sql-data-warehouse-create-dw/blade-click-new.png) ![SelectDW](../../includes/media/sql-data-warehouse-create-dw/blade-select-dw.png)
 
 3. Angeben der Bereitstellungsdetails
 
@@ -84,8 +82,7 @@ Eine SQL Data Warehouse-Instanz ist eine besondere Art von Datenbank und für ei
 
     **Leistung auswählen**: Wir empfehlen, mit der Standardeinstellung von 400 DWUs zu beginnen.
 
-4. Wählen Sie **An Dashboard anheften**
-    ![An Dashboard anheften](./media/sql-data-warehouse-get-started-tutorial/pin-to-dashboard.png)
+4. Wählen Sie **An Dashboard anheften** ![An Dashboard anheften](./media/sql-data-warehouse-get-started-tutorial/pin-to-dashboard.png).
 
 5. Warten Sie, bis die Bereitstellung Ihrer Azure SQL Data Warehouse-Instanz abgeschlossen ist. Dieser Prozess dauert normalerweise mehrere Minuten. Wenn Ihr Data Warehouse verwendungsbereit ist, erhalten Sie im Portal eine entsprechende Benachrichtigung. 
 
@@ -657,7 +654,7 @@ Denken Sie daran, Ihre Instanz zu pausieren, wenn Sie mit der Arbeit eines Tages
 
 [Migrieren von Daten zu Azure SQL Data Warehouse][]
 
-[Parallelitäts- und Workloadverwaltung]: sql-data-warehouse-develop-concurrency.md#change-a-user-resource-class-example
+[Parallelitäts- und Workloadverwaltung]: sql-data-warehouse-develop-concurrency.md#changing-user-resource-class-example
 [Bewährte Methoden für Azure SQL Data Warehouse]: sql-data-warehouse-best-practices.md#hash-distribute-large-tables
 [Abfrageüberwachung]: sql-data-warehouse-manage-monitor.md
 [Die besten zehn bewährten Methoden zum Erstellen eines großen relationalen Data Warehouse]: https://blogs.msdn.microsoft.com/sqlcat/2013/09/16/top-10-best-practices-for-building-a-large-scale-relational-data-warehouse/

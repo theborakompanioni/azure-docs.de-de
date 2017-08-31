@@ -12,14 +12,13 @@ ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/23/2017
+ms.date: 08/18/2017
 ms.author: yurid
 ms.translationtype: HT
-ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
-ms.openlocfilehash: 4d0909e926de14a0cbe9799b969ac7a1946d69d1
+ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
+ms.openlocfilehash: 44beafeff5cbe58ac8ca37632879f6ffc2b67e53
 ms.contentlocale: de-de
-ms.lasthandoff: 07/10/2017
-
+ms.lasthandoff: 08/19/2017
 
 ---
 # <a name="partner-integration-in-azure-security-center"></a>Partnerintegration in Azure Security Center
@@ -62,9 +61,9 @@ Auf der Grundlage der Konfiguration der Azure-Umgebung und der von Ihnen definie
 
 ## <a name="manage-partner-solutions"></a>Verwalten von Partnerlösungen
 
-Nach der Bereitstellung können Sie Informationen zur Integrität der Lösung anzeigen und grundlegende Verwaltungsaufgaben ausführen. Wählen Sie hierzu auf dem Blatt **Security Center** die Kachel **Partnerlösungen** aus. Weitere Informationen zum Verwalten von Partnerlösungen in Security Center finden Sie unter [Überwachen von Partnerlösungen mit Azure Security Center](security-center-partner-solutions.md).
+Nach der Bereitstellung können Sie Informationen zur Integrität der Lösung anzeigen und grundlegende Verwaltungsaufgaben ausführen. Wählen Sie hierzu auf dem Blatt **Security Center** die Option **Partnerlösungen** aus. Weitere Informationen zum Verwalten von Partnerlösungen in Security Center finden Sie unter [Überwachen von Partnerlösungen mit Azure Security Center](security-center-partner-solutions.md).
 
-![Partnerintegration](./media/security-center-partner-integration/security-center-partner-integration-fig1-1-newUI.png)
+![Partnerintegration](./media/security-center-partner-integration/security-center-partner-integration-fig1-new2.png)
 
 > [!NOTE]
 > Die Unterstützung von Symantec Endpoint Protection ist auf die Ermittlung beschränkt. Es sind keine Integritätswarnungen verfügbar.

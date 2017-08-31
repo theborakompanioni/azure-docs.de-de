@@ -12,12 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/14/2017
+ms.date: 08/18/2017
 ms.author: magoedte
-translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: 97b863748dd726e19217e360645b8e6189c010b3
-ms.lasthandoff: 04/15/2017
+ms.translationtype: HT
+ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
+ms.openlocfilehash: 6eadfb0c3f91c1f2c7783d70604b45d5dc9912a3
+ms.contentlocale: de-de
+ms.lasthandoff: 08/19/2017
 
 ---
 
@@ -31,15 +32,16 @@ Wenn Sie ein Automation-Konto im Azure-Portal erstellen, wird automatisch Folgen
 
 Dies vereinfacht den Prozess für Sie und ermöglicht Ihnen das schnelle Erstellen und Bereitstellen von Runbooks als Unterstützung für Ihre Anforderungen an die Automation.  
 
+## <a name="permissions-required-to-create-automation-account"></a>Erforderliche Berechtigungen zum Erstellen eines Automation-Kontos
+Zum Erstellen oder Aktualisieren eines Automation-Kontos müssen Sie über die folgenden spezifischen Berechtigungen verfügen, um das Thema abschließen zu können.   
+ 
+* Damit Sie ein Automation-Konto erstellen können, muss Ihr AD-Benutzerkonto zu einer Rolle mit Berechtigungen hinzugefügt werden, die der Rolle „Besitzer“ für Microsoft.Automation-Ressourcen entspricht. Dies wird im Artikel [Rollenbasierte Zugriffssteuerung in Azure Automation](automation-role-based-access-control.md) erläutert.  
+* Wenn für die App-Registrierungseinstellung **Ja** festgelegt ist, können Benutzer ohne Administratorrechte im Azure AD-Mandanten [AD-Anwendungen registrieren](../azure-resource-manager/resource-group-create-service-principal-portal.md#check-azure-subscription-permissions).  Wenn für die App-Registrierungen **Nein** festgelegt ist, muss der Benutzer, der diese Aktion ausführt, ein globaler Administrator in Azure AD sein. 
+
+Wenn Sie kein Mitglied der Active Directory-Instanz des Abonnements sind, bevor Sie der Rolle „Globaler Administrator/Co-Administrator“ des Abonnements hinzugefügt werden, werden Sie Active Directory als Gast hinzugefügt. In diesem Fall erhalten Sie eine Warnung der Art „Sie haben keine Berechtigungen zum Erstellen von…“. auf dem Blatt **Automation-Konto hinzufügen**. Benutzer, die zuerst der Rolle des globalen Administrators/Co-Administrators hinzugefügt wurden, können aus der Active Directory-Instanz des Abonnements entfernt und erneut hinzugefügt werden, um sie als Vollbenutzer in Active Directory einzurichten. Sie können dies im Azure-Portal im Bereich **Azure Active Directory** überprüfen. Wählen Sie hierzu **Benutzer und Gruppen**, **Alle Benutzer** und nach Auswahl des jeweiligen Benutzers die Option **Profil**. Als Wert des Attributs **Benutzertyp** im Benutzerprofil darf nicht **Gast** angegeben sein.
+
 ## <a name="create-a-new-automation-account-from-the-azure-portal"></a>Erstellen eines neuen Automation-Kontos über das Azure-Portal
 In diesem Abschnitt führen Sie die folgenden Schritte aus, um im Azure-Portal ein Azure Automation-Konto zu erstellen.    
-
->[!NOTE]
->Zur Erstellung eines Automation-Kontos müssen Sie Mitglied der Rolle „Dienstadministratoren“ oder Co-Administrator des Abonnements sein, worüber Zugriff auf das Abonnement gewährt wird. Außerdem müssen Sie der Active Directory-Standardinstanz dieses Abonnements als Benutzer hinzugefügt worden sein. Dem Konto muss dabei keine privilegierte Rolle zugewiesen sein.
->
->Wenn Sie kein Mitglied der Active Directory-Instanz des Abonnements sind, bevor Sie der Rolle „Co-Administrator“ des Abonnements hinzugefügt werden, werden Sie Active Directory als Gast hinzugefügt. In diesem Fall erhalten Sie eine Warnung der Art „Sie haben keine Berechtigungen zum Erstellen von…“ auf dem Blatt **Automation-Konto hinzufügen**.
->
->Benutzer, die zuerst der Rolle des Co-Administrators hinzugefügt wurden, können aus der Active Directory-Instanz des Abonnements entfernt und erneut hinzugefügt werden, um sie als Vollbenutzer in Active Directory einzurichten. Sie können dies im Azure-Portal im Bereich **Azure Active Directory** überprüfen. Wählen Sie hierzu **Benutzer und Gruppen**, **Alle Benutzer** und nach Auswahl des jeweiligen Benutzers die Option **Profil**. Als Wert des Attributs **Benutzertyp** im Benutzerprofil darf nicht **Gast** angegeben sein.
 
 1. Melden Sie sich mit einem Konto, das Mitglied der Rolle „Abonnement-Administratoren“ und Co-Administrator des Abonnements ist, beim Azure-Portal an.
 2. Klicken Sie auf **Neu**.<br><br> ![Auswählen der Option „Neu“ im Azure-Portal](media/automation-offering-get-started/automation-portal-martketplacestart.png)<br>  
@@ -47,7 +49,7 @@ In diesem Abschnitt führen Sie die folgenden Schritte aus, um im Azure-Portal e
 3. Klicken Sie auf dem Blatt „Automation-Konten“ auf **Hinzufügen**.<br><br>![Automation-Konto hinzufügen](media/automation-create-standalone-account/automation-create-automationacct-properties.png)
    
    > [!NOTE]
-   > Wenn auf dem Blatt **Automation-Konto hinzufügen** die folgende Warnung angezeigt wird, ist Ihr Konto kein Mitglied der Rolle „Abonnement-Administratoren“ und Co-Admin des Abonnements.<br><br>![Automation-Konto hinzufügen – Warnung](media/automation-create-standalone-account/create-account-without-perms.png)
+   > Wenn auf dem Blatt **Automation-Konto hinzufügen** die folgende Warnung angezeigt wird, ist Ihr Konto kein Mitglied der Rolle „Abonnement-Administratoren“ und kein Co-Administrator des Abonnements.<br><br>![Automation-Konto hinzufügen – Warnung](media/automation-create-standalone-account/create-account-without-perms.png)
    > 
    > 
 4. Geben Sie auf dem Blatt **Automation-Konto hinzufügen** im Feld **Name** einen Namen für das neue Automation-Konto ein.
@@ -86,4 +88,4 @@ In der folgenden Tabelle sind die Ressourcen für das klassische ausführende Ko
 ## <a name="next-steps"></a>Nächste Schritte
 * Weitere Informationen zur grafischen Inhaltserstellung finden Sie unter [Grafische Erstellung in Azure Automation](automation-graphical-authoring-intro.md).
 * Erste Schritte mit PowerShell-Runbooks werden unter [Mein erstes PowerShell-Runbook](automation-first-runbook-textual-powershell.md) beschrieben.
-* Die ersten Schritte mit PowerShell-Workflow-Runbooks sind unter [Mein erstes PowerShell-Workflow-Runbook(automation-first-runbook-textual.md) beschrieben.
+* Die ersten Schritte mit PowerShell-Workflow-Runbooks sind unter [Mein erstes PowerShell-Workflow-Runbook](automation-first-runbook-textual.md)beschrieben.

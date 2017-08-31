@@ -53,7 +53,7 @@ Der IoT Hub-Dienst drosselt Anforderungen, wenn die folgenden Kontingente übers
 | C2D-Sendevorgänge | 83,33/Sekunde/Einheit (5.000/Minute/Einheit) (für S3), 1,67/Sekunde/Einheit (100/Minute/Einheit) (für S1 und S2) |
 | C2D-Empfangsvorgänge |833,33/Sekunde/Einheit (50.000/Minute/Einheit) (für S3), 16,67/Sekunde/Einheit (1.000/Minute/Einheit) (für S1 und S2) |
 | Dateiuploadvorgänge |83,33 Dateiuploadbenachrichtigungen/Sekunde/Einheit (5.000/Minute/Einheit) (für S3), 1,67 Dateiuploadbenachrichtigungen/Sekunde/Einheit (100/Minute/Einheit) (für S1 und S2) <br/> 10.000 SAS-URIs können gleichzeitig für ein Azure-Speicherkonto geöffnet sein.<br/> 10 SAS-URIs/Gerät können gleichzeitig geöffnet sein. |
-| Direkte Methoden | 1500/Sekunde/Einheit (für S3), 30/Sekunde/Einheit (für S2), 10/Sekunde/Einheit (für S1) |
+| Direkte Methoden | 3000/Sekunde/Einheit (für S3), 60/Sekunde/Einheit (für S2), 20/Sekunde/Einheit (für S1) |
 | Gerätezwilling-Lesevorgänge | 50/Sekunde/Einheit (für S3), maximal 10/Sekunde oder 1/Sekunde/Einheit (für S2), 10/Sekunde/Einheit (für S1) |
 | Gerätezwillingsaktualisierungen | 50/Sekunde/Einheit (für S3), maximal 10/Sekunde oder 1/Sekunde/Einheit (für S2), 10/Sekunde/Einheit (für S1) |
 | Auftragsvorgänge <br/> (Erstellen, Aktualisieren, Auflisten, Löschen) | 83,33/Sekunde/Einheit (5.000/Minute/Einheit) (für S3), 1,67/Sekunde/Einheit (100/Minute/Einheit) (für S2), 1,67/Sekunde/Einheit (100/Minute/Einheit) (für S1) |

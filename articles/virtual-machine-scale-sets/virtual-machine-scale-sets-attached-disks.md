@@ -16,10 +16,10 @@ ms.topic: get-started-article
 ms.date: 4/25/2017
 ms.author: guybo
 ms.translationtype: HT
-ms.sourcegitcommit: 19be73fd0aec3a8f03a7cd83c12cfcc060f6e5e7
-ms.openlocfilehash: 451d3c956b863ab90f86509fd80a5c96e27525ce
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 22c7e589efa9a9f401549ec9b95c58c4eaf07b94
 ms.contentlocale: de-de
-ms.lasthandoff: 07/13/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="azure-vm-scale-sets-and-attached-data-disks"></a>Azure-VM-Skalierungsgruppen und angefügte Datenträger
@@ -99,10 +99,21 @@ Sie können einen Datenträger auch hinzufügen, indem Sie der Eigenschaft _data
     }          
 ]
 ```
+
 Wählen Sie dann _PUT_, um die Änderungen für Ihre Skalierungsgruppe zu übernehmen. Dieses Beispiel funktioniert nur, wenn Sie eine VM-Größe nutzen, die mehr als zwei angefügte Datenträger unterstützt.
 
 > [!NOTE]
 > Wenn Sie an einer Skalierungsgruppendefinition Änderungen vornehmen, indem Sie z.B. einen Datenträger hinzufügen oder entfernen, wird diese Änderungen für alle neu erstellten virtuellen Computer übernommen, für vorhandene virtuelle Computer jedoch nur, wenn für die Eigenschaft _upgradePolicy_ „Automatisch“ festgelegt ist. Wenn hierfür „Manuell“ festgelegt wurde, müssen Sie das neue Modell manuell auf vorhandene virtuelle Computer anwenden. Dies ist im Portal mithilfe des PowerShell-Befehls _Update-AzureRmVmssInstance_ oder mithilfe des CLI-Befehls _az vmss update-instances_ möglich.
+
+## <a name="adding-pre-populated-data-disks-to-an-existent-scale-set"></a>Hinzufügen von vorab aufgefüllten Datenträgern zu einer vorhandenen Skalierungsgruppe 
+> Wenn Sie Datenträger zu einer vorhandenen Skalierungsgruppe hinzufügen, wird der Datenträger standardmäßig immer leer erstellt. (Dieses Szenario umfasst auch neue von der Skalierungsgruppe erstellte Instanzen.) Das Verhalten ist darin begründet, dass die Skalierungsgruppendefinition einen leeren Datenträger enthält. Wählen Sie eine der folgenden beiden Optionen, um vorab aufgefüllte Datenträger für eine vorhandene Skalierungsgruppe zu erstellen:
+
+* Kopieren Sie Daten vom virtuellen Instanz 0-Computer auf die Datenträger in anderen virtuellen Computern, indem Sie ein benutzerdefiniertes Skript ausführen.
+* Erstellen Sie ein verwaltetes Image mit dem Betriebssystemdatenträger sowie dem Datenträger (mit den erforderlichen Daten), und erstellen Sie dann eine neue Skalierungsgruppe mit dem Image. Auf diese Weise enthält jeder neue virtuelle Computer, der erstellt wird, einen Datenträger, der in der Definition der Skalierungsgruppe bereitgestellt wird. Da diese Definition auf ein Image mit einem Datenträger mit benutzerdefinierten Daten verweist, wird jeder virtuelle Computer in der Skalierungsgruppe automatisch mit diesen Änderungen aktiviert.
+
+> Informationen zum Erstellen eines benutzerdefinierten Images finden Sie unter [Erstellen eines verwalteten Images eines generalisierten virtuellen Computers in Azure](/azure/virtual-machines/windows/capture-image-resource/). 
+
+> Der Benutzer muss den virtuellen Instanz 0-Computer mit den erforderlichen Daten erfassen und dann diese VHD für die Imagedefinition verwenden.
 
 ## <a name="removing-a-data-disk-from-a-scale-set"></a>Entfernen eines Datenträgers aus einer Skalierungsgruppe
 Sie können einen Datenträger aus einer VM-Skalierungsgruppe mithilfe des Azure CLI-Befehls _az vmss disk detach_ entfernen. Z.B. mit dem folgenden Befehl wird der für LUN 2 definierte Datenträger entfernt:

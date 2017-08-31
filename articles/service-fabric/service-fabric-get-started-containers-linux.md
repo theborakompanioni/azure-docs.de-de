@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/28/2017
 ms.author: ryanwi
 ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
-ms.openlocfilehash: 35b7e0a730d73f646462b9cde3c8bbabac4d7c67
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: 8355478cb2fff3a63bc4a9b359ec8e2b132c80f6
 ms.contentlocale: de-de
-ms.lasthandoff: 08/16/2017
+ms.lasthandoff: 08/24/2017
 
 ---
 
@@ -33,6 +33,7 @@ Zum Ausführen einer vorhandenen Anwendung eines Linux-Containers in einem Servi
 * Ein Entwicklungscomputer, auf dem Folgendes ausgeführt wird:
   * [Service Fabric-SDK und -Tools](service-fabric-get-started-linux.md)
   * [Docker CE für Linux](https://docs.docker.com/engine/installation/#prior-releases). 
+  * [Service Fabric-Befehlszeilenschnittstelle](service-fabric-cli.md)
 
 * Eine Registrierung in Azure Container Registry – erstellen Sie in Ihrem Azure-Abonnement eine [Containerregistrierung](../container-registry/container-registry-get-started-portal.md). 
 
@@ -201,12 +202,12 @@ gradle
 ```
 
 ## <a name="deploy-the-application"></a>Bereitstellen der Anwendung
-Die erstellte Anwendung kann mithilfe der Azure-Befehlszeilenschnittstelle im lokalen Cluster bereitgestellt werden.
+Die erstellte Anwendung kann mithilfe der Service Fabric-Befehlszeilenschnittstelle im lokalen Cluster bereitgestellt werden.
 
 Stellen Sie eine Verbindung mit dem lokalen Service Fabric-Cluster her.
 
 ```bash
-azure servicefabric cluster connect
+sfctl cluster select --endpoint http://localhost:19080
 ```
 
 Verwenden Sie das in der Vorlage bereitgestellte Installationsskript, um das Anwendungspaket in den Imagespeicher des Clusters zu kopieren, den Anwendungstyp zu registrieren und eine Instanz der Anwendung zu erstellen.

@@ -14,11 +14,11 @@ ms.devlang: python
 ms.topic: hero-article
 ms.date: 07/18/2017
 ms.author: adegeo
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 6b21f38ddd64278db26d7042349470805b799203
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 7d2bc89943087323e92cf06981bbacaf4b8ff060
 ms.contentlocale: de-de
-ms.lasthandoff: 04/18/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="python-web-and-worker-roles-with-python-tools-for-visual-studio"></a>Python-Web- und -Workerrollen mit Python-Tools für Visual Studio
@@ -36,7 +36,7 @@ Dieser Artikel enthält eine Übersicht über die Verwendung von Python-Web- und
 [!INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
 ## <a name="what-are-python-web-and-worker-roles"></a>Was sind Python-Web- und Workerrollen?
-Azure bietet drei Computemodelle für das Ausführen von Anwendungen: [Web-Apps-Feature in Azure App Service][execution model-web sites], [Azure Virtual Machines][execution model-vms] und [Azure Cloud Services][execution model-cloud services]. Alle drei Modelle unterstützen Python. Cloud Services, die auch Web- und Workerrollen umfassen, ermöglichen *Platform as a Service (PaaS)*. In einem Cloud-Dienst bietet eine Webrolle einen speziellen IIS-Webserver (Internet Information Services), um Front-End-Webanwendungen zu hosten, während eine Workerrolle asynchrone, langfristige oder fortwährende Aufgaben ausführen kann, die unabhängig von einer Benutzerinteraktion oder -eingabe sind.
+Azure bietet drei Computemodelle für das Ausführen von Anwendungen: [Web-Apps-Feature in Azure App Service][execution model-web sites], [Azure Virtual Machines][execution model-vms] und [Azure Cloud Services][execution model-cloud services]. Alle drei Modelle unterstützen Python. Cloud Services, die auch Web- und Workerrollen umfassen, ermöglichen *Platform as a Service (PaaS)*. In einem Clouddienst bietet eine Webrolle einen speziellen IIS-Webserver (Internet Information Services), um Front-End-Webanwendungen zu hosten, während eine Workerrolle asynchrone, langfristige oder fortwährende Aufgaben ausführen kann, die unabhängig von einer Benutzerinteraktion oder -eingabe sind.
 
 Weitere Informationen finden Sie unter [Was ist ein Clouddienst?].
 
@@ -56,7 +56,7 @@ Im Assistenten für Azure-Clouddienste können Sie neue Web- und Workerrollen er
 
 ![Dialogfeld "Azure Cloud Service"](./media/cloud-services-python-ptvs/new-service-wizard.png)
 
-Die Workerrollenvorlage enthält Codebausteine für eine Verbindung mit einem Azure-Speicherkonto oder einem Azure Service Bus.
+Die Workerrollenvorlage enthält Codebausteine für eine Verbindung mit einem Azure-Speicherkonto oder Azure Service Bus.
 
 ![Cloud-Dienstlösung](./media/cloud-services-python-ptvs/worker.png)
 
@@ -74,7 +74,7 @@ Ihr Cloud-Dienst kann Rollen enthalten, die in verschiedenen Sprachen implementi
 
 Das Hauptproblem der Setupskripts ist, dass Python nicht installiert wird. Definieren Sie zuerst zwei [Startaufgaben](cloud-services-startup-tasks.md) in der Datei [ServiceDefinition.csdef](cloud-services-model-and-package.md#servicedefinitioncsdef). Mit der ersten Aufgabe (**PrepPython.ps1**) wird die Python-Laufzeit heruntergeladen und installiert. Mit der zweiten Aufgabe (**PipInstaller.ps1**) wird PIP ausgeführt, um alle ggf. vorhandenen Abhängigkeiten zu installieren.
 
-Die unten angegebenen Skripts wurden für Python 3.5 geschrieben. Falls Sie Version 2.x von Python verwenden möchten, können Sie die Variable **PYTHON2** für die beiden Startaufgaben und die Laufzeitaufgabe auf **on** festlegen: `<Variable name="PYTHON2" value="<mark>on</mark>" />`.
+Die folgenden Skripts wurden für Python 3.5 geschrieben. Falls Sie Version 2.x von Python verwenden möchten, können Sie die Variable **PYTHON2** für die beiden Startaufgaben und die Laufzeitaufgabe auf **on** festlegen: `<Variable name="PYTHON2" value="<mark>on</mark>" />`.
 
 ```xml
 <Startup>
@@ -303,7 +303,7 @@ if not exist "%DiagnosticStore%\LogFiles" mkdir "%DiagnosticStore%\LogFiles"
 
 
 ## <a name="run-locally"></a>Lokales Ausführen
-Wenn Sie Ihr Cloud-Dienstprojekt als Startprojekt festlegen und F5 drücken, wird der Cloud-Dienst im lokalen Azure-Emulator ausgeführt.
+Wenn Sie Ihr Clouddienstprojekt als Startprojekt festlegen und F5 drücken, wird der Clouddienst im lokalen Azure-Emulator ausgeführt.
 
 Auch wenn PTVS den Start im Emulator unterstützt, funktioniert das Debuggen (etwa Haltepunkte) nicht.
 
@@ -324,7 +324,7 @@ Der Fortschritt wird im Ausgabefenster angezeigt, anschließend wird das Fenster
 
 ![Fenster mit Microsoft Azure-Aktivitätsprotokoll](./media/cloud-services-python-ptvs/publish-activity-log.png)
 
-Der Abschluss der Bereitstellung dauert einige Minuten, anschließend werden Ihre Web- und/oder Workerrollen in Azure ausgeführt!
+Der Abschluss der Bereitstellung dauert einige Minuten, anschließend werden Ihre Web- und/oder Workerrollen in Azure ausgeführt.
 
 ### <a name="investigate-logs"></a>Untersuchen von Protokollen
 Nachdem der virtuelle Computer des Clouddiensts gestartet und Python installiert wurde, können Sie in den Protokollen nach Fehlermeldungen suchen. Diese Protokolle befinden sich im Ordner **C:\Resources\Directory\\{role}\LogFiles**. **PrepPython.err.txt** enthält mindestens einen Fehler, da vom Skript überprüft wird, ob Python installiert ist, und **PipInstaller.err.txt** meldet unter Umständen eine veraltete Version von PIP.
@@ -334,7 +334,7 @@ Genauere Informationen zur Arbeit mit Web- und Workerrollen in Python-Tools für
 
 * [Cloud Service-Projekte][Cloud Service Projects]
 
-Weitere Details zur Verwendung von Azure-Diensten aus Ihren Web- und Workerrollen, etwa zur Verwendung von Azure-Speicher oder Azure Service Bus, finden Sie in folgenden Artikeln:
+Weitere Details zur Verwendung von Azure-Diensten aus Ihren Web- und Workerrollen, etwa zur Verwendung von Azure Storage oder Azure Service Bus, finden Sie in folgenden Artikeln:
 
 * [Blob-Dienst][Blob Service]
 * [Tabellenspeicherdienst][Table Service]
@@ -350,9 +350,9 @@ Weitere Details zur Verwendung von Azure-Diensten aus Ihren Web- und Workerrolle
 [execution model-cloud services]: cloud-services-choose-me.md
 [Python Developer Center]: /develop/python/
 
-[Blob Service]: ../storage/storage-python-how-to-use-blob-storage.md
-[Queue Service]: ../storage/storage-python-how-to-use-queue-storage.md
-[Table Service]: ../storage/storage-python-how-to-use-table-storage.md
+[Blob Service]:../storage/blobs/storage-python-how-to-use-blob-storage.md
+[Queue Service]: ../storage/queues/storage-python-how-to-use-queue-storage.md
+[Table Service]:../cosmos-db/table-storage-how-to-use-python.md
 [Service Bus Queues]: ../service-bus-messaging/service-bus-python-how-to-use-queues.md
 [Service Bus Topics]: ../service-bus-messaging/service-bus-python-how-to-use-topics-subscriptions.md
 

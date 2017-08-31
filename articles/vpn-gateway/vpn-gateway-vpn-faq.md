@@ -14,17 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/30/2017
 ms.author: cherylmc,yushwang
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: 3627b3dfa5067883625b9a714645164ec99c8a51
+ms.translationtype: HT
+ms.sourcegitcommit: 368589509b163cacf495fd0be893a8953fe2066e
+ms.openlocfilehash: 9f7eb8e63f30d0f3450ad913620e59cd461b75bc
 ms.contentlocale: de-de
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 08/17/2017
 
 ---
 # <a name="vpn-gateway-faq"></a>Häufig gestellte Fragen zum VPN-Gateway
 
-## <a name="connecting-to-virtual-networks"></a>Herstellen einer Verbindung mit virtuellen Netzwerken
+## <a name="connecting"></a>Herstellen einer Verbindung mit virtuellen Netzwerken
 
 ### <a name="can-i-connect-virtual-networks-in-different-azure-regions"></a>Kann ich Verbindungen zwischen virtuellen Netzwerken in verschiedenen Azure-Regionen herstellen?
 
@@ -58,7 +57,7 @@ Mithilfe von **Point-to-Site**-Konfigurationen (VPN über SSTP) können Sie orts
 
 Sie können Ihr virtuelles Netzwerk für die parallele Verwendung von Site-to-Site- und Point-to-Site-Verbindungen konfigurieren. Hierzu müssen Sie Ihre Site-to-Site-Verbindung mit einem routenbasierten VPN-Typ für Ihr Gateway erstellen. Routenbasierte VPN-Typen werden im klassischen Bereitstellungsmodell als dynamische Gateways bezeichnet.
 
-## <a name="virtual-network-gateways"></a>Gateways des virtuellen Netzwerks
+## <a name="gateways"></a>Gateways für virtuelle Netzwerke
 
 ### <a name="is-a-vpn-gateway-a-virtual-network-gateway"></a>Ist ein VPN-Gateway ein virtuelles Netzwerkgateway?
 
@@ -132,7 +131,7 @@ Ein VPN-Gateway ist im Grunde ein mehrfach vernetztes Gerät mit einer NIC, die 
 
 Weitere Informationen finden Sie unter [Informationen zu VPN Gateway-Einstellungen](vpn-gateway-about-vpn-gateway-settings.md).
 
-## <a name="site-to-site-connections-and-vpn-devices"></a>Standort-zu-Standort-Verbindungen und VPN-Geräte
+## <a name="s2s"></a>Site-to-Site-Verbindungen und VPN-Geräte
 
 ### <a name="what-should-i-consider-when-selecting-a-vpn-device"></a>Was muss ich bei der Wahl eines VPN-Geräts berücksichtigen?
 
@@ -162,11 +161,11 @@ Auch andere VPN-Softwarelösungen können mit unserem Gateway verwendet werden, 
 
 ## <a name="P2S"></a>Point-to-Site-Verbindungen
 
-[!INCLUDE [vpn-gateway-point-to-site-faq-include](../../includes/vpn-gateway-point-to-site-faq-include.md)]
+[!INCLUDE [vpn-gateway-point-to-site-faq-include](../../includes/vpn-gateway-faq-point-to-site-include.md)]
 
 ## <a name="V2VMulti"></a>VNet-zu-VNet- und Multi-Site-Verbindungen
 
-[!INCLUDE [vpn-gateway-vnet-vnet-faq-include](../../includes/vpn-gateway-vnet-vnet-faq-include.md)]
+[!INCLUDE [vpn-gateway-vnet-vnet-faq-include](../../includes/vpn-gateway-faq-vnet-vnet-include.md)]
 
 ### <a name="can-i-use-azure-vpn-gateway-to-transit-traffic-between-my-on-premises-sites-or-to-another-virtual-network"></a>Kann ich mit dem Azure-VPN Gateway Datenverkehr zwischen meinen lokalen Standorten oder an ein anderes virtuelles Netzwerk übertragen?
 
@@ -196,16 +195,16 @@ Ja. VPNs vom Typ „Punkt zu Standort“ (P2S) können mit den VPN Gateways komb
 
 Ja, diese Möglichkeit wird unterstützt. Weitere Informationen finden Sie unter [Konfigurieren von gleichzeitig vorhandenen ExpressRoute- und Standort-zu-Standort-VPN-Verbindungen](../expressroute/expressroute-howto-coexist-classic.md).
 
-## <a name="ipsecike-policy"></a>IPsec-/IKE-Richtlinie
+## <a name="ipsecike"></a>IPsec-/IKE-Richtlinie
 
-[!INCLUDE [vpn-gateway-ipsecikepolicy-faq-include](../../includes/vpn-gateway-ipsecikepolicy-faq-include.md)]
+[!INCLUDE [vpn-gateway-ipsecikepolicy-faq-include](../../includes/vpn-gateway-faq-ipsecikepolicy-include.md)]
 
 
 ## <a name="bgp"></a>BGP
 
-[!INCLUDE [vpn-gateway-bgp-faq-include](../../includes/vpn-gateway-bpg-faq-include.md)]
+[!INCLUDE [vpn-gateway-faq-bgp-include](../../includes/vpn-gateway-faq-bgp-include.md)]
 
-## <a name="cross-premises-connectivity-and-vms"></a>Standortübergreifende Konnektivität und virtuelle Computer
+## <a name="vms"></a>Standortübergreifende Konnektivität und virtuelle Computer
 
 ### <a name="if-my-virtual-machine-is-in-a-virtual-network-and-i-have-a-cross-premises-connection-how-should-i-connect-to-the-vm"></a>Wenn sich mein virtueller Computer in einem virtuellen Netzwerk befindet und ich über eine standortübergreifende Verbindung verfüge, wie sollte ich dann die Verbindung mit dem virtuellen Computer herstellen?
 
@@ -222,7 +221,7 @@ Nein. Nur der Datenverkehr mit einer IP-Zieladresse, die innerhalb der angegeben
 [!INCLUDE [Troubleshoot VM connection](../../includes/vpn-gateway-connect-vm-troubleshoot-include.md)]
 
 
-## <a name="virtual-network-faq"></a>FAQs zu virtuellen Netzwerken
+## <a name="faq"></a>FAQs zu virtuellen Netzwerken
 
 Weitere Informationen zu virtuellen Netzwerken finden Sie in den [FAQs zu virtuellen Netzwerken](../virtual-network/virtual-networks-faq.md).
 
@@ -230,3 +229,4 @@ Weitere Informationen zu virtuellen Netzwerken finden Sie in den [FAQs zu virtue
 
 * Weitere Informationen zu VPN Gateway finden Sie unter [Informationen zu VPN Gateway](vpn-gateway-about-vpngateways.md).
 * Weitere Informationen zu VPN Gateway-Konfigurationseinstellungen finden Sie unter [Informationen zu VPN Gateway-Einstellungen](vpn-gateway-about-vpn-gateway-settings.md).
+
