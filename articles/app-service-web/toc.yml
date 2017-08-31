@@ -117,8 +117,6 @@
               href: app-service-linux-intro.md
             - name: Verwalten mit der CLI
               href: app-service-linux-cli.md
-            - name: Erstellen einer Web-App unter Linux
-              href: app-service-linux-how-to-create-web-app.md
             - name: Ruby-Web-App unter Linux
               href: app-service-linux-ruby-get-started.md
             - name: Node.js-Web-App unter Linux

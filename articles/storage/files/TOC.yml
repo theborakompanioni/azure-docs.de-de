@@ -12,14 +12,14 @@
       href: ../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Erstellen einer Dateifreigabe
       href: storage-how-to-create-file-share.md
-    - name: Verwalten mit dem Portal
-      href: storage-how-to-use-files-portal.md
     - name: Bereitstellen unter Windows
       href: storage-how-to-use-files-windows.md
     - name: Bereitstellen unter Linux
       href: storage-how-to-use-files-linux.md
     - name: Bereitstellen auf Mac
       href: storage-how-to-use-files-mac.md
+    - name: Verwalten mit dem Portal
+      href: storage-how-to-use-files-portal.md
 - name: Anleitung
   items:
     - name: Planen und Entwerfen
@@ -70,12 +70,12 @@
           href: ../common/storage-security-guide.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: Verschlüsselung für ruhende Daten
           href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: Vorschreiben einer sicheren Übertragung
+          href: ../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: Authentifizierung mit gemeinsam verwendetem Schlüssel
           href: /rest/api/storageservices/Authentication-for-the-Azure-Storage-Services
         - name: Shared Access Signatures (SAS)
           href: ../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Vorschreiben einer sicheren Übertragung
-          href: ../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Überwachen und Behandeln von Problemen
       items:
         - name: Problembehandlung für Azure Files-Verbindungen – Windows
