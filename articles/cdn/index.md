@@ -2,7 +2,7 @@
 title: "Dokumentation für Azure CDN – Tutorials, API-Referenz | Microsoft-Dokumentation"
 description: "Hier erfahren Sie, wie Sie mithilfe von CDN (Content Delivery Network) Inhalte globaler Rechenzentren auf einem beliebigen Gerät bereitstellen. Tutorials, API-Referenzen und anderes Dokumentationsmaterial."
 services: cdn
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 

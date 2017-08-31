@@ -3,7 +3,7 @@ title: 'Azure Analysis Services-Tutorial, Lektion 2: Abrufen von Daten | Microso
 description: In diesem Tutorial wird das Abrufen und Importieren von Daten in das Azure Analysis Services-Tutorialprojekt beschrieben.
 services: analysis-services
 documentationcenter: 
-author: minewiskan
+author: Minewiskan
 manager: erikre
 editor: 
 tags: 

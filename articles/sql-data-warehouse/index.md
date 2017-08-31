@@ -2,7 +2,7 @@
 title: "Dokumentation für Azure SQL Data Warehouse – Tutorials, API-Referenz | Microsoft-Dokumentation"
 description: Hier erfahren Sie, wie Sie SQL Data Warehouse verwenden und so SQL Server mit MPP (Massively Parallel Processing) kombinieren. Die Dokumentation zeigt, wie Sie Daten laden, analysieren, verwalten und exportieren.
 services: sql-data-warehouse
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,9 +12,10 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 303cb9950f46916fbdd58762acd1608c925c1328
 ms.openlocfilehash: b9f5bc85d6fca466be7abbe67b400856e1635459
+ms.contentlocale: de-de
 ms.lasthandoff: 04/08/2017
 
 ---

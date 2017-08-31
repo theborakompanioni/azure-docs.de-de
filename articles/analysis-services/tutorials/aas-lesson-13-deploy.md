@@ -3,7 +3,7 @@ title: "Azure Analysis Services-Tutorial – Lektion 13: Bereitstellen | Microso
 description: Dieser Artikel beschreibt, wie das Tutorialprojekt an Azure Analysis Services bereitgestellt werden kann.
 services: analysis-services
 documentationcenter: 
-author: minewiskan
+author: Minewiskan
 manager: erikre
 editor: 
 tags: 

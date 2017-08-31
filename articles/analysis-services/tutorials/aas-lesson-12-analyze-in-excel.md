@@ -3,7 +3,7 @@ title: "Azure Analysis Services-Tutorial – Lektion 12: Analysieren in Excel | 
 description: In diesem Tutorial wird das Analysieren in Excel im Azure Analysis Services-Tutorialprojekt beschrieben.
 services: analysis-services
 documentationcenter: 
-author: minewiskan
+author: Minewiskan
 manager: erikre
 editor: 
 tags: 

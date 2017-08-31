@@ -3,7 +3,7 @@ title: Richtlinien in Azure API Management | Microsoft Docs
 description: "Erfahren Sie mehr über die Richtlinien, die für die Verwendung in Azure API Management verfügbar sind."
 services: api-management
 documentationcenter: 
-author: miaojiang
+author: vladvino
 manager: erikre
 editor: 
 ms.assetid: 1cc460cb-8e67-41aa-bc76-bbafc1892798
@@ -14,9 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 77fd7b5b339a8ede8a297bec96f91f0a243cc18d
 ms.openlocfilehash: eea563ccbceab0833fb5e5eaf75e3a4347ef1ea4
+ms.contentlocale: de-de
+ms.lasthandoff: 01/12/2017
 
 ---
 # <a name="api-management-policies"></a>Richtlinien für die API-Verwaltung
@@ -26,7 +28,7 @@ Dieser Abschnitt enthält eine Referenz für die folgenden API Management-Richtl
   
  Richtlinienausdrücke können als Attributwerte oder Textwerte in einer beliebigen API Management-Richtlinie verwendet werden, sofern in der Richtlinie nicht anders angegeben. Einige Richtlinien, beispielsweise [Ablaufsteuerung](api-management-advanced-policies.md#choose) und [Variable festlegen](api-management-advanced-policies.md#set-variable), basieren auf Richtlinienausdrücken. Weitere Informationen finden Sie unter [Erweiterte Richtlinien](api-management-advanced-policies.md#AdvancedPolicies) und [Richtlinienausdrücke](api-management-policy-expressions.md).  
   
-##  <a name="a-nameproxypoliciesa-policies"></a><a name="ProxyPolicies"></a> Richtlinien  
+##  <a name="ProxyPolicies"></a> Richtlinien  
   
 -   [Richtlinien für die Zugriffsbeschränkung](api-management-access-restriction-policies.md#AccessRestrictionPolicies)  
   
@@ -120,9 +122,4 @@ Dieser Abschnitt enthält eine Referenz für die folgenden API Management-Richtl
   
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum Arbeiten mit Richtlinien finden Sie unter [Richtlinien in Azure API Management](api-management-howto-policies.md).  
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

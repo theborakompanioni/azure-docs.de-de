@@ -2,7 +2,7 @@
 title: "Azure Monitor-Dokumentation – Tutorials, API-Referenz | Microsoft-Dokumentation"
 description: "Hier erfahren Sie, wie Sie mithilfe von Überwachungs- und Diagnosediensten die Leistung überwachen, die Sicherheit gewährleisten und Trends erkennen. API-Referenzen, bewährte Methoden und mehr."
 services: monitoring-and-diagnostics
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 

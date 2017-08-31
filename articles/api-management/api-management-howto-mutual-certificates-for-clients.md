@@ -3,7 +3,7 @@ title: "Sichern von APIs über die Clientzertifikatauthentifizierung in API Mana
 description: "Erfahren Sie, wie Sie den Zugriff auf APIs mithilfe von Clientzertifikaten sichern können."
 services: api-management
 documentationcenter: 
-author: miaojiang
+author: vladvino
 manager: erikre
 editor: 
 ms.service: api-management

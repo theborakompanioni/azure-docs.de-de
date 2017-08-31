@@ -3,7 +3,7 @@ title: "Azure Analysis Services-Tutorial – Lektion 10: Erstellen von Partition
 description: Dieser Artikel beschreibt, wie Partitionen im Azure Analysis Services-Tutorialprojekt erstellt werden.
 services: analysis-services
 documentationcenter: 
-author: minewiskan
+author: Minewiskan
 manager: erikre
 editor: 
 tags: 

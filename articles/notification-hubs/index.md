@@ -2,7 +2,7 @@
 title: "Dokumentation für Azure Notification Hubs – Tutorials, API-Referenz | Microsoft-Dokumentation"
 description: "Hier erfahren Sie, wie Sie mithilfe von Notification Hubs Pushbenachrichtigungen von einem beliebigen Back-End an beliebige mobile Geräte senden. Tutorials, API-Referenzen und anderes Dokumentationsmaterial."
 services: notification-hubs
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 

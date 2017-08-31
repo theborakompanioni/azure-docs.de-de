@@ -2,7 +2,7 @@
 title: "Dokumentation für die Azure-Abrechnung – Tutorials, API-Referenz | Microsoft-Dokumentation"
 description: "Hier erfahren Sie, wie Sie Ihre Azure-Abrechnung nachvollziehen und die Nutzung und Kosten verwalten und überwachen. Tutorials, häufig gestellte Fragen, API-Referenzen und anderes Dokumentationsmaterial."
 services: billing
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 

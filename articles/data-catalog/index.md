@@ -2,7 +2,7 @@
 title: "Dokumentation für Azure Data Catalog – Tutorials, API-Referenz | Microsoft-Dokumentation"
 description: Hier erfahren Sie, wie Sie einen Datenkatalog einrichten, in dem Ihre Organisation Datenquellen suchen, verstehen und nutzen kann. Tutorials, API-Referenz und anderes Dokumentationsmaterial.
 services: data-catalog
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 

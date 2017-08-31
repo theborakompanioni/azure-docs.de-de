@@ -3,7 +3,7 @@ title: "Ergänzende Lektion zum Azure Analysis Services-Tutorial – Detailzeile
 description: Dieser Artikel beschreibt, wie ein Detailzeilenausdruck im Azure Analysis Services-Tutorialprojekt erstellt werden kann.
 services: analysis-services
 documentationcenter: 
-author: minewiskan
+author: Minewiskan
 manager: erikre
 editor: 
 tags: 

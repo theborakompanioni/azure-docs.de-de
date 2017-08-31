@@ -3,7 +3,7 @@ title: "Ergänzende Lektion zum Azure Analysis Services-Tutorial – Unregelmä�
 description: "Dieser Artikel beschreibt, wie Sie unregelmäßige Hierarchien im Azure Analysis Services-Tutorial beseitigen können."
 services: analysis-services
 documentationcenter: 
-author: minewiskan
+author: Minewiskan
 manager: erikre
 editor: 
 tags: 

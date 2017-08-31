@@ -2,7 +2,7 @@
 title: "Dokumentation für Azure Active Directory B2C – Tutorials, API-Referenz | Microsoft-Dokumentation"
 description: "Hier erfahren Sie, wie Sie eine umfassende Kundenidentitätsverwaltung in der Cloud bereitstellen. Die Dokumentation zeigt, wie Sie kundenorientierte Web-Apps und mobile Apps schützen."
 services: active-directory-b2c
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,9 +12,10 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
 ms.openlocfilehash: 2bb7fe165fc88df62a2b12ccf666da0a7965d43b
+ms.contentlocale: de-de
 ms.lasthandoff: 03/27/2017
 
 ---

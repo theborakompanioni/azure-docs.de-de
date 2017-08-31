@@ -6,7 +6,7 @@ metadata:
   title: 'Dokumentation für Azure Cosmos DB – Tutorials, API-Referenz'
   description: 'Erfahren Sie, wie Sie mit Azure-Cosmos-Datenbank global verteilte Datenbanken mit mehreren Modellen erstellen. In den Tutorials erfahren Sie, wie Sie Dokument-, Schlüssel/Wert- und Graph-Datenbanken erstellen und abfragen.'
   services: cosmos-db
-  author: carolz
+  author: czeumault
   manager: carolz
   ms.service: cosmos-db
   ms.tgt_pltfrm: na

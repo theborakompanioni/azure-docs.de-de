@@ -2,7 +2,7 @@
 title: "Dokumentation für Azure Security – Tutorials | Microsoft-Dokumentation"
 description: Hier erfahren Sie, wie Sie die Sicherheitsoptionen in Azure-Diensten auf die Anforderungen Ihrer in der Cloud bereitgestellten Dienste und Daten abstimmen.
 services: security
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 

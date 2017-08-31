@@ -2,7 +2,7 @@
 title: "Dokumentation für Azure Site Recovery – Tutorials, API-Referenz | Microsoft-Dokumentation"
 description: "Hier erfahren Sie, wie Sie mittels Bereitstellung und Verwaltung der Replikation die cloudbasierte Notfallwiederherstellung und Geschäftskontinuität für physische Server und virtuelle Computer einrichten."
 services: site-recovery
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 

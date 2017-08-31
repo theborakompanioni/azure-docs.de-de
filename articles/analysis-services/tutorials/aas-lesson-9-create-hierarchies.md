@@ -3,7 +3,7 @@ title: "Azure Analysis Services-Tutorial – Lektion 9: Erstellen von Hierarchie
 description: 
 services: analysis-services
 documentationcenter: 
-author: minewiskan
+author: Minewiskan
 manager: erikre
 editor: 
 tags: 

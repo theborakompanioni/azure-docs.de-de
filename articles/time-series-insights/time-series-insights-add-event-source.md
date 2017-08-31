@@ -8,7 +8,7 @@ author: op-ravi
 manager: santoshb
 editor: cgronlun
 ms.assetid: 
-ms.service: time-series-insights
+ms.service: tsi
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
@@ -23,15 +23,11 @@ ms.lasthandoff: 07/01/2017
 
 ---
 
-<a id="create-an-event-source-for-your-time-series-insights-environment-using-the-ibiza-portal" class="xliff"></a>
-
-# Erstellen einer Ereignisquelle für Ihre Time Series Insights-Umgebung über das Ibiza-Portal
+# <a name="create-an-event-source-for-your-time-series-insights-environment-using-the-ibiza-portal"></a>Erstellen einer Ereignisquelle für Ihre Time Series Insights-Umgebung über das Ibiza-Portal
 
 Die Time Series Insights-Ereignisquelle leitet sich von einem Ereignisbroker (beispielsweise Azure Event Hubs) ab. Time Series Insights stellt eine direkte Verbindung mit Ereignisquellen her, und der Datenstrom wird erfasst, ohne dass Benutzer eine einzige Codezeile schreiben müssen. Zurzeit unterstützt Time Series Insights Azure Event Hubs und Azure IoT Hubs. In Zukunft werden weitere Ereignisquellen hinzugefügt.
 
-<a id="steps-to-add-an-event-source-to-your-environment" class="xliff"></a>
-
-## Schritte zum Hinzufügen einer Ereignisquelle zu Ihrer Umgebung
+## <a name="steps-to-add-an-event-source-to-your-environment"></a>Schritte zum Hinzufügen einer Ereignisquelle zu Ihrer Umgebung
 
 1.  Melden Sie sich beim [Ibiza-Portal](https://portal.azure.com) an.
 2.  Klicken Sie im Ibiza-Portal im Menü auf der linken Seite auf „Alle Ressourcen“.
@@ -55,9 +51,7 @@ Die Time Series Insights-Ereignisquelle leitet sich von einem Ereignisbroker (be
 
 Nach der Erstellung der Ereignisquelle beginnt Time Series Insights automatisch damit, Daten in Ihre Umgebung zu streamen.
 
-<a id="next-steps" class="xliff"></a>
-
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 
 * [Senden von Ereignissen](time-series-insights-send-events.md) an die Ereignisquelle
 * Anzeigen Ihrer Umgebung im [Time Series Insights-Portal](https://insights.timeseries.azure.com)

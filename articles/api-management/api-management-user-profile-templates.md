@@ -3,7 +3,7 @@ title: Benutzerprofilvorlagen in Azure API Management | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie den Inhalt der Benutzerprofilseiten im Entwicklerportal in Azure API Management anpassen.
 services: api-management
 documentationcenter: 
-author: miaojiang
+author: vladvino
 manager: erikre
 editor: 
 ms.assetid: 2e3b73ef-d223-44fe-9280-c3af3fd4a030
@@ -14,9 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 77fd7b5b339a8ede8a297bec96f91f0a243cc18d
 ms.openlocfilehash: cd6cfe3fde93624faec844f91ea9193527495df4
+ms.contentlocale: de-de
+ms.lasthandoff: 01/12/2017
 
 ---
 # <a name="user-profile-templates-in-azure-api-management"></a>Benutzerprofilvorlagen in Azure API Management
@@ -35,7 +37,7 @@ Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des En
 > [!NOTE]
 >  Beispielstandardvorlagen sind in der folgenden Dokumentation enthalten, können aber aufgrund der kontinuierlichen Verbesserungen geändert werden. Sie können sich die aktiven Standardvorlagen im Entwicklerportal ansehen, indem Sie zu den gewünschten einzelnen Vorlagen navigieren. Weitere Informationen zum Arbeiten mit Vorlagen finden Sie unter [So passen Sie das Azure API Management-Entwicklerportal mithilfe von Vorlagen an](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
   
-##  <a name="a-nameprofilea-profile"></a><a name="Profile"></a> Profil  
+##  <a name="Profile"></a> Profil  
  Mit der Vorlage **Profil** können Sie den Benutzerprofilabschnitt der Benutzerprofilseite im Entwicklerportal anpassen.  
   
  ![Benutzerprofilseite](./media/api-management-user-profile-templates/APIM-User-Profile-Page.png "APIM-Benutzerprofilseite")  
@@ -180,7 +182,7 @@ Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des En
 }  
 ```  
   
-##  <a name="a-namesubscriptionsa-subscriptions"></a><a name="Subscriptions"></a> Abonnements  
+##  <a name="Subscriptions"></a> Abonnements  
  Mit der Vorlage **Abonnements** können Sie den Abonnementsabschnitt der Benutzerprofilseite im Entwicklerportal anpassen.  
   
  ![Seite mit Benutzerabonnements](./media/api-management-user-profile-templates/APIM-User-Subscription-Page.png "APIM-Seite mit Benutzerabonnements")  
@@ -401,7 +403,7 @@ Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des En
 }  
 ```  
   
-##  <a name="a-nameapplicationsa-applications"></a><a name="Applications"></a> Anwendungen  
+##  <a name="Applications"></a> Anwendungen  
  Mit der Vorlage **Anwendungen** können Sie den Abonnementsabschnitt der Benutzerprofilseite im Entwicklerportal anpassen.  
   
  ![Seite mit Anwendungen des Benutzerkontos](./media/api-management-user-profile-templates/APIM-User-Account-Applications-Page.png "APIM-Seite mit Anwendungen des Benutzerkontos")  
@@ -564,7 +566,7 @@ Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des En
 }  
 ```  
   
-##  <a name="a-nameupdateaccountinfoa-update-account-info"></a><a name="UpdateAccountInfo"></a> Kontoinformationen aktualisieren  
+##  <a name="UpdateAccountInfo"></a> Kontoinformationen aktualisieren  
  Die Vorlage **Kontoinformationen aktualisieren** ermöglicht Ihnen die Anpassung der Seite **Kontoinformationen aktualisieren** im Entwicklerportal.  
   
  ![Vorlagen für die Seite mit Informationen zum Benutzerkonto im Entwicklerportal](./media/api-management-user-profile-templates/APIM-User-Account-Info-Page-Developer-Portal-Templates.png "APIM-Vorlagen für die Seite mit Informationen zum Benutzerkonto im Entwicklerportal")  
@@ -623,8 +625,3 @@ Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des En
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum Arbeiten mit Vorlagen finden Sie unter [So passen Sie das Azure API Management-Entwicklerportal mithilfe von Vorlagen an](api-management-developer-portal-templates.md).
-
-
-<!--HONumber=Jan17_HO2-->
-
-

@@ -3,7 +3,7 @@ title: "Domänenübergreifende Richtlinien in Azure API Management | Microsoft-D
 description: "Erfahren Sie mehr über die domänenübergreifenden Richtlinien, die für die Verwendung in Azure API Management verfügbar sind."
 services: api-management
 documentationcenter: 
-author: miaojiang
+author: vladvino
 manager: erikre
 editor: 
 ms.assetid: 7689d277-8abe-472a-a78c-e6d4bd43455d
@@ -14,15 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 77fd7b5b339a8ede8a297bec96f91f0a243cc18d
 ms.openlocfilehash: 638e70d29fb8e60418bcfdf76dc1405afef91278
+ms.contentlocale: de-de
+ms.lasthandoff: 01/12/2017
 
 ---
 # <a name="api-management-cross-domain-policies"></a>API Management cross domain policies (Domänenübergreifende API Management-Richtlinien)
 Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](http://go.microsoft.com/fwlink/?LinkID=398186).  
   
-##  <a name="a-namecrossdomainpoliciesa-cross-domain-policies"></a><a name="CrossDomainPolicies"></a> Domänenübergreifende Richtlinien  
+##  <a name="CrossDomainPolicies"></a> Domänenübergreifende Richtlinien  
   
 -   [Domänenübergreifende Aufrufe zulassen](api-management-cross-domain-policies.md#AllowCrossDomainCalls) – Erlaubt API-Aufrufe aus browserbasierten Clients, die Adobe Flash und Microsoft Silverlight verwenden.  
   
@@ -30,7 +32,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
   
 -   [JSONP](api-management-cross-domain-policies.md#JSONP) – Fügt Unterstützung für JSON mit Padding (JSONP) zu einer Operation oder einer API hinzu, um domänenübergreifende Aufrufe aus browserbasierten Clients mit JavaScript zu ermöglichen.  
   
-##  <a name="a-nameallowcrossdomaincallsa-allow-cross-domain-calls"></a><a name="AllowCrossDomainCalls"></a> Domänenübergreifende Aufrufe zulassen  
+##  <a name="AllowCrossDomainCalls"></a> Domänenübergreifende Aufrufe zulassen  
  Verwenden Sie die `cross-domain`-Richtlinie, um die API von browserbasierten Adobe Flash- und Microsoft Silverlight-Clients aus zugänglich zu machen.  
   
 ### <a name="policy-statement"></a>Richtlinienanweisung  
@@ -65,7 +67,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
   
 -   **Richtlinienbereiche:** global  
   
-##  <a name="a-namecorsa-cors"></a><a name="CORS"></a> CORS  
+##  <a name="CORS"></a> CORS  
  Die `cors`-Richtlinie fügt Unterstützung für CORS (Cross-Origin Resource Sharing) einer Operation oder einer API hinzu, um domänenübergreifende Aufrufe von browserbasierten Clients aus zu ermöglichen.  
   
  Mit CORS können Browser und Server miteinander interagieren und ermitteln, ob bestimmte ursprungsübergreifende Anfragen (z. B. XMLHttpRequests-Aufrufe aus JavaScript in einer Webseite an andere Domänen) zulässig sind. Dies bietet mehr Flexibilität als wenn nur Anfragen gleichen Ursprungs erlaubt sind, und ist gleichzeitig sicherer als wenn alle ursprungsübergreifenden Anfragen erlaubt sind.  
@@ -149,7 +151,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
   
 -   **Richtlinienbereiche:** API, operation  
   
-##  <a name="a-namejsonpa-jsonp"></a><a name="JSONP"></a> JSONP  
+##  <a name="JSONP"></a> JSONP  
  Die Richtlinie `jsonp` fügt einem Vorgang oder einer API Unterstützung für JSON mit Padding (JSONP) hinzu, um domänenübergreifende Aufrufe von browserbasierten Clients mit JavaScript aus zu ermöglichen. JSONP wird in JavaScript-Programmen verwendet, um Daten von einem Server in einer anderen Domäne anzufordern. JSONP umgeht die Einschränkung der meisten Webbrowser, dass der Zugriff auf Webseiten nur innerhalb derselben Domäne möglich ist.  
   
 ### <a name="policy-statement"></a>Richtlinienanweisung  
@@ -189,8 +191,3 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
   
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum Arbeiten mit Richtlinien finden Sie unter [Richtlinien in Azure API Management](api-management-howto-policies.md).  
-
-
-<!--HONumber=Jan17_HO2-->
-
-

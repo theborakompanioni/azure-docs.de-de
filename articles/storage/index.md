@@ -2,7 +2,7 @@
 title: "Dokumentation für Azure Storage – Tutorials, API-Referenz | Microsoft-Dokumentation"
 description: "Hier erfahren Sie, wie Sie Azure Storage (Blob-/Tabellen-/Warteschlangen-/Dateispeicher sowie Speicher für die Datenträger virtueller Computer) in der Cloud verwenden. Tutorials, API-Referenzen und anderes Dokumentationsmaterial."
 services: storage
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 

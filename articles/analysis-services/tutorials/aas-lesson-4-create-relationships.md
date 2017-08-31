@@ -3,7 +3,7 @@ title: "Azure Analysis Services-Tutorial – Lektion 4: Erstellen von Beziehunge
 description: Dieser Artikel beschreibt, wie Beziehungen im Azure Analysis Services-Tutorialprojekt erstellt werden.
 services: analysis-services
 documentationcenter: 
-author: minewiskan
+author: Minewiskan
 manager: erikre
 editor: 
 tags: 

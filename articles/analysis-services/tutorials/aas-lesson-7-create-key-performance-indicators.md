@@ -3,7 +3,7 @@ title: "Azure Analysis Services-Tutorial – Lektion 7: Erstellen von Key Perfor
 description: Dieser Artikel beschreibt, wie Key Performance Indicators im Azure Analysis Services-Tutorialprojekt erstellt werden.
 services: analysis-services
 documentationcenter: 
-author: minewiskan
+author: Minewiskan
 manager: erikre
 editor: 
 tags: 
