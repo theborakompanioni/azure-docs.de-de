@@ -42,8 +42,11 @@
 ## Verwalten wiederverwendbarer Vorlagen
 ### [Hinzufügen eines Git-Repositorys für Artefakte und Vorlagen](devtest-lab-add-artifact-repo.md)
 ### [Verwenden einer Resource Manager-Vorlage](devtest-lab-use-resource-manager-template.md)
-### [Erstellen benutzerdefinierter Artefakte](devtest-lab-artifact-author.md)
 ### [Verwalten von Formeln](devtest-lab-manage-formulas.md)
+
+## Verwalten von Artefakten
+### [Erstellen benutzerdefinierter Artefakte](devtest-lab-artifact-author.md)
+### [Diagnostizieren von Artefaktfehlern](devtest-lab-troubleshoot-artifact-failure.md)
 
 ## Verwalten virtueller Netzwerke
 ### [Konfigurieren virtueller Netzwerke](devtest-lab-configure-vnet.md)

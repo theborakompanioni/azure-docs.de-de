@@ -108,6 +108,10 @@
           href: csharp.md
         - name: 'Verwenden einer Vorlage mit C#'
           href: csharp-template.md
+        - name: Erstellen eines virtuellen Computers mit Chef
+          href: chef-automation.md
+        - name: Verwenden von Java
+          href: java.md
         - name: Verwenden von Python
           href: python.md
         - name: Verwenden einer Vorlage
