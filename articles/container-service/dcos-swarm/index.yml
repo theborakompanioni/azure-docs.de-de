@@ -28,6 +28,10 @@ sections:
               src: 'https://docs.microsoft.com/media/logos/logo_linux.svg'
             text: Erstellen eines DC/OS-Clusters
             href: /azure/container-service/container-service-dcos-quickstart
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_docker.svg'
+            text: Erstellen eines Docker Swarm-Clusters
+            href: /azure/container-service/dcos-swarm/container-service-swarm-walkthrough
   - title: Schritt-für-Schritt-Tutorials
     items:
       - type: paragraph

@@ -21,6 +21,7 @@
 #### [Installieren des Benutzerportals](multi-factor-authentication-get-started-portal.md)
 #### [Erweiterte VPN-Konfigurationen](multi-factor-authentication-advanced-vpn-configurations.md)
 #### [Webdienst der mobilen App](multi-factor-authentication-get-started-server-webservice.md)
+#### [Konfigurieren hoher Verfügbarkeit](mfa-server-high-availability.md)
 #### [Windows-Authentifizierung](multi-factor-authentication-get-started-server-windows.md)
 #### [Aktualisieren des MFA-Servers](multi-factor-authentication-server-upgrade.md)
 #### [Upgraden von PhoneFactor](multi-factor-authentication-get-started-server-upgrade.md)

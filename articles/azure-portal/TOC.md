@@ -1,16 +1,21 @@
-# [Übersicht](../azure-portal-overview.md)
+# Übersicht
+## [Informationen zum Azure-Portal](../azure-portal-overview.md)
+# Lernprogramme
+## [DevOps mit dem Azure-Portal](tutorial-azureportal-devops.md)
+# Konzepte
 ## [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)
-
-# Erste Schritte
-## [Bereitstellen mithilfe von Resource Manager-Vorlagen](../azure-resource-manager/resource-group-template-deploy.md)
-
-# Anleitung
+## [Tastenkombinationen](azure-portal-keyboard-shortcuts.md)
+## [Unterstützte Browser und Geräte](../azure-preview-portal-supported-browsers-devices.md)
+# Anleitungen
 ## Bereitstellen
 ### [Erstellen von Azure Resource Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md)
-
+### [Bereitstellen mithilfe von Resource Manager-Vorlagen](../azure-resource-manager/resource-group-template-deploy.md)
+### [Erstellen und Freigeben von Azure-Dashboards](azure-portal-dashboards.md)
 ## Verwalten
-### [Verwenden des Vorschauportals zum Verwalten von Ressourcen](../azure-resource-manager/resource-group-portal.md)
-### [Verwalten des Zugriffs mit RBAC](../active-directory/role-based-access-control-configure.md)
+### [Aktivieren des hohen Kontrasts oder Ändern des Designs](azure-portal-change-theme-high-contrast.md)
+### [Verwenden des Portals zum Verwalten von Ressourcen](../azure-resource-manager/resource-group-portal.md)
+### [Verwalten des Zugriffs per rollenbasierter Zugriffssteuerung](../active-directory/role-based-access-control-configure.md)
+### [Freigeben von Dashboards per rollenbasierter Zugriffssteuerung](azure-portal-dashboard-share-access.md)
 ### [Verwenden von Tags zum Organisieren von Ressourcen](../azure-resource-manager/resource-group-using-tags.md)
 ### [Skalieren von Ressourcen](../monitoring-and-diagnostics/insights-how-to-scale.md)
 ### [Erstellen eines neuen Azure-Dienstprinzipals](../azure-resource-manager/resource-group-create-service-principal-portal.md)
