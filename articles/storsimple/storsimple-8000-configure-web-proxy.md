@@ -64,7 +64,7 @@ Der Setup-Assistent führt Sie durch die einzelnen Schritte für die Webproxykon
    
     `Invoke-HcsSetupWizard`
 2. Bei erstmaliger Verwendung des Setup-Assistenten für die Geräteregistrierung müssen Sie alle erforderlichen Netzwerkeinstellungen konfigurieren, um zur Webproxykonfiguration zu gelangen. Ist Ihr Gerät bereits registriert, übernehmen Sie alle konfigurierten Netzwerkeinstellungen, bis Sie die Webproxykonfiguration erreichen. Geben Sie im Setup-Assistenten **Ja**ein, wenn Sie zum Konfigurieren der Webproxyeinstellungen aufgefordert werden.
-3. Geben Sie als Webproxy-URL ****die IP-Adresse oder den vollqualifizierten Domänennamen (Fully Qualified Domain Name, FQDN) des Webproxyservers sowie die TCP-Portnummer ein, die das Gerät bei der Kommunikation mit der Cloud verwenden soll. Verwenden Sie das folgende Format:
+3. Geben Sie als **Webproxy-URL** die IP-Adresse oder den vollqualifizierten Domänennamen (Fully Qualified Domain Name, FQDN) des Webproxyservers sowie die TCP-Portnummer ein, die das Gerät bei der Kommunikation mit der Cloud verwenden soll. Verwenden Sie das folgende Format:
    
     `http://<IP address or FQDN of the web proxy server>:<TCP port number>`
    
