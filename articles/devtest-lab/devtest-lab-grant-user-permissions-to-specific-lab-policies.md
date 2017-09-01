@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/25/2016
 ms.author: tarcher
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: f1524fa83de6ce53f853ed6859de15076e20ea3b
-
+ms.contentlocale: de-de
+ms.lasthandoff: 11/17/2016
 
 ---
 # <a name="grant-user-permissions-to-specific-lab-policies"></a>Gewähren von Benutzerberechtigungen für bestimmte Labrichtlinien
@@ -73,7 +74,7 @@ Im folgenden Beispiel lautet die **ObjectId** des Benutzers *SomeUser* 05DEFF7B-
 
 Sobald Sie über die **ObjectId** für den Benutzer und den Namen einer benutzerdefinierte Rolle verfügen, können Sie dem Benutzer diese Rolle mit dem **New-AzureRmRoleAssignment**-Cmdlet zuweisen:
 
-    PS C:\>New-AzureRmRoleAssignment -ObjectId 05DEFF7B-0AC3-4ABF-B74D-6A72CD5BF3F3 -RoleDefinitionName "Policy Contributor" -Scope /subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroupName>/providers/Microsoft.DevTestLab/labs/<LabName>/policySets/policies/AllowedVmSizesInLab
+    PS C:\>New-AzureRmRoleAssignment -ObjectId 05DEFF7B-0AC3-4ABF-B74D-6A72CD5BF3F3 -RoleDefinitionName "Policy Contributor" -Scope /subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroupName>/providers/Microsoft.DevTestLab/labs/<LabName>/policySets/default/policies/AllowedVmSizesInLab
 
 Im vorherigen Beispiel wird die **AllowedVmSizesInLab** -Richtlinie verwendet. Sie können auch eine der folgenden Richtlinien verwenden:
 
@@ -92,10 +93,5 @@ Nachdem Sie Benutzerberechtigungen für bestimmte Labrichtlinien gewährt haben,
 * [Erstellen einer Labvorlage](devtest-lab-create-template.md).
 * [Erstellen benutzerdefinierter Artefakte für Ihre VMs](devtest-lab-artifact-author.md).
 * [Hinzufügen einer VM mit Artefakten zu einem Lab](devtest-lab-add-vm-with-artifacts.md).
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 
