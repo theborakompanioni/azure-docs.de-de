@@ -63,8 +63,8 @@ Es werden folgende Schritte ausgeführt:
     In den meisten Fällen die Konfigurationszeichenfolge für die Aufgabe leer (wie im folgenden Beispiel). Es gibt einige erweiterte Szenarios, bei denen Sie eine XML-Zeichenfolge an die Codierungsaufgabe bereitstellen (und Laufzeiteigenschaften dynamisch festlegen) müssen. Beispiele für solche Szenarios sind das Erstellen einer Überlagerung, das parallele oder sequenzielle Zusammenfügen von Medien und die Untertitelung.
 5. Hinzufügen von zwei Medienobjekten zur Aufgabe.
 
-    1. 1. – das Medienobjekt für den Workflow
-    2. 2. – das Videomedienobjekt
+    1. 1 – das Medienobjekt für den Workflow
+    2. 2 – das Videomedienobjekt
 
     >[!NOTE]
     >Das Medienobjekt für den Workflow muss der Aufgabe vor dem Videomedienobjekt hinzugefügt werden.
