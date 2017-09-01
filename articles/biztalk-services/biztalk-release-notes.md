@@ -97,7 +97,7 @@ Wenn Sie den Qualifizierer einer Identität ändern möchten, löschen Sie die V
 Anlagen für AS2-Nachrichten werden beim Senden oder Empfangen nicht unterstützt. Anlagen werden vielmehr ignoriert, und der Nachrichtentext wird als normale AS2-Nachricht verarbeitet.  
 
 ### <a name="resources-remembering-path"></a>Ressourcen: Speichern des Pfads
-Beim Hinzufügen von Ressourcen ****wird der Pfad, der zuvor zum Hinzufügen einer Ressource verwendet wurde, unter Umständen nicht im Dialogfeld gespeichert. Fügen Sie die Website des BizTalk Services-Portals in Internet Explorer den vertrauenswürdigen Sites **** hinzu, damit der zuvor verwendete Pfad gespeichert wird.  
+Beim Hinzufügen von **Ressourcen** wird der Pfad, der zuvor zum Hinzufügen einer Ressource verwendet wurde, unter Umständen nicht im Dialogfeld gespeichert. Fügen Sie die Website des BizTalk Services-Portals in Internet Explorer den **vertrauenswürdigen Sites** hinzu, damit der zuvor verwendete Pfad gespeichert wird.  
 
 ### <a name="if-you-rename-the-entity-name-of-a-bridge-and-close-the-project-without-saving-changes-opening-the-entity-again-results-in-an-error"></a>Wenn Sie den Entitätsnamen einer Bridge ändern und das Projekt ohne Speichern der Änderungen schließen, tritt beim erneuten Öffnen der Entität ein Fehler auf
 Szenario mit Schritten in der angegebenen Reihenfolge:  

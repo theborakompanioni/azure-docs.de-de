@@ -127,9 +127,9 @@ Ein zusätzliches Zertifikat ist erforderlich, um dem VPN-Gateway für Ihr virtu
 Extrahieren Sie das VPN-Clientkonfigurationspaket, und suchen Sie nach der CER-Datei. Um das Zertifikat zu installieren, führen Sie die folgenden Schritte aus:
 
 1. Öffnen Sie „mmc.exe“.
-2. Fügen Sie das **Zertifikate**-Snap-in hinzu.
-3. Wählen Sie das **Computer**-Konto für den lokalen Computer aus.
-4. Klicken Sie mit der rechten Maustaste auf den Knoten **Vertrauenswürdige Stammzertifizierungsstellen**. Klicken Sie auf **All-Task** (Alle Aufgaben) > **Importieren**, und suchen Sie nach der CER-Datei, die Sie aus dem VPN-Clientkonfigurationspaket extrahiert haben.
+2. Fügen Sie das **Zertifikate** -Snap-in hinzu.
+3. Wählen Sie das **Computer** -Konto für den lokalen Computer aus.
+4. Klicken Sie mit der rechten Maustaste auf den Knoten **Vertrauenswürdige Stammzertifizierungsstellen**. Klicken Sie auf **All-Task** (Alle Aufgaben) >  **Importieren**, und suchen Sie nach der CER-Datei, die Sie aus dem VPN-Clientkonfigurationspaket extrahiert haben.
 5. Starten Sie den Computer neu. 
 6. Versuchen Sie eine erneute Installation des VPN-Clients.
 
