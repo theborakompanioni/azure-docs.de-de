@@ -10,17 +10,17 @@ tags: azure-resource-manager
 ms.assetid: 
 ms.service: virtual-machines-linux
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/08/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1e6f2b9de47d1ce84c4043f5f6e73d462e0c1271
-ms.openlocfilehash: b606d2c3070f8020cdd9aad3f12f8f1e43125138
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: d9849b5e061dd7f2ae0744a3522dc2eb1fb37035
 ms.contentlocale: de-de
-ms.lasthandoff: 06/21/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 
@@ -43,7 +43,7 @@ Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für die
 ## <a name="create-jenkins-instance"></a>Erstellen einer Jenkins-Instanz
 In einem vorherigen Tutorial zum [Anpassen eines virtuellen Linux-Computers beim ersten Start](tutorial-automate-vm-deployment.md) haben Sie erfahren, wie die Anpassung für virtuelle Computer mit cloud-init automatisiert wird. In diesem Tutorial wird eine cloud-init-Datei verwendet, um Jenkins und Docker auf einer VM zu installieren. 
 
-Erstellen Sie eine cloud-init-Datei mit dem Namen *cloud-init-jenkins.txt*, und fügen Sie Folgendes ein:
+Erstellen Sie in der aktuellen Shell eine Datei namens *cloud-init.txt*, und fügen Sie die folgende Konfiguration ein. Erstellen Sie die Datei beispielsweise in Cloud Shell, nicht auf dem lokalen Computer. Geben Sie `sensible-editor cloud-init-jenkins.txt` ein, um die Datei zu erstellen und eine Liste der verfügbaren Editoren anzuzeigen. Stellen Sie sicher, dass die gesamte Datei „cloud-init“ ordnungsgemäß kopiert wird, insbesondere die erste Zeile:
 
 ```yaml
 #cloud-config
@@ -115,6 +115,8 @@ Lassen Sie das `initialAdminPassword` für Ihre Installation anzeigen, und kopie
 sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 ```
 
+Sollte die Datei noch nicht verfügbar sein, warten Sie noch einige Minuten, bis die Installation von Jenkins und Docker abgeschlossen ist.
+
 Öffnen Sie anschließend einen Webbrowser, und gehen Sie zu `http://<publicIps>:8080`. Schließen Sie das anfängliche Jenkins-Setup wie folgt ab:
 
 - Geben Sie das *anfängliche Administratorkennwort* ein, das Sie im vorherigen Schritt von der VM abgerufen haben.
@@ -143,11 +145,11 @@ Erstellen Sie einen Jenkins-Auftrag, damit Jenkins auf ein Ereignis in GitHub, w
 
 Klicken Sie auf Ihrer Jenkins-Website auf der Startseite auf **Create new jobs** (Neue Aufträge erstellen):
 
-- Geben Sie *HelloWorld* als den Namen des Auftrags ein. Wählen Sie **Freestyle Project** aus, und klicken Sie anschließend auf **OK**.
+- Geben Sie *HelloWorld* als den Namen des Auftrags ein. Wählen Sie **Freestyle Project** und anschließend **OK** aus.
 - Wählen Sie im Bereich **Allgemein** das Projekt **GitHub** aus, und geben Sie die URL Ihres verzweigten Repositorys ein. Eine derartige URL kann z.B. so aussehen: *https://github.com/iainfoulds/nodejs-docs-hello-world*
 - Wählen Sie im Bereich **Quellcodeverwaltung** **Git** aus, und geben Sie die *git*-URL Ihres verzweigten Repositorys ein. Eine derartige URL kann z.B. so aussehen: *https://github.com/iainfoulds/nodejs-docs-hello-world.git*
 - Wählen Sie im Bereich **Build Triggers** (Trigger erstellen) die Option **GitHub hook trigger for GITScm polling** (GitHub-Hooktrigger für GITScm-Abruf) aus.
-- Klicken Sie im Bereich **Build** auf **Hinzufügen eines Buildschritts**. Wählen Sie **Execute shell** (Shell ausführen) aus, und geben Sie anschließend `echo "Testing"` im Befehlsfenster ein.
+- Wählen Sie im Abschnitt **Build** die Option **Buildschritt hinzufügen** aus. Wählen Sie **Execute shell** (Shell ausführen) aus, und geben Sie anschließend `echo "Testing"` im Befehlsfenster ein.
 - Klicken Sie unten auf der Auftragsseite auf **Speichern** .
 
 
@@ -157,7 +159,7 @@ Klicken Sie auf Ihrer Jenkins-Website auf der Startseite auf **Create new jobs**
 Kehren Sie zur GitHub-Web-UI zurück, und wählen Sie Ihr verzweigtes Repository aus. Klicken Sie anschließend auf die Datei **index.js**. Klicken Sie auf das Stiftsymbol, um diese Datei zu bearbeiten, sodass in der sechsten Zeile Folgendes steht:
 
 ```nodejs
-response.end("Hello World!");`.
+response.end("Hello World!");
 ```
 
 Klicken Sie auf die Schaltfläche **Commit Changes** (Änderungen übernehmen) am unteren Rand, um die Änderungen zu übernehmen.
@@ -174,7 +176,7 @@ Wechseln Sie von der SSH-Verbindung mit Ihrer VM zum Jenkins-Arbeitsbereichsverz
 cd /var/lib/jenkins/workspace/HelloWorld
 ```
 
-Erstellen Sie eine neue Datei mit dem Namen `Dockerfile` in diesem Arbeitsbereichsverzeichnis, und fügen Sie Folgendes ein:
+Erstellen Sie in diesem Arbeitsbereichsverzeichnis mithilfe von `sudo sensible-editor Dockerfile` eine Datei, und fügen Sie den folgenden Inhalt ein. Stellen Sie sicher, dass die gesamte Dockerfile-Datei ordnungsgemäß kopiert wird, insbesondere die erste Zeile:
 
 ```yaml
 FROM node:alpine
@@ -197,7 +199,7 @@ Kehren Sie zu Ihrer Jenkins-Instanz zurück, und wählen Sie den Auftrag aus, de
 
 - Entfernen Sie den vorhandenen Buildschritt `echo "Test"`. Klicken Sie dazu auf das rote Kreuz in der oberen rechten Ecke des Felds des vorhandenen Buildschritts.
 - Klicken Sie auf **Add build step** (Buildschritt hinzufügen), und wählen Sie anschließend **Execute shell** (Shell ausführen)
-- Geben Sie im **Befehlsfeld** die folgenden Docker-Befehle ein:
+- Geben Sie im Feld **Befehl** die folgenden Docker-Befehle ein, und wählen Sie anschließend **Speichern** aus:
 
   ```bash
   docker build --tag helloworld:$BUILD_NUMBER .
@@ -237,7 +239,7 @@ In diesem Tutorial haben Sie GitHub so konfiguriert, dass es einen Jenkins-Build
 > * ein Docker-Image für Ihre Anwendung erstellen können
 > * überprüfen können, ob GitHub-Commits neue Docker-Images und -Updates für die ausgeführte Anwendung erstellen
 
-Folgen Sie diesem Link, um sich vordefinierte Skriptbeispiele für virtuelle Computer anzusehen.
+Im nächsten Tutorial erhalten Sie Informationen zum Integrieren von Jenkins in Visual Studio Team Services.
 
 > [!div class="nextstepaction"]
-> [Virtueller Linux-Computer – Skriptbeispiele](./cli-samples.md)
+> [Bereitstellen Ihrer App auf virtuellen Linux-Computern mithilfe von Jenkins und Team Services](tutorial-build-deploy-jenkins.md)

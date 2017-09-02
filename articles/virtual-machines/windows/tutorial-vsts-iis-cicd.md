@@ -1,6 +1,6 @@
 ---
 title: Erstellen einer CI/CD-Pipeline in Azure mit Team Services | Microsoft-Dokumentation
-description: "Erfahren Sie, wie Sie eine Visual Studio Team Services-Pipeline für Continuous Integration und Delivery erstellen, die eine Web-App in IIS auf einem virtuellen Windows-Computer bereitstellt."
+description: "Erfahren Sie, wie Sie eine Visual Studio Team Services-Pipeline für Continuous Integration und Continuous Delivery erstellen, die eine Web-App in IIS auf einem virtuellen Windows-Computer bereitstellt."
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: iainfoulds
@@ -16,16 +16,16 @@ ms.workload: infrastructure
 ms.date: 05/12/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
-ms.openlocfilehash: b4074c67c7a8214f8e103385d5aea75f019d2da6
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: a587f58fad2ec74c7633823c4d34f900e7c01f7e
 ms.contentlocale: de-de
-ms.lasthandoff: 05/12/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 
 # <a name="create-a-continuous-integration-pipeline-with-visual-studio-team-services-and-iis"></a>Erstellen einer Continuous Integration-Pipeline mit Visual Studio Team Services und IIS
-Sie können zum Automatisieren der Erstellungs-, Test- und Bereitstellungphasen der Anwendungsentwicklung eine Pipeline für Continuous Integration und Deployment (CI/CD) verwenden. In diesem Tutorial erstellen Sie eine CI/CD-Pipeline mit Visual Studio Team Services sowie einen virtuellen Windows-Computer in Azure, auf dem IIS ausgeführt wird. Folgendes wird vermittelt:
+Sie können zum Automatisieren der Erstellungs-, Test- und Bereitstellungsphasen der Anwendungsentwicklung eine Pipeline für Continuous Integration und Continuous Deployment (CI/CD) verwenden. In diesem Tutorial erstellen Sie eine CI/CD-Pipeline mit Visual Studio Team Services und einem virtuellen Windows-Computer in Azure, auf dem IIS ausgeführt wird. Folgendes wird vermittelt:
 
 > [!div class="checklist"]
 > * Veröffentlichen einer ASP.NET-Webanwendung in einem Team Services-Projekt
@@ -43,50 +43,50 @@ Visual Studio Team Services ermöglicht eine einfache Zusammenarbeit und Entwick
 
 Erstellen Sie zum Verwalten des Codecommitprozesses, der Builddefinitionen und der Releasedefinitionen wie folgt ein Projekt in Team Services:
 
-1. Öffnen Sie Ihr Team Services-Dashboard in einem Webbrowser, und wählen Sie **Neues Projekt**.
+1. Öffnen Sie Ihr Team Services-Dashboard in einem Webbrowser, und klicken Sie auf **Neues Projekt**.
 2. Geben Sie für **Projektname** den Namen *myWebApp* ein. Übernehmen Sie alle anderen Standardwerte, um die *Git*-Versionskontrolle und den Arbeitselementprozess *Agile* zu verwenden.
 3. Wählen Sie die Option für **die Freigabe** für *Teammitglieder*, und wählen Sie anschließend **Erstellen**.
 5. Nachdem das Projekt erstellt wurde, wählen Sie die Option **Initialize with a README or gitignore** (Mit einer INFODATEI oder gitignore initialisieren) und anschließend **Initialisieren**.
-6. Wählen Sie im neuen Projekt im oberen Bereich **Dashboards** und anschließend **In Visual Studio öffnen**.
+6. Klicken Sie im neuen Projekt im oberen Bereich auf **Dashboards** und anschließend auf **In Visual Studio öffnen**.
 
 
 ## <a name="create-aspnet-web-application"></a>Erstellen einer ASP.NET-Webanwendung
 Im vorherigen Schritt haben Sie ein Projekt in Team Services erstellt. Im letzten Schritt wird Ihr neues Projekt in Visual Studio geöffnet. Sie verwalten Ihre Codecommits im **Team Explorer**-Fenster. Erstellen Sie eine lokale Kopie des neuen Projekts und anschließend wie folgt eine ASP.NET-Webanwendung aus einer Vorlage:
 
-1. Wählen Sie **Klonen**, um ein lokales Git-Repository Ihres Team Services-Projekts zu erstellen.
+1. Klicken Sie auf **Klonen**, um ein lokales Git-Repository Ihres Team Services-Projekts zu erstellen.
     
     ![Klonen eines Repositorys aus dem Team Services-Projekt](media/tutorial-vsts-iis-cicd/clone_repo.png)
 
-2. Wählen Sie unter **Projektmappen** die Option **Neu**.
+2. Klicken Sie unter **Projektmappen** auf **Neu**.
 
     ![Erstellen der Projektmappe für die Webanwendung](media/tutorial-vsts-iis-cicd/new_solution.png)
 
 3. Wählen Sie die **Webvorlagen** und dann die Vorlage für die **ASP.NET-Webanwendung** aus.
     1. Geben Sie einen Namen für Ihre Anwendung ein, z.B. *myWebApp*, und deaktivieren Sie das Kontrollkästchen für **Projektmappenverzeichnis erstellen**.
-    2. Wenn die Option verfügbar ist, deaktivieren Sie das Kontrollkästchen **Application Insights zum Projekt hinzufügen**. Application Insights setzt voraus, dass Sie Ihre Webanwendung mit Azure Application Insights autorisieren. Überspringen Sie zur Vereinfachung dieses Tutorials diesen Prozess.
+    2. Wenn die Option verfügbar ist, deaktivieren Sie das Kontrollkästchen **Application Insights zum Projekt hinzufügen**. Application Insights setzt voraus, dass Sie Ihre Webanwendung bei Azure Application Insights autorisieren. Überspringen Sie zur Vereinfachung dieses Tutorials diesen Prozess.
     3. Klicken Sie auf **OK**.
 4. Wählen Sie in der Vorlagenliste **MVC** aus.
-    1. Wählen Sie nacheinander **Authentifizierung ändern**, **Keine Authentifizierung** und **OK**.
-    2. Wählen Sie **OK**, um die Projektmappe zu erstellen.
-5. Wählen Sie im **Team Explorer**-Fenster die Option **Änderungen**.
+    1. Klicken Sie nacheinander auf **Authentifizierung ändern**, **Keine Authentifizierung** und **OK**.
+    2. Klicken Sie auf **OK**, um die Projektmappe zu erstellen.
+5. Klicken Sie im **Team Explorer**-Fenster auf **Änderungen**.
 
     ![Übernehmen lokaler Änderungen am Team Services-Git-Repository](media/tutorial-vsts-iis-cicd/commit_changes.png)
 
-6. Geben Sie in das Textfeld für den Commit eine Nachricht ein, beispielsweise *Commit initialisieren*. Wählen Sie im Dropdownmenü die Option **Commit für alle und Sync**.
+6. Geben Sie in das Textfeld für den Commit eine Nachricht ein, beispielsweise *Commit initialisieren*. Wählen Sie im Dropdownmenü die Option **Commit für alle und Sync** aus.
 
 
 ## <a name="create-build-definition"></a>Erstellen einer Builddefinition
 In Team Services geben Sie mithilfe einer Builddefinition an, wie Ihre Anwendung erstellt werden soll. In diesem Tutorial erstellen wir eine grundlegende Definition, die den Quellcode verwendet und die Projektmappe und dann das Webbereitstellungspaket erstellt, mit dem wir die Web-App auf einem IIS-Server ausführen können.
 
-1. Wählen Sie in Ihrem Team Services-Projekt im oberen Bereich **Build und Release** und anschließend **Builds**.
-3. Wählen Sie **+ Neue Definition**.
+1. Klicken Sie in Ihrem Team Services-Projekt im oberen Bereich auf **Build und Release** und anschließend auf **Builds**.
+3. Klicken Sie auf **+ Neue Definition**.
 4. Wählen Sie die Vorlage **ASP.NET (VORSCHAU)** und anschließend **Übernehmen**.
 5. Übernehmen Sie alle Standardaufgabenwerte. Vergewissern Sie sich unter **Get sources** (Quellen abrufen), dass das Repository *myWebApp* und die *Hauptverzweigung* ausgewählt sind.
 
     ![Erstellen einer Builddefinition im Team Services-Projekt](media/tutorial-vsts-iis-cicd/create_build_definition.png)
 
 6. Schieben Sie auf der Registerkarte **Trigger** den Schieberegler für **Diesen Auslöser aktivieren** auf *Aktiviert*.
-7. Speichern Sie die Builddefinition, und stellen Sie einen neuen Build in die Warteschlange, indem Sie **Speichern und in Warteschlange einreihen** und dann erneut **Speichern und in Warteschlange einreihen** auswählen. Übernehmen Sie die Standardwerte, und wählen Sie **Warteschlange**.
+7. Speichern Sie die Builddefinition, und stellen Sie einen neuen Build in die Warteschlange, indem Sie **Speichern und in Warteschlange einreihen** und dann erneut **Speichern und in Warteschlange einreihen** auswählen. Übernehmen Sie die Standardwerte, und klicken Sie auf **Warteschlange**.
 
 Sie können zusehen, wie der Build auf einem gehosteten Agent geplant und dann erstellt wird. Die Ausgabe sieht in etwa wie das folgende Beispiel aus:
 
@@ -135,20 +135,20 @@ Install-WindowsFeature Web-Server,Web-Asp-Net45,NET-Framework-Features
 
 
 ## <a name="create-deployment-group"></a>Erstellen einer Bereitstellungsgruppe
-Zum Übertragen des Webbereitstellungspaket an den IIS-Server per Pushvorgang definieren Sie eine Bereitstellungsgruppe in Team Services. Mit dieser Gruppe können Sie angeben, welche Server als Ziel der neuen Builds verwendet werden, wenn Sie für Ihren Code einen Commit in Team Services ausführen und Builds abgeschlossen werden.
+Zum Übertragen des Webbereitstellungspakets an den IIS-Server per Pushvorgang definieren Sie eine Bereitstellungsgruppe in Team Services. Mit dieser Gruppe können Sie angeben, welche Server als Ziel der neuen Builds verwendet werden, wenn Sie für Ihren Code einen Commit in Team Services ausführen und Builds abgeschlossen werden.
 
-1. Wählen Sie in Team Services **Build und Release**, und wählen Sie dann **Bereitstellungsgruppen**.
-2. Wählen Sie **Bereitstellungsgruppe hinzufügen**.
-3. Geben Sie einen Namen für die Gruppe an, z.B. *myIIS*, und wählen Sie dann **Erstellen**.
+1. Klicken Sie in Team Services auf **Build und Release** und dann auf **Bereitstellungsgruppen**.
+2. Klicken Sie auf **Bereitstellungsgruppe hinzufügen**.
+3. Geben Sie einen Namen für die Gruppe an, z.B. *myIIS*, und klicken Sie dann auf **Erstellen**.
 4. Vergewissern Sie sich im Abschnitt **Computer registrieren**, dass *Windows* ausgewählt ist, und aktivieren Sie das Kästchen **Use a personal access token in the script for authentication** (Persönliches Zugriffstoken im Skript zur Authentifizierung verwenden).
-5. Wählen Sie **Copy script to clipboard** (Skript in Zwischenablage kopieren).
+5. Klicken Sie auf **Copy script to clipboard** (Skript in Zwischenablage kopieren).
 
 
 ### <a name="add-iis-vm-to-the-deployment-group"></a>Hinzufügen des virtuellen IIS-Computers zur Bereitstellungsgruppe
 Fügen Sie nach Erstellung der Bereitstellungsgruppe die einzelnen IIS-Instanzen zur Gruppe hinzu. Team Services generiert ein Skript, das auf dem virtuellen Computer einen Agent herunterlädt und konfiguriert, der wiederum neue Webbereitstellungspakete empfängt und dann auf IIS anwendet.
 
-1. Fügen Sie zurück in der **PowerShell-Administratorsitzung** auf dem virtuellen Computer das aus Team Services kopierte Skript ein, und führen Sie es aus.
-2. Wenn Sie aufgefordert werden, Tags für den Agent zu konfigurieren, wählen Sie *J*, und geben Sie *Web* ein.
+1. Kehren Sie zurück zur **PowerShell-Administratorsitzung** auf dem virtuellen Computer, fügenSie dort das aus Team Services kopierte Skript ein, und führen Sie es aus.
+2. Wenn Sie aufgefordert werden, Tags für den Agent zu konfigurieren, klicken Sie auf *J*, und geben Sie *Web* ein.
 3. Wenn Sie zur Eingabe des Benutzerkontos aufgefordert werden, drücken Sie die *EINGABETASTE* , um die Standardwerte zu übernehmen.
 4. Warten Sie, bis die Ausführung des Skripts mit der Meldung *Service vstsagent.account.computername started successfully* (Dienst „vstsagent.account.computername“ wurde erfolgreich gestartet.) abgeschlossen wird.
 5. Öffnen Sie im Menü **Build und Release** auf der Seite **Bereitstellungsgruppen** die Bereitstellungsgruppe *myIIS*. Überprüfen Sie auf der Registerkarte **Computer**, ob Ihr virtueller Computer aufgeführt ist.
@@ -159,35 +159,35 @@ Fügen Sie nach Erstellung der Bereitstellungsgruppe die einzelnen IIS-Instanzen
 ## <a name="create-release-definition"></a>Erstellen einer Releasedefinition
 Erstellen Sie zum Veröffentlichen Ihrer Builds eine Releasedefinition in Team Services. Diese Definition wird bei der erfolgreichen Erstellung Ihrer Anwendung automatisch ausgelöst. Sie wählen die Bereitstellungsgruppe aus, an die Ihr Webbereitstellungspaket per Push übertragen werden soll, und definieren die entsprechenden IIS-Einstellungen.
 
-1. Wählen Sie **Build und Release** und dann **Builds**. Wählen Sie die Builddefinition, die Sie in einem vorherigen Schritt erstellt haben.
-2. Wählen Sie unter **Kürzlich abgeschlossen** den zuletzt abgeschlossenen Build aus, und wählen Sie dann **Release**.
-3. Wählen Sie **Ja**, um eine Releasedefinition zu erstellen.
+1. Klicken Sie auf **Build und Release** und dann auf **Builds**. Wählen Sie die Builddefinition, die Sie in einem vorherigen Schritt erstellt haben.
+2. Wählen Sie unter **Kürzlich abgeschlossen** den zuletzt abgeschlossenen Build aus, und klicken Sie dann auf **Release**.
+3. Klicken Sie auf **Ja**, um eine Releasedefinition zu erstellen.
 4. Wählen Sie die Vorlage **Leer** und dann **Weiter**.
 5. Überprüfen Sie, ob das Projekt und die Quellbuilddefinition mit Ihrem Projekt ausgefüllt werden.
-6. Aktivieren Sie das Kontrollkästchen **Continuous Deployment**, und wählen Sie dann **Erstellen**.
-7. Wählen Sie das Dropdownfeld neben **+ Aufgaben hinzufügen** und dann *Bereitstellungsgruppenphase hinzufügen*.
+6. Aktivieren Sie das Kontrollkästchen **Continuous Deployment**, und klicken Sie dann auf **Erstellen**.
+7. Klicken Sie auf das Dropdownfeld neben **+ Aufgaben hinzufügen** und dann auf *Bereitstellungsgruppenphase hinzufügen*.
     
     ![Hinzufügen einer Aufgabe zu einer Releasedefinition in Team Services](media/tutorial-vsts-iis-cicd/add_release_task.png)
 
-8. Wählen Sie neben **IIS Web App Deploy(Preview)** (IIS-Web-App-Bereitstellung (Vorschau)) die Option **Hinzufügen** und danach **Schließen**.
+8. Klicken Sie neben **IIS Web App Deploy(Preview)** (IIS-Web-App-Bereitstellung (Vorschau)) auf **Hinzufügen** und danach auf **Schließen**.
 9. Wählen Sie die übergeordnete Aufgabe **Für Bereitstellungsgruppe ausführen**.
     1. Wählen Sie für **Bereitstellungsgruppe** die zuvor erstellte Bereitstellungsgruppe, z.B. *myIIS*.
-    2. Wählen Sie im Feld **Computertags** die Option **Hinzufügen** und dann das Tag *Web*.
+    2. Klicken Sie im Feld **Computertags** auf **Hinzufügen**, und wählen Sie dann das Tag *Web* aus.
     
     ![Bereitstellungsgruppe der Releasedefinition für IIS](media/tutorial-vsts-iis-cicd/release_definition_iis.png)
  
 11. Wählen Sie die Aufgabe **Deploy: IIS Web App Deploy** (Bereitstellen: IIS-Web-App-Bereitstellung), um die Einstellungen der IIS-Instanz wie folgt zu konfigurieren:
     1. Geben Sie unter **Websitename** den Namen *Standardwebsite* ein.
     2. Übernehmen Sie alle anderen Standardeinstellungen.
-12. Wählen Sie **Speichern** und anschließend zweimal **OK**.
+12. Klicken Sie auf **Speichern** und anschließend zweimal auf **OK**.
 
 
 ## <a name="create-a-release-and-publish"></a>Erstellen und Veröffentlichen eines Release
 Sie können nun Ihr Webbereitstellungspaket als neues Release übertragen. In diesem Schritt erfolgt die Kommunikation mit dem Agent der einzelnen Instanzen, die Teil der Bereitstellungsgruppe sind. Darüber hinaus wird das Webbereitstellungspaket übertragen und IIS zur Ausführung der aktualisierten Webanwendung konfiguriert.
 
-1. Wählen Sie in Ihrer Releasedefinition **+ Release** und anschließend **Release erstellen**.
+1. Klicken Sie in Ihrer Releasedefinition auf **+ Release** und anschließend auf **Release erstellen**.
 2. Stellen Sie sicher, dass in der Dropdownliste der aktuelle Build und **Automatisierte Bereitstellung: nach der Releaseerstellung** ausgewählt sind. Klicken Sie auf **Erstellen**.
-3. Im oberen Bereich der Releasedefinition wird ein kleines Banner angezeigt, etwa *Release „Release-1“ wurde erstellt*. Wählen Sie den Releaselink aus.
+3. Im oberen Bereich der Releasedefinition wird ein kleines Banner angezeigt, etwa *Release "Release-1" wurde erstellt*. Klicken Sie auf den Releaselink.
 4. Öffnen Sie die Registerkarte **Protokolle**, um den Releasestatus anzuzeigen.
     
     ![Erfolgreiche Übertragung des Team Services-Release und -Webbereitstellungspakets](media/tutorial-vsts-iis-cicd/successful_release.png)
@@ -207,14 +207,14 @@ Ihre Webanwendung wird unter IIS ausgeführt. Testen Sie nun die gesamte CI/CD-P
     `<h1>ASP.NET with VSTS and CI/CD!</h1>`
 
 4. Speichern Sie die Datei.
-5. Öffnen Sie das **Team Explorer**-Fenster, wählen Sie das Projekt *myWebApp* aus, und wählen Sie dann **Änderungen**.
+5. Öffnen Sie das **Team Explorer**-Fenster, wählen Sie das Projekt *myWebApp* aus, und klicken Sie dann auf **Änderungen**.
 6. Geben Sie eine Commitnachricht ein, z.B. *Testen der CI/CD-Pipeline*, und wählen Sie dann im Dropdownmenü **Commit für alle und Sync**.
 7. In einem Team Services-Arbeitsbereich wird durch den Codecommit ein neuer Build ausgelöst. 
-    - Wählen Sie **Build und Release** und dann **Builds**. 
+    - Klicken Sie auf **Build und Release** und dann auf **Builds**. 
     - Wählen Sie Ihre Builddefinition aus, und wählen Sie dann den Build **Queued & running** (In der Warteschlange und ausgeführt), um den Status des Builds zu überwachen.
 9. Nachdem der Build erfolgreich erstellt wurde, wird ein neues Release ausgelöst.
-    - Wählen Sie **Build und Release** und dann **Releases**, um das Webbereitstellungspaket per Push an den virtuellen IIS-Computer zu übertragen. 
-    - Wählen Sie das Symbol **Aktualisieren**, um den Status zu aktualisieren. Wenn in der Spalte *Umgebungen* ein grünes Häkchen angezeigt wird, wurde das Release erfolgreich in IIS bereitgestellt.
+    - Klicken Sie auf **Build und Release** und dann auf **Releases**, um das Webbereitstellungspaket per Push an den virtuellen IIS-Computer zu übertragen. 
+    - Klicken Sie auf das Symbol **Aktualisieren**, um den Status zu aktualisieren. Wenn in der Spalte *Umgebungen* ein grünes Häkchen angezeigt wird, wurde das Release erfolgreich in IIS bereitgestellt.
 11. Aktualisieren Sie die IIS-Website in einem Browser, um die Änderungen zu übernehmen.
 
     ![ASP.NET-Web-App, die über die CI/CD-Pipeline auf dem virtuellen IIS-Computer ausgeführt wird](media/tutorial-vsts-iis-cicd/running_web_app_cicd.png)
@@ -232,7 +232,7 @@ In diesem Tutorial haben Sie eine ASP.NET-Webanwendung in Team Services erstellt
 > * Erstellen einer Releasedefinition zum Veröffentlichen neuer Webbereitstellungspakete in IIS
 > * Testen der CI/CD-Pipeline
 
-Folgen Sie diesem Link, um vordefinierte Skriptbeispiele für virtuelle Computer anzusehen.
+Im nächsten Tutorial erfahren Sie, wie Sie einen Webserver mit SSL-Zertifikaten sichern.
 
 > [!div class="nextstepaction"]
-> [Virtueller Azure-Computer – PowerShell-Beispiele](./powershell-samples.md)
+> [Sichern von Webservern mit SSL](tutorial-secure-web-server.md)

@@ -9,54 +9,68 @@ editor:
 ms.assetid: 
 ms.service: storage
 ms.devlang: multiple
-ms.topic: release-notes
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/31/2017
 ms.author: cawa
 ms.translationtype: HT
-ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
-ms.openlocfilehash: 3525661bd55aead07ce8d97464ba16393d28c04c
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 63a24f6b153390533bba0888fd1051508c65bf6e
 ms.contentlocale: de-de
-ms.lasthandoff: 08/02/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="microsoft-azure-storage-explorer-preview-release-notes"></a>Versionshinweise für Microsoft Azure-Speicher-Explorer (Vorschauversion)
 
-Dieser Artikel enthält die Versionshinweise für Azure-Speicher-Explorer 0.8.15 (Vorschauversion) sowie die Versionshinweise für frühere Versionen.
+Dieser Artikel enthält die Versionshinweise für Azure-Speicher-Explorer 0.8.16 (Vorschauversion) sowie die Versionshinweise für frühere Versionen.
 
 Bei der [Vorschauversion des Microsoft Azure-Speicher-Explorers](./vs-azure-tools-storage-manage-with-storage-explorer.md) handelt es sich um eine eigenständige App, über die Sie unter Windows, MacOS und Linux komfortabel mit Azure Storage-Daten arbeiten können.
 
-## <a name="version-0815-preview"></a>Version 0.8.15 (Vorschauversion)
-13.07.2017
+## <a name="version-0816-preview"></a>Version 0.8.16 (Vorschauversion)
+21.08.2017
 
-### <a name="download-azure-storage-explorer-0815-preview"></a>Herunterladen des Azure-Speicher-Explorers 0.8.15 (Vorschauversion)
-- [Azure-Speicher-Explorer 0.8.15 (Vorschauversion) für Windows](https://go.microsoft.com/fwlink/?LinkId=708343)
-- [Azure-Speicher-Explorer 0.8.15 (Vorschauversion) für Macintosh](https://go.microsoft.com/fwlink/?LinkId=708342)
-- [Azure-Speicher-Explorer 0.8.15 (Vorschauversion) für Linux](https://go.microsoft.com/fwlink/?LinkId=722418)
+### <a name="download-azure-storage-explorer-0816-preview"></a>Herunterladen des Azure-Speicher-Explorers 0.8.16 (Vorschauversion)
+- [Azure-Speicher-Explorer 0.8.16 (Vorschauversion) für Windows](https://go.microsoft.com/fwlink/?LinkId=708343)
+- [Azure-Speicher-Explorer 0.8.16 (Vorschauversion) für Mac](https://go.microsoft.com/fwlink/?LinkId=708342)
+- [Azure-Speicher-Explorer 0.8.16 (Vorschauversion) für Linux](https://go.microsoft.com/fwlink/?LinkId=722418)
 
 ### <a name="new"></a>Neu
+* Beim Öffnen eines Blobs fordert Speicher-Explorer Sie zum Hochladen der heruntergeladenen Datei auf, wenn eine Änderung erkannt wird
+* Verbesserter Azure Stack-Anmeldevorgang
+* Die Leistung beim gleichzeitigen Hochladen/Herunterladen zahlreicher kleiner Dateien wurde verbessert.
 
-* Verbesserte Leistung beim Hoch- und Herunterladen von Blobs.
-* Verbesserte Situation bei in Konflikt stehenden Dateien beim Hoch- und Herunterladen von Blobs.
-* Verbesserte Anzeige von Fehlern im Aktivitätsprotokoll während des Hoch- und Herunterladens von Blobs.
-* Vergrößerte maximale Größe für das Hoch- und Herunterladen von Blobs auf 8 TB für Seitenblobs und ~4,7 TB für Blockblobs.
 
-### <a name="known-issues"></a>Bekannte Probleme
+### <a name="fixes"></a>Fehlerbehebungen
+* Bei einigen Blobtypen führt die Auswahl von „Ersetzen“ während eines Uploadkonflikts manchmal zu einem Neustart des Uploads. 
+* In Version 0.8.15 wurden Uploads manchmal bei 99 Prozent angehalten.
+* Beim Hochladen von Dateien in eine Dateifreigabe trat beim Upload ein Fehler auf, wenn Sie ein noch nicht vorhandenes Verzeichnis ausgewählt haben.
+* Speicher-Explorer hat falsche Zeitstempel für Shared Access Signatures und Tabellenabfragen generiert.
 
-* Nach dem Klicken auf „Abbrechen“ für eine Aufgabe kann es eine Weile dauern, bis die betreffende Aufgabe abgebrochen wird. Dies ist eine [Einschränkung der Azure Storage-Knotenbibliothek](https://github.com/Azure/azure-storage-node/issues/317).
-* Nach dem Abschluss des Blob-Uploads wird die Registerkarte aktualisiert, von der der Upload initiiert wurde. Dies ist eine Änderung gegenüber dem früheren Verhalten; sie bewirkt zudem, dass Sie wieder in das Stammverzeichnis des Containers gelangen, in dem Sie sich befinden. 
-* Wenn Sie die falsche PIN/das falsche Smartcard-Zertifikat auswählen, müssen Sie Speicher-Explorer neu starten, damit diese Entscheidung unwirksam gemacht wird.
-* Im Panel mit den Kontoeinstellungen wird unter Umständen angezeigt, dass Sie Anmeldeinformationen erneut eingeben müssen, um Abonnements zu filtern.
+
+Bekannte Probleme
+* Derzeit kann keine Verbindungszeichenfolge mit Name und Schlüssel verwendet werden. Dies wird im nächsten Release behoben. Bis dahin können Sie die Anfügefunktion mit Name und Schlüssel verwenden.
+* Wenn Sie versuchen, eine Datei mit einem ungültigen Windows-Dateinamen zu öffnen, wird für den Download der Fehler „Datei nicht gefunden“ angezeigt.
+* Nach dem Klicken auf „Abbrechen“ für eine Aufgabe kann es eine Weile dauern, bis die betreffende Aufgabe abgebrochen wird. Dies ist eine Einschränkung der Azure Storage-Knotenbibliothek.
+* Nach dem Abschluss des Blob-Uploads wird die Registerkarte aktualisiert, von der der Upload initiiert wurde. Dies ist eine Änderung gegenüber dem früheren Verhalten; sie bewirkt zudem, dass Sie wieder in das Stammverzeichnis des Containers gelangen, in dem Sie sich befinden.
+* Wenn Sie die falsche PIN/das falsche Smartcard-Zertifikat auswählen, müssen Sie einen Neustart ausführen, damit diese Entscheidung in Speicher-Explorer unwirksam gemacht wird.
+* Im Bereich mit den Kontoeinstellungen wird unter Umständen angezeigt, dass Sie Anmeldeinformationen erneut eingeben müssen, um Abonnements zu filtern.
 * Beim Umbenennen von Blobs (einzeln oder in einem umbenannten Blobcontainer) werden Momentaufnahmen nicht beibehalten. Alle anderen Eigenschaften und Metadaten für Blobs, Dateien und Entitäten werden beim Umbenennen beibehalten.
 * Obwohl Azure Stack derzeit keine Dateifreigaben unterstützt, wird dennoch ein Knoten „Dateifreigaben“ unter einem angefügten Azure Stack-Speicherkonto angezeigt.
-* Für die Ubuntu 14.04-Installation muss ein Update oder Upgrade der gcc-Version ausgeführt werden – Schritte zum Ausführen eines Upgrades finden Sie unten: 
-    * sudo add-apt-repository ppa:ubuntu-toolchain-r/test
-    * sudo apt-get update
-    * sudo apt-get upgrade
-    * sudo apt-get dist-upgrade
-* Für Benutzer unter Ubuntu 17.04 müssen Sie GConf installieren; hierzu können Sie die folgenden Befehle ausführen und anschließend Ihren Computer neu starten: 
-    * sudo apt-get install libgconf-2-4
+* Für Benutzer unter Ubuntu 14.04 müssen Sie sicherstellen, dass GCC auf dem neuesten Stand ist. Hierzu können Sie die folgenden Befehle ausführen und anschließend Ihren Computer neu starten:
+
+    ```
+    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get dist-upgrade
+    ```
+
+* Für Benutzer unter Ubuntu 17.04 müssen Sie GConf installieren; hierzu können Sie die folgenden Befehle ausführen und anschließend Ihren Computer neu starten:
+
+    ```
+    sudo apt-get install libgconf-2-4
+    ```
 
 ## <a name="version-0814-preview"></a>Version 0.8.14 (Vorschauversion)
 22.06.2017
@@ -82,10 +96,16 @@ Bei der [Vorschauversion des Microsoft Azure-Speicher-Explorers](./vs-azure-tool
 * Beim Umbenennen von Blobs (einzeln oder in einem umbenannten Blobcontainer) werden Momentaufnahmen nicht beibehalten. Alle anderen Eigenschaften und Metadaten für Blobs, Dateien und Entitäten werden beim Umbenennen beibehalten.
 * Obwohl Azure Stack derzeit keine Dateifreigaben unterstützt, wird dennoch ein Knoten „Dateifreigaben“ unter einem angefügten Azure Stack-Speicherkonto angezeigt. 
 * Für die Ubuntu 14.04-Installation muss ein Update oder Upgrade der gcc-Version ausgeführt werden – Schritte zum Ausführen eines Upgrades finden Sie unten:
-    * sudo add-apt-repository ppa:ubuntu-toolchain-r/test
-    * sudo apt-get update
-    * sudo apt-get upgrade
-    * sudo apt-get dist-upgrade
+
+    ```
+    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get dist-upgrade
+    ```
+
+
+
 
 ## <a name="previous-releases"></a>Vorgängerversionen
 
@@ -104,6 +124,7 @@ Bei der [Vorschauversion des Microsoft Azure-Speicher-Explorers](./vs-azure-tool
 * [Version 0.7.20160129.1](#version-07201601291)
 * [Version 0.7.20160105.0](#version-07201601050)
 * [Version 0.7.20151116.0](#version-07201511160)
+
 
 ### <a name="version-0813"></a>Version 0.8.13
 05/12/2017
@@ -131,10 +152,14 @@ Bei der [Vorschauversion des Microsoft Azure-Speicher-Explorers](./vs-azure-tool
 * Beim Umbenennen von Blobs (einzeln oder in einem umbenannten Blobcontainer) werden Momentaufnahmen nicht beibehalten. Alle anderen Eigenschaften und Metadaten für Blobs, Dateien und Entitäten werden beim Umbenennen beibehalten.
 * Obwohl Azure Stack derzeit keine Dateifreigaben unterstützt, wird dennoch ein Knoten „Dateifreigaben“ unter einem angefügten Azure Stack-Speicherkonto angezeigt. 
 * Für die Ubuntu 14.04-Installation muss ein Update oder Upgrade der gcc-Version ausgeführt werden – Schritte zum Ausführen eines Upgrades finden Sie unten:
-    * sudo add-apt-repository ppa:ubuntu-toolchain-r/test
-    * sudo apt-get update
-    * sudo apt-get upgrade
-    * sudo apt-get dist-upgrade
+
+    ```
+    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get dist-upgrade
+    ```
+
 
 ### <a name="version-0812--0811--0810"></a>Version 0.8.12 / 0.8.11 / 0.8.10
 07.04.2017
@@ -170,10 +195,14 @@ Bei der [Vorschauversion des Microsoft Azure-Speicher-Explorers](./vs-azure-tool
 * Beim Umbenennen von Blobs (einzeln oder in einem umbenannten Blobcontainer) werden Momentaufnahmen nicht beibehalten. Alle anderen Eigenschaften und Metadaten für Blobs, Dateien und Entitäten werden beim Umbenennen beibehalten.
 * Obwohl Azure Stack derzeit keine Dateifreigaben unterstützt, wird dennoch ein Knoten „Dateifreigaben“ unter einem angefügten Azure Stack-Speicherkonto angezeigt. 
 * Für die Ubuntu 14.04-Installation muss ein Update oder Upgrade der gcc-Version ausgeführt werden – Schritte zum Ausführen eines Upgrades finden Sie unten:
-    * sudo add-apt-repository ppa:ubuntu-toolchain-r/test
-    * sudo apt-get update
-    * sudo apt-get upgrade
-    * sudo apt-get dist-upgrade
+
+    ```
+    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get dist-upgrade
+    ```
+
 
 ### <a name="version-089--088"></a>Version 0.8.9 / 0.8.8
 23.02.2017

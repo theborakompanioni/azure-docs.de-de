@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/10/2017
 ms.author: radwiv;chadmat;genli
-translationtype: Human Translation
-ms.sourcegitcommit: 0d9afb1554158a4d88b7f161c62fa51c1bf61a7d
-ms.openlocfilehash: 7dfc5160a0ede19b4317a39187f0f864b037141b
-ms.lasthandoff: 04/12/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 2e0347854b5d30c955a50a01d6f7ba08e24f94b6
+ms.contentlocale: de-de
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>Überprüfen des VPN-Durchsatzes zu einem virtuellen Netzwerk
@@ -48,11 +48,11 @@ Das folgende Diagramm zeigt die logische Verbindung von einem lokalen Netzwerk m
 
 ## <a name="calculate-the-maximum-expected-ingressegress"></a>Berechnen des maximal erwarteten Eingangs/Ausgangs
 
-1.    Bestimmen Sie die Grundvoraussetzungen für den Durchsatz Ihrer Anwendung.
-2.    Bestimmen Sie die Durchsatzlimits für Ihr Azure VPN Gateway. Hilfe finden Sie im Abschnitt „Aggregieren des Durchsatzes nach SKU und VPN-Typ“ unter [Planung und Entwurf für VPN Gateway](vpn-gateway-plan-design.md).
-3.    Bestimmen Sie die [Durchsatzanleitung des virtuellen Azure-Computers](../virtual-machines/virtual-machines-windows-sizes.md) für die Größe Ihres virtuellen Computers.
-4.    Bestimmen Sie die Bandbreite Ihres Internetdienstanbieters.
-5.    Berechnen Sie Ihren erwarteten Durchsatz – Niedrigste Bandbreite von (virtueller Computer, Gateway, Internetdienstanbieter) * 0,8.
+1.  Bestimmen Sie die Grundvoraussetzungen für den Durchsatz Ihrer Anwendung.
+2.  Bestimmen Sie die Durchsatzlimits für Ihr Azure VPN Gateway. Hilfe finden Sie im Abschnitt „Aggregieren des Durchsatzes nach SKU und VPN-Typ“ unter [Planung und Entwurf für VPN Gateway](vpn-gateway-plan-design.md).
+3.  Bestimmen Sie die [Durchsatzanleitung des virtuellen Azure-Computers](../virtual-machines/virtual-machines-windows-sizes.md) für die Größe Ihres virtuellen Computers.
+4.  Bestimmen Sie die Bandbreite Ihres Internetdienstanbieters.
+5.  Berechnen Sie Ihren erwarteten Durchsatz – Niedrigste Bandbreite von (virtueller Computer, Gateway, Internetdienstanbieter) * 0,8.
 
 Wenn der berechnete Durchsatz nicht die Grundvoraussetzungen für den Durchsatz Ihrer Anwendung erfüllt, müssen Sie die Bandbreite der Ressource erhöhen, die Sie als Engpass identifiziert haben. Informationen zum Ändern der Größe für ein Azure VPN Gateway finden Sie unter [Ändern einer Gateway-SKU](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md#gwsku). Informationen zum Ändern der Größe eines virtuellen Computers finden Sie unter [Ändern der Größe eines virtuellen Computers](../virtual-machines/virtual-machines-windows-resize-vm.md). Wenn Sie nicht die erwartete Internetbandbreite erhalten, sollten Sie sich auch an Ihren Internetdienstanbieter wenden.
 
@@ -89,7 +89,7 @@ Laden Sie [iPerf](https://iperf.fr/download/iperf_3.1/iperf-3.1.2-win64.zip) her
     netsh advfirewall firewall delete rule name="Open Port 5001" protocol=TCP localport=5001
     ```
     </br>
-    **Azure Linux**: Azure Linux-Images besitzen tolerante Firewalls. Wenn eine Anwendung einen Port überwacht, wird der Datenverkehr durchgelassen. Für benutzerdefinierte Images, die gesichert sind, müssen die Ports möglicherweise explizit geöffnet werden. Allgemeine Firewalls der Linux-Betriebssystemebene enthalten `iptables`, `ufw` oder `firewalld`.
+    **Azure Linux:** Azure Linux-Images besitzen tolerante Firewalls. Wenn eine Anwendung einen Port überwacht, wird der Datenverkehr durchgelassen. Für benutzerdefinierte Images, die gesichert sind, müssen die Ports möglicherweise explizit geöffnet werden. Allgemeine Firewalls der Linux-Betriebssystemebene enthalten `iptables`, `ufw` oder `firewalld`.
 
 3. Wechseln Sie auf dem Serverknoten in das Verzeichnis, in dem „iperf3.exe“ extrahiert wird. Führen Sie dann iPerf im Modus „Server“ aus, und legen Sie die Überwachung von Port 5001 mit den folgenden Befehlen fest:
 
@@ -124,7 +124,7 @@ Bei der Verwendung von Windows-Explorer oder beim Drag & Drop in einer RDP-Sitzu
 
 - Anwendungen zum Kopieren von Dateien, z. B. Windows-Explorer und RDP, verwenden beim Kopieren von Dateien nicht mehrere Threads. Verwenden Sie eine Anwendung mit mehreren Threads zum Kopieren von Dateien, z. B. [Richcopy](https://technet.microsoft.com/en-us/magazine/2009.04.utilityspotlight.aspx), damit Dateien mithilfe von 16 oder 32 Threads kopiert werden. Um die Threadanzahl für das Kopieren von Dateien in Richcopy zu ändern, klicken Sie auf **Action** > **Copy options** > **File copy**.<br><br>
 ![Probleme durch langsames Kopieren von Dateien](./media/vpn-gateway-validate-throughput-to-vnet/Richcopy.png)<br>
-- Unzureichende Lese-/Schreibgeschwindigkeiten des Datenträgers des virtuellen Computers. Weitere Informationen finden Sie unter [Problembehandlung für Azure Storage](../storage/storage-e2e-troubleshooting.md).
+- Unzureichende Lese-/Schreibgeschwindigkeiten des Datenträgers des virtuellen Computers. Weitere Informationen finden Sie unter [Problembehandlung für Azure Storage](../storage/common/storage-e2e-troubleshooting.md).
 
 ## <a name="on-premises-device-external-facing-interface"></a>Nach außen gerichtete Schnittstelle für lokale Geräte
 Wenn die über das Internet zugängliche IP-Adresse des lokalen VPN-Geräts in der [LAN](vpn-gateway-howto-site-to-site-resource-manager-portal.md#LocalNetworkGateway)-Definition in Azure enthalten ist, kann es vorkommen, dass das VPN nicht angesprochen werden kann, dass sporadische Unterbrechungen oder Leistungsprobleme auftreten.
