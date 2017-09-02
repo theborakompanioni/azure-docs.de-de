@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.date: 07/05/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 4d7704c03bece51957efa2a56577b8808cc62c79
+ms.translationtype: HT
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: d86e47507f7a578e8a0affb690b6d96673b6b69a
 ms.contentlocale: de-de
-ms.lasthandoff: 07/08/2017
+ms.lasthandoff: 08/30/2017
 
 ---
 # <a name="you-cant-get-there-from-here-on-a-windows-device"></a>Zugriffsprobleme auf einem Windows-Gerät
@@ -47,7 +47,7 @@ Sie können ganz einfach ermitteln, ob das Ressourcenzugriffsproblem auf einen n
 
 ![Meldung vom Typ „Zugriff nicht möglich“ für nicht unterstützte Browser](./media/active-directory-conditional-access-device-remediation/02.png "Szenario")
 
-Die einzige Abhilfe ist die Verwendung eines Browsers, der von der Anwendung für Ihre Geräteplattform unterstützt wird. Eine vollständige Liste mit unterstützten Browsern finden Sie unter [Unterstützte Browser](active-directory-conditional-access-supported-apps.md#supported-browsers-for-device-based-policies).  
+Die einzige Abhilfe ist die Verwendung eines Browsers, der von der Anwendung für Ihre Geräteplattform unterstützt wird. Eine vollständige Liste mit unterstützten Browsern finden Sie unter [Unterstützte Browser](active-directory-conditional-access-supported-apps.md).  
 
 
 ## <a name="supported-versions-of-windows"></a>Unterstützte Windows-Versionen
