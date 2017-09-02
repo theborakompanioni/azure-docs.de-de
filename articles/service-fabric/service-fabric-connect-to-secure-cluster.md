@@ -14,94 +14,57 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/01/2017
 ms.author: ryanwi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
-ms.openlocfilehash: a24b82243cb9758b0b256c40138222357bf6e72c
+ms.translationtype: HT
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: d6a13ceb8ccd9207ecacc166247535d496d5dec7
 ms.contentlocale: de-de
-ms.lasthandoff: 07/01/2017
-
+ms.lasthandoff: 08/24/2017
 
 ---
 # <a name="connect-to-a-secure-cluster"></a>Herstellen einer Verbindung mit einem sicheren Cluster
+
 Wenn ein Client eine Verbindung mit einem Service Fabric-Clusterknoten herstellt, kann der Client mit der Zertifikatssicherheit oder mit Azure Active Directory (AAD) authentifiziert und eine sichere Kommunikation eingerichtet werden. Mit dieser Authentifizierung wird sichergestellt, dass nur autorisierte Benutzer auf den Cluster zugreifen, Anwendungen bereitstellen und Verwaltungsaufgaben ausführen können.  Zertifikat- oder AAD-Sicherheit muss zuvor beim Erstellen des Clusters auf dem Cluster aktiviert worden sein.  Weitere Informationen zu Clustersicherheitsszenarien finden Sie unter [Schützen von Service Fabric-Clustern](service-fabric-cluster-security.md). Wenn Sie eine Verbindung mit einem mit Zertifikaten gesicherten Cluster herstellen, [richten Sie das Clientzertifikat](service-fabric-connect-to-secure-cluster.md#connectsecureclustersetupclientcert) auf dem Computer ein, der mit dem Cluster verbunden wird. 
 
 <a id="connectsecureclustercli"></a> 
 
-## <a name="connect-to-a-secure-cluster-using-cli"></a>Herstellen einer Verbindung mit einem sicheren Cluster mithilfe der Befehlszeilenschnittstelle
+## <a name="connect-to-a-secure-cluster-using-azure-service-fabric-cli-sfctl"></a>Herstellen einer Verbindung mit einem sicheren Cluster mit der Azure Service Fabric CLI (sfctl)
 
-Es gibt mehrere Möglichkeiten zur Verbindung mit einem sicheren Cluster, entweder durch die Verwendung von Befehlen der Service Fabric-Azure-CLI-2.0 oder der XPlat-CLI.
+Es gibt mehrere Möglichkeiten zum Herstellen einer Verbindung mit einem sicheren Cluster mithilfe der Service Fabric CLI. Wenn ein Clientzertifikat zur Authentifizierung verwendet wird, müssen die Details des Zertifikats mit einem Zertifikat überstimmen, das dem Clusterknoten bereitgestellt wird. Wenn Ihr Zertifikat über Zertifizierungsstellen (CAs) verfügt, müssen Sie die vertrauenswürdigen Zertifizierungsstellen zusätzlich angeben.
 
-### <a name="connect-to-a-secure-cluster-using-a-client-certificate"></a>Herstellen einer Verbindung mit einem sicheren Cluster mithilfe eines Clientzertifikats
-
-Wenn ein Clientzertifikat zur Authentifizierung verwendet wird, müssen die Details des Zertifikats mit einem Zertifikat überstimmen, das dem Clusterknoten bereitgestellt wird. Wenn Ihr Zertifikat über Zertifizierungsstellen (CAs) verfügt, müssen Sie die vertrauenswürdigen Zertifizierungsstellen zusätzlich angeben. Verwenden Sie die folgenden Beispiele, um sich zu verbinden: XPlat-CLI und Azure-CLI 2.0.
-
-#### <a name="xplat-cli"></a>XPlat-CLI
-
-Wenn Sie die XPlat-CLI verwenden möchten, führen Sie den folgenden Befehl aus, um eine Verbindung aufzubauen:
-
-```bash
-azure servicefabric cluster connect --connection-endpoint https://ip:19080 \
---client-key-path /tmp/key --client-cert-path /tmp/cert --ca-cert-path /tmp/ca1,/tmp/ca2
-```
-
-Mehrere Zertifikate der Zertifizierungsstelle können mithilfe von `,` angegeben werden, um die Pfade zu trennen.
-
-Falls der allgemeine Name im Zertifikat nicht dem Verbindungsendpunkt entspricht, können Sie die Überprüfung mithilfe des Parameters `--strict-ssl-false` umgehen. Beispiel:
-
-```bash
-azure servicefabric cluster connect --connection-endpoint https://ip:19080 \
---client-key-path /tmp/key --client-cert-path /tmp/cert --ca-cert-path /tmp/ca1,/tmp/ca2 --strict-ssl-false 
-```
-
-Wenn Sie die Überprüfung der Zertifizierungsstelle überspringen möchten, können Sie den Parameter ``--reject-unauthorized-false`` hinzufügen. Beispiel:
-
-```bash
-azure servicefabric cluster connect --connection-endpoint https://ip:19080 \
---client-key-path /tmp/key --client-cert-path /tmp/cert --reject-unauthorized-false 
-```
-
-Verwenden Sie zum Herstellen einer Verbindung mit einem Cluster, der durch ein selbstsigniertes Zertifikat geschützt ist, den folgenden Befehl. Dieser entfernt die Überprüfung der Zertifizierungsstelle und die Überprüfung des allgemeinen Namens:
-
-```bash
-azure servicefabric cluster connect --connection-endpoint https://ip:19080 \
---client-key-path /tmp/key --client-cert-path /tmp/cert --strict-ssl-false --reject-unauthorized-false
-```
-
-#### <a name="azure-cli-20"></a>Azure CLI 2.0
-
-Wenn Sie Azure-CLI 2.0 verwenden, können Sie eine Verbindung mit einem Cluster herstellen, indem Sie den `az sf cluster select`-Befehl ausführen.
+Verwenden Sie den Befehl `sfctl cluster select`, um eine Verbindung mit einem Cluster herzustellen.
 
 Clientzertifikate können in zwei unterschiedlichen Größen dargestellt werden, entweder als ein Zertifikat- und Schlüsselpaar oder als eine einzelne Pem-Datei. Für kennwortgeschützte `pem`-Dateien, werden Sie automatisch zur Eingabe des Kennworts aufgefordert.
 
 Wenn Sie das Clientzertifikat als Pem-Datei speichern möchten, geben Sie den Dateipfad im `--pem`-Argument an. Beispiel:
 
 ```azurecli
-az sf cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem
+sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem
 ```
 
-Kennwortgeschützte Pem-Dateien fordern zuerst das Kennwort an, bevor die Ausführung weiterer Befehle möglich ist.
+Kennwortgeschützte PEM-Dateien fordern zuerst das Kennwort an, bevor die Ausführung eines Befehls möglich ist.
 
 Um ein Zertifikat anzugeben, verwenden Schlüsselpaare die Argumente `--cert` und `--key`, um die Dateipfade auf jeder entsprechenden Datei anzugeben.
 
 ```azurecli
-az sf cluster select --endpoint https://testsecurecluster.com:19080 --cert ./client.crt --key ./keyfile.key
+sfctl cluster select --endpoint https://testsecurecluster.com:19080 --cert ./client.crt --key ./keyfile.key
 ```
+
 Manchmal schlägt die Zertifikatsüberprüfung für Zertifikate fehl, die zum Sichern von Test- oder Dev-Clustern verwendet werden. Geben Sie zum Umgehen der Zertifikatsüberprüfung die `--no-verify`-Option an. Beispiel:
 
 > [!WARNING]
 > Verwenden Sie die `no-verify`-Option nicht, wenn Sie sich zur Produktion von Service Fabric-Clustern verbinden.
 
 ```azurecli
-az sf cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --no-verify
+sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --no-verify
 ```
 
-Darüber hinaus können Sie Pfade zu den Verzeichnissen der vertrauenswürdigen Zertifizierungsstelle oder zu individuellen Zertifikaten angeben. Um diese Pfade anzugeben, verwenden Sie das `--ca`-Argument. Beispiel:
+Darüber hinaus können Sie Pfade zu den Verzeichnissen der Zertifikate von vertrauenswürdigen Zertifizierungsstellen oder zu individuellen Zertifikaten angeben. Um diese Pfade anzugeben, verwenden Sie das `--ca`-Argument. Beispiel:
 
 ```azurecli
-az sf cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --ca ./trusted_ca
+sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --ca ./trusted_ca
 ```
 
-Nach dem Herstellen der Verbindung können Sie durch [Ausführen anderer Befehle über die Befehlszeilenschnittstelle](service-fabric-azure-cli.md) mit dem Cluster interagieren.
+Nach dem Herstellen der Verbindung können Sie durch [Ausführen anderer sfctl-Befehle](service-fabric-cli.md) mit dem Cluster interagieren.
 
 <a id="connectsecurecluster"></a>
 
@@ -387,13 +350,10 @@ Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\TrustedPe
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 * [Service Fabric-Cluster-Upgradeprozess und Erwartungen](service-fabric-cluster-upgrade.md)
 * [Verwalten von Service Fabric-Anwendungen in Visual Studio](service-fabric-manage-application-in-visual-studio.md)
 * [Einführung in das Service Fabric-Integritätsmodell](service-fabric-health-introduction.md)
 * [Anwendungssicherheit und RunAs](service-fabric-application-runas-security.md)
-
-## <a name="related-articles"></a>Verwandte Artikel
-
-* [Getting started with Service Fabric and Azure CLI 2.0](service-fabric-azure-cli-2-0.md) (Erste Schritte mit Service Fabric und der Azure CLI 2.0)
-* [Interagieren mit einem Service Fabric-Cluster mithilfe der Azure-Befehlszeilenschnittstelle](service-fabric-azure-cli.md)
+* [Erste Schritte mit der Service Fabric-Befehlszeilenschnittstelle](service-fabric-cli.md)
 

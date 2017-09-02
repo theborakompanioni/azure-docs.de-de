@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2017
 ms.author: vturecek
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
-ms.openlocfilehash: 35d7f6d655f53891c00ca6c736c8c12b99fdc5ef
+ms.translationtype: HT
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: 1ebabe4844732412e04bab8c277f7ebbc4a5737c
 ms.contentlocale: de-de
-ms.lasthandoff: 07/01/2017
-
+ms.lasthandoff: 08/24/2017
 
 ---
 # <a name="get-started-with-reliable-services"></a>Erste Schritte mit Reliable Services
@@ -166,22 +165,17 @@ Das Yeoman-Gerüst enthält ein Gradle-Skript zum Erstellen der Anwendung sowie 
 $ gradle
 ```
 
-Dadurch wird ein Service Fabric-Anwendungspaket generiert, das mithilfe der Service Fabric-Azure CLI bereitgestellt werden kann.
+Dadurch wird ein Service Fabric-Anwendungspaket generiert, das mithilfe der Service Fabric CLI bereitgestellt werden kann.
 
-### <a name="deploy-with-xplat-cli"></a>Bereitstellen mit der XPlat-CLI
+### <a name="deploy-with-service-fabric-cli"></a>Bereitstellen mit der Service Fabric CLI
 
-Wenn Sie die XPlat-CLI verwendet, enthält das Skript „install.sh“ die erforderlichen Befehle der Azure-CLI zum Bereitstellen des Anwendungspakets. Führen Sie das Skript „install.sh“ aus, um die Anwendung bereitzustellen.
+Das Skript „install.sh“ enthält die erforderlichen Befehle der Service Fabric-Befehlszeilenschnittstelle zum Bereitstellen des Anwendungspakets. Führen Sie das Skript „install.sh“ aus, um die Anwendung bereitzustellen.
 
 ```bash
 $ ./install.sh
 ```
 
-### <a name="deploy-with-azure-cli-20"></a>Bereitstellen über die Azure-CLI 2.0
+## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Sie die Azure-CLI 2.0 verwenden, lesen Sie das Referenzdokument zum Verwalten des [Lebenszykluses einer Anwendung mit der Azure-CLI 2.0](service-fabric-application-lifecycle-azure-cli-2-0.md).
-
-## <a name="related-articles"></a>Verwandte Artikel
-
-* [Getting started with Service Fabric and Azure CLI 2.0](service-fabric-azure-cli-2-0.md) (Erste Schritte mit Service Fabric und der Azure CLI 2.0)
-* [Interagieren mit einem Service Fabric-Cluster mithilfe der Azure-Befehlszeilenschnittstelle](service-fabric-azure-cli.md)
+* [Erste Schritte mit der Service Fabric-Befehlszeilenschnittstelle](service-fabric-cli.md)
 

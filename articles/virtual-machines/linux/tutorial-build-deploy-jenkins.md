@@ -8,17 +8,17 @@ tags: azure-resource-manager
 ms.assetid: 
 ms.service: virtual-machines-linux
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/15/2017
 ms.author: ahomer
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
-ms.openlocfilehash: 967cd38f0961cd11871c538d753cab9951c2f1f5
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: a40e26a8681df31fad664e4d1df4c1513311900d
 ms.contentlocale: de-de
-ms.lasthandoff: 08/09/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 
@@ -255,7 +255,7 @@ In diesem Tutorial haben Sie die Bereitstellung einer App in Azure mithilfe eine
 > * Erstellen einer Bereitstellungsgruppe für die virtuellen Azure-Computer
 > * Erstellen einer Freigabedefinition, über die die virtuellen Computer konfiguriert werden und die App bereitgestellt wird
 
-Folgen Sie diesem Link, um sich vordefinierte Skriptbeispiele für virtuelle Computer anzusehen.
+Im nächsten Tutorial erfahren Sie mehr über die Bereitstellung eines LAMP-Stapels (Linux, Apache, MySQL und PHP).
 
 > [!div class="nextstepaction"]
-> [Virtueller Linux-Computer – Skriptbeispiele](https://github.com/Azure/azure-docs-cli-python-samples/tree/master/virtual-machine)
+> [Bereitstellen des LAMP-Stapels](tutorial-lamp-stack.md)

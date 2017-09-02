@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/20/2017
+ms.date: 08/18/2017
 ms.author: chackdan
 ms.translationtype: HT
-ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
-ms.openlocfilehash: ce6debc0832da565d24a3ca82e2fa5bf7b797f8a
+ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
+ms.openlocfilehash: ee334186dffaa1f88cf05717b6a5ba1e819a8cdc
 ms.contentlocale: de-de
-ms.lasthandoff: 07/12/2017
+ms.lasthandoff: 08/19/2017
 
 ---
 
@@ -29,21 +29,28 @@ Es gibt viele häufig gestellte Fragen zu den Funktionen und zur Verwendung von 
 
 ## <a name="cluster-setup-and-management"></a>Clustereinrichtung und -verwaltung
 
-### <a name="can-i-create-a-cluster-that-spans-multiple-azure-regions"></a>Kann ich einen Cluster erstellen, der mehrere Azure-Regionen umfasst?
+### <a name="can-i-create-a-cluster-that-spans-multiple-azure-regions-or-my-own-datacenters"></a>Kann ich einen Cluster erstellen, der mehrere Azure-Regionen oder eigene Datencenter umfasst?
 
-Heute noch nicht, aber dies ist eine häufig gestellte Anforderung, die wir weiter untersuchen.
+Ja. 
 
-Der Service Fabric-Kernclusteringtechnologie sind Azure-Regionen unbekannt. Sie kann zum Verbinden von Computern an beliebigen Orten in der ganzen Welt verwendet werden, solange diese über gemeinsame Netzwerkkonnektivität verfügen. Allerdings ist die Service Fabric-Clusterressource in Azure regional, ebenso wie die VM-Skalierungsgruppen, auf denen der Cluster beruht. Darüber hinaus gibt es ein inhärentes Problem bei der Übermittlung einer stark konsistenten Datenreplikation zwischen Computern, die weit auseinander liegen. Wir möchten sicherstellen, dass die Leistung vorhersagbar und akzeptabel ist, bevor wir regionsübergreifende Cluster unterstützen.
+Mit der Service Fabric-Kernclusteringtechnologie können Computer an beliebigen Orten auf der ganzen Welt verknüpft werden, solange diese über ein Netzwerk miteinander verbunden sind. Die Erstellung und Ausführung eines solchen Clusters kann jedoch komplex sein.
+
+Wenn Sie sich für dieses Szenario interessieren, wird empfohlen, entweder über die [Liste mit Service Fabric-Problemen auf Github ](https://github.com/azure/service-fabric-issues) den Kontakt herzustellen oder sich an einen Supportmitarbeiter zu wenden, um weitere Anleitungen zu erhalten. Das Service Fabric-Team arbeitet an der Bereitstellung zusätzlicher Anleitungen und Empfehlungen für dieses Szenario. 
+
+Einige Aspekte, die zu berücksichtigen sind: 
+
+1. Die Service Fabric-Clusterressource in Azure ist derzeit regional, ebenso wie die VM-Skalierungsgruppen, auf denen der Cluster beruht. Das bedeutet, dass Sie bei einem regionalen Ausfall den Cluster nicht mehr über Azure Resource Manager oder das Azure-Portal verwalten können. Dieser Fall kann eintreten, auch wenn der Cluster weiterhin ausgeführt wird und Sie direkt mit ihm interagieren können. Darüber hinaus bietet Azure heute nicht die Möglichkeit, ein einzelnes virtuelles Netzwerk einzurichten, das in alle Regionen verwendet werden kann. Das bedeutet, dass für einen Cluster mit mehreren Regionen in Azure entweder [öffentliche IP-Adressen für jeden virtuellen Computer in den VM-Skalierungsgruppen](../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine) oder [Azure-VPN-Gateways](../vpn-gateway/vpn-gateway-about-vpngateways.md) erforderlich sind. Diese Netzwerkoptionen haben unterschiedliche Auswirkungen auf Kosten, Leistung und – in gewissem Maße – auf das Anwendungsdesign. Daher ist vor der Bereitstellung einer solchen Umgebung eine sorgfältige Analyse und Planung erforderlich.
+2. Wartung, Verwaltung und Überwachung dieser Computer können kompliziert werden, insbesondere, wenn sie sich über verschiedene _Arten_ von Umgebungen erstrecken (beispielsweise zwischen verschiedenen Cloudanbietern oder zwischen lokalen Ressourcen und Azure). Machen Sie sich daher unbedingt mit Upgrades, Überwachung, Verwaltung und Diagnose für Cluster und Anwendungen vertraut, bevor Sie Produktionsworkloads in einer solchen Umgebung ausführen. Wenn Sie bei der Behebung derartiger Probleme in Azure oder Ihren eigenen Datencentern bereits viel Erfahrung haben, können die gleichen Lösungsansätze wahrscheinlich auch beim Erstellen oder Ausführung des Service Fabric-Clusters angewendet werden. 
 
 ### <a name="do-service-fabric-nodes-automatically-receive-os-updates"></a>Erhalten Service Fabric-Knoten automatisch Betriebssystemupdates?
 
-Heute noch nicht, aber auch dies ist eine häufig gestellte Anforderung, die wir umsetzen möchten.
+Heute noch nicht, aber auch dies ist eine häufig gestellte Anforderung, die Azure umsetzen möchte.
+
+In der Zwischenzeit haben wir eine [Anwendung](service-fabric-patch-orchestration-application.md) zum Patchen und Aktualisieren der Betriebssysteme bereitgestellt, die Ihren SF-Knoten zugrunde liegen.
 
 Die Herausforderung von Betriebssystemupdates besteht darin, dass dafür in der Regel ein Neustart des Computers erforderlich ist, was zu einer vorübergehenden Unterbrechung der Verfügbarkeit führt. Dies ist für sich gesehen noch kein Problem, weil Service Fabric Datenverkehr für diese Dienste automatisch an andere Knoten umleitet. Wenn Betriebssystemupdates jedoch nicht über den Cluster koordiniert werden, besteht die Gefahr, dass viele Knoten gleichzeitig ausfallen. Diese gleichzeitigen Neustarts können für einen Dienst oder zumindest für eine bestimmte Partition (bei einem zustandsbehafteten Dienst) zum vollständigen Verlust der Verfügbarkeit führen.
 
 Wir planen die zukünftige Unterstützung einer Betriebssystemupdate-Richtlinie, die Updatedomänen-übergreifend vollständig automatisiert und koordiniert ist und sicherstellt, dass die Verfügbarkeit trotz Neustarts und anderen unerwarteten Fehlern beibehalten wird.
-
-In der Zwischenzeit haben wir [ein Skript bereitgestellt](https://blogs.msdn.microsoft.com/azureservicefabric/2017/01/09/os-patching-for-vms-running-service-fabric/), mit denen ein Clusteradministrator das Patchen jedes Knotens auf sichere Weise manuell starten kann.
 
 ### <a name="can-i-use-large-virtual-machine-scale-sets-in-my-sf-cluster"></a>Kann ich große VM-Skalierungsgruppen in meinem SF-Cluster verwenden? 
 
