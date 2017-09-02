@@ -16,10 +16,10 @@ ms.workload: data-services
 ms.date: 08/14/2017
 ms.author: bradsev
 ms.translationtype: HT
-ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
-ms.openlocfilehash: 14e2a14c74e00709e18a80325fbdd3cbcd71da37
+ms.sourcegitcommit: 07e5e15f4f4c4281a93c8c3267c0225b1d79af45
+ms.openlocfilehash: 89fa80b3e3409b7cd2f600776fffdeb3a5271b5d
 ms.contentlocale: de-de
-ms.lasthandoff: 08/15/2017
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="get-started-using-r-server-on-hdinsight"></a>Erste Schritte mit R Server in HDInsight
@@ -342,32 +342,37 @@ Beachten Sie außerdem, dass die neu hinzugefügten Benutzer nicht über Stammbe
 
 2. Eine Ausgabe ähnlich der folgenden sollte angezeigt werden:
     
-    R, Version 3.2.2 (2015-08-14) – „Fire Safety“, Copyright (C) 2015 The R Foundation for Statistical Computing, Plattform: x86_64-pc-linux-gnu (64 Bit)
+        R version 3.2.2 (2015-08-14) -- "Fire Safety"
+        Copyright (C) 2015 The R Foundation for Statistical Computing
+        Platform: x86_64-pc-linux-gnu (64-bit)
 
-    R ist eine kostenlose Software, für die KEINERLEI GARANTIEN übernommen werden.
-    Sie dürfen Sie unter bestimmten Vorgaben gerne weiterverteilen.
-    Geben Sie „license()“ oder „licence()“ ein, um Einzelheiten zur Verteilung zu erhalten.
+        R is free software and comes with ABSOLUTELY NO WARRANTY.
+        You are welcome to redistribute it under certain conditions.
+        Type 'license()' or 'licence()' for distribution details.
 
     Unterstützung für natürliche Sprache, jedoch Ausführung in einem englischsprachigen Gebietsschema
 
-    R ist ein gemeinschaftliches Projekt mit vielen Mitwirkenden.
-    Geben Sie „contributors()“ ein, um weitere Informationen zu erhalten, und „citation()“, um zu erfahren, wie R oder R-Pakete in Veröffentlichungen genannt werden müssen.
+        R is a collaborative project with many contributors.
+        Type 'contributors()' for more information and
+        'citation()' on how to cite R or R packages in publications.
 
-    Geben Sie „demo()“ ein, um einige Demos zu erhalten, „help()“ für die Onlinehilfe und „help.start()“ für eine HTML-Browserschnittstelle zur Hilfe.
-    Geben Sie „q()“ ein, um R zu beenden.
+        Type 'demo()' for some demos, 'help()' for on-line help, or
+        'help.start()' for an HTML browser interface to help.
+        Type 'q()' to quit R.
 
-    Microsoft R Server, Version 8.0: eine erweiterte Verteilung von R-Microsoft-Paketen Copyright (C) 2016 Microsoft Corporation
+        Microsoft R Server version 8.0: an enhanced distribution of R
+        Microsoft packages Copyright (C) 2016 Microsoft Corporation
 
     Geben Sie „readme()“ ein, um Versionshinweise zu erhalten.
     >
 
 3. An der `>` -Eingabeaufforderung können Sie R-Code eingeben. Zu R Server gehören Pakete, mit denen Sie auf einfache Weise mit Hadoop interagieren und verteilten Berechnungen ausführen können. Verwenden Sie beispielsweise den folgenden Befehl, um das Stammverzeichnis des Standarddateisystems für den HDInsight-Cluster anzuzeigen:
 
-    rxHadoopListFiles("/")
+        rxHadoopListFiles("/")
 
 4. Sie können auch eine Adressierung mit der WASB-Syntax verwenden.
 
-    rxHadoopListFiles("wasb:///")
+        rxHadoopListFiles("wasb:///")
 
 
 ## <a name="using-r-server-on-hdi-from-a-remote-instance-of-microsoft-r-server-or-microsoft-r-client"></a>Verwenden von R Server in HDI in einer Remote-Instanz von Microsoft R Server oder Microsoft R Client

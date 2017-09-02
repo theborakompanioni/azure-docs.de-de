@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/29/2017
+ms.date: 08/31/2017
 ms.author: tonguyen
 ms.translationtype: Human Translation
 ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: a5be3c9bcdd99128217e441d62ce9650c9764580
 ms.contentlocale: de-de
 ms.lasthandoff: 07/08/2017
-
 
 ---
 # <a name="understand-terms-on-your-microsoft-azure-invoice"></a>Grundlegendes über Benennungen in Ihrer Microsoft Azure-Rechnung
@@ -32,6 +31,10 @@ Im Folgenden einige Hinweise, die Sie beachten sollten:
 -   In der aktuellen Rechnung können bis zu 24 Stunden der Nutzung am Ende des vorherigen Abrechnungszeitraums angezeigt werden.
 
 -   Bei Abrechnungen für internationale Kunden sind die aufgeführten Gebühren nur Schätzwerte, da Banken unterschiedliche Umrechnungsgebühren erheben.
+
+<div style="padding-top: 56.25%; position: relative; width: 100%;">
+<iframe style="position: absolute;top: 0;left: 0;right: 0;bottom: 0;" width="100%" height="100%" src="https://www.youtube.com/embed/jWG1lyJe3Mg" frameborder="0" allowfullscreen></iframe>
+</div>
 
 ## <a name="detailed-terms-and-descriptions-of-your-invoice"></a>Detaillierte Erläuterungen zu Benennungen und Beschreibungen der Rechnung
 In den folgenden Abschnitten werden die meisten Benennungen, die Sie in Ihrer Rechnung finden, sowie die Beschreibungen für jede Benennung aufgeführt.

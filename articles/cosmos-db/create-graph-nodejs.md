@@ -12,25 +12,21 @@ ms.custom: quick start connect, mvc
 ms.workload: 
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
-ms.topic: hero-article
-ms.date: 07/14/2017
+ms.topic: quickstart
+ms.date: 08/29/2017
 ms.author: denlee
 ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
-ms.openlocfilehash: 6d14719938af0ce825955389824441e111024869
+ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
+ms.openlocfilehash: 60cb187cf40f72fce86c421891bea02d3d6d708a
 ms.contentlocale: de-de
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 08/30/2017
 
 ---
 # <a name="azure-cosmos-db-build-a-nodejs-application-by-using-graph-api"></a>Azure Cosmos DB: Erstellen einer Node.js-Anwendung mit der Graph-API
 
 Azure Cosmos DB ist der global verteilte Datenbankdienst von Microsoft mit mehreren Modellen. Sie können schnell Dokument-, Schlüssel/Wert- und Graph-Datenbanken erstellen und abfragen und dabei stets von den Vorteilen der globalen Verteilung und der horizontalen Skalierung profitieren, die Azure Cosmos DB zugrunde liegen. 
 
-Dieser Schnellstartartikel veranschaulicht, wie Sie ein Azure Cosmos DB-Konto für die Graph-API (Vorschauversion), eine Datenbank und einen Graph mithilfe des Azure-Portals erstellen können. Anschließend erstellen Sie eine Konsolenanwendung mithilfe des Open-Source-Treibers [Gremlin Node.js](https://www.npmjs.com/package/gremlin-secure) und führen diese aus.  
-
-> [!NOTE]
-> Das npm-Modul `gremlin-secure` ist eine modifizierte Version des `gremlin`-Moduls mit Unterstützung für SSL und SASL, die beide für die Verbindungsherstellung mit Azure Cosmos DB erforderlich sind. Der Quellcode steht auf [GitHub](https://github.com/CosmosDB/gremlin-javascript) zur Verfügung.
->
+Dieser Schnellstartartikel veranschaulicht, wie Sie ein Azure Cosmos DB-Konto für die Graph-API (Vorschauversion), eine Datenbank und einen Graph mithilfe des Azure-Portals erstellen können. Anschließend erstellen Sie eine Konsolenanwendung mithilfe des Open-Source-Treibers [Gremlin Node.js](https://www.npmjs.com/package/gremlin) und führen diese aus.  
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -133,7 +129,7 @@ module.exports = config;
 
 1. Öffnen Sie ein Terminalfenster, und wechseln Sie (über den `cd`-Befehl) zum Installationsverzeichnis der Datei „package.json“, die im Projekt enthalten ist.  
 
-2. Führen Sie `npm install` aus, um die erforderlichen npm-Module zu installieren, einschließlich `gremlin-secure`.
+2. Führen Sie `npm install` aus, um die erforderlichen npm-Module zu installieren, einschließlich `gremlin`.
 
 3. Führen Sie `node app.js` in einem Terminal aus, um Ihre Node-Anwendung zu starten.
 

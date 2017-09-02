@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/11/2017
+ms.date: 09/01/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.translationtype: HT
-ms.sourcegitcommit: 26c07d30f9166e0e52cb396cdd0576530939e442
-ms.openlocfilehash: 781f868c87cea3cd790d89c61e26eecf352babea
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
+ms.openlocfilehash: 4835610eed8df46f3ba9302cf87163b37a6fa124
 ms.contentlocale: de-de
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 05/17/2017
 
 ---
 # <a name="azure-active-directory-identity-protection-faq"></a>Azure Active Directory Identity Protection – FAQ
@@ -40,9 +40,4 @@ ms.lasthandoff: 07/19/2017
 
 ---
 
-## <a name="what-happens-when-your-azure-active-directory-premium-2-trial-expires"></a>Was geschieht, wenn Ihre Azure Active Directory Premium 2-Testversion abläuft?
-
-**A:** Wenn Ihre Azure Active Directory Premium 2-Testversion auf Ihrer Azure Active Directory Free-, Basic- oder Premium 1-Edition abgelaufen ist, und Sie Identity Protection aktiviert haben, können Sie darauf immer noch zugreifen, obwohl Ihre Lizenz nicht mehr gültig ist.
-
----
 
