@@ -60,11 +60,9 @@ Gehen Sie folgendermaßen vor, um dieses Feature auf Ihrem Windows Server-Host z
    
    1. Klicken Sie auf der Seite **Voraussetzungen** auf **Weiter**.
    2. Akzeptieren Sie auf der Seite **Auswählen des Installationstyps** die Standardeinstellung **Rollenbasierte oder featurebasierte Installation**. Klicken Sie auf **Weiter**.
-
    
-       ![Hinzufügen von Rollen und Features – Assistent 2](./media/storsimple-configure-mpio-windows-server/IC740999.png)
+       ![Hinzufügen von Rollen und Features – Assistent 2](./media/storsimple-configure-mpio-windows-server/IC740999.png)
    3. Wählen Sie auf der Seite **Zielserver auswählen** die Option **Einen Server aus Serverpool auswählen** aus. Ihr Hostserver sollte automatisch ermittelt werden. Klicken Sie auf **Weiter**.
-
    4. Klicken Sie auf der Seite **Serverrollen auswählen** auf **Weiter**.
    5. Wählen Sie auf der Seite **Auswählen von Features** die Option **Multipfad-E/A** aus, und klicken Sie dann auf **Weiter**.
    
