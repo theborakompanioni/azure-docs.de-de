@@ -1,14 +1,16 @@
-## <a name="meaning-of-migration-of-iaas-resources-from-classic-to-resource-manager"></a>Die Bedeutung der Migration von IaaS-Ressourcen vom klassischen Bereitstellungsmodell zu Resource Manager
+## <a name="meaning-of-migration-of-iaas-resources-from-the-classic-deployment-model-to-resource-manager"></a>Die Bedeutung der Migration von IaaS-Ressourcen vom klassischen Bereitstellungsmodell zu Resource Manager
 Bevor wir näher auf die Details eingehen, betrachten wir den Unterschied zwischen Datenebenen- und Verwaltungsebenenvorgängen bei IaaS-Ressourcen.
 
 * *Verwaltungs-/Steuerungsebene:* Beschreibt die Aufrufe, die auf der Verwaltungs-/Steuerungsebene oder bei der API zum Ändern von Ressourcen eingehen. Beispielsweise werden ausgeführte Ressourcen durch Vorgänge verwaltet wie das Erstellen eines virtuellen Computers, das Neustarten eines virtuellen Computers und das Aktualisieren eines virtuellen Netzwerks mit einem neuen Subnetz. Die Verbindung zu den Instanzen ist davon nicht direkt betroffen.
 * *Datenebene* (Anwendung): Beschreibt die Laufzeit der Anwendung selbst und umfasst die Interaktion mit Instanzen, die nicht über die Azure-API verlaufen. Das Zugreifen auf Ihre Website oder das Abrufen von Daten von einer ausgeführten SQL Server-Instanz oder einem MongoDB-Server wird als Interaktion mit der Datenebene bzw. der Anwendung angesehen. Das Kopieren eines Blobs aus einem Speicherkonto und das Zugreifen auf eine öffentliche IP-Adresse, um per RDP oder SSH eine Verbindung mit dem virtuellen Computer herzustellen, sind ebenfalls Vorgänge auf der Datenebene. Mit diesen Vorgängen wird die Ausführung der Anwendung für die Bereiche Compute, Netzwerk und Speicher sichergestellt.
 
+Das klassische Bereitstellungsmodell und der Resource Manager-Stapel basieren auf der gleichen Datenebene. Während der Migration wird die Darstellung der Ressourcen aus dem klassischen Bereitstellungsmodell in die des Resource Manager-Stapels umgewandelt. Infolgedessen müssen Sie neue Tools, APIs und SDKs für die Verwaltung der Ressourcen im Resource Manager-Stapel verwenden.
+
 ![Screenshot zur Veranschaulichung des Unterschieds zwischen Verwaltungs-/Steuerungsebene und Datenebene](../articles/virtual-machines/media/virtual-machines-windows-migration-classic-resource-manager/data-control-plane.png)
+
 
 > [!NOTE]
 > In einigen Migrationsszenarien hält die Azure-Plattform die virtuellen Computer an, hebt ihre Zuordnung auf und startet sie neu. Dies führt zu einer kurzen Downtime auf der Datenebene.
->
 >
 
 ## <a name="the-migration-experience"></a>Migrationsvorgang
@@ -31,18 +33,33 @@ Der Migrationsworkflow sieht wie folgt aus:
 >
 
 ### <a name="validate"></a>Überprüfen
-Der Überprüfungsvorgang ist der erste Schritt im Migrationsprozess. Das Ziel dieses Schritts ist, im Hintergrund die Daten für die zu migrierenden Ressourcen zu analysieren und durch „Erfolgreich“/„Fehler“ anzugeben, ob die Ressourcen für die Migration bereit sind.
+Der Überprüfungsvorgang ist der erste Schritt im Migrationsprozess. Das Ziel dieses Schritts besteht darin, den Zustand der zu migrierenden Ressourcen im klassischen Bereitstellungsmodell zu analysieren und durch „Erfolgreich“/„Fehler“ anzugeben, ob die Ressourcen für die Migration bereit sind.
 
-Sie wählen das virtuelle Netzwerk oder den gehosteten Dienst aus (sofern es kein virtuelles Netzwerk ist), das bzw. den Sie für die Migration überprüfen möchten.
+Sie wählen das virtuelle Netzwerk oder einen Clouddienst aus (sofern es kein virtuelles Netzwerk ist), das bzw. den Sie für die Migration überprüfen möchten.
 
 * Wenn die Migration für die Ressource nicht möglich ist, werden auf der Azure-Plattform alle Gründe angegeben, aus denen die Migration nicht unterstützt wird.
 
-Beim Überprüfen von Speicherdiensten befindet sich das migrierte Konto in einer Ressourcengruppe mit dem gleichen Namen wie Ihr Speicherkonto (mit dem Zusatz „-Migrated“).  Beispiel: Wenn Ihr Speicherkonto „mystorage“ heißt, befindet sich die Azure Resource Manager-fähige Ressource in einer Ressourcengruppe namens „mystorage-Migrated“ und enthält ein Speicherkonto namens „mystorage“.
+#### <a name="checks-not-done-in-validate"></a>Nicht im Überprüfungsschritt ausgeführte Überprüfungen
+
+Beim Überprüfungsvorgang wird nur der Zustand der Ressourcen im klassischen Bereitstellungsmodell analysiert. Dabei können alle Fehler und nicht unterstützten Szenarien ermittelt werden, die auf verschiedene Konfigurationen im klassischen Bereitstellungsmodell zurückzuführen sind. Es können jedoch nicht alle Fehler ermittelt werden, die der Azure Resource Manager-Stapel unter Umständen während der Migration für die Ressourcen verursacht. Diese Probleme werden erst überprüft, wenn die Ressourcen im nächsten Schritt der Migration (Vorbereitung) transformiert werden. In der folgenden Tabelle sind alle Probleme aufgeführt, auf die im Überprüfungsschritt nicht geprüft wird.
+
+
+|Nicht im Überprüfungsschritt ausgeführte Netzwerküberprüfungen|
+|-|
+|Ein virtuelles Netzwerk mit ER- und VPN-Gateway|
+|Eine getrennte Virtual Network-Gatewayverbindung|
+|Alle ER-Verbindungen werden vorab zum Azure Resource Manager-Stapel migriert.|
+|Azure Resource Manager-Kontingentüberprüfungen für Netzwerkressourcen, d.h. statische öffentliche IP-Adressen, dynamische öffentliche IPs, Load Balancer, Netzwerksicherheitsgruppen, Routingtabellen, Netzwerkschnittstellen |
+| Überprüfung, ob alle Lastenausgleichsregeln in der gesamten Bereitstellung/im gesamten VNET gültig sind |
+| Überprüfung auf in Konflikt stehende private IPs zwischen virtuellen Computern mit dem Status „Beendet (Zuordnung aufgehoben)“ im gleichen VNET |
 
 ### <a name="prepare"></a>Vorbereiten
 Der Vorbereitungsvorgang ist der zweite Schritt im Migrationsprozess. Das Ziel dieses Schritts besteht darin, die Transformation der IaaS-Ressourcen von Ressourcen des klassischen Bereitstellungsmodells zu Resource Manager-Ressourcen zu simulieren und diese zu Visualisierungszwecken nebeneinander darzustellen.
 
-Sie wählen das virtuelle Netzwerk oder den gehosteten Dienst aus (sofern es kein virtuelles Netzwerk ist), das bzw. den Sie für die Migration vorbereiten möchten.
+> [!NOTE] 
+> Ihre klassischen Ressourcen werden während dieses Schritts nicht geändert. Dieser Schritt kann also problemlos ausgeführt werden, wenn Sie die Migration ausprobieren. 
+
+Sie wählen das virtuelle Netzwerk oder den Clouddienst aus (sofern es kein virtuelles Netzwerk ist), das bzw. den Sie für die Migration vorbereiten möchten.
 
 * Wenn die Migration für die Ressource nicht möglich ist, beendet die Azure-Plattform den Migrationsprozesses und gibt den Grund an, aus dem der Vorbereitungsvorgang nicht erfolgreich war.
 * Wenn die Migration für die Ressource durchgeführt werden kann, sperrt die Azure-Plattform zuerst die Vorgänge der Verwaltungsebene für die zu migrierenden Ressourcen. Beispielsweise können Sie einem in der Migration befindlichen virtuellen Computer keinen Datenträger hinzuzufügen.
@@ -60,9 +77,12 @@ Die folgenden beiden Screenshots zeigen das Ergebnis nach einem erfolgreichen Vo
 
 ![Screenshot mit Azure Resource Manager-Portalressourcen in Vorbereitung](../articles/virtual-machines/windows/media/migration-classic-resource-manager/portal-arm.png)
 
+Hier sehen Sie, wie Ihre Ressourcen nach Abschluss der Vorbereitungsphase aussehen. Beachten Sie, dass die Ressource in der Datenebene gleich ist. Sie ist sowohl in der Verwaltungsebene (klassisches Bereitstellungsmodell) als auch in der Steuerungsebene (Resource Manager) vorhanden.
+
+![Hintergrundinformationen zur Vorbereitungsphase](../articles/virtual-machines/windows/media/migration-classic-resource-manager/behind-the-scenes-prepare.png)
+
 > [!NOTE]
 > Virtuelle Computer, die sich nicht in einem klassischen virtuellen Netzwerk befinden, erhalten in dieser Phase der Migration den Status „Beendet (Zuordnung aufgehoben)“.
->
 >
 
 ### <a name="check-manual-or-scripted"></a>Überprüfung (manuell oder per Skript)
@@ -77,11 +97,13 @@ Es gibt kein festes Zeitfenster, vor dem Sie für die Migration ein Commit durch
 Falls Probleme auftreten, können Sie die Migration immer abbrechen und zurück zum klassischen Bereitstellungsmodell wechseln. Nach dem Wechsel zurück öffnet die Azure-Plattform die Vorgänge der Verwaltungsebene für die Ressourcen , damit Sie den normalen Betrieb für diese virtuellen Computer im klassischen Bereitstellungsmodell wieder aufnehmen können.
 
 ### <a name="abort"></a>Abbruch
-Der Abbruch ist ein optionaler Schritt, mit dem Sie Ihre Änderungen auf das klassische Bereitstellungsmodell zurücksetzen und die Migration beenden können.
+Der Abbruch ist ein optionaler Schritt, mit dem Sie Ihre Änderungen auf das klassische Bereitstellungsmodell zurücksetzen und die Migration beenden können. Dieser Vorgang löscht die Resource Manager-Metadaten für Ressourcen, die im vorherigen Vorbereitungsschritt erstellt wurden. 
+
+![Hintergrundinformationen zur Abbruchphase](../articles/virtual-machines/windows/media/migration-classic-resource-manager/behind-the-scenes-abort.png)
+
 
 > [!NOTE]
 > Dieser Vorgang kann nicht mehr ausgeführt werden, nachdem Sie den Commitvorgang ausgelöst haben.     
->
 >
 
 ### <a name="commit"></a>Commit
@@ -91,12 +113,16 @@ Nach Abschluss der Überprüfung können Sie einen Commit für die Migration dur
 > Dies ist ein idempotenter Vorgang. Wenn hierbei ein Fehler auftritt, sollten Sie den Vorgang wiederholen. Sollten weiterhin Fehler auftreten, erstellen Sie ein Supportticket, oder posten Sie unter Verwendung des Tags ClassicIaaSMigration in unserem [VM-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesforWindows).
 >
 >
-<br>
-Hier sehen Sie ein Flussdiagramm der Schritte während einer Migration.
+
+![Hintergrundinformationen zur Commitphase](../articles/virtual-machines/windows/media/migration-classic-resource-manager/behind-the-scenes-commit.png)
+
+## <a name="where-to-begin-migration"></a>Wo beginne ich mit der Migration?
+
+Hier sehen Sie ein Flussdiagramm mit den Abläufen der Migration:
 
 ![Screenshot mit den Migrationsschritten](../articles/virtual-machines/windows/media/migration-classic-resource-manager/migration-flow.png)
 
-## <a name="translation-of-classic-to-azure-resource-manager-resources"></a>Umwandlung klassischer Ressourcen in Azure Resource Manager-Ressourcen
+## <a name="translation-of-classic-deployment-model-to-azure-resource-manager-resources"></a>Umwandlung klassischer Ressourcen in Azure Resource Manager-Ressourcen
 Die folgende Tabelle zeigt die Darstellung der Ressourcen im klassischen Bereitstellungsmodell und in Resource Manager. Andere Features und Ressourcen werden derzeit nicht unterstützt.
 
 | Klassische Darstellung | Resource Manager-Darstellung | Ausführliche Hinweise |
