@@ -16,10 +16,10 @@ ms.date: 06/20/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
-ms.openlocfilehash: 331d08da8a70eee893fb1b01b1fef4475cc8bca0
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: e6e27595f625fcb3ffdb0a6bccf75ad2dcc77cb3
 ms.contentlocale: de-de
-ms.lasthandoff: 07/24/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Erstellen eines Batch-Kontos mit dem Azure-Portal
@@ -154,7 +154,7 @@ Wir empfehlen die Erstellung eines neuen Speicherkontos, das ausschließlich von
 ![Erstellen eines allgemeinen Speicherkontos][storage_account]
 
 > [!NOTE]
-> Azure Batch unterstützt derzeit nur allgemeine Speicherkonten. Dieser Kontotyp wird in Schritt 5 [Speicherkonto erstellen] (../storage/storage-create-storage-account.md#create-a-storage-account) unter [Informationen zu Azure-Speicherkonten](../storage/storage-create-storage-account.md) beschrieben.
+> Azure Batch unterstützt derzeit nur allgemeine Speicherkonten. Dieser Kontotyp wird in Schritt 5 [Speicherkonto erstellen] (../storage/common/storage-create-storage-account.md#create-a-storage-account) unter [Informationen zu Azure-Speicherkonten](../storage/common/storage-create-storage-account.md) beschrieben.
 >
 >
 
