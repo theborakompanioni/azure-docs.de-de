@@ -4,7 +4,7 @@ description: Erstellen von Datenstichproben in der Mitte der Abfrage mithilfe vo
 keywords: 
 services: stream-analytics
 documentationcenter: 
-author: jeffstokes72
+author: samacha
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 9952e2cf-b335-4a5c-8f45-8d3e1eda2e20
@@ -14,13 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/20/2017
-ms.author: jeffstok
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: 5d782e2a23c76a95f5fa1e1f9c78369feb4e051b
+ms.author: samacha
+ms.translationtype: HT
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: 6ffa756eef0cfa44d7dd397e43afbf054ac2df7a
 ms.contentlocale: de-de
-ms.lasthandoff: 07/04/2017
-
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="debug-queries-by-using-select-into-statements"></a>Debuggen von Abfragen mithilfe von SELECT INTO-Anweisungen
@@ -76,7 +75,7 @@ Dieses Mal werden die Daten in der Ausgabe wie erwartet formatiert und aufgefül
 
 ## <a name="get-help"></a>Hier erhalten Sie Hilfe
 
-Um Hilfe zu erhalten, nutzen Sie unser [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics).
+Um Hilfe zu erhalten, nutzen Sie unser [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -3,7 +3,7 @@ title: Datenmodellreferenz zu Azure API Management-Vorlagen | Microsoft-Dokument
 description: "Lernen Sie die Entitäts- und Typendarstellungen für gängige Elemente kennen, die in den Datenmodellen für die Entwicklerportalvorlagen in Azure API Management verwendet werden."
 services: api-management
 documentationcenter: 
-author: miaojiang
+author: vladvino
 manager: erikre
 editor: 
 ms.assetid: b0ad7e15-9519-4517-bb73-32e593ed6380
@@ -14,9 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-translationtype: Human Translation
-ms.sourcegitcommit: 080ac72246e62948c3defe329028f27751e8c78d
-ms.openlocfilehash: 5f8dd5c6a106e5dc523624d8930e6297dbdc368f
+ms.translationtype: HT
+ms.sourcegitcommit: 07e5e15f4f4c4281a93c8c3267c0225b1d79af45
+ms.openlocfilehash: 72936a4d38f809934ddea74e5ae4a6029450a97c
+ms.contentlocale: de-de
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="azure-api-management-template-data-model-reference"></a>Datenmodellreferenz zu Azure API Management-Vorlagen
@@ -49,7 +51,7 @@ In diesem Thema werden die Entitäts- und Typendarstellungen für gängige Eleme
 -   [Benutzeranmeldung](#UseSignIn)  
 -   [Benutzerregistrierung](#UserSignUp)  
   
-##  <a name="a-nameapia-api"></a><a name="API"></a> API  
+##  <a name="API"></a> API  
  Die `API`-Entität weist die folgenden Eigenschaften auf.  
   
 |Eigenschaft|Typ|Beschreibung|  
@@ -63,7 +65,7 @@ In diesem Thema werden die Entitäts- und Typendarstellungen für gängige Eleme
 |authenticationSettings|[Authentifizierungseinstellungen für den Autorisierungsserver](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-contract-reference#AuthenticationSettings)|Die Sammlung von Authentifizierungseinstellungen, die in dieser API enthalten sind.|  
 |subscriptionKeyParameterNames|Objekt|Eine optionale Eigenschaft, mit der benutzerdefinierte Namen für Abfrage- und/oder Headerparameter angegeben werden können, in denen der Abonnementschlüssel enthalten ist. Wenn diese Eigenschaft vorhanden ist, muss sie mindestens eine der beiden folgenden Eigenschaften enthalten.<br /><br /> `{   "subscriptionKeyParameterNames":   {     "query": “customQueryParameterName",     "header": “customHeaderParameterName"   } }`|  
   
-##  <a name="a-nameapisummarya-api-summary"></a><a name="APISummary"></a> API-Zusammenfassung  
+##  <a name="APISummary"></a> API-Zusammenfassung  
  Die `API summary`-Entität weist die folgenden Eigenschaften auf.  
   
 |Eigenschaft|Typ|Beschreibung|  
@@ -72,7 +74,7 @@ In diesem Thema werden die Entitäts- und Typendarstellungen für gängige Eleme
 |Name|string|Der Name der API. Darf nicht leer sein. Die maximale Länge beträgt 100 Zeichen.|  
 |description|string|Beschreibung der API. Darf nicht leer sein. Kann HTML-Formatierungstags umfassen. Die maximale Länge beträgt 1000 Zeichen.|  
   
-##  <a name="a-nameapplicationa-application"></a><a name="Application"></a> Anwendung  
+##  <a name="Application"></a> Anwendung  
  Die `application`-Entität weist die folgenden Eigenschaften auf.  
   
 |Eigenschaft|Typ|Beschreibung|  
@@ -90,7 +92,7 @@ In diesem Thema werden die Entitäts- und Typendarstellungen für gängige Eleme
 |Attachments|Sammlung von [Attachment](#Attachment)-Entitäten.|Anlagen für die Anwendung, z. B. Screenshots oder Symbole.|  
 |Symbol|[Anlage](#Attachment)|Das Symbol für die Anwendung.|  
   
-##  <a name="a-nameattachmenta-attachment"></a><a name="Attachment"></a> Anlage  
+##  <a name="Attachment"></a> Anlage  
  Die `attachment`-Entität weist die folgenden Eigenschaften auf.  
   
 |Eigenschaft|Typ|Beschreibung|  
@@ -100,7 +102,7 @@ In diesem Thema werden die Entitäts- und Typendarstellungen für gängige Eleme
 |Typ|string|Der Typ der Anlage.|  
 |ContentType|string|Der Medientyp der Anlage.|  
   
-##  <a name="a-namesamplea-code-sample"></a><a name="Sample"></a> Codebeispiel  
+##  <a name="Sample"></a> Codebeispiel  
   
 |Eigenschaft|Typ|Beschreibung|  
 |--------------|----------|-----------------|  
@@ -117,7 +119,7 @@ In diesem Thema werden die Entitäts- und Typendarstellungen für gängige Eleme
 |Headers|Sammlung von                                  [Header](#Header)-Entitäten.|Die Header für diesen Vorgang.|  
 |parameters|Sammlung von [Parameter](#Parameter)-Entitäten.|Parameter, die für diesen Vorgang definiert sind.|  
   
-##  <a name="a-namecommenta-comment"></a><a name="Comment"></a> Kommentar  
+##  <a name="Comment"></a> Kommentar  
  Die `API`-Entität weist die folgenden Eigenschaften auf.  
   
 |Eigenschaft|Typ|Beschreibung|  
@@ -127,7 +129,7 @@ In diesem Thema werden die Entitäts- und Typendarstellungen für gängige Eleme
 |DeveloperCompany|string|Der Unternehmensname des Entwicklers.|  
 |PostedOn|DateTime|Das Datum und Uhrzeit der Bereitstellung des Kommentars.|  
   
-##  <a name="a-nameissuea-issue"></a><a name="Issue"></a> Problem  
+##  <a name="Issue"></a> Problem  
  Die `issue`-Entität weist die folgenden Eigenschaften auf.  
   
 |Eigenschaft|Typ|Beschreibung|  
@@ -143,7 +145,7 @@ In diesem Thema werden die Entitäts- und Typendarstellungen für gängige Eleme
 |Attachments|Sammlung von [Attachment](api-management-template-data-model-reference.md#Attachment)-Entitäten.|Eventuelle Anlagen zum Problem.|  
 |Dienste|Sammlung von [API](#API)-Entitäten.|Die von dem Benutzer, der das Problem gemeldet hat, abonnierten APIs.|  
   
-##  <a name="a-namefilteringa-filtering"></a><a name="Filtering"></a> Filterung  
+##  <a name="Filtering"></a> Filterung  
  Die `filtering`-Entität weist die folgenden Eigenschaften auf.  
   
 |Eigenschaft|Typ|Beschreibung|  
@@ -151,7 +153,7 @@ In diesem Thema werden die Entitäts- und Typendarstellungen für gängige Eleme
 |Muster|string|Der aktuelle Suchbegriff oder `null`, wenn kein Suchbegriff vorliegt.|  
 |Platzhalter|string|Der Text, der im Suchfeld angezeigt werden soll, wenn kein Suchbegriff angegeben ist.|  
   
-##  <a name="a-nameheadera-header"></a><a name="Header"></a> Header  
+##  <a name="Header"></a> Header  
  In diesem Abschnitt wird die `parameter`-Darstellung beschrieben.  
   
 |Eigenschaft|Beschreibung|Typ|  
@@ -164,7 +166,7 @@ In diesem Thema werden die Entitäts- und Typendarstellungen für gängige Eleme
 |required|Boolescher Wert|Gibt an, ob der Header erforderlich ist.|  
 |readOnly|Boolescher Wert|Gibt an, ob der Header schreibgeschützt ist.|  
   
-##  <a name="a-namehttprequesta-http-request"></a><a name="HTTPRequest"></a> HTTP-Anforderung  
+##  <a name="HTTPRequest"></a> HTTP-Anforderung  
  In diesem Abschnitt wird die `request`-Darstellung beschrieben.  
   
 |Eigenschaft|Typ|Beschreibung|  
@@ -174,7 +176,7 @@ In diesem Thema werden die Entitäts- und Typendarstellungen für gängige Eleme
 |parameters|Array von [Parametern](#Parameter)|Die Sammlung von Vorgangsanforderungsparametern.|  
 |representations|Array von [Darstellungen](#Representation)|Die Sammlung von Vorgangsanforderungsdarstellungen.|  
   
-##  <a name="a-namehttpresponsea-http-response"></a><a name="HTTPResponse"></a> HTTP-Antwort  
+##  <a name="HTTPResponse"></a> HTTP-Antwort  
  In diesem Abschnitt wird die `response`-Darstellung beschrieben.  
   
 |Eigenschaft|Typ|Beschreibung|  
@@ -183,7 +185,7 @@ In diesem Thema werden die Entitäts- und Typendarstellungen für gängige Eleme
 |description|string|Vorgangsantwortbeschreibung.|  
 |representations|Array von [Darstellungen](#Representation)|Die Sammlung von Vorgangsantwortdarstellungen.|  
   
-##  <a name="a-nameoperationa-operation"></a><a name="Operation"></a> Vorgang  
+##  <a name="Operation"></a> Vorgang  
  Die `operation`-Entität weist die folgenden Eigenschaften auf.  
   
 |Eigenschaft|Typ|Beschreibung|  
@@ -198,7 +200,7 @@ In diesem Thema werden die Entitäts- und Typendarstellungen für gängige Eleme
 |request|[HTTP-Anforderung](#HTTPRequest)|Eine Entität, die Anforderungsdetails enthält.|  
 |responses|Array von [HTTP-Antworten](#HTTPResponse)|Array von [HTTP Response](#HTTPResponse)-Entitäten des Vorgangs.|  
   
-##  <a name="a-namemenua-operation-menu"></a><a name="Menu"></a> Vorgangsmenü  
+##  <a name="Menu"></a> Vorgangsmenü  
  Die `operation menu`-Entität weist die folgenden Eigenschaften auf.  
   
 |Eigenschaft|Typ|Beschreibung|  
@@ -208,7 +210,7 @@ In diesem Thema werden die Entitäts- und Typendarstellungen für gängige Eleme
 |Aktion|string|Der Menütyp.|  
 |MenuItems|Sammlung von [Operation menu item](#MenuItem)-Entitäten.|Die Vorgänge für die aktuelle API.|  
   
-##  <a name="a-namemenuitema-operation-menu-item"></a><a name="MenuItem"></a> Vorgangsmenüelement  
+##  <a name="MenuItem"></a> Vorgangsmenüelement  
  Die `operation menu item`-Entität weist die folgenden Eigenschaften auf.  
   
 |Eigenschaft|Typ|Beschreibung|  
@@ -217,7 +219,7 @@ In diesem Thema werden die Entitäts- und Typendarstellungen für gängige Eleme
 |Titel|string|Die Beschreibung des Vorgangs.|  
 |HttpMethod|string|Die HTTP-Methode des Vorgangs.|  
   
-##  <a name="a-namepaginga-paging"></a><a name="Paging"></a> Seitenverwaltung  
+##  <a name="Paging"></a> Seitenverwaltung  
  Die `paging`-Entität weist die folgenden Eigenschaften auf.  
   
 |Eigenschaft|Typ|Beschreibung|  
@@ -228,7 +230,7 @@ In diesem Thema werden die Entitäts- und Typendarstellungen für gängige Eleme
 |ShowAll|Boolescher Wert|Gibt an, ob alle Ergebnisse auf einer einzigen Seite angezeigt werden sollen.|  
 |PageCount|number|Die Anzahl von Ergebnisseiten.|  
   
-##  <a name="a-nameparametera-parameter"></a><a name="Parameter"></a> Parameter  
+##  <a name="Parameter"></a> Parameter  
  In diesem Abschnitt wird die `parameter`-Darstellung beschrieben.  
   
 |Eigenschaft|Beschreibung|Typ|  
@@ -241,7 +243,7 @@ In diesem Thema werden die Entitäts- und Typendarstellungen für gängige Eleme
 |kind|number|Gibt an, ob dieser Parameter ein path-Parameter (1) oder ein querystring-Parameter (2) ist.|  
 |typeName|string|Der Parametertyp.|  
   
-##  <a name="a-nameproducta-product"></a><a name="Product"></a> Produkt  
+##  <a name="Product"></a> Produkt  
  Die `product`-Entität weist die folgenden Eigenschaften auf.  
   
 |Eigenschaft|Typ|Beschreibung|  
@@ -254,7 +256,7 @@ In diesem Thema werden die Entitäts- und Typendarstellungen für gängige Eleme
 |AllowMultipleSubscriptions|Boolescher Wert|Gibt an, ob ein Benutzer zur gleichen Zeit mehrere Abonnements für dieses Produkt besitzen kann.|  
 |MultipleSubscriptionsCount|number|Die Anzahl von Abonnements für dieses Produkt vom aktuellen Benutzer.|  
   
-##  <a name="a-nameprovidera-provider"></a><a name="Provider"></a> Anbieter  
+##  <a name="Provider"></a> Anbieter  
  Die `provider`-Entität weist die folgenden Eigenschaften auf.  
   
 |Eigenschaft|Typ|Beschreibung|  
@@ -263,7 +265,7 @@ In diesem Thema werden die Entitäts- und Typendarstellungen für gängige Eleme
 |AuthenticationType|string|Der Anbietertyp. (Azure Active Directory, Facebook-Anmeldung, Google-Konto, Microsoft-Konto, Twitter).|  
 |Caption|string|Der Anzeigename des Anbieters.|  
   
-##  <a name="a-namerepresentationa-representation"></a><a name="Representation"></a> Darstellung  
+##  <a name="Representation"></a> Darstellung  
  In diesem Abschnitt wird eine `representation` beschrieben.  
   
 |Eigenschaft|Typ|Beschreibung|  
@@ -271,7 +273,7 @@ In diesem Thema werden die Entitäts- und Typendarstellungen für gängige Eleme
 |contentType|string|Gibt einen registrierten oder benutzerdefinierten Inhaltstyp für diese Darstellung an, z. B. `application/xml`.|  
 |Beispiel|string|Ein Beispiel für die Darstellung.|  
   
-##  <a name="a-namesubscriptiona-subscription"></a><a name="Subscription"></a> Abonnement  
+##  <a name="Subscription"></a> Abonnement  
  Die `subscription`-Entität weist die folgenden Eigenschaften auf.  
   
 |Eigenschaft|Typ|Beschreibung|  
@@ -297,7 +299,7 @@ In diesem Thema werden die Entitäts- und Typendarstellungen für gängige Eleme
 |CancelUrl|string|Die relative URL zum Kündigen des Abonnements.|  
 |RenewUrl|string|Die relative URL zum Verlängern des Abonnements.|  
   
-##  <a name="a-namesubscriptionsummarya-subscription-summary"></a><a name="SubscriptionSummary"></a> Abonnementzusammenfassung  
+##  <a name="SubscriptionSummary"></a> Abonnementzusammenfassung  
  Die `subscription summary`-Entität weist die folgenden Eigenschaften auf.  
   
 |Eigenschaft|Typ|Beschreibung|  
@@ -305,7 +307,7 @@ In diesem Thema werden die Entitäts- und Typendarstellungen für gängige Eleme
 |ID|string|Ressourcenbezeichner. Zur eindeutigen Identifizierung des Abonnements in der aktuellen Instanz des API Management-Diensts. Der Wert ist eine gültige relative URL im Format `subscriptions/{sid}`, wobei `{sid}` einen Abonnementbezeichner darstellt. Diese Eigenschaft ist schreibgeschützt.|  
 |DisplayName|string|Der Anzeigename des Abonnements.|  
   
-##  <a name="a-nameuseraccountinfoa-user-account-info"></a><a name="UserAccountInfo"></a> Benutzerkontoinformationen  
+##  <a name="UserAccountInfo"></a> Benutzerkontoinformationen  
  Die `user account info`-Entität weist die folgenden Eigenschaften auf.  
   
 |Eigenschaft|Typ|Beschreibung|  
@@ -318,7 +320,7 @@ In diesem Thema werden die Entitäts- und Typendarstellungen für gängige Eleme
 |ProviderName|string|Name des Authentifizierungsanbieters.|  
 |IsBasicAccount|Boolescher Wert|TRUE, wenn dieses Konto mithilfe von E-Mail-Adresse und Kennwort registriert wurde. FALSE, wenn das Konto mithilfe eines Anbieters registriert wurde.|  
   
-##  <a name="a-nameusesignina-user-sign-in"></a><a name="UseSignIn"></a> Benutzeranmeldung  
+##  <a name="UseSignIn"></a> Benutzeranmeldung  
  Die `user sign in`-Entität weist die folgenden Eigenschaften auf.  
   
 |Eigenschaft|Typ|Beschreibung|  
@@ -336,7 +338,7 @@ In diesem Thema werden die Entitäts- und Typendarstellungen für gängige Eleme
 |UserRegistrationTerms|string|Bedingungen, denen ein Benutzer zustimmen muss, bevor er sich anmeldet.|  
 |UserRegistrationTermsEnabled|Boolescher Wert|Gibt an, ob Bedingungen aktiviert sind.|  
   
-##  <a name="a-nameusersignupa-user-sign-up"></a><a name="UserSignUp"></a> Benutzerregistrierung  
+##  <a name="UserSignUp"></a> Benutzerregistrierung  
  Die `user sign up`-Entität weist die folgenden Eigenschaften auf.  
   
 |Eigenschaft|Typ|Beschreibung|  
@@ -356,9 +358,4 @@ In diesem Thema werden die Entitäts- und Typendarstellungen für gängige Eleme
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum Arbeiten mit Vorlagen finden Sie unter [So passen Sie das Azure API Management-Entwicklerportal mithilfe von Vorlagen an](api-management-developer-portal-templates.md).
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

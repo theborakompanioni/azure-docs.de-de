@@ -2,7 +2,7 @@
 title: Azure Media Services-Ausgabemetadaten-Schema | Microsoft Docs
 description: "Dieses Thema enthält eine Übersicht über das Azure Media Services-Ausgabemetadaten-Schema."
 author: Juliako
-manager: erikre
+manager: cfowler
 editor: 
 services: media-services
 documentationcenter: 
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c3c5a3ee123fe021444370583c7f37737a03edce
-ms.openlocfilehash: 2e21c8df29a78da77505b6f67434d97698f7a212
+ms.translationtype: HT
+ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
+ms.openlocfilehash: c175d359f93e7cd8cd73aa498ad8b71c4ec497f2
 ms.contentlocale: de-de
-ms.lasthandoff: 11/17/2016
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="output-metadata"></a>Ausgeben von Metadaten
@@ -49,7 +49,7 @@ Sammlung von „AssetFile“-Einträgen für den Codierauftrag.
 | Name | Typ | Beschreibung |
 | --- | --- | --- |
 | **Name**<br/><br/> Erforderlich |**xs:string** |Der Name der Medienobjektdatei. |
-| **Größe**<br/><br/> minInclusive ="0"<br/><br/> Erforderlich |**xs:long** |Größe der Medienobjektdatei in Bytes. |
+| **Größe**<br/><br/> minInclusive ="0"<br/><br/> Erforderlich |**xs:long** |Größe der Assetdatei in Byte |
 | **Duration**<br/><br/> Erforderlich |**xs:duration** |Dauer der Inhaltswiedergabe. |
 
 ### <a name="child-elements"></a>Untergeordnete Elemente
@@ -101,9 +101,9 @@ Eine bestimmte Videospur im übergeordneten Mediendateiobjekt.
 | **FourCC**<br/><br/> Erforderlich |**xs:string** |Videocodec-FourCC-Code |
 | **Profil** |**xs:string** |H264-Profil (gilt nur für den H264-Codec). |
 | **Level** |**xs:string** |H264-Pegel (gilt nur für den H264-Codec). |
-| **Width**<br/><br/> minInclusive ="0"<br/><br/> Erforderlich |**xs:int** |Breite des codierten Videos in Pixel. |
-| **Height**<br/><br/> minInclusive ="0"<br/><br/> Erforderlich |**xs:int** |Höhe des codierten Videos in Pixel. |
-| **DisplayAspectRatioNumerator**<br/><br/> minInclusive ="0"<br/><br/> Erforderlich |**xs:double** |Seitenverhältnis-Zähler der Videoanzeige. |
+| **Width**<br/><br/> minInclusive ="0"<br/><br/> Erforderlich |**xs:int** |Breite des codierten Videos in Pixel |
+| **Height**<br/><br/> minInclusive ="0"<br/><br/> Erforderlich |**xs:int** |Höhe des codierten Videos in Pixel |
+| **DisplayAspectRatioNumerator**<br/><br/> minInclusive ="0"<br/><br/> Erforderlich |**xs:double** |Seitenverhältnis-Zähler der Videoanzeige |
 | **DisplayAspectRatioDenominator**<br/><br/> minInclusive ="0"<br/><br/> Erforderlich |**xs:double** |Seitenverhältnis-Nenner der Videoanzeige. |
 | **Framerate**<br/><br/> minInclusive ="0"<br/><br/> Erforderlich |**xs:decimal** |Gemessene Videobildfrequenz im Format „.3f“. |
 | **TargetFramerate**<br/><br/> minInclusive ="0"<br/><br/> Erforderlich |**xs:decimal** |Voreingestellte Videobildfrequenz im Format „.3f“. |
@@ -133,7 +133,7 @@ Eine bestimmte Audiospur im übergeordneten Mediendateiobjekt.
 | **Codec** |**xs:string** |Codec-Zeichenfolge der Audiospur. |
 | **EncoderVersion** |**xs:string** |Optionale Zeichenfolge mit der Encoderversion, für EAC3 erforderlich. |
 | **Channels**<br/><br/> minInclusive ="0"<br/><br/> Erforderlich |**xs:int** |Anzahl der Audiokanäle. |
-| **SamplingRate**<br/><br/> minInclusive ="0"<br/><br/> Erforderlich |**xs:int** |Audiosamplingrate in Samples/Sek. oder Hz. |
+| **SamplingRate**<br/><br/> minInclusive ="0"<br/><br/> Erforderlich |**xs:int** |Audiosamplingrate in Stichproben/Sekunde oder Hz |
 | **Bitrate**<br/><br/> minInclusive ="0"<br/><br/> Erforderlich |**xs:int** |Die durchschnittliche Audiobitrate in Bit/s gemäß Berechnung anhand der Medienobjektdatei. Zählt nur die elementare Datenstrom-Nutzlast, ohne den Aufwand für das Packen einzubeziehen. |
 | **BitsPerSample**<br/><br/> minInclusive ="0"<br/><br/> Erforderlich |**xs:int** |Bits pro Sample für den Formattyp „wFormatTag“. |
 

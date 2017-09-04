@@ -4,7 +4,7 @@ description: Verwenden von Machine Learning und einer benutzerdefinierten Funkti
 keywords: 
 documentationcenter: 
 services: stream-analytics
-author: jeffstokes72
+author: samacha
 manager: jhubbard
 editor: cgronlun
 ms.assetid: cfced01f-ccaa-4bc6-81e2-c03d1470a7a2
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 07/06/2017
-ms.author: jeffstok
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 6d374a622a43396a0b26d7e3f21050fe35244442
+ms.author: samacha
+ms.translationtype: HT
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: 243ee799d2cddb1baf5b8046eee6eaf182463d2e
 ms.contentlocale: de-de
-ms.lasthandoff: 07/08/2017
+ms.lasthandoff: 08/29/2017
 
 ---
 
@@ -225,7 +225,7 @@ Stream Analytics verwendet eine deklarative, SQL-basierte Abfrage zur Analyse un
     SELECT text, sentiment(text) as result from datainput  
     )  
 
-    Select text, result.[Scored Labels]  
+    Select text, result.[Score]  
     Into datamloutput
     From sentiment  
     ```    
@@ -269,8 +269,7 @@ Sie können auch auf Azure Machine Learning-Funktionen bezogene Metriken anzeige
 
 * **Funktionsanforderungen** gibt die Anzahl von Anforderungen an, die an den Machine Learning-Webdienst gesendet werden.  
 * **Funktionsereignisse** gibt die Anzahl von Ereignissen in der Anforderung an. Standardmäßig enthält jede Anforderung an einen Machine Learning-Webdienst bis zu 1000 Ereignisse.  
-  
-    ![Stream Analytics und Machine Learning, Machine Learning-Überwachungsansicht](./media/stream-analytics-machine-learning-integration-tutorial/job-monitor.png)  
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

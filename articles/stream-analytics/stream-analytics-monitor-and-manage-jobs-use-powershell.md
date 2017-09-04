@@ -4,7 +4,7 @@ description: "Erfahren Sie, wie Sie Stream Analytics-Aufträge mithilfe von Powe
 keywords: Azure PowerShell, Azure PowerShell-Cmdlets, PowerShell-Befehl, PowerShell-Skripts
 services: stream-analytics
 documentationcenter: 
-author: jeffstokes72
+author: samacha
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 514f454e-d18c-4081-8304-ab48577e15e8
@@ -14,13 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
-ms.author: jeffstok
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: d968a22c61c8e9c3375927c01dd10aaf413fce00
+ms.author: samacha
+ms.translationtype: HT
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: ca819aa210118d32e3ddada61bfd2125d7ab2236
 ms.contentlocale: de-de
-ms.lasthandoff: 07/04/2017
-
+ms.lasthandoff: 08/30/2017
 
 ---
 # <a name="monitor-and-manage-stream-analytics-jobs-with-azure-powershell-cmdlets"></a>Überwachen und Verwalten von Stream Analytics-Aufträgen mit PowerShell-Cmdlets
@@ -452,7 +451,7 @@ Azure PowerShell 1.0:
 Dieser PowerShell-Befehl testet den Verbindungsstatus der Ausgabe "Output" in "StreamingJob".  
 
 ## <a name="get-support"></a>Support
-Um Hilfe zu erhalten, nutzen Sie unser [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics). 
+Um Hilfe zu erhalten, nutzen Sie unser [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics). 
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Einführung in Azure Stream Analytics](stream-analytics-introduction.md)

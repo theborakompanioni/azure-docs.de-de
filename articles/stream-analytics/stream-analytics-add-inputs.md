@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: samacha
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: ea8f28183f2621e25a53ea7a73ab9f6c5c2b8d07
+ms.translationtype: HT
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 8bdbcf78f2892cbd1e1cc09cef220dff08dd9490
 ms.contentlocale: de-de
-ms.lasthandoff: 07/04/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="add-a-streaming-data-input-or-reference-data-to-a-stream-analytics-job"></a>Hinzufügen einer Streamingdateneingabe oder von Verweisdaten zu einem Stream Analytics-Auftrag
 Erfahren Sie, wie Sie eine Datenquelle als Streamingdateneingabe aus Event Hubs oder als Verweisdaten aus dem Blobspeicher mit Ihrem Stream Analytics-Auftrag verknüpfen.
 
-Azure Stream Analytics-Aufträge können mit einer oder mehreren Dateneingaben verknüpft werden, die jeweils eine Verbindung mit einer vorhandenen Datenquelle definieren. Werden Daten an diese Datenquelle gesendet, werden sie von dem Stream Analytics-Auftrag übernommen und in Echtzeit als Streamingdaten verarbeitet. Stream Analytics verfügt über eine hervorragende Integration in [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) und [Azure Blob Storage](../storage/storage-dotnet-how-to-use-blobs.md) sowohl innerhalb als auch außerhalb des Auftragsabonnements.
+Azure Stream Analytics-Aufträge können mit einer oder mehreren Dateneingaben verknüpft werden, die jeweils eine Verbindung mit einer vorhandenen Datenquelle definieren. Werden Daten an diese Datenquelle gesendet, werden sie von dem Stream Analytics-Auftrag übernommen und in Echtzeit als Streamingdaten verarbeitet. Stream Analytics verfügt über eine hervorragende Integration in [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) und [Azure Blob Storage](../storage/blobs/storage-dotnet-how-to-use-blobs.md) sowohl innerhalb als auch außerhalb des Auftragsabonnements.
 
 Dieser Artikel ist ein Schritt im [Stream Analytics-Lernpfad](/documentation/learning-paths/stream-analytics/).
 
@@ -74,7 +74,7 @@ So fügen Sie Ihrem Stream Analytics-Auftrag eine Eingabe hinzu:
     ![Verbindungstest für die Streamingdateneingabe](./media/stream-analytics-add-inputs/11-stream-analytics-add-inputs.png)  
 
 ## <a name="get-help-with-streaming-data-inputs"></a>Abrufen von Hilfe zum Streamen von Dateneingaben
-Um Hilfe zu erhalten, besuchen Sie unser [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)
+Um Hilfe zu erhalten, besuchen Sie unser [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Einführung in Azure Stream Analytics](stream-analytics-introduction.md)

@@ -4,7 +4,7 @@ description: "Verwenden Sie ein Power BI-Dashboard für Echtzeit-Streaming, um B
 keywords: Analysedashboard, Echtzeitdashboard
 services: stream-analytics
 documentationcenter: 
-author: jeffstokes72
+author: samacha
 manager: jhubbard
 editor: cgronlun
 ms.assetid: fe8db732-4397-4e58-9313-fec9537aa2ad
@@ -14,13 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 06/27/2017
-ms.author: jeffstok
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: d55cadbd60ee47b9c4b551f1b2b5bc4431bfac97
+ms.author: samacha
+ms.translationtype: HT
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: b446e2296f2747012849936b994c4a4a2044869e
 ms.contentlocale: de-de
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Stream Analytics und Power BI: Ein Dashboard mit Echtzeitanalyse von Streamingdaten
@@ -37,11 +36,11 @@ Stellen Sie zunächst sicher, dass Sie über Folgendes verfügen:
 
 * Ein Azure-Konto.
 * Ein Konto für Power BI. Sie können ein Geschäfts-, Schul- oder Unikonto verwenden.
-* Eine abgeschlossene Version des Tutorials [Erste Schritte mit Azure Stream Analytics: Betrugserkennung in Echtzeit](stream-analytics-real-time-fraud-detection.md). Das Tutorial enthält eine App, mit der fiktive Metadaten für Telefonanrufe generiert werden. Im Tutorial erstellen Sie einen Event Hub und senden die Streamingdaten der Telefonanrufe an den Event Hub. Sie schreiben eine Abfrage, mit der betrügerische Anrufe erkannt werden (Anrufe unter derselben Nummer zur gleichen Zeit an unterschiedlichen Orten). 
+* Eine abgeschlossene Version des Tutorials [Erste Schritte mit Azure Stream Analytics: Betrugserkennung in Echtzeit](stream-analytics-real-time-fraud-detection.md). Das Tutorial enthält eine App, mit der fiktive Metadaten für Telefonanrufe generiert werden. Im Tutorial erstellen Sie einen Event Hub und senden die Streamingdaten der Telefonanrufe an ihn. Sie schreiben eine Abfrage, mit der betrügerische Anrufe erkannt werden (Anrufe unter derselben Nummer zur gleichen Zeit an unterschiedlichen Orten). 
 
 
 ## <a name="add-power-bi-output"></a>Hinzufügen der Power BI-Ausgabe
-Im Tutorial zur Betrugsermittlung in Echtzeit wird die Ausgabe an Azure-Blobspeicher gesendet. In diesem Abschnitt fügen Sie eine Ausgabe hinzu, mit der Informationen an Power BI gesendet werden.
+Im Tutorial zur Betrugsermittlung in Echtzeit wird die Ausgabe an Azure Blob Storage gesendet. In diesem Abschnitt fügen Sie eine Ausgabe hinzu, mit der Informationen an Power BI gesendet werden.
 
 1. Öffnen Sie im Azure-Portal den Stream Analytics-Auftrag, den Sie zuvor erstellt haben. Wenn Sie den vorgeschlagenen Namen verwendet haben, hat der Auftrag den Namen `sa_frauddetection_job_demo`.
 
@@ -151,7 +150,7 @@ Der Stream Analytics-Auftrag beginnt mit der Suche nach betrügerischen Anrufen,
 
 ## <a name="create-the-dashboard-in-power-bi"></a>Erstellen des Dashboards in Power BI
 
-1. Navigieren Sie zu [Powerbi.com](https://powerbi.com), und melden Sie sich mit Ihrem Geschäfts-, Schul- oder Unikonto an. Wenn die Stream Analytics-Auftragsabfrage Ergebnisse ausgibt, ist zu sehen, dass das Dataset bereits erstellt wurde:
+1. Navigieren Sie zu [Powerbi.com](https://powerbi.com), und melden Sie sich mit Ihrem Geschäfts-, Schul- oder Unikonto an. Sofern die Stream Analytics-Auftragsabfrage Ergebnisse ausgibt, werden Sie feststellen, dass das Dataset bereits erstellt wurde:
 
     ![Streamingdataset in Power BI](./media/stream-analytics-power-bi-dashboard/streaming-dataset.png)
 
@@ -253,7 +252,7 @@ Wenn ein Auftrag gestartet wird, nachdem das Token abgelaufen ist, wird eine Feh
 Nachdem die Autorisierung mit Power BI aktualisiert wurde, wird im Autorisierungsbereich eine grüne Benachrichtigung angezeigt, die darauf hinweist, dass das Problem gelöst ist.
 
 ## <a name="get-help"></a>Hier erhalten Sie Hilfe
-Um Hilfe zu erhalten, nutzen Sie unser [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics).
+Um Hilfe zu erhalten, nutzen Sie unser [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Einführung in Azure Stream Analytics](stream-analytics-introduction.md)

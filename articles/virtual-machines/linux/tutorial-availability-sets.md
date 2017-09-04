@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 05/22/2017
 ms.author: cynthn
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
-ms.openlocfilehash: 486405aca760922ebed5f413495d3a0e1e339229
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 63fe3f165864f06228604cac56d06cc061ab25f5
 ms.contentlocale: de-de
-ms.lasthandoff: 08/09/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 
@@ -71,6 +71,32 @@ az vm availability-set create \
 
 Mithilfe von Verfügbarkeitsgruppen können Sie Ressourcen in „Fehlerdomänen“ und „Updatedomänen“ isolieren. Eine **Fehlerdomäne** stellt eine isolierte Sammlung von Server-, Netzwerk- und Speicherressourcen dar. Im vorherigen Beispiel haben wir angegeben, dass unsere Verfügbarkeitsgruppe auf mindestens zwei Fehlerdomänen verteilt werden soll, wenn unsere VMs bereitgestellt werden. Wir geben auch an, dass wir unsere Verfügbarkeitsgruppe über zwei **Updatedomänen** verteilen möchten.  Zwei Updatedomänen stellen sicher, dass unsere VM-Ressourcen bei Softwareupdates in Azure isoliert sind. Damit wird verhindert, dass die zugrunde liegende Software auf allen VM gleichzeitig aktualisiert wird.
 
+## <a name="configure-virtual-network"></a>Konfigurieren des virtuellen Netzwerks
+Vor der Bereitstellung mehrerer virtueller Computer und dem Testen des Load Balancers müssen Sie zunächst die unterstützenden virtuellen Netzwerkressourcen erstellen. Weitere Informationen zu virtuellen Netzwerken finden Sie im Tutorial [Verwalten von virtuellen Azure-Netzwerken](tutorial-virtual-network.md).
+
+### <a name="create-network-resources"></a>Erstellen von Netzwerkressourcen
+Erstellen Sie mit [az network vnet create](/cli/azure/network/vnet#create) ein virtuelles Netzwerk. Im folgenden Beispiel werden ein virtuelles Netzwerk mit dem Namen *myVnet* und einem Subnetz mit dem Namen *mySubnet* erstellt:
+
+```azurecli-interactive 
+az network vnet create \
+    --resource-group myResourceGroupAvailability \
+    --name myVnet \
+    --subnet-name mySubnet
+```
+Virtuelle NICs werden mit [az network nic create](/cli/azure/network/nic#create) erstellt. Im folgenden Beispiel werden drei virtuelle NICs erstellt (jeweils eine virtuelle NIC pro virtuellem Computer, den Sie in den folgenden Schritten für Ihre App erstellen). Sie können jederzeit weitere virtuelle NICs und virtuelle Computer erstellen und dem Load Balancer hinzufügen:
+
+```bash
+for i in `seq 1 3`; do
+    az network nic create \
+        --resource-group myResourceGroupAvailability \
+        --name myNic$i \
+        --vnet-name myVnet \
+        --subnet mySubnet \
+        --lb-name myLoadBalancer \
+        --lb-address-pools myBackEndPool
+done
+```
+
 ## <a name="create-vms-inside-an-availability-set"></a>Erstellen von virtuellen Computern in einer Verfügbarkeitsgruppe
 
 Virtuelle Computer müssen in der Verfügbarkeitsgruppe erstellt werden, um sicherzustellen, dass sie ordnungsgemäß auf die Hardwarekomponenten verteilt werden. Nach der Erstellung kann einer Verfügbarkeitsgruppe kein vorhandener virtueller Computer mehr hinzugefügt werden. 
@@ -83,6 +109,7 @@ for i in `seq 1 2`; do
      --resource-group myResourceGroupAvailability \
      --name myVM$i \
      --availability-set myAvailabilitySet \
+     --nics myNic$i \
      --size Standard_DS1_v2  \
      --image Canonical:UbuntuServer:14.04.4-LTS:latest \
      --admin-username azureuser \

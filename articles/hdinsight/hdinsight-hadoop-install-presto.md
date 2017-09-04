@@ -12,14 +12,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/17/2017
+ms.date: 08/28/2017
 ms.author: nitinme
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
-ms.openlocfilehash: 406ef84e72d253fec51a0b37c48f326dafd511b6
+ms.translationtype: HT
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: fb5e500b922522e4cdfa7dd07b5233688b916b3e
 ms.contentlocale: de-de
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="install-and-use-presto-on-hdinsight-hadoop-clusters"></a>Installieren und Verwenden von Presto in HDInsight Hadoop-Clustern
@@ -113,11 +112,11 @@ Dieser Abschnitt enthält die Schritte zum **Installieren von Airpal auf dem Edg
     Folgendes sollte angezeigt werden:
 
         {
-              "coordinator_address" : [ {
+            "coordinator_address" : [ {
                 "value" : "10.0.0.12:9090",
                 "level" : "application",
                 "updatedTime" : "Mon Apr 03 20:13:41 UTC 2017"
-          } ]
+        } ]
 
 3. Notieren Sie sich in der Ausgabe den Wert der **value**-Eigenschaft. Sie benötigen diesen während der Installation von Airpal auf dem Edgeknoten des Clusters. In der obigen Ausgabe benötigen Sie den Wert **10.0.0.12:9090**.
 

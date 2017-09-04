@@ -3,7 +3,7 @@ title: Verwenden von Azure API Management mit internen virtuellen Netzwerken | M
 description: Erfahren Sie, wie Azure API Management in einem internen virtuellen Netzwerk eingerichtet und konfiguriert wird.
 services: api-management
 documentationcenter: 
-author: solankisamir
+author: vladvino
 manager: kjoshi
 editor: 
 ms.assetid: dac28ccf-2550-45a5-89cf-192d87369bc3
@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: b9df2c3e7f49a47bfd714f28c5ab53590ca9a719
+ms.translationtype: HT
+ms.sourcegitcommit: 07e5e15f4f4c4281a93c8c3267c0225b1d79af45
+ms.openlocfilehash: a4c2bda1226ca05c775d011fba7bc59d4dab8998
 ms.contentlocale: de-de
-ms.lasthandoff: 04/27/2017
-
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="using-azure-api-management-service-with-internal-virtual-network"></a>Verwenden von Azure API Management mit internen virtuellen Netzwerken
@@ -63,23 +62,23 @@ Bei Verwendung von API Management im Modus eines externen virtuellen Netzwerks w
 ### <a name="access-on-default-host-names"></a>Zugriff auf Standardhostnamen:
 Wenn Sie z.B. einen API Management-Dienst in einer öffentlichen Azure-Cloud mit dem Namen „Contoso“ erstellen, werden standardmäßig die folgenden Dienstendpunkte konfiguriert.
 
->    Gateway/Proxy: contoso.azure-api.net
+>   Gateway/Proxy: contoso.azure-api.net
 
 > Herausgeberportal und Entwicklerportal: contoso.portal.azure-api.net
 
 > Endpunkt für die direkte Verwaltung: contoso.management.azure-api.net
 
->    Git: contoso.scm.azure-api.net
+>   Git: contoso.scm.azure-api.net
 
 Für den Zugriff auf diese API Management-Dienstendpunkte können Sie einen virtuellen Computer in einem Subnetz erstellen, das mit dem virtuellen Netzwerk verbunden ist, in dem API Management bereitgestellt wurde. Wenn die interne virtuelle IP-Adresse für Ihren Dienst 10.0.0.5 ist, können Sie die folgende Zuordnung in der Datei „hosts“ (% SystemDrive%\drivers\etc\hosts) vornehmen:
 
-> 10.0.0.5      contoso.azure-api.net
+> 10.0.0.5    contoso.azure-api.net
 
-> 10.0.0.5      contoso.portal.azure-api.net
+> 10.0.0.5    contoso.portal.azure-api.net
 
-> 10.0.0.5      contoso.management.azure-api.net
+> 10.0.0.5    contoso.management.azure-api.net
 
-> 10.0.0.5      contoso.scm.azure-api.net
+> 10.0.0.5    contoso.scm.azure-api.net
 
 Sie können dann über den virtuellen Computer, den Sie erstellt haben, auf alle Dienstendpunkte zugreifen. Wenn Sie einen benutzerdefinierten DNS-Server in einem virtuellen Netzwerk verwenden, können Sie auch DNS-A-Datensätze erstellen und auf diese Endpunkte von überall in Ihrem virtuellen Netzwerk zugreifen. 
 

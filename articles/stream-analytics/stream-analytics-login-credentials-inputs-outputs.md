@@ -4,7 +4,7 @@ description: "Erfahren Sie, wie Sie die Anmeldeinformationen für Stream Analyti
 keywords: Anmeldeinformationen
 services: stream-analytics
 documentationcenter: 
-author: jeffstokes72
+author: samacha
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 42ae83e1-cd33-49bb-a455-a39a7c151ea4
@@ -14,13 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
-ms.author: jeffstok
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: 26a0281ca272ebb7366aefe392ab1d25b3806eb4
+ms.author: samacha
+ms.translationtype: HT
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: a1a927fa9c34b38e54fdb22782e80fd13bf430c7
 ms.contentlocale: de-de
-ms.lasthandoff: 07/04/2017
-
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="rotate-login-credentials-for-inputs-and-outputs-in-stream-analytics-jobs"></a>Austauschen von Anmeldeinformationen für Ein- und Ausgaben in Stream Analytics-Aufträgen
@@ -195,7 +194,7 @@ Die folgende Bestätigung wird geöffnet:
     Command(s) completed successfully.
 
 ## <a name="get-help"></a>Hier erhalten Sie Hilfe
-Um Hilfe zu erhalten, besuchen Sie unser [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)
+Um Hilfe zu erhalten, besuchen Sie unser [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Einführung in Azure Stream Analytics](stream-analytics-introduction.md)

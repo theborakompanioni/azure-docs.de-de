@@ -4,7 +4,7 @@ description: Erfahren Sie, wie Azure Mobile Apps-Bindungen in Azure Functions ve
 services: functions
 documentationcenter: na
 author: ggailey777
-manager: erikre
+manager: cfowler
 editor: 
 tags: 
 keywords: Azure Functions, Funktionen, Ereignisverarbeitung, dynamisches Compute, serverlose Architektur
@@ -16,10 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 10/31/2016
 ms.author: glenga
-translationtype: Human Translation
-ms.sourcegitcommit: 96f253f14395ffaf647645176b81e7dfc4c08935
-ms.openlocfilehash: c5e1c02984f9773b263c0bee7685c7d5ff62e658
-
+ms.translationtype: HT
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: d2c0e4e233761584bad2df05a8e702e4fc77e84f
+ms.contentlocale: de-de
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="azure-functions-mobile-apps-bindings"></a>Mobile Apps-Bindungen in Azure Functions
@@ -255,10 +256,5 @@ module.exports = function (context, myQueueItem) {
 
 ## <a name="next-steps"></a>Nächste Schritte
 [!INCLUDE [next steps](../../includes/functions-bindings-next-steps.md)]
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

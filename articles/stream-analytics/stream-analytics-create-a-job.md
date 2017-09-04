@@ -4,7 +4,7 @@ description: "Erstellen eines Auftrags zur Verarbeitung von Datenanalysen für S
 keywords: Verarbeitung von Datenanalysen
 documentationcenter: 
 services: stream-analytics
-author: jeffstokes72
+author: samacha
 manager: jhubbard
 editor: cgronlun
 ms.assetid: e825fbcf-69e9-443f-b402-3b7a4568f415
@@ -14,13 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
-ms.author: jeffstok
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: 2e989ab0cb95a1caef44b2f235b162f2c12a79cc
+ms.author: samacha
+ms.translationtype: HT
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 05fdf1e20efd129cdfc27e1d37bc9e124edf5dcd
 ms.contentlocale: de-de
-ms.lasthandoff: 07/04/2017
-
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="how-to-create-a-data-analytics-processing-job-for-stream-analytics"></a>Erstellen eines Auftrags zur Verarbeitung von Datenanalysen für Stream Analytics
@@ -42,17 +41,17 @@ Erstellen Sie zuerst einen neuen Stream Analytics-Auftrag, um mit der Verwendung
    * Bei Verwendung des Azure-Portals geben Sie eine neue oder vorhandene **Ressourcengruppe** an, um verwandte Ressourcen für Ihre Anwendung zu speichern.
 4. Sobald die Optionen für den neuen Stream Analytics-Auftrag konfiguriert sind, klicken Sie auf **Stream Analytics-Auftrag erstellen**. Die Erstellung des Stream Analytics-Auftrags kann einige Minuten dauern. Sie können den Fortschritt im Benachrichtigungshub überwachen, um den Status zu überprüfen.
    
-   ![Benachrichtigungs-Hub für Aufträge zur Verarbeitung von Datenanalysen](./media/stream-analytics-create-a-job/2-stream-analytics-create-a-job.png)  
+   ![Benachrichtigungshub für Aufträge zur Verarbeitung von Datenanalysen](./media/stream-analytics-create-a-job/2-stream-analytics-create-a-job.png)  
    
-   ![Auftrag zur Verarbeitung von Datenanalysen im Azure-Portal – Auftrag erstellen](./media/stream-analytics-create-a-job/5-stream-analytics-create-a-job.png)  
-5. Der neue Auftrag wird mit dem Status **Erstellt**aufgeführt. Beachten Sie, dass die Schaltfläche **Start** deaktiviert ist. Sie müssen die Auftragseingabe, -abfrage und -ausgabe konfigurieren, bevor Sie den Auftrag starten können.
+   ![Azure-Portal – Auftrag zur Verarbeitung von Datenanalysen – Auftrag erstellen](./media/stream-analytics-create-a-job/5-stream-analytics-create-a-job.png)  
+5. Für den neuen Auftrag wird der Status **Erstellt** angezeigt. Beachten Sie, dass die Schaltfläche **Start** deaktiviert ist. Vor dem Starten des Auftrags müssen Eingabe, Abfrage und Ausgabe des Auftrags konfiguriert werden.
    
-   ![Auftrag zur Verarbeitung von Datenanalysen – Auftragsstatus](./media/stream-analytics-create-a-job/3-stream-analytics-create-a-job.png)  
+   ![Auftrag zur Verarbeitung von Datenanalysen – Status](./media/stream-analytics-create-a-job/3-stream-analytics-create-a-job.png)  
    
-   ![Auftrag zur Verarbeitung von Datenanalysen im Azure-Portal – Auftragsstatus](./media/stream-analytics-create-a-job/6-stream-analytics-create-a-job.png)  
+   ![Azure-Portal – Auftrag zur Verarbeitung von Datenanalysen – Status](./media/stream-analytics-create-a-job/6-stream-analytics-create-a-job.png)  
 
 ## <a name="get-help"></a>Hier erhalten Sie Hilfe
-Um Hilfe zu erhalten, besuchen Sie unser [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)
+Um Hilfe zu erhalten, besuchen Sie unser [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Einführung in Azure Stream Analytics](stream-analytics-introduction.md)

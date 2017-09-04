@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/25/2017
 ms.author: bwren
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: b415141f152e88e13678c464eddc4f73df2da54e
+ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
+ms.openlocfilehash: 29dfa31d38f85574f84ed351bc5c26224b1a7e16
 ms.contentlocale: de-de
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="portals-for-creating-and-editing-log-queries-in-azure-log-analytics"></a>Portale zum Erstellen und Bearbeiten von Protokollabfragen in Azure Log Analytics
@@ -50,6 +50,6 @@ Aufgrund der erweiterten Funktionen wird das Advanced Analytics-Portal in der Re
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Absolvieren Sie zum Erstellen von Abfragen das Tutorial zur Verwendung des [Portals für die Protokollsuche](log-analytics-log-search-log-search-portal.md) oder des [Advanced Analytics-Portals](https://docs.loganalytics.io/learn/tutorial_getting_started_with_analytics_portal.html).
-- Sehen Sie sich ein [Tutorial zum Schreiben von Abfragen](https://docs.loganalytics.io/learn/tutorial_getting_started_with_queries.html) mit der neuen Abfragesprache an.
+- Absolvieren Sie zum Erstellen von Abfragen das Tutorial zur Verwendung des [Portals für die Protokollsuche](log-analytics-log-search-log-search-portal.md) oder des [Advanced Analytics-Portals](https://go.microsoft.com/fwlink/?linkid=856587).
+- Sehen Sie sich ein [Tutorial zum Schreiben von Abfragen](https://go.microsoft.com/fwlink/?linkid=856078) mit der neuen Abfragesprache an.
 

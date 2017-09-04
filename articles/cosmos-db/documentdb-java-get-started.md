@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 05/22/2017
 ms.author: arramac
 ms.translationtype: HT
-ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
-ms.openlocfilehash: ce1857395176ef50a16a7291170fb220896fd792
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: 5c4bcda308f001572e1c34e991616fc209250a02
 ms.contentlocale: de-de
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 08/24/2017
 
 ---
 # <a name="nosql-tutorial-build-a-documentdb-api-java-console-application"></a>NoSQL-Tutorial: Erstellen einer Java-Konsolenanwendung mit der DocumentDB-API
@@ -82,11 +82,11 @@ Das Verzeichnis enthält die Datei `pom.xml` für das Projekt und den Ordner `sr
 ## <a id="Connect"></a>Schritt 3: Herstellen einer Verbindung mit einem Azure Cosmos DB-Konto
 Navigieren Sie als Nächstes wieder zum [Azure-Portal](https://portal.azure.com), um Ihren Endpunkt und den primären Hauptschlüssel abzurufen. Der Endpunkt und der Primärschlüssel von Azure Cosmos DB sind erforderlich, damit Ihre Anwendung weiß, womit die Verbindung hergestellt werden soll, und damit Azure Cosmos DB weiß, dass die Verbindung Ihrer Anwendung vertrauenswürdig ist.
 
-Navigieren Sie im Azure-Portal zu Ihrem Azure Cosmos DB-Konto, und klicken Sie auf **Schlüssel**. Kopieren Sie den URI aus dem Portal, und fügen Sie ihn in `<your endpoint URI>` in der Datei „Program.java“ ein. Kopieren Sie anschließend den PRIMÄRSCHLÜSSEL aus dem Portal, und fügen Sie ihn in `<your key>` ein.
+Navigieren Sie im Azure-Portal zu Ihrem Azure Cosmos DB-Konto, und klicken Sie auf **Schlüssel**. Kopieren Sie den URI aus dem Portal, und fügen Sie ihn in `https://FILLME.documents.azure.com` in der Datei „Program.java“ ein. Kopieren Sie anschließend den PRIMÄRSCHLÜSSEL aus dem Portal, und fügen Sie ihn in `FILLME` ein.
 
     this.client = new DocumentClient(
-        "<your endpoint URI>",
-        "<your key>"
+        "https://FILLME.documents.azure.com",
+        "FILLME"
         , new ConnectionPolicy(),
         ConsistencyLevel.Session);
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/17/2017
 ms.author: bwren
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: 29ffb61715d803340abdb7e02aa64e9233676798
+ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
+ms.openlocfilehash: e3c463d749dc4179df58286b9bb75584880a6bc6
 ms.contentlocale: de-de
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="use-view-designer-to-create-custom-views-in-log-analytics"></a>Erstellen benutzerdefinierter Ansichten in Log Analytics mithilfe des Ansicht-Designers
@@ -30,7 +30,7 @@ Weitere verfügbare Artikel für den Ansicht-Designer:
 * [Referenz der Visualisierungskomponenten](log-analytics-view-designer-parts.md): Referenz der Einstellungen für die einzelnen Kacheln, die zur Verwendung in Ihren benutzerdefinierten Ansichten verfügbar sind.
 
 >[!NOTE]
-> Wenn Ihr Arbeitsbereich auf die [neue Log Analytics-Abfragesprache](log-analytics-log-search-upgrade.md) aktualisiert wurde, müssen die Abfragen in allen Ansichten in der [neuen Abfragesprache](https://docs.loganalytics.io/learn/tutorial_getting_started_with_queries.html) geschrieben werden.  Alle Ansichten, die vor dem Upgrade des Arbeitsbereichs erstellt wurden, werden automatisch konvertiert.
+> Wenn Ihr Arbeitsbereich auf die [neue Log Analytics-Abfragesprache](log-analytics-log-search-upgrade.md) aktualisiert wurde, müssen die Abfragen in allen Ansichten in der [neuen Abfragesprache](https://go.microsoft.com/fwlink/?linkid=856078) geschrieben werden.  Alle Ansichten, die vor dem Upgrade des Arbeitsbereichs erstellt wurden, werden automatisch konvertiert.
 
 ## <a name="concepts"></a>Konzepte
 Mit dem Ansicht-Designer erstellte Ansichten enthalten die Elemente der folgenden Tabelle.

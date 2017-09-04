@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/31/2017
+ms.date: 08/16/2017
 ms.author: ganesr;cherylmc
 ms.translationtype: HT
-ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
-ms.openlocfilehash: 174954a3b4345bc40a509f0078b760a728a7dcfd
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: de3550c20439fa809869d98b8a57ea3be9c03e7c
 ms.contentlocale: de-de
-ms.lasthandoff: 08/01/2017
+ms.lasthandoff: 08/24/2017
 
 ---
 # <a name="configure-route-filters-for-microsoft-peering"></a>Konfigurieren von Routenfiltern für das Microsoft-Peering
@@ -145,10 +145,10 @@ Set-AzureRmRouteFilter -RouteFilter $routefilter
 
 ## <a name="attach"></a>Schritt 3: Anfügen des Routenfilters zu einer ExpressRoute-Verbindung
 
-Führen Sie den folgenden Befehl aus, um der ExpressRoute-Verbindung den Routenfilter anzufügen:
+Führen Sie den folgenden Befehl aus, um der ExpressRoute-Verbindung den Routenfilter anzufügen, sofern Sie nur über Microsoft-Peering verfügen:
 
 ```powershell
-Set-AzureRmExpressRouteCircuitPeeringConfig -ExpressRouteCircuit $ckt -Name "MicrosoftPeering" -PeeringType MicrosoftPeering -PeerASN "BGPASNNumber" -PrimaryPeerAddressPrefix "A.A.A.A/30" -SecondaryPeerAddressPrefix "B.B.B.B/30" -VlanId "VLANNumber" -RouteFilter $routefilter
+$ckt.Peerings[0].RouteFilter = $routefilter 
 Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
@@ -194,3 +194,7 @@ Sie können einen Routenfilter nur löschen, wenn er keiner Verbindung angefügt
 ```powershell
 Remove-AzureRmRouteFilter -Name "MyRouteFilter" -ResourceGroupName "MyResourceGroup"
 ```
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Weitere Informationen über ExpressRoute finden Sie unter [ExpressRoute – FAQ](expressroute-faqs.md).
