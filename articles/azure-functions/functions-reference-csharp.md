@@ -4,7 +4,7 @@ description: Erfahren Sie, wie Azure Functions mithilfe von C# entwickelt wird.
 services: functions
 documentationcenter: na
 author: lindydonna
-manager: erikre
+manager: cfowler
 editor: 
 tags: 
 keywords: Azure Functions, Functions, Ereignisverarbeitung, Webhooks, dynamisches Compute, serverlose Architektur
@@ -16,12 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 06/07/2017
 ms.author: donnam
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
-ms.openlocfilehash: 1d0143d72ab18deeba7a32cc732445cc7ba64019
+ms.translationtype: HT
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: 25c5f72be8dc79d8b33a598c7be494bd955eb850
 ms.contentlocale: de-de
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="azure-functions-c-script-developer-reference"></a>C#-Skriptentwicklerreferenz zu Azure Functions
@@ -152,7 +151,7 @@ Die folgenden Namespaces werden automatisch importiert und sind daher optional:
 * `System.Net.Http`
 * `System.Threading.Tasks`
 * `Microsoft.Azure.WebJobs`
-* `Microsoft.Azure.WebJobs.Host`.
+* `Microsoft.Azure.WebJobs.Host`
 
 ## <a name="referencing-external-assemblies"></a>Verweise auf externe Assemblys
 Bei Frameworkassemblys können Sie Verweise über die `#r "AssemblyName"` -Anweisung hinzufügen.
@@ -178,7 +177,7 @@ Die folgenden Assemblys werden automatisch von der Azure Functions-Hostumgebung 
 * `Microsoft.Azure.WebJobs.Host`
 * `Microsoft.Azure.WebJobs.Extensions`
 * `System.Web.Http`
-* `System.Net.Http.Formatting`.
+* `System.Net.Http.Formatting`
 
 Von einem einfachen Namen kann auf folgende Assemblys verwiesen (z.B. `#r "AssemblyName"`):
 
@@ -446,3 +445,4 @@ Weitere Informationen finden Sie in den folgenden Ressourcen:
 * [Trigger und Bindungen in Azure Functions](functions-triggers-bindings.md)
 
 [host\.json]: https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json
+

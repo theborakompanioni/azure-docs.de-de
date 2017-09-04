@@ -16,16 +16,16 @@ ms.date: 07/13/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: f5da86a95623234d14b0a99ee64c7b98d7e920a1
+ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
+ms.openlocfilehash: fc9c9b0a6292dab256997a86a6db16367fc48cd3
 ms.contentlocale: de-de
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="log-analytics-search-reference"></a>Referenz zur Log Analytics-Suche
 
 >[!NOTE]
-> Dieser Artikel beschreibt Protokollsuchen mithilfe der aktuellen Abfragesprache in Azure Log Analytics.  Wenn für Ihren Arbeitsbereich ein Upgrade auf die [neue Log Analytics-Abfragesprache](log-analytics-log-search-upgrade.md) durchgeführt wurde, sollten Sie [die Sprachreferenz für die neue Sprache](https://docs.loganalytics.io/queryLanguage/query_language.html) lesen.
+> Dieser Artikel beschreibt Protokollsuchen mithilfe der aktuellen Abfragesprache in Azure Log Analytics.  Wenn für Ihren Arbeitsbereich ein Upgrade auf die [neue Log Analytics-Abfragesprache](log-analytics-log-search-upgrade.md) durchgeführt wurde, sollten Sie [die Sprachreferenz für die neue Sprache](https://go.microsoft.com/fwlink/?linkid=856079) lesen.
 
 Im folgenden Referenzabschnitt zur Suchsprache werden die allgemeinen Optionen zur Abfragesyntax beschrieben, die Sie beim Suchen von Daten und Filtern von Ausdrücken verwenden können, um Ihre Suche einzugrenzen. Außerdem werden die Befehle beschrieben, mit denen Sie Aktionen für die abgerufenen Daten ausführen können.
 

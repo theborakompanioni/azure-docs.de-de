@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/14/2017
 ms.author: bwren
 ms.translationtype: HT
-ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
-ms.openlocfilehash: 9d45f5cb1a7d15a69516faf2ffaa5f1ec25c3a43
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: 27ab2084cdb6506cbb807fc9c35b0e67630ad85f
 ms.contentlocale: de-de
-ms.lasthandoff: 08/17/2017
+ms.lasthandoff: 08/24/2017
 
 ---
 # <a name="navigation-and-dashboards-in-the-application-insights-portal"></a>Navigation und Dashboards im Application Insights-Portal
@@ -63,7 +63,7 @@ Das Diagramm wird automatisch mit einer Häufigkeit aktualisiert, die vom Zeitbe
 * Zeitbereich von mehr als 24 Stunden: (Zeitbereich)/60.
 
 ### <a name="pin-any-query-in-analytics"></a>Anheften von beliebigen Abfragen in Analytics
-Sie können Analysediagramme auch an ein [freigegebenes](#share-dashboards-with-your-team) Dashboard [anheften](app-insights-analytics-using.md#pin-to-dashboard). Dadurch können Sie neben Standardmetriken Diagramme einer beliebigen Abfrage hinzufügen. (Für dieses Feature wird eine Gebühr berechnet.)
+Sie können Analysediagramme auch an ein [freigegebenes](#share-dashboards-with-your-team) Dashboard [anheften](app-insights-analytics-using.md#pin-to-dashboard). Dadurch können Sie neben Standardmetriken Diagramme einer beliebigen Abfrage hinzufügen. 
 
 Die Ergebnisse werden automatisch einmal pro Stunde neu berechnet. Klicken Sie auf das Aktualisierungssymbol im Diagramm, um die Neuberechnung sofort auszuführen. (Durch die Aktualisierung des Browserfensters erfolgt keine Neuberechnung.)
 

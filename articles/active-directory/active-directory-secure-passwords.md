@@ -3,7 +3,7 @@ title: Azure AD-Kennwortsicherheit mit Stufen | Microsoft-Dokumentation
 description: "Erfahren Sie, wie Azure AD sichere Kennwörter erzwingt und Benutzerkennwörter vor Cyberkriminellen schützt."
 services: active-directory
 documentationcenter: 
-author: MicrosoftGuyJFlo
+author: barlanmsft
 manager: femila
 ms.assetid: 
 ms.service: active-directory
@@ -11,14 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2017
-ms.author: joflore
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 32464307ccb082b25538eaa522c1cdedef1ca555
+ms.date: 08/28/2017
+ms.author: barlan
+ms.translationtype: HT
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: de9d41cfb157c71f324f5662c1c037ff515e7108
 ms.contentlocale: de-de
-ms.lasthandoff: 05/11/2017
-
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="a-multi-tiered-approach-to-azure-ad-password-security"></a>Ein mehrstufiger Ansatz für die Azure AD-Kennwortsicherheit
@@ -26,9 +25,9 @@ ms.lasthandoff: 05/11/2017
 In diesem Artikel werden einige Best Practices beschrieben, die Sie als Benutzer oder Administrator verwenden können, um Ihre Azure Active Directory- (Azure AD) und Microsoft-Konten zu schützen.
 
  > [!NOTE]
- > Azure AD-Administratoren können Benutzerkennwörter mithilfe der Anleitungen im Artikel [Zurücksetzen des Kennworts für einen Benutzer in Azure Active Directory](active-directory-users-reset-password-azure-portal.md) zurücksetzen.
+ > **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md).
  >
- > Benutzer können ihr eigenes Kennwort mithilfe der Anleitungen im Artikel [Ich habe mein Azure AD-Kennwort vergessen. Was nun?](active-directory-passwords-update-your-own-password.md) zurücksetzen.
+ > Azure AD-Administratoren können Benutzerkennwörter mithilfe der Anleitungen im Artikel [Zurücksetzen des Kennworts für einen Benutzer in Azure Active Directory](active-directory-users-reset-password-azure-portal.md) zurücksetzen.
  >
 
 ## <a name="password-requirements"></a>Kennwortanforderungen
@@ -87,6 +86,4 @@ Informationen zur Kennwortzurücksetzung in Azure Active Directory finden Sie im
 * [Aktualisieren Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md)
 * [Grundlagen der Identitätsverwaltung in Azure](fundamentals-identity.md)
 * [Bericht zur Aktivität „Zurücksetzen des Kennworts“](active-directory-passwords-reporting.md)
-
-
 

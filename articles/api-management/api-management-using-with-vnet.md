@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/15/2016
 ms.author: apimpm
 ms.translationtype: HT
-ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
-ms.openlocfilehash: 69fd656ee9ae440d5769aca82ff8d49fb59d7780
+ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
+ms.openlocfilehash: c733c61132a79381d5e025819ff944507fc3fb9b
 ms.contentlocale: de-de
-ms.lasthandoff: 08/16/2017
+ms.lasthandoff: 08/30/2017
 
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Verwenden von Azure API Management mit virtuellen Netzwerken
@@ -108,7 +108,7 @@ Beim Hosten einer API Management-Dienstinstanz in einem VNET werden die in der f
 | * / 11000 - 11999 |Ausgehend |TCP |Abhängigkeit von Azure SQL V12 |VIRTUAL_NETWORK/INTERNET |Extern & Intern |
 | * / 14000 - 14999 |Ausgehend |TCP |Abhängigkeit von Azure SQL V12 |VIRTUAL_NETWORK/INTERNET |Extern & Intern |
 | * / 5671 |Ausgehend |AMQP |Abhängigkeit für Richtlinie zum Anmelden bei Event Hub und Überwachungs-Agent |VIRTUAL_NETWORK/INTERNET |Extern & Intern |
-| 6381 - 6383/6381 - 6383 |Ein- und ausgehend |UDP |Abhängigkeit von Redis-Cache |VIRTUAL_NETWORK/VIRTUAL_NETWORK |Extern & Intern |-
+| 6381 - 6383/6381 - 6383 |Ein- und ausgehend |TCP |Abhängigkeit von Redis-Cache |VIRTUAL_NETWORK/VIRTUAL_NETWORK |Extern & Intern |-
 | */445 |Ausgehend |TCP |Abhängigkeit von Azure File Share für GIT |VIRTUAL_NETWORK/INTERNET |Extern & Intern |
 | * / * | Eingehend |TCP |Lastenausgleich von Azure-Infrastruktur | AZURE_LOAD_BALANCER/VIRTUAL_NETWORK |Extern & Intern |
 

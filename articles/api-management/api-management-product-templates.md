@@ -3,7 +3,7 @@ title: Produktvorlagen in Azure API Management | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie den Inhalt der Produktseiten im Entwicklerportal von Azure API Management anpassen.
 services: api-management
 documentationcenter: 
-author: miaojiang
+author: vladvino
 manager: erikre
 editor: 
 ms.assetid: 49f9254c-4c5f-4ed4-9c8d-798f44e805ee
@@ -14,9 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-translationtype: Human Translation
-ms.sourcegitcommit: 77fd7b5b339a8ede8a297bec96f91f0a243cc18d
-ms.openlocfilehash: 393b10042f35afabf00672f9015f714e211a9d43
+ms.translationtype: HT
+ms.sourcegitcommit: 07e5e15f4f4c4281a93c8c3267c0225b1d79af45
+ms.openlocfilehash: dae757231d8f2ff7fcd8e032d941c0fa9f192796
+ms.contentlocale: de-de
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="product-templates-in-azure-api-management"></a>Produktvorlagen in Azure API Management
@@ -31,7 +33,7 @@ Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des En
 > [!NOTE]
 >  Beispielstandardvorlagen sind in der folgenden Dokumentation enthalten, können aber aufgrund von kontinuierlichen Verbesserungen geändert werden. Sie können die aktiven Standardvorlagen im Entwicklerportal anzeigen, indem Sie zu den gewünschten einzelnen Vorlagen navigieren. Weitere Informationen zum Arbeiten mit Vorlagen finden Sie unter [So passen Sie das Azure API Management-Entwicklerportal mithilfe von Vorlagen an](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
   
-##  <a name="a-nameproductlista-product-list"></a><a name="ProductList"></a> Produktliste  
+##  <a name="ProductList"></a> Produktliste  
  Mit der Vorlage für die **Produktliste** können Sie den Text der Produktlistenseite im Entwicklerportal anpassen.  
   
  ![Produktliste](./media/api-management-product-templates/APIM_ProductsListTemplatePage.png "APIM_ProductsListTemplatePage")  
@@ -117,7 +119,7 @@ Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des En
 }  
 ```  
   
-##  <a name="a-nameproducta-product"></a><a name="Product"></a> Produkt  
+##  <a name="Product"></a> Produkt  
  Mit der Vorlage **Produkt** können Sie den Text der Produktseite im Entwicklerportal anpassen.  
   
  ![Produktseite im Entwicklerportal](./media/api-management-product-templates/APIM_ProductPage.png "APIM_ProductPage")  
@@ -258,8 +260,3 @@ Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des En
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum Arbeiten mit Vorlagen finden Sie unter [So passen Sie das Azure API Management-Entwicklerportal mithilfe von Vorlagen an](api-management-developer-portal-templates.md).
-
-
-<!--HONumber=Jan17_HO2-->
-
-

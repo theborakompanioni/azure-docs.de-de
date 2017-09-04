@@ -14,14 +14,14 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/19/2017
+ms.date: 08/24/2017
 ms.author: seanmck
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
-ms.openlocfilehash: 7ec6c7fd2125293ba47a48feb83250eeb667d1a6
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: cc96ba9f5abd45a7503ba3327b30e1f809391384
 ms.contentlocale: de-de
-ms.lasthandoff: 08/07/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 
@@ -60,32 +60,12 @@ az acr create --resource-group myResourceGroup --name mycontainerregistry082 --s
 
 Für den Rest dieses Tutorials verwenden wir `<acrname>` als Platzhalter für den von Ihnen gewählten Namen der Containerregistrierung.
 
-## <a name="get-azure-container-registry-information"></a>Abrufen von Informationen aus Azure Container Registry
+## <a name="container-registry-login"></a>Anmeldung bei der Containerregistrierung
 
-Nachdem die Containerregistrierung erstellt wurde, können Sie ihren Anmeldeserver und das Kennwort abfragen. Der folgende Code gibt diese Werte zurück. Notieren Sie sich diese Werte für den Anmeldeserver und das Kennwort, da auf diese im gesamten Tutorial Bezug genommen wird.
-
-Anmeldeserver für die Containerregistrierung (durch den Namen Ihrer Registrierung ersetzen):
+Sie müssen sich bei der ACR-Instanz anmelden, damit Sie Images per Push in sie übertragen können. Verwenden Sie den Befehl [az acr login](https://docs.microsoft.com/en-us/cli/azure/acr#login), um den Vorgang abzuschließen. Sie müssen den eindeutigen Namen angeben, mit dem die Containerregistrierung bei ihrer Erstellung versehen wurde.
 
 ```azurecli
-az acr show --name <acrName> --query loginServer
-```
-
-Für den Rest dieses Tutorials verwenden wir `<acrLoginServer>` als Platzhalter für den Anmeldeserver der Containerregistrierung.
-
-Kennwort der Containerregistrierung:
-
-```azurecli
-az acr credential show --name <acrName> --query "passwords[0].value"
-```
-
-Für den Rest dieses Tutorials verwenden wir `<acrPassword>` als Platzhalter für das Kennwort der Containerregistrierung.
-
-## <a name="login-to-the-container-registry"></a>Anmelden bei der Containerregistrierung
-
-Sie müssen sich bei der Containerregistrierung anmelden, damit Sie Images per Push in sie übertragen können. Verwenden Sie den Befehl [docker login](https://docs.docker.com/engine/reference/commandline/login/), um den Vorgang abzuschließen. Wenn Sie den Befehl „docker login“ ausführen, müssen Sie den Namen des Anmeldeservers und das Kennwort für die Registrierung angeben.
-
-```bash
-docker login --username=<acrName> --password=<acrPassword> <acrLoginServer>
+az acr login --name <acrName>
 ```
 
 Nach Abschluss des Vorgangs wird eine Erfolgsmeldung zurückgegeben.
@@ -105,6 +85,12 @@ Ausgabe:
 ```bash
 REPOSITORY                   TAG                 IMAGE ID            CREATED              SIZE
 aci-tutorial-app             latest              5c745774dfa9        39 seconds ago       68.1 MB
+```
+
+Um den „loginServer“-Namen zu erhalten, führen Sie den folgenden Befehl aus.
+
+```azurecli
+az acr show --name <acrName> --query loginServer --output table
 ```
 
 Kennzeichnen Sie das Image *aci-tutorial-app* mit dem loginServer-Namen der Containerregistrierung. Fügen Sie zudem `:v1` am Ende des Imagenamens hinzu. Dieses Tag gibt die Imageversionsnummer an.
@@ -142,7 +128,7 @@ docker push <acrLoginServer>/aci-tutorial-app:v1
 Führen Sie den Befehl [az acr repository list](/cli/azure/acr/repository#list) aus, um eine Liste der Images zurückzugeben, die per Push in Ihre Azure Container Registry-Instanz übertragen wurden. Aktualisieren Sie den Befehl mit dem Namen der Containerregistrierung.
 
 ```azurecli
-az acr repository list --name <acrName> --username <acrName> --password <acrPassword> --output table
+az acr repository list --name <acrName> --output table
 ```
 
 Ausgabe:
@@ -156,7 +142,7 @@ aci-tutorial-app
 Verwenden Sie dann den Befehl [az acr repository show-tags](/cli/azure/acr/repository#show-tags), um die Tags für ein bestimmtes Image anzuzeigen.
 
 ```azurecli
-az acr repository show-tags --name <acrName> --username <acrName> --password <acrPassword> --repository aci-tutorial-app --output table
+az acr repository show-tags --name <acrName> --repository aci-tutorial-app --output table
 ```
 
 Ausgabe:

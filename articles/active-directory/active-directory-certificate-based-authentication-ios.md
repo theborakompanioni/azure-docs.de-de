@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/03/2017
+ms.date: 08/28/2017
 ms.author: markvi
 ms.reviewer: nigu
 ms.translationtype: HT
-ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
-ms.openlocfilehash: 350576cd7290fdfbfacd526de50c14e5f20b81dc
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: af9d0c7ba9c1a3026cc042872e1ab773eb3c4c8e
 ms.contentlocale: de-de
-ms.lasthandoff: 08/04/2017
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-ios"></a>Zertifikatbasierte Authentifizierung mit Azure Active Directory unter iOS
@@ -41,14 +41,16 @@ Dieses Feature ist als Vorversion in Office 365 US Government Defense- und Feder
 
 | Apps | Support |
 | --- | --- |
-| Word/Excel/PowerPoint |![Prüfen][1] |
+| Azure Information Protection-App |![Prüfen][1] |
+| Microsoft Teams |![Prüfen][1] |
 | OneNote |![Prüfen][1] |
 | OneDrive |![Prüfen][1] |
 | Outlook |![Prüfen][1] |
-| Yammer |![Prüfen][1] |
+| Power BI |![Prüfen][1] |
 | Skype for Business |![Prüfen][1] |
-| Azure Information Protection-App |![Prüfen][1] |
-| Microsoft Teams |![Prüfen][1] |
+| Word/Excel/PowerPoint |![Prüfen][1] |
+| Yammer |![Prüfen][1] |
+
 
 ## <a name="requirements"></a>Anforderungen 
 

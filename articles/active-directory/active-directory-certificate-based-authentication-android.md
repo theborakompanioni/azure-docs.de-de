@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/28/2017
+ms.date: 08/28/2017
 ms.author: markvi
 ms.reviewer: nigu
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: d37f0fcf4c91879c31b04dfd19cadee00e98ba91
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: 239d2e1724f2759a52cccdac11fc781d57393125
 ms.contentlocale: de-de
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-android"></a>Zertifikatbasierte Authentifizierung mit Azure Active Directory unter Android
@@ -41,15 +41,15 @@ Dieses Feature ist als Vorversion in Office 365 US Government Defense- und Feder
 ## <a name="office-mobile-applications-support"></a>Unterstützung mobiler Office-Anwendungen
 | Apps | Support |
 | --- | --- |
-| Word/Excel/PowerPoint |![Prüfen][1] |
+| Azure Information Protection-App |![Prüfen][1] |
+| Microsoft Teams |![Prüfen][1] |
 | OneNote |![Prüfen][1] |
 | OneDrive |![Prüfen][1] |
 | Outlook |![Prüfen][1] |
-| Yammer |![Prüfen][1] |
+| Power BI |![Prüfen][1] |
 | Skype for Business |![Prüfen][1] |
-| Azure Information Protection-App |![Prüfen][1] |
-| Microsoft Teams |![Prüfen][1] |
-
+| Word/Excel/PowerPoint |![Prüfen][1] |
+| Yammer |![Prüfen][1] |
 
 
 ### <a name="implementation-requirements"></a>Implementierungsanforderungen

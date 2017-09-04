@@ -2,7 +2,7 @@
 title: "Verwalten von Medienobjekten und verwandten Entitäten mit dem Media Services .NET SDK"
 description: "Erfahren Sie, wie Sie Medienobjekte und verwandte Entitäten mit dem Media Services SDK für .NET verwalten."
 author: juliako
-manager: erikre
+manager: cfowler
 editor: 
 services: media-services
 documentationcenter: 
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/17/2017
 ms.author: juliako
 ms.translationtype: HT
-ms.sourcegitcommit: cddb80997d29267db6873373e0a8609d54dd1576
-ms.openlocfilehash: e3de7c26af5cbc930defe542727a1250825fb1f8
+ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
+ms.openlocfilehash: 5efe16a09808267d0797521f9e1df2b60aec9cbb
 ms.contentlocale: de-de
-ms.lasthandoff: 07/18/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="managing-assets-and-related-entities-with-media-services-net-sdk"></a>Verwalten von Medienobjekten und verwandten Entitäten mit dem Media Services .NET SDK
@@ -38,8 +38,7 @@ Dieses Thema veranschaulicht das Verwalten von Azure Media Services-Entitäten m
 Richten Sie Ihre Entwicklungsumgebung ein, und füllen Sie die Datei „app.config“ mit Verbindungsinformationen, wie unter [Media Services-Entwicklung mit .NET](media-services-dotnet-how-to-use.md) beschrieben. 
 
 ## <a name="get-an-asset-reference"></a>Abrufen eines Verweises auf ein Medienobjekt
-Eine häufige Aufgabe besteht darin, einen Verweis auf ein vorhandenes Medienobjekt in Media Services abzurufen. Im folgenden Codebeispiel wird veranschaulicht, wie Sie einen Verweis auf ein Medienobjekt aus der Sammlung der Medienobjekte für das Serverkontextobjekt auf Basis einer Medienobjekt-ID abrufen.
-Im folgenden Codebeispiel wird eine Linq-Abfrage zum Abrufen eines Verweises auf ein vorhandenes IAsset-Objekt verwendet.
+Eine häufige Aufgabe besteht darin, einen Verweis auf ein vorhandenes Medienobjekt in Media Services abzurufen. Im folgenden Codebeispiel wird veranschaulicht, wie Sie einen Verweis auf ein Medienobjekt aus der Sammlung der Medienobjekte für das Serverkontextobjekt auf Basis einer Medienobjekt-ID abrufen. Im folgenden Codebeispiel wird eine Linq-Abfrage zum Abrufen eines Verweises auf ein vorhandenes IAsset-Objekt verwendet.
 
     static IAsset GetAsset(string assetId)
     {

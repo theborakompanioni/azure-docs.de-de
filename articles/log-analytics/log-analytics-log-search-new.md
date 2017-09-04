@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/25/2017
 ms.author: bwren
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: 07f8189d1380f5956db8614e82b8b704b152fb26
+ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
+ms.openlocfilehash: 0f27db7018e398f71a8d7bd0b86e643367b15875
 ms.contentlocale: de-de
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="understanding-log-searches-in-log-analytics"></a>Grundlegendes zu Protokollsuchvorgängen in Log Analytics
@@ -33,7 +33,7 @@ Sie benötigen eine Protokollsuche zum Abrufen von Daten aus Log Analytics.  Wen
 
 Zu den verschiedenen Möglichkeiten, wie Sie Protokollsuchen in Log Analytics verwenden können, gehören die folgenden:
 
-- **Portale.** Sie können interaktive Analysen von Daten im Repository über das [Protokollsuchportal](log-analytics-log-search-log-search-portal.md) oder das [Advanced Analytics-Portal](https://docs.loganalytics.io/learn/tutorial_getting_started_with_analytics_portal.html) durchführen.  Dadurch können Sie Ihre Abfrage bearbeiten und die Ergebnisse in einer Vielzahl von Formaten und Visualisierungen analysieren.  Die meisten Abfragen, die Sie erstellen, beginnen in einem der Portale und werden anschließend kopiert, nachdem Sie sich vergewissert haben, dass sie erwartungsgemäß funktionieren.
+- **Portale.** Sie können interaktive Analysen von Daten im Repository über das [Protokollsuchportal](log-analytics-log-search-log-search-portal.md) oder das [Advanced Analytics-Portal](https://go.microsoft.com/fwlink/?linkid=856587) durchführen.  Dadurch können Sie Ihre Abfrage bearbeiten und die Ergebnisse in einer Vielzahl von Formaten und Visualisierungen analysieren.  Die meisten Abfragen, die Sie erstellen, beginnen in einem der Portale und werden anschließend kopiert, nachdem Sie sich vergewissert haben, dass sie erwartungsgemäß funktionieren.
 - **Warnungsregeln.** [Warnungsregeln](log-analytics-alerts.md) identifizieren proaktiv Probleme durch die Daten in Ihrem Arbeitsbereich.  Jede Warnungsregel basiert auf einer Protokollsuche, die in regelmäßigen Abständen automatisch ausgeführt wird.  Die Ergebnisse werden überprüft, um zu ermitteln, ob eine Warnung erstellt werden soll.
 - **Ansichten.**  Sie können mit [Ansicht-Designer](log-analytics-view-designer.md) Visualisierungen von Daten erstellen, die in Benutzerdashboards einbezogen werden sollen.  Protokollsuchen stellen die von [Kacheln](log-analytics-view-designer-tiles.md) und [Visualisierungsteilen](log-analytics-view-designer-parts.md) in jeder Ansicht verwendeten Daten bereit.  Sie können von den Visualisierungsteilen einen Drilldown in das Protokollsuchportal ausführen, um die Daten weitergehend zu analysieren.
 - **Export:**  Wenn Sie Daten vom Log Analytics-Arbeitsbereich nach Excel oder [Power BI](log-analytics-powerbi.md) exportieren, erstellen Sie eine Protokollsuche, um die zu exportierenden Daten zu definieren.
@@ -83,5 +83,5 @@ Eine vollständige Dokumentation der Azure Log Analytics-Abfragesprache, einschl
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Erfahren Sie mehr über die [Portale, die Sie zum Erstellen und Bearbeiten von Protokollsuchen verwenden](log-analytics-log-search-portals.md).
-- Sehen Sie sich ein [Tutorial zum Schreiben von Abfragen](https://docs.loganalytics.io/learn/tutorial_getting_started_with_queries.html) mit der neuen Abfragesprache an.
+- Sehen Sie sich ein [Tutorial zum Schreiben von Abfragen](https://go.microsoft.com/fwlink/?linkid=856078) mit der neuen Abfragesprache an.
 
