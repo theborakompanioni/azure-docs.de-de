@@ -15,21 +15,20 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/12/2017
+ms.date: 08/28/2017
 ms.author: nitinme
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
-ms.openlocfilehash: acb80aa98cc978a906ccd6e4b4132a439e505bc8
+ms.translationtype: HT
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: b8955acc83b0fbb0612e7042d62170ae8078b9ad
 ms.contentlocale: de-de
-ms.lasthandoff: 06/07/2017
-
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="introduction-to-spark-on-hdinsight"></a>Einführung in Spark in HDInsight
 
-Dieser Artikel bietet eine Einführung in Spark in HDInsight. <a href="http://spark.apache.org/" target="_blank">Apache Spark</a> ist ein Open-Source-Framework für die Parallelverarbeitung, das die arbeitsspeicherinterne Verarbeitung unterstützt, um die Leistung von Anwendungen zur Analyse von großen Datenmengen zu steigern. Ein Spark-Cluster in HDInsight ist kompatibel mit Azure Storage (WASB) und Azure Data Lake Store. Ihre vorhandenen in Azure gespeicherten Daten können also problemlos über einen Spark-Cluster verarbeitet werden.
+Dieser Artikel bietet eine Einführung in Spark in HDInsight. <a href="http://spark.apache.org/" target="_blank">Apache Spark</a> ist ein Open-Source-Framework für die Parallelverarbeitung, das die arbeitsspeicherinterne Verarbeitung unterstützt, um die Leistung von Anwendungen zur Analyse von großen Datenmengen zu steigern. Spark-Cluster auf HD Insight ist mit Azure Storage (WASB) und mit Azure Data Lake Store kompatibel. Daher können Ihre in Azure gespeicherten Daten einfach über einen Spark-Cluster verarbeitet werden.
 
-Wenn Sie einen Spark-Cluster in HDInsight erstellen, erstellen Sie damit Azure-Computeressourcen, für die Spark installiert und konfiguriert ist. Es dauert nur ungefähr zehn Minuten, einen Spark-Cluster in HDInsight zu erstellen. Die zu verarbeitenden Daten werden in Azure Storage oder Azure Data Lake Store gespeichert. Weitere Informationen finden Sie unter [Verwenden von Azure Storage mit HDInsight](hdinsight-hadoop-use-blob-storage.md).
+Wenn Sie einen Spark-Cluster in HDInsight erstellen, erstellen Sie damit Azure-Computeressourcen, für die Spark installiert und konfiguriert ist. Die Erstellung eines Spark-Clusters in HD Insight dauert etwa 10 Minuten. Die zu verarbeitenden Daten werden in Azure Storage oder Azure Data Lake Store gespeichert. Weitere Informationen finden Sie unter [Verwenden von Azure Storage mit HDInsight](hdinsight-hadoop-use-blob-storage.md).
 
 **Informationen zum Erstellen eines Spark-Clusters in HDInsight** finden Sie unter [Schnellstart: Erstellen eines Spark-Clusters in HDInsight und Ausführen einer interaktiven Abfrage mithilfe von Jupyter](hdinsight-apache-spark-jupyter-spark-sql.md).
 
@@ -39,8 +38,8 @@ Spark-Cluster in HDInsight bieten einen vollständig verwalteten Spark-Dienst. D
 
 | Feature | Beschreibung |
 | --- | --- |
-| Einfache Erstellung von Spark-Clustern |Sie können einen neuen Spark-Cluster in HDInsight in wenigen Minuten erstellen, indem Sie das Azure-Portal, Azure PowerShell oder das HDInsight .NET SDK verwenden. Weitere Informationen finden Sie unter [Erste Schritte mit Spark-Clustern in HDInsight](hdinsight-apache-spark-jupyter-spark-sql.md) |
-| Einfache Bedienung |Spark-Cluster in HDInsight enthalten Jupyter und Zeppelin Notebooks. Diese können Sie für die interaktive Datenverarbeitung und -visualisierung verwenden.|
+| Einfache Erstellung von Spark-Clustern |Sie können über das Azure-Portal, Azure PowerShell oder das HDInsight .NET SDK in wenigen Minuten einen neuen Spark-Cluster in HDInsight erstellen. Weitere Informationen finden Sie unter [Erste Schritte mit Spark-Clustern in HDInsight](hdinsight-apache-spark-jupyter-spark-sql.md) |
+| Einfache Bedienung |Spark-Cluster in HDInsight enthalten Jupyter und Zeppelin Notebooks. Diese Notebooks können Sie für die interaktive Datenverarbeitung und -visualisierung verwenden.|
 | REST-APIs |Spark-Cluster in HDInsight umfassen [Livy](https://github.com/cloudera/hue/tree/master/apps/spark/java#welcome-to-livy-the-rest-spark-server), einen auf der REST-API basierenden Spark-Auftragsserver, mit dem Benutzer Aufträge per Remotezugriff senden und überwachen können. |
 | Unterstützung für Azure Data Lake-Speicher | Ein Spark-Cluster in HDInsight kann für die Verwendung von Azure Data Lake Store als zusätzlicher Speicher sowie als primärer Speicher konfiguriert werden (nur bei HDInsight 3.5-Clustern). Weitere Informationen zum Data Lake-Speicher finden Sie unter [Übersicht über Azure Data Lake-Speicher](../data-lake-store/data-lake-store-overview.md). |
 | Integration in Azure-Dienste |Ein Spark-Cluster in HDInsight verfügt über einen Connector für Azure Event Hubs. Kunden können mit Event Hubs Streaminganwendungen erstellen. Dies ist eine Alternative zur Option [Kafka](http://kafka.apache.org/), die als Teil von Spark bereits verfügbar ist. |

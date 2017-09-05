@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 07/27/2017
 ms.author: dobett
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: a7d31be48ef06064b01cdb2dfd0331b34adbec4d
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: d502c8e2e2715899279f6ebcf7ed89c19a1bb9a6
 ms.contentlocale: de-de
-ms.lasthandoff: 07/27/2017
+ms.lasthandoff: 08/24/2017
 
 ---
 # <a name="get-started-with-the-connected-factory-preconfigured-solution"></a>Erste Schritte mit der vorkonfigurierten Connected Factory-Lösung
@@ -53,7 +53,7 @@ Um dieses Tutorial abzuschließen, benötigen Sie ein aktives Azure-Abonnement.
 4. Klicken Sie auf die Kachel, um im rechten Bereich Details zur Lösung anzuzeigen.
 
 > [!NOTE]
-> Falls beim Bereitstellen der vorkonfigurierten Lösung Probleme auftreten, helfen Ihnen die Informationen unter [Berechtigungen für die Website „azureiotsuite.com“][lnk-permissions] und die [häufig gestellten Fragen][lnk-faq] weiter. Sollten die Probleme weiterhin auftreten, können Sie im [Portal][lnk-portal] ein Dienstticket erstellen.
+> Falls beim Bereitstellen der vorkonfigurierten Lösung Probleme auftreten, finden Sie unter [Berechtigungen für die Website „azureiotsuite.com“][lnk-permissions] und die [häufig gestellten Fragen zur verbundenen Factory](iot-suite-faq-cf.md) weitere Informationen. Sollten die Probleme weiterhin auftreten, können Sie im [Portal][lnk-portal] ein Dienstticket erstellen.
 
 Erwarten Sie Informationen zu Ihrer Lösung, die nicht aufgeführt werden? Senden Sie uns Vorschläge für neue Funktionen über den [Feedbackbereich](https://feedback.azure.com/forums/321918-azure-iot)zu.
 
@@ -81,7 +81,7 @@ Im Lösungsdashboard können Sie die bereitgestellte Lösung verwalten. Dies ist
 
 Im Dashboard werden die folgenden Informationen angezeigt:
 
-* Ein Bereich mit der **Werksliste**, in dem der Status, der Speicherort und die aktuelle Produktionskonfiguration für die Lösung angezeigt werden. Beim ersten Ausführen der Lösung sind mehrere simulierte Geräte vorhanden. Die Simulation der Fertigungsstrecke besteht aus drei echten OPC UA-Servern (OPC Unified Architecture) pro Fertigungsstrecke zum Durchführen von simulierten Aufgaben und Freigeben von Daten. Weitere Informationen zu OPC UA finden Sie in den [FAQ][lnk-faq].
+* Ein Bereich mit der **Werksliste**, in dem der Status, der Speicherort und die aktuelle Produktionskonfiguration für die Lösung angezeigt werden. Beim ersten Ausführen der Lösung sind mehrere simulierte Geräte vorhanden. Die Simulation der Fertigungsstrecke besteht aus drei echten OPC UA-Servern (OPC Unified Architecture) pro Fertigungsstrecke zum Durchführen von simulierten Aufgaben und Freigeben von Daten. Weitere Informationen zu OPC UA finden Sie in den [häufig gestellten Fragen zur verbundenen Factory](iot-suite-faq-cf.md).
 * Eine **Karte** mit den Standorten der einzelnen Geräte, die mit der Lösung verbunden sind. Für die Lösung kann die Bing Maps-API zum Ausgeben von Informationen auf der Karte verwendet werden. Wenn Ihr Abonnement für die Bing Maps Enterprise-API aktiviert ist, wird dieses Feature automatisch verwendet. Wenn nicht, helfen Ihnen die Informationen zur Verwendung einer dynamischen Karte in den [häufig gestellten Fragen][lnk-faq] weiter.
 * Ein Bereich **Warnungen** zum Anzeigen von Warnungen, die generiert werden, wenn ein Telemetrie- oder OEE/KPI-Wert einen bestimmten Schwellenwert überschreitet.
 * Ein Bereich **Overall Equipment Effectiveness**, in dem die OEE-Werte für das gesamte Unternehmen oder das jeweils angezeigte Werk, die Fertigungsstrecke oder die Station angegeben werden. Dieser Wert wird über die Stationsansicht auf Unternehmensebene aggregiert. Der OEE-Wert und die Elemente, aus denen dieser Wert besteht, können weiter analysiert werden.

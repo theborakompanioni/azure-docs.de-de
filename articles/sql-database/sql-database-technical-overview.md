@@ -9,18 +9,18 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: c561f600-a292-4e3b-b1d4-8ab89b81db48
 ms.service: sql-database
-ms.custom: overview
+ms.custom: overview, mvc
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 06/30/2017
 ms.author: carlrab
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: 54aa8c2f738ef92c211462498103d368e4cb4c5c
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 28aa6d79f999fe9b247d9bb2c61a149a21e72a4a
 ms.contentlocale: de-de
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>Worum handelt es sich beim Azure SQL-Datenbankdienst? 
@@ -146,6 +146,14 @@ SQL-Datenbank sorgt für einfachere und produktivere Abläufe beim Erstellen und
 - **[Visual Studio Code:](https://code.visualstudio.com/docs)** ein kostenloser, herunterladbarer Open-Source-Code-Editor für Windows, macOS und Linux, der Erweiterungen unterstützt, z.B. die [mssql-Erweiterung](https://aka.ms/mssql-marketplace) zum Abfragen von Microsoft SQL Server, Azure SQL-Datenbank und SQL Data Warehouse
 
 SQL-Datenbank unterstützt das Erstellen von Anwendungen mit Python, Java, Node.js, PHP, Ruby und .NET unter macOS, Linux und Windows. SQL-Datenbank unterstützt dieselben [Verbindungsbibliotheken](sql-database-libraries.md) wie SQL Server.
+
+## <a name="engage-with-the-sql-server-engineering-team"></a>Kontakt mit dem SQL Server-Entwicklungsteam aufnehmen
+
+- [DBA Stack Exchange](https://dba.stackexchange.com/questions/tagged/sql-server): Stellen Sie Fragen zur Datenbankverwaltung.
+- [Stack Overflow](http://stackoverflow.com/questions/tagged/sql-server): Stellen Sie Fragen zur Entwicklung.
+- [MSDN-Foren](https://social.msdn.microsoft.com/Forums/en-US/home?category=sqlserver): Stellen Sie technische Fragen.
+- [Microsoft Connect](https://connect.microsoft.com/SQLServer/Feedback): Hier können Sie Fehler melden und Features anfordern.
+- [Reddit](https://www.reddit.com/r/SQLServer/): Tauschen Sie sich über SQL Server aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

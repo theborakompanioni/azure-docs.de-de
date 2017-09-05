@@ -16,10 +16,10 @@ ms.date: 06/20/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: e6e27595f625fcb3ffdb0a6bccf75ad2dcc77cb3
+ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
+ms.openlocfilehash: 520d1d42d35b25db1a35d4317e9eb616cf5de565
 ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Erstellen eines Batch-Kontos mit dem Azure-Portal
@@ -137,7 +137,7 @@ Nachdem das Konto erstellt wurde, können Sie das Blatt **Batch-Konto** öffnen,
 
 ![Batch-Konto-URL im Portal][account_url]
 
-* **Zugriffsschlüssel** (Modus „Batch-Dienst“): Sie benötigen einen Kontozugriffsschlüssel, um den Zugriff auf Ihr Batch-Konto über Ihre Anwendung zu authentifizieren. (Diese Einstellung ist im Modus „Benutzerabonnement“ nicht verfügbar; in diesem Modus wird die Azure Active Directory-Authentifizierung verwendet.)
+* **Zugriffsschlüssel** (Modus „Batch-Dienst“): Sie benötigen einen Kontozugriffsschlüssel, um den Zugriff auf Ihr Batch-Konto über Ihre Anwendung zu authentifizieren. (Diese Einstellung ist im Modus „Benutzerabonnement“ nicht verfügbar. In diesem Modus wird die Azure Active Directory-Authentifizierung verwendet.)
 
     Geben Sie zum Anzeigen oder erneuten Generieren der Zugriffsschlüssel Ihres Batch-Kontos auf dem Blatt „Batch-Konto“ `keys` in das Feld **Suche** im linken Menü ein, und wählen Sie **Schlüssel** aus.
 

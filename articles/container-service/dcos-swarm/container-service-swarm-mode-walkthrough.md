@@ -1,6 +1,6 @@
 ---
-title: "Schnellstartanleitung: Azure-Cluster im Docker Swarm-Modus für Linux | Microsoft-Dokumentation"
-description: "Hier erfahren Sie, wie Sie in Azure Container Service mithilfe der Azure-Befehlszeilenschnittstelle einen Cluster im Docker Swarm-Modus für Linux-Container erstellen."
+title: "Schnellstartanleitung: Azure Docker CE-Cluster für Linux | Microsoft-Dokumentation"
+description: "Hier erfahren Sie, wie Sie in Azure Container Service mithilfe der Azure-Befehlszeilenschnittstelle einen Docker CE-Cluster für Linux-Container erstellen."
 services: container-service
 documentationcenter: 
 author: neilpeterson
@@ -14,22 +14,22 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/14/2017
+ms.date: 08/25/2017
 ms.author: nepeters
 ms.custom: 
 ms.translationtype: HT
-ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
-ms.openlocfilehash: 3f49e72fa647d2b6c854123c271a88e1a8ff3cf8
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 7b8336e3865e7032e3ee0d5e4ee712bcb95aa4b5
 ms.contentlocale: de-de
-ms.lasthandoff: 08/16/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 
-# <a name="deploy-docker-swarm-mode-cluster"></a>Bereitstellen eines Clusters im Docker Swarm-Modus
+# <a name="deploy-docker-ce-cluster"></a>Bereitstellen eines Docker CE-Clusters
 
-In dieser Schnellstartanleitung wird mithilfe der Azure-Befehlszeilenschnittstelle ein Cluster im Docker Swarm-Modus bereitgestellt. Anschließend wird in dem Cluster eine Anwendung mit mehreren Containern bereitgestellt und ausgeführt, die ein Web-Front-End und eine Redis-Instanz umfasst. Nach Abschluss des Vorgangs kann auf die Anwendung über das Internet zugegriffen werden.
+In dieser Schnellstartanleitung wird ein Docker CE-Cluster mithilfe der Azure-Befehlszeilenschnittstelle bereitgestellt. Anschließend wird in dem Cluster eine Anwendung mit mehreren Containern bereitgestellt und ausgeführt, die ein Web-Front-End und eine Redis-Instanz umfasst. Nach Abschluss des Vorgangs kann auf die Anwendung über das Internet zugegriffen werden.
 
-Der Docker Swarm-Modus in Azure Container Service befindet sich in der Vorschauphase und **darf nicht für Produktionsworkloads verwendet werden**.
+Docker CE in Azure Container Service befindet sich in der Vorschauphase und **darf nicht für Produktionsworkloads verwendet werden**.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -62,7 +62,7 @@ Ausgabe:
 
 ## <a name="create-docker-swarm-cluster"></a>Erstellen eines Docker Swarm-Clusters
 
-Erstellen Sie in Azure Container Service mit dem Befehl [az acs create](/cli/azure/acs#create) einen Cluster im Docker Swarm-Modus. 
+Erstellen Sie mit dem Befehl [az acs create](/cli/azure/acs#create) einen Docker CE-Cluster in Azure Container Service. 
 
 Im folgenden Beispiel wird ein Cluster namens *mySwarmCluster* mit einem Linux-Masterknoten und drei Linux-Agent-Knoten erstellt.
 

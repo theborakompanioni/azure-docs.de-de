@@ -16,17 +16,17 @@ ms.workload: na
 ms.date: 07/27/2017
 ms.author: dobett
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: 81ecd5771be544e250ea0df31aa274f0850527ad
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: 517e908a744734139ed0aeee314a4f3b9eda86cc
 ms.contentlocale: de-de
-ms.lasthandoff: 07/27/2017
+ms.lasthandoff: 08/24/2017
 
 ---
 # <a name="connected-factory-preconfigured-solution-walkthrough"></a>Vorkonfigurierte Connected Factory-Lösung – Exemplarische Vorgehensweise
 
 Die [vorkonfigurierte Connected Factory-Lösung][lnk-preconfigured-solutions] der IoT Suite ist eine Komplettlösung für die Industrie, die:
 
-* eine Verbindung mit simulierten Industriegeräten mit OPC UA-Servern in simulierten Fertigungsstrecken im Werk und mit echten OPC UA-Servergeräten herstellt. Weitere Informationen zu OPC UA finden Sie in den [FAQ][lnk-faq].
+* eine Verbindung mit simulierten Industriegeräten mit OPC UA-Servern in simulierten Fertigungsstrecken im Werk und mit echten OPC UA-Servergeräten herstellt. Weitere Informationen zu OPC UA finden Sie in den [häufig gestellten Fragen zur verbundenen Factory](iot-suite-faq-cf.md).
 * betriebliche KPIs und OEE dieser Geräte und Fertigungsstrecken anzeigt.
 * veranschaulicht, wie eine cloudbasierte Anwendung für die Interaktion mit OPC UA-Serversystemen verwendet werden kann.
 * das Herstellen einer Verbindung mit eigenen OPC UA-Servergeräten ermöglicht.
@@ -40,6 +40,8 @@ In diesem Artikel werden einige wichtige Elemente der Connected Factory-Lösung 
 * Behandeln von Problemen in der Lösung
 * Planen der Lösungsanpassung zur Erfüllung besonderer Anforderungen
 * Entwerfen einer eigenen IoT-Lösung mit Verwendung von Azure-Diensten
+
+Weitere Informationen finden Sie in den [häufig gestellten Fragen zur verbundenen Factory](iot-suite-faq-cf.md).
 
 ## <a name="logical-architecture"></a>Logische Architektur
 
@@ -128,6 +130,7 @@ Die als Teil der vorkonfigurierten Lösung bereitgestellte Web-App setzt sich au
 Sie können mit den ersten Schritten mit IoT Suite fortfahren. Lesen Sie dazu die folgenden Artikel:
 
 * [Berechtigungen für die Website „azureiotsuite.com“][lnk-permissions]
+* [Bereitstellen eines Gateways unter Windows oder Linux für die vorkonfigurierte Connected Factory-Lösung](iot-suite-connected-factory-gateway-deployment.md)
 
 [connected-factory-logical]:media/iot-suite-connected-factory-walkthrough/cf-logical-architecture.png
 
@@ -138,4 +141,4 @@ Sie können mit den ersten Schritten mit IoT Suite fortfahren. Lesen Sie dazu di
 [lnk-OPC-UA-NET-Standard]:https://github.com/OPCFoundation/UA-.NETStandardLibrary
 [lnk-Azure-IoT-Gateway]: https://github.com/azure/iot-edge
 [lnk-permissions]: iot-suite-permissions.md
-[lnk-faq]: iot-suite-faq.md
+

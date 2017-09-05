@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/07/2017
 ms.author: darosa;sethm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
-ms.openlocfilehash: a916f643c7e6727d6053865d1c0bd2f683a53b3f
+ms.translationtype: HT
+ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
+ms.openlocfilehash: a0c169e0580468e83a07c077f8c60e83d3fb52f2
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 08/30/2017
 
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>Service Bus Premium- und Standard-Preisstufe für Messaging
@@ -47,7 +47,7 @@ In den folgenden Abschnitten werden einige Unterschiede zwischen der Premium- un
 
 ### <a name="partitioned-queues-and-topics"></a>Partitionierte Warteschlangen und Themen
 
-Partitionierte Warteschlangen und Themen werden in Premium-Messaging unterstützt. Diese Entitäten sind tatsächlich immer partitioniert (und können nicht deaktiviert werden). Partitionierte Premium-Warteschlangen und -Themen funktionieren allerdings anders als in den Standard- und Basic-Tarifen des Service Bus-Messaging. Bei Premium-Messaging wird nicht SQL als Datenspeicher verwendet, und im Gegensatz zu einer gemeinsam verwendeten Plattform können Ressourcen nicht mehr gleichzeitig verwendet werden. Daher ist eine Partitionierung zur Steigerung der Leistung nicht erforderlich. Darüber hinaus wurde die Anzahl der Partitionen von 16 bei Standard-Messaging in zwei Partitionen bei Premium-Messaging geändert. Bei zwei Partitionen ist die Verfügbarkeit sichergestellt, und diese Anzahl eignet sich besser für die Premium-Laufzeitumgebung. 
+Partitionierte Warteschlangen und Themen werden in Premium-Messaging unterstützt. Diese Entitäten sind tatsächlich immer partitioniert (und können nicht deaktiviert werden). Partitionierte Premium-Warteschlangen und -Themen funktionieren allerdings anders als im Standardtarif des Service Bus-Messaging. Bei Premium-Messaging wird nicht SQL als Datenspeicher verwendet, und im Gegensatz zu einer gemeinsam verwendeten Plattform können Ressourcen nicht mehr gleichzeitig verwendet werden. Daher ist eine Partitionierung zur Steigerung der Leistung nicht erforderlich. Darüber hinaus wurde die Anzahl der Partitionen von 16 bei Standard-Messaging in zwei Partitionen bei Premium-Messaging geändert. Bei zwei Partitionen ist die Verfügbarkeit sichergestellt, und diese Anzahl eignet sich besser für die Premium-Laufzeitumgebung. 
 
 Wenn bei Premium-Messaging die Größe einer Entität mit [MaxSizeInMegabytes](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxsizeinmegabytes#Microsoft_ServiceBus_Messaging_QueueDescription_MaxSizeInMegabytes) angegeben wird, wird diese Größe gleichmäßig auf die zwei Partitionen verteilt. Bei [standardmäßigen partitionierten Entitäten](service-bus-partitioning.md#standard) beträgt die Größe dagegen das 16-fache der angegebenen Größe. 
 
