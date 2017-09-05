@@ -1,105 +1,103 @@
-## <a name="meaning-of-migration-of-iaas-resources-from-the-classic-deployment-model-to-resource-manager"></a>Die Bedeutung der Migration von IaaS-Ressourcen vom klassischen Bereitstellungsmodell zu Resource Manager
-Bevor wir näher auf die Details eingehen, betrachten wir den Unterschied zwischen Datenebenen- und Verwaltungsebenenvorgängen bei IaaS-Ressourcen.
+## <a name="migrate-iaas-resources-from-the-classic-deployment-model-to-azure-resource-manager"></a>Migrieren von IaaS-Ressourcen vom klassischen Bereitstellungsmodell zu Azure Resource Manager
+Zunächst einmal ist es wichtig, den Unterschied zwischen Vorgängen auf der Datenebene und Vorgängen auf der Verwaltungsebene für IaaS-Ressourcen (Infrastructure-as-a-Service) zu verstehen.
 
-* *Verwaltungs-/Steuerungsebene:* Beschreibt die Aufrufe, die auf der Verwaltungs-/Steuerungsebene oder bei der API zum Ändern von Ressourcen eingehen. Beispielsweise werden ausgeführte Ressourcen durch Vorgänge verwaltet wie das Erstellen eines virtuellen Computers, das Neustarten eines virtuellen Computers und das Aktualisieren eines virtuellen Netzwerks mit einem neuen Subnetz. Die Verbindung zu den Instanzen ist davon nicht direkt betroffen.
-* *Datenebene* (Anwendung): Beschreibt die Laufzeit der Anwendung selbst und umfasst die Interaktion mit Instanzen, die nicht über die Azure-API verlaufen. Das Zugreifen auf Ihre Website oder das Abrufen von Daten von einer ausgeführten SQL Server-Instanz oder einem MongoDB-Server wird als Interaktion mit der Datenebene bzw. der Anwendung angesehen. Das Kopieren eines Blobs aus einem Speicherkonto und das Zugreifen auf eine öffentliche IP-Adresse, um per RDP oder SSH eine Verbindung mit dem virtuellen Computer herzustellen, sind ebenfalls Vorgänge auf der Datenebene. Mit diesen Vorgängen wird die Ausführung der Anwendung für die Bereiche Compute, Netzwerk und Speicher sichergestellt.
+* *Verwaltungs-/Steuerungsebene* beschreibt die Aufrufe, die auf der Verwaltungs-/Steuerungsebene oder bei der API zum Ändern von Ressourcen eingehen. Beispielsweise werden ausgeführte Ressourcen durch Vorgänge verwaltet wie das Erstellen eines virtuellen Computers, das Neustarten eines virtuellen Computers und das Aktualisieren eines virtuellen Netzwerks mit einem neuen Subnetz. Die Verbindungsherstellung mit den virtuellen Computern ist davon nicht direkt betroffen.
+* *Datenebene* (Anwendung) beschreibt die Laufzeit der Anwendung selbst und umfasst die Interaktion mit Instanzen, die nicht über die Azure-API abgewickelt werden. Das Zugreifen auf Ihre Website oder das Abrufen von Daten aus einer ausgeführten SQL Server-Instanz oder von einem MongoDB-Server sind Beispiele für Interaktionen mit der Datenebene oder Anwendung. Weitere Beispiele wären etwa das Kopieren eines Blobs aus einem Speicherkonto und das Zugreifen auf eine öffentliche IP-Adresse, um per Remotedesktopprotokoll (RDP) oder Secure Shell (SSH) eine Verbindung mit dem virtuellen Computer herzustellen. Mit diesen Vorgängen wird die Ausführung der Anwendung für die Bereiche Compute, Netzwerk und Speicher sichergestellt.
 
-Das klassische Bereitstellungsmodell und der Resource Manager-Stapel basieren auf der gleichen Datenebene. Während der Migration wird die Darstellung der Ressourcen aus dem klassischen Bereitstellungsmodell in die des Resource Manager-Stapels umgewandelt. Infolgedessen müssen Sie neue Tools, APIs und SDKs für die Verwaltung der Ressourcen im Resource Manager-Stapel verwenden.
+Die Datenebene für das klassische Bereitstellungsmodell und für Resource Manager-Stapel ist identisch. Der Unterschied besteht darin, dass Microsoft die Darstellung der Ressourcen aus dem klassischen Bereitstellungsmodell im Zuge der Migration in die Darstellung des Resource Manager-Stapels umwandelt. Infolgedessen sind für die Verwaltung der Ressourcen im Resource Manager-Stapel neue Tools, APIs und SDKs erforderlich.
 
-![Screenshot zur Veranschaulichung des Unterschieds zwischen Verwaltungs-/Steuerungsebene und Datenebene](../articles/virtual-machines/media/virtual-machines-windows-migration-classic-resource-manager/data-control-plane.png)
+![Diagramm zur Veranschaulichung des Unterschieds zwischen Verwaltungs-/Steuerungsebene und Datenebene](../articles/virtual-machines/media/virtual-machines-windows-migration-classic-resource-manager/data-control-plane.png)
 
 
 > [!NOTE]
-> In einigen Migrationsszenarien hält die Azure-Plattform die virtuellen Computer an, hebt ihre Zuordnung auf und startet sie neu. Dies führt zu einer kurzen Downtime auf der Datenebene.
+> In einigen Migrationsszenarien hält die Azure-Plattform die virtuellen Computer an, hebt ihre Zuordnung auf und startet sie neu. Dies hat einen kurzen Ausfall der Datenebene zur Folge.
 >
 
 ## <a name="the-migration-experience"></a>Migrationsvorgang
-Wir empfehlen Ihnen Folgendes, bevor Sie mit dem Migrationsvorgang beginnen:
+Vorbereitung der Migration:
 
 * Stellen Sie sicher, dass die Ressourcen, die Sie migrieren möchten, keine nicht unterstützten Features oder Konfigurationen verwenden. Gewöhnlich erkennt die Plattform diese Probleme und generiert einen Fehler.
-* Wenn Sie über virtuelle Computer verfügen, die nicht in einem virtuellen Netzwerk enthalten sind, werden diese während der Vorbereitung beendet, und die Zuordnung wird aufgehoben. Wenn Sie die öffentliche IP-Adresse nicht verlieren möchten, sollten Sie sich die Informationen zum Reservieren der IP-Adresse ansehen, bevor Sie den Vorbereitungsvorgang beginnen. Wenn sich die virtuellen Computer aber in einem virtuellen Netzwerk befinden, werden sie nicht beendet, und die Zuordnung wird nicht aufgehoben.
+* Wenn Sie über virtuelle Computer verfügen, die nicht in einem virtuellen Netzwerk enthalten sind, werden diese während der Vorbereitung beendet, und die Zuordnung wird aufgehoben. Wenn Sie die öffentliche IP-Adresse nicht verlieren möchten, sollten Sie die IP-Adresse ggf. reservieren, bevor Sie den Vorbereitungsvorgang starten. Wenn sich die virtuellen Computer in einem virtuellen Netzwerk befinden, werden sie nicht beendet, und die Zuordnung wird nicht aufgehoben.
 * Planen Sie die Migration für einen Zeitraum außerhalb der Geschäftszeiten, um Raum für unerwartete Fehler zu lassen, die während der Migration unter Umständen auftreten können.
 * Laden Sie die aktuelle Konfiguration Ihrer virtuellen Computer mit PowerShell, CLI-Befehlen (Befehlszeilenschnittstelle) oder REST-APIs herunter, um die Überprüfung zu vereinfachen, nachdem der Vorbereitungsschritt abgeschlossen ist.
 * Aktualisieren Sie Ihre Skripts für die Automatisierung und Operationalisierung, um sie an das Resource Manager-Bereitstellungsmodell anzupassen, bevor Sie die Migration starten. Sie können optional GET-Vorgänge durchführen, wenn sich die Ressourcen im Zustand „Vorbereitet“ befinden.
-* Werten Sie die RBAC-Richtlinien aus, die für die klassischen IaaS-Ressourcen konfiguriert sind, und stellen Sie einen Plan für die Vorgehensweise nach dem Abschluss der Migration auf.
+* Werten Sie die Richtlinien für die rollenbasierte Zugriffsteuerung (Role-Based Access Control, RBAC) aus, die für die IaaS-Ressourcen im klassischen Bereitstellungsmodell konfiguriert sind, und stellen Sie einen Plan für die Zeit nach der Migration auf.
 
 Der Migrationsworkflow sieht wie folgt aus:
 
-![Screenshot zum Migrationsworkflow](../articles/virtual-machines/windows/media/migration-classic-resource-manager/migration-workflow.png)
+![Diagramm zur Veranschaulichung des Migrationsworkflows](../articles/virtual-machines/windows/media/migration-classic-resource-manager/migration-workflow.png)
 
 > [!NOTE]
-> Alle in den folgenden Abschnitten beschriebenen Vorgänge sind idempotent. Sollte ein Problem auftreten, das nicht auf ein nicht unterstütztes Feature oder auf einen Konfigurationsfehler zurückzuführen ist, wiederholen Sie den Vorbereitungs-, Abbruch- oder Commitvorgang. Die Azure-Plattform versucht erneut, die Aktion auszuführen.
+> Die in den folgenden Abschnitten beschriebenen Vorgänge sind alle idempotent. Sollte ein Problem auftreten, das nicht auf ein nicht unterstütztes Feature oder auf einen Konfigurationsfehler zurückzuführen ist, wiederholen Sie den Vorbereitungs-, Abbruch- oder Commitvorgang. Azure versucht, die Aktion erneut auszuführen.
 >
 >
 
 ### <a name="validate"></a>Überprüfen
-Der Überprüfungsvorgang ist der erste Schritt im Migrationsprozess. Das Ziel dieses Schritts besteht darin, den Zustand der zu migrierenden Ressourcen im klassischen Bereitstellungsmodell zu analysieren und durch „Erfolgreich“/„Fehler“ anzugeben, ob die Ressourcen für die Migration bereit sind.
+Der Überprüfungsvorgang ist der erste Schritt im Migrationsprozess. Das Ziel dieses Schritts besteht darin, den Zustand der zu migrierenden Ressourcen im klassischen Bereitstellungsmodell zu analysieren. Der Vorgang ermittelt, ob die Ressourcen für die Migration bereit sind („Erfolgreich“ oder „Fehler“).
 
-Sie wählen das virtuelle Netzwerk oder einen Clouddienst aus (sofern es kein virtuelles Netzwerk ist), das bzw. den Sie für die Migration überprüfen möchten.
+Sie wählen das virtuelle Netzwerk oder einen Clouddienst aus (sofern es kein virtuelles Netzwerk ist), das bzw. den Sie für die Migration überprüfen möchten. Falls die Ressource nicht migriert werden kann, gibt Azure die Gründe dafür an.
 
-* Wenn die Migration für die Ressource nicht möglich ist, werden auf der Azure-Plattform alle Gründe angegeben, aus denen die Migration nicht unterstützt wird.
+#### <a name="checks-not-done-in-the-validate-operation"></a>Nicht in der Überprüfung enthaltene Überprüfungen
 
-#### <a name="checks-not-done-in-validate"></a>Nicht im Überprüfungsschritt ausgeführte Überprüfungen
-
-Beim Überprüfungsvorgang wird nur der Zustand der Ressourcen im klassischen Bereitstellungsmodell analysiert. Dabei können alle Fehler und nicht unterstützten Szenarien ermittelt werden, die auf verschiedene Konfigurationen im klassischen Bereitstellungsmodell zurückzuführen sind. Es können jedoch nicht alle Fehler ermittelt werden, die der Azure Resource Manager-Stapel unter Umständen während der Migration für die Ressourcen verursacht. Diese Probleme werden erst überprüft, wenn die Ressourcen im nächsten Schritt der Migration (Vorbereitung) transformiert werden. In der folgenden Tabelle sind alle Probleme aufgeführt, auf die im Überprüfungsschritt nicht geprüft wird.
+Bei der Überprüfung wird nur der Zustand der Ressourcen im klassischen Bereitstellungsmodell analysiert. Dabei können alle Fehler und nicht unterstützten Szenarien ermittelt werden, die auf verschiedene Konfigurationen im klassischen Bereitstellungsmodell zurückzuführen sind. Es können jedoch nicht alle Fehler ermittelt werden, die der Azure Resource Manager-Stapel unter Umständen während der Migration für die Ressourcen verursacht. Diese Probleme werden erst überprüft, wenn die Ressourcen im nächsten Schritt der Migration (Vorbereitung) transformiert werden. Die folgende Tabelle enthält alle Probleme, die im Rahmen des Überprüfungsvorgangs nicht überprüft werden:
 
 
-|Nicht im Überprüfungsschritt ausgeführte Netzwerküberprüfungen|
+|Bei der Überprüfung nicht ausgeführte Netzwerküberprüfungen|
 |-|
 |Ein virtuelles Netzwerk mit ER- und VPN-Gateway|
 |Eine getrennte Virtual Network-Gatewayverbindung|
-|Alle ER-Verbindungen werden vorab zum Azure Resource Manager-Stapel migriert.|
-|Azure Resource Manager-Kontingentüberprüfungen für Netzwerkressourcen, d.h. statische öffentliche IP-Adressen, dynamische öffentliche IPs, Load Balancer, Netzwerksicherheitsgruppen, Routingtabellen, Netzwerkschnittstellen |
-| Überprüfung, ob alle Lastenausgleichsregeln in der gesamten Bereitstellung/im gesamten VNET gültig sind |
-| Überprüfung auf in Konflikt stehende private IPs zwischen virtuellen Computern mit dem Status „Beendet (Zuordnung aufgehoben)“ im gleichen VNET |
+|Alle ER-Verbindungen wurden vorab zum Azure Resource Manager-Stapel migriert.|
+|Azure Resource Manager-Kontingentüberprüfungen für Netzwerkressourcen. Beispiele: statische öffentliche IP-Adresse, dynamische öffentliche IP-Adressen, Load Balancer, Netzwerksicherheitsgruppen, Routingtabellen und Netzwerkschnittstellen. |
+| Alle Lastenausgleichsregeln sind in der gesamten Bereitstellung/im gesamten virtuellen Netzwerk gültig. |
+| In Konflikt stehende private IP-Adressen zwischen virtuellen Computern mit dem Status „Beendet (Zuordnung aufgehoben)“ im gleichen virtuellen Netzwerk |
 
 ### <a name="prepare"></a>Vorbereiten
-Der Vorbereitungsvorgang ist der zweite Schritt im Migrationsprozess. Das Ziel dieses Schritts besteht darin, die Transformation der IaaS-Ressourcen von Ressourcen des klassischen Bereitstellungsmodells zu Resource Manager-Ressourcen zu simulieren und diese zu Visualisierungszwecken nebeneinander darzustellen.
+Der Vorbereitungsvorgang ist der zweite Schritt im Migrationsprozess. Das Ziel dieses Schritts besteht darin, die Transformation der IaaS-Ressourcen von Ressourcen des klassischen Bereitstellungsmodells zu Resource Manager-Ressourcen zu simulieren. Zur Veranschaulichung werden sie nebeneinander dargestellt.
 
 > [!NOTE] 
-> Ihre klassischen Ressourcen werden während dieses Schritts nicht geändert. Dieser Schritt kann also problemlos ausgeführt werden, wenn Sie die Migration ausprobieren. 
+> Die Ressourcen des klassischen Bereitstellungsmodells bleiben bei diesem Schritt unverändert. Dieser Schritt kann also problemlos ausgeführt werden, wenn Sie die Migration ausprobieren möchten. 
 
 Sie wählen das virtuelle Netzwerk oder den Clouddienst aus (sofern es kein virtuelles Netzwerk ist), das bzw. den Sie für die Migration vorbereiten möchten.
 
-* Wenn die Migration für die Ressource nicht möglich ist, beendet die Azure-Plattform den Migrationsprozesses und gibt den Grund an, aus dem der Vorbereitungsvorgang nicht erfolgreich war.
-* Wenn die Migration für die Ressource durchgeführt werden kann, sperrt die Azure-Plattform zuerst die Vorgänge der Verwaltungsebene für die zu migrierenden Ressourcen. Beispielsweise können Sie einem in der Migration befindlichen virtuellen Computer keinen Datenträger hinzuzufügen.
+* Falls die Ressource nicht migriert werden kann, beendet Azure den Migrationsprozess und gibt an, warum der Vorbereitungsvorgang nicht erfolgreich war.
+* Wenn die Ressource migriert werden kann, sperrt Azure zunächst die Vorgänge der Verwaltungsebene für die zu migrierenden Ressourcen. Beispielsweise können Sie einem in der Migration befindlichen virtuellen Computer keinen Datenträger hinzuzufügen.
 
-Die Azure-Plattform startet dann für die zu migrierenden Ressourcen die Migration der Metadaten vom klassischen Bereitstellungsmodell zu Resource Manager.
+Anschließend startet Azure für die zu migrierenden Ressourcen die Migration der Metadaten vom klassischen Bereitstellungsmodell zu Resource Manager.
 
 Nach Abschluss der Vorbereitung können Sie die Ressourcen sowohl im klassischen Bereitstellungsmodell als auch im Resource Manager-Bereitstellungsmodell visualisieren. Für jeden Clouddienst im klassischen Bereitstellungsmodell erstellt die Azure-Plattform einen Ressourcengruppennamen nach dem Muster `cloud-service-name>-Migrated`.
 
 > [!NOTE]
-> Sie können nicht den Namen der Ressourcengruppe auswählen, die für migrierte Ressourcen erstellt wurde (d.h. „-Migrated“), Sie können aber nach Abschluss der Migration das Feature zum Verschieben von Azure Resource Manager verwenden, um Ressourcen in beliebige Ressourcengruppe zu verschieben. Weitere Informationen hierzu finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../articles/resource-group-move-resources.md).
+> Der Name einer für migrierte Ressourcen erstellten Ressourcengruppe kann nicht frei gewählt werden und lautet immer „-Migrated“. Nach Abschluss der Migration können Sie die Ressourcen jedoch mithilfe des Verschiebefeatures von Azure Resource Manager in eine beliebige Ressourcengruppe verschieben. Weitere Informationen finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../articles/resource-group-move-resources.md).
 
-Die folgenden beiden Screenshots zeigen das Ergebnis nach einem erfolgreichen Vorbereitungsvorgang. Der ersten Screenshot zeigt eine Ressourcengruppe, die den ursprünglichen Clouddienst enthält. Der zweite Screenshot zeigt die neue „-Migrated“-Ressourcengruppe mit den entsprechenden Azure Resource Manager-Ressourcen.
+Die beiden folgenden Screenshots zeigen das Ergebnis nach einem erfolgreichen Vorbereitungsvorgang. Der erste Screenshot zeigt eine Ressourcengruppe, die den ursprünglichen Clouddienst enthält. Der zweite Screenshot zeigt die neue Ressourcengruppe („-Migrated“) mit den entsprechenden Azure Resource Manager-Ressourcen.
 
-![Screenshot mit klassischem Portal-Clouddienst](../articles/virtual-machines/windows/media/migration-classic-resource-manager/portal-classic.png)
+![Screenshot des ursprünglichen Clouddiensts](../articles/virtual-machines/windows/media/migration-classic-resource-manager/portal-classic.png)
 
-![Screenshot mit Azure Resource Manager-Portalressourcen in Vorbereitung](../articles/virtual-machines/windows/media/migration-classic-resource-manager/portal-arm.png)
+![Screenshot der Azure Resource Manager-Ressourcen aus dem Vorbereitungsvorgang](../articles/virtual-machines/windows/media/migration-classic-resource-manager/portal-arm.png)
 
-Hier sehen Sie, wie Ihre Ressourcen nach Abschluss der Vorbereitungsphase aussehen. Beachten Sie, dass die Ressource in der Datenebene gleich ist. Sie ist sowohl in der Verwaltungsebene (klassisches Bereitstellungsmodell) als auch in der Steuerungsebene (Resource Manager) vorhanden.
+Hier sehen Sie, wie Ihre Ressourcen nach Abschluss der Vorbereitungsphase aussehen. Wie Sie sehen, ist die Ressource auf der Datenebene identisch. Sie ist sowohl in der Verwaltungsebene (klassisches Bereitstellungsmodell) als auch in der Steuerungsebene (Resource Manager) vorhanden.
 
-![Hintergrundinformationen zur Vorbereitungsphase](../articles/virtual-machines/windows/media/migration-classic-resource-manager/behind-the-scenes-prepare.png)
+![Diagramm der Vorbereitungsphase](../articles/virtual-machines/windows/media/migration-classic-resource-manager/behind-the-scenes-prepare.png)
 
 > [!NOTE]
-> Virtuelle Computer, die sich nicht in einem klassischen virtuellen Netzwerk befinden, erhalten in dieser Phase der Migration den Status „Beendet (Zuordnung aufgehoben)“.
+> Virtuelle Computer, die sich nicht in einem virtuellen Netzwerk des klassischen Bereitstellungsmodells befinden, werden in dieser Migrationsphase beendet, und ihre Zuordnung wird aufgehoben.
 >
 
 ### <a name="check-manual-or-scripted"></a>Überprüfung (manuell oder per Skript)
-Im Überprüfungsschritt können Sie bei Bedarf die Konfiguration verwenden, die Sie zuvor heruntergeladen haben, um zu überprüfen, ob die Migration korrekt aussieht. Alternativ dazu können Sie sich auch beim Portal anmelden und Stichproben der Eigenschaften und Ressourcen durchführen, um sicherzustellen, dass die Migration der Metadaten in Ordnung ist.
+Im Überprüfungsschritt können Sie bei Bedarf die Konfiguration verwenden, die Sie zuvor heruntergeladen haben, um zu überprüfen, ob die Migration korrekt aussieht. Alternativ können Sie sich auch beim Portal anmelden und einzelne Eigenschaften und Ressourcen prüfen, um sicherzustellen, dass die Migration der Metadaten in Ordnung ist.
 
-Wenn Sie ein virtuelles Netzwerk migrieren, wird der Großteil der Konfiguration für virtuelle Computer nicht neu gestartet. Für die Anwendungen auf diesen VMs können Sie überprüfen, ob die Anwendung noch betriebsbereit ist und ausgeführt wird.
+Wenn Sie ein virtuelles Netzwerk migrieren, wird der Großteil der Konfiguration für virtuelle Computer nicht neu gestartet. Für Anwendungen auf diesen virtuellen Computern können Sie überprüfen, ob die Anwendung noch ausgeführt wird.
 
-Sie können Ihre Skripts für Überwachung/Automatisierung und den Betrieb testen, um zu ermitteln, ob die VMs wie erwartet ausgeführt werden und ob die aktualisierten Skripts richtig funktionieren. GET-Vorgänge werden nur dann unterstützt, wenn sich die Ressourcen im Status „Vorbereitet“ befinden.
+Sie können Ihre Skripts für die Überwachung und den Betrieb testen, um zu ermitteln, ob die virtuellen Computer wie erwartet ausgeführt werden und ob die aktualisierten Skripts ordnungsgemäß funktionieren. GET-Vorgänge werden nur dann unterstützt, wenn sich die Ressourcen im Status „Vorbereitet“ befinden.
 
-Es gibt kein festes Zeitfenster, vor dem Sie für die Migration ein Commit durchführen müssen. Sie können sich in diesem Zustand so viel Zeit wie nötig lassen. Die Verwaltungsebene ist aber für diese Ressourcen gesperrt, bis Sie entweder einen Abbruch (abort) oder ein Commit (commit) durchführen.
+Es gibt kein festes Zeitfenster, in dem Sie die Migration committen müssen. Sie können sich in diesem Zustand so viel Zeit wie nötig lassen. Die Verwaltungsebene ist aber für diese Ressourcen gesperrt, bis Sie entweder einen Abbruch (abort) oder ein Commit (commit) durchführen.
 
-Falls Probleme auftreten, können Sie die Migration immer abbrechen und zurück zum klassischen Bereitstellungsmodell wechseln. Nach dem Wechsel zurück öffnet die Azure-Plattform die Vorgänge der Verwaltungsebene für die Ressourcen , damit Sie den normalen Betrieb für diese virtuellen Computer im klassischen Bereitstellungsmodell wieder aufnehmen können.
+Falls Probleme auftreten, können Sie die Migration immer abbrechen und zurück zum klassischen Bereitstellungsmodell wechseln. Nach dem Wechsel zurück öffnet Azure die Vorgänge der Verwaltungsebene für die Ressourcen, damit Sie den normalen Betrieb für diese virtuellen Computer im klassischen Bereitstellungsmodell wieder aufnehmen können.
 
 ### <a name="abort"></a>Abbruch
-Der Abbruch ist ein optionaler Schritt, mit dem Sie Ihre Änderungen auf das klassische Bereitstellungsmodell zurücksetzen und die Migration beenden können. Dieser Vorgang löscht die Resource Manager-Metadaten für Ressourcen, die im vorherigen Vorbereitungsschritt erstellt wurden. 
+Hierbei handelt es sich um einen optionalen Schritt, mit dem Sie Ihre Änderungen am klassischen Bereitstellungsmodell zurücksetzen und die Migration beenden können. Dieser Vorgang löscht die im vorherigen Vorbereitungsschritt erstellten Resource Manager-Metadaten für Ihre Ressourcen. 
 
-![Hintergrundinformationen zur Abbruchphase](../articles/virtual-machines/windows/media/migration-classic-resource-manager/behind-the-scenes-abort.png)
+![Diagramm des Abbruchschritts](../articles/virtual-machines/windows/media/migration-classic-resource-manager/behind-the-scenes-abort.png)
 
 
 > [!NOTE]
@@ -110,35 +108,35 @@ Der Abbruch ist ein optionaler Schritt, mit dem Sie Ihre Änderungen auf das kla
 Nach Abschluss der Überprüfung können Sie einen Commit für die Migration durchführen. Die Ressourcen werden nicht mehr im klassischen Bereitstellungsmodell angezeigt und stehen nur noch im Resource Manager-Bereitstellungsmodell zur Verfügung. Die migrierten Ressourcen können nur im neuen Portal verwaltet werden.
 
 > [!NOTE]
-> Dies ist ein idempotenter Vorgang. Wenn hierbei ein Fehler auftritt, sollten Sie den Vorgang wiederholen. Sollten weiterhin Fehler auftreten, erstellen Sie ein Supportticket, oder posten Sie unter Verwendung des Tags ClassicIaaSMigration in unserem [VM-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesforWindows).
+> Dies ist ein idempotenter Vorgang. Sollte er nicht erfolgreich sein, wiederholen Sie ihn. Ist der Vorgang weiterhin nicht erfolgreich, erstellen Sie ein Supportticket, oder erstellen Sie in unserem [VM-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesforWindows) einen Beitrag mit dem Tag „ClassicIaaSMigration“.
 >
 >
 
-![Hintergrundinformationen zur Commitphase](../articles/virtual-machines/windows/media/migration-classic-resource-manager/behind-the-scenes-commit.png)
+![Diagramm des Commitschritts](../articles/virtual-machines/windows/media/migration-classic-resource-manager/behind-the-scenes-commit.png)
 
-## <a name="where-to-begin-migration"></a>Wo beginne ich mit der Migration?
+## <a name="migration-flowchart"></a>Flussdiagramm der Migration
 
-Hier sehen Sie ein Flussdiagramm mit den Abläufen der Migration:
+Hier sehen Sie ein Flussdiagramm für die Migration:
 
 ![Screenshot mit den Migrationsschritten](../articles/virtual-machines/windows/media/migration-classic-resource-manager/migration-flow.png)
 
-## <a name="translation-of-classic-deployment-model-to-azure-resource-manager-resources"></a>Umwandlung klassischer Ressourcen in Azure Resource Manager-Ressourcen
+## <a name="translation-of-the-classic-deployment-model-to-resource-manager-resources"></a>Umwandlung klassischer Ressourcen in Resource Manager-Ressourcen
 Die folgende Tabelle zeigt die Darstellung der Ressourcen im klassischen Bereitstellungsmodell und in Resource Manager. Andere Features und Ressourcen werden derzeit nicht unterstützt.
 
-| Klassische Darstellung | Resource Manager-Darstellung | Ausführliche Hinweise |
+| Klassische Darstellung | Resource Manager-Darstellung | Hinweise |
 | --- | --- | --- |
 | Name des Clouddiensts |DNS-Name |Während der Migration wird für jeden Clouddienst eine neue Ressourcengruppe mit dem Benennungsmuster `<cloudservicename>-migrated`erstellt. Diese Ressourcengruppe enthält alle Ihre Ressourcen. Der Name des Clouddiensts wird als DNS-Name verwendet, der der öffentlichen IP-Adresse zugeordnet ist. |
-| Virtueller Computer |Virtueller Computer |VM-spezifische Eigenschaften werden unverändert migriert. Bestimmte osProfile-Informationen, wie etwa der Computername, werden im klassischen Bereitstellungsmodell nicht gespeichert und bleiben daher nach der Migration leer. |
-| An virtuellen Computer angefügte Datenträgerressourcen |An virtuellen Computer angefügte implizite Datenträger |Datenträger werden im Resource Manager-Bereitstellungsmodell nicht als Ressourcen oberster Ebene modelliert. Sie werden als implizite Datenträger unter dem virtuellen Computer migriert. Derzeit werden nur Datenträger unterstützt, die mit einem virtuellen Computer verbunden sind. Resource Manager-VMs können nun klassische Speicherkonten verwenden, sodass die Datenträger auf einfache Weise ohne jegliche Updates migriert werden können. |
+| Virtueller Computer |Virtueller Computer |VM-spezifische Eigenschaften werden unverändert migriert. Bestimmte osProfile-Informationen (etwa der Computername) werden im klassischen Bereitstellungsmodell nicht gespeichert und bleiben daher nach der Migration leer. |
+| An virtuellen Computer angefügte Datenträgerressourcen |An virtuellen Computer angefügte implizite Datenträger |Datenträger werden im Resource Manager-Bereitstellungsmodell nicht als Ressourcen oberster Ebene modelliert. Sie werden als implizite Datenträger unter dem virtuellen Computer migriert. Derzeit werden nur Datenträger unterstützt, die mit einem virtuellen Computer verbunden sind. Resource Manager-VMs können nun Speicherkonten im klassischen Bereitstellungsmodell verwenden, sodass die Datenträger komfortabel ohne jegliche Updates migriert werden können. |
 | VM-Erweiterungen |VM-Erweiterungen |Mit Ausnahme von XML-Erweiterungen werden alle Ressourcenerweiterungen aus dem klassischen Bereitstellungsmodell migriert. |
-| Zertifikate für virtuelle Computer |Zertifikate in Azure Key Vault |Wenn ein Clouddienst Dienstzertifikate enthält, wird eine neue Azure Key Vault-Instanz pro Clouddienst erstellt, und die Zertifikate werden in den Schlüsseltresor verschoben. Die VMs werden aktualisiert, um auf die Zertifikate aus dem Schlüsseltresor zu verweisen. <br><br> **HINWEIS**: Löschen Sie den Schlüsseltresor nicht, da dies dazu führen kann, dass die VM in einen fehlerhaften Zustand wechselt. Wir arbeiten an Verbesserungen im Back-End, damit Schlüsseltresore sicher gelöscht oder gemeinsam mit der VM in ein neues Abonnement verschoben werden können. |
+| Zertifikate für virtuelle Computer |Zertifikate in Azure Key Vault |Wenn ein Clouddienst Dienstzertifikate enthält, erstellt die Migration pro Clouddienst jeweils eine neue Azure Key Vault-Instanz und verschiebt die Zertifikate in den Schlüsseltresor. Die VMs werden aktualisiert, um auf die Zertifikate aus dem Schlüsseltresor zu verweisen. <br><br> Löschen Sie den Schlüsseltresor nicht. Andernfalls tritt unter Umständen ein VM-Fehler auf. |
 | WinRM-Konfiguration |WinRM-Konfiguration unter osProfile |Die Konfiguration der Windows-Remoteverwaltung wird im Rahmen der Migration unverändert verschoben. |
-| „Availability-set“-Eigenschaft |„Availability-set“-Ressource | Im klassischen Bereitstellungsmodell handelte es sich bei der Angabe der Verfügbarkeitsgruppe um eine Eigenschaft auf dem virtuellen Computer. Bei der Migration werden Verfügbarkeitsgruppen zu einer Ressource der obersten Ebene. Folgende Konfigurationen werden nicht unterstützt: mehrere Verfügbarkeitsgruppen pro Clouddienst sowie eine Kombination aus mindestens einer Verfügbarkeitsgruppe und virtuellen Computern, die keiner Verfügbarkeitsgruppe in einem Clouddienst angehören. |
+| „Availability-set“-Eigenschaft |„Availability-set“-Ressource | Im klassischen Bereitstellungsmodell handelt es sich bei der Angabe der Verfügbarkeitsgruppe um eine Eigenschaft auf dem virtuellen Computer. Bei der Migration werden Verfügbarkeitsgruppen zu einer Ressource der obersten Ebene. Folgende Konfigurationen werden nicht unterstützt: mehrere Verfügbarkeitsgruppen pro Clouddienst sowie eine Kombination aus mindestens einer Verfügbarkeitsgruppe und virtuellen Computern, die keiner Verfügbarkeitsgruppe in einem Clouddienst angehören. |
 | Netzwerkkonfiguration auf einem virtuellen Computer |Primäre Netzwerkschnittstelle |Die Netzwerkkonfiguration auf einem virtuellen Computer wird nach der Migration als primäre Netzwerkschnittstellenressource dargestellt. Bei virtuellen Computern, die sich nicht in einem virtuellen Netzwerk befinden, ändert sich im Zuge der Migration die interne IP-Adresse. |
-| Mehrere Netzwerkschnittstellen auf einem virtuellen Computer |Netzwerkschnittstellen |Sind einem virtuellen Computer mehrere Netzwerkschnittstellen zugeordnet, wird jede Netzwerkschnittstelle im Rahmen der Migration zu einer Ressource der obersten Ebene im Resource Manager-Bereitstellungsmodell (einschließlich aller Eigenschaften). |
+| Mehrere Netzwerkschnittstellen auf einem virtuellen Computer |Netzwerkschnittstellen |Sind einem virtuellen Computer mehrere Netzwerkschnittstellen zugeordnet, wird jede Netzwerkschnittstelle im Rahmen der Migration zu einer Ressource der obersten Ebene (einschließlich aller Eigenschaften). |
 | Endpunktsatz mit Lastenausgleich |Load Balancer |Im klassischen Bereitstellungsmodell wurde von der Plattform für jeden Clouddienst ein impliziter Load Balancer zugewiesen. Im Zuge der Migration wird eine neue Load Balancer-Ressource erstellt, und der Lastenausgleichs-Endpunktsatz wird zu Load Balancer-Regeln. |
 | Eingehende NAT-Regeln |Eingehende NAT-Regeln |Auf dem virtuellen Computer definierte Eingabeendpunkte werden bei der Migration in Netzwerkadressenübersetzungs-Eingangsregeln für den Load Balancer umgewandelt. |
-| VIP-Adresse |Öffentliche IP-Adresse mit DNS-Name |Die virtuelle IP-Adresse wird zur öffentlichen IP-Adresse, die dem Load Balancer zugeordnet ist. Eine virtuelle IP-Adresse kann nur migriert werden, wenn ihr ein Eingabeendpunkt zugewiesen ist. |
+| VIP-Adresse |Öffentliche IP-Adresse mit DNS-Name |Die virtuelle IP-Adresse wird zu einer öffentlichen IP-Adresse und dem Load Balancer zugeordnet. Eine virtuelle IP-Adresse kann nur migriert werden, wenn ihr ein Eingabeendpunkt zugewiesen ist. |
 | Virtuelles Netzwerk |Virtuelles Netzwerk |Das virtuelle Netzwerk wird mit allen zugehörigen Eigenschaften in das Resource Manager-Bereitstellungsmodell migriert. Eine neue Ressourcengruppe namens `-migrated`wird erstellt. |
 | Reservierte IP-Adressen |Öffentliche IP-Adresse mit statischer Zuordnungsmethode |Dem Load Balancer zugeordnete reservierte IP-Adressen werden zusammen mit dem Clouddienst oder virtuellen Computer migriert. Die Migration nicht zugeordneter reservierter IP-Adressen wird derzeit nicht unterstützt. |
 | Öffentliche IP-Adresse pro virtuellem Computer |Öffentliche IP-Adresse mit dynamischer Zuordnungsmethode |Die dem virtuellen Computer zugeordnete öffentliche IP-Adresse wird in eine öffentliche IP-Adressressource mit statischer Zuordnungsmethode konvertiert. |
@@ -146,11 +144,11 @@ Die folgende Tabelle zeigt die Darstellung der Ressourcen im klassischen Bereits
 | DNS-Server |DNS-Server |DNS-Server, die einem virtuellen Netzwerk oder dem virtuellen Computer zugeordnet sind, werden im Rahmen der entsprechenden Ressourcenmigration zusammen mit allen Eigenschaften migriert. |
 | UDRs |UDRs |Einem Subnetz zugeordnete benutzerdefinierte Routen (User-Defined Routes, UDRs) werden im Rahmen der Migration für das Resource Manager-Bereitstellungsmodell geklont. Die UDR aus dem klassischen Bereitstellungsmodell wird bei der Migration nicht entfernt. Während der Migration werden Vorgänge auf Verwaltungsebene für die UDR blockiert. |
 | IP-Weiterleitungseigenschaft für die Netzwerkkonfiguration eines virtuellen Computers |IP-Weiterleitungseigenschaft für die Netzwerkschnittstellenkarte |Die IP-Weiterleitungseigenschaft für einen virtuellen Computer wird im Zuge der Migration in eine Eigenschaft der Netzwerkschnittstelle konvertiert. |
-| Load Balancer mit mehreren IP-Adressen |Load Balancer mit mehreren öffentlichen IP-Ressourcen |Sämtliche öffentliche, dem Load Balancer zugeordnete IP-Adressen werden in eine öffentliche IP-Ressource konvertiert und dem Load Balancer nach der Migration zugeordnet. |
-| Interne DNS-Namen für den virtuellen Computer |Interne DNS-Namen für die Netzwerkschnittstellenkarte |Während der Migration werden die internen DNS-Suffixe für die virtuellen Computer in eine schreibgeschützte Eigenschaft mit dem Namen InternalDomainNameSuffix auf der NIC migriert. Das Suffix bleibt nach der Migration unverändert, und die virtuelle Computerlösung sollte weiterhin wie zuvor funktionieren. |
+| Load Balancer mit mehreren IP-Adressen |Load Balancer mit mehreren öffentlichen IP-Ressourcen |Jede öffentliche, dem Load Balancer zugeordnete IP-Adresse wird in eine öffentliche IP-Ressource konvertiert und nach der Migration dem Load Balancer zugeordnet. |
+| Interne DNS-Namen für den virtuellen Computer |Interne DNS-Namen für die Netzwerkschnittstellenkarte |Während der Migration werden die internen DNS-Suffixe für die virtuellen Computer in eine schreibgeschützte Eigenschaft mit dem Namen InternalDomainNameSuffix auf der NIC migriert. Das Suffix bleibt nach der Migration unverändert, und die Auflösung des virtuellen Computers sollte weiterhin funktionieren. |
 | Gateway des virtuellen Netzwerks |Gateway des virtuellen Netzwerks |Eigenschaften des Gateways des virtuellen Netzwerks werden unverändert migriert. Die dem Gateway zugeordnete VIP bleibt ebenfalls unverändert. |
-| Standort des lokalen Netzwerks |Gateway des lokalen Netzwerks |Die Eigenschaften des lokalen Netzwerkstandorts werden unverändert in eine neue Ressource namens „Lokales Netzwerkgateway“ migriert. Sie repräsentiert lokale Adresspräfixe und die Remotegateway-IP. |
-| Verbindungsverweise |Verbindung |Konnektivitätsverweise zwischen dem Gateway- und dem lokalen Netzwerkstandort in der Netzwerkkonfiguration werden nach der Migration im Resource Manager durch eine neu erstellte Ressource namens „Verbindung“ repräsentiert. Alle Eigenschaften von Konnektivitätsverweisen in Netzwerkkonfigurationsdateien werden unverändert in die neu erstellte Verbindungsressource kopiert. VNET-zu-VNET-Konnektivität im klassischen Modell wird durch das Erstellen von zwei IPSec-Tunneln zu lokalen Netzwerkstandorten erreicht, die VNETs repräsentieren. Im Resource Manager-Modell erfolgt eine Transformation in den Verbindungstyp „Vnet2Vnet“, ohne dass lokale Netzwerkgateways erforderlich sind. |
+| Standort des lokalen Netzwerks |Lokales Netzwerkgateway |Die Eigenschaften des lokalen Netzwerkstandorts werden unverändert in eine neue Ressource (das so genannte lokale Netzwerkgateway) migriert. Sie repräsentiert lokale Adresspräfixe und die Remotegateway-IP-Adresse. |
+| Verbindungsverweise |Verbindung |Konnektivitätsverweise zwischen dem Gateway und dem lokalen Netzwerkstandort in der Netzwerkkonfiguration werden nach der Migration durch eine neue Ressource namens „Verbindung“ repräsentiert. Alle Eigenschaften von Konnektivitätsverweisen in Netzwerkkonfigurationsdateien werden unverändert in die Verbindungsressource kopiert. Im klassischen Bereitstellungsmodell wird die Konnektivität zwischen virtuellen Netzwerken durch Erstellung zweier IPsec-Tunnel zu lokalen Netzwerkstandorten erreicht, die die virtuellen Netzwerke repräsentieren. Dies wird im Resource Manager-Modell zu einer VNet-zu-VNet-Verbindung transformiert, ohne dass lokale Netzwerkgateways erforderlich sind. |
 
 ## <a name="changes-to-your-automation-and-tooling-after-migration"></a>Änderungen an der Automatisierung und an den Tools nach der Migration
-Im Rahmen der Migration Ihrer Ressourcen vom klassischen zum Resource Manager-Bereitstellungsmodell müssen Sie Ihre bestehende Automatisierung oder die bestehenden Tools aktualisieren, um sicherzustellen, dass sie nach der Migration weiterhin funktionieren.
+Im Rahmen der Migration Ihrer Ressourcen vom klassischen Bereitstellungsmodell zum Resource Manager-Bereitstellungsmodell müssen Sie Ihre vorhandene Automatisierung oder die vorhandenen Tools aktualisieren, um sicherzustellen, dass sie nach der Migration weiterhin funktionieren.

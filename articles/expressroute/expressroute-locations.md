@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/17/2017
+ms.date: 08/28/2017
 ms.author: kaanan
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: c9f44dbc943e854915c4e34b4dffa2c294f7866d
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: 61adeecaf71b8b34b8c22eda0b1e90c54ec2740a
 ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute-Partner und Peeringstandorte
@@ -77,17 +77,18 @@ Die folgende Tabelle enthält die Standorte nach Service Provider. [Hier](expres
 | **[AT&T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** |Unterstützt |Unterstützt |Amsterdam, Chicago, Dallas, London, Silicon Valley, Singapur, Sydney, Tokio, Toronto, Washington DC |
 | **[Bell Canada](https://business.bell.ca/shop/enterprise/cloud-connect-access-to-cloud-partner-services)** |Unterstützt |Unterstützt |Montreal, Toronto |
 | **[British Telecom](http://www.globalservices.bt.com/uk/en/news/bt_to_provide_connectivity_to_microsoft_azure)** |Unterstützt |Unterstützt |Amsterdam, Hongkong, London, Silicon Valley, Singapur, Sydney, Tokio, Washington DC |
+| **[C3ntro](https://c3ntro.com/)** |In Kürze verfügbar |In Kürze verfügbar |Miami |
 | **[CenturyLink](http://www.centurylink.com/business/enterprise/services/data-network/mpls-vpn.html)** |In Kürze verfügbar |In Kürze verfügbar |Silicon Valley |
 | **China Telecom Global** |Unterstützt |Nicht unterstützt |Hongkong |
 | **[Cologix](http://www.cologix.com/solutions/cloud-connect/public-clouds/microsoft-cloud/)** |Unterstützt |Unterstützt |Dallas, Montreal, Toronto |
 | **[Colt](http://www.colt.net/uk/en/news/colt-announces-dedicated-cloud-access-for-microsoft-azure-services-en.htm)** |Unterstützt |Unterstützt |Amsterdam, Dublin, London, Paris, Tokio |
 | **Comcast** |Unterstützt |Unterstützt |Chicago, Silicon Valley, Washington, D.C. |
 | **[Konsole](https://www.consoleconnect.com/partners/cloudsaas/)**| Unterstützt | Unterstützt |Silicon Valley, Toronto |
-| **[CoreSite](http://www.coresite.com/solutions/cloud-services/public-cloud-providers/microsoft-azure-expressroute)** |Unterstützt |Unterstützt |Denver, Los Angeles, New York |
+| **[CoreSite](http://www.coresite.com/solutions/cloud-services/public-cloud-providers/microsoft-azure-expressroute)** |Unterstützt |Unterstützt |Chicago, Denver, Los Angeles, New York, Silicon Valley, Washington DC |
 | **[Equinix](http://www.equinix.com/partners/microsoft-azure/)** |Unterstützt |Unterstützt |Amsterdam, Atlanta, Chicago, Dallas, Hongkong, London, Los Angeles, Melbourne, New York, Osaka, Paris, Sao Paulo, Seattle, Silicon Valley, Singapur, Sydney, Tokio, Toronto, Washington DC |
 | **euNetworks** |Unterstützt |Unterstützt |Amsterdam |
 | **GÉANT** |Unterstützt |Unterstützt |Amsterdam |
-| **[Global Cloud Xchange (GCX)] (http://globalcloudxchange.com/cloud-platform/cloud-x-fusion/cloud-x-fusion-for-azure/)** | Unterstützt| Unterstützt | Chennai |
+| **[Global Cloud Xchange (GCX)] (http://globalcloudxchange.com/cloud-platform/cloud-x-fusion/cloud-x-fusion-for-azure/)** | Unterstützt| Unterstützt | Chennai, Mumbai |
 | **[InterCloud](https://www.intercloud.com/)** |Unterstützt |Unterstützt |Amsterdam, London, Singapur, Washington, D.C. |
 | **[Internet Initiative Japan Inc. - IIJ](http://www.iij.ad.jp/en/news/pressrelease/2015/1216-2.html)** |Unterstützt |Unterstützt |Osaka, Tokio |
 | **Internet Solutions – Cloud Connect** |Unterstützt |Unterstützt |Amsterdam, London |

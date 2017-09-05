@@ -12,13 +12,13 @@ ms.devlang: dotNet
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 05/05/2017
+ms.date: 08/24/2017
 ms.author: ryanwi
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: 98c5bacd0a040d3a2d83bfe088b11d0f15449ed9
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: ec59450052b377412a28f7eaf55d1f1512b55195
 ms.contentlocale: de-de
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 
@@ -40,9 +40,11 @@ Melden Sie sich unter [http://portal.azure.com](http://portal.azure.com) am Azur
 
     ![Ausgabe bei der Clustereinrichtung][cluster-setup-basics]
 
-4. Füllen Sie das Formular **Clusterkonfiguration** aus.  Geben Sie für **Anzahl von Knotentypen** den Wert „1“ ein, und legen Sie [Dauerhaftigkeitsstufe](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) auf „Bronze“ fest.
+4. Füllen Sie das Formular **Clusterkonfiguration** aus.  Geben Sie für **Anzahl von Knotentypen** den Wert „1“ ein.
 
-5. Wählen Sie **Jeden Knotentyp konfigurieren**, und füllen Sie das Formular **Knotentypkonfiguration** aus. Anhand von Knotentypen werden die VM-Größe, die Anzahl von VMs, benutzerdefinierte Endpunkte und andere Einstellungen für die VMs des jeweiligen Typs festgelegt. Jeder definierte Knotentyp wird als separate VM-Skalierungsgruppe eingerichtet, die zum Bereitstellen und Verwalten von virtuellen Computern als Gruppe verwendet wird. Jeder Knotentyp kann einzeln zentral hoch- oder herunterskaliert werden, bei jedem Typ können unterschiedliche Portgruppen geöffnet sein, und die Typen können verschiedene Kapazitätsmetriken aufweisen.  Der erste bzw. primäre Knotentyp dient zum Hosten von Service Fabric-Systemdiensten und muss über mindestens fünf VMs verfügen.
+5. Wählen Sie **Knotentyp 1 (Primär)**, und füllen Sie das Formular **Knotentypkonfiguration** aus.  Geben Sie einen Knotentypnamen ein, und legen Sie [Dauerhaftigkeitsstufe](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) auf „Bronze“ fest.  Wählen Sie eine VM-Größe aus.
+
+    Anhand von Knotentypen werden die VM-Größe, die Anzahl von VMs, benutzerdefinierte Endpunkte und andere Einstellungen für die VMs des jeweiligen Typs festgelegt. Jeder definierte Knotentyp wird als separate VM-Skalierungsgruppe eingerichtet, die zum Bereitstellen und Verwalten von virtuellen Computern als Gruppe verwendet wird. Jeder Knotentyp kann einzeln zentral hoch- oder herunterskaliert werden, bei jedem Typ können unterschiedliche Portgruppen geöffnet sein, und die Typen können verschiedene Kapazitätsmetriken aufweisen.  Der erste bzw. primäre Knotentyp dient zum Hosten von Service Fabric-Systemdiensten und muss über mindestens fünf VMs verfügen.
 
     Die [Kapazitätsplanung](service-fabric-cluster-capacity.md) ist ein wichtiger Schritt bei jeder Produktionsbereitstellung.  Für diesen Schnellstart führen Sie aber keine Anwendungen aus, sodass Sie die VM-Größe *DS1_v2 Standard* wählen können.  Wählen Sie als [Zuverlässigkeitsstufe](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) die Einstellung „Silber“, und geben Sie als Anfangskapazität für die VM-Skalierungsgruppe den Wert „5“ an.  
 
@@ -84,20 +86,20 @@ Das Clusterdashboard bietet eine Übersicht über Ihren Cluster mit einer Zusamm
 Stellen Sie sicher, dass der Cluster ausgeführt wird, indem Sie mit PowerShell eine Verbindung herstellen.  Das Service Fabric-PowerShell-Modul wird zusammen mit dem [Service Fabric-SDK](service-fabric-get-started.md) installiert.  Das Cmdlet [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) stellt eine Verbindung mit dem Cluster her.   
 
 ```powershell
-Connect-ServiceFabricCluster -ConnectionEndpoint localhost:19000
+Connect-ServiceFabricCluster -ConnectionEndpoint quickstartcluster.westus2.cloudapp.azure.com:19000
 ```
 Weitere Beispiele für die Herstellung einer Clusterverbindung finden Sie unter [Herstellen einer Verbindung mit einem sicheren Cluster](service-fabric-connect-to-secure-cluster.md). Verwenden Sie nach dem Herstellen einer Verbindung mit dem Cluster das Cmdlet [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps), um eine Liste mit den Knoten des Clusters sowie Statusinformationen für die einzelnen Knoten anzuzeigen. **HealthState** muss für jeden Knoten *OK* lauten.
 
 ```powershell
-PS C:\> Get-ServiceFabricNode |Format-Table
+PS C:\Users\sfuser> Get-ServiceFabricNode |Format-Table
 
-NodeDeactivationInfo NodeName     IpAddressOrFQDN NodeType  CodeVersion ConfigVersion NodeStatus NodeUpTime NodeDownTime HealthState
--------------------- --------     --------------- --------  ----------- ------------- ---------- ---------- ------------ -----------
-                     _nodetype1_2 10.0.0.6        nodetype1 5.5.216.0   1                     Up 00:59:04   00:00:00              Ok
-                     _nodetype1_1 10.0.0.5        nodetype1 5.5.216.0   1                     Up 00:59:04   00:00:00              Ok
-                     _nodetype1_0 10.0.0.4        nodetype1 5.5.216.0   1                     Up 00:59:04   00:00:00              Ok
-                     _nodetype1_4 10.0.0.8        nodetype1 5.5.216.0   1                     Up 00:59:04   00:00:00              Ok
-                     _nodetype1_3 10.0.0.7        nodetype1 5.5.216.0   1                     Up 00:59:04   00:00:00              Ok
+NodeDeactivationInfo NodeName     IpAddressOrFQDN NodeType  CodeVersion  ConfigVersion NodeStatus NodeUpTime NodeDownTime HealthState
+-------------------- --------     --------------- --------  -----------  ------------- ---------- ---------- ------------ -----------
+                     _nodetype1_2 10.0.0.6        nodetype1 5.7.198.9494 1                     Up 03:00:38   00:00:00              Ok
+                     _nodetype1_1 10.0.0.5        nodetype1 5.7.198.9494 1                     Up 03:00:38   00:00:00              Ok
+                     _nodetype1_0 10.0.0.4        nodetype1 5.7.198.9494 1                     Up 03:00:38   00:00:00              Ok
+                     _nodetype1_4 10.0.0.8        nodetype1 5.7.198.9494 1                     Up 03:00:38   00:00:00              Ok
+                     _nodetype1_3 10.0.0.7        nodetype1 5.7.198.9494 1                     Up 03:00:38   00:00:00              Ok
 ```
 
 ### <a name="remove-the-cluster"></a>Entfernen des Clusters
@@ -106,65 +108,58 @@ Ein Service Fabric-Cluster besteht, zusätzlich zu der Clusterressource selbst, 
 Löschen Sie eine Ressourcengruppe im Azure-Portal:
 1. Navigieren Sie zu dem Service Fabric-Cluster, den Sie löschen möchten.
 2. Klicken Sie auf der Clusterseite „Essentials“ (Zusammenfassung) auf den Namen der **Ressourcengruppe**.
-3. Klicken Sie auf der Seite **Essentials** (Zusammenfassung) der Ressourcengruppe auf **Löschen**, und befolgen Sie die Anleitung auf der Seite, um das Löschen der Ressourcengruppe durchzuführen.
+3. Klicken Sie auf der Seite **Essentials** (Zusammenfassung) der Ressourcengruppe auf **Ressourcengruppe löschen**, und befolgen Sie die Anleitung auf dieser Seite, um das Löschen der Ressourcengruppe abzuschließen.
     ![Löschen der Ressourcengruppe][cluster-delete]
 
 
 ## <a name="use-azure-powershell-to-deploy-a-secure-cluster"></a>Verwenden von Azure PowerShell zum Bereitstellen eines sicheren Clusters
+1. Laden Sie das [Azure PowerShell-Modul (Version 4.0 oder höher)](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) auf Ihren Computer herunter.
 
-
-1) Laden Sie das [Azure PowerShell-Modul (Version 4.0 oder höher)](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) auf Ihren Computer herunter.
-
-2) Öffnen Sie ein Windows PowerShell-Fenster, und führen Sie den folgenden Befehl aus. 
+2. Öffnen Sie ein Windows PowerShell-Fenster, und führen Sie den folgenden Befehl aus. 
     
-```powershell
+    ```powershell
 
-Get-Command -Module AzureRM.ServiceFabric 
-```
+    Get-Command -Module AzureRM.ServiceFabric 
+    ```
 
-Es sollte in etwa folgende Ausgabe angezeigt werden:
+    Es sollte in etwa folgende Ausgabe angezeigt werden:
 
-![ps-list][ps-list]
+    ![ps-list][ps-list]
 
-3) Melden Sie sich an Azure an, und wählen Sie das Abonnement aus, für das Sie den Cluster erstellen möchten.
+3. Melden Sie sich an Azure an, und wählen Sie das Abonnement aus, für das Sie den Cluster erstellen möchten.
 
-```powershell
+    ```powershell
 
-Login-AzureRmAccount
+    Login-AzureRmAccount
 
-Select-AzureRmSubscription -SubscriptionId "Subcription ID" 
+    Select-AzureRmSubscription -SubscriptionId "Subcription ID" 
+    ```
 
-```
+4. Führen Sie den folgenden Befehl aus, um jetzt einen sicheren Cluster zu erstellen. Vergessen Sie nicht, die Parameter anzupassen. 
 
-4) Führen Sie den folgenden Befehl aus, um jetzt einen sicheren Cluster zu erstellen. Vergessen Sie nicht, die Parameter anzupassen. 
+    ```powershell
+    $certpwd="Password#1234" | ConvertTo-SecureString -AsPlainText -Force
+    $RDPpwd="Password#1234" | ConvertTo-SecureString -AsPlainText -Force 
+    $RDPuser="vmadmin"
+    $RGname="mycluster" # this is also the name of your cluster
+    $clusterloc="SouthCentralUS"
+    $subname="$RGname.$clusterloc.cloudapp.azure.com"
+    $certfolder="c:\mycertificates\"
+    $clustersize=1 # can take values 1, 3-99
 
+    New-AzureRmServiceFabricCluster -ResourceGroupName $RGname -Location $clusterloc -ClusterSize $clustersize -VmUserName $RDPuser -VmPassword $RDPpwd -CertificateSubjectName $subname -CertificatePassword $certpwd -CertificateOutputFolder $certfolder
+    ```
 
-````powershell
+    Bis zum Abschluss des Befehls kann es zwischen 10 und 30 Minuten dauern, und am Ende erhalten Sie eine Ausgabe, die wie unten angegeben aussehen sollte. Die Ausgabe enthält Informationen zum Zertifikat, zum KeyVault, in den der Upload durchgeführt wurde, und zum lokalen Ordner, in den das Zertifikat kopiert wurde. 
 
-$certpwd="Password#1234" | ConvertTo-SecureString -AsPlainText -Force
-$RDPpwd="Password#1234" | ConvertTo-SecureString -AsPlainText -Force 
-$RDPuser="vmadmin"
-$RGname="mycluster" # this is also the name of your cluster
-$clusterloc="SouthCentralUS"
-$subname="$RGname.$clusterloc.cloudapp.azure.com"
-$certfolder="c:\mycertificates\"
-$clustersize=1 # can take values 1, 3-99
+    ![ps-out][ps-out]
 
-New-AzureRmServiceFabricCluster -ResourceGroupName $RGname -Location $clusterloc -ClusterSize $clustersize -VmUserName $RDPuser -VmPassword $RDPpwd -CertificateSubjectName $subname -CertificatePassword $certpwd -CertificateOutputFolder $certfolder
+5. Kopieren Sie die gesamte Ausgabe, und speichern Sie sie in einer Textdatei, da wir sie später noch benötigen. Notieren Sie sich die folgenden Informationen der Ausgabe: 
 
-````
-
-Bis zum Abschluss des Befehls kann es zwischen 10 und 30 Minuten dauern, und am Ende erhalten Sie eine Ausgabe, die wie unten angegeben aussehen sollte. Die Ausgabe enthält Informationen zum Zertifikat, zum KeyVault, in den der Upload durchgeführt wurde, und zum lokalen Ordner, in den das Zertifikat kopiert wurde. 
-
-![ps-out][ps-out]
-
-5) Kopieren Sie die gesamte Ausgabe, und speichern Sie sie in einer Textdatei, da wir sie später noch benötigen. Notieren Sie sich die folgenden Informationen der Ausgabe:
- 
-
-- **CertificateSavedLocalPath** : c:\mycertificates\mycluster20170504141137.pfx
-- **CertificateThumbprint** : C4C1E541AD512B8065280292A8BA6079C3F26F10
-- **ManagementEndpoint** : https://mycluster.southcentralus.cloudapp.azure.com:19080
-- **ClientConnectionEndpointPort** : 19000
+    - **CertificateSavedLocalPath** : c:\mycertificates\mycluster20170504141137.pfx
+    - **CertificateThumbprint** : C4C1E541AD512B8065280292A8BA6079C3F26F10
+    - **ManagementEndpoint** : https://mycluster.southcentralus.cloudapp.azure.com:19080
+    - **ClientConnectionEndpointPort** : 19000
 
 ### <a name="install-the-certificate-on-your-local-machine"></a>Installieren des Zertifikats auf dem lokalen Computer
   

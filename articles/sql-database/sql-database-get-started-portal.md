@@ -13,14 +13,14 @@ ms.custom: mvc,DBs & servers
 ms.workload: data-management
 ms.tgt_pltfrm: portal
 ms.devlang: na
-ms.topic: hero-article
-ms.date: 05/30/2017
+ms.topic: quickstart
+ms.date: 08/25/2017
 ms.author: carlrab
 ms.translationtype: HT
-ms.sourcegitcommit: 6e76ac40e9da2754de1d1aa50af3cd4e04c067fe
-ms.openlocfilehash: a863cf3ad08040906850f64db6505f30bcfa72eb
+ms.sourcegitcommit: 48dfc0fa4c9ad28c4c64c96ae2fc8a16cd63865c
+ms.openlocfilehash: 6bf1b94b38fffe31dd67a5146c3c9c5e9367084e
 ms.contentlocale: de-de
-ms.lasthandoff: 07/31/2017
+ms.lasthandoff: 08/30/2017
 
 ---
 # <a name="create-an-azure-sql-database-in-the-azure-portal"></a>Erstellen einer Azure SQL-Datenbank im Azure-Portal
@@ -41,7 +41,7 @@ Führen Sie diese Schritte aus, um eine SQL-Datenbank mit den Adventure Works LT
 
 1. Klicken Sie in der linken oberen Ecke des Azure-Portals auf die Schaltfläche **Neu**.
 
-2. Wählen Sie auf der Seite **Neu** die Option **Datenbanken** und dann auf der Seite **Datenbanken** die Option **SQL-Datenbank**.
+2. Wählen Sie auf der Seite **Neu** die Option **Datenbanken**, und wählen Sie dann die Option **Erstellen** unter **SQL-Datenbank** auf der Seite **Neu**.
 
    ![Datenbankerstellung 1](./media/sql-database-get-started-portal/create-database-1.png)
 
@@ -77,17 +77,33 @@ Führen Sie diese Schritte aus, um eine SQL-Datenbank mit den Adventure Works LT
 
 5. Klicken Sie nach dem Ausfüllen des Formulars auf **Auswählen**.
 
-6. Klicken Sie auf **Tarif**, um die Dienstebene und die Leistungsstufe für die neue Datenbank anzugeben. Wählen Sie mit dem Schieberegler **20 DTUs** und **250** GB Speicher aus. Weitere Informationen zu DTUs finden Sie unter [Was ist eine DTU?](sql-database-what-is-a-dtu.md).
+6. Klicken Sie auf **Tarif**, um die Dienstebene, die Anzahl von DTUs und die Menge an Speicher anzugeben. Entdecken Sie die Optionen für die Menge an DTUs und Speicher, die für jede Dienstebene verfügbar ist. 
+
+   > [!IMPORTANT]
+   > \* Speichergrößen, die den integrierten Speicher überschreiten, befinden sich in der Vorschauphase und werden gegen Aufpreis bereitgestellt. Weitere Informationen finden Sie unter [SQL-Datenbank Preise](https://azure.microsoft.com/pricing/details/sql-database/). 
+   >
+   >\* Im Premium-Tarif ist eine Speicherkapazität von mehr als 1 TB folgenden Regionen verfügbar: „USA, Osten 2“, „USA, Westen“, „USA Gov Virginia“, „Europa, Westen“, „Deutschland, Mitte“, „Asien, Südosten“, „Japan, Osten“, „Australien, Osten“, „Kanada, Mitte“ und „Kanada, Osten“. Siehe [P11-P15: Aktuelle Einschränkungen](sql-database-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+   > 
+
+7. Wählen Sie in diesem Schnellstarttutorial die Dienstebene **Standard**, und wählen Sie dann mit dem Schieberegler **100 DTUs (S3)** und **400** GB Speicher aus.
 
    ![Datenbankerstellung s1](./media/sql-database-get-started-portal/create-database-s1.png)
 
-7. Klicken Sie nach dem Auswählen der DTU-Menge auf **Übernehmen**.  
+8. Akzeptieren Sie die Nutzungsbedingungen für die Vorschau, um die Option **Add-On-Speicher** zu verwenden. 
 
-8. Nachdem Sie das SQL-Datenbank-Formular ausgefüllt haben, können Sie auf **Erstellen** klicken, um die Datenbank bereitzustellen. Die Bereitstellung dauert einige Minuten. 
+   > [!IMPORTANT]
+   > \* Speichergrößen, die den integrierten Speicher überschreiten, befinden sich in der Vorschauphase und werden gegen Aufpreis bereitgestellt. Weitere Informationen finden Sie unter [SQL-Datenbank Preise](https://azure.microsoft.com/pricing/details/sql-database/). 
+   >
+   >\* Im Premium-Tarif ist eine Speicherkapazität von mehr als 1 TB folgenden Regionen verfügbar: „USA, Osten 2“, „USA, Westen“, „USA Gov Virginia“, „Europa, Westen“, „Deutschland, Mitte“, „Asien, Südosten“, „Japan, Osten“, „Australien, Osten“, „Kanada, Mitte“ und „Kanada, Osten“. Siehe [P11-P15: Aktuelle Einschränkungen](sql-database-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+   > 
 
-9. Klicken Sie in der Symbolleiste auf **Benachrichtigungen**, um den Bereitstellungsprozess zu überwachen.
+9. Klicken Sie auf **Übernehmen**, wenn Sie die Server-Ebene, die Anzahl von DTUs und die Menge an Speicherplatz ausgewählt haben.  
 
-   ![Benachrichtigung](./media/sql-database-get-started-portal/notification.png)
+10. Nachdem Sie das SQL-Datenbank-Formular ausgefüllt haben, können Sie auf **Erstellen** klicken, um die Datenbank bereitzustellen. Die Bereitstellung dauert einige Minuten. 
+
+11. Klicken Sie in der Symbolleiste auf **Benachrichtigungen**, um den Bereitstellungsprozess zu überwachen.
+    
+     ![Benachrichtigung](./media/sql-database-get-started-portal/notification.png)
 
 ## <a name="create-a-server-level-firewall-rule"></a>Erstellen einer Firewallregel auf Serverebene
 
@@ -97,25 +113,21 @@ Der SQL-Datenbankdienst erstellt eine Firewall auf Serverebene, um zu verhindern
 > SQL-Datenbank kommuniziert über Port 1433. Wenn Sie versuchen, eine Verbindung aus einem Unternehmensnetzwerk heraus herzustellen, wird der ausgehende Datenverkehr über Port 1433 von der Firewall Ihres Netzwerks unter Umständen nicht zugelassen. In diesem Fall können Sie nur dann eine Verbindung mit Ihrem Azure SQL-Datenbankserver herstellen, wenn Ihre IT-Abteilung Port 1433 öffnet.
 >
 
-1. Klicken Sie nach Abschluss der Bereitstellung im Menü auf der linken Seite auf **SQL-Datenbanken**, und klicken Sie dann auf der Seite **SQL-Datenbanken** auf **mySampleDatabase**. Die Übersichtsseite für Ihre Datenbank wird geöffnet, die den vollqualifizierten Servernamen (z.B. **mynewserver20170313.database.windows.net**) und Optionen für die weitere Konfiguration enthält. Kopieren Sie diesen vollqualifizierten Servernamen zur späteren Verwendung.
+1. Klicken Sie nach Abschluss der Bereitstellung im Menü auf der linken Seite auf **SQL-Datenbanken**, und klicken Sie dann auf der Seite **SQL-Datenbanken** auf **mySampleDatabase**. Die Übersichtsseite für Ihre Datenbank wird geöffnet, die den vollqualifizierten Servernamen (z.B. **mynewserver20170824.database.windows.net**) und Optionen für die weitere Konfiguration enthält. 
 
-   > [!IMPORTANT]
-   > Sie benötigen diesen vollqualifizierten Servernamen, um in den nachfolgenden Schnellstarts eine Verbindung mit Ihrem Server und den Datenbanken herzustellen.
-   > 
+2. Kopieren Sie diesen vollqualifizierten Servernamen, um in den nachfolgenden Schnellstarts eine Verbindung mit Ihrem Server und den Datenbanken herzustellen. 
 
-   ![Servername](./media/sql-database-connect-query-dotnet/server-name.png) 
+   ![Servername](./media/sql-database-get-started-portal/server-name.png) 
 
-2. Klicken Sie auf der Symbolleiste wie in der obigen Abbildung dargestellt auf **Serverfirewall festlegen**. Die Seite **Firewalleinstellungen** für den SQL-Datenbankserver wird geöffnet. 
+3. Klicken Sie auf der Symbolleiste wie in der obigen Abbildung dargestellt auf **Serverfirewall festlegen**. Die Seite **Firewalleinstellungen** für den SQL-Datenbankserver wird geöffnet. 
 
    ![Serverfirewallregel](./media/sql-database-get-started-portal/server-firewall-rule.png) 
 
-3. Klicken Sie in der Symbolleiste auf **Client-IP-Adresse hinzufügen**, um Ihre aktuelle IP-Adresse einer neuen Firewallregel hinzuzufügen. Eine Firewallregel kann Port 1433 für eine einzelne IP-Adresse oder einen Bereich von IP-Adressen öffnen.
+4. Klicken Sie in der Symbolleiste auf **Client-IP-Adresse hinzufügen**, um Ihre aktuelle IP-Adresse einer neuen Firewallregel hinzuzufügen. Eine Firewallregel kann Port 1433 für eine einzelne IP-Adresse oder einen Bereich von IP-Adressen öffnen.
 
-4. Klicken Sie auf **Speichern**. Für Ihre aktuelle IP-Adresse wird eine Firewallregel auf Serverebene erstellt, und auf dem logischen Server wird Port 1433 geöffnet.
+5. Klicken Sie auf **Speichern**. Für Ihre aktuelle IP-Adresse wird eine Firewallregel auf Serverebene erstellt, und auf dem logischen Server wird Port 1433 geöffnet.
 
-   ![Festlegen der Serverfirewallregel](./media/sql-database-get-started-portal/server-firewall-rule-set.png) 
-
-4. Klicken Sie auf **OK**, und schließen Sie anschließend die Seite **Firewalleinstellungen**.
+6. Klicken Sie auf **OK**, und schließen Sie anschließend die Seite **Firewalleinstellungen**.
 
 Sie können für diese IP-Adresse jetzt eine Verbindung mit dem SQL-Datenbankserver und den dazugehörigen Datenbanken herstellen. Verwenden Sie hierfür SQL Server Management Studio oder ein anderes Tool Ihrer Wahl sowie das zuvor erstellte Serveradministratorkonto.
 
@@ -127,19 +139,19 @@ Sie können für diese IP-Adresse jetzt eine Verbindung mit dem SQL-Datenbankser
 
 Nachdem Sie nun eine Beispieldatenbank in Azure erstellt haben, können Sie das integrierte Abfragetool im Azure-Portal verwenden, um sich zu vergewissern, dass Sie eine Verbindung mit der Datenbank herstellen und die Daten abfragen können. 
 
-1. Klicken Sie auf der Seite „SQL-Datenbank“ für Ihre Datenbank auf der Symbolleiste auf **Tools**. Die Seite **Tools** wird geöffnet.
+1. Klicken Sie auf der Seite „SQL-Datenbank“ für Ihre Datenbank in der Symbolleiste auf **Tools**, und klicken Sie dann auf **Abfrage-Editor (Vorschau)**.
 
    ![Menü „Tools“](./media/sql-database-get-started-portal/tools-menu.png) 
 
-2. Klicken Sie auf **Abfrage-Editor (Vorschau)**, auf das Kontrollkästchen **Preview-Bedingungen** und dann auf **OK**. Die Seite mit dem Abfrage-Editor wird geöffnet.
+2. Aktivieren Sie auf das Kontrollkästchen mit den **Nutzungsbedingungen für die Vorschau**, und klicken Sie dann auf **OK**. Die Seite mit dem Abfrage-Editor wird geöffnet.
 
-3. Klicken Sie auf **Anmelden**, und wählen Sie die Option **SQL Server-Authentifizierung**, wenn die Aufforderung angezeigt wird. Geben Sie anschließend den Benutzernamen und das Kennwort des Serveradministrators an.
+3. Klicken Sie auf **Anmelden**, überprüfen Sie die Anmeldeinformationen, und klicken Sie dann auf **OK**, um sich über die SQL Server-Authentifizierung mit den zuvor erstellten Serveradministrator-Anmeldedaten anzumelden.
 
    ![Anmeldung](./media/sql-database-get-started-portal/login.png) 
 
 4. Klicken Sie auf **OK**, um sich anzumelden.
 
-5. Geben Sie nach der Authentifizierung im Bereich für den Abfrage-Editor die folgende Abfrage ein:
+5. Geben Sie nach der Authentifizierung als **Serveradministrator** im Bereich für den Abfrage-Editor die folgende Abfrage ein:
 
    ```sql
    SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName
@@ -152,11 +164,11 @@ Nachdem Sie nun eine Beispieldatenbank in Azure erstellt haben, können Sie das 
 
    ![Abfrage-Editor – Ergebnisse](./media/sql-database-get-started-portal/query-editor-results.png)
 
-7. Schließen Sie die Seite **Abfrage-Editor** und die Seite **Tools**.
+7. Schließen Sie den **Abfrage-Editor**, klicken Sie auf **OK**, um nicht gespeicherte Änderungen zu verwerfen, und schließen Sie dann die Seite **Tools**.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie diese Ressourcen nicht für einen anderen Schnellstart bzw. ein anderes Tutorial benötigen (siehe [Nächste Schritte](#next-steps)), können Sie sie wie folgt löschen:
+Speichern Sie diese Ressourcen, um unter [Nächste Schritte](#next-steps) zu erfahren, wie Sie eine Verbindung herstellen und Ihre Datenbank mit verschiedenen Methoden abfragen. Wenn Sie die in diesem Schnellstart erstellten Ressourcen löschen möchten, wenden Sie die folgenden Schritte an. 
 
 
 1. Klicken Sie im Azure-Portal im Menü auf der linken Seite auf **Ressourcengruppen** und dann auf **myResourceGroup**. 

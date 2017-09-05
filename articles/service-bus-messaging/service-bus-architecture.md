@@ -1,6 +1,6 @@
 ---
 title: "Übersicht über die Nachrichtenverarbeitungsarchitektur von Azure Service Bus | Microsoft-Dokumentation"
-description: In diesem Artikel wird die Architektur zur Nachrichten- und Relayverarbeitung von Azure Service Bus beschrieben.
+description: "Hier erfahren Sie mehr über die Nachrichtenverarbeitungsarchitektur von Azure Service Bus."
 services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/18/2017
+ms.date: 08/23/2017
 ms.author: sethm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: ced46c64c1c105aa987759e05ab3680bc399f9a0
+ms.translationtype: HT
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 83456d775c5ff2a2476ba46e9c78a8dc1bb482e8
 ms.contentlocale: de-de
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="service-bus-architecture"></a>Service Bus-Architektur
@@ -28,9 +27,9 @@ Dieser Artikel beschreibt die Nachrichtenverarbeitungsarchitektur von Azure Serv
 ## <a name="service-bus-scale-units"></a>Service Bus-Skalierungseinheiten
 Service Bus ist nach *Skalierungseinheiten*strukturiert. Eine Skalierungseinheit ist eine Bereitstellungseinheit und umfasst alle Komponenten, die zum Ausführen des Diensts erforderlich sind. Jede Region stellt mindestens eine Service Bus-Skalierungseinheit bereit.
 
-Ein Service Bus-Namespace wird einer Skalierungseinheit zugeordnet. Die Skalierungseinheit verarbeitet alle Arten von Service Bus-Entitäten: Relays und Brokermessagingentitäten (Warteschlangen, Themen, Abonnements). Eine Service Bus-Skalierungseinheit besteht aus folgenden Komponenten:
+Ein Service Bus-Namespace wird einer Skalierungseinheit zugeordnet. Die Skalierungseinheit verarbeitet alle Arten von Service Bus-Entitäten (Warteschlangen, Themen, Abonnements). Eine Service Bus-Skalierungseinheit besteht aus folgenden Komponenten:
 
-* **Eine Gruppe von Gatewayknoten.** Gatewayknoten authentifizieren eingehende Anforderungen und verarbeiten Relayanforderungen. Jeder Gatewayknoten besitzt eine öffentliche IP-Adresse.
+* **Eine Gruppe von Gatewayknoten.** Gatewayknoten authentifizieren eingehende Anforderungen. Jeder Gatewayknoten besitzt eine öffentliche IP-Adresse.
 * **Eine Sammlung von Messagingbrokerknoten.** Messagingbrokerknoten verarbeiten Anforderungen, die Messagingentitäten betreffen.
 * **Ein Gatewayspeicher.** Der Gatewayspeicher enthält die Daten für jede Entität, die in dieser Skalierungseinheit definiert ist. Der Implementierung des Gatewayspeichers liegt eine SQL Azure-Datenbank zugrunde.
 * **Mehrere Messagingspeicher.** Die Messagingspeicher enthalten die Nachrichten aller Warteschlangen, Themen und Abonnements, die in dieser Skalierungseinheit definiert sind. Auch sämtliche Abonnementdaten sind darin enthalten. Eine Warteschlange oder ein Thema ist immer einem einzelnen Messagingspeicher zugeordnet, es sei denn, das [Partitionieren von Messagingentitäten](service-bus-partitioning.md) ist aktiviert. Abonnements werden im gleichen Messagingspeicher gespeichert wie ihr übergeordnetes Thema. Mit Ausnahme des [Premium-Messagings](service-bus-premium-messaging.md) von Service Bus liegen der Implementierung von Messagingspeichern SQL Azure-Datenbanken zugrunde.
@@ -43,18 +42,10 @@ Wenn ein Client eine Anforderung an Service Bus sendet, wird diese vom Azure Loa
 
 ![Verarbeiten eingehender Messaginganforderungen](./media/service-bus-architecture/ic690644.png)
 
-## <a name="processing-of-incoming-relay-requests"></a>Verarbeiten eingehender Relayanforderungen
-Wenn ein Client eine Anforderung an den [Azure Relay](/azure/service-bus-relay/)-Dienst sendet, wird diese vom Azure Load Balancer an einen der Gatewayknoten weitergeleitet. Handelt es sich dabei um eine Lauschanforderung, erstellt der Gatewayknoten ein neues Relay. Handelt es sich um eine Verbindungsanforderung für ein bestimmtes Relay, leitet der Gatewayknoten die Anforderung an den für das Relay zuständigen Gatewayknoten weiter. Der für das Relay zuständige Gatewayknoten sendet eine Rendezvousanforderung an den lauschenden Client und fordert den Listener auf, einen temporären Kanal zu dem Gatewayknoten zu erstellen, der die Verbindungsanfrage erhalten hat.
-
-Sobald die Relayverbindung besteht, können die Clients Nachrichten über den Gatewayknoten austauschen, die für das Rendezvous verwendet wird.
-
-![Verarbeiten eingehender WCF Relay-Anforderungen](./media/service-bus-architecture/ic690645.png)
-
 ## <a name="next-steps"></a>Nächste Schritte
 Nachdem Sie sich einen Überblick über die Service Bus-Architektur verschafft haben, finden Sie unter den folgenden Links weitere Informationen:
 
 * [Übersicht über Service Bus-Messaging](service-bus-messaging-overview.md)
-* [Übersicht über Azure Relay](../service-bus-relay/relay-what-is-it.md)
 * [Service Bus – Grundlagen](service-bus-fundamentals-hybrid-solutions.md)
 * [Eine Messaginglösung mit Warteschlange unter Verwendung von Service Bus-Warteschlangen](service-bus-dotnet-multi-tier-app-using-service-bus-queues.md)
 

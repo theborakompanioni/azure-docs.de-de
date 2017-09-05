@@ -12,21 +12,21 @@ ms.custom: quick start connect, mvc
 ms.workload: 
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
-ms.topic: hero-article
-ms.date: 08/07/2017
+ms.topic: quickstart
+ms.date: 08/24/2017
 ms.author: denlee
 ms.translationtype: HT
-ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
-ms.openlocfilehash: f29e9dcc2bed968937627d48f1a98e3b084853b9
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 0273072c7c10e219ab8d6c85eb252badafc17147
 ms.contentlocale: de-de
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="azure-cosmos-db-create-a-graph-database-using-java-and-the-azure-portal"></a>Azure Cosmos DB: Erstellen einer Graphdatenbank mit Java und dem Azure-Portal
 
 Azure Cosmos DB ist der global verteilte Microsoft-Datenbankdienst mit mehreren Modellen. Sie können schnell Dokument-, Schlüssel/Wert- und Graph-Datenbanken erstellen und abfragen und dabei stets die Vorteile der globalen Verteilung und der horizontalen Skalierung nutzen, die Azure Cosmos DB zugrunde liegen. 
 
-In dieser Schnellstartanleitung wird mithilfe der Tools des Azure-Portals für Azure Cosmos DB eine Graphdatenbank erstellt. Darüber hinaus erfahren Sie hier, wie Sie unter Verwendung des OSS-Treibers [Gremlin Java](https://mvnrepository.com/artifact/org.apache.tinkerpop/gremlin-driver) schnell eine Java-Konsolen-App erstellen, die eine Graphdatenbank verwendet. Die Anweisungen in dieser Schnellstartanleitung gelten für alle Betriebssysteme, unter denen Java ausgeführt werden kann. Nach Abschluss dieser Schnellstartanleitung können Sie Graphressourcen sowohl über die Benutzeroberfläche als auch programmgesteuert erstellen und ändern. 
+In dieser Schnellstartanleitung wird mithilfe der Tools des Azure-Portals für Azure Cosmos DB eine Graphdatenbank erstellt. Darüber hinaus erfahren Sie hier, wie Sie unter Verwendung des OSS-Treibers [Gremlin Java](https://mvnrepository.com/artifact/org.apache.tinkerpop/gremlin-driver) schnell eine Java-Konsolen-App erstellen, die eine Graphdatenbank verwendet. Die Anweisungen in dieser Schnellstartanleitung gelten für alle Betriebssysteme, unter denen Java ausgeführt werden kann. In dieser Schnellstartanleitung erfahren Sie, wie Sie Graphressourcen über die Benutzeroberfläche oder programmgesteuert erstellen und ändern. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -61,7 +61,6 @@ Sie können nun das Daten-Explorer-Tool im Azure-Portal verwenden, um eine Graph
     Graph-ID|sample-graph|Die ID Ihres neuen Diagramms. Für Diagrammnamen gelten dieselben Zeichenanforderungen wie für Datenbank-IDs.
     Speicherkapazität| 10 GB|Behalten Sie den Standardwert bei. Dies ist die Speicherkapazität der Datenbank.
     Durchsatz|400 RUs|Behalten Sie den Standardwert bei. Sie können den Durchsatz später zentral hochskalieren, wenn Sie Latenzen reduzieren möchten.
-    RU/Minute|Aus|Behalten Sie den Standardwert bei.
     Partitionsschlüssel|Nicht ausfüllen|Lassen Sie für diese Schnellstartanleitung den Partitionsschlüssel leer.
 
 3. Wenn das Formular ausgefüllt ist, klicken Sie auf **OK**.

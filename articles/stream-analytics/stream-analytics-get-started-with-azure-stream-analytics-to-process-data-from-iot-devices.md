@@ -4,7 +4,7 @@ description: "IoT-Sensortags und -Datenströme mit Stream Analytics und Echtzeit
 keywords: "IoT-Lösung, erste Schritte mit IoT"
 services: stream-analytics
 documentationcenter: 
-author: jeffstokes72
+author: samacha
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 3e829055-75ed-469f-91f5-f0dc95046bdb
@@ -14,12 +14,12 @@ ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
-ms.author: jeffstok
-translationtype: Human Translation
-ms.sourcegitcommit: 9afd26024d2aa0d3d732ddc6f54e591715afca69
-ms.openlocfilehash: 9624405d8bc454e886e8011c1cb4920fdf7e0640
-ms.lasthandoff: 01/24/2017
-
+ms.author: samacha
+ms.translationtype: HT
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: 3146604dd2dbc626d8179d5c91e3cf895b9f67da
+ms.contentlocale: de-de
+ms.lasthandoff: 08/30/2017
 
 ---
 # <a name="get-started-with-azure-stream-analytics-to-process-data-from-iot-devices"></a>Erste Schritte mit Azure Stream Analytics zum Verarbeiten der Daten von IoT-Geräten
@@ -65,7 +65,7 @@ Zur einfacheren Verwendung enthält dieser Leitfaden zu den ersten Schritten ein
 4. Aktivieren Sie das Kontrollkästchen, um den Auftrag im Dashboard zu platzieren, und klicken Sie dann auf **ERSTELLEN**.
    
     ![Auftrag wird erstellt](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-03a.png)
-5. Oben rechts im Browserfenster sollte „Bereitstellung gestartet...“ angezeigt werden. Nach kurzer Zeit ändert sich dies in ein Fenster mit dem Hinweis, dass der Vorgang abgeschlossen ist (unten dargestellt).
+5. Oben rechts im Browserfenster sollte „Bereitstellung wurde gestartet...“ angezeigt werden. Nach kurzer Zeit ändert sich dies in ein Fenster mit dem Hinweis, dass der Vorgang abgeschlossen ist (unten dargestellt).
    
     ![Auftrag wird erstellt](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-03b.png)
 
@@ -111,7 +111,7 @@ Wir fügen unserer Abfrage nun weitere Details hinzu. Für jeden Typ von Sensor 
 Die Ergebnisse umfassen jetzt nur noch 245 Zeilen, und es werden die Namen der Sensoren aufgeführt, bei denen die Durchschnittstemperatur höher als 100 ist. Bei dieser Abfrage wird der Datenstrom mit den Ereignissen nach **dspl** (Sensorname) gruppiert, und es wird ein **rollierendes Fenster** von 30 Sekunden verwendet. Bei zeitlichen Abfragen muss angegeben werden, wie der Zeitablauf erfolgen soll. Mit der **TIMESTAMP BY**-Klausel haben wir die Spalte **OUTPUTTIME** angegeben, um Zeiten allen Zeitberechnungen zuzuordnen. Ausführliche Informationen finden Sie in den MSDN-Artikeln zu den Funktionen [Time Management](https://msdn.microsoft.com/library/azure/mt582045.aspx) (Zeitverwaltung) und [Windowing](https://msdn.microsoft.com/library/azure/dn835019.aspx).
 
 ### <a name="query-detect-absence-of-events"></a>Abfrage: Abwesenheit von Ereignissen erkennen
-Wie können wir eine Abfrage schreiben, die einen Mangel an Eingabeereignissen findet? Hierzu ermitteln wir, wann ein Sensor zum letzten Mal Daten gesendet und danach eine Minute lang keine weiteren Ereignisse gesendet hat. Die Abfrage ist in der Datei „AbsenseOfEvent.txt“ enthalten.
+Wie können wir eine Abfrage schreiben, die einen Mangel an Eingabeereignissen findet? Hierzu ermitteln wir, wann ein Sensor zum letzten Mal Daten gesendet und danach fünf Sekunden lang keine weiteren Ereignisse gesendet hat. Die Abfrage ist in der Datei „AbsenseOfEvent.txt“ enthalten.
 
 ![Abwesenheit von Ereignissen erkennen](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-11.png)
 

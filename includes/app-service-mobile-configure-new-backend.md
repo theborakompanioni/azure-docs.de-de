@@ -1,25 +1,31 @@
 
-1. Klicken Sie auf **App Services**, wählen Sie Ihr mobiles App-Back-End aus, und klicken Sie auf **Schnellstart** und dann auf Ihre Clientplattform (iOS, Android, Xamarin, Cordova).
+1. Klicken Sie auf die Schaltfläche **App Services**, wählen Sie Ihr Mobile Apps-Back-End aus, wählen Sie **Schnellstart** aus, und wählen Sie anschließend Ihre Clientplattform (iOS, Android, Xamarin oder Cordova) aus.
 
-![Azure-Portal mit hervorgehobenem Mobile Apps-Schnellstart][quickstart]
+    ![Azure-Portal mit hervorgehobenem Mobile Apps-Schnellstart][quickstart]
 
-2. Wenn die Verbindung mit der Datenbank nicht konfiguriert ist, müssen Sie eine Datenverbindung erstellen.
+2. Ist keine Datenbankverbindung konfiguriert, gehen Sie wie folgt vor, um eine zu erstellen:
 
-![Azure-Portal mit Mobile Apps – Verbindung mit BD herstellen][connect]
+    ![Azure-Portal mit Mobile Apps – Herstellen der Datenbankverbindung][connect]
 
-  * Erstellen Sie eine neue SQL-Datenbank und einen Server.
+    a. Erstellen Sie eine neue SQL-Datenbank und einen Server.
 
-  ![Azure-Portal mit Mobile Apps – BD und Server neu erstellen][server]
+    ![Azure-Portal mit Mobile Apps – Erstellen einer neuen Datenbank und eines Servers][server]
 
-  * Warten Sie, bis die Erstellung der Datenverbindung erfolgreich abgeschlossen wurde.
+    b. Warten Sie, bis die Erstellung der Datenverbindung erfolgreich abgeschlossen wurde.
 
-  ![Azure-Portal mit Mobile Apps – Benachrichtigung über Erstellung der Datenverbindung][notification]
+    ![Azure-Portal Benachrichtigung bei erfolgreicher Erstellung der Datenverbindung][notification]
 
-  * Die Herstellung der Datenverbindung muss erfolgreich sein.
+    c. Die Herstellung der Datenverbindung muss erfolgreich sein.
 
-  ![Azure-Portal mit Mobile Apps – Benachrichtigung über Erstellung der Datenverbindung][already-connection]
+    ![Azure Portal-Benachrichtigung: „Sie verfügen bereits über eine Datenverbindung.“][already-connection]
 
-3. Wählen Sie unter **2. Tabellen-API erstellen** als **Back-End-Sprache** die Option „Node.js“ aus. Akzeptieren Sie die Bestätigung, und klicken Sie auf **TodoItem-Tabelle erstellen**. Dadurch wird eine neue *TodoItem* -Tabelle in Ihrer Datenbank erstellt. Beachten Sie, dass durch Wechseln der Sprache für ein vorhandenes Back-End zu Node.js alle Inhalte überschrieben werden. Wenn Sie stattdessen ein .NET-Back-End erstellen möchten, hilft Ihnen [diese Anleitung][instructions] weiter.
+3. Wählen Sie unter **2. Tabellen-API erstellen** als **Back-End-Sprache** die Option „Node.js“ aus. 
+ 
+4. Akzeptieren Sie die Bestätigung, und wählen Sie dann **TodoItem-Tabelle erstellen** aus.  
+    Dadurch wird in Ihrer Datenbank eine neue Aufgabenlistentabelle erstellt. 
+
+    >[!IMPORTANT]
+    > Bei der Umstellung eines vorhandenen Back-Ends auf Node.js werden sämtliche Inhalte überschrieben. Wenn Sie stattdessen ein .NET-Back-End erstellen möchten, lesen Sie [Vorgehensweise: Erstellen eines .NET Mobile App-Back-Ends][instructions].
 
 <!-- Images. -->
 [quickstart]: ./media/app-service-mobile-configure-new-backend/quickstart.png

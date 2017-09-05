@@ -12,13 +12,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 06/29/2017
+ms.date: 08/28/2017
 ms.author: nisoneji
 ms.translationtype: HT
-ms.sourcegitcommit: 2812039649f7d2fb0705220854e4d8d0a031d31e
-ms.openlocfilehash: 4d96483a971d5c4a0c2cc240620e7a9b289f597d
+ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
+ms.openlocfilehash: 60b0641076c2fa8ed2feb5c64e7b119519f46cf4
 ms.contentlocale: de-de
-ms.lasthandoff: 07/22/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="azure-site-recovery-deployment-planner"></a>Azure Site Recovery Deployment Planner
@@ -67,7 +67,7 @@ Das Tool verfügt über zwei Hauptphasen: die Profilerstellung und die Berichter
 
 | Serveranforderung | Beschreibung|
 |---|---|
-|Profilerstellung und Messung des Durchsatzes| <ul><li>Betriebssystem: Microsoft Windows Server 2012 R2<br>(idealerweise mindestens basierend auf [Empfohlene Größen für den Konfigurationsserver](https://aka.ms/asr-v2a-on-prem-components))</li><li>Computerkonfiguration: 8 vCPUs, 16 GB RAM, 300 GB HDD</li><li>[Microsoft .NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[VMware vSphere PowerCLI 6.0 R3](https://aka.ms/download_powercli)</li><li>[Microsoft Visual C++ Redistributable für Visual Studio 2012](https://aka.ms/vcplusplus-redistributable)</li><li>Zugriff auf Azure über das Internet von diesem Server</li><li>Azure-Speicherkonto</li><li>Administratorzugriff auf dem Server</li><li>Mindestens 100 GB freier Speicherplatz (bei 1.000 VMs mit durchschnittlich drei Datenträgern, Profilerstellung über 30 Tage)</li><li>Die Einstellungen für die VMware vCenter-Statistikebene sollten auf „2“ oder „Höchste Stufe“ festgelegt werden.</li></ul>|
+|Profilerstellung und Messung des Durchsatzes| <ul><li>Betriebssystem: Microsoft Windows Server 2012 R2<br>(idealerweise mindestens basierend auf [Empfohlene Größen für den Konfigurationsserver](https://aka.ms/asr-v2a-on-prem-components))</li><li>Computerkonfiguration: 8 vCPUs, 16 GB RAM, 300 GB HDD</li><li>[Microsoft .NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[VMware vSphere PowerCLI 6.0 R3](https://aka.ms/download_powercli)</li><li>[Microsoft Visual C++ Redistributable für Visual Studio 2012](https://aka.ms/vcplusplus-redistributable)</li><li>Zugriff auf Azure über das Internet von diesem Server</li><li>Azure-Speicherkonto</li><li>Administratorzugriff auf dem Server</li><li>Mindestens 100 GB freier Speicherplatz (bei 1.000 VMs mit durchschnittlich drei Datenträgern, Profilerstellung über 30 Tage)</li><li>Die Einstellungen für die VMware vCenter-Statistikebene sollten auf „2“ oder „Höchste Stufe“ festgelegt werden.</li><li>Port 443 zulassen: Der ASR-Bereitstellungsplaner verwendet diesen Port zum Verbinden mit vCenter Server/ESXi-Host.</ul></ul>|
 | Berichterstellung | Windows-PC oder Windows-Server mit Microsoft Excel 2013 oder höher |
 | Benutzerberechtigungen | Leseberechtigung für das Benutzerkonto, das zum Zugreifen auf den VMware vCenter-Server/VMware vSphere ESXi-Host während der Profilerstellung verwendet wird |
 
@@ -118,14 +118,18 @@ Zuerst benötigen Sie eine Liste mit den VMs, für die die Profilerstellung durc
 
             Set-ExecutionPolicy –ExecutionPolicy AllSigned
 
-4. Zum Abrufen aller Namen von VMs eines vCenter-Servers/vSphere ESXi-Hosts und Speichern der Liste in einer TXT-Datei führen Sie die beiden hier angegebenen Befehle aus.
+4. Sie müssen möglicherweise den folgenden Befehl ausführen, falls Connect-VIServer nicht als Cmdlet-Name erkannt wird.
+ 
+            Add-PSSnapin VMware.VimAutomation.Core 
+
+5. Zum Abrufen aller Namen von VMs eines vCenter-Servers/vSphere ESXi-Hosts und Speichern der Liste in einer TXT-Datei führen Sie die beiden hier angegebenen Befehle aus.
 Ersetzen Sie &lsaquo;server name&rsaquo;, &lsaquo;user name&rsaquo;, &lsaquo;password&rsaquo; und &lsaquo;outputfile.txt&rsaquo; durch Ihre Angaben:
 
             Connect-VIServer -Server <server name> -User <user name> -Password <password>
 
             Get-VM |  Select Name | Sort-Object -Property Name >  <outputfile.txt>
 
-5. Öffnen Sie die Ausgabedatei im Editor, und kopieren Sie die Namen aller VMs, für die Profile erstellt werden sollen, in eine andere Datei (z.B. „ProfileVMList.txt“). Fügen Sie einen VM-Namen pro Zeile ein. Diese Datei wird als Eingabe für den Parameter *-VMListFile* des Befehlszeilentools verwendet.
+6. Öffnen Sie die Ausgabedatei im Editor, und kopieren Sie die Namen aller VMs, für die Profile erstellt werden sollen, in eine andere Datei (z.B. „ProfileVMList.txt“). Fügen Sie einen VM-Namen pro Zeile ein. Diese Datei wird als Eingabe für den Parameter *-VMListFile* des Befehlszeilentools verwendet.
 
     ![Liste mit VM-Namen im Deployment Planner](./media/site-recovery-deployment-planner/profile-vm-list.png)
 

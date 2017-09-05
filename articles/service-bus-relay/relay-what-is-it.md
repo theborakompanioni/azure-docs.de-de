@@ -12,14 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: get-started-article
-ms.date: 06/14/2017
+ms.date: 08/23/2017
 ms.author: sethm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: 74a0837b7149236faa45ef2cda0a0aee7c46a31b
+ms.translationtype: HT
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 77ee85db0bcc701514a1a98da9405a79d658d49d
 ms.contentlocale: de-de
-ms.lasthandoff: 06/16/2017
-
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="what-is-azure-relay"></a>Was ist Azure Relay?
@@ -52,17 +51,24 @@ Hybridverbindungen und WCF-Relays aktivieren beide die sichere Verbindung mit As
 
 Die [Hybridverbindungsfunktion von Azure Relay](relay-hybrid-connections-protocol.md) ist eine sichere Weiterentwicklung der vorhandenen Relay-Features mit offenem Protokoll, die auf jeder beliebigen Plattform und in jeder beliebigen Sprache mit einer grundlegenden WebSocket-Funktion implementiert werden kann. Dies schließt explizit die WebSocket-API in gängigen Webbrowsern ein. Hybridverbindungen basieren auf HTTP und WebSockets.
 
+### <a name="service-history"></a>Dienstverlauf
+
+Hybridverbindungen ersetzen die ehemalige ähnliche benannte Funktion „BizTalk Services“, die auf dem Azure Service Bus-WCF-Relay erstellt wurde. Die neue Funktion „Hybrid Connections“ ergänzt die vorhandene WCF-Relayfunktion, und diese beiden Dienstfunktionen sind parallel im Azure-Relaydienst vorhanden. Sie teilen sich ein allgemeines Gateway, sind jedoch andererseits verschiedene Implementierungen.
+
 ## <a name="wcf-relays"></a>WCF-Relays
 
 Das WCF-Relay funktioniert für das gesamte .NET Framework (NETFX) sowie für WCF. Sie initiieren die Verbindung zwischen dem lokalen Dienst und dem Relaydienst mithilfe einer Sammlung von WCF-Bindungen vom Typ „Relay“. Im Prinzip werden die Relaybindungen neuen Transportbindungselementen zugeordnet, die entwickelt wurden, um WCF-Kanalkomponenten zu erstellen, die mit Service Bus in der Cloud integriert werden.
 
-## <a name="service-history"></a>Dienstverlauf
+## <a name="architecture-processing-of-incoming-relay-requests"></a>Architektur: Verarbeiten eingehender Relayanforderungen
+Wenn ein Client eine Anforderung an den [Azure Relay](/azure/service-bus-relay/)-Dienst sendet, wird diese vom Azure Load Balancer an einen der Gatewayknoten weitergeleitet. Handelt es sich dabei um eine Lauschanforderung, erstellt der Gatewayknoten ein neues Relay. Handelt es sich um eine Verbindungsanforderung für ein bestimmtes Relay, leitet der Gatewayknoten die Anforderung an den für das Relay zuständigen Gatewayknoten weiter. Der für das Relay zuständige Gatewayknoten sendet eine Rendezvousanforderung an den lauschenden Client und fordert den Listener auf, einen temporären Kanal zu dem Gatewayknoten zu erstellen, der die Verbindungsanfrage erhalten hat.
 
-Hybridverbindungen ersetzen die ehemalige ähnliche benannte Funktion „BizTalk Services“, die auf dem Azure Service Bus-WCF-Relay erstellt wurde. Die neue Funktion „Hybridverbindungen“ ergänzt die vorhandene WCF-Relayfunktion, und diese beiden Dienstfunktionen werden parallel im Azure-Relaydienst für die nächste Zeit vorhanden sein. Sie teilen sich ein allgemeines Gateway, sind jedoch andererseits verschiedene Implementierungen.
+Sobald die Relayverbindung besteht, können die Clients Nachrichten über den Gatewayknoten austauschen, die für das Rendezvous verwendet wird.
 
-## <a name="next-steps"></a>Nächste Schritte:
+![Verarbeiten eingehender WCF Relay-Anforderungen](./media/relay-what-is-it/ic690645.png)
 
-* [Relay – Häufig gestellte Fragen](relay-faq.md)
+## <a name="next-steps"></a>Nächste Schritte
+
+* [Relay – häufig gestellte Fragen](relay-faq.md)
 * [Erstellen eines Namespaces](relay-create-namespace-portal.md)
 * [Erste Schritte mit .NET](relay-hybrid-connections-dotnet-get-started.md)
 * [Erste Schritte mit Node](relay-hybrid-connections-node-get-started.md)

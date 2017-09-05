@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/15/2017
+ms.date: 08/24/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.translationtype: HT
-ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
-ms.openlocfilehash: f31482a8b37858b93391afc561223a1b1110a1a9
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: 45a6f63bd920c9a70c25b8dfae084ea030256cf4
 ms.contentlocale: de-de
-ms.lasthandoff: 08/16/2017
+ms.lasthandoff: 08/24/2017
 
 ---
 # <a name="risky-sign-ins-report-in-the-azure-active-directory-portal"></a>Bericht „Riskante Anmeldungen“ im Azure Active Directory-Portal
@@ -52,7 +52,7 @@ Die Granularitätsebene von Berichten kann für die einzelnen Editionen aber var
 
 ## <a name="azure-active-directory-free-and-basic-edition"></a>Azure Active Directory – Free und Basic Edition
 
-In den Azure Active Directory-Editionen Free und Basic wird Ihnen eine Liste mit riskanten Anmeldungen zur Verfügung gestellt, die für Ihre Benutzer erkannt wurden. Der Bericht über Risikoereignisse enthält Folgendes:
+In den Azure Active Directory-Editionen Free und Basic wird Ihnen eine Liste mit riskanten Anmeldungen zur Verfügung gestellt, die für Ihre Benutzer erkannt wurden. Folgendes finden Sie im Bericht:
 
 - **Benutzer**: Der Name des Benutzers, der während des Anmeldevorgangs verwendet wurde
 - **IP**: Die IP-Adresse des Geräts, die für die Verbindung mit Azure Active Directory verwendet wurde
@@ -60,7 +60,6 @@ In den Azure Active Directory-Editionen Free und Basic wird Ihnen eine Liste mit
 - **Zeitpunkt der Anmeldung**: Die Uhrzeit, zu der die Anmeldung erfolgte
 - **Status**: Der Status der Anmeldung
 
-In diesem Bericht steht Ihnen eine Option zum Herunterladen der Berichtsdaten zur Verfügung.
 
 ![Riskante Anmeldungen](./media/active-directory-reporting-security-risky-sign-ins/01.png)
 
@@ -74,6 +73,15 @@ Basierend auf Ihrer Untersuchung der riskanten Anmeldung können Sie Azure Activ
 ![Riskante Anmeldungen](./media/active-directory-reporting-security-risky-sign-ins/21.png)
 
 Ausführlichere Informationen finden Sie unter [Manuelles Schließen von Risikoereignissen](active-directory-identityprotection.md#closing-risk-events-manually).
+
+In diesem Bericht stehen Ihnen folgende Optionen zur Verfügung:
+
+- Suchen von Ressourcen
+- Herunterladen der Berichtsdaten
+
+
+![Riskante Anmeldungen](./media/active-directory-reporting-security-risky-sign-ins/93.png)
+
 
 ## <a name="azure-active-directory-premium-editions"></a>Azure Active Directory – Premium Editionen
 
