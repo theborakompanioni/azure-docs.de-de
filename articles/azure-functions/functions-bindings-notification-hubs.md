@@ -4,7 +4,7 @@ description: Erfahren Sie, wie Azure Notification Hub-Bindungen in Azure Functio
 services: functions
 documentationcenter: na
 author: ggailey777
-manager: erikre
+manager: cfowler
 editor: 
 tags: 
 keywords: Azure Functions, Funktionen, Ereignisverarbeitung, dynamisches Compute, serverlose Architektur
@@ -14,14 +14,13 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 10/27/2016
+ms.date: 08/26/2017
 ms.author: glenga
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
-ms.openlocfilehash: fa3d37b963c1bb6b58127b9180cd657d7b1dabcc
+ms.translationtype: HT
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: 02d01d0f6e945ed54dbe766aec2a0fd7c17c510f
 ms.contentlocale: de-de
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="azure-functions-notification-hub-output-binding"></a>Azure Functions Notification Hub-Ausgabebindung
@@ -38,19 +37,16 @@ Die von Ihnen gesendeten Benachrichtigungen können native Benachrichtigungen od
 ## <a name="notification-hub-output-binding-properties"></a>Eigenschaften der Notification Hub-Ausgabebindung
 Die Datei „function.json“ stellt die folgenden Eigenschaften bereit:
 
-* `name` : Variablenname, der im Funktionscode für die Notification Hub-Nachricht verwendet wird.
-* `type` : Muss auf *"notificationHub"*festgelegt werden.
-* `tagExpression` : Mit Tagausdrücken können Sie Benachrichtigungen an eine Gruppe von Geräten übermitteln, die sich für den Empfang entsprechender Benachrichtigungen registriert haben.  Weitere Informationen finden Sie unter [Weiterleitung und Tagausdrücke](../notification-hubs/notification-hubs-tags-segment-push-message.md).
-* `hubName` : Name der Notification Hub-Ressource im Azure-Portal.
-* `connection` : Diese Verbindungszeichenfolge muss eine Verbindungszeichenfolge für die **Anwendungseinstellung** sein, die auf den *DefaultFullSharedAccessSignature* -Wert Ihres Notifications Hubs festgelegt ist.
-* `direction` : muss auf *"out"*festgelegt werden. 
-* `platform`: Mit der platform-Eigenschaft wird die Benachrichtigungsplattform Ihrer Benachrichtigungsziele angegeben. Dies muss einer der folgenden Werte sein:
-  * Wenn die Plattformeigenschaft aus der Ausgabebindung weggelassen wird, können Vorlagenbenachrichtigungen für alle Zielplattformen verwendet werden, die auf dem Azure Notification Hub konfiguriert sind. Weitere Informationen zur allgemeinen Verwendung von Vorlagen zum Senden von plattformübergreifenden Benachrichtigungen mit einem Azure Notification Hub finden Sie unter [Vorlagen](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md).
-  * `apns`: Apple Push Notification Service. Weitere Informationen zur Konfiguration des Notification Hub für APNS und zum Empfang der Benachrichtigung in einer Client-App finden Sie unter [Senden von Pushbenachrichtigungen an iOS mit Azure Notification Hubs](../notification-hubs/notification-hubs-ios-apple-push-notification-apns-get-started.md). 
-  * `adm`: [Amazon Device Messaging](https://developer.amazon.com/device-messaging). Weitere Informationen zur Konfiguration des Notification Hub für ADM und zum Empfang der Benachrichtigung in einer Kindle-App finden Sie unter [Erste Schritte mit Notification Hubs für Kindle-Apps](../notification-hubs/notification-hubs-kindle-amazon-adm-push-notification.md). 
-  * `gcm`: [Google Cloud Messaging](https://developers.google.com/cloud-messaging/). Firebase Cloud Messaging, die neue Version von GCM, wird ebenfalls unterstützt. Weitere Informationen zur Konfiguration des Notification Hub für GCM/FCM und zum Empfang der Benachrichtigung in einer Android-Client-App finden Sie unter [Senden von Pushbenachrichtigungen an Android mit Azure Notification Hubs](../notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started.md).
-  * `wns`: [Windows-Pushbenachrichtigungsdienst](https://msdn.microsoft.com/en-us/windows/uwp/controls-and-patterns/tiles-and-notifications-windows-push-notification-services--wns--overview) für Windows-Plattformen. Windows Phone 8.1 und höher wird vom Windows-Pushbenachrichtigungsdienst (WNS) ebenfalls unterstützt. Weitere Informationen zur Konfiguration des Notification Hub für WNS und zum Empfang der Benachrichtigung in einer UWP-App (universelle Windows-Plattform) finden Sie unter [Erste Schritte mit Notification Hubs für Apps für die universelle Windows-Plattform](../notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md).
-  * `mpns`: [Microsoft-Pushbenachrichtigungsdienst](https://msdn.microsoft.com/en-us/library/windows/apps/ff402558.aspx). Diese Plattform unterstützt Windows Phone 8 und frühere Windows Phone-Plattformen. Weitere Informationen zur Konfiguration des Notification Hub für MPNS und zum Empfang der Benachrichtigung in einer Windows Phone-App finden Sie unter [Senden von Pushbenachrichtigungen mit Azure Notification Hubs unter Windows Phone](../notification-hubs/notification-hubs-windows-mobile-push-notifications-mpns.md).
+
+|Eigenschaft  |Beschreibung  |
+|---------|---------|
+|**name** | Variablenname, der im Funktionscode für die Notification Hub-Nachricht verwendet wird |
+|**type** | Muss auf `notificationHub` festgelegt werden. |
+|**tagExpression** | Mit Tagausdrücken können Sie Benachrichtigungen an eine Gruppe von Geräten übermitteln, die sich für den Empfang entsprechender Benachrichtigungen registriert haben.  Weitere Informationen finden Sie unter [Weiterleitung und Tagausdrücke](../notification-hubs/notification-hubs-tags-segment-push-message.md). |
+|**hubName** | Name der Notification Hub-Ressource im Azure-Portal |
+|**Verbindung** | Diese Verbindungszeichenfolge muss eine Verbindungszeichenfolge für die **Anwendungseinstellung** sein, die auf den *DefaultFullSharedAccessSignature*-Wert Ihres Notifications Hubs festgelegt ist. |
+|**direction** | Muss auf `out` festgelegt werden. | 
+|**platform** | Mit der platform-Eigenschaft wird die Benachrichtigungsplattform Ihrer Benachrichtigungsziele angegeben. Wenn die Plattformeigenschaft aus der Ausgabebindung weggelassen wird, können Vorlagenbenachrichtigungen für alle Zielplattformen verwendet werden, die auf dem Azure Notification Hub konfiguriert sind. Weitere Informationen zur allgemeinen Verwendung von Vorlagen zum Senden von plattformübergreifenden Benachrichtigungen mit einem Azure Notification Hub finden Sie unter [Vorlagen](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md). Wenn _platform_ festgelegt wird, muss einer der folgenden Werte verwendet werden: <ul><li><code>apns</code>&mdash;Apple Push Notification Service. Weitere Informationen zur Konfiguration des Notification Hubs für APNS und zum Empfang der Benachrichtigung in einer Client-App finden Sie unter [Senden von Pushbenachrichtigungen an iOS mit Azure Notification Hubs](../notification-hubs/notification-hubs-ios-apple-push-notification-apns-get-started.md).</li><li><code>adm</code>&mdash;[Amazon Device Messaging](https://developer.amazon.com/device-messaging). Weitere Informationen zur Konfiguration des Notification Hubs für ADM und zum Empfang der Benachrichtigung in einer Kindle-App finden Sie unter [Erste Schritte mit Notification Hubs für Kindle-Apps](../notification-hubs/notification-hubs-kindle-amazon-adm-push-notification.md).</li><li><code>gcm</code>&mdash;[Google Cloud Messaging](https://developers.google.com/cloud-messaging/). Firebase Cloud Messaging, die neue Version von GCM, wird ebenfalls unterstützt. Weitere Informationen finden Sie unter [Senden von Pushbenachrichtigungen an Android mit Azure Notification Hubs](../notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started.md).</li><li><code>wns</code>&mdash;[Windows-Pushbenachrichtigungsdienst](https://msdn.microsoft.com/en-us/windows/uwp/controls-and-patterns/tiles-and-notifications-windows-push-notification-services--wns--overview) für Windows-Plattformen. Windows Phone 8.1 und höher wird vom Windows-Pushbenachrichtigungsdienst (WNS) ebenfalls unterstützt. Weitere Informationen finden Sie unter [Erste Schritte mit Notification Hubs für Apps für die universelle Windows-Plattform](../notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md).</li><li><code>mpns</code>&mdash;[Microsoft-Pushbenachrichtigungsdienst](https://msdn.microsoft.com/en-us/library/windows/apps/ff402558.aspx). Diese Plattform unterstützt Windows Phone 8 und frühere Windows Phone-Plattformen. Weitere Informationen finden Sie unter [Senden von Pushbenachrichtigungen mit Azure Notification Hubs unter Windows Phone](../notification-hubs/notification-hubs-windows-mobile-push-notifications-mpns.md).</li></ul> |
 
 Beispiel für „function.json“:
 
@@ -72,14 +68,15 @@ Beispiel für „function.json“:
 ```
 
 ## <a name="notification-hub-connection-string-setup"></a>Einrichten der Notification Hub-Verbindungszeichenfolge
-Um eine Notification Hub-Ausgabebindung zu verwenden, müssen Sie die Verbindungszeichenfolge für den Hub konfigurieren. Hierzu können Sie auf der Registerkarte *Integrieren* Ihren Notification Hub auswählen oder einen neuen erstellen. 
+Um eine Notification Hub-Ausgabebindung zu verwenden, müssen Sie die Verbindungszeichenfolge für den Hub konfigurieren. Sie können einen vorhandenen Notification Hub auswählen oder direkt über die Registerkarte *Integrieren* in Ihrer Funktion einen neuen erstellen. Sie können die Verbindungszeichenfolge auch manuell konfigurieren. 
 
-Sie können eine Verbindungszeichenfolge für einen vorhandenen Hub auch manuell hinzufügen, indem Sie Ihrem Notification Hub eine Verbindungszeichenfolge für *DefaultFullSharedAccessSignature* hinzufügen. Diese Verbindungszeichenfolge stellt Ihrer Funktion die Zugriffsberechtigungen zum Senden von Nachrichten bereit. Zum Wert der *DefaultFullSharedAccessSignature* -Verbindungszeichenfolge gelangen Sie über die Schaltfläche **Schlüssel** auf dem Hauptblatt der Notification Hub-Ressource im Azure-Portal. Um eine Verbindungszeichenfolge für den Hub manuell hinzuzufügen, gehen Sie folgendermaßen vor: 
+So konfigurieren Sie die Verbindungszeichenfolge für einen vorhandenen Notification Hub:
 
-1. Klicken Sie im Azure-Portal auf dem Blatt **Funktionen-App** auf **Funktionen-App-Einstellungen > Zu App Service-Einstellungen wechseln**.
-2. Klicken Sie auf dem Blatt **Einstellungen** auf **Anwendungseinstellungen**.
-3. Blättern Sie nach unten zum Abschnitt **Anwendungseinstellungen**, und fügen Sie einen benannten Eintrag für den Wert *DefaultFullSharedAccessSignature* für Ihren Notification Hub hinzu.
-4. Verweisen Sie in den Ausgabebindungen auf den Namen Ihrer Anwendungseinstellungen, ähnlich wie bei **MyHubConnectionString** im obigen Beispiel.
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zum Notification Hub, wählen Sie **Zugriffsrichtlinien**, und klicken Sie auf die Kopierschaltfläche neben der Richtlinie **DefaultFullSharedAccessSignature**. Dadurch wird die Verbindungszeichenfolge für die Richtlinie *DefaultFullSharedAccessSignature* in Ihren Notification Hub kopiert. Diese Verbindungszeichenfolge stellt Ihrer Funktion die Zugriffsberechtigungen zum Senden von Nachrichten bereit. 
+    ![Kopieren der Notification Hub-Verbindungszeichenfolge](./media/functions-bindings-notification-hubs/get-notification-hub-connection.png)
+1. Navigieren Sie im Azure-Portal zu Ihrer Funktions-App, wählen Sie **Anwendungseinstellungen**, und fügen Sie einen Schlüssel (etwa `MyHubConnectionString`) hinzu. Fügen Sie die kopierte Richtlinie *DefaultFullSharedAccessSignature* für Ihren Notification Hub als Wert ein, und klicken Sie anschließend auf **Speichern**.
+
+Sie können jetzt diese benannte Anwendungseinstellung verwenden, die die Notification Hub-Verbindung in der Ausgabebindung definiert.
 
 ## <a name="apns-native-notifications-with-c-queue-triggers"></a>Native APNS-Benachrichtigungen mit C#-Warteschlangentriggern
 In diesem Beispiel wird gezeigt, wie Sie in der [Bibliothek für Microsoft Azure Notification Hubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) definierte Typen zum Senden einer nativen APNS-Benachrichtigung verwenden. 
