@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
-ms.openlocfilehash: 6bb75685a38e261a2a8c12aef1de6629e2bb9008
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: aa0cbba6bdb4cfdfe6ceee50c94f706aa0974924
 ms.contentlocale: de-de
-ms.lasthandoff: 06/07/2017
-
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="move-data-to-sql-server-on-an-azure-virtual-machine"></a>Verschieben von Daten zu SQL Server auf einem virtuellen Azure-Computer
@@ -49,7 +48,7 @@ Beachten Sie, dass in diesem Dokument davon ausgegangen wird, dass die SQL-Befeh
 In diesem Tutorial wird Folgendes vorausgesetzt:
 
 * Ein **Azure-Abonnement**. Wenn Sie nicht über ein Abonnement verfügen, können Sie sich für ein [kostenloses Testabonnement](https://azure.microsoft.com/pricing/free-trial/)registrieren.
-* Ein **Azure-Speicherkonto**. Sie benötigen ein Azure-Speicherkonto zum Speichern der Daten in diesem Tutorial. Falls Sie noch kein Azure-Speicherkonto haben, lesen Sie den Artikel [Erstellen eines Speicherkontos](../storage/storage-create-storage-account.md#create-a-storage-account) . Nachdem Sie das Speicherkonto erstellt haben, müssen Sie den Kontoschlüssel für den Zugriff auf den Speicher abrufen. Weitere Informationen finden Sie unter [Verwalten von Speicherzugriffsschlüsseln](../storage/storage-create-storage-account.md#manage-your-storage-access-keys).
+* Ein **Azure-Speicherkonto**. Sie benötigen ein Azure-Speicherkonto zum Speichern der Daten in diesem Tutorial. Falls Sie noch kein Azure-Speicherkonto haben, lesen Sie den Artikel [Erstellen eines Speicherkontos](../storage/common/storage-create-storage-account.md#create-a-storage-account) . Nachdem Sie das Speicherkonto erstellt haben, müssen Sie den Kontoschlüssel für den Zugriff auf den Speicher abrufen. Weitere Informationen finden Sie unter [Verwalten von Speicherzugriffsschlüsseln](../storage/common/storage-create-storage-account.md#manage-your-storage-access-keys).
 * Bereitgestellter **SQL Server auf einem virtuellen Azure-Computer**. Anleitungen finden Sie unter [Einrichten eines virtuellen Azure SQL Server-Computers als IPython Notebook-Server für die erweiterte Analyse](machine-learning-data-science-setup-sql-server-virtual-machine.md).
 * Lokal installierte und konfigurierte **Azure PowerShell** . Anweisungen hierzu finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview).
 
@@ -65,7 +64,7 @@ BPC ist ein Befehlszeilenprogramm, das mit SQL Server installiert wird und eine 
 
 > [!NOTE]
 > **Wo sollten sich die Daten für die Verwendung mit BCP befinden?**  
-> Auch wenn dies nicht erforderlich ist, wird die Übertragung beschleunigt, wenn sich die Ausgangsdaten auf demselben Computer wie der Ziel-SQL Server befinden (Netzwerkgeschwindigkeit im Vergleich zur E/A-Geschwindigkeit des lokalen Datenträgers). Sie können die Flatfiles mit den Daten auf den Computer verschieben, auf dem SQL Server installiert ist. Dazu stehen verschiedene Dateikopiertools wie [AZCopy](../storage/storage-use-azcopy.md), [Azure Storage-Explorer](http://storageexplorer.com/) oder das Kopieren und Einfügen unter Windows über RDP (Remotedesktopprotokoll) zur Verfügung.
+> Auch wenn dies nicht erforderlich ist, wird die Übertragung beschleunigt, wenn sich die Ausgangsdaten auf demselben Computer wie der Ziel-SQL Server befinden (Netzwerkgeschwindigkeit im Vergleich zur E/A-Geschwindigkeit des lokalen Datenträgers). Sie können die Flatfiles mit den Daten auf den Computer verschieben, auf dem SQL Server installiert ist. Dazu stehen verschiedene Dateikopiertools wie [AZCopy](../storage/common/storage-use-azcopy.md), [Azure Storage-Explorer](http://storageexplorer.com/) oder das Kopieren und Einfügen unter Windows über RDP (Remotedesktopprotokoll) zur Verfügung.
 >
 >
 

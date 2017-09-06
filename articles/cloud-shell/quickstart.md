@@ -7,18 +7,18 @@ author: jluk
 manager: timlt
 tags: azure-resource-manager
 ms.assetid: 
-ms.service: 
+ms.service: azure
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 07/10/2017
 ms.author: juluk
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
-ms.openlocfilehash: 347984aae91a9fa99f88001effe2cba49f92deb9
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 75676eb0ab784e2adbfd27b170c1dee5599b74ac
 ms.contentlocale: de-de
-ms.lasthandoff: 05/17/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 
@@ -29,8 +29,7 @@ Dieses Dokument erläutert die Verwendung von Azure Cloud Shell im [Azure-Portal
 ## <a name="start-cloud-shell"></a>Starten von Cloud Shell
 1. Starten Sie **Cloud Shell** aus dem oberen Navigationsbereich im Azure-Portal. <br>
 ![](media/shell-icon.png)
-2. Wählen Sie ein Abonnement aus, in dem ein Speicherkonto und eine Azure-Dateifreigabe erstellt werden solle. <br>
-![](media/storage-prompt.png)
+2. Wählen Sie ein Abonnement aus, in dem ein Speicherkonto und eine Azure-Dateifreigabe erstellt werden sollen.
 3. Wählen Sie „Speicher erstellen“ aus.
 
 > [!TIP]
@@ -43,7 +42,7 @@ Dieses Dokument erläutert die Verwendung von Azure Cloud Shell im [Azure-Portal
 `az account set --subscription my-subscription-name`
 
 > [!TIP]
-> Ihr Abonnement wird mithilfe von `azureProfile.json` in Ihrem $Home-Verzeichnis gespeichert.
+> Ihr Abonnement wird mithilfe von `/home/<user>/.azure/azureProfile.json` für künftige Sitzungen gespeichert.
 
 ### <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 Erstellen Sie eine neue Ressourcengruppe in „USA, Westen“ namens „MyRG“: <br>
@@ -72,5 +71,6 @@ Löschen Sie Ihre Ressourcengruppe und alle darin befindlichen Ressourcen: <br>
 Führen Sie `az group delete -n MyRG` aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Informationen zum Beibehalten von Speicher in Cloud Shell](persisting-shell-storage.md) [Informationen zur Azure CLI 2.0] (https://docs.microsoft.com/cli/azure/) [Informationen zu Azure File Storage] (https://docs.microsoft.com/azure/storage/storage-introduction#file-storage) 
-
+[Erfahren Sie mehr über das Beibehalten von Speicher in Cloud Shell](persisting-shell-storage.md). <br>
+[Erfahren Sie mehr über Azure CLI 2.0](https://docs.microsoft.com/cli/azure/). <br>
+[Erfahren Sie mehr über Azure File Storage](../storage/files/storage-files-introduction.md). <br>

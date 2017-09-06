@@ -15,10 +15,10 @@ ms.workload: 5/22/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
-ms.openlocfilehash: 9adaf46743bad039e2a5680a7d6dca767d964459
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 77d12d6d48b22dfb3e7f09f273dffc11401bb15f
 ms.contentlocale: de-de
-ms.lasthandoff: 07/12/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 
@@ -199,7 +199,7 @@ Weitere Informationen zu diesen und anderen Umgebungsvariablen der Batch-Compute
 ## <a name="resource-files"></a>Ressourcendateien
 Es gibt zwei Sätze von Ressourcendateien, die bei Tasks mit mehreren Instanzen berücksichtigt werden müssen: **gemeinsame Ressourcendateien**, die von *allen* Tasks (Primärtask und Subtasks) heruntergeladen werden, und die **Ressourcendateien** für den Task mit mehreren Instanzen selbst, die *nur vom Primärtask* heruntergeladen werden.
 
-In den Einstellungen für mehrere Instanzen eines Tasks können Sie eine oder mehrere **gemeinsame Ressourcendateien** angeben. Diese gemeinsamen Ressourcendateien werden vom Primärtask und von den Subtasks aus [Azure Storage](../storage/storage-introduction.md) in das **freigegebene Verzeichnis** des Tasks aller Knoten heruntergeladen. Sie können mithilfe der `AZ_BATCH_TASK_SHARED_DIR` -Umgebungsvariablen über Anwendungs- und Koordinationsbefehlszeilen auf das freigegebene Verzeichnis eines Tasks zugreifen. Da der Pfad `AZ_BATCH_TASK_SHARED_DIR` ist bei allen dem Task mit mehreren Instanzen zugeordneten Knoten identisch ist, können Sie für den Primärtask und alle Subtasks denselben Koordinationsbefehl verwenden. Batch wird das Verzeichnis nicht im Sinne eines Remotzugriffs „freigeben“, aber Sie können es wie im Tipp zu Umgebungsvariablen erwähnt als Bereitstellungs- oder Freigabepunkt verwenden.
+In den Einstellungen für mehrere Instanzen eines Tasks können Sie eine oder mehrere **gemeinsame Ressourcendateien** angeben. Diese gemeinsamen Ressourcendateien werden vom Primärtask und von den Subtasks aus [Azure Storage](../storage/common/storage-introduction.md) in das **freigegebene Verzeichnis** des Tasks aller Knoten heruntergeladen. Sie können mithilfe der `AZ_BATCH_TASK_SHARED_DIR` -Umgebungsvariablen über Anwendungs- und Koordinationsbefehlszeilen auf das freigegebene Verzeichnis eines Tasks zugreifen. Da der Pfad `AZ_BATCH_TASK_SHARED_DIR` ist bei allen dem Task mit mehreren Instanzen zugeordneten Knoten identisch ist, können Sie für den Primärtask und alle Subtasks denselben Koordinationsbefehl verwenden. Batch wird das Verzeichnis nicht im Sinne eines Remotzugriffs „freigeben“, aber Sie können es wie im Tipp zu Umgebungsvariablen erwähnt als Bereitstellungs- oder Freigabepunkt verwenden.
 
 Ressourcendateien, die Sie für den Task mit mehreren Instanzen angeben, werden standardmäßig in das Arbeitsverzeichnis des Tasks (`AZ_BATCH_TASK_WORKING_DIR`) heruntergeladen. Im Gegensatz zu gemeinsamen Ressourcendateien lädt wie erwähnt nur der Primärtask die für den Task mit mehreren Instanzen angegebenen Ressourcendateien herunter.
 

@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 7/20/2017
 ms.author: masaran;trinadhk;pullabhk;markgal
 ms.translationtype: HT
-ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
-ms.openlocfilehash: 366de49b1cb1d21aca4ef4de1c413a33ac4ae7b0
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: c54468d71e0b383916e49847576a98303d659d38
 ms.contentlocale: de-de
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="preparing-to-back-up-workloads-using-azure-backup-server"></a>Vorbereiten der Sicherung von Workloads per Azure Backup Server
@@ -101,7 +101,7 @@ So erstellen Sie einen Recovery Services-Tresor:
    Nachdem der Tresor erstellt wurde, wird er im Portal geöffnet.
 
 ### <a name="set-storage-replication"></a>Festlegen der Speicherreplikation
-Bei der Speicherreplikation haben Sie die Wahl zwischen georedundantem Speicher und lokal redundantem Speicher. Standardmäßig verfügt Ihr Tresor über einen georedundanten Speicher. Behalten Sie den georedundanten Speicher bei, wenn es sich hierbei um Ihren primären Tresor handelt. Wählen Sie lokal redundanten Speicher, wenn Sie eine günstigere und weniger langfristige Option wünschen. Weitere Informationen zu den Optionen für [georedundanten](../storage/storage-redundancy.md#geo-redundant-storage) und [lokal redundanten](../storage/storage-redundancy.md#locally-redundant-storage) Speicher finden Sie in der [Übersicht über die Azure Storage-Replikation](../storage/storage-redundancy.md).
+Bei der Speicherreplikation haben Sie die Wahl zwischen georedundantem Speicher und lokal redundantem Speicher. Standardmäßig verfügt Ihr Tresor über einen georedundanten Speicher. Behalten Sie den georedundanten Speicher bei, wenn es sich hierbei um Ihren primären Tresor handelt. Wählen Sie lokal redundanten Speicher, wenn Sie eine günstigere und weniger langfristige Option wünschen. Weitere Informationen zu den Optionen für [georedundanten](../storage/common/storage-redundancy.md#geo-redundant-storage) und [lokal redundanten](../storage/common/storage-redundancy.md#locally-redundant-storage) Speicher finden Sie in der [Übersicht über die Azure Storage-Replikation](../storage/common/storage-redundancy.md).
 
 So bearbeiten Sie die Einstellung für die Speicherreplikation:
 

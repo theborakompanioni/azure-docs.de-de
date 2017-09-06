@@ -16,10 +16,10 @@ ms.workload: data-services
 ms.date: 06/19/2017
 ms.author: bradsev
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: 02bf921222917a50af8e28e62514e167901743b8
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: aef9c15636ccaecce07d4fa218a40ed26ebad9df
 ms.contentlocale: de-de
-ms.lasthandoff: 07/27/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="azure-storage-solutions-for-r-server-on-hdinsight"></a>Azure Storage-Lösungen für R Server in HDInsight
@@ -37,9 +37,9 @@ Bei der Erstellung eines Hadoop-Clusters in HDInsight geben Sie entweder ein **A
 - [Verwenden von Azure Storage mit HDInsight](hdinsight-hadoop-use-blob-storage.md)
 - [Verwenden von Data Lake Store mit Azure HDInsight-Clustern](hdinsight-hadoop-use-data-lake-store.md) 
 
-Weitere Informationen zu den Azure Storage-Lösungen finden Sie unter [Einführung in Microsoft Azure Storage](../storage/storage-introduction.md). 
+Weitere Informationen zu den Azure Storage-Lösungen finden Sie unter [Einführung in Microsoft Azure Storage](../storage/common/storage-introduction.md). 
 
-Eine Anleitung zur Auswahl der am besten geeigneten Speicheroption für Ihr Szenario finden Sie unter [Entscheidung zwischen Azure-Blobs, Azure Files und Azure-Datenträger](../storage/storage-decide-blobs-files-disks.md). 
+Eine Anleitung zur Auswahl der am besten geeigneten Speicheroption für Ihr Szenario finden Sie unter [Entscheidung zwischen Azure-Blobs, Azure Files und Azure-Datenträger](../storage/common/storage-decide-blobs-files-disks.md). 
 
 
 ## <a name="use-azure-blob-storage-accounts-with-r-server"></a>Verwenden von Azure-Blobspeicherkonten mit R Server
@@ -188,8 +188,8 @@ Es ist auch eine komfortable Datenspeicheroption zur Verwendung auf dem Edgeknot
 
 Ein großer Vorteil von Azure Files besteht darin, dass die Dateifreigaben von allen Systemen mit einem unterstützten Betriebssystem, z.B. Windows oder Linux, bereitgestellt und verwendet werden können. Beispielsweise ist die Verwendung durch einen anderen HDInsight-Cluster, der Ihnen oder einem Mitglied Ihres Teams gehört, eine Azure VM oder sogar ein lokales System möglich. Weitere Informationen finden Sie unter:
 
-- [Verwenden des Azure-Dateispeichers unter Linux](../storage/storage-how-to-use-files-linux.md)
-- [Verwenden von Azure File Storage unter Windows](../storage/storage-dotnet-how-to-use-files.md)
+- [Verwenden des Azure-Dateispeichers unter Linux](../storage/files/storage-how-to-use-files-linux.md)
+- [Verwenden von Azure File Storage unter Windows](../storage/files/storage-dotnet-how-to-use-files.md)
 
 
 ## <a name="next-steps"></a>Nächste Schritte

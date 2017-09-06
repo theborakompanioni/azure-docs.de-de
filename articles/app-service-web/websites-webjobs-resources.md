@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2017
 ms.author: glenga
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: 9023ca104fcab29bc0b16ecd3a6584848e2d453e
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 05062d7396bdbb3e589d2ab5f0443d1dca54342a
 ms.contentlocale: de-de
-ms.lasthandoff: 05/26/2017
-
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="azure-webjobs-documentation-resources"></a>Dokumentationsressourcen zu Azure WebJobs
@@ -83,7 +82,7 @@ Weitere Informationen finden Sie auch in den Abschnitten [Bereitstellen von WebJ
 * [Wer hat dieses Blob geschrieben?](http://blogs.msdn.com/b/jmstall/archive/2014/02/19/who-wrote-that-blob.aspx) 
 * [Hosten von interaktivem Code in der Cloud](http://blogs.msdn.com/b/jmstall/archive/2014/04/26/hosting-interactive-code-in-the-cloud.aspx)
 * [Hinzufügen der Ablaufverfolgung zu Azure WebJobs](http://blogs.msdn.com/b/mcsuksoldev/archive/2014/09/04/adding-trace-to-azure-web-sites-and-web-jobs.aspx)
-* [Microsoft Azure-Speicher: Überwachung, Diagnose und Problembehandlung](../storage/storage-monitoring-diagnosing-troubleshooting.md)
+* [Microsoft Azure-Speicher: Überwachung, Diagnose und Problembehandlung](../storage/common/storage-monitoring-diagnosing-troubleshooting.md)
 * Videos
   * [WebJobs-Tools und Remotedebuggen](http://channel9.msdn.com/Shows/Web+Camps+TV/WebJobs-GA-Series-Episode-1-WebJobs-Tooling-with-Brady-Gaster) 
 

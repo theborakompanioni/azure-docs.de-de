@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/20/2017
 ms.author: bwren
 ms.translationtype: HT
-ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
-ms.openlocfilehash: 97db1c51a16fbf62abe8062938beefa16a4f7afd
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 50049b1c66bf93cbed52e30e66385c33a4d97c5b
 ms.contentlocale: de-de
-ms.lasthandoff: 08/08/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="import-data-into-analytics"></a>Importieren von Daten in Analytics
@@ -134,7 +134,7 @@ Zum Importieren von Daten laden Sie sie in Azure-Speicher hoch, erstellen einen 
 
 Sie können den folgenden Vorgang manuell ausführen oder ein automatisiertes System einrichten, um ihn in regelmäßigen Abständen ausführen zu lassen. Sie müssen diese Schritte für jeden Datenblock ausführen, den Sie importieren möchten.
 
-1. Laden Sie die Daten in [Azure-Blobspeicher](../storage/storage-dotnet-how-to-use-blobs.md) hoch. 
+1. Laden Sie die Daten in [Azure-Blobspeicher](../storage/blobs/storage-dotnet-how-to-use-blobs.md) hoch. 
 
  * Blobs können eine maximale unkomprimierte Größe bis zu 1 GB haben. Große Blobs mit Hunderten von MB sind aus Leistungssicht ideal.
  * Sie können Blobs mit Gzip komprimieren, um die Hochladezeit und Latenz der Daten zu verbessern, die zum Abfragen verfügbar sein sollen. Verwenden Sie die Dateierweiterung `.gz`.
@@ -142,7 +142,7 @@ Sie können den folgenden Vorgang manuell ausführen oder ein automatisiertes Sy
  * Wenn sehr häufig Daten gesendet werden (jeweils nach wenigen Sekunden), wird empfohlen, zur Verbesserung der Leistung mehrere Speicherkonten zu verwenden.
 
  
-2. [Erstellen Sie einen SAS-Schlüssel (Shared Access Signature) für das Blob](../storage/storage-dotnet-shared-access-signature-part-2.md). Der Schlüssel muss eine Gültigkeitsdauer von einem Tag haben und Lesezugriff bieten.
+2. [Erstellen Sie einen SAS-Schlüssel (Shared Access Signature) für das Blob](../storage/blobs/storage-dotnet-shared-access-signature-part-2.md). Der Schlüssel muss eine Gültigkeitsdauer von einem Tag haben und Lesezugriff bieten.
 3. Erstellen Sie einen REST-Aufruf zum Benachrichtigen von Application Insights, dass Daten warten.
 
  * Endpunkt: `https://dc.services.visualstudio.com/v2/track`

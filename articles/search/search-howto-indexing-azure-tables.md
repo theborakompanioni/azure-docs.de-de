@@ -14,10 +14,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 04/10/2017
 ms.author: eugenesh
-translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: 7679aa86aa24396d9cd7cf84a8cafe7950ad6d62
-ms.lasthandoff: 04/20/2017
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: b167f69f853f6ecdfd56179e6ffb946cdf2f45b8
+ms.contentlocale: de-de
+ms.lasthandoff: 08/21/2017
 
 ---
 
@@ -75,7 +76,7 @@ Sie können die Anmeldeinformationen für die Tabelle mit einer der folgenden Me
 - **Speicherkonto Shared Access Signature-Verbindungszeichenfolge (SAS):** `TableEndpoint=https://<your account>.table.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=t&sp=rl`. Die SAS sollte über die Berechtigungen zum Auflisten und Lesen für Container (in diesem Fall Tabellen) und Objekte (Tabellenzeilen) verfügen.
 -  **Tabellen-SAS:** `ContainerSharedAccessUri=https://<your storage account>.table.core.windows.net/<table name>?tn=<table name>&sv=2016-05-31&sig=<the signature>&se=<the validity end time>&sp=r`. Die SAS sollte über die Abfrageberechtigung (Lesen) für die Tabelle verfügen.
 
-Weitere Informationen zu Shared Access Signatures (SAS) finden Sie unter [Verwenden von Shared Access Signatures (SAS)](../storage/storage-dotnet-shared-access-signature-part-1.md).
+Weitere Informationen zu Shared Access Signatures (SAS) finden Sie unter [Verwenden von Shared Access Signatures (SAS)](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
 
 > [!NOTE]
 > Bei Verwendung von SAS-Anmeldeinformationen müssen Sie die Anmeldedaten für die Datenquellen in regelmäßigen Abständen mit erneuerten Signaturen aktualisieren, um den Ablauf zu verhindern. Wenn SAS-Anmeldeinformationen ablaufen, zeigt der Indexer eine Fehlermeldung wie „Die in der Verbindungszeichenfolge angegebenen Anmeldeinformationen sind ungültig oder abgelaufen“ an.  

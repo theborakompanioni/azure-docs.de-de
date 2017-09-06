@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2017
 ms.author: bradsev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 88c919b64513c8441ab73e2750e7ddfb12fcb63e
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: eca4ecd8f639bb9816903f4b1d1f999755da819c
 ms.contentlocale: de-de
-ms.lasthandoff: 03/28/2017
-
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>Erstellen von Hive-Tabellen und Laden von Daten aus Azure Blob Storage
@@ -32,7 +31,7 @@ Dieses **Menü** bietet Links zu Themen, in denen beschrieben wird, wie Daten in
 ## <a name="prerequisites"></a>Voraussetzungen
 In diesem Artikel wird davon ausgegangen, dass Sie Folgendes abgeschlossen haben:
 
-* Sie haben ein Azure-Speicherkonto erstellt. Anweisungen, die Sie ggf. benötigen, finden Sie unter [Informationen zu Azure-Speicherkonten](../storage/storage-create-storage-account.md).
+* Sie haben ein Azure-Speicherkonto erstellt. Anweisungen, die Sie ggf. benötigen, finden Sie unter [Informationen zu Azure-Speicherkonten](../storage/common/storage-create-storage-account.md).
 * Sie haben einen angepassten Hadoop-Cluster mit dem HDInsight-Dienst bereitgestellt.  Anweisungen dazu finden Sie unter [Anpassen von Azure HDInsight Hadoop-Clustern für die erweiterte Analyse](machine-learning-data-science-customize-hadoop-cluster.md).
 * Sie haben den Remotezugriff auf den Cluster aktiviert, sich angemeldet und die Hadoop-Befehlszeilenkonsole geöffnet. Anweisungen finden Sie unter [Zugreifen auf den Hauptknoten von Hadoop-Clustern](machine-learning-data-science-customize-hadoop-cluster.md#headnode).
 

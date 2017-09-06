@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: rclaus
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: cdc3aad210418463368cc8b93459f2075bc413c2
-ms.lasthandoff: 04/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: eb79d574fd4dddfb986660cc338bc8748f2082c2
+ms.contentlocale: de-de
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>Optimieren virtueller Linux-Computer in Azure
@@ -33,7 +33,7 @@ Dieses Thema setzt voraus, dass Sie bereits über ein funktionierendes Azure-Abo
 Nach dem Erstellen eines virtuellen Linux-Computers in Azure sind diesem zwei Datenträger zugeordnet. **/dev/sda** ist der Betriebssystem-Datenträger, **/dev/sdb** ist der temporäre Datenträger.  Verwenden Sie den Betriebssystem-Hauptdatenträger (**/dev/sda**) ausschließlich für das Betriebssystem. Er ist für den schnellen Start des virtuellen Computers optimiert und bietet keine gute Leistung für Ihre Workloads. Es empfiehlt sich, dem virtuellen Computer mindestens einen Datenträger anzufügen, um eine beständige und optimierte Datenspeicherung zu erhalten. 
 
 ## <a name="adding-disks-for-size-and-performance-targets"></a>Hinzufügen von Datenträgern für Größe und Leistung
-Abhängig von der VM-Größe können Sie bis zu 16 zusätzliche Datenträger (A-Serie), 32 Datenträger (D-Serie) bzw. 64 Datenträger (G-Serie) anfügen, die jeweils eine Größe von bis zu 1 TB haben können. Orientieren Sie sich beim Hinzufügen zusätzlicher Datenträger an Ihren Platz- und IOPS-Anforderungen. Jeder Datenträger hat ein Leistungsziel von 500 IOPS (Storage Standard) bzw. von bis zu 5000 IOPS (Storage Premium).  Weitere Informationen zu Storage Premium-Datenträgern finden Sie unter [Storage Premium-Hochleistungsspeicher für virtuelle Azure-Computer](../../storage/storage-premium-storage.md).
+Abhängig von der VM-Größe können Sie bis zu 16 zusätzliche Datenträger (A-Serie), 32 Datenträger (D-Serie) bzw. 64 Datenträger (G-Serie) anfügen, die jeweils eine Größe von bis zu 1 TB haben können. Orientieren Sie sich beim Hinzufügen zusätzlicher Datenträger an Ihren Platz- und IOPS-Anforderungen. Jeder Datenträger hat ein Leistungsziel von 500 IOPS (Storage Standard) bzw. von bis zu 5000 IOPS (Storage Premium).  Weitere Informationen zu Storage Premium-Datenträgern finden Sie unter [Storage Premium-Hochleistungsspeicher für virtuelle Azure-Computer](../../storage/common/storage-premium-storage.md).
 
 Um bei Storage Premium-Datenträgern mit der Cacheeinstellung **ReadOnly** oder **None** die höchstmögliche IOPS-Leistung zu erzielen, müssen beim Bereitstellen des Dateisystems in Linux so genannte **Barriers** deaktiviert werden. „Barriers“ werden nicht benötigt, da Schreibvorgänge auf Storage Premium-Datenträger bei diesen Cacheeinstellungen beständig sind.
 
@@ -42,7 +42,7 @@ Um bei Storage Premium-Datenträgern mit der Cacheeinstellung **ReadOnly** oder 
 * Wenn Sie **XFS**verwenden, deaktivieren Sie Barriers mithilfe der Bereitstellungsoption `nobarrier` (zum Aktivieren von Barriers verwenden Sie `barrier`).
 
 ## <a name="unmanaged-storage-account-considerations"></a>Überlegungen zu nicht verwalteten Speicherkonten
-Die Standardaktion beim Erstellen eines virtuellen Computers über die Azure CLI 2.0 ist die Verwendung von Azure Managed Disks.  Diese Datenträger werden von der Azure-Plattform verarbeitet und erfordern keine Vorbereitung und keinen Speicherort zur Aufbewahrung.  Nicht verwaltete Datenträger erfordern ein Speicherkonto, und es sind einige Leistungsaspekte zu bedenken.  Weitere Informationen zu verwalteten Datenträgern finden Sie in der [Übersicht über Managed Disks](../../storage/storage-managed-disks-overview.md).  Im folgenden Abschnitt werden einige Leistungsaspekte erläutert, die nur zu berücksichtigen sind, wenn Sie nicht verwaltete Datenträger verwenden.  Um es noch einmal zu betonen: Die standardmäßige und empfohlene Speicherlösung sind verwaltete Datenträger.
+Die Standardaktion beim Erstellen eines virtuellen Computers über die Azure CLI 2.0 ist die Verwendung von Azure Managed Disks.  Diese Datenträger werden von der Azure-Plattform verarbeitet und erfordern keine Vorbereitung und keinen Speicherort zur Aufbewahrung.  Nicht verwaltete Datenträger erfordern ein Speicherkonto, und es sind einige Leistungsaspekte zu bedenken.  Weitere Informationen zu verwalteten Datenträgern finden Sie in der [Übersicht über Managed Disks](../windows/managed-disks-overview.md).  Im folgenden Abschnitt werden einige Leistungsaspekte erläutert, die nur zu berücksichtigen sind, wenn Sie nicht verwaltete Datenträger verwenden.  Um es noch einmal zu betonen: Die standardmäßige und empfohlene Speicherlösung sind verwaltete Datenträger.
 
 Wenn Sie einen virtuellen Computer mit nicht verwalteten Datenträgern erstellen, stellen Sie sicher, dass Sie Datenträger aus Speicherkonten anfügen, die sich in der gleichen Region befinden wie Ihr virtueller Computer, um für physische Nähe zu sorgen und die Netzwerklatenz zu minimieren.  Die Kapazität jedes Storage Standard-Kontos ist auf maximal 20.000 IOPS und eine Größe von 500 TB beschränkt.  Dieser Grenzwert entspricht etwa 40 stark ausgelasteten Datenträgern, einschließlich des Betriebssystem-Datenträgers und aller von Ihnen erstellten Datenträger. Bei Storage Premium-Konten gilt kein IOPS-Limit, die Größe ist jedoch auf 32 TB beschränkt. 
 
@@ -132,7 +132,7 @@ Denken Sie daran: Wie bei allen Optimierungen müssen auch hier vor und nach jed
 
 Einige nützliche Links zu weiteren Ressourcen: 
 
-* [Premium-Speicher: Hochleistungsspeicher für Workloads in Azure Virtual Machine](../../storage/storage-premium-storage.md)
+* [Premium-Speicher: Hochleistungsspeicher für Workloads in Azure Virtual Machine](../../storage/common/storage-premium-storage.md)
 * [Benutzerhandbuch für Azure Linux-Agent](../windows/agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Optimieren der MySQL-Leistung auf virtuellen Azure Linux-Computern](classic/optimize-mysql.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 * [Konfigurieren von Software-RAID unter Linux](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

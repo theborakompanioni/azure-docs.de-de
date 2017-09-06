@@ -15,10 +15,10 @@ ms.workload: big-data
 ms.date: 07/23/2017
 ms.author: mahi
 ms.translationtype: HT
-ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
-ms.openlocfilehash: b79f6dd20d2e8e298b8d1824b70ff9f0d0fde9aa
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 862e9551f1e129b7bba06651fbae94e337c92dcb
 ms.contentlocale: de-de
-ms.lasthandoff: 08/01/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-powershell"></a>Verwalten von Azure Data Lake Analytics mithilfe von Azure PowerShell
@@ -173,7 +173,7 @@ Set-AdlAnalyticsAccount -Name $adla -FirewallState Disabled
 Azure Data Lake Analytics unterstützt derzeit die folgenden Datenquellen:
 
 * [Azure Data Lake-Speicher](../data-lake-store/data-lake-store-overview.md)
-* [Azure Storage (in englischer Sprache)](../storage/storage-introduction.md)
+* [Azure Storage (in englischer Sprache)](../storage/common/storage-introduction.md)
 
 Beim Erstellen eines Analytics-Kontos müssen Sie ein Data Lake Store-Konto als Standarddatenquelle festlegen. Das Data Lake-Standardspeicherkonto dient zum Speichern von Auftragsmetadaten und -überwachungsprotokollen. Nachdem Sie ein Data Lake Analytics-Konto erstellt haben, können Sie zusätzliche Data Lake Store-Konten und/oder Speicherkonten hinzufügen. 
 

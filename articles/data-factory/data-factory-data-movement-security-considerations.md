@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/27/2017
 ms.author: abnarain
 ms.translationtype: HT
-ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
-ms.openlocfilehash: 33ccb820b786b9aa28f9e10c35ef1d2c00eaf7f1
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 4c39d71a2a2f9451531f0c0082c05fd6dc54fbd5
 ms.contentlocale: de-de
-ms.lasthandoff: 07/10/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 
@@ -67,7 +67,7 @@ Azure SQL-Datenbank unterstützt auch Transparent Data Encryption (TDE), die Sch
 Azure Data Lake Store bietet auch eine Verschlüsselung für Daten, die im Konto gespeichert sind. Wenn diese Option aktiviert ist, verschlüsselt Data Lake Store Daten automatisch vor der dauerhaften Speicherung und entschlüsselt Daten vor dem Abrufen, sodass der Vorgang für den Client, der auf die Daten zugreift, transparent ist. Weitere Informationen finden Sie unter [Sicherheit in Azure Data Lake Store](../data-lake-store/data-lake-store-security-overview.md). 
 
 #### <a name="azure-blob-storage-and-azure-table-storage"></a>Azure Blob Storage und Azure Table Storage
-Azure Blob Storage und Azure Table Storage unterstützen die Speicherdienstverschlüsselung (Storage Service Encryption, SSE), bei der Ihre Daten vor der Weitergabe an den Speicher automatisch verschlüsselt und vor dem Abrufen entschlüsselt werden. Weitere Informationen finden Sie unter [Azure Storage Service Encryption für ruhende Daten](../storage/storage-service-encryption.md).
+Azure Blob Storage und Azure Table Storage unterstützen die Speicherdienstverschlüsselung (Storage Service Encryption, SSE), bei der Ihre Daten vor der Weitergabe an den Speicher automatisch verschlüsselt und vor dem Abrufen entschlüsselt werden. Weitere Informationen finden Sie unter [Azure Storage Service Encryption für ruhende Daten](../storage/common/storage-service-encryption.md).
 
 #### <a name="amazon-s3"></a>Amazon S3
 Amazon S3 unterstützt die Client- und Serververschlüsselung von ruhenden Daten. Weitere Informationen finden Sie unter [Schutz von Daten mittels Verschlüsselung](http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingEncryption.html). Derzeit bietet Data Factory keine Unterstützung für Amazon S3 in einer Virtual Private Cloud (VPC).

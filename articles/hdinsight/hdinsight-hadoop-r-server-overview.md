@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/19/2017
 ms.author: bradsev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: 0e1812bf867abff1ddd1b0534ceae692fad70484
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: c88bf04f904d6784b882f524ac8737ca70003c91
 ms.contentlocale: de-de
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 08/21/2017
 
 ---
 #<a name="introduction-to-r-server-and-open-source-r-capabilities-on-hdinsight"></a>Einführung in R Server und Open-Source-R-Funktionen in HDInsight
@@ -39,11 +38,11 @@ Die Modelle oder Vorhersagen, die sich aus den Analysen ergeben, können für di
 Für die Einbeziehung von R Server in einen HDInsight-Cluster müssen Sie beim Erstellen eines HDInsight-Clusters mit dem Azure-Portal den Typ des R Server-Clusters auswählen. Der Typ des R Server-Clusters bezieht R Server auf den Datenknoten des Clusters und auf einem Edgeknoten ein, der als Landezone für R Server-basierte Analysen dient. Eine Anleitung zum Erstellen eines Clusters finden Sie unter [Erste Schritte mit R Server in HDInsight](hdinsight-hadoop-r-server-get-started.md).
 
 ## <a name="learn-about-data-storage-options"></a>Informationen zu Datenspeicheroptionen
-Standardspeicher für das HDFS-Dateisystem von HDInsight-Clustern können entweder einem Azure Storage-Konto oder einem Azure Data Lake-Speicher zugeordnet werden. Durch diese Zuordnung wird sichergestellt, dass alle Daten, die während einer Analyse in den Clusterspeicher hochgeladen werden, persistent gemacht werden. Es gibt verschiedene Tools für die Datenübertragung in die von Ihnen ausgewählte Speicheroption, einschließlich der portalbasierten Hochladefunktion für das Speicherkonto und des [AzCopy](../storage/storage-use-azcopy.md)-Hilfsprogramms.
+Standardspeicher für das HDFS-Dateisystem von HDInsight-Clustern können entweder einem Azure Storage-Konto oder einem Azure Data Lake-Speicher zugeordnet werden. Durch diese Zuordnung wird sichergestellt, dass alle Daten, die während einer Analyse in den Clusterspeicher hochgeladen werden, persistent gemacht werden. Es gibt verschiedene Tools für die Datenübertragung in die von Ihnen ausgewählte Speicheroption, einschließlich der portalbasierten Hochladefunktion für das Speicherkonto und des [AzCopy](../storage/common/storage-use-azcopy.md)-Hilfsprogramms.
 
 Unabhängig von der verwendeten primären Speicheroption haben Sie die Möglichkeit, während des Clusterbereitstellungsvorgangs Zugriff auf zusätzliche Blobspeicher und Data Lake-Speicher hinzuzufügen. Informationen zum Hinzufügen von Zugriff auf zusätzliche Konten finden Sie unter [Erste Schritte mit R Server in HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-r-server-get-started). Weitere Informationen zur Verwendung von mehreren Speicherkonten finden Sie im ergänzenden Artikel [Azure Storage-Optionen für R Server in HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-r-server-storage).
 
-Außerdem können Sie [Azure Files](../storage/storage-how-to-use-files-linux.md) als Speicheroption für den Edgeknoten wählen. Mit Azure Files können Sie eine Dateifreigabe, die in Azure Storage erstellt wurde, für das Linux-Dateisystem bereitstellen. Weitere Informationen zu diesen Datenspeicheroptionen für R Server in HDInsight-Clustern finden Sie unter [Azure Storage-Optionen für R Server in HDInsight-Clustern](hdinsight-hadoop-r-server-storage.md).
+Außerdem können Sie [Azure Files](../storage/files/storage-how-to-use-files-linux.md) als Speicheroption für den Edgeknoten wählen. Mit Azure Files können Sie eine Dateifreigabe, die in Azure Storage erstellt wurde, für das Linux-Dateisystem bereitstellen. Weitere Informationen zu diesen Datenspeicheroptionen für R Server in HDInsight-Clustern finden Sie unter [Azure Storage-Optionen für R Server in HDInsight-Clustern](hdinsight-hadoop-r-server-storage.md).
 
 ## <a name="access-r-server-on-the-cluster"></a>Zugreifen auf R Server im Cluster
 Sie können eine Verbindung mit R Server auf dem Edgeknoten mithilfe eines Webbrowser herstellen, vorausgesetzt, dass Sie RStudio Server während des Bereitstellungsvorgangs einbezogen haben. Sollten Sie es nicht bei der Clusterbereitstellung installiert haben, können Sie es später hinzufügen. Informationen zur Installation von RStudio Server nach dem Erstellen eines Clusters finden Sie unter [Installieren von RStudio mit R Server in HDInsight-Clustern](hdinsight-hadoop-r-server-install-r-studio.md). Sie können auch eine Verbindung mit dem R Server herstellen, indem Sie mithilfe von SSH/PuTTY auf die R-Konsole zugreifen. 

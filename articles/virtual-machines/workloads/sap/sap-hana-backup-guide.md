@@ -13,12 +13,11 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 3/13/2017
 ms.author: rclaus
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
-ms.openlocfilehash: e3952c6be537e28f7f2cde8f33750b1894fde8e4
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 9e5b124643b753f404ba6012d3df998f567be59a
 ms.contentlocale: de-de
-ms.lasthandoff: 06/03/2017
-
+ms.lasthandoff: 08/21/2017
 
 ---
 
@@ -73,7 +72,7 @@ _Nein. Derzeit können Sie Sicherungen von Daten und Protokollen nur im Primärb
 
 ### <a name="why-sap-hana-backup"></a>Gründe für SAP HANA-Sicherungen
 
-Bei Azure-Speicher erhalten Sie standardmäßig Verfügbarkeit und Zuverlässigkeit (weitere Informationen zum Azure-Speicher unter [Einführung in Microsoft Azure Storage](../../../storage/storage-introduction.md)).
+Bei Azure-Speicher erhalten Sie standardmäßig Verfügbarkeit und Zuverlässigkeit (weitere Informationen zum Azure-Speicher unter [Einführung in Microsoft Azure Storage](../../../storage/common/storage-introduction.md)).
 
 Die Mindestvoraussetzung für die &quot;Sicherung&quot; ist die Verwendung der Azure-SLAs und die Aufbewahrung der SAP HANA-Daten- und -Protokolldateien auf Azure VHDs, die an die SAP HANA-Server-VM angefügt sind. Bei diesem Ansatz sind VM-Ausfälle abgedeckt, aber keine potenziellen Beschädigungen der SAP HANA-Daten- und -Protokolldateien oder logische Fehler wie das versehentliche Löschen von Daten oder Dateien. Sicherungen sind auch aus Konformitäts- oder Rechtsgründen erforderlich. Kurz gesagt: Für SAP HANA-Sicherungen besteht immer eine Notwendigkeit.
 
@@ -171,7 +170,7 @@ In Microsoft Azure kann ein Kunde zum Verschlüsseln die IaaS-VM-Verschlüsselun
 
 Der Azure Backup-Dienst kann verschlüsselte VMs/Datenträger verarbeiten (siehe [Sichern und Wiederherstellen verschlüsselter virtueller Computer mit Azure Backup](../../../backup/backup-azure-vms-encryption.md)).
 
-Eine weitere Möglichkeit ist die Verwendung der SAP HANA-VM und ihrer Datenträger ohne Verschlüsselung und die Speicherung der SAP HANA-Sicherungsdateien in einem Speicherkonto, für das die Verschlüsselung aktiviert wurde (siehe [Azure Storage Service Encryption für ruhende Daten](../../../storage/storage-service-encryption.md)).
+Eine weitere Möglichkeit ist die Verwendung der SAP HANA-VM und ihrer Datenträger ohne Verschlüsselung und die Speicherung der SAP HANA-Sicherungsdateien in einem Speicherkonto, für das die Verschlüsselung aktiviert wurde (siehe [Azure Storage Service Encryption für ruhende Daten](../../../storage/common/storage-service-encryption.md)).
 
 ## <a name="test-setup"></a>Testeinrichtung
 

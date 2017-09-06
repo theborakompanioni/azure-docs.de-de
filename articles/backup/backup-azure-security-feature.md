@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/08/2017
 ms.author: pajosh
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
-ms.openlocfilehash: 1400fe83bec85a7ab1b4c96fb38abdaf6c944845
+ms.translationtype: HT
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: 8ef9ddc345fb553b93815022dc3e6a796cae8b3a
 ms.contentlocale: de-de
-ms.lasthandoff: 06/08/2017
-
+ms.lasthandoff: 08/23/2017
 
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>Sicherheitsfeatures für den Schutz von Hybridsicherungen mit Azure Backup
@@ -75,12 +74,12 @@ Für Benutzer des **Microsoft Azure Recovery Services-Agent**:
 Für Benutzer von **Azure Backup Server** :
 
 1. Wenn der Server, auf dem die Sicherungen durchgeführt wurden, noch verfügbar ist, schützen Sie die gelöschten Datenquellen erneut, und verwenden Sie das Feature **Daten wiederherstellen**, um die Wiederherstellung mithilfe aller alten Wiederherstellungspunkte durchzuführen.
-2. Wenn dieser Server nicht verfügbar ist, befolgen Sie die Schritte unter [Daten von einem anderen Azure Backup-Server wiederherstellen](backup-azure-alternate-dpm-server.md#recover-data-from-another-azure-backup-server), um diese Daten von einer anderen Azure Backup Server-Instanz wiederherzustellen.
+2. Wenn dieser Server nicht verfügbar ist, befolgen Sie die Schritte unter [Daten von einem anderen Azure Backup-Server wiederherstellen](backup-azure-alternate-dpm-server.md), um diese Daten von einer anderen Azure Backup Server-Instanz wiederherzustellen.
 
 Für Benutzer von **Data Protection Manager**:
 
 1. Wenn der Server, auf dem die Sicherungen durchgeführt wurden, noch verfügbar ist, schützen Sie die gelöschten Datenquellen erneut, und verwenden Sie das Feature **Daten wiederherstellen**, um die Wiederherstellung mithilfe aller alten Wiederherstellungspunkte durchzuführen.
-2. Wenn dieser Server nicht verfügbar ist, verwenden Sie [Externen DPM hinzufügen](backup-azure-alternate-dpm-server.md#recover-data-from-another-azure-backup-server), um einen anderen Data Protection Manager-Server zum Abrufen dieser Daten zu verwenden.
+2. Wenn dieser Server nicht verfügbar ist, verwenden Sie [Externen DPM hinzufügen](backup-azure-alternate-dpm-server.md), um einen anderen Data Protection Manager-Server zum Abrufen dieser Daten zu verwenden.
 
 ## <a name="prevent-attacks"></a>Verhindern von Angriffen
 Es wurden Prüfungen hinzugefügt, um sicherzustellen, dass bestimmte Vorgänge nur von gültigen Benutzern ausgeführt werden können. Dazu gehören das Hinzufügen einer zusätzlichen Authentifizierungsebene und das Einhalten einer minimalen Aufbewahrungsdauer für die Wiederherstellung.

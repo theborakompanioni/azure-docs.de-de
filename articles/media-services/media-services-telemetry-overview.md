@@ -4,7 +4,7 @@ description: "Dieser Artikel bietet eine Übersicht über die Azure Media Servic
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: 95c20ec4-c782-4063-8042-b79f95741d28
 ms.service: media-services
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/29/2017
 ms.author: juliako
 ms.translationtype: HT
-ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
-ms.openlocfilehash: bc16ef727f0c3942b0be8c633717fd52da246c55
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 25520a447a9f2c459fd073779e4922377b6d1d4d
 ms.contentlocale: de-de
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 
@@ -74,7 +74,7 @@ Telemetriedaten werden in aggregierter Form in einer Tabelle „TelemetryMetrics
 Eigenschaft|Wert|Beispiele/Hinweise
 ---|---|---
 PartitionKey|{Konto-ID}_{Entitäts-ID}|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66<br/<br/>Die Konto-ID ist im Partitionsschlüssel enthalten, um Workflows zu vereinfachen, in denen mehrere Media Services-Konten in das gleiche Speicherkonto schreiben.
-Zeilenschlüssel|{Sekunden bis Mitternacht}_{Zufallswert}|01688_00199<br/><br/>Der Zeilenschlüssel beginnt mit der Anzahl von Sekunden bis Mitternacht, um Abfragen nach den „oberen n“ innerhalb einer Partition zu ermöglichen. Weitere Informationen dazu finden Sie in [diesem Artikel](../storage/storage-table-design-guide.md#log-tail-pattern). 
+Zeilenschlüssel|{Sekunden bis Mitternacht}_{Zufallswert}|01688_00199<br/><br/>Der Zeilenschlüssel beginnt mit der Anzahl von Sekunden bis Mitternacht, um Abfragen nach den „oberen n“ innerhalb einer Partition zu ermöglichen. Weitere Informationen dazu finden Sie in [diesem Artikel](../cosmos-db/table-storage-design-guide.md#log-tail-pattern). 
 Zeitstempel|Datum/Uhrzeit|Zeitstempel von Azure-Tabelle 2016-09-09T22:43:42.241Z
 Typ|Der Typ der Entität, die Telemetriedaten liefert|Kanal/StreamingEndpoint/Archiv<br/><br/>Der Ereignistyp ist einfach ein Zeichenfolgenwert.
 Name|Der Name des Telemetrieereignisses|ChannelHeartbeat/StreamingEndpointRequestLog

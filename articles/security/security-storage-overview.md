@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/23/2017
 ms.author: terrylan
 ms.translationtype: HT
-ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
-ms.openlocfilehash: 1fdff8fcc031f585b0d4eec7f1afa224e6bca089
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: da28cbf5f6f91df1f89114a63bc3f2ebac0f6d73
 ms.contentlocale: de-de
-ms.lasthandoff: 08/10/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="azure-storage-security-overview"></a>Übersicht über die Sicherheit von Azure Storage
@@ -31,7 +31,7 @@ Azure Storage ist eine Cloudspeicherlösung für moderne Anwendungen, die eine K
 * Delegierter Zugriff auf die Datenobjekte in Azure Storage kann mit Shared Access Signatures erteilt werden.
 * Die Authentifizierungsmethode, die ein Benutzer verwendet, wenn er auf den Speicher zugreift, kann mithilfe der Speicheranalyse nachvollzogen werden.
 
-Eine ausführlichere Betrachtung der Sicherheit in Azure Storage finden Sie im [Azure Storage-Sicherheitsleitfaden](../storage/storage-security-guide.md). Dieser Leitfaden liefert ausführliche Informationen zu den Sicherheitsfeatures von Azure Storage. Hierzu zählen etwa Speicherkontoschlüssel, die Verschlüsselung von Daten während der Übertragung und im Ruhezustand sowie die Speicheranalyse.
+Eine ausführlichere Betrachtung der Sicherheit in Azure Storage finden Sie im [Azure Storage-Sicherheitsleitfaden](../storage/common/storage-security-guide.md). Dieser Leitfaden liefert ausführliche Informationen zu den Sicherheitsfeatures von Azure Storage. Hierzu zählen etwa Speicherkontoschlüssel, die Verschlüsselung von Daten während der Übertragung und im Ruhezustand sowie die Speicheranalyse.
 
 Dieser Artikel bietet eine Übersicht über die Sicherheitsfunktionen von Azure, die mit Azure Storage verwendet werden können. Es sind jeweils Links zu Artikeln mit weiteren Informationen zu jedem Feature angegeben.
 
@@ -56,15 +56,15 @@ Shared Access Signatures (SAS) bieten delegierten Zugriff auf Ressourcen in Ihre
 
 Weitere Informationen:
 
-* [Grundlagen zum SAS-Modell](../storage/storage-dotnet-shared-access-signature-part-1.md)
-* [Erstellen und Verwenden einer SAS mit Blob Storage](../storage/storage-dotnet-shared-access-signature-part-2.md)
+* [Grundlagen zum SAS-Modell](../storage/common/storage-dotnet-shared-access-signature-part-1.md)
+* [Erstellen und Verwenden einer SAS mit Blob Storage](../storage/blobs/storage-dotnet-shared-access-signature-part-2.md)
 
 ## <a name="encryption-in-transit"></a>Verschlüsselung während der Übertragung
 Verschlüsselung während der Übertragung ist ein Mechanismus zum Schutz der Daten bei der Übertragung über Netzwerke hinweg. Mit Azure Storage können Sie die Daten sichern mit:
 
-* [Verschlüsselung auf Transportebene](../storage/storage-security-guide.md#encryption-in-transit)(etwa HTTPS), wenn Sie Daten in oder aus Azure Storage übertragen.
-* [Wire-Verschlüsselung](../storage/storage-security-guide.md#using-encryption-during-transit-with-azure-file-shares) (etwa SMB 3.0-Verschlüsselung für Azure-Dateifreigaben).
-* [Clientseitiger Verschlüsselung](../storage/storage-security-guide.md#using-client-side-encryption-to-secure-data-that-you-send-to-storage), um die Daten zu verschlüsseln, bevor sie in den Speicher übertragen werden, und nach der Übertragung aus dem Speicher zu entschlüsseln.
+* [Verschlüsselung auf Transportebene](../storage/common/storage-security-guide.md#encryption-in-transit)(etwa HTTPS), wenn Sie Daten in oder aus Azure Storage übertragen.
+* [Wire-Verschlüsselung](../storage/common/storage-security-guide.md#using-encryption-during-transit-with-azure-file-shares) (etwa SMB 3.0-Verschlüsselung für Azure-Dateifreigaben).
+* [Clientseitiger Verschlüsselung](../storage/common/storage-security-guide.md#using-client-side-encryption-to-secure-data-that-you-send-to-storage), um die Daten zu verschlüsseln, bevor sie in den Speicher übertragen werden, und nach der Übertragung aus dem Speicher zu entschlüsseln.
 
 Weitere Informationen zur clientseitigen Verschlüsselung finden Sie hier:
 
@@ -74,14 +74,14 @@ Weitere Informationen zur clientseitigen Verschlüsselung finden Sie hier:
 ## <a name="encryption-at-rest"></a>Verschlüsselung ruhender Daten
 Für viele Organisationen ist die Verschlüsselung von [ruhenden Daten](https://blogs.microsoft.com/cybertrust/2015/09/10/cloud-security-controls-series-encrypting-data-at-rest/) ein obligatorischer Schritt in Richtung Datenschutz, Compliance und Datenhoheit. Drei Azure-Features ermöglichen die Verschlüsselung „ruhender“ Daten:
 
-* [Storage Service Encryption](../storage/storage-security-guide.md#encryption-at-rest) können Sie anfordern, dass der Speicherdienst die Daten beim Schreiben in Azure Storage automatisch verschlüsselt.
-* [Client-side Encryption](../storage/storage-security-guide.md#client-side-encryption) ermöglicht ebenfalls eine Verschlüsselung ruhender Daten.
-* [Azure-Datenträgerverschlüsselung](../storage/storage-security-guide.md#using-azure-disk-encryption-to-encrypt-disks-used-by-your-virtual-machines) können Sie die Betriebssystemdatenträger und andere Datenträger verschlüsseln, die von einem virtuellen IaaS-Computer verwendet werden.
+* [Storage Service Encryption](../storage/common/storage-security-guide.md#encryption-at-rest) können Sie anfordern, dass der Speicherdienst die Daten beim Schreiben in Azure Storage automatisch verschlüsselt.
+* [Client-side Encryption](../storage/common/storage-security-guide.md#client-side-encryption) ermöglicht ebenfalls eine Verschlüsselung ruhender Daten.
+* [Azure-Datenträgerverschlüsselung](../storage/common/storage-security-guide.md#using-azure-disk-encryption-to-encrypt-disks-used-by-your-virtual-machines) können Sie die Betriebssystemdatenträger und andere Datenträger verschlüsseln, die von einem virtuellen IaaS-Computer verwendet werden.
 
 Weitere Informationen zu Storage Service Encryption finden Sie hier:
 
 * [Azure Storage Service Encryption](https://azure.microsoft.com/services/storage/) ist für [Azure-Blobspeicher](https://azure.microsoft.com/services/storage/blobs/) verfügbar. Ausführliche Informationen zu anderen Arten von Azure-Speicher finden Sie unter [Datei](https://azure.microsoft.com/services/storage/files/), [Datenträger (Storage Premium)](https://azure.microsoft.com/services/storage/premium-storage/), [Tabelle](https://azure.microsoft.com/services/storage/tables/) und [Warteschlange](https://azure.microsoft.com/services/storage/queues/).
-* [Azure Storage Service Encryption für ruhende Daten](../storage/storage-service-encryption.md)
+* [Azure Storage Service Encryption für ruhende Daten](../storage/common/storage-service-encryption.md)
 
 ## <a name="azure-disk-encryption"></a>Azure-Datenträgerverschlüsselung
 Mithilfe von Azure Disk Encryption für virtuelle Computer können Sie die Sicherheits- und Complianceanforderungen Ihrer Organisation erfüllen, indem Sie die Datenträger Ihrer virtuellen Computer (Startdatenträger und allgemeine Datenträger) mit Schlüsseln und Richtlinien verschlüsseln, die Sie über den [Azure-Schlüsseltresor](https://azure.microsoft.com/services/key-vault/)steuern.

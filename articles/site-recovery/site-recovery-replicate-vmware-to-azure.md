@@ -15,11 +15,10 @@ ms.workload: storage-backup-recovery
 ms.date: 06/05/2017
 ms.author: asgang
 ms.translationtype: HT
-ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
-ms.openlocfilehash: 0478acb27f7e1f8ca85f43ac244b5bdb70109a93
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: e0047a996c9bfd7d950b32f0871ddd7608924b42
 ms.contentlocale: de-de
-ms.lasthandoff: 07/10/2017
-
+ms.lasthandoff: 08/21/2017
 
 ---
 
@@ -63,7 +62,7 @@ Wenn Sie VMware-VMs replizieren, beachten Sie Folgendes:
 7. Wählen Sie das Azure-Speicherkonto aus, das Sie für die Replikation von Daten verwenden möchten. Beachten Sie Folgendes:
 
    * Sie können ein Premium- oder Standardspeicherkonto auswählen. Wenn Sie ein Premium-Konto auswählen, müssen Sie für fortlaufende Replikationsprotokolle ein zusätzliches Standard-Speicherkonto angeben. Die Konten müssen sich in derselben Region wie der Recovery Services-Tresor befinden.
-   * Wenn Sie ein anderes Speicherkonto als Ihr vorhandenes verwenden möchten, erstellen Sie einen *Platzhalterlink zum Erstellen eines Speicherkontos mithilfe des Resource Managers, der in den ersten Schritten behandelt wird*. Klicken Sie zum Erstellen eines Speicherkontos mit dem Resource Manager auf **Neu erstellen**. Wenn Sie ein Speicherkonto mit dem klassischen Modell erstellen möchten, verwenden Sie hierfür das [Azure-Portal](../storage/storage-create-storage-account-classic-portal.md).
+   * Wenn Sie ein anderes Speicherkonto als Ihr vorhandenes verwenden möchten, erstellen Sie einen *Platzhalterlink zum Erstellen eines Speicherkontos mithilfe des Resource Managers, der in den ersten Schritten behandelt wird*. Klicken Sie zum Erstellen eines Speicherkontos mit dem Resource Manager auf **Neu erstellen**. Wenn Sie ein Speicherkonto mit dem klassischen Modell erstellen möchten, verwenden Sie hierfür das [Azure-Portal](../storage/common/storage-create-storage-account.md).
 
 8. Wählen Sie das Azure-Netzwerk und das Subnetz aus, mit dem Azure-VMs eine Verbindung herstellen, wenn sie nach einem Failover erstellt werden. Das Netzwerk muss sich in derselben Region wie der Recovery Services-Tresor befinden. Wählen Sie die Option **Jetzt für die ausgewählten Computer konfigurieren** aus, um die Netzwerkeinstellung auf alle Computer anzuwenden, die geschützt werden sollen. Wählen Sie **Später konfigurieren** aus, um das Azure-Netzwerk pro Computer auszuwählen. Wenn Sie über kein Netzwerk verfügen, müssen Sie ein [Netzwerk erstellen](#set-up-an-azure-network). Klicken Sie zum Erstellen eines Netzwerks mit dem Resource Manager auf **Neu erstellen**. Falls Sie ein Netzwerk mit dem klassischen Modell erstellen möchten, verwenden Sie hierfür das [Azure-Portal](../virtual-network/virtual-networks-create-vnet-classic-pportal.md). Wählen Sie, falls zutreffend, ein Subnetz aus. Klicken Sie dann auf **OK**.
 

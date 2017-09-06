@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: adegeo
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: c7fb1c796556baf09a34c4bc6ed71964071d5874
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 90d55bbac6e113d6add848ace67cf0749e26342b
 ms.contentlocale: de-de
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 
@@ -38,7 +38,7 @@ Folgendes ist allerdings zu beachten, bevor die Skalierung einer Anwendung konfi
 
     Größere Rolleninstanzen verwenden mehr Kerne. Sie können eine Anwendung nur innerhalb der für Ihr Abonnement geltenden Kerngrenzwerte skalieren. Nehmen Sie z.B. an, Ihr Abonnement sei auf 20 Kerne begrenzt. Wenn Sie eine Anwendung mit zwei mittelgroßen Clouddiensten ausführen (insgesamt vier Kerne), stehen für das zentrale Hochskalieren anderer Clouddienstbereitstellungen in Ihrem Abonnement nur noch sechzehn Kerne zur Verfügung. Weitere Informationen zu Größen finden Sie unter [Größen für Clouddienste](cloud-services-sizes-specs.md).
 
-* Sie müssen eine Warteschlange anlegen und dieser einer Rolle zuweisen, bevor Sie eine Anwendung auf Basis eines Nachrichtenschwellwerts skalieren können. Weitere Informationen finden Sie unter [Verwenden des Warteschlangenspeicherdiensts](../storage/storage-dotnet-how-to-use-queues.md).
+* Sie müssen eine Warteschlange anlegen und dieser einer Rolle zuweisen, bevor Sie eine Anwendung auf Basis eines Nachrichtenschwellwerts skalieren können. Weitere Informationen finden Sie unter [Verwenden des Warteschlangenspeicherdiensts](../storage/queues/storage-dotnet-how-to-use-queues.md).
 
 * Sie können Ressourcen skalieren, die mit Ihrem Clouddienst verknüpft sind. Weitere Informationen zum Verknüpfen von Ressourcen finden Sie unter [Verknüpfen einer Ressource mit einem Clouddienst](cloud-services-how-to-manage.md#how-to-link-a-resource-to-a-cloud-service).
 

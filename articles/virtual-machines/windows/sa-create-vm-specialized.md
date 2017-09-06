@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2017
 ms.author: cynthn
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: c5fa164c1095a343402d28142efb92a832441d23
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 974d89aa96cba94fedfd1acbaf4f1d30ac8e6257
 ms.contentlocale: de-de
-ms.lasthandoff: 07/04/2017
-
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="create-a-vm-from-a-specialized-vhd-in-a-storage-account"></a>Erstellen eines virtuellen Computers auf der Grundlage einer spezialisierten VHD in einem Speicherkonto
@@ -40,9 +39,9 @@ Install-Module AzureRM.Compute
 Weitere Informationen finden Sie unter [Azure PowerShell-Versionsverwaltung](/powershell/azure/overview).
 
 
-## <a name="option-1-upload-a-specialized-vhd"></a>Option 1: Hochladen einer spezialisierten VHD
+## <a name="option-1-upload-a-specialized-vhd"></a>Option 1: Hochladen einer speziellen VHD
 
-Sie können die VHD über einen spezialisierten virtuellen Computer hochladen, der mit einem lokalen Virtualisierungstool (beispielsweise Hyper-V) erstellt wurde, oder über einen virtuellen Computer, der aus einer anderen Cloud exportiert wurde.
+Sie können die VHD über eine spezielle VM hochladen, die mit einem lokalen Virtualisierungstool (z.B. Hyper-V) erstellt wurde, oder über eine VM, die aus einer anderen Cloud exportiert wurde.
 
 ### <a name="prepare-the-vm"></a>Vorbereiten des virtuellen Computers
 Sie können eine spezialisierte VHD hochladen, die mit einem lokalen virtuellen Computer erstellt wurde, oder eine VHD, die aus einer anderen Cloud exportiert wurde. Auf einer spezialisierten VHD werden die Benutzerkonten, Anwendungen und andere Zustandsdaten Ihres ursprünglichen virtuellen Computers beibehalten. Wenn Sie die VHD unverändert zum Erstellen eines neuen virtuellen Computers verwenden möchten, führen Sie auf jeden Fall die folgenden Schritte aus. 
@@ -120,7 +119,7 @@ Sie können eine VHD in ein anderes Speicherkonto kopieren, das beim Erstellen e
 Stellen Sie sicher, dass Sie:
 
 * über Informationen zu den **Quell- und Zielspeicherkonten** verfügen. Für die Quell-VM benötigen Sie den Speicherkonto- und den Containernamen. Der Containername ist üblicherweise **vhds**. Außerdem müssen Sie über ein Zielspeicherkonto verfügen. Wenn Sie nicht bereits über eines verfügen, können Sie entweder mithilfe des Portals (**Weitere Dienste** > „Speicherkonten“ > „Hinzufügen“) oder des Cmdlets [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/new-azurermstorageaccount) eines erstellen. 
-* das [AzCopy-Tool](../../storage/storage-use-azcopy.md) heruntergeladen und installiert haben. 
+* das [AzCopy-Tool](../../storage/common/storage-use-azcopy.md) heruntergeladen und installiert haben. 
 
 ### <a name="deallocate-the-vm"></a>Aufheben der Zuordnung der VM
 Heben Sie die Zuordnung der VM auf, wodurch die VHD zum Kopieren freigegeben wird. 
@@ -147,7 +146,7 @@ Get-AzureRmVM -ResourceGroupName "myResourceGroup" -Name "myVM"
 ``` 
 
 ## <a name="get-the-storage-access-keys"></a>Abrufen der Speicherzugriffsschlüssel
-Suchen Sie die Zugriffsschlüssel für die Quell- und Zielspeicherkonten. Weitere Informationen zu Zugriffsschlüsseln finden Sie unter [Informationen zu Azure-Speicherkonten](../../storage/storage-create-storage-account.md).
+Suchen Sie die Zugriffsschlüssel für die Quell- und Zielspeicherkonten. Weitere Informationen zu Zugriffsschlüsseln finden Sie unter [Informationen zu Azure-Speicherkonten](../../storage/common/storage-create-storage-account.md).
 
 * **Portal:** Klicken Sie auf **Weitere Dienste** > **Speicherkonten** > *Speicherkonto* > **Zugriffsschlüssel**. Kopieren Sie den Schlüssel mit der Bezeichnung **key1**.
 * **PowerShell:** Verwenden Sie [Get-AzureRmStorageAccountKey](/powershell/module/azurerm.storage/get-azurermstorageaccountkey), um den Speicherschlüssel für das Speicherkonto **mystorageaccount** in der Ressourcengruppe **myResourceGroup** abzurufen. Kopieren Sie den Schlüssel mit der Bezeichnung **key1**.

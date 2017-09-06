@@ -14,11 +14,11 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 03/10/2017
 ms.author: cynthn
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 006123a4ab7d1c0208a7e5f33b6f05f9374511fc
-ms.lasthandoff: 04/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 7983061a933370803669480296d7625106e1360c
+ms.contentlocale: de-de
+ms.lasthandoff: 08/21/2017
 
 ---                    
                
@@ -53,7 +53,7 @@ az vm deallocate --resource-group myResourceGroup --name myVM
 
 Zum Kopieren eines virtuellen Computers erstellen Sie eine Kopie der zugrunde liegenden virtuellen Festplatte. Dieser Prozess erstellt eine spezialisierte VHD als Managed Disk, die die gleiche Konfiguration und die gleichen Einstellungen wie der virtuelle Quellcomputer aufweist.
 
-Weitere Informationen zu Azure Managed Disks finden Sie in der [Übersicht über Azure Managed Disks](../../storage/storage-managed-disks-overview.md). 
+Weitere Informationen zu Azure Managed Disks finden Sie in der [Übersicht über Azure Managed Disks](../windows/managed-disks-overview.md). 
 
 1.  Listen Sie die einzelnen virtuellen Computer und den Namen des dazugehörigen Betriebssystemdatenträgers mit [az vm list](/cli/azure/vm#list) auf. Im folgenden Beispiel werden alle virtuellen Computer in der Ressourcengruppe **myResourceGroup** aufgelistet:
     

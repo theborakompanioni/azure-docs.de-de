@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/03/2017
 ms.author: magoedte
-ms.translationtype: Human Translation
-ms.sourcegitcommit: de674af369080ad7eb608608685e293f2326c8e6
-ms.openlocfilehash: fa33a031a9e05f3079f1ed68d2ac0902b3070fa6
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 9ae1629462d375c1061d9c7b25975c789ee661c9
 ms.contentlocale: de-de
-ms.lasthandoff: 05/04/2017
-
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics-Datensicherheit
@@ -157,7 +156,7 @@ Wenn ein Agent nicht mit dem Dienst kommunizieren kann, werden die gesammelten D
 Wie oben beschrieben, werden die Daten von den Agents über SSL an Microsoft Azure-Rechenzentren gesendet. Optional können Sie ExpressRoute verwenden, um zusätzliche Sicherheit für die Daten bereitzustellen. ExpressRoute ist eine Möglichkeit, direkt aus Ihrem vorhandenen WAN mit Azure zu verbinden, z.B. ein Multi-Protocol Label Switching-VPN (MPLS), das von einem Netzwerkdienstanbieter bereitgestellt wird. Weitere Informationen finden Sie unter [ExpressRoute](https://azure.microsoft.com/services/expressroute/).
 
 ## <a name="3-the-log-analytics-service-receives-and-processes-data"></a>3. Empfangen und Verarbeiten von Daten durch den Log Analytics-Dienst
-Der Log Analytics-Dienst stellt sicher, dass eingehende Daten aus einer vertrauenswürdigen Quelle stammen, indem Zertifikate und die Integrität der Daten mittels Azure-Authentifizierung überprüft werden. Die unverarbeiteten Rohdaten werden dann als Blob in [Microsoft Azure Storage](../storage/storage-introduction.md) unverschlüsselt gespeichert. Jedes Azure Storage-Blob besitzt jedoch einen eindeutigen Satz von Schlüsseln, auf die nur dieser Benutzer zugreifen kann. Die Art der gespeicherten Daten ist abhängig von der Art der importierten und zum Sammeln von Daten verwendeten Lösungen. Der Log Analytics-Dienst verarbeitet dann die Rohdaten für das Azure Storage-Blob.
+Der Log Analytics-Dienst stellt sicher, dass eingehende Daten aus einer vertrauenswürdigen Quelle stammen, indem Zertifikate und die Integrität der Daten mittels Azure-Authentifizierung überprüft werden. Die unverarbeiteten Rohdaten werden dann als Blob in [Microsoft Azure Storage](../storage/common/storage-introduction.md) unverschlüsselt gespeichert. Jedes Azure Storage-Blob besitzt jedoch einen eindeutigen Satz von Schlüsseln, auf die nur dieser Benutzer zugreifen kann. Die Art der gespeicherten Daten ist abhängig von der Art der importierten und zum Sammeln von Daten verwendeten Lösungen. Der Log Analytics-Dienst verarbeitet dann die Rohdaten für das Azure Storage-Blob.
 
 ## <a name="4-use-log-analytics-to-access-the-data"></a>4. Verwenden von Log Analytics für den Datenzugriff
 Sie können sich im OMS-Portal bei Log Analytics anmelden, indem Sie ein zuvor eingerichtetes Unternehmenskonto oder Microsoft-Konto verwenden. Der gesamte Datenverkehr zwischen dem OMS-Portal und Log Analytics in OMS wird über einen sicheren HTTPS-Kanal gesendet. Wenn das OMS-Portal verwendet wird, wird eine ID für eine Sitzung auf dem Client des Benutzers (Webbrowser) generiert, und Daten werden in einem lokalen Cache gespeichert, bis die Sitzung beendet wird. Wenn die Sitzung beendet ist, wird der Cache gelöscht. Clientseitige Cookies enthalten keine persönlich identifizierbaren Informationen und werden nicht automatisch entfernt. Sitzungscookies sind „HTTPOnly“ markiert und gesichert. Nach einer vorher festgelegten Zeit im Leerlauf wird die OMS-Portal-Sitzung beendet.

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/31/2017
 ms.author: tomfitz
 ms.translationtype: HT
-ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
-ms.openlocfilehash: 8a9d7c7f3f8aefa5312e5e3313dbd581d6df900a
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: a23301ba88279af3f7bf4d353ae808e9eeb0900d
 ms.contentlocale: de-de
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="best-practices-for-creating-azure-resource-manager-templates"></a>Bewährte Methoden für das Erstellen von Azure Resource Manager-Vorlagen
@@ -394,7 +394,7 @@ Es ist auch eine gute Idee, Ihren JSON-Code für eine bessere Lesbarkeit zu form
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Eine Anleitung zum Gestalten Ihrer Lösung für virtuelle Computer finden Sie unter [Run a Windows VM on Azure](../guidance/guidance-compute-single-vm.md) (Ausführen eines virtuellen Windows-Computers in Azure) und [Run a Linux VM on Azure](../guidance/guidance-compute-single-vm-linux.md) (Ausführen eines virtuellen Linux-Computers in Azure).
-* Eine Anleitung zum Einrichten eines Speicherkontos finden Sie unter [Checkliste zu Leistung und Skalierbarkeit von Microsoft Azure Storage](../storage/storage-performance-checklist.md).
+* Eine Anleitung zum Einrichten eines Speicherkontos finden Sie unter [Checkliste zu Leistung und Skalierbarkeit von Microsoft Azure Storage](../storage/common/storage-performance-checklist.md).
 * Anleitungen dazu, wie Unternehmen Abonnements mit Resource Manager effektiv verwalten können, finden Sie unter [Azure-Unternehmensgerüst – präskriptive Abonnementgovernance](resource-manager-subscription-governance.md).
 
 

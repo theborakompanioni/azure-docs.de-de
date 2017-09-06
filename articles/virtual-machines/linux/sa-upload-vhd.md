@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 07/10/2017
 ms.author: cynthn
 ms.translationtype: HT
-ms.sourcegitcommit: 9afd12380926d4e16b7384ff07d229735ca94aaa
-ms.openlocfilehash: 323f69eb2d259a7d98791b5fc9ee24f739da13e6
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 9159960af396e89f373da711e0cc46fdd996ab83
 ms.contentlocale: de-de
-ms.lasthandoff: 07/15/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="upload-and-create-a-linux-vm-from-custom-disk-with-the-azure-cli-20"></a>Hochladen und Erstellen eines virtuellen Linux-Computers aus einem benutzerdefinierten Datenträger mithilfe von Azure CLI 2.0
@@ -141,7 +141,7 @@ az storage account create --resource-group myResourceGroup --location westus \
 ```
 
 ## <a name="list-storage-account-keys"></a>Auflisten von Speicherkontoschlüsseln
-Azure generiert zwei 512-Bit-Zugriffsschlüssel für jedes Speicherkonto. Die Zugriffsschlüssel werden für die Authentifizierung beim Speicherkonto verwendet, um beispielsweise Schreibvorgänge auszuführen. Erfahren Sie [hier](../../storage/storage-create-storage-account.md#manage-your-storage-account)mehr über das Verwalten von Speicherzugriff. Zeigen Sie mit [az storage account keys list](/cli/azure/storage/account/keys#list) die Zugriffsschlüssel an.
+Azure generiert zwei 512-Bit-Zugriffsschlüssel für jedes Speicherkonto. Die Zugriffsschlüssel werden für die Authentifizierung beim Speicherkonto verwendet, um beispielsweise Schreibvorgänge auszuführen. Erfahren Sie [hier](../../storage/common/storage-create-storage-account.md#manage-your-storage-account)mehr über das Verwalten von Speicherzugriff. Zeigen Sie mit [az storage account keys list](/cli/azure/storage/account/keys#list) die Zugriffsschlüssel an.
 
 Zeigen Sie die Zugriffsschlüssel für das erstellte Speicherkonto an:
 

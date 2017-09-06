@@ -9,17 +9,17 @@ editor:
 ms.assetid: 7965a80f-ea24-4cc2-bc43-60b574101902
 ms.service: virtual-machines-linux
 ms.devlang: NA
-ms.topic: article
+ms.topic: overview
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/14/2016
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017, mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
-ms.openlocfilehash: 84406b3068a6705bf0a4c5f17ace5a586398da4f
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 392ed1b7ac5f543b322024f4b771c73bf865e970
 ms.contentlocale: de-de
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="azure-and-linux"></a>Azure und Linux
@@ -39,7 +39,7 @@ Wir haben eine branchenweit führende Vereinbarung zum Servicelevel von 99,9 % f
 
 Der Managed Disks-Dienst erledigt die Erstellungs- und Verwaltungsaufgaben in Ihrem Azure Storage-Konto im Hintergrund und sorgt dafür, dass Sie sich keine Gedanken mehr über die Skalierbarkeitsgrenzen des Speicherkontos machen müssen. Sie geben einfach die Datenträgergröße und die Leistungsstufe (Standard/Premium) an und überlassen Azure die Erstellung und Verwaltung der Datenträger. So müssen Sie sich selbst beim Hinzufügen von Datenträgern oder beim Skalieren virtueller Computer keine Gedanken mehr über den verwendeten Speicher machen. Wenn Sie neue virtuelle Computer erstellen, [verwenden Sie Azure CLI 2.0](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) oder das Azure-Portal, um virtuelle Computer mit verwalteten Datenträgern für Betriebssystem und Daten zu erstellen. Wenn Sie bereits über virtuelle Computer mit nicht verwalteten Datenträgern verfügen, können Sie [Ihre virtuellen Computer für die Verwendung mit verwalteten Datenträgern konvertieren](convert-unmanaged-to-managed-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-Darüber hinaus können Sie Ihre benutzerdefinierten Images in einem einzelnen Speicherkonto pro Azure-Region verwalten und mit diesen Hunderte von virtuellen Computern im gleichen Abonnement erstellen. Weitere Informationen zu verwalteten Datenträgern finden Sie in der [Verwaltete Datenträger – Übersicht](../../storage/storage-managed-disks-overview.md).
+Darüber hinaus können Sie Ihre benutzerdefinierten Images in einem einzelnen Speicherkonto pro Azure-Region verwalten und mit diesen Hunderte von virtuellen Computern im gleichen Abonnement erstellen. Weitere Informationen zu verwalteten Datenträgern finden Sie in der [Verwaltete Datenträger – Übersicht](../windows/managed-disks-overview.md).
 
 ## <a name="azure-virtual-machines--instances"></a>Virtuelle Azure-Computer und -Instanzen
 Microsoft Azure unterstützt die Ausführung einer Reihe von beliebten Linux-Distributionen, die von verschiedenen Partnerunternehmen bereitgestellt und gepflegt werden.  Im Azure Marketplace finden Sie Distributionen wie Red Hat Enterprise, CentOS, Debian, Ubuntu, CoreOS, RancherOS, FreeBSD und viele weitere. Wir arbeiten aktiv mit verschiedenen Linux-Communitys zusammen, um der Liste der [von Azure unterstützten Linux-Distributionen](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) weitere Varianten hinzuzufügen.
@@ -60,7 +60,7 @@ Hier sind einige grundlegende Richtlinien zur Auswahl einer VM-Größe aus einer
 
 Hinweis: Für VMs der DS-Serie und GS-Serie besteht Zugriff auf Storage Premium, unsere Speicherlösung mit SSD-Unterstützung, hoher Leistung und geringer Latenz für Workloads mit hoher E/A-Intensität. Premium-Speicher ist in bestimmten Regionen verfügbar. Einzelheiten dazu finden Sie hier:
 
-* [Storage Premium: Hochleistungsspeicher für Workloads auf virtuellen Azure-Computern](../../storage/storage-premium-storage.md)
+* [Storage Premium: Hochleistungsspeicher für Workloads auf virtuellen Azure-Computern](../../storage/common/storage-premium-storage.md)
 
 ## <a name="automation"></a>Automation
 Um eine sinnvolle DevOps-Kultur zu erzielen, muss die gesamte Infrastruktur als Code definiert sein.  Wenn die Infrastruktur vollständig im Codeformat vorliegt, kann sie problemlos neu erstellt werden (Phoenix-Server).  Azure arbeitet mit allen wichtigen Automatisierungstools zusammen, wie z.B. Ansible, Chef, SaltStack und Puppet.  Azure stellt auch eigene Tools für die Automatisierung bereit:
@@ -120,7 +120,7 @@ Der virtuelle Computer wird jetzt in Azure ausgeführt, und Sie können sich anm
 
 ## <a name="related-azure-components"></a>Verwandte Azure-Komponenten
 ## <a name="storage"></a>Speicher
-* [Einführung in Microsoft Azure Storage](../../storage/storage-introduction.md)
+* [Einführung in Microsoft Azure Storage](../../storage/common/storage-introduction.md)
 * [Hinzufügen eines Datenträgers zu einem virtuellen Linux-Computer über die Azure-Befehlszeilenschnittstelle](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Anfügen eines Datenträgers an eine Linux-VM im Azure-Portal](attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 

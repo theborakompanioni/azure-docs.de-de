@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: raynew
 ms.translationtype: HT
-ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
-ms.openlocfilehash: d50a4bdbafccd645ca339b2dd1ab97456704e3ae
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 325be23cffc9c728a8af6f92a0f3dce6d31da4ae
 ms.contentlocale: de-de
-ms.lasthandoff: 07/14/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="replicate-vmware-virtual-machines-and-physical-servers-to-azure-with-azure-site-recovery-using-the-classic-portal-legacy"></a>Replizieren von virtuellen VMware-Computern und physischen Servern nach Azure mithilfe von Azure Site Recovery und dem klassischen Portal (Legacy)
@@ -122,8 +122,8 @@ Berücksichtigen Sie folgende Hauptaspekte:
 * **Anzahl von Quellen pro Masterzielserver**– Mit einem einzelnen Masterzielserver können mehrere Quellcomputer geschützt werden. Ein einzelner Quellcomputer kann jedoch nicht über mehrere Masterzielserver geschützt werden, da bei der Datenträgerreplikation eine virtuelle Festplatte, die die Größe des Datenträgers widerspiegelt, in Azure-BLOB-Speicher erstellt und als Datenträger mit dem Masterzielserver verbunden wird.  
 * **Maximale tägliche Änderungsrate pro Quellcomputer**– Bei der empfohlenen Änderungsrate pro Quellcomputer müssen drei Faktoren berücksichtigt werden. Im Hinblick auf den Zieldatenträger sind für jeden Vorgang auf dem Quellcomputer zwei IOPS auf dem Zieldatenträger erforderlich. Der Grund dafür ist, dass auf dem Zieldatenträger ein Lesevorgang für alte Daten und ein Schreibvorgang für neue Daten erfolgen.
   * **Vom Prozessserver unterstützte tägliche Änderungsrate**– Ein Quellcomputer kann nicht mehrere Prozessserver umfassen. Ein einzelner Prozessserver unterstützt eine tägliche Änderungsrate von bis zu 1 TB. Daher beträgt die maximale Datenänderungsrate pro Tag, die für einen Quellcomputer unterstützt wird, 1 TB.
-  * **Maximaler vom Zieldatenträger unterstützter Durchsatz**– Die maximale Codeänderung pro Quelldatenträger darf nicht mehr als 144 GB/Tag (mit einer Schreibgröße von 8 K) betragen. Informationen zum Durchsatz und den IOPS des Ziels für verschiedene Schreibgrößen finden Sie in der Tabelle im Abschnitt zum Masterzielserver. Diese Zahl muss durch zwei dividiert werden, da jede Quell-IOPS 2 IOPS auf dem Zieldatenträger generiert. Informieren Sie sich über [Azure-Skalierbarkeit und -Leistungsziele](../storage/storage-scalability-targets.md#scalability-targets-for-virtual-machine-disks) beim Konfigurieren des Ziels für Storage Premium-Konten.
-  * **Maximaler vom Speicherkonto unterstützter Durchsatz**– Ein Quellcomputer kann nicht mehrere Speicherkonten umfassen. Da ein Speicherkonto bis zu 20.000 Anforderungen pro Sekunde annimmt und jede Quell-IOPS 2 IOPS auf dem Masterzielserver generiert, wird empfohlen, die Anzahl der IOPS für den Quellcomputer auf 10.000 zu beschränken. Informieren Sie sich über [Azure-Skalierbarkeit und -Leistungsziele](../storage/storage-scalability-targets.md#scalability-targets-for-virtual-machine-disks) beim Konfigurieren der Quelle für Storage Premium-Konten.
+  * **Maximaler vom Zieldatenträger unterstützter Durchsatz**– Die maximale Codeänderung pro Quelldatenträger darf nicht mehr als 144 GB/Tag (mit einer Schreibgröße von 8 K) betragen. Informationen zum Durchsatz und den IOPS des Ziels für verschiedene Schreibgrößen finden Sie in der Tabelle im Abschnitt zum Masterzielserver. Diese Zahl muss durch zwei dividiert werden, da jede Quell-IOPS 2 IOPS auf dem Zieldatenträger generiert. Informieren Sie sich über [Azure-Skalierbarkeit und -Leistungsziele](../storage/common/storage-scalability-targets.md#scalability-targets-for-virtual-machine-disks) beim Konfigurieren des Ziels für Storage Premium-Konten.
+  * **Maximaler vom Speicherkonto unterstützter Durchsatz**– Ein Quellcomputer kann nicht mehrere Speicherkonten umfassen. Da ein Speicherkonto bis zu 20.000 Anforderungen pro Sekunde annimmt und jede Quell-IOPS 2 IOPS auf dem Masterzielserver generiert, wird empfohlen, die Anzahl der IOPS für den Quellcomputer auf 10.000 zu beschränken. Informieren Sie sich über [Azure-Skalierbarkeit und -Leistungsziele](../storage/common/storage-scalability-targets.md#scalability-targets-for-virtual-machine-disks) beim Konfigurieren der Quelle für Storage Premium-Konten.
 
 ### <a name="considerations-for-component-servers"></a>Überlegungen zu Komponentenservern
 In Tabelle 1 sind die Größen der virtuellen Computer für den Konfigurationsserver und Masterzielserver zusammengefasst.
@@ -180,7 +180,7 @@ Der Speicher für jeden Masterzielserver setzt sich aus einem Betriebssystemdate
 Die Kapazitätsplanung für den Masterzielserver hängt von folgenden Faktoren ab:
 
 * Leistung und Einschränkungen des Azure-Speichers
-  * Die maximale Anzahl der Datenträger mit hoher Auslastung für einen virtuellen Computer im Standard-Tarif liegt bei etwa 40 Datenträgern (20.000/500 IOPS pro Datenträger) in einem einzigen Speicherkonto. Informieren Sie sich über [Skalierbarkeitsziele für Standardspeicherkonten](../storage/storage-scalability-targets.md#scalability-targets-for-virtual-machine-disks) und für [Storage Premium-Konten](../storage/storage-scalability-targets.md#scalability-targets-for-virtual-machine-disks).
+  * Die maximale Anzahl der Datenträger mit hoher Auslastung für einen virtuellen Computer im Standard-Tarif liegt bei etwa 40 Datenträgern (20.000/500 IOPS pro Datenträger) in einem einzigen Speicherkonto. Informieren Sie sich über [Skalierbarkeitsziele für Standardspeicherkonten](../storage/common/storage-scalability-targets.md#scalability-targets-for-virtual-machine-disks) und für [Storage Premium-Konten](../storage/common/storage-scalability-targets.md#scalability-targets-for-virtual-machine-disks).
 * Tägliche Änderungsrate
 * Speicher des Aufbewahrungsvolumes
 
@@ -199,7 +199,7 @@ Beachten Sie Folgendes:
 | **Komponente** | **Anforderungen** | **Details** |
 | --- | --- | --- |
 | **Azure-Konto** |Sie benötigen ein [Microsoft Azure](https://azure.microsoft.com/) -Konto. Für den Einstieg steht eine [kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/)zur Verfügung. | |
-| **Azure-Speicher** |Sie benötigen ein Azure-Speicherkonto, um replizierte Daten zu speichern.<br/><br/> Bei dem Konto muss es sich um ein [georedundantes Standardspeicherkonto](../storage/storage-redundancy.md#geo-redundant-storage) oder um ein [Storage Premium-Konto](../storage/storage-premium-storage.md) handeln.<br/><br/> Es muss sich in der gleichen Region wie der Azure Site Recovery-Dienst befinden und dem gleichen Abonnement zugeordnet sein. Eine Verschiebung von mit dem [neuen Azure-Portal](../storage/storage-create-storage-account.md) erstellten Speicherkonten über Ressourcengruppen hinweg wird nicht unterstützt.<br/><br/> Weitere Informationen finden Sie unter [Einführung in Microsoft Azure Storage](../storage/storage-introduction.md). | |
+| **Azure-Speicher** |Sie benötigen ein Azure-Speicherkonto, um replizierte Daten zu speichern.<br/><br/> Bei dem Konto muss es sich um ein [georedundantes Standardspeicherkonto](../storage/common/storage-redundancy.md#geo-redundant-storage) oder um ein [Storage Premium-Konto](../storage/common/storage-premium-storage.md) handeln.<br/><br/> Es muss sich in der gleichen Region wie der Azure Site Recovery-Dienst befinden und dem gleichen Abonnement zugeordnet sein. Eine Verschiebung von mit dem [neuen Azure-Portal](../storage/common/storage-create-storage-account.md) erstellten Speicherkonten über Ressourcengruppen hinweg wird nicht unterstützt.<br/><br/> Weitere Informationen finden Sie unter [Einführung in Microsoft Azure Storage](../storage/common/storage-introduction.md). | |
 | **Azure Virtual Network** |Sie benötigen ein virtuelles Azure-Netzwerk, in dem der Konfigurationsserver und der Masterzielserver bereitgestellt werden. Es muss in demselben Abonnement und in derselben Region enthalten sein wie der Azure Site Recovery-Tresor. Wenn Sie Daten über eine ExpressRoute- oder VPN-Verbindung replizieren möchten, muss das virtuelle Azure-Netzwerk mit Ihrem lokalen Netzwerk per ExpressRoute-Verbindung oder Standort-zu-Standort-VPN verbunden sein. | |
 | **Azure-Ressourcen** |Stellen Sie sicher, dass Sie genügend Azure-Ressourcen für die Bereitstellung aller Komponenten besitzen. Weitere Informationen finden Sie unter [Einschränkungen für Azure-Abonnements](../azure-subscription-service-limits.md). | |
 | **Azure Virtual Machines** |Die zu schützenden virtuellen Computer müssen die [Voraussetzungen für Azure](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements) erfüllen.<br/><br/> **Anzahl der Datenträger** – Bis zu 31 Datenträger können auf einem einzelnen geschützten Server unterstützt werden.<br/><br/> **Datenträgergrößen** – Die Kapazität der einzelnen Datenträger sollte 1.023 GB nicht überschreiten.<br/><br/> **Clustering** – Gruppierte Server werden nicht unterstützt.<br/><br/> **Start** – Das Starten über UEFI (Unified Extensible Firmware Interface)/EFI (Extensible Firmware Interface) wird nicht unterstützt.<br/><br/> **Volumes** – Mit Bitlocker verschlüsselte Volumes werden nicht unterstützt.<br/><br/> **Servernamen**: Namen müssen zwischen einem und 63 Zeichen (Buchstaben, Zahlen und Bindestriche) enthalten. Der Name muss mit einem Buchstaben oder einer Zahl beginnen und mit einem Buchstaben oder einer Zahl enden. Nachdem ein Computer geschützt wurde, können Sie den Azure-Namen ändern. | |
@@ -352,7 +352,7 @@ Beachten Sie Folgendes:
 Beachten Sie, dass in jedem Subnetz die ersten vier IP-Adressen für die interne Verwendung durch Azure reserviert sind. Geben Sie eine beliebige andere verfügbare IP-Adresse an.
 
 > [!NOTE]
-> Wählen Sie bei der Konfiguration des Schutzes für Workloads, die konsistent hohe E/A-Leistung und niedrige Latenz erfordern, „Standard DS4“ aus, um E/A-intensive Workloads mit einem [Storage Premium-Konto](../storage/storage-premium-storage.md)zu hosten.
+> Wählen Sie bei der Konfiguration des Schutzes für Workloads, die konsistent hohe E/A-Leistung und niedrige Latenz erfordern, „Standard DS4“ aus, um E/A-intensive Workloads mit einem [Storage Premium-Konto](../storage/common/storage-premium-storage.md)zu hosten.
 >
 >
 
@@ -643,10 +643,10 @@ Fügen Sie Computer wie folgt hinzu:
 3. Wenn Sie virtuelle VMware-Computer schützen, wählen Sie unter **Virtuelle Computer auswählen** einen vCenter-Server aus, der die virtuellen Computer verwaltet (oder den EXSi-Host, auf dem sie ausgeführt werden), und wählen Sie dann die Computer aus.
 
     ![vCenter-Server hinzufügen](./media/site-recovery-vmware-to-azure-classic-legacy/select-vms.png)    
-4. Wählen Sie unter **Zielressourcen angeben** die Masterzielserver und den Speicher aus, die für die Replikation verwendet werden sollen, und wählen Sie aus, ob die Einstellungen für alle Workloads verwendet werden sollen. Wählen Sie bei der Konfiguration des Schutzes für Workloads, die konsistent hohe E/A-Leistung und niedrige Latenz erfordern, [Premium-Speicherkonto](../storage/storage-premium-storage.md) aus, um E/A-intensive Workloads zu hosten. Wenn Sie ein Premium-Speicherkonto für Ihre Workloaddatenträger verwenden möchten, müssen Sie das Masterziel der DS-Serie verwenden. Sie können keine Datenträger des Premium-Speichers mit einem Masterziel verwenden, das nicht zur DS-Serie gehört.
+4. Wählen Sie unter **Zielressourcen angeben** die Masterzielserver und den Speicher aus, die für die Replikation verwendet werden sollen, und wählen Sie aus, ob die Einstellungen für alle Workloads verwendet werden sollen. Wählen Sie bei der Konfiguration des Schutzes für Workloads, die konsistent hohe E/A-Leistung und niedrige Latenz erfordern, [Premium-Speicherkonto](../storage/common/storage-premium-storage.md) aus, um E/A-intensive Workloads zu hosten. Wenn Sie ein Premium-Speicherkonto für Ihre Workloaddatenträger verwenden möchten, müssen Sie das Masterziel der DS-Serie verwenden. Sie können keine Datenträger des Premium-Speichers mit einem Masterziel verwenden, das nicht zur DS-Serie gehört.
 
    > [!NOTE]
-   > Eine Verschiebung von mit dem [neuen Azure-Portal](../storage/storage-create-storage-account.md) erstellten Speicherkonten über Ressourcengruppen hinweg wird nicht unterstützt.
+   > Eine Verschiebung von mit dem [neuen Azure-Portal](../storage/common/storage-create-storage-account.md) erstellten Speicherkonten über Ressourcengruppen hinweg wird nicht unterstützt.
    >
    >
 

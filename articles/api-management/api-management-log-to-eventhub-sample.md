@@ -14,10 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
-translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 666d0f655a0705423d025b88a1f457b866008ab9
-ms.lasthandoff: 03/28/2017
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 70ee752c5639c90f77dde104ce85eec0a1062300
+ms.contentlocale: de-de
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="monitor-your-apis-with-azure-api-management-event-hubs-and-runscope"></a>Überwachen von APIs mit Azure API Management, Event Hubs und Runscope
@@ -262,7 +263,7 @@ public class RunscopeHttpMessageProcessor : IHttpMessageProcessor
 Ich konnte eine [vorhandene Clientbibliothek für Runscope](http://www.nuget.org/packages/Runscope.net.hapikit/0.9.0-alpha) nutzen, mit der `HttpRequestMessage`- und `HttpResponseMessage`-Instanzen problemlos in den Dienst verschoben werden können. Zum Zugreifen auf die Runscope-API benötigen Sie ein Konto und einen API-Schlüssel. Eine Anleitung zum Beschaffen eines API-Schlüssels finden Sie im Screencast [Erstellen von Anwendungen zum Zugreifen auf die Runscope-API](http://blog.runscope.com/posts/creating-applications-to-access-the-runscope-api) .
 
 ## <a name="complete-sample"></a>Vollständiges Beispiel
-Den [Quellcode](https://github.com/darrelmiller/ApimEventProcessor) und die Tests für das Beispiel finden Sie bei GitHub. Sie benötigen einen [API Management-Dienst](api-management-get-started.md), einen [verbundenen Event Hub](api-management-howto-log-event-hubs.md) und ein [Speicherkonto](../storage/storage-create-storage-account.md), um das Beispiel selbst auszuführen.   
+Den [Quellcode](https://github.com/darrelmiller/ApimEventProcessor) und die Tests für das Beispiel finden Sie bei GitHub. Sie benötigen einen [API Management-Dienst](api-management-get-started.md), einen [verbundenen Event Hub](api-management-howto-log-event-hubs.md) und ein [Speicherkonto](../storage/common/storage-create-storage-account.md), um das Beispiel selbst auszuführen.   
 
 Das Beispiel ist nur eine einfache Konsolenanwendung, die auf Ereignisse vom Event Hub lauscht, diese in ein `HttpRequestMessage`- und `HttpResponseMessage`-Objekt konvertiert und sie dann an die Runscope-API weiterleitet.
 

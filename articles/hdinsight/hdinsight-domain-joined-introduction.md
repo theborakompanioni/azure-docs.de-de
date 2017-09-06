@@ -16,12 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/31/2016
 ms.author: saurinsh
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: 9f6de5b516da110b93a1e0cddf835b2bcec77bb7
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 303be1d303df8074283cb1d37c74923cca80ae59
 ms.contentlocale: de-de
-ms.lasthandoff: 06/17/2017
-
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="an-introduction-to-hadoop-security-with-domain-joined-hdinsight-clusters-preview"></a>Einführung in die Hadoop-Sicherheit mit in die Domäne eingebundenen HDInsight-Clustern (Vorschau)
@@ -52,7 +51,7 @@ In den meisten Unternehmen hat nicht jeder Mitarbeiter Zugriff auf alle Unterneh
 Neben dem Schutz der HDInsight-Clusterressourcen vor nicht autorisierten Benutzern und dem Schutz der Daten müssen auch sämtliche Zugriffe auf die Clusterressourcen und -daten überwacht werden, um nicht autorisierte oder versehentliche Ressourcenzugriffe zu erfassen. Mit dieser Vorschau kann der Administrator sämtliche Zugriffe auf die Ressourcen und Daten des HDInsight-Clusters anzeigen und entsprechende Berichte erstellen. Außerdem kann er sämtliche Änderungen an den Zugriffssteuerungsrichtlinien anzeigen, die an von Apache Ranger unterstützten Endpunkten durchgeführt werden, und entsprechende Berichte erstellen. Ein in die Domäne eingebundener HDInsight-Cluster verwendet für die Suche nach Überwachungsprotokollen die vertraute Apache Ranger-Benutzeroberfläche. Im Back-End werden die Protokolle von Ranger mithilfe von [Apache Solr](http://hortonworks.com/apache/solr/) gespeichert und gesucht.
 
 ### <a name="encryption"></a>Verschlüsselung
-Datenschutz spielt eine wichtige Rolle bei der Erfüllung der Sicherheits- und Complianceanforderungen von Unternehmen. Neben der Beschränkung des Zugriffs für nicht autorisierte Mitarbeiter sollten die Daten daher auch durch eine Verschlüsselung geschützt werden. Sowohl die Datenspeicher für HDInsight-Cluster als auch Azure Storage Blob und Azure Data Lake Store unterstützen die transparente serverseitige [Verschlüsselung von Daten](../storage/storage-service-encryption.md) im Ruhezustand. Sichere HDInsight-Cluster arbeiten reibungslos mit dieser Funktion zur serverseitigen Verschlüsselung ruhender Daten zusammen.
+Datenschutz spielt eine wichtige Rolle bei der Erfüllung der Sicherheits- und Complianceanforderungen von Unternehmen. Neben der Beschränkung des Zugriffs für nicht autorisierte Mitarbeiter sollten die Daten daher auch durch eine Verschlüsselung geschützt werden. Sowohl die Datenspeicher für HDInsight-Cluster als auch Azure Storage Blob und Azure Data Lake Store unterstützen die transparente serverseitige [Verschlüsselung von Daten](../storage/common/storage-service-encryption.md) im Ruhezustand. Sichere HDInsight-Cluster arbeiten reibungslos mit dieser Funktion zur serverseitigen Verschlüsselung ruhender Daten zusammen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Informationen zum Konfigurieren eines in die Domäne eingebundenen HDInsight-Clusters finden Sie unter [Configure Domain-joined HDInsight clusters (Preview)](hdinsight-domain-joined-configure.md) (Konfigurieren von in die Domäne eingebundenen HDInsight-Clustern [Vorschau]).

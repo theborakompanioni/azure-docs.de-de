@@ -15,10 +15,10 @@ ms.workload: infrastructure
 ms.date: 2/7/2017
 ms.author: rasquill
 ms.translationtype: HT
-ms.sourcegitcommit: 2812039649f7d2fb0705220854e4d8d0a031d31e
-ms.openlocfilehash: 598d6a62fc7c4a769043c4d6d6547e5b8f8a5d5a
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 5e8a62bb180de7288531139594cb61440cab04c5
 ms.contentlocale: de-de
-ms.lasthandoff: 07/22/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="azure-and-linux-vm-storage"></a>Azure- und Linux-VM-Speicher
@@ -26,15 +26,15 @@ Azure Storage ist eine Cloudspeicherlösung für moderne Anwendungen, die eine K
 
 ## <a name="managed-disks"></a>Verwaltete Datenträger
 
-Für virtuelle Azure-Computer ist jetzt [Azure Managed Disks](../../storage/storage-managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) verfügbar – dieser Dienst ermöglicht Ihnen das Erstellen von virtuellen Computern, ohne dass Sie selbst [Azure Storage-Konten](../../storage/storage-introduction.md) erstellen oder verwalten müssen. Sie geben an, ob Sie Storage Standard oder Premium verwenden möchten, und wie groß der Datenträger sein soll – Azure erstellt die Datenträger für die virtuellen Computer für Sie. Virtuelle Computer mit verwalteten Datenträgern bietet eine Vielzahl wichtiger Features, wie z.B.:
+Für virtuelle Azure-Computer ist jetzt [Azure Managed Disks](../windows/managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) verfügbar – dieser Dienst ermöglicht Ihnen das Erstellen von virtuellen Computern, ohne dass Sie selbst [Azure Storage-Konten](../../storage/common/storage-introduction.md) erstellen oder verwalten müssen. Sie geben an, ob Sie Storage Standard oder Premium verwenden möchten, und wie groß der Datenträger sein soll – Azure erstellt die Datenträger für die virtuellen Computer für Sie. Virtuelle Computer mit verwalteten Datenträgern bietet eine Vielzahl wichtiger Features, wie z.B.:
 
 - Unterstützung für automatische Skalierbarkeit. Azure erstellt die Datenträger und verwaltet den zugrunde liegenden Speicher, um bis zu 10.000 Datenträger pro Abonnement zu unterstützen.
 - Höhere Zuverlässigkeit mit Verfügbarkeitsgruppen. Azure stellt sicher, dass Datenträger für virtuelle Computer innerhalb der gleichen Verfügbarkeitsgruppe automatisch voneinander isoliert werden.
 - Verbesserte Zugriffssteuerung. Verwaltete Datenträger machen verschiedene Vorgänge verfügbar, die über die [rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)](../../active-directory/role-based-access-control-what-is.md) gesteuert werden.
 
-Die Preise für verwaltete Datenträger unterscheiden sich von denen für nicht verwaltete Datenträger. Informationen dazu finden Sie unter [Preise und Abrechnung für verwaltete Datenträger](../../storage/storage-managed-disks-overview.md#pricing-and-billing).
+Die Preise für verwaltete Datenträger unterscheiden sich von denen für nicht verwaltete Datenträger. Informationen dazu finden Sie unter [Preise und Abrechnung für verwaltete Datenträger](../windows/managed-disks-overview.md#pricing-and-billing).
 
-Sie können vorhandene virtuelle Computer, die nicht verwaltete Datenträger verwenden, mithilfe von [az vm convert](/cli/azure/vm#convert) zur Verwendung von verwalteten Datenträgern konvertieren. Weitere Informationen finden Sie unter [Konvertieren eines virtuellen Linux-Computers von nicht verwalteten Datenträgern zu Azure Managed Disks](convert-unmanaged-to-managed-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Sie können einen nicht verwalteten Datenträger nicht in einen verwalteten Datenträger konvertieren, wenn der nicht verwaltete Datenträger sich in einem Speicherkonto befindet, das mithilfe von [Azure Storage Service Encryption (SSE)](../../storage/storage-service-encryption.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) verschlüsselt ist oder jemals war. Die folgenden Schritte beschreiben, wie Sie nicht verwaltete Datenträger konvertieren, die sich in einem verschlüsselten Speicherkonto befinden oder jemals befanden:
+Sie können vorhandene virtuelle Computer, die nicht verwaltete Datenträger verwenden, mithilfe von [az vm convert](/cli/azure/vm#convert) zur Verwendung von verwalteten Datenträgern konvertieren. Weitere Informationen finden Sie unter [Konvertieren eines virtuellen Linux-Computers von nicht verwalteten Datenträgern zu Azure Managed Disks](convert-unmanaged-to-managed-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Sie können einen nicht verwalteten Datenträger nicht in einen verwalteten Datenträger konvertieren, wenn der nicht verwaltete Datenträger sich in einem Speicherkonto befindet, das mithilfe von [Azure Storage Service Encryption (SSE)](../../storage/common/storage-service-encryption.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) verschlüsselt ist oder jemals war. Die folgenden Schritte beschreiben, wie Sie nicht verwaltete Datenträger konvertieren, die sich in einem verschlüsselten Speicherkonto befinden oder jemals befanden:
 
 - Kopieren Sie die virtuelle Festplatte (VHD) mit [az storage blob copy start](/cli/azure/storage/blob/copy#start) in ein Speicherkonto, das nie für Azure Storage Service Encryption aktiviert wurde.
 - Erstellen Sie einen virtuellen Computer, der verwaltete Datenträger verwendet, und geben Sie diese VHD-Datei während der Erstellung mit [az vm create](/cli/azure/vm#create) an. Alternativ dazu:
@@ -92,7 +92,7 @@ Features von Storage Premium:
 * Storage Premium-Datenträger: Azure Storage Premium unterstützt VM-Datenträger, die an virtuelle Azure-Computer der DS-, DSv2- oder GS-Serie angefügt werden können.
 * Storage Premium-Seitenblob: Storage Premium unterstützt Azure-Seitenblobs. Sie werden verwendet, um persistente Datenträger für virtuelle Azure-Computer zu speichern.
 * Lokal redundanter Storage Premium: Ein Storage Premium-Konto unterstützt nur den lokal redundanten Speicher (LRS) als die Replikatsoption und verwaltet drei Kopien der Daten innerhalb einer einzelnen Region.
-* [Storage Premium](../../storage/storage-premium-storage.md)
+* [Storage Premium](../../storage/common/storage-premium-storage.md)
 
 ## <a name="premium-storage-supported-vms"></a>Durch Storage Premium unterstützte virtuelle Computer
 Storage Premium unterstützt virtuelle Azure-Computer der DS-, DSv2-, GS- und Fs-Serie. Mit durch Storage Premium unterstützten virtuellen Computern können Sie Standard- und Premium-Speicherdatenträger verwenden. Sie können jedoch keine Storage Premium-Datenträger mit Serien von virtuellen Computern verwenden, die nicht mit Storage Premium kompatibel sind.
@@ -115,7 +115,7 @@ Der Azure-Dateispeicher verfügt über Dateifreigaben in der Cloud unter Verwend
 
 Der Dateispeicher beruht auf der gleichen Technologie wie Blob-, Tabellen-, und Warteschlangendienste. Dies bedeutet, dass der Dateispeicher die Verfügbarkeit, Dauerhaftigkeit, Skalierbarkeit und geografische Redundanz bietet, die in die Azure Storage-Plattform integriert ist. Weitere Informationen zu Leistungszielen und Grenzwerten des Dateispeichers finden Sie unter „Skalierbarkeits- und Leistungsziele für Azure Storage“.
 
-* [Verwenden des Azure-Dateispeichers unter Linux](../../storage/storage-how-to-use-files-linux.md)
+* [Verwenden des Azure-Dateispeichers unter Linux](../../storage/files/storage-how-to-use-files-linux.md)
 
 ## <a name="hot-storage"></a>„Heißer“ Speicher
 Die Speicherebene „Heiß“ von Azure ist für die Speicherung von Daten optimiert, auf die häufig zugegriffen wird.  „Heißer“ Speicher ist der Standardspeichertyp für Blobspeicher.
@@ -155,7 +155,7 @@ Georedundanter Speicher mit Lesezugriff (RA-GRS) maximiert die Verfügbarkeit f�
 
 Fundierte Einblicke in Azure-Speicherredundanz finden Sie unter:
 
-* [Azure Storage-Replikation](../../storage/storage-redundancy.md)
+* [Azure Storage-Replikation](../../storage/common/storage-redundancy.md)
 
 ## <a name="scalability"></a>Skalierbarkeit
 Dank der äußerst flexiblen Skalierbarkeit von Azure Storage können Sie Hunderte Terabytes an Daten speichern und verarbeiten, um den Big Data-Anforderungen von Anwendungen in den Bereichen Wissenschaft, Finanzanalyse und Medien gerecht zu werden. Sie können aber ebenso gut die geringen Datenmengen der Website eines kleinen Unternehmens speichern. In jedem Fall bezahlen Sie nur für die Daten, die Sie tatsächlich speichern. Azure Storage speichert derzeit mehrere Billionen einzigartiger Kundenobjekte und verarbeitet im Schnitt mehrere Millionen Anforderungen pro Sekunde.
@@ -197,7 +197,7 @@ In diesem Abschnitt wird erläutert, wie Sie Daten sichern, wenn Sie sie in oder
 ## <a name="encryption-at-rest"></a>Verschlüsselung ruhender Daten
 Wir erläutern Storage Service Encryption (SSE) und beschreiben, und wie Sie diese Verschlüsselung für ein Speicherkonto aktivieren können, sodass Ihre Block-, Seiten- und Anfügeblobs beim Schreiben in Azure Storage automatisch verschlüsselt werden. Außerdem erläutern wie die Verwendung von Azure Disk Encryption und untersuchen die grundlegenden Anwendungsfälle von Azure Disk Encryption, SSE und clientseitiger Verschlüsselung sowie deren wesentlichen Unterschiede. Wir betrachten kurz die FIPS-Konformität für die US- Regierungscomputer.
 
-* [Azure Storage-Sicherheitsleitfaden](../../storage/storage-security-guide.md)
+* [Azure Storage-Sicherheitsleitfaden](../../storage/common/storage-security-guide.md)
 
 ## <a name="temporary-disk"></a>Temporärer Datenträger
 Jede VM verfügt über einen temporären Datenträger. Der temporäre Datenträger bietet kurzfristigen Speicher für Anwendungen und Prozesse und ist ausschließlich dafür ausgelegt, Daten wie z.B. Seiten-oder Auslagerungsdateien zu speichern. Daten auf dem temporären Datenträger können während eines [Wartungsereignisses](manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) verloren gehen, oder wenn Sie [eine VM erneut bereitstellen](redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Während eines standardmäßigen Neustarts der VM sollten die Daten auf dem virtuellen Datenträger erhalten bleiben.

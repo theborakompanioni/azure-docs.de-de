@@ -16,20 +16,20 @@ ms.topic: article
 ms.date: 03/07/2017
 ms.author: cynthn
 ms.translationtype: HT
-ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
-ms.openlocfilehash: fb3b4ea612777d0ba801342dacf4b2ece46afed6
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 1599ee241c3d9fb3623ebd89ae30f2795cae1930
 ms.contentlocale: de-de
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="how-to-attach-a-data-disk-to-a-linux-vm-in-the-azure-portal"></a>Anfügen eines Datenträgers an eine Linux-VM im Azure-Portal 
-In diesem Artikel wird beschrieben, wie Sie über das Azure-Portal neue und vorhandene Datenträger an einen virtuellen Linux-Computer anfügen können. Sie können auch [einen Datenträger an eine Windows-VM im Azure-Portal anfügen](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Sie können entweder verwaltete oder nicht verwaltete Azure-Datenträger verwenden. Verwaltete Datenträger werden von der Azure-Plattform verarbeitet und erfordern weder Vorbereitung und noch einen Speicherort. Nicht verwaltete Datenträger erfordern ein Speicherkonto, und es gelten einige [Kontingente und Grenzwerte](../../azure-subscription-service-limits.md#storage-limits). Weitere Informationen zu Azure Managed Disks finden Sie in der [Übersicht über Azure Managed Disks](../../storage/storage-managed-disks-overview.md).
+In diesem Artikel wird beschrieben, wie Sie über das Azure-Portal neue und vorhandene Datenträger an einen virtuellen Linux-Computer anfügen können. Sie können auch [einen Datenträger an eine Windows-VM im Azure-Portal anfügen](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Sie können entweder verwaltete oder nicht verwaltete Azure-Datenträger verwenden. Verwaltete Datenträger werden von der Azure-Plattform verarbeitet und erfordern weder Vorbereitung und noch einen Speicherort. Nicht verwaltete Datenträger erfordern ein Speicherkonto, und es gelten einige [Kontingente und Grenzwerte](../../azure-subscription-service-limits.md#storage-limits). Weitere Informationen zu Azure Managed Disks finden Sie in der [Übersicht über Azure Managed Disks](../windows/managed-disks-overview.md).
 
 Bevor Sie Datenträger an Ihren virtuellen Computer anfügen, lesen Sie diese Tipps:
 
 * Die Größe des virtuellen Computers bestimmt, wie viele Datenträger Sie anfügen können. Ausführliche Informationen finden Sie unter [Größen für virtuelle Computer](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-* Für die Verwendung von Premium-Speicher benötigen Sie einen virtuellen Computer der DS- oder GS-Serie. Sie können für diese virtuellen Computer sowohl Premium- als auch Standard-Datenträger verwenden. Premium-Speicher ist in bestimmten Regionen verfügbar. Nähere Informationen finden Sie unter [Premium-Speicher: Hochleistungsspeicher für Workloads auf virtuellen Azure-Computern](../../storage/storage-premium-storage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-* Bei an virtuelle Computer angefügten Datenträgern handelt es sich um VHD-Dateien, die in Azure gespeichert sind. Weitere Informationen finden Sie unter [Informationen zu Datenträgern und VHDs für virtuelle Computer](../../storage/storage-about-disks-and-vhds-linux.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+* Für die Verwendung von Premium-Speicher benötigen Sie einen virtuellen Computer der DS- oder GS-Serie. Sie können für diese virtuellen Computer sowohl Premium- als auch Standard-Datenträger verwenden. Premium-Speicher ist in bestimmten Regionen verfügbar. Nähere Informationen finden Sie unter [Premium-Speicher: Hochleistungsspeicher für Workloads auf virtuellen Azure-Computern](../../storage/common/storage-premium-storage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+* Bei an virtuelle Computer angefügten Datenträgern handelt es sich um VHD-Dateien, die in Azure gespeichert sind. Weitere Informationen finden Sie unter [Informationen zu Datenträgern und VHDs für virtuelle Computer](about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 
 ## <a name="find-the-virtual-machine"></a>Suchen des virtuellen Computers

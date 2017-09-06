@@ -15,16 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2017
 ms.author: cynthn
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: 1d2b51f2a8a03a94b7ce92af54f89128bcfc9471
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: bc75c8cdd98b0ea0fbff6483c0e3c9d4468d3941
 ms.contentlocale: de-de
-ms.lasthandoff: 05/26/2017
-
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="create-and-upload-a-windows-server-vhd-to-azure"></a>Erstellen und Hochladen einer Windows Server-VHD nach Azure
-Dieser Artikel erläutert, wie Sie Ihr eigenes generalisiertes VM-Image als virtuelle Festplatte (Virtual Hard Disk, VHD) hochladen, um es zum Erstellen virtueller Computer zu nutzen. Weitere Informationen zu Datenträgern und VHDs in Microsoft Azure finden Sie unter [Informationen zu Datenträgern und VHDs für virtuelle Computer](../../../storage/storage-about-disks-and-vhds-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Dieser Artikel erläutert, wie Sie Ihr eigenes generalisiertes VM-Image als virtuelle Festplatte (Virtual Hard Disk, VHD) hochladen, um es zum Erstellen virtueller Computer zu nutzen. Weitere Informationen zu Datenträgern und VHDs in Microsoft Azure finden Sie unter [Informationen zu Datenträgern und VHDs für virtuelle Computer](../about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 > [!IMPORTANT]
 > Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager- und klassische Bereitstellung](../../../resource-manager-deployment-model.md). Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung des Ressourcen-Manager-Modells. Sie können einen virtuellen Computer auch mit dem Resource Manager-Modell [hochladen](../upload-generalized-managed.md).

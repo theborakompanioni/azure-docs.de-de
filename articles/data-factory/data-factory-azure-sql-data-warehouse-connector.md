@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/04/2017
 ms.author: jingwang
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
-ms.openlocfilehash: bf4c327804e0e9d40512adacd7f13db56b799508
+ms.translationtype: HT
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: 8cba89e0947646b498af07aa484511bf07bf7b0e
 ms.contentlocale: de-de
-ms.lasthandoff: 06/10/2017
-
+ms.lasthandoff: 08/23/2017
 
 ---
 # <a name="copy-data-to-and-from-azure-sql-data-warehouse-using-azure-data-factory"></a>Kopieren von Daten in und aus Azure SQL Data Warehouse mithilfe von Azure Data Factory
@@ -264,7 +263,7 @@ Der Ladevorgang in PolyBase ist auf das Laden von Zeilen beschränkt, die kleine
 Wenn Sie über Quelldaten mit Zeilen verfügen, deren Größe über 1 MB liegt, sollten Sie die Quelltabellen vertikal in kleinere Tabellen unterteilen, sodass die Zeilengröße der einzelnen Tabellen den Höchstwert nicht überschreitet. Die kleineren Tabellen können dann mit PolyBase geladen und in Azure SQL Data Warehouse zusammengeführt werden.
 
 ### <a name="sql-data-warehouse-resource-class"></a>SQL Data Warehouse-Ressourcenklasse
-Um einen optimalen Durchsatz zu erzielen, sollten Sie dem Benutzer, der zum Laden von Daten in SQL Data Warehouse über PolyBase verwendet wird, eine größere Ressourcenklasse zuweisen. Erfahren Sie, wie das geht, indem Sie das folgende [Beispiel: Ändern der Ressourcenklasse eines Benutzers](../sql-data-warehouse/sql-data-warehouse-develop-concurrency.md#change-a-user-resource-class-example) ausführen.
+Um einen optimalen Durchsatz zu erzielen, sollten Sie dem Benutzer, der zum Laden von Daten in SQL Data Warehouse über PolyBase verwendet wird, eine größere Ressourcenklasse zuweisen. Erfahren Sie, wie das geht, indem Sie das folgende [Beispiel: Ändern der Ressourcenklasse eines Benutzers](../sql-data-warehouse/sql-data-warehouse-develop-concurrency.md#changing-user-resource-class-example) ausführen.
 
 ### <a name="tablename-in-azure-sql-data-warehouse"></a>„tableName“ in Azure SQL Data Warehouse
 Die folgende Tabelle enthält Beispiele für das Angeben der **tableName** -Eigenschaft in Dataset-JSON für diverse Kombinationen aus Schema und Tabellenname:

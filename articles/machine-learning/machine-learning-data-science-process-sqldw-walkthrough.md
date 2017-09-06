@@ -15,11 +15,10 @@ ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev;hangzh;weig
 ms.translationtype: HT
-ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
-ms.openlocfilehash: 244684bc875e3917b8fd0d1a6bc1464a7c36a938
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: ce7de48af0f2f21576c66a962b88635a0f9f8333
 ms.contentlocale: de-de
-ms.lasthandoff: 07/10/2017
-
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-data-warehouse"></a>Der Team Data Science-Prozess in Aktion: Verwenden von SQL Data Warehouse
@@ -72,7 +71,7 @@ Zum Einrichten Ihrer Azure Data Science-Umgebung führen Sie die folgenden Schri
 **Erstellen Ihres eigenen Azure-Blobspeicherkontos**
 
 * Wenn Sie Ihren eigenen Azure-Blobspeicher bereitstellen, wählen Sie einen geografischen Standort für Ihren Azure-Blobspeicher aus, der so nah wie möglich bei **USA, Süden-Mitte**liegt, wo die NYC Taxi-Daten gespeichert sind. Die Daten werden mit AzCopy aus dem öffentlichen Blobspeichercontainer in einen Container in Ihrem eigenen Speicherkonto kopiert. Je näher Ihr Azure-Blobspeicher bei „USA, Süden-Mitte“ liegt, desto schneller wird diese Aufgabe (Schritt 4) abgeschlossen.
-* Um Ihr eigenes Azure-Speicherkonto zu erstellen, befolgen Sie die in [Informationen zu Azure-Speicherkonten](../storage/storage-create-storage-account.md)beschriebenen Schritte. Notieren Sie sich unbedingt die Werte für die folgenden Anmeldeinformationen für das Speicherkonto, da sie später in der exemplarischen Vorgehensweise benötigt werden.
+* Um Ihr eigenes Azure-Speicherkonto zu erstellen, befolgen Sie die in [Informationen zu Azure-Speicherkonten](../storage/common/storage-create-storage-account.md)beschriebenen Schritte. Notieren Sie sich unbedingt die Werte für die folgenden Anmeldeinformationen für das Speicherkonto, da sie später in der exemplarischen Vorgehensweise benötigt werden.
   
   * **Speicherkontoname**
   * **Speicherkontoschlüssel**

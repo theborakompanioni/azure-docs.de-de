@@ -17,10 +17,10 @@ ms.topic: article
 ms.date: 02/03/2017
 ms.author: genemi
 ms.translationtype: HT
-ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
-ms.openlocfilehash: 6953166f21194f3cbcef3f260b3e7a50d5bf5460
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 7e5da1c32484b0b94d2ad32ead6bb7c28f9744aa
 ms.contentlocale: de-de
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="extended-events-in-sql-database"></a>Erweiterte Ereignisse in Azure SQL-Datenbank
@@ -54,7 +54,7 @@ Vorherige Kenntnisse in Bezug auf die folgenden Elemente ist hilfreich bei der A
 
 
 - PowerShell
-    - [Verwenden von Azure PowerShell mit Azure Storage](../storage/storage-powershell-guide-full.md) – Bietet umfassende Informationen zu PowerShell und zum Azure Storage-Dienst.
+    - [Verwenden von Azure PowerShell mit Azure Storage](../storage/common/storage-powershell-guide-full.md) – Bietet umfassende Informationen zu PowerShell und zum Azure Storage-Dienst.
 
 ## <a name="code-samples"></a>Codebeispiele
 
@@ -195,10 +195,10 @@ Beim Ziel **Ereignisdatei** können Netzwerklatenz oder -fehler auftreten, währ
 
 ## <a name="related-links"></a>Verwandte Links
 
-- [Verwenden von Azure PowerShell mit Azure Storage](../storage/storage-powershell-guide-full.md)
+- [Verwenden von Azure PowerShell mit Azure Storage](../storage/common/storage-powershell-guide-full.md)
 - [Azure Storage-Cmdlets](http://msdn.microsoft.com/library/dn806401.aspx)
-- [Verwenden von Azure PowerShell mit Azure Storage](../storage/storage-powershell-guide-full.md) – Bietet umfassende Informationen zu PowerShell und zum Azure Storage-Dienst.
-- [Verwenden des Blob-Speichers mit .NET](../storage/storage-dotnet-how-to-use-blobs.md)
+- [Verwenden von Azure PowerShell mit Azure Storage](../storage/common/storage-powershell-guide-full.md) – Bietet umfassende Informationen zu PowerShell und zum Azure Storage-Dienst.
+- [Verwenden des Blob-Speichers mit .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md)
 - [CREATE CREDENTIAL (Transact-SQL)](http://msdn.microsoft.com/library/ms189522.aspx)
 - [CREATE EVENT SESSION (Transact-SQL)](http://msdn.microsoft.com/library/bb677289.aspx)
 - [Jonathan Kehayias' Blogbeiträge zu erweiterten Ereignissen in Microsoft SQL Server](http://www.sqlskills.com/blogs/jonathan/category/extended-events/)

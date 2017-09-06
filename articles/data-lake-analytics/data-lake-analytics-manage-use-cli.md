@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: edmaca
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
-ms.openlocfilehash: d04d33fede00fbc083d71bc486b726bd7f86c6d0
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: f90bada3572c0ed40b07d76ec02c1b499bbd1428
 ms.contentlocale: de-de
-ms.lasthandoff: 06/10/2017
-
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-command-line-interface-cli"></a>Erste Schritte mit Azure Data Lake Analytics unter Verwendung der Azure-Befehlszeilenschnittstelle (CLI)
@@ -86,7 +85,7 @@ Abrufen von Details eines bestimmten Data Lake Analytics-Kontos
 Data Lake Analytics unterstützt derzeit die folgenden Datenquellen:
 
 * [Azure Data Lake-Speicher](../data-lake-store/data-lake-store-overview.md)
-* [Azure Storage (in englischer Sprache)](../storage/storage-introduction.md)
+* [Azure Storage (in englischer Sprache)](../storage/common/storage-introduction.md)
 
 Beim Erstellen eines Analytics-Kontos müssen Sie ein Azure Data Lake-Speicherkonto als Standardspeicherkonto festlegen. Das ADL-Standardspeicherkonto dient zum Speichern von Auftragsmetadaten und -überwachungsprotokollen. Nachdem Sie ein Analytics-Konto erstellt haben, können Sie zusätzliche Data Lake-Speicherkonten und/oder Azure-Speicherkonten hinzufügen. 
 

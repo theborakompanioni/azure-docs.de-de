@@ -14,12 +14,11 @@ ms.devlang: python
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: lmazuel
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: ee96a30d10f882da936f554152fab8a9c6897807
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 13249ba9a4b317a3154776b411ce0bb1f316b3bb
 ms.contentlocale: de-de
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="how-to-use-service-management-from-python"></a>Verwenden der Dienstverwaltung aus Python
@@ -172,7 +171,7 @@ Verwenden Sie zum Löschen einer Bereitstellung die Methode **delete\_deployment
     sms.delete_deployment('myhostedservice', 'v1')
 
 ## <a name="CreateStorageService"> </a>Erstellen eines Speicherdiensts
-Ein [Speicherdienst](../storage/storage-create-storage-account.md) gewährt Ihnen Zugriff auf Azure-[Blobs](../storage/storage-python-how-to-use-blob-storage.md), -[Tabellen](../storage/storage-python-how-to-use-table-storage.md) und -[Warteschlangen](../storage/storage-python-how-to-use-queue-storage.md). Zum Erstellen eines Speicherdiensts müssen Sie Folgendes angeben: einen Namen für den Dienst (bestehend aus 3 bis 24 Kleinbuchstaben und innerhalb von Azure eindeutig), eine Beschreibung, eine Bezeichnung (maximal 100 Zeichen, automatisch base64-codiert) und einen Standort. Im folgenden Beispiel wird ein Speicherdienst durch Angabe eines Standorts erstellt.
+Ein [Speicherdienst](../storage/common/storage-create-storage-account.md) gewährt Ihnen Zugriff auf Azure-[Blobs](../storage/blobs/storage-python-how-to-use-blob-storage.md), -[Tabellen](../cosmos-db/table-storage-how-to-use-python.md) und -[Warteschlangen](../storage/queues/storage-python-how-to-use-queue-storage.md). Zum Erstellen eines Speicherdiensts müssen Sie Folgendes angeben: einen Namen für den Dienst (bestehend aus 3 bis 24 Kleinbuchstaben und innerhalb von Azure eindeutig), eine Beschreibung, eine Bezeichnung (maximal 100 Zeichen, automatisch base64-codiert) und einen Standort. Im folgenden Beispiel wird ein Speicherdienst durch Angabe eines Standorts erstellt.
 
     from azure import *
     from azure.servicemanagement import *

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/19/2017
 ms.author: spelluru
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1e6f2b9de47d1ce84c4043f5f6e73d462e0c1271
-ms.openlocfilehash: 65709ef9f6cdd50fb8650a1a11c9321defb9cf5b
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 9defbf7a6a515740fa3b3cb1c67a2f5f9d9baa01
 ms.contentlocale: de-de
-ms.lasthandoff: 06/21/2017
-
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="process-large-scale-datasets-using-data-factory-and-batch"></a>Verarbeiten umfangreicher Datasets mit Data Factory und Batch
@@ -83,7 +82,7 @@ Diese Beispiellösung wurde absichtlich einfach gehalten und soll veranschaulich
 Wenn Sie über kein Azure-Abonnement verfügen, können Sie in wenigen Minuten ein kostenloses Testkonto erstellen. Weitere Informationen finden Sie unter [Kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/).
 
 #### <a name="azure-storage-account"></a>Azure-Speicherkonto
-Sie nutzen ein Azure-Speicherkonto zum Speichern der Daten in diesem Tutorial. Falls Sie noch kein Azure-Speicherkonto haben, lesen Sie den Artikel [Erstellen eines Speicherkontos](../storage/storage-create-storage-account.md#create-a-storage-account). Die Beispiellösung verwendet Blob-Speicher.
+Sie nutzen ein Azure-Speicherkonto zum Speichern der Daten in diesem Tutorial. Falls Sie noch kein Azure-Speicherkonto haben, lesen Sie den Artikel [Erstellen eines Speicherkontos](../storage/common/storage-create-storage-account.md#create-a-storage-account). Die Beispiellösung verwendet Blob-Speicher.
 
 #### <a name="azure-batch-account"></a>Azure Batch-Konto
 Erstellen Sie über das [Azure-Portal](http://manage.windowsazure.com/) ein Azure Batch-Konto. Weitere Informationen finden Sie unter [Erstellen und Verwalten eines Azure Batch-Kontos](../batch/batch-account-create-portal.md). Notieren Sie den Azure Batch-Kontonamen und -Kontoschlüssel. Sie können auch das [New-AzureBatchAccount-Cmdlet](https://msdn.microsoft.com/library/mt603749.aspx) verwenden, um ein Azure Batch-Konto zu erstellen. Unter [Erste Schritte mit Azure Batch-PowerShell-Cmdlets](../batch/batch-powershell-cmdlets-get-started.md) erhalten Sie weitere Einzelheiten zur Verwendung dieses Cmdlets.
@@ -374,7 +373,7 @@ Die Methode verfügt über einige wichtige Komponenten, die Sie kennen müssen.
 #### <a name="execute-method"></a>Execute-Methode
 Dieser Abschnitt enthält weitere Details und Hinweise zum Code in der Execute-Methode.
 
-1. Die Elemente zum Durchlaufen der Eingabesammlung finden Sie unter dem Namespace [Microsoft.WindowsAzure.Storage.Blob](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.blob.aspx) . Zum Durchlaufen der Blob-Sammlung müssen Sie die **BlobContinuationToken** -Klasse verwenden. Im Wesentlichen müssen Sie eine do-while-Schleife mit dem Token als Mechanismus zum Beenden der Schleife verwenden. Weitere Informationen finden Sie unter [Verwenden von Blob-Speicher aus .NET](../storage/storage-dotnet-how-to-use-blobs.md). Eine einfache Schleife ist hier dargestellt:
+1. Die Elemente zum Durchlaufen der Eingabesammlung finden Sie unter dem Namespace [Microsoft.WindowsAzure.Storage.Blob](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.blob.aspx) . Zum Durchlaufen der Blob-Sammlung müssen Sie die **BlobContinuationToken** -Klasse verwenden. Im Wesentlichen müssen Sie eine do-while-Schleife mit dem Token als Mechanismus zum Beenden der Schleife verwenden. Weitere Informationen finden Sie unter [Verwenden von Blob-Speicher aus .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Eine einfache Schleife ist hier dargestellt:
 
     ```csharp
     // Initialize the continuation token.
@@ -513,7 +512,7 @@ Verknüpfte Dienste verknüpfen Datenspeicher oder Serverdienste mit einer Azure
 
    ![](./media/data-factory-data-processing-using-batch/image7.png)
 
-3. Ersetzen Sie **Kontoname** durch den Namen Ihres Azure-Speicherkontos und **Kontoschlüssel** durch den Zugriffsschlüssel des Azure-Speicherkontos. Informationen zum Abrufen Ihres Speicherzugriffsschlüssels finden Sie unter [Informationen zu Azure-Speicherkonten](../storage/storage-create-storage-account.md#manage-your-storage-account).
+3. Ersetzen Sie **Kontoname** durch den Namen Ihres Azure-Speicherkontos und **Kontoschlüssel** durch den Zugriffsschlüssel des Azure-Speicherkontos. Informationen zum Abrufen Ihres Speicherzugriffsschlüssels finden Sie unter [Informationen zu Azure-Speicherkonten](../storage/common/storage-create-storage-account.md#manage-your-storage-account).
 
 4. Klicken Sie auf der Befehlsleiste auf **Bereitstellen** , um den verknüpften Dienst bereitzustellen.
 

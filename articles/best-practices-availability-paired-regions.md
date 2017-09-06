@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/23/2017
 ms.author: raynew
 ms.translationtype: HT
-ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
-ms.openlocfilehash: a5735d51230b8547ec9d2bb909927756be172a52
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 2984daa3b99fa9c858d43c3dcfb930add2040e2e
 ms.contentlocale: de-de
-ms.lasthandoff: 07/24/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 
@@ -76,7 +76,7 @@ Wie in Abbildung 2 dargestellt.
 
 ![PaaS](./media/best-practices-availability-paired-regions/1Green.png) **Azure Compute (PaaS)** – Sie müssen zusätzliche Serverressourcen im Voraus bereitstellen, um sicherzustellen, dass Ressourcen während eines Notfalls in einer anderen Region zur Verfügung stehen. Weitere Informationen finden Sie unter [Technischer Leitfaden zur Resilienz in Azure](resiliency/resiliency-technical-guidance.md).
 
-![Storage](./media/best-practices-availability-paired-regions/2Green.png) **Azure Storage** – georedundanter Speicher (GRS) wird beim Erstellen eines Azure Storage-Kontos standardmäßig konfiguriert. Mithilfe von GRS werden Ihre Daten dreimal in der primären Region und dreimal im Regionspaar automatisch repliziert. Weitere Informationen finden Sie unter [Redundanzoptionen für Azure Storage](storage/storage-redundancy.md).
+![Storage](./media/best-practices-availability-paired-regions/2Green.png) **Azure Storage** – georedundanter Speicher (GRS) wird beim Erstellen eines Azure Storage-Kontos standardmäßig konfiguriert. Mithilfe von GRS werden Ihre Daten dreimal in der primären Region und dreimal im Regionspaar automatisch repliziert. Weitere Informationen finden Sie unter [Redundanzoptionen für Azure Storage](storage/common/storage-redundancy.md).
 
 ![Azure SQL](./media/best-practices-availability-paired-regions/3Green.png) **Azure SQL-Datenbanken** – mithilfe der standardmäßigen Azure SQL-Georeplikation können Sie eine asynchrone Replikation von Transaktionen in einem Regionspaar konfigurieren. Bei Wahl der Option „Premium“ für die Georeplikation können Sie die Replikation in jede Region der Welt konfigurieren. Allerdings wird empfohlen, dass Sie diese Ressourcen für die meisten Notfallwiederherstellungsszenarien in einem Regionspaar bereitstellen. Weitere Informationen finden Sie unter [Georeplikation in Azure SQL-Datenbank](sql-database/sql-database-geo-replication-overview.md).
 

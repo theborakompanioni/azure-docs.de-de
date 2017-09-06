@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/03/2017
 ms.author: dobett
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: 8df8cdfd0b265b11e6a11f0a5eb7ad8f0e669ca2
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: ad2c6d585eef5450f7f0912ffa4753fe80d86b37
 ms.contentlocale: de-de
-ms.lasthandoff: 07/04/2017
-
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="manage-your-iot-hub-device-identities-in-bulk"></a>Massenverwaltung von IoT Hub-Geräteidentitäten
@@ -72,7 +71,7 @@ while(true)
 
 ## <a name="export-devices"></a>Exportieren von Geräten
 
-Verwenden Sie die **ExportDevicesAsync**-Methode, um die gesamte IoT Hub-Identitätsregistrierung mithilfe einer [Shared Access Signature](../storage/storage-security-guide.md#data-plane-security) in einen [Azure Storage](../storage/index.md)-Blobcontainer zu exportieren.
+Verwenden Sie die **ExportDevicesAsync**-Methode, um die gesamte IoT Hub-Identitätsregistrierung mithilfe einer [Shared Access Signature](../storage/common/storage-security-guide.md#data-plane-security) in einen [Azure Storage](../storage/index.md)-Blobcontainer zu exportieren.
 
 Mit dieser Methode können Sie zuverlässige Sicherungen Ihrer Geräte-Informationen in einem Blobcontainer erstellen, den Sie steuern.
 
@@ -372,7 +371,7 @@ while(true)
 
 ## <a name="get-the-container-sas-uri"></a>Abrufen des SAS-URI des Containers
 
-Das folgende Codebeispiel veranschaulicht das Erstellen eines [SAS-URI](../storage/storage-dotnet-shared-access-signature-part-2.md) mit Lese-, Schreib- und Löschberechtigungen für einen Blobcontainer:
+Das folgende Codebeispiel veranschaulicht das Erstellen eines [SAS-URI](../storage/blobs/storage-dotnet-shared-access-signature-part-2.md) mit Lese-, Schreib- und Löschberechtigungen für einen Blobcontainer:
 
 ```csharp
 static string GetContainerSasUri(CloudBlobContainer container)

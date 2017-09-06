@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 8/15/2017
 ms.author: markgal;trinadhk;
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: aa6b75ef1786021b56a59ad1bea2d45eb74ad25f
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: b95dc0a83d8e5618effb573353f419e1837d30c5
 ms.contentlocale: de-de
-ms.lasthandoff: 07/06/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="back-up-a-windows-server-or-client-to-azure-using-the-resource-manager-deployment-model"></a>Sichern eines Windows-Servers oder -Clients in Azure unter Verwendung des Resource Manager-Bereitstellungsmodells
@@ -104,7 +104,7 @@ Bei der erstmaligen Erstellung eines Recovery Services-Tresors bestimmen Sie, wi
 
   ![Speicherkonfigurationsoptionen](./media/backup-try-azure-backup-in-10-mins/choose-storage-configuration.png)
 
-  Standardmäßig verfügt Ihr Tresor über einen georedundanten Speicher. Wenn Sie Azure als primären Speicherendpunkt für die Sicherung verwenden, verwenden Sie weiterhin die Option **Georedundant**. Wenn Sie Azure nicht als primären Speicherendpunkt für die Sicherung verwenden, wählen Sie **Lokal redundant** aus. Dadurch verringern sich die Kosten für Azure-Speicher. Weitere Informationen zu den Optionen für [georedundanten](../storage/storage-redundancy.md#geo-redundant-storage) und [lokal redundanten](../storage/storage-redundancy.md#locally-redundant-storage) Speicher finden Sie in [dieser Übersicht über Speicherredundanz](../storage/storage-redundancy.md).
+  Standardmäßig verfügt Ihr Tresor über einen georedundanten Speicher. Wenn Sie Azure als primären Speicherendpunkt für die Sicherung verwenden, verwenden Sie weiterhin die Option **Georedundant**. Wenn Sie Azure nicht als primären Speicherendpunkt für die Sicherung verwenden, wählen Sie **Lokal redundant** aus. Dadurch verringern sich die Kosten für Azure-Speicher. Weitere Informationen zu den Optionen für [georedundanten](../storage/common/storage-redundancy.md#geo-redundant-storage) und [lokal redundanten](../storage/common/storage-redundancy.md#locally-redundant-storage) Speicher finden Sie in [dieser Übersicht über Speicherredundanz](../storage/common/storage-redundancy.md).
 
 Nachdem Sie nun über einen Tresor verfügen, bereiten Sie Ihre Infrastruktur auf die Sicherung von Dateien und Ordnern vor, indem Sie den Microsoft Azure Recovery Services-Agent herunterladen und installieren, Tresoranmeldeinformationen herunterladen und dann den Agent mit diesen Anmeldeinformationen beim Tresor registrieren.
 

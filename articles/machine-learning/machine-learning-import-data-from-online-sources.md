@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev;garye
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: a102b5f5ea04169d1992cad6d53c0a45de69b645
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 16d4586d82ed256a90d8eb6be4aab927aed1200a
 ms.contentlocale: de-de
-ms.lasthandoff: 07/27/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="import-data-into-azure-machine-learning-studio-from-various-online-data-sources-with-the-import-data-module"></a>Importieren von Trainingsdaten aus verschiedenen Onlinedatenquellen mit dem „Import Data“-Modul in Azure Machine Learning Studio
@@ -56,7 +56,7 @@ Hinweis: Da auf diese Trainingsdaten zugegriffen wird, während das Experiment l
 > Im Allgemeinen sollten Azure-Speicherkonten, die Sie ggf. erstellt haben, bevor diese Dienstoption verfügbar war, nicht betroffen sein. 
 > Wenn Sie ein neues Konto erstellen müssen, wählen Sie **Klassisch** als Bereitstellungsmodell, oder verwenden Sie Resource Manager, und wählen Sie für **Kontoart** die Option **Allgemein** anstelle von **Blobspeicher**. 
 > 
-> Weitere Informationen finden Sie unter [Azure Blob Storage: „Heiße“ und „kalte“ Speicherebenen](../storage/storage-blob-storage-tiers.md).
+> Weitere Informationen finden Sie unter [Azure Blob Storage: „Heiße“ und „kalte“ Speicherebenen](../storage/blobs/storage-blob-storage-tiers.md).
 > 
 > 
 

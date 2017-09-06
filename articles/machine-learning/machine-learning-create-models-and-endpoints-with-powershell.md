@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: garye;haining
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 069e662ce70f1ec78d796c29d8b5331fc8a5a3e7
-ms.lasthandoff: 11/17/2016
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 21d8c1ee0877df8d317d5a14131dc574fa5303c4
+ms.contentlocale: de-de
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="create-many-machine-learning-models-and-web-service-endpoints-from-one-experiment-using-powershell"></a>Erstellen vieler Machine Learning-Modelle und Webdienst-Endpunkte in nur einem Experiment mit PowerShell
@@ -97,7 +97,7 @@ Wir haben jetzt zehn Endpunkte erstellt, die alle das gleiche trainierte Modell 
 ## <a name="update-the-endpoints-to-use-separate-training-datasets-using-powershell"></a>Aktualisieren der Endpunkte zur Verwendung separater Trainingsdatasets mit PowerShell
 Der nächste Schritt besteht darin, die Endpunkte mit Modellen zu aktualisieren, die basierend auf den individuellen Daten der einzelnen Kunden eindeutig trainiert wurden. Zuerst müssen wir diese Modelle aber über den Webdienst **Bike Rental Training** erzeugen. Wir kehren zum Webdienst **Bike Rental Training** zurück. Wir müssen seinen BES-Endpunkt zehnmal mit zehn verschiedenen Trainingsdatasets aufrufen, um zehn verschiedene Modelle zu erzeugen. Hierfür verwenden wir das PowerShell-Cmdlet **InovkeAmlWebServiceBESEndpoint** .
 
-Sie müssen auch Anmeldeinformationen für Ihr Blobspeicherkonto in `$configContent` angeben, und zwar in den Feldern `AccountName`, `AccountKey` und `RelativeLocation`. Der `AccountName` kann einer Ihrer Kontonamen sein, die im **klassischen Azure-Verwaltungsportal** angezeigt werden (Registerkarte*Speicher* ). Nachdem Sie auf ein Speicherkonto geklickt haben, können Sie auf den `AccountKey` zugreifen, indem Sie unten auf die Schaltfläche **Zugriffsschlüssel verwalten** klicken und den *Primären Zugriffsschlüssel*kopieren. `RelativeLocation` ist der Pfad relativ zu Ihrem Speicher, in dem ein neues Modell gespeichert wird. Der Pfad `hai/retrain/bike_rental/` im Skript unten zeigt beispielsweise auf einen Container mit dem Namen `hai`, und `/retrain/bike_rental/` sind Unterordner. Derzeit können Sie keine Unterordner über die Portal-UI erstellen, aber dies ist mit [mehreren Azure-Speicher-Explorern](../storage/storage-explorers.md) möglich. Es wird empfohlen, im Speicher wie folgt einen neuen Container zum Speichern der neuen trainierten Modelle (ILEARNER-Dateien) zu erstellen: Klicken Sie unten auf der Speicherseite auf die Schaltfläche **Hinzufügen**, und vergeben Sie den Namen `retrain`. Zusammen beziehen sich die erforderlichen Änderungen am Skript unten auf `AccountName`, `AccountKey` und `RelativeLocation` (:`"retrain/model' + $seq + '.ilearner"`).
+Sie müssen auch Anmeldeinformationen für Ihr Blobspeicherkonto in `$configContent` angeben, und zwar in den Feldern `AccountName`, `AccountKey` und `RelativeLocation`. Der `AccountName` kann einer Ihrer Kontonamen sein, die im **klassischen Azure-Verwaltungsportal** angezeigt werden (Registerkarte*Speicher* ). Nachdem Sie auf ein Speicherkonto geklickt haben, können Sie auf den `AccountKey` zugreifen, indem Sie unten auf die Schaltfläche **Zugriffsschlüssel verwalten** klicken und den *Primären Zugriffsschlüssel*kopieren. `RelativeLocation` ist der Pfad relativ zu Ihrem Speicher, in dem ein neues Modell gespeichert wird. Der Pfad `hai/retrain/bike_rental/` im Skript unten zeigt beispielsweise auf einen Container mit dem Namen `hai`, und `/retrain/bike_rental/` sind Unterordner. Derzeit können Sie keine Unterordner über die Portal-UI erstellen, aber dies ist mit [mehreren Azure-Speicher-Explorern](../storage/common/storage-explorers.md) möglich. Es wird empfohlen, im Speicher wie folgt einen neuen Container zum Speichern der neuen trainierten Modelle (ILEARNER-Dateien) zu erstellen: Klicken Sie unten auf der Speicherseite auf die Schaltfläche **Hinzufügen**, und vergeben Sie den Namen `retrain`. Zusammen beziehen sich die erforderlichen Änderungen am Skript unten auf `AccountName`, `AccountKey` und `RelativeLocation` (:`"retrain/model' + $seq + '.ilearner"`).
 
     # Invoke the retraining API 10 times
     # This is the default (and the only) endpoint on the training web service

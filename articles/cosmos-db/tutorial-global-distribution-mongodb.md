@@ -12,7 +12,7 @@ ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: artitutorialcle
+ms.topic: tutorial
 ms.date: 05/10/2017
 ms.author: mimig
 ms.translationtype: Human Translation
@@ -107,3 +107,4 @@ Sie können jetzt mit dem nächsten Tutorial fortfahren, um zu erfahren, wie Sie
 
 > [!div class="nextstepaction"]
 > [Lokales Entwickeln mit dem Emulator](local-emulator.md)
+

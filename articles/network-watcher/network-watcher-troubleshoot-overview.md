@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: gwallace
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
-ms.openlocfilehash: 3ae4701914fb759efe7a890d5906f231c1def2e2
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 0d5091b682d1b25c47b224394bcc2c46366eeb2a
 ms.contentlocale: de-de
-ms.lasthandoff: 06/20/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 
@@ -109,7 +109,7 @@ Nach Abschluss der Problembehandlung werden die Protokolldateien zur Ressourcenp
 > [!NOTE]
 > In einigen Fällen wird nur eine Teilmenge der Protokolldateien in den Speicher geschrieben.
 
-Anweisungen zum Herunterladen von Dateien von Azure Storage-Konten finden Sie unter [Erste Schritte mit Azure Blob Storage mit .NET](../storage/storage-dotnet-how-to-use-blobs.md). Ein weiteres Tool, das verwendet werden kann, ist der Speicher-Explorer. Weitere Informationen zum Speicher-Explorer finden Sie unter [Speicher-Explorer](http://storageexplorer.com/).
+Anweisungen zum Herunterladen von Dateien von Azure Storage-Konten finden Sie unter [Erste Schritte mit Azure Blob Storage mit .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Ein weiteres Tool, das verwendet werden kann, ist der Speicher-Explorer. Weitere Informationen zum Speicher-Explorer finden Sie unter [Speicher-Explorer](http://storageexplorer.com/).
 
 ### <a name="connectionstatstxt"></a>ConnectionStats.txt
 

@@ -16,14 +16,14 @@ ms.topic: article
 ms.date: 02/09/2017
 ms.author: iainfou
 ms.translationtype: HT
-ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
-ms.openlocfilehash: baaa7589de4d809270f66335e33b79b4fdb5e6a5
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: b1164fbd816eea5189786850f096438e32f8f802
 ms.contentlocale: de-de
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="capture-a-linux-virtual-machine-running-on-azure"></a>Erfassen eines virtuellen Linux-Computers, der in Azure ausgeführt wird
-Befolgen Sie die Anweisungen in diesem Artikel zum Generalisieren und Erfassen Ihrer Azure-Linux-VM im Resource Manager-Bereitstellungsmodell. Wenn Sie den virtuellen Computer generalisieren, entfernen Sie persönliche Kontoinformationen und bereiten die VM auf die Nutzung als Image vor. Sie erfassen dann eine generalisierte virtuelle Festplatte (Virtual Hard Disk, VHD) für das Betriebssystem, VHDs für angefügte Datenträger und eine [Resource Manager-Vorlage](../../azure-resource-manager/resource-group-overview.md) für neue VM-Bereitstellungen. Dieser Artikel erläutert, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle 1.0 ein VM-Image für einen virtuellen Computer erfassen, der nicht verwaltete Datenträger verwendet. Sie können auch [mithilfe von Azure CLI 2.0 einen virtuellen Computer erfassen, der Azure Managed Disks verwendet](capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Verwaltete Datenträger werden von der Azure-Plattform verarbeitet und erfordern weder Vorbereitung und noch einen Speicherort. Weitere Informationen finden Sie in der [Übersicht über Azure Managed Disks](../../storage/storage-managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
+Befolgen Sie die Anweisungen in diesem Artikel zum Generalisieren und Erfassen Ihrer Azure-Linux-VM im Resource Manager-Bereitstellungsmodell. Wenn Sie den virtuellen Computer generalisieren, entfernen Sie persönliche Kontoinformationen und bereiten die VM auf die Nutzung als Image vor. Sie erfassen dann eine generalisierte virtuelle Festplatte (Virtual Hard Disk, VHD) für das Betriebssystem, VHDs für angefügte Datenträger und eine [Resource Manager-Vorlage](../../azure-resource-manager/resource-group-overview.md) für neue VM-Bereitstellungen. Dieser Artikel erläutert, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle 1.0 ein VM-Image für einen virtuellen Computer erfassen, der nicht verwaltete Datenträger verwendet. Sie können auch [mithilfe von Azure CLI 2.0 einen virtuellen Computer erfassen, der Azure Managed Disks verwendet](capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Verwaltete Datenträger werden von der Azure-Plattform verarbeitet und erfordern weder Vorbereitung und noch einen Speicherort. Weitere Informationen finden Sie in der [Übersicht über Azure Managed Disks](../windows/managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
 
 Um VMs mithilfe des Images zu erstellen, richten Sie die Netzwerkressourcen für jede neue VM ein. Nutzen Sie die Vorlage (eine JSON-Datei [JavaScript Object Notation]), um sie aus den erfassten VHD-Images bereitzustellen. Auf diese Weise können Sie eine VM mit der aktuellen Softwarekonfiguration ähnlich wie bei Verwenden von Images in Azure Marketplace replizieren.
 

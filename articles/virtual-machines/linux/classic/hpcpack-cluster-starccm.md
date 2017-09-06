@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: big-compute
 ms.date: 09/13/2016
 ms.author: xpillons
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 9a2796c66fa49c543e52b654e583ade7625a7f31
-ms.lasthandoff: 04/27/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: b45fcfb981287035da02fda62eaf5f9436ec2379
+ms.contentlocale: de-de
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="run-star-ccm-with-microsoft-hpc-pack-on-a-linux-rdma-cluster-in-azure"></a>Ausführen von STAR-CCM+ mit Microsoft HPC Pack auf einem Linux-RDMA-Cluster in Azure
@@ -119,7 +119,7 @@ Nachdem nun alle Knoten im Cluster betriebsbereit sind, müssen noch einige weit
 ## <a name="set-up-an-azure-file-share-for-windows-and-linux-nodes"></a>Einrichten der Azure-Dateifreigabe für Windows- und Linux-Knoten
 Sie können den Azure-Dateidienst zum Speichern von Skripts, Anwendungspaketen und Datendateien verwenden. Der Azure-Dateidienst bietet zusätzlich zum Azure-BLOB-Speicher auch CIFS-Funktionen als permanenten Speicher. Diese Lösung ist zwar nicht besonders skalierbar, dafür aber sehr einfach und erfordert keine dedizierten virtuellen Computer.
 
-Erstellen Sie eine Azure-Dateifreigabe. Eine entsprechende Anleitung finden Sie im Artikel [Erste Schritte mit Azure File Storage unter Windows](../../../storage/storage-dotnet-how-to-use-files.md).
+Erstellen Sie eine Azure-Dateifreigabe. Eine entsprechende Anleitung finden Sie im Artikel [Erste Schritte mit Azure File Storage unter Windows](../../../storage/files/storage-dotnet-how-to-use-files.md).
 
 Lassen Sie den Namen Ihres Speicherkontos (**saname**), den Namen der Dateifreigabe (**sharename**) und den Speicherkontoschlüssel (**sakey**) unverändert.
 

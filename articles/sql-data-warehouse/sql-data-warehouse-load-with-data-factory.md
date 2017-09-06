@@ -1,5 +1,4 @@
 ---
-
 title: "Laden von Daten in Azure SQL Data Warehouse – Data Factory | Microsoft Docs"
 description: In diesem Tutorial werden Daten mithilfe von Azure Data Factory in Azure SQL Data Warehouse geladen und eine SQL Server-Datenbank als Datenquelle verwendet.
 services: sql-data-warehouse
@@ -16,13 +15,11 @@ ms.topic: article
 ms.custom: loading
 ms.date: 02/08/2017
 ms.author: cakarst;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6474104846eefa1aa7e137e7914b7a7f1ee8a83a
-ms.openlocfilehash: aad76a633b127d23d59dae995d7a503023c5eac7
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 12a35213e07ff16bdc1c27be106792bcc032ac80
 ms.contentlocale: de-de
-ms.lasthandoff: 02/09/2017
-
-
+ms.lasthandoff: 08/21/2017
 
 ---
 
@@ -38,7 +35,7 @@ Mit Azure Data Factory können Sie Daten aus allen [unterstützten Quelldatenspe
 
 - Sie benötigen ein online vorhandenes **SQL Data Warehouse**. Sollten Sie noch nicht über ein Data Warehouse verfügen, machen Sie sich mit der [Erstellung eines Azure SQL Data Warehouse](sql-data-warehouse-get-started-provision.md) vertraut.
 
-- Sie benötigen ein **Azure Storage-Konto**. Falls Sie noch kein Speicherkonto haben, lesen Sie den Artikel [Erstellen eines Speicherkontos](../storage/storage-create-storage-account.md). Zur Verbesserung der Leistung sollten sich das Speicherkonto und das Data Warehouse in der gleichen Azure-Region befinden.
+- Sie benötigen ein **Azure Storage-Konto**. Falls Sie noch kein Speicherkonto haben, lesen Sie den Artikel [Erstellen eines Speicherkontos](../storage/common/storage-create-storage-account.md). Zur Verbesserung der Leistung sollten sich das Speicherkonto und das Data Warehouse in der gleichen Azure-Region befinden.
 
 ## <a name="configure-a-data-factory"></a>Konfigurieren einer Data Factory
 1. Melden Sie sich beim [Azure-Portal][]an.
@@ -115,6 +112,7 @@ Teilen Sie jetzt Data Factory die Zielinformationen mit.
     ![Zuordnen von Schemas](media/sql-data-warehouse-load-with-data-factory/schema-mapping.png)
 
 4. Klicken Sie auf **Weiter**.
+
 
 ## <a name="configure-the-performance-settings"></a>Konfigurieren der Leistungseinstellungen
 Konfigurieren Sie ein Azure Storage-Konto in den Leistungskonfigurationen zum Bereitstellen der Daten, bevor sie performant mit [PolyBase](sql-data-warehouse-best-practices.md#use-polybase-to-load-and-export-data-quickly) in SQL Data Warehouse geladen werden. Nach Abschluss des Kopiervorgangs werden die vorläufigen Daten im Speicher automatisch bereinigt.

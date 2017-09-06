@@ -16,10 +16,10 @@ ms.date: 02/08/2017
 ms.author: dastrock
 ms.custom: aaddev
 ms.translationtype: HT
-ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
-ms.openlocfilehash: c6670b97ebc0545dbcb01d2b0cb1e260f99cfed9
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: 35132eae4d6a7f85b19a7a49ad4034e795d7df13
 ms.contentlocale: de-de
-ms.lasthandoff: 07/12/2017
+ms.lasthandoff: 08/24/2017
 
 ---
 # Autorisieren des Zugriffs auf Webanwendungen mit OAuth 2.0 und Azure Active Directory
@@ -266,7 +266,7 @@ Die folgende Tabelle enthält die HTTP-Statuscodes, die vom Tokenausstellungs-En
 | invalid_client |Clientauthentifizierung fehlgeschlagen. |Die Client-Anmeldeinformationen sind nicht gültig. Um das Problem zu beheben, aktualisiert der Anwendungsadministrator die Anmeldeinformationen. |
 | unsupported_grant_type |Der Autorisierungsserver unterstützt den Autorisierungsgewährungstyp nicht. |Ändern Sie den Gewährungstyp in der Anforderung. Diese Art von Fehler sollte nur während der Entwicklung auftreten und bei den ersten Tests erkannt werden. |
 | invalid_resource |Die Zielressource ist ungültig, da sie nicht vorhanden ist, Azure AD sie nicht findet oder sie nicht ordnungsgemäß konfiguriert ist. |Dies gibt an, dass die Ressource, falls vorhanden, im Mandanten nicht konfiguriert wurde. Die Anwendung kann den Benutzer zum Installieren der Anwendung und zum Hinzufügen zu Azure AD auffordern. |
-| interaction_required |Die Anforderung erfordert eine Benutzerinteraktion. Beispielsweise ist ein zusätzlicher Schritt zur Authentifizierung erforderlich. |Wiederholen Sie die Anforderung mit der gleichen Ressource. |
+| interaction_required |Die Anforderung erfordert eine Benutzerinteraktion. Beispielsweise ist ein zusätzlicher Schritt zur Authentifizierung erforderlich. | Wiederholen Sie die Anforderung derselben Ressource mit einer interaktiven Autorisierungsanforderung anstelle einer nicht interaktiven Anforderung. |
 | temporarily_unavailable |Der Server ist vorübergehend überlastet und kann die Anforderung nicht verarbeiten. |Wiederholen Sie die Anforderung. Die Clientanwendung kann dem Benutzer erklären, dass ihre Antwort aufgrund einer temporären Bedingung verzögert ist. |
 
 ## Verwenden des Zugriffstokens für den Zugriff auf die Ressource
@@ -329,15 +329,6 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &resource=https%3A%2F%2Fservice.contoso.com%2F
 &client_secret=JqQX2PNo9bpM0uEihUPzyrh    // NOTE: Only required for web apps
 ```
-| Parameter | Beschreibung |
-| --- | --- |
-| access_token |Das neue Zugriffstoken, das angefordert wurde. |
-| expires_in |Die verbleibende Gültigkeitsdauer des Tokens in Sekunden. Ein typischer Wert wäre etwa 3600 (eine Stunde). |
-| expires_on |Datum und Uhrzeit, wenn das Token abläuft. Das Datum wird als Anzahl der Sekunden ab 1970-01-01T0:0:0Z UTC bis zur Ablaufzeit dargestellt. |
-| refresh_token |Ein neues OAuth 2.0-Aktualisierungstoken, das zum Anfordern neuer Zugriffstoken verwendet werden kann, wenn das Token in dieser Antwort abläuft. |
-| resource |Gibt die gesicherte Ressource an, die das Zugriffstoken für den Zugriff verwenden kann. |
-| Bereich |Die Identitätswechselberechtigungen, die der nativen Clientanwendung gewährt wurden. Die Standardberechtigung lautet **user_impersonation**. Der Besitzer der Zielressource kann alternative Werte in Azure AD registrieren. |
-| token_type |Der Tokentyp. Der einzige derzeit unterstützte Wert ist **bearer**. |
 
 ### Erfolgreiche Antwort
 Eine erfolgreiche Tokenantwort sieht wie folgt aus:
@@ -352,6 +343,15 @@ Eine erfolgreiche Tokenantwort sieht wie folgt aus:
   "refresh_token": "AwABAAAAv YNqmf9SoAylD1PycGCB90xzZeEDg6oBzOIPfYsbDWNf621pKo2Q3GGTHYlmNfwoc-OlrxK69hkha2CF12azM_NYhgO668yfcUl4VBbiSHZyd1NVZG5QTIOcbObu3qnLutbpadZGAxqjIbMkQ2bQS09fTrjMBtDE3D6kSMIodpCecoANon9b0LATkpitimVCrl PM1KaPlrEqdFSBzjqfTGAMxZGUTdM0t4B4rTfgV29ghDOHRc2B-C_hHeJaJICqjZ3mY2b_YNqmf9SoAylD1PycGCB90xzZeEDg6oBzOIPfYsbDWNf621pKo2Q3GGTHYlmNfwoc-OlrxK69hkha2CF12azM_NYhgO668yfmVCrl-NyfN3oyG4ZCWu18M9-vEou4Sq-1oMDzExgAf61noxzkNiaTecM-Ve5cq6wHqYQjfV9DOz4lbceuYCAA"
 }
 ```
+| Parameter | Beschreibung |
+| --- | --- |
+| token_type |Der Tokentyp. Der einzige derzeit unterstützte Wert ist **bearer**. |
+| expires_in |Die verbleibende Gültigkeitsdauer des Tokens in Sekunden. Ein typischer Wert wäre etwa 3600 (eine Stunde). |
+| expires_on |Datum und Uhrzeit, wenn das Token abläuft. Das Datum wird als Anzahl der Sekunden ab 1970-01-01T0:0:0Z UTC bis zur Ablaufzeit dargestellt. |
+| Ressource |Gibt die gesicherte Ressource an, die das Zugriffstoken für den Zugriff verwenden kann. |
+| Bereich |Die Identitätswechselberechtigungen, die der nativen Clientanwendung gewährt wurden. Die Standardberechtigung lautet **user_impersonation**. Der Besitzer der Zielressource kann alternative Werte in Azure AD registrieren. |
+| access_token |Das neue Zugriffstoken, das angefordert wurde. |
+| refresh_token |Ein neues OAuth 2.0-Aktualisierungstoken, das zum Anfordern neuer Zugriffstoken verwendet werden kann, wenn das Token in dieser Antwort abläuft. |
 
 ### Fehlerantwort
 Eine Beispiel für eine Fehlerantwort sieht wie folgt aus:

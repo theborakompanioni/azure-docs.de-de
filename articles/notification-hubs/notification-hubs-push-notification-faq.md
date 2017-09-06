@@ -15,12 +15,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/19/2017
 ms.author: yuaxu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 532ff423ff53567b6ce40c0ea7ec09a689cee1e7
-ms.openlocfilehash: c8592ea38d62213327549583a1e931ea682ee56e
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: f3bfda250b7f8ed679d05057682b95683d402535
 ms.contentlocale: de-de
-ms.lasthandoff: 06/05/2017
-
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Pushbenachrichtigungen mit Azure Notification Hubs: Häufig gestellte Fragen
@@ -143,7 +142,7 @@ Wenn Sie über eine weltweit verwendete Anwendung verfügen, können Sie den Not
 Registrierungen über das App-Back-End sind hilfreich, wenn Sie Clients vor der Registrierung authentifizieren müssen. Sie sind auch hilfreich, wenn Sie über Tags verfügen, die vom App-Back-End auf der Grundlage der App-Logik erstellt oder geändert werden müssen. Weitere Informationen finden Sie im [Leitfaden zur Back-End-Registrierung] und im [Leitfaden zur Back-End-Registrierung 2].
 
 ### <a name="what-is-the-push-notification-delivery-security-model"></a>Welches Sicherheitsmodell gilt für die Übermittlung von Pushbenachrichtigungen?
-Azure Notification Hubs verwendet ein auf [Shared Access Signatures (SAS)](../storage/storage-dotnet-shared-access-signature-part-1.md) basierendes Sicherheitsmodell. Sie können die SAS-Token auf der Namespace-Stammebene oder auf der granularen Notification Hub-Ebene verwenden. Für SAS-Token können verschiedene Autorisierungsregeln festgelegt werden, um beispielsweise Nachrichtenberechtigungen zu senden oder auf Benachrichtigungsberechtigungen zu lauschen. Weitere Informationen finden Sie im [Dokument zum Sicherheitsmodell von Notification Hubs].
+Azure Notification Hubs verwendet ein auf [Shared Access Signatures (SAS)](../storage/common/storage-dotnet-shared-access-signature-part-1.md) basierendes Sicherheitsmodell. Sie können die SAS-Token auf der Namespace-Stammebene oder auf der granularen Notification Hub-Ebene verwenden. Für SAS-Token können verschiedene Autorisierungsregeln festgelegt werden, um beispielsweise Nachrichtenberechtigungen zu senden oder auf Benachrichtigungsberechtigungen zu lauschen. Weitere Informationen finden Sie im [Dokument zum Sicherheitsmodell von Notification Hubs].
 
 ### <a name="how-should-i-handle-sensitive-payload-in-push-notifications"></a>Wie sollte ich vertrauliche Nutzlasten in Pushbenachrichtigungen behandeln?
 Alle Benachrichtigungen werden über den PNS der Plattform an die Zielgeräte übermittelt. Wenn eine Benachrichtigung an Azure Notification Hubs gesendet wird, wird sie verarbeitet und an den jeweiligen PNS übergeben.

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/22/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
-ms.openlocfilehash: d62a4463bb24760e5abea7a870e6987e1275d0be
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 0974b9eda2cb7e3ba54a4a0fad0a768db644caf9
 ms.contentlocale: de-de
-ms.lasthandoff: 06/23/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 
@@ -34,13 +34,13 @@ Bevor Sie ein Testfailover ausführen, empfehlen wir Ihnen, die VM-Eigenschaften
 
 ## <a name="managed-disk-considerations"></a>Überlegungen zu verwalteten Datenträgern
 
-[Verwaltete Datenträger](../storage/storage-managed-disks-overview.md) vereinfachen die Datenträgerverwaltung für Azure-VMs durch die Verwaltung der Speicherkonten, die den VM-Datenträgern zugeordnet sind. 
+[Verwaltete Datenträger](../virtual-machines/windows/managed-disks-overview.md) vereinfachen die Datenträgerverwaltung für Azure-VMs durch die Verwaltung der Speicherkonten, die den VM-Datenträgern zugeordnet sind. 
 
 - Verwaltete Datenträger werden erstellt und nur an den virtuellen Computer angefügt, wenn ein Failover in Azure stattfindet. Wenn Sie den Schutz aktivieren, werden Daten von lokalen virtuellen Computern in Speicherkonten repliziert.
 - Verwaltete Datenträger können nur für virtuelle Computer erstellt werden, die über das Resource Manager-Bereitstellungsmodell bereitgestellt werden.
 - Ein Failback von Azure zur lokalen Hyper-V-Umgebung wird für Computer mit verwalteten Datenträgern derzeit nicht unterstützt. Sie sollten **Verwaltete Datenträger verwenden** nur dann auf **Ja** festlegen, wenn Sie ausschließlich eine Migration (Failover in Azure ohne Failback) ausführen.
 - Wenn diese Einstellung aktiviert ist, können nur Verfügbarkeitsgruppen in Ressourcengruppen ausgewählt werden, für die **Verwaltete Datenträger verwenden** aktiviert ist. Virtuelle Computer mit verwalteten Datenträgern müssen sich in Verfügbarkeitsgruppen befinden, wobei **Verwaltete Datenträger verwenden** auf **Ja** festgelegt sein muss. Wenn die Einstellung für virtuelle Computer nicht aktiviert ist, können nur Verfügbarkeitsgruppen in Ressourcengruppen ausgewählt werden, für die verwaltete Datenträger nicht aktiviert sind. [Weitere Informationen](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability#use-managed-disks-for-vms-in-an-availability-set)
-- - Wenn das Speicherkonto, das Sie für die Replikation verwenden, mit der Speicherdienstverschlüsselung verschlüsselt wurde, können verwaltete Datenträger während eines Failovers nicht erstellt werden. In diesem Fall aktivieren Sie die Verwendung verwalteter Datenträger nicht, oder deaktivieren Sie den Schutz für den virtuellen Computer, und aktivieren Sie ihn erneut, um ein Speicherkonto zu verwenden, für das die Verschlüsselung nicht aktiviert ist. [Weitere Informationen](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview#managed-disks-and-encryption)
+- - Wenn das Speicherkonto, das Sie für die Replikation verwenden, mit der Speicherdienstverschlüsselung verschlüsselt wurde, können verwaltete Datenträger während eines Failovers nicht erstellt werden. In diesem Fall aktivieren Sie die Verwendung verwalteter Datenträger nicht, oder Sie deaktivieren den Schutz für den virtuellen Computer, und aktivieren Sie ihn erneut, um ein Speicherkonto zu nutzen, für das die Verschlüsselung nicht aktiviert ist. [Weitere Informationen](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview#managed-disks-and-encryption)
 
  
 ## <a name="network-considerations"></a>Netzwerküberlegungen
@@ -65,11 +65,11 @@ Es wird empfohlen, dass Sie die Eigenschaften des Quellcomputers überprüfen, b
 
     ![Replikation aktivieren](./media/hyper-v-site-walkthrough-test-failover/test-failover2.png)
 3. Unter **Compute und Netzwerk** können Sie Folgendes:
-    - den Namen des virtuellen Azure-Computers ändern. Der Name muss die [Azure-Anforderungen](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements) erfüllen.
-    - eine [Ressourcengruppe](../virtual-machines/windows/infrastructure-resource-groups-guidelines.md) nach dem Failover angeben
-    - eine Zielgröße für den virtuellen Azure-Computer angeben
-    - eine [Verfügbarkeitsgruppe](../virtual-machines/windows/infrastructure-availability-sets-guidelines.md) auswählen
-    - angeben, ob [verwaltete Datenträger](#managed-disk-considerations) verwendet werden sollen. Wählen Sie **Ja** aus, wenn Sie Ihrem Computer bei der Migration zu Azure verwaltete Datenträger hinzufügen möchten.
+    - den Namen der Azure-VM ändern Der Name muss die [Azure-Anforderungen](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements) erfüllen.
+    - Geben Sie eine [Ressourcengruppe] nach dem Failover an.
+    - Angeben einer Zielgröße für den virtuellen Azure-Computer
+    - Auswählen einer [Verfügbarkeitsgruppe](../virtual-machines/windows/tutorial-availability-sets.md)
+    - angeben, ob [verwaltete Datenträger](#managed-disk-considerations) verwendet werden sollen Wählen Sie **Ja** aus, wenn Sie Ihrem Computer bei der Migration zu Azure verwaltete Datenträger hinzufügen möchten.
     - Netzwerkeinstellungen, einschließlich des Netzwerks/Subnetzes anzeigen oder ändern, in dem der virtuelle Azure-Computer nach dem Failover platziert wird, sowie die IP-Adresse, die ihm zugewiesen wird.
 
     ![Replikation aktivieren](./media/hyper-v-site-walkthrough-test-failover/test-failover4.png)

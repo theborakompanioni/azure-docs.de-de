@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 1/23/2017
 ms.author: adigan;anuragm;trinadhk;markgal
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e12d533ac5befe020c0aad4aa64ca9ed50349c3d
-ms.openlocfilehash: 9ac821da5d3b508ffc5a195290fac47528ef95c5
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 2e3b4a094511a59cfa02917efc2e3e053840af0c
 ms.contentlocale: de-de
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-data-protection-manager-dpm-servers-using-powershell"></a>Bereitstellen und Verwalten der Sicherung in Azure für Data Protection Manager (DPM)-Server mit PowerShell
@@ -85,7 +84,7 @@ Mit den folgenden Schritten können Sie einen Recovery Services-Tresor erstellen
     ```
     PS C:\> New-AzureRmRecoveryServicesVault -Name "testvault" -ResourceGroupName " test-rg" -Location "West US"
     ```
-4. Geben Sie den Typ der zu verwendenden Speicherredundanz an – entweder [lokal redundanter Speicher (LRS)](../storage/storage-redundancy.md#locally-redundant-storage) oder [geografisch redundanter Speicher (GRS)](../storage/storage-redundancy.md#geo-redundant-storage). Das folgende Beispiel zeigt, dass für die Option BackupStorageRedundancy für testVault der Wert auf GeoRedundant festgelegt ist.
+4. Geben Sie den Typ der zu verwendenden Speicherredundanz an – entweder [lokal redundanter Speicher (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage) oder [geografisch redundanter Speicher (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage). Das folgende Beispiel zeigt, dass für die Option BackupStorageRedundancy für testVault der Wert auf GeoRedundant festgelegt ist.
 
    > [!TIP]
    > Viele Azure Backup-Cmdlets benötigen das Recovery Services-Tresorobjekt als Eingabe. Aus diesem Grund sollte das zur Sicherung verwendete Recovery Services-Tresorobjekt in einer Variablen gespeichert werden.

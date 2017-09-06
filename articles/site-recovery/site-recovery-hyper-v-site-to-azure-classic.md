@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 02/21/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 305f02bb120a1096c46de94d103a5700dabdc8ba
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 438f32ee3605e2dd0c46de7993a359cc269262fe
 ms.contentlocale: de-de
-ms.lasthandoff: 04/03/2017
-
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="replicate-between-on-premises-hyper-v-virtual-machines-and-azure-without-vmm-with-azure-site-recovery"></a>Replizieren zwischen lokalen virtuellen Hyper-V-Maschinen und Azure (ohne VMM) mit Azure Site Recovery
@@ -52,7 +51,7 @@ Organisationen benötigen eine BCDR-Strategie, die bestimmt, wie Apps und Daten 
 
 ## <a name="azure-prerequisites"></a>Voraussetzungen für Azure
 * Sie benötigen ein [Microsoft Azure](https://azure.microsoft.com/) -Konto. Für den Einstieg steht eine [kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/)zur Verfügung.
-* Sie benötigen ein Azure Storage-Konto, um replizierte Daten zu speichern. Für das Konto muss Georeplikation aktiviert sein. Es muss sich in der gleichen Region wie der Azure Site Recovery-Tresor befinden und dem gleichen Abonnement zugeordnet sein. [Weitere Informationen zu Azure Storage](../storage/storage-introduction.md) Beachten Sie, dass das Verschieben von Speicherkonten, die mit dem [neuen Azure-Portal](../storage/storage-create-storage-account.md) erstellt wurden, über Ressourcengruppen hinweg nicht unterstützt wird.
+* Sie benötigen ein Azure Storage-Konto, um replizierte Daten zu speichern. Für das Konto muss Georeplikation aktiviert sein. Es muss sich in der gleichen Region wie der Azure Site Recovery-Tresor befinden und dem gleichen Abonnement zugeordnet sein. [Weitere Informationen zu Azure Storage](../storage/common/storage-introduction.md) Beachten Sie, dass das Verschieben von Speicherkonten, die mit dem [neuen Azure-Portal](../storage/common/storage-create-storage-account.md) erstellt wurden, über Ressourcengruppen hinweg nicht unterstützt wird.
 * Sie benötigen ein virtuelles Azure-Netzwerk, damit für virtuelle Azure-Maschinen eine Netzwerkverbindung besteht, wenn Sie ein Failover von Ihrem primären Standort durchführen.
 
 ## <a name="hyper-v-prerequisites"></a>Hyper-V-Voraussetzungen
@@ -168,7 +167,7 @@ Parameter:
     ![Speicherkonto erstellen](./media/site-recovery-hyper-v-site-to-azure-classic/create-resources.png)
 
 > [!NOTE]
-> 1. Eine Verschiebung von mit dem [neuen Azure-Portal](../storage/storage-create-storage-account.md) erstellten Speicherkonten über Ressourcengruppen hinweg wird nicht unterstützt.
+> 1. Eine Verschiebung von mit dem [neuen Azure-Portal](../storage/common/storage-create-storage-account.md) erstellten Speicherkonten über Ressourcengruppen hinweg wird nicht unterstützt.
 > 2. [Die Migration von Speicherkonten](../azure-resource-manager/resource-group-move-resources.md) zwischen Ressourcengruppen im gleichen Abonnement oder zwischen verschiedenen Abonnements wird für Speicherkonten nicht unterstützt, die für die Site Recovery-Bereitstellung verwendet werden.
 >
 

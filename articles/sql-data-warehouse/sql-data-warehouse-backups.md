@@ -16,10 +16,10 @@ ms.custom: backup-restore
 ms.date: 10/31/2016
 ms.author: lakshmir;barbkess
 ms.translationtype: HT
-ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
-ms.openlocfilehash: ef2e6e7a19c7ed1730fdec5eca73c941e1b319c4
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 54c0149a769e654139bbdf709802d49127f041ac
 ms.contentlocale: de-de
-ms.lasthandoff: 07/12/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="sql-data-warehouse-backups"></a>SQL Data Warehouse-Sicherungen
@@ -35,15 +35,15 @@ SQL Data Warehouse schützt Ihre Daten durch Speichern der Daten in lokal redund
 
 Weitere Informationen:
 
-* Azure Premium-Speicher: siehe [Einführung in Azure Storage Premium](../storage/storage-premium-storage.md).
-* Lokal redundanter Speicher: siehe [Azure Storage-Replikation](../storage/storage-redundancy.md#locally-redundant-storage).
+* Azure Premium-Speicher: siehe [Einführung in Azure Storage Premium](../storage/common/storage-premium-storage.md).
+* Lokal redundanter Speicher: siehe [Azure Storage-Replikation](../storage/common/storage-redundancy.md#locally-redundant-storage).
 
 ## <a name="azure-storage-blob-snapshots"></a>Azure Storage Blob-Momentaufnahmen
 Azure Storage Premium bietet den Vorteil, dass SQL Data Warehouse Azure Storage Blob-Momentaufnahmen verwenden kann, um das Data Warehouse lokal zu sichern. Sie können ein Data Warehouse auf einen Wiederherstellungspunkt einer Momentaufnahme wiederherstellen. Momentaufnahmen werden mindestens alle acht Stunden gestartet und sind sieben Tage lang verfügbar.  
 
 Weitere Informationen:
 
-* Azure Storage Blob-Momentaufnahmen: siehe [Erstellen einer Momentaufnahme eines Blobs](../storage/storage-blob-snapshots.md).
+* Azure Storage Blob-Momentaufnahmen: siehe [Erstellen einer Momentaufnahme eines Blobs](../storage/blobs/storage-blob-snapshots.md).
 
 ## <a name="geo-redundant-backups"></a>Georedundante Sicherungen
 SQL Data Warehouse speichert das gesamte Data Warehouse alle 24 Stunden in einem Standardspeicher. Das vollständige Data Warehouse wird gemäß der Uhrzeit der letzten Momentaufnahme erstellt. Der Standardspeicher gehört zu einem georedundanten Speicherkonto mit Lesezugriff (RA-GRS). Die RA-GRS-Funktion von Azure Storage repliziert die Sicherungsdateien in einem [gekoppelten Rechenzentrum](../best-practices-availability-paired-regions.md). Diese Georeplikation stellt sicher, dass Sie ein Data Warehouse wiederherstellen können, falls Sie nicht auf die Momentaufnahmen in Ihrer primären Region zugreifen können. 
@@ -62,8 +62,8 @@ Dieses Feature ist standardmäßig aktiviert. Wenn Sie georedundante Sicherungen
 
 Weitere Informationen:
 
-* Informationen zum georedundanten Speichern finden Sie unter [Azure Storage-Replikation](../storage/storage-redundancy.md).
-* Informationen zum RA-GRS-Speicher finden Sie unter [Georedundanter Speicher mit Lesezugriff](../storage/storage-redundancy.md#read-access-geo-redundant-storage).
+* Informationen zum georedundanten Speichern finden Sie unter [Azure Storage-Replikation](../storage/common/storage-redundancy.md).
+* Informationen zum RA-GRS-Speicher finden Sie unter [Georedundanter Speicher mit Lesezugriff](../storage/common/storage-redundancy.md#read-access-geo-redundant-storage).
 
 ## <a name="data-warehouse-backup-schedule-and-retention-period"></a>Sicherungszeitplan und Aufbewahrungsdauer für ein Data Warehouse
 SQL Data Warehouse erstellt alle vier bis acht Stunden Momentaufnahmen in Ihren Online-Data Warehouses und bewahrt jede Momentaufnahme sieben Tage lang auf. Sie können Ihre Onlinedatenbank auf einen der Wiederherstellungspunkte der vergangenen sieben Tage wiederherstellen. 

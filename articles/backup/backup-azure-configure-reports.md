@@ -16,10 +16,10 @@ ms.date: 07/24/2017
 ms.author: pajosh
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: 649823705c9680677b84e77676bf7a004e4ed779
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 4629665e6fbe26c26eb45af7509de338367c4e18
 ms.contentlocale: de-de
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurieren von Azure Backup-Berichten
@@ -32,7 +32,7 @@ In diesem Artikel werden die Schritte für das Konfigurieren von Berichten für 
 4. Die Häufigkeit der geplanten Aktualisierungen für die Berichte beträgt in Power BI 24 Stunden. In Power BI können Sie die Berichte auch ad hoc aktualisieren. In diesem Fall werden die aktuellsten Daten im Kundenspeicherkonto zum Rendern der Berichte verwendet. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
-1. Erstellen Sie ein [Azure-Speicherkonto](../storage/storage-create-storage-account.md#create-a-storage-account), um Berichte zu konfigurieren. Dieses Speicherkonto wird zum Speichern von berichtsbezogenen Daten verwendet.
+1. Erstellen Sie ein [Azure-Speicherkonto](../storage/common/storage-create-storage-account.md#create-a-storage-account), um Berichte zu konfigurieren. Dieses Speicherkonto wird zum Speichern von berichtsbezogenen Daten verwendet.
 2. [Erstellen Sie ein Power BI-Konto](https://powerbi.microsoft.com/landing/signin/), um mit dem Power BI-Portal Ihre eigenen Berichte anzuzeigen, anzupassen und zu erstellen.
 3. Wenn noch keine Registrierung vorhanden ist, registrieren Sie als Ressourcenanbieter **Microsoft.insights** mit einem Abonnement für ein Speicherkonto und für Recovery Services-Tresor, um die Übertragung von Berichtsdaten an das Speicherkonto zu aktivieren. Um dies zu tun, wechseln Sie zu Azure-Portal > Abonnement > Ressourcenanbieter, und markieren Sie den Anbieter, für den die Registrierung durchgeführt werden soll. 
 
@@ -82,7 +82,7 @@ Nachdem das Speicherkonto mit dem Recovery Services-Tresor für Berichte konfigu
 4. Geben Sie den Namen des in Schritt 5 konfigurierten Speicherkontos ein, und klicken Sie auf die Schaltfläche **Weiter**.
 
     ![Den Namen des Speicherkontos erfassen](./media/backup-azure-configure-reports/content-pack-storage-account-name.png)    
-5. Geben Sie den Speicherkontoschlüssel für dieses Speicherkonto ein. Sie können [die Speicherzugriffsschlüssel anzeigen und kopieren](../storage/storage-create-storage-account.md#manage-your-storage-account), indem Sie im Azure-Portal zu Ihrem Speicherkonto navigieren. 
+5. Geben Sie den Speicherkontoschlüssel für dieses Speicherkonto ein. Sie können [die Speicherzugriffsschlüssel anzeigen und kopieren](../storage/common/storage-create-storage-account.md#manage-your-storage-account), indem Sie im Azure-Portal zu Ihrem Speicherkonto navigieren. 
 
      ![Speicherkonto erfassen](./media/backup-azure-configure-reports/content-pack-storage-account-key.png) <br/>
      

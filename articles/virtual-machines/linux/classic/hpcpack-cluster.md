@@ -16,10 +16,10 @@ ms.workload: big-compute
 ms.date: 10/12/2016
 ms.author: danlep
 ms.translationtype: HT
-ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
-ms.openlocfilehash: 048854b440f939077a7a95fa1db9ba42daf55ede
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 809d3944311badf265117d353b65642e044d900c
 ms.contentlocale: de-de
-ms.lasthandoff: 07/12/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="get-started-with-linux-compute-nodes-in-an-hpc-pack-cluster-in-azure"></a>Erste Schritte mit Linux-Computeknoten in einem HPC Pack-Cluster in Azure
@@ -186,7 +186,7 @@ Sie haben mehrere Optionen zum Verschieben von Daten zwischen Linux-Knoten und d
 ### <a name="azure-file-storage"></a>Azure-Dateispeicher
 Der [Azure-Dateidienst](https://azure.microsoft.com/services/storage/files/) stellt Dateifreigaben mit dem SMB 2.1-Standardprotokoll bereit. Azure-VMs und Clouddienste können Dateidaten in verschiedenen Anwendungskomponenten über eingebundene Freigaben teilen, und lokale Anwendungen können über die Dateispeicher-API auf freigegebene Dateien zugreifen. 
 
-Die Schritte zum Erstellen einer Azure-Dateifreigabe sowie zum Einbinden der Freigabe auf dem Hauptknoten sind im Detail unter [Erste Schritte mit Azure File Storage unter Windows](../../../storage/storage-file-how-to-use-files-windows.md)beschrieben. Informationen zum Einbinden der Azure-Dateifreigabe auf den Linux-Knoten finden Sie unter [Verwenden von Azure File Storage unter Linux](../../../storage/storage-how-to-use-files-linux.md). Informationen zum Einrichten bestehender Verbindungen finden Sie unter [Beibehalten der Verbindung mit Microsoft Azure-Dateien](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx).
+Die Schritte zum Erstellen einer Azure-Dateifreigabe sowie zum Einbinden der Freigabe auf dem Hauptknoten sind im Detail unter [Erste Schritte mit Azure File Storage unter Windows](../../../storage/files/storage-how-to-use-files-windows.md)beschrieben. Informationen zum Einbinden der Azure-Dateifreigabe auf den Linux-Knoten finden Sie unter [Verwenden von Azure File Storage unter Linux](../../../storage/files/storage-how-to-use-files-linux.md). Informationen zum Einrichten bestehender Verbindungen finden Sie unter [Beibehalten der Verbindung mit Microsoft Azure-Dateien](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx).
 
 Im folgenden Beispiel erstellen Sie eine Azure-Dateifreigabe für ein Speicherkonto. Um die Freigabe auf dem Hauptknoten einzubinden, öffnen Sie eine Eingabeaufforderung, und geben Sie die folgenden Befehle ein:
 

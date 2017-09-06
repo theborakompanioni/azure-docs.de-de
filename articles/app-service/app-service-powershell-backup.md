@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2016
 ms.author: nicking
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 0d1c323155aae90e8a92d7a3b92b5ca1482e1ef5
-ms.lasthandoff: 04/27/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 34a7e1d025c301ca056753d964bb3c5f4f1a62d8
+ms.contentlocale: de-de
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="use-powershell-to-back-up-and-restore-app-service-apps"></a>Verwenden von PowerShell zum Sichern und Wiederherstellen von App Service-Apps
@@ -33,7 +33,7 @@ Enthält Informationen dazu, wie Sie Azure PowerShell zum Sichern und Wiederhers
 ## <a name="prerequisites"></a>Voraussetzungen
 Sie benötigen Folgendes, um PowerShell zum Verwalten von App-Sicherungen zu verwenden:
 
-* **SAS-URL** , die Ihnen Lese- und Schreibzugriff auf einen Azure Storage-Container ermöglicht. Eine Erläuterung zu SAS-URLs finden Sie unter [Grundlagen zum SAS-Modell](../storage/storage-dotnet-shared-access-signature-part-1.md) . Beispiele für die Verwaltung von Azure Storage mithilfe von PowerShell finden Sie unter [Verwenden von Azure PowerShell mit Azure Storage](../storage/storage-powershell-guide-full.md) .
+* **SAS-URL** , die Ihnen Lese- und Schreibzugriff auf einen Azure Storage-Container ermöglicht. Eine Erläuterung zu SAS-URLs finden Sie unter [Grundlagen zum SAS-Modell](../storage/common/storage-dotnet-shared-access-signature-part-1.md) . Beispiele für die Verwaltung von Azure Storage mithilfe von PowerShell finden Sie unter [Verwenden von Azure PowerShell mit Azure Storage](../storage/common/storage-powershell-guide-full.md) .
 * **Datenbankverbindungszeichenfolge** , wenn Sie eine Datenbank zusammen mit Ihrer Web-App sichern möchten.
 
 ### <a name="how-to-generate-a-sas-url-to-use-with-the-web-app-backup-cmdlets"></a>Generieren einer SAS-URL zur Verwendung mit den Web-App-Sicherungs-Cmdlets

@@ -15,10 +15,10 @@ ms.workload: tbd
 ms.date: 08/07/2017
 ms.author: sethm
 ms.translationtype: HT
-ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
-ms.openlocfilehash: 45fe7584c8b769113da9d287fea56d68d3d6c55a
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 555759073507219188b59af76a82be74b112c57c
 ms.contentlocale: de-de
-ms.lasthandoff: 08/08/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Storage-Warteschlangen und Service Bus-Warteschlangen – Vergleich und Gegenüberstellung
@@ -132,7 +132,7 @@ In diesem Abschnitt werden Storage-Warteschlangen und Service Bus-Warteschlangen
 
 | Vergleichskriterien | Storage-Warteschlangen | Service Bus-Warteschlangen |
 | --- | --- | --- |
-| Maximale Warteschlangengröße |**500 TB**<br/><br/>(beschränkt auf die Kapazität eines [einzelnen Speicherkontos](../storage/storage-introduction.md#queue-storage)) |**1 GB bis 80 GB**<br/><br/>(wird bei Erstellung einer Warteschlange und dem [Aktivieren von Partitionierung](service-bus-partitioning.md) definiert – weitere Informationen finden Sie im Abschnitt „Zusätzliche Informationen“) |
+| Maximale Warteschlangengröße |**500 TB**<br/><br/>(beschränkt auf die Kapazität eines [einzelnen Speicherkontos](../storage/common/storage-introduction.md#queue-storage)) |**1 GB bis 80 GB**<br/><br/>(wird bei Erstellung einer Warteschlange und dem [Aktivieren von Partitionierung](service-bus-partitioning.md) definiert – weitere Informationen finden Sie im Abschnitt „Zusätzliche Informationen“) |
 | Maximale Nachrichtengröße |**64 KB**<br/><br/>(48 KB bei Verwendung der **Base64** Codierung)<br/><br/>Azure unterstützt große Nachrichten, indem Warteschlangen und Blobs kombiniert werden – in diesem Fall können bis zu 200 GB für ein einzelnes Element in der Warteschlange gespeichert werden. |**256 KB** oder **1 MB**<br/><br/>(Einschließlich Header und Text. Die maximale Headergröße beträgt 64 KB).<br/><br/>Hängt von der [Dienstebene](service-bus-premium-messaging.md) ab. |
 | Maximaler TTL-Wert der Nachricht |**7 Tage** |**`TimeSpan.Max`** |
 | Maximale Anzahl von Warteschlangen |**Unbegrenzt** |**10.000**<br/><br/>(pro Dienstnamespace, kann jedoch erhöht werden) |
@@ -192,7 +192,7 @@ Da Service Bus-Warteschlangen eine Vielzahl erweiterter Funktionen wie Sitzungen
 Die folgenden Artikel enthalten weitere Anleitungen und Informationen zur Verwendung von Storage-Warteschlangen oder Service Bus-Warteschlangen.
 
 * [Erste Schritte mit Service Bus-Warteschlangen](service-bus-dotnet-get-started-with-queues.md)
-* [Verwenden des Warteschlangenspeicherdiensts](../storage/storage-dotnet-how-to-use-queues.md)
+* [Verwenden des Warteschlangenspeicherdiensts](../storage/queues/storage-dotnet-how-to-use-queues.md)
 * [Bewährte Methoden für Leistungsoptimierungen mithilfe von Service Bus-Brokermessaging](service-bus-performance-improvements.md)
 * [Introducing Queues and Topics in Azure Service Bus (Einführung in Warteschlangen und Themen in Azure Service Bus) (Blogbeitrag)](http://www.code-magazine.com/article.aspx?quickid=1112041)
 * [The Developer's Guide to Service Bus (Entwicklerhandbuch für Service Bus)](http://www.cloudcasts.net/devguide/Default.aspx?id=11030)

@@ -17,10 +17,10 @@ ms.date: 5/27/2017
 ms.author: xshi
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
-ms.openlocfilehash: e7853892af550ec66fbc48b669a6c9b8ff18df8c
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: f48c4bd27b1df1d02090ed51172f943e50c76c3e
 ms.contentlocale: de-de
-ms.lasthandoff: 08/01/2017
+ms.lasthandoff: 08/23/2017
 
 ---
 
@@ -120,8 +120,8 @@ Für Sensorstifte verwenden Sie die folgende Verkabelung:
 | -----------------------  | ---------------------- | ------------: |
 | VDD (Stift 5G)             | 3,3 V PWR (Stift 1)       | Weißes Kabel   |
 | GND (Stift 7G)             | GND (Stift 6)            | Braunes Kabel   |
-| SCK (Stift 8G)             | I2C1 SDA (Stift 3)       | Oranges Kabel  |
-| SDI (Stift 10G)            | I2C1 SCL (Stift 5)       | Rotes Kabel     |
+| SDI (Stift 10G)            | I2C1 SDA (Stift 3)       | Rotes Kabel     |
+| SCK (Stift 8G)             | I2C1 SCL (Stift 5)       | Oranges Kabel  |
 | LED VDD (Stift 18F)        | GPIO 24 (Stift 18)       | Weißes Kabel   |
 | LED GND (Stift 17F)        | GND (Stift 20)           | Schwarzes Kabel   |
 

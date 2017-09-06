@@ -12,14 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2017
+ms.date: 08/10/2017
 ms.author: jingwang
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
-ms.openlocfilehash: 183cb2ad4f2a80f9a0e1e7a33f1cacae006c0df4
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 2779655aee3af3a351b30f18b4c9d9918e9f2210
 ms.contentlocale: de-de
-ms.lasthandoff: 05/16/2017
-
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Handbuch zur Leistung und Optimierung der Kopieraktivität
@@ -40,22 +39,19 @@ Dieser Artikel beschreibt Folgendes:
 > [!NOTE]
 > Falls Sie mit dem grundlegenden Konzept der Kopieraktivität noch nicht vertraut sind, lesen Sie [Verschieben von Daten mit der Kopieraktivität](data-factory-data-movement-activities.md) , bevor Sie sich mit diesem Artikel beschäftigen.
 >
->
 
 ## <a name="performance-reference"></a>Leistungsreferenz
+
+Als Referenz ist in der nachfolgenden Tabelle der Durchsatzwert beim Kopieren in MBit/s für die angegebenen Paare aus Quelle und Senke basierend auf internen Tests aufgeführt. Zu Vergleichszwecken wird zudem veranschaulicht, wie unterschiedliche Einstellungen der [Einheiten für Clouddatenverschiebungen](#cloud-data-movement-units) oder der [Skalierbarkeit des Datenverwaltungsgateways](data-factory-data-management-gateway-high-availability-scalability.md) (mehrere Gatewayknoten) zu einer verbesserten Kopierleistung beitragen können.
+
 ![Leistungsmatrix](./media/data-factory-copy-activity-performance/CopyPerfRef.png)
 
-> [!NOTE]
-> Sie können einen höheren Durchsatz erzielen, indem Sie mehr Einheiten für Datenverschiebungen (DMUs) als der standardmäßige DMU-Höchstwert verwenden, der für die Ausführung einer Cloud-zu-Cloud-Kopieraktivität 32 beträgt. Beispielsweise können Sie mit 100 DMUs Daten mit einer Rate von **1,0 GB/s** aus dem Azure-Blob nach Azure Data Lake Store kopieren. Informationen zu diesem Feature und das unterstützte Szenario finden Sie im Abschnitt [Einheiten für Clouddatenverschiebungen](#cloud-data-movement-units). Wenden Sie sich an den [Azure-Support](https://azure.microsoft.com/support/), um weitere DMUs anzufordern.
->
->
 
 **Beachten Sie Folgendes:**
 * Der Durchsatz wird mithilfe der folgenden Formel berechnet: [Größe der aus der Quelle gelesenen Daten]/[Ausführungsdauer der Kopieraktivität]
 * Die Leistungsreferenzwerte in der Tabelle wurden mit dem [TPC-H](http://www.tpc.org/tpch/) -Dataset in einer einzelnen Kopieraktivitätsausführung gemessen.
-* Wenn Sie Daten zwischen Clouddatenspeichern kopieren, legen Sie **cloudDataMovementUnits** zum Vergleich auf „1“ und „4“ (oder „8“) fest. **parallelCopies** wird nicht angegeben. Ausführliche Informationen zu diesen Features finden Sie unter [Parallele Kopie](#parallel-copy) .
 * In Azure-Datenspeichern befinden sich Quelle und Senke in der gleichen Azure-Region.
-* Bei einer hybriden Datenverschiebung (vom lokalen Speicherort in die Cloud oder umgekehrt) wurde eine einzelne Instanz des Gateways auf einem Computer ausgeführt, bei dem es sich nicht um den lokalen Datenspeicher handelte. Die Konfiguration finden Sie in der nächsten Tabelle. Bei Ausführung einer einzelnen Aktivität auf dem Gateway wurde vom Kopiervorgang nur einer kleiner Teil der CPU, des Arbeitsspeichers und der Netzwerkbandbreite des Testcomputers in Anspruch genommen.
+* Bei hybriden Kopieraktivitäten zwischen lokalen und Clouddatenspeichern wurde jeder Gatewayknoten auf einem Computer ausgeführt, bei dem es sich nicht um den lokalen Datenspeicher mit der folgenden Spezifikation handelte. Bei Ausführung einer einzelnen Aktivität auf dem Gateway wurde vom Kopiervorgang nur einer kleiner Teil der CPU, des Arbeitsspeichers und der Netzwerkbandbreite des Testcomputers in Anspruch genommen. Weitere Informationen finden Sie unter [Hinweise zum Datenverwaltungsgateway](#considerations-for-data-management-gateway).
     <table>
     <tr>
         <td>CPU</td>
@@ -70,6 +66,10 @@ Dieser Artikel beschreibt Folgendes:
         <td>Internetschnittstelle: 10 Gbit/s; Intranetschnittstelle: 40 Gbit/s</td>
     </tr>
     </table>
+
+
+> [!TIP]
+> Sie können einen höheren Durchsatz erzielen, indem Sie mehr Einheiten für Datenverschiebungen (DMUs) als der standardmäßige DMU-Höchstwert verwenden, der für die Ausführung einer Cloud-zu-Cloud-Kopieraktivität 32 beträgt. Beispielsweise können Sie mit 100 DMUs Daten mit einer Rate von **1,0 GB/s** aus dem Azure-Blob nach Azure Data Lake Store kopieren. Informationen zu diesem Feature und das unterstützte Szenario finden Sie im Abschnitt [Einheiten für Clouddatenverschiebungen](#cloud-data-movement-units). Wenden Sie sich an den [Azure-Support](https://azure.microsoft.com/support/), um weitere DMUs anzufordern.
 
 ## <a name="parallel-copy"></a>Parallele Kopie
 Daten können **innerhalb einer Kopieraktivitätsausführung parallel**aus der Quelle gelesen oder am Ziel geschrieben werden. Dieses Feature erhöht den Durchsatz eines Kopiervorgangs und verringert den Zeitaufwand bei der Datenverschiebung.
@@ -115,7 +115,6 @@ Für die **cloudDataMovementUnits**-Eigenschaft **sind folgende Werte zulässig*
 
 > [!NOTE]
 > Sollten Sie zur Steigerung des Durchsatzes weitere Cloud-DMUs benötigen, wenden Sie sich an den [Azure-Support](https://azure.microsoft.com/support/). Der Wert 8 und höher kann derzeit nur verwendet werden, wenn Sie **mehrere Dateien aus „Blob Storage/Data Lake Store/Amazon S3/Cloud-FTP/Cloud-SFTP“ in „Blob Storage/Data Lake Store/Azure SQL-Datenbank“ kopieren**.
->
 >
 
 ### <a name="parallelcopies"></a>parallelCopies
@@ -247,15 +246,21 @@ Wir empfehlen, die folgenden Schritte auszuführen, um die Leistung des Data Fac
    * Leistungsfeatures:
      * [Parallele Kopie](#parallel-copy)
      * [Einheiten für Clouddatenverschiebungen](#cloud-data-movement-units)
-     * [Gestaffeltes Kopieren](#staged-copy)   
+     * [Gestaffeltes Kopieren](#staged-copy)
+     * [Datenverwaltungsgateway – Skalierbarkeit](data-factory-data-management-gateway-high-availability-scalability.md)
+   * [Gateway zur Datenverwaltung](#considerations-for-data-management-gateway)
    * [Quelle](#considerations-for-the-source)
    * [Senke](#considerations-for-the-sink)
    * [Serialisierung und Deserialisierung](#considerations-for-serialization-and-deserialization)
    * [Komprimierung](#considerations-for-compression)
    * [Spaltenzuordnung](#considerations-for-column-mapping)
-   * [Gateway zur Datenverwaltung](#considerations-for-data-management-gateway)
    * [Weitere Überlegungen](#other-considerations)
 3. **Erweitern der Konfiguration auf das gesamte Dataset** Wenn Sie mit den Ausführungsergebnissen und mit der Leistung zufrieden sind, können Sie die Definition und den aktiven Zeitraum der Pipeline auf Ihr gesamtes Dataset erweitern.
+
+## <a name="considerations-for-data-management-gateway"></a>Hinweise zum Datenverwaltungsgateway
+**Gatewaysetup:** Es wird empfohlen, das Datenverwaltungsgateway auf einem dedizierten Computer zu hosten. Siehe [Hinweise zum Datenverwaltungsgateway](data-factory-data-management-gateway.md#considerations-for-using-gateway).  
+
+**Überwachung und zentrales Hochskalieren/horizontales Skalieren des Gateways:** In einem einzelnen logischen Gateway mit einem oder mehreren Gatewayknoten können mehrere Kopieraktivitäten gleichzeitig parallel ausgeführt werden. Sie können auf einem Gatewaycomputer nahezu in Echtzeit Momentaufnahmen der Ressourcenverwendung (CPU, Arbeitsspeicher, Netzwerk [Eingang/Ausgang] usw.) sowie die Anzahl gleichzeitig ausführbarer Aufträge im Vergleich zur Begrenzung im Azure-Portal anzeigen. Entsprechende Informationen finden Sie unter [Überwachen des Gateways im Portal](data-factory-data-management-gateway.md#monitor-gateway-in-the-portal). Wenn Sie einen hohen Bedarf an Hybriddatenverschiebungen mit einer großen Anzahl an gleichzeitigen Ausführungen der Kopieraktivität oder einem umfangreichen Volumen an zu kopierenden Daten haben, sollten Sie [das zentrale Hochskalieren oder horizontale Skalieren des Gateways](data-factory-data-management-gateway-high-availability-scalability.md#scale-considerations) erwägen, um zur Optimierung der Kopieraktivität die Ressourcen optimaler zu nutzen oder weitere Ressourcen bereitzustellen. 
 
 ## <a name="considerations-for-the-source"></a>Hinweise zur Quelle
 ### <a name="general"></a>Allgemein
@@ -342,13 +347,6 @@ Mit der **columnMappings** -Eigenschaft der Kopieraktivität können Eingabespal
 
 Falls es sich bei Ihrem Quelldatenspeicher um einen abfragbaren Speicher (beispielsweise um einen relationalen Speicher wie die SQL-Datenbank oder SQL Server) oder um einen NoSQL-Speicher (etwa um Table Storage oder Azure Cosmos DB) handelt, empfiehlt es sich unter Umständen, die Logik für Filterung und Neuanordnung von Spalten in die **query**-Eigenschaft auszulagern, anstatt die Spaltenzuordnung zu verwenden. Dadurch erfolgt die Projektion, während der Datenverschiebungsdienst Daten aus dem Quelldatenspeicher liest, was deutlich effizienter ist.
 
-## <a name="considerations-for-data-management-gateway"></a>Hinweise zum Datenverwaltungsgateway
-Empfehlungen für die Gatewayeinrichtung finden Sie unter [Überlegungen zur Verwendung des Datenverwaltungsgateways](data-factory-data-management-gateway.md#considerations-for-using-gateway).
-
-**Gatewaycomputerumgebung:**Es wird empfohlen, das Datenverwaltungsgateway auf einem dedizierten Computer zu hosten. Verwenden Sie Tools wie den Systemmonitor, um die Auslastung von CPU, Arbeitsspeicher und Bandbreite während eines Kopiervorgangs auf Ihrem Gatewaycomputer zu untersuchen. Verwenden Sie einen leistungsfähigeren Computer, falls CPU, Arbeitsspeicher oder Netzwerkbandbreite nicht mehr ausreichen.
-
-**Gleichzeitige Ausführungen der Kopieraktivität:**In einer einzelnen Instanz des Datenverwaltungsgateways können mehrere Kopieraktivitäten gleichzeitig (also parallel) ausgeführt werden. Die maximale Anzahl gleichzeitig ausführbarer Aufträge wird auf der Grundlage der Hardwarekonfiguration des Gatewaycomputers berechnet. Weitere Kopieraufträge werden der Warteschlange hinzugefügt, bis sie vom Gateway abgerufen werden oder bis für einen anderen Auftrag ein Timeout auftritt. Zur Vermeidung von Ressourcenkonflikten auf dem Gatewaycomputer können Sie den Zeitplan Ihrer Kopieraktivität bereitstellen, um die Anzahl von Kopieraufträgen in der Warteschlange zu verringern, oder die Last auf mehrere Gatewaycomputer verteilen.
-
 ## <a name="other-considerations"></a>Weitere Überlegungen
 Wenn die zu kopierenden Daten sehr umfangreich sind, können Sie Ihre Geschäftslogik so anpassen, dass die Daten mithilfe des Aufteilungsmechanismus von Data Factory weiter partitioniert werden. Planen Sie anschließend eine häufigere Ausführung der Kopieraktivität, um die Datengröße für die einzelnen Kopieraktivitätsausführungen zu verringern.
 
@@ -404,7 +402,7 @@ In diesem Fall verlangsamt unter Umständen die BZIP2-Datenkomprimierung die ges
 ## <a name="reference"></a>Referenz
 Hier finden Sie Referenzen zur Leistungsüberwachung und -optimierung für einige der unterstützten Datenspeicher:
 
-* Azure Storage (einschließlich Blob Storage und Table Storage): [Skalierbarkeits- und Leistungsziele für Azure Storage](../storage/storage-scalability-targets.md) und [Checkliste zu Leistung und Skalierbarkeit von Microsoft Azure Storage](../storage/storage-performance-checklist.md)
+* Azure Storage (einschließlich Blob Storage und Table Storage): [Skalierbarkeits- und Leistungsziele für Azure Storage](../storage/common/storage-scalability-targets.md) und [Checkliste zu Leistung und Skalierbarkeit von Microsoft Azure Storage](../storage/common/storage-performance-checklist.md)
 * Azure SQL-Datenbank: Sie können [die Leistung überwachen](../sql-database/sql-database-single-database-monitor.md) und den prozentualen Anteil der Datenbanktransaktionseinheit (Database Transaction Unit, DTU) überprüfen.
 * Azure SQL Data Warehouse: Die Leistung wird in Data Warehouse-Einheiten (Data Warehouse Units, DWUs) gemessen. Weitere Informationen finden Sie unter [Verwalten von Computeleistung in Azure SQL Data Warehouse (Übersicht)](../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md).
 * Azure Cosmos DB: [Leistungsstufen in Azure Cosmos DB](../documentdb/documentdb-performance-levels.md)

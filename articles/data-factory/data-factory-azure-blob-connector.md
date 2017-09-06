@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jingwang
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 61fd58063063d69e891d294e627ae40cb878d65b
-ms.openlocfilehash: 7be5e5095b8aa6f2ae3d8c0b636883c4ff7ced63
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 2cf955b52010869a4e753c441e17bdd32fd2e63d
 ms.contentlocale: de-de
-ms.lasthandoff: 06/23/2017
-
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-using-azure-data-factory"></a>Kopieren von Daten nach oder aus Azure Blob Storage mithilfe von Azure Data Factory
@@ -168,7 +167,7 @@ Dieser Abschnitt beschreibt das resultierende Verhalten des Kopiervorgangs für 
 Es wird nun gezeigt, wie Daten schnell in einen/aus einem Azure Blob Storage kopiert werden können. In dieser exemplarischen Vorgehensweise haben sowohl der Quell- als auch der Zieldatenspeicher den Typ „Azure Blob Storage“. In der Pipeline in dieser exemplarischen Vorgehensweise werden Daten aus einem Ordner in einen anderen Ordner im selben BLOB-Container kopiert. Diese exemplarische Vorgehensweise ist bewusst einfach gehalten, um Einstellungen oder Eigenschaften für den Fall zu veranschaulichen, dass Blob Storage als Quelle oder Senke verwendet wird. 
 
 ### <a name="prerequisites"></a>Voraussetzungen
-1. Erstellen Sie ein allgemein verwendbares **Azure Storage-Konto** (Azure-Speicherkonto), wenn Sie noch keines haben. In dieser exemplarischen Vorgehensweise verwenden Sie den Blob Storage sowohl als **Quell**- als auch als **Ziel**datenspeicher. Wenn Sie kein Azure Storage-Konto haben, finden Sie im Artikel [Erstellen eines Speicherkontos](../storage/storage-create-storage-account.md#create-a-storage-account) Schritte zum Erstellen eines Azure Storage-Kontos.
+1. Erstellen Sie ein allgemein verwendbares **Azure Storage-Konto** (Azure-Speicherkonto), wenn Sie noch keines haben. In dieser exemplarischen Vorgehensweise verwenden Sie den Blob Storage sowohl als **Quell**- als auch als **Ziel**datenspeicher. Wenn Sie kein Azure Storage-Konto haben, finden Sie im Artikel [Erstellen eines Speicherkontos](../storage/common/storage-create-storage-account.md#create-a-storage-account) Schritte zum Erstellen eines Azure Storage-Kontos.
 2. Erstellen Sie einen BLOB-Container namens **adfblobconnector** im Speicherkonto. 
 4. Erstellen Sie einen Ordner namens **input** im **adfblobconnector**-Container.
 5. Erstellen Sie eine Datei namens **emp.txt** mit dem folgenden Inhalt, und laden Sie diese Datei in den Ordner **input** hoch, indem Sie ein Tool wie [Azure-Speicher-Explorer](https://azurestorageexplorer.codeplex.com/) verwenden.
@@ -263,8 +262,7 @@ Es wird nun gezeigt, wie Daten schnell in einen/aus einem Azure Blob Storage kop
 ### <a name="monitor-the-pipeline-copy-task"></a>Überwachen der Pipeline (Kopieraufgabe)
 
 1. Klicken Sie auf der Seite **Bereitstellung** auf den Link `Click here to monitor copy pipeline`. 
-2. Nun sollte die **Anwendung für Überwachen und Verwalten** auf einer separaten Registerkarte angezeigt werden. 
-    ![Anwendung für Überwachen und Verwalten](media/data-factory-azure-blob-connector/monitor-manage-app.png)
+2. Nun sollte die **Anwendung für Überwachen und Verwalten** auf einer separaten Registerkarte angezeigt werden.  ![Anwendung für Überwachen und Verwalten](media/data-factory-azure-blob-connector/monitor-manage-app.png)
 3. Ändern Sie oben die **Start**zeit in `04/19/2017` und die **End**zeit in `04/27/2017`, und klicken Sie dann auf **Anwenden**. 
 4. In der Liste **AKTIVITÄTSFENSTER** sollten nun fünf Aktivitätsfenster zu sehen sein. Die Zeiten unter **Fensterstart** sollten alle Tage ab der Pipelinestart- bis zur Pipelinendzeit abdecken. 
 5. Klicken Sie mehrmals auf die Schaltfläche **Aktualisieren** für die Liste **AKTIVITÄTSFENSTER**, bis der Status jedes Aktivitätsfensters auf „Bereit“ festgelegt ist. 

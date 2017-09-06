@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/05/2017
 ms.author: glenga
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: b53b044242f339d00dcc947c213dacb5dffdcce6
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: bfc69712a1ddcd4a225fd35cfcceb7fa0616887d
 ms.contentlocale: de-de
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 
@@ -123,7 +123,7 @@ Die meisten Anwendungen müssen Daten speichern, es ist also egal, wie Sie Ihre 
 
     >**Verwendung**: Wenn Ihre App nicht relationale Daten speichert, wie Schlüssel-Wert-Paare (Tabellen), Blobs, Dateifreigaben oder Meldungen (Warteschlangen).
 
-    >**Erste Schritte**: Wählen Sie aus den folgenden Speichertypen aus: [Blobs](../../storage/storage-dotnet-how-to-use-blobs.md), [Tabellen](../../storage/storage-dotnet-how-to-use-tables.md), [Warteschlangen](../../storage/storage-dotnet-how-to-use-queues.md) oder [Dateien](../../storage/storage-dotnet-how-to-use-files.md).
+    >**Erste Schritte**: Wählen Sie aus den folgenden Speichertypen aus: [Blobs](../../storage/blobs/storage-dotnet-how-to-use-blobs.md), [Tabellen](../../cosmos-db/table-storage-how-to-use-dotnet.md), [Warteschlangen](../../storage/queues/storage-dotnet-how-to-use-queues.md) oder [Dateien](../../storage/files/storage-dotnet-how-to-use-files.md).
 
 -   **Azure DocumentDB**: Ein vollständig verwalteter und skalierbarer NoSQL-Datenbankdienst, der SQL-Abfragen für Objektdaten ermöglicht. Sie können auf DocumentDB zugreifen, indem Sie vorhandene MongoDB-Treiber verwenden.
     >**Verwendung:** Wenn Ihre Anwendung in der Lage sein muss, SQL-Abfragen für JSON-Dokumente auszuführen, oder wenn Sie MongoDB verwenden.

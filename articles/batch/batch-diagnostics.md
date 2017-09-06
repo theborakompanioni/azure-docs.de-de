@@ -16,10 +16,10 @@ ms.date: 05/22/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
-ms.openlocfilehash: 8221f34641f2e59bbcaf05c3a17f23411df6b634
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: b7bc6fd9921ab0f2374ace33ea5c1ab93a78f860
 ms.contentlocale: de-de
-ms.lasthandoff: 08/07/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="log-events-for-diagnostic-evaluation-and-monitoring-of-batch-solutions"></a>Protokollereignisse für die Diagnoseauswertung und -überwachung von Batch-Lösungen
@@ -33,7 +33,7 @@ Wie bei vielen Azure-Diensten werden vom Batch-Dienst Protokollereignisse für b
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * [Azure Batch-Konto](batch-account-create-portal.md)
-* [Azure Storage-Konto](../storage/storage-create-storage-account.md#create-a-storage-account)
+* [Azure Storage-Konto](../storage/common/storage-create-storage-account.md#create-a-storage-account)
   
   Wenn Sie Batch-Diagnoseprotokolle beibehalten möchten, müssen Sie ein Azure Storage-Konto erstellen, unter dem Azure die Protokolle speichert. Geben Sie dieses Storage-Konto an, wenn Sie die [Diagnoseprotokollierung](#enable-diagnostic-logging) für Ihr Batch-Konto aktivieren. Das Storage-Konto, das Sie beim Aktivieren der Protokollsammlung angeben, ist nicht mit dem verknüpften Speicherkonto identisch, das in den Artikeln [Anwendungspakete](batch-application-packages.md) und [Beibehalten der Ausgabe](batch-task-output.md) beschrieben wird.
   

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2017
 ms.author: bradsev;weig
-translationtype: Human Translation
-ms.sourcegitcommit: 29c718d0c34d1e2f9d17b285a7270541a9ff15cf
-ms.openlocfilehash: c7444d457592538a26834091c77f49a3c1ef8591
-ms.lasthandoff: 02/24/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 34fbe99572b4a6cee73de6ae5412a0ec09dd1ccc
+ms.contentlocale: de-de
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="scalable-data-science-with-azure-data-lake-an-end-to-end-walkthrough"></a>Skalierbare Data Science mit Azure Data Lake: lückenlose exemplarische Vorgehensweise
@@ -85,7 +85,7 @@ Erstellen Sie im [Azure-Portal](http://portal.azure.com)ein Azure Data Lake Anal
  ![4](./media/machine-learning-data-science-process-data-lake-walkthrough/4-create-ADLA-new.PNG)
 
 ### <a name="create-an-azure-blob-storage-account"></a>Erstellen eines Azure Blob Storage-Kontos
-Erstellen Sie im [Azure-Portal](http://portal.azure.com)ein Azure-Blobspeicherkonto. Weitere Informationen finden Sie unter [Informationen zu Azure-Speicherkonten](../storage/storage-create-storage-account.md)im Abschnitt „Erstellen eines Speicherkontos“.
+Erstellen Sie im [Azure-Portal](http://portal.azure.com)ein Azure-Blobspeicherkonto. Weitere Informationen finden Sie unter [Informationen zu Azure-Speicherkonten](../storage/common/storage-create-storage-account.md)im Abschnitt „Erstellen eines Speicherkontos“.
 
  ![5](./media/machine-learning-data-science-process-data-lake-walkthrough/5-Create-Azure-Blob.PNG)
 
@@ -147,7 +147,7 @@ Zum Ausführen von U-SQL öffnen Sie Visual Studio, klicken auf **Datei--> Neu--
 ![9](./media/machine-learning-data-science-process-data-lake-walkthrough/9-portal-submit-job.PNG)
 
 ### <a name="ingest"></a>Datenerfassung: Einlesen von Daten aus öffentlichem Blob
-Der Speicherort der Daten im Azure-Blob wird als **wasb://container_name@blob_storage_account_name.blob.core.windows.net/blobname** referenziert und kann mithilfe von **Extractors.Csv()** extrahiert werden. Geben Sie in den folgenden Skripts für container_name@blob_storage_account_name in der „wasb“-Adresse Ihre eigenen Container- und Speicherkontonamen ein. Da die Dateinamen das gleiche Format haben, können wir **trip\_data_{\*\}.csv** verwenden, um alle 12 Fahrtendateien einzulesen. 
+Der Speicherort der Daten im Azure-Blob wird als **wasb://container_name@blob_storage_account_name.blob.core.windows.net/blob_name** referenziert und kann mithilfe von **Extractors.Csv()** extrahiert werden. Geben Sie in den folgenden Skripts für container_name@blob_storage_account_name in der „wasb“-Adresse Ihre eigenen Container- und Speicherkontonamen ein. Da die Dateinamen das gleiche Format haben, können wir **trip\_data_{\*\}.csv** verwenden, um alle 12 Fahrtendateien einzulesen. 
 
     ///Read in Trip data
     @trip0 =
@@ -170,7 +170,7 @@ Der Speicherort der Daten im Azure-Blob wird als **wasb://container_name@blob_st
     FROM "wasb://container_name@blob_storage_account_name.blob.core.windows.net/nyctaxitrip/trip_data_{*}.csv"
     USING Extractors.Csv();
 
-Da die erste Zeile Überschriften enthält, müssen wir die Überschriften entfernen und Spaltentypen entsprechend anpassen. Wir können die verarbeiteten Daten entweder mithilfe von **swebhdfs://data_lake_storage_name.azuredatalakestorage.net/folder_name/file_name**_ in Azure Data Lake Store oder mithilfe von **wasb://container_name@blob_storage_account_name.blob.core.windows.net/blobname** in einem Azure Blob Storage-Konto speichern. 
+Da die erste Zeile Überschriften enthält, müssen wir die Überschriften entfernen und Spaltentypen entsprechend anpassen. Wir können die verarbeiteten Daten entweder mithilfe von **swebhdfs://data_lake_storage_name.azuredatalakestorage.net/folder_name/file_name_** in Azure Data Lake Store oder mithilfe von **wasb://container_name@blob_storage_account_name.blob.core.windows.net/blob_name** in einem Azure Blob Storage-Konto speichern. 
 
     // change data types
     @trip =

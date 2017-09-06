@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: gwallace
 ms.translationtype: HT
-ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
-ms.openlocfilehash: 83a88df8c20c89a72047884b69c52e12adf1549b
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: c29f5afe59f57112fe1f115df6bc53645f3c0d34
 ms.contentlocale: de-de
-ms.lasthandoff: 07/13/2017
+ms.lasthandoff: 08/23/2017
 
 ---
 
@@ -25,33 +25,8 @@ ms.lasthandoff: 07/13/2017
 
 Die Konnektivitätsfunktion von Network Watcher bietet die Möglichkeit, eine direkte TCP-Verbindung von einem virtuellen Computer zu einem anderen virtuellen Computer (VM), einem vollqualifizierten Domänennamen (FQDN), einem URI oder einer IPv4-Adresse zu überprüfen. Netzwerkszenarios sind komplex: Sie werden mithilfe von Netzwerksicherheitsgruppen, Firewalls, benutzerdefinierten Routen und Ressourcen, die von Azure bereitgestellt werden, implementiert. Komplexe Konfigurationen stellen eine große Herausforderung bei der Behandlung von Konnektivitätsproblemen dar. Network Watcher trägt dazu bei, die zum Suchen und Erkennen von Konnektivitätsproblemen benötigte Zeit zu verkürzen. Die zurückgegebenen Ergebnisse können Einblicke in die Frage geben, ob ein Konnektivitätsproblem auf ein Problem mit einer Plattform oder einer Benutzerkonfiguration zurückzuführen ist. Die Konnektivität kann mit [PowerShell](network-watcher-connectivity-powershell.md), [Azure CLI](network-watcher-connectivity-cli.md) und [REST-API](network-watcher-connectivity-rest.md) überprüft werden.
 
-[!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
-
 > [!IMPORTANT]
 > Für die Konnektivitätsprüfung ist die VM-Erweiterung `AzureNetworkWatcherExtension` erforderlich. Informationen zur Installation der Erweiterung finden Sie für einen virtuellen Windows-Computer unter [VM-Erweiterung für den Network Watcher-Agent für Windows](../virtual-machines/windows/extensions-nwa.md) und für einen virtuellen Linux-Computer unter [VM-Erweiterung für den Network Watcher-Agent für Linux](../virtual-machines/linux/extensions-nwa.md).
-
-## <a name="register-the-preview-capability"></a>Registrieren der Vorschaufunktion
-
-Die Konnektivitätsprüfung befindet sich derzeit in der öffentlichen Vorschauphase. Wenn Sie diese Funktion verwenden möchten, müssen Sie sie registrieren. Führen Sie zu diesem Zweck das folgende PowerShell-Beispiel aus:
-
-```powershell
-Register-AzureRmProviderFeature -FeatureName AllowNetworkWatcherConnectivityCheck  -ProviderNamespace Microsoft.Network
-Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
-```
-
-Um zu überprüfen, ob die Registrierung erfolgreich war, führen Sie das folgende PowerShell-Beispiel aus:
-
-```powershell
-Get-AzureRmProviderFeature -FeatureName AllowNetworkWatcherConnectivityCheck  -ProviderNamespace  Microsoft.Network
-```
-
-Wenn das Feature ordnungsgemäß registriert wurde, sollte die Ausgabe der folgenden ähneln:
-
-```
-FeatureName         ProviderName      RegistrationState
------------         ------------      -----------------
-AllowNetworkWatcherConnectivityCheck  Microsoft.Network Registered
-```
 
 ## <a name="response"></a>Antwort
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/21/2017
 ms.author: gokuma;weig;bradsev
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: b154bd42c0f8bc6e185fa871b21249cad2869e72
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 45af1cd3a05b483429d2307659f1882ef28921f6
 ms.contentlocale: de-de
-ms.lasthandoff: 07/27/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="ten-things-you-can-do-on-the-data-science-virtual-machine"></a>Zehn Dinge, die Sie mit der Data Science Virtual Machine machen können
@@ -262,7 +262,7 @@ Azure Blob ist ein zuverlässiger, wirtschaftlicher Cloudspeicher für große un
 
 ![Create_Azure_Blob](./media/machine-learning-data-science-vm-do-ten-things/Create_Azure_Blob.PNG)
 
-* Stellen Sie sicher, dass sich das vorinstallierte Befehlszeilentool AzCopy in ```C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy.exe``` befindet. Sie können das Verzeichnis, das „azcopy.exe“ enthält, Ihrer PATH-Umgebungsvariable hinzufügen, damit Sie beim Ausführen des Tools nicht den ganzen Befehlspfad eingeben müssen. Weitere Informationen zu AzCopy finden Sie in der [AzCopy-Dokumentation](../storage/storage-use-azcopy.md)
+* Stellen Sie sicher, dass sich das vorinstallierte Befehlszeilentool AzCopy in ```C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy.exe``` befindet. Sie können das Verzeichnis, das „azcopy.exe“ enthält, Ihrer PATH-Umgebungsvariable hinzufügen, damit Sie beim Ausführen des Tools nicht den ganzen Befehlspfad eingeben müssen. Weitere Informationen zu AzCopy finden Sie in der [AzCopy-Dokumentation](../storage/common/storage-use-azcopy.md)
 * Starten Sie das Tool Azure-Speicher-Explorer. Das Tool kann von der Seite [Microsoft Azure Storage Explorer](http://storageexplorer.com/)heruntergeladen werden. 
 
 ![AzureStorageExplorer_v4](./media/machine-learning-data-science-vm-do-ten-things/AzureStorageExplorer_v4.png)

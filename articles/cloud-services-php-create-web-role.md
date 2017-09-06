@@ -14,11 +14,11 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 89092e75d10ece044be61ceba0baf16c9e1599be
-ms.lasthandoff: 04/27/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 214fdcfe20f3fa4ebcbe41308404f8b7e7d15310
+ms.contentlocale: de-de
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="how-to-create-php-web-and-worker-roles"></a>Erstellen von PHP-Web- und Workerrollen
@@ -179,7 +179,7 @@ Führen Sie die folgenden Schritte aus, um eine Workerrolle für die Verwendung 
 6. Veröffentlichen Sie die Anwendung entsprechend der Beschreibung im Abschnitt [Veröffentlichen der Anwendung](#publish-your-application) weiter unten.
 
 ## <a name="run-your-application-in-the-compute-and-storage-emulators"></a>Ausführen der Anwendung in den Server- und Speicheremulatoren
-Die Azure-Emulatoren bieten eine lokale Umgebung, in der Sie Ihre Azure-Anwendung testen können, bevor Sie sie in der Cloud bereitstellen. Es gibt einige Unterschiede zwischen den Emulatoren und der Azure-Umgebung. Zum besseren Verständnis finden Sie weitere Informationen unter [Einsatz des Azure-Speicheremulators für Entwicklung und Tests](storage/storage-use-emulator.md).
+Die Azure-Emulatoren bieten eine lokale Umgebung, in der Sie Ihre Azure-Anwendung testen können, bevor Sie sie in der Cloud bereitstellen. Es gibt einige Unterschiede zwischen den Emulatoren und der Azure-Umgebung. Zum besseren Verständnis finden Sie weitere Informationen unter [Einsatz des Azure-Speicheremulators für Entwicklung und Tests](storage/common/storage-use-emulator.md).
 
 PHP muss lokal installiert sein, um den Serveremulator nutzen zu können. Der Serveremulator verwendet Ihre lokale PHP-Installation, um die Anwendung auszuführen.
 

@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 06/19/2017
 ms.author: bradsev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: 09b65ccd77f6e0898f07c4262940e517a8f913fa
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 47f4441612be4f363ba82cc22b09786a6f3bfdc3
 ms.contentlocale: de-de
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="compute-context-options-for-r-server-on-hdinsight"></a>Rechenkontextoptionen für R Server in HDInsight
@@ -30,7 +29,7 @@ Microsoft R Server für Azure HDInsight bestimmt durch Festlegen des Computekont
 Der Edgeknoten eines Clusters ist ein praktischer Ort für die Verbindungsherstellung mit dem Cluster und die Ausführung Ihrer R-Skripts. Mit einem Edgeknoten haben Sie die Möglichkeit, die parallelisierten verteilten Funktionen von ScaleR in allen Kernen der Edgeknotenserver auszuführen. Außerdem können Sie sie über die Knoten des Clusters hinweg ausführen, indem Sie Hadoop MapReduce von ScaleR oder Spark-Rechenkontexte verwenden.
 
 ## <a name="microsoft-r-server-on-azure-hdinsight"></a>Microsoft R Server für Azure HDInsight
-[Microsoft R Server für Azure HDInsight](hdinsight-hadoop-r-server-overview.md) bietet die neuesten Funktionen für die R-basierte Analyse. Die verwendeten Daten sind in einem HDFS-Container in Ihrem [Azure Blob Storage-Konto](../storage/storage-introduction.md "Azure Blob Storage"), einem Data Lake Store oder im lokalen Dateisystem von Linux gespeichert. Da R Server auf Open Source R basiert, stehen Ihnen bei der Erstellung R-basierter Anwendungen alle über 8000 Open Source R-Pakete zur Verfügung. Auch die Routinen in [RevoScaleR](https://msdn.microsoft.com/microsoft-r/scaler/scaler) – dem in R Server enthaltenen Big Data-Analysepaket von Microsoft – können genutzt werden.  
+[Microsoft R Server für Azure HDInsight](hdinsight-hadoop-r-server-overview.md) bietet die neuesten Funktionen für die R-basierte Analyse. Die verwendeten Daten sind in einem HDFS-Container in Ihrem [Azure Blob Storage-Konto](../storage/common/storage-introduction.md "Azure Blob Storage"), einem Data Lake Store oder im lokalen Dateisystem von Linux gespeichert. Da R Server auf Open Source R basiert, stehen Ihnen bei der Erstellung R-basierter Anwendungen alle über 8000 Open Source R-Pakete zur Verfügung. Auch die Routinen in [RevoScaleR](https://msdn.microsoft.com/microsoft-r/scaler/scaler) – dem in R Server enthaltenen Big Data-Analysepaket von Microsoft – können genutzt werden.  
 
 ## <a name="compute-contexts-for-an-edge-node"></a>Computekontexte für einen Edgeknoten
 Im Allgemeinen wird ein R-Skript, das in R Server auf dem Edgeknoten ausgeführt wird, im R-Interpreter auf diesem Knoten ausgeführt. Bei Schritten, in denen eine ScaleR-Funktion aufgerufen wird, ist dies nicht der Fall. Die ScaleR-Aufrufe werden in einer Computeumgebung ausgeführt, die dadurch bestimmt wird, wie Sie den ScaleR-Computekontext festlegen.  Wenn Sie Ihr R-Skript auf einem Edgeknoten ausführen, sind für den Computekontext folgende Werte möglich:

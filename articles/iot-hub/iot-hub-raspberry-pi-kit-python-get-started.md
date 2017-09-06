@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 7/31/2017
 ms.author: xshi
 ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
-ms.openlocfilehash: 08c4df6a4d7fd3d80f047192125afc9f5831999a
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: 1b1a9dc960846cbc15ce09d0fd106e1492937439
 ms.contentlocale: de-de
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 08/23/2017
 
 ---
 
@@ -108,7 +108,7 @@ Weitere Referenzdokumente zum Aktivieren von SSH und I2C finden Sie auf [raspber
 
 Verwenden Sie die Steckplatine und Jumperdrähte, um eine LED und einen BME280-Sensor wie folgt zu verbinden. Wenn Sie keinen Sensor haben, [überspringen Sie diesen Abschnitt](#connect-pi-to-the-network).
 
-![Die Raspberry Pi- und Sensorverbindung](media/iot-hub-raspberry-pi-kit-c-get-started/3_raspberry-pi-sensor-connection.png)
+![Die Raspberry Pi- und Sensorverbindung](media/iot-hub-raspberry-pi-kit-node-get-started/3_raspberry-pi-sensor-connection.png)
 
 Mit dem BME280-Sensor können Daten zur Temperatur und Luftfeuchtigkeit erfasst werden. Die LED blinkt, wenn der Kommunikationsvorgang zwischen dem Gerät und der Cloud aktiv ist. 
 
@@ -116,27 +116,27 @@ Für Sensorstifte verwenden Sie die folgende Verkabelung:
 
 | Start (Sensor und LED)     | Ende (Board)            | Kabelfarbe   |
 | -----------------------  | ---------------------- | ------------: |
-| LED VDD (Stift 5G)         | GPIO 4 (Stift 7)         | Weißes Kabel   |
-| LED GND (Stift 6G)         | GND (Stift 6)            | Schwarzes Kabel   |
-| VDD (Stift 18F)            | 3,3 V PWR (Stift 17)      | Weißes Kabel   |
-| GND (Stift 20F)            | GND (Stift 20)           | Schwarzes Kabel   |
-| SCK (Stift 21F)            | SPI0 SCLK (Stift 23)     | Oranges Kabel  |
-| SDO (Stift 22F)            | SPI0 MISO (Stift 21)     | Gelbes Kabel  |
-| SDI (Stift 23F)            | SPI0 MOSI (Stift 19)     | Grünes Kabel   |
-| CS (Stift 24F)             | SPI0 CS (Stift 24)       | Blaues Kabel    |
+| VDD (Stift 5G)             | 3,3 V PWR (Stift 1)       | Weißes Kabel   |
+| GND (Stift 7G)             | GND (Stift 6)            | Braunes Kabel   |
+| SDI (Stift 10G)            | I2C1 SDA (Stift 3)       | Rotes Kabel     |
+| SCK (Stift 8G)             | I2C1 SCL (Stift 5)       | Oranges Kabel  |
+| LED VDD (Stift 18F)        | GPIO 24 (Stift 18)       | Weißes Kabel   |
+| LED GND (Stift 17F)        | GND (Stift 20)           | Schwarzes Kabel   |
 
 Klicken Sie hier, um die [Raspberry Pi 2 und 3-Stiftzuordnungen](https://developer.microsoft.com/windows/iot/docs/pinmappingsrpi) zur Referenz anzuzeigen.
 
 Nachdem Sie den BME280 erfolgreich mit Ihrem Raspberry Pi verbunden haben, sollte das Gerät wie in der nachstehenden Abbildung aussehen.
 
-![Verbindung zwischen Pi und BME280](media/iot-hub-raspberry-pi-kit-c-get-started/4_connected-pi.jpg)
+![Verbindung zwischen Pi und BME280](media/iot-hub-raspberry-pi-kit-node-get-started/4_connected-pi.jpg)
 
 ### <a name="connect-pi-to-the-network"></a>Verbindung zwischen Pi und dem Netzwerk
 
 Verbinden Sie den Raspberry Pi mit dem Micro-USB-Kabel mit der Stromversorgung. Verwenden Sie das Ethernet-Kabel zum Verbinden von Pi mit Ihrem verkabelten Netzwerk, oder befolgen Sie die [Anweisungen der Raspberry Pi Foundation](https://www.raspberrypi.org/learning/software-guide/wifi/), um Pi mit Ihrem WLAN zu verbinden. Notieren Sie sich die [IP-Adresse von Pi](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-3-network-setup/finding-your-pis-ip-address), nachdem es eine Verbindung zum Netzwerk hergestellt hat.
 
-![Mit verkabeltem Netzwerk verbunden](media/iot-hub-raspberry-pi-kit-c-get-started/5_power-on-pi.jpg)
+![Mit verkabeltem Netzwerk verbunden](media/iot-hub-raspberry-pi-kit-node-get-started/5_power-on-pi.jpg)
 
+> [!NOTE]
+> Stellen Sie sicher, dass der Raspberry Pi mit dem gleichen Netzwerk wie der Computer verbunden ist. Wenn der Computer beispielsweise mit einem Drahtlosnetzwerk und Pi mit einem verkabelten Netzwerk verbunden ist, wird in der Ausgabe des devdisco-Befehls die IP-Adresse möglicherweise nicht angezeigt.
 
 ## <a name="run-a-sample-application-on-pi"></a>Ausführen einer Beispielanwendung auf Pi
 

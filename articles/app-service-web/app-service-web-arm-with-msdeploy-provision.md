@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/31/2016
 ms.author: jodehavi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: 071be50ff7f72ecd711b2c3036f39b70df01a6ba
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: a0e944d0d74ecb72a919538d54db330cbbdeef64
 ms.contentlocale: de-de
-ms.lasthandoff: 05/26/2017
-
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="deploy-a-web-app-with-msdeploy-custom-hostname-and-ssl-certificate"></a>Bereitstellen einer Web-App mit MSDeploy, benutzerdefinierten Hostnamen und SSL-Zertifikat
@@ -123,7 +122,7 @@ Sie sehen, dass für die MSDeploy-Ressource eine **packageUri** -Eigenschaft ver
 
     "packageUri": "[concat(parameters('_artifactsLocation'), '/', parameters('webDeployPackageFolder'), '/', parameters('webDeployPackageFileName'), parameters('_artifactsLocationSasToken'))]"
 
-Für diese **packageUri** wird der Speicherkonto-URI verwendet, der auf das Speicherkonto verweist, in das Sie das gezippte Paket hochladen. Der Azure-Ressourcen-Manager nutzt [Shared Access Signatures](../storage/storage-dotnet-shared-access-signature-part-1.md) zum lokalen Abrufen des Pakets aus dem Speicherkonto, wenn Sie die Vorlage bereitstellen. Dieser Prozess ist per PowerShell-Skript automatisiert, mit dem das Paket hochgeladen und die Azure-Verwaltungs-API aufgerufen wird, um die erforderlichen Schlüssel zu erstellen und als Parameter an die Vorlage zu übergeben (*_artifactsLocation* und *_artifactsLocationSasToken*). Sie müssen Parameter für den Ordner und den Dateinamen des Speicherorts definieren, an das das Paket im Speichercontainer hochgeladen wird.
+Für diese **packageUri** wird der Speicherkonto-URI verwendet, der auf das Speicherkonto verweist, in das Sie das gezippte Paket hochladen. Der Azure-Ressourcen-Manager nutzt [Shared Access Signatures](../storage/common/storage-dotnet-shared-access-signature-part-1.md) zum lokalen Abrufen des Pakets aus dem Speicherkonto, wenn Sie die Vorlage bereitstellen. Dieser Prozess ist per PowerShell-Skript automatisiert, mit dem das Paket hochgeladen und die Azure-Verwaltungs-API aufgerufen wird, um die erforderlichen Schlüssel zu erstellen und als Parameter an die Vorlage zu übergeben (*_artifactsLocation* und *_artifactsLocationSasToken*). Sie müssen Parameter für den Ordner und den Dateinamen des Speicherorts definieren, an das das Paket im Speichercontainer hochgeladen wird.
 
 Als Nächstes müssen Sie eine weitere geschachtelte Ressource hinzufügen, um die Hostnamenbindungen zum Verwenden einer benutzerdefinierten Domäne einzurichten. Zuerst müssen Sie sicherstellen, dass Sie im Besitz des Hostnamens sind, und diesen so einrichten, dass dies von Azure überprüft werden kann. Weitere Informationen finden Sie unter [Konfigurieren eines benutzerdefinierten Domänennamens in Azure App Service](app-service-web-tutorial-custom-domain.md). Danach können Sie der Vorlage im Abschnitt mit der Ressource „Microsoft.Web/sites“ Folgendes hinzufügen:
 

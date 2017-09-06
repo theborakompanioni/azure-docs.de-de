@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: adegeo
-ms.translationtype: Human Translation
-ms.sourcegitcommit: be747170a0d8a7a6defd790a3f8a122c4d397671
-ms.openlocfilehash: e746decaea19477e52aba3ce714d8dd10140602e
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: e9683d4c5779450fd67fa42ab13095c7f201b4cd
 ms.contentlocale: de-de
-ms.lasthandoff: 05/23/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 
@@ -39,7 +39,7 @@ Folgendes ist allerdings zu beachten, bevor die Skalierung einer Anwendung konfi
 
     Größere Rolleninstanzen verwenden mehr Kerne. Sie können eine Anwendung nur innerhalb der für Ihr Abonnement geltenden Kerngrenzwerte skalieren. Nehmen Sie z.B. an, Ihr Abonnement sei auf 20 Kerne begrenzt. Wenn Sie eine Anwendung mit zwei mittelgroßen Clouddiensten ausführen (insgesamt vier Kerne), stehen für das zentrale Hochskalieren anderer Clouddienstbereitstellungen in Ihrem Abonnement nur noch sechzehn Kerne zur Verfügung. Weitere Informationen zu Größen finden Sie unter [Größen für Clouddienste](cloud-services-sizes-specs.md).
 
-* Sie können basierend auf einem Schwellenwert für die Nachrichtenwarteschlange skalieren. Weitere Informationen über die Verwendung von Warteschlangen finden Sie unter [Erste Schritte mit Azure Queue Storage mit .NET](../storage/storage-dotnet-how-to-use-queues.md).
+* Sie können basierend auf einem Schwellenwert für die Nachrichtenwarteschlange skalieren. Weitere Informationen über die Verwendung von Warteschlangen finden Sie unter [Erste Schritte mit Azure Queue Storage mit .NET](../storage/queues/storage-dotnet-how-to-use-queues.md).
 
 * Sie können auch andere Ressourcen skalieren, die Ihrem Abonnement zugeordnet sind.
 

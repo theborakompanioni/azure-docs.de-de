@@ -14,19 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
-ms.openlocfilehash: 35896cc9891e2439df004cc4eab339219d47b805
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 511076935d06ed0908341044e37069e74530be49
 ms.contentlocale: de-de
-ms.lasthandoff: 06/15/2017
-
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="integrate-an-azure-storage-account-with-azure-cdn"></a>Integrieren eines Azure-Speicherkontos in CDN
 Zum Zwischenspeichern von Inhalten aus Ihrem Azure-Speicher kann CDN aktiviert werden. Das Azure Content Delivery Network (CDN) bietet Entwicklern eine globale Lösung für die Übermittlung von Inhalten mit hohen Breitbandenanforderungen. Dazu werden Blobs und statische Inhalte von Compute-Instanzen an physischen Knotenpunkten in den USA, Europa, Asien, Australien und Südamerika zwischengespeichert.
 
 ## <a name="step-1-create-a-storage-account"></a>Schritt 1: Erstellen eines Speicherkontos
-Gehen Sie folgendermaßen vor, um für ein Azure-Abonnement ein neues Speicherkonto zu erstellen. Ein Speicherkonto ermöglicht den Zugriff auf Speicherdienste von Azure. Das Speicherkonto stellt die höchste Ebene des Namespace für den Zugriff auf die verschiedenen Komponenten der Speicherdienste von Azure dar: Blob-, Warteschlangen- und Tabellenspeicherdienste. Weitere Informationen finden Sie unter [Einführung in Microsoft Azure Storage](../storage/storage-introduction.md).
+Gehen Sie folgendermaßen vor, um für ein Azure-Abonnement ein neues Speicherkonto zu erstellen. Ein Speicherkonto ermöglicht den Zugriff auf Speicherdienste von Azure. Das Speicherkonto stellt die höchste Ebene des Namespace für den Zugriff auf die verschiedenen Komponenten der Speicherdienste von Azure dar: Blob-, Warteschlangen- und Tabellenspeicherdienste. Weitere Informationen finden Sie unter [Einführung in Microsoft Azure Storage](../storage/common/storage-introduction.md).
 
 Um ein Speicherkonto zu erstellen, müssen Sie entweder der Dienstadministrator oder ein Co-Administrator für das zugehörige Abonnement sein.
 
@@ -109,7 +108,7 @@ http://<*Endpunktname*\>.azureedge.net/<*meinÖffentlicherContainer*\>/<*Blobnam
 ## <a name="step-5-remove-content-from-the-cdn"></a>Schritt 5: Entfernen von Inhalten aus dem CDN
 Wenn ein Objekt nicht mehr im Azure Content Delivery Network (CDN) zwischengespeichert werden soll, können Sie einen der folgenden Schritte ausführen:
 
-* Sie können den öffentlichen Container zu einem privaten machen. Weitere Informationen finden Sie unter [Verwalten des anonymen Lesezugriffs auf Container und Blobs](../storage/storage-manage-access-to-resources.md) .
+* Sie können den öffentlichen Container zu einem privaten machen. Weitere Informationen finden Sie unter [Verwalten des anonymen Lesezugriffs auf Container und Blobs](../storage/blobs/storage-manage-access-to-resources.md) .
 * Sie können den CDN-Endpunkt mit dem Verwaltungsportal deaktivieren oder löschen.
 * Sie können den gehosteten Dienst so ändern, dass er nicht mehr auf Anforderungen des Objekts antwortet.
 
