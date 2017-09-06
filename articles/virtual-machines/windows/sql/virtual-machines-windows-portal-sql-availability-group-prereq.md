@@ -333,7 +333,7 @@ Führen Sie zum Erstellen jedes Kontos die folgenden Schritte aus.
 6. Wiederholen Sie die vorherigen Schritte für jedes der drei Konten.
 
 ### <a name="grant-the-required-permissions-to-the-installation-account"></a>Erteilen der erforderlichen Berechtigungen für das Installationskonto
-1. Wählen Sie im **Active Directory-Verwaltungscenter** im linken Bereich die Option **corp (lokal)** aus. Klicken Sie dann rechts im Aufgabenbereich**** auf **Eigenschaften**.
+1. Wählen Sie im **Active Directory-Verwaltungscenter** im linken Bereich die Option **corp (lokal)** aus. Klicken Sie dann rechts im **Aufgabenbereich** auf **Eigenschaften**.
 
     ![CORP-Benutzereigenschaften](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/31-addcproperties.png)
 2. Wählen Sie **Erweiterungen** aus, und klicken Sie auf der Registerkarte **Sicherheit** auf die Schaltfläche **Erweitert**.
