@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 06/12/2017
 ms.author: nepeters
 ms.translationtype: HT
-ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
-ms.openlocfilehash: 3440c350d50e3344f0b220ca3d8de6369bc824a4
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 4475baf3632c9e6870ff90244b773993a66b768c
 ms.contentlocale: de-de
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 
@@ -374,7 +374,7 @@ Schließlich sollten Sie die Sicherheit für einen virtuellen Azure-Computer wie
 
 ## <a name="azure-storage"></a>Azure Storage
 
-Azure Storage ist ein von Microsoft verwalteter Dienst zur Bereitstellung von dauerhaftem, skalierbarem und redundantem Speicher. Sie können ein Azure-Speicherkonto einer beliebigen Ressourcengruppe als Ressource hinzufügen, indem Sie eine Ressourcenbereitstellungsmethode Ihrer Wahl verwenden. Azure umfasst vier Speichertypen: Blob Storage, File Storage, Table Storage und Queue Storage. Beim Bereitstellen eines Speicherkontos sind zwei Kontotypen verfügbar: allgemein und Blobspeicher. Mit einem allgemeinen Speicherkonto haben Sie Zugriff auf alle vier Speichertypen. Blob-Speicherkonten ähneln allgemeinen Speicherkonten, aber sie enthalten spezielle Blobs mit „heißen“ und „kalten“ Zugriffsebenen. Weitere Informationen zu Blobspeicher finden Sie unter [Azure Blob Storage](../../storage/storage-blob-storage-tiers.md).
+Azure Storage ist ein von Microsoft verwalteter Dienst zur Bereitstellung von dauerhaftem, skalierbarem und redundantem Speicher. Sie können ein Azure-Speicherkonto einer beliebigen Ressourcengruppe als Ressource hinzufügen, indem Sie eine Ressourcenbereitstellungsmethode Ihrer Wahl verwenden. Azure umfasst vier Speichertypen: Blob Storage, File Storage, Table Storage und Queue Storage. Beim Bereitstellen eines Speicherkontos sind zwei Kontotypen verfügbar: allgemein und Blobspeicher. Mit einem allgemeinen Speicherkonto haben Sie Zugriff auf alle vier Speichertypen. Blob-Speicherkonten ähneln allgemeinen Speicherkonten, aber sie enthalten spezielle Blobs mit „heißen“ und „kalten“ Zugriffsebenen. Weitere Informationen zu Blobspeicher finden Sie unter [Azure Blob Storage](../../storage/blobs/storage-blob-storage-tiers.md).
 
 Azure-Speicherkonten können mit unterschiedlichen Redundanzebenen konfiguriert werden:
 
@@ -400,7 +400,7 @@ Azure Storage unterstützt drei Arten von Blobs:
 
 -   **Anfügeblobs** bestehen wie Blockblobs auch aus Blöcken, aber sie sind für Anfügevorgänge optimiert. Diese werden häufig eingesetzt, um Informationen aus mindestens einer Quelle in demselben Blob zu protokollieren. Beispielsweise können Sie die gesamte Protokollierung der Ablaufverfolgung für eine Anwendung, die auf mehreren VMs ausgeführt wird, in dasselbe Anfügeblob schreiben. Ein einzelnes Anfügeblob kann eine maximale Größe von 195 GB haben.
 
-Weitere Informationen finden Sie unter [Erste Schritte mit Azure Blob Storage mit .NET](../../storage/storage-dotnet-how-to-use-blobs.md).
+Weitere Informationen finden Sie unter [Erste Schritte mit Azure Blob Storage mit .NET](../../storage/blobs/storage-dotnet-how-to-use-blobs.md).
 
 **File Storage**
 
@@ -408,7 +408,7 @@ Azure File Storage ist ein Dienst, bei dem Dateifreigaben in der Cloud mit dem s
 
 Da es sich bei File Storage-Freigaben um gewöhnliche SMB-Dateifreigaben handelt, können Anwendungen in Azure über die E/A-APIs des Dateisystems auf die Daten der Freigabe zugreifen. Entwickler können daher ihren vorhandenen Code und bereits erlernte Fertigkeiten für die Migration vorhandener Anwendungen verwenden. IT-Fachkräfte können PowerShell-Cmdlets verwenden, um Dateispeicher-Freigaben im Rahmen der Administration von Azure-Anwendungen zu erstellen, bereitzustellen und zu verwalten.
 
-Weitere Informationen finden Sie unter [Erste Schritte mit Azure File Storage unter Windows](../../storage/storage-file-how-to-use-files-windows.md) und [Verwenden des Azure-Dateispeichers unter Linux](../../storage/storage-how-to-use-files-linux.md).
+Weitere Informationen finden Sie unter [Erste Schritte mit Azure File Storage unter Windows](../../storage/files/storage-how-to-use-files-windows.md) und [Verwenden des Azure-Dateispeichers unter Linux](../../storage/files/storage-how-to-use-files-linux.md).
 
 **Table Storage**
 
@@ -416,13 +416,13 @@ Azure Table Storage ist ein Dienst, bei dem strukturierte NoSQL-Daten in der Clo
 
 Mit Table Storage können Sie flexible Datasets wie Benutzerdaten für Webanwendungen, Adressbücher, Geräteinformationen und jegliche Art von Metadaten speichern, die Ihr Dienst erfordert. Sie können in einer Tabelle eine beliebige Anzahl von Entitäten speichern. Ein Speicherkonto kann eine beliebige Anzahl von Tabellen enthalten (bis zur Kapazitätsgrenze des Speicherkontos).
 
-Weitere Informationen finden Sie unter [Erste Schritte mit Azure Table Storage](../../storage/storage-dotnet-how-to-use-tables.md).
+Weitere Informationen finden Sie unter [Erste Schritte mit Azure Table Storage](../../cosmos-db/table-storage-how-to-use-dotnet.md).
 
 **Queue Storage**
 
 Azure Queue Storage ermöglicht Cloud-Messaging zwischen Anwendungskomponenten. Bei der Entwicklung skalierbarer Anwendungen werden häufig einzelne Anwendungskomponenten entkoppelt, um eine unabhängige Skalierung zu ermöglichen. Queue Storage bietet asynchrones Messaging für die Kommunikation zwischen Anwendungskomponenten, egal ob diese in der Cloud, auf dem Desktop, auf einem lokalen Server oder einem mobilen Gerät ausgeführt werden. Queue Storage unterstützt auch die Verwaltung asynchroner Aufgaben und den Aufbau von Prozessworkflows.
 
-Weitere Informationen finden Sie unter [Erste Schritte mit Azure Queue Storage](../../storage/storage-dotnet-how-to-use-queues.md).
+Weitere Informationen finden Sie unter [Erste Schritte mit Azure Queue Storage](../../storage/queues/storage-dotnet-how-to-use-queues.md).
 
 ### <a name="deploying-a-storage-account"></a>Bereitstellen eines Speicherkontos
 
@@ -430,19 +430,19 @@ Es gibt mehrere Optionen zum Bereitstellen eines Speicherkontos.
 
 **Portal**
 
-Für die Bereitstellung eines Speicherkontos mit dem Azure-Portal sind nur ein aktives Azure-Abonnement und Zugriff auf einen Webbrowser erforderlich. Sie können ein neues Speicherkonto in einer neuen oder vorhandenen Ressourcengruppe bereitstellen. Nachdem Sie das Speicherkonto erstellt haben, können Sie mit dem Portal einen Blobcontainer oder eine Dateifreigabe erstellen. Sie können Table Storage- und Queue Storage-Entitäten programmgesteuert erstellen. Weitere Informationen finden Sie unter [Erstellen eines Speicherkontos](../../storage/storage-create-storage-account.md#create-a-storage-account).
+Für die Bereitstellung eines Speicherkontos mit dem Azure-Portal sind nur ein aktives Azure-Abonnement und Zugriff auf einen Webbrowser erforderlich. Sie können ein neues Speicherkonto in einer neuen oder vorhandenen Ressourcengruppe bereitstellen. Nachdem Sie das Speicherkonto erstellt haben, können Sie mit dem Portal einen Blobcontainer oder eine Dateifreigabe erstellen. Sie können Table Storage- und Queue Storage-Entitäten programmgesteuert erstellen. Weitere Informationen finden Sie unter [Erstellen eines Speicherkontos](../../storage/common/storage-create-storage-account.md#create-a-storage-account).
 
 Zusätzlich zur Bereitstellung eines Speicherkontos mit dem Azure-Portal können Sie auch eine Azure Resource Manager-Vorlage über das Portal bereitstellen. Hierbei werden alle Ressourcen gemäß der Definition in der Vorlage, einschließlich aller Speicherkonten, bereitgestellt und konfiguriert. Weitere Informationen hierzu finden Sie unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure-Portal](../../azure-resource-manager/resource-group-template-deploy-portal.md).
 
 **PowerShell**
 
-Die Bereitstellung eines Azure-Speicherkontos mithilfe von PowerShell ermöglicht eine vollständige Automatisierung der Bereitstellung von Speicherkonten. Weitere Informationen finden Sie unter [Verwenden von Azure PowerShell mit Azure Storage](../../storage/storage-powershell-guide-full.md).
+Die Bereitstellung eines Azure-Speicherkontos mithilfe von PowerShell ermöglicht eine vollständige Automatisierung der Bereitstellung von Speicherkonten. Weitere Informationen finden Sie unter [Verwenden von Azure PowerShell mit Azure Storage](../../storage/common/storage-powershell-guide-full.md).
 
 Zusätzlich zum individuellen Bereitstellen von Azure-Ressourcen können Sie das Azure PowerShell-Modul verwenden, um eine Azure Resource Manager-Vorlage bereitzustellen. Weitere Informationen hierzu finden Sie unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure PowerShell](../../azure-resource-manager/resource-group-template-deploy.md).
 
 **Befehlszeilenschnittstelle**
 
-Wie beim PowerShell-Modul auch, ermöglicht die Azure-Befehlszeilenschnittstelle die Automatisierung der Bereitstellung und kann unter den Betriebssystemen Windows, OS X oder Linux verwendet werden. Sie können den Azure CLI-Befehl **storage account create** verwenden, um ein Speicherkonto zu erstellen. Weitere Informationen finden Sie unter [Verwenden der Azure CLI 2.0 mit Azure Storage](../../storage/storage-azure-cli.md).
+Wie beim PowerShell-Modul auch, ermöglicht die Azure-Befehlszeilenschnittstelle die Automatisierung der Bereitstellung und kann unter den Betriebssystemen Windows, OS X oder Linux verwendet werden. Sie können den Azure CLI-Befehl **storage account create** verwenden, um ein Speicherkonto zu erstellen. Weitere Informationen finden Sie unter [Verwenden der Azure CLI 2.0 mit Azure Storage](../../storage/common/storage-azure-cli.md).
 
 Sie können die Azure CLI auch nutzen, um eine Azure Resource Manager-Vorlage bereitzustellen. Informationen hierzu finden Sie unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure CLI](../../resource-group-template-deploy-cli.md).
 
@@ -456,7 +456,7 @@ Beim Bereitstellen eines virtuellen Computers müssen Sie auch ein Speicherkonto
 
 **Speichertools**
 
-Auf Azure-Speicherkonten kann mit vielen unterschiedlichen Speicher-Explorern zugegriffen werden, z.B. Visual Studio Cloud-Explorer. Mit diesen Tools können Sie Speicherkonten und Daten durchsuchen. Weitere Informationen und eine Liste mit verfügbaren Speicher-Explorern finden Sie unter [Azure Storage-Clienttools](../../storage/storage-explorers.md).
+Auf Azure-Speicherkonten kann mit vielen unterschiedlichen Speicher-Explorern zugegriffen werden, z.B. Visual Studio Cloud-Explorer. Mit diesen Tools können Sie Speicherkonten und Daten durchsuchen. Weitere Informationen und eine Liste mit verfügbaren Speicher-Explorern finden Sie unter [Azure Storage-Clienttools](../../storage/common/storage-explorers.md).
 
 **Storage-API**
 
@@ -468,7 +468,7 @@ Jedes Speicherkonto verfügt über zwei Authentifizierungsschlüssel: einen prim
 
 **Shared Access Signatures**
 
-Wenn Sie anderen Benutzern kontrollierten Zugriff auf Ihre Speicherressourcen gewähren müssen, können Sie eine Shared Access Signature erstellen. Eine Shared Access Signature ist ein Token, das an eine URL angefügt werden kann und den delegierten Zugriff auf eine Speicherressource ermöglicht. Jeder Benutzer, der über dieses Token verfügt, kann während der Gültigkeitsdauer mit festgelegten Berechtigungen auf die Ressource zugreifen, auf die das Token verweist. Weitere Informationen finden Sie unter [Verwenden von Shared Access Signatures](../../storage/storage-dotnet-shared-access-signature-part-1.md).
+Wenn Sie anderen Benutzern kontrollierten Zugriff auf Ihre Speicherressourcen gewähren müssen, können Sie eine Shared Access Signature erstellen. Eine Shared Access Signature ist ein Token, das an eine URL angefügt werden kann und den delegierten Zugriff auf eine Speicherressource ermöglicht. Jeder Benutzer, der über dieses Token verfügt, kann während der Gültigkeitsdauer mit festgelegten Berechtigungen auf die Ressource zugreifen, auf die das Token verweist. Weitere Informationen finden Sie unter [Verwenden von Shared Access Signatures](../../storage/common/storage-dotnet-shared-access-signature-part-1.md).
 
 ## <a name="azure-virtual-network"></a>Azure Virtual Network
 

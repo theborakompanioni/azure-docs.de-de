@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/25/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
-ms.openlocfilehash: 2b277f1fb96f347cc60d1395fafb7e2707883a77
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: b7411fa6aba04ffd34f3f4bd03e706ca75afc9c8
 ms.contentlocale: de-de
-ms.lasthandoff: 06/29/2017
-
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="step-5-prepare-azure-resources-for-physical-server-replication-to-azure"></a>Schritt 5: Vorbereiten der Azure-Ressourcen für die Replikation physischer Server in Azure
@@ -54,9 +53,9 @@ Stellen Sie sicher, dass Sie die [Voraussetzungen](physical-walkthrough-prerequi
 ## <a name="set-up-an-azure-storage-account"></a>Richten Sie ein Azure-Speicherkonto ein
 
 - Site Recovery repliziert lokale Server in den Azure-Speicher. Virtuelle Azure-Computer werden nach dem Failover aus dem Speicher erstellt.
-- [Richten Sie ein Azure-Speicherkonto ein](../storage/storage-create-storage-account.md#create-a-storage-account), das für replizierte Daten verwendet werden kann.
+- [Richten Sie ein Azure-Speicherkonto ein](../storage/common/storage-create-storage-account.md#create-a-storage-account), das für replizierte Daten verwendet werden kann.
 - Site Recovery kann im Azure-Portal Speicherkonten verwenden, die in Resource Manager oder im klassischen Modus eingerichtet sind.
-- Das Speicherkonto kann ein Standard- oder [Premium](../storage/storage-premium-storage.md)-Konto sein.
+- Das Speicherkonto kann ein Standard- oder [Premium](../storage/common/storage-premium-storage.md)-Konto sein.
 - Wenn Sie ein Premium-Konto eingerichtet haben, benötigen Sie auch ein zusätzliches Standard-Konto für die Protokolldaten.
 
 

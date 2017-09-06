@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 08/01/2017
 ms.author: rajanaki
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: 2796a77984fb811b2ea563a45652bb6312b3dd26
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: fb5b8c9ac96ac44d0112919664a177f33ef392da
 ms.contentlocale: de-de
-ms.lasthandoff: 06/20/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 
@@ -46,7 +46,7 @@ Nach der Lektüre dieses Artikels können Sie Kommentare am Ende des Artikels od
 **Azure-Konto** | Ein [Microsoft Azure](http://azure.microsoft.com/) -Konto.<br/><br/> Für den Einstieg steht eine [kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/) zur Verfügung.
 **Site Recovery-Dienst** | Weitere Informationen zu den Preisen von Site Recovery finden Sie unter [Site Recovery-Preise](https://azure.microsoft.com/pricing/details/site-recovery/). Es wird empfohlen, einen Recovery Services-Tresor in der Azure-Zielregion zu erstellen, die als Standort für die Notfallwiederherstellung verwendet werden soll. Wenn Ihre Quell-VMs beispielsweise im Osten der USA ausgeführt werden und Sie in der Mitte der USA replizieren möchten, sollten Sie den Tresor „USA, Mitte“ erstellen.|
 **Azure-Kapazität** | Für die Azure-Zielregion, die Sie als Standort für die Notfallwiederherstellung verwenden möchten, müssen Sie ein Abonnement mit ausreichender Kapazität für virtuelle Computer, Speicherkonten und Netzwerkkomponenten besitzen. Wenden Sie sich an den Support, wenn Sie die Kapazität erweitern möchten.
-**Leitfaden für Speicher** | Halten Sie sich an den [Leitfaden für Speicher](../storage/storage-scalability-targets.md#scalability-targets-for-virtual-machine-disks) für virtuelle Azure-Quellcomputer, um Leistungsprobleme zu vermeiden. Wenn Sie die Standardeinstellungen übernehmen, erstellt Site Recovery die erforderlichen Speicherkonten auf Basis der Quellkonfiguration. Wenn Sie Ihre eigenen Einstellungen anpassen und verwenden möchten, achten Sie darauf, die [Skalierbarkeitsziele für Datenträger virtueller Computer](../storage/storage-scalability-targets.md#scalability-targets-for-virtual-machine-disks) einzuhalten.
+**Leitfaden für Speicher** | Halten Sie sich an den [Leitfaden für Speicher](../storage/common/storage-scalability-targets.md#scalability-targets-for-virtual-machine-disks) für virtuelle Azure-Quellcomputer, um Leistungsprobleme zu vermeiden. Wenn Sie die Standardeinstellungen übernehmen, erstellt Site Recovery die erforderlichen Speicherkonten auf Basis der Quellkonfiguration. Wenn Sie Ihre eigenen Einstellungen anpassen und verwenden möchten, achten Sie darauf, die [Skalierbarkeitsziele für Datenträger virtueller Computer](../storage/common/storage-scalability-targets.md#scalability-targets-for-virtual-machine-disks) einzuhalten.
 **Leitfaden für Netzwerke** | Sie müssen für bestimmte URLs oder IP-Bereiche ausgehende Verbindungen von Ihrer Azure-VM zur Whitelist hinzufügen. Weitere Informationen finden Sie im Artikel [Leitfaden für Netzwerke zum Replizieren von virtuellen Azure-Computern](site-recovery-azure-to-azure-networking-guidance.md).
 **Azure-VM** | Stellen Sie sicher, dass die neuesten Stammzertifikate auf Windows- oder Linux-VMs vorhanden sind. Wenn die neuesten Stammzertifikate nicht vorhanden sind, kann die VM aufgrund von Sicherheitseinschränkungen nicht bei Site Recovery registriert werden.
 

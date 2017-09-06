@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 2/9/2017
 ms.author: cwatson
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: bb913050fd3388d4632e6f75b36415006f370cbd
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: a7527b12f4f0d2b45713a0c0109d81ff51293fd8
 ms.contentlocale: de-de
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="create-a-copy-of-a-vhd-stored-as-an-azure-managed-disk-by-using-managed-snapshots"></a>Erstellen einer Kopie einer als verwalteter Azure-Datenträger gespeicherten VHD mithilfe verwalteter Momentaufnahmen
-Erstellen Sie eine Momentaufnahme eines verwalteten Datenträgers für die Sicherung oder einen verwalteten Datenträger aus der Momentaufnahme, und fügen Sie ihn an einen virtuellen Testcomputer an, um Probleme zu behandeln. Eine verwaltete Momentaufnahme ist eine vollständige zeitpunktabhängige Kopie eines verwalteten VM-Datenträgers. Standardmäßig wird eine schreibgeschützte Kopie Ihrer VHD erstellt, die als verwalteter Standard-Datenträger gespeichert wird. Weitere Informationen zu verwalteten Datenträgern finden Sie in der [Übersicht über Managed Disks](../../storage/storage-managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Erstellen Sie eine Momentaufnahme eines verwalteten Datenträgers für die Sicherung oder einen verwalteten Datenträger aus der Momentaufnahme, und fügen Sie ihn an einen virtuellen Testcomputer an, um Probleme zu behandeln. Eine verwaltete Momentaufnahme ist eine vollständige zeitpunktabhängige Kopie eines verwalteten VM-Datenträgers. Standardmäßig wird eine schreibgeschützte Kopie Ihrer VHD erstellt, die als verwalteter Standard-Datenträger gespeichert wird. Weitere Informationen zu verwalteten Datenträgern finden Sie in der [Übersicht über Managed Disks](managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 Informationen zu Preisen finden Sie unter [Preise für Azure Storage](https://azure.microsoft.com/pricing/details/managed-disks/). 
 

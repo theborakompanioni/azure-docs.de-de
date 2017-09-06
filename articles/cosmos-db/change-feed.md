@@ -13,13 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: rest-api
 ms.topic: article
-ms.date: 07/24/2017
+ms.date: 08/15/2017
 ms.author: arramac
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: 5cc565adf4a4b6820ad676d9689c9697e9158b9f
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 160fbc98e0f3dcc7d17cbe0c7f7425811596a896
 ms.contentlocale: de-de
-ms.lasthandoff: 07/27/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="working-with-the-change-feed-support-in-azure-cosmos-db"></a>Verwenden der Unterstützung von Änderungsfeeds in Azure Cosmos DB
@@ -42,7 +42,7 @@ Durch die Unterstützung von Änderungsfeeds bietet Azure Cosmos DB eine Liste v
 Ein Änderungsfeed ermöglicht eine effiziente Verarbeitung großer Datasets mit vielen Schreibvorgängen und bietet eine Alternative zum Abfragen des gesamten Datasets, um Änderungen zu identifizieren. Sie können beispielsweise die folgenden Aufgaben effizient ausführen:
 
 * Aktualisieren eines Caches, eines Suchindex oder eines Data Warehouse mit in Azure Cosmos DB gespeicherten Daten.
-* Implementieren von Datentiering und -archivierung auf Anwendungsebene, d. h. Speichern von „aktiven Daten“ in Azure Cosmos DB und Auslagern von „inaktiven Daten“ in [Azure Blob Storage](../storage/storage-introduction.md) oder [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md).
+* Implementieren von Datentiering und -archivierung auf Anwendungsebene, d. h. Speichern von „aktiven Daten“ in Azure Cosmos DB und Auslagern von „inaktiven Daten“ in [Azure Blob Storage](../storage/common/storage-introduction.md) oder [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md).
 * Implementieren von Batchanalysen der Daten unter Verwendung von [Apache Hadoop](run-hadoop-with-hdinsight.md).
 * Implementieren von [Lambda-Pipelines in Azure](https://blogs.technet.microsoft.com/msuspartner/2016/01/27/azure-partner-community-big-data-advanced-analytics-and-lambda-architecture/) mit Azure Cosmos DB. Azure Cosmos DB bietet eine skalierbare Datenbanklösung, die die Erfassung und Abfrage verarbeiten kann, und implementiert Lambda-Architekturen mit geringen Gesamtkosten. 
 * Ausführen von Migrationen zu einem anderen Azure Cosmos DB-Konto mit einem anderen Partitionierungsschema ohne Ausfallzeit.
@@ -53,14 +53,15 @@ Ein Änderungsfeed ermöglicht eine effiziente Verarbeitung großer Datasets mit
 
 Sie können Azure Cosmos DB zum Empfangen und Speichern von Ereignisdaten von Geräten, Sensoren, Infrastrukturen und Anwendungen verwenden und diese Ereignisse in Echtzeit mit [Azure Stream Analytics](../stream-analytics/stream-analytics-documentdb-output.md), [Apache Storm](../hdinsight/hdinsight-storm-overview.md) oder [Apache Spark](../hdinsight/hdinsight-apache-spark-overview.md) verarbeiten. 
 
-In Web-Apps und mobilen Apps können Sie Ereignisse wie Änderungen am Profil, an den Voreinstellungen oder am Speicherort des Kunden nachverfolgen, um bestimmte Aktionen wie das Senden von Pushbenachrichtigungen an deren Geräte mit [Azure Functions](../azure-functions/functions-bindings-documentdb.md) oder [App Services](https://azure.microsoft.com/services/app-service/) auszulösen. Wenn Sie Azure Cosmos DB zum Erstellen eines Spiels verwenden, können Sie den Änderungsfeed beispielsweise verwenden, um in Echtzeit Bestenlisten anhand der Ergebnisse von abgeschlossenen Spiele zu implementieren.
+In Ihren [serverlosen](http://azure.com/serverless) Web- und mobilen Apps können Sie Ereignisse wie Änderungen am Profil, an den Voreinstellungen oder am Speicherort des Kunden nachverfolgen, um bestimmte Aktionen wie das Senden von Pushbenachrichtigungen an deren Geräte mit [Azure Functions](../azure-functions/functions-bindings-documentdb.md) oder [App Services](https://azure.microsoft.com/services/app-service/) auszulösen. Wenn Sie Azure Cosmos DB zum Erstellen eines Spiels verwenden, können Sie den Änderungsfeed beispielsweise verwenden, um in Echtzeit Bestenlisten anhand der Ergebnisse von abgeschlossenen Spiele zu implementieren.
 
 ## <a name="how-change-feed-works-in-azure-cosmos-db"></a>Funktionsweise von Änderungsfeeds in Azure Cosmos DB
 Azure Cosmos DB bietet die Möglichkeit, Aktualisierungen an einer Azure Cosmos DB-Sammlung inkrementell zu lesen. Dieser Änderungsfeed weist die folgenden Eigenschaften auf:
 
 * Änderungen bleiben in Azure Cosmos DB erhalten und können asynchron verarbeitet werden.
 * Änderungen an Dokumenten in einer Sammlung sind sofort im Änderungsfeed verfügbar.
-* Jede Änderung an einem Dokument wird nur einmal im Änderungsfeed angezeigt. Nur die letzte Änderung für ein bestimmtes Dokument ist im Änderungsprotokoll enthalten. Zwischenzeitliche Änderungen sind möglicherweise nicht verfügbar.
+* Jede Änderung eines Dokuments kommt genau einmal im Änderungsfeed vor, und Clients verwalten ihre Prüfpunktausführungs-Logik. Die Änderungsfeed-Prozessorbibliothek bietet automatische Prüfpunktausführung und „Mindestens einmal“-Semantik.
+* Nur die letzte Änderung für ein bestimmtes Dokument ist im Änderungsprotokoll enthalten. Zwischenzeitliche Änderungen sind möglicherweise nicht verfügbar.
 * Der Änderungsfeed ist anhand der Reihenfolge der Änderungen innerhalb der einzelnen Partitionsschlüsselwerte sortiert. Es gibt keine festgelegte Reihenfolge über Partitionsschlüsselwerte hinweg.
 * Änderungen können für jeden Zeitpunkt synchronisiert werden, d.h., es gibt keine feste Datenaufbewahrungsdauer, in der die Änderungen verfügbar sind.
 * Änderungen sind in Abschnitten von Partitionsschlüsselbereichen verfügbar. Auf diese Weise können Änderungen aus umfangreichen Sammlungen parallel von mehreren Consumern/Servern verarbeitet werden.
@@ -70,7 +71,7 @@ Azure Cosmos DB-Änderungsfeeds sind standardmäßig für alle Konten aktiviert.
 
 ![Verteilte Verarbeitung des Azure Cosmos DB-Änderungsfeeds](./media/change-feed/changefeedvisual.png)
 
-Sie haben mehrere Optionen, einen Änderungsfeed im Clientcode zu implementieren. Die unmittelbar nachfolgenden Abschnitte beschreiben, wie der Änderungsfeed mithilfe der Azure Cosmos DB-REST-API und den DocumentDB SDKs implementiert werden kann. Für .NET-Anwendungen empfehlen wir jedoch die Verwendung der neuen [Change Feed Processor-Bibliothek](#change-feed-processor) zur Verarbeitung von Ereignissen aus dem Änderungsfeed, da sie das partitionsübergreifende Lesen von Änderungen vereinfacht und das gleichzeitige Arbeiten mehrerer Threads ermöglicht.
+Sie haben mehrere Optionen, einen Änderungsfeed im Clientcode zu implementieren. Die unmittelbar nachfolgenden Abschnitte beschreiben, wie der Änderungsfeed mithilfe der Azure Cosmos DB-REST-API und den DocumentDB SDKs implementiert werden kann. Für .NET-Anwendungen empfehlen wir jedoch die Verwendung der neuen [Change Feed Processor-Bibliothek](#change-feed-processor) zur Verarbeitung von Ereignissen aus dem Änderungsfeed, da sie das partitionsübergreifende Lesen von Änderungen vereinfacht und das gleichzeitige Arbeiten mehrerer Threads ermöglicht. 
 
 ## <a id="rest-apis"></a>Arbeiten mit der REST-API und den DocumentDB SDKs
 Azure Cosmos DB bietet elastische Container für Speicher und Durchsatz, die **Sammlungen** genannt werden. Daten in Sammlungen sind logisch mit [Partitionsschlüsseln](partition-data.md) gruppiert, um Skalierbarkeit und eine bessere Leistung zu ermöglichen. Azure Cosmos DB bietet verschiedene APIs für den Zugriff auf diese Daten, einschließlich Suchvorgänge anhand der ID (Lesen/Abrufen), Abfragen und Lesefeeds (Scans). Sie können einen Änderungsfeed erhalten, indem Sie zwei neue Anforderungsheader in die DocumentDB-`ReadDocumentFeed`-API aufnehmen. Der Änderungsfeed kann über Partitionsschlüsselbereiche hinweg parallel verarbeitet werden.
@@ -198,7 +199,7 @@ Azure Cosmos DB unterstützt das Abrufen von Dokumenten pro Partitionsschlüssel
 ReadDocumentFeed unterstützt die folgenden Szenarien/Aufgaben für die inkrementelle Verarbeitung von Änderungen in den Azure Cosmos DB-Sammlungen:
 
 * Lesen aller Änderungen an Dokumenten von Beginn an, also ab der Sammlungserstellung.
-* Lesen aller Änderungen an zukünftigen Aktualisierungen von Dokumenten ab dem aktuellen Zeitpunkt.
+* Lesen aller Änderungen an zukünftigen Aktualisierungen von Dokumenten ab dem aktuellen Zeitpunkt, oder aller Änderungen ab einem vom Benutzer angegebenen Zeitpunkt.
 * Lesen aller Änderungen an Dokumenten aus einer logischen Version der Sammlung (ETag). Sie können Prüfpunkte für Ihre Consumer basierend auf dem zurückgegebenen ETag aus inkrementellen Lesefeedanforderungen einrichten.
 
 Zu den Änderungen gehören Einfügungen und Aktualisierungen in Dokumenten. Um Löschvorgänge zu erfassen, müssen Sie eine Eigenschaft für „vorläufiges Löschen“ in Ihren Dokumenten verwenden. Sie können aber auch die [integrierte TTL-Eigenschaft](time-to-live.md) nutzen, um eine ausstehende Löschung im Änderungsfeed anzugeben.
@@ -220,10 +221,14 @@ Die folgende Tabelle enthält die [Anforderungsheader](/rest/api/documentdb/comm
         <td>If-None-Match</td>
         <td>
             <p>Kein Header: Gibt alle Änderungen von Beginn an (Sammlungserstellung) zurück</p>
-            <p>"*": Gibt alle neuen Änderungen an Daten in der Sammlung zurück</p>
+            <p>"*": Gibt alle neuen Änderungen an Daten in der Sammlung zurück</p>           
             <p>&lt;ETag&gt;: Bei Angabe des Sammlung-ETags werden alle Änderungen seit diesem logischen Zeitstempel zurückgegeben</p>
         </td>
     </tr>
+    <tr>    
+        <td>If-Modified-Since</td> 
+        <td>RFC 1123-Zeitformat; ignoriert, wenn If-None-Match angegeben wird</td> 
+    </tr> 
     <tr>
         <td>x-ms-documentdb-partitionkeyrangeid</td>
         <td>Die ID des Partitionsschlüsselbereichs zum Lesen von Daten.</td>
@@ -232,8 +237,7 @@ Die folgende Tabelle enthält die [Anforderungsheader](/rest/api/documentdb/comm
 
 **Antwortheader für einen inkrementellen ReadDocumentFeed**:
 
-<table>
-    <tr>
+<table> <tr>
         <th>Headername</th>
         <th>Beschreibung</th>
     </tr>
@@ -263,6 +267,8 @@ Die Änderungen sind nach Zeit innerhalb jedes Partitionsschlüsselwerts innerha
 
 > [!NOTE]
 > Mit einem Änderungsfeed werden auf einer Seite möglicherweise mehr Elemente zurückgegeben als in `x-ms-max-item-count` angegeben wurde, falls mehrere Dokumente innerhalb einer gespeicherten Prozedur oder eines Triggers eingefügt oder aktualisiert wurden. 
+
+Wenn Sie das .NET SDK (1.17.0) verwenden, legen Sie das Feld `StartTime` in `ChangeFeedOptions` für die direkte Rückgabe seit `StartTime` geänderter Dokumente beim Aufrufen von `CreateDocumentChangeFeedQuery` fest. Durch Angabe von `If-Modified-Since` mithilfe der REST-API gibt Ihre Anforderung nicht die Dokumente selbst zurück, sondern stattdessen das Fortsetzungstoken oder `etag` im Antwortheader. Um die seit der angegebenen Zeit geänderten Dokumente zurückzugeben, muss das Fortsetzungstoken `etag` dann in der nächsten Anforderung mit `If-None-Match` verwendet werden, um die tatsächlichen Dokumente zurückgegeben. 
 
 Das .NET SDK enthält die Hilfsklassen [CreateDocumentChangeFeedQuery](/dotnet/api/microsoft.azure.documents.client.documentclient.createdocumentchangefeedquery?view=azure-dotnet) und [ChangeFeedOptions](/dotnet/api/microsoft.azure.documents.client.changefeedoptions?view=azure-dotnet) für den Zugriff auf die an einer Sammlung vorgenommenen Änderungen. Der folgende Codeausschnitt zeigt, wie alle Änderungen seit dem Beginn mit dem .NET SDK von einem einzigen Client abgerufen werden.
 

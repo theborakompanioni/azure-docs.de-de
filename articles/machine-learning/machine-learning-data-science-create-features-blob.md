@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev;garye
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b6751bf2367ca849f35c81a7857b4f85d75ef6a2
-ms.lasthandoff: 11/17/2016
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 2ef2acfea2372ac7fd52d099a2b4203ee2242d81
+ms.contentlocale: de-de
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="create-features-for-azure-blob-storage-data-using-panda"></a>Erstellen von Features für Azure-Blob-Speicherdaten mithilfe von Panda
@@ -29,7 +29,7 @@ In diesem Dokument wird erläutert, wie Sie Features für in einem Azure-BLOB-Co
 Dieses **Menü** stellt eine Verknüpfung mit Themen dar, in denen beschrieben wird, wie Features für Daten in verschiedenen Umgebungen erstellt werden. Dieser Task ist ein Schritt im [Team Data Science-Prozess (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
 
 ## <a name="prerequisites"></a>Voraussetzungen
-In diesem Artikel wird davon ausgegangen, dass Sie ein Azure-Blobspeicherkonto erstellt und darin Ihre Daten gespeichert haben. Anweisungen zum Einrichten eines Kontos finden Sie unter [Erstellen eines Azure-Speicherkontos](../storage/storage-create-storage-account.md#create-a-storage-account).
+In diesem Artikel wird davon ausgegangen, dass Sie ein Azure-Blobspeicherkonto erstellt und darin Ihre Daten gespeichert haben. Anweisungen zum Einrichten eines Kontos finden Sie unter [Erstellen eines Azure-Speicherkontos](../storage/common/storage-create-storage-account.md#create-a-storage-account).
 
 ## <a name="load-the-data-into-a-pandas-data-frame"></a>Laden der Daten in ein Pandas-DataFrame
 Um ein DataSet zu untersuchen und zu bearbeiten, muss es aus der Blobquelle in eine lokale Datei heruntergeladen werden, die anschließend in ein Pandas-DataFrame geladen werden kann. Nachfolgend sehen Sie für dieses Verfahren erforderlichen Schritte:

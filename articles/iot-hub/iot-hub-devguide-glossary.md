@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/08/2017
 ms.author: dobett
 ms.translationtype: HT
-ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
-ms.openlocfilehash: 0e08557b126620a6c7dbbdb5dece423e7a0c2535
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 5631484bd2106ab5abff79dd3cbbf539c62bb164
 ms.contentlocale: de-de
-ms.lasthandoff: 08/09/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="glossary-of-iot-hub-terms"></a>Glossar mit IoT Hub-Begriffen
@@ -56,7 +56,7 @@ Mit dem [Azure Resource Manager](../azure-resource-manager/resource-group-overvi
 [Service Bus](../service-bus/index.md) bietet cloudfähige Kommunikation mit Messagingfunktionen für Unternehmen und Relaykommunikation, um Sie bei der Verbindung Ihrer lokalen Lösungen mit der Cloud zu unterstützen. In einigen IoT Hub-Tutorials werden Service Bus-[Warteschlangen](../service-bus-messaging/service-bus-messaging-overview.md) verwendet.
 
 ## <a name="azure-storage"></a>Azure Storage
-[Azure Storage](../storage/storage-introduction.md) ist eine Cloudspeicherlösung. Sie umfasst den Blob Storage-Dienst, den Sie zum Speichern von nicht strukturierten Objektdaten verwenden können. In einigen IoT Hub-Tutorials werden Blobspeicher verwendet.
+[Azure Storage](../storage/common/storage-introduction.md) ist eine Cloudspeicherlösung. Sie umfasst den Blob Storage-Dienst, den Sie zum Speichern von nicht strukturierten Objektdaten verwenden können. In einigen IoT Hub-Tutorials werden Blobspeicher verwendet.
 
 ## <a name="back-end-app"></a>Back-End-App
 Im Kontext von [IoT Hub](#iot-hub) ist eine Back-End-App eine App, mit der eine Verbindung mit einem der dienstseitigen Endpunkte von IoT Hub hergestellt wird. Mit einer Back-End-App werden beispielsweise [Gerät-zu-Cloud](#device-to-cloud)-Nachrichten (D2C-Nachrichten) abgerufen, oder sie wird zum Verwalten der [Identitätsregistrierung](#identity-registry) eingesetzt. Eine Back-End-App wird normalerweise in der Cloud ausgeführt, aber in vielen Tutorials handelt es sich bei den Back-End-Apps um Konsolen-Apps, die auf dem lokalen Entwicklungscomputer ausgeführt werden.

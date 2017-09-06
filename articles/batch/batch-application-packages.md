@@ -16,10 +16,10 @@ ms.date: 07/20/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
-ms.openlocfilehash: fcca9c9bb0aca96d740feb9450458a7c3b8de379
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: afcc04c80ec15872a22de5d5969a7ef6a583562f
 ms.contentlocale: de-de
-ms.lasthandoff: 07/24/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Bereitstellen von Anwendungen auf Computeknoten mit Batch-Anwendungspaketen
@@ -78,7 +78,7 @@ Sie können Anwendungspakete auf Pool- und Aufgabenebene angeben. Wenn Sie im ei
 ### <a name="benefits-of-application-packages"></a>Vorteile von Anwendungspaketen
 Anwendungspakete können sowohl den Code in Ihrer Batch-Lösung vereinfachen als auch den Verwaltungsaufwand für die Anwendungen verringern, die Ihre Tasks ausführen.
 
-Bei Anwendungspaketen muss die Startaufgabe Ihres Pools keine lange Liste einzelner, auf dem Knoten zu installierender Ressourcendateien angeben. Sie müssen nicht manuell mehrere Versionen der Anwendungsdateien in Azure Storage oder auf Ihren Knoten verwalten. Und Sie müssen sich auch keine Gedanken über das Generieren von [SAS-URLs](../storage/storage-dotnet-shared-access-signature-part-1.md) für den Zugriff auf die Dateien in Ihrem Speicherkonto machen. Batch funktioniert im Hintergrund mit Azure Storage zum speichern von Anwendungspaketen und zum Bereitstellen der Pakete auf Serverknoten.
+Bei Anwendungspaketen muss die Startaufgabe Ihres Pools keine lange Liste einzelner, auf dem Knoten zu installierender Ressourcendateien angeben. Sie müssen nicht manuell mehrere Versionen der Anwendungsdateien in Azure Storage oder auf Ihren Knoten verwalten. Und Sie müssen sich auch keine Gedanken über das Generieren von [SAS-URLs](../storage/common/storage-dotnet-shared-access-signature-part-1.md) für den Zugriff auf die Dateien in Ihrem Speicherkonto machen. Batch funktioniert im Hintergrund mit Azure Storage zum speichern von Anwendungspaketen und zum Bereitstellen der Pakete auf Serverknoten.
 
 > [!NOTE] 
 > Die Gesamtgröße einer Startaufgabe darf einschließlich Ressourcendateien und Umgebungsvariablen höchstens 32768 Zeichen betragen. Wenn Ihre Startaufgabe diesen Grenzwert überschreitet, stellt die Verwendung von Anwendungspaketen eine weitere Option dar. Sie können auch ein ZIP-Archiv mit Ihren Ressourcendateien erstellen, diesen als Blob in Azure Storage hochladen und sie dann über die Befehlszeile Ihrer Startaufgabe entzippen. 
@@ -92,7 +92,7 @@ Sie können das [Azure-Portal][portal] oder die [Batch Management .NET](batch-ma
 Vor der Verwendung von Anwendungspaketen müssen Sie zunächst ein Azure Storage-Konto mit Ihrem Batch-Konto verknüpfen. Falls Sie noch kein Speicherkonto konfiguriert haben, zeigt das Azure-Portal eine Warnung an, wenn Sie auf dem Blatt **Batch-Konto** zum ersten Mal auf die Kachel **Anwendungen** klicken.
 
 > [!IMPORTANT]
-> Batch unterstützt derzeit *nur* den Speicherkontotyp **Allgemein** (siehe Schritt 5, [Erstellen eines Speicherkontos](../storage/storage-create-storage-account.md#create-a-storage-account) unter [Informationen zu Azure Storage-Konten](../storage/storage-create-storage-account.md)). Verwenden Sie beim Verknüpfen eines Azure Storage-Kontos mit Ihrem Batch-Konto *ausschließlich* ein Speicherkonto vom Typ **Allgemein**.
+> Batch unterstützt derzeit *nur* den Speicherkontotyp **Allgemein** (siehe Schritt 5, [Erstellen eines Speicherkontos](../storage/common/storage-create-storage-account.md#create-a-storage-account) unter [Informationen zu Azure Storage-Konten](../storage/common/storage-create-storage-account.md)). Verwenden Sie beim Verknüpfen eines Azure Storage-Kontos mit Ihrem Batch-Konto *ausschließlich* ein Speicherkonto vom Typ **Allgemein**.
 > 
 > 
 
@@ -102,7 +102,7 @@ Der Batch-Dienst verwendet das zugeordnete Speicherkonto zum Speichern Ihrer Anw
 
 ![Blatt zum Auswählen des Speicherkontos im Azure-Portal][10]
 
-Es wird empfohlen, ein Speicherkonto *speziell* für die Verwendung mit Ihrem Batch-Konto zu erstellen und hier auszuwählen. Ausführliche Informationen zum Erstellen eines Speicherkontos finden Sie in den [Informationen zu Azure Storage-Konten](../storage/storage-create-storage-account.md) unter „Erstellen eines Speicherkontos“. Wenn Sie ein Speicherkonto erstellt haben, können Sie es anschließend mithilfe des Blatts **Speicherkonto** mit Ihrem Batch-Konto verknüpfen.
+Es wird empfohlen, ein Speicherkonto *speziell* für die Verwendung mit Ihrem Batch-Konto zu erstellen und hier auszuwählen. Ausführliche Informationen zum Erstellen eines Speicherkontos finden Sie in den [Informationen zu Azure Storage-Konten](../storage/common/storage-create-storage-account.md) unter „Erstellen eines Speicherkontos“. Wenn Sie ein Speicherkonto erstellt haben, können Sie es anschließend mithilfe des Blatts **Speicherkonto** mit Ihrem Batch-Konto verknüpfen.
 
 > [!WARNING]
 > Der Batch-Dienst verwendet das Azure Storage-Konto, um Ihre Anwendungspakete als Blockblobs zu speichern. Blockblobdaten werden [in der üblichen Höhe in Rechnung gestellt][storage_pricing]. Beachten Sie unbedingt Größe und Anzahl der Anwendungspakete, und entfernen Sie in regelmäßigen Abständen veraltete Pakete, um Kosten zu minimieren.

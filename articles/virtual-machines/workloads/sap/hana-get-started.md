@@ -16,12 +16,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/15/2016
 ms.author: hermannd
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
-ms.openlocfilehash: 88441cd85dd07d701805131f67eda20bbe857ae1
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 05fb31007e1e4c2243f93169129ec5b2c93099e2
 ms.contentlocale: de-de
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="quickstart-manual-installation-of-single-instance-sap-hana-on-azure-vms"></a>Schnellstart: Manuelle Installation von SAP HANA (Einzelinstanz) auf Azure-VMs
@@ -202,7 +201,7 @@ Weitere Informationen zum Anfügen von Datenträgern an Azure-VMs, auf denen Lin
 
 Azure Storage Premium ermöglicht es Ihnen, Zwischenspeicherungsmodi für Datenträger zu definieren. Für das Stripeset mit „/hana/data“ und „/hana/log“ sollte die Zwischenspeicherung von Datenträgern deaktiviert sein. Für die anderen Volumes (Datenträger) sollte der Zwischenspeicherungsmodus auf **ReadOnly** festgelegt sein.
 
-Weitere Informationen finden Sie unter [Storage Premium: Hochleistungsspeicher für Workloads virtueller Azure-Computer](../../../storage/storage-premium-storage.md).
+Weitere Informationen finden Sie unter [Storage Premium: Hochleistungsspeicher für Workloads virtueller Azure-Computer](../../../storage/common/storage-premium-storage.md).
 
 Um JSON-Beispielvorlagen für die Erstellung von virtuellen Computern zu suchen, wechseln Sie zu [Azure Quickstart Templates](https://github.com/Azure/azure-quickstart-templates) (Azure-Schnellstartvorlagen).
 Die Vorlage „vm-simple-sles“ ist eine grundlegende Vorlage. Sie enthält einen Speicherabschnitt mit einem zusätzlichen 100-GB-Datenträger. Diese Vorlage kann als Basis verwendet werden. Sie können die Vorlage an Ihre spezifischen Konfiguration anpassen.

@@ -13,13 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/23/2017
+ms.date: 08/16/2017
 ms.author: monicar
 ms.translationtype: HT
-ms.sourcegitcommit: 818f7756189ed4ceefdac9114a0b89ef9ee8fb7a
-ms.openlocfilehash: 800eadb6cc558303553a204771b18cec525a2af9
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: 1607ca31a81c0941895611f626d54f6fbb294a20
 ms.contentlocale: de-de
-ms.lasthandoff: 07/14/2017
+ms.lasthandoff: 08/24/2017
 
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure-Glossar: Ein Wörterbuch der Cloudterminologie auf der Azure Platform
@@ -30,8 +30,8 @@ Das Microsoft Azure-Glossar ist ein kompaktes Wörterbuch der Cloudterminologie 
 * [Cloud Computing-Terminologie:](https://azure.microsoft.com/overview/cloud-computing-dictionary/) Allgemeine branchenübliche Cloudbegriffe.
 
 ## <a name="account"></a>Konto
-Ein Geschäfts- oder Schulkonto oder ein persönliches Microsoft-Konto, das für den Zugriff und die Verwaltung eines Azure-Abonnements verwendet wird.  
-Weitere Informationen finden Sie unter [Beziehung zwischen Azure-Abonnements und Azure Active Directory](active-directory/active-directory-how-subscriptions-associated-directory.md).
+Ein Konto für den Zugriff auf ein Azure-Abonnement und dessen Verwaltung. Es wird häufig als Azure-Konto bezeichnet, kann aber ein vorhandenes Geschäfts-, Schul- oder Unikonto, ein persönliches Microsoft-Konto oder ein Office 365-Benutzername und -Kennwort sein. Sie können auch ein Konto für die Verwaltung eines Azure-Abonnements erstellen, wenn Sie sich für die [kostenlose Testversion](https://azure.microsoft.com) registrieren.  
+Weitere Informationen finden Sie unter [Registrieren für ein Azure-Abonnement mit Ihrem Office 365-Konto](billing/billing-use-existing-office-365-account-azure-subscription.md) sowie unter [Konten, die für die Anmeldung verwendet werden können](active-directory/active-directory-how-subscriptions-associated-directory.md).
 
 ## <a name="api-app"></a>API-App
 Ein anderer Name für [App Service-App](#app-service-app).
@@ -119,11 +119,11 @@ In dieser Vereinbarung ist die garantierte Verfügbarkeit und Konnektivität bes
 Weitere Informationen finden Sie unter [Vereinbarungen zum Servicelevel (SLAs)](https://azure.microsoft.com/support/legal/sla/).
 
 ## <a name="sas"></a>Shared Access Signature (SAS)
-Eine Signatur, mit der Sie eingeschränkten Zugriff auf eine Ressource gewähren können, ohne Ihren Kontoschlüssel offenzulegen. Ein Beispiel: [Azure Storage verwendet SAS](storage/storage-dotnet-shared-access-signature-part-1.md), um Clients Zugriff auf Objekte (beispielsweise Blobs) zu gewähren. [IoT Hub verwendet SAS](iot-hub/iot-hub-devguide-security.md#security-tokens), um Geräten Berechtigungen zum Senden von Telemetriedaten zu erteilen.
+Eine Signatur, mit der Sie eingeschränkten Zugriff auf eine Ressource gewähren können, ohne Ihren Kontoschlüssel offenzulegen. Ein Beispiel: [Azure Storage verwendet SAS](storage/common/storage-dotnet-shared-access-signature-part-1.md), um Clients Zugriff auf Objekte (beispielsweise Blobs) zu gewähren. [IoT Hub verwendet SAS](iot-hub/iot-hub-devguide-security.md#security-tokens), um Geräten Berechtigungen zum Senden von Telemetriedaten zu erteilen.
 
 ## <a name="storage-account"></a>Speicherkonto
 Ein Konto, das den Zugriff auf die Blob-, Warteschlangen-, Tabellen- und Dateidienste in Azure Storage ermöglicht. Der Name des Speicherkontos definiert den eindeutigen Namespace für Azure Storage-Datenobjekte.  
-Weitere Informationen finden Sie unter [Informationen zu Azure-Speicherkonten](storage/storage-create-storage-account.md).
+Weitere Informationen finden Sie unter [Informationen zu Azure-Speicherkonten](storage/common/storage-create-storage-account.md).
 
 ## <a name="subscription"></a>Abonnement
 Eine Vereinbarung des Kunden mit Microsoft, die die Inanspruchnahme von Azure-Diensten ermöglicht. Die Abonnementpreise und -bedingungen richten sich nach dem ausgewählten Angebot für das Abonnement.

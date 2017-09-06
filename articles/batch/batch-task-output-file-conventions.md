@@ -15,12 +15,11 @@ ms.workload: big-compute
 ms.date: 06/16/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8be2bcb9179e9af0957fcee69680ac803fd3d918
-ms.openlocfilehash: 24855004f8ea15f2d4f40ba35e6f708929143879
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: a9de327c20463469bc91d9720aa17333a36f919e
 ms.contentlocale: de-de
-ms.lasthandoff: 06/23/2017
-
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net-to-persist"></a>Beibehalten von Auftrags- und Taskdateien in Azure Storage mit der Batch-Dateikonventionenbibliothek für .NET 
@@ -69,10 +68,10 @@ Um Ausgabedaten in Azure Storage mithilfe der Dateikonventionenbibliothek beizub
 
 Um Auftrags- und Taskausgabedateien mit der Dateikonventionenbibliothek beizubehalten, erstellen Sie einen Container in Azure Storage, und speichern Sie die Ausgabe für den Container. Verwenden der [Azure Storage-Clientbibliothek für .NET](https://www.nuget.org/packages/WindowsAzure.Storage) in Ihrem Taskcode zum Hochladen der Taskausgabe auf den Container. 
 
-Weitere Informationen zum Arbeiten mit Containern und Blobs in Azure Storage finden Sie unter [Erste Schritte mit Azure Blob Storage in .NET](../storage/storage-dotnet-how-to-use-blobs.md).
+Weitere Informationen zum Arbeiten mit Containern und Blobs in Azure Storage finden Sie unter [Erste Schritte mit Azure Blob Storage in .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md).
 
 > [!WARNING]
-> Alle Auftrags-und Taskausgaben, die mit der Bibliothek beibehalten werden, werden im gleichen Container gespeichert. Wenn eine große Anzahl von Tasks versucht, Dateien zum gleichen Zeitpunkt beizubehalten, können die [Speicher-Einschränkungsgrenzwerte](../storage/storage-performance-checklist.md#blobs) erzwungen werden.
+> Alle Auftrags-und Taskausgaben, die mit der Bibliothek beibehalten werden, werden im gleichen Container gespeichert. Wenn eine große Anzahl von Tasks versucht, Dateien zum gleichen Zeitpunkt beizubehalten, können die [Speicher-Einschränkungsgrenzwerte](../storage/common/storage-performance-checklist.md#blobs) erzwungen werden.
 > 
 > 
 

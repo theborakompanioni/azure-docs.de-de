@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2016
 ms.author: nicking
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 1ad2911f809a17e4a6c0f2fe9087e1d9eb2da39e
-ms.lasthandoff: 02/16/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: c1b8fc3be3af46279bf35bddbc82acf1827b9eb9
+ms.contentlocale: de-de
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="use-rest-to-back-up-and-restore-app-service-apps"></a>Verwenden von REST zum Sichern und Wiederherstellen von App Service-Apps
@@ -58,7 +58,7 @@ Wenn Sie eine App sofort sichern möchten, senden Sie eine **POST**-Anforderung 
 
 Hier ist dargestellt, wie die URL für unsere Beispielwebsite aussieht: **https://management.azure.com/subscriptions/00001111-2222-3333-4444-555566667777/resourceGroups/Default-Web-WestUS/providers/Microsoft.Web/sites/backuprestoreapiexamples/backup/**
 
-Stellen Sie im Text der Anforderung ein JSON-Objekt bereit, um anzugeben, welches Speicherkonto zum Speichern des Backups verwendet werden soll. Das JSON-Objekt muss eine Eigenschaft mit dem Namen **storageAccountUrl**aufweisen, die über eine [SAS-URL](../storage/storage-dotnet-shared-access-signature-part-1.md) mit Gewährung des Schreibzugriffs auf den Azure Storage-Container verfügt, in dem das Backup-Blob enthalten sein soll. Wenn Sie Ihre Datenbanken sichern möchten, müssen Sie auch eine Liste mit den Namen, Typen und Verbindungszeichenfolgen der zu sichernden Datenbanken angeben.
+Stellen Sie im Text der Anforderung ein JSON-Objekt bereit, um anzugeben, welches Speicherkonto zum Speichern des Backups verwendet werden soll. Das JSON-Objekt muss eine Eigenschaft mit dem Namen **storageAccountUrl**aufweisen, die über eine [SAS-URL](../storage/common/storage-dotnet-shared-access-signature-part-1.md) mit Gewährung des Schreibzugriffs auf den Azure Storage-Container verfügt, in dem das Backup-Blob enthalten sein soll. Wenn Sie Ihre Datenbanken sichern möchten, müssen Sie auch eine Liste mit den Namen, Typen und Verbindungszeichenfolgen der zu sichernden Datenbanken angeben.
 
 ```
 {

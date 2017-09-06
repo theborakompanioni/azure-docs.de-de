@@ -16,18 +16,18 @@ ms.topic: article
 ms.date: 06/26/2017
 ms.author: davidmu
 ms.translationtype: HT
-ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
-ms.openlocfilehash: 0f2c6ce3e5df6c513d8077b3dfcca0beb4a247bf
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: d8bf89a4b7c2a158302f9ba09a182a3d8d062adc
 ms.contentlocale: de-de
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 
 # <a name="download-a-windows-vhd-from-azure"></a>Herunterladen einer Windows-VHD von Azure
 
-In diesem Artikel erfahren Sie, wie Sie mithilfe des Azure-Portals eine [Windows-VHD-Datei (virtuelle Festplatte)](../../storage/storage-about-disks-and-vhds-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) von Azure herunterladen. 
+In diesem Artikel erfahren Sie, wie Sie mithilfe des Azure-Portals eine [Windows-VHD-Datei (virtuelle Festplatte)](about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) von Azure herunterladen. 
 
-Virtuelle Computer (VMs) in Azure verwenden [Datenträger](../../storage/storage-managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) als Speicherplatz für ein Betriebssystem, Anwendungen und Daten. Alle virtuellen Azure-Computer verfügen über mindestens zwei Datenträger – einen Datenträger mit dem Windows-Betriebssystem und einen temporären Datenträger. Der Betriebssystem-Datenträger wird aus einem Image erstellt. Sowohl der Betriebssystem-Datenträger als auch das Image sind virtuelle Festplatten (VHDs), die in einem Azure-Speicherkonto gespeichert sind. Virtuelle Computer können auch über einen oder mehrere Datenträger verfügen, die ebenfalls als VHDs gespeichert werden.
+Virtuelle Computer (VMs) in Azure verwenden [Datenträger](managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) als Speicherplatz für ein Betriebssystem, Anwendungen und Daten. Alle virtuellen Azure-Computer verfügen über mindestens zwei Datenträger – einen Datenträger mit dem Windows-Betriebssystem und einen temporären Datenträger. Der Betriebssystem-Datenträger wird aus einem Image erstellt. Sowohl der Betriebssystem-Datenträger als auch das Image sind virtuelle Festplatten (VHDs), die in einem Azure-Speicherkonto gespeichert sind. Virtuelle Computer können auch über einen oder mehrere Datenträger verfügen, die ebenfalls als VHDs gespeichert werden.
 
 ## <a name="stop-the-vm"></a>Beenden des virtuellen Computers
 
@@ -52,7 +52,7 @@ Um die VHD als Datenträger eine neue Instanz einer vorhandenen VM oder eines vo
 
 ## <a name="generate-sas-url"></a>Generieren der SAS-URL
 
-Um die VHD-Datei herunterzuladen, müssen Sie eine [SAS-URL (Shared Access Signature)](../../storage/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) generieren. Wenn die URL generiert wird, wird der URL eine Ablaufzeit zugewiesen.
+Um die VHD-Datei herunterzuladen, müssen Sie eine [SAS-URL (Shared Access Signature)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) generieren. Wenn die URL generiert wird, wird der URL eine Ablaufzeit zugewiesen.
 
 1.  Klicken Sie auf im Menü des Blatts für die VM auf **Datenträger**.
 2.  Wählen Sie den Betriebssystem-Datenträger für die VM aus, und klicken Sie dann auf **Exportieren**.

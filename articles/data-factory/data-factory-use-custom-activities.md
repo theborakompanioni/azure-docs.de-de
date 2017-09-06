@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/19/2017
 ms.author: spelluru
 ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
-ms.openlocfilehash: 78945ec210c56106833291167ecaf920794f717f
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: f3d265f31cb653d32076747e586383d67bbccc41
 ms.contentlocale: de-de
-ms.lasthandoff: 08/16/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Verwenden von benutzerdefinierten Aktivitäten in einer Azure Data Factory-Pipeline
@@ -450,7 +450,7 @@ Verknüpfte Dienste verknüpfen Datenspeicher oder Serverdienste mit einer Azure
 2. Klicken Sie in der Befehlsleiste auf **Neuer Datenspeicher** und wählen Sie **Azure Storage**. Das JSON-Skript zum Erstellen eines mit einem Azure-Speicher verknüpften Diensts sollte im Editor angezeigt werden.
     
     ![Neuer Datenspeicher – Azure Storage](media/data-factory-use-custom-activities/new-data-store-menu.png)
-3. Ersetzen Sie `<accountname>` durch den Namen Ihres Azure-Speicherkontos und `<accountkey>` durch den Zugriffsschlüssel des Azure Storage-Kontos. Informationen zum Abrufen Ihres Speicherzugriffsschlüssels finden Sie unter [Informationen zu Azure-Speicherkonten](../storage/storage-create-storage-account.md#manage-your-storage-account).
+3. Ersetzen Sie `<accountname>` durch den Namen Ihres Azure-Speicherkontos und `<accountkey>` durch den Zugriffsschlüssel des Azure Storage-Kontos. Informationen zum Abrufen Ihres Speicherzugriffsschlüssels finden Sie unter [Informationen zu Azure-Speicherkonten](../storage/common/storage-create-storage-account.md#manage-your-storage-account).
 
     ![Mit Azure Storage verknüpfter Dienst](media/data-factory-use-custom-activities/azure-storage-linked-service.png)
 4. Klicken Sie auf der Befehlsleiste auf **Bereitstellen** , um den verknüpften Dienst bereitzustellen.

@@ -8,17 +8,16 @@ manager: balans
 editor: dlepow
 ms.service: container-registry
 ms.devlang: na
-ms.topic: how-to-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/30/2017
 ms.author: cristyg
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
-ms.openlocfilehash: 2fb060749c203a445196530bb7711d50d83c2923
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 1e5d5ea5b1ec121fe008abc48178b1d58f540ce1
 ms.contentlocale: de-de
-ms.lasthandoff: 06/09/2017
-
+ms.lasthandoff: 08/21/2017
 
 ---
 
@@ -33,7 +32,7 @@ Verwenden Sie Befehle in [Azure PowerShell](https://docs.microsoft.com/en-us/pow
 ## <a name="prerequisites"></a>Voraussetzungen
 * **Azure PowerShell**: Informationen zur Installation und den ersten Schritten mit Azure PowerShell finden Sie in der [Installationsanleitung](https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps). Melden Sie sich an Ihrem Azure-Abonnement an, indem Sie `Login-AzureRMAccount` ausführen. Weitere Informationen finden Sie unter [Erste Schritte mit Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azure/get-started-azurep).
 * **Ressourcengruppe**: Erstellen Sie eine [Ressourcengruppe](../azure-resource-manager/resource-group-overview.md#resource-groups), bevor Sie eine Containerregistrierung erstellen, oder verwenden Sie eine vorhandene Ressourcengruppe. Stellen Sie sicher, dass sich die Ressourcengruppe an einem Standort befindet, für den der Containerregistrierungsdienst [verfügbar](https://azure.microsoft.com/regions/services/) ist. Weitere Informationen zum Erstellen einer Ressourcengruppe mit Azure PowerShell finden Sie unter [PowerShell-Referenz](https://docs.microsoft.com/en-us/powershell/azure/get-started-azureps#create-a-resource-group).
-* **Speicherkonto** (optional): Erstellen Sie ein standardmäßiges Azure-[Speicherkonto](../storage/storage-introduction.md) zum Sichern der Containerregistrierung an demselben Standort. Wenn Sie beim Erstellen einer Registrierung mit `New-AzureRMContainerRegistry` kein Speicherkonto angeben, führt der Befehl dies für Sie durch. Weitere Informationen zum Erstellen eines Speicherkontos mit PowerShell finden Sie unter [PowerShell-Referenz](https://docs.microsoft.com/en-us/powershell/module/azure/new-azurestorageaccount). Storage Premium wird derzeit nicht unterstützt.
+* **Speicherkonto** (optional): Erstellen Sie ein standardmäßiges Azure-[Speicherkonto](../storage/common/storage-introduction.md) zum Sichern der Containerregistrierung an demselben Standort. Wenn Sie beim Erstellen einer Registrierung mit `New-AzureRMContainerRegistry` kein Speicherkonto angeben, führt der Befehl dies für Sie durch. Weitere Informationen zum Erstellen eines Speicherkontos mit PowerShell finden Sie unter [PowerShell-Referenz](https://docs.microsoft.com/en-us/powershell/module/azure/new-azurestorageaccount). Storage Premium wird derzeit nicht unterstützt.
 * **Dienstprinzipal** (optional): Wenn Sie mit PowerShell eine Registrierung erstellen, wird der Zugriff standardmäßig nicht eingerichtet. Je nach Ihren Anforderungen können Sie einen vorhandenen Azure Active Directory-Dienstprinzipal einer Registrierung zuweisen (oder einen neuen erstellen und zuweisen). Alternativ können Sie das Administratorbenutzerkonto der Registrierung aktivieren. Informationen hierzu finden Sie in den Abschnitten weiter unten in diesem Artikel. Weitere Informationen zum Zugreifen auf die Registrierung finden Sie unter [Authenticate with the container registry](container-registry-authentication.md) (Authentifizieren bei der Containerregistrierung).
 
 ## <a name="create-a-container-registry"></a>Erstellen einer Containerregistrierung

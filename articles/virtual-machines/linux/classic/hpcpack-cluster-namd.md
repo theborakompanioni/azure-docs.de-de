@@ -16,10 +16,10 @@ ms.workload: big-compute
 ms.date: 10/13/2016
 ms.author: danlep
 ms.translationtype: HT
-ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
-ms.openlocfilehash: 46d71ebd493004bc1ac1b7634722d2abe8b67343
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: e31845f3d7aa08357b0e8a1b3b77d97302442ac3
 ms.contentlocale: de-de
-ms.lasthandoff: 07/12/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="run-namd-with-microsoft-hpc-pack-on-linux-compute-nodes-in-azure"></a>Ausführen von NAMD mit dem Microsoft HPC Pack auf Linux-Computeknoten in Azure
@@ -87,7 +87,7 @@ Das Generieren eines RSA-Schlüsselpaars, das einen öffentlichen Schlüssel und
 > 
 
 ## <a name="set-up-a-file-share-for-linux-nodes"></a>Einrichten einer Dateifreigabe für Linux-Knoten
-Richten Sie nun eine SMB-Standardfreigabe ein, und stellen Sie den freigegebenen Ordner für alle Linux-Knoten bereit, damit die Linux-Knoten auf NAMD-Dateien mit einem gemeinsamen Pfad zugreifen können. Im Folgenden sind die Schritte zum Bereitstellen eines freigegebenen Ordners auf dem Hauptknoten angegeben. Eine Freigabe wird für Distributionen wie beispielsweise CentOS 6.6 empfohlen, die den Azure-Dateidienst derzeit nicht unterstützen. Wenn Ihre Linux-Knoten eine Azure-Dateifreigabe unterstützen, helfen Ihnen die Informationen unter [Verwenden von Azure File Storage unter Linux](../../../storage/storage-how-to-use-files-linux.md) weiter. Weitere Dateifreigabeoptionen für HPC Pack finden Sie unter [Erste Schritte mit Linux-Computeknoten in einem HPC Pack-Cluster in Azure](hpcpack-cluster.md).
+Richten Sie nun eine SMB-Standardfreigabe ein, und stellen Sie den freigegebenen Ordner für alle Linux-Knoten bereit, damit die Linux-Knoten auf NAMD-Dateien mit einem gemeinsamen Pfad zugreifen können. Im Folgenden sind die Schritte zum Bereitstellen eines freigegebenen Ordners auf dem Hauptknoten angegeben. Eine Freigabe wird für Distributionen wie beispielsweise CentOS 6.6 empfohlen, die den Azure-Dateidienst derzeit nicht unterstützen. Wenn Ihre Linux-Knoten eine Azure-Dateifreigabe unterstützen, helfen Ihnen die Informationen unter [Verwenden von Azure File Storage unter Linux](../../../storage/files/storage-how-to-use-files-linux.md) weiter. Weitere Dateifreigabeoptionen für HPC Pack finden Sie unter [Erste Schritte mit Linux-Computeknoten in einem HPC Pack-Cluster in Azure](hpcpack-cluster.md).
 
 1. Erstellen Sie auf dem Hauptknoten einen Ordner, und geben Sie ihn für alle Benutzer frei, indem Sie Lese-/Schreibberechtigungen festlegen. In diesem Beispiel ist „\\\\CentOS66HN\Namd“ der Name des Ordners, wobei „CentOS66HN“ der Hostname des Hauptknotens ist.
 2. Erstellen Sie einen Unterordner namens „namd2“ im freigegebenen Ordner. Erstellen Sie in „namd2“ einen weiteren Unterordner mit dem Namen „namdsample“.

@@ -16,10 +16,10 @@ ms.custom: H1Hack27Feb2017
 ms.date: 07/21/2017
 ms.author: LADocs; padmavc
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 59aa8fc907d68485b7d78ae7466e2d2298d7d7d6
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: f717dae9a70a96944b623f22b90cf8c5a943f382
 ms.contentlocale: de-de
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 
@@ -108,7 +108,7 @@ Die Protokollierung kann entweder direkt über Ihr Integrationskonto oder [über
 
 ## <a name="extend-how-and-where-you-use-diagnostic-data-with-other-services"></a>Erweitern der Nutzung von Diagnosedaten mit anderen Diensten
 
-In Kombination mit Azure Log Analytics können Sie die Nutzung der Diagnosedaten Ihrer Logik-App mit anderen Azure-Diensten erweitern. Dies ermöglicht beispielsweise Folgendes: 
+In Verbindung mit Azure Log Analytics können Sie die Nutzung der Diagnosedaten Ihrer Logik-App um andere Azure-Dienste erweitern, z.B.: 
 
 * [Archivieren von Azure-Diagnoseprotokollen in Azure Storage](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md)
 * [Streamen von Azure-Diagnoseprotokollen an Azure Event Hubs](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md) 
@@ -118,7 +118,7 @@ Durch die Verwendung von Telemetriedaten und Analysen anderer Dienste (beispiels
 * [Streamen von Daten von Event Hubs zu Stream Analytics](../stream-analytics/stream-analytics-define-inputs.md)
 * [Analysieren von Streamingdaten mit Stream Analytics und Erstellen eines Dashboards für die Echtzeitanalyse in Power BI](../stream-analytics/stream-analytics-power-bi-dashboard.md)
 
-Erstellen Sie je nach den Optionen, die Sie einrichten möchten, zunächst [ein Azure-Speicherkonto](../storage/storage-create-storage-account.md) oder [einen Azure Event Hub](../event-hubs/event-hubs-create.md). Wählen Sie anschließend die gewünschten Sendeoptionen für Diagnosedaten aus:
+Stellen Sie basierend auf den einzurichtenden Optionen sicher, dass Sie zuerst [ein Azure-Speicherkonto](../storage/common/storage-create-storage-account.md) oder [einen Azure Event Hub](../event-hubs/event-hubs-create.md) erstellen. Wählen Sie anschließend die gewünschten Sendeoptionen für Diagnosedaten aus:
 
 ![Senden von Daten an das Azure-Speicherkonto oder einen Event Hub](./media/logic-apps-monitor-b2b-message/storage-account-event-hubs.png)
 

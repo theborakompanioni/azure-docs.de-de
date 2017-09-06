@@ -12,18 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/10/2017
+ms.date: 08/28/2017
 ms.author: nitinme
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
-ms.openlocfilehash: c852374b6f6ca58d807631fdfcc8e42abf99b673
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: b469c0ebe9838a1ea986cff3043e3008941e9aa9
 ms.contentlocale: de-de
-ms.lasthandoff: 05/08/2017
-
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="use-the-azure-importexport-service-for-offline-copy-of-data-to-data-lake-store"></a>Verwenden von Azure Import/Export zum Kopieren von Daten in Data Lake Store im Offlinemodus
-In diesem Artikel erfahren Sie, wie Sie große Datasets (>200 GB) mit Kopiermethoden im Offlinemodus, z.B. mit dem [Azure Import/Export-Dienst](../storage/storage-import-export-service.md), in einen Azure Data Lake Store kopieren können. Die in diesem Artikel als Beispiel verwendete Datei hat eine Größe von 339.420.860.416 Byte, d.h. etwa 319GB auf dem Datenträger. Der Name dieser Datei lautet „319GB.tsv“.
+In diesem Artikel erfahren Sie, wie Sie große Datasets (>200 GB) mit Kopiermethoden im Offlinemodus, z.B. mit dem [Azure Import/Export-Dienst](../storage/common/storage-import-export-service.md), in einen Azure Data Lake Store kopieren können. Die in diesem Artikel als Beispiel verwendete Datei hat eine Größe von 339.420.860.416 Byte, d.h. etwa 319GB auf dem Datenträger. Der Name dieser Datei lautet „319GB.tsv“.
 
 Mit dem Import/Export-Dienst von Azure können Sie große Datenmengen auf sicherere Weise in den Azure-Blobspeicher übertragen, indem Sie Festplattenlaufwerke an ein Azure-Rechenzentrum schicken.
 
@@ -50,7 +49,7 @@ Mit dem Splitvorgang werden Dateien mit den folgenden Namen erstellt.
     319GB.tsv-part-ad
 
 ## <a name="get-disks-ready-with-data"></a>Vorbereiten von Festplatten mit Daten
-Befolgen Sie die Anweisungen unter [Verwenden des Azure Import/Export-Diensts](../storage/storage-import-export-service.md) (im Abschnitt **Vorbereiten Ihrer Laufwerke**) zum Vorbereiten der Festplattenlaufwerke. Hier ist die gesamte Sequenz:
+Befolgen Sie die Anweisungen unter [Verwenden des Azure Import/Export-Diensts](../storage/common/storage-import-export-service.md) (im Abschnitt **Vorbereiten Ihrer Laufwerke**) zum Vorbereiten der Festplattenlaufwerke. Hier ist die gesamte Sequenz:
 
 1. Verwenden Sie eine Festplatte, die die Anforderung zur Verwendung mit dem Azure Import/Export-Dienst erfüllt.
 2. Bestimmen Sie ein Azure-Speicherkonto, in das die Daten kopiert werden, nachdem die Festplatte an das Azure-Rechenzentrum gesendet wurde.
@@ -59,11 +58,11 @@ Befolgen Sie die Anweisungen unter [Verwenden des Azure Import/Export-Diensts](.
     ````
     WAImportExport PrepImport /sk:<StorageAccountKey> /t: <TargetDriveLetter> /format /encrypt /logdir:e:\myexportimportjob\logdir /j:e:\myexportimportjob\journal1.jrn /id:myexportimportjob /srcdir:F:\demo\ExImContainer /dstdir:importcontainer/vf1/
     ````
-    Unter [Verwenden des Azure Import/Export-Diensts](../storage/storage-import-export-service.md) finden Sie weitere Beispielcodeausschnitte.
+    Unter [Verwenden des Azure Import/Export-Diensts](../storage/common/storage-import-export-service.md) finden Sie weitere Beispielcodeausschnitte.
 4. Mit dem vorhergehenden Befehl wird eine Journaldatei am angegebenen Speicherort erstellt. Erstellen Sie mit dieser Journaldatei einen Importauftrag über das [klassische Azure-Portal](https://manage.windowsazure.com).
 
 ## <a name="create-an-import-job"></a>Erstellen eines Importauftrags
-Nun können Sie anhand der Anweisungen unter [Verwenden des Azure Import/Export-Diensts](../storage/storage-import-export-service.md) (im Abschnitt **Erstellen des Importauftrags**) einen Importauftrag erstellen. Geben Sie für diesen Importauftrag neben anderen Informationen auch die bei der Vorbereitung der Festplattenlaufwerke erstellte Journaldatei an.
+Nun können Sie anhand der Anweisungen unter [Verwenden des Azure Import/Export-Diensts](../storage/common/storage-import-export-service.md) (im Abschnitt **Erstellen des Importauftrags**) einen Importauftrag erstellen. Geben Sie für diesen Importauftrag neben anderen Informationen auch die bei der Vorbereitung der Festplattenlaufwerke erstellte Journaldatei an.
 
 ## <a name="physically-ship-the-disks"></a>Versenden der Festplatten
 Jetzt können Sie die Datenträger an ein Azure-Rechenzentrum versenden. Dort werden die Daten in die Azure Storage-Blobs kopiert, die Sie beim Erstellen des Importauftrags angegeben haben. Wenn Sie beim Erstellen des Auftrags die Nachverfolgungsinformationen zunächst ausgelassen haben, können Sie nun zu Ihrem Importauftrag zurückkehren und die Nachverfolgungsnummer angeben.

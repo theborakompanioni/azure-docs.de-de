@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/05/2017
 ms.author: tomfitz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 75685a21ce4a212638016be62640badd4870454a
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 6612ee61f5c50e743241b92030660cea7ae7094d
 ms.contentlocale: de-de
-ms.lasthandoff: 03/31/2017
-
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="apply-resource-policies-to-storage-accounts"></a>Anwenden von Ressourcenrichtlinien auf Speicherkonten
@@ -27,7 +26,7 @@ Dieses Thema zeigt mehrere [Ressourcenrichtlinien](resource-manager-policy.md), 
 
 ## <a name="define-permitted-storage-account-types"></a>Definieren zulässiger Speicherkontotypen
 
-Die folgende Richtlinie schränkt die bereitstellbaren [Speicherkontotypen](../storage/storage-redundancy.md) ein:
+Die folgende Richtlinie schränkt die bereitstellbaren [Speicherkontotypen](../storage/common/storage-redundancy.md) ein:
 
 ```json
 {
@@ -58,7 +57,7 @@ Eine ähnliche Richtlinienregel mit einem Parameter zum Akzeptieren zulässiger 
 
 ## <a name="define-permitted-access-tier"></a>Definieren der zulässigen Zugriffsebene
 
-Die folgende Richtlinie gibt die Art von [Zugriffsebene](../storage/storage-blob-storage-tiers.md) an, die für Speicherkonten angegeben werden kann:
+Die folgende Richtlinie gibt die Art von [Zugriffsebene](../storage/blobs/storage-blob-storage-tiers.md) an, die für Speicherkonten angegeben werden kann:
 
 ```json
 {
@@ -88,7 +87,7 @@ Die folgende Richtlinie gibt die Art von [Zugriffsebene](../storage/storage-blob
 
 ## <a name="ensure-encryption-is-enabled"></a>Sicherstellen, dass die Verschlüsselung aktiviert ist
 
-Die folgende Richtlinie gibt vor, dass die [Speicherdienstverschlüsselung](../storage/storage-service-encryption.md) bei allen Speicherkonten aktiviert sein muss:
+Die folgende Richtlinie gibt vor, dass die [Speicherdienstverschlüsselung](../storage/common/storage-service-encryption.md) bei allen Speicherkonten aktiviert sein muss:
 
 ```json
 {

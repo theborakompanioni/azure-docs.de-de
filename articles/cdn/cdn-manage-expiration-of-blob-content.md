@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: f44119d651767881cfd999808925b0066a5e502b
-ms.lasthandoff: 04/27/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: d4741921806e443d92c385a04b781cec296c2ae8
+ms.contentlocale: de-de
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="manage-expiration-of-azure-storage-blobs-in-azure-cdn"></a>Verwalten des Ablaufs von Azure Storage-Blobs in Azure CDN
@@ -28,7 +28,7 @@ ms.lasthandoff: 04/27/2017
 > 
 > 
 
-Der [Blobdienst](../storage/storage-introduction.md#blob-storage) in [Azure Storage](../storage/storage-introduction.md) ist einer von verschiedenen Azure-basierten Ursprüngen, die in Azure CDN integriert wurden.  Jeder öffentlich zugängliche Blobinhalt kann in Azure CDN zwischengespeichert werden, bis seine Gültigkeitsdauer abläuft.  Die Gültigkeitsdauer wird durch den [*Cache-Control* -Header](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) in der HTTP-Antwort von Azure Storage bestimmt.
+Der [Blobdienst](../storage/common/storage-introduction.md#blob-storage) in [Azure Storage](../storage/common/storage-introduction.md) ist einer von verschiedenen Azure-basierten Ursprüngen, die in Azure CDN integriert wurden.  Jeder öffentlich zugängliche Blobinhalt kann in Azure CDN zwischengespeichert werden, bis seine Gültigkeitsdauer abläuft.  Die Gültigkeitsdauer wird durch den [*Cache-Control* -Header](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) in der HTTP-Antwort von Azure Storage bestimmt.
 
 > [!TIP]
 > Sie haben auch die Möglichkeit, für einen Blob keine Gültigkeitsdauer festzulegen.  In diesem Fall wendet Azure CDN automatisch eine Standardgültigkeitsdauer von sieben Tagen an.
@@ -64,7 +64,7 @@ $blob.ICloudBlob.SetProperties()
 > 
 
 ## <a name="azure-storage-client-library-for-net"></a>Azure Storage-Clientbibliothek für .NET
-Zum Bestimmten der Gültigkeitsdauer eines Blobs mithilfe von .NET verwenden Sie die [Azure Storage-Clientbibliothek für .NET](../storage/storage-dotnet-how-to-use-blobs.md), um die Eigenschaft [CloudBlob.Properties.CacheControl](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.blob.blobproperties.cachecontrol.aspx) festzulegen.
+Zum Bestimmten der Gültigkeitsdauer eines Blobs mithilfe von .NET verwenden Sie die [Azure Storage-Clientbibliothek für .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md), um die Eigenschaft [CloudBlob.Properties.CacheControl](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.blob.blobproperties.cachecontrol.aspx) festzulegen.
 
 ```csharp
 class Program

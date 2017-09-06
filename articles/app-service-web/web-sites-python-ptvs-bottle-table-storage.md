@@ -14,11 +14,11 @@ ms.devlang: python
 ms.topic: article
 ms.date: 07/07/2016
 ms.author: huvalo
-translationtype: Human Translation
-ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
-ms.openlocfilehash: 4aa0e4d036b7031e51abc6ac53872db64c2f90b4
-ms.lasthandoff: 02/16/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: fb25f03607ac6e9af46b47f54e830e0283dd1b0a
+ms.contentlocale: de-de
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="bottle-and-azure-table-storage-on-azure-with-python-tools-22-for-visual-studio"></a>Bottle und Azure-Tabellenspeicher in Azure mit Python Tools 2.2 für Visual Studio
@@ -171,8 +171,8 @@ Folgen Sie diesen Links, wenn Sie mehr über Python Tools für Visual Studio, Bo
 <!--Link references-->
 [Python Developer Center]: /develop/python/
 [Azure Cloud Services]: ../cloud-services/cloud-services-python-ptvs.md
-[Dokumentation]: ../storage/storage-python-how-to-use-table-storage.md
-[Verwenden des Tabellenspeicherdiensts in Python]: ../storage/storage-python-how-to-use-table-storage.md
+[Dokumentation]:../cosmos-db/table-storage-how-to-use-python.md
+[Verwenden des Tabellenspeicherdiensts in Python]:../cosmos-db/table-storage-how-to-use-python.md
 
 
 <!--External Link references-->

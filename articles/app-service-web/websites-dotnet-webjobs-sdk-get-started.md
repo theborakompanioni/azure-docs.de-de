@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 6/14/2017
 ms.author: glenga
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: 31fd4523794d71b5fbf6d55ba97f3b744b8d5d38
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: a20b13058caecff75af14957468f20e63a3325c9
 ms.contentlocale: de-de
-ms.lasthandoff: 06/16/2017
-
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="create-a-net-webjob-in-azure-app-service"></a>Erstellen eines .NET-Webauftrags in Azure App Service
@@ -99,7 +98,7 @@ In einer tatsächlichen Anwendung würden Sie normalerweise separate Konten für
     Diese Einstellung legt fest, in welchem Azure-Datencenter Ihr Speicherkonto gehostet wird. In diesem Lernprogramm macht Ihre Auswahl keinen großen Unterschied. Für Produktions-Web-Apps sollten Ihr Webserver und Ihr Speicherkonto jedoch in der gleichen Region liegen, um Latenz und Kosten für die Datenübertragung zu minimieren. Die Web-App (die Sie später erstellen) sollte sich möglichst nahe an den Browsern befinden, die auf die Web-App zugreifen, um die Latenz zu minimieren.
 7. Wählen Sie in der Dropdownliste **Replikation** den Wert **Lokal redundant** aus.
 
-    Wenn Georeplikation für ein Speicherkonto aktiviert ist, werden dessen Inhalte an ein zweites Datencenter repliziert, um im Katastrophenfall eine Failover-Instanz an diesem zweiten Standort zur Verfügung zu haben. Für die Georeplikation können zusätzliche Kosten anfallen. Für Test- und Entwicklungskonten macht es wenig Sinn, für Georeplikation zu bezahlen. Weitere Informationen finden Sie unter [Erstellen, Verwalten oder Löschen eines Speicherkontos](../storage/storage-create-storage-account.md).
+    Wenn Georeplikation für ein Speicherkonto aktiviert ist, werden dessen Inhalte an ein zweites Datencenter repliziert, um im Katastrophenfall eine Failover-Instanz an diesem zweiten Standort zur Verfügung zu haben. Für die Georeplikation können zusätzliche Kosten anfallen. Für Test- und Entwicklungskonten macht es wenig Sinn, für Georeplikation zu bezahlen. Weitere Informationen finden Sie unter [Erstellen, Verwalten oder Löschen eines Speicherkontos](../storage/common/storage-create-storage-account.md).
 8. Klicken Sie auf **Erstellen**.
 
     ![Neues Speicherkonto](./media/websites-dotnet-webjobs-sdk-get-started/newstorage.png)

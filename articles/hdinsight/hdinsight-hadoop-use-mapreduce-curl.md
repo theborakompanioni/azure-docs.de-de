@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 07/12/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
-ms.openlocfilehash: df22c7315cc55df0e7963bc03a215ab09589b25b
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 8238bb829df95dcb8c99c0b7fff53c627a56f47c
 ms.contentlocale: de-de
-ms.lasthandoff: 06/10/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="run-mapreduce-jobs-with-hadoop-on-hdinsight-using-rest"></a>Ausführen von MapReduce-Aufträgen mit Hadoop in HDInsight mithilfe von REST
@@ -97,7 +97,7 @@ Erfahren Sie, wie mithilfe der WebHCat-REST-API MapReduce-Aufträge auf einem Ha
 
 4. Sobald der Status des Auftrags in `SUCCEEDED` wechselt, können Sie die Ergebnisse des Auftrags aus Azure-BLOB-Speicher abrufen. Der mit der Abfrage übergebene Parameter `statusdir` enthält den Speicherort der Ausgabedatei. In diesem Beispiel ist dies `/example/curl`. Diese Adresse speichert die Ausgabe des Auftrags unter `/example/curl` im Standardspeicher des Clusters.
 
-Sie können diese Dateien mithilfe von [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) auflisten und herunterladen. Weitere Informationen zur Verwendung von BLOBs über die Azure-Befehlszeilenschnittstelle finden Sie im Artikel [Verwenden der Azure CLI 2.0 mit Azure Storage](../storage/storage-azure-cli.md#create-and-manage-blobs).
+Sie können diese Dateien mithilfe von [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) auflisten und herunterladen. Weitere Informationen zur Verwendung von BLOBs über die Azure-Befehlszeilenschnittstelle finden Sie im Artikel [Verwenden der Azure CLI 2.0 mit Azure Storage](../storage/common/storage-azure-cli.md#create-and-manage-blobs).
 
 ## <a id="nextsteps"></a>Nächste Schritte
 

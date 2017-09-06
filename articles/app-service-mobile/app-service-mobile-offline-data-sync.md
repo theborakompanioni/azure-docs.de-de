@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/30/2016
 ms.author: glenga
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 15a3f9f40bdb84b939b30e33e5f2033411adc3cc
-ms.openlocfilehash: dc179f6186d501bc7c8e4ca72b2bf23e89a9443e
+ms.translationtype: HT
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: 8e2bd755d14319f8c66f7ae7ec64fbd10801b39d
 ms.contentlocale: de-de
-ms.lasthandoff: 12/01/2016
+ms.lasthandoff: 08/24/2017
 
 ---
 # <a name="offline-data-sync-in-azure-mobile-apps"></a>Synchronisierung von Offlinedaten in Azure Mobile Apps
@@ -68,8 +68,7 @@ Beim Synchronisieren von Tabellen steuert der Clientcode, wann lokale Änderunge
 * **Pushvorgang**: Push ist ein Vorgang auf dem Synchronisierungskontext, der alle CUD-Änderungen seit dem letzten Pushvorgang sendet. Beachten Sie, dass es nicht möglich ist, nur die Änderungen einer einzelnen Tabelle zu senden, da andernfalls Vorgänge außerhalb der Reihenfolge gesendet werden könnten. Ein Pushvorgang führt eine Reihe von REST-Aufrufen an Ihr Azure Mobile App-Back-End durch, das wiederum die Serverdatenbank ändert.
 * **Pullvorgänge**: Pullvorgänge erfolgen pro Tabelle und können mit einer Abfrage so angepasst werden, dass nur eine Teilmenge der Serverdaten abgerufen wird. Die Azure Mobile-Client-SDKs legen dann die resultierenden Daten im lokalen Speicher ab.
 * **Implizite Pushvorgänge**: Wenn ein Pullvorgang für eine Tabelle mit ausstehenden lokalen Updates ausgeführt wird, führt der Pullvorgang zunächst einen Vorgang vom Typ `push()` für den Synchronisierungskontext aus. Dieser Pushvorgang minimiert Konflikte zwischen Änderungen, die sich bereits in der Warteschlange befinden, und den neuen Daten vom Server.
-* **Inkrementelle Synchronisierung**: der erste Parameter für den Pullvorgang ist ein *Abfragename* , der nur auf dem Client verwendet wird. Wenn Sie einen nicht leeren Abfragenamen verwenden, führt das Azure Mobile SDK eine *inkrementelle Synchronisierung* durch.
-  Jedes Mal, wenn ein Pullvorgang einen Satz von Ergebnissen zurückgibt, wird der neueste `updatedAt`-Zeitstempel aus der Ergebnismenge in den lokalen SDK-Systemtabellen gespeichert. Nachfolgende Pullvorgänge rufen nur Datensätze nach dem jeweiligen Zeitstempel ab.
+* **Inkrementelle Synchronisierung**: der erste Parameter für den Pullvorgang ist ein *Abfragename* , der nur auf dem Client verwendet wird. Wenn Sie einen nicht leeren Abfragenamen verwenden, führt das Azure Mobile SDK eine *inkrementelle Synchronisierung* durch. Jedes Mal, wenn ein Pullvorgang einen Satz von Ergebnissen zurückgibt, wird der neueste `updatedAt`-Zeitstempel aus der Ergebnismenge in den lokalen SDK-Systemtabellen gespeichert. Nachfolgende Pullvorgänge rufen nur Datensätze nach dem jeweiligen Zeitstempel ab.
 
   Um die inkrementelle Synchronisierung verwenden zu können, muss Ihr Server sinnvolle `updatedAt`-Werte zurückgeben und das Sortieren nach diesem Feld unterstützen. Da das SDK jedoch eine eigene Sortierung auf das Feld "UpdatedAt" hinzufügt, können Sie keine Pullabfrage nutzen, die über eine eigene `orderBy` -Klausel verfügt.
 
@@ -101,6 +100,6 @@ Beim Synchronisieren von Tabellen steuert der Clientcode, wann lokale Änderunge
 [Android: Offlinesynchronisierung aktivieren]: app-service-mobile-android-get-started-offline-data.md
 [iOS: Offlinesynchronisierung aktivieren]: app-service-mobile-ios-get-started-offline-data.md
 [Xamarin iOS: Offlinesynchronisierung aktivieren]: app-service-mobile-xamarin-ios-get-started-offline-data.md
-[Xamarin Android: Offlinesynchronisierung aktivieren]: app-service-mobile-xamarin-ios-get-started-offline-data.md
+[Xamarin Android: Offlinesynchronisierung aktivieren]: app-service-mobile-xamarin-android-get-started-offline-data.md
 [Aktivieren der Offlinesynchronisierung für Ihre Windows-App]: app-service-mobile-windows-store-dotnet-get-started-offline-data.md
 

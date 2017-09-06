@@ -16,10 +16,10 @@ ms.custom: H1Hack27Feb2017
 ms.date: 07/21/2017
 ms.author: LADocs; jehollan
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 8bacd408e49eb5f6eeb4b8f7eb10feac21830bb0
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 4795f5728d4ce6ff21b97bc3fefd6a53e0c6a11b
 ms.contentlocale: de-de
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 
@@ -94,8 +94,8 @@ Sie müssen über einen OMS-Arbeitsbereich verfügen, bevor Sie beginnen können
 
 4. Wählen Sie anschließend den OMS-Arbeitsbereich und die Ereigniskategorie wie gezeigt für die Protokollierung aus:
 
-   1. Wählen Sie **An Log Analytics senden**. 
-   2. Wählen Sie unter **Log Analytics** die Option **Konfigurieren**. 
+   1. Wählen Sie **An Log Analytics senden** aus. 
+   2. Wählen Sie unter **Log Analytics** die Option **Konfigurieren** aus. 
    3. Wählen Sie unter **OMS-Arbeitsbereiche** den OMS-Arbeitsbereich aus, den Sie für die Protokollierung verwenden möchten.
    4. Wählen Sie unter **Protokoll** die Kategorie **WorkflowRuntime** aus.
    5. Wählen Sie das Metrikintervall aus.
@@ -125,7 +125,7 @@ Führen Sie die hier angegebenen Schritte aus, um nach Ereignissen in Ihrer Logi
 
 4. Wählen Sie auf Ihrer OMS-Startseite die Option **Protokollsuche**.
 
-   ![Auswählen der Option „Protokollsuche“ auf Ihrer OMS-Startseite](media/logic-apps-monitor-your-logic-apps/logsearch.png)
+   ![Auswählen von „Protokollsuche“ auf Ihrer OMS-Startseite](media/logic-apps-monitor-your-logic-apps/logsearch.png)
 
    Oder
 
@@ -167,15 +167,15 @@ Wählen Sie **+Hinzufügen**, um die Abfrage durch das Hinzufügen eines Filters
 
 In Verbindung mit Azure Log Analytics können Sie die Nutzung der Diagnosedaten Ihrer Logik-App um andere Azure-Dienste erweitern, z.B.: 
 
-* [Archivieren von Azure-Diagnoseprotokollen](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md)
-* [Streamen von Azure-Diagnoseprotokollen an Event Hubs](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md) 
+* [Archivieren von Azure-Diagnoseprotokollen in Azure Storage](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md)
+* [Streamen von Azure-Diagnoseprotokollen an Azure Event Hubs](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md) 
 
-Sie können die Überwachung in Echtzeit dann durchführen, indem Sie Telemetriedaten und Analysen anderer Dienste verwenden, z.B. [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) und [Power BI](../log-analytics/log-analytics-powerbi.md). Beispiel:
+Durch die Verwendung von Telemetriedaten und Analysen anderer Dienste (beispielsweise [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) und [Power BI](../log-analytics/log-analytics-powerbi.md)) können Sie dann eine Überwachung in Echtzeit implementieren. Beispiel:
 
-* [Datenverbindung: Erfahren Sie mehr über Datenstromeingaben aus Ereignissen in Stream Analytics](../stream-analytics/stream-analytics-define-inputs.md)
-* [Stream Analytics und Power BI: Ein Dashboard mit Echtzeitanalyse von Streamingdaten](../stream-analytics/stream-analytics-power-bi-dashboard.md)
+* [Streamen von Daten von Event Hubs zu Stream Analytics](../stream-analytics/stream-analytics-define-inputs.md)
+* [Analysieren von Streamingdaten mit Stream Analytics und Erstellen eines Dashboards für die Echtzeitanalyse in Power BI](../stream-analytics/stream-analytics-power-bi-dashboard.md)
 
-Stellen Sie basierend auf den einzurichtenden Optionen sicher, dass Sie zuerst [ein Azure-Speicherkonto](../storage/storage-create-storage-account.md) oder [einen Azure Event Hub](../event-hubs/event-hubs-create.md) erstellen. Wählen Sie anschließend die Optionen aus, an die Sie Diagnosedaten senden möchten:
+Stellen Sie basierend auf den einzurichtenden Optionen sicher, dass Sie zuerst [ein Azure-Speicherkonto](../storage/common/storage-create-storage-account.md) oder [einen Azure Event Hub](../event-hubs/event-hubs-create.md) erstellen. Wählen Sie anschließend die gewünschten Sendeoptionen für Diagnosedaten aus:
 
 ![Senden von Daten an das Azure-Speicherkonto oder einen Event Hub](./media/logic-apps-monitor-your-logic-apps/storage-account-event-hubs.png)
 

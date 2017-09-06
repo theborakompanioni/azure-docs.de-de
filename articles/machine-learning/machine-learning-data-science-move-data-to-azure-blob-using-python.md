@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev
-translationtype: Human Translation
-ms.sourcegitcommit: 9b32c0d9c3bc19a187873eebd6ab21036ee06db8
-ms.openlocfilehash: fb34986d947175ae4b4212e5bd0a1e90836ed170
-ms.lasthandoff: 12/06/2016
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 0eea1ff8e4f4c1d108445e1a1250b6fa8ff48910
+ms.contentlocale: de-de
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="move-data-to-and-from-azure-blob-storage-using-python"></a>Verschieben von Daten in und aus Azure Blob Storage mithilfe von Python
@@ -30,7 +30,7 @@ In diesem Thema wird das Auflisten, Hochladen und Herunterladen von Blobs mit de
 * Auflisten der Blobs in einem Container
 * Löschen eines BLOBs
 
-Weitere Informationen zur Verwendung der Python-API finden Sie unter [Verwenden des Blob-Speicherdiensts in Python](../storage/storage-python-how-to-use-blob-storage.md).
+Weitere Informationen zur Verwendung der Python-API finden Sie unter [Verwenden des Blob-Speicherdiensts in Python](../storage/blobs/storage-python-how-to-use-blob-storage.md).
 
 [!INCLUDE [blob-storage-tool-selector](../../includes/machine-learning-blob-storage-tool-selector.md)]
 
@@ -38,7 +38,7 @@ Weitere Informationen zur Verwendung der Python-API finden Sie unter [Verwenden 
 > Wenn Sie einen virtuellen Computer verwenden, der mit den von den [virtuellen Data Science-Computern in Azure](machine-learning-data-science-virtual-machines.md)bereitgestellten Skripts eingerichtet wurde, ist AzCopy bereits auf dem virtuellen Computer installiert.
 > 
 > [!NOTE]
-> Eine umfassende Einführung in Azure-Blobspeicher finden Sie unter [Erste Schritte mit Azure Blob Storage](../storage/storage-dotnet-how-to-use-blobs.md) und [Azure-Blobdienst](https://msdn.microsoft.com/library/azure/dd179376.aspx).
+> Eine umfassende Einführung in Azure-Blobspeicher finden Sie unter [Erste Schritte mit Azure Blob Storage](../storage/blobs/storage-dotnet-how-to-use-blobs.md) und [Azure-Blobdienst](https://msdn.microsoft.com/library/azure/dd179376.aspx).
 > 
 > 
 
@@ -46,7 +46,7 @@ Weitere Informationen zur Verwendung der Python-API finden Sie unter [Verwenden 
 In diesem Dokument wird davon ausgegangen, dass Sie über ein Azure-Abonnement, ein Speicherkonto und den zugehörigen Speicherschlüssel für dieses Konto verfügen. Bevor Sie Daten hoch- und herunterladen können, müssen Sie den Namen Ihres Azure-Speicherkontos und den Kontoschlüssel kennen.
 
 * Informationen zum Einrichten eines Azure-Abonnements finden Sie unter [Kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/).
-* Anleitungen zum Erstellen eines Speicherkontos und zum Abrufen von Konto- und Schlüsselinformationen finden Sie unter [Informationen zu Azure-Speicherkonten](../storage/storage-create-storage-account.md).
+* Anleitungen zum Erstellen eines Speicherkontos und zum Abrufen von Konto- und Schlüsselinformationen finden Sie unter [Informationen zu Azure-Speicherkonten](../storage/common/storage-create-storage-account.md).
 
 ## <a name="upload-data-to-blob"></a>Hochladen von Daten zum Blob
 Fügen Sie am Anfang jedes Python-Codes, in dem Sie programmgesteuert auf Azure-Speicher zugreifen möchten, den folgenden Codeausschnitt ein:

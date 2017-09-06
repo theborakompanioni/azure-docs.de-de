@@ -16,10 +16,10 @@ ms.custom: performance
 ms.date: 6/2/2017
 ms.author: shigu;barbkess
 ms.translationtype: HT
-ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
-ms.openlocfilehash: a0452c4dedc218dff17404c4ecee70d788e49644
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: f0e0b839b4a0c216eee2eb5134d43b91d8f83289
 ms.contentlocale: de-de
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 08/23/2017
 
 ---
 
@@ -142,7 +142,7 @@ OPTION (MAXDOP 1);
 Die DWU-Größe und die Benutzer-Ressourcenklasse bestimmen zusammen, wie viel Arbeitsspeicher für einen Benutzer zur Verfügung steht. Um die Arbeitsspeicherzuweisung für eine Ladeanfrage zu erhöhen, können Sie entweder die Anzahl der DWUs oder die Ressourcenklasse erhöhen.
 
 - Wie Sie die DWUs erhöhen, erfahren Sie unter [Wie skaliere ich Leistung?](sql-data-warehouse-manage-compute-overview.md#scale-compute)
-- Wie Sie die Ressourcenklasse für eine Abfrage ändern, erfahren Sie unter [Beispiel: Ändern der Ressourcenklasse eines Benutzers](sql-data-warehouse-develop-concurrency.md#change-a-user-resource-class-example).
+- Wie Sie die Ressourcenklasse für eine Abfrage ändern, erfahren Sie unter [Beispiel: Ändern der Ressourcenklasse eines Benutzers](sql-data-warehouse-develop-concurrency.md#changing-user-resource-class-example).
 
 Beispielsweise kann ein Benutzer in der Ressourcenklasse „smallrc“ auf DWU-100 100 MB Arbeitsspeicher für jede Verteilung verwenden. Details finden Sie unter [Parallelität in SQL Data Warehouse](sql-data-warehouse-develop-concurrency.md).
 

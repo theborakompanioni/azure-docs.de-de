@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: 9b212bcfcb604319ff9bc39fd284a5eb98c0d2c3
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: b4c97e8f51581f9a3f7c5a8d8e82562255fe7b48
 ms.contentlocale: de-de
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="create-and-manage-sql-database-elastic-jobs-using-powershell-preview"></a>Erstellen und Verwalten von elastischen Aufträgen für SQL-Datenbank mithilfe von PowerShell (Vorschau)
@@ -610,7 +609,7 @@ Verwenden Sie [Get-AzureSqlJobTrigger](/powershell/module/elasticdatabasejobs/ge
     Write-Output $jobTriggers
 
 ## <a name="to-create-a-data-tier-application-dacpac-for-execution-across-databases"></a>So erstellen Sie eine Datenschichtanwendung (Data-tier Application, DACPAC) für die datenbankübergreifende Ausführung
-Informationen zur DACPAC-Erstellung finden Sie unter [Datenschichtanwendungen](https://msdn.microsoft.com/library/ee210546.aspx). Verwenden Sie für die DACPAC-Bereitstellung das Cmdlet [New-AzureSqlJobContent](/powershell/module/elasticdatabasejobs/new-azuresqljobcontent). Der Dienst muss Zugriff auf das DACPAC haben. Es empfiehlt sich, ein erstelltes DACPAC nach Azure Storage hochzuladen und eine [Shared Access Signature](../storage/storage-dotnet-shared-access-signature-part-1.md) (SAS) für das DACPAC zu erstellen.
+Informationen zur DACPAC-Erstellung finden Sie unter [Datenschichtanwendungen](https://msdn.microsoft.com/library/ee210546.aspx). Verwenden Sie für die DACPAC-Bereitstellung das Cmdlet [New-AzureSqlJobContent](/powershell/module/elasticdatabasejobs/new-azuresqljobcontent). Der Dienst muss Zugriff auf das DACPAC haben. Es empfiehlt sich, ein erstelltes DACPAC nach Azure Storage hochzuladen und eine [Shared Access Signature](../storage/common/storage-dotnet-shared-access-signature-part-1.md) (SAS) für das DACPAC zu erstellen.
 
     $dacpacUri = "{Uri}"
     $dacpacName = "{Dacpac Name}"

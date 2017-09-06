@@ -17,10 +17,10 @@ ms.topic: article
 ms.date: 02/06/2017
 ms.author: genemi
 ms.translationtype: HT
-ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
-ms.openlocfilehash: aeaed63e00b77f885312204f17f024af462dbf25
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: e8c7a9af11ac4c22be00426337ab7c8b8ff0860f
 ms.contentlocale: de-de
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 08/23/2017
 
 ---
 # <a name="event-file-target-code-for-extended-events-in-sql-database"></a>Code des Ereignisdateiziels für erweiterte Ereignisse in SQL-Datenbank
@@ -543,7 +543,7 @@ Angenommen, Sie möchten das vorhergehende Transact-SQL-Codebeispiel in Microsof
 
 Weitere Informationen zu Konten und Containern im Azure Storage-Dienst finden Sie in den folgenden Artikeln:
 
-* [Verwenden des Blob-Speichers mit .NET](../storage/storage-dotnet-how-to-use-blobs.md)
+* [Verwenden des Blob-Speichers mit .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md)
 * [Benennen von Containern, BLOBs und Metadaten und Verweisen auf diese](http://msdn.microsoft.com/library/azure/dd135715.aspx)
 * [Arbeiten mit dem Stammcontainer](http://msdn.microsoft.com/library/azure/ee395424.aspx)
 * [Lektion 1: Erstellen einer gespeicherten Zugriffsrichtlinie und einer Shared Access Signature für einen Azure-Container](http://msdn.microsoft.com/library/dn466430.aspx)

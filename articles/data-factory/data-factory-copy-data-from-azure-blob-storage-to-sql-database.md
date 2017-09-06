@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/19/2017
 ms.author: spelluru
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f291186c6a68dea8aa00b846a2e6f3ad0d7996c
-ms.openlocfilehash: 74301d651ae96588e5fd076900aada198c76deb0
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 730140d15f4dec7ddc1280c2e4da1d247902fe4a
 ms.contentlocale: de-de
-ms.lasthandoff: 04/28/2017
-
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="tutorial-copy-data-from-blob-storage-to-sql-database-using-data-factory"></a>Tutorial: Kopieren von Daten aus Blob Storage in SQL-Datenbank mithilfe von Data Factory
@@ -47,7 +46,7 @@ Die Kopieraktivität dient zum Verschieben von Daten in Azure Data Factory. Sie 
 Bevor Sie mit diesem Tutorial beginnen, müssen folgende Voraussetzungen erfüllt sein:
 
 * **Azure-Abonnement**.  Wenn Sie über kein Abonnement verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Im Artikel [Kostenlose Testversion](http://azure.microsoft.com/pricing/free-trial/) finden Sie Details.
-* **Azure Storage-Konto**. In diesem Tutorial verwenden Sie den Blobspeicher als **Quelldatenspeicher** . Wenn Sie kein Azure Storage-Konto haben, finden Sie im Artikel [Erstellen eines Speicherkontos](../storage/storage-create-storage-account.md#create-a-storage-account) Schritte zum Erstellen eines Azure Storage-Kontos.
+* **Azure Storage-Konto**. In diesem Tutorial verwenden Sie den Blobspeicher als **Quelldatenspeicher** . Wenn Sie kein Azure Storage-Konto haben, finden Sie im Artikel [Erstellen eines Speicherkontos](../storage/common/storage-create-storage-account.md#create-a-storage-account) Schritte zum Erstellen eines Azure Storage-Kontos.
 * **Azure SQL-Datenbank**. In diesem Tutorial verwenden Sie eine Azure SQL-Datenbank als **Zieldatenspeicher** . Wenn Sie keine Azure SQL-Datenbank haben, die Sie in diesem Tutorial verwenden können, finden Sie unter [Erstellen und Konfigurieren einer Azure SQL-Datenbank](../sql-database/sql-database-get-started.md) entsprechende Anweisungen.
 * **SQL Server 2012/2014 oder Visual Studio 2013**. Sie verwenden SQL Server Management Studio oder Visual Studio zum Erstellen einer Beispieldatenbank und zum Anzeigen der Ergebnisdaten in der Datenbank.  
 

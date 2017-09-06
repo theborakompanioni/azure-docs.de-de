@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/05/2017
 ms.author: rajanaki
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 933cb8692abea1f66192605208ddd9c0b9057235
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 34086044db752f09f1282517b59856091e85c2fc
 ms.contentlocale: de-de
-ms.lasthandoff: 04/27/2017
-
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="replicate-hyper-v-virtual-machines-in-vmm-clouds-to-azure-using-powershell-and-azure-resource-manager"></a>Replizieren virtueller Hyper-V-Computer in VMM-Clouds nach Azure mithilfe von PowerShell und Azure Resource Manager
@@ -59,7 +58,7 @@ Stellen Sie sicher, dass diese Voraussetzungen erfüllt werden:
 ### <a name="azure-prerequisites"></a>Voraussetzungen für Azure
 * Sie benötigen ein [Microsoft Azure](https://azure.microsoft.com/) -Konto. Wenn Sie keins besitzen, beginnen Sie mit einem [kostenloses Konto](https://azure.microsoft.com/free). Darüber hinaus können Sie sich über die [Preisgestaltung für Azure Site Recovery Manager](https://azure.microsoft.com/pricing/details/site-recovery/)informieren.
 * Sie benötigen ein CSP-Abonnement, wenn Sie das Szenario zur Replikation zu einem CSP-Abonnement ausprobieren möchten. Erfahren Sie mehr über das CSP-Programm unter [Registrieren für das CSP-Programm](https://msdn.microsoft.com/library/partnercenter/mt156995.aspx).
-* Sie benötigen ein Azure-Speicherkonto der Version 2 (Resource Manager), um in Azure replizierte Daten zu speichern. Für das Konto muss Georeplikation aktiviert sein. Es muss sich in der gleichen Region wie der Azure Site Recovery-Dienst befinden und dem gleichen Abonnement oder dem CSP-Abonnement zugeordnet sein. Weitere Informationen zum Einrichten von Azure Storage finden Sie unter [Einführung in Microsoft Azure Storage](../storage/storage-introduction.md) .
+* Sie benötigen ein Azure-Speicherkonto der Version 2 (Resource Manager), um in Azure replizierte Daten zu speichern. Für das Konto muss Georeplikation aktiviert sein. Es muss sich in der gleichen Region wie der Azure Site Recovery-Dienst befinden und dem gleichen Abonnement oder dem CSP-Abonnement zugeordnet sein. Weitere Informationen zum Einrichten von Azure Storage finden Sie unter [Einführung in Microsoft Azure Storage](../storage/common/storage-introduction.md) .
 * Sie müssen sicherstellen, dass die virtuellen Computer, die Sie schützen möchten, die [Anforderungen an virtuelle Azure-Computer](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)erfüllen.
 
 > [!NOTE]

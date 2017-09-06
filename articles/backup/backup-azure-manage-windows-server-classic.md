@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/14/2017
 ms.author: markgal;
 ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
-ms.openlocfilehash: f41132d69dbbc9e5871851220e5f7de933c50efe
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 91451b2cdc42ed05ef7c1ba9c66ad5b4b45dd788
 ms.contentlocale: de-de
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="manage-azure-backup-vaults-and-servers-using-the-classic-deployment-model"></a>Verwalten von Azure Backup-Tresoren und -Servern mit dem klassischen Bereitstellungsmodell
@@ -93,7 +93,7 @@ Auf der Registerkarte **Konfigurieren** können Sie die geeignete Speicherredund
 
 ![Konfigurieren](./media/backup-azure-manage-windows-server-classic/configure.png)
 
-Weitere Informationen finden Sie im Artikel zur [Speicherredundanz](../storage/storage-redundancy.md).
+Weitere Informationen finden Sie im Artikel zur [Speicherredundanz](../storage/common/storage-redundancy.md).
 
 ## <a name="microsoft-azure-backup-agent-tasks"></a>Aufgaben im Microsoft Azure Backup-Agent
 ### <a name="console"></a>Konsole

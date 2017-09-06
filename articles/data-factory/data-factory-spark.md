@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/19/2017
 ms.author: spelluru
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: dbee3f1d0aae885325ef9efe9c2f48961495e8b9
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 57894bbdd9208f8c32eb65e29f04e2ae723780ca
 ms.contentlocale: de-de
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>Aufrufen von Spark-Programmen aus Azure Data Factory-Pipelines
@@ -53,7 +52,7 @@ Dies sind die typischen Schritte zum Erstellen einer Data Factory-Pipeline mit e
 4. Erstellen Sie eine Pipeline mit Spark-Aktivität, die auf den in Schritt 2 erstellten verknüpften HDInsight-Dienst verweist. Die Aktivität wird mit dem Dataset, das Sie im vorherigen Schritt erstellt haben, als Ausgabedataset konfiguriert. Das Ausgabedataset stellt den Treiber des Zeitplans dar (stündlich, täglich usw.). Daher müssen Sie das Augabedataset auch dann eingeben, wenn die Aktivität keine Ausgabe erzeugt.
 
 ### <a name="prerequisites"></a>Voraussetzungen
-1. Erstellen Sie ein **allgemeines Azure-Speicherkonto** anhand der Anweisungen in der exemplarischen Vorgehensweise: [Erstellen eines Speicherkontos](../storage/storage-create-storage-account.md#create-a-storage-account).  
+1. Erstellen Sie ein **allgemeines Azure-Speicherkonto** anhand der Anweisungen in der exemplarischen Vorgehensweise: [Erstellen eines Speicherkontos](../storage/common/storage-create-storage-account.md#create-a-storage-account).  
 2. Erstellen Sie einen **Apache Spark-Cluster in Azure HDInsight** anhand der Anweisungen im Tutorial: [Erstellen eines Apache Spark-Clusters in Azure HDInsight](../hdinsight/hdinsight-apache-spark-jupyter-spark-sql.md). Ordnen Sie das in Schritt 1 erstellte Azure-Speicherkonto diesem Cluster zu.  
 3. Laden Sie die Python-Skriptdatei **test.py** von [https://adftutorialfiles.blob.core.windows.net/sparktutorial/test.py](https://adftutorialfiles.blob.core.windows.net/sparktutorial/test.py) herunter, und sehen Sie sie durch.  
 3.  Laden Sie **test.py** in den Ordner **pyFiles** im Container **adfspark** in Azure Blob Storage hoch. Erstellen Sie den Container und den Ordner, wenn sie nicht vorhanden sind.
@@ -92,7 +91,7 @@ In diesem Schritt verknüpfen Sie Ihr Azure Storage-Konto mit Ihrer Data Factory
 3. Das **JSON-Skript** zum Erstellen eines mit einem Azure-Speicher verknüpften Diensts sollte im Editor angezeigt werden.
 
    ![Mit Azure Storage verknüpfter Dienst](./media/data-factory-build-your-first-pipeline-using-editor/azure-storage-linked-service.png)
-4. Ersetzen Sie **Kontoname** und **Kontoschlüssel** durch den Namen und den Zugriffsschlüssel Ihres Azure-Speicherkontos. Informationen zum Abrufen Ihres Speicherzugriffsschlüssels finden Sie unter [Verwalten von Speicherkonten](../storage/storage-create-storage-account.md#manage-your-storage-account) in den Informationen zum Anzeigen, Kopieren und erneuten Generieren von Speicherzugriffsschlüsseln.
+4. Ersetzen Sie **Kontoname** und **Kontoschlüssel** durch den Namen und den Zugriffsschlüssel Ihres Azure-Speicherkontos. Informationen zum Abrufen Ihres Speicherzugriffsschlüssels finden Sie unter [Verwalten von Speicherkonten](../storage/common/storage-create-storage-account.md#manage-your-storage-account) in den Informationen zum Anzeigen, Kopieren und erneuten Generieren von Speicherzugriffsschlüsseln.
 5. Klicken Sie in der Befehlsleiste auf **Bereitstellen**, um den verknüpften Dienst bereitzustellen. Nach erfolgreicher Bereitstellung des verknüpften Diensts sollte das Fenster **Draft-1** nicht mehr angezeigt werden, und Sie sehen **AzureStorageLinkedService** in der Strukturansicht links.
 
 #### <a name="create-hdinsight-linked-service"></a>Erstellen eines verknüpften HDInsight-Diensts
@@ -231,7 +230,7 @@ In diesem Schritt erstellen Sie eine Pipeline mit einer **HDInsightSpark**-Aktiv
 
     ![Jupyter-Abfrageergebnisse](media/data-factory-spark/jupyter-notebook-results.png)
 
-Ausführliche Anweisungen finden Sie im Abschnitt [Ausführen einer Spark SQL-Abfrage](../hdinsight/hdinsight-apache-spark-jupyter-spark-sql.md#run-an-interactive-spark-sql-query). 
+Ausführliche Anweisungen finden Sie im Abschnitt [Ausführen einer Spark SQL-Abfrage](../hdinsight/hdinsight-apache-spark-jupyter-spark-sql.md#run-a-hive-query-using-spark-sql). 
 
 ### <a name="troubleshooting"></a>Problembehandlung
 Da Sie **getDebugInfo** auf **Always** festgelegt haben, finden Sie einen Unterordner **log** im Ordner **pyFiles** im Azure-Blobcontainer. Die Protokolldatei im Ordner „log“ enthält weitere Details. Diese Protokolldatei ist besonders nützlich, wenn ein Fehler aufgetreten ist. In einer Produktionsumgebung sollten Sie sie auf **Failure** festlegen.

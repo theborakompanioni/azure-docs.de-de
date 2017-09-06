@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: Ning
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
-ms.openlocfilehash: 5bc983ef1ffaac5d6de7bbc2cdf51838d8051aac
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: b8c6e2e22d8478b6e92e7b7942f15d37a840fed3
 ms.contentlocale: de-de
-ms.lasthandoff: 05/25/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="use-the-linux-diagnostic-extension-to-monitor-the-performance-and-diagnostic-data-of-a-linux-vm"></a>Verwenden der Linux-Diagnoseerweiterung zur Überwachung der Leistungs- und Diagnosedaten eines Linux-VM
@@ -152,7 +152,7 @@ Schritt 2: Führen Sie **azure vm extension set vm_name LinuxDiagnostic Microsof
 
 ## <a name="review-your-data"></a>Überprüfen der Daten
 
-Die Leistungs- und Diagnosedaten werden in einer Azure Storage-Tabelle gespeichert. Unter [Verwenden des Azure-Tabellenspeichers mit Ruby](../../../storage/storage-ruby-how-to-use-table-storage.md) erfahren Sie, wie Sie mit Azure-CLI-Skripts auf die Daten in der Speichertabelle zugreifen.
+Die Leistungs- und Diagnosedaten werden in einer Azure Storage-Tabelle gespeichert. Unter [Verwenden des Azure-Tabellenspeichers mit Ruby](../../../cosmos-db/table-storage-how-to-use-ruby.md) erfahren Sie, wie Sie mit Azure-CLI-Skripts auf die Daten in der Speichertabelle zugreifen.
 
 Darüber hinaus können Sie folgende Tools mit grafischer Benutzeroberfläche für den Datenzugriff verwenden:
 

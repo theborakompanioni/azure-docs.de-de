@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: mmccrory
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 26d460a699e31f6c19e3b282fa589ed07ce4a068
-ms.openlocfilehash: b20f846caa12866ce8815c7931a2c66346cd4085
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: db6a980b85ea5ef8cbbba4ba5a36f9d033739df1
 ms.contentlocale: de-de
-ms.lasthandoff: 04/04/2017
-
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="what-to-do-in-the-event-of-an-azure-service-disruption-that-impacts-azure-cloud-services"></a>Vorgehensweise bei einer Azure-Dienstunterbrechung mit Auswirkungen auf Azure-Clouddienste
@@ -32,7 +31,7 @@ Azure weist bereits viele integrierte Plattformfunktionen auf, die hoch verfügb
 Dieser Artikel behandelt ein echtes Szenario der Notfallwiederherstellung für den Fall, dass eine ganze Region aufgrund einer Naturkatastrophe oder einer umfangreichen Dienstunterbrechung von einem Ausfall betroffen ist. So etwas kommt zwar äußerst selten vor, dennoch müssen Sie für den Ausfall einer gesamten Region vorbereitet sein. Falls eine ganze Region von einer Dienstunterbrechung betroffen ist, sind die lokal redundanten Kopien Ihrer Daten vorübergehend nicht verfügbar. Bei aktivierter Georeplikation sind drei zusätzliche Kopien Ihrer Azure Storage-Blobs und -Tabellen in einer anderen Region gespeichert. Sollte eine gesamte Region ausfallen oder die primäre Region aufgrund einer Katastrophe nicht wiederherstellbar sein, ordnet Azure alle DNS-Einträge der georeplizierten Region neu zu.
 
 > [!NOTE]
-> Beachten Sie, dass Sie keine Kontrolle über diesen Prozess haben. Er tritt nur bei rechenzentrumsweiten Dienstunterbrechungen auf. Setzen Sie daher auch auf andere anwendungsspezifische Sicherungsstrategien, um eine möglichst hohe Verfügbarkeit zu erreichen. Weitere Informationen finden Sie unter [Notfallwiederherstellung und hohe Verfügbarkeit für in Microsoft Azure erstellte Anwendungen](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md). Wenn Sie das Failover selbst beeinflussen möchten, können Sie beispielsweise [georedundanten Speicher mit Lesezugriff](../storage/storage-redundancy.md#read-access-geo-redundant-storage) verwenden, um eine schreibgeschützte Kopie Ihrer Daten in einer anderen Region zu erstellen.
+> Beachten Sie, dass Sie keine Kontrolle über diesen Prozess haben. Er tritt nur bei rechenzentrumsweiten Dienstunterbrechungen auf. Setzen Sie daher auch auf andere anwendungsspezifische Sicherungsstrategien, um eine möglichst hohe Verfügbarkeit zu erreichen. Weitere Informationen finden Sie unter [Notfallwiederherstellung und hohe Verfügbarkeit für in Microsoft Azure erstellte Anwendungen](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md). Wenn Sie das Failover selbst beeinflussen möchten, können Sie beispielsweise [georedundanten Speicher mit Lesezugriff](../storage/common/storage-redundancy.md#read-access-geo-redundant-storage) verwenden, um eine schreibgeschützte Kopie Ihrer Daten in einer anderen Region zu erstellen.
 >
 >
 
@@ -51,7 +50,7 @@ Ausführlichere Informationen zum Erstellen und Bereitstellen einer Clouddiensta
 
 Abhängig von Ihren Anwendungsdatenquellen müssen Sie möglicherweise die Wiederherstellungsvorgänge für Ihre Anwendungsdatenquelle überprüfen.
 
-* Informationen zu Azure Storage-Datenquellen finden Sie unter [Azure Storage-Replikation](../storage/storage-redundancy.md#read-access-geo-redundant-storage). Dort können Sie basierend auf dem ausgewählten Replikationsmodell für Ihre Anwendung prüfen, welche Optionen Ihnen zur Verfügung stehen.
+* Informationen zu Azure Storage-Datenquellen finden Sie unter [Azure Storage-Replikation](../storage/common/storage-redundancy.md#read-access-geo-redundant-storage). Dort können Sie basierend auf dem ausgewählten Replikationsmodell für Ihre Anwendung prüfen, welche Optionen Ihnen zur Verfügung stehen.
 * Informationen zu SQL-Datenbankquellen finden Sie unter [Übersicht: Geschäftskontinuität für die Cloud und Notfallwiederherstellung für Datenbanken mit SQL-Datenbank](../sql-database/sql-database-business-continuity.md). Dort können Sie basierend auf dem ausgewählten Replikationsmodell für Ihre Anwendung prüfen, welche Optionen Ihnen zur Verfügung stehen.
 
 

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/12/2017
 ms.author: robb
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
-ms.openlocfilehash: 72b0c11f8bea24fc8777e3e0d7712577fab8ef97
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 619a004b9aff99be68988e1f7be3ccad400a8a0e
 ms.contentlocale: de-de
-ms.lasthandoff: 06/30/2017
-
+ms.lasthandoff: 08/21/2017
 
 ---
 
@@ -147,6 +146,6 @@ Weitere Informationen
 - Gehen Sie die Benutzeroberfläche von Azure Monitor durch, wie unter [Erste Schritte mit Azure Monitor](monitoring-get-started.md) beschrieben wird.
 - Richten Sie [Azure-Diagnoseerweiterungen](../azure-diagnostics.md) ein, wenn Sie Probleme mit Clouddiensten, virtuellen Computern, VM-Skalierungsgruppen oder Service Fabric-Anwendungen diagnostizieren möchten.
 - [Application Insights](https://azure.microsoft.com/documentation/services/application-insights/) : Diagnostizieren Sie Probleme mit Ihrer App Service-Web-App.
-- [Problembehandlung für Azure Storage](../storage/storage-e2e-troubleshooting.md) : Lösen Sie Probleme mit Storage-Blobs, Tabellen oder Warteschlangen.
+- [Problembehandlung für Azure Storage](../storage/common/storage-e2e-troubleshooting.md) : Lösen Sie Probleme mit Storage-Blobs, Tabellen oder Warteschlangen.
 - [Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics/) und die [Operations Management Suite](https://www.microsoft.com/oms/)
 

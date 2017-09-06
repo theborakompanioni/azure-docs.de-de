@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/29/2016
 ms.author: robb
-ms.translationtype: Human Translation
-ms.sourcegitcommit: be747170a0d8a7a6defd790a3f8a122c4d397671
-ms.openlocfilehash: b4357150d0be21672d0b8e212c4ea1a7bec99412
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 2cf765cb034725199127c547a9b8b997a4a6089c
 ms.contentlocale: de-de
-ms.lasthandoff: 05/23/2017
-
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="create-and-use-performance-counters-in-an-azure-application"></a>Erstellen und Verwenden von Leistungsindikatoren in einer Azure-Anwendung
@@ -244,7 +243,7 @@ Führen Sie die folgenden Schritte aus, um einen einfachen benutzerdefinierten L
 Benutzerdefinierte Leistungsindikatordaten werden vom Azure-Diagnosemonitor jetzt erfasst.
 
 ## <a name="step-3-query-performance-counter-data"></a>Schritt 3: Abfragen von Leistungsindikatordaten
-Wenn Ihre Anwendung bereitgestellt ist und ausgeführt wird, beginnt der Diagnosemonitor mit dem Erfassen von Leistungsindikatoren und dem Speichern dieser Daten in Azure Storage. Mit Tools wie Server-Explorer in Visual Studio, [Azure-Speicher-Explorer](http://azurestorageexplorer.codeplex.com/) oder [Azure-Diagnose-Manager](http://www.cerebrata.com/Products/AzureDiagnosticsManager/Default.aspx) von Cerebrata zeigen Sie die Daten der Leistungsindikatoren in der Tabelle „WADPerformanceCountersTable“ an. Sie können den Tabellenspeicherdienst mit [C#](../storage/storage-dotnet-how-to-use-tables.md), [Java](../storage/storage-java-how-to-use-table-storage.md), [Node.js](../storage/storage-nodejs-how-to-use-table-storage.md), [Python](../storage/storage-python-how-to-use-table-storage.md), [Ruby](../storage/storage-ruby-how-to-use-table-storage.md) oder [PHP](../storage/storage-php-how-to-use-table-storage.md) auch programmgesteuert abfragen.
+Wenn Ihre Anwendung bereitgestellt ist und ausgeführt wird, beginnt der Diagnosemonitor mit dem Erfassen von Leistungsindikatoren und dem Speichern dieser Daten in Azure Storage. Mit Tools wie Server-Explorer in Visual Studio, [Azure-Speicher-Explorer](http://azurestorageexplorer.codeplex.com/) oder [Azure-Diagnose-Manager](http://www.cerebrata.com/Products/AzureDiagnosticsManager/Default.aspx) von Cerebrata zeigen Sie die Daten der Leistungsindikatoren in der Tabelle „WADPerformanceCountersTable“ an. Sie können den Tabellenspeicherdienst mit [C#](../cosmos-db/table-storage-how-to-use-dotnet.md), [Java](../cosmos-db/table-storage-how-to-use-java.md), [Node.js](../cosmos-db/table-storage-how-to-use-nodejs.md), [Python](../cosmos-db/table-storage-how-to-use-python.md), [Ruby](../cosmos-db/table-storage-how-to-use-ruby.md) oder [PHP](../cosmos-db/table-storage-how-to-use-php.md) auch programmgesteuert abfragen.
 
 Das folgende C#-Beispiel zeigt eine einfache Abfrage der Tabelle WADPerformanceCountersTable und speichert die Diagnosedaten in einer CSV-Datei. Wenn Sie die Leistungsindikatoren in einer CSV-Datei speichern, können Sie die Daten mit den grafischen Darstellungsfunktionen von Microsoft Excel oder eines anderen Tools darstellen. Fügen Sie einen Verweis auf die Datei Microsoft.WindowsAzure.Storage.dll hinzu, die im Azure SDK für .NET Oktober 2012 und höher enthalten ist. Die Assembly wird im Verzeichnis „%Program Files%\Microsoft SDKs\Microsoft Azure.NET SDK\Versionsnummer\ref\“ installiert.
 

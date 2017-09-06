@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 07/27/2017
 ms.author: abnarain
 ms.translationtype: HT
-ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
-ms.openlocfilehash: 475c878e34a83d06cffca5e114ccd920c7956256
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 565091e24a8c0009793e2e2365fb95013cad5028
 ms.contentlocale: de-de
-ms.lasthandoff: 08/10/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Verschieben von Daten zwischen lokalen Quellen und der Cloud mit dem Datenverwaltungsgateway
@@ -46,7 +46,7 @@ In dieser exemplarischen Vorgehensweise führen Sie die folgenden Schritte aus:
 Bevor Sie mit dieser exemplarischen Vorgehensweise beginnen, müssen folgende Voraussetzungen erfüllt sein:
 
 * **Azure-Abonnement**.  Wenn Sie über kein Abonnement verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Im Artikel [Kostenlose Testversion](http://azure.microsoft.com/pricing/free-trial/) finden Sie Details.
-* **Azure Storage-Konto**. In diesem Tutorial verwenden Sie den Blobspeicher als **Ziel-/Senkendatenspeicher**. Wenn Sie kein Azure Storage-Konto haben, finden Sie im Artikel [Erstellen eines Speicherkontos](../storage/storage-create-storage-account.md#create-a-storage-account) Schritte zum Erstellen eines Azure Storage-Kontos.
+* **Azure Storage-Konto**. In diesem Tutorial verwenden Sie den Blobspeicher als **Ziel-/Senkendatenspeicher**. Wenn Sie kein Azure Storage-Konto haben, finden Sie im Artikel [Erstellen eines Speicherkontos](../storage/common/storage-create-storage-account.md#create-a-storage-account) Schritte zum Erstellen eines Azure Storage-Kontos.
 * **SQL Server**. In diesem Tutorial verwenden Sie eine lokale SQL Server-Datenbank als **Quelldatenspeicher**. 
 
 ## <a name="create-data-factory"></a>Erstellen einer Data Factory

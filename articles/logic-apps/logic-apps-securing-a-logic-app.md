@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 11/22/2016
 ms.author: LADocs; jehollan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: de674af369080ad7eb608608685e293f2326c8e6
-ms.openlocfilehash: ac52924d928b293f4b1b58f0c25375f890c51837
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 0528d660f590e106f61729f10f8f68da3fe58cb7
 ms.contentlocale: de-de
-ms.lasthandoff: 05/04/2017
-
+ms.lasthandoff: 08/21/2017
 
 ---
 
@@ -39,7 +38,7 @@ Bei der Arbeit mit einer Logik-App, die durch eine HTTP-Anforderung ([Anforderun
 
 ### <a name="shared-access-signature"></a>Shared Access Signature (SAS)
 
-Jeder Anforderungsendpunkt einer Logik-App enthält als Teil der URL eine [Shared Access Signature (SAS)](../storage/storage-dotnet-shared-access-signature-part-1.md). Jede URL enthält einen `sp`-, `sv`- und `sig`-Abfrageparameter. Berechtigungen werden mit `sp` festgelegt und entsprechen zulässigen HTTP-Methoden. `sv` ist die Version, die zum Generieren verwendet wurde. `sig` dient zum Authentifizieren des Zugriffs für Trigger. Die Signatur wird mit dem SHA256-Algorithmus mit einem geheimen Schlüssel für alle URL-Pfade und -Eigenschaften generiert. Der geheime Schlüssel wird nie verfügbar gemacht bzw. veröffentlicht. Er bleibt verschlüsselt und wird als Teil der Logik-App gespeichert. Die Logik-App autorisiert nur Trigger, die eine gültige Signatur enthalten, die mit dem geheimen Schlüssel erstellt wurde.
+Jeder Anforderungsendpunkt einer Logik-App enthält als Teil der URL eine [Shared Access Signature (SAS)](../storage/common/storage-dotnet-shared-access-signature-part-1.md). Jede URL enthält einen `sp`-, `sv`- und `sig`-Abfrageparameter. Berechtigungen werden mit `sp` festgelegt und entsprechen zulässigen HTTP-Methoden. `sv` ist die Version, die zum Generieren verwendet wurde. `sig` dient zum Authentifizieren des Zugriffs für Trigger. Die Signatur wird mit dem SHA256-Algorithmus mit einem geheimen Schlüssel für alle URL-Pfade und -Eigenschaften generiert. Der geheime Schlüssel wird nie verfügbar gemacht bzw. veröffentlicht. Er bleibt verschlüsselt und wird als Teil der Logik-App gespeichert. Die Logik-App autorisiert nur Trigger, die eine gültige Signatur enthalten, die mit dem geheimen Schlüssel erstellt wurde.
 
 #### <a name="regenerate-access-keys"></a>Erneutes Generieren von Zugriffsschlüsseln
 

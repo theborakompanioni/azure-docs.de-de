@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: adegeo
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 55fc4e5c88568cca8a2842590dfd24e082139699
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: cf43d86dddc3a68573e1ba1b09118c54f0b16bc5
 ms.contentlocale: de-de
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="configuring-a-custom-domain-name-for-an-azure-cloud-service"></a>Konfigurieren eines benutzerdefinierten Domänennamens für einen Azure-Clouddienst
@@ -35,7 +35,7 @@ Sie können Ihre Anwendung jedoch auch unter Ihrem eigenen Domänennamen zur Ver
 Wissen Sie bereits, worum es sich bei CNAME-Einträgen und A-Datensätzen handelt? [Überspringen Sie die Erläuterung](#add-a-cname-record-for-your-custom-domain).
 
 > [!NOTE]
-> Die Verfahren in dieser Aufgabe gelten für Azure Cloud Services. Informationen zu App Services finden Sie [hier](../app-service-web/web-sites-custom-domain-name.md). Informationen zu Speicherkonten finden Sie [hier](../storage/storage-custom-domain-name.md).
+> Die Verfahren in dieser Aufgabe gelten für Azure Cloud Services. Informationen zu App Services finden Sie [hier](../app-service-web/web-sites-custom-domain-name.md). Informationen zu Speicherkonten finden Sie [hier](../storage/blobs/storage-custom-domain-name.md).
 > 
 > 
 
