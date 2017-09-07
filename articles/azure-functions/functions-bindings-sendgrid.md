@@ -4,20 +4,19 @@ description: "Referenz für SendGrid-Bindungen in Azure Functions"
 services: functions
 documentationcenter: na
 author: rachelappel
-manager: erikre
+manager: cfowler
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 03/16/2017
+ms.date: 08/26/2017
 ms.author: rachelap
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: 0cd7e7c55e77863c142800cdc11d6ea144c38293
+ms.translationtype: HT
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: bcdbb6aee49d230a4cb0ba08d836facacb64de7f
 ms.contentlocale: de-de
-ms.lasthandoff: 03/18/2017
-
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>SendGrid-Bindungen in Azure Functions
@@ -35,14 +34,16 @@ Azure Functions umfasst eine Ausgabebindung für SendGrid. Mithilfe der SendGrid
 
 Die SendGrid-Bindung unterstützt die folgenden Eigenschaften:
 
-- `name`: Erforderlich – der Variablenname, der im Funktionscode für die Anforderung oder den Anforderungstext verwendet wird. Dieser Wert ist ```$return```, wenn es nur einen Rückgabewert gibt. 
-- `type`: Erforderlich – muss auf „sendGrid“ festgelegt sein.
-- `direction`: Erforderlich – muss auf „out“ festgelegt sein.
-- `apiKey`: Erforderlich – muss auf den Namen des API-Schlüssels festgelegt sein, der in den App-Einstellungen der Funktionen-App gespeichert ist.
-- `to`: E-Mail-Adresse des Empfängers.
-- `from`: E-Mail-Adresse des Absenders.
-- `subject`: Betreff der E-Mail.
-- `text`: Inhalt der E-Mail.
+|Eigenschaft  |Beschreibung  |
+|---------|---------|
+|**name**| Erforderlich – der Variablenname, der im Funktionscode für die Anforderung oder den Anforderungstext verwendet wird. Dieser Wert ist ```$return```, wenn es nur einen Rückgabewert gibt. |
+|**type**| Erforderlich – muss auf `sendGrid` festgelegt sein.|
+|**direction**| Erforderlich – muss auf `out` festgelegt sein.|
+|**apiKey**| Erforderlich – muss auf den Namen des API-Schlüssels festgelegt sein, der in den App-Einstellungen der Funktionen-App gespeichert ist. |
+|**to**| E-Mail-Adresse des Empfängers |
+|**from**| E-Mail-Adresse des Absenders |
+|**subject**| Betreff der E-Mail |
+|**text**| Inhalt der E-Mail |
 
 Beispiel für **function.json**:
 

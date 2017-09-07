@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 08/25/2017
 ms.author: ganesr;cherylmc
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: def88b869b82d2d675ef7e071ee58b08278321d7
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: f17bf3e475a33cfc617e8a026e9606b3792101f3
 ms.contentlocale: de-de
 ms.lasthandoff: 08/24/2017
 
@@ -133,17 +133,17 @@ Sie können die Liste der BGP-Communitywerte, die einer Leitung angefügt sind, 
 
 ## <a name="detach"></a>Trennen eines Routenfilters von einer ExpressRoute-Verbindung
 
-**Dieser Vorgang kann nur in PowerShell ausgeführt werden.**
+Um eine Verbindung über den Routenfilter zu trennen, klicken Sie mit der rechten Maustaste auf die Verbindung, und klicken Sie dann auf „Zuordnung aufheben“.
 
-Nachdem ein Routenfilter von der ExpressRoute-Verbindung getrennt wurde, werden keine Präfixe über die BGP-Sitzung angekündigt. Sie können einen Routenfilter mit dem folgenden Befehl von einer ExpressRoute-Verbindung trennen:
-  
-```powershell
-$ckt.Peerings[0].RouteFilter = $null
-Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
-```
+![Erstellen eines Routenfilters](.\media\how-to-routefilter-portal\DetachRouteFilter.png) 
+
 
 ## <a name="delete"></a>Löschen eines Routenfilters
 
 Sie können einen Routenfilter durch Auswahl der Schaltfläche „Löschen“ löschen. 
 
 ![Erstellen eines Routenfilters](.\media\how-to-routefilter-portal\DeleteRouteFilter.png) 
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Weitere Informationen über ExpressRoute finden Sie unter [ExpressRoute – FAQ](expressroute-faqs.md).

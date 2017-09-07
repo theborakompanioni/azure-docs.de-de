@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/21/2017
+ms.date: 08/29/2017
 ms.author: markvi
 ms.reviewer: jairoc
 ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
-ms.openlocfilehash: c8b8408f76534a808fd60e331282f8191905df58
+ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
+ms.openlocfilehash: fdc597c9e88e932eace5962c79af4dc3805685a0
 ms.contentlocale: de-de
-ms.lasthandoff: 08/23/2017
+ms.lasthandoff: 08/30/2017
 
 ---
 # <a name="introduction-to-device-management-in-azure-active-directory"></a>Einführung in die Geräteverwaltung in Azure Active Directory
@@ -31,7 +31,9 @@ In einer Welt, in der Mobilität und die Cloud an erster Stelle stehen, ermögli
 
 Über Geräte erhalten Ihre Benutzer Zugriff auf Ihre Unternehmensressourcen. Zum Schutz der Unternehmensressourcen möchten Sie als IT-Administrator Kontrolle über diese Geräte haben. So können Sie sicherstellen, dass Ihre Benutzer auf Ihre Ressourcen über Geräte zugreifen, die Ihren Standards für Sicherheit und Konformität entsprechen. 
 
-In diesem Thema wird erläutert, wie Sie dieses Ziel mithilfe der Geräteverwaltung in Azure AD erreichen können.
+Die Geräteverwaltung stellt zudem die Grundlage für [gerätebasierten bedingten Zugriff](active-directory-conditional-access-policy-connected-applications.md) dar. Mit dem gerätebasierten bedingten Zugriff können Sie sicherstellen, dass nur mit vertrauenswürdigen Geräten auf Ressourcen in Ihrer Umgebung zugegriffen werden kann.   
+
+In diesem Thema wird erläutert, wie die Geräteverwaltung in Azure Active Directory funktioniert.
 
 ## <a name="getting-devices-under-the-control-of-azure-ad"></a>Steuern der Geräte über Azure AD
 
@@ -145,9 +147,14 @@ Als Faustregel sollten Sie Folgendes verwenden:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+- Einen Überblick über die Verwaltung von Geräten im Azure-Portal finden Sie unter [Managing devices using the Azure portal - preview](device-management-azure-portal.md) (Verwalten von Geräten mit dem Azure-Portal – Vorschauversion).
+
 - Weitere Informationen zum gerätebasierten bedingten Zugriff finden Sie unter [Konfigurieren des gerätebasierten bedingten Zugriffs für Azure Active Directory](active-directory-conditional-access-policy-connected-applications.md).
 
-- Informationen zum Einrichten von in Azure AD eingebundenen Hybridgeräten finden Sie unter [Konfigurieren von in Azure Active Directory eingebundenen Hybridgeräten](device-management-hybrid-azuread-joined-devices-setup.md).
+- Einrichtung:
+    - Informationen zu in Azure Active Directory registrierten Windows 10-Geräten finden Sie unter [How to configure Azure Active Directory registered Windows 10 devices](device-management-azuread-registered-devices-windows10-setup.md) (Konfigurieren von in Azure Active Directory registrierten Windows 10-Geräten).
+    - Informationen zu in Azure Active Directory eingebundenen Geräten finden Sie unter [How to configure Azure Active Directory joined devices](device-management-azuread-joined-devices-setup.md) (Konfigurieren von in Azure Active Directory eingebundenen Geräten).
+    - Informationen zu in Azure AD eingebundenen Hybridgeräten finden Sie unter [Konfigurieren von in Azure Active Directory eingebundenen Hybridgeräten](device-management-hybrid-azuread-joined-devices-setup.md).
 
 
 

@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/17/2017
+ms.date: 08/30/2017
 ms.author: juanpere
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: c2192328a152e955d182c4a07b391c98a5960964
-ms.lasthandoff: 04/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
+ms.openlocfilehash: 16603cc7f2d8743037da22466312f228f4319716
+ms.contentlocale: de-de
+ms.lasthandoff: 08/30/2017
 
 ---
 # <a name="use-device-management-to-initiate-a-device-firmware-update-netnode"></a>Initiieren eines Firmwareupdates mithilfe der Geräteverwaltung (.NET/Node)
@@ -121,7 +121,7 @@ Sie können die Apps nun ausführen.
     ```
     node dmpatterns_fwupdate_device.js
     ```
-2. Klicken Sie in Visual Studio mit der rechten Maustaste auf das Projekt **TriggerFWUpdate**, um die C#-Konsolen-App auszuführen. Wählen Sie **Debuggen** und dann **Neue Instanz starten** aus.
+2. Klicken Sie in Visual Studio mit der rechten Maustaste auf das Projekt **TriggerFWUpdate**, und wählen Sie **Debuggen** und dann **Neue Instanz starten** aus.
 
 3. Die Reaktion des Geräts auf die direkte Methode wird in der Konsole angezeigt.
 

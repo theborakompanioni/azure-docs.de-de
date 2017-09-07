@@ -4,7 +4,7 @@ description: "Erfahren Sie, wie Sie Azure Functions überwachen."
 services: functions
 documentationcenter: na
 author: wesmc7777
-manager: erikre
+manager: cfowler
 editor: 
 tags: 
 keywords: Azure Functions, Functions, Ereignisverarbeitung, Webhooks, dynamisches Compute, serverlose Architektur
@@ -16,10 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/03/2016
 ms.author: wesmc
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: b01ffb52f75fd23901f4bb245396f649e14c0389
-ms.lasthandoff: 04/27/2017
+ms.translationtype: HT
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: 3ab6123b6acfdec57f1ca71b404c9e1123d1ff6d
+ms.contentlocale: de-de
+ms.lasthandoff: 08/29/2017
 
 ---
 
@@ -34,14 +35,12 @@ Auf der Registerkarte **Überwachen** der Funktionen können Sie jede Ausführun
 
 Wenn Sie auf eine Ausführung klicken, können Sie die Dauer, Eingabedaten, Fehler und zugehörigen Protokolldateien überprüfen. Dies ist sehr nützlich zum Debuggen und zur Leistungsoptimierung Ihrer Funktionen.
 
-
 > [!IMPORTANT]
-> Wenn Sie den [Verbrauchsplan](functions-overview.md#pricing) für Azure Functions verwenden, zeigt die Kachel **Überwachung** auf dem Blatt „Übersicht“ der Funktionen-App keine Daten. Dies liegt daran, dass die Plattform die Compute-Instanzen dynamisch skaliert und verwaltet, daher sind diese Metriken in einem Verbrauchsplan nicht von Bedeutung. Um die Nutzung Ihrer Funktionen-Apps zu überwachen, sollten Sie stattdessen die Informationen in diesem Artikel verwenden.
+> Wenn Sie den [Verbrauchstarif](functions-overview.md#pricing) für Azure Functions verwenden, zeigt die Kachel **Überwachung** der Funktionen-App keine Daten. Das liegt an der dynamischen Skalierung und Verwaltung von Computeinstanzen durch die Plattform. Diese Metriken sind in einem Verbrauchstarif ohne Bedeutung. Um die Nutzung Ihrer Funktionen-Apps zu überwachen, sollten Sie stattdessen die Informationen in diesem Artikel verwenden.
 > 
 > Der folgende Screenshot zeigt ein Beispiel:
 > 
-> ![Überwachung auf dem Hauptressourcenblatt](./media/functions-monitoring/app-service-overview-monitoring.png)
-
+> ![Überwachen der Funktion](./media/functions-monitoring/app-service-overview-monitoring.png)
 
 
 ## <a name="real-time-monitoring"></a>Überwachung in Echtzeit
@@ -50,7 +49,7 @@ Die Echtzeitüberwachung ist verfügbar, indem Sie, wie unten gezeigt, auf **Liv
 
 ![Option „Liveereignisdatenstrom“ auf der Registerkarte für die Überwachung](./media/functions-monitoring/monitor-tab-live-event-stream.png)
 
-Der Liveereignisdatenstrom wird auf einer neuen Browserregisterkarte grafisch dargestellt, wie unten gezeigt. 
+Der Liveereignisdatenstrom wird wir im folgenden Beispiel in einem Diagramm auf einer neuen Registerkarte im Browser angezeigt: 
 
 ![Liveereignisdatenstrom – Beispiel](./media/functions-monitoring/live-event-stream.png)
 
@@ -68,24 +67,19 @@ Der Liveereignisdatenstrom stellt die folgenden Statistiken für Ihre Funktion g
 Diese Statistiken werden in Echtzeit erfasst, aber die grafische Darstellung der Ausführungsdaten kann ca. 10 Sekunden verzögert erfolgen.
 
 
-
-
-
-
 ## <a name="monitoring-log-files-from-a-command-line"></a>Überwachen von Protokolldateien über eine Befehlszeile
 
+Sie können Protokolldateien mithilfe der Azure-Befehlszeilenschnittstelle 1.0 oder über PowerShell in eine Befehlszeilensitzung auf einer lokalen Arbeitsstation streamen.
 
-Sie können Protokolldateien mithilfe der Azure-Befehlszeilenschnittstelle oder über PowerShell in eine Befehlszeilensitzung auf einer lokalen Arbeitsstation streamen.
+### <a name="monitoring-function-app-log-files-with-the-azure-cli-10"></a>Überwachen der Protokolldateien von Funktions-Apps mithilfe der Azure-Befehlszeilenschnittstelle 1.0
 
-### <a name="monitoring-function-app-log-files-with-the-azure-cli"></a>Überwachen der Protokolldateien von Funktionen-Apps mithilfe der Azure-Befehlszeilenschnittstelle
-
-Als Erstes [installieren Sie die Azure-Befehlszeilenschnittstelle](../cli-install-nodejs.md).
+Als Erstes [installieren Sie die Azure-Befehlszeilenschnittstelle 1.0](../cli-install-nodejs.md).
 
 Melden Sie sich mithilfe des folgenden Befehls bei Ihrem Azure-Konto an. Alternativ können Sie auch eine der anderen unter [Anmelden bei Azure über die Azure-Befehlszeilenschnittstelle (CLI)](../xplat-cli-connect.md) beschriebenen Methoden verwenden.
 
     azure login
 
-Verwenden Sie den folgenden Befehl, um den Dienstverwaltungsmodus (ASM) der Azure-Befehlszeilenschnittstelle zu aktivieren:
+Verwenden Sie den folgenden Befehl, um die Azure CLI 1.0 im klassischen Dienstverwaltungsmodus zu aktivieren:
 
     azure config mode asm
 
@@ -94,7 +88,7 @@ Wenn Sie über mehrere Abonnements verfügen, verwenden Sie die folgenden Befehl
     azure account list
     azure account set <subscriptionNameOrId>
 
-Der folgende Befehl streamt die Protokolldateien Ihrer Funktionen-App an die Befehlszeile:
+Der folgende Befehl streamt die Protokolldateien Ihrer Funktions-App an die Befehlszeile:
 
     azure site log tail -v <function app name>
 

@@ -15,10 +15,10 @@ ms.custom: tables
 ms.date: 07/14/2017
 ms.author: rortloff;barbkess
 ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
-ms.openlocfilehash: efb5361496a2199a960564f6213f509b693e3cfa
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 437a4f628a343312984d1fa2981df7fa01459e26
 ms.contentlocale: de-de
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 
@@ -130,11 +130,11 @@ WHERE d.FiscalYear = 2004
 ```
 Wir haben `DimDate` und `DimSalesTerritory` als Roundrobintabellen neu erstellt. Deshalb wies die Abfrage den folgenden Abfrageplan auf, der mehrere Broadcastverschiebevorgänge enthält: 
  
-![Roundrobin-Abfrageplan](media/design-guidance-for-replicated-tables/round-robin-tables-query-plan.jpg "Roundrobin-Abfrageplan") 
+![Roundrobin-Abfrageplan](media/design-guidance-for-replicated-tables/round-robin-tables-query-plan.jpg) 
 
 Wir haben `DimDate` und `DimSalesTerritory` als replizierte Tabellen neu erstellt und die Abfrage erneut ausgeführt. Der resultierende Abfrageplan ist sehr viel kürzer und enthält keine Broadcastverschiebungen.
 
-![Replizierter Abfrageplan](media/design-guidance-for-replicated-tables/replicated-tables-query-plan.jpg "Roundrobinabfrageplan") 
+![Replizierter Abfrageplan](media/design-guidance-for-replicated-tables/replicated-tables-query-plan.jpg) 
 
 
 ## <a name="performance-considerations-for-modifying-replicated-tables"></a>Überlegungen zur Leistung beim Ändern replizierter Tabellen

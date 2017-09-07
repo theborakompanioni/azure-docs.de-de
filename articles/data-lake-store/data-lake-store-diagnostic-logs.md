@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/10/2017
+ms.date: 08/28/2017
 ms.author: nitinme
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 59f072c7a8272fc04e1d662c0ab17e7ee4500fa6
-ms.openlocfilehash: f139674f96793b8486c541c9e3f1ead751b97232
+ms.translationtype: HT
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: 73d0dabe5b8b179cbc0847c2819947febd6ef4d8
 ms.contentlocale: de-de
-ms.lasthandoff: 02/07/2017
-
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-store"></a>Zugreifen auf Diagnoseprotokolle für Azure Data Lake Store
@@ -32,7 +31,7 @@ Organisationen können die Diagnoseprotokollierung für ihre Azure Data Lake Sto
 * **Azure Data Lake-Speicherkonto**. Führen Sie die Schritte der Anleitung unter [Erste Schritte mit dem Azure Data Lake-Speicher mithilfe des Azure-Portals](data-lake-store-get-started-portal.md)aus.
 
 ## <a name="enable-diagnostic-logging-for-your-data-lake-store-account"></a>Aktivieren der Diagnoseprotokollierung für Ihr Data Lake Store-Konto
-1. Melden Sie sich beim neuen [Azure-Portal](https://portal.azure.com)an.
+1. Melden Sie sich am neuen [Azure-Portal](https://portal.azure.com)an.
 2. Öffnen Sie Ihr Data Lake Store-Konto, und klicken Sie auf Ihrem Data Lake Store-Kontoblatt auf **Einstellungen** und dann auf **Diagnoseprotokolle**.
 3. Klicken Sie auf dem Blatt **Diagnoseprotokolle** auf **Diagnose aktivieren**.
 
@@ -42,7 +41,7 @@ Organisationen können die Diagnoseprotokollierung für ihre Azure Data Lake Sto
    
     ![Aktivieren der Diagnoseprotokollierung](./media/data-lake-store-diagnostic-logs/enable-diagnostic-logs.png "Aktivieren von Diagnoseprotokollen")
    
-   * Legen Sie **Status** auf **Ein** fest, um die Diagnoseprotokollierung zu aktivieren.
+   * Geben Sie unter **Name** einen Wert für die Konfiguration des Diagnoseprotokolls ein.
    * Sie können die Daten auf verschiedene Arten speichern/verarbeiten.
      
         * Wählen Sie die Option zum **Archivieren in einem Speicherkonto**, um Protokolle in einem Azure Storage-Konto zu speichern. Verwenden Sie diese Option, wenn Sie die Daten archivieren möchten, die zu einem späteren Zeitpunkt der Batchverarbeitung unterzogen werden sollen. Bei Auswahl dieser Option müssen Sie ein Azure Storage-Konto zum Speichern der Protokolle bereitstellen.
@@ -71,7 +70,7 @@ Es gibt zwei Möglichkeiten, die Protokolldaten Ihres Data Lake Store-Kontos anz
    
    * Anforderungsprotokolle erfassen jede API-Anforderung im Data Lake Store-Konto.
    * Überwachungsprotokolle ähneln Anforderungsprotokollen, bieten aber eine viel detailliertere Aufschlüsselung der Vorgänge, die auf dem Data Lake Store-Konto ausgeführt werden. Ein einzelner API-Hochladeaufruf in Anforderungsprotokollen könnte möglicherweise in den Überwachungsprotokollen in mehreren „Anfügen“-Vorgängen resultieren.
-3. Klicken Sie für jeden Protokolleintrag auf den Link **Herunterladen** , um die Protokolle herunterzuladen.
+3. Klicken Sie zum Herunterladen der Protokolle für jeden Protokolleintrag auf den Link **Herunterladen**.
 
 ### <a name="from-the-azure-storage-account-that-contains-log-data"></a>Im Azure Storage-Konto, das die Protokolldaten enthält
 1. Öffnen Sie das Azure Storage-Kontoblatt, das zur Protokollierung dem Data Lake Store zugeordnet ist, und klicken Sie dann auf „Blobs“. Auf dem Blatt **Blob-Dienst** werden zwei Container aufgelistet.
@@ -86,7 +85,7 @@ Es gibt zwei Möglichkeiten, die Protokolldaten Ihres Data Lake Store-Kontos anz
    
     Der vollständige Pfad zu einem Überwachungsprotokoll könnte z.B. folgendermaßen lauten: `https://adllogs.blob.core.windows.net/insights-logs-audit/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/mydatalakestore/y=2016/m=07/d=18/h=04/m=00/PT1H.json`
    
-    Entsprechend könnte der vollständige Pfad zu einem Anforderungsprotokoll folgendermaßen lauten: `https://adllogs.blob.core.windows.net/insights-logs-requests/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/mydatalakestore/y=2016/m=07/d=18/h=14/m=00/PT1H.json`
+    Entsprechend kann der vollständige Pfad zu einem Anforderungsprotokoll wie folgt lauten: `https://adllogs.blob.core.windows.net/insights-logs-requests/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/mydatalakestore/y=2016/m=07/d=18/h=14/m=00/PT1H.json`.
 
 ## <a name="understand-the-structure-of-the-log-data"></a>Grundlegendes zur Struktur der Protokolldaten
 Die Überwachungs- und Anforderungsprotokolle liegen im JSON-Format vor. In diesem Abschnitt betrachten wir die Struktur von JSON für Anforderungs- und Überwachungsprotokolle.

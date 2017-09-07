@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 08/14/2017
 ms.author: babanisa
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: b6e1c7587c0b47d04862b4850741aaa3b7d191a8
+ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
+ms.openlocfilehash: ccef224ef1c2919a3e5469c1bbe0980c6963705b
 ms.contentlocale: de-de
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 08/30/2017
 
 ---
 
@@ -38,6 +38,28 @@ Wenn Sie Ihren eigenen Webhook-Endpunkt bei Event Grid registrieren, wird Ihnen 
 * Das Ereignis enthält den Headerwert „Event-Type: Validation“.
 * Der Hauptteil des Ereignisses weist dasselbe Schema wie andere Event Grid-Ereignisse auf.
 * Die Ereignisdaten enthalten die Eigenschaft „ValidationCode“ mit einer zufällig generierten Zeichenfolge, z.B. „ValidationCode: acb13…“.
+
+Ein SubscriptionValidationEvent-Beispiel sehen Sie hier:
+```json
+[{
+  "Id": "2d1781af-3a4c-4d7c-bd0c-e34b19da4e66",
+  "Topic": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "Subject": "",
+  "Data": {
+    "validationCode": "512d38b6-c7b8-40c8-89fe-f46f9e9622b6"
+  },
+  "EventType": "Microsoft.EventGrid/SubscriptionValidationEvent",
+  "EventTime": "2017-08-06T22:09:30.740323Z"
+}]
+```
+
+Um den Besitz des Endpunkts nachzuweisen, senden Sie den Validierungscode zurück, im Beispiel: „validation_response: acb13…“. Ein Beispiel hierfür sehen Sie hier:
+
+```json
+{
+  "validationResponse": "512d38b6-c7b8-40c8-89fe-f46f9e9622b6"
+}
+```
 
 Um den Besitz des Endpunkts nachzuweisen, senden Sie den Validierungscode zurück, im Beispiel: „ValidationResponse: acb13…“.
 
@@ -176,7 +198,7 @@ Im Folgenden finden Sie Beispiele für Event Grid-Rollendefinitionen, die Benutz
   ] 
 }
 ```
- 
+
 **EventGridContributorRole.json:** Zulassen aller Event Grid-Aktionen.  
 ```json
 { 
