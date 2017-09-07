@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar
 ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
-ms.openlocfilehash: 47f211237332dba3402339780c3c13fdf03c96bb
+ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
+ms.openlocfilehash: 8ca04ac79665d5ecc639addd48939f71825f2024
 ms.contentlocale: de-de
-ms.lasthandoff: 08/16/2017
+ms.lasthandoff: 09/02/2017
 
 ---
 # <a name="service-fabric-container-networking-modes"></a>Netzwerkmodi für Service Fabric-Container
@@ -295,9 +295,9 @@ Die Ermittlung von Diensten anhand der dynamisch zugewiesenen IP-Adresse ist nic
 
 3. Richten Sie für Windows-Cluster eine NSG-Regel ein, um den Port „UDP/53“ für das VNET zu öffnen. Verwenden Sie dazu folgende Werte:
 
-   | Priorität |    Name    |    Quelle      |  Ziel   |   Dienst    | Aktion |
+   | Priority |    Name    |    Quelle      |  Ziel   |   Dienst    | Aktion |
    |:--------:|:----------:|:--------------:|:--------------:|:------------:|:------:|
-   |     2000 | Custom_Dns | VirtualNetwork | VirtualNetwork | DNS (UDP/53) | Zulassen  |
+   |     2000 | Custom_Dns | VirtualNetwork | VirtualNetwork | DNS (UDP/53) | ZULASSEN  |
 
 
 4. Geben Sie im App-Manifest für jeden Dienst den Netzwerkmodus an: `<NetworkConfig NetworkType="open">`.  Im Modus `open` erhält der Dienst eine dedizierte IP-Adresse. Ohne Modusangabe wird standardmäßig der einfache Modus `nat` verwendet. Im folgenden Beispielmanifest können `NodeContainerServicePackage1` und `NodeContainerServicePackage2` am gleichen Port lauschen. (Beide Dienste lauschen an `Endpoint1`.)
@@ -337,7 +337,7 @@ Sie können verschiedene Netzwerkmodi dienstübergreifend in einer Anwendung fü
 In diesem Artikel wurden Netzwerkmodi von Service Fabric behandelt.  
 
 * [Service Fabric-Anwendungsmodell](service-fabric-application-model.md)
-* [Service Fabric service manifest resources](service-fabric-application-model.md) (Service Fabric-Dienstmanifestressourcen)
+* [Service Fabric service manifest resources](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-service-manifest-resources) (Service Fabric-Dienstmanifestressourcen)
 * [Bereitstellen eines Windows-Containers in Service Fabric unter Windows Server 2016](service-fabric-get-started-containers.md)
 * [Bereitstellen eines Docker-Containers in Service Fabric unter Linux](service-fabric-get-started-containers-linux.md)
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/17/2017
 ms.author: tarcher
 ms.translationtype: HT
-ms.sourcegitcommit: 0425da20f3f0abcfa3ed5c04cec32184210546bb
-ms.openlocfilehash: a556cee9d7b665cd7df23c97e7e2c8c2afabbe58
+ms.sourcegitcommit: ce0189706a3493908422df948c4fe5329ea61a32
+ms.openlocfilehash: 6926fe1be44c078482dd5073788e36d7ae77efef
 ms.contentlocale: de-de
-ms.lasthandoff: 07/20/2017
+ms.lasthandoff: 09/05/2017
 
 ---
 # <a name="use-azure-devtest-labs-for-vm-and-paas-test-environments"></a>Verwenden von Azure DevTest Labs für virtuelle Computer und PaaS-Testumgebungen
@@ -113,7 +113,7 @@ Dieser Artikel enthält Informationen zu verschiedenen Azure DevTest Labs-Featur
    | Task | Lerninhalt |
    | --- | --- |
    | [Definieren von Labrichtlinien.](devtest-lab-set-lab-policy.md) |Kontrollieren Sie Kosten durch Festlegen von Richtlinien im Lab. |
-   | [Löschen aller virtuellen Computer mithilfe eines PowerShell-Skripts](devtest-lab-faq.md#how-can-i-automate-the-process-of-deleting-all-the-vms-in-my-lab) |Löschen Sie alle Labs in einem Vorgang, wenn die Tests abgeschlossen sind.|
+   | [Löschen aller virtuellen Computer mithilfe eines PowerShell-Skripts](devtest-lab-faq.md#how-do-i-automate-the-process-of-deleting-all-the-vms-in-my-lab) |Löschen Sie alle Labs in einem Vorgang, wenn die Tests abgeschlossen sind.|
 
 1. **Hinzufügen eines virtuellen Netzwerks zu einem Lab** 
    
@@ -147,7 +147,7 @@ Dieser Artikel enthält Informationen zu verschiedenen Azure DevTest Labs-Featur
    
    | Task | Lerninhalt |
    | --- | --- |
-   | [Erstellen eines Labs mithilfe einer Resource Manager-Vorlage](devtest-lab-faq.md#how-do-i-create-a-lab-from-an-azure-resource-manager-template) |Erstellen Sie Labs in Azure DevTest Labs mithilfe von Resource Manager-Vorlagen. |
+   | [Erstellen eines Labs mithilfe einer Resource Manager-Vorlage](devtest-lab-faq.md#how-do-i-create-a-lab-from-a-resource-manager-template) |Erstellen Sie Labs in Azure DevTest Labs mithilfe von Resource Manager-Vorlagen. |
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 

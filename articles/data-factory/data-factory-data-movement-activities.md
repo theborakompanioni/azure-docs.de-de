@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 07/19/2017
 ms.author: jingwang
 ms.translationtype: HT
-ms.sourcegitcommit: 0425da20f3f0abcfa3ed5c04cec32184210546bb
-ms.openlocfilehash: 0cefbe1303de1cfa46cc4b771c0cd3aa7819597c
+ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
+ms.openlocfilehash: 26fb0914de571aa0e398f0e2a2f8e439d3d27680
 ms.contentlocale: de-de
-ms.lasthandoff: 07/20/2017
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="move-data-by-using-copy-activity"></a>Verschieben von Daten mit der Kopieraktivität
@@ -108,12 +108,14 @@ Wenn sich Quell- und Senkendatenspeicher in der Cloud befinden, verwendet Data F
 | Asien-Pazifik | Südostasien | Südostasien |
 | &nbsp; | Ostasien | Südostasien |
 | Australien | Australien (Osten) | Australien, Osten |
-| &nbsp; | Australien, Südosten | Australien (Südost) |
-| Japan | Japan Ost | Japan Ost |
-| &nbsp; | Japan, Westen | Japan Ost |
+| &nbsp; | Australien, Südosten | Australien, Südosten |
 | Indien | Indien (Mitte) | Indien (Mitte) |
 | &nbsp; | Indien, Westen | Indien (Mitte) |
 | &nbsp; | Indien, Süden | Indien (Mitte) |
+| Japan | Japan Ost | Japan Ost |
+| &nbsp; | Japan, Westen | Japan Ost |
+| Korea | Korea, Mitte | Korea, Mitte |
+| &nbsp; | Korea, Süden | Korea, Mitte |
 
 Alternativ können Sie unter den Typeigenschaften der Kopieraktivität (`typeProperties`) mithilfe der `executionLocation`-Eigenschaft explizit die Region des Data Factory-Diensts angeben, die für den Kopiervorgang verwendet werden soll. Die unterstützten Werte für diese Eigenschaft finden Sie weiter oben in der Spalte **Verwendete Region für die Datenverschiebung**. Hinweis: Beim Kopieren werden Ihre Daten über diese Region geleitet. Wenn Sie beispielsweise einen Kopiervorgang zwischen Azure-Speichern in Korea durchführen möchten, können Sie `"executionLocation": "Japan East"` angeben, um die Daten über Japan zu leiten (siehe [JSON-Beispiel](#by-using-json-scripts) zur Referenz).
 
