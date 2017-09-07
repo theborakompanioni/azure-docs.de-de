@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/30/2017
+ms.date: 08/30/2017
 ms.author: sethm;clemensv
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 5abdbf70d4fdb2c7feb0f3537ecc0f2abf0775a0
+ms.translationtype: HT
+ms.sourcegitcommit: 07e5e15f4f4c4281a93c8c3267c0225b1d79af45
+ms.openlocfilehash: ffab5b058420d61be17d386a46a29391d5728859
 ms.contentlocale: de-de
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="event-hubs-authentication-and-security-model-overview"></a>Event Hubs-Authentifizierung und -Sicherheitsmodell (Übersicht)
+
 Das Sicherheitsmodell von Azure Event Hubs erfüllt die folgenden Voraussetzungen:
 
 * Nur Clients, die gültige Anmeldeinformationen bereitstellen, können Daten an einen Event Hub senden.
@@ -30,6 +30,7 @@ Das Sicherheitsmodell von Azure Event Hubs erfüllt die folgenden Voraussetzunge
 * Ein nicht autorisierter Client kann daran gehindert werden, Daten an einen Event Hub zu senden.
 
 ## <a name="client-authentication"></a>Clientauthentifizierung
+
 Das Event Hubs-Sicherheitsmodell basiert auf einer Kombination aus [Shared Access Signature (SAS)](../service-bus-messaging/service-bus-sas.md)-Token und *Ereignisherausgebern*. Ein Ereignisherausgeber definiert einen virtuellen Endpunkt für einen Event Hub. Der Herausgeber kann nur zum Senden von Nachrichten an einen Event Hub verwendet werden. Es ist nicht möglich, von einem Herausgeber Nachrichten zu empfangen.
 
 In der Regel setzt ein Event Hub einen Herausgeber pro Client ein. Alle Nachrichten, die an einen der Herausgeber eines Event Hubs gesendet werden, werden in die Warteschlange innerhalb dieses Event Hubs eingereiht. Herausgeber ermöglichen die präzise Access Control und Zugriffsdrosselung.
@@ -42,7 +43,7 @@ Alle Token werden mit einem SAS-Schlüssel signiert. Alle Token werden in der Re
 
 ### <a name="create-the-sas-key"></a>Erstellen des SAS-Schlüssels
 
-Wenn Sie einen Event Hubs-Namespace erstellen, generiert der Dienst einen 256-Bit-SAS-Schlüssel mit dem Namen **RootManageSharedAccessKey**. Dieser Schlüssel erteilt die Rechte zum Senden, Überwachen und Verwalten für den Namespace. Sie können auch zusätzliche Schlüssel erstellen. Es wird empfohlen, dass Sie einen Schlüssel erzeugen, der Berechtigungen zum Senden an den bestimmten Event Hub erteilt. Für den Rest dieses Themas wird davon ausgegangen, dass Sie diesen Schlüssel mit **EventHubSendKey** benannt haben.
+Wenn Sie einen Event Hubs-Namespace erstellen, generiert der Dienst automatisch einen 256-Bit-SAS-Schlüssel mit dem Namen **RootManageSharedAccessKey**. Dieser Regel ist ein Paar aus primärem und sekundärem Schlüssel zugeordnet, das dem Namespace Sende-, Lausch- und Verwaltungsberechtigungen gewährt. Sie können auch zusätzliche Schlüssel erstellen. Es wird empfohlen, dass Sie einen Schlüssel erzeugen, der Berechtigungen zum Senden an den bestimmten Event Hub erteilt. Für den Rest dieses Themas wird davon ausgegangen, dass Sie diesen Schlüssel mit **EventHubSendKey** benannt haben.
 
 Im folgenden Beispiel wird ein Nur-Senden-Schlüssel erstellt, wenn der Event Hub erstellt wird:
 
@@ -89,11 +90,13 @@ SharedAccessSignature sr=contoso&sig=nPzdNN%2Gli0ifrfJwaK4mkK0RqAB%2byJUlt%2bGFm
 In der Regel müssen die Token eine Lebensdauer haben, die der Lebensdauer des Clients entspricht oder diese übersteigt. Wenn der Client die Möglichkeit hat, ein neues Token zu erhalten, können Token mit einer kürzeren Lebensdauer verwendet werden.
 
 ### <a name="sending-data"></a>Senden von Daten
+
 Sobald die Token erstellt wurden, wird jedem Client sein eigenes eindeutiges Token bereitgestellt.
 
 Wenn der Client Daten an einen Event Hub sendet, markiert er seine Sendeanforderung mit dem Token. Um Lauschangriffe und Diebstahl von Token von einem Angreifer zu verhindern, muss die Kommunikation zwischen dem Client und dem Event Hub über einen verschlüsselten Kanal erfolgen.
 
 ### <a name="blacklisting-clients"></a>Eintragen von Clients in eine schwarze Liste
+
 Wenn ein Token von einem Angreifer gestohlen wurde, kann der Angreifer den Client imitieren, dessen Token gestohlen wurde. Wird ein Client in eine schwarze Liste eingetragen, wird dieser Client als nicht verwendbar gekennzeichnet, bis er ein neues Token erhalten hat, das einen anderen Herausgeber verwendet.
 
 ## <a name="authentication-of-back-end-applications"></a>Authentifizierung von Back-End-Anwendungen
@@ -105,6 +108,7 @@ Die aktuelle Version des Service Bus unterstützt nicht die SAS-Regeln für einz
 In Ermangelung einer SAS-Authentifizierung für einzelne Consumergruppen können Sie SAS-Schlüssel nutzen, um alle Consumergruppen mit einem gemeinsamen Schlüssel zu sichern. Dieser Ansatz ermöglicht einer Anwendung, Daten von allen Consumergruppen eines Event Hubs zu verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Weitere Informationen zu Event Hubs finden Sie unter den folgenden Themen:
 
 * [Übersicht über Event Hubs]

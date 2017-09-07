@@ -59,7 +59,8 @@
 #### [Lucene-Abfragesyntax](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)
 #### [Beispiele für Lucene-Syntaxabfragen](search-query-lucene-examples.md)
 #### [Filterausdruckssyntax](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)
-### Benutzerdefinierte Suche
+### Analysemodule in Azure Search
+#### [Übersicht](search-analyzers.md)
 #### [Sprachanalysen](https://docs.microsoft.com/rest/api/searchservice/language-support)
 #### [Benutzerdefinierte Analysen](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search)
 ### [Auslagerungsergebnisse](search-pagination-page-layout.md)
@@ -95,8 +96,8 @@
 ### [Azure Search – GitHub](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search)
 ### [MSDN-Forum](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureSearch)
 ### [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-search)
-### [Blog: Model relational data](http://blogs.technet.com/b/onsearch/archive/2015/09/08/modeling-the-adventureworks-inventory-database-for-azure-search.aspx) (Modellieren von relationalen Daten)
-### [[Blog: Multilevel faceting](http://blogs.technet.com/b/onsearch/archive/2015/09/09/multi-level-taxonomy-facets-in-azure-search.aspx) (Faceting mit mehreren Ebenen)
+### [Modellieren von relationalen Daten](http://blogs.technet.com/b/onsearch/archive/2015/09/08/modeling-the-adventureworks-inventory-database-for-azure-search.aspx)
+### [[Faceting mit mehreren Ebenen](http://blogs.technet.com/b/onsearch/archive/2015/09/09/multi-level-taxonomy-facets-in-azure-search.aspx)
 
 
 

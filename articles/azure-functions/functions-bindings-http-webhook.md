@@ -4,7 +4,7 @@ description: Erfahren Sie, wie HTTP- und Webhooktrigger und -Bindungen in Azure 
 services: functions
 documentationcenter: na
 author: mattchenderson
-manager: erikre
+manager: cfowler
 editor: 
 tags: 
 keywords: Azure Functions, Functions, Ereignisverarbeitung, Webhooks, dynamisches Computing, serverlose Architektur, HTTP, API, REST
@@ -14,13 +14,13 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 11/18/2016
+ms.date: 08/26/2017
 ms.author: mahender
 ms.translationtype: HT
-ms.sourcegitcommit: 0425da20f3f0abcfa3ed5c04cec32184210546bb
-ms.openlocfilehash: f31c0eec6b570c4d9f798185f8f0f8c49a7e400d
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: cac0f437cee86aa933763e5133ac1a0e892ffb52
 ms.contentlocale: de-de
-ms.lasthandoff: 07/20/2017
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="azure-functions-http-and-webhook-bindings"></a>HTTP- und Webhookbindungen in Azure Functions
@@ -44,10 +44,10 @@ Der HTTP-Trigger führt Ihre Funktion als Antwort auf eine HTTP-Anforderung aus.
 
 Wenn Sie das Functions-Portal verwenden, können Sie mit einer vorbereiteten Vorlage sofort loslegen. Wählen Sie **Neue Funktion** aus, und wählen Sie aus der Dropdownliste **Szenario** die Option „API + Webhooks“ aus. Wählen Sie eine der Vorlagen aus, und klicken Sie auf **Erstellen**.
 
-Standardmäßig antwortet ein HTTP-Trigger auf die Anforderung mit dem Statuscode „HTTP 200 OK“ und leerem Haupttext. Um diese Antwort zu ändern, konfigurieren Sie eine [HTTP-Ausgabebindung](#output).
+Standardmäßig antwortet ein HTTP-Trigger auf die Anforderung mit dem Statuscode „HTTP 200 OK“ und einem leeren Text. Um diese Antwort zu ändern, konfigurieren Sie eine [HTTP-Ausgabebindung](#output).
 
 ### <a name="configuring-an-http-trigger"></a>Konfigurieren eines HTTP-Triggers
-Ein HTTP-Trigger wird definiert, indem ein JSON-Objekt ähnlich dem folgenden in das `bindings`-Array von „function.json“ eingefügt wird:
+Ein HTTP-Trigger wird wie im folgenden Beispiel dargestellt durch ein JSON-Objekt im `bindings`-Array von „function.json“ definiert:
 
 ```json
 {
@@ -61,35 +61,29 @@ Ein HTTP-Trigger wird definiert, indem ein JSON-Objekt ähnlich dem folgenden in
 ```
 Die Bindung unterstützt die folgenden Eigenschaften:
 
-* **name**: Erforderlich – der Variablenname, der im Funktionscode für die Anforderung oder den Anforderungstext verwendet wird. Siehe [Arbeiten mit einem HTTP-Trigger aus dem Code](#httptriggerusage).
-* **type**: Erforderlich, muss auf „httpTrigger“ festgelegt sein.
-* **direction**: Erforderlich, muss auf „in“ festgelegt sein.
-* _authLevel_: Legt fest, welche Schlüssel (sofern welche benötigt werden) in der Anforderung vorhanden sein müssen, um die Funktion aufzurufen. Siehe [Arbeiten mit Schlüsseln](#keys) weiter unten. Der Wert kann einer der folgenden sein:
-    * _anonymous_: Es ist kein API-Schlüssel erforderlich.
-    * _function_: Es ist ein funktionsspezifischer API-Schlüssel erforderlich. Dies ist der Standardwert, wenn kein anderer Wert angegeben wird.
-    * _admin_: Der Hauptschlüssel ist erforderlich.
-* **methods**: Ein Array der HTTP-Methoden, denen die Funktion antwortet. Wenn kein Wert angegeben ist, antwortet die Funktion auf alle HTTP-Methoden. Siehe [Anpassen des HTTP-Endpunkts](#url).
-* **route**: Definiert die Routenvorlage, mit der gesteuert wird, auf welche Anforderungs-URLs Ihre Funktion antwortet. Wenn kein anderer Wert angegeben wird, lautet der Standardwert `<functionname>`. Siehe [Anpassen des HTTP-Endpunkts](#url).
-* **webHookType**: Konfiguriert den HTTP-Trigger so, dass dieser als Webhookempfänger für den angegebenen Anbieter fungiert. Wenn dieser Wert ausgewählt ist, sollte die _methods_-Eigenschaft nicht festgelegt werden. Siehe [Antworten auf Webhooks](#hooktrigger). Der Wert kann einer der folgenden sein:
-    * _genericJson_: Ein Webhookendpunkt für allgemeine Zwecke ohne Logik für einen bestimmten Anbieter.
-    * _github_: Die Funktion antwortet auf GitHub-Webhooks. Wenn dieser Wert ausgewählt ist, sollte die _authLevel_-Eigenschaft nicht festgelegt werden.
-    * _slack_: Die Funktion antwortet auf Slack-Webhooks. Wenn dieser Wert ausgewählt ist, sollte die _authLevel_-Eigenschaft nicht festgelegt werden.
+|Eigenschaft  |Beschreibung  |
+|---------|---------|
+| **name** | Erforderlich – der Variablenname, der im Funktionscode für die Anforderung oder den Anforderungstext verwendet wird. Siehe [Arbeiten mit einem HTTP-Trigger aus dem Code](#httptriggerusage). |
+| **type** | Erforderlich – muss auf `httpTrigger` festgelegt sein. |
+| **direction** | Erforderlich – muss auf `in` festgelegt sein. |
+| **authLevel** | Bestimmt, welche Schlüssel (sofern erforderlich) in der Anforderung vorhanden sein müssen, um die Funktion aufzurufen. Folgende Werte können verwendet werden: <ul><li><code>anonymous</code>: Es ist kein API-Schlüssel erforderlich.</li><li><code>function</code>: Es ist ein funktionsspezifischer API-Schlüssel erforderlich. Dies ist der Standardwert, wenn kein anderer Wert angegeben wird.</li><li><code>admin</code>: Der Hauptschlüssel ist erforderlich.</li></ul> Weitere Informationen finden Sie unter [Arbeiten mit Schlüsseln](#keys). |
+| **methods** | Ein Array der HTTP-Methoden, auf die diese Funktion antwortet. Wird dieses Array nicht angegeben, antwortet die Funktion auf alle HTTP-Methoden. Siehe [Anpassen des HTTP-Endpunkts](#url). |
+| **route** | Definiert die Routenvorlage, mit der gesteuert wird, auf welche Anforderungs-URLs die Funktion antwortet. Wenn kein anderer Wert angegeben wird, lautet der Standardwert `<functionname>`. Weitere Informationen finden Sie unter [Anpassen des HTTP-Endpunkts](#url). |
+| **webHookType** | Konfiguriert den HTTP-Trigger so, dass er als Webhookempfänger für den angegebenen Anbieter fungiert. Verwenden Sie bei Verwendung dieser Einstellung nicht die _methods_-Eigenschaft. Folgende Werte können verwendet werden:<ul><li><code>genericJson</code>: Ein allgemeiner Webhookendpunkt ohne Logik für einen bestimmten Anbieter.</li><li><code>github</code>: Die Funktion antwortet auf GitHub-Webhooks. Verwenden Sie bei Verwendung dieses Werts nicht die _authLevel_-Eigenschaft.</li><li><code>slack</code>: Die Funktion antwortet auf Slack-Webhooks. Verwenden Sie bei Verwendung dieses Werts nicht die _authLevel_-Eigenschaft.</li></ul> Weitere Informationen finden Sie unter [Antworten auf Webhooks](#hooktrigger). |
 
 <a name="httptriggerusage"></a>
 ### <a name="working-with-an-http-trigger-from-code"></a>Arbeiten mit einem HTTP-Trigger aus dem Code
-Bei C#- und F#-Funktionen können Sie den Typ der Triggereingabe als `HttpRequestMessage` oder als benutzerdefinierten Typ deklarieren. Wenn Sie `HttpRequestMessage` auswählen, erhalten Sie Vollzugriff auf das Anforderungsobjekt. Bei benutzerdefinierten Typen (z.B. POCO) versucht Functions, den Haupttext als JSON zu analysieren, um die Objekteigenschaften aufzufüllen.
+Bei C#- und F#-Funktionen können Sie den Typ der Triggereingabe als `HttpRequestMessage` oder als benutzerdefinierten .NET-Typ deklarieren. Wenn Sie `HttpRequestMessage` auswählen, erhalten Sie Vollzugriff auf das Anforderungsobjekt. Bei einem benutzerdefinierten .NET-Typ versucht Functions, den JSON-Anforderungstext zu analysieren, um die Objekteigenschaften festzulegen. 
 
-Für Node.js-Funktionen stellt die Functions-Laufzeit den Anforderungstext anstelle des Anforderungsobjekts bereit.
-
-Verwendungsbeispiele finden Sie unter [Beispiele für HTTP-Trigger](#httptriggersample).
+Für Node.js-Funktionen stellt die Functions-Laufzeit den Anforderungstext anstelle des Anforderungsobjekts bereit. Weitere Informationen finden Sie unter [Beispiele für HTTP-Trigger](#httptriggersample).
 
 
 <a name="output"></a>
 ## <a name="http-response-output-binding"></a>HTTP-Ausgabebindung bei Antwort
-Verwenden Sie die HTTP-Ausgabebindung, um eine Antwort an den Absender der HTTP-Anforderung zu senden. Diese Bindung erfordert einen HTTP-Trigger und ermöglicht Ihnen, die Antwort, die der Anforderung des Triggers zugeordnet ist, benutzerdefiniert anzupassen. Wenn keine HTTP-Ausgabebindung angegeben wird, gibt ein HTTP-Trigger den Statuscode „HTTP 200 OK“ mit leerem Haupttext zurück. 
+Verwenden Sie die HTTP-Ausgabebindung, um eine Antwort an den Absender der HTTP-Anforderung zu senden. Diese Bindung erfordert einen HTTP-Trigger und ermöglicht Ihnen, die Antwort, die der Anforderung des Triggers zugeordnet ist, benutzerdefiniert anzupassen. Wenn keine HTTP-Ausgabebindung angegeben wird, gibt ein HTTP-Trigger den Statuscode „HTTP 200 OK“ mit leerem Text zurück. 
 
 ### <a name="configuring-an-http-output-binding"></a>Konfigurieren einer HTTP-Ausgabebindung
-Die HTTP-Ausgabebindung wird definiert, indem ein JSON-Objekt ähnlich dem folgenden in das `bindings`-Array von „function.json“ eingefügt wird:
+Eine HTTP-Ausgabebindung wird wie im folgenden Beispiel dargestellt durch ein JSON-Objekt im `bindings`-Array von „function.json“ definiert:
 
 ```json
 {
@@ -98,27 +92,31 @@ Die HTTP-Ausgabebindung wird definiert, indem ein JSON-Objekt ähnlich dem folge
     "direction": "out"
 }
 ```
-Die Bindung enthält die folgenden Eigenschaften:
+Die Bindung unterstützt die folgenden erforderlichen Eigenschaften:
 
-* **name**: Erforderlich – der Variablenname, der im Funktionscode für die Antwort verwendet wird. Siehe [Arbeiten mit einer HTTP-Ausgabebindung aus dem Code](#outputusage).
-* **type**: Erforderlich, muss auf „http“ festgelegt sein.
-* **direction**: Erforderlich, muss auf „out“ festgelegt sein.
+|Eigenschaft  |Beschreibung  |
+|---------|---------|
+|**name** | Der Variablenname, der im Funktionscode für das Antwortobjekt verwendet wird. Siehe [Arbeiten mit einer HTTP-Ausgabebindung aus dem Code](#outputusage). |
+| **type** |Muss auf `http` festgelegt sein. |
+| **direction** | Muss auf `out` festgelegt sein. |
 
 <a name="outputusage"></a>
 ### <a name="working-with-an-http-output-binding-from-code"></a>Arbeiten mit einer HTTP-Ausgabebindung aus dem Code
-Sie können den Ausgabeparameter (z.B. „res“) für die Antwort an den HTTP- oder Webhookaufrufer verwenden. Alternativ dazu können Sie die standardmäßigen Muster `Request.CreateResponse()` (C#) oder `context.res` (Node.js) zur Rückgabe der Antwort verwenden. Beispiele für die letztgenannte Methode finden Sie unter [Beispiele für HTTP-Trigger](#httptriggersample) und [Beispiele für Webhooktrigger](#hooktriggersample).
+Sie können den Ausgabeparameter für die Antwort an den HTTP- oder Webhookaufrufer verwenden. Sie können auch die Antwortmuster des Sprachstandards verwenden. Beispielantworten finden Sie unter [Beispiele für HTTP-Trigger](#httptriggersample) und [Beispiele für Webhooks](#hooktriggersample).
 
 
 <a name="hooktrigger"></a>
 ## <a name="responding-to-webhooks"></a>Antworten auf Webhooks
-Ein HTTP-Trigger mit der Eigenschaft _webHookType_ wird so konfiguriert, dass er auf [Webhooks](https://en.wikipedia.org/wiki/Webhook) antwortet. Die grundlegende Konfiguration verwendet die Einstellung „genericJson“. Diese beschränkt Anforderungen auf solche, die HTTP POST verwenden und den Inhaltstyp `application/json` aufweisen.
+Ein HTTP-Trigger mit der _webHookType_-Eigenschaft wird so konfiguriert, dass er auf [Webhooks](https://en.wikipedia.org/wiki/Webhook) antwortet. Die grundlegende Konfiguration verwendet die Einstellung „genericJson“. Diese beschränkt Anforderungen auf solche, die HTTP POST verwenden und den Inhaltstyp `application/json` aufweisen.
 
-Der Trigger kann automatisch an einen bestimmten Webhookanbieter angepasst werden (z.B. [GitHub](https://developer.github.com/webhooks/) und [Slack](https://api.slack.com/outgoing-webhooks)). Wenn ein Anbieter angegeben wurde, kümmert sich die Functions-Laufzeit um die Überprüfungslogik des Anbieters.  
+Der Trigger kann zusätzlich an einen bestimmten Webhookanbieter angepasst werden, z. B. [GitHub](https://developer.github.com/webhooks/) oder [Slack](https://api.slack.com/outgoing-webhooks). Wenn ein Anbieter angegeben wurde, kann die Functions-Laufzeit die Überprüfungslogik des Anbieters behandeln.  
 
 ### <a name="configuring-github-as-a-webhook-provider"></a>Konfigurieren von GitHub als Webhookanbieter
-Um auf GitHub-Webhooks zu antworten, erstellen Sie zuerst eine Funktion mit einem HTTP-Trigger, und legen Sie die Eigenschaft _webHookType_ auf „github“ fest. Kopieren Sie dann die [URL](#url) und den [API-Schlüssel](#keys) auf die Seite **Webhook hinzufügen** Ihres GitHub-Repositorys. Weitere Informationen finden Sie in der GitHub-Dokumentation [Creating Webhooks](http://go.microsoft.com/fwlink/?LinkID=761099&clcid=0x409) (Erstellen von Webhooks).
+Erstellen Sie zum Antworten auf GitHub-Webhooks zuerst eine Funktion mit einem HTTP-Trigger, und legen Sie die **webHookType**-Eigenschaft auf `github` fest. Kopieren Sie dann die [URL](#url) und den [API-Schlüssel](#keys) auf die Seite **Webhook hinzufügen** Ihres GitHub-Repositorys. 
 
 ![](./media/functions-bindings-http-webhook/github-add-webhook.png)
+
+Ein Beispiel finden Sie unter [Erstellen einer Funktion, die durch einen GitHub-Webhook ausgelöst wird](functions-create-github-webhook-triggered-function.md).
 
 ### <a name="configuring-slack-as-a-webhook-provider"></a>Konfigurieren von Slack als Webhookanbieter
 Der Slack-Webhook lässt Sie das Token nicht angeben, sondern generiert es für Sie. Daher müssen Sie einen funktionsspezifischen Schlüssel mit dem Token aus Slack konfigurieren. Siehe [Arbeiten mit Schlüsseln](#keys).
@@ -132,74 +130,74 @@ Wenn Sie eine Funktion für einen HTTP-Trigger oder einen Webhook erstellen, ist
 Sie können diese Route mit der optionalen `route`-Eigenschaft in der Eingabebindung des HTTP-Triggers anpassen. In diesem Beispiel wird mit der Datei *function.json* eine `route`-Eigenschaft für einen HTTP-Trigger definiert:
 
 ```json
+{
+    "bindings": [
     {
-      "bindings": [
-        {
-          "type": "httpTrigger",
-          "name": "req",
-          "direction": "in",
-          "methods": [ "get" ],
-          "route": "products/{category:alpha}/{id:int?}"
-        },
-        {
-          "type": "http",
-          "name": "res",
-          "direction": "out"
-        }
-      ]
+        "type": "httpTrigger",
+        "name": "req",
+        "direction": "in",
+        "methods": [ "get" ],
+        "route": "products/{category:alpha}/{id:int?}"
+    },
+    {
+        "type": "http",
+        "name": "res",
+        "direction": "out"
     }
+    ]
+}
 ```
 
 Mit dieser Konfiguration ist die Funktion jetzt über die folgende Route erreichbar, anstatt über die ursprüngliche Route.
 
     http://<yourapp>.azurewebsites.net/api/products/electronics/357
 
-So kann der Funktionscode zwei Parameter in der Adresse unterstützen: „category“ und „id“. Sie können für Ihre Parameter eine beliebige [Web-API-Routeneinschränkung](https://www.asp.net/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2#constraints) verwenden. Im folgenden C#-Funktionscode werden beide Parameter verwendet.
+So kann der Funktionscode zwei Parameter in der Adresse unterstützen: _category_ und _id_. Sie können für Ihre Parameter eine beliebige [Web-API-Routeneinschränkung](https://www.asp.net/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2#constraints) verwenden. Im folgenden C#-Funktionscode werden beide Parameter verwendet.
 
 ```csharp
-    public static Task<HttpResponseMessage> Run(HttpRequestMessage req, string category, int? id, 
-                                                    TraceWriter log)
-    {
-        if (id == null)
-           return  req.CreateResponse(HttpStatusCode.OK, $"All {category} items were requested.");
-        else
-           return  req.CreateResponse(HttpStatusCode.OK, $"{category} item with id = {id} has been requested.");
-    }
+public static Task<HttpResponseMessage> Run(HttpRequestMessage req, string category, int? id, 
+                                                TraceWriter log)
+{
+    if (id == null)
+        return  req.CreateResponse(HttpStatusCode.OK, $"All {category} items were requested.");
+    else
+        return  req.CreateResponse(HttpStatusCode.OK, $"{category} item with id = {id} has been requested.");
+}
 ```
 
 Dies ist der Node.js-Funktionscode zur Verwendung der gleichen Routenparameter.
 
 ```javascript
-    module.exports = function (context, req) {
+module.exports = function (context, req) {
 
-        var category = context.bindingData.category;
-        var id = context.bindingData.id;
+    var category = context.bindingData.category;
+    var id = context.bindingData.id;
 
-        if (!id) {
-            context.res = {
-                // status: 200, /* Defaults to 200 */
-                body: "All " + category + " items were requested."
-            };
-        }
-        else {
-            context.res = {
-                // status: 200, /* Defaults to 200 */
-                body: category + " item with id = " + id + " was requested."
-            };
-        }
+    if (!id) {
+        context.res = {
+            // status: 200, /* Defaults to 200 */
+            body: "All " + category + " items were requested."
+        };
+    }
+    else {
+        context.res = {
+            // status: 200, /* Defaults to 200 */
+            body: category + " item with id = " + id + " was requested."
+        };
+    }
 
-        context.done();
-    } 
+    context.done();
+} 
 ```
 
 Standardmäßig verfügen alle Funktionsrouten über das Präfix *api*. Sie können das Präfix auch mit der `http.routePrefix`-Eigenschaft in der Datei *host.json* anpassen oder entfernen. Im folgenden Beispiel wird das Routenpräfix *api* entfernt, indem in der Datei *host.json* eine leere Zeichenfolge als Präfix verwendet wird.
 
 ```json
-    {
-      "http": {
-        "routePrefix": ""
-      }
+{
+    "http": {
+    "routePrefix": ""
     }
+}
 ```
 
 Ausführliche Informationen zur Aktualisierung der Datei *host.json* für Ihre Funktion finden Sie unter [Aktualisieren von Funktionen-App-Dateien](functions-reference.md#fileupdate). 
@@ -209,7 +207,7 @@ Informationen zu anderen Eigenschaften, die Sie in der Datei *host.json* konfigu
 
 <a name="keys"></a>
 ## <a name="working-with-keys"></a>Arbeiten mit Schlüsseln
-HTTP-Trigger können Schlüssel nutzen, um für mehr Sicherheit zu sorgen. Ein standardmäßiger HTTP-Trigger kann diese als API-Schlüssel verwenden, sodass der Schlüssel in der Anforderung vorhanden sein muss. Webhooks können Schlüssel verwenden, um Anforderungen auf unterschiedliche Arten zu autorisieren, je nachdem, welche Methode vom Anbieter unterstützt wird.
+HTTP-Trigger ermöglichen die Verwendung von Schlüsseln zum Verbessern der Sicherheit. Ein standardmäßiger HTTP-Trigger kann diese als API-Schlüssel verwenden, sodass der Schlüssel in der Anforderung vorhanden sein muss. Webhooks können Schlüssel verwenden, um Anforderungen auf unterschiedliche Arten zu autorisieren, je nachdem, welche Methode vom Anbieter unterstützt wird.
 
 Schlüssel werden als Teil Ihrer Funktionen-App in Azure gespeichert und sind im Ruhezustand verschlüsselt. Um vorhandene Schlüssel anzuzeigen, neue Schlüssel zu erstellen oder Schlüsseln neue Werte zuzuweisen, navigieren Sie im Portal zu einer Ihrer Funktion, und wählen Sie „Verwalten“ aus. 
 
@@ -217,32 +215,28 @@ Es gibt zwei Arten von Schlüsseln:
 - **Hostschlüssel:** Diese Schlüssel werden von allen Funktionen innerhalb der Funktionen-App gemeinsam genutzt. Bei Verwendung als API-Schlüssel ermöglichen diese Zugriff auf jede Funktion in der Funktionen-App.
 - **Funktionsschlüssel**: Diese Schlüssel gelten nur für die Funktionen, für die sie definiert sind. Bei Verwendung als API-Schlüssel ermöglichen diese nur Zugriff auf diese spezielle Funktion.
 
-Jeder Schlüssel ist zu Referenzzwecken benannt. Auf Funktions- und Hostebene gibt es einen Standardschlüssel (mit dem Namen „default“). Der **Hauptschlüssel** ist ein Standardhostschlüssel namens „_master“, der für jede Funktionen-App definiert ist und nicht widerrufen werden kann. Er bietet administrativen Zugriff auf die Laufzeit-APIs. Bei Verwendung von `"authLevel": "admin"` in der Bindungs-JSON muss dieser Schlüssel in der Anforderung bereitgestellt werden. Jeder andere Schlüssel führt zu einem Autorisierungsfehler.
+Jeder Schlüssel ist zu Referenzzwecken benannt. Auf Funktions- und Hostebene gibt es einen Standardschlüssel (mit dem Namen „default“). Der **Hauptschlüssel** ist ein Standardhostschlüssel namens „_master“, der für jede Funktionen-App definiert ist. Dieser Schlüssel kann nicht widerrufen werden. Er bietet administrativen Zugriff auf die Laufzeit-APIs. Bei Verwendung von `"authLevel": "admin"` in der Bindungs-JSON muss dieser Schlüssel in der Anforderung bereitgestellt werden. Jeder andere Schlüssel führt zu einem Autorisierungsfehler.
 
-> [!NOTE]
-> Aufgrund der erhöhten Berechtigungen, die der Hauptschlüssel gewährt, sollten Sie diesen Schlüssel nicht für Dritte freigeben oder in nativen Clientanwendungen verteilen. Gehen Sie sehr umsichtig vor, wenn Sie die Autorisierungsstufe „Administrator“ auswählen.
-> 
-> 
+> [!IMPORTANT]  
+> Aufgrund der erhöhten Berechtigungen, die der Hauptschlüssel gewährt, sollten Sie diesen Schlüssel nicht für Dritte freigeben oder in nativen Clientanwendungen verteilen. Gehen Sie umsichtig vor, wenn Sie die Autorisierungsstufe „Administrator“ auswählen.
 
 ### <a name="api-key-authorization"></a>Autorisierung per API-Schlüssel
-Ein HTTP-Trigger erfordert standardmäßig einen API-Schlüssel in der HTTP-Anforderung. Ihre HTTP-Anforderung sieht normalerweise folgendermaßen aus:
+Ein HTTP-Trigger erfordert standardmäßig einen API-Schlüssel in der HTTP-Anforderung. Ihre HTTP-Anforderung sieht daher normalerweise wie folgt aus:
 
     https://<yourapp>.azurewebsites.net/api/<function>?code=<ApiKey>
 
 Der Schlüssel kann in einer Abfragezeichenfolgenvariablen namens `code` (wie oben zu sehen) oder in einem `x-functions-key`-HTTP-Header enthalten sein. Der Wert des Schlüssels kann ein beliebiger für die Funktion definierter Funktionsschlüssel oder ein beliebiger Hostschlüssel sein.
 
-Sie können Anforderungen ohne Schlüssel zulassen oder festlegen, dass der Hauptschlüssel verwendet werden muss. Ändern Sie zu diesem Zweck die `authLevel`-Eigenschaft in der Bindungs-JSON (siehe [HTTP-Trigger](#httptrigger)).
+Sie können anonyme Anforderungen zulassen, die keine Schlüssel erfordern. Sie können auch anfordern, dass der Hauptschlüssel verwendet wird. Zum Ändern der Standardautorisierungsstufe verwenden Sie die `authLevel`-Eigenschaft in der Bindungs-JSON. Weitere Informationen finden Sie unter [HTTP-Trigger](#httptrigger).
 
 ### <a name="keys-and-webhooks"></a>Schlüssel und Webhooks
-Die Webhookautorisierung wird von der Empfangskomponente für Webhooks verarbeitet, die zum HTTP-Trigger gehört. Der Mechanismus variiert je nach Webhooktyp. Für jeden Mechanismus wird allerdings ein Schlüssel benötigt. Standardmäßig wird der Funktionsschlüssel namens „default“ verwendet. Wenn Sie einen anderen Schlüssel verwenden möchten, müssen Sie den Webhookanbieter so konfigurieren, dass der Schlüsselname auf eine der folgenden Arten mit der Anforderung gesendet wird:
+Die Webhookautorisierung wird von der Empfangskomponente für Webhooks verarbeitet, die zum HTTP-Trigger gehört. Der Mechanismus variiert je nach Webhooktyp. Für jeden Mechanismus wird allerdings ein Schlüssel benötigt. Standardmäßig wird der Funktionsschlüssel namens „default“ verwendet. Um einen anderen Schlüssel zu verwenden, konfigurieren Sie den Webhookanbieter, sodass der Schlüsselname auf eine der folgenden Arten mit der Anforderung gesendet wird:
 
-- **Abfragezeichenfolge**: Der Anbieter übergibt den Schlüsselnamen im `clientid`-Abfragezeichenfolgenparameter (z.B. `https://<yourapp>.azurewebsites.net/api/<funcname>?clientid=<keyname>`).
+- **Abfragezeichenfolge**: Der Anbieter übergibt den Schlüsselnamen im `clientid`-Abfragezeichenfolgenparameter, z. B. `https://<yourapp>.azurewebsites.net/api/<funcname>?clientid=<keyname>`.
 - **Anforderungsheader**: Der Anbieter übergibt den Schlüsselnamen im `x-functions-clientid`-Header.
 
 > [!NOTE]
-> Funktionsschlüssel haben Vorrang vor Hostschlüsseln. Wenn zwei Schlüssel mit dem gleichen Namen definiert wurden, wird der Funktionsschlüssel verwendet.
-> 
-> 
+> Funktionsschlüssel haben Vorrang vor Hostschlüsseln. Wenn zwei Schlüssel mit dem gleichen Namen definiert wurden, wird immer der Funktionsschlüssel verwendet.
 
 
 <a name="httptriggersample"></a>
@@ -292,7 +286,8 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceW
 }
 ```
 
-Für die Bindung kann anstelle von `HttpRequestMessage` auch ein POCO verwendet werden. Dieses wird aus dem Hauptteil der Anforderung im JSON-Format extrahiert. Analog dazu kann ein Typ an die Ausgabebindung der HTTP-Antwort übergeben werden. Dies wird dann als Antwort mit dem Statuscode 200 zurückgegeben.
+Sie können anstelle von **HttpRequestMessage** auch an ein .NET-Objekt binden. Dieses Objekt wird aus dem Text der Anforderung im JSON-Format erstellt. Analog dazu kann ein Typ an die Ausgabebindung der HTTP-Antwort übergeben und zusammen mit dem Statuscode 200 als Antworttext zurückgegeben werden.
+
 ```csharp
 using System.Net;
 using System.Threading.Tasks;
@@ -332,7 +327,7 @@ let Run(req: HttpRequestMessage) =
     } |> Async.StartAsTask
 ```
 
-Sie benötigen eine `project.json`-Datei, die wie folgt mithilfe von NuGet auf die Assemblys `FSharp.Interop.Dynamic` und `Dynamitey` verweist:
+Sie benötigen eine Datei `project.json`, die wie folgt mithilfe von NuGet auf die Assemblys `FSharp.Interop.Dynamic` und `Dynamitey` verweist:
 
 ```json
 {
@@ -370,9 +365,7 @@ module.exports = function(context, req) {
     context.done();
 };
 ```
-
-
-
+     
 <a name="hooktriggersample"></a>
 ## <a name="webhook-samples"></a>Beispiele für Webhooks
 Angenommen, der folgende Webhooktrigger befindet sich im `bindings`-Array von „function.json“:

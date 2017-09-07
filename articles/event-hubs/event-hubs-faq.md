@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2017
 ms.author: sethm;shvija
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: e0e33882acc90130ef93cd66c3d57bb90f78ccee
+ms.translationtype: HT
+ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
+ms.openlocfilehash: e208e970de58505553802a4ed27d7f9da4070866
 ms.contentlocale: de-de
-ms.lasthandoff: 06/28/2017
-
+ms.lasthandoff: 08/28/2017
 
 ---
 
@@ -33,7 +32,7 @@ Im Standard-Tarif von Azure Event Hubs stehen Ihnen mehr Funktionen als im Basic
 * Längere Aufbewahrung von Ereignissen
 * Zusätzliche Brokerverbindungen (Bei Überschreitung der enthaltenen Anzahl fällt eine Zusatzgebühr an.)
 * Mehr als eine Consumergruppe
-* [Capture](https://docs.microsoft.com/azure/event-hubs/event-hubs-archive-overview)
+* [Capture](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview)
 
 Weitere Informationen zu Tarifen, u.a. für Event Hubs Dedicated, finden Sie unter [Event Hubs – Preisdetails](https://azure.microsoft.com/pricing/details/event-hubs/).
 
@@ -59,7 +58,7 @@ Es gibt ein Kontingent von 20 Durchsatzeinheiten pro Namespace. Sie können ein 
 Ja, solange sich alle Event Hubs im gleichen Namespace befinden.
 
 ### <a name="what-is-the-maximum-retention-period-for-events"></a>Was ist die maximale Beibehaltungsdauer für Ereignisse?
-Die Standard-Ebene für Event Hubs unterstützt derzeit einen maximalen Aufbewahrungszeitraum von 7 Tagen. Beachten Sie, dass Event Hubs nicht als dauerhafter Datenspeicher vorgesehen sind. Beibehaltungsdauern größer als 24 Stunden sind für Szenarien vorgesehen, in denen es praktisch ist, einen Stream von Ereignissen in die gleichen Systeme wiederzugeben, wenn Sie beispielsweise ein neues Computerlernmodell für vorhandene Daten trainieren oder überprüfen wollen. Wenn Sie Nachrichten länger als 7 Tage aufbewahren möchten, werden die Daten durch Aktivieren von [Event Hubs Capture](https://docs.microsoft.com/azure/event-hubs/event-hubs-archive-overview) in Ihrem Event Hub von Ihrem Event Hub per Pull in den von Ihnen gewünschten Speicher übertragen. Abhängig von Ihrer Durchsatzeinheit entstehen durch das aktivieren von „Capture“ Kosten.
+Die Standard-Ebene für Event Hubs unterstützt derzeit einen maximalen Aufbewahrungszeitraum von 7 Tagen. Beachten Sie, dass Event Hubs nicht als dauerhafter Datenspeicher vorgesehen sind. Beibehaltungsdauern größer als 24 Stunden sind für Szenarien vorgesehen, in denen es praktisch ist, einen Stream von Ereignissen in die gleichen Systeme wiederzugeben, wenn Sie beispielsweise ein neues Computerlernmodell für vorhandene Daten trainieren oder überprüfen wollen. Wenn Sie Nachrichten länger als sieben Tage aufbewahren möchten, werden die Daten durch Aktivieren von [Event Hubs Capture](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview) in Ihrem Event Hub von Ihrem Event Hub per Pull in das Storage-Konto oder das von Ihnen gewünschte Data Lake Service-Konto übertragen. Abhängig von Ihrer Durchsatzeinheit entstehen durch das aktivieren von „Capture“ Kosten.
 
 ### <a name="where-is-azure-event-hubs-available"></a>Wo steht Azure Event Hubs zur Verfügung?
 Azure Event Hubs ist in allen unterstützten Azure-Regionen verfügbar. Eine Liste finden Sie auf der Seite [Azure-Regionen](https://azure.microsoft.com/regions/).  

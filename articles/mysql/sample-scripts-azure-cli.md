@@ -6,16 +6,16 @@ author: jasonwhowell
 ms.author: jasonh
 manager: jhubbard
 editor: jasonwhowell
-ms.service: mysql-database
+ms.service: mysql
 ms.devlang: azure-cli
-ms.topic: article
+ms.topic: sample
 ms.custom: mvc
 ms.date: 05/10/2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: 53ec86dc9e9f9011b754b798e57d8caa40a0706a
+ms.translationtype: HT
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: 99915e40bc0c2cc94cf1fdd3115eba02ae57ab7f
 ms.contentlocale: de-de
-ms.lasthandoff: 05/26/2017
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="azure-cli-samples-for-azure-database-for-mysql"></a>Azure CLI-Beispiele für Azure-Datenbank für MySQL 
@@ -27,5 +27,7 @@ Die folgende Tabelle enthält Links zu Azure CLI-Beispielskripts für Azure Date
 | [Erstellen eines Servers und einer Firewallregel](./scripts/sample-create-server-and-firewall-rule.md?toc=%2fcli%2fazure%2ftoc.json) | Ein Azure CLI-Skript, das einen Azure-Datenbank für MySQL-Server erstellt und eine Firewallregel auf Serverebene konfiguriert. |
 |**Skalieren eines Servers**||
 | [Skalieren eines Servers](./scripts/sample-scale-server.md?toc=%2fcli%2fazure%2ftoc.json) | Ein Azure CLI-Skript, das einen einzelnen Azure-Datenbank für MySQL-Server hoch- oder herunterskaliert, um wechselnde Leistungsanforderungen zu erfüllen. |
+|**Ändern der Serverkonfigurationen**||
+| [Ändern der Serverkonfigurationen](./scripts/sample-change-server-configuration.md?toc=%2fcli%2fazure%2ftoc.json) | Ein Azure CLI-Skript, das Konfigurationen eines einzelnen Servers für Azure-Datenbank für MySQL ändert. |
 |||
 

@@ -16,10 +16,10 @@ ms.workload: big-data
 ms.date: 08/23/2017
 ms.author: larryfr
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: 5574a234076797852b32631b90bb563441bbc6e7
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 00f2ecbf0d8542741bd78dcfe2692e6627b1f3cd
 ms.contentlocale: de-de
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Erweitern von Azure HDInsight per Azure Virtual Network
@@ -214,6 +214,9 @@ Sie können den Netzwerkdatenverkehr in einem Azure Virtual Network mit den folg
 
 * Mit **Netzwerksicherheitsgruppen** (NSGs) können Sie ein- und ausgehenden Datenverkehr für das Netzwerk filtern. Weitere Informationen finden Sie im Dokument [Filtern des Netzwerkdatenverkehrs mit Netzwerksicherheitsgruppen](../virtual-network/virtual-networks-nsg.md).
 
+    > [!WARNING]
+    > HDInsight unterstützt keine Einschränkung des ausgehenden Datenverkehrs.
+
 * **Benutzerdefinierte Routen** (UDR) definieren, wie Datenverkehr zwischen Ressourcen im Netzwerk fließt. Weitere Informationen finden Sie im Dokument [Benutzerdefinierte Routen und IP-Weiterleitung](../virtual-network/virtual-networks-udr-overview.md).
 
 * **Virtuelle Netzwerkgeräte** replizieren die Funktionalität von Geräten, z.B. Firewalls und Routern. Weitere Informationen finden Sie im Dokument [Network Appliances](https://azure.microsoft.com/solutions/network-appliances).
@@ -228,7 +231,7 @@ Wenn Sie planen, **Netzwerksicherheitsgruppen** oder **benutzerdefinierte Routen
 
 1. Identifizieren Sie die Azure-Region, die Sie für HDInsight verwenden möchten.
 
-2. Identifizieren Sie die IP-Adressen, die für HDInsight erforderlich sind. Die IP-Adressen, die zugelassen werden sollten, sind spezifisch für die Region, in der sich der HDInsight-Cluster und die Virtual Network-Instanz befinden. Eine Liste mit den IP-Adressen nach Region finden Sie im Abschnitt [Für HDInsight erforderliche IP-Adressen](#hdinsight-ip).
+2. Identifizieren Sie die IP-Adressen, die für HDInsight erforderlich sind. Weitere Informationen finden Sie im Abschnitt [Für HDInsight erforderliche IP-Adressen](#hdinsight-ip).
 
 3. Erstellen oder ändern Sie die Netzwerksicherheitsgruppen oder benutzerdefinierten Routen für das Subnetz, in dem Sie HDInsight installieren möchten.
 
@@ -247,11 +250,14 @@ Die Tunnelerzwingung ist eine benutzerdefinierte Routingkonfiguration, bei der f
 
 ## <a id="hdinsight-ip"></a>Erforderliche IP-Adressen
 
-Die Azure-Integritäts- und Verwaltungsdienste müssen mit HDInsight kommunizieren können. Wenn Sie Netzwerksicherheitsgruppen oder benutzerdefinierte Routen verwenden, erlauben Sie Datenverkehr von den IP-Adressen für diese Dienste, HDInsight zu erreichen.
+> [!IMPORTANT]
+> Die Azure-Integritäts- und Verwaltungsdienste müssen mit HDInsight kommunizieren können. Wenn Sie Netzwerksicherheitsgruppen oder benutzerdefinierte Routen verwenden, erlauben Sie Datenverkehr von den IP-Adressen für diese Dienste, HDInsight zu erreichen.
+>
+> Wenn Sie zum Steuern des Datenverkehrs keine Netzwerksicherheitsgruppen oder benutzerdefinierte Routen verwenden, können Sie diesen Abschnitt ignorieren.
 
-Es gibt zwei Sätze von IP-Adressen:
+Wenn Sie Netzwerksicherheitsgruppen oder benutzerdefinierte Routen verwenden, müssen Sie Datenverkehr von den Integritäts- und Verwaltungsdiensten von Azure erlauben, HDInsight zu erreichen. Ermitteln Sie anhand der folgenden Schritte die IP-Adressen, die zugelassen werden müssen:
 
-* Ein __globaler__ Satz von vier IP-Adressen, die zugelassen werden müssen:
+1. Datenverkehr von den folgenden IP-Adressen muss immer zugelassen werden:
 
     | IP-Adresse | Zulässiger Port | Richtung |
     | ---- | ----- | ----- |
@@ -260,10 +266,10 @@ Es gibt zwei Sätze von IP-Adressen:
     | 168.61.48.131 | 443 | Eingehend |
     | 138.91.141.162 | 443 | Eingehend |
 
-* __Regionsspezifische__ IP-Adressen, die zugelassen werden müssen:
+2. Wenn sich Ihr HDInsight-Cluster in einer der folgenden Regionen befindet, müssen Sie Datenverkehr von den für die Region aufgeführten IP-Adressen zulassen:
 
     > [!IMPORTANT]
-    > Wenn die verwendete Azure-Region nicht aufgeführt ist, verwenden Sie nur die vier bereits genannten globalen IP-Adressen.
+    > Wenn die verwendete Azure-Region nicht aufgeführt ist, verwenden Sie nur die vier IP-Adressen aus Schritt 1.
 
     | Land | Region | Zulässige IP-Adressen | Zulässiger Port | Richtung |
     | ---- | ---- | ---- | ---- | ----- |
@@ -294,11 +300,7 @@ Es gibt zwei Sätze von IP-Adressen:
 
     Informationen zu den IP-Adressen, die für Azure Government verwendet werden, finden Sie im Dokument [Azure Government Intelligence + Analytics](https://docs.microsoft.com/azure/azure-government/documentation-government-services-intelligenceandanalytics) (Azure Government – Daten und Analyse)
 
-> [!WARNING]
-> HDInsight unterstützt keine Einschränkung des ausgehenden Datenverkehrs, nur des eingehenden Datenverkehrs.
-
-> [!IMPORTANT]
-> Wenn Sie für Ihr virtuelles Netzwerk einen benutzerdefinierten DNS-Server verwenden, müssen Sie auch den Zugriff über __168.63.129.16__ zulassen. Diese Adresse ist der rekursive Resolver von Azure. Weitere Informationen finden Sie im Dokument [Namensauflösung für virtuelle Computer und Rolleninstanzen](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
+3. Wenn Sie für Ihr virtuelles Netzwerk einen benutzerdefinierten DNS-Server verwenden, müssen Sie auch den Zugriff über __168.63.129.16__ zulassen. Diese Adresse ist der rekursive Resolver von Azure. Weitere Informationen finden Sie im Dokument [Namensauflösung für virtuelle Computer und Rolleninstanzen](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
 
 Weitere Informationen finden Sie im Abschnitt [Steuern des Netzwerkdatenverkehrs](#networktraffic).
 

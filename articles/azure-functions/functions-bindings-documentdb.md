@@ -4,7 +4,7 @@ description: Erfahren Sie, wie Azure Cosmos DB-Bindungen in Azure Functions verw
 services: functions
 documentationcenter: na
 author: christopheranderson
-manager: erikre
+manager: cfowler
 editor: 
 tags: 
 keywords: Azure Functions, Funktionen, Ereignisverarbeitung, dynamisches Compute, serverlose Architektur
@@ -14,13 +14,13 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 04/18/2016
+ms.date: 08/26/2017
 ms.author: glenga
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 2c0cb8ee1690f9b36b76c87247e3c7223876b269
+ms.translationtype: HT
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: fb79e2ad7514ae2cf48b9a5bd486e54b9b407bee
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="azure-functions-cosmos-db-bindings"></a>Cosmos DB-Bindungen in Azure Functions
@@ -39,16 +39,18 @@ Die DocumentDB-API-Eingabebindung ruft ein Cosmos DB-Dokument ab und übergibt e
 
 Die DocumentDB-API-Eingabebindung hat in *function.json* die folgenden Eigenschaften:
 
-- `name`: Bezeichnername, der im Funktionscode für das Dokument verwendet wird.
-- `type`: Muss auf „documentdb“ festgelegt werden.
-- `databaseName`: Die Datenbank mit dem Dokument.
-- `collectionName`: Die Sammlung mit dem Dokument.
-- `id`: Die ID des abzurufenden Dokuments. Diese Eigenschaft unterstützt Bindungsparameter. Siehe [Binden an benutzerdefinierten Eingabeeigenschaften in einem Bindungsausdruck](functions-triggers-bindings.md#bind-to-custom-input-properties-in-a-binding-expression) im Artikel [Konzepte für Azure Functions-Trigger und -Bindungen](functions-triggers-bindings.md).
-- `sqlQuery`: Eine SQL-Abfrage in Cosmos DB zum Abrufen mehrerer Dokumente. Die Abfrage unterstützt Bindungen zur Laufzeit. Beispiel: `SELECT * FROM c where c.departmentId = {departmentId}`
-- `connection`: Der Name der App-Einstellung mit Ihrer Cosmos DB-Verbindungszeichenfolge.
-- `direction`: Muss auf `"in"` festgelegt werden.
+|Eigenschaft  |Beschreibung  |
+|---------|---------|
+|**name**     | Der Name des Bindungsparameters, der das Dokument in der Funktion darstellt  |
+|**type**     | Muss auf `documentdb` festgelegt werden.        |
+|**databaseName** | Die Datenbank mit dem Dokument        |
+|**collectionName**  | Der Name der Sammlung mit dem Dokument |
+|**id**     | Die ID des abzurufenden Dokuments. Diese Eigenschaft unterstützt Bindungsparameter. Weitere Informationen finden Sie unter [Binden an benutzerdefinierte Eingabeeigenschaften in einem Bindungsausdruck](functions-triggers-bindings.md#bind-to-custom-input-properties-in-a-binding-expression). |
+|**sqlQuery**     | Eine SQL-Abfrage in Cosmos DB zum Abrufen mehrerer Dokumente. Die Abfrage unterstützt Bindungen zur Laufzeit wie in folgendem Beispiel: `SELECT * FROM c where c.departmentId = {departmentId}`.        |
+|**Verbindung**     |Der Name der App-Einstellung mit Ihrer Cosmos DB-Verbindungszeichenfolge        |
+|**direction**     | Muss auf `in` festgelegt werden.         |
 
-Die Eigenschaften `id` und `sqlQuery` können nicht beide angegeben werden. Wenn weder `id` noch `sqlQuery` festgelegt ist, wird die gesamte Sammlung abgerufen.
+Sie können nicht die Eigenschaft **id** und die Eigenschaft **sqlQuery** festlegen. Wenn keine von ihnen festgelegt ist, wird die gesamte Sammlung abgerufen.
 
 ## <a name="using-a-documentdb-api-input-binding"></a>Verwenden einer DocumentDB-API-Eingabebindung
 
@@ -180,18 +182,20 @@ module.exports = function (context, input) {
 ## <a id="docdboutput"></a>DocumentDB-API-Ausgabebindung
 Die DocumentDB-API-Ausgabebindung ermöglicht das Schreiben eines neuen Dokuments in eine Azure Cosmos DB-Datenbank. Sie hat in *function.json* die folgenden Eigenschaften:
 
-- `name`: Bezeichner, der im Funktionscode für das neue Dokument verwendet wird.
-- `type`: Muss auf `"documentdb"` festgelegt werden.
-- `databaseName`: Datenbank mit der Sammlung, in der das neue Dokument erstellt wird.
-- `collectionName`: Sammlung, in der das neue Dokument erstellt wird.
-- `createIfNotExists`: Boolescher Wert, der angibt, ob die Sammlung erstellt werden soll, wenn sie nicht vorhanden ist. Die Standardeinstellung ist *false*. Der Grund hierfür ist, dass Sammlungen mit reserviertem Durchsatz erstellt werden, was sich auf den Preis auswirkt. Weitere Informationen finden Sie in der [Preisübersicht](https://azure.microsoft.com/pricing/details/documentdb/).
-- `connection`: Der Name der App-Einstellung mit Ihrer Cosmos DB-Verbindungszeichenfolge.
-- `direction`: Muss auf `"out"` festgelegt werden.
+|Eigenschaft  |Beschreibung  |
+|---------|---------|
+|**name**     | Der Name des Bindungsparameters, der das Dokument in der Funktion darstellt  |
+|**type**     | Muss auf `documentdb` festgelegt werden.        |
+|**databaseName** | Die Datenbank mit der Sammlung, in der das neue Dokument erstellt wird     |
+|**collectionName**  | Der Name der Sammlung, in der das neue Dokument erstellt wird |
+|**createIfNotExists**     | Ein boolescher Wert, der angibt, ob die Sammlung erstellt werden soll, wenn sie nicht vorhanden ist. Die Standardeinstellung ist *false*. Das liegt daran, dass neue Sammlungen mit reserviertem Durchsatz erstellt werden. Dies wirkt sich auf die Kosten aus. Weitere Informationen finden Sie in der [Preisübersicht](https://azure.microsoft.com/pricing/details/documentdb/).  |
+|**Verbindung**     |Der Name der App-Einstellung mit Ihrer Cosmos DB-Verbindungszeichenfolge        |
+|**direction**     | Muss auf `out` festgelegt werden.         |
 
 ## <a name="using-a-documentdb-api-output-binding"></a>Verwenden einer DocumentDB-API-Ausgabebindung
 Dieser Abschnitt veranschaulicht die Verwendung Ihrer DocumentDB-API-Ausgabebindung in Ihrem Funktionscode.
 
-Beim Schreiben in den Ausgabeparameter in Ihrer Funktion wird standardmäßig ein neues Dokument mit einer automatisch generierten GUID als Dokument-ID in Ihrer Datenbank erstellt. Sie können die Dokument-ID des Ausgabedokument angeben, indem Sie im Ausgabeparameter die JSON-Eigenschaft `id` festlegen. 
+Standardmäßig wird beim Schreiben in den Ausgabeparameter in Ihrer Funktion ein Dokument in der Datenbank erstellt. Dieses Dokument besitzt eine automatisch generierte GUID als Dokument-ID. Sie können die Dokument-ID des Ausgabedokuments angeben, indem Sie die `id`-Eigenschaft im JSON-Objekt angeben, das an den Ausgabeparameter übergeben wird. 
 
 >[!Note]  
 >Wenn Sie die ID eines vorhandenen Dokuments angeben, wird dieses vom neuen Ausgabedokument überschrieben. 

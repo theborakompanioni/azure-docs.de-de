@@ -14,21 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 04/25/2017
+ms.date: 08/17/2017
 ms.author: jgao
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
-ms.openlocfilehash: ab463eac7eba2b0abf2da7b2ae56b6e2c05baefb
+ms.translationtype: HT
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: da1247070ade11f78b505524f5e970e18eb16d10
 ms.contentlocale: de-de
-ms.lasthandoff: 06/13/2017
-
+ms.lasthandoff: 08/24/2017
 
 ---
 # <a name="fix-a-hive-out-of-memory-error-in-azure-hdinsight"></a>Beheben eines Fehlers vom Typ „Nicht genügend Hive-Arbeitsspeicher“ in Azure HDInsight
 
 Erfahren Sie, wie Sie einen Fehler vom Typ „Nicht genügend Hive-Arbeitsspeicher“, der beim Verarbeiten großer Tabellen auftreten kann, durch Konfigurieren der Hive-Arbeitsspeichereinstellungen beheben.
 
-## <a name="scenario-run-a-hive-query-against-large-tables"></a>Szenario: Ausführen einer Hive-Abfrage für große Tabellen
+## <a name="run-hive-query-against-large-tables"></a>Ausführen einer Hive-Abfrage für große Tabellen
 
 Ein Kunde hat die folgende Hive-Abfrage ausgeführt:
 
@@ -124,10 +123,6 @@ Da ein D12-Computer über einen Arbeitsspeicher von 28 GB verfügt, haben wir be
 
 Mit den neuen Einstellungen wurde die Abfrage in weniger als 10 Minuten erfolgreich ausgeführt.
 
-## <a name="conclusion-oom-errors-and-container-size"></a>Schlussfolgerung: OOM-Fehler und Containergröße
-
-Eine OOM-Fehlermeldung zu erhalten, bedeutet nicht unbedingt, dass der Container zu klein ist. Konfigurieren Sie stattdessen die Einstellungen für den Arbeitsspeicher, sodass die Heapgröße erhöht wird und mindestens 80 % der Größe des Containerspeichers entspricht.
-
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Informationen zum Optimieren von Hive-Abfragen finden Sie unter [Optimieren von Hive-Abfragen für Hadoop in HDInsight](hdinsight-hadoop-optimize-hive-query.md).
+Eine OOM-Fehlermeldung zu erhalten, bedeutet nicht unbedingt, dass der Container zu klein ist. Konfigurieren Sie stattdessen die Einstellungen für den Arbeitsspeicher, sodass die Heapgröße erhöht wird und mindestens 80 % der Größe des Containerspeichers entspricht. Informationen zum Optimieren von Hive-Abfragen finden Sie unter [Optimieren von Hive-Abfragen für Hadoop in HDInsight](hdinsight-hadoop-optimize-hive-query.md).

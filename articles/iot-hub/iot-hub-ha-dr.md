@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/16/2016
+ms.date: 08/29/2017
 ms.author: elioda
-translationtype: Human Translation
-ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
-ms.openlocfilehash: 76c3187549e1821908263c30e394db26ee6f75e6
-
+ms.translationtype: HT
+ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
+ms.openlocfilehash: b3ca2ed90dd14350d3962a558aaac41f2e007bbd
+ms.contentlocale: de-de
+ms.lasthandoff: 08/30/2017
 
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>Hohe Verfügbarkeit und Notfallwiederherstellung von IoT Hub
@@ -38,7 +39,7 @@ Zusätzlich zur Hochverfügbarkeit zwischen Regionen implementiert IoT Hub Failo
 ## <a name="regional-failover-with-iot-hub"></a>Regionales Failover mit IoT Hub
 Eine ausführliche Erläuterung von Bereitstellungstopologien in IoT-Lösungen würde den Rahmen dieses Artikels sprengen. In diesem Artikel wird das Bereitstellungsmodell für das *regionale Failover* zur Erzielung von Notfallwiederherstellung und hoher Verfügbarkeit behandelt.
 
-Bei einem Modell für regionales Failover wird das Back-End der Lösung hauptsächlich an einem einzelnen Datencenterstandort ausgeführt, und ein sekundärer IoT-Hub und ein Back-End werden in einer anderen Datencenterregion bereitgestellt. Folgendes gilt, wenn der IoT Hub im primären Rechenzentrum ausfällt oder die Netzwerkverbindung des Geräts mit dem primären Datencenter unterbrochen wird. Geräte nutzen jeweils einen sekundären Dienstendpunkt, wenn das primäre Gateway nicht erreichbar ist. Mit einer regionsübergreifenden Failoverfunktion kann die Lösungsverfügbarkeit über die hohe Verfügbarkeit einer einzelnen Region hinweg verbessert werden.
+Bei einem Modell für regionales Failover wird das Back-End der Lösung hauptsächlich an einem einzelnen Datencenterstandort ausgeführt, und ein sekundärer IoT-Hub und ein Back-End werden in einer anderen Datencenterregion bereitgestellt. Wenn die IoT Hub-Einheit im primären Datencenter ausfällt oder die Netzwerkverbindung des Geräts mit dem primären Datencenter unterbrochen wird, nutzen Geräte jeweils einen sekundären Dienstendpunkt, wenn das primäre Gateway nicht erreichbar ist. Mit einer regionsübergreifenden Failoverfunktion kann die Lösungsverfügbarkeit über die hohe Verfügbarkeit einer einzelnen Region hinweg verbessert werden.
 
 Sie benötigen im Allgemeinen Folgendes, um ein Modell für regionales Failover mit IoT Hub zu implementieren:
 
@@ -59,9 +60,4 @@ Folgen Sie diesen Links, um mehr über Azure IoT Hub zu erfahren:
 
 [lnk-get-started]: iot-hub-csharp-csharp-getstarted.md
 [What is Azure IoT Hub?]: iot-hub-what-is-iot-hub.md
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

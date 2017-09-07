@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 04/21/2017
+ms.date: 08/28/2017
 ms.author: nitinme
-translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: c20f5c39b00992d801909c8e5de292f3c2f12673
-ms.lasthandoff: 04/22/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: f10bc67e4ee814d5aa0accff1a3dc1426b818084
+ms.contentlocale: de-de
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="end-user-authentication-with-data-lake-store-using-azure-active-directory"></a>Authentifizierung von Endbenutzern bei Data Lake Store mithilfe von Azure Active Directory
@@ -35,7 +35,7 @@ Azure Data Lake Store verwendet Azure Active Directory für die Authentifizierun
 
 Bei beiden Optionen erhält Ihre Anwendung ein OAuth 2.0-Token, das an jede an Azure Data Lake Store oder Azure Data Lake Analytics gestellte Anforderung angefügt wird.
 
-Dieser Artikel erläutert, wie Sie eine **native Azure AD-Anwendung für die Authentifizierung von Endbenutzern** erstellen. Für Anweisungen zur Konfiguration von Azure AD-Anwendungen für die Dienst-zu-Dienst-Authentifizierung gehen Sie auf die Seite [Authentifizieren bei Data Lake Store mithilfe von Azure Active Directory](data-lake-store-authenticate-using-active-directory.md).
+Dieser Artikel erläutert, wie Sie eine **native Azure AD-Anwendung für die Authentifizierung von Endbenutzern** erstellen. Anweisungen zur Konfiguration von Azure AD-Anwendungen für die Dienst-zu-Dienst-Authentifizierung finden Sie unter [Dienst-zu-Dienst-Authentifizierung mit Data Lake Store mithilfe von Azure Active Directory](data-lake-store-authenticate-using-active-directory.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * Ein Azure-Abonnement. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
@@ -44,14 +44,14 @@ Dieser Artikel erläutert, wie Sie eine **native Azure AD-Anwendung für die Aut
   
     ![Abrufen der Abonnement-ID](./media/data-lake-store-end-user-authenticate-using-active-directory/get-subscription-id.png)
 
-* Der Name Ihrer Azure AD-Domäne. Diesen können Sie bestimmen, indem Sie den Mauszeiger über dem rechten oberen Bereich im Azure-Portal bewegen. Im Screenshot unten lautet der Domänenname **contoso.onmicrosoft.com**, und die GUID in Klammern stellt die Mandanten-ID dar. 
+* Der Name Ihrer Azure AD-Domäne. Diese können Sie abrufen, indem Sie den Mauszeiger über den rechten oberen Bereich im Azure-Portal bewegen. Im Screenshot unten lautet der Domänenname **contoso.onmicrosoft.com**, und die GUID in Klammern stellt die Mandanten-ID dar. 
   
     ![Abrufen der AAD-Domäne](./media/data-lake-store-end-user-authenticate-using-active-directory/get-aad-domain.png)
 
 ## <a name="end-user-authentication"></a>Authentifizierung von Endbenutzern
 Dieser Ansatz wird empfohlen, wenn sich ein Endbenutzer über Azure AD bei Ihrer Anwendung anmelden soll. Die Anwendung kann dann mit der gleichen Zugriffsstufe wie der angemeldete Endbenutzer auf Azure-Ressourcen zugreifen. Ihre Endbenutzer müssen ihre Anmeldeinformationen in regelmäßigen Abständen eingeben, um weiter Zugriff zu haben.
 
-Das Ergebnis der Endbenutzeranmeldung ist, dass Ihre Anwendung über ein Zugriffs- und ein Aktualisierungstoken verfügt. Das Zugriffstoken wird an jede an Data Lake Store oder Data Lake Analytics gestellte Anforderung angefügt und ist standardmäßig eine Stunde gültig. Mithilfe des Aktualisierungstokens kann ein neues Zugriffstoken abgerufen werden, das bei regelmäßiger Nutzung standardmäßig bis zu zwei Wochen gültig ist. Es gibt zwei Ansätze für die Anmeldung von Endbenutzern.
+Das Ergebnis der Endbenutzeranmeldung ist, dass Ihre Anwendung über ein Zugriffs- und ein Aktualisierungstoken verfügt. Das Zugriffstoken wird an jede an Data Lake Store oder Data Lake Analytics gestellte Anforderung angefügt und ist standardmäßig eine Stunde gültig. Mithilfe des Aktualisierungstokens kann ein neues Zugriffstoken abgerufen werden, das standardmäßig bis zu zwei Wochen gültig ist. Es gibt zwei Ansätze für die Anmeldung von Endbenutzern.
 
 ### <a name="using-the-oauth-20-pop-up"></a>Verwenden des OAuth 2.0-Popupfensters
 Ihre Anwendung kann das Einblenden eines OAuth 2.0-Autorisierungsfensters auslösen, in das Endbenutzer ihre Anmeldeinformationen eingeben können. Dieses Popupfenster funktioniert auch mit dem zweistufigen Authentifizierungsprozess von Azure AD. 
@@ -65,7 +65,7 @@ Ihre Anwendung kann das Einblenden eines OAuth 2.0-Autorisierungsfensters auslö
 Ihre Anwendung kann Azure AD Benutzeranmeldeinformationen direkt bereitstellen. Diese Methode funktioniert nur mit Benutzerkonten mit Organisations-ID. Sie ist nicht kompatibel mit persönlichen bzw. Live ID-Benutzerkonten, die beispielsweise auf @outlook.com oder @live.com enden. Darüber hinaus ist diese Methode nicht kompatibel mit Benutzerkonten, die die zweistufige Authentifizierung von Azure AD benötigen.
 
 ### <a name="what-do-i-need-to-use-this-approach"></a>Was brauche ich, um diesen Ansatz zu befolgen?
-* Name Ihrer Azure AD-Domäne Dieser ist bereits in den in diesem Artikel angegebenen Voraussetzungen aufgeführt.
+* Name Ihrer Azure AD-Domäne Diese Anforderung ist bereits in den in diesem Artikel angegebenen Voraussetzungen aufgeführt.
 * **Native Azure AD-Anwendung**
 * Anwendungs-ID für die native Azure AD-Anwendung
 * Umleitungs-URI für die native Azure AD-Anwendung
@@ -76,7 +76,7 @@ Ihre Anwendung kann Azure AD Benutzeranmeldeinformationen direkt bereitstellen. 
 
 Erstellen und Konfigurieren Sie eine native Azure AD-Anwendung für die Authentifizierung von Endbenutzern mit Azure Data Lake Store mithilfe von Azure Active Directory. Anweisungen finden Sie unter [Erstellen einer Azure AD-Anwendung](../azure-resource-manager/resource-group-create-service-principal-portal.md).
 
-Wenn Sie die Anweisungen in diesem Link befolgen, stellen Sie sicher, dass Sie beim Typ der Anwendung **Nativ** auswählen, wie auf dem folgenden Screenshot gezeigt.
+Wenn Sie die Anweisungen unter diesem Link befolgen, stellen Sie sicher, dass Sie als Typ der Anwendung **Nativ** auswählen, wie auf dem folgenden Screenshot gezeigt:
 
 ![Erstellen einer Webanwendung](./media/data-lake-store-end-user-authenticate-using-active-directory/azure-active-directory-create-native-app.png "Erstellen einer nativen Anwendung")
 
@@ -86,7 +86,7 @@ Erfahren Sie unter [Abrufen der Anwendungs-ID](../azure-resource-manager/resourc
 
 Führen Sie folgende Schritte aus, um den Umleitungs-URI abzurufen.
 
-1. Wählen Sie im Azure-Portal **Azure Active Directory** aus, klicken Sie auf **App-Registrierungen**, suchen Sie die native Azure AD-Anwendung, die Sie gerade erstellt haben, und klicken Sie darauf.
+1. Wählen Sie im Azure-Portal **Azure Active Directory** aus, klicken Sie auf **App-Registrierungen**, suchen Sie die erstellte native Azure AD-Anwendung, und klicken Sie darauf.
 
 2. Klicken Sie auf dem Blatt **Einstellungen** der Anwendung auf **Umleitungs-URIs**.
 
@@ -97,15 +97,15 @@ Führen Sie folgende Schritte aus, um den Umleitungs-URI abzurufen.
 
 ## <a name="step-3-set-permissions"></a>Schritt 3: Legen Sie Berechtigungen fest
 
-1. Wählen Sie im Azure-Portal **Azure Active Directory** aus, klicken Sie auf **App-Registrierungen**, suchen Sie die native Azure AD-Anwendung, die Sie gerade erstellt haben, und klicken Sie darauf.
+1. Wählen Sie im Azure-Portal **Azure Active Directory** aus, klicken Sie auf **App-Registrierungen**, suchen Sie die erstellte native Azure AD-Anwendung, und klicken Sie darauf.
 
 2. Klicken Sie auf dem Blatt **Einstellungen** der Anwendung auf **Erforderliche Berechtigungen**, und klicken Sie auf **Hinzufügen**.
 
-    ![CLIENT-ID](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-1.png)
+    ![Client-ID](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-1.png)
 
 3. Klicken Sie auf dem Blatt **API-Zugriff hinzufügen** auf **Hiermit wählen Sie eine API aus**, klicken Sie auf **Azure Data Lake** und anschließend auf **Auswählen**.
 
-    ![CLIENT-ID](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-2.png)
+    ![Client-ID](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-2.png)
  
 4.  Klicken Sie auf dem Blatt **API-Zugriff hinzufügen** auf **Berechtigungen auswählen**, aktivieren Sie das Kontrollkästchen, um **Data Lake Store vollen Zugriff zu gewähren**, und klicken Sie auf **Auswählen**.
 

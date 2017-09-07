@@ -14,13 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 08/24/2017
 ms.author: nitinme
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 97414ee55663662fb40a91b930d61634c83e30fa
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 19cb8f436fa4d86f323013a5d4b3b50bf6c80a1a
 ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="use-azure-toolkit-for-intellij-to-create-spark-applications-for-an-hdinsight-cluster"></a>Erstellen von Spark-Anwendungen für einen HDInsight-Cluster mit dem Azure Toolkit für IntelliJ
@@ -172,15 +172,6 @@ Installationsanweisungen finden Sie unter [Installieren des Azure-Toolkits für 
 ## <a name="run-or-debug-a-spark-scala-application-on-an-hdinsight-spark-cluster"></a>Ausführen oder Debuggen einer Spark Scala-Anwendung in einem HDInsight Spark-Cluster
 Es wird noch eine andere Möglichkeit der Übermittlung von Spark Anwendungen an den Cluster empfohlen. Dazu werden die Parameter in der IDE **Run/Debug Configurations** (Ausführen/Debugkonfigurationen) festgelegt. Weitere Informationen finden Sie unter [Remotedebuggen von Spark-Anwendungen in einem HDInsight-Cluster mit dem Azure-Toolkit für IntelliJ über SSH](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-apache-spark-intellij-tool-debug-remotely-through-ssh).
 
-## <a name="choose-azure-data-lake-store-as-spark-scala-application-storage"></a>Auswählen von Azure Data Lake Store als Spark Scala-Anwendungsspeicher
-Um die Anwendung an Azure Data Lake Store zu übermitteln, wählen Sie während des Azure-Anmeldeprozesses den Modus **Interaktiv** aus. 
-
-![Option „Interaktiv“ bei der Anmeldung](./media/hdinsight-apache-spark-intellij-tool-plugin/authentication-interactive.png)
-
-Bei Auswahl von **Automatisiert** erhalten Sie den folgenden Fehler:
-
-![Anmeldefehler](./media/hdinsight-apache-spark-intellij-tool-plugin/authentication-error.png)
-
 ## <a name="access-and-manage-hdinsight-spark-clusters-by-using-azure-toolkit-for-intellij"></a>Zugreifen auf und Verwalten von HDInsight Spark-Clustern mit dem Azure-Toolkit für IntelliJ
 Sie können mit dem Azure-Toolkit für IntelliJ verschiedene Vorgänge durchführen.
 
@@ -306,6 +297,13 @@ Diese Fehler treten auf, weil die Heapgröße für die Ausführung von Spark nic
     -Xms128m -Xmx512m -XX:MaxPermSize=300m -ea
 
 ![Hinzufügen von Optionen zum Feld „VM options“ (VM-Optionen) in IntelliJ](./media/hdinsight-apache-spark-intellij-tool-plugin/change-heap-size.png)
+
+## <a name="faq"></a>Häufig gestellte Fragen
+Um die Anwendung an Azure Data Lake Store zu übermitteln, wählen Sie während des Azure-Anmeldeprozesses den Modus **Interaktiv** aus. Bei Auswahl von **Automatisiert** tritt unter Umständen ein Fehler auf.
+
+![Interaktiv (Anmeldung)](./media/hdinsight-apache-spark-intellij-tool-plugin/interative-signin.png)
+
+Nun wurde er behoben. Sie können einen Azure Data Lake-Cluster zum Übermitteln Ihrer Anwendung mit jeder Anmeldemethode auswählen.
 
 ## <a name="feedback-and-known-issues"></a>Feedback und bekannte Probleme
 Derzeit wird die direkte Anzeige von Spark-Ausgaben nicht unterstützt.

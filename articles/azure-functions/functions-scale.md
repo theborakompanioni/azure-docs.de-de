@@ -4,7 +4,7 @@ description: "Erfahren Sie, wie sich Azure Functions skalieren lässt, um die An
 services: functions
 documentationcenter: na
 author: lindydonna
-manager: erikre
+manager: cfowler
 editor: 
 tags: 
 keywords: Azure Functions, Functions, Ereignisverarbeitung, Webhooks, dynamisches Compute, serverlose Architektur
@@ -15,14 +15,13 @@ ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 06/12/2017
-ms.author: donnam, glenga
+ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
-ms.openlocfilehash: 5131a432a5de26ed1fc82005446d101d3094ef8b
+ms.translationtype: HT
+ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
+ms.openlocfilehash: 0e677fb35279d155241a95cd5f33b63e8294fad2
 ms.contentlocale: de-de
-ms.lasthandoff: 06/23/2017
-
+ms.lasthandoff: 08/30/2017
 
 ---
 # <a name="azure-functions-consumption-and-app-service-plans"></a>Verbrauchs- und App Service-Pläne für Azure Functions 
@@ -61,9 +60,10 @@ In einem App Service-Plan werden Ihre Funktions-Apps ähnlich wie Web-Apps auf d
 
 Entscheiden Sie sich in den folgenden Fällen für einen App Service-Plan:
 - Sie verfügen über nicht ausgelastete virtuelle Computer, auf denen bereits andere App Service-Instanzen ausgeführt werden.
-- Sie gehen davon aus, dass Ihre Funktionen-Apps kontinuierlich oder nahezu kontinuierlich ausgeführt werden.
+- Sie gehen davon aus, dass Ihre Funktionen-Apps kontinuierlich oder nahezu kontinuierlich ausgeführt werden. In diesem Fall kann ein App Service-Plan kostengünstiger sein.
 - Sie benötigen weitere CPU- oder Arbeitsspeicheroptionen zusätzlich zu den für den Verbrauchsplan bereitgestellten.
 - Sie benötigen eine längere Ausführungsdauer als die für den Verbrauchsplan zulässige Höchstdauer.
+- Sie benötigen Funktionen, die nur mit einem App Service-Plan verfügbar sind, etwa Unterstützung für App Service-Umgebung, VNET/VPN-Konnektivität und größere virtuelle Computer. 
 
 Mit einem virtuellen Computer werden Kosten von der Laufzeit und der Arbeitsspeichergröße entkoppelt. Daher wird Ihnen nicht mehr berechnet als die Kosten für die VM-Instanz, die Sie belegen. Weitere Informationen zur Funktionsweise von App Service-Plänen finden Sie unter [Azure App Service-Pläne – Detaillierte Übersicht](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md). 
 
@@ -81,7 +81,7 @@ Always On ist nur bei einem App Service-Plan verfügbar. Bei einem Verbrauchspla
 
 Sowohl bei einem Verbrauchs- als auch bei einem App Service-Plan erfordert eine Funktions-App ein Azure Storage-Konto, das Blob, Queue und Table Storage unterstützt. Intern verwendet Azure Functions Azure Storage für Vorgänge wie das Verwalten von Triggern und Ausführungen von Protokollierfunktionen. Manche Speicherkonten unterstützen keine Warteschlangen und Tabellen, wie z.B. reine Blobspeicherkonten (darunter Storage Premium) und allgemeine Speicherkonten mit zonenredundanter Speicherreplikation. Diese Konten werden aus dem Blatt **Speicherkonto** herausgefiltert, wenn Sie eine Funktions-App erstellen.
 
-Weitere Informationen zu Speicherkontentypen finden Sie unter [Einführung in die Azure Storage-Dienste](../storage/storage-introduction.md#introducing-the-azure-storage-services).
+Weitere Informationen zu Speicherkontentypen finden Sie unter [Einführung in die Azure Storage-Dienste](../storage/common/storage-introduction.md#introducing-the-azure-storage-services).
 
 ## <a name="how-the-consumption-plan-works"></a>Funktionsweise des Verbrauchsplans
 

@@ -12,20 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/28/2017
+ms.date: 08/21/2017
 ms.author: sethm;darosa
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: 748031e4177dea1b8a2dbf2f9a4e4d5aea1a0981
+ms.translationtype: HT
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: c4fd365ec8eeb389f0df9f53cd2f2a18f4c9b52a
 ms.contentlocale: de-de
-ms.lasthandoff: 07/04/2017
-
+ms.lasthandoff: 08/29/2017
 
 ---
 
 # <a name="azure-event-hubs-capture"></a>Azure Event Hubs Capture
 
-Azure Event Hubs Capture ermöglicht Ihnen das automatische Streaming von Daten in Event Hubs an ein Blob-Speicherkonto Ihrer Wahl. Um für mehr Flexibilität zu sorgen, ist dabei die Angabe eines Zeit- oder Größenintervalls möglich. Das Einrichten von Capture geht schnell, für das Ausführen fallen keine Verwaltungskosten an, und die Skalierung erfolgt automatisch mit den [Event Hub-Durchsatzeinheiten](event-hubs-features.md#capacity). Event Hubs Capture ist die einfachste Möglichkeit zum Laden von Streamingdaten in Azure und ermöglicht es Ihnen, sich auf die Datenverarbeitung anstatt auf die Datenerfassung zu konzentrieren.
+Azure Event Hubs Capture ermöglicht Ihnen die automatische Übermittlung von Streamingdaten in Event Hubs an ein [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/)- oder [Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/)-Konto Ihrer Wahl. Um für mehr Flexibilität zu sorgen, ist dabei die Angabe eines Zeit- oder Größenintervalls möglich. Das Einrichten von Capture geht schnell, für das Ausführen fallen keine Verwaltungskosten an, und die Skalierung erfolgt automatisch mit den [Event Hub-Durchsatzeinheiten](event-hubs-features.md#capacity). Event Hubs Capture ist die einfachste Möglichkeit zum Laden von Streamingdaten in Azure und ermöglicht es Ihnen, sich auf die Datenverarbeitung anstatt auf die Datenerfassung zu konzentrieren.
 
 Event Hubs Capture ermöglicht Ihnen das Verarbeiten von Echtzeitpipelines und batchbasierten Pipelines für den gleichen Datenstrom. Dies bedeutet, dass Sie Lösungen erstellen können, die im Laufe der Zeit gemäß Ihren veränderten Anforderungen mitwachsen. Ob Sie gerade batchbasierte Systeme mit Blick auf zukünftige Echtzeitverarbeitung erstellen oder einer vorhandenen Echtzeitlösung effiziente kalte Daten hinzufügen möchten – Event Hubs Capture erleichtert Ihnen das Arbeiten mit Streamingdaten.
 
@@ -33,13 +32,13 @@ Event Hubs Capture ermöglicht Ihnen das Verarbeiten von Echtzeitpipelines und b
 
 Event Hubs ist ein beständiger Puffer mit zeitbasierter Speicherung für Telemetrieeingänge, vergleichbar mit einem verteilten Protokoll. Der Schlüssel zur Skalierung in Event Hubs ist das [partitionierte Consumermodell](event-hubs-features.md#partitions). Jede Partition ist ein unabhängiges Datensegment und wird unabhängig genutzt. Mit der Zeit werden diese Daten basierend auf der konfigurierbaren Beibehaltungsdauer ersetzt. Daher kann ein Event Hub nie „zu voll“ werden.
 
-Mit Event Hubs Capture können Sie Ihr eigenes Azure Blob Storage-Konto und einen Container festlegen, der zum Speichern der archivierten Daten verwendet wird. Dieses Konto kann sich in der gleichen Region wie Ihr Event Hub oder in einer anderen Region befinden, um die Flexibilität von Event Hubs Capture zu erhöhen.
+Mit Event Hubs Capture können Sie zum Speichern der erfassten Daten ein eigenes Azure Blob Storage-Konto und einen Container bzw. ein Azure Data Lake Store-Konto angeben. Diese Konten können sich in der gleichen Region wie Ihr Event Hub oder in einer anderen Region befinden, um die Flexibilität von Event Hubs Capture zu erhöhen.
 
 Erfasste Daten werden im [Apache Avro][Apache Avro]-Format geschrieben. Hierbei handelt es sich um ein kompaktes, schnelles, binäres Format, das umfangreiche Datenstrukturen mit Inlineschema bietet. Dieses Format wird häufig im Hadoop-Ökosystem, von Stream Analytics und von Azure Data Factory verwendet. Weitere Informationen zum Arbeiten mit Avro finden Sie weiter unten in diesem Artikel.
 
 ### <a name="capture-windowing"></a>Capture-Fenster
 
-Event Hubs Capture ermöglicht Ihnen das Einrichten eines Fensters zur Steuerung der Archivierung. Dieses Fenster ist eine Konfiguration mit Mindestgröße und -zeit, für die das Prinzip „First wins“ gilt. Dies bedeutet, dass der erste Trigger, der auftritt, zu einem Erfassungsvorgang führt. Wenn Sie ein Erfassungsfenster von 15 Minuten und mit 100 MB verwenden und 1 MB/s senden, wird das Größenfenster vor dem Zeitfenster ausgelöst. Jede Partition wird unabhängig erfasst und schreibt zum Erfassungszeitpunkt einen abgeschlossenen Blockblob. Dieser wird nach dem Zeitpunkt benannt, zu dem das Erfassungsintervall aufgetreten ist. Die Namenskonvention für die Speicherung lautet wie folgt:
+Event Hubs Capture ermöglicht Ihnen das Einrichten eines Fensters zur Steuerung der Erfassung. Dieses Fenster ist eine Konfiguration mit Mindestgröße und -zeit, für die das Prinzip „First wins“ gilt. Dies bedeutet, dass der erste Trigger, der auftritt, zu einem Erfassungsvorgang führt. Wenn Sie ein Erfassungsfenster von 15 Minuten und mit 100 MB verwenden und 1 MB/s senden, wird das Größenfenster vor dem Zeitfenster ausgelöst. Jede Partition wird unabhängig erfasst und schreibt zum Erfassungszeitpunkt einen abgeschlossenen Blockblob. Dieser wird nach dem Zeitpunkt benannt, zu dem das Erfassungsintervall aufgetreten ist. Die Namenskonvention für die Speicherung lautet wie folgt:
 
 ```
 [namespace]/[event hub]/[partition]/[YYYY]/[MM]/[DD]/[HH]/[mm]/[ss]
@@ -58,10 +57,9 @@ Sie können die Erfassung bei der Event Hub-Erstellung konfigurieren, indem Sie 
 - [Aktivieren von Event Hubs Capture über das Azure-Portal](event-hubs-capture-enable-through-portal.md)
 - [Erstellen eines Event Hubs-Namespace mit einem Event Hub und Aktivieren von Capture über eine Azure Resource Manager-Vorlage](event-hubs-resource-manager-namespace-event-hub-enable-capture.md)
 
-
 ## <a name="exploring-the-captured-files-and-working-with-avro"></a>Untersuchen der erfassten Dateien und Verwenden von Avro
 
-Mit Event Hubs Capture werden Dateien unter dem Azure Storage-Konto und in dem Container erstellt, die für das konfigurierte Zeitfenster angegeben werden. Sie können diese Dateien mit einem beliebigen Tool wie beispielsweise [Azure-Speicher-Explorer][Azure Storage Explorer] anzeigen. Sie können die Dateien zur Bearbeitung lokal herunterladen.
+Mit Event Hubs Capture werden Dateien im Avro-Format erstellt, die für das konfigurierte Zeitfenster angegeben werden. Sie können diese Dateien mit einem beliebigen Tool wie beispielsweise [Azure-Speicher-Explorer][Azure Storage Explorer] anzeigen. Sie können die Dateien zur Bearbeitung lokal herunterladen.
 
 Die von Event Hubs Capture erzeugten Dateien weisen das folgende Avro-Schema auf:
 
@@ -70,7 +68,7 @@ Die von Event Hubs Capture erzeugten Dateien weisen das folgende Avro-Schema auf
 Eine einfache Möglichkeit zum Untersuchen von Avro-Dateien ist die Verwendung der [Avro Tools][Avro Tools]-JAR-Datei von Apache. Nach dem Herunterladen dieser JAR-Datei können Sie das Schema einer bestimmten Avro-Datei anzeigen, indem Sie folgenden Befehl ausführen:
 
 ```
-java -jar avro-tools-1.8.2.jar getschema \<name of capture file\>
+java -jar avro-tools-1.8.2.jar getschema <name of capture file>
 ```
 
 Dieser Befehl gibt Folgendes zurück:
@@ -96,7 +94,7 @@ Sie können die Datei auch mithilfe von Avro-Tools in das JSON-Format konvertier
 
 Für eine erweiterte Verarbeitung laden Sie Avro herunter und installieren es für eine Plattform Ihrer Wahl. Zum Zeitpunkt der Erstellung dieses Dokuments sind Implementierungen für C, C++, C\#, Java, NodeJS, Perl, PHP, Python und Ruby verfügbar.
 
-Apache Avro bietet vollständige Anleitungen für die ersten Schritte mit [Java][Java] und [Python][Python]. Lesen Sie auch den Artikel zu den [ersten Schritten mit Event Hubs Capture](event-hubs-archive-python.md).
+Apache Avro bietet vollständige Anleitungen für die ersten Schritte mit [Java][Java] und [Python][Python]. Lesen Sie auch den Artikel zu den [ersten Schritten mit Event Hubs Capture](event-hubs-capture-python.md).
 
 ## <a name="how-event-hubs-capture-is-charged"></a>Berechnung der Gebühren für Event Hubs Capture
 
@@ -108,8 +106,7 @@ Event Hubs Capture ist die einfachste Möglichkeit, Daten für Azure abzurufen. 
 
 Weitere Informationen zu Event Hubs finden Sie unter den folgenden Links:
 
-* Eine vollständige [Beispielanwendung mit Verwendung von Ereignis Hubs][sample application that uses Event Hubs].
-* Das Beispiel [Horizontales Hochskalieren der Ereignisverarbeitung mit Event Hubs][Scale out Event Processing with Event Hubs]
+* [Senden von Ereignissen an Azure Event Hubs mithilfe von .NET Frameworks](event-hubs-dotnet-framework-getstarted-send.md)
 * [Übersicht über Event Hubs][Event Hubs overview]
 
 [Apache Avro]: http://avro.apache.org/
@@ -120,6 +117,4 @@ Weitere Informationen zu Event Hubs finden Sie unter den folgenden Links:
 [Java]: http://avro.apache.org/docs/current/gettingstartedjava.html
 [Python]: http://avro.apache.org/docs/current/gettingstartedpython.html
 [Event Hubs overview]: event-hubs-what-is-event-hubs.md
-[sample application that uses Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
-[Scale out Event Processing with Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
 

@@ -12,21 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/05/2017
+ms.date: 08/24/2017
 ms.author: tomfitz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
-ms.openlocfilehash: 04338b62d942774368149b27e8b35713b77f8d7c
+ms.translationtype: HT
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: 469bd8d637337e5900ea84c6bfaf88064695fb7e
 ms.contentlocale: de-de
-ms.lasthandoff: 04/21/2017
-
+ms.lasthandoff: 08/24/2017
 
 ---
 # <a name="apply-resource-policies-for-tags"></a>Anwenden von Ressourcenrichtlinien für Tags
 
 Dieses Thema enthält allgemeine Richtlinienregeln, durch deren Anwendung Sie eine konsistente Verwendung von Tags für Ressourcen sicherstellen können.
 
-Durch das Anwenden einer Tagrichtlinie auf eine Ressourcengruppe oder ein Abonnement mit bestehenden Ressourcen wird die Richtlinie nicht rückwirkend auf diese Ressourcen angewendet. Um die Richtlinien für diese Ressourcen zu erzwingen, lösen Sie ein Update der vorhandenen Ressourcen aus, wie unter [Auslösen von Updates für vorhandene Ressourcen](#trigger-updates-to-existing-resources) gezeigt.
+Durch das Anwenden einer Tagrichtlinie auf eine Ressourcengruppe oder ein Abonnement mit bestehenden Ressourcen wird die Richtlinie nicht rückwirkend auf diese Ressourcen angewendet. Um die Richtlinien für diese Ressourcen zu erzwingen, lösen Sie ein Update der vorhandenen Ressourcen aus. Dieser Artikel enthält ein PowerShell-Beispiel für das Auslösen eines Updates.
 
 ## <a name="ensure-all-resources-in-a-resource-group-have-a-tagvalue"></a>Sicherstellen, dass alle Ressourcen in einer Ressourcengruppe einen Tag/Wert aufweisen
 

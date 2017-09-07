@@ -4,7 +4,7 @@ description: Erfahren Sie, wie Twilio-Bindungen in Azure Functions verwendet wer
 services: functions
 documentationcenter: na
 author: wesmc7777
-manager: erikre
+manager: cfowler
 editor: 
 tags: 
 keywords: Azure Functions, Funktionen, Ereignisverarbeitung, dynamisches Compute, serverlose Architektur
@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 10/20/2016
 ms.author: wesmc
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2fd12dd32ed3c8479c7460cbc0a1cac3330ff4f4
-ms.openlocfilehash: 9355aae6e3fbf70aae08cc829d7addd2decc44fd
+ms.translationtype: HT
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: e8c5e8f2dfedae26486e1c8afbe0cec3f3228e86
 ms.contentlocale: de-de
-ms.lasthandoff: 03/01/2017
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="send-sms-messages-from-azure-functions-using-the-twilio-output-binding"></a>Senden von SMS-Nachrichten mit Azure Functions mithilfe der Twilio-Ausgabebindung
@@ -36,14 +36,16 @@ Azure Functions unterstützt Twilio-Ausgabebindungen, mit denen Sie in Ihren Fun
 ## <a name="functionjson-for-the-twilio-output-binding"></a>function.json für die Twilio-Ausgabebindung
 Die Datei „function.json“ stellt die folgenden Eigenschaften bereit:
 
-* `name`: Variablenname, der im Funktionscode für die Twilio-SMS-Textnachricht verwendet wird
-* `type`: muss auf *„twilioSms“*festgelegt werden
-* `accountSid`: Dieser Wert muss auf den Namen des App-Einstellung festgelegt werden, die Ihre Twilio-Konto-SID enthält.
-* `authToken`: Dieser Wert muss auf den Namen des App-Einstellung festgelegt werden, die Ihr Twilio-Authentifizierungstoken enthält.
-* `to`: Dieser Wert wird auf die Telefonnummer festgelegt, an die der SMS-Text gesendet wird.
-* `from`: Dieser Wert wird auf die Telefonnummer festgelegt, von der der SMS-Text gesendet wird.
-* `direction` : muss auf *"out"*festgelegt werden.
-* `body`: Dieser Wert kann verwendet werden, um die SMS-Textnachricht als vordefinierten Code festzulegen und nicht dynamisch im Code für die Funktion. 
+|Eigenschaft  |Beschreibung  |
+|---------|---------|
+|**name**| Variablenname, der im Funktionscode für die Twilio-SMS-Textnachricht verwendet wird |
+|**type**| auf `twilioSms` festgelegt werden muss.|
+|**accountSid**| Dieser Wert muss auf den Namen einer App-Einstellung festgelegt werden, die Ihre Twilio-Konto-SID enthält.|
+|**authToken**| Dieser Wert muss auf den Namen einer App-Einstellung festgelegt werden, die Ihr Twilio-Authentifizierungstoken enthält.|
+|**to**| Dieser Wert wird auf die Telefonnummer festgelegt, an die die SMS-Textnachricht gesendet wird.|
+|**from**| Dieser Wert wird auf die Telefonnummer festgelegt, von der die SMS-Textnachricht gesendet wird.|
+|**direction**| auf `out` festgelegt werden muss.|
+|**body**| Dieser Wert kann verwendet werden, um die SMS-Textnachricht als vordefinierten Code festzulegen und nicht dynamisch im Code für die Funktion. |
 
 Beispiel für „function.json“:
 
