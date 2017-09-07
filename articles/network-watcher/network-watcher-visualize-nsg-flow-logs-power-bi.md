@@ -3,7 +3,7 @@ title: Visualisieren der Datenflussprotokolle von Netzwerksicherheitsgruppen mit
 description: Auf dieser Seite wird beschrieben, wie Sie NSG-Datenflussprotokolle mit Power BI visualisieren.
 services: network-watcher
 documentationcenter: na
-author: georgewallace
+author: jimdial
 manager: timlt
 editor: 
 ms.assetid: 1e4f95fa-f5f0-4e03-bc25-008fbfc4934c
@@ -13,10 +13,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: gwallace
-translationtype: Human Translation
+ms.author: jdial
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
 ms.openlocfilehash: 7cac733717b4af048e58cf3d574c5743889100c1
+ms.contentlocale: de-de
 ms.lasthandoff: 03/22/2017
 
 ---
@@ -64,7 +65,7 @@ Außerdem muss der Power BI Desktop-Client auf Ihrem Computer installiert sein, 
 
     ![Zugriffsschlüssel 2][4]
 
-4.    Ihre Protokolle werden heruntergeladen und analysiert, und Sie können die vorab erstellten visuellen Elemente nutzen.
+4.  Ihre Protokolle werden heruntergeladen und analysiert, und Sie können die vorab erstellten visuellen Elemente nutzen.
 
 ## <a name="understanding-the-visuals"></a>Grundlegendes zu den visuellen Elementen
 

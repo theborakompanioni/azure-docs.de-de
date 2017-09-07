@@ -3,7 +3,7 @@ title: Problembehandlung bei Virtual Network-Gateways und -Verbindungen mit REST
 description: "Auf dieser Seite wird beschrieben, wie Sie für Virtual Network-Gateways und -Verbindungen per REST in Azure Network Watcher die Problembehandlung durchführen."
 services: network-watcher
 documentationcenter: na
-author: georgewallace
+author: jimdial
 manager: timlt
 editor: 
 ms.assetid: e4d5f195-b839-4394-94ef-a04192766e55
@@ -13,7 +13,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
-ms.author: gwallace
+ms.author: jdial
 ms.translationtype: HT
 ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: bc61be74d85a309c158716460b918baaf4fa94dc
