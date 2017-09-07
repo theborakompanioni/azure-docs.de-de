@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2017
 ms.author: alkohli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: d3488b1e7857799d8ed7de796610e8d52034bd8f
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 8fae7bb357f8e5e8eff249edfe3a2aaafe04283c
 ms.contentlocale: de-de
-ms.lasthandoff: 03/18/2017
-
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="use-the-storsimple-diagnostics-tool-to-troubleshoot-8000-series-device-issues"></a>Verwenden des StorSimple-Diagnosetools für die Behandlung von Problemen mit Geräten der 8000-Serie
@@ -389,7 +388,7 @@ Führen Sie die folgenden Schritte aus, um dieses Tool zu verwenden:
 
     Gehen Sie wie folgt vor, wenn die vom Diagnosetool gemeldeten Lese-/Schreiblatenzen hoch sind:
 
-    1. Konfigurieren Sie Storage Analytics für Blobdienste, und analysieren Sie die Ausgabe, um die Wartezeiten für das Azure-Speicherkonto zu verstehen. Eine ausführliche Anleitung finden Sie unter [Aktivieren der Speichermetriken und Anzeigen von Metrikdaten](../storage/storage-enable-and-view-metrics-classic-portal.md). Falls diese Wartezeiten ebenfalls hoch und mit den Zahlen vergleichbar sind, die Sie über das StorSimple-Diagnosetool erhalten haben, sollten Sie eine Serviceanfrage in Bezug auf den Azure-Speicher stellen.
+    1. Konfigurieren Sie Storage Analytics für Blobdienste, und analysieren Sie die Ausgabe, um die Wartezeiten für das Azure-Speicherkonto zu verstehen. Eine ausführliche Anleitung finden Sie unter [Aktivieren der Speichermetriken und Anzeigen von Metrikdaten](../storage/common/storage-enable-and-view-metrics.md). Falls diese Wartezeiten ebenfalls hoch und mit den Zahlen vergleichbar sind, die Sie über das StorSimple-Diagnosetool erhalten haben, sollten Sie eine Serviceanfrage in Bezug auf den Azure-Speicher stellen.
 
     2. Wenn die Speicherkonto-Wartezeiten niedrig sind, können Sie sich an Ihren Netzwerkadministrator wenden, um die Wartezeitprobleme in Ihrem Netzwerk untersuchen zu lassen.
 

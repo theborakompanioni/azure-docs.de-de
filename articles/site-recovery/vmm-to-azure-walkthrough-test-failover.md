@@ -15,10 +15,10 @@ ms.workload: storage-backup-recovery
 ms.date: 07/25/2017
 ms.author: raynew
 ms.translationtype: HT
-ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
-ms.openlocfilehash: 1f45c6b04fa2c1520b9ae7dd63d873a6f4dffbd5
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 4688fc4bc74a9e0e04487cfbe965006070fd9a7b
 ms.contentlocale: de-de
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 
@@ -34,13 +34,13 @@ Bevor Sie ein Testfailover ausführen, empfehlen wir Ihnen, die VM-Eigenschaften
 
 ## <a name="managed-disk-considerations"></a>Überlegungen zu verwalteten Datenträgern
 
-[Verwaltete Datenträger](../storage/storage-managed-disks-overview.md) vereinfachen die Datenträgerverwaltung für Azure-VMs durch die Verwaltung der Speicherkonten, die den VM-Datenträgern zugeordnet sind. 
+[Verwaltete Datenträger](../virtual-machines/windows/managed-disks-overview.md) vereinfachen die Datenträgerverwaltung für Azure-VMs durch die Verwaltung der Speicherkonten, die den VM-Datenträgern zugeordnet sind. 
 
 - Verwaltete Datenträger werden erstellt und nur an den virtuellen Computer angefügt, wenn ein Failover in Azure stattfindet. Wenn Sie den Schutz aktivieren, werden Daten von lokalen virtuellen Computern in Speicherkonten repliziert.
 - Verwaltete Datenträger können nur für virtuelle Computer erstellt werden, die über das Resource Manager-Bereitstellungsmodell bereitgestellt werden.
 - Ein Failback von Azure zur lokalen Hyper-V-Umgebung wird für Computer mit verwalteten Datenträgern derzeit nicht unterstützt. Sie sollten **Verwaltete Datenträger verwenden** nur dann auf **Ja** festlegen, wenn Sie ausschließlich eine Migration (Failover in Azure ohne Failback) ausführen.
 - Wenn diese Einstellung aktiviert ist, können nur Verfügbarkeitsgruppen in Ressourcengruppen ausgewählt werden, für die **Verwaltete Datenträger verwenden** aktiviert ist. Virtuelle Computer mit verwalteten Datenträgern müssen sich in Verfügbarkeitsgruppen befinden, wobei **Verwaltete Datenträger verwenden** auf **Ja** festgelegt sein muss. Wenn die Einstellung für virtuelle Computer nicht aktiviert ist, können nur Verfügbarkeitsgruppen in Ressourcengruppen ausgewählt werden, für die verwaltete Datenträger nicht aktiviert sind. [Weitere Informationen](../virtual-machines/windows/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set)
-- - Wenn das Speicherkonto, das Sie für die Replikation verwenden, mit der Speicherdienstverschlüsselung verschlüsselt wurde, können verwaltete Datenträger während eines Failovers nicht erstellt werden. In diesem Fall aktivieren Sie die Verwendung verwalteter Datenträger nicht, oder Sie deaktivieren den Schutz für den virtuellen Computer, und aktivieren Sie ihn erneut, um ein Speicherkonto zu nutzen, für das die Verschlüsselung nicht aktiviert ist. [Weitere Informationen](../storage/storage-managed-disks-overview.md#managed-disks-and-encryption)
+- - Wenn das Speicherkonto, das Sie für die Replikation verwenden, mit der Speicherdienstverschlüsselung verschlüsselt wurde, können verwaltete Datenträger während eines Failovers nicht erstellt werden. In diesem Fall aktivieren Sie die Verwendung verwalteter Datenträger nicht, oder Sie deaktivieren den Schutz für den virtuellen Computer, und aktivieren Sie ihn erneut, um ein Speicherkonto zu nutzen, für das die Verschlüsselung nicht aktiviert ist. [Weitere Informationen](../virtual-machines/windows/managed-disks-overview.md#managed-disks-and-encryption)
 
  
 ## <a name="network-considerations"></a>Netzwerküberlegungen

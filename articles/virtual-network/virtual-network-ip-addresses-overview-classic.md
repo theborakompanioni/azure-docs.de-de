@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: jdial
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8be2bcb9179e9af0957fcee69680ac803fd3d918
-ms.openlocfilehash: c9eb4bad1c0069b3f8ed2df30ef72b2c530ffab3
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: aa99d3ebd181a76d582670c5219f29858c462d30
 ms.contentlocale: de-de
-ms.lasthandoff: 06/23/2017
-
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="ip-address-types-and-allocation-methods-classic-in-azure"></a>IP-Adresstypen und Zuordnungsmethoden (klassisch) in Azure
@@ -34,7 +33,7 @@ Private IP-Adressen werden für die Kommunikation innerhalb eines virtuellen Azu
 > Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager-Bereitstellung und klassische Bereitstellung](../resource-manager-deployment-model.md).  Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung von Resource Manager. Informationen zu IP-Adressen in Resource Manager finden Sie im Artikel [IP-Adressen](virtual-network-ip-addresses-overview-arm.md).
 
 ## <a name="public-ip-addresses"></a>Öffentliche IP-Adressen
-Öffentliche IP-Adressen ermöglichen Azure-Ressourcen die Kommunikation mit dem Internet und öffentlichen Azure-Diensten wie [Azure Redis Cache](https://azure.microsoft.com/services/cache/), [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/), [SQL-Datenbanken](../sql-database/sql-database-technical-overview.md) und [Azure Storage](../storage/storage-introduction.md).
+Öffentliche IP-Adressen ermöglichen Azure-Ressourcen die Kommunikation mit dem Internet und öffentlichen Azure-Diensten wie [Azure Redis Cache](https://azure.microsoft.com/services/cache/), [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/), [SQL-Datenbanken](../sql-database/sql-database-technical-overview.md) und [Azure Storage](../storage/common/storage-introduction.md).
 
 Eine öffentliche IP-Adresse wird folgenden Ressourcentypen zugeordnet:
 

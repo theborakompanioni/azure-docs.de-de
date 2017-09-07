@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 07/06/2017
 ms.author: cynthn
 ms.translationtype: HT
-ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
-ms.openlocfilehash: 9a91aedf452a391f23b1e5773ec12e2de5d4a288
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 7c297725c26ea6c44403a10ecdcc3542f89f10b4
 ms.contentlocale: de-de
-ms.lasthandoff: 08/09/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="create-a-linux-vm-from-custom-disk-with-the-azure-cli-20"></a>Erstellen eines virtuellen Linux-Computers aus einem benutzerdefinierten Datenträger mithilfe der Azure CLI 2.0
@@ -90,7 +90,7 @@ Sie können eine benutzerdefinierte VHD hochladen, die bei Ihnen auf einem lokal
 
 Vor dem Hochladen Ihres benutzerdefinierten Datenträgers und dem Erstellen virtueller Computer müssen Sie zuerst mit [az group create](/cli/azure/group#create) eine Ressourcengruppe erstellen.
 
-Das folgende Beispiel erstellt eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus*: [Azure Managed Disks – Übersicht](../../storage/storage-managed-disks-overview.md)
+Das folgende Beispiel erstellt eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus*: [Azure Managed Disks – Übersicht](../windows/managed-disks-overview.md)
 ```azurecli
 az group create \
     --name myResourceGroup \
@@ -113,7 +113,7 @@ az storage account create \
 ```
 
 ### <a name="list-storage-account-keys"></a>Auflisten von Speicherkontoschlüsseln
-Azure generiert zwei 512-Bit-Zugriffsschlüssel für jedes Speicherkonto. Die Zugriffsschlüssel werden für die Authentifizierung beim Speicherkonto verwendet, um beispielsweise Schreibvorgänge auszuführen. Erfahren Sie [hier](../../storage/storage-create-storage-account.md#manage-your-storage-account)mehr über das Verwalten von Speicherzugriff. Zeigen Sie mit [az storage account keys list](/cli/azure/storage/account/keys#list) die Zugriffsschlüssel an.
+Azure generiert zwei 512-Bit-Zugriffsschlüssel für jedes Speicherkonto. Die Zugriffsschlüssel werden für die Authentifizierung beim Speicherkonto verwendet, um beispielsweise Schreibvorgänge auszuführen. Erfahren Sie [hier](../../storage/common/storage-create-storage-account.md#manage-your-storage-account)mehr über das Verwalten von Speicherzugriff. Zeigen Sie mit [az storage account keys list](/cli/azure/storage/account/keys#list) die Zugriffsschlüssel an.
 
 Zeigen Sie die Zugriffsschlüssel für das erstellte Speicherkonto an:
 

@@ -15,12 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2017
 ms.author: jroth
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: 9704c6cc846df5a8e129f48ea6378140c8338279
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 5595ea016ab01d20cee82b75f56623bb0727a1b3
 ms.contentlocale: de-de
-ms.lasthandoff: 06/28/2017
-
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="performance-best-practices-for-sql-server-in-azure-virtual-machines"></a>Bewährte Methoden zur Leistung für SQL Server auf virtuellen Azure-Computern
@@ -42,8 +41,8 @@ Im folgenden finden eine kurze Checkliste für die optimale Leistung von SQL Ser
 | Bereich | Optimierungen |
 | --- | --- |
 | [Größe des virtuellen Computers](#vm-size-guidance) |[DS3](../../virtual-machines-windows-sizes-memory.md) oder höher für SQL Server Enterprise Edition<br/><br/>[DS2](../../virtual-machines-windows-sizes-memory.md) oder höher für SQL Standard und Web Edition |
-| [Speicher](#storage-guidance) |Verwenden Sie [Storage Premium](../../../storage/storage-premium-storage.md). Storage Standard empfiehlt sich nur für Entwicklungs- und Testumgebungen.<br/><br/>Speichern Sie das [Speicherkonto](../../../storage/storage-create-storage-account.md) und die SQL Server-VM in derselben Region.<br/><br/>Deaktivieren Sie auf dem Speicherkonto den [georedundanten Azure-Speicher](../../../storage/storage-redundancy.md) (Georeplikation). |
-| [Datenträger](#disks-guidance) |Verwenden Sie mindestens 2 [P30-Datenträger](../../../storage/storage-premium-storage.md#scalability-and-performance-targets) (1 für Protokolldateien; 1 für Datendateien und tempdb).<br/><br/>Vermeiden Sie die Verwendung von Betriebssystem- oder temporären Datenträgern für die Datenbankspeicherung oder Protokollierung.<br/><br/>Aktivieren Sie das Caching für Lesevorgänge auf den Datenträgern, auf denen die Datendateien und TempDB gehostet werden.<br/><br/>Aktivieren Sie kein Caching auf Datenträgern, auf denen die Protokolldatei gehostet wird.<br/><br/>Wichtig: Beenden Sie den SQL Server-Dienst, wenn Sie die Cacheeinstellungen für einen Azure-VM-Datenträger ändern.<br/><br/>Erstellen Sie ein Stripeset mehrerer Azure-Datenträger für Daten, um einen höheren E/A-Durchsatz zu erzielen.<br/><br/>Formatieren Sie mit dokumentierten Zuordnungsgrößen. |
+| [Speicher](#storage-guidance) |Verwenden Sie [Storage Premium](../../../storage/common/storage-premium-storage.md). Storage Standard empfiehlt sich nur für Entwicklungs- und Testumgebungen.<br/><br/>Speichern Sie das [Speicherkonto](../../../storage/common/storage-create-storage-account.md) und die SQL Server-VM in derselben Region.<br/><br/>Deaktivieren Sie auf dem Speicherkonto den [georedundanten Azure-Speicher](../../../storage/common/storage-redundancy.md) (Georeplikation). |
+| [Datenträger](#disks-guidance) |Verwenden Sie mindestens 2 [P30-Datenträger](../../../storage/common/storage-premium-storage.md#scalability-and-performance-targets) (1 für Protokolldateien; 1 für Datendateien und tempdb).<br/><br/>Vermeiden Sie die Verwendung von Betriebssystem- oder temporären Datenträgern für die Datenbankspeicherung oder Protokollierung.<br/><br/>Aktivieren Sie das Caching für Lesevorgänge auf den Datenträgern, auf denen die Datendateien und TempDB gehostet werden.<br/><br/>Aktivieren Sie kein Caching auf Datenträgern, auf denen die Protokolldatei gehostet wird.<br/><br/>Wichtig: Beenden Sie den SQL Server-Dienst, wenn Sie die Cacheeinstellungen für einen Azure-VM-Datenträger ändern.<br/><br/>Erstellen Sie ein Stripeset mehrerer Azure-Datenträger für Daten, um einen höheren E/A-Durchsatz zu erzielen.<br/><br/>Formatieren Sie mit dokumentierten Zuordnungsgrößen. |
 | [E/A](#io-guidance) |Aktivieren Sie die Datenbankseitenkomprimierung.<br/><br/>Aktivieren Sie die sofortige Dateiinitialisierung für Datendateien.<br/><br/>Begrenzen oder deaktivieren Sie die automatische Vergrößerung der Datenbank.<br/><br/>Deaktivieren Sie die automatische Verkleinerung der Datenbank.<br/><br/>Verschieben Sie alle Datenbanken, einschließlich der Systemdatenbanken, auf Datenträger für Daten.<br/><br/>Verschieben Sie die Verzeichnisse für das SQL Server-Fehlerprotokoll und die Ablaufverfolgungsdateien auf die Datenträger für Daten.<br/><br/>Richten Sie standardmäßige Dateispeicherorte für Sicherungen und Datenbanken ein.<br/><br/>Aktivieren Sie gesperrte Seiten.<br/><br/>Wenden Sie SQL Server-Leistungs-Hotfixpakete an. |
 | [Funktionsspezifisch](#feature-specific-guidance) |Sichern Sie direkt in den Blobspeicher. |
 
@@ -58,7 +57,7 @@ Für leistungsabhängige Anwendungen empfiehlt sich die Verwendung der folgenden
 
 ## <a name="storage-guidance"></a>Leitfaden für Speicher
 
-Virtuelle Computer der DS-Serie (sowie der DSv2- und GS-Serie) unterstützen [Storage Premium](../../../storage/storage-premium-storage.md). Für alle Produktionsworkloads wird Storage Premium empfohlen.
+Virtuelle Computer der DS-Serie (sowie der DSv2- und GS-Serie) unterstützen [Storage Premium](../../../storage/common/storage-premium-storage.md). Für alle Produktionsworkloads wird Storage Premium empfohlen.
 
 > [!WARNING]
 > Storage Standard verfügt über unterschiedliche Latenzen und Bandbreiten und sollte nur für Entwicklungs-/Testworkloads verwendet werden. Für Produktionsworkloads sollte Storage Premium verwendet werden.
@@ -91,7 +90,7 @@ Für virtuelle Computer, die Storage Premium unterstützen (DS-Serie, DSv2-Serie
 
 ### <a name="data-disks"></a>Datenträger
 
-* **Verwenden Sie Datenträger für Daten- und Protokolldateien:** Verwenden Sie mindestens 2 [P30-Datenträger](../../../storage/storage-premium-storage.md#scalability-and-performance-targets) in Storage Premium, wobei sich auf einem Datenträger die Protokolldateien und auf dem anderen die Datendateien und „tempdb“ befinden. Jeder Storage Premium-Datenträger stellt je nach Größe eine Reihe von IOPS und Bandbreiten (MB/s) bereit, wie im folgenden Artikel beschrieben: [Verwenden von Storage Premium für Datenträger](../../../storage/storage-premium-storage.md).
+* **Verwenden Sie Datenträger für Daten- und Protokolldateien:** Verwenden Sie mindestens 2 [P30-Datenträger](../../../storage/common/storage-premium-storage.md#scalability-and-performance-targets) in Storage Premium, wobei sich auf einem Datenträger die Protokolldateien und auf dem anderen die Datendateien und „tempdb“ befinden. Jeder Storage Premium-Datenträger stellt je nach Größe eine Reihe von IOPS und Bandbreiten (MB/s) bereit, wie im folgenden Artikel beschrieben: [Verwenden von Storage Premium für Datenträger](../../../storage/common/storage-premium-storage.md).
 
 * **Datenträgerstriping**: Für einen höheren Durchsatz können Sie zusätzliche Datenträger für Daten hinzufügen und Datenträgerstriping verwenden. Um die Anzahl der Datenträger zu ermitteln, müssen Sie die Anzahl der IOPS und die Bandbreite analysieren, die für die Protokolldateien und für Ihre Daten und die TempDB-Dateien erforderlich sind. Beachten Sie, dass verschiedene VM-Größen über unterschiedliche Grenzwerte für die unterstützte Anzahl der IOPS und die Bandbreiten verfügen. Informationen finden Sie in den Tabellen zu IOPS pro [Größe des virtuellen Computers](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Verwenden Sie die folgenden Richtlinien:
 

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: iainfou
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 99d18aa55ea7bd7abcb50ba32c8f6a5f130ec031
-ms.lasthandoff: 04/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: ca4c6cb9296028275b2b032af0c94baabeec1223
+ms.contentlocale: de-de
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="upload-and-create-a-linux-vm-from-custom-disk-image-by-using-the-azure-cli-10"></a>Hochladen und Erstellen eines virtuellen Linux-Computers aus einem benutzerdefinierten Datenträgerimage mithilfe der Azure CLI 1.0
@@ -139,7 +139,7 @@ azure group create myResourceGroup --location "WestUS"
 ```
 
 ## <a name="create-a-storage-account"></a>Erstellen Sie ein Speicherkonto.
-Virtuelle Computer werden als Seitenblobs in einem Speicherkonto gespeichert. Erfahren Sie [hier](../../storage/storage-introduction.md#blob-storage)mehr über Azure Blob Storage. Sie erstellen ein Speicherkonto für Ihr benutzerdefiniertes Datenträgerimage und die virtuellen Computer. Alle virtuellen Computer, die Sie aus Ihrem benutzerdefinierten Image erstellen, müssen sich im gleichen Speicherkonto wie das Image befinden.
+Virtuelle Computer werden als Seitenblobs in einem Speicherkonto gespeichert. Erfahren Sie [hier](../../storage/common/storage-introduction.md#blob-storage)mehr über Azure Blob Storage. Sie erstellen ein Speicherkonto für Ihr benutzerdefiniertes Datenträgerimage und die virtuellen Computer. Alle virtuellen Computer, die Sie aus Ihrem benutzerdefinierten Image erstellen, müssen sich im gleichen Speicherkonto wie das Image befinden.
 
 Das folgende Beispiel erstellt ein Speicherkonto namens `mystorageaccount` in der zuvor erstellten Ressourcengruppe:
 
@@ -149,7 +149,7 @@ azure storage account create mystorageaccount --resource-group myResourceGroup \
 ```
 
 ## <a name="list-storage-account-keys"></a>Auflisten von Speicherkontoschlüsseln
-Azure generiert zwei 512-Bit-Zugriffsschlüssel für jedes Speicherkonto. Die Zugriffsschlüssel werden für die Authentifizierung beim Speicherkonto verwendet, um beispielsweise Schreibvorgänge auszuführen. Erfahren Sie [hier](../../storage/storage-create-storage-account.md#manage-your-storage-account)mehr über das Verwalten von Speicherzugriff. Sie können Zugriffsschlüssel mit dem Befehl `azure storage account keys list` anzeigen.
+Azure generiert zwei 512-Bit-Zugriffsschlüssel für jedes Speicherkonto. Die Zugriffsschlüssel werden für die Authentifizierung beim Speicherkonto verwendet, um beispielsweise Schreibvorgänge auszuführen. Erfahren Sie [hier](../../storage/common/storage-create-storage-account.md#manage-your-storage-account)mehr über das Verwalten von Speicherzugriff. Sie können Zugriffsschlüssel mit dem Befehl `azure storage account keys list` anzeigen.
 
 Zeigen Sie die Zugriffsschlüssel für das erstellte Speicherkonto an:
 

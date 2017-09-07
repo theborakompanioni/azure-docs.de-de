@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 04/29/2016
 ms.author: v-sharos
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 4bdef3c0a68b07ee2d6e0ab5344ff7cc41965f1e
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 68b767c9c93f2daff476a21029b9813f347590b5
 ms.contentlocale: de-de
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="use-the-storsimple-manager-service-to-manage-your-storage-account"></a>Verwalten von Speicherkonten mithilfe des StorSimple Manager-Diensts
@@ -53,7 +52,7 @@ Im Folgenden werden die häufigsten auf der Seite **Konfigurieren** ausgeführte
 Es gibt drei Typen von Speicherkonten, die mit dem StorSimple-Gerät verwendet werden können.
 
 * **Auto-generated storage accounts** – diese Art von Speicherkonto wird bei der ersten Erstellung des Dienstes automatisch generiert. Weitere Informationen zum Erstellen dieses Speicherkontos finden Sie unter [Schritt 1: Erstellen eines neuen Diensts](storsimple-deployment-walkthrough-u1.md#step-1-create-a-new-service) [in Bereitstellen des lokalen StorSimple-Geräts](storsimple-deployment-walkthrough.md). 
-* **Storage accounts in the service subscription** – Azure-Speicherkonten, die demselben Abonnement zugeordnet sind wie der Dienst . Weitere Informationen zur Erstellung dieser Speicherkonten finden Sie unter [Informationen zu Azure-Speicherkonten](../storage/storage-create-storage-account.md). 
+* **Storage accounts in the service subscription** – Azure-Speicherkonten, die demselben Abonnement zugeordnet sind wie der Dienst . Weitere Informationen zur Erstellung dieser Speicherkonten finden Sie unter [Informationen zu Azure-Speicherkonten](../storage/common/storage-create-storage-account.md). 
 * **Storage accounts outside of the service subscription** – Azure-Speicherkonten, die nicht mit dem Dienst verknüpft sind und wahrscheinlich schon vorhanden waren, bevor der Dienst erstellt wurde.
 
 ## <a name="add-a-storage-account"></a>Hinzufügen von Speicherkonten

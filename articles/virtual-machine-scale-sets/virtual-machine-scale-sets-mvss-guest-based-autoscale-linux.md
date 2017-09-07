@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: negat
 ms.translationtype: HT
-ms.sourcegitcommit: c999eb5d6b8e191d4268f44d10fb23ab951804e7
-ms.openlocfilehash: 5de81da3c6b77f1a80876d68def66792b6a21bb9
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: ac0bbb4dbfccca3f3fc31526aeff11afe55d44be
 ms.contentlocale: de-de
-ms.lasthandoff: 07/17/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 
@@ -31,7 +31,7 @@ Es gibt in Azure zwei Metriktypen, die aus virtuellen Computern und Skalierungsg
 
 Unsere Vorlage für die kleinstmögliche Skalierungsgruppe finden Sie [hier](https://raw.githubusercontent.com/gatneil/mvss/minimum-viable-scale-set/azuredeploy.json), und unsere Vorlage für die Bereitstellung der Linux-Skalierungsgruppe mit gastbasierter Autoskalierung finden Sie [hier](https://raw.githubusercontent.com/gatneil/mvss/guest-based-autoscale-linux/azuredeploy.json). Sehen wir uns die Diff zum Erstellen dieser Vorlage (`git diff minimum-viable-scale-set existing-vnet`) Stück für Stück an:
 
-Zunächst fügen wir Parameter für `storageAccountName` und `storageAccountSasToken` hinzu. Der Diagnose-Agent speichert Metrikdaten in einer [Tabelle](../storage/storage-dotnet-how-to-use-tables.md) in diesem Speicherkonto. Ab Version 3.0 des Linux-Diagnose-Agents wird der Speicherzugriffsschlüssel nicht mehr unterstützt. Daher müssen wir ein [SAS-Token](../storage/storage-dotnet-shared-access-signature-part-1.md) verwenden.
+Zunächst fügen wir Parameter für `storageAccountName` und `storageAccountSasToken` hinzu. Der Diagnose-Agent speichert Metrikdaten in einer [Tabelle](../cosmos-db/table-storage-how-to-use-dotnet.md) in diesem Speicherkonto. Ab Version 3.0 des Linux-Diagnose-Agents wird der Speicherzugriffsschlüssel nicht mehr unterstützt. Daher müssen wir ein [SAS-Token](../storage/common/storage-dotnet-shared-access-signature-part-1.md) verwenden.
 
 ```diff
      },

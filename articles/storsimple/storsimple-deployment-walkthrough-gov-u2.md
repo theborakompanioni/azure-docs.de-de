@@ -14,10 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/16/2016
 ms.author: v-sharos
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: b568cbdb30b5cef23355c0bfe895a8a6d9818341
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 0b22dcdfc0432533b286e70d130bfe2ee2db92b2
+ms.contentlocale: de-de
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="deploy-your-on-premises-storsimple-device-in-the-government-portal-update-2"></a>Bereitstellen lokaler StorSimple-Geräte im Government-Portal (Update 2)
@@ -51,7 +52,7 @@ Führen Sie die folgenden erforderlichen Schritte zum Konfigurieren Ihres StorSi
 | [Schritt 1: Erstellen eines neuen Diensts](#step-1-create-a-new-service) |Richten Sie Cloudverwaltung und -speicher für Ihr StorSimple-Gerät ein. *Überspringen Sie diesen Schritt, wenn Sie bereits über einen Dienst für andere StorSimple-Geräte verfügen*. |
 | [Schritt 2: Abrufen des Dienstregistrierungsschlüssels](#step-2-get-the-service-registration-key) |Verwenden Sie diesen Schlüssel zum Registrieren Ihres StorSimple-Geräts sowie zum Herstellen einer Verbindung mit dem Verwaltungsdienst. |
 | [Schritt 3: Konfigurieren und Registrieren des Geräts über Windows PowerShell für StorSimple](#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple) |Verwenden Sie den Verwaltungsdienst, um das Gerät zum Abschluss der Einrichtung mit Ihrem Netzwerk zu verbinden und in Azure zu registrieren. |
-| [Schritt 4: So führen Sie die minimale Geräteinstallation durch](#step-4-complete-minimum-device-setup) </br>Optional: Aktualisieren Sie Ihr StorSimple-Gerät. |Verwenden Sie den Verwaltungsdienst, um die Gerätekonfiguration abzuschließen und es für die Bereitstellung von Speicher zu aktivieren. |
+| [Schritt 4: Abschließen der Mindesteinrichtung des Geräts](#step-4-complete-minimum-device-setup) </br>Optional: Aktualisieren Sie Ihr StorSimple-Gerät. |Verwenden Sie den Verwaltungsdienst, um die Gerätekonfiguration abzuschließen und es für die Bereitstellung von Speicher zu aktivieren. |
 | [Schritt 5: Erstellen eines Volumecontainers](#step-5-create-a-volume-container) |Erstellen Sie einen Container zum Bereitstellen von Volumes. Ein Volumecontainer verfügt über Einstellungen für das Speicherkonto, die Bandbreite und die Verschlüsselung für alle enthaltenen Volumes. |
 | [Schritt 6: Erstellen eines Volumes](#step-6-create-a-volume) |Stellen Sie ein oder mehrere Speichervolumes für Ihre Server auf dem StorSimple-Gerät bereit. |
 | [Schritt 7: Bereitstellen, Initialisieren und Formatieren eines Volumes](#step-7-mount-initialize-and-format-a-volume) </br>Optional: Konfigurieren Sie MPIO. |Verbinden Sie Ihre Server mit dem vom Gerät bereitgestellten iSCSI-Speicher. Konfigurieren Sie optional MPIO, um sicherzustellen, dass Ihre Server Link-, Netzwerk- und Schnittstellenfehler tolerieren können. |
@@ -122,7 +123,7 @@ Verwenden Sie Windows PowerShell für StorSimple zum Abschließen der anfänglic
 
 [!INCLUDE [storsimple-configure-and-register-device-gov](../../includes/storsimple-configure-and-register-device-gov-u2.md)]
 
-## <a name="step-4-complete-minimum-device-setup"></a>Schritt 4: Schließen Sie die minimale Gerätekonfiguration ab.
+## <a name="step-4-complete-minimum-device-setup"></a>Schritt 4: Abschließen der Mindesteinrichtung des Geräts
 Sie müssen für die Gerätemindestkonfiguration des StorSimple-Geräts die folgenden Aufgaben ausführen:
 
 * Einrichten des sekundären DNS-Servers
@@ -176,7 +177,7 @@ Sie können jederzeit eine manuelle Sicherung vornehmen. Anweisungen dazu finden
 ## <a name="configure-a-new-storage-account-for-the-service"></a>Konfigurieren eines neuen Speicherkontos für den Dienst
 Dies ist ein optionaler Schritt, den Sie nur dann ausführen müssen, wenn Sie nicht die automatische Erstellung eines Speicherkontos mit Ihrem Dienst aktiviert haben. Ein Microsoft Azure-Speicherkonto ist erforderlich, um einen StorSimple-Volumecontainer zu erstellen.
 
-Wenn Sie ein Azure-Speicherkonto in einer anderen Region erstellen müssen, finden Sie unter [Informationen zu Azure-Speicherkonten](../storage/storage-create-storage-account.md) schrittweise Anweisungen.
+Wenn Sie ein Azure-Speicherkonto in einer anderen Region erstellen müssen, finden Sie unter [Informationen zu Azure-Speicherkonten](../storage/common/storage-create-storage-account.md) schrittweise Anweisungen.
 
 Führen Sie im Government-Portal auf der Seite für den **StorSimple-Manager-Dienst** die folgenden Schritte aus.
 
@@ -226,10 +227,5 @@ Installations- und Konfigurationsanweisungen für MPIO auf einem StorSimple-Ger�
 ## <a name="next-steps"></a>Nächste Schritte
 * Konfigurieren eines [virtuellen Geräts](storsimple-virtual-device-u2.md)
 * Verwenden des [StorSimple-Manager-Diensts](storsimple-manager-service-administration.md) für das Verwalten Ihres StorSimple-Geräts
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

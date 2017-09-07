@@ -11,15 +11,15 @@ ms.service: cosmos-db
 ms.workload: 
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: tutorial
 ms.date: 05/10/2017
 ms.author: arramac
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
-ms.openlocfilehash: 061e79be546a80d254f2915313d747cf69cee9d2
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 52cb5f2569b6c3a5301752b1e8bfb6cea13ff7f6
 ms.contentlocale: de-de
-ms.lasthandoff: 06/03/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="azure-cosmos-db-develop-with-the-table-api-in-net"></a>Azure Cosmos DB: Entwickeln mit der Tabellen-API in .NET
@@ -42,7 +42,7 @@ Dieses Tutorial enthält die folgenden Aufgaben:
  
 ## <a name="tables-in-azure-cosmos-db"></a>Tabellen in Azure Cosmos DB 
 
-Azure Cosmos DB bietet die [Tabellen-API](table-introduction.md) (Vorschau) für Anwendungen, die einen Schlüssel-Wert-Speicher mit schemafreiem Design benötigen. Die SDKs und REST-APIs von [Azure Table Storage](../storage/storage-introduction.md) können zum Arbeiten mit Azure Cosmos DB verwendet werden. Mit Azure Cosmos DB können Sie Tabellen mit hohen Durchsatzanforderungen erstellen. Azure Cosmos DB unterstützt durchsatzoptimierte Tabellen (informell als „Premium Tables“ bezeichnet), die derzeit in der öffentlichen Vorschau verfügbar sind. 
+Azure Cosmos DB bietet die [Tabellen-API](table-introduction.md) (Vorschau) für Anwendungen, die einen Schlüssel-Wert-Speicher mit schemafreiem Design benötigen. Die SDKs und REST-APIs von [Azure Table Storage](../storage/common/storage-introduction.md) können zum Arbeiten mit Azure Cosmos DB verwendet werden. Mit Azure Cosmos DB können Sie Tabellen mit hohen Durchsatzanforderungen erstellen. Azure Cosmos DB unterstützt durchsatzoptimierte Tabellen (informell als „Premium Tables“ bezeichnet), die derzeit in der öffentlichen Vorschau verfügbar sind. 
 
 Sie können Azure Table Storage weiterhin für Tabellen mit hohen Speicheranforderungen und niedrigeren Durchsatzanforderungen verwenden. In einem zukünftigen Update von Azure Cosmos DB wird die Unterstützung speicheroptimierter Tabellen eingeführt, und für vorhandene und neue Azure Table Storage-Konten wird ein nahtloses Upgrade auf Azure Cosmos DB durchgeführt.
 
@@ -64,7 +64,7 @@ Weitere Informationen zu komplexen Azure Table Storage-Aufgaben finden Sie unter
 * Vollständige Informationen zu verfügbaren APIs finden Sie in der Referenzdokumentation zum Tabellendienst unter [WindowsAzure.Storage API Reference](http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409) (API-Referenz zu WindowsAzure.Storage).
 
 ### <a name="about-this-tutorial"></a>Informationen zu diesem Lernprogramm
-Dieses Tutorial wendet sich an Entwickler, die mit dem Azure Table Storage-SDK vertraut sind und die verfügbaren Premium-Features mit Azure Cosmos DB verwenden möchten. Es basiert auf [Erste Schritte mit Azure Table Storage mit .NET](../storage/storage-dotnet-how-to-use-tables.md) und zeigt, wie zusätzliche Funktionen wie sekundäre Indizes, bereitgestellter Durchsatz und Multihosting genutzt werden können. Wir behandeln die Verwendung des Azure-Portals zum Erstellen eines Azure Cosmos DB-Kontos, erstellen anschließend eine Tabellenanwendung und stellen sie bereit. Wir zeigen Ihnen auch .NET-Beispiele zum Erstellen und Löschen einer Tabelle sowie zum Einfügen, Aktualisieren, Löschen und Abfragen von Tabellendaten. 
+Dieses Tutorial wendet sich an Entwickler, die mit dem Azure Table Storage-SDK vertraut sind und die verfügbaren Premium-Features mit Azure Cosmos DB verwenden möchten. Es basiert auf [Erste Schritte mit Azure Table Storage mit .NET](table-storage-how-to-use-dotnet.md) und zeigt, wie zusätzliche Funktionen wie sekundäre Indizes, bereitgestellter Durchsatz und Multihosting genutzt werden können. Wir behandeln die Verwendung des Azure-Portals zum Erstellen eines Azure Cosmos DB-Kontos, erstellen anschließend eine Tabellenanwendung und stellen sie bereit. Wir zeigen Ihnen auch .NET-Beispiele zum Erstellen und Löschen einer Tabelle sowie zum Einfügen, Aktualisieren, Löschen und Abfragen von Tabellendaten. 
 
 Falls Sie Visual Studio 2017 noch nicht installiert haben, können Sie die **kostenlose** [Visual Studio 2017 Community-Edition](https://www.visualstudio.com/downloads/) herunterladen und verwenden. Aktivieren Sie beim Setup von Visual Studio die Option **Azure-Entwicklung**.
 

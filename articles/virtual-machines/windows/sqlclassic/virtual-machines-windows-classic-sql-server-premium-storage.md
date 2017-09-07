@@ -16,15 +16,15 @@ ms.workload: iaas-sql-server
 ms.date: 06/01/2017
 ms.author: jroth
 ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
-ms.openlocfilehash: c8f0da306c5adcf67e5e6dce10c180d08766f733
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 6790db207fc7ec8a4b1546ef07c97ef30abe9513
 ms.contentlocale: de-de
-ms.lasthandoff: 08/12/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="use-azure-premium-storage-with-sql-server-on-virtual-machines"></a>Verwenden von Azure Premium-Speicher mit SQL Server auf virtuellen Computern
 ## <a name="overview"></a>Übersicht
-[Azure Storage Premium](../../../storage/storage-premium-storage.md) ist die nächste Speichergeneration mit geringer Latenz und hohem E/A-Durchsatz. Der Speicher eignet sich ideal für hohe E/A-Workloads, wie z.B. SQL Server auf [virtuellen IaaS-Computern](https://azure.microsoft.com/services/virtual-machines/).
+[Azure Storage Premium](../../../storage/common/storage-premium-storage.md) ist die nächste Speichergeneration mit geringer Latenz und hohem E/A-Durchsatz. Der Speicher eignet sich ideal für hohe E/A-Workloads, wie z.B. SQL Server auf [virtuellen IaaS-Computern](https://azure.microsoft.com/services/virtual-machines/).
 
 > [!IMPORTANT]
 > Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager- und klassische Bereitstellung](../../../azure-resource-manager/resource-manager-deployment-model.md). Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung des Ressourcen-Manager-Modells.
@@ -144,7 +144,7 @@ Wenn Sie virtuelle Festplatten physikalischen Datenträgern in Speicherpools zug
 ### <a name="vm-storage-bandwidth-and-vhd-storage-throughput"></a>Speicherbandbreite des virtuellen Computers und Durchsatz des VHD-Speichers
 Die Höhe der Speicherleistung hängt von der angegebenen Größe des virtuellen Computers der DS*-Serie und der Größe der virtuellen Festplatte ab. Die virtuellen Computer haben verschiedene Beschränkungen für die Anzahl von VHDs, die angefügt werden können, und für die maximal unterstützte Bandbreite (MB/s). Ausführliche Informationen zu den Bandbreitenwerten finden Sie unter [Größen virtueller Computer und Clouddienste für Azure](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-Höhere IOPS werden mit größeren Datenträgern erreicht. Sie sollten dies berücksichtigen, wenn Sie Ihren Migrationspfad planen. Weitere Informationen finden Sie in der [Tabelle für IOPS und Datenträgertypen](../../../storage/storage-premium-storage.md#scalability-and-performance-targets).
+Höhere IOPS werden mit größeren Datenträgern erreicht. Sie sollten dies berücksichtigen, wenn Sie Ihren Migrationspfad planen. Weitere Informationen finden Sie in der [Tabelle für IOPS und Datenträgertypen](../../../storage/common/storage-premium-storage.md#scalability-and-performance-targets).
 
 Bedenken Sie, dass virtuelle Computer unterschiedliche maximale Datenträgerbandbreiten haben, die sie für alle verbundenen Datenträger unterstützen. Unter hoher Last könnten Sie die maximale Bandbreite für diese VM-Rollengröße auslasten. Beispielsweise unterstützt eine Standard_DS14 bis zu 512 MB/s. Daher könnten Sie mit drei P30-Datenträgern die Bandbreite des Datenträgers des virtuellen Computers auslasten. In diesem Beispiel kann jedoch der Durchsatzgrenzwert je nach E/A-Lese- und Schreibvorgängen überschritten werden.
 
@@ -1097,7 +1097,7 @@ Informationen zum Hinzufügen einer IP-Adresse finden Sie im [Anhang](#appendix-
     ![Anhang15][25]
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
-* [Azure Premium-Speicher](../../../storage/storage-premium-storage.md)
+* [Azure Premium-Speicher](../../../storage/common/storage-premium-storage.md)
 * [Virtuelle Computer](https://azure.microsoft.com/services/virtual-machines/)
 * [SQL Server auf virtuellen Azure-Computern](../sql/virtual-machines-windows-sql-server-iaas-overview.md)
 

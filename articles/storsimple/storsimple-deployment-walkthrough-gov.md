@@ -14,10 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/17/2016
 ms.author: v-sharos
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: dd151e222d6920b8c464146bd30af916925a60bc
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: f120caf4ea21299e52782db33994b9bd8f63780d
+ms.contentlocale: de-de
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="deploy-your-on-premises-storsimple-device-in-the-government-portal"></a>Bereitstellen lokaler StorSimple-Geräte im Government-Portal
@@ -156,7 +157,7 @@ Verwenden Sie Windows PowerShell für StorSimple zum Abschließen der anfänglic
 
 [!INCLUDE [storsimple-configure-and-register-device-gov](../../includes/storsimple-configure-and-register-device-gov.md)]
 
-## <a name="step-4-complete-minimum-device-setup"></a>Schritt 4: Schließen Sie die minimale Gerätekonfiguration ab.
+## <a name="step-4-complete-minimum-device-setup"></a>Schritt 4: Abschließen der Mindesteinrichtung des Geräts
 Sie müssen für die Gerätemindestkonfiguration des StorSimple-Geräts die folgenden Aufgaben ausführen:
 
 * Einrichten des sekundären DNS-Servers
@@ -210,7 +211,7 @@ Sie können jederzeit eine manuelle Sicherung vornehmen. Anweisungen dazu finden
 ## <a name="configure-a-new-storage-account-for-the-service"></a>Konfigurieren eines neuen Speicherkontos für den Dienst
 Dies ist ein optionaler Schritt, den Sie nur dann ausführen müssen, wenn Sie nicht die automatische Erstellung eines Speicherkontos mit Ihrem Dienst aktiviert haben. Ein Microsoft Azure-Speicherkonto ist erforderlich, um einen StorSimple-Volumecontainer zu erstellen.
 
-Wenn Sie ein Azure-Speicherkonto in einer anderen Region erstellen müssen, finden Sie unter [Informationen zu Azure-Speicherkonten](../storage/storage-create-storage-account.md) schrittweise Anweisungen.
+Wenn Sie ein Azure-Speicherkonto in einer anderen Region erstellen müssen, finden Sie unter [Informationen zu Azure-Speicherkonten](../storage/common/storage-create-storage-account.md) schrittweise Anweisungen.
 
 Führen Sie im Government-Portal auf der Seite für den **StorSimple-Manager-Dienst** die folgenden Schritte aus.
 
@@ -260,10 +261,5 @@ Installations- und Konfigurationsanweisungen für MPIO auf einem StorSimple-Ger�
 ## <a name="next-steps"></a>Nächste Schritte
 * Konfigurieren eines [virtuellen Geräts](storsimple-virtual-device-u2.md)
 * Verwenden des [StorSimple-Manager-Diensts](https://msdn.microsoft.com/library/azure/dn772396.aspx) für das Verwalten Ihres StorSimple-Geräts
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

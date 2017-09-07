@@ -1,10 +1,10 @@
 ---
 title: "Hinzufügen von Azure Storage mithilfe von verbundenen Diensten in Visual Studio | Microsoft Docs"
-description: "Fügen Sie Ihrer App mithilfe des Dialogfelds &quot;Verbundene Dienste hinzufügen&quot; in Visual Studio Azure Storage hinzu"
+description: "Fügen Sie Ihrer App mithilfe des Dialogfelds \"Verbundene Dienste hinzufügen\" in Visual Studio Azure Storage hinzu"
 services: visual-studio-online
 documentationcenter: na
-author: TomArcher
-manager: douge
+author: kraigb
+manager: ghogen
 editor: 
 ms.assetid: 521ec044-ad4b-4828-8864-01decde2e758
 ms.service: storage
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2017
-ms.author: tarcher
-translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: 614f212bb9afb71bb432bec3df7201807083b7f5
-ms.lasthandoff: 03/27/2017
-
+ms.author: kraigb
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 2fc396c93c3156054277d592eb2772fd29eed832
+ms.contentlocale: de-de
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="adding-azure-storage-by-using-visual-studio-connected-services"></a>Hinzufügen von Azure-Speicher mithilfe von verbundenen Visual Studio-Diensten
@@ -69,7 +69,7 @@ Wenn Sie die Bearbeitung des Dialogfelds abschließen, fügt Visual Studio Verwe
 - ASP.NET-Projekt: [Was ist passiert – ASP.NET-Projekte](http://go.microsoft.com/fwlink/p/?LinkId=513126)
 - ASP.NET Core-Projekt: [Was ist passiert – ASP.NET 5-Projekte](http://go.microsoft.com/fwlink/p/?LinkId=513124) 
 - Clouddienstprojekt (Web- und Workerrollen): [Was ist passiert – Clouddienstprojekte](http://go.microsoft.com/fwlink/p/?LinkId=516965)
-- WebJob-Projekt: [Was ist passiert – WebJob-Projekte](storage/vs-storage-webjobs-what-happened.md)
+- WebJob-Projekt: [Was ist passiert – WebJob-Projekte](visual-studio/vs-storage-webjobs-what-happened.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [MSDN Forum: Azure Storage](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata)

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/27/2017
 ms.author: raynew
 ms.translationtype: HT
-ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
-ms.openlocfilehash: e9db37e180b01dee6731dde13c9c382720793236
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: f1a6df56a2bb0094d972d2e659057cc124156b88
 ms.contentlocale: de-de
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="step-12-run-a-test-failover-to-azure-for-vmware-vms"></a>Schritt 12: Ausführen eines Testfailovers in Azure für VMware-VMs
@@ -34,7 +34,7 @@ Bevor Sie ein Testfailover ausführen, empfehlen wir Ihnen, die VM-Eigenschaften
 
 ## <a name="managed-disk-considerations"></a>Überlegungen zu verwalteten Datenträgern
 
-[Verwaltete Datenträger](../storage/storage-managed-disks-overview.md) vereinfachen die Datenträgerverwaltung für Azure-VMs durch die Verwaltung der Speicherkonten, die den VM-Datenträgern zugeordnet sind. 
+[Verwaltete Datenträger](../virtual-machines/windows/managed-disks-overview.md) vereinfachen die Datenträgerverwaltung für Azure-VMs durch die Verwaltung der Speicherkonten, die den VM-Datenträgern zugeordnet sind. 
 
 - Wenn Sie den Schutz für einen virtuellen Computer aktivieren, werden die Daten des virtuellen Computers in ein Speicherkonto repliziert. Verwaltete Datenträger werden erstellt und nur an den virtuellen Computer angefügt, wenn ein Failover stattfindet.
 - Verwaltete Datenträger können nur für bereitgestellte VMs mithilfe des Ressourcen-Manager-Modells erstellt werden.  
@@ -86,7 +86,7 @@ Führen Sie nach Abschluss der Einrichtung ein Testfailover durch, um sicherzust
 - Bevor Sie beginnen, verschaffen Sie sich schnell einen Überblick per Video:
 
 
-     >[!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/VMware-to-Azure-with-ASR-Video4-Recovery-Plan-DR-Drill-and-Failover/player]
+>[!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/VMware-to-Azure-with-ASR-Video4-Recovery-Plan-DR-Drill-and-Failover/player]
 
 
 Führen Sie nun ein Failover aus:

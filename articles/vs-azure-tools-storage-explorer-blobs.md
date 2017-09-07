@@ -3,8 +3,8 @@ title: Verwalten von Azure Blob Storage-Ressourcen mit dem Speicher-Explorer (Vo
 description: Verwalten von Azure-Blobcontainern und Blobs mit dem Speicher-Explorer (Vorschau)
 services: storage
 documentationcenter: na
-author: TomArcher
-manager: douge
+author: kraigb
+manager: ghogen
 editor: 
 ms.assetid: 2f09e545-ec94-4d89-b96c-14783cc9d7a9
 ms.service: storage
@@ -13,16 +13,17 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/18/2016
-ms.author: tarcher
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: f779106e8ca79260c8abba070586e3f03ffa61e9
-
+ms.author: kraigb
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: e766962d0d4ec8499b2735b58fc2339ce04fdbe2
+ms.contentlocale: de-de
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="manage-azure-blob-storage-resources-with-storage-explorer-preview"></a>Verwalten von Azure-Blobspeicherressourcen mit dem Speicher-Explorer (Vorschau)
 ## <a name="overview"></a>Übersicht
-[Azure Blob Storage](storage/storage-dotnet-how-to-use-blobs.md) ist ein Dienst zur Speicherung großer Mengen unstrukturierter Daten, beispielsweise Text- oder Binärdaten, auf die von überall auf der Welt über HTTP oder HTTPS zugegriffen werden kann.
+[Azure Blob Storage](storage/blobs/storage-dotnet-how-to-use-blobs.md) ist ein Dienst zur Speicherung großer Mengen unstrukturierter Daten, beispielsweise Text- oder Binärdaten, auf die von überall auf der Welt über HTTP oder HTTPS zugegriffen werden kann.
 Sie können den Blobspeicher verwenden, um Daten öffentlich auf der ganzen Welt zur Verfügung zu stellen oder um Anwendungsdaten privat zu speichern. In diesem Artikel wird beschrieben, wie Sie den Speicher-Explorer (Vorschau) für Blobcontainer und Blobs verwenden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -41,7 +42,7 @@ Die folgenden Schritte veranschaulichen, wie Sie einen Blobcontainer im Speicher
 3. Klicken Sie mit der rechten Maustaste auf **BLOB-Container**, und wählen Sie im Kontextmenü die Option **BLOB-Container erstellen** aus.
 
    ![Kontextmenü „BLOB-Container erstellen“][0]
-4. Unter dem Ordner **BLOB-Container** wird ein Textfeld angezeigt. Geben Sie den Namen für den Blobcontainer ein. Eine Liste mit den Regeln und Einschränkungen für die Benennung von Blobcontainern finden Sie unter [Benennungsregeln für Container](storage/storage-dotnet-how-to-use-blobs.md#create-a-container).
+4. Unter dem Ordner **BLOB-Container** wird ein Textfeld angezeigt. Geben Sie den Namen für den Blobcontainer ein. Eine Liste mit den Regeln und Einschränkungen für die Benennung von Blobcontainern finden Sie unter [Benennungsregeln für Container](storage/blobs/storage-dotnet-how-to-use-blobs.md#create-a-container).
 
    ![Textfeld „BLOB-Container erstellen“][1]
 5. Drücken Sie die **EINGABETASTE**, wenn Sie mit dem Erstellen des Blobcontainers fertig sind, oder drücken Sie **ESC**, um den Vorgang abzubrechen. Nach der erfolgreichen Erstellung des Blobcontainers wird er im Ordner **BLOB-Container** für das ausgewählte Speicherkonto angezeigt.
@@ -96,7 +97,7 @@ Die folgenden Schritte veranschaulichen, wie Sie einen Blobcontainer aus einem S
    ![Kontextmenü „Blobcontainer einfügen“][7]
 
 ## <a name="get-the-sas-for-a-blob-container"></a>Abrufen der SAS für einen Blobcontainer
-[Shared Access Signatures (SAS)](storage/storage-dotnet-shared-access-signature-part-1.md) ermöglichen den delegierten Zugriff auf Ressourcen in Ihrem Speicherkonto.
+[Shared Access Signatures (SAS)](storage/common/storage-dotnet-shared-access-signature-part-1.md) ermöglichen den delegierten Zugriff auf Ressourcen in Ihrem Speicherkonto.
 Sie haben die Möglichkeit, einem Client für einen bestimmten Zeitraum spezielle eingeschränkte Berechtigungen für Objekte in Ihrem Speicherkonto zu erteilen, ohne Ihre Konto-Zugriffsschlüssel weitergeben zu müssen.
 
 Die folgenden Schritte veranschaulichen, wie Sie eine SAS für einen Blobcontainer erstellen:
@@ -174,7 +175,7 @@ Die folgenden Schritte veranschaulichen, wie Sie die Blobs (und Ordner) in einem
      2. Wählen Sie im Dialogfeld **Dateien hochladen** rechts neben dem Feld **Dateien** die Schaltfläche mit den Auslassungspunkten (**…**) aus, um die hochzuladenden Dateien auszuwählen.
 
         ![Dateien hochladen – Optionen][16]
-     3. Geben Sie als Typ **BLOB-Typ**an. Im Artikel [Erste Schritte mit Azure Blob Storage mit .NET](storage/storage-dotnet-how-to-use-blobs.md#blob-service-concepts) werden die Unterschiede zwischen den verschiedenen Blobtypen erläutert.
+     3. Geben Sie als Typ **BLOB-Typ**an. Im Artikel [Erste Schritte mit Azure Blob Storage mit .NET](storage/blobs/storage-dotnet-how-to-use-blobs.md#blob-service-concepts) werden die Unterschiede zwischen den verschiedenen Blobtypen erläutert.
      4. Optional können Sie einen Zielordner angeben, in den die ausgewählten Dateien hochgeladen werden. Falls der Zielordner noch nicht vorhanden ist, wird er erstellt.
      5. Wählen Sie die Option **Hochladen**.
    * **Hochladen eines Ordners in einen Blobcontainer**
@@ -185,7 +186,7 @@ Die folgenden Schritte veranschaulichen, wie Sie die Blobs (und Ordner) in einem
      2. Klicken Sie im Dialogfeld **Uploadordner** rechts vom Textfeld **Ordner** auf die Schaltfläche mit den Auslassungszeichen (**…**), um den Ordner auszuwählen, dessen Inhalt Sie hochladen möchten.
 
         ![Upload folder (Ordner hochladen) – Optionen][18]
-     3. Geben Sie als Typ **BLOB-Typ**an. Im Artikel [Erste Schritte mit Azure Blob Storage mit .NET](storage/storage-dotnet-how-to-use-blobs.md#blob-service-concepts) werden die Unterschiede zwischen den verschiedenen Blobtypen erläutert.
+     3. Geben Sie als Typ **BLOB-Typ**an. Im Artikel [Erste Schritte mit Azure Blob Storage mit .NET](storage/blobs/storage-dotnet-how-to-use-blobs.md#blob-service-concepts) werden die Unterschiede zwischen den verschiedenen Blobtypen erläutert.
      4. Optional können Sie einen Zielordner angeben, in den der Inhalt des ausgewählten Ordners hochgeladen wird. Falls der Zielordner noch nicht vorhanden ist, wird er erstellt.
      5. Wählen Sie die Option **Hochladen**.
    * **Herunterladen eines Blobs auf den lokalen Computer**
@@ -235,9 +236,4 @@ Die folgenden Schritte veranschaulichen, wie Sie die Blobs (und Ordner) in einem
 [17]: ./media/vs-azure-tools-storage-explorer-blobs/blob-upload-folder-menu.png
 [18]: ./media/vs-azure-tools-storage-explorer-blobs/blob-upload-folder-options.png
 [19]: ./media/vs-azure-tools-storage-explorer-blobs/blob-container-open-editor-context-menu.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 
