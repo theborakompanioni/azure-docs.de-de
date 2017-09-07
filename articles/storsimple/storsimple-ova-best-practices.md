@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/08/2017
 ms.author: alkohli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
-ms.openlocfilehash: 56e8f5cf3886c740853a40781c42b3e36144134b
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 264764c5e9c32574d97beb2cc3c1bb1cfb555568
 ms.contentlocale: de-de
-ms.lasthandoff: 06/30/2017
-
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="storsimple-virtual-array-best-practices"></a>StorSimple Virtual Array – Bewährte Methoden
@@ -146,7 +145,7 @@ Verwenden Sie die folgenden Empfehlungen für Speicherkonten, die Ihrem virtuell
   
   * Wir empfehlen Ihnen, das Speicherkonto in der Region zu erstellen, die dem entfernten Büro bzw. der Zweigniederlassung mit der Bereitstellung des StorSimple Virtual Array am nächsten liegt, um die Latenzzeiten möglichst gering zu halten.
   * Beachten Sie hierbei, dass Sie ein Speicherkonto nicht über Regionen hinweg verschieben können. Es ist auch nicht möglich, einen Dienst abonnementübergreifend zu verschieben.
-  * Verwenden Sie ein Speicherkonto, mit dem die Redundanz zwischen den Datencentern implementiert wird. Georedundanter Speicher (GRS), zonenredundanter Speicher (ZRS) und lokal redundanter Speicher (LRS) werden für die Verwendung mit dem virtuellen Array unterstützt. Weitere Informationen zu den verschiedenen Arten von Speicherkonten finden Sie unter [Azure Storage-Replikation](../storage/storage-redundancy.md).
+  * Verwenden Sie ein Speicherkonto, mit dem die Redundanz zwischen den Datencentern implementiert wird. Georedundanter Speicher (GRS), zonenredundanter Speicher (ZRS) und lokal redundanter Speicher (LRS) werden für die Verwendung mit dem virtuellen Array unterstützt. Weitere Informationen zu den verschiedenen Arten von Speicherkonten finden Sie unter [Azure Storage-Replikation](../storage/common/storage-redundancy.md).
 
 ### <a name="shares-and-volumes"></a>Freigaben und Volumes
 Für Ihr StorSimple Virtual Array können Sie Freigaben bereitstellen, wenn es als Dateiserver konfiguriert ist, und Volumes, wenn es als iSCSI-Server konfiguriert ist. Die bewährten Methoden für das Erstellen von Freigaben und Volumes beziehen sich auf die Größe und auf den konfigurierten Typ.

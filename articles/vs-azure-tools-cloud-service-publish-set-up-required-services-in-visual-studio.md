@@ -3,8 +3,8 @@ title: "Vorbereiten der Veröffentlichung und Bereitstellung einer Azure-Anwendu
 description: Lernen Sie die Verfahren zum Einrichten von Cloud- und Speicherkontodiensten und zum Konfigurieren Ihrer Azure-Anwendung kennen.
 services: visual-studio-online
 documentationcenter: na
-author: TomArcher
-manager: douge
+author: kraigb
+manager: ghogen
 editor: 
 ms.assetid: 92ee2f9e-ec49-4c7a-900d-620abe5e9d8a
 ms.service: multiple
@@ -13,11 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 11/11/2016
-ms.author: tarcher
-translationtype: Human Translation
-ms.sourcegitcommit: 01623fa76175091439d5a571fb8b8f96aee01c4c
-ms.openlocfilehash: 5d747a7c34b340c6f98dabb2c3ff4d3340e74e4a
-
+ms.author: kraigb
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 967501fa8ac4b2471a62afabc18a12a71776eaac
+ms.contentlocale: de-de
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="prepare-to-publish-or-deploy-an-azure-application-from-visual-studio"></a>Veröffentlichen und Bereitstellen einer Azure-Anwendung in Visual Studio
@@ -92,7 +93,7 @@ Sie müssen alle Rollen, die auf Speicherdienste zugreifen, für das Verwenden d
 1. Öffnen Sie in Visual Studio Ihre Azure-Projektmappe. Öffnen Sie im Projektmappen-Explorer das Kontextmenü für jede Rolle in Ihrem Azure-Projekt, die auf die Speicherdienste zugreift, und wählen Sie **Eigenschaften**aus. Eine Seite mit dem Namen der Rolle wird im Visual Studio-Editor angezeigt. Die Seite zeigt die Felder für die Registerkarte **Konfiguration** an.
 2. Wählen Sie auf den Eigenschaftenseiten der Rolle **Einstellungen**aus.
 3. Wählen Sie in der Liste **Dienstkonfiguration** den Namen der Dienstkonfiguration aus, die Sie bearbeiten möchten. Wenn Sie alle Dienstkonfigurationen für diese Rolle ändern möchten, können Sie **Alle Konfigurationen**auswählen.  Weitere Informationen zum Aktualisieren von Dienstkonfigurationen finden Sie im Abschnitt **Verwalten von Verbindungszeichenfolgen für Speicherkonten** im Thema [Konfigurieren der Rollen für einen Azure-Clouddienst mit Visual Studio](vs-azure-tools-configure-roles-for-cloud-service.md).
-4. Um Einstellungen von Verbindungszeichenfolgen zu ändern, klicken Sie auf die Schaltfläche **...**  neben der Einstellung. Das Dialogfeld **Verbindungszeichenfolge für den Speicher erstellen** wird angezeigt.
+4. Um Einstellungen von Verbindungszeichenfolgen zu ändern, klicken Sie auf die Schaltfläche **...** neben der Einstellung. Das Dialogfeld **Verbindungszeichenfolge für den Speicher erstellen** wird angezeigt.
 5. Wählen Sie unter **Verbinden mit** die Option **Ihr Abonnement** aus.
 6. Wählen Sie in der Liste **Abonnement** Ihr Abonnement aus. Wenn die Liste der Abonnements nicht das gewünschte Abonnement enthält, klicken Sie auf den Link **Veröffentlichungseinstellungen herunterladen** .
 7. Wählen Sie in der Liste **Kontoname** den Namen Ihres Speicherkontos aus. Azure Tools erhält Anmeldeinformationen für das Speicherkonto automatisch mithilfe der PUBLISHSETTINGS-Datei. Wenn Sie die Anmeldeinformationen für das Speicherkonto manuell angeben möchten, wählen Sie die Option **Manuell eingegebene Anmeldeinformationen** aus und fahren mit diesen Schritten fort. Sie erhalten Ihren Speicherkontonamen und Primärschlüssel über das [klassische Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=213885). Wenn Sie die Einstellungen für das Speicherkonto nicht manuell angeben möchten, klicken Sie auf **OK** , um das Dialogfeld zu schließen.
@@ -116,16 +117,11 @@ Sie müssen alle Rollen, die auf Speicherdienste zugreifen, für das Verwenden d
        * **Benutzerdefinierte Endpunkte angeben** (für jeden der drei Dienste). Sie können dann diese Endpunkte für den jeweiligen Dienst in das Feld eingeben.
 
          > [!NOTE]
-         > Wenn Sie benutzerdefinierte Endpunkte erstellen, können Sie eine komplexere Verbindungszeichenfolge erstellen. Wenn Sie dieses Zeichenfolgenformat verwenden, können Sie Speicherdienstendpunkte angeben, die einen benutzerdefinierten Domänennamen enthalten, den Sie für Ihr Speicherkonto mit dem Blobdienst registriert haben. Außerdem können Sie über eine SAS (Shared Access Signature) Zugriff auf ausschließlich Blobressourcen in einem einzelnen Container gewähren. Weitere Informationen zum Erstellen benutzerdefinierter Endpunkte finden Sie unter [Konfigurieren von Azure Storage-Verbindungszeichenfolgen](storage/storage-configure-connection-string.md).
+         > Wenn Sie benutzerdefinierte Endpunkte erstellen, können Sie eine komplexere Verbindungszeichenfolge erstellen. Wenn Sie dieses Zeichenfolgenformat verwenden, können Sie Speicherdienstendpunkte angeben, die einen benutzerdefinierten Domänennamen enthalten, den Sie für Ihr Speicherkonto mit dem Blobdienst registriert haben. Außerdem können Sie über eine SAS (Shared Access Signature) Zugriff auf ausschließlich Blobressourcen in einem einzelnen Container gewähren. Weitere Informationen zum Erstellen benutzerdefinierter Endpunkte finden Sie unter [Konfigurieren von Azure Storage-Verbindungszeichenfolgen](storage/common/storage-configure-connection-string.md).
          >
          >
 11. Um diese Änderungen an der Verbindungszeichenfolge zu speichern, klicken Sie auf **OK** und dann auf der Symbolleiste auf die Schaltfläche **Speichern**. Nachdem Sie diese Änderungen gespeichert haben, erhalten Sie den Wert dieser Verbindungszeichenfolge in Ihrem Code mithilfe von [GetConfigurationSettingValue](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.getconfigurationsettingvalue.aspx). Wenn Sie Ihre Anwendung in Azure veröffentlichen, wählen Sie die Dienstkonfiguration, die das Azure-Speicherkonto für die Verbindungszeichenfolge enthält. Nachdem die Anwendung veröffentlicht wurde, stellen Sie sicher, dass die Anwendung mit den Azure-Speicherdiensten wie erwartet funktioniert.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum Veröffentlichen von Anwendungen in Azure aus Visual Studio finden Sie unter [Veröffentlichen eines Clouddiensts mit den Azure Tools](vs-azure-tools-publishing-a-cloud-service.md).
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

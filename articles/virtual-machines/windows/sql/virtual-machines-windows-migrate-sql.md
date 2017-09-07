@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 07/17/2017
 ms.author: carlasab
 ms.translationtype: HT
-ms.sourcegitcommit: 94d1d4c243bede354ae3deba7fbf5da0652567cb
-ms.openlocfilehash: 8403b5454b387fa7062d188b18cdd595bf24aecd
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 68767534298783083a441aa295611914d0df9db0
 ms.contentlocale: de-de
-ms.lasthandoff: 07/18/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="migrate-a-sql-server-database-to-sql-server-in-an-azure-vm"></a>Migrieren einer SQL Server-Datenbank zu SQL Server auf einem virtuellen Azure-Computer
@@ -60,7 +60,7 @@ In der folgenden Tabelle werden alle primären Migrationsmethoden aufgeführt, u
 | [Durchführen einer Sicherung auf eine URL und Wiederherstellung auf dem virtuellen Azure-Computer aus der URL](#backup-to-url-and-restore) |SQL Server 2012 SP1 CU2 oder höher |SQL Server 2012 SP1 CU2 oder höher |< 12,8 TB für SQL Server 2016, andernfalls < 1 TB | Dies ist eine weitere Möglichkeit, die Sicherungsdatei mithilfe des Azure-Speichers auf den virtuellen Computer zu verschieben. |
 | [Trennen und anschließendes Kopieren der Daten- und Protokolldateien in einen Azure Blob-Speicher, dann Anschließen an den SQL Server auf dem virtuellen Azure-Computer über URL](#detach-and-attach-from-url) |SQL Server 2005 oder höher |SQL Server 2014 oder höher |[Azure VM-Speichergrenze](https://azure.microsoft.com/documentation/articles/azure-subscription-service-limits/) |Verwenden Sie diese Methode, wenn Sie planen, [diese Dateien mithilfe des Azure Blob-Speicherdiensts zu speichern](https://msdn.microsoft.com/library/dn385720.aspx) und sie mit SQL Server in einer Azure-VM zu verbinden, insbesondere bei sehr großen Datenbanken. |
 | [Konvertieren eines lokalen physischen Computers in Hyper-V-VHD, Hochladen in einen Azure-Blob-Speicher und anschließendes Bereitstellen als neuen virtuellen Computer mithilfe des hochgeladenen VHD](#convert-to-vm-and-upload-to-url-and-deploy-as-new-vm) |SQL Server 2005 oder höher |SQL Server 2005 oder höher |[Azure VM-Speichergrenze](https://azure.microsoft.com/documentation/articles/azure-subscription-service-limits/) |Verwenden Sie diese Methode, wenn Sie [Ihre eigene SQL Server-Lizenz mitbringen](../../../sql-database/sql-database-paas-vs-sql-server-iaas.md) und eine Datenbank migrieren, die unter einer älteren Version von SQL Server ausgeführt wird oder wenn Sie System- und Benutzerdatenbanken gemeinsam als Teil der Migration von Datenbanken migrieren, die von anderen Benutzer- und/oder Systemdatenbanken abhängig sind. |
-| [Versenden einer Festplatte mithilfe des Windows-Import-Export-Diensts](#ship-hard-drive) |SQL Server 2005 oder höher |SQL Server 2005 oder höher |[Azure VM-Speichergrenze](https://azure.microsoft.com/documentation/articles/azure-subscription-service-limits/) |Verwenden Sie den [Windows-Import/Export-Dienst](../../../storage/storage-import-export-service.md) , wenn das manuelle Kopieren zu langsam ist (etwa bei sehr großen Datenbanken). |
+| [Versenden einer Festplatte mithilfe des Windows-Import-Export-Diensts](#ship-hard-drive) |SQL Server 2005 oder höher |SQL Server 2005 oder höher |[Azure VM-Speichergrenze](https://azure.microsoft.com/documentation/articles/azure-subscription-service-limits/) |Verwenden Sie den [Windows-Import/Export-Dienst](../../../storage/common/storage-import-export-service.md) , wenn das manuelle Kopieren zu langsam ist (etwa bei sehr großen Datenbanken). |
 | [Verwenden des Assistenten zum Hinzufügen von Azure-Replikaten](../classic/sql-onprem-availability.md) |SQL Server 2012 oder höher |SQL Server 2012 oder höher |[Azure VM-Speichergrenze](https://azure.microsoft.com/documentation/articles/azure-subscription-service-limits/) |Beschränkt Ausfallzeiten auf ein Mindestmaß, Verwendung bei einer lokalen AlwaysOn-Bereitstellung |
 | [Verwenden der SQL Server-Transaktionsreplikation](https://msdn.microsoft.com/library/ms151176.aspx) |SQL Server 2005 oder höher |SQL Server 2005 oder höher |[Azure VM-Speichergrenze](https://azure.microsoft.com/documentation/articles/azure-subscription-service-limits/) |Verwendung zum Beschränken der Ausfallzeiten auf ein Mindestmaß, wenn keine lokale AlwaysOn-Bereitstellung vorliegt |
 
@@ -73,13 +73,13 @@ Sichern Sie Ihre Datenbank mit aktivierter Komprimierung, kopieren Sie die Siche
 4. Kopieren Sie Ihre Sicherungsdateien mithilfe von Remotedesktop, Windows Explorer oder des Kopierbefehls auf den virtuellen Computer.
 
 ## <a name="backup-to-url-and-restore"></a>Sichern und Wiederherstellen per URL
-Anstelle einer Sicherung in eine lokale Datei können Sie eine [Sicherung über URLs](https://msdn.microsoft.com/library/dn435916.aspx) verwenden und dann eine Wiederherstellung über diese URL auf den virtuellen Computer durchführen. SQL Server 2016 unterstützt Stripesetsicherungen, die aus Leistungsgründen empfohlen werden und erforderlich sind, um die Größenbeschränkung pro Blob zu umgehen. Für sehr große Datenbanken wird die Verwendung des [Windows-Import/Export-Diensts](../../../storage/storage-import-export-service.md) empfohlen.
+Anstelle einer Sicherung in eine lokale Datei können Sie eine [Sicherung über URLs](https://msdn.microsoft.com/library/dn435916.aspx) verwenden und dann eine Wiederherstellung über diese URL auf den virtuellen Computer durchführen. SQL Server 2016 unterstützt Stripesetsicherungen, die aus Leistungsgründen empfohlen werden und erforderlich sind, um die Größenbeschränkung pro Blob zu umgehen. Für sehr große Datenbanken wird die Verwendung des [Windows-Import/Export-Diensts](../../../storage/common/storage-import-export-service.md) empfohlen.
 
 ## <a name="detach-and-attach-from-url"></a>Trennen und Anfügen per URL
 Trennen Sie Ihre Datenbank und Protokolldateien, und übertragen Sie diese in [Azure Blob Storage](https://msdn.microsoft.com/library/dn385720.aspx). Fügen Sie anschließend die Datenbank über die URL auf Ihrem virtuellen Azure-Computer an. Verwenden Sie diese Methode, wenn die physischen Datenbankdateien in Blob Storage platziert werden sollen. Dies kann bei sehr umfangreichen Datenbanken nützlich sein. Verwenden Sie die folgenden allgemeinen Schritte zum Migrieren einer Benutzerdatenbank anhand dieser manuellen Methode:
 
 1. Trennen Sie die Datenbankdateien von der lokalen Datenbankinstanz.
-2. Kopieren Sie die getrennten Datenbankdateien in den Azure-Blob-Speicher mit dem Befehlszeilenprogramm [AZCopy](../../../storage/storage-use-azcopy.md).
+2. Kopieren Sie die getrennten Datenbankdateien in den Azure-Blob-Speicher mit dem Befehlszeilenprogramm [AZCopy](../../../storage/common/storage-use-azcopy.md).
 3. Fügen Sie die Datenbankdateien über die Azure-URL der SQL Server-Instanz in der Azure-VM an.
 
 ## <a name="convert-to-vm-and-upload-to-url-and-deploy-as-new-vm"></a>Konvertieren in eine VM, Hochladen zur URL und Bereitstellen als neue VM
@@ -93,7 +93,7 @@ Verwenden Sie diese Methode, um alle System- und Benutzerdatenbanken in einer lo
 > Um eine gesamte Anwendung zu migrieren, sollten Sie die Verwendung von [Azure Site Recovery](../../../site-recovery/site-recovery-overview.md)erwägen.
 
 ## <a name="ship-hard-drive"></a>Versenden einer Festplatte
-Mithilfe der Methode [Windows Import-Export-Dienst](../../../storage/storage-import-export-service.md) können Sie große Mengen von Dateidaten an Azure-Blob-Speicher übertragen, beispielsweise, wenn das Hochladen über das Netzwerk zu kostenintensiv oder nicht machbar ist. Mit diesem Dienst versenden Sie Festplatten mit den Daten an ein Azure-Rechenzentrum, in dem die Daten in Ihr Speicherkonto hochgeladen werden.
+Mithilfe der Methode [Windows Import-Export-Dienst](../../../storage/common/storage-import-export-service.md) können Sie große Mengen von Dateidaten an Azure-Blob-Speicher übertragen, beispielsweise, wenn das Hochladen über das Netzwerk zu kostenintensiv oder nicht machbar ist. Mit diesem Dienst versenden Sie Festplatten mit den Daten an ein Azure-Rechenzentrum, in dem die Daten in Ihr Speicherkonto hochgeladen werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Ausführlichere Informationen zur Verwendung von SQL Server auf virtuellen Azure-Computern finden Sie unter [Übersicht zu SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-sql-server-iaas-overview.md).

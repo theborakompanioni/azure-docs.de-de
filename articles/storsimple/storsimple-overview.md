@@ -15,11 +15,10 @@ ms.workload: TBD
 ms.date: 07/10/2017
 ms.author: v-sharos@microsoft.com
 ms.translationtype: HT
-ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
-ms.openlocfilehash: aa1b28301eec88ac1be160722ce3b734f4fea43f
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 86b8300553caa0741e8aca3c0e7621ec80cc5b21
 ms.contentlocale: de-de
-ms.lasthandoff: 07/10/2017
-
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>StorSimple 8000-Serie: eine Hybridcloud-Speicherlösung
@@ -93,7 +92,7 @@ Die Cloud Appliance weist folgende Merkmale auf:
 * Sie können eine unbegrenzte Anzahl von Cloud Appliances in der Cloud erstellen und sie nach Bedarf aktivieren und deaktivieren.
 * Mit dem virtuellen Gerät können lokale Umgebungen bei der Notfallwiederherstellung und in Entwicklungs- oder Testszenarios simuliert sowie der Abruf aus Sicherungen auf Elementebene unterstützt werden.
 
-Die StorSimple Cloud Appliance steht in zwei Modellen zur Verfügung: dem 8010-Gerät (früher als Modell 1100 bekannt) und dem 8020-Gerät. Das 8010-Gerät bietet eine maximale Kapazität von 30 TB. Das 8020-Gerät nutzt Azure-Premium-Speicher und umfasst eine maximale Kapazität von 64 TB. (In lokalen Ebenen speichert der Azure-Premium-Speicher Daten auf SSDs. Beim Standardspeicher werden Daten auf HDDs gespeichert.) Beachten Sie, dass Sie zur Verwendung von Premium-Speicher ein Azure-Premium-Speicherkonto benötigen. Informationen zu Premium-Speicher finden Sie unter [Premium-Speicher: Hochleistungsspeicher für Arbeitslasten auf virtuellen Azure-Computern](../storage/storage-premium-storage.md).
+Die StorSimple Cloud Appliance steht in zwei Modellen zur Verfügung: dem 8010-Gerät (früher als Modell 1100 bekannt) und dem 8020-Gerät. Das 8010-Gerät bietet eine maximale Kapazität von 30 TB. Das 8020-Gerät nutzt Azure-Premium-Speicher und umfasst eine maximale Kapazität von 64 TB. (In lokalen Ebenen speichert der Azure-Premium-Speicher Daten auf SSDs. Beim Standardspeicher werden Daten auf HDDs gespeichert.) Beachten Sie, dass Sie zur Verwendung von Premium-Speicher ein Azure-Premium-Speicherkonto benötigen. Informationen zu Premium-Speicher finden Sie unter [Premium-Speicher: Hochleistungsspeicher für Arbeitslasten auf virtuellen Azure-Computern](../storage/common/storage-premium-storage.md).
 
 Weitere Informationen zu StorSimple Cloud Appliances finden Sie unter [Bereitstellen und Verwalten einer StorSimple Cloud Appliance in Azure](storsimple-8000-cloud-appliance-u2.md).
 

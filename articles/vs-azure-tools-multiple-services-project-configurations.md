@@ -1,10 +1,10 @@
 ---
 title: Konfigurieren Ihres Azure-Projekts mit mehreren Dienstkonfigurationen | Microsoft Docs
-description: "Erfahren Sie, wie Sie ein Azure-Clouddienstprojekt konfigurieren, indem Sie die Dateien &quot;ServiceDefinition.csdef&quot; und &quot;ServiceConfiguration.cscfg&quot; ändern."
+description: "Erfahren Sie, wie Sie ein Azure-Clouddienstprojekt konfigurieren, indem Sie die Dateien \"ServiceDefinition.csdef\" und \"ServiceConfiguration.cscfg\" ändern."
 services: visual-studio-online
 documentationcenter: na
-author: TomArcher
-manager: douge
+author: kraigb
+manager: ghogen
 editor: 
 ms.assetid: a4fb79ed-384f-4183-9f74-5cac257206b9
 ms.service: multiple
@@ -13,11 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/11/2016
-ms.author: tarcher
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 7e720b7d1f874f83d7d2ff516704f61b5e39601d
-
+ms.author: kraigb
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 24b2530b23211c654072a6edc8a31e53989bf0a8
+ms.contentlocale: de-de
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="configuring-your-azure-project-using-multiple-service-configurations"></a>Konfigurieren Ihres Azure-Projekts mit mehreren Dienstkonfigurationen
@@ -64,9 +65,9 @@ Auf der Seite **Einstellungen** können Sie Konfigurationseinstellungen für den
 ### <a name="configuring-a-connection-string-to-a-storage-account"></a>Konfigurieren einer Verbindungszeichenfolge für ein Speicherkonto
 Eine Verbindungszeichenfolge ist eine Konfigurationseinstellung, die Verbindungs- und Authentifizierungsinformationen für den Speicheremulator oder für ein Azure-Speicherkonto enthält. Wenn vom Code Zugriff auf Azure-Speicherdienstdaten – d. h. auf Blob-, Warteschlangen- oder Tabellendaten – innerhalb eines in einer Rolle ausgeführten Codes erfordert wird, muss eine Verbindungszeichenfolge für das Speicherkonto definiert werden.
 
-Eine Verbindungszeichenfolge, die auf ein Azure-Speicherkonto verweist, muss ein definiertes Format aufweisen. Informationen zum Erstellen von Verbindungszeichenfolgen finden Sie unter [Konfigurieren von Azure Storage-Verbindungszeichenfolgen](storage/storage-configure-connection-string.md).
+Eine Verbindungszeichenfolge, die auf ein Azure-Speicherkonto verweist, muss ein definiertes Format aufweisen. Informationen zum Erstellen von Verbindungszeichenfolgen finden Sie unter [Konfigurieren von Azure Storage-Verbindungszeichenfolgen](storage/common/storage-configure-connection-string.md).
 
-Wenn Sie Ihren Dienst mit den Azure-Speicherdiensten testen oder den Clouddienst in Azure bereitstellen möchten, können Sie den Wert aller Verbindungszeichenfolgen so ändern, dass sie auf Ihr Azure-Speicherkonto verweisen. Klicken Sie auf (**…**), und wählen Sie **Anmeldeinformationen für Speicherkonto eingeben** aus. Geben Sie die Kontoinformationen ein, die Ihren Kontonamen und den Kontoschlüssel enthalten. Im Dialogfeld **Verbindungszeichenfolge für das Speicherkonto** können Sie auch angeben, ob standardmäßige HTTPS-Endpunkte (die Standardoption), die standardmäßigen HTTP-Endpunkte oder benutzerdefinierte Endpunkte verwendet werden sollen. Sie können ggf. benutzerdefinierte Endpunkte verwenden, wenn ein benutzerdefinierter Domänenname für den Dienst registriert wurde, wie unter [Konfigurieren eines benutzerdefinierten Domänennamens für Blobdaten in einem Azure Storage-Konto](storage/storage-custom-domain-name.md) beschrieben.
+Wenn Sie Ihren Dienst mit den Azure-Speicherdiensten testen oder den Clouddienst in Azure bereitstellen möchten, können Sie den Wert aller Verbindungszeichenfolgen so ändern, dass sie auf Ihr Azure-Speicherkonto verweisen. Klicken Sie auf (**…**), und wählen Sie **Anmeldeinformationen für Speicherkonto eingeben** aus. Geben Sie die Kontoinformationen ein, die Ihren Kontonamen und den Kontoschlüssel enthalten. Im Dialogfeld **Verbindungszeichenfolge für das Speicherkonto** können Sie auch angeben, ob standardmäßige HTTPS-Endpunkte (die Standardoption), die standardmäßigen HTTP-Endpunkte oder benutzerdefinierte Endpunkte verwendet werden sollen. Sie können ggf. benutzerdefinierte Endpunkte verwenden, wenn ein benutzerdefinierter Domänenname für den Dienst registriert wurde, wie unter [Konfigurieren eines benutzerdefinierten Domänennamens für Blobdaten in einem Azure Storage-Konto](storage/blobs/storage-custom-domain-name.md) beschrieben.
 
 > [!IMPORTANT]
 > Sie müssen die Verbindungszeichenfolgen ändern, damit sie auf ein Azure-Speicherkonto verweisen, bevor Sie den Dienst bereitstellen. Wenn diese Änderung nicht vorgenommen wird, wird die Rolle möglicherweise nicht gestartet, oder die Zustände "Initialisieren", "Ausgelastet" und "Beenden" werden nicht durchlaufen.
@@ -105,10 +106,5 @@ Zum Konfigurieren von für ein gesamtes Azure-Clouddienstprojekt gültigen Einst
 | Buildereignisse |Auf dieser Seite können Sie Präbuild-und Postbuildereignisse festlegen. |
 | Entwicklung |Auf dieser Seite geben Sie Buildkonfigurationsanweisungen und die Bedingungen an, unter denen Postbuildereignisse ausgeführt werden. |
 | Web |Auf dieser Seite konfigurieren Sie Einstellungen für den Webserver. |
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

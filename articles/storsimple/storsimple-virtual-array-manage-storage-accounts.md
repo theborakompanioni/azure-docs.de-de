@@ -14,10 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
-translationtype: Human Translation
-ms.sourcegitcommit: 4b5c86314bde2acb7d5723909f89691bf7ed8b98
-ms.openlocfilehash: 6bb07bc1e3ab439352b444016167541eca54f788
-ms.lasthandoff: 03/01/2017
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: a4ce2d329d0e1399cffaf886adf2b95e34b9cd7b
+ms.contentlocale: de-de
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="use-storsimple-device-manager-to-manage-storage-account-credentials-for-storsimple-virtual-array"></a>Verwenden des StorSimple-Geräte-Managers zum Verwalten der Anmeldeinformationen eines Speicherkontos für StorSimple Virtual Array
@@ -51,7 +52,7 @@ Zu den häufigsten Aufgaben im Zusammenhang mit Anmeldeinformationen eines Speic
 Es gibt drei Typen von Anmeldeinformationen eines Speicherkontos, die mit Ihrem StorSimple-Gerät verwendet werden können.
 
 * **Auto-generated storage accounts**(Automatisch generierte Anmeldeinformationen des Speicherkontos) – Diese Art von Anmeldeinformationen wird bei der ersten Erstellung des Dienstes automatisch generiert. Weitere Informationen zum Erstellen dieser Anmeldeinformationen eines Speicherkontos finden Sie unter [So erstellen Sie einen neuen Dienst](storsimple-virtual-array-manage-service.md#create-a-service).
-* **Storage accounts in the service subscription** (Dem Dienstabonnnement zugeordnete Anmeldeinformationen des Speicherkontos) – Diese Anmeldeinformationen für das Azure-Speicherkonto sind demselben Abonnement zugeordnet wie der Dienst. Weitere Informationen zum Erstellen dieser Anmeldeinformationen eines Speicherkontos finden Sie unter [Informationen zu Azure-Speicherkonten](../storage/storage-create-storage-account.md).
+* **Storage accounts in the service subscription** (Dem Dienstabonnnement zugeordnete Anmeldeinformationen des Speicherkontos) – Diese Anmeldeinformationen für das Azure-Speicherkonto sind demselben Abonnement zugeordnet wie der Dienst. Weitere Informationen zum Erstellen dieser Anmeldeinformationen eines Speicherkontos finden Sie unter [Informationen zu Azure-Speicherkonten](../storage/common/storage-create-storage-account.md).
 * **Storage account credentials outside of the service subscription** (Nicht im Dienstabonnnement enthaltene Anmeldeinformationen des Speicherkontos) – Diese Anmeldeinformationen des Azure-Speicherkontos sind nicht Ihrem Dienst zugeordnet und waren wahrscheinlich schon vorhanden, bevor der Dienst erstellt wurde.
 
 ## <a name="add-a-storage-account-credential"></a>Hinzufügen von Anmeldeinformationen eines Speicherkontos
@@ -109,7 +110,7 @@ Sie können Anmeldeinformationen für ein Speicherkonto bearbeiten, das von Ihre
 4. Gehen Sie auf dem Blatt **Eigenschaften** der Anmeldeinformationen des Speicherkontos wie folgt vor:
    
    1. Ändern Sie bei Bedarf die Auswahl für den Modus **SSL aktivieren**.
-   2. Falls gewünscht, können Sie auch die Speicherkonto-Zugriffsschlüssel neu generieren. Weitere Informationen finden Sie unter [Erneutes Generieren von Speicherkontoschlüsseln](../storage/storage-create-storage-account.md#manage-your-storage-access-keys). Geben Sie den neuen Speicherkonto-Zugriffsschlüssel an. Für ein Azure-Speicherkonto ist dies der primäre Zugriffsschlüssel
+   2. Falls gewünscht, können Sie auch die Speicherkonto-Zugriffsschlüssel neu generieren. Weitere Informationen finden Sie unter [Erneutes Generieren von Speicherkontoschlüsseln](../storage/common/storage-create-storage-account.md#manage-your-storage-access-keys). Geben Sie den neuen Speicherkonto-Zugriffsschlüssel an. Für ein Azure-Speicherkonto ist dies der primäre Zugriffsschlüssel
    3. Klicken Sie am oberen Rand des Blatts **Einstellungen** auf **Speichern**, um die Einstellungen zu speichern. Die Einstellungen werden auf dem Blatt **Anmeldeinformationen des Speicherkontos** aktualisiert.
       
       ![Bearbeiten von Anmeldeinformationen eines Speicherkontos](./media/storsimple-virtual-array-manage-storage-accounts/ova-edit-storageacct.png)

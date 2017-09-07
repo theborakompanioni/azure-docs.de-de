@@ -14,10 +14,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/31/2017
 ms.author: mikeray
-translationtype: Human Translation
-ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
-ms.openlocfilehash: 3cfeed9d10cba8e51e8609fe2a0a2a3228681850
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: d3df6b25fe524c500cf1a1333ac136e8a29d1484
+ms.contentlocale: de-de
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="use-azure-storage-for-sql-server-backup-and-restore"></a>Verwenden von Azure Storage für SQL Server-Sicherung und -Wiederherstellung
@@ -31,7 +32,7 @@ In diesem Thema werden die Vorteile des Azure-Speichers für SQL-Sicherungen erl
 ## <a name="benefits-of-using-the-azure-blob-service-for-sql-server-backups"></a>Vorteile der Verwendung des Azure-Blob-Diensts für SQL Server-Sicherungen
 Bei der Sicherung von SQL Server gibt es verschiedene Herausforderungen. Hierzu gehören die Speicherverwaltung, das Risiko eines Speicherausfalls, der Zugriff auf Offsitespeicher und die Konfiguration der Hardware. Viele dieser Herausforderungen lassen sich durch Verwendung des Azure-Blobspeicherdiensts für SQL Server-Sicherungen meistern. Betrachten Sie die folgenden Vorteile:
 
-* **Einfache Bedienung:** Das Speichern von Sicherungen in Azure-Blobs ist eine praktische, flexible und leicht zugängliche Option für die Offsitespeicherung. Die Erstellung von Offsitespeicher für SQL Server-Sicherungen erfordert ggf. lediglich das Ändern vorhandener Skripts/Aufträge für die Verwendung der **BACKUP TO URL**-Syntax. Offsitespeicher sollte normalerweise weit genug vom Standort der Produktionsdatenbank entfernt sein, um zu verhindern, dass ein einziger Notfall sich auf beide Standorte (den des Offsitespeichers und den der Produktionsdatenbank) auswirkt. Die [Georeplikation Ihrer Azure-Blobs](../../../storage/storage-redundancy.md) bietet zusätzlichen Schutz bei einem Notfall, der sich auf die gesamte Region auswirkt.
+* **Einfache Bedienung:** Das Speichern von Sicherungen in Azure-Blobs ist eine praktische, flexible und leicht zugängliche Option für die Offsitespeicherung. Die Erstellung von Offsitespeicher für SQL Server-Sicherungen erfordert ggf. lediglich das Ändern vorhandener Skripts/Aufträge für die Verwendung der **BACKUP TO URL**-Syntax. Offsitespeicher sollte normalerweise weit genug vom Standort der Produktionsdatenbank entfernt sein, um zu verhindern, dass ein einziger Notfall sich auf beide Standorte (den des Offsitespeichers und den der Produktionsdatenbank) auswirkt. Die [Georeplikation Ihrer Azure-Blobs](../../../storage/common/storage-redundancy.md) bietet zusätzlichen Schutz bei einem Notfall, der sich auf die gesamte Region auswirkt.
 * **Sicherungsarchiv:** Der Azure Blob Storage-Dienst bietet eine bessere Alternative als die sonst übliche Archivierung von Sicherungen auf Band. Bandspeicher muss ggf. physisch an einen Offsitestandort transportiert werden und erfordert Schutzmaßnahmen für die Medien. Die Speicherung von Sicherungen im Azure-Blob-Speicher stellt eine sofortige, hochverfügbare und dauerhafte Archivierungsoption dar.
 * **Verwaltete Hardware**: Bei Azure-Diensten fällt kein Mehraufwand für Hardwareverwaltung an. Azure-Dienste verwalten die Hardware und stellen geografische Replikation für Redundanz und Schutz vor Hardwareausfällen zur Verfügung.
 * **Unbegrenzter Speicherplatz**: Durch eine direkte Sicherung in Azure-Blobs haben Sie Zugriff auf praktisch unbegrenzten Speicher. Die Sicherung in einem virtuellen Azure-Computer dagegen weist Einschränkungen aufgrund der Computergröße auf. Die Anzahl von Datenträgern, die für Sicherungen an einen virtuellen Azure-Computer angefügt werden können, ist begrenzt. Bei einer sehr großen Instanz beträgt die maximale Anzahl 16 Datenträger, während kleinere Instanzen weniger Datenträger unterstützen.
@@ -76,10 +77,5 @@ Die folgenden SQL Server-Komponenten werden bei einer Sicherung im Azure-Blobspe
 Wenn Probleme auftreten, lesen Sie das Thema [SQL Server-URL-Sicherung – bewährte Methoden und Problembehandlung](https://msdn.microsoft.com/library/jj919149.aspx).
 
 Weitere Sicherungs- und Wiederherstellungsoptionen für SQL Server finden Sie unter [Sicherung und Wiederherstellung für SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-sql-backup-recovery.md).
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

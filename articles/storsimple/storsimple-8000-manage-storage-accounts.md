@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: e94a01c87886b59816c7ea1a4e78825836e6e6e7
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 36058ad69ea670998b50cf9038741c294a5b79ab
 ms.contentlocale: de-de
-ms.lasthandoff: 07/08/2017
-
+ms.lasthandoff: 08/21/2017
 
 ---
 
@@ -57,7 +56,7 @@ Im Folgenden sind die häufigsten ausgeführten Aufgaben im Zusammenhang mit Spe
 Es gibt drei Typen von Speicherkonten, die mit dem StorSimple-Gerät verwendet werden können.
 
 * **Auto-generated storage accounts** – diese Art von Speicherkonto wird bei der ersten Erstellung des Dienstes automatisch generiert. Weitere Informationen zum Erstellen dieses Speicherkontos finden Sie unter [Schritt 1: Erstellen eines neuen Diensts](storsimple-8000-deployment-walkthrough-u2.md#step-1-create-a-new-service) [in Bereitstellen des lokalen StorSimple-Geräts](storsimple-8000-deployment-walkthrough-u2.md). 
-* **Storage accounts in the service subscription** – Azure-Speicherkonten, die demselben Abonnement zugeordnet sind wie der Dienst . Weitere Informationen zur Erstellung dieser Speicherkonten finden Sie unter [Informationen zu Azure-Speicherkonten](../storage/storage-create-storage-account.md). 
+* **Storage accounts in the service subscription** – Azure-Speicherkonten, die demselben Abonnement zugeordnet sind wie der Dienst . Weitere Informationen zur Erstellung dieser Speicherkonten finden Sie unter [Informationen zu Azure-Speicherkonten](../storage/common/storage-create-storage-account.md). 
 * **Storage accounts outside of the service subscription** – Azure-Speicherkonten, die nicht mit dem Dienst verknüpft sind und wahrscheinlich schon vorhanden waren, bevor der Dienst erstellt wurde.
 
 ## <a name="add-a-storage-account"></a>Hinzufügen von Speicherkonten

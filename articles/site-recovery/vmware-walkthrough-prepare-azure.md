@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
-ms.openlocfilehash: b25e2d5738a5d8a0f98470678ff03950b0aa4e36
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 40abff72278c9f8d9f701023fd473fe52c17b421
 ms.contentlocale: de-de
-ms.lasthandoff: 06/29/2017
-
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="step-5-prepare-azure-resources-for-vmware-replication-to-azure"></a>Schritt 5: Vorbereiten der Azure-Ressourcen für die VMware-Replikation in Azure
@@ -35,7 +34,7 @@ Stellen Sie sicher, dass Sie die [Voraussetzungen](vmware-walkthrough-prerequisi
 
 ## <a name="set-up-an-azure-account"></a>Einrichten eines Azure-Kontos
 
-- Rufen Sie ein [Microsoft Azure-Konto](http://azure.microsoft.com/) ab.
+- Erstellen Sie ein [Microsoft Azure-Konto](http://azure.microsoft.com/).
 - Für den Einstieg steht eine [kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/)zur Verfügung.
 - Konsultieren Sie die unterstützten Regionen für Site Recovery unter „Geografische Verfügbarkeit“ auf der Seite [Site Recovery – Preise](https://azure.microsoft.com/pricing/details/site-recovery/).
 - Erfahren Sie mehr über [Site Recovery-Preise](site-recovery-faq.md#pricing), und erhalten Sie [Preisdetails](https://azure.microsoft.com/pricing/details/site-recovery/).
@@ -54,9 +53,9 @@ Stellen Sie sicher, dass Sie die [Voraussetzungen](vmware-walkthrough-prerequisi
 ## <a name="set-up-an-azure-storage-account"></a>Richten Sie ein Azure-Speicherkonto ein
 
 - Site Recovery repliziert lokale Computer in den Azure-Speicher. Azure-VMs werden aus dem Speicher nach dem Failover erstellt.
-- [Richten Sie ein Azure-Speicherkonto ein](../storage/storage-create-storage-account.md#create-a-storage-account), das für replizierte Daten verwendet werden kann.
+- [Richten Sie ein Azure-Speicherkonto ein](../storage/common/storage-create-storage-account.md#create-a-storage-account), das für replizierte Daten verwendet werden kann.
 - Site Recovery kann im Azure-Portal Speicherkonten verwenden, die in Resource Manager oder im klassischen Modus eingerichtet sind.
-- Das Speicherkonto kann ein Standard- oder [Premium](../storage/storage-premium-storage.md)-Konto sein.
+- Das Speicherkonto kann ein Standard- oder [Premium](../storage/common/storage-premium-storage.md)-Konto sein.
 - Wenn Sie ein Premium-Konto eingerichtet haben, benötigen Sie auch ein zusätzliches Standard-Konto für die Protokolldaten.
 
 

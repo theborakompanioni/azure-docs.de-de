@@ -15,10 +15,10 @@ ms.workload: storage-backup-recovery
 ms.date: 07/23/2017
 ms.author: raynew
 ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
-ms.openlocfilehash: 365dd9477f791432c1a92f1b81eb573dbbc6f874
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 63b005f37ab5e15e8a1b4645446d65f1529f1bbd
 ms.contentlocale: de-de
-ms.lasthandoff: 07/26/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 
@@ -50,10 +50,10 @@ Nach der Lektüre dieses Artikels können Sie Kommentare am Ende des Artikels od
 ## <a name="set-up-an-azure-storage-account"></a>Richten Sie ein Azure-Speicherkonto ein
 
 - Site Recovery repliziert lokale Computer in den Azure-Speicher. Virtuelle Azure-Computer werden nach dem Failover aus dem Speicher erstellt.
-- Richten Sie ein Standard- oder Premium-[Azure-Speicherkonto](../storage/storage-create-storage-account.md#create-a-storage-account) zum Speichern von Daten, die nach Azure repliziert werden.
-- [Premiumspeicher](../storage/storage-premium-storage.md) wird normalerweise für virtuelle Computer verwendet, die eine konsistent hohe E/A-Leistung und geringe Latenz zum Hosten von E/A-intensiven Workloads erfordern.
+- Richten Sie ein Standard- oder Premium-[Azure-Speicherkonto](../storage/common/storage-create-storage-account.md#create-a-storage-account) zum Speichern von Daten, die nach Azure repliziert werden.
+- [Premiumspeicher](../storage/common/storage-premium-storage.md) wird normalerweise für virtuelle Computer verwendet, die eine konsistent hohe E/A-Leistung und geringe Latenz zum Hosten von E/A-intensiven Workloads erfordern.
 - Wenn Sie ein Premiumkonto zum Speichern replizierter Daten verwenden möchten, benötigen Sie außerdem ein Standard-Speicherkonto zum Speichern von Replikationsprotokollen, in denen laufende Änderungen lokaler Daten erfasst werden.
-- Richten Sie ein Konto im [Resource Manager-Modus](../storage/storage-create-storage-account.md) oder im [klassischen Modus](../storage/storage-create-storage-account-classic-portal.md) ein (je nachdem, welches Ressourcenmodell Sie für virtuelle Azure-Computer nach dem Failover verwenden möchten).
+- Richten Sie ein Konto im [Resource Manager-Modus](../storage/common/storage-create-storage-account.md) oder im [klassischen Modus](../storage/common/storage-create-storage-account.md) ein (je nachdem, welches Ressourcenmodell Sie für virtuelle Azure-Computer nach dem Failover verwenden möchten).
 - Es wird empfohlen, ein Speicherkonto einzurichten, bevor Sie beginnen. Falls Sie es nicht tun, müssen Sie diesen Schritt während der Site Recovery-Bereitstellung ausführen. Die Konten müssen sich in der gleichen Region wie der Recovery Services-Tresor befinden.
 - Speicherkonten, die von Site Recovery verwendet werden, können nicht über Ressourcengruppen hinweg im gleichen Abonnement oder über verschiedene Abonnements hinweg verschoben werden.
 

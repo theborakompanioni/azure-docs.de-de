@@ -15,24 +15,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/19/2017
 ms.author: cynthn
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
-ms.openlocfilehash: 581082600db3c14c2ef33acb1d47b0b48e9d0142
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: d802ba16ecb4e32e2adb7be3a8e99c72a1625841
 ms.contentlocale: de-de
-ms.lasthandoff: 06/03/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 
 # <a name="upload-a-generalized-vhd-and-use-it-to-create-new-vms-in-azure"></a>Hochladen einer generalisierten VHD und Verwendung dieser zum Erstellen neuer VMs in Azure
 
-In diesem Thema wird die Verwendung von PowerShell erläutert, um eine VHD einer generalisierten VM in Azure hochzuladen, ein Image über die VHD zu erstellen und eine neue VM über dieses Image zu erstellen. Sie können eine VHD hochladen, die aus einem lokalen Virtualisierungstool oder aus einer anderen Cloud exportiert wurde. Durch Verwenden des Features [Managed Disks](../../storage/storage-managed-disks-overview.md) (verwaltete Datenträger) für die neue VM wird die Verwaltung virtueller Computer vereinfacht. Außerdem steigt die Verfügbarkeit, wenn die VM in einer Verfügbarkeitsgruppe platziert wird. 
+In diesem Thema wird die Verwendung von PowerShell erläutert, um eine VHD einer generalisierten VM in Azure hochzuladen, ein Image über die VHD zu erstellen und eine neue VM über dieses Image zu erstellen. Sie können eine VHD hochladen, die aus einem lokalen Virtualisierungstool oder aus einer anderen Cloud exportiert wurde. Durch Verwenden des Features [Managed Disks](managed-disks-overview.md) (verwaltete Datenträger) für die neue VM wird die Verwaltung virtueller Computer vereinfacht. Außerdem steigt die Verfügbarkeit, wenn die VM in einer Verfügbarkeitsgruppe platziert wird. 
 
 Wenn Sie ein Beispielskript verwenden möchten, lesen Sie [Beispielskript zum Hochladen einer VHD in Azure und Erstellen einer neuen VM](../scripts/virtual-machines-windows-powershell-upload-generalized-script.md).
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
 - Bevor Sie eine VHD in Azure hochladen, befolgen Sie die Anweisungen unter [Vorbereiten einer Windows-VHD oder -VHDX zum Hochladen in Azure](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-- Lesen Sie [Planen der Migration zu Managed Disks](on-prem-to-azure.md#plan-for-the-migration-to-managed-disks) vor dem Starten der Migration zu [Managed Disks](../../storage/storage-managed-disks-overview.md).
+- Lesen Sie [Planen der Migration zu Managed Disks](on-prem-to-azure.md#plan-for-the-migration-to-managed-disks) vor dem Starten der Migration zu [Managed Disks](managed-disks-overview.md).
 - Stellen Sie sicher, dass Sie die neueste Version des AzureRM.Compute-PowerShell-Moduls verwenden. Führen Sie den folgenden Befehl aus, um es zu installieren.
 
     ```powershell
@@ -163,7 +163,7 @@ Sie können eine VHD zudem mit den folgenden Tools in ein Speicherkonto hochlade
 - [Azure Storage Copy Blob-API](https://msdn.microsoft.com/library/azure/dd894037.aspx)
 - [Azure-Speicher-Explorer: Hochladen von Blobs](https://azurestorageexplorer.codeplex.com/)
 - [Speicher-Import/Export Service REST-API-Referenz](https://msdn.microsoft.com/library/dn529096.aspx)
--    Wir empfehlen das Verwenden des Import/Export-Diensts, wenn die geschätzte Hochladedauer sieben Tage überschreitet. Sie können mithilfe von [DataTransferSpeedCalculator](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/blob/master/DataTransferSpeedCalculator.html) die Dauer anhand der Datengröße und Übertragungseinheit schätzen. 
+-   Wir empfehlen das Verwenden des Import/Export-Diensts, wenn die geschätzte Hochladedauer sieben Tage überschreitet. Sie können mithilfe von [DataTransferSpeedCalculator](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/blob/master/DataTransferSpeedCalculator.html) die Dauer anhand der Datengröße und Übertragungseinheit schätzen. 
     Der Import/Export-Dienst kann zum Kopieren in oder aus dem Standardspeicherkonto verwendet werden. Sie benötigen ein Tool wie AzCopy zum Kopieren zwischen Standardspeicherkonto und Premium-Speicherkonto.
 
 

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/26/2017
 ms.author: adegeo
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: e6a5e3a378a5661c09f770a202c10d270f324447
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: fa7d9d3bef4cb326844ede76171e8c566e87116b
 ms.contentlocale: de-de
-ms.lasthandoff: 05/31/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 
@@ -47,7 +47,7 @@ Führen Sie folgende Schritte aus:
 
 4. Erstellen Sie eine [VM-Skalierungsgruppe][vmss-create] mit dem Bild-URI, den Sie im vorherigen Schritt erfasst haben.
 
-Weitere Informationen über Datenträger finden Sie unter [Managed Disks – Übersicht](../storage/storage-managed-disks-overview.md) und [Verwenden angefügter Datenträger](virtual-machine-scale-sets-attached-disks.md).
+Weitere Informationen über Datenträger finden Sie unter [Managed Disks – Übersicht](../virtual-machines/windows/managed-disks-overview.md) und [Verwenden angefügter Datenträger](virtual-machine-scale-sets-attached-disks.md).
 
 ## <a name="install-when-the-scale-set-is-provisioned"></a>Installieren nach der Bereitstellung der Skalierungsgruppe
 

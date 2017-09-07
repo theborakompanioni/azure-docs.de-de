@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: a5bc3a72eccc48ec26ef5f029d780175d66080c0
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 3d0801053721f98ce7a2b0fcbe3c65da8dbdd8d3
 ms.contentlocale: de-de
-ms.lasthandoff: 05/31/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>Bereitstellen von StorSimple Virtual Array – Vorbereiten des Azure-Portals
@@ -144,7 +144,7 @@ Führen Sie die folgenden Schritte im [Azure-Portal](https://portal.azure.com/) 
 
 Dies ist ein optionaler Schritt, der nur dann ausgeführt werden muss, wenn Sie nicht die automatische Erstellung eines Speicherkontos mit Ihrem Dienst aktiviert haben.
 
-Wenn Sie ein Azure-Speicherkonto in einer anderen Region erstellen müssen, finden Sie unter [Erstellen eines Speicherkontos](../storage/storage-create-storage-account.md#create-a-storage-account) entsprechende Schrittanleitungen.
+Wenn Sie ein Azure-Speicherkonto in einer anderen Region erstellen müssen, finden Sie unter [Erstellen eines Speicherkontos](../storage/common/storage-create-storage-account.md#create-a-storage-account) entsprechende Schrittanleitungen.
 
 Führen Sie die folgenden Schritte im [Azure-Portal](https://ms.portal.azure.com/) auf der Seite für den StorSimple-Geräte-Manager-Dienst aus, um ein vorhandenes Microsoft Azure-Speicherkonto hinzuzufügen.
 

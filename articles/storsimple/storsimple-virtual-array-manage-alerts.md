@@ -15,10 +15,11 @@ ms.workload: NA
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: b870974efdde2ebdf339013ca86b772b665151a4
-ms.openlocfilehash: 8cfdad48524c24b3ad69c01ae0330e90ce197b3a
-ms.lasthandoff: 03/01/2017
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 3062c7c060c3730c5edef3ada16f3a5077cf5558
+ms.contentlocale: de-de
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="use-storsimple-device-manager-to-manage-alerts-for-the-storsimple-virtual-array"></a>Verwenden des StorSimple-Geräte-Managers zum Verwalten von Warnungen für StorSimple Virtual Array
@@ -151,7 +152,7 @@ In den folgenden Tabellen sind einige StorSimple-Warnungen aufgeführt, die unte
 
 | Warnungstext | Ereignis | Weitere Informationen/Empfohlene Maßnahmen |
 |:--- |:--- |:--- |
-| Bei der Datenübertragung kommt es zu unerwarteten Verzögerungen. |Langsame Datenübertragung. |Drosselungsfehler treten auf, wenn Sie die Skalierbarkeitsziele eines Speicherdiensts überschreiten. Der Speicherdienst tut dies, um sicherzustellen, dass kein Einzelclient oder Mandant diesen Dienst auf Kosten anderer verwenden kann. Weitere Informationen zur Problembehandlung für Ihr Azure-Speicherkonto finden Sie unter [Microsoft Azure-Speicher: Überwachung, Diagnose und Problembehandlung](../storage/storage-monitoring-diagnosing-troubleshooting.md). |
+| Bei der Datenübertragung kommt es zu unerwarteten Verzögerungen. |Langsame Datenübertragung. |Drosselungsfehler treten auf, wenn Sie die Skalierbarkeitsziele eines Speicherdiensts überschreiten. Der Speicherdienst tut dies, um sicherzustellen, dass kein Einzelclient oder Mandant diesen Dienst auf Kosten anderer verwenden kann. Weitere Informationen zur Problembehandlung für Ihr Azure-Speicherkonto finden Sie unter [Microsoft Azure-Speicher: Überwachung, Diagnose und Problembehandlung](../storage/common/storage-monitoring-diagnosing-troubleshooting.md). |
 | Der lokale reservierte Festplattenspeicher auf <*Name des Geräts*> ist in Kürze erschöpft. |Langsame Reaktion. |10 % des insgesamt bereitgestellten Speicherplatzes für <*Name des Geräts*> ist auf dem lokalen Gerät reserviert, und dieser reservierte Speicherplatz ist in Kürze erschöpft. Die Workload auf <*Name des Geräts*> generiert eine höhere Änderungsrate, oder Sie haben kürzlich eine große Menge von Daten migriert. Dies kann zu Leistungseinbußen führen. Wählen Sie eine der folgenden Vorgehensweisen, um dieses Problem zu lösen:<ul><li>Erhöhen Sie die Cloudbandbreite für dieses Gerät.</li><li>Verringern Sie die Workloads, oder verschieben Sie Workloads auf ein anderes Volume oder eine andere Freigabe.</li></ul> |
 
 ### <a name="security-alerts"></a>Sicherheitswarnungen

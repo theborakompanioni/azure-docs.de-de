@@ -16,10 +16,10 @@ ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: ninarn
 ms.translationtype: HT
-ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
-ms.openlocfilehash: a8740f3b78de37c09ff7a9250682d47fa9bec1e3
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: a716de21e21148a082f49f0f416b14ca0eaa8192
 ms.contentlocale: de-de
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="application-patterns-and-development-strategies-for-sql-server-in-azure-virtual-machines"></a>Anwendungsmuster und Entwicklungsstrategien für SQL Server in Azure Virtual Machines
@@ -51,7 +51,7 @@ Anwendungsebenen beschreiben die logische Gruppierung der Funktionen und Kompone
 
 Bevor Sie beginnen, diesen Artikel zu lesen, sollten Sie mit den grundlegenden Konzepten von SQL Server und Azure vertraut sein. Weitere Informationen finden Sie unter [SQL Server-Onlinedokumentation](https://msdn.microsoft.com/library/bb545450.aspx), [Übersicht über SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-sql-server-iaas-overview.md) und auf [Azure.com](https://azure.microsoft.com/).
 
-Dieser Artikel beschreibt mehrere Anwendungsmuster, die für einfache Anwendungen ebenso wie für komplexe Unternehmensanwendungen geeignet sind. Bevor wir ausführlich auf die einzelnen Muster eingehen, wird empfohlen, dass Sie sich mit den verfügbaren Datenspeicherdiensten in Azure vertraut machen, z.B. [Azure Storage](../../../storage/storage-introduction.md), [Azure SQL-Datenbank](../../../sql-database/sql-database-technical-overview.md) und [SQL Server auf einem virtuellen Azure-Computer](virtual-machines-windows-sql-server-iaas-overview.md). Um die optimalen Entwurfsentscheidungen für Ihre Anwendung zu treffen, sollten Sie genau wissen, wann Sie welchen Speicherdienst verwenden sollten.
+Dieser Artikel beschreibt mehrere Anwendungsmuster, die für einfache Anwendungen ebenso wie für komplexe Unternehmensanwendungen geeignet sind. Bevor wir ausführlich auf die einzelnen Muster eingehen, wird empfohlen, dass Sie sich mit den verfügbaren Datenspeicherdiensten in Azure vertraut machen, z.B. [Azure Storage](../../../storage/common/storage-introduction.md), [Azure SQL-Datenbank](../../../sql-database/sql-database-technical-overview.md) und [SQL Server auf einem virtuellen Azure-Computer](virtual-machines-windows-sql-server-iaas-overview.md). Um die optimalen Entwurfsentscheidungen für Ihre Anwendung zu treffen, sollten Sie genau wissen, wann Sie welchen Speicherdienst verwenden sollten.
 
 ### <a name="choose-sql-server-in-an-azure-virtual-machine-when"></a>Wählen Sie SQL Server in Azure Virtual Machines in folgenden Fällen:
 * Sie benötigen Kontrolle über SQL Server und Windows. Dies kann z. B. die SQL Server-Version, spezielle Hotfixes, Leistungskonfiguration usw. umfassen.
@@ -192,7 +192,7 @@ Wie Sie im Diagramm sehen können, verteilt der Azure Load Balancer den Datenver
 
 ![Anwendungsmuster mit Cloud Services](./media/virtual-machines-windows-sql-server-app-patterns-dev-strategies/IC728013.png)
 
-Ein anderer Ansatz zum Implementieren dieses Anwendungsmusters ist die Verwendung einer konsolidierten Webrolle mit sowohl Präsentations- als auch Geschäftsebenenkomponenten wie im folgenden Diagramm dargestellt. Dieses Anwendungsmuster eignet sich für Anwendungen, die zustandsbehaftetes Design erfordern. Da Azure zustandslose Serverknoten für Web-und Workerrollen bereitstellt, wird empfohlen, dass Sie eine Logik zum Speichern des Sitzungszustands mithilfe einer der folgenden Technologien implementieren: [Azure Caching](https://azure.microsoft.com/documentation/services/redis-cache/), [Azure Table Storage](../../../storage/storage-dotnet-how-to-use-tables.md) oder [Azure SQL-Datenbank](../../../sql-database/sql-database-technical-overview.md).
+Ein anderer Ansatz zum Implementieren dieses Anwendungsmusters ist die Verwendung einer konsolidierten Webrolle mit sowohl Präsentations- als auch Geschäftsebenenkomponenten wie im folgenden Diagramm dargestellt. Dieses Anwendungsmuster eignet sich für Anwendungen, die zustandsbehaftetes Design erfordern. Da Azure zustandslose Serverknoten für Web-und Workerrollen bereitstellt, wird empfohlen, dass Sie eine Logik zum Speichern des Sitzungszustands mithilfe einer der folgenden Technologien implementieren: [Azure Caching](https://azure.microsoft.com/documentation/services/redis-cache/), [Azure Table Storage](../../../cosmos-db/table-storage-how-to-use-dotnet.md) oder [Azure SQL-Datenbank](../../../sql-database/sql-database-technical-overview.md).
 
 ![Anwendungsmuster mit Cloud Services](./media/virtual-machines-windows-sql-server-app-patterns-dev-strategies/IC728014.png)
 
