@@ -5,7 +5,7 @@ Die Web-App bietet Ihnen eine Hostingumgebung für Ihren Code sowie eine URL, un
 Ersetzen Sie im folgenden Befehl *\<app_name>* durch einen eindeutigen Namen (gültige Zeichen sind `a-z`, `0-9` und `-`). Wenn `<app_name>` nicht eindeutig ist, wird die Fehlermeldung „Eine Website mit dem Namen <App-Name> ist bereits vorhanden“ angezeigt. Die Standard-URL der Web-App lautet `https://<app_name>.azurewebsites.net`. 
 
 ```azurecli-interactive
-az webapp create --name <app_name> --resource-group myResourceGroup --plan myAppServicePlan
+az webapp create --name <app_name> --resource-group myResourceGroup --plan myAppServicePlan --deployment-local-git
 ```
 
 Nach dem Erstellen der Web-App zeigt die Azure-Befehlszeilenschnittstelle Informationen wie im folgenden Beispiel an:
