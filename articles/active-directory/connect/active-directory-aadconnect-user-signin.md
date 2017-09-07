@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
 ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
-ms.openlocfilehash: 99df1c65ee59a3c12e8818d9069a8b487839b08d
+ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
+ms.openlocfilehash: da517c096357bb8db4334715fa46aa209c273f22
 ms.contentlocale: de-de
-ms.lasthandoff: 08/12/2017
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Azure AD Connect-Optionen für die Benutzeranmeldung
@@ -104,7 +104,7 @@ Der UPN des Benutzers hat das Format username@domain. Für eine Active Directory
 ### <a name="user-principal-name-in-azure-ad"></a>Benutzerprinzipalnamen in Azure AD
 Der Azure AD Connect-Assistent verwendet entweder das userPrincipalName-Attribut, oder Sie können das Attribut (bei der benutzerdefinierten Installation) angeben, das lokal als Benutzerprinzipalname in Azure AD verwendet werden soll. Dies ist der Wert, der zur Anmeldung bei Azure AD verwendet wird. Wenn der Wert des Attributs für den Benutzerprinzipalnamen – userPrincipalName – nicht einer überprüften Domäne in Azure AD entspricht, ersetzt ihn Azure AD durch den Standardwert „.onmicrosoft.com“.
 
-Jedes Verzeichnis in Azure Active Directory verfügt über einen integrierten Domänennamen der Form „contoso.onmicrosoft.com“, den Sie verwenden können, um mit der Nutzung von Azure oder anderen Microsoft-Diensten zu beginnen. Sie können mithilfe von benutzerdefinierten Domänen die Anmeldung vereinfachen und die Benutzerfreundlichkeit erhöhen. Informationen zu benutzerdefinierten Domänennamen in Azure AD und eine Anleitung zur Überprüfung einer Domäne finden Sie unter [Hinzufügen eines benutzerdefinierten Domänennamens zu Azure Active Directory](../add-custom-domain.md#add-your-custom-domain).
+Jedes Verzeichnis in Azure Active Directory verfügt über einen integrierten Domänennamen der Form „contoso.onmicrosoft.com“, den Sie verwenden können, um mit der Nutzung von Azure oder anderen Microsoft-Diensten zu beginnen. Sie können mithilfe von benutzerdefinierten Domänen die Anmeldung vereinfachen und die Benutzerfreundlichkeit erhöhen. Informationen zu benutzerdefinierten Domänennamen in Azure AD und eine Anleitung zur Überprüfung einer Domäne finden Sie unter [Hinzufügen eines benutzerdefinierten Domänennamens zu Azure Active Directory](../add-custom-domain.md#add-the-custom-domain-name-to-your-directory).
 
 ## <a name="azure-ad-sign-in-configuration"></a>Konfiguration der Azure AD-Anmeldung
 ### <a name="azure-ad-sign-in-configuration-with-azure-ad-connect"></a>Konfigurieren der Azure AD-Anmeldung mit Azure AD Connect
@@ -116,7 +116,7 @@ Die Azure AD-Anmeldeseite listet die UPN-Suffixe auf, die für das lokale Active
 | Zustand | Beschreibung | Erforderliche Aktion |
 |:--- |:--- |:--- |
 | Überprüft |Azure AD Connect hat eine übereinstimmende überprüfte Domäne in Azure AD festgestellt. Alle Benutzer dieser Domäne können sich mit ihren lokalen Anmeldeinformationen anmelden. |Es ist keine Aktion erforderlich. |
-| Nicht überprüft |Azure AD Connect hat eine übereinstimmende benutzerdefinierte Domäne in Azure AD gefunden, die allerdings nicht überprüft ist. Das UPN-Suffix der Benutzer dieser Domäne wird nach der Synchronisierung in das Standardsuffix „.onmicrosoft.com“ geändert, wenn die Domäne nicht überprüft wurde. | [Überprüfen der benutzerdefinierten Domäne in Azure AD](../add-custom-domain.md#verify-the-domain-name-with-azure-ad) |
+| Nicht überprüft |Azure AD Connect hat eine übereinstimmende benutzerdefinierte Domäne in Azure AD gefunden, die allerdings nicht überprüft ist. Das UPN-Suffix der Benutzer dieser Domäne wird nach der Synchronisierung in das Standardsuffix „.onmicrosoft.com“ geändert, wenn die Domäne nicht überprüft wurde. | [Überprüfen der benutzerdefinierten Domäne in Azure AD](../add-custom-domain.md#verify-the-custom-domain-name-in-azure-ad) |
 | Nicht hinzugefügt |Azure AD Connect konnte keine benutzerdefinierte Domäne finden, die dem UPN-Suffix entspricht. Das UPN-Suffix der Benutzer der Benutzer dieser Domäne wird in das Standardsuffix „.onmicrosoft.com“ geändert, wenn die Domäne nicht in Azure hinzugefügt und überprüft wurde. | [Hinzufügen eines benutzerdefinierten Domänennamens zu Azure Active Directory](../add-custom-domain.md) |
 
 Die Azure AD-Anmeldeseite listet das für die lokale Active Directory-Instanz definierte UPN-Suffix und die entsprechende benutzerdefinierte Domäne in Azure AD mit ihrem aktuellen Überprüfungsstatus auf. In einer benutzerdefinierten Installation können Sie jetzt das Attribut für Benutzerprinzipalnamen auf der Seite **Azure AD-Anmeldung** auswählen.

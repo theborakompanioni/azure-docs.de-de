@@ -3,7 +3,7 @@ title: Anpassen Ihrer Anmeldeseite in Azure Active Directory | Microsoft-Dokumen
 description: "Erfahren Sie, wie Sie der Anmeldeseite ein Unternehmensbranding hinzufügen."
 services: active-directory
 documentationcenter: 
-author: jeffgilb
+author: curtand
 manager: femila
 editor: 
 ms.assetid: f8b932bc-8b4f-42b5-a2d3-f2c076234a78
@@ -12,14 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/11/2017
-ms.author: jeffgilb
+ms.date: 09/06/2017
+ms.author: curtand
+ms.reviewer: kexia
 custom: it-pro
 ms.translationtype: HT
-ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
-ms.openlocfilehash: bddf2542eecce8bdeccda6053203bf2c2ba0ffb2
+ms.sourcegitcommit: 763bc597bdfc40395511cdd9d797e5c7aaad0fdf
+ms.openlocfilehash: 6bfce3d4ec243779229cc4f39e1c22149229a66a
 ms.contentlocale: de-de
-ms.lasthandoff: 08/15/2017
+ms.lasthandoff: 09/06/2017
 
 ---
 # <a name="quickstart-add-company-branding-to-your-sign-in-page-in-azure-ad"></a>Schnellstart: Hinzufügen eines Unternehmensbrandings zur Anmeldeseite in Azure AD
@@ -62,7 +63,7 @@ Dies wird am unteren Rand des Anmeldeformulars angezeigt und kann verwendet werd
 ### <a name="sign-in-page-image"></a>Bild der Anmeldeseite  
 Beschreibung | Einschränkungen | Empfehlungen
 ------- | ------- | ----------
-Dies wird im Hintergrund der Anmeldeseite angezeigt, ist in der Mitte des sichtbaren Bereichs verankert und wird so skaliert und zugeschnitten, dass das Browserfenster gefüllt ist.    <br>Auf schmalen Bildschirmen, z.B. von Mobiltelefonen, wird dieses Bild nicht angezeigt.<br>Eine schwarze Maske mit einer Deckkraft von 0,55 wendet unser Code beim Laden der Seite auf dieses Bild an. | JPG oder PNG<br>Bildmaße: 1.920 x 1.080 px<br>Dateigröße: &gt; 300 KB | <br>Verwenden Sie Bilder, in denen die Bildschärfe sich nicht auf einen Bereich konzentriert. Das nicht transparente Anmeldeformular wird über dem Mittelpunkt dieses Bilds angezeigt und kann abhängig von der Größe des Browserfensters einen beliebigen Teil des Bilds abdecken.<br>Halten Sie die Dateigröße so klein wie möglich, um schnelle Ladezeiten sicherzustellen. 
+Dies wird im Hintergrund der Anmeldeseite angezeigt, ist in der Mitte des sichtbaren Bereichs verankert und wird so skaliert und zugeschnitten, dass das Browserfenster gefüllt ist.    <br>Auf schmalen Bildschirmen, z.B. von Mobiltelefonen, wird dieses Bild nicht angezeigt.<br>Eine schwarze Maske mit einer Deckkraft von 0,55 wendet unser Code beim Laden der Seite auf dieses Bild an. | JPG oder PNG<br>Bildmaße: 1.920 x 1.080 px<br>Dateigröße: &lt; 300 KB | <br>Verwenden Sie Bilder, in denen die Bildschärfe sich nicht auf einen Bereich konzentriert. Das nicht transparente Anmeldeformular wird über dem Mittelpunkt dieses Bilds angezeigt und kann abhängig von der Größe des Browserfensters einen beliebigen Teil des Bilds abdecken.<br>Halten Sie die Dateigröße so klein wie möglich, um schnelle Ladezeiten sicherzustellen. 
 
 ### <a name="background-color"></a>Hintergrundfarbe
 Beschreibung | Einschränkungen | Empfehlungen
