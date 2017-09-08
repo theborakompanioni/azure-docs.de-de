@@ -1,6 +1,6 @@
 ---
-title: "Erstellen und Veröffentlichen von verwalteten Azure-Anwendungen | Microsoft-Dokumentation"
-description: Zeigt, wie ein ISV oder Partner eine verwaltete Azure-Anwendung erstellt
+title: "Erstellen und Veröffentlichen einer verwalteten Azure-Dienstkataloganwendung | Microsoft-Dokumentation"
+description: "Erfahren Sie, wie Sie eine verwaltete Azure-Anwendung erstellen, die für Mitglieder Ihrer Organisation vorgesehen ist."
 services: azure-resource-manager
 author: ravbhatnagar
 manager: rjmax
@@ -8,171 +8,193 @@ ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 05/08/2017
+ms.date: 08/23/2017
 ms.author: gauravbh; tomfitz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 56dd68e328abd6c1dacdf7a8e051ca6b3cd07083
+ms.translationtype: HT
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: 39b74984ec2f89ed39753963de7fe3ff79577c9e
 ms.contentlocale: de-de
-ms.lasthandoff: 05/11/2017
-
+ms.lasthandoff: 08/24/2017
 
 ---
-# <a name="create-and-publish-an-azure-managed-application"></a>Erstellen und Veröffentlichen von verwalteten Azure-Anwendungen 
+# <a name="publish-a-managed-application-for-internal-consumption"></a>Veröffentlichen einer verwalteten Anwendung für die interne Nutzung
 
-Wie im Artikel mit der [Übersicht über verwaltete Anwendungen](managed-application-overview.md) beschrieben umfasst der gesamte Vorgang zwei Szenarien. Das eine ist der Herausgeber oder ISV, der eine verwaltete Anwendung zur Verwendung durch Kunden erstellen möchte. Das zweite ist der Kunde oder der Verbraucher der verwalteten Anwendung. Der Schwerpunkt dieses Artikels liegt auf dem ersten Szenario erläutert, wie ein ISV eine verwaltete Anwendung erstellen und veröffentlichen kann. 
+Sie können [verwaltete Azure-Anwendungen](managed-application-overview.md) erstellen und veröffentlichen, die für Mitglieder Ihrer Organisation vorgesehen sind. Die IT-Abteilung kann beispielsweise verwaltete Anwendungen veröffentlichen, die die Konformität mit Ihren Unternehmensstandards gewährleisten. Diese verwalteten Anwendungen stehen über den Dienstkatalog, aber nicht über den Azure Marketplace zur Verfügung.
 
-Zum Erstellen einer verwalteten Anwendung müssen Sie zuerst Folgendes erstellen:
+Um eine verwaltete Anwendung für den Dienstkatalog zu veröffentlichen, gehen Sie folgendermaßen vor:
 
-* ein Paket, das die Vorlagendateien enthält
-* den Benutzer, die Gruppe oder die Anwendung mit Zugriff auf die Ressourcengruppe im Abonnement des Kunden
-* die Gerätedefinition
+* Erstellen Sie ein ZIP-Paket, das die drei erforderlichen Vorlagendateien enthält.
+* Entscheiden Sie, welche Benutzer, Gruppen oder Anwendungen Zugriff auf die Ressourcengruppe im Benutzerabonnement benötigen.
+* Erstellen Sie die verwaltete Anwendungsdefinition, die auf das ZIP-Paket verweist und Zugriff auf die Identität anfordert.
 
-Beispiele für die Dateien, finden Sie unter [Managed Application samples](https://github.com/Azure/azure-managedapp-samples/tree/master/samples) (Beispiele für verwaltete Anwendungen).
+## <a name="create-a-managed-application-package"></a>Erstellen eines Pakets für eine verwaltete Anwendung
 
-## <a name="create-managed-application-package"></a>Paket für verwaltete Anwendung erstellen
+Im ersten Schritt werden die drei erforderlichen Vorlagendateien erstellt. Komprimieren Sie alle drei Dateien zu einer ZIP-Datei, und laden Sie sie an einen zugänglichen Speicherort hoch, z.B. in ein Speicherkonto. Sie übergeben einen Link zu dieser ZIP-Datei, wenn Sie die Definition der verwalteten Anwendung erstellen.
 
-Der erste Schritt ist das Erstellen des Pakets für die verwaltete Anwendung, das die wichtigsten Vorlagendateien enthält. Der Herausgeber oder ISV erstellt drei Dateien. 
-
-* Die erste Datei heißt **applianceMainTemplate.json**. Diese Vorlagendatei definiert die tatsächlichen Ressourcen, die als Teil der verwalteten Anwendung bereitgestellt werden. Beispiel: Für das Erstellen eines Speicherkontos mithilfe einer verwalteten Anwendung enthält die Datei „applianceMainTemplate.json“: 
+* **applianceMainTemplate.json:** Diese Datei definiert die Azure-Ressourcen, die als Teil der verwalteten Anwendung bereitgestellt werden. Die Vorlage unterscheidet sich nicht von anderen regulären Resource Manager-Vorlagen. Beispielsweise enthält die Datei „applianceMainTemplate.json“ zum Erstellen eines Speicherkontos mithilfe einer verwalteten Anwendung Folgendes:
 
   ```json
   {
-      "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-      "contentVersion": "1.0.0.0",
-      "parameters": {
-          "storageAccountName": {
-              "type": "String"
-          }
-      },
-      "resources": [{
-          "type": "Microsoft.Storage/storageAccounts",
-          "name": "[parameters('storageAccountName')]",
-          "apiVersion": "2016-01-01",
-          "location": "westus",
-          "sku": {
-              "name": "Standard_LRS"
-          },
-          "kind": "Storage",
-          "properties": {       
-          }
-      }],
-      "outputs": {      
-      }
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "storageAccountNamePrefix": {
+            "type": "string"
+        }
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "name": "[concat(parameters('storageAccountNamePrefix'), uniqueString(resourceGroup().id))]",
+            "apiVersion": "2016-01-01",
+            "location": "[resourceGroup().location]",
+            "sku": {
+                "name": "Standard_LRS"
+            },
+            "kind": "Storage",
+            "properties": {}
+        }
+    ],
+    "outputs": {}
   }
   ```
 
-* Die zweite Datei, die der Herausgeber erstellen muss, ist **mainTemplate.json**. Die Vorlagendatei enthält nur die Geräteressource (Microsoft.Solutions/appliances). Außerdem enthält sie alle erforderlichen Parameter für die Ressourcen in der Datei „applianceMainTemplate.json“. 
+* **mainTemplate.json:** Benutzer stellen diese Vorlage beim Erstellen der verwalteten Anwendung bereit. Sie definiert die Ressource der verwalteten Anwendung. Dabei handelt es sich um den Ressourcentyp „Microsoft.Solutions/appliances“. Die Datei enthält alle erforderlichen Parameter für die Ressourcen in der Datei „applianceMainTemplate.json“.
 
-  Zwei wichtige Eigenschaften sind beim Erstellen der verwalteten Anwendung als Eingabe erforderlich. Die Eigenschaft **ManagedResourceGroupId** ist die ID der Ressourcengruppe, in der die in der Datei „applianceMainTemplate.json“ definierten Ressourcen erstellt werden. Das Format der ID ist: `/subscriptions/{subscriptionId}/resourceGroups/{resoureGroupName}`
+  Sie legen zwei wichtige Eigenschaften in dieser Vorlage fest. Die **applianceDefinitionId**-Eigenschaft ist die ID der Definition der verwalteten Anwendung. Sie erstellen die Definition weiter unten in diesem Thema. Beim Festlegen dieses Werts müssen Sie entscheiden, welches Abonnement und welche Ressourcengruppe Sie für das Speichern der Definitionen verwalteter Anwendungen verwenden möchten. Außerdem müssen Sie einen Namen für die Definition festlegen. Das Format der ID ist:
 
-  Die Eigenschaft **ApplianceDefinitionId** ist die ID der Definitionsressource der verwalteten Anwendung. Das Format der ID ist: `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applianceDefinitions/{applianceDefinitionName}`
+  `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Solutions/applianceDefinitions/<definition-name>`
 
-  Geben Sie Parameter für die diese beiden Werte an, damit der Verbraucher diese beim Erstellen einer verwalteten Anwendung festlegen kann. Im folgenden Beispiel sind die beiden Parameter, die diesen Eigenschaften entsprechen, „ManagedByResourceGroup“ und „ApplianceDefinitonId“.
+  Die **managedResourceGroupId**-Eigenschaft ist die ID der Ressourcengruppe, in der die Azure-Ressourcen erstellt werden. Sie können diesem Ressourcengruppennamen einen Wert zuweisen oder die Benutzer einen Namen angeben lassen. Das Format der ID ist:
+
+  `/subscriptions/<subscription-id>/resourceGroups/<resoure-group-name>`.
+
+  Das folgende Beispiel zeigt die Datei „mainTemplate.json“. Sie gibt eine Ressourcengruppe für die bereitgestellten Ressourcen an. Für die Definitions-ID wurde die Verwendung einer Definition mit dem Namen **storageApp** in einer Ressourcengruppe mit dem Namen **managedApplicationGroup** festgelegt. Sie können diese Werte ändern, wenn Sie andere Namen verwenden möchten. Geben Sie eine eigene Abonnement-ID für die Definitions-ID an.
 
   ```json
   {
-      "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-      "contentVersion": "1.0.0.0",
-      "parameters": {
-          "storageAccountName": {
-              "type": "String"
-          },
-          "applianceDefinitionId": {
-              "type": "String"
-          },
-          "managedByResourceGroup": {
-              "type": "String"
-          },
-          "applianceName": {
-              "type": "String"
-          },
-      },
-      "variables": {            
-      },
-      "resources": [{
-          "type": "Microsoft.Solutions/appliances",
-          "name": "[parameters('applianceName')]",
-          "apiVersion": "2016-09-01-preview",
-          "location": "[resourceGroup().location]",
-          "kind": "ServiceCatalog",
-          "properties": {
-              "ManagedResourceGroupId": "[parameters('managedByResourceGroup')]",
-              "applianceDefinitionId": "[parameters('applianceDefinitionId')]",
-              "Parameters": {
-                  "storageAccountName": {
-                      "value": "[parameters('storageAccountName')]"
-                  }             
-              }
-          }
-      }]
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "storageAccountNamePrefix": {
+            "type": "string"
+        }
+    },
+    "variables": {
+        "managedRGId": "[concat(resourceGroup().id,'-application-resources')]",
+        "managedAppName": "[concat('managedStorage', uniqueString(resourceGroup().id))]"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Solutions/appliances",
+            "name": "[variables('managedAppName')]",
+            "apiVersion": "2016-09-01-preview",
+            "location": "[resourceGroup().location]",
+            "kind": "ServiceCatalog",
+            "properties": {
+                "managedResourceGroupId": "[variables('managedRGId')]",
+                "applianceDefinitionId": "/subscriptions/<subscription-id>/resourceGroups/managedApplicationGroup/providers/Microsoft.Solutions/applianceDefinitions/storageApp",
+                "parameters": {
+                    "storageAccountNamePrefix": {
+                        "value": "[parameters('storageAccountNamePrefix')]"
+                    }
+                }
+            }
+        }
+    ]
   }
   ```
 
-* Die dritte im Paket benötigte Datei ist **createUiDefinition.json**. Das Azure-Portal verwendet diese Datei zum Generieren der Benutzeroberfläche für Verbraucher, die die verwaltete Anwendung erstellen. Sie definieren die Parameter für die verwaltete Anwendung und wie Verbraucher die Eingabe für jeden Parameter abrufen können. Sie können Optionen wie eine Dropdown-Auswahl, ein Textfeld, ein Kennwortfeld und andere Eingabetools verwenden. Informationen zum Erstellen einer Benutzeroberflächen-Definitionsdatei finden Sie unter [Getting started with CreateUiDefinition](managed-application-createuidefinition-overview.md) (Erste Schritte mit „CreateUiDefinition“).
+* **applianceCreateUiDefinition.json:** Das Azure-Portal verwendet diese Datei zum Generieren der Benutzeroberfläche für Benutzer, die die verwaltete Anwendung erstellen. Sie legen fest, wie Benutzer die Eingaben für die einzelnen Parameter bereitstellen. Sie können Optionen wie eine Dropdownliste, ein Textfeld, ein Kennwortfeld und andere Eingabetools verwenden. Informationen zum Erstellen einer UI-Definitionsdatei für eine verwaltete Anwendung finden Sie unter [Erste Schritte mit „CreateUiDefinition“](managed-application-createuidefinition-overview.md).
 
-Sobald alle benötigten Dateien bereitstehen, laden Sie das Paket in einen zugänglichen Speicherort hoch, wo es verwendet werden kann.
+  Das folgende Beispiel zeigt eine Datei „applianceCreateUiDefinition.json“, die es Benutzern ermöglicht, das Namenspräfix für das Speicherkonto über ein Textfeld einzugeben.
 
+  ```json
+  {
+    "$schema": "https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json",
+    "handler": "Microsoft.Compute.MultiVm",
+    "version": "0.1.2-preview",
+    "parameters": {
+        "basics": [
+            {
+                "name": "storageAccounts",
+                "type": "Microsoft.Common.TextBox",
+                "label": "Storage account name prefix",
+                "defaultValue": "storage",
+                "toolTip": "Provide a value that is used for the prefix of your storage account. Limit to 11 characters.",
+                "constraints": {
+                    "required": true,
+                    "regex": "^[a-z0-9A-Z]{1,11}$",
+                    "validationMessage": "Only alphanumeric characters are allowed, and the value must be 1-11 characters long."
+                },
+                "visible": true
+            }
+        ],
+        "steps": [],
+        "outputs": {
+            "storageAccountNamePrefix": "[basics('storageAccounts')]"
+        }
+    }
+  }
+  ```
 
-## <a name="create-azure-ad-user-group-or-application"></a>Erstellen einer Azure AD-Benutzergruppe oder -Anwendung
-Als Nächstes erstellen Sie eine Benutzergruppe oder Anwendung, die Sie zum Verwalten der Ressourcen für den Kunden verwenden. Diese Benutzergruppe oder Anwendung hat Berechtigungen für die verwaltete Ressourcengruppe wie von der Rolle beschrieben. Die Rolle kann eine beliebige integrierte RBAC-Rolle wie **Besitzer** oder **Mitwirkender** sein. Einem einzelnen Benutzer können auch Berechtigungen zum Verwalten der Ressourcen zugewiesen werden, in der Regel weisen Sie diese Berechtigungen jedoch einer Benutzergruppe zu. Zum Erstellen einer neuen Active Directory-Benutzergruppe verwenden Sie:
+Nachdem alle erforderlichen Dateien bereit sind, packen Sie sie als eine ZIP-Datei. Die drei Dateien müssen sich auf der Stammebene der ZIP-Datei befinden. Wenn Sie sie in einem Ordner speichern, erhalten Sie, wenn Sie die Definition der verwalteten Anwendung erstellen, eine Fehlermeldung, dass die erforderlichen Dateien nicht vorhanden sind. Laden Sie das Paket an einen zugänglichen Speicherort hoch, wo es verwendet werden kann. In diesem Artikel wird davon ausgegangen, dass die ZIP-Datei in einem öffentlich zugänglichen Storage-Blobcontainer verfügbar ist.
 
-```azurecli
-az ad group create --display-name "name" --mail-nickname "nickname"
+## <a name="create-an-azure-active-directory-user-group-or-application"></a>Erstellen einer Azure Active Directory-Benutzergruppe oder -Anwendung
+
+Der zweite Schritt besteht darin, eine Benutzergruppe oder Anwendung für das Verwalten der Ressourcen für den Kunden zu erstellen. Diese Benutzergruppe oder Anwendung verfügt über Berechtigungen für die verwaltete Ressourcengruppe, die durch die zugewiesene Rolle festgelegt sind. Es kann sich um eine beliebige integrierte rollenbasierte Zugriffssteuerungsrolle (Role-Based Access Control, RBAC) wie „Besitzer“ oder „Mitwirkender“ handeln. Sie können einem einzelnen Benutzer auch Berechtigungen zum Verwalten der Ressourcen zuweisen, in der Regel weisen Sie diese Berechtigungen jedoch einer Benutzergruppe zu. Weitere Informationen zum Erstellen einer neuen Active Directory-Benutzergruppe finden Sie unter [Erstellen einer Gruppe und Hinzufügen von Mitgliedern in Azure Active Directory](../active-directory/active-directory-groups-create-azure-portal.md).
+
+Sie benötigen zum Verwalten der Ressourcen die Objekt-ID der Benutzergruppe. Das folgende Beispiel zeigt, wie die Objekt-ID vom Anzeigenamen der Gruppe abgerufen wird:
+
+```azurecli-interactive
+az ad group show --group exampleGroupName
 ```
 
-Sie können auch eine vorhandene Gruppe verwenden. Sie benötigen die Objekt-ID der neu erstellten oder einer vorhandenen Benutzergruppe. Das folgende Beispiel zeigt, wie die Objekt-ID vom Anzeigenamen abgerufen wird, der zum Erstellen der Gruppe verwendet wurde.
+Der Beispielbefehl gibt die folgende Ausgabe zurück:
 
 ```azurecli
-az ad group show --group "groupName"
-```
-
-Beispiel:
-
-```azurecli
-az ad group show --group ravAppliancetestADgroup
-```
-
-Damit wird die folgende Ausgabe zurückgegeben:
-
-```json 
 {
-    "displayName": "ravAppliancetestADgroup",
+    "displayName": "exampleGroupName",
     "mail": null,
     "objectId": "9aabd3ad-3716-4242-9d8e-a85df479d5d9",
     "objectType": "Group",
     "securityEnabled": true
 }
 ```
-    
-Sie benötigen den objectId-Wert von oben. 
+
+Verwenden Sie zum Abrufen der Objekt-ID Folgendes:
+
+```azurecli-interactive
+groupid=$(az ad group show --group exampleGroupName --query objectId --output tsv)
+```
 
 ## <a name="get-the-role-definition-id"></a>Abrufen der Rollendefinitions-ID
 
-Als Nächstes benötigen Sie die Rollendefinitions-ID der integrierten RBAC-Rolle, der Sie Zugriff auf den Benutzer, die Benutzergruppe oder Anwendung gewähren möchten. In der Regel sollten Sie die Rolle „Besitzer, „Mitwirkender“ oder „Leser“ verwenden. Der folgende Befehl zeigt, wie die Rollendefinitions-ID für die Rolle „Besitzer“ abgerufen wird:
+Als Nächstes benötigen Sie die Rollendefinitions-ID der integrierten RBAC-Rolle, der Sie Zugriff auf den Benutzer, die Benutzergruppe oder Anwendung gewähren möchten. In der Regel verwenden Sie die Rolle „Besitzer, „Mitwirkender“ oder „Leser“. Der folgende Befehl zeigt, wie die Rollendefinitions-ID für die Rolle „Besitzer“ abgerufen wird:
 
-```azurecli
+
+```azurecli-interactive
 az role definition list --name owner
 ```
 
-Damit wird die folgende Ausgabe zurückgegeben:
+Der Befehl gibt die folgende Ausgabe zurück:
 
-```json
+```azurecli
 {
-    "id": "/subscriptions/{subscription-id}/providers/Microsoft.Authorization/roleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635",
+    "id": "/subscriptions/<subscription-id>/providers/Microsoft.Authorization/roleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635",
     "name": "8e3af657-a8ff-443c-a75c-2fe8c4bcb635",
     "properties": {
       "assignableScopes": [
-    "/"
+        "/"
       ],
       "description": "Lets you manage everything, including access to resources.",
       "permissions": [
-    {
-      "actions": [
-    "*"
-      ],
-      "notActions": []
-    }
+        {
+          "actions": [
+            "*"
+         ],
+         "notActions": []
+        }
       ],
       "roleName": "Owner",
       "type": "BuiltInRole"
@@ -181,33 +203,47 @@ Damit wird die folgende Ausgabe zurückgegeben:
 }
 ```
 
-Sie benötigen den Wert der Eigenschaft „name“ aus dem vorhergehenden Beispiel.
+Sie benötigen den Wert der Eigenschaft „name“ aus dem vorhergehenden Beispiel. Sie können nur diese Eigenschaft wie folgt abrufen:
 
+```azurecli-interactive
+roleid=$(az role definition list --name Owner --query [].name --output tsv)
+```
 
 ## <a name="create-the-managed-application-definition"></a>Erstellen der Definition für die verwaltete Anwendung
 
-Im letzten Schritt wird die Definitionsressource der verwalteten Anwendung erstellt. Nachdem Sie das Gerätepaket und die Autorisierungen erstellt haben, erstellen Sie die Gerätedefinition mit dem folgenden Befehl: 
+Wenn Sie noch über keine Ressourcengruppe für das Speichern der Definition Ihrer verwalteten Anwendung verfügen, erstellen Sie sie jetzt:
 
-```azurecli
-az managedapp definition create -n ravtestAppDef4 -l "westcentralus" 
-    --resource-group ravApplianceDefRG3 --lock-level ReadOnly 
-    --display-name ravtestappdef --description ravtestdescription  
-    --authorizations "9aabd3ad-3716-4242-9d8e-a85df479d5d9:8e3af657-a8ff-443c-a75c-2fe8c4bcb635" 
-    --package-file-uri "{path to package}" --debug 
+```azurecli-interactive
+az group create --name managedApplicationGroup --location westcentralus
+```
+
+Erstellen Sie nun die Definitionsressource für die verwaltete Anwendung.
+
+```azurecli-interactive
+az managedapp definition create \
+  --name storageApp \
+  --location "westcentralus" \
+  --resource-group managedApplicationGroup \
+  --lock-level ReadOnly \
+  --display-name myteststorageapp \
+  --description storageapp \
+  --authorizations "$groupid:$roleid" \
+  --package-file-uri <uri-path-to-zip-file>
 ```
 
 Die im vorhergehenden Beispiel verwendeten Parameter sind:
 
-- „resource-group“: Name der Ressourcengruppe, in dem die Gerätedefinition erstellt wird.
-- „lock-level“: Sperrentyp, der auf die verwaltete Ressourcengruppe angewendet wird. Er verhindert, dass der Kunde unerwünschte Vorgänge für diese Ressourcengruppe durchführt. Derzeit ist **ReadOnly** die einzige unterstützte Sperrebene. Wenn „ReadOnly“ festgelegt wird, sind die in der verwalteten Ressourcengruppe vorhandenen Ressourcen für den Kunden schreibgeschützt.
-- „authorizations“: Beschreibt die Prinzipal-ID und die Rollendefinitions-ID, die zum Erteilen von Berechtigungen für die verwaltete Ressourcengruppe verwendet werden. Dieser Parameter ist im Format `<principalId>:<roleDefinitionId>` angegeben. Für diese Eigenschaft können auch mehrere Werte angegeben werden. Wenn mehrere Werte erforderlich sind, sollten sie in diesem Format angegeben werden: `<principalId1>:<roleDefinitionId1> <principalId2>:<roleDefinitionId2>`. Mehrere Werte werden durch ein Leerzeichen voneinander getrennt.
-- „package-file-uri“: Speicherort des Gerätepakets mit den Vorlagendateien. Dabei kann es sich um einen Azure Storage Blob handeln. 
-
+* **resource-group:** Der Name der Ressourcengruppe, in der die Definition für die verwaltete Anwendung erstellt wird.
+* **lock-level**: Der Typ der Sperre, der auf die verwaltete Ressourcengruppe angewendet wird. Er verhindert, dass der Kunde unerwünschte Vorgänge für diese Ressourcengruppe durchführt. Derzeit ist „ReadOnly“ die einzige unterstützte Sperrebene. Wenn „ReadOnly“ festgelegt wird, sind die in der verwalteten Ressourcengruppe vorhandenen Ressourcen für den Kunden schreibgeschützt.
+* **authorizations**: Beschreibt die Prinzipal-ID und die Rollendefinitions-ID, die zum Erteilen von Berechtigungen für die verwaltete Ressourcengruppe verwendet werden. Diese ist im Format `<principalId>:<roleDefinitionId>` angegeben. Für diese Eigenschaft können auch mehrere Werte angegeben werden. Wenn mehrere Werte erforderlich sind, sollten sie in diesem Format angegeben werden: `<principalId1>:<roleDefinitionId1> <principalId2>:<roleDefinitionId2>`. Mehrere Werte werden durch ein Leerzeichen voneinander getrennt.
+* **package-file-uri:** Der Speicherort des Pakets für die verwaltete Anwendung mit den Vorlagendateien. Dabei kann es sich um Azure Storage Blob handeln.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Eine Einführung in verwaltete Anwendungen finden Sie in der [Übersicht über verwaltete Azure-Anwendungen](managed-application-overview.md).
-* Beispiele für die Dateien, finden Sie unter [Managed Application samples](https://github.com/Azure/azure-managedapp-samples/tree/master/samples) (Beispiele für verwaltete Anwendungen).
-* Grundlegendes zur Kundenerfahrung erfahren Sie unter [Nutzen einer verwalteten Azure-Anwendung](managed-application-consumption.md).
-* Informationen zum Erstellen einer Benutzeroberflächen-Definitionsdatei für eine verwaltete Anwendung finden Sie unter [Erste Schritte mit „CreateUiDefinition“](managed-application-createuidefinition-overview.md).
+* Eine Einführung in verwaltete Anwendungen finden Sie in der [Übersicht über verwaltete Anwendungen](managed-application-overview.md).
+* Beispiele für die Dateien finden Sie unter [Beispiele für verwaltete Anwendungen](https://github.com/Azure/azure-managedapp-samples/tree/master/samples).
+* Informationen zum Nutzen einer verwalteten Dienstkataloganwendung, finden Sie unter [Nutzen einer verwalteten Dienstkataloganwendung](managed-application-consumption.md).
+* Informationen zum Veröffentlichen von verwalteten Anwendungen im Azure Marketplace finden Sie unter [Verwaltete Azure-Anwendungen im Marketplace](managed-application-author-marketplace.md).
+* Informationen zur Nutzung einer verwalteten Anwendung aus dem Marketplace finden Sie unter [Nutzen verwalteter Azure-Anwendungen im Marketplace](managed-application-consume-marketplace.md).
+* Informationen zum Erstellen einer UI-Definitionsdatei für eine verwaltete Anwendung finden Sie unter [Erste Schritte mit „CreateUiDefinition“](managed-application-createuidefinition-overview.md).
 

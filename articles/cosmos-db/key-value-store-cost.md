@@ -14,13 +14,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/22/2017
+ms.date: 08/28/2017
 ms.author: mimig
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
-ms.openlocfilehash: c7d01eee1ba10599ca24291bb71cd7fdc6455f0e
+ms.translationtype: HT
+ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
+ms.openlocfilehash: 33eef1b51a5ee00b0fa67096030ed9ce92cf768e
 ms.contentlocale: de-de
-ms.lasthandoff: 06/07/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 
@@ -32,15 +32,7 @@ In diesem Artikel werden die Kosten von Azure Cosmos DB für einfache Schreib- u
 
 ## <a name="why-we-use-request-units-rus"></a>Gründe für die Verwendung von Anforderungseinheiten (Request Units, RUs)
 
-Die Azure Cosmos DB-Leistung basiert auf der Menge der für die Partition bereitgestellten [Anforderungseinheiten](request-units.md) (Request Units, RU). Die Bereitstellung erfolgt mit einer zweiten Granularität und wird in RUs pro Sekunde erworben ([nicht zu verwechseln mit der stündlichen Abrechnung](https://azure.microsoft.com/pricing/details/cosmos-db/)). Betrachten Sie RUs als eine Währung, die die Bereitstellung des für die Anwendung erforderlichen Durchsatzes vereinfacht. Unsere Kunden müssen nicht zwischen Lese- und Schreibkapazitätseinheiten differenzieren. Das einzelne Währungsmodell der RUs sorgt für die nötige Effizienz, um die bereitgestellte Kapazität zwischen Lese- und Schreibvorgängen aufzuteilen. Dieses bereitgestellte Kapazitätsmodell ermöglicht dem Dienst, einen vorhersagbaren und konsistenten Durchsatz, garantiert niedrige Latenz und hohe Verfügbarkeit zu bieten. Schließlich verwenden wir RUs für Durchsatzmodelle, doch jede bereitgestellte RU verfügt auch über eine definierte Menge von Ressourcen (Arbeitsspeicher, Kern). RU/Sekunde ist nicht nur ein IOPS-Wert.
-
-Als global verteiltes Datenbanksystem ist Azure Cosmos DB der einzige Azure-Dienst, der außer zur hohen Verfügbarkeit eine SLA zu Latenz, Durchsatz und Konsistenz bietet. Der Durchsatz, den Sie bereitstellen, wird auf jede der Regionen angewendet, die Ihrem Azure Cosmos DB-Datenbankkonto zugeordnet ist. Für Lesevorgänge bietet Azure Cosmos DB mehrere klar definierte [Konsistenzebenen](consistency-levels.md), zwischen denen Sie wählen können. Azure Cosmos DB ist ein global verteilter Datenbankdienst mit mehreren Modellen für die mühelose Erstellung hoch verfügbarer, umfangreicher, [global verteilter](distribute-data-globally.md) Anwendungen. Standardmäßig indiziert Cosmos DB automatisch alle erfassten Daten effizient. Dies ermöglicht schnelle und konsistente [SQL](documentdb-sql-query.md)-Abfragen (und [JavaScript](programming.md)-Abfragen) für jede Art von Daten. 
-
-In diesem Artikel werden die Kosten von Cosmos DB für einfache Schreib- und Lesevorgänge bei Verwendung als Schlüssel-/Wertspeicher beschrieben. Zu den Schreibvorgängen zählen Einfügungen, Ersetzungen, Löschungen und Upserts von Dokumenten. Neben der garantierten hohen Verfügbarkeit von 99,99 % bietet Cosmos DB garantiert <10ms Latenz für Lesevorgänge bzw. <15ms Latenz für die (indizierten) Schreibvorgänge im 99. Perzentil. 
-
-## <a name="why-we-use-request-units-rus"></a>Gründe für die Verwendung von Anforderungseinheiten (Request Units, RUs)
-
-Die Cosmos DB-Leistung basiert auf der Menge der für die Partition bereitgestellten [Anforderungseinheiten](request-units.md) (Request Units, RU). Die Bereitstellung erfolgt mit einer zweiten Granularität und wird in RUs pro Sekunde und RUs pro Minute erworben ([nicht zu verwechseln mit der stündlichen Abrechnung](https://azure.microsoft.com/pricing/details/cosmos-db/)). Betrachten Sie RUs als eine Währung, die die Bereitstellung des für die Anwendung erforderlichen Durchsatzes vereinfacht. Unsere Kunden müssen nicht zwischen Lese- und Schreibkapazitätseinheiten differenzieren. Das einzelne Währungsmodell der RUs sorgt für die nötige Effizienz, um die bereitgestellte Kapazität zwischen Lese- und Schreibvorgängen aufzuteilen. Dieses bereitgestellte Kapazitätsmodell ermöglicht dem Dienst, einen vorhersagbaren und konsistenten Durchsatz, garantiert niedrige Latenz und hohe Verfügbarkeit zu bieten. Schließlich verwenden wir RUs für Durchsatzmodelle, doch jede bereitgestellte RU verfügt auch über eine definierte Menge von Ressourcen (Arbeitsspeicher, Kern). RU/Sekunde ist nicht nur ein IOPS-Wert.
+Die Azure Cosmos DB-Leistung basiert auf der Menge der für die Partition bereitgestellten [Anforderungseinheiten](request-units.md) (Request Units, RU). Die Bereitstellung erfolgt mit einer zweiten Granularität und wird in RUs pro Sekunde und RUs pro Minute erworben ([nicht zu verwechseln mit der stündlichen Abrechnung](https://azure.microsoft.com/pricing/details/cosmos-db/)). Betrachten Sie RUs als eine Währung, die die Bereitstellung des für die Anwendung erforderlichen Durchsatzes vereinfacht. Unsere Kunden müssen nicht zwischen Lese- und Schreibkapazitätseinheiten differenzieren. Das einzelne Währungsmodell der RUs sorgt für die nötige Effizienz, um die bereitgestellte Kapazität zwischen Lese- und Schreibvorgängen aufzuteilen. Dieses bereitgestellte Kapazitätsmodell ermöglicht dem Dienst, einen vorhersagbaren und konsistenten Durchsatz, garantiert niedrige Latenz und hohe Verfügbarkeit zu bieten. Schließlich verwenden wir RUs für Durchsatzmodelle, doch jede bereitgestellte RU verfügt auch über eine definierte Menge von Ressourcen (Arbeitsspeicher, Kern). RU/Sekunde ist nicht nur ein IOPS-Wert.
 
 Als global verteiltes Datenbanksystem ist Cosmos DB der einzige Azure-Dienst, der außer zur hohen Verfügbarkeit eine SLA zu Latenz, Durchsatz und Konsistenz bietet. Der Durchsatz, den Sie bereitstellen, wird auf jede der Regionen angewendet, die Ihrem Cosmos DB-Datenbankkonto zugeordnet ist. Für Lesevorgänge bietet Cosmos DB mehrere klar definierte [Konsistenzebenen](consistency-levels.md), zwischen denen Sie wählen können. 
 
@@ -65,6 +57,6 @@ Die meisten grundlegenden Blob- oder Objektspeicherdienste berechnen Gebühren v
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Bleiben Sie auf dem Laufenden, was neue Artikel zum Optimieren der Cosmos DB-Ressourcenbereitstellung betrifft. In der Zwischenzeit laden wir Sie ein, unseren [RU-Rechner](https://www.documentdb.com/capacityplanner) zu nutzen.
+Bleiben Sie auf dem Laufenden, was neue Artikel zum Optimieren der Azure Cosmos DB-Ressourcenbereitstellung betrifft. In der Zwischenzeit laden wir Sie ein, unseren [RU-Rechner](https://www.documentdb.com/capacityplanner) zu nutzen.
 
 

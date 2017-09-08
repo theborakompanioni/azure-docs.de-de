@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.devlang: na
-ms.date: 04/04/2017
+ms.date: 08/04/2017
 ms.author: joroja;parahk;gsacavdm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
-ms.openlocfilehash: 1cc36d1fd40121fed23ab6a84429a303690c2726
+ms.translationtype: HT
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 4f14dbf4b66f10290cd4f98d56a005f97cc6a207
 ms.contentlocale: de-de
-ms.lasthandoff: 06/08/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="azure-active-directory-b2c-get-started-with-custom-policies"></a>Azure Active Directory B2C: Erste Schritte mit benutzerdefinierten Richtlinien
@@ -31,7 +31,8 @@ Nach der Durchführung der Schritte in diesem Artikel unterstützt Ihre benutzer
 
 Stellen Sie sicher, dass Sie über einen Azure AD B2C-Mandanten verfügen, bevor Sie fortfahren. Dies ist ein Container für all Ihre Benutzer, Apps, Richtlinien etc. Wenn Sie noch keinen Mandanten besitzen, müssen Sie einen [Azure AD B2C-Mandanten erstellen](active-directory-b2c-get-started.md). Wir raten allen Entwicklern dringend, die exemplarischen Vorgehensweisen für die integrierten Azure AD B2C-Richtlinien durchzuarbeiten und vor dem Fortfahren die Anwendungen mit integrierten Richtlinien zu konfigurieren. Ihre Anwendungen funktionieren mit beiden Arten von Richtlinien. Es ist nur eine kleine Änderung des Richtliniennamens zum Aufrufen der benutzerdefinierten Richtlinie erforderlich.
 
-Sie benötigen für den Zugriff auf die Bearbeitung einer benutzerdefinierten Richtlinie ein gültiges Azure-Abonnement, das mit Ihrem Mandanten verknüpft ist.
+>[!NOTE]
+>Sie benötigen für den Zugriff auf die Bearbeitung einer benutzerdefinierten Richtlinie ein gültiges Azure-Abonnement, das mit Ihrem Mandanten verknüpft ist. Wenn Sie [Ihren Azure AD B2C-Mandanten nicht mit einem Azure-Abonnement verknüpft](active-directory-b2c-how-to-enable-billing.md) haben oder Ihr Azure-Abonnement deaktiviert ist, ist die Schaltfläche „Framework für die Identitätsfunktion“ nicht verfügbar.
 
 ## <a name="add-signing-and-encryption-keys-to-your-b2c-tenant-for-use-by-custom-policies"></a>Hinzufügen von Signatur- und Verschlüsselungsschlüsseln im B2C-Mandanten zur Verwendung durch benutzerdefinierte Richtlinien
 
@@ -83,8 +84,8 @@ Azure AD B2C erfordert, dass Sie zwei zusätzliche Anwendungen registrieren, die
    * Verwenden Sie `https://login.microsoftonline.com/yourtenant.onmicrosoft.com` für **Anmelde-URL**, wobei `yourtenant` für den Domänennamen Ihres Azure AD B2C-Mandanten steht.
 5. Klicken Sie auf **Erstellen**.
 6. Wählen Sie die neu erstellte Anwendung **IdentityExperienceFramework** aus, sobald die Erstellung abgeschlossen ist.<br>
-   a. Wählen Sie **Eigenschaften** aus.<br>
-   b. Kopieren Sie die Anwendungs-ID und speichern Sie sie für eine spätere Verwendung.
+   * Wählen Sie **Eigenschaften** aus.<br>
+   * Kopieren Sie die Anwendungs-ID und speichern Sie sie für eine spätere Verwendung.
 
 ### <a name="create-the-proxyidentityexperienceframework-application"></a>Erstellen der Anwendung ProxyIdentityExperienceFramework
 
@@ -95,8 +96,8 @@ Azure AD B2C erfordert, dass Sie zwei zusätzliche Anwendungen registrieren, die
    * Verwenden Sie `https://login.microsoftonline.com/yourtenant.onmicrosoft.com` für den **Umleitungs-URI**, wobei `yourtenant` für Ihren Azure AD B2C-Mandanten steht.
 1. Klicken Sie auf **Erstellen**.
 1. Wählen Sie die Anwendung **ProxyIdentityExperienceFramework** aus, sobald sie erstellt wurde.<br>
-   a. Wählen Sie **Eigenschaften** aus. <br>
-   b. Kopieren Sie die Anwendungs-ID und speichern Sie sie für eine spätere Verwendung.
+   * Wählen Sie **Eigenschaften** aus. <br>
+   * Kopieren Sie die Anwendungs-ID und speichern Sie sie für eine spätere Verwendung.
 1. Wählen Sie **Erforderliche Berechtigungen** aus.
 1. Wählen Sie **Hinzufügen**.
 1. Wählen Sie **API auswählen** aus.
@@ -117,10 +118,10 @@ Die einzelnen Starter Packs enthalten Folgendes:
 
 * Die [Basisdatei](active-directory-b2c-overview-custom.md#policy-files) der Richtlinie. Es sind einige Änderungen an der Basisdatei erforderlich.
 * Die [Erweiterungsdatei](active-directory-b2c-overview-custom.md#policy-files) der Richtlinie.  In dieser Datei werden die meisten Konfigurationsänderungen vorgenommen.
-* [Dateien der vertrauenden Seite](active-directory-b2c-overview-custom.md#policy-files). Dies sind aufgabenspezifische Dateien, die von Ihrer Anwendung aufgerufen werden.
+* [Dateien der vertrauenden Seite:](active-directory-b2c-overview-custom.md#policy-files) sind aufgabenspezifische Dateien, die von Ihrer Anwendung aufgerufen werden.
 
 >[!NOTE]
->Wenn Ihr XML-Editor Validierungen unterstützt, sollten Sie die Dateien anhand der XML-Schemadatei TrustFrameworkPolicy_0.3.0.0.xsd im Stammverzeichnis des Starter Packs überprüfen. Durch die XML-Schemavalidierung werden vor dem Upload Fehler festgestellt.
+>Wenn Ihr XML-Editor Validierungen unterstützt, überprüfen Sie die Dateien anhand des XML-Schemas TrustFrameworkPolicy_0.3.0.0.xsd im Stammverzeichnis des Starter Packs . Durch die XML-Schemavalidierung werden vor dem Upload Fehler festgestellt.
 
  Lassen Sie uns anfangen:
 
@@ -166,7 +167,7 @@ Fügen Sie die Anwendungs-IDs zur Datei mit den Erweiterungen hinzu (`TrustFrame
 
 1. Wechseln Sie im [Azure-Portal](https://portal.azure.com) in den [Kontext Ihres Azure AD B2C-Mandanten](active-directory-b2c-navigate-to-b2c-context.md), und öffnen Sie das Blatt **Azure AD B2C**.
 2. Wählen Sie **Framework für die Identitätsfunktion** aus.
-3. Wählen Sie **Richtlinie hochladen** aus, um Richtliniendateien hochzuladen.
+3. Wählen Sie **Richtlinie hochladen** aus.
 
     >[!WARNING]
     >Die benutzerdefinierten Richtliniendateien müssen in der folgenden Reihenfolge hochgeladen werden:

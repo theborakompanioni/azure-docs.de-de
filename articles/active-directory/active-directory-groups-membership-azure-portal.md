@@ -1,5 +1,4 @@
 ---
-
 title: "Verwalten der Gruppen, denen Ihre Gruppe angehört, in Azure Active Directory | Microsoft-Dokumentation"
 description: "Gruppen können in Azure Active Directory andere Gruppen enthalten. Nachfolgend wird erläutert, wie Sie diese Mitgliedschaften verwalten."
 services: active-directory
@@ -13,21 +12,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/04/2017
+ms.date: 05/28/2017
 ms.author: curtand
-ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: 08e04a6590176c4084ca47b4bd6cbb22500eca2d
+ms.custom: H1Hack27Feb2017;it-pro
+ms.reviewer: piotrci
+ms.translationtype: HT
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: b6227d86bf5d52316334a0b7ecf975aadf2ba635
 ms.contentlocale: de-de
-ms.lasthandoff: 05/08/2017
-
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="manage-to-which-groups-a-group-belongs-in-your-azure-active-directory-tenant"></a>Verwalten, welchen Gruppen eine Gruppe in Ihrem Azure Active Directory-Mandanten angehört
 Gruppen können in Azure Active Directory andere Gruppen enthalten. Nachfolgend wird erläutert, wie Sie diese Mitgliedschaften verwalten.
 
-## <a name="how-do-i-find-the-groups-my-group-is-a-member-of"></a>Wie finde ich die Gruppen, in denen meine Gruppe Mitglied ist?
+## <a name="how-do-i-find-the-groups-of-which-my-group-is-a-member"></a>Wie finde ich die Gruppen, in denen meine Gruppe Mitglied ist?
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) über ein Konto an, das als globaler Administrator für das Verzeichnis konfiguriert ist.
 2. Wählen Sie **Weitere Dienste** aus, geben Sie **Benutzer und Gruppen** in das Textfeld ein, und drücken Sie die **EINGABETASTE** .
 

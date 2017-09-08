@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2017
+ms.date: 08/23/2017
 ms.author: bwren
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: 04e1c7a70db712dbc54e8846e9453d932016a043
+ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
+ms.openlocfilehash: 6fc556ceb34cde26d5f3789a2397cdaa34b0b84d
 ms.contentlocale: de-de
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="create-log-searches-in-azure-log-analytics-using-the-log-search-portal"></a>Erstellen von Protokollsuchvorgängen in Azure Log Analytics mit dem Portal für die Protokollsuche
@@ -27,9 +27,9 @@ ms.lasthandoff: 07/28/2017
 >
 > Wenn für Ihren Arbeitsbereich noch kein Upgrade auf die neue Abfragesprache durchgeführt wurde, finden Sie unter [Suchen von Daten mithilfe der Protokollsuche in Log Analytics](log-analytics-log-searches.md) Informationen zur aktuellen Version des Portals für die Protokollsuche.
 
-Dieser Artikel enthält ein Tutorial, mit dem das Erstellen von Protokollsuchvorgängen und das Analysieren von Daten in Ihrem Log Analytics-Arbeitsbereich mithilfe des Portals für die Protokollsuche beschrieben wird.  Das Tutorial umfasst die Ausführung einiger einfachen Abfragen zum Zurückgeben von verschiedenen Arten von Daten und das Analysieren der Ergebnisse.  Im Mittelpunkt stehen die Funktionen im Portal für die Protokollsuche zum Ändern der Abfrage anstelle einer direkten Änderung der Abfrage.  Ausführliche Informationen zum direkten Bearbeiten der Abfrage finden Sie unter [Referenz zur Abfragesprache](https://docs.loganalytics.io/queryLanguage/query_language.html).
+Dieser Artikel enthält ein Tutorial, mit dem das Erstellen von Protokollsuchvorgängen und das Analysieren von Daten in Ihrem Log Analytics-Arbeitsbereich mithilfe des Portals für die Protokollsuche beschrieben wird.  Das Tutorial umfasst die Ausführung einiger einfachen Abfragen zum Zurückgeben von verschiedenen Arten von Daten und das Analysieren der Ergebnisse.  Im Mittelpunkt stehen die Funktionen im Portal für die Protokollsuche zum Ändern der Abfrage anstelle einer direkten Änderung der Abfrage.  Ausführliche Informationen zum direkten Bearbeiten der Abfrage finden Sie unter [Referenz zur Abfragesprache](https://go.microsoft.com/fwlink/?linkid=856079).
 
-Wenn Sie Suchabfragen statt im Portal für die Protokollsuche im Advanced Analytics-Portal erstellen möchten, finden Sie weitere Informationen unter [Erste Schritte mit dem Analytics-Portal](https://docs.loganalytics.io/learn/tutorial_getting_started_with_analytics_portal.html).  Beide Portale verwenden die gleiche Abfragesprache, um auf dieselben Daten im Log Analytics-Arbeitsbereich zuzugreifen.
+Wenn Sie Suchabfragen statt im Portal für die Protokollsuche im Advanced Analytics-Portal erstellen möchten, finden Sie weitere Informationen unter [Erste Schritte mit dem Analytics-Portal](https://go.microsoft.com/fwlink/?linkid=856587).  Beide Portale verwenden die gleiche Abfragesprache, um auf dieselben Daten im Log Analytics-Arbeitsbereich zuzugreifen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 In diesem Tutorial wird vorausgesetzt, dass Sie bereits über einen Log Analytics-Arbeitsbereich mit mindestens einer verbundenen Quelle verfügen, mit der Daten für zu analysierende Abfragen generiert werden können.  
@@ -99,12 +99,12 @@ Die Option **Filter** ist nur für Eigenschaften verfügbar, deren Name in Blau 
 
 ![Menü „Filter“](media/log-analytics-log-search-log-search-portal/log-search-portal-01a.png)
 
-Sie können die Ergebnisse nach einer einzelnen Eigenschaft gruppieren, indem Sie im Datensatzmenü die Option **Gruppieren nach** auswählen.  Dadurch wird der Abfrage ein [summarize](https://docs.loganalytics.io/queryLanguage/query_language_summarizeoperator.html)-Operator hinzugefügt, um die Ergebnisse in einem Diagramm anzuzeigen.  Sie können auch nach mehreren Eigenschaften gruppieren, dazu müssen Sie die Abfrage jedoch direkt bearbeiten.  Wählen Sie im Datensatzmenü neben der **Computer**-Eigenschaft **Gruppieren nach „Computer“** aus.  
+Sie können die Ergebnisse nach einer einzelnen Eigenschaft gruppieren, indem Sie im Datensatzmenü die Option **Gruppieren nach** auswählen.  Dadurch wird der Abfrage ein [summarize](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/summarize-operator)-Operator hinzugefügt, um die Ergebnisse in einem Diagramm anzuzeigen.  Sie können auch nach mehreren Eigenschaften gruppieren, dazu müssen Sie die Abfrage jedoch direkt bearbeiten.  Wählen Sie im Datensatzmenü neben der **Computer**-Eigenschaft **Gruppieren nach „Computer“** aus.  
 
 ![Gruppieren nach „Computer“](media/log-analytics-log-search-log-search-portal/log-search-portal-10.png)
 
 ## <a name="work-with-results"></a>Arbeiten mit Ergebnissen
-Das Portal für die Protokollsuche verfügt über eine Reihe von Funktionen zum Arbeiten mit den Ergebnissen einer Abfrage.  Sie können Ergebnisse sortieren, filtern und gruppieren, um die Daten zu analysieren, ohne die Abfrage selbst zu ändern.
+Das Portal für die Protokollsuche verfügt über eine Reihe von Funktionen zum Arbeiten mit den Ergebnissen einer Abfrage.  Sie können Ergebnisse sortieren, filtern und gruppieren, um die Daten zu analysieren, ohne die Abfrage selbst zu ändern.  Die Ergebnisse einer Abfrage werden standardmäßig nicht sortiert.
 
 Klicken Sie zum Anzeigen der Daten in Tabellenform, die über zusätzliche Optionen zum Filtern und Sortieren verfügt, auf **Tabelle**.  
 
@@ -145,7 +145,7 @@ Perf | where (ObjectName == "Processor")  | where (CounterName == "% Processor T
 
 ![Prozessorauslastung](media/log-analytics-log-search-log-search-portal/log-search-portal-12.png)
 
-Dies schränkt die Daten zwar auf einen bestimmten Leistungsindikator ein, damit liegen sie jedoch immer noch nicht in einem nützlichen Format vor.  Sie können die Daten in einem Liniendiagramm anzeigen, dazu müssen Sie sie jedoch zunächst nach „Computer“ und „TimeGenerated“ gruppieren.  Um nach mehreren Feldern zu gruppieren, müssen Sie die Abfrage direkt ändern, ändern Sie die Abfrage daher wie folgt:  Hierbei wird die [avg](https://docs.loganalytics.io/queryLanguage/query_language_avg_aggfunction.html)-Funktion für die **CounterValue**-Eigenschaft verwendet, um für jede Stunde den Durchschnittswert zu berechnen.
+Dies schränkt die Daten zwar auf einen bestimmten Leistungsindikator ein, damit liegen sie jedoch immer noch nicht in einem nützlichen Format vor.  Sie können die Daten in einem Liniendiagramm anzeigen, dazu müssen Sie sie jedoch zunächst nach „Computer“ und „TimeGenerated“ gruppieren.  Um nach mehreren Feldern zu gruppieren, müssen Sie die Abfrage direkt ändern, ändern Sie die Abfrage daher wie folgt:  Hierbei wird die [avg](https://docs.loganalytics.io/docs/Language-Reference/Aggregation-functions/avg())-Funktion für die **CounterValue**-Eigenschaft verwendet, um für jede Stunde den Durchschnittswert zu berechnen.
 
 ```
 Perf  | where (ObjectName == "Processor")  | where (CounterName == "% Processor Time") | summarize avg(CounterValue) by Computer, TimeGenerated
@@ -153,7 +153,7 @@ Perf  | where (ObjectName == "Processor")  | where (CounterName == "% Processor 
 
 ![Leistungsdatendiagramm](media/log-analytics-log-search-log-search-portal/log-search-portal-13.png)
 
-Nachdem die Daten eine geeignete Gruppierung aufweisen, können Sie sie in einem visuellen Diagramm anzeigen, indem Sie den [render](https://docs.loganalytics.io/queryLanguage/query_language_renderoperator.html)-Operator hinzufügen.  
+Nachdem die Daten eine geeignete Gruppierung aufweisen, können Sie sie in einem visuellen Diagramm anzeigen, indem Sie den [render](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/render-operator)-Operator hinzufügen.  
 
 ```
 Perf  | where (ObjectName == "Processor")  | where (CounterName == "% Processor Time") | summarize avg(CounterValue) by Computer, TimeGenerated | render timechart
@@ -163,6 +163,6 @@ Perf  | where (ObjectName == "Processor")  | where (CounterName == "% Processor 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zur Log Analytics-Abfragesprache finden Sie unter [Erste Schritte mit dem Analytics-Portal](https://docs.loganalytics.io/learn/tutorial_getting_started_with_analytics_portal.html).
-- Arbeiten Sie das Tutorial für das [Advanced Analytics-Portal](https://docs.loganalytics.io/learn/tutorial_getting_started_with_analytics_portal.html) durch, mit dem Sie die gleichen Abfragen ausführen und die gleichen Daten wie im Portal für die Protokollsuche abrufen können.
+- Weitere Informationen zur Log Analytics-Abfragesprache finden Sie unter [Erste Schritte mit dem Analytics-Portal](https://go.microsoft.com/fwlink/?linkid=856079).
+- Arbeiten Sie das Tutorial für das [Advanced Analytics-Portal](https://go.microsoft.com/fwlink/?linkid=856587) durch, mit dem Sie die gleichen Abfragen ausführen und die gleichen Daten wie im Portal für die Protokollsuche abrufen können.
 

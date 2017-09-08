@@ -6,13 +6,13 @@ author: jasonwhowell
 ms.author: jasonh
 manager: jhubbard
 editor: seanli1988
-ms.service: mysql-database
+ms.service: mysql
 ms.custom: mvc
-ms.topic: article
+ms.topic: quickstart
 ms.date: 08/23/2017
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: ffeca6670521fe2b43c4ac47cac26fd2ad30f968
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: 20a1f31ce42abb924504c4008f85420fc49aec89
 ms.contentlocale: de-de
 ms.lasthandoff: 08/24/2017
 
@@ -71,7 +71,7 @@ So stellen Sie eine Verbindung mit dem Azure MySQL-Server mithilfe des GUI-Tools
 6.   Es wird eine neue SQL-Registerkarte mit einem leeren-Editor geöffnet, auf der Sie Ihre Abfragen eingeben können.
 
     > [!NOTE]
-    > SSL wird standardmäßig auf dem Server erzwungen, sodass für eine erfolgreiche Verbindung eine zusätzliche Konfiguration erforderlich ist. Weitere Informationen finden Sie unter [Konfigurieren von SSL-Konnektivität in der Anwendung für eine sichere Verbindung mit Azure-Datenbank für MySQL](./howto-configure-ssl.md).  Wenn Sie SSL für diese Schnellstartanleitung deaktivieren möchten, besuchen Sie das Azure-Portal, und klicken Sie auf die Seite „Verbindungssicherheit“, um die Umschaltfläche „SSL-Verbindung erzwingen“ zu deaktivieren.
+    > Standardmäßig ist SSL-Sicherheit in Verbindung mit Ihrer Azure-Datenbank für MySQL-Server erforderlich und wird erzwungen. In der Regel ist keine zusätzliche Konfiguration mit SSL-Zertifikaten für die MySQL-Workbench erforderlich, um eine Verbindung mit dem Server herzustellen. Weitere Informationen zu SSL finden Sie unter [Konfigurieren von SSL-Verbindungen in der Anwendung für eine sichere Verbindung mit Azure-Datenbank für MySQL](./howto-configure-ssl.md).  Wenn Sie SSL deaktivieren müssen, besuchen Sie das Azure-Portal, und klicken Sie auf die Seite „Verbindungssicherheit“, um die Umschaltfläche „SSL-Verbindung erzwingen“ zu deaktivieren.
 
 ## <a name="create-a-table-insert-data-read-data-update-data-delete-data"></a>Erstellen einer Tabelle, Einfügen von Daten, Lesen von Daten, Aktualisieren von Daten, Löschen von Daten
 1. Kopieren Sie den SQL-Beispielcode, und fügen Sie ihn auf einer leeren SQL-Registerkarte ein, um Beispieldaten zu veranschaulichen.
@@ -108,7 +108,7 @@ So stellen Sie eine Verbindung mit dem Azure MySQL-Server mithilfe des GUI-Tools
     ![SQL-Registerkarte in MySQL Workbench für die Ausführung von SQL-Beispielcode](media/connect-workbench/3-workbench-sql-tab.png)
 
 2. Um den SQL-Beispielcode auszuführen, klicken Sie auf der Registerkarte **SQL-Datei** auf der Symbolleiste auf das Blitzsymbol.
-3. Beachten Sie die drei im Registerkartenformat angezeigten Ergebnisse im Abschnitt **Resultset** in der Mitte der Seite. 
+3. Beachten Sie die drei im Registerkartenformat angezeigten Ergebnisse im Abschnitt **Ergebnisraster** in der Mitte der Seite. 
 4. Beachten Sie auch die Liste **Ausgabe** am unteren Rand der Seite. Der Status der einzelnen Befehle wird angezeigt. 
 
 Sie haben mithilfe von MySQL Workbench eine Verbindung mit Azure-Datenbank für MySQL hergestellt und Daten mit der SQL-Sprache abgefragt.

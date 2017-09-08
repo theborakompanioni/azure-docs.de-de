@@ -14,14 +14,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 05/15/2017
+ms.date: 08/25/2017
 ms.author: sashan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
-ms.openlocfilehash: 88ca437b84298d0c008076f78e0699d36c1a23c2
+ms.translationtype: HT
+ms.sourcegitcommit: 48dfc0fa4c9ad28c4c64c96ae2fc8a16cd63865c
+ms.openlocfilehash: 4963598837b71e812ad3750aad9d20c8460111d9
 ms.contentlocale: de-de
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 08/30/2017
 
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Übersicht über die Geschäftskontinuität mit Azure SQL-Datenbank
@@ -92,7 +91,7 @@ Verwenden Sie die aktive Georeplikation und automatische Failovergruppen (in der
 In einem solchen Szenario stehen Ihnen die nachfolgend beschriebenen Wiederherstellungsoptionen zur Verfügung.
 
 ### <a name="perform-a-point-in-time-restore"></a>Durchführen einer Point-in-Time-Wiederherstellung
-Sie können die automatisierten Sicherungen verwenden, um eine Kopie Ihrer Datenbank auf einen bekanntermaßen fehlerfreien Zeitpunkt wiederherzustellen, vorausgesetzt, dieser Zeitpunkt liegt innerhalb des Aufbewahrungszeitraums für die Datenbank. Nach der Wiederherstellung der Datenbank können Sie entweder die ursprüngliche Datenbank durch die wiederhergestellte Datenbank ersetzen oder die benötigten Daten aus der wiederhergestellten Datenbank in die ursprüngliche Datenbank kopieren. Wenn die Datenbank die aktive Georeplikation verwendet, empfiehlt es sich, die erforderlichen Daten aus der wiederhergestellten Kopie in die ursprüngliche Datenbank zu kopieren. Wenn Sie die ursprüngliche Datenbank durch die wiederhergestellte Datenbank ersetzen, müssen Sie die aktive Georeplikation neu konfigurieren und synchronisieren (was bei großen Datenbanken sehr lange dauern kann).
+Sie können die automatisierten Sicherungen verwenden, um eine Kopie Ihrer Datenbank auf einen bekanntermaßen fehlerfreien Zeitpunkt wiederherzustellen, vorausgesetzt, dieser Zeitpunkt liegt innerhalb des Aufbewahrungszeitraums für die Datenbank. Nach der Wiederherstellung der Datenbank können Sie entweder die ursprüngliche Datenbank durch die wiederhergestellte Datenbank ersetzen oder die benötigten Daten aus der wiederhergestellten Datenbank in die ursprüngliche Datenbank kopieren. Wenn die Datenbank die aktive Georeplikation verwendet, empfiehlt es sich, die erforderlichen Daten aus der wiederhergestellten Kopie in die ursprüngliche Datenbank zu kopieren. Wenn Sie die ursprüngliche Datenbank durch die wiederhergestellte Datenbank ersetzen, müssen Sie die aktive Georeplikation neu konfigurieren und synchronisieren (was bei großen Datenbanken sehr lange dauern kann). Beim Wiederherstellen einer Datenbank zum letzten verfügbaren Zeitpunkt wird die Wiederherstellung der Geo-Sekundärdatenbank zu einem beliebigen Zeitpunkt derzeit nicht unterstützt.
 
 Weitere Informationen und die detaillierten Schritte zum Wiederherstellen einer Datenbank auf einen bestimmten Zeitpunkt über das Azure-Portal oder mithilfe von PowerShell finden Sie unter [Point-in-Time-Wiederherstellung](sql-database-recovery-using-backups.md#point-in-time-restore). Transact-SQL kann zur Wiederherstellung nicht verwendet werden.
 
@@ -138,7 +137,7 @@ Wenn Sie aktive Georeplikation und automatische Failovergruppen (in der Vorschau
 > 
 
 ### <a name="perform-a-geo-restore"></a>Ausführen einer Geowiederherstellung
-Wenn Sie automatisierte Sicherungen mit georedundanter Speicherreplikation als Wiederherstellungsmechanismus verwenden, [stellen Sie die Datenbank per Geowiederherstellung wieder her](sql-database-disaster-recovery.md#recover-using-geo-restore). Die Wiederherstellung erfolgt in den meisten Fällen innerhalb von 12 Stunden. Es entsteht ein Datenverlust von bis zu einer Stunde – je nachdem, wann die letzte differenzielle Sicherung durchgeführt und repliziert wurde. Solange die Wiederherstellung nicht abgeschlossen ist, kann die Datenbank keine Transaktionen aufzeichnen oder auf Abfragen antworten.
+Wenn Sie automatisierte Sicherungen mit georedundanter Speicherreplikation als Wiederherstellungsmechanismus verwenden, [stellen Sie die Datenbank per Geowiederherstellung wieder her](sql-database-disaster-recovery.md#recover-using-geo-restore). Die Wiederherstellung erfolgt in den meisten Fällen innerhalb von 12 Stunden. Es entsteht ein Datenverlust von bis zu einer Stunde – je nachdem, wann die letzte differenzielle Sicherung durchgeführt und repliziert wurde. Solange die Wiederherstellung nicht abgeschlossen ist, kann die Datenbank keine Transaktionen aufzeichnen oder auf Abfragen antworten. Beim Wiederherstellen einer Datenbank zum letzten verfügbaren Zeitpunkt wird die Wiederherstellung der Geo-Sekundärdatenbank zu einem beliebigen Zeitpunkt derzeit nicht unterstützt.
 
 > [!NOTE]
 > Wenn das Rechenzentrum wieder online ist, bevor Sie Ihre Anwendung auf die wiederhergestellte Datenbank umstellen, können Sie die Wiederherstellung abbrechen.  

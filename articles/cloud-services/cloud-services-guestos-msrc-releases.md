@@ -12,17 +12,31 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 8/3/2017
+ms.date: 8/24/2017
 ms.author: raiye
 ms.translationtype: HT
-ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
-ms.openlocfilehash: c1bcfa2d93a77a655092dca250d2a3e2c86b944d
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 09c433ccf54c84ee2ae40c3ba3ccd84e7462124c
 ms.contentlocale: de-de
-ms.lasthandoff: 08/04/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="azure-guest-os"></a>Azure-Gastbetriebssystem
 Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MSRC), die auf das Azure-Gastbetriebssystem angewendet wurden. Durchsuchen Sie diesen Artikel, um zu ermitteln, ob ein bestimmtes Update für das Gastbetriebssystem gilt, das Sie verwenden. Updates werden für die [Familie][family-explain], in der sie eingeführt wurden, immer in die jeweils neueste Version übertragen.
+
+## <a name="august-guest-os"></a>Gastbetriebssystem August
+| Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
+| --- | --- | --- | --- | --- |
+| Rel 17-07 | [4034658] |Windows 10-Updates |5.10 |8. August 2017 |
+| Rel 17-07 | [4034679] |Nur Windows-Sicherheit |2.65 |8. August 2017 |
+| Rel 17-07 | [4034672] |Nur Windows-Sicherheit |4.45 |8. August 2017 |
+| Rel 17-07 | [4034666] |Nur Windows-Sicherheit |3.52 |8. August 2017 |
+| Rel 17-07 | [4034733] |Internet Explorer |2.65, 3.52, 4.45, 5.10 |8. August 2017 |
+| Rel 17-07 | [4034664], [4034665], [4034681] |Monatliche Windows-Rollups |2.65, 3.52, 4.45 |8. August 2017 |
+| Rel 17-07 | [4034668], [4034660], [4034658], [4034674] |Erneutes Release von CVE-2017-0071, erneutes Release von CVE-2017-0228 |5.10 |8. August 2017 |
+| Rel 17-07 | [4025341] |Nicht sicherheitsrelevanter Rollup für Juli |2.65 |8. August 2017 |
+| Rel 17-07 | [4025331] |Nicht sicherheitsrelevanter Rollup für Juli |3.52 |8. August 2017 |
+| Rel 17-07 | [4025336] |Nicht sicherheitsrelevanter Rollup für Juli |4.45 |8. August 2017 |
 
 ## <a name="july-guest-os"></a>Gastbetriebssystem Juli
 | Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
@@ -509,6 +523,23 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | N/V |[3007054] |PIN-geschützte Druckoption wird beim Drucken eines Dokuments aus einer Windows Store-Anwendung in Windows immer angezeigt |4.15, 3.22, 2.34 |13. Januar 2015 |
 | – |[2999802] |In Windows werden durchgezogene Linien statt gepunktete Linien gedruckt |4.15, 3.22, 2.34 |13. Januar 2015 |
 | – |[2896881] |Lange Anmeldezeit bei der Verwendung des VBScript-Befehls "AddPrinterConnection" zum Zuordnen von Druckern zu Benutzern während des Anmeldeprozesses in Windows |4.15, 3.22, 2.34 |13. Januar 2015 |
+
+
+[4034658]: http://support.microsoft.com/kb/4034658
+[4034679]: http://support.microsoft.com/kb/4034679
+[4034672]: http://support.microsoft.com/kb/4034672
+[4034666]: http://support.microsoft.com/kb/4034666
+[4034733]: http://support.microsoft.com/kb/4034733
+[4034664]: http://support.microsoft.com/kb/4034664
+[4034665]: http://support.microsoft.com/kb/4034665
+[4034681]: http://support.microsoft.com/kb/4034681
+[4034668]: http://support.microsoft.com/kb/4034668
+[4034660]: http://support.microsoft.com/kb/4034660
+[4034658]: http://support.microsoft.com/kb/4034658
+[4034674]: http://support.microsoft.com/kb/4034674
+[4025341]: http://support.microsoft.com/kb/4025341
+[4025331]: http://support.microsoft.com/kb/4025331
+[4025336]: http://support.microsoft.com/kb/4025336
 
 [4025339]: http://support.microsoft.com/kb/4025337
 [4025337]: http://support.microsoft.com/kb/4025333

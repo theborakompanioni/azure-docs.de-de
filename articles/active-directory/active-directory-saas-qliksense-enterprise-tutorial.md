@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/26/2017
 ms.author: jeedes
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: 3fd6bcce24ca4a1170bd8a9301dff1a02d638773
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 4964634cd5aaf0dbb98c766f5e12700c4d118750
 ms.contentlocale: de-de
-ms.lasthandoff: 07/27/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-qlik-sense-enterprise"></a>Tutorial: Azure Active Directory-Integration mit Qlik Sense Enterprise
@@ -186,7 +186,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     
     e. Unter **SAML IdP metadata** (SAML-IdP-Metadaten) wird die Datei gewählt, die Sie zuvor im Abschnitt **Edit Federation Metadata from Azure AD Configuration** (Verbundmetadaten der Azure AD-Konfiguration bearbeiten) bearbeitet haben.  **Vor dem Hochladen der IdP-Metadaten muss die Datei bearbeitet werden** , um Informationen zu entfernen und so den richtigen Ablauf zwischen Azure AD und dem Qlik Sense-Server sicherzustellen.  **Verwenden Sie die obige Anleitung, falls Sie die Datei noch bearbeiten müssen.**  Wenn die Datei bearbeitet wurde, können Sie auf die Schaltfläche zum Durchsuchen klicken und die bearbeitete Metadatendatei auswählen, um sie für die Konfiguration des virtuellen Proxys hochzuladen.
     
-    f. Geben Sie den Attributnamen oder den Schemaverweis für das SAML-Attribut ein, das für die **UserID** steht, die von Azure AD an den Qlik Sense-Server gesendet wird.  Informationen zum Schemaverweis sind auf den Azure-App-Bildschirmen zur Post-Konfiguration verfügbar.  Weitere Informationen zum Verwenden des Namensattributs finden Sie unter `enter http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
+    f. Geben Sie den Attributnamen oder den Schemaverweis für das SAML-Attribut ein, das für die **UserID** steht, die von Azure AD an den Qlik Sense-Server gesendet wird.  Informationen zum Schemaverweis sind auf den Azure-App-Bildschirmen zur Post-Konfiguration verfügbar.  Geben Sie zum Verwenden des Namensattributs `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` ein.
     
     g. Geben Sie den Wert für das Benutzerverzeichnis ( **user directory** ) ein, das Benutzern zugeordnet wird, wenn diese die Authentifizierung gegenüber dem Qlik Sense-Server über Azure AD durchführen.  Hartcodierte Werte müssen in **eckige Klammern []** gesetzt werden.  Geben Sie den Namen des Attributs in diesem Textfeld **ohne** eckige Klammern ein, um ein Attribut zu verwenden, das in der Azure AD-SAML-Assertion gesendet wird.
     

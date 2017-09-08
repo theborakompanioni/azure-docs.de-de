@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 9b8033a9dfc8063f96e168a154696e7fe6fef8ff
+ms.translationtype: HT
+ms.sourcegitcommit: 48dfc0fa4c9ad28c4c64c96ae2fc8a16cd63865c
+ms.openlocfilehash: 960e5e311571d1054a2ef5c15c33291de27b0878
 ms.contentlocale: de-de
-ms.lasthandoff: 04/27/2017
-
+ms.lasthandoff: 08/30/2017
 
 ---
 # <a name="installing-elastic-database-jobs-overview"></a>Installieren von Aufträgen für die elastische Datenbank – Übersicht
@@ -95,7 +94,7 @@ Die für diesen Beispielaufruf angegebenen Parameter können nach Ihren Wünsche
 </tr>
     <tr>
     <td>SqlServerDatabaseSlo</td>
-    <td>Gibt das Service Level-Ziel für die Standard-Edition an. Dieser Parameter ist standardmäßig „S0“. Die Parameterwerte „S0/S1/S2/S3“ sind zulässig und bewirken die Verwendung des entsprechenden SLOs für die Azure SQL-Datenbank. Weitere Informationen zu SLOs für SQL-Datenbank finden Sie unter [Aufträge für die elastische Datenbank – Komponenten und Preise](sql-database-elastic-jobs-overview.md#components-and-pricing).</td>
+    <td>Gibt das Service Level-Ziel für die Standard-Edition an. Dieser Parameter ist standardmäßig „S0“. Die Parameterwerte „S0/S1/S2/S3/S4/S6/S9/S12“ sind zulässig und bewirken die Verwendung des entsprechenden SLO für Azure SQL-Datenbank. Weitere Informationen zu SLOs für SQL-Datenbank finden Sie unter [Aufträge für die elastische Datenbank – Komponenten und Preise](sql-database-elastic-jobs-overview.md#components-and-pricing).</td>
 </tr>
 
 </tr>

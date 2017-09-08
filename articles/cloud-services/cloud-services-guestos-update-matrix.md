@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 8/3/2017
+ms.date: 8/24/2017
 ms.author: raiye
 ms.translationtype: HT
-ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
-ms.openlocfilehash: acb22517cb1ce3fe166ae149d4d5bfb867b5ab99
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: be0092e62033da249015b211db148da57bb82765
 ms.contentlocale: de-de
-ms.lasthandoff: 08/04/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure-Gastbetriebssystemversionen und SDK-Kompatibilitätsmatrix
@@ -38,6 +38,9 @@ Bietet Ihnen aktuelle Informationen zu den neuesten Azure-Gastbetriebssystemrele
 Sind Sie unsicher, was das Gast-BS ist oder wie Gast-BS-Releases funktionieren? Lesen Sie [diesen](#how-it-works) Abschnitt.
 
 ## <a name="news-updates"></a>Neuigkeiten
+
+###### <a name="august-24-2017"></a>**24. August 2017**
+Das Gastbetriebssystem für August wurde veröffentlicht.
 
 ###### <a name="august-3-2017"></a>**3. August 2017**
 Das Gast-BS für July wurde veröffentlicht.
@@ -84,9 +87,10 @@ Installierte .NET Framework-Versionen: 4.0, 4.5, 4.5.1, 4.5.2, 4.6, 4.6.1, 4.6.2
 
 | Konfigurationszeichenfolge | Herausgabedatum | Deaktivierungsdatum | Abgelaufenes Datum |
 | --- | --- | --- | --- |
+| WA-GUEST-OS-5.10_201708-01 |24. August 2017 |Post 5.12 |TBD |
 | WA-GUEST-OS-5.9_201707-01 |3. August 2017 |Post 5.11 |TBD |
 | WA-GUEST-OS-5.8_201706-01 |7. Juli 2017 |Post 5.10 |TBD |
-| WA-GUEST-OS-5.7_201705-01 |5. Juni 2017 |Post 5.9 |TBD |
+|~~WA-GUEST-OS-5.7_201705-01~~ |5. Juni 2017 |24. August 2017 |TBD |
 |~~WA-GUEST-OS-5.6_201704-01~~ |9. Mai 2017 |3. August 2017 |TBD |
 |~~WA-GUEST-OS-5.5_201703-01~~ |10. April 2017 |7. Juli 2017 |TBD |
 |~~WA-GUEST-OS-5.4_201612-01~~ |10. Januar 2017 |5. Juni 2017|TBD |
@@ -105,9 +109,10 @@ Unterstützt .NET 4.0, 4.5, 4.5.1, 4.5.2
 
 | Konfigurationszeichenfolge | Herausgabedatum | Deaktivierungsdatum | Abgelaufenes Datum |
 | --- | --- | --- | --- |
+| WA-GUEST-OS-4.45_201708-01 |24. August 2017 |Post 4.47 |TBD |
 | WA-GUEST-OS-4.44_201707-01 |3. August 2017 |Post 4.46 |TBD |
 | WA-GUEST-OS-4.43_201706-01 |7. Juli 2017 |Post 4.45 |TBD |
-| WA-GUEST-OS-4.42_201705-01 |5. Juni 2017 |Post 4.44 |TBD |
+|~~WA-GUEST-OS-4.42_201705-01~~ |5. Juni 2017 |24. August 2017 |TBD |
 |~~WA-GUEST-OS-4.41_201704-01~~ |9. Mai 2017 |3. August 2017 |TBD |
 |~~WA-GUEST-OS-4.40_201703-01~~ |10. April 2017 |7. Juli 2017 |TBD |
 |~~WA-GUEST-OS-4.39_201612-01~~ |10. Januar 2017 |5. Juni 2017 |TBD |
@@ -130,9 +135,10 @@ Unterstützt .NET 4.0, 4.5, 4.5.1, 4.5.2
 
 | Konfigurationszeichenfolge | Herausgabedatum | Deaktivierungsdatum | Abgelaufenes Datum |
 | --- | --- | --- | --- |
+| WA-GUEST-OS-3.52_201708-01 |24. August 2017 |Post 3.54 |TBD |
 | WA-GUEST-OS-3.51_201707-01 |3. August 2017 |Post 3.53 |TBD |
 | WA-GUEST-OS-3.50_201706-01 |7. Juli 2017 |Post 3.52 |TBD |
-| WA-GUEST-OS-3.49_201705-01 |5. Juni 2017 |Post 3.51 |TBD |
+|~~WA-GUEST-OS-3.49_201705-01~~ |5. Juni 2017 |24. August 2017 |TBD |
 |~~WA-GUEST-OS-3.48_201704-01~~ |9. Mai 2017 |3. August 2017 |TBD |
 |~~WA-GUEST-OS-3.47_201703-01~~ |10. April 2017 |7. Juli 2017 |TBD |
 |~~WA-GUEST-OS-3.46_201612-01~~ |10. Januar 2017 |5. Juni 2017 |TBD |
@@ -155,9 +161,10 @@ Unterstützt .NET 3.5, 4.0, 4.5, 4.5.1, 4.5.2
 
 | Konfigurationszeichenfolge | Herausgabedatum | Deaktivierungsdatum | Abgelaufenes Datum |
 | --- | --- | --- | --- |
+| WA-GUEST-OS-2.65_201708-01 |24. August 2017 |Post 2.67 |TBD |
 | WA-GUEST-OS-2.64_201707-01 |3. August 2017 |Post 2.66 |TBD |
 | WA-GUEST-OS-2.63_201706-01 |7. Juli 2017 |Post 2.65 |TBD |
-| WA-GUEST-OS-2.62_201705-01 |5. Juni 2017 |Post 2.64 |TBD |
+|~~WA-GUEST-OS-2.62_201705-01~~ |5. Juni 2017 |24. August 2017 |TBD |
 |~~WA-GUEST-OS-2.61_201704-01~~ |9. Mai 2017 |3. August 2017 |TBD |
 |~~WA-GUEST-OS-2.60_201703-01~~ |10. April 2017 |7. Juli 2017 |TBD |
 |~~WA-GUEST-OS-2.59_201701-01~~ |10. Januar 2017 |5. Juni 2017 |TBD |

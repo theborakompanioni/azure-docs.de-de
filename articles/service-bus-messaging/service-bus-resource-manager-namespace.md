@@ -14,17 +14,17 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 08/07/2017
 ms.author: sethm;shvija
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: efd0ec90a1c0775661069faa323e56914dd4e032
+ms.translationtype: HT
+ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
+ms.openlocfilehash: 0598ee93a38c07aa7b1102cdaf228c2a4b4dcf71
 ms.contentlocale: de-de
-ms.lasthandoff: 04/13/2017
+ms.lasthandoff: 08/30/2017
 
 ---
 
 # <a name="create-a-service-bus-namespace-using-an-azure-resource-manager-template"></a>Erstellen eines Service Bus-Namespace mithilfe einer Azure Resource Manager-Vorlage
 
-In diesem Artikel wird beschrieben, wie Sie eine Azure Resource Manager-Vorlage verwenden, die einen Service Bus-Namespace vom Typ **Messaging** mit einer Standard-/Basic-SKU erstellt. Der Artikel definiert auch die Parameter, die für die Ausführung der Bereitstellung angegeben werden. Sie können diese Vorlage für Ihre eigenen Bereitstellungen verwenden oder an Ihre Anforderungen anpassen.
+In diesem Artikel wird beschrieben, wie Sie eine Azure Resource Manager-Vorlage verwenden, die einen Service Bus-Namespace vom Typ **Messaging** mit einer Standard-SKU erstellt. Der Artikel definiert auch die Parameter, die für die Ausführung der Bereitstellung angegeben werden. Sie können diese Vorlage für Ihre eigenen Bereitstellungen verwenden oder an Ihre Anforderungen anpassen.
 
 Weitere Informationen zum Erstellen von Vorlagen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen][Authoring Azure Resource Manager templates].
 
@@ -43,7 +43,7 @@ Die vollständige Vorlage finden Sie unter [Service Bus namespace template][Serv
 > 
 
 ## <a name="what-will-you-deploy"></a>Was möchten Sie bereitstellen?
-Mit dieser Vorlage können Sie einen Service Bus-Namespace mit einer [Basic-, Standard- oder Premium-](https://azure.microsoft.com/pricing/details/service-bus/)-SKU bereitstellen.
+Mit dieser Vorlage können Sie einen Service Bus-Namespace mit einer [Standard- oder Premium-SKU](https://azure.microsoft.com/pricing/details/service-bus/) bereitstellen.
 
 Klicken Sie auf folgende Schaltfläche, um die Bereitstellung automatisch auszuführen:
 
@@ -73,7 +73,6 @@ Der Name der zu erstellenden Service Bus- [SKU](https://azure.microsoft.com/pric
 "serviceBusSku": { 
     "type": "string", 
     "allowedValues": [ 
-        "Basic", 
         "Standard",
         "Premium" 
     ], 
@@ -84,7 +83,7 @@ Der Name der zu erstellenden Service Bus- [SKU](https://azure.microsoft.com/pric
 
 ```
 
-Die Vorlage definiert die Werte, die für diesen Parameter zulässig sind (Basic, Standard oder Premium), und weist einen Standardwert (Standard) zu, wenn kein Wert angegeben wird.
+Die Vorlage definiert die Werte, die für diesen Parameter zulässig sind (Standard oder Premium), und weist einen Standardwert (Standard) zu, wenn kein Wert angegeben wird.
 
 Weitere Informationen zu Service Bus-Preisen finden Sie unter [Service Bus – Preise und Abrechnung][Service Bus pricing and billing].
 

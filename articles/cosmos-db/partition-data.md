@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 08/29/2017
 ms.author: arramac
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
-ms.openlocfilehash: e2d2847276e553d7511241ff323c3e00aad8e5c9
+ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
+ms.openlocfilehash: 9f341438fc0bf239f47ae87db70b067862652786
 ms.contentlocale: de-de
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 08/30/2017
 
 ---
 
@@ -65,7 +65,7 @@ Cosmos DB arbeitete mit hashbasierter Partitionierung. Wenn Sie ein Element schr
 Azure Cosmos DB-Container können „festgelegt“ oder „unbegrenzt“ erstellt werden. Container mit fester Größe weisen eine Obergrenze von 10 GB und 10.000 RUs/Sek. (Request Units, Anforderungseinheiten) auf. Bei einigen APIs kann der Partitionsschlüssel für Container mit fester Größe weggelassen werden. Um einen unbegrenzten Container zu erstellen, müssen Sie einen Mindestdurchsatz von 2.500 RU/Sek. angeben.
 
 ## <a name="partitioning-and-provisioned-throughput"></a>Partitionierung und bereitgestellter Durchsatz
-Cosmos DB ist auf vorhersagbare Leistung ausgelegt. Wenn Sie einen Container erstellen, reservieren Sie Durchsatz in Form von **[Anforderungseinheiten](request-units.md) pro Sekunde mit einem möglichen zusätzlichen RU-Wert pro Minute**. Jeder Anforderung wird eine Gebühr für Anforderungseinheiten zugewiesen, die sich proportional zur vom Vorgang genutzten Menge an Systemressourcen wie CPU, Arbeitsspeicher und E/A verhält. Der Lesevorgang eines 1 KB großen Dokuments mit Sitzungskonsistenz beansprucht eine Anforderungseinheit. Ein Lesevorgang entspricht einer RU, unabhängig von der Anzahl der gespeicherten Elemente oder der Anzahl gleichzeitiger Anforderungen, die parallel ausgeführt werden. Größere Elemente erfordern mehr Anforderungseinheiten. Wenn Sie die Größe Ihrer Entitäten sowie die von Ihrer Anwendung benötigte Anzahl an Lesevorgängen kennen, können Sie Ihrer Anwendung für den Lesevorgang exakt den benötigten Durchsatz bereitstellen. 
+Cosmos DB ist auf vorhersagbare Leistung ausgelegt. Wenn Sie einen Container erstellen, reservieren Sie Durchsatz hinsichtlich der **[Anforderungseinheiten](request-units.md) (Request Units, RUs) pro Sekunde**. Jeder Anforderung wird eine Gebühr für Anforderungseinheiten zugewiesen, die sich proportional zur vom Vorgang genutzten Menge an Systemressourcen wie CPU, Arbeitsspeicher und E/A verhält. Der Lesevorgang eines 1 KB großen Dokuments mit Sitzungskonsistenz beansprucht eine Anforderungseinheit. Ein Lesevorgang entspricht einer RU, unabhängig von der Anzahl der gespeicherten Elemente oder der Anzahl gleichzeitiger Anforderungen, die parallel ausgeführt werden. Größere Elemente erfordern mehr Anforderungseinheiten. Wenn Sie die Größe Ihrer Entitäten sowie die von Ihrer Anwendung benötigte Anzahl an Lesevorgängen kennen, können Sie Ihrer Anwendung für den Lesevorgang exakt den benötigten Durchsatz bereitstellen. 
 
 > [!NOTE]
 > Um den vollständigen Durchsatz des Containers zu erreichen, müssen Sie einen Partitionsschlüssel auswählen, der Ihnen ermöglicht, Anforderungen gleichmäßig zwischen einigen unterschiedlichen Partitionsschlüsselwerten zu verteilen.

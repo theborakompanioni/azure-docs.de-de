@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/09/2017
+ms.date: 08/23/2017
 ms.author: sethm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
-ms.openlocfilehash: cc44d59100104253447e474a49254d8b6bd68d8c
+ms.translationtype: HT
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: e8c146f4b6d02449be6ad9e991e52db8dfd58e04
 ms.contentlocale: de-de
-ms.lasthandoff: 05/17/2017
-
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="azure-relay-faqs"></a>Azure Relay – häufig gestellte Fragen
@@ -37,10 +36,10 @@ Ein [Namespace](relay-create-namespace-portal.md) ist ein Bereichscontainer für
 Der frühere Service Bus Relay-Dienst heißt jetzt WCF-Relay. Sie können den Dienst weiter wie gewohnt verwenden. Der Hybrid Connections-Dienst ist die aktualisierte Version eines Diensts, der aus Azure BizTalk Services übernommen wurde. WCF-Relay und Hybrid Connections werden weiterhin unterstützt.
 
 ## <a name="pricing"></a>Preise
-In diesem Abschnitt werden einige häufig gestellte Fragen zur Relay-Preisstruktur beantwortet. Allgemeine Informationen zu Azure-Preisen finden Sie unter [Häufig gestellte Fragen zum Azure-Support](http://go.microsoft.com/fwlink/?LinkID=185083). Vollständige Informationen zu Relay-Preisen finden Sie unter [Service Bus-Preise](https://azure.microsoft.com/pricing/details/service-bus/).
+In diesem Abschnitt werden einige häufig gestellte Fragen zur Relay-Preisstruktur beantwortet. Allgemeine Informationen zu Azure-Preisen finden Sie unter [Häufig gestellte Fragen zum Azure-Support](http://go.microsoft.com/fwlink/?LinkID=185083). Vollständige Informationen zu Relay-Preisen finden Sie unter [Service Bus-Preise][Pricing overview].
 
 ### <a name="how-do-you-charge-for-hybrid-connections-and-wcf-relay"></a>Wie werden Hybridverbindungen und WCF-Relay abgerechnet?
-Vollständige Informationen zu Relay-Preisen finden Sie unter [Service Bus-Preise][Pricing overview]. Neben den auf dieser Seite aufgeführten Preisen werden Ihnen die entsprechenden, aus dem Rechenzentrum ausgehenden Datenübertragungen berechnet, mit denen Ihre Anwendung bereitgestellt wird.
+Alle Informationen zu den Preisen für Relay finden Sie in der Tabelle [Hybridverbindungen und WCF-Relays][Pricing overview] auf der Seite mit den Preisdetails zu Service Bus. Neben den auf dieser Seite aufgeführten Preisen werden Ihnen die entsprechenden, aus dem Rechenzentrum ausgehenden Datenübertragungen berechnet, mit denen Ihre Anwendung bereitgestellt wird.
 
 ### <a name="how-am-i-billed-for-hybrid-connections"></a>Wie werden Hybridverbindungen abgerechnet?
 Im Folgenden finden Sie drei Beispielszenarien für die Abrechnung für Hybrid Connections:
@@ -73,9 +72,9 @@ In einigen Fällen können mit einem einzelnen Relay mehrere Listener verbunden 
 
 Im Allgemeinen werden abrechenbare Nachrichten für Relays mit derselben Methode berechnet, die weiter oben für Brokerentitäten (Warteschlangen, Themen und Abonnements) beschrieben wird. Es gibt jedoch einige wichtige Ausnahmen.
 
-Das Senden einer Nachricht an ein Service Bus-Relay wird als vollständiger Sendevorgang an den Relaylistener behandelt, der die Nachricht empfängt. Es wird *nicht* als Sendevorgang an das Service Bus-Relay mit anschließender Übermittlung an den Relaylistener behandelt. Ein Dienstaufruf vom Typ Anforderung-Antwort (von bis zu 64 KB) für einen Relaylistener führt zu zwei abrechenbaren Nachrichten: eine für die Anforderung und eine für die Antwort (unter der Voraussetzung, dass die Antwort ebenfalls 64 KB oder kleiner ist). Dies unterscheidet sich vom Einsatz einer Warteschlange für die Vermittlung zwischen einem Client und einem Dienst. Wenn Sie eine Warteschlange für die Vermittlung zwischen einem Client und einem Dienst verwenden, erfordert das gleiche Anforderung-Antwort-Muster das Senden einer Anforderungsnachricht an die Warteschlange, gefolgt von einer Nachricht zur Entfernung/Übermittlung von der Warteschlange an den Dienst. Darauf folgt eine Antwortnachricht an eine andere Warteschlange und eine Nachricht zur Entfernung/Übermittlung von dieser Warteschlange an den Client. Unter Annahme der gleichen Nachrichtengrößen (bis zu 64 KB) würde das Muster der Vermittlung per Warteschlange zu vier abrechenbaren Nachrichten führen. Damit würden Ihnen zum Implementieren des gleichen Musters doppelt so viele Nachrichten berechnet wie bei Verwendung von Relays. Natürlich bieten Warteschlangen Vorteile bei diesem Muster, wie etwa Dauerhaftigkeit und Lastenausgleich. Diese Vorteile könnten die zusätzlichen Kosten rechtfertigen.
+Das Senden einer Nachricht an ein Service Bus-Relay wird als vollständiger Sendevorgang an den Relaylistener behandelt, der die Nachricht empfängt. Es wird nicht als Sendevorgang an das Service Bus-Relay mit anschließender Übermittlung an den Relaylistener behandelt. Ein Dienstaufruf vom Typ Anforderung-Antwort (von bis zu 64 KB) für einen Relaylistener führt zu zwei abrechenbaren Nachrichten: eine für die Anforderung und eine für die Antwort (unter der Voraussetzung, dass die Antwort ebenfalls 64 KB oder kleiner ist). Dies unterscheidet sich vom Einsatz einer Warteschlange für die Vermittlung zwischen einem Client und einem Dienst. Wenn Sie eine Warteschlange für die Vermittlung zwischen einem Client und einem Dienst verwenden, erfordert das gleiche Anforderung-Antwort-Muster das Senden einer Anforderungsnachricht an die Warteschlange, gefolgt von einer Nachricht zur Entfernung/Übermittlung von der Warteschlange an den Dienst. Darauf folgt eine Antwortnachricht an eine andere Warteschlange und eine Nachricht zur Entfernung/Übermittlung von dieser Warteschlange an den Client. Unter Annahme der gleichen Nachrichtengrößen (bis zu 64 KB) würde das Muster der Vermittlung per Warteschlange zu vier abrechenbaren Nachrichten führen. Damit würden Ihnen zum Implementieren des gleichen Musters doppelt so viele Nachrichten berechnet wie bei Verwendung von Relays. Natürlich gibt es Vorteile beim Einsatz von Warteschlangen, wenn man dieses Muster verwenden möchte, wie etwa Dauerhaftigkeit und Lastenausgleich. Diese Vorteile könnten die zusätzlichen Kosten rechtfertigen.
 
-Relays, die anhand der WCF-Bindung (Windows Communication Foundation) „netTCPRelay“ geöffnet werden, behandeln Nachrichten nicht als einzelne Nachrichten, sondern als Datenstrom, der durch das System fließt. Wenn Sie diese Bindung verwenden, erhalten nur der Sender und der Listener Einblick in das Framing der einzelnen Nachrichten, die gesendet/empfangen werden. Bei Relays, die die netTCPRelay-Bindung verwenden, werden zur Ermittlung abrechenbarer Nachrichten alle Daten als Datenstrom behandelt. In diesen Fall berechnet Service Bus die Gesamtmenge der über jedes einzelne Relay gesendeten oder empfangenen Daten für einen Zeitraum von 5 Minuten. Dann wird diese Gesamtmenge durch 64 KB dividiert, um die Anzahl von abrechenbaren Nachrichten für dieses Relay in diesem Zeitraum zu ermitteln.
+Relays, die anhand der WCF-Bindung **netTCPRelay** geöffnet werden, behandeln Nachrichten nicht als einzelne Nachrichten, sondern als Datenstrom, der durch das System fließt. Wenn Sie diese Bindung verwenden, erhalten nur der Sender und der Listener Einblick in das Framing der einzelnen Nachrichten, die gesendet/empfangen werden. Bei Relays, die die **netTCPRelay**-Bindung verwenden, werden zur Ermittlung abrechenbarer Nachrichten alle Daten als Datenstrom behandelt. In diesen Fall berechnet Service Bus die Gesamtmenge der über jedes einzelne Relay gesendeten oder empfangenen Daten für einen Zeitraum von 5 Minuten. Dann wird diese Gesamtmenge durch 64 KB dividiert, um die Anzahl von abrechenbaren Nachrichten für dieses Relay in diesem Zeitraum zu ermitteln.
 
 ## <a name="quotas"></a>Kontingente
 | Namen des Kontingents | Umfang | Typ | Verhalten beim Überschreiten | Wert |
@@ -93,7 +92,7 @@ Microsoft legt für jeden Clouddienst standardmäßig ein aggregiertes monatlich
 * 5 Milliarden Nachrichten
 * 2 Millionen Relaystunden
 
-Wir behalten uns das Recht vor, ein Kundenkonto zu deaktivieren, das die monatlichen Nutzungskontingente überschritten hat. Wir informieren allerdings per E-Mail darüber und unternehmen mehrere Versuche, den Kunden zu kontaktieren, ehe wir Maßnahmen ergreifen. Kunden, die diese Kontingente überschreiten, haben die Kosten für die Überschreitung zu tragen.
+Wir behalten uns vor, ein Konto zu deaktivieren, das die monatlichen Nutzungskontingente überschritten hat. Wir informieren allerdings per E-Mail darüber und unternehmen mehrere Versuche, den Kunden zu kontaktieren, ehe wir Maßnahmen ergreifen. Kunden, die diese Kontingente überschreiten, haben die Kosten für die Überschreitung zu tragen.
 
 ### <a name="naming-restrictions"></a>Benennungseinschränkungen
 Ein Relaynamespace-Name muss zwischen 6 und 50 Zeichen lang sein.
@@ -127,7 +126,7 @@ Move-AzureRmResource -DestinationResourceGroupName 'targetRG' -DestinationSubscr
 Eine Beschreibung häufig auftretender Ausnahmen und der vorgeschlagenen Aktionen, die Sie ausführen können, finden Sie unter [Relay-Ausnahmen][Relay exceptions].
 
 ### <a name="what-is-a-shared-access-signature-and-which-languages-can-i-use-to-generate-a-signature"></a>Was ist eine Shared Access Signature, und welche Sprachen kann ich zum Generieren einer Signatur verwenden?
-Shared Access Signatures (SAS) sind ein Authentifizierungsmechanismus, der auf mit SHA-256 gesicherten Hashes oder URIs basiert. Informationen dazu, wie Sie Ihre eigenen Signaturen in Node, PHP, Java, C und C# generieren, finden Sie im Artikel [Service Bus-Authentifizierung mit Shared Access Signatures][Shared Access Signatures].
+Bei Shared Access Signatures handelt es sich um einen Authentifizierungsmechanismus, der auf sicheren Hashes (SHA-256) oder URIs basiert. Informationen dazu, wie Sie Ihre eigenen Signaturen in Node, PHP, Java, C und C# generieren, finden Sie im Artikel [Service Bus-Authentifizierung mit Shared Access Signatures][Shared Access Signatures].
 
 ### <a name="is-it-possible-to-whitelist-relay-endpoints"></a>Ist es möglich, Relayendpunkte in eine Whitelist aufzunehmen?
 Ja. Der Relayclient stellt mithilfe vollqualifizierter Domänennamen Verbindungen mit dem Azure Relay-Dienst her. Kunden können einen Eintrag für `*.servicebus.windows.net` für Firewalls hinzufügen, die DNS-Whitelists unterstützen.

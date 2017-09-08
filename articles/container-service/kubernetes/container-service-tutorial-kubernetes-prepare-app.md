@@ -18,10 +18,10 @@ ms.date: 07/25/2017
 ms.author: nepeters
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: 851ce819b9a1a0d917981223cc54e959b3306709
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: f02ee61ef1cd3b3dfaa051cfabe52866e3e7e838
 ms.contentlocale: de-de
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 08/24/2017
 
 ---
 
@@ -62,10 +62,10 @@ Im geklonten Verzeichnis befinden sich der Anwendungsquellcode, ein vorab erstel
 
 [Docker Compose](https://docs.docker.com/compose/) kann verwendet werden, um die Erstellung von Containerimages und die Bereitstellung von Anwendungen mit mehreren Containern zu automatisieren.
 
-Führen Sie die Datei „docker-compose.yaml“ aus, um das Containerimage zu erstellen, das Redis-Image herunterzuladen und die Anwendung zu starten.
+Führen Sie die Datei „docker-compose.yml“ aus, um das Containerimage zu erstellen, das Redis-Image herunterzuladen und die Anwendung zu starten.
 
 ```bash
-docker-compose -f ./azure-voting-app-redis/docker-compose.yaml up -d
+docker-compose -f ./azure-voting-app-redis/docker-compose.yml up -d
 ```
 
 Verwenden Sie anschließend den Befehl [docker-images](https://docs.docker.com/engine/reference/commandline/images/), um die erstellten Images anzuzeigen.
@@ -110,13 +110,13 @@ Nach der Überprüfung der Funktionsfähigkeit der Anwendung können die ausgef�
 Führen Sie folgenden Befehl aus, um die ausgeführten Container zu beenden.
 
 ```bash
-docker-compose -f ./azure-voting-app-redis/docker-compose.yaml stop
+docker-compose -f ./azure-voting-app-redis/docker-compose.yml stop
 ```
 
 Löschen Sie die beendeten Container mit dem folgenden Befehl.
 
 ```bash
-docker-compose -f ./azure-voting-app-redis/docker-compose.yaml rm
+docker-compose -f ./azure-voting-app-redis/docker-compose.yml rm
 ```
 
 Nach Abschluss des Vorgangs verfügen Sie über ein Containerimage, das die Azure Voting-Anwendung enthält.

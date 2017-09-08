@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/26/2017
 ms.author: asmalser-msft
 ms.translationtype: HT
-ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
-ms.openlocfilehash: 8f9c3fa677a93be109bcf423af651a5cd91c7679
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: 84613b7f8d7bd031d492a62da0bc53be96ac45a3
 ms.contentlocale: de-de
-ms.lasthandoff: 08/05/2017
+ms.lasthandoff: 08/24/2017
 
 ---
 
@@ -105,9 +105,9 @@ Sie müssen für die Bereitstellung von Benutzerkonten in Cerner Central ein Cer
 
    * Geben Sie im Feld **Mandanten-URL** eine URL im unten angegebenen Format an, und ersetzen Sie die Bereichs-ID für die Benutzerliste durch die Bereichs-ID, die Sie in Schritt 4 abgerufen haben.
 
-> Sandkasten: https://user-roster-api.sandboxcernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/Users 
+> Sandkasten: https://user-roster-api.sandboxcernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
 
-> Produktion: https://user-roster-api.cernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/Users 
+> Produktion: https://user-roster-api.cernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
 
    * Geben Sie im Feld **Geheimes Token** das in Schritt 3 generierte OAuth-Bearertoken ein, und klicken Sie auf **Verbindung testen**.
 

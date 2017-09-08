@@ -16,12 +16,11 @@ ms.tgt_pltfrm: NA
 ms.workload: sqldb-migrate
 ms.date: 02/08/2017
 ms.author: carlrab
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: 9fb1d12f5895e27929b2698edbf8c207aa2ee377
+ms.translationtype: HT
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 90c78007368c2679e1c5afdb9369869adde77f0d
 ms.contentlocale: de-de
-ms.lasthandoff: 04/17/2017
-
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="sql-server-database-migration-to-sql-database-in-the-cloud"></a>Migrieren einer SQL Server-Datenbank zu Azure SQL-Datenbank in der Cloud
@@ -65,7 +64,7 @@ Die folgende Liste enthält Empfehlungen, mit denen Sie während des Importproze
 
 ## <a name="method-2-use-transactional-replication"></a>2. Methode: Verwenden der Transaktionsreplikation
 
-Wenn Sie es sich nicht leisten können, Ihre SQL Server-Datenbank während der Migration aus der Produktion herauszunehmen, können Sie die SQL Server-Transaktionsreplikation als Migrationslösung verwenden. Die Verwendung dieser Methode setzt voraus, dass die Quelldatenbank die [Anforderungen für die Transaktionsreplikation](https://msdn.microsoft.com/library/mt589530.aspx) erfüllt und mit Azure SQL-Datenbank kompatibel ist. 
+Wenn Sie es sich nicht leisten können, Ihre SQL Server-Datenbank während der Migration aus der Produktion herauszunehmen, können Sie die SQL Server-Transaktionsreplikation als Migrationslösung verwenden. Die Verwendung dieser Methode setzt voraus, dass die Quelldatenbank die [Anforderungen für die Transaktionsreplikation](https://msdn.microsoft.com/library/mt589530.aspx) erfüllt und mit Azure SQL-Datenbank kompatibel ist. Weitere Informationen zur SQL-Replikation mit Always On finden Sie unter [Konfigurieren der Replikation für AlwaysOn-Verfügbarkeitsgruppen (SQL Server)](/sql/database-engine/availability-groups/windows/configure-replication-for-always-on-availability-groups-sql-server).
 
 Zur Verwendung dieser Lösung können Sie Ihre Azure SQL-Datenbank-Instanz als Abonnent der SQL Server-Instanz konfigurieren, die Sie migrieren möchten. Der Verteiler der Transaktionsreplikation synchronisiert die Daten aus der zu synchronisierenden Datenbank (der Veröffentlicher), während weiterhin neue Transaktionen ausgeführt werden. 
 

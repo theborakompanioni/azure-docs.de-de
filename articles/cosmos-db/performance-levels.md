@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/24/2017
+ms.date: 08/28/2017
 ms.author: mimig
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: c8d4733e57eb760dbb8e8ca96f6ba55671d1742f
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: 6692d5b75954b2162862e6be7c2e39c63fa8408b
 ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="retiring-the-s1-s2-and-s3-performance-levels"></a>Aussondern der Leistungsebenen S1, S2 und S3
@@ -28,7 +28,7 @@ ms.lasthandoff: 08/21/2017
 > Die in diesem Artikel beschriebenen Leistungsebenen S1, S2 und S3 werden ausgesondert und sind für neue DocumentDB-API-Konten nicht mehr verfügbar.
 >
 
-Dieser Artikel enthält eine Übersicht über die Leistungsebenen S1, S2 und S3. Es wird beschrieben, wie die Sammlungen, für die diese Leistungsebenen verwendet werden, am 1. August 2017 zu Sammlungen mit nur einer Partition migriert werden. Nach Lesen dieses Artikels können Sie die folgenden Fragen beantworten:
+Dieser Artikel enthält eine Übersicht über die Leistungsebenen S1, S2 und S3. Es wird beschrieben, wie die Sammlungen, für die diese Leistungsebenen verwendet werden, zum Ende des Jahres 2017 zu Sammlungen mit nur einer Partition migriert werden. Nach Lesen dieses Artikels können Sie die folgenden Fragen beantworten:
 
 - [Warum werden die Leistungsebenen S1, S2 und S3 ausgesondert?](#why-retired)
 - [Welche Unterschiede weisen Sammlungen mit nur einer Partition und partitionierte Sammlungen gegenüber den Leistungsebenen S1, S2 und S3 auf?](#compare)
@@ -36,7 +36,7 @@ Dieser Artikel enthält eine Übersicht über die Leistungsebenen S1, S2 und S3.
 - [Wie verändert sich meine Sammlung nach der Migration?](#collection-change)
 - [Wie verändert sich meine Abrechnung nach der Migration zu Sammlungen mit nur einer Partition?](#billing-change)
 - [Welche Möglichkeiten habe ich, wenn ich mehr als 10 GB Speicher benötige?](#more-storage-needed)
-- [Kann ich vor dem 1. August 2017 zwischen den Leistungsebenen S1, S2 und S3 wechseln?](#change-before)
+- [Kann ich vor der geplanten Migration zwischen den Leistungsebenen S1, S2 und S3 wechseln?](#change-before)
 - [Woran kann ich erkennen, dass meine Sammlung migriert wurde?](#when-migrated)
 - [Wie kann ich die Migration von den Leistungsebenen S1, S2 und S3 zu Sammlungen mit nur einer Partition selbst durchführen?](#migrate-diy)
 - [Inwieweit bin ich betroffen, wenn ich EA-Kunde bin?](#ea-customer)
@@ -66,7 +66,7 @@ Sind Sie EA-Kunde? Wenn ja, helfen Ihnen die Informationen unter [Inwieweit bin 
 
 ## <a name="what-do-i-need-to-do-to-ensure-uninterrupted-access-to-my-data"></a>Was muss ich tun, um den unterbrechungsfreien Zugriff auf meine Daten sicherzustellen?
 
-Nichts. Die Migration wird von Cosmos DB für Sie durchgeführt. Wenn Sie eine S1-, S2- oder S3-Sammlung verwenden, wird Ihre aktuelle Sammlung am 31. Juli 2017 zu einer Sammlung mit nur einer Partition migriert. 
+Nichts. Die Migration wird von Cosmos DB für Sie durchgeführt. Wenn Sie eine S1-, S2- oder S3-Sammlung verwenden, wird Ihre aktuelle Sammlung gegen Ende des Jahres 2017 zu einer Sammlung mit nur einer Partition migriert. 
 
 <a name="collection-change"></a>
 
@@ -98,15 +98,15 @@ Es spielt keine Rolle, ob Sie eine Sammlung mit der Leistungsebene S1, S2 oder S
 
 <a name="change-before"></a>
 
-## <a name="can-i-change-between-the-s1-s2-and-s3-performance-levels-before-august-1-2017"></a>Kann ich vor dem 1. August 2017 zwischen den Leistungsebenen S1, S2 und S3 wechseln?
+## <a name="can-i-change-between-the-s1-s2-and-s3-performance-levels-before-the-planned-migration"></a>Kann ich vor der geplanten Migration zwischen den Leistungsebenen S1, S2 und S3 wechseln?
 
-Nur für vorhandene Konten mit S1-, S2- und S3-Leistung können die Leitungsebenentarife über das Portal oder programmgesteuert geändert werden. Ab dem 1. August 2017 sind die Leistungsebenen S1, S2 und S3 nicht mehr verfügbar. Wenn Sie von S1, S2 oder S3 zu einer Sammlung mit nur einer Partition wechseln, ist es nicht möglich, zu den Leistungsebenen S1, S2 oder S3 zurückzukehren.
+Nur für vorhandene Konten mit S1-, S2- und S3-Leistung können die Leitungsebenentarife über das Portal oder programmgesteuert geändert werden. Wenn Sie von S1, S2 oder S3 zu einer Sammlung mit nur einer Partition wechseln, ist es nicht möglich, zu den Leistungsebenen S1, S2 oder S3 zurückzukehren.
 
 <a name="when-migrated"></a>
 
 ## <a name="how-will-i-know-when-my-collection-has-migrated"></a>Woran kann ich erkennen, dass meine Sammlung migriert wurde?
 
-Die Migration wird am 31. Juli 2017 durchgeführt. Wenn Sie eine Sammlung mit der Leistungsebene S1, S2 oder S3 verwenden, erhalten Sie vom Cosmos DB-Team vor der Durchführung der Migration eine E-Mail. Nach Abschluss der Migration wird am 1. August 2017 im Azure-Portal angezeigt, dass für Ihre Sammlung Standard-Preise verwendet werden.
+Die Migration wird gegen Ende des Jahres 2017 durchgeführt. Wenn Sie eine Sammlung mit der Leistungsebene S1, S2 oder S3 verwenden, erhalten Sie vom Cosmos DB-Team vor der Durchführung der Migration eine E-Mail. Nach Abschluss der Migration wird im Azure-Portal angezeigt, dass für Ihre Sammlung Standard-Preise verwendet werden.
 
 ![Sicherstellen, dass Ihre Sammlung zum Standard-Tarif migriert wurde](./media/performance-levels/portal-standard-pricing-applied.png)
 
@@ -114,7 +114,7 @@ Die Migration wird am 31. Juli 2017 durchgeführt. Wenn Sie eine Sammlung mit de
 
 ## <a name="how-do-i-migrate-from-the-s1-s2-s3-performance-levels-to-single-partition-collections-on-my-own"></a>Wie kann ich die Migration von den Leistungsebenen S1, S2 und S3 zu Sammlungen mit nur einer Partition selbst durchführen?
 
-Sie können von den Leistungsebenen S1, S2 und S3 die Migration zu Sammlungen mit nur einer Partition über das Azure-Portal oder programmgesteuert durchführen. Bis zum 1. August können Sie diesen Schritt selbst ausführen, um von den flexiblen Durchsatzoptionen für Sammlungen mit nur einer Partition zu profitieren. Andernfalls migrieren wir die Sammlungen für Sie am 31. Juli 2017.
+Sie können von den Leistungsebenen S1, S2 und S3 die Migration zu Sammlungen mit nur einer Partition über das Azure-Portal oder programmgesteuert durchführen. Vor der geplanten Migration können Sie diesen Schritt selbst ausführen, um von den flexiblen Durchsatzoptionen für Sammlungen mit nur einer Partition zu profitieren. Andernfalls migrieren wir die Sammlungen für Sie gegen Ende des Jahres 2017.
 
 **So migrieren Sie Sammlungen mit nur einer Partition über das Azure-Portal**
 

@@ -16,17 +16,17 @@ ms.workload: na
 ms.date: 07/25/2017
 ms.author: dobett
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: 86a4d6d3ab4d29fba8f554265958ffa079b69ec2
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: 90a6172dbd887ecda5a9f5d9082a4e136092bc10
 ms.contentlocale: de-de
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 08/24/2017
 
 ---
 # <a name="customize-how-the-connected-factory-solution-displays-data-from-your-opc-ua-servers"></a>Anpassen, wie die verbundene Werkslösung Daten von Ihren OPC UA-Servern anzeigt
 
 ## <a name="introduction"></a>Einführung
 
-Die verbundene Werkslösung aggregiert und zeigt Daten von OPC UA-Servern, die mit der Lösung verbunden sind. Sie können in Ihrer Lösung zu den OPC UA-Servern navigieren und Befehle an diese senden. Weitere Informationen zu OPC UA finden Sie in den [FAQ][lnk-faq].
+Die verbundene Werkslösung aggregiert und zeigt Daten von OPC UA-Servern, die mit der Lösung verbunden sind. Sie können in Ihrer Lösung zu den OPC UA-Servern navigieren und Befehle an diese senden. Weitere Informationen zu OPC UA finden Sie in den [häufig gestellten Fragen zur verbundenen Factory](iot-suite-faq-cf.md).
 
 Beispiele für aggregierte Daten in der Lösung sind die anlagenübergreifende Effizienz (Overall Equipment Efficiency, OEE) und Leistungsindikatoren (Key Performance Indicators, KPIs), die Sie im Dashboard auf Werks-, Fertigungsstraßen- und Stationsebene anzeigen können. Der folgende Screenshot zeigt die OEE- und KPI-Werte für die Station **Montage** in der **Fertigungsstraße 1** im Werk **München**:
 
@@ -175,6 +175,7 @@ In den folgenden Artikeln erfahren Sie mehr über die verbundene vorkonfiguriert
 * [Vorkonfigurierte Connected Factory-Lösung – Exemplarische Vorgehensweise][lnk-rm-walkthrough]
 * [Bereitstellen eines Gateways für verbundene Factorys][lnk-connect-cf]
 * [Berechtigungen für die Website „azureiotsuite.com“][lnk-permissions]
+* [Verbundene Factory – häufig gestellte Fragen](iot-suite-faq-cf.md)
 * [Häufig gestellte Fragen][lnk-faq]
 
 

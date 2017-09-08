@@ -1,6 +1,6 @@
 ---
 title: "Konfigurieren der SSL-Auslagerung – Azure Application Gateway (PowerShell – klassisch) | Microsoft-Dokumentation"
-description: "Dieser Artikel enthält Anweisungen zum Erstellen eines Application Gateways mit SSL-Auslagerung mit dem klassischen Azure-Bereitstellungsmodell."
+description: "Dieser Artikel enthält Anweisungen zum Erstellen eines Anwendungsgateways mit SSL-Auslagerung mit dem klassischen Azure-Bereitstellungsmodell."
 documentationcenter: na
 services: application-gateway
 author: georgewallace
@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: gwallace
 ms.translationtype: HT
-ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
-ms.openlocfilehash: 2eba6fb24c11add12ac16d04d3445e19a3486216
+ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
+ms.openlocfilehash: bba6f2afb79063409f2a0a5119f7809a2445e29f
 ms.contentlocale: de-de
-ms.lasthandoff: 08/04/2017
+ms.lasthandoff: 08/30/2017
 
 ---
 # <a name="configure-an-application-gateway-for-ssl-offload-by-using-the-classic-deployment-model"></a>Konfigurieren eines Application Gateways für SSL-Auslagerung mit klassischem Bereitstellungsmodell
@@ -35,9 +35,9 @@ Azure Application Gateway kann so konfiguriert werden, dass damit die Secure Soc
 
 1. Installieren Sie mit dem Webplattform-Installer die aktuelle Version der Azure PowerShell-Cmdlets. Sie können die neueste Version aus dem Abschnitt **Windows PowerShell** der [Downloadseite](https://azure.microsoft.com/downloads/)herunterladen und installieren.
 2. Stellen Sie sicher, dass Sie über ein funktionierendes virtuelles Netzwerk mit einem gültigen Subnetz verfügen. Stellen Sie sicher, dass keine virtuellen Maschinen oder Cloudbereitstellungen das Subnetz verwenden. Das Application Gateway muss sich allein im Subnetz eines virtuellen Netzwerks befinden.
-3. Die Server, die Sie für die Verwendung des Anwendungsgateways konfigurieren, müssen vorhanden sein oder Endpunkte aufweisen, die im virtuellen Netzwerk erstellt wurden oder denen eine öffentliche IP-Adresse/VIP zugewiesen wurde.
+3. Die Server, die Sie für die Verwendung des Anwendungsgateways konfigurieren, müssen vorhanden sein oder Endpunkte aufweisen, die im virtuellen Netzwerk erstellt wurden oder denen eine öffentliche IP-Adresse oder eine virtuelle IP-Adresse (VIP) zugewiesen wurde.
 
-Führen Sie die folgenden Schritte in der angegebenen Reihenfolge aus, um die SSL-Auslagerung auf einem Application Gateway zu konfigurieren:
+Führen Sie die folgenden Schritte in der angegebenen Reihenfolge aus, um die SSL-Auslagerung auf einem Anwendungsgateway zu konfigurieren:
 
 1. [Erstellen eines Anwendungsgateways](#create-an-application-gateway)
 2. [Hochladen von SSL-Zertifikaten](#upload-ssl-certificates)
@@ -48,15 +48,15 @@ Führen Sie die folgenden Schritte in der angegebenen Reihenfolge aus, um die SS
 
 ## <a name="create-an-application-gateway"></a>Erstellen eines Anwendungsgateways
 
-Erstellen Sie das Gateway mithilfe des Cmdlets `New-AzureApplicationGateway`. Ersetzen Sie dabei die Werte durch eigene Werte. Die Abrechnung für das Gateway beginnt jetzt noch nicht. Die Abrechnung beginnt in einem späteren Schritt, wenn das Gateway erfolgreich gestartet wurde.
+Erstellen Sie das Gateway mit dem Cmdlet `New-AzureApplicationGateway`. Ersetzen Sie dabei die Werte durch eigene Werte. Die Abrechnung für das Gateway beginnt jetzt noch nicht. Die Abrechnung beginnt in einem späteren Schritt, wenn das Gateway erfolgreich gestartet wurde.
 
 ```powershell
 New-AzureApplicationGateway -Name AppGwTest -VnetName testvnet1 -Subnets @("Subnet-1")
 ```
 
-Mithilfe des Cmdlets `Get-AzureApplicationGateway` können Sie überprüfen, ob das Gateway erstellt wurde.
+Mit dem Cmdlet `Get-AzureApplicationGateway` können Sie überprüfen, ob das Gateway erstellt wurde.
 
-In diesem Beispiel sind *Description*, *InstanceCount* und *GatewaySize* optionale Parameter. Der Standardwert für *InstanceCount* ist 2, der Maximalwert ist 10. Der Standardwert für *GatewaySize* ist "Medium". "Small" und "Large" sind weitere verfügbare Werte. *VirtualIPs* und *DnsName* werden leer angezeigt, da das Gateway noch nicht gestartet wurde. Diese Werte werden erstellt, sobald das Gateway ausgeführt wird.
+In diesem Beispiel sind **Description**, **InstanceCount** und **GatewaySize** optionale Parameter. Der Standardwert für **InstanceCount** ist **2**, der Maximalwert ist **10**. Der Standardwert für **GatewaySize** ist **Medium**. "Small" und "Large" sind weitere verfügbare Werte. **VirtualIPs** und **DnsName** werden leer angezeigt, da das Gateway noch nicht gestartet wurde. Diese Werte werden erstellt, sobald das Gateway ausgeführt wird.
 
 ```powershell
 Get-AzureApplicationGateway AppGwTest
@@ -64,7 +64,7 @@ Get-AzureApplicationGateway AppGwTest
 
 ## <a name="upload-ssl-certificates"></a>Hochladen von SSL-Zertifikaten
 
-Verwenden Sie `Add-AzureApplicationGatewaySslCertificate` zum Hochladen des Serverzertifikats im *PFX*-Format auf das Anwendungsgateway. Der Name des Zertifikats wird vom Benutzer ausgewählt, und er muss im Anwendungsgateway eindeutig sein. Für dieses Zertifikat wird in allen Zertifikatverwaltungsvorgängen auf dem Anwendungsgateway dieser Name verwendet.
+Geben Sie `Add-AzureApplicationGatewaySslCertificate` ein, um das Serverzertifikat im PFX-Format auf das Anwendungsgateway hochzuladen. Der Name des Zertifikats wird vom Benutzer ausgewählt, und er muss im Anwendungsgateway eindeutig sein. Für dieses Zertifikat wird in allen Zertifikatverwaltungsvorgängen auf dem Anwendungsgateway dieser Name verwendet.
 
 Das folgende Beispiel zeigt das Cmdlet. Ersetzen Sie die Werte im Beispiel durch Ihre eigenen Werte.
 
@@ -72,9 +72,9 @@ Das folgende Beispiel zeigt das Cmdlet. Ersetzen Sie die Werte im Beispiel durch
 Add-AzureApplicationGatewaySslCertificate  -Name AppGwTest -CertificateName GWCert -Password <password> -CertificateFile <full path to pfx file>
 ```
 
-Überprüfen Sie als Nächstes den Zertifikatupload. Verwenden Sie das Cmdlet `Get-AzureApplicationGatewayCertificate` .
+Überprüfen Sie als Nächstes den Zertifikatupload. Geben Sie das Cmdlet `Get-AzureApplicationGatewayCertificate` ein.
 
-Dieses Beispiel zeigt das Cmdlet in der ersten Zeile, gefolgt von der Ausgabe.
+Das folgende Beispiel zeigt das Cmdlet in der ersten Zeile, gefolgt von der Ausgabe:
 
 ```powershell
 Get-AzureApplicationGatewaySslCertificate AppGwTest
@@ -91,7 +91,7 @@ State..........: Provisioned
 ```
 
 > [!NOTE]
-> Das Zertifikatkennwort darf aus Buchstaben und Ziffern bestehen und muss zwischen vier und 12 Zeichen lang sein. Sonderzeichen werden nicht akzeptiert.
+> Das Zertifikatkennwort muss zwischen vier und 12 Zeichen lang sein und aus Buchstaben und Ziffern bestehen. Sonderzeichen werden nicht akzeptiert.
 
 ## <a name="configure-the-gateway"></a>Konfigurieren des Gateways
 
@@ -99,22 +99,21 @@ Eine Anwendungsgatewaykonfiguration besteht aus mehreren Werten. Die Werte könn
 
 Die Werte sind:
 
-* **Back-End-Serverpool:** Die Liste der IP-Adressen der Back-End-Server. Die aufgelisteten IP-Adressen sollten entweder dem Subnetz des virtuellen Netzwerks angehören oder eine öffentliche IP-Adresse/VIP sein.
+* **Back-End-Serverpool:** Die Liste der IP-Adressen der Back-End-Server. Die aufgelisteten IP-Adressen sollten dem Subnetz des virtuellen Netzwerks angehören oder eine öffentliche IP-Adresse oder eine VIP-Adresse sein.
 * **Einstellungen für den Back-End-Serverpool:** Jeder Pool weist Einstellungen wie Port, Protokoll und cookiebasierte Affinität auf. Diese Einstellungen sind an einen Pool gebunden und gelten für alle Server innerhalb des Pools.
-* **Front-End-Port:** Dieser Port ist der öffentliche Port, der im Application Gateway geöffnet ist. Datenverkehr erreicht diesen Port und wird dann an einen der Back-End-Server umgeleitet.
-* **Listener:** Der Listener verfügt über einen Front-End-Port, ein Protokoll („Http“ oder „Https“; jeweils unter Beachtung der Groß-/Kleinschreibung) und den Namen des SSL-Zertifikats (falls die SSL-Auslagerung konfiguriert wird).
+* **Front-End-Port:** Dieser Port ist der öffentliche Port, der im Anwendungsgateway geöffnet ist. Datenverkehr erreicht diesen Port und wird dann an einen der Back-End-Server umgeleitet.
+* **Listener:** Der Listener verfügt über einen Front-End-Port, ein Protokoll („Http“ oder „Https“; jeweils unter Beachtung der Groß-/Kleinschreibung) und den Namen des SSL-Zertifikats (falls eine SSL-Auslagerung konfiguriert wird).
 * **Regel:** Mit der Regel werden der Listener und der Back-End-Serverpool gebunden, und es wird definiert, an welchen Back-End-Serverpool der Datenverkehr gesendet werden soll, wenn er einen bestimmten Listener erreicht. Derzeit wird nur die Regel *basic* unterstützt. Die Regel *basic* ist eine Round-Robin-Lastverteilung.
 
 **Zusätzliche Konfigurationshinweise**
 
-Für die Konfiguration von SSL-Zertifikaten sollte das Protokoll in **HttpListener** in *Https* (Groß-/Kleinschreibung beachten) geändert werden. Das **SslCert**-Element wird zu **HttpListener** hinzugefügt. Dabei muss der Wert auf den Namen festgelegt werden, der im obigen Abschnitt zum Hochladen von SSL-Zertifikaten verwendet wurde. Der Front-End-Port sollte auf 443 aktualisiert werden.
+Für die Konfiguration von SSL-Zertifikaten sollte das Protokoll in **HttpListener** in **Https** (Groß-/Kleinschreibung beachten) geändert werden. Fügen Sie das **SslCert**-Element zu **HttpListener** hinzu. Dabei muss der Wert auf den Namen festgelegt werden, der im Abschnitt [Hochladen von SSL-Zertifikaten](#upload-ssl-certificates) verwendet wurde. Der Front-End-Port sollte auf **443** aktualisiert werden.
 
-**So aktivieren Sie cookiebasierte Affinität**Ein Anwendungsgateway kann so konfiguriert werden, dass es sicherstellt, dass die Anforderung von einer Clientsitzung immer an denselben virtuellen Computer in der Webfarm weitergeleitet wird. Für dieses Szenario wird das Einfügen eines Sitzungscookies genutzt, damit das Gateway den Datenverkehr entsprechend weiterleiten kann. Legen Sie zum Aktivieren der cookiebasierten Affinität **CookieBasedAffinity** im **BackendHttpSettings**-Element auf *Enabled* fest.
+**So aktivieren Sie cookiebasierte Affinität**: Sie können ein Anwendungsgateway so konfigurieren, dass sicherstellt ist, dass eine Anforderung von einer Clientsitzung immer an denselben virtuellen Computer in der Webfarm weitergeleitet wird. Fügen Sie dazu ein Sitzungscookie ein, damit das Gateway den Datenverkehr entsprechend weiterleiten kann. Legen Sie zum Aktivieren der cookiebasierten Affinität **CookieBasedAffinity** im **BackendHttpSettings**-Element auf **Enabled** fest.
 
 Sie können die Konfiguration erzeugen, indem Sie ein Konfigurationsobjekt erstellen oder eine XML-Konfigurationsdatei verwenden.
-Um die Konfiguration mithilfe einer XML-Konfigurationsdatei zu erstellen, verwenden Sie das folgende Beispiel:
+Um die Konfiguration mithilfe einer XML-Konfigurationsdatei zu erstellen, geben Sie das folgende Beispiel ein:
 
-**XML-Konfigurationsbeispiel**
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -165,7 +164,7 @@ Um die Konfiguration mithilfe einer XML-Konfigurationsdatei zu erstellen, verwen
 
 ## <a name="set-the-gateway-configuration"></a>Festlegen der Gatewaykonfiguration
 
-Dann legen Sie das Anwendungsgateway fest. Sie können das `Set-AzureApplicationGatewayConfig`-Cmdlet mit einem Konfigurationsobjekt oder mit einer XML-Konfigurationsdatei verwenden.
+Legen Sie anschließend das Anwendungsgateway fest. Sie können das Cmdlet `Set-AzureApplicationGatewayConfig` mit einem Konfigurationsobjekt oder mit einer XML-Konfigurationsdatei eingeben.
 
 ```powershell
 Set-AzureApplicationGatewayConfig -Name AppGwTest -ConfigFile D:\config.xml
@@ -173,10 +172,10 @@ Set-AzureApplicationGatewayConfig -Name AppGwTest -ConfigFile D:\config.xml
 
 ## <a name="start-the-gateway"></a>Starten des Gateways
 
-Sobald das Gateway konfiguriert wurde, verwenden Sie das `Start-AzureApplicationGateway` -Cmdlet, um das Gateway zu starten. Die Abrechnung für ein Anwendungsgateway beginnt, nachdem das Gateway erfolgreich gestartet wurde.
+Sobald das Gateway konfiguriert wurde, geben Sie das Cmdlet `Start-AzureApplicationGateway` ein, um das Gateway zu starten. Die Abrechnung für ein Anwendungsgateway beginnt, nachdem das Gateway erfolgreich gestartet wurde.
 
 > [!NOTE]
-> Die Ausführung des Cmdlets `Start-AzureApplicationGateway` kann 15 bis 20 Minuten dauern.
+> Die Ausführung des Cmdlets `Start-AzureApplicationGateway` kann 15 bis 20 Minuten in Anspruch nehmen.
 >
 >
 
@@ -186,9 +185,9 @@ Start-AzureApplicationGateway AppGwTest
 
 ## <a name="verify-the-gateway-status"></a>Überprüfen des Gatewaystatus
 
-Verwenden Sie das Cmdlet `Get-AzureApplicationGateway` zum Überprüfen des Gatewaystatus. Wenn `Start-AzureApplicationGateway` im vorherigen Schritt erfolgreich ausgeführt wurde, sollte für *State* nun „Running“ angezeigt werden, und *VirtualIPs* und *DnsName* sollten gültige Einträge besitzen.
+Geben Sie das Cmdlet `Get-AzureApplicationGateway` ein, um den Gatewaystatus zu überprüfen. Wenn `Start-AzureApplicationGateway` im vorherigen Schritt erfolgreich ausgeführt wurde, sollte für **State** nun **Running** angezeigt werden, und **VirtualIPs** und **DnsName** sollten gültige Einträge aufweisen.
 
-Dieses Beispiel zeigt ein Application Gateway, das ausgeführt wird und Datenverkehr verarbeiten kann.
+Dieses Beispiel zeigt ein Anwendungsgateway, das ausgeführt wird und Datenverkehr verarbeiten kann:
 
 ```powershell
 Get-AzureApplicationGateway AppGwTest
@@ -212,5 +211,4 @@ Weitere Informationen zu Lastenausgleichsoptionen im Allgemeinen finden Sie unte
 
 * [Azure-Lastenausgleich](https://azure.microsoft.com/documentation/services/load-balancer/)
 * [Azure Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
-
 

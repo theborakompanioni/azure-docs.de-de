@@ -4,7 +4,7 @@ description: "In diesem Thema wird gezeigt, wie Anzeigen auf Clientseite eingef√
 services: media-services
 documentationcenter: 
 author: juliako
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: 65c9c747-128e-497e-afe0-3f92d2bf7972
 ms.service: media-services
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: aaa0e2757875d8f9ac6a19f218bfb19bf9870b0d
-ms.openlocfilehash: 54cf700463ff0a08f5f28a3d2b66c8814ab0a764
-ms.lasthandoff: 11/17/2016
-
+ms.translationtype: HT
+ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
+ms.openlocfilehash: 52ba731f88c630830560e3cf8406ba2e9613c8a5
+ms.contentlocale: de-de
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="inserting-ads-on-the-client-side"></a>Einf√ºgen von Anzeigen auf Clientseite

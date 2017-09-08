@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/27/2017
 ms.author: samacha
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: 4c0c7c185943eb292d816e2047de930245a3e1e1
+ms.translationtype: HT
+ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
+ms.openlocfilehash: 97044cb5d7b0b3fcb3b85328df618a265bc59b61
 ms.contentlocale: de-de
-ms.lasthandoff: 07/04/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="choosing-a-streaming-analytics-platform-comparing-apache-storm-and-azure-stream-analytics"></a>Auswählen einer Stream Analytics-Plattform: Vergleich von Apache Storm und Azure Stream Analytics
@@ -231,29 +231,12 @@ Ausführliche Protokolle sind verfügbar. Benutzer können auf die Protokolle in
         <tr>
             <td width="174" valign="top">
                 <p>
-                    <strong>Unterstützung für benutzerdefinierte Funktionen (UDFs)</strong>
-                </p>
-            </td>
-            <td width="204" valign="top">
-                <p>
-Abfragen unterstützen benutzerdefinierte JavaScript-Funktionen. Weitere Informationen finden Sie unter <a href="https://docs.microsoft.com/azure/stream-analytics/stream-analytics-javascript-user-defined-functions">Azure Stream Analytics – benutzerdefinierte JavaScript-Funktionen</a>.
-                </p>
-            </td>
-            <td width="246" valign="top">
-                <p>
-Benutzerdefinierte Funktionen (UDFs) können in C#, Java oder einer beliebigen anderen Sprache geschrieben werden.
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td width="174" valign="top">
-                <p>
                     <strong>Erweiterbarkeit durch benutzerdefinierten Code?</strong>
                 </p>
             </td>
             <td width="204" valign="top">
                 <p>
-Nein. Es gibt keine Unterstützung für erweiterbarem Code in Stream Analytics.
+Teilweise Unterstützung mit JavaScript-UDFs. Weitere Informationen finden Sie unter <a href="https://docs.microsoft.com/azure/stream-analytics/stream-analytics-javascript-user-defined-functions">Azure Stream Analytics – benutzerdefinierte JavaScript-Funktionen</a>.
                 </p>
             </td>
             <td width="246" valign="top">

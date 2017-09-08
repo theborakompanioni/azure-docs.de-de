@@ -13,13 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 08/11/2017
+ms.date: 08/28/2017
 ms.author: raprasa
 ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
-ms.openlocfilehash: 130f0eb259621737d6dbdb151e363915fb334ce1
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: 89dc30c5475786d89554f5ec9e10e555267e6d78
 ms.contentlocale: de-de
-ms.lasthandoff: 08/16/2017
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="automatic-online-backup-and-restore-with-azure-cosmos-db"></a>Automatische Onlinesicherung und -wiederherstellung mit Azure Cosmos DB
@@ -58,7 +58,7 @@ Wenn Sie eigene Momentaufnahmen beibehalten möchten, können Sie die Option zum
 Falls Sie Ihre Datenbank oder -sammlung versehentlich löschen, können Sie [ein Supportticket anfordern](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) oder den [Azure Support bitten](https://azure.microsoft.com/support/options/), die Daten aus der letzten automatischen Sicherung wiederherzustellen. Wenn Sie die Datenbank aufgrund einer Datenbeschädigung wiederherstellen müssen, erfahren Sie unter [Umgang mit Datenbeschädigung](#handling-data-corruption), wie Sie zusätzliche Schritte ausführen, um zu verhindern, dass die beschädigten Daten in die Sicherungen eindringen. Für die Wiederherstellung einer bestimmten Momentaufnahme Ihrer Sicherung setzt Cosmos DB voraus, dass die Daten für die Dauer des Sicherungszyklus dieser Momentaufnahme verfügbar waren.
 
 ## <a name="handling-data-corruption"></a>Umgang mit Datenbeschädigung
-Azure Cosmos DB bewahrt die letzten beiden Sicherungen jeder Partition im System auf. Dieses Modell funktioniert sehr gut, wenn Sie einen Container (Sammlung von Dokumenten, Diagramm, Tabelle) oder eine Datenbank versehentlich gelöscht haben, da eine der letzten Versionen wiederhergestellt werden kann. Wenn jedoch eine Datenbeschädigung auftritt, ist Azure Cosmos DB möglicherweise nicht über die Datenbeschädigung informiert, und sie könnte in die Sicherungen eingedrungen sein. Sobald Sie eine Beschädigung feststellen, sollten Sie den beschädigten Container (Sammlung/Diagramm/Tabelle) löschen, sodass Sicherungen vor dem Überschreiben mit beschädigten Daten geschützt sind. Da die letzte Sicherung vier Stunden alt sein könnte, kann der Benutzer einen [Änderungsfeed](change-feed.md) nutzen, um vor dem Löschen des Containers die geänderten Daten der letzten vier Stunden zu erfassen und zu speichern.
+Azure Cosmos DB bewahrt die letzten beiden Sicherungen jeder Partition im System auf. Dieses Modell funktioniert sehr gut, wenn Sie einen Container (Sammlung von Dokumenten, Diagramm, Tabelle) oder eine Datenbank versehentlich gelöscht haben, da eine der letzten Versionen wiederhergestellt werden kann. Wenn jedoch eine Datenbeschädigung auftritt, ist Azure Cosmos DB möglicherweise nicht über die Datenbeschädigung informiert, und sie könnte in die Sicherungen eingedrungen sein. Sobald Sie eine Beschädigung feststellen, sollten Benutzer den beschädigten Container (Sammlung/Diagramm/Tabelle) löschen, sodass Sicherungen vor dem Überschreiben mit beschädigten Daten geschützt sind. Da die letzte Sicherung vier Stunden alt sein könnte, kann der Benutzer einen [Änderungsfeed](change-feed.md) nutzen, um vor dem Löschen des Containers die geänderten Daten der letzten vier Stunden zu erfassen und zu speichern.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

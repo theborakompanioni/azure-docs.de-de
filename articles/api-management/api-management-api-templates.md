@@ -3,7 +3,7 @@ title: API-Vorlagen in Azure API Management | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie den Inhalt der API-Seiten im Entwicklerportal in Azure API Management anpassen.
 services: api-management
 documentationcenter: 
-author: miaojiang
+author: vladvino
 manager: erikre
 editor: 
 ms.assetid: 3642fd09-ba98-4358-93a6-c48ab0500431
@@ -14,9 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-translationtype: Human Translation
-ms.sourcegitcommit: 77fd7b5b339a8ede8a297bec96f91f0a243cc18d
-ms.openlocfilehash: cfd0dcba9572fba6ba75893e1a84fd10cd75290d
+ms.translationtype: HT
+ms.sourcegitcommit: 07e5e15f4f4c4281a93c8c3267c0225b1d79af45
+ms.openlocfilehash: 9055c7fc0b562fa02aa2f2ec8425a4a41b69e600
+ms.contentlocale: de-de
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="api-templates-in-azure-api-management"></a>API-Vorlagen in Azure API Management
@@ -37,9 +39,9 @@ Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des En
     -   [Ruby](#Ruby)  
 
 > [!NOTE]
->  Beispielstandardvorlagen sind in der folgenden Dokumentation enthalten, können aber aufgrund von kontinuierlichen Verbesserungen geändert werden. Sie können sich die aktiven Standardvorlagen im Entwicklerportal ansehen, indem Sie zu den gewünschten einzelnen Vorlagen navigieren. Weitere Informationen zum Arbeiten mit Vorlagen finden Sie unter [So passen Sie das Azure API Management-Entwicklerportal mithilfe von Vorlagen an](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
+>  Beispielstandardvorlagen sind in der folgenden Dokumentation enthalten, können aber aufgrund von kontinuierlichen Verbesserungen geändert werden. Sie können die aktiven Standardvorlagen im Entwicklerportal anzeigen, indem Sie zu den gewünschten einzelnen Vorlagen navigieren. Weitere Informationen zum Arbeiten mit Vorlagen finden Sie unter [So passen Sie das Azure API Management-Entwicklerportal mithilfe von Vorlagen an](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
   
-##  <a name="a-nameapilista-api-list"></a><a name="APIList"></a> API-Liste  
+##  <a name="APIList"></a> API-Liste  
  Mit der Vorlage für die **API-Liste** können Sie den Text der API-Listenseite im Entwicklerportal anpassen.  
   
  ![Entwicklerportal-API-Liste](./media/api-management-api-templates/APIM-Developer-Portal-Templates-API-List.png "APIM-Entwicklerportal API-Vorlagenliste")  
@@ -107,7 +109,7 @@ Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des En
 }  
 ```  
   
-##  <a name="a-nameproducta-operation"></a><a name="Product"></a> Vorgang  
+##  <a name="Product"></a> Vorgang  
  Mit der Vorlage für den **Vorgang** können Sie den Text der Vorgangsseite im Entwicklerportal anpassen.  
   
  ![Vorgangsseite im Entwicklerportal](./media/api-management-api-templates/APIM-Developer-Portal-templates-Operation-page.png "Vorgangsseite mit Vorlagen des APIM-Entwicklerportals")  
@@ -637,7 +639,7 @@ Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des En
 }  
 ```  
   
-##  <a name="a-namecodesamplesa-code-samples"></a><a name="CodeSamples"></a> Codebeispiele  
+##  <a name="CodeSamples"></a> Codebeispiele  
  Mit den folgenden Vorlagen können Sie den Text der einzelnen Codebeispiele auf der Vorgangsseite anpassen.  
   
  ![Codebeispiele für Vorlagen im Entwicklerportal](./media/api-management-api-templates/APIM-Developer-Portal-Templates-Code-samples.png "Codebeispiele für Vorlagen im APIM-Entwicklerportal")  
@@ -658,7 +660,7 @@ Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des En
   
 -   [Ruby](#Ruby)  
   
-###  <a name="a-namecurla-curl"></a><a name="Curl"></a> Curl  
+###  <a name="Curl"></a> Curl  
  Mit der Vorlage **DocumentationSamplesCurl** können Sie das Codebeispiel im Abschnitt mit den Codebeispielen auf der Vorlagenseite anpassen.  
   
 #### <a name="default-template"></a>Standardvorlage  
@@ -711,7 +713,7 @@ curl -v -X {{method}} "{{scheme}}://{{host}}{{path}}{{query | escape }}"
 }  
 ```  
   
-###  <a name="a-namecsharpa-c"></a><a name="CSharp"></a> C#  
+###  <a name="CSharp"></a> C#  
  Mit der Vorlage **DocumentationSamplesCsharp** können Sie das Codebeispiel im Abschnitt mit den Codebeispielen auf der Vorlagenseite anpassen.  
   
 #### <a name="default-template"></a>Standardvorlage  
@@ -890,7 +892,7 @@ namespace CSHttpClientSample
 }  
 ```  
   
-###  <a name="a-namestuba-java"></a><a name="Stub"></a> Java  
+###  <a name="Stub"></a> Java  
  Mit der Vorlage **DocumentationSamplesJava** können Sie das Codebeispiel im Abschnitt mit den Codebeispielen auf der Vorlagenseite anpassen.  
   
 #### <a name="default-template"></a>Standardvorlage  
@@ -986,7 +988,7 @@ public class JavaSample
 }  
 ```  
   
-###  <a name="a-namejavascripta-javascript"></a><a name="JavaScript"></a> JavaScript  
+###  <a name="JavaScript"></a> JavaScript  
  Mit der Vorlage **DocumentationSamplesJs** können Sie das Codebeispiel im Abschnitt mit den Codebeispielen auf der Vorlagenseite anpassen.  
   
 #### <a name="default-template"></a>Standardvorlage  
@@ -1075,7 +1077,7 @@ public class JavaSample
 }  
 ```  
   
-###  <a name="a-nameobjectiveca-objective-c"></a><a name="ObjectiveC"></a> Objective C  
+###  <a name="ObjectiveC"></a> Objective C  
  Mit der Vorlage **DocumentationSamplesObjc** können Sie das Codebeispiel im Abschnitt mit den Codebeispielen auf der Vorlagenseite anpassen.  
   
 #### <a name="default-template"></a>Standardvorlage  
@@ -1187,7 +1189,7 @@ int main(int argc, const char * argv[])
 }  
 ```  
   
-###  <a name="a-namephpa-php"></a><a name="PHP"></a> PHP  
+###  <a name="PHP"></a> PHP  
  Mit der Vorlage **DocumentationSamplesPhp** können Sie das Codebeispiel im Abschnitt mit den Codebeispielen auf der Vorlagenseite anpassen.  
   
 #### <a name="default-template"></a>Standardvorlage  
@@ -1277,7 +1279,7 @@ catch (HttpException $ex)
 }  
 ```  
   
-###  <a name="a-namepythona-python"></a><a name="Python"></a> Python  
+###  <a name="Python"></a> Python  
  Mit der Vorlage **DocumentationSamplesPython** können Sie das Codebeispiel im Abschnitt mit den Codebeispielen auf der Vorlagenseite anpassen.  
   
 #### <a name="default-template"></a>Standardvorlage  
@@ -1395,7 +1397,7 @@ except Exception as e:
 }  
 ```  
   
-###  <a name="a-namerubya-ruby"></a><a name="Ruby"></a> Ruby  
+###  <a name="Ruby"></a> Ruby  
  Mit der Vorlage **DocumentationSamplesRuby** können Sie das Codebeispiel im Abschnitt mit den Codebeispielen auf der Vorlagenseite anpassen.  
   
 #### <a name="default-template"></a>Standardvorlage  
@@ -1468,8 +1470,3 @@ puts response.body
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum Arbeiten mit Vorlagen finden Sie unter [So passen Sie das Azure API Management-Entwicklerportal mithilfe von Vorlagen an](api-management-developer-portal-templates.md).
-
-
-<!--HONumber=Jan17_HO2-->
-
-

@@ -12,22 +12,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.devlang: na
-ms.date: 04/25/2017
+ms.date: 08/04/2017
 ms.author: joroja
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7c69630688e4bcd68ab3b4ee6d9fdb0e0c46d04b
-ms.openlocfilehash: 70922ec4813d32580acdd20bf43521fcc2d24081
+ms.translationtype: HT
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 4e2de9c4d1c0f92970911e132fffaacbd01d9ad0
 ms.contentlocale: de-de
-ms.lasthandoff: 06/24/2017
-
+ms.lasthandoff: 08/28/2017
 
 ---
 
 # <a name="define-trust-frameworks-with-azure-ad-b2c-identity-experience-framework"></a>Definieren von Vertrauens-Frameworks mit Azure AD B2C Identity Experience Framework
 
-Azure Active Directory B2C (Azure AD B2C) benutzerdefinierte Richtlinien, die das Identity Experience Framework nutzen, bieten ihrem Unternehmen ein zentralisiertes Service. Dieser Dienst reduziert die Komplexität des Identitätsverbunds für eine große Interessensgemeinschaft auf eine einzelne Vertrauensstellung und einen einzelnen Metadatenaustausch.
+Benutzerdefinierte Azure Active Directory B2C-Richtlinien (Azure AD B2C), die das Identity Experience Framework nutzen, bieten ihrem Unternehmen einen zentralisierten Dienst. Dieser Dienst reduziert die Komplexität des Identitätsverbunds in einer großen Interessengemeinschaft. Die Komplexität wird auf eine einzelne Vertrauensstellung und einen einzelnen Metadatenaustausch reduziert.
 
-Hierfür ist es erforderlich, dass benutzerdefinierte Azure AD B2C-Richtlinien, für die das Identity Experience Framework genutzt wird, Ihnen die Beantwortung der folgenden Fragen ermöglichen:
+Hierfür ist erforderlich, dass benutzerdefinierte Azure AD B2C-Richtlinien, für die das Identity Experience Framework genutzt wird, Ihnen die Beantwortung der folgenden Fragen ermöglichen:
 
 - Welche sind die Richtlinien, die sich auf rechtliche Fragen, die Sicherheit, den Datenschutz und den Schutz von Daten beziehen und eingehalten werden müssen?
 - Wer sind die Kontakte, und wie werden Benutzer zu anerkannten Teilnehmern?
@@ -77,7 +76,7 @@ Mit anderen Worten werden in einer TF-Spezifikation die Regeln zum Erstellen ein
 
 Derzeit herrscht ein breiter Konsens über die Vorteile eines derartigen Ansatz. Es besteht kein Zweifel, dass Vertrauens-Framework-Spezifikationen die Entwicklung von digitalen Identitätsökosystemen mit Merkmalen der überprüfbaren Sicherheit, der Sicherheit und des Datenschutzes begünstigen, was bedeutet, dass sie von verschiedenen Interessensgemeinschaften wiederverwendet werden können.
 
-Aus diesem Grund nutzen benutzerdefinierte Azure AD B2C-Richtlinien, die das Identity Experience Framework nutzen die Spezifikation als Basis für ihre Datendarstellung für ein TF, um die Interoperabilität zu vereinfachen.  
+Aus diesem Grund nutzen benutzerdefinierte Azure AD B2C-Richtlinien, die das Identity Experience Framework nutzen, die Spezifikation als Basis für ihre Datendarstellung für ein TF, um die Interoperabilität zu vereinfachen.  
 
 Azure AD B2C benutzerdefinierte Richtlinien, welche das Identity Experience Framework nutzen, stellen eine TF-Spezifikation als eine Mischung von Menschen und maschinenlesbaren Daten dar. Einige Abschnitte dieses Modells (üblicherweise Abschnitte, die mehr auf Governance ausgerichtet sind) werden als Verweise auf die veröffentlichten Dokumentationen zu Sicherheit und Datenschutz sowie die damit verbundenen Prozeduren (sofern vorhanden) dargestellt. Andere Abschnitte beschreiben ausführlich die Regeln bezüglich Konfiguration, Metadaten und Laufzeit, die betriebliche Automatisierung erleichtern.
 
@@ -114,7 +113,7 @@ Im Hinblick auf die Implementierung besteht die TF-Spezifikation aus einer Reihe
 > [!NOTE]
 > Wir bezeichnen alle möglichen Typen von Identitätsinformationen, die ausgetauscht werden können, als Ansprüche: Ansprüche in Bezug auf die Anmeldeinformationen eines Endbenutzers für die Authentifizierung, Identitätsüberprüfung, Kommunikationsgerät, physischer Standort, personenbezogene Attribute usw.  
 >
-> Wir verwenden den Begriff "Ansprüche"-- statt "Attribute"--, da es sich im Fall von Online-Transaktionen nicht um Fakten handelt, die direkt durch die vertrauende Seite überprüft werden können. Stattdessen handelt es sich um Assertionen oder Ansprüche zu Fakten für die die vertrauende Seite ein ausreichendes Maß an Vertrauen haben muss, um die angeforderte Transaktion für den Endbenutzer zu gewähren.  
+> Wir verwenden den Begriff „Ansprüche“ statt „Attribute“, da es sich in Onlinetransaktionen bei diesen Datenartefakten nicht um Fakten handelt, die direkt durch die vertrauende Seite überprüft werden können. Stattdessen handelt es sich um Assertionen oder Ansprüche zu Fakten für die die vertrauende Seite ein ausreichendes Maß an Vertrauen haben muss, um die angeforderte Transaktion für den Endbenutzer zu gewähren.  
 >
 > Ein weiterer Grund ist die Tatsache, dass benutzerdefinierte Azure AD B2C-Richtlinien, die das Identity Experience Framework nutzen, für die Vereinfachung des Austauschs aller Arten von Informationen zur digitalen Identität auf einheitliche Weise ausgelegt sind. Dies gilt unabhängig davon, ob das zugrunde liegende Protokoll für die Benutzerauthentifizierung oder den Attributabruf definiert ist.  Ebenso verwenden wir den Ausdruck „Anspruchsanbieter“ zur allgemeinen Bezeichnung von Identitätsanbietern, Attributanbietern und Attributverifizierern, wenn nicht zwischen den jeweiligen spezifischen Funktionen unterschieden werden soll.   
 

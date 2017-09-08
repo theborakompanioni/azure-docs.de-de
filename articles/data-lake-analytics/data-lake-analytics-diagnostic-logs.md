@@ -15,10 +15,10 @@ ms.workload: big-data
 ms.date: 07/31/2017
 ms.author: larryfr
 ms.translationtype: HT
-ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
-ms.openlocfilehash: f5fe6db423f1f2faeaf51e25be9b8f5b551e2a16
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 6c74db1659742aa41306388273bec46800ba7609
 ms.contentlocale: de-de
-ms.lasthandoff: 08/01/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-analytics"></a>Zugreifen auf Diagnoseprotokolle für Azure Data Lake Analytics
@@ -78,9 +78,9 @@ Nachdem Sie die Diagnoseeinstellungen aktiviert haben, können Sie zum Blatt __D
 
 3. Klicken Sie für einen Protokolleintrag auf den Link **Herunterladen**, um das gewünschte Protokoll herunterzuladen.
 
-### <a name="use-the-azure-data-lake-storage-account-that-contains-log-data"></a>Verwenden des Azure Data Lage Storage-Kontos mit den Protokolldaten
+### <a name="use-the-azure-storage-account-that-contains-log-data"></a>Im Azure Storage-Konto, das die Protokolldaten enthält
 
-1. Öffnen Sie das Blatt des Azure Data Lake Storage-Kontos, das Data Lake Analytics zur Protokollierung zugeordnet ist, und klicken Sie dann auf __Blobs__. Auf dem Blatt **Blob-Dienst** werden zwei Container aufgelistet.
+1. Öffnen Sie das Azure Storage-Kontoblatt, das Data Lake Analytics zur Protokollierung zugeordnet ist, und klicken Sie dann auf __Blobs__. Auf dem Blatt **Blob-Dienst** werden zwei Container aufgelistet.
 
     ![Anzeigen der Diagnoseprotokollierung](./media/data-lake-analytics-diagnostic-logs/view-diagnostic-logs-storage-account.png "Anzeigen von Diagnoseprotokollen")
 

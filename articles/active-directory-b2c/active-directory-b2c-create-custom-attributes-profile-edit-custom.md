@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.devlang: na
-ms.date: 04/29/2017
+ms.date: 08/04/2017
 ms.author: joroja
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: fb4302f028ecacf095adbe1b52e31e0432102776
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 67c9f6eca18e2dd77e00b8bc8c7bcc546ea3936e
 ms.contentlocale: de-de
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="azure-active-directory-b2c-creating-and-using-custom-attributes-in-a-custom-profile-edit-policy"></a>Azure Active Directory B2C: Erstellen und Verwenden von benutzerdefinierten Attributen in einer benutzerdefinierten Richtlinie für die Profilbearbeitung
@@ -39,18 +39,15 @@ Das Azure Active Directory (Azure AD) B2C-Verzeichnis bietet einen integrierten 
 
 Mit Azure AD B2C haben Sie die Möglichkeit, den für die einzelnen Benutzerkonten gespeicherten Satz von Attributen zu erweitern. Außerdem können Sie diese Attribute mit der [Azure AD Graph-API](active-directory-b2c-devquickstarts-graph-dotnet.md)lesen und schreiben.
 
->[!NOTE]
->Wir bezeichnen ein benutzerdefiniertes Attribut oder eine Erweiterungseigenschaft als Feature des Azure AD B2C-Verzeichnisses.  Mit Erweiterungseigenschaften wird das Schema der Benutzerobjekte im Verzeichnis erweitert.  Um ein benutzerdefiniertes Attribut als benutzerdefinierten Anspruch in einer Richtlinie zu verwenden, definieren Sie es in der Richtlinie im `ClaimsSchema`-Element.
+Mit Erweiterungseigenschaften wird das Schema der Benutzerobjekte im Verzeichnis erweitert.  Die Begriffe „Erweiterungseigenschaft“, „benutzerdefiniertes Attribut“ und „benutzerdefinierter Anspruch“ beziehen sich im Kontext dieses Artikels auf die gleiche Sache, und der Name variiert je nach Kontext (Anwendung, Objekt, Richtlinie).
+
+Erweiterungseigenschaften können nur für ein Anwendungsobjekt registriert werden, obwohl sie Daten für einen Benutzer enthalten können. Die Eigenschaft ist an die Anwendung angefügt. Dem Anwendungsobjekt muss Schreibzugriff zum Registrieren einer Erweiterungseigenschaft gewährt werden. 100 Erweiterungseigenschaften (für ALLE Typen und ALLE Anwendungen) können in jedes einzelne Objekt geschrieben werden. Erweiterungseigenschaften werden dem Zielverzeichnistyp hinzugefügt und sind im Azure AD B2C-Verzeichnismandanten dann sofort zugänglich.
+Wenn die Anwendung gelöscht wird, werden auch diese Erweiterungseigenschaften zusammen mit darin enthaltenen Daten für alle Benutzer entfernt. Falls eine Erweiterungseigenschaft von der Anwendung gelöscht wird, wird sie aus den Zielverzeichnisobjekten entfernt, und die Werte werden gelöscht.
+
+Erweiterungseigenschaften sind nur im Kontext einer registrierten Anwendung im Mandanten vorhanden. Die Objekt-ID dieser Anwendung muss in das TechnicalProfile einbezogen werden, von dem sie verwendet wird.
 
 >[!NOTE]
->Erweiterungseigenschaften können nur für ein Anwendungsobjekt registriert werden, obwohl sie Daten für einen Benutzer enthalten können. Die Eigenschaft ist an die Anwendung angefügt. Dem Anwendungsobjekt muss Schreibzugriff zum Registrieren einer Erweiterungseigenschaft gewährt werden. 100 Erweiterungseigenschaften (für ALLE Typen und ALLE Anwendungen) können in jedes einzelne Objekt geschrieben werden. Erweiterungseigenschaften werden dem Zielverzeichnistyp hinzugefügt und sind im Azure AD B2C-Verzeichnismandanten dann sofort zugänglich.
-Wenn die Anwendung gelöscht wird, werden auch diese Erweiterungseigenschaften zusammen mit darin enthaltenen Daten für alle Benutzer entfernt. Falls eine Erweiterungseigenschaft von der Anwendung gelöscht wird, wird sie aus dem Zielverzeichnisobjekt entfernt, und auch alle darin enthaltenen Daten werden entfernt.
-
->[!NOTE]
->Erweiterungseigenschaften sind nur im Kontext einer registrierten Anwendung im Mandanten vorhanden. Die Objekt-ID dieser Anwendung muss in das jeweils verwendete TechnicalProfile eingefügt werden.
-
->[!NOTE]
->Normalerweise enthält das Azure AD B2C-Verzeichnis eine Web-App mit dem Namen `b2c-extensions-app`.  Diese Anwendung wird hauptsächlich von den integrierten B2C-Richtlinien für die benutzerdefinierten Ansprüche verwendet, die mit dem Azure-Portal erstellt werden.  Die Nutzung dieser Anwendung zum Registrieren von Erweiterungen für benutzerdefinierte B2C-Richtlinien wird nur für fortgeschrittene Benutzer empfohlen.  Eine Anleitung hierzu finden Sie in diesem Artikel im Abschnitt `NEXT STEPS`.
+>Normalerweise enthält das Azure AD B2C-Verzeichnis eine Web-App mit dem Namen `b2c-extensions-app`.  Diese Anwendung wird hauptsächlich von den integrierten B2C-Richtlinien für die benutzerdefinierten Ansprüche verwendet, die mit dem Azure-Portal erstellt werden.  Die Nutzung dieser Anwendung zum Registrieren von Erweiterungen für benutzerdefinierte B2C-Richtlinien wird nur für fortgeschrittene Benutzer empfohlen.  Eine Anleitung hierzu finden Sie in diesem Artikel im Abschnitt „Nächste Schritte“.
 
 
 ## <a name="creating-a-new-application-to-store-the-extension-properties"></a>Erstellen einer neuen Anwendung zum Speichern der Erweiterungseigenschaften
@@ -62,7 +59,7 @@ Wenn die Anwendung gelöscht wird, werden auch diese Erweiterungseigenschaften z
   * Geben Sie einen Namen für die Webanwendung an: **WebApp-GraphAPI-DirectoryExtensions**
   * Anwendungstyp: Web-App/API
   * Anmelde-URL: https://{tenantName}.onmicrosoft.com/WebApp-GraphAPI-DirectoryExtensions
-1. Klicken Sie auf **Erstellen**. Der erfolgreiche Abschluss wird unter **Benachrichtigungen** angegeben.
+1. Wählen Sie **Erstellen. Der erfolgreiche Abschluss wird unter **Benachrichtigungen** angegeben.
 1. Wählen Sie den neu erstellten Webanwendung: **WebApp-GraphAPI-DirectoryExtensions**
 1. Wählen Sie Einstellungen aus: **Erforderliche Berechtigungen**
 1. Wählen Sie die API **Windows Active Directory** aus.
@@ -74,9 +71,7 @@ Wenn die Anwendung gelöscht wird, werden auch diese Erweiterungseigenschaften z
 
 
 
-## <a name="modifying-your-custom-policy-to-add-the-applicationobjectid"></a>Ändern der benutzerdefinierten Richtlinie zum Hinzufügen von `ApplicationObjectId`
-
-Für jedes TechnicalProfile, mit dem Erweiterungsattribute gelesen oder geschrieben werden, müssen Sie ein `<Metadata>`-Element mit den beiden folgenden Elementen hinzufügen: „ApplicationObjectId“ und „ClientId“. Diese Elemente wurden in früheren Schritten abgerufen.
+## <a name="modifying-your-custom-policy-to-add-the-applicationobjectid"></a>Ändern der benutzerdefinierten Richtlinie zum Hinzufügen der ApplicationObjectId
 
 ```xml
     <ClaimsProviders>
@@ -102,14 +97,10 @@ Für jedes TechnicalProfile, mit dem Erweiterungsattribute gelesen oder geschrie
 ```
 
 >[!NOTE]
-><TechnicalProfile Id="AAD-Common"> ist ein häufiges (common) Objekt, weil seine Elemente in allen Azure Active Directory TechnicalProfiles wiederverwendet werden. Hierfür wird das folgende Element verwendet:
-
-```
-      <IncludeTechnicalProfile ReferenceId="AAD-Common" />
-```
+>Die <TechnicalProfile Id="AAD-Common"> wird als „common“ bezeichnet – „gängig“ oder „häufig“ – weil ihre Elemente in allen Azure Active Directory TechnicalProfiles enthalten sind und wiederverwendet werden. Hierfür wird das folgende Element verwendet: `<IncludeTechnicalProfile ReferenceId="AAD-Common" />`.
 
 >[!NOTE]
->Wenn das TechnicalProfile zum ersten Mal einen Schreibvorgang in die neu erstellte Erweiterungseigenschaft durchführt, tritt beim Erstellen der Eigenschaft ggf. ein einmaliger Fehler auf, wenn diese nicht gefunden wird.  .*  
+>Wenn das TechnicalProfile zum ersten Mal einen Schreibvorgang in die neu erstellte Erweiterungseigenschaft durchführt, tritt ggf. ein einmaliger Fehler auf.  Die Erweiterungseigenschaft wird bei erstmaliger Verwendung erstellt.  
 
 ## <a name="using-the-new-extension-property--custom-attribute-in-a-user-journey"></a>Verwenden der neuen Erweiterungseigenschaft bzw. des benutzerdefinierten Attributs in einer User Journey
 
@@ -133,7 +124,7 @@ Für jedes TechnicalProfile, mit dem Erweiterungsattribute gelesen oder geschrie
    </TechnicalProfile>
  </RelyingParty>
  ```
-3. Fügen Sie der Erweiterungsrichtliniendatei `TrustFrameworkExtensions.xml` im ``<ClaimsSchema>``-Element wie unten gezeigt eine Anspruchsdefinition hinzu.
+3. Fügen Sie der Erweiterungsrichtliniendatei `TrustFrameworkExtensions.xml` im `<ClaimsSchema>`-Element wie gezeigt eine Anspruchsdefinition hinzu.
 ```xml
 <ClaimsSchema>
         <ClaimType Id="extension_loyaltyId">
@@ -145,15 +136,9 @@ Für jedes TechnicalProfile, mit dem Erweiterungsattribute gelesen oder geschrie
 </ClaimsSchema>
 ```
 4. Fügen Sie der Basisrichtliniendatei `TrustFrameworkBase.xml` die gleiche Anspruchsdefinition hinzu.  
-
->[!NOTE]
 >Das Hinzufügen einer `ClaimType`-Definition zur Basisdatei und Erweiterungsdatei ist normalerweise nicht erforderlich. Da in den nächsten Schritten aber „extension_loyaltyId“ den TechnicalProfiles in der Basisdatei hinzugefügt werden, lehnt die Richtlinienvalidierung den Upload der Basisdatei ohne dieses Element ab.
-
->[!NOTE]
 >Es kann nützlich sein, die Ausführung der User Journey mit dem Namen „ProfileEdit“ in der Datei „TrustFrameworkBase.xml“ nachzuverfolgen.  Suchen Sie im Editor nach der User Journey mit dem gleichen Namen, und verfolgen Sie, dass im Orchestrierungsschritt 5 TechnicalProfileReferenceID="SelfAsserted-ProfileUpdate" aufgerufen wird.  Untersuchen Sie dieses TechnicalProfile, um sich mit dem Ablauf vertraut zu machen.
-
 5. Hinzufügen von loyaltyId als Eingabe- und Ausgabeanspruch im TechnicalProfile „SelfAsserted-ProfileUpdate“
-
 ```xml
 <TechnicalProfile Id="SelfAsserted-ProfileUpdate">
           <DisplayName>User ID signup</DisplayName>
@@ -189,7 +174,6 @@ Für jedes TechnicalProfile, mit dem Erweiterungsattribute gelesen oder geschrie
         </TechnicalProfile>
 ```
 6. Fügen Sie den Anspruch im TechnicalProfile „AAD-UserWriteProfileUsingObjectId“ hinzu, um den Wert des Anspruchs in der Erweiterungseigenschaft für den aktuellen Benutzer im Verzeichnis beizubehalten.
-
 ```xml
 <TechnicalProfile Id="AAD-UserWriteProfileUsingObjectId">
           <Metadata>
@@ -214,8 +198,7 @@ Für jedes TechnicalProfile, mit dem Erweiterungsattribute gelesen oder geschrie
           <IncludeTechnicalProfile ReferenceId="AAD-Common" />
         </TechnicalProfile>
 ```
-7. Fügen Sie den Anspruch im TechnicalProfile „AAD-UserReadUsingObjectId“ hinzu, damit der Wert des Erweiterungsattributs bei jeder Anmeldung eines Benutzers gelesen wird.
-HINWEIS: Bisher wurden die TechnicalProfiles nur im Ablauf der lokalen Konten geändert.  Wenn das neue Attribut im Ablauf eines Social Media- oder Verbundkontos gewünscht ist, muss eine andere Gruppe von TechnicalProfiles geändert werden. Weitere Informationen finden Sie in den nächsten Schritten.
+7. Fügen Sie den Anspruch im TechnicalProfile „AAD-UserReadUsingObjectId“ hinzu, damit der Wert des Erweiterungsattributs bei jeder Anmeldung eines Benutzers gelesen wird. Bisher wurden die TechnicalProfiles nur im Ablauf der lokalen Konten geändert.  Wenn das neue Attribut im Ablauf eines Social Media- oder Verbundkontos gewünscht ist, muss eine andere Gruppe von TechnicalProfiles geändert werden. Weitere Informationen finden Sie unter „Nächste Schritte“.
 
 ```xml
 <!-- The following technical profile is used to read data after user authenticates. -->
@@ -243,13 +226,12 @@ HINWEIS: Bisher wurden die TechnicalProfiles nur im Ablauf der lokalen Konten ge
 
 
 >[!IMPORTANT]
->Mit dem oben angegebenen IncludeTechnicalProfile-Element werden alle Elemente von AAD-Common diesem TechnicalProfile hinzugefügt.
+>Mit dem IncludeTechnicalProfile-Element werden alle Elemente von AAD-Common diesem TechnicalProfile hinzugefügt.
 
 ## <a name="test-the-custom-policy-using-run-now"></a>Testen der benutzerdefinierten Richtlinie mit „Jetzt ausführen“
-
-     1. Open the **Azure AD B2C Blade** and navigate to **Identity Experience Framework > Custom policies**.
-     2. Select the custom policy that you uploaded, and click the **Run now** button.
-     3. You should be able to sign up using an email address.
+1. Öffnen Sie das Blatt **Azure AD B2C**, und navigieren Sie zu **Identity Experience Framework > Benutzerdefinierte Richtlinien**.
+1. Wählen Sie die benutzerdefinierte Richtlinie aus, die hochgeladen werden soll, und klicken Sie auf die Schaltfläche **Jetzt ausführen**.
+1. Sie sollten sich mit einer E-Mail-Adresse registrieren können.
 
 Das id-Token, das an Ihre Anwendung zurückgesendet wird, enthält die neue Erweiterungseigenschaft als benutzerdefinierten Anspruch mit Voranstellung von „extension_loyaltyId“. Weitere Informationen sind im Beispiel enthalten.
 
@@ -272,14 +254,15 @@ Das id-Token, das an Ihre Anwendung zurückgesendet wird, enthält die neue Erwe
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-### <a name="add-the-new-claim-to-the-flows-for-social-account-logins-by-changing-the-technicalprofiles-listed-below-these-two-technicalprofiles-are-used-by-socialfederated-account-logins-to-write-and-read-the-user-data-using-the-alternativesecurityid-as-the-locator-of-the-user-object"></a>Fügen Sie den neuen Anspruch dem Ablauf für die Anmeldung an Social Media-Konten hinzu, indem Sie die unten aufgeführten TechnicalProfiles ändern. Diese beiden TechnicalProfiles werden von Anmeldungen für Social Media-/Verbundkonten genutzt, um die Benutzerdaten zu schreiben und zu lesen, indem alternativeSecurityId als Locator des Benutzerobjekts verwendet wird.
+Fügen Sie den neuen Anspruch dem Ablauf für die Anmeldung bei Social Media-Konten hinzu, indem Sie die aufgeführten TechnicalProfiles ändern. Diese beiden TechnicalProfiles werden von Anmeldungen für Social Media-/Verbundkonten genutzt, um die Benutzerdaten zu schreiben und zu lesen, indem alternativeSecurityId als Locator des Benutzerobjekts verwendet wird.
 ```
   <TechnicalProfile Id="AAD-UserWriteUsingAlternativeSecurityId">
 
   <TechnicalProfile Id="AAD-UserReadUsingAlternativeSecurityId">
 ```
-### <a name="using-the-same-extension-attributes-between-built-in-and-custom-policies"></a>Verwenden derselben Erweiterungsattribute zwischen integrierten und benutzerdefinierten Richtlinien
-Beim Hinzufügen von Erweiterungsattributen (benutzerdefinierten Attributen) über die Portaloberfläche werden diese Attribute per **b2c-extensions-app** registriert, die unter jedem B2C-Mandanten vorhanden ist.  Gehen Sie wie folgt vor, um diese Erweiterungsattribute in Ihrer benutzerdefinierten Richtlinie zu verwenden:
+
+Verwenden der gleichen Erweiterungsattribute zwischen integrierten und benutzerdefinierten Richtlinien.
+Beim Hinzufügen von Erweiterungsattributen (benutzerdefinierten Attributen) über die Portaloberfläche werden diese Attribute per **b2c-extensions-app registriert, die unter jedem B2C-Mandanten vorhanden ist.  Gehen Sie wie folgt vor, um diese Erweiterungsattribute in Ihrer benutzerdefinierten Richtlinie zu verwenden:
 1. Navigieren Sie in Ihrem B2C-Mandanten in „portal.azure.com“ zu **Azure Active Directory**, und wählen Sie die Option **App-Registrierungen**.
 2. Suchen Sie nach **b2c-extensions-app**, und wählen Sie sie aus.
 3. Notieren Sie sich unter „Essentials“ die **Anwendungs-ID** und die **Objekt-ID**.
@@ -299,7 +282,7 @@ Beim Hinzufügen von Erweiterungsattributen (benutzerdefinierten Attributen) üb
               </Metadata>
 ```
 
-5. Erstellen Sie diese Attribute mithilfe der Portalbenutzeroberfläche, *bevor* Sie sie in Ihren benutzerdefinierten Richtlinien verwenden, um die Einheitlichkeit mit der Portalumgebung zu wahren.  Wenn Sie im Portal das Attribut „ActivationStatus“ erstellen, müssen Sie wie folgt darauf verweisen:
+Erstellen Sie diese Attribute mithilfe der Portalbenutzeroberfläche, *bevor* Sie sie in Ihren benutzerdefinierten Richtlinien verwenden, um die Einheitlichkeit mit der Portalumgebung zu wahren.  Wenn Sie im Portal das Attribut „ActivationStatus“ erstellen, müssen Sie wie folgt darauf verweisen:
 
 ```
 extension_ActivationStatus in the custom policy
@@ -315,5 +298,5 @@ extension_<app-guid>_ActivationStatus via the Graph API.
 * Informationen zur umfassenden Behandlung von Erweiterungseigenschaften finden Sie im Artikel [Verzeichnisschemaerweiterungen | Graph-API-Konzepte](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions)
 
 >[!NOTE]
->Für die Benennung von Erweiterungsattributen in der Graph-API wird die Konvention `extension_ApplicationObjectID_attributename` verwendet. In benutzerdefinierten Richtlinien wird auf Erweiterungsattribute als „extension_attributename“ verwiesen, sodass die ApplicationObjectId im XML-Code weggelassen wird.
+>Erweiterungsattribute in Graph-API werden mithilfe der Konvention `extension_ApplicationObjectID_attributename` benannt. In benutzerdefinierten Richtlinien wird auf Erweiterungsattribute als „extension_attributename“ verwiesen, sodass die ApplicationObjectId im XML-Code weggelassen wird.
 

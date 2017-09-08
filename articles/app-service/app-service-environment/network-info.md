@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 05/08/2017
 ms.author: ccompy
 ms.translationtype: HT
-ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
-ms.openlocfilehash: cd498198e0f206ddca2e3396813b2f2093ec3731
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 3be0d7a202ff53f5532fd7169a50a04cfaf88832
 ms.contentlocale: de-de
-ms.lasthandoff: 08/19/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>Überlegungen zum Netzwerkbetrieb in einer App Service-Umgebung #
@@ -104,13 +104,13 @@ Neben den funktionalen Abhängigkeiten der ASE gibt es einige weitere zu beachte
 
 -   Webaufträge
 -   Functions
--   Logstream
+-   Protokollstreaming
 -   Kudu
 -   Erweiterungen
 -   Prozess-Explorer
 -   Konsole
 
-Bei Verwendung einer ILB-ASE ist der SCM-Standort von außerhalb des VNet nicht aus dem Internet zugänglich. Wenn Ihre App in einer ILB-ASE gehostet wird, sind die Funktionen, mit denen nicht auf den SCM-Standort zugegriffen werden kann, im Azure-Portal ausgegraut.
+Bei Verwendung einer ILB-ASE ist der SCM-Standort von außerhalb des VNet nicht aus dem Internet zugänglich. Wenn Ihre App auf einer ILB-ASE gehostet wird, funktionieren einige Funktionen vom Portal aus nicht.  
 
 Viele dieser vom SCM-Standort abhängigen Funktionen sind auch direkt in der Kudu-Konsole verfügbar. Sie können sich direkt mit der Konsole verbinden, anstatt das Portal zu verwenden. Wenn Ihre App in einer ILB-ASE gehostet wird, melden Sie sich mit Ihren Veröffentlichungsanmeldeinformationen an. Die URL für den Zugriff auf den SCM-Standort einer in einer ILB-ASE gehosteten App besitzt das folgende Format: 
 
@@ -120,9 +120,13 @@ Viele dieser vom SCM-Standort abhängigen Funktionen sind auch direkt in der Kud
 
 Wenn Ihre ILB-ASE den Domänennamen *contoso.net* aufweist und der App-Name *testapp* lautet, wird die App unter *testapp.contoso.net* erreicht. Der entsprechende SCM-Standort ist unter *testapp.scm.contoso.net* zu erreichen.
 
+## <a name="functions-and-web-jobs"></a>Funktionen und Webaufträge ##
+
+Funktionen und Webaufträge hängen von der SCM-Website ab. Ihre Verwendung im Portal wird jedoch unterstützt, selbst wenn sich Ihre Apps in einer ILB-ASE befinden, solange Ihr Browser die SCM-Website erreichen kann.  Wenn Sie ein selbstsigniertes Zertifikat mit Ihrer ILB-ASE verwenden, müssen Sie Ihren Browser anweisen, diesem Zertifikat zu vertrauen.  Für Internet Explorer und Edge bedeutet dies, dass sich das Zertifikat im Vertrauensspeicher des Computers befinden muss.  Wenn Sie Chrome verwenden, müssen Sie das Zertifikat vorab im Browser akzeptieren, indem Sie direkt zur SCM-Website browsen.  Die ideale Lösung stellt die Verwendung eines kommerziellen Zertifikats dar, das in der Vertrauenskette Ihres Browsers enthalten ist.  
+
 ## <a name="ase-ip-addresses"></a>ASE-IP-Adressen ##
 
-Eine ASE muss viele IP-Adressen berücksichtigen. Sie lauten wie folgt:
+Eine ASE muss einige IP-Adressen berücksichtigen. Sie lauten wie folgt:
 
 - **Öffentliche eingehende IP-Adresse**: Für den App-Datenverkehr in einer externen ASE und für den Verwaltungsdatenverkehr sowohl in einer externen ASE als auch in einer ILB-ASE.
 - **Ausgehende öffentliche IP-Adresse**: Als „Absender“ für von der ASE ausgehende und das VNet verlassende Verbindungen, die nicht durch ein VPN weitergeleitet werden.
@@ -187,8 +191,7 @@ Wenn Sie diese beiden Änderungen vornehmen, wird der aus dem ASE-Subnetz stamme
 > [!IMPORTANT]
 > Die in einer UDR definierten Routen müssen ausreichend spezifisch sein, damit sie Vorrang vor allen von der ExpressRoute-Konfiguration angekündigten Routen erhalten. Im vorhergehenden Beispiel wird der allgemeine Adressbereich „0.0.0.0/0“ verwendet. Er kann durch Routenankündigungen mit spezifischeren Adressbereichen versehentlich überschrieben werden kann.
 >
-
-App Service-Umgebungen werden nicht mit ExpressRoute-Konfigurationen unterstützt, die Routen „über Kreuz“ vom öffentlichen Peeringpfad zum privaten Peeringpfad ankündigen. ExpressRoute-Konfigurationen, für die öffentliches Peering konfiguriert ist, erhalten Routenankündigungen von Microsoft. Die Ankündigungen enthalten zahlreiche Microsoft Azure-IP-Adressbereiche. Werden diese Adressbereiche über Kreuz auf dem privaten Peeringpfad angekündigt, werden alle ausgehenden Netzwerkpakete aus dem Subnetz der ASE zwangsweise zur lokalen Netzwerkinfrastruktur eines Kunden getunnelt. Dieser Netzwerkdatenfluss wird derzeit für ASEs nicht unterstützt. Eine Lösung für dieses Problem besteht darin, „Über-Kreuz-Ankündigungen“ von Routen vom öffentlichen Peeringpfad zum privaten Peeringpfad zu verhindern.
+> App Service-Umgebungen werden nicht mit ExpressRoute-Konfigurationen unterstützt, die Routen „über Kreuz“ vom öffentlichen Peeringpfad zum privaten Peeringpfad ankündigen. ExpressRoute-Konfigurationen, für die öffentliches Peering konfiguriert ist, erhalten Routenankündigungen von Microsoft. Die Ankündigungen enthalten zahlreiche Microsoft Azure-IP-Adressbereiche. Werden diese Adressbereiche über Kreuz auf dem privaten Peeringpfad angekündigt, werden alle ausgehenden Netzwerkpakete aus dem Subnetz der ASE zwangsweise zur lokalen Netzwerkinfrastruktur eines Kunden getunnelt. Dieser Netzwerkdatenfluss wird derzeit für ASEs nicht unterstützt. Eine Lösung für dieses Problem besteht darin, „Über-Kreuz-Ankündigungen“ von Routen vom öffentlichen Peeringpfad zum privaten Peeringpfad zu verhindern.
 
 Führen Sie die folgenden Schritte aus, um eine UDR zu erstellen:
 

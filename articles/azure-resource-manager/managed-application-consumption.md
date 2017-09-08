@@ -1,6 +1,6 @@
 ---
 title: Nutzen einer verwalteten Azure-Anwendung | Microsoft-Dokumentation
-description: "Hier wird beschrieben, wie ein Kunde eine verwaltete Azure-Anwendung aus den veröffentlichten Dateien erstellt."
+description: "Hier wird beschrieben, wie ein Kunde eine verwaltete Azure-Anwendung aus veröffentlichten Dateien erstellt."
 services: azure-resource-manager
 author: ravbhatnagar
 manager: rjmax
@@ -8,36 +8,60 @@ ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 05/17/2017
+ms.date: 08/23/2017
 ms.author: gauravbh; tomfitz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 041254b07584a52ae92e603f60a439050b747af1
+ms.translationtype: HT
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: ed8fbaf2a4546c8e31eeced11cd0b5627fd62c0c
 ms.contentlocale: de-de
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 08/24/2017
 
 ---
-# <a name="consume-an-azure-managed-application"></a>Nutzen einer verwalteten Azure-Anwendung
+# <a name="consume-an-internal-managed-application"></a>Nutzen einer internen verwalteten Anwendung
 
-Wie im Artikel mit der [Übersicht über verwaltete Anwendungen](managed-application-overview.md) beschrieben umfasst der gesamte Vorgang zwei Szenarien. Bei einem steht der Herausgeber oder ISV im Mittelpunkt, der eine verwaltete Anwendung zur Verwendung durch Kunden erstellen möchte. Beim zweiten geht es um den Kunden oder den Verbraucher der verwalteten Anwendung. Dieser Artikel behandelt das zweite Szenario und erläutert, wie ein Endkunde eine von einem ISV bereitgestellte verwaltete Anwendung nutzen kann.
+Sie können [verwaltete Azure-Anwendungen](managed-application-overview.md) nutzen, die für Mitglieder Ihrer Organisation vorgesehen sind. Sie können beispielsweise verwaltete Anwendungen Ihrer IT-Abteilung auswählen, die die Konformität mit Ihren Unternehmensstandards gewährleisten. Diese verwalteten Anwendungen stehen über den Dienstkatalog, aber nicht über den Azure Marketplace zur Verfügung.
 
-Derzeit können Sie eine verwaltete Anwendung entweder über die Azure CLI oder das Azure-Portal nutzen. 
+Bevor Sie mit diesem Artikel fortfahren, benötigen Sie eine verwaltete Anwendung, die im Dienstkatalog Ihres Abonnements zur Verfügung steht. Wenn noch niemand in Ihrer Organisation eine verwaltete Anwendung erstellt hat, lesen Sie unter [Veröffentlichen einer verwaltete Anwendung für die interne Nutzung](managed-application-publishing.md) nach.
 
-## <a name="create-the-managed-application-using-cli"></a>Erstellen der verwalteten Anwendung mit der CLI 
+Derzeit können Sie eine verwaltete Anwendung entweder über die Azure CLI oder das Azure-Portal nutzen.
 
-Sie müssen die Gerätedefinitions-ID für das Gerät abrufen, das Sie nutzen möchten.
+## <a name="create-the-managed-application-by-using-the-portal"></a>Erstellen der verwalteten Anwendung mit dem Portal
 
-Mit der Azure CLI haben Sie zwei Möglichkeiten zum Erstellen einer verwalteten Anwendung. Bei einer wird der reguläre Befehl für die Vorlagenbereitstellung und bei der anderen ein neuer Befehl verwendet, der nur für diesen Zweck bereitgestellt wird.
+Um eine verwaltete Anwendung über das Portal bereitzustellen, gehen Sie folgendermaßen vor:
 
-### <a name="create-using-template-deployment-command"></a>Erstellen mithilfe des Vorlagenbereitstellungsbefehls
+1. Öffnen Sie das Azure-Portal. Suchen Sie nach **Verwaltete Dienstkataloganwendung**.
 
-Sie stellen die vom Hersteller erstellte Datei „applianceMainTemplate.json“ bereit.
+   ![Verwaltete Dienstkataloganwendung](./media/managed-application-consumption/create-service-catalog-managed-application.png)
 
-Sie erstellen zwei Ressourcengruppen. In der ersten Ressourcengruppe wird die Geräteressource erstellt (Microsoft.Solutions/appliances). Die zweite Ressourcengruppe enthält alle in der Datei „mainTemplate.json“ definierten Ressourcen. Diese Ressourcengruppe wird vom ISV verwaltet.
+1. Wählen Sie die verwaltete Anwendung, die Sie erstellen möchten, in der Liste der verfügbaren Lösungen aus. Klicken Sie auf **Erstellen**.
+
+   ![Auswahl der verwalteten Anwendungen](./media/managed-application-consumption/select-offer.png)
+
+1. Geben Sie die zur Bereitstellung der Ressourcen erforderlichen Parameter ein. Wählen Sie als Standort **USA, Westen-Mitte** aus. Klicken Sie auf **OK**.
+
+   ![Parameter für verwaltete Anwendungen](./media/managed-application-consumption/input-parameters.png)
+
+1. Die Vorlage überprüft die bereitgestellten Werte. Wählen Sie bei erfolgreicher Validierung **OK** aus, um die Bereitstellung zu starten.
+
+   ![Validierung verwalteter Anwendungen](./media/managed-application-consumption/validation.png)
+
+Nach Abschluss der Bereitstellung werden die in der Vorlage definierten Ressourcen in der angegebenen verwalteten Ressourcengruppe bereitgestellt.
+
+## <a name="create-the-managed-application-by-using-azure-cli"></a>Erstellen der verwalteten Anwendung mit der Azure CLI
+
+Mit der Azure CLI haben Sie zwei Möglichkeiten zum Erstellen einer verwalteten Anwendung:
+
+* Verwenden Sie den Befehl zum Erstellen von verwalteten Anwendungen.
+* Mithilfe des regulären Vorlagenbereitstellungsbefehls
+
+### <a name="use-the-template-deployment-command"></a>Verwenden des Vorlagenbereitstellungsbefehls
+
+Stellen Sie die vom Hersteller erstellte Datei „applianceMainTemplate.json“ bereit.
+
+Erstellen Sie dann zwei Ressourcengruppen. In der ersten Ressourcengruppe wird die Ressource für die verwaltete Anwendung erstellt: „Microsoft.Solutions/appliances“. Die zweite Ressourcengruppe enthält alle in der Datei „mainTemplate.json“ definierten Ressourcen. Diese Ressourcengruppe wird vom ISV verwaltet.
 
 ```azurecli
-az group create --name mainResourceGroup --location westcentralus    
+az group create --name mainResourceGroup --location westcentralus
 az group create --name managedResourceGroup --location westcentralus
 ```
 
@@ -45,77 +69,59 @@ az group create --name managedResourceGroup --location westcentralus
 > Verwenden Sie `westcentralus` als Standort der Ressourcengruppe.
 >
 
-
-Als Nächstes stellen Sie mit folgendem Befehl „applianceMainTemplate.json“ in „mainResourceGroup“ bereit:
-
-```azurecli
-az group deployment create --name managedAppDeployment --resourceGroup mainResourceGroup --templateUri  
-```
-
-Wenn die vorangehende Vorlage ausgeführt wird, werden Sie zur Eingabe der Werte der Parameter aufgefordert, die in der Vorlage definiert sind. Zusätzlich zu den Parametern, die für das Bereitstellen von Ressourcen in einer Vorlage erforderlich sind, benötigen Sie zwei Parameterschlüsselwerte:
-
-- ManagedResourceGroupId: Die ID der Ressourcengruppe, in der die in der Datei „applianceMainTemplate.json“ definierten Ressourcen erstellt werden. Das Format der ID ist `/subscriptions/{subscriptionId}/resourceGroups/{resoureGroupName}`. Im vorherigen Beispiel ist dies die ID von `managedResourceGroup`.
-- ApplianceDefinitionId: Die ID der Definitionsressource der verwalteten Anwendung. Dieser Wert wird vom ISV bereitgestellt. 
-
-> [!NOTE] 
-> Der ISV muss Zugriff auf die Ressourcengruppe gewähren, in der die Gerätedefinitionsressource erstellt wird. Die Gerätedefinitionsressource wird im ISV-Abonnement erstellt. Daher benötigt ein Benutzer, eine Benutzergruppe oder eine Anwendung im Kundenmandanten Lesezugriff auf diese Ressource. 
-
-Nach erfolgreichem Abschluss der Bereitstellung sehen Sie, dass die Geräteressource in **mainResourceGroup** erstellt wird. Die storageAccount-Ressource wird in **managedResourceGroup** erstellt.
-
-### <a name="create-the-managed-application-using-create-command"></a>Erstellen der verwalteten Anwendung mit dem Erstellungsbefehl
-
-Sie können zum Erstellen einer verwalteten Anwendung aus der Definition der verwalteten Anwendung den Befehl `az managedapp create` verwenden. 
+Verwenden Sie zur Bereitstellung von „applianceMainTemplate.json“ in „mainResourceGroup“ den folgenden Befehl:
 
 ```azurecli
-az managedapp create --name ravtestappliance401 --location "westcentralus" 
-    --kind "Servicecatalog" --resource-group "ravApplianceCustRG401" 
-       --managedapp-definition-id "/subscriptions/{guid}/resourceGroups/ravApplianceDefRG401/providers/Microsoft.Solutions/applianceDefinitions/ravtestAppDef401" 
-       --managed-rg-id "/subscriptions/{guid}/resourceGroups/ravApplianceCustManagedRG401" 
-       --parameters "{\"storageAccountName\": {\"value\": \"ravappliancedemostore1\"}}" 
-       --debug
+az group deployment create --name managedAppDeployment --resourceGroup mainResourceGroup --templateUri
 ```
 
-**appliance-definition-Id**: Die Ressourcen-ID der Gerätedefinition, die im vorherigen Schritt erstellt wurde. Führen Sie zum Abrufen dieser ID den folgenden Befehl aus:
+Nachdem die vorangehende Vorlage ausgeführt wird, werden Sie zur Eingabe der Werte der Parameter aufgefordert, die in der Vorlage definiert sind. Zusätzlich zu den Parametern, die für die Bereitstellung von Ressourcen in einer Vorlage erforderlich sind, benötigen Sie zwei Parameterschlüsselwerte:
+
+- **managedResourceGroupId:** Die ID der Ressourcengruppe mit den in der Datei „applianceMainTemplate.json“ definierten Ressourcen. Das Format der ID ist `/subscriptions/{subscriptionId}/resourceGroups/{resoureGroupName}`. Im vorherigen Beispiel ist dies die ID von `managedResourceGroup`.
+- **applianceDefinitionId**: Die ID der Definitionsressource der verwalteten Anwendung. Dieser Wert wird vom ISV bereitgestellt.
+
+> [!NOTE]
+> Der Herausgeber muss Zugriff auf die Ressourcengruppe mit der Definition der verwalteten Anwendung erteilen. Die Definitionsressource wird im Herausgeberabonnement erstellt. Daher benötigt ein Benutzer, eine Benutzergruppe oder eine Anwendung im Kundenmandanten Lesezugriff auf diese Ressource.
+
+Nach erfolgreichem Abschluss der Bereitstellung sehen Sie, dass die verwaltete Anwendung in mainResourceGroup erstellt wurde. Die storageAccount-Ressource wird in „managedResourceGroup“ erstellt.
+
+### <a name="use-the-create-command"></a>Verwenden des Befehls zum Erstellen
+
+Sie können zum Erstellen einer verwalteten Anwendung aus der Definition der verwalteten Anwendung den Befehl `az managedapp create` verwenden.
 
 ```azurecli
-az appliance definition show -n ravtestAppDef1 -g ravApplianceRG2
+az managedapp create --name ravtestappliance401 --location "westcentralus"
+    --kind "Servicecatalog" --resource-group "ravApplianceCustRG401"
+    --managedapp-definition-id "/subscriptions/{guid}/resourceGroups/ravApplianceDefRG401/providers/Microsoft.Solutions/applianceDefinitions/ravtestAppDef401"
+    --managed-rg-id "/subscriptions/{guid}/resourceGroups/ravApplianceCustManagedRG401"
+    --parameters "{\"storageAccountName\": {\"value\": \"ravappliancedemostore1\"}}"
+    --debug
 ```
 
-Dieser Befehl gibt die Gerätedefinition zurück. Sie benötigen den Wert der **Id**-Eigenschaft.
+* **appliance-definition-Id:** Die Ressourcen-ID der Definition für die verwaltete Anwendung, die im vorherigen Schritt erstellt wurde. Führen Sie zum Abrufen dieser ID den folgenden Befehl aus:
 
-**managed-rg-id**: Der Name der Ressourcengruppe, in der die in der Datei „applianceMainTemplate.json“ definierten Ressourcen erstellt werden. Diese Ressourcengruppe ist die verwaltete Ressourcengruppe und wird vom Herausgeber verwaltet. Ist sie nicht vorhanden, wird sie für Sie erstellt.
+  ```azurecli
+  az appliance definition show -n ravtestAppDef1 -g ravApplianceRG2
+  ```
 
-**resource-group**: Die Ressourcengruppe, in der die Geräteressource erstellt wird. Die Ressource „Microsoft.Solutions/appliance“ ist in dieser Ressourcengruppe enthalten. 
+  Dieser Befehl gibt die Definition für die verwaltete Anwendung zurück. Sie benötigen den Wert der ID-Eigenschaft.
 
-**parameters**: Die Parameter, die für die in „applianceMainTemplate.json“ definierten Ressourcen erforderlich sind
-
-## <a name="create-the-managed-application-using-portal"></a>Erstellen der verwalteten Anwendung mit dem Portal
-
-Die Nutzung verwalteter Anwendungen, die von den ISVs veröffentlicht werden, wird auch vom Portal unterstützt. Führen Sie die folgenden Schritte aus:
-
-Wählen Sie die verwaltete Dienstkataloganwendung im Azure-Portal auf dem Blatt „Erstellen“ aus:
-
-![](./media/managed-application-consumption/create-service-catalog-managed-application.png)
-
-Als Nächstes wird die Liste der Angebote von verschiedenen ISVs/Partnern angezeigt. Wählen Sie das zu erstellende Angebot aus, und klicken Sie auf „Erstellen“.
-
-![](./media/managed-application-consumption/select-offer.png)
-
-Geben Sie nach dem Klicken auf „Erstellen“ auf dem daraufhin geöffneten Blatt die Parameter an, die zum Bereitstellen der Ressourcen erforderlich sind. 
-
-![](./media/managed-application-consumption/input-parameters.png)
-
-Klicken Sie nach Eingabe der Werte auf „OK“. Die Vorlage wird anhand der angegebenen Eingaben überprüft. Wenn die Überprüfung erfolgreich ist, startet die Vorlagenbereitstellung. Nach Abschluss der Bereitstellung werden die in der Vorlage definierten Ressourcen in der angegebenen verwalteten Ressourcengruppe bereitgestellt.
+* **managed-rg-id:** Der Name der Ressourcengruppe mit allen in der Datei „applianceMainTemplate.json“ definierten Ressourcen. Bei dieser Ressourcengruppe handelt es sich um die verwaltete Ressourcengruppe. Sie wird vom Herausgeber verwaltet. Wenn Sie nicht vorhanden ist, wird eine für Sie erstellt.
+* **resource-group:** Die Ressourcengruppe, in der die Ressource für die verwaltete Anwendung erstellt wird. Die Ressource „Microsoft.Solutions/appliance“ ist in dieser Ressourcengruppe enthalten.
+* **parameters**: Die Parameter, die für die in „applianceMainTemplate.json“ definierten Ressourcen erforderlich sind.
 
 ## <a name="known-issues"></a>Bekannte Probleme
 
 Bei dieser Vorschauversion treten die folgenden Probleme auf:
 
-* Wenn während der Erstellung des Geräts die Meldung „500 - Interner Serverfehler“ angezeigt wird, handelt es sich wahrscheinlich um ein vorübergehendes Problem. Wiederholen Sie den Vorgang, wenn dieses Problem auftritt.
-* Für die verwaltete Ressourcengruppe ist eine neue Ressourcengruppe erforderlich. Die Verwendung einer vorhandenen Ressourcengruppe verursacht einen Fehler bei der Bereitstellung.
-* Die Ressourcengruppe, die die Ressource „Microsoft.Solutions/appliances“ enthält, muss am Standort **westcentralus** erstellt werden.
+* Bei der Erstellung der verwalteten Anwendung wird die Meldung „500 – Interner Serverfehler“ angezeigt. Hierbei handelt es sich aller Wahrscheinlichkeit nach um ein zeitweiliges Problem. Wiederholen Sie den Vorgang.
+* Für die verwaltete Ressourcengruppe ist eine neue Ressourcengruppe erforderlich. Wenn Sie eine vorhandene Ressourcengruppe verwenden, tritt bei der Bereitstellung ein Fehler auf.
+* Die Ressourcengruppe, die die Ressource „Microsoft.Solutions/appliances“ enthält, muss am Standort **USA, Westen-Mitte** erstellt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Eine Einführung in verwaltete Anwendungen finden Sie in der [Übersicht über verwaltete Azure-Anwendungen](managed-application-overview.md).
-* Grundlegendes zur Anbietererfahrung erfahren Sie unter [Erstellen und Veröffentlichen von verwalteten Azure-Anwendungen](managed-application-publishing.md).
+* Eine Einführung in verwaltete Anwendungen finden Sie in der [Übersicht über verwaltete Anwendungen](managed-application-overview.md).
+* Informationen zum Veröffentlichen einer verwalteten Dienstkataloganwendung finden Sie unter [Erstellen und Veröffentlichen einer verwalteten Dienstkataloganwendung](managed-application-publishing.md).
+* Informationen zum Veröffentlichen von verwalteten Anwendungen im Azure Marketplace finden Sie unter [Verwaltete Azure-Anwendungen im Marketplace](managed-application-author-marketplace.md).
+* Informationen zur Nutzung einer verwalteten Anwendung aus dem Marketplace finden Sie unter [Nutzen verwalteter Azure-Anwendungen im Marketplace](managed-application-consume-marketplace.md).
+

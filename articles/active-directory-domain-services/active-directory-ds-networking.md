@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/04/2017
+ms.date: 08/28/2017
 ms.author: maheshu
 ms.translationtype: HT
-ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
-ms.openlocfilehash: 8306c1ff72d348f5f327b79617e1422a78e26bdb
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: 08ea5f557498f64825da8fe03d146cace0c53526
 ms.contentlocale: de-de
-ms.lasthandoff: 08/05/2017
+ms.lasthandoff: 08/30/2017
 
 ---
 # <a name="networking-considerations-for-azure-ad-domain-services"></a>Netzwerkaspekte für die Azure AD Domain Services
@@ -26,9 +26,9 @@ ms.lasthandoff: 08/05/2017
 Die folgenden Richtlinien dienen Ihnen als Hilfe bei der Auswahl eines virtuellen Netzwerks zur Verwendung mit den Azure Active Directory Domain Services.
 
 ### <a name="type-of-azure-virtual-network"></a>Typ des virtuellen Azure-Netzwerks
-* Sie können die Azure AD Domain Services in einem klassischen virtuellen Azure-Netzwerk aktivieren.
-* Die Azure Active Directory Domain Services **können nicht in virtuellen Netzwerken aktiviert werden, die mit Azure Resource Manager erstellt wurden**.
-* Sie können ein Resource Manager-basiertes virtuelles Netzwerk mit einem klassischen virtuellen Netzwerk verbinden, in dem die Azure AD Domain Services aktiviert sind. Danach können Sie die Azure AD Domain Services im Resource Manager-basierten virtuellen Netzwerk verwenden. Weitere Informationen finden Sie im Abschnitt [Netzwerkkonnektivität](active-directory-ds-networking.md#network-connectivity).
+* Sie können die Azure AD Domain Services in einem klassischen virtuellen Azure-Netzwerk aktivieren. Unterstützung für klassische virtuelle Netzwerke wird jedoch bald veraltet sein. Sie sollten virtuelle Resource Manager-Netzwerke für neu erstellte verwaltete Domänen verwenden.
+* Die Azure AD Domain Services können in virtuellen Netzwerken aktiviert werden, die mit Azure Resource Manager erstellt wurden.
+* Sie können keine Verbindungen anderer virtueller Netzwerke mit dem virtuellen Netzwerk herstellen, in dem die Azure AD Domain Services aktiviert sind. Weitere Informationen finden Sie im Abschnitt [Netzwerkkonnektivität](active-directory-ds-networking.md#network-connectivity).
 * **Regionale virtuelle Netzwerke**: Wenn Sie ein vorhandenes virtuelles Netzwerk verwenden möchten, sollten Sie sicherstellen, dass es sich um ein regionales virtuelles Netzwerk handelt.
 
   * Virtuelle Netzwerke, die den Vorgängermechanismus der Affinitätsgruppen verwenden, können nicht mit den Azure Active Directory Domain Services eingesetzt werden.
@@ -40,8 +40,8 @@ Die folgenden Richtlinien dienen Ihnen als Hilfe bei der Auswahl eines virtuelle
 * Informationen zu den Azure-Regionen, in denen die Azure AD Domain Services verfügbar sind, finden Sie unter [Azure-Dienste nach Region](https://azure.microsoft.com/regions/#services/).
 
 ### <a name="requirements-for-the-virtual-network"></a>Anforderungen an das virtuelle Netzwerk
-* **Nähe zu Ihren Azure-Workloads**: Wählen Sie das virtuelle Netzwerk aus, in dem virtuelle Computer gehostet werden bzw. gehostet werden sollen, die Zugriff auf die Azure Active Directory Domain Services benötigen.
-* **Benutzerdefinierte/eigene DNS-Server**: Stellen Sie sicher, dass für das virtuelle Netzwerk keine benutzerdefinierten DNS-Server konfiguriert sind.
+* **Nähe zu Ihren Azure-Workloads**: Wählen Sie das virtuelle Netzwerk aus, in dem virtuelle Computer gehostet werden bzw. gehostet werden sollen, die Zugriff auf die Azure Active Directory Domain Services benötigen. Sie können auch Verbindungen mit virtuellen Netzwerken herstellen, wenn Ihre Workloads in einem anderen virtuellen Netzwerk als der verwalteten Domäne bereitgestellt werden.
+* **Benutzerdefinierte/eigene DNS-Server**: Stellen Sie sicher, dass für das virtuelle Netzwerk keine benutzerdefinierten DNS-Server konfiguriert sind. Ein Beispiel für einen benutzerdefinierten DNS-Server ist eine Instanz von Windows Server-DNS unter Windows Server-VM, die Sie im virtuellen Netzwerk bereitgestellt haben. Azure AD Domain Services können nicht in benutzerdefinierte DNS-Server integriert werden, die innerhalb des virtuellen Netzwerks bereitgestellt werden.
 * **Vorhandene Domänennamen mit dem gleichen Domänennamen**: Stellen Sie sicher, dass in diesem virtuellen Netzwerk keine Domäne mit dem gleichen Domänennamen vorhanden ist. Angenommen, im ausgewählten virtuellen Netzwerk befindet sich eine Domäne namens „contoso.com“. Später versuchen Sie, in diesem virtuellen Netzwerk eine verwaltete Domäne der Azure AD Domain Services mit dem gleichen Domänennamen (also „contoso.com“) zu aktivieren. Beim Aktivieren der Azure AD Domain Services tritt daraufhin ein Fehler auf. Der Grund für diesen Fehler ist ein Namenskonflikt in Bezug auf den Domänennamen in diesem virtuellen Netzwerk. In dem Fall müssen Sie einen anderen Namen verwenden, um die verwaltete Domäne der Azure AD Domain Services einzurichten. Alternativ können Sie auch die Bereitstellung der bestehenden Domäne aufheben und mit der Aktivierung der Azure AD Domain Services fortfahren.
 
 > [!WARNING]
@@ -86,13 +86,13 @@ Darüber hinaus veranschaulicht die NSG auch das Sperren sicheren LDAP-Zugriffs 
 
 
 ## <a name="network-connectivity"></a>Netzwerkverbindung
-Eine mit den Azure AD Domain Services verwaltete Domäne kann nur innerhalb eines einzelnen klassischen virtuellen Netzwerks unter Azure aktiviert werden. Virtuelle Netzwerke, die mit Azure Resource Manager erstellt werden, werden nicht unterstützt.
+Eine mit den Azure AD Domain Services verwaltete Domäne kann nur innerhalb eines einzelnen virtuellen Netzwerks unter Azure aktiviert werden.
 
 ### <a name="scenarios-for-connecting-azure-networks"></a>Szenarien für die Verbindungsherstellung mit Azure-Netzwerken
 Stellen Sie eine Verbindung für virtuelle Azure-Netzwerke zur Verwendung der verwalteten Domäne in den folgenden Bereitstellungsszenarien her:
 
-#### <a name="use-the-managed-domain-in-more-than-one-azure-classic-virtual-network"></a>Verwenden der verwalteten Domäne in mehr als einem klassischen virtuellen Azure-Netzwerk
-Sie können für andere klassische virtuelle Azure-Netzwerke eine Verbindung mit dem klassischen virtuellen Azure-Netzwerk herstellen, wenn Sie die Azure AD Domain Services aktiviert haben. Mit dieser VPN-Verbindung können Sie die verwaltete Domäne für Ihre Workloads verwenden, die in anderen virtuellen Netzwerken bereitgestellt werden.
+#### <a name="use-the-managed-domain-in-more-than-one-azure-virtual-network"></a>Verwenden der verwalteten Domäne in mehr als einem virtuellen Azure-Netzwerk
+Sie können für andere virtuelle Azure-Netzwerke eine Verbindung mit dem virtuellen Azure-Netzwerk herstellen, wenn Sie die Azure AD Domain Services aktiviert haben. Mit dieser VPN/VNET-Peering-Verbindung können Sie die verwaltete Domäne für Ihre Workloads verwenden, die in anderen virtuellen Netzwerken bereitgestellt werden.
 
 ![Klassische Konnektivität virtueller Netzwerke](./media/active-directory-domain-services-design-guide/classic-vnet-connectivity.png)
 
@@ -102,16 +102,17 @@ Sie können ein Resource Manager-basiertes virtuelles Netzwerk mit einem klassis
 ![Verbindung von Resource Manager zum klassischen virtuellen Netzwerk](./media/active-directory-domain-services-design-guide/classic-arm-vnet-connectivity.png)
 
 ### <a name="network-connection-options"></a>Netzwerkverbindungsoptionen
-* **VNet-zu-VNet-Verbindungen mithilfe von Site-to-Site-VPN-Verbindungen**: Das Verbinden eines virtuellen Netzwerks mit einem anderen virtuellen Netzwerk (VNet-zu-VNet) ähnelt dem Verbinden eines virtuellen Netzwerks mit einem lokalen Standort. Beide Verbindungstypen verwenden ein VPN-Gateway, um einen sicheren Tunnel mit IPsec/IKE bereitzustellen.
-
-    ![Verbindung von virtuellen Netzwerken per VPN-Gateway](./media/active-directory-domain-services-design-guide/vnet-connection-vpn-gateway.jpg)
-
-    [Weitere Informationen – Verbinden von virtuellen Netzwerken per VPN-Gateway](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)
 * **VNet-zu-VNet-Verbindungen per Peering in virtuellen Netzwerken**: Das Peering in virtuellen Netzwerken ist ein Mechanismus, mit dem zwei virtuelle Netzwerke in derselben Region über das Azure-Backbonenetzwerk verbunden werden. Nach dem Peering werden die beiden virtuellen Netzwerke für alle Verbindungszwecke als einzelnes Element angezeigt. Sie werden zwar weiterhin als separate Ressourcen verwaltet, virtuelle Computer in diesen virtuellen Netzwerken können aber über private IP-Adressen direkt miteinander kommunizieren.
 
     ![Verbindung von virtuellen Netzwerken per Peering](./media/active-directory-domain-services-design-guide/vnet-peering.png)
 
     [Weitere Informationen – Peering in virtuellen Netzwerken](../virtual-network/virtual-network-peering-overview.md)
+    
+* **VNet-zu-VNet-Verbindungen mithilfe von Site-to-Site-VPN-Verbindungen**: Das Verbinden eines virtuellen Netzwerks mit einem anderen virtuellen Netzwerk (VNet-zu-VNet) ähnelt dem Verbinden eines virtuellen Netzwerks mit einem lokalen Standort. Beide Verbindungstypen verwenden ein VPN-Gateway, um einen sicheren Tunnel mit IPsec/IKE bereitzustellen.
+
+    ![Verbindung von virtuellen Netzwerken per VPN-Gateway](./media/active-directory-domain-services-design-guide/vnet-connection-vpn-gateway.jpg)
+
+    [Weitere Informationen – Verbinden von virtuellen Netzwerken per VPN-Gateway](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)
 
 <br>
 

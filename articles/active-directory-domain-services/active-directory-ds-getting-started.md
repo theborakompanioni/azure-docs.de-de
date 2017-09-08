@@ -12,18 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/15/2017
+ms.date: 08/28/2017
 ms.author: maheshu
 ms.translationtype: HT
-ms.sourcegitcommit: c999eb5d6b8e191d4268f44d10fb23ab951804e7
-ms.openlocfilehash: 128e70e4abc68ed8c9589dd08a9aec3a52fa49be
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: d2d570bc2bab3bfd28282cd95b0a1be65e96743d
 ms.contentlocale: de-de
-ms.lasthandoff: 07/17/2017
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="enable-azure-active-directory-domain-services-using-the-azure-portal-preview"></a>Aktivieren von Azure Active Directory Domain Services mithilfe des Azure-Portals (Vorschauversion)
 Dieser Artikel zeigt, wie Azure Active Directory Domain Services (Azure AD DS) mithilfe des Azure-Portals aktiviert werden kann.
-
 
 Um den Assistenten zum **Aktivieren von Azure AD Domain Services** zu starten, führen Sie die folgenden Schritte aus:
 
@@ -64,13 +63,15 @@ Auf der Seite **Grundlagen** des Assistenten können Sie den DNS-Domänennamen f
 
    * Im virtuellen Netzwerk ist bereits ein Clouddienst mit diesem Namen vorhanden.
 
-3. Wählen Sie das **Azure-Abonnement**, in dem Sie die verwaltete Domäne erstellen möchten.
+3. Wählen Sie den **Typ des virtuellen Netzwerks**. Standardmäßig wird der virtuelle Netzwerktyp **Resource Manager** ausgewählt. Sie sollten diesen virtuellen Netzwerktyp für alle neu erstellten verwalteten Domänen verwenden.
 
-4. Wählen Sie die **Ressourcengruppe**, zu der die verwaltete Domäne gehören soll. Wählen Sie entweder die Option **Create new** (Neu erstellen) oder **Use existing** (Vorhandene verwenden), um die Ressourcengruppe auszuwählen.
+4. Wählen Sie das **Azure-Abonnement**, in dem Sie die verwaltete Domäne erstellen möchten.
 
-5. Wählen Sie den **Azure-Speicherort**, in dem die verwaltete Domäne erstellt werden soll. Auf der Seite **Netzwerk** des Assistenten sehen Sie nur virtuelle Netzwerke, die zu dem von Ihnen gewählten Standort gehören.
+5. Wählen Sie die **Ressourcengruppe**, zu der die verwaltete Domäne gehören soll. Wählen Sie entweder die Option **Create new** (Neu erstellen) oder **Use existing** (Vorhandene verwenden), um die Ressourcengruppe auszuwählen.
 
-6. Wenn Sie fertig sind, klicken Sie auf **OK**, um zur Seite **Netzwerk** des Assistenten zu gelangen.
+6. Wählen Sie den **Azure-Speicherort**, in dem die verwaltete Domäne erstellt werden soll. Auf der Seite **Netzwerk** des Assistenten sehen Sie nur virtuelle Netzwerke, die zu dem von Ihnen gewählten Standort gehören.
+
+7. Wenn Sie fertig sind, klicken Sie auf **OK**, um zur Seite **Netzwerk** des Assistenten zu gelangen.
 
 
 ## <a name="next-step"></a>Nächster Schritt

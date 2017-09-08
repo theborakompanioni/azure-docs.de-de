@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/17/2017
+ms.date: 08/24/2017
 ms.author: dekapur
 ms.translationtype: HT
-ms.sourcegitcommit: 0425da20f3f0abcfa3ed5c04cec32184210546bb
-ms.openlocfilehash: 2e320339f60b593c1cff68ca047c95f9cb7b33e2
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: c5857515ae8357b003f0999c4b11bd666c32bbf9
 ms.contentlocale: de-de
-ms.lasthandoff: 07/20/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 
@@ -31,7 +31,9 @@ Die Überwachung auf Plattformebene ist wichtig, um festzustellen, ob sich Ihre 
 Service Fabric stellt fünf verschiedene vorkonfigurierte Protokollkanäle bereit, die die folgenden Ereignisse generieren:
 
 * Betriebskanal: von Service Fabric und im Cluster ausgeführten Vorgänge auf höchster Ebene, einschließlich Ereignissen für einen gestarteten Knoten, eine neu bereitgestellte Anwendung oder ein Rollback für ein SF-Upgrade usw.
-* Kundeninformationskanal: Integritätsberichte und Entscheidungen zum Lastenausgleich
+* Betriebskanal – ausführlich: Integritätsberichte und Entscheidungen zum Lastenausgleich
+* Daten- und Messagingkanal: wichtige Protokolle und in unserem Messaging (derzeit nur ReverseProxy) und Datenpfad (Reliable Services-Modelle) generierte Ereignisse
+* Daten- und Messagingkanal – ausführlich: Kanal mit Details zu allen weniger wichtigen Protokollen von Daten und Messaging im Cluster (dieser Kanal enthält sehr viele Ereignisse)   
 * [Reliable Services-Ereignisse](service-fabric-reliable-services-diagnostics.md): spezifische Ereignisse für das Programmierungsmodell
 * [Reliable Actors-Ereignisse](service-fabric-reliable-actors-diagnostics.md): spezifische Ereignisse für das Programmierungsmodell und Leistungsindikatoren
 * Supportprotokolle: Systemprotokolle, die von Service Fabric nur für unseren Support generiert werden
@@ -79,9 +81,9 @@ Wenn Sie vom Microsoft-Support Hilfe zu Ihrem Azure Service Fabric-Cluster benö
 
 ## <a name="enabling-diagnostics-for-a-cluster"></a>Aktivieren der Diagnose für einen Cluster
 
-Um diese Protokolle nutzen zu können, wird dringend empfohlen, die „Diagnose“ bei der Clustererstellung zu aktivieren. Durch Aktivieren der Diagnose kann die Microsoft Azure-Diagnose bei der Bereitstellung des Clusters Betriebs-, Reliable Services- und Reliable Actors-Kanäle bestätigen, und die Daten speichern, wie **hier** ausführlich erläutert wird.
+Um diese Protokolle nutzen zu können, wird dringend empfohlen, die „Diagnose“ bei der Clustererstellung zu aktivieren. Durch Aktivieren der Diagnose kann die Microsoft Azure-Diagnose bei der Bereitstellung des Clusters Betriebs-, Reliable Services- und Reliable Actors-Kanäle bestätigen und die Daten speichern, wie unter [Aggregieren von Ereignissen mit der Azure-Diagnose](service-fabric-diagnostics-event-aggregation-wad.md) ausführlich erläutert wird.
 
-Wie oben zu sehen, gibt es außerdem ein optionales Feld für das Hinzufügen eines Instrumentierungsschlüssels von Application Insights (AppInsights). Wenn Sie AppInsights für eine Ereignisanalyse verwenden (weitere Informationen finden Sie **hier**), fügen Sie hier den instrumentationKey für die AppInsights-Ressource (GUID) ein.
+Wie oben zu sehen, gibt es außerdem ein optionales Feld für das Hinzufügen eines Instrumentierungsschlüssels von Application Insights (AI). Wenn Sie AI für eine Ereignisanalyse verwenden (weitere Informationen finden Sie unter [Ereignisanalyse mit Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md)), fügen Sie hier den instrumentationKey für die AppInsights-Ressource (GUID) ein.
 
 
 Wenn Sie Container in Ihrem Cluster bereitstellen, aktivieren Sie WAD zum Abrufen von Docker-Statistiken, indem Sie sie zu Ihrer Konfiguration unter „WadCfg > DiagnosticMonitorConfiguration“ hinzufügen:

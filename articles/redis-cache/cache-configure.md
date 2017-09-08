@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
-ms.date: 07/13/2017
+ms.date: 08/22/2017
 ms.author: sdanie
 ms.translationtype: HT
-ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
-ms.openlocfilehash: c1de192c405f2e93483527569c65d368cac40a9b
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: 0274e58eb2e83202d4dbc58da0c67d0fdde22ede
 ms.contentlocale: de-de
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/24/2017
 
 ---
 # <a name="how-to-configure-azure-redis-cache"></a>Gewusst wie: Konfigurieren von Azure Redis Cache
@@ -224,29 +224,13 @@ Um die Clustergröße zu ändern, verwenden Sie den Schieberegler, oder geben Si
 
 
 ### <a name="redis-data-persistence"></a>Redis-Datenpersistenz
-Klicken Sie auf **Redis-Datenpersistenz** zum Aktivieren, Deaktivieren oder Konfigurieren der Datenpersistenz für den Premium-Cache konfigurieren.
+Klicken Sie auf **Redis-Datenpersistenz** zum Aktivieren, Deaktivieren oder Konfigurieren der Datenpersistenz für den Premium-Cache konfigurieren. Azure Redis Cache bietet Redis-Persistenz entweder per [RDB-Persistenz](cache-how-to-premium-persistence.md#configure-rdb-persistence) oder per [AOF-Persistenz](cache-how-to-premium-persistence.md#configure-aof-persistence).
 
-![Redis-Datenpersistenz](./media/cache-configure/redis-cache-persistence-settings.png)
+Weitere Informationen finden Sie unter [Konfigurieren von Persistenz für Azure Redis Cache vom Typ "Premium"](cache-how-to-premium-persistence.md).
 
-Klicken Sie auf **Aktiviert** , um die Redis-Datenbanksicherung zu aktivieren. Klicken Sie auf **Deaktiviert**, um die Redis-Persistenz zu deaktivieren.
-
-Wählen Sie zum Konfigurieren des Sicherungsintervalls in der Dropdownliste unter **Sicherungshäufigkeit** einen der folgenden Einträge aus. 
-
-- **15 Minuten**
-- **30 Minuten**
-- **60 Minuten**
-- **6 Stunden**
-- **12 Stunden**
-- **24 Stunden**
-
-Das Sicherungsintervall wird ab dem Moment rückwärts gezählt, an dem der vorherige Sicherungsvorgang erfolgreich abgeschlossen wird. Wenn das Intervall abgelaufen ist, wird eine neue Sicherung gestartet.
-
-Klicken Sie auf **Speicherkonto**, um das Speicherkonto auszuwählen, und wählen Sie entweder den **primären** oder den **sekundären Schlüssel** aus der Dropdownliste **Speicherschlüssel** aus. Sie müssen ein Speicherkonto auswählen, das aus der gleichen Region wie der Cache stammt, und wir empfehlen ein **Storage Premium** -Konto, da dieses einen höheren Durchsatz aufweist. Wenn der Speicherschlüssel für Ihr Persistenzkonto neu generiert wird, müssen Sie den gewünschten Schlüssel erneut in der Dropdownliste **Speicherschlüssel** auswählen.
-
-Klicken Sie auf **OK** , um die Persistenzkonfiguration zu speichern.
 
 > [!IMPORTANT]
-> Redis-Datenpersistenz ist nur für Premium-Caches verfügbar. Weitere Informationen finden Sie unter [Konfigurieren von Persistenz für Azure Redis Cache vom Typ "Premium"](cache-how-to-premium-persistence.md).
+> Redis-Datenpersistenz ist nur für Premium-Caches verfügbar. 
 > 
 > 
 

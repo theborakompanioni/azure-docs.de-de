@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
-ms.openlocfilehash: 58c5b984c677bf9119db52d5721d5687c00a83fa
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: e7f85aaf2d940f114248d5925a1e97fe0f6bda6c
 ms.contentlocale: de-de
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>Erstellen und Verwenden eines internen Lastenausgleichs mit einer App Service-Umgebung #
@@ -182,12 +182,15 @@ So laden Sie eigene Zertifikate hoch und prüfen den Zugriff:
 
     ![ILB-IP-Adresse][5]
 
-### <a name="functions-and-the-ilb-ase"></a>Funktionen und die ILB-ASE
+## <a name="web-jobs-functions-and-the-ilb-ase"></a>Webaufträge, Funktionen und die ILB-ASE ##
 
-Bei Verwendung von Azure Functions für eine ILB-ASE kann ein Fehler mit folgender Meldung auftreten: „Wir können Ihre Funktionen zurzeit nicht abrufen. Versuchen Sie es später noch mal.“ Dieser Fehler tritt auf, weil die Functions-Benutzeroberfläche die SCM-Website über HTTPS nutzt. Eine solche Situation kann eintreten, wenn Sie ein HTTP-Zertifikat ohne Stammzertifikat im Browser für Ihre ASE verwenden. Zudem wird die Einstellung *accept-invalid-cert* in den Browsern Internet Explorer und Edge nicht für mehrere Registerkarten genutzt. Sie haben zwei Möglichkeiten:
+Funktionen und Webaufträge werden auf einer ILB-ASE unterstützt. Damit das Portal jedoch mit ihnen arbeiten kann, benötigen Sie Netzwerkzugriff auf die SCM-Site.  Das bedeutet, dass Ihr Browser sich auf einem Host befinden muss, der sich im virtuellen Netzwerk befindet oder mit diesem verbunden ist.  
 
-- Zertifikat dem Zertifikatspeicher für vertrauenswürdige Anbieter hinzufügen 
-- Chrome verwenden. Sie müssen jedoch zuerst die SCM-Website aufrufen und das nicht vertrauenswürdige Zertifikat akzeptieren. Anschließend rufen Sie das Portal auf.
+Bei Verwendung von Azure Functions für eine ILB-ASE kann ein Fehler mit folgender Meldung auftreten: „Wir können Ihre Funktionen zurzeit nicht abrufen. Versuchen Sie es später noch mal.“ Dieser Fehler tritt auf, da die Benutzeroberfläche von Functions über HTTPS auf die SCM-Site zugreift und das Stammzertifikat nicht in der Vertrauenskette des Browsers enthalten ist. Webaufträge weisen ein ähnliches Problem auf. Um dieses Problem zu vermeiden können Sie eine der folgenden Aktionen ausführen:
+
+- Zertifikat dem Zertifikatspeicher für vertrauenswürdige Anbieter hinzufügen Dies hebt die Blockierung von Edge und Internet Explorer auf.
+- Verwenden Sie Chrome, und rufen Sie zuerst die SCM-Website auf. Akzeptieren Sie das nicht vertrauenswürdige Zertifikat, und wechseln Sie anschließend zum Portal.
+- Verwenden Sie ein kommerzielles Zertifikat, das in der Vertrauenskette Ihres Browsers enthalten ist.  Dies ist die beste Option.  
 
 ## <a name="dns-configuration"></a>DNS-Konfiguration ##
 

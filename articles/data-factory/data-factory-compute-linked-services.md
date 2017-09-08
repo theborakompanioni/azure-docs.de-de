@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/25/2017
 ms.author: shlo
 ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
-ms.openlocfilehash: 66d3b5532e602ef3ef160740c0f6752ebbdff7a2
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: da7110614e684656da3ef9830780606e1576684d
 ms.contentlocale: de-de
-ms.lasthandoff: 07/26/2017
+ms.lasthandoff: 08/24/2017
 
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Von Azure Data Factory unterstützte Compute-Umgebungen
@@ -99,7 +99,7 @@ Bei dieser Konfiguration wird die Compute-Umgebung vollständig vom Azure Data F
 > 
 
 ## <a name="azure-hdinsight-on-demand-linked-service"></a>Bedarfsgesteuerter verknüpfter Azure HDInsight-Dienst
-Der Azure Data Factory-Dienst kann zum Verarbeiten von Daten automatisch einen bedarfsgesteuerten Windows-/Linux-basierten HDInsight-Cluster erstellen. Der Cluster wird in derselben Region erstellt wie das Speicherkonto (Eigenschaft „linkedServiceName“ in JSON), das dem Cluster zugeordnet ist.
+Der Azure Data Factory-Dienst kann zum Verarbeiten von Daten automatisch einen bedarfsgesteuerten Windows-/Linux-basierten HDInsight-Cluster erstellen. Der Cluster wird in derselben Region erstellt wie das Speicherkonto (Eigenschaft „linkedServiceName“ in JSON), das dem Cluster zugeordnet ist. Das Speicherkonto muss ein allgemeines Azure Storage-Standardkonto sein. 
 
 Beachten Sie die folgenden **wichtigen** Hinweise zum bedarfsgesteuerten verknüpften HDInsight-Dienst:
 

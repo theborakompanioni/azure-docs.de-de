@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 07/17/2017
 ms.author: jdial;narayan;annahar
 ms.translationtype: HT
-ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
-ms.openlocfilehash: 84bbf90257f038fb5f3e964b7b35419acd77fc6d
+ms.sourcegitcommit: 07e5e15f4f4c4281a93c8c3267c0225b1d79af45
+ms.openlocfilehash: 0f49c875ff5592b3f21e9caf343554172b209935
 ms.contentlocale: de-de
-ms.lasthandoff: 07/26/2017
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions"></a>Erstellen eines Peerings virtueller Netzwerke gemäß dem Ressourcen-Manager-Modell in verschiedenen Abonnements 
@@ -36,7 +36,7 @@ Die Schritte zum Erstellen eines Peerings virtueller Netzwerke sind je nachdem u
 
 Ein Peering zweier virtueller Netzwerke, die über das klassische Bereitstellungsmodell bereitgestellt wurden, ist nicht möglich. Ein Peering kann nur zwischen zwei virtuellen Netzwerken erstellt werden, die sich in derselben Azure-Region befinden. Bei Erstellen eines Peerings virtueller Netzwerke in verschiedenen Abonnements müssen die Abonnements demselben Azure Active Directory-Mandanten zugeordnet sein. Wenn Sie noch keinen Azure Active Directory-Mandanten haben, können Sie [schnell einen erstellen](../active-directory/develop/active-directory-howto-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json#start-from-scratch). Wenn Sie virtuelle Netzwerke verbinden müssen, die beide mit dem klassischen Bereitstellungsmodell erstellt wurden, sich in verschiedenen Azure-Regionen befinden oder in Abonnements vorhanden sind, die verschiedenen Azure Active Directory-Mandanten zugeordnet sind, können Sie ein Azure [VPN Gateway](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) verwenden. 
 
-Zum Erstellen eines Peerings virtueller Netzwerke können Sie das [Azure-Portal](#portal), die [Azure CLI](#cli) (Befehlszeilenschnittstelle) oder [Azure PowerShell](#powershell) verwenden. Klicken Sie auf einen der vorherigen Tool-Links. So gelangen Sie direkt zu den Anleitungen zum Erstellen von Peerings in virtuellen Netzwerken mit dem Tool Ihrer Wahl.
+Ein Peering in Netzwerken lässt sich mithilfe des [Azure-Portals](#portal), mit der [Azure-Befehlszeilenschnittstelle](#cli) (CLI), mit [Azure PowerShell](#powershell) oder mit einer [Azure Resource Manager-Vorlage](#template) erstellen. Klicken Sie auf einen der vorherigen Tool-Links. So gelangen Sie direkt zu den Anleitungen zum Erstellen von Peerings in virtuellen Netzwerken mit dem Tool Ihrer Wahl.
 
 ## <a name="portal"></a>Erstellen eines Peerings: Azure-Portal
 
@@ -239,6 +239,47 @@ In diesem Tutorial werden unterschiedliche Konten für jedes Abonnement verwende
 
 13. **Optional**: Obwohl das Erstellen virtueller Computer in diesem Tutorial nicht behandelt wird, können Sie in jedem virtuellen Netzwerk virtuelle Computer erstellen und sie miteinander verbinden, um die Verbindung zu überprüfen.
 14. **Optional:** Zum Löschen der Ressourcen, die Sie in diesem Tutorial erstellt haben, führen Sie die Schritte im Abschnitt [Löschen von Ressourcen](#delete-powershell) in diesem Artikel aus.
+
+## <a name="template"></a>Erstellen eines Peerings: Resource Manager-Vorlage
+
+1. Führen Sie die Schritte in den Abschnitten [Portal](#portal), [Azure-Befehlszeilenschnittstelle](#cli) oder [PowerShell](#powershell) dieses Artikels durch, um ein virtuelles Netzwerk zu erstellen und dem Konto in jedem Abonnement die passenden [Berechtigungen](#permissions) zuzuweisen.
+2. Speichern Sie den darauf folgenden Text in einer Datei auf dem lokalen Computer. Ersetzen Sie `<subscription ID>` durch die Abonnement-ID von UserA. Sie können die Datei z.B. unter dem Namen „vnetpeeringA.json“ speichern.
+
+    ```json
+    {
+        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+        "contentVersion": "1.0.0.0",
+        "parameters": {
+        },
+        "variables": {
+        },
+    "resources": [
+            {
+            "apiVersion": "2016-06-01",
+            "type": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
+            "name": "myVnetA/myVnetAToMyVnetB",
+            "location": "[resourceGroup().location]",
+            "properties": {
+            "allowVirtualNetworkAccess": true,
+            "allowForwardedTraffic": false,
+            "allowGatewayTransit": false,
+            "useRemoteGateways": false,
+                "remoteVirtualNetwork": {
+                "id": "/subscriptions/<subscription ID>/resourceGroups/PeeringTest/providers/Microsoft.Network/virtualNetworks/myVnetB"
+                }
+            }
+            }
+        ]
+    }
+    ```
+
+3. Melden Sie sich bei Azure als UserA an, und stellen Sie die Vorlage über das [Portal](../azure-resource-manager/resource-group-template-deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-resources-from-custom-template), [PowerShell](../azure-resource-manager/resource-group-template-deploy.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-a-template-from-your-local-machine) oder die [Azure-Befehlszeilenschnittstelle](../azure-resource-manager/resource-group-template-deploy-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-local-template) bereit. Geben Sie den Dateinamen ein, unter dem Sie in Schritt 2 den Beispiel-Json-Text gespeichert haben.
+4. Kopieren Sie den Beispiel-Json-Code aus Schritt 2 in einer Datei auf Ihrem Computer, und nehmen Sie Änderungen an den Zeilen vor, die wie folgt beginnen:
+    - **name:** Ändern Sie *myVnetA/myVnetAToMyVnetB* in *myVnetB/myVnetBToMyVnetA*.
+    - **id:** Ersetzen Sie `<subscription ID>` durch die Abonnement-ID von UserB, und ändern Sie *myVnetB* in *myVnetA*.
+5. Führen Sie Schritt 3 erneut durch, während Sie in Azure als UserB angemeldet sind.
+6. **Optional**: Obwohl das Erstellen virtueller Computer in diesem Tutorial nicht behandelt wird, können Sie in jedem virtuellen Netzwerk virtuelle Computer erstellen und sie miteinander verbinden, um die Verbindung zu überprüfen.
+7. **Optional:** Zum Löschen der Ressourcen, die Sie in diesem Tutorial erstellt haben, führen Sie mithilfe des Azure-Portals, von PowerShell oder der Azure-CLI die Schritte im Abschnitt [Löschen von Ressourcen](#delete) dieses Artikels aus.
 
 ## <a name="permissions"></a>Berechtigungen
 
