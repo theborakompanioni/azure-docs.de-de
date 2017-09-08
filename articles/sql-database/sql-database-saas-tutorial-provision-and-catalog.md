@@ -111,7 +111,7 @@ Die folgenden Schritte müssen nicht genau befolgt werden, sondern stellen eine 
    Ein Katalogobjekt wird gebildet und aus zurückgegeben und im Skript der höheren Ebene verwendet.
 1. **Berechnen Sie den neuen Mandantenschlüssel**. Eine Hashfunktion wird verwendet, um den Mandantenschlüssel aus dem Mandantennamen zu erstellen.
 1. **Überprüfen Sie, ob der Mandantenschlüssel bereits vorhanden ist**. Der Katalog wird überprüft, um sicherzustellen, dass der Schlüssel verfügbar ist.
-1. **Die Mandantendatenbank wird mit „New-TenantDatabase“ bereitgestellt.** Drücken Sie**** F11, und sehen Sie sich an, wie die Datenbank mithilfe einer [Azure Resource Manager-Vorlage](../azure-resource-manager/resource-manager-template-walkthrough.md) bereitgestellt wird.
+1. **Die Mandantendatenbank wird mit „New-TenantDatabase“ bereitgestellt.** Drücken Sie **F11** , und sehen Sie sich an, wie die Datenbank mithilfe einer [Azure Resource Manager-Vorlage](../azure-resource-manager/resource-manager-template-walkthrough.md) bereitgestellt wird.
 
 Der Datenbankname wird aus dem Mandantennamen gebildet, um zu verdeutlichen, welcher Shard zu welchem Mandanten gehört. (Sie können problemlos auch andere Strategien für die Datenbankbenennung verwenden.)+ Eine Resource Manager-Vorlage wird verwendet, um durch Kopieren einer Gold-Version einer Datenbank (baseTenantDB) auf dem Katalogserver eine Mandantendatenbank zu erstellen. Alternativ können Sie eine leere Datenbank erstellen und sie anschließend durch Importieren einer BACPAC-Datei initialisieren oder ein Initialisierungsskript von einem bekannten Speicherort ausführen.  
 
