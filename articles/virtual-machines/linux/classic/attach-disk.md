@@ -15,9 +15,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2017
 ms.author: iainfou
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: 017ba7197e11c2b222082833d5acabb9e542b762
+ms.contentlocale: de-de
 ms.lasthandoff: 04/03/2017
 
 
@@ -46,7 +47,7 @@ Sie können sowohl leere Datenträger, als auch Datenträger mit Daten an Ihre v
     sudo grep SCSI /var/log/messages
     ```
    
-    Für aktuelle Ubuntu-Verteilungen müssen Sie möglicherweise `sudo grep SCSI /var/log/syslog` verwenden, da die Anmeldung bei `/var/log/messages` möglicherweise standardmäßig deaktiviert ist.
+    Für aktuelle Ubuntu-Distributionen müssen Sie möglicherweise `sudo grep SCSI /var/log/syslog` verwenden, da die Anmeldung bei `/var/log/messages` möglicherweise standardmäßig deaktiviert ist.
    
     In den angezeigten Meldungen können Sie den Bezeichner des letzten hinzugefügten Datenträgers finden.
    
