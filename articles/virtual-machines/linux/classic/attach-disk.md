@@ -1,4 +1,4 @@
----
+﻿---
 title: "Anfügen eines Datenträgers an einen virtuellen Linux-Computer in Azure | Microsoft-Dokumentation"
 description: "Erfahren Sie, wie Sie einen Datenträger mit dem klassischen Bereitstellungsmodell einer Linux-VM anfügen und den Datenträger initialisieren, sodass er einsatzbereit ist."
 services: virtual-machines-linux
@@ -47,7 +47,7 @@ Sie können sowohl leere Datenträger, als auch Datenträger mit Daten an Ihre v
     sudo grep SCSI /var/log/messages
     ```
    
-    Für aktuelle Ubuntu-Distributionen müssen Sie möglicherweise `sudo grep SCSI /var/log/syslog` verwenden, da die Anmeldung bei `/var/log/messages` möglicherweise standardmäßig deaktiviert ist.
+    Für aktuelle Ubuntu-Distributionen müssen Sie möglicherweise sudo grep SCSI /var/log/syslog verwenden, da die Anmeldung bei /var/log/messages möglicherweise standardmäßig deaktiviert ist.
    
     In den angezeigten Meldungen können Sie den Bezeichner des letzten hinzugefügten Datenträgers finden.
    
