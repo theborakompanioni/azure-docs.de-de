@@ -104,7 +104,7 @@ In diesem Tutorial werden die folgenden Ausgabeeinstellungen verwendet. Im restl
 
     **Video**
 
-   * Encoder: MainConcept h.&264;
+   * Encoder: MainConcept H.264
    * Bilder pro Sekunde: 30
    * Durchschnittliche Bitrate: 5000 Kbit/s (kann basierend auf Netzwerkbeschränkungen angepasst werden)
    * Profil: Main
