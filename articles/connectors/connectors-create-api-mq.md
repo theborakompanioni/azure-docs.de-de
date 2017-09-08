@@ -1,4 +1,3 @@
- 
 ---
 title: Verwenden des MQ-Connectors in Azure Logic Apps | Microsoft-Dokumentation
 description: Herstellen einer Verbindung mit einem lokalen oder Azure MQ-Server aus Ihrem Logik-App-Workflow, um Nachrichten an WebSphere MQ zu suchen, zu empfangen und zu senden
