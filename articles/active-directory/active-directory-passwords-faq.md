@@ -6,21 +6,21 @@ keywords: "Active Directory-Kennwortverwaltung, Kennwortverwaltung, Self-Service
 documentationcenter: 
 author: MicrosoftGuyJFlo
 manager: femila
-ms.reviewer: gahug
+ms.reviewer: sahenry
 ms.assetid: 
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/17/2017
+ms.date: 08/28/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 00acd4090ed981ab2b05e955e93d1c689ea1a2e6
+ms.translationtype: HT
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: fed9008d41b43b2c118aba4939260e819c211d67
 ms.contentlocale: de-de
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="password-management-frequently-asked-questions"></a>Häufig gestellte Fragen zur Kennwortverwaltung
@@ -38,6 +38,7 @@ Diese FAQ sind in folgende Abschnitte unterteilt:
 * [**Fragen zur Kennwortrückschreibung**](#password-writeback)
 
 ## <a name="password-reset-registration"></a>Registrieren für die Kennwortzurücksetzung
+
 * **F: Können meine Benutzer ihre eigenen Daten zur Kennwortzurücksetzung registrieren?**
 
   > **A:** Ja, wenn die Kennwortzurücksetzung aktiviert ist und die Benutzer lizenziert sind, können diese das Kennwortregistrierungsportal auf „http://aka.ms/ssprsetup“ öffnen und ihre Authentifizierungsdaten registrieren. Benutzer können sich auch registrieren, indem sie in den Zugriffsbereich unter „http://myapps.microsoft.com“ wechseln und auf die Registerkarte für die Kennwortzurücksetzung klicken.
@@ -82,7 +83,9 @@ Diese FAQ sind in folgende Abschnitte unterteilt:
   > **A:** Ein Benutzer gilt als für SSPR registriert, wenn er mindestens die **Anzahl von Methoden, die zum Zurücksetzen erforderlich sind**, registriert hat, die Sie im [Azure-Portal](https://portal.azure.com) festgelegt haben.
   >
   >
+
 ## <a name="password-reset"></a>Zurücksetzen des Kennworts
+
 * **F: Wie lange muss ich warten, bis eine E-Mail, eine SMS oder ein Anruf von der Kennwortzurücksetzung eintrifft?**
 
   > **A:** E-Mails, SMS-Nachrichten und Telefonanrufe sollten in weniger als einer Minute, normalerweise innerhalb von 5 bis 20 Sekunden eingehen.
@@ -105,7 +108,7 @@ Diese FAQ sind in folgende Abschnitte unterteilt:
   >
 * **F: Wie informiere ich meine Benutzer, wo sie ihre Kennwörter zurücksetzen können?**
 
-  > **A:** Sie können Ihre Benutzer direkt an „https://passwordreset.microsoftonline.com“ weiterleiten, oder Sie können sie auffordern, auf den Link **Sie können nicht auf Ihr Konto zugreifen?** zu klicken, der auf jeder Geschäfts-, Schul- oder Uni-Anmeldeseite angezeigt wird. Sie können diese Links auch an einem Ort veröffentlichen, der problemlos für Ihre Benutzer erreichbar ist.
+  > **A:** Nutzen Sie die Vorschläge in unserem [Artikel zur SSPR-Bereitstellung](active-directory-passwords-best-practices.md#email-based-rollout).
   >
   >
 * **F: Kann ich diese Seite von einem mobilen Gerät aus verwenden?**
@@ -158,6 +161,11 @@ Diese FAQ sind in folgende Abschnitte unterteilt:
   > **A:** Ja, es kann ein Grenzwert für die Registrierung und ein anderer für die Zurücksetzung festgelegt werden. Drei bis fünf Fragen können für die Registrierung und drei bis fünf Fragen für die Zurücksetzung verlangt werden.
   >
   >
+* **F: Ich konfigurierte meine Richtlinie so, dass Benutzer zum Zurücksetzen Sicherheitsfragen verwenden müssen, aber Azure-Administratoren scheinen anders konfiguriert zu sein.**
+
+  > **A:** Dies entspricht dem erwarteten Verhalten. Microsoft erzwingt eine starke standardmäßige Zwei-Tor-Kennwortrücksetzungs-Richtlinie für jede Azure-Administratorrolle. Damit wird verhindert, dass Administratoren Sicherheitsfragen verwenden. Weitere Informationen zu dieser Richtlinie finden Sie im Artikel [Kennwortrichtlinien und -Einschränkungen in Azure Active Directory](active-directory-passwords-policy.md#administrator-password-policy-differences).
+  >
+  >
 * **F: Wie werden die Sicherheitsfragen während der Zurücksetzung ausgewählt, wenn ein Benutzer mehr als die maximale Anzahl von Fragen registriert, die für die Zurücksetzung erforderlich sind?**
 
   > **A:** Aus der Gesamtzahl von Fragen, für die sich ein Benutzer registriert hat, werden N Sicherheitsfragen nach dem Zufallsprinzip ausgewählt, wobei N für die **Anzahl der für die Zurücksetzung erforderlichen Fragen** steht. Wenn für einen Benutzer beispielsweise fünf Sicherheitsfragen registriert wurden, aber nur drei für das Zurücksetzen erforderlich sind, werden aus diesen fünf nach dem Zufallsprinzip drei ausgewählt und bei der Zurücksetzung angezeigt. Wenn der Benutzer die Fragen falsch beantwortet, wird der Auswahlvorgang erneut durchgeführt, um eine wiederholte Fragestellung zu verhindern.
@@ -175,6 +183,7 @@ Diese FAQ sind in folgende Abschnitte unterteilt:
   >
 
 ## <a name="password-change"></a>Kennwortänderung
+
 * **F: Wo können meine Benutzer ihre Kennwörter ändern?**
 
   > **A:** Benutzer können ihre Kennwörter überall dort ändern, wo ihr Profilbild oder -symbol angezeigt wird (beispielsweise in [Office 365](https://portal.office.com) oder im [Zugriffsbereich](https://myapps.microsoft.com) in der rechten oberen Ecke). Benutzer können ihre Kennwörter über die [Profilseite des Zugriffsbereichs](https://account.activedirectory.windowsazure.com/r#/profile) ändern. Außerdem werden Benutzer unter Umständen auf dem Azure AD-Anmeldebildschirm zum Ändern ihres Kennworts aufgefordert, falls ihr Kennwort abgelaufen ist. Und schließlich können Benutzer direkt zum [Kennwortänderungsportal von Azure AD](https://account.activedirectory.windowsazure.com/ChangePassword.aspx) navigieren und ihr Kennwort dort ändern.
@@ -187,6 +196,7 @@ Diese FAQ sind in folgende Abschnitte unterteilt:
   >
 
 ## <a name="password-management-reports"></a>Berichte zur Kennwortverwaltung
+
 * **F: Wie lange dauert es, bis Daten in den Berichten zur Kennwortverwaltung angezeigt werden?**
 
   > **A:** Daten sollten innerhalb von 5 bis 10 Minuten in den Berichten zur Kennwortverwaltung angezeigt werden. In manchen Fällen kann es bis zu einer Stunde dauern.
@@ -219,6 +229,7 @@ Diese FAQ sind in folgende Abschnitte unterteilt:
   >
 
 ## <a name="password-writeback"></a>Rückschreiben von Kennwörtern
+
 * **F: Wie funktioniert das Rückschreiben von Kennwörtern im Detail?**
 
   > **A:** Unter [Funktionsweise des Kennwortrückschreibens](active-directory-passwords-writeback.md) wird erläutert, was geschieht, wenn Sie das Kennwortrückschreiben aktivieren, und wie Daten durch das System wieder in Ihre lokale Umgebung übertragen werden.
@@ -257,7 +268,7 @@ Diese FAQ sind in folgende Abschnitte unterteilt:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Die folgenden Links führen zu weiteren Informationen zur Kennwortzurücksetzung mit Azure AD
+Die folgenden Links führen zu weiteren Informationen zur Kennwortzurücksetzung mit Azure AD:
 
 * [**Schnellstart:**](active-directory-passwords-getting-started.md) Informieren Sie sich schnell über die Self-Service-Kennwortverwaltung von Azure AD. 
 * [**Lizenzierung:**](active-directory-passwords-licensing.md) Konfigurieren Sie Ihre Azure AD-Lizenzierung.

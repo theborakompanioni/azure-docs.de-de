@@ -1,43 +1,44 @@
 ---
-title: 'Azure Active Directory B2C: Tokenverweis | Microsoft-Dokumentation'
+title: "Tokenreferenz – Azure AD B2C | Microsoft-Dokumentation"
 description: "Enthält eine Beschreibung der Typen von Token, die in Azure Active Directory B2C ausgegeben werden"
 services: active-directory-b2c
 documentationcenter: 
-author: dstrockis
-manager: mbaldwin
-editor: 
+author: parakhj
+manager: krassk
+editor: parakhj
 ms.assetid: 6df79878-65cb-4dfc-98bb-2b328055bc2e
 ms.service: active-directory-b2c
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 3/17/2017
-ms.author: dastrock
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6adaf7026d455210db4d7ce6e7111d13c2b75374
-ms.openlocfilehash: 39cfbc1c6dea138fe2f1eb3190770606f3895d40
+ms.date: 08/16/2017
+ms.author: parakhj
+ms.translationtype: HT
+ms.sourcegitcommit: 48dfc0fa4c9ad28c4c64c96ae2fc8a16cd63865c
+ms.openlocfilehash: 7f98637264d1acb209d0379e4800e542fc91955b
 ms.contentlocale: de-de
-ms.lasthandoff: 06/22/2017
-
+ms.lasthandoff: 08/30/2017
 
 ---
 # <a name="azure-ad-b2c-token-reference"></a>Referenz zu Azure AD B2C-Token
+
 Azure Active Directory B2C (Azure AD B2C) stellt bei der Verarbeitung der einzelnen [Authentifizierungsflüsse](active-directory-b2c-apps.md) verschiedene Arten von Sicherheitstoken aus. In diesem Dokument sind das Format, die Sicherheitsmerkmale und der Inhalt aller Tokentypen beschrieben.
 
 ## <a name="types-of-tokens"></a>Tokentypen
 Azure AD B2C unterstützt das [OAuth 2.0-Autorisierungsprotokoll](active-directory-b2c-reference-protocols.md), für das Zugriffstoken und Aktualisierungstoken verwendet werden. Darüber hinaus wird die Authentifizierung und Anmeldung über [OpenID Connect](active-directory-b2c-reference-protocols.md) unterstützt. Dabei wird ein dritter Tokentyp eingeführt, das ID-Token. Alle diese Token werden als Bearertoken dargestellt.
 
-Ein Bearertoken ist ein einfaches Sicherheitstoken, das dem „Träger“ den Zugriff auf eine geschützte Ressource ermöglicht. Der Bearer ist jede beliebige Partei, die das Token vorweisen kann. Azure AD muss eine Partei zunächst authentifizieren, damit sie ein Bearertoken erhalten kann. Falls jedoch nicht die erforderlichen Schritte ausgeführt werden, um das Token bei der Übertragung und Speicherung zu schützen, kann das Token von einer nicht vorgesehenen Partei abgefangen und verwendet werden. Einige Sicherheitstoken verfügen über einen integrierten Mechanismus, der eine Verwendung durch nicht autorisierte Parteien verhindert, Bearertoken besitzen diesen Mechanismus jedoch nicht. Sie und müssen über einen sicheren Kanal wie etwa Transport Layer Security (HTTPS) übertragen werden.
+Ein Bearertoken ist ein einfaches Sicherheitstoken, das dem „Träger“ den Zugriff auf eine geschützte Ressource ermöglicht. Der Bearer ist jede beliebige Partei, die das Token vorweisen kann. Azure AD B2C muss eine Partei zunächst authentifizieren, damit sie ein Bearertoken erhalten kann. Falls jedoch nicht die erforderlichen Schritte ausgeführt werden, um das Token bei der Übertragung und Speicherung zu schützen, kann das Token von einer nicht vorgesehenen Partei abgefangen und verwendet werden. Einige Sicherheitstoken verfügen über einen integrierten Mechanismus, der eine Verwendung durch nicht autorisierte Parteien verhindert, Bearertoken besitzen diesen Mechanismus jedoch nicht. Sie und müssen über einen sicheren Kanal wie etwa Transport Layer Security (HTTPS) übertragen werden.
 
 Wird ein Bearertoken außerhalb eines sicheren Kanals gesendet, kann eine böswillige Partei das Token mithilfe eines Man-in-the-Middle-Angriffs abrufen und damit unautorisiert auf eine geschützte Ressource zugreifen. Die gleichen Sicherheitsprinzipien gelten für die (Zwischen-)Speicherung von Bearertoken zur späteren Verwendung. Stellen Sie daher sicher, dass Ihre App Bearertoken stets auf sichere Weise überträgt und speichert.
 
 Weitere Sicherheitsüberlegungen zu Bearertoken finden Sie unter [RFC 6750, Abschnitt 5](http://tools.ietf.org/html/rfc6750).
 
-Viele der von Azure AD B2C ausgestellten Token werden als JSON-Webtoken (JWTs) implementiert. Ein JWT stellt eine kompakte, URL-sichere Methode zum Übertragen von Informationen zwischen zwei Parteien dar. JWTs enthalten Informationen, die als „Ansprüche“ bezeichnet werden. Dies sind Assertionen von Informationen zum Träger und zum Antragsteller des Tokens. Die Ansprüche in JWTs sind JSON-Objekte, die für die Übertragung codiert und serialisiert wurden. Da die von Azure AD B2C ausgestellten JWTs signiert, aber nicht verschlüsselt sind, können Sie den Inhalt eines JWTs problemlos untersuchen und debuggen. Dafür stehen mehrere Tools zur Verfügung, beispielsweise [calebb.net](http://calebb.net). Weitere Informationen zu JWTs finden Sie unter [JWT-Spezifikationen](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html).
+Viele der von Azure AD B2C ausgestellten Token werden als JSON-Webtoken (JWTs) implementiert. Ein JWT stellt eine kompakte, URL-sichere Methode zum Übertragen von Informationen zwischen zwei Parteien dar. JWTs enthalten Informationen, die als „Ansprüche“ bezeichnet werden. Dies sind Assertionen von Informationen zum Träger und zum Antragsteller des Tokens. Die Ansprüche in JWTs sind JSON-Objekte, die für die Übertragung codiert und serialisiert wurden. Da die von Azure AD B2C ausgestellten JWTs signiert, aber nicht verschlüsselt sind, können Sie den Inhalt eines JWTs problemlos untersuchen und debuggen. Dafür stehen mehrere Tools zur Verfügung, beispielsweise [jwt.ms](https://jwt.ms). Weitere Informationen zu JWTs finden Sie unter [JWT-Spezifikationen](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html).
 
 ### <a name="id-tokens"></a>ID-Token
-ID-Token sind eine Form von Sicherheitstoken, die Ihre App von den `authorize`- und `token`-Endpunkten von Azure AD B2C empfängt. ID-Token werden als [JWTs](#types-of-tokens)dargestellt und enthalten Ansprüche, die Sie zur Identifizierung der Benutzer für die App verwenden können. Vom `authorize`-Endpunkt abgerufene ID-Token werden häufig verwendet, um Benutzer an Webanwendungen anzumelden. Vom `token`-Endpunkt abgerufene ID-Token können während der Kommunikation zwischen zwei Komponenten derselben Anwendung oder desselben Diensts in HTTP-Anforderungen gesendet werden. Sie können die Ansprüche nach Bedarf in einem ID-Token verwenden. Im Allgemeinen werden Sie in einer App zum Anzeigen von Kontoinformationen oder zum Treffen von Entscheidungen hinsichtlich der Zugriffssteuerung eingesetzt.  
+
+ID-Token sind eine Form von Sicherheitstoken, die Ihre App von den `/authorize`- und `/token`-Endpunkten von Azure AD B2C empfängt. ID-Token werden als [JWTs](#types-of-tokens)dargestellt und enthalten Ansprüche, die Sie zur Identifizierung der Benutzer für die App verwenden können. Wenn ID-Token vom `/authorize`-Endpunkt abgerufen werden, erfolgt dies mit dem [impliziten Datenfluss](active-directory-b2c-reference-spa.md), der häufig für Benutzer verwendet wird, die sich bei Webanwendungen anmelden, die auf Javascript basieren. Wenn ID-Token vom `/token`-Endpunkt abgerufen werden, erfolgt dies mit dem [vertraulichen Codefluss](active-directory-b2c-reference-oidc.md), der das Token aus dem Browser ausblendet. So kann das Token sicher in HTTP-Anforderungen für die Kommunikation zwischen zwei Komponenten der gleichen Anwendung oder des gleichen Diensts gesendet werden. Sie können die Ansprüche nach Bedarf in einem ID-Token verwenden. Im Allgemeinen werden Sie in einer App zum Anzeigen von Kontoinformationen oder zum Treffen von Entscheidungen hinsichtlich der Zugriffssteuerung eingesetzt.  
 
 ID-Token sind zu diesem Zeitpunkt zwar signiert, jedoch nicht verschlüsselt. Wenn Ihre App oder API ein ID-Token empfängt, muss sie die [Signatur überprüfen](#token-validation), um die Authentizität des Tokens nachzuweisen. Ihre App bzw. API muss außerdem einige Ansprüche im Token überprüfen, um seine Gültigkeit zu belegen. Je nach Szenarioanforderungen können die von einer App überprüften Ansprüche variieren. Einige [allgemeine Anspruchsüberprüfungen](#token-validation) muss Ihre App aber in jedem Szenario durchführen.
 
@@ -60,14 +61,16 @@ CQhoFA
 ```
 
 ### <a name="access-tokens"></a>Zugriffstoken
-Ein Zugriffstoken ist auch eine Form von Sicherheitstoken, das Ihre App von den `authorize`- und `token`-Endpunkten von Azure AD B2C empfängt. Zugriffstoken werden auch als [JWTs](#types-of-tokens) dargestellt und enthalten Ansprüche, die Sie zur Identifizierung der für Ihre APIs erteilten Berechtigungen verwenden können. Zugriffstoken werden signiert, aber derzeit nicht verschlüsselt. Zugriffstoken sollten zum Erteilen des Zugriffs auf APIs und Ressourcenserver verwendet werden. Weitere Informationen zum [Verwenden von Zugriffstoken](active-directory-b2c-access-tokens.md). 
+
+Ein Zugriffstoken ist auch eine Form von Sicherheitstoken, das Ihre App von den `/authorize`- und `/token`-Endpunkten von Azure AD B2C empfängt. Zugriffstoken werden auch als [JWTs](#types-of-tokens) dargestellt und enthalten Ansprüche, die Sie zur Identifizierung der für Ihre APIs erteilten Berechtigungen verwenden können. Zugriffstoken werden signiert, aber derzeit nicht verschlüsselt. Zugriffstoken sollten zum Erteilen des Zugriffs auf APIs und Ressourcenserver verwendet werden. Weitere Informationen zum [Verwenden von Zugriffstoken](active-directory-b2c-access-tokens.md). 
 
 Wenn Ihre API ein Zugriffstoken empfängt, muss sie die [Signatur überprüfen](#token-validation), um die Authentizität des Tokens nachzuweisen. Ihre API muss außerdem einige Ansprüche im Token überprüfen, um seine Gültigkeit zu belegen. Je nach Szenarioanforderungen können die von einer App überprüften Ansprüche variieren. Einige [allgemeine Anspruchsüberprüfungen](#token-validation) muss Ihre App aber in jedem Szenario durchführen.
 
 ### <a name="claims-in-id-and-access-tokens"></a>Ansprüche in ID- und Zugriffstoken
+
 Bei der Verwendung von Azure AD B2C verfügen Sie über eine präzise Kontrolle über den Inhalt Ihrer Token. Sie können [Richtlinien](active-directory-b2c-reference-policies.md) zum Senden bestimmter Gruppen von Benutzerdaten in Ansprüchen konfigurieren, die von der App für den Betrieb benötigt werden. Diese Ansprüche können Standardeigenschaften des Benutzers enthalten, z.B. `displayName` und `emailAddress`. Sie können auch [benutzerdefinierte Attribute](active-directory-b2c-reference-custom-attr.md) enthalten, die Sie in Ihrem B2C-Verzeichnis definieren. Jedes ID- und Zugriffstoken, das Sie empfangen, enthält einen bestimmten Satz sicherheitsbezogener Ansprüche. Diese können von Ihren Anwendungen genutzt werden, um Benutzer und Anforderungen sicher zu authentifizieren.
 
-Beachten Sie, dass die Ansprüche in ID-Token nicht in einer bestimmten Reihenfolge zurückgegeben werden. Darüber hinaus können jederzeit neue Ansprüche in ID-Token eingeführt werden Ihre App darf nicht unterbrochen werden, wenn neue Ansprüche eingeführt werden. Im Folgenden finden Sie die Ansprüche, von denen Sie erwarten, dass sie in den von Azure AD B2C ausgegebenen ID- und Zugriffstoken enthalten sind. Alle weiteren Ansprüche werden anhand von Richtlinien bestimmt. Überprüfen Sie zu Übungszwecken die Ansprüche im ID-Beispieltoken, indem Sie sie in [calebb.net](http://calebb.net) einfügen. Weitere Informationen finden Sie in der [OpenID Connect-Spezifikation](http://openid.net/specs/openid-connect-core-1_0.html).
+Beachten Sie, dass die Ansprüche in ID-Token nicht in einer bestimmten Reihenfolge zurückgegeben werden. Darüber hinaus können jederzeit neue Ansprüche in ID-Token eingeführt werden Ihre App darf nicht unterbrochen werden, wenn neue Ansprüche eingeführt werden. Im Folgenden finden Sie die Ansprüche, von denen Sie erwarten, dass sie in den von Azure AD B2C ausgegebenen ID- und Zugriffstoken enthalten sind. Alle weiteren Ansprüche werden anhand von Richtlinien bestimmt. Überprüfen Sie zu Übungszwecken die Ansprüche im ID-Beispieltoken, indem Sie sie in [jwt.ms](https://jwt.ms) einfügen. Weitere Informationen finden Sie in der [OpenID Connect-Spezifikation](http://openid.net/specs/openid-connect-core-1_0.html).
 
 | Name | Anspruch | Beispielwert | Beschreibung |
 | --- | --- | --- | --- |

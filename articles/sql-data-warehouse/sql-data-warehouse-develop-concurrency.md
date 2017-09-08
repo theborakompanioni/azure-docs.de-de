@@ -16,8 +16,8 @@ ms.custom: performance
 ms.date: 08/23/2017
 ms.author: joeyong;barbkess;kavithaj
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: b1ab2a8253684c62be650eed2ea5f69c62188a22
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: eaf2d43286dbaa52ada1430fbb7ce1e37f41c0d4
 ms.contentlocale: de-de
 ms.lasthandoff: 08/24/2017
 
@@ -152,7 +152,7 @@ Die gleiche Berechnung gilt für statische Ressourcenklassen.
 ## <a name="concurrency-slot-consumption"></a>Verbrauch von Parallelitätsslots  
 SQL Data Warehouse weist Abfragen, die in höheren Ressourcenklassen ausgeführt werden, mehr Arbeitsspeicher zu. Der Arbeitsspeicher ist eine feststehende Ressource.  Daher gilt Folgendes: Je mehr Arbeitsspeicher pro Abfrage zugeordnet ist, desto weniger parallele Abfragen können unterstützt werden. Die folgende Tabelle gibt in einer einzigen Ansicht alle oben stehenden Konzepte wieder – sowohl die Anzahl verfügbarer Parallelitätsslots pro DWU als auch die Slots, die von den einzelnen Ressourcenklassen verbraucht werden.  
 
-### <a name="allocation-and-consumption-of-concurrency-slots"></a>Zuordnung und Verbrauch von Parallelitätsslots  
+### <a name="allocation-and-consumption-of-concurrency-slots-for-dynamic-resource-classes"></a>Zuordnung und Verbrauch von Parallelitätsslots für dynamische Ressourcenklassen  
 | DWU | Maximale Anzahl gleichzeitiger Abfragen | Zugeordnete Parallelitätsslots | Durch „smallrc“ verwendete Slots | Durch „mediumrc“ verwendete Slots | Durch „largerc“ verwendete Slots | Durch „xlargerc“ verwendete Slots |
 |:--- |:---:|:---:|:---:|:---:|:---:|:---:|
 | DW100 |4 |4 |1 |1 |2 |4 |
@@ -168,7 +168,7 @@ SQL Data Warehouse weist Abfragen, die in höheren Ressourcenklassen ausgeführt
 | DW3000 |32 |120 |1 |16 |32 |64 |
 | DW6000 |32 |240 |1 |32 |64 |128 |
 
-### <a name="allocation-and-consumption-of-concurrency-slots-for-static-resource-classes"></a>Zuordnung und Verbrauch von Parallelitätsslots für statische Ressourcenklassen
+### <a name="allocation-and-consumption-of-concurrency-slots-for-static-resource-classes"></a>Zuordnung und Verbrauch von Parallelitätsslots für statische Ressourcenklassen  
 | DWU | Maximale Anzahl gleichzeitiger Abfragen | Zugeordnete Parallelitätsslots |staticrc10 | staticrc20 | staticrc30 | staticrc40 | staticrc50 | staticrc60 | staticrc70 | staticrc80 |
 |:--- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | DW100 |4 |4 |1 |2 |4 |4 |4 |4 |4 |4 |

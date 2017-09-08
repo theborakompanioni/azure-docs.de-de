@@ -12,19 +12,23 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.devlang: na
-ms.date: 04/04/2017
-ms.author: saeedakhter-msft
+ms.date: 08/04/2017
+ms.author: saeda
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: ad31e5f4ef3be78d8d2dd6b9c7d83e447d9ef776
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 8c79df33cd5f04f490e2cc6372f7e8ac1c4d9bbe
 ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 
 # <a name="azure-active-directory-b2c-collecting-logs"></a>Azure Active Directory B2C: Erfassen von Protokollen
 
 Dieser Artikel behandelt Schritte zum Sammeln von Protokollen von Azure AD B2C, mit denen Sie Probleme mit Ihren benutzerdefinierten Richtlinien diagnostizieren können.
+
+>[!NOTE]
+>Aktuell dienen die hier detailliert beschriebenen Aktivitätsprotokolle **NUR** zur Entwicklung von benutzerdefinierten Richtlinien. Verwenden Sie den Entwicklungsmodus nicht in der Produktion.  Protokolle erfassen alle Ansprüche, die während der Entwicklung an die Identitätsanbieter und von Ihnen gesendet werden.  Bei Verwendung in der Produktion übernehmen Entwickler die Verantwortung für PII (Privately Identifiable Information, privat identifizierbare Informationen), die in dem App Insights-Protokoll gesammelt werden, das sie besitzen.  Diese detaillierten Protokolle werden nur gesammelt, wenn die Richtlinie sich im **ENTWICKLUNGSMODUS** befindet.
+
 
 ## <a name="use-application-insights"></a>Verwenden von Application Insights
 
@@ -60,7 +64,7 @@ Azure AD B2C unterstützt eine Funktion zum Senden von Daten an Application Insi
   * `DeveloperMode="true"` weist Application Insights an, die Telemetrie über die Verarbeitungspipeline zu beschleunigen. Dies ist gut für die Entwicklung, bei hohem Datenvolumen jedoch nicht zu empfehlen.
   * `ClientEnabled="true"` sendet das clientseitige Application Insights-Skript zum Nachverfolgen der Seitenansicht und von clientseitigen Fehlern (nicht erforderlich).
   * `ServerEnabled="true"` sendet die vorhandene Datei „UserJourneyRecorder.json“ als benutzerdefiniertes Ereignis an Application Insights.
-  Der endgültige XML-Code sieht wie folgt aus:
+Beispiel:
 
   ```XML
   <TrustFrameworkPolicy
@@ -85,7 +89,7 @@ Azure AD B2C unterstützt eine Funktion zum Senden von Daten an Application Insi
 ### <a name="see-the-logs-in-application-insights"></a>Anzeigen von Protokollen in Application Insights
 
 >[!NOTE]
-> Es gibt eine kurze Verzögerung (weniger als 5 Minuten), bevor Sie neue Protokolle in Application Insights anzeigen können.
+> Es gibt eine kurze Verzögerung (weniger als fünf Minuten), bevor Sie neue Protokolle in Application Insights anzeigen können.
 
 1. Öffnen Sie die zuvor erstellte Application Insights-Ressource im [Azure-Portal](https://portal.azure.com).
 1. Klicken Sie im Menü **Übersicht** auf **Analytics**.
@@ -102,11 +106,16 @@ Diese Einträge können ggf. lang sein.  Führen Sie einen Export in eine CSV-Da
 Weitere Informationen zum Tool Analytics finden Sie [hier](https://docs.microsoft.com/azure/application-insights/app-insights-analytics).
 
 >[!NOTE]
->In der Community wurde ein User Journey-Viewer entwickelt, der als Hilfe für Identitätsentwickler dient.  Er wird von Microsoft nicht unterstützt und unverändert zur Verfügung gestellt.  Mit dem Viewer werden Daten aus Ihrer Application Insights-Instanz gelesen, und es wird eine gut strukturierte Ansicht der userjourney-Ereignisse bereitgestellt.  Sie können den Quellcode abrufen und in Ihrer eigenen Lösung bereitstellen.
+>In der Community wurde ein User Journey-Viewer entwickelt, der als Hilfe für Identitätsentwickler dient.  Er wird von Microsoft nicht unterstützt und unverändert zur Verfügung gestellt.  Mit dem Viewer werden Daten aus Ihrer Application Insights-Instanz gelesen, und es wird eine gut strukturierte Ansicht der User Journey-Ereignisse bereitgestellt.  Sie können den Quellcode abrufen und in Ihrer eigenen Lösung bereitstellen.
+
+>[!NOTE]
+>Aktuell dienen die hier detailliert beschriebenen Aktivitätsprotokolle **NUR** zur Entwicklung von benutzerdefinierten Richtlinien. Verwenden Sie den Entwicklungsmodus nicht in der Produktion.  Protokolle erfassen alle Ansprüche, die während der Entwicklung an die Identitätsanbieter und von Ihnen gesendet werden.  Bei Verwendung in der Produktion übernehmen Entwickler die Verantwortung für PII (Privately Identifiable Information, privat identifizierbare Informationen), die in dem App Insights-Protokoll gesammelt werden, das sie besitzen.  Diese detaillierten Protokolle werden nur gesammelt, wenn die Richtlinie sich im **ENTWICKLUNGSMODUS** befindet.
 
 [GitHub-Repository mit Beispielen für nicht unterstützte benutzerdefinierte Richtlinien und verwandte Tools](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies)
 
 
 
+## <a name="next-steps"></a>Nächste Schritte
 
+Untersuchen Sie die Daten in Application Insights, um besser zu verstehen, wie die zugrunde liegende B2C-Funktion arbeitet, um Ihre eigenen Identitätserfahrungen zu vermitteln.
 

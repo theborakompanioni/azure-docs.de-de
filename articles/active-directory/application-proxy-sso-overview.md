@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/18/2017
+ms.date: 08/23/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.translationtype: HT
-ms.sourcegitcommit: 6e76ac40e9da2754de1d1aa50af3cd4e04c067fe
-ms.openlocfilehash: a1b8445a4547f8742c8a60de2df8f3b535dfab5d
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: 1deb3d91049d45fe26791783e13bd23e0a7d9f95
 ms.contentlocale: de-de
-ms.lasthandoff: 07/31/2017
+ms.lasthandoff: 08/24/2017
 
 ---
 
@@ -61,6 +61,8 @@ Informationen zum Einrichten der kennwortbasierten Anmeldung finden Sie unter [E
 ## <a name="linked-sign-on"></a>Anmeldung über Link
 
 Wählen Sie **Anmeldung über Link**, wenn Sie bereits eine SSO-Lösung für Ihre lokalen Identitäten eingerichtet haben. Diese Option ermöglicht Azure Active Directory die Nutzung von vorhandenen SSO-Lösungen, aber Ihre Benutzer haben weiterhin Remotezugriff auf die Anwendung. 
+
+Informationen zur Anmeldung über einen Link (wurde früher als „einmaliges Anmelden“ bezeichnet) finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md#how-does-single-sign-on-with-azure-active-directory-work).
 
 ## <a name="integrated-windows-authentication"></a>Integrierte Windows-Authentifizierung
 

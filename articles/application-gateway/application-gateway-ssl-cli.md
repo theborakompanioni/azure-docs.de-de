@@ -1,6 +1,6 @@
 ---
 title: "Konfigurieren der SSL-Auslagerung – Azure Application Gateway – Azure CLI 2.0 | Microsoft-Dokumentation"
-description: "Diese Seite enthält Anweisungen zum Erstellen eines Anwendungsgateways mit SSL-Auslagerung mithilfe der Azure CLI 2.0."
+description: "Dieser Artikel enthält Anweisungen zum Erstellen eines Anwendungsgateways mit SSL-Auslagerung über Azure CLI 2.0."
 documentationcenter: na
 services: application-gateway
 author: georgewallace
@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 07/26/2017
 ms.author: gwallace
 ms.translationtype: HT
-ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
-ms.openlocfilehash: e8c1ba09daef09ef5002e33345905772961c1d93
+ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
+ms.openlocfilehash: 032a514ddab625e4f7c5ef23a1da03a0162f43e3
 ms.contentlocale: de-de
-ms.lasthandoff: 08/04/2017
+ms.lasthandoff: 08/30/2017
 
 ---
 # <a name="configure-an-application-gateway-for-ssl-offload-by-using-azure-cli-20"></a>Konfigurieren eines Anwendungsgateways für die SSL-Auslagerung mithilfe der Azure CLI 2.0
@@ -36,19 +36,21 @@ Um die Schritte in diesem Artikel ausführen zu können, müssen Sie [die Azure-
 
 ## <a name="required-components"></a>Erforderliche Komponenten
 
-* **Back-End-Serverpool:** Die Liste der IP-Adressen der Back-End-Server. Die aufgelisteten IP-Adressen sollten entweder dem Subnetz des virtuellen Netzwerks angehören oder eine öffentliche IP-Adresse/VIP sein.
+* **Back-End-Serverpool:** Die Liste der IP-Adressen der Back-End-Server. Die aufgelisteten IP-Adressen sollten dem Subnetz des virtuellen Netzwerks angehören oder eine öffentliche IP-Adresse oder eine virtuelle IP-Adresse (VIP) sein.
 * **Einstellungen für den Back-End-Serverpool:** Jeder Pool weist Einstellungen wie Port, Protokoll und cookiebasierte Affinität auf. Diese Einstellungen sind an einen Pool gebunden und gelten für alle Server innerhalb des Pools.
-* **Front-End-Port:** Dieser Port ist der öffentliche Port, der im Application Gateway geöffnet ist. Datenverkehr erreicht diesen Port und wird dann an einen der Back-End-Server umgeleitet.
+* **Front-End-Port:** Dieser Port ist der öffentliche Port, der im Anwendungsgateway geöffnet ist. Datenverkehr erreicht diesen Port und wird dann an einen der Back-End-Server umgeleitet.
 * **Listener:** Der Listener verfügt über einen Front-End-Port, ein Protokoll (Http oder Https, jeweils mit Beachtung der Groß-/Kleinschreibung) und den Namen des SSL-Zertifikats (falls SSL-Auslagerung konfiguriert wird).
 * **Regel:** Mit der Regel werden der Listener und der Back-End-Serverpool gebunden, und es wird definiert, an welchen Back-End-Serverpool der Datenverkehr gesendet werden soll, wenn er einen bestimmten Listener erreicht. Derzeit wird nur die Regel *basic* unterstützt. Die Regel *basic* ist eine Round-Robin-Lastverteilung.
 
 **Zusätzliche Konfigurationshinweise**
 
-Für die Konfiguration von SSL-Zertifikaten sollte das Protokoll in **HttpListener** in *Https* (Groß-/Kleinschreibung beachten) geändert werden. Das Element **SslCertificate** wird **HttpListener** mit dem Variablenwert hinzugefügt, der für das SSL-Zertifikat konfiguriert wurde. Der Front-End-Port sollte auf 443 aktualisiert werden.
+Für die Konfiguration von SSL-Zertifikaten sollte das Protokoll in **HttpListener** in *Https* (Groß-/Kleinschreibung beachten) geändert werden. Fügen Sie das Element **SslCertificate** zu **HttpListener** mit dem Variablenwert hinzu, der für das SSL-Zertifikat konfiguriert wurde. Der Front-End-Port sollte auf **443** aktualisiert werden.
 
-**So aktivieren Sie cookiebasierte Affinität**Ein Anwendungsgateway kann so konfiguriert werden, dass es sicherstellt, dass die Anforderung von einer Clientsitzung immer an denselben virtuellen Computer in der Webfarm weitergeleitet wird. Für dieses Szenario wird das Einfügen eines Sitzungscookies genutzt, damit das Gateway den Datenverkehr entsprechend weiterleiten kann. Legen Sie zum Aktivieren der cookiebasierten Affinität **CookieBasedAffinity** im **BackendHttpSettings**-Element auf *Enabled* fest.
+**So aktivieren Sie cookiebasierte Affinität**: Sie können ein Anwendungsgateway so konfigurieren, dass sicherstellt ist, dass eine Anforderung von einer Clientsitzung immer an denselben virtuellen Computer in der Webfarm weitergeleitet wird. Fügen Sie dazu ein Sitzungscookie ein, damit das Gateway den Datenverkehr entsprechend weiterleiten kann. Legen Sie zum Aktivieren der cookiebasierten Affinität **CookieBasedAffinity** im **BackendHttpSettings**-Element auf *Enabled* fest.
 
 ## <a name="configure-ssl-offload-on-an-existing-application-gateway"></a>Konfigurieren der SSL-Auslagerung für ein vorhandenes Anwendungsgateway
+
+Geben Sie die folgenden Befehle zum Konfigurieren der SSL-Auslagerung an ein vorhandenes Anwendungsgateway ein:
 
 ```azurecli-interactive
 #!/bin/bash
@@ -105,9 +107,9 @@ az network application-gateway rule create \
 
 ```
 
-## <a name="create-an-application-gateway-with-ssl-offload"></a>Erstellen eines Anwendungsgateways mit der SSL-Auslagerung
+## <a name="create-an-application-gateway-with-ssl-offload"></a>Erstellen eines Anwendungsgateways mit SSL-Auslagerung
 
-Im folgenden Beispiel wird ein Anwendungsgateway mit SSL-Auslagerung erstellt.  Das Zertifikat und das Zertifikatkennwort müssen auf einen gültigen privaten Schlüssel aktualisiert werden.
+Im folgenden Beispiel wird ein Anwendungsgateway mit SSL-Auslagerung erstellt. Das Zertifikat und das Zertifikatkennwort müssen auf einen gültigen privaten Schlüssel aktualisiert werden.
 
 ```azurecli-interactive
 #!/bin/bash
@@ -136,9 +138,11 @@ az network application-gateway create \
   --public-ip-address-allocation "dynamic"
 ```
 
-## <a name="get-application-gateway-dns-name"></a>Abrufen des DNS-Namens des Anwendungsgateways
+## <a name="get-an-application-gateway-dns-name"></a>Abrufen des DNS-Namens eines Anwendungsgateways
 
-Nach dem Erstellen des Gateways wird das Front-End für die Kommunikation konfiguriert. Wenn Sie eine öffentliche IP-Adresse verwenden, wird das Anwendungsgateway ein dynamisch zugewiesener DNS-Namen benötigt, der kein Anzeigename ist. Um sicherzustellen, dass die Endbenutzer auf das Anwendungsgateway zugreifen können, kann mit einem CNAME-Eintrag auf den öffentlichen Endpunkt des Anwendungsgateways verwiesen werden. [Konfigurieren eines benutzerdefinierten Domänennamens in Azure](../cloud-services/cloud-services-custom-domain-name-portal.md) Rufen Sie zum Konfigurieren des Alias mithilfe des PublicIPAddress-Elements, das an das Anwendungsgateway angefügt ist, Details zum Anwendungsgateway sowie die zugeordnete IP-Adresse/den zugeordneten DNS-Namen ab. Verwenden Sie den DNS-Namen des Anwendungsgateways zum Erstellen eines CNAME-Eintrags, der die beiden Webanwendungen an diesen DNS-Namen verweist. Die Verwendung von A-Einträgen wird nicht empfohlen, da sich die VIP beim Neustart des Anwendungsgateways möglicherweise verändert.
+Nach dem Erstellen des Gateways wird das Front-End für die Kommunikation konfiguriert.  Application Gateway erfordert einen dynamisch zugewiesenen DNS-Namen, wenn eine öffentliche IP-Adresse verwendet wird, die nicht benutzerfreundlich ist. Um zu gewährleisten, dass Endbenutzer auf das Anwendungsgateway zugreifen können, können Sie mit einem CNAME-Eintrag auf den öffentlichen Endpunkt des Anwendungsgateways verweisen. Weitere Informationen finden Sie unter [Konfigurieren eines benutzerdefinierten Domänennamens in Azure](../cloud-services/cloud-services-custom-domain-name-portal.md). 
+
+Rufen Sie zum Konfigurieren eines Alias mithilfe des **PublicIPAddress**-Elements, das an das Anwendungsgateway angefügt ist, Details zum Anwendungsgateway sowie die zugeordnete IP-Adresse/den zugeordneten DNS-Namen ab. Verwenden Sie den DNS-Namen des Anwendungsgateways zum Erstellen eines CNAME-Eintrags, der die beiden Webanwendungen an diesen DNS-Namen verweist. Die Verwendung von A-Einträgen wird nicht empfohlen, da sich die VIP beim Neustart des Anwendungsgateways möglicherweise ändert.
 
 
 ```azurecli-interactive
@@ -183,7 +187,7 @@ az network public-ip show --name "pip" --resource-group "AdatumAppGatewayRG"
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Sie ein Anwendungsgateway für die Verwendung mit einem internen Load Balancer (ILB) konfigurieren möchten, ist es ratsam, den Abschnitt [Erstellen eines Application Gateways mit einem internen Lastenausgleich (ILB)](application-gateway-ilb.md)zu lesen.
+Wenn Sie ein Anwendungsgateway für die Verwendung mit einem internen Lastenausgleich konfigurieren möchten, lesen Sie den Abschnitt [Erstellen eines Anwendungsgateways mit einem internen Lastenausgleich](application-gateway-ilb.md).
 
 Weitere Informationen zu Lastenausgleichsoptionen im Allgemeinen finden Sie unter:
 

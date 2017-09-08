@@ -1,5 +1,5 @@
 ---
-title: "Häufig gestellte Fragen zu Azure IoT Suite | Microsoft Azure | Microsoft Docs"
+title: "Häufig gestellte Fragen zu Azure IoT Suite | Microsoft Azure | Microsoft-Dokumentation"
 description: "Häufig gestellte Fragen zu IoT Suite"
 services: 
 suite: iot-suite
@@ -15,21 +15,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/15/2017
 ms.author: corywink
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
-ms.openlocfilehash: 9f850175be843b29432c4803a150ddb2ec79780d
+ms.translationtype: HT
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: 85867fb8d18377637b3aa848555831a8d9b53512
 ms.contentlocale: de-de
-ms.lasthandoff: 05/26/2017
-
+ms.lasthandoff: 08/24/2017
 
 ---
 # <a name="frequently-asked-questions-for-iot-suite"></a>Häufig gestellte Fragen zu IoT Suite
 
+Informationen finden Sie auch in den [häufig gestellten Fragen](iot-suite-faq-cf.md) zur verbundenen Factory.
+
 ### <a name="where-can-i-find-the-source-code-for-the-preconfigured-solutions"></a>Wo kann ich den Quellcode für die vorkonfigurierte Lösung finden?
 
 Der Quellcode wird in den folgenden GitHub-Repositorys gespeichert:
-* [Azure IoT Remote Monitoring preconfigured solution][lnk-remote-monitoring-github] (Vorkonfigurierte Lösung zur Remoteüberwachung in Azure IoT)
+* [Remote monitoring preconfigured solution][lnk-remote-monitoring-github] (Vorkonfigurierte Lösung zur Remoteüberwachung)
 * [Azure IoT Predictive Maintenance preconfigured solution][lnk-predictive-maintenance-github] (Vorkonfigurierte Lösung zur vorausschauenden Wartung in Azure IoT)
+* [Connected factory preconfigured solution](https://github.com/Azure/azure-iot-connected-factory) (Vorkonfigurierte Lösung für eine verbundene Factory)
 
 ### <a name="how-do-i-update-to-the-latest-version-of-the-remote-monitoring-preconfigured-solution-that-uses-the-iot-hub-device-management-features"></a>Wie aktualisiere ich auf die neueste Version der vorkonfigurierten Lösung zur Remoteüberwachung, die die IoT Hub Geräteverwaltungsfeatures verwendet?
 
@@ -95,22 +97,14 @@ Derzeit können Sie keine vorkonfigurierte Lösung erstellen, wenn Sie über ein
 
 Informationen hierzu finden Sie im Blogbeitrag von Eric Golpe: [Exemplarische Vorgehensweise zum Löschen eines Azure AD-Mandanten][lnk-delete-aad-tennant].
 
-### <a name="what-is-opc-ua"></a>Was ist OPC UA?
-
-Die OPC Unified Architektur (UA) wurde 2008 veröffentlicht und ist ein plattformunabhängiger, dienstorientierter Interoperabilitätsstandard, der bei verschiedenen Industriesystemen und -geräten wie z.B. Industriecomputern, PLCs und Sensoren verwendet wird. OPC UA integriert alle Funktionen der einzelnen klassischen OPC-Spezifikationen in einem erweiterbaren Framework mit integrierter Sicherheit. Der Standard wird von der OPC Foundation verwaltet. Die [OPC Foundation][lnk-opc-foundation] ist eine nicht gewinnorientierte Organisation, deren mehr als 440 Mitglieder das gemeinsame Ziel verfolgen, die Infrastruktur, die Spezifikationen, die Technologien und die Prozesse für eine hersteller- und plattformunabhängige, sichere und zuverlässige Interoperabilität mit OPC-Spezifikationen bereitzustellen.
-
-### <a name="why-did-microsoft-choose-opc-ua-for-the-connected-factory-preconfigured-solution"></a>Warum hat sich Microsoft für OPC UA als vorkonfigurierte Lösung für eine verbundene Factory entschieden?
-
-Microsoft hat OPC UA ausgewählt, da es sich um einen offenen, nicht proprietären, plattformunabhängigen, von der Industrie anerkannten und bewährten Standard handelt. Er stellt eine Voraussetzung für Referenzarchitekturlösungen für die Industrie 4.0 (RAMI4.0) dar und gewährleistet die Interoperabilität zwischen einer Vielzahl von Herstellungsverfahren und -geräten. Microsoft sieht bei seinen Kunden einen Bedarf an der Erstellung von Industrie 4.0-Lösungen. Die Unterstützung für OPC UA verringert die Barrieren für Kunden, ihre Ziele zu erreichen, und bietet sofort Geschäftsvorteile.
-
 ### <a name="next-steps"></a>Nächste Schritte
 
 Sie können auch einige andere Features und Funktionen der vorkonfigurierten IoT Suite-Lösungen ausprobieren:
 
 * [Übersicht über die vorkonfigurierte Lösung für vorhersagbaren Wartungsbedarf][lnk-predictive-overview]
+* [Übersicht über die vorkonfigurierte Lösung für eine verbundene Factory](iot-suite-connected-factory-overview.md)
 * [Sicherheit im Internet der Dinge von Anfang an][lnk-security-groundup]
 
-[lnk-opc-foundation]: http://opcfoundation.org/
 [lnk-predictive-overview]: iot-suite-predictive-overview.md
 [lnk-security-groundup]: securing-iot-ground-up.md
 

@@ -11,10 +11,10 @@ ms.workload: identity
 ms.date: 08/21/2017
 ms.author: bruceper
 ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
-ms.openlocfilehash: 1775902aa7ec820c3b6c34eda60961eecd27f014
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 8cf0674f7eb139e50da4a3c22a8d8376a86b0dcc
 ms.contentlocale: de-de
-ms.lasthandoff: 08/23/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>Verwenden des vorläufigen Löschens in Key Vault mit PowerShell
@@ -29,10 +29,9 @@ Das Azure Key Vault-Feature für vorläufiges Löschen ermöglicht die Wiederher
 - Azure PowerShell 4.0.0 oder höher: Sie müssen Azure PowerShell installieren und Ihrem Azure-Abonnement zuweisen, sofern noch nicht geschehen. Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview). 
 
 >[!NOTE]
-> Eine veraltete Version unserer Key Vault PowerShell-Ausgabeformatierungsdatei wurde möglicherweise anstelle der richtigen Version in Ihre Umgebung geladen. Sie können einer der anderen Lösungen verwenden:
-> 
-> - Führen Sie zur Behebung dieses Problems ein Upgrade auf [Azure PowerShell Version 4.4.0 oder höher](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.2.0) durch.
+> Eine veraltete Version unserer Key Vault PowerShell-Ausgabeformatierungsdatei wurde **möglicherweise** anstelle der richtigen Version in Ihre Umgebung geladen. Es ist eine aktualisierte Version von PowerShell mit den erforderlichen Korrekturen bei der Ausgabeformatierung vorgesehen. Dieses Thema wird dann entsprechend aktualisiert. Zur Umgehung dieses Formatierungsproblems sollten Sie zurzeit folgendermaßen vorgehen:
 > - Wenn Sie feststellen, dass die zum vorläufigen Löschen fähige Eigenschaft, die in diesem Thema beschrieben wird, nicht angezeigt wird, verwenden Sie die folgende Abfrage: `$vault = Get-AzureRmKeyVault -VaultName myvault; $vault.EnableSoftDelete`.
+
 
 Spezielle Key Vault-Referenzinformationen für PowerShell finden Sie in der [PowerShell-Referenz für Azure Key Vault](https://docs.microsoft.com/powershell/module/azurerm.keyvault/?view=azurermps-4.2.0).
 

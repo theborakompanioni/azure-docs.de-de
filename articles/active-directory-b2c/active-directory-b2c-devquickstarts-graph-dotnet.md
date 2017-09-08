@@ -1,5 +1,5 @@
 ---
-title: 'Azure Active Directory B2C: Verwenden der Graph-API | Microsoft Docs'
+title: "Verwenden von Graph-API – Azure AD B2C | Microsoft-Dokumentation"
 description: "Aufrufen der Graph-API für einen B2C-Mandanten durch Verwenden einer Anwendungsidentität zum Automatisieren des Prozesses."
 services: active-directory-b2c
 documentationcenter: .net
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/07/2017
 ms.author: parakhj
 ms.translationtype: HT
-ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
-ms.openlocfilehash: c838fcad21875c4f813159ad78d4c87129a40a86
+ms.sourcegitcommit: 48dfc0fa4c9ad28c4c64c96ae2fc8a16cd63865c
+ms.openlocfilehash: 1e6748f40c7b825615b3f58243afd9d50348214d
 ms.contentlocale: de-de
-ms.lasthandoff: 08/05/2017
+ms.lasthandoff: 08/30/2017
 
 ---
 # <a name="azure-ad-b2c-use-the-graph-api"></a>Azure AD B2C: Verwenden der Graph-API
@@ -38,7 +38,7 @@ Bevor Sie Anwendungen oder Benutzer erstellen und mit Azure AD interagieren kö
 Nachdem Sie über einen B2C-Mandanten verfügen, müssen Sie Ihre Anwendung über das [Azure-Portal](https://portal.azure.com) registrieren.
 
 > [!IMPORTANT]
-> Um die Graph-API mit dem B2C-Mandanten zu verwenden, müssen Sie eine dedizierte Anwendung über das generische Blatt *App-Registrierungen* im Azure-Portal registrieren, **NICHT** über das Blatt *Anwendungen* in Azure AD B2C. Sie können Ihre bereits vorhandenen B2C-Anwendungen, die Sie auf dem Blatt *Anwendungen* von Azure AD B2C registriert haben, nicht wiederverwenden.
+> Um die Graph-API mit dem B2C-Mandanten zu verwenden, müssen Sie eine dedizierte Anwendung über das generische Menü *App-Registrierungen* im Azure-Portal registrieren, **NICHT** über das Menü *Anwendungen* in Azure AD B2C. Sie können Ihre bereits vorhandenen B2C-Anwendungen, die Sie im Menü *Anwendungen* von Azure AD B2C registriert haben, nicht wiederverwenden.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
 2. Wählen Sie Ihren Azure AD B2C-Mandanten aus, indem Sie in der rechten oberen Ecke der Seite Ihr Konto auswählen.
@@ -47,16 +47,16 @@ Nachdem Sie über einen B2C-Mandanten verfügen, müssen Sie Ihre Anwendung übe
     1. Wählen Sie **Web-App/API** als Anwendungstyp aus.    
     2. Geben Sie **einen beliebigen Umleitungs-URI** (z.B. https://B2CGraphAPI) an, da dieser für dieses Beispiel nicht relevant ist.  
 5. Die Anwendung wird jetzt in der Liste der Anwendungen angezeigt. Klicken Sie darauf, um die **Anwendungs-ID** (auch als Client-ID bezeichnet) abzurufen. Kopieren Sie sie, da Sie sie in einem späteren Abschnitt benötigen.
-6. Klicken Sie auf dem Blatt „Einstellungen“ auf **Schlüssel**, und fügen Sie einen neuen Schlüssel hinzu (auch als Clientgeheimnis bezeichnet). Kopieren Sie ihn ebenfalls für die Verwendung in einem späteren Abschnitt.
+6. Klicken Sie im Menü „Einstellungen“ auf **Schlüssel**, und fügen Sie einen neuen Schlüssel hinzu (auch als Clientgeheimnis bezeichnet). Kopieren Sie ihn ebenfalls für die Verwendung in einem späteren Abschnitt.
 
 ## <a name="configure-create-read-and-update-permissions-for-your-application"></a>Konfigurieren der Berechtigungen zum Erstellen, Lesen und Aktualisieren für Ihre Anwendung
 Nun müssen Sie Ihre Anwendung so konfigurieren, dass sie alle erforderlichen Berechtigungen zum Erstellen, Lesen, Aktualisieren und Löschen von Benutzern erhält.
 
-1. Fahren Sie auf dem Blatt „Registrierungen“ im Azure-Portal fort, und wählen Sie Ihre Anwendung aus.
-2. Klicken Sie auf dem Blatt „Einstellungen“ auf **Erforderliche Berechtigungen**.
-3. Klicken Sie auf dem Blatt „Erforderliche Berechtigungen“ auf **Microsoft Azure Active Directory**.
-4. Wählen Sie auf dem Blatt „Zugriff aktivieren“ die Berechtigung **Lese- und Schreibzugriff auf Verzeichnisdaten** unter **Anwendungsberechtigungen** aus, und klicken Sie auf **Speichern**.
-5. Klicken Sie schließlich wieder auf dem Blatt „Erforderliche Berechtigungen“ auf die Schaltfläche **Berechtigungen erteilen**.
+1. Fahren Sie im Menü „App-Registrierungen“ im Azure-Portal fort, und wählen Sie Ihre Anwendung aus.
+2. Klicken Sie im Menü „Einstellungen“ auf **Erforderliche Berechtigungen**.
+3. Klicken Sie im Menü „Erforderliche Berechtigungen“ auf **Microsoft Azure Active Directory**.
+4. Wählen Sie auf im Menü „Zugriff aktivieren“ die Berechtigung **Lese- und Schreibzugriff auf Verzeichnisdaten** unter **Anwendungsberechtigungen** aus, und klicken Sie auf **Speichern**.
+5. Klicken Sie schließlich wieder im Menü „Erforderliche Berechtigungen“ auf die Schaltfläche **Berechtigungen erteilen**.
 
 Sie verfügen jetzt über eine Anwendung mit der Berechtigung zum Erstellen, Lesen und Aktualisieren von Benutzern in Ihrem B2C-Mandanten.
 

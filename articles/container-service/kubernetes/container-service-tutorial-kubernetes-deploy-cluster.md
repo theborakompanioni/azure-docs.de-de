@@ -53,7 +53,7 @@ Erstellen Sie mit dem Befehl [az acs create](/cli/azure/acs#create) einen Kubern
 Im folgenden Beispiel wird ein Cluster namens *myK8sCluster* mit einem Linux-Masterknoten und drei Linux-Agent-Knoten erstellt.
 
 ```azurecli-interactive 
-az acs create --orchestrator-type=kubernetes --resource-group myResourceGroup --name=myK8SCluster --generate-ssh-keys 
+az acs create --orchestrator-type kubernetes --resource-group myResourceGroup --name myK8SCluster --generate-ssh-keys 
 ```
 
 Nach einigen Minuten ist die Ausführung des Befehls abgeschlossen, und es werden Informationen zur ACS-Bereitstellung im JSON-Format zurückgegeben.
@@ -77,7 +77,7 @@ Unter Windows ist *C:\Programme (x86)\kubectl.exe* die standardmäßige Installa
 Führen Sie den Befehl [az acs kubernetes get-credentials](/cli/azure/acs/kubernetes#get-credentials) aus, um `kubectl` für die Verbindung mit dem Kubernetes-Cluster zu konfigurieren.
 
 ```azurecli-interactive 
-az acs kubernetes get-credentials --resource-group=myResourceGroup --name=myK8SCluster
+az acs kubernetes get-credentials --resource-group myResourceGroup --name myK8SCluster
 ```
 
 Um die Verbindung mit dem Cluster zu überprüfen, führen Sie den Befehl [kubectl get nodes](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#get) aus.

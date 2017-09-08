@@ -1,27 +1,28 @@
 ---
-title: "Azure Active Directory B2C: Token, Sitzung und einmaliges Anmelden – Konfiguration | Microsoft Docs"
+title: "Token, Sitzung und einmaliges Anmelden – Azure AD B2C | Microsoft-Dokumentation"
 description: "Token, Sitzung und einmaliges Anmelden – Konfiguration in Azure Active Directory B2C "
 services: active-directory-b2c
 documentationcenter: 
-author: swkrish
-manager: mbaldwin
-editor: bryanla
+author: parakhj
+manager: krassk
+editor: parakhj
 ms.assetid: e78e6344-0089-49bf-8c7b-5f634326f58c
 ms.service: active-directory-b2c
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/26/2017
-ms.author: swkrish
+ms.date: 08/16/2017
+ms.author: parakhj
 ms.translationtype: HT
-ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
-ms.openlocfilehash: 4442174a857681adff33001e660809ec7d47ad7d
+ms.sourcegitcommit: 48dfc0fa4c9ad28c4c64c96ae2fc8a16cd63865c
+ms.openlocfilehash: 256c93e5c343cba022599f8e13c5b7616bfa8b58
 ms.contentlocale: de-de
-ms.lasthandoff: 08/08/2017
+ms.lasthandoff: 08/30/2017
 
 ---
 # <a name="azure-active-directory-b2c-token-session-and-single-sign-on-configuration"></a>Azure Active Directory B2C: Token, Sitzung und einmaliges Anmelden – Konfiguration
+
 Diese Funktion ermöglicht Ihnen eine präzisere Steuerung der folgenden Einstellungen auf [Basis einer Richtlinie](active-directory-b2c-reference-policies.md):
 
 1. Lebensdauer von Sicherheitstoken, die von Azure Active Directory (Azure AD) B2C ausgegeben werden.
@@ -29,21 +30,22 @@ Diese Funktion ermöglicht Ihnen eine präzisere Steuerung der folgenden Einstel
 3. Formate wichtiger Ansprüche in den von Azure AD B2C ausgegebenen Sicherheitstoken
 4. App- und richtlinienübergreifendes SSO-Verhalten in Ihrem B2C-Mandanten.
 
-Sie können diese Funktion in Ihrem B2C-Mandanten wie folgt verwenden:
+Für integrierte Richtlinien können Sie dieses Feature in Ihrem Azure AD B2C-Verzeichnis wie folgt verwenden:
 
-1. Führen Sie die folgenden Schritte aus, um im Azure-Portal [zum Blatt „B2C-Funktionen“ zu navigieren](active-directory-b2c-app-registration.md#navigate-to-b2c-settings).
-2. Klicken Sie auf **Anmelderichtlinien**. *Hinweis: Sie können diese Funktion auf jeden Richtlinientyp anwenden, nicht nur auf **Anmelderichtlinien***.
-3. Öffnen Sie eine Richtlinie, indem Sie darauf klicken. Klicken Sie z.B. auf **B2C_1_SiIn**.
-4. Klicken Sie oben auf dem Blatt auf **Bearbeiten**.
+1. Führen Sie die folgenden Schritte aus, um im Azure-Portal [zum Menü „B2C-Funktionen“ zu navigieren](active-directory-b2c-app-registration.md#navigate-to-b2c-settings).
+2. Klicken Sie auf **Registrierungs- oder Anmelderichtlinien**. *Hinweis: Sie können dieses Feature auf jeden Richtlinientyp anwenden, nicht nur auf **Registrierungs- oder Anmelderichtlinien***.
+3. Öffnen Sie eine Richtlinie, indem Sie darauf klicken. Klicken Sie z.B. auf **B2C_1_SiUpIn**.
+4. Klicken Sie oben im Menü auf **Bearbeiten**.
 5. Klicken Sie auf **Token, Sitzung und einmaliges Anmelden**.
 6. Nehmen Sie die gewünschten Änderungen vor. Informieren Sie sich in den folgenden Abschnitten zu verfügbaren Eigenschaften.
 7. Klicken Sie auf **OK**.
-8. Klicken Sie oben auf dem Blatt auf **Speichern**.
+8. Klicken Sie oben im Menü auf **Speichern**.
 
 ## <a name="token-lifetimes-configuration"></a>Konfiguration der Tokengültigkeitsdauer
+
 Azure AD B2C unterstützt das [OAuth 2.0-Autorisierungsprotokoll](active-directory-b2c-reference-protocols.md) zum Aktivieren des sicheren Zugriffs auf geschützte Ressourcen. Um diese Unterstützung zu implementieren, gibt Azure AD B2C verschiedene [Sicherheitstoken](active-directory-b2c-reference-tokens.md) aus. Dies sind die Eigenschaften, die Sie zum Verwalten der Gültigkeitsdauer von Sicherheitstoken, die von Azure AD B2C ausgegeben werden, verwenden können:
 
-* **Lebensdauer von Zugriffs- und ID-Token (Minuten)**: Die Gültigkeitsdauer des OAuth 2.0-Bearertokens, das verwendet wird, um auf eine geschützte Ressource zuzugreifen. Azure AD B2C gibt zurzeit nur ID-Token heraus. Dieser Wert würde auch für Zugriffstoken gelten, wenn wir Unterstützung für sie hinzufügen.
+* **Lebensdauer von Zugriffs- und ID-Token (Minuten)**: Die Gültigkeitsdauer des OAuth 2.0-Bearertokens, das verwendet wird, um auf eine geschützte Ressource zuzugreifen.
   * Standardwert: 60 Minuten.
   * Minimum (inklusive): 5 Minuten.
   * Maximum (inklusive): 1.440 Minuten.
@@ -67,6 +69,7 @@ Dies sind einige Anwendungsfälle, die Sie mit diesen Eigenschaften aktivieren k
     > 
 
 ## <a name="token-compatibility-settings"></a>Tokenkompatibilitätseinstellungen
+
 Das Format wichtiger Ansprüche in den von Azure AD B2C ausgegebenen Sicherheitstoken wurde geändert. Diese Änderung wurde zur Verbesserung der Standardprotokollunterstützung und zur besseren Interoperabilität mit Identitätsbibliotheken von Drittanbietern vorgenommen. Um die fehlerfreie Nutzung vorhandener Apps zu gewährleisten, wurden die folgenden Eigenschaften erstellt, um Kunden die Anwendung nach Bedarf zu ermöglichen:
 
 * **Issuer (iss) claim** (Ausstelleranspruch): Der Azure AD B2C-Mandant, der das Token ausgestellt hat
@@ -80,6 +83,7 @@ Das Format wichtiger Ansprüche in den von Azure AD B2C ausgegebenen Sicherheits
   * **acr**: Nur für Abwärtskompatibilität. Es wird empfohlen, baldmöglichst auf `tfp` umzustellen.
 
 ## <a name="session-behavior"></a>Sitzungsverhalten
+
 Azure AD B2C unterstützt das [OpenID Connect-Authentifizierungsprotokoll](active-directory-b2c-reference-oidc.md) zum Aktivieren der sicheren Anmeldung bei Webanwendungen. Dies sind die Eigenschaften, die Sie verwenden können, um Webanwendungssitzungen zu verwalten:
 
 * **Lebensdauer der Web-App-Sitzung (Minuten)**: Die Gültigkeitsdauer von Azure AD B2C-Sitzungscookies, die nach erfolgreicher Authentifizierung des Benutzers im Browser gespeichert werden.

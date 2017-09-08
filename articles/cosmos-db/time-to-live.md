@@ -13,14 +13,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/25/2017
+ms.date: 08/29/2017
 ms.author: arramac
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 6f1c43ca0113dc7579b0fc3743d3314c16ce78a4
+ms.translationtype: HT
+ms.sourcegitcommit: 07e5e15f4f4c4281a93c8c3267c0225b1d79af45
+ms.openlocfilehash: c407152f54a6e7eb25a580491bd27ad291410d86
 ms.contentlocale: de-de
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="expire-data-in-azure-cosmos-db-collections-automatically-with-time-to-live"></a>Festlegen einer Gültigkeitsdauer für den automatischen Ablauf von Daten in Azure Cosmos DB-Sammlungen
@@ -54,7 +53,7 @@ Die obige Logik wird in der folgenden Matrix veranschaulicht:
 | TTL = n für das Dokument |Auf der Dokumentebene kann nichts überschrieben werden. Der TTL-Wert für ein Dokument wird vom System nicht interpretiert. |Das Dokument mit TTL = n läuft nach dem Intervall n (in Sekunden) ab. Andere Dokumente erben das Intervall -1 und laufen nie ab. |Das Dokument mit TTL = n läuft nach dem Intervall n (in Sekunden) ab. Andere Dokumente erben das Intervall n von der Sammlung. |
 
 ## <a name="configuring-ttl"></a>Konfigurieren von TTL
-Die Gültigkeitsdauer ist in Cosmos DB-Sammlungen und für alle Dokumente standardmäßig deaktiviert.
+Die Gültigkeitsdauer ist in Cosmos DB-Sammlungen und für alle Dokumente standardmäßig deaktiviert. Die TTL kann programmgesteuert oder im Azure-Portal im Abschnitt **Einstellungen** für die Sammlung festgelegt werden. 
 
 ## <a name="enabling-ttl"></a>Aktivieren von TTL
 Um TTL für eine Sammlung (oder für die Dokumente in einer Sammlung) zu aktivieren, müssen Sie die DefaultTTL-Eigenschaft einer Auflistung entweder auf „-1“ oder auf eine positive Zahl ungleich Null festlegen. Wenn DefaultTTL auf „-1“ festgelegt wird, laufen die Dokumente in der Sammlung standardmäßig nicht ab, der Cosmos DB-Dienst überwacht die Sammlung aber auf Dokumente, bei denen diese Standardeinstellung überschrieben wurde.

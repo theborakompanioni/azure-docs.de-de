@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: spelluru
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
-ms.openlocfilehash: b01a03fa362f8a9677e625945a2864c77d49f1bb
+ms.translationtype: HT
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: 08e2988d455cca21726162d9fb128e91fd51f463
 ms.contentlocale: de-de
-ms.lasthandoff: 06/14/2017
-
+ms.lasthandoff: 08/24/2017
 
 ---
 # <a name="tutorial-build-your-first-pipeline-to-transform-data-using-hadoop-cluster"></a>Tutorial: Erstellen Ihrer ersten Pipeline zur Transformierung von Daten mithilfe eines Hadoop-Clusters
@@ -82,7 +81,7 @@ Von den obigen Beispielzeilen wird die erste (mit „2016-01-01“) in die Datei
 Bevor Sie mit diesem Tutorial beginnen, müssen folgende Voraussetzungen erfüllt sein:
 
 1. **Azure-Abonnement** – Wenn Sie über kein Azure-Abonnement verfügen, können Sie in wenigen Minuten ein kostenloses Testversionskonto einrichten. Im Artikel [Kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/) erfahren Sie, wie Sie ein kostenloses Testkonto erhalten.
-2. **Azure Storage** – Sie benötigen ein Azure-Speicherkonto zum Speichern der Daten in diesem Tutorial. Falls Sie noch kein Azure-Speicherkonto haben, lesen Sie den Artikel [Erstellen eines Speicherkontos](../storage/storage-create-storage-account.md#create-a-storage-account) . Notieren Sie sich nach Erstellung des Speicherkontos den **Kontonamen** und den **Zugriffsschlüssel**. Siehe [Anzeigen, Kopieren und erneutes Generieren von Speicherzugriffsschlüsseln](../storage/storage-create-storage-account.md#view-and-copy-storage-access-keys).
+2. **Azure Storage** – Sie benötigen ein allgemeines Azure Storage-Standardkonto zum Speichern der Daten in diesem Tutorial. Falls Sie noch kein allgemeines Azure Storage-Standardkonto haben, lesen Sie den Artikel [Erstellen eines Speicherkontos](../storage/common/storage-create-storage-account.md#create-a-storage-account). Notieren Sie sich nach Erstellung des Speicherkontos den **Kontonamen** und den **Zugriffsschlüssel**. Siehe [Anzeigen, Kopieren und erneutes Generieren von Speicherzugriffsschlüsseln](../storage/common/storage-create-storage-account.md#view-and-copy-storage-access-keys).
 3. Laden Sie die Hive-Abfragedatei (**HQL**) herunter, und sehen Sie sie durch. Sie finden sie unter [https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql](https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql). Diese Abfrage transformiert die Eingabedaten in Ausgabedaten. 
 4. Laden Sie die Beispieleingabedatei (**input.log**) herunter, und sehen Sie sie durch: [https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log](https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log)
 5. Erstellen Sie einen Blobcontainer namens **adfgetstarted** in Azure Blob Storage. 

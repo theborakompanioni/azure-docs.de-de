@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/24/2017
+ms.date: 08/14/2017
 ms.author: kgremban
 ms.reviewer: yossib
 ms.custom: H1Hack27Feb2017; it-pro
 ms.translationtype: HT
-ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
-ms.openlocfilehash: 395b0209109a5c1eb3ee8ecdd9651ab82fb213eb
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: b9061283952ae6b14431f5e88295eefac173ae01
 ms.contentlocale: de-de
-ms.lasthandoff: 08/04/2017
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Integrieren Ihrer vorhandenen NPS-Infrastruktur in Azure Multi-Factor Authentication
@@ -43,7 +43,7 @@ Das folgende Diagramm veranschaulicht den allgemeinen Ablauf dieser Authentifizi
 
 Die NPS-Erweiterung kümmert sich automatisch um die Redundanz, sodass keine spezielle Konfiguration erforderlich ist.
 
-Sie können beliebig viele NPS-Server mit aktivierter Azure Multi-Factor Authentication erstellen. Wenn Sie mehrere Server installieren, sollten Sie für jeden ein anderes Clientzertifikat verwenden. Durch das Erstellen eines Zertifikats für jeden Server können Sie jedes Zertifikat einzeln aktualisieren und müssen sich so keine Gedanken über Ausfallzeiten für Ihre einzelnen Server machen.
+Sie können beliebig viele Azure MFA-fähige NPS-Server erstellen. Wenn Sie mehrere Server installieren, sollten Sie für jeden ein anderes Clientzertifikat verwenden. Durch das Erstellen eines Zertifikats für jeden Server können Sie jedes Zertifikat einzeln aktualisieren und müssen sich so keine Gedanken über Ausfallzeiten für Ihre einzelnen Server machen.
 
 Da VPN-Server die Authentifizierungsanforderungen weiterleiten, müssen sie über neue NPS-Server mit Azure MFA informiert werden.
 
@@ -67,9 +67,9 @@ Diese Bibliotheken werden automatisch mit der Erweiterung installiert.
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
 
-Alle Benutzer der NPS-Erweiterung müssen mit Azure Active Directory mithilfe von Azure AD Connect synchronisiert und für MFA aktiviert werden.
+Alle Benutzer der NPS-Erweiterung müssen mithilfe von Azure AD Connect mit Azure Active Directory synchronisiert und für MFA registriert werden.
 
-Wenn Sie die Erweiterung installieren, benötigen Sie die Verzeichnis-ID und die Administratoranmeldeinformationen für Ihren Azure AD-Mandanten. Ihre Verzeichnis-ID finden Sie im [Azure-Portal](https://portal.azure.com). Melden Sie sich als Administrator an, wählen Sie links das Symbol **Azure Active Directory** und anschließend **Eigenschaften** aus. Kopieren Sie die GUID in das Feld **Verzeichnis-ID**, und speichern Sie sie. Wenn Sie die NPS-Erweiterung installieren, verwenden Sie diese GUID als die Mandanten-ID.
+Wenn Sie die Erweiterung installieren, benötigen Sie die Verzeichnis-ID und die Administratoranmeldeinformationen für Ihren Azure AD-Mandanten. Ihre Verzeichnis-ID finden Sie im [Azure-Portal](https://portal.azure.com). Melden Sie sich als Administrator an, wählen Sie links das Symbol **Azure Active Directory** und anschließend **Eigenschaften** aus. Kopieren Sie die GUID in das Feld **Verzeichnis-ID**, und speichern Sie sie. Wenn Sie die NPS-Erweiterung installieren, verwenden Sie diese GUID als Mandanten-ID.
 
 ![Ihre Verzeichnis-ID finden Sie in den Azure Active Directory-Eigenschaften](./media/multi-factor-authentication-nps-extension/find-directory-id.png)
 
@@ -135,7 +135,7 @@ Ihre Benutzer müssen auch diese Schritte zum Registrieren befolgen, bevor sie s
 
 1.  [Laden Sie die NPS-Erweiterung aus dem Microsoft Download Center herunter](https://aka.ms/npsmfa).
 2.  Kopieren Sie die Binärdatei auf den Netzwerkrichtlinienserver, der konfiguriert werden soll.
-3.  Führen Sie *setup.exe* aus, und folgen Sie den Installationsanweisungen. Wenn Fehler auftreten, überprüfen Sie, ob die beiden Bibliotheken im Abschnitt „Voraussetzungen“ erfolgreich installiert wurden.
+3.  Führen Sie *setup.exe* aus, und folgen Sie den Installationsanweisungen. Wenn Fehler auftreten, überprüfen Sie, ob die beiden Bibliotheken im Abschnitt „Voraussetzungen“ installiert wurden.
 
 ### <a name="run-the-powershell-script"></a>Ausführen des PowerShell-Skripts
 
@@ -174,7 +174,7 @@ Dieser Abschnitt enthält Überlegungen zum Entwurf und Vorschläge für erfolgr
 ### <a name="configuration-limitations"></a>Einschränkungen der Konfiguration
 
 - Die NPS-Erweiterung bietet für Azure MFA keine Tools zum Migrieren von Benutzern und Einstellungen vom MFA-Server in die Cloud. Aus diesem Grund wird die Verwendung der Erweiterung für neue Bereitstellungen statt vorhandener Bereitstellung empfohlen. Wenn Sie die Erweiterung für eine vorhandene Bereitstellung verwenden, müssen die Benutzer die Bestätigung erneut ausführen, um ihre MFA-Details in der Cloud anzugeben.  
-- Die NPS-Erweiterung verwendet für die Durchführung der sekundären Authentifizierung den Benutzerprinzipalnamen (User Principal Name, UPN) aus dem lokalen Active Directory zur Identifizierung des Benutzers in Azure MFA. Die Erweiterung kann nicht für die Verwendung eines anderen Bezeichners wie einer alternativen Anmelde-ID oder einem benutzerdefinierten AD-Feld (außer dem UPN) konfiguriert werden.  
+- Die NPS-Erweiterung verwendet für die Durchführung der sekundären Authentifizierung den Benutzerprinzipalnamen (User Principal Name, UPN) aus dem lokalen Active Directory zur Identifizierung des Benutzers in Azure MFA. Die Erweiterung kann für die Verwendung eines anderen Bezeichners wie einer alternativen Anmelde-ID oder eines benutzerdefinierten Active Directory-Felde (außer dem UPN) konfiguriert werden. Weitere Informationen finden Sie unter [Erweiterte Konfigurationsoptionen für die NPS-Erweiterung für Multi-Factor Authentication](multi-factor-authentication-advanced-vpn-configurations.md).
 - Nicht alle Verschlüsselungsprotokolle unterstützen alle Überprüfungsmethoden.
    - **PAP** unterstützt Telefonanruf, unidirektionale Textnachricht, Benachrichtigung über eine mobile App und Überprüfungscode in der mobilen App
    - **CHAPV2** und **EAP** unterstützt Telefonanruf und Benachrichtigung über eine mobile App
@@ -244,6 +244,8 @@ Dieser Fehler kann verschiedene Gründe haben. Gehen Sie zur Problembehandlung f
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Konfigurieren Sie alternative IDs für die Anmeldung, oder richten Sie unter [Erweiterte Konfigurationsoptionen für die NPS-Erweiterung für Multi-Factor Authentication](nps-extension-advanced-configuration.md) eine Ausnahmeliste für IP-Adressen ein, welche die Überprüfung in zwei Schritten nicht ausführen müssen.
+
+- Erfahren Sie, wie Sie [Remotedesktopgateway](nps-extension-remote-desktop-gateway.md) und [VPN-Server](nps-extension-vpn.md) mithilfe der NPS-Erweiterung integrieren.
 
 - [Auflösen von Fehlermeldungen in der NPS-Erweiterung für Azure Multi-Factor Authentication](multi-factor-authentication-nps-errors.md)
 

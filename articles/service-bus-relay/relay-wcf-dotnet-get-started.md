@@ -12,28 +12,30 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/16/2017
+ms.date: 08/23/2017
 ms.author: sethm
-translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: 670f23ec1dbcec3ac8c926992eb44350d8e1f1b6
-ms.lasthandoff: 03/27/2017
+ms.translationtype: HT
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 1af1ac78398d65e6a87f0d24d6198f3dfbc82ffd
+ms.contentlocale: de-de
+ms.lasthandoff: 08/28/2017
 
 ---
 
 # <a name="how-to-use-azure-relay-wcf-relays-with-net"></a>Verwenden von Azure Relay-WCF-Relays mit .NET
-In diesem Artikel wird die Verwendung des Service Bus Relay-Diensts beschrieben. Die Beispiele sind in C# geschrieben und nutzen die Windows Communication Foundation (WCF)-API mit den Erweiterungen, die in der Service Bus-Assembly enthalten sind. Weitere Informationen zum Service Bus Relay-Dienst finden Sie in der [Übersicht über Azure Relay](relay-what-is-it.md).
+In diesem Artikel wird die Verwendung des Azure Relay-Diensts beschrieben. Die Beispiele sind in C# geschrieben und nutzen die Windows Communication Foundation (WCF)-API mit den Erweiterungen, die in der Service Bus-Assembly enthalten sind. Weitere Informationen zum Azure Relay-Dienst finden Sie in der [Übersicht über Azure Relay](relay-what-is-it.md).
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
-## <a name="what-is-service-bus-wcf-relay"></a>Was ist Service Bus-WCF-Relay?
-Der Azure Service Bus-WCF-[*Relay*](relay-what-is-it.md)-Dienst ermöglicht Ihnen die Erstellung von Hybridanwendungen, die sowohl in einem Azure-Datencenter als auch in Ihrer eigenen lokalen Unternehmensumgebung ausgeführt werden. Der Service Bus Relay-Dienst erleichtert dies, indem er Ihnen die Möglichkeit bietet, WCF-Dienste (Windows Communication Foundation), die sich in einem Unternehmensnetzwerk befinden, sicher in der öffentlichen Cloud bereitzustellen, ohne dass eine Firewallverbindung eröffnet werden muss oder intrusive Änderungen an der unternehmensinternen Netzwerkinfrastruktur erforderlich werden.
+## <a name="what-is-wcf-relay"></a>Was ist WCF Relay?
+
+Der Azure [*WCF Relay*](relay-what-is-it.md)-Dienst ermöglicht die Erstellung von Hybridanwendungen, die sowohl in einem Azure-Rechenzentrum als auch in Ihrer eigenen lokalen Unternehmensumgebung ausgeführt werden. Der Relay-Dienst erleichtert dies, indem er Ihnen die Möglichkeit bietet, WCF-Dienste (Windows Communication Foundation), die sich in einem Unternehmensnetzwerk befinden, sicher in der öffentlichen Cloud bereitzustellen, ohne dass eine Firewallverbindung geöffnet werden muss oder umfassende Änderungen an der unternehmensinternen Netzwerkinfrastruktur erforderlich werden.
 
 ![WCF Relay-Konzepte](./media/service-bus-dotnet-how-to-use-relay/sb-relay-01.png)
 
-Service Bus Relay bietet Ihnen die Möglichkeit, WCF-Dienste in Ihrer bestehenden Unternehmensumgebung zu hosten. Sie können die Überwachung auf eingehende Sitzungen und Anforderungen für diese WCF-Dienste dann an den Service Bus-Dienst unter Azure delegieren. Auf diese Weise erhalten Sie die Möglichkeit, diese Dienste für Anwendungscode unter Azure, für mobile Mitarbeiter oder für Extranetpartnerumgebungen bereitzustellen. Mit Service Bus können Sie auf sichere Weise steuern, welche Personen auf welcher Optimierungsstufe Zugriff auf diese Dienste erhalten. Der Dienst stellt ein leistungsstarkes und sicheres Verfahren zur Verfügung, um Anwendungsfunktionen und Daten aus bestehenden Unternehmenslösungen bereitzustellen und in der Cloud davon zu profitieren.
+Azure Relay bietet Ihnen die Möglichkeit, WCF-Dienste in Ihrer bestehenden Unternehmensumgebung zu hosten. Sie können das Lauschen auf eingehende Sitzungen und Anforderungen für diese WCF-Dienste dann an den Relay-Dienst unter Azure delegieren. Auf diese Weise erhalten Sie die Möglichkeit, diese Dienste für Anwendungscode unter Azure, für mobile Mitarbeiter oder für Extranetpartnerumgebungen bereitzustellen. Mit Relay können Sie auf sichere Weise steuern, welche Personen auf welcher Optimierungsstufe Zugriff auf diese Dienste erhalten. Der Dienst stellt ein leistungsstarkes und sicheres Verfahren zur Verfügung, um Anwendungsfunktionen und Daten aus bestehenden Unternehmenslösungen bereitzustellen und in der Cloud davon zu profitieren.
 
-In diesem Artikel wird beschrieben, wie mit Service Bus Relay ein mithilfe der TCP-Channelbindung bereitgestellter WCF-Webdienst erstellt wird, der eine geschützte Unterhaltung zwischen zwei Parteien implementiert.
+In diesem Artikel wird beschrieben, wie mit Azure Relay ein mithilfe der TCP-Channelbindung bereitgestellter WCF-Webdienst erstellt wird, der eine geschützte Unterhaltung zwischen zwei Parteien implementiert.
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
@@ -45,21 +47,21 @@ Das [Service Bus NuGet-Paket](https://www.nuget.org/packages/WindowsAzure.Servic
    
    ![](./media/service-bus-dotnet-how-to-use-relay/getting-started-multi-tier-13.png)
 
-## <a name="use-service-bus-to-expose-and-consume-a-soap-web-service-with-tcp"></a>Verwenden von Service Bus zum Bereitstellen und Nutzen eines SOAP-Webdiensts mit TCP
-Um einen bestehenden WCF SOAP-Webdienst für die externe Nutzung bereitzustellen, müssen Sie Änderungen an den Dienstbindungen und Adressen vornehmen. Dies kann Änderungen an der Konfigurationsdatei oder Codeänderungen erforderlich machen, je nachdem, wie Ihre WCF-Dienste eingerichtet und konfiguriert sind. Beachten Sie, dass WCF Ihnen die Möglichkeit bietet, mehrere Netzwerkendpunkte über denselben Dienst zu verwalten, sodass Sie die bestehenden internen Endpunkte beibehalten können, während Sie gleichzeitig Service Bus-Endpunkte für den externen Zugriff hinzufügen.
+## <a name="expose-and-consume-a-soap-web-service-with-tcp"></a>Verfügbarmachen und Nutzen eines SOAP-Webdiensts mit TCP
+Um einen bestehenden WCF SOAP-Webdienst für die externe Nutzung bereitzustellen, müssen Sie Änderungen an den Dienstbindungen und Adressen vornehmen. Dies kann Änderungen an der Konfigurationsdatei oder Codeänderungen erforderlich machen, je nachdem, wie Ihre WCF-Dienste eingerichtet und konfiguriert sind. Beachten Sie, dass WCF Ihnen die Möglichkeit bietet, mehrere Netzwerkendpunkte über denselben Dienst zu verwalten, sodass Sie die bestehenden internen Endpunkte beibehalten können, während Sie gleichzeitig Relay-Endpunkte für den externen Zugriff hinzufügen.
 
-Bei dieser Aufgabe erstellen Sie einen einfachen WCF-Dienst und fügen ihm einen Service Bus-Listener hinzu. Für diese Übung wird eine gewisse Vertrautheit mit Visual Studio vorausgesetzt. Es werden daher nicht alle Details der Projekterstellung erläutert. Stattdessen steht der Code im Vordergrund.
+Bei dieser Aufgabe erstellen Sie einen einfachen WCF-Dienst und fügen ihm einen Relaylistener hinzu. Für diese Übung wird eine gewisse Vertrautheit mit Visual Studio vorausgesetzt. Es werden daher nicht alle Details der Projekterstellung erläutert. Stattdessen steht der Code im Vordergrund.
 
 Richten Sie vor dem Ausführen dieser Schritte zunächst mit dem folgenden Verfahren Ihre Umgebung ein:
 
 1. Erstellen Sie in Visual Studio eine Konsolenanwendung, die die beiden Projekte "Client" und "Service" innerhalb der Lösung enthält.
-2. Fügen Sie das Paket Microsoft Azure Service Bus NuGet beiden Projekte hinzu. Mit diesem Paket werden den Projekten alle benötigten Assemblyverweise hinzugefügt.
+2. Fügen Sie beiden Projekte das NuGet-Paket für Service Bus hinzu. Mit diesem Paket werden den Projekten alle benötigten Assemblyverweise hinzugefügt.
 
 ### <a name="how-to-create-the-service"></a>Erstellen des Diensts
 Erstellen Sie zunächst den Dienst selbst Ein WCF-Dienst besteht aus mindestens drei verschiedenen Teilen:
 
 * Definition eines Vertrags, der beschreibt, welche Nachrichten ausgetauscht werden und welche Operationen aufgerufen werden sollen
-* Implementierung des besagten Vertrags
+* Implementierung des Vertrags
 * Dem Host, der diesen WCF-Dienst hostet und mehrere Endpunkte bereitstellt
 
 Die Codebeispiele in diesem Abschnitt beziehen sich auf jede dieser Komponenten.
@@ -79,7 +81,7 @@ interface IProblemSolver
 interface IProblemSolverChannel : IProblemSolver, IClientChannel {}
 ```
 
-Nachdem der Vertrag etabliert wurde, ist die Implementierung ein Kinderspiel.
+Nachdem der Vertrag etabliert wurde, erfolgt die Implementierung wie folgt:
 
 ```csharp
 class ProblemSolver : IProblemSolver
@@ -92,7 +94,7 @@ class ProblemSolver : IProblemSolver
 ```
 
 ### <a name="configure-a-service-host-programmatically"></a>Programmgesteuertes Konfigurieren eines Diensthosts
-Nachdem der Vertrag erstellt und die Implementierung durchgeführt wurde, kann nun der Dienst gehostet werden. Das Hosting erfolgt innerhalb eines [System.ServiceModel.ServiceHost](https://msdn.microsoft.com/library/system.servicemodel.servicehost.aspx)-Objekts, das die Verwaltung der Dienstinstanzen übernimmt und die Endpunkte hostet, die auf Nachrichten warten. Der folgende Code konfiguriert den Dienst sowohl mit einem regulären lokalen Endpunkt als auch mit einem Service Bus-Endpunkt, um interne und externe Endpunkte nebeneinander zu veranschaulichen. Ersetzen Sie die Zeichenfolge *namespace* durch Ihren Namespacenamen und *yourKey* durch den SAS-Schlüssel, den Sie im vorherigen Setupschritt erhalten haben.
+Nachdem der Vertrag erstellt und die Implementierung durchgeführt wurde, kann nun der Dienst gehostet werden. Das Hosting erfolgt innerhalb eines [System.ServiceModel.ServiceHost](https://msdn.microsoft.com/library/system.servicemodel.servicehost.aspx)-Objekts, das die Verwaltung der Dienstinstanzen übernimmt und die Endpunkte hostet, die auf Nachrichten warten. Der folgende Code konfiguriert den Dienst sowohl mit einem regulären lokalen Endpunkt als auch mit einem Relay-Endpunkt, um interne und externe Endpunkte nebeneinander zu veranschaulichen. Ersetzen Sie die Zeichenfolge *namespace* durch Ihren Namespacenamen und *yourKey* durch den SAS-Schlüssel, den Sie im vorherigen Setupschritt erhalten haben.
 
 ```csharp
 ServiceHost sh = new ServiceHost(typeof(ProblemSolver));
@@ -115,7 +117,7 @@ Console.ReadLine();
 sh.Close();
 ```
 
-In dem Beispiel erstellen Sie zwei Endpunkte für dieselbe Vertragsimplementierung. Einer ist lokal und einer wird über Service Bus projiziert. Die zentralen Unterschiede sind die Bindungen. [NetTcpBinding](https://msdn.microsoft.com/library/system.servicemodel.nettcpbinding.aspx) für den lokalen Endpunkt und [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding#microsoft_servicebus_nettcprelaybinding) für den Service Bus-Endpunkt und die Adressen. Der lokale Endpunkt verfügt über eine lokale Netzwerkadresse mit einem bestimmten Port. Der Service Bus-Endpunkt hat eine Endpunktadresse, die sich aus der Zeichenfolge `sb`, Ihrem Namespacenamen und dem Pfad „solver“ zusammensetzt. Dies führt zum URI `sb://[serviceNamespace].servicebus.windows.net/solver`, mit dem der Dienstendpunkt als Service Bus-TCP-Endpunkt mit vollqualifiziertem externem DNS-Namen identifiziert wird. Wenn Sie Code, der die Platzhalter ersetzt, in die `Main`-Funktion der Anwendung **Service** einfügen, erhalten Sie einen funktionierenden Dienst. Wenn Ihr Dienst exklusiv für Service Bus lauschen soll, entfernen Sie die lokale Endpunktdeklaration.
+In dem Beispiel erstellen Sie zwei Endpunkte für dieselbe Vertragsimplementierung. Einer ist lokal, und einer wird über Azure Relay projiziert. Die zentralen Unterschiede sind die Bindungen: [NetTcpBinding](https://msdn.microsoft.com/library/system.servicemodel.nettcpbinding.aspx) für den lokalen Endpunkt und [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding#microsoft_servicebus_nettcprelaybinding) für den Relay-Endpunkt und die Adressen. Der lokale Endpunkt verfügt über eine lokale Netzwerkadresse mit einem bestimmten Port. Der Relay-Endpunkt hat eine Endpunktadresse, die sich aus der Zeichenfolge `sb`, Ihrem Namespacenamen und dem Pfad „solver“ zusammensetzt. Dies ergibt den URI `sb://[serviceNamespace].servicebus.windows.net/solver`, mit dem der Dienstendpunkt als Service Bus-TCP-Endpunkt (Relay) mit vollqualifiziertem externem DNS-Namen identifiziert wird. Wenn Sie Code, der die Platzhalter ersetzt, in die `Main`-Funktion der Anwendung **Service** einfügen, erhalten Sie einen funktionierenden Dienst. Wenn Ihr Dienst exklusiv für Relay lauschen soll, entfernen Sie die lokale Endpunktdeklaration.
 
 ### <a name="configure-a-service-host-in-the-appconfig-file"></a>Konfigurieren eines Diensthosts in der Datei „App.config“
 Sie können den Host auch mithilfe der Datei "App.config" konfigurieren. Der Diensthostingcode wird in diesem Fall im nächsten Beispiel angezeigt.
@@ -128,8 +130,8 @@ Console.ReadLine();
 sh.Close();
 ```
 
-Die Endpunktdefinitionen werden in die Datei "App.config" verschoben. Das NuGet-Paket hat der Datei „App.config“ bereits eine Reihe von Definitionen hinzugefügt, die die erforderlichen Konfigurationserweiterungen für Service Bus darstellen. Das folgende Beispiel, das mit dem vorherigen Beispiel identisch ist, sollte direkt unter dem **system.serviceModel**-Element angezeigt werden. In dem Codebeispiel wird davon ausgegangen, dass der C#-Namespace des Projekts den Namen **Service** hat.
-Ersetzen Sie die Platzhalter durch den Namespace und den SAS-Schlüssel des Service Bus-Diensts.
+Die Endpunktdefinitionen werden in die Datei "App.config" verschoben. Das NuGet-Paket hat der Datei „App.config“ bereits eine Reihe von Definitionen hinzugefügt, die die erforderlichen Konfigurationserweiterungen für Azure Relay darstellen. Das folgende Beispiel, das mit dem vorherigen Beispiel identisch ist, sollte direkt unter dem **system.serviceModel**-Element angezeigt werden. In dem Codebeispiel wird davon ausgegangen, dass der C#-Namespace des Projekts den Namen **Service** hat.
+Ersetzen Sie die Platzhalter durch den Namespacenamen und den SAS-Schlüssel von Relay.
 
 ```xml
 <services>
@@ -139,7 +141,7 @@ Ersetzen Sie die Platzhalter durch den Namespace und den SAS-Schlüssel des Serv
                   address="net.tcp://localhost:9358/solver"/>
         <endpoint contract="Service.IProblemSolver"
                   binding="netTcpRelayBinding"
-                  address="sb://namespace.servicebus.windows.net/solver"
+                  address="sb://<namespaceName>.servicebus.windows.net/solver"
                   behaviorConfiguration="sbTokenProvider"/>
     </service>
 </services>
@@ -164,12 +166,12 @@ Um den Dienst zu nutzen, können Sie einen WCF-Client mit einem [ChannelFactory]
 
 Verweisen Sie zuerst auf den `IProblemSolver`-Vertragscode, oder kopieren Sie ihn aus dem Dienst in Ihr Clientprojekt.
 
-Ersetzen Sie anschließend den Code in der `Main`-Methode des Clients, und ersetzen Sie dabei den Platzhaltertext erneut durch Ihren Service Bus-Namespace und SAS-Schlüssel.
+Ersetzen Sie anschließend den Code in der `Main`-Methode des Clients, und ersetzen Sie dabei den Platzhaltertext erneut durch Ihren Relay-Namespace und SAS-Schlüssel.
 
 ```csharp
 var cf = new ChannelFactory<IProblemSolverChannel>(
     new NetTcpRelayBinding(),
-    new EndpointAddress(ServiceBusEnvironment.CreateServiceUri("sb", "namespace", "solver")));
+    new EndpointAddress(ServiceBusEnvironment.CreateServiceUri("sb", "<namespaceName>", "solver")));
 
 cf.Endpoint.Behaviors.Add(new TransportClientEndpointBehavior
             { TokenProvider = TokenProvider.CreateSharedAccessSignatureTokenProvider("RootManageSharedAccessKey","<yourKey>") });
@@ -193,13 +195,13 @@ using (var ch = cf.CreateChannel())
 }
 ```
 
-Die Endpunktdefinitionen werden in die Datei "App.config" verschoben. Das folgende Beispiel, das mit dem vorherigen Code identisch ist, sollte direkt unter dem `<system.serviceModel>`-Element angezeigt werden. Wie zuvor müssen Sie auch hier die Platzhalter durch den Service Bus-Namespace und SAS-Schlüssel ersetzen.
+Die Endpunktdefinitionen werden in die Datei "App.config" verschoben. Das folgende Beispiel, das mit dem vorherigen Code identisch ist, sollte direkt unter dem `<system.serviceModel>`-Element angezeigt werden. Wie zuvor müssen Sie auch hier die Platzhalter durch den Relay-Namespace und SAS-Schlüssel ersetzen.
 
 ```xml
 <client>
     <endpoint name="solver" contract="Service.IProblemSolver"
               binding="netTcpRelayBinding"
-              address="sb://namespace.servicebus.windows.net/solver"
+              address="sb://<namespaceName>.servicebus.windows.net/solver"
               behaviorConfiguration="sbTokenProvider"/>
 </client>
 <behaviors>
@@ -216,7 +218,7 @@ Die Endpunktdefinitionen werden in die Datei "App.config" verschoben. Das folgen
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Nachdem Sie nun mit den Grundlagen zu Service Bus Relay vertraut sind, finden Sie unter den folgenden Links weitere Informationen.
+Nachdem Sie nun mit den Grundlagen zu Azure Relay vertraut sind, finden Sie unter den folgenden Links weitere Informationen.
 
 * [Was ist Azure Relay?](relay-what-is-it.md)
 * [Übersicht über die Architektur von Azure Service Bus](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md)

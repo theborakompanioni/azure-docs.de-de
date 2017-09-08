@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: edmaca
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
-ms.openlocfilehash: 43bb5a1aa246004346765d1be4aea236ca17abd2
+ms.translationtype: HT
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: e49d1a0e0ccc6567d0a6841817667717ff5dba76
 ms.contentlocale: de-de
-ms.lasthandoff: 07/06/2017
+ms.lasthandoff: 08/24/2017
 
 ---
 # <a name="manage-azure-data-lake-analytics-by-using-the-azure-portal"></a>Verwalten von Azure Data Lake Analytics mithilfe des Azure-Portals
@@ -146,6 +146,24 @@ Verwenden Sie die Rolle „Data Lake Analytics-Entwickler“, um U-SQL-Entwickle
 1. Gehen Sie im Azure-Portal zu Ihrem Data Lake Analytics-Konto.
 2. Klicken Sie auf **Alle Aufträge anzeigen**. Eine Liste mit allen aktiven und kürzlich abgeschlossenen Aufträgen im Konto wird angezeigt.
 3. Klicken Sie optional auf **Filtern**, um die Aufträge nach den Werten **Zeitbereich**, **Auftragsname** und **Ersteller** zu suchen. 
+
+### <a name="monitoring-pipeline-jobs"></a>Überwachen von Pipelineaufträgen
+Aufträge, die Teil einer Pipeline sind, arbeiten zusammen – in der Regel sequenziell –, um ein bestimmtes Szenario zu erfüllen. Sie können beispielsweise eine Pipeline für Bereinigung, Extraktion, Transformation und Aggregation des Verbrauchs verwenden, um Einblicke in das Kundenverhalten zu gewinnen. Pipelineaufträge können über die Pipeline-Eigenschaft identifiziert werden, wenn der Auftrag übermittelt wurde. Mit ADF V2 geplanten Aufträgen wird diese Eigenschaft automatisch hinzugefügt. 
+
+So zeigen Sie eine Liste der U-SQL-Aufträge an, die zu Pipelines gehören 
+
+1. Navigieren Sie im Azure-Portal zu Ihrem Data Lake Analytics-Konto.
+2. Klicken Sie auf **Einblick in Aufträge**. Standardmäßig wird die Registerkarte „Alle Aufträge“ angezeigt, die eine Liste der Aufträge enthält, die ausgeführt werden, sich in der Warteschlange befinden oder beendet wurden.
+3. Klicken Sie auf die Registerkarte **Pipelineaufträge**. Eine Liste der Pipelineaufträge wird zusammen mit aggregierten Statistiken für jede Pipeline angezeigt.
+
+### <a name="monitoring-recurring-jobs"></a>Überwachen von wiederkehrenden Aufträgen
+Ein wiederkehrender Auftrag besitzt die gleiche Geschäftslogik, verwendet jedoch bei jeder Ausführung unterschiedliche Eingabedaten. Im Idealfall sollten wiederkehrende Aufträge immer erfolgreich und in einer relativ einheitlichen Ausführungszeit ausgeführt werden. Durch die Überwachung dieses Verhaltens stellen Sie sicher, dass der Auftrag fehlerfrei ist. Wiederkehrende Aufträge können mithilfe der Recurrence-Eigenschaft identifiziert werden. Mit ADF V2 geplanten Aufträgen wird diese Eigenschaft automatisch hinzugefügt.
+
+So zeigen Sie eine Liste der wiederkehrenden U-SQL-Aufträge an 
+
+1. Navigieren Sie im Azure-Portal zu Ihrem Data Lake Analytics-Konto.
+2. Klicken Sie auf **Einblick in Aufträge**. Standardmäßig wird die Registerkarte „Alle Aufträge“ angezeigt, die eine Liste der Aufträge enthält, die ausgeführt werden, sich in der Warteschlange befinden oder beendet wurden.
+3. Klicken Sie auf die **Wiederholte Aufträge**. Eine Liste der wiederkehrenden Aufträge wird zusammen mit aggregierten Statistiken zu jedem wiederkehrenden Auftrag angezeigt.
 
 ## <a name="manage-policies"></a>Verwalten von Richtlinien
 

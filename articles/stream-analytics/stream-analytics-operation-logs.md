@@ -4,7 +4,7 @@ description: "Verwenden von Stream Analytics-Vorgangsprotokollen"
 keywords: Dienstprotokolle
 services: stream-analytics
 documentationcenter: 
-author: jeffstokes72
+author: samacha
 manager: jhubbard
 editor: cgronlun
 ms.assetid: a2ed9676-f0bd-4398-87c8-a592779ac728
@@ -14,19 +14,18 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
-ms.author: jeffstok
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: 2df75732e27226c37a929d3b6ca2b5d6d89ef5c5
+ms.author: samacha
+ms.translationtype: HT
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: 2ee0871752dc2a3da345339fb826340d44ae48d7
 ms.contentlocale: de-de
-ms.lasthandoff: 07/04/2017
-
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="debug-stream-analytics-jobs-using-service-and-operation-logs"></a>Debuggen von Stream Analytics-Aufträgen mithilfe von Dienst- und Vorgangsprotokollen
 Alle Azure-Dienste stellen Benutzern operative Protokollierungsnachrichten bereit, um Details im Zusammenhang mit Verwaltungsvorgängen zu erfassen. In Azure Stream Analytics können diese Informationen für Debugzwecke wie z. B. das Anzeigen des Auftragsstatus, Auftragsfortschritts und von Fehlermeldungen verwendet werden, um den Fortschritt eines Auftrags im Laufe der Zeit von Beginn an, während der Verarbeitung und bis zur Ausgabe nachzuverfolgen.
 
-## <a name="find-operation-logs-in-the-azure-management-portal"></a>Suchen von Vorgangsprotokollen im Azure-Verwaltungsportal
+## <a name="find-operation-logs-in-the-azure-portal"></a>Suchen von Vorgangsprotokollen im Azure-Portal
 Für den Zugriff auf Vorgangsprotokolle gibt es zwei Möglichkeiten:  
 
 * Dashboard des Stream Analytics-Auftrags  
@@ -50,14 +49,14 @@ Zum Anzeigen der Betriebsprotokolle für den Stream Analytics-Auftrag klicken Si
 
   ![Azure-Portal, „Stream Analytics auswählen“](./media/stream-analytics-operation-logs/06-stream-analytics-operation-logs.png)  
 
-Dadurch wird ein Blatt mit den Ereignissen der letzten 7 Tage für alle Ressourcen in Ihrem Abonnement geöffnet.  Sie können Ereignisse eines bestimmten Typs oder Zeitrahmens anzeigen, indem Sie auf den Befehl **Filter** klicken.
+Dadurch wird ein Blatt mit den Ereignissen der letzten sieben Tage für alle Ressourcen in Ihrem Abonnement angezeigt.  Sie können Ereignisse eines bestimmten Typs oder Zeitrahmens anzeigen, indem Sie auf den Befehl **Filter** klicken.
 
   ![Azure-Portal, „Stream Analytics auswählen“](./media/stream-analytics-operation-logs/07-stream-analytics-operation-logs.png)  
 
 ## <a name="get-log-details"></a>Abrufen von Protokolldetails
 Sie können nach Zeitraum und Status filtern, um die Protokolle für Ihren Auftrag anzuzeigen.
 
-Klicken Sie im Azure-Verwaltungsportal unten im Fenster auf die Schaltfläche **Details** , um weitere Details zu einem ausgewählten Ereignis anzuzeigen. 
+Klicken Sie im Azure-Portal unten im Fenster auf die Schaltfläche **Details**, um weitere Details zu einem ausgewählten Ereignis anzuzeigen. 
 
   ![Details auswählen](./media/stream-analytics-operation-logs/03-stream-analytics-operation-logs.png)  
 
@@ -65,12 +64,12 @@ Klicken Sie im Azure-Portal auf einen Protokolleintrag, um ausführliche Informa
 
   ![Azure-Portal, „Details auswählen“](./media/stream-analytics-operation-logs/08-stream-analytics-operation-logs.png)  
 
-Sie können von dort das Blatt **Detail** öffnen, indem Sie auf das Ereignis klicken.
+Sie können von dort die Anzeige **Detail** öffnen, indem Sie auf das Ereignis klicken.
 
   ![Azure-Portal, „Details auswählen“](./media/stream-analytics-operation-logs/09-stream-analytics-operation-logs.png)  
 
 ## <a name="debug-a-failed-job"></a>Debuggen eines fehlgeschlagenen Auftrags
-Klicken Sie im Azure-Verwaltungsportal auf das Symbol "Suche", und geben Sie "failed" ein. Dadurch wird ein Ergebnis aller Protokolle mit Fehlern zurück. 
+Klicken Sie im Azure-Portal auf das Symbol „Suche“, und geben Sie „failed“ ein. Dadurch wird ein Ergebnis aller Protokolle mit Fehlern zurück. 
 
   ![Debuggen eines fehlerhaften Auftrags](./media/stream-analytics-operation-logs/04-stream-analytics-operation-logs.png)  
 
@@ -82,10 +81,10 @@ Wählen Sie einen der Fehler aus, und klicken Sie auf **Details** , um weitere I
 
   ![Vorgangsdetails](./media/stream-analytics-operation-logs/05-stream-analytics-operation-logs.png)  
 
-Wenn Sie den [Support](https://azure.microsoft.com/support/options/) kontaktieren oder dem Team über das [MSDN-Forum](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics) Informationen bereitstellen möchten, beachten Sie die Vorgangsdetails, insbesondere die **Korrelations-ID**. 
+Wenn Sie den [Support](https://azure.microsoft.com/support/options/) kontaktieren oder dem Team über das [MSDN-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics) Informationen bereitstellen möchten, beachten Sie die Vorgangsdetails, insbesondere die **Korrelations-ID**. 
 
 ## <a name="get-help"></a>Hier erhalten Sie Hilfe
-Um Hilfe zu erhalten, besuchen Sie unser [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)
+Um Hilfe zu erhalten, besuchen Sie unser [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Einführung in Azure Stream Analytics](stream-analytics-introduction.md)

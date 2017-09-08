@@ -15,13 +15,13 @@ ms.workload: na
 ms.date: 08/01/2016
 ms.author: tomfitz
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: 927ec9251b5231a5d9a0e8278f5dc46e9abdde0e
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: ea0cf7ad074f95c2b49a92f9a8e32270a1d39b3a
 ms.contentlocale: de-de
 ms.lasthandoff: 08/24/2017
 
 ---
-# <a name="share-azure-dashboards-by-using-role-based-access-control"></a>Freigeben von Azure-Dashboards mit rollenbasierter Zugriffssteuerung
+# <a name="share-azure-dashboards-by-using-role-based-access-control"></a>Freigeben von Azure-Dashboards mithilfe der rollenbasierter Zugriffssteuerung
 Nach der Konfiguration eines Dashboards können Sie es veröffentlichen und für andere Benutzer in Ihrer Organisation freigeben. Sie gewähren anderen Benutzern den Zugriff auf Ihr Dashboard über die [rollenbasierte Zugriffssteuerung](../active-directory/role-based-access-control-configure.md) von Azure. Sie weisen einem Benutzer oder einer Gruppe von Benutzern einer Rolle zu, und mit dieser Rolle wird dann definiert, ob diese Benutzer das veröffentlichte Dashboard anzeigen oder ändern können. 
 
 Alle veröffentlichten Dashboards werden als Azure-Ressourcen implementiert, d.h., sie sind als verwaltbare Elemente in Ihrem Abonnement vorhanden und in einer Ressourcengruppe enthalten.  Aus Sicht der Zugriffssteuerung unterscheiden sich Dashboards nicht von anderen Ressourcen, z.B. einem virtuellen Computer oder Speicherkonto.
@@ -32,7 +32,7 @@ Alle veröffentlichten Dashboards werden als Azure-Ressourcen implementiert, d.h
 > 
 
 ## <a name="understanding-access-control-for-dashboards"></a>Grundlagen der Zugriffssteuerung für Dashboards
-Bei der rollenbasierten Zugriffssteuerung können Sie Benutzer Rollen auf drei verschiedenen Bereichsebenen zuweisen:
+Bei der rollenbasierten Zugriffssteuerung können Sie Benutzer auf drei verschiedenen Bereichsebenen Rollen zuweisen:
 
 * Abonnement
 * Ressourcengruppe

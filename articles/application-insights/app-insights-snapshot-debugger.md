@@ -152,7 +152,7 @@ Weisen Sie hierzu den Benutzern, die Momentaufnahmen untersuchen, die Rolle `App
 
 ## <a name="debug-snapshots-in-the-application-insights-portal"></a>Debuggen von Momentaufnahmen im Application Insights-Portal
 
-Wenn eine Momentaufnahme für eine bestimmte Ausnahme oder eine Problem-ID verfügbar ist, wird unter der [Ausnahme](app-insights-asp-net-exceptions.md) im Application Insights-Portal eine Schaltfläche zum**** Erstellen einer Debug-Momentaufnahme angezeigt.
+Wenn eine Momentaufnahme für eine bestimmte Ausnahme oder eine Problem-ID verfügbar ist, wird unter der [Ausnahme](app-insights-asp-net-exceptions.md) im Application Insights-Portal eine Schaltfläche zum **Erstellen einer Debug-Momentaufnahme angezeigt.**
 
 ![Schaltfläche zum Erstellen einer Debug-Momentaufnahme für eine Ausnahme](./media/app-insights-snapshot-debugger/snapshot-on-exception.png)
 

@@ -160,7 +160,7 @@ Falls Azure Backup das Wiederherstellungsvolume auch mehrere Minuten nach dem Kl
 
 1.  Brechen Sie den laufenden Einbindungsvorgang ab, falls dieser bereits mehrere Minuten lang ausgeführt wird.
 
-2.  Vergewissern Sie sich, dass Sie über die neueste Version des Azure Backup-Agents verfügen. Klicken Sie zum Ermitteln der Versionsinformationen für den Azure Backup-Agent im Bereich **Aktionen** der Microsoft Azure Backup-Konsole auf **About Microsoft Azure Recovery Services Agent** (Informationen zum Microsoft Azure Recovery Services-Agent), und vergewissern Sie sich, dass die Versionsummer**** mindestens der in [diesem Artikel](https://go.microsoft.com/fwlink/?linkid=229525) angegebenen Version entspricht. Sie können die neueste Version [hier](https://go.microsoft.com/fwLink/?LinkID=288905) herunterladen.
+2.  Vergewissern Sie sich, dass Sie über die neueste Version des Azure Backup-Agents verfügen. Klicken Sie zum Ermitteln der Versionsinformationen für den Azure Backup-Agent im Bereich **Aktionen** der Microsoft Azure Backup-Konsole auf **About Microsoft Azure Recovery Services Agent** (Informationen zum Microsoft Azure Recovery Services-Agent), und vergewissern Sie sich, dass die **Versionsummer** mindestens der in [diesem Artikel](https://go.microsoft.com/fwlink/?linkid=229525) angegebenen Version entspricht. Sie können die neueste Version [hier](https://go.microsoft.com/fwLink/?LinkID=288905) herunterladen.
 
 3.  Wechseln Sie zu **Geräte-Manager** -> **Speichercontroller**, und vergewissern Sie sich, dass **Microsoft iSCSI-Initiator** vorhanden ist. Ist dies der Fall, fahren Sie direkt mit Schritt 7 fort. 
 

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
-ms.openlocfilehash: fc20979575b204cdd8dda5291552af0adbde180f
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 279951d40b7780120d0b94e183f06e00ccece016
 ms.contentlocale: de-de
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="use-an-app-service-environment"></a>Verwenden einer App Service-Umgebung #
@@ -133,9 +133,15 @@ Die Veröffentlichungsendpunkte für die Apps in einer ILB-ASE verwenden die Dom
 
 ## <a name="pricing"></a>Preise ##
 
-Bei ASEv2 wird eine neue Preis-SKU mit dem Namen **Isoliert** ausschließlich für ASEv2 verwendet. Alle App Service-Pläne, die in einer ASEv2 gehostet werden, befinden sich in der Preis-SKU „Isoliert“. Zusätzlich zum Preis Ihrer App Service-Pläne fällt eine Pauschalgebühr für die eigentliche ASE an. Dieser Preis richtet sich nicht nach der Größe Ihrer ASE. 
+Die Preis-SKU **Isoliert** wurde ausschließlich für die Verwendung mit ASEv2 erstellt. Alle App Service-Pläne, die in einer ASEv2 gehostet werden, befinden sich in der Preis-SKU „Isoliert“. Die Raten für isolierte App Service-Pläne können für verschiedene Regionen unterschiedlich sein. 
 
-Die sonstigen potenziellen Gebühren beziehen sich auf die Anpassung des Front-End-Skalierungsverhältnisses oder der Größe des Front-Ends. Sie können das Skalierungsverhältnis zum schnelleren Hinzufügen von Front-Ends anpassen. Für zusätzliche Kerne, die dem System nicht automatisch hinzugefügt werden, müssen Sie jedoch bezahlen. Analog dazu bezahlen Sie bei Erhöhung Ihrer Front-End-Größe für die Kerne, die nicht automatisch zugeordnet werden. Wenn Sie z.B. das Skalierungsverhältnis auf den Wert 10 anpassen, wird für je zehn Instanzen in Ihren App Service-Plänen ein Front-End hinzugefügt. Die Pauschalgebühr deckt ein Skalierungsverhältnis von einem Front-End pro 15 Instanzen ab. Mit einem Skalierungsverhältnis von 10 bezahlen Sie für das dritte Front-End, das für die 10 Instanzen des App Service-Plans hinzugefügt wird, eine Gebühr. Sie müssen nicht dafür bezahlen, wenn Sie 15 Instanzen erreichen, da es in diesem Fall automatisch hinzugefügt wurde.
+Zusätzlich zum Preis Ihrer App Service-Pläne fällt eine Pauschalgebühr für die eigentliche ASE an. Die Pauschalgebühr ist von der Größe Ihrer ASE unabhängig. Sie fällt für die ASE-Infrastruktur mit der Standardskalierungsrate mit einem zusätzlichen Front-End für jeweils 15 Instanzen des App Service-Plans an.  
+
+Wenn die Standardskalierung von einem Front-End für jeweils 15 Instanzen des App Service-Plans nicht schnell genug ist, können Sie das Verhältnis, nach dem Front-Ends hinzugefügt werden, oder die Größe der Front-Ends anpassen.  Wenn Sie das Verhältnis oder die Größe anpassen, bezahlen Sie für die Front-End-Kerne, die standardmäßig nicht hinzugefügt werden würden.  
+
+Wenn Sie z.B. das Skalierungsverhältnis auf den Wert 10 anpassen, wird für je zehn Instanzen in Ihren App Service-Plänen ein Front-End hinzugefügt. Die Pauschalgebühr deckt ein Skalierungsverhältnis von einem Front-End pro 15 Instanzen ab. Mit einem Skalierungsverhältnis von 10 bezahlen Sie für das dritte Front-End, das für die 10 Instanzen des App Service-Plans hinzugefügt wird, eine Gebühr. Sie müssen nicht dafür bezahlen, wenn Sie 15 Instanzen erreichen, da es in diesem Fall automatisch hinzugefügt wurde.
+
+Wenn Sie die Größe der Front-Ends auf 2 Kerne ändern, aber das Verhältnis nicht anpassen, bezahlen Sie für die zusätzlichen Kerne.  Eine ASE wird mit zwei Front-Ends erstellt – Sie würden also selbst unterhalb des Schwellenwerts für die automatische Skalierung zwei zusätzliche Kerne bezahlen, wenn Sie die Größe auf 2-Kern-Front-Ends erhöhen.
 
 Weitere Informationen finden Sie unter [Azure App Service – Preise][Pricing].
 

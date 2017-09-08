@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
 ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
-ms.openlocfilehash: 0c65ac74316421a0258f01143baa25ffecb5be3b
+ms.sourcegitcommit: 07e5e15f4f4c4281a93c8c3267c0225b1d79af45
+ms.openlocfilehash: e5a658e0d20d42911870f2522f6c1bab7529ea11
 ms.contentlocale: de-de
-ms.lasthandoff: 08/23/2017
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="api-management-advanced-policies"></a>API Management – Erweiterte Richtlinien
@@ -308,8 +308,8 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 |---------------|-----------------|--------------|--------------|  
 |key|Eine Zeichenfolge. Ausdruck zulässig. Gibt den Bereich der Parallelität an. Kann von mehreren Richtlinien verwendet werden.|Ja|N/V|  
 |max-count|Eine ganze Zahl. Gibt eine maximale Anzahl von Anforderungen an, die an die Richtlinie weitergeleitet werden können|Ja|N/V|  
-|timeout|Eine ganze Zahl. Ausdruck zulässig. Gibt die Anzahl der Sekunden an, die eine Anforderung warten soll, bevor der Fehler „403 Zu viele Anforderungen“ ausgelöst wird|Nein|Infinity|  
-|max-queue-length|Eine ganze Zahl. Ausdruck zulässig. Gibt die maximale Warteschlangenlänge an. Eingehende Anforderungen für diese Richtlinie werden sofort mit dem Fehler „403 Zu viele Anforderungen“ beendet, wenn die Warteschlange voll ist.|Nein|Infinity|  
+|timeout|Eine ganze Zahl. Ausdruck zulässig. Gibt die Anzahl der Sekunden an, die eine Anforderung warten soll, bevor der Fehler „429 Zu viele Anforderungen“ ausgelöst wird|Nein|Infinity|  
+|max-queue-length|Eine ganze Zahl. Ausdruck zulässig. Gibt die maximale Warteschlangenlänge an. Eingehende Anforderungen für diese Richtlinie werden sofort mit dem Fehler „429 Zu viele Anforderungen“ beendet, wenn die Warteschlange voll ist.|Nein|Infinity|  
   
 ###  <a name="ChooseUsage"></a> Verwendung  
  Diese Richtlinie kann in den folgenden [Abschnitten](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  

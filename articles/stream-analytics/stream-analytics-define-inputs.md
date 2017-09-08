@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 07/05/2017
 ms.author: samacha
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
-ms.openlocfilehash: 09066927641054acb8c53a3585e111df87893e50
+ms.translationtype: HT
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: 8ea05e1c3419f3e9c6b5806c1a2d4035239809d8
 ms.contentlocale: de-de
-ms.lasthandoff: 07/06/2017
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="data-connection-learn-about-data-stream-inputs-from-events-to-stream-analytics"></a>Datenverbindung: Erfahren Sie mehr über Datenstromeingaben aus Ereignissen in Stream Analytics
@@ -126,7 +126,7 @@ Der Standardzeitstempel von Blob Storage-Ereignissen in Stream Analytics ist der
 Eingaben im CSV-Format *müssen* über eine Kopfzeile verfügen, um Felder für das Dataset zu definieren. Zudem müssen alle Kopfzeilenfelder eindeutig sein.
 
 > [!NOTE]
-> Stream Analytics unterstützt das Hinzufügen von Inhalten zu einem vorhandenen Blob nicht. Stream Analytics zeigt ein Blob nur einmal an. Des Weiteren werden alle Änderungen, die im Blob vorgenommen wurden, nachdem der Auftrag die Daten gelesen hat, nicht verarbeitet. Eine bewährte Methode besteht darin, alle Daten einmal hochzuladen und dem Blob-Speicher keine weiteren Ereignisse mehr hinzuzufügen.
+> Stream Analytics unterstützt das Hinzufügen von Inhalten zu einer vorhandenen Blobdatei nicht. Stream Analytics zeigt jede Datei nur einmal an. Des Weiteren werden alle Änderungen, die in der Datei vorgenommen wurden, nachdem der Auftrag die Daten gelesen hat, nicht verarbeitet. Die Methode, alle Daten für eine Blobdatei auf einmal hochzuladen und dann zusätzliche neuere Ereignisse einer anderen, neuen Blobdatei hinzuzufügen, hat sich bewährt.
 > 
 
 ### <a name="configure-blob-storage-as-a-data-stream-input"></a>Konfigurieren von Blob Storage als Datenstromeingabe
@@ -165,7 +165,7 @@ FROM Input
 ````
 
 ## <a name="get-help"></a>Hier erhalten Sie Hilfe
-Um Hilfe zu erhalten, nutzen Sie unser [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics).
+Um Hilfe zu erhalten, nutzen Sie unser [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Nächste Schritte
 Sie haben sich mit Datenverbindungsoptionen in Azure für Ihre Stream Analytics-Aufträge vertraut gemacht. Weitere Informationen zu Stream Analytics finden Sie unter:

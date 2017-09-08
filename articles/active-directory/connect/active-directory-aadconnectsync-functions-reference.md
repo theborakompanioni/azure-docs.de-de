@@ -1183,7 +1183,7 @@ Verarbeitet alle Werte in einem mehrwertigen Attribut (oder der Ausgabe eines Au
 * condition: Jede Funktion, die ein Element im Attribut verarbeiten kann
 
 **Beispiele:**  
-`Select($item,[otherPhone],Replace($item,“-”,“”))`  
+`Select($item,[otherPhone],Replace($item,"-",""))`  
 Gibt alle Werte im mehrwertigen Attribut „otherPhone“ zurück, nachdem Bindestriche (-) entfernt wurden
 
 - - -

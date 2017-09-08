@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.author: robb
 ms.translationtype: HT
-ms.sourcegitcommit: 19be73fd0aec3a8f03a7cd83c12cfcc060f6e5e7
-ms.openlocfilehash: df53e92b877b4790bb700f176a1988d265ec4678
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: a0cb529836b14df71e83616f4f625a002c535b7b
 ms.contentlocale: de-de
-ms.lasthandoff: 07/13/2017
+ms.lasthandoff: 08/24/2017
 
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Problembehandlung mit Azure-Diagnose
@@ -56,6 +56,34 @@ Hier sind die Pfade zu einigen wichtigen Protokollen und Artefakten angegeben. I
 | **Pfad des Hilfsprogramms für die Protokollsammlung** | C:\WindowsAzure\Packages |
 | **MonAgentHost-Protokolldatei** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<Diagnoseversion>\WAD0107\Configuration\MonAgentHost.<Sequenznummer>.log |
 
+## <a name="metric-data-doesnt-show-in-azure-portal"></a>Metrikdaten werden nicht im Azure-Portal angezeigt
+Die Azure-Diagnose liefert eine Vielzahl von Metrikdaten, die im Azure-Portal angezeigt werden können. Wenn Sie Probleme bei der Anzeige dieser Daten im Portal haben sollten, überprüfen Sie das Diagnosespeicherkonto und dann die Tabelle „WADMetrics\*“, um festzustellen, ob die entsprechenden Metrikdatensätze vorhanden sind. Hier ist der „PartitionKey“-Wert der Tabelle die Ressourcen-ID der VM oder VM-Skalierungsgruppe. „RowKey“ ist der Name der Metrik, d.h. des Leistungsindikators.
+
+Wenn die Ressourcen-ID falsch ist, überprüfen Sie „Diagnosekonfiguration -> Metriken > ResourceId“, um festzustellen, ob die Ressourcen-ID richtig festgelegt ist.
+
+Wenn es keine Daten für die spezifische Metrik gibt, überprüfen Sie „Diagnosekonfiguration -> PerformanceCounter“, um festzustellen, ob die Metrik (der Leistungsindikator) eingeschlossen ist. Die folgenden Leistungsindikatoren sind standardmäßig aktiviert:
+- \Processor(_Total)\% Prozessorzeit
+- \Memory\Verfügbare Bytes
+- \ASP.NET-Anwendungen(__Insgesamt__)\Anforderungen/Sek.
+- \ASP.NET-Anwendungen(__Insgesamt__)\Fehler gesamt/Sek.
+- \ASP.NET\Anforderungen in Warteschlange
+- \ASP.NET\Zurückgewiesene Anforderungen
+- \Prozessor(w3wp)\% Prozessorzeit
+- \Prozess(w3wp)\Private Bytes
+- \Prozess(WaIISHost)\% Prozessorzeit
+- \Prozess(WaIISHost)\Private Bytes
+- \Prozess(WaWorkerHost)\% Prozessorzeit
+- \Prozess(WaWorkerHost)\Private Bytes
+- \Arbeitsspeicher\Seitenfehler/Sek.
+- \..NET CLR-Speicher(_Global_)\% Zeit in GC
+- \Logischer Datenträger(C:)\Auf den Datenträger geschriebene Bytes/s
+- \Logischer Datenträger(C:)\Vom Datenträger gelesene Bytes/s
+- \Logischer Datenträger(D:)\Auf den Datenträger geschriebene Bytes/s
+- \Logischer Datenträger(D:)\Vom Datenträger gelesene Bytes/s
+
+Wenn die Konfiguration ordnungsgemäß festgelegt ist, aber immer noch keine metrischen Daten angezeigt werden, befolgen Sie für die weitere Untersuchung die folgenden Leitlinien.
+
+
 ## <a name="azure-diagnostics-is-not-starting"></a>Die Azure-Diagnose wird nicht gestartet.
 Sehen Sie sich die Dateien **DiagnosticsPluginLauncher.log** und **DiagnosticsPlugin.log** am oben angegebenen Speicherort der Protokolldateien an, um Informationen dazu zu erhalten, warum die Diagnose nicht gestartet werden konnte. 
 
@@ -82,12 +110,12 @@ Lösung: Korrigieren Sie die Diagnosekonfiguration, und installieren Sie die Dia
 Wenn das Speicherkonto richtig konfiguriert wurde, sollten Sie per Remotedesktop auf den Computer zugreifen und sicherstellen, dass „DiagnosticsPlugin.exe“ und „MonAgentCore.exe“ ausgeführt werden. Falls nicht, helfen Ihnen die Informationen unter [Die Azure-Diagnose wird nicht gestartet](#azure-diagnostics-is-not-starting) weiter. Wenn die Prozesse ausgeführt werden, können Sie zu [Lokale Erfassung von Daten](#is-data-getting-captured-locally) springen und die Anleitung befolgen.
 
 ### <a name="part-of-the-data-is-missing"></a>Ein Teil der Daten fehlt
-Trifft zu, wenn Sie einige Daten erhalten, andere dagegen nicht. Dies bedeutet, dass die Datenerfassung bzw. Übertragungspipeline richtig festgelegt wurde. Mit den Informationen in den folgenden Unterabschnitten können Sie eingrenzen, was die Ursache für das Problem ist:
+Trifft zu, wenn Sie einige Daten erhalten, andere dagegen nicht. Dies bedeutet, dass die Datenerfassung bzw. Übertragungspipeline richtig festgelegt wurde. Mit den Informationen in den folgenden Unterabschnitten können Sie eingrenzen, was die Ursache des Problems ist:
 #### <a name="is-collection-configured"></a>Konfiguration der Sammlung: 
 Die Diagnosekonfiguration enthält den Teil, der bewirkt, dass Daten eines bestimmten Typs erfasst werden. [Prüfen Sie Ihre Konfiguration](#how-to-check-diagnostics-extension-configuration), um sich zu vergewissern, dass Sie nicht nach Daten suchen, für die Sie die Sammlung nicht konfiguriert haben.
 #### <a name="is-the-host-generating-data"></a>Generierung von Daten durch den Host:
 - **Leistungsindikatoren**: Öffnen Sie den Systemmonitor, und überprüfen Sie den Leistungsindikator.
-- **Ablaufverfolgungsprotokolle**: Greifen Sie per Remotedesktop auf die VM zu, und fügen Sie der Konfigurationsdatei der App einen TextWriterTraceListener hinzu.  Informationen zum Einrichten des Textlisteners finden Sie unter „http://msdn.microsoft.com/en-us/library/sk36c28t.aspx“.  Stellen Sie sicher, dass für das `<trace>`-Element `<trace autoflush="true">` festgelegt ist.<br />
+- **Ablaufverfolgungsprotokolle**: Greifen Sie per Remotedesktop auf die VM zu, und fügen Sie der Konfigurationsdatei der App einen TextWriterTraceListener hinzu.  Informationen zum Einrichten des Textlisteners finden Sie unter „http://msdn.microsoft.com/library/sk36c28t.aspx“.  Stellen Sie sicher, dass für das `<trace>`-Element `<trace autoflush="true">` festgelegt ist.<br />
 Wenn Sie nicht sehen, dass Ablaufverfolgungsprotokolle generiert werden, helfen Ihnen die Informationen unter [Weitere Informationen zu fehlenden Ablaufverfolgungsprotokollen](#more-about-trace-logs-missing) weiter.
 - **ETW-Ablaufverfolgungen**: Greifen Sie per Remotedesktop auf die VM zu, und installieren Sie PerfView.  Führen Sie in PerfView die Optionen „File“ > „User Command“ > „Listen etwprovider1,etwprovider2“ („Datei“ > „Benutzerbefehl“ > „Lauschen etwprovider1,etwprovider2“) usw. aus.  Beachten Sie, dass beim Befehl „Listen“ (Lauschen) die Groß-/Kleinschreibung beachtet wird und die kommagetrennte Liste mit ETW-Anbietern keine Leerstellen enthalten darf.  Falls der Befehl nicht ausgeführt werden kann, können Sie im Perfview-Tool unten rechts auf die Schaltfläche „Log“ (Protokoll) klicken, um anzuzeigen, was ausgeführt werden sollte und wie das Ergebnis lautet.  Wenn die Eingabe richtig ist, wird ein neues Fenster angezeigt, und innerhalb einiger Sekunden werden ETW-Ablaufverfolgungen sichtbar.
 - **Ereignisprotokolle**: Greifen Sie per Remotedesktop auf die VM zu. Öffnen Sie `Event Viewer`, und stellen Sie sicher, dass die Ereignisse vorhanden sind.
@@ -122,13 +150,13 @@ Die Tabellen im Azure-Speicher, die ETW-Ereignisse enthalten, werden anhand des 
 Beispiel:
 
 ```XML
-        <EtwEventSourceProviderConfiguration provider=”prov1”>
-          <Event id=”1” />
-          <Event id=”2” eventDestination=”dest1” />
+        <EtwEventSourceProviderConfiguration provider="prov1">
+          <Event id="1" />
+          <Event id="2" eventDestination="dest1" />
           <DefaultEvents />
         </EtwEventSourceProviderConfiguration>
-        <EtwEventSourceProviderConfiguration provider=”prov2”>
-          <DefaultEvents eventDestination=”dest2” />
+        <EtwEventSourceProviderConfiguration provider="prov2">
+          <DefaultEvents eventDestination="dest2" />
         </EtwEventSourceProviderConfiguration>
 ```
 ```JSON
@@ -205,7 +233,7 @@ Das Plug-In gibt die folgenden Exitcodes zurück:
 | -112 |Allgemeiner Fehler |
 
 ### <a name="local-log-extraction"></a>Extraktion von lokalen Protokollen
-Der Monitoring Agent sammelt Protokolle und Artefakte in Form von `.tsf`-Dateien. Die `.tsf`-Datei ist nicht lesbar, aber Sie können sie wie folgt in eine `.csv`-Datei konvertieren: 
+Der Überwachungs-Agent sammelt Protokolle und Artefakte in Form von `.tsf`-Dateien. Die `.tsf`-Datei ist nicht lesbar, aber Sie können sie wie folgt in eine `.csv`-Datei konvertieren: 
 
 ```
 <Azure diagnostics extension package>\Monitor\x64\table2csv.exe <relevantLogFile>.tsf
@@ -239,8 +267,9 @@ System.IO.FileLoadException: Could not load file or assembly 'System.Threading.T
 
 **2. Daten von Leistungsindikatoren sind im Speicher verfügbar, werden aber nicht im Portal angezeigt:**
 
-Im Portal für virtuelle Computer werden bestimmte Leistungsindikatoren standardmäßig angezeigt. Es kann sein, dass diese nicht angezeigt werden, Sie aber wissen, dass sie generiert werden, da die Daten im Speicher verfügbar sind. Prüfen Sie in diesem Fall Folgendes:
+Im Portal für virtuelle Computer werden bestimmte Leistungsindikatoren standardmäßig angezeigt. Es kann sein, dass diese nicht angezeigt werden, Sie aber wissen, dass sie generiert werden, da die Daten im Speicher verfügbar sind. Prüfen Sie Folgendes:
 - Haben die Daten im Speicher englische Indikatornamen? Wenn die Indikatornamen nicht auf Englisch sind, können sie vom Portalmetrikdiagramm nicht erkannt werden.
 - Wenn Sie in den Namen Ihrer Leistungsindikatoren Platzhalter (\*) verwenden, ist es für das Portal nicht möglich, den konfigurierten und erfassten Indikator zu korrelieren.
 
 **Lösung**: Ändern Sie die Sprache des Computers für Systemkonten in Englisch. „Systemsteuerung“ > „Region“ > „Verwaltung“ > „Einstellungen kopieren“: Deaktivieren Sie die Option „Willkommensseite und Systemkonten“, damit die benutzerdefinierte Sprache nicht auf das Systemkonto angewendet wird. Stellen Sie auch sicher, dass Sie keine Platzhalter verwenden, wenn Sie das Portal als vorrangige Benutzeroberfläche nutzen möchten.
+

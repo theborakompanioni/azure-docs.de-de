@@ -4,7 +4,7 @@ description: Schreiben von Abfragen in Stream Analytics und Abfragen von Daten |
 keywords: "Vorgehensweise für das Schreiben von Abfragen, Abfragen von Daten, Schreiben einer Abfrage, Schreiben von Abfragen"
 documentationcenter: 
 services: stream-analytics
-author: jeffstokes72
+author: samacha
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 0e9cdadd-0ee0-4bee-b65b-4a06fb863c95
@@ -14,20 +14,19 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
-ms.author: jeffstok
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: abfc94fe9a4b35dae33de7bc39d5dac2fcb59afc
+ms.author: samacha
+ms.translationtype: HT
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: 215b774c20d80a67b1cefa2634131bd44860c692
 ms.contentlocale: de-de
-ms.lasthandoff: 07/04/2017
-
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="how-to-write-queries-in-stream-analytics"></a>Schreiben von Abfragen in Stream Analytics
 Das Schreiben von Abfragen für die Datenstrom-Verarbeitungslogik in Azure Stream Analytics wird als „beständige Abfrage“ implementiert, die vor dem Starten eines Auftrags definiert und für Daten ausgeführt wird, während sie den Auftrag erreicht. Die Datenumwandlung wird in einer SQL-ähnlichen Abfragesprache ausgedrückt, die größtenteils eine Teilmenge von T-SQL mit einigen hinzugefügten Spracherweiterungen wie [Windowing](https://msdn.microsoft.com/library/azure/dn835019.aspx) ist, die zum Ausdrücken von zeitlicher Semantik verwendet wird.
 
 ## <a name="writing-queries"></a>Schreiben von Abfragen:
-1. Klicken Sie im Stream Analytics-Auftrag im Azure-Verwaltungsportal auf **Abfrage**.
+1. Klicken Sie im Stream Analytics-Auftrag im Azure-Portal auf **Abfrage**.
    
     ![Auswählen der Abfrage](./media/stream-analytics-write-queries/1-stream-analytics-write-queries.png)  
    
@@ -52,18 +51,18 @@ Sie können testen, ob sich die Abfrage wie erwartet verhält, indem Sie sie im 
 1. Stellen Sie sicher, dass keine Fehler in der Abfrage enthalten sind (andernfalls ist die Schaltfläche "Testen" deaktiviert), und klicken Sie dann auf die Schaltfläche "Testen".  
    
    ![Testen der Abfrage von Daten](./media/stream-analytics-write-queries/3-stream-analytics-write-queries.png)  
-2. Sie werden aufgefordert, für jede Eingabe die Dateien anzugeben, auf die in der Abfrage verwiesen wird. In diesem Beispiel bleibt die Vorlageabfrage so, wie sie ist, damit Sie im Dialogfeld dazu aufgefordert werden, eine Eingabe mit dem Namen "yourinputalias" vorzunehmen.  
+2. Sie werden aufgefordert, für jede Eingabe die Dateien anzugeben, auf die in der Abfrage verwiesen wird. In diesem Beispiel bleibt die Vorlageabfrage so, wie sie ist, damit Sie im Dialogfeld dazu aufgefordert werden, eine Eingabe mit dem Namen "yourinputalias" vorzunehmen.
    
    ![Testen der Datenabfrage](./media/stream-analytics-write-queries/4-stream-analytics-write-queries.png)  
-3. Navigieren Sie zu einer Testdatei. Es sind mehrere Beispieldateien auf [GitHub](https://github.com/Azure/azure-stream-analytics/tree/master/Sample Data) erhältlich und Sie können auch Beispieldaten aus Ihren eigenen Datenstromeingaben über die Funktion „Beispieldaten“ in der Eingaberegisterkarte abrufen.  
+3. Navigieren Sie zu einer Testdatei. Es sind mehrere Beispieldateien auf [GitHub](https://github.com/Azure/azure-stream-analytics/tree/master/Sample Data) erhältlich und Sie können auch Beispieldaten aus Ihren eigenen Datenstromeingaben über die Funktion „Beispieldaten“ in der Eingaberegisterkarte abrufen.
    
    ![Abfrageeingabe](./media/stream-analytics-write-queries/5-stream-analytics-write-queries.png)  
-4. Nach dem Schließen des Dialogfelds läuft die Abfrage über die Testdaten und Sie sehen die Ergebnisse am unteren Rand der Abfrageseite.  
+4. Nach dem Schließen des Dialogfelds läuft die Abfrage über die Testdaten und Sie sehen die Ergebnisse am unteren Rand der Abfrageseite.
    
    ![Abfragezusammenfassung](./media/stream-analytics-write-queries/6-stream-analytics-write-queries.png)  
 
 ## <a name="get-help"></a>Hier erhalten Sie Hilfe
-Um Hilfe zu erhalten, besuchen Sie unser [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)
+Um Hilfe zu erhalten, besuchen Sie unser [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Einführung in Azure Stream Analytics](stream-analytics-introduction.md)

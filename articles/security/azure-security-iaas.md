@@ -12,18 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/29/2017
+ms.date: 08/29/2017
 ms.author: barclayn
-translationtype: Human Translation
-ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
-ms.openlocfilehash: 3123c8d780406c92f04592767e47c217c0a0ba73
-ms.lasthandoff: 03/28/2017
-
-
-
+ms.translationtype: HT
+ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
+ms.openlocfilehash: f93211d289553b7a8afbe8c17fa4847f3d4585a8
+ms.contentlocale: de-de
+ms.lasthandoff: 08/30/2017
 
 ---
-
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Bewährte Sicherheitsmethoden für IaaS-Workloads in Azure
 
 Als Sie die Verschiebung von Workloads in Azure IaaS (Infrastructure-as-a-Service) in Betracht gezogen haben, kamen Ihnen einige Überlegungen wahrscheinlich bereits bekannt vor. Unter Umständen sind Sie bereits mit dem Schutz virtueller Umgebungen vertraut. Bei der Verschiebung nach Azure IaaS können Sie auf Ihr Know-how im Zusammenhang mit dem Schutz virtueller Umgebungen zurückgreifen und eine Reihe neuer Optionen für den Schutz Ihrer Ressourcen nutzen.
@@ -42,11 +39,11 @@ Wir erläutern einige der in Azure verfügbaren Optionen, die Sie bei der Erfül
 
 Häufig werden Organisationen Opfer von Cyberangriffen, weil Administratoren bei der Ausführung von Aktionen Konten mit erhöhten Rechten verwenden. In der Regel tun sie dies nicht in böser Absicht, sondern weil es ihnen die vorhandene Konfiguration und die vorhandenen Prozesse erlauben. Die meisten dieser Benutzer sind sich des Risikos dieser Aktionen grundsätzlich bewusst, das hält sie aber nicht davon ab, sie trotzdem auszuführen.
 
-Tätigkeiten wie das Abrufen von E-Mails oder das Surfen im Internet erscheinen zunächst recht harmlos. Für Konten mit erhöhten Rechten besteht dabei jedoch unter Umständen die Gefahr, dass böswillige Akteure über Surfaktivitäten, speziell konzipierte E-Mails oder andere Techniken Zugriff auf Ihr Unternehmen erlangen. Daher empfehlen wir bei allen Azure-Administrationsaufgaben dringend die Verwendung sicherer Verwaltungsarbeitsstationen, um das Risiko einer versehentlichen Kompromittierung zu verringern.
+Tätigkeiten wie das Abrufen von E-Mails oder das Surfen im Internet erscheinen zunächst recht harmlos. Doch sie stellen möglicherweise Konten mit erhöhten Rechten böswilligen Akteuren zur Verfügung, die Ihr System gefährden können. Aktivitäten im Browser, speziell gestaltete E-Mails oder andere Methoden können genutzt werden, um sich Zugriff auf Ihr Unternehmenssystem zu verschaffen. Daher empfehlen wir bei allen Azure-Administrationsaufgaben dringend die Verwendung sicherer Verwaltungsarbeitsstationen. Diese bieten eine Möglichkeit, das Risiko einer versehentlichen Gefährdung des Systems zu verringern.
 
-Privileged Access Workstations (PAWs) bieten für sensible Aufgaben ein dediziertes Betriebssystem, das vor Internetangriffen und Bedrohungsvektoren geschützt ist. Die Trennung sensibler Aufgaben und Konten von Arbeitsstationen und Geräten für alltägliche Aufgaben bietet einen hohen Schutz vor Phishingangriffen, vor Sicherheitsrisiken für das Betriebssystem und die Anwendungen, vor verschiedenen Identitätswechselangriffen und vor dem Diebstahl von Anmeldeinformationen (beispielsweise mithilfe von Keyloggern, Pass-the-Hash und Pass-the-Ticket).
+Privileged Access Workstations (PAWs) bieten für sensible Aufgaben ein dediziertes Betriebssystem, das vor Internetangriffen und Bedrohungsvektoren geschützt ist. Das Trennen dieser sensiblen Aufgaben und Konten von Arbeitsstationen und Geräten für die tagtägliche Nutzung sorgt für hohen Schutz. Diese Trennung schränkt die Auswirkungen von Phishingangriffen, Schwachstellen in Anwendungen und im Betriebssystem, verschiedenartigen Angriffen durch Identitätswechsel und des Diebstahls von Anmeldeinformationen ein. (Protokollierung von Tastaturanschlägen, Pass-the-Hash und Pass-the-Ticket)
 
-Der PAW-Ansatz ist eine Erweiterung der bewährten und empfohlenen Methode, ein individuell zugewiesenes, vom Standardbenutzerkonto getrenntes Administratorkonto zu verwenden. Eine PAW bietet eine vertrauenswürdige Arbeitsstation für diese sensiblen Konten.
+Der PAW-Ansatz ist eine Erweiterung der bewährten und empfohlenen Methode, ein individuell zugewiesenes Administratorkonto zu verwenden. Das Administratorkonto ist von einem Standardbenutzerkonto getrennt. Eine PAW bietet eine vertrauenswürdige Arbeitsstation für diese sensiblen Konten.
 
 Weitere Informationen und eine Implementierungsanleitung finden Sie unter [Privileged Access Workstations](https://technet.microsoft.com/windows-server-docs/security/securing-privileged-access/privileged-access-workstations).
 
@@ -68,7 +65,7 @@ Der folgende Screenshot zeigt einige der für Azure Multi-Factor Authentication 
 
 ## <a name="limit-and-constrain-administrative-access"></a>Begrenzen und Beschränken des Administratorzugriffs
 
-Es ist extrem wichtig, die Verwaltungskonten für Ihr Azure-Abonnement abzusichern. Wenn auch nur eines dieser Konten kompromittiert wird, verlieren alle anderen Schritte, die möglicherweise zur Gewährleistung der Vertraulichkeit und Integrität Ihrer Daten unternommen wurden, ihre Wirkung. Wie sich kürzlich durch den [Edward-Snowden-Leak](https://en.wikipedia.org/wiki/Edward_Snowden) von geheimen Informationen zeigte, sind interne Angriffe in allen Organisationen eine riesige Sicherheitsbedrohung.
+Es ist extrem wichtig, die Verwaltungskonten für Ihr Azure-Abonnement abzusichern. Wenn auch nur eines dieser Konten kompromittiert wird, verlieren alle anderen Schritte, die möglicherweise zur Gewährleistung der Vertraulichkeit und Integrität Ihrer Daten unternommen wurden, ihre Wirkung. Wie kürzlich von [Edward Snowden ](https://en.wikipedia.org/wiki/Edward_Snowden) gezeigt, sind interne Angriffe in allen Organisationen eine riesige Sicherheitsbedrohung.
 
 Im Anschluss finden Sie Beispielkriterien zur Beurteilung von Personen mit Administratorrechten:
 
@@ -146,7 +143,7 @@ Jeder Benutzer mit einem Azure-Abonnement kann Schlüsseltresore erstellen und v
 
 Weitere Informationen finden Sie unter [Azure Disk Encryption für virtuelle Windows- und Linux-IaaS-Computer](azure-security-disk-encryption.md).
 
-[Azure Storage Service Encryption](../storage/storage-service-encryption.md) schützt Ihre ruhenden Daten. Die Aktivierung erfolgt auf der Speicherkontoebene. Die Lösung verschlüsselt Daten beim Schreiben in unsere Datencenter und entschlüsselt sie automatisch, wenn Sie darauf zugreifen. Sie unterstützt die folgenden Szenarien:
+[Azure Storage Service Encryption](../storage/common/storage-service-encryption.md) schützt Ihre ruhenden Daten. Die Aktivierung erfolgt auf der Speicherkontoebene. Die Lösung verschlüsselt Daten beim Schreiben in unsere Datencenter und entschlüsselt sie automatisch, wenn Sie darauf zugreifen. Sie unterstützt die folgenden Szenarien:
 
 - Verschlüsselung von Block-, Anfüge- und Seitenblobs
 - Verschlüsselung archivierter VHDs und Vorlagen, die aus der lokalen Umgebung in Azure eingebracht werden
@@ -228,10 +225,7 @@ Der folgende Screenshot zeigt ein Beispiel der Informationen, die in Operations 
 
 ![Sicherheitsbaselines für Operations Management Suite](./media/azure-security-iaas/oms-security-baseline.png)
 
-
-
 ## <a name="next-steps"></a>Nächste Schritte
-
 
 * [Blog des Azure-Sicherheitsteams](https://blogs.msdn.microsoft.com/azuresecurity/)
 * [Microsoft Security Response Center](https://technet.microsoft.com/library/dn440717.aspx)

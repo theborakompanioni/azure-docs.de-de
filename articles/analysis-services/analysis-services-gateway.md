@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 08/21/2017
 ms.author: owend
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: 8c142c5e89c5e4eb45bddd0943a6a130cc876f5a
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: 514b5404e8cbfa0baa657eb41736e20cad502638
 ms.contentlocale: de-de
 ms.lasthandoff: 08/24/2017
 
@@ -99,11 +99,11 @@ Sie können erzwingen, dass das Gateway mit Azure Service Bus über HTTPS (und n
 
 ### <a name="general"></a>Allgemein
 
-**F**: Benötige ich ein Gateway für Datenquellen in der Cloud, z.B. SQL Azure? <br/>
+**F**: Benötige ich ein Gateway für Datenquellen in der Cloud, z.B. Azure SQL-Datenbank? <br/>
 **A**: Nein. Ein Gateway dient nur der Verbindung mit lokalen Datenquellen.
 
 **F**: Muss das Gateway auf dem gleichen Computer wie die Datenquelle installiert werden? <br/>
-**A**: Nein. Das Gateway stellt mithilfe der bereitgestellten Verbindungsinformationen eine Verbindung mit der Datenquelle her. Stellen Sie sich das Gateway in diesem Sinne als Clientanwendung vor. Für das Gateway ist nur die Funktion zum Herstellen der Verbindung mit dem angegebenen Servernamen erforderlich.
+**A**: Nein. Das Gateway stellt mithilfe der bereitgestellten Verbindungsinformationen eine Verbindung mit der Datenquelle her. Stellen Sie sich das Gateway in diesem Sinne als Clientanwendung vor. Für das Gateway ist nur die Funktion zum Herstellen der Verbindung mit dem angegebenen Servernamen erforderlich, üblicherweise im gleichen Netzwerk.
 
 <a name="why-azure-work-school-account"></a>
 
@@ -130,7 +130,7 @@ Sie können mithilfe des Drittanbietertools Azure Speed Test-App messen, wie hoc
 **A**: Die Ports und Hosts, die das Gateway verwendet.
 
 **F**: Wie wird der eigentliche Windows-Dienst genannt?<br/>
-**A**: In „Dienste“ hat das Gateway den Namen „Power BI Enterprise Gateway-Dienst“.
+**A**: In „Dienste“ hat das Gateway den Namen „Lokales Datengateway“.
 
 **F**: Kann der Gateway-Windows-Dienst mit einem Azure Active Directory-Konto ausgeführt werden? <br/>
 **A**: Nein. Der Windows-Dienst benötigt ein gültiges Windows-Konto. Standardmäßig wird er mit der Dienst-SID „NT SERVICE\PBIEgwService“ ausgeführt.
@@ -151,7 +151,7 @@ Sie können mithilfe des Drittanbietertools Azure Speed Test-App messen, wie hoc
 Sie können auch Tools anzeigen, die Ihre Datenquelle für die Verfolgung von Abfrageabläufen bietet. Sie können z.B. Erweiterte Ereignisse oder SQL Profiler für SQL Server und Analysis Services verwenden.
 
 **F**: Wo sind die Gatewayprotokolle? <br/>
-**A**: Siehe „Tools“ weiter unten in diesem Thema.
+**A**: Siehe „Protokolle“ weiter unten in diesem Thema.
 
 ### <a name="update"></a>Update auf die aktuelle Version
 

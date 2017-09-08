@@ -1,6 +1,6 @@
 ---
 title: "Konfigurieren der SSL-Auslagerung – Azure Application Gateway (Azure-Portal) | Microsoft-Dokumentation"
-description: "Diese Seite enthält Anweisungen zum Erstellen eines Anwendungsgateways mit SSL-Auslagerung über das Portal."
+description: "Dieser Artikel enthält Anweisungen zum Erstellen eines Anwendungsgateways mit SSL-Auslagerung über das Azure-Portal."
 documentationcenter: na
 services: application-gateway
 author: georgewallace
@@ -15,13 +15,13 @@ ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: gwallace
 ms.translationtype: HT
-ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
-ms.openlocfilehash: f61be0cc4c9274c9914f7c468ce48a2a3d0a4f4a
+ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
+ms.openlocfilehash: 23b5a529e7ee7db5615340352fb68b2e64e45972
 ms.contentlocale: de-de
-ms.lasthandoff: 08/04/2017
+ms.lasthandoff: 08/30/2017
 
 ---
-# <a name="configure-an-application-gateway-for-ssl-offload-by-using-the-portal"></a>Konfigurieren eines Anwendungsgateways für die SSL-Auslagerung über das Portal
+# <a name="configure-an-application-gateway-for-ssl-offload-by-using-the-azure-portal"></a>Konfigurieren eines Anwendungsgateways für die SSL-Auslagerung über das Azure-Portal
 
 > [!div class="op_single_selector"]
 > * [Azure-Portal](application-gateway-ssl-portal.md)
@@ -33,59 +33,53 @@ Azure Application Gateway kann so konfiguriert werden, dass damit die Secure Soc
 
 ## <a name="scenario"></a>Szenario
 
-Das folgende Szenario führt Sie durch die Konfiguration der SSL-Auslagerung in einem vorhandenen Anwendungsgateway. Für dieses Szenario wird davon ausgegangen, dass Sie die Schritte unter [Erstellen eines Anwendungsgateways](application-gateway-create-gateway-portal.md)bereits durchgeführt haben.
+Das folgende Szenario führt Sie durch die Konfiguration der SSL-Auslagerung in einem vorhandenen Anwendungsgateway. Für dieses Szenario wird davon ausgegangen, dass Sie die Schritte unter [Erstellen eines Anwendungsgateways](application-gateway-create-gateway-portal.md) bereits durchgeführt haben.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Zum Konfigurieren der SSL-Auslagerung mit einem Anwendungsgateway ist ein Zertifikat erforderlich. Dieses Zertifikat wird in das Anwendungsgateway geladen und zum Ver- und Entschlüsseln des über SSL gesendeten Datenverkehrs verwendet. Das Zertifikat muss im PFX-Format (privater Informationsaustausch) vorliegen. In diesem Dateiformat kann der private Schlüssel exportiert werden, was erforderlich ist, damit das Anwendungsgateway die Ver- und Entschlüsselung des Datenverkehrs durchführen kann.
+Zum Konfigurieren der SSL-Auslagerung mit einem Anwendungsgateway ist ein Zertifikat erforderlich. Dieses Zertifikat wird in das Anwendungsgateway geladen und zum Ver- und Entschlüsseln des über SSL gesendeten Datenverkehrs verwendet. Das Zertifikat muss im PFX-Format (privater Informationsaustausch) vorliegen. In diesem Dateiformat können Sie den privaten Schlüssel exportieren. Das ist erforderlich, damit das Anwendungsgateway die Ver- und Entschlüsselung des Datenverkehrs durchführen kann.
 
 ## <a name="add-an-https-listener"></a>Hinzufügen eines HTTPS-Listeners
 
-Der HTTPS-Listener sucht basierend auf seiner Konfiguration nach Datenverkehr und hilft dabei, den Datenverkehr an die Back-End-Pools zu leiten.
+Der HTTPS-Listener sucht basierend auf seiner Konfiguration nach Datenverkehr und hilft dabei, den Datenverkehr an die Back-End-Pools zu leiten. Gehen Sie folgendermaßen vor, um einen HTTPS-Listener hinzuzufügen:
 
-### <a name="step-1"></a>Schritt 1
+   1. Wechseln Sie zum Azure-Portal, und wählen Sie ein vorhandenes Anwendungsgateway aus.
 
-Navigieren Sie zum Azure-Portal, und wählen Sie ein vorhandenes Anwendungsgateway aus.
+   2. Wählen Sie **Listener** und dann die Schaltfläche **Hinzufügen** aus, um einen Listener hinzuzufügen.
 
-### <a name="step-2"></a>Schritt 2
+   ![Bereich mit der Übersicht über Application Gateway][1]
 
-Klicken Sie auf „Listener“ und dann auf die Schaltfläche „Hinzufügen“, um einen Listener hinzuzufügen.
 
-![Übersichtsblatt für Anwendungsgateway][1]
+   3. Stellen Sie die folgenden erforderlichen Informationen für den Listener bereit, und laden Sie das PFX-Zertifikat hoch:
+      - **Name**: Der Anzeigename des Listeners.
 
-### <a name="step-3"></a>Schritt 3
+      - **Front-End-IP-Konfiguration**: Die IP-Konfiguration des Front-Ends, die für den Listener verwendet wird.
 
-Stellen Sie die erforderlichen Informationen für den Listener bereit, und laden Sie das PFX-Zertifikat hoch. Wenn Sie fertig sind, klicken Sie auf „OK“.
+      - **Front-End-Port (Name/Port)**: Der im Front-End des Anwendungsgateways verwendete Anzeigename für den Port und der tatsächlich verwendete Port.
 
-**Name** : Dieser Wert ist der Anzeigename des Listeners.
+      - **Protokoll**: Ein Schalter, mit dem bestimmt wird, ob für das Front-End HTTP oder HTTPS verwendet werden soll.
 
-**Front-End-IP-Konfiguration** : Dieser Wert gibt die IP-Konfiguration des Front-Ends an, die für den Listener verwendet wird.
+      - **Zertifikat (Name/Kennwort)**: Wenn die SSL-Auslagerung verwendet wird, ist für diese Einstellung ein PFX-Zertifikat erforderlich. Ein Anzeigename und ein Kennwort sind ebenfalls erforderlich.
 
-**Front-End-Port (Name/Port)** : Der im Front-End des Anwendungsgateways verwendete Anzeigename für den Port und der tatsächlich verwendete Port.
+   4. Klicken Sie auf **OK**.
 
-**Protokoll** : Ein Schalter, mit dem bestimmt wird, ob für das Front-End HTTP oder HTTPS verwendet werden soll.
-
-**Zertifikat (Name/Kennwort)** : Wenn die SSL-Auslagerung verwendet wird, ist für diese Einstellung ein PFX-Zertifikat sowie der zugehörige Anzeigename und das zugehörige Kennwort erforderlich.
-
-![Blatt zum Hinzufügen eines Listeners][2]
+![Bereich zum Hinzufügen eines Listeners][2]
 
 ## <a name="create-a-rule-and-associate-it-to-the-listener"></a>Erstellen einer Regel und Verknüpfen der Regel mit dem Listener
 
-Der Listener wurde erstellt. Jetzt muss eine Regel erstellt werden, um den Datenverkehr vom Listener zu verarbeiten. Regeln definieren, wie Datenverkehr an die Back-End-Pools weitergeleitet wird. Sie basieren auf mehreren Konfigurationseinstellungen, etwa ob die cookiebasierte Sitzungsaffinität verwendet wird, sowie auf dem Protokoll, dem Port und Integritätstests.
+Der Listener wurde erstellt. Als Nächstes erstellen Sie eine Regel, um den Datenverkehr vom Listener zu verarbeiten. Regeln definieren, wie Datenverkehr basierend auf mehreren Konfigurationseinstellungen an die Back-End-Adresspools weitergeleitet wird. Diese Einstellungen umfassen das Protokoll, den Port und die Integritätstests sowie die Angabe, ob cookiebasierte Sitzungsaffinität verwendet wird. Gehen Sie folgendermaßen vor, um eine Regel zu erstellen und dem Listener zuzuordnen:
 
-### <a name="step-1"></a>Schritt 1
 
-Klicken Sie für das Anwendungsgateway auf **Regeln** , und klicken Sie dann auf „Hinzufügen“.
+   1. Wählen Sie für das Anwendungsgateway **Regeln** und dann **Hinzufügen** aus.
 
-![Blatt mit Regeln des Anwendungsgateways][3]
+   ![Bereich mit Regeln für das Anwendungsgateway][3]
 
-### <a name="step-2"></a>Schritt 2
 
-Geben Sie auf dem Blatt **Einfache Regel hinzufügen** den Anzeigenamen für die Regel ein, und fügen Sie den im vorherigen Schritt erstellten Listener hinzu. Wählen Sie den geeigneten Back-End-Pool und die geeigneten HTTP-Einstellungen aus, und klicken Sie auf **OK**
+   2. Geben Sie unter **Einfache Regel hinzufügen** einen Anzeigenamen für die Regel in das Feld **Name** ein, und wählen Sie dann den **Listener** aus, den Sie im vorherigen Schritt erstellt haben. Wählen Sie den geeigneten **Back-End-Pool** sowie die geeignete **HTTP-Einstellung** und dann **OK** aus.
 
-![Fenster mit HTTPS-Einstellungen][4]
+   ![Fenster mit HTTPS-Einstellungen][4]
 
-Die Einstellungen sind jetzt im Anwendungsgateway gespeichert. Es kann eine Weile dauern, bis die Einstellungen gespeichert sind und im Portal oder über PowerShell angezeigt werden können. Sobald die Speicherung abgeschlossen ist, übernimmt das Anwendungsgateway die Ver- und Entschlüsselung des Datenverkehrs. Sämtlicher Datenverkehr zwischen dem Anwendungsgateway und den Back-End-Webservern werden über HTTP verarbeitet. Jegliche Kommunikation an den Client wird, sofern sie über HTTPS initiiert wurde, verschlüsselt an den Client zurückgegeben.
+Die Einstellungen sind jetzt im Anwendungsgateway gespeichert. Es kann eine Weile dauern, bis die Einstellungen gespeichert sind und im Portal oder über PowerShell angezeigt werden können. Nach dem Speichern übernimmt das Anwendungsgateway die Ver- und Entschlüsselung des Datenverkehrs. Sämtlicher Datenverkehr zwischen dem Anwendungsgateway und den Back-End-Webservern werden über HTTP verarbeitet. Jegliche Kommunikation an den Client wird, sofern sie über HTTPS initiiert wurde, verschlüsselt an den Client zurückgegeben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -95,4 +89,5 @@ Informationen zum Konfigurieren eines benutzerdefinierten Integritätstests mit 
 [2]: ./media/application-gateway-ssl-portal/figure2.png
 [3]: ./media/application-gateway-ssl-portal/figure3.png
 [4]: ./media/application-gateway-ssl-portal/figure4.png
+
 

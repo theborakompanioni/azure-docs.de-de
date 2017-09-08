@@ -1,4 +1,4 @@
----
+﻿---
 title: "Anfügen eines Datenträgers an einen virtuellen Linux-Computer in Azure | Microsoft-Dokumentation"
 description: "Erfahren Sie, wie Sie einen Datenträger mit dem klassischen Bereitstellungsmodell einer Linux-VM anfügen und den Datenträger initialisieren, sodass er einsatzbereit ist."
 services: virtual-machines-linux
@@ -15,9 +15,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2017
 ms.author: iainfou
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: 017ba7197e11c2b222082833d5acabb9e542b762
+ms.contentlocale: de-de
 ms.lasthandoff: 04/03/2017
 
 
