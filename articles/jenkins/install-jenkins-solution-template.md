@@ -93,7 +93,7 @@ Aktivieren Sie auf der Registerkarte **Source Code Management** (Quellcodeverwal
 
 ![Definieren des Git-Repositorys](./media/install-jenkins-solution-template/jenkins-job-git-configuration.png) 
 
-Wählen Sie auf der Registerkarte **Build** die Option **Add build step** (Buildschritt hinzufügen) und anschließend **Invoke Gradle script** (Gradle-Skript aufrufen) aus. Wählen Sie **Use Gradle Wrapper** (Gradle-Wrapper verwenden) aus, und geben Sie dann im Feld **Wrapper location** (Wrapper-Speicherort) die Zeichenfolge `complete` und im Feld **Tasks** (Aufgaben) die Zeichenfolge `build` ein.
+Wählen Sie auf der Registerkarte **Build** die Option **Add build step** (Buildschritt hinzufügen) und anschließend **Invoke Gradle script** (Gradle-Skript aufrufen) aus. Wählen Sie **Use Gradle Wrapper** (Gradle-Wrapper verwenden) aus, und geben Sie dann im Feld **Wrapper location** (Wrapperspeicherort) die Zeichenfolge `complete` und im Feld **Tasks** (Aufgaben) die Zeichenfolge `build` ein.
 
 ![Verwenden des Gradle-Wrappers für die Erstellung](./media/install-jenkins-solution-template/jenkins-job-gradle-config.png) 
 
