@@ -53,6 +53,12 @@
 ## Verwalten
 ### [Service Bus-Verwaltungsbibliotheken](service-bus-management-libraries.md)
 ### [Verwenden von Azure Resource Manager-Vorlagen](service-bus-resource-manager-overview.md)
+#### [Erstellen eines Namespaces](service-bus-resource-manager-namespace.md)
+#### [Erstellen eines Namespace und einer Warteschlange](service-bus-resource-manager-namespace-queue.md)
+#### [Erstellen eines Service Bus-Namespace mit Thema und Abonnement mit einer Azure Resource Manager-Vorlage](service-bus-resource-manager-namespace-topic.md)
+#### [Erstellen einer Autorisierungsregel für Namespace und Warteschlange](service-bus-resource-manager-namespace-auth-rule.md)
+#### [Erstellen eines Namespace mit Thema, Abonnement und Regel](service-bus-resource-manager-namespace-topic-with-rule.md)
+#### 
 ### [Verwenden von PowerShell zur Bereitstellung von Entitäten](service-bus-manage-with-ps.md)
 
 # Referenz
