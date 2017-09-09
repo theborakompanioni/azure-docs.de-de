@@ -12,18 +12,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/12/2017
+ms.date: 08/23/2017
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
-ms.openlocfilehash: a0d26b594ddbdcc7f1e414ebe2a2e936751a3c02
+ms.translationtype: HT
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 78afb2f065dde4a3e7a3ab787c939b3c52b72cc6
 ms.contentlocale: de-de
-ms.lasthandoff: 05/12/2017
-
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="log-analytics-log-search-rest-api"></a>Log Analytics-REST-API für die Protokollsuche
 In diesem Tutorial erfahren Sie im Rahmen eines allgemeinen Tutorials sowie anhand von Beispielen, wie Sie die Log Analytics-REST-API für die Protokollsuche verwenden. Log Analytics ist Teil der Operations Management Suite (OMS).
+
+> [!NOTE]
+> Wenn Ihr Arbeitsbereich auf die [neue Log Analytics-Abfragesprache](log-analytics-log-search-upgrade.md) aktualisiert wurde, sollten Sie weiter die ältere Abfragesprache mit der Protokollsuch-API verwenden, wie in diesem Artikel beschrieben.  Für die aktualisierten Arbeitsbereiche wird eine neue API veröffentlicht, und auch die Dokumentation wird zu diesem Zeitpunkt aktualisiert. 
 
 > [!NOTE]
 > Log Analytics hieß früher Operational Insights, weshalb dieser Name auch im Ressourcenanbieter verwendet wird.

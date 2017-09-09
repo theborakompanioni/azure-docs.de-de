@@ -4,7 +4,7 @@ description: "Mit Microsoft Azure Media Services können Sie Inhalte übermittel
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: SyntaxC4
+manager: cfowler
 editor: 
 ms.assetid: 4d2c10af-9ee0-408f-899b-33fa4c1d89b9
 ms.service: media-services
@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/18/2017
+ms.date: 08/25/2017
 ms.author: juliako
 ms.translationtype: HT
-ms.sourcegitcommit: 26c07d30f9166e0e52cb396cdd0576530939e442
-ms.openlocfilehash: 4996df4623a706e51ab00538c17590ebf2d71fc4
+ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
+ms.openlocfilehash: ae1b36c26e688e74eb8fcc1a4cdbd3be0c014c08
 ms.contentlocale: de-de
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="using-aes-128-dynamic-encryption-and-key-delivery-service"></a>Verwenden der dynamischen AES-128-Verschlüsselung und des Schlüsselbereitstellungsdiensts
@@ -177,7 +177,11 @@ Wenn Sie eine der Segmentdateien in einem Text-Editor öffnen (z.B. „http://te
     Fragments(video=0,format=m3u8-aapl)
     #EXT-X-ENDLIST
 
+>[!NOTE] 
+>Wenn Sie beabsichtigen, HLS mit AES-Verschlüsselung in Safari abzuspielen, lesen Sie [diesen Blogbeitrag](https://azure.microsoft.com/blog/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/).
+
 ### <a name="request-the-key-from-the-key-delivery-service"></a>Anfordern des Schlüssels vom Schlüsselübermittlungsdienst
+
 Im folgenden Code wird gezeigt, wie Sie eine Anforderung an den Media Services-Schlüsselbereitstellungsdienst senden und dabei einen aus dem Manifest extrahierten Schlüsselbereitstellungs-URI und ein Token senden. (Das Abrufen einfacher Webtoken aus einem sicheren Tokendienst wird in diesem Thema nicht behandelt.)
 
     private byte[] GetDeliveryKey(Uri keyDeliveryUri, string token)
@@ -220,7 +224,9 @@ Im folgenden Code wird gezeigt, wie Sie eine Anforderung an den Media Services-S
         return key;
     }
 
-## <a name="create-and-configure-a-visual-studio-project"></a>Erstellen und Konfigurieren eines Visual Studio-Projekts
+## <a name="protect-your-content-with-aes-128-using-net"></a>Schützen Ihrer Inhalte mit AES-128 mit .NET
+
+### <a name="create-and-configure-a-visual-studio-project"></a>Erstellen und Konfigurieren eines Visual Studio-Projekts
 
 1. Richten Sie Ihre Entwicklungsumgebung ein, und füllen Sie die Datei „app.config“ mit Verbindungsinformationen, wie unter [Media Services-Entwicklung mit .NET](media-services-dotnet-how-to-use.md) beschrieben. 
 2. Fügen Sie den **appSettings** in Ihrer Datei „app.config“ die folgenden Elemente hinzu:
@@ -228,7 +234,7 @@ Im folgenden Code wird gezeigt, wie Sie eine Anforderung an den Media Services-S
         <add key="Issuer" value="http://testacs.com"/>
         <add key="Audience" value="urn:test"/>
 
-## <a id="example"></a>Beispiel
+### <a id="example"></a>Beispiel
 
 Überschreiben Sie den Code in Ihrer Datei "Program.cs" mit dem in diesem Abschnitt gezeigten Code.
  
