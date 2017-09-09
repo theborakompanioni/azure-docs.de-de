@@ -132,6 +132,7 @@
 ## Verwalten von Geräten
 ### [Einführung](device-management-introduction.md)
 ### [Verwenden des Azure-Portals](device-management-azure-portal.md)
+### [Planen der Azure AD-Einbindung](active-directory-azureadjoin-deployment-aadjoindirect.md)
 ### [Häufig gestellte Fragen](device-management-faq.md)
 ### Aufgaben
 #### [Konfigurieren von bei Azure AD registrierten Windows 10-Geräten](device-management-azuread-registered-devices-windows10-setup.md)
@@ -142,15 +143,6 @@
 ### Problembehandlung
 #### [In Azure AD eingebundene Windows 10- und Windows Server 2016-Hybridgeräte](device-management-troubleshoot-hybrid-join-windows-current.md)
 #### [In Azure AD eingebundene ältere Windows-Hybridgeräte](device-management-troubleshoot-hybrid-join-windows-legacy.md)
-### [Azure AD Join](active-directory-azureadjoin-overview.md)
-#### [Planen](active-directory-azureadjoin-deployment-aadjoindirect.md)
-#### [Einrichten der Geräteregistrierung](active-directory-azureadjoin-setup.md)
-#### [Registrieren neuer Geräte](active-directory-azureadjoin-user-frx.md)
-#### [Bereitstellen](active-directory-azureadjoin-devices-group-policy.md)
-#### [Grundlegendes zur Windows 10-Integration](active-directory-azureadjoin-windows10-devices-overview.md)
-#### [Verwenden von Windows 10-Geräten](active-directory-azureadjoin-windows10-devices.md)
-#### [Verknüpfen Ihres Geräts](active-directory-azureadjoin-personal-device.md)
-#### [Verknüpfen eines Windows 10-Geräts](active-directory-azureadjoin-user-upgrade.md)
 
 ## Verwalten von Apps
 ### [Übersicht](active-directory-enable-sso-scenario.md)
@@ -299,6 +291,8 @@
 ### [Bedingter Zugriff](active-directory-conditional-access-azure-portal.md)
 #### [Erste Schritte](active-directory-conditional-access-azure-portal-get-started.md)
 #### [bewährten Methoden](active-directory-conditional-access-best-practices.md)
+#### [VPN-Konnektivität](active-directory-conditional-access-vpn-connectivity-windows10.md)
+#### [Verwaltung mobiler Apps](active-directory-conditional-access-mam.md)
 #### [Technische Referenz](active-directory-conditional-access-technical-reference.md)
 #### [Grundlegendes zu Geräterichtlinien](active-directory-conditional-access-device-policies.md)
 #### [Einrichten des Zugriffs auf verbundene Apps](active-directory-conditional-access-policy-connected-applications.md)
@@ -306,7 +300,6 @@
 #### [Häufig gestellte Fragen](active-directory-conditional-faqs.md)
 #### [Klassisches Portal](active-directory-conditional-access.md)
 ##### [Erste Schritte](active-directory-conditional-access-azuread-connected-apps.md)
-
 
 ### Windows Hello
 #### [Authentifizierung ohne Kennwort](active-directory-azureadjoin-passport.md)
