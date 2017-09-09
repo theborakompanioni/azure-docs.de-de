@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-translationtype: Human Translation
-ms.sourcegitcommit: 57d00f2192fed7a2e89ac94e110ebb7e84c83b72
-ms.openlocfilehash: e80136d096ba83ab5050c8d1d95a9e2abb7a3646
-
+ms.translationtype: HT
+ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
+ms.openlocfilehash: 7546650e6096a880f4fb4d0c94dd4ecc00b70160
+ms.contentlocale: de-de
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>Verbessern der Leistung durch Komprimieren von Dateien in Azure CDN
@@ -45,16 +46,16 @@ Es gibt zwei Methoden zur Aktivierung der Komprimierung:
 > 
 > 
 
-1. Klicken Sie auf dem Blatt „CDN-Profil“ auf den CDN-Endpunkt, den Sie verwalten möchten.
+1. Klicken Sie auf der Seite „CDN-Profil“ auf den CDN-Endpunkt, den Sie verwalten möchten.
    
-    ![Blade-Endpunkte für CDN-Profile](./media/cdn-file-compression/cdn-endpoints.png)
+    ![Seite „CDN-Profil“: Endpunkte](./media/cdn-file-compression/cdn-endpoints.png)
    
-    Das Blatt „CDN-Endpunkt“ öffnet sich.
+    Die Seite „CDN-Endpunkt“ wird geöffnet.
 2. Klicken Sie auf die Schaltfläche **Konfigurieren** .
    
-    ![Schaltfläche „Verwalten“ auf dem CDN-Profilblatt](./media/cdn-file-compression/cdn-config-btn.png)
+    ![Verwaltungsschaltfläche auf der Seite „CDN-Profil“](./media/cdn-file-compression/cdn-config-btn.png)
    
-    Es wird das Blatt „CDN-Konfiguration“ geöffnet.
+    Die Seite „CDN-Konfiguration“ wird geöffnet.
 3. Schalten Sie **Komprimierung**an.
    
     ![CDN-Komprimierungsoptionen](./media/cdn-file-compression/cdn-compress-standard.png)
@@ -72,12 +73,14 @@ Es gibt zwei Methoden zur Aktivierung der Komprimierung:
 > 
 > 
 
-1. Klicken Sie auf dem Blatt „CDN-Profil“ auf die Schaltfläche **Verwalten** .
+1. Klicken Sie auf der Seite „CDN-Profil“ auf die Schaltfläche **Verwalten**.
    
-    ![Schaltfläche „Verwalten“ auf dem CDN-Profilblatt](./media/cdn-file-compression/cdn-manage-btn.png)
+    ![Verwaltungsschaltfläche auf der Seite „CDN-Profil“](./media/cdn-file-compression/cdn-manage-btn.png)
    
     Das CDN-Verwaltungsportal wird geöffnet.
 2. Zeigen Sie auf die Registerkarte **HTTP Groß** und dann auf das Flyout **Cacheeinstellungen**.  Klicken Sie auf **Komprimierung**.
+
+    ![Auswahl der Dateikomprimierung](./media/cdn-file-compression/cdn-compress-select.png)
    
     Es werden die Kompressionsoptionen angezeigt.
    
@@ -103,11 +106,11 @@ Diese Tabellen beschreiben das Verhalten der Azure CDN-Komprimierung für jedes 
 > 
 > Für alle Azure CDN-Produkte muss eine Datei ein MIME-Typ sein, der [für die Komprimierung konfiguriert](#enabling-compression)wurde.
 > 
-> **Azure CDN von Verizon**-Profile (Standard und Premium) unterstützen **gzip**-, **deflate**- oder **bzip2**-Codierung.  **Azure CDN von Akamai**-Profile unterstützen nur **gzip**-Codierung.
+> **Azure CDN von Verizon**-Profile (Standard und Premium) unterstützen die Codierung mit **gzip** (GNU zip), **deflate**, **bzip2** und **br** (Brotli). Bei der Brotli-Codierung erfolgt die Komprimierung nur am Rand. Der Client/Browser muss die Anforderung für die Brotli-Codierung senden, und die komprimierte Ressource muss zuerst auf der Ursprungsseite komprimiert werden. 
+>
+>**Azure CDN von Akamai**-Profile unterstützen nur **gzip**-Codierung.
 > 
-> **Azure CDN von Akamai**-Endpunkte fordern unabhängig von der Clientanforderung stets **gzip**-codierte Dateien beim Ursprung an.
-> 
-> 
+> **Azure CDN von Akamai**-Endpunkte fordern unabhängig von der Clientanforderung stets **gzip**-codierte Dateien beim Ursprung an. 
 
 ### <a name="compression-disabled-or-file-is-ineligible-for-compression"></a>Komprimierung deaktiviert oder Datei ist nicht für die Komprimierung geeignet
 | Vom Client angefordertes Format (über Accept-Encoding-Header) | Zwischengespeichertes Dateiformat | CDN-Antwort an den Client | Hinweise |
@@ -134,10 +137,5 @@ Für Media Services CDN-aktivierte Streamingendpunkte ist die Komprimierung für
 
 ## <a name="see-also"></a>Weitere Informationen
 * [Problembehandlung bei der CDN-Dateikomprimierung](cdn-troubleshoot-compression.md)    
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 
