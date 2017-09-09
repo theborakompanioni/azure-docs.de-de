@@ -120,6 +120,8 @@
           href: connect-logon.md
         - name: Verwenden der AHUB-Lizenzierung
           href: hybrid-use-benefit-licensing.md
+        - name: Verwenden der Rechte für das Hosten mehrerer Mandanten für Windows 10
+          href: windows-desktop-multitenant-hosting-deployment.md
     - name: Schützen von virtuellen Computern
       items:
         - name: Verschlüsseln
