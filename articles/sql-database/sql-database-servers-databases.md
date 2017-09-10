@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 07/05/2017
+ms.date: 07/19/2017
 ms.author: carlrab
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: ef61aa610957024d85f4231d957869858fd545c5
+ms.sourcegitcommit: 48dfc0fa4c9ad28c4c64c96ae2fc8a16cd63865c
+ms.openlocfilehash: 8a44f10eda396aec72e05e87e406ff80834294d8
 ms.contentlocale: de-de
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/30/2017
 
 ---
 
@@ -31,8 +31,8 @@ Eine Azure SQL-Datenbank ist eine verwaltete Datenbank in Microsoft Azure, die i
 
 Eine Azure SQL-Datenbank kann Folgendes sein:
 
-- Eine einzelne Datenbank mit ihrem [eigenen Ressourcensatz](sql-database-what-is-a-dtu.md#what-are-database-transaction-units-dtus) (DTUs)
-- Teil eines [SQL-Pools für elastische Datenbanken](sql-database-elastic-pool.md) mit [gemeinsamer Nutzung eines Ressourcensatzes](sql-database-what-is-a-dtu.md#what-are-elastic-database-transaction-units-edtus) (eDTUs)
+- Eine [einzelne Datenbank](sql-database-single-database-resources.md) mit ihrem eigenen Ressourcensatz
+- Teil eines [elastischen Pools](sql-database-elastic-pool.md) mit gemeinsamer Nutzung eines Ressourcensatzes
 - Teil eines [skalierten Satzes von Sharddatenbanken](sql-database-elastic-scale-introduction.md#horizontal-and-vertical-scaling), die entweder einfache oder in einem Pool zusammengefasste Datenbanken sein können
 - Teil von Datenbanksätzen, die an einem [mehrinstanzfähigen SaaS-Entwurfsmuster](sql-database-design-patterns-multi-tenancy-saas-applications.md) teilnehmen, und deren Datenbanken entweder einzelne oder in einem Pool zusammengefasste Datenbanken (oder beides) sein können 
 
@@ -46,7 +46,7 @@ Eine Azure SQL-Datenbank kann Folgendes sein:
 
 ## <a name="what-is-an-azure-sql-logical-server"></a>Was ist ein logischer Azure SQL-Server?
 
-Ein logischer Server fungiert als zentraler Verwaltungspunkt für mehrere Datenbanken, einschließlich [Pools für elastische SQL-Datenbanken](sql-database-elastic-pool.md), [Anmeldungen](sql-database-manage-logins.md), [Firewallregeln](sql-database-firewall-configure.md), [Überwachungsregeln](sql-database-auditing.md), [Richtlinien zur Erkennung von Bedrohungen](sql-database-threat-detection.md) und [Failovergruppen](sql-database-geo-replication-overview.md). Ein logischer Server kann sich in einer anderen Region als seine Ressourcengruppe befinden. Der logische Server muss vorhanden sein, bevor Sie die Azure SQL-Datenbank erstellen können. Alle Datenbanken auf einem Server werden innerhalb der gleichen Region wie der logische Server erstellt. 
+Ein logischer Server fungiert als zentraler Verwaltungspunkt für mehrere Datenbanken, einschließlich [Pools für elastische Datenbanken](sql-database-elastic-pool.md), [Anmeldungen](sql-database-manage-logins.md), [Firewallregeln](sql-database-firewall-configure.md), [Überwachungsregeln](sql-database-auditing.md), [Richtlinien zur Erkennung von Bedrohungen](sql-database-threat-detection.md) und [Failovergruppen](sql-database-geo-replication-overview.md). Ein logischer Server kann sich in einer anderen Region als seine Ressourcengruppe befinden. Der logische Server muss vorhanden sein, bevor Sie die Azure SQL-Datenbank erstellen können. Alle Datenbanken auf einem Server werden innerhalb der gleichen Region wie der logische Server erstellt. 
 
 
 > [!IMPORTANT]
@@ -79,7 +79,7 @@ Ein logischer Azure Datenbankserver:
 
 ## <a name="azure-sql-databases-protected-by-sql-database-firewall"></a>Azure SQL-Datenbanken, die von der SQL-Datenbank-Firewall geschützt werden
 
-Zum Schutz Ihrer Daten verhindert eine [SQL-Datenbank-Firewall](sql-database-firewall-configure.md) jeglichen Zugriff auf Ihren Datenbankserver oder eine dessen Datenbanken von außerhalb Ihrer Verbindung zum Server direkt über Ihre Azure-Abonnement-Verbindung. Um zusätzliche Konnektivität zu ermöglichen, müssen Sie [mindestens eine Firewallregel erstellen](sql-database-firewall-configure.md#creating-and-managing-firewall-rules). Informationen zum Erstellen und Verwalten von Pools für elastische SQL-Datenbanken finden Sie unter [Pools für elastische Datenbanken](sql-database-elastic-pool.md).
+Zum Schutz Ihrer Daten verhindert eine [SQL-Datenbank-Firewall](sql-database-firewall-configure.md) jeglichen Zugriff auf Ihren Datenbankserver oder eine dessen Datenbanken von außerhalb Ihrer Verbindung zum Server direkt über Ihre Azure-Abonnement-Verbindung. Um zusätzliche Konnektivität zu ermöglichen, müssen Sie [mindestens eine Firewallregel erstellen](sql-database-firewall-configure.md#creating-and-managing-firewall-rules). Informationen zum Erstellen und Verwalten von Pools für elastische Datenbanken finden Sie unter [Pools für elastische Datenbanken](sql-database-elastic-pool.md).
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-the-azure-portal"></a>Verwalten von Azure SQL-Servern, -Datenbanken und -Firewalls mithilfe des Azure-Portals
 
@@ -99,7 +99,8 @@ Zum Erstellen einer Azure SQL-Datenbank mithilfe des [Azure-Portals](https://por
 
   ![Datenbankerstellung 1](./media/sql-database-get-started-portal/create-database-1.png)
 
-> [WICHTIG] Informationen zum Auswählen des Tarifs für Ihre Datenbank finden Sie unter [Dienstebenen](sql-database-service-tiers.md).
+> [!IMPORTANT]
+> Informationen zum Auswählen des Tarifs für Ihre Datenbank finden Sie unter [Dienstebenen](sql-database-service-tiers.md).
 >
 
 ### <a name="manage-an-existing-sql-server"></a>Verwalten eines vorhandenen SQL-Servers
@@ -122,7 +123,7 @@ Um eine vorhandene Datenbank zu verwalten, navigieren Sie zu der Seite **SQL-Dat
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-powershell"></a>Verwalten von Azure SQL-Servern, -Datenbanken und -Firewalls mithilfe von PowerShell
 
-Verwenden Sie zum Erstellen und Verwalten von Azure SQL-Servern, -Datenbanken und -Firewalls mithilfe von Azure PowerShell die folgenden PowerShell-Cmdlets. Wenn Sie PowerShell installieren oder upgraden müssen, helfen Ihnen die Informationen unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) weiter. Informationen zum Erstellen und Verwalten von Pools für elastische SQL-Datenbanken finden Sie unter [Pools für elastische Datenbanken](sql-database-elastic-pool.md).
+Verwenden Sie zum Erstellen und Verwalten von Azure SQL-Servern, -Datenbanken und -Firewalls mithilfe von Azure PowerShell die folgenden PowerShell-Cmdlets. Wenn Sie PowerShell installieren oder upgraden müssen, helfen Ihnen die Informationen unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) weiter. Informationen zum Erstellen und Verwalten von Pools für elastische Datenbanken finden Sie unter [Pools für elastische Datenbanken](sql-database-elastic-pool.md).
 
 | Cmdlet | Beschreibung |
 | --- | --- |
@@ -146,7 +147,7 @@ Verwenden Sie zum Erstellen und Verwalten von Azure SQL-Servern, -Datenbanken un
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-the-azure-cli"></a>Verwalten von Azure SQL-Servern, -Datenbanken und -Firewalls mithilfe der Azure CLI
 
-Verwenden Sie zum Erstellen und Verwalten von Azure SQL-Servern, -Datenbanken und -Firewalls mithilfe der [Azure CLI](/cli/azure/overview) die folgenden [Azure CLI-SQL-Datenbank](/cli/azure/sql/db)-Befehle. Führen Sie die CLI mithilfe von [Cloud Shell](/azure/cloud-shell/overview) in Ihrem Browser aus, oder [installieren](/cli/azure/install-azure-cli) Sie sie unter macOS, Linux oder Windows. Informationen zum Erstellen und Verwalten von Pools für elastische SQL-Datenbanken finden Sie unter [Pools für elastische Datenbanken](sql-database-elastic-pool.md).
+Verwenden Sie zum Erstellen und Verwalten von Azure SQL-Servern, -Datenbanken und -Firewalls mithilfe der [Azure CLI](/cli/azure/overview) die folgenden [Azure CLI-SQL-Datenbank](/cli/azure/sql/db)-Befehle. Führen Sie die CLI mithilfe von [Cloud Shell](/azure/cloud-shell/overview) in Ihrem Browser aus, oder [installieren](/cli/azure/install-azure-cli) Sie sie unter macOS, Linux oder Windows. Informationen zum Erstellen und Verwalten von Pools für elastische Datenbanken finden Sie unter [Pools für elastische Datenbanken](sql-database-elastic-pool.md).
 
 | Cmdlet | Beschreibung |
 | --- | --- |
@@ -176,7 +177,7 @@ Verwenden Sie zum Erstellen und Verwalten von Azure SQL-Servern, -Datenbanken un
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-transact-sql"></a>Verwalten von Azure SQL-Servern, -Datenbanken und -Firewalls mithilfe von Transact-SQL
 
-Verwenden Sie zum Erstellen und Verwalten von Azure SQL-Servern, -Datenbanken und -Firewalls mithilfe von Transact-SQL die folgenden T-SQL-Befehle. Sie können diese Befehle mit dem Azure-Portal, [SQL Server Management Studio](/sql/ssms/use-sql-server-management-studio), [Visual Studio Code](https://code.visualstudio.com/docs) oder einem beliebigen anderen Programm ausführen, mit dem eine Verbindung mit einem Azure SQL-Datenbankserver hergestellt und Transact-SQL-Befehle übergeben werden können. Informationen zum Verwalten von Pools für elastische SQL-Datenbanken finden Sie unter [Pools für elastische Datenbanken](sql-database-elastic-pool.md).
+Verwenden Sie zum Erstellen und Verwalten von Azure SQL-Servern, -Datenbanken und -Firewalls mithilfe von Transact-SQL die folgenden T-SQL-Befehle. Sie können diese Befehle mit dem Azure-Portal, [SQL Server Management Studio](/sql/ssms/use-sql-server-management-studio), [Visual Studio Code](https://code.visualstudio.com/docs) oder einem beliebigen anderen Programm ausführen, mit dem eine Verbindung mit einem Azure SQL-Datenbankserver hergestellt und Transact-SQL-Befehle übergeben werden können. Informationen zum Verwalten von Pools für elastische Datenbanken finden Sie unter [Pools für elastische Datenbanken](sql-database-elastic-pool.md).
 
 > [!IMPORTANT]
 > Sie können einen Server mithilfe von Transact-SQL nicht erstellen oder löschen.
@@ -206,11 +207,33 @@ Verwenden Sie zum Erstellen und Verwalten von Azure SQL-Servern, -Datenbanken un
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-the-rest-api"></a>Verwalten von Azure SQL-Servern, -Datenbanken und -Firewalls mithilfe der REST-API
 
-Informationen zum Erstellen und Verwalten von Azure SQL-Servern, -Datenbanken und -Firewalls mithilfe des REST-API finden Sie unter [Azure SQL Database REST API (Azure SQL-Datenbank – REST-API)](/rest/api/sql/).
+Verwenden Sie zum Erstellen und Verwalten von Azure SQL-Servern, -Datenbanken und -Firewalls diese REST-API-Anforderungen.
+
+| Befehl | Beschreibung |
+| --- | --- |
+|[Servers - Create Or Update](/rest/api/sql/servers/createorupdate)|Erstellt oder aktualisiert einen neuen Server.|
+|[Servers - Delete](/rest/api/sql/servers/delete)|Löscht eine SQL Server-Instanz.|
+|[Servers - Get](/rest/api/sql/servers/get)|Ruft einen Server ab.|
+|[Servers - List](/rest/api/sql/servers/list)|Gibt eine Serverliste zurück.|
+|[Servers - List By Resource Group](/rest/api/sql/servers/listbyresourcegroup)|Gibt eine Liste aller Server in einer Ressourcengruppe zurück.|
+|[Server - Update](/rest/api/sql/servers/update)|Aktualisiert einen vorhandenen Server.|
+|[Servers - Sql](/rest/api/sql/servers%20-%20sql)|Bestimmt, ob eine Ressource mit dem angegebenen Namen erstellt werden kann.|
+|[Databases - Create Or Update](/rest/api/sql/databases/createorupdate)|Erstellt eine neue Datenbank oder aktualisiert eine bereits vorhandene Datenbank.|
+|[Databases - Get](/rest/api/sql/databases/get)|Ruft eine Datenbank ab.|
+|[Databases - Get By Elastic Pool](/rest/api/sql/databases/getbyelasticpool)|Ruft eine Datenbank in einem Pool für elastische Datenbanken ab.|
+|[Databases - Get By Recommended Elastic Pool](/rest/api/sql/databases/getbyrecommendedelasticpool)|Ruft eine Datenbank in einem empfohlenen Pool für elastische Datenbanken ab.|
+|[Databases - List By Elastic Pool](/rest/api/sql/databases/listbyelasticpool)|Gibt eine Liste der Datenbanken in einem elastischen Pool zurück.|
+|[Databases - List By Recommended Elastic Pool](/rest/api/sql/databases/listbyrecommendedelasticpool)|Gibt eine Liste von Datenbanken in einem empfohlenen Pool für elastische Datenbanken zurück.|
+|[Databases - List By Server](/rest/api/sql/databases/listbyserver)|Gibt eine Liste der Datenbanken auf einem Server zurück.|
+|[Databases - Update](/api/sql/databases/update)|Aktualisiert eine vorhandene Datenbank.|
+|[Firewall Rules - Create Or Update](/rest/api/sql/firewallrules/createorupdate)|Erstellt oder aktualisiert eine Firewallregel.|
+|[Firewall Rules - Delete](/rest/api/sql/firewallrules/delete)|Löscht eine Firewallregel.|
+|[Firewall Rules - Get](/rest/api/sql/firewallrules/get)|Ruft eine Firewallregel ab.|
+|[Firewall Rules - List By Server](/rest/api/sql/firewallrules/listbyserver)|Gibt eine Liste von Firewallregeln zurück.|
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Informationen zum Zusammenlegen von Datenbanken mithilfe von Pools für elastische SQL-Datenbanken finden Sie unter [Pools für elastische Datenbanken](sql-database-elastic-pool.md).
+- Informationen zum Zusammenlegen von Datenbanken mithilfe von Pools für elastische Datenbanken finden Sie unter [Pools für elastische Datenbanken](sql-database-elastic-pool.md).
 - Informationen über den Azure SQL-Datenbank-Dienst finden Sie unter [Was ist SQL-Datenbank?](sql-database-technical-overview.md).
 - Weitere Informationen zum Migrieren einer SQL Server-Datenbank zu Azure finden Sie unter [Migrieren zu Azure SQL-Datenbank](sql-database-cloud-migrate.md).
 - Informationen zu unterstützten Funktionen finden Sie unter [Features (Funktionen)](sql-database-features.md).

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/18/2017
+ms.date: 08/24/2017
 ms.author: fimguy
 ms.translationtype: HT
-ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
-ms.openlocfilehash: 426f58a24798fd43f5079dd153b9e84d324da622
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: 313145f4d8e5faa91fb3504cb0fd0ba87ca2e379
 ms.contentlocale: de-de
-ms.lasthandoff: 08/19/2017
+ms.lasthandoff: 08/24/2017
 
 ---
 # <a name="connector-version-release-history"></a>Connector – Versionsveröffentlichungsverlauf
@@ -39,7 +39,7 @@ Verwandte Links:
 * [Lotus Domino-Connector](active-directory-aadconnectsync-connector-domino.md) – Referenzdokumentation
 
 
-## <a name="116040-aadconnect-11xxx0"></a>1.1.604.0 (AADConnect 1.1.XXX.0)
+## <a name="116040-aadconnect-pending-release"></a>1.1.604.0 (AADConnect [ausstehendes Release])
 
 
 ### <a name="fixed-issues"></a>Behobene Probleme:
@@ -69,12 +69,12 @@ Verwandte Links:
       - ou
       - altcommonname
 
-  * Wenn die Option zum Zulassen benutzerdefinierter Zertifizierer für Organisationen/Organisationseinheiten**** aktiviert ist, die erforderlichen Zertifizierer aber noch leer sind, tritt ein KeyNotFoundException-Fehler auf.
+  * Wenn die Option zum **Zulassen benutzerdefinierter Zertifizierer für Organisationen/Organisationseinheiten** aktiviert ist, die erforderlichen Zertifizierer aber noch leer sind, tritt ein KeyNotFoundException-Fehler auf.
 
 ### <a name="enhancements"></a>Verbesserungen:
 
 * SQL (generisch):
-  * **Szenario: wieder implementiert:** „*“-Feature
+  * **Szenario: überarbeitet implementiert:** „*“-Feature
   * **Lösungsbeschreibung:** geänderter Ansatz für die [Behandlung referenzierter, mehrwertiger Attribute](active-directory-aadconnectsync-connector-genericsql.md)
 
 
@@ -160,7 +160,7 @@ Erste Version des [Generischer SQL-Connector](active-directory-aadconnectsync-co
   * Zusätzliche Unterstützung für den Deltaimport mit Isode.
 * Webdienst-Connector:
   * Die csEntryChangeResult- und setImportErrorCode-Aktivität wurde aktualisiert, um das Zurückgeben von Fehlern der Objektebene an das Synchronisierungsmodul zu ermöglichen.
-  * Aktualisierte die „SAP6“ und „SAP6User“ Vorlagen dahingehend, dass die neue Objektebenenfehler-Funktionalität verwendet wird.
+  * Aktualisierte die „SAP6“ und „SAP6User“ Vorlagen dahingehend, das die neue Objektebenenfehler-Funktionalität verwendet wird.
 * Lotus Domino-Connector:
   * Für den Export benötigen Sie einen Zertifizierer pro Adressbuch. Sie können jetzt dasselbe Kennwort für alle Zertifizierer verwenden, um die Verwaltung zu vereinfachen.
 

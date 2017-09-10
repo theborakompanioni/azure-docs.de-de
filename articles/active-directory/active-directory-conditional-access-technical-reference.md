@@ -11,83 +11,158 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/22/2017
+ms.date: 08/28/2017
 ms.author: markvi
 ms.reviewer: calebb
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
-ms.openlocfilehash: db7d8b6b2cbe1604fc1b02cc36780ddd83a4d350
+ms.translationtype: HT
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: f96189735512090f993f61c0d64a249f650ea2a2
 ms.contentlocale: de-de
-ms.lasthandoff: 05/25/2017
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="azure-active-directory-conditional-access-technical-reference"></a>Technische Referenz zum bedingten Azure Active Directory-Zugriff
 
-## <a name="services-enabled-with-conditional-access"></a>Dienste mit aktiviertem bedingtem Zugriff
+Mit dem [bedingten Zugriff von Azure Active Directory (Azure AD)](active-directory-conditional-access-azure-portal.md) können Sie präzise steuern, wie autorisierte Benutzer auf Ihre Ressourcen zugreifen können.  
+In diesem Thema erhalten Sie Supportinformationen für die folgenden Elemente einer Richtlinie für bedingten Zugriff: 
 
-Bedingte Zugriffsregeln werden über verschiedene Arten von Azure AD-Anwendungen hinweg unterstützt. Diese Liste enthält:
+- Zuweisungen von Cloud-Apps
 
-
-* Beim Azure-Anwendungsproxy registrierte Anwendungen
-* Azure RemoteApp
-* Entwickelte branchenspezifische und mehrinstanzenfähige Anwendungen, die bei Azure AD registriert sind
-* Dynamics CRM
-* Verbundanwendungen aus dem Azure AD-Anwendungskatalog
-* Microsoft Office 365 Yammer
-* Microsoft Office 365 Exchange Online
-* Microsoft Office 365 SharePoint Online (einschließlich OneDrive for Business)
-* Microsoft Power BI 
-* Kennwort-SSO-Anwendungen aus dem Azure AD-Anwendungskatalog
-* Visual Studio Team Services
-* Microsoft Teams
+- Bedingungen für Client-Apps
 
 
 
+## <a name="cloud-apps-assignments"></a>Zuweisungen von Cloud-Apps
+
+Wenn Sie eine Richtlinie für bedingten Zugriff konfigurieren, müssen Sie die [Cloud-Apps auswählen, für die Ihre Richtlinie gilt](active-directory-conditional-access-azure-portal.md#who). 
+
+![Kontrolle](./media/active-directory-conditional-access-technical-reference/09.png)
+
+
+### <a name="microsoft-cloud-apps"></a>Cloud-Apps von Microsoft
+
+Sie können folgenden Cloud-Apps von Microsoft eine Richtlinie für bedingten Zugriff zuweisen:
+
+- Azure RemoteApp
+
+- Dynamics CRM
+
+- Microsoft Office 365 Yammer
+
+- Microsoft Office 365 Exchange Online
+
+- Microsoft Office 365 SharePoint Online (einschließlich OneDrive for Business)
+
+- Microsoft Power BI 
+
+- Visual Studio Team Services
+
+- Microsoft Teams
+
+
+### <a name="other-apps"></a>Andere Apps 
+
+Außer den Cloud-Apps von Microsoft können Sie den folgenden Typen von Cloud-Apps eine Richtlinie für bedingten Zugriff zuweisen:
+
+- Mit Azure Active Directory (Azure AD) verbundenen Anwendungen
+
+- Vorab integrierten verbundenen Software-as-a-Service-Anwendungen (SaaS)
+
+- Anwendungen, die einmaliges Anmelden mit Kennwort (SSO) verwenden
+
+- Branchenanwendungen
+
+- Anwendungen, die den Azure AD-Anwendungsproxy verwenden. 
+
+
+## <a name="client-apps-conditions"></a>Bedingungen für Client-Apps 
+
+Wenn Sie eine Richtlinie für bedingten Zugriff konfigurieren, können Sie eine [Client-Apps-Bedingung](active-directory-conditional-access-azure-portal.md#client-apps) festlegen. Mit der Client-Apps-Bedingung können Sie den Zugriff gewähren oder verweigern, wenn diese Typen von Client-Apps einen Zugriffsversuch unternehmen:
+
+- "Browser"
+- Mobile Apps und Desktop-Apps
+
+![Kontrolle](./media/active-directory-conditional-access-technical-reference/03.png)
+
+
+### <a name="supported-browsers"></a>Unterstützte Browser 
+
+Bei Auswahl von *Browser* in Ihrer Richtlinie für bedingten Zugriff zum Gewähren des Zugriffs auf Ressourcen wird Zugriff nur gewährt, wenn der Zugriffsversuch über einen unterstützten Browser erfolgt. Wenn ein Zugriffsversuch mit einem nicht unterstützten Browser erfolgt, wird der Versuch blockiert.
+
+![Unterstützte Browser](./media/active-directory-conditional-access-technical-reference/05.png)
+
+In der Richtlinie für bedingten Zugriff werden die folgenden Browser unterstützt: 
+
+
+| Betriebssystem                     | Browser                 | Support     |
+| :--                    | :--                      | :-:         |
+| Windows 10                 | IE, Edge                 | ![Prüfen][1] |
+| Windows 10                 | Chrome                   | Vorschau     |
+| Windows 8/8.1            | IE, Chrome               | ![Prüfen][1] |
+| Windows 7                  | IE, Chrome               | ![Prüfen][1] |
+| iOS                    | Safari                   | ![Prüfen][1] |
+| Android                | Chrome                   | ![Prüfen][1] |
+| Windows Phone          | IE, Edge                 | ![Prüfen][1] |
+| Windows Server 2016    | IE, Edge                 | ![Prüfen][1] |
+| Windows Server 2016    | Chrome                   | In Kürze verfügbar |
+| Windows Server 2012 R2 | IE, Chrome               | ![Prüfen][1] |
+| Windows Server 2008 R2 | IE, Chrome               | ![Prüfen][1] |
+| Mac OS                 | Safari                   | ![Prüfen][1] |
+| Mac OS                 | Chrome                   | In Kürze verfügbar |
+
+> [!NOTE]
+> Für die Unterstützung von Chrome müssen Sie Windows 10 Creators Update verwenden und die Erweiterung installieren, die Sie [hier](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji) finden.
+
+
+### <a name="supported-mobile-apps-and-desktop-clients"></a>Unterstützte mobile Apps und Desktopclients
+
+Bei Auswahl von **Mobile Apps und Desktopclients** in Ihrer Richtlinie für bedingten Zugriff zum Gewähren des Zugriffs auf Ressourcen wird Zugriff nur gewährt, wenn der Zugriffsversuch mit unterstützten mobilen Apps oder Desktopclients durchgeführt wurde. Bei Zugriffsversuchen mithilfe nicht unterstützter mobiler Apps oder Desktopclients wird der Versuch blockiert.
+
+![Kontrolle](./media/active-directory-conditional-access-technical-reference/06.png)
+
+Die folgenden mobilen Apps und Desktopclients unterstützen den bedingten Zugriff für Office 365 und andere mit Azure AD verbundene Dienstanwendungen:
+
+
+| Client-Apps| Zieldienst| Plattform |
+| :-- | --- | --- |
+| MFA- und Standort-Richtlinien für Apps Gerätebasierte Richtlinien werden nicht unterstützt.| Alle Meine Apps-App-Dienste| Android und iOS|
+| Azure RemoteApp| Azure Remote-App-Dienst| Windows 10, Windows 8.1, Windows 7, iOS, Android, Mac OS X|
+| Dynamics CRM-App| Dynamics CRM| Windows 10, Windows 8.1, Windows 7, iOS, Android|
+| Microsoft-Teams Services: steuert alle Dienste, die Microsoft-Teams und alle ihre Client-Apps unterstützen – Windows Desktop, MAC OS X, iOS, Android, WP und Webclient| Microsoft Teams| Windows 10, Windows 8.1, Windows 7, iOS, Android und Mac OS X|
+| Mail-/Kalender-/Kontakte-App, Outlook 2016, Outlook 2013 (mit moderner Authentifizierung), Skype for Business (mit moderner Authentifizierung)| Microsoft Office 365 Exchange Online| Windows 10|
+| Outlook 2016, Outlook 2013 (mit moderner Authentifizierung), Skype for Business (mit moderner Authentifizierung)| Microsoft Office 365 Exchange Online| Windows 8.1, Windows 7|
+| Outlook Mobile-App| Microsoft Office 365 Exchange Online| iOS|
+| Outlook 2016 (Office für macOS)| Microsoft Office 365 Exchange Online| Mac OS X|
+| Office 2016-Apps, universelle Office-Apps, Office 2013 (mit moderner Authentifizierung), OneDrive-Synchronisierungsclient (siehe [Hinweise](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)), zukünftige Unterstützung für Office-Gruppen und SharePoint-Apps ist geplant.| Office 365 SharePoint Online| Windows 10|
+| Office 2016-Apps, Office 2013 (mit moderner Authentifizierung), OneDrive-Synchronisierungsclient (siehe [Hinweise](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e))| Office 365 SharePoint Online| Windows 8.1, Windows 7|
+| Office Mobile-Apps| Office 365 SharePoint Online| iOS, Android|
+| Office 2016 für macOS (nur Word, Excel, PowerPoint und OneNote). Unterstützung von OneDrive for Business für die Zukunft geplant| Office 365 SharePoint Online| Mac OS X|
+| Office Yammer-App| Office 365 Yammer| Windows 10, iOS und Android|
+| PowerBI-App. Die PowerBI-App für Android unterstützt derzeit keinen gerätebasierten bedingten Zugriff.| PowerBI-Dienst| Windows 10, Windows 8.1, Windows 7 und iOS|
+| Visual Studio Team Services-App| Visual Studio Team Services| Windows 10, Windows 8.1, Windows 7, iOS, Android|
 
 
 
 
 
 
-## <a name="enable-access-rules"></a>Aktivieren von Zugriffsregeln
-Jede Regel kann auf Anwendungsbasis aktiviert oder deaktiviert werden. Wenn Regeln auf **ON** festgelegt sind, sind sie aktiviert und werden für Benutzer durchgesetzt, die auf die Anwendung zugreifen. Wenn sie auf **OFF** festgelegt sind, werden sie nicht verwendet und haben keine Auswirkungen auf den Anmeldevorgang der Benutzer.
-
-## <a name="applying-rules-to-specific-users"></a>Anwenden von Regeln auf bestimmte Benutzer
-Regeln können basierend auf Sicherheitsgruppen auf bestimmte Gruppen von Benutzern angewendet werden, indem Sie **Anwenden auf** einstellen. **Anwenden auf** kann auf **Alle Benutzer** oder auf **Gruppen** festgelegt werden. Bei der Einstellung **Alle Benutzer** gelten die Regeln für alle Benutzer mit Zugriff auf die Anwendung. Die Option **Gruppen** ermöglicht die Auswahl bestimmter Sicherheits- und Verteilergruppen. Die Regeln werden nur für diese Gruppen durchgesetzt.
-
-Wenn Sie eine Regel bereitstellen, ist es üblich, sie zuerst auf eine begrenzte Anzahl von Benutzern anzuwenden, die Mitglieder einer Pilotgruppe sind. Die Regel kann nach der Fertigstellung auf **Alle Benutzer**angewendet werden. Dadurch wird die Regel zwingend für alle Benutzer in der Organisation durchgesetzt.
-
-Mithilfe der Option **Ausgenommen** können ausgewählte Gruppen auch von der Richtlinie ausgenommen werden. Dies gilt für alle Mitglieder der jeweiligen Gruppen, selbst dann, wenn sie in einer eingeschlossenen Gruppe angezeigt werden.
-
-## <a name="at-work-networks"></a>Arbeitsnetzwerke
-Regeln für den bedingten Zugriff, die ein Arbeitsplatznetzwerk verwenden, greifen auf vertrauenswürdige IP-Adressbereiche zurück, die in Azure AD konfiguriert wurden, oder verwenden den AD FS-Anspruch „innerhalb des Unternehmensnetzwerks“. Zu diesen Regeln gehören:
-
-* Erfordert mehrstufige Authentifizierung, wenn nicht bei der Arbeit
-* Zugriff blockieren, wenn nicht gearbeitet wird
-
-Optionen zum Festlegen von Arbeitsnetzwerken
-
-1. Konfigurieren Sie vertrauenswürdige IP-Adressbereiche auf der [Konfigurationsseite für die mehrstufige Authentifizierung](../multi-factor-authentication/multi-factor-authentication-whats-next.md). Die Richtlinie für den bedingten Zugriff verwendet die konfigurierten Bereiche für jede Authentifizierungsanfrage und Tokenausstellung zum Auswerten von Regeln. 
-2. Konfigurieren Sie die Verwendung des Anspruchs „innerhalb des Unternehmensnetzwerks“. Diese Option kann mit Verbundverzeichnissen und AD FS verwendet werden. Weitere Informationen zu den Ansprüchen innerhalb des Unternehmensnetzwerks finden Sie unter [Vertrauenswürdige IPs](../multi-factor-authentication/multi-factor-authentication-whats-next.md#trusted-ips).
 
 
-## <a name="rules-based-on-application-sensitivity"></a>Regeln auf Grundlage der Anwendungsvertraulichkeit
-Regeln werden für jede Anwendung konfiguriert, damit hochwertige Dienste abgesichert werden, ohne den Zugriff auf andere Dienste zu beeinträchtigen. Regeln für den bedingten Zugriff können auf der Registerkarte **Konfigurieren** der Anwendung konfiguriert werden. 
 
-Regeln, die derzeit angeboten werden:
 
-* **Erfordern von Multi-Factor Authentication**
-  
-  * Alle Benutzer, auf die die Richtlinie angewendet wird, müssen sich mindestens einmal per mehrstufiger Authentifizierung authentifizieren.
-* **Erfordert mehrstufige Authentifizierung, wenn nicht bei der Arbeit**
-  
-  * Wenn diese Richtlinie angewendet wird, müssen alle Benutzer mindestens einmal die mehrstufige Authentifizierung durchgeführt haben, wenn sie von einem arbeitsfreien Remotestandort aus auf den Dienst zugreifen. Wenn sie von einem Unternehmensstandort an einen Remotestandort wechseln, müssen sie beim Zugriff auf den Dienst die mehrstufige Authentifizierung ausführen.
-* **Zugriff blockieren, wenn nicht gearbeitet wird** 
-  
-  * Wenn Benutzer von einem Unternehmensstandort an einen Remotestandort wechseln, werden sie blockiert, wenn für sie die Richtlinie „Zugriff blockieren, wenn nicht gearbeitet wird“ gilt.  Wenn sie sich an einem Unternehmensstandort befinden, wird Ihnen der Zugriff wieder gewährt.
 
-## <a name="related-topics"></a>Verwandte Themen
-* [Sichern des Zugriffs auf Office 365 und andere mit Azure Active Directory verbundene Apps](active-directory-conditional-access.md)
-* [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
+
+
+
+## <a name="next-steps"></a>Nächste Schritte
+
+- Eine Übersicht über den bedingten Zugriff finden Sie unter [Bedingter Zugriff mit Azure Active Directory](active-directory-conditional-access-azure-portal.md).
+- Wenn Sie bereit sind, Richtlinien für den bedingten Zugriff für Ihre Umgebung zu konfigurieren, lesen Sie unter [Best Practices für den bedingten Zugriff in Azure Active Directory](active-directory-conditional-access-best-practices.md) nach.
+
+
+
+<!--Image references-->
+[1]: ./media/active-directory-conditional-access-technical-reference/01.png
+
 
 
