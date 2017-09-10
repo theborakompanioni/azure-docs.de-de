@@ -129,6 +129,8 @@
               href: app-service-linux-ssh-support.md
             - name: Kontinuierliche Bereitstellung
               href: app-service-linux-ci-cd.md
+            - name: Bereitstellungstyp – benutzerdefiniertes oder integriertes Image?
+              href: app-service-linux-choose-deployment-type.md
             - name: Web-App unter Linux – Häufig gestellte Fragen
               href: app-service-linux-faq.md
     - name: Bereitstellen in Azure
