@@ -1,5 +1,5 @@
 ---
-title: Azure Disk Encryption-Problembehandlung | Microsoft-Dokumentation
+title: 'Azure Disk Encryption: Problembehandlung | Microsoft-Dokumentation'
 description: "Dieser Artikel enthält Tipps zur Problembehandlung für Microsoft Azure Disk Encryption für virtuelle Windows- und Linux-IaaS-Computer."
 services: security
 documentationcenter: na
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 07/27/2017
 ms.author: devtiw
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 5f482a92b8fcd71a1b767fcc5741bc57605997ea
+ms.sourcegitcommit: 48dfc0fa4c9ad28c4c64c96ae2fc8a16cd63865c
+ms.openlocfilehash: 83821ed2f7db1c7dea88a1b4424d405959a206db
 ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
+ms.lasthandoff: 08/30/2017
 
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Leitfaden zur Azure Disk Encryption-Problembehandlung
@@ -27,23 +27,25 @@ Dieser Leitfaden ist für IT-Experten, Informationssicherheitsanalysten und Clou
 
 ## <a name="troubleshooting-linux-os-disk-encryption"></a>Problembehandlung für die Verschlüsselung von Datenträgern mit Linux-Betriebssystem
 
-Bei der Verschlüsselung von Datenträgern mit Linux-Betriebssystem muss die Bereitstellung des Betriebssystemlaufwerks aufgehoben werden, bevor der vollständige Prozess der Datenträgerverschlüsselung durchgeführt wird.   Wenn dies nicht möglich ist, tritt unter Umständen eine Fehlermeldung der Art „Fehler beim Aufheben der Bereitstellung…“ auf.
+Bei der Verschlüsselung von Datenträgern mit Linux-Betriebssystem muss die Bereitstellung des Betriebssystemlaufwerks aufgehoben werden, bevor die vollständige Datenträgerverschlüsselung erfolgt. Wenn das Aufheben der Bereitstellung nicht möglich ist, tritt unter Umständen eine Fehlermeldung der Art „Fehler beim Aufheben der Bereitstellung…“ auf.
 
-Die Wahrscheinlichkeit hierfür ist am höchsten, wenn versucht wird, die Verschlüsselung des Betriebssystemdatenträgers in einer VM-Zielumgebung durchzuführen, die gegenüber dem unterstützten vorgefertigten Katalogimage modifiziert oder geändert wurde.  Hier sind Beispiele für Abweichungen vom unterstützten Image angegeben, durch die die Fähigkeit der Erweiterung zum Aufheben der Betriebssystemlaufwerk-Bereitstellung beeinträchtigt werden kann:
-- Angepasste Images, die nicht mehr mit einem unterstützten Dateisystem bzw. Partitionierungsschema übereinstimmen.
-- Angepasste Images mit Anwendungen wie Antiviren, Docker, SAP, MongoDB oder Apache Cassandra, die vor der Verschlüsselung im Betriebssystem ausgeführt werden.  Diese Anwendungen sind schwierig zu beenden, und wenn sie geöffnete Dateihandles auf dem Betriebssystemlaufwerk behalten, kann die Einbindung des Laufwerks nicht aufgehoben werden, und es wird ein Fehler verursacht.
-- Benutzerdefinierte Skripts, die zeitlich nah am Verschlüsselungsschritt ausgeführt werden, können eine Beeinträchtigung verursachen und diesen Fehler auslösen. Dies kann vorkommen, wenn eine Resource Manager-Vorlage mehrere Erweiterungen für die gleichzeitige Ausführung definiert oder wenn eine benutzerdefinierte Skripterweiterung oder andere Aktion parallel zur Datenträgerverschlüsselung ausgeführt wird.   Durch eine Serialisierung und Isolierung dieser Schritte lässt sich das Problem unter Umständen beheben.
-- Wenn SELinux vor der Aktivierung der Verschlüsselung nicht deaktiviert wurde, schlägt der Schritt für die Aufhebung der Bereitstellung fehl.  SELinux kann wieder aktiviert werden, nachdem die Verschlüsselung abgeschlossen ist.
-- Wenn der Betriebssystemdatenträger ein LVM-Schema verwendet (eingeschränkte Unterstützung für LVM-Datenträger ist zwar vorhanden, aber nicht für den LVM-Betriebssystemdatenträger).
-- Wenn die Mindestanforderungen für den Arbeitsspeicher nicht erfüllt sind (für die Verschlüsselung des Betriebssystemdatenträgers werden 7 GB empfohlen).
-- Wenn Datenträger für Daten rekursiv im Verzeichnis „/mnt/“ oder gegenseitig bereitgestellt wurden (z.B. „/mnt/data1“, „/mnt/data2“, „/data3 + /data3/data4“ usw.).
-- Wenn andere Azure Disk Encryption-[Voraussetzungen](https://docs.microsoft.com/en-us/azure/security/azure-security-disk-encryption) für Linux nicht erfüllt sind.
+Die Wahrscheinlichkeit dieses Fehlers ist am höchsten, wenn versucht wird, die Verschlüsselung des Betriebssystemdatenträgers in einer VM-Zielumgebung durchzuführen, die gegenüber dem unterstützten vorgefertigten Katalogimage modifiziert oder geändert wurde. Im Folgenden sind Beispiele für Abweichungen vom unterstützten Image angegeben, durch die die Fähigkeit der Erweiterung zum Aufheben der Bereitstellung des Betriebssystemlaufwerks beeinträchtigt werden kann:
+- Angepasste Images, die nicht mehr mit einem unterstützten Dateisystem oder Partitionierungsschema übereinstimmen.
+- Wenn große Anwendungen, z.B. SAP, MongoDB oder Apache Cassandra, installiert sind und vor der Verschlüsselung im Betriebssystem ausgeführt werden. Die Erweiterung kann diese Anwendungen nicht ordnungsgemäß herunterfahren. Wenn die Anwendungen geöffnete Dateihandles zum Betriebssystemlaufwerk behalten, kann die Einbindung des Laufwerks nicht aufgehoben werden, wodurch ein Fehler verursacht wird.
+- Wenn benutzerdefinierte Skripts in einem engen zeitlichen Abstand zur Aktivierung der Verschlüsselung ausgeführt werden oder während des Verschlüsselungsprozesses andere Änderungen an der VM vorgenommen werden. Dieser Konflikt kann auftreten, wenn eine Azure Resource Manager-Vorlage mehrere Erweiterungen für die gleichzeitige Ausführung definiert oder wenn eine benutzerdefinierte Skripterweiterung oder andere Aktion parallel zur Datenträgerverschlüsselung erfolgt. Durch eine Serialisierung und Isolierung dieser Schritte lässt sich das Problem ggf. beheben.
+- Security Enhanced Linux (SELinux) wurde vor der Aktivierung der Verschlüsselung nicht deaktiviert, weshalb der Schritt zur Aufhebung der Bereitstellung fehlschlägt. SELinux kann wieder aktiviert werden, nachdem die Verschlüsselung abgeschlossen ist.
+- Der Betriebssystemdatenträger verwendet ein LVM-Schema (Logical Volume Manager). Wenngleich eingeschränkte Unterstützung für LVM-Datenträger geboten wird, gilt dies nicht für LVM-Betriebssystemdatenträger.
+- Die Mindestanforderungen für den Arbeitsspeicher sind nicht erfüllt (für die Verschlüsselung des Betriebssystemdatenträgers werden 7 GB empfohlen).
+- Datenlaufwerke sind rekursiv im Verzeichnis „/mnt/“ oder gegenseitig bereitgestellt worden (z.B. „/mnt/data1“, „/mnt/data2“, „/data3 + /data3/data4“).
+- Andere Azure Disk Encryption-[Voraussetzungen](https://docs.microsoft.com/en-us/azure/security/azure-security-disk-encryption) für Linux sind nicht erfüllt.
 
 ## <a name="unable-to-encrypt"></a>Verschlüsselung nicht möglich
 
-In einigen Fällen hängt die Verschlüsselung des Linux-Datenträgers scheinbar bei „OS disk encryption started“, und SSH ist deaktiviert. Dieser Prozess kann für ein normales Katalogimage zwischen 3 und 16 Stunden dauern.  Wenn Datenträger mit mehreren TB Daten hinzugefügt werden, kann der Prozess Tage dauern. Bei der Sequenz zur Verschlüsselung des Linux-Betriebssystemdatenträgers wird die Einbindung des Betriebssystemlaufwerks vorübergehend aufgehoben, und es wird Block für Block eine Verschlüsselung des gesamten Betriebssystemdatenträgers durchgeführt, bevor er im verschlüsselten Zustand wieder eingebunden wird.   Im Gegensatz zu Azure Disk Encryption unter Windows ist bei der Linux-Datenträgerverschlüsselung keine gleichzeitige Nutzung der VM während des Verschlüsselungsvorgangs möglich.  Die Leistungsmerkmale der VM, z.B. die Größe des Datenträgers und die Unterstützung des Speicherkontos durch Standard- oder Premium-Speicher (SSD), können eine starke Auswirkung darauf haben, wie viel Zeit für die Durchführung der Verschlüsselung benötigt wird.
+In einigen Fällen hängt die Verschlüsselung des Linux-Datenträgers scheinbar bei „OS disk encryption started“, und SSH ist deaktiviert. Dieser Prozess kann bei einem normalen Katalogimage 3-16 Stunden bis zum Abschluss dauern. Wenn Datenträger mit mehreren Terabyte Daten hinzugefügt werden, kann der Prozess Tage dauern. 
 
-Sie können das ProgressMessage-Feld, das über den Befehl [Get-AzureRmVmDiskEncryptionStatus](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmdiskencryptionstatus) zurückgegeben wird, abfragen, um den Status zu überprüfen.   Während das Betriebssystemlaufwerk verschlüsselt wird, befindet sich die VM in einem Wartungszustand, und auch SSH ist deaktiviert, um eine Störung des laufenden Prozesses zu verhindern.  Für den größten Teil des Verschlüsselungszeitraums wird „EncryptionInProgress“ gemeldet, und nach einigen Stunden folgt dann die Meldung „VMRestartPending“ als Aufforderung, die VM neu zu starten.  Beispiel:
+Durch die Verschlüsselungssequenz für Linux-Betriebssystemdatenträger wird die Bereitstellung des Betriebssystemlaufwerks vorübergehend aufgehoben. Es erfolgt anschließend eine blockweise Verschlüsselung des gesamten Betriebssystemdatenträgers, ehe er im verschlüsselten Zustand wieder bereitgestellt wird. Im Gegensatz zu Azure Disk Encryption unter Windows ist bei der Linux-Datenträgerverschlüsselung keine gleichzeitige Nutzung der VM während des Verschlüsselungsvorgangs möglich. Die Leistungsmerkmale der VM können sich signifikant auf den Zeitaufwand auswirken, der bis zur Verschlüsselung anfällt. Zu diesen Merkmalen zählen die Größe des Datenträgers und das Speicherkonto (Standard oder Storage Premium).
+
+Fragen Sie zum Überprüfen des Verschlüsselungsstatus das Feld **ProgressMessage** ab, das vom Cmdlet [Get-AzureRmVmDiskEncryptionStatus](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmdiskencryptionstatus) zurückgegeben wird. Während das Betriebssystemlaufwerk verschlüsselt wird, befindet sich die VM in einem Wartungszustand, und SSH wird deaktiviert, um eine Störung des laufenden Prozesses zu verhindern. Solange die Verschlüsselung läuft, wird die Meldung **EncryptionInProgress** die meiste Zeit zurückgegeben. Mehrere Stunden später werden Sie in der Meldung **VMRestartPending** aufgefordert, die VM neu zu starten. Beispiel:
 
 
 ```
@@ -60,42 +62,49 @@ OsVolumeEncryptionSettings : Microsoft.Azure.Management.Compute.Models.DiskEncry
 ProgressMessage            : OS disk successfully encrypted, please reboot the VM
 ```
 
-Nachdem Sie zum Neustarten der VM aufgefordert wurden, den Neustart für die VM durchgeführt haben und zwei bis drei Minuten gewartet haben, bis der Neustart und die abschließenden Schritte auf dem Ziel abgeschlossen sind, zeigt die Statusmeldung die Fertigstellung der Verschlüsselung an.   Wenn diese Meldung angezeigt wird, sollte das verschlüsselte Betriebssystemlaufwerk betriebsbereit und die VM wieder verwendbar sein.
+Nach Aufforderung zum Neustart der VM und deren Neustart müssen Sie 2-3 Minuten auf den Neustart und die letzten Schritte warten, die auf dem Ziel erfolgen. Die Statusmeldung ändert sich, wenn die Verschlüsselung schließlich abgeschlossen ist. Wenn diese Meldung angezeigt wird, sollte das verschlüsselte Betriebssystemlaufwerk betriebsbereit und die VM wieder verwendbar sein.
 
-In Fällen, in denen diese Sequenz nicht erkennbar war, oder wenn durch Startinformationen, Statusmeldungen oder andere Fehlerindikatoren melden, dass die Betriebssystemverschlüsselung während dieses Prozesses fehlgeschlagen ist (z.B. mit dem in diesem Leitfaden beschriebenen Fehler der Art „Fehler beim Aufheben der Bereitstellung“), wird Folgendes empfohlen: Stellen Sie die VM anhand der Momentaufnahme oder Sicherung wieder her, die direkt vor der Verschlüsselung erstellt wurde.  Vor dem nächsten Versuch ist es ratsam, die Merkmale der VM erneut auszuwerten und sicherzustellen, dass alle Voraussetzungen erfüllt sind.
+In den folgenden Fällen wird empfohlen, die VM in den Snapshot zurückzuspeichern oder unmittelbar vor der Verschlüsselung eine Sicherung zu erstellen.
+   - Wenn die zuvor beschriebene Neustartsequenz nicht erfolgt.
+   - Wenn die Startinformationen, Statusmeldung oder andere Fehlerindikatoren melden, dass die Betriebssystemverschlüsselung mitten in diesem Prozess fehlgeschlagen ist. Ein Beispiel einer Meldung ist der in dieser Anleitung beschriebene Fehler „Fehler beim Aufheben der Bereitstellung“.
+
+Bewerten Sie vor dem nächsten Versuch die Merkmale der VM erneut, und stellen Sie sicher, dass alle Voraussetzungen erfüllt sind.
 
 ## <a name="troubleshooting-azure-disk-encryption-behind-a-firewall"></a>Azure Disk Encryption-Problembehandlung hinter einer Firewall
-Wenn die Konnektivität durch eine Firewall, eine Proxyanforderung oder Einstellungen für Netzwerksicherheitsgruppen (NSGs) eingeschränkt ist, kann die Fähigkeit der Erweiterung zur Durchführung von erforderlichen Aufgaben beeinträchtigt sein.   Dies kann zu Statusmeldungen der Art „Erweiterungsstatus auf der VM nicht verfügbar“ oder dazu führen, dass erwartete Szenarien nicht abgeschlossen werden können.  In den folgenden Abschnitten werden einige häufig auftretende Firewallprobleme beschrieben, die Sie ggf. lösen müssen.
+Wenn die Konnektivität durch eine Firewall, eine Proxyanforderung oder Einstellungen für Netzwerksicherheitsgruppen (NSGs) eingeschränkt ist, kann die Fähigkeit der Erweiterung zur Durchführung von erforderlichen Aufgaben beeinträchtigt sein. Dies kann zu Statusmeldungen der Art „Erweiterungsstatus auf der VM nicht verfügbar“. In erwarteten Szenarien kann die Verschlüsselung nicht abgeschlossen werden. In den folgenden Abschnitten werden einige häufig auftretende Firewallprobleme beschrieben, die Sie ggf. untersuchen müssen.
 
 ### <a name="network-security-groups"></a>Netzwerksicherheitsgruppen
-Für alle angewendeten Einstellungen für Netzwerksicherheitsgruppen muss es ermöglicht werden, dass der Endpunkt die dokumentierten [Voraussetzungen](https://docs.microsoft.com/azure/security/azure-security-disk-encryption#prerequisites) für die Netzwerkkonfiguration in Bezug auf die Datenträgerverschlüsselung erfüllt.
+Für alle angewendeten Einstellungen von Netzwerksicherheitsgruppen muss es ermöglicht werden, dass der Endpunkt die dokumentierten [Voraussetzungen](https://docs.microsoft.com/azure/security/azure-security-disk-encryption#prerequisites) für die Netzwerkkonfiguration in Bezug auf die Datenträgerverschlüsselung erfüllt.
 
-### <a name="azure-keyvault-behind-firewall"></a>Azure Key Vault hinter einer Firewall
-Die VM muss auf den Schlüsseltresor zugreifen können. Lesen Sie den Leitfaden zum Zugreifen auf den Schlüsseltresor von einem Ort hinter einer Firewall, die vom [Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-access-behind-firewall)-Team verwaltet wird.
+### <a name="azure-key-vault-behind-a-firewall"></a>Azure Key Vault hinter einer Firewall
+Die VM muss auf einen Schlüsseltresor zugreifen können. Lesen Sie den Leitfaden für den Zugriff auf den Schlüsseltresor hinter einer Firewall, die vom [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-access-behind-firewall)-Team verwaltet wird.
 
-### <a name="linux-package-management-behind-firewall"></a>Linux-Paketverwaltung hinter einer Firewall
-Zur Laufzeit nutzt Azure Disk Encryption für Linux das Paketverwaltungssystem der Zieldistribution, um vor dem Aktivieren der Verschlüsselung erforderliche Komponenten zu installieren.  Falls die VM durch Firewalleinstellungen am Herunterladen und Installieren dieser Komponenten gehindert wird, ist mit nachfolgend auftretenden Fehlern zu rechnen.    Die Schritte für diese Konfiguration können je nach Distribution variieren.  Wenn unter Red Hat ein Proxy erforderlich ist, ist es sehr wichtig, dass die richtige Einrichtung von subscription-manager und yum sichergestellt ist.  Weitere Informationen zu diesem Thema finden Sie in [diesem Artikel des Red Hat-Supports](https://access.redhat.com/solutions/189533).  
+### <a name="linux-package-management-behind-a-firewall"></a>Linux-Paketverwaltung hinter einer Firewall
+
+Zur Laufzeit nutzt Azure Disk Encryption für Linux das Paketverwaltungssystem der Zieldistribution, um vor dem Aktivieren der Verschlüsselung erforderliche Komponenten zu installieren. Falls die VM durch Firewalleinstellungen am Herunterladen und Installieren dieser Komponenten gehindert wird, ist mit nachfolgend auftretenden Fehlern zu rechnen. Die Schritte zum Konfigurieren dieses Paketverwaltungssystems können je nach Distribution variieren. Wenn unter Red Hat ein Proxy erforderlich ist, müssen Sie sicherstellen, dass die richtige Einrichtung von „subscription-manager“ und „yum“ sichergestellt ist. Weitere Informationen finden Sie unter [How to troubleshoot subscription-manager and yum problems](https://access.redhat.com/solutions/189533) (Beheben von Problemen mit subscription-manager und yum).  
 
 ## <a name="troubleshooting-windows-server-2016-server-core"></a>Problembehandlung bei Windows Server 2016 Server Core
 
-Unter Windows Server 2016 Server Core ist die Komponente bdehdcfg nicht standardmäßig verfügbar. Diese Komponente ist für Azure Disk Encryption erforderlich.
+Unter Windows Server 2016 Server Core ist die Komponente **bdehdcfg** nicht standardmäßig verfügbar. Diese Komponente ist für Azure Disk Encryption erforderlich. Fügen Sie die Komponente **bdehdcfg** über die folgenden Schritte hinzu:
 
-Um dieses Problem zu umgehen, kopieren Sie die folgenden vier Dateien von einer Windows Server 2016 Data Center-VM in den Ordner „C:\windows\system32“ des Server Core-Images:
+   1. Kopieren Sie die folgenden vier Dateien von einer Windows Server 2016 Data Center-VM in den Ordner **C:\windows\system32** des Server Core-Images:
 
-```
-bdehdcfg.exe
-bdehdcfglib.dll
-bdehdcfglib.dll.mui
-bdehdcfg.exe.mui
-```
+   ```
+   bdehdcfg.exe
+   bdehdcfglib.dll
+   bdehdcfglib.dll.mui
+   bdehdcfg.exe.mui
+   ```
 
-Führen Sie dann den folgenden Befehl aus:
+   2. Geben Sie den folgenden Befehl ein:
 
-```
-bdehdcfg.exe -target default
-```
+   ```
+   bdehdcfg.exe -target default
+   ```
 
-Dadurch wird eine Systempartition mit 550 MB erstellt. Nach einem Neustart können Sie mit Diskpart die Volumes überprüfen und fortfahren.  
+   3. Dieser Befehl erstellt eine Systempartition der Größe 550 MB. Starten Sie das System neu. 
+   
+   4. Verwenden Sie DiskPart zum Überprüfen der Volumes, und fahren Sie dann fort.  
 
 Beispiel:
 
@@ -108,10 +117,11 @@ DISKPART> list vol
   Volume 1                      NTFS   Partition    550 MB  Healthy    System
   Volume 2     D   Temporary S  NTFS   Partition     13 GB  Healthy    Pagefile
 ```
-## <a name="see-also"></a>Weitere Informationen
-In diesem Dokument haben Sie weitere Informationen zu einigen häufigen Problemen in Azure Disk Encryption und deren Behandlung erhalten. Weitere Informationen zu diesem Dienst und den darin verfügbaren Funktionen finden Sie unter:
+## <a name="next-steps"></a>Nächste Schritte
+
+In diesem Dokument haben Sie weitere Informationen zu einigen häufigen Problemen in Azure Disk Encryption und deren Behandlung erhalten. Weitere Informationen zu diesem Dienst und seinen Funktionen finden Sie in den folgenden Artikeln:
 
 - [Anwenden der Datenträgerverschlüsselung in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-apply-disk-encryption)
 - [Verschlüsseln eines virtuellen Azure-Computers](https://docs.microsoft.com/azure/security-center/security-center-disk-encryption)
-- [Azure-Datenverschlüsselung ruhender Daten](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest)
+- [Datenverschlüsselung ruhender Azure-Daten](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest)
 

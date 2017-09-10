@@ -6,8 +6,8 @@
 ## [Verwaltete Anwendungen](managed-application-overview.md)
 
 # Erste Schritte
-## [Exportieren der Vorlage](resource-manager-export-template.md)
 ## [Erstellen und Bereitstellen der Vorlage](resource-manager-create-first-template.md)
+## [VS-Codeerweiterung für Vorlagen](resource-manager-vscode-extension.md)
 ## [Visual Studio mit Resource Manager](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)
 
 # Beispiele
@@ -20,8 +20,8 @@
 
 # Anleitung
 ## Erstellen von Vorlagen
-### [Bewährte Methoden für Vorlagen](resource-manager-template-best-practices.md)
 ### [Vorlagenabschnitte](resource-group-authoring-templates.md)
+### [Bewährte Methoden für Vorlagen](resource-manager-template-best-practices.md)
 ### [Verknüpfen mit anderen Vorlagen](resource-group-linked-templates.md)
 ### [Definieren der Abhängigkeit zwischen Ressourcen](resource-group-define-dependencies.md)
 ### [Erstellen mehrerer Instanzen](resource-group-create-multiple.md)
@@ -33,6 +33,7 @@
 ### [Freigeben des Status für verknüpfte Vorlagen](best-practices-resource-manager-state.md)
 ### [Muster für das Entwerfen von Vorlagen](best-practices-resource-manager-design-templates.md)
 
+
 ## Bereitstellen
 ### PowerShell
 #### [Bereitstellen der Vorlage](resource-group-template-deploy.md)
@@ -42,7 +43,9 @@
 #### [Bereitstellen der Vorlage](resource-group-template-deploy-cli.md)
 #### [Bereitstellen einer privaten Vorlage mit SAS-Token](resource-manager-cli-sas-token.md)
 #### [Exportieren der Vorlage und erneutes Bereitstellen](resource-manager-export-template-cli.md)
-### [Portal](resource-group-template-deploy-portal.md)
+### Portal
+#### [Bereitstellen von Ressourcen](resource-group-template-deploy-portal.md)
+#### [Exportieren der Vorlage](resource-manager-export-template.md)
 ### [REST-API](resource-group-template-deploy-rest.md)
 ### [Ressourcengruppenübergreifende Bereitstellung](resource-manager-cross-resource-group-deployment.md)
 ### [Continuous Integration in Visual Studio Team Services](../vs-azure-tools-resource-groups-ci-in-vsts.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)

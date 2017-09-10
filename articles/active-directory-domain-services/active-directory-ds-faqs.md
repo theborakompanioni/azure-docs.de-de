@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/17/2017
+ms.date: 08/28/2017
 ms.author: maheshu
-translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 7f3212350b1158cd51a34ee1b20a456a73d41672
-ms.lasthandoff: 03/21/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: 193e59c610d5c5b553469cf2ea2ecc150236ac27
+ms.contentlocale: de-de
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="azure-active-directory-domain-services-frequently-asked-questions-faqs"></a>Azure Active Directory Domain Services: häufig gestellte Fragen
@@ -32,19 +32,22 @@ Im [Leitfaden zur Problembehandlung](active-directory-ds-troubleshooting.md) fin
 Nein. Sie können nur eine einzelne durch Azure AD Domain Services verwaltete Domäne für ein einzelnes Azure AD-Verzeichnis erstellen.  
 
 #### <a name="can-i-enable-azure-ad-domain-services-in-an-azure-resource-manager-virtual-network"></a>Kann ich Azure AD-Domänendienste in einem virtuellen Azure Resource Manager-Netzwerk aktivieren?
-Nein. Azure AD-Domänendienste kann nur in einem klassischen virtuellen Azure-Netzwerk aktiviert werden. Sie können das klassische virtuelle Netzwerk mithilfe von Peering in virtuellen Netzwerken mit einem virtuellen Resource Manager Netzwerk verbinden und so Ihre verwaltete Domäne in einem virtuellen Resource Manager-Netzwerk verwenden.
+Ja. Azure AD Domain Services können in einem virtuellen Azure Resource Manager-Netzwerk aktiviert werden. Diese Funktion befindet sich derzeit in der Vorschauphase.
 
-#### <a name="can-i-enable-azure-ad-domain-services-in-a-federated-azure-ad-directory-i-use-adfs-to-authenticate-users-for-access-to-office-365-can-i-enable-azure-ad-domain-services-for-this-directory"></a>Kann ich Azure AD Domain Services in einem Azure AD-Verbundverzeichnis aktivieren? Ich verwende ADFS zum Authentifizieren von Benutzern für den Zugriff auf Office 365. Kann ich Azure AD Domain Services für dieses Verzeichnis aktivieren?
+#### <a name="can-i-migrate-my-existing-managed-domain-from-a-classic-virtual-network-to-a-resource-manager-virtual-network"></a>Kann ich meine vorhandene verwaltete Domäne aus einem klassischen virtuellen Netzwerk zu einem virtuellen Resource Manager-Netzwerk migrieren?
+Derzeit ist dies nicht möglich. Wir werden einen Mechanismus bereitstellen, mit dem Sie Ihre vorhandene verwaltete Domäne aus einem klassischen virtuellen Netzwerk zu einem virtuellen Resource Manager-Netzwerk migrieren können. Bitte achten Sie auf Updates.
+
+#### <a name="can-i-enable-azure-ad-domain-services-in-a-federated-azure-ad-directory-i-use-adfs-to-authenticate-users-for-access-to-office-365-and-do-not-synchronize-password-hashes-to-azure-ad-can-i-enable-azure-ad-domain-services-for-this-directory"></a>Kann ich Azure AD Domain Services in einem Azure AD-Verbundverzeichnis aktivieren? Ich verwende AD FS zum Authentifizieren von Benutzern für den Zugriff auf Office 365 und synchronisiere keine Kennworthashes mit Azure AD. Kann ich Azure AD Domain Services für dieses Verzeichnis aktivieren?
 Nein. Für Azure AD Domain Services ist der Zugriff auf die Kennworthashes von Benutzerkonten erforderlich, um Benutzer über NTLM oder Kerberos zu authentifizieren. In einem Verbundverzeichnis werden Kennworthashes im Azure AD-Verzeichnis nicht gespeichert. Daher kann Azure AD Domain Services mit diesen Azure AD-Verzeichnissen nicht verwendet werden.
 
 #### <a name="can-i-make-azure-ad-domain-services-available-in-multiple-virtual-networks-within-my-subscription"></a>Kann ich Azure AD Domain Services in mehreren virtuellen Netzwerken in meinem Abonnement zur Verfügung stellen?
-Der Dienst selbst bietet keine direkte Unterstützung für dieses Szenario. Azure AD Domain Services sind jeweils in nur einem virtuellen Netzwerk verfügbar. Sie können jedoch die Konnektivität zwischen mehreren virtuellen Netzwerken zum Bereitstellen von Azure AD Domain Services mit anderen virtuellen Netzwerken konfigurieren. Dieser Artikel beschreibt, wie Sie eine [Verbindung zu virtuellen Netzwerken in Azure herstellen](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md).
+Der Dienst selbst bietet keine direkte Unterstützung für dieses Szenario. Ihre verwaltete Domäne ist jeweils in nur einem virtuellen Netzwerk verfügbar. Sie können jedoch die Konnektivität zwischen mehreren virtuellen Netzwerken zum Bereitstellen von Azure AD Domain Services mit anderen virtuellen Netzwerken konfigurieren. Erfahren Sie, wie Sie eine [Verbindung zu virtuellen Netzwerken in Azure herstellen](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md).
 
 #### <a name="can-i-enable-azure-ad-domain-services-using-powershell"></a>Kann ich die Azure AD Domain Services mithilfe von PowerShell aktivieren?
 Die PowerShell-/automatisierte Bereitstellung der Azure AD Domain Services ist derzeit nicht verfügbar.
 
 #### <a name="is-azure-ad-domain-services-available-in-the-new-azure-portal"></a>Sind die Azure AD Domain Services im neuen Azure-Portal verfügbar?
-Nein. Die Azure AD Domain Services können nur im [klassischen Azure-Portal](https://manage.windowsazure.com)konfiguriert werden. Dies wird in Zukunft voraussichtlich auch im [Azure-Portal](https://portal.azure.com) unterstützt.
+Ja. Die Azure AD Domain Services können im [Azure-Portal](https://portal.azure.com) konfiguriert werden. Wir gehen davon aus, dass wir die Unterstützung des [klassischen Azure-Portals](https://manage.windowsazure.com) in der Zukunft beenden werden.
 
 #### <a name="can-i-add-domain-controllers-to-an-azure-ad-domain-services-managed-domain"></a>Kann ich Domänencontroller zu einer verwalteten Domäne der Azure AD Domain Services hinzufügen?
 Nein. Die von den Azure AD Domain Services bereitgestellte Domäne ist eine verwaltete Domäne. Die Domänencontroller für diese Domäne müssen nicht bereitgestellt, konfiguriert oder anderweitig verwaltet werden – diese Verwaltungsschritte werden als Dienst von Microsoft bereitgestellt. Daher können Sie keine zusätzlichen Domänencontroller (weder mit Lese-/Schreibzugriff noch mit reinem Lesezugriff) für die verwaltete Domäne hinzufügen.

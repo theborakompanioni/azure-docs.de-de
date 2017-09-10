@@ -10,15 +10,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/10/2017
+ms.date: 08/29/2017
 ms.author: jeffgilb
 ms.reviewer: jsnow
 ms.custom: it-pro
 ms.translationtype: HT
-ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
-ms.openlocfilehash: 4848130601ffa18ed1565e79cb0f0db3274e950f
+ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
+ms.openlocfilehash: 3acdc406b5e753d407c7c6fb32fe0ad5ed6dd68c
 ms.contentlocale: de-de
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 08/30/2017
 
 ---
 # <a name="quickstart-add-a-custom-domain-name-to-azure-active-directory"></a>Schnellstart: Hinzufügen eines benutzerdefinierten Domänennamens zu Azure Active Directory
@@ -46,10 +46,8 @@ Jedes Azure AD-Verzeichnis enthält einen anfänglichen Domänennamen in der For
 > [!TIP]
 > Wenn Sie planen, Ihre lokale Windows Server AD mit Azure AD in einen Verbund aufzunehmen, müssen Sie das Kontrollkästchen **Ich möchte diese Domäne für einmaliges Anmelden bei meinem lokalen Active Directory konfigurieren** aktivieren, wenn Sie zum Synchronisieren Ihrer Verzeichnisse das Tool Azure AD Connect ausführen. Sie müssen den Domänennamen, den Sie für den Verbund mit Ihrem lokalen Verzeichnis im Schritt **Azure AD-Domäne** des Assistenten auswählen, außerdem registrieren. In [dieser Anleitung](./connect/active-directory-aadconnect-get-started-custom.md#verify-the-azure-ad-domain-selected-for-federation) wird veranschaulicht, wie der Schritt im Assistenten aussieht. Falls Sie nicht über das Azure AD Connect-Tool verfügen, können Sie es [hier herunterladen](http://go.microsoft.com/fwlink/?LinkId=615771).
 
-Nach dem Hinzufügen des Domänennamens muss Azure AD überprüfen, ob der Domänenname Ihrer Organisation gehört. Dazu muss allerdings zuerst der DNS-Zonendatei ein DNS-Eintrag für den Domänennamen hinzugefügt werden. Dieser Schritt wird auf der Website für die Registrierung von Domänennamen ausgeführt.
-
 ## <a name="add-the-dns-entry-at-the-domain-name-registrar-for-the-domain"></a>Hinzufügen des DNS-Eintrags bei der Domänennamen-Registrierungsstelle für die Domäne
-Der nächste Schritt der Verwendung des benutzerdefinierten Domänennamens mit Azure AD ist die Aktualisierung der DNS-Zonendatei für die Domäne. Azure AD kann dann überprüfen, ob sich der benutzerdefinierte Domänenname im Besitz Ihrer Organisation befindet.
+Der nächste Schritt der Verwendung des benutzerdefinierten Domänennamens mit Azure AD ist die Aktualisierung der DNS-Zonendatei für die Domäne. Azure AD kann dann überprüfen, ob sich der benutzerdefinierte Domänenname im Besitz Ihrer Organisation befindet. Sie können [Azure DNS im Azure-Portal](https://docs.microsoft.com/azure/dns/dns-getstarted-portal) als einzelnen Verwaltungspunkt für Azure, Office 365 und externe DNS-Einträge in Azure verwenden.
 
 1. Melden Sie sich an der Domänennamen-Registrierungsstelle für die Domäne an. Falls Sie nicht über die Zugriffsberechtigung zur Aktualisierung des DNS-Eintrags verfügen, können Sie eine Person oder ein Team mit entsprechendem Zugriff bitten, Schritt 2 auszuführen und Sie zu benachrichtigen, wenn der Vorgang abgeschlossen wurde.
 2. Aktualisieren Sie die DNS-Zonendatei für die Domäne, indem Sie den DNS-Eintrag hinzufügen, der von Azure AD bereitgestellt wird. Mit diesem DNS-Eintrag kann Azure AD prüfen, ob sich die Domäne in Ihrem Besitz befindet. Der DNS-Eintrag nimmt keine Änderungen in Bezug auf das Verhalten, wie etwa E-Mail-Routing oder Webhosting, vor.

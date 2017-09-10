@@ -16,20 +16,20 @@ ms.workload: NA
 ms.date: 07/10/2017
 ms.author: sashan
 ms.translationtype: HT
-ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
-ms.openlocfilehash: 8bb7f93b5ba2d1909653bb1010f1266640a1b2e9
+ms.sourcegitcommit: 07e5e15f4f4c4281a93c8c3267c0225b1d79af45
+ms.openlocfilehash: fc9f362d2506451748841e02dbae58f80cf278ba
 ms.contentlocale: de-de
-ms.lasthandoff: 08/01/2017
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="overview-failover-groups-and-active-geo-replication"></a>Übersicht: Failovergruppen und aktive Georeplikation
-Mit der aktiven Georeplikation können Sie bis zu vier lesbare sekundäre Datenbanken am gleichen oder an verschiedenen Standorten von Rechenzentren (Regionen) konfigurieren. Sekundäre Datenbanken stehen für Abfragen und Failover zur Verfügung, wenn ein Rechenzentrum ausgefallen ist oder keine Verbindung mit der primären Datenbank möglich ist. Das Failover muss durch die Anwendung des Benutzers manuell eingeleitet werden. Nach einem Failover hat die neue primäre Datenbank einen anderen Verbindungsendpunkt. 
+Mit der aktiven Georeplikation können Sie bis zu vier lesbare sekundäre Datenbanken am gleichen oder an verschiedenen Standorten von Rechenzentren (Regionen) konfigurieren. Sekundäre Datenbanken stehen für Abfragen und Failover zur Verfügung, wenn ein Rechenzentrum ausgefallen oder keine Verbindung mit der primären Datenbank möglich ist. Das Failover muss durch die Anwendung des Benutzers manuell eingeleitet werden. Nach einem Failover hat die neue primäre Datenbank einen anderen Verbindungsendpunkt. 
 
 > [!NOTE]
 > Die aktive Georeplikation ist jetzt für alle Datenbanken in allen Diensttarifen und allen Regionen verfügbar.
 >  
 
-Gruppen für automatisches Failover in Azure SQL-Datenbank (in der Vorschau) sind ein SQL-Datenbank-Feature für die Verwaltung von Georeplikationsbeziehungen, Konnektivität und skaliertes Failover. Damit erhalten Kunden die Möglichkeit, nach schwerwiegenden regionalen Ausfällen oder anderen ungeplanten Ereignissen, die zum vollständigen oder teilweisen Verlust der Verfügbarkeit der Dienste von SQL-Datenbank in der primären Region führen, automatisch mehrere verwandte Datenbanken in der sekundären Region wiederherzustellen. Außerdem können sie die lesbaren sekundären Datenbanken zur Auslagerung schreibgeschützter Workloads verwenden.  Da Gruppen für automatisches Failover mehrere Datenbanken beinhalten, müssen sie auf dem primären Server konfiguriert werden. Primärer und sekundärer Server müssen zu dem gleichen Abonnement gehören. Gruppen für automatisches Failover unterstützen die Replikation aller Datenbanken in der Gruppe auf nur einen sekundären Server in einer anderen Region. Die aktive Georeplikation ohne Gruppen für automatisches Failover erlaubt bis zu 4 sekundäre Server in beliebigen Regionen.
+Gruppen für automatisches Failover in Azure SQL-Datenbank (in der Vorschau) sind ein SQL-Datenbank-Feature für die Verwaltung von Georeplikationsbeziehungen, Konnektivität und skaliertes Failover. Damit erhalten Kunden die Möglichkeit, nach schwerwiegenden regionalen Ausfällen oder anderen ungeplanten Ereignissen, die zum vollständigen oder teilweisen Verlust der Verfügbarkeit der Dienste von SQL-Datenbank in der primären Region führen, automatisch mehrere verwandte Datenbanken in der sekundären Region wiederherzustellen. Außerdem können sie die lesbaren sekundären Datenbanken zur Auslagerung schreibgeschützter Workloads verwenden.  Da Gruppen für automatisches Failover mehrere Datenbanken beinhalten, müssen sie auf dem primären Server konfiguriert werden. Primärer und sekundärer Server müssen zu dem gleichen Abonnement gehören. Gruppen für automatisches Failover unterstützen die Replikation aller Datenbanken in der Gruppe auf nur einen sekundären Server in einer anderen Region. Die aktive Georeplikation ohne Gruppen für automatisches Failover erlaubt bis zu vier sekundäre Server in beliebigen Regionen.
 
 Falls Sie die aktive Georeplikation verwenden und Ihre primäre Datenbank aus beliebigem Grund ausfällt oder einfach offline geschaltet werden muss, können Sie ein Failover auf eine der sekundären Datenbanken initiieren. Wenn das Failover auf eine sekundäre Datenbank aktiviert ist, werden alle anderen sekundären Datenbanken automatisch mit der neuen primären Datenbank verknüpft. Wenn Sie Gruppen für automatisches Failover (in der Vorschau) zum Verwalten der Datenbankwiederherstellung verwenden, führt jeder Ausfall, der eine oder mehrere der Datenbanken in der Gruppe betrifft, zu einem automatischen Failover. Sie können eine Richtlinie für automatisches Failover konfigurieren, die Ihren Anwendungsanforderungen am besten entspricht, oder Sie können stattdessen die manuelle Aktivierung verwenden. Darüber hinaus bieten Gruppen für automatisches Failover (in der Vorschau) Lese-/Schreib-Listenerendpunkte, die während eines Failovers unverändert bleiben. Sowohl bei manueller als auch automatischer Failoveraktivierung schaltet das Failover alle sekundären Datenbanken in der Gruppe zu primären um. Nach Abschluss des Datenbankfailovers wird der DNS-Eintrag automatisch aktualisiert, um die Endpunkte in die neue Region umzuleiten.
 
@@ -62,7 +62,7 @@ Das Feature der aktiven Georeplikation bietet die folgenden wichtigen Möglichke
 * **Mehrere lesbare sekundäre Datenbanken**: Mehrere sekundäre Datenbanken sorgen für mehr Redundanz und einen besseren Schutz der primären Datenbank und Anwendung. Wenn mehrere sekundäre Datenbanken vorhanden sind, bleibt die Anwendung auch bei Ausfall einer der sekundären Datenbanken geschützt. Wenn es nur eine sekundäre Datenbank gibt und diese ausfällt, ist die Anwendung bis zum Erstellen einer neuen sekundären Datenbank einem höheren Risiko ausgesetzt.
 
    > [!NOTE]
-   > Wenn Sie mit der aktiven Georeplikation eine global verteilte Anwendung erstellen und schreibgeschützten Zugriff auf Daten in mehr als vier Regionen bereitstellen müssen, können Sie eine sekundäre Datenbank einer sekundären Datenbank erstellen (dieser Prozess wird als Verkettung bezeichnet). Auf diese Weise können Sie die Datenbankreplikation praktisch unbegrenzt skalieren. Darüber hinaus verkürzt die Verkettung den Mehraufwand der Replikation von der primären Datenbank. Der Nachteil besteht in der erhöhten Replikationsverzögerung in den äußersten sekundären Datenbanken. verfügbar. 
+   > Wenn Sie mit der aktiven Georeplikation eine global verteilte Anwendung erstellen und schreibgeschützten Zugriff auf Daten in mehr als vier Regionen bereitstellen müssen, können Sie eine sekundäre Datenbank einer sekundären Datenbank erstellen (dieser Prozess wird als Verkettung bezeichnet). Auf diese Weise können Sie die Datenbankreplikation praktisch unbegrenzt skalieren. Darüber hinaus verkürzt die Verkettung den Mehraufwand der Replikation von der primären Datenbank. Der Nachteil besteht in der erhöhten Replikationsverzögerung in den äußersten sekundären Datenbanken. 
    >
 
 * **Unterstützung von Datenbanken in elastischen Pools:** Die aktive Georeplikation kann für jede Datenbank in einem beliebigen Pool für elastische Datenbanken konfiguriert werden. Die sekundäre Datenbank kann sich in einem anderen elastischen Pool befinden. Für normale Datenbanken kann die sekundäre Datenbank ein elastischer Pool sein und umgekehrt, sofern die Dienstebenen identisch sind. 
@@ -97,7 +97,8 @@ Gruppen für automatisches Failover bieten eine leistungsfähige Abstraktion der
 
 ## <a name="best-practices-of-building-highly-available-service"></a>Best Practices zum Erstellen von hoch verfügbaren Diensten
 
-Zum Erstellen eines hoch verfügbaren Diensts, der Azure SQL-Datenbank verwendet, sollten Kunden die folgenden Richtlinien beachten:
+Zum Erstellen eines hoch verfügbaren Diensts, der Azure SQL-Datenbank verwendet, sollten Sie die folgenden Richtlinien beachten:
+
 - **Failovergruppe verwenden:** Failovergruppen können zwischen zwei Servern in verschiedenen Regionen erstellt werden (primäre und sekundäre Server). Jede Gruppe kann eine oder mehrere Datenbanken enthalten, die als Einheit wiederhergestellt werden, falls alle oder einige primäre Datenbanken aufgrund eines Ausfalls in der primären Region nicht mehr verfügbar sind. Die Failovergruppe erstellt eine geosekundäre Datenbank mit dem gleichen Dienstziel wie die primäre Datenbank. Wenn Sie der Failovergruppe eine vorhandene Georeplikationsbeziehung hinzufügen, stellen Sie sicher, dass die geosekundäre Datenbank mit dem gleichen Servicelevelziel wie die primäre Datenbank konfiguriert ist.
 - **Lese-/Schreib-Listener für OLTP-Workload verwenden:** Verwenden Sie beim Durchführen von OLTP-Vorgängen **&lt;name-der-failovergruppe&gt;.database.windows.net** als Server-URL, damit die Verbindungen automatisch an den primären Server weitergeleitet werden. Diese URL wird nach dem Failover nicht geändert.  
 Beachten Sie, dass das Failover die Aktualisierung von DNS-Einträgen einschließt, damit die Clientverbindungen erst dann an die neue primäre Datenbank weitergeleitet werden, wenn der Client-DNS-Cache aktualisiert wurde.
@@ -121,7 +122,7 @@ Aufgrund der hohen Latenz von WANs wird für die fortlaufende Kopie ein asynchro
 > **sp_wait_for_database_copy_sync** verhindert Datenverlust nach einem Failover, garantiert aber nicht die vollständige Synchronisierung für den Lesezugriff. Die vom Aufruf der Prozedur **sp_wait_for_database_copy_sync** verursachte Verzögerung kann signifikant sein und hängt von der Größe des Transaktionsprotokolls zum Zeitpunkt des Aufrufs ab. 
 > 
 
-## <a name="programmatically-managing-active-geo-replication"></a>Programmgesteuertes Verwalten der aktiven Georeplikation
+## <a name="programmatically-managing-failover-groups-and-active-geo-replication"></a>Programmgesteuertes Verwalten von Failovergruppen und aktive Georeplikation
 Wie bereits erwähnt, können Gruppen für automatisches Failover (in der Vorschau) und aktive Georeplikation auch programmgesteuert mit Azure PowerShell und der REST-API verwaltet werden. Die folgenden Tabellen beschreiben den verfügbaren Satz von Befehlen.
 
 **Azure Resource Manager-API und rollenbasierte Sicherheit:** Die aktive Georeplikation umfasst eine Reihe von Azure Resource Manager-APIs für die Verwaltung. Hierzu zählen unter anderem die [Azure SQL-Datenbank-REST-API](https://docs.microsoft.com/rest/api/sql/) und [Azure PowerShell-Cmdlets](https://docs.microsoft.com/powershell/azure/overview). Diese APIs erfordern die Verwendung von Ressourcengruppen und unterstützen rollenbasierte Sicherheit (RBAC). Weitere Informationen zur Implementierung von Zugriffsrollen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](../active-directory/role-based-access-control-what-is.md).
@@ -130,7 +131,8 @@ Wie bereits erwähnt, können Gruppen für automatisches Failover (in der Vorsch
 > Viele neue Features für die aktive Georeplikation werden nur in der auf [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) basierenden [Azure SQL-REST-API](https://msdn.microsoft.com/library/azure/mt163571.aspx) und mit den Azure [SQL-Datenbank-PowerShell-Cmdlets](https://msdn.microsoft.com/library/azure/mt574084.aspx) unterstützt. Zur Gewährleistung der Abwärtskompatibilität werden zwar die [(klassische) REST-API](https://msdn.microsoft.com/library/azure/dn505719.aspx) sowie [(klassische) Azure SQL-Datenbank-Cmdlets](https://msdn.microsoft.com/library/azure/dn546723.aspx) unterstützt, Sie sollten jedoch die Azure Resource Manager-basierten APIs verwenden. 
 > 
 
-### <a name="transact-sql"></a>Transact-SQL
+## <a name="manage-sql-database-failover-using-transact-sql"></a>Verwalten eines Failovers von SQL-Datenbanken mit Transact-SQL
+
 | Befehl | Beschreibung |
 | --- | --- |
 | [ALTER DATABASE (Azure SQL-Datenbank)](https://msdn.microsoft.com/library/mt574871.aspx) |Verwenden Sie das Argument ADD SECONDARY ON SERVER, um eine sekundäre Datenbank für eine vorhandene Datenbank zu erstellen und die Datenreplikation zu starten. |
@@ -142,7 +144,8 @@ Wie bereits erwähnt, können Gruppen für automatisches Failover (in der Vorsch
 | [sp_wait_for_database_copy_sync (Azure SQL-Datenbank)](https://msdn.microsoft.com/library/dn467644.aspx) |Bewirkt, dass die Anwendung wartet, bis alle Transaktionen mit erfolgtem Commit repliziert und von der aktiven sekundären Datenbank bestätigt wurden. |
 |  | |
 
-### <a name="powershell"></a>PowerShell
+## <a name="manage-sql-database-failover-using-powershell"></a>Verwalten eines Failovers von SQL-Datenbanken mit PowerShell
+
 | Cmdlet | Beschreibung |
 | --- | --- |
 | [Get-AzureRmSqlDatabase](/powershell/module/azurerm.sql/get-azurermsqldatabase) |Ruft mindestens eine Datenbank ab. |
@@ -158,26 +161,26 @@ Wie bereits erwähnt, können Gruppen für automatisches Failover (in der Vorsch
 |  | |
 
 > [!IMPORTANT]
-> Beispielskripts, finden Sie unter [Konfigurieren der aktiven Georeplikation für eine einzelne Azure SQL-Datenbank mit PowerShell](scripts/sql-database-setup-geodr-and-failover-database-powershell.md), [Konfigurieren der aktiven Georeplikation für eine in einem Pool für elastische Datenbanken enthaltene Azure SQL-Datenbank mit PowerShell](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md) sowie unter [Use PowerShell to configure an active geo-replication failover group for a single Azure SQL database](scripts/sql-database-setup-geodr-failover-database-failover-group-powershell.md) (Verwenden von PowerShell zum Konfigurieren einer aktiven Failovergruppe bei der Georeplikation für eine einzelne Azure SQL-Datenbank).
+> Beispielskripts finden Sie unter [Konfigurieren der aktiven Georeplikation für eine einzelne Azure SQL-Datenbank mit PowerShell](scripts/sql-database-setup-geodr-and-failover-database-powershell.md), [Konfigurieren der aktiven Georeplikation für eine in einem Pool für elastische Datenbanken enthaltene Azure SQL-Datenbank mit PowerShell](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md) sowie unter [Use PowerShell to configure an active geo-replication failover group for a single Azure SQL database](scripts/sql-database-setup-geodr-failover-database-failover-group-powershell.md) (Verwenden von PowerShell zum Konfigurieren einer aktiven Failovergruppe bei der Georeplikation für eine einzelne Azure SQL-Datenbank).
 >
 
-### <a name="rest-api"></a>REST-API
+## <a name="manage-sql-database-failover-using-the-rest-api"></a>Verwalten eines Failovers von SQL-Datenbanken mit der REST-API
 | API | Beschreibung |
 | --- | --- |
-| [Create or Update Database (createMode=Restore)](https://docs.microsoft.com/rest/api/sql/databases#Databases_CreateOrUpdate) |Erstellt oder aktualisiert eine primäre oder sekundäre Datenbank oder stellt diese wieder her. |
-| [Get Create or Update Database Status](https://docs.microsoft.com/rest/api/sql/databases#Databases_CreateOrUpdate) |Ruft den Status während eines Erstellungsvorgangs ab. |
-| [Set Secondary Database as Primary (Planned Failover)](https://docs.microsoft.com/rest/api/sql/replicationlinkss#ReplicationLinks_Failover) |Legt fest, welche Replikatdatenbank als primäre Replikatdatenbank verwendet wird, indem ein Failover von der aktuellen primären Replikatdatenbank durchgeführt wird. |
-| [Set Secondary Database as Primary (Unplanned Failover)](https://docs.microsoft.com/rest/api/sql/replicationlinks#ReplicationLinks_FailoverAllowDataLoss) |Legt fest, welche Replikatdatenbank als primäre Replikatdatenbank verwendet wird, indem ein Failover von der aktuellen primären Replikatdatenbank durchgeführt wird. Bei diesem Vorgang können Daten verloren gehen. |
-| [Get Replication Link](https://docs.microsoft.com/rest/api/sql/replicationlinks#ReplicationLinks_Get) |Ruft eine spezifische Replikationsverknüpfung für eine angegebene SQL-Datenbank in einer Georeplikationspartnerschaft ab. Es werden die Informationen abgerufen, die in der Katalogsicht „sys.geo_replication_links“ sichtbar sind. |
-| [List Replication Links](https://docs.microsoft.com/en-us/rest/api/sql/replicationlinks#ReplicationLinks_ListByDatabase) | Ruft alle Replikationsverknüpfungen für eine angegebene SQL-Datenbank in einer Georeplikationspartnerschaft ab. Es werden die Informationen abgerufen, die in der Katalogsicht „sys.geo_replication_links“ sichtbar sind. |
-| [Delete Replication Link](https://docs.microsoft.com/rest/api/sql/replicationlinks#ReplicationLinks_Delete) | Löscht einen Datenbankreplikationslink. Kann nicht während eines Failovers verwendet werden. |
-| [Create or Update Failover Group](https://docs.microsoft.com/rest/api/sql/failovergroups#FailoverGroups_CreateOrUpdate) | Erstellt oder aktualisiert eine Failovergruppe. |
-| [Delete Failover Group](https://docs.microsoft.com/rest/api/sql/failovergroups#FailoverGroups_Delete) | Entfernt die Failovergruppe vom Server |
-| [Failover (Planned)](https://docs.microsoft.com/rest/api/sql/failovergroups#FailoverGroups_Failover) | Führt ein Failover vom aktuellen primären Server auf diesen Server durch. |
-| [Force Failover Allow Data Loss](https://docs.microsoft.com/rest/api/sql/failovergroups#FailoverGroups_ForceFailoverAllowDataLoss) |Führt ein Failover vom aktuellen primären Server auf diesen Server durch. Bei diesem Vorgang können Daten verloren gehen. |
-| [Get Failover Group](https://docs.microsoft.com/rest/api/sql/failovergroups#FailoverGroups_Get) | Ruft eine Failovergruppe ab. |
-| [List Failover Groups By Server](https://docs.microsoft.com/rest/api/sql/failovergroups#FailoverGroups_ListByServer) | Listet die Failovergruppen eines Servers auf. |
-| [Update Failover Group](https://docs.microsoft.com/rest/api/sql/failovergroups#FailoverGroups_Update) | Aktualisiert eine Failovergruppe. |
+| [Create or Update Database (createMode=Restore)](/rest/api/sql/Databases/CreateOrUpdate) |Erstellt oder aktualisiert eine primäre oder sekundäre Datenbank oder stellt diese wieder her. |
+| [Get Create or Update Database Status](/rest/api/sql/Databases/CreateOrUpdate) |Ruft den Status während eines Erstellungsvorgangs ab. |
+| [Set Secondary Database as Primary (Planned Failover)](/rest/api/sql/replicationlinks/failover) |Legt fest, welche Replikatdatenbank als primäre Replikatdatenbank verwendet wird, indem ein Failover von der aktuellen primären Replikatdatenbank durchgeführt wird. |
+| [Set Secondary Database as Primary (Unplanned Failover)](https://docs.microsoft.com/rest/api/sql/replicationlinks#failoverallowdataloss) |Legt fest, welche Replikatdatenbank als primäre Replikatdatenbank verwendet wird, indem ein Failover von der aktuellen primären Replikatdatenbank durchgeführt wird. Bei diesem Vorgang können Daten verloren gehen. |
+| [Get Replication Link](/rest/api/sql/replicationlinks/get) |Ruft eine spezifische Replikationsverknüpfung für eine angegebene SQL-Datenbank in einer Georeplikationspartnerschaft ab. Es werden die Informationen abgerufen, die in der Katalogsicht „sys.geo_replication_links“ sichtbar sind. |
+| [Replication Links - List By Database](/rest/api/sql/replicationlinks/listbydatabase) | Ruft alle Replikationsverknüpfungen für eine angegebene SQL-Datenbank in einer Georeplikationspartnerschaft ab. Es werden die Informationen abgerufen, die in der Katalogsicht „sys.geo_replication_links“ sichtbar sind. |
+| [Delete Replication Link](/rest/api/sql/databases/delete) | Löscht einen Datenbankreplikationslink. Kann nicht während eines Failovers verwendet werden. |
+| [Create or Update Failover Group]/rest/api/sql/failovergroups/createorupdate) | Erstellt oder aktualisiert eine Failovergruppe. |
+| [Delete Failover Group](/rest/api/sql/failovergroups/delete) | Entfernt die Failovergruppe vom Server |
+| [Failover (Planned)](/rest/api/sql/failovergroups/failover) | Führt ein Failover vom aktuellen primären Server auf diesen Server durch. |
+| [Force Failover Allow Data Loss](/rest/api/sql/failovergroups/forcefailoverallowdataloss) |Führt ein Failover vom aktuellen primären Server auf diesen Server durch. Bei diesem Vorgang können Daten verloren gehen. |
+| [Get Failover Group](/rest/api/sql/failovergroups/get) | Ruft eine Failovergruppe ab. |
+| [List Failover Groups By Server](/rest/api/sql/failovergroups/listbyserver) | Listet die Failovergruppen eines Servers auf. |
+| [Update Failover Group](/rest/api/sql/failovergroups/update) | Aktualisiert eine Failovergruppe. |
 |  | |
 
 ## <a name="next-steps"></a>Nächste Schritte

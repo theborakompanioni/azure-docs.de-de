@@ -43,11 +43,7 @@
       href: sql-database-migrate-your-sql-server-database.md
     - name: '3: Sichern Ihrer SQL-Datenbank'
       href: sql-database-security-tutorial.md
-    - name: '4: Verbessern der Leistung der SQL-Datenbank'
-      href: sql-database-performance-tutorial.md
-    - name: '5: Verwalten einer mehrinstanzenfähigen App'
-      href: sql-database-multi-tenant-application.md
-    - name: '6: Implementieren einer geografisch verteilten Datenbank'
+    - name: '4: Implementieren einer geografisch verteilten Datenbank'
       href: sql-database-implement-geo-distributed-database.md
 - name: Beispiele
   items:
