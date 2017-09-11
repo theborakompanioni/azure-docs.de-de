@@ -337,7 +337,7 @@ Sie können verschiedene Netzwerkmodi dienstübergreifend in einer Anwendung fü
 In diesem Artikel wurden Netzwerkmodi von Service Fabric behandelt.  
 
 * [Service Fabric-Anwendungsmodell](service-fabric-application-model.md)
-* [Service Fabric service manifest resources](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-service-manifest-resources) (Service Fabric-Dienstmanifestressourcen)
+* [Angeben von Ressourcen in einem Dienstmanifest](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-service-manifest-resources)
 * [Bereitstellen eines Windows-Containers in Service Fabric unter Windows Server 2016](service-fabric-get-started-containers.md)
 * [Bereitstellen eines Docker-Containers in Service Fabric unter Linux](service-fabric-get-started-containers-linux.md)
 
