@@ -5,10 +5,10 @@
 ## [SDKs und Tools](../../index.md#pivot=sdkstools)
 
 # Schnellstart
-## [Web-Apps](../../app-service-web/web-sites-dotnet-get-started.md)
+## [Web-Apps](../../app-service-web/app-service-web-get-started-html.md)
 ## Virtuelle Computer
-### [Linux](../../virtual-machines/virtual-machines-linux-quick-create-portal.md)
-### [Windows](../../virtual-machines/virtual-machines-windows-hero-tutorial.md)
+### [Linux](../../virtual-machines/linux/quick-create-portal.md)
+### [Windows](../../virtual-machines/windows/quick-create-portal.md)
 ## [Serverlos](../../azure-functions/functions-create-first-azure-function.md)
 ## Microservices
 ### [Service Fabric](../../service-fabric/service-fabric-create-your-first-application-in-visual-studio.md)
@@ -16,16 +16,16 @@
 
 # Lernprogramme
 ## Erstellen und Bereitstellen einer Web-App
-### [ASP.NET](../../app-service-web/web-sites-dotnet-get-started.md)
-### [Java](../../app-service-web/web-sites-python-ptvs-django-mysql.md)
-### [Node.js](../../app-service-web/app-service-web-nodejs-get-started.md)
-### [PHP](../../app-service-web/app-service-web-php-get-started.md)
-### [Python](../../app-service-web/web-sites-python-ptvs-django-mysql.md)
+### [ASP.NET](../../app-service-web/app-service-web-get-started-dotnet.md)
+### [Java](../../app-service-web/app-service-web-get-started-java.md)
+### [Node.js](../../app-service-web/app-service-web-get-started-nodejs.md)
+### [PHP](../../app-service-web/app-service-web-get-started-php.md)
+### [Python](../../app-service-web/app-service-web-get-started-python.md)
 ## Bereitstellen von komplexen VM-Vorlagen
 ### [Linux](../../virtual-machines/virtual-machines-linux-dotnet-core-1-landing.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [Windows](../../virtual-machines/virtual-machines-windows-dotnet-core-1-landing.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ## [Erstellen einer mit Azure verbundenen Funktion](../../azure-functions/functions-create-an-azure-connected-function.md)
-## [Bereitstellen einer Web-App unter Linux mit Docker](../../app-service-web/app-service-linux-using-custom-docker-image.md) 
+## [Bereitstellen einer Web-App unter Linux mit Docker](../../app-service/containers/quickstart-custom-docker-image.md) 
 
 # Beispiele
 ## Azure-Befehlszeilenschnittstelle
@@ -48,12 +48,11 @@
 
 # Anleitungen
 ## Planen
-### [Architekturen von Webanwendungen](../../guidance/guidance-ra-app-service.md)
-### [VM-Architekturen](../../guidance/guidance-ra-compute.md)
-### [Herstellen von Verbindungen mit lokalen Netzwerken](../../guidance/guidance-ra-hybrid-networking.md)
+### [Architekturen von Webanwendungen](/azure/architecture/reference-architectures/managed-web-app/)
+### [VM-Architekturen](/azure/architecture/reference-architectures/virtual-machines-windows/)
+### [Herstellen von Verbindungen mit lokalen Netzwerken](/azure/architecture/reference-architectures/hybrid-networking/)
 ### [Muster/Szenarien für Microservices](../../service-fabric/service-fabric-patterns-and-scenarios.md)
 ## Entwickeln
-### [WordPress-Apps](../../app-service-web/web-sites-php-web-site-gallery.md)
 ### [Linux-VM](../../virtual-machines/virtual-machines-linux-create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [Windows-VM](../../virtual-machines/virtual-machines-windows-ps-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [Serverlose Apps](../../azure-functions/functions-reference.md)
@@ -67,8 +66,8 @@
 ### [Blobs](../../storage/blobs/storage-dotnet-how-to-use-blobs.md)
 ### [Dateifreigaben](../../storage/files/storage-dotnet-how-to-use-files.md)
 ### [Schlüssel-Wert-Paare](../../cosmos-db/table-storage-how-to-use-dotnet.md)
-### [JSON-Dokumente](../../documentdb/documentdb-get-started.md)
-### [Relationale Tabellen](../../sql-database/sql-database-get-started.md)
+### [JSON-Dokumente](../../cosmos-db/documentdb-get-started.md)
+### [Relationale Tabellen](../../sql-database/sql-database-get-started-portal.md)
 ### [Meldungswarteschlangen](../../storage/queues/storage-dotnet-how-to-use-queues.md)
 
 ## Skalieren
@@ -77,7 +76,7 @@
 ### [Microservice-Apps](../../service-fabric/service-fabric-concepts-scalability.md)
 
 ## Schützen
-### [Web-Apps und mobile Apps](../../app-service-web/web-sites-security.md)
+### [Web-Apps und mobile Apps](../../app-service-web/app-service-web-tutorial-custom-ssl.md)
 
 ## Sicherung
 ### [Web-Apps und mobile Apps](../../app-service-web/web-sites-backup.md)
@@ -85,7 +84,7 @@
 
 ## Überwachen
 ### [Web-Apps und mobile Apps](../../app-service-web/web-sites-enable-diagnostic-log.md)
-### [Linux-VM](../../virtual-machines/virtual-machines-linux-vm-monitoring.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json.md)
+### [Linux-VM](../../virtual-machines/linux/tutorial-monitoring.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [Windows-VM](../../virtual-machines/virtual-machines-windows-extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [Microservices](../../service-fabric/service-fabric-diagnostics-overview.md)
 ### [Abrechnungswarnungen](../../billing/billing-set-up-alerts.md)
