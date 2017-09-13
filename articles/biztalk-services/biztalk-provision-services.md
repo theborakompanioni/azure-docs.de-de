@@ -152,7 +152,7 @@ Wenn Sie auf **Verwalten** klicken, wird das Access Control-Verwaltungsportal ge
 Die Access Control Service-Identität besteht aus einem Satz von Anmeldeinformationen, mit denen sich Anwendungen oder Clients direkt bei Access Control authentifizieren und ein Token abrufen können.
 
 > [!IMPORTANT]
-> Der BizTalk-Dienst verwendet als Standarddienstidentität **Besitzer** und den Wert **Kennwort**. Wenn Sie anstelle des Kennwortwerts den Wert des symmetrischen Schlüssels verwenden, kann folgender Fehler auftreten:<br/><br/>*Mit den angegebenen Anmeldeinformationen konnte keine Verbindung zum Access Control-Verwaltungsdienstkonto hergestellt werden.*
+> Der BizTalk-Dienst verwendet als Standarddienstidentität **Besitzer** und den Wert **Kennwort**. Wenn Sie anstelle des Kennwortwerts den Wert des symmetrischen Schlüssels verwenden, kann folgender Fehler auftreten:<br/><br/>*Could not connect to the Access Control Management Service account with the specified credentials*
 > 
 > 
 

@@ -14,6 +14,7 @@ So erstellen Sie einen Namespace
 8. Klicken Sie auf **Erstellen**. Ihr Dienstnamespace wird nun erstellt und aktiviert. Ggf. müssen Sie einige Minuten warten, bis die Ressourcen für Ihr Konto durch das System bereitgestellt werden.
 
 ### <a name="obtain-the-management-credentials"></a>Abrufen der Verwaltungsanmeldeinformationen
+Beim Erstellen eines neuen Namespace wird automatisch eine SAS-Regel (Shared Access Signature) mit einem zugeordneten Paar aus primären und sekundären Schlüsseln generiert, mit dem Sie die volle Kontrolle über alle Aspekte des Namespace haben. Unter [Service Bus-Authentifizierung und -Autorisierung](../articles/service-bus-messaging/service-bus-authentication-and-authorization.md) finden Sie Informationen dazu, wie Sie weitere Regeln mit stärker eingeschränkten Rechten für reguläre Absender und Empfänger erstellen. Führen Sie diese Schritte aus, um die erste Regel zu kopieren: 
 
 1. Klicken Sie in der Liste mit den Namespaces auf den neu erstellten Namespacenamen.
 2. Klicken Sie auf dem Blatt „Namespace“ auf **Richtlinien für gemeinsamen Zugriff**.

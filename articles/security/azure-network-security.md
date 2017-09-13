@@ -314,7 +314,7 @@ Dieser Kommunikationsfluss ist möglich, weil Azure eine Reihe von Systemrouten 
 
 -   Aus einem VNet in ein lokales Netzwerk über ein VPN-Gateway.
 
-In vielen Unternehmen gelten strenge Sicherheits- und Konformitätsanforderungen, für die eine lokale Untersuchung aller Netzwerkpakete zur Durchsetzung bestimmter Richtlinien erforderlich ist. Azure verfügt über den Mechanismus der [Tunnelerzwingung](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-forced-tunneling). Hierbei wird Datenverkehr von den VMs zum lokalen Standort geleitet, indem eine benutzerdefinierte Route erstellt wird oder [BGP](https://docs.microsoft.com/windows-server/remote/remote-access/bgp/border-gateway-protocol-bgp)-Ankündigungen (Border Gateway Protocol)
+In vielen Unternehmen gelten strenge Sicherheits- und Konformitätsanforderungen, für die eine lokale Untersuchung aller Netzwerkpakete zur Durchsetzung bestimmter Richtlinien erforderlich ist. Azure verfügt über den Mechanismus der [Tunnelerzwingung](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-forced-tunneling). Hierbei wird Datenverkehr von den VMs zum lokalen Standort geleitet, indem eine benutzerdefinierte Route erstellt wird oder [BGP](https://docs.microsoft.com/windows-server/remote/remote-access/bgp/border-gateway-protocol-bgp)-Ankündigungen (Border Gateway Protocol) per ExpressRoute oder VPN genutzt werden.
 
 Die Tunnelerzwingung in Azure wird über benutzerdefinierte Routen im virtuellen Netzwerk konfiguriert. Das Umleiten von Datenverkehr an einen lokalen Standort wird als eine Standardroute zum Azure-VPN-Gateway umgesetzt.
 

@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 05/27/2017
 ms.author: renash
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 67b8e2e0039c8bc63f50f177e3c0d18b07df45e6
+ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
+ms.openlocfilehash: a8e4900bee81763300d976f0c966d7d20662ca27
 ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
+ms.lasthandoff: 09/02/2017
 
 ---
 
@@ -27,16 +27,19 @@ ms.lasthandoff: 08/21/2017
 
 Wenn Sie eine Azure-Dateifreigabe außerhalb der Azure-Region einbinden möchten, in der sie gehostet wird (beispielsweise lokal oder in einer anderen Azure-Region), muss das Betriebssystem SMB 3.0 unterstützen. 
 
-Die Azure-Dateifreigabe kann auf einem Windows-Computer je nach Betriebssystemversion entweder lokal oder in einen virtuellen Azure-Computer eingebunden werden. Dies wird in der folgenden Tabelle veranschaulicht: 
+Sie können Azure-Dateifreigaben unter einer Windows-Installation einbinden, die entweder auf einer Azure-VM oder lokal ausgeführt wird. In der folgenden Tabelle wird veranschaulicht, welche Betriebssystemversionen das Einbinden von Dateifreigaben in den einzelnen Umgebungen unterstützen:
 
-| Windows-Version        | SMB-Version |In virtuellen Azure-Computer einbindbar|Lokal einbindbar|
-|------------------------|-------------|---------------------|---------------------|
-| Windows 7              | SMB 2.1     | Ja                 | Nein                  |
-| Windows Server 2008 R2 | SMB 2.1     | Ja                 | Nein                  |
-| Windows 8              | SMB 3.0     | Ja                 | Ja                 |
-| Windows Server 2012    | SMB 3.0     | Ja                 | Ja                 |
-| Windows Server 2012 R2 | SMB 3.0     | Ja                 | Ja                 |
-| Windows 10             | SMB 3.0     | Ja                 | Ja                 |
+| Windows-Version        | SMB-Version | Einbindung in Azure-VM möglich | Lokale Einbindung möglich |
+|------------------------|-------------|-----------------------|----------------------|
+| Windows 10<sup>1</sup>  | SMB 3.0 | Ja | Ja |
+| Windows Server 2016    | SMB 3.0     | Ja                   | Ja                  |
+| Windows 8.1            | SMB 3.0     | Ja                   | Ja                  |
+| Windows Server 2012 R2 | SMB 3.0     | Ja                   | Ja                  |
+| Windows Server 2012    | SMB 3.0     | Ja                   | Ja                  |
+| Windows 7              | SMB 2.1     | Ja                   | Nein                   |
+| Windows Server 2008 R2 | SMB 2.1     | Ja                   | Nein                   |
+
+<sup>1</sup>Windows 10, Versionen 1507, 1511, 1607 und 1703
 
 > [!Note]  
 > Es empfiehlt sich, immer die neueste KB für Ihre Windows-Version zu verwenden.

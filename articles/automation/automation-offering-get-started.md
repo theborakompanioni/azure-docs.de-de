@@ -12,13 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/18/2017
+ms.date: 08/31/2017
 ms.author: magoedte
 ms.translationtype: HT
-ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
-ms.openlocfilehash: 54f137b26bf1c8f966e8ef110dcf3d25abf7ac5b
+ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
+ms.openlocfilehash: 3269af400d091435af56b0093abbb839d8dd7068
 ms.contentlocale: de-de
-ms.lasthandoff: 08/19/2017
+ms.lasthandoff: 09/02/2017
 
 ---
 
@@ -170,8 +170,7 @@ Die empfohlene Methode zum Integrieren von Automation ist die Auswahl des Angebo
    - Geben Sie einen Namen für den neuen **OMS-Arbeitsbereich** an.
    - Wählen Sie ein **Abonnement** aus, mit dem eine Verknüpfung erstellt werden soll, indem Sie in der Dropdownliste einen anderen Eintrag auswählen, falls der Standardeintrag nicht geeignet ist.
    - Unter **Ressourcengruppe** können Sie eine Ressourcengruppe erstellen oder eine vorhandene Ressourcengruppe auswählen.  
-   - Wählen Sie einen **Speicherort**aus.  Derzeit sind nur die Standorte **Australien, Südosten**, **USA, Osten**, **Asien, Südosten**, **USA, Westen-Mitte** und **Europa, Westen** verfügbar.
-   - Wählen Sie einen **Tarif**aus.  Für die Lösung sind zwei Tarife verfügbar: „Free“ und „Pro Knoten (OMS)“.  Beim Free-Tarif gelten Beschränkungen für die Datenmenge, die pro Tag erfasst werden kann, die Aufbewahrungsdauer und die Laufzeit von Runbookaufträgen in Minuten.  Für den Tarif „Pro Knoten (OMS)“ gilt keine Beschränkung für die täglich erfasste Datenmenge.  
+   - Wählen Sie einen **Speicherort**aus.  Weitere Informationen finden Sie auf der Seite zur [Verfügbarkeit von Azure Automation in den einzelnen Regionen](https://azure.microsoft.com/regions/services/).  Lösungen sind für zwei Tarife verfügbar: „Free“ und „Pro Knoten (OMS)“.  Beim Free-Tarif gelten Beschränkungen für die Datenmenge, die pro Tag erfasst werden kann, die Aufbewahrungsdauer und die Laufzeit von Runbookaufträgen in Minuten.  Für den Tarif „Pro Knoten (OMS)“ gilt keine Beschränkung für die täglich erfasste Datenmenge.  
    - Wählen Sie die Option **Automation-Konto**.  Bei der Erstellung eines neuen OMS-Arbeitsbereichs müssen Sie auch ein Automation-Konto erstellen, das dem zuvor angegebenen neuen OMS-Arbeitsbereich zugeordnet wird, einschließlich Azure-Abonnement, -Ressourcengruppe und -Region.  Sie können die Option **Automation-Konto erstellen** wählen und auf dem Blatt **Automation-Konto** Folgendes angeben: 
   - Geben Sie im Feld **Name** den Namen des Automation-Kontos ein.
 

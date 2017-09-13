@@ -1,8 +1,8 @@
 > [!TIP]
 > 
-> **Testen des Microsoft Azure-Speicher-Explorers**
+> **Microsoft Azure-Speicher-Explorer ausprobieren**
 > 
-> Beim [Microsoft Azure-Speicher-Explorer](../articles/vs-azure-tools-storage-manage-with-storage-explorer.md) handelt es sich um eine kostenlose eigenständige App von Microsoft, über die Sie ganz einfach visuell mit Azure Storage-Daten arbeiten können – unter Windows, MacOS und Linux.
+> [Microsoft Azure-Speicher-Explorer](../articles/vs-azure-tools-storage-manage-with-storage-explorer.md) ist eine kostenlose eigenständige App von Microsoft. Sie können die App nutzen, um unter Windows, MacOS und Linux visuell mit Azure Storage-Daten zu arbeiten.
 > 
 > 
 

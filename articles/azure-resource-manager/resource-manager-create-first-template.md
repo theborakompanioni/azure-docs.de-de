@@ -10,21 +10,21 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 07/27/2017
+ms.date: 09/03/2017
 ms.topic: get-started-article
 ms.author: tomfitz
 ms.translationtype: HT
-ms.sourcegitcommit: 6e76ac40e9da2754de1d1aa50af3cd4e04c067fe
-ms.openlocfilehash: 49086b51e2db1aebed45746306ae14b6f1feb631
+ms.sourcegitcommit: 4eb426b14ec72aaa79268840f23a39b15fee8982
+ms.openlocfilehash: d07b2354906994ef7842a64d9f58bcbcc18f96e7
 ms.contentlocale: de-de
-ms.lasthandoff: 07/31/2017
+ms.lasthandoff: 09/06/2017
 
 ---
 
 # <a name="create-and-deploy-your-first-azure-resource-manager-template"></a>Erstellen und Bereitstellen Ihrer ersten Azure Resource Manager-Vorlage
 In diesem Thema werden die einzelnen Schritte zum Erstellen Ihrer ersten Azure Resource Manager-Vorlage beschrieben. Resource Manager-Vorlagen sind JSON-Dateien, mit denen die Ressourcen definiert werden, die Sie für Ihre Lösung bereitstellen müssen. Weitere Informationen zu den Konzepten der Bereitstellung und Verwaltung Ihrer Azure-Lösungen finden Sie unter [Übersicht über Azure Resource Manager](resource-group-overview.md). Wenn Sie über vorhandene Ressourcen verfügen und eine Vorlage für diese Ressourcen verwenden möchten, helfen Ihnen die Informationen unter [Exportieren einer Azure Resource Manager-Vorlage aus vorhandenen Ressourcen](resource-manager-export-template.md) weiter.
 
-Zum Erstellen und Überarbeiten von Vorlagen benötigen Sie einen JSON-Editor. [Visual Studio Code](https://code.visualstudio.com/) ist ein einfacher Open-Source-Code-Editor für alle Plattformen. Es wird dringend empfohlen, Resource Manager-Vorlagen mithilfe von Visual Studio Code zu erstellen. In diesem Thema wird vorausgesetzt, dass Sie VS Code verwenden. Sie können aber auch einen anderen JSON-Editor (z.B. Visual Studio) nutzen.
+Zum Erstellen und Überarbeiten von Vorlagen benötigen Sie einen JSON-Editor. [Visual Studio Code](https://code.visualstudio.com/) ist ein einfacher Open-Source-Code-Editor für alle Plattformen. Es wird dringend empfohlen, Resource Manager-Vorlagen mithilfe von Visual Studio Code zu erstellen. In diesem Artikel wird davon ausgegangen, dass Sie VS Code verwenden. Sie können aber auch einen anderen JSON-Editor (z.B. Visual Studio) nutzen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -216,7 +216,7 @@ Wie Sie sehen, ist der Name des Speicherkontos nun auf die hinzugefügte Variabl
 
 Speichern Sie die Datei. 
 
-Nach Abschluss der Schritte in diesem Artikel sieht Ihre Vorlage nun wie folgt aus:
+Ihre Vorlage sieht jetzt wie folgt aus:
 
 ```json
 {
@@ -289,6 +289,141 @@ Laden Sie für Cloud Shell die geänderte Vorlage in die Dateifreigabe hoch. Üb
 az group deployment create --resource-group examplegroup --template-file clouddrive/templates/azuredeploy.json --parameters storageSKU=Standard_RAGRS storageNamePrefix=newstore
 ```
 
+## <a name="use-autocomplete"></a>Verwenden von AutoVervollständigen
+
+Bisher hat die Arbeit an der Vorlage nur das Kopieren und Einfügen von JSON-Code aus diesem Artikel umfasst. Beim Entwickeln Ihrer eigenen Vorlagen möchten Sie dagegen die Eigenschaften und Werte ermitteln und angeben, die für den Ressourcentyp verfügbar sind. VS Code liest das Schema für den Ressourcentyp und schlägt Eigenschaften und Werte vor. Navigieren Sie zum Anzeigen der AutoVervollständigen-Funktion zum properties-Element Ihrer Vorlage, und fügen Sie eine neue Zeile hinzu. Geben Sie ein Anführungszeichen ein. Sie sehen, dass von VS Code sofort Namen vorgeschlagen werden, die im properties-Element verfügbar sind.
+
+![Anzeigen der verfügbaren Eigenschaften](./media/resource-manager-create-first-template/show-properties.png)
+
+Wählen Sie **encryption**. Geben Sie einen Doppelpunkt (:) ein. VS Code schlägt ein neues hinzuzufügendes Objekt vor.
+
+![Objekt hinzufügen](./media/resource-manager-create-first-template/add-object.png)
+
+Drücken Sie die TAB- oder EINGABETASTE, um das Objekt hinzuzufügen.
+
+Geben Sie erneut ein Anführungszeichen ein. Von VS Code werden jetzt Eigenschaften vorgeschlagen, die für „encryption“ verfügbar sind.
+
+![Anzeigen von Eigenschaften für „encryption“](./media/resource-manager-create-first-template/show-encryption-properties.png)
+
+Wählen Sie **services**, und fahren Sie basierend auf den VS Code-Erweiterungen mit dem Hinzufügen von Werten fort, bis Folgendes erreicht ist:
+
+```json
+"properties": {
+    "encryption":{
+        "services":{
+            "blob":{
+              "enabled":true
+            }
+        }
+    }
+}
+```
+
+Sie haben die Blobverschlüsselung für das Speicherkonto aktiviert. VS Code hat aber ein Problem erkannt. Beachten Sie, dass für „encryption“ eine Warnung vorhanden ist.
+
+![Warnung für „encryption“](./media/resource-manager-create-first-template/encryption-warning.png)
+
+Bewegen Sie den Cursor auf die grüne Linie, um die Warnung anzuzeigen.
+
+![Missing property (Fehlende Eigenschaft)](./media/resource-manager-create-first-template/missing-property.png)
+
+Sie sehen, dass für das Element „encryption“ eine keySource-Eigenschaft erforderlich ist. Fügen Sie nach dem Objekt „services“ ein Komma hinzu, und fügen Sie die keySource-Eigenschaft hinzu. VS Code schlägt **"Microsoft.Storage"** als gültigen Wert vor. Wenn der Vorgang abgeschlossen ist, sieht das properties-Element wie folgt aus:
+
+```json
+"properties": {
+    "encryption":{
+        "services":{
+            "blob":{
+              "enabled":true
+            }
+        },
+        "keySource":"Microsoft.Storage"
+    }
+}
+```
+
+Die endgültige Vorlage sieht wie folgt aus:
+
+```json
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "storageSKU": {
+      "type": "string",
+      "allowedValues": [
+        "Standard_LRS",
+        "Standard_ZRS",
+        "Standard_GRS",
+        "Standard_RAGRS",
+        "Premium_LRS"
+      ],
+      "defaultValue": "Standard_LRS",
+      "metadata": {
+        "description": "The type of replication to use for the storage account."
+      }
+    },   
+    "storageNamePrefix": {
+      "type": "string",
+      "maxLength": 11,
+      "defaultValue": "storage",
+      "metadata": {
+        "description": "The value to use for starting the storage account name. Use only lowercase letters and numbers."
+      }
+    }
+  },
+  "variables": {
+    "storageName": "[concat(toLower(parameters('storageNamePrefix')), uniqueString(resourceGroup().id))]"
+  },
+  "resources": [
+    {
+      "name": "[variables('storageName')]",
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2016-01-01",
+      "sku": {
+        "name": "[parameters('storageSKU')]"
+      },
+      "kind": "Storage",
+      "location": "[resourceGroup().location]",
+      "tags": {},
+      "properties": {
+        "encryption":{
+          "services":{
+            "blob":{
+              "enabled":true
+            }
+          },
+          "keySource":"Microsoft.Storage"
+        }
+      }
+    }
+  ],
+  "outputs": {}
+}
+```
+
+## <a name="deploy-encrypted-storage"></a>Bereitstellen von verschlüsseltem Speicher
+
+Stellen Sie die Vorlage erneut bereit, und geben Sie einen neuen Speicherkontonamen an.
+
+Verwenden Sie für PowerShell Folgendes:
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName examplegroup -TemplateFile azuredeploy.json -storageNamePrefix storesecure
+```
+
+Verwenden Sie für die Azure-Befehlszeilenschnittstelle den folgenden Befehl:
+
+```azurecli
+az group deployment create --resource-group examplegroup --template-file azuredeploy.json --parameters storageNamePrefix=storesecure
+```
+
+Laden Sie für Cloud Shell die geänderte Vorlage in die Dateifreigabe hoch. Überschreiben Sie die vorhandene Datei. Verwenden Sie dann den folgenden Befehl:
+
+```azurecli
+az group deployment create --resource-group examplegroup --template-file clouddrive/templates/azuredeploy.json --parameters storageNamePrefix=storesecure
+```
+
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 Wenn Sie die bereitgestellten Ressourcen nicht mehr benötigen, löschen Sie die Ressourcengruppe, um die Ressourcen zu bereinigen.
@@ -306,6 +441,7 @@ az group delete --name examplegroup
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
+* Sie können eine VS Code-Erweiterung installieren, um mehr Hilfe beim Entwickeln von Vorlagen zu erhalten. Weitere Informationen finden Sie unter [Verwenden der Visual Studio Code-Erweiterung für die Erstellung einer Azure Resource Manager-Vorlage](resource-manager-vscode-extension.md).
 * Weitere Informationen zur Struktur einer Vorlage finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](resource-group-authoring-templates.md).
 * Weitere Informationen zu den Eigenschaften für ein Speicherkonto finden Sie in der [Referenz zu Speicherkontenvorlagen](/azure/templates/microsoft.storage/storageaccounts).
 * Komplette Vorlagen für viele verschiedene Lösungstypen finden Sie unter [Azure-Schnellstartvorlagen](https://azure.microsoft.com/documentation/templates/).
