@@ -31,7 +31,7 @@
           href: create-mongodb-java.md
         - name: Golang
           href: create-mongodb-golang.md
-    - name: Grafik
+    - name: Graph
       items:
         - name: .NET
           href: create-graph-dotnet.md
@@ -59,7 +59,7 @@
           href: tutorial-develop-mongodb-react.md
         - name: Table
           href: tutorial-develop-table-dotnet.md
-        - name: Grafik
+        - name: Graph
           href: tutorial-develop-graph-dotnet.md
     - name: '2: Importieren'
       items:
@@ -75,7 +75,7 @@
           href: tutorial-query-mongodb.md
         - name: Table
           href: tutorial-query-table.md
-        - name: Grafik
+        - name: Graph
           href: tutorial-query-graph.md
     - name: '4: Global verteilen'
       items:
@@ -85,7 +85,7 @@
           href: tutorial-global-distribution-mongodb.md
         - name: Table
           href: tutorial-global-distribution-table.md
-        - name: Grafik
+        - name: Graph
           href: tutorial-global-distribution-graph.md
     - name: '5: Lokal entwickeln'
       items:
@@ -117,7 +117,7 @@
           href: mongodb-introduction.md
         - name: Table
           href: table-introduction.md
-        - name: Grafik
+        - name: Graph
           href: graph-introduction.md
     - name: Sicherheit
       href: database-security.md
