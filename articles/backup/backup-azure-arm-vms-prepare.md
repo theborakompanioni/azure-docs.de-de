@@ -13,13 +13,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 7/10/2017
+ms.date: 9/3/2017
 ms.author: markgal;trinadhk;
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 8d701f4a459da2e08510e8001adca0847b08e924
+ms.sourcegitcommit: ce0189706a3493908422df948c4fe5329ea61a32
+ms.openlocfilehash: 3fa6f4f850fc67d41f619d46bd61a19fe890b0fb
 ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
+ms.lasthandoff: 09/05/2017
 
 ---
 # <a name="prepare-your-environment-to-back-up-resource-manager-deployed-virtual-machines"></a>Vorbereiten der Umgebung für die Sicherung von mit Resource Manager bereitgestellten virtuellen Computern
@@ -59,7 +59,7 @@ Bitte machen Sie sich vor der Vorbereitung der Umgebung mit den Einschränkungen
 * Das Sichern virtueller Computer mit Datenträgern, die größer als 1.023 GB sind, wird nicht unterstützt.
 * Die Sicherung von virtuellen Computern mit einer reservierten IP-Adresse und ohne definierten Endpunkt wird nicht unterstützt.
 * Die Sicherung von virtuellen Computern, die nur mit BEK verschlüsselt sind, wird nicht unterstützt. Die Sicherung von virtuellen Linux-Computern, die mit LUKS-Verschlüsselung verschlüsselt sind, wird nicht unterstützt.
-* Die Sicherung von virtuellen Computern in einer Konfiguration mit horizontal hochskalierten Dateiservern wird nicht empfohlen.
+* Das Sichern von virtuellen Computern mit freigegebenen Clustervolumes (CSV) oder einer Konfiguration mit horizontal hochskalierten Dateiservern wird nicht empfohlen, da hierfür während der Momentaufnahmeaufgabe alle virtuellen Computer in die Clusterkonfiguration einbezogen werden müssen. Azure Backup unterstützt keine Multi-VM-Konsistenz. 
 * Im Netzwerk bereitgestellte und an den virtuellen Computer angefügte Laufwerke werden nicht in die Sicherungsdaten einbezogen.
 * Das Ersetzen eines vorhandenen virtuellen Computers während der Wiederherstellung wird nicht unterstützt. Wenn Sie versuchen, die VM wiederherzustellen, obwohl die VM vorhanden ist, wird die Wiederherstellung nicht ausgeführt.
 * Die regionsübergreifende Sicherung und Wiederherstellung wird nicht unterstützt.

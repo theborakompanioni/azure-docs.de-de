@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 08/01/2017
 ms.author: raynew
 ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
-ms.openlocfilehash: 147019a9650df2d421d4d930aa2932904d5174ab
+ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
+ms.openlocfilehash: d38fc766d5226be7161433555da9622e006c80e9
 ms.contentlocale: de-de
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 08/31/2017
 
 ---
 
 # <a name="step-2-before-you-start"></a>Schritt 2: Vorbereitung
 
-Nachdem Sie die [Architektur](azure-to-azure-walkthrough-architecture.md) für die Replikation virtueller Azure-Computer (Virtual Machines, VMs) zwischen Azure-Regionen mit [Azure Site Recovery](site-recovery-overview.md) überprüft haben, können Sie mit diesem Artikel feststellen, ob die Voraussetzungen erfüllt sind. 
+Nachdem Sie die [Architektur](azure-to-azure-walkthrough-architecture.md) für die Replikation virtueller Azure-Computer (Virtual Machines, VMs) zwischen Azure-Regionen mit [Azure Site Recovery](site-recovery-overview.md) überprüft haben, können Sie mit diesem Artikel feststellen, ob die Voraussetzungen erfüllt sind.
 
 - Am Ende des Artikels sollten Sie eine klare Vorstellung davon haben, was für die funktionierende Bereitstellung erforderlich ist, und die vorbereitenden Schritte erfüllt haben.
 - Kommentare können Sie am Ende dieses Artikels senden oder im [Forum zu Azure Recovery Services](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr) Fragen stellen.
@@ -37,19 +37,17 @@ Nachdem Sie die [Architektur](azure-to-azure-walkthrough-architecture.md) für d
 
 ## <a name="support-recommendations"></a>Supportempfehlungen
 
-Siehe hierzu die nachstehende Tabelle.
+Siehe hierzu die nachstehende Tabelle. Eine vollständige Liste der Supportanforderungen erhalten Sie in der [Supportmatrix](site-recovery-support-matrix-azure-to-azure.md).
 
 **Komponente** | **Anforderung**
 --- | ---
 **Recovery Services-Tresor** | Es wird empfohlen, einen Recovery Services-Tresor in der Azure-Zielregion zu erstellen, die für die Notfallwiederherstellung verwendet werden soll. Wenn Sie zum Beispiel Quell-VMs aus USA, Osten in USA, Mitte replizieren wollen, sollten Sie den Tresor in USA, Mitte erstellen.
 **Azure-Abonnement** | Ihr Azure-Abonnement sollte zum Erstellen von VMs am Zielstandort aktiviert sein, den Sie als Region für die Notfallwiederherstellung verwenden möchten. Wenden Sie sich an den Support, um das erforderliche Kontingent zu aktivieren.
 **Kapazität der Zielregion** | In der Azure-Zielregion sollte das Abonnement über ausreichend Kapazität für VMs, Speicherkonten und Netzwerkkomponenten verfügen.
-**Speicher** | Verwenden Sie den [Leitfaden für Speicher](../storage/storage-scalability-targets.md#scalability-targets-for-virtual-machine-disks) für Ihre Azure-Quell-VMs, um Leistungsprobleme zu vermeiden.<br/><br/> Speicherkonten müssen sich in derselben Region wie der Tresor befinden.<br/><br/> Die Replikation in Premium-Konten in den Regionen „Indien, Mitte“ und „Indien, Süden“ ist nicht möglich.<br/><br/> Wenn Sie die Replikation mit den Standardeinstellungen bereitstellen, erstellt Site Recovery die erforderlichen Speicherkonten auf Basis der Quellkonfiguration. Befolgen Sie beim Anpassen der Einstellungen die [Skalierbarkeitsziele für Festplatten virtueller Computer](../storage/storage-scalability-targets.md#scalability-targets-for-virtual-machine-disks).
-**Netzwerk** | Sie müssen ausgehende Verbindungen von Azure-VMs für bestimmte URLs/IP-Adressbereiche zulassen.<br/><br/> Netzwerkkonten müssen sich in derselben Region wie der Tresor befinden. 
+**Speicher** | Verwenden Sie den [Leitfaden für Speicher](../storage/common/storage-scalability-targets.md#scalability-targets-for-virtual-machine-disks) für Ihre Azure-Quell-VMs, um Leistungsprobleme zu vermeiden.<br/><br/> Speicherkonten müssen sich in derselben Region wie der Tresor befinden.<br/><br/> Die Replikation in Premium-Konten in den Regionen „Indien, Mitte“ und „Indien, Süden“ ist nicht möglich.<br/><br/> Wenn Sie die Replikation mit den Standardeinstellungen bereitstellen, erstellt Site Recovery die erforderlichen Speicherkonten auf Basis der Quellkonfiguration. Befolgen Sie beim Anpassen der Einstellungen die [Skalierbarkeitsziele für Festplatten virtueller Computer](../storage/common/storage-scalability-targets.md#scalability-targets-for-virtual-machine-disks).
+**Netzwerk** | Sie müssen ausgehende Verbindungen von Azure-VMs für bestimmte URLs/IP-Adressbereiche zulassen.<br/><br/> Netzwerkkonten müssen sich in derselben Region wie der Tresor befinden.
 **Azure-VM** | Stellen Sie sicher, dass alle aktuellen Stammzertifikate auf dem virtuellen Azure-Computer unter Windows/Linux vorhanden sind. Wenn dies nicht der Fall ist, können Sie den virtuellen Computer aufgrund von Sicherheitseinschränkungen nicht in Site Recovery registrieren.
 **Azure-Benutzerkonto** | Ihrem Azure-Benutzerkonto müssen bestimmte [Berechtigungen](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines) zum Aktivieren der Replikation eines virtuellen Azure-Computers zugewiesen sein.
-
-Eine vollständige Liste der Supportanforderungen erhalten Sie in der [Supportmatrix](site-recovery-support-matrix-azure-to-azure.md).
 
 
 ## <a name="set-permissions-on-the-account"></a>Festlegen von Berechtigungen für das Konto

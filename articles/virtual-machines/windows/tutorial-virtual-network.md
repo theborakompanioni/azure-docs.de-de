@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 05/02/2017
 ms.author: davidmu
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: 7fd0ace35cfe0286c874e4a75b733053aa945d39
+ms.translationtype: HT
+ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
+ms.openlocfilehash: 54a4a37d581f023610cd61835bdc76814fbd46e0
 ms.contentlocale: de-de
-ms.lasthandoff: 05/08/2017
+ms.lasthandoff: 09/01/2017
 
 ---
 
@@ -69,7 +69,7 @@ $vnet = New-AzureRmVirtualNetwork `
 
 ## <a name="create-front-end-vm"></a>Erstellen des virtuellen Front-End-Computers
 
-Ein virtueller Computer muss für die Kommunikation in einem virtuellen Netzwerk über eine virtuelle Netzwerkschnittstelle (NIC) verfügen. Auf *myFrontendVM* wird über das Internet zugegriffen. Daher muss eine öffentliche IP-Adresse festgelegt werden. 
+Ein virtueller Computer muss für die Kommunikation in einem virtuellen Netzwerk über eine virtuelle Netzwerkschnittstelle (NIC) verfügen. Auf *myFrontendVM* wird über das Internet zugegriffen. Daher muss auch eine öffentliche IP-Adresse festgelegt werden. 
 
 Erstellen Sie mit [New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress) eine öffentliche IP-Adresse:
 
@@ -93,7 +93,7 @@ $frontendNic = New-AzureRmNetworkInterface `
   -PublicIpAddressId $pip.Id
 ```
 
-Legen Sie mit [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) den Benutzernamen und das Kennwort für das Administratorkonto auf dem virtuellen Computer fest:
+Legen Sie mit [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) den Benutzernamen und das Kennwort für das Administratorkonto auf der VM fest. Diese Anmeldeinformationen benötigen Sie, um in weiteren Schritten eine Verbindung mit der VM herzustellen:
 
 ```powershell
 $cred = Get-Credential
@@ -153,7 +153,7 @@ Erstellen Sie mit dem folgenden Befehl eine Remotedesktopsitzung mit *myFrontend
 mstsc /v:<publicIpAddress>
 ``` 
 
-Nach der Anmeldung bei *myFrontendVM* können Sie mit einer einzelnen PowerShell-Codezeile IIS installieren und die lokale Firewallregel aktivieren, um Webdatenverkehr zuzulassen. Öffnen Sie eine PowerShell-Eingabeaufforderung, und führen Sie den folgenden Befehl aus:
+Nach der Anmeldung bei *myFrontendVM* können Sie mit einer einzelnen PowerShell-Codezeile IIS installieren und die lokale Firewallregel aktivieren, um Webdatenverkehr zuzulassen. Öffnen Sie über die RDP-Sitzung eine PowerShell-Eingabeaufforderung auf Ihrer VM, und führen Sie den folgenden Befehl aus:
 
 Führen Sie mit [Install-WindowsFeature](https://technet.microsoft.com/itpro/powershell/windows/servermanager/install-windowsfeature) die benutzerdefinierte Skripterweiterung aus, mit der der IIS-Webserver installiert wird:
 

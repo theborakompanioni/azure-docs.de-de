@@ -14,14 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 06/16/2017
+ms.date: 09/06/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: c3801573808709f29cb1e563ac803f225a28cafc
+ms.translationtype: HT
+ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
+ms.openlocfilehash: bc4e1b04e8f90e5713468ce38f6f05174affb261
 ms.contentlocale: de-de
-ms.lasthandoff: 07/08/2017
-
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="run-mapreduce-jobs-with-hadoop-on-hdinsight-using-powershell"></a>Ausführen von MapReduce-Aufträgen mit Hadoop in HDInsight mithilfe von PowerShell
@@ -41,7 +40,7 @@ Dieses Dokument enthält ein Beispiel zur Verwendung von Azure PowerShell zum Au
 
 ## <a id="powershell"></a>Ausführen eines MapReduce-Auftrags mithilfe von Azure PowerShell
 
-Azure PowerShell stellt *Cmdlets* bereit, mit denen Sie MapReduce-Aufträge in HDInsight remote ausführen können. Intern wird dies mithilfe von REST-Aufrufen an [WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) (früher Templeton) auf dem HDInsight-Cluster realisiert.
+Azure PowerShell stellt *Cmdlets* bereit, mit denen Sie MapReduce-Aufträge in HDInsight remote ausführen können. Intern sendet PowerShell REST-Aufrufe an die auf dem HDInsight-Cluster ausgeführte Anwendung [WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) (früher Templeton genannt).
 
 Die folgenden Cmdlets werden zum Ausführen der MapReduce-Aufträge in einem HDInsight-Remotecluster verwendet.
 
@@ -49,7 +48,7 @@ Die folgenden Cmdlets werden zum Ausführen der MapReduce-Aufträge in einem HDI
 
 * **New-AzureRmHDInsightMapReduceJobDefinition**: Erstellt aus den angegebenen MapReduce-Informationen eine neue *Auftragsdefinition*.
 
-* **Start-AzureRmHDInsightJob**: Sendet die Auftragsdefinition an HDInsight, startet den Auftrag und gibt ein *Auftrags*-Objekt zurück, mit dem der Status des Auftrags geprüft werden kann.
+* **Start-AzureRmHDInsightJob**: Sendet die Auftragsdefinition an HDInsight und startet den Auftrag. Ein *Auftragsobjekt* wird zurückgegeben.
 
 * **Wait-AzureRmHDInsightJob**: verwendet das Auftragsobjekt, um den Status des Auftrags zu prüfen. Es wird gewartet, bis der Auftrag abgeschlossen oder die Wartezeit überschritten ist.
 
@@ -65,7 +64,7 @@ Die folgenden Schritte veranschaulichen, wie diese Cmdlets zum Ausführen eines 
 
         .\mapreducejob.ps1
 
-    Wenn Sie das Skript ausführen, werden Sie dazu aufgefordert, den Namen des HDInsight-Clusters sowie den HTTPS-/Administratorkontonamen und das Kennwort für den Cluster einzugeben. Sie werden außerdem möglicherweise dazu aufgefordert, sich bei Ihrem Azure-Abonnement zu authentifizieren.
+    Wenn Sie das Skript ausführen, werden Sie dazu aufgefordert, den Namen des HDInsight-Clusters und die Anmeldedaten für den Cluster einzugeben. Sie werden außerdem möglicherweise dazu aufgefordert, sich bei Ihrem Azure-Abonnement zu authentifizieren.
 
 3. Nach Abschluss des Auftrags erhalten Sie eine Ausgabe ähnlich der folgenden:
 
@@ -88,14 +87,14 @@ Die folgenden Schritte veranschaulichen, wie diese Cmdlets zum Ausführen eines 
 
 ### <a name="view-output"></a>Anzeigen der Ausgabe
 
-Öffnen Sie die Datei **output.txt** in einem Texteditor, um die durch den Auftrag erzeugten Wörter und Zählerstände anzuzeigen.
+Öffnen Sie die Datei **output.txt** in einem Texteditor, um die von dem Auftrag erzeugten Wörter und Zählerstände anzuzeigen.
 
 > [!NOTE]
 > Die Ausgabedateien eines MapReduce-Auftrags sind unveränderlich. Wenn Sie dieses Beispiel erneut ausführen, müssen Sie daher den Namen der Ausgabedatei ändern.
 
 ## <a id="troubleshooting"></a>Problembehandlung
 
-Wenn nach Abschluss des Auftrags keine Informationen zurückgegeben werden, ist während der Verarbeitung möglicherweise ein Fehler aufgetreten. Um Fehlerinformationen für diesen Auftrag anzuzeigen, fügen Sie folgenden Befehl am Ende der Datei **mapreducejob.ps1** hinzu. Anschließend speichern Sie die Datei und führen sie erneut aus.
+Wenn keine Informationen zurückgegeben werden, wenn der Auftrag abgeschlossen ist, zeigen Sie die Fehlermeldungen für den Auftrag an. Um Fehlerinformationen für diesen Auftrag anzuzeigen, fügen Sie folgenden Befehl am Ende der Datei **mapreducejob.ps1** hinzu. Anschließend speichern Sie die Datei und führen sie erneut aus.
 
 ```powershell
 # Print the output of the WordCount job.
@@ -107,7 +106,7 @@ Get-AzureRmHDInsightJobOutput `
         -DisplayOutputType StandardError
 ```
 
-Mit diesem Cmdlet werden die beim Ausführen des Auftrags in STDERR auf dem Server geschriebenen Informationen zurückgegeben, die möglicherweise hilfreich sind, um festzustellen, warum bei dem Auftrag ein Fehler aufgetreten ist.
+Mit diesem Cmdlet werden die Informationen zurückgegeben, die bei der Auftragsverarbeitung in STDERR geschrieben wurden.
 
 ## <a id="summary"></a>Zusammenfassung
 

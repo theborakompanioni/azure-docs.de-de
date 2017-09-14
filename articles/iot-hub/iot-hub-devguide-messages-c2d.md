@@ -11,14 +11,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/25/2017
+ms.date: 09/06/2017
 ms.author: dobett
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: 04ac46498c912b0503036f70b7f3d0e28e5a82b8
+ms.translationtype: HT
+ms.sourcegitcommit: 763bc597bdfc40395511cdd9d797e5c7aaad0fdf
+ms.openlocfilehash: 706c9650a8deef941f9b39956021456053369e5e
 ms.contentlocale: de-de
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 09/06/2017
 
 ---
 # <a name="send-cloud-to-device-messages-from-iot-hub"></a>Senden von C2D-Nachrichten von IoT Hub
@@ -27,7 +26,7 @@ Für das Senden von unidirektionalen Benachrichtigungen von Ihrem Lösungs-Back-
 
 Sie senden Cloud-zu-Gerät-Nachrichten (Cloud-to-Device, C2D) über einen dienstseitigen Endpunkt (**/messages/devicebound**). Ein Gerät empfängt die Nachrichten dann über einen gerätespezifischen Endpunkt (**/devices/{Geräte-ID}/messages/devicebound**).
 
-Jede C2D-Nachricht wird einem bestimmten Gerät zugeordnet, indem die **to**-Eigenschaft auf **/devices/{Geräte-ID}/messages/devicebound** festgelegt wird.
+Um jede C2D-Nachricht einem bestimmten Gerät zuzuordnen, legt IoT Hub die **to**-Eigenschaft auf **/devices/{Geräte-ID}/messages/devicebound** fest.
 
 Jede Gerätewarteschlange kann maximal 50 C2D-Nachrichten enthalten. Der Versuch, eine größere Anzahl von Nachrichten an das gleiche Gerät zu senden, führt zu einem Fehler.
 
@@ -48,17 +47,28 @@ Ein Gerät kann auch Folgendes durchführen:
 
 Bei der Nachrichtenverarbeitung durch den Thread könnte ein Fehler auftreten, ohne dass IoT Hub hierüber benachrichtigt wird. In diesem Fall werden Nachrichten automatisch vom Status **Nicht sichtbar** zurück in den Status **Enqueued** (Zur Warteschlange hinzugefügt) versetzt, wenn ein *Timeout für die Sichtbarkeit (oder Sperrung)* abgelaufen ist. Der Standardwert dieses Timeouts ist eine Minute.
 
-Eine Nachricht kann zwischen den Statuswerten **Enqueued** (Zur Warteschlange hinzugefügt) und **Nicht sichtbar** maximal so oft wechseln, wie in der Eigenschaft **Anzahl maximaler Zustellungen** in IoT Hub festgelegt wurde. Nachdem diese Anzahl überschritten wurde, legt IoT Hub den Status der Nachricht auf **Unzustellbar**fest. Ebenso kennzeichnet IoT Hub eine Nachricht als **Unzustellbar**, wenn ihre Gültigkeitsdauer abgelaufen ist (siehe [Gültigkeitsdauer][lnk-ttl]).
+Die Eigenschaft **Anzahl maximaler Zustellungen** in IoT Hub bestimmt, wie oft eine Nachricht zwischen den Statuswerten **In Warteschlange eingereiht** und **Nicht sichtbar** wechseln kann. Nachdem diese Anzahl überschritten wurde, legt IoT Hub den Status der Nachricht auf **Unzustellbar**fest. Ebenso kennzeichnet IoT Hub eine Nachricht als **Unzustellbar**, wenn ihre Gültigkeitsdauer abgelaufen ist (siehe [Gültigkeitsdauer][lnk-ttl]).
 
 In [Senden von C2D-Nachrichten mit IoT Hub][lnk-c2d-tutorial] erfahren Sie, wie Sie C2D-Nachrichten über IoT Hub aus der Cloud senden und auf einem Gerät empfangen.
 
-Typischerweise werden C2D-Nachrichten immer dann vom Gerät abgeschlossen, wenn der Verlust der Nachricht keine Auswirkung auf die Anwendungslogik hat. Dies trifft z.B. zu, wenn das Gerät den Nachrichteninhalt lokal gespeichert hat oder ein Vorgang erfolgreich ausgeführt wurde. Die Nachricht könnte auch vorübergehende Informationen übermitteln, deren Verlust die Funktionalität der Anwendung nicht beeinträchtigen würde. In einigen Fällen können Sie für Tasks mit langer Ausführungsdauer die C2D-Nachricht nach Beibehalten der Beschreibung des Tasks im lokalen Speicher abschließen. Dann können Sie das Lösungs-Back-End mithilfe von D2C-Nachrichten in verschiedenen Phasen des Taskverlaufs benachrichtigen.
+Typischerweise werden C2D-Nachrichten immer dann vom Gerät abgeschlossen, wenn der Verlust der Nachricht keine Auswirkung auf die Anwendungslogik hat. Dies trifft z.B. zu, wenn das Gerät den Nachrichteninhalt lokal gespeichert hat oder ein Vorgang erfolgreich ausgeführt wurde. Die Nachricht könnte auch vorübergehende Informationen übermitteln, deren Verlust die Funktionalität der Anwendung nicht beeinträchtigen würde. Für Aufgaben mit langer Ausführungszeit können Sie:
+
+* Die C2D-Nachricht nach Beibehalten der Aufgabenbeschreibung im lokalen Speicher abschließen.
+* Das Lösungs-Back-End mithilfe von D2C-Nachrichten in verschiedenen Phasen des Aufgabenverlaufs benachrichtigen.
 
 ## <a name="message-expiration-time-to-live"></a>Nachrichtenablauf (Gültigkeitsdauer)
 
-Jede C2D-Nachricht verfügt über eine Gültigkeitsdauer. Diese Zeit wird (in der **ExpiryTimeUtc**-Eigenschaft) ausdrücklich durch den Dienst oder durch IoT Hub mithilfe der standardmäßig als IoT Hub-Eigenschaft angegebenen *Gültigkeitsdauer* festgelegt. Siehe [Optionen für die C2D-Konfiguration][lnk-c2d-configuration].
+Jede C2D-Nachricht verfügt über eine Gültigkeitsdauer. Dieser Zeitraum wird mit einer der folgenden Alternativen festgelegt:
 
-Eine gängige Methode, den Vorteil des Nachrichtenablaufs zu nutzen und zu vermeiden, dass Nachrichten an getrennte Geräte gesendet werden, ist die Festlegung einer kurzen Gültigkeitsdauer für Werte. Bei diesem Ansatz wird das gleiche Ergebnis erzielt wie beim Aufrechterhalten des Geräteverbindungsstatus, er ist aber effizienter. Wenn Sie Nachrichtenbestätigungen anfordern, benachrichtigt IoT Hub Sie darüber, welche der Geräte in der Lage sind, Nachrichten zu empfangen, und welche nicht online sind bzw. bei welchen bei der Zustellung ein Fehler auftrat.
+* Der **ExpiryTimeUtc**-Eigenschaft im Dienst.
+* IoT Hub verwendet die als IoT Hub-Eigenschaft angegebene standardmäßige *Gültigkeitsdauer*.
+
+Siehe [Optionen für die C2D-Konfiguration][lnk-c2d-configuration].
+
+Eine gängige Methode, den Vorteil des Nachrichtenablaufs zu nutzen und zu vermeiden, dass Nachrichten an getrennte Geräte gesendet werden, ist die Festlegung einer kurzen Gültigkeitsdauer für Werte. Bei diesem Ansatz wird das gleiche Ergebnis erzielt wie beim Aufrechterhalten des Geräteverbindungsstatus, er ist aber effizienter. Wenn Sie Nachrichtenbestätigungen anfordern, teilt IoT Hub Ihnen mit, für welche Geräte Folgendes zutrifft:
+
+* In der Lage, Nachrichten zu empfangen.
+* Nicht online oder fehlerhaft.
 
 ## <a name="message-feedback"></a>Nachrichtenfeedback
 
@@ -66,11 +76,11 @@ Beim Senden einer C2D-Nachricht kann der Dienst das Übermitteln von Feedback au
 
 | Ack-Eigenschaft | Verhalten |
 | ------------ | -------- |
-| **positive** | IoT Hub generiert nur dann eine Feedbacknachricht, wenn die C2D-Nachricht den Status **Abgeschlossen** erreicht hat. |
-| **negative** | IoT Hub generiert nur dann eine Feedbacknachricht, wenn die C2D-Nachricht den Status **Unzustellbar** erreicht hat. |
+| **positive** | Wenn die C2D-Nachricht den Status **Abgeschlossen** erreicht, generiert IoT Hub eine Feedbacknachricht. |
+| **negative** | Wenn die C2D-Nachricht den Status **Unzustellbar** erreicht, generiert IoT Hub eine Feedbacknachricht. |
 | **full**     | IoT Hub generiert in beiden Fällen eine Feedbacknachricht. |
 
-Wenn **Ack** auf **Voll** festgelegt ist und Sie keine Feedbacknachricht erhalten, bedeutet dies, dass die Feedbacknachricht abgelaufen ist. Der Dienst kann nicht wissen, was mit der ursprünglichen Nachricht geschehen ist. In der Praxis sollte ein Dienst sicherstellen, dass Feedback verarbeitet werden kann, bevor es abläuft. Die maximale Ablaufzeit beträgt zwei Tage, daher sollte ausreichend Zeit verbleiben, um den Dienst zu starten, wenn ein Fehler auftritt.
+Wenn **Ack** auf **Voll** festgelegt ist und Sie keine Feedbacknachricht erhalten, bedeutet dies, dass die Feedbacknachricht abgelaufen ist. Der Dienst kann nicht wissen, was mit der ursprünglichen Nachricht geschehen ist. In der Praxis sollte ein Dienst sicherstellen, dass Feedback verarbeitet werden kann, bevor es abläuft. Die maximale Ablaufzeit beträgt zwei Tage, sodass ausreichend Zeit verbleibt, um den Dienst wieder zu starten, wenn ein Fehler auftritt.
 
 Wie im Abschnitt [Endpunkte][lnk-endpoints] erläutert, übermittelt IoT Hub Feedback in Form von Nachrichten über einen dienstseitigen Endpunkt (**/messages/servicebound/feedback**). Die Semantik für den Empfang von Feedback stimmt mit der für C2D-Nachrichten überein und weist den gleichen [Nachrichtenlebenszyklus][lnk-lifecycle] auf. Nachrichtenfeedback wird nach Möglichkeit in einer einzigen Nachricht zusammengefasst, die das folgende Format aufweist:
 

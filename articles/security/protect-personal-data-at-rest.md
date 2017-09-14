@@ -1,4 +1,4 @@
-Cu--- title: Schützen ruhender personenbezogener Daten durch Verschlüsselung in Azure | Microsoft-Dokumentation description: Dieser Artikel ist Teil einer Reihe von Artikeln zur Verwendung von Azure zum Schützen personenbezogener Daten services: security documentationcenter: na author: Barclayn manager: MBaldwin editor: TomSh
+title: Schützen ruhender personenbezogener Daten durch Verschlüsselung in Azure | Microsoft-Dokumentation description: Dieser Artikel ist Teil einer Reihe von Artikeln zur Verwendung von Azure zum Schützen personenbezogener Daten services: security documentationcenter: na author: Barclayn manager: MBaldwin editor: TomSh
 
 ms.assetid: ms.service: security ms.devlang: na ms.topic: article ms.tgt_pltfrm: na ms.workload: na ms.date: 08/22/2017 ms.author: barclayn ms.custom: 
 

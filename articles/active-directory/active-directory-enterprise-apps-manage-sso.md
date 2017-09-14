@@ -1,9 +1,9 @@
 ---
 title: "Verwaltung des einmaligen Anmeldens für Unternehmens-Apps in Azure Active Directory | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie mithilfe von Azure Active Directory das einmalige Anmelden für Unternehmens-Apps verwalten."
+description: "Verwalten der Einstellungen für einmaliges Anmelden für Unternehmens-Apps in Ihrer Organisation über den Azure Active Directory-Anwendungskatalog"
 services: active-directory
 documentationcenter: 
-author: asmalser
+author: curtand
 manager: femila
 editor: 
 ms.assetid: bcc954d3-ddbe-4ec2-96cc-3df996cbc899
@@ -12,20 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/26/2017
-ms.author: asmalser
+ms.date: 09/05/2017
+ms.author: curtand
+ms.reviewer: asmalser
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: c975428550690254ba989935fe5110c5903e7102
+ms.sourcegitcommit: 763bc597bdfc40395511cdd9d797e5c7aaad0fdf
+ms.openlocfilehash: 73c0917702e2c222f3dc09ddfa2d6d54cf005abf
 ms.contentlocale: de-de
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 09/06/2017
 
 ---
 # <a name="managing-single-sign-on-for-enterprise-apps"></a>Verwalten des einmaligen Anmeldens für Unternehmens-Apps
-> [!div class="op_single_selector"]
-> * [Azure-Portal](active-directory-enterprise-apps-manage-sso.md)
-> * [klassischen Azure-Portal](active-directory-sso-integrate-saas-apps.md)
-> 
 
 Dieser Artikel beschreibt die Verwendung des [Azure-Portals](https://portal.azure.com) zum Verwalten der Einstellungen für das einmalige Anmelden für Unternehmensanwendungen. Unternehmens-Apps sind Apps, die innerhalb Ihrer Organisation bereitgestellt und verwendet werden. Dieser Artikel gilt insbesondere für Apps, die aus dem [Azure Active Directory-Anwendungskatalog](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery) hinzugefügt wurden. 
 
@@ -34,31 +31,33 @@ Alle Unternehmens-Apps, die für das einmalige Anmelden eingerichtet sind, könn
 
 ![Blatt „Unternehmensanwendungen“][1]
 
-Wählen Sie **Alle Anwendungen** aus, um eine Liste aller konfigurierten Apps anzuzeigen. Beim Auswählen einer App wird das Ressourcenblatt die App geladen, in dem Berichte für App angezeigt und eine Reihe von Einstellungen verwaltet werden können.
+Wählen Sie **Alle Anwendungen** aus, um eine Liste aller konfigurierten Apps anzuzeigen. Wenn Sie eine App auswählen, werden die Ressourcen für diese App angezeigt. Hier können Sie Berichte für die App anzeigen und eine Reihe von Einstellungen verwalten.
 
 Zum Verwalten der Einstellungen für einmaliges Anmelden wählen Sie **Einmaliges Anmelden**.
 
 ![Blatt „Anwendungsressource“][2]
 
 ## <a name="single-sign-on-modes"></a>Modi für einmaliges Anmelden
-Das Blatt **Einmaliges Anmelden** beginnt mit einem **Modus**-Menü, mit dem der Modus für einmaliges Anmelden konfiguriert werden kann. Die verfügbaren Optionen umfassen:
+**Einmaliges Anmelden** beginnt mit einem Menü zum Konfigurieren des **Modus** für einmaliges Anmelden. Die verfügbaren Optionen umfassen:
 
-* **SAML-basierte Anmeldung:** Diese Option ist verfügbar, wenn die Anwendung die vollständige einmalige Verbundanmeldung mit Azure Active Directory mit dem SAML 2.0-Protokoll unterstützt.
-* **Kennwortbasierte Anmeldung**: Diese Option ist verfügbar, wenn Azure AD für diese Anwendung das Ausfüllen eines Kennwortformulars unterstützt.
+* **SAML-basierte Anmeldung:** Diese Option ist verfügbar, wenn die Anwendung die vollständige einmalige Verbundanmeldung mit Azure Active Directory unter Verwendung des SAML 2.0-Protokolls unterstützt.
+* **Kennwortbasierte Anmeldung:** Diese Option ist verfügbar, wenn Azure AD für diese Anwendung das Ausfüllen eines Kennwortformulars unterstützt.
 * **Anmeldung über Link:** Diese Option wurde früher als „Vorhandenes einmaliges Anmelden“ bezeichnet und ermöglicht Administratoren das Platzieren eines Links zu dieser Anwendung im Azure AD-Zugriffsbereich ihres Benutzers oder im Office 365-Anwendungsstartprogramm.
 
 Weitere Informationen zu diesen Modi finden Sie unter [Wie funktioniert das einmalige Anmelden mit Azure Active Directory](active-directory-appssoaccess-whatis.md#how-does-single-sign-on-with-azure-active-directory-work).
 
 ## <a name="saml-based-sign-on"></a>SAML-basierte Anmeldung
-Die Option **SAML-basierte Anmeldung** zeigt ein Blatt, das in vier Abschnitte unterteilt ist:
+Die Option **SAML-basierte Anmeldung** ist in vier Abschnitte unterteilt:
 
 ### <a name="domains-and-urls"></a>Domänen und URLs
 Hier werden Ihrem Azure AD-Verzeichnis alle Details zu den Domänen und URLs der Anwendung hinzugefügt. Alle Eingaben, die erforderlich sind, damit das einmalige Anmelden funktioniert, werden direkt auf dem Bildschirm angezeigt, während alle optionalen Eingaben durch Aktivieren des Kontrollkästchens **Erweiterte URL-Einstellungen anzeigen** angezeigt werden können. Die vollständige Liste der unterstützten Eingaben enthält:
 
-* **Anmelde-URL:** Hiermit melden sich Benutzer bei dieser Anwendung an. Sofern die Anwendung für die Durchführung des vom Dienstanbieter initiierten einmaligen Anmeldens konfiguriert ist, passiert Folgendes, wenn ein Benutzer zu dieser URL navigiert: Der Dienstanbieter führt die Umleitung an Azure AD durch, um den Benutzer zu authentifizieren und anzumelden. Wenn dieses Feld ausgefüllt wird, verwendet Azure AD diese URL zum Starten der Anwendung aus Office 365 und über den Azure AD-Zugriffsbereich. Falls Sie dieses Feld leer lassen, führt Azure AD stattdessen eine vom Identitätsanbieter initiierte Anmeldung durch, wenn die App über Office 365, den Azure AD-Zugriffsbereich oder die Azure AD-URL für das einmalige Anmelden gestartet wird.
-* **Bezeichner:** Mit diesem URI sollte die Anwendung, für die das einmalige Anmelden konfiguriert wird, eindeutig identifiziert werden. Dies ist der Wert, der von Azure AD als Audience-Parameter des SAML-Tokens zurück an die Anwendung gesendet wird, und von der Anwendung wird erwartet, dass sie ihn überprüft. Dieser Wert ist auch als Entitäts-ID in SAML-Metadaten enthalten, die von der Anwendung bereitgestellt werden.
+* **Anmelde-URL:** Hier melden sich Benutzer bei der Anwendung an. Wenn die Anwendung für das vom Dienstanbieter initiierte einmalige Anmelden konfiguriert ist und ein Benutzer diese URL aufruft, leitet der Dienstanbieter den Benutzer zu Azure AD um, um ihn zu authentifizieren und anzumelden. 
+  * Ist dieses Feld ausgefüllt, verwendet Azure AD die URL, um die Anwendung aus Office 365 und über den Azure AD-Zugriffsbereich zu starten.
+  * Ist das Feld leer, führt Azure AD stattdessen eine vom Identitätsanbieter initiierte Anmeldung durch, wenn die App über Office 365, den Azure AD-Zugriffsbereich oder die Azure AD-URL für einmaliges Anmelden gestartet wird.
+* **Bezeichner:** Mit diesem URI muss die Anwendung, für die das einmalige Anmelden konfiguriert wird, eindeutig identifiziert werden. Dies ist der Wert, der von Azure AD als Audience-Parameter des SAML-Tokens zurück an die Anwendung gesendet wird, und von der Anwendung wird erwartet, dass sie ihn überprüft. Dieser Wert ist auch als Entitäts-ID in SAML-Metadaten enthalten, die von der Anwendung bereitgestellt werden.
 * **Antwort-URL:** Unter der Antwort-URL erwartet die Anwendung den Empfang des SAML-Tokens. Sie wird auch als „Assertionsverbraucherdienst-URL“ (Assertion Consumer Service, ACS) bezeichnet. Nachdem Sie diese Informationen eingegeben haben, klicken Sie auf „Weiter“, um den nächsten Bildschirm anzuzeigen. Auf diesem Bildschirm erhalten Sie Informationen darüber, was Sie auf Anwendungsseite konfigurieren müssen, damit diese ein SAML-Token von Azure AD akzeptiert.
-* **Relaystatus:** Der Relaystatus ist ein optionaler Parameter, mit dessen Hilfe der Anwendung mitgeteilt werden kann, wohin der Benutzer nach Abschluss der Authentifizierung umzuleiten ist. Der Wert ist in der Regel eine gültige URL in der Anwendung, einige Anwendungen nutzen dieses Feld jedoch anders (Einzelheiten finden Sie in der Dokumentation zum einmaligen Anmelden der App). Die Möglichkeit zum Festlegen des Relaystatus ist eine neue Funktion, die nur im neuen Azure-Portal verfügbar ist.
+* **Relaystatus:** Der Relaystatus ist ein optionaler Parameter, mit dessen Hilfe der Anwendung mitgeteilt werden kann, wohin der Benutzer nach Abschluss der Authentifizierung umzuleiten ist. Der Wert ist in der Regel eine gültige URL für die Anwendung. Einige Anwendungen nutzen dieses Feld jedoch anders. (Einzelheiten finden Sie in der Dokumentation zum einmaligen Anmelden der App.) Die Möglichkeit zum Festlegen des Relaystatus ist eine neue Funktion, die nur im neuen Azure-Portal verfügbar ist.
 
 ### <a name="user-attributes"></a>Benutzerattribute
 Hier können Administratoren die Attribute anzeigen und bearbeiten, die im SAML-Token gesendet werden, das Azure AD für die Anwendung immer dann ausstellt, wenn sich Benutzer anmelden.

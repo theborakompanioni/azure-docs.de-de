@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: dotnet
 ms.devlang: na
 ms.topic: article
-ms.date: 07/13/2017
+ms.date: 09/06/2017
 ms.author: glenga
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 1e0568bc58e8879cabe409cf8e9b5866f922e7c9
+ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
+ms.openlocfilehash: b69bbd00b85fdf093ac1ccf021515d9b44ea7f55
 ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="azure-functions-tools-for-visual-studio"></a>Azure Functions-Tools für Visual Studio  
@@ -39,6 +39,9 @@ In diesem Thema wird gezeigt, wie Sie mithilfe von Azure Functions-Tools für Vi
 Azure Functions-Tools sind in der Azure-Entwicklungsworkload in [Visual Studio 2017 Version 15.3](https://www.visualstudio.com/vs/) und höheren Versionen enthalten. Stellen Sie sicher, dass Sie die **Azure-Entwicklungsworkload** in der Installation von Visual Studio 2017 Version 15.3 einschließen:
 
 ![Installation von Visual Studio 2017 mit der Workload „Azure-Entwicklung“](./media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
+
+>[!NOTE]  
+>Nach der Installation von Visual Studio 2017 Version 15.3 oder dem Upgrade darauf müssen Sie die Visual Studio 2017-Tools für Azure Functions manuell aktualisieren. Sie können die Tools im Menü **Extras** aktualisieren. Navigieren Sie zu **Erweiterungen und Updates...** > **Updates** > **Visual Studio Marketplace** > **Azure Functions and Web Jobs Tools** > **Update**. 
 
 Zum Erstellen und Bereitstellen von Funktionen benötigen Sie ebenso:
 

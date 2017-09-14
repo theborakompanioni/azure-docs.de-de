@@ -16,14 +16,17 @@ ms.workload: na
 ms.date: 08/31/2017
 ms.author: tonguyen
 ms.translationtype: HT
-ms.sourcegitcommit: 07e5e15f4f4c4281a93c8c3267c0225b1d79af45
-ms.openlocfilehash: 2bf75dc55d190522597eb8958d378aa1469027b7
+ms.sourcegitcommit: 4eb426b14ec72aaa79268840f23a39b15fee8982
+ms.openlocfilehash: 668b32e99ba9a3bdf8e8f16ac51c35c609444cd9
 ms.contentlocale: de-de
-ms.lasthandoff: 08/31/2017
+ms.lasthandoff: 09/06/2017
 
 ---
 # <a name="understand-your-bill-for-microsoft-azure"></a>Informationen zu Ihrer Rechnung für Microsoft Azure
 Um Ihre Azure-Rechnung besser zu verstehen, können Sie Ihre Rechnung mit der Datei mit den ausführlichen Daten zur täglichen Nutzung und den Kostenverwaltungsberichten im Azure-Portal vergleichen.
+
+>[!NOTE]
+>Dieser Artikel gilt nicht für Enterprise Agreement-Kunden (EA). Wenn Sie EA-Kunde sind, [finden Sie die Dokumentation zu Rechnungen im Enterprise Portal](https://ea.azure.com/helpdocs/understandingYourInvoice).  
 
 Eine PDF-Datei mit Ihrer Rechnung und eine Kopie Ihrer Datei zur ausführlichen täglichen Nutzung (CSV-Download) finden Sie unter [Herunterladen oder Anzeigen Ihrer Azure-Rechnungen und täglichen Nutzungsdaten](billing-download-azure-invoice-daily-usage-date.md). 
 
@@ -48,7 +51,7 @@ Ihre Nutzungsgebühren werden auf der Ebene der Verbrauchseinheiten angezeigt. D
  | --- | --- |
 |Billing Cycle | Billing Period |
  |Name |Meter Category |
- |Typ |Unterkategorie für Verbrauchseinheit |
+ |Typ |Meter Subcategory |
  |Ressource |Meter Name |
  |Region |Meter Region |
  |Consumed |Consumed Quantity |

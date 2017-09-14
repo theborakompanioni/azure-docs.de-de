@@ -1,5 +1,5 @@
 ---
-title: "Azure Disk Encryption: Häufig gestellte Fragen | Microsoft-Dokumentation"
+title: Azure Disk Encryption FAQ| Microsoft-Dokumentation
 description: "Dieser Artikel bietet Antworten auf häufig gestellte Fragen zu Microsoft Azure Disk Encryption für virtuelle Windows- und Linux-IaaS-Computer."
 services: security
 documentationcenter: na
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/11/2017
 ms.author: devtiw
 ms.translationtype: HT
-ms.sourcegitcommit: 48dfc0fa4c9ad28c4c64c96ae2fc8a16cd63865c
-ms.openlocfilehash: c28604e3b7058f830c69eedc5d7f25d65e2448a8
+ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
+ms.openlocfilehash: f66eabcbb386d5e7b31268a7b04063ff2cefbaf2
 ms.contentlocale: de-de
-ms.lasthandoff: 08/30/2017
+ms.lasthandoff: 09/02/2017
 
 ---
 # <a name="azure-disk-encryption-faq"></a>Häufig gestellte Fragen zu Azure Disk Encryption
@@ -102,7 +102,7 @@ Dieser Artikel bietet Antworten auf häufig gestellte Fragen zu Azure Disk Encry
 **A:** Verwenden Sie die neueste Version des Azure PowerShell SDK, um Azure Disk Encryption zu konfigurieren. Laden Sie die neueste Version von [Azure PowerShell](https://github.com/Azure/azure-powershell/releases) herunter. Azure Disk Encryption wird *nicht* vom Azure SDK Version 1.1.0 unterstützt.
 
 > [!NOTE]
-> Die Vorschauerweiterung von Azure Disk Encryption unter Linux ist veraltet. Weitere Informationen finden Sie unter [Deprecating Azure disk encryption preview extension for Linux IaaS VMs](https://blogs.msdn.microsoft.com/azuresecurity/2017/07/12/deprecating-azure-disk-encryption-preview-extension-for-linux-iaas-vms/) (Die Vorschauerweiterung von Azure Disk Encryption unter Linux ist veraltet).
+> Die Vorschauerweiterung von Azure Disk Encryption auf Linux ist veraltet. Weitere Informationen finden Sie unter [Deprecating Azure disk encryption preview extension for Linux IaaS VMs](https://blogs.msdn.microsoft.com/azuresecurity/2017/07/12/deprecating-azure-disk-encryption-preview-extension-for-linux-iaas-vms/) (Die Vorschauerweiterung von Azure Disk Encryption unter Linux ist veraltet).
 
 **F:** Kann ich Azure Disk Encryption auf mein benutzerdefiniertes Linux-Image anwenden?
 
@@ -111,6 +111,16 @@ Dieser Artikel bietet Antworten auf häufig gestellte Fragen zu Azure Disk Encry
 **F:** Kann ich eine Linux Red Hat-VM mit dem „yum“-Update aktualisieren?
 
 **A:** Ja, Sie können auf eine Linux Red Hat-VM einen Update- oder Patchvorgang anwenden. Weitere Informationen finden Sie unter [Applying updates to an encrypted Azure IaaS Red Hat VM by using the yum update](https://blogs.msdn.microsoft.com/azuresecurity/2017/07/13/applying-updates-to-a-encrypted-azure-iaas-red-hat-vm-using-yum-update/) (Anwenden von Updates auf eine verschlüsselte Azure IaaS Red Hat-VM mithilfe des yum-Updates).
+
+**F:** Welcher Verschlüsselungsworkflow für Azure-Datenträger wird unter Linux empfohlen?
+
+**A:** Der folgende Workflow wird für die besten Ergebnisse unter Linux empfohlen:
+* Beginnen Sie mit dem unveränderten Katalogimage für die gewünschte Distribution und Version des Betriebssystems.
+* Sichern Sie alle eingebundenen Laufwerke, die verschlüsselt werden.  Dies ermöglicht die Wiederherstellung bei einem Ausfall, wenn z.B. der virtuelle Computer vor dem Abschluss der Verschlüsselung neu gestartet wird.
+* Führen Sie die Verschlüsselung durch (dies kann je nach VM-Merkmalen und der Größe aller angefügten Datenträger mehrere Stunden oder sogar Tage dauern).
+* Passen Sie das Image an, und fügen Sie bei Bedarf Software hinzu.
+
+Wenn dieser Workflow nicht möglich ist, stellt die [Storage Service Encryption](https://docs.microsoft.com/en-us/azure/storage/common/storage-service-encryption) (SSE, Speicherdienstverschlüsselung) auf Ebene des Plattform-Speicherkontos möglicherweise eine Alternative zur vollständigen Datenträgerverschlüsselung mit dm-crypt dar.
 
 **F:** Wo kann ich Fragen stellen oder Feedback geben?
 

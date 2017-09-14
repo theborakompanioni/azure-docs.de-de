@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/27/2017
+ms.date: 09/06/2017
 ms.author: bwren
 ms.translationtype: HT
-ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
-ms.openlocfilehash: d7bd0d780c265cc15ad09a73ede8c5a886005e37
+ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
+ms.openlocfilehash: 507136beef9718dc6a7f42a4b84f8030d4a60563
 ms.contentlocale: de-de
-ms.lasthandoff: 08/28/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 
@@ -68,7 +68,7 @@ Wenn Sie vor dem Upgrade einen Wert in einem Diagramm ausgewählt hatten, wurde 
 ## <a name="log-search-api"></a>Protokollsuch-API
 
 ### <a name="question-does-the-log-search-api-get-updated-after-i-upgrade"></a>Frage: Wird die Protokollsuch-API nach dem Upgrade aktualisiert?
-Die [Protokollsuch-API](log-analytics-log-search-api.md) wurde noch nicht auf die neue Suchsprache aktualisiert.  Verwenden Sie deshalb auch nach einem Upgrade Ihres Arbeitsbereichs weiterhin die alte Abfragesprache mit dieser API.  Eine aktualisierte Dokumentation wird nach dem Update der Protokollsuch-API verfügbar gemacht.
+Die Legacy-[Protokollsuch-API](log-analytics-log-search-api.md) funktioniert nicht mehr, wenn Sie den Arbeitsbereich aktualisiert haben.  Nähere Informationen zur neuen API finden Sie unter [Azure Log Analytics REST API](https://dev.loganalytics.io/) (Azure Log Analytics-REST-API).
 
 
 ## <a name="portals"></a>Portale

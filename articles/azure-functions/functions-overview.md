@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 02/27/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017, mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 7fcf35b99cc410655f2a3b9b6961f5e3bef3aeb5
+ms.translationtype: HT
+ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
+ms.openlocfilehash: 77538db308c657392ac8bc6a0b7665f9b8427256
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 09/02/2017
 
 ---
 # <a name="an-introduction-to-azure-functions"></a>Einführung in Azure Functions  
@@ -45,15 +45,15 @@ Azure Functions ist eine hervorragende Lösung zum Verarbeiten von Daten, Integr
 
 In Functions stehen unter anderem folgende Vorlagen für zentrale Szenarien zur Verfügung:
 
-* **BlobTrigger** : Dient zum Verarbeiten von Azure Storage-Blobs beim Hinzufügen zu Containern. Sie können diese Funktion beispielsweise zum Anpassen der Größe von Bildern verwenden.
-* **EventHubTrigger**: Reagiert auf Ereignisse, die an einen Azure Event Hub übermittelt werden. Dies ist besonders für Anwendungsinstrumentierung, Benutzeroberflächen oder Workflowverarbeitung sowie für Internet of Things (IoT)-Szenarios geeignet.
-* **Generic webhook** (Generischer Webhook): Dient zum Verarbeiten von Webhook-HTTP-Anforderungen von einem beliebigen Dienst mit Webhook-Unterstützung.
-* **GitHub webhook** (GitHub-Webhook): Dient zum Reagieren auf Ereignisse in Ihren GitHub-Repositorys. Ein Beispiel finden Sie unter [Erstellen eines Webhooks oder einer API Azure Functions-Funktion](functions-create-a-web-hook-or-api-function.md).
-* **HTTPTrigger** : Dient zum Auslösen der Ausführung Ihres Codes mithilfe einer HTTP-Anforderung.
-* **QueueTrigger** : Dient zum Reagieren auf eingehende Meldungen der Azure Storage-Warteschlange. Ein Beispiel finden Sie unter [Erstellen einer Azure Functions-Funktion zum Erstellen einer Bindung an einen Azure-Dienst](functions-create-an-azure-connected-function.md).
-* **ServiceBusQueueTrigger**: Dient zum Verknüpfen Ihres Codes mit anderen Azure-Diensten oder lokalen Diensten durch Lauschen auf Meldungswarteschlangen. 
-* **ServiceBusTopicTrigger**: Dient zum Verknüpfen Ihres Codes mit anderen Azure-Diensten oder lokalen Diensten durch Abonnieren von Themen. 
-* **TimerTrigger** : Dient zum Ausführen einer Bereinigung oder anderer Batch-Tasks nach einem vordefinierten Zeitplan. Ein Beispiel finden Sie unter [Erstellen einer Ereignisverarbeitungsfunktion](functions-create-an-event-processing-function.md).
+* **HTTPTrigger** : Dient zum Auslösen der Ausführung Ihres Codes mithilfe einer HTTP-Anforderung. Ein Beispiel finden Sie unter [Erstellen Ihrer ersten Funktion](functions-create-first-azure-function.md).
+* **TimerTrigger** : Dient zum Ausführen einer Bereinigung oder anderer Batch-Tasks nach einem vordefinierten Zeitplan. Ein Beispiel finden Sie unter [Erstellen einer Funktion in Azure, die von einem Timer ausgelöst wird](functions-create-scheduled-function.md).
+* **GitHub webhook** (GitHub-Webhook): Dient zum Reagieren auf Ereignisse in Ihren GitHub-Repositorys. Ein Beispiel finden Sie unter [Erstellen einer Funktion, die durch einen GitHub-Webhook ausgelöst wird](functions-create-a-web-hook-or-api-function.md).
+* **Generic webhook** (Generischer Webhook): Dient zum Verarbeiten von Webhook-HTTP-Anforderungen von einem beliebigen Dienst mit Webhook-Unterstützung. Ein Beispiel finden Sie unter [Erstellen einer Funktion, die durch einen generischen Webhook ausgelöst wird](functions-create-generic-webhook-triggered-function.md).
+* **BlobTrigger** : Dient zum Verarbeiten von Azure Storage-Blobs beim Hinzufügen zu Containern. Sie können diese Funktion beispielsweise zum Anpassen der Größe von Bildern verwenden. Weitere Informationen finden Sie unter [Azure Functions – Blob Storage-Bindungen](functions-bindings-storage-blob.md).
+* **QueueTrigger** : Dient zum Reagieren auf eingehende Meldungen der Azure Storage-Warteschlange. Ein Beispiel finden Sie unter [Erstellen einer Funktion, die eine Verbindung mit anderen Azure-Diensten herstellt, mithilfe von Azure Functions](functions-create-an-azure-connected-function.md).
+* **EventHubTrigger**: Reagiert auf Ereignisse, die an einen Azure Event Hub übermittelt werden. Dies ist besonders für Anwendungsinstrumentierung, Benutzeroberflächen oder Workflowverarbeitung sowie für Internet of Things (IoT)-Szenarios geeignet. Weitere Informationen finden Sie unter [Event Hubs-Bindungen für Azure Functions](functions-bindings-event-hubs.md).
+* **ServiceBusQueueTrigger**: Dient zum Verknüpfen Ihres Codes mit anderen Azure-Diensten oder lokalen Diensten durch Lauschen auf Meldungswarteschlangen. Weitere Informationen finden Sie unter [Service Bus-Bindungen von Azure Functions](functions-bindings-service-bus.md).
+* **ServiceBusTopicTrigger**: Dient zum Verknüpfen Ihres Codes mit anderen Azure-Diensten oder lokalen Diensten durch Abonnieren von Themen. Weitere Informationen finden Sie unter [Service Bus-Bindungen von Azure Functions](functions-bindings-service-bus.md).
 
 Azure Functions unterstützt *Trigger* zum Starten der Codeausführung sowie *Bindungen* zur Vereinfachung der Programmierung für Eingabe- und Ausgabedaten. Eine ausführliche Beschreibung der Trigger und Bindungen von Azure Functions finden Sie in der [Entwicklerreferenz zu Triggern und Bindungen in Azure Functions](functions-triggers-bindings.md).
 
@@ -71,12 +71,12 @@ Azure Functions kann in eine Reihe von Azure- und Drittanbieterdiensten integrie
 * Twilio (SMS-Nachrichten)
 
 ## <a name="pricing"></a>Was kostet Functions?
-Bei Azure Functions haben Sie die Wahl zwischen zwei Tarifplänen: 
+Azure Functions bietet zwei Arten von Tarifen. Wählen Sie den, der Ihren Anforderungen am besten entspricht: 
 
 * **Verbrauchstarif für**: Wenn Ihre Funktion ausgeführt wird, stellt Azure die erforderlichen Verarbeitungsressourcen bereit. Sie müssen sich nicht um die Ressourcenverwaltung kümmern und bezahlen nur für die Zeit, in der Ihr Code ausgeführt wird. 
 * **App Service-Tarif** : Funktionen werden auf die gleiche Weise ausgeführt wie mobile Apps und Web-/API-Apps. Wenn Sie App Service bereits für Ihre anderen Anwendungen verwenden, können Sie Ihre Funktionen ohne zusätzliche Kosten unter dem gleichen Tarif ausführen. 
 
-Ausführliche Preisinformationen finden Sie auf der Seite [Functions – Preise](https://azure.microsoft.com/pricing/details/functions/). Weitere Informationen zum Skalieren Ihrer Funktionen finden Sie unter [Skalieren von Azure Functions](functions-scale.md).
+Weitere Informationen zu Hostingplänen finden Sie unter [Vergleich von Hostingplänen für Azure Functions](functions-scale.md). Ausführliche Preisinformationen finden Sie auf der Seite [Functions – Preise](https://azure.microsoft.com/pricing/details/functions/).
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Erstellen Sie Ihre erste Funktion in Azure Functions](functions-create-first-azure-function.md)  
@@ -88,6 +88,6 @@ Ausführliche Preisinformationen finden Sie auf der Seite [Functions – Preise]
 * [How to scale Azure Functions (Skalieren von Azure Functions) (Skalieren von Azure Functions)](functions-scale.md)  
   Beschreibt die für Azure Functions verfügbaren Servicepläne (einschließlich des Hostingplans „Verbrauchstarif“) und enthält Informationen zur Wahl des geeigneten Plans. 
 * [Was ist Azure App Service?](../app-service/app-service-value-prop-what-is.md)  
-  Azure Functions nutzt die Azure App Service-Plattform für Kernfunktionen wie Bereitstellungen, Umgebungsvariablen und Diagnosen. 
+  Azure Functions nutzt Azure App Service für Kernfunktionen wie Bereitstellungen, Umgebungsvariablen und Diagnosen. 
 
 

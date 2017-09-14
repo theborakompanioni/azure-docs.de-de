@@ -15,15 +15,15 @@ ms.devlang: na
 ms.date: 06/07/2017
 ms.author: swkrish
 ms.translationtype: HT
-ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
-ms.openlocfilehash: 8a1d4935397f59e5813afc6f04559e471187a779
+ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
+ms.openlocfilehash: 213d532f484056f3833c743d25c5e6faa5b732e6
 ms.contentlocale: de-de
-ms.lasthandoff: 08/08/2017
+ms.lasthandoff: 09/01/2017
 
 ---
 # <a name="create-an-azure-active-directory-b2c-tenant-in-the-azure-portal"></a>Erstellen eines Azure Active Directory B2C-Mandanten im Azure-Portal
 
-In dieser Schnellstartanleitung erfahren Sie, wie Sie in wenigen Minuten einen Microsoft Azure Active Directory B2C-Mandanten (Azure AD) erstellen. Dann verfügen Sie über einen B2C-Mandanten zum Registrieren von B2C-Anwendungen.
+In dieser Schnellstartanleitung erfahren Sie, wie Sie in wenigen Minuten einen Microsoft Azure Active Directory B2C-Mandanten (Azure AD) erstellen. Dann verfügen Sie über einen B2C-Mandanten (auch als Verzeichnis bezeichnet) zum Registrieren von B2C-Anwendungen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

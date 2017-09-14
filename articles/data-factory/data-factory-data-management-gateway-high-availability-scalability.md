@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/17/2017
 ms.author: abnarain
 ms.translationtype: HT
-ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
-ms.openlocfilehash: b6bf353a2bad28b0db3a88e971e5c6b209b7ab2b
+ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
+ms.openlocfilehash: fe78e2ef31695d443123664a83e9f753ccfc0be8
 ms.contentlocale: de-de
-ms.lasthandoff: 08/10/2017
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="data-management-gateway---high-availability-and-scalability-preview"></a>Datenverwaltungsgateway – Hohe Verfügbarkeit und Skalierbarkeit (Vorschauversion)
@@ -101,7 +101,7 @@ In diesem Abschnitt wird davon ausgegangen, dass Sie die beiden folgenden Artike
         ![Datenverwaltungsgateway – Installation erfolgreich](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-installation-success.png)
 
         > [!NOTE]
-        > Wenn Sie das Gateway auf einer Azure-VM bereitstellen, können Sie [diese Azure Resource Manager-Vorlage auf GitHub](https://github.com/xiaoyingLJ/vms-with-multiple-data-management-gateway) verwenden. Mit diesem Skript wird ein logisches Gateway erstellt, und es werden VMs mit installierter Datenverwaltungsgateway-Software eingerichtet und für das logische Gateway registriert. 
+        > Wenn Sie das Gateway auf einer Azure-VM bereitstellen, können Sie [diese Azure Resource Manager-Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-mutiple-vms-with-data-management-gateway) verwenden. Mit diesem Skript wird ein logisches Gateway erstellt, und es werden VMs mit installierter Datenverwaltungsgateway-Software eingerichtet und für das logische Gateway registriert. 
 6. Starten Sie im Azure-Portal die Seite **Gateway**: 
     1. Klicken Sie auf der Data Factory-Startseite im Portal auf **Verknüpfte Dienste**.
     

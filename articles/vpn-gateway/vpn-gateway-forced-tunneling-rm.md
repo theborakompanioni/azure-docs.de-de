@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/31/2017
+ms.date: 08/31/2017
 ms.author: cherylmc
 ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
-ms.openlocfilehash: 207c53924863eb51ee369fe46d5ad12fb1905c53
+ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
+ms.openlocfilehash: cc8a3e7f2a907b1eea4ecf39df2b291b0fb8b207
 ms.contentlocale: de-de
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 09/01/2017
 
 ---
 # <a name="configure-forced-tunneling-using-the-azure-resource-manager-deployment-model"></a>Konfigurieren der Tunnelerzwingung mit dem Azure Resource Manager-Bereitstellungsmodell
@@ -65,15 +65,26 @@ Das folgende Verfahren unterstützt Sie beim Erstellen einer Ressourcengruppe un
 
 Mithilfe der Schritte wird festgelegt, dass „DefaultSiteHQ“ die Standard-Standortverbindung für die Tunnelerzwingung ist und die Subnetze „Midtier“ und „Backend“ die Tunnelerzwingung verwenden müssen.
 
-## <a name="before-you-begin"></a>Voraussetzungen
+## <a name="before"></a>Voraussetzungen
 
-Installieren Sie die aktuelle Version der PowerShell-Cmdlets für Azure Resource Manager. Weitere Informationen zur Installation der PowerShell-Cmdlets finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview) .
+Installieren Sie die aktuelle Version der PowerShell-Cmdlets für Azure Resource Manager. Weitere Informationen zur Installation der PowerShell-Cmdlets finden Sie unter [Gewusst wie: Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview) .
+
+> [!IMPORTANT]
+> Es muss die neueste Version der PowerShell-Cmdlets installiert sein. Andernfalls können bei der Ausführung einiger Cmdlets Überprüfungsfehler auftreten.
+>
+>
 
 ### <a name="to-log-in"></a>Zum Anmelden
 
 [!INCLUDE [To log in](../../includes/vpn-gateway-ps-login-include.md)]
 
 ## <a name="configure-forced-tunneling"></a>Konfigurieren der Tunnelerzwingung
+
+> [!NOTE]
+> Eventuell werden Warnungen wie die Folgende angezeigt: „Der Ausgabeobjekttyp dieses Cmdlets wird in einer zukünftigen Version geändert.“ Dies ist das erwartete Verhalten. Sie können diese Warnungen einfach ignorieren.
+>
+>
+
 
 1. Erstellen Sie eine Ressourcengruppe.
 
@@ -113,7 +124,7 @@ Installieren Sie die aktuelle Version der PowerShell-Cmdlets für Azure Resource
   Set-AzureRmVirtualNetworkSubnetConfig -Name "Backend" -VirtualNetwork $vnet -AddressPrefix "10.1.2.0/24" -RouteTable $rt
   Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
   ```
-6. Erstellen Sie das Gateway mit einem Standardstandort. Dieser Schritt dauert einige Zeit (manchmal 45 Minuten oder länger), da Sie das Gateway erstellen und konfigurieren.<br> Der Cmdlet-Parameter **-GatewayDefaultSite** sorgt dafür, dass die erzwungene Routingkonfiguration funktioniert. Achten Sie daher darauf, diese Einstellung korrekt zu konfigurieren. Dieser Parameter ist ab PowerShell 1.0 verfügbar.
+6. Erstellen Sie das Gateway mit einem Standardstandort. Dieser Schritt dauert einige Zeit (manchmal 45 Minuten oder länger), da Sie das Gateway erstellen und konfigurieren.<br> Der Cmdlet-Parameter **-GatewayDefaultSite** sorgt dafür, dass die erzwungene Routingkonfiguration funktioniert. Achten Sie daher darauf, diese Einstellung korrekt zu konfigurieren. Wenn ValidateSet-Fehler zum GatewaySKU-Wert angezeigt werden, sollten Sie überprüfen, ob Sie die [aktuelle Version der PowerShell-Cmdlets](#before) installiert haben. Die aktuelle Version der PowerShell-Cmdlets enthält die neuen überprüften Werte für die neuesten Gateway-SKUs.
 
   ```powershell
   $pip = New-AzureRmPublicIpAddress -Name "GatewayIP" -ResourceGroupName "ForcedTunneling" -Location "North Europe" -AllocationMethod Dynamic
@@ -137,3 +148,4 @@ Installieren Sie die aktuelle Version der PowerShell-Cmdlets für Azure Resource
     
   Get-AzureRmVirtualNetworkGatewayConnection -Name "Connection1" -ResourceGroupName "ForcedTunneling"
   ```
+

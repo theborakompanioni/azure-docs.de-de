@@ -13,13 +13,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: java
 ms.topic: article
-ms.date: 7/21/2017
+ms.date: 08/31/2017
 ms.author: robmcm;zhijzhao;yidon
 ms.translationtype: HT
-ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
-ms.openlocfilehash: fb3fc96a2136b7c326bb0eb291b7204e7acf0190
+ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
+ms.openlocfilehash: 7a6ec549654d00975494bac8594a6777af5ec415
 ms.contentlocale: de-de
-ms.lasthandoff: 08/10/2017
+ms.lasthandoff: 09/02/2017
 
 ---
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 08/10/2017
 
 ## <a name="overview"></a>Übersicht
 
-Das **[Spring-Framework]** ist eine Open-Source-Lösung, die Java-Entwickler beim Erstellen von Anwendungen auf Unternehmensebene unterstützt. Eines der gängigsten Projekte, das auf dieser Plattform aufbaut, ist [Spring Boot]. Es bietet einen vereinfachten Ansatz für das Erstellen eigenständiger Java-Anwendungen. Um Entwicklern den Einstieg in Spring Boot zu vereinfachen, werden unter <https://github.com/spring-guides/> mehrere Spring Boot-Beispielpakete bereitgestellt. Neben der Auswahl einer Liste grundlegender Spring Boot-Projekte ermöglicht **[Spring Initializr]** Entwicklern einen einfacheren Einstieg bei der Erstellung von benutzerdefinierten Spring Boot-Anwendungen.
+**[Spring Framework]** ist eine Open-Source-Lösung, die Java-Entwicklern beim Erstellen von Anwendungen auf Unternehmensebene hilft. Eines der gängigsten Projekte, das auf dieser Plattform aufbaut, ist [Spring Boot]. Es bietet einen vereinfachten Ansatz für das Erstellen eigenständiger Java-Anwendungen. Um Entwicklern den Einstieg in Spring Boot zu vereinfachen, werden unter <https://github.com/spring-guides/> mehrere Spring Boot-Beispielpakete bereitgestellt. Neben der Auswahl einer Liste grundlegender Spring Boot-Projekte ermöglicht **[Spring Initializr]** Entwicklern einen einfacheren Einstieg bei der Erstellung von benutzerdefinierten Spring Boot-Anwendungen.
 
 Dieser Artikel führt Sie durch das Erstellen eines Redis Cache über das Azure-Portal, das anschließende Erstellen einer benutzerdefinierten Anwendung mit dem **Spring Initializr** und schließlich das Erstellen einer Java-Webanwendung, die Daten mithilfe Ihres Redis Cache speichert und abruft.
 
@@ -51,7 +51,18 @@ Für die Durchführung der Schritte in diesem Artikel müssen folgende Vorausset
 
    ![Azure-Portal][AZ02]
 
-1. Geben Sie auf der Seite **Neuer Redis Cache** den **DNS-Namen** für Ihren Cache ein, und geben Sie dann Ihr **Abonnement**, Ihre **Ressourcengruppe**, Ihren **Standort** und Ihren **Tarif** an. Wenn Sie diese Optionen angegeben haben, klicken Sie zum Erstellen des Cache auf **Erstellen**.
+1. Geben Sie auf der Seite **Neuer Redis Cache** Folgendes an:
+
+   * Geben Sie den **DNS-Namen** für den Cache ein.
+   * Geben Sie Ihre Informationen zu **Abonnement**, **Ressourcengruppe**, **Standort** und **Tarif** an.
+   * Wählen Sie für dieses Tutorial **Unblock port 6379** aus.
+
+   > [!NOTE]
+   >
+   > Sie können SSL mit Redis Caches verwenden, müssen jedoch einen anderen Redis-Client als Jedis verwenden. Weitere Informationen finden Sie unter [Verwenden von Azure Redis Cache mit Java][Redis Cache with Java].
+   >
+
+   Wenn Sie diese Optionen angegeben haben, klicken Sie zum Erstellen des Cache auf **Erstellen**.
 
    ![Azure-Portal][AZ03]
 
@@ -101,13 +112,18 @@ Für die Durchführung der Schritte in diesem Artikel müssen folgende Vorausset
    spring.redis.host=myspringbootcache.redis.cache.windows.net
 
    # Specify the port for your Redis cache.
-   spring.redis.port=6380
+   spring.redis.port=6379
 
    # Specify the access key for your Redis cache.
    spring.redis.password=57686f6120447564652c2049495320526f636b73=
    ```
 
    ![Bearbeiten der Datei „application.properties“][RE02]
+
+   > [!NOTE]
+   >
+   > Wenn Sie einen anderen Redis-Client als Jedis verwendet haben, der SSL aktiviert, geben Sie in Ihrer Datei *application.properties* Port 6380 an. Weitere Informationen finden Sie unter [Verwenden von Azure Redis Cache mit Java][Redis Cache with Java].
+   >
 
 1. Speichern und schließen Sie die Datei *application.properties*.
 
@@ -126,41 +142,32 @@ Für die Durchführung der Schritte in diesem Artikel müssen folgende Vorausset
 
    import org.springframework.web.bind.annotation.RequestMapping;
    import org.springframework.web.bind.annotation.RestController;
-   import org.springframework.beans.factory.annotation.Value;
-   import redis.clients.jedis.Jedis;
-   import redis.clients.jedis.JedisShardInfo;
+   import org.springframework.beans.factory.annotation.Autowired;
+   import org.springframework.boot.SpringApplication;
+   import org.springframework.boot.autoconfigure.SpringBootApplication;
+   import org.springframework.data.redis.core.StringRedisTemplate;
+   import org.springframework.data.redis.core.ValueOperations;
 
    @RestController
    public class HelloController {
    
-      // Retrieve the DNS name for your cache.
-      @Value("${spring.redis.host}")
-      private String redisHost;
-
-      // Retrieve the port for your cache.
-      @Value("${spring.redis.port}")
-      private int redisPort;
-
-      // Retrieve the access key for your cache.
-      @Value("${spring.redis.password}")
-      private String redisPassword;
+      @Autowired
+      private StringRedisTemplate template;
 
       @RequestMapping("/")
       // Define the Hello World controller.
       public String hello() {
       
-         // Create a JedisShardInfo object to connect to your Redis cache.
-         JedisShardInfo jedisShardInfo = new JedisShardInfo(redisHost, redisPort, true);
-         // Specify your access key.
-         jedisShardInfo.setPassword(redisPassword);
-         // Create a Jedis object to store/retrieve information from your cache.
-         Jedis jedis = new Jedis(jedisShardInfo);
+         ValueOperations<String, String> ops = this.template.opsForValue();
 
          // Add a Hello World string to your cache.
-         jedis.set("greeting", "Hello World!");
+         String key = "greeting";
+         if (!this.template.hasKey(key)) {
+             ops.set(key, "Hello World!");
+         }
 
          // Return the string from your cache.
-         return jedis.get("greeting");
+         return ops.get(key);
       }
    }
    ```
@@ -204,7 +211,7 @@ Weitere Informationen zu den ersten Schritten mit Redis Cache mit Java in Azure 
 [MSDN-Abonnentenvorteile]: https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/
 [Spring Boot]: http://projects.spring.io/spring-boot/
 [Spring Initializr]: https://start.spring.io/
-[Spring-Framework]: https://spring.io/
+[Spring Framework]: https://spring.io/
 [Redis Cache with Java]: cache-java-get-started.md
 
 <!-- IMG List -->

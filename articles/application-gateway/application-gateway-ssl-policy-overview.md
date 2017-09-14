@@ -1,6 +1,6 @@
 ---   
 title: "SSL-Richtlinienübersicht für Azure Application Gateway | Microsoft-Dokumentation"
-description: "Hier erfahren Sie, welche Konfigurationsmöglichkeiten Azure Application Gateway für die SSL-Richtlinie bietet."
+description: "Erfahren Sie, welche Konfigurationsmöglichkeiten Azure Application Gateway für die SSL-Richtlinie bietet."
 services: application gateway
 documentationcenter: na
 author: amsriva
@@ -15,23 +15,23 @@ ms.workload: infrastructure services
 ms.date: 08/03/2017
 ms.author: amsriva
 ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
-ms.openlocfilehash: dae04a093af8512d27edbae8d41bd58ccc33df53
+ms.sourcegitcommit: 4eb426b14ec72aaa79268840f23a39b15fee8982
+ms.openlocfilehash: ec36af282bbfdc22ff88082412dd18cd2a85f245
 ms.contentlocale: de-de
-ms.lasthandoff: 08/30/2017
+ms.lasthandoff: 09/06/2017
 
 ---
    
 
 # <a name="application-gateway-ssl-policy-overview"></a>SSL-Richtlinienübersicht für Azure Application Gateway
 
-Mit Application Gateway können Sie die SSL-Zertifikatverwaltung zentralisieren sowie den Ver- und Entschlüsselungsaufwand für eine Back-End-Serverfarm verringern. Diese zentralisierte SSL-Behandlung ermöglicht auch die Angabe einer zentralen SSL-Richtlinie, die auf die Sicherheitsanforderungen Ihrer Organisation abgestimmt ist. Dadurch können Sie sowohl Complianceanforderungen erfüllen als auch Sicherheitsrichtlinien und empfohlene Vorgehensweisen umsetzen.
+Mit Azure Application Gateway können Sie die SSL-Zertifikatverwaltung zentralisieren sowie den Ver- und Entschlüsselungsaufwand für eine Back-End-Serverfarm verringern. Diese zentralisierte SSL-Behandlung ermöglicht auch die Angabe einer zentralen SSL-Richtlinie, die auf die Sicherheitsanforderungen Ihrer Organisation abgestimmt ist. Dadurch können Sie sowohl Complianceanforderungen erfüllen als auch Sicherheitsrichtlinien und empfohlene Vorgehensweisen umsetzen.
 
-Mit der SSL-Richtlinie können Sie die SSL-Protokollversion sowie Verschlüsselungssammlungen und die Reihenfolge steuern, in der Verschlüsselungen im Rahmen des SSL-Handshakes verwendet werden. Zu diesem Zweck bietet Application Gateway zwei Mechanismen, die Kunden die Steuerung der SSL-Richtlinie ermöglichen: eine vordefinierte Richtlinie und eine benutzerdefinierte Richtlinie.
+Mit der SSL-Richtlinie können Sie die SSL-Protokollversion sowie Verschlüsselungssammlungen und die Reihenfolge steuern, in der Verschlüsselungen im Rahmen des SSL-Handshakes verwendet werden. Application Gateway bietet zwei Mechanismen für das Steuern der SSL-Richtlinie. Sie können eine vordefinierte Richtlinie oder eine benutzerdefinierte Richtlinie verwenden.
 
 ## <a name="predefined-ssl-policy"></a>Vordefinierte SSL-Richtlinie
 
-Application Gateway verfügt über drei vordefinierte Sicherheitsrichtlinien. Sie können Ihr Gateway mit diesen Richtlinien konfigurieren, um das gewünschte Maß an Sicherheit zu erhalten. Die Richtliniennamen werden mit dem Jahr und Monat versehen, in dem sie konfiguriert wurden. Jede Richtlinie bietet verschiedene SSL-Protokollversionen und Verschlüsselungssammlungen. Verwenden Sie möglichst die neuesten SSL-Richtlinien, um ein Höchstmaß an SSL-Sicherheit zu gewährleisten. In Application Gateway stehen derzeit folgende vordefinierte Richtlinien zur Auswahl:
+Application Gateway verfügt über drei vordefinierte Sicherheitsrichtlinien. Sie können Ihr Gateway mit diesen Richtlinien konfigurieren, um das gewünschte Maß an Sicherheit zu erhalten. Die Richtliniennamen werden mit dem Jahr und Monat versehen, in dem sie konfiguriert wurden. Jede Richtlinie bietet verschiedene SSL-Protokollversionen und Verschlüsselungssammlungen. Verwenden Sie möglichst die neuesten SSL-Richtlinien, um ein Höchstmaß an SSL-Sicherheit zu gewährleisten.
 
 ### <a name="appgwsslpolicy20150501"></a>AppGwSslPolicy20150501
 
@@ -62,19 +62,18 @@ Application Gateway verfügt über drei vordefinierte Sicherheitsrichtlinien. Si
 
 ## <a name="custom-ssl-policy"></a>Benutzerdefinierte SSL-Richtlinie
 
-Wenn eine vordefinierte SSL-Richtlinie für Ihre Anforderungen konfiguriert werden muss, müssen Sie eine eigene benutzerdefinierte SSL-Richtlinie definieren. In diesem Fall haben Sie die uneingeschränkte Kontrolle über die zu unterstützende Mindestversion des SSL-Protokolls sowie über unterstützte Verschlüsselungssammlungen und deren jeweilige Priorität.
+Wenn eine vordefinierte SSL-Richtlinie für Ihre Anforderungen konfiguriert werden muss, müssen Sie eine eigene benutzerdefinierte SSL-Richtlinie definieren. Mit einer benutzerdefinierten SSL-Richtlinie haben Sie die uneingeschränkte Kontrolle über die zu unterstützende Mindestversion des SSL-Protokolls sowie über unterstützte Verschlüsselungssammlungen und deren jeweilige Priorität.
  
-SSL-Protokollversionen:
+### <a name="ssl-protocol-versions"></a>SSL-Protokollversionen
 
-* SSL 2.0 und 3.0 ist für alle Anwendungsgateways standardmäßig deaktiviert. Diese Protokollversionen sind nicht konfigurierbar.
-* Bei der benutzerdefinierten SSL Richtliniendefinition können Sie eine beliebige der drei folgenden Protokolle als SSL-Mindestprotokollversion für Ihr Gateway auswählen: „TLSv1_0“, „TLSv1_1“, „TLSv1_2“.
-* Wenn keine SSL-Richtlinie definiert wird, werden alle drei („TLSv1_0“, „TLSv1_1“ und „TLSv1_2“) aktiviert.
+* SSL 2.0 und 3.0 sind für alle Anwendungsgateways standardmäßig deaktiviert. Diese Protokollversionen sind nicht konfigurierbar.
+* Bei einer benutzerdefinierten SSL-Richtlinie können Sie eine beliebige der drei folgenden Protokolle als SSL-Mindestprotokollversion für Ihr Gateway auswählen: „TLSv1_0“, „TLSv1_1“, „TLSv1_2“.
+* Wenn keine SSL-Richtlinie definiert wird, werden alle drei Protokolle („TLSv1_0“, „TLSv1_1“ und „TLSv1_2“) aktiviert.
 
-Verschlüsselungssammlung:
+### <a name="cipher-suites"></a>Verschlüsselungssammlungen
 
 Application Gateway unterstützt die folgenden Verschlüsselungssammlungen. Aus diesen können Sie Ihre benutzerdefinierte Richtlinie auswählen. Die Reihenfolge der Verschlüsselungssammlungen bestimmt ihre Priorität bei der SSL-Aushandlung.
 
-Verfügbare Verschlüsselungssammlungen:
 
 - TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 - TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
@@ -107,5 +106,5 @@ Verfügbare Verschlüsselungssammlungen:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Configure SSL policy versions and cipher suites on Application Gateway](application-gateway-configure-ssl-policy-powershell.md) (Konfigurieren von SSL-Richtlinienversionen und Verschlüsselungssammlungen für Application Gateway)
+Wenn Sie erfahren möchten, wie Sie die SSL-Auslagerung konfigurieren, lesen Sie [Konfigurieren einer SSL-Richtlinie auf einem Anwendungsgateway](application-gateway-configure-ssl-policy-powershell.md).
 

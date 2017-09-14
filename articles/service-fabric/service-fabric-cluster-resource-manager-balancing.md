@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
 ms.translationtype: HT
-ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
-ms.openlocfilehash: dfe0de1bc4cdfcbc0d175f1a3268601bde4da21a
+ms.sourcegitcommit: 4eb426b14ec72aaa79268840f23a39b15fee8982
+ms.openlocfilehash: 06d65878d84fb845cf0c4c333a1e2d12b0aaec2f
 ms.contentlocale: de-de
-ms.lasthandoff: 08/19/2017
+ms.lasthandoff: 09/06/2017
 
 ---
 # <a name="balancing-your-service-fabric-cluster"></a>Lastenausgleich für Service Fabric-Cluster
@@ -35,10 +35,10 @@ Die ersten Steuerelemente im Zusammenhang mit dem Lastenausgleich sind eine Reih
 
 Jede dieser unterschiedlichen Korrekturarten, die der Clusterressourcen-Manager durchführen kann, wird durch einen anderen Timer gesteuert, um festzulegen, wie häufig die Vorgänge ausgeführt werden. Beim Auslösen der einzelnen Timer wird der Task geplant. Der Ressourcen-Manager führt standardmäßig folgende Schritte aus:
 
-* Überprüft seinen Zustand und wendet jede Zehntelsekunde Updates an (beispielsweise, um zu erfassen, dass ein Knoten inaktiv ist).
+* Er überprüft seinen Zustand und wendet jede Zehntelsekunde Updates an (beispielsweise, um zu erfassen, dass ein Knoten inaktiv ist).
 * Legt das Kennzeichen für die Platzierungsüberprüfung fest 
 * Legt das Kennzeichen für die Einschränkungsüberprüfung sekündlich fest
-* Legt alle fünf Sekunden das Kennzeichen für den Ausgleich fest.
+* Er legt alle fünf Sekunden das Kennzeichen für den Ausgleich fest.
 
 Beispiele der Konfiguration dieser Timer sind unten aufgeführt:
 
@@ -175,6 +175,10 @@ ClusterManifest.xml
 ```
 
 Sowohl der Ausgleichs- als auch der Aktivitätsschwellenwert sind mit einer bestimmten Metrik verknüpft. Der Ausgleich wird nur ausgelöst, wenn sowohl der Ausgleichs- als auch der Aktivitätsschwellenwert für die gleiche Metrik überschritten werden.
+
+> [!NOTE]
+> Wenn nicht angegeben, ist der Ausgleichsschwellenwert für eine Metrik 1 und der Aktivitätsschwellenwert 0. Dies bedeutet, dass der Cluster Resource Manager versucht, diese Metrik für jede gegebene Auslastung perfekt im Ausgleich zu halten. Bei Verwendung benutzerdefinierter Metriken sollten Sie explizit Ihre eigenen Ausgleichs- und Aktivitätsschwellenwerte für Ihre Metriken definieren. 
+>
 
 ## <a name="balancing-services-together"></a>Gemeinsamer Lastenausgleich von Diensten
 Ob der Cluster unausgeglichen ist oder nicht, ist eine Entscheidung für den gesamten Cluster. Die Korrektur besteht jedoch darin, einzelne Dienstreplikate und -instanzen zu verschieben. Das ist einleuchtend, nicht wahr? Wenn auf einem Knoten ein hoher Arbeitsspeicherwert erreicht wird, kann dies auf mehrere Replikate oder Instanzen zurückzuführen sein. Daher kann es erforderlich sein, zustandsbehaftete Replikate oder zustandslose Instanzen zu verschieben, die die betroffene, unausgeglichene Metrik nutzen.

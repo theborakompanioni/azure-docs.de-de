@@ -14,14 +14,14 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/01/2017
+ms.date: 08/31/2017
 ms.author: seanmck
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
-ms.openlocfilehash: 4248a3769ba8a0fb067b3904d55d487fe67e5778
+ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
+ms.openlocfilehash: c68f0239bcb95aa5e9d8194f7b358f30588ea600
 ms.contentlocale: de-de
-ms.lasthandoff: 08/12/2017
+ms.lasthandoff: 09/01/2017
 
 ---
 
@@ -31,7 +31,7 @@ Standardmäßig ist Azure Container Instances zustandslos. Wenn der Container ab
 
 ## <a name="create-an-azure-file-share"></a>Erstellen einer Azure-Dateifreigabe
 
-Bevor Sie eine Azure-Dateifreigabe in Azure Container Instances einbinden, müssen Sie sie erstellen. Führen Sie das folgende Skript aus, um ein Speicherkonto zum Hosten der Dateifreigabe und die Freigabe selbst zu erstellen. Beachten Sie, dass der Name des Speicherkontos global eindeutig sein muss, daher fügt das Skript der Basis-Zeichenfolge einen Zufallswert hinzu.
+Bevor Sie eine Azure-Dateifreigabe in Azure Container Instances einbinden, müssen Sie sie erstellen. Führen Sie das folgende Skript aus, um ein Speicherkonto zum Hosten der Dateifreigabe und die Freigabe selbst zu erstellen. Der Name des Speicherkontos muss global eindeutig sein, daher fügt das Skript der Basis-Zeichenfolge einen Zufallswert hinzu.
 
 ```azurecli-interactive
 # Change these four parameters
@@ -52,7 +52,7 @@ az storage share create -n $ACI_PERS_SHARE_NAME
 
 ## <a name="acquire-storage-account-access-details"></a>Erhalten der Zugriffsinformationen für das Azure-Speicherkonto
 
-Um eine Azure-Dateifreigabe als Volume in Azure Container Instances einzubinden, benötigen Sie drei Werte: den Namen des Speicherkontos, den Freigabenamen und den Speicherzugriffsschlüssel. 
+Um eine Azure-Dateifreigabe als Volume in Azure Container Instances einzubinden, benötigen Sie drei Werte: den Namen des Speicherkontos, den Freigabenamen und den Speicherzugriffsschlüssel.
 
 Wenn Sie das oben angegebene Skript verwendet haben, wurde der Name des Speicherkontos mit einem zufälligen Wert am Ende erstellt. Um die endgültige Zeichenfolge (einschließlich des zufälligen Teils) abzufragen, verwenden Sie die folgenden Befehle:
 
@@ -64,13 +64,13 @@ echo $STORAGE_ACCOUNT
 Der Freigabename ist bereits bekannt (er lautet im oben angegebenen Skript *acishare*), daher verbleibt nur der Speicherkontoschlüssel, der mit dem folgenden Befehl gesucht werden kann:
 
 ```azurecli-interactive
-$STORAGE_KEY=$(az storage account keys list --resource-group myResourceGroup --account-name $STORAGE_ACCOUNT --query "[0].value" -o tsv)
+STORAGE_KEY=$(az storage account keys list --resource-group myResourceGroup --account-name $STORAGE_ACCOUNT --query "[0].value" -o tsv)
 echo $STORAGE_KEY
 ```
 
 ## <a name="store-storage-account-access-details-with-azure-key-vault"></a>Speichern der Informationen für den Speicherkontozugriff mit einem Azure-Schlüsseltresor
 
-Speicherkontoschlüssel schützen den Zugriff auf Ihre Daten, daher empfiehlt es sich, sie in einem Azure-Schlüsseltresor zu speichern. 
+Speicherkontoschlüssel schützen den Zugriff auf Ihre Daten, daher empfiehlt es sich, sie in einem Azure-Schlüsseltresor zu speichern.
 
 Erstellen eines Schlüsseltresors mit der Azure-Befehlszeilenschnittstelle:
 
@@ -129,7 +129,7 @@ Zum Definieren der Volumes, die für die Einbindung verfügbar gemacht werden so
             "name": "myvolume",
             "mountPath": "/aci/logs/"
           }]
-        }  
+        }
       }],
       "osType": "Linux",
       "ipAddress": {
@@ -169,7 +169,7 @@ Einfügen der Werte in die Parameterdatei:
   "parameters": {
     "storageaccountname": {
       "value": "<my_storage_account_name>"
-    },    
+    },
    "storageaccountkey": {
       "reference": {
         "keyVault": {
@@ -190,13 +190,13 @@ Mit der definierten Vorlage können Sie den Container erstellen und das zugehör
 az group deployment create --name hellofilesdeployment --template-file azuredeploy.json --parameters @azuredeploy.parameters.json --resource-group myResourceGroup
 ```
 
-Nachdem der Container gestartet wurde, können Sie mithilfe der einfachen Web-App, die über das Image **seanmckenna/aci-hellofiles** bereitgestellt wird, Dateien in der Azure-Dateifreigabe unter dem von Ihnen angegebenen Bereitstellungspfad verwalten. Rufen Sie die IP-Adresse für die Web-App durch Folgendes ab:
+Nachdem der Container gestartet wurde, können Sie mithilfe der einfachen Web-App, die über das Image **seanmckenna/aci-hellofiles** bereitgestellt wird, die Dateien in der Azure-Dateifreigabe unter dem von Ihnen angegebenen Bereitstellungspfad verwalten. Rufen Sie die IP-Adresse für die Web-App wie folgt ab:
 
 ```azurecli-interactive
 az container show --resource-group myResourceGroup --name hellofiles -o table
 ```
 
-Mithilfe eines Tools wie des [Microsoft Azure Storage Explorer](http://storageexplorer.com) können Sie die in die Dateifreigabe geschriebene Datei abrufen und überprüfen.
+Mithilfe eines Tools wie [Microsoft Azure-Speicher-Explorer](http://storageexplorer.com) können Sie die in die Dateifreigabe geschriebene Datei abrufen und überprüfen.
 
 >[!NOTE]
 > Weitere Informationen zur Verwendung von Azure Resource Manager-Vorlagen und Parameterdateien und zur Bereitstellung mit der Azure-Befehlszeilenschnittstelle finden Sie unter [Bereitstellen von Ressourcen mit Resource Manager-Vorlagen und der Azure-Befehlszeilenschnittstelle](../azure-resource-manager/resource-group-template-deploy-cli.md).

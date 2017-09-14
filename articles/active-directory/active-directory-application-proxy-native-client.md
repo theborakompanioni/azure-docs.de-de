@@ -11,27 +11,29 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/17/2017
+ms.date: 08/31/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: bdaa5af6ff5331bc310499586615b48a864c3c5e
+ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
+ms.openlocfilehash: e1f992aede3af99fa7c2ffa661bccbcac9f52ba9
 ms.contentlocale: de-de
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 09/01/2017
 
 ---
 
-# <a name="how-to-enable-native-client-apps-to-interact-with-proxy-applications"></a>Aktivieren von systemeigenen Client-Apps für die Interaktion mit Proxyanwendungen
+# <a name="how-to-enable-native-client-apps-to-interact-with-proxy-applications"></a>Aktivieren von nativen Client-Apps für die Interaktion mit Proxyanwendungen
 
-Zusätzlich zu Webanwendungen kann der Azure Active Directory-Anwendungsproxy auch zum Veröffentlichen nativer Client-Apps verwendet werden. Native Client-Apps unterscheiden sich von Web-Apps dadurch, dass sie auf einem Gerät installiert werden, während auf Web-Apps über einen Browser zugegriffen wird. 
+Zusätzlich zu Webanwendungen kann der Azure Active Directory-Anwendungsproxy auch zum Veröffentlichen nativer Client-Apps verwendet werden, die mit der Azure AD Authentication Library (ADAL) konfiguriert werden. Native Client-Apps unterscheiden sich von Web-Apps dadurch, dass sie auf einem Gerät installiert werden, während auf Web-Apps über einen Browser zugegriffen wird. 
 
-Der Anwendungsproxy unterstützt native Client-Apps durch das Akzeptieren der von Azure AD ausgegebenen Token, die in standardmäßigen HTTP-Autorisierungsheadern gesendet werden.
+Der Anwendungsproxy unterstützt native Client-Apps durch das Akzeptieren der von Azure AD ausgegebenen Token, die im Header gesendet werden. Der Anwendungsproxydienst führt die Authentifizierung für den Benutzer durch. Diese Lösung verwendet keine Anwendungstoken für die Authentifizierung. 
 
-![Beziehung zwischen Endbenutzern, Azure Active Directory und veröffentlichten Anwendungen](./media/active-directory-application-proxy-native-client/richclientflow.png)
+![Beziehung zwischen Endbenutzern, Azure Active Directory und veröffentlichten Anwendung](./media/active-directory-application-proxy-native-client/richclientflow.png)
 
-Verwenden Sie zum Veröffentlichen nativer Anwendungen die Active Directory Authentication Library (ADAL), die die Authentifizierung übernimmt und viele Clientumgebungen unterstützt. Der Anwendungsproxy gehört zum Szenario für eine [native Anwendung zu Web-API](develop/active-directory-authentication-scenarios.md#native-application-to-web-api). Dieser Artikel begleitet Sie durch die vier Schritte zum Veröffentlichen einer nativen Anwendung mit dem Anwendungsproxy und der Active Directory Authentication Library. 
+Verwenden Sie zum Veröffentlichen nativer Anwendungen die Active Directory Authentication Library (ADAL), die die Authentifizierung übernimmt und viele Clientumgebungen unterstützt. Der Anwendungsproxy gehört zum Szenario für eine [native Anwendung zu Web-API](develop/active-directory-authentication-scenarios.md#native-application-to-web-api). 
+
+Dieser Artikel begleitet Sie durch die vier Schritte zum Veröffentlichen einer nativen Anwendung mit dem Anwendungsproxy und der Active Directory Authentication Library. 
 
 ## <a name="step-1-publish-your-application"></a>Schritt 1: Veröffentlichen der Anwendung
 Veröffentlichen Sie Ihre Proxyanwendung wie jede andere Anwendung, und weisen Sie Benutzern den Zugriff auf Ihre Anwendung zu. Weitere Informationen finden Sie unter [Veröffentlichen von Anwendungen mit dem Anwendungsproxy](active-directory-application-proxy-publish.md).
@@ -64,11 +66,11 @@ Machen Sie die systemeigene Anwendung für andere Anwendungen in Ihrem Verzeichn
 7. Aktivieren Sie das Kontrollkästchen, um Ihrer nativen Anwendung Zugriff auf Ihre Proxyanwendung zu gewähren, und klicken Sie dann auf **Auswählen**.
 
    ![Gewähren des Zugriffs auf die Proxy-App](./media/active-directory-application-proxy-native-client/select_perms.png)
-8. Wählen Sie **Fertig** aus.
+8. Wählen Sie **Fertig**aus.
 
 
-## <a name="step-4-edit-the-active-directory-authentication-library"></a>Schritt 4: Bearbeiten der Active Directory Authentication Library
-Bearbeiten Sie den Code für native Anwendungen im Authentifizierungskontext der Active Directory Authentication Library (ADAL) so, dass er folgenden Text enthält:
+## <a name="step-4-edit-the-active-directory-authentication-library"></a>Schritt 4: Bearbeiten der Active Directory-Authentifizierungsbibliothek
+Bearbeiten Sie den Code für native Anwendungen im Authentifizierungskontext der Active Directory-Authentifizierungsbibliothek (ADAL, Active Directory Authentication Library), sodass er folgenden Text enthält:
 
 ```
 // Acquire Access Token from AAD for Proxy Application
@@ -91,10 +93,11 @@ Die Variablen im Beispielcode müssen wie folgt ersetzt werden:
 * Die **App-ID** der nativen App finden Sie auf der Seite **Eigenschaften** der nativen Anwendung.
 * Den **Umleitungs-URI der nativen App** finden Sie auf der Seite **Umleitungs-URI** der nativen Anwendung.
 
+Nachdem die ADAL mit diesen Parametern bearbeitet wurde, sollten sich Ihre Benutzer bei nativen Client-Apps authentifizieren können, auch wenn sie sich außerhalb des Unternehmensnetzwerks befinden. 
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen über den Fluss bei nativen Anwendungen finden Sie unter [Systemeigene Anwendung zu Web-API](develop/active-directory-authentication-scenarios.md#native-application-to-web-api).
 
-Aktuelle Neuigkeiten und Updates finden Sie im [Blog zum Anwendungsproxy](http://blogs.technet.com/b/applicationproxyblog/)
+Informationen zum Einrichten von einmaligem Anmelden für den Anwendungsproxy finden Sie [hier](application-proxy-sso-overview.md).
 

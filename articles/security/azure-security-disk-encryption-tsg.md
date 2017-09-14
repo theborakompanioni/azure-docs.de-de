@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 07/27/2017
 ms.author: devtiw
 ms.translationtype: HT
-ms.sourcegitcommit: 48dfc0fa4c9ad28c4c64c96ae2fc8a16cd63865c
-ms.openlocfilehash: 83821ed2f7db1c7dea88a1b4424d405959a206db
+ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
+ms.openlocfilehash: f2b9aad02a1ae3d5117ffd59b448eabe65a936fc
 ms.contentlocale: de-de
-ms.lasthandoff: 08/30/2017
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Leitfaden zur Azure Disk Encryption-Problembehandlung
@@ -41,7 +41,7 @@ Die Wahrscheinlichkeit dieses Fehlers ist am höchsten, wenn versucht wird, die 
 
 ## <a name="unable-to-encrypt"></a>Verschlüsselung nicht möglich
 
-In einigen Fällen hängt die Verschlüsselung des Linux-Datenträgers scheinbar bei „OS disk encryption started“, und SSH ist deaktiviert. Dieser Prozess kann bei einem normalen Katalogimage 3-16 Stunden bis zum Abschluss dauern. Wenn Datenträger mit mehreren Terabyte Daten hinzugefügt werden, kann der Prozess Tage dauern. 
+In einigen Fällen hängt die Verschlüsselung des Linux-Datenträgers scheinbar bei „OS disk encryption started“, und SSH ist deaktiviert. Dieser Prozess kann bei einem normalen Katalogimage 3-16 Stunden bis zum Abschluss dauern. Wenn Datenträger mit mehreren Terabyte Daten hinzugefügt werden, kann der Prozess Tage dauern.
 
 Durch die Verschlüsselungssequenz für Linux-Betriebssystemdatenträger wird die Bereitstellung des Betriebssystemlaufwerks vorübergehend aufgehoben. Es erfolgt anschließend eine blockweise Verschlüsselung des gesamten Betriebssystemdatenträgers, ehe er im verschlüsselten Zustand wieder bereitgestellt wird. Im Gegensatz zu Azure Disk Encryption unter Windows ist bei der Linux-Datenträgerverschlüsselung keine gleichzeitige Nutzung der VM während des Verschlüsselungsvorgangs möglich. Die Leistungsmerkmale der VM können sich signifikant auf den Zeitaufwand auswirken, der bis zur Verschlüsselung anfällt. Zu diesen Merkmalen zählen die Größe des Datenträgers und das Speicherkonto (Standard oder Storage Premium).
 
@@ -85,15 +85,15 @@ Zur Laufzeit nutzt Azure Disk Encryption für Linux das Paketverwaltungssystem d
 
 ## <a name="troubleshooting-windows-server-2016-server-core"></a>Problembehandlung bei Windows Server 2016 Server Core
 
-Unter Windows Server 2016 Server Core ist die Komponente **bdehdcfg** nicht standardmäßig verfügbar. Diese Komponente ist für Azure Disk Encryption erforderlich. Fügen Sie die Komponente **bdehdcfg** über die folgenden Schritte hinzu:
+Unter Windows Server 2016 Server Core ist die Komponente bdehdcfg nicht standardmäßig verfügbar. Diese Komponente ist für Azure Disk Encryption erforderlich. Mit ihr wird das Systemvolume von Betriebssystemvolume getrennt. Diese Teilung erfolgt nur einmal während der Lebensdauer des virtuellen Computers. Diese Binärdateien sind während der späteren Verschlüsselungsvorgänge nicht erforderlich.
 
-   1. Kopieren Sie die folgenden vier Dateien von einer Windows Server 2016 Data Center-VM in den Ordner **C:\windows\system32** des Server Core-Images:
+Um dieses Problem zu umgehen, kopieren Sie die folgenden vier Dateien von einer Windows Server 2016 Data Center-VM an denselben Speicherort wie Server Core:
 
    ```
-   bdehdcfg.exe
-   bdehdcfglib.dll
-   bdehdcfglib.dll.mui
-   bdehdcfg.exe.mui
+   \windows\system32\bdehdcfg.exe
+   \windows\system32\bdehdcfglib.dll
+   \windows\system32\en-US\bdehdcfglib.dll.mui
+   \windows\system32\en-US\bdehdcfg.exe.mui
    ```
 
    2. Geben Sie den folgenden Befehl ein:
@@ -102,8 +102,8 @@ Unter Windows Server 2016 Server Core ist die Komponente **bdehdcfg** nicht stan
    bdehdcfg.exe -target default
    ```
 
-   3. Dieser Befehl erstellt eine Systempartition der Größe 550 MB. Starten Sie das System neu. 
-   
+   3. Dieser Befehl erstellt eine Systempartition der Größe 550 MB. Starten Sie das System neu.
+
    4. Verwenden Sie DiskPart zum Überprüfen der Volumes, und fahren Sie dann fort.  
 
 Beispiel:

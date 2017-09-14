@@ -1,5 +1,5 @@
 ---
-title: "Ändern der für Azure verwendeten Kreditkarte | Microsoft-Dokumentation"
+title: "Ändern der Kreditkarte für Azure | Microsoft-Dokumentation"
 description: "Enthält Informationen zum Ändern der für die Zahlung eines Azure-Abonnements verwendeten Kreditkarte."
 services: 
 documentationcenter: 
@@ -13,63 +13,90 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/30/2017
+ms.date: 08/30/2017
 ms.author: genli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: 2093d6fcef343d9bf05942ce817989bcf5e559d3
+ms.translationtype: HT
+ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
+ms.openlocfilehash: 03764377b3ea0e17d4a192a7e05bb495ec56f331
 ms.contentlocale: de-de
-ms.lasthandoff: 03/31/2017
-
+ms.lasthandoff: 08/31/2017
 
 ---
-# <a name="change-the-credit-card-used-to-pay-for-an-azure-subscription"></a>Ändern der für die Zahlung eines Azure-Abonnements verwendeten Kreditkarte
-Sie können eine Ihrem Azure-Konto zugeordnete Kreditkarte hinzufügen, ändern oder entfernen, wenn Sie sich beim [Azure-Kontocenter](https://account.windowsazure.com/Subscriptions) als [Kontoadministrator](billing-subscription-transfer.md#whoisaa) anmelden. 
+# <a name="add-update-or-remove-a-credit-or-debit-card-for-azure"></a>Hinzufügen, Aktualisieren oder Entfernen einer Kredit- oder Debitkarte für Azure
+
+Im Kontocenter können Sie eine neue Kreditkarte hinzufügen, eine vorhandene Kreditkarte aktualisieren oder eine nicht verwendete Kreditkarte löschen. Sie können diese Änderungen nur als [Kontoadministrator](billing-subscription-transfer.md#whoisaa) vornehmen.
+
+**Sie möchten auf die Bezahlung per Rechnung umsteigen?** Informationen dazu finden Sie unter [Zahlen für Azure-Abonnements auf Rechnung](billing-how-to-pay-by-invoice.md).
  
 <a id="addcard"></a>
-## <a name="add-a-credit-card-as-a-payment-method"></a>Hinzufügen einer Kreditkarte als Zahlungsmethode
 
-1. Melden Sie sich beim [Azure-Kontocenter](https://account.windowsazure.com/Subscriptions) als Kontoadministrator an.
-2. Wählen Sie das Abonnement aus.
-3. Wählen Sie rechts auf der Seite die Option **Manage payment methods**(Zahlungsmethoden verwalten).
-4. Wählen Sie das Pluszeichen („+“) aus, um eine Kreditkarte hinzuzufügen.
-5. Wählen Sie einen Kreditkartentyp aus, und geben Sie dann die erforderlichen Informationen ein.
-6. Wählen Sie **Weiter**. 
+## <a name="add-a-new-credit-or-debit-card"></a>Hinzufügen einer neuen Kredit- oder Debitkarte
 
-Wenn die Karte gültig ist, wird sie der Liste der verfügbaren Zahlungsmethoden hinzugefügt.
+1. Melden Sie sich beim [Kontocenter](https://account.windowsazure.com/Subscriptions) als Kontoadministrator an.
+1. Wählen Sie ein Abonnement aus.
+1. Wählen Sie rechts auf der Seite die Option **Manage payment methods**(Zahlungsmethoden verwalten).
+
+    ![Screenshot mit ausgewählter Option „Zahlungsmethoden verwalten“.](./media/billing-how-to-change-credit-card/changesub_new.png)
+1. Wählen Sie das Pluszeichen („+“) aus, um eine Karte hinzuzufügen.
+
+    ![Screenshot der Option „Bearbeiten“ neben der Zahlungsmethode](./media/billing-how-to-change-credit-card/editcard_new.png)
+1. Geben Sie die Kredit- oder Debitkartendetails ein.
+1. Wählen Sie **Speichern** aus. 
 
 Wenn nach dem Hinzufügen der Kreditkarte eine Fehlermeldung ausgegeben wird, befolgen Sie die Anleitung unter [Ablehnung der Kreditkarte bei der Azure-Registrierung](billing-credit-card-fails-during-azure-sign-up.md).
 
-## <a name="edit-payment-information-for-an-existing-credit-card"></a>Bearbeiten von Zahlungsinformationen für eine vorhandene Kreditkarte
-  Wenn Ihre Kreditkarte verlängert wird und die Kreditkartennummer gleich bleibt, aktualisieren Sie die bereits vorhandenen Kreditkartendetails (etwa das Ablaufdatum). Wenn sich die Kreditkartennummer aufgrund von Verlust, Diebstahl oder Ablauf ändert, führen Sie die Schritte im Abschnitt [Hinzufügen einer Kreditkarte als Zahlungsmethode](#addcard) aus. 
+## <a name="update-existing-credit-or-debit-card"></a>Aktualisieren einer vorhandenen Kredit- oder Debitkarte
+
+Wenn Ihre Kreditkarte verlängert wird und die Kreditkartennummer gleich bleibt, aktualisieren Sie die bereits vorhandenen Kreditkartendetails (etwa das Ablaufdatum). Wenn sich die Kreditkartennummer aufgrund von Verlust, Diebstahl oder Ablauf ändert, führen Sie die Schritte im Abschnitt [Hinzufügen einer Kreditkarte als Zahlungsmethode](#addcard) aus. Die Kartenprüfnummer müssen Sie nicht aktualisieren.
 
 1. Melden Sie sich beim [Azure-Kontocenter](https://account.windowsazure.com/Subscriptions) als Kontoadministrator an.
-2. Wählen Sie das Abonnement, das mit der Kreditkarte verknüpft ist.</br> ![Screenshot mit Beispiel für ein ausgewähltes Abonnement.](./media/billing-how-to-change-credit-card/selectsub.png)
-3. Wählen Sie **Zahlungsmethoden verwalten** aus.</br> ![Screenshot mit ausgewählter Option „Zahlungsmethoden verwalten“.](./media/billing-how-to-change-credit-card/changesub_new.png)
-4. Wählen Sie die Zahlungsmethode aus.
-5. Wählen Sie neben der Kreditkartennummer die Option **Bearbeiten** aus.</br> ![Screenshot, der die Option „Bearbeiten“ neben der Zahlungsmethode zeigt.](./media/billing-how-to-change-credit-card/editcard_new.png)
-6. Vergewissern Sie sich, dass Kreditkartentyp und -nummer korrekt sind.
-7. Wählen Sie **Weiter**.
+1. Wählen Sie das Abonnement aus, das mit der Karte verknüpft ist.
+1. Wählen Sie **Zahlungsmethoden verwalten** aus.
+1. Wählen Sie neben der Karte, die aktualisiert werden soll, **Bearbeiten** aus.
+1. Aktualisieren Sie die Kredit- oder Debitkartendetails.
+1. Wählen Sie **Speichern** aus.
 
-## <a name="change-the-credit-card-that-pays-your-azure-bill"></a>Ändern der Kreditkarte für die Zahlung von Azure-Rechnungen
+## <a name="use-a-different-credit-card-for-the-azure-subscription"></a>Verwenden einer anderen Kreditkarte für das Azure-Abonnement
 
 1. Melden Sie sich beim [Azure-Kontocenter](https://account.windowsazure.com/Subscriptions) als Kontoadministrator an.
-2. Wählen Sie das Abonnement aus.
-3. Wählen Sie rechts auf der Seite die Option **Manage payment methods**(Zahlungsmethoden verwalten).
-4. Klicken Sie auf **Stattdessen verwenden**, und wählen Sie die zu verwendende Kreditkarte aus.
+1. Wählen Sie das Abonnement aus, das mit der Karte verknüpft ist.
+1. Wählen Sie rechts auf der Seite die Option **Manage payment methods**(Zahlungsmethoden verwalten).
+1. Klicken Sie neben der zu verwendenden Kreditkarte auf **Stattdessen verwenden**. Dadurch werden auch alle anderen Abonnements aktualisiert, die aktuell mit dieser Karte verknüpft sind. 
 
-## <a name="remove-a-credit-card-from-the-account"></a>Entfernen einer Kreditkarte aus dem Konto
+## <a name="remove-a-credit-or-debit-card-from-the-account"></a>Entfernen einer Kredit- oder Debitkarte aus dem Konto
+
 1. Melden Sie sich beim [Azure-Kontocenter](https://account.windowsazure.com/Subscriptions) als Kontoadministrator an.
-2. Wählen Sie das Abonnement aus.
+1. Wählen Sie das Abonnement aus, das mit der Karte verknüpft ist.
 3. Wählen Sie rechts auf der Seite die Option **Manage payment methods**(Zahlungsmethoden verwalten).
 4. Klicken Sie für die zu löschende Kreditkarte auf **Löschen**.
 
-Wenn Ihre Kreditkarte anderen aktiven Microsoft-Abonnements zugeordnet ist, können Sie sie nicht aus Ihrem Azure-Konto entfernen. Entfernen Sie die Kreditkarte aus allen aktiven Abonnements, über die Sie bei Microsoft verfügen.
+Wenn Ihre Kreditkarte anderen aktiven Microsoft-Abonnements zugeordnet ist, können Sie sie nicht aus Ihrem Azure-Konto entfernen. Entfernen Sie die Kreditkarte aus allen aktiven Abonnements, über die Sie bei Microsoft verfügen, und wiederholen Sie den Vorgang.
 
-##  <a name="how-to-make-payments"></a>Tätigen von Zahlungen
+## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
-* Wenn Sie eine Kredit- oder Debitkarte als Zahlungsmethode festlegen, erfolgt die Zahlung automatisch.
-* Wenn Sie [auf Rechnung zahlen](https://azure.microsoft.com/pricing/invoicing/), senden Sie Ihre Zahlung an den Empfänger, der unten auf der Rechnung angegeben ist.
+### <a name="my-subscription-is-disabled-why-cant-i-remove-my-credit-card-now"></a>Das Abonnement ist deaktiviert. Warum kann ich jetzt meine Kreditkarte nicht entfernen?
+
+Nach der Deaktivierung oder Kündigung Ihres Abonnements warten wir 90 Tage, bevor wir Ihr Abonnement endgültig löschen. Während der Aufbewahrungsdauer wird die Zahlungsmethode beibehalten, für den Fall, dass Sie das Abonnement reaktivieren möchten. Anschließend wird das Abonnement vollständig gelöscht.
+
+Wenn Sie Ihre Kredit- oder Debitkarte vor Ablauf des Beibehaltungszeitraums von 90 Tagen entfernen möchten, [wenden Sie sich an den Azure-Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+
+### <a name="why-do-i-keep-getting-your-login-session-has-expired-please-click-here-to-log-back-in"></a>Warum wird beständig die Meldung „Ihre Anmeldesitzung ist abgelaufen. Klicken Sie hier, um sich wieder anzumelden.“ angezeigt?
+
+Wenn diese Fehlermeldung beständig angezeigt wird, selbst wenn Sie sich bereits abgemeldet und dann wieder angemeldet haben, versuchen Sie es erneut mit einer privaten Browsersitzung.
+
+### <a name="how-do-i-use-a-different-card-for-each-subscription-i-have"></a>Wie kann ich für jedes meiner Abonnements eine andere Karte verwenden?
+
+Wenn für Ihre Abonnements bereits ein und dieselbe Karte verwendet wird, ist es leider nicht möglich, sie zu trennen, um verschiedene Karten zu verwenden. Wenn Sie sich jedoch für ein neues Abonnement registrieren, können Sie eine neue Zahlungsmethode für dieses Abonnement auswählen.
+
+### <a name="how-do-i-make-payments"></a>Wie tätige ich Zahlungen?
+
+Wenn Sie eine Kreditkarte oder Debitkarte als Zahlungsmethode eingerichtet haben, wird diese Karte automatisch nach jedem Abrechnungszeitraum belastet. Sie müssen nichts weiter tun.
+
+Wenn Sie [auf Rechnung zahlen](billing-how-to-pay-by-invoice.md), senden Sie Ihre Zahlung an den Empfänger, der unten auf der Rechnung angegeben ist.
+
+### <a name="how-do-i-make-a-one-time-payment"></a>Wie tätige ich eine einmalige Zahlung?
+
+Leider unterstützt Azure derzeit keine einmaligen Zahlungen für Kredit- oder Debitkarten. 
 
 ## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Support kontaktieren
 

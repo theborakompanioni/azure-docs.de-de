@@ -15,10 +15,10 @@ ms.date: 12/01/2016
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
-ms.openlocfilehash: bcdcbd9e781dc9686f4be18e16bf046de6981a9d
+ms.sourcegitcommit: ce0189706a3493908422df948c4fe5329ea61a32
+ms.openlocfilehash: 0fa1ac4f9e9711332c568e84f86d132508eb185f
 ms.contentlocale: de-de
-ms.lasthandoff: 08/19/2017
+ms.lasthandoff: 09/05/2017
 
 ---
 # <a name="sap-hana-large-instances-overview-and-architecture-on-azure"></a>Übersicht und Architektur von SAP HANA in Azure (große Instanzen)
@@ -148,7 +148,7 @@ Ab Juli 2017 ist SAP HANA in Azure (große Instanzen) in verschiedenen Konfigura
 
 Die oben genannten unterschiedlichen Konfigurationen, die verfügbar sind oder nicht mehr angeboten werden, werden im [SAP-Supporthinweis 2316233 – SAP HANA on Microsoft Azure (Large Instances)](https://launchpad.support.sap.com/#/notes/2316233/E) (SAP HANA in Microsoft Azure [große Instanzen]) behandelt. Die Konfigurationen, die als „Bestellbereit“ markiert ist, erhält bald einen Eintrag in SAP Note. Diese Instanzen-SKUs können bereits für die sechs verschiedenen Azure-Regionen bestellt werden, in denen der Dienst HANA (große Instanzen) verfügbar ist.
 
-Die jeweils gewählten Konfigurationen hängen von der Workload, den CPU-Ressourcen und dem gewünschten Arbeitsspeicher ab. Für OLTP-Workload ist es möglich, die SKUs zu nutzen, die für die OLAP-Workload optimiert sind. 
+Die jeweils gewählten Konfigurationen hängen von der Workload, den CPU-Ressourcen und dem gewünschten Arbeitsspeicher ab. Eine OLTP-Workload kann die SKUs nutzen, die für OLAP-Workloads optimiert sind. 
 
 Die Hardwarebasis für alle Angebote ist SAP HANA-TDI-zertifiziert. Allerdings unterscheiden wir zwischen zwei verschiedenen Hardwareklassen, die die SKUs wie folgt unterteilt:
 
@@ -189,6 +189,18 @@ Einige Beispiele für die Ausführung mehrerer SAP HANA-Instanzen könnte wie fo
 
 
 Sie verstehen das Konzept. Natürlich sind auch andere Variationen möglich. 
+
+### <a name="using-sap-hana-data-tiering-and-extension-nodes"></a>Verwenden von SAP HANA Data Tiering und Extension Nodes
+SAP unterstützt ein Data Tiering-Modell für SAP BW für verschiedene Releases von SAP NetWeaver und SAP BW/4HANA. Nähere Informationen zum Data Tiering-Modell finden Sie in diesem Dokument von SAP und dem Blog, auf den in diesem Dokument verwiesen wird: [SAP BW/4HANA AND SAP BW ON HANA WITH SAP HANA EXTENSION NODES](https://www.sap.com/documents/2017/05/ac051285-bc7c-0010-82c7-eda71af511fa.html#) (SAP BW/4HANA UND SAP BW IN HANA MIT SAP HANA EXTENSION NODES).
+Mit HANA (große Instanzen) können Sie die Option-1-Konfiguration von SAP HANA Extension Nodes wie in diesem FAQ und SAP-Blogdokumenten beschrieben verwenden. Option-2-Konfigurationen können mit folgenden HANA-SKUs (große Instanzen) eingerichtet werden: S72m, S192, S192m, S384 und S384m.  
+Anhand der Dokumentation wird der Vorteil möglicherweise nicht sofort sichtbar. Doch wenn Sie in die SAP-Dimensionierungsrichtlinien schauen, können Sie den Vorteil der Verwendung von Option-1- und Option-2-SAP HANA Extension Nodes erkennen. Hier sehen Sie ein Beispiel:
+
+- SAP HANA-Dimensionierungsrichtlinien erfordern in der Regel das Doppelte des Datenvolumens als Arbeitsspeicher. Wenn Sie also Ihre SAP HANA-Instanz mit den „heißen“ Daten ausführen, sind höchstens 50 % des Arbeitsspeichers mit Daten gefüllt. Der restliche Arbeitsspeicher wird im Idealfall für die Arbeit von SAP HANA reserviert.
+- Das bedeutet, dass in einer HANA-S192-Einheit (große Instanz) mit 2 TB Arbeitsspeicher, in der eine SAP BW-Datenbank ausgeführt wird, nur 1 TB als Datenvolumen verfügbar ist.
+- Wenn Sie einen zusätzlichen Option-1-SAP HANA Extension Node verwenden, würde eine HANA-S192-SKU (große Instanz) zusätzliche 2 TB Kapazität für das Datenvolumen bieten. In der Option-2-Konfiguration stünden sogar zusätzliche 4 TB für ein „warmes“ Datenvolumen zur Verfügung. Im Vergleich zu dem „heißen“ Knoten kann die volle Arbeitsspeicherkapazität des „warmen“ Extension Node zum Speichern von Daten für Option-1 und der doppelte Speicher für das Datenvolumen in der Konfiguration mit einem Option-2-SAP HANA Extension Node verwendet werden.
+- Schließlich erhalten Sie eine Kapazität von 3 TB für Ihre Daten und ein „Heiß-zu-warm“-Verhältnis von 1:2 für Option-1 und 5 TB an Daten und ein 1:4-Verhältnis in der Option 2-Extension Node-Konfiguration.
+
+Je höher jedoch das Datenvolumen im Vergleich zum Arbeitsspeicher, desto wahrscheinlicher werden die „warmen“ Daten, die Sie anfordern, auf dem Datenträger gespeichert.
 
 
 ## <a name="operations-model-and-responsibilities"></a>Funktionsprinzipien und Zuständigkeiten

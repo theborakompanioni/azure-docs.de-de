@@ -3,7 +3,7 @@ title: "Diagnostizieren der lokalen Konnektivität über VPN Gateway mit Azure N
 description: "Dieser Artikel beschreibt die Durchführung einer Diagnose der lokalen Konnektivität über VPN-Gateways mithilfe der Azure Network Watcher-Ressource zur Problembehandlung."
 services: network-watcher
 documentationcenter: na
-author: georgewallace
+author: jimdial
 manager: timlt
 editor: 
 ms.assetid: aeffbf3d-fd19-4d61-831d-a7114f7534f9
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: gwallace
+ms.author: jdial
 ms.translationtype: HT
-ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
-ms.openlocfilehash: 8f5534c83adf2ee4a696131afb45a658c89dd298
+ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
+ms.openlocfilehash: 94658dfcf93e821e24cabb1f010f8dce0c014700
 ms.contentlocale: de-de
-ms.lasthandoff: 08/08/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 
@@ -34,7 +34,7 @@ Sie möchten eine Site-to-Site-Verbindung zwischen Azure und dem lokalen Netzwer
 
 1. Virtual Network-Gateway: VPN Gateway in Azure
 1. Gateway des lokalen Netzwerks: die Darstellung des [lokalen VPN-Gateways (FortiGate)](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#LocalNetworkGateway) in der Azure-Cloud
-1. Site-to-Site-Verbindung (richtlinienbasiert): [Verbindung zwischen VPN Gateway und dem lokalen Router](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#createconnection)
+1. Site-to-Site-Verbindung (routenbasiert): [Verbindung zwischen VPN Gateway und dem lokalen Router](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal#createconnection)
 1. [Konfigurieren von FortiGate](https://github.com/Azure/Azure-vpn-config-samples/blob/master/Fortinet/Current/Site-to-Site_VPN_using_FortiGate.md)
 
 Eine Schritt-für-Schritt-Anleitung zum Konfigurieren einer Standort-zu-Standort-Konfiguration finden Sie unter [Erstellen eines VNET mit einer Standort-zu-Standort-Verbindung über das Azure-Portal](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md).

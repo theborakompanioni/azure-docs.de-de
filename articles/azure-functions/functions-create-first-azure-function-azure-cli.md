@@ -7,16 +7,16 @@ author: ggailey777
 ms.author: glenga
 ms.assetid: 674a01a7-fd34-4775-8b69-893182742ae0
 ms.date: 08/22/2017
-ms.topic: hero-article
+ms.topic: quickstart
 ms.service: functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: cfowler
 ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
-ms.openlocfilehash: 8bd3e4bb7423db44c48b04f25edcf1074e6ea0bd
+ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
+ms.openlocfilehash: faa592af285569c7423a1597fcd9086311486abc
 ms.contentlocale: de-de
-ms.lasthandoff: 08/23/2017
+ms.lasthandoff: 09/02/2017
 
 ---
 
@@ -37,7 +37,7 @@ Vor dem Ausführen dieses Beispiels benötigen Sie Folgendes:
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Thema die Azure CLI-Version 2.0 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu. 
+Wenn Sie die CLI lokal installieren und verwenden möchten, erfordert dieses Thema die Azure CLI-Version 2.0 oder höher. Führen Sie `az --version` aus, um herauszufinden, welche Version Sie haben. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu. 
 
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
@@ -45,7 +45,7 @@ Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für die
 Erstellen Sie mit dem Befehl [az group create](/cli/azure/group#create) eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen wie Funktionen-Apps, Datenbanken und Speicherkonten bereitgestellt und verwaltet werden.
 
 Im folgenden Beispiel wird eine Ressourcengruppe namens `myResourceGroup` erstellt.  
-Falls Sie nicht Cloud Shell verwenden, müssen Sie sich erst mithilfe von `az login` anmelden.
+Falls Sie nicht Cloud Shell verwenden, melden Sie sich erst mithilfe von `az login` an.
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location westeurope
@@ -56,7 +56,7 @@ az group create --name myResourceGroup --location westeurope
 
 Functions verwenden ein Azure Storage-Konto, um den Status und andere Informationen über Ihre Funktionen zu verwalten. Erstellen Sie ein Speicherkonto in der Ressourcengruppe, die Sie erstellt haben, indem Sie den Befehl [az storage account create](/cli/azure/storage/account#create) verwenden.
 
-Ersetzen Sie im folgenden Befehl den Platzhalter `<storage_name>` durch Ihren eigenen eindeutigen Speicherkontonamen. Speicherkontonamen müssen zwischen 3 und 24 Zeichen lang sein und dürfen nur Zahlen und Kleinbuchstaben enthalten.
+Ersetzen Sie im folgenden Befehl den Platzhalter `<storage_name>` durch einen eindeutigen Speicherkontonamen. Speicherkontonamen müssen zwischen 3 und 24 Zeichen lang sein und dürfen nur Zahlen und Kleinbuchstaben enthalten.
 
 ```azurecli-interactive
 az storage account create --name <storage_name> --location westeurope --resource-group myResourceGroup --sku Standard_LRS
@@ -86,7 +86,7 @@ Nach dem Erstellen des Speicherkontos zeigt die Azure-CLI ähnliche Informatione
 
 Sie müssen über eine Funktionen-App verfügen, die die Ausführung Ihrer Funktionen in Azure hostet. Die Funktionen-App bietet eine Umgebung für die serverlose Ausführung des Funktionscodes. Mit ihr können Sie Funktionen zu logischen Einheiten gruppieren. Dies erleichtert die Verwaltung, Bereitstellung und Freigabe von Ressourcen. Erstellen Sie eine Funktionen-App mithilfe des Befehls [az functionapp create](/cli/azure/functionapp#create). 
 
-Ersetzen Sie im folgenden Befehl den Platzhalter `<app_name>` durch Ihren eigenen eindeutigen Namen der Funktionen-App und den Platzhalter `<storage_name>` durch den Speicherkontonamen. Da `<app_name>` als DNS-Standarddomäne für die Funktionen-App verwendet wird, muss der Name für alle Apps in Azure eindeutig sein. 
+Ersetzen Sie im folgenden Befehl den Platzhalter `<app_name>` durch einen eindeutigen Namen der Funktionen-App und den Platzhalter `<storage_name>` durch den Speicherkontonamen. Da `<app_name>` als DNS-Standarddomäne für die Funktionen-App verwendet wird, muss der Name für alle Apps in Azure eindeutig sein. 
 
 ```azurecli-interactive
 az functionapp create --name <app_name> --storage-account  <storage_name>  --resource-group myResourceGroup \

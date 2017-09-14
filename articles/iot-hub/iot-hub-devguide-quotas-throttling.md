@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/16/2017
 ms.author: dobett
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: dfe06ee6b8fadfe6d34397661c974181f870239e
+ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
+ms.openlocfilehash: 3f4f19eba5ed1a7b3176be4d3505998f97667200
 ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Referenz: IoT Hub-Kontingente und -Drosselung
@@ -38,16 +38,16 @@ Die folgende Tabelle zeigt die erzwungenen Drosselungen. Die Werte beziehen sich
 | Drosselung | Free- und S1-Hubs | S2-Hubs | S3-Hubs | 
 | -------- | ------- | ------- | ------- |
 | Identitätsregistrierungsvorgänge (Erstellen, Abrufen, Aktualisieren, Löschen) | 1,67/Sekunde/Einheit (100/Minute/Einheit) | 1,67/Sekunde/Einheit (100/Minute/Einheit) | 83,33/Sekunde/Einheit (5.000/Minute/Einheit) |
-| Geräteverbindungen | Max. 100/Sekunde oder 12/Sekunde/Einheit <br/> Zwei S1-Einheiten entsprechen beispielsweise 2\*12 = 24 Sekunden. Es sind jedoch mindestens 100 Sekunden auf die Einheiten verteilt vorhanden. Mit neun S1-Einheiten erhalten Sie 108 Sekunden (9\*12) über alle Einheiten. | 120/Sekunde/Einheit | 6.000/Sekunde/Einheit |
-| Senden von Nachrichten von Geräten an die Cloud | Max. 100/Sekunde oder 12/Sekunde/Einheit <br/> Zwei S1-Einheiten entsprechen beispielsweise 2\*12 = 24 Sekunden. Es sind jedoch mindestens 100 Sekunden auf die Einheiten verteilt vorhanden. Mit neun S1-Einheiten erhalten Sie 108 Sekunden (9\*12) über alle Einheiten. | 120/Sekunde/Einheit | 6.000/Sekunde/Einheit |
+| Geräteverbindungen | 100/Sekunde oder 12/Sekunde/Einheit – je nachdem, was höher ist <br/> Zwei S1-Einheiten entsprechen beispielsweise 2\*12 = 24 Sekunden. Es sind jedoch mindestens 100 Sekunden auf die Einheiten verteilt vorhanden. Mit neun S1-Einheiten erhalten Sie 108 Sekunden (9\*12) über alle Einheiten. | 120/Sekunde/Einheit | 6.000/Sekunde/Einheit |
+| Senden von Nachrichten von Geräten an die Cloud | 100/Sekunde oder 12/Sekunde/Einheit – je nachdem, was höher ist <br/> Zwei S1-Einheiten entsprechen beispielsweise 2\*12 = 24 Sekunden. Es sind jedoch mindestens 100 Sekunden auf die Einheiten verteilt vorhanden. Mit neun S1-Einheiten erhalten Sie 108 Sekunden (9\*12) über alle Einheiten. | 120/Sekunde/Einheit | 6.000/Sekunde/Einheit |
 | C2D-Sendevorgänge | 1,67/Sekunde/Einheit (100/Minute/Einheit) | 1,67/Sekunde/Einheit (100/Minute/Einheit) | 83,33/Sekunde/Einheit (5.000/Minute/Einheit) |
 | C2D-Empfangsvorgänge <br/> (nur bei Verwendung von HTTP durch das Gerät)| 16,67/Sekunde/Einheit (1.000/Minute/Einheit) | 16,67/Sekunde/Einheit (1.000/Minute/Einheit) | 833,33/Sekunde/Einheit (50.000/Minute/Einheit) |
 | Dateiupload | 1,67 Dateiuploadbenachrichtigungen/Sekunde/Einheit (100/Minute/Einheit) | 1,67 Dateiuploadbenachrichtigungen/Sekunde/Einheit (100/Minute/Einheit) | 83,33 Dateiuploadbenachrichtigungen/Sekunde/Einheit (5.000/Minute/Einheit) |
 | Direkte Methoden | 20/Sekunde/Einheit | 60/Sekunde/Einheit | 3000/Sekunde/Einheit | 
-| Gerätezwilling-Lesevorgänge | 10/Sekunde | Höchstens 10/Sekunde oder 1/Sekunde/Einheit | 50/Sekunde/Einheit |
-| Gerätezwillingsaktualisierungen | 10/Sekunde | Höchstens 10/Sekunde oder 1/Sekunde/Einheit | 50/Sekunde/Einheit |
+| Gerätezwilling-Lesevorgänge | 10/Sekunde | 10/Sekunde oder 1/Sekunde/Einheit – je nachdem, was höher ist | 50/Sekunde/Einheit |
+| Gerätezwillingsaktualisierungen | 10/Sekunde | 10/Sekunde oder 1/Sekunde/Einheit – je nachdem, was höher ist | 50/Sekunde/Einheit |
 | Auftragsvorgänge <br/> (Erstellen, Aktualisieren, Auflisten, Löschen) | 1,67/Sekunde/Einheit (100/Minute/Einheit) | 1,67/Sekunde/Einheit (100/Minute/Einheit) | 83,33/Sekunde/Einheit (5.000/Minute/Einheit) |
-| Durchsatz für Vorgänge vom Typ „Aufträge pro Gerät“ | 10/Sekunde | Höchstens 10/Sekunde oder 1/Sekunde/Einheit | 50/Sekunde/Einheit |
+| Durchsatz für Vorgänge vom Typ „Aufträge pro Gerät“ | 10/Sekunde | 10/Sekunde oder 1/Sekunde/Einheit – je nachdem, was höher ist | 50/Sekunde/Einheit |
 
 Hier muss gesagt werden, dass die Drosselung der *Geräteverbindungen* die Rate bestimmt, mit der neue Geräteverbindungen mit einem IoT Hub eingerichtet werden können. Die Drosselung der *Geräteverbindungen* steuert nicht die maximale Anzahl gleichzeitig verbundener Geräte. Die Drosselung ist abhängig von der Anzahl der Einheiten, die für den IoT-Hub bereitgestellt werden.
 

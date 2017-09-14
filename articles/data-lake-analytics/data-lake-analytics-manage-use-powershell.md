@@ -15,10 +15,10 @@ ms.workload: big-data
 ms.date: 07/23/2017
 ms.author: mahi
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 862e9551f1e129b7bba06651fbae94e337c92dcb
+ms.sourcegitcommit: ce0189706a3493908422df948c4fe5329ea61a32
+ms.openlocfilehash: 65bf5928428b21e98c893a9de8ca596329329411
 ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
+ms.lasthandoff: 09/05/2017
 
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-powershell"></a>Verwalten von Azure Data Lake Analytics mithilfe von Azure PowerShell
@@ -329,86 +329,9 @@ $d = [DateTime]::Now.AddDays(-7)
 Get-AdlJob -Account $adla -SubmittedAfter $d
 ```
 
-### <a name="common-scenarios-for-listing-jobs"></a>Häufige Szenarios für das Auflisten von Aufträgen
+### <a name="analyzing-job-history"></a>Analysieren des Auftragsverlaufs
 
-
-```
-# List jobs submitted in the last five days and that successfully completed.
-$d = (Get-Date).AddDays(-5)
-Get-AdlJob -Account $adla -SubmittedAfter $d -State Ended -Result Succeeded
-
-# List all failed jobs submitted by "joe@contoso.com" within the past seven days.
-Get-AdlJob -Account $adla `
-    -Submitter "joe@contoso.com" `
-    -SubmittedAfter (Get-Date).AddDays(-7) `
-    -Result Failed
-```
-
-## <a name="filtering-a-list-of-jobs"></a>Filtern einer Liste von Aufträgen
-
-Nachdem Sie eine Liste von Aufträgen in der aktuellen PowerShell-Sitzung erstellt haben, können Sie sie mit normalen PowerShell-Cmdlets filtern.
-
-Filtern Sie eine Liste von Aufträgen nach den Aufträgen, die in den letzten 24 Stunden übermittelt wurden.
-
-```
-$upperdate = Get-Date
-$lowerdate = $upperdate.AddHours(-24)
-$jobs | Where-Object { $_.EndTime -ge $lowerdate }
-```
-
-Filtern Sie eine Liste von Aufträgen nach den Aufträgen, die in den letzten 24 Stunden beendet wurden.
-
-```
-$upperdate = Get-Date
-$lowerdate = $upperdate.AddHours(-24)
-$jobs | Where-Object { $_.SubmitTime -ge $lowerdate }
-```
-
-Filtern Sie eine Liste von Aufträgen nach den gestarteten Aufträgen. Ein Auftrag kann zum Kompilierzeitpunkt einen Fehler verursachen – und wird daher nicht gestartet. Sehen Sie sich die fehlerhaften Aufträge an, die tatsächlich gestartet wurden und dann zu Fehlern führten.
-
-```powershell
-$jobs | Where-Object { $_.StartTime -ne $null }
-```
-
-### <a name="analyzing-a-list-of-jobs"></a>Analysieren einer Liste von Aufträgen
-
-Verwenden Sie das Cmdlet `Group-Object`, um eine Liste von Aufträgen zu analysieren.
-
-```
-# Count the number of jobs by Submitter
-$jobs | Group-Object Submitter | Select -Property Count,Name
-
-# Count the number of jobs by Result
-$jobs | Group-Object Result | Select -Property Count,Name
-
-# Count the number of jobs by State
-$jobs | Group-Object State | Select -Property Count,Name
-
-#  Count the number of jobs by DegreeOfParallelism
-$jobs | Group-Object DegreeOfParallelism | Select -Property Count,Name
-```
-Beim Durchführen einer Analyse kann es nützlich sein, den Job-Objekten Eigenschaften hinzuzufügen, um so das Filtern und Gruppieren zu vereinfachen. Im folgenden Codeausschnitt wird gezeigt, wie eine JobInfo mit berechneten Eigenschaften versehen wird.
-
-```
-function annotate_job( $j )
-{
-    $dic1 = @{
-        Label='AUHours';
-        Expression={ ($_.DegreeOfParallelism * ($_.EndTime-$_.StartTime).TotalHours)}}
-    $dic2 = @{
-        Label='DurationSeconds';
-        Expression={ ($_.EndTime-$_.StartTime).TotalSeconds}}
-    $dic3 = @{
-        Label='DidRun';
-        Expression={ ($_.StartTime -ne $null)}}
-
-    $j2 = $j | select *, $dic1, $dic2, $dic3
-    $j2
-}
-
-$jobs = Get-AdlJob -Account $adla -Top 10
-$jobs = $jobs | %{ annotate_job( $_ ) }
-```
+Mit Azure PowerShell zum Analysieren des Verlaufs von Aufträgen, die in Data Lake Analytics ausgeführt wurden, steht Ihnen eine wirkungsvolle Methode zur Verfügung. Dadurch können Sie Einblick in die Verwendung und die Kosten erhalten. Um mehr zu erfahren, sehen Sie sich das [Beispielrepository für die Analyse des Auftragsverlaufs](https://github.com/Azure-Samples/data-lake-analytics-powershell-job-history-analysis) an.  
 
 ## <a name="get-information-about-pipelines-and-recurrences"></a>Abrufen von Informationen zu Pipelines und Wiederholungen
 

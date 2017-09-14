@@ -5,36 +5,35 @@ services: active-directory
 documentationcenter: 
 author: kgremban
 manager: femila
-editor: harshja
 ms.assetid: 
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/11/2017
+ms.date: 09/06/2017
 ms.author: kgremban
 ms.custom: it-pro
 ms.reviewer: harshja
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
-ms.openlocfilehash: a66081596f2e8234f6169faa58c571420e706c45
+ms.translationtype: HT
+ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
+ms.openlocfilehash: fa8f63c8da5019ed42ea8ec067d3d3d174976dd8
 ms.contentlocale: de-de
-ms.lasthandoff: 06/15/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Veröffentlichen des Remotedesktops per Azure AD-Anwendungsproxy
 
-In diesem Artikel wird beschrieben, wie Remotedesktopdienste (RDS) mit dem Anwendungsproxy bereitgestellt werden, damit Remotebenutzer ihre Produktivität aufrechterhalten können.
+Der Remotedesktopdienst und der Azure AD-Anwendungsproxy verbessern zusammen die Produktivität von Mitarbeitern, die außerhalb des Unternehmensnetzwerks arbeiten. 
 
 Dieser Artikel richtet sich an folgende Zielgruppe:
-- Bestehende Kunden des Azure AD-Anwendungsproxys, die durch Veröffentlichung von lokalen Anwendungen über Remotedesktopdienste mehrere Anwendungen für ihre Endbenutzer anbieten möchten.
+- Bestehende Kunden des Anwendungsproxys, die durch Veröffentlichung von lokalen Anwendungen über Remotedesktopdienste mehrere Anwendungen für ihre Endbenutzer anbieten möchten
 - Bestehende Kunden der Remotedesktopdienste, die die Angriffsfläche ihrer Bereitstellung mit dem Azure AD-Anwendungsproxy reduzieren möchten. Dieses Szenario bietet eine begrenzte Anzahl von Steuerelementen zur Überprüfung in zwei Schritten und für den bedingten Zugriff auf RDS.
 
 ## <a name="how-application-proxy-fits-in-the-standard-rds-deployment"></a>Informationen zur Rolle des Anwendungsproxys bei standardmäßigen RDS-Bereitstellungen
 
-Eine standardmäßige RDS-Bereitstellung umfasst verschiedene Remotedesktop-Rollendienste, die auf Windows Server ausgeführt werden. Die [Architektur der Remotedesktopdienste](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/desktop-hosting-logical-architecture) bietet mehrere Bereitstellungsoptionen. Der größte Unterschied zwischen der [RDS-Bereitstellung mit Azure AD-Anwendungsproxy](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/desktop-hosting-logical-architecture) (in der folgenden Abbildung dargestellt) und den anderen Bereitstellungsoptionen besteht darin, dass das Anwendungsproxy-Szenario eine permanente ausgehende Verbindung vom Server aufweist, auf dem der Connectordienst ausgeführt wird. Bei anderen Bereitstellungen werden eingehende Verbindungen durch einen Lastenausgleich offen gelassen.
+Eine standardmäßige RDS-Bereitstellung umfasst verschiedene Remotedesktop-Rollendienste, die auf Windows Server ausgeführt werden. Die [Architektur der Remotedesktopdienste](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/desktop-hosting-logical-architecture) bietet mehrere Bereitstellungsoptionen. Im Gegensatz zu den RDS-Bereitstellungsoptionen weist die [RDS-Bereitstellung mit Azure AD-Anwendungsproxy](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/desktop-hosting-logical-architecture) (in der folgenden Abbildung dargestellt) über eine permanente ausgehende Verbindung von dem Server auf, auf dem der Connectordienst ausgeführt wird. Bei anderen Bereitstellungen werden eingehende Verbindungen durch einen Lastenausgleich offen gelassen.
 
 ![Der Anwendungsproxy befindet sich zwischen der RDS-VM und dem öffentlichen Internet.](./media/application-proxy-publish-remote-desktop/rds-with-app-proxy.png)
 
@@ -47,7 +46,7 @@ Bei einer RDS-Bereitstellung werden die Rollen „RD-Web“ und „RD-Gateway“
 
 ## <a name="requirements"></a>Anforderungen
 
-- Die RD-Web- und RD-Gateway-Endpunkte müssen sich auf demselben Computer befinden und ein gemeinsames Stamm verwenden. RD-Web und RD-Gateway werden als einzelne Anwendung veröffentlicht, damit Sie über die Möglichkeit für einmaliges Anmelden zwischen den beiden Anwendungen verfügen.
+- Die RD-Web- und RD-Gateway-Endpunkte müssen sich auf demselben Computer befinden und ein gemeinsames Stamm verwenden. RD-Web und RD-Gateway werden auf dem Anwendungsproxy als einzelne Anwendung veröffentlicht, damit Sie über die Möglichkeit für einmaliges Anmelden zwischen den beiden Anwendungen verfügen.
 
 - Sie sollten bereits [RDS bereitgestellt](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-in-azure) und das [Anwendungsproxy aktiviert](active-directory-application-proxy-enable.md) haben.
 
@@ -76,7 +75,7 @@ Führen Sie nach der Einrichtung von RDS und des Azure AD-Anwendungsproxys für 
 
 ### <a name="direct-rds-traffic-to-application-proxy"></a>Weiterleiten des RDS-Datenverkehrs an den Anwendungsproxy
 
-Stellen Sie eine Verbindung mit der RDS-Bereitstellung als Administrator her und ändern Sie den Remotedesktop-Gatewayservernamen für die Bereitstellung. Dadurch wird sichergestellt, dass Verbindungen über den Azure AD-Anwendungsproxy hergestellt werden.
+Stellen Sie eine Verbindung mit der RDS-Bereitstellung als Administrator her und ändern Sie den Remotedesktop-Gatewayservernamen für die Bereitstellung. Durch diese Konfiguration wird sichergestellt, dass Verbindungen über den Azure AD-Anwendungsproxydienst hergestellt werden.
 
 1. Stellen Sie eine Verbindung zum RDS-Server her, auf dem die Rolle „Remotedesktop-Verbindungsbroker“ ausgeführt wird.
 2. Starten Sie den **Server-Manager**.
@@ -88,7 +87,7 @@ Stellen Sie eine Verbindung mit der RDS-Bereitstellung als Administrator her und
 
   ![Bildschirm „Bereitstellungseigenschaften“ in RDS](./media/application-proxy-publish-remote-desktop/rds-deployment-properties.png)
 
-8. Führen Sie für jede Sammlung den folgenden Befehl aus. Ersetzen Sie *\<yourcollectionname\>* und *\<proxyfrontendurl\>* durch Ihre eigenen Information. Dieser Befehl ermöglicht eine einmalige Anmeldung zwischen RD-Web und RD-Gateway und optimiert die Leistung:
+8. Führen Sie diesen Befehl für jede Sammlung aus. Ersetzen Sie *\<yourcollectionname\>* und *\<proxyfrontendurl\>* durch Ihre eigenen Information. Dieser Befehl ermöglicht eine einmalige Anmeldung zwischen RD-Web und RD-Gateway und optimiert die Leistung:
 
    ```
    Set-RDSessionCollectionConfiguration -CollectionName "<yourcollectionname>" -CustomRdpProperty "pre-authentication server address:s:<proxyfrontendurl>`nrequire pre-authentication:i:1"
@@ -124,7 +123,7 @@ Die in diesem Artikel beschriebene Konfiguration ist für Benutzer unter Windows
 | Vorauthentifizierung    | Windows 7/10 mit dem Internet Explorer + RDS-ActiveX-Add-On |
 | Passthrough | Alle anderen Betriebssysteme, die die Microsoft-Remotedesktopanwendung unterstützen |
 
-Der Vorauthentifizierungsflow bietet weitere Vorteile im Hinblick auf Sicherheit als die der Passthroughflow. Mit der Vorauthentifizierung können Sie Authentifizierungsfunktionen von Azure AD nutzen, z.B. die einmalige Anmeldung, den bedingten Zugriff und die Überprüfung in zwei Schritten für Ihre lokalen Ressourcen. Sie stellen Sie sicher, dass nur authentifizierter Datenverkehr Ihr Netzwerk erreicht.
+Der Vorauthentifizierungsflow bietet weitere Vorteile im Hinblick auf Sicherheit als die der Passthroughflow. Mit der Vorauthentifizierung können Sie Authentifizierungsfeatures von Azure AD nutzen, z.B. das einmalige Anmelden, den bedingten Zugriff und die Überprüfung in zwei Schritten für Ihre lokalen Ressourcen. Sie stellen Sie sicher, dass nur authentifizierter Datenverkehr Ihr Netzwerk erreicht.
 
 Um die Passthrough-Authentifizierung zu verwenden, müssen nur zwei Änderungen an den Schritten in diesem Artikel ausgeführt werden:
 1. Legen Sie in Schritt 1: [Veröffentlichen des RD-Hostendpunkts](#publish-the-rd-host-endpoint) die Vorauthentifizierungsmethode auf **Passthrough** fest.

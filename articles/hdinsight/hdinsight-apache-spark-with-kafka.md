@@ -14,13 +14,13 @@ ms.devlang:
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 06/13/2017
+ms.date: 09/06/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
-ms.openlocfilehash: 81fa319f6fb94bdabacd8f68d14b9a1063a9749a
+ms.translationtype: HT
+ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
+ms.openlocfilehash: 788ba828d1380b17913cabf18827c1abcc83c725
 ms.contentlocale: de-de
-ms.lasthandoff: 06/30/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="apache-spark-streaming-dstream-example-with-kafka-preview-on-hdinsight"></a>Beispiel für Apache Spark-Streaming (DStream) Kafka (Vorschauversion) auf HDInsight
@@ -53,7 +53,7 @@ Es ist zwar möglich, ein virtuelles Azure-Netzwerk, einen Kafka-Cluster und ein
 
     Mit dieser Vorlage wird ein HDInsight 3.6-Cluster für Kafka und Spark erstellt.
 
-2. Verwenden Sie die folgenden Informationen, um die Einträge auf dem Blatt **Benutzerdefinierte Bereitstellung** aufzufüllen:
+2. Verwenden Sie die folgenden Informationen, um die Einträge auf dem Abschnitt **Benutzerdefinierte Bereitstellung** aufzufüllen:
    
     ![Benutzerdefinierte HDInsight-Bereitstellung](./media/hdinsight-apache-spark-with-kafka/parameters.png)
    
@@ -75,9 +75,9 @@ Es ist zwar möglich, ein virtuelles Azure-Netzwerk, einen Kafka-Cluster und ein
 
 4. Aktivieren Sie zum Schluss **An Dashboard anheften**, und wählen Sie dann **Kaufen** aus. Das Erstellen der Cluster dauert ca. 20 Minuten.
 
-Sobald die Ressourcen erstellt sind, werden Sie zu einem Blatt für die Ressourcengruppe weitergeleitet, das die Cluster und das Webdashboard enthält.
+Sobald die Ressourcen erstellt wurden, wird eine Zusammenfassungsseite angezeigt.
 
-![Ressourcengruppenblatt für vnet und Cluster](./media/hdinsight-apache-spark-with-kafka/groupblade.png)
+![Ressourcengruppenzusammenfassung für VNET und Cluster](./media/hdinsight-apache-spark-with-kafka/groupblade.png)
 
 > [!IMPORTANT]
 > Beachten Sie, dass die Namen der HDInsight-Cluster **spark-BASENAME** und **kafka-BASENAME** lauten, wobei BASENAME der Name ist, den Sie für die Vorlage angegeben haben. Sie verwenden diese Namen in späteren Schritten, wenn Sie eine Verbindung mit den Clustern herstellen.
@@ -86,7 +86,7 @@ Sobald die Ressourcen erstellt sind, werden Sie zu einem Blatt für die Ressourc
 
 Der Code für das in diesem Dokument beschriebene Beispiel ist unter [https://github.com/Azure-Samples/hdinsight-spark-scala-kafka](https://github.com/Azure-Samples/hdinsight-spark-scala-kafka) verfügbar.
 
-Führen Sie die Schritte in der Datei `README.md` aus, um dieses Beispiel zu durchzuführen.
+Führen Sie die Schritte in der Datei `README.md` aus, um dieses Beispiel durchzuführen.
 
 ## <a name="delete-the-cluster"></a>Löschen des Clusters
 

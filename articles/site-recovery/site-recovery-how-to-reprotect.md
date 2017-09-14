@@ -15,10 +15,10 @@ ms.workload: storage-backup-recovery
 ms.date: 06/05/2017
 ms.author: ruturajd
 ms.translationtype: HT
-ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
-ms.openlocfilehash: 181ed544ae4697753490642fea8eef636322a114
+ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
+ms.openlocfilehash: 3365bc81b17e0225652504a71d3aff42a399ce67
 ms.contentlocale: de-de
-ms.lasthandoff: 08/16/2017
+ms.lasthandoff: 09/02/2017
 
 ---
 # <a name="reprotect-from-azure-to-an-on-premises-site"></a>Erneutes Schützen von Azure zu einem lokalen Standort
@@ -226,4 +226,36 @@ Beim Failback wird der virtuelle Computer in Azure heruntergefahren und der loka
 * Wenn Sie versuchen, ein Failback auf einen alternativen vCenter-Computer durchzuführen, stellen Sie sicher, dass Ihr neuer vCenter-Computer und der Masterzielserver erkannt werden. Als typisches Symptom sind die Datenspeicher im Dialogfeld **Erneut schützen** nicht zugänglich oder sichtbar.
 
 * Für einen Server vom Typ Windows Server 2008 R2 SP1, der als physischer lokaler Server geschützt wird, kann kein Failback von Azure zu einem lokalen Standort durchgeführt werden.
+
+### <a name="common-error-codes"></a>Allgemeine Fehlercodes
+
+#### <a name="error-code-95226"></a>Fehlercode 95226
+
+*Fehler beim erneuten Anwenden des Schutzes, weil der virtuelle Azure-Computer den lokalen Konfigurationsserver nicht erreichen konnte.*
+
+Ursache 
+1. Der virtuelle Azure-Computer konnte den lokalen Konfigurationsserver nicht erreichen und daher nicht ermittelt und nicht beim Konfigurationsserver registriert werden. 
+2. Der Dienst „InMage Scout Application“, der für die Kommunikation mit dem lokalen Konfigurationsserver auf dem virtuellen Azure-Computer ausgeführt werden muss, wird im Anschluss an ein Failover unter Umständen nicht ausgeführt.
+
+Lösung
+1. Stellen Sie sicher, dass das Netzwerk des virtuellen Azure-Computers so konfiguriert ist, dass der virtuelle Computer mit dem lokalen Konfigurationsserver kommunizieren kann. Richten Sie hierzu entweder ein Site-to-Site-VPN mit Ihrem lokalen Datencenter ein, oder konfigurieren Sie eine ExpressRoute-Verbindung mit privatem Peering für das virtuelle Netzwerk des virtuellen Azure-Computers. 
+2. Wenn Sie bereits über ein ordnungsgemäß konfiguriertes Netzwerk verfügen, sodass der virtuelle Azure-Computer mit dem lokalen Konfigurationsserver kommunizieren kann, melden Sie sich bei dem virtuellen Computer an, und überprüfen Sie den Dienst „InMage Scout Application“. Sollte der Dienst „InMage Scout Application“ nicht ausgeführt werden, starten Sie den Dienst manuell, und vergewissern Sie sich, dass der Starttyp des Diensts auf „Automatisch“ festgelegt ist.
+
+### <a name="error-code-78052"></a>Fehlercode 78052
+Beim erneuten Schützen tritt der folgende Fehler auf: *Der Schutz konnte für den virtuellen Computer nicht abgeschlossen werden.*
+
+Das kann zwei Ursachen haben:
+1. Der virtuelle Computer, den Sie erneut schützen möchten, verwendet Windows Server 2016. Dieses Betriebssystem wird erst in Kürze für Failbacks unterstützt.
+2. Auf dem Masterzielserver für das Failback ist bereits ein virtueller Computer mit dem gleichen Namen vorhanden.
+
+In diesem Fall können Sie einen anderen Masterzielserver auf einem anderen Host auswählen, sodass der Computer beim erneuten Schützen auf einem anderen Host erstellt und der Namenskonflikt somit vermieden wird. Sie können das Masterziel auch mithilfe von vMotion auf einen anderen Host übertragen, auf dem der Namenskonflikt nicht auftritt.
+
+### <a name="error-code-78093"></a>Fehlercode 78093
+
+*Die VM wird nicht ausgeführt, reagiert nicht oder ist nicht erreichbar.*
+
+Um einen virtuellen Computer nach einem Failback auf die lokale Umgebung erneut schützen zu können, muss der virtuelle Azure-Computer ausgeführt werden. Dies ist erforderlich, damit sich der Mobility Service beim Konfigurationsserver lokal registriert und mit der Replikation beginnen kann, indem er mit dem Prozessserver kommuniziert. Wenn sich der Computer in einem falschen Netzwerk befindet oder nicht ausgeführt wird (also nicht reagiert oder heruntergefahren ist), kann der Konfigurationsserver den Mobility Service auf dem virtuellen Computer nicht erreichen und den Schutz nicht erneut aktivieren. Sie können den virtuellen Computer neu starten, damit er wieder mit der lokalen Umgebung kommunizieren kann. Starten Sie nach dem Neustart des virtuellen Azure-Computers den Auftrag für erneutes Schützen neu.
+
+
+
 

@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 06/16/2017
+ms.date: 09/06/2017
 ms.author: larryfr
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: e1cb2e4a1fc82fb43082e79a5feba71b81b3eaa8
+ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
+ms.openlocfilehash: 74571fc6e1a0b2d6a903cdd992a247f4d5dfa700
 ms.contentlocale: de-de
-ms.lasthandoff: 07/27/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="run-hive-queries-using-powershell"></a>Ausführen von Hive-Abfragen mit PowerShell
@@ -49,10 +49,10 @@ Azure PowerShell stellt *cmdlets* bereit, mit denen Sie Hive-Abfragen in HDInsig
 Die folgenden Cmdlets werden zum Ausführen der Hive-Abfragen auf einem HDInsight-Remotecluster verwendet:
 
 * **Add-AzureRmAccount**: Authentifiziert Azure PowerShell für Ihr Azure-Abonnement.
-* **New-AzureRmHDInsightHiveJobDefinition**: erstellt mithilfe der angegebenen HiveQL-Anweisungen eine *Auftragsdefinition*.
-* **Start-AzureRmHDInsightJob**: sendet die Auftragsdefinition an HDInsight, startet den Auftrag und gibt ein *Auftrags* -Objekt zurück, mit dem der Status des Auftrags geprüft werden kann
+* **New-AzureRmHDInsightHiveJobDefinition**: Erstellt mithilfe der angegebenen HiveQL-Anweisungen eine *Auftragsdefinition*.
+* **Start-AzureRmHDInsightJob**: Sendet die Auftragsdefinition an HDInsight und startet den Auftrag. Ein *Auftragsobjekt* wird zurückgegeben.
 * **Wait-AzureRmHDInsightJob**: verwendet das Auftragsobjekt, um den Status des Auftrags zu prüfen. Es wird gewartet, bis der Auftrag abgeschlossen oder die Wartezeit überschritten ist.
-* **Get-AzureRmHDInsightJobOutput**: wird zum Abrufen der Ausgabe des Auftrags verwendet
+* **Get-AzureRmHDInsightJobOutput**: Wird zum Abrufen der Ausgabe des Auftrags verwendet.
 * **Invoke-AzureRmHDInsightHiveJob**: wird zum Ausführen von HiveQL-Anweisungen verwendet. Mit diesem Cmdlet wird die Abfrage vollständig blockiert, und anschließend werden die Ergebnisse zurückgegeben.
 * **Use-AzureRmHDInsightCluster**: Legt den aktuellen Cluster für die Verwendung mit dem Befehl **Invoke-AzureRmHDInsightHiveJob** fest.
 
@@ -94,7 +94,7 @@ Die folgenden Schritte veranschaulichen, wie diese Cmdlets zum Ausführen eines 
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
-Wenn nach Abschluss des Auftrags keine Informationen zurückgegeben werden, ist während der Verarbeitung möglicherweise ein Fehler aufgetreten. Um Fehlerinformationen für diesen Auftrag anzuzeigen, fügen Sie Folgendes am Ende der Datei **hivejob.ps1** hinzu. Speichern Sie die Datei anschließend, und führen Sie sie erneut aus.
+Wenn keine Informationen zurückgegeben werden, wenn der Auftrag abgeschlossen ist, zeigen Sie die Fehlerprotokolle an. Um Fehlerinformationen für diesen Auftrag anzuzeigen, fügen Sie Folgendes am Ende der Datei **hivejob.ps1** hinzu. Speichern Sie die Datei anschließend, und führen Sie sie erneut aus.
 
 ```powershell
 # Print the output of the Hive job.
@@ -105,7 +105,7 @@ Get-AzureRmHDInsightJobOutput `
         -DisplayOutputType StandardError
 ```
 
-Mit diesem Cmdlet werden die Informationen zurückgegeben, die beim Ausführen des Auftrags in STDERR auf dem Server geschrieben werden.
+Mit diesem Cmdlet werden die Informationen zurückgegeben, die bei der Auftragsverarbeitung in STDERR geschrieben wurden.
 
 ## <a name="summary"></a>Zusammenfassung
 

@@ -12,11 +12,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 04/06/2017
 ms.author: jlembicz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
-ms.openlocfilehash: 9b7adf78271407963ed1d4b34a7760d707b5fc3a
+ms.translationtype: HT
+ms.sourcegitcommit: ce0189706a3493908422df948c4fe5329ea61a32
+ms.openlocfilehash: 510f8abd839c3c025e955aecfdd787ce85540caf
 ms.contentlocale: de-de
-ms.lasthandoff: 06/08/2017
+ms.lasthandoff: 09/05/2017
 
 ---
 
@@ -365,7 +365,7 @@ Alle Indizes in Azure Search werden automatisch in mehrere Shards unterteilt, so
 
 Dies bedeutet, dass eine Relevanzbewertung für identische Dokumente unterschiedliche ausfallen *kann*, wenn diese sich auf unterschiedlichen Shards befinden. Glücklicherweise sind diese Unterschiede vernachlässigbar, wenn im Index eine größere Zahl von Dokumenten enthalten ist, weil die Begriffe gleichmäßiger verteilt sind. Es kann nicht vorausgesagt werden, auf welchem Shard ein Dokument angeordnet wird. Wenn wir aber davon ausgehen, dass sich ein Dokumentschlüssel nicht ändert, wird es immer demselben Shard zugewiesen.
 
-Im Allgemeinen ist die Dokumentbewertung nicht das am besten geeignete Attribut zum Sortieren von Dokumenten, wenn die Stabilität der Sortierung wichtig ist. Wenn beispielsweise zwei Dokumente mit einer identischen Bewertung vorhanden sind, kann nicht garantiert werden, welches bei nachfolgenden Ausführungen derselben Abfrage zuerst erscheint. Die Dokumentbewertung soll nur als allgemeiner Hinweis auf die Relevanz des Dokuments relativ zu anderen Dokumenten des Resultsets dienen.
+Im Allgemeinen ist die Dokumentbewertung nicht das am besten geeignete Attribut zum Sortieren von Dokumenten, wenn die Stabilität der Sortierung wichtig ist. Wenn beispielsweise zwei Dokumente mit einer identischen Bewertung vorhanden sind, kann nicht garantiert werden, welches bei nachfolgenden Ausführungen derselben Abfrage zuerst angezeigt wird. Die Dokumentbewertung soll nur als allgemeiner Hinweis auf die Relevanz des Dokuments relativ zu anderen Dokumenten des Resultsets dienen.
 
 ## <a name="conclusion"></a>Zusammenfassung
 
@@ -391,11 +391,11 @@ In diesem Artikel wurde die Volltextsuche im Rahmen von Azure Search beschrieben
 
 ## <a name="see-also"></a>Weitere Informationen
 
-[Search Documents (Azure Search Service REST API)](https://docs.microsoft.com/rest/api/searchservice/search-documents) (Suchen nach Dokumenten (Azure Search Service-REST-API))
+[Search Documents (Azure Search Service REST API)](https://docs.microsoft.com/rest/api/searchservice/search-documents) (Suchen nach Dokumenten (Azure Search Service-REST-API)) 
 
-[Einfache Abfragesyntax](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)
+[Einfache Abfragesyntax](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) 
 
-[Vollständige Lucene-Abfragesyntax](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)
+[Vollständige Lucene-Abfragesyntax](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) 
 
 [Verarbeiten von Suchergebnissen](https://docs.microsoft.com/azure/search/search-pagination-page-layout)
 

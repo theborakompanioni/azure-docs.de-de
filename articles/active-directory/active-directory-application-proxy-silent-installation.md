@@ -11,35 +11,38 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/10/2017
+ms.date: 08/31/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: 9e28c89d8f64f0ae3d4150017ca544e606075c45
+ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
+ms.openlocfilehash: cf3058832ba656a1a18aea194bf4e5ce4e800e76
 ms.contentlocale: de-de
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 09/01/2017
 
 ---
 
-# <a name="silently-install-the-azure-ad-application-proxy-connector"></a>Installieren des Azure AD-Anwendungsproxyconnectors im Hintergrund
-Sie möchten ein Installationsskript an mehrere Windows-Server senden können oder an Windows-Server, auf denen keine Benutzeroberfläche aktiviert ist. In diesem Thema wird das Erstellen eines Windows PowerShell-Skripts erläutert, das eine unbeaufsichtigte Installation und Registrierung des Azure AD-Anwendungsproxyconnectors ermöglicht.
+# <a name="create-an-unattended-installation-script-for-the-azure-ad-application-proxy-connector"></a>Erstellen eines Skripts für die unbeaufsichtigte Installation für den Azure AD-Anwendungsproxyconnector
+
+In diesem Thema wird das Erstellen eines Windows PowerShell-Skripts erläutert, das eine unbeaufsichtigte Installation und Registrierung des Azure AD-Anwendungsproxyconnectors ermöglicht.
 
 Diese Funktion ist in folgenden Fällen nützlich:
 
-* Installieren des Connectors auf Computern ohne Benutzeroberflächenebene, oder wenn Sie auf dem Computer keine RDP-Verbindung herstellen können.
+* Installieren des Connectors auf Windows-Servern, auf denen keine Benutzeroberfläche aktiviert ist oder auf die nicht per Remotedesktop zugegriffen werden kann.
 * Gleichzeitiges Installieren und Registrieren vieler Connectors.
 * Integrieren der Connectorinstallation und Registrierung als Teil einer anderen Prozedur.
 * Erstellen eines standardmäßigen Serverimages, das die Connectorbits enthält, aber nicht registriert ist.
 
-Um den Anwendungsproxy nutzen zu können, müssen Sie einen als Connector bezeichneten schlanken Windows Server-Dienst in Ihrem Netzwerk installieren. Für das Funktionieren des Anwendungsproxyconnectors muss dieser im Azure AD-Verzeichnis durch einen globalen Administrator mit Kennwort registriert werden. Diese Informationen werden normalerweise während der Installation des Connectors in einem Popupdialogfeld eingegeben. Sie können jedoch mit Windows PowerShell ein Anmeldeinformationsobjekt erstellen, um Ihre Registrierungsinformationen einzugeben. Oder Sie können ein eigenes Token erstellen und verwenden, um Ihre Registrierungsinformationen einzugeben.
+Der [Anwendungsproxyconnector](application-proxy-understand-connectors.md) muss im Azure AD-Verzeichnis mit einem globalen Administrator und einem Kennwort registriert werden. Diese Informationen werden normalerweise bei der Installation des Connectors in einem Popupdialogfeld eingegeben. Der Prozess kann jedoch mithilfe von PowerShell automatisiert werden.
+
+Eine unbeaufsichtigte Installation umfasst zwei Schritte. Erstens: Die Installation des Connectors. Zweitens: Die Registrierung des Connectors bei Azure AD. 
 
 ## <a name="install-the-connector"></a>Installieren des Connectors
-Installieren Sie die Connector-MSIs wie folgt, ohne den Connector zu registrieren:
+Gehen Sie wie folgt vor, um den Connector zu installieren, ohne ihn zu registrieren:
 
 1. Öffnen Sie eine Eingabeaufforderung.
-2. Führen Sie den folgenden Befehl aus, bei dem die Option „/q“ für die unbeaufsichtigte Installation steht. Bei der Installation werden Sie nicht aufgefordert, den Endbenutzer-Lizenzvertrag zu akzeptieren.
+2. Führen Sie den folgenden Befehl aus. („/q“ steht hierbei für die automatische Installation.) Bei einer automatischen Installation werden Sie nicht zum Akzeptieren der Lizenzbedingungen aufgefordert.
    
         AADApplicationProxyConnectorInstaller.exe REGISTERCONNECTOR="false" /q
 
@@ -50,18 +53,18 @@ Es gibt zwei Methoden zum Registrieren des Connectors:
 * Registrieren des Connectors mithilfe eines offline erstellten Tokens
 
 ### <a name="register-the-connector-using-a-windows-powershell-credential-object"></a>Registrieren des Connectors mit einem Windows PowerShell-Anmeldeinformationsobjekt
-1. Erstellen Sie das Windows PowerShell-Anmeldeinformationsobjekt, indem Sie diesen Befehl ausführen. Ersetzen Sie *\<Benutzername\>* und *\<Kennwort\>* durch den Benutzernamen und das Kennwort für Ihr Verzeichnis:
+1. Erstellen Sie ein Windows PowerShell-Anmeldeinformationsobjekt (`$cred`) mit einem Administratorbenutzernamen und einem Kennwort für Ihr Verzeichnis. Führen Sie den folgenden Befehl aus, und ersetzen Sie dabei *\<username\>* und *\<password\>* durch die entsprechenden Werte:
    
         $User = "<username>"
         $PlainPassword = '<password>'
         $SecurePassword = $PlainPassword | ConvertTo-SecureString -AsPlainText -Force
         $cred = New-Object –TypeName System.Management.Automation.PSCredential –ArgumentList $User, $SecurePassword
-2. Wechseln Sie zu **C:\Programme\Microsoft AAD App Proxy Connector**, und führen Sie das Skript mithilfe des zuvor erstellten PowerShell-Anmeldeinformationsobjekts aus. Ersetzen Sie *$cred* durch den Namen des zuvor erstellten PowerShell-Anmeldeinformationsobjekts:
+2. Wechseln Sie zu **C:\Programme\Microsoft AAD App Proxy Connector**, und führen Sie das folgende Skript unter Verwendung des zuvor erstellten Objekts `$cred` aus:
    
         RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft AAD App Proxy Connector\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Credentials -Usercredentials $cred
 
 ### <a name="register-the-connector-using-a-token-created-offline"></a>Registrieren des Connectors mithilfe eines offline erstellten Tokens
-1. Erstellen Sie mithilfe der AuthenticationContext-Klasse ein Offlinetoken, indem Sie die Werte in dem Codeausschnitt verwenden:
+1. Erstellen Sie mithilfe der AuthenticationContext-Klasse ein Offlinetoken unter Verwendung der Werte im folgenden Codeausschnitt:
 
         using System;
         using System.Diagnostics;

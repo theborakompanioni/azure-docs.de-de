@@ -1,6 +1,6 @@
 ---
-title: Codieren eines Medienobjekts mit Media Encoder Standard mithilfe des Azure-Portals | Microsoft Docs
-description: "Dieses Tutorial führt Sie durch die Schritte zur Codierung eines Medienobjekts mit Media Encoder Standard mithilfe des Azure-Portals."
+title: Codieren eines Medienobjekts mit Media Encoder Standard im Azure-Portal | Microsoft-Dokumentation
+description: "Dieses Tutorial führt Sie durch die Schritte zur Codierung eines Medienobjekts mit Media Encoder Standard im Azure-Portal."
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -15,47 +15,48 @@ ms.topic: article
 ms.date: 08/07/2017
 ms.author: juliako
 ms.translationtype: HT
-ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
-ms.openlocfilehash: efe7db8a36273b4755dd057139bb1c673af868d3
+ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
+ms.openlocfilehash: ae5f4fd391cbf62b41d1a65f1d8107cefe3a5df3
 ms.contentlocale: de-de
-ms.lasthandoff: 08/08/2017
+ms.lasthandoff: 09/01/2017
 
 ---
-# <a name="encode-an-asset-using-media-encoder-standard-with-the-azure-portal"></a>Codieren eines Medienobjekts mit Media Encoder Standard mithilfe des Azure-Portals
+# <a name="encode-an-asset-by-using-media-encoder-standard-in-the-azure-portal"></a>Codieren eines Medienobjekts mit Media Encoder Standard im Azure-Portal
+
 > [!NOTE]
-> Sie benötigen ein Azure-Konto, um dieses Lernprogramm auszuführen. Weitere Informationen finden Sie unter [Kostenloses Azure-Testkonto](https://azure.microsoft.com/pricing/free-trial/). 
+> Sie benötigen ein Azure-Konto, um dieses Lernprogramm auszuführen. Weitere Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/). 
 > 
 > 
 
-Bei der Arbeit mit Azure Media Services ist eines der häufigsten Szenarios das Streaming mit adaptiver Bitrate an Clients. Media Services unterstützt die folgenden Technologien mit Adaptive Bitrate Streaming: HTTP Live Streaming (HLS), Smooth Streaming und MPEG DASH. Um die Videos für das Adaptive Bitrate Streaming vorzubereiten, müssen Sie das Quellvideo in Dateien mit mehreren Bitraten codieren. Videos sollten mit dem Encoder **Media Encoder Standard** codiert werden.  
+Bei der Arbeit mit Azure Media Services ist eines der häufigsten Szenarien das Streaming mit adaptiver Bitrate an Clients. Media Services unterstützt die folgenden Streamingtechnologien mit adaptiver Bitrate: Apple HTTP Live Streaming (HLS), Microsoft Smooth Streaming und Dynamic Adaptive Streaming über HTTP (DASH oder MPEG-DASH). Um die Videos für das Streaming mit adaptiver Bitrate vorzubereiten, müssen Sie zuerst das Quellvideo in Dateien mit mehreren Bitraten codieren. Mit Azure Media Encoder Standard können Sie Ihre Videos codieren.  
 
-Media Services bietet auch eine dynamische Paketerstellung, bei der Sie MP4-Dateien mit Mehrfachbitraten in den folgenden Streamingformaten bereitstellen können: MPEG-DASH, HLS und Smooth Streaming. Hierbei ist es nicht erforderlich, diese Streamingformate neu zu packen. Mit der dynamischen Paketerstellung müssen Sie die Dateien nur in einem Speicherformat speichern und bezahlen. Media Services erstellt und verarbeitet die entsprechende Antwort basierend auf Anforderungen von einem Client.
+Media Services bietet eine dynamische Paketerstellung. Mit der dynamischen Paketerstellung können Sie Ihre MP4-Dateien mit mehreren Bitraten in HLS, Smooth Streaming und MPEG-DASH ohne erneutes Packen in diesen Streamingformaten übermitteln. Mit der dynamischen Paketerstellung können Sie die Dateien in einem einzigen Format speichern und zahlen auch nur für dieses eine Format. Media Services reagiert mit der richtigen Antwort auf die Anforderung eines Clients.
 
-Um die dynamische Paketerstellung nutzen zu können, müssen Sie Ihre Quelldatei in einen Satz von MP4-Dateien mit Mehrfachbitrate codieren (die Codierungsschritte werden weiter unten in diesem Abschnitt beschrieben).
+Für die dynamische Paketerstellung müssen Sie Ihre Quelldatei als einen Satz von MP4-Dateien mit Mehrfachbitrate codieren. Die Codierungsschritte werden später in diesem Artikel gezeigt.
 
-Informationen zum Skalieren der Medienverarbeitung finden Sie in [diesem](media-services-portal-scale-media-processing.md) Thema.
+Unter [Ändern Sie den Typ reservierter Einheiten](media-services-portal-scale-media-processing.md) erhalten Sie Informationen über das Skalieren der Medienverarbeitung.
 
-## <a name="encode-with-the-azure-portal"></a>Codieren mithilfe des Azure-Portals
-In diesem Abschnitt werden die Schritte beschrieben, die Sie ausführen können, um Ihre Inhalte mit Media Encoder Standard zu codieren.
+## <a name="encode-in-the-azure-portal"></a>Codieren im Azure-Portal
+
+So codieren Sie Ihre Inhalte mithilfe von Media Encoder Standard:
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihr Azure Media Services-Konto aus.
-2. Wählen Sie im Fenster **Einstellungen** die Option **Assets**.  
-3. Wählen Sie im Fenster **Ressourcen** das Objekt aus, das Sie codieren möchten.
-4. Klicken Sie auf die Schaltfläche **Codieren** .
-5. Wählen Sie im Fenster **Medienobjekt codieren** den Prozessor „Media Encoder Standard“ und eine Voreinstellung aus. Informationen zu Voreinstellungen finden Sie unter [Verwenden von Azure Media Encoder Standard zum automatischen Generieren einer Reihe von Bitraten](media-services-autogen-bitrate-ladder-with-mes.md) und [Aufgabenvoreinstellungen für MES (Media Encoder Standard)](media-services-mes-presets-overview.md). Wenn Sie steuern möchten, welche Codierungsvoreinstellung verwendet werden soll, beachten Sie Folgendes: Es ist wichtig, die Voreinstellung auszuwählen, die sich am besten für Ihr Eingabevideo eignet. Wenn Sie beispielsweise wissen, dass das Eingabevideo eine Auflösung von 1920x1080 Pixel hat, können Sie die Voreinstellung „H264 Multiple Bitrate 1080p“ wählen. Wenn Sie über ein Video mit niedriger Auflösung (640x360) verfügen, sollten Sie nicht die Voreinstellung „H264 Multiple Bitrate 1080p“ verwenden.
+2. Wählen Sie **Einstellungen** > **Ressourcen**. Wählen Sie das Medienobjekt aus, das Sie codieren möchten.
+3. Wählen Sie die Schaltfläche **Codieren** aus.
+4. Wählen Sie im Bereich **Medienobjekt codieren** den Prozessor **Media Encoder Standard** und eine Voreinstellung aus. Informationen zu Voreinstellungen finden Sie unter [Verwenden von Azure Media Encoder Standard zum automatischen Generieren einer Reihe von Bitraten](media-services-autogen-bitrate-ladder-with-mes.md) sowie unter [Aufgabenvoreinstellungen für MES (Media Encoder Standard)](media-services-mes-presets-overview.md). Wählen Sie die Voreinstellung aus, die am besten zu Ihrem Eingabevideo passt. Wenn Sie also beispielsweise wissen, dass das Eingabevideo eine Auflösung von 1920 &#215; 1080 Pixel hat, sollten Sie die Voreinstellung **H264 Multiple Bitrate 1080p** wählen. Bei einem Video mit geringer Auflösung (640 &#215; 360) sollte die Voreinstellung **H264 Multiple Bitrate 1080p** nicht verwendet werden.
    
-   Zur Vereinfachung der Verwaltung besteht die Möglichkeit, den Namen des Ausgabemedienobjekts und den Namen des Auftrags zu bearbeiten.
+   Zur einfacheren Ressourcenverwaltung können Sie den Namen des Ausgabemedienobjekts und den Namen des Auftrags bearbeiten.
    
    ![Codieren von Medienobjekten](./media/media-services-portal-vod-get-started/media-services-encode1.png)
-6. Klicken Sie auf **Erstellen**.
-
-## <a name="next-step"></a>Nächster Schritt
-Sie können den Codierauftragsstatus mithilfe des Azure-Portals überwachen (siehe [diesen](media-services-portal-check-job-progress.md) Artikel).  
+5. Klicken Sie auf **Erstellen**.
 
 ## <a name="media-services-learning-paths"></a>Media Services-Lernpfade
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
+
+## <a name="next-steps"></a>Nächste Schritte
+* [Überwachen des Codierauftragsstatus mithilfe des Azure-Portals](media-services-portal-check-job-progress.md).  
 
 

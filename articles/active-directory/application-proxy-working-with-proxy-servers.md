@@ -11,13 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/04/2017
+ms.date: 08/31/2017
 ms.author: kgremban
+ms.reviewer: harshja
+ms.custom: it-pro
 ms.translationtype: HT
-ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
-ms.openlocfilehash: bdca442755507c4ffe8d43692c5b7f2aa3a746f3
+ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
+ms.openlocfilehash: 47b17c0d81e8597d3125949b26906cc356a9af11
 ms.contentlocale: de-de
-ms.lasthandoff: 08/07/2017
+ms.lasthandoff: 09/01/2017
 
 ---
 
@@ -31,23 +33,11 @@ Zuerst sehen wir uns die folgenden wichtigsten Bereitstellungsszenarien an:
 
 Weitere Informationen zur Funktionsweise von Connectors finden Sie unter [Grundlegendes zu Azure AD-Anwendungsproxyconnectors](application-proxy-understand-connectors.md).
 
-## <a name="configure-the-outbound-proxy"></a>Konfigurieren des Proxys für ausgehenden Datenverkehr
-
-Wenn Sie in Ihrer Umgebung einen Proxy für ausgehenden Datenverkehr verwenden, konfigurieren Sie ihn mithilfe eines Kontos mit geeigneten Berechtigungen. Da das Installationsprogramm im Kontext des Benutzers ausgeführt wird, der die Installation durchführt, können Sie die Konfiguration mit Microsoft Edge oder einem anderen Internetbrowser überprüfen.
-
-Gehen Sie wie folgt vor, um die Proxyeinstellungen in Microsoft Edge zu konfigurieren:
-
-1. Navigieren Sie zu **Einstellungen** > **Erweiterte Einstellungen anzeigen** > **Proxyeinstellungen öffnen** > **Manuelle Proxyeinrichtung**.
-2. Legen Sie **Proxyserver verwenden** auf **Ein** fest, aktivieren Sie das Kontrollkästchen **Für lokale Adressen (Intranet) keinen Proxyserver verwenden**, und ändern Sie dann die Adresse und den Port, um Ihren lokalen Proxyserver anzugeben.
-3. Geben Sie die erforderlichen Proxyeinstellungen ein.
-
-   ![Dialogfeld für Proxyeinstellungen](./media/application-proxy-working-with-proxy-servers/proxy-bypass-local-addresses.png)
-
 ## <a name="bypass-outbound-proxies"></a>Umgehen von Proxys für ausgehenden Datenverkehr
 
-Connectors verfügen über zugrunde liegende Betriebssystemkomponenten, die ausgehende Anforderungen senden. Diese Komponenten versuchen automatisch, einen Proxyserver im Netzwerk zu ermitteln. Hierfür wird die automatische Ermittlung von Webproxys (Web Proxy Auto-Discovery, WPAD) verwendet, wenn dies in der Umgebung aktiviert ist.
+Connectors verfügen über zugrunde liegende Betriebssystemkomponenten, die ausgehende Anforderungen senden. Diese Komponenten versuchen automatisch, mithilfe der automatischen Ermittlung von Webproxys (Web Proxy Auto-Discovery, WPAD) einen Proxyserver im Netzwerk zu finden.
 
-Die Betriebssystemkomponenten versuchen, einen Proxyserver zu finden, indem eine DNS-Suche nach „wpad.domainsuffix“ durchgeführt wird. Wenn die Auflösung im DNS erfolgreich ist, wird eine HTTP-Anforderung für die IP-Adresse für „wpad.dat“ gesendet. Diese Anforderung wird zum Proxykonfigurationsskript in Ihrer Umgebung. Der Connector verwendet dieses Skript zum Auswählen eines ausgehenden Proxyservers. Es kann aber sein, dass der Datenverkehr des Connectors trotzdem nicht fließen kann, weil für den Proxy weitere Konfigurationseinstellungen erforderlich sind.
+Die Betriebssystemkomponenten versuchen, einen Proxyserver zu finden, indem eine DNS-Suche nach „wpad.domainsuffix“ durchgeführt wird. Wenn die Suche im DNS erfolgreich ist, wird eine HTTP-Anforderung für die IP-Adresse für „wpad.dat“ gesendet. Diese Anforderung wird zum Proxykonfigurationsskript in Ihrer Umgebung. Der Connector verwendet dieses Skript zum Auswählen eines ausgehenden Proxyservers. Es kann aber sein, dass der Datenverkehr des Connectors trotzdem nicht fließen kann, weil für den Proxy weitere Konfigurationseinstellungen erforderlich sind.
 
 Sie können den Connector so konfigurieren, dass Ihr lokaler Proxy umgangen wird, um sicherzustellen, dass eine direkte Verbindung mit den Azure-Diensten verwendet wird. Sofern Ihre Netzwerkrichtlinie dies zulässt, empfehlen wir diese Vorgehensweise, da Sie eine Konfiguration weniger verwalten müssen.
 
@@ -67,7 +57,7 @@ Wenn Sie für den Connector die Verwendung des Proxys für ausgehenden Datenverk
   </appSettings>
 </configuration>
 ```
-Um zu erreichen, dass der Proxy auch vom Connectorupdatedienst umgangen wird, nehmen Sie eine ähnliche Änderung an der Datei „ApplicationProxyConnectorUpdaterService.exe.config“ unter „C:\Programme\Microsoft AAD App Proxy Connector Updater“ vor.
+Um zu erreichen, dass der Proxy auch vom Connectorupdatedienst umgangen wird, nehmen Sie eine ähnliche Änderung an der Datei „ApplicationProxyConnectorUpdaterService.exe.config“ vor. Sie finden diese Datei unter „C:\Programme\Microsoft AAD App Proxy Connector Updater“.
 
 Achten Sie darauf, dass Sie Kopien der Originaldateien erstellen, falls Sie auf die CONFIG-Standarddateien zurückgreifen müssen.
 
@@ -81,9 +71,12 @@ Sie können den Connectordatenverkehr so konfigurieren, dass er wie im folgenden
 
 Da es nur um ausgehenden Datenverkehr geht, muss kein eingehender Zugriff durch Ihre Firewalls konfiguriert werden.
 
+>[!NOTE]
+>Der Anwendungsproxy unterstützt keine Authentifizierung gegenüber anderen Proxys. Die Konten des Connector/Updater-Netzwerkdiensts sollten ohne Authentifizierung eine Verbindung mit dem Proxy herstellen können.
+
 ### <a name="step-1-configure-the-connector-and-related-services-to-go-through-the-outbound-proxy"></a>Schritt 1: Konfigurieren der Route über den Proxy für ausgehenden Datenverkehr für den Connector und die dazugehörigen Dienste
 
-Wie oben beschrieben, gilt Folgendes: Wenn WPAD in der Umgebung aktiviert und richtig konfiguriert ist, kann der Connector den Proxyserver für ausgehenden Datenverkehr automatisch ermitteln und versuchen, ihn zu verwenden. Sie können den Connector aber auch explizit so konfigurieren, dass ein Proxy für ausgehenden Datenverkehr verwendet wird.
+Wenn WPAD in der Umgebung aktiviert und richtig konfiguriert ist, kann der Connector den Proxyserver für ausgehenden Datenverkehr automatisch ermitteln und versuchen, ihn zu verwenden. Sie können den Connector aber auch explizit so konfigurieren, dass ein Proxy für ausgehenden Datenverkehr verwendet wird.
 
 Bearbeiten Sie hierfür die Datei „C:\Programme\Microsoft AAD App Proxy Connector\ApplicationProxyConnectorService.exe.config“, und fügen Sie den Abschnitt *system.net* aus dem folgenden Codebeispiel hinzu. Legen Sie *proxyserver:8080* auf den Namen bzw. auf die IP-Adresse Ihres lokalen Proxyservers sowie auf den Port fest, an dem gelauscht wird.
 
@@ -104,7 +97,7 @@ Bearbeiten Sie hierfür die Datei „C:\Programme\Microsoft AAD App Proxy Connec
 </configuration>
 ```
 
-Konfigurieren Sie anschließend den Connectorupdatedienst für die Verwendung des Proxys, indem Sie eine ähnliche Änderung an der Datei unter „C:\Programme\Microsoft AAD App Proxy Connector Updater\ApplicationProxyConnectorUpdaterService.exe.config“ vornehmen.
+Konfigurieren Sie anschließend den Connectorupdatedienst für die Verwendung des Proxys, indem Sie eine ähnliche Änderung an der Datei „C:\Programme\Microsoft AAD App Proxy Connector Updater\ApplicationProxyConnectorUpdaterService.exe.config“ vornehmen.
 
 ### <a name="step-2-configure-the-proxy-to-allow-traffic-from-the-connector-and-related-services-to-flow-through"></a>Schritt 2: Konfigurieren des Proxys für das Akzeptieren von Datenverkehr vom Connector und den dazugehörigen Diensten
 
@@ -128,7 +121,7 @@ Lassen Sie für die erste Registrierung den Zugriff auf die folgenden Endpunkte 
 Wenn Sie die Konnektivität nicht über den FQDN zulassen können und stattdessen IP-Adressbereiche angeben müssen, verwenden Sie diese Optionen:
 
 * Lassen Sie für den Connector den ausgehenden Zugriff für alle Ziele zu.
-* Lassen Sie für den Connector den ausgehenden Zugriff auf [IP-Bereiche für das Azure-Datencenter](https://www.microsoft.com/en-gb/download/details.aspx?id=41653) zu. Die Schwierigkeit besteht bei der Verwendung der Liste mit den IP-Bereichen für Azure-Datencenter darin, dass sie wöchentlich aktualisiert wird. Sie müssen einen Prozess implementieren, mit dem sichergestellt wird, dass Ihre Zugriffsregeln entsprechend aktualisiert werden.
+* Lassen Sie für den Connector den ausgehenden Zugriff auf alle [IP-Bereiche des Azure-Rechenzentrums](https://www.microsoft.com/en-gb/download/details.aspx?id=41653) zu. Die Schwierigkeit besteht bei der Verwendung der Liste mit den IP-Bereichen für Azure-Datencenter darin, dass sie wöchentlich aktualisiert wird. Sie müssen einen Prozess implementieren, mit dem sichergestellt wird, dass Ihre Zugriffsregeln entsprechend aktualisiert werden. Wenn nur ein Teil der IP-Adressen verfügbar sind, funktioniert Ihre Konfiguration möglicherweise nicht.
 
 #### <a name="proxy-authentication"></a>Proxyauthentifizierung
 
@@ -141,88 +134,59 @@ Der Connector stellt ausgehende SSL-basierte Verbindungen mit der CONNECT-Method
 >[!NOTE]
 >Wenn die Service Bus-Daten per HTTPS gesendet werden, wird Port 443 verwendet. Standardmäßig wird für Service Bus aber versucht, direkte TCP-Verbindungen herzustellen, und HTTPS wird nur verwendet, wenn für die direkte Verbindung ein Fehler auftritt.
 
-Damit der Service Bus-Datenverkehr auch über den Proxyserver für ausgehenden Datenverkehr gesendet wird, müssen Sie sicherstellen, dass der Connector keine direkte Verbindung mit den Azure-Diensten für die Ports 9350, 9352 und 5671 herstellen kann.
-
 #### <a name="ssl-inspection"></a>SSL-Überprüfung
-Verwenden Sie die SSL-Überprüfung nicht für den Connectordatenverkehr, da dies zu Problemen für den Connectordatenverkehr führt.
+Verwenden Sie die SSL-Überprüfung nicht für den Connectordatenverkehr, da dies zu Problemen für den Connectordatenverkehr führt. Der Connector verwendet ein Zertifikat zur Authentifizierung beim Anwendungsproxydienst, und dieses Zertifikat kann während der SSL-Überprüfung verloren gehen. 
 
 ## <a name="troubleshoot-connector-proxy-problems-and-service-connectivity-issues"></a>Problembehandlung für Proxyprobleme des Connectors und Verbindungsprobleme von Diensten
 Sie sollten jetzt verfolgen können, dass der gesamte Datenverkehr über den Proxy fließt. Bei Problemen helfen Ihnen die folgenden Informationen zur Problembehandlung weiter.
 
-Die beste Möglichkeit zur Identifizierung und Behebung von Problemen mit der Connectorkonnektivität ist die Erstellung einer Netzwerkerfassung für den Connectordienst, während dieser gestartet wird. Da dies eine anspruchsvolle Aufgabe sein kann, erhalten Sie hier einige kurze Tipps zum Erfassen und Filtern von Netzwerkablaufverfolgungen.
+Die beste Möglichkeit zur Identifizierung und Behebung von Problemen mit der Connectorkonnektivität ist die Erstellung einer Netzwerkerfassung beim Starten des Connectordiensts. Im Folgenden finden Sie einige Tipps zum Erfassen und Filtern von Netzwerkablaufverfolgungen.
 
-Sie können ein Überwachungstool Ihrer Wahl verwenden. Für diesen Artikel haben wir Microsoft Network Monitor 3.4 genutzt. Sie können es von der [Microsoft-Website](https://www.microsoft.com/download/details.aspx?id=4865) herunterladen.
+Sie können ein Überwachungstool Ihrer Wahl verwenden. Für diesen Artikel haben wir Microsoft Message Analyzer genutzt. Sie können es von der [Microsoft-Website](https://www.microsoft.com/download/details.aspx?id=44226) herunterladen.
 
-Die Beispiele und Filter in den folgenden Abschnitten gelten für den Netzwerkmonitor, aber die Vorgehensweise kann auf alle Analysetools angewendet werden.
-
-### <a name="take-a-capture-by-using-network-monitor"></a>Durchführen einer Erfassung mit dem Netzwerkmonitor
-
-Gehen Sie wie folgt vor, eine Erfassung zu starten:
-
-1. Öffnen Sie den Netzwerkmonitor, und klicken Sie auf **New Capture** (Neue Erfassung).
-2. Klicken Sie auf die Schaltfläche **Start** (Starten).
-
-   ![Fenster „Netzwerkmonitor“](./media/application-proxy-working-with-proxy-servers/network-capture.png)
-
-Klicken Sie nach Abschluss einer Erfassung auf die Schaltfläche **Stop** (Beenden), um den Vorgang zu beenden.
+Die folgenden Beispiele beziehen sich speziell auf Message Analyzer. Die Prinzipien können aber auf alle Analysetools angewendet werden.
 
 ### <a name="take-a-capture-of-connector-traffic"></a>Durchführen einer Erfassung des Connectordatenverkehrs
 
 Führen Sie die folgenden Schritte aus, um die erste Problembehandlung durchzuführen:
 
 1. Beenden Sie den Azure AD-Anwendungsproxy-Connectordienst über „services.msc“.
-2. Starten Sie die Netzwerkerfassung.
-3. Starten Sie den Azure AD-Anwendungsproxy-Connectordienst.
-4. Beenden Sie die Netzwerkerfassung.
 
    ![Azure AD-Anwendungsproxy-Connectordienst in „services.msc“](./media/application-proxy-working-with-proxy-servers/services-local.png)
 
-### <a name="look-at-the-requests-from-the-connector-to-the-proxy-server"></a>Anzeigen der Anforderungen vom Connector zum Proxydienst
+2. Führen Sie Message Analyzer als Administrator aus.
+3. Wählen Sie **Start local trace** (Lokale Ablaufverfolgung starten) aus.
 
-Nachdem Sie nun eine Netzwerkerfassung erstellt haben, können Sie sie filtern. Der Schlüssel bei der Anzeige der Ablaufverfolgung ist das Verständnis, wie die Erfassung gefiltert werden muss.
+   ![Starten der Netzwerkerfassung](./media/application-proxy-working-with-proxy-servers/start-local-trace.png)
 
-Dies ist ein geeigneter Filter (wobei 8080 der Proxydienstport ist):
+3. Starten Sie den Azure AD-Anwendungsproxy-Connectordienst.
+4. Beenden Sie die Netzwerkerfassung.
 
-**(http.Request or http.Response) and tcp.port==8080**
+   ![Beenden der Netzwerkerfassung](./media/application-proxy-working-with-proxy-servers/stop-trace.png)
 
-Wenn Sie diesen Filter im Fenster **Anzeigefilter** eingeben und **Übernehmen** auswählen, wird der erfasste Datenverkehr basierend auf diesem Filter gefiltert.
+### <a name="check-if-the-connector-traffic-bypasses-outbound-proxies"></a>Überprüfen Sie, ob der Connectordatenverkehr ausgehende Proxys umgeht.
 
-Mit dem obigen Filter werden nur die HTTP-Anforderungen und -Antworten zum bzw. vom Proxyport angezeigt. Für einen Connectorstart, bei dem der Connector für die Verwendung eines Proxyservers konfiguriert ist, wird mit dem Filter beispielsweise in etwa Folgendes angezeigt:
+Wenn Sie dem Anwendungsproxyconnector für die Umgehung der Proxyserver und direkte Verbindungen mit dem Anwendungsproxydienst konfiguriert haben, sehen Sie sich die Netzwerkerfassung für fehlerhafte TCP-Verbindungsversuche an. 
 
- ![Beispiel für Liste mit gefilterten HTTP-Anforderungen und -Antworten](./media/application-proxy-working-with-proxy-servers/http-requests.png)
-
-Sie suchen jetzt genau nach den CONNECT-Anforderungen zur Kommunikation mit dem Proxyserver. Bei erfolgreicher Durchführung erhalten Sie die Antwort „HTTP OK (200)“.
-
-Wenn andere Antwortcodes angezeigt werden, z.B. 407 oder 502, ist für den Proxy eine Authentifizierung erforderlich, oder der Datenverkehr wird aus einem anderen Grund nicht zugelassen. An diesem Punkt sollten Sie Ihr Proxyserver-Supportteam zu Rate ziehen.
-
-### <a name="identify-failed-tcp-connection-attempts"></a>Identifizieren von fehlgeschlagenen TCP-Verbindungsversuchen
-
-Ein anderes häufiges Szenario, das für Sie ggf. interessant ist, lautet: Der Connector versucht, eine direkte Verbindung herzustellen, ist damit aber nicht erfolgreich.
-
-Ein weiterer Filter des Netzwerkmonitors, mit dem Sie dieses Problem leicht identifizieren können, lautet:
-
-**property.TCPSynRetransmit**
+Verwenden Sie den Filter von Message Analyzer, um diese Versuche zu identifizieren. Geben Sie `property.TCPSynRetransmit` in das Filterfeld ein, und wählen Sie **Anwenden** aus. 
 
 Ein SYN-Paket ist das erste Paket, das zum Herstellen einer TCP-Verbindung gesendet wird. Falls von diesem Paket keine Antwort zurückgegeben wird, wird ein neuer Versuch für den SYN-Vorgang gestartet. Sie können den obigen Filter nutzen, um alle erneut übertragenen SYN-Vorgänge anzuzeigen. Anschließend können Sie prüfen, ob diese SYN-Vorgänge Datenverkehr betreffen, der mit dem Connector zusammenhängt.
 
-Mit dem folgenden Beispiel wird ein fehlgeschlagener Verbindungsversuch für Service Bus-Port 9352 veranschaulicht:
+Wenn Sie erwarten, dass der Connector direkte Verbindungen mit den Azure-Diensten herstellt, sind Antworten von SynRetransmit auf Port 443 ein eindeutiger Hinweis darauf, dass ein Problem mit dem Netzwerk oder der Firewall besteht.
 
- ![Beispielantwort für einen nicht erfolgreichen Verbindungsversuch](./media/application-proxy-working-with-proxy-servers/failed-connection-attempt.png)
+### <a name="check-if-the-connector-traffic-uses-outbound-proxies"></a>Überprüfen Sie, ob der Connectordatenverkehr ausgehende Proxys verwendet.
 
-Wenn eine Antwort der oben angegebenen Art angezeigt wird, versucht der Connector, direkt mit dem Azure Service Bus-Dienst zu kommunizieren. Falls Sie erwarten, dass der Connector direkte Verbindungen mit den Azure-Diensten herstellt, ist diese Antwort ein eindeutiger Hinweis darauf, dass ein Problem mit dem Netzwerk oder der Firewall besteht.
+Wenn Sie den Anwendungsproxyconnector so konfiguriert haben, dass der Datenverkehr die Proxyserver durchläuft, suchen Sie nach fehlerhaften HTTPS-Verbindungen mit Ihrem Proxy. 
 
->[!NOTE]
->Wenn Sie die Nutzung eines Proxyservers konfiguriert haben, kann diese Antwort Folgendes bedeuten: Service Bus versucht, eine direkte TCP-Verbindung herzustellen, bevor der Ansatz gewechselt und versucht wird, eine Verbindung per HTTPS herzustellen.
->
+Um die Netzwerkerfassung für diese Verbindungsversuche zu filtern, geben Sie im Filter von Message Analyzer `(https.Request or https.Response) and tcp.port==8080` ein, und ersetzen Sie dabei 8080 durch Ihren Dienstproxyport. Wählen Sie **Anwenden** aus, um die Filterergebnisse anzuzeigen. 
 
-Die Analyse per Netzwerkablaufverfolgung ist nicht für alle Fälle geeignet. Es kann aber ein wertvolles Tool sein, wenn es darum geht, schnell Informationen zu den Abläufen in Ihrem Netzwerk zu erhalten.
+Mit dem obigen Filter werden nur die HTTPS-Anforderungen und -Antworten zum bzw. vom Proxyport angezeigt. Sie suchen nach den CONNECT-Anforderungen, die eine Kommunikation mit dem Proxyserver anzeigen. Bei erfolgreicher Durchführung erhalten Sie die Antwort „HTTP OK (200)“.
 
-Falls Sie weiterhin Probleme mit der Connectorkonnektivität haben, erstellen Sie ein Ticket für unser Supportteam. Das Team kann Ihnen dann bei der weiteren Problembehandlung behilflich sein.
-
-Informationen zum Beheben von Fehlern mit dem Anwendungsproxyconnector finden Sie unter [Problembehandlung von Anwendungsproxys](https://azure.microsoft.com/documentation/articles/active-directory-application-proxy-troubleshoot).
+Wenn andere Antwortcodes angezeigt werden, z.B. 407 oder 502, weist dies darauf hin, dass für den Proxy eine Authentifizierung erforderlich ist oder dass der Datenverkehr aus einem anderen Grund nicht zugelassen wird. An diesem Punkt sollten Sie Ihr Proxyserver-Supportteam zu Rate ziehen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Grundlegendes zu Azure AD-Anwendungsproxyconnectors](application-proxy-understand-connectors.md)<br>
-[Installieren des Azure AD-Anwendungsproxyconnectors im Hintergrund](active-directory-application-proxy-silent-installation.md)
+- [Grundlegendes zu Azure AD-Anwendungsproxyconnectors](application-proxy-understand-connectors.md)
+
+- Wenn Probleme mit der Connectorkonnektivität bestehen, stellen Sie Ihre Frage bitte im [Azure Active Directory-Forum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD&forum=WindowsAzureAD), oder erstellen Sie ein Ticket bei unserem Supportteam.
 

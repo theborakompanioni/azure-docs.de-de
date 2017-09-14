@@ -12,14 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/14/2017
+ms.date: 08/30/2017
 ms.author: ryanwi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 4a5ccfa671e6780a3d4305d4e3238c55de8e577c
+ms.translationtype: HT
+ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
+ms.openlocfilehash: 1db13c30e2ec1de62d5103f85b4181a5750403c5
 ms.contentlocale: de-de
-ms.lasthandoff: 07/08/2017
-
+ms.lasthandoff: 09/01/2017
 
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Sie möchten sich über Service Fabric informieren?
@@ -58,7 +57,7 @@ Nach der Erstellung einer benannten Anwendung können Sie eine Instanz eines Die
 
 Es gibt zwei Arten von Diensten: zustandslos und zustandsbehaftet. Zustandslose Dienste können den persistente Zustand in einem externen Speicherdienst wie Azure Storage, Azure SQL-Datenbank oder Azure Cosmos DB speichern. Wenn der Dienst über keinen persistenten Speicher verfügt, verwenden Sie einen zustandslosen Dienst. Bei einem zustandsbehafteten Dienst wird Service Fabric verwendet, um den Dienstzustand über die Programmiermodelle mit Reliable Collections oder Reliable Actors zu verwalten. 
 
-Bei der Erstellung eines benannten Diensts geben Sie ein Partitionsschema an. Dienste mit großen Zustandsdatenmengen teilen die Daten auf verschiedene Partitionen auf. Jede Partition ist für einen Teil der gesamten Zustands des Diensts verantwortlich, der auf die Knoten des Clusters verteilt wird. Innerhalb einer Partition besitzen zustandslose benannte Dienste Instanzen, wohingegen zustandsbehaftete benannte Dienste Replikate besitzen. In der Regel verfügen zustandslose benannte Dienste immer nur über eine einzelne Partition, da sie keinen internen Zustand aufweisen. Zustandsbehaftete benannte Dienste behalten ihren Zustand in Replikaten bei, und jede Partition verfügt über eine eigene Replikatgruppe. Lese- und Schreibvorgänge erfolgen im selben Replikat (primäres Replikat). Änderungen des Zustands aufgrund von Schreibvorgängen werden in mehreren anderen Replikaten (aktive sekundäre Replikate) repliziert. 
+Bei der Erstellung eines benannten Diensts geben Sie ein Partitionsschema an. Dienste mit großen Zustandsdatenmengen teilen die Daten auf verschiedene Partitionen auf. Jede Partition ist für einen Teil der gesamten Zustands des Diensts verantwortlich, der auf die Knoten des Clusters verteilt wird.  
 
 Die folgende schematische Darstellung zeigt die Beziehung zwischen Anwendungen und Dienstinstanzen, Partitionen und Replikaten.
 
@@ -94,7 +93,10 @@ Standardmäßig werden Dienste von Service Fabric als Prozesse bereitgestellt un
 Das [Reliable Actor](service-fabric-reliable-actors-introduction.md)-Anwendungsframework setzt auf Reliable Services auf und implementiert das „Virtual Actor“-Muster basierend auf dem Entwurfsmuster für Akteure. Das Reliable Actor-Framework verwendet unabhängige Compute- und Statuseinheiten mit Singlethreadausführung, die als Akteure bezeichnet werden. Das Reliable Actor-Framework bietet integrierte Kommunikation für Akteure sowie voreingestellte Statuspersistenz und horizontal hochskalierbare Konfigurationen.
 
 ### <a name="aspnet-core"></a>ASP.NET Core
-Service Fabric integriert mit [ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md) ein erstklassiges Programmiermodell zum Erstellen von Web- und API-Anwendungen.
+Service Fabric integriert mit [ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md) ein erstklassiges Programmiermodell zum Erstellen von Web- und API-Anwendungen.  ASP.NET Core kann in Service Fabric auf zwei unterschiedliche Arten verwendet werden:
+
+- Gehostet als ausführbare Gastanwendungsdatei. Diese Methode wird hauptsächlich verwendet, um bereits vorhandene ASP.NET Core-Anwendungen ohne Codeänderungen unter Service Fabric auszuführen.
+- Im Rahmen eines zuverlässigen Diensts. Diese Methode ermöglicht eine bessere Integration in die Service Fabric-Laufzeit und die Verwendung zustandsbehafteter ASP.NET Core-Dienste.
 
 ### <a name="guest-executables"></a>Ausführbare Gastanwendungsdateien
 Bei einer [ausführbaren Gastanwendungsdatei](service-fabric-deploy-existing-app.md) handelt es sich um eine vorhandene, beliebig ausführbare Datei (die in einer beliebigen Sprache geschrieben sein kann), die neben anderen Diensten auf einem Service Fabric-Cluster gehostet wird. Ausführbare Gastanwendungsdateien lassen sich nicht direkt in Service Fabric-APIs integrieren. Sie profitieren jedoch weiterhin von den angebotenen Features der Plattform. Hierzu zählen beispielsweise Integritäts- und Auslastungsberichte und die Auffindbarkeit von Diensten durch Aufrufen von REST-APIs. Außerdem wird der Anwendungslebenszyklus vollständig unterstützt. 

@@ -16,15 +16,26 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: cjiang
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
-ms.openlocfilehash: 647509ea36e487aca5db661adb3268e845988f78
+ms.translationtype: HT
+ms.sourcegitcommit: 763bc597bdfc40395511cdd9d797e5c7aaad0fdf
+ms.openlocfilehash: af8a7bbc4bf007dfa5bef7ceb9cf940ad752239a
 ms.contentlocale: de-de
-ms.lasthandoff: 07/06/2017
+ms.lasthandoff: 09/06/2017
 
 ---
 # <a name="troubleshoot-sign-up-issues-for-azure"></a>Registrierungsprobleme für Azure behandeln
 Wenn Sie sich nicht für Azure registrieren können, verwenden Sie die in diesem Artikel behandelten Tipps, um häufige Probleme zu beheben. Wenn bei der Registrierung ein Problem mit Ihrer Kreditkarte auftritt, lesen Sie [Kreditkarte oder Debitkarte wird abgelehnt, wenn ich versuche, mich bei Azure zu registrieren](billing-credit-card-fails-during-azure-sign-up.md). Wenn Sie über ein Azure-Konto verfügen, sich aber nicht anmelden können, lesen Sie [Ich kann mich nicht anmelden, um mein Azure-Abonnement zu verwalten](billing-cannot-login-subscription.md).
+
+## <a name="error-we-cannot-proceed-with-signup-due-to-an-issue-with-your-account-please-contact-billing-support"></a>Fehler „Die Anmeldung kann aufgrund eines Problems mit Ihrem Konto nicht fortgesetzt werden. Wenden Sie sich an den Abrechnungssupport.“ 
+
+Gehen Sie folgendermaßen vor, um das Problem zu beheben:
+
+1. Melden Sie sich mit den Anmeldeinformationen des Kontoadministrators beim [Azure-Kontocenter](https://account.azure.com) an. 
+2. Klicken Sie auf **Profil** und dann auf **Details bearbeiten**.
+3. Stellen Sie sicher, dass alle Adressfelder ausgefüllt und gültig sind. 
+4. Vergewissern Sie sich bei der Registrierung des Azure-Abonnements, dass die beim Registrieren der Kreditkarte eingegebene Rechnungsadresse mit den Angaben der Bank übereinstimmt.
+
+Wenn die Fehlermeldung weiterhin angezeigt wird, verwenden Sie einen anderen Browser für die Registrierung.
 
 ## <a name="progress-bar-hangs-in-identity-verification-by-card-section"></a>Statusanzeige hängt im Abschnitt „Identity verification by card“ (Überprüfung der Identität mit Kreditkarte)
 

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/23/2017
+ms.date: 08/23/2017
 ms.author: genli
 ms.translationtype: HT
-ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
-ms.openlocfilehash: de37c8ffd47a2b8e201d18e3a20b5325d528ad59
+ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
+ms.openlocfilehash: f6e068e60e8c7b3b095e10cb7e109eb68a483de4
 ms.contentlocale: de-de
-ms.lasthandoff: 07/12/2017
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Problembehandlung: Azure Punkt-zu-Standort-Verbindungsprobleme
@@ -39,9 +39,17 @@ Dieses Problem tritt auf, wenn das Clientzertifikat in **Zertifikate – Aktuell
 
 ### <a name="solution"></a>Lösung
 
-Stellen Sie sicher, dass das Clientzertifikat im folgenden Speicherort im Zertifikatspeicher (Certmgr.msc) installiert ist:
- 
-**Zertifikate – Aktueller Benutzer\Eigene Zertifikate\Zertifikate**
+Gehen Sie folgendermaßen vor, um dieses Problem zu beheben:
+
+1. Stellen Sie sicher, dass sich die folgenden Zertifikate im richtigen Speicherort befinden:
+
+    | Zertifikat | Ort |
+    | ------------- | ------------- |
+    | AzureClient.pfx  | Aktueller Benutzer\Eigene Zertifikate\Zertifikate |
+    | Azuregateway-*GUID*.cloudapp.net  | Aktueller Benutzer\Vertrauenswürdige Stammzertifizierungsstellen|
+    | AzureGateway-*GUID*.cloudapp.net, AzureRoot.cer    | Lokaler Computer\Vertrauenswürdige Stammzertifizierungsstellen|
+
+2. Navigieren Sie zu „Users\<Benutzername>\AppData\Roaming\Microsoft\Network\Connections\Cm\<GUID>“, und installieren Sie manuell das Zertifikat (CER-Datei) im Computerspeicher des Benutzers.
 
 Weitere Informationen zum Installieren des Clientzertifikats finden Sie unter [Generieren und Exportieren von Zertifikaten für Punkt-zu-Standort-Verbindungen mithilfe von PowerShell](vpn-gateway-certificates-point-to-site.md).
 
@@ -129,7 +137,7 @@ Extrahieren Sie das VPN-Clientkonfigurationspaket, und suchen Sie nach der CER-D
 1. Öffnen Sie „mmc.exe“.
 2. Fügen Sie das **Zertifikate** -Snap-in hinzu.
 3. Wählen Sie das **Computer** -Konto für den lokalen Computer aus.
-4. Klicken Sie mit der rechten Maustaste auf den Knoten **Vertrauenswürdige Stammzertifizierungsstellen**. Klicken Sie auf **All-Task** (Alle Aufgaben) >  **Importieren**, und suchen Sie nach der CER-Datei, die Sie aus dem VPN-Clientkonfigurationspaket extrahiert haben.
+4. Klicken Sie mit der rechten Maustaste auf den Knoten **Vertrauenswürdige Stammzertifizierungsstellen**. Klicken Sie auf **All-Task** (Alle Aufgaben) > **Importieren**, und suchen Sie nach der CER-Datei, die Sie aus dem VPN-Clientkonfigurationspaket extrahiert haben.
 5. Starten Sie den Computer neu. 
 6. Versuchen Sie eine erneute Installation des VPN-Clients.
 
@@ -139,7 +147,7 @@ Extrahieren Sie das VPN-Clientkonfigurationspaket, und suchen Sie nach der CER-D
 
 Wenn Sie versuchen, die Änderungen für das VPN-Gateway im Azure-Portal zu speichern, erhalten Sie die folgende Fehlermeldung:
 
-**Fehler beim Speichern des Gateways für virtuelle Netzwerke &lt;*Gatewayname*&gt;. Die Daten für die &lt;*Zertifikat-ID*&gt; des Zertifikats sind ungültig.**
+*Fehler beim Speichern des Gateways für virtuelle Netzwerke *Gatewayname&lt;**&gt;. Die Daten für die &lt;*Zertifikat-ID*&gt; des Zertifikats sind ungültig.**
 
 ### <a name="cause"></a>Ursache 
 
@@ -174,7 +182,7 @@ Stellen Sie sicher, dass die Daten im Zertifikat keine ungültigen Zeichen wie Z
 
 Wenn Sie versuchen, die Änderungen für das VPN-Gateway im Azure-Portal zu speichern, erhalten Sie die folgende Fehlermeldung: 
 
-**Fehler beim Speichern des Gateways für virtuelle Netzwerke &lt;*Gatewayname*&gt;. Fehler: Der Ressourcenname &lt;*Zertifikatname, den Sie versuchen hochzuladen,*&gt; ist ungültig**.
+*Fehler beim Speichern des Gateways für virtuelle Netzwerke *Gatewayname&lt;**&gt;. Fehler: Der Ressourcenname &lt;*Zertifikatname, den Sie versuchen hochzuladen,*&gt; ist ungültig.
 
 ### <a name="cause"></a>Ursache
 

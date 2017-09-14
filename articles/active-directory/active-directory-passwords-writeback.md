@@ -16,16 +16,16 @@ ms.topic: article
 ms.date: 08/28/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: 7783d0fc30b4b7d098a89595771993b33fb0aa97
+ms.translationtype: HT
+ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
+ms.openlocfilehash: e460e734973622fb0d5745adfc4c1aa0178dd22e
 ms.contentlocale: de-de
-ms.lasthandoff: 07/06/2017
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="password-writeback-overview"></a>Übersicht über die Kennwortrückschreibung
 
-Über Kennwortrückschreiben können Sie Azure AD so konfigurieren, dass Kennwörter in das lokale Active Directory zurückgeschrieben werden. Auf diese Weise ist es nicht erforderlich, eine komplizierte lokale Self-Service-Lösung für das Zurücksetzen von Kennwörtern einzurichten und zu verwalten. Gleichzeitig bietet diese Funktion Ihren Benutzern eine bequeme, cloudbasierte Möglichkeit zum Zurücksetzen ihrer lokalen Kennwörter – unabhängig davon, wo sie sich gerade befinden. Kennwortrückschreiben ist eine Komponente von [Azure Active Directory Connect](./connect/active-directory-aadconnect.md), die von den aktuellen Abonnenten von [Azure Active Directory Premium-Editionen](active-directory-editions.md) aktiviert und verwendet werden kann.
+Über Kennwortrückschreiben können Sie Azure AD so konfigurieren, dass Kennwörter in die lokale Active Directory-Instanz zurückgeschrieben werden. Auf diese Weise ist es nicht erforderlich, eine komplizierte lokale Self-Service-Lösung für das Zurücksetzen von Kennwörtern einzurichten und zu verwalten. Gleichzeitig bietet diese Funktion Ihren Benutzern eine bequeme, cloudbasierte Möglichkeit zum Zurücksetzen ihrer lokalen Kennwörter – unabhängig davon, wo sie sich gerade befinden. Kennwortrückschreiben ist eine Komponente von [Azure Active Directory Connect](./connect/active-directory-aadconnect.md), die von den aktuellen Abonnenten von [Azure Active Directory Premium-Editionen](active-directory-editions.md) aktiviert und verwendet werden kann.
 
 Kennwortrückschreiben bietet die folgenden Features:
 

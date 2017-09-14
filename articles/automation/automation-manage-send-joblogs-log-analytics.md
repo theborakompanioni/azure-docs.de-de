@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/02/2017
+ms.date: 08/31/2017
 ms.author: magoedte
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
-ms.openlocfilehash: 2c0ca7fc332963e5a5db3c20c400ed877ae0cc54
+ms.translationtype: HT
+ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
+ms.openlocfilehash: 878149521edc969dc3e15e198ff3b2ead978cf86
 ms.contentlocale: de-de
-ms.lasthandoff: 06/03/2017
-
+ms.lasthandoff: 09/02/2017
 
 ---
 # <a name="forward-job-status-and-job-streams-from-automation-to-log-analytics-oms"></a>Weiterleiten von Auftragsstatus und Auftragsdatenströmen von Automation an Log Analytics (OMS)
@@ -75,7 +74,7 @@ Switch ($Environment)
 # if you have one Log Analytics workspace you can use the following command to get the resource id of the workspace
 $workspaceId = (Get-AzureRmOperationalInsightsWorkspace).ResourceId
 
-$automationAccountId = "/SUBSCRIPTIONS/ec11ca60-1234-491e-5678-0ea07feae25c/RESOURCEGROUPS/DEMO/PROVIDERS/MICROSOFT.AUTOMATION/ACCOUNTS/DEMO" 
+$automationAccountId = "/SUBSCRIPTIONS/ec11ca67-1234-421e-5678-c25/RESOURCEGROUPS/DEMO/PROVIDERS/MICROSOFT.AUTOMATION/ACCOUNTS/DEMO" 
 
 Set-AzureRmDiagnosticSetting -ResourceId $automationAccountId -WorkspaceId $workspaceId -Enabled $true
 
@@ -106,7 +105,7 @@ Switch ($Environment)
 # if you have one Log Analytics workspace you can use the following command to get the resource id of the workspace
 $workspaceId = (Get-AzureRmOperationalInsightsWorkspace).ResourceId
 
-$automationAccountId = "/SUBSCRIPTIONS/ec11ca60-1234-491e-5678-0ea07feae25c/RESOURCEGROUPS/DEMO/PROVIDERS/MICROSOFT.AUTOMATION/ACCOUNTS/DEMO" 
+$automationAccountId = "/SUBSCRIPTIONS/ec11ca67-1234-421e-5678-c25/RESOURCEGROUPS/DEMO/PROVIDERS/MICROSOFT.AUTOMATION/ACCOUNTS/DEMO" 
 
 Get-AzureRmDiagnosticSetting -ResourceId $automationAccountId
 ```
@@ -127,7 +126,7 @@ Die Diagnose von Azure Automation erstellt zwei Typen von Datensätzen in Log An
 | Caller_s |Der Benutzer oder das System, von dem der Vorgang initiiert wurde.  Mögliche Werte sind entweder eine E-Mail-Adresse oder, bei geplanten Aufträgen, ein System. |
 | Tenant_g | GUID, die den Mandanten für den Aufrufer identifiziert. |
 | JobId_g |Die GUID, bei der es sich um die ID des Runbookauftrags handelt. |
-| ResultType |Der Status des Runbookauftrags.  Mögliche Werte:<br>- Gestartet<br>- Beendet<br>- Ausgesetzt<br>- Fehler<br>- Abgeschlossen |
+| ResultType |Der Status des Runbookauftrags.  Mögliche Werte:<br>- Neu<br>- Gestartet<br>- Beendet<br>- Ausgesetzt<br>- Fehler<br>- Abgeschlossen |
 | Kategorie | Klassifizierung des Datentyps.  Für Automation lautet der Wert „JobLogs“. |
 | NameVorgang | Gibt den Typ des in Azure ausgeführten Vorgangs an.  Für Automation lautet der Wert „Job“. |
 | Ressource | Name des Automation-Kontos |

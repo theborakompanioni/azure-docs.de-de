@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/17/2017
+ms.date: 9/06/2017
 ms.author: parja
 ms.translationtype: HT
-ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
-ms.openlocfilehash: 17500b572a0e92c1c233c6967840a5b6d96e21cb
+ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
+ms.openlocfilehash: a2b883ad010b93ec83c273988493412c06597641
 ms.contentlocale: de-de
-ms.lasthandoff: 08/17/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="azure-ad-b2c-extensions-app"></a>Azure AD B2C: Erweiterungs-App
@@ -41,8 +41,8 @@ So überprüfen Sie das Vorhandensein der b2c-extensions-app
 Wenn Sie die b2c-extensions-app versehentlich gelöscht haben, haben Sie 30 Tage Zeit, sie wiederherzustellen. Sie können die App mithilfe der Graph-API wiederherstellen:
 
 1. Rufen Sie [https://graphexplorer.azurewebsites.net/](https://graphexplorer.azurewebsites.net/) auf.
-1. Melden Sie sich bei der Website als globaler Administrator für das Azure AD B2C-Verzeichnis an, für das die gelöschte App wiederhergestellt werden soll.
-1. Verwenden Sie eine HTTP-GET-Methode für die URL `https://graph.windows.net/{tenantName}.onmicrosoft.com/deletedApplications` mit dem Wert „1.6“ für „api-version“. Ersetzen Sie `{tenantName}` durch Ihren Mandantennamen. Bei diesem Vorgang werden alle Anwendungen aufgelistet, die in den letzten 30 Tagen gelöscht wurden.
+1. Melden Sie sich bei der Website als globaler Administrator für das Azure AD B2C-Verzeichnis an, für das die gelöschte App wiederhergestellt werden soll. Dieser globale Administrator muss eine E-Mail-Adresse besitzen, die etwa wie folgt aussieht: `username@{yourTenant}.onmicrosoft.com`.
+1. Verwenden Sie eine HTTP-GET-Methode für die URL `https://graph.windows.net/myorganization/deletedApplications` mit dem Wert „1.6“ für „api-version“. Bei diesem Vorgang werden alle Anwendungen aufgelistet, die in den letzten 30 Tagen gelöscht wurden.
 1. Suchen Sie nach der Anwendung, indem Sie in der Liste nach einem Namen beginnend mit „b2c-extension-app“ suchen, und kopieren Sie den zugehörigen Eigenschaftswert `objectid`.
 1. Verwenden Sie eine HTTP-POST-Methode für die URL `https://graph.windows.net/myorganization/deletedApplications/{OBJECTID}/restore`. Ersetzen Sie den Teil `{OBJECTID}` der URL durch die `objectid` aus dem vorherigen Schritt. 
 

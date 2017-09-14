@@ -14,14 +14,14 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/03/2017
+ms.date: 08/31/2017
 ms.author: seanmck
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
-ms.openlocfilehash: bff594d86c7c34ebff4d7dad5be4e54cdb604baf
+ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
+ms.openlocfilehash: ff6da0ce95d0405714602c3872da34a2bff344d3
 ms.contentlocale: de-de
-ms.lasthandoff: 08/04/2017
+ms.lasthandoff: 09/01/2017
 
 ---
 
@@ -213,3 +213,17 @@ microsoft/aci-helloworld               latest              7f78509b568e        1
 Sie können die Imagegrößen klein halten, indem Sie sicherstellen, dass Ihr endgültiges Image keine Elemente enthält, die zur Laufzeit nicht erforderlich sind. Eine Möglichkeit ist die Verwendung von [mehrstufigen Builds](https://docs.docker.com/engine/userguide/eng-image/multistage-build/). Mit mehrstufigen Builds können Sie leicht sicherstellen, dass das endgültige Image nur die Artefakte enthält, die Sie für Ihre Anwendung benötigen – und keinen zusätzlichen Inhalt, der zur Erstellungszeit benötigt wurde.
 
 Die andere Möglichkeit, die Auswirkungen des Pullvorgangs für das Image auf die Startdauer Ihres Containers zu reduzieren, ist das Hosten des Containerimage per Azure Container Registry in derselben Region, in der Sie Azure Container Instances verwenden möchten. Auf diese Weise wird der Netzwerkpfad verkürzt, den das Containerimage zurücklegen muss, sodass sich die Downloadzeit erheblich reduziert.
+
+### <a name="resource-not-available-error"></a>Ressource nicht verfügbar
+
+Aufgrund der unterschiedlichen Auslastung regionaler Ressourcen in Azure wird beim Versuch, eine Containerinstanz bereitzustellen, möglicherweise die folgende Fehlermeldung angezeigt:
+
+`The requested resource with 'x' CPU and 'y.z' GB memory is not available in the location 'example region' at this moment. Please retry with a different resource request or in another location.`
+
+Dieser Fehler gibt an, dass aufgrund starker Auslastung in der Region, in der die Bereitstellung durchgeführt werden soll, die für den Container angegebenen Ressourcen zum aktuellen Zeitpunkt nicht zugeordnet werden können. Führen Sie einen oder mehrere der folgenden Schritte aus, um das Problem zu beheben.
+
+* Überprüfen Sie, ob Ihre Einstellungen für die Containerbereitstellung innerhalb der unter [Regionale Verfügbarkeit für Azure Container Instances](container-instances-region-availability.md) definierten Parameter liegen.
+* Geben Sie niedrigere CPU- und Arbeitsspeichereinstellungen für den Container an.
+* Führen Sie die Bereitstellung in einer anderen Azure-Region durch.
+* Führen Sie die Bereitstellung zu einem späteren Zeitpunkt durch.
+

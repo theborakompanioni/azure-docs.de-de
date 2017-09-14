@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 06/10/2017
+ms.date: 08/31/2017
 ms.author: sujayt
 ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
-ms.openlocfilehash: 5a81dbf6a088e824277275ef13067bdba006d3a9
+ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
+ms.openlocfilehash: 144078bbee8e9633fac12231daa07da6c295f46e
 ms.contentlocale: de-de
-ms.lasthandoff: 08/30/2017
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="azure-site-recovery-support-matrix-for-replicating-from-azure-to-azure"></a>Azure Site Recovery-Supportmatrix zum Replizieren aus Azure in Azure
@@ -49,12 +49,20 @@ In diesem Artikel werden die unterstützten Konfigurationen und Komponenten für
 **Verschieben von Compute, Speicher und Netzwerk über Ressourcengruppen hinweg** | Nicht unterstützt |Wenn Sie nach dem Aktivieren der Replikation einen virtuellen Computer (oder zugehörige Komponenten wie Speicher und Netzwerk) verschieben, müssen Sie die Replikation deaktivieren und dann wieder für den virtuellen Computer aktivieren.
 
 
+
 ## <a name="support-for-deployment-models"></a>Unterstützung für Bereitstellungsmodelle
 
 **Bereitstellungsmodell** | **Unterstützt/Nicht unterstützt** | **Hinweise:**  
 --- | --- | ---
 **Klassisch** | Unterstützt | Sie können einen replizierten klassischen virtuellen Computer nur als klassischen virtuellen Computer wiederherstellen. Eine Wiederherstellung als virtueller Ressourcen-Manager-Computer ist nicht möglich. Wenn Sie einen klassischen virtuellen Computer ohne ein virtuelles Netzwerk und direkt in einer Azure-Region bereitstellen, wird er nicht unterstützt.
 **Ressourcen-Manager** | Unterstützt |
+
+>[!NOTE]
+>
+> 1. Das Replizieren virtueller Azure-Computer zwischen Abonnements für Notfallwiederherstellungsszenarien wird nicht unterstützt.
+> 2. Die abonnementübergreifende Migration virtueller Azure-Computer wird nicht unterstützt.
+> 3. Die Migration virtueller Azure-Computer in derselben Region wird nicht unterstützt.
+> 4. Die Migration virtueller Azure-Computer vom klassischen Bereitstellungsmodell zum Resource Manager-Bereitstellungsmodell wird nicht unterstützt.
 
 ## <a name="support-for-replicated-machine-os-versions"></a>Unterstützung für replizierte Computer-Betriebssystemversionen
 

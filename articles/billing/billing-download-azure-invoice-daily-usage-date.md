@@ -17,25 +17,23 @@ ms.topic: article
 ms.date: 04/25/2017
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: ae3f3343cf10a6b2f3aa49dccae6d0ac906dba5c
+ms.translationtype: HT
+ms.sourcegitcommit: 4eb426b14ec72aaa79268840f23a39b15fee8982
+ms.openlocfilehash: f6fc297790b8a8b3ae8edea2e37bb7daf40ed3bb
 ms.contentlocale: de-de
-ms.lasthandoff: 04/26/2017
-
+ms.lasthandoff: 09/06/2017
 
 ---
-<a id="download-or-view-your-azure-billing-invoice-and-daily-usage-data" class="xliff"></a>
-
-# Herunterladen oder Anzeigen Ihrer Azure-Rechnungen und täglichen Nutzungsdaten
+# <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Herunterladen oder Anzeigen Ihrer Azure-Rechnungen und täglichen Nutzungsdaten
 Sie können Ihre Rechnung auch aus dem [Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) herunterladen oder sie per E-Mail zugeschickt bekommen. Um Ihre Daten zur täglichen Nutzung herunterzuladen, wechseln Sie zum [Azure-Kontocenter](https://account.windowsazure.com). Nur bestimmte Rollen, z.B. der Kontoadministrator, haben die Berechtigung zum Abrufen von Abrechnungs- und Nutzungsinformationen. Weitere Informationen zum Zugriff auf Abrechnungsinformationen finden Sie unter [Verwalten des Zugriffs auf die Azure-Abrechnung mithilfe von Rollen](billing-manage-access.md).
 
-<a id="get-your-invoice-in-email-pdf" class="xliff"></a>
+>[!NOTE]
+>Dieser Artikel gilt nicht für Enterprise Agreement-Kunden (EA). Wenn Sie EA-Kunde sind, werden Ihre Rechnungen direkt an die Registrierungsadministratoren gesendet.
 
-## Empfangen Ihrer Rechnung per E-Mail (PDF)
+## <a name="get-your-invoice-in-email-pdf"></a>Empfangen Ihrer Rechnung per E-Mail (PDF)
 Sie können die entsprechende Option aktivieren und zusätzliche Empfänger konfigurieren, die Ihre Azure-Rechnung in einer E-Mail erhalten. Diese Funktion ist für bestimmte Abonnements möglicherweise nicht verfügbar, z.B. für Supportangebote, Enterprise Agreements oder Azure in Open.
 
-1. Wählen Sie auf dem Blatt [Abonnements](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) Ihr Abonnement aus. Aktivieren Sie die Option für jedes Abonnement, das Sie besitzen. Klicken Sie auf **Rechnungen** und dann auf **Rechnung per E-Mail**. 
+1. Wählen Sie auf der Seite [Abonnements](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) Ihr Abonnement aus. Aktivieren Sie die Option für jedes Abonnement, das Sie besitzen. Klicken Sie auf **Rechnungen** und dann auf **Rechnung per E-Mail**. 
 
     ![Screenshot mit dem Ablauf der Aktivierung](./media/billing-download-azure-invoice-daily-usage-date/InvoicesDeepLink.PNG)
     
@@ -49,11 +47,9 @@ Sie können die entsprechende Option aktivieren und zusätzliche Empfänger konf
     
 Wenn Sie keine E-Mail erhalten, nachdem Sie diese Schritte befolgt haben, stellen Sie sicher, dass Ihre E-Mail-Adresse in den [Kommunikationseinstellungen auf Ihrem Profil](https://account.windowsazure.com/profile) richtig ist.
 
-<a id="download-invoice-from-azure-portal-pdf" class="xliff"></a>
+## <a name="download-invoice-from-azure-portal-pdf"></a>Herunterladen der Rechnung aus dem Azure-Portal (PDF)
 
-## Herunterladen der Rechnung aus dem Azure-Portal (PDF)
-
-1. Wählen Sie im Azure-Portal auf dem Blatt [Abonnements](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) Ihr Abonnement als [Benutzer mit Zugriff auf Rechnungen](billing-manage-access.md) aus.
+1. Wählen Sie im Azure-Portal auf der Seite [Abonnements](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) Ihr Abonnement als [Benutzer mit Zugriff auf Rechnungen](billing-manage-access.md) aus.
 
 2. Wählen Sie **Rechnungen** aus. 
 
@@ -67,9 +63,7 @@ Wenn Sie keine E-Mail erhalten, nachdem Sie diese Schritte befolgt haben, stelle
 
 Weitere Informationen über Ihre Rechnung finden Sie unter [Erläuterungen zur Rechnung für Microsoft Azure](billing-understand-your-bill.md). Hilfe beim Verwalten Ihrer Kosten finden Sie unter [Vermeiden unerwarteter Kosten bei der Azure-Abrechnung und -Kostenverwaltung](billing-getting-started.md).
 
-<a id="download-usage-from-the-account-center-csv" class="xliff"></a>
-
-## Herunterladen der Nutzungsdaten aus dem Kontocenter (CSV)
+## <a name="download-usage-from-the-account-center-csv"></a>Herunterladen der Nutzungsdaten aus dem Kontocenter (CSV)
 
 1. Melden Sie sich als Kontoadministrator im [Azure-Kontocenter](https://account.windowsazure.com/subscriptions) an.
 
@@ -109,9 +103,7 @@ Mehrere Gründe können dafür ausschlaggebend sein, dass Sie keine Rechnung seh
 
 - Wenn Sie nicht der Kontoadministrator sind, stehen Ihnen ältere Rechnungen möglicherweise nicht zur Verfügung.
 
-<a id="need-help-contact-support" class="xliff"></a>
-
-## Sie brauchen Hilfe? Wenden Sie sich an den Support.
+## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Wenden Sie sich an den Support.
 Bei weiteren Fragen [wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um das Problem schnell zu lösen.
 
 

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/11/2017
 ms.author: iainfou
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 8a2931e462079c101c91497d459d7d3126234244
+ms.translationtype: HT
+ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
+ms.openlocfilehash: ff3e3121102eedaa1f439e517570d0a97cf07c22
 ms.contentlocale: de-de
-ms.lasthandoff: 05/11/2017
-
+ms.lasthandoff: 09/02/2017
 
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>Erstellen eines virtuellen Linux-Computers in Azure mit mehreren Netzwerkschnittstellenkarten
@@ -118,6 +117,7 @@ az network nic create \
 
 Um einem vorhandenen virtuellen Computer eine Netzwerkkarte hinzuzufügen, heben Sie zunächst die Zuordnung des virtuellen Computers mit [az vm deallocate](/cli/azure/vm#deallocate) auf. Im folgenden Beispiel wird die Zuordnung für den virtuellen Computer *myVM* aufgehoben:
 
+
 ```azurecli
 az vm deallocate --resource-group myResourceGroup --name myVM
 ```
@@ -180,5 +180,75 @@ Sie können auch `copyIndex()` verwenden und eine Zahl an einen Ressourcennamen 
 
 Ein vollständiges Beispiel finden Sie unter [Erstellen von mehreren Netzwerkkarten mithilfe von Resource Manager-Vorlagen](../../virtual-network/virtual-network-deploy-multinic-arm-template.md).
 
+## <a name="configure-guest-os-for-multiple-nics"></a>Konfigurieren von Gastbetriebssystem für mehrere Netzwerkadapter
+
+Beim Erstellen mehrerer Netzwerkadapter für eine VM, die auf einem Linux-Gastbetriebssystem basiert, müssen zusätzliche Routingregeln erstellt werden, die das Senden und Empfangen ausschließlich von Datenverkehr ermöglichen, der zu einem bestimmten Netzwerkadapter gehört. Andernfalls kann der zu „eth1“ gehörende Datenverkehr aufgrund der definierten Standardroute nicht korrekt verarbeitet werden.  
+
+
+### <a name="solution"></a>Lösung
+
+Fügen Sie zunächst der Datei „/etc/iproute2/rt_tables“ zwei Routingtabellen hinzu.
+
+```bash
+echo "200 eth0-rt" >> /etc/iproute2/rt_tables
+echo "201 eth1-rt" >> /etc/iproute2/rt_tables
+```
+
+Damit die Änderung dauerhaft ist und während der Netzwerkstapelaktivierung angewendet wird, müssen die Dateien */etc/sysconfig/network-scipts/ifcfg-eth0* und */etc/sysconfig/network-scipts/ifcfg-eth1* geändert werden.
+Ändern Sie die Zeile *NM_CONTROLLED=yes* in *NM_CONTROLLED=no*.
+Ohne diesen Schritt sind die hinzugefügten zusätzlichen Regeln und das hinzugefügte zusätzliche Routing unwirksam.
+ 
+Als Nächstes werden die Routingtabellen erweitert. Damit die nächsten Schritte anschaulicher sind, setzen wir das folgende Setup voraus.
+
+*Routing*
+
+```bash
+default via 10.0.1.1 dev eth0 proto static metric 100
+10.0.1.0/24 dev eth0 proto kernel scope link src 10.0.1.4 metric 100
+10.0.1.0/24 dev eth1 proto kernel scope link src 10.0.1.5 metric 101
+168.63.129.16 via 10.0.1.1 dev eth0 proto dhcp metric 100
+169.254.169.254 via 10.0.1.1 dev eth0 proto dhcp metric 100
+```
+    
+*Schnittstellen*
+
+```bash
+lo: inet 127.0.0.1/8 scope host lo
+eth0: inet 10.0.1.4/24 brd 10.0.1.255 scope global eth0    
+eth1: inet 10.0.1.5/24 brd 10.0.1.255 scope global eth1
+```
+    
+    
+Mit den obigen Informationen können die folgenden zusätzlichen Dateien als Stamm erstellt werden.
+
+*   /etc/sysconfig/network-scripts/rule-eth0
+*   /etc/sysconfig/network-scripts/route-eth0
+*   /etc/sysconfig/network-scripts/rule-eth1
+*   /etc/sysconfig/network-scripts/route-eth1
+
+Der Inhalt der einzelnen Dateien lautet wie folgt:
+```bash
+cat /etc/sysconfig/network-scripts/rule-eth0
+from 10.0.1.4/32 table eth0-rt
+to 10.0.1.4/32 table eth0-rt
+
+cat /etc/sysconfig/network-scripts/route-eth0
+10.0.1.0/24 dev eth0 table eth0-rt
+default via 10.0.1.1 dev eth0 table eth0-rt
+
+cat /etc/sysconfig/network-scripts/rule-eth1
+from 10.0.1.5/32 table eth1-rt
+to 10.0.1.5/32 table eth1-rt
+
+cat /etc/sysconfig/network-scripts/route-eth1
+10.0.1.0/24 dev eth1 table eth1-rt
+default via 10.0.1.1 dev eth1 table eth1-rt
+```
+
+Nachdem die Dateien erstellt und gefüllt worden sind, muss der Netzwerkdienst neu gestartet werden (`systemctl restart network`).
+
+Das Herstellen einer Verbindung von außen mit „eth0“ oder „eth1“ ist jetzt möglich.
+
 ## <a name="next-steps"></a>Nächste Schritte
 Überprüfen Sie die [Linux-VM-Größen](sizes.md), wenn Sie einen virtuellen Computer mit mehreren Netzwerkkarten erstellen. Achten Sie auf die maximale Anzahl von Netzwerkkarten, die von jeder VM-Größe unterstützt wird. 
+

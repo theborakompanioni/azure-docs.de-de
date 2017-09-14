@@ -13,14 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/27/2017
+ms.date: 08/30/2017
 ms.author: genli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: c415fada30aa0b0bd9b9d1e416bc37ef30653f68
+ms.translationtype: HT
+ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
+ms.openlocfilehash: 51fe2ab891e86ae4bd7402622231af47f35aa01d
 ms.contentlocale: de-de
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="cancel-your-subscription-for-azure"></a>Kündigen Ihres Abonnements für Azure
@@ -37,41 +36,21 @@ Wenn Sie einen kostenpflichtigen [Azure-Supportplan](https://azure.microsoft.com
 
 ## <a name="cancel-subscription-using-the-azure-portal"></a>Kündigen eines Abonnements unter Verwendung des Azure-Portals
 
-1. Wählen Sie auf der Seite [Abonnements](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) Ihr Abonnement aus.
-
+1. Wählen Sie auf der Seite [Abonnements](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) im Azure-Portal Ihr Abonnement aus.
 1. Wählen Sie das zu kündigende Abonnement aus, und klicken Sie auf **Abonnement kündigen**.
 
     ![Screenshot mit der Schaltfläche zum Kündigen](./media/billing-how-to-cancel-azure-subscription/cancel_ibiza.png)
-
 1. Befolgen Sie die Anweisungen, und schließen Sie die Kündigung ab.
-
-## <a name="cancel-subscription-using-the-azure-account-center"></a>Kündigen eines Abonnements unter Verwendung von Azure Account Center
-
-1. Melden Sie sich beim [Azure-Kontocenter](https://account.windowsazure.com/subscriptions) als Kontoadministrator an.
-
-1. Wählen Sie unter **Klicken Sie auf ein Abonnement, um Details und Nutzung anzuzeigen.**das Abonnement aus, das Sie kündigen möchten.
-
-    ![Screenshot mit Beispiel für ein ausgewähltes Abonnement](./media/billing-how-to-cancel-azure-subscription/Selectsub.png)
-
-1. Wählen Sie rechts auf der Seite **Abonnement kündigen**.
-
-    ![Screenshot mit der Schaltfläche „Abonnement kündigen“](./media/billing-how-to-cancel-azure-subscription/cancelsub.png)
-
-1. Wählen Sie **Ja, mein Abonnement kündigen**.
-
-    ![Screenshot mit dem Dialogfeld zum Kündigen](./media/billing-how-to-cancel-azure-subscription/cancelbox.png)
-
-1. Klicken Sie auf  ![Schaltfläche mit Häkchen-Symbol](./media/billing-how-to-cancel-azure-subscription/checkbutton.png) , um das Dialogfenster zu schließen und zu Ihrer Abonnementseite zurückkehren.
 
 ## <a name="what-happens-after-i-cancel-my-subscription"></a>Was geschieht, nachdem ich mein Abonnement gekündigt habe?
 
 Nach Ihrer Kündigung wird die Berechnung sofort beendet. Bis die Kündigung im Portal angezeigt wird, kann es allerdings bis zu 10 Minuten dauern.
 
-Danach werden Ihre Dienste deaktiviert. Dies bedeutet, dass die Zuordnung Ihrer virtuellen Computer aufgehoben wird, ihre vorübergehenden IP-Adressen freigegeben werden und der Speicher nur noch im Lesezugriff verfügbar ist.
+Danach werden Ihre Dienste deaktiviert. Dies bedeutet, dass die Zuordnung Ihrer virtuellen Computer aufgehoben wird, die vorübergehenden IP-Adressen freigegeben werden und der Speicher nur noch im Lesezugriff verfügbar ist.
 
-Sofern Sie nicht die kostenlose Testversion nutzen oder noch über Gutschriften verfügen, werden alle offenen Nutzungsgebühren abgerechnet, die zwischen Ihrem letzten Abrechnungszyklus und dem Kündigungsdatum angefallen sind. Sie erhalten Ihre letzte Rechnung am Ende des Abrechnungszyklus.
+Wenn Sie das Abonnement mitten in einem Abrechnungszeitraum kündigen, senden wir die Schlussrechnung zum üblichen Rechnungsdatum nach Ende des Abrechnungszeitraums. 
 
-Nach der Kündigung Ihres Abonnements warten wir 90 Tage, bevor wir Ihre Daten endgültig löschen, für den Fall, dass Sie darauf zugreifen müssen oder Ihre Meinung ändern. Für die Aufbewahrung der Daten rechnen wir keine Gebühr ab. Weitere Informationen finden Sie in [Microsoft Trust Center – Wie wir Ihre Daten verwalten](https://go.microsoft.com/fwLink/p/?LinkID=822930&clcid=0x409).
+Wir warten 90 Tage, bevor wir Ihre Daten endgültig löschen, für den Fall, dass Sie darauf zugreifen möchten oder Ihre Meinung ändern. Für die Aufbewahrung der Daten rechnen wir keine Gebühr ab. Weitere Informationen finden Sie in [Microsoft Trust Center – Wie wir Ihre Daten verwalten](https://go.microsoft.com/fwLink/p/?LinkID=822930&clcid=0x409).
 
 ## <a name="reactivate-subscription"></a>Erneutes Aktivieren von Abonnements
 

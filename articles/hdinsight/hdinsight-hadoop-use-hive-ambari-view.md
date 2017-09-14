@@ -17,13 +17,13 @@ ms.workload: big-data
 ms.date: 07/31/2017
 ms.author: larryfr
 ms.translationtype: HT
-ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
-ms.openlocfilehash: 80df3da4d62feb814ea2dd97c96e57954093c5c5
+ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
+ms.openlocfilehash: b5bf9042921dfb2344c2c6e03990578fa9ce4f5b
 ms.contentlocale: de-de
-ms.lasthandoff: 08/02/2017
+ms.lasthandoff: 09/01/2017
 
 ---
-# <a name="use-the-hive-view-with-hadoop-in-hdinsight"></a>Verwenden der Hive-Ansicht mit Hadoop in HDInsight
+# <a name="use-ambari-hive-view-with-hadoop-in-hdinsight"></a>Verwenden der Ambari-Hive-Ansicht mit Hadoop in HDInsight
 
 [!INCLUDE [hive-selector](../../includes/hdinsight-selector-use-hive.md)]
 
@@ -34,18 +34,18 @@ In diesem Artikel wird das folgende Thema erläutert: Ausführen von Hive-Abfrag
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Linux-basierter HDInsight-Cluster. Informationen zum Erstellen eines Clusters finden Sie unter [Erste Schritte mit Linux-basiertem HDInsight](hdinsight-hadoop-linux-tutorial-get-started.md).
+* Ein Linux-basierter HDInsight-Cluster. Weitere Informationen zur Erstellung von Clustern finden Sie unter [Erste Schritte mit Hadoop in HDInsight](hdinsight-hadoop-linux-tutorial-get-started.md).
 
 > [!IMPORTANT]
-> Die Schritte in diesem Dokument erfordern einen HDInsight-Cluster mit Linux. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+> Die Schritte in diesem Dokument erfordern einen Azure HDInsight-Cluster mit Linux. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a name="open-the-hive-view"></a>Öffnen der Hive-Ansicht
 
-Ambari-Ansichten sind im Azure-Portal verfügbar. Wählen Sie Ihren HDInsight-Cluster, und wählen Sie dann im Abschnitt **Quicklinks** die Option **Ambari-Ansichten**.
+Sie können Ambari-Ansichten vom Azure-Portal aus öffnen. Wählen Sie Ihren HDInsight-Cluster, und wählen Sie dann im Abschnitt **Quicklinks** die Option **Ambari-Ansichten**.
 
-![Abschnitt „Direktlinks“ des Portals](./media/hdinsight-hadoop-use-hive-ambari-view/quicklinks.png)
+![Abschnitt „Quicklinks“ des Portals](./media/hdinsight-hadoop-use-hive-ambari-view/quicklinks.png)
 
-Wählen Sie aus der Liste der Ansichten die __Hive View__ (Hive-Ansicht) aus.
+Wählen Sie aus der Liste der Ansichten die __Hive-Ansicht__ aus.
 
 ![Die ausgewählte Hive-Ansicht](./media/hdinsight-hadoop-use-hive-ambari-view/select-hive-view.png)
 
@@ -56,7 +56,7 @@ Eine Seite ähnlich der folgenden Abbildung wird angezeigt:
 
 ![Abbildung des Arbeitsblatts „Abfragen“ für die Hive-Ansicht](./media/hdinsight-hadoop-use-hive-ambari-view/ambari-hive-view.png)
 
-## <a name="hivequery"></a>Ausführen einer Abfrage
+## <a name="run-a-query"></a>Ausführen einer Abfrage
 
 Um eine Hive-Abfrage auszuführen, verwenden Sie die folgenden Schritte aus der Hive-Ansicht.
 
@@ -74,34 +74,34 @@ Um eine Hive-Abfrage auszuführen, verwenden Sie die folgenden Schritte aus der 
 
    * `DROP TABLE`: Löscht Tabelle und Datendatei, falls die Tabelle bereits existiert.
 
-   * `CREATE EXTERNAL TABLE`: Erstellt eine neue externe Tabelle in Hive.
+   * `CREATE EXTERNAL TABLE`: Erstellt eine neue „externe“ Tabelle in Hive.
    Externe Tabellen speichern nur die Tabellendefinition in Hive. Die Daten verbleiben an ihrem ursprünglichen Speicherort.
 
    * `ROW FORMAT`: Gibt an, wie die Daten formatiert werden. In diesem Fall werden die Felder in den einzelnen Protokollen durch Leerzeichen getrennt.
 
-   * `STORED AS TEXTFILE LOCATION`: Speicherort für die Daten und Speichern als Text.
+   * `STORED AS TEXTFILE LOCATION`: Zeigt den Speicherort für die Daten an, und dass sie als Text gespeichert sind.
 
-   * `SELECT`: Wählt die Anzahl aller Zeilen aus, bei denen die Spalte t4 den Wert [ERROR] enthält.
+   * `SELECT`: Wählt die Anzahl aller Zeilen aus, bei denen die Spalte „t4“ den Wert „[ERROR]“ enthält.
 
      > [!NOTE]
-     > Externe Tabellen sollten Sie verwenden, wenn Sie erwarten, dass die zugrunde liegenden Daten aus einer externen Quelle aktualisiert werden. Das könnte z.B. ein automatisierter Datenupload oder ein anderer MapReduce-Vorgang sein. Durch das Löschen einer externen Tabelle werden *nicht* die Daten, sondern nur die Tabellendefinitionen gelöscht.
+     > Wenn Sie erwarten, dass die zugrunde liegenden Daten über eine externe Quelle, z.B. einen automatisierten Prozess zum Hochladen von Daten oder einen anderen MapReduce-Vorgang aktualisiert werden, verwenden Sie externe Tabellen. Durch das Löschen einer externen Tabelle werden *nicht* die Daten, sondern nur die Tabellendefinitionen gelöscht.
 
     > [!IMPORTANT]
     > Belassen Sie die Auswahl der __Database__ (Datenbank) bei __default__ (Standard). Die Beispiele in diesem Dokument verwenden die Standarddatenbank, die in HDInsight enthalten ist.
 
-2. Klicken Sie auf die Schaltfläche **Execute** (Ausführen) unter dem Arbeitsblatt, um die Abfrage zu starten. Diese wird nun orange angezeigt, und der Text ändert sich in **Stop** (Beenden).
+2. Klicken Sie auf die Schaltfläche **Execute** (Ausführen) unter dem Arbeitsblatt, um die Abfrage zu starten. Die Schaltfläche wird nun orange angezeigt, und der Text ändert sich in **Stop** (Beenden).
 
 3. Nach Abschluss der Abfrage werden in der Registerkarte **Results** (Ergebnisse) die Ergebnisse des Vorgangs angezeigt. Der folgende Text ist das Ergebnis der Abfrage:
 
         sev       cnt
         [ERROR]   3
 
-    Auf der Registerkarte **Protokolle** können die vom Auftrag erstellten Protokollinformationen angezeigt werden.
+    Sie können auf der Registerkarte **Logs** die vom Auftrag erstellten Protokollinformationen anzeigen.
 
    > [!TIP]
-   > Im Dropdown-Dialogfeld **Ergebnisse speichern** in der oberen linken Ecke des Abschnitts **Abfrageprozessergebnisse** können Sie Ergebnisse herunterladen oder speichern.
+   > Im Dropdowndialogfeld **Save results** in der oberen linken Ecke des Abschnitts **Query Process Results** können Sie Ergebnisse herunterladen oder speichern.
 
-4. Wählen Sie die ersten vier Zeilen dieser Abfrage aus, und klicken Sie auf **Ausführen**. Beachten Sie, dass keine Ergebnisse vorliegen, wenn der Auftrag abgeschlossen ist. Wenn ein Teil der Abfrage ausgewählt ist, werden bei Verwendung der Schaltfläche **Ausführen** nur die ausgewählten Anweisungen ausgeführt. In diesem Fall enthielt die Auswahl nicht die letzte Anweisung, die Zeilen aus der Tabelle abruft. Wenn Sie nur diese Zeile auswählen und **Ausführen** verwenden, sollten die erwarteten Ergebnisse angezeigt werden.
+4. Wählen Sie die ersten vier Zeilen dieser Abfrage aus, und klicken Sie auf **Execute**. Beachten Sie, dass keine Ergebnisse vorliegen, wenn der Auftrag abgeschlossen ist. Wenn ein Teil der Abfrage ausgewählt ist, werden bei Verwendung der Schaltfläche **Ausführen** nur die ausgewählten Anweisungen ausgeführt. In diesem Fall enthielt die Auswahl nicht die letzte Anweisung, die Zeilen aus der Tabelle abruft. Wenn Sie nur diese Zeile auswählen und **Ausführen** verwenden, sollten die erwarteten Ergebnisse angezeigt werden.
 
 5. Um ein Arbeitsblatt hinzuzufügen, klicken Sie auf die Schaltfläche **New Worksheet** (Neues Arbeitsblatt) am unteren Rand des **Query Editor** (Abfrage-Editors). Geben Sie in das neue Arbeitsblatt die folgenden HiveQL-Anweisungen ein:
 
@@ -112,19 +112,19 @@ Um eine Hive-Abfrage auszuführen, verwenden Sie die folgenden Schritte aus der 
 
   Diese Anweisungen führen die folgenden Aktionen aus:
 
-   * **TABELLE ERSTELLEN, FALLS NICHT VORHANDEN** – Erstellt eine Tabelle, sofern diese noch nicht vorhanden ist. Da das Schlüsselwort **EXTERN** nicht verwendet wird, wird eine interne Tabelle erstellt. Eine interne Tabelle wird im Hive-Data Warehouse gespeichert und vollständig von Hive verwaltet. Anders als bei externen Tabellen werden beim Löschen von internen Tabellen auch die zugrunde liegenden Daten gelöscht.
+   * **CREATE TABLE IF NOT EXISTS**: Erstellt eine Tabelle, sofern diese noch nicht vorhanden ist. Da das Schlüsselwort **EXTERNAL** nicht verwendet wird, wird eine interne Tabelle erstellt. Eine interne Tabelle wird im Hive-Data Warehouse gespeichert und vollständig von Hive verwaltet. Anders als bei externen Tabellen werden beim Löschen von internen Tabellen auch die zugrunde liegenden Daten gelöscht.
 
-   * **ALS ORC GESPEICHERT** – Speichert die Daten im ORC-Format (Optimized Row Columnar). ORC ist ein stark optimiertes und effizientes Format zum Speichern von Hive-Daten.
+   * **ALS ORC GESPEICHERT**: Speichert die Daten im ORC-Format (Optimized Row Columnar). ORC ist ein stark optimiertes und effizientes Format zum Speichern von Hive-Daten.
 
-   * **ÜBERSCHREIBEN EINFÜGEN ... AUSWÄHLEN**: Wählt Zeilen in der Tabelle **log4jLogs** aus, die `[ERROR]` enthalten, und fügt die Daten dann in die Tabelle **errorLogs** ein.
+   * **ÜBERSCHREIBEN EINFÜGEN ... SELECT**: Wählt Zeilen in der Tabelle **log4jLogs** aus, die `[ERROR]` enthalten, und fügt die Daten dann in die Tabelle **errorLogs** ein.
 
-     Verwenden Sie die Schaltfläche **Ausführen**, um diese Abfrage auszuführen. Die Registerkarte **Ergebnisse** enthält keine Informationen, wenn die Abfrage keine Zeilen zurückgibt. Sobald die Abfrage abgeschlossen ist, sollte der Status **ERFOLGREICH** angezeigt werden.
+Verwenden Sie die Schaltfläche **Ausführen**, um diese Abfrage auszuführen. Die Registerkarte **Ergebnisse** enthält keine Informationen, wenn die Abfrage keine Zeilen zurückgibt. Sobald die Abfrage abgeschlossen ist, sollte der Status **SUCCEEDED** angezeigt werden.
 
 ### <a name="visual-explain"></a>Visuelle Erläuterung
 
 Klicken Sie auf die Registerkarte **Visual Explain** (Visuelle Erläuterung) unter dem Arbeitsblatt, um eine Visualisierung des Abfrageplans anzuzeigen.
 
-Die Ansicht **Visuelle Erläuterung** der Abfrage kann das Verständnis des Ablaufs komplexer Abfragen erleichtern. Sie können eine Textentsprechung dieser Ansicht mit der Schaltfläche **Erklären** im Abfrage-Editor anzeigen.
+Die Ansicht **Visuelle Erläuterung** der Abfrage kann das Verständnis des Ablaufs komplexer Abfragen erleichtern. Sie können eine Textentsprechung dieser Ansicht mit der Schaltfläche **Explain** im Abfrage-Editor anzeigen.
 
 ### <a name="tez-ui"></a>Tez-Benutzeroberfläche
 
@@ -149,19 +149,19 @@ Sie können die Registerkarte __Tables__ (Tabellen) verwenden, um innerhalb eine
 
 ## <a name="saved-queries"></a>Gespeicherte Abfragen
 
-In der Registerkarte „Abfragen“ können Sie optional auch Abfragen speichern. Sobald eine Abfrage gespeichert wurde, können Sie diese über die Registerkarte __Saved Queries__ (Gespeicherte Abfragen) erneut verwenden.
+In der Registerkarte **Query** können Sie optional auch Abfragen speichern. Nachdem Sie eine Abfrage gespeichert haben, können Sie diese von der Registerkarte __Saved Queries__ aus wiederverwenden.
 
 ![Abbildung der Registerkarte „Gespeicherte Abfragen“](./media/hdinsight-hadoop-use-hive-ambari-view/saved-queries.png)
 
 ## <a name="user-defined-functions"></a>Benutzerdefinierte Funktionen
 
-Hive kann auch über benutzerdefinierte Funktionen (UDF) erweitert werden. Mit einer UDF-Datei können Sie Funktionen oder Logik implementieren, die sich nicht einfach in HiveQL modellieren lässt.
+Sie können Hive kann auch über benutzerdefinierte Funktionen (UDF) erweitern. Mit einer UDF-Datei können Sie Funktionen oder Logik implementieren, die sich nicht einfach in HiveQL modellieren lässt.
 
-Mit der Registerkarte UDF oben in der Hive-Ansicht können Sie eine Gruppe von UDFs deklarieren und speichern. Diese UDFs können im **Abfrage-Editor** verwendet werden.
+Deklarieren und speichern Sie eine Gruppe von UDFs mit der Registerkarte **UDF** ganz oben in der Hive-Ansicht. Diese UDFs können im **Abfrage-Editor** verwendet werden.
 
 ![Abbildung der Registerkarte „UDF“](./media/hdinsight-hadoop-use-hive-ambari-view/user-defined-functions.png)
 
-Nachdem Sie der Hive-Ansicht eine benutzerdefinierte Funktion hinzugefügt haben, wird unten im **Abfrage-Editor** die Schaltfläche **UDFs einfügen** angezeigt. Wenn Sie diesen Eintrag wählen, wird eine Dropdownliste mit den UDFs angezeigt, die in der Hive-Ansicht definiert sind. Durch das Auswählen einer UDF werden Ihrer Abfrage HiveQL-Anweisungen hinzugefügt, um die UDF zu aktivieren.
+Nachdem Sie der Hive-Ansicht eine benutzerdefinierte Funktion hinzugefügt haben, wird ganz unten im **Abfrage-Editor** die Schaltfläche **Insert udfs** angezeigt. Wenn Sie diesen Eintrag wählen, wird eine Dropdownliste mit den UDFs angezeigt, die in der Hive-Ansicht definiert sind. Durch das Auswählen einer UDF werden Ihrer Abfrage HiveQL-Anweisungen hinzugefügt, um die UDF zu aktivieren.
 
 Beispielsweise können Sie eine UDF mit den folgenden Eigenschaften definieren:
 
@@ -173,7 +173,7 @@ Beispielsweise können Sie eine UDF mit den folgenden Eigenschaften definieren:
 
 * UDF-Klassenname: com.myudfs.Awesome
 
-Mit der Schaltfläche **UDFs einfügen** wird ein Eintrag mit dem Namen **myudfs** angezeigt, der über eine weitere Dropdownliste für jede UDF verfügt, die für diese Ressource definiert ist. In diesem Fall ist das **myawesomeudf**. Wenn Sie diesen Eintrag auswählen, wird am Anfang der Abfrage Folgendes hinzugefügt:
+Mit der Schaltfläche **Insert udfs** wird ein Eintrag mit dem Namen **myudfs** angezeigt, der über eine weitere Dropdownliste für jede UDF verfügt, die für diese Ressource definiert ist. In diesem Fall ist das **myawesomeudf**. Wenn Sie diesen Eintrag auswählen, wird am Anfang der Abfrage Folgendes hinzugefügt:
 
 ```hiveql
 add jar /myudfs.jar;
@@ -182,14 +182,14 @@ create temporary function myawesomeudf as 'com.myudfs.Awesome';
 
 Sie können die UDF dann in Ihrer Abfrage verwenden. Beispiel: `SELECT myawesomeudf(name) FROM people;`.
 
-Weitere Informationen zur Verwendung von UDFs mit Hive unter HDInsight finden Sie in den folgenden Dokumenten:
+Weitere Informationen zur Verwendung von UDFs mit Hive unter HDInsight finden Sie in den folgenden Artikeln:
 
 * [Verwenden von Python mit Hive und Pig in HDInsight](hdinsight-python.md)
 * [How to add a custom Hive UDF to HDInsight (in englischer Sprache)](http://blogs.msdn.com/b/bigdatasupport/archive/2014/01/14/how-to-add-custom-hive-udfs-to-hdinsight.aspx)
 
 ## <a name="hive-settings"></a>Hive-Einstellungen
 
-Diese Einstellungen können dazu verwendet werden, verschiedene Hive-Einstellungen zu ändern. Beispielsweise kann das Ausführungsmodul für Hive von Tez (Standard) auf MapReduce geändert werden.
+Sie können verschiedene Hive-Einstellungen ändern, z.B. das Ausführungsmodul für Hive von Tez (Standard) in MapReduce.
 
 ## <a id="nextsteps"></a>Nächste Schritte
 

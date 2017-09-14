@@ -1,6 +1,6 @@
 ---
-title: Einrichten benannter Authentifizierungsanmeldeinformationen | Microsoft Docs
-description: "Erfahren Sie, wie Sie die Anmeldeinformationen angeben, mit denen Visual Studio Anforderungen für Azure authentifizieren kann, um eine Anwendung von Visual Studio aus in Azure zu veröffentlichen oder einen vorhandenen Clouddienst zu überwachen. "
+title: Einrichten benannter Authentifizierungsanmeldeinformationen | Microsoft-Dokumentation
+description: "Erfahren Sie, wie Sie die Anmeldeinformationen angeben, mit denen Visual Studio Anforderungen für Azure authentifizieren kann, um eine Anwendung von Visual Studio aus in Azure zu veröffentlichen oder einen vorhandenen Clouddienst zu überwachen."
 services: visual-studio-online
 documentationcenter: na
 author: kraigb
@@ -15,16 +15,16 @@ ms.workload: multiple
 ms.date: 8/22/2017
 ms.author: kraigb
 ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
-ms.openlocfilehash: c486676a70e195ec85ad40540ea4b7caaa86bc48
+ms.sourcegitcommit: 4eb426b14ec72aaa79268840f23a39b15fee8982
+ms.openlocfilehash: b75d190724da284324b0337e95a50a64902e19d8
 ms.contentlocale: de-de
-ms.lasthandoff: 08/28/2017
+ms.lasthandoff: 09/06/2017
 
 ---
-# <a name="setting-up-named-authentication-credentials"></a>Einrichten benannter Authentifizierungsanmeldeinformationen
-Geben Sie die Anmeldeinformationen an, mit denen Visual Studio Anforderungen für Azure authentifizieren kann, um eine Anwendung von Visual Studio aus in Azure zu veröffentlichen oder einen vorhandenen Clouddienst zu überwachen. Es gibt verschiedene Stellen in Visual Studio, an denen Sie sich anmelden können, um diese Anmeldeinformationen bereitzustellen. Beispielsweise können Sie im Server-Explorer das Kontextmenü des Knotens **Azure** öffnen und **Verbindung mit Microsoft Azure-Abonnement herstellen** auswählen. Wenn Sie sich anmelden, stehen die Abonnementinformationen, die dem Azure-Konto zugeordnet sind, in Visual Studio zur Verfügung. Sie müssen keine weiteren Schritte ausführen.
+# <a name="set-up-named-authentication-credentials"></a>Einrichten benannter Authentifizierungsanmeldeinformationen
+Geben Sie die Anmeldeinformationen an, mit denen Visual Studio Anforderungen für Azure authentifizieren kann, um eine Anwendung von Visual Studio aus in Azure zu veröffentlichen oder einen vorhandenen Clouddienst zu überwachen. Es gibt verschiedene Stellen in Visual Studio, an denen Sie sich anmelden können, um diese Anmeldeinformationen bereitzustellen. Beispielsweise können Sie im Server-Explorer das Kontextmenü für den Knoten **Azure** öffnen und **Verbindung mit Microsoft Azure-Abonnement herstellen** auswählen. Wenn Sie sich anmelden, stehen die Abonnementinformationen, die dem Azure-Konto zugeordnet sind, in Visual Studio zur Verfügung. Sie müssen keine weiteren Schritte ausführen.
 
-Die Azure-Tools unterstützen auch eine ältere Möglichkeit zum Bereitstellen von Anmeldeinformationen mithilfe der Abonnementdatei (.publishsettings). In diesem Thema wird diese Methode beschrieben, die in Azure SDK 2.2 weiterhin unterstützt wird.
+Die Azure-Tools unterstützen auch eine ältere Methode zum Bereitstellen von Anmeldeinformationen mithilfe der Abonnementdatei (.publishsettings). In diesem Artikel wird diese Methode beschrieben, die im Azure SDK 2.2 weiterhin unterstützt wird.
 
 Die folgenden Elemente sind für die Authentifizierung bei Azure erforderlich:
 
@@ -32,13 +32,13 @@ Die folgenden Elemente sind für die Authentifizierung bei Azure erforderlich:
 * Ein gültiges X.509 v3-Zertifikat
 
 > [!NOTE]
-> Der Schlüssel für das X.509 v3-Zertifikat muss mindestens 2048 Bit lang sein. Von Azure werden alle Zertifikate abgelehnt, die diese Anforderung nicht erfüllen oder ungültig sind.
+> Der Schlüssel für das X.509 v3-Zertifikat muss mindestens 2.048 Bit lang sein. Von Azure werden alle Zertifikate abgelehnt, die diese Anforderung nicht erfüllen oder ungültig sind.
 >
 >
 
 Visual Studio verwendet die Abonnement-ID zusammen mit den Zertifikatdaten als Anmeldeinformationen. Die entsprechenden Anmeldeinformationen werden in der Abonnementdatei (.publishsettings) verwiesen wird, enthält einen öffentlichen Schlüssel für das Zertifikat. Die Abonnementdatei kann Anmeldeinformationen für mehrere Abonnements enthalten.
 
-Im Dialogfeld **Neues Abonnement/Abonnement bearbeiten** können Sie die Abonnementinformationen bearbeiten, wie weiter unten in diesem Thema erläutert.
+Im Dialogfeld **Neues Abonnement** oder **Abonnement bearbeiten** können Sie die Abonnementinformationen bearbeiten, wie weiter unten in diesem Artikel erläutert.
 
 Wenn Sie ein Zertifikat selbst erstellen möchten, finden Sie die entsprechenden Anweisungen unter [Erstellen und Hochladen eines Verwaltungszertifikats für Azure](https://msdn.microsoft.com/library/windowsazure/gg551722.aspx). Laden Sie anschließend das Zertifikat manuell in das [klassische Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885) hoch.
 
@@ -48,18 +48,18 @@ Wenn Sie ein Zertifikat selbst erstellen möchten, finden Sie die entsprechenden
 >
 
 ## <a name="import-set-up-or-edit-authentication-credentials-in-visual-studio"></a>Importieren, Einrichten oder Bearbeiten von Anmeldeinformationen für die Authentifizierung in Visual Studio
-Sie können die Anmeldeinformationen für die Authentifizierung auch im Dialogfeld **Neues Abonnement** importieren, einrichten oder ändern. Dieses Dialogfeld wird angezeigt, wenn Sie eine der folgenden Aktionen ausführen:
 
-* Öffnen Sie im **Server-Explorer** das Kontextmenü des Knotens **Azure**, und wählen Sie **Abonnements verwalten und filtern...** aus. Wählen Sie die Registerkarte **Zertifikate**, und führen Sie eine der folgenden Aktionen aus:
+1. Öffnen Sie im Server-Explorer das Kontextmenü für den Knoten **Azure**, und wählen Sie die Option **Abonnements verwalten und filtern** aus.
+2. Wählen Sie die Registerkarte **Zertifikate** aus, und verwenden Sie dann eine der folgenden Methoden:
 
-    * Wählen Sie **Importieren**, um das Dialogfeld „Microsoft Azure-Abonnements importieren“ zu öffnen, in dem Sie die Abonnementsdatei für das derzeit geladene Abonnement herunterladen können, navigieren Sie zu ihrem Downloadspeicherort, und importieren Sie sie anschließend zur Verwendung für die Authentifizierung.
-    * Wählen Sie **Neu**, um das Dialogfeld „Neues Abonnement“ zu öffnen, in dem Sie ein neues Abonnement zur Verwendung für die Authentifizierung einrichten können.
-    * Wählen Sie (nach der Auswahl des aktiven Abonnements) **Bearbeiten**, um das Dialogfeld „Abonnement bearbeiten“ zu öffnen, in dem Sie ein vorhandenes Abonnement zur Verwendung für die Authentifizierung bearbeiten können. 
+    * Wählen Sie **Importieren**, um das Dialogfeld **Microsoft Azure-Abonnements importieren** zu öffnen. In diesem Dialogfeld können Sie die Abonnementdatei für das derzeit geladene Abonnement herunterladen, zu ihrem Downloadspeicherort navigieren und sie anschließend zur Verwendung für die Authentifizierung importieren.
+    * Wählen Sie **Neu**, um das Dialogfeld **Neues Abonnement** zu öffnen. In diesem Dialogfeld können Sie ein neues Abonnement zur Verwendung für die Authentifizierung einrichten.
+    * Wählen Sie **Bearbeiten** (nachdem Sie Ihr aktives Abonnement ausgewählt haben), um das Dialogfeld **Abonnement bearbeiten** zu öffnen. In diesem Dialogfeld können Sie ein vorhandenes Abonnement zur Verwendung für die Authentifizierung bearbeiten. 
 
 Bei der folgenden Vorgehensweise wird davon ausgegangen, dass das Dialogfeld **Neues Abonnement** geöffnet ist.
 
 ### <a name="to-set-up-authentication-credentials-in-visual-studio"></a>So richten Sie Anmeldeinformationen für die Authentifizierung in Visual Studio ein
-1. Wählen Sie in der Liste **Wählen Sie ein vorhandenes Zertifikat für die Authentifizierung aus** ein vorhandenes Zertifikat aus.
+1. Wählen Sie in der Liste **Wählen Sie ein vorhandenes Zertifikat für die Authentifizierung aus** ein Zertifikat aus.
 2. Klicken Sie auf den Link **Vollständigen Pfad kopieren**. Der Pfad des Zertifikats (CER-Datei) wird in die Zwischenablage kopiert.
 
    > [!IMPORTANT]
@@ -68,8 +68,16 @@ Bei der folgenden Vorgehensweise wird davon ausgegangen, dass das Dialogfeld **N
    >
 3. So laden Sie das Zertifikat in das Azure-Portal hoch:
 
-   1. Öffnen Sie das [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040).
-   2. Wenn Sie aufgefordert werden, melden Sie sich beim Portal an, und navigieren Sie zu **Einstellungen**, **Verwaltungszertifikate**.
-   3. Wählen Sie im Bereich „Verwaltungszertifikate“ **Hochladen**.
-   4. Wählen Sie Ihr Azure-Abonnement, fügen Sie den vollständigen Pfad der CER-Datei ein, die Sie soeben erstellt haben, und wählen Sie **Hochladen**.
+   a. Öffnen Sie das [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040).
+   
+   b. Wenn Sie aufgefordert werden, melden Sie sich beim Portal an, und navigieren Sie zu **Einstellungen** > **Verwaltungszertifikate**.
+   
+   c. Wählen Sie im Bereich **Verwaltungszertifikate** die Option **Hochladen**.
+   
+   d. Wählen Sie Ihr Azure-Abonnement, fügen Sie den vollständigen Pfad der CER-Datei ein, die Sie soeben erstellt haben, und wählen Sie **Hochladen**.
 
+## <a name="next-steps"></a>Nächste Schritte
+* [Allgemeine Übersicht über die Web-Apps](https://docs.microsoft.com/azure/app-service-web/)
+* [Bereitstellen der App in Azure App Service](https://docs.microsoft.com/en-us/azure/app-service-web/web-sites-deploy?toc=%2fazure%2fapp-service-api%2ftoc.json) 
+* [Bereitstellen von Webaufträgen mit Visual Studio](https://docs.microsoft.com/en-us/azure/app-service-web/websites-dotnet-deploy-webjobs)
+* [Erstellen und Bereitstellen eines Clouddiensts](https://docs.microsoft.com/azure/cloud-services/cloud-services-how-to-create-deploy-portal)

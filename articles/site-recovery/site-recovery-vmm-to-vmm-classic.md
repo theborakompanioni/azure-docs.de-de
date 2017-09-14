@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 67b4861ac564565b2a36932ae15141a1e1f56035
-ms.openlocfilehash: 89a54a83e6708da8e7fd91923c3ef71d8371f8f3
+ms.translationtype: HT
+ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
+ms.openlocfilehash: 768c2598beccba885dd5e43a59ec4684818ccca3
 ms.contentlocale: de-de
-ms.lasthandoff: 02/23/2017
-
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="replicate-hyper-v-virtual-machines-in-vmm-clouds-to-a-secondary-vmm-site"></a>Replizieren von virtuellen Hyper-V-Maschinen in VMM-Clouds an einen sekundären VMM-Standort
@@ -284,7 +283,7 @@ Führen Sie dieses Beispielskript aus, um DNS zu aktualisieren, wobei Sie die IP
 
 
 ## <a name="privacy-information-for-site-recovery"></a>Datenschutzinformationen für Site Recovery
-Dieser Abschnitt enthält zusätzliche Datenschutzinformationen für den Microsoft Azure Site Recovery-Dienst ("Dienst"). Die Datenschutzbestimmungen für Microsoft Azure-Dienste finden Sie in den [Datenschutzbestimmungen für Microsoft Azure](http://go.microsoft.com/fwlink/?LinkId=324899)
+Dieser Abschnitt enthält zusätzliche Datenschutzinformationen für den Microsoft Azure Site Recovery-Dienst. 
 
 **Feature: Registrierung**
 

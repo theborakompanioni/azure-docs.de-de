@@ -1,5 +1,5 @@
 ---
-title: "Azure-Vorteil bei Hybridnutzung für Windows Server und Windows-Client | Microsoft Docs"
+title: "Azure-Vorteil bei Hybridnutzung für Windows Server | Microsoft Docs"
 description: Erfahren Sie, wie Sie die Vorteile der Windows Software Assurance optimal nutzen, um lokale Lizenzen in Azure zu verwenden.
 services: virtual-machines-windows
 documentationcenter: 
@@ -14,26 +14,24 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 5/26/2017
 ms.author: xujing
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 46b0895dc33fc13a1296301ed096fd3871b38952
+ms.translationtype: HT
+ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
+ms.openlocfilehash: a986ddf22f059dc55bb9bff5c6eaf27324b716cd
 ms.contentlocale: de-de
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 08/31/2017
 
 ---
-# <a name="azure-hybrid-use-benefit-for-windows-server-and-windows-client"></a>Azure-Vorteil bei Hybridnutzung für Windows Server und Windows-Client
-Für Kunden mit Software Assurance erlaubt die Hybridnutzung von Azure die Verwendung der lokalen Windows Server- und Windows-Clientlizenzen und die Ausführung von virtuellen Windows-Computern in Azure zu reduzierten Kosten. Der Azure-Vorteil bei Hybridnutzung für Windows Server umfasst Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 und Windows Server 2016. Der Azure-Vorteil bei Hybridnutzung für Windows-Clients umfasst Windows 10. Weitere Informationen finden Sie auf der [Lizenzierungsseite für den Azure-Vorteil bei Hybridnutzung](https://azure.microsoft.com/pricing/hybrid-use-benefit/).
+# <a name="azure-hybrid-use-benefit-for-windows-server"></a>Azure-Vorteil bei Hybridnutzung für Windows Server
+Für Kunden mit Software Assurance erlaubt die Hybridnutzung von Azure die Verwendung der lokalen Windows Server- und Windows-Clientlizenzen und die Ausführung von virtuellen Windows-Computern in Azure zu reduzierten Kosten. Der Azure-Vorteil bei Hybridnutzung für Windows Server umfasst Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 und Windows Server 2016. Weitere Informationen finden Sie auf der [Lizenzierungsseite für den Azure-Vorteil bei Hybridnutzung](https://azure.microsoft.com/pricing/hybrid-use-benefit/).
 
->[!IMPORTANT]
->Azure-Vorteile bei Hybridnutzung für Windows-Clients befinden sich zurzeit in der Vorschau und verwenden das Windows 10-Image im Azure Marketplace. Nur Enterprise-Kunden mit Windows 10 Enterprise E3/E5 pro Benutzer oder Windows VDA pro Benutzer (Benutzerabonnementlizenzen oder Add-On-Benutzerabonnementlizenzen) („qualifizierende Lizenzen“) können den Vorteil nutzen.
->
+> [!NOTE]
+> In diesem Artikel erfahren Sie, wie Sie den Lizenzierungsvorteil für Windows Server-Images implementieren. Sie können diese Schritte auch für [Windows 10 Desktop-Images](#windows-desktop-multitenant-hosting-deployment) ausführen.
 >
 
 ## <a name="ways-to-use-azure-hybrid-use-benefit"></a>Möglichkeiten zur Verwendung des Azure-Vorteils bei Hybridnutzung
 Es gibt verschiedene Möglichkeiten zum Bereitstellen von Windows-VMs mit dem Azure-Vorteil bei Hybridnutzung:
 
-1. Sie können VMs anhand [spezifischer Marketplace-Images](#deploy-a-vm-using-the-azure-marketplace) bereitstellen, die mit dem Azure-Vorteil bei Hybridnutzung vorkonfiguriert sind: Windows Server 2016, Windows Server 2012 R2, Windows Server 2012 und Windows Server 2008 SP1.
+1. Sie können virtuelle Computer aus [bestimmten Marketplace-Images] bereitstellen.
 2. Sie können [eine benutzerdefinierte VM hochladen](#upload-a-windows-vhd) und [die Bereitstellung per Resource Manager-Vorlage durchführen](#deploy-a-vm-via-resource-manager) oder dazu [Azure PowerShell](#detailed-powershell-deployment-walkthrough) nutzen.
 
 ## <a name="deploy-a-vm-using-the-azure-marketplace"></a>Bereitstellen einer VM über den Azure Marketplace

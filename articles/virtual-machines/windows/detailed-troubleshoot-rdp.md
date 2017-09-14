@@ -14,13 +14,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: support-article
-ms.date: 07/25/2017
+ms.date: 09/06/2017
 ms.author: genli
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: 7a9d994e10ec79437d6ccf60531cb12b86f34151
+ms.sourcegitcommit: 763bc597bdfc40395511cdd9d797e5c7aaad0fdf
+ms.openlocfilehash: 81713fae3f856cad6251e43eecfd7b1e82858aed
 ms.contentlocale: de-de
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 09/06/2017
 
 ---
 # <a name="detailed-troubleshooting-steps-for-remote-desktop-connection-issues-to-windows-vms-in-azure"></a>Detaillierte Problembehandlung beim Herstellen einer Remotedesktopverbindung mit virtuellen Windows-Computern in Azure
@@ -50,6 +50,8 @@ Führen Sie die folgenden Schritte aus, bevor Sie mit der detaillierten Problemb
 
 * Überprüfen Sie im Azure-Portal, ob offensichtliche Probleme mit dem virtuellen Computer bestehen.
 * Führen Sie dazu die im Artikel [Problembehandlung bei Remotedesktopverbindungen mit einem Windows-basierten virtuellen Azure-Computer](troubleshoot-rdp-connection.md#quick-troubleshooting-steps)beschriebenen Schritte aus.
+* Stellen Sie bei benutzerdefinierten Images sicher, dass Ihre VHD ordnungsgemäß vorbereitet ist, bevor Sie sie hochladen. Weitere Informationen finden Sie unter [Vorbereiten einer Windows-VHD oder -VHDX zum Hochladen in Azure](prepare-for-upload-vhd-image.md).
+
 
 Versuchen Sie anschließend erneut eine Remotedesktopverbindung zum virtuellen Computer herzustellen.
 

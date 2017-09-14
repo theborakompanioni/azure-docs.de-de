@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 073/2017
 ms.author: alkohli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 146c9f5c751443608f8f405be949398f9f721053
+ms.translationtype: HT
+ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
+ms.openlocfilehash: a8616eb51b177a9447a7c466c9d934b9139afedf
 ms.contentlocale: de-de
-ms.lasthandoff: 07/08/2017
+ms.lasthandoff: 09/02/2017
 
 ---
 # <a name="replace-a-disk-drive-on-your-storsimple-8000-series-device"></a>Austauschen eines Festplattenlaufwerks in einem Gerät der StorSimple 8000-Serie
@@ -103,8 +103,8 @@ Nachdem ein Laufwerk in einem StorSimple-Gerät ausgefallen ist und Sie es entfe
     **Abbildung 6**  Einschieben des Laufwerkträgers in das Gehäuse
 3. Nachdem der Laufwerksträger eingeschoben wurde, schließen Sie den Laufwerksträgergriff, indem Sie den Laufwerksträger weiter in das Gehäuse drücken, bis der Laufwerksträgergriff in der verriegelten Position einrastet.
 4. Sichern Sie den Trägergriff mit dem Sperrschlüssel, der von Microsoft mitgeliefert wurde (manipulationssicherer Torx-Schraubendreher), in seiner Position, indem Sie die Sperrschraube eine Vierteldrehung im Uhrzeigersinn drehen.
-5. Prüfen Sie, ob der Austausch erfolgreich war und das Laufwerk betriebsbereit ist. Wechseln Sie zum Azure-Portal, und navigieren Sie zu **Einstellungen** > **Hardwareintegrität**. Unter **Gemeinsam genutzte Komponenten** oder **Gemeinsam genutzte EBOD-Komponenten** muss der Laufwerksstatus grün angezeigt werden, was heißt, dass das Laufwerk betriebsbereit ist.
-<!---Loc Comment: It seems it should say "Device settings > Hardware health" instead of "Settings > Hardware health"---->
+5. Prüfen Sie, ob der Austausch erfolgreich war und das Laufwerk betriebsbereit ist. Wechseln Sie zum Azure-Portal, und navigieren Sie zu **Geräteeinstellungen** > **Hardwareintegrität**. Unter **Gemeinsam genutzte Komponenten** oder **Gemeinsam genutzte EBOD-Komponenten** muss der Laufwerksstatus grün angezeigt werden, was heißt, dass das Laufwerk betriebsbereit ist.
+
    
    > [!NOTE]
    > Es kann mehrere Stunden dauern, bis für ein Laufwerk nach einem Austausch der Status "Grün" angezeigt wird.

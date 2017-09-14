@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 03/21/2017
 ms.author: ganesr;cherylmc
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: 3b12bbb21ebf6a0160227c4a281c420cf192d6f7
+ms.sourcegitcommit: 266b9b7eb228744075627e1e80710e63c27880cc
+ms.openlocfilehash: 93ddc2975db34053c6a776d1c3b931536f3f8ec7
 ms.contentlocale: de-de
-ms.lasthandoff: 07/27/2017
+ms.lasthandoff: 09/06/2017
 
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-powershell-classic"></a>Erstellen und Ändern einer ExpressRoute-Verbindung mit PowerShell (klassisch)
@@ -58,11 +58,11 @@ Eine ausführliche Anleitung zum Konfigurieren des Computers für die Verwendung
 
 3. Wenn Sie über mehr als ein Abonnement verfügen, wählen Sie das Abonnement aus, das Sie verwenden möchten.
 
-        Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
+        Select-AzureSubscription -SubscriptionId "Replace_with_your_subscription_id"
 
-4. Verwenden Sie als nächstes das folgende Cmdlet, um PowerShell Ihr Azure-Abonnement für das klassische Bereitstellungsmodell hinzuzufügen.
+4. Überprüfen Sie, ob die ausgewählte Abonnement-ID als Standard festgelegt ist.
 
-        Add-AzureAccount
+        Get-AzureSubscription -default
 
 ## <a name="create-and-provision-an-expressroute-circuit"></a>Erstellen und Bereitstellen einer ExpressRoute-Verbindung
 ### <a name="step-1-import-the-powershell-modules-for-expressroute"></a>Schritt 1: Importieren der PowerShell-Module für ExpressRoute

@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/28/2017
+ms.date: 08/30/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 3ed13c819f8e32cab44013cdcbf1b3a921ba98b8
+ms.translationtype: HT
+ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
+ms.openlocfilehash: 5445a479fd6893048eb8ff356fa829a3dcd5f7d3
 ms.contentlocale: de-de
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="licensing-requirements-for-azure-ad-self-service-password-reset"></a>Lizenzanforderungen für Azure AD-Self-Service-Kennwortzurücksetzung
@@ -38,8 +38,8 @@ Zur Verwendung des Kennwortrückschreibens muss in Ihrem Mandanten eine der folg
 * Azure AD Premium P2
 * Enterprise Mobility + Security E3
 * Enterprise Mobility + Security E5
-* Secure Productive Enterprise E3
-* Secure Productive Enterprise E5
+* Microsoft 365 E3
+* Microsoft 365 E5
 
 > [!NOTE]
 > Eigenständige Office 365-Lizenzierungspläne **bieten keine Unterstützung für das Kennwortrückschreiben**. Sie benötigen einen der obigen Pläne, damit diese Funktion verwendet werden kann.
@@ -47,8 +47,9 @@ Zur Verwendung des Kennwortrückschreibens muss in Ihrem Mandanten eine der folg
 Weitere Informationen zur Lizenzierung, einschließlich der Kosten, finden Sie auf den folgenden Seiten.
 
 * [Website mit Preisen für Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/)
+* [Azure Active Directory-Features und -Funktionen](https://www.microsoft.com/cloud-platform/azure-active-directory-features)
 * [Enterprise Mobility + Security](https://www.microsoft.com/cloud-platform/enterprise-mobility-security)
-* [Secure Productive Enterprise](https://www.microsoft.com/secure-productive-enterprise/default.aspx)
+* [Microsoft 365](https://www.microsoft.com/microsoft-365/enterprise)
 
 ## <a name="enable-group-or-user-based-licensing"></a>Aktivieren der gruppen- oder benutzerbasierten Lizenzierung
 
@@ -58,7 +59,7 @@ Einige Microsoft-Dienste sind nicht an allen Standorten verfügbar. Bevor einem 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Die folgenden Links führen zu weiteren Informationen zur Kennwortzurücksetzung mit Azure AD
+Die folgenden Links führen zu weiteren Informationen zur Kennwortzurücksetzung mit Azure AD:
 
 * [**Schnellstart:**](active-directory-passwords-getting-started.md) Informieren Sie sich schnell über die Self-Service-Kennwortverwaltung von Azure AD. 
 * [**Daten:**](active-directory-passwords-data.md) Erfahren Sie, welche Daten erforderlich sind und wie sie für die Kennwortverwaltung verwendet werden.
@@ -68,5 +69,4 @@ Die folgenden Links führen zu weiteren Informationen zur Kennwortzurücksetzung
 * [**Ausführliche technische Informationen:**](active-directory-passwords-how-it-works.md) Steigen Sie tiefer ein, um zu verstehen, wie alles funktioniert.
 * [**Häufig gestellte Fragen (FAQ):**](active-directory-passwords-faq.md) Wie? Warum? Was? Wo? Wer? Wann? - Antworten auf Fragen, die Sie schon immer stellen wollten
 * [**Problembehandlung:**](active-directory-passwords-troubleshoot.md) Erfahren Sie, wie Sie häufig auftretende Probleme bei SSPR beheben.
-
 

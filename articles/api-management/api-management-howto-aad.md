@@ -14,18 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
-translationtype: Human Translation
-ms.sourcegitcommit: dc279718cbb360e611d7e4cfb6961a087159fb01
-ms.openlocfilehash: 7637e6419d17a2d75904fbe63df5f27d4be4bbe3
-ms.lasthandoff: 02/24/2017
+ms.translationtype: HT
+ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
+ms.openlocfilehash: 2fa5c021d9f493004a5beab02529c70b600b9a0d
+ms.contentlocale: de-de
+ms.lasthandoff: 09/02/2017
 
 ---
+
+> [!WARNING]
+> Die Integration von Azure Active Directory ist nur in den Tarifen [Developer und Premium](https://azure.microsoft.com/en-us/pricing/details/api-management/) enthalten.
+
 # <a name="how-to-authorize-developer-accounts-using-azure-active-directory-in-azure-api-management"></a>Autorisieren von Entwicklerkonten mithilfe von Active Directory in Azure API Management
 ## <a name="overview"></a>Übersicht
 Dieser Leitfaden zeigt, wie Sie den Zugriff auf das Entwicklerportal für Benutzer in Azure Active Directory aktivieren. Außerdem erfahren Sie, wie Sie Azure Active Directory-Benutzergruppen verwalten, indem Sie externe Gruppen hinzufügen, die Benutzer eines anderen Azure Active Directory-Verzeichnisses enthalten.
 
 > Zum Ausführen der hier genannten Schritte müssen Sie über ein Azure Active Directory-Verzeichnis verfügen, in dem eine Anwendung erstellt wird.
-> 
 > 
 
 ## <a name="how-to-authorize-developer-accounts-using-azure-active-directory"></a>Autorisieren von Entwicklerkonten mithilfe von Active Directory

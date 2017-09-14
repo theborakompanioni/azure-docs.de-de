@@ -14,14 +14,14 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 07/05/2017
+ms.date: 09/06/2017
 ms.author: glenga
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
-ms.openlocfilehash: 8291986b123ed98b9c2bd4ec915e1a18b6e0cbb7
+ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
+ms.openlocfilehash: 8baa8e950164de64d1cd91c0c5bb51d324bbc807
 ms.contentlocale: de-de
-ms.lasthandoff: 08/30/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="create-your-first-function-using-visual-studio"></a>Erstellen Ihrer ersten Funktion mit Visual Studio
@@ -41,7 +41,7 @@ Installieren Sie für dieses Tutorial Folgendes:
     ![Installation von Visual Studio 2017 mit der Workload „Azure-Entwicklung“](./media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
     
     >[!NOTE]  
-    Nach der Installation von oder dem Upgrade auf Visual Studio 2017 Version 15.3 müssen Sie auch die Visual Studio 2017-Tools für Azure Functions manuell aktualisieren. Sie können die Tools im Menü **Extras** aktualisieren. Navigieren Sie zu **Erweiterungen und Updates...** > **Updates** > **Visual Studio Marketplace** > **Azure Functions and Web Jobs Tools** > **Update**. 
+    >Nach der Installation von Visual Studio 2017 Version 15.3 oder dem Upgrade darauf müssen Sie die Visual Studio 2017-Tools für Azure Functions manuell aktualisieren. Sie können die Tools im Menü **Extras** aktualisieren. Navigieren Sie zu **Erweiterungen und Updates...** > **Updates** > **Visual Studio Marketplace** > **Azure Functions and Web Jobs Tools** > **Update**. 
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
 

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/01/2017
+ms.date: 09/05/2017
 ms.author: tomfitz
 ms.translationtype: HT
-ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
-ms.openlocfilehash: 3e5c9ca546629f782a3d722b49f5fbaf5147e823
+ms.sourcegitcommit: 266b9b7eb228744075627e1e80710e63c27880cc
+ms.openlocfilehash: 9d007e2ce7cc4291eeebe26b887874085c6438b3
 ms.contentlocale: de-de
-ms.lasthandoff: 08/02/2017
+ms.lasthandoff: 09/06/2017
 
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>Zeichenfolgenfunktionen für Azure Resource Manager-Vorlagen
@@ -74,7 +74,7 @@ Eine Zeichenfolge mit der base64-Darstellung.
 
 ### <a name="examples"></a>Beispiele
 
-Das folgende Beispiel zeigt die Funktionsweise der base64-Funktion.
+Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/base64.json) zeigt die Nutzungsweise der base64-Funktion.
 
 ```json
 {
@@ -120,6 +120,18 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | base64Output | String | b25lLCB0d28sIHRocmVl |
 | toStringOutput | String | one, two, three |
 | toJsonOutput | Objekt | {"one": "a", "two": "b"} |
+
+Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/base64.json
+```
+
+Um diese Beispielvorlage mit PowerShell bereitzustellen, verwenden Sie:
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/base64.json
+```
 
 <a id="base64tojson" />
 
@@ -140,7 +152,7 @@ Ein JSON-Objekt.
 
 ### <a name="examples"></a>Beispiele
 
-Im folgenden Beispiel wird die base64ToJson-Funktion zum Konvertieren eines base64-Werts verwendet:
+Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/base64.json) verwendet die base64ToJson-Funktion zum Konvertieren eines base64-Werts:
 
 ```json
 {
@@ -186,6 +198,18 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | base64Output | String | b25lLCB0d28sIHRocmVl |
 | toStringOutput | String | one, two, three |
 | toJsonOutput | Objekt | {"one": "a", "two": "b"} |
+
+Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/base64.json
+```
+
+Um diese Beispielvorlage mit PowerShell bereitzustellen, verwenden Sie:
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/base64.json
+```
 
 <a id="base64tostring" />
 
@@ -206,7 +230,7 @@ Eine Zeichenfolge des konvertierten base64-Werts.
 
 ### <a name="examples"></a>Beispiele
 
-Im folgenden Beispiel wird die base64ToString-Funktion verwendet, um einen base64-Wert zu konvertieren:
+Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/base64.json) verwendet die base64ToString-Funktion zum Konvertieren eines base64-Werts:
 
 ```json
 {
@@ -253,7 +277,17 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | toStringOutput | String | one, two, three |
 | toJsonOutput | Objekt | {"one": "a", "two": "b"} |
 
+Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
 
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/base64.json
+```
+
+Um diese Beispielvorlage mit PowerShell bereitzustellen, verwenden Sie:
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/base64.json
+```
 
 <a id="concat" />
 
@@ -274,7 +308,7 @@ Eine Zeichenfolge oder ein Array aus verketteten Werten.
 
 ### <a name="examples"></a>Beispiele
 
-Das folgende Beispiel zeigt, wie zwei Zeichenfolgenwerte kombiniert werden und eine verkettete Zeichenfolge zurückgeben.
+Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/concat-string.json) zeigt, wie zwei Zeichenfolgenwerte kombiniert werden und eine verkettete Zeichenfolge zurückgegeben wird.
 
 ```json
 {
@@ -302,7 +336,19 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | ---- | ---- | ----- |
 | concatOutput | String | prefix-5yj4yjf5mbg72 |
 
-Im folgenden Beispiel wird veranschaulicht, wie zwei Arrays kombiniert werden.
+Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/concat-string.json
+```
+
+Um diese Beispielvorlage mit PowerShell bereitzustellen, verwenden Sie:
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/concat-string.json
+```
+
+Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/concat-array.json) zeigt, wie zwei Arrays kombiniert werden.
 
 ```json
 {
@@ -343,6 +389,18 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | ---- | ---- | ----- |
 | return | Array | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
 
+Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/concat-array.json
+```
+
+Um diese Beispielvorlage mit PowerShell bereitzustellen, verwenden Sie:
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/concat-array.json
+```
+
 <a id="contains" />
 
 ## <a name="contains"></a>contains
@@ -363,7 +421,7 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 ### <a name="examples"></a>Beispiele
 
-Das folgende Beispiel zeigt die Verwendung von „contains“ mit unterschiedlichen Typen:
+Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/contains.json) zeigt die Verwendung von „contains“ mit unterschiedlichen Typen:
 
 ```json
 {
@@ -425,6 +483,18 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | arrayTrue | Bool | True  |
 | arrayFalse | Bool | False |
 
+Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/contains.json
+```
+
+Um diese Beispielvorlage mit PowerShell bereitzustellen, verwenden Sie:
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/contains.json
+```
+
 <a id="datauri" />
 
 ## <a name="datauri"></a>dataUri
@@ -444,7 +514,7 @@ Eine als Daten-URI formatierte Zeichenfolge.
 
 ### <a name="examples"></a>Beispiele
 
-Im folgenden Beispiel wird ein Wert in einen Daten-URI und ein Daten-URI in eine Zeichenfolge konvertiert:
+Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/datauri.json) konvertiert einen Wert in einen Daten-URI und einen Daten-URI in eine Zeichenfolge:
 
 ```json
 {
@@ -480,6 +550,18 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | ---- | ---- | ----- |
 | dataUriOutput | String | data:text/plain;charset=utf8;base64,SGVsbG8= |
 | toStringOutput | String | Hello, World! |
+
+Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/datauri.json
+```
+
+Um diese Beispielvorlage mit PowerShell bereitzustellen, verwenden Sie:
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/datauri.json
+```
 
 <a id="datauritostring" />
 
@@ -500,7 +582,7 @@ Eine Zeichenfolge, die den konvertierten Wert enthält.
 
 ### <a name="examples"></a>Beispiele
 
-Im folgenden Beispiel wird ein Wert in einen Daten-URI und ein Daten-URI in eine Zeichenfolge konvertiert:
+Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/datauri.json) konvertiert einen Wert in einen Daten-URI und einen Daten-URI in eine Zeichenfolge:
 
 ```json
 {
@@ -537,6 +619,18 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | dataUriOutput | String | data:text/plain;charset=utf8;base64,SGVsbG8= |
 | toStringOutput | String | Hello, World! |
 
+Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/datauri.json
+```
+
+Um diese Beispielvorlage mit PowerShell bereitzustellen, verwenden Sie:
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/datauri.json
+```
+
 <a id="empty" /> 
 
 ## <a name="empty"></a>empty
@@ -556,7 +650,7 @@ Gibt **True** zurück, wenn der Werte leer ist. Andernfalls wird **False** zurü
 
 ### <a name="examples"></a>Beispiele
 
-Im folgenden Beispiel wird überprüft, ob ein Array, Objekt und eine Zeichenfolge leer sind.
+Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/empty.json) überprüft, ob ein Array, ein Objekt und eine Zeichenfolge leer sind.
 
 ```json
 {
@@ -601,7 +695,19 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | ---- | ---- | ----- |
 | arrayEmpty | Bool | True  |
 | objectEmpty | Bool | True  |
-| stringEmpty | Bool | True  |
+| stringEmpty | Bool | true |
+
+Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/empty.json
+```
+
+Um diese Beispielvorlage mit PowerShell bereitzustellen, verwenden Sie:
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/empty.json
+```
 
 <a id="endswith" />
 
@@ -623,7 +729,7 @@ Bestimmt, ob eine Zeichenfolge mit einem Wert endet. Bei dem Vergleich wird Gro�
 
 ### <a name="examples"></a>Beispiele
 
-Das folgende Beispiel zeigt die Verwendung der Funktionen „startsWith“ und „endsWith“:
+Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/startsendswith.json) zeigt die Verwendung der Funktionen startsWith und endsWith:
 
 ```json
 {
@@ -670,6 +776,18 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | endsCapTrue | Bool | True  |
 | endsFalse | Bool | False |
 
+Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/startsendswith.json
+```
+
+Um diese Beispielvorlage mit PowerShell bereitzustellen, verwenden Sie:
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/startsendswith.json
+```
+
 <a id="first" />
 
 ## <a name="first"></a>first
@@ -689,7 +807,7 @@ Ein Zeichenfolgenwert, der dem letzten Zeichen entspricht, bzw. der Typ (Zeichen
 
 ### <a name="examples"></a>Beispiele
 
-Im folgenden Beispiel wird die Verwendung der first-Funktion mit einem Array und einer Zeichenfolge gezeigt.
+Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/first.json) zeigt die Verwendung der first-Funktion mit einem Array und einer Zeichenfolge.
 
 ```json
 {
@@ -723,6 +841,18 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | arrayOutput | String | one |
 | stringOutput | String | O |
 
+Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/first.json
+```
+
+Um diese Beispielvorlage mit PowerShell bereitzustellen, verwenden Sie:
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/first.json
+```
+
 <a id="indexof" />
 
 ## <a name="indexof"></a>indexOf
@@ -743,7 +873,7 @@ Eine ganze Zahl, die die Position des zu suchenden Elements darstellt. Der Wert 
 
 ### <a name="examples"></a>Beispiele
 
-Das folgende Beispiel zeigt die Verwendung der Funktionen „indexOf“ und „lastIndexOf“:
+Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/indexof.json) zeigt die Verwendung der Funktionen indexOf und lastIndexOf:
 
 ```json
 {
@@ -785,6 +915,18 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | lastString | int | 0 |
 | NotFound | int | -1 |
 
+Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/indexof.json
+```
+
+Um diese Beispielvorlage mit PowerShell bereitzustellen, verwenden Sie:
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/indexof.json
+```
+
 <a id="last" />
 
 ## <a name="last"></a>last
@@ -804,7 +946,7 @@ Ein Zeichenfolgenwert, der dem letzten Zeichen entspricht, bzw. der Typ (Zeichen
 
 ### <a name="examples"></a>Beispiele
 
-Im folgenden Beispiel wird die Verwendung der last-Funktion mit einem Array und einer Zeichenfolge gezeigt.
+Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/last.json) zeigt die Verwendung der last-Funktion mit einem Array und einer Zeichenfolge.
 
 ```json
 {
@@ -838,6 +980,18 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | arrayOutput | String | three |
 | stringOutput | String | e |
 
+Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/last.json
+```
+
+Um diese Beispielvorlage mit PowerShell bereitzustellen, verwenden Sie:
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/last.json
+```
+
 <a id="lastindexof" />
 
 ## <a name="lastindexof"></a>lastIndexOf
@@ -858,7 +1012,7 @@ Eine ganze Zahl, die die letzte Position des zu suchenden Elements darstellt. De
 
 ### <a name="examples"></a>Beispiele
 
-Das folgende Beispiel zeigt die Verwendung der Funktionen „indexOf“ und „lastIndexOf“:
+Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/indexof.json) zeigt die Verwendung der Funktionen indexOf und lastIndexOf:
 
 ```json
 {
@@ -900,9 +1054,21 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | lastString | int | 0 |
 | NotFound | int | -1 |
 
+Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/indexof.json
+```
+
+Um diese Beispielvorlage mit PowerShell bereitzustellen, verwenden Sie:
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/indexof.json
+```
+
 <a id="length" />
 
-## <a name="length"></a>Länge
+## <a name="length"></a>length
 `length(string)`
 
 Gibt die Anzahl von Zeichen in einer Zeichenfolge bzw. von Elementen in einem Array zurück.
@@ -919,7 +1085,7 @@ Eine ganze Zahl.
 
 ### <a name="examples"></a>Beispiele
 
-Im folgenden Beispiel wird die Verwendung von „length“ mit einem Array und einer Zeichenfolge gezeigt:
+Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/length.json) zeigt die Verwendung von „length“ mit einem Array und einer Zeichenfolge:
 
 ```json
 {
@@ -960,6 +1126,18 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | arraylength | int | 3 |
 | stringLength | int | 13 |
 
+Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/length.json
+```
+
+Um diese Beispielvorlage mit PowerShell bereitzustellen, verwenden Sie:
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/length.json
+```
+
 <a id="padleft" />
 
 ## <a name="padleft"></a>padLeft
@@ -983,7 +1161,7 @@ Eine Zeichenfolge mit mindestens der angegebenen Zeichenanzahl.
 
 ### <a name="examples"></a>Beispiele
 
-Das folgende Beispiel zeigt, wie Sie den vom Benutzer angegebenen Parameterwert auffüllen, indem Sie das Nullzeichen hinzufügen, bis er die Gesamtzahl der Zeichen erreicht. 
+Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/padleft.json) zeigt, wie Sie den vom Benutzer angegebenen Parameterwert auffüllen, indem Sie das Nullzeichen hinzufügen, bis er die Gesamtzahl der Zeichen erreicht. 
 
 ```json
 {
@@ -1011,6 +1189,18 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | ---- | ---- | ----- |
 | stringOutput | String | 0000000123 |
 
+Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/padleft.json
+```
+
+Um diese Beispielvorlage mit PowerShell bereitzustellen, verwenden Sie:
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/padleft.json
+```
+
 <a id="replace" />
 
 ## <a name="replace"></a>replace
@@ -1032,7 +1222,7 @@ Eine Zeichenfolge mit den ersetzten Zeichen.
 
 ### <a name="examples"></a>Beispiele
 
-Das folgende Beispiel zeigt, wie Sie aus einer von einem Benutzer bereitgestellten Zeichenfolge alle Gedankenstriche entfernen und einen Teil der Zeichenfolge durch eine andere Zeichenfolge ersetzen.
+Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/replace.json) zeigt, wie Sie aus einer von einem Benutzer bereitgestellten Zeichenfolge alle Gedankenstriche entfernen und einen Teil der Zeichenfolge durch eine andere Zeichenfolge ersetzen.
 
 ```json
 {
@@ -1065,6 +1255,18 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | firstOutput | String | 1231231234 |
 | secodeOutput | String | 123-123-xxxx |
 
+Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/replace.json
+```
+
+Um diese Beispielvorlage mit PowerShell bereitzustellen, verwenden Sie:
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/replace.json
+```
+
 <a id="skip" />
 
 ## <a name="skip"></a>skip
@@ -1085,7 +1287,7 @@ Ein Array oder eine Zeichenfolge.
 
 ### <a name="examples"></a>Beispiele
 
-Im folgenden Beispiel wird die angegebene Anzahl von Elementen im Array und Zeichen in der Zeichenfolge übersprungen.
+In der folgenden [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/skip.json) wird die angegebene Anzahl von Elementen im Array und von Zeichen in einer Zeichenfolge übersprungen.
 
 ```json
 {
@@ -1134,6 +1336,18 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | arrayOutput | Array | ["three"] |
 | stringOutput | String | two three |
 
+Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/skip.json
+```
+
+Um diese Beispielvorlage mit PowerShell bereitzustellen, verwenden Sie:
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/skip.json
+```
+
 <a id="split" />
 
 ## <a name="split"></a>split
@@ -1154,7 +1368,7 @@ Ein Array der Zeichenfolgen.
 
 ### <a name="examples"></a>Beispiele
 
-Im nächsten Beispiel wird die Eingabezeichenfolge mit einem Komma sowie entweder mit einem Komma oder Semikolon getrennt.
+In der folgenden [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/split.json) wird die Eingabezeichenfolge mit einem Komma sowie entweder mit einem Komma oder Semikolon getrennt.
 
 ```json
 {
@@ -1194,6 +1408,18 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | firstOutput | Array | ["one", "two", "three"] |
 | secondOutput | Array | ["one", "two", "three"] |
 
+Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/split.json
+```
+
+Um diese Beispielvorlage mit PowerShell bereitzustellen, verwenden Sie:
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/split.json
+```
+
 <a id="startswith" />
 
 ## <a name="startswith"></a>startsWith
@@ -1214,7 +1440,7 @@ Stellt fest, ob eine Zeichenfolge mit einem bestimmten Wert beginnt. Bei dem Ver
 
 ### <a name="examples"></a>Beispiele
 
-Das folgende Beispiel zeigt die Verwendung der Funktionen „startsWith“ und „endsWith“:
+Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/startsendswith.json) zeigt die Verwendung der Funktionen startsWith und endsWith:
 
 ```json
 {
@@ -1261,6 +1487,18 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | endsCapTrue | Bool | True  |
 | endsFalse | Bool | False |
 
+Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/startsendswith.json
+```
+
+Um diese Beispielvorlage mit PowerShell bereitzustellen, verwenden Sie:
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/startsendswith.json
+```
+
 <a id="string" />
 
 ## <a name="string"></a>string
@@ -1280,7 +1518,7 @@ Eine Zeichenfolge des konvertierten Werts.
 
 ### <a name="examples"></a>Beispiele
 
-Das folgende Beispiel zeigt das Konvertieren verschiedener Typen von Werten in Zeichenfolgen:
+Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/string.json) zeigt das Konvertieren verschiedener Typen von Werten in Zeichenfolgen:
 
 ```json
 {
@@ -1333,6 +1571,18 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | arrayOutput | String | ["a","b","c"] |
 | intOutput | String | 5 |
 
+Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/string.json
+```
+
+Um diese Beispielvorlage mit PowerShell bereitzustellen, verwenden Sie:
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/string.json
+```
+
 <a id="substring" />
 
 ## <a name="substring"></a>substring
@@ -1367,7 +1617,7 @@ Die Funktion schlägt fehl, wenn die Teilzeichenfolge über das Ende der Zeichen
 
 ### <a name="examples"></a>Beispiele
 
-Im folgenden Beispiel wird eine Teilzeichenfolge aus einem Parameter extrahiert.
+Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/substring.json) extrahiert eine Teilzeichenfolge aus einem Parameter.
 
 ```json
 {
@@ -1395,6 +1645,17 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | ---- | ---- | ----- |
 | substringOutput | String | two |
 
+Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/substring.json
+```
+
+Um diese Beispielvorlage mit PowerShell bereitzustellen, verwenden Sie:
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/substring.json
+```
 
 <a id="take" />
 
@@ -1416,7 +1677,7 @@ Ein Array oder eine Zeichenfolge.
 
 ### <a name="examples"></a>Beispiele
 
-Im folgenden Beispiel wird die angegebene Anzahl von Elementen aus dem Array und Zeichen aus der Zeichenfolge entnommen.
+In der folgenden [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/take.json) wird die angegebene Anzahl von Elementen aus dem Array und von Zeichen aus einer Zeichenfolge entnommen.
 
 ```json
 {
@@ -1465,6 +1726,18 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | arrayOutput | Array | ["one", "two"] |
 | stringOutput | String | on |
 
+Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/take.json
+```
+
+Um diese Beispielvorlage mit PowerShell bereitzustellen, verwenden Sie:
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/take.json
+```
+
 <a id="tolower" />
 
 ## <a name="tolower"></a>toLower
@@ -1484,7 +1757,7 @@ Die in Kleinbuchstaben konvertierte Zeichenfolge.
 
 ### <a name="examples"></a>Beispiele
 
-Im folgenden Beispiel wird ein Parameterwert in Klein- und Großbuchstaben konvertiert.
+Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/tolower.json) konvertiert einen Parameterwert in Klein- und Großbuchstaben.
 
 ```json
 {
@@ -1516,6 +1789,18 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | ---- | ---- | ----- |
 | toLowerOutput | String | one two three |
 | toUpperOutput | String | ONE TWO THREE |
+
+Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/tolower.json
+```
+
+Um diese Beispielvorlage mit PowerShell bereitzustellen, verwenden Sie:
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/tolower.json
+```
 
 <a id="toupper" />
 
@@ -1536,7 +1821,7 @@ Die in Großbuchstaben konvertierte Zeichenfolge.
 
 ### <a name="examples"></a>Beispiele
 
-Im folgenden Beispiel wird ein Parameterwert in Klein- und Großbuchstaben konvertiert.
+Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/tolower.json) konvertiert einen Parameterwert in Klein- und Großbuchstaben.
 
 ```json
 {
@@ -1569,6 +1854,18 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | toLowerOutput | String | one two three |
 | toUpperOutput | String | ONE TWO THREE |
 
+Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/tolower.json
+```
+
+Um diese Beispielvorlage mit PowerShell bereitzustellen, verwenden Sie:
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/tolower.json
+```
+
 <a id="trim" />
 
 ## <a name="trim"></a>trim
@@ -1588,7 +1885,7 @@ Die Zeichenfolge ohne vorangestellte oder nachstehende Leerzeichen.
 
 ### <a name="examples"></a>Beispiele
 
-Im folgenden Beispiel werden die Leerzeichen aus dem Parameter entfernt.
+Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/trim.json) entfernt die Leerzeichen aus dem Parameter.
 
 ```json
 {
@@ -1615,6 +1912,18 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | Name | Typ | Wert |
 | ---- | ---- | ----- |
 | return | String | one two three |
+
+Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/trim.json
+```
+
+Um diese Beispielvorlage mit PowerShell bereitzustellen, verwenden Sie:
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/trim.json
+```
 
 <a id="uniquestring" />
 
@@ -1673,7 +1982,7 @@ Eine Zeichenfolge mit 13 Zeichen.
 
 ### <a name="examples"></a>Beispiele
 
-Im folgenden Beispiel werden Ergebnisse von Uniquestring zurückgegeben:
+Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/uniquestring.json) gibt die Ergebnisse von uniqueString zurück:
 
 ```json
 {
@@ -1691,6 +2000,18 @@ Im folgenden Beispiel werden Ergebnisse von Uniquestring zurückgegeben:
         }
     }
 }
+```
+
+Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/uniquestring.json
+```
+
+Um diese Beispielvorlage mit PowerShell bereitzustellen, verwenden Sie:
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/uniquestring.json
 ```
 
 <a id="uri" />
@@ -1721,7 +2042,7 @@ Im folgenden Beispiel wird veranschaulicht, wie basierend auf dem Wert der über
 "templateLink": "[uri(deployment().properties.templateLink.uri, 'nested/azuredeploy.json')]"
 ```
 
-Im folgenden Beispiel wird die Verwendung von „uri“, „uriComponent“ und „uriComponentToString“ gezeigt:
+Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/uri.json) zeigt die Verwendung von „uri“, uriComponent und uriComponentToString:
 
 ```json
 {
@@ -1757,6 +2078,18 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | uriOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
 | componentOutput | String | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
 | toStringOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
+
+Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/uri.json
+```
+
+Um diese Beispielvorlage mit PowerShell bereitzustellen, verwenden Sie:
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/uri.json
+```
 
 <a id="uricomponent" />
 
@@ -1777,7 +2110,7 @@ Eine Zeichenfolge des als URI codierten Werts.
 
 ### <a name="examples"></a>Beispiele
 
-Im folgenden Beispiel wird die Verwendung von „uri“, „uriComponent“ und „uriComponentToString“ gezeigt:
+Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/uri.json) zeigt die Verwendung von „uri“, uriComponent und uriComponentToString:
 
 ```json
 {
@@ -1814,6 +2147,17 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | componentOutput | String | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
 | toStringOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
 
+Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/uri.json
+```
+
+Um diese Beispielvorlage mit PowerShell bereitzustellen, verwenden Sie:
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/uri.json
+```
 
 <a id="uricomponenttostring" />
 
@@ -1834,7 +2178,7 @@ Eine decodierte Zeichenfolge des als URI codierten Werts.
 
 ### <a name="examples"></a>Beispiele
 
-Im folgenden Beispiel wird die Verwendung von „uri“, „uriComponent“ und „uriComponentToString“ gezeigt:
+Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/uri.json) zeigt die Verwendung von „uri“, uriComponent und uriComponentToString:
 
 ```json
 {
@@ -1871,6 +2215,17 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | componentOutput | String | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
 | toStringOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
 
+Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/uri.json
+```
+
+Um diese Beispielvorlage mit PowerShell bereitzustellen, verwenden Sie:
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/uri.json
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Eine Beschreibung der Abschnitte in einer Azure Resource Manager-Vorlage finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](resource-group-authoring-templates.md).

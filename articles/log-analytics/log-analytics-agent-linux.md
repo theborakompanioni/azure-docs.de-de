@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/21/2017
+ms.date: 09/05/2017
 ms.author: magoedte
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: 1c05f68235aafd0fa098a3b0edaba1258df09380
+ms.sourcegitcommit: 4eb426b14ec72aaa79268840f23a39b15fee8982
+ms.openlocfilehash: 17b451b1fc91cf9fdc895ad28f2c455af5d28b07
 ms.contentlocale: de-de
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 09/06/2017
 
 ---
 
@@ -265,7 +265,7 @@ Die Agent-Pakete können deinstalliert werden, indem Sie die SH-Bundledatei mit 
 ### <a name="issue-you-see-a-500-and-404-error-in-the-log-file-right-after-onboarding"></a>Problem: In der Protokolldatei sind direkt nach der Integration die Fehler 500 und 404 enthalten.
 Dies ist ein bekanntes Problem, das beim ersten Hochladen von Linux-Daten in einen OMS-Arbeitsbereich auftritt. Gesendete Daten und die Ausführung des Diensts sind davon nicht betroffen.
 
-### <a name="issue--you-are-not-seeing-any-data-in-the-oms-portal"></a>Problem: Im OMS-Portal werden keine Daten angezeigt.
+### <a name="issue-you-are-not-seeing-any-data-in-the-oms-portal"></a>Problem: Im OMS-Portal werden keine Daten angezeigt.
 
 #### <a name="probable-causes"></a>Mögliche Ursachen
 
@@ -281,4 +281,5 @@ Dies ist ein bekanntes Problem, das beim ersten Hochladen von Linux-Daten in ein
 
     >[!NOTE]
     >Dieses Problem wurde ab der Agent-Version 1.1.0-28 behoben.
-> 
+
+

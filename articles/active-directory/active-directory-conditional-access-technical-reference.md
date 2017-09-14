@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/28/2017
+ms.date: 09/01/2017
 ms.author: markvi
-ms.reviewer: calebb
+ms.reviewer: spunukol
 ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
-ms.openlocfilehash: f96189735512090f993f61c0d64a249f650ea2a2
+ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
+ms.openlocfilehash: f3d8bdbfc29ca1008006837512c0e6ae8cb8f6fe
 ms.contentlocale: de-de
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 09/02/2017
 
 ---
 # <a name="azure-active-directory-conditional-access-technical-reference"></a>Technische Referenz zum bedingten Azure Active Directory-Zugriff
@@ -28,7 +28,11 @@ In diesem Thema erhalten Sie Supportinformationen für die folgenden Elemente ei
 
 - Zuweisungen von Cloud-Apps
 
-- Bedingungen für Client-Apps
+- Geräteplattformbedingung 
+
+- Client-Apps-Bedingung
+
+- Genehmigte Client-App als Voraussetzung 
 
 
 
@@ -75,7 +79,27 @@ Außer den Cloud-Apps von Microsoft können Sie den folgenden Typen von Cloud-Ap
 - Anwendungen, die den Azure AD-Anwendungsproxy verwenden. 
 
 
-## <a name="client-apps-conditions"></a>Bedingungen für Client-Apps 
+## <a name="device-platforms-condition"></a>Geräteplattformbedingung
+
+In einer Richtlinie zum bedingten Zugriff können Sie die Geräteplattformbedingung konfigurieren, um die Richtlinie mit dem Betriebssystem zu verknüpfen, das auf einem Client ausgeführt wird.
+
+![Kontrolle](./media/active-directory-conditional-access-technical-reference/41.png)
+
+Für den bedingten Azure AD-Zugriff werden folgende Geräteplattformen unterstützt:
+
+- Android
+
+- iOS
+
+- Windows Phone
+
+- Windows
+
+- macOS (Vorschauversion)
+
+
+
+## <a name="client-apps-condition"></a>Client-Apps-Bedingung 
 
 Wenn Sie eine Richtlinie für bedingten Zugriff konfigurieren, können Sie eine [Client-Apps-Bedingung](active-directory-conditional-access-azure-portal.md#client-apps) festlegen. Mit der Client-Apps-Bedingung können Sie den Zugriff gewähren oder verweigern, wenn diese Typen von Client-Apps einen Zugriffsversuch unternehmen:
 
@@ -83,7 +107,6 @@ Wenn Sie eine Richtlinie für bedingten Zugriff konfigurieren, können Sie eine 
 - Mobile Apps und Desktop-Apps
 
 ![Kontrolle](./media/active-directory-conditional-access-technical-reference/03.png)
-
 
 ### <a name="supported-browsers"></a>Unterstützte Browser 
 
@@ -124,11 +147,11 @@ Die folgenden mobilen Apps und Desktopclients unterstützen den bedingten Zugrif
 
 
 | Client-Apps| Zieldienst| Plattform |
-| :-- | --- | --- |
+| --- | --- | --- |
 | MFA- und Standort-Richtlinien für Apps Gerätebasierte Richtlinien werden nicht unterstützt.| Alle Meine Apps-App-Dienste| Android und iOS|
 | Azure RemoteApp| Azure Remote-App-Dienst| Windows 10, Windows 8.1, Windows 7, iOS, Android, Mac OS X|
 | Dynamics CRM-App| Dynamics CRM| Windows 10, Windows 8.1, Windows 7, iOS, Android|
-| Microsoft-Teams Services: steuert alle Dienste, die Microsoft-Teams und alle ihre Client-Apps unterstützen – Windows Desktop, MAC OS X, iOS, Android, WP und Webclient| Microsoft Teams| Windows 10, Windows 8.1, Windows 7, iOS, Android und Mac OS X|
+| Microsoft Teams-Dienste: steuert alle Dienste, die Microsoft-Teams unterstützen, und alle dazugehörigen Client-Apps – Windows Desktop, iOS, Android, WP und Webclient| Microsoft Teams| Windows 10, Windows 8.1, Windows 7, iOS und Android|
 | Mail-/Kalender-/Kontakte-App, Outlook 2016, Outlook 2013 (mit moderner Authentifizierung), Skype for Business (mit moderner Authentifizierung)| Microsoft Office 365 Exchange Online| Windows 10|
 | Outlook 2016, Outlook 2013 (mit moderner Authentifizierung), Skype for Business (mit moderner Authentifizierung)| Microsoft Office 365 Exchange Online| Windows 8.1, Windows 7|
 | Outlook Mobile-App| Microsoft Office 365 Exchange Online| iOS|
@@ -143,15 +166,46 @@ Die folgenden mobilen Apps und Desktopclients unterstützen den bedingten Zugrif
 
 
 
+## <a name="approved-client-app-requirement"></a>Genehmigte Client-App als Voraussetzung 
+
+Beim Konfigurieren einer Richtlinie zum bedingten Zugriff können Sie angeben, dass der Zugriff nur gestattet werden soll, wenn die Verbindung über eine genehmigte Client-App hergestellt wird. 
+
+![Kontrolle](./media/active-directory-conditional-access-technical-reference/21.png)
+
+Genehmigte Client-Apps für diese Einstellung:
+
+- Microsoft Excel
+
+- Microsoft OneDrive
+
+- Microsoft Outlook
+
+- Microsoft OneNote
+
+- Microsoft PowerPoint
+
+- Microsoft SharePoint
+
+- Microsoft Skype for Business
+
+- Microsoft Teams
+
+- Microsoft Visio
+
+- Microsoft Word
 
 
+**Hinweise:**
 
+- Diese Apps unterstützen die mobile Anwendungsverwaltung (Mobile Application Management, MAM) von Microsoft Intune.
 
+- Für diese Anforderung gilt Folgendes:
 
+    - Sie unterstützt nur iOS und Android als [Geräteplattformbedingung](#device-platforms-condition). 
 
-
-
-
+    - **Browser** wird als [Client-App-Bedingung](#supported-browsers) nicht unterstützt. 
+    
+    - Sie hat Vorrang vor der [Client-App-Bedingung](#supported-mobile-apps-and-desktop-clients) **Mobile Apps und Desktopclients** (sofern ausgewählt).  
 
 
 ## <a name="next-steps"></a>Nächste Schritte

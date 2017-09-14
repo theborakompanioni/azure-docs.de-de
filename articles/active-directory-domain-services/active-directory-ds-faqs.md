@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/28/2017
+ms.date: 09/05/2017
 ms.author: maheshu
 ms.translationtype: HT
-ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
-ms.openlocfilehash: 193e59c610d5c5b553469cf2ea2ecc150236ac27
+ms.sourcegitcommit: 4eb426b14ec72aaa79268840f23a39b15fee8982
+ms.openlocfilehash: e8c2a8a7c3b5d61b2524eecceeaa4638fada78b8
 ms.contentlocale: de-de
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 09/06/2017
 
 ---
 # <a name="azure-active-directory-domain-services-frequently-asked-questions-faqs"></a>Azure Active Directory Domain Services: häufig gestellte Fragen
@@ -80,6 +80,9 @@ Ja. Weitere Informationen hierzu finden Sie in der [Preisübersicht](https://azu
 
 #### <a name="is-there-a-free-trial-for-the-service"></a>Gibt es eine kostenlose Testversion des Diensts?
 Dieser Dienst ist in der kostenlosen Testversion von Azure enthalten. Sie können sich für eine [kostenlose einmonatige Testversion von Azure](https://azure.microsoft.com/pricing/free-trial/)registrieren.
+
+#### <a name="can-i-pause-an-azure-ad-domain-services-managed-domain"></a>Kann ich eine durch Azure AD Domain Services verwaltete Domäne aussetzen? 
+Nein. Sobald Sie eine durch Azure AD Domain Services verwaltete Domäne aktiviert haben, ist der Dienst in dem ausgewählten virtuellen Netzwerk verfügbar, bis Sie die verwaltete Domäne deaktivieren oder löschen. Es gibt keine Möglichkeit, den Dienst auszusetzen. Die Abrechnung erfolgt weiterhin auf Stundenbasis, bis Sie die verwaltete Domäne löschen.
 
 #### <a name="can-i-get-azure-ad-domain-services-as-part-of-enterprise-mobility-suite-ems-do-i-need-azure-ad-premium-to-use-azure-ad-domain-services"></a>Kann ich die Azure AD Domain Services als Teil der Enterprise Mobility Suite (EMS) erwerben? Benötige ich Azure AD Premium, um Azure AD-Domänendienste zu verwenden?
 Nein. Azure AD-Domänendienste ist ein Azure-Dienst mit nutzungsbasierter Bezahlung und nicht Teil von EMS. Azure AD Domain Services kann mit allen Editionen von Azure AD verwendet werden kann (Free, Basic und Premium). Die Abrechnung erfolgt auf Stundenbasis, je nach Verwendung.

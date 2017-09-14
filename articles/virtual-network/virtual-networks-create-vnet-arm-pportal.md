@@ -17,15 +17,15 @@ ms.date: 07/26/2017
 ms.author: jdial
 ms.custom: 
 ms.translationtype: HT
-ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
-ms.openlocfilehash: a31f0524a6fa1de45498f340a27b863a3c627e04
+ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
+ms.openlocfilehash: f82a95ec9543b2d53ef28bf7f15315e23cf4893a
 ms.contentlocale: de-de
-ms.lasthandoff: 08/01/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="create-a-virtual-network-with-multiple-subnets"></a>Erstellen eines virtuellen Netzwerks mit mehreren Subnetzen
 
-In diesem Tutorial erfahren Sie, wie Sie ein einfaches virtuelles Azure-Netzwerk mit separaten öffentlichen und privaten Subnetzen erstellen. Sie können Azure-Ressourcen wie virtuelle Computer, App Service-Umgebungen, VM-Skalierungsgruppen, Azure HDInsight und andere Clouddienste in Subnetzen erstellen. Ressourcen in virtuellen Netzwerken können miteinander und mit Ressourcen in anderen Netzwerken, die mit einem virtuellen Netzwerk verbunden sind, kommunizieren.
+In diesem Tutorial erfahren Sie, wie Sie ein einfaches virtuelles Azure-Netzwerk mit separaten öffentlichen und privaten Subnetzen erstellen. Ressourcen in virtuellen Netzwerken können miteinander und mit Ressourcen in anderen Netzwerken, die mit einem virtuellen Netzwerk verbunden sind, kommunizieren. Sie können Azure-Ressourcen wie virtuelle Computer, App Service-Umgebungen, VM-Skalierungsgruppen, Azure HDInsight und Clouddienste in denselben oder in unterschiedlichen Subnetzen innerhalb eines virtuellen Netzwerks erstellen. Durch die Erstellung von Ressourcen in unterschiedlichen Subnetzen können Sie den ein- und ausgehenden Netzwerkdatenverkehr von Subnetzen mithilfe von [Netzwerksicherheitsgruppen](virtual-networks-create-nsg-arm-pportal.md) unabhängig voneinander filtern und über virtuelle Netzwerkgeräte wie eine Firewall [Datenverkehr zwischen Subnetzen weiterleiten](virtual-network-create-udr-arm-ps.md), wenn Sie diese Option festlegen. 
 
 In den folgenden Abschnitten werden die Schritte beschrieben, mit denen Sie ein virtuelles Netzwerk über das [Azure-Portal](#portal), die Azure-Befehlszeilenschnittstelle ([Azure CLI](#azure-cli)), [Azure PowerShell](#powershell) und eine [Azure Resource Manager-Vorlage](#resource-manager-template) erstellen können. Das Ergebnis ist identisch, unabhängig davon, mit welchem Tool Sie das virtuelle Netzwerk erstellen. Klicken Sie auf den Link für ein Tool, um zum entsprechenden Abschnitt des Tutorials zu wechseln. Erfahren Sie mehr über alle Einstellungen für [virtuelle Netzwerke](virtual-network-manage-network.md) und [Subnetze](virtual-network-manage-subnet.md).
 
@@ -47,12 +47,13 @@ Dieser Artikel enthält die Schritte zum Erstellen eines virtuellen Netzwerks ü
     |Abonnement und Standort|Wählen Sie Ihr Abonnement und Ihren Standort aus.
 
     Wenn Sie noch nicht mit Azure vertraut sind, informieren Sie sich über [Ressourcengruppen](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group), [Abonnements](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) und [Standorte](https://azure.microsoft.com/regions) (die auch als *Regionen* bezeichnet werden).
-4. Im Portal können Sie beim Erstellen eines virtuellen Netzwerks nur ein Subnetz erstellen. In diesem Tutorial erstellen Sie nach dem virtuellen Netzwerk ein zweites Subnetz. Sie können später über das Internet zugängliche Ressourcen im Subnetz **Public** erstellen. Sie können auch andere Ressourcen, auf die nicht über das Internet zugegriffen werden kann, im Subnetz **Private** erstellen. Geben Sie zum Erstellen des zweiten Subnetzes oben auf der Seite **myVnet** im Feld **Ressourcen suchen** ein. Klicken Sie in den Suchergebnissen auf **myVnet**. Wenn Ihr Abonnement mehrere virtuelle Netzwerke mit dem gleichen Namen umfasst, überprüfen Sie die Ressourcengruppen, die unter den einzelnen virtuellen Netzwerken aufgeführt werden. Achten Sie darauf, auf das Suchergebnis **myVnet** mit der Ressourcengruppe **myResourceGroup** zu klicken.
+4. Im Portal können Sie beim Erstellen eines virtuellen Netzwerks nur ein Subnetz erstellen. In diesem Tutorial erstellen Sie nach dem virtuellen Netzwerk ein zweites Subnetz. Sie können später über das Internet zugängliche Ressourcen im Subnetz **Öffentlich** erstellen. Sie können auch andere Ressourcen, auf die nicht über das Internet zugegriffen werden kann, im Subnetz **Private** erstellen. Geben Sie zum Erstellen des zweiten Subnetzes oben auf der Seite **myVnet** im Feld **Ressourcen suchen** ein. Klicken Sie in den Suchergebnissen auf **myVnet**. Wenn Ihr Abonnement mehrere virtuelle Netzwerke mit dem gleichen Namen umfasst, überprüfen Sie die Ressourcengruppen, die unter den einzelnen virtuellen Netzwerken aufgeführt werden. Achten Sie darauf, auf das Suchergebnis **myVnet** mit der Ressourcengruppe **myResourceGroup** zu klicken.
 5. Klicken Sie auf dem eingeblendeten Blatt **myVnet** unter **EINSTELLUNGEN** auf **Subnetze**.
 6. Klicken Sie auf dem Blatt **myVnet: Subnetze** auf **+ Subnetz**.
 7. Geben Sie auf dem Blatt **Subnetz hinzufügen** unter **Name**, den Namen **Private** ein. Geben Sie unter **Adressenbereich** den Wert **10.0.1.0/24** ein.  Klicken Sie auf **OK**.
 8. Überprüfen Sie die Subnetze auf dem Blatt **myVnet: Subnetze**. Die von Ihnen erstellten Subnetze **Public** und **Private** werden angezeigt.
-9. **Optional:** Zum Löschen der Ressourcen, die Sie in diesem Tutorial erstellt haben, führen Sie die Schritte im Abschnitt [Löschen von Ressourcen](#delete-portal) in diesem Artikel aus.
+9. **Optional:** Führen Sie die unter [Nächste Schritte](#next-steps) aufgeführten zusätzlichen Tutorials durch, um den ein- und ausgehenden Netzwerkdatenverkehr aller Subnetze mithilfe von Netzwerksicherheitsgruppen zu filtern, den Datenverkehr zwischen Subnetzen über ein virtuelles Netzwerkgerät weiterzuleiten oder das virtuelle Netzwerk mit anderen virtuellen Netzwerken oder lokalen Netzwerken zu verbinden.
+10. **Optional:** Löschen Sie die Ressourcen, die Sie in diesem Tutorial erstellt haben, indem Sie die Schritte unter [Löschen von Ressourcen](#delete-portal) durchführen.
 
 ## <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
@@ -90,7 +91,8 @@ Die Azure-CLI-Befehle sind unter Windows, Linux und macOS identisch. Es gibt jed
     az network vnet subnet list --resource-group myResourceGroup --vnet-name myVnet --output table
     ```
 
-5. **Optional:** Zum Löschen der Ressourcen, die Sie in diesem Tutorial erstellt haben, führen Sie die Schritte im Abschnitt [Löschen von Ressourcen](#delete-cli) in diesem Artikel aus.
+5. **Optional:** Führen Sie die unter [Nächste Schritte](#next-steps) aufgeführten zusätzlichen Tutorials durch, um den ein- und ausgehenden Netzwerkdatenverkehr aller Subnetze mithilfe von Netzwerksicherheitsgruppen zu filtern, den Datenverkehr zwischen Subnetzen über ein virtuelles Netzwerkgerät weiterzuleiten oder das virtuelle Netzwerk mit anderen virtuellen Netzwerken oder lokalen Netzwerken zu verbinden.
+6. **Optional**: Löschen Sie die Ressourcen, die Sie in diesem Tutorial erstellt haben, indem Sie die Schritte unter [Löschen von Ressourcen](#delete-cli) durchführen.
 
 ## <a name="powershell"></a>PowerShell
 
@@ -128,13 +130,17 @@ Die Azure-CLI-Befehle sind unter Windows, Linux und macOS identisch. Es gibt jed
     $Vnet.subnets | Format-Table Name, AddressPrefix
     ```
 
-5. **Optional:** Zum Löschen der Ressourcen, die Sie in diesem Tutorial erstellt haben, führen Sie die Schritte im Abschnitt [Löschen von Ressourcen](#delete-powershell) in diesem Artikel aus.
+5. **Optional:** Führen Sie die unter [Nächste Schritte](#next-steps) aufgeführten zusätzlichen Tutorials durch, um den ein- und ausgehenden Netzwerkdatenverkehr aller Subnetze mithilfe von Netzwerksicherheitsgruppen zu filtern, den Datenverkehr zwischen Subnetzen über ein virtuelles Netzwerkgerät weiterzuleiten oder das virtuelle Netzwerk mit anderen virtuellen Netzwerken oder lokalen Netzwerken zu verbinden.
+6. **Optional**: Löschen Sie die Ressourcen, die Sie in diesem Tutorial erstellt haben, indem Sie die Schritte unter [Löschen von Ressourcen](#delete-powershell) durchführen.
 
 ## <a name="resource-manager-template"></a>Resource Manager-Vorlage
 
 Sie können ein virtuelles Netzwerk über eine Azure Resource Manager-Vorlage bereitstellen. Weitere Informationen zu Vorlagen finden Sie in der [Übersicht über Resource Manager](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#template-deployment). Informationen zum Zugriff auf die Vorlage und den Parametern finden Sie auf der Seite zur Vorlage zum [Erstellen eines virtuellen Netzwerks mit zwei Subnetzen](https://azure.microsoft.com/resources/templates/101-vnet-two-subnets/). Sie können die Vorlage über das [Portal](#template-portal), die [Azure CLI](#template-cli) oder [PowerShell](#template-powershell) bereitstellen.
 
-**Optional:** Zum Löschen der Ressourcen, die Sie in diesem Tutorial erstellt haben, führen Sie die Schritte in den Unterabschnitten von [Löschen von Ressourcen](#delete) in diesem Artikel aus.
+Optionale Schritte nach der Bereitstellung der Vorlage:
+
+1. Führen Sie die unter [Nächste Schritte](#next-steps) aufgeführten zusätzlichen Tutorials durch, um den ein- und ausgehenden Netzwerkdatenverkehr aller Subnetze mithilfe von Netzwerksicherheitsgruppen zu filtern, den Datenverkehr zwischen Subnetzen über ein virtuelles Netzwerkgerät weiterzuleiten oder das virtuelle Netzwerk mit anderen virtuellen Netzwerken oder lokalen Netzwerken zu verbinden.
+2. Löschen Sie die Ressourcen, die Sie in diesem Tutorial erstellt haben, indem Sie die Schritte in allen Unterabschnitten unter [Löschen von Ressourcen](#delete) durchführen.
 
 ### <a name="template-portal"></a>Azure-Portal
 
@@ -226,9 +232,10 @@ Remove-AzureRmResourceGroup -Name myResourceGroup -Force
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zu allen Einstellungen für virtuelle Netzwerke und Subnetze finden Sie unter [Verwalten virtueller Netzwerke](virtual-network-manage-network.md#view-vnet) und [Verwalten von Subnetzen virtueller Netzwerke](virtual-network-manage-subnet.md#create-subnet). Für unterschiedliche Anforderungen gibt es verschiedene Optionen für die Verwendung virtueller Netzwerke und Subnetze in einer Produktionsumgebung.
-- Erstellen Sie [Netzwerksicherheitsgruppen](virtual-networks-nsg.md) für Subnetze, und wenden Sie sie an, um eingehenden und ausgehenden Subnetzdatenverkehr zu filtern.
-- Erstellen Sie einen virtuellen [Windows](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-network%2ftoc.json)- oder [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)-Computer, und verbinden Sie ihn mit einem virtuellen Netzwerk.
-- Erstellen Sie für das Verbinden von zwei virtuellen Netzwerken am selben Azure-Standort ein [Peering zwischen diesen virtuellen Netzwerken](virtual-network-peering-overview.md).
-- Verbinden Sie das virtuelle Netzwerk mit einem lokalen Netzwerk. Verwenden Sie hierfür ein [VPN-Gateway](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) oder eine [Azure ExpressRoute](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md?toc=%2fazure%2fvirtual-network%2ftoc.json)-Verbindung.
+- Informationen zu allen Einstellungen für virtuelle Netzwerke und Subnetze finden Sie unter [Verwalten virtueller Netzwerke](virtual-network-manage-network.md#view-vnet) und [Verwalten von Subnetzen virtueller Netzwerke](virtual-network-manage-subnet.md#create-subnet). Für unterschiedliche Anforderungen gibt es verschiedene Optionen für die Verwendung virtueller Netzwerke und Subnetze in einer Produktionsumgebung.
+- Filtern Sie ein- und ausgehenden Subnetzdatenverkehr, indem Sie [Netzwerksicherheitsgruppen](virtual-networks-nsg.md) erstellen und auf Subnetze anwenden.
+- Leiten Sie den Datenverkehr zwischen Subnetzen über ein virtuelles Netzwerkgerät weiter, indem Sie [benutzerdefinierte Routen](virtual-network-create-udr-arm-ps.md) erstellen und diese auf alle Subnetze anwenden.
+- Erstellen Sie einen virtuellen [Windows](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-network%2ftoc.json)- oder [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)-Computer in einem bestehenden virtuellen Netzwerk.
+- Verbinden Sie zwei virtuelle Netzwerke, indem Sie ein [Peering virtueller Netzwerke](virtual-network-peering-overview.md) zwischen diesen virtuellen Netzwerken erstellen.
+- Verbinden Sie das virtuelle Netzwerk mit einem lokalen Netzwerk über ein [VPN-Gateway](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) oder eine [Azure ExpressRoute](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md?toc=%2fazure%2fvirtual-network%2ftoc.json)-Verbindung.
 

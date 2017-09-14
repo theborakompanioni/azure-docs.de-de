@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 11/18/2016
+ms.date: 8/31/2017
 ms.author: kraigb
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 009b325054737b63d5bdaefbe005d6a613126f52
+ms.translationtype: HT
+ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
+ms.openlocfilehash: 75dcc603327b50718b279f3ce055663ec0bc2596
 ms.contentlocale: de-de
-ms.lasthandoff: 11/17/2016
+ms.lasthandoff: 09/01/2017
 
 ---
 # <a name="accessing-azure-virtual-machines-from-server-explorer"></a>Zugreifen auf virtuelle Computer in Azure über den Server-Explorer
@@ -28,20 +28,20 @@ Mit dem Server-Explorer in Visual Studio können Sie Informationen über die von
 Wenn Sie in Azure gehostete virtuelle Computer verwenden, können Sie über den Server-Explorer auf diese Computer zugreifen. Sie müssen sich zunächst bei Ihrem Azure-Abonnement anmelden, um die mobilen Dienste anzeigen zu können. Öffnen Sie das Kontextmenü für den Azure-Knoten, und wählen Sie **Verbindung mit Microsoft Azure-Abonnement herstellen**aus, um sich anzumelden.
 
 ### <a name="to-get-information-about-your-virtual-machines"></a>So rufen Sie Informationen zu Ihren virtuellen Computern ab
-1. Wählen Sie im Server-Explorer einen virtuellen Computer aus, und drücken Sie anschließend F4, um das Eigenschaftenfenster für den Computer anzuzeigen.
+1. Wählen Sie im Cloud-Explorer einen virtuellen Computer aus, und drücken Sie anschließend die F4-Taste, um das Eigenschaftenfenster für den Computer anzuzeigen.
    
-    Die folgende Tabelle zeigt, welche Eigenschaften verfügbar sind – diese jedoch alle schreibgeschützt. Sie können sie über das [klassische Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885)ändern.
+    Die folgende Tabelle zeigt, welche Eigenschaften verfügbar sind – diese jedoch alle schreibgeschützt. Sie können sie über das [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) ändern.
    
    | Eigenschaft | Beschreibung |
    | --- | --- |
    | DNS-Name |Die URL mit der Internetadresse des virtuellen Computers. |
    | Umgebung |Für einen virtuellen Computer lautet der Wert dieser Eigenschaft immer "Produktion". |
    | Name |Der Name des virtuellen Computers. |
-   | Größe |Die Größe des virtuellen Computers. Diese Eigenschaft gibt die Menge an verfügbarem Arbeitsspeicher und Festplattenspeicher an. Weitere Informationen finden Sie unter "Konfigurieren von Größen für Clouddienste". |
-   | Status |Mögliche Werte lauten "Wird gestartet", "Gestartet", "Wird angehalten", "Angehalten" und "Status wird abgerufen". Wird "Status wird abgerufen" angezeigt, ist der aktuelle Status unbekannt. Die Werte für diese Eigenschaft unterscheiden sich von den Werten, die im [klassischen Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885)verwendet werden. |
-   | SubscriptionID |Die Abonnement-ID für Ihr Azure-Konto. Sie können diese Informationen im [klassischen Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885) anzeigen, indem Sie die Eigenschaften für ein Abonnement öffnen. |
+   | Größe |Die Größe des virtuellen Computers. Diese Eigenschaft gibt die Menge an verfügbarem Arbeitsspeicher und Festplattenspeicher an. Weitere Informationen finden Sie unter [Größen virtueller Computer](https://docs.microsoft.com/azure/cloud-services/cloud-services-sizes-specs). |
+   | Status |Mögliche Werte lauten "Wird gestartet", "Gestartet", "Wird angehalten", "Angehalten" und "Status wird abgerufen". Wird "Status wird abgerufen" angezeigt, ist der aktuelle Status unbekannt. Die Werte für diese Eigenschaft unterscheiden sich von den Werten, die im [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) verwendet werden. |
+   | SubscriptionID |Die Abonnement-ID für Ihr Azure-Konto. Sie können diese Informationen im [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) anzeigen, indem Sie die Eigenschaften für ein Abonnement öffnen. |
 2. Wählen Sie einen Endpunktknoten aus, und zeigen Sie dann das Fenster **Eigenschaften** an.
-3. Die folgende Tabelle beschreibt die verfügbaren Endpunkteigenschaften. Alle Eigenschaften sind schreibgeschützt. Verwenden Sie zum Hinzufügen oder Bearbeiten der Endpunkte für einen virtuellen Computer das [klassische Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885). 
+3. Die folgende Tabelle beschreibt die verfügbaren Endpunkteigenschaften. Alle Eigenschaften sind schreibgeschützt. Verwenden Sie zum Hinzufügen oder Bearbeiten der Endpunkte für einen virtuellen Computer das [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040). 
    
    | Eigenschaft | Beschreibung |
    | --- | --- |

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/13/2017
+ms.date: 09/05/2017
 ms.author: tomfitz
 ms.translationtype: HT
-ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
-ms.openlocfilehash: d7e6bcd669d40cb19de44b646505856ecd8f51a0
+ms.sourcegitcommit: 4eb426b14ec72aaa79268840f23a39b15fee8982
+ms.openlocfilehash: 17fe2bc467acc5542d021961a066940dbecf6120
 ms.contentlocale: de-de
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 09/06/2017
 
 ---
 # <a name="deployment-functions-for-azure-resource-manager-templates"></a>Bereitstellungsfunktionen für Azure Resource Manager-Vorlagen 
@@ -98,7 +98,7 @@ Sie können „deployment()“ verwenden, um basierend auf dem URI der übergeor
 
 ### <a name="example"></a>Beispiel
 
-Im folgenden Beispiel wird das Bereitstellungsobjekt zurückgegeben:
+Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deployment.json) gibt das Bereitstellungsobjekt zurück:
 
 ```json
 {
@@ -138,9 +138,21 @@ Im vorherigen Beispiel wird das folgende Objekt zurückgegeben:
 }
 ```
 
+Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/deployment.json
+```
+
+Um diese Beispielvorlage mit PowerShell bereitzustellen, verwenden Sie:
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/deployment.json
+```
+
 <a id="parameters" />
 
-## <a name="parameters"></a>parameters
+## <a name="parameters"></a>Parameter
 `parameters(parameterName)`
 
 Gibt einen Parameterwert zurück. Der spezifizierte Parametername muss im Parameterabschnitt der Vorlage definiert werden.
@@ -177,7 +189,7 @@ In der Regel verwenden Sie Parameter zum Festlegen von Ressourcenwerten. Im folg
 
 ### <a name="example"></a>Beispiel
 
-Die folgenden Beispiele zeigen eine vereinfachte Nutzungsweise der Parameterfunktion.
+Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/parameters.json) zeigt eine vereinfachte Nutzungsweise der Parameterfunktion.
 
 ```json
 {
@@ -242,6 +254,18 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | arrayOutput | Array | [1, 2, 3] |
 | crossOutput | String | option 1 |
 
+Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/parameters.json
+```
+
+Um diese Beispielvorlage mit PowerShell bereitzustellen, verwenden Sie:
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/parameters.json
+```
+
 <a id="variables" />
 
 ## <a name="variables"></a>variables
@@ -285,7 +309,7 @@ In der Regel verwenden Sie Variablen, um Ihre Vorlage zu vereinfachen, indem Sie
 
 ### <a name="example"></a>Beispiel
 
-Die Beispielvorlage gibt unterschiedliche Variablenwerte zurück.
+Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/variables.json) gibt unterschiedliche Variablenwerte zurück.
 
 ```json
 {
@@ -331,6 +355,18 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | exampleOutput2 | Array | [1, 2, 3, 4] |
 | exampleOutput3 | String | myVariable |
 | exampleOutput4 |  Objekt | {"property1": "value1", "property2": "value2"} |
+
+Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/variables.json
+```
+
+Um diese Beispielvorlage mit PowerShell bereitzustellen, verwenden Sie:
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/variables.json
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Eine Beschreibung der Abschnitte in einer Azure Resource Manager-Vorlage finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](resource-group-authoring-templates.md).

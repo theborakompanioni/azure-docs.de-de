@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 05/13/2017
+ms.date: 08/31/2017
 ms.author: sujayt
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: eb7b6d606d1a7455710be5e1cf0298c368fc8b1e
+ms.translationtype: HT
+ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
+ms.openlocfilehash: 99c08a1efbc610959fb4ba824dcb0601efac5877
 ms.contentlocale: de-de
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="networking-guidance-for-replicating-azure-virtual-machines"></a>Leitfaden für Netzwerke zum Replizieren von virtuellen Azure-Computern
@@ -46,7 +45,7 @@ Wenn Sie eine Azure ExpressRoute- bzw. VPN-Verbindung über ein lokales Netzwerk
 In der Regel schützen Kunden ihre Netzwerke durch Firewalls und/oder Netzwerksicherheitsgruppen (NSGs). Die Firewalls können URL-basierte oder IP-basierte Whitelists zur Steuerung der Netzwerkkonnektivität verwenden. NSGs können Regeln für die Verwendung von IP-Adressbereichen zur Steuerung der Netzwerkkonnektivität zulassen.
 
 >[!IMPORTANT]
-> Authentifizierte Proxy zur Steuerung der Netzwerkkonnektivität werden nicht unterstützt. Zudem kann in diesem Fall die Site Recovery-Replikation nicht aktiviert werden. 
+> Authentifizierte Proxy zur Steuerung der Netzwerkkonnektivität werden nicht unterstützt. Zudem kann in diesem Fall die Site Recovery-Replikation nicht aktiviert werden.
 
 In den folgenden Abschnitten werden die Änderungen an ausgehenden Netzwerkverbindungen erläutert, die bei virtuellen Azure-Computern zur Durchführung der Site Recovery-Replikation vorgenommen werden müssen.
 
@@ -79,34 +78,38 @@ Wenn Sie IP-basierte Firewallproxys oder NSG-Regeln zur Steuerung ausgehender Ve
 
     >[!NOTE]
     > Wenn in Zukunft neue IP-Adressen zu den Office 365-IP-Adressbereichen hinzugefügt werden, müssen Sie neue NSG-Regeln erstellen.
-    
-- IP-Adressen von Site Recovery-Dienstendpunkten ([in einer XML-Datei verfügbar](https://aka.ms/site-recovery-public-ips)), die von Ihrem Zielstandort abhängen: 
+
+- IP-Adressen von Site Recovery-Dienstendpunkten ([in einer XML-Datei verfügbar](https://aka.ms/site-recovery-public-ips)), die von Ihrem Zielstandort abhängen:
 
    **Zielstandort** | **IP-Adressen des Site Recovery-Diensts** |  **IP-Adressen zur Site Recovery-Überwachung**
    --- | --- | ---
-   Ostasien | 52.175.17.132</br>40.83.121.61 | 13.94.47.61
-   Südostasien | 52.187.58.193</br>52.187.169.104 | 13.76.179.223
-   Indien (Mitte) | 52.172.187.37</br>52.172.157.193 | 104.211.98.185
-   Indien, Süden | 52.172.46.220</br>52.172.13.124 | 104.211.224.190
-   USA (Mitte/Norden) | 23.96.195.247</br>23.96.217.22 | 168.62.249.226
-   Nordeuropa | 40.69.212.238</br>13.74.36.46 | 52.169.18.8
-   Westeuropa | 52.166.13.64</br>52.166.6.245 | 40.68.93.145
-   USA (Ost) | 13.82.88.226</br>40.71.38.173 | 104.45.147.24
-   USA (West) | 40.83.179.48</br>13.91.45.163 | 104.40.26.199
-   USA (Mitte/Süden) | 13.84.148.14</br>13.84.172.239 | 104.210.146.250
-   USA (Mitte) | 40.69.144.231</br>40.69.167.116 | 52.165.34.144
-   USA (Ost) 2 | 52.184.158.163</br>52.225.216.31 | 40.79.44.59
-   Japan Ost | 52.185.150.140</br>13.78.87.185 | 138.91.1.105
-   Japan (Westen) | 52.175.146.69</br>52.175.145.200 | 138.91.17.38
-   Brasilien Süd | 191.234.185.172</br>104.41.62.15 | 23.97.97.36
-   Australien (Osten) | 104.210.113.114</br>40.126.226.199 | 191.239.64.144
-   Australien (Südosten) | 13.70.159.158</br>13.73.114.68 | 191.239.160.45
-   Kanada, Mitte | 52.228.36.192</br>52.228.39.52 | 40.85.226.62
-   Kanada, Osten | 52.229.125.98</br>52.229.126.170 | 40.86.225.142
-   USA, Westen-Mitte | 52.161.20.168</br>13.78.230.131 | 13.78.149.209
-   USA, Westen 2 | 52.183.45.166</br>52.175.207.234 | 13.66.228.204
-   UK, Westen | 51.141.3.203</br>51.140.226.176 | 51.141.14.113
-   UK, Süden | 51.140.43.158</br>51.140.29.146 | 51.140.189.52
+   Ostasien | 52.175.17.132 | 13.94.47.61
+   Südostasien | 52.187.58.193 | 13.76.179.223
+   Indien (Mitte) | 52.172.187.37 | 104.211.98.185
+   Indien, Süden | 52.172.46.220 | 104.211.224.190
+   USA (Mitte/Norden) | 23.96.195.247 | 168.62.249.226
+   Nordeuropa | 40.69.212.238 | 52.169.18.8
+   Westeuropa | 52.166.13.64 | 40.68.93.145
+   USA (Ost) | 13.82.88.226 | 104.45.147.24
+   USA (West) | 40.83.179.48 | 104.40.26.199
+   USA (Mitte/Süden) | 13.84.148.14 | 104.210.146.250
+   USA (Mitte) | 40.69.144.231 | 52.165.34.144
+   USA (Ost) 2 | 52.184.158.163 | 40.79.44.59
+   Japan Ost | 52.185.150.140 | 138.91.1.105
+   Japan (Westen) | 52.175.146.69 | 138.91.17.38
+   Brasilien Süd | 191.234.185.172 | 23.97.97.36
+   Australien (Osten) | 104.210.113.114 | 191.239.64.144
+   Australien (Südosten) | 13.70.159.158 | 191.239.160.45
+   Kanada, Mitte | 52.228.36.192 | 40.85.226.62
+   Kanada, Osten | 52.229.125.98 | 40.86.225.142
+   USA, Westen-Mitte | 52.161.20.168 | 13.78.149.209
+   USA, Westen 2 | 52.183.45.166 | 13.66.228.204
+   UK, Westen | 51.141.3.203 | 51.141.14.113
+   UK, Süden | 51.140.43.158 | 51.140.189.52
+   Großbritannien, Süden 2 | 13.87.37.4| 13.87.34.139
+   Großbritannien, Norden | 51.142.209.167 | 13.87.102.68
+   Korea, Mitte | 52.231.28.253 | 52.231.32.85
+   Korea, Süden | 52.231.298.185 | 52.231.200.144
 
 ## <a name="sample-nsg-configuration"></a>Beispielkonfiguration für NSG-Regeln
 In diesem Abschnitt werden die Schritte zur Konfiguration von NSG-Regeln erläutert, um die Site Recovery-Replikation auf einem virtuellen Computer durchführen zu können. Wenn Sie ausgehende Verbindungen anhand von NSG-Regeln steuern, verwenden Sie für alle erforderlichen IP-Adressbereiche die Regeln „Ausgehende HTTPS-Verbindungen zulassen“.
@@ -118,7 +121,7 @@ Wenn der Quellstandort Ihrer VM beispielsweise „USA, Osten“ und Ihr Replikat
 
 >[!IMPORTANT]
 > * Es wird empfohlen, vor der Erstellung der Regeln in einer Netzwerksicherheitsgruppe für die Produktion die erforderlichen NSG-Regeln in einer Test-Netzwerksicherheitsgruppe zu erstellen und sicherzustellen, dass keine Probleme vorliegen.
-> * Um die erforderliche Anzahl von NSG-Regeln zu erstellen, stellen Sie sicher, dass Ihr Abonnement in der Whitelist enthalten ist. Wenden Sie sich an den Support, um den Grenzwert der NSG-Regeln in Ihrem Abonnement zu erhöhen. 
+> * Um die erforderliche Anzahl von NSG-Regeln zu erstellen, stellen Sie sicher, dass Ihr Abonnement in der Whitelist enthalten ist. Wenden Sie sich an den Support, um den Grenzwert der NSG-Regeln in Ihrem Abonnement zu erhöhen.
 
 ### <a name="nsg-rules-on-the-east-us-network-security-group"></a>NSG-Regeln zur Netzwerksicherheitsgruppe für die Region „USA, Osten“
 
@@ -130,7 +133,7 @@ Wenn der Quellstandort Ihrer VM beispielsweise „USA, Osten“ und Ihr Replikat
 
    **Standort** | **IP-Adressen des Site Recovery-Diensts** |  **IP-Adressen zur Site Recovery-Überwachung**
     --- | --- | ---
-   USA (Mitte) | 40.69.144.231</br>40.69.167.116 | 52.165.34.144
+   USA (Mitte) | 40.69.144.231 | 52.165.34.144
 
 ### <a name="nsg-rules-on-the-central-us-network-security-group"></a>NSG-Regeln zur Netzwerksicherheitsgruppe für die Region „USA, Mitte“
 
@@ -144,7 +147,7 @@ Diese Regeln sind erforderlich, damit nach dem Failover die Replikation von der 
 
    **Standort** | **IP-Adressen des Site Recovery-Diensts** |  **IP-Adressen zur Site Recovery-Überwachung**
     --- | --- | ---
-   USA (Ost) | 13.82.88.226</br>40.71.38.173 | 104.45.147.24
+   USA (Ost) | 13.82.88.226 | 104.45.147.24
 
 
 ## <a name="guidelines-for-existing-azure-to-on-premises-expressroutevpn-configuration"></a>Richtlinien für die Konfiguration vorhandener ExpressRoute-Verbindungen zwischen Azure und lokalen Standorten bzw. VPN-Verbindungen

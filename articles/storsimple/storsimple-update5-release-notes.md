@@ -12,13 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 08/23/2017
+ms.date: 08/28/2017
 ms.author: alkohli
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: e68dce72d648171faab930bbb4af9fd61816b19b
+ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
+ms.openlocfilehash: fa7360a44c48d4f15233b937f09285233533a0e8
 ms.contentlocale: de-de
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="storsimple-8000-series-update-5-release-notes"></a>Versionshinweise zu Update 5 der StorSimple 8000-Serie
@@ -43,7 +43,7 @@ Die folgenden wichtigen Verbesserungen und Fehlerbehebungen wurden in Update 5 v
 
     Wenn die Authentifizierungs-URL nicht in den Firewallregeln enthalten ist, wird Benutzern eine kritische Warnung darüber angezeigt, dass ihr StorSimple-Gerät sich nicht beim Dienst authentifizieren konnte. Wenn die Benutzer diese Warnung erhalten, müssen sie die neue Authentifizierungs-URL aufnehmen. Weitere Informationen finden Sie unter [StorSimple-Netzwerkwarnungen](storsimple-8000-manage-alerts.md#networking-alerts).
 
-* **Neue Version von StorSimple Snapshot Manager** – eine neue Version des StorSimple Snapshot Managers wird mit Update 5 veröffentlicht. Es wird empfohlen, auf diese Version zu aktualisieren. Diese Version ist mit allen StorSimple-Geräten kompatibel, auf denen Update 3 oder höher ausgeführt wird. Weitere Informationen finden Sie unter [Bereitstellen des StorSimple Snapshot-Managers](storsimple-snapshot-manager-deployment.md).
+* **Neue Version von StorSimple Snapshot Manager:** Mit Update 5 wird eine neue Version von StorSimple Snapshot Manager veröffentlicht. Sie ist mit allen StorSimple-Geräten mit Update 4 oder höher kompatibel. Es wird empfohlen, auf diese Version zu aktualisieren. Die vorherige Version von StorSimple Snapshot Manager wird für StorSimple-Geräte mit Update 3 oder einer älteren Version verwendet. [Laden Sie die entsprechende Version von StorSimple Snapshot Manager herunter](https://www.microsoft.com/en-us/download/details.aspx?id=44220), und lesen Sie die Informationen zum [Bereitstellen von StorSimple Snapshot Manager](storsimple-snapshot-manager-deployment.md).
 
 
 ## <a name="issues-fixed-in-update-5"></a>Behobene Probleme in Update 5

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/12/2017
+ms.date: 09/05/2017
 ms.author: tomfitz
 ms.translationtype: HT
-ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
-ms.openlocfilehash: 0bd9ec41761c9ce575f3bcf4d1f8e8578b83e01c
+ms.sourcegitcommit: 4eb426b14ec72aaa79268840f23a39b15fee8982
+ms.openlocfilehash: 96840d72b86d0b9487d9a3a6039c7582a2718e7a
 ms.contentlocale: de-de
-ms.lasthandoff: 08/02/2017
+ms.lasthandoff: 09/06/2017
 
 ---
 # <a name="array-and-object-functions-for-azure-resource-manager-templates"></a>Array- und Objektfunktionen für Azure Resource Manager-Vorlagen 
@@ -36,8 +36,8 @@ Resource Manager stellt mehrere Funktionen zum Arbeiten mit Arrays und Objekten 
 * [json](#json)
 * [last](#last)
 * [Länge](#length)
-* [min](#min)
 * [max](#max)
+* [min](#min)
 * [range](#range)
 * [skip](#skip)
 * [take](#take)
@@ -64,7 +64,7 @@ Ein Array.
 
 ### <a name="example"></a>Beispiel
 
-Im folgenden Beispiel wird die Verwendung der array-Funktion mit unterschiedlichen Typen gezeigt.
+In der folgenden [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/array.json) wird die Verwendung der array-Funktion mit unterschiedlichen Typen gezeigt:
 
 ```json
 {
@@ -111,6 +111,18 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | stringOutput | Array | ["a"] |
 | objectOutput | Array | [{"a": "b", "c": "d"}] |
 
+Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/array.json
+```
+
+Stellen Sie diese Beispielvorlage mit PowerShell wie folgt bereit:
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/array.json
+```
+
 <a id="coalesce" />
 
 ## <a name="coalesce"></a>coalesce
@@ -131,7 +143,7 @@ Der Wert des ersten Parameters ungleich NULL, der Zeichenfolge, ganze Zahl, Arra
 
 ### <a name="example"></a>Beispiel
 
-Das folgende Beispiel zeigt die Ausgabe bei unterschiedlichen Verwendungen von „coalesce“.
+Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/coalesce.json) zeigt die Ausgabe bei unterschiedlichen Verwendungen von „coalesce“:
 
 ```json
 {
@@ -185,7 +197,19 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | intOutput | int | 1 |
 | objectOutput | Objekt | {"first": "default"} |
 | arrayOutput | Array | [1] |
-| emptyOutput | Bool | True  |
+| emptyOutput | Bool | true |
+
+Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/coalesce.json
+```
+
+Stellen Sie diese Beispielvorlage mit PowerShell wie folgt bereit:
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/coalesce.json
+```
 
 <a id="concat" />
 
@@ -208,7 +232,7 @@ Eine Zeichenfolge oder ein Array aus verketteten Werten.
 
 ### <a name="example"></a>Beispiel
 
-Im folgenden Beispiel wird veranschaulicht, wie zwei Arrays kombiniert werden.
+In der folgenden [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/concat-array.json) wird veranschaulicht, wie zwei Arrays kombiniert werden:
 
 ```json
 {
@@ -249,7 +273,19 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | ---- | ---- | ----- |
 | return | Array | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
 
-Das folgende Beispiel zeigt, wie zwei Zeichenfolgenwerte kombiniert werden und eine verkettete Zeichenfolge zurückgeben.
+Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/concat-array.json
+```
+
+Stellen Sie diese Beispielvorlage mit PowerShell wie folgt bereit:
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/concat-array.json
+```
+
+Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/concat-string.json) zeigt, wie zwei Zeichenfolgenwerte kombiniert werden und eine verkettete Zeichenfolge zurückgeben:
 
 ```json
 {
@@ -277,6 +313,18 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | ---- | ---- | ----- |
 | concatOutput | String | prefix-5yj4yjf5mbg72 |
 
+Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/concat-string.json
+```
+
+Stellen Sie diese Beispielvorlage mit PowerShell wie folgt bereit:
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/concat-string.json
+```
+
 <a id="contains" />
 
 ## <a name="contains"></a>contains
@@ -297,7 +345,7 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 ### <a name="example"></a>Beispiel
 
-Das folgende Beispiel zeigt die Verwendung von „contains“ mit unterschiedlichen Typen:
+Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/contains.json) zeigt die Verwendung von „contains“ mit unterschiedlichen Typen:
 
 ```json
 {
@@ -359,6 +407,18 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | arrayTrue | Bool | True  |
 | arrayFalse | Bool | False |
 
+Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/contains.json
+```
+
+Stellen Sie diese Beispielvorlage mit PowerShell wie folgt bereit:
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/contains.json
+```
+
 <a id="createarray" />
 
 ## <a name="createarray"></a>createarray
@@ -379,7 +439,7 @@ Ein Array.
 
 ### <a name="example"></a>Beispiel
 
-Das folgende Beispiel zeigt die Verwendung von „createArray“ mit unterschiedlichen Typen:
+Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/createarray.json) zeigt die Verwendung von „createArray“ mit unterschiedlichen Typen:
 
 ```json
 {
@@ -427,6 +487,18 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | objectArray | Array | [{"one": "a", "two": "b", "three": "c"}] |
 | arrayArray | Array | [["one", "two", "three"]] |
 
+Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/createarray.json
+```
+
+Stellen Sie diese Beispielvorlage mit PowerShell wie folgt bereit:
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/createarray.json
+```
+
 <a id="empty" />
 
 ## <a name="empty"></a>empty
@@ -447,7 +519,7 @@ Gibt **True** zurück, wenn der Werte leer ist. Andernfalls wird **False** zurü
 
 ### <a name="example"></a>Beispiel
 
-Im folgenden Beispiel wird überprüft, ob ein Array, Objekt und eine Zeichenfolge leer sind.
+In der folgenden [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/empty.json) wird überprüft, ob ein Array, Objekt und eine Zeichenfolge leer sind:
 
 ```json
 {
@@ -492,7 +564,19 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | ---- | ---- | ----- |
 | arrayEmpty | Bool | True  |
 | objectEmpty | Bool | True  |
-| stringEmpty | Bool | True  |
+| stringEmpty | Bool | true |
+
+Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/empty.json
+```
+
+Stellen Sie diese Beispielvorlage mit PowerShell wie folgt bereit:
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/empty.json
+```
 
 <a id="first" />
 
@@ -513,7 +597,7 @@ Der Typ (Zeichenfolge, ganze Zahl, Array oder Objekt) des ersten Elements in ein
 
 ### <a name="example"></a>Beispiel
 
-Im folgenden Beispiel wird die Verwendung der first-Funktion mit einem Array und einer Zeichenfolge gezeigt.
+In der folgenden [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/first.json) wird die Verwendung der first-Funktion mit einem Array und einer Zeichenfolge gezeigt:
 
 ```json
 {
@@ -547,9 +631,21 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | arrayOutput | String | one |
 | stringOutput | String | O |
 
+Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/first.json
+```
+
+Stellen Sie diese Beispielvorlage mit PowerShell wie folgt bereit:
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/first.json
+```
+
 <a id="intersection" />
 
-## <a name="intersection"></a>Schnittmenge
+## <a name="intersection"></a>intersection
 `intersection(arg1, arg2, arg3, ...)`
 
 Gibt ein einzelnes Array oder ein Objekt mit den gemeinsamen Elementen aus den Parametern zurück.
@@ -568,7 +664,7 @@ Ein Array oder Objekt mit den gemeinsamen Elementen.
 
 ### <a name="example"></a>Beispiel
 
-Im folgenden Beispiel wird die Verwendung von „intersection“ mit Arrays und Objekten gezeigt:
+In der folgenden [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/intersection.json) wird die Verwendung von „intersection“ mit Arrays und Objekten gezeigt:
 
 ```json
 {
@@ -614,6 +710,17 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | objectOutput | Objekt | {"one": "a", "three": "c"} |
 | arrayOutput | Array | ["two", "three"] |
 
+Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/intersection.json
+```
+
+Stellen Sie diese Beispielvorlage mit PowerShell wie folgt bereit:
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/intersection.json
+```
 
 ## <a name="json"></a>json
 `json(arg1)`
@@ -633,7 +740,7 @@ Das JSON-Objekt aus der angegebenen Zeichenfolge oder ein leeres Objekt, wenn **
 
 ### <a name="example"></a>Beispiel
 
-Im folgenden Beispiel wird die Verwendung von „intersection“ mit Arrays und Objekten gezeigt:
+In der folgenden [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/json.json) wird die Verwendung der JSON-Funktion mit Arrays und Objekten gezeigt:
 
 ```json
 {
@@ -661,6 +768,18 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | jsonOutput | Objekt | {"a": "b"} |
 | nullOutput | Boolescher Wert | true |
 
+Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/json.json
+```
+
+Stellen Sie diese Beispielvorlage mit PowerShell wie folgt bereit:
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/json.json
+```
+
 <a id="last" />
 
 ## <a name="last"></a>last
@@ -680,7 +799,7 @@ Der Typ (Zeichenfolge, ganze Zahl, Array oder Objekt) des letzten Elements in ei
 
 ### <a name="example"></a>Beispiel
 
-Im folgenden Beispiel wird die Verwendung der last-Funktion mit einem Array und einer Zeichenfolge gezeigt.
+In der folgenden [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/last.json) wird die Verwendung der last-Funktion mit einem Array und einer Zeichenfolge gezeigt:
 
 ```json
 {
@@ -714,9 +833,21 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | arrayOutput | String | three |
 | stringOutput | String | e |
 
+Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/last.json
+```
+
+Stellen Sie diese Beispielvorlage mit PowerShell wie folgt bereit:
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/last.json
+```
+
 <a id="length" />
 
-## <a name="length"></a>Länge
+## <a name="length"></a>length
 `length(arg1)`
 
 Gibt die Anzahl von Elementen in einem Array bzw. von Zeichen in einer Zeichenfolge zurück.
@@ -733,7 +864,7 @@ Eine ganze Zahl.
 
 ### <a name="example"></a>Beispiel
 
-Im folgenden Beispiel wird die Verwendung von „length“ mit einem Array und einer Zeichenfolge gezeigt:
+In der folgenden [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/length.json) wird die Verwendung von „length“ mit einem Array und einer Zeichenfolge gezeigt:
 
 ```json
 {
@@ -774,6 +905,18 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | arraylength | int | 3 |
 | stringLength | int | 13 |
 
+Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/length.json
+```
+
+Stellen Sie diese Beispielvorlage mit PowerShell wie folgt bereit:
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/length.json
+```
+
 Sie können diese Funktion mit einem Array verwenden, um bei der Erstellung von Ressourcen die Anzahl der Iterationen anzugeben. Im folgenden Beispiel bezieht sich der Parameter **siteNames** auf ein Array von Namen, die bei der Erstellung der Websites verwendet werden.
 
 ```json
@@ -784,58 +927,6 @@ Sie können diese Funktion mit einem Array verwenden, um bei der Erstellung von 
 ```
 
 Weitere Informationen zur Verwendung dieser Funktion mit einem Array finden Sie unter [Erstellen mehrerer Instanzen von Ressourcen im Azure-Ressourcen-Manager](resource-group-create-multiple.md).
-
-<a id="min" />
-
-## <a name="min"></a>Min
-`min(arg1)`
-
-Gibt den kleinsten Wert aus einem Array mit ganzen Zahlen oder einer durch Trennzeichen getrennten Liste mit ganzen Zahlen zurück.
-
-### <a name="parameters"></a>Parameter
-
-| Parameter | Erforderlich | Typ | Beschreibung |
-|:--- |:--- |:--- |:--- |
-| arg1 |Ja |Array mit ganzen Zahlen oder durch Trennzeichen getrennte Liste mit ganzen Zahlen |Die Auflistung, aus der der kleinste Wert abgerufen werden soll. |
-
-### <a name="return-value"></a>Rückgabewert
-
-Ein Ganzzahlwert, der den kleinsten Wert darstellt.
-
-### <a name="example"></a>Beispiel
-
-Im folgenden Beispiel wird gezeigt, wie „min“ mit einem Array und einer Liste mit ganzen Zahlen verwendet wird:
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "arrayToTest": {
-            "type": "array",
-            "defaultValue": [0,3,2,5,4]
-        }
-    },
-    "resources": [],
-    "outputs": {
-        "arrayOutput": {
-            "type": "int",
-            "value": "[min(parameters('arrayToTest'))]"
-        },
-        "intOutput": {
-            "type": "int",
-            "value": "[min(0,3,2,5,4)]"
-        }
-    }
-}
-```
-
-Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
-
-| Name | Typ | Wert |
-| ---- | ---- | ----- |
-| arrayOutput | int | 0 |
-| intOutput | int | 0 |
 
 <a id="max" />
 
@@ -856,7 +947,7 @@ Ein Ganzzahlwert, der den größten Wert darstellt.
 
 ### <a name="example"></a>Beispiel
 
-Im folgenden Beispiel wird gezeigt, wie „max“ mit einem Array und einer Liste mit ganzen Zahlen verwendet wird:
+In der folgenden [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/max.json) wird gezeigt, wie „max“ mit einem Array und einer Liste mit ganzen Zahlen verwendet wird:
 
 ```json
 {
@@ -889,6 +980,82 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | arrayOutput | int | 5 |
 | intOutput | int | 5 |
 
+Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/max.json
+```
+
+Stellen Sie diese Beispielvorlage mit PowerShell wie folgt bereit:
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/max.json
+```
+
+<a id="min" />
+
+## <a name="min"></a>min
+`min(arg1)`
+
+Gibt den kleinsten Wert aus einem Array mit ganzen Zahlen oder einer durch Trennzeichen getrennten Liste mit ganzen Zahlen zurück.
+
+### <a name="parameters"></a>Parameter
+
+| Parameter | Erforderlich | Typ | Beschreibung |
+|:--- |:--- |:--- |:--- |
+| arg1 |Ja |Array mit ganzen Zahlen oder durch Trennzeichen getrennte Liste mit ganzen Zahlen |Die Auflistung, aus der der kleinste Wert abgerufen werden soll. |
+
+### <a name="return-value"></a>Rückgabewert
+
+Ein Ganzzahlwert, der den kleinsten Wert darstellt.
+
+### <a name="example"></a>Beispiel
+
+In der folgenden [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/min.json) wird gezeigt, wie „min“ mit einem Array und einer Liste mit ganzen Zahlen verwendet wird:
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "arrayToTest": {
+            "type": "array",
+            "defaultValue": [0,3,2,5,4]
+        }
+    },
+    "resources": [],
+    "outputs": {
+        "arrayOutput": {
+            "type": "int",
+            "value": "[min(parameters('arrayToTest'))]"
+        },
+        "intOutput": {
+            "type": "int",
+            "value": "[min(0,3,2,5,4)]"
+        }
+    }
+}
+```
+
+Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
+
+| Name | Typ | Wert |
+| ---- | ---- | ----- |
+| arrayOutput | int | 0 |
+| intOutput | int | 0 |
+
+Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/min.json
+```
+
+Stellen Sie diese Beispielvorlage mit PowerShell wie folgt bereit:
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/min.json
+```
+
 <a id="range" />
 
 ## <a name="range"></a>range
@@ -909,7 +1076,7 @@ Ein Array mit ganzen Zahlen.
 
 ### <a name="example"></a>Beispiel
 
-Das folgende Beispiel zeigt die Verwendung der „range“-Funktion:
+Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/range.json) zeigt die Verwendung der range-Funktion:
 
 ```json
 {
@@ -941,6 +1108,18 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | ---- | ---- | ----- |
 | rangeOutput | Array | [5, 6, 7] |
 
+Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/range.json
+```
+
+Stellen Sie diese Beispielvorlage mit PowerShell wie folgt bereit:
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/range.json
+```
+
 <a id="skip" />
 
 ## <a name="skip"></a>skip
@@ -961,7 +1140,7 @@ Ein Array oder eine Zeichenfolge.
 
 ### <a name="example"></a>Beispiel
 
-Im folgenden Beispiel wird die angegebene Anzahl von Elementen im Array und Zeichen in der Zeichenfolge übersprungen.
+In der folgenden [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/skip.json) wird die angegebene Anzahl von Elementen im Array und von Zeichen in der Zeichenfolge übersprungen:
 
 ```json
 {
@@ -1010,6 +1189,18 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | arrayOutput | Array | ["three"] |
 | stringOutput | String | two three |
 
+Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/skip.json
+```
+
+Stellen Sie diese Beispielvorlage mit PowerShell wie folgt bereit:
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/skip.json
+```
+
 <a id="take" />
 
 ## <a name="take"></a>take
@@ -1030,7 +1221,7 @@ Ein Array oder eine Zeichenfolge.
 
 ### <a name="example"></a>Beispiel
 
-Im folgenden Beispiel wird die angegebene Anzahl von Elementen aus dem Array und Zeichen aus der Zeichenfolge entnommen.
+In der folgenden [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/take.json) wird die angegebene Anzahl von Elementen aus dem Array und von Zeichen aus der Zeichenfolge entnommen:
 
 ```json
 {
@@ -1079,6 +1270,18 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | arrayOutput | Array | ["one", "two"] |
 | stringOutput | String | on |
 
+Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/take.json
+```
+
+Stellen Sie diese Beispielvorlage mit PowerShell wie folgt bereit:
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/take.json
+```
+
 <a id="union" />
 
 ## <a name="union"></a>union
@@ -1100,7 +1303,7 @@ Ein Array oder Objekt.
 
 ### <a name="example"></a>Beispiel
 
-Im folgenden Beispiel wird die Verwendung von „union“ mit Arrays und Objekten gezeigt:
+In der folgenden [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/union.json) wird die Verwendung von „union“ mit Arrays und Objekten gezeigt:
 
 ```json
 {
@@ -1145,6 +1348,18 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | ---- | ---- | ----- |
 | objectOutput | Objekt | {"one": "a", "two": "b", "three": "c", "four": "d", "five": "e"} |
 | arrayOutput | Array | ["one", "two", "three", "four"] |
+
+Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/union.json
+```
+
+Stellen Sie diese Beispielvorlage mit PowerShell wie folgt bereit:
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/union.json
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Eine Beschreibung der Abschnitte in einer Azure Resource Manager-Vorlage finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](resource-group-authoring-templates.md).
