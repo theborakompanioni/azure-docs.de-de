@@ -1,5 +1,6 @@
 {
-	"build_entry_point": "docs",  "need_generate_pdf": false,
+	"build_entry_point": "docs",
+	"need_generate_pdf": false,
 	"need_generate_intellisense": false,
 	"enable_push_aggregation": true,
 	"enable_pull_request_aggregation": true,
@@ -34,7 +35,8 @@
 	"need_preview_pull_request": false,
 	"git_repository_url_open_to_public_contributors": "https://github.com/Microsoft/azure-docs.de-de",
 	"git_repository_branch_open_to_public_contributors": "live",
-	"enable_incremental_build": true,  "dependent_repositories": [
+	"enable_incremental_build": true,
+	"dependent_repositories": [
 		{
 			"path_to_root": "_themes",
 			"url": "https://github.com/Microsoft/templates.docs.msft.de-de",
