@@ -3,7 +3,7 @@ title: "MFA SDK für benutzerdefinierte Apps | Microsoft Docs"
 description: "Dieser Artikel erläutert, wie Sie das Azure MFA SDK herunterladen und verwenden, um die Überprüfung in zwei Schritten für Ihre benutzerdefinierten Apps zu aktivieren."
 services: multi-factor-authentication
 documentationcenter: 
-author: kgremban
+author: MicrosoftGuyJFlo
 manager: femila
 editor: yossib
 ms.assetid: 1c152f67-be02-42a5-a0c7-246fb6b34377
@@ -13,13 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/03/2017
-ms.author: kgremban
+ms.author: joflore
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
 ms.openlocfilehash: 281f9c61a30a20027f69808600373aa272255ef6
 ms.contentlocale: de-de
 ms.lasthandoff: 05/15/2017
-
 
 ---
 # <a name="building-multi-factor-authentication-into-custom-apps-sdk"></a>Erstellen von Multi-Factor Authentication in benutzerdefinierten Apps (SDK)

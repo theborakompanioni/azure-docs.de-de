@@ -3,7 +3,7 @@ title: "Fehlercodes zur Problembehandlung für die Azure MFA NPS-Erweiterung | M
 description: "Hier erhalten Sie anhand von Lösungen für häufige Fehlermeldungen Hilfe beim Beheben von Problemen mit der NPS-Erweiterung für Azure Multi-Factor Authentication"
 services: multi-factor-authentication
 documentationcenter: 
-author: kgremban
+author: MicrosoftGuyJFlo
 manager: femila
 ms.assetid: 
 ms.service: multi-factor-authentication
@@ -12,7 +12,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/14/2017
-ms.author: kgremban
+ms.author: joflore
 ms.reviewer: yossib
 ms.custom: it-pro
 ms.translationtype: HT
