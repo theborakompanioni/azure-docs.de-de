@@ -261,10 +261,6 @@
           href: sql-database-long-term-backup-retention-configure.md
         - name: Georeplikation – Portal
           href: sql-database-geo-replication-portal.md
-        - name: Georeplikation – T-SQ L- Konfigurieren
-          href: sql-database-geo-replication-transact-sql.md
-        - name: Georeplikation-– T-SQL - Konfigurieren
-          href: sql-database-geo-replication-failover-transact-sql.md
         - name: Wiederherstellen einer einzelnen Tabelle
           href: sql-database-cloud-migrate-restore-single-table-azure-backup.md
     - name: Laden und Verschieben von Daten
@@ -299,8 +295,6 @@
           href: sql-database-troubleshoot-common-connection-issues.md
         - name: Azure-Automatisierung
           href: sql-database-manage-automation.md
-        - name: Azure RemoteApp
-          href: sql-database-ssms-remoteapp.md
     - name: Horizontales Skalieren
       items:
         - name: Erstellen einer App mit Sharding

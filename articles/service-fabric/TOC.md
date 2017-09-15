@@ -4,6 +4,8 @@
 
 # Schnellstarts
 ## [Erstellen einer .NET-Anwendung](service-fabric-quickstart-dotnet.md)
+## [Bereitstellen einer Windows-Containeranwendung](service-fabric-quickstart-containers.md)
+## [Bereitstellen einer Linux-Containeranwendung](service-fabric-quickstart-containers-linux.md)
 
 # Lernprogramme
 ## Bereitstellen einer .NET-App
@@ -278,7 +280,7 @@
 ### [Visualisieren eines Clusters](service-fabric-visualizing-your-cluster.md)
 ### [Herstellen einer Verbindung mit einem sicheren Cluster](service-fabric-connect-to-secure-cluster.md)
 
-### [Verwalten eines Clusters mit der Service Fabric-Befehlszeilenschnittstelle](service-fabric-cli.md)
+### [Erste Schritte mit der Service Fabric-Befehlszeilenschnittstelle](service-fabric-cli.md)
 ### [Patchen von Clusterknoten](service-fabric-patch-orchestration-application.md)
 
 ### Verwalten und Orchestrieren von Clusterressourcen
