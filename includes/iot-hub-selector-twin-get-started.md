@@ -27,8 +27,6 @@ Gerätezwillinge werden in einem IoT Hub gespeichert und enthalten Folgendes:
 Außerdem können mit dem Lösungs-Back-End Gerätezwillinge basierend auf allen obigen Daten abgefragt werden.
 Weitere Informationen zu Gerätezwillingen finden Sie unter [Grundlegendes zu Gerätezwillingen][lnk-twins]. Eine Referenz zu Abfragen finden Sie unter [IoT Hub-Abfragesprache][lnk-query].
 
-> [!NOTE]
-> Zurzeit ist der Zugriff auf Gerätezwillinge nur von Geräten aus möglich, die über das MQTT-Protokoll Verbindungen mit IoT Hub herstellen. Anweisungen zum Konvertieren vorhandener Geräte-Apps für die Verwendung von MQTT finden Sie im Artikel [MQTT-Unterstützung][lnk-devguide-mqtt].
 
 Dieses Tutorial veranschaulicht folgende Vorgehensweisen:
 

@@ -12,9 +12,6 @@ Dieses Tutorial veranschaulicht folgende Vorgehensweisen:
 * Erstellen einer simulierten Geräte-App, die eine direkte Methode aufweist, die von der Cloud aufgerufen werden kann
 * Erstellen einer Konsolen-App, die eine direkte Methode auf der simulierten Geräte-App über Ihren IoT-Hub aufruft
 
-> [!NOTE]
-> Zurzeit werden direkte Methoden nur von Geräten unterstützt, die über das MQTT-Protokoll Verbindungen mit IoT Hub herstellen. Anweisungen zum Konvertieren vorhandener Geräte-Apps für die Verwendung von MQTT finden Sie im Artikel [MQTT-Unterstützung][lnk-devguide-mqtt].
-
 
 [lnk-devguide-methods]: ../articles/iot-hub/iot-hub-devguide-direct-methods.md
 [lnk-devguide-mqtt]: ../articles/iot-hub/iot-hub-mqtt-support.md

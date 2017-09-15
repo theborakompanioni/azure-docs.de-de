@@ -1,6 +1,6 @@
 ---
 title: Verwenden von Azure Redis Cache mit Node.js | Microsoft Docs
-description: Erste Schritte mit Azure Redis Cache mit Node.js und &quot;node_redis&quot;.
+description: Erste Schritte mit Azure Redis Cache mit Node.js und "node_redis".
 services: redis-cache
 documentationcenter: 
 author: steved0x
@@ -14,10 +14,11 @@ ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
 ms.date: 02/10/2017
 ms.author: sdanie
-translationtype: Human Translation
-ms.sourcegitcommit: 5369dcd6ad1ec93c63eb442db9fc5ffdcca37375
-ms.openlocfilehash: 530191637b1aa91ee1d7fe5b5bb032c60983f7dc
-
+ms.translationtype: HT
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: f2c448af24e180db58f3ef3d39e90036dda3f7eb
+ms.contentlocale: de-de
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="how-to-use-azure-redis-cache-with-nodejs"></a>Verwenden von Azure Redis Cache mit Node.js
@@ -32,7 +33,7 @@ ms.openlocfilehash: 530191637b1aa91ee1d7fe5b5bb032c60983f7dc
 
 Azure Redis Cache bietet Zugriff auf einen sicheren dedizierten Redis-Cache, der von Microsoft verwaltet wird. Auf Ihren Cache kann in jeder Anwendung in Microsoft Azure zugegriffen werden.
 
-Dieses Thema beschreibt die ersten Schritte mit Azure Redis Cache und Node.js. Ein anderes Beispiel zum Verwenden von Azure Redis Cache mit Node.js finden Sie unter [Erstellen einer Node.js-Chatanwendung mit Socket.IO auf einer Azure-Website](../app-service-web/web-sites-nodejs-chat-app-socketio.md).
+Dieses Thema beschreibt die ersten Schritte mit Azure Redis Cache und Node.js. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Installieren Sie [node_redis](https://github.com/mranney/node_redis):
@@ -85,10 +86,5 @@ Ausgabe:
 ## <a name="next-steps"></a>Nächste Schritte
 * [Aktivieren Sie die Cachediagnose](cache-how-to-monitor.md#enable-cache-diagnostics), damit Sie die Integrität Ihres Caches [überwachen](cache-how-to-monitor.md) können.
 * Lesen Sie die offizielle [Redis-Dokumentation](http://redis.io/documentation).
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

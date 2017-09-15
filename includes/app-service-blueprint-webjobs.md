@@ -10,7 +10,7 @@
 * [Bereitstellen von Azure WebJobs mit Visual Studio](../articles/app-service-web/websites-dotnet-deploy-webjobs.md)
 * [Bereitstellen von WebJobs mithilfe des Azure-Verwaltungsportals](../articles/app-service-web/web-sites-create-web-jobs.md)
 * [Das Dialogfeld "Azure-Webauftrag hinzufügen"](../articles/app-service-web/websites-dotnet-deploy-webjobs.md#configure)
-* [Erstellen geplanter WebJobs im Azure-Verwaltungsportal](../articles/app-service-web/web-sites-create-web-jobs.md#CreateScheduled)
+* [Erstellen geplanter WebJobs im Azure-Verwaltungsportal](../articles/app-service-web/web-sites-create-web-jobs.md#CreateScheduledCRON)
 * [Scheduling Azure WebJobs with cron expressions (Planen von Azure WebJobs mit Cron-Ausdrücken, in englischer Sprache)](http://blog.amitapple.com/post/2015/06/scheduling-azure-webjobs/)
 * [Anzeigen des Webauftrags-Dashboards](../articles/app-service-web/websites-dotnet-webjobs-sdk-get-started.md#view-the-webjobs-sdk-dashboard)
 * [Schreiben von Protokollen mit dem WebJobs-SDK und Anzeigen im Dashboard](../articles/app-service-web/websites-dotnet-webjobs-sdk-storage-queues-how-to.md#logs)
