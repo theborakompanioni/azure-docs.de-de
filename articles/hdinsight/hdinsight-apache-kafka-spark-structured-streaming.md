@@ -12,13 +12,13 @@ ms.devlang:
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 06/09/2017
+ms.date: 09/06/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: 02b49e13e8f54c3d55310f4d2b21c7e09c91fe81
+ms.translationtype: HT
+ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
+ms.openlocfilehash: 34c8e18e918221f0287b1078df750d8016e2529a
 ms.contentlocale: de-de
-ms.lasthandoff: 06/16/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 
@@ -61,7 +61,7 @@ Es ist zwar möglich, ein virtuelles Azure-Netzwerk, einen Kafka-Cluster und ein
     > [!IMPORTANT]
     > Das in diesem Beispiel für strukturiertes Streaming verwendete Notebook benötigt Spark auf HDInsight 3.6. Bei Verwendung einer früheren Version von Spark auf HDInsight erhalten Sie Fehlermeldungen, wenn Sie das Notebook verwenden.
 
-2. Verwenden Sie die folgenden Informationen, um die Einträge auf dem Blatt **Benutzerdefinierte Bereitstellung** aufzufüllen:
+2. Verwenden Sie die folgenden Informationen, um die Einträge auf dem Abschnitt **Benutzerdefinierte Bereitstellung** aufzufüllen:
    
     ![Benutzerdefinierte HDInsight-Bereitstellung](./media/hdinsight-apache-spark-with-kafka/parameters.png)
    
@@ -83,9 +83,9 @@ Es ist zwar möglich, ein virtuelles Azure-Netzwerk, einen Kafka-Cluster und ein
 
 4. Aktivieren Sie zum Schluss **An Dashboard anheften**, und wählen Sie dann **Kaufen** aus. Das Erstellen der Cluster dauert ca. 20 Minuten.
 
-Sobald die Ressourcen erstellt wurden, werden Sie zum Ressourcengruppenblatt weitergeleitet.
+Sobald die Ressourcen erstellt wurden, wird eine Zusammenfassungsseite angezeigt.
 
-![Ressourcengruppenblatt für vnet und Cluster](./media/hdinsight-apache-spark-with-kafka/groupblade.png)
+![Ressourcengruppeninformationen für VNET und Cluster](./media/hdinsight-apache-spark-with-kafka/groupblade.png)
 
 > [!IMPORTANT]
 > Beachten Sie, dass die Namen der HDInsight-Cluster **spark-BASENAME** und **kafka-BASENAME** lauten, wobei BASENAME der Name ist, den Sie für die Vorlage angegeben haben. Sie verwenden diese Namen in späteren Schritten, wenn Sie eine Verbindung mit den Clustern herstellen.
@@ -100,22 +100,24 @@ $clusterName = Read-Host -Prompt "Enter the Kafka cluster name"
 $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/KAFKA/components/KAFKA_BROKER" `
     -Credential $creds
 $respObj = ConvertFrom-Json $resp.Content
-$brokerHosts = $respObj.host_components.HostRoles.host_name
+$brokerHosts = $respObj.host_components.HostRoles.host_name[0..1]
 ($brokerHosts -join ":9092,") + ":9092"
 ```
 
 ```bash
-curl -u admin:$PASSWORD -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/KAFKA/components/KAFKA_BROKER" | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")'
+curl -u admin -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/KAFKA/components/KAFKA_BROKER" | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2
 ```
 
+Geben Sie bei der entsprechenden Aufforderung das Kennwort des Anmeldekontos (Administrator) für den Cluster ein.
+
 > [!NOTE]
-> In diesem Beispiel wird erwartet, dass `$PASSWORD` das Kennwort für die Clusteranmeldung und `$CLUSTERNAME` den Namen des Kafka-Clusters enthält.
+> In diesem Beispiel erwartet `$CLUSTERNAME`, den Namen des Kafka-Clusters aufzunehmen.
 >
 > Dieses Beispiel verwendet das [jq](https://stedolan.github.io/jq/)-Hilfsprogramm, um Daten aus dem JSON-Dokument zu analysieren.
 
 Die Ausgabe sieht in etwa wie folgender Text aus:
 
-`wn0-kafka.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net:9092,wn1-kafka.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net:9092,wn2-kafka.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net:9092,wn3-kafka.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net:9092`
+`wn0-kafka.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net:9092,wn1-kafka.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net:9092`
 
 Speichern Sie diese Informationen, da sie in den folgenden Abschnitten dieses Dokuments verwendet werden.
 
@@ -141,7 +143,7 @@ Befolgen Sie die folgenden Schritte, um die Notebooks aus dem Projekt auf Ihr Sp
 
 3. Suchen Sie den Eintrag __Stream-Tweets-To_Kafka.ipynb__ in der Liste der Notebooks, und klicken Sie auf die Schaltfläche __Hochladen__ neben dem Eintrag.
 
-    ![Verwenden der Schaltfläche „Hochladen“ neben dem Eintrag „KafkaStreaming.ipynb“ zum Hochladen der Datei auf den Notebookserver](./media/hdinsight-apache-kafka-spark-structured-streaming/upload-notebook.png)
+    ![Verwenden Sie zum Hochladen des Notebooks die Schaltfläche „Hochladen“ neben dem Eintrag „KafkaStreaming.ipynb“.](./media/hdinsight-apache-kafka-spark-structured-streaming/upload-notebook.png)
 
 4. Wiederholen Sie die Schritte 1 bis 3, um das Notebook __Spark-Structured-Streaming-From-Kafka.ipynb__ zu laden.
 

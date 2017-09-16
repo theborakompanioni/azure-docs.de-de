@@ -10,17 +10,17 @@ tags: azure-service-management
 ms.assetid: 
 ms.service: virtual-machines-linux
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/02/2017
 ms.author: nepeters
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 0425da20f3f0abcfa3ed5c04cec32184210546bb
-ms.openlocfilehash: c163c715eb1438a0d6b0ab53cbb43816ca8dbbb4
+ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
+ms.openlocfilehash: 7e0867a0db2bbad1e490721e8bb2f59677950c18
 ms.contentlocale: de-de
-ms.lasthandoff: 07/20/2017
+ms.lasthandoff: 09/02/2017
 
 ---
 
@@ -62,7 +62,7 @@ Beim Erstellen eines virtuellen Computers stehen mehrere Optionen zur Verfügung
 az vm create --resource-group myResourceGroupVM --name myVM --image UbuntuLTS --generate-ssh-keys
 ```
 
-Nach der Erstellung des virtuellen Computers gibt die Azure-Befehlszeilenschnittstelle Informationen zu dem virtuellen Computer aus. Notieren Sie sich den Wert für `publicIpAddress`. Über diese Adresse kann auf den virtuellen Computer zugegriffen werden. 
+Die Erstellung der VM kann einige Minuten dauern. Nach der Erstellung des virtuellen Computers gibt die Azure-Befehlszeilenschnittstelle Informationen zu dem virtuellen Computer aus. Notieren Sie sich den Wert für `publicIpAddress`. Über diese Adresse kann auf den virtuellen Computer zugegriffen werden. 
 
 ```azurecli-interactive 
 {
@@ -79,13 +79,13 @@ Nach der Erstellung des virtuellen Computers gibt die Azure-Befehlszeilenschnitt
 
 ## <a name="connect-to-vm"></a>Herstellen einer Verbindung mit dem virtuellen Computer
 
-Sie können nun eine SSH-Verbindung mit dem virtuellen Computer herstellen. Ersetzen Sie die Beispiel-IP-Adresse durch den Wert für `publicIpAddress`, den Sie sich im vorherigen Schritt notiert haben.
+Nun können Sie mittels SSH in Azure Cloud Shell oder von Ihrem lokalen Computer aus eine Verbindung mit der VM herstellen. Ersetzen Sie die Beispiel-IP-Adresse durch den Wert für `publicIpAddress`, den Sie sich im vorherigen Schritt notiert haben.
 
 ```bash
 ssh 52.174.34.95
 ```
 
-Schließen Sie die SSH-Sitzung, wenn Sie mit dem virtuellen Computer fertig sind. 
+Nachdem Sie sich bei der VM angemeldet haben, können Sie Anwendungen installieren und konfigurieren. Wenn Sie fertig sind, schließen Sie wie gewohnt die SSH-Sitzung:
 
 ```bash
 exit
@@ -208,7 +208,11 @@ az vm create \
 
 ### <a name="resize-a-vm"></a>Ändern der Größe eines virtuellen Computers
 
-Nach der Bereitstellung eines virtuellen Computers kann dessen Größe geändert werden, um die Ressourcenzuordnung zu erhöhen oder zu verringern.
+Nach der Bereitstellung eines virtuellen Computers kann dessen Größe geändert werden, um die Ressourcenzuordnung zu erhöhen oder zu verringern. Mit dem Befehl [az vm show](/cli/azure/vm#show) können Sie die aktuelle Größe einer VM anzeigen:
+
+```azurecli-interactive
+az vm show --resource-group myResourceGroupVM --name myVM --query hardwareProfile.vmSize
+```
 
 Prüfen Sie vor der Größenänderung eines virtuellen Computers, ob die gewünschte Größe im aktuellen Azure-Cluster verfügbar ist. Der Befehl [az vm list-vm-resize-options](/cli/azure/vm#list-vm-resize-options) gibt die Größenliste zurück. 
 
@@ -300,7 +304,7 @@ az vm start --resource-group myResourceGroupVM --name myVM
 
 ### <a name="delete-resource-group"></a>Ressourcengruppe löschen
 
-Beim Löschen einer Ressourcengruppe werden auch alle darin enthaltenen Ressourcen gelöscht.
+Beim Löschen einer Ressourcengruppe werden auch alle darin enthaltenen Ressourcen gelöscht, z.B. die VM, das virtuelle Netzwerk und der virtuelle Datenträger. Der Parameter `--no-wait` gibt die Steuerung an die Eingabeaufforderung zurück, ohne zu warten, bis der Vorgang abgeschlossen ist. Der Parameter `--yes` bestätigt ohne eine zusätzliche Aufforderung, dass Sie die Ressourcen löschen möchten.
 
 ```azurecli-interactive 
 az group delete --name myResourceGroupVM --no-wait --yes

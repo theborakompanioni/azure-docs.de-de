@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/12/2017
+ms.date: 08/30/2017
 ms.author: billmath
 ms.translationtype: HT
-ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
-ms.openlocfilehash: d55cecf20abdf1637f0537e63a3dba5992a68741
+ms.sourcegitcommit: 763bc597bdfc40395511cdd9d797e5c7aaad0fdf
+ms.openlocfilehash: 6e2a7c5eafee78d342f735b543624d041b9b3fe5
 ms.contentlocale: de-de
-ms.lasthandoff: 07/26/2017
+ms.lasthandoff: 09/06/2017
 
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Versionsveröffentlichungsverlauf
@@ -34,6 +34,53 @@ Thema |  Details
 Schritte zum Upgrade von Azure AD Connect | Verschiedene Methoden zum [Aktualisieren von einer früheren Version auf die aktuelle Version](active-directory-aadconnect-upgrade-previous-version.md) von Azure AD Connect.
 Erforderliche Berechtigungen | Informationen zu den zum Anwenden eines Updates erforderlichen Berechtigungen finden Sie unter [Konten und Berechtigungen](./active-directory-aadconnect-accounts-permissions.md#upgrade).
 Download| [Azure AD Connect herunterladen](http://go.microsoft.com/fwlink/?LinkId=615771).
+
+## <a name="116140"></a>1.1.614.0
+Status: 5. September 2017
+
+### <a name="azure-ad-connect"></a>Azure AD Connect
+
+#### <a name="known-issues"></a>Bekannte Probleme
+* Es besteht ein bekanntes Problem mit dem Azure AD Connect-Upgrade, das Kunden betrifft, die [Nahtloses einmaliges Anmelden](active-directory-aadconnect-sso.md) aktiviert haben. Nach dem Aktualisieren von Azure AD Connect wird das Feature im Assistenten als deaktiviert angezeigt, obwohl das Feature aktiviert bleibt. In einem zukünftigen Release wird dieses Problem behoben. Kunden, die wg. dieses Anzeigeproblems besorgt sind, können es manuell beheben, indem sie „Nahtloses einmaliges Anmelden“ im Assistenten aktivieren.
+
+#### <a name="fixed-issues"></a>Behobene Probleme
+* Das Problem wurde behoben, aufgrund dessen bei der Azure AD Connect-Installation ein Fehler auftrat, wenn in der lokalen AD-Gesamtstruktur NTLM deaktiviert war. Ursache des Problems ist, dass der Azure AD Connect-Assistent bei der Erstellung der für die Kerberos-Authentifizierung erforderlichen Sicherheitskontexte nicht die vollqualifizierten Anmeldeinformationen angibt. Dies bewirkt, dass bei der Kerberos-Authentifizierung ein Fehler auftritt, und der Azure AD Connect-Assistent auf die Verwendung von NTLM zurückgeht.
+
+### <a name="azure-ad-connect-sync"></a>Azure AD Connect-Synchronisierung
+#### <a name="fixed-issues"></a>Behobene Probleme
+* Das Problem wurde behoben, dass die neue Synchronisierungsregel nicht erstellt werden kann, wenn das Tag-Attribut nicht gefüllt wird.
+* Das Problem wurde behoben, aufgrund dessen Azure AD Connect zur Kennwortsynchronisierung eine Verbindung mit dem lokalen AD unter Verwendung von NTLM herstellte, obwohl Kerberos verfügbar war. Dieses Problem tritt auf, wenn die lokale AD-Topologie über mindestens einen Domänencontroller verfügt, der aus einer Sicherung wiederhergestellt wurde.
+* Das Problem wurde behoben, aufgrund dessen die Schritte der vollständigen Synchronisierung unnötigerweise nach dem Upgrade auftraten. Im Allgemeinen ist die Ausführung der Schritte der vollständigen Synchronisierung nach dem Upgrade erforderlich, wenn Änderungen der vordefinierten Synchronisierungsregeln vorliegen. Das Problem trat aufgrund eines Fehlers im Änderungserkennungscode auf, der fälschlicherweise eine Änderung erkannte, wenn er auf einen Synchronisierungsregelausdruck traf, der Zeilenumbruchzeichen enthielt. Zeilenumbruchzeichen werden zur besseren Lesbarkeit in Synchronisierungsregelausdrücke eingefügt.
+* Das Problem wurde behoben, aufgrund dessen die Azure AD Connect-Serverinstanz nach dem automatischen Upgrade möglicherweise nicht richtig funktioniert. Dieses Problem betrifft Azure AD Connect-Serverinstanzen mit Version 1.1.443.0 (oder früher). Weitere Informationen zu diesem Problem finden Sie im Artikel [Azure AD Connect is not working correctly after an automatic upgrade](https://support.microsoft.com/help/4038479/azure-ad-connect-is-not-working-correctly-after-an-automatic-upgrade) (Azure AD Connect funktioniert nach einem automatischen Upgrade nicht ordnungsgemäß).
+* Das Problem wurde behoben, aufgrund dessen die Ausführung des automatischen Upgrades möglicherweise alle 5 Minuten neu versucht wird, wenn Fehler auftreten. Mit der Behebung wird die Ausführung des automatischen Upgrades mit exponentiellem Backoff neu versucht, wenn Fehler auftreten.
+* Ein Problem wurde behoben, bei dem das Kennwortsynchronisierungsereignis 611 im Windows-Anwendungsereignisprotokoll fälschlicherweise als **Informativ** anstatt als **Fehler** angezeigt wurde. Ereignis 611 wird generiert, wenn bei der Kennwortsynchronisierung ein Problem festgestellt wird. 
+* Ein Problem im Azure AD Connect-Assistenten wurde behoben, das die Aktivierung der Gruppenrückschreibfunktion ohne Auswahl einer für das Gruppenrückschreiben erforderlichen Organisationseinheit ermöglichte.
+
+#### <a name="new-features-and-improvements"></a>Neue Features und Verbesserungen
+* Eine Problembehandlungsaufgabe wurde dem Azure AD Connect-Assistenten unter „Weitere Aufgaben“ hinzugefügt. Kunden können diese Aufgabe zum Behandeln von Problemen im Zusammenhang mit der Synchronisierung von Kennwörtern und dem Erfassen der allgemeinen Diagnose nutzen. In der Zukunft wird die Aufgabe zur Problembehandlung erweitert, sodass sie auch andere, mit der Verzeichnissynchronisierung verbundene Probleme umfasst.
+* Azure AD Connect unterstützt jetzt einen neuen, als **Vorhandene Datenbank verwenden** bezeichneten Installationsmodus. Dieser Installationsmodus ermöglicht Kunden, Azure AD Connect zu installieren, das eine vorhandene ADSync-Datenbank angibt. Weitere Informationen zu diesem Feature finden Sie im Artikel [Install Azure AD Connect using an existing ADSync database](active-directory-aadconnect-existing-database.md) (Installieren von Azure AD Connect mithilfe einer vorhandenen ADSync-Datenbank).
+* Zur Sicherheitsverbesserung verwendet Azure AD Connect jetzt standardmäßig TLS 1.2 für die Herstellung der Verbindung mit Azure AD für die Verzeichnissynchronisierung. Bisher war der Standard TLS1.0.
+* Wenn der Kennwortsynchronisierungs-Agent von Azure AD Connect startet, versucht er, eine Verbindung mit dem bekannten Azure AD-Endpunkt für die Synchronisierung von Kennwörtern herzustellen. Bei erfolgreicher Verbindung wird er zu einem regionsspezifischen Endpunkt umgeleitet. Vorher speicherte der Kennwortsynchronisierungs-Agent den regionsspezifischen Endpunkt zwischen, bis er neu gestartet wurde. Jetzt löscht der Agent den Cache und unternimmt einen erneuten Versuch mit dem bekannten Endpunkt, falls er ein Verbindungsproblem bei dem regionsspezifischen Endpunkt erkennt. Diese Änderung stellt sicher, dass die Synchronisierung von Kennwörtern ein Failover zu einem anderen regionsspezifischen Endpunkt ausführen kann, wenn der zwischengespeicherte regionsspezifische Endpunkt nicht mehr verfügbar ist.
+* Zum Synchronisieren der Änderungen von einer lokalen AD-Gesamtstruktur ist ein AD DS-Konto erforderlich. Sie können entweder (i) das AD DS-Konto selbst erstellen und Azure AD Connect die Anmeldeinformationen angeben, oder (ii) eine Enterprise-Administratoranmeldeinfo eingeben und Azure AD Connect das AD DS-Konto für Sie erstellen lassen. Früher war (i) die Standardoption im Azure AD Connect-Assistenten. Jetzt ist (ii) die Standardoption.
+
+### <a name="azure-ad-connect-health"></a>Azure AD Connect Health
+
+#### <a name="new-features-and-improvements"></a>Neue Features und Verbesserungen
+* Unterstützung für Microsoft Azure Government-Cloud und Microsoft Cloud Deutschland wurde hinzugefügt.
+
+### <a name="ad-fs-management"></a>AD FS-Verwaltung
+#### <a name="fixed-issues"></a>Behobene Probleme
+* Das Initialize-ADSyncNGCKeysWriteBack-Cmdlet im AD-Vorbereitungs-Powershell-Modul wandte fälschlicherweise die Zugriffsteuerungsliste auf den Geräteregistrierungscontainer an und erbte daher nur vorhandene Berechtigungen.  Dies wurde aktualisiert, sodass das Synchronisierungsdienstkonto über die richtigen Berechtigungen verfügt.
+
+#### <a name="new-features-and-improvements"></a>Neue Features und Verbesserungen
+* Die AAD-Verbindungsüberprüfungs-AD FS-Anmelde-Aufgabe wurde aktualisiert, sodass sie Anmeldungen anhand von Microsoft Online überprüft und nicht einfach einen Tokenabruf in AD FS durchführt.
+* Beim Einrichten einer neuen AD FS-Farm mit AAD Connect wurde die Seite, die ADFS-Anmeldeinformationen anfordert, verschoben, sodass sie jetzt angezeigt wird, bevor der Benutzer aufgefordert wird, den AD FS- und WAP-Server anzugeben.  So kann AAD Connect überprüfen, ob das angegebene Konto über die richtigen Berechtigungen verfügt.
+* Während des AAD Connect-Upgrades tritt kein Upgradefehler mehr auf, wenn ein Fehler beim Update der AD FS-AAD-Vertrauensstellung auftritt.  Wenn dies der Fall ist, erhält der Benutzer eine entsprechende Warnmeldung, und sollte fortfahren, indem er die Vertrauensstellung über die zusätzliche AAD Connect-Aufgabe zurücksetzt.
+
+### <a name="seamless-single-sign-on"></a>Nahtloses einmaliges Anmelden
+#### <a name="fixed-issues"></a>Behobene Probleme
+* Ein Problem wurde behoben, aufgrund dessen der Azure AD Connect-Assistent zu einem Fehler zurückkehrte, wenn Sie versuchten, das [Nahtlose einmalige Anmelden](active-directory-aadconnect-sso.md) zu aktivieren. Die Fehlermeldung lautet *„Fehler bei Konfiguration des Microsoft Azure AD Connect-Authentifizierungs-Agent“*. Dieses Problem betrifft bestehende Kunden, die manuell die Vorschauversion der Authentifizierung-Agents für [Passthrough-Authentifizierung](active-directory-aadconnect-sso.md) anhand der in diesem [Artikel](active-directory-aadconnect-pass-through-authentication-upgrade-preview-authentication-agents.md) beschriebenen Schritte aktualisiert hatten.
+
 
 ## <a name="115610"></a>1.1.561.0
 Status: 23. Juli 2017

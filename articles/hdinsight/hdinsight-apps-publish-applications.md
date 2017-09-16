@@ -14,14 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/25/2017
+ms.date: 09/06/2017
 ms.author: jgao
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
-ms.openlocfilehash: 6aa66cac35bc317fc87003e6c3d824544c53de88
+ms.translationtype: HT
+ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
+ms.openlocfilehash: 0ccaee16a19b4338099a93f994553caaa6aa57e3
 ms.contentlocale: de-de
-ms.lasthandoff: 06/09/2017
-
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="publish-hdinsight-applications-into-the-azure-marketplace"></a>Veröffentlichen von HDInsight-Anwendungen im Azure Marketplace
@@ -64,7 +63,7 @@ Die Veröffentlichung von Anwendungen im Azure Marketplace umfasst zwei Schritte
 ## <a name="application-install-script"></a>Skript für die Anwendungsinstallation
 Bei jeder Installation einer (vorhandenen oder neuen) Anwendung in einem Cluster wird ein Edgeknoten erstellt, auf dem das Skript für die Anwendungsinstallation ausgeführt wird.
   > [!IMPORTANT]
-  > Der Name des Skripts für die Anwendungsinstallation muss für einen bestimmten Cluster mit dem unten angegebenen Format eindeutig sein.
+  > Der Name des Skripts für die Anwendungsinstallation muss für einen bestimmten Cluster mit dem unten angegebenen Format eindeutig sein:
   > 
   > name": "[concat('hue-install-v0','-' ,uniquestring(‘applicationName’)]"
   > 
@@ -74,7 +73,7 @@ Bei jeder Installation einer (vorhandenen oder neuen) Anwendung in einem Cluster
   > 2. „-“ für eine bessere Lesbarkeit
   > 3. Eine eindeutige Zeichenfolgenfunktion mit dem Anwendungsnamen als Parameter
   > 
-  > Das oben genannte Beispiel lautet schlussendlich in der Liste persistenter Skriptaktionen wie folgt: hue-install-v0-4wkahss55hlas. Eine Beispiel-JSON-Nutzlast finden Sie unter [https://raw.githubusercontent.com/hdinsight/Iaas-Applications/master/Hue/azuredeploy.json](https://raw.githubusercontent.com/hdinsight/Iaas-Applications/master/Hue/azuredeploy.json).
+  > Das vorhergehende Beispiel lautet schließlich in der Liste persistenter Skriptaktionen wie folgt: hue-install-v0-4wkahss55hlas. Eine Beispiel-JSON-Nutzlast finden Sie unter [https://raw.githubusercontent.com/hdinsight/Iaas-Applications/master/Hue/azuredeploy.json](https://raw.githubusercontent.com/hdinsight/Iaas-Applications/master/Hue/azuredeploy.json).
   > 
 Das Installationsskript muss die folgenden Merkmale aufweisen:
 1. Stellen Sie sicher, dass das Skript idempotent ist. Mehrere Aufrufe des Skripts müssen zum gleichen Ergebnis führen.

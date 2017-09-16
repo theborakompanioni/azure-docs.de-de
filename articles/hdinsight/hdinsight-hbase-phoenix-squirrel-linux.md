@@ -13,14 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/26/2017
+ms.date: 09/06/2017
 ms.author: jgao
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
-ms.openlocfilehash: 13d17083bbe26fa9745ce4c5fef9f56859243c2e
+ms.translationtype: HT
+ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
+ms.openlocfilehash: 342e29b009f51f7d1e9c3134a69cab6e30726bcd
 ms.contentlocale: de-de
-ms.lasthandoff: 06/10/2017
-
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="use-apache-phoenix-with-linux-based-hbase-clusters-in-hdinsight"></a>Verwenden von Apache Phoenix mit Linux-basierten HBase-Clustern in HDInsight
@@ -35,7 +34,7 @@ Erfahren Sie, wie Sie [Apache Phoenix](http://phoenix.apache.org/) in HDInsight 
 [SQLLine](http://sqlline.sourceforge.net/) ist ein Befehlszeilenprogramm zum Ausführen von SQL.
 
 ### <a name="prerequisites"></a>Voraussetzungen
-Bevor Sie SQLLine verwenden können, benötigen Sie Folgendes:
+Bevor Sie SQLLine verwenden können, benötigen Sie folgende Elemente:
 
 * **Ein HBase-Cluster in HDInsight**. Informationen zur Bereitstellung von HBase-Clustern finden Sie unter [Erste Schritte mit Apache HBase in HDInsight][hdinsight-hbase-get-started].
 * **Verbinden Sie sich per Remotedesktop-Protokoll mit dem HBase-Cluster**. Anweisungen finden Sie unter [Verwalten von Hadoop-Clustern in HDInsight mit dem Azure-Portal][hdinsight-manage-portal].
@@ -45,7 +44,7 @@ Beim Verbinden mit einem HBase-Cluster müssen Sie die Verbindung zu einem der Z
 **So finden Sie den Hostnamen des Zookeeper heraus:**
 
 1. Öffnen Sie Ambari, indem Sie zu **https://<ClusterName>.azurehdinsight.net** navigieren.
-2. Geben Sie zum Anmelden den HTTP-(Cluster-)Benutzernamen und das Kennwort ein.
+2. Geben Sie zum Anmelden den HTTP-Benutzernamen (Clusternamen) und das Kennwort ein.
 3. Klicken Sie im linken Menü auf **ZooKeeper** . Es sind drei **ZooKeeper-Server** aufgeführt.
 4. Klicken Sie auf einen der aufgeführten **ZooKeeper-Server** . Suchen Sie im Zusammenfassungsbereich den **Hostnamen**. Er ähnelt *zk1-jdolehb.3lnng4rcvp5uzokyktxs4a5dhd.bx.internal.cloudapp.net*.
 

@@ -12,18 +12,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 08/27/2017
+ms.date: 09/03/2017
 ms.author: juliako
 ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
-ms.openlocfilehash: 95379ed04c47a1e62822ae44b9a1f13b234c6282
+ms.sourcegitcommit: 4eb426b14ec72aaa79268840f23a39b15fee8982
+ms.openlocfilehash: 096f54b23a8223da89785b2e7f00c9b8a10c2906
 ms.contentlocale: de-de
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 09/06/2017
 
 ---
 # <a name="develop-azure-functions-with-media-services"></a>Entwickeln von Azure Functions mit Media Services
 
-In diesem Thema wird veranschaulicht, wie Sie mit der Erstellung von Azure Functions beginnen, für die Media Services verwendet werden. Die in diesem Thema definierte Azure Function überwacht einen Speicherkontocontainer mit dem Namen **input** für neue MP4-Dateien. Sobald eine Datei in den Speichercontainer abgelegt wird, führt der BLOB-Trigger die Funktion aus.
+In diesem Thema wird veranschaulicht, wie Sie mit der Erstellung von Azure Functions beginnen, für die Media Services verwendet werden. Die in diesem Thema definierte Azure Function überwacht einen Speicherkontocontainer mit dem Namen **input** für neue MP4-Dateien. Sobald eine Datei in den Speichercontainer abgelegt wird, führt der BLOB-Trigger die Funktion aus. Informationen zu Azure Functions finden Sie unter [Übersicht](../azure-functions/functions-overview.md) und anderen Themen im Abschnitt **Azure Functions**.
 
 Wenn Sie vorhandene Azure Functions-Instanzen, die Azure Media Services verwenden, erkunden und bereitstellen möchten, sehen Sie sich [Media Services mit Azure Functions](https://github.com/Azure-Samples/media-services-dotnet-functions-integration). Dieses Repository enthält Beispiele, in denen Media Services verwendet wird. Hiermit werden Workflows veranschaulicht, bei denen es um das Erfassen von Inhalten direkt aus Blob Storage, die Codierung und das Rückschreiben von Inhalt in Blob Storage geht. Außerdem sind Beispiele dafür vorhanden, wie Sie Auftragsbenachrichtigungen über Webhooks und Azure-Warteschlangen überwachen. Sie können Ihre Funktionen auch basierend auf den Beispielen im Repository der [Media Services Azure Functions](https://github.com/Azure-Samples/media-services-dotnet-functions-integration) entwickeln. Klicken Sie zur Bereitstellung der Funktionen auf die Schaltfläche **Bereitstellung in Azure**.
 
@@ -31,9 +31,6 @@ Wenn Sie vorhandene Azure Functions-Instanzen, die Azure Media Services verwende
 
 - Bevor Sie Ihre erste Funktion erstellen können, müssen Sie über ein aktives Azure-Konto verfügen. Wenn Sie noch kein Azure-Konto haben, [erstellen Sie ein kostenloses Konto](https://azure.microsoft.com/free/).
 - Es ist ratsam, wie [hier](media-services-portal-create-account.md) beschrieben ein AMS-Konto zu erstellen, wenn Sie Azure Functions erstellen möchten, mit denen Aktionen in Ihrem AMS-Konto (Azure Media Services) durchgeführt werden oder auf von Media Services gesendete Ereignisse gelauscht wird.
-- Erfahrung beim [Verwenden von Azure Functions](../azure-functions/functions-overview.md). Lesen Sie auch folgende Artikel:
-    - [HTTP- und Webhookbindungen in Azure Functions](../azure-functions/functions-triggers-bindings.md)
-    - [Konfigurieren von Azure Funktionen-App-Einstellungen](../azure-functions/functions-how-to-use-azure-function-app-settings.md)
     
 ## <a name="considerations"></a>Überlegungen
 
@@ -83,10 +80,9 @@ Nachdem die Funktionen-App bereitgestellt wurde, wird sie unter den Azure Functi
 
 4. Klicken Sie auf **Erstellen**. 
 
-
 ## <a name="files"></a>Dateien
 
-Ihre Azure-Funktion ist Codedateien und anderen Dateien zugeordnet, die in diesem Abschnitt beschrieben werden. Standardmäßig ist eine Funktion den Dateien **function.json** und **run.csx** (C#) zugeordnet. Sie müssen die Datei **project.json** hinzufügen. Im restlichen Teil dieses Abschnitts werden die Definitionen für diese Dateien angezeigt.
+Ihre Azure-Funktion ist Codedateien und anderen Dateien zugeordnet, die in diesem Abschnitt beschrieben werden. Bei Verwendung des Azure-Portals zum Erstellen einer Funktion werden **function.json** und **run.csx** für Sie erstellt. Sie müssen die Datei **project.json** hinzufügen oder hochladen. Der restliche Teil dieses Abschnitts enthält eine kurze Erläuterung der einzelnen Dateien und zeigt ihre Definitionen.
 
 ![files](./media/media-services-azure-functions/media-services-azure-functions003.png)
 
@@ -97,7 +93,7 @@ Die Datei „function.json“ definiert die Funktionsbindungen und weitere Konfi
 >[!NOTE]
 >Legen Sie die **disabled**-Eigenschaft auf **true** fest, um die Ausführung der Funktion zu verhindern. 
 
-Hier ist ein Beispiel für die Datei **function.json** angegeben.
+Ersetzen Sie den Inhalt der vorhandenen Datei „function.json“ durch den folgenden Code:
 
 ```
 {
@@ -117,6 +113,8 @@ Hier ist ein Beispiel für die Datei **function.json** angegeben.
 ### <a name="projectjson"></a>project.json
 
 Die Datei „project.json“ enthält die Abhängigkeiten. Hier sehen Sie ein Beispiel für die Datei **project.json**, das die erforderlichen .NET Azure Media Services-Pakete aus Nuget enthält. Beachten Sie, dass sich die Versionsnummern mit den aktuellen Updates für die Pakete ändert, daher sollten Sie überprüfen, ob die aktuellste Version vorliegt. 
+
+Fügen Sie die folgende Definition der Datei „project.json“ hinzu. 
 
 ```
 {
@@ -145,7 +143,7 @@ Das in diesem Abschnitt definierte Beispiel veranschaulicht Folgendes:
 
 In der Praxis möchten Sie wahrscheinlich den Auftragsstatus nachverfolgen und Ihr codiertes Medienobjekt dann veröffentlichen. Weitere Informationen finden Sie unter [Verwenden von Azure-Webhooks zum Überwachen von Media Services-Auftragsbenachrichtigungen](media-services-dotnet-check-job-progress-with-webhooks.md). Weitere Beispiele finden Sie unter [Media Services Azure Functions](https://github.com/Azure-Samples/media-services-dotnet-functions-integration).  
 
-Klicken Sie auf **Speichern und ausführen**, nachdem Sie die Funktion definiert haben.
+Ersetzen Sie den Inhalt der vorhandenen Datei „run.csx“ durch den folgenden Code. Klicken Sie auf **Speichern und ausführen**, nachdem Sie die Funktion definiert haben.
 
 ```
 #r "Microsoft.WindowsAzure.Storage"
@@ -342,16 +340,18 @@ public static async Task<IAsset> CreateAssetFromBlobAsync(CloudBlockBlob blob, s
 
 Um die Funktion zu testen, müssen Sie eine MP4-Datei in den **input**-Container des Speicherkontos hochladen, das Sie in der Verbindungszeichenfolge angegeben haben.  
 
+1. Wählen Sie das Speicherkonto, das Sie in der Umgebungsvariablen **StorageConnection** angegeben haben.
+2. Klicken Sie auf **Blobs**.
+3. Klicken Sie auf **+ Container**. Geben Sie dem Container den Namen **input**.
+4. Wählen Sie **Hochladen**, und navigieren Sie zu einer MP4-Datei, die Sie hochladen möchten.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Nun können Sie mit der Entwicklung einer Mediendienste-Anwendung beginnen. 
  
-Weitere Details und umfassende Beispiele/Lösungen zur Verwendung von Azure Functions und Logic Apps mit Azure Media Services zum Erstellen von benutzerdefinierten Inhaltserstellungsworkflows finden Sie unter [Media Services .NET Functions Integraiton Sample on GitHub](https://github.com/Azure-Samples/media-services-dotnet-functions-integration) (Beispiel zur Integration von Media Services .NET-Funktionen in GitHub).
+Weitere Details und umfassende Beispiele/Lösungen zur Verwendung von Azure Functions und Logic Apps mit Azure Media Services zum Erstellen von benutzerdefinierten Inhaltserstellungsworkflows finden Sie unter [Media Services .NET Functions Integration Sample on GitHub](https://github.com/Azure-Samples/media-services-dotnet-functions-integration) (Beispiel zur Integration von Media Services .NET-Funktionen in GitHub).
 
 Lesen Sie auch [Verwenden von Azure-Webhooks zum Überwachen von Media Services-Auftragsbenachrichtigungen mit .NET](media-services-dotnet-check-job-progress-with-webhooks.md). 
-
-## <a name="media-services-learning-paths"></a>Media Services-Lernpfade
-[!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]

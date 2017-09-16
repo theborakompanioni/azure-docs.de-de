@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/17/2016
 ms.author: LADocs; mandia
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
-ms.openlocfilehash: dd4e4282d774c2c336889b1df887806bfe512c10
+ms.translationtype: HT
+ms.sourcegitcommit: 763bc597bdfc40395511cdd9d797e5c7aaad0fdf
+ms.openlocfilehash: bfde83e1142bf57e02ee458d477a0a70e78c4ad6
 ms.contentlocale: de-de
-ms.lasthandoff: 06/07/2017
+ms.lasthandoff: 09/06/2017
 
 ---
 
@@ -148,13 +148,13 @@ HTTP-Trigger fragen einen angegebenen Endpunkt ab und überprüfen anhand der An
 |retryPolicy|Nein|Ein Objekt zum Anpassen des Wiederholungsverhaltens bei Fehlern vom Typ „4xx“ oder „5xx“.|Objekt|  
 |Authentifizierung|Nein|Stellt die Methode dar, mit der die Anforderung authentifiziert werden soll. Ausführliche Informationen zu diesem Objekt finden Sie unter [Ausgehende Authentifizierung von Scheduler](https://docs.microsoft.com/azure/scheduler/scheduler-outbound-authentication). Neben Scheduler wird noch die Eigenschaft `authority` unterstützt. Ohne Angabe wird standardmäßig der Wert `https://login.windows.net` verwendet. Sie können aber eine andere Zielgruppe verwenden (beispielsweise `https://login.windows\-ppe.net`).|Objekt|  
   
-Für den HTTP-Trigger muss die HTTP-API einem bestimmten Muster entsprechen, damit sie problemlos mit Ihrer Logik-App zusammenarbeitet. Folgende Felder werden benötigt:  
+Für den HTTP-Trigger muss die HTTP-API einem bestimmten Muster entsprechen, damit sie problemlos mit Ihrer Logik-App zusammenarbeitet. Es werden folgende Eigenschaften erkannt:  
   
-|Antwort|Beschreibung|  
-|------------|---------------|  
-|Statuscode|Statuscode 200 (\(OK\)), um eine Ausführung zu bewirken. Alle anderen Statuscodes bewirken keine Ausführung.|  
-|Retry\-After-Header|Anzahl von Sekunden bis zur erneuten Abfrage des Endpunkts durch die Logik-App.|  
-|Adressheader|Die URL, die im nächsten Abfrageintervall aufgerufen werden soll. Ohne Angabe wird die ursprüngliche URL verwendet.|  
+|Antwort|Erforderlich|Beschreibung|  
+|------------|------------|---------------|  
+|Statuscode|Ja|Statuscode 200 (\(OK\)), um eine Ausführung zu bewirken. Alle anderen Statuscodes bewirken keine Ausführung.|  
+|Retry\-After-Header|Nein|Anzahl von Sekunden bis zur erneuten Abfrage des Endpunkts durch die Logik-App.|  
+|Adressheader|Nein|Die URL, die im nächsten Abfrageintervall aufgerufen werden soll. Ohne Angabe wird die ursprüngliche URL verwendet.|  
   
 Im Anschluss finden Sie einige Beispiele für die unterschiedlichen Verhaltensweisen verschiedener Anforderungsarten:  
   

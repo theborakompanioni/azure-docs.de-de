@@ -1,13 +1,13 @@
 ---
-title: "Verbrauchs- und App Service-Pläne für Azure Functions | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie sich Azure Functions skalieren lässt, um die Anforderungen Ihrer ereignisgesteuerten Workloads zu erfüllen."
+title: "Vergleich von Hostingplänen für Azure Functions | Microsoft-Dokumentation"
+description: "Erfahren Sie, wie Sie zwischen einem Azure Functions-Verbrauchstarif und App Service-Plan wählen."
 services: functions
 documentationcenter: na
 author: lindydonna
 manager: cfowler
 editor: 
 tags: 
-keywords: Azure Functions, Functions, Ereignisverarbeitung, Webhooks, dynamisches Compute, serverlose Architektur
+keywords: Azure Functions, Functions, Verbrauchstarif, App Service-Plan, Ereignisverarbeitung, Webhooks, dynamisches Compute, serverlose Architektur
 ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.service: functions
 ms.devlang: multiple
@@ -18,13 +18,13 @@ ms.date: 06/12/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
-ms.openlocfilehash: 0e677fb35279d155241a95cd5f33b63e8294fad2
+ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
+ms.openlocfilehash: 8778dcfdb5859d212a2a3eb28a5ed297b5f07460
 ms.contentlocale: de-de
-ms.lasthandoff: 08/30/2017
+ms.lasthandoff: 09/02/2017
 
 ---
-# <a name="azure-functions-consumption-and-app-service-plans"></a>Verbrauchs- und App Service-Pläne für Azure Functions 
+# <a name="azure-functions-hosting-plans-comparison"></a>Vergleich von Hostingplänen für Azure Functions
 
 ## <a name="introduction"></a>Einführung
 
