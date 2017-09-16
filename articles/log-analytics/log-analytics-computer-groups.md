@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/26/2017
+ms.date: 09/15/2017
 ms.author: bwren
 ms.translationtype: HT
 ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
@@ -57,7 +57,7 @@ Nachstehend finden Sie Beispielsuchen, die Sie als eine Computergruppe speichern
 >[!NOTE]
 > Wenn für Ihren Arbeitsbereich ein Upgrade auf die [neue Log Analytics-Abfragesprache](log-analytics-log-search-upgrade.md) durchgeführt wurde, wurden am Verfahren zum Erstellen einer neuen Computergruppe die folgenden Änderungen vorgenommen.
 >  
-> - Die Abfrage zum Erstellen einer Computergruppe muss `distinct Computer` enthalten.  Es folgt ein Beispiel für eine Abfrage zum Erstellen einer Computergruppe.<br>`Heartbeat | where Computer contains "srv" `
+> - Die Abfrage zum Erstellen einer Computergruppe muss `distinct Computer` enthalten.  Es folgt ein Beispiel für eine Abfrage zum Erstellen einer Computergruppe.<br>`Heartbeat | where Computer contains "srv" | distinct Computer `
 > - Wenn Sie eine neue Computergruppe erstellen, müssen Sie zusätzlich zum Namen einen Alias angeben.  Sie verwenden den Alias, wenn Sie die Computergruppe in einer Abfrage verwenden, wie im Folgenden beschrieben.  
 
 ### <a name="log-search-api"></a>Protokollsuch-API
@@ -104,7 +104,7 @@ Computergruppen werden häufig mit der **IN**-Klausel in der Protokollsuche verw
 >[!NOTE]
 > Wenn für Ihren Arbeitsbereich ein Upgrade auf die [neue Log Analytics-Abfragesprache](log-analytics-log-search-upgrade.md) durchgeführt wurde, verwenden Sie eine Computergruppe in einer Abfrage, indem Sie den Alias als Funktion behandeln wie im folgenden Beispiel:
 > 
->  `UpdateSummary | where Computer IN (MyComputerGroup)`
+>  `UpdateSummary | where Computer in (mycomputergroup)`
 
 ## <a name="computer-group-records"></a>Computergruppen-Datensätze
 Im OMS-Repositorys wird für jede Mitgliedschaft in einer Computergruppe, die aus Active Directory oder WSUS erstellt wurde, ein Datensatz erstellt.  Diese Datensätze sind vom Typ **ComputerGroup** und weisen die in der folgenden Tabelle aufgeführten Eigenschaften auf.  Es werden keine Datensätze für Computergruppen basierend auf der Protokollsuche erstellt.
