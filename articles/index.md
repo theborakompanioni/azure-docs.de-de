@@ -4,10 +4,10 @@ hide_bc: true
 title: Microsoft Azure-Dokumentation
 description: Erfahren Sie, wie Sie mit Microsoft Azure-Clouddiensten leistungsstarke Anwendungen erstellen und verwalten. Laden Sie die Dokumentation, Beispielcode, Tutorials und vieles mehr herunter.
 ms.translationtype: HT
-ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
-ms.openlocfilehash: cec37e94b31d08930d7262b2f30dd3e84793af46
+ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
+ms.openlocfilehash: d9ccc9778b9612d7da7336984db6d0d84641ce72
 ms.contentlocale: de-de
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 <div id="main" class="v2">
@@ -156,7 +156,7 @@ ms.lasthandoff: 08/24/2017
                                                 </ul>
                                                 <h4>NoSQL</h4>
                                                 <ul class="noBullet">
-                                                    <li><a class="barLink" href="/azure/cosmos-db/">Cosmos DB</a></li>
+                                                    <li><a class="barLink" href="/azure/cosmos-db/">Azure Cosmos DB</a></li>
                                                 </ul>
                                                 <h4>AI und Cognitive Services</h4>
                                                 <ul class="noBullet">
@@ -311,7 +311,7 @@ ms.lasthandoff: 08/24/2017
                                         <li>
                                             <a href="/azure/cosmos-db/">
                                                 <img src="media/index/cosmosdb.svg" alt="" />
-                                                <p>Cosmos DB</p>
+                                                <p>Azure Cosmos DB</p>
                                             </a>
                                         </li>
                                         <li>
@@ -855,6 +855,12 @@ ms.lasthandoff: 08/24/2017
                                             <a href="/azure/iot-hub/">
                                                 <img src="media/index/IoTHub.svg" alt="" />
                                                 <p>Azure IoT Hub</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/azure/iot-dps/">
+                                                <img src="media/index/dps.svg" alt="" />
+                                                <p>IoT Hub Device Provisioning-Dienst</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1989,8 +1995,8 @@ ms.lasthandoff: 08/24/2017
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Cosmos DB</h3>
-                                                    <p>Verwaltete NoSQL-Dokumentendatenbank als DaaS-Lösung (Database-as-a-Service)</p>
+                                                    <h3>Azure Cosmos DB</h3>
+                                                    <p>Global verteilte Datenbank mit Unterstützung mehrerer Datenmodelle in jeder Größenordnung</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2462,6 +2468,25 @@ ms.lasthandoff: 08/24/2017
                                                 <div class="cardText">
                                                     <h3>Azure IoT Hub</h3>
                                                     <p>Verbinden, überwachen und kontrollieren von Milliarden von IoT-Geräten</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/iot-dps/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/dps.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>IoT Hub Device Provisioning-Dienst</h3>
+                                                    <p>JIT-Bereitstellung ohne manuelles Eingreifen für Azure IoT Hub</p>
                                                 </div>
                                             </div>
                                         </div>
