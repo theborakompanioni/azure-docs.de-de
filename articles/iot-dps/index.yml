@@ -1,0 +1,52 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Dokumentation für den Azure IoT Hub Device Provisioning-Dienst (Vorschauversion)
+metadata:
+  title: 'Dokumentation für den Azure IoT Hub Device Provisioning-Dienst (Vorschauversion) – Tutorials, API-Referenz'
+  meta.description: Overview of Azure IoT Hub Device Provisioning Service.
+  services: iot-dps
+  author: nberdy
+  manager: timlt
+  ms.service: iot-dps
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 01/23/2017
+  ms.author: nberdy
+abstract:
+  description: 'Der IoT Hub Device Provisioning-Dienst (Vorschauversion) ist ein Hilfsdienst für IoT Hub, der die JIT-Bereitstellung im richtigen IoT-Hub ohne manuelles Eingreifen ermöglicht, sodass Kunden Millionen von Geräten sicher und skalierbar bereitstellen können. Erfahren Sie mit unseren Schnellstartanleitungen, Tutorials und Beispielen, wie sie Geräte in Ihren IoT-Hubs bereitstellen.'
+sections:
+  - title: Fünfminütige Schnellstarts
+    items:
+      - type: paragraph
+        text: 'Erfahren Sie, wie Sie Ihre erste Device Provisioning-Dienstinstanz und ein simuliertes Gerät im IoT-Hub bereitstellen.'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: /azure/sql-database/media/index/portal.svg
+            text: Einrichten der automatischen Bereitstellung
+            href: /azure/iot-dps/quick-setup-auto-provision
+          - image:
+              src: /azure/sql-database/media/index/portal.svg
+            text: Erstellen eines simulierten Geräts
+            href: /azure/iot-dps/quick-create-simulated-device
+  - title: Schritt-für-Schritt-Tutorials
+    items:
+      - type: paragraph
+        text: 'Erfahren Sie, wie Sie mit dem IoT Hub Device Provisioning-Dienst (Vorschauversion) automatisch sicherheitsaktivierte Geräte in einem IoT-Hub oder mehreren IoT-Hubs bereitstellen.'
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/iot-dps/tutorial-set-up-cloud">Konfigurieren von Cloudressourcen</a>
+          - html: <a href="/azure/iot-dps/tutorial-set-up-device">Einrichten Ihres Geräts für die Verbindung mit Azure</a>
+          - html: <a href="/azure/iot-dps/tutorial-provision-device-to-hub">Bereitstellen von Geräten in einem IoT-Hub</a>
+          - html: <a href="/azure/iot-dps/tutorial-provision-multiple-hubs">Bereitstellen von Geräten in mehreren IoT-Hubs mit Lastausgleich</a>
+  - title: Referenz
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: REST
+            html: <p><a href="/rest/api/iot-dps">REST-API</a></p>

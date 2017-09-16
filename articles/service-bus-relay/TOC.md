@@ -13,6 +13,7 @@
 # Anleitung
 ## Planen und Entwerfen
 ### [Authentifizierung und Sicherheit](relay-authentication-and-authorization.md)
+#### [Migrieren von ACS zu SAS](relay-migrate-acs-sas.md)
 ### [Hybridverbindungsprotokoll](relay-hybrid-connections-protocol.md)
 ## Entwickeln
 ### [Verfügbare APIs](relay-api-overview.md)
