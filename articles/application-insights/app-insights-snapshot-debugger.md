@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 07/03/2017
 ms.author: bwren
 ms.translationtype: HT
-ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
-ms.openlocfilehash: bb6c93557ea26bed721315dc82da917e4727b5f9
+ms.sourcegitcommit: 266b9b7eb228744075627e1e80710e63c27880cc
+ms.openlocfilehash: cb0c74e7a3e3a2044262f94275110d0a55ccc19b
 ms.contentlocale: de-de
-ms.lasthandoff: 08/17/2017
+ms.lasthandoff: 09/06/2017
 
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>Debugmomentaufnahmen von Ausnahmen in .NET-Apps
@@ -175,7 +175,7 @@ Die heruntergeladene Momentaufnahme enthält alle Symboldateien, die auf Ihrem W
 
 ## <a name="how-snapshots-work"></a>Funktionsweise von Momentaufnahmen
 
-Beim Starten Ihrer Anwendung wird ein separater Uploader-Prozess für die Momentaufnahme erstellt, der Ihre Anwendung auf Momentaufnahmeanforderungen überwacht. Beim Anfordern einer Momentaufnahme wird innerhalb von etwa 10 bis 20 Minuten eine Schattenkopie des ausgeführten Prozesses erstellt. Der Schattenprozess wird dann analysiert, und eine Momentaufnahme wird erstellt, während der Hauptprozess weiterhin ausgeführt wird und Datenverkehr für Benutzer verarbeitet. Die Momentaufnahme wird dann mit allen relevanten Symboldateien (PDB-Dateien), die zum Anzeigen der Momentaufnahme erforderlich sind, in Application Insights hochgeladen.
+Beim Starten Ihrer Anwendung wird ein separater Uploader-Prozess für die Momentaufnahme erstellt, der Ihre Anwendung auf Momentaufnahmeanforderungen überwacht. Beim Anfordern einer Momentaufnahme wird innerhalb von etwa 10 bis 20 Millisekunden eine Schattenkopie des ausgeführten Prozesses erstellt. Der Schattenprozess wird dann analysiert, und eine Momentaufnahme wird erstellt, während der Hauptprozess weiterhin ausgeführt wird und Datenverkehr für Benutzer verarbeitet. Die Momentaufnahme wird dann mit allen relevanten Symboldateien (PDB-Dateien), die zum Anzeigen der Momentaufnahme erforderlich sind, in Application Insights hochgeladen.
 
 ## <a name="current-limitations"></a>Aktuelle Einschränkungen
 

@@ -16,10 +16,10 @@ ms.topic: quickstart
 ms.date: 06/19/2017
 ms.author: mimig
 ms.translationtype: HT
-ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
-ms.openlocfilehash: a26477d692cc98ed16c195233ade5434cc536a36
+ms.sourcegitcommit: 4eb426b14ec72aaa79268840f23a39b15fee8982
+ms.openlocfilehash: 0b9b201a90b8db59d22db6a48104c86b06469205
 ms.contentlocale: de-de
-ms.lasthandoff: 08/04/2017
+ms.lasthandoff: 09/06/2017
 
 ---
 # <a name="azure-cosmos-db-migrate-an-existing-nodejs-mongodb-web-app"></a>Azure Cosmos DB: Migrieren einer vorhandenen Web-App von Node.js MongoDB 
@@ -28,7 +28,7 @@ Azure Cosmos DB ist der global verteilte Datenbankdienst von Microsoft mit mehre
 
 Dieser Schnellstart veranschaulicht, wie Sie eine vorhandene, in Node.js geschriebene [MongoDB](mongodb-introduction.md)-App verwenden und sie mit Ihrer Azure Cosmos DB-Datenbank verbinden, die MongoDB-Clientverbindungen unterstützt. Das heißt, dass die Node.js-Anwendung nur weiß, dass sie mithilfe von MongoDB-APIs eine Verbindung mit einer Datenbank herstellt. Für die Anwendung ist es ersichtlich, dass die Daten in Azure Cosmos DB gespeichert sind.
 
-Wenn Sie fertig sind, wird eine MEAN-Anwendung (MongoDB, Express, AngularJS und Node.js) in [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) ausgeführt. 
+Wenn Sie fertig sind, wird eine MEAN-Anwendung (MongoDB, Express, Angular und Node.js) in [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) ausgeführt. 
 
 ![In Azure App Service ausgeführte MEAN.js-App](./media/create-mongodb-nodejs/meanjs-in-azure.png)
 

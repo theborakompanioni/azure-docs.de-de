@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/27/2017
 ms.author: abnarain
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 9e40eba285aeb1cce6b77311d1b69a6b96967a0b
+ms.sourcegitcommit: 763bc597bdfc40395511cdd9d797e5c7aaad0fdf
+ms.openlocfilehash: f1f57404734ad6dc77250b180a9c334de60f0af3
 ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
+ms.lasthandoff: 09/06/2017
 
 ---
 # <a name="data-management-gateway"></a>Gateway zur Datenverwaltung
@@ -281,7 +281,7 @@ Sie können das Feature für die automatische Aktualisierung wie folgt deaktivie
     ```PowerShell
     .\GatewayAutoUpdateToggle.ps1  -on  
     ```
-[[Für hoch verfügbare und skalierbare Gateways mit mehreren Knoten (Vorschauversion)](data-factory-data-management-gateway-high-availability-scalability.md)]
+[Für hoch verfügbare und skalierbare Gateways mit mehreren Knoten (Vorschauversion)](data-factory-data-management-gateway-high-availability-scalability.md)
 1. Starten Sie Windows PowerShell auf dem Gatewaycomputer.
 2. Wechseln Sie in den Ordner „C:\Programme\Microsoft Data Management Gateway\2.0\PowerShellScript“.
 3. Führen Sie den folgenden Befehl aus, um das Feature für die automatische Aktualisierung zu deaktivieren.   
@@ -294,154 +294,154 @@ Sie können das Feature für die automatische Aktualisierung wie folgt deaktivie
 
     ```PowerShell
     .\GatewayAutoUpdateToggle.ps1  -on -AuthKey <your auth key> 
+    ```
 
+## <a name="configuration-manager"></a>Konfigurations-Manager
+Nach der Installation des Gateways können Sie den Datenverwaltungsgateway-Konfigurations-Manager auf eine der folgenden Arten starten:
 
-## Configuration Manager
-Once you install the gateway, you can launch Data Management Gateway Configuration Manager in one of the following ways:
+1. Geben Sie im Fenster **Suchen** den Begriff **Datenverwaltungsgateway** ein, um auf dieses Hilfsprogramm zuzugreifen.
+2. Führen Sie die Datei **ConfigManager.exe** im Ordner **C:\Programme\Microsoft Data Management Gateway\2.0\Shared** aus.
 
-1. In the **Search** window, type **Data Management Gateway** to access this utility.
-2. Run the executable **ConfigManager.exe** in the folder: **C:\Program Files\Microsoft Data Management Gateway\2.0\Shared**
+### <a name="home-page"></a>Startseite
+Auf der Startseite können Sie die folgenden Aktionen ausführen:
 
-### Home page
-The Home page allows you to do the following actions:
+* Anzeigen des Gatewaystatus (mit Clouddienst verbunden oder Ähnliches)
+* **Registrieren** mithilfe eines Schlüssels aus dem Portal
+* **Beenden** und Starten des **Datenverwaltungsgateway-Hostdiensts** auf dem Gatewaycomputer
+* **Planen von Updates** zu einem bestimmten Zeitpunkt an den Tagen
+* Anzeigen des Datums, zu dem das Gateway **zuletzt aktualisiert**wurde
 
-* View status of the gateway (connected to the cloud service etc.).
-* **Register** using a key from the portal.
-* **Stop** and start the **Data Management Gateway Host service** on the gateway machine.
-* **Schedule updates** at a specific time of the days.
-* View the date when the gateway was **last updated**.
+### <a name="settings-page"></a>Seite "Einstellungen"
+Auf der Seite „Einstellungen“ können Sie die folgenden Aktionen ausführen:
 
-### Settings page
-The Settings page allows you to do the following actions:
+* Anzeigen, Ändern und Exportieren des **Zertifikats**, das vom Gateway verwendet wird Dieses Zertifikat dient zum Verschlüsseln von Anmeldeinformationen für Datenquellen.
+* Ändern des **HTTPS-Ports** für den Endpunkt Das Gateway öffnet einen Port für die Festlegung der Datenquellen-Anmeldeinformationen.
+* **Status** des Endpunkts
+* **SSL-Zertifikat anzeigen** wird für die SSL-Kommunikation zwischen Portal und Gateway zum Festlegen von Anmeldeinformationen für Datenquellen verwendet.  
 
-* View, change, and export **certificate** used by the gateway. This certificate is used to encrypt data source credentials.
-* Change **HTTPS port** for the endpoint. The gateway opens a port for setting the data source credentials.
-* **Status** of the endpoint
-* View **SSL certificate** is used for SSL communication between portal and the gateway to set credentials for data sources.  
+### <a name="diagnostics-page"></a>Seite „Diagnose“
+Auf der Seite „Diagnose“ können Sie die folgenden Aktionen ausführen:
 
-### Diagnostics page
-The Diagnostics page allows you to do the following actions:
+* Aktivieren der ausführlichen **Protokollierung**, Anzeigen von Protokollen in der Ereignisanzeige und Senden von Protokollen an Microsoft, falls ein Fehler aufgetreten ist
+* **Testen der Verbindung** mit einer Datenquelle  
 
-* Enable verbose **logging**, view logs in event viewer, and send logs to Microsoft if there was a failure.
-* **Test connection** to a data source.  
+### <a name="help-page"></a>Hilfeseite
+Auf der Seite „Hilfe“ werden die folgenden Informationen angezeigt:  
 
-### Help page
-The Help page displays the following information:  
+* Kurzbeschreibung des Gateways.
+* Versionsnummer
+* Links zu Onlinehilfe, Datenschutzbestimmungen und Lizenzvertrag  
 
-* Brief description of the gateway
-* Version number
-* Links to online help, privacy statement, and license agreement.  
+## <a name="monitor-gateway-in-the-portal"></a>Überwachen des Gateways im Portal
+Im Azure-Portal können Sie auf einem Gatewaycomputer nahezu in Echtzeit Momentaufnahmen der Ressourcenverwendung (CPU, Arbeitsspeicher, Netzwerk (Eingang/Ausgang) usw.) anzeigen.  
 
-## Monitor gateway in the portal
-In the Azure portal, you can view near-real time snapshot of resource utilization (CPU, memory, network(in/out), etc.) on a gateway machine.  
+1. Navigieren Sie im Azure-Portal zur Data Factory-Startseite, und klicken Sie auf die Kachel **Verknüpfte Dienste**. 
 
-1. In Azure portal, navigate to the home page for your data factory, and click **Linked services** tile. 
+    ![Data Factory-Startseite](./media/data-factory-data-management-gateway/monitor-data-factory-home-page.png) 
+2. Wählen Sie auf der Seite **Verknüpfte Dienste** das **Gateway** aus.
 
-    ![Data factory home page](./media/data-factory-data-management-gateway/monitor-data-factory-home-page.png) 
-2. Select the **gateway** in the **Linked services** page.
+    ![Seite „Verknüpfte Dienste“](./media/data-factory-data-management-gateway/monitor-linked-services-blade.png)
+3. Auf der Seite **Gateway** wird die Arbeitsspeicher- und CPU-Nutzung des Gateways angezeigt.
 
-    ![Linked services page](./media/data-factory-data-management-gateway/monitor-linked-services-blade.png)
-3. In the **Gateway** page, you can see the memory and CPU usage of the gateway.
-
-    ![CPU and memory usage of gateway](./media/data-factory-data-management-gateway/gateway-simple-monitoring.png) 
-4. Enable **Advanced settings** to see more details such as network usage.
+    ![CPU- und Arbeitsspeicherauslastung des Gateways](./media/data-factory-data-management-gateway/gateway-simple-monitoring.png) 
+4. Aktivieren Sie die Option **Erweiterte Einstellungen**, um weitere Details anzuzeigen, z.B. die Netzwerkauslastung.
     
-    ![Advanced monitoring of gateway](./media/data-factory-data-management-gateway/gateway-advanced-monitoring.png)
+    ![Erweiterte Überwachung des Gateways](./media/data-factory-data-management-gateway/gateway-advanced-monitoring.png)
 
-The following table provides descriptions of columns in the **Gateway Nodes** list:  
+Die folgende Tabelle enthält Beschreibungen von Spalten in der Liste **Gatewayknoten**:  
 
-Monitoring Property | Description
+Überwachungseigenschaft | Beschreibung
 :------------------ | :---------- 
-Name | Name of the logical gateway and nodes associated with the gateway. Node is an on-premises Windows machine that has the gateway installed on it. For information on having more than one node (up to four nodes) in a single logical gateway, see [Data Management Gateway - high availability and scalability](data-factory-data-management-gateway-high-availability-scalability.md).    
-Status | Status of the logical gateway and the gateway nodes. Example: Online/Offline/Limited/etc. For information about these statuses, See [Gateway status](#gateway-status) section. 
-Version | Shows the version of the logical gateway and each gateway node. The version of the logical gateway is determined based on version of majority of nodes in the group. If there are nodes with different versions in the logical gateway setup, only the nodes with the same version number as the logical gateway function properly. Others are in the limited mode and need to be manually updated (only in case auto-update fails). 
-Available memory | Available memory on a gateway node. This value is a near real-time snapshot. 
-CPU utilization | CPU utilization of a gateway node. This value is a near real-time snapshot. 
-Networking (In/Out) | Network utilization of a gateway node. This value is a near real-time snapshot. 
-Concurrent Jobs (Running/ Limit) | Number of jobs or tasks running on each node. This value is a near real-time snapshot. Limit signifies the maximum concurrent jobs for each node. This value is defined based on the machine size. You can increase the limit to scale up concurrent job execution in advanced scenarios, where CPU/memory/network is under-utilized, but activities are timing out. This capability is also available with a single-node gateway (even when the scalability and availability feature is not enabled).  
-Role | There are two types of roles in a multi-node gateway – Dispatcher and worker. All nodes are workers, which means they can all be used to execute jobs. There is only one dispatcher node, which is used to pull tasks/jobs from cloud services and dispatch them to different worker nodes (including itself).
+Name | Name des logischen Gateways und der Knoten, die dem Gateway zugeordnet sind. Der Knoten ist ein lokaler Windows-Computer, auf dem das Gateway installiert ist. Informationen zur Verwendung von mehr als einem Knoten (bis zu vier Knoten) auf einem einzelnen logischen Gateway finden Sie unter [Datenverwaltungsgateway – Hohe Verfügbarkeit und Skalierbarkeit](data-factory-data-management-gateway-high-availability-scalability.md).    
+Status | Status des logischen Gateways und der Gatewayknoten. Beispiel: Online/Offline/Eingeschränkt usw. Informationen zu diesen Status finden Sie im Abschnitt [Gatewaystatus](#gateway-status). 
+Version | Zeigt die Version des logischen Gateways und jedes Gatewayknotens an. Die Version des logischen Gateways wird basierend auf der Version bestimmt, die die meisten Knoten der Gruppe aufweisen. Wenn Knoten mit unterschiedlichen Versionen am Setup des logischen Gateways beteiligt sind, funktionieren nur die Knoten mit der gleichen Versionsnummer wie beim logischen Gateway richtig. Andere Knoten befinden sich im eingeschränkten Modus und müssen manuell aktualisiert werden (nur für den Fall, dass die automatische Aktualisierung fehlschlägt). 
+Verfügbarer Arbeitsspeicher | Verfügbarer Arbeitsspeicher auf einem Gatewayknoten. Dieser Wert steht für eine Momentaufnahme nahezu in Echtzeit. 
+CPU-Auslastung | CPU-Auslastung eines Gatewayknotens. Dieser Wert steht für eine Momentaufnahme nahezu in Echtzeit. 
+Netzwerk (Eingang/Ausgang) | Netzwerkauslastung eines Gatewayknotens. Dieser Wert steht für eine Momentaufnahme nahezu in Echtzeit. 
+Gleichzeitige Aufträge (ausgeführt/Limit) | Anzahl von Aufträgen oder Aufgaben, die auf den einzelnen Knoten ausgeführt werden. Dieser Wert steht für eine Momentaufnahme nahezu in Echtzeit. Mit „Limit“ wird angegeben, wie viele Aufträge für einen Knoten jeweils gleichzeitig ausgeführt werden können. Dieser Wert wird basierend auf der Größe des Computers definiert. Sie können das Limit erhöhen, um die Ausführung von gleichzeitigen Aufträgen in erweiterten Szenarien zentral hochzuskalieren, in denen CPU, Arbeitsspeicher und Netzwerk nicht voll ausgelastet sind, aber Zeitüberschreitungen für Aktivitäten auftreten. Diese Funktion ist auch für ein Gateway mit nur einem Knoten verfügbar (auch wenn die Skalierbarkeits- und Verfügbarkeitsfunktion nicht aktiviert ist).  
+Rolle | Bei einem Gateway mit mehreren Knoten gibt es zwei Arten von Rollen: Verteiler und Worker. Alle Knoten sind Worker. Dies bedeutet, dass alle Knoten zum Ausführen von Aufträgen verwendet werden können. Es ist nur ein Verteilerknoten vorhanden, der zum Durchführen der Pullvorgänge für Aufgaben bzw. Aufträge von Clouddiensten und Verteilen an die einzelnen Workerknoten (einschließlich sich selbst) genutzt wird.
 
-In this page, you see some settings that make more sense when there are two or more nodes (scale out scenario) in the gateway. See [Data Management Gateway - high availability and scalability](data-factory-data-management-gateway-high-availability-scalability.md) for details about setting up a multi-node gateway.
+Auf dieser Seite werden einige Einstellungen angezeigt, die mehr Sinn ergeben, wenn das Gateway mindestens zwei Knoten enthält (Szenario mit horizontalem Hochskalieren). Ausführliche Informationen zum Einrichten eines Gateways mit mehreren Knoten finden Sie unter [Data Management Gateway – high availability and scalability (Preview)](data-factory-data-management-gateway-high-availability-scalability.md) (Datenverwaltungsgateway – Hohe Verfügbarkeit und Skalierbarkeit (Vorschauversion)).
 
-### Gateway status
-The following table provides possible statuses of a **gateway node**: 
+### <a name="gateway-status"></a>Gatewaystatus
+Die folgende Tabelle enthält die möglichen Status eines **Gatewayknotens**: 
 
-Status  | Comments/Scenarios
+Status  | Kommentare/Szenarien
 :------- | :------------------
-Online | Node connected to Data Factory service.
-Offline | Node is offline.
-Upgrading | The node is being auto-updated.
-Limited | Due to Connectivity issue. May be due to HTTP port 8050 issue, service bus connectivity issue, or credential sync issue. 
-Inactive | Node is in a configuration different from the configuration of other majority nodes.<br/><br/> A node can be inactive when it cannot connect to other nodes. 
+Online | Knoten, der mit dem Data Factory-Dienst verbunden ist.
+Offline | Knoten ist offline.
+Wird aktualisiert | Der Knoten wird automatisch aktualisiert.
+Eingeschränkt | Es besteht ein Konnektivitätsproblem. Dies kann ein Problem mit HTTP-Port 8050, mit der Service Bus-Konnektivität oder mit der Synchronisierung von Anmeldeinformationen sein. 
+Inaktiv | Die Konfiguration des Knotens unterscheidet sich von der Konfiguration anderer Mehrheitsknoten.<br/><br/> Ein Knoten kann inaktiv sein, wenn er keine Verbindungen mit anderen Knoten herstellen kann. 
 
 
-The following table provides possible statuses of a **logical gateway**. The gateway status depends on statuses of the gateway nodes. 
+Die folgende Tabelle enthält die möglichen Status eines **logischen Gateways**. Der Gatewaystatus hängt von den Status der Gatewayknoten ab. 
 
-Status | Comments
+Status | Kommentare
 :----- | :-------
-Needs Registration | No node is yet registered to this logical gateway
-Online | Gateway Nodes are online
-Offline | No node in online status.
-Limited | Not all nodes in this gateway are in healthy state. This status is a warning that some node might be down! <br/><br/>Could be due to credential sync issue on dispatcher/worker node. 
+Registrierung erforderlich | Für dieses logische Gateway ist noch kein Knoten registriert.
+Online | Gatewayknoten sind online.
+Offline | Kein Knoten befindet sich im Onlinestatus.
+Eingeschränkt | Nicht alle Knoten dieses Gateways befinden sich in einem fehlerfreien Zustand. Dieser Status ist eine Warnung, dass ein Knoten unter Umständen ausgefallen ist. <br/><br/>Die Ursache kann ein Problem mit der Synchronisierung von Anmeldeinformationen auf einem Verteiler- oder Workerknoten sein. 
 
-## Scale up gateway
-You can configure the number of **concurrent data movement jobs** that can run on a node to scale up the capability of moving data between on-premises and cloud data stores. 
+## <a name="scale-up-gateway"></a>Zentrales Hochskalieren des Gateways
+Sie können die Anzahl von **gleichzeitigen Datenverschiebungsaufträgen** konfigurieren, die auf einem Knoten ausgeführt werden können, um die Voraussetzungen zum Verschieben von Daten zwischen lokalen und Clouddatenspeichern zu verbessern. 
 
-When the available memory and CPU are not utilized well, but the idle capacity is 0, you should scale up by increasing the number of concurrent jobs that can run on a node. You may also want to scale up when activities are timing out because the gateway is overloaded. In the advanced settings of a gateway node, you can increase the maximum capacity for a node. 
+Wenn die Auslastung des verfügbaren Arbeitsspeichers und der CPU nicht hoch ist, aber die Kapazität im Leerlauf den Wert „0“ hat, sollten Sie zentral hochskalieren. Erhöhen Sie hierfür die Anzahl von gleichzeitigen Aufträgen, die auf einem Knoten ausgeführt werden können. Es kann auch hilfreich sein, das zentrale Hochskalieren durchzuführen, wenn für Aktivitäten eine Zeitüberschreitung auftritt, weil das Gateway überlastet ist. In den erweiterten Einstellungen eines Gatewayknotens können Sie die maximale Kapazität für einen Knoten erhöhen. 
   
 
-## Troubleshooting gateway issues
-See [Troubleshooting gateway issues](data-factory-troubleshoot-gateway-issues.md) article for information/tips for troubleshooting issues with using the data management gateway.  
+## <a name="troubleshooting-gateway-issues"></a>Problembehandlung bei Gateways
+Im Artikel [Behandeln von Problemen bei der Verwendung des Datenverwaltungsgateways](data-factory-troubleshoot-gateway-issues.md) finden Sie Informationen/Tipps zur Behandlung von Problemen mit dem Datenverwaltungsgateway.  
 
-## Move gateway from one machine to another
-This section provides steps for moving gateway client from one machine to another machine.
+## <a name="move-gateway-from-one-machine-to-another"></a>Verschieben eines Gateways von einem Computer auf einen anderen
+Dieser Abschnitt enthält Anweisungen zum Verschieben des Gatewayclients von einem Computer auf einen anderen.
 
-1. In the portal, navigate to the **Data Factory home page**, and click the **Linked Services** tile.
+1. Wechseln Sie im Portal zur **Data Factory-Startseite**, und klicken Sie auf die Kachel **Verknüpfte Dienste**.
 
-    ![Data Gateways Link](./media/data-factory-data-management-gateway/DataGatewaysLink.png)
-2. Select your gateway in the **DATA GATEWAYS** section of the **Linked Services** page.
+    ![Link „Datengateways“](./media/data-factory-data-management-gateway/DataGatewaysLink.png)
+2. Wählen Sie auf der Seite **Verknüpfte Dienste** im Abschnitt **DATENGATEWAYS** Ihr Gateway aus.
 
-    ![Linked Services page with gateway selected](./media/data-factory-data-management-gateway/LinkedServiceBladeWithGateway.png)
-3. In the **Data gateway** page, click **Download and install data gateway**.
+    ![Seite „Verknüpfte Dienste“ mit ausgewähltem Gateway](./media/data-factory-data-management-gateway/LinkedServiceBladeWithGateway.png)
+3. Klicken Sie auf der Seite **Datengateway** auf **Datengateway herunterladen und installieren**.
 
-    ![Download gateway link](./media/data-factory-data-management-gateway/DownloadGatewayLink.png)
-4. In the **Configure** page, click **Download and install data gateway**, and follow instructions to install the data gateway on the machine.
+    ![Link „Gateway herunterladen“](./media/data-factory-data-management-gateway/DownloadGatewayLink.png)
+4. Klicken Sie auf der Seite **Konfigurieren** auf **Datengateway herunterladen und installieren**, und befolgen Sie die Anweisungen, um das Datengateway auf dem Computer zu installieren.
 
-    ![Configure page](./media/data-factory-data-management-gateway/ConfigureBlade.png)
-5. Keep the **Microsoft Data Management Gateway Configuration Manager** open.
+    ![Konfigurieren, Seite](./media/data-factory-data-management-gateway/ConfigureBlade.png)
+5. Lassen Sie den **Microsoft-Datenverwaltungsgateway-Konfigurations-Manager** geöffnet.
 
-    ![Configuration Manager](./media/data-factory-data-management-gateway/ConfigurationManager.png)    
-6. In the **Configure** page in the portal, click **Recreate key** on the command bar, and click **Yes** for the warning message. Click **copy button** next to key text that copies the key to the clipboard. The gateway on the old machine stops functioning as soon you recreate the key.  
+    ![Konfigurations-Manager](./media/data-factory-data-management-gateway/ConfigurationManager.png)    
+6. Klicken Sie im Portal auf der Seite **Konfigurieren** in der Befehlsleiste auf **Schlüssel neu erstellen** und anschließend in der Warnmeldung auf **Ja**. Klicken Sie auf die Schaltfläche **Kopieren** neben dem Schlüsseltext, um den Schlüssel in die Zwischenablage zu kopieren. Sobald Sie den Schlüssel neu erstellen, funktioniert das Gateway auf dem alten Computer nicht mehr.  
 
-    ![Recreate key](./media/data-factory-data-management-gateway/RecreateKey.png)
-7. Paste the **key** into text box in the **Register Gateway** page of the **Data Management Gateway Configuration Manager** on your machine. (optional) Click **Show gateway key** check box to see the key text.
+    ![Schlüssel neu erstellen](./media/data-factory-data-management-gateway/RecreateKey.png)
+7. Fügen Sie auf Ihrem Computer im **Datenverwaltungsgateway-Konfigurations-Manager** auf der Seite **Gateway registrieren** den **Schlüssel** in das Textfeld ein. (Optional) Aktivieren Sie das Kontrollkästchen **Gatewayschlüssel anzeigen**, um den Schlüsseltext anzuzeigen.
 
-    ![Copy key and Register](./media/data-factory-data-management-gateway/CopyKeyAndRegister.png)
-8. Click **Register** to register the gateway with the cloud service.
-9. On the **Settings** tab, click **Change** to select the same certificate that was used with the old gateway, enter the **password**, and click **Finish**.
+    ![Schlüssel kopieren und registrieren](./media/data-factory-data-management-gateway/CopyKeyAndRegister.png)
+8. Klicken Sie auf **Registrieren** , um das Gateway beim Clouddienst zu registrieren.
+9. Klicken Sie auf der Registerkarte **Einstellungen** auf **Ändern**, um das gleiche Zertifikat auszuwählen, das mit dem alten Gateway verwendet wurde. Geben Sie dann das **Kennwort** ein, und klicken Sie auf **Fertig stellen**.
 
-   ![Specify Certificate](./media/data-factory-data-management-gateway/SpecifyCertificate.png)
+   ![Zertifikat angeben](./media/data-factory-data-management-gateway/SpecifyCertificate.png)
 
-   You can export a certificate from the old gateway by doing the following steps: launch Data Management Gateway Configuration Manager on the old machine, switch to the **Certificate** tab, click **Export** button and follow the instructions.
-10. After successful registration of the gateway, you should see the **Registration** set to **Registered** and **Status** set to **Started** on the Home page of the Gateway Configuration Manager.
+   Ein Zertifikat des alten Gateways können Sie wie folgt exportieren: Starten Sie auf dem alten Computer den Konfigurations-Manager des Datenverwaltungsgateways, wechseln Sie zur Registerkarte **Zertifikat**, klicken Sie auf **Exportieren**, und befolgen Sie die Anweisungen.
+10. Nach erfolgreicher Registrierung des Gateways sollten auf der Startseite des Gateway-Konfigurations-Managers **Registrierung** auf **Registriert** und die Option **Status** auf **Gestartet** festgelegt sein.
 
-## Encrypting credentials
-To encrypt credentials in the Data Factory Editor, do the following steps:
+## <a name="encrypting-credentials"></a>Verschlüsseln der Anmeldeinformationen
+Zum Verschlüsseln der Anmeldeinformationen im Data Factory-Editor gehen Sie wie folgt vor:
 
-1. Launch web browser on the **gateway machine**, navigate to [Azure portal](http://portal.azure.com). Search for your data factory if needed, open data factory in the **DATA FACTORY** page and then click **Author & Deploy** to launch Data Factory Editor.   
-2. Click an existing **linked service** in the tree view to see its JSON definition or create a linked service that requires a data management gateway (for example: SQL Server or Oracle).
-3. In the JSON editor, for the **gatewayName** property, enter the name of the gateway.
-4. Enter server name for the **Data Source** property in the **connectionString**.
-5. Enter database name for the **Initial Catalog** property in the **connectionString**.    
-6. Click **Encrypt** button on the command bar that launches the click-once **Credential Manager** application. You should see the **Setting Credentials** dialog box.
+1. Starten Sie auf dem **Gatewaycomputer** einen Webbrowser, und navigieren Sie zum [Azure-Portal](http://portal.azure.com). Suchen Sie ggf. nach Ihrer Data Factory, und öffnen Sie die Data Factory auf der Seite **DATA FACTORY**. Klicken Sie anschließend auf **Erstellen und bereitstellen**, um den Data Factory-Editor zu starten.   
+2. Klicken Sie in der Strukturansicht auf einen vorhandenen **verknüpften Dienst**, um dessen JSON-Definition anzuzeigen, oder erstellen Sie einen verknüpften Dienst, der ein Datenverwaltungsgateway erfordert (z.B. SQL Server oder Oracle).
+3. Geben Sie im JSON-Editor für die **gatewayName** -Eigenschaft den Namen des Gateways ein.
+4. Geben Sie den Servernamen für die **Data Source**-Eigenschaft in **connectionString** ein.
+5. Geben Sie den Datenbanknamen für die **Initial Catalog**-Eigenschaft in **connectionString** ein.    
+6. Klicken Sie auf der Befehlsleiste auf **Verschlüsseln**, um die ClickOnce-Anwendung **Anmeldeinformationsverwaltung** zu starten. Das Dialogfeld **Anmeldeinformationen festlegen** wird angezeigt.
 
-    ![Setting credentials dialog](./media/data-factory-data-management-gateway/setting-credentials-dialog.png)
-7. In the **Setting Credentials** dialog box, do the following steps:
-   1. Select **authentication** that you want the Data Factory service to use to connect to the database.
-   2. Enter name of the user who has access to the database for the **USERNAME** setting.
-   3. Enter password for the user for the **PASSWORD** setting.  
-   4. Click **OK** to encrypt credentials and close the dialog box.
-8. You should see a **encryptedCredential** property in the **connectionString** now.
+    ![Dialogfeld „Anmeldeinformationen festlegen“](./media/data-factory-data-management-gateway/setting-credentials-dialog.png)
+7. Gehen Sie im Dialogfeld **Anmeldeinformationen festlegen** folgendermaßen vor:
+   1. Wählen Sie die **Authentifizierung** aus, die der Data Factory-Dienst für die Verbindung mit der Datenbank verwenden soll.
+   2. Geben Sie für die Einstellung **BENUTZERNAME** den Namen des Benutzers ein, der auf die Datenbank zugreifen kann.
+   3. Geben Sie für die Einstellung **KENNWORT** das Kennwort für den Benutzer ein.  
+   4. Klicken Sie auf **OK** , um Anmeldeinformationen zu verschlüsseln, und schließen Sie das Dialogfeld.
+8. Sie sollten nun in **connectionString** eine **encryptedCredential**-Eigenschaft sehen.
 
     ```JSON
     {

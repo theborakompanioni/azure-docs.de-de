@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/07/2017
 ms.author: giladm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6adaf7026d455210db4d7ce6e7111d13c2b75374
-ms.openlocfilehash: f4324a59b5fa4c2e1ab5b1d7fc7e5fe986ea80f8
+ms.translationtype: HT
+ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
+ms.openlocfilehash: ea45fe72a499daa363dc9e43f82c94af38bf6e85
 ms.contentlocale: de-de
-ms.lasthandoff: 06/22/2017
-
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Erste Schritte bei der Überwachung von SQL-Datenbank
@@ -68,8 +67,7 @@ Der folgende Abschnitt beschreibt die Konfiguration der Überwachung über das A
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
 2. Navigieren Sie zum Blatt mit den **Einstellungen** der SQL-Datenbank/des SQL Server, die bzw. den Sie überwachen möchten. Wählen Sie auf dem Blatt **Einstellungen** die Option **Überwachung und Bedrohungserkennung**.
 
-    <a id="auditing-screenshot"></a>
-    ![Navigationsbereich][1]
+    <a id="auditing-screenshot"></a> ![Navigationsbereich][1]
 3. Wenn Sie lieber eine Serverüberwachungsrichtlinie einrichten möchten (die auf alle vorhandenen und neu erstellten Datenbanken auf dem Server angewendet wird), können Sie im Blatt für die Datenbanküberwachung den Link **Servereinstellungen anzeigen** auswählen. Anschließend können Sie die Serverüberwachungseinstellungen anzeigen oder ändern.
 
     ![Navigationsbereich][2]
@@ -82,8 +80,7 @@ Der folgende Abschnitt beschreibt die Konfiguration der Überwachung über das A
    >[!TIP] 
    >Verwenden Sie für alle überwachten Datenbanken dasselbe Speicherkonto, um die Berichtvorlagen für die Überwachung optimal einzusetzen. 
 
-    <a id="storage-screenshot"></a>
-    ![Navigationsbereich][4]
+    <a id="storage-screenshot"></a> ![Navigationsbereich][4]
 6. Wenn Sie die überwachten Ereignisse anpassen möchten, können Sie PowerShell oder die REST-API verwenden. Weitere Informationen finden Sie im Abschnitt [Automatisierung (PowerShell/REST-API)](#subheading-7).
 7. Nachdem Sie Ihre Überwachungseinstellungen konfiguriert haben, können Sie das neue Feature der Bedrohungserkennung aktivieren und die E-Mail-Konten konfigurieren, an die Sicherheitswarnungen gesendet werden sollen. Mit der Bedrohungserkennung können Sie proaktive Warnungen bei anomalen Datenbankaktivitäten erhalten, die auf mögliche Sicherheitsbedrohungen hinweisen können. Weitere Informationen finden Sie unter [Erste Schritte mit der Bedrohungserkennung](sql-database-threat-detection-get-started.md).
 8. Klicken Sie auf **Speichern**.
@@ -148,17 +145,16 @@ Es gibt verschiedene Methoden zum Anzeigen von Blobüberwachungsprotokollen:
 <!--The description in this section refers to preceding screen captures.-->
 
 ### <a id="subheading-6">Überwachung von georeplizierten Datenbanken</a>
-Wenn Sie georeplizierte Datenbanken verwenden, können Sie die Überwachung je nach Überwachungstyp für die primäre Datenbank, die sekundäre Datenbank oder für beide einrichten.
+Bei Verwendung georeplizierter Datenbanken können Sie die Überwachung für die sekundäre Datenbank einrichten, indem Sie sie entweder auf dem **sekundären Server** oder für die primäre Datenbank aktivieren. (In letzterem Fall besitzt die sekundäre Datenbank eine identische Überwachungsrichtlinie wie die primäre Datenbank.)
 
-Befolgen Sie diese Anweisungen (denken Sie daran, dass die Blobüberwachung nur in den Überwachungseinstellungen der primären Datenbank aktiviert und deaktiviert werden kann):
+* Auf Serverebene (**empfohlen**): Aktivieren Sie die Überwachung sowohl auf dem **primären Server** als auch auf dem **sekundären Server**. Dadurch werden die primäre und die sekundäre Datenbank jeweils unabhängig auf der Grundlage der jeweiligen Richtlinie auf Serverebene überwacht.
 
-* **Primäre Datenbank**. Aktivieren Sie die Blobüberwachung entweder auf dem Server oder in der Datenbank selbst, wie im Abschnitt [Einrichten der Überwachung für Ihre Datenbank](#subheading-2) beschrieben.
-* **Sekundäre Datenbank**. Aktivieren Sie die Blobüberwachung in der primären Datenbank, wie im Abschnitt [Einrichten der Überwachung für Ihre Datenbank](#subheading-2) beschrieben. 
+* Auf Datenbankebene: Die Überwachung auf Datenbankebene kann für sekundäre Datenbanken nur über die Überwachungseinstellungen der primären Datenbank konfiguriert werden.
    * Die Blobüberwachung muss in der *primären Datenbank selbst* aktiviert werden, nicht auf dem Server.
    * Nachdem die Blobüberwachung in der primären Datenbank aktiviert wurde, wird sie auch in der sekundären Datenbank aktiv.
 
      >[!IMPORTANT]
-     >Standardmäßig sind die Speichereinstellungen für die sekundäre Datenbank identisch mit den Einstellungen der primären Datenbank, wodurch regionsübergreifender Datenverkehr generiert wird. Sie können dies vermeiden, indem Sie die Blobüberwachung auf dem sekundären Server aktivieren und den lokalen Speicher in den Speichereinstellungen des sekundären Servers konfigurieren. Damit überschreiben Sie den Speicherort für die sekundäre Datenbank, sodass die Überwachungsprotokolle jeder Datenbank lokal gespeichert werden.  
+     >Bei der Überwachung auf Datenbankebene sind die Speichereinstellungen für die sekundäre Datenbank identisch mit den Einstellungen der primären Datenbank, wodurch regionsübergreifender Datenverkehr generiert wird. Wenn Sie die Überwachung auf Datenbankebene nicht unbedingt benötigen, empfiehlt es sich, nur die Überwachung auf Serverebene für den primären und sekundären Server zu aktivieren und die Überwachung auf Datenbankebene für alle Datenbanken deaktiviert zu lassen.
 <br>
 
 ### <a id="subheading-6">Erneute Speicherschlüsselgenerierung</a>
@@ -184,7 +180,6 @@ Sie können die Überwachung in Azure SQL-Datenbank auch mit den folgenden Autom
    * [Remove-AzureRMSqlServerAuditing][104]
    * [Set-AzureRMSqlDatabaseAuditingPolicy][105]
    * [Set-AzureRMSqlServerAuditingPolicy][106]
-   * [Use-AzureRMSqlServerAuditingPolicy][107]
 
    Ein Skriptbeispiel finden Sie unter [Konfigurieren von Überwachung von SQL-Datenbank und Bedrohungserkennung mit PowerShell](scripts/sql-database-auditing-and-threat-detection-powershell.md).
 
@@ -218,11 +213,10 @@ Sie können die Überwachung in Azure SQL-Datenbank auch mit den folgenden Autom
 [9]: ./media/sql-database-auditing-get-started/9_auditing_get_started_ssms_1.png
 [10]: ./media/sql-database-auditing-get-started/10_auditing_get_started_ssms_2.png
 
-[101]: /powershell/module/azurerm.sql/get-azurermsqldatabaseauditingpolicy
-[102]: /powershell/module/azurerm.sql/Get-AzureRMSqlServerAuditingPolicy
+[101]: /powershell/module/azurerm.sql/get-azurermsqldatabaseauditing
+[102]: /powershell/module/azurerm.sql/Get-AzureRMSqlServerAuditing
 [103]: /powershell/module/azurerm.sql/Remove-AzureRMSqlDatabaseAuditing
 [104]: /powershell/module/azurerm.sql/Remove-AzureRMSqlServerAuditing
-[105]: /powershell/module/azurerm.sql/Set-AzureRMSqlDatabaseAuditingPolicy
-[106]: /powershell/module/azurerm.sql/Set-AzureRMSqlServerAuditingPolicy
-[107]: /powershell/module/azurerm.sql/Use-AzureRMSqlServerAuditingPolicy
+[105]: /powershell/module/azurerm.sql/Set-AzureRMSqlDatabaseAuditing
+[106]: /powershell/module/azurerm.sql/Set-AzureRMSqlServerAuditing
 

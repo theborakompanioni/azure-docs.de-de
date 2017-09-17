@@ -17,10 +17,10 @@ ms.workload:
 ms.date: 06/28/2017
 ms.author: daredis
 ms.translationtype: HT
-ms.sourcegitcommit: 6e76ac40e9da2754de1d1aa50af3cd4e04c067fe
-ms.openlocfilehash: 4bc09ad13ed0c9dc9257e9c75ec6f9ff3d689a0b
+ms.sourcegitcommit: ce0189706a3493908422df948c4fe5329ea61a32
+ms.openlocfilehash: 4ae3145daa4968ae619f965f3346ef03bccb0109
 ms.contentlocale: de-de
-ms.lasthandoff: 07/31/2017
+ms.lasthandoff: 09/05/2017
 
 ---
 # <a name="secure-your-azure-sql-database"></a>Schützen der Azure SQL-Datenbank
@@ -240,7 +240,7 @@ So erkennt die Bedrohungserkennung beispielsweise bestimmte anormale Datenbankak
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Sie können den Schutz Ihrer Datenbank vor schädlichen Benutzern oder nicht autorisiertem Zugriff mit wenigen einfachen Schritten verbessern. In diesem Tutorial lernen Sie Folgendes: 
+In diesem Tutorial haben Sie erfahren, wie Sie den Schutz Ihrer Datenbank vor schädlichen Benutzern oder nicht autorisiertem Zugriff mit wenigen einfachen Schritten verbessern.  Es wurde Folgendes vermittelt: 
 
 > [!div class="checklist"]
 > * Einrichten von Firewallregeln für den Server oder die Datenbank
@@ -250,7 +250,9 @@ Sie können den Schutz Ihrer Datenbank vor schädlichen Benutzern oder nicht aut
 > * Aktivieren der SQL-Datenbanküberwachung
 > * Aktivieren der Bedrohungserkennung der SQL-Datenbank
 
+Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie eine geografisch verteilte Datenbank schützen.
+
 > [!div class="nextstepaction"]
->[Verbessern der Leistung der SQL-Datenbank](sql-database-performance-tutorial.md)
+>[Implementieren einer geografisch verteilten Datenbank](sql-database-implement-geo-distributed-database.md)
 
 

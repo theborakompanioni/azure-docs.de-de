@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
-ms.openlocfilehash: ad9174c47e1af8d5dba080ec82f2a56fbbf78782
+ms.translationtype: HT
+ms.sourcegitcommit: ce0189706a3493908422df948c4fe5329ea61a32
+ms.openlocfilehash: cc8655e0bc65007cacf223ce6d7709291c609327
 ms.contentlocale: de-de
-ms.lasthandoff: 06/29/2017
+ms.lasthandoff: 09/05/2017
 
 ---
 # <a name="profiling-live-azure-web-apps-with-application-insights"></a>Profilerstellung für Live-Azure-Web-Apps mit Application Insights
@@ -25,7 +25,7 @@ ms.lasthandoff: 06/29/2017
 
 Ermitteln Sie den Zeitaufwand für die einzelnen Methoden in Ihrer Live-Webanwendung mithilfe eines Profilerstellungstools von [Azure Application Insights](app-insights-overview.md). Das Tool zeigt detaillierte Profile der aktiven Anforderungen, die von Ihrer App verarbeitet wurden, und hebt den langsamsten Pfad hervor, der die meiste Zeit beansprucht. Es wählt automatisch Beispiele mit unterschiedlichen Reaktionszeiten aus. Der Profiler verwendet verschiedene Techniken, um den Mehraufwand möglichst gering zu halten.
 
-Der Profiler kann momentan für ASP.NET-Web-Apps verwendet werden, die unter Azure App Services und mindestens unter dem Basic-Tarif ausgeführt werden. 
+Der Profiler kann momentan für ASP.NET-Web-Apps verwendet werden, die unter Azure App Services und mindestens unter dem Basic-Tarif ausgeführt werden.
 
 <a id="installation"></a>
 ## <a name="enable-the-profiler"></a>Aktivieren des Profilers
