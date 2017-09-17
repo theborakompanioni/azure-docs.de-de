@@ -199,7 +199,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     
     c. Öffnen Sie die heruntergeladene Zertifikatsdatei im Editor, kopieren Sie den Inhalt, und fügen Sie ihn anschließend in das Feld **ÖFFENTLICHES ZERTIFIKAT** ein.
     
-    d. Geben Sie unter **LOGIN BUTTON LABEL** (BEZEICHNUNG DER ANMELDESCHALTFLÄCHE) den Namen für die Schaltfläche ein, der auf der Anmeldeseite angezeigt werden soll.
+    d. Geben Sie unter **LOGIN BUTTON LABEL** (BESCHRIFTUNG DER ANMELDESCHALTFLÄCHE) den Namen für die Schaltfläche ein, der auf der Anmeldeseite angezeigt werden soll.
     
     e. Klicken Sie auf **SPEICHERN**.
 
