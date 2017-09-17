@@ -74,7 +74,7 @@ Die folgenden Schritte veranschaulichen, wie Sie einen Blobcontainer im Speicher
 2. Erweitern Sie im linken Bereich das Speicherkonto, das den gewünschten Blobcontainer enthält.
 3. Erweitern Sie die Option **BLOB-Container**des Speicherkontos.
 4. Klicken Sie mit der rechten Maustaste auf den Blobcontainer, den Sie löschen möchten, und wählen Sie im Kontextmenü die Option **Löschen**.
-   Sie können auch die ENTF-TASTE **** drücken, um den derzeit ausgewählten Blobcontainer zu löschen.
+   Sie können auch die ENTF-TASTE drücken, um den derzeit ausgewählten Blobcontainer zu **löschen**.
 
    ![Kontextmenü „Delete blob Container“ (Blobcontainer löschen)][4]
 5. Wählen Sie im Bestätigungsdialogfeld die Option **Ja** .
