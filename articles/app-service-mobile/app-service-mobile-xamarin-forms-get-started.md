@@ -85,7 +85,7 @@ In diesem Abschnitt führen Sie das Xamarin iOS-Projekt für iOS-Geräte aus. We
 
 3. Aktivieren Sie im Dialogfeld **Konfigurations-Manager** neben dem iOS-Projekt die Kontrollkästchen **Erstellen** und **Bereitstellen**.
 
-4. Drücken Sie**** F5, um das Projekt zu erstellen und die App im iPhone-Emulator zu starten.
+4. Drücken Sie **F5** , um das Projekt zu erstellen und die App im iPhone-Emulator zu starten.
 
    > [!NOTE]
    > Sollten beim Erstellen des Projekts Probleme auftreten, führen Sie den NuGet-Paket-Manager aus, und aktualisieren Sie auf die neueste Version der Xamarin-Supportpakete. Bei Schnellstartprojekten dauert die Aktualisierung auf die neuesten Versionen unter Umständen etwas länger.    
@@ -120,7 +120,7 @@ In diesem Abschnitt führen Sie das Xamarin-Droid-Projekt für Android aus. Wenn
 
 3. Aktivieren Sie im Dialogfeld **Konfigurations-Manager** neben dem Android-Projekt die Kontrollkästchen **Erstellen** und **Bereitstellen**.
 
-4. Drücken Sie**** F5, um das Projekt zu erstellen und die App im Android-Emulator zu starten.
+4. Drücken Sie **F5** , um das Projekt zu erstellen und die App im Android-Emulator zu starten.
 
    > [!NOTE]
    > Sollten beim Erstellen des Projekts Probleme auftreten, führen Sie den NuGet-Paket-Manager aus, und aktualisieren Sie auf die neueste Version der Xamarin-Supportpakete. Bei Schnellstartprojekten dauert die Aktualisierung auf die neuesten Versionen unter Umständen etwas länger.    
@@ -150,7 +150,7 @@ In diesem Abschnitt führen Sie das Xamarin-WinApp-Projekt für Windows-Geräte 
 
 3. Aktivieren Sie im Dialogfeld **Konfigurations-Manager** neben dem gewählten Windows-Projekt die Kontrollkästchen **Erstellen** und **Bereitstellen**.
 
-4. Drücken Sie**** F5, um das Projekt zu erstellen und die App im Windows-Emulator zu starten.
+4. Drücken Sie **F5** , um das Projekt zu erstellen und die App im Windows-Emulator zu starten.
 
    > [!NOTE]
    > Sollten beim Erstellen des Projekts Probleme auftreten, führen Sie den NuGet-Paket-Manager aus, und aktualisieren Sie auf die neueste Version der Xamarin-Supportpakete. Bei Schnellstartprojekten dauert die Aktualisierung auf die neuesten Versionen unter Umständen etwas länger.    

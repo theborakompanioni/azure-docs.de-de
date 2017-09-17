@@ -124,7 +124,7 @@ Als Erstes verwenden wir das [mysql](https://dev.mysql.com/doc/refman/5.7/en/mys
     ---|---|---
     --host | *Servername* | Der Servername, den Sie zuvor beim Erstellen des Servers für Azure-Datenbank für MySQL verwendet haben. Unser Beispielserver heißt **myserver4demo.mysql.database.azure.com**. Verwenden Sie den vollqualifizierten Domänennamen (**\*.mysql.database.azure.com**), wie im Beispiel gezeigt. Sollten Sie sich nicht an Ihren Servernamen erinnern, ermitteln Sie die Verbindungsinformationen gemäß den Schritten aus dem vorherigen Abschnitt. 
     --user | *Anmeldename des Serveradministrators* |Der Anmeldename des Serveradministrators, den Sie zuvor beim Erstellen des Servers für Azure-Datenbank für MySQL verwendet haben. Sollten Sie sich nicht an Benutzernamen erinnern, ermitteln Sie die Verbindungsinformationen gemäß den Schritten aus dem vorherigen Abschnitt. Zu verwendendes Format: *username@servername*.
-    --password | *Auf Eingabeaufforderung warten* |Das Kennwort, das Sie auch beim Erstellen des Servers angegeben haben. Hinweis: Die Zeichen für das Kennwort werden während der Eingabe nicht in der Bash-Eingabeaufforderung angezeigt. Drücken Sie nach Eingabe des Kennworts die**** EINGABETASTE.
+    --password | *Auf Eingabeaufforderung warten* |Das Kennwort, das Sie auch beim Erstellen des Servers angegeben haben. Hinweis: Die Zeichen für das Kennwort werden während der Eingabe nicht in der Bash-Eingabeaufforderung angezeigt. Drücken Sie nach Eingabe des Kennworts die **EINGABETASTE**.
 
    Nachdem die Verbindung hergestellt wurde, wird vom mysql-Hilfsprogramm eine `mysql>`-Eingabeaufforderung für die Befehlseingabe angezeigt. 
 
@@ -175,7 +175,7 @@ Als Erstes verwenden wir das [mysql](https://dev.mysql.com/doc/refman/5.7/en/mys
     SHOW DATABASES;
     ```
 
-7.  Geben Sie `\q` ein, und drücken Sie anschließend die**** EINGABETASTE, um das mysql-Tool zu beenden. Anschließend können Sie Azure Cloud Shell schließen.
+7.  Geben Sie `\q` ein, und drücken Sie anschließend die **EINGABETASTE** , um das mysql-Tool zu beenden. Anschließend können Sie Azure Cloud Shell schließen.
 
 Sie haben nun eine Verbindung mit dem Server für Azure-Datenbank für MySQL hergestellt und eine leere Benutzerdatenbank erstellt. Im nächsten Abschnitt folgt eine ähnliche Übung. In der nächsten Übung verwenden Sie MySQL Workbench (ein anderes gängiges Tool), um eine Verbindung mit dem gleichen Server herzustellen.
 

@@ -40,7 +40,7 @@ Füllen Sie auf der Registerkarte **Grundeinstellungen konfigurieren** die folge
 ![Grundeinstellungen konfigurieren](./media/install-jenkins-solution-template/ap-basic.png)
 
 * Geben Sie unter **Name** den Namen **Jenkins** ein.
-* Geben Sie einen Benutzernamen**** ein. Der Benutzername muss [bestimmte Anforderungen](/azure/virtual-machines/linux/faq#what-are-the-username-requirements-when-creating-a-vm) erfüllen.
+* Geben Sie einen **Benutzernamen** ein. Der Benutzername muss [bestimmte Anforderungen](/azure/virtual-machines/linux/faq#what-are-the-username-requirements-when-creating-a-vm) erfüllen.
 * Wählen unter **Authentifizierungstyp** die Option **Kennwort** aus, und geben Sie ein Kennwort ein. Das Kennwort muss einen Großbuchstaben, eine Zahl und ein Sonderzeichen enthalten.
 * Geben Sie unter **Ressourcengruppe** die Zeichenfolge **myJenkinsResourceGroup** ein.
 * Wählen Sie in der Dropdownliste **Standort** die [Azure-Region](https://azure.microsoft.com/regions/) **USA, Osten** aus.

@@ -67,7 +67,7 @@ Wenn Sie Daten in Azure Data Lake Store erfassen möchten, müssen Sie ein Data 
 
 1. Der Event Hub muss dem gleichen Azure-Abonnement angehören wie die Azure Data Lake Store-Instanz, die Sie soeben erstellt haben. Erstellen Sie den Event Hub, indem Sie auf der Portalseite **Event Hub erstellen** unter **Capture** auf die Schaltfläche **Ein** klicken. 
 2. Wählen Sie auf der Portalseite **Event Hub erstellen** im Feld **Capture Provider** (Capture-Anbieter) die Option **Azure Data Lake Store** aus.
-3. Geben Sie unter **Data Lake Store auswählen** das zuvor erstellte Data Lake Store-Konto und im Feld für den Data Lake-Pfad**** den Pfad zu dem von Ihnen erstellten Datenordner an.
+3. Geben Sie unter **Data Lake Store auswählen** das zuvor erstellte Data Lake Store-Konto und im Feld für den **Data Lake-Pfad** den Pfad zu dem von Ihnen erstellten Datenordner an.
 
     ![][3]
 
