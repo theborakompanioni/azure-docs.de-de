@@ -18,7 +18,7 @@ ms.translationtype: HT
 ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: eca77b4a82eb67e1755717bb4429f8d450a64dc5
 ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
+ms.lasthandoff: 09/18/2017
 
 ---
 # <a name="create-biztalk-services-using-the-azure-portal"></a>Konfigurieren von BizTalk Services im Azure-Portal
@@ -152,7 +152,7 @@ Wenn Sie auf **Verwalten** klicken, wird das Access Control-Verwaltungsportal ge
 Die Access Control Service-Identität besteht aus einem Satz von Anmeldeinformationen, mit denen sich Anwendungen oder Clients direkt bei Access Control authentifizieren und ein Token abrufen können.
 
 > [!IMPORTANT]
-> Der BizTalk-Dienst verwendet als Standarddienstidentität **Besitzer** und den Wert **Kennwort**. Wenn Sie anstelle des Kennwortwerts den Wert des symmetrischen Schlüssels verwenden, kann folgender Fehler auftreten:<br/><br/>*Could not connect to the Access Control Management Service account with the specified credentials*
+> Der BizTalk-Dienst verwendet als Standarddienstidentität **Besitzer** und den Wert **Kennwort**. Wenn Sie anstelle des Kennwortwerts den Wert des symmetrischen Schlüssels verwenden, kann folgender Fehler auftreten:<br/><br/>*Mit den angegebenen Anmeldeinformationen konnte keine Verbindung zum Access Control-Verwaltungsdienstkonto hergestellt werden.*
 > 
 > 
 
