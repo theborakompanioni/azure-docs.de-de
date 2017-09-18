@@ -49,56 +49,33 @@
       href: cli-samples.md
 - name: Konzepte
   items:
+    - name: Azure Resource Manager
+      href: ../../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
     - name: Regionen und Verfügbarkeit
       href: regions-and-availability.md
+    - name: Arten und Größen von virtuellen Computern
+      href: sizes.md
+    - name: Wartung und Updates
+      href: maintenance-and-updates.md
     - name: Speicher
       href: about-disks-and-vhds.md
     - name: Netzwerk
       href: network-overview.md
-    - name: VM-Skalierungsgruppen
-      href: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-    - name: Container
-      href: containers.md
-    - name: Ressourcen-Manager
-      href: ../../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-      items:
-        - name: Bereitstellungsmodelle
-          href: ../../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-        - name: Vorlagen für virtuelle Computer
-          href: template-description.md
-    - name: Azure Windows-Agent
-      href: agent-user-guide.md
-    - name: Azure Security Center
-      href: ../../security-center/security-center-virtual-machine.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-    - name: Notfallwiederherstellung
-      href: ../virtual-machines-disaster-recovery-guidance.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-    - name: Geplante Wartung
-      href: planned-maintenance.md
-    - name: VM-Größen
-      href: sizes.md
-      items:
-        - name: Allgemeiner Zweck
-          href: sizes-general.md
-        - name: Computeoptimiert
-          href: sizes-compute.md
-        - name: Arbeitsspeicheroptimiert
-          href: sizes-memory.md
-        - name: Speicheroptimiert
-          href: sizes-storage.md
-        - name: GPU-optimiert
-          href: sizes-gpu.md
-          items:
-            - name: GPU-Treiber
-              href: n-series-driver-setup.md
-        - name: High Performance Computing
-          href: sizes-hpc.md
-        - name: Azure-Computeeinheiten (ACU)
-          href: acu.md
-        - name: Compute-Benchmarkergebnisse
-          href: compute-benchmark-scores.md
+    - name: Automatisch skalierende Anwendungen
+      href: autoscale.md
+    - name: Infrastrukturautomatisierung
+      href: infrastructure-automation.md
+    - name: Sicherheit und Richtlinien
+      href: security-policy.md
+    - name: Überwachung
+      href: monitor.md
+    - name: Sicherung und Wiederherstellung
+      href: backup-recovery.md
+    - name: High Performance Computing
+      href: high-performance-computing.md
     - name: Überlegungen zur Bereitstellung
       items:
-        - name: Beispiel für eine einfache Bereitstellung
+        - name: Richtlinien für Infrastrukturen
           href: infrastructure-example.md
 - name: Anleitungen
   items:

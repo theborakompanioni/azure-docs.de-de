@@ -1,0 +1,56 @@
+- name: Dokumentation zur Textanalyse
+  href: index.md
+- name: Übersicht
+  items:
+    - name: Informationen zur Textanalyse
+      href: overview.md
+- name: Schnellstarts
+  items:
+    - name: 'C#'
+      href: Quickstarts/CSharp.md
+    - name: Java
+      href: Quickstarts/Java.md
+    - name: Node.js
+      href: Quickstarts/NodeJS.md
+    - name: Python
+      href: Quickstarts/Python.md
+    - name: Ruby
+      href: Quickstarts/Ruby.md
+    - name: PHP
+      href: Quickstarts/PHP.md
+- name: Lernprogramme
+  items:
+    - name: Textanalyse mit Power BI
+      href: Tutorials/tutorial-power-bi-key-phrases.md
+- name: Anleitungen
+  items:
+    - name: Registrieren
+      href: How-tos/text-analytics-how-to-signup.md
+    - name: Abrufen eines Zugriffsschlüssels
+      href: How-tos/text-analytics-how-to-access-key.md
+    - name: Aufrufen der Textanalyse-API
+      href: How-tos/text-analytics-how-to-call-api.md
+    - name: Sprache erkennen
+      href: How-tos/text-analytics-how-to-language-detection.md
+    - name: Analysieren von Stimmungen
+      href: How-tos/text-analytics-how-to-sentiment-analysis.md
+    - name: Extrahieren von Schlüsselbegriffen
+      href: How-tos/text-analytics-how-to-keyword-extraction.md
+- name: Referenz
+  items:
+    - name: API-Referenz
+      href: 'https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7'
+    - name: .Net Standard SDK
+      href: 'https://aka.ms/tasdkdotnet'
+- name: Ressourcen
+  items:
+    - name: Externe Inhalte und Community-Inhalte
+      href: text-analytics-resource-external-community.md
+    - name: Häufig gestellte Fragen
+      href: text-analytics-resource-faq.md
+    - name: Preise
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/text-analytics-api'
+    - name: Aussagen von Benutzern
+      href: 'https://cognitive.uservoice.com/forums/555922-text-analytics'

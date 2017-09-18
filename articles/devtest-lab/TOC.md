@@ -28,6 +28,7 @@
 ### [Festlegen von Richtlinien und Zeitplänen](devtest-lab-set-lab-policy.md)
 ### [Konfigurieren des Kostenmanagements](devtest-lab-configure-cost-management.md)
 ### [Konfigurieren von Marketplace-Images](devtest-lab-configure-marketplace-images.md)
+### [Hinzufügen von Tags zu einem Lab](devtest-lab-add-tag.md)
 
 ## [Auswählen benutzerdefinierter Images oder Formeln](devtest-lab-comparing-vm-base-image-types.md)
 
