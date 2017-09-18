@@ -15,10 +15,10 @@ ms.workload: integration
 ms.date: 11/22/2016
 ms.author: LADocs; jehollan
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 0528d660f590e106f61729f10f8f68da3fe58cb7
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: 45a4e476f930e0f5f6633dc5b3b35b66dc6dfa20
 ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 
@@ -269,10 +269,6 @@ Viele verwaltete Connectors oder Logik-Apps bieten sichere Verbindungen mit loka
 #### <a name="azure-api-management"></a>Azure API Management
 
 [Azure API Management](https://azure.microsoft.com/services/api-management/) bietet lokale Konnektivitätsoptionen, einschließlich Site-to-Site-VPN- und ExpressRoute-Integration, für geschützte Proxys und eine gesicherte Kommunikation mit lokalen Systemen. Im Logik-App-Designer können Sie schnell innerhalb eines Workflows eine API auswählen, die über Azure API Management verfügbar gemacht wird, und so schnellen Zugriff auf lokale Systeme bereitstellen.
-
-#### <a name="hybrid-connections-from-azure-app-service"></a>Hybridverbindungen über Azure App Service
-
-Sie können die Funktion für lokale Hybridverbindungen für Azure-API- und Web-Apps verwenden, um lokal zu kommunizieren.  Informationen zu Hybridverbindungen und zu deren Konfiguration finden Sie [in diesem Artikel](../app-service-web/web-sites-hybrid-connection-get-started.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Erstellen einer Bereitstellungsvorlage](logic-apps-create-deploy-template.md)  

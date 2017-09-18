@@ -1,5 +1,4 @@
 ---
-
 title: Technische Funktionen der Azure-Sicherheit | Microsoft-Dokumentation
 description: "Enthält Informationen zu cloudbasierten Computingdiensten mit einer großen Auswahl an Computeinstanzen und -diensten, die automatisch zentral hoch- und herunterskaliert werden können, um die Anforderungen Ihrer Anwendung bzw. Ihres Unternehmens zu erfüllen."
 services: security
@@ -16,11 +15,10 @@ ms.workload: na
 ms.date: 05/26/2017
 ms.author: TomSh
 ms.translationtype: HT
-ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
-ms.openlocfilehash: 2983ce5c068e5188fb70ffc9443ce58d6c188c50
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: 268299d82ce79b10eb8061467f4bad61194457f8
 ms.contentlocale: de-de
-ms.lasthandoff: 07/10/2017
-
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="azure-security-technical-capabilities"></a>Technische Funktionen der Azure-Sicherheit
@@ -346,7 +344,7 @@ Azure bietet Ihnen für Ihre App zudem zahlreiche benutzerfreundliche Funktionen
 
 - [Herstellen einer sicheren Verbindung zwischen Ihrer App und Ressourcen in einem privaten Netzwerk mithilfe eines Punkt-zu-Standort-VPNs](https://docs.microsoft.com/azure/app-service-web/web-sites-integrate-with-vnet)
 
-- [Herstellen einer sicheren Verbindung zwischen Ihrer App und Ressourcen in einem privaten Netzwerk mithilfe von Hybridverbindungen](https://docs.microsoft.com/azure/app-service-web/web-sites-hybrid-connection-get-started)
+- [Herstellen einer sicheren Verbindung zwischen Ihrer App und Ressourcen in einem privaten Netzwerk mithilfe von Hybridverbindungen](https://docs.microsoft.com/azure/app-service/app-service-hybrid-connections)
 
 Azure App Service nutzt die gleiche Antischadsoftwarelösung, die auch von Azure Cloud Services und Virtual Machines verwendet wird. Weitere Informationen dazu finden Sie in der [Dokumentation zu Antischadsoftware](https://docs.microsoft.com/azure/security/azure-security-antimalware).
 

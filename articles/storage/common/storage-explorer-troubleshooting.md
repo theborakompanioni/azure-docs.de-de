@@ -12,19 +12,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/09/2017
+ms.date: 09/08/2017
 ms.author: delhan
 ms.translationtype: HT
-ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
-ms.openlocfilehash: e9b833b07556378f17d9aaff0912c7d73dff44eb
+ms.sourcegitcommit: f2ac16c2f514aaa7e3f90fdf0d0b6d2912ef8485
+ms.openlocfilehash: 9b3a8b964ec2f75c53c03b5099dc1e1eb7d77c65
 ms.contentlocale: de-de
-ms.lasthandoff: 08/09/2017
+ms.lasthandoff: 09/08/2017
 
 ---
 
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Storage Explorer – Leitfaden zur Problembehandlung
-
-## <a name="introduction"></a>Einführung
 
 Bei der Vorschauversion von Microsoft Azure Storage Explorer handelt es sich um eine eigenständige App, über die Sie unter Windows, macOS und Linux komfortabel mit Azure Storage-Daten arbeiten können. Die App kann mit Storage-Konten verbunden werden, die in Azure, unabhängigen Clouds und Azure Stack gehostet werden.
 
@@ -32,7 +30,7 @@ In diesem Leitfaden sind Lösungen für häufig aufgetretene Probleme in Storage
 
 ## <a name="sign-in-issues"></a>Probleme bei der Anmeldung
 
-Es werden nur AAD-Konten (Azure Active Directory) unterstützt. Wenn Sie ein AD FS-Konto verwenden, wird davon ausgegangen, dass die Anmeldung beim Storage Explorer nicht funktioniert. Bevor Sie fortfahren, starten Sie die Anwendung neu, und prüfen Sie, ob die Probleme so behoben werden können.
+Bevor Sie fortfahren, starten Sie die Anwendung neu, und prüfen Sie, ob die Probleme so behoben werden können.
 
 ### <a name="error-self-signed-certificate-in-certificate-chain"></a>Fehler: selbstsigniertes Zertifikat in der Zertifikatkette
 
@@ -152,7 +150,7 @@ Wenn Sie über Netzwerktools verfügen, z.B. Fiddler für Windows, können Sie d
 
 - Überprüfen Sie die vom Netzwerktool verwendete Portnummer.
 
-- Geben Sie die URL des lokalen Hosts und die Portnummer des Netzwerktools als Proxyeinstellungen in Storage Explorer ein. Bei korrekter Eingabe beginnt das Netzwerktool mit der Protokollierung der vom Storage Explorer an Verwaltungs- und Dienstendpunkte gesendeten Netzwerkanforderungen. Wenn Sie in einem Browser beispielsweise „https://cawablobgrs.blob.core.windows.net/“ für den Blobendpunkt eingeben, erhalten Sie eine Antwort ähnlich der folgenden, in der angegeben wird, dass die Ressource vorhanden ist, Sie jedoch keinen Zugriff darauf haben.
+- Geben Sie die URL des lokalen Hosts und die Portnummer des Netzwerktools als Proxyeinstellungen in Storage Explorer ein. Bei korrekter Eingabe beginnt das Netzwerktool mit der Protokollierung der von Storage Explorer an Verwaltungs- und Dienstendpunkte gesendeten Netzwerkanforderungen. Wenn Sie in einem Browser beispielsweise „https://cawablobgrs.blob.core.windows.net/“ für den Blobendpunkt eingeben, erhalten Sie eine Antwort ähnlich der folgenden, in der angegeben wird, dass die Ressource vorhanden ist, Sie jedoch keinen Zugriff darauf haben.
 
 ![Codebeispiel](./media/storage-explorer-troubleshooting/4022502_en_2.png)
 

@@ -13,12 +13,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/05/2016
 ms.author: dariagrigoriu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
-ms.openlocfilehash: 86a2cd8ae9f97c606a378452e44eec8941700531
+ms.translationtype: HT
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: 2f8691b0aadbd97e87996c2683849a6db3b74618
 ms.contentlocale: de-de
-ms.lasthandoff: 06/23/2017
-
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Konfigurieren von Anmeldeinformationen für die Azure App Service-Bereitstellung
@@ -47,7 +46,7 @@ So konfigurieren Sie die Anmeldeinformationen auf Benutzerebene
 1. Klicken Sie im [Azure-Portal](https://portal.azure.com) auf „App Service“ >  **&lt;eine_App>** > **Anmeldeinformationen für Bereitstellung**.
 
     > [!NOTE]
-    > Im Portal muss mindestens eine App vorhanden sein, bevor Sie auf das Blatt mit den Anmeldeinformationen für die Bereitstellung zugreifen können. Mit der [Azure-CLI](app-service-web-app-azure-resource-manager-xplat-cli.md) können Sie die Anmeldeinformationen auf Benutzerebene jedoch ohne eine vorhandene App konfigurieren.
+    > Im Portal muss mindestens eine App vorhanden sein, bevor Sie auf das Blatt mit den Anmeldeinformationen für die Bereitstellung zugreifen können. Mit der [Azure-CLI](/cli/azure/webapp/deployment/user#set) können Sie die Anmeldeinformationen auf Benutzerebene jedoch ohne eine vorhandene App konfigurieren.
 
 2. Konfigurieren Sie den Benutzernamen und das Kennwort, und klicken Sie dann auf **Speichern**.
 

@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 07/04/2017
 ms.author: dobett
 ms.translationtype: HT
-ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
-ms.openlocfilehash: 3269cb65cfb59258d761f4c60278c598bc251325
+ms.sourcegitcommit: 9b7316a5bffbd689bdb26e9524129ceed06606d5
+ms.openlocfilehash: 6d306d4742a53789d8e69c80d7fbdfc4e1ade4bf
 ms.contentlocale: de-de
-ms.lasthandoff: 07/14/2017
+ms.lasthandoff: 09/08/2017
 
 ---
 # <a name="get-started-with-device-twins-java"></a>Erste Schritte mit Gerätezwillingen (Java)
@@ -267,7 +267,7 @@ In diesem Abschnitt erstellen Sie eine Java-Konsolen-App, die einen gemeldeten E
     private static String deviceId = "myDeviceId";
     ```
 
-    Diese Beispiel-App verwendet beim Instanziieren eines **DeviceClient**-Objekts die **protocol**-Variable. Derzeit ist für das Verwenden von Gerätezwillingsfeatures das Protokoll MQTT erforderlich.
+    Diese Beispiel-App verwendet beim Instanziieren eines **DeviceClient**-Objekts die **protocol**-Variable. 
 
 1. Fügen Sie den folgenden Code der **main**-Methode hinzu:
     * Erstellen Sie einen Geräteclient zur Kommunikation mit IoT Hub.

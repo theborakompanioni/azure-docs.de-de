@@ -17,10 +17,10 @@ ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: oldportal
 ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
-ms.openlocfilehash: ae2a2e477137bc117111b147e1f088d528a55de5
+ms.sourcegitcommit: f2ac16c2f514aaa7e3f90fdf0d0b6d2912ef8485
+ms.openlocfilehash: b136d3841243ad7aa88786f76b2d31e5dfae9079
 ms.contentlocale: de-de
-ms.lasthandoff: 08/30/2017
+ms.lasthandoff: 09/08/2017
 
 ---
 
@@ -271,10 +271,10 @@ Sie können auch eine Regel erstellen, die Geräteobjekte für die Mitgliedschaf
 | displayName             | Jeder string-Wert.                | (device.displayName -eq "Rob Iphone”)                       |
 | deviceOSType            | Jeder string-Wert.                | (device.deviceOSType -eq "IOS")                             |
 | deviceOSVersion         | Jeder string-Wert.                | (device.OSVersion -eq "9.1")                                |
-| deviceCategory          | Jeder string-Wert.                | (device.deviceCategory -eq "")                              |
+| deviceCategory          | ein gültiger Gerätekategoriename    | (device.deviceCategory -eq "BYOD")                          |
 | deviceManufacturer      | Jeder string-Wert.                | (device.deviceManufacturer -eq "Microsoft")                 |
 | deviceModel             | Jeder string-Wert.                | (device.deviceModel -eq "IPhone 7+")                        |
-| deviceOwnership         | Jeder string-Wert.                | (device.deviceOwnership -eq "")                             |
+| deviceOwnership         | Personal, Unternehmen               | (device.deviceOwnership -eq "Company")                      |
 | domainName              | Jeder string-Wert.                | (device.domainName -eq "contoso.com")                       |
 | enrollmentProfileName   | Jeder string-Wert.                | (device.enrollmentProfileName -eq "")                       |
 | isRooted                | true false                      | (device.deviceOSType -eq true)                              |

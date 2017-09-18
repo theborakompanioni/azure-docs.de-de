@@ -17,10 +17,10 @@ ms.date: 08/25/2017
 ms.author: mblythe
 ms.custom: 
 ms.translationtype: HT
-ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
-ms.openlocfilehash: 89d9fa8f11a4c6ae3860b91e246716aad071870f
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 0fd127293edfaf7eb19a4561ab8d0a19f993bcad
 ms.contentlocale: de-de
-ms.lasthandoff: 08/30/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 
@@ -52,15 +52,15 @@ In diesem Thema lernen Sie Folgendes:
 ## <a name="prepare-sample-data-in-excel"></a>Vorbereiten von Beispieldaten in Excel
 Als Erstes bereiten wir Beispieldaten für die Verwendung in der App vor. Kopieren Sie die folgende Tabelle in Excel: 
 
-| Title      | Latitude  | Longtitude  | LastServiceDate | MaxOutput | ServiceRequired | EstimatedEffort | InspectionNotes                            |
+| Titel      | Breitengrad  | Longtitude  | LastServiceDate | MaxOutput | ServiceRequired | EstimatedEffort | InspectionNotes                            |
 |------------|-----------|-------------|-----------------|-----------|-----------------|-----------------|--------------------------------------------|
-| Turbine 1  | 47.438401 | -121.383767 | 2/23/2017       | 2850      | Yes             | 6               | This is the second issue this month.       |
-| Turbine 4  | 47.433385 | -121.383767 | 5/8/2017        | 5400      | Yes             | 6               |                                            |
+| Turbine 1  | 47.438401 | -121.383767 | 2/23/2017       | 2850      | Ja             | 6               | This is the second issue this month.       |
+| Turbine 4  | 47.433385 | -121.383767 | 5/8/2017        | 5400      | Ja             | 6               |                                            |
 | Turbine 33 | 47.428229 | -121.404641 | 6/20/2017       | 2800      |                 |                 |                                            |
-| Turbine 34 | 47.463637 | -121.358824 | 2/19/2017       | 2800      | Yes             | 7               |                                            |
+| Turbine 34 | 47.463637 | -121.358824 | 2/19/2017       | 2800      | Ja             | 7               |                                            |
 | Turbine 46 | 47.471993 | -121.298949 | 3/2/2017        | 1200      |                 |                 |                                            |
 | Turbine 47 | 47.484059 | -121.311171 | 8/2/2016        | 3350      |                 |                 |                                            |
-| Turbine 55 | 47.438403 | -121.383767 | 10/2/2016       | 2400      | Yes             | 40               | We have some parts coming in for this one. |
+| Turbine 55 | 47.438403 | -121.383767 | 10/2/2016       | 2400      | Ja             | 40               | We have some parts coming in for this one. |
 
 1. Wählen Sie die Daten in Excel aus, und klicken Sie auf der Registerkarte **Start** auf **Als Tabelle formatieren**.
 
@@ -74,32 +74,7 @@ Als Erstes bereiten wir Beispieldaten für die Verwendung in der App vor. Kopier
 
 1. Speichern Sie die Excel-Arbeitsmappe.
 
-## <a name="export-an-api-definition"></a>Exportieren einer API-Definition
-Sie verfügen über eine OpenAPI-Definition für Ihre Funktion (aus [Erstellen einer OpenAPI-Definition für eine Funktion](functions-openapi-definition.md)). Im nächsten Schritt wird die API-Definition exportiert, damit sie von PowerApps und Microsoft Flow in einer benutzerdefinierten API verwendet werden kann.
-
-> [!IMPORTANT]
-> Hierzu müssen Sie bei Azure mit den gleichen Anmeldeinformationen angemeldet sein, die Sie auch für Ihre PowerApps- und Microsoft Flow-Mandanten verwenden. Dadurch kann Azure die benutzerdefinierte API erstellen und für PowerApps und Microsoft Flow verfügbar machen.
-
-1. Klicken Sie auf den Namen Ihrer Funktionen-App (beispielsweise **function-demo-energy**) > **Plattformfeatures** > **API-Definition**.
-
-    ![API-Definition](media/functions-powerapps-scenario/api-definition.png)
-
-1. Klicken Sie auf **Nach PowerApps + Microsoft Flow exportieren**.
-
-    ![API-Definitionsquelle](media/functions-powerapps-scenario/export-api-1.png)
-
-1. Verwenden Sie im rechten Bereich die in der Tabelle angegebenen Einstellungen.
-
-    |Einstellung|Beschreibung|
-    |--------|------------|
-    |**Exportmodus**|Wählen Sie **Express** aus, um die benutzerdefinierte API automatisch zu generieren. Bei Verwendung von **Manuell** wird die API-Definition zwar exportiert, muss dann aber manuell in PowerApps und Microsoft Flow importiert werden.|
-    |**Umgebung**|Wählen Sie die Umgebung aus, in der die benutzerdefinierte API gespeichert werden soll. Weitere Informationen finden Sie in der [Umgebungsübersicht](https://powerapps.microsoft.com/tutorials/environments-overview/).|
-    |**Name der benutzerdefinierten API**|Geben Sie einen Namen ein (beispielsweise `Turbine Repair`).|
-    |**API-Schlüsselname**|Geben Sie den Namen ein, der App- und Flow-Erstellern auf der Benutzeroberfläche der benutzerdefinierten API angezeigt werden soll. Wie Sie sehen, enthält das Beispiel hilfreiche Informationen.|
- 
-    ![API-Definitionsquelle](media/functions-powerapps-scenario/export-api-2.png)
-
-1. Klicken Sie auf **OK**. Die benutzerdefinierte API wird erstellt und der angegebenen Umgebung hinzugefügt.
+[!INCLUDE [Export an API definition](../../includes/functions-export-api-definition.md)]
 
 ## <a name="add-a-connection-to-the-api"></a>Hinzufügen einer Verbindung mit der API
 Die benutzerdefinierte API (auch benutzerdefinierter Connector genannt) ist zwar in PowerApps verfügbar, Sie müssen jedoch eine Verbindung mit der API herstellen, um sie in einer App verwenden zu können.

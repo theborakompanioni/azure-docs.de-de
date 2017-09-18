@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 03/09/2017
 ms.author: allclark
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
-ms.openlocfilehash: 9e62713be30a07ae00dac07de21009d2c379d609
+ms.translationtype: HT
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: 6234473d9f7f0eb18ea85e52273eb82a9ce04da5
 ms.contentlocale: de-de
-ms.lasthandoff: 05/15/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 
@@ -55,17 +55,17 @@ In diesem Skript werden die folgenden Befehle verwendet, um eine Ressourcengrupp
 
 | Befehl | Hinweise |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
-| [az storage account list](https://docs.microsoft.com/cli/azure/storage/account#list) | Listet Speicherkonten auf |
-| [az storage account check-name](https://docs.microsoft.com/cli/azure/storage/account#check-name) | Stellt sicher, dass ein Speicherkontoname gültig und nicht bereits vorhanden ist |
-| [az storage account keys list](https://docs.microsoft.com/cli/azure/storage/account/keys#list) | Listet Schlüssel für die Speicherkonten auf |
-| [az storage blob exists](https://docs.microsoft.com/cli/azure/storage/blob#exists) | Überprüft, ob das Blob vorhanden ist |
-| [az storage container create](https://docs.microsoft.com/cli/azure/storage/container#create) | Erstellt einen Container in einem Speicherkonto |
-| [az storage blob upload](https://docs.microsoft.com/cli/azure/storage/blob#upload) | Erstellt ein Blob im Container durch Hochladen der VHD |
-| [az vm list](https://docs.microsoft.com/cli/azure/vm#list) | Wird zusammen mit `--query` verwendet, um zu überprüfen, ob der Name der VM bereits verwendet wird | 
-| [az vm create](https://docs.microsoft.com/cli/azure/vm/availability-set#create) | Erstellt die virtuellen Computer |
-| [az vm access set-linux-user](https://docs.microsoft.com/cli/azure/vm/access#set-linux-user) | Setzt den SSH-Schlüssel zurück, um dem aktuellen Benutzer Zugriff auf die VM zu gewähren |
-| [az vm list-ip-addresses](https://docs.microsoft.com/cli/azure/vm#list-ip-addresses) | Ruft die IP-Adresse des virtuellen Computers ab, der erstellt wurde |
+| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
+| [az storage account list](https://docs.microsoft.com/cli/azure/storage/account#az_storage_account_list) | Listet Speicherkonten auf |
+| [az storage account check-name](https://docs.microsoft.com/cli/azure/storage/account#az_storage_account_check_name) | Stellt sicher, dass ein Speicherkontoname gültig und nicht bereits vorhanden ist |
+| [az storage account keys list](https://docs.microsoft.com/cli/azure/storage/account/keys#az_storage_account_keys_list) | Listet Schlüssel für die Speicherkonten auf |
+| [az storage blob exists](https://docs.microsoft.com/cli/azure/storage/blob#az_storage_blob_exists) | Überprüft, ob das Blob vorhanden ist |
+| [az storage container create](https://docs.microsoft.com/cli/azure/storage/container#az_storage_container_create) | Erstellt einen Container in einem Speicherkonto |
+| [az storage blob upload](https://docs.microsoft.com/cli/azure/storage/blob#az_storage_blob_upload) | Erstellt ein Blob im Container durch Hochladen der VHD |
+| [az vm list](https://docs.microsoft.com/cli/azure/vm#az_vm_list) | Wird zusammen mit `--query` verwendet, um zu überprüfen, ob der Name der VM bereits verwendet wird | 
+| [az vm create](https://docs.microsoft.com/cli/azure/vm/availability-set#az_vm_availability_set_create) | Erstellt die virtuellen Computer |
+| [az vm access set-linux-user](https://docs.microsoft.com/cli/azure/vm/access#az_vm_access_set_linux_user) | Setzt den SSH-Schlüssel zurück, um dem aktuellen Benutzer Zugriff auf die VM zu gewähren |
+| [az vm list-ip-addresses](https://docs.microsoft.com/cli/azure/vm#az_vm_list-ip-addresses) | Ruft die IP-Adresse des virtuellen Computers ab, der erstellt wurde |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

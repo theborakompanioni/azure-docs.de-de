@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: tarcher
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
-ms.openlocfilehash: 12cdb61667f77215c894800d5c439235e767a26b
+ms.translationtype: HT
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: 0807ab367b91be5acd261f2b58ca2112b2c9e380
 ms.contentlocale: de-de
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 09/09/2017
 
 ---
 
@@ -66,7 +65,7 @@ Nachdem Sie die Resource Manager-Vorlage gespeichert haben, müssen Sie den Para
 Nachdem Sie eine Resource Manager-Vorlage gespeichert und an Ihre Anforderungen angepasst haben, können Sie sie zum Automatisieren der VM-Erstellung verwenden. Unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy) wird beschrieben, wie Sie Azure PowerShell mit Resource Manager-Vorlagen verwenden, um Ihre Ressourcen in Azure bereitzustellen. Unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure-CLI](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-cli) wird beschrieben, wie Sie die Azure CLI mit Resource Manager-Vorlagen verwenden, um Ihre Ressourcen in Azure bereitzustellen.
 
 > [!NOTE]
-> Nur Benutzer mit einer Berechtigung der Art „Labbesitzer“ können VMs aus einer Resource Manager-Vorlage erstellen, indem sie Azure PowerShell nutzen. Wenn Sie die VM-Erstellung per Resource Manager-Vorlage automatisieren möchten und nur über Benutzerberechtigungen verfügen, können Sie den [Befehl **az lab vm create** in der CLI](https://docs.microsoft.com/cli/azure/lab/vm#create) verwenden.
+> Nur Benutzer mit einer Berechtigung der Art „Labbesitzer“ können VMs aus einer Resource Manager-Vorlage erstellen, indem sie Azure PowerShell nutzen. Wenn Sie die VM-Erstellung per Resource Manager-Vorlage automatisieren möchten und nur über Benutzerberechtigungen verfügen, können Sie den [Befehl **az lab vm create** in der CLI](https://docs.microsoft.com/cli/azure/lab/vm#az_lab_vm_create) verwenden.
 
 ### <a name="next-steps"></a>Nächste Schritte
 * Informieren Sie sich über das [Erstellen von Umgebungen mit mehreren virtuellen Computern und PaaS-Ressourcen mit Azure Resource Manager-Vorlagen](devtest-lab-create-environment-from-arm.md).

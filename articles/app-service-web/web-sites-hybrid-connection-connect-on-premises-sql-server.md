@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2016
 ms.author: cephalin
-translationtype: Human Translation
-ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
-ms.openlocfilehash: c940f490908a3b934c108b214b5ef2af44698059
-ms.lasthandoff: 01/20/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: 4aaa4d2b739ef39754d7286bef3721a1b814d2a3
+ms.contentlocale: de-de
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="connect-to-on-premises-sql-server-from-a-web-app-in-azure-app-service-using-hybrid-connections"></a>Verbinden eines lokalen SQL-Servers von einer Web-App in Azure App Service über Hybridverbindungen
@@ -94,7 +94,7 @@ Zum Aktivieren von TCP/IP verwenden Sie den SQL Server-Konfigurations-Manager, d
 ### <a name="create-a-sql-server-database-on-premises"></a>Erstellen einer lokalen SQL Server-Datenbank
 Für Ihre Visual Studio-Webanwendung benötigen Sie eine Mitgliedschaftsdatenbank, auf die Azure zugreifen kann. Hierzu ist eine SQL Server- oder SQL Server Express-Datenbank erforderlich (nicht die LocalDB-Datenbank, die von der MVC-Vorlage standardmäßig verwendet wird). Daher erstellen Sie als Nächstes die Mitgliedschaftsdatenbank.
 
-1. Stellen Sie in SQL Server Management Studio eine Verbindung mit der SQL Server-Instanz her, die Sie gerade installiert haben. (Wenn der Dialog **Mit Server verbinden** nicht automatisch angezeigt wird, navigieren Sie zu **Objekt-Explorer** im linken Bereich. Klicken Sie auf **Verbinden** und anschließend auf **Datenbankmodul**.)  ![Verbindung mit dem Server herstellen][SSMSConnectToServer]
+1. Stellen Sie in SQL Server Management Studio eine Verbindung mit der SQL Server-Instanz her, die Sie gerade installiert haben. (Wenn der Dialog **Mit Server verbinden** nicht automatisch angezeigt wird, navigieren Sie zu **Objekt-Explorer** im linken Bereich. Klicken Sie auf **Verbinden** und anschließend auf **Datenbankmodul**.) ![Verbindung mit dem Server herstellen][SSMSConnectToServer]
    
     Wählen Sie unter **Servertyp** die Option **Datenbankmodul**. Als **Servername** können Sie **localhost** oder den Namen des genutzten Computers verwenden. Wählen Sie **SQL Server-Authentifizierung**, und melden Sie sich dann mit dem Benutzernamen und dem Kennwort des zuvor erstellten Benutzers an.
 2. Um eine neue Datenbank mit SQL Server Management Studio zu erstellen, klicken Sie im Objekt-Explorer mit der rechten Maustaste auf **Datenbanken** und anschließend auf **Neue Datenbank**.
@@ -196,7 +196,7 @@ In diesem Schritt bearbeiten Sie die Verbindungszeichenfolge, der Ihre Anwendung
     Beachten Sie beim Erstellen der Verbindungszeichenfolge Folgendes:
    
    * Wenn Sie eine Verbindung mit einer benannten Instanz statt mit der Standardinstanz herstellen (beispielsweise IhrServer\SQLEXPRESS), müssen Sie den SQL Server für die Verwendung statischer Ports konfigurieren. Informationen zum Konfigurieren statischer Ports finden Sie unter [Konfigurieren von SQL Server zum Abhören eines bestimmten Ports](http://support.microsoft.com/kb/823938). Standardmäßig verwenden benannte Instanzen UDP und dynamische Ports, was von Hybridverbindungen nicht unterstützt wird.
-   * Es wird empfohlen, dass Sie den Port (standardmäßig&1433; wie im Beispiel) in der Verbindungszeichenfolge angeben, damit Sie sicher sein können, dass auf ihrem lokalen SQL Server TCP aktiviert ist und der richtige Port verwendet wird.
+   * Es wird empfohlen, dass Sie den Port (standardmäßig 1433 wie im Beispiel) in der Verbindungszeichenfolge angeben, damit Sie sicher sein können, dass auf ihrem lokalen SQL Server TCP aktiviert ist und der richtige Port verwendet wird.
    * Denken Sie daran, die Verbindung unter Verwendung der SQL Server-Authentifizierung herzustellen und die Benutzer-ID und das Kennwort in der Verbindungszeichenfolge anzugeben.
 3. Klicken Sie in Visual Studio auf **Speichern** , um die Datei "Web.config" zu speichern.
 
@@ -276,7 +276,7 @@ Sie haben jetzt eine ASP.NET-Webanwendung erstellt und bereitgestellt, die eine 
 
 [Erstellen einer echten Hybrid-Cloud mit nahtloser Anwendungsportabilität (Channel 9-Video)](http://channel9.msdn.com/events/TechEd/NorthAmerica/2014/DCIM-B323#fbid=)
 
-[Zugreifen auf lokale Ressourcen über Hybridverbindungen in Azure App Service](web-sites-hybrid-connection-get-started.md)
+<!-- [Access on-premises resources using hybrid connections in Azure App Service](web-sites-hybrid-connection-get-started.md) -->
 
 [Übersicht über ASP.NET Identity](http://www.asp.net/identity)
 

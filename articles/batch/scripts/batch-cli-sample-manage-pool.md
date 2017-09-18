@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/02/2017
 ms.author: antisch
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
-ms.openlocfilehash: 2556b02459886390b803407c5cb828687229a44e
+ms.translationtype: HT
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: ae7eab97c1da1113b0248b74a9dd67de8ce49e36
 ms.contentlocale: de-de
-ms.lasthandoff: 05/15/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 
@@ -60,19 +60,19 @@ Jeder Befehl in der Tabelle ist mit der zugehörigen Dokumentation verknüpft.
 
 | Befehl | Hinweise |
 |---|---|
-| [az batch account login](https://docs.microsoft.com/cli/azure/batch/account#login) | Authentifizierung für ein Batch-Konto.  |
-| [az batch application summary list](https://docs.microsoft.com/cli/azure/batch/application/summary#list) | Listet die verfügbaren Anwendungen im Batch-Konto auf.  |
-| [az batch pool create](https://docs.microsoft.com/cli/azure/batch/pool#create) | Erstellt einen Pool von virtuellen Computern.  |
-| [az batch pool set](https://docs.microsoft.com/cli/azure/batch/pool#set) | Aktualisiert die Eigenschaften eines Pools.  |
-| [az batch pool node-agent-skus list](https://docs.microsoft.com/cli/azure/batch/pool/node-agent-skus#list) | Listet verfügbaren Knoten-Agent-SKUs und Imageinformationen auf.  |
-| [az batch pool resize](https://docs.microsoft.com/cli/azure/batch/pool#resize) | Ändern Sie die Anzahl der ausgeführten virtuellen Computer im angegebenen Pool.  |
-| [az batch pool show](https://docs.microsoft.com/cli/azure/batch/pool#show) | Zeigt die Eigenschaften eines Pools an.  |
-| [az batch pool delete](https://docs.microsoft.com/cli/azure/batch/pool#delete) | Löscht den angegebenen Pool.  |
-| [az batch pool autoscale enable](https://docs.microsoft.com/cli/azure/batch/pool/autoscale#enable) | Aktiviert die automatische Skalierung für einen Pool, und wendet eine Formel an.  |
-| [az batch pool autoscale disable](https://docs.microsoft.com/cli/azure/batch/pool/autoscale#disable) | Deaktiviert die automatische Skalierung für einen Pool.  |
-| [az batch node list](https://docs.microsoft.com/cli/azure/batch/node#list) | Listet die Computeknoten im angegebenen Pool auf.  |
-| [az batch node reboot](https://docs.microsoft.com/cli/azure/batch/node#reboot) | Startet den angegebenen Computeknoten neu.  |
-| [az batch node delete](https://docs.microsoft.com/cli/azure/batch/node#delete) | Löscht die aufgelisteten Knoten aus dem angegebenen Pool.  |
+| [az batch account login](https://docs.microsoft.com/cli/azure/batch/account#az_batch_account_login) | Authentifizierung für ein Batch-Konto.  |
+| [az batch application summary list](https://docs.microsoft.com/cli/azure/batch/application/summary#az_batch_application_summary_list) | Listet die verfügbaren Anwendungen im Batch-Konto auf.  |
+| [az batch pool create](https://docs.microsoft.com/cli/azure/batch/pool#az_batch_pool_create) | Erstellt einen Pool von virtuellen Computern.  |
+| [az batch pool set](https://docs.microsoft.com/cli/azure/batch/pool#az_batch_pool_set) | Aktualisiert die Eigenschaften eines Pools.  |
+| [az batch pool node-agent-skus list](https://docs.microsoft.com/cli/azure/batch/pool/node-agent-skus#az_batch_pool_node_agent_skus_list) | Listet verfügbaren Knoten-Agent-SKUs und Imageinformationen auf.  |
+| [az batch pool resize](https://docs.microsoft.com/cli/azure/batch/pool#az_batch_pool_resize) | Ändern Sie die Anzahl der ausgeführten virtuellen Computer im angegebenen Pool.  |
+| [az batch pool show](https://docs.microsoft.com/cli/azure/batch/pool#az_batch_pool_show) | Zeigt die Eigenschaften eines Pools an.  |
+| [az batch pool delete](https://docs.microsoft.com/cli/azure/batch/pool#az_batch_pool_delete) | Löscht den angegebenen Pool.  |
+| [az batch pool autoscale enable](https://docs.microsoft.com/cli/azure/batch/pool/autoscale#az_batch_pool_autoscale_enable) | Aktiviert die automatische Skalierung für einen Pool, und wendet eine Formel an.  |
+| [az batch pool autoscale disable](https://docs.microsoft.com/cli/azure/batch/pool/autoscale#az_batch_pool_autoscale_disable) | Deaktiviert die automatische Skalierung für einen Pool.  |
+| [az batch node list](https://docs.microsoft.com/cli/azure/batch/node#az_batch_node_list) | Listet die Computeknoten im angegebenen Pool auf.  |
+| [az batch node reboot](https://docs.microsoft.com/cli/azure/batch/node#az_batch_node_reboot) | Startet den angegebenen Computeknoten neu.  |
+| [az batch node delete](https://docs.microsoft.com/cli/azure/batch/node#az_batch_node_delete) | Löscht die aufgelisteten Knoten aus dem angegebenen Pool.  |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

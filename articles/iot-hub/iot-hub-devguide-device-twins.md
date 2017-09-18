@@ -16,10 +16,10 @@ ms.date: 08/24/2017
 ms.author: elioda
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
-ms.openlocfilehash: b316aa419d558547f90a914a22fb29935076de21
+ms.sourcegitcommit: 9b7316a5bffbd689bdb26e9524129ceed06606d5
+ms.openlocfilehash: 257f661dbc5ff23db53591a1b2db59a8dbeac2dc
 ms.contentlocale: de-de
-ms.lasthandoff: 08/28/2017
+ms.lasthandoff: 09/08/2017
 
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>Verstehen und Verwenden von Gerätezwillingen in IoT Hub
@@ -29,10 +29,6 @@ ms.lasthandoff: 08/28/2017
 * Die Struktur des Gerätezwillings (*Tags*, *gewünschte Eigenschaften* und *gemeldete Eigenschaften*)
 * Die Vorgänge, die Geräte-Apps und Back-Ends auf Gerätezwillingen ausführen können
 
-> [!NOTE]
-> Zurzeit ist der Zugriff auf Gerätezwillinge nur von Geräten aus möglich, die über das MQTT-Protokoll Verbindungen mit IoT Hub herstellen. Anweisungen zum Konvertieren vorhandener Geräte-Apps für die Verwendung von MQTT finden Sie im Artikel [MQTT-Unterstützung][lnk-devguide-mqtt].
-> 
-> 
 
 ### <a name="when-to-use"></a>Einsatzgebiete
 Verwenden Sie Gerätezwillinge für Folgendes:
@@ -219,10 +215,6 @@ Alle oben genannten Vorgänge erfordern die Berechtigung **DeviceConnect**, wie 
 
 Die [Azure IoT-Geräte-SDKs][lnk-sdks] vereinfachen die Verwendung der oben genannten Vorgänge mit vielen Sprachen und Plattformen. Weitere Informationen zu den Details der IoT Hub-Grundtypen für die Synchronisierung gewünschter Eigenschaften finden Sie im [Ablauf zur Wiederherstellung der Geräteverbindung][lnk-reconnection].
 
-> [!NOTE]
-> Zurzeit ist der Zugriff auf Gerätezwillinge nur von Geräten aus möglich, die über das MQTT-Protokoll Verbindungen mit IoT Hub herstellen.
-> 
-> 
 
 ## <a name="reference-topics"></a>Referenzthemen:
 Die folgenden Referenzthemen enthalten weitere Informationen zum Steuern des Zugriffs auf Ihren IoT Hub.

@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/14/2017
+ms.date: 09/13/2017
 ms.author: arramac
 ms.translationtype: HT
-ms.sourcegitcommit: 2812039649f7d2fb0705220854e4d8d0a031d31e
-ms.openlocfilehash: da2cb358d196e41656bd7f6a06ff77e77c7315c1
+ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
+ms.openlocfilehash: a293ab42591fad2b913971465bc85743bcf05dad
 ms.contentlocale: de-de
-ms.lasthandoff: 07/22/2017
+ms.lasthandoff: 09/14/2017
 
 ---
 # <a name="how-to-distribute-data-globally-with-azure-cosmos-db"></a>Wie werden Daten mit Azure Cosmos DB global verteilt?
@@ -65,9 +65,6 @@ Mit Azure Cosmos DB können Sie für den Ausfall mehrerer Regionen die exakte Re
 **Ein Azure Cosmos DB-Mandant kann die Reihenfolge der Failoverpriorität (rechter Bereich) für Regionen konfigurieren, die einem Datenbankkonto zugeordnet sind.**
 
 ![Konfigurieren von Failoverprioritäten mit Azure Cosmos DB](./media/distribute-data-globally/failover-priorities.png)
-
-### <a id="OfflineRegions"></a>Dynamisches Offlineschalten einer Region
-Mit Azure Cosmos DB können Sie Ihr Datenbankkonto in einer bestimmten Region offline und später wieder online schalten. Als offline gekennzeichnete Regionen sind nicht aktiv in die Replikation und nicht in die Failoversequenz eingebunden. Dadurch können Sie vor dem Rollout potenziell riskanter Upgrades für Ihre Anwendung das letzte als funktionierend bekannte Datenbankimage in einer der Leseregionen fixieren.
 
 ### <a id="ConsistencyLevels"></a>Mehrere klar definierte Konsistenzmodelle für global replizierte Datenbanken
 Azure Cosmos DB macht [mehrere klar definierte Konsistenzebenen](consistency-levels.md) mit SLA-Abdeckung verfügbar. In Abhängigkeit von der Workload/den Szenarien können Sie aus den verfügbaren Optionen ein bestimmtes Konsistenzmodell auswählen. 

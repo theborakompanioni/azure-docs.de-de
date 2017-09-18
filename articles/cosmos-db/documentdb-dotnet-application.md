@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 08/03/2017
 ms.author: mimig
 ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
-ms.openlocfilehash: 3f2950fe25feb8f3ee81cc0a79bf624f0ee33bd5
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 985962c4f2db21526291981ad5180fc0a16e2ab8
 ms.contentlocale: de-de
-ms.lasthandoff: 08/12/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 # <a name="_Toc395809351"></a>ASP.NET MVC-Tutorial: Entwicklung von Webanwendungen mit Azure Cosmos DB
@@ -45,12 +45,11 @@ In dieser exemplarischen Vorgehensweise wird veranschaulicht, wie Sie mit dem Az
 ## <a name="_Toc395637760"></a>Voraussetzungen für dieses Datenbanktutorial
 Bevor Sie diesen Artikel durcharbeiten, sollten Sie sicherstellen, dass Folgendes vorhanden ist:
 
-* Ein aktives Azure-Konto. Wenn Sie noch kein Konto haben, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Weitere Informationen finden Sie unter [Kostenloses Azure-Testkonto](https://azure.microsoft.com/pricing/free-trial/). 
+* Ein aktives Azure-Konto.  Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen. 
 
-    OR
+  [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
-    Lokale Installation des [Azure Cosmos DB-Emulators](local-emulator.md)
-* [Visual Studio 2017](http://www.visualstudio.com/).  
+* [!INCLUDE [cosmos-db-emulator-vs](../../includes/cosmos-db-emulator-vs.md)]  
 * Microsoft Azure SDK für .NET für Visual Studio-2017, verfügbar über den Visual Studio-Installer.
 
 Alle Screenshots in diesem Artikel wurden mithilfe von Microsoft Visual Studio Community 2017 erstellt. Wenn Ihr System mit einer anderen Version konfiguriert ist, weichen Ihre Bildschirme und Optionen möglicherweise leicht ab. Wenn Sie die oben aufgeführten Voraussetzungen erfüllen, sollte diese Lösung jedoch funktionieren.

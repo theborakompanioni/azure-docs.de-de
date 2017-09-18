@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/08/2017
 ms.author: dobett
 ms.translationtype: HT
-ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
-ms.openlocfilehash: 93ada731fe70cf7d294537241f8104c0b89940ed
+ms.sourcegitcommit: 9b7316a5bffbd689bdb26e9524129ceed06606d5
+ms.openlocfilehash: a5753df2ff6874d9574e268953792cac9765cc54
 ms.contentlocale: de-de
-ms.lasthandoff: 08/08/2017
+ms.lasthandoff: 09/08/2017
 
 ---
 # <a name="reference---iot-hub-endpoints"></a>Referenz: IoT Hub-Endpunkte
@@ -50,8 +50,6 @@ Die Endpunkte werden in der folgende Liste beschrieben:
   * *Empfangen von Anforderungen direkter Methoden*. Ein Gerät verwendet diesen Endpunkt zum Lauschen auf Anforderungen [direkter Methoden][lnk-methods].
 
     Diese Endpunkte werden über die Protokolle [MQTT v3.1.1][lnk-mqtt], HTTP 1.1 und [AMQP 1.0][lnk-amqp] verfügbar gemacht. AMQP ist auch über [WebSockets][lnk-websockets] an Port 443 verfügbar.
-
-    Die Gerätezwillinge und Methodenendpunkte sind nur bei Verwendung des Protokolls [MQTT 3.1.1][lnk-mqtt] verfügbar.
 
 * **Dienstendpunkte**. Jede IoT Hub-Instanz macht eine Reihe von Endpunkten verfügbar, über die Ihr Lösungs-Back-End mit Ihren Geräten kommunizieren kann. Diese Endpunkte werden bis auf eine Ausnahme unter Verwendung des [AMQP][lnk-amqp]-Protokolls verfügbar gemacht. Der Endpunkt für den Methodenaufruf wird über das HTTP-Protokoll verfügbar gemacht.
   

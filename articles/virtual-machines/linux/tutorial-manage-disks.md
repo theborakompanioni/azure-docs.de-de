@@ -17,10 +17,10 @@ ms.date: 05/02/2017
 ms.author: nepeters
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
-ms.openlocfilehash: 9eb32e545bdefb8cc0a8ae05bd58d750afeb469e
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: 882446ba32252490e27056c7c5c9a8f755e26ee6
 ms.contentlocale: de-de
-ms.lasthandoff: 09/02/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 
@@ -104,7 +104,7 @@ Datenträger für Daten können zum Zeitpunkt der VM-Erstellung erstellt und ang
 
 ### <a name="attach-disk-at-vm-creation"></a>Anfügen eines Datenträgers bei der VM-Erstellung
 
-Erstellen Sie mit dem Befehl [az group create](https://docs.microsoft.com/cli/azure/group#create) eine Ressourcengruppe. 
+Erstellen Sie mit dem Befehl [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) eine Ressourcengruppe. 
 
 ```azurecli-interactive 
 az group create --name myResourceGroupDisk --location eastus
@@ -235,7 +235,7 @@ Bei einer Momentaufnahme des Datenträger wird eine schreibgeschützte Point-in-
 
 ### <a name="create-snapshot"></a>Erstellen der Momentaufnahme
 
-Vor dem Erstellen der Momentaufnahme einer VM wird die ID oder der Name des Datenträgers benötigt. Rufen Sie die Datenträger-ID mit dem Befehl [az vm show](https://docs.microsoft.com/en-us/cli/azure/vm#show) ab. In diesem Beispiel wird die Datenträger-ID in einer Variablen gespeichert und kann in einem späteren Schritt verwendet werden.
+Vor dem Erstellen der Momentaufnahme einer VM wird die ID oder der Name des Datenträgers benötigt. Rufen Sie die Datenträger-ID mit dem Befehl [az vm show](https://docs.microsoft.com/en-us/cli/azure/vm#az_vm_show) ab. In diesem Beispiel wird die Datenträger-ID in einer Variablen gespeichert und kann in einem späteren Schritt verwendet werden.
 
 ```azurecli-interactive 
 osdiskid=$(az vm show -g myResourceGroupDisk -n myVM --query "storageProfile.osDisk.managedDisk.id" -o tsv)
@@ -273,13 +273,13 @@ az vm create --resource-group myResourceGroupDisk --name myVM --attach-os-disk m
 
 Alle Datenträger müssen dem virtuellen Computer erneut angefügt werden.
 
-Finden Sie zuerst mithilfe des Befehls [az disk list](https://docs.microsoft.com/cli/azure/disk#list) den Namen des Datenträgers. In diesem Beispiel wird der Name des Datenträgers in eine Variable namens *datadisk* eingefügt, die im nächsten Schritt verwendet wird.
+Finden Sie zuerst mithilfe des Befehls [az disk list](https://docs.microsoft.com/cli/azure/disk#az_disk_list) den Namen des Datenträgers. In diesem Beispiel wird der Name des Datenträgers in eine Variable namens *datadisk* eingefügt, die im nächsten Schritt verwendet wird.
 
 ```azurecli-interactive 
 datadisk=$(az disk list -g myResourceGroupDisk --query "[?contains(name,'myVM')].[name]" -o tsv)
 ```
 
-Verwenden Sie den Befehl [az vm disk attach](https://docs.microsoft.com/cli/azure/vm/disk#attach), um den Datenträger anzufügen.
+Verwenden Sie den Befehl [az vm disk attach](https://docs.microsoft.com/cli/azure/vm/disk#az_vm_disk_attach), um den Datenträger anzufügen.
 
 ```azurecli-interactive 
 az vm disk attach –g myResourceGroupDisk –-vm-name myVM –-disk $datadisk

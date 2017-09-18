@@ -15,11 +15,10 @@ ms.workload: web
 ms.date: 09/01/2016
 ms.author: cephalin
 ms.translationtype: HT
-ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
-ms.openlocfilehash: 6eadf0a521a32c5bc580908e4e4b7f4305e2bf7e
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: 209766e4ebc902d78cf0c83fa8fe0f57c4da73e4
 ms.contentlocale: de-de
-ms.lasthandoff: 07/10/2017
-
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="create-a-line-of-business-azure-app-with-azure-active-directory-authentication"></a>Erstellen einer Azure-Branchen-App mit Azure Active Directory-Authentifizierung
@@ -337,7 +336,8 @@ Herzlichen Glückwunsch, Sie führen nun eine Branchen-App in Azure mit Verzeich
 ## <a name="next-step"></a>Nächster Schritt
 Wenn Sie für Ihre Branchen-App rollenbasierte Zugriffskontrolle (RBAC, role-based aceess control) benötigen, hat das Azure Active Directory-Team unter [Azure AD Graph API reference](https://github.com/Azure-Samples/active-directory-dotnet-webapp-roleclaims) (Azure AD Graph-API-Referenz) ein Beispiel für Sie bereitgestellt. Dort erfahren Sie, wie Sie Rollen für Ihre Azure Active Directory-Anwendung aktivieren, und Benutzer mit der Dekoration `[Authorize]` autorisieren.
 
-Wenn Ihre Branchen-App Zugriff auf lokale Daten benötigt, finden Sie unter [Zugreifen auf lokale Ressourcen über Hybridverbindungen in Azure App Service](web-sites-hybrid-connection-get-started.md)weitere Informationen.
+<!-- If your line-of-business app needs access to on-premises data, see 
+[Access on-premises resources using hybrid connections in Azure App Service](web-sites-hybrid-connection-get-started.md). -->
 
 <a name="bkmk_resources"></a>
 

@@ -17,8 +17,8 @@ ms.date: 05/24/2017
 ms.author: anhoh
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
-ms.openlocfilehash: a8037dfbd799209e453b84374f28b881864d3799
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: 7326dce288996f0690be3b66882b8b4c21a35348
 ms.contentlocale: de-de
 ms.lasthandoff: 09/07/2017
 
@@ -97,7 +97,7 @@ Ressourcen wie Datenbankkonten, Datenbanken, Sammlungen, Benutzer, Berechtigunge
         </tr>
         <tr>
             <td valign="top"><p>id</p></td>
-            <td valign="top"><p>Systemgeneriert</p></td>
+            <td valign="top"><p>Sie können das</p></td>
             <td valign="top"><p>Benutzerdefinierter, eindeutiger Name der Ressource (mit dem gleichen Partitionsschlüsselwert). Wenn der Benutzer keine ID angibt, wird eine ID vom System generiert.</p></td>
         </tr>
     </tbody>

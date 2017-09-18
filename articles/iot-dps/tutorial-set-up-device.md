@@ -13,10 +13,10 @@ manager: timlt
 ms.devlang: na
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 266b9b7eb228744075627e1e80710e63c27880cc
-ms.openlocfilehash: c0ef886a8c51f43cba875d532835acb194e994d9
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: c99279413b50e7bf1e6058a4151890e3a8f83892
 ms.contentlocale: de-de
-ms.lasthandoff: 09/06/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 
@@ -37,7 +37,7 @@ Bevor Sie fortfahren, erstellen Sie anhand der Anweisungen im Tutorial [Einricht
 
 ## <a name="select-a-hardware-security-module"></a>Auswählen eines Hardwaresicherheitsmoduls
 
-Das [Client-SDK des Device Provisioning-Diensts](https://github.com/Azure/azure-iot-device-auth/tree/master/dps_client) bietet Unterstützung für zwei Arten von Hardwaresicherheitsmodulen (kurz HSMs): 
+Das [Client-SDK des Device Provisioning-Diensts](https://github.com/Azure/azure-iot-sdk-c/tree/master/dps_client) bietet Unterstützung für zwei Arten von Hardwaresicherheitsmodulen (kurz HSMs): 
 
 - [Trusted Platform Module (TPM)](https://en.wikipedia.org/wiki/Trusted_Platform_Module)
     - TPM ist ein etablierter Standard für die meisten Windows-basierten Geräteplattformen sowie für einige Linux/Ubuntu-basierte Geräte. Als Gerätehersteller können Sie dieses HSM auswählen, wenn eines der folgenden Betriebssysteme auf Ihren Geräten ausgeführt wird und wenn Sie nach einem etablierten Standard für HSMs suchen. Bei TPM-Chips können Sie nur jedes Gerät einzeln beim Device Provisioning-Dienst registrieren. Für Entwicklungszwecke können Sie den TPM-Simulator auf dem Windows- oder Linux-Entwicklungscomputer verwenden.
@@ -79,8 +79,8 @@ Das Client-SDK des Device Provisioning-Systems bietet keine standardmäßige Unt
 ### <a name="develop-your-custom-repository"></a>Entwickeln eines benutzerdefinierten Repositorys
 
 1. Entwickeln Sie ein GitHub-Repository für den Zugriff auf Ihr HSM. Bei diesem Projekt muss eine statische Bibliothek zur Verwendung für das Device Provisioning-Dienst-SDK erzeugt werden.
-1. Ihre Bibliothek muss die in der folgenden Headerdatei definierten Funktionen implementieren: a. Implementieren Sie bei einem benutzerdefinierten TPM-Gerät die definierten Funktionen unter `\azure-iot-device-auth\dps_client\adapters\custom_hsm_tpm_impl.h`.
-    b. Implementieren Sie bei einem benutzerdefinierten X.509-Gerät die definierten Funktionen unter `\azure-iot-device-auth\dps_client\adapters\custom_hsm_x509_impl.h`. 
+1. Ihre Bibliothek muss die in der folgenden Headerdatei definierten Funktionen implementieren: a. Implementieren Sie bei einem benutzerdefinierten TPM-Gerät die definierten Funktionen unter `\azure-iot-sdk-c\dps_client\adapters\custom_hsm_tpm_impl.h`.
+    b. Implementieren Sie bei einem benutzerdefinierten X.509-Gerät die definierten Funktionen unter `\azure-iot-sdk-c\dps_client\adapters\custom_hsm_x509_impl.h`. 
 1. Außerdem muss Ihr HSM-Repository die Datei `CMakeLists.txt` im Stammverzeichnis für das Repository enthalten, das erstellt werden soll.
 
 ### <a name="integrate-with-the-device-provisioning-service-client"></a>Integrieren in den Device Provisioning-Dienstclient
@@ -98,7 +98,7 @@ Sobald erfolgreich eigenständig Repositorys von Ihrer Bibliothek erstellt werde
     - Beim Buildvorgang wird das benutzerdefinierte Repository geklont und die Bibliothek erstellt.
     - Das SDK versucht eine Verknüpfung mit dem benutzerdefinierten HSM herzustellen, das im cmake-Befehl definiert ist.
 
-1. Führen Sie das Beispiel `\azure-iot-device-auth\dps_client\samples\dps_client_sample\dps_client_sample.c` aus, um zu überprüfen, ob Ihr HSM ordnungsgemäß implementiert ist.
+1. Führen Sie das Beispiel `\azure-iot-sdk-c\dps_client\samples\dps_client_sample\dps_client_sample.c` aus, um zu überprüfen, ob Ihr HSM ordnungsgemäß implementiert ist.
 
 <a id="extractsecurity"></a>
 ## <a name="extract-the-security-artifacts"></a>Extrahieren der Sicherheitsartefakte

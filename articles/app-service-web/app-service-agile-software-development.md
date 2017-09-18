@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/01/2016
 ms.author: cephalin
 ms.translationtype: HT
-ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
-ms.openlocfilehash: 5ed888cbb422766cf2094f5980dfd1c599bd431c
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: ff71194d701fd5de6ffe616c03f7214275f3bc62
 ms.contentlocale: de-de
-ms.lasthandoff: 08/15/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="agile-software-development-with-azure-app-service"></a>Agile Softwareentwicklung mit Azure App Service
@@ -34,7 +34,7 @@ Die folgende Tabelle enthält eine kurze Liste mit Anforderungen an die agile En
 | – Builds mit Selbsttests gestalten |Auslastungstests, Webtests usw. können mit der Azure-Ressourcen-Manager-Vorlage bereitgestellt werden. |
 | – Tests in einem Klon der Produktionsumgebung durchführen |Azure Ressourcen-Manager-Vorlagen können verwendet werden, um Klone der Azure-Produktionsumgebung (einschließlich App-Einstellungen, Vorlagen mit Verbindungszeichenfolgen, Skalierung usw.) für schnelle und vorhersagbare Tests zu erstellen. |
 | – Ergebnis des neuesten Builds problemlos anzeigen |Die kontinuierliche Bereitstellung in Azure aus einem Repository bedeutet, dass Sie unmittelbar nach dem Commit Ihrer Änderungen neuen Code in einer aktiven Anwendung testen können. |
-| – Täglicher Commit in der MAIN-Verzweigung<br>– Bereitstellung automatisieren |Durch die fortlaufende Integration einer Produktionsanwendung mit der MAIN-Verzweigung eines Repositorys wird jeder Commit-/Zusammenführungsvorgang automatisch in der MAIN-Verzweigung in der Produktion bereitgestellt. |
+| –  Täglicher Commit in der MAIN-Verzweigung<br>– Bereitstellung automatisieren |Durch die fortlaufende Integration einer Produktionsanwendung mit der MAIN-Verzweigung eines Repositorys wird jeder Commit-/Zusammenführungsvorgang automatisch in der MAIN-Verzweigung in der Produktion bereitgestellt. |
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
@@ -264,7 +264,9 @@ Da Sie Ihre Entwicklungs- und Testumgebung als eigenständige Ressourcengruppen 
     Remove-AzureRmResourceGroup -Name ToDoApp<unique_string>newupdate-group -Force -Verbose
 
 ## <a name="summary"></a>Zusammenfassung
-Eine agile Softwareentwicklung ist für viele Unternehmen unverzichtbar, die Azure als Anwendungsplattform übernehmen möchten. In diesem Tutorial haben Sie erfahren, wie Sie exakte bzw. nahezu exakte Replikate der Produktionsumgebung selbst für komplexe Anwendungen mühelos erstellen. Sie haben auch gelernt, wie Sie diese Fähigkeit nutzen können, um einen Entwicklungsprozess einzurichten, in dem Sie Builds erstellen und jeden einzelnen Commit in Azure testen können. Dieses Tutorial konnte Ihnen hoffentlich zeigen, wie Sie Azure App Service und den Azure-Ressourcen-Manager gemeinsam zum Erstellen einer DevOps-Lösung optimal einsetzen, die agile Methoden befolgt. Als Nächstes können Sie dieses Szenario durch Ausführen erweiterter DevOps-Techniken wie z. B. [Test-in-Produktion](app-service-web-test-in-production-get-start.md) ergänzen. Ein häufiges Szenario für Tests in der Produktion finden Sie unter [Flighting-Bereitstellung (Betatestversion) in Azure App Service](app-service-web-test-in-production-controlled-test-flight.md).
+Eine agile Softwareentwicklung ist für viele Unternehmen unverzichtbar, die Azure als Anwendungsplattform übernehmen möchten. In diesem Tutorial haben Sie erfahren, wie Sie exakte bzw. nahezu exakte Replikate der Produktionsumgebung selbst für komplexe Anwendungen mühelos erstellen. Sie haben auch gelernt, wie Sie diese Fähigkeit nutzen können, um einen Entwicklungsprozess einzurichten, in dem Sie Builds erstellen und jeden einzelnen Commit in Azure testen können. Dieses Tutorial konnte Ihnen hoffentlich zeigen, wie Sie Azure App Service und den Azure-Ressourcen-Manager gemeinsam zum Erstellen einer DevOps-Lösung optimal einsetzen, die agile Methoden befolgt. 
+
+<!-- Next, you can build on this scenario by performing advanced DevOps techniques such as testing in production. For a common testing-in-production scenario, see [Flighting deployment (beta testing) in Azure App Service](app-service-web-test-in-production-controlled-test-flight.md). -->
 
 ## <a name="more-resources"></a>Weitere Ressourcen
 * [Vorhersagbares Bereitstellen einer komplexen Anwendung in Azure](app-service-deploy-complex-application-predictably.md)

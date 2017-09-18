@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 04/03/2017
+ms.date: 09/03/2017
 ms.author: rli; juliako;
-ms.translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: b34502aa75d94da1abcda880bb1a251a8455f3f8
+ms.translationtype: HT
+ms.sourcegitcommit: f2ac16c2f514aaa7e3f90fdf0d0b6d2912ef8485
+ms.openlocfilehash: 0bd385ba78028a722c52cdf1508f3348ff90f05f
 ms.contentlocale: de-de
-ms.lasthandoff: 04/03/2017
+ms.lasthandoff: 09/08/2017
 
 ---
 # <a name="redact-faces-with-azure-media-analytics-walkthrough"></a>Exemplarische Vorgehensweise: Bearbeiten von Gesichtern mit Azure Media Analytics
@@ -30,8 +30,6 @@ ms.lasthandoff: 04/03/2017
 Weitere Informationen zu **Azure Media Redactor** finden Sie im Thema [Gesichtsbearbeitung mit Azure Media Analytics](media-services-face-redaction.md).
 
 In diesem Thema werden Schritt-für-Schritt-Anweisungen zur Ausführung eines vollständigen Bearbeitungsworkflows mithilfe von Azure Media Services Explorer (AMSE) und Azure Media Redactor Visualizer (Open Source-Tool) vorgestellt.
-
-Der Medienprozessor **Azure Media Redactor** befindet sich derzeit in der Vorschauphase. Er ist in allen öffentlichen Azure-Regionen sowie den Rechenzentren für die US-Regierung und China verfügbar. Diese Vorschau ist derzeit kostenfrei. Im aktuellen Release ist die Länge des verarbeiteten Videos auf 10 Minuten begrenzt.
 
 Weitere Informationen finden Sie in [diesem](https://azure.microsoft.com/en-us/blog/redaction-preview-available-globally) Blog.
 

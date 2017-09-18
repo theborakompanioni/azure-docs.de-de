@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 10/10/2016
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: dc7b51cd0d015770b1100e895da633e8bde4b8da
-
+ms.translationtype: HT
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: 357e58665f5cdf6ea9a3fcaee4a390f2b0d2045f
+ms.contentlocale: de-de
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="azure-sdk-for-net-251-release-notes"></a>Versionshinweise zu Azure SDK für .NET 2.5.1
@@ -28,7 +29,7 @@ Das Azure SDK für .NET 2.5.1 enthält die nachfolgend beschriebenen neuen Funk
 
 * Neue Funktionen/Szenarien in Bezug auf **Erweiterungen für Webtools**. 
   
-  * Azure-Websites wurde in Azure App Service umbenannt. Weitere Informationen finden Sie unter [Azure App Service und vorhandene Azure-Dienste](../app-service-web/app-service-changes-existing-services.md).
+  * Azure-Websites wurde in Azure App Service umbenannt. 
   * Die neue Unterstützung für Azure API-Apps (Vorschau) ermöglicht es Kunden, ASP.NET-Projekte als API-Apps zu veröffentlichen und anschließend über "Hinzufügen > Azure API-App-Client" in C#-Projekten Code zu generieren, der auf der Struktur der bereitgestellten API-App basiert. 
   * Der Knoten "Websites" im Server-Explorer wurde durch den Knoten "Azure App Service" ersetzt, der eine auf Ressourcengruppen basierenden Gruppierung von Azure API-Apps, mobilen Apps und Web-Apps unterstützt.
   * Dank der neuen Unterstützung von Azure Mobile Apps (Vorschau) können Kunden neue Mobile Apps-Projekte erstellen, Mobile Apps-Controller hinzufügen, die Projekte veröffentlichen und ein Remotedebuggen der Anwendungen durchführen.
@@ -46,7 +47,7 @@ Das Azure SDK für .NET 2.5.1 enthält die nachfolgend beschriebenen neuen Funk
     
     Weitere Informationen finden Sie unter [Erste Schritte mit den HDInsight Hadoop-Tools für Visual Studio](../hdinsight/hdinsight-hadoop-visual-studio-tools-get-started.md).
 
-## <a name="a-idknownissues251aazure-sdk-for-net-251-known-issues-and-limitations"></a><a id="known_issues_2_5_1"></a>Bekannte Probleme und Einschränkungen im Azure SDK für .NET 2.5.1
+## <a id="known_issues_2_5_1"></a>Bekannte Probleme und Einschränkungen im Azure SDK für .NET 2.5.1
 * Azure API-Apps wird als Bereitstellungsziel für mobile Apps angezeigt. Bis zu einer späteren Version sollte Web-Apps das einzige Ziel für mobile Apps sein. 
 * Die Azure API-App-Bereitstellung kann erfolgreich sein, möglicherweise wird jedoch der Fortschritt im Azure App Service-Aktivitätsfenster zeitweise nicht aktualisiert. Zur Problemumgehung kann der Status der neuen Azure API-App im Azure-Portal überprüft werden. 
 * "Datei > Neues Projekt > API-App > F5" führt zu einem HTTP-Fehler, da keine Datei "default/index.hmtl" vorhanden ist. Zur Problemumgehung können Sie manuell nach der URL für "/api/values" suchen. 
@@ -62,10 +63,5 @@ Das Azure SDK für .NET 2.5.1 enthält die nachfolgend beschriebenen neuen Funk
 * API-App-Projekte können nicht zusammen mit Cloud Service-Projekten verwendet werden.
 * API-App-Projektvorlagen stehen nur in C# zur Verfügung.
 * Die API-App-Nutzung über das Kontextmenü "API-App-Client hinzufügen" wird nur in C# unterstützt.
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

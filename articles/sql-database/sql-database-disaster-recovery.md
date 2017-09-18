@@ -15,12 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/14/2017
 ms.author: sashan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
-ms.openlocfilehash: e33f69bf04b32a31aae3c311c41aa44e4da5016a
+ms.translationtype: HT
+ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
+ms.openlocfilehash: e5242b5f76866ca382b31005deca07cd722af423
 ms.contentlocale: de-de
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 09/14/2017
 
 ---
 # <a name="restore-an-azure-sql-database-or-failover-to-a-secondary"></a>Wiederherstellen einer Azure SQL-Datenbank oder Failover auf eine sekundäre Datenbank
@@ -65,7 +64,7 @@ In den folgenden Leitfäden finden Sie Informationen zum Failover auf eine geore
 
 * [Failover auf eine georeplizierte sekundäre Datenbank mit dem Azure-Portal](sql-database-geo-replication-portal.md)
 * [Failover auf eine georeplizierte sekundäre Datenbank mit PowerShell](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
-* [Failover auf eine georeplizierte sekundäre Datenbank mit T-SQL](sql-database-geo-replication-transact-sql.md)
+* [Failover auf eine georeplizierte sekundäre Datenbank mit T-SQL](/sql/t-sql/statements/alter-database-azure-sql-database.md)
 
 ## <a name="recover-using-geo-restore"></a>Wiederherstellen mit Geowiederherstellung
 Wenn eine Downtime Ihrer Anwendung keine geschäftliche Haftung nach sich zieht, können Sie [Geowiederherstellung](sql-database-recovery-using-backups.md) als Methode zum Wiederherstellen Ihrer Anwendungsdatenbank(en) nutzen. Hierbei wird eine Kopie der Datenbank aus der letzten georedundanten Sicherung erstellt.

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/02/2017
 ms.author: antisch
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
-ms.openlocfilehash: 5fe1e3595d9459e60b2fd54d6f17f6822731f453
+ms.translationtype: HT
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: 73d93622d418359be421e043d0af4e4befc6f4b4
 ms.contentlocale: de-de
-ms.lasthandoff: 05/15/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 
@@ -51,13 +51,13 @@ Dieses Skript verwendet die folgenden Befehle zum Erstellen eines Batch-Auftrags
 
 | Befehl | Hinweise |
 |---|---|
-| [az batch account login](https://docs.microsoft.com/cli/azure/batch/account#login) | Authentifizierung für ein Batch-Konto.  |
-| [az batch job create](https://docs.microsoft.com/cli/azure/batch/job#create) | Erstellt einen Batch-Auftrag.  |
-| [az batch job set](https://docs.microsoft.com/cli/azure/batch/job#set) | Aktualisiert die Eigenschaften eines Batch-Auftrags.  |
-| [az batch job show](https://docs.microsoft.com/cli/azure/batch/job#show) | Ruft Details eines angegebenen Batch-Auftrags ab.  |
-| [az batch task create](https://docs.microsoft.com/cli/azure/batch/task#create) | Fügt eine Aufgabe zum angegebenen Batch-Auftrag hinzu.  |
-| [az batch task show](https://docs.microsoft.com/cli/azure/batch/task#show) | Ruft die Details einer Aufgabe aus dem angegebenen Batch-Auftrag ab.  |
-| [az batch task list](https://docs.microsoft.com/cli/azure/batch/task#list) | Listet die dem angegebenen Auftrag zugeordneten Aufgaben auf.  |
+| [az batch account login](https://docs.microsoft.com/cli/azure/batch/account#az_batch_account_login) | Authentifizierung für ein Batch-Konto.  |
+| [az batch job create](https://docs.microsoft.com/cli/azure/batch/job#az_batch_job_create) | Erstellt einen Batch-Auftrag.  |
+| [az batch job set](https://docs.microsoft.com/cli/azure/batch/job#az_batch_job_set) | Aktualisiert die Eigenschaften eines Batch-Auftrags.  |
+| [az batch job show](https://docs.microsoft.com/cli/azure/batch/job#az_batch_job_show) | Ruft Details eines angegebenen Batch-Auftrags ab.  |
+| [az batch task create](https://docs.microsoft.com/cli/azure/batch/task#az_batch_task_create) | Fügt eine Aufgabe zum angegebenen Batch-Auftrag hinzu.  |
+| [az batch task show](https://docs.microsoft.com/cli/azure/batch/task#az_batch_task_show) | Ruft die Details einer Aufgabe aus dem angegebenen Batch-Auftrag ab.  |
+| [az batch task list](https://docs.microsoft.com/cli/azure/batch/task#az_batch_task_list) | Listet die dem angegebenen Auftrag zugeordneten Aufgaben auf.  |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

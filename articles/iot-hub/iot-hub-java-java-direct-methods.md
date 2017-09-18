@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/08/2017
 ms.author: dobett
 ms.translationtype: HT
-ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
-ms.openlocfilehash: 5fa42c4fe7ad04bc74f70b023715bb61f81806ab
+ms.sourcegitcommit: 9b7316a5bffbd689bdb26e9524129ceed06606d5
+ms.openlocfilehash: 4fb759ecd7767c126bc22165494652039ba1caa4
 ms.contentlocale: de-de
-ms.lasthandoff: 08/09/2017
+ms.lasthandoff: 09/08/2017
 
 ---
 # <a name="use-direct-methods-java"></a>Verwenden direkter Methoden (Java)
@@ -111,7 +111,7 @@ In diesem Abschnitt erstellen Sie eine Java-Konsolen-App, die auf eine vom Lösu
     private static final int METHOD_NOT_DEFINED = 404;
     ```
 
-    Diese Beispiel-App verwendet beim Instanziieren eines **DeviceClient**-Objekts die **protocol**-Variable. Derzeit ist für das Verwenden direkter Methoden das Protokoll MQTT erforderlich.
+    Diese Beispiel-App verwendet beim Instanziieren eines **DeviceClient**-Objekts die **protocol**-Variable. 
 
 1. Fügen Sie die folgende geschachtelte Klasse der **App**-Klasse hinzu, um einen Statuscode an Ihren IoT-Hub zurückzugeben:
 

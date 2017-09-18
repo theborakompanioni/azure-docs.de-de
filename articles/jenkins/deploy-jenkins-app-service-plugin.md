@@ -16,10 +16,10 @@ ms.date: 7/24/2017
 ms.author: mlearned
 ms.custom: Jenkins
 ms.translationtype: HT
-ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
-ms.openlocfilehash: dfb1abd4eefdb2baea8cdbd497bc8fcc95d200e6
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: b2035d6bc0d323f2497a1db9b88d3ed015235b16
 ms.contentlocale: de-de
-ms.lasthandoff: 08/04/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 
@@ -142,7 +142,7 @@ Für Web-App unter Linux werden auch herkömmliche Vorgehensweisen wie Git und F
 
 Vor dem Einrichten des Auftrags in Jenkins benötigen Sie eine Azure App Service-Instanz unter Linux. Außerdem ist eine Containerregistrierung zum Speichern und Verwalten Ihrer privaten Docker-Containerimages erforderlich. Sie können DockerHub verwenden. Wir verwenden für dieses Beispiel Azure Container Registry.
 
-* Sie können [diese Schritte](/azure/app-service-web/app-service-linux-how-to-create-web-app) ausführen, um unter Linux eine Web-App zu erstellen. 
+* Sie können [diese Schritte](../app-service/containers/quickstart-nodejs.md) ausführen, um unter Linux eine Web-App zu erstellen. 
 * Azure Container Registry ist ein verwalteter Dienst vom Typ [Docker-Registrierung] (https://docs.docker.com/registry/), der auf Version 2.0 der Open Source-Docker-Registrierung basiert. Führen Sie [diese Schritte] (/azure/container-registry/container-registry-get-started-azure-cli) aus, um weitere Informationen zur Vorgehensweise zu erhalten. Sie können auch DockerHub verwenden.
 
 ### <a name="to-deploy-using-docker"></a>Gehen Sie wie folgt vor, um die Bereitstellung mit Docker durchzuführen:

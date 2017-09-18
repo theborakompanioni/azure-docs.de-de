@@ -16,10 +16,10 @@ ms.workload: big-compute
 ms.date: 10/13/2016
 ms.author: danlep
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: e31845f3d7aa08357b0e8a1b3b77d97302442ac3
+ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
+ms.openlocfilehash: 0c0b9875b4153edcc0ec0096577d041d394a842f
 ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
+ms.lasthandoff: 09/14/2017
 
 ---
 # <a name="run-namd-with-microsoft-hpc-pack-on-linux-compute-nodes-in-azure"></a>Ausführen von NAMD mit dem Microsoft HPC Pack auf Linux-Computeknoten in Azure
@@ -29,8 +29,6 @@ In diesem Artikel wird eine Möglichkeit zum Ausführen einer Linux-HPC-Workload
 
 * **NAMD** (Nanoscale Molecular Dynamics Program) ist ein paralleles Molecular Dynamics-Paket für die Simulation großer Biomolekularsysteme mit Millionen von Atomen. Beispiele für diese Systeme sind Viren, Zellstrukturen und große Proteine. NAMD skaliert für normale Simulationen auf Hunderte Kerne und für die größten Simulationen auf mehr als 500.000 Kerne.
 * **Microsoft HPC Pack** verfügt über Funktionen zum Ausführen von umfangreichen HPC- und parallelen Anwendungen in Clustern mit lokalen Computern oder virtuellen Azure-Computern. HPC Pack wurde ursprünglich als Lösung für Windows HPC-Workloads entwickelt und unterstützt jetzt die Ausführung von Linux HPC-Anwendungen auf Linux-Computeknoten-VMs, die in einem HPC Pack-Cluster bereitgestellt werden. Eine Einführung finden Sie unter [Erste Schritte mit Linux-Serverknoten in einem HPC Pack-Cluster in Azure](hpcpack-cluster.md) .
-
-Weitere Optionen zum Ausführen von Linux HPC-Workloads in Azure finden Sie unter [Technische Ressourcen für Batch und HPC (High Performance Computing)](../../../batch/batch-hpc-solutions.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * **HPC Pack-Cluster mit Linux-Computeknoten**: Stellen Sie einen HPC Pack-Cluster mit Linux-Computeknoten in Azure entweder mit einer [Azure Resource Manager-Vorlage](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterlinuxcn/) oder einem [Azure PowerShell-Skript](hpcpack-cluster-powershell-script.md) bereit. Voraussetzungen und Schritte für beide Optionen finden Sie unter [Erste Schritte mit Linux-Computeknoten in einem HPC Pack-Cluster in Azure](hpcpack-cluster.md) . Wenn Sie die Bereitstellungsoption per PowerShell-Skript wählen, hilft Ihnen die Beispielkonfigurationsdatei weiter, die im Rahmen der Beispieldateien am Ende dieses Artikels aufgeführt ist. Mit dieser Datei wird ein Azure-basierter HPC Pack-Cluster konfiguriert, der aus einem Windows Server 2012 R2-Hauptknoten und vier CentOS 6.6-Computeknoten der Größe „Large“ besteht. Passen Sie diese Datei je nach Bedarf für Ihre Umgebung an.

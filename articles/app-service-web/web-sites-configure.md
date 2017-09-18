@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f7479260c7c2e10f242b6d8e77170d4abe8634ac
-ms.openlocfilehash: cacbcf879555907f81d824dc1069b05579dca010
+ms.translationtype: HT
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: 443f49c720b47734f330db9bd6790e6a55ac5f9b
 ms.contentlocale: de-de
-ms.lasthandoff: 06/21/2017
-
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="configure-web-apps-in-azure-app-service"></a>Konfigurieren von Web-Apps in Azure App Service
@@ -49,7 +48,7 @@ Aus technischen Gründen werden durch Aktivierung von Java für Ihre App die Opt
 <a name="platform"></a>
 **Plattform**. Bestimmt, ob Ihre Web-App in einer 32-Bit- oder 64-Bit-Umgebung ausgeführt wird. Für die 64-Bit-Umgebung ist der Modus "Basic" oder "Standard" erforderlich. Die Modi "Kostenlos" und "Freigegeben" werden immer in einer 32-Bit-Umgebung ausgeführt.
 
-**Websockets**. Legen Sie **EIN** fest, um das WebSocket-Protokoll zu aktivieren, beispielsweise wenn Ihre Web-App [ASP.NET SignalR] oder [socket.io] verwendet.
+**Websockets**. Legen Sie **EIN** fest, um das WebSocket-Protokoll zu aktivieren, beispielsweise wenn Ihre Web-App [ASP.NET SignalR] oder [socket.io](https://socket.io/) verwendet.
 
 <a name="alwayson"></a>
 **Always On**. Standardmäßig werden Web-Apps entladen, wenn sie einige Zeit im Leerlauf waren. Dadurch spart das System Ressourcen. Im Modus „Basic“ oder „Standard“ können Sie **Always On** aktivieren, sodass die Web-App permanent geladen bleibt. Wenn Ihre App fortlaufende WebJobs oder unter Verwendung eines CRON-Ausdrucks ausgelöste WebJobs ausführt, sollten Sie **Always On** aktivieren. Ansonsten werden die Webaufträge möglicherweise nicht zuverlässig ausgeführt.
@@ -171,7 +170,6 @@ Weitere Informationen finden Sie unter [Vorgehensweise: Überwachen des Web-Endp
 [Grundlagen der Überwachung von Web-Apps in Azure App Service]: ./web-sites-monitor.md
 [Pipelinemodus]: http://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture#Application
 [Skalieren einer Web-App in Azure App Service]: ./web-sites-scale.md
-[socket.io]: ./web-sites-nodejs-chat-app-socketio.md
 [App Service testen]: https://azure.microsoft.com/try/app-service/
 
 <!-- IMG List -->

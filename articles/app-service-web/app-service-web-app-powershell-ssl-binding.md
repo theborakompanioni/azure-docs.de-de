@@ -14,18 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/13/2016
 ms.author: aelnably
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e0302c4e4e63383a2b19bd6f02f3be8d83f5ff98
-
+ms.translationtype: HT
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: e57e4b55555b04f6109e16322aa05ff0e41bb16c
+ms.contentlocale: de-de
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="azure-app-service-ssl-certificate-binding-using-powershell"></a>Azure App Service SSL-Zertifikatbindung mit PowerShell
 Mit der Veröffentlichung von Microsoft Azure PowerShell Version 1.1.0 wurde ein neues Cmdlet hinzugefügt, das dem Benutzer ermöglicht, vorhandene oder neue SSL-Zertifikate an eine vorhandene Web-App zu binden.
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
-
-Weitere Informationen zur Verwendung Azure Resource Manager-basierter Azure-PowerShell-Cmdlets zum Verwalten Ihrer Web-Apps finden Sie unter [Azure Resource Manager-basierte PowerShell-Befehle zum Verwalten von Azure-Web-Apps](app-service-web-app-azure-resource-manager-powershell.md)
 
 ## <a name="uploading-and-binding-a-new-ssl-certificate"></a>Hochladen und Binden eines neuen SSL-Zertifikats
 Das Szenario: Der Benutzer möchte ein SSL-Zertifikat an eine seiner Web-Apps binden.
@@ -68,13 +67,7 @@ Beachten Sie, dass das Zertifikat standardmäßig gelöscht wird, wenn die entfe
     Remove-AzureRmWebAppSSLBinding -ResourceGroupName myresourcegroup -WebAppName mytestapp -Name www.contoso.com -DeleteCertificate $false
 
 ### <a name="references"></a>Referenzen
-* [Azure Resource Manager-basierte PowerShell-Befehle zum Verwalten von Azure-Web-Apps](app-service-web-app-azure-resource-manager-powershell.md)
 * [Einführung in die App Service-Umgebung](app-service-app-service-environment-intro.md)
-* [Verwenden von Windows PowerShell mit dem Azure-Ressourcen-Manager](../powershell-azure-resource-manager.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
+* [Verwenden von Windows PowerShell mit dem Azure-Ressourcen-Manager](../azure-resource-manager/powershell-azure-resource-manager.md)
 
 

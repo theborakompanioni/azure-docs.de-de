@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/02/2017
 ms.author: antisch
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
-ms.openlocfilehash: 5d057eaf32867aedc95d58c5185e2be1f9385ec0
+ms.translationtype: HT
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: cbfe8ab565ecf7f298a9a6c0f0c8298c675f178c
 ms.contentlocale: de-de
-ms.lasthandoff: 05/15/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 
@@ -28,7 +28,7 @@ Dieses Skript veranschaulicht die Einrichtung einer Anwendung für die Verwendun
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Installieren Sie Azure CLI mithilfe der Anweisungen im [Azure CLI-Installationshandbuch](https://docs.microsoft.com/cli/azure/install-azure-cli), wenn dies noch nicht erfolgt ist.
+- Installieren Sie Azure CLI gemäß den Anweisungen im [Azure CLI-Installationshandbuch](https://docs.microsoft.com/cli/azure/install-azure-cli), wenn dies noch nicht erfolgt ist.
 - Erstellen Sie ein Batch-Konto, falls Sie noch keins besitzen. Ein Beispielskript zum Erstellen eines Kontos finden Sie unter [Erstellen eines Batch-Kontos mit der Azure-Befehlszeilenschnittstelle (CLI)](https://docs.microsoft.com/azure/batch/scripts/batch-cli-sample-create-account).
 
 ## <a name="sample-script"></a>Beispielskript
@@ -51,9 +51,9 @@ Jeder Befehl in der Tabelle ist mit der zugehörigen Dokumentation verknüpft.
 
 | Befehl | Hinweise |
 |---|---|
-| [az batch application create](https://docs.microsoft.com/cli/azure/batch/application#create) | Erstellt eine Anwendung  |
-| [az batch application set](https://docs.microsoft.com/cli/azure/batch/application#set) | Aktualisiert die Eigenschaften einer Anwendung  |
-| [az batch application package create](https://docs.microsoft.com/cli/azure/batch/application/package#create) | Fügt der angegebenen Anwendung ein Anwendungspaket hinzu  |
+| [az batch application create](https://docs.microsoft.com/cli/azure/batch/application#az_batch_application_create) | Erstellt eine Anwendung  |
+| [az batch application set](https://docs.microsoft.com/cli/azure/batch/application#az_batch_application_set) | Aktualisiert die Eigenschaften einer Anwendung  |
+| [az batch application package create](https://docs.microsoft.com/cli/azure/batch/application/package#az_batch_application_package_create) | Fügt der angegebenen Anwendung ein Anwendungspaket hinzu  |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

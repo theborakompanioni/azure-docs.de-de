@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/03/2016
 ms.author: glenga
 ms.translationtype: HT
-ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
-ms.openlocfilehash: cd6c75fb12182c1c38c9717f7fe51c6e36922540
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: 06e85d02d82bcc7d57989c1dce97028b24b9f317
 ms.contentlocale: de-de
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="article-top"></a>Migrieren des vorhandenen Azure Mobile Service zu Azure App Service
@@ -33,7 +33,6 @@ Die Migration Ihres Azure Mobile Service wandelt den Mobile Service in eine [Azu
 Microsoft empfiehlt Ihnen, Ihren Azure Mobile Service zu migrieren, um die Features von Azure App Service zu nutzen, einschließlich:
 
 * Neue Hostfeatures, einschließlich [WebJobs] und [benutzerdefinierten Domänennamen].
-* Konnektivität mit Ihren lokalen Ressourcen über [VNET] ergänzend zu [Hybrid Connections].
 * Überwachung und Problembehandlung mit New Relic oder [Application Insights].
 * Integrierte DevOps-Tools, einschließlich [Stagingslots], Rollback und Test in der Produktion.
 * [Automatische Skalierung], Lastenausgleich und [Leistungsüberwachung].
@@ -389,7 +388,7 @@ Ihre Anwendung wurde nicht nur zu App Service migriert, sondern Sie können soga
 [benutzerdefinierten Domänennamen]: ../app-service-web/web-sites-custom-domain-name.md
 [Fiddler]: http://www.telerik.com/fiddler
 [allgemeinen Verfügbarkeit von Azure App Service]: https://azure.microsoft.com/blog/announcing-general-availability-of-app-service-mobile-apps/
-[Hybrid Connections]: ../app-service-web/web-sites-hybrid-connection-get-started.md
+[Hybrid Connections]: ../app-service/app-service-hybrid-connections.md
 [Protokollierung]: ../app-service-web/web-sites-enable-diagnostic-log.md
 [Mobile Apps-Node.js-SDK]: https://github.com/azure/azure-mobile-apps-node
 [Mobile Services im Vergleich zu App Service]: app-service-mobile-value-prop-migration-from-mobile-services.md
@@ -397,7 +396,7 @@ Ihre Anwendung wurde nicht nur zu App Service migriert, sondern Sie können soga
 [Leistungsüberwachung]: ../app-service-web/web-sites-monitor.md
 [Postman]: http://www.getpostman.com/
 [Stagingslots]: ../app-service-web/web-sites-staged-publishing.md
-[VNET]: ../app-service-web/web-sites-integrate-with-vnet.md
+[VNet]: ../app-service-web/web-sites-integrate-with-vnet.md
 [WebJobs]: ../app-service-web/websites-webjobs-resources.md
 [XDT-Transformationsbeispielen]: https://github.com/projectkudu/kudu/wiki/Xdt-transform-samples
 [Funktionen]: ../azure-functions/functions-overview.md

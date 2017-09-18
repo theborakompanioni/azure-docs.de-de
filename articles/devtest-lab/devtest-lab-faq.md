@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/22/2017
 ms.author: tarcher
 ms.translationtype: HT
-ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
-ms.openlocfilehash: 17ad81945deef8d4803898cfe4fc9ddbd88a2a54
+ms.sourcegitcommit: 9b7316a5bffbd689bdb26e9524129ceed06606d5
+ms.openlocfilehash: 1f261f97bbd9233d47eadc7e902e00ee87af9e34
 ms.contentlocale: de-de
-ms.lasthandoff: 09/01/2017
+ms.lasthandoff: 09/08/2017
 
 ---
 # <a name="azure-devtest-labs-faq"></a>Häufig gestellte Fragen zu Azure DevTest Labs
@@ -136,7 +136,7 @@ Weitere Informationen zu den Azure-Gutschriften für die einzelnen MSDN-Angebote
 ## <a name="how-do-i-automate-the-process-of-uploading-vhd-files-to-create-custom-images"></a>Wie automatisiere ich das Hochladen von VHD-Dateien zum Erstellen benutzerdefinierter Images?
 Um das Hochladen von VHD-Dateien zum Erstellen benutzerdefinierter Images automatisieren, haben Sie zwei Optionen:
 
-* Verwenden Sie [AzCopy](../storage/common/storage-use-azcopy.md#blob-upload), um VHD-Dateien in das dem Lab zugeordneten Speicherkonto zu kopieren oder hochzuladen.
+* Verwenden Sie [AzCopy](../storage/common/storage-use-azcopy.md#upload-blobs-to-blob-storage), um VHD-Dateien in das dem Lab zugeordneten Speicherkonto zu kopieren oder hochzuladen.
 * Verwenden Sie den [Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md). Der Storage Explorer ist eine eigenständige App, die unter Windows, OS X und Linux ausgeführt wird.   
 
 So suchen Sie nach dem Zielspeicherkonto, das Ihrem Lab zugeordnet ist:

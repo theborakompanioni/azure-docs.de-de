@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 09/01/2017
 ms.author: adamab
 ms.translationtype: HT
-ms.sourcegitcommit: 4eb426b14ec72aaa79268840f23a39b15fee8982
-ms.openlocfilehash: 2866d9717a0a7f107764008541a0ba71d5001c9e
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: 6c0d76207233a04bdec604d95f1779c62f6e2d8f
 ms.contentlocale: de-de
-ms.lasthandoff: 09/06/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 # <a name="programmatically-create-azure-dashboards"></a>Programmgesteuertes Erstellen von Azure-Dashboards
@@ -120,7 +120,7 @@ Sie müssen zudem einige erforderliche Vorlagenmetadaten und die Parameter oben 
 
 __Die vollständige funktionierende Vorlage ist am Ende des Dokuments eingefügt.__
 
-Nachdem Sie die Vorlage erstellt haben, können Sie sie mit den [REST-APIs](https://docs.microsoft.com/en-us/rest/api/resources/deployments), [PowerShell](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-template-deploy), der [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/en-us/cli/azure/group/deployment#create) oder auf der [Vorlagenbereitstellungsseite des Portals](https://portal.azure.com/#create/Microsoft.Template) bereitstellen.
+Nachdem Sie die Vorlage erstellt haben, können Sie sie mit den [REST-APIs](https://docs.microsoft.com/en-us/rest/api/resources/deployments), [PowerShell](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-template-deploy), der [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/en-us/cli/azure/group/deployment#az_group_deployment_create) oder auf der [Vorlagenbereitstellungsseite des Portals](https://portal.azure.com/#create/Microsoft.Template) bereitstellen.
 
 Es folgen zwei Versionen der JSON-Vorlage für das Beispieldashboard. Die erste ist die Version, die wir im Portal erstellt haben und die bereits an eine Ressource gebunden war. Die zweite ist die Vorlagenversion, die programmgesteuert an jeden virtuellen Computer gebunden und mithilfe von Azure Resource Manager bereitgestellt werden kann.
 

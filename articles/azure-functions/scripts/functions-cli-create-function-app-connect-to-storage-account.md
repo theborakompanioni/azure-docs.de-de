@@ -16,11 +16,11 @@ ms.workload:
 ms.date: 04/20/2017
 ms.author: rachelap
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
-ms.openlocfilehash: 36dbc2c181c9991a27163e3194800f63c6c0e01e
+ms.translationtype: HT
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: af90702601d1bd05836dbf2b20cd3e318832b07c
 ms.contentlocale: de-de
-ms.lasthandoff: 06/20/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 # <a name="integrate-function-app-into-azure-storage-account"></a>Integrieren der Funktionen-App in ein Azure-Speicherkonto
@@ -53,10 +53,10 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 | Befehl | Hinweise |
 |---|---|
 | [az login](https://docs.microsoft.com/cli/azure/#login) | Anmelden bei Azure. |
-| [az group create](https://docs.microsoft.com/cli/azure/group#create) | Erstellen Sie eine Ressourcengruppe mit einem Speicherort. |
+| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | Erstellen Sie eine Ressourcengruppe mit einem Speicherort. |
 | [az storage account create](https://docs.microsoft.com/cli/azure/storage/account) | Erstellen Sie ein Speicherkonto. |
-| [az functionapp create](https://docs.microsoft.com/cli/azure/functionapp#create) | Erstellen Sie eine neue Funktionen-App. |
-| [az group delete](https://docs.microsoft.com/cli/azure/group#delete) | Bereinigen |
+| [az functionapp create](https://docs.microsoft.com/cli/azure/functionapp#az_functionapp_create) | Erstellen Sie eine neue Funktionen-App. |
+| [az group delete](https://docs.microsoft.com/cli/azure/group#az_group_delete) | Bereinigen |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

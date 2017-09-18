@@ -16,11 +16,11 @@ ms.workload:
 ms.date: 04/20/2017
 ms.author: rachelap
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
-ms.openlocfilehash: ba7e934f71824493f29b001cea6dd1c567ef3414
+ms.translationtype: HT
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: c2c3530df62a1f291be51739a7918f7b8ab08487
 ms.contentlocale: de-de
-ms.lasthandoff: 06/20/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 # <a name="create-an-azure-function-that-connects-to-an-azure-cosmos-db"></a>Erstellen einer Azure-Funktion, die eine Verbindung mit Azure Cosmos DB herstellt
@@ -52,11 +52,11 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 | Befehl | Hinweise |
 |---|---|
 | [az login](https://docs.microsoft.com/cli/azure/#login) | Anmelden bei Azure. |
-| [az group create](https://docs.microsoft.com/cli/azure/group#create) | Erstellen Sie eine Ressourcengruppe mit einem Speicherort. |
+| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | Erstellen Sie eine Ressourcengruppe mit einem Speicherort. |
 | [az storage account create](https://docs.microsoft.com/cli/azure/storage/account) | Erstellen Sie ein Speicherkonto. |
-| [az functionapp create](https://docs.microsoft.com/cli/azure/functionapp#create) | Erstellen Sie eine neue Funktionen-App. |
-| [az documentdb create](https://docs.microsoft.com/cli/azure/documentdb#create) | Erstellen Sie eine DocumentDB-Datenbank. |
-| [az group delete](https://docs.microsoft.com/cli/azure/group#delete) | Bereinigen |
+| [az functionapp create](https://docs.microsoft.com/cli/azure/functionapp#az_functionapp_create) | Erstellen Sie eine neue Funktionen-App. |
+| [az documentdb create](https://docs.microsoft.com/cli/azure/documentdb#az_documentdb_create) | Erstellen Sie eine DocumentDB-Datenbank. |
+| [az group delete](https://docs.microsoft.com/cli/azure/group#az_group_delete) | Bereinigen |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

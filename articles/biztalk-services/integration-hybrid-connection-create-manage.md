@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2016
 ms.author: ccompy
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
-ms.openlocfilehash: fceb6b0671e0f77c1f8f92bbb49c986fda3660ea
+ms.translationtype: HT
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: b1f22104d530315318685fa4896b710b003ac3cc
 ms.contentlocale: de-de
-ms.lasthandoff: 06/03/2017
-
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="create-and-manage-hybrid-connections"></a>Erstellen und Verwalten von Hybridverbindungen
@@ -52,7 +51,7 @@ In diesem Thema werden diese Schritte aufgeführt.
 ## <a name="CreateHybridConnection"></a>Erstellen einer Hybridverbindung
 Eine Hybridverbindung kann im Azure-Portal anhand von Web-Apps **oder** BizTalk Services erstellt werden. 
 
-**Informationen zum Erstellen von Hybridverbindungen mit Web-Apps**finden Sie unter [Verbinden von Azure-Web-Apps mit einer lokalen Ressource](../app-service-web/web-sites-hybrid-connection-get-started.md). Sie können auch in Ihrer Web-App den Hybrid Connection Manager (HCM) installieren, was die bevorzugte Vorgehensweise ist. 
+<!-- **To create Hybrid Connections using Web Apps**, see [Connect Azure Web Apps to an On-Premises Resource](../app-service-web/web-sites-hybrid-connection-get-started.md). You can also install the Hybrid Connection Manager (HCM) from your web app, which is the preferred method.  -->
 
 **So erstellen Sie Hybridverbindungen in BizTalk Services**:
 
@@ -76,7 +75,8 @@ Eine Hybridverbindung kann im Azure-Portal anhand von Web-Apps **oder** BizTalk 
 * Jede Hybridverbindung wird mit einem Paar von Verbindungszeichenfolgen erstellt: Anwendungsschlüsseln, die SENDEN, und lokalen Schlüsseln, die LAUSCHEN. Jedes Paar hat einen primären und einen sekundären Schlüssel. 
 
 ## <a name="LinkWebSite"></a>Verknüpfen Ihrer Azure App Service-Web-App oder Mobile App
-Um eine Web-App oder Mobile App mit einer vorhandenen Hybridverbindung zu verknüpfen, wählen Sie auf dem Blatt „Hybridverbindungen“ die Option **Vorhandene Hybridverbindung verwenden** aus. Siehe [Zugreifen auf lokale Ressourcen über Hybridverbindungen in Azure App Service](../app-service-web/web-sites-hybrid-connection-get-started.md).
+Um eine Web-App oder Mobile App mit einer vorhandenen Hybridverbindung zu verknüpfen, wählen Sie auf dem Blatt „Hybridverbindungen“ die Option **Vorhandene Hybridverbindung verwenden** aus. 
+<!-- See [Access on-premises resources using hybrid connections in Azure App Service](../app-service-web/web-sites-hybrid-connection-get-started.md). -->
 
 ## <a name="InstallHCM"></a>Lokale Installation des Hybrid Connection Manager
 Nachdem eine Hybridverbindung erstellt wurde, installieren Sie den Hybrid Connection Manager auf der lokalen Ressource. Er kann aus Azure-Web-Apps oder BizTalk Service heruntergeladen werden. Schritte für BizTalk Services: 
@@ -145,8 +145,8 @@ Zum Verwalten der Hybridverbindungen haben Sie folgende Möglichkeiten:
 Nach dem Kopieren können Sie den Gruppenrichtlinien-Editor verwenden, um die Richtlinie zu ändern.
 
 ## <a name="next"></a>Weiter
-[Verbinden von Azure-Web-Apps mit einer lokalen Ressource](../app-service-web/web-sites-hybrid-connection-get-started.md)  
-[Verbinden mit einem lokalen SQL Server von einer Azure-Web-App aus](../app-service-web/web-sites-hybrid-connection-connect-on-premises-sql-server.md)   
+<!-- [Connect Azure Web Apps to an On-Premises Resource](../app-service-web/web-sites-hybrid-connection-get-started.md)  
+[Connect to on-premises SQL Server from Azure Web Apps](../app-service-web/web-sites-hybrid-connection-connect-on-premises-sql-server.md)    -->
 [Übersicht über Hybridverbindungen](integration-hybrid-connection-overview.md)
 
 ## <a name="see-also"></a>Weitere Informationen

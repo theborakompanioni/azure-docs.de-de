@@ -16,10 +16,10 @@ ms.date: 6/7/2017
 ms.author: mlearned
 ms.custom: Jenkins
 ms.translationtype: HT
-ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
-ms.openlocfilehash: 5ca8338d4bf343f08fe70081cff755fa76a126a9
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: a1f5329e4e33ae20541e2fdaa09f4609296bddd5
 ms.contentlocale: de-de
-ms.lasthandoff: 08/04/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 
@@ -184,7 +184,7 @@ Nun wissen Sie, wie Sie die Azure CLI in Ihrer Jenkins-Pipeline verwenden, und k
 
 Web-App unter Linux unterstützt eine andere Möglichkeit der Bereitstellung, und zwar die Verwendung von Docker. Dafür müssen Sie eine Dockerfile-Datei bereitstellen, die Ihre Web-App mit Dienstlaufzeit in ein Docker-Image verpackt. Das Plug-In erstellt dann das Image, übermittelt es per Push an eine Docker-Registrierung und stellt das Image an Ihre Web-App bereit.
 
-* Befolgen Sie die [hier](/azure/app-service-web/app-service-linux-how-to-create-web-app) aufgeführten Schritte, um eine Azure-Web-App zu erstellen, die unter Linux ausgeführt wird.
+* Befolgen Sie die [hier](../app-service/containers/quickstart-nodejs.md) aufgeführten Schritte, um eine Azure-Web-App zu erstellen, die unter Linux ausgeführt wird.
 * Installieren Sie Docker auf Ihrer Jenkins-Instanz anhand der Anweisungen in diesem [Artikel](https://docs.docker.com/engine/installation/linux/ubuntu/).
 * Erstellen Sie eine Containerregistrierung im Azure-Portal, indem Sie die [hier](/azure/container-registry/container-registry-get-started-azure-cli) aufgeführten Schritte befolgen.
 * Bearbeiten Sie im Repository [Simple Java Web App for Azure](https://github.com/azure-devops/javawebappsample), das Sie verzweigt haben, die **Jenkinsfile2**-Datei:
