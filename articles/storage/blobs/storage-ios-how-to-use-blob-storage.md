@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/11/2017
 ms.author: michaelhauss
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: b5f43156d46b1ab9dd10ff5a93427270c1b839ca
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: f238804e6031fcf3f194695a06bf5b88733a27b9
 ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 # <a name="how-to-use-blob-storage-from-ios"></a>Verwenden des Blobspeichers mit iOS
@@ -223,7 +223,7 @@ Das folgende Beispiel zeigt, wie alle Blobs in einem Container aufgelistet werde
 
 * **ContinuationToken** : Das Fortsetzungstoken gibt an, wo der Auflistungsvorgang beginnen soll. Wenn kein Token angegeben wird, listet es Blobs vom Anfang auf. Es kann eine beliebige Anzahl von Blobs aufgeführt werden, von 0 (null) bis zu einem festgelegten Maximum. Auch wenn diese Methode keine Ergebnisse zurückgibt, wenn `results.continuationToken` nicht Null ist, gibt es möglicherweise mehr Blobs für den Dienst, die nicht aufgelistet wurden.
 * **prefix** – Sie können das Präfix angeben, das für die Blobliste verwendet werden soll. Nur Blobs, die mit diesem Präfix beginnen, werden aufgelistet.
-* **useFlatBlobListing** – Wie im Abschnitt [Benennen von Containern und Blobs und verweisen auf diese](#naming-and-referencing-containers-and-blobs) erwähnt, können Sie eine virtuelle Hierarchie durch Benennen von Blobs mit Pfadinformationen erstellen, selbst wenn der Blob-Dienst ein flaches Speicherschema ist. Allerdings wird derzeit die nicht-flache Auflistung nicht unterstützt. Diese Funktion ist in Kürze verfügbar. Bis dahin sollte der folgende Wert verwendet werden: **JA**.
+* **useFlatBlobListing** – Wie im Abschnitt [Benennen von Containern und Blobs und verweisen auf diese](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata) erwähnt, können Sie eine virtuelle Hierarchie durch Benennen von Blobs mit Pfadinformationen erstellen, selbst wenn der Blob-Dienst ein flaches Speicherschema ist. Allerdings wird derzeit die nicht-flache Auflistung nicht unterstützt. Diese Funktion ist in Kürze verfügbar. Bis dahin sollte der folgende Wert verwendet werden: **JA**.
 * **blobListingDetails** – Sie können angeben, welche Elemente beim Auflisten der Blobs einbezogen werden sollen.
   * _AZSBlobListingDetailsNone_: Nur zugesicherte Blobs auflisten und keine Blobmetadaten zurückgeben.
   * _AZSBlobListingDetailsSnapshots_: Zugesicherte Blobs und Blobmomentaufnahmen auflisten.
