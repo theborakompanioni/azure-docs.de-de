@@ -145,8 +145,6 @@ Zum Verwalten der Hybridverbindungen haben Sie folgende Möglichkeiten:
 Nach dem Kopieren können Sie den Gruppenrichtlinien-Editor verwenden, um die Richtlinie zu ändern.
 
 ## <a name="next"></a>Weiter
-<!-- [Connect Azure Web Apps to an On-Premises Resource](../app-service-web/web-sites-hybrid-connection-get-started.md)  
-[Connect to on-premises SQL Server from Azure Web Apps](../app-service-web/web-sites-hybrid-connection-connect-on-premises-sql-server.md)    -->
 [Übersicht über Hybridverbindungen](integration-hybrid-connection-overview.md)
 
 ## <a name="see-also"></a>Weitere Informationen

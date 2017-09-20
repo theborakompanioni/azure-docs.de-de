@@ -193,9 +193,9 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![SAML-Authentifizierungseinstellungen](./media/active-directory-saas-iqualify-tutorial/setting4.png)
 
-    a. Fügen Sie im Feld **SAML SINGLE SIGN-ON SERVICE URL** (URL für den SAML-SSO-Dienst) den Wert der URL für den SAML-SSO-Dienst**** ein, den Sie im Konfigurationsfenster der Azure AD-Anwendung kopiert haben.
+    a. Fügen Sie im Feld **SAML SINGLE SIGN-ON SERVICE URL** (URL für den SAML-SSO-Dienst) den **Wert der URL für den SAML-SSO-Dienst** ein, den Sie im Konfigurationsfenster der Azure AD-Anwendung kopiert haben.
     
-    b. Fügen Sie im Feld **SAML LOGOUT URL** (SAML-Abmelde-URL) den Wert für die Abmelde-URL**** ein, den Sie im Konfigurationsfenster der Azure AD-Anwendung kopiert haben.
+    b. Fügen Sie im Feld **SAML LOGOUT URL** (SAML-Abmelde-URL) den **Wert für die Abmelde-URL** ein, den Sie im Konfigurationsfenster der Azure AD-Anwendung kopiert haben.
     
     c. Öffnen Sie die heruntergeladene Zertifikatsdatei im Editor, kopieren Sie den Inhalt, und fügen Sie ihn anschließend in das Feld **ÖFFENTLICHES ZERTIFIKAT** ein.
     

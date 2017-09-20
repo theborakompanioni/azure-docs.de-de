@@ -12,7 +12,7 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/13/2017
+ms.date: 05/09/2017
 ms.author: yurid
 ms.translationtype: Human Translation
 ms.sourcegitcommit: f41fbee742daf2107b57caa528e53537018c88c6
@@ -31,7 +31,7 @@ Auf Power BI-Berichte können Sie auch über die Azure Security Center-Dashboard
 
 1. Klicken Sie auf dem Dashboard von **Azure Security Center** auf die Schaltfläche **Power BI**.
 
-    ![Mithilfe von Power BI mit Azure Security Center verbinden](./media/security-center-powerbi/security-center-powerbi-fig13.png)
+    ![Mithilfe von Power BI mit Azure Security Center verbinden](./media/security-center-powerbi/security-center-powerbi-fig1-1-newUI-2017.png)
 2. Das Blatt **Power BI** wird auf der rechten Seite wie unten dargestellt geöffnet:
 
     ![Mithilfe von Power BI mit Azure Security Center verbinden](./media/security-center-powerbi/security-center-powerbi-fig1-new11-2017.png)

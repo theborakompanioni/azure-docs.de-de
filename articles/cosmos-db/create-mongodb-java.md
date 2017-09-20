@@ -30,12 +30,12 @@ In diesem Schnellstart wird veranschaulicht, wie Sie ein Azure Cosmos DB-Konto, 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Bevor Sie dieses Beispiel ausführen können, müssen folgende Voraussetzungen erfüllt sein:
-   * JDK 1.7 und höher (Führen Sie `apt-get install default-jdk` aus, wenn Sie nicht über JDK verfügen)
-   * Maven (Führen Sie `apt-get install maven` aus, wenn Sie nicht über Maven verfügen)
+Bevor Sie dieses Beispiel ausführen können, müssen folgende Voraussetzungen erfüllt sein:
+* JDK 1.7 und höher (Führen Sie `apt-get install default-jdk` aus, wenn Sie nicht über JDK verfügen)
+* Maven (Führen Sie `apt-get install maven` aus, wenn Sie nicht über Maven verfügen)
 
-* [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-* [!INCLUDE [cosmos-db-emulator-mongodb](../../includes/cosmos-db-emulator-mongodb.md)]
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+[!INCLUDE [cosmos-db-emulator-mongodb](../../includes/cosmos-db-emulator-mongodb.md)]
 
 ## <a name="create-a-database-account"></a>Erstellen eines Datenbankkontos
 

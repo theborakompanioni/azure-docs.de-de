@@ -183,7 +183,7 @@
 ### [Bereitstellen per Download](media-services-deliver-asset-download.md)
 ### [Failoverstreamingszenario](media-services-implement-failover.md)
 
-## Wiedergeben
+## Nutzen
 ### [Wiedergeben von Medien mit vorhandenen Playern](media-services-playback-content-with-existing-players.md)
 ### [Wiedergeben von Medien mit Media Player](media-services-develop-video-players.md)
 ### Weitere Wiedergabeoptionen
