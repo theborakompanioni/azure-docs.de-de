@@ -7,16 +7,15 @@
 ## [Kompatible Drittanbietersoftware](active-directory-ds-compatible-software.md)
 
 # Erste Schritte
-## Azure-Portal (Vorschauversion)
-### [Aufgabe 1: Konfigurieren der Grundeinstellungen](active-directory-ds-getting-started.md)
-### [Aufgabe 2: Konfigurieren der Netzwerkeinstellungen](active-directory-ds-getting-started-network.md)
-### [Aufgabe 3: Konfigurieren der Administratorgruppe und Aktivieren von Azure AD Domain Services](active-directory-ds-getting-started-admingroup.md)
-### [Aufgabe 4: Aktualisieren der DNS-Einstellungen für das virtuelle Netzwerk](active-directory-ds-getting-started-dns.md)
-### [Aufgabe 5: Aktivieren der Kennwortsynchronisierung](active-directory-ds-getting-started-password-sync.md)
+## [Aufgabe 1: Konfigurieren der Grundeinstellungen](active-directory-ds-getting-started.md)
+## [Aufgabe 2: Konfigurieren der Netzwerkeinstellungen](active-directory-ds-getting-started-network.md)
+## [Aufgabe 3: Konfigurieren der Administratorgruppe und Aktivieren von Azure AD Domain Services](active-directory-ds-getting-started-admingroup.md)
+## [Aufgabe 4: Aktualisieren der DNS-Einstellungen für das virtuelle Netzwerk](active-directory-ds-getting-started-dns.md)
+## [Aufgabe 5: Aktivieren der Kennwortsynchronisierung](active-directory-ds-getting-started-password-sync.md)
 
 # Anleitung
 ## Beitreten zu einer verwalteten Domäne
-### [Verbinden einer Windows Server-VM](active-directory-ds-admin-guide-join-windows-vm.md)
+### [Verbinden einer Windows Server-VM](active-directory-ds-admin-guide-join-windows-vm-portal.md)
 ### [ mithilfe von PowerShell](active-directory-ds-admin-guide-join-windows-vm-classic-powershell.md)
 ### [Verbinden einer Linux-VM](active-directory-ds-admin-guide-join-rhel-linux-vm.md)
 ## Verwalten einer verwalteten Domäne

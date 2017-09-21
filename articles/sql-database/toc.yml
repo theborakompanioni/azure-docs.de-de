@@ -257,14 +257,6 @@
           href: sql-database-ssms-mfa-authentication-configure.md
     - name: Geschäftskontinuität
       items:
-        - name: Konfigurieren eines Tresors – Sicherungen
-          href: sql-database-long-term-backup-retention-configure.md
-        - name: Georeplikation – Portal
-          href: sql-database-geo-replication-portal.md
-        - name: Wiederherstellen einer einzelnen Tabelle
-          href: sql-database-cloud-migrate-restore-single-table-azure-backup.md
-    - name: Laden und Verschieben von Daten
-      items:
         - name: Laden von Daten mit BCP
           href: sql-database-load-from-csv-with-bcp.md
         - name: Laden von Daten mit ADF

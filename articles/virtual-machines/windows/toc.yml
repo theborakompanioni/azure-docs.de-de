@@ -131,6 +131,8 @@
           href: download-template.md
         - name: Azure-VM-Agent
           href: agent-user-guide.md
+        - name: Geplante Wartung
+          href: maintenance-notifications.md
         - name: Geplante Ereignisse
           href: scheduled-events.md
         - name: Überwachen von Metadaten

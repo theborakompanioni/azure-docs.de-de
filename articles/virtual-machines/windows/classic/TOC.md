@@ -3,7 +3,7 @@
 ## [Datenträger und VHDs](../about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ## [Virtuelle Netzwerke](../../../virtual-network/virtual-networks-overview.md)
 ## [Häufig gestellte Fragen](faq.md)
-## [Azure App Service, Azure Virtual Machines, Service Fabric und Azure Cloud Services im Vergleich](../../../app-service-web/choose-web-site-cloud-service-vm.md)
+## [Azure App Service, Azure Virtual Machines, Service Fabric und Azure Cloud Services im Vergleich](../../../app-service/choose-web-site-cloud-service-vm.md)
 ## [Container](../../virtual-machines-windows-containers.md)
 
 # Erste Schritte
