@@ -1,5 +1,4 @@
 
-<!-- A-series, Av2-series, D-series, Dv2-series, DS-series*, DSv2-series* -->
 
 - Die virtuellen Computer der A- und der Av2-Serie können für viele verschiedene Hardwaretypen und Prozessoren bereitgestellt werden. Die Größe ist basierend auf der Hardware gedrosselt, um eine konsistente Prozessorleistung für die ausgeführte Instanz zu ermöglichen – unabhängig von der Hardware, die für die Bereitstellung gewählt wird. Fragen Sie die virtuelle Hardware über die virtuelle Maschine ab, um die physische Hardware zu ermitteln, auf der diese Größe bereitgestellt wird.
 
@@ -8,6 +7,29 @@
 - Die Dv2-Serie, eine Nachfolgerin der ursprünglichen D-Serie, hat eine leistungsfähigere CPU. Die CPU der Dv2-Serie ist ca. 35 % schneller als die CPU der D-Serie. Sie basiert auf der neuesten Generation des 2,4-GHz-Intel Xeon® E5-2673 v3-Prozessors (Haswell) und kann mit der Intel Turbo Boost Technology 2.0 bis auf 3,1 GHz erhöht werden. Die Dv2-Serie hat die gleichen Arbeitsspeicher- und Datenträgerkonfigurationen wie die D-Serie.
 
 - Die Größen des Basic-Tarifs sind hauptsächlich für Entwicklungsworkloads und andere Anwendungen bestimmt, für die kein Lastenausgleich, keine automatische Skalierung und keine speicherintensiven virtuellen Computer erforderlich sind. Informationen zu VM-Größen, die für Produktionsanwendungen besser geeignet sind, finden Sie unter (Größen für virtuelle Computer)[virtual-machines-size-specs.md], und Informationen zu VM-Preisen finden Sie unter [Virtuelle Linux-Computer – Preise](https://azure.microsoft.com/pricing/details/virtual-machines/).
+
+## <a name="b-series-preview"></a>B-Serie (Vorschauversion)
+
+> [!NOTE] 
+> Die Vorschauen werden Ihnen zur Verfügung gestellt, wenn Sie die folgenden Nutzungsbedingungen akzeptieren. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Diese Vorschauversion ist auf folgende Regionen beschränkt:
+> - USA, Westen 2
+> - USA, Osten
+> - Europa, Westen
+> - Asien-Pazifik, Südosten
+
+Virtuelle Burst-fähige Computer der B-Serie sind ideal für Workloads geeignet, die nicht kontinuierlich die volle Leistung der CPU benötigen. Hierzu zählen beispielsweise Webserver, kleine Datenbanken sowie Entwicklungs- und Testumgebungen. Diese Workloads haben in der Regel kurzfristige Leistungsanforderungen. Mit der B-Serie können diese Kunden eine VM-Größe mit einer preisgünstigen Grundleistung erwerben. Für die VM-Instanz können dann Gutschriften erzielt werden, wenn für die VM weniger als die Grundleistung genutzt wird. Wenn für den virtuellen Computer Guthaben gebildet wurde, kann Leistung genutzt werden, die über die Grundleistung der VM hinausgeht. Dabei können bis zu 100 Prozent der CPU verwendet werden, wenn Ihre Anwendung mehr CPU-Leistung benötigt.
+
+
+| Größe             | vCPU  | Arbeitsspeicher: GiB | Lokales SSD: GiB | Grundleistung eines Kerns | Guthabenbildung/Stunde | Maximalguthaben | Max. Anzahl Datenträger | Maximale Leistung lokaler Datenträger: IOPS/MBit/s | Maximale Leistung von Datenträgern ohne Cache: IOPS/MBit/s | Maximale Anzahl NICs |          
+|---------------|-------------|----------------|----------------------------|-----------------------|--------------------|----------------|----------------------------------------|-------------------------------------------|-------------------------------------------|----------|
+| Standard_B1s  | 1           | 1              | 4                          | 10%                   | 6                  | 144            | 2                                      | 400/10                                  | 320/10                                  | 2  |
+| Standard_B1ms | 1           | 2              | 4                          | 20%                   | 12                 | 288            | 2                                      | 800/10                                  | 640/10                                  | 2  |
+| Standard_B2s  | 2           | 4              | 8                          | 40%                   | 24                 | 576            | 4                                      | 1600/15                                 | 1280/15                                 | 3  |
+| Standard_B2ms | 2           | 8              | 16                         | 60 %                   | 36                 | 864            | 4                                      | 2400/22,5                               | 1920/22,5                               | 3  |
+| Standard_B4ms | 4           | 16             | 32                         | 90%                   | 54                 | 1296           | 8                                      | 3600/35                                 | 2880/35                                 | 4  |
+| Standard_B8ms | 8           | 32             | 64                         | 135%                  | 81                 | 1944           | 16                                     | 4320/50                                 | 4320/50                                 | 4  |
+
 
 ## <a name="dsv3-series"></a>Dsv3-Serie
 
@@ -22,6 +44,8 @@ Die Größen der Dsv3-Serie basieren auf dem Prozessor vom Typ 2,3 GHz Intel XEO
 | Standard_D4s_v3  | 4      | 16          | 32             | 8              | 8.000/64 (100)                                                      | 6.400/96                                | 2/moderat                                   |
 | Standard_D8s_v3  | 8      | 32          | 64             | 16             | 16.000/128 (200)                                                    | 12.800/192                              | 4/hoch                                       |
 | Standard_D16s_v3 | 16     | 64          | 128            | 32             | 32.000/256 (400)                                                    | 25.600/384                              | 8/hoch                                       |
+| Standard_D32s_v3 | 32     | 128          | 256            | 32             | 64.000/512 (800)                                                    | 51.200/768                              | 8/äußerst hoch                                       |
+| Standard_D64s_v3 | 64     | 256          | 512            | 32             | 128.000/1024 (1600)                                                    | 80.000/1.200                              | 8/äußerst hoch                                       |
 
 
 ## <a name="dv3-series"></a>Dv3-Serie
@@ -39,6 +63,8 @@ Datenträgerspeicher wird separat zu virtuellen Computern abgerechnet. Verwenden
 | Standard_D4_v3  | 4         | 16          | 100            | 8              | 6000/93/46                                               | 2/moderat                 |
 | Standard_D8_v3  | 8         | 32          | 200            | 16             | 12000/187/93                                             | 4/hoch                     |
 | Standard_D16_v3 | 16        | 64          | 400            | 32             | 24000/375/187                                            | 8/hoch                     |
+| Standard_D32_v3 | 32        | 128          | 800            | 32             | 48000/750/375                                            | 8/äußerst hoch                     |
+| Standard_D64_v3 | 64        | 256          | 1600            | 32             | 96000/1000/500                                            | 8/äußerst hoch                     |
 
 
 ## <a name="dsv2-series"></a>DSv2-Serie
