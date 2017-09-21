@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 09/08/2017
 ms.author: genli
 ms.translationtype: HT
-ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
-ms.openlocfilehash: 0c9825f11733127a547e06e159172a08cef736eb
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 311a1af35b7fecb5f0d4fac7f38af705c945d714
 ms.contentlocale: de-de
-ms.lasthandoff: 08/31/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 # <a name="understand-azure-spending-limit-and-how-to-remove-it"></a>Grundlegendes zum Azure-Ausgabenlimit und zu dessen Entfernung
@@ -69,7 +69,11 @@ Das Ausgabenlimit könnte verhindern, dass Sie bestimmte Drittanbieterdienste un
 
 ### <a name="how-do-i-turn-on-the-spending-limit-after-removing-it"></a>Wie aktiviere ich das Ausgabenlimit nach dem Entfernen?
 
-Das Ausgabenlimit wird stets nur automatisch aktiviert. Leider gibt es keine Möglichkeit, dass Sie es selbst aktivieren, nachdem es entfernt wurde. Stellen Sie sicher, dass Sie die Option **Ausgabenlimit für den aktuellen Abrechnungszeitraum deaktivieren** auswählen, wenn Sie besorgt sind, dass das Limit nicht wieder aktiviert wird.
+Dieses Feature ist nur verfügbar, wenn das Ausgabenlimit auf unbestimmte Zeit entfernt wurde. Aktivieren Sie es, damit es zu Beginn des nächsten Abrechnungszeitraums automatisch gestartet wird.
+
+1. Melden Sie sich beim [Kontocenter](https://account.windowsazure.com/Subscriptions) an.
+1. Klicken Sie auf das gelbe Banner, um die Option „Ausgabenlimit“ zu ändern.
+1. Wählen Sie **Ausgabenlimit im nächsten Abrechnungszeitraum aktivieren \<Startdatum des Abrechnungszeitraum\>**.
 
 ### <a name="how-do-i-set-a-custom-spending-limit"></a>Wie kann ich ein benutzerdefiniertes Ausgabenlimit festlegen?
 

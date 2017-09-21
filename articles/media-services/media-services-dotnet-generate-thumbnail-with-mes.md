@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/14/2017
+ms.date: 09/08/2017
 ms.author: juliako
 ms.translationtype: HT
-ms.sourcegitcommit: c999eb5d6b8e191d4268f44d10fb23ab951804e7
-ms.openlocfilehash: f28c37b777bbd321c1c7ee8e7a18d92492a78d3e
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 7b8732a06e54f7828418cba0c0d172e34f1f4ef7
 ms.contentlocale: de-de
-ms.lasthandoff: 07/17/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 # <a name="how-to-generate-thumbnails-using-media-encoder-standard-with-net"></a>Generieren von Miniaturansichten mithilfe von Media Encoder Standard mit .NET
@@ -28,10 +28,10 @@ Sie können Media Encoder Standard verwenden, um eine oder mehrere Miniaturansic
 Weitere Informationen zu den Elementen, die in Beispielvoreinstellungen verwendet werden, finden Sie unter [Media Encoder Standard-Schema](media-services-mes-schema.md).
 
 Lesen Sie unbedingt den Abschnitt [Überlegungen](media-services-dotnet-generate-thumbnail-with-mes.md#considerations) .
+    
+## <a name="example-of-a-single-png-file-preset"></a>Beispiel für die Voreinstellung „Einzelne PNG-Datei“
 
-## <a name="example--single-png-file"></a>Beispiel: Einzelne PNG-Datei
-
-Die folgende JSON und XML-Voreinstellung kann verwendet werden, um eine einzelne PNG-Ausgabedatei aus den ersten Sekunden der Eingangsvideodaten zu erzeugen, indem der Encoder einen Versuch mit größter Mühe zum Suchen eines „interessanten“ Frames macht. Beachten Sie, dass die Ausgabebilddimensionen auf 100% festgelegt wurden, d.h. sie entsprechen den Dimensionen der Eingangsvideodaten. Beachten Sie außerdem, wie erforderlich ist, dass die Einstellung „Format“ in „Ausgaben“ mit der Verwendung von „PngLayers“ im Abschnitt „Codecs“ übereinstimmt. 
+Die folgende JSON- und XML-Voreinstellung kann verwendet werden, um eine einzelne PNG-Ausgabedatei von den ersten Sekunden der Eingangsvideodaten zu erzeugen, indem der Encoder einen Versuch zum Suchen eines „interessanten“ Frames macht. Beachten Sie, dass die Ausgabebilddimensionen auf 100% festgelegt wurden, d.h. sie entsprechen den Dimensionen der Eingangsvideodaten. Beachten Sie außerdem, dass die Einstellung „Format“ unter „Ausgaben“ erforderlich ist, damit die Verwendung von „PngLayers“ im Abschnitt „Codecs“ übereinstimmt. 
 
 ### <a name="json-preset"></a>JSON-Voreinstellung
 
@@ -81,7 +81,7 @@ Die folgende JSON und XML-Voreinstellung kann verwendet werden, um eine einzelne
       </Outputs>
     </Preset>
 
-## <a name="example--a-series-of-jpeg-images"></a>Beispiel: Eine Reihe von JPEG-Bildern
+## <a name="example-of-a-series-of-jpeg-images-preset"></a>Beispiel für die Voreinstellung „Eine Reihe von JPEG-Bildern“
 
 Die folgende JSON und XML-Voreinstellung kann verwendet werden, um einen Satz von 10 Bildern an den Zeitstempeln 5%, 15%,..., 95% der Eingabezeitachse zu erstellen, wobei die Bildgröße auf ein Viertel der Eingangsvideodaten festgelegt ist.
 
@@ -100,8 +100,8 @@ Die folgende JSON und XML-Voreinstellung kann verwendet werden, um einen Satz vo
             }
           ],
           "Start": "5%",
-          "Step": "1",
-          "Range": "1",
+          "Step": "10%",
+          "Range": "96%",
           "Type": "JpgImage"
         }
       ],
@@ -137,9 +137,9 @@ Die folgende JSON und XML-Voreinstellung kann verwendet werden, um einen Satz vo
       </Outputs>
     </Preset>
 
-## <a name="example--one-image-at-a-specific-timestamp"></a>Beispiel: Ein Abbild eines bestimmten Zeitstempels
+## <a name="example-of-a-one-image-at-a-specific-timestamp-preset"></a>Beispiel für die Voreinstellung „Ein Bild zu einem bestimmten Zeitstempel“
 
-Die folgende JSON und XML-Voreinstellung kann verwendet werden, um ein einzelnes JPEG-Bild an der 30-Sekunden-Marke der Eingangsvideodaten zu erzeugen. Diese Voreinstellung geht von einer Eingangsvideodatenlänge von mehr als 30 Sekunden aus (andernfalls schlägt der Auftrag fehl).
+Die folgende JSON und XML-Voreinstellung kann verwendet werden, um ein einzelnes JPEG-Bild an der 30-Sekunden-Marke der Eingangsvideodaten zu erzeugen. Diese Voreinstellung geht von einer Eingangsvideodatenlänge von mehr als 30 Sekunden aus (andernfalls tritt beim Auftrag ein Fehler auf).
 
 ### <a name="json-preset"></a>JSON-Voreinstellung
 
@@ -176,7 +176,7 @@ Die folgende JSON und XML-Voreinstellung kann verwendet werden, um ein einzelnes
     <?xml version="1.0" encoding="utf-16"?>
     <Preset xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="http://www.windowsazure.com/media/encoding/Preset/2014/03">
       <Encoding>
-        <JpgImage Start="00:00:30" Step="00:00:02" Range="00:00:01">
+        <JpgImage Start="00:00:30" Step="00:00:01" Range="00:00:01">
           <JpgLayers>
             <JpgLayer>
               <Width>25%</Width>
@@ -192,142 +192,82 @@ Die folgende JSON und XML-Voreinstellung kann verwendet werden, um ein einzelnes
         </Output>
       </Outputs>
     </Preset>
+    
+## <a name="example-of-a-thumbnails-at-different-resolutions-preset"></a>Beispiel für die Voreinstellung „Miniaturansichten in unterschiedlichen Auflösungen“
 
-## <a id="code_sample"></a>Beispiel: Codieren eines Videos und Generieren der Miniaturansicht
+Mithilfe der folgenden Voreinstellung können Miniaturansichten in unterschiedlichen Auflösungen in einer Aufgabe generiert werden. In dem Beispiel generiert der Encoder bei den Positionen 5 % bis 95 % (in 10 %-Schritten, z.B. 5 %, 15 % etc.) der Eingabezeitachse zwei Bilder – ein Bild mit 100 % der Auflösung des Eingangsvideos und ein weiteres Bild mit einer Auflösung von 50 %.
 
-Im folgenden Codebeispiel wird das Media Services-.NET-SDK verwendet, um die folgenden Aufgaben auszuführen:
+Beachten Sie die Verwendung des Makros {Resolution} im Element „FileName“. Dieses gibt an, dass der Encoder die Breite und Höhe verwendet, die Sie beim Generieren des Dateinamens der Ausgabebilder im Abschnitt „Codierung“ der Voreinstellung angegeben haben. Dies hilft Ihnen zudem dabei, mühelos die verschiedenen Bildern zu unterscheiden.
 
-* Erstellen eines Codierungsauftrags.
-* Abrufen eines Verweises auf den Media Encoder Standard-Encoder
-* Laden Sie die [XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml)- oder [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json)-Voreinstellung, die die Codierungsvoreinstellung sowie zum Generieren von Miniaturansichten erforderliche Informationen enthält. Sie können diese [XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml)- oder [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json)-Voreinstellung in einer Datei speichern und die Datei mithilfe des folgenden Codes laden.
-  
-        // Load the XML (or JSON) from the local file.
-        string configuration = File.ReadAllText(fileName);  
-* Fügen Sie eine einzelne Codierungsaufgabe zum Auftrag hinzu. 
-* Geben Sie das zu codierende Asset an.
-* Erstellen Sie ein Ausgabeasset, das das codierte Asset enthalten soll.
-* Fügen Sie einen Ereignishandler hinzu, um den Auftragsstatus zu überprüfen.
-* Übermitteln des Auftrags.
+### <a name="json-preset"></a>JSON-Voreinstellung
 
-Unter dem Thema [Media Services-Entwicklung mit .NET](media-services-dotnet-how-to-use.md) erfahren Sie, wie Sie Ihre Entwicklungsumgebung einrichten.
-
-        using System;
-        using System.Configuration;
-        using System.IO;
-        using System.Linq;
-        using Microsoft.WindowsAzure.MediaServices.Client;
-        using System.Threading;
-
-        namespace EncodeAndGenerateThumbnails
+    {
+      "Version": 1.0,
+      "Codecs": [
         {
-        class Program
+          "JpgLayers": [
         {
-            // Read values from the App.config file.
-            private static readonly string _AADTenantDomain =
-            ConfigurationManager.AppSettings["AADTenantDomain"];
-            private static readonly string _RESTAPIEndpoint =
-            ConfigurationManager.AppSettings["MediaServiceRESTAPIEndpoint"];
-
-            private static CloudMediaContext _context = null;
-
-            private static readonly string _mediaFiles =
-            Path.GetFullPath(@"../..\Media");
-
-            private static readonly string _singleMP4File =
-            Path.Combine(_mediaFiles, @"BigBuckBunny.mp4");
-
-            static void Main(string[] args)
-            {
-            var tokenCredentials = new AzureAdTokenCredentials(_AADTenantDomain, AzureEnvironments.AzureCloudEnvironment);
-            var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
-
-            _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
-
-            // Get an uploaded asset.
-            var asset = _context.Assets.FirstOrDefault();
-
-            // Encode and generate the thumbnails.
-            EncodeToAdaptiveBitrateMP4Set(asset);
-
-            Console.ReadLine();
-            }
-
-            static public IAsset EncodeToAdaptiveBitrateMP4Set(IAsset asset)
-            {
-            // Declare a new job.
-            IJob job = _context.Jobs.Create("Media Encoder Standard Job");
-            // Get a media processor reference, and pass to it the name of the 
-            // processor to use for the specific task.
-            IMediaProcessor processor = GetLatestMediaProcessorByName("Media Encoder Standard");
-
-            // Load the XML (or JSON) from the local file.
-            string configuration = File.ReadAllText("ThumbnailPreset_JSON.json");
-
-            // Create a task
-            ITask task = job.Tasks.AddNew("Media Encoder Standard encoding task",
-                processor,
-                configuration,
-                TaskOptions.None);
-
-            // Specify the input asset to be encoded.
-            task.InputAssets.Add(asset);
-            // Add an output asset to contain the results of the job. 
-            // This output is specified as AssetCreationOptions.None, which 
-            // means the output asset is not encrypted. 
-            task.OutputAssets.AddNew("Output asset",
-                AssetCreationOptions.None);
-
-            job.StateChanged += new EventHandler<JobStateChangedEventArgs>(JobStateChanged);
-            job.Submit();
-            job.GetExecutionProgressTask(CancellationToken.None).Wait();
-
-            return job.OutputMediaAssets[0];
-            }
-
-            private static void JobStateChanged(object sender, JobStateChangedEventArgs e)
-            {
-            Console.WriteLine("Job state changed event:");
-            Console.WriteLine("  Previous state: " + e.PreviousState);
-            Console.WriteLine("  Current state: " + e.CurrentState);
-            switch (e.CurrentState)
-            {
-                case JobState.Finished:
-                Console.WriteLine();
-                Console.WriteLine("Job is finished. Please wait while local tasks or downloads complete...");
-                break;
-                case JobState.Canceling:
-                case JobState.Queued:
-                case JobState.Scheduled:
-                case JobState.Processing:
-                Console.WriteLine("Please wait...\n");
-                break;
-                case JobState.Canceled:
-                case JobState.Error:
-
-                // Cast sender as a job.
-                IJob job = (IJob)sender;
-
-                // Display or log error details as needed.
-                break;
-                default:
-                break;
-            }
-            }
-
-            private static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
-            {
-            var processor = _context.MediaProcessors.Where(p => p.Name == mediaProcessorName).
-            ToList().OrderBy(p => new Version(p.Version)).LastOrDefault();
-
-            if (processor == null)
-                throw new ArgumentException(string.Format("Unknown media processor", mediaProcessorName));
-
-            return processor;
-            }
-        }
+          "Quality": 90,
+          "Type": "JpgLayer",
+          "Width": "100%",
+          "Height": "100%"
+        },
+        {
+          "Quality": 90,
+          "Type": "JpgLayer",
+          "Width": "50%",
+          "Height": "50%"
         }
 
-## <a id="json"></a>JSON-Voreinstellung für Miniaturansichten
+          ],
+          "Start": "5%",
+          "Step": "10%",
+          "Range": "96%",
+          "Type": "JpgImage"
+        }
+      ],
+      "Outputs": [
+        {
+          "FileName": "{Basename}_{Resolution}_{Index}{Extension}",
+          "Format": {
+        "Type": "JpgFormat"
+          }
+        }
+      ]
+    }
+
+### <a name="xml-preset"></a>XML-Voreinstellung
+
+    <?xml version="1.0" encoding="utf-8"?>
+    <Preset xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="http://www.windowsazure.com/media/encoding/Preset/2014/03">
+    <Encoding>
+    <JpgImage Start="5%" Step="10%" Range="96%"><JpgImage Start="00:00:01" Step="00:00:15">
+      <JpgLayers>
+       <JpgLayer>
+        <Width>100%</Width>
+        <Height>100%</Height>
+        <Quality>90</Quality>
+       </JpgLayer>
+       <JpgLayer>
+        <Width>50%</Width>
+        <Height>50%</Height>
+        <Quality>90</Quality>
+       </JpgLayer>
+      </JpgLayers>
+    </JpgImage>
+    </Encoding>
+    <Outputs>
+      <Output FileName="{Basename}_{Resolution}_{Index}{Extension}">
+        <JpgFormat/>
+      </Output>
+    </Outputs>
+    </Preset>
+    
+## <a name="example-of-generating-a-thumbnail-while-encoding"></a>Beispiel für das Generieren einer Miniaturansicht bei der Codierung
+
+In allen oben genannten Beispielen wurde erläutert, dass Sie eine Codierungsaufgabe, die nur Bilder erzeugt, übermitteln können. Jedoch ist die Video- bzw. Audiocodierung auch beim Generieren von Miniaturansichten möglich. Die folgende JSON- und XML-Voreinstellung weist **Media Encoder Standard** an, bei der Codierung eine Miniaturansicht zu generieren.
+
+### <a id="json"></a>JSON-Voreinstellung
 Informationen zum Schema finden Sie in [diesem](https://msdn.microsoft.com/library/mt269962.aspx) Thema.
 
     {
@@ -390,7 +330,7 @@ Informationen zum Schema finden Sie in [diesem](https://msdn.microsoft.com/libra
       ]
     }
 
-## <a id="xml"></a>XML-Voreinstellung für Miniaturansichten
+### <a id="xml"></a>XML-Voreinstellung
 Informationen zum Schema finden Sie in [diesem](https://msdn.microsoft.com/library/mt269962.aspx) Thema.
     
     <?xml version="1.0" encoding="utf-16"?>
@@ -441,7 +381,141 @@ Informationen zum Schema finden Sie in [diesem](https://msdn.microsoft.com/libra
           <JpgFormat />
         </Output>
       </Outputs>
-    </Preset>
+    </Preset>   
+
+## <a id="code_sample"></a>Codieren eines Videos und Generieren einer Miniaturansicht mit .NET
+
+Im folgenden Codebeispiel wird das Media Services-.NET-SDK verwendet, um die folgenden Aufgaben auszuführen:
+
+* Erstellen eines Codierungsauftrags.
+* Abrufen eines Verweises auf den Media Encoder Standard-Encoder
+* Laden Sie die [XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml)- oder [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json)-Voreinstellung, die die Codierungsvoreinstellung sowie zum Generieren von Miniaturansichten erforderliche Informationen enthält. Sie können diese [XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml)- oder [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json)-Voreinstellung in einer Datei speichern und die Datei mithilfe des folgenden Codes laden.
+  
+        // Load the XML (or JSON) from the local file.
+        string configuration = File.ReadAllText(fileName);  
+* Fügen Sie eine einzelne Codierungsaufgabe zum Auftrag hinzu. 
+* Geben Sie das zu codierende Asset an.
+* Erstellen Sie ein Ausgabeasset, das das codierte Asset enthalten soll.
+* Fügen Sie einen Ereignishandler hinzu, um den Auftragsstatus zu überprüfen.
+* Übermitteln des Auftrags.
+
+Unter dem Thema [Media Services-Entwicklung mit .NET](media-services-dotnet-how-to-use.md) erfahren Sie, wie Sie Ihre Entwicklungsumgebung einrichten.
+
+        using System;
+        using System.Configuration;
+        using System.IO;
+        using System.Linq;
+        using Microsoft.WindowsAzure.MediaServices.Client;
+        using System.Threading;
+
+        namespace EncodeAndGenerateThumbnails
+        {
+        class Program
+        {
+            // Read values from the App.config file.
+            private static readonly string _AADTenantDomain =
+            ConfigurationManager.AppSettings["AADTenantDomain"];
+            private static readonly string _RESTAPIEndpoint =
+            ConfigurationManager.AppSettings["MediaServiceRESTAPIEndpoint"];
+
+            private static CloudMediaContext _context = null;
+
+            private static readonly string _mediaFiles =
+            Path.GetFullPath(@"../..\Media");
+
+            private static readonly string _singleMP4File =
+            Path.Combine(_mediaFiles, @"BigBuckBunny.mp4");
+
+            static void Main(string[] args)
+            {
+            var tokenCredentials = new AzureAdTokenCredentials(_AADTenantDomain, AzureEnvironments.AzureCloudEnvironment);
+            var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
+
+            _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
+
+            // Get an uploaded asset.
+            var asset = _context.Assets.FirstOrDefault();
+
+            // Encode and generate the thumbnails.
+            EncodeToAdaptiveBitrateMP4Set(asset);
+
+            Console.ReadLine();
+            }
+
+            static public IAsset EncodeToAdaptiveBitrateMP4Set(IAsset asset)
+            {
+            // Declare a new job.
+            IJob job = _context.Jobs.Create("Media Encoder Standard Thumbnail Job");
+            // Get a media processor reference, and pass to it the name of the 
+            // processor to use for the specific task.
+            IMediaProcessor processor = GetLatestMediaProcessorByName("Media Encoder Standard");
+
+            // Load the XML (or JSON) from the local file.
+            string configuration = File.ReadAllText("ThumbnailPreset_JSON.json");
+
+            // Create a task
+            ITask task = job.Tasks.AddNew("Media Encoder Standard Thumbnail task",
+                processor,
+                configuration,
+                TaskOptions.None);
+
+            // Specify the input asset to be encoded.
+            task.InputAssets.Add(asset);
+            // Add an output asset to contain the results of the job. 
+            // This output is specified as AssetCreationOptions.None, which 
+            // means the output asset is not encrypted. 
+            task.OutputAssets.AddNew("Output asset",
+                AssetCreationOptions.None);
+
+            job.StateChanged += new EventHandler<JobStateChangedEventArgs>(JobStateChanged);
+            job.Submit();
+            job.GetExecutionProgressTask(CancellationToken.None).Wait();
+
+            return job.OutputMediaAssets[0];
+            }
+
+            private static void JobStateChanged(object sender, JobStateChangedEventArgs e)
+            {
+            Console.WriteLine("Job state changed event:");
+            Console.WriteLine("  Previous state: " + e.PreviousState);
+            Console.WriteLine("  Current state: " + e.CurrentState);
+            switch (e.CurrentState)
+            {
+                case JobState.Finished:
+                Console.WriteLine();
+                Console.WriteLine("Job is finished. Please wait while local tasks or downloads complete...");
+                break;
+                case JobState.Canceling:
+                case JobState.Queued:
+                case JobState.Scheduled:
+                case JobState.Processing:
+                Console.WriteLine("Please wait...\n");
+                break;
+                case JobState.Canceled:
+                case JobState.Error:
+
+                // Cast sender as a job.
+                IJob job = (IJob)sender;
+
+                // Display or log error details as needed.
+                break;
+                default:
+                break;
+            }
+            }
+
+            private static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
+            {
+            var processor = _context.MediaProcessors.Where(p => p.Name == mediaProcessorName).
+            ToList().OrderBy(p => new Version(p.Version)).LastOrDefault();
+
+            if (processor == null)
+                throw new ArgumentException(string.Format("Unknown media processor", mediaProcessorName));
+
+            return processor;
+            }
+        }
+
 
 ## <a name="considerations"></a>Überlegungen
 Es gelten die folgenden Bedingungen:

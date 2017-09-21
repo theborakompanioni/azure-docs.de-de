@@ -16,10 +16,10 @@ ms.workload: NA
 ms.date: 03/03/2017
 ms.author: carlrab
 ms.translationtype: HT
-ms.sourcegitcommit: 94d1d4c243bede354ae3deba7fbf5da0652567cb
-ms.openlocfilehash: 3db5be35b3087bbbe87e623a623e7a10156b932f
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: 74b04cb7737011423556cbd956ecef770ac82ad4
 ms.contentlocale: de-de
-ms.lasthandoff: 07/18/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 # <a name="azure-sql-database-customer-implementation-technical-studies"></a>Azure SQL-Datenbank-Kundenimplementierungen – technische Details – Studien
@@ -37,4 +37,6 @@ ms.lasthandoff: 07/18/2017
 - [Quest](https://customers.microsoft.com/en-US/story/quest): Mit dem Spotlight on SQL Server Enterprise-Dienst von Quest erhalten Datenbankexperten die besten Tools, die zum Sichern von Daten, Verschieben von Daten und Überwachen von Datenbankvorgängen verfügbar sind. Durch Spotlight können SQL Server-Datenbankadministratoren mit Microsoft Azure und Azure SQL-Datenbank nicht nur die Leistung von SQL Server überwachen, sondern auch Leistungsprobleme erkennen, diagnostizieren und eine Möglichkeit für ihre Behebung bereitstellen – ganz gleich, ob sie sich an ihrem Arbeitsplatz befinden oder von zu Hause aus arbeiten.
 
 - [Microsoft Dynamics](https://customers.microsoft.com/story/dynamics365operationsproductteam): In dieser kurzen Fallstudie werden die bewährten Methoden und Erkenntnisse vorgestellt, die die Dynamics 365 for Operations-Produktteams bei der Migration zu Azure SQL-Datenbank gewonnen haben, um Kunden ein vollständig verwaltetes SaaS-Angebot (Software as a Service) zu bieten. Mithilfe von Azure SQL-Datenbank war das Dynamics 365 for Operations-Team in der Lage, den Dienst mit einer deutlich kleineren Anzahl von Mitarbeitern zu verwalten und zu betreiben und mühelos leistungsstarke Verwaltungsfunktionen zu skalieren. Hierzu zählen z.B. Funktionen zur automatischen Datenbanksicherung, Aufbewahrung von Datenbanksicherungen sowie Funktionen für hohe Verfügbarkeit und die Notfallwiederherstellung. Diese Faktoren und die Möglichkeit, Datenbanken mit einfacher Automatisierung auszustatten, hat Azure SQL-Datenbank zu einer hervorragenden Plattform für die Bereitstellung umfangreicher Dienste gemacht.
+
+- [Microsoft OneDrive und SharePoint Online](https://customers.microsoft.com/story/microsoft-azure-sql-database-dicrete-manufacturing-united-states): Diese kurze Fallstudie vermittelt Hintergrundinformationen zur Migration von Microsoft OneDrive und SharePoint Online zu Azure SQL-Datenbank und beschreibt, wie diese Migration nahezu unbegrenzte elastische Kapazitätsverwaltung ermöglichte und dabei Betriebskosten und Infrastrukturmehraufwand beträchtlich reduzierte.
 

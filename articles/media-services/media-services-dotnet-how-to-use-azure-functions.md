@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 09/03/2017
 ms.author: juliako
 ms.translationtype: HT
-ms.sourcegitcommit: 4eb426b14ec72aaa79268840f23a39b15fee8982
-ms.openlocfilehash: 096f54b23a8223da89785b2e7f00c9b8a10c2906
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: e8cad53d95186f4f7679d1f19f339ad4149059a8
 ms.contentlocale: de-de
-ms.lasthandoff: 09/06/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 # <a name="develop-azure-functions-with-media-services"></a>Entwickeln von Azure Functions mit Media Services
@@ -32,10 +32,6 @@ Wenn Sie vorhandene Azure Functions-Instanzen, die Azure Media Services verwende
 - Bevor Sie Ihre erste Funktion erstellen können, müssen Sie über ein aktives Azure-Konto verfügen. Wenn Sie noch kein Azure-Konto haben, [erstellen Sie ein kostenloses Konto](https://azure.microsoft.com/free/).
 - Es ist ratsam, wie [hier](media-services-portal-create-account.md) beschrieben ein AMS-Konto zu erstellen, wenn Sie Azure Functions erstellen möchten, mit denen Aktionen in Ihrem AMS-Konto (Azure Media Services) durchgeführt werden oder auf von Media Services gesendete Ereignisse gelauscht wird.
     
-## <a name="considerations"></a>Überlegungen
-
--  Wird Azure Functions unter dem Verbrauchsplan ausgeführt, gilt ein Timeout von 5 Minuten.
-
 ## <a name="create-a-function-app"></a>Erstellen einer Funktionen-App
 
 1. Wechseln Sie zum [Azure-Portal](http://portal.azure.com) , und melden Sie sich mit Ihrem Azure-Konto an.
@@ -47,10 +43,6 @@ Wenn Sie vorhandene Azure Functions-Instanzen, die Azure Media Services verwende
 ## <a name="configure-function-app-settings"></a>Konfigurieren von Einstellungen der Funktionen-App
 
 Beim Entwickeln von Media Services-Funktionen ist es nützlich, Umgebungsvariablen hinzuzufügen, die in Ihren Funktionen verwendet werden. Klicken Sie zum Konfigurieren von App-Einstellungen auf den Link „App-Einstellungen konfigurieren“. Weitere Informationen finden Sie unter [Konfigurieren der Einstellungen der Azure Function-App](../azure-functions/functions-how-to-use-azure-function-app-settings.md). 
-
-Beispiel:
-
-![Einstellungen](./media/media-services-azure-functions/media-services-azure-functions001.png)
 
 Bei der in diesem Artikel definierte Funktion wird davon ausgegangen, dass Sie die folgenden Umgebungsvariablen in den App-Einstellungen definiert haben:
 
@@ -344,6 +336,9 @@ Um die Funktion zu testen, müssen Sie eine MP4-Datei in den **input**-Container
 2. Klicken Sie auf **Blobs**.
 3. Klicken Sie auf **+ Container**. Geben Sie dem Container den Namen **input**.
 4. Wählen Sie **Hochladen**, und navigieren Sie zu einer MP4-Datei, die Sie hochladen möchten.
+
+>[!NOTE]
+> Bei Verwendung eines Blobtriggers in einem Verbrauchsplan kann es bis zu 10 Minuten dauern, bis neue Blobs verarbeitet werden, nachdem eine Funktions-App in den Leerlauf gewechselt ist. Sobald die Funktions-App ausgeführt wird, werden die Blobs sofort verarbeitet. Weitere Informationen finden Sie unter [Blob Storage-Trigger und -Bindungen](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob#blob-storage-triggers-and-bindings).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

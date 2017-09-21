@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 7/20/2017
+ms.date: 9/14/2017
 ms.author: negat
 ms.custom: na
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: f320dd5d1f8c99317792f4ae9e09bc5adaf79e25
+ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
+ms.openlocfilehash: cc5a0ba5474827cedc5b6a42651c206d5f2540b7
 ms.contentlocale: de-de
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 09/14/2017
 
 ---
 
@@ -329,7 +329,7 @@ CER-Dateien werden derzeit nicht unterstützt. Zu verwendende CER-Dateien müsse
 
 
 
-## <a name="compliance"></a>Compliance
+## <a name="compliance-and-security"></a>Konformität und Sicherheit
 
 ### <a name="are-virtual-machine-scale-sets-pci-compliant"></a>Sind VM-Skalierungsgruppen PCI-konform?
 
@@ -339,9 +339,9 @@ VM-Skalierungsgruppen sind hinsichtlich der Konformität ein grundlegender Besta
 
 Weitere Informationen finden Sie im [Microsoft Trust Center](https://www.microsoft.com/TrustCenter/Compliance/PCI).
 
+### <a name="does-azure-managed-service-identityhttpsdocsmicrosoftcomazureactive-directorymsi-overview-work-with-vm-scale-sets"></a>Funktioniert die [verwaltete Azure-Dienstidentität](https://docs.microsoft.com/azure/active-directory/msi-overview) mit VM-Skalierungsgruppen?
 
-
-
+Ja. Einige MSI-Beispielvorlagen finden Sie in den Azure-Schnellstartvorlagen. Linux: [https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-msi-linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-msi-linux). Windows: [https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-msi-windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-msi-windows).
 
 
 ## <a name="extensions"></a>Erweiterungen
@@ -510,7 +510,7 @@ Ja. Eine Netzwerksicherheitsgruppe kann direkt auf eine Skalierungsgruppe angewe
 
 ### <a name="how-do-i-do-a-vip-swap-for-virtual-machine-scale-sets-in-the-same-subscription-and-same-region"></a>Wie führe ich ein VIP-Swap für VM-Skalierungsgruppen im gleichen Abonnement und in der gleichen Region aus?
 
-Wenn Sie zwei VM-Skalierungsgruppen mit Front-Ends von Azure Load Balancer haben und diese sich im gleichen Abonnement und der gleichen Region befinden, können Sie die Zuordnung der öffentlichen IP-Adressen aufheben und der jeweils anderen zuordnen. Beispiele finde Sie unter [VIP Swap: Blue-green deployment in Azure Resource Manager (VIP-Tausch: Blaugrünbereitstellung in Azure Resource Manager)](https://msftstack.wordpress.com/2017/02/24/vip-swap-blue-green-deployment-in-azure-resource-manager/). Dies führt jedoch wahrscheinlich zu Verzögerungen, während Ressourcen auf Netzwerkebene zugeordnet werden bzw. während ihre Zuordnungen aufgehoben werden. Eine schnellere Option ist die Verwendung von Azure Application Gateway mit zwei Back-End-Pools und einer Routingregel. Alternativ können Sie Ihre Anwendung mit [Azure App Service](https://azure.microsoft.com/en-us/services/app-service/) hosten. Dieser Dienst bietet Unterstützung für das schnelle Wechseln zwischen Staging- und Produktionsslots.
+Wenn Sie zwei VM-Skalierungsgruppen mit Front-Ends von Azure Load Balancer haben und diese sich im gleichen Abonnement und der gleichen Region befinden, können Sie die Zuordnung der öffentlichen IP-Adressen aufheben und der jeweils anderen zuordnen. Beispiele finde Sie unter [VIP Swap: Blue-green deployment in Azure Resource Manager (VIP-Tausch: Blaugrünbereitstellung in Azure Resource Manager)](https://msftstack.wordpress.com/2017/02/24/vip-swap-blue-green-deployment-in-azure-resource-manager/). Dies führt jedoch wahrscheinlich zu Verzögerungen, während Ressourcen auf Netzwerkebene zugeordnet werden bzw. während ihre Zuordnungen aufgehoben werden. Eine schnellere Option ist die Verwendung von Azure Application Gateway mit zwei Back-End-Pools und einer Routingregel. Alternativ können Sie Ihre Anwendung mit [Azure App Service](https://azure.microsoft.com/services/app-service/) hosten. Dieser Dienst bietet Unterstützung für das schnelle Wechseln zwischen Staging- und Produktionsslots.
  
 ### <a name="how-do-i-specify-a-range-of-private-ip-addresses-to-use-for-static-private-ip-address-allocation"></a>Wie gebe ich einen Bereich privater IP-Adressen für die statische private IP-Adresszuordnung an?
 

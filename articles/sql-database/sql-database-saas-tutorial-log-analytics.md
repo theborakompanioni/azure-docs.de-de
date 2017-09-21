@@ -1,6 +1,6 @@
 ---
 title: "Verwenden von Log Analytics mit einer mehrinstanzenfähigen App für SQL-Datenbank | Microsoft-Dokumentation"
-description: "Einrichten und Verwenden von Log Analytics (OMS) mit der Wingtip-SaaS-Beispiel-App für Azure SQL-Datenbank"
+description: "Einrichten und Verwenden von Log Analytics (OMS) mit einer mehrinstanzenfähigen SaaS-App für Azure SQL-Datenbank"
 keywords: Tutorial zur SQL-Datenbank
 services: sql-database
 documentationcenter: 
@@ -17,15 +17,15 @@ ms.topic: article
 ms.date: 07/26/2017
 ms.author: billgib; sstein
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: 26f6f519ecb3abf6343dc2776aa141dff99ced15
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: f9428871eab19f56e439ba529a9dcfde833d4fbf
 ms.contentlocale: de-de
-ms.lasthandoff: 07/27/2017
+ms.lasthandoff: 09/13/2017
 
 ---
-# <a name="setup-and-use-log-analytics-oms-with-the-wingtip-saas-app"></a>Einrichten und Verwenden von Log Analytics (OMS) mit der Wingtip-SaaS-App
+# <a name="setup-and-use-log-analytics-oms-with-a-multi-tenant-azure-sql-database-saas-app"></a>Einrichten und Verwenden von Log Analytics (OMS) mit einer mehrinstanzenfähigen SaaS-App für Azure SQL-Datenbank
 
-In diesem Tutorial richten Sie *Log Analytics([OMS](https://www.microsoft.com/cloud-platform/operations-management-suite))* ein und verwenden es zum Überwachen von Pools für elastische Datenbanken sowie Datenbanken. Das Tutorial baut auf dem [Tutorial zum Überwachen und Verwalten der Leistung](sql-database-saas-tutorial-performance-monitoring.md) auf und veranschaulicht, wie mithilfe von *Log Analytics* die Überwachungs- und Warnungsfunktionen im Azure-Portal ausgeweitet werden. Log Analytics eignet sich insbesondere für umfassende Überwachung und Warnungen, da Hunderte von Pools und Hunderttausende Datenbanken unterstützt werden. Zudem verfügen Sie damit über eine einzige Überwachungslösung, in der die Überwachung unterschiedlicher Anwendungen und Azure-Dienste für mehrere Azure-Abonnements integriert werden kann.
+In diesem Tutorial richten Sie *Log Analytics([OMS](https://www.microsoft.com/cloud-platform/operations-management-suite))* ein und verwenden es zum Überwachen von Pools für elastische Datenbanken sowie Datenbanken. Dieses Tutorial baut auf dem Tutorial [Überwachen der Leistung der SaaS-Anwendung Wingtip](sql-database-saas-tutorial-performance-monitoring.md) auf. Es zeigt, wie Sie mit *Log Analytics* die im Azure-Portal bereitgestellte Überwachungs- und Warnungsfunktionalität erweitern können. Log Analytics eignet sich für umfassende Überwachung und Warnungen, da Hunderte von Pools und Hunderttausende Datenbanken unterstützt werden. Zudem verfügen Sie damit über eine einzige Überwachungslösung, in der die Überwachung unterschiedlicher Anwendungen und Azure-Dienste für mehrere Azure-Abonnements integriert werden kann.
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -48,26 +48,26 @@ Für Szenarien mit hoher Nutzung kann Log Analytics verwendet werden. Dies ist e
 
 Sowohl Log Analytics-Arbeitsbereiche als auch Analyselösungen können im Azure-Portal und in OMS geöffnet werden. Das Azure-Portal stellt den neueren Zugangspunkt dar, bleibt jedoch möglicherweise in einigen Bereichen hinter dem OMS-Portal zurück.
 
-### <a name="start-the-load-generator-to-create-data-to-analyze"></a>Starten des Last-Generators zum Erstellen von Daten für die Analyse
+### <a name="create-data-by-starting-the-load-generator"></a>Erstellen von Daten durch Starten des Lastengenerators 
 
 1. Öffnen Sie **Demo-PerformanceMonitoringAndManagement.ps1** in der **PowerShell ISE**. Lassen Sie dieses Skript geöffnet, da Sie während dieses Szenarios u.U. mehrere Lastgenerierungsszenarien ausführen.
 1. Wenn Sie über weniger als fünf Mandanten verfügen, stellen Sie einen Batch von Mandanten bereit, um einen interessanteren Überwachungskontext herzustellen:
    1. Legen Sie **$DemoScenario = 1** fest, **Bereitstellen eines Batchs von Mandanten**
-   1. Drücken Sie **F5** , um das Skript auszuführen.
+   1. Betätigen Sie **F5**, um das Skript auszuführen.
 
 1. Legen Sie **$DemoScenario** = 2 fest, **Generieren einer Last mit normaler Intensität (ca. 40 DTUs)**.
-1. Drücken Sie **F5** , um das Skript auszuführen.
+1. Betätigen Sie **F5**, um das Skript auszuführen.
 
-## <a name="get-the-wingtip-application-scripts"></a>Abrufen der Wingtip-Anwendungsskripts
+## <a name="get-the-wingtip-application-scripts"></a>Abrufen des Wingtip-Anwendungsskripts
 
 Die Wingtip Tickets-Skripts und der Quellcode der Anwendung stehen im [WingtipSaaS](https://github.com/Microsoft/WingtipSaaS)-GitHub-Repository zur Verfügung. Skriptdateien befinden sich im Ordner [Learning Modules](https://github.com/Microsoft/WingtipSaaS/tree/master/Learning%20Modules) (Lernmodule). Laden Sie den Ordner **Learning Modules** auf den lokalen Computer herunter, wobei Sie dessen Ordnerstruktur beibehalten.
 
 ## <a name="installing-and-configuring-log-analytics-and-the-azure-sql-analytics-solution"></a>Installieren und Konfigurieren von Log Analytics und der Azure SQL-Analyselösung
 
-Log Analytics ist ein separater Dienst, der konfiguriert werden muss. Log Analytics erfasst Protokolldaten sowie Telemetriedaten und Metriken in einem Log Analytics-Arbeitsbereich. Ein Arbeitsbereich ist eine Ressource und muss wie andere Ressourcen in Azure erstellt werden. Der Arbeitsbereich muss zwar nicht in der Ressourcengruppe erstellt werden, in der sich auch die überwachte(n) Anwendung(en) befinden, dies ist jedoch häufig am sinnvollsten. Im Fall der Wingtip-SaaS-App kann der Arbeitsbereich auf einfache Weise zusammen mit der Anwendung gelöscht werden, indem einfach die Ressourcengruppe gelöscht wird.
+Log Analytics ist ein separater Dienst, der konfiguriert werden muss. Log Analytics erfasst Protokolldaten sowie Telemetriedaten und Metriken in einem Log Analytics-Arbeitsbereich. Ein Arbeitsbereich ist eine Ressource und muss wie andere Ressourcen in Azure erstellt werden. Der Arbeitsbereich muss zwar nicht in der Ressourcengruppe erstellt werden, in der sich auch die überwachte(n) Anwendung(en) befinden, dies ist jedoch häufig am sinnvollsten. Für die Wingtip-SaaS-App kann der Arbeitsbereich auf einfache Weise zusammen mit der Anwendung gelöscht werden, indem einfach die Ressourcengruppe gelöscht wird.
 
 1. Öffnen Sie ...\\Learning Modules\\Performance Monitoring and Management\\Log Analytics\\*Demo-LogAnalytics.ps1* in der **PowerShell ISE**.
-1. Drücken Sie **F5** , um das Skript auszuführen.
+1. Betätigen Sie **F5**, um das Skript auszuführen.
 
 An dieser Stelle sollten Sie in der Lage sein, Log Analytics im Azure-Portal (oder im OMS-Portal) zu öffnen. Es dauert einige Minuten, bis Telemetriedaten im Log Analytics-Arbeitsbereich erfasst und angezeigt werden. Je länger Sie dem System Zeit zum Sammeln von Daten lassen, desto interessanter wird das Ergebnis. Dies ist ein guter Zeitpunkt, eine Pause einzulegen – vergewissern Sie sich nur, dass der Last-Generator immer noch ausgeführt wird!
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/29/2017
 ms.author: muralikk
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 5b73fec119a88cd86e68537199e7567afa3fdba8
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: 6b5febd051d0b956c90cb14c260dda1881adac3f
 ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 
@@ -40,7 +40,7 @@ Wenn Sie die **Laufwerkvorbereitung** für einen Importauftrag durchführen, mü
 * Sie benötigen einen Computer (der „Kopiercomputer“), auf dem Windows 7, Windows Server 2008 R2 oder ein neueres Windows-Betriebssystem installiert ist.
 * Auf dem Kopiercomputer muss .NET Framework 4 installiert sein.
 * Auf dem Kopiercomputer muss BitLocker aktiviert sein.
-* Mindestens eine leere 3,5-Zoll-SATA-Festplatte muss an den Kopiercomputer angeschlossen sein.
+* Sie benötigen mindestens ein leeres, an den Kopiercomputer angeschlossenes 2,5-Zoll- oder 3,5-Zoll-SATA-II-, -III- oder -SSD-Festplattenlaufwerk.
 * Die zu importierenden Dateien müssen vom Kopiercomputer aus zugänglich sein. Dabei spielt es keine Rolle, ob sie sich auf einer Netzwerkfreigabe oder einer lokalen Festplatte befinden.
 
 Wenn Sie versuchen, einen **Import zu reparieren**, der teilweise nicht erfolgreich war, benötigen Sie Folgendes:

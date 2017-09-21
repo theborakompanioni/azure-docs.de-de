@@ -14,10 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 08/29/2016
 ms.author: mahender
-translationtype: Human Translation
-ms.sourcegitcommit: b75f7aa757679a29a42cdfc04799873ee30bab2e
-ms.openlocfilehash: e89ba5613c615c41af93e8f63b3703da8395095c
-
+ms.translationtype: HT
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: ea1666007b88cdf45017b0bd91e100dc1218fb2b
+ms.contentlocale: de-de
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Authentifizierung und Autorisierung in Azure App Service
@@ -30,7 +31,6 @@ Mit folgenden Tutorials können Sie sofort loslegen:
 
 * [Hinzufügen der Authentifizierung zu Ihrer iOS-App][iOS] (oder [Android], [Windows], [Xamarin.iOS], [Xamarin.Android], [Xamarin.Forms] oder [Cordova])
 * [Benutzerauthentifizierung für API-Apps in Azure App Service][apia-user]
-* [Erste Schritte mit Azure App Service – Teil 2][web-getstarted]
 
 ## <a name="how-authentication-works-in-app-service"></a>Funktionsweise der Authentifizierung in App Service
 Zur Authentifizierung mit einem der Identitätsanbieter müssen Sie zunächst den Identitätsanbieter konfigurieren, damit er Ihre Anwendung kennt. Der Identitätsanbieter stellt anschließend IDs und geheime Schlüssel bereit, die Sie wiederum für App Service bereitstellen. Dadurch wird die Vertrauensstellung komplettiert, und App Service kann Benutzerassertionen (beispielsweise Authentifizierungstoken) des Identitätsanbieters überprüfen.
@@ -75,7 +75,7 @@ Wenn Sie ein Dienst-zu-Dienst-Szenario mit App Service-Authentifizierung verwend
 
 Die Dienstkontoauthentifizierung zwischen einer App Service-Logik-App und einer API-App ist ein Sonderfall, der in [Verwenden der in App Service gehosteten benutzerdefinierten API mit Logik-Apps](../logic-apps/logic-apps-custom-hosted-api.md)erklärt wird.
 
-## <a name="a-nameauthorizationahow-authorization-works-in-app-service"></a><a name="authorization"></a>Funktionsweise der Autorisierung in App Service
+## <a name="authorization"></a>Funktionsweise der Autorisierung in App Service
 Sie haben uneingeschränkte Kontrolle über die Anforderungen, denen der Zugriff auf Ihre Anwendung gestattet werden soll. Die App Service-Authentifizierung/-Autorisierung kann mit folgenden Verhaltensweisen konfiguriert werden:
 
 * Nur zulassen, dass authentifizierte Anforderungen Ihre Anwendung erreichen.
@@ -90,7 +90,7 @@ Sie haben uneingeschränkte Kontrolle über die Anforderungen, denen der Zugriff
   
     In diesem Fall ist das Authentifizierungs-/Autorisierungsfeature deaktiviert. Authentifizierungs- und Autorisierungsaufgaben bleiben vollständig Ihrem Anwendungscode überlassen.
 
-Die oben genannten Verhaltensweisen werden mithilfe der Option **Die auszuführende Aktion, wenn die Anforderung nicht authentifiziert ist** im Azure-Portal gesteuert. Bei Verwendung der Option **Anmelden mit*Anbietername* ** müssen alle Anforderungen authentifiziert werden. Bei Verwendung von „**Anforderung zulassen (keine Aktion)**“ bleibt die Autorisierungsentscheidung Ihrem Code überlassen, es werden aber trotzdem Authentifizierungsinformationen angegeben. Falls der Code sämtliche Aufgaben übernehmen soll, können Sie das Authentifizierungs-/Autorisierungsfeature deaktivieren.
+Die oben genannten Verhaltensweisen werden mithilfe der Option **Die auszuführende Aktion, wenn die Anforderung nicht authentifiziert ist** im Azure-Portal gesteuert. Bei Verwendung der Option „Mit *Anbietername* anmelden“ müssen alle Anforderungen authentifiziert werden. Bei Verwendung von **Anforderung zulassen (keine Aktion)** bleibt die Autorisierungsentscheidung Ihrem Code überlassen, es werden aber trotzdem Authentifizierungsinformationen angegeben. Falls der Code sämtliche Aufgaben übernehmen soll, können Sie das Authentifizierungs-/Autorisierungsfeature deaktivieren.
 
 ## <a name="working-with-user-identities-in-your-application"></a>Verwenden von Benutzeridentitäten in Ihrer Anwendung
 App Service übergibt einige Benutzerinformationen mithilfe spezieller Header an Ihre Anwendung. Diese Header sind in externen Anforderungen nicht zulässig und nur vorhanden, wenn sie von der App Service-Authentifizierung/-Autorisierung festgelegt werden. Beispiele für solche Header wären etwa:
@@ -159,8 +159,6 @@ In den folgenden Tutorials erfahren Sie, wie Sie Ihre API-Apps schützen können
 [apia-user]: ../app-service-api/app-service-api-dotnet-user-principal-auth.md
 [apia-service]: ../app-service-api/app-service-api-dotnet-service-principal-auth.md
 
-[web-getstarted]: ../app-service-web/app-service-web-get-started-2.md#authenticate-your-users
-
 [iOS]: ../app-service-mobile/app-service-mobile-ios-get-started-users.md
 [Android]: ../app-service-mobile/app-service-mobile-android-get-started-users.md
 [Xamarin.iOS]: ../app-service-mobile/app-service-mobile-xamarin-ios-get-started-users.md
@@ -180,9 +178,4 @@ In den folgenden Tutorials erfahren Sie, wie Sie Ihre API-Apps schützen können
 [ADAL-Android]: ../app-service-mobile/app-service-mobile-android-how-to-use-client-library.md#adal
 [ADAL-iOS]: ../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#adal
 [ADAL-dotnet]: ../app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library.md#adal
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

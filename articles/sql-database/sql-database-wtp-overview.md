@@ -1,10 +1,10 @@
 ---
-title: "Einführung in die SaaS-App Wingtip – mehrinstanzenfähige App für Azure SQL-Datenbank | Microsoft-Dokumentation"
-description: "In diesem Artikel erfahren Sie, wie Sie eine mehrinstanzenfähige Beispielanwendung nutzen, die Azure SQL-Datenbank verwendet, nämlich die SaaS-App Wingtip."
+title: "Azure SQL-Datenbank: Beispiel für mehrinstanzenfähige App – Wingtip-SaaS | Microsoft-Dokumentation"
+description: "In diesem Artikel erfahren Sie, wie Sie eine mehrinstanzenfähige Beispielanwendung nutzen, die Azure SQL-Datenbank verwendet – das Wingtip-SaaS-Beispiel."
 keywords: Tutorial zur SQL-Datenbank
 services: sql-database
 author: stevestein
-manager: jhubbard
+manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
 ms.workload: data-management
@@ -13,15 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/09/2017
 ms.author: sstein
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6adaf7026d455210db4d7ce6e7111d13c2b75374
-ms.openlocfilehash: 6d4a5df599137e95ca5458fae74b8daa565b0338
+ms.translationtype: HT
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 68a9d97a881f3a7628a08b66091c3feb4c4dbbfe
 ms.contentlocale: de-de
-ms.lasthandoff: 06/22/2017
-
+ms.lasthandoff: 09/13/2017
 
 ---
-# <a name="introduction-to-the-wingtip-saas-application"></a>Einführung in die SaaS-Anwendung Wingtip
+# <a name="introduction-to-a-sql-database-multi-tenant-saas-app-example"></a>Einführung zum Beispiel einer mehrinstanzenfähigen SQL-Datenbank-SaaS-App
 
 Bei der SaaS-Anwendung *Wingtip* handelt es sich um eine mehrinstanzenfähige Beispiel-App, mit der die einzigartigen Vorteile der SQL-Datenbank veranschaulicht werden. Die App verwendet eine SaaS-Anwendungsmuster mit Datenbank pro Mandant, um mit mehreren Mandanten zu kommunizieren. Die App ist auf die Vorstellung der Funktionen von Azure SQL-Datenbank ausgelegt, die SaaS-Szenarien ermöglichen, einschließlich verschiedener SaaS-Entwurfs- und -Verwaltungsmuster. Um einen schnellen Einstieg sicherzustellen, wird die SaaS-App Wingtip in weniger als fünf Minuten bereitgestellt.
 
@@ -59,7 +58,7 @@ Wenn Sie die Tutorials durchgehen und mit der App arbeiten, ist es wichtig, sich
 
 Wenn ZIP-Dateien von einer externen Quelle heruntergeladen und extrahiert werden, können ausführbare Inhalte (Skripts, DLLs) von Windows eventuell blockiert werden. Führen Sie bei der Extraktion der Skripts aus einer ZIP-Datei ***die nachfolgenden Schritte durch, um die Blockierung der ZIP-Datei vor der Extraktion aufzuheben***. Dadurch wird sichergestellt, dass die Ausführung der Skripts zugelassen ist.
 
-1. Navigieren Sie zum [Github-Repository der SaaS-Anwendung Wingtip](https://github.com/Microsoft/WingtipSaaS).
+1. Navigieren Sie zum [GitHub-Repository der Wingtip-SaaS-Anwendung](https://github.com/Microsoft/WingtipSaaS).
 1. Klicken Sie auf **Klonen oder herunterladen**.
 1. Klicken Sie auf **ZIP herunterladen**, und speichern Sie die Datei.
 1. Klicken Sie mit der rechten Maustaste auf die Datei **WingtipSaaS-master.zip**, und wählen Sie **Eigenschaften** aus.

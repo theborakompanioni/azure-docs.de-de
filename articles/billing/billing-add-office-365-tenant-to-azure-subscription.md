@@ -13,19 +13,21 @@ ms.workload: na
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 06/13/2017
+ms.date: 09/13/2017
 ms.author: cjiang
 ms.translationtype: HT
-ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
-ms.openlocfilehash: ff1cc44c01061aa924917e082d582bdebfb40c21
+ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
+ms.openlocfilehash: b7b3e4539110f68e1e6ef4a75110924a27b40c49
 ms.contentlocale: de-de
-ms.lasthandoff: 08/31/2017
+ms.lasthandoff: 09/14/2017
 
 ---
-# <a name="associate-an-office-365-tenant-to-an-azure-subscription"></a>Zuordnen eines Office 365-Mandanten zu einem Azure-Abonnement
-Verknüpfen Sie Ihre separaten Azure- und Office 365-Abonnements, sodass Sie von Ihrem Azure-Abonnement aus auf den Office 365-Mandanten zugreifen können. Um Ihre Abonnements zu verknüpfen, melden Sie sich in Azure mit dem Azure-Dienstadministratorkonto an, fügen Sie ein Verzeichnis hinzu, und fügen Sie die Office 365-Organisationskonten dem Azure Active Directory-Mandanten hinzu.
+# <a name="link-an-office-365-tenant-to-an-azure-subscription"></a>Verknüpfen eines Office 365-Mandanten mit einem Azure-Abonnement
+Verknüpfen Sie Ihre separaten Azure- und Office 365-Abonnements, sodass Sie von Ihrem Azure-Abonnement aus auf den Office 365-Mandanten zugreifen können. Um Ihre Abonnements zu verknüpfen, melden Sie sich bei Azure mit dem Azure-Dienstadministratorkonto an, fügen Sie ein Verzeichnis hinzu, und fügen Sie dann die Office 365 Geschäfts-, Schul- oder Unikonten dem Azure Active Directory-Mandanten hinzu.
 
-Wenn Sie ein Office 365-Abonnement für Benutzer in Ihrer Azure Active Directory-Instanz wünschen, oder wenn Sie über ein Office 365-Konto verfügen, jedoch nicht über ein Azure-Konto, lesen Sie [Verwenden eines vorhandenen Office 365-Kontos mit Ihrem Azure-Abonnement (oder umgekehrt)](billing-use-existing-office-365-account-azure-subscription.md). 
+**Möchten Sie Ihr bestehendes Azure-Abonnement auf Ihr Office 365 Geschäfts-, Schul- oder Unikonto übertragen?** Wenn Sie sich bei Azure mit einem persönlichen Microsoft-Konto registriert haben und Sie sich bei Ihrem Office 365-Konto anmelden möchten, wird dringend empfohlen, das Abonnement zu übertragen. Weitere Informationen finden Sie unter [Übertragen des Besitzes eines Azure-Abonnements auf ein anderes Konto](billing-subscription-transfer.md). 
+
+**Möchten Sie sich bei Azure mithilfe von Office 365 registrieren?** Weitere Informationen finden Sie unter [Registrieren bei Azure mit einem Office 365-Konto](billing-use-existing-office-365-account-azure-subscription.md). 
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 * Sie benötigen die Anmeldeinformationen des Azure-Abonnementdienstadministrators. Mit Co-Administratorkonten können einige der Schritte in diesem Artikel nicht ausgeführt werden. Informationen zum Ändern des Dienstadministrators finden Sie unter [Hinzufügen oder Ändern von Azure-Administratorrollen](billing-add-change-azure-subscription-administrator.md#change-service-administrator-for-a-subscription).
@@ -92,6 +94,5 @@ Informationen zum Hinzufügen eines Administrators zu Ihrem Azure-Abonnement fin
 ## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Wenden Sie sich an den Support.
 
 [Wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), falls Sie weitere Hilfe benötigen, um das Problem schnell beheben zu lassen.
-
 
 

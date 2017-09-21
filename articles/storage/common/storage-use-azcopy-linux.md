@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/11/2017
 ms.author: seguler
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 441227d84b9c1ec721ae36fdc423ba797654f128
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: b080e323c4195f640a256c4726916dbf40ef2698
 ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="transfer-data-with-azcopy-on-linux"></a>Übertragen von Daten mit AzCopy unter Linux
@@ -29,6 +29,8 @@ Es gibt zwei Versionen von AzCopy, die Sie herunterladen können. AzCopy unter L
 ## <a name="download-and-install-azcopy"></a>Herunterladen und Installieren von AzCopy
 ### <a name="installation-on-linux"></a>Installation unter Linux
 
+Der Artikel enthält Befehle für verschiedene Releases von Ubuntu.  Bestätigen Sie mit dem `lsb_release -a`-Befehl Ihr Distributionsrelease und Ihren Codenamen. 
+
 AzCopy unter Linux erfordert .NET Core-Framework auf der Plattform. Die Installationsanweisungen finden Sie auf der [.NET Core](https://www.microsoft.com/net/core#linuxubuntu)-Seite.
 
 Lassen Sie uns beispielsweise .NET Core auf Ubuntu 16.10 installieren. Das neueste Installationshandbuch finden Sie auf der [.NET Core unter Linux](https://www.microsoft.com/net/core#linuxubuntu)-Installationsseite.
@@ -38,7 +40,7 @@ Lassen Sie uns beispielsweise .NET Core auf Ubuntu 16.10 installieren. Das neues
 sudo sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet-release/ yakkety main" > /etc/apt/sources.list.d/dotnetdev.list' 
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 417A0893
 sudo apt-get update
-sudo apt-get install dotnet-dev-1.0.3
+sudo apt-get install dotnet-sdk-2.0.0
 ```
 
 Nach der Installation von .NET Core laden Sie AzCopy herunter und installieren es.

@@ -3,7 +3,7 @@ title: Migrieren einer SQL Server-Datenbank zu Azure SQL-Datenbank | Microsoft-D
 description: Erfahren Sie, wie Sie eine SQL Server-Datenbank zu Azure SQL-Datenbank migrieren.
 services: sql-database
 documentationcenter: 
-author: janeng
+author: CarlRabeler
 manager: jhubbard
 editor: 
 tags: 
@@ -14,24 +14,25 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: 
-ms.date: 06/27/2017
-ms.author: janeng
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
-ms.openlocfilehash: 375d3ea0230e7d3fd0fc02ca7e0b8a7a76c24a27
+ms.date: 09/01/2017
+ms.author: carlrab
+ms.translationtype: HT
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: 8206cba416df4d43594678428632ff161a9564d6
 ms.contentlocale: de-de
-ms.lasthandoff: 06/30/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 
 # <a name="migrate-your-sql-server-database-to-azure-sql-database"></a>Migrieren einer SQL Server-Datenbank zu Azure SQL-Datenbank
 
-Das Verschieben Ihrer SQL Server-Datenbank zu Azure SQL-Datenbank ist ein dreiteiliger Prozess: Sie bereiten die Datenbank zunächst vor und exportieren und importieren sie dann. In diesem Tutorial lernen Sie Folgendes:
+Das Verschieben Ihrer SQL Server-Datenbank zur Azure SQL-Datenbank ist so einfach, wie eine leere SQL­Datenbank in Azure zu erstellen und sie dann mithilfe des [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) (DMA) in Azure zu importieren. In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Vorbereiten einer Datenbank in einer SQL Server-Instanz für die Migration zu Azure SQL-Datenbank per [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) (DMA)
-> * Exportieren der Datenbank in eine BACPAC-Datei
-> * Importieren der BACPAC-Datei in eine Azure SQL-Datenbank
+> * Erstellen einer leeren Azure SQL-Datenbank im Azure-Portal (mit einem neuen oder vorhandenen Azure SQL-Datenbankserver)
+> * Erstellen einer Firewallregel auf Serverebene im Azure-Portal (falls nicht bereits erstellt)
+> * Verwenden des [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) (DMA) zum Importieren Ihrer SQL Server-Datenbank in die leere Azure SQL-Datenbank 
+> * Verwenden von [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS), um die Datenbankeigenschaften zu ändern.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
@@ -39,179 +40,226 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Stellen Sie zum Durchführen dieses Tutorials sicher, dass die folgenden Voraussetzungen erfüllt sind:
 
-- Die neueste Version von [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) muss installiert sein. Bei der Installation von SSMS wird auch die neueste Version von „SQLPackage“ installiert. Dies ist ein Befehlszeilenprogramm, mit dem eine Reihe von Datenbankentwicklungsaufgaben automatisiert werden kann. 
-- Der [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) (DMA) muss installiert sein.
+- Die neueste Version von [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) muss installiert sein.  
+- Die neueste Version des [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) (DMA) muss installiert sein.
 - Sie haben die zu migrierende Datenbank angegeben, und haben Zugriff auf diese. In diesem Tutorial wird die [SQL Server 2008-OLTP-Datenbank „AdventureWorks2008R2“](https://msftdbprodsamples.codeplex.com/releases/view/59211) für eine Instanz von SQL Server 2008R2 oder höher verwendet, Sie können aber jede Datenbank Ihrer Wahl verwenden. Um Kompatibilitätsprobleme zu beheben, verwenden Sie [SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt).
-
-## <a name="prepare-for-migration"></a>Vorbereiten der Migration
-
-Sie können nun die Schritte zum Vorbereiten auf die Migration ausführen. Führen Sie die folgenden Schritte aus, um mit dem  **[Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595)**  eine Bewertung (Assessment) vorzunehmen, ob Ihre Datenbank für die Migration zu Azure SQL-Datenbank geeignet ist.
-
-1. Öffnen Sie den **Data Migration Assistant**. Sie können DMA auf jedem Computer ausführen, der eine Verbindung mit der SQL Server-Instanz hat, die die Datenbank enthält, die Sie migrieren möchten. Sie müssen DMA nicht auf dem Computer installieren, der die SQL Server-Instanz hostet.
-
-     ![Öffnen des Data Migration Assistant](./media/sql-database-migrate-your-sql-server-database/data-migration-assistant-open.png)
-
-2. Klicken Sie im linken Menü auf **+ Neu**, um ein **Assessment**-Projekt zu erstellen. Geben Sie einen Namen in das Formularfeld **Project name** ein (für alle anderen Felder sollten Sie deren Standardwerte übernehmen), und klicken Sie auf **Create**. Die Seite **Options** wird geöffnet.
-
-     ![Neues Data Migration Assistant-Projekt](./media/sql-database-migrate-your-sql-server-database/data-migration-assistant-new-project.png)
-
-3. Klicken Sie auf der Seite **Options** auf **Weiter**. Die Seite **Select sources** wird geöffnet.
-
-     ![Optionen für neue Datenmigration](./media/sql-database-migrate-your-sql-server-database/data-migration-assistant-options.png) 
-
-4. Geben Sie auf der Seite **Select sources** den Namen der SQL Server-Instanz ein, die den Server enthält, den Sie migrieren möchten. Ändern Sie ggf. die anderen Werte auf dieser Seite. Klicken Sie auf **Verbinden**.
-
-     ![Quellen für neue Datenmigration auswählen](./media/sql-database-migrate-your-sql-server-database/data-migration-assistant-sources.png)
-
-5. Aktivieren Sie auf der Seite **Select sources** im Bereich **Add sources** die Kontrollkästchen für die Datenbanken, die auf Kompatibilität geprüft werden sollen. Klicken Sie auf **Hinzufügen**.
-
-     ![Quellen für neue Datenmigration auswählen](./media/sql-database-migrate-your-sql-server-database/data-migration-assistant-sources-add.png)
-
-6. Klicken Sie auf **Start Assessment**.
-
-     ![Bewertung für neue Datenmigration starten](./media/sql-database-migrate-your-sql-server-database/data-migration-assistant-start-assessment.png)
-
-7. Wenn die Bewertung abgeschlossen ist, prüfen Sie zunächst, ob die Datenbank ausreichend kompatibel ist, um migriert werden zu können. Suchen Sie nach dem Häkchen in einem grünen Kreis.
-
-     ![Neue Datenmigration – Bewertungsergebnisse – kompatibel](./media/sql-database-migrate-your-sql-server-database/data-migration-assistant-assessment-results-compatible.png)
-
-8. Überprüfen Sie die Ergebnisse. Die angezeigten Ergebnisse für die **SQL Server-Featureübereinstimmung** sind die zu prüfenden Standardergebnisse. Insbesondere sollten Sie die Informationen über nicht unterstützte und teilweise unterstützte Features sowie die bereitgestellten Informationen zu empfohlenen Aktionen überprüfen. 
-
-     ![Bewertung für neue Datenmigration – Featureübereinstimmung](./media/sql-database-migrate-your-sql-server-database/data-migration-assistant-assessment-results-parity.png)
-
-9. Überprüfen Sie die **Kompatibilitätsprobleme**, indem Sie oben links auf die entsprechende Option klicken. Überprüfen Sie speziell die Informationen über Migrationsblocker, Verhaltensänderungen und veraltete Features für jeden Kompatibilitätsgrad. Überprüfen Sie für die Datenbank „AdventureWorks2008R2“ die Änderungen an der Volltextsuche seit SQL Server 2008 und die Änderungen an SERVERPROPERTY('LCID') seit SQL Server 2000. Für ausführliche Informationen zu diesen Änderungen werden entsprechende Links bereitgestellt. Viele Suchoptionen und -einstellungen für die Volltextsuche wurden geändert. 
-
-   > [!IMPORTANT] 
-   > Nachdem Sie Ihre Datenbank zu Azure SQL-Datenbank migriert haben, können Sie wählen, die Datenbank mit deren aktuellem Kompatibilitätsgrad (Ebene 100 für die Datenbank „AdventureWorks2008R2“) oder mit einem höheren Grad auszuführen. Weitere Informationen zu den Auswirkungen und Optionen für das Ausführen einer Datenbank mit einem bestimmten Kompatibilitätsgrad finden Sie unter [ALTER DATABASE Compatibility Level](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-compatibility-level). Lesen Sie auch [ALTER DATABASE SCOPED CONFIGURATION](https://docs.microsoft.com/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql). Dort finden Sie Informationen zu weiteren Einstellungen auf Datenbankebene, die sich auf Kompatibilitätsgrade beziehen.
-   >
-
-10. Klicken Sie optional auf **Export report**, um den Bericht als JSON-Datei zu speichern.
-11. Schließen Sie den Data Migration Assistant.
-
-## <a name="export-to-bacpac-file"></a>Exportieren in eine BACPAC-Datei 
-
-Eine BACPAC-Datei ist eine ZIP-Datei mit der Erweiterung BACPAC. Sie enthält die Metadaten und Daten aus einer SQL Server-Datenbank. Eine BACPAC-Datei kann in Azure Blob Storage oder im lokalen Speicher zur Archivierung oder Migration (wie von SQL Server zu Azure SQL-Datenbank) gespeichert werden. Damit ein Export hinsichtlich der Transaktionen konsistent ist, müssen Sie sicherstellen, dass während des Exports keine Schreibaktivitäten stattfinden.
-
-Führen Sie die folgenden Schritte aus, um die Datenbank „AdventureWorks2008R2“ mit dem Befehlszeilenprogramm „SQLPackage“ in lokalen Speicher zu exportieren.
-
-1. Öffnen Sie eine Windows-Eingabeaufforderung, und navigieren Sie zu dem Ordner, in dem sich die **130**-Version von „SQLPackage“ befindet, z.B. **C:\Program Files (x86) \Microsoft SQL Server\130\DAC\bin**.
-
-2. Führen Sie den folgenden SQLPackage-Befehl an der Eingabeaufforderung aus, um die Datenbank **AdventureWorks2008R2** von **localhost** in **AdventureWorks2008R2.bacpac** zu exportieren. Ändern Sie diese Werte entsprechend Ihrer Umgebung.
-
-    ```SQLPackage
-    sqlpackage.exe /Action:Export /ssn:localhost /sdn:AdventureWorks2008R2 /tf:AdventureWorks2008R2.bacpac
-    ```
-
-    ![Exportieren mit SQLPackage](./media/sql-database-migrate-your-sql-server-database/sqlpackage-export.png)
-
-Sobald die Ausführung abgeschlossen ist, wird die generierte BACPAC-Datei in dem Verzeichnis gespeichert, in dem sich die ausführbare Datei „sqlpackage“ befindet. In diesem Beispiel ist das „C:\Program Files (x86) \Microsoft SQL Server\130\DAC\bin“. 
 
 ## <a name="log-in-to-the-azure-portal"></a>Anmelden beim Azure-Portal
 
-Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an. Melden Sie sich von dem Computer an, auf dem Sie das Befehlszeilenprogramm „SQLPackage“ ausführen. Dies vereinfacht die Erstellung der Firewallregel in Schritt 5.
+Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
 
-## <a name="create-a-sql-server-logical-server"></a>Erstellen eines logischen SQL Servers
+## <a name="create-a-blank-sql-database"></a>Erstellen einer leeren SQL-­Datenbank
 
-Ein [logischer SQL Server](sql-database-features.md) fungiert als zentraler Verwaltungspunkt für mehrere Datenbanken. Führen Sie die folgenden Schritte aus, um einen logischen SQL Server zu erstellen, der die migrierte Adventure Works-OLTP-SQL Server-Datenbank enthalten soll. 
+Eine Azure SQL-Datenbank wird mit einer definierten Gruppe von [Compute- und Speicherressourcen](sql-database-service-tiers.md) erstellt. Die Datenbank wird in einer [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) und auf einem [logischen Azure SQL-Datenbankserver](sql-database-features.md) erstellt. 
+
+Führen Sie die folgenden Schritte aus, um eine leere SQL-­Datenbank zu erstellen. 
 
 1. Klicken Sie in der linken oberen Ecke des Azure-Portals auf die Schaltfläche **Neu**.
 
-2. Geben Sie im Suchfenster **sql server** auf der Seite **Neu** ein, und wählen Sie in der gefilterten Liste den Eintrag **SQL database (logical server)** (SQL-Datenbank (logischer Server) aus.
+2. Wählen Sie auf der Seite **Neu** die Option **Datenbanken** und dann auf der Seite **Neu** unter **SQL-Datenbank** die Option **Erstellen** aus.
 
-    ![Auswählen des logischen Servers](./media/sql-database-migrate-your-sql-server-database/logical-server.png)
+   ![Leere Datenbank erstellen](./media/sql-database-design-first-database/create-empty-database.png)
 
-3. Klicken Sie auf der Seite **Alles** auf **SQL server (logical server)**, und klicken Sie dann auf der Seite **SQL Server (logical server)** auf **Create**.
-
-    ![Erstellen des logischen Servers](./media/sql-database-migrate-your-sql-server-database/logical-server-create.png)
-
-4. Geben Sie die folgenden Informationen in das Formular „SQL server (logical server)“ ein, wie in der obigen Abbildung dargestellt:     
+3. Geben Sie die folgenden Informationen in das SQL-Datenbank-Formular ein, wie in der obigen Abbildung dargestellt:   
 
    | Einstellung       | Empfohlener Wert | Beschreibung | 
    | ------------ | ------------------ | ------------------------------------------------- | 
-   | **Servername** | Eingeben eines global eindeutigen Namens | Gültige Servernamen finden Sie unter [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) (Benennungsregeln und Einschränkungen). | 
-   | **Serveradministratoranmeldung** | Eingeben eines gültigen Namens | Gültige Anmeldenamen finden Sie unter [Database Identifiers](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers) (Datenbankbezeichner). |
-   | **Kennwort** | Eingeben eines gültigen Kennworts | Ihr Kennwort muss mindestens acht Zeichen umfassen und Zeichen aus drei der folgenden Kategorien enthalten: Großbuchstaben, Kleinbuchstaben, Zahlen und nicht alphanumerische Zeichen. |
-   | **Abonnement** | Auswählen eines Abonnements | Ausführliche Informationen zu Ihren Abonnements finden Sie unter [Abonnements](https://account.windowsazure.com/Subscriptions). |
-   | **Ressourcengruppe** | Wählen Sie eine vorhandene Ressourcengruppe aus, oder erstellen Sie eine neue Gruppe wie z.B. **myResourceGroup**. |  Gültige Ressourcengruppennamen finden Sie unter [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) (Benennungsregeln und Einschränkungen). |
-   | **Standort** | Eingeben eines gültigen Speicherorts für den neuen Server | Informationen zu Regionen finden Sie unter [Azure-Regionen](https://azure.microsoft.com/regions/). |
+   | **Datenbankname** | mySampleDatabase | Gültige Datenbanknamen finden Sie unter [Database Identifiers](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers) (Datenbankbezeichner). | 
+   | **Abonnement** | Ihr Abonnement  | Ausführliche Informationen zu Ihren Abonnements finden Sie unter [Abonnements](https://account.windowsazure.com/Subscriptions). |
+   | **Ressourcengruppe** | myResourceGroup | Gültige Ressourcengruppennamen finden Sie unter [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) (Benennungsregeln und Einschränkungen). |
+   | **Quelle auswählen** | Leere Datenbank | Gibt an, dass eine leere Datenbank erstellt werden soll. |
 
-   ![Ausgefülltes Formular für Erstellen eines logischen Servers](./media/sql-database-migrate-your-sql-server-database/logical-server-create-completed.png)
+4. Klicken Sie auf **Server**, um einen neuen Server für Ihre neue Datenbank zu erstellen und zu konfigurieren. Füllen Sie das Formular **Neuer Server** mit den folgenden Informationen aus: 
 
-5. Klicken Sie auf **Erstellen**, um den logischen Server bereitzustellen. Die Bereitstellung dauert einige Minuten. 
+   | Einstellung       | Empfohlener Wert | Beschreibung | 
+   | ------------ | ------------------ | ------------------------------------------------- | 
+   | **Servername** | Ein global eindeutiger Name | Gültige Servernamen finden Sie unter [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) (Benennungsregeln und Einschränkungen). | 
+   | **Serveradministratoranmeldung** | Ein gültiger Name | Gültige Anmeldenamen finden Sie unter [Database Identifiers](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers) (Datenbankbezeichner).|
+   | **Kennwort** | Ein gültiges Kennwort | Ihr Kennwort muss mindestens acht Zeichen umfassen und Zeichen aus drei der folgenden Kategorien enthalten: Großbuchstaben, Kleinbuchstaben, Zahlen und nicht alphanumerische Zeichen. |
+   | **Location** | Gültiger Standort | Informationen zu Regionen finden Sie unter [Azure-Regionen](https://azure.microsoft.com/regions/). |
 
-> [!IMPORTANT]
-> Merken Sie sich den Servernamen, die Serveradministratoranmeldung und das Kennwort. Sie benötigen sie später in diesem Tutorial.
->
+   ![Erstellung des Datenbankservers](./media/sql-database-design-first-database/create-database-server.png)
+
+5. Klicken Sie auf **Auswählen**.
+
+6. Klicken Sie auf **Tarif**, um die Dienstebene, die Anzahl von DTUs und die Menge an Speicher anzugeben. Entdecken Sie die Optionen für die Anzahl von DTUs und Menge an Speicher, die für jede Dienstebene verfügbar sind. 
+
+7. Wählen Sie in diesem Tutorial die Dienstebene **Standard** und dann mit dem Schieberegler **100 DTUs (S3)** und **400** GB Speicher aus.
+
+   ![Datenbankerstellung s1](./media/sql-database-design-first-database/create-empty-database-pricing-tier.png)
+
+8. Akzeptieren Sie die Nutzungsbedingungen für die Vorschauversion, um die Option **Add-On-Speicher** zu verwenden. 
+
+   > [!IMPORTANT]
+   > \* Speichergrößen, die den integrierten Speicher überschreiten, befinden sich in der Vorschauphase und werden gegen Aufpreis bereitgestellt. Weitere Informationen finden Sie unter [SQL-Datenbank Preise](https://azure.microsoft.com/pricing/details/sql-database/). 
+   >
+   >\* Im Premium-Tarif ist eine Speicherkapazität von mehr als 1 TB in folgenden Regionen verfügbar: „USA, Osten 2“, „USA, Westen“, „USA Gov Virginia“, „Europa, Westen“, „Deutschland, Mitte“, „Asien, Südosten“, „Japan, Osten“, „Australien, Osten“, „Kanada, Mitte“ und „Kanada, Osten“. Siehe [Aktuelle Einschränkungen für P11–P15](sql-database-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+   > 
+
+9. Klicken Sie auf **Übernehmen**, wenn Sie die Dienstebene, die Anzahl von DTUs und die Menge an Speicherplatz ausgewählt haben.  
+
+10. Wählen Sie eine **Sortierung** für die leere Datenbank aus (verwenden Sie in diesem Tutorial den Standardwert). Weitere Informationen über Sortierungen finden Sie unter [Sortierungen](https://docs.microsoft.com/sql/t-sql/statements/collations).
+
+11. Nachdem Sie das SQL-Datenbank-Formular ausgefüllt haben, können Sie auf **Erstellen** klicken, um die Datenbank bereitzustellen. Die Bereitstellung dauert einige Minuten. 
+
+12. Klicken Sie in der Symbolleiste auf **Benachrichtigungen**, um den Bereitstellungsprozess zu überwachen.
+    
+     ![Benachrichtigung](./media/sql-database-get-started-portal/notification.png)
 
 ## <a name="create-a-server-level-firewall-rule"></a>Erstellen einer Firewallregel auf Serverebene
 
-Der SQL-Datenbankdienst erstellt eine [Firewall auf Serverebene](sql-database-firewall-configure.md), um zu verhindern, dass externe Anwendungen und Tools eine Verbindung mit dem Server oder Datenbanken auf dem Server herstellen – sofern keine Firewallregel erstellt wird, um die Firewall für bestimmte IP-Adressen zu öffnen. Führen Sie die folgenden Schritte aus, um eine SQL-Datenbank-Firewallregel auf Serverebene für die IP-Adresse des Computers zu erstellen, auf dem Sie das Befehlszeilenprogramm „SQLPackage“ ausführen. Dadurch kann SQLPackage über die Azure SQL-Datenbank-Firewall eine Verbindung mit dem logischen SQL Datenbank-Server herstellen. 
-
-1. Klicken Sie im linken Menü auf **Alle Ressourcen**, und klicken Sie auf der Seite **Alle Ressourcen** auf den neuen Server. Die Übersichtsseite für Ihren Server wird geöffnet und enthält Optionen für die weitere Konfiguration.
-
-     ![Übersicht über logischen Server](./media/sql-database-migrate-your-sql-server-database/logical-server-overview.png)
-
-2. Klicken Sie auf der Übersichtsseite im linken Menü unter **Einstellungen** auf **Firewall**. Die Seite **Firewalleinstellungen** für den SQL-Datenbankserver wird geöffnet. 
-
-3. Klicken Sie auf der Symbolleiste auf **Client-IP-Adresse hinzufügen**, um die IP-Adresse des Computers hinzuzufügen, den Sie derzeit verwenden. Klicken Sie dann auf **Speichern**. Eine Firewallregel auf Serverebene wird für diese IP-Adresse erstellt.
-
-     ![Festlegen der Serverfirewallregel](./media/sql-database-migrate-your-sql-server-database/server-firewall-rule-set.png)
-
-4. Klicken Sie auf **OK**.
-
-Nun können Sie über diese IP-Adresse Verbindungen mit allen Datenbanken auf diesem Server herstellen. Verwenden Sie hierzu SQL Server Management Studio oder ein anderes Tool Ihrer Wahl sowie das zuvor erstellte Serveradministratorkonto.
+Der SQL-Datenbankdienst erstellt eine Firewall auf Serverebene, um zu verhindern, dass externe Anwendungen und Tools eine Verbindung mit dem Server oder Datenbanken auf dem Server herstellen – sofern keine Firewallregel erstellt wird, um die Firewall für bestimmte IP-Adressen zu öffnen. Führen Sie die hier angegebenen Schritte zum Erstellen einer [SQL-Datenbank-Firewallregel auf Serverebene](sql-database-firewall-configure.md) für die IP-Adresse Ihres Clients und Zulassen der externen Konnektivität durch die SQL-Datenbankfirewall nur für Ihre IP-Adresse aus. 
 
 > [!NOTE]
 > SQL-Datenbank kommuniziert über Port 1433. Wenn Sie versuchen, eine Verbindung aus einem Unternehmensnetzwerk heraus herzustellen, wird der ausgehende Datenverkehr über Port 1433 von der Firewall Ihres Netzwerks unter Umständen nicht zugelassen. In diesem Fall können Sie nur dann eine Verbindung mit Ihrem Azure SQL-Datenbankserver herstellen, wenn Ihre IT-Abteilung Port 1433 öffnet.
 >
 
-## <a name="import-a-bacpac-file-to-azure-sql-database"></a>Importieren einer BACPAC-Datei in Azure SQL-Datenbank 
+1. Klicken Sie nach Abschluss der Bereitstellung im Menü auf der linken Seite auf **SQL-Datenbanken**, und klicken Sie dann auf der Seite **SQL-Datenbanken** auf **mySampleDatabase**. Die Übersichtsseite für Ihre Datenbank wird geöffnet, die den vollqualifizierten Servernamen (z.B. **mynewserver20170824.database.windows.net**) und Optionen für die weitere Konfiguration enthält. 
 
-Die neuesten Versionen des Befehlszeilenprogramms „SQLPackage“ unterstützen das Erstellen einer Azure SQL-Datenbank auf einer angegebenen [Dienstebene und Leistungsstufe](sql-database-service-tiers.md). Damit beim Importieren die beste Leistung erzielt wird, wählen Sie eine hohe Dienstebene und Leistungsstufe aus. Nach dem Import können Sie zentral herunterskalieren, wenn die Dienstebene und die Leistungsstufe höher sind, als dies derzeit erforderlich ist.
+2. Kopieren Sie diesen vollqualifizierten Servernamen, um in den nachfolgenden Schnellstarts eine Verbindung mit Ihrem Server und den Datenbanken herzustellen. 
 
-Führen Sie die folgenden Schritte aus, um die Datenbank „AdventureWorks2008R2“ mit dem Befehlszeilenprogramm „SQLPackage“ in Azure SQL-Datenbank zu importieren. Sie können SQL Server Management Studio zwar für diese Aufgabe verwenden, SQLPackage wird jedoch für die meisten Produktionsumgebungen bevorzugt, damit eine maximale Flexibilität und eine gute Leistung sichergestellt ist. Weitere Informationen dazu finden Sie unter [Migrating from SQL Server to Azure SQL Database using BACPAC Files](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/) (Migrieren von SQL Server zu Azure SQL-Datenbank mithilfe von BACPAC-Dateien).
+   ![Servername](./media/sql-database-get-started-portal/server-name.png) 
 
-- Führen Sie den folgenden SQLPackage-Befehl an der Eingabeaufforderung aus, um die Datenbank **AdventureWorks2008R2** aus dem lokalen Speicher in den logischen SQL Server zu importieren, den Sie zuvor in eine neue Datenbank mit der Dienstebene **Premium** und dem Dienstziel **P6** erstellt haben. Ersetzen Sie die Werte in spitzen Klammern durch die entsprechenden Werte für Ihren logischen SQL Server, und geben Sie einen Namen für die neue Datenbank ein (ersetzen Sie auch die spitzen Klammern). Sie können auch die Werte für die Datenbankedition und das Dienstziel durch die Werte Ihrer Umgebung ersetzen. In diesem Tutorial hat die migrierte Datenbank den Namen **myMigratedDatabase**.
+3. Klicken Sie auf der Symbolleiste auf **Serverfirewall festlegen**. Die Seite **Firewalleinstellungen** für den SQL-Datenbankserver wird geöffnet. 
 
-    ```
-    SqlPackage.exe /a:import /tcs:"Data Source=<your_server_name>.database.windows.net;Initial Catalog=<your_new_database_name>;User Id=<change_to_your_admin_user_account>;Password=<change_to_your_password>" /sf:AdventureWorks2008R2.bacpac /p:DatabaseEdition=Premium /p:DatabaseServiceObjective=P6
-    ```
+   ![Serverfirewallregel](./media/sql-database-get-started-portal/server-firewall-rule.png) 
 
-   ![Importieren mit SQLPackage](./media/sql-database-migrate-your-sql-server-database/sqlpackage-import.png)
+4. Klicken Sie in der Symbolleiste auf **Client-IP-Adresse hinzufügen**, um Ihre aktuelle IP-Adresse einer neuen Firewallregel hinzuzufügen. Eine Firewallregel kann Port 1433 für eine einzelne IP-Adresse oder einen Bereich von IP-Adressen öffnen.
+
+5. Klicken Sie auf **Speichern**. Für Ihre aktuelle IP-Adresse wird eine Firewallregel auf Serverebene erstellt, und auf dem logischen Server wird Port 1433 geöffnet.
+
+6. Klicken Sie auf **OK**, und schließen Sie anschließend die Seite **Firewalleinstellungen**.
+
+Sie können für diese IP-Adresse jetzt eine Verbindung mit dem SQL-Datenbankserver und den dazugehörigen Datenbanken herstellen. Verwenden Sie hierfür SQL Server Management Studio, Data Migration Assistant oder ein anderes Tool Ihrer Wahl sowie das im vorherigen Verfahren erstellte Serveradministratorkonto.
 
 > [!IMPORTANT]
-> Ein logischer SQL Server lauscht auf Port 1433. Wenn Sie versuchen, durch eine Unternehmensfirewall eine Verbindung mit einem logischen SQL Server herzustellen, muss dieser Port in der Unternehmensfirewall geöffnet sein, damit der Vorgang erfolgreich ist.
->
+> Standardmäßig ist der Zugriff über die SQL-Datenbank-Firewall für alle Azure-Dienste aktiviert. Klicken Sie auf dieser Seite auf **AUS**, um dies für alle Azure-Dienste zu deaktivieren.
 
-## <a name="connect-using-sql-server-management-studio-ssms"></a>Herstellen einer Verbindung mithilfe von SQL Server Management Studio (SSMS)
+## <a name="sql-server-connection-information"></a>SQL Server-Verbindungsinformationen
 
-Verwenden Sie SQL Server Management Studio, um eine Verbindung mit Ihrem Azure SQL-Datenbankserver und der neu migrierten Datenbank herzustellen, die in diesem Tutorial den Namen **myMigratedDatabase** hat. Wenn Sie SQL Server Management Studio nicht auf dem Computer ausführen, der mit dem identisch ist, auf dem Sie „SQLPackage“ ausgeführt haben, erstellen Sie eine Firewallregel für diesen Computer (siehe die Schritte im vorherigen Verfahren).
+Rufen Sie den vollqualifizierten Servernamen für Ihren Azure SQL-Datenbankserver im Azure-Portal ab. Sie verwenden den vollqualifizierten Servernamen für das Herstellen der Verbindung mit Ihrem Azure SQL-Server mithilfe von Clienttools einschließlich Data Migration Assistance und SQL Server Management Studio.
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
+2. Wählen Sie im Menü auf der linken Seite die Option **SQL-Datenbanken**, und klicken Sie auf der Seite **SQL-Datenbanken** auf Ihre Datenbank. 
+3. Suchen Sie im Azure-Portal auf der Seite für Ihre Datenbank unter **Zusammenfassung** nach Ihrer Datenbank, und kopieren Sie den **Servernamen**.
+
+   ![Verbindungsinformationen](./media/sql-database-get-started-portal/server-name.png)
+
+## <a name="migrate-your-database"></a>Migrieren Ihrer Datenbank
+
+Führen Sie die folgenden Schritte aus, um mit dem **[Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595)** die Bereitschaft Ihrer Datenbank für die Migration zu Azure SQL-Datenbank zu bewerten und die Migration abzuschließen.
+
+1. Öffnen Sie den **Data Migration Assistant**. Sie können DMA auf jedem Computer ausführen, der mit der SQL Server-Instanz, die die Datenbank enthält, die Sie migrieren möchten, und dem Internet verbunden ist. Sie müssen DMA nicht auf dem Computer installieren, der die SQL Server-Instanz hostet, die Sie migrieren. Die Firewallregel, die Sie in einem vorherigen Verfahren erstellt haben, muss für den Computer gelten, auf dem Sie den Data Migration Assistant ausführen.
+
+     ![Öffnen des Data Migration Assistant](./media/sql-database-migrate-your-sql-server-database/data-migration-assistant-open.png)
+
+2. Klicken Sie im linken Menü auf **+ Neu**, um ein **Assessment**-Projekt zu erstellen. Geben Sie die angeforderten Werte ein, und klicken Sie dann auf **Erstellen**:
+
+   | Einstellung      | Empfohlener Wert | Beschreibung | 
+   | ------------ | ------------------ | ------------------------------------------------- | 
+   | Projekttyp | Migration | Wählen Sie entweder, Ihre Datenbank für die Migration zu bewerten, oder wählen Sie Bewertung und Migration als Teil des gleichen Workflows. |
+   |Projektname|Migrationstutorial| Ein beschreibender Name |
+   |Quellservertyp| SQL Server | Dies ist die einzige derzeit unterstützte Quelle. |
+   |Zielservertyp| Azure SQL-Datenbank| Optionen: Azure SQL-Datenbank, SQL Server, SQL Server auf virtuellen Azure-Computern |
+   |Migrationsumfang| Schema und Daten| Optionen: Schema und Daten, nur Schema, nur Daten |
+   
+   ![Neues Data Migration Assistant-Projekt](./media/sql-database-migrate-your-sql-server-database/data-migration-assistant-new-project.png)
+
+3.  Tragen Sie auf der Seite **Quelle auswählen** die angeforderten Werte ein, und klicken Sie dann auf **Verbinden**:
+
+    | Einstellung      | Empfohlener Wert | Beschreibung | 
+    | ------------ | ------------------ | ------------------------------------------------- | 
+    | Servername | Ihr Servername oder Ihre IP-Adresse | Ihr Servername oder Ihre IP-Adresse |
+    | Authentifizierungsart | Ihr bevorzugter Authentifizierungstyp| Optionen: Windows-Authentifizierung, SQL Server-Authentifizierung, Integrierte Active Directory-Authentifizierung, Active Directory-Kennwortauthentifizierung |
+    | Benutzername | Ihr Anmeldename | Ihre Anmeldung benötigt **SERVER STEUERN**-Berechtigungen. |
+    | Kennwort| Ihr Kennwort | Ihr Kennwort |
+    | Verbindungseigenschaften| Wählen Sie Ihrer Umgebung entsprechend **Verbindung verschlüsseln** und **Serverzertifikat vertrauen**. | Wählen Sie die entsprechenden Eigenschaften für die Verbindung mit Ihrem Server. |
+
+    ![Neue Datenmigration – Quelle auswählen](./media/sql-database-migrate-your-sql-server-database/data-migration-assistant-source.png)
+
+5. Wählen Sie eine einzelne Datenbank von Ihrem Quellserver zum Migrieren zu Azure SQL-Datenbank, und klicken Sie dann auf **Weiter**. Für dieses Tutorial ist nur eine einzelne Datenbank vorhanden.
+
+6. Tragen Sie auf der Seite **Ziel auswählen** die angeforderten Werte ein, und klicken Sie dann auf **Verbinden**:
+
+    | Einstellung      | Empfohlener Wert | Beschreibung | 
+    | ------------ | ------------------ | ------------------------------------------------- | 
+    | Servername | Ihr vollqualifizierter Azure-Datenbankservername | Ihr vollqualifizierter Azure-Datenbankservername aus dem vorherigen Verfahren |
+    | Authentifizierungsart | SQL Server-Authentifizierung | Die SQL Server-Authentifizierung war beim Verfassen dieses Tutorials die einzige Option, aber Integrierte Active Directory-Authentifizierung und Active Directory-Kennwortauthentifizierung werden auch von Azure SQL-Datenbank unterstützt. |
+    | Benutzername | Ihr Anmeldename | Ihre Anmeldung benötigt **DATENBANK STEUERN**-Berechtigungen für die Quelldatenbank. |
+    | Kennwort| Ihr Kennwort | Ihr Kennwort |
+    | Verbindungseigenschaften| Wählen Sie Ihrer Umgebung entsprechend **Verbindung verschlüsseln** und **Serverzertifikat vertrauen**. | Wählen Sie die entsprechenden Eigenschaften für die Verbindung mit Ihrem Server. |
+
+    ![Neue Datenmigration – Ziel auswählen](./media/sql-database-migrate-your-sql-server-database/data-migration-assistant-target.png)
+
+7. Wählen Sie die Datenbank auf dem Zielserver, die Sie in einem vorherigen Verfahren erstellt haben, und klicken Sie dann auf **Weiter**, um den Prozess der Bewertung des Quelldatenbankschemas zu starten. Für dieses Tutorial ist nur eine einzelne Datenbank vorhanden. Beachten Sie, dass der Kompatibilitätsgrad dieser Datenbank auf 140 festgelegt ist, dem standardmäßigen Kompatibilitätsgrad für alle neuen Datenbanken in Azure SQL-Datenbank.
+
+   > [!IMPORTANT] 
+   > Nach der Migration Ihrer Datenbank zu Azure SQL-Datenbank können Sie auswählen, die Datenbank aus Gründen der Abwärtskompatibilität mit einem angegebenen Kompatibilitätsgrad zu nutzen. Weitere Informationen zu den Auswirkungen und Optionen für das Ausführen einer Datenbank mit einem bestimmten Kompatibilitätsgrad finden Sie unter [ALTER DATABASE Compatibility Level](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-compatibility-level). Lesen Sie auch [ALTER DATABASE SCOPED CONFIGURATION](https://docs.microsoft.com/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql). Dort finden Sie Informationen zu weiteren Einstellungen auf Datenbankebene, die sich auf Kompatibilitätsgrade beziehen.
+   >
+
+8. Überprüfen Sie nach Abschluss der Datenbankschema-Bewertung auf der Seite **Objekte auswählen** die zur Migration ausgewählten Objekte sowie die Objekte, bei denen Probleme vorliegen. Überprüfen Sie z.b. das **dbo.uspSearchCandidateResumes**-Objekt auf **SERVERPROPERTY('LCID')**-Verhaltensänderungen und das **HumanResourcesJobCandidate**-Objekt auf Änderungen der Volltextsuche. 
+
+   > [!IMPORTANT] 
+   > Je nach Entwurf der Datenbank und Entwurf Ihrer Anwendung müssen Sie bei der Migration der Quelldatenbank nach der Migration (und in einigen Fällen vor der Migration) möglicherweise entweder die Datenbank oder die Anwendung oder beide ändern. Informationen zu Transact-SQL-Unterschieden, die Ihre Migration beeinflussen könnten, finden Sie unter [Auflösen von Transact-SQL-Unterschieden während der Migration zur SQL-Datenbank](sql-database-transact-sql-information.md).
+
+     ![Neue Datenmigration – Bewertung und Objektauswahl](./media/sql-database-migrate-your-sql-server-database/data-migration-assistant-assessment-results.png)
+
+9. Klicken Sie auf **SQL-Skript generieren**, um für die Schemaobjekte in der Quelldatenbank ein Skript zu erstellen. 
+10. Überprüfen Sie das generierte Skript, und klicken Sie dann ggf. auf **Nächstes Problem**, um die identifizierten Bewertungsprobleme und Empfehlungen zu untersuchen. Beispielsweise gilt für die Volltextsuche beim Aktualisieren die Empfehlung, Ihre Anwendungen mit den Volltextfeatures zu testen. Sie können das Skript speichern oder kopieren, wenn Sie möchten.
+
+     ![Neue Datenmigration – generiertes Datenmigrationsskript](./media/sql-database-migrate-your-sql-server-database/data-migration-assistant-generated-script.png)
+
+11. Klicken Sie auf **Schema bereitstellen**, und beobachten Sie den Schemamigrationsprozess.
+
+     ![Neue Datenmigration – Schemamigration](./media/sql-database-migrate-your-sql-server-database/data-migration-assistant-schema-migration.png)
+
+12. Wenn die Schemamigration abgeschlossen ist, überprüfen Sie die Ergebnisse auf Fehler, und klicken Sie dann – sofern keine vorhanden sind – auf **Daten migrieren**.
+13. Überprüfen Sie auf der Seite **Tabellen auswählen** die zur Migration ausgewählten Tabellen, und klicken Sie dann auf **Datenmigration starten**.
+
+     ![Neue Datenmigration – Datenmigration](./media/sql-database-migrate-your-sql-server-database/data-migration-assistant-data-migration.png)
+
+14. Beobachten Sie den Migrationsprozess.
+
+     ![Neue Datenmigration – Datenmigrationsprozess](./media/sql-database-migrate-your-sql-server-database/data-migration-assistant-data-migration-process.png)
+
+## <a name="connect-to-the-database-with-ssms"></a>Herstellen einer Verbindung für die Datenbank mit SSMS
+
+Verwenden Sie [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms), um eine Verbindung mit Ihrem Azure SQL-Datenbankserver herzustellen.
 
 1. Öffnen Sie SQL Server Management Studio.
 
 2. Geben Sie im Dialogfeld **Mit Server verbinden** die folgenden Informationen ein:
-   - **Servertyp**: Geben Sie das Datenbankmodul ein.
-   - **Servername**: Geben Sie den vollqualifizierten Servernamen ein, z.B. **mynewserver20170403.database.windows.net**.
-   - **Authentifizierung**: Geben Sie die SQL Server-Authentifizierung an.
-   - **Anmeldung**: Geben Sie Ihr Serveradministratorkonto ein.
-   - **Kennwort**: Geben Sie das Kennwort für Ihr Serveradministratorkonto ein.
- 
-    ![Verbinden mit SSMS](./media/sql-database-migrate-your-sql-server-database/connect-ssms.png)
 
-3. Klicken Sie auf **Verbinden**. Die Objekt-Explorer-Fenster wird geöffnet. 
+   | Einstellung       | Empfohlener Wert | Beschreibung | 
+   | ------------ | ------------------ | ------------------------------------------------- | 
+   | Servertyp | Datenbankmodul | Dieser Wert ist erforderlich. |
+   | Servername | Der vollqualifizierte Servername | Der Name sollte etwa wie folgt lauten: **mynewserver20170824.database.windows.net**. |
+   | Authentifizierung | SQL Server-Authentifizierung | In diesem Tutorial haben wir als einzigen Authentifizierungstyp die SQL-Authentifizierung konfiguriert. |
+   | Anmeldung | Das Serveradministratorkonto | Hierbei handelt es sich um das Konto, das Sie beim Erstellen des Servers angegeben haben. |
+   | Kennwort | Das Kennwort für das Serveradministratorkonto | Hierbei handelt es sich um das Kennwort, das Sie beim Erstellen des Servers angegeben haben. |
 
-4. Erweitern Sie im Objekt-Explorer die Option **Datenbanken** und anschließend den Eintrag **myMigratedDatabase**, um die Objekte in der Beispieldatenbank anzuzeigen.
+   ![Verbindung mit dem Server herstellen](./media/sql-database-connect-query-ssms/connect.png)
+
+3. Klicken Sie im Dialogfeld **Mit Server verbinden** auf **Optionen**. Geben Sie im Abschnitt **Verbindung mit Datenbank herstellen** den Text **mySampleDatabase** ein, um eine Verbindung mit dieser Datenbank herzustellen.
+
+   ![Herstellen einer Verbindung mit der Datenbank auf dem Server](./media/sql-database-connect-query-ssms/options-connect-to-db.png)  
+
+4. Klicken Sie auf **Verbinden**. Die Objekt-Explorer-Fenster wird in SSMS geöffnet. 
+
+5. Erweitern Sie im Objekt-Explorer die Option **Datenbanken** und anschließend die Option **mySampleDatabase**, um die Objekte in der Beispieldatenbank anzuzeigen.
+
+   ![Datenbankobjekte](./media/sql-database-connect-query-ssms/connected.png)  
 
 ## <a name="change-database-properties"></a>Ändern von Datenbankeigenschaften
 
 Sie können die Dienstebene, die Leistungsstufe und den Kompatibilitätsgrad über SQL Server Management Studio ändern. Es empfiehlt sich, dass Sie während des Importierens eine Datenbank mit einer höheren Leistungsstufe importieren, um die bestmögliche Leistung zu erreichen. Skalieren Sie diese nach dem abgeschlossenen Import jedoch herunter, um Geld zu sparen, bis Sie die importierte Datenbank aktiv verwenden können. Durch Ändern des Kompatibilitätsgrads erreichen Sie eine bessere Leistung und erhalten Zugriff auf die neuesten Funktionen des Azure SQL-Datenbankdiensts. Wenn Sie eine ältere Datenbank migrieren, bleibt ihr Datenbankkompatibilitätsgrad auf der niedrigsten Ebene, die mit der zu importierenden Datenbank kompatibel ist. Weitere Informationen finden Sie unter [Improved query performance with compatibility Level 130 in Azure SQL Database](sql-database-compatibility-level-query-performance-130.md) (Verbesserte Abfrageleistung mit Kompatibilitätsgrad 130 in Azure SQL-Datenbank).
 
-1. Klicken Sie im Objekt-Explorer mit der rechten Maustaste auf **myMigratedDatabase**, und klicken Sie auf **Neue Abfrage**. Ein Abfragefenster mit einer Verbindung mit Ihrer Datenbank wird geöffnet.
+1. Klicken Sie im Objekt-Explorer mit der rechten Maustaste auf **mySampleDatabase** und dann auf **Neue Abfrage**. Ein Abfragefenster mit einer Verbindung mit Ihrer Datenbank wird geöffnet.
 
 2. Führen Sie folgenden Befehl aus, um die auf die Dienstebene auf **Standard** und die Leistungsstufe auf **S1** festzulegen.
 
-    ```
-    ALTER DATABASE myMigratedDatabase 
+    ```sql
+    ALTER DATABASE mySampleDatabase 
     MODIFY 
         (
         EDITION = 'Standard'
@@ -220,24 +268,13 @@ Sie können die Dienstebene, die Leistungsstufe und den Kompatibilitätsgrad üb
     );
     ```
 
-    ![Ändern der Dienstebene](./media/sql-database-migrate-your-sql-server-database/service-tier.png)
-
-3. Führen Sie den folgenden Befehl aus, um den Datenbankkompatibilitätsgrad in **130** zu ändern.
-
-    ```
-    ALTER DATABASE myMigratedDatabase  
-    SET COMPATIBILITY_LEVEL = 130;
-    ```
-
-   ![Ändern des Kompatibilitätsgrads](./media/sql-database-migrate-your-sql-server-database/compat-level.png)
-
 ## <a name="next-steps"></a>Nächste Schritte 
-In diesem Tutorial haben Sie Ihre Datenbank vorbereitet, exportiert und importiert. Sie haben Folgendes gelernt:
+In diesem Tutorial haben Sie Folgendes gelernt:
 
-> [!div class="checklist"]
-> * Vorbereiten der Datenbank einer SQL Server-Instanz für die Migration zu Azure SQL-Datenbank
-> * Exportieren der Datenbank in eine BACPAC-Datei
-> * Importieren der BACPAC-Datei in eine Azure SQL-Datenbank
+> * Erstellen einer leeren Azure SQL-Datenbank im Azure-Portal 
+> * Erstellen einer Firewall auf Serverebene im Azure-Portal 
+> * Verwenden des [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) (DMA) zum Importieren Ihrer SQL Server-Datenbank in die leere Azure SQL-Datenbank 
+> * Verwenden von [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS), um die Datenbankeigenschaften zu ändern.
 
 Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie Ihre Datenbank schützen.
 

@@ -1,11 +1,11 @@
 ---
 title: "Ausführen von Ad-hoc-Analyseabfragen für mehrere Azure SQL-Datenbanken | Microsoft-Dokumentation"
-description: "Führen Sie in der mehrinstanzenfähigen Wingtip-SaaS-App Ad-hoc-Analyseabfragen über mehrere SQL-Datenbanken hinweg durch."
+description: "Ausführen von Ad-hoc-Analyseabfragen für mehrere SQL-Datenbanken in einem mehrinstanzenfähigen App-Beispiel."
 keywords: Tutorial zur SQL-Datenbank
 services: sql-database
 documentationcenter: 
 author: stevestein
-manager: jhubbard
+manager: craigg
 editor: 
 ms.assetid: 
 ms.service: sql-database
@@ -16,17 +16,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: billgib; sstein
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: c287fe5d6b333c749b0580b5253e7e46ac27232b
+ms.translationtype: HT
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: a27a65627fecf35b59122110250a40c6fe8077b5
 ms.contentlocale: de-de
-ms.lasthandoff: 06/28/2017
-
+ms.lasthandoff: 09/13/2017
 
 ---
-# <a name="run-ad-hoc-analytics-queries-across-all-wingtip-saas-tenants"></a>Ausführen von Ad-hoc-Analyseabfragen über alle Wingtip-SaaS-Mandanten hinweg
+# <a name="run-ad-hoc-analytics-queries-across-multiple-azure-sql-databases"></a>Ausführen von Ad-hoc-Analyseabfragen für mehrere Azure SQL-Datenbanken
 
-In diesem Tutorial können Sie Abfragen über einen Satz von Mandantendatenbanken verteilen, um Ad-hoc-Analysen möglich zu machen. Mit Elastic Query können Sie verteilte Abfragen durchführen. Dazu ist die Bereitstellung einer weiteren Analysedatenbank (im Katalogserver) erforderlich. Diese Abfragen können Einblicke geben, die sonst in den tagtäglichen operativen Daten der Wingtip-SaaS-App verborgen bleiben.
+In diesem Tutorial können Sie Abfragen über einen Satz von Datenbanken mit mehreren Mandanten verteilen, um Ad-hoc-Analysen möglich zu machen. Mit Elastic Query können Sie verteilte Abfragen durchführen. Dazu ist die Bereitstellung einer weiteren Analysedatenbank (im Katalogserver) erforderlich. Diese Abfragen können Einblicke geben, die sonst in den tagtäglichen operativen Daten der Wingtip-SaaS-App verborgen bleiben.
 
 
 In diesem Tutorial lernen Sie Folgendes kennen:
@@ -48,11 +47,11 @@ Stellen Sie zum Durchführen dieses Tutorials sicher, dass die folgenden Vorauss
 
 ## <a name="ad-hoc-analytics-pattern"></a>Ad-hoc-Analysemuster
 
-Einer der großen Vorteile von SaaS-Anwendungen ist, dass Sie die riesige Menge von zentral gespeicherten Mandantendaten in der Cloud verwenden können. Sie können diese Daten nutzen, um Erkenntnisse über den Betrieb und die Verwendung Ihrer Anwendung, Ihre Mandanten, die dazugehörigen Benutzer, Einstellungen, das Verhalten usw. zu gewinnen. An diesen gewonnenen Erkenntnissen können Sie sich bei der Entwicklung von Funktionen, Verbesserungen der Benutzerfreundlichkeit und anderen Investitionen in Ihre Apps und Dienste orientieren.
+Einer der großen Vorteile von SaaS-Anwendungen ist, dass Sie die riesige Menge von zentral gespeicherten Mandantendaten in der Cloud verwenden können. Mit diesen Daten können Sie Einblicke in den Betrieb und die Verwendung Ihrer Anwendung erhalten. An diesen gewonnenen Erkenntnissen können Sie sich bei der Entwicklung von Funktionen, Verbesserungen der Benutzerfreundlichkeit und anderen Investitionen in Ihre Apps und Dienste orientieren.
 
 Es ist einfach, auf diese Daten in einer Datenbank mit mehreren Mandanten zuzugreifen, aber weniger einfach bei einer Verteilung über potentiell Tausende von Datenbanken. Ein Ansatz besteht in der Verwendung von [Elastic Query](sql-database-elastic-query-overview.md), wodurch Abfragen für einen verteilten Satz von Datenbanken mit gemeinsamem Schema ermöglicht werden. Flexible Abfragen verwenden eine einzige *Hauptdatenbank*, in der externe Tabellen definiert werden, die Tabellen oder Sichten in den verteilten Datenbanken (Mandantendatenbanken) spiegeln. Abfragen, die an diese Hauptdatenbank übermittelt werden, werden kompiliert, um einen Plan der verteilten Abfrage zu erzeugen, bei dem Teile der Abfrage nach Bedarf per Push an die Mandantendatenbanken übertragen werden. Flexible Abfragen verwenden die Shardzuordnung in der Katalogdatenbank, um den Speicherort der Mandantendatenbanken bereitzustellen. Für Setup und Abfragen wird einfach gewöhnlicher [Transact-SQL](https://docs.microsoft.com/sql/t-sql/language-reference)-Code verwendet, und Ad-hoc-Abfragen von Tools wie Power BI und Excel werden unterstützt.
 
-Durch das Verteilen von Abfragen über Mandantendatenbanken bietet Elastic Query schnellen Einblick in Liveproduktionsdaten. Dadurch dass es möglich ist, das Elastic Query Daten aus vielen Datenbanken abruft, kann die Abfragewartezeit manchmal länger sein als für äquivalente Abfragen, die an eine einzelne Datenbank mit mehreren Mandanten ausgestellt werden. Sie sollten Abfragen mit Sorgfalt erstellen, um die zurückgegebenen Daten zu minimieren. Elastic Query ist häufig optimal für das Abfragen kleiner Mengen von Echtzeitdaten und weniger für das Erstellen von häufig verwendeten oder komplexen Analyseabfragen oder -berichten. Wenn Abfragen nicht optimal ausgeführt werden, schauen Sie sich den [Ausführungsplan](https://docs.microsoft.com/sql/relational-databases/performance/display-an-actual-execution-plan) an, um zu sehen, welcher Teil der Abfrage per Push in die remote Datenbank übertragen wurde und wie viele Daten zurückgegeben werden. Abfragen, die eine komplexe analytische Verarbeitung erfordern, sind möglicherweise in einigen Fällen passender, da sie Mandantendaten in eine dedizierte Datenbank oder ein Data Warehouse extrahieren, die für Analyseabfragen optimal geeignet sind. Dieses Muster wird im [Tutorial zu Mandantenanalysen](sql-database-saas-tutorial-tenant-analytics.md) erklärt. 
+Durch das Verteilen von Abfragen über Mandantendatenbanken bietet Elastic Query schnellen Einblick in Liveproduktionsdaten. Dadurch dass es möglich ist, das Elastic Query Daten aus vielen Datenbanken abruft, kann die Abfragewartezeit manchmal länger sein als für äquivalente Abfragen, die an eine einzelne Datenbank mit mehreren Mandanten ausgestellt werden. Achten Sie darauf, Ihre Abfragen so zu entwerfen, dass ein Minimum an Daten zurückgegeben wird. Elastic Query ist häufig optimal für das Abfragen kleiner Mengen von Echtzeitdaten und weniger für das Erstellen von häufig verwendeten oder komplexen Analyseabfragen oder -berichten. Wenn Abfragen nicht optimal ausgeführt werden, schauen Sie sich den [Ausführungsplan](https://docs.microsoft.com/sql/relational-databases/performance/display-an-actual-execution-plan) an, um zu sehen, welcher Teil der Abfrage per Push in die remote Datenbank übertragen wurde und wie viele Daten zurückgegeben werden. Abfragen, die eine komplexe analytische Verarbeitung erfordern, sind möglicherweise in einigen Fällen passender, da sie Mandantendaten in eine dedizierte Datenbank oder ein Data Warehouse extrahieren, die für Analyseabfragen optimal geeignet sind. Dieses Muster wird im [Tutorial zu Mandantenanalysen](sql-database-saas-tutorial-tenant-analytics.md) erklärt. 
 
 ## <a name="get-the-wingtip-application-scripts"></a>Abrufen des Wingtip-Anwendungsskripts
 
@@ -64,13 +63,13 @@ Um Abfragen mit einem interessanteren Dataset auszuführen, erstellen Sie Ticket
 
 1. Öffnen Sie nun \\Learning Modules\\Operational Analytics\\Adhoc Analytics\\*Demo-AdhocAnalytics.ps1* in der *PowerShell ISE*, und legen Sie folgende Werte fest:
    * **$DemoScenario** = 1, **Tickets für Events an allen Veranstaltungsorten kaufen**.
-2. Drücken Sie **F5**, um das Skript auszuführen und Ticketverkaufsdaten zu generieren. Während das Skript ausgeführt wird, können Sie die nächsten Schritte des Tutorials ausführen. Sie können die Ticketdaten im Abschnitt *Ausführen von verteilten Ad-hoc-Abfragen* abfragen. Warten Sie zunächst, bis der Ticketgenerator abgeschlossen wurde, wenn er noch ausgeführt wird, wenn Sie diese Übung erreichen.
+2. Drücken Sie **F5**, um das Skript auszuführen und Ticketverkaufsdaten zu generieren. Während das Skript ausgeführt wird, können Sie die nächsten Schritte des Tutorials ausführen. Sie können die Ticketdaten im Abschnitt *Ausführen von verteilten Ad-hoc-Abfragen* abfragen. Warten Sie zunächst, bis der Ticketgenerator abgeschlossen wurde.
 
 ## <a name="explore-the-global-views"></a>Untersuchen der globalen Sichten
 
 Die Wingtip-SaaS-Anwendung wird basierend auf dem Modell „ein Mandant pro Datenbank“ erstellt, sodass das Mandantendatenbank-Schema aus Sicht eines einzelnen Mandanten definiert wird. Die mandantenspezifischen Informationen sind in einer Tabelle (*Venue*) vorhanden, die immer über eine einzelne Zeile verfügt und als Heap ohne Primärschlüssel implementiert wird. Andere Tabellen im Schema müssen nicht mit der Tabelle *Venue* verknüpft werden, da bei normaler Nutzung kein Zweifel besteht, zu welchem Mandanten die Daten gehören.
 
-Wenn Sie alle Datenbanken abfragen, ist es wichtig, dass Elastic Query die Daten so behandeln kann, als seinen Sie Teil einer einzigen logischen Datenbank, die vom Mandanten freigegeben wurde. Dies können sich erreichen, indem Sie einen Satz von „globalen“ Ansichten in die Mandantendatenbank hinzufügen, die eine Mandanten-ID in jede der global abgefragten Tabellen projizieren. Beispielsweise fügt die Ansicht *VenueEvents* eine berechnete *VenueId* in den Spalten ein, die von der Tabelle *Events* projiziert wurden. Durch das Definieren der externen Tabelle in der Hauptdatenbank mit *VenueEvents* (statt der zugrundeliegenden Tabelle *Events*) kann Elastic Query Verknüpfungen basierend auf der *VenueId* per Push übertragen, sodass diese parallel in jeder remoten Datenbank ausgeführt werden können (statt in der Hauptdatenbank). Dadurch wird die Menge an zurückgegebenen Daten deutlich verringert, sodass die Leistung von vielen Abfragen wesentlich gesteigert wird. Globale Ansichten wurden in allen Mandantendatenbanken (und in *basetenantdb*) vorgefertigt.
+Wenn Sie alle Datenbanken abfragen, ist es wichtig, dass Elastic Query die Daten so behandeln kann, als seinen Sie Teil einer einzigen logischen Datenbank, die vom Mandanten freigegeben wurde. Dieses Muster können Sie simulieren, indem Sie einen Satz von „globalen“ Ansichten der Mandantendatenbank hinzufügen, die eine Mandanten-ID in jede der global abgefragten Tabellen projizieren. Beispielsweise fügt die Ansicht *VenueEvents* eine berechnete *VenueId* in den Spalten ein, die von der Tabelle *Events* projiziert wurden. Durch das Definieren der externen Tabelle in der Hauptdatenbank mit *VenueEvents* (statt der zugrundeliegenden Tabelle *Events*) kann Elastic Query Verknüpfungen basierend auf der *VenueId* per Push übertragen, sodass diese parallel in jeder remoten Datenbank ausgeführt werden können (statt in der Hauptdatenbank). Dadurch wird die Menge an zurückgegebenen Daten deutlich verringert, sodass die Leistung von vielen Abfragen wesentlich gesteigert wird. Globale Ansichten wurden in allen Mandantendatenbanken (und in *basetenantdb*) vorgefertigt.
 
 1. Öffnen Sie SSMS, und [stellen Sie eine Verbindung mit dem Server „tenants1-&lt;BENUTZER&gt;“ her](sql-database-wtp-overview.md#explore-database-schema-and-execute-sql-queries-using-ssms).
 2. Erweitern Sie die Option **Datenbanken**, klicken Sie mit der rechten Maustaste auf **contosoconcerthall**, und wählen Sie **Neue Abfrage**.
@@ -118,7 +117,7 @@ Im nächsten Abschnitt fügen Sie das Schema in der Datenbank hinzu, damit es zu
 
 In dieser Übung wird ein Schema (die externe Datenquelle und die externen Tabellendefinitionen) in die Ad-hoc-Analysedatenbank eingefügt, wodurch die Abfrage aller Mandantendatenbanken ermöglicht wird.
 
-1. Öffnen Sie SQL Server Management Studio, und stellen Sie eine Verbindung zur Ad-hoc-Analysedatenbank her, die Sie im vorherigen Schritt erstellt haben. Der Name der Datenbank ist „adhocanalytics“.
+1. Öffnen Sie SQL Server Management Studio, und stellen Sie eine Verbindung zur Ad-hoc-Analysedatenbank her, die Sie im vorherigen Schritt erstellt haben. Der Name der Datenbank ist *adhocanalytics*.
 2. Öffnen Sie ...\Learning Modules\Operational Analytics\Adhoc Analytics\ *Initialize-AdhocAnalyticsDB.sql* in SSMS.
 3. Prüfen Sie das SQL-Skript, und achten Sie auf Folgendes:
 

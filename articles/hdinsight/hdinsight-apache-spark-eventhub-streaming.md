@@ -18,10 +18,10 @@ ms.topic: article
 ms.date: 08/28/2017
 ms.author: nitinme
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 175a2ad70b1f554d05846eb62fb685d4f259af7e
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 14d969ecaf1f24a0bb34da4abe78d83f08627796
 ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 # <a name="apache-spark-streaming-process-data-from-azure-event-hubs-with-spark-cluster-on-hdinsight"></a>Apache Spark-Streaming: Verarbeiten von Daten aus Azure Event Hubs mit einem Spark-Cluster in HDInsight
@@ -367,17 +367,7 @@ Die Parameter in der Datei **inputHive.txt** sind wie folgt definiert:
 
 Die Parameter sind ähnlich jenen, die Sie für die Textausgabe in vorherigen Schritten angegeben haben. Auch hier müssen Sie nicht die Ausgabeordner (EventCheckpoint, EventCount/EventCount10) oder die Hive-Ausgabetabelle (EventHiveTable10) erstellen, die als Parameter verwendet werden. Die Streaminganwendung erstellt sie automatisch. Beachten Sie, dass die Optionen **jars** und **files** Pfade zu den JAR-Dateien und zur Datei „hive-site.xml“ enthält, die Sie in das Speicherkonto kopiert haben.
 
-Um sicherzustellen, dass die Hive-Tabelle erfolgreich erstellt wurde, können Sie mit SSH eine Verbindung zum Cluster herstellen und Hive-Abfragen ausführen. Anweisungen finden Sie unter [Verwenden von Hive mit Hadoop in HDInsight über SSH](hdinsight-hadoop-use-hive-ssh.md). Sobald Sie eine Verbindung mit SSH hergestellt haben, können Sie den folgenden Befehl ausführen, um zu überprüfen, ob die Hive-Tabelle **EventHiveTable10**erstellt wurde.
-
-    show tables;
-
-Es sollte eine Ausgabe angezeigt werden, die Folgendem ähnelt:
-
-    OK
-    eventhivetable10
-    hivesampletable
-
-Sie können auch eine SELECT-Abfrage zum Anzeigen des Tabelleninhalts ausführen.
+Um sicherzustellen, dass die Hive-Tabelle erfolgreich erstellt wurde, verwenden Sie die [Ambari Hive-Ansicht](hdinsight-hadoop-use-hive-ambari-view.md). Sie können eine SELECT-Abfrage zum Anzeigen des Tabelleninhalts ausführen.
 
     SELECT * FROM eventhivetable10 LIMIT 10;
 

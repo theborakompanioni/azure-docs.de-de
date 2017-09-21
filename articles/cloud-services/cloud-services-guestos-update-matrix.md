@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 8/24/2017
+ms.date: 9/14/2017
 ms.author: raiye
 ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
-ms.openlocfilehash: be0092e62033da249015b211db148da57bb82765
+ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
+ms.openlocfilehash: dbbf529dc7a7c30daa78d92f210385d20e139d41
 ms.contentlocale: de-de
-ms.lasthandoff: 08/28/2017
+ms.lasthandoff: 09/14/2017
 
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure-Gastbetriebssystemversionen und SDK-Kompatibilitätsmatrix
@@ -38,6 +38,8 @@ Bietet Ihnen aktuelle Informationen zu den neuesten Azure-Gastbetriebssystemrele
 Sind Sie unsicher, was das Gast-BS ist oder wie Gast-BS-Releases funktionieren? Lesen Sie [diesen](#how-it-works) Abschnitt.
 
 ## <a name="news-updates"></a>Neuigkeiten
+###### <a name="september-14-2017"></a>**14. September 2017**
+Das Rollout des Gastbetriebssystems September begann am 14. September und soll voraussichtlich am 9. Oktober veröffentlicht werden.
 
 ###### <a name="august-24-2017"></a>**24. August 2017**
 Das Gastbetriebssystem für August wurde veröffentlicht.
@@ -65,12 +67,6 @@ Das Rollout der Maiversion des Gast-BS beginnt am 12. Mai. Die Veröffentlichung
 
 ###### <a name="april-18-2017"></a>**18. April 2017**
 Das Rollout der Aprilversion des Gast-BS beginnt am 18. April. Die Veröffentlichung ist für den 9. Mai geplant.
-
-###### <a name="april-10-2017"></a>**10. April 2017**
-Der Rollout des Gast-BS für März begann am 14. März 2017, und wurde am 10. April 2017 freigegeben.
-
-###### <a name="january-10-2017"></a>**10. Januar 2017**
-Das Januar-Gastbetriebssystem enthält Patches, die nur die Betriebssystemfamilie 2 betreffen (Windows 2008 Server R2). Wir haben daher nur das Image für die Betriebssystemfamilie 2 (WA-GUEST-OS-2.59_201701-01) für diesen Monat veröffentlicht. Für alle anderen Betriebssystemfamilien, bleibt das Betriebssystem vom Dezember (201612-01) das aktuellste.
 
 
 ## <a name="releases"></a>Releases
