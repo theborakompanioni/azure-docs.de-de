@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/07/2017
 ms.author: parakhj
 ms.translationtype: HT
-ms.sourcegitcommit: 48dfc0fa4c9ad28c4c64c96ae2fc8a16cd63865c
-ms.openlocfilehash: 1e6748f40c7b825615b3f58243afd9d50348214d
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: 430063bbc9fab8195e12cd1d3e3966a29bafd404
 ms.contentlocale: de-de
-ms.lasthandoff: 08/30/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 # <a name="azure-ad-b2c-use-the-graph-api"></a>Azure AD B2C: Verwenden der Graph-API
@@ -59,6 +59,11 @@ Nun müssen Sie Ihre Anwendung so konfigurieren, dass sie alle erforderlichen Be
 5. Klicken Sie schließlich wieder im Menü „Erforderliche Berechtigungen“ auf die Schaltfläche **Berechtigungen erteilen**.
 
 Sie verfügen jetzt über eine Anwendung mit der Berechtigung zum Erstellen, Lesen und Aktualisieren von Benutzern in Ihrem B2C-Mandanten.
+
+> [!NOTE]
+> Die Berechtigungserteilung dauert unter Umständen einige Minuten.
+> 
+> 
 
 ## <a name="configure-delete-permissions-for-your-application"></a>Konfigurieren der Löschberechtigungen für Ihre Anwendung
 Derzeit schließt die Berechtigung *Lese- und Schreibzugriff auf Verzeichnisdaten* **NICHT** die Möglichkeit ein, Löschvorgänge wie z.B. das Löschen von Benutzern durchzuführen. Wenn Ihre Anwendung die Möglichkeit erhalten soll, Benutzer zu löschen, müssen Sie diese zusätzlichen Schritte mit PowerShell ausführen, andernfalls können Sie mit dem nächsten Abschnitt fortfahren.

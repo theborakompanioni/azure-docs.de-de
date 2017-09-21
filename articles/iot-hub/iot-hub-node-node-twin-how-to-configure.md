@@ -12,14 +12,13 @@ ms.devlang: node
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/13/2016
+ms.date: 09/07/2017
 ms.author: elioda
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
-ms.openlocfilehash: f8a6705879905d5cf419fc8c5c2322cb5536d244
+ms.translationtype: HT
+ms.sourcegitcommit: 9b7316a5bffbd689bdb26e9524129ceed06606d5
+ms.openlocfilehash: 6ff6f1c331d5a77e7ac0a47af6806f5d90fb0fdc
 ms.contentlocale: de-de
-ms.lasthandoff: 05/09/2017
-
+ms.lasthandoff: 09/08/2017
 
 ---
 # <a name="use-desired-properties-to-configure-devices-node"></a>Verwenden von gewünschten Eigenschaften zum Konfigurieren von Geräten (Node)
@@ -37,7 +36,7 @@ Am Ende dieses Tutorials verfügen Sie über zwei Node.js-Konsolen-Apps:
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
-* Node.js, Version 0.10.x oder höher.
+* Node.js Version 4.0.x oder höher
 * Ein aktives Azure-Konto. (Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein [kostenloses Konto][lnk-free-trial] erstellen.)
 
 Wenn Sie das Tutorial [Erste Schritte mit Gerätezwillingen][lnk-twin-tutorial] ausgeführt haben, haben Sie bereits einen IoT Hub und die Geräteidentität **myDeviceId** und können daher mit dem Abschnitt [Erstellen der simulierten Geräte-App][lnk-how-to-configure-createapp] fortfahren.
@@ -96,7 +95,7 @@ In diesem Abschnitt erstellen Sie eine Node.js-Konsolenanwendung, die als **myDe
    
     Das **Client**-Objekt macht alle Methoden verfügbar, die für die Interaktion mit Gerätezwillingen des Geräts erforderlich sind. Mit diesem Code wird nach dem Initialisieren des **Client**-Objekts der Gerätezwilling für **myDeviceId** abgerufen und ein Handler für die Aktualisierung der gewünschten Eigenschaften angefügt. Der Handler überprüft durch einen Vergleich der configIds, ob eine tatsächliche Anforderung für eine Konfigurationsänderung vorliegt, und ruft dann eine Methode zum Starten der Konfigurationsänderung auf.
    
-    Beachten Sie, dass beim vorherigen Code der Einfachheit halber ein fest codierter Standardwert für die anfängliche Konfiguration verwendet wird. Mit einer realen App wird diese Konfiguration wahrscheinlich aus einem lokalen Speicher geladen.
+    Beachten Sie, dass beim vorherigen Code der Einfachheit halber ein hartcodierter Standardwert für die anfängliche Konfiguration verwendet wird. Mit einer realen App wird diese Konfiguration wahrscheinlich aus einem lokalen Speicher geladen.
    
    > [!IMPORTANT]
    > Änderungsereignisse der gewünschten Eigenschaften werden bei der Geräteverbindung immer einmal ausgegeben. Stellen Sie vor dem Ausführen einer Aktion sicher, dass bei den gewünschten Eigenschaften eine tatsächliche Änderung vorliegt.
@@ -170,7 +169,7 @@ In diesem Abschnitt erstellen Sie eine Node.js-Konsolenanwendung, die die *gewü
     ```
     npm install azure-iothub node-uuid --save
     ```
-3. Erstellen Sie mithilfe eines Text-Editors die neue Datei **SetDesiredAndQuery.js** im Ordner **addtagsandqueryapp**.
+3. Erstellen Sie mithilfe eines Text-Editors die neue Datei **SetDesiredAndQuery.js** im Ordner **setdesiredandqueryapp**.
 4. Fügen Sie in der Datei **SetDesiredAndQuery.js** den folgenden Code ein, und ersetzen Sie den Platzhalter **{iot hub connection string}** durch die IoT Hub-Verbindungszeichenfolge, die Sie beim Erstellen des Hubs kopiert haben:
    
         'use strict';

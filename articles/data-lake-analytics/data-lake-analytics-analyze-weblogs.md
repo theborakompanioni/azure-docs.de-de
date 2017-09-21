@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: saveenr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
-ms.openlocfilehash: 25fbbe97d26491fc421f4821315761c18e523ec8
+ms.translationtype: HT
+ms.sourcegitcommit: f2ac16c2f514aaa7e3f90fdf0d0b6d2912ef8485
+ms.openlocfilehash: 52d19297ae5c34f9daf5e42250a53a78e0168192
 ms.contentlocale: de-de
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 09/08/2017
 
 ---
 # <a name="analyze-website-logs-using-azure-data-lake-analytics"></a>Analysieren von Websiteprotokollen mit Azure Data Lake Analytics
@@ -36,9 +35,7 @@ Erfahren Sie, wie Sie Websiteprotokolle mit Azure Data Lake Analytics analysiere
 
   * [Entwickeln von U-SQL-Skripts mit den Data Lake-Tools für Visual Studio](data-lake-analytics-data-lake-tools-get-started.md).
 * **Data Lake Analytics-Konto.**  Weitere Informationen finden Sie unter [Erstellen eines Azure Data Lake Analytics-Kontos](data-lake-analytics-get-started-portal.md).
-* **Upload der Beispieldaten in das Data Lake Analytics-Konto.** Weitere Informationen finden Sie unter [So kopieren Sie Beispieldatendateien](data-lake-analytics-get-started-portal.md).
-
-    Zum Ausführen eines Data Lake Analytics-Auftrags benötigen Sie einige Daten. Auch wenn die Data Lake-Tools das Hochladen von Daten unterstützen, verwenden Sie das Portal zum Hochladen der Beispieldaten, um das Durcharbeiten dieses Tutorials zu vereinfachen.
+* **Installieren der Beispieldaten.** Öffnen Sie im Azure-Portal das Data Lake Analytics-Konto, und klicken Sie im Menü auf der linken Seite auf **Beispielskripts**, und klicken Sie dann auf **Beispieldaten kopieren**. 
 
 ## <a name="connect-to-azure"></a>Herstellen einer Verbindung mit Azure
 Bevor Sie U-SQL-Skripts erstellen und testen können, müssen Sie zuerst eine Verbindung mit Azure herstellen.

@@ -16,10 +16,10 @@ ms.workload: integration
 ms.date: 07/13/2017
 ms.author: LADocs; dimazaid; estfan
 ms.translationtype: HT
-ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
-ms.openlocfilehash: 24793b83ca284fe9510fe21bc2d13b0589209d36
+ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
+ms.openlocfilehash: 4744405b2c294be564dedee308b4cba95cfcc3c6
 ms.contentlocale: de-de
-ms.lasthandoff: 07/14/2017
+ms.lasthandoff: 09/14/2017
 
 ---
 # <a name="access-data-sources-on-premises-from-logic-apps-with-the-on-premises-data-gateway"></a>Zugreifen aus Logik-Apps auf lokale Datenquellen mit dem lokalen Datengateway
@@ -141,7 +141,7 @@ Nach dem Sie eine Gatewayverbindung für Ihre Logik-App erstellt haben, kann es 
 
      ![Navigieren zu Ihrer Logik-App, Auswählen von „API-Verbindungen“](./media/logic-apps-gateway-connection/logic-app-find-api-connections.png)
 
-   * Oder wechseln Sie über das Azure-Hauptmenü auf der linken Seite zu **Weitere Dienste**>**Web & Mobile Services**>**API-Verbindungen**, um alle API-Verbindungen anzuzeigen, einschließlich der Gatewayverbindungen, die Ihrem Azure-Abonnement zugeordnet sind. 
+   * Oder wechseln Sie über das Azure-Hauptmenü auf der linken Seite zu **Weitere Dienste** > **Web und Mobil** > **API-Verbindungen**, um alle API-Verbindungen anzuzeigen, einschließlich der Gatewayverbindungen, die Ihrem Azure-Abonnement zugeordnet sind. 
 
    * Alternativ können Sie über das Azure-Hauptmenü auf der linken Seite zu **Alle Ressourcen** für alle API-Verbindungen wechseln, darunter die Gatewayverbindungen, die Ihrem Azure-Abonnement zugeordnet sind.
 

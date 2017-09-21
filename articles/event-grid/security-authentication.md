@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 08/14/2017
 ms.author: babanisa
 ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
-ms.openlocfilehash: ccef224ef1c2919a3e5469c1bbe0980c6963705b
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 9bc82e628df5e380db84e22e1f5fd25f75929fdc
 ms.contentlocale: de-de
-ms.lasthandoff: 08/30/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 
@@ -28,7 +28,7 @@ Azure Event Grid verfügt über drei Authentifizierungsarten:
 
 Ein Webhook ist eine von vielen Möglichkeiten zum Empfangen von Ereignissen in Echtzeit von Azure Event Grid.
 
-Jedes Mal, wenn neues Ereignis bereitgestellt werden kann, sendet Event Grid eine HTTP-Anforderung mit dem Ereignis im Hauptteil an Ihren Webhook.
+Jedes Mal, wenn ein neues Ereignis bereitgestellt werden kann, sendet Event Grid eine HTTP-Anforderung mit dem Ereignis im Hauptteil an Ihren Webhook.
 
 Wenn Sie Ihren eigenen Webhook-Endpunkt bei Event Grid registrieren, wird Ihnen eine POST-Anforderung mit einem einfachen Validierungscode gesendet, damit Sie den Besitz des Endpunkts nachweisen können. Ihre App muss durch Rückgabe desselben Validierungscodes reagieren. Event Grid übermittelt keine Ereignisse an Webhook-Endpunkte, die die Überprüfung nicht erfolgreich abgeschlossen haben.
  

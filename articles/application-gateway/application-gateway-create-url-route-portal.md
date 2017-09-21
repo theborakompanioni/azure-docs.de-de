@@ -1,9 +1,9 @@
 ---
-title: "Erstellen einer pfadbasierten Regel – Azure Application Gateway (Azure-Portal) | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie eine pfadbasierte Regel für ein Application Gateway über das Portal erstellen."
+title: "Erstellen einer pfadbasierten Regel für ein Anwendungsgateway (Azure-Portal) | Microsoft-Dokumentation"
+description: "Hier erfahren Sie, wie Sie eine pfadbasierte Regel für ein Anwendungsgateway über das Azure-Portal erstellen."
 services: application-gateway
 documentationcenter: na
-author: georgewallace
+author: davidmu1
 manager: timlt
 editor: 
 tags: azure-resource-manager
@@ -14,78 +14,78 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/03/2017
-ms.author: gwallace
+ms.author: davidmu
 ms.translationtype: HT
-ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
-ms.openlocfilehash: c184e94a04cfbdedcae70ed154aeb7dd134d1baf
+ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
+ms.openlocfilehash: f90813c0150d17f301f243c534d77ffd3da297b1
 ms.contentlocale: de-de
-ms.lasthandoff: 08/04/2017
+ms.lasthandoff: 09/14/2017
 
 ---
-# <a name="create-a-path-based-rule-for-an-application-gateway-by-using-the-portal"></a>Erstellen einer pfadbasierten Regel für ein Application Gateway über das Portal
+# <a name="create-a-path-based-rule-for-an-application-gateway-by-using-the-azure-portal"></a>Erstellen einer pfadbasierten Regel für ein Anwendungsgateway über das Azure-Portal
 
 > [!div class="op_single_selector"]
 > * [Azure-Portal](application-gateway-create-url-route-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-create-url-route-arm-ps.md)
 > * [Azure CLI 2.0](application-gateway-create-url-route-cli.md)
 
-Mit Routing auf URL-Pfadbasis können Sie Routen basierend auf dem URL-Pfad der Http-Anforderung zuordnen. Es wird überprüft, ob eine Route zu einem Back-End-Pool für die URL konfiguriert ist, die im Anwendungsgateway aufgeführt wird, und der Netzwerkverkehr wird an den definierten Back-End-Pool gesendet. Ein gängiges Szenario für URL-basiertes Routing ist der Lastenausgleich von Anforderungen für verschiedene Inhaltstypen auf verschiedene Back-End-Serverpools.
+Mit Routing auf URL-Pfadbasis ordnen Sie Routen basierend auf dem URL-Pfad der HTTP-Anforderung zu. Es wird überprüft, ob eine Route zu einem Back-End-Serverpool für die URL konfiguriert ist, die im Anwendungsgateway aufgeführt wird, und der Netzwerkdatenverkehr wird dann an den definierten Pool gesendet. Ein gängiges Szenario für Routing auf URL-Pfadbasis ist der Lastenausgleich von Anforderungen für verschiedene Inhaltstypen auf verschiedene Back-End-Serverpools.
 
-Mit Routing auf URL-Basis wird ein neuer Regeltyp für das Application Gateway eingeführt. Application Gateway verfügt über zwei Regeltypen: Basisregeln und pfadbasierte Regeln. Der Basisregeltyp bietet einen Roundrobindienst für die Back-End-Pools, während pfadbasierte Regeln neben der Roundrobinverteilung auch Pfadmuster der Anforderungs-URL beim Auswählen des geeigneten Back-End-Pools berücksichtigen.
+Anwendungsgateways verfügen über zwei Regeltypen: Basisregeln und Regeln auf URL-Pfadbasis. Der Basisregeltyp stellt einen Roundrobin-Dienst für die Back-End-Pools bereit. Pfadbasierte Regeln nutzen bei der Auswahl des entsprechenden Back-End-Pools zusätzlich zur Roundrobin-Verteilung das Pfadmuster der Anforderungs-URL.
 
 ## <a name="scenario"></a>Szenario
 
-Das folgende Szenario führt Sie durch die Erstellung einer pfadbasierten Regel in einem vorhandenen Application Gateway.
-Für dieses Szenario wird davon ausgegangen, dass Sie die Schritte unter [Erstellen eines Anwendungsgateways](application-gateway-create-gateway-portal.md)bereits durchgeführt haben.
+Das folgende Szenario erstellt eine pfadbasierte Regel in einem vorhandenen Anwendungsgateway.
+Für dieses Szenario wird davon ausgegangen, dass Sie die Schritte unter [Erstellen eines Anwendungsgateways über das Portal](application-gateway-create-gateway-portal.md) bereits ausgeführt haben.
 
 ![URL-Route][scenario]
 
 ## <a name="createrule"></a>Erstellen der pfadbasierten Regel
 
-Eine pfadbasierende Regel erfordert einen eigenen Listener. Stellen Sie daher vor dem Erstellen der Regel sicher, dass Ihnen ein Listener zur Verfügung steht, den Sie verwenden können.
+Für eine pfadbasierte Regel ist ein eigener Listener erforderlich. Stellen Sie vor dem Erstellen der Regel sicher, dass ein Listener zur Verfügung steht.
 
 ### <a name="step-1"></a>Schritt 1
 
-Navigieren Sie zum [Azure-Portal](http://portal.azure.com), und wählen Sie ein vorhandenes Anwendungsgateway aus. Klicken Sie auf **Regeln**
+Wechseln Sie zum [Azure-Portal](http://portal.azure.com), und wählen Sie ein vorhandenes Anwendungsgateway aus. Klicken Sie auf **Regeln**.
 
 ![Übersicht über Application Gateway][1]
 
 ### <a name="step-2"></a>Schritt 2
 
-Klicken Sie auf **Pfadbasiert** , um eine neue pfadbasierte Regel hinzuzufügen.
+Klicken Sie auf **Pfadbasiert**, um eine neue pfadbasierte Regel hinzuzufügen.
 
 ### <a name="step-3"></a>Schritt 3
 
-Das Blatt **Add path-based rule** (Pfadbasierte Regel hinzufügen) verfügt über zwei Abschnitte. Im ersten Abschnitt haben Sie den Listener, den Namen der Regel und die Standardpfadeinstellungen festgelegt. Die Standardpfadeinstellungen gelten für Routen, die nicht unter benutzerdefinierte, pfadbasierte Regeln fallen. Im zweiten Abschnitt des Blatts **Add path-based rule** (Pfadbasierte Regel hinzufügen) definierten Sie die pfadbasierten Regeln.
+Das Blatt **Add path-based rule** (Pfadbasierte Regel hinzufügen) verfügt über zwei Abschnitte. Im ersten Abschnitt haben Sie den Listener, den Namen der Regel und die Standardpfadeinstellungen festgelegt. Die Standardpfadeinstellungen gelten für Routen, die nicht unter benutzerdefinierte pfadbasierte Regeln fallen. Im zweiten Abschnitt des Blatts **Add path-based rule** (Pfadbasierte Regel hinzufügen) definierten Sie die pfadbasierten Regeln.
 
-**Basic Settings**
+**Einstellungen für Basisregeln**
 
-* **Name**: Dieser Wert ist der Anzeigename für die Regel, auf die Sie über das Portal zugreifen können.
-* **Listener**: Dieser Wert ist der Listener, der für die Regel verwendet wird.
-* **Default backend pool** (Standard-Back-End-Pool): Dies ist die Einstellung, die das Back-End für die Standardregel festlegt.
-* **Default HTTP settings** (HTTP-Standardeinstellungen): Dies ist die Einstellung, die die HTTP-Einstellungen für die Standardregel festlegt.
+* **Name**: Ein Anzeigename für die Regel, auf die Sie über das Portal zugreifen können
+* **Listener**: Der Listener, der für die Regel verwendet wird
+* **Standard-Back-End-Pool**: Das Back-End, das für die Standardregel verwendet werden soll
+* **HTTP-Standardeinstellungen**: Die HTTP-Einstellungen, die für die Standardregel verwendet werden sollen
 
-**Pfadbasierte Regeln**
+**Einstellungen für pfadbasierte Regeln**
 
-* **Name**: Dieser Wert ist der Anzeigename der pfadbasierten Regel.
-* **Pfade**: Diese Einstellung legt den Pfad fest, nach dem die Regel beim Weiterleiten von Datenverkehr sucht.
-* **Back-End-Pool** : Dies ist die Einstellung, die das Back-End für die Regel festlegt.
-* **HTTP-Einstellung** : Dies ist die Einstellung, die die HTTP-Einstellungen für die Regel festlegt.
+* **Name**: Ein Anzeigename für die pfadbasierte Regel
+* **Pfade**: Der Pfad, nach dem die Regel beim Weiterleiten von Datenverkehr sucht
+* **Back-End-Pool**: Das Back-End, das für die Regel verwendet werden soll
+* **HTTP-Einstellung**: Die HTTP-Einstellungen, die für die Regel verwendet werden sollen
 
 > [!IMPORTANT]
-> Pfade: Die Liste der abzustimmenden Pfadmuster. Jedes muss mit „/“ beginnen, und ein „\*“ ist nur am Ende zulässig. Gültige Beispiele sind etwa „/xyz“, „/xyz*“ oder „/xyz/*“.  
+> Die Einstellung für **Pfade** ist die Liste der abzustimmenden Pfadmuster. Jeder Pfad muss mit einem Schrägstrich beginnen, und ein Sternchen ist nur am Ende zulässig. Zulässige Beispiele: /xyz, /xyz und /xyz/**.  
 
 ![Hinzufügen eines Blatts mit pfadbasierten Regeln mit bereitgestellten Informationen][2]
 
-Das Hinzufügen einer pfadbasierten Regel zu einem bestehenden Application Gateway ist über das Portal ein einfacher Prozess. Nachdem eine pfadbasierte Regel erstellt wurde, kann sie bearbeitet werden, um zusätzliche Regeln hinzuzufügen. 
+Über das Azure-Portal können Sie einem bestehenden Anwendungsgateway ganz einfach eine pfadbasierte Regel hinzufügen. Nach der Erstellung einer pfadbasierten Regel können Sie sie bearbeiten, um weitere Regeln hinzuzufügen. 
 
 ![Hinzufügen zusätzlicher pfadbasierter Regeln][3]
 
-Mit diesem Schritt wird eine pfadbasierte Route konfiguriert. Es ist zu beachten, dass die Anforderungen nicht neu geschrieben werden, da eingehende Anforderungen im Anwendungsgateway untersucht und basierend auf dem URL-Muster an das entsprechende Back-End gesendet werden.
+Mit diesem Schritt wird eine pfadbasierte Route konfiguriert. Beachten Sie unbedingt, dass Anforderungen nicht neu geschrieben werden. Eingehende Anforderungen werden vom Anwendungsgateway untersucht und basierend auf dem URL-Muster an den entsprechenden Back-End-Pool gesendet.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zum Konfigurieren der SSL-Auslagerung mit Azure Application Gateway finden Sie unter [Konfigurieren der SSL-Auslagerung](application-gateway-ssl-portal.md).
+Informationen zum Konfigurieren der SSL-Auslagerung mit Azure Application Gateway finden Sie unter [Konfigurieren eines Anwendungsgateways für die SSL-Auslagerung über das Azure-Portal](application-gateway-ssl-portal.md).
 
 [1]: ./media/application-gateway-create-url-route-portal/figure1.png
 [2]: ./media/application-gateway-create-url-route-portal/figure2.png

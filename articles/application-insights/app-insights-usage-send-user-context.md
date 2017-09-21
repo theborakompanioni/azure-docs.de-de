@@ -1,25 +1,10 @@
----
-title: Senden von Benutzerkontext zur Nutzung in Azure Application Insights | Microsoft-Dokumentation
-description: "Verfolgen Sie nach, welche Vorgänge Benutzer in Ihrem Dienst durchführen, nachdem ihnen eine eindeutige, persistente ID-Zeichenfolge in Application Insights zugewiesen wurde."
-services: application-insights
-documentationcenter: 
-author: abgreg
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
-ms.devlang: csharp
-ms.topic: article
-ms.date: 08/02/2017
-ms.author: bwren
-ms.translationtype: HT
-ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
-ms.openlocfilehash: 7d0da5fb0b2c59764b36becd826d8c4cc6efc4ad
-ms.contentlocale: de-de
-ms.lasthandoff: 08/09/2017
+Titel: Senden von Benutzerkontext-IDs zur Nutzung in Azure Application Insights | Microsoft-Dokumentation Beschreibung: Verfolgen Sie nach, welche Vorgänge Benutzer in Ihrem Dienst durchführen, indem Sie ihnen eine eindeutige, persistente ID-Zeichenfolge in Application Insights zuweisen.
+services: application-insights documentationcenter: '' author: abgreg manager: carmonm
+
+ms.service: application-insights ms.workload: tbd ms.tgt_pltfrm: ibiza ms.devlang: csharp ms.topic: article ms.date: 08/02/2017 ms.author: bwren
 
 ---
-#  <a name="sending-user-context-to-enable-usage-experiences-in-azure-application-insights"></a>Senden von Benutzerkontext zur Nutzung in Azure Application Insights
+#  <a name="send-user-context-ids-to-enable-usage-experiences-in-azure-application-insights"></a>Senden von Benutzerkontext-IDs zur Nutzung in Azure Application Insights
 
 ## <a name="tracking-users"></a>Nachverfolgen von Benutzern
 
@@ -30,7 +15,7 @@ Mithilfe von Application Insights können Sie Ihre Benutzer durch eine Reihe von
 * Kohorten
 * [Arbeitsmappen](https://docs.microsoft.com/azure/application-insights/app-insights-usage-workbooks)
 
-Um nachzuverfolgen, welche Vorgänge ein Benutzer im Laufe der Zeit durchführt, erfordert Application Insights eine ID für jeden Benutzer bzw. jede Sitzung. Schließen Sie diese IDs in jedem benutzerdefinierten Ereignis bzw. in jeder Seitenansicht ein.
+Um nachzuverfolgen, welche Vorgänge ein Benutzer im Laufe der Zeit durchführt, erfordert Application Insights eine ID für jeden Benutzer bzw. jede Sitzung. Schließen Sie die folgenden IDs in jedem benutzerdefinierten Ereignis bzw. in jeder Seitenansicht ein.
 - Benutzer, Trichter, Vermerkdauer und Kohorten: Benutzer-ID einschließen
 - Sitzungen: Sitzungs-ID einschließen
 
@@ -47,13 +32,11 @@ Bei der ID muss es sich um eine GUID oder eine andere komplexe Zeichenfolge hand
 
 Eine ID, die personenbezogene Informationen über den Benutzer enthält, ist kein geeigneter Wert, der als Benutzer-ID an Application Insights gesendet werden kann. Sie können diese ID zwar als [authentifizierte Benutzer-ID](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#authenticated-users) senden, sie erfüllt jedoch nicht die Anforderung an Benutzer-ID für Verwendungsszenarien.
 
-## <a name="aspnet-apps-set-user-context-in-an-itelemetryinitializer"></a>ASP.NET-Apps: Festlegen des Benutzerkontexts in einer ITelemetryInitializer-Eigenschaft
+## <a name="aspnet-apps-setting-the-user-context-in-an-itelemetryinitializer"></a>ASP.NET-Apps: Festlegen des Benutzerkontexts in einer ITelemetryInitializer-Eigenschaft
 
 Erstellen Sie einen Telemetrieinitialisierer, wie [hier](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling#add-properties-itelemetryinitializer) detailliert beschrieben wird, und legen Sie die Eigenschaften „Context.User.Id“ und „Context.Session.Id“ fest.
 
 In diesem Beispiel wird die Benutzer-ID auf einen Bezeichner festgelegt, der nach der Sitzung abläuft. Wenn möglich, verwenden Sie eine Benutzer-ID, die sitzungsübergreifend beibehalten wird.
-
-*C#*
 
 ```C#
 
@@ -98,4 +81,3 @@ In diesem Beispiel wird die Benutzer-ID auf einen Bezeichner festgelegt, der nac
     * [Trichter](usage-funnels.md)
     * [Aufbewahrung](app-insights-usage-retention.md)
     * [Arbeitsmappen](app-insights-usage-workbooks.md)
-

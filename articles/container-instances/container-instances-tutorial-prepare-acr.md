@@ -14,14 +14,14 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/24/2017
+ms.date: 09/11/2017
 ms.author: seanmck
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
-ms.openlocfilehash: cc96ba9f5abd45a7503ba3327b30e1f809391384
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 7ac85bffb9593923808c77f2240e6f0e841e74cd
 ms.contentlocale: de-de
-ms.lasthandoff: 08/28/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 
@@ -40,7 +40,7 @@ In nachfolgenden Tutorials stellen Sie den Container aus Ihrer privaten Registri
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Für dieses Tutorial müssen Sie mindestens Version 2.0.4 der Azure-Befehlszeilenschnittstelle ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu.
+Für dieses Tutorial müssen Sie mindestens Version 2.0.12 der Azure-Befehlszeilenschnittstelle ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu.
 
 ## <a name="deploy-azure-container-registry"></a>Bereitstellen von Azure Container Registry
 
@@ -62,7 +62,7 @@ Für den Rest dieses Tutorials verwenden wir `<acrname>` als Platzhalter für de
 
 ## <a name="container-registry-login"></a>Anmeldung bei der Containerregistrierung
 
-Sie müssen sich bei der ACR-Instanz anmelden, damit Sie Images per Push in sie übertragen können. Verwenden Sie den Befehl [az acr login](https://docs.microsoft.com/en-us/cli/azure/acr#login), um den Vorgang abzuschließen. Sie müssen den eindeutigen Namen angeben, mit dem die Containerregistrierung bei ihrer Erstellung versehen wurde.
+Sie müssen sich bei der ACR-Instanz anmelden, damit Sie Images per Push in sie übertragen können. Verwenden Sie den Befehl [az acr login](https://docs.microsoft.com/en-us/cli/azure/acr#az_acr_login), um den Vorgang abzuschließen. Sie müssen den eindeutigen Namen angeben, mit dem die Containerregistrierung bei ihrer Erstellung versehen wurde.
 
 ```azurecli
 az acr login --name <acrName>

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/17/2016
 ms.author: LADocs; mandia
 ms.translationtype: HT
-ms.sourcegitcommit: 763bc597bdfc40395511cdd9d797e5c7aaad0fdf
-ms.openlocfilehash: bfde83e1142bf57e02ee458d477a0a70e78c4ad6
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: cc41bdb12cf11e60489e104af2df4dd0720dd91b
 ms.contentlocale: de-de
-ms.lasthandoff: 09/06/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 
@@ -160,11 +160,11 @@ Im Anschluss finden Sie einige Beispiele für die unterschiedlichen Verhaltenswe
   
 |Antwortcode|Retry\-After|Verhalten|  
 |-----------------|----------------|------------|  
-|200|\(keine\)|Kein gültiger Trigger. „Retry\-After“ muss angegeben werden. Andernfalls führt das Modul bei der nächsten Anforderung keine Abfrage aus.|  
-|202|60|Der Workflow wird nicht ausgelöst. Der nächste Versuch erfolgt in einer Minute.|  
+|200|\(keine\)|Führen Sie den Workflow aus, und suchen Sie gemäß der definierten Wiederholung erneut nach weiteren Inhalten.|  
 |200|10|Der Workflow wird ausgeführt, und in zehn Sekunden wird auf weitere Inhalte geprüft.|  
-|400|\(keine\)|Ungültige Anforderung. Der Workflow wird nicht ausgeführt. Falls keine **Wiederholungsrichtlinie** definiert ist, wird die Standardrichtlinie verwendet. Bei Erreichen der Anzahl von Wiederholungen wird der Trigger ungültig.|  
-|500|\(keine\)|Serverfehler. Der Workflow wird nicht ausgeführt.  Falls keine **Wiederholungsrichtlinie** definiert ist, wird die Standardrichtlinie verwendet. Bei Erreichen der Anzahl von Wiederholungen wird der Trigger ungültig.|  
+|202|60|Der Workflow wird nicht ausgelöst. Der nächste Versuch wird gemäß der definierten Wiederholung in einer Minute ausgeführt. Wenn die definierte Wiederholung weniger als eine Minute beträgt, hat der Retry-After-Header Vorrang. Andernfalls wird die definierte Wiederholung eingehalten.|  
+|400|\(keine\)|Ungültige Anforderung. Der Workflow wird nicht ausgeführt. Falls keine **Wiederholungsrichtlinie** definiert ist, wird die Standardrichtlinie verwendet. Wenn die Anzahl von Wiederholungen erreicht ist, sucht der Trigger gemäß der definierten Wiederholung erneut nach Inhalten.|  
+|500|\(keine\)|Serverfehler. Der Workflow wird nicht ausgeführt.  Falls keine **Wiederholungsrichtlinie** definiert ist, wird die Standardrichtlinie verwendet. Wenn die Anzahl von Wiederholungen erreicht ist, sucht der Trigger gemäß der definierten Wiederholung erneut nach Inhalten.|  
   
 Die Ausgabe eines HTTP-Triggers kann beispielsweise wie folgt aussehen:  
   

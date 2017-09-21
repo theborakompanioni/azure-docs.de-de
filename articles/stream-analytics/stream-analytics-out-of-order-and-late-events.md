@@ -1,6 +1,6 @@
 ---
 title: "Behandlung von Ereignissen außerhalb der Reihenfolge oder bei Verzögerung in Azure Stream Analytics | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Stream Analytics mit Ereignissen außerhalb der Reihenfolge oder spät empfangenen Ereignissen in Datenströmen umgeht."
+description: "Erfahren Sie, wie Azure Stream Analytics mit Ereignissen außerhalb der Reihenfolge oder spät empfangenen Ereignissen in Datenströmen umgeht."
 keywords: "außerhalb der Reihenfolge, spät empfangen, Ereignisse"
 documentationcenter: 
 services: stream-analytics
@@ -16,59 +16,75 @@ ms.workload: data-services
 ms.date: 04/20/2017
 ms.author: samacha
 ms.translationtype: HT
-ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
-ms.openlocfilehash: 5089dda48ea829902663ef9d09fe83177df6f220
+ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
+ms.openlocfilehash: cf9a43fbb82a32c92d66f25809916d3ccde1a20d
 ms.contentlocale: de-de
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 09/14/2017
 
 ---
 # <a name="azure-stream-analytics-event-order-handling"></a>Behandlung von Ereignissen außerhalb der Reihenfolge in Azure Stream Analytics
 
-In einem temporären Datenstrom von Ereignissen wird jedes Ereignis mit dem Zeitpunkt erfasst, an dem das Ereignis empfangen wurde. Einige Bedingungen können dazu führen, dass Ereignisdatenströme Ereignisse mitunter in einer anderen Reihenfolge empfangen als in der Reihenfolge, in der sie gesendet wurden. Ursache hierfür kann eine einfache TCP-Neuübertragung oder sogar eine Uhrabweichung zwischen dem sendenden Gerät und dem empfangenden Event Hub sein. Interpunktionsereignisse werden ebenfalls zu empfangenen Ereignisdatenströmen hinzugefügt, um die Zeit ohne Ereignisankunft fortzuführen. Diese sind in Szenarien wie bei folgender Option erforderlich: „Benachrichtigung erhalten, wenn 3 Minuten lang keine Anmeldungen stattfinden.“
+In einem temporalen Datenstrom von Ereignissen wird jedem Ereignis ein Zeitstempel zugewiesen. Azure Stream Analytics weist jedem Ereignis Zeitstempel zu. Dabei wird entweder die Eingangszeit oder die Anwendungszeit verwendet. 
 
-Eingabedatenströmen außerhalb der Reihenfolge weisen eine der folgenden Eigenschaften auf:
-* Sie wurden sortiert (und sind daher **verzögert**).
-* Sie wurden vom System gemäß einer benutzerdefinierten Richtlinie angepasst.
+Die Spalte **System.Timestamp** enthält den dem Ereignis zugewiesenen Zeitstempel. Die Eingangszeit wird an der Eingabequelle zugewiesen, wenn das Ereignis die Quelle erreicht. Die Eingangszeit ist **EventEnqueuedTime** (Event Hub-Eingaben) bzw. [blob last modified time](https://docs.microsoft.com/en-us/dotnet/api/microsoft.windowsazure.storage.blob.blobproperties.lastmodified?view=azurestorage-8.1.3) (Blobeingaben). Die Anwendungszeit wird bei Erstellung des Ereignisses zugewiesen und ist Teil der Nutzlast. 
 
+Verwenden Sie zur Verarbeitung von Ereignissen auf der Grundlage der Anwendungszeit die TIMESTAMP BY-Klausel in der SELECT-Abfrage. Ist die TIMESTAMP BY-Klausel nicht vorhanden, werden Ereignisse basierend auf der Eingangszeit verarbeitet. Auf die Eingangszeit kann bei Event Hubs mithilfe der **EventEnqueuedTime**-Eigenschaft und bei Blobeingaben mithilfe der **BlobLastModified**-Eigenschaft zugegriffen werden. 
 
-## <a name="lateness-tolerance"></a>Verzögerungstoleranz
-Stream Analytics toleriert folgende Typen von Szenarien. Stream Analytics bietet verschiedene Möglichkeiten zur Behandlung von Ereignissen außerhalb der Reihenfolge und spät empfangenen Ereignissen. Derartige Ereignisse werden wie folgt behandelt:
-
-* Ereignisse mit falscher Reihenfolge, die jedoch innerhalb des festgelegten Toleranzfensters eingehen, werden **nach dem Zeitstempel neu angeordnet**.
-* Ereignisse, die außerhalb des Toleranzfensters eintreffen, werden **verworfen oder angepasst**.
-    * **Angepasst**: Ereignisse werden so angepasst, als ob sie zum spätmöglichsten zulässigen Zeitpunkt angekommen wären.
-    * **Verworfen**: Ereignisse werden verworfen.
+Azure Stream Analytics erzeugt die Ausgabe in der Reihenfolge der Zeitstempel und bietet einige Einstellungen zur Behandlung von Daten außerhalb der Reihenfolge.
 
 ![Behandlung von Ereignissen in Stream Analytics](media/stream-analytics-event-handling/stream-analytics-event-handling.png)
 
-## <a name="reduce-the-number-of-out-of-order-events"></a>Reduzieren der Anzahl von Ereignissen außerhalb der Reihenfolge
+Eingabedatenströmen außerhalb der Reihenfolge weisen eine der folgenden Eigenschaften auf:
+* Sie wurden sortiert (und sind daher *verzögert*).
+* Sie wurden vom System gemäß einer benutzerdefinierten Richtlinie angepasst.
 
-Da Stream Analytics eine temporale Transformation bei der Verarbeitung von eingehenden Ereignissen (z.B. für Fensteraggregate oder temporale Verknüpfungen) anwendet, sortiert Stream Analytics eingehende Ereignisse in der Reihenfolge der Zeitstempel.
+Stream Analytics toleriert bei der Verarbeitung auf der Grundlage der Anwendungszeit verzögerte Ereignisse und Ereignisse außerhalb der Reihenfolge.
 
-Wenn das Schlüsselwort „Zeitstempel von“ **nicht** verwendet wird, wird standardmäßig die Zeit zum Einreihen von Azure Event Hub-Ereignissen in die Warteschlange verwendet. Event Hubs gewährleisten die Monotonie des Zeitstempels in jeder Partition des Event Hubs. Außerdem wird sichergestellt, dass Ereignisse von allen Partitionen gemäß der Reihenfolge der Zeitstempel zusammengeführt werden. Durch diese beiden Event Hub-Eigenschaften wird sichergestellt, dass keine Ereignisse außerhalb der Reihenfolge auftreten.
+**Toleranz für Eingangsverzögerung**
 
-Gelegentlich müssen Sie möglicherweise den Zeitstempel des Absenders verwenden. In diesem Fall wird mithilfe von „Zeitstempel von“ ein Zeitstempel aus der Ereignisnutzlast ausgewählt. Bei diesen Szenarien kann eine falsche Ereignisreihenfolge auf eine oder mehrere Ursachen zurückgeführt werden.
+* Die Einstellung „Toleranz für Eingangsverzögerung“ gilt nur für die Verarbeitung auf der Grundlage der Anwendungszeit. Andernfalls wird sie ignoriert.
+* Die Toleranz für Eingangsverzögerung ist die maximale Differenz zwischen der Eingangszeit und der Anwendungszeit. Falls die Anwendungszeit vor *(Eingangszeit - Fenster für Eingangsverzögerung)* liegt, wird sie auf *(Eingangszeit - Fenster für Eingangsverzögerung)* festgelegt.
+* Wenn mehrere Teile des gleichen Eingabedatenstroms oder mehrere Eingabedatenströme kombiniert werden, ist die Toleranz für die Eingangsverzögerung der maximale Zeitraum, den jeder Teil auf neue Daten wartet. 
 
-* Ereignisproducer weisen Uhrabweichungen auf. Dies ist häufig der Fall, wenn die Producer von unterschiedlichen Computern stammen, wodurch die Uhrabweichung entsteht.
-* Es liegt eine Netzwerkverzögerung von der Quelle der Ereignisse zum Ziel-Event Hub vor.
-* Es liegen Uhrabweichungen zwischen Event Hub-Partitionen vor. Stream Analytics sortiert zuerst Ereignisse von allen Event Hub-Partitionen nach der Zeit zum Einreihen von Ereignissen in die Warteschlange. Anschließend wird der Datenstrom auf Ereignisse mit falscher Reihenfolge geprüft.
+Kurz gesagt: Das Fenster für die Eingangsverzögerung ist die maximale Verzögerung zwischen der Ereigniserstellung und dem Eingang des Ereignisses an der Eingabequelle.
+Zuerst erfolgt die Anpassung auf der Grundlage der Toleranz für die Eingangsverzögerung, anschließend die Anpassung auf der Grundlage der falschen Reihenfolge. Die Spalte **System.Timestamp** enthält den dem Ereignis zugewiesenen endgültigen Zeitstempel.
 
-Auf der Registerkarte „Konfiguration“ werden folgende Standardwerte angezeigt:
+**Toleranz für Fehlordnung**
 
-![Behandlung von Ereignissen außerhalb der Reihenfolge bei Stream Analytics](media/stream-analytics-event-handling/stream-analytics-out-of-order-handling.png)
+* Ereignisse, die in falscher Reihenfolge eingehen, sich aber im Toleranzfenster für Fehlordnung befinden, werden *nach dem Zeitstempel neu angeordnet*. 
+* Ereignisse, die außerhalb des Toleranzfensters eintreffen, werden *verworfen* oder *angepasst*.
+    * **Angepasst**: Ereignisse werden so angepasst, als ob sie zum spätmöglichsten zulässigen Zeitpunkt angekommen wären. 
+    * **Verworfen**: Ereignisse werden verworfen.
 
-Wenn Sie als Toleranzfenster für Ereignisse außerhalb der Reihenfolge einen Wert von 0 Sekunden festlegen, bestätigen Sie, dass alle Ereignisse stets die Reihenfolge einhalten. Angesichts der drei Ursachen, die zum Auftreten von Ereignissen mit falscher Reihenfolge führen können, gilt ein solcher Fall als unwahrscheinlich. 
+Um Ereignisse, die innerhalb des Toleranzfensters für Fehlordnung eingegangen sind, neu anzuordnen, wird die Ausgabe der Abfrage *um das Toleranzfenster für Fehlordnung verzögert*.
 
-Um Stream Analytics die Korrektur von Ereignissen mit falscher Reihenfolge zu ermöglichen, können Sie ein Toleranzfenster für Ereignisse außerhalb der Reihenfolge ungleich 0 festlegen. Stream Analytics puffert Ereignisse bis zu diesem Fenster und ordnet diese mithilfe des von Ihnen gewählten Zeitstempels neu an. Anschließend wird die temporale Transformation angewendet. Sie können mit einem 3-Sekunden-Fenster beginnen und den Wert anpassen, um die Anzahl der Ereignisse, deren Zeit angepasst wird, zu reduzieren. 
+**Beispiel**
 
-Ein Nebeneffekt der Pufferung ist, dass die Ausgabe **um denselben Zeitraum verzögert wird**. Sie können den Wert anpassen, um die Anzahl von Ereignissen außerhalb der Reihenfolge zu verringern und die Auftragslatenz niedrig zu halten.
+Toleranz für Eingangsverzögerung = 10 Minuten<br/>
+Toleranz für Fehlordnung = 3 Minuten<br/>
+Verarbeitung basierend auf der Anwendungszeit<br/>
+
+Ereignisse:
+
+Ereignis 1 _Anwendungszeit_ = 00:00:00, _Eingangszeit_ = 00:10:01, _System.Timestamp_ = 00:00:01: Wird angepasst, da (_Eingangszeit_ - _Anwendungszeit_) größer ist als die Toleranz für Eingangsverzögerung.
+
+Ereignis 2 _Anwendungszeit_ = 00:00:01, _Eingangszeit_ = 00:10:01, _System.Timestamp_ = 00:00:01: Wird nicht angepasst, da die Anwendungszeit im Fenster für Eingangsverzögerung liegt.
+
+Ereignis 3 _Anwendungszeit_ = 00:10:00, _Eingangszeit_ = 00:10:02, _System.Timestamp_ = 00:10:00, wird nicht angepasst, da die Anwendungszeit im Fenster für Eingangsverzögerung liegt.
+
+Ereignis 4 _Anwendungszeit_ = 00:09:00, _Eingangszeit_ = 00:10:03, _System.Timestamp_ = 00:09:00: Wird mit dem ursprünglichen Zeitstempel akzeptiert, da die Anwendungszeit innerhalb der Toleranz für Fehlordnung liegt.
+
+Ereignis 5 _Anwendungszeit_ = 00:06:00, _Eingangszeit_ = 00:10:04, _System.Timestamp_ = 00:07:00: Wird angepasst, da die Anwendungszeit vor der Toleranz für Fehlordnung liegt.
+
+
 
 ## <a name="get-help"></a>Hier erhalten Sie Hilfe
 Um weitere Hilfe zu erhalten, nutzen Sie unser [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Einführung in Azure Stream Analytics](stream-analytics-introduction.md)
-* [Erste Schritte mit Stream Analytics](stream-analytics-real-time-fraud-detection.md)
-* [Skalieren von Stream Analytics-Aufträgen](stream-analytics-scale-jobs.md)
-* [Referenz zur Stream Analytics-Abfragesprache](https://msdn.microsoft.com/library/azure/dn834998.aspx)
-* [Referenz zur REST-API für die Stream Analytics-Verwaltung](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Erste Schritte mit Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
+* [Skalieren von Azure Stream Analytics-Aufträgen](stream-analytics-scale-jobs.md)
+* [Stream Analytics Query Language Reference](https://msdn.microsoft.com/library/azure/dn834998.aspx) (Referenz zur Stream Analytics-Abfragesprache)
+* [Azure Stream Analytics management REST API reference](https://msdn.microsoft.com/library/azure/dn835031.aspx) (Referenz zur Azure Stream Analytics-Verwaltungs-REST-API)
+

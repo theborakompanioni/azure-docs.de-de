@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2017
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: c6bfa094f5f06483a9c59a1e0167e5fa7f8f053e
+ms.translationtype: HT
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: afcfc6bb27506dbcc44217680e779318107b33d9
 ms.contentlocale: de-de
-ms.lasthandoff: 06/28/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 # <a name="overview-of-application-insights-for-devops"></a>Überblick über Application Insights für DevOps
@@ -38,7 +38,7 @@ Anforderungen werden in den Entwicklungs-Backlog (Aufgabenliste) geladen. Sie ar
 
 Das Team verwendet Application Insights zum genauen Überwachen der Live-Webanwendung in Bezug auf:
 
-* Leistung. Es soll nachvollziehbar sein, wie die Antwortzeiten in Abhängigkeit von der Anforderungsanzahl variieren, wie viele CPU-, Netzwerk-, Datenträgerressourcen und andere Ressourcen verwendet werden und wo Engpässe auftreten.
+* Leistung. Es soll nachvollziehbar sein, wie die Antwortzeiten in Abhängigkeit von der Anforderungsanzahl variieren, wie viele CPU-, Netzwerk-, Datenträgerressourcen und andere Ressourcen verwendet werden, welcher Anwendungscode die Leistung beeinträchtigt hat und wo Engpässe auftreten.
 * Fehler. Wenn Ausnahmen oder Fehler bei Anforderungen auftreten oder ein Leistungsindikator den zulässigen Bereich überschreitet, muss das Team sofort darüber informiert werden, um entsprechende Maßnahmen ergreifen zu können.
 * Verwendung. Sobald eine neue Funktion veröffentlicht wird, möchte das Team wissen, inwieweit sie genutzt wird und ob Benutzer Probleme mit dieser Funktion haben.
 
@@ -181,11 +181,14 @@ Eine Diagnose ist nicht ganz dasselbe wie ein Debugging. Bevor Sie die Ablaufver
 
 **Sind wir es?**  Wenn es bei einem bestimmten Typ von Anforderung einen plötzlichen Leistungsabfall gibt, z. B. wenn der Kunde einen Kontoauszug wünscht, besteht die Möglichkeit, dass die Ursache ein externes Subsystem und nicht Ihre Webanwendung ist. Wählen Sie im Metrik-Explorer die Raten "Abhängigkeitsfehler" und "Abhängigkeitsdauer" aus, und vergleichen Sie deren Verlauf in den letzten Stunden oder Tagen mit dem erkannten Problem. Wenn es korrelierende Änderungen gibt, ist vielleicht ein externes Subsystem Schuld.  
 
+
 ![Diagramme von Abhängigkeitsfehlern und Dauer von Aufrufen von Abhängigkeiten](./media/app-insights-detect-triage-diagnose/11-dependencies.png)
 
 Bei einigen Problemen mit langsamen Abhängigkeiten ist die Geolocation die Ursache. Die Fabrikam Bank nutzt virtuelle Computer in Azure und hat festgestellt, dass sich ihre Web- und Kontoserver aus Versehen in unterschiedlichen Ländern befinden. Eine deutliche Verbesserung wurde erreicht, indem einer davon in die richtige Zone verlagert wurde.
 
-**Was haben wir gemacht?** Wenn das Problem nicht einer Abhängigkeit zuzuschreiben ist und nicht immer vorhanden war, wird es wahrscheinlich durch eine zuletzt erfolgte Änderung verursacht. Die von den Metrik- und Ereignisdiagrammen zur Verfügung gestellte Verlaufsansicht erleichtert das Korrelieren plötzlicher Änderungen mit Bereitstellungen Dadurch kann die Suche nach der Problemursache eingeengt werden.
+**Was haben wir gemacht?** Wenn das Problem nicht einer Abhängigkeit zuzuschreiben ist und nicht immer vorhanden war, wird es wahrscheinlich durch eine zuletzt erfolgte Änderung verursacht. Die von den Metrik- und Ereignisdiagrammen zur Verfügung gestellte Verlaufsansicht erleichtert das Korrelieren plötzlicher Änderungen mit Bereitstellungen Dadurch kann die Suche nach der Problemursache eingeengt werden. Aktivieren Sie Application Insights Profiler, um zu ermitteln, welche Zeilen im Anwendungscode die Leistung beeinträchtigt haben. Informationen finden Sie unter [Profilerstellung für Live-Azure-Web-Apps mit Application Insights](./app-insights-profiler.md). Nach der Aktivierung von Profiler wird etwa folgende Ablaufverfolgung angezeigt. In diesem Beispiel ist klar erkennbar, dass die Methode *GetStorageTableData* das Problem verursacht hat.  
+
+![App Insights Profiler-Ablaufverfolgung](./media/app-insights-detect-triage-diagnose/AppInsightsProfiler.png)
 
 **Was passiert?** Einige Probleme treten nur selten auf und können schwierig aufzuspüren sein, wenn Tests offline erfolgen. Alles, was wir tun können, ist versuchen, den Fehler zu erfassen, wenn er online auftritt. Sie können das Stapelabbild in den Ausnahmeberichten prüfen. Darüber hinaus können Sie Ablaufverfolgungsaufrufe mit Ihrem bevorzugten Protokollierungsframework oder mit TrackTrace() oder TrackEvent() schreiben.  
 
@@ -203,7 +206,7 @@ Das Entwicklungsteam der Fabrikam Bank befolgt nun einen strukturierteren Ansatz
 ## <a name="monitor-user-activity"></a>Überwachen der Benutzeraktivität
 Wenn die Antwortzeit konsistent gut ist und wenige Ausnahmen auftreten, kann das Entwicklungsteam zur Verwendbarkeit übergehen. Es kann über die Verbesserung der Benutzeroberfläche nachdenken oder darüber, wie die Benutzer besser zum Erreichen der gewünschten Ziele ermuntert werden können.
 
-Application Insights kann auch genutzt werden, um zu erfahren, welche Aktionen Benutzer in einer Anwendung ausführen. Sobald sie reibungslos läuft, möchte das Team wissen, welche Funktionen am häufigsten genutzt werden, was Benutzer mögen, womit sie Schwierigkeiten haben und wie oft sie zurückkehren. Dadurch können die anstehenden Aufgaben mit Prioritäten versehen werden. Und außerdem kann das Team das Messen des Erfolg der einzelnen Features im Rahmen des Entwicklungszyklus planen. 
+Application Insights kann auch genutzt werden, um zu erfahren, welche Aktionen Benutzer in einer Anwendung ausführen. Sobald sie reibungslos läuft, möchte das Team wissen, welche Funktionen am häufigsten genutzt werden, was Benutzer mögen, womit sie Schwierigkeiten haben und wie oft sie zurückkehren. Dadurch können die anstehenden Aufgaben mit Prioritäten versehen werden. Und außerdem kann das Team das Messen des Erfolg der einzelnen Features im Rahmen des Entwicklungszyklus planen.
 
 Der normale Weg eines Benutzers durch die Website weist beispielsweise einen deutlichen „Trichtereffekt“ auf. Viele Kunden sehen sich die Zinsen für verschiedene Arten von Darlehen an. Eine kleinere Anzahl fährt mit dem Ausfüllen des Angebotsformulars fort. Von denen, die ein Angebot anfordern, enden nur wenige dabei, das Darlehen aufzunehmen.
 

@@ -14,14 +14,14 @@ ms.devlang: aurecli
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/25/2017
+ms.date: 09/14/2017
 ms.author: nepeters
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: 81a6a3d5364642b2da75faf875d64d2f4a1939d4
+ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
+ms.openlocfilehash: b8f747b15bf491b7221a71b5beaa595aa7f1b49b
 ms.contentlocale: de-de
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 09/14/2017
 
 ---
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 07/25/2017
 In diesem Tutorial – Teil 4 von 7 – wird eine Beispielanwendung in einem Kubernetes-Cluster bereitgestellt. Folgende Schritte werden ausgeführt:
 
 > [!div class="checklist"]
-> * Herunterladen von Kubernetes-Manifestdateien
+> * Aktualisieren von Kubernetes-Manifestdateien
 > * Ausführen einer Anwendung in Kubernetes
 > * Testen der Anwendung
 
@@ -40,29 +40,15 @@ Dieses Tutorial setzt voraus, dass Sie grundlegend mit den Konzepten von Kuberne
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-In vorherigen Tutorials wurde eine Anwendung in ein Containerimage gepackt, das Image wurde in Azure Container Registry hochgeladen, und es wurde ein Kubernetes-Cluster erstellt. Wenn Sie diese Schritte nicht ausgeführt haben und dies jetzt nachholen möchten, kehren Sie zum [Tutorial 1 – Erstellen von Containerimages](./container-service-tutorial-kubernetes-prepare-app.md) zurück. 
+In vorherigen Tutorials wurde eine Anwendung in ein Containerimage gepackt, das Image wurde in Azure Container Registry hochgeladen, und es wurde ein Kubernetes-Cluster erstellt. 
 
-Für dieses Tutorial wird mindestens ein Kubernetes-Cluster benötigt.
+Für dieses Tutorial benötigen Sie die vorab erstellte Kubernetes-Manifestdatei `azure-vote-all-in-one-redis.yml`. Diese Datei wurde in einem vorherigen Tutorial mit dem Anwendungsquellcode heruntergeladen. Stellen Sie sicher, dass Sie das Repository geklont und in das geklonte Repository gewechselt haben.
 
-## <a name="get-manifest-file"></a>Abrufen der Manifestdatei
-
-In diesem Tutorial werden [Kubernetes-Objekte](https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/) mithilfe eines Kubernetes-Manifests bereitgestellt. Ein Kubernetes-Manifest ist eine YAML- oder JSON-formatierte Datei, die die Kubernetes-Objektbereitstellung und Konfigurationsanweisungen enthält.
-
-Die Anwendungsmanifestdatei für dieses Tutorial steht im Repository der Azure Voting-Anwendung zur Verfügung, das in einem vorherigen Tutorial geklont wurde. Wenn nicht bereits geschehen, klonen Sie das Repository mit folgendem Befehl: 
-
-```bash
-git clone https://github.com/Azure-Samples/azure-voting-app-redis.git
-```
-
-Die Manifestdatei befindet sich im folgenden Verzeichnis des geklonten Repositorys.
-
-```bash
-/azure-voting-app-redis/kubernetes-manifests/azure-vote-all-in-one-redis.yml
-```
+Wenn Sie diese Schritte nicht ausgeführt haben und dies jetzt nachholen möchten, kehren Sie zum [Tutorial 1 – Erstellen von Containerimages](./container-service-tutorial-kubernetes-prepare-app.md) zurück. 
 
 ## <a name="update-manifest-file"></a>Aktualisieren der Manifestdatei
 
-Wenn Sie Azure Container Registry zum Speichern der Containerimages verwenden, muss das Manifest mit dem ACR-loginServer-Namen aktualisiert werden.
+In diesem Tutorial wurde Azure Container Registry (ACR) zum Speichern eines Containerimages verwendet. Vor dem Ausführen der Anwendung muss der ACR-Anmeldeservername in der Kubernetes-Manifestdatei aktualisiert werden.
 
 Rufen Sie den ACR-Anmeldeservernamen mit dem [az acr list](/cli/azure/acr#list)-Befehl auf.
 
@@ -70,7 +56,13 @@ Rufen Sie den ACR-Anmeldeservernamen mit dem [az acr list](/cli/azure/acr#list)-
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
 ```
 
-Das Beispielmanifest wurde vorab mit dem Repositorynamen *microsoft* erstellt. Öffnen Sie die Datei in einem beliebigen Text-Editor, und ersetzen Sie den Wert *microsoft* durch den Namen des Anmeldeservers Ihrer ACR-Instanz.
+Die Manifestdatei wurde vorab mit dem Serveranmeldenamen `microsoft` erstellt. Öffnen Sie die Datei mit einem Text-Editor. In diesem Beispiel wird die Datei mit `vi` geöffnet.
+
+```bash
+vi azure-vote-all-in-one-redis.yml
+```
+
+Ersetzen Sie `microsoft` durch den ACR-Anmeldeservernamen. Dieser Wert befindet sich in Zeile **47** der Manifestdatei.
 
 ```yaml
 containers:
@@ -78,12 +70,14 @@ containers:
   image: microsoft/azure-vote-front:redis-v1
 ```
 
+Speichern und schließen Sie die Datei.
+
 ## <a name="deploy-application"></a>Bereitstellen der Anwendung
 
 Führen Sie die Anwendung mithilfe des Befehls [kubectl create](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#create) aus. Dieser Befehl analysiert die Manifestdatei und erstellt die definierten Kubernetes-Objekte.
 
 ```azurecli-interactive
-kubectl create -f ./azure-voting-app-redis/kubernetes-manifests/azure-vote-all-in-one-redis.yml
+kubectl create -f azure-vote-all-in-one-redis.yml
 ```
 
 Ausgabe:
@@ -105,7 +99,7 @@ Verwenden Sie zum Überwachen des Fortschritts den Befehl [kubectl get service](
 kubectl get service azure-vote-front --watch
 ```
 
-Der Wert **EXTENAL-IP** für den Dienst *azure-vote-front* wird zunächst als *ausstehend* angezeigt. Sobald die externe IP-Adresse nicht mehr *ausstehend* ist, sondern eine *IP-Adresse* angezeigt wird, verwenden Sie `CTRL-C`, um die kubectl-Überwachung zu beenden.
+Die **externe IP-Adresse** für den Dienst `azure-vote-front` wird zunächst als `pending` angezeigt. Sobald die externe IP-Adresse nicht mehr `pending` ist, sondern eine `IP address` angezeigt wird, verwenden Sie `CTRL-C`, um die kubectl-Überwachung zu beenden.
 
 ```bash
 NAME               CLUSTER-IP    EXTERNAL-IP   PORT(S)        AGE

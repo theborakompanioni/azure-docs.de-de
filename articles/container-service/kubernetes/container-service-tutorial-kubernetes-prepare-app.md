@@ -14,14 +14,14 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/25/2017
+ms.date: 09/14/2017
 ms.author: nepeters
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
-ms.openlocfilehash: f02ee61ef1cd3b3dfaa051cfabe52866e3e7e838
+ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
+ms.openlocfilehash: 2c7c8e241010e86bf9ffe5b70921da71b8ace9da
 ms.contentlocale: de-de
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 09/14/2017
 
 ---
 
@@ -56,16 +56,22 @@ Verwenden Sie Git, um eine Kopie der Anwendung in Ihre Entwicklungsumgebung heru
 git clone https://github.com/Azure-Samples/azure-voting-app-redis.git
 ```
 
-Im geklonten Verzeichnis befinden sich der Anwendungsquellcode, ein vorab erstellte Docker Compose-Datei und eine Kubernetes-Manifestdatei. Mit diesen Dateien werden während des Tutorials Ressourcen erstellt. 
+Wechseln Sie in das Verzeichnis, sodass Sie im geklonten Verzeichnis arbeiten.
+
+```
+cd azure-voting-app-redis
+```
+
+Im Verzeichnis befinden sich der Anwendungsquellcode, eine vorab erstellte Docker Compose-Datei und eine Kubernetes-Manifestdatei. Diese Dateien werden während des Tutorials verwendet. 
 
 ## <a name="create-container-images"></a>Erstellen von Containerimages
 
 [Docker Compose](https://docs.docker.com/compose/) kann verwendet werden, um die Erstellung von Containerimages und die Bereitstellung von Anwendungen mit mehreren Containern zu automatisieren.
 
-Führen Sie die Datei „docker-compose.yml“ aus, um das Containerimage zu erstellen, das Redis-Image herunterzuladen und die Anwendung zu starten.
+Führen Sie die Datei `docker-compose.yml` aus, um das Containerimage zu erstellen, das Redis-Image herunterzuladen und die Anwendung zu starten.
 
 ```bash
-docker-compose -f ./azure-voting-app-redis/docker-compose.yml up -d
+docker-compose up -d
 ```
 
 Verwenden Sie anschließend den Befehl [docker-images](https://docs.docker.com/engine/reference/commandline/images/), um die erstellten Images anzuzeigen.
@@ -74,7 +80,7 @@ Verwenden Sie anschließend den Befehl [docker-images](https://docs.docker.com/e
 docker images
 ```
 
-Beachten Sie, dass drei Images heruntergeladen oder erstellt wurden. Das Image *azure-vote-front* enthält die Anwendung. Es wurde aus dem Image *nginx-flask* abgeleitet. Das Redis-Image wurde aus Docker Hub heruntergeladen.
+Beachten Sie, dass drei Images heruntergeladen oder erstellt wurden. Das `azure-vote-front`-Image enthält die Anwendung und verwendet das `nginx-flask`-Image als Grundlage. Das `redis`-Image wird zum Starten einer Redis-Instanz verwendet.
 
 ```bash
 REPOSITORY                   TAG        IMAGE ID            CREATED             SIZE
@@ -105,18 +111,18 @@ Navigieren Sie zu http://localhost:8080, um die ausgeführte Anwendung anzuzeige
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Nach der Überprüfung der Funktionsfähigkeit der Anwendung können die ausgeführten Container beendet und entfernt werden. Löschen Sie die Containerimages nicht. Das Image *azure-vote-front* wird im nächsten Tutorial in eine Azure Container Registry-Instanz hochgeladen.
+Nach der Überprüfung der Funktionsfähigkeit der Anwendung können die ausgeführten Container beendet und entfernt werden. Löschen Sie die Containerimages nicht. Das `azure-vote-front`-Image wird im nächsten Tutorial in eine Azure Container Registry-Instanz hochgeladen.
 
 Führen Sie folgenden Befehl aus, um die ausgeführten Container zu beenden.
 
 ```bash
-docker-compose -f ./azure-voting-app-redis/docker-compose.yml stop
+docker-compose stop
 ```
 
-Löschen Sie die beendeten Container mit dem folgenden Befehl.
+Löschen Sie die beendeten Container und Ressourcen mit dem folgenden Befehl:
 
 ```bash
-docker-compose -f ./azure-voting-app-redis/docker-compose.yml rm
+docker-compose down
 ```
 
 Nach Abschluss des Vorgangs verfügen Sie über ein Containerimage, das die Azure Voting-Anwendung enthält.
@@ -134,3 +140,4 @@ Wechseln Sie zum nächsten Tutorial, und erfahren Sie, wie Containerimages in ei
 
 > [!div class="nextstepaction"]
 > [Übertragen von Images zu Azure Container Registry mithilfe von Push](./container-service-tutorial-kubernetes-prepare-acr.md)
+

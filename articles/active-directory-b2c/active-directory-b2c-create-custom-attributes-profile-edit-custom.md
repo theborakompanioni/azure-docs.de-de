@@ -15,10 +15,10 @@ ms.devlang: na
 ms.date: 08/04/2017
 ms.author: joroja
 ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
-ms.openlocfilehash: 67c9f6eca18e2dd77e00b8bc8c7bcc546ea3936e
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: f3e4eb6fedf850dbb827fd2a10593249d2f17ef1
 ms.contentlocale: de-de
-ms.lasthandoff: 08/28/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 # <a name="azure-active-directory-b2c-creating-and-using-custom-attributes-in-a-custom-profile-edit-policy"></a>Azure Active Directory B2C: Erstellen und Verwenden von benutzerdefinierten Attributen in einer benutzerdefinierten Richtlinie für die Profilbearbeitung
@@ -62,7 +62,7 @@ Erweiterungseigenschaften sind nur im Kontext einer registrierten Anwendung im M
 1. Wählen Sie **Erstellen. Der erfolgreiche Abschluss wird unter **Benachrichtigungen** angegeben.
 1. Wählen Sie den neu erstellten Webanwendung: **WebApp-GraphAPI-DirectoryExtensions**
 1. Wählen Sie Einstellungen aus: **Erforderliche Berechtigungen**
-1. Wählen Sie die API **Windows Active Directory** aus.
+1. Wählen Sie die API **Windows Azure Active Directory** aus.
 1. Setzen Sie ein Häkchen in den Anwendungsberechtigungen: **Lese- und Schreibzugriff auf Verzeichnisdaten** und **Speichern**.
 1. Wählen Sie **Berechtigungen erteilen** aus, und bestätigen Sie den Vorgang mit **Ja**.
 1. Kopieren Sie die Daten in die Zwischenablage, und speichern Sie die folgenden Bezeichner aus „WebApp-GraphAPI-DirectoryExtensions“ > „Einstellungen“ > „Eigenschaften“ >
@@ -235,7 +235,7 @@ Erweiterungseigenschaften sind nur im Kontext einer registrierten Anwendung im M
 
 Das id-Token, das an Ihre Anwendung zurückgesendet wird, enthält die neue Erweiterungseigenschaft als benutzerdefinierten Anspruch mit Voranstellung von „extension_loyaltyId“. Weitere Informationen sind im Beispiel enthalten.
 
-```
+```json
 {
   "exp": 1493585187,
   "nbf": 1493581587,
@@ -254,8 +254,8 @@ Das id-Token, das an Ihre Anwendung zurückgesendet wird, enthält die neue Erwe
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Fügen Sie den neuen Anspruch dem Ablauf für die Anmeldung bei Social Media-Konten hinzu, indem Sie die aufgeführten TechnicalProfiles ändern. Diese beiden TechnicalProfiles werden von Anmeldungen für Social Media-/Verbundkonten genutzt, um die Benutzerdaten zu schreiben und zu lesen, indem alternativeSecurityId als Locator des Benutzerobjekts verwendet wird.
-```
+### <a name="add-the-new-claim-to-the-flows-for-social-account-logins-by-changing-the-technicalprofiles-listed-below-these-two-technicalprofiles-are-used-by-socialfederated-account-logins-to-write-and-read-the-user-data-using-the-alternativesecurityid-as-the-locator-of-the-user-object"></a>Fügen Sie den neuen Anspruch dem Ablauf für die Anmeldung an Social Media-Konten hinzu, indem Sie die unten aufgeführten TechnicalProfiles ändern. Diese beiden TechnicalProfiles werden von Anmeldungen für Social Media-/Verbundkonten genutzt, um die Benutzerdaten zu schreiben und zu lesen, indem alternativeSecurityId als Locator des Benutzerobjekts verwendet wird.
+```xml
   <TechnicalProfile Id="AAD-UserWriteUsingAlternativeSecurityId">
 
   <TechnicalProfile Id="AAD-UserReadUsingAlternativeSecurityId">

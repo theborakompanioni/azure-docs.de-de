@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/07/2017
 ms.author: adhurwit
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
-ms.openlocfilehash: d095bcfe37baefa90cf79bb48bff3f703ce1dad7
+ms.translationtype: HT
+ms.sourcegitcommit: 47ba7c7004ecf68f4a112ddf391eb645851ca1fb
+ms.openlocfilehash: f306784adcb807b399fbfbedf08bffdd2998ed02
 ms.contentlocale: de-de
-ms.lasthandoff: 06/15/2017
-
+ms.lasthandoff: 09/14/2017
 
 ---
 # <a name="use-azure-key-vault-from-a-web-application"></a>Verwenden des Azure-Schlüsseltresors aus einer Webanwendung
@@ -38,7 +37,8 @@ Für dieses Tutorial benötigen Sie Folgendes:
 * Eine Webanwendung. Es werden die Schritte für eine ASP.NET MVC-Anwendung gezeigt, die in Azure als Web-App bereitgestellt wurde.
 
 > [!NOTE]
-> Es ist für dieses Lernprogramm wichtig, dass Sie die Schritte unter [Erste Schritte mit dem Azure-Schlüsseltresor](key-vault-get-started.md) abgeschlossen haben , damit Sie über den URI zu einem geheimen Schlüssel und die Client-ID sowie den geheimen Schlüssel für den Client einer Webanwendung verfügen.
+>* Dieses Beispiel basiert auf einer älteren Methode zur manuellen Bereitstellung von AAD-Identitäten. Derzeit gibt es eine Vorschauversion eines neuen Features namens „Verwaltete Dienstidentität“ (Managed Service Identity, MSI). Mit diesem Feature können AAD-Identitäten automatisch bereitgestellt werden. Weitere Details finden Sie unter folgendem [Link](https://docs.microsoft.com/azure/active-directory/msi-overview). 
+>* Es ist für dieses Lernprogramm wichtig, dass Sie die Schritte unter [Erste Schritte mit dem Azure-Schlüsseltresor](key-vault-get-started.md) abgeschlossen haben , damit Sie über den URI zu einem geheimen Schlüssel und die Client-ID sowie den geheimen Schlüssel für den Client einer Webanwendung verfügen.
 > 
 > 
 

@@ -12,14 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/06/2017
+ms.date: 09/07/2017
 ms.author: juanpere
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 4ba60cee8848079935111ed3de480081a4aa58f6
-ms.openlocfilehash: 30a707ec15d592c8a10905e13a75ea2f6e52cccc
+ms.translationtype: HT
+ms.sourcegitcommit: 9b7316a5bffbd689bdb26e9524129ceed06606d5
+ms.openlocfilehash: 6879f51527802591d45ee56aa47ab304623a4323
 ms.contentlocale: de-de
-ms.lasthandoff: 02/06/2017
-
+ms.lasthandoff: 09/08/2017
 
 ---
 # <a name="use-device-management-to-initiate-a-device-firmware-update-nodenode"></a>Initiieren eines Gerätefirmwareupdates mithilfe der Geräteverwaltung (Node/Node)
@@ -39,9 +38,9 @@ Am Ende dieses Tutorials verfügen Sie über zwei Node.js-Konsolen-Apps:
 
 **dmpatterns_fwupdate_device.js**, die über die zuvor erstellte Geräteidentität eine Verbindung mit dem IoT Hub herstellt, eine direkte firmwareUpdate-Methode empfängt und einen mehrstufigen Prozess zum Simulieren eines Firmwareupdates durchläuft, bei dem auf das Herunterladen des Images gewartet, das Image heruntergeladen und das Image schließlich übernommen wird.
 
-Für dieses Lernprogramm benötigen Sie Folgendes:
+Für dieses Tutorial benötigen Sie Folgendes:
 
-* Node.js Version 0.12.x oder höher, <br/>  Unter [Prepare your development environment][lnk-dev-setup] (Vorbereiten Ihrer Entwicklungsumgebung) wird beschrieben, wie Sie Node.js für dieses Tutorial unter Windows oder Linux installieren.
+* Node.js Version 4.0.x oder höher, <br/>  Unter [Prepare your development environment][lnk-dev-setup] (Vorbereiten Ihrer Entwicklungsumgebung) wird beschrieben, wie Sie Node.js für dieses Tutorial unter Windows oder Linux installieren.
 * Ein aktives Azure-Konto. (Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein [kostenloses Konto][lnk-free-trial] erstellen.)
 
 Befolgen Sie die Schritte im Artikel [Erste Schritte mit der Geräteverwaltung](iot-hub-node-node-device-management-get-started.md), um Ihren IoT Hub zu erstellen und die IoT Hub-Verbindungszeichenfolge abzurufen.
@@ -58,7 +57,7 @@ In diesem Abschnitt erstellen Sie eine Node.js-Konsolen-App, die auf einem Gerä
     ```
     npm init
     ```
-2. Führen Sie an der Eingabeaufforderung im Ordner **triggerfwupdateondevice** den folgenden Befehl aus, um die Geräte-SDK-Pakete **azure-iothub** und **azure-iot-device-mqtt** zu installieren:
+2. Führen Sie an der Eingabeaufforderung im Ordner **triggerfwupdateondevice** den folgenden Befehl aus, um das Paket **azure-iot-hub** zu installieren:
    
     ```
     npm install azure-iothub --save

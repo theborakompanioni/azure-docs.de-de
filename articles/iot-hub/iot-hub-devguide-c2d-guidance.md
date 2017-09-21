@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/25/2017
 ms.author: elioda
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: 65a9815525c612bdfac569e5ec56a1db53d82c78
+ms.translationtype: HT
+ms.sourcegitcommit: 9b7316a5bffbd689bdb26e9524129ceed06606d5
+ms.openlocfilehash: 688b33710283a82fcd772bf50a171893f3ac124c
 ms.contentlocale: de-de
-ms.lasthandoff: 03/10/2017
-
+ms.lasthandoff: 09/08/2017
 
 ---
 # <a name="cloud-to-device-communications-guidance"></a>Leitfaden zur C2D-Kommunikation
@@ -39,7 +38,7 @@ Hier finden Sie einen detaillierten Vergleich verschiedener Optionen für die C2
 | Ziele | Einzelgerät mit **deviceId** oder mehrere Geräte mit [Aufträgen][lnk-jobs]. | Einzelgerät mit **deviceId** oder mehrere Geräte mit [Aufträgen][lnk-jobs]. | Einzelgerät nach **deviceId**. |
 | Größe | Anforderungen und Antworten bis zu jeweils 8KB. | Die Maximalgröße gewünschter Eigenschaften beträgt 8KB. | Bis zu 64KB Nachrichten. |
 | Frequency | Hoch. Weitere Informationen finden Sie unter [Referenz: IoT Hub-Kontingente und -Drosselung][lnk-quotas]. | Mittel. Weitere Informationen finden Sie unter [Referenz: IoT Hub-Kontingente und -Drosselung][lnk-quotas]. | Niedrig. Weitere Informationen finden Sie unter [Referenz: IoT Hub-Kontingente und -Drosselung][lnk-quotas]. |
-| Protocol | Derzeit nur mit MQTT verfügbar. | Derzeit nur mit MQTT verfügbar. | Mit allen Protokollen verfügbar. Gerät muss bei Verwendung von HTTP einen Abruf tätigen. |
+| Protocol | Mit MQTT oder AMQP verfügbar. | Mit MQTT oder AMQP verfügbar. | Mit allen Protokollen verfügbar. Gerät muss bei Verwendung von HTTP einen Abruf tätigen. |
 
 Erfahren Sie in den folgenden Tutorials, wie Sie direkte Methoden, gewünschte Eigenschaften und C2D-Nachrichten einsetzen:
 

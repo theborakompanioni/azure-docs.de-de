@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/18/2017
 ms.author: LADocs; jehollan
 ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
-ms.openlocfilehash: 3a8a661f65923476c89763580a98ea240642db99
+ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
+ms.openlocfilehash: 5d905d410e70c5b635a3f6221e7e0c0bda7ad140
 ms.contentlocale: de-de
-ms.lasthandoff: 08/30/2017
+ms.lasthandoff: 09/14/2017
 
 ---
 # <a name="logic-app-limits-and-configuration"></a>Logik-App-Grenzwerte und -Konfiguration
@@ -113,7 +113,7 @@ Im Folgenden werden die Grenzwerte für eine einzelne Logik-App-Definition aufge
 
 ### <a name="integration-account-limits"></a>Grenzwerte für Integrationskonten
 
-Im Folgenden sehen Sie die Grenzwerte für Artefakte, die dem Integrationskonto hinzugefügt werden:
+Hier sind die Grenzwerte für die Artefakte aufgeführt, die einem Integrationskonto hinzugefügt werden können.
 
 |Name|Begrenzung|Hinweise|
 |----|----|----|
@@ -123,6 +123,21 @@ Im Folgenden sehen Sie die Grenzwerte für Artefakte, die dem Integrationskonto 
 |Aufrufe zum Aufrufen von Endpunkten zur Laufzeit pro 5 Minuten |45.000|Bei Bedarf können Workflows auf mehrere Konten verteilt werden.|
 |Aufrufe zum Nachverfolgen von Endpunkten zur Laufzeit pro 5 Minuten |45.000|Bei Bedarf können Workflows auf mehrere Konten verteilt werden.|
 |Gleichzeitige Aufrufe zum Blockieren von Endpunkten zur Laufzeit |ca. 1.000|Verringern Sie nach Bedarf die Anzahl gleichzeitiger Anforderungen oder die Dauer|
+
+Hier sind die Grenzwerte für die Anzahl von Artefakten aufgeführt, die einem Integrationskonto hinzugefügt werden können.
+
+Tarif „Free“
+
+|Name|Begrenzung|Hinweise|
+|----|----|----|
+|Vereinbarungen|10||
+|Andere Artefakttypen|25|Zu den Typen zählen Partner, Schemas, Zertifikate und Zuordnungen. Die Anzahl von Artefakten, die für die jeweiligen Typen festgelegt werden können, ist auf die maximale Anzahl begrenzt.|
+
+Tarif „Standard“
+
+|Name|Begrenzung|Hinweise|
+|----|----|----|
+|Ein beliebiger Artefakttyp|500|Zu den Typen zählen Vereinbarungen, Partner, Schemas, Zertifikate und Zuordnungen. Die Anzahl von Artefakten, die für die jeweiligen Typen festgelegt werden können, ist auf die maximale Anzahl begrenzt.|
 
 ### <a name="b2b-protocols-as2-x12-edifact-message-size"></a>Nachrichtengröße für B2B-Protokolle (AS2, X12, EDIFACT)
 

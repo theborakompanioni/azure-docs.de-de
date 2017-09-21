@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 05/04/2017
 ms.author: bwren
 ms.translationtype: HT
-ms.sourcegitcommit: ce0189706a3493908422df948c4fe5329ea61a32
-ms.openlocfilehash: cc8655e0bc65007cacf223ce6d7709291c609327
+ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
+ms.openlocfilehash: 252e1fb070bcdc11494f6f37a9a1ee03fa50509e
 ms.contentlocale: de-de
-ms.lasthandoff: 09/05/2017
+ms.lasthandoff: 09/14/2017
 
 ---
 # <a name="profiling-live-azure-web-apps-with-application-insights"></a>Profilerstellung für Live-Azure-Web-Apps mit Application Insights
@@ -65,11 +65,17 @@ Wenn Sie [Application Insights für Azure App Services zur Laufzeit aktivieren](
 Eine [Vorschauversion von Profiler für Azure Compute-Ressourcen](https://go.microsoft.com/fwlink/?linkid=848155) ist verfügbar.
 
 
-## <a name="limits"></a>Grenzen
+## <a name="limitations"></a>Einschränkungen
 
 Die Datenstandardaufbewahrung beträgt fünf Tage. Erfassung von maximal 10 GB pro Tag.
 
 Es fallen keine Gebühren für den Profiler-Dienst an. Ihre Web-App muss mindestens im Basic-Tarif von App Services gehostet werden.
+
+## <a name="overhead-and-sampling-algorithm"></a>Auslastung und Algorithmus für Stichprobenerstellung
+
+Profiler wird stündlich nach dem Zufallsprinzip zwei Minuten auf jedem virtuellen Computer ausgeführt, der die Anwendung hostet und auf dem Profiler für die Erfassung von Ablaufverfolgungen aktiviert ist. Während der Ausführung von Profiler erhöht sich die CPU-Auslastung des Servers um 5 bis 15 Prozent.
+Je mehr Server zum Hosten der Anwendung zur Verfügung stehen, desto weniger wirkt sich Profiler auf die Gesamtleistung der Anwendung aus. Das liegt daran, dass aufgrund des Stichprobenalgorithmus Profiler jeweils nur auf fünf Prozent der Server ausgeführt wird. Daher stehen mehr Server für die Bereitstellung von Webanforderungen zur Verfügung, um die Server auszugleichen, die von Profiler ausgelastet sind.
+
 
 ## <a name="viewing-profiler-data"></a>Anzeigen von Profiler-Daten
 
@@ -191,6 +197,21 @@ Wenn Ihnen in Ihren Ablaufverfolgungen parallele Threads begegnen, müssen Sie d
 ### <a name="error-report-in-the-profiling-viewer"></a>Fehlerbericht im Profilerstellungs-Viewer
 
 Erstellen Sie ein Supportticket über das Portal. Geben Sie dabei die Korrelations-ID aus der Fehlermeldung an.
+
+### <a name="deployment-error-directory-not-empty-dhomesitewwwrootappdatajobs"></a>Bereitstellungsfehler: Verzeichnis nicht leer 'D:\\home\\site\\wwwroot\\App_Data\\jobs'
+
+Wenn Sie Ihre Web-App erneut in einer App Services-Ressource bereitstellen und Profiler aktiviert ist, wird unter Umständen etwa folgender Fehler angezeigt: Verzeichnis nicht leer 'D:\\home\\site\\wwwroot\\App_Data\\jobs'. Dieser Fehler tritt auf, wenn Sie Web Deploy über Skripts oder die VSTS-Bereitstellungspipeline ausführen.
+Als Lösung für dieses Problem fügen Sie die folgenden zusätzlichen Bereitstellungsparameter zur Web Deploy-Task hinzu:
+
+```
+-skip:skipaction='Delete',objectname='filePath',absolutepath='\\App_Data\\jobs\\continuous\\ApplicationInsightsProfiler\\.*' 
+-skip:skipaction='Delete',objectname='dirPath',absolutepath='\\App_Data\\jobs\\continuous\\ApplicationInsightsProfiler\\.*'
+-skip:skipaction='Delete',objectname='filePath',absolutepath='\\App_Data\\jobs\\continuous\\ApplicationInsightsProfiler2\\.*'
+-skip:skipaction='Delete',objectname='dirPath',absolutepath='\\App_Data\\jobs\\continuous\\ApplicationInsightsProfiler2\\.*'
+```
+
+Dadurch wird der von App Insights Profiler verwendete Ordner gelöscht und die Sperre der erneuten Bereitstellung aufgehoben. Die derzeit ausgeführte Profiler-Instanz wird dadurch nicht beeinträchtigt.
+
 
 ## <a name="manual-installation"></a>Manuelle Installation
 

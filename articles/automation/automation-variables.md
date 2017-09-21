@@ -15,11 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 07/09/2017
 ms.author: magoedte;bwren
 ms.translationtype: HT
-ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
-ms.openlocfilehash: dc00e1e5fa8df5cb55e7e2672137d1df44133773
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 43a08898abecb220f3df892473dddfb2729f0561
 ms.contentlocale: de-de
-ms.lasthandoff: 07/10/2017
-
+ms.lasthandoff: 09/13/2017
 
 ---
 # <a name="variable-assets-in-azure-automation"></a>Variable Objekte in Azure Automation
@@ -53,7 +52,7 @@ Im Folgenden finden Sie eine Liste von in Automation verfügbaren Variablentypen
 * Boolean
 * Null
 
-## <a name="cmdlets-and-workflow-activities"></a>Cmdlets und Workflowaktivitäten
+## <a name="scripting-the-creation-and-management-of-variables"></a>Skripts für die Erstellung und Verwaltung von Variablen
 
 Die Cmdlets in der folgenden Tabelle werden zum Erstellen und Verwalten von Automation-Variablen mit Windows PowerShell verwendet. Sie gehören zum Funktionsumfang des [Azure PowerShell-Moduls](../powershell-install-configure.md) , das zur Verwendung in Automation-Runbooks und DSC-Konfigurationen verfügbar ist.
 
@@ -73,6 +72,16 @@ Die Workflowaktivitäten in der folgenden Tabelle werden für den Zugriff auf Au
 
 > [!NOTE] 
 > Vermeiden Sie die Verwendung von Variablen im Parameter „–Name“ von **Get-AutomationVariable** in einem Runbook oder einer DSC-Konfiguration, da dies die Ermittlung von Abhängigkeiten zwischen Runbooks bzw. DSC-Konfigurationen und Automation-Variablen zur Entwurfszeit erschweren kann.
+
+Die Funktionen in der folgenden Tabelle werden zum Zugreifen auf und Abrufen von Variablen in einem Python2-Runbook verwendet. 
+
+|Python2-Funktionen|Beschreibung|
+|:---|:---|
+|automationassets.get_automation_variable|Ruft den Wert einer vorhandenen Variable ab. |
+|automationassets.set_automation_variable|Legt den Wert für eine vorhandene Variable fest. |
+
+> [!NOTE] 
+> Sie müssen das Modul „automationassets“ oben im Python-Runbook importieren, um auf die Ressourcenfunktionen zugreifen zu können.
 
 ## <a name="creating-a-new-automation-variable"></a>Erstellen einer neuen Automation-Variablen
 
@@ -108,7 +117,7 @@ Die folgenden Beispielbefehle zeigen, wie eine Variable eines komplexen Typs ers
 
 ## <a name="using-a-variable-in-a-runbook-or-dsc-configuration"></a>Verwenden einer Variablen in einem Runbook oder einer DSC-Konfiguration
 
-Verwenden Sie die Aktivität **Set-AutomationVariable**, um den Wert einer Automation-Variablen in einem Runbook oder einer DSC-Konfiguration festzulegen, und die Aktivität **Get-AutomationVariable**, um den Wert abzurufen.  Die Verwendung der Cmdlets **Set-AzureAutomationVariable** oder **Get-AzureAutomationVariable** in einem Runbook oder einer DSC-Konfiguration empfiehlt sich nicht, da sie weniger effizient sind als die Workflowaktivitäten.  Außerdem können Sie den Wert sicherer Variablen mit **Get-AzureAutomationVariable**nicht abrufen.  Die einzige Möglichkeit, eine neue Variable in einem Runbook oder einer DSC-Konfiguration zu erstellen, ist die Verwendung des Cmdlets [New-AzureAutomationVariable](http://msdn.microsoft.com/library/dn913771.aspx).
+Verwenden Sie die Aktivität **Set-AutomationVariable**, um den Wert einer Automation-Variablen in einem PowerShell-Runbook oder einer DSC-Konfiguration festzulegen, und die Aktivität **Get-AutomationVariable**, um den Wert abzurufen.  Die Verwendung der Cmdlets **Set-AzureAutomationVariable** oder **Get-AzureAutomationVariable** in einem Runbook oder einer DSC-Konfiguration empfiehlt sich nicht, da sie weniger effizient sind als die Workflowaktivitäten.  Außerdem können Sie den Wert sicherer Variablen mit **Get-AzureAutomationVariable**nicht abrufen.  Die einzige Möglichkeit, eine neue Variable in einem Runbook oder einer DSC-Konfiguration zu erstellen, ist die Verwendung des Cmdlets [New-AzureAutomationVariable](http://msdn.microsoft.com/library/dn913771.aspx).
 
 
 ### <a name="textual-runbook-samples"></a>Beispiele für Textrunbooks
@@ -135,7 +144,6 @@ Der folgende Beispielcode zeigt, wie eine Variable mit einem komplexen Wert in e
     $vm = Get-AzureVM -ServiceName "MyVM" -Name "MyVM"
     Set-AutomationVariable -Name "MyComplexVariable" -Value $vm
 
-
 Im folgenden Code wird der Wert aus der Variablen abgerufen und zum Starten des virtuellen Computers verwendet.
 
     $vmObject = Get-AutomationVariable -Name "MyComplexVariable"
@@ -160,6 +168,27 @@ Im folgenden Code wird die Auflistung aus der Variablen abgerufen und zum Starte
           Start-AzureVM -ServiceName $vmValue.ServiceName -Name $vmValue.Name
        }
     }
+    
+#### <a name="setting-and-retrieving-a-variable-in-python2"></a>Festlegen und Abrufen einer Variablen in Python2
+Der folgende Beispielcode veranschaulicht, wie Sie eine Variable verwenden, eine Variable festlegen und eine Ausnahme für eine nicht vorhandene Variable in einem Python2-Runbook behandeln.
+
+    import automationassets
+    from automationassets import AutomationAssetNotFound
+
+    # get a variable
+    value = automationassets.get_automation_variable("test-variable")
+    print value
+
+    # set a variable (value can be int/bool/string)
+    automationassets.set_automation_variable("test-variable", True)
+    automationassets.set_automation_variable("test-variable", 4)
+    automationassets.set_automation_variable("test-variable", "test-string")
+
+    # handle a non-existent variable exception
+    try:
+        value = automationassets.get_automation_variable("non-existing variable")
+    except AutomationAssetNotFound:
+        print "variable not found"
 
 
 ### <a name="graphical-runbook-samples"></a>Beispiel für grafische Runbooks
