@@ -12,16 +12,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
-ms.date: 6/5/2016
+ms.date: 9/13/2017
 ms.custom: loading
 ms.author: cakarst;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
-ms.openlocfilehash: 6938b92d8e5b46d908dc5b2155bdfdc89bb1dc8c
+ms.translationtype: HT
+ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
+ms.openlocfilehash: 7594a0730477fe3f3bd34b0b6207478de70c7595
 ms.contentlocale: de-de
-ms.lasthandoff: 06/07/2017
-
-
+ms.lasthandoff: 09/14/2017
 
 ---
 # <a name="guide-for-using-polybase-in-sql-data-warehouse"></a>Anleitung für die Verwendung von PolyBase in SQL Data Warehouse
@@ -46,21 +44,9 @@ Wenn Sie alle Ihre externen Tabellen zur neuen externen Datenquelle migriert hab
 2. Löschen Sie die ersten datenbankbezogenen Anmeldeinformationen basierend auf dem primären Speicherzugriffsschlüssel.
 3. Melden Sie sich bei Azure an, und generieren Sie den primären Zugriffsschlüssel neu, sodass er für das nächste Mal bereitsteht.
 
-## <a name="query-azure-blob-storage-data"></a>Abfragen von Daten im Azure-Blob-Speicher
-Bei Abfragen für externe Tabellen wird einfach der Tabellenname verwendet, als handle es sich um relationale Tabellen.
 
-```sql
--- Query Azure storage resident data via external table.
-SELECT * FROM [ext].[CarSensor_Data]
-;
-```
 
-> [!NOTE]
-> Eine Abfrage für eine externe Tabelle kann mit folgendem Fehler fehlschlagen: *Abfrage abgebrochen – der maximale Ablehnungsgrenzwert wurde beim Lesen aus einer externen Quelle erreicht*. Dies weist darauf hin, dass die externen Daten *fehlerhafte* Datensätze enthalten. Ein Datensatz gilt als fehlerhaft, wenn die tatsächlichen Datentypen/Anzahl der Spalten nicht den Spaltendefinitionen der externen Tabelle entsprechen, oder wenn die Daten nicht im angegebenen Format der externen Datei vorliegen. Um dieses Problem zu beheben, stellen Sie sicher, dass die Formatdefinitionen der externen Tabelle und Datei richtig und Ihre externen Daten diesen Definitionen entsprechen. Für den Fall, dass eine Teilmenge der Datensätze für externe Daten fehlerhaft sind, können Sie diese Datensätze für Ihre Abfragen mit den Ablehnungsoptionen in „CREATE EXTERNAL TABLE DDL“ ablehnen.
-> 
-> 
-
-## <a name="load-data-from-azure-blob-storage"></a>Laden von Daten aus dem Azure-Blob-Speicher
+## <a name="load-data-with-external-tables"></a>Laden von Daten mit externen Tabellen
 In diesem Beispiel werden Daten aus dem Azure-Blob-Speicher in die SQL Data Warehouse-Datenbank geladen.
 
 Durch direktes Speichern der Daten entfällt bei Abfragen die für die Datenübertragung verwendete Zeit. Durch Speichern der Daten mit einem Columnstore-Index verbessert sich die Abfrageleistung bei Analyseabfragen um das maximal 10-Fache.
@@ -86,6 +72,12 @@ FROM   [ext].[CarSensor_Data]
 
 Informationen hierzu finden Sie unter [CREATE TABLE AS SELECT (Transact-SQL)][CREATE TABLE AS SELECT (Transact-SQL)].
 
+> [!NOTE]
+> Das Laden von Daten mithilfe einer externen Tabelle kann folgenden Fehler auslösen: *Abfrage abgebrochen – der maximale Ablehnungsgrenzwert wurde beim Lesen aus einer externen Quelle erreicht*. Dies weist darauf hin, dass die externen Daten *fehlerhafte* Datensätze enthalten. Ein Datensatz gilt als fehlerhaft, wenn die tatsächlichen Datentypen/Anzahl der Spalten nicht den Spaltendefinitionen der externen Tabelle entsprechen, oder wenn die Daten nicht im angegebenen Format der externen Datei vorliegen. Um dieses Problem zu beheben, stellen Sie sicher, dass die Formatdefinitionen der externen Tabelle und Datei richtig und Ihre externen Daten diesen Definitionen entsprechen. Für den Fall, dass eine Teilmenge der Datensätze für externe Daten fehlerhaft sind, können Sie diese Datensätze für Ihre Abfragen mit den Ablehnungsoptionen in „CREATE EXTERNAL TABLE DDL“ ablehnen.
+> 
+> 
+
+
 ## <a name="create-statistics-on-newly-loaded-data"></a>Erstellen von Statistiken für die neu geladenen Daten
 Azure SQL Data Warehouse bietet noch keine Unterstützung für die automatische Erstellung oder die automatische Aktualisierung von Statistiken.  Um die beste Leistung bei Abfragen zu erhalten, ist es wichtig, dass die Statistiken für alle Spalten aller Tabellen nach dem ersten Laden oder nach allen wesentlichen Datenänderungen erstellt werden.  Eine ausführliche Erläuterung der Statistik finden Sie im Thema [Statistiken][Statistics] in der Entwicklungsgruppe der Themen.  Es folgt ein kurzes Beispiel, wie Sie Statistiken für die in diesem Beispiel geladene Tabelle erstellen können.
 
@@ -97,8 +89,8 @@ create statistics [Speed] on [Customer_Speed] ([Speed]);
 create statistics [YearMeasured] on [Customer_Speed] ([YearMeasured]);
 ```
 
-## <a name="export-data-to-azure-blob-storage"></a>Exportieren von Daten in Azure Blob Storage
-In diesem Abschnitt wird veranschaulicht, wie Sie Daten aus SQL Data Warehouse in Azure-BLOB-Speicher exportieren. In diesem Beispiel wird CREATE EXTERNAL TABLE AS SELECT verwendet. Dies ist eine sehr leistungsfähige Transact-SQL-Anweisung, mit der die Daten parallel von allen Compute-Knoten exportiert werden.
+## <a name="export-data-with-external-tables"></a>Exportieren von Daten mit externen Tabellen
+In diesem Abschnitt wird veranschaulicht, wie Sie Daten mithilfe von externen Tabellen aus SQL Data Warehouse nach Azure Blob Storage exportieren. In diesem Beispiel wird CREATE EXTERNAL TABLE AS SELECT verwendet. Dies ist eine sehr leistungsfähige Transact-SQL-Anweisung, mit der die Daten parallel von allen Compute-Knoten exportiert werden.
 
 Im folgenden Beispiel wird die externe Tabelle „Weblogs2014“ erstellt, indem Spaltendefinitionen und Daten aus der Tabelle „dbo.Weblogs“ verwendet werden. Die Definition der externen Tabelle wird in SQL Data Warehouse gespeichert, und die Ergebnisse der SELECT-Anweisung werden in das Verzeichnis „/archive/log2014/“ unter dem BLOB-Container exportiert, der von der Datenquelle angegeben wird. Die Daten werden im angegebenen Textdateiformat exportiert.
 
@@ -132,6 +124,21 @@ Die Ersteller von Schema A und B sperren ihre Schemas jetzt mit der DENY-Anweisu
 ```   
  Hiermit müssten Benutzer_A und Benutzer_B jetzt aus dem Schema der anderen Abteilung gesperrt werden.
  
+## <a name="polybase-performance-optimizations"></a>Leistungsoptimierungen mit PolyBase
+Zur Erzielung der optimalen Ladeleistung mit PolyBase wird Folgendes empfohlen:
+- Teilen Sie große komprimierte Dateien in kleinere komprimierte Dateien. Die derzeit unterstützten Komprimierungstypen sind nicht teilbar. Dadurch wird die Leistung beim Laden einer einzelnen großen Datei beeinträchtigt.
+- Die Daten lassen sich am schnellsten laden, wenn Sie sie in eine round_robin- und Heap-Stagingtabelle laden. Dies ist die effizienteste Möglichkeit zum Verschieben der Daten aus der Speicherebene in das Data Warehouse.
+- Alle Dateiformate weisen unterschiedliche Leistungsmerkmale auf. Am schnellsten können Sie komprimierte, durch Trennzeichen getrennte Textdateien laden. Der Unterschied zwischen UTF-8 und UTF-16 wirkt sich nur minimal auf die Leistung aus.
+- Verbinden Sie die Speicherebene und das Data Warehouse, um die Latenz zu minimieren.
+- Skalieren Sie Ihr Data Warehouse, wenn Sie einen umfangreichen Ladeauftrag erwarten.
+
+## <a name="polybase-limitations"></a>Einschränkungen für PolyBase
+Für PolyBase in SQL DW gelten die folgenden Einschränkungen, die beim Entwerfen von Ladeaufträgen berücksichtigt werden müssen:
+- Eine einzelne Zeile kann nicht breiter als 1.000.000 Byte sein. Dies gilt unabhängig vom definierten Tabellenschema, einschließlich (n)varchar(max)-Spalten. Das heißt, dass (n)varchar(max)-Spalten in externen Tabellen eine maximale Breite von 1.000.000 Byte haben können und das durch den Datentyp definierte Limit von 2 GB nicht gilt.
+- Beim Exportieren von Daten aus SQL Server oder Azure SQL Data Warehouse in das ORC-Dateiformat können textlastige Spalten aufgrund von Java-Fehlern vom Typ „Nicht genügend Arbeitsspeicher“ auf weniger als 50 Spalten begrenzt werden. Dies können Sie umgehen, indem Sie nur eine Teilmenge der Spalten exportieren.
+
+
+
 
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 08/22/2017
 ms.author: adegeo
 ms.translationtype: HT
-ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
-ms.openlocfilehash: 8496bd61d0133a428ce8e522faef5b538f19d4fc
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: d152444f38e7a09b97ce7cb9778d8c67a0a5a421
 ms.contentlocale: de-de
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 
@@ -44,13 +44,14 @@ Um eine Lastenausgleichsregel zu erstellen, müssen Sie die folgenden Informatio
 - Interner Port
 
 ## <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+Es ist nur ein einziger Befehl erforderlich, um mit der **Azure-Befehlszeilenschnittstelle** eine Lastenausgleichsregel zu erstellen. Sie müssen lediglich den Namen des Lastenausgleichs und die Ressourcengruppe kennen, um eine neue Regel zu erstellen.
+
 >[!NOTE]
 >Wenn Sie den Namen des Lastenausgleichs ermitteln müssen, verwenden Sie diesen Befehl, um schnell eine Liste aller Lastenausgleichsmodule und der zugehörigen Ressourcengruppen abzurufen.
 >
 >`az network lb list --query "[].{ResourceGroup: resourceGroup, Name: name}"`
 >
 
-Es ist nur ein einziger Befehl erforderlich, um mit der **Azure-Befehlszeilenschnittstelle** eine Lastenausgleichsregel zu erstellen. Sie müssen lediglich den Namen des Lastenausgleichs und die Ressourcengruppe kennen, um eine neue Regel zu erstellen.
 
 ```azurecli
 az network lb rule create --backend-port 40000 --frontend-port 39999 --protocol Tcp --lb-name LB-svcfab3 -g svcfab_cli -n my-app-rule
@@ -64,7 +65,7 @@ Der Azure CLI-Befehl verfügt über einige Parameter, die in der folgenden Tabel
 | `--frontend-port` | Port, den der Lastenausgleich für externe Verbindungen verfügbar macht |
 | `-lb-name` | Name des Lastenausgleichs, der geändert werden soll |
 | `-g`       | Ressourcengruppe, in der sich der Lastenausgleich und der Service Fabric-Cluster befinden |
-| `-n`       | Ausgewählter Name der Regel |
+| `-n`       | Gewünschter Name der Regel |
 
 
 >[!NOTE]
@@ -72,17 +73,17 @@ Der Azure CLI-Befehl verfügt über einige Parameter, die in der folgenden Tabel
 
 ## <a name="powershell"></a>PowerShell
 
->[!NOTE]
->Wenn Sie den Namen des Lastenausgleichs ermitteln müssen, verwenden Sie diesen Befehl, um schnell eine Liste aller Lastenausgleichsmodule und der zugehörigen Ressourcengruppen abzurufen.
->
->`Get-AzureRmLoadBalancer | Select Name, ResourceGroupName`
-
-PowerShell ist etwas komplizierter als die Azure-Befehlszeilenschnittstelle. Führen Sie grundsätzlich die folgenden Schritte aus, um eine Regel zu erstellen.
+PowerShell ist etwas komplizierter als die Azure-Befehlszeilenschnittstelle. Führen Sie diese grundlegenden Schritte zum Erstellen einer Regel aus:
 
 1. Rufen Sie den Lastenausgleich von Azure ab.
 2. Erstellen Sie eine Regel.
 3. Fügen Sie dem Lastenausgleich eine neue Regel hinzu.
 4. Aktualisieren Sie den Lastenausgleich.
+
+>[!NOTE]
+>Wenn Sie den Namen des Lastenausgleichs ermitteln müssen, verwenden Sie diesen Befehl, um schnell eine Liste aller Lastenausgleichsmodule und der zugehörigen Ressourcengruppen abzurufen.
+>
+>`Get-AzureRmLoadBalancer | Select Name, ResourceGroupName`
 
 ```powershell
 # Get the load balancer
@@ -106,4 +107,6 @@ Im `New-AzureRmLoadBalancerRuleConfig`-Befehl gibt `-FrontendPort` den Port an, 
 >[!NOTE]
 >Weitere Informationen zum Erstellen eines Lastenausgleichs mit PowerShell finden Sie unter [Erstellen eines Lastenausgleichs mit PowerShell](..\load-balancer\load-balancer-get-started-internet-arm-ps.md).
 
+## <a name="next-steps"></a>Nächste Schritte
 
+Erfahren Sie mehr über [Netzwerke in Service Fabric](service-fabric-patterns-networking.md).

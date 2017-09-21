@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 07/24/2017
+ms.date: 09/13/2017
 ms.author: pajosh
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 4629665e6fbe26c26eb45af7509de338367c4e18
+ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
+ms.openlocfilehash: 597c3eb49bc3d4f9b2311f232e4280027636266c
 ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
+ms.lasthandoff: 09/14/2017
 
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurieren von Azure Backup-Berichten
@@ -140,6 +140,12 @@ Nachdem das Speicherkonto mit dem Recovery Services-Tresor für Berichte konfigu
 
    Ja, Sie können dasselbe Speicherkonto für verschiedene Tresore konfigurieren, um tresorübergreifende Berichte anzuzeigen. Sie können auch dasselbe Speicherkonto für Tresore in verschiedenen Abonnements verwenden. Dieses Speicherkonto können Sie dann bei der Verbindung mit dem Azure Backup-Inhaltspaket in Power BI verwenden, um die Berichte anzuzeigen. Allerdings muss sich das ausgewählte Speicherkonto in derselben Region befinden wie der Recovery Services-Tresor.
    
+## <a name="troubleshooting-errors"></a>Problembehandlung
+| Fehlerdetails | Lösung |
+| --- | --- |
+| Nach dem Einrichten des Speicherkontos für Backup-Berichte wird unter **Speicherkonto** weiterhin **Nicht konfiguriert** angezeigt. | Wenn das Speicherkonto erfolgreich konfiguriert wurde, werden die Berichtsdaten trotz dieses Problems übertragen. Um dieses Problem zu beheben, wechseln Sie im Azure-Portal zu „Weitere Dienste“ > „Diagnoseeinstellungen“ > „RS-Tresor“ > „Einstellung bearbeiten“. Löschen Sie die zuvor konfigurierte Einstellung, und erstellen Sie auf demselben Blatt eine neue Einstellung. Legen Sie dieses Mal das Feld **Name** auf **service** fest. Damit sollte das konfigurierte Speicherkonto angezeigt werden. |
+|Nach dem Importieren des Azure Backup-Inhaltspakets in Power BI wird der Fehler **404 - Container nicht gefunden** ausgelöst. | Wie in diesem Dokument beschrieben, müssen Sie nach dem Konfigurieren von Berichten im Recovery Services-Tresor 24 Stunden warten, bis sie korrekt in Power BI angezeigt werden. Wenn Sie versuchen, früher als 24 Stunden danach auf die Berichte zuzugreifen, erhalten Sie diesen Fehler, da noch nicht genügend Daten für gültige Berichte vorhanden sind. |
+
 ## <a name="next-steps"></a>Nächste Schritte
 Nachdem Sie das Speicherkonto konfiguriert und das Azure Backup-Inhaltspaket importiert haben, sind die nächsten Schritte das Anpassen dieser Berichte und das Verwenden des Reportingdatenmodells für das Erstellen von Berichten. Weitere Informationen finden Sie in den folgenden Artikeln.
 

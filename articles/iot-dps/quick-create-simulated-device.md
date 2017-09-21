@@ -13,10 +13,10 @@ manager: timlt
 ms.devlang: na
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
-ms.openlocfilehash: d4eeb7a77d6336e241c196e4ad48af52d57af1d4
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: d8d8ff77f0099185707a0207c4ba6aed190a102e
 ms.contentlocale: de-de
-ms.lasthandoff: 09/07/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 
@@ -44,7 +44,7 @@ Führen Sie zunächst die Schritte unter [Set up the IoT Hub Device Provisioning
 5. Erstellen Sie in Ihrer lokalen Kopie des GitHub-Repositorys einen Ordner für den CMake-Buildprozess. 
 
     ```cmd/sh
-    cd azure-iot-device-auth
+    cd azure-iot-sdk-c
     mkdir cmake
     cd cmake
     ```
@@ -58,7 +58,7 @@ Führen Sie zunächst die Schritte unter [Set up the IoT Hub Device Provisioning
 7. Navigieren Sie in einer separaten Eingabeaufforderung zum GitHub-Stammordner, und führen Sie den [TPM](https://docs.microsoft.com/windows/device-security/tpm/trusted-platform-module-overview)-Simulator aus. Dieser lauscht über einen Socket an den Ports 2321 und 2322. Lassen Sie das Befehlsfenster geöffnet. Es wird benötigt, um den Simulator bis zum Ende dieser Schnellstartanleitung auszuführen. 
 
     ```cmd/sh
-    .\azure-iot-device-auth\dps_client\deps\utpm\tools\tpm_simulator\Simulator.exe
+    .\azure-iot-sdk-c\dps_client\deps\utpm\tools\tpm_simulator\Simulator.exe
     ```
 
 ## <a name="create-a-device-enrollment-entry-in-the-device-provisioning-service"></a>Erstellen eines Geräteregistrierungseintrags im Device Provisioning-Dienst
@@ -69,11 +69,20 @@ Führen Sie zunächst die Schritte unter [Set up the IoT Hub Device Provisioning
 
 3. Melden Sie sich beim Azure-Portal an, klicken Sie im linken Menü auf die Schaltfläche **Alle Ressourcen**, und öffnen Sie Ihren Device Provisioning-Dienst.
 
-4. Wählen Sie auf dem Zusammenfassungsblatt des Device Provisioning-Diensts die Option **Manage enrollments** (Registrierungen verwalten) aus. Klicken Sie auf der Registerkarte **Individual Enrollments** (Individuelle Registrierungen) im oberen Bereich auf die Schaltfläche **Hinzufügen**. Wählen Sie als *Mechanismus* für den Identitätsnachweis die Option **TPM** aus, und geben Sie auf dem Blatt die *Registrierungs-ID* und den *Endorsement Key* ein. Klicken Sie abschließend auf die Schaltfläche **Speichern**. 
+4. Wählen Sie auf dem Zusammenfassungsblatt des Device Provisioning-Diensts die Option **Manage enrollments** (Registrierungen verwalten) aus. Klicken Sie auf der Registerkarte **Individual Enrollments** (Individuelle Registrierungen) im oberen Bereich auf die Schaltfläche **Hinzufügen**. 
+
+5. Geben Sie unter **Add enrollment list entry** (Registrierungslisteneintrag hinzufügen) die folgenden Informationen ein:
+    - Wählen Sie **TPM** als *Mechanismus* für den Nachweis der Identität.
+    - Geben Sie die *Registrierungs-ID* und den *Endorsement Key* für Ihr TPM-Gerät ein. 
+    - Wählen Sie einen IoT Hub aus, der mit Ihrem Bereitstellungsdienst verknüpft ist.
+    - Geben Sie eine eindeutige Geräte-ID ein. Achten Sie darauf, dass Sie beim Benennen Ihres Geräts keine sensiblen Daten angeben.
+    - Aktualisieren Sie **Initial device twin state** (Anfänglicher Gerätezwillingsstatus) mit der gewünschten Anfangskonfiguration für das Gerät.
+    - Klicken Sie abschließend auf die Schaltfläche **Speichern**. 
 
     ![Eingeben von Geräteregistrierungsinformationen auf dem Portalblatt](./media/quick-create-simulated-device/enter-device-enrollment.png)  
 
    Nach erfolgreicher Registrierung wird die *Registrierungs-ID* Ihres Geräts in der Liste auf der Registerkarte *Individual Enrollments* (Individuelle Registrierungen) angezeigt. 
+
 
 <a id="firstbootsequence"></a>
 ## <a name="simulate-first-boot-sequence-for-the-device"></a>Simulieren der ersten Startsequenz für das Gerät
@@ -84,7 +93,7 @@ Führen Sie zunächst die Schritte unter [Set up the IoT Hub Device Provisioning
 
 2. Wählen Sie auf Ihrem Computer in Visual Studio das Beispielprojekt **dps_client_sample** aus, und öffnen Sie die Datei **dps_client_sample.c**.
 
-3. Weisen Sie den Wert für _ID Scope_ (ID-Bereich) der Variablen `dps_scope_id` zu. Beachten Sie, dass die Variable `dps_uri` den gleichen Wert besitzt wie der globale__ Geräteendpunkt. 
+3. Weisen Sie den Wert für _ID Scope_ (ID-Bereich) der Variablen `dps_scope_id` zu. Beachten Sie, dass die Variable `dps_uri` den gleichen Wert besitzt wie der globale_ _Geräteendpunkt. 
 
     ```c
     static const char* dps_uri = "global.azure-devices-provisioning.net";
@@ -95,6 +104,8 @@ Führen Sie zunächst die Schritte unter [Set up the IoT Hub Device Provisioning
 
     ![Geräteregistrierung bei der IoT Hub-Instanz](./media/quick-create-simulated-device/hub-registration.png) 
 
+    Wenn Sie den *anfänglichen Gerätezwillingsstatus* im Registrierungseintrag für Ihr Gerät gegenüber dem Standardwert geändert haben, kann der gewünschte Zwillingsstatus vom Hub abgerufen werden, und es können entsprechende Aktionen durchgeführt werden. Weitere Informationen finden Sie unter [Verstehen und Verwenden von Gerätezwillingen in IoT Hub](../iot-hub/iot-hub-devguide-device-twins.md).
+
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
@@ -103,7 +114,7 @@ Wenn Sie das Geräteclientbeispiel weiter verwenden und erkunden möchten, über
 1. Schließen Sie auf Ihrem Computer das Ausgabefenster des Geräteclientbeispiels.
 1. Schließen Sie auf Ihrem Computer das TPM-Simulatorfenster.
 1. Klicken Sie im Azure-Portal im linken Menü auf **Alle Ressourcen**, und wählen Sie Ihren Device Provisioning-Dienst aus. Klicken Sie im oberen Bereich des Blatts **Alle Ressourcen** auf **Löschen**.  
-1. Klicken Sie im Azure-Portal im linken Menü auf **Alle Ressourcen**, und wählen Sie Ihre IoT Hub-Instanz aus. Klicken Sie im oberen Bereich des Blatts **Alle Ressourcen** auf **Löschen**.  
+1. Klicken Sie im Azure-Portal im Menü auf der linken Seite auf **Alle Ressourcen**, und wählen Sie Ihre IoT Hub-Instanz aus. Klicken Sie im oberen Bereich des Blatts **Alle Ressourcen** auf **Löschen**.  
 
 ## <a name="next-steps"></a>Nächste Schritte
 

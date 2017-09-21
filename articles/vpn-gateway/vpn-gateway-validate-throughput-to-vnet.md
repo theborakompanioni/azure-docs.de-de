@@ -13,20 +13,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/10/2017
+ms.date: 09/08/2017
 ms.author: radwiv;chadmat;genli
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 2e0347854b5d30c955a50a01d6f7ba08e24f94b6
+ms.sourcegitcommit: f2ac16c2f514aaa7e3f90fdf0d0b6d2912ef8485
+ms.openlocfilehash: 5f1ce4c76aadc5fdfe53b15f0d82da5ce6b43346
 ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
+ms.lasthandoff: 09/08/2017
 
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>Überprüfen des VPN-Durchsatzes zu einem virtuellen Netzwerk
 
 Mit einer VPN-Gateway-Verbindung sorgen Sie für sichere, standortübergreifende Konnektivität in Ihrem virtuellen Netzwerk innerhalb der Azure-Infrastruktur und Ihrer lokalen IT-Infrastruktur.
 
-In diesem Artikel wird die Überprüfung des Netzwerkdurchsatzes von lokalen Ressourcen zu einem virtuellen Azure-Computer beschrieben. Darüber hinaus enthält er Informationen zur Problembehandlung.
+In diesem Artikel wird die Überprüfung des Netzwerkdurchsatzes von lokalen Ressourcen zu einem virtuellen Azure-Computer (VM) beschrieben. Darüber hinaus enthält er Informationen zur Problembehandlung.
 
 >[!NOTE]
 >Dieser Artikel ist dazu gedacht, bei der Diagnose und beim Beheben von häufigen Problemen zu helfen. Wenn Sie das Problem nicht mithilfe der folgenden Informationen beheben können, [wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
@@ -40,7 +40,7 @@ Die VPN-Gateway-Verbindung umfasst die folgenden Komponenten:
 - Lokales VPN-Gerät (Liste von [überprüften VPN-Geräten anzeigen](vpn-gateway-about-vpn-devices.md#devicetable)).
 - Öffentliches Internet
 - Azure VPN Gateway
-- Virtueller Azure-Computer
+- Azure-VM
 
 Das folgende Diagramm zeigt die logische Verbindung von einem lokalen Netzwerk mit einem Azure Virtual Network über VPN.
 

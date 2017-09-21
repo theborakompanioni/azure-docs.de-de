@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 12/15/2016
 ms.author: apimpm
 ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
-ms.openlocfilehash: 5553bcb8f9fd38630f694151dc644a684266387c
+ms.sourcegitcommit: 47ba7c7004ecf68f4a112ddf391eb645851ca1fb
+ms.openlocfilehash: 300b1d762a61c810dbffde5aaacd8a85f12c9fca
 ms.contentlocale: de-de
-ms.lasthandoff: 08/28/2017
+ms.lasthandoff: 09/14/2017
 
 ---
 # <a name="protect-your-api-with-rate-limits-using-azure-api-management"></a>Schützen Ihrer API mithilfe von Aufruflimits in Azure API Management
@@ -148,7 +148,7 @@ Um die Richtlinie **Nutzungskontingent pro Abonnement** zu konfigurieren, platzi
 </quota>
 ```
 
-Die Richtlinie **Aufruflimit pro Abonnement** gleicht der Richtlinie **Nutzungskontingent pro Abonnement** und ermöglicht das Festlegen von Obergrenzen für die APIs und Vorgänge des Produkts. Diese Funktion wird im aktuellen Tutorial nicht verwendet. Löschen Sie daher die Elemente **api** und **operation** aus dem Element **quota**, wie im folgenden Beispiel gezeigt.
+Die Richtlinie **Nutzungskontingent pro Abonnement** gleicht der Richtlinie **Aufruflimit pro Abonnement** und ermöglicht das Festlegen von Obergrenzen für die APIs und Vorgänge des Produkts. Diese Funktion wird im aktuellen Tutorial nicht verwendet. Löschen Sie daher die Elemente **api** und **operation** aus dem Element **quota**, wie im folgenden Beispiel gezeigt.
 
 ```xml
 <quota calls="number" bandwidth="kilobytes" renewal-period="seconds">

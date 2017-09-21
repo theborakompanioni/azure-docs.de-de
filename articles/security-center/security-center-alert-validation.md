@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/11/2017
+ms.date: 09/07/2017
 ms.author: yurid
 ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
-ms.openlocfilehash: 121b5d8f023a9b663d0e7af26dce8f81db27672c
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: d7aa8544f50b42bacfa1e1f16fdce468d8fc81ef
 ms.contentlocale: de-de
-ms.lasthandoff: 08/12/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="alerts-validation-in-azure-security-center"></a>Warnungsüberprüfung in Azure Security Center
@@ -35,12 +35,15 @@ Nach der Installation des Security Center-Agents auf Ihrem Computer führen Sie 
 3. Öffnen Sie die Eingabeaufforderung, und führen Sie die Datei mit einem (selbst ausgedachten) Argument aus. Beispiel: *ASC_AlertTest_662jfi039N.exe -foo*
 4. Warten Sie fünf bis zehn Minuten, und öffnen Sie die Security Center-Warnungen. Dort sollte eine Warnung wie die folgende vorliegen:
 
-    ![Warnungsüberprüfung](./media/security-center-alert-validation/security-center-alert-validation-fig1.png)
+    ![Warnungsüberprüfung](./media/security-center-alert-validation/security-center-alert-validation-fig2.png)
 
 Vergewissern Sie sich bei der Prüfung dieser Warnung, dass „Arguments Auditing Enabled“ (Argumentüberprüfung aktiviert) auf „true“ festgelegt ist. Sollte die Option auf „false“ festgelegt sein, müssen Sie die Überprüfung von Befehlszeilenargumenten aktivieren. Die Option können Sie mithilfe der folgenden Befehlszeile aktivieren:
 
 *reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\policies\system\Audit" /f /v "ProcessCreationIncludeCmdLine_Enabled"*
 
+
+> [!NOTE]
+> Sehen Sie sich das Video unter [Warnungsüberprüfung in Azure Security Center](https://channel9.msdn.com/Blogs/Azure-Security-Videos/Alert-Validation-in-Azure-Security-Center) an, in dem dieses Feature demonstriert wird. 
 
 ## <a name="see-also"></a>Weitere Informationen
 In diesem Artikel wurden Sie in den Prozess der Warnungsüberprüfung eingeführt. Nachdem Sie sich mit dieser Überprüfung vertraut gemacht haben, können Sie mit den folgenden Artikeln fortfahren:

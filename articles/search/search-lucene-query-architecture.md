@@ -13,10 +13,10 @@ ms.tgt_pltfrm: na
 ms.date: 04/06/2017
 ms.author: jlembicz
 ms.translationtype: HT
-ms.sourcegitcommit: ce0189706a3493908422df948c4fe5329ea61a32
-ms.openlocfilehash: 510f8abd839c3c025e955aecfdd787ce85540caf
+ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
+ms.openlocfilehash: a016438070d13c22f309c5f32b940256069f2ee0
 ms.contentlocale: de-de
-ms.lasthandoff: 09/05/2017
+ms.lasthandoff: 09/14/2017
 
 ---
 
@@ -238,7 +238,13 @@ Wir nehmen weiter an, dass dieser Index die folgenden vier Dokumente enthält:
 
 Für das Verständnis des Abrufs ist es hilfreich, einige Grundlagen zur Indizierung zu kennen. Die Speichereinheit ist ein invertierter Index (einer für jedes suchbare Feld). In einem invertierten Index ist eine sortierte Liste aller Ausdrücke aus allen Dokumenten enthalten. Jeder Ausdruck wird der Liste mit den Dokumenten zugeordnet, in denen er vorkommt. Dies ist im Beispiel unten dargestellt.
 
-Zum Erstellen der Ausdrücke in einem invertierten Index führt das Suchmodul eine lexikalische Analyse für den Inhalt von Dokumenten durch. Dies ähnelt der Vorgehensweise während der Abfrageverarbeitung. Texteingaben werden je nach Konfiguration des Analysemoduls an eine Analyse übergeben, in Kleinbuchstaben konvertiert, von Satzzeichen befreit usw. Es ist zwar nicht unbedingt erforderlich, aber häufig werden die gleichen Analysen für Such- und Indiziervorgänge verwendet, sodass Abfrageausdrücke eher wie Ausdrücke im Index aussehen.
+Zum Erstellen der Ausdrücke in einem invertierten Index führt das Suchmodul eine lexikalische Analyse für den Inhalt von Dokumenten durch. Dies ähnelt der Vorgehensweise während der Abfrageverarbeitung:
+
+1. *Texteingaben* werden je nach Konfiguration des Analysemoduls an eine Analyse übergeben, in Kleinbuchstaben konvertiert, von Satzzeichen befreit usw. 
+2. *Token* sind die Ausgabe der Textanalyse.
+3. *Ausdrücke* werden dem Index hinzugefügt.
+
+Es ist zwar nicht unbedingt erforderlich, aber häufig werden die gleichen Analysen für Such- und Indiziervorgänge verwendet, sodass Abfrageausdrücke eher wie Ausdrücke im Index aussehen.
 
 > [!Note]
 > In Azure Search können Sie verschiedene Analysen für das Indizieren und Suchen nach zusätzlichen Feldparametern vom Typ `indexAnalyzer` und `searchAnalyzer` angeben. Wenn keine Angabe vorhanden ist, wird die Analyse, die mit der `analyzer`-Eigenschaft festgelegt wird, sowohl für die Indizierung als auch für die Suche verwendet.  

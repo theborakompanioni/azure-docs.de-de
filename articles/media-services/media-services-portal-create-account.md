@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/10/2017
+ms.date: 09/03/2017
 ms.author: juliako
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: b190ad54147a4d548806047b2257069cac4475cd
+ms.sourcegitcommit: f2ac16c2f514aaa7e3f90fdf0d0b6d2912ef8485
+ms.openlocfilehash: 4e811dee81bfbd01b3cbe7f78a57b2ce92d1c0f9
 ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
+ms.lasthandoff: 09/08/2017
 
 ---
 # <a name="create-an-azure-media-services-account-using-the-azure-portal"></a>Erstellen eines Azure Media Services-Kontos mithilfe des Azure-Portals
@@ -36,6 +36,9 @@ ms.lasthandoff: 08/21/2017
 
 In diesem Artikel werden einige allgemeine Konzepte erläutert, und Sie erfahren, wie Sie ein Media Services-Konto über das Azure-Portal erstellen.
 
+> [!NOTE]
+> Weitere Informationen zur Verfügbarkeit von Azure Media Services-Features in verschiedenen Regionen finden Sie unter [Availability of Media Services features across datacenters](scenarios-and-availability.md#availability) (Datencenterübergreifende Verfügbarkeit von AMS-Features).
+
 ## <a name="concepts"></a>Konzepte
 Für den Zugriff auf Media Services sind zwei zugeordnete Konten erforderlich:
 
@@ -43,8 +46,8 @@ Für den Zugriff auf Media Services sind zwei zugeordnete Konten erforderlich:
   
 * Ein Azure-Speicherkonto. Das Speicherkonto muss sich in der gleichen geografischen Region befinden wie das Media Services-Konto. Bei der Erstellung eines Media Services-Kontos können Sie entweder ein vorhandenes Speicherkonto in derselben Region auswählen oder ein neues Speicherkonto in derselben Region erstellen. Wenn Sie ein Media Services-Konto löschen, bleiben die Blobs im zugehörigen Speicherkonto erhalten.
 
-> [!NOTE]
-> Weitere Informationen zur Verfügbarkeit von Azure Media Services-Features in verschiedenen Regionen finden Sie unter [Availability of Media Services features across datacenters](scenarios-and-availability.md#availability) (Datencenterübergreifende Verfügbarkeit von AMS-Features).
+  > [!NOTE]
+  > Media Services schränkt das primäre Speicherkonto so ein, dass es sich um ein Konto für **allgemeine Speicherzwecke** mit Tabellen und Warteschlangen handelt. Weitere Informationen zu Speichertypen finden Sie unter [Informationen zu Azure-Speicherkonten](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account).
 
 ## <a name="create-an-ams-account"></a>Erstellen eines AMS-Kontos
 In diesem Abschnitt erfahren Sie, wie Sie ein AMS-Konto erstellen.

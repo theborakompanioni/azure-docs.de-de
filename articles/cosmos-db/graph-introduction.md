@@ -13,26 +13,35 @@ ms.topic: article
 ms.date: 08/29/2017
 ms.author: denlee
 ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
-ms.openlocfilehash: af4c67accf43c2f4f1498e3cafad6e9087a923af
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 02d4042803bdbc3b982019e0e5d3bcd7ed3e0173
 ms.contentlocale: de-de
-ms.lasthandoff: 08/30/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 # <a name="introduction-to-azure-cosmos-db-graph-api"></a>Einführung in die Graph-API von Azure Cosmos DB
 
-[Azure Cosmos DB](introduction.md) ist der global verteilte Datenbankdienst von Microsoft mit mehreren Modellen für unternehmenskritische Anwendungen. Azure Cosmos DB bietet [sofort einsetzbare globale Verteilung](distribute-data-globally.md), [flexible Skalierung von Durchsatz und Speicher](partition-data.md) weltweit, Latenzzeiten im einstelligen Millisekundenbereich beim 99. Perzentil, [fünf wohldefinierte Konsistenzebenen](consistency-levels.md) sowie garantierte hohe Verfügbarkeit, gestützt durch [branchenführende Vereinbarungen zum Servicelevel](https://azure.microsoft.com/support/legal/sla/cosmos-db/) (SLAs, Service Level Agreements). Azure Cosmos DB [indiziert automatisch Daten](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf), sodass Sie sich nicht mit der Schema- und Indexverwaltung befassen müssen. Es unterstützt mehrere Datenmodelle – Dokumente, Schlüsselwerte, Diagramme und spaltenorientierte Datenmodelle.
+[Azure Cosmos DB](introduction.md) ist der global verteilte Datenbankdienst von Microsoft mit mehreren Modellen für unternehmenskritische Anwendungen. Azure Cosmos DB bietet die folgenden Features, die alle durch [branchenführende SLAs](https://azure.microsoft.com/support/legal/sla/cosmos-db/) abgedeckt sind:
 
-Es wird empfohlen, als Einstieg das folgende Video anzusehen, in dem Kirill Gavrylyuk Ihnen die ersten Schritte mit Graphs in Azure Cosmos DB erläutert.
+* [Globale, sofort einsatzbereite Verteilung](distribute-data-globally.md)
+* [Flexible Skalierung für Durchsatz und Speicher](partition-data.md) weltweit
+* Einstellige Latenzzeiten im Millisekundenbereich im 99. Perzentil
+* [Fünf wohl definierte Konsistenzebenen](consistency-levels.md)
+* Garantierte Hochverfügbarkeit 
+
+Azure Cosmos DB [indiziert automatisch Daten](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf), sodass Sie sich nicht mit der Schema- und Indexverwaltung befassen müssen. Es unterstützt mehrere Datenmodelle – Dokumente, Schlüsselwerte, Diagramme und spaltenorientierte Datenmodelle.
+
+Es wird empfohlen, sich das folgende Video anzusehen, in dem Kirill Gavrylyuk Ihnen die ersten Schritte mit Graphen in Azure Cosmos DB erläutert:
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Graphs-with-Azure-Cosmos-DB-Gremlin-API/player]
 > 
 > 
+
 Die Graph-API von Azure Cosmos DB bietet:
 
 - Graph-Modellierung
 - Traversal-APIs
-- Sofort einsatzbereite globale Verteilung
+- Globale, sofort einsatzbereite Verteilung
 - Flexible Skalierung von Speicher und Durchsatz mit Leselatenzen von weniger als 10 ms und weniger als 15 ms beim 99. Perzentil
 - Automatische Indizierung mit sofortiger Abfrageverfügbarkeit
 - Einstellbare Konsistenzebenen
@@ -47,7 +56,7 @@ Daten sind in der Praxis naturgemäß vernetzt. Bei der konventionellen Datenmod
 
 Ein [Diagramm](http://mathworld.wolfram.com/Graph.html) ist eine Struktur aus [Vertices](http://mathworld.wolfram.com/GraphVertex.html) und [Edges](http://mathworld.wolfram.com/GraphEdge.html). Sowohl Vertices als auch Edges können eine beliebige Anzahl von Eigenschaften aufweisen. Als Vertices werden diskrete Objekte wie etwa eine Person, ein Ort oder ein Ereignis bezeichnet. Edges bezeichnen Beziehungen zwischen Vertices. Beispielsweise könnte eine Person eine andere Person kennen, an einem Ereignis beteiligt sein und sich vor Kurzem an einem Ort befunden haben. Eigenschaften geben Informationen zu den Vertices und Edges an. Zu Eigenschaften zählen beispielsweise Name und Alter eines Vertex sowie ein Edge, der einen Zeitstempel und/oder eine Gewichtung aufweist. Dieses Modell wird offiziell als [Eigenschaftsdiagramm](http://tinkerpop.apache.org/docs/current/reference/#intro) bezeichnet. Azure Cosmos DB unterstützt das Eigenschaftsdiagrammmodell.
 
-Das folgende Beispieldiagramm stellt beispielhaft die Beziehungen zwischen Personen, Mobilgeräten, Interessen und Betriebssystemen dar.
+Das folgende Beispieldiagramm stellt beispielhaft die Beziehungen zwischen Personen, Mobilgeräten, Interessen und Betriebssystemen dar:
 
 ![Beispieldatenbank mit Personen, Geräten und Interessen](./media/graph-introduction/sample-graph.png)
 
@@ -58,7 +67,7 @@ Diagramme bieten eine neuartige und leistungsstarke Datenmodellierungsmethode. D
 Sie können die von Diagrammdatenbanken bereitgestellte Funktion für schnelle Traversierungen mit Diagrammalgorithmen (z.B. Tiefensuche, Breitensuche, Dijkstra-Algorithmus) kombinieren, um Probleme in verschiedenen Domänen wie sozialen Netzwerken, Inhaltsverwaltung, Geodaten und Empfehlungen zu beheben.
 
 ## <a name="planet-scale-graphs-with-azure-cosmos-db"></a>Weltweite Diagramme mit Azure Cosmos DB
-Azure Cosmos DB ist eine vollständig verwaltete Diagrammdatenbank, die eine globale Verteilung, flexible Skalierung von Speicher und Durchsatz, automatische Indizierung und Abfrage sowie einstellbare Konsistenzebenen bietet und den TinkerPop-Standard unterstützt.  
+Azure Cosmos DB ist eine vollständig verwaltete Diagrammdatenbank, die eine globale Verteilung, flexible Skalierung von Speicher und Durchsatz, automatische Indizierung und Abfrage sowie einstellbare Konsistenzebenen bietet und den TinkerPop-Standard unterstützt.
 
 ![Architektur von Azure Cosmos DB-Diagrammen](./media/graph-introduction/cosmosdb-graph-architecture.png)
 
@@ -74,15 +83,15 @@ Azure Cosmos DB bietet im Vergleich zu anderen Diagrammdatenbanken auf dem Markt
 
 * Schnelle Abfragen und Traversierungen mit der vertrauten Gremlin-Syntax
 
- Speichern Sie heterogene Vertices und Edges, und führen Sie Abfragen dieser Dokumente über eine vertraute Gremlin-Syntax durch. Azure Cosmos DB nutzt eine sperrfreie, protokollstrukturierte Indizierungstechnologie für die gleichzeitige Ausführung zahlreicher Vorgänge, um sämtliche Inhalte automatisch zu indizieren. Diese Funktion ermöglicht umfassende Echtzeitabfragen und -traversierungen, ohne Schemahinweise, sekundäre Indizes oder Ansichten festlegen zu müssen. Mehr erfahren Sie unter [Abfragediagramme mithilfe von Gremlin](gremlin-support.md).
+ Speichern Sie heterogene Vertices und Edges, und führen Sie Abfragen dieser Dokumente über eine vertraute Gremlin-Syntax durch. Azure Cosmos DB nutzt eine sperrfreie, protokollstrukturierte Indizierungstechnologie für die gleichzeitige Ausführung zahlreicher Vorgänge, um sämtliche Inhalte automatisch zu indizieren. Diese Funktion ermöglicht umfassende Echtzeitabfragen und -traversierungen, ohne Schemahinweise, sekundäre Indizes oder Ansichten festlegen zu müssen. Mehr erfahren Sie unter [Abfragegraphen mithilfe von Gremlin](gremlin-support.md).
 
 * Vollständige Verwaltung
 
- Sie müssen sich nicht mehr mit der Verwaltung von Datenbanken und Rechenressourcen befassen. Dank des vollständig verwalteten Microsoft Azure-Diensts bleiben Ihnen die Verwaltung virtueller Computer, die Bereitstellung und Konfiguration von Software, die Skalierung oder komplexe Datentarifupgrades erspart. Alle Diagramme werden automatisch gesichert und vor regionalen Ausfällen geschützt. Sie können einfach Azure Cosmos DB-Konten hinzufügen und nach Bedarf Kapazitäten bereitstellen. Dies ermöglicht es Ihnen, sich auf Ihre Anwendung zu konzentrieren, ohne sich mit dem Betrieb und der Verwaltung der Datenbank aufhalten zu müssen.
+ Sie müssen sich nicht mehr mit der Verwaltung von Datenbanken und Rechenressourcen befassen. Dank des vollständig verwalteten Microsoft Azure-Diensts müssen Sie sich nicht mit der Verwaltung virtueller Computer, der Bereitstellung und Konfiguration von Software, der Skalierung oder mit komplexen Datenebenenupgrades herumschlagen. Alle Diagramme werden automatisch gesichert und vor regionalen Ausfällen geschützt. Sie können einfach Azure Cosmos DB-Konten hinzufügen und nach Bedarf Kapazitäten bereitstellen. Dies ermöglicht es Ihnen, sich auf Ihre Anwendung zu konzentrieren, ohne sich mit dem Betrieb und der Verwaltung der Datenbank aufhalten zu müssen.
 
 * Automatische Indizierung
 
- Alle Eigenschaften in Knoten und Edges im Diagramm werden von Azure Cosmos DB automatisch indiziert, ohne dass ein Schema oder die Erstellung sekundärer Indizes erwartet oder gefordert wird.
+ Alle Eigenschaften in Knoten und Edges im Graphen werden von Azure Cosmos DB automatisch indiziert, ohne dass ein Schema oder die Erstellung sekundärer Indizes erwartet oder gefordert wird.
 
 * Kompatibilität mit Apache TinkerPop
 
@@ -94,8 +103,8 @@ Azure Cosmos DB bietet im Vergleich zu anderen Diagrammdatenbanken auf dem Markt
 
 Azure Cosmos DB bietet zudem die Möglichkeit, mehrere Modelle wie Dokumente und Diagramme in denselben Containern bzw. Datenbanken zu verwenden. Sie können eine Dokumentsammlung verwenden, um Diagrammdaten zusammen mit Dokumenten zu speichern. Sowohl mit SQL-Abfragen über JSON als auch mit Gremlin Abfragen können Sie dieselben Daten wie ein Diagramm abfragen.
 
-## <a name="getting-started"></a>Erste Schritte
-Sie können die Azure-Befehlszeilenschnittstelle (CLI), Azure PowerShell oder das Azure-Portal mit Unterstützung für die Graph-API verwenden, um Azure Cosmos DB-Konten zu erstellen. Nach der Erstellung von Konten wird im Azure-Portal ein Dienstendpunkt wie `https://<youraccount>.graphs.azure.com` bereitgestellt, der ein WebSocket-Front-End für Gremlin bietet. Um eine Verbindung zu diesem Endpunkt herzustellen und Anwendungen in Java, Node.js oder einem beliebigen Gremlin-Clienttreiber zu erstellen, können Sie Ihre TinkerPop-kompatiblen Tools wie die [Gremin-Konsole](http://tinkerpop.apache.org/docs/current/reference/#gremlin-console) konfigurieren.
+## <a name="get-started"></a>Erste Schritte
+Sie können die Azure-Befehlszeilenschnittstelle (CLI), Azure PowerShell oder das Azure-Portal mit Unterstützung für die Graph-API verwenden, um Azure Cosmos DB-Konten zu erstellen. Nach der Erstellung von Konten wird im Azure-Portal ein Dienstendpunkt wie `https://<youraccount>.graphs.azure.com` bereitgestellt, der ein WebSocket-Front-End für Gremlin bietet. Um eine Verbindung mit diesem Endpunkt herzustellen und Anwendungen in Java, Node.js oder einem beliebigen Gremlin-Clienttreiber zu erstellen, können Sie Ihre TinkerPop-kompatiblen Tools wie die [Gremin-Konsole](http://tinkerpop.apache.org/docs/current/reference/#gremlin-console) konfigurieren.
 
 In der folgenden Tabelle werden gängige Gremlin-Treiber aufgeführt, die Sie für Azure Cosmos DB verwenden können:
 
@@ -111,7 +120,10 @@ Azure Cosmos DB bietet neben den [Azure Cosmos DB-SDKs](documentdb-sdk-dotnet.md
 | --- | --- |
 | [.NET](https://www.nuget.org/packages/Microsoft.Azure.Graphs/) |[Microsoft.Azure.Graphs](https://msdn.microsoft.com/library/azure/dn948556.aspx) |
 
-Durch Verwendung des [Azure Cosmos DB-Emulators](local-emulator.md) können Sie Entwicklungsarbeiten und Tests lokal mithilfe der Graph-API durchführen, ohne ein Azure-Abonnement zu erstellen oder sonstige Kosten zu verursachen. Wenn Sie mit der Funktion der Anwendung im Emulator zufrieden sind, können Sie zur Verwendung eines Azure Cosmos DB-Kontos in der Cloud wechseln.
+Durch Verwendung des [Azure Cosmos DB-Emulators](local-emulator.md) können Sie Entwicklungsarbeiten und Tests lokal mithilfe der Graph-API für .NET durchführen, ohne ein Azure-Abonnement zu erstellen oder sonstige Kosten zu verursachen. Wenn Sie mit der Funktion der Anwendung im Emulator zufrieden sind, können Sie zur Verwendung eines Azure Cosmos DB-Kontos in der Cloud wechseln.
+
+> [!NOTE]
+> Support für die Überprüfung von Gremlin-Abfragen an den [Azure Cosmos DB-Emulator](local-emulator.md) ist nur über die Graph-API für .NET verfügbar.
 
 ## <a name="scenarios-for-graph-support-of-azure-cosmos-db"></a>Szenarien für die Diagrammunterstützung von Azure Cosmos DB
 Im Folgenden werden einige Szenarien vorgestellt, in denen die Diagrammunterstützung von Azure Cosmos DB verwendet werden kann:
@@ -130,11 +142,11 @@ Im Folgenden werden einige Szenarien vorgestellt, in denen die Diagrammunterstü
 
 * Internet der Dinge
 
- Durch die Modellierung von Netzwerken und Verbindungen zwischen IoT-Geräten als Diagramme können Sie sich einen besseren Überblick über den Status Ihrer Geräte und Ressourcen verschaffen und herausfinden, inwiefern sich Änderungen an einem Teil des Netzwerks möglicherweise auf andere Teile auswirken können.
+ Durch die Modellierung von Netzwerken und Verbindungen zwischen IoT-Geräten als Graphen können Sie sich eine bessere Übersicht über den Status Ihrer Geräte und Ressourcen verschaffen. Sie können auch herausfinden, inwiefern sich Änderungen an einem Teil des Netzwerks möglicherweise auf andere Teile auswirken können.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zur Diagrammunterstützung in Azure Cosmos DB finden Sie durch folgende Ressourcen:
 
 * Erste Schritte durch das [Tutorial zum Azure Cosmos DB-Diagramm](create-graph-dotnet.md)
-* Informationen zum [Abfragen von Diagrammen in Azure Cosmos DB mittels Gremlin](gremlin-support.md)
+* Erfahren Sie mehr über das [Abfragen von Graphen in Azure Cosmos DB mithilfe von Gremlin](gremlin-support.md).
 

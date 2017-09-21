@@ -3,7 +3,7 @@ Informationen zur globalen Verteilung von Azure Cosmos DB erhalten Sie in diesem
 
 >[!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Planet-Scale-NoSQL-with-DocumentDB/player]  
 
-Weitere Informationen zur Funktionsweise der globalen Datenbankreplikation in Cosmos DB finden Sie unter [Distribute data globally with Cosmos DB (Globale Verteilung von Daten mit Cosmos DB)](../articles/documentdb/documentdb-distribute-data-globally.md).
+Weitere Informationen zur Funktionsweise der globalen Datenbankreplikation in Azure Cosmos DB finden Sie unter [Distribute data globally with Cosmos DB](../articles/cosmos-db/distribute-data-globally.md) (Globale Verteilung von Daten mit Cosmos DB).
 
 ## <a id="addregion"></a>Hinzufügen von globalen Datenbankregionen mit dem Azure-Portal
 Azure Cosmos DB ist standardmäßig in allen [Azure-Regionen][azureregions] weltweit verfügbar. Nachdem Sie die Standardkonsistenzebene für Ihr Datenbankkonto ausgewählt haben, können Sie dem Konto eine oder mehrere Regionen zuordnen (je nachdem, welche Konsistenzebene Sie ausgewählt haben und welche Anforderungen an eine globale Verteilung bestehen).
@@ -11,7 +11,7 @@ Azure Cosmos DB ist standardmäßig in allen [Azure-Regionen][azureregions] welt
 1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf der linken Leiste auf **Azure Cosmos DB**.
 2. Wählen Sie auf dem Blatt **Azure Cosmos DB** das zu ändernde Datenbankkonto aus.
 3. Klicken Sie auf dem Blatt „Konto“ im Menü auf **Daten global replizieren**.
-4. Wählen Sie auf dem Blatt **Daten global replizieren** die Regionen aus, die Sie hinzufügen oder entfernen möchten, indem Sie auf die Regionen in der Karte klicken, und klicken Sie anschließend auf **Speichern**. Für das Hinzufügen von Regionen entstehen Kosten. Weitere Informationen hierzu finden Sie auf der Seite mit [Preisinformationen](https://azure.microsoft.com/pricing/details/documentdb/) sowie im Artikel [Globale Verteilung von Daten mit DocumentDB](../articles/documentdb/documentdb-distribute-data-globally.md).
+4. Wählen Sie auf dem Blatt **Daten global replizieren** die Regionen aus, die Sie hinzufügen oder entfernen möchten, indem Sie auf die Regionen in der Karte klicken, und klicken Sie anschließend auf **Speichern**. Für das Hinzufügen von Regionen entstehen Kosten. Weitere Informationen hierzu finden Sie auf der Seite mit [Preisinformationen](https://azure.microsoft.com/pricing/details/cosmos-db/) sowie im Artikel [Globale Verteilung von Daten mit Azure Cosmos DB](../articles/cosmos-db/distribute-data-globally.md).
    
     ![Hinzufügen oder Entfernen von Regionen per Klick auf die Regionen auf der Karte][1]
     

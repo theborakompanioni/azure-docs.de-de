@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 05/01/2017
 ms.author: heidist
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 52b154895fca9fc465a9c6cc2fb6bf2d5384b057
+ms.translationtype: HT
+ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
+ms.openlocfilehash: 1ea9dfcaec188bac2e92909f4811568b589357d4
 ms.contentlocale: de-de
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 09/14/2017
 
 ---
 
@@ -59,7 +59,7 @@ Ein Indexer ruft Daten per Pull aus einer **Datenquelle** ab, die Informationen 
 
 * [Azure SQL-Datenbank oder SQL Server auf einem virtuellen Azure-Computer](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 * [Azure Cosmos DB](search-howto-index-documentdb.md)
-* [Azure-Blobspeicher](search-howto-indexing-azure-blob-storage.md)zum Extrahieren von Text aus PDF, Office-Dokumenten, HTML oder XML
+* [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md) für ausgewählte Inhaltstypen
 * [Azure Table Storage](search-howto-indexing-azure-tables.md)
 
 Datenquellen werden unabhängig von den Indexern, die darauf zugreifen, konfiguriert und verwaltet. Dies bedeutet, dass eine Datenquelle von mehreren Indexern verwendet werden kann, um mehr als einen Index gleichzeitig zu laden.
@@ -72,7 +72,7 @@ Nachdem Sie sich über die Grundlagen informiert haben, ist der nächste Schritt
 
 * [Azure SQL-Datenbank oder SQL Server auf einem virtuellen Azure-Computer](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 * [Azure Cosmos DB](search-howto-index-documentdb.md)
-* [Azure-Blobspeicher](search-howto-indexing-azure-blob-storage.md)zum Extrahieren von Text aus PDF, Office-Dokumenten, HTML oder XML
+* [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
 * [Azure Table Storage](search-howto-indexing-azure-tables.md)
 * [Indizieren von CSV-Blobs mit Azure Search-Blobindexer](search-howto-index-csv-blobs.md)
 * [Indizieren von JSON-Blobs mit Azure Search-Blobindexer](search-howto-index-json-blobs.md)

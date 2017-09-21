@@ -1,4 +1,4 @@
-Erstellen von Anmeldeinformationen für die Bereitstellung mit dem Befehl [az webapp deployment user set](/cli/azure/webapp/deployment/user#set).
+Erstellen Sie Anmeldeinformationen für die Bereitstellung mit dem Befehl [az webapp deployment user set](/cli/azure/webapp/deployment/user#set) in der Cloud Shell.
 
 Bei der FTP- und der lokalen Git-Bereitstellung für eine Web-App ist ein Bereitstellungsbenutzer erforderlich. Der Benutzername und das Kennwort gelten auf der Kontoebene. _Sie unterscheiden sich von den Anmeldeinformationen Ihres Azure-Abonnements._
 

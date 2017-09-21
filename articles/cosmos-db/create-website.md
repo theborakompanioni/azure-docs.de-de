@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: mimig
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
-ms.openlocfilehash: 633b88761de4d2c99cfd196cfac8e664fc83c546
+ms.translationtype: HT
+ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
+ms.openlocfilehash: 42146cdc20bcff84d54110c8fba6d00951558bd0
 ms.contentlocale: de-de
-ms.lasthandoff: 06/07/2017
-
+ms.lasthandoff: 09/14/2017
 
 ---
 # <a name="deploy-azure-cosmos-db-and-azure-app-service-web-apps-using-an-azure-resource-manager-template"></a>Bereitstellen von Azure Cosmos DB und Azure App Service-Web-Apps mithilfe einer Vorlage des Azure Resource Managers
@@ -61,9 +60,8 @@ Jetzt stellen wir unsere erste Vorlage bereit.
 > 
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an, klicken Sie auf „Neu“, und suchen Sie nach „Vorlagenbereitstellung“.
-    ![Screenshot der Benutzeroberfläche für die Vorlagenbereitstellung](./media/create-website/TemplateDeployment1.png)
-2. Wählen Sie das Vorlagenbereitstellungselement aus, und klicken Sie anschließend auf **Erstellen**.
-    ![Screenshot der Benutzeroberfläche für die Vorlagenbereitstellung](./media/create-website/TemplateDeployment2.png)
+    ![Screenshot der Benutzeroberfläche der Vorlagenbereitstellung](./media/create-website/TemplateDeployment1.png)
+2. Wählen Sie das Vorlagenbereitstellungselement aus, und klicken Sie anschließend auf **Erstellen**. ![Screenshot der Benutzeroberfläche für die Vorlagenbereitstellung](./media/create-website/TemplateDeployment2.png)
 3. Klicken Sie auf **Vorlage bearbeiten**, fügen Sie den Inhalt der Vorlagendatei „DocDBWebsiteTodo.json“ ein, und klicken Sie auf **Speichern**.
    ![Screenshot der Benutzeroberfläche der Vorlagenbereitstellung](./media/create-website/TemplateDeployment3.png)
 4. Klicken Sie auf **Parameter bearbeiten**, geben Sie Werte für die obligatorischen Parameter an, und klicken Sie auf **OK**.  Die Parameter lauten wie folgt:
@@ -102,9 +100,8 @@ Jetzt stellen wir unsere zweite Vorlage bereit.  Diese Vorlage zeigt Ihnen sehr 
 > 
 
 1. Klicken Sie im [Azure-Portal](https://portal.azure.com)auf „Neu“, und suchen Sie nach „Vorlagenbereitstellung“.
-    ![Screenshot der Benutzeroberfläche für die Vorlagenbereitstellung](./media/create-website/TemplateDeployment1.png)
-2. Wählen Sie das Vorlagenbereitstellungselement aus, und klicken Sie anschließend auf **Erstellen**.
-    ![Screenshot der Benutzeroberfläche für die Vorlagenbereitstellung](./media/create-website/TemplateDeployment2.png)
+    ![Screenshot der Benutzeroberfläche der Vorlagenbereitstellung](./media/create-website/TemplateDeployment1.png)
+2. Wählen Sie das Vorlagenbereitstellungselement aus, und klicken Sie anschließend auf **Erstellen**. ![Screenshot der Benutzeroberfläche für die Vorlagenbereitstellung](./media/create-website/TemplateDeployment2.png)
 3. Klicken Sie auf **Vorlage bearbeiten**, fügen Sie den Inhalt der Vorlagendatei „DocDBWebSite.json“ ein, und klicken Sie auf **Speichern**.
    ![Screenshot der Benutzeroberfläche der Vorlagenbereitstellung](./media/create-website/TemplateDeployment3.png)
 4. Klicken Sie auf **Parameter bearbeiten**, geben Sie Werte für die obligatorischen Parameter an, und klicken Sie auf **OK**.  Die Parameter lauten wie folgt:
@@ -122,8 +119,7 @@ Jetzt stellen wir unsere zweite Vorlage bereit.  Diese Vorlage zeigt Ihnen sehr 
    ![Screenshot der Benutzeroberfläche der Vorlagenbereitstellung](./media/create-website/TemplateDeployment6.png)
 7. Wenn die Bereitstellung abgeschlossen ist, wird das Blatt der Ressourcengruppe geöffnet.
    ![Screenshot des Blatts „Ressourcengruppe“](./media/create-website/TemplateDeployment7.png)  
-8. Klicken Sie in der Liste „Ressourcen“ auf die Web-App-Ressource und anschließend auf **Anwendungseinstellungen**.
-    ![Screenshot der Ressourcengruppe](./media/create-website/TemplateDeployment9.png)  
+8. Klicken Sie in der Liste „Ressourcen“ auf die Web-App-Ressource und anschließend auf **Anwendungseinstellungen**. ![Screenshot der Ressourcengruppe](./media/create-website/TemplateDeployment9.png)  
 9. Beachten Sie, dass Anwendungseinstellungen für den Azure Cosmos DB-Endpunkt und jeden der Azure Cosmos DB-Hauptschlüssel vorhanden sind.
 
     ![Screenshot von Anwendungseinstellungen](./media/create-website/TemplateDeployment10.png)  
@@ -134,13 +130,9 @@ Jetzt stellen wir unsere zweite Vorlage bereit.  Diese Vorlage zeigt Ihnen sehr 
 ## <a name="next-steps"></a>Nächste Schritte
 Glückwunsch! Sie haben Azure Cosmos DB, eine App Service-Web-App und eine Beispielwebanwendung mithilfe von Vorlagen des Azure Resource Managers bereitgestellt.
 
-* Um weitere Informationen zu Azure Cosmos DB zu erhalten, klicken Sie [hier](http://azure.com/docdb).
-* Weitere Informationen zu Azure App Service Web-Apps erhalten Sie, indem Sie [hier](http://go.microsoft.com/fwlink/?LinkId=325362)klicken.
-* Weitere Informationen zu Vorlagen des Azure-Ressourcen-Managers erhalten Sie, indem Sie [hier](https://msdn.microsoft.com/library/azure/dn790549.aspx)klicken.
-
-## <a name="whats-changed"></a>Änderungen
-* Hinweise zu den Änderungen von Websites zum App Service finden Sie unter: [Azure App Service und vorhandene Azure-Dienste](http://go.microsoft.com/fwlink/?LinkId=529714)
-* Hinweise zu den Veränderungen des neuen Portals gegenüber dem alten finden Sie unter [Referenz zur Navigation im klassischen Azure-Portal](http://go.microsoft.com/fwlink/?LinkId=529715)
+* Weitere Informationen zu Azure Cosmos DB finden Sie auf der [Seite über den Azure Cosmos DB-Dienst](https://azure.microsoft.com/services/cosmos-db/).
+* Weitere Informationen zu Azure App Service-Web-Apps finden Sie in der [Web-Apps-Dokumentation](http://go.microsoft.com/fwlink/?LinkId=325362).
+* Weitere Informationen zu Azure Resource Manager-Vorlagen finden Sie unter [Resource Manager-REST-API: Bereitstellungen](https://docs.microsoft.com/rest/api/resources/deployments).
 
 > [!NOTE]
 > Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](http://go.microsoft.com/fwlink/?LinkId=523751)sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.

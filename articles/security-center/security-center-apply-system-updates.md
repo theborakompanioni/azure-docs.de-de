@@ -12,49 +12,76 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/03/2017
+ms.date: 09/11/2017
 ms.author: terrylan
-translationtype: Human Translation
-ms.sourcegitcommit: 53f4898f31ef19a39e1448235ed14c8fc7df7b3b
-ms.openlocfilehash: 50cdea437db5387813c6a3905d14b6904d2aba34
-ms.lasthandoff: 02/04/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 9f7924f3f0975dc32fdf5b8e1b89a1fb8e9b7d57
+ms.contentlocale: de-de
+ms.lasthandoff: 09/13/2017
 
 ---
 # <a name="apply-system-updates-in-azure-security-center"></a>Anwenden von Systemupdates in Azure Security Center
-Azure Security Center überprüft virtuelle Windows- und Linux-Computer (Virtual Machines, VMs) täglich auf fehlende Betriebssystemupdates. Security Center ruft eine Liste mit verfügbaren Sicherheitsupdates und wichtigen Updates von Windows Update oder WSUS (Windows Server Update Services) ab – je nachdem, welcher Dienst für einen virtuellen Windows-Computer konfiguriert ist.  Darüber hinaus prüft Security Center auch die neuesten Updates für Linux-Systeme. Falls auf Ihrem virtuellen Computer ein Systemupdate fehlt, empfiehlt Security Center die Anwendung von Systemupdates.
-
-> [!NOTE]
-> Der Dienst wird anhand einer Beispielbereitstellung vorgestellt.  Es ist keine schrittweise Anleitung.
->
->
+Azure Security Center überprüft virtuelle Computer (Virtual Machines, VMs) und physische Computer unter Windows und Linux täglich auf fehlende Betriebssystemupdates. Security Center ruft eine Liste mit verfügbaren Sicherheitsupdates und wichtigen Updates von Windows Update oder WSUS (Windows Server Update Services) ab – je nachdem, welcher Dienst für einen Windows-Computer konfiguriert ist. Darüber hinaus prüft Security Center auch die neuesten Updates für Linux-Systeme. Falls auf Ihrem virtuellen oder physischen Computer ein Systemupdate fehlt, empfiehlt Security Center die Anwendung von Systemupdates.
 
 ## <a name="implement-the-recommendation"></a>Implementieren der Empfehlung
-1. Wählen Sie auf dem Blatt **Empfehlungen** die Option **Systemupdates** anwenden aus.
+„Systemupdates anwenden“ wird als Empfehlung in Security Center präsentiert. Wenn auf Ihrem virtuellen oder physischen Computer ein Systemupdate fehlt, wird diese Empfehlung unter **Empfehlungen** und unter **Compute** angezeigt.  Wenn Sie auf die Empfehlung klicken, wird das Dashboard **Systemupdates anwenden** geöffnet.
 
-   ![Systemupdates anwenden][1]
-2. Das Blatt **Systemupdates anwenden** wird geöffnet und zeigt eine Liste mit virtuellen Computern an, bei denen Systemupdates fehlen. Wählen Sie einen virtuellen Computer aus.
+In diesem Beispiel verwenden wir **Compute**.
 
-   ![Auswählen eines virtuellen Computers][2]
-3. Ein Blatt mit einer Liste fehlender Updates für den virtuellen Computer wird angezeigt. Wählen Sie ein Systemupdate aus. In diesem Beispiel wählen wir „KB3156016“ aus.
+1. Klicken Sie im Hauptmenü von Security Center auf **Compute**.
 
-   ![Fehlende Sicherheitsupdates][3]
+   ![Auswählen von „Compute“][1]
 
-4. Führen Sie die auf dem Blatt **Sicherheitsupdate** angegebenen Schritte aus, um das fehlende Update anzuwenden.
+2. Klicken Sie unter **Compute** auf **Fehlende Systemupdates**. Das Dashboard **Systemupdates anwenden** wird geöffnet.
 
-   ![Sicherheitsupdate][4]
+   ![Dashboard „Systemupdates anwenden“][2]
+
+   Im oberen Bereich des Dashboards befindet sich Folgendes:
+
+    - Die Gesamtanzahl virtueller und physischer Computer unter Windows und Linux, auf denen Systemupdates fehlen.
+    - Die Gesamtanzahl wichtiger Updates, die auf Ihren virtuellen und physischen Computern fehlen.
+    - Die Gesamtanzahl von Sicherheitsupdates, die auf Ihren virtuellen und physischen Computern fehlen.
+
+  Im unteren Bereich des Dashboards werden alle fehlenden Updates für Ihre virtuellen und physischen Computer sowie der Schweregrad des fehlenden Updates aufgeführt.  Die Liste enthält Folgendes:
+
+    - NAME: Der Name des fehlenden Updates.
+    - ANZAHL VON VMS UND COMPUTERN: Die Gesamtzahl virtueller und physischer Computer, auf denen dieses Update fehlt.
+    - STATUS: Der aktuelle Status der Empfehlung:
+
+      - Offen: Die Empfehlung wurde noch nicht umgesetzt.
+      - In Bearbeitung: Die Empfehlung wird derzeit auf die Ressourcen angewendet, und es ist keine Aktion Ihrerseits erforderlich.
+      - Behoben: Die Empfehlung wurde bereits umgesetzt. (Wenn das Problem behoben wurde, wird der Eintrag abgeblendet dargestellt.)
+
+    - SCHWEREGRAD: Beschreibt den Schweregrad der jeweiligen Empfehlung:
+
+      - Hoch: Ein Sicherheitsrisiko betrifft eine wichtige Ressource (Anwendung, virtueller Computer oder Netzwerksicherheitsgruppe) und erfordert eine Aktion.
+      - Mittel: Nicht kritische oder zusätzliche Schritte sind erforderlich, um einen Prozess abzuschließen oder ein Sicherheitsrisiko zu beseitigen.
+      - Niedrig: Es besteht ein Sicherheitsrisiko, das behandelt werden sollte, aber es ist keine unmittelbare Aktion erforderlich. (Standardmäßig werden Empfehlungen mit dem Status „Niedrig“ nicht angezeigt, aber Sie können bei Bedarf nach diesen Empfehlungen filtern.)
+
+3. Klicken Sie auf ein fehlendes Update in der Liste, um weitere Informationen anzuzeigen.
+
+   ![Fehlendes Sicherheitsupdate][3]
+
+4. Klicken Sie auf dem oberen Menüband auf das Symbol **Suche**.  Eine nach Computern mit dem fehlenden Update gefilterte Log Analytics-Suchabfrage wird geöffnet.
+
+   ![Log Analytics-Suche][4]
+
+5. Klicken Sie auf einen Computer in der Liste, um weitere Informationen zu erhalten. Ein weiteres Suchergebnis wird geöffnet, das gefilterte Informationen für diesen speziellen Computer enthält.
+
+    ![Log Analytics-Suche][5]
 
 ## <a name="reboot-after-system-updates"></a>Neustart nach Systemupdates
 1. Kehren Sie zum Blatt **Empfehlungen** zurück. Nach dem Anwenden von Systemupdates wird ein neuer Eintrag namens **Neustart nach Systemupdates**generiert. Dieser Eintrag informiert Sie darüber, dass der virtuelle Computer neu gestartet werden muss, um das Anwenden der Systemupdates abzuschließen.
 
-   ![Neustart nach Systemupdates][5]
+   ![Neustart nach Systemupdates][6]
 2. Wählen Sie **Neustart nach Systemupdates**aus. Daraufhin wird das Blatt **Ein Neustart zum Abschließen der Systemupdates steht aus.** mit einer Liste virtueller Computer angezeigt, die neu gestartet werden müssen, um das Anwenden von Systemupdates abzuschließen.
 
-   ![Neustart ausstehend][6]
+   ![Neustart ausstehend][7]
 
 Starten Sie den virtuellen Computer über Azure neu, um den Prozess abzuschließen.
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
 
 * [Festlegen von Sicherheitsrichtlinien in Azure Security Center:](security-center-policies.md) Erfahren Sie, wie Sie Sicherheitsrichtlinien für Ihre Azure-Abonnements und -Ressourcengruppen konfigurieren.
@@ -66,10 +93,11 @@ Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
 * [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/) (Blog zur Azure-Sicherheit): Hier finden Sie Blogbeiträge zur Sicherheit und Compliance von Azure.
 
 <!--Image references-->
-[1]: ./media/security-center-apply-system-updates/recommendation.png
-[2]:./media/security-center-apply-system-updates/select-vm.png
-[3]: ./media/security-center-apply-system-updates/missing-security-updates.png
-[4]: ./media/security-center-apply-system-updates/security-update.png
-[5]: ./media/security-center-apply-system-updates/reboot-after-system-updates.png
-[6]: ./media/security-center-apply-system-updates/restart-pending.png
+[1]: ./media/security-center-apply-system-updates/missing-system-updates.png
+[2]:./media/security-center-apply-system-updates/apply-system-updates.png
+[3]: ./media/security-center-apply-system-updates/detail-on-missing-update.png
+[4]: ./media/security-center-apply-system-updates/log-search.png
+[5]: ./media/security-center-apply-system-updates/search-details.png
+[6]: ./media/security-center-apply-system-updates/reboot-after-system-updates.png
+[7]: ./media/security-center-apply-system-updates/restart-pending.png
 

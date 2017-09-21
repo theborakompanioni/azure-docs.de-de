@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: trinadhk;markgal;jpallavi;
 ms.translationtype: HT
-ms.sourcegitcommit: ce0189706a3493908422df948c4fe5329ea61a32
-ms.openlocfilehash: 2f74637fe9887a9a1afbb32647d3fa98b9f88761
+ms.sourcegitcommit: f2ac16c2f514aaa7e3f90fdf0d0b6d2912ef8485
+ms.openlocfilehash: bb058b11d211c4c41ff8f8c3849a4630886c78d5
 ms.contentlocale: de-de
-ms.lasthandoff: 09/05/2017
+ms.lasthandoff: 09/08/2017
 
 ---
 # <a name="troubleshoot-azure-virtual-machine-backup"></a>Problembehandlung bei der Sicherung virtueller Azure-Computer
@@ -30,10 +30,14 @@ ms.lasthandoff: 09/05/2017
 
 Sie können die Problembehandlung für Fehler, die beim Verwenden von Azure Backup auftreten, mit den Informationen in der unten angegebenen Tabelle durchführen.
 
-## <a name="backup"></a>Sicherung
+## <a name="backup"></a>Backup 
+
+## <a name="error-the-specified-disk-configuration-is-not-supported"></a>Fehler: Die angegebene Datenträgerkonfiguration wird nicht unterstützt.
+
+Azure Backup unterstützt derzeit keine Datenträgergrößen von mehr als 1.023 GB. Stellen Sie sicher, dass die Datenträger kleiner als der Grenzwert sind, indem Sie die Datenträger teilen. Um Datenträger zu teilen, müssen Sie Daten von Datenträgern, die größer als 1.023 GB sind, in neu erstellte Datenträger mit einer Größe von weniger als 1.023 GB kopieren.
+
 | Fehlerdetails | Problemumgehung |
 | --- | --- |
-| Die angegebene Datenträgerkonfiguration wird nicht unterstützt – befolgen Sie die Anweisungen unter http://go.microsoft.com/fwlink/?LinkId=808978, um die Warnungen aufzulösen, oder wenden Sie sich an den Microsoft-Support.| Azure Backup unterstützt derzeit keine Datenträgergrößen von mehr als 1.023 GB. Stellen Sie sicher, dass die Datenträger kleiner als der Grenzwert sind, indem Sie die Datenträger teilen. Um Datenträger zu teilen, müssen Sie Daten von Datenträgern, die größer als 1.023 GB sind, in neu erstellte Datenträger mit einer Größe von weniger als 1.023 GB kopieren. |
 | Der Vorgang konnte nicht ausgeführt werden, da der virtuelle Computer nicht mehr vorhanden ist. - Beenden des Schutzes für virtuelle Computer ohne Löschen der Sicherungsdaten. Weitere Informationen finden Sie unter „http://go.microsoft.com/fwlink/?LinkId=808124“. |Dies tritt auf, wenn der primäre virtuelle Computer gelöscht wurde, die Sicherungsrichtlinie jedoch weiterhin einen virtuellen Computer für die Sicherung sucht. Gehen Sie wie folgt vor, um diesen Fehler zu beheben:  <ol><li> Erstellen Sie den virtuellen Computer mit dem gleichen Namen und dem gleichen Ressourcengruppennamen [Clouddienstname] neu,<br>(ODER)</li><li> Beenden Sie den Schutz für den virtuellen Computer mit oder ohne die Sicherheitsdaten zu löschen. [Weitere Informationen](http://go.microsoft.com/fwlink/?LinkId=808124)</li></ol> |
 | Fehler beim Momentaufnahmevorgang aufgrund fehlender Netzwerkkonnektivität auf dem virtuellen Computer. Stellen Sie sicher, dass der virtuelle Computer auf das Netzwerk zugreifen kann. Damit die Momentaufnahme erfolgreich erstellt werden kann, setzen Sie entweder die IP-Bereiche des Azure-Rechenzentrums auf eine Whitelist, oder richten Sie einen Proxyserver für den Netzwerkzugriff ein. Weitere Informationen finden Sie unter http://go.microsoft.com/fwlink/?LinkId=800034. Wenn Sie bereits einen Proxyserver verwenden, stellen Sie sicher, dass die Einstellungen des Proxyservers korrekt konfiguriert sind. | Dieser Fehler wird ausgelöst, wenn Sie die ausgehende Internetkonnektivität auf dem virtuellen Computer verweigern. Internetkonnektivität ist erforderlich, damit die VM-Momentaufnahmenerweiterung eine Momentaufnahme des zugrunde liegenden Datenträgers des virtuellen Computers erstellen kann. [Erfahren Sie mehr](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#snapshot-operation-failed-due-to-no-network-connectivity-on-the-virtual-machine) zum Beheben von Momentaufnahmenfehlern, die auf blockierten Netzwerkzugriff zurückzuführen sind. |
 | Der VM-Agent kann nicht mit dem Azure Backup-Dienst kommunizieren. Stellen Sie sicher, dass die VM über Netzwerkkonnektivität verfügt, und dass der neueste VM-Agent ausgeführt wird. Weitere Informationen finden Sie unter http://go.microsoft.com/fwlink/?LinkId=800034. |Dieser Fehler wird ausgelöst, wenn ein Problem mit dem VM-Agent besteht oder der Netzwerkzugriff auf die Azure-Infrastruktur blockiert ist. [Erfahren Sie mehr](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#vm-agent-unable-to-communicate-with-azure-backup) über das Debuggen von Problemen mit VM-Momentaufnahmen.<br> Wenn der VM-Agent keine Probleme verursacht, starten Sie den virtuellen Computer neu. Gelegentlich kann ein falscher Status des virtuellen Computers Probleme verursachen. Durch einen Neustart des virtuellen Computers wird der Status zurückgesetzt. |

@@ -12,10 +12,10 @@ ms.date: 05/04/2017
 ms.author: mahender
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: f5d0bb05d0e9caebfc6c13d983518d65f7409527
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: 1b4ef5dc0af6bea8af02ad63843acc91713666ad
 ms.contentlocale: de-de
-ms.lasthandoff: 07/27/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 
@@ -37,37 +37,34 @@ Die resultierende Funktion wird für den restlichen Teil dieses Tutorials verwen
 
 Standardmäßig ist Ihre über HTTP ausgelöste Funktion so konfiguriert, dass sie alle HTTP-Methoden akzeptiert. Es gibt auch eine Standard-URL im Format `http://<yourapp>.azurewebsites.net/api/<funcname>?code=<functionkey>`. Wenn Sie nach der Schnellstartanleitung vorgegangen sind, sieht `<funcname>` wahrscheinlich in etwa wie „HttpTriggerJS1“ aus. In diesem Abschnitt ändern Sie die Funktion, sodass sie stattdessen nur auf GET-Anforderungen für die Route `/api/hello` antwortet. 
 
-Navigieren Sie im Azure-Portal zu Ihrer Funktion. Wählen Sie im linken Navigationsbereich **Integrieren** aus.
+1. Navigieren Sie im Azure-Portal zu Ihrer Funktion. Wählen Sie im linken Navigationsbereich **Integrieren** aus.
 
-![Anpassen einer HTTP-Funktion](./media/functions-create-serverless-api/customizing-http.png)
+    ![Anpassen einer HTTP-Funktion](./media/functions-create-serverless-api/customizing-http.png)
 
-Verwenden Sie die HTTP-Triggereinstellungen, wie in der Tabelle angegeben.
+1. Verwenden Sie die HTTP-Triggereinstellungen, wie in der Tabelle angegeben.
 
-| Feld | Beispielwert | Beschreibung |
-|---|---|---|
-| Zulässige HTTP-Methoden | Ausgewählte Methoden | Bestimmt, welche HTTP-Methoden verwendet werden können, um diese Funktion aufzurufen |
-| Ausgewählte HTTP-Methoden | GET | Bestimmt, dass nur ausgewählte HTTP-Methoden zum Aufrufen dieser Funktion verwendet werden können |
-| Routenvorlage | /hello | Bestimmt, welche Route verwendet wird, um diese Funktion aufzurufen |
+    | Feld | Beispielwert | Beschreibung |
+    |---|---|---|
+    | Zulässige HTTP-Methoden | Ausgewählte Methoden | Bestimmt, welche HTTP-Methoden verwendet werden können, um diese Funktion aufzurufen |
+    | Ausgewählte HTTP-Methoden | GET | Bestimmt, dass nur ausgewählte HTTP-Methoden zum Aufrufen dieser Funktion verwendet werden können |
+    | Routenvorlage | /hello | Bestimmt, welche Route verwendet wird, um diese Funktion aufzurufen |
+    | Autorisierungsstufe | Anonym | Optional: Ermöglicht den Zugriff auf Ihre Funktion ohne einen API-Schlüssel |
 
-Beachten Sie, dass Sie das Basispfadpräfix `/api` nicht in die Routenvorlage aufgenommen haben, da es durch eine globale Einstellung festgelegt wird.
+    > [!NOTE] 
+    > Beachten Sie, dass Sie das Basispfadpräfix `/api` nicht in die Routenvorlage aufgenommen haben, da es durch eine globale Einstellung festgelegt wird.
 
-Klicken Sie auf **Speichern**.
+1. Klicken Sie auf **Speichern**.
 
 Unter [HTTP- und Webhookbindungen in Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook#customizing-the-http-endpoint) erfahren Sie mehr über das Anpassen von HTTP-Funktionen.
 
 ### <a name="test-your-api"></a>Testen der API
 
 Als Nächstes testen Sie die Funktion, um zu sehen, wie sie mit der neuen API-Oberfläche funktioniert.
-
-Navigieren Sie zurück zur Entwicklungsseite, indem Sie im linken Navigationsbereich auf den Funktionsnamen klicken.
-
-Klicken Sie auf **Funktions-URL abrufen**, und kopieren Sie die URL. Sie sollten sehen, dass jetzt die Route `/api/hello` verwendet wird.
-
-Kopieren Sie die URL in eine neue Browserregisterkarte oder in Ihren bevorzugten REST-Client. Browser verwenden standardmäßig GET.
-
-Führen Sie die Funktion aus, und vergewissern Sie sich, dass sie funktioniert. Sie müssen möglicherweise den Parameter „name“ als Abfragezeichenfolge angeben, damit der Schnellstartcode funktioniert.
-
-Sie können auch versuchen, den Endpunkt mit einer anderen HTTP-Methode aufzurufen, um sicherzustellen, dass die Funktion nicht ausgeführt wird. Hierzu müssen Sie einen REST-Client wie cURL, Postman oder Fiddler verwenden.
+1. Navigieren Sie zurück zur Entwicklungsseite, indem Sie im linken Navigationsbereich auf den Funktionsnamen klicken.
+1. Klicken Sie auf **Funktions-URL abrufen**, und kopieren Sie die URL. Sie sollten sehen, dass jetzt die Route `/api/hello` verwendet wird.
+1. Kopieren Sie die URL in eine neue Browserregisterkarte oder in Ihren bevorzugten REST-Client. Browser verwenden standardmäßig GET.
+1. Führen Sie die Funktion aus, und vergewissern Sie sich, dass sie funktioniert. Sie müssen möglicherweise den Parameter „name“ als Abfragezeichenfolge angeben, damit der Schnellstartcode funktioniert.
+1. Sie können auch versuchen, den Endpunkt mit einer anderen HTTP-Methode aufzurufen, um sicherzustellen, dass die Funktion nicht ausgeführt wird. Hierzu müssen Sie einen REST-Client wie cURL, Postman oder Fiddler verwenden.
 
 ## <a name="proxies-overview"></a>Übersicht über Proxy
 
@@ -76,7 +73,7 @@ Im nächsten Abschnitt zeigen Sie Ihre API über einen Proxy an. Azure Functions
 Ein Proxy kann auf HTTP-Ressourcen wie die folgenden verweisen:
 - Azure-Funktionen 
 - API-Apps in [Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-value-prop-what-is)
-- Docker-Container in [App Service unter Linux](https://docs.microsoft.com/azure/app-service/app-service-linux-readme)
+- Docker-Container in [App Service unter Linux](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-intro)
 - Andere gehostete APIs
 
 Weitere Informationen zu Proxys finden Sie unter [Arbeiten mit Proxys in Azure Functions (Vorschau)].
@@ -87,44 +84,39 @@ In diesem Abschnitt erstellen Sie einen neuen Proxy, der als Front-End für Ihre
 
 ### <a name="setting-up-the-frontend-environment"></a>Einrichten der Front-End-Umgebung
 
-Wiederholen Sie die Schritte zum [Erstellen einer Funktionen-App](https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function#create-a-function-app), um eine neue Funktionen-App zu erstellen, in der Sie den Proxy erstellen. Diese neue App dient als Front-End für unsere API, und die Funktionen-App, die Sie zuvor bearbeitet haben, dient als Back-End.
+Wiederholen Sie die Schritte zum [Erstellen einer Funktionen-App](https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function#create-a-function-app), um eine neue Funktionen-App zu erstellen, in der Sie den Proxy erstellen. Die URL dieser neuen App dient als Front-End für unsere API, und die Funktions-App, die Sie zuvor bearbeitet haben, dient als Back-End.
 
-Navigieren Sie zu Ihrer neuen Front-End-Funktionen-App im Portal.
+1. Navigieren Sie zu Ihrer neuen Front-End-Funktionen-App im Portal.
+1. Wählen Sie **Settings**aus. Schalten Sie dann **Azure Functions-Proxys aktivieren (Vorschau)** auf „Ein“.
+1. Wählen Sie **Plattformeinstellungen** und dann **Anwendungseinstellungen** aus.
+1. Scrollen Sie nach unten bis zu **App-Einstellungen**, und erstellen Sie eine neue Einstellung mit dem Schlüssel „HELLO_HOST“. Legen Sie deren Wert auf den Host Ihrer Back-End-Funktionen-App fest, z.B. `<YourBackendApp>.azurewebsites.net`. Dies ist Teil der URL, die Sie zuvor kopiert haben, als Sie die HTTP-Funktion getestet haben. Sie geben diese Einstellung später in der Konfiguration an.
 
-Wählen Sie **Settings**aus. Schalten Sie dann **Azure Functions-Proxys aktivieren (Vorschau)** auf „Ein“.
+    > [!NOTE] 
+    > App-Einstellungen werden für die Hostkonfiguration empfohlen, um eine hartcodierte Umgebungsabhängigkeit für den Proxy zu verhindern. Die Verwendung dieser App-Einstellungen bedeutet, dass Sie die Proxykonfiguration zwischen Umgebungen verschieben können, und die umgebungsspezifischen App-Einstellungen werden angewendet.
 
-Wählen Sie **Plattformeinstellungen** und dann **Anwendungseinstellungen** aus.
-
-Scrollen Sie nach unten bis zu **App-Einstellungen**, und erstellen Sie eine neue Einstellung mit dem Schlüssel „HELLO_HOST“. Legen Sie deren Wert auf den Host Ihrer Back-End-Funktionen-App fest, z.B. `<YourApp>.azurewebsites.net`. Dies ist Teil der URL, die Sie zuvor kopiert haben, als Sie die HTTP-Funktion getestet haben. Sie geben diese Einstellung später in der Konfiguration an.
-
-> [!NOTE] 
-> App-Einstellungen werden für die Hostkonfiguration empfohlen, um eine hartcodierte Umgebungsabhängigkeit für den Proxy zu verhindern. Die Verwendung dieser App-Einstellungen bedeutet, dass Sie die Proxykonfiguration zwischen Umgebungen verschieben können, und die umgebungsspezifischen App-Einstellungen werden angewendet.
-
-Klicken Sie auf **Speichern**.
+1. Klicken Sie auf **Speichern**.
 
 ### <a name="creating-a-proxy-on-the-frontend"></a>Erstellen eines Proxys auf dem Front-End
 
-Navigieren Sie zurück zu Ihrer Front-End-Funktionen-App im Portal.
+1. Navigieren Sie zurück zu Ihrer Front-End-Funktionen-App im Portal.
+1. Klicken Sie im linken Navigationsbereich auf das Pluszeichen „+“ neben „Proxys (Vorschau)“.
+    ![Erstellen eines Proxys](./media/functions-create-serverless-api/creating-proxy.png)
+1. Verwenden Sie die Proxyeinstellungen, wie in der Tabelle angegeben. 
 
-Klicken Sie im linken Navigationsbereich auf das Pluszeichen „+“ neben „Proxys (Vorschau)“.
-
-![Erstellen eines Proxys](./media/functions-create-serverless-api/creating-proxy.png)
-
-Verwenden Sie die Proxyeinstellungen, wie in der Tabelle angegeben.
-
-| Feld | Beispielwert | Beschreibung |
-|---|---|---|
-| Name | HelloProxy | Ein Anzeigename für die Verwaltung |
-| Routenvorlage | /api/hello | Bestimmt, welche Route verwendet wird, um diesen Proxy aufzurufen |
-| Back-End-URL | https://%HELLO_HOST%/api/hello | Gibt den Endpunkt an, der für die Anforderung als Proxy dienen soll |
-
-Beachten Sie, dass Proxys das Basispfadpräfix `/api` nicht bereitstellen. Es muss in der Routenvorlage enthalten sein.
-
-Die Syntax `%HELLO_HOST%` verweist auf die App-Einstellung, die Sie zuvor erstellt haben. Die aufgelöste URL verweist auf die ursprüngliche Funktion.
-
-Klicken Sie auf **Erstellen**.
-
-Sie können Ihren neuen Proxy ausprobieren, indem Sie die Proxy-URL kopieren und im Browser oder mit Ihrem bevorzugten HTTP-Client testen.
+    | Feld | Beispielwert | Beschreibung |
+    |---|---|---|
+    | Name | HelloProxy | Ein Anzeigename für die Verwaltung |
+    | Routenvorlage | /api/hello | Bestimmt, welche Route verwendet wird, um diesen Proxy aufzurufen |
+    | Back-End-URL | https://%HELLO_HOST%/api/hello | Gibt den Endpunkt an, der für die Anforderung als Proxy dienen soll |
+    
+1. Beachten Sie, dass Proxys das Basispfadpräfix `/api` nicht bereitstellen. Es muss in der Routenvorlage enthalten sein.
+1. Die Syntax `%HELLO_HOST%` verweist auf die App-Einstellung, die Sie zuvor erstellt haben. Die aufgelöste URL verweist auf die ursprüngliche Funktion.
+1. Klicken Sie auf **Erstellen**.
+1. Sie können Ihren neuen Proxy ausprobieren, indem Sie die Proxy-URL kopieren und im Browser oder mit Ihrem bevorzugten HTTP-Client testen.
+    1. Für eine anonyme Funktion verwenden Sie:
+        1. `https://YOURPROXYAPP.azurewebsites.net/api/hello?name="Proxies"`
+    1. Für eine Funktion mit Autorisierung verwenden Sie:
+        1. `https://YOURPROXYAPP.azurewebsites.net/api/hello?code=YOURCODE&name="Proxies"`
 
 ## <a name="create-a-mock-api"></a>Erstellen einer Modell-API
 

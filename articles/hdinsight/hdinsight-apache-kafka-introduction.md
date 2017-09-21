@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 06/15/2017
+ms.date: 09/07/2017
 ms.author: larryfr
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 1976c52bd7fa56bb07104e205ab3699b2dfa4c50
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 39234ca792983178cfd4304e001271ea30e28ae6
 ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 # <a name="introducing-apache-kafka-on-hdinsight-preview"></a>Einführung in Apache Kafka in HDInsight (Vorschau)
@@ -42,7 +42,7 @@ Kafka verfügt über die folgenden Features:
 
 * Integration von Azure Managed Disks: Verwaltete Datenträger bieten eine bessere Skalierung und einen höheren Durchsatz für die Datenträger, die von den virtuellen Computern im HDInsight-Cluster verwendet werden.
 
-    Verwaltete Datenträger sind für Kafka in HDInsight standardmäßig aktiviert. Die Anzahl der pro Knoten verwendeten Datenträger kann während der HDInsight-Erstellung konfiguriert werden. Weitere Informationen zu verwalteten Datenträgern finden Sie unter [Azure Managed Disks](../virtual-machines/windows/managed-disks-overview.md).
+    Verwaltete Datenträger sind standardmäßig für Kafka in HDInsight aktiviert. Die Anzahl von Datenträgern, die pro Knoten verwendet werden, kann während der HDInsight-Erstellung konfiguriert werden. Weitere Informationen zu verwalteten Datenträgern finden Sie unter [Azure Managed Disks](../virtual-machines/windows/managed-disks-overview.md).
 
     Informationen zum Konfigurieren von verwalteten Datenträgern mit Kafka in HDInsight finden Sie unter [Erhöhen der Skalierbarkeit von Kafka in HDInsight](hdinsight-apache-kafka-scalability.md).
 
@@ -55,6 +55,15 @@ Kafka verfügt über die folgenden Features:
 * **Aggregation**: Mit der Datenstromverarbeitung können Sie Informationen aus unterschiedlichen Datenströmen aggregieren, um die Informationen zu operativen Daten zu kombinieren und zu zentralisieren.
 
 * **Transformation**: Mit der Datenstromverarbeitung können Sie Daten aus mehreren Eingabethemen zu einem oder mehreren Ausgabethemen kombinieren und erweitern.
+
+## <a name="architecture"></a>Architektur
+
+![Kafka-Clusterkonfiguration](./media/hdinsight-apache-kafka-introduction/kafka-cluster.png)
+
+In diesem Diagramm ist eine typische Kafka-Konfiguration dargestellt, für die Consumergruppen, Partitionierung und Replikation verwendet werden, um eine parallele Ablesung von Ereignissen mit Fehlertoleranz zu ermöglichen. Apache ZooKeeper ist für gleichzeitige, robuste Transaktionen mit geringer Wartezeit ausgelegt, da darüber der Zustand des Kafka-Clusters verwaltet wird. Bei Kafka werden Datensätze in *Themen* gespeichert. Datensätze werden von *Producern* erstellt und von *Consumern* genutzt. Producer rufen Datensätze von Kafka-*Brokern* ab. Jeder Workerknoten in Ihrem HDInsight-Cluster ist ein Kafka-Broker. Für jeden Consumer wird eine Partition erstellt, um die parallele Verarbeitung der Streamingdaten zu ermöglichen. Die Replikation wird genutzt, um die Partitionen auf Knoten zu verteilen und für den Schutz vor Ausfällen von Knoten (Brokern) zu sorgen. Eine Partition, die mit einem *(L)* gekennzeichnet ist, ist jeweils die führende Partition. Producer-Datenverkehr wird an die führende Komponente jedes Knotens weitergeleitet, indem der von ZooKeeper verwaltete Zustand verwendet wird.
+
+> [!IMPORTANT]
+> Kafka ist sich der zugrunde liegenden Hardware (Rack) im Azure-Rechenzentrum nicht bewusst. Informationen zur Sicherstellung, dass Partitionen für die zugrunde liegende Hardware richtig verteilt sind, finden Sie unter [Konfigurieren von hoher Datenverfügbarkeit (Kafka)](hdinsight-apache-kafka-high-availability.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

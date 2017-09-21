@@ -11,17 +11,34 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/01/2017
+ms.date: 09/13/2017
 ms.author: markvi
 ms.reviewer: jairoc
 ms.translationtype: HT
-ms.sourcegitcommit: ce0189706a3493908422df948c4fe5329ea61a32
-ms.openlocfilehash: 1ab6a2b949101f60d6eef1ba7603d1c2cf81f90a
+ms.sourcegitcommit: 47ba7c7004ecf68f4a112ddf391eb645851ca1fb
+ms.openlocfilehash: 8b8ab2883234850fe243c4d7473d737c497204b4
 ms.contentlocale: de-de
-ms.lasthandoff: 09/05/2017
+ms.lasthandoff: 09/14/2017
 
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory: Häufig gestellte Fragen zur Geräteverwaltung
+
+
+
+**F: Wie kann ich ein macOS-Gerät registrieren?**
+
+**A:** So registrieren Sie ein macOS-Gerät:
+
+1.  [Erstellen Sie eine Konformitätsrichtlinie](https://docs.microsoft.com/intune/compliance-policy-create-mac-os).
+2.  [Definieren Sie eine Richtlinie zum bedingten Zugriff für macOS-Geräte](active-directory-conditional-access-azure-portal.md). 
+
+**Hinweise:**
+
+- Die in der Richtlinie zum bedingten Zugriff enthaltenen Benutzer benötigen für den Zugriff auf Ressourcen eine [unterstützte Version von Office für macOS](active-directory-conditional-access-technical-reference.md#supported-mobile-apps-and-desktop-clients). 
+
+- Beim ersten Zugriffsversuch werden die Benutzer aufgefordert, das Gerät über das Unternehmensportal zu registrieren.
+
+---
 
 **F: Ich habe das Gerät vor kurzem registriert. Warum kann ich das Gerät nicht in meinen Benutzerinformationen im Azure-Portal sehen?**
 
@@ -136,20 +153,10 @@ Für andere Windows-Plattformen, die in die lokale AD-Domäne eingebunden sind:
 
 ---
 
-**F: Wo finde ich Anweisungen zum Einrichten der automatischen Geräteregistrierung?**
+**F: Wo finde ich Anweisungen zum Einrichten der in Azure AD eingebundenen Hybridgeräte?**
 
-**A:** Detaillierte Anleitungen finden Sie unter [Konfigurieren der automatischen Registrierung von in die Domäne eingebundenen Windows-Geräten mit Azure Active Directory](active-directory-conditional-access-automatic-device-registration-setup.md).
+**A:** Ausführliche Anweisungen finden Sie unter [Einrichten von in Azure Active Directory eingebundenen Hybridgeräten](device-management-hybrid-azuread-joined-devices-setup.md).
 
----
-
-**F: Wo finde ich Informationen zur Problembehandlung bei der automatischen Geräteregistrierung?**
-
-**A:** Informationen zur Problembehandlung finden Sie unter:
-
-- [Beheben von Problemen bei der automatischen Registrierung von Computern, die in die Azure AD-Domäne eingebunden sind, für Windows 10 und Windows Server 2016](device-management-troubleshoot-hybrid-join-windows-current.md)
-
-- [Beheben von Problemen bei der automatischen Registrierung von Computern, die in die Azure AD-Domäne eingebunden sind, für kompatible Windows-Clients](device-management-troubleshoot-hybrid-join-windows-legacy.md)
- 
 ---
 
 

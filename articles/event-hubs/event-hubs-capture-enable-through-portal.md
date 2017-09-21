@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 08/28/2017
 ms.author: sethm
 ms.translationtype: HT
-ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
-ms.openlocfilehash: 5420c1cdefa99ff30320dd757e04aa0cafc792bc
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 4a4ab1ee022b6b33d35217df916d01f32e04d3a4
 ms.contentlocale: de-de
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 
@@ -44,24 +44,8 @@ Wenn Sie Daten in Azure Data Lake Store erfassen möchten, müssen Sie ein Data 
 
 ### <a name="create-an-azure-data-lake-store-account-and-folders"></a>Erstellen eines Azure Data Lake Store-Kontos und Erstellen von Ordnern
 
-1. Erstellen Sie gemäß der Anleitung unter [Erste Schritte mit Azure Data Lake Store über das Azure-Portal](../data-lake-store/data-lake-store-get-started-portal.md) ein Data Lake Store-Konto. 
-2. Erstellen Sie gemäß der Anleitung [Erstellen von Ordnern im Azure Data Lake-Speicherkonto](../data-lake-store/data-lake-store-get-started-portal.md#createfolder) einen Ordner unter diesem Konto.
-3. Klicken Sie auf dem Blatt für das Data Lake Store-Konto auf **Daten-Explorer**.
-4. Klicken Sie auf **Zugriff**.
-5. Klicken Sie auf **Hinzufügen**.
-6. Geben Sie im Feld **Nach Namen oder E-Mail suchen** die Zeichenfolge **Microsoft.EventHubs** ein, und wählen Sie anschließend die entsprechende Option aus. 
-7. Die Registerkarte **Berechtigungen** erscheint. Legen Sie die Berechtigungen fest, wie in der folgenden Abbildung gezeigt:
-
-    ![][6]
-
-8. Klicken Sie auf **OK**.
-9. Erstellen Sie nun einen Ordner im Stammordner, indem Sie zum Zielordner navigieren und auf den Ordnernamen klicken.
-10. Klicken Sie auf **Zugriff**.
-11. Klicken Sie auf **Hinzufügen**.
-12. Geben Sie im Feld **Nach Namen oder E-Mail suchen** die Zeichenfolge **Microsoft.EventHubs** ein, und wählen Sie anschließend die entsprechende Option aus.
-13. Die Registerkarte **Berechtigungen** wird erneut angezeigt. Legen Sie die Berechtigungen fest, wie in der folgenden Abbildung gezeigt:
-
-    ![][5]
+1. Erstellen Sie gemäß der Anleitung unter [Erste Schritte mit Azure Data Lake Store über das Azure-Portal](../data-lake-store/data-lake-store-get-started-portal.md) ein Data Lake Store-Konto.
+2. Führen Sie die Anleitungsschritte im Abschnitt [Zuweisen von Berechtigungen für Event Hubs](../data-lake-store/data-lake-store-archive-eventhub-capture.md#assign-permissions-to-event-hubs) aus, um unter dem Data Lake Store-Konto einen Ordner zu erstellen, in dem Sie die Daten aus Event Hubs erfassen möchten. Sie können für Event Hubs auch Berechtigungen zuweisen, damit diese Daten in Ihr Data Lake Store-Konto schreiben können.  
 
 ### <a name="create-an-event-hub"></a>Erstellen eines Ereignis-Hubs
 
@@ -87,12 +71,11 @@ Capture kann für vorhandene Event Hubs in Event Hubs-Namespaces konfiguriert we
 [2]: ./media/event-hubs-capture-enable-through-portal/event-hubs-capture2.png
 [3]: ./media/event-hubs-capture-enable-through-portal/event-hubs-capture3.png
 [4]: ./media/event-hubs-capture-enable-through-portal/event-hubs-capture4.png
-[5]: ./media/event-hubs-capture-enable-through-portal/event-hubs-capture5.png
-[6]: ./media/event-hubs-capture-enable-through-portal/event-hubs-capture6.png
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Weitere Informationen zu Event Hubs Capture finden Sie in der [Übersicht über Event Hubs Capture][capture-overview].
 - Sie können Event Hubs Capture auch über Azure Resource Manager-Vorlagen konfigurieren. Weitere Informationen finden Sie unter [Aktivieren von Capture über eine Azure Resource Manager-Vorlage](event-hubs-resource-manager-namespace-event-hub-enable-capture.md).
+- [Erste Schritte mit Azure Data Lake Store über das Azure-Portal](../data-lake-store/data-lake-store-get-started-portal.md)
 
 [capture-overview]: event-hubs-capture-overview.md

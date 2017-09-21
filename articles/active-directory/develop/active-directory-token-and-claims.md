@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/08/2017
+ms.date: 09/07/2017
 ms.author: dastrock
 ms.custom: aaddev
 ms.translationtype: HT
-ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
-ms.openlocfilehash: c211c59b00d445a62ebe3ae9334101c983e05c57
+ms.sourcegitcommit: f2ac16c2f514aaa7e3f90fdf0d0b6d2912ef8485
+ms.openlocfilehash: be28230b9c56dcbca4ba8f70e44741f65a447f73
 ms.contentlocale: de-de
-ms.lasthandoff: 07/12/2017
+ms.lasthandoff: 09/08/2017
 
 ---
 # <a name="azure-ad-token-reference"></a>Azure AD-Tokenreferenz
@@ -30,7 +30,7 @@ Azure AD unterstützt das [OAuth 2.0-Autorisierungsprotokoll](active-directory-p
 
 Ein Trägertoken ist ein einfaches Sicherheitstoken, das dem „Träger“ den Zugriff auf eine geschützte Ressource ermöglicht. In diesem Kontext ist der „Träger“ jede beliebige Partei, die das Token vorweisen kann. Um das Bearertoken zu erhalten, ist zwar eine Authentifizierung bei Azure AD erforderlich, es müssen jedoch Maßnahmen zur Sicherung des Tokens ergriffen werden, um ein Abfangen durch eine nicht vorgesehene Partei zu verhindern. Da Bearertoken nicht über einen integrierten Mechanismus zum Verhindern einer unbefugten Verwendung durch nicht autorisierte Parteien verfügt, müssen sie über einen sicheren Kanal wie etwa Transport Layer Security (HTTPS) übertragen werden. Wird ein Bearertoken als Klartext gesendet, das Token mithilfe eines Man-in-the-Middle-Angriffs abgefangen und damit unautorisierter Zugriff auf eine geschützte Ressource erlangt werdet. Die gleichen Sicherheitsprinzipien gelten für die (Zwischen-)Speicherung von Trägertoken zur späteren Verwendung. Stellen Sie daher sicher, dass Ihre App Bearertoken stets auf sichere Weise überträgt und speichert. Weitere Sicherheitsüberlegungen zu Bearertoken finden Sie unter [RFC 6750, Abschnitt 5](http://tools.ietf.org/html/rfc6750).
 
-Viele der von Azure AD ausgestellten Token werden als JSON Web Token (JWT) implementiert.  Ein JWT stellt eine kompakte, URL-sichere Methode zum Übertragen von Informationen zwischen zwei Parteien dar.  Die in JWTs enthaltenen Informationen werden als „Ansprüche“ oder Assertionen von Informationen zum Träger und Antragsteller des Tokens bezeichnet.  Die Ansprüche in JWTs sind JSON-Objekte, die für die Übertragung codiert und serialisiert wurden.  Da die von Azure AD ausgestellten JWTs signiert, aber nicht verschlüsselt sind, können Sie den Inhalt eines JWTs problemlos für Debugzwecke untersuchen.  Dafür stehen mehrere Tools zur Verfügung (etwa [jwt.calebb.net](http://jwt.calebb.net)). Weitere Informationen zu JWTs finden Sie in der [JWT-Spezifikation](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html).
+Viele der von Azure AD ausgestellten Token werden als JSON Web Token (JWT) implementiert.  Ein JWT stellt eine kompakte, URL-sichere Methode zum Übertragen von Informationen zwischen zwei Parteien dar.  Die in JWTs enthaltenen Informationen werden als „Ansprüche“ oder Assertionen von Informationen zum Träger und Antragsteller des Tokens bezeichnet.  Die Ansprüche in JWTs sind JSON-Objekte, die für die Übertragung codiert und serialisiert wurden.  Da die von Azure AD ausgestellten JWTs signiert, aber nicht verschlüsselt sind, können Sie den Inhalt eines JWTs problemlos für Debugzwecke untersuchen.  Dafür stehen mehrere Tools zur Verfügung (etwa [jwt.ms](https://jwt.ms/)). Weitere Informationen zu JWTs finden Sie in der [JWT-Spezifikation](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html).
 
 ## <a name="idtokens"></a>ID-Token
 ID-Token sind eine Form von Anmeldesicherheitstoken, die Ihre App empfängt, wenn die Authentifizierung mit [OpenID Connect](active-directory-protocols-openid-connect-code.md) ausgeführt wird.  Sie werden als [JWTs](#types-of-tokens) dargestellt und enthalten Ansprüche, die Sie für die Anmeldung der Benutzer bei der App verwenden können.  Sie können die Ansprüche nach Bedarf in einem ID-Token verwenden. Im Allgemeinen werden Sie in einer App zum Anzeigen von Kontoinformationen oder zum Treffen von Entscheidungen hinsichtlich der Zugriffssteuerung eingesetzt.
@@ -45,7 +45,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIyZDRkMTFhMi1mODE0LTQ2YTctODkwYS0y
 ```
 
 > [!TIP]
-> Überprüfen Sie zu Übungszwecken die Ansprüche im ID-Beispieltoken, indem Sie sie in [calebb.net](http://jwt.calebb.net) einfügen.
+> Überprüfen Sie zu Übungszwecken die Ansprüche im ID-Beispieltoken, indem Sie es in [jwt.ms](https://jwt.ms/) einfügen.
 > 
 > 
 

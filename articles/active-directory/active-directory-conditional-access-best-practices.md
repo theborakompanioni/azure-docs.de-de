@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/12/2017
+ms.date: 09/07/2017
 ms.author: markvi
 ms.reviewer: calebb
 ms.translationtype: HT
-ms.sourcegitcommit: 26c07d30f9166e0e52cb396cdd0576530939e442
-ms.openlocfilehash: 3e524c116479c1af6eb6a601c9b57d27a697c5a2
+ms.sourcegitcommit: f2ac16c2f514aaa7e3f90fdf0d0b6d2912ef8485
+ms.openlocfilehash: fedc72f8fe1ada9a991d417cc77b8ca659589f55
 ms.contentlocale: de-de
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 09/08/2017
 
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Best Practices für den bedingten Zugriff in Azure Active Directory
@@ -96,6 +96,99 @@ Vermeiden Sie in Ihrer Umgebung die folgenden Konfigurationen:
 **Für alle Benutzer, alle Cloud-Apps, alle Geräteplattformen:**
 
 - **Zugriff blockieren:** Diese Konfiguration blockiert Ihre gesamte Organisation, was in keinem Fall wünschenswert ist.
+
+
+
+## <a name="policy-migration"></a>Richtlinienmigration
+
+Falls Sie Richtlinien im klassischen Azure-Portal konfiguriert haben, sollten Sie diese aus folgenden Gründen migrieren:
+
+
+- Ein Benutzer, der sowohl in einer Richtlinie des klassischen Azure-Portals als auch in einer Richtlinie des Azure-Portals enthalten ist, muss die Anforderungen beider Richtlinien erfüllen. 
+
+- Wenn Sie Ihre vorhandenen Richtlinien nicht migrieren, können Sie keine Richtlinien für die Zugriffsgewährung implementieren.
+
+
+### <a name="migration-from-the-azure-classic-portal"></a>Migration aus dem klassischen Azure-Portal
+
+Szenario: 
+
+- In Ihrem [klassischen Azure-Portal](https://manage.windowsazure.com) ist Folgendes konfiguriert:
+
+    - SharePoint Online
+
+    ![Bedingter Zugriff](./media/active-directory-conditional-access-best-practices/14.png)
+
+    - Eine gerätebasierte Richtlinie zum bedingten Zugriff
+
+    ![Bedingter Zugriff](./media/active-directory-conditional-access-best-practices/15.png)
+
+- Sie möchten im Azure-Portal eine Richtlinie zum bedingten Zugriff mit mobiler Anwendungsverwaltung konfigurieren. 
+ 
+
+#### <a name="configuration"></a>Konfiguration 
+
+- Überprüfen Sie Ihre gerätebasierten Richtlinien zum bedingten Zugriff.
+
+- Migrieren Sie sie zum Azure-Portal. 
+
+- Fügen Sie Richtlinien zum bedingten Zugriff mit mobiler Anwendungsverwaltung hinzu.
+
+
+### <a name="migrating-from-intune"></a>Migrieren aus Intune 
+
+Szenario:
+
+- In [Intune](https://portal.azure.com/#blade/Microsoft_Intune/SummaryBlade ) ist eine Richtlinie zum bedingten Zugriff mit mobiler Anwendungsverwaltung für Exchange Online oder SharePoint Online konfiguriert.
+
+    ![Bedingter Zugriff](./media/active-directory-conditional-access-best-practices/15.png)
+
+- Sie möchten im Azure-Portal zur Verwendung von bedingtem Zugriff mit mobiler Anwendungsverwaltung migrieren.
+
+
+#### <a name="configuration"></a>Konfiguration 
+ 
+- Überprüfen Sie Ihre gerätebasierten Richtlinien zum bedingten Zugriff.
+
+- Migrieren Sie sie zum Azure-Portal. 
+
+- Überprüfen Sie Ihre Richtlinien zum bedingten Zugriff mit mobiler Anwendungsverwaltung, die in Intune für Exchange Online oder SharePoint Online konfiguriert sind.
+
+- Geben Sie zusätzlich zur gerätebasierten Kontrolle an, dass auch genehmigte Anwendungen erforderlich** **sind. 
+ 
+
+### <a name="migrating-from-the-azure-classic-portal-and-intune"></a>Migrieren aus dem klassischen Azure-Portal und aus Intune
+
+Szenario:
+
+- Folgendes ist konfiguriert:
+
+    - **Klassisches Azure-Portal:** gerätebasierter bedingter Zugriff 
+
+    - **Intune:** Richtlinien zum bedingten Zugriff mit mobiler Anwendungsverwaltung 
+    
+- Sie möchten beide Richtlinien im Azure-Portal zur Verwendung von Richtlinien zum bedingtem Zugriff mit mobiler Anwendungsverwaltung migrieren.
+
+
+#### <a name="configuration"></a>Konfiguration
+
+- Überprüfen Sie Ihre gerätebasierten Richtlinien zum bedingten Zugriff.
+
+- Migrieren Sie sie zum Azure-Portal. 
+
+- Überprüfen Sie Ihre Richtlinie zum bedingten Zugriff mit mobiler Anwendungsverwaltung, die in Intune für Exchange Online oder SharePoint Online konfiguriert ist.
+
+- Geben Sie zusätzlich zur gerätebasierten Kontrolle an, dass auch genehmigte Anwendungen erforderlich** **sind. 
+
+
+
+
+
+
+
+
+
+
 
 
 ## <a name="common-scenarios"></a>Gängige Szenarien

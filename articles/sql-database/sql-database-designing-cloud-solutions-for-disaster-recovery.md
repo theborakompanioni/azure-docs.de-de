@@ -14,124 +14,84 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-management
-ms.date: 04/21/2017
+ms.date: 09/08/2017
 ms.author: sashan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 40fe0ae04eb94322356ed19773512e3bc383639c
+ms.translationtype: HT
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: 5a8b7711d6576edcc470886f27aa61ac04944002
 ms.contentlocale: de-de
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 09/09/2017
 
 ---
 # <a name="designing-highly-available-services-using-azure-sql-database"></a>Entwerfen eines hoch verfügbaren Diensts mit Azure SQL-Datenbank
 
-Beim Erstellen und Bereitstellen von hoch verfügbaren Diensten auf Azure SQL-Datenbank verwenden Sie [Failovergruppen und aktive Georeplikation](sql-database-geo-replication-overview.md), um Resilienz gegenüber regionalen Fehlern und katastrophalen Ausfällen bereitzustellen und eine schnelle Wiederherstellung in den sekundären Datenbanken zu ermöglichen. Dieser Artikel behandelt allgemeine Anwendungsmuster und erläutert die Vor- und Nachteile der einzelnen Optionen je nach Anwendungsbereitstellungsanforderungen, gewünschter Vereinbarung zum Servicelevel, Datenverkehrslatenz sowie Kosten. Informationen zur Verwendung der aktiven Georeplikation mit elastischen Pools finden Sie unter [Strategien zur Notfallwiederherstellung mit elastischen Pools](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md).
+Beim Erstellen und Bereitstellen von hoch verfügbaren Diensten für Azure SQL-Datenbank verwenden Sie [Failovergruppen und aktive Georeplikation](sql-database-geo-replication-overview.md), um Resilienz bei regionalen Ausfällen und schwerwiegenden Fehlern bereitzustellen. Zudem wird eine schnelle Wiederherstellung in den sekundären Datenbanken ermöglicht. Dieser Artikel konzentriert sich auf gängige Anwendungsmuster und erörtert die Vor- und Nachteile der einzelnen Optionen. Informationen zur Verwendung der aktiven Georeplikation mit elastischen Pools finden Sie unter [Strategien zur Notfallwiederherstellung mit elastischen Pools](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md).
 
-## <a name="design-pattern-1-active-passive-deployment-for-cloud-disaster-recovery-with-a-co-located-database"></a>Entwurfsmuster 1: Aktiv-/Passiv-Bereitstellung für eine cloudbasierte Notfallwiederherstellung mit zusammengestellter Datenbank
-Diese Option eignet sich am besten für Anwendungen mit den folgenden Merkmalen:
+## <a name="scenario-1-using-two-azure-regions-for-business-continuity-with-minimal-downtime"></a>Szenario 1: Verwenden von zwei Azure-Regionen für die Geschäftskontinuität mit minimalen Ausfallzeiten
+In diesem Szenario weist die Anwendung die folgenden Merkmale auf: 
+*   Die Anwendung ist in einer Azure-Region aktiv.
+*   Alle Datenbanksitzungen erfordern Lese- und Schreibzugriff (RW) auf Daten.
+*   Die Webebene und die Datenebene müssen verbunden werden, um Latenzzeiten und Datenverkehrskosten zu reduzieren. 
+*   Im Wesentlichen stellen Ausfallzeiten für diese Anwendungen ein höheres Unternehmensrisiko dar als Datenverluste.
 
-* Aktive Instanz in einer einzelnen Azure-Region
-* Starke Abhängigkeit vom Lese-/ Schreibzugriff auf Daten
-* Regionsübergreifende Konnektivität zwischen Webanwendung und Datenbank ist aufgrund von Latenz und Datenverkehrskosten nicht akzeptabel.    
-
-In diesem Fall wird die Topologie für die Anwendungsbereitstellung für den Umgang mit regionalen Notfällen optimiert, bei denen alle Anwendungskomponenten betroffen sind und ihr Failover als Einheit erfolgen muss. Um geografische Redundanz zu erzielen, werden Anwendungslogik und Datenbank in eine andere Region repliziert, aber unter normalen Umständen nicht für Anwendungsworkloads verwendet. Die Anwendung in der sekundären Region muss für das Verwenden einer SQL-Verbindungszeichenfolge für die sekundäre Datenbank konfiguriert werden. Traffic Manager ist für die [Failoverroutingmethode](../traffic-manager/traffic-manager-configure-failover-routing-method.md)eingerichtet.  
-
-> [!NOTE]
-> [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) wird in diesem Artikel ausschließlich zu Demonstrationszwecken genutzt. Sie können eine beliebige Lastenausgleichslösung einsetzen, die die Failoverroutingmethode unterstützt.    
->
-
-Das folgende Diagramm zeigt diese Konfiguration vor einem Ausfall.
-
-![Konfiguration der SQL-Datenbank-Georeplikation Cloudbasierte Notfallwiederherstellung](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/pattern1-1.png)
-
-Nach einem Ausfall in der primären Region erkennt der SQL-Datenbankdienst, dass auf die primäre Datenbank nicht zugegriffen werden kann, und löst basierend auf den Parametern der Richtlinie für automatisches Failover ein Failover auf die sekundäre Datenbank aus. Abhängig von Ihrer Anwendungs-SLA können Sie entscheiden, zwischen der Erkennung eines Ausfalls und dem Failover selbst eine Toleranzperiode zu konfigurieren. Das Konfigurieren einer Toleranzperiode reduziert das Risiko eines Datenverlusts in den Fällen, in denen der Ausfall schwerwiegend ist und Verfügbarkeit in der Region nicht schnell wiederhergestellt werden kann. Wenn das Endpunktfailover von Traffic Manager initiiert wird, bevor die Failovergruppe das Failover der Datenbank auslöst, kann die Webanwendung keine neue Verbindung mit der Datenbank herstellen. Der Versuch der Anwendung, erneut eine Verbindung herzustellen, ist automatisch erfolgreich, sobald das Datenbankfailover abgeschlossen ist. 
+In diesem Fall wird die Topologie für die Anwendungsbereitstellung für den Umgang mit regionalen Notfällen optimiert, bei denen das Failover für alle Anwendungskomponenten gleichzeitig ausgeführt werden muss. Diese Topologie ist im folgenden Diagramm dargestellt. Um geografische Redundanz zu erzielen, werden die Ressourcen der Anwendung in Region A und Region B bereitgestellt. Die Ressourcen in Region B werden jedoch erst genutzt, wenn in Region A Fehler auftreten. Zwischen den beiden Regionen wird eine Failovergruppe konfiguriert, um die Datenbankkonnektivität, die Replikation und das Failover zu verwalten. Der Webdienst in beiden Regionen wird so konfiguriert, dass der Zugriff auf die Datenbank über den Lese-/Schreiblistener **&lt;Name der Failovergruppe&gt;.database.windows.net** erfolgt (1). Traffic Manager ist für die [prioritätsbasierte Routingmethode](../traffic-manager/traffic-manager-configure-priority-routing-method.md) eingerichtet (2).  
 
 > [!NOTE]
-> Um ein vollständig koordiniertes Failover der Anwendung und der Datenbanken zu erreichen, sollten Sie Ihre eigene Überwachungsmethode entwickeln und manuelles Failover der Endpunkte der Webanwendung und der Datenbanken verwenden.
+> [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) wird in diesem Artikel ausschließlich zu Demonstrationszwecken genutzt. Sie können jede Lastenausgleichslösung einsetzen, die die prioritätsbasierte Routingmethode unterstützt.    
 >
 
-Nach Abschluss des Failovers der Endpunkte der Anwendung und der Datenbank startet die Anwendung neu, verarbeitet die Benutzeranforderungen in der Region B und bleibt zusammengestellt mit der Datenbank, weil die primäre Datenbank sich jetzt in Region B befindet. Dieses Szenario wird im folgenden Diagramm veranschaulicht. In allen Diagrammen stehen durchgezogene Linien für aktive Verbindungen, gepunktete Linien für unterbrochene Verbindungen und Stoppschilder für Aktionstrigger.
+Das folgende Diagramm zeigt diese Konfiguration vor einem Ausfall:
 
-![Georeplikation: Failover auf sekundäre Datenbank App-Datensicherung](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/pattern1-2.png)
+![Szenario 1: Konfiguration vor dem Ausfall](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario1-a.png)
 
-Bei einem Ausfall in der sekundären Region wird der Replikationslink zwischen der primären und sekundären Datenbank unterbrochen, aber das Failover wird nicht ausgelöst, weil die primäre Datenbank nicht betroffen ist. Die Verfügbarkeit der Anwendung ändert sich in diesem Fall nicht, sie wird jedoch ungeschützt und mit dem erhöhten Risiko betrieben, dass beide Regionen nacheinander ausfallen.
+Nach einem Ausfall in der primären Region erkennt der SQL-Datenbank-Dienst, dass auf die primäre Datenbank nicht zugegriffen werden kann, und löst basierend auf den Parametern der Richtlinie für automatisches Failover ein Failover auf die sekundäre Region aus (1). Abhängig von Ihrer Anwendungs-SLA können Sie eine Toleranzperiode konfigurieren, die die Zeit zwischen der Erkennung des Ausfalls und dem Failover selbst steuert. Es ist möglich, dass Traffic Manager das Endpunktfailover initiiert, bevor die Failovergruppe das Failover der Datenbank auslöst. In diesem Fall kann die Webanwendung die Verbindung mit der Datenbank nicht sofort wiederherstellen. Die Verbindungswiederherstellungen sind jedoch automatisch erfolgreich, sobald das Datenbankfailover abgeschlossen ist. Wenn die fehlerhafte Region wiederhergestellt und wieder online ist, stellt die alte primäre Datenbank automatisch wieder eine Verbindung als neue sekundäre Datenbank her. Das folgende Diagramm veranschaulicht die Konfiguration nach dem Failover.
+ 
+> [!NOTE]
+> Alle committeten Transaktionen nach dem Failover gehen bei der Verbindungswiederherstellung verloren. Nach Abschluss des Failovers kann die Anwendung in Region B die Verbindung wiederherstellen und die Verarbeitung der Benutzeranforderungen erneut starten. Sowohl die Webanwendung als auch die primäre Datenbank befinden sich nun in Region B und bleiben verbunden. 
+n>
+
+![Szenario 1: Konfiguration nach Failover](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario1-b.png)
+
+Bei einem Ausfall in Region B wird der Replikationsprozess zwischen der primären und der sekundären Datenbank unterbrochen, die Verbindung zwischen beiden bleibt jedoch erhalten (1). Traffic Manager erkennt, dass die Verbindung mit Region B unterbrochen ist und markiert den Endpunkt „web-app-2“ als beeinträchtigt (2). Dies hat keine Auswirkung auf die Leistung der Anwendung, die Datenbank ist jedoch ungeschützt, und es besteht ein höheres Risiko eines Datenverlusts für den Fall, dass Region A auch ausfällt.
 
 > [!NOTE]
-> Für die Notfallwiederherstellung empfehlen wir eine Konfiguration, bei der die Anwendungsbereitstellung auf zwei Regionen beschränkt ist. Der Grund ist, dass die meisten Azure-Gebiete nur zwei Regionen aufweisen. Diese Konfiguration bieten keinen Schutz Ihrer Anwendung vor einem gleichzeitigen katastrophenbedingten Ausfall beider Regionen.  Im unwahrscheinlichen Fall eines solchen Ausfalls können Sie Ihre Datenbanken mithilfe eines [Geowiederherstellungsvorgangs](sql-database-disaster-recovery.md#recover-using-geo-restore) in einer dritten Region wiederherstellen.
+> Für die Notfallwiederherstellung empfehlen wir eine Konfiguration, bei der die Anwendungsbereitstellung auf zwei Regionen beschränkt ist. Der Grund ist, dass die meisten Azure-Gebiete nur zwei Regionen aufweisen. Diese Konfiguration bietet keinen Schutz Ihrer Anwendung vor einem gleichzeitigen schwerwiegenden Ausfall beider Regionen. Im unwahrscheinlichen Fall eines solchen Ausfalls können Sie Ihre Datenbanken mithilfe eines [Geowiederherstellungsvorgangs](sql-database-disaster-recovery.md#recover-using-geo-restore) in einer dritten Region wiederherstellen.
 >
 
-Nach Behebung der Ausfallursache wird die sekundäre Datenbank automatisch mit der primären neu synchronisiert. Während der Synchronisierung kann die Leistung der primären Datenbank geringfügig beeinträchtigt sein, abhängig von der Menge der Daten, die synchronisiert werden müssen. Das folgende Diagramm zeigt einen Ausfall in der sekundären Region.
+ Nach Behebung der Ausfallursache wird die sekundäre Datenbank automatisch mit der primären synchronisiert. Während der Synchronisierung kann die Leistung der primären Datenbank beeinträchtigt werden. Die spezifischen Auswirkungen hängen von der in der neuen primären Datenbank erfassten Datenmenge seit dem Failover ab. Das folgende Diagramm zeigt einen Ausfall in der sekundären Region:
 
-![Synchronisieren der sekundären Datenbank mit der primären Datenbank Cloudbasierte Notfallwiederherstellung](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/pattern1-3.png)
+![Szenario 1: Konfiguration nach einem Ausfall in der sekundären Region](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario1-c.png)
 
 Die **Hauptvorteile** dieses Entwurfsmusters sind:
 
-* Die gleiche Webanwendung wird beiden Regionen ohne regionsspezifische Konfiguration und ohne zusätzliche Logik bereitgestellt, um auf das Failover zu reagieren. 
-* Die Leistung der Anwendung ist vom Failover nicht betroffen, da Webanwendung und Datenbank stets zusammengestellt sind.
+* Die gleiche Webanwendung wird in beiden Regionen ohne regionsspezifische Konfiguration bereitgestellt und erfordert keine zusätzliche Logik zum Verwalten des Failovers. 
+* Die Leistung der Anwendung ist vom Failover nicht betroffen, da die Webanwendung und die Datenbank stets verbunden sind.
 
-Der **Hauptnachteil** besteht darin, dass die redundante Anwendungsinstanz in der sekundären Region nur für die Notfallwiederherstellung verwendet wird.
+Der **Hauptnachteil** besteht darin, dass die Anwendungsressourcen in Region B die meiste Zeit zu gering ausgelastet sind.
 
-## <a name="design-pattern-2-active-active-deployment-for-application-load-balancing"></a>Entwurfsmuster 2: Aktiv-/Aktiv-Bereitstellung für Anwendungslastenausgleich
-Diese cloudbasierte Notfallwiederherstellung eignet sich am besten für Anwendungen mit den folgenden Merkmalen:
-
-* Hohes Verhältnis von Datenbanklesevorgängen zu -schreibvorgängen
-* Die Latenz beim Lesen der Datenbank ist für die Benutzerfreundlichkeit entscheidender als die Latenz beim Schreiben 
-* Schreibgeschützte Logik kann von Lese-/Schreiblogik mittels einer anderen Verbindungszeichenfolge getrennt werden
-* Schreibgeschützte Logik ist nicht davon abhängig, dass Daten vollständig mit den neuesten Aktualisierungen synchronisiert sind  
-
-Wenn Ihre Anwendungen diese Merkmale aufweisen, kann ein Lastenausgleich der Endbenutzerverbindungen über mehrere Anwendungsinstanzen in verschiedenen Regionen die gesamte Benutzerfreundlichkeit wesentlich verbessern. Zwei der Regionen sollten als DR-Paar ausgewählt werden, und die Failovergruppe sollte die Datenbanken in diesen Regionen enthalten. Zum Implementieren des Lastenausgleichs muss jede Region über eine aktive Instanz der Anwendung verfügen, wobei die Lese-/Schreiblogik (RW) mit dem Lese-/Schreib-Listenerendpunkt der Failovergruppe verbunden ist. Dies garantiert, dass das Failover automatisch initiiert wird, wenn die primäre Datenbank von einem Ausfall betroffen ist. Die schreibgeschützte Logik (RO) in der Webanwendung sollte direkt mit der Datenbank in dieser Region verbunden sein. Traffic Manager muss so eingerichtet werden, dass für jede Anwendungsinstanz das [leistungsorientierte Routing](../traffic-manager/traffic-manager-configure-performance-routing-method.md) mit [Endpunktüberwachung](../traffic-manager/traffic-manager-monitoring.md) aktiviert wird.
-
-Wie bei Muster 1 sollten Sie das Bereitstellen einer ähnlichen Überwachungsanwendung erwägen. Doch im Gegensatz zu Muster 1 ist die Überwachungsanwendung nicht für das Auslösen des Endpunktfailovers zuständig.
-
-> [!NOTE]
-> Wenngleich bei diesem Muster mehrere sekundäre Datenbanken zum Einsatz kommen, wird nur die sekundäre Datenbank in Region B für das Failover genutzt und sollte Teil dieser Failovergruppe sein.
->
-
-Traffic Manager muss für das Leistungsrouting so konfiguriert werden, dass die Benutzerverbindungen zur Anwendungsinstanz geleitet werden, die dem geografischen Standort des Benutzers am nächsten ist. Das folgende Diagramm veranschaulicht diese Konfiguration vor einem Ausfall.
-
-![Kein Ausfall: leistungsorientiertes Routing zur nächstgelegenen Anwendung. Georeplikation.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/pattern2-1.png)
-
-Wenn ein Ausfall der Datenbank in der Region A erkannt wird, leitet die Failovergruppe automatisch ein Failover der primären Datenbank in Region A zur sekundären Datenbank in Region B ein. Sie aktualisiert auch automatisch den Lese-/Schreib-Listenerendpunkt mit Region B, sodass Lese-/Schreibverbindungen in der Webanwendung nicht betroffen sind. Traffic Manager schließt den Endpunkt im Offlinestatus aus der Routingtabelle aus, setzt aber das Routing des Endbenutzerdatenverkehrs an die verbleibenden Online-Instanzen fort. Die schreibgeschützten SQL-Verbindungszeichenfolgen sind nicht betroffen, da sie stets auf die Datenbank in der gleichen Region zeigen. 
-
-Das folgende Diagramm veranschaulicht die neue Konfiguration nach dem Failover.
-
-![Konfiguration nach Failover. Cloudbasierte Notfallwiederherstellung](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/pattern2-2.png)
-
-Bei einem Ausfall in einer der sekundären Regionen entfernt Traffic Manager automatisch den Endpunkt im Offlinestatus in dieser Region aus der Routingtabelle. Der Replikationskanal zur sekundären Datenbank in dieser Region wird unterbrochen. Da in diesem Szenario die übrigen Regionen zusätzlichen Benutzerdatenverkehr verarbeiten müssen, ist die Leistung der Anwendung während des Ausfalls beeinträchtigt. Nach Behebung der Ausfallursache wird die sekundäre Datenbank in der betroffenen Region sofort mit der primären Datenbank synchronisiert. Während der Synchronisierung kann die Leistung der primären Datenbank geringfügig beeinträchtigt werden, was von der Menge der Daten abhängt, die synchronisiert werden muss. Das folgende Diagramm zeigt einen Ausfall in Region B.
-
-![Ausfall in sekundärer Region Cloudbasierte Notfallwiederherstellung – Georeplikation](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/pattern2-3.png)
-
-Der **Hauptvorteil** dieses Entwurfsmusters ist, dass Sie die Anwendungsworkload auf mehrere sekundäre Datenbanken verteilen können, um eine optimale Leistung für die Endbenutzer zu erzielen. Diese Option hat folgende **Nachteile** :
-
-* Lese-/Schreibzugriffsverbindungen zwischen Anwendungsinstanzen und Datenbank haben unterschiedliche Wartezeiten und Kosten.
-* Die Anwendungsleistung ist während des Ausfalls beeinträchtigt.
-
-> [!NOTE]
-> Ein ähnlicher Ansatz kann verwendet werden, um spezielle Workloads wie Berichtsaufträge, Business Intelligence-Tools oder Sicherungen auszulagern. Diese Workloads nutzen in der Regel umfangreiche Datenbankressourcen. Deshalb sollten Sie ihnen eine der sekundären Datenbanken mit der Leistungsstufe zuweisen, die der erwarteten Workload entspricht.
->
-
-## <a name="design-pattern-3-active-passive-deployment-for-data-preservation"></a>Entwurfsmuster 3: Aktiv-/Passiv-Bereitstellung für die Beibehaltung von Daten
+## <a name="scenario-2-azure-regions-for-business-continuity-with-maximum-data-preservation"></a>Szenario 2: Azure-Regionen für die Geschäftskontinuität mit maximaler Beibehaltung von Daten
 Diese Option eignet sich am besten für Anwendungen mit den folgenden Merkmalen:
 
-* Jeder Datenverlust stellt ein hohes Geschäftsrisiko dar. Das Datenbankfailover darf nur als letzter Ausweg in Frage kommen, falls der Ausfall schwerwiegend ist.
+* Jeder Datenverlust stellt ein hohes Geschäftsrisiko dar. Das Datenbankfailover darf nur als letzte Möglichkeit in Frage kommen, falls der Ausfall durch einen schwerwiegenden Fehler verursacht wird.
 * Die Anwendung unterstützt schreibgeschützte Betriebsmodi und Betriebsmodi mit Lese-/Schreibzugriff und kann für gewisse Zeit im „schreibgeschützten Modus“ betrieben werden.
 
-In diesem Muster wechselt die Anwendung in den schreibgeschützten Modus, sobald bei Lese-/Schreibverbindungen Timeoutfehler auftreten. Die Webanwendung wird beiden Regionen bereitgestellt und enthält eine Verbindung mit dem Lese-/Schreib-Listenerendpunkt und eine andere Verbindung mit dem schreibgeschützten Listenerendpunkt. Traffic Manager muss so eingerichtet werden, dass für den Anwendungsendpunkt in jeder Region das [Failoverrouting](../traffic-manager/traffic-manager-configure-failover-routing-method.md) mit [Endpunktüberwachung](../traffic-manager/traffic-manager-monitoring.md) aktiviert wird.
+In diesem Muster wechselt die Anwendung in den schreibgeschützten Modus, sobald bei Lese-/Schreibverbindungen Timeoutfehler auftreten. Die Webanwendung wird in beiden Regionen bereitgestellt und enthält eine Verbindung mit dem Lese-/Schreib-Listenerendpunkt und eine andere Verbindung mit dem schreibgeschützten Listenerendpunkt (1). Das Traffic Manager-Profil sollte die [prioritätsbasierte Routingmethode](../traffic-manager/traffic-manager-configure-priority-routing-method.md) verwenden. Die [Endpunktüberwachung](../traffic-manager/traffic-manager-monitoring.md) sollte für den Anwendungsendpunkt in jeder Region aktiviert sein (2).
 
-Das folgende Diagramm veranschaulicht diese Konfiguration vor einem Ausfall.
+Das folgende Diagramm veranschaulicht diese Konfiguration vor einem Ausfall:
 
-![Aktiv/Passiv-Bereitstellung vor Failover. Cloudbasierte Notfallwiederherstellung](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/pattern3-1.png)
+![Szenario 2: Konfiguration vor dem Ausfall](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario2-a.png)
 
-Wenn Traffic Manager einen Fehler in der Konnektivität mit Region A erkennt, leitet er den Benutzerdatenverkehr automatisch zur Anwendungsinstanz in Region B um. Bei diesem Muster ist wichtig, dass Sie die Toleranzperiode mit Datenverlust auf einen ausreichend hohen Wert einstellen, z.B. 24 Stunden. Dies garantiert, dass Datenverlust verhindert wird, wenn der Ausfall innerhalb dieser Zeit behoben wird. Wenn die Webanwendung in der Region B aktiviert wird, treten bei den Lese-/ Schreibvorgängen Fehler auf. An diesem Punkt sollte sie in den schreibgeschützten Modus wechseln. In diesem Modus werden die Anforderungen automatisch an die sekundäre Datenbank weitergeleitet. Im Falle eines schwerwiegenden Fehlers wird der Ausfall nicht in der Toleranzperiode beseitigt, und die Failovergruppe löst das Failover aus. Danach ist der Lese-/Schreiblistener verfügbar, und die an ihn gerichteten Aufrufe sind erfolgreich. Dies wird im folgenden Diagramm veranschaulicht.
+Wenn Traffic Manager einen Fehler in der Konnektivität mit Region A erkennt, leitet er den Benutzerdatenverkehr automatisch zur Anwendungsinstanz in Region B um. Bei diesem Muster ist wichtig, dass Sie die Toleranzperiode mit Datenverlust auf einen ausreichend hohen Wert festlegen, z.B. 24 Stunden. Dies garantiert, dass Datenverluste verhindert werden, wenn der Ausfall innerhalb dieser Zeit behoben wird. Wenn die Webanwendung in Region B aktiviert wird, treten bei den Lese-/ Schreibvorgängen Fehler auf. An diesem Punkt sollte sie in den schreibgeschützten Modus wechseln (1). In diesem Modus werden die Anforderungen automatisch an die sekundäre Datenbank weitergeleitet. Wenn der Ausfall durch einen schwerwiegenden Fehler verursacht wird, kann er sehr wahrscheinlich nicht innerhalb der Toleranzperiode behoben werden. Nach Ablauf der Toleranzperiode löst die Failovergruppe das Failover aus. Danach ist der Lese-/Schreiblistener verfügbar, und die Verbindungen mit ihm sind erfolgreich (2). Das folgende Diagramm veranschaulicht die zwei Phasen des Wiederherstellungsprozesses.
 
-![Ausfall: Anwendung im schreibgeschützten Modus Cloudbasierte Notfallwiederherstellung](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/pattern3-2.png)
+> [!NOTE]
+> Wenn die Ausfallursache in der primären Region innerhalb der Toleranzperiode beseitigt wird, erkennt Traffic Manager die Wiederherstellung der Konnektivität in der primären Region und leitet den Datenverkehr der Benutzer wieder zur Anwendungsinstanz in Region A. Diese Anwendungsinstanz nimmt den Betrieb im Lese-/Schreibmodus unter Verwendung der primären Datenbank in Region A wie im vorherigen Diagramm veranschaulicht wieder auf.
+>
 
-Wenn die Ausfallursache in der primären Region innerhalb der Toleranzperiode beseitigt wurde, erkennt Traffic Manager die Wiederherstellung der Konnektivität in der primären Region und leitet den Datenverkehr der Benutzer wieder zur Anwendungsinstanz in Region A. Diese Anwendungsinstanz in Region A nimmt den Betrieb im Lese-/Schreibmodus unter Verwendung der primären Datenbank in Region A wieder auf.
+![Szenario 2: Phasen der Notfallwiederherstellung](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario2-b.png)
 
-Bei einem Ausfall in der Region B erkennt Traffic Manager den Ausfall des Anwendungsendpunkts in Region B, und die Failovergruppe leitet den schreibgeschützten Listener nach Region A um. Der Endbenutzer merkt nichts von diesem Ausfall, aber die primäre Datenbank wird während des Ausfalls verfügbar gemacht. Dies wird im folgenden Diagramm veranschaulicht.
+Bei einem Ausfall in Region B erkennt Traffic Manager den Ausfall des Endpunkts „web-app-2“ in Region B und markiert ihn als beeinträchtigt (1). In der Zwischenzeit leitet die Failovergruppe den schreibgeschützten Listener nach Region A um (2). Der Endbenutzer merkt nichts von diesem Ausfall, aber die primäre Datenbank wird während des Ausfalls verfügbar gemacht. Das folgende Diagramm zeigt einen Fehler in der sekundären Region:
 
-![Ausfall: sekundäre Datenbank  Cloudbasierte Notfallwiederherstellung](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/pattern3-3.png)
+![Szenario 2: Ausfall der sekundären Region](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario2-c.png)
 
 Nach Behebung des Ausfalls wird die sekundäre Datenbank sofort mit der primären synchronisiert, und der schreibgeschützte Listener wird wieder zur sekundären Datenbank in Region B umgeleitet. Während der Synchronisierung könnte die Leistung der primären Datenbank abhängig vom Umfang der zu synchronisierenden Daten leicht beeinträchtigt werden.
 
@@ -140,16 +100,57 @@ Dieses Entwurfsmuster bietet mehrere **Vorteile**:
 * Datenverluste während temporärer Ausfälle werden verhindert.
 * Ausfallzeiten hängen nur davon ab, wie schnell Traffic Manager den Verbindungsausfall erkennt, was konfigurierbar ist.
 
-Der **Kompromiss** ist:
+Der **Nachteil** besteht darin, dass die Anwendung im schreibgeschützten Modus betrieben werden können muss.
 
-* Die Anwendung muss im schreibgeschützten Modus betrieben werden können.
+## <a name="scenario-3-application-relocation-to-a-different-geography-without-data-loss-and-near-zero-downtime"></a>Szenario 3: Verlegung der Anwendung in ein anderes geografisches Gebiet ohne Datenverlust und nahezu keine Ausfallzeiten 
+In diesem Szenario weist die Anwendung die folgenden Merkmale auf: 
+* Die Endbenutzer greifen aus verschiedenen geografischen Gebieten auf die Anwendung zu.
+* Die Anwendung umfasst schreibgeschützte Workloads, die nicht von der vollständigen Synchronisierung mit den neuesten Updates abhängig sind.
+* Der Schreibzugriff auf Daten sollte im gleichen geografischen Gebiet für die Mehrheit der Benutzer unterstützt werden. 
+* Die Leselatenz ist für die Endbenutzer entscheidend. 
+
+
+Um diese Anforderungen zu erfüllen, müssen Sie sicherstellen, dass das Benutzergerät **immer** eine Verbindung mit der Anwendung herstellt, die im selben Gebiet für die schreibgeschützten Vorgänge (z.B. Durchsuchen von Daten, Analysen usw.) bereitgestellt wird. Die OLTP-Vorgänge werden hingegen **meistens** im selben Gebiet verarbeitet. Tagsüber werden OLTP-Vorgänge beispielsweise im selben geografischen Gebiet verarbeitet, außerhalb der Arbeitszeiten können sie jedoch in einem anderen Gebiet verarbeitet werden. Wenn die Aktivitäten der Endbenutzer hauptsächlich während der Arbeitszeiten erfolgen, können Sie die optimale Leistung in den meisten Fällen für die Mehrheit der Benutzer garantieren. Im folgenden Diagramm wird diese Topologie veranschaulicht. 
+ 
+Die Ressourcen der Anwendung sollten in jedem Gebiet mit erheblichem Nutzungsbedarf bereitgestellt werden. Wenn die Anwendung beispielsweise in den USA, der Europäischen Union und in Südostasien aktiv genutzt wird, sollte sie in allen diesen Gebieten bereitgestellt werden. Die primäre Datenbank sollte am Ende der Arbeitszeiten dynamisch zwischen den Gebieten umgeleitet werden. Diese Methode wird als „Follow the sun“-Methode bezeichnet. Die OLTP-Workload stellt immer über den Lese-/Schreiblistener **&lt;Name der Failovergruppe&gt;.database.windows.net** eine Verbindung mit der Datenbank her (1). Die schreibgeschützte Workload stellt direkt über den Serverendpunkt der Datenbank **&lt;Servername&gt;.database.windows.net** eine Verbindung mit der lokalen Datenbank her (2). Traffic Manager ist mit der [leistungsorientierten Routingmethode](../traffic-manager/traffic-manager-configure-performance-routing-method.md) konfiguriert. Dadurch wird sichergestellt, dass das Gerät des Endbenutzers mit dem Webdienst in der nächstgelegenen Region verbunden ist. Traffic Manager sollte mit aktivierter Endpunktüberwachung für jeden Webdienstendpunkt eingerichtet werden (3).
 
 > [!NOTE]
-> Bei einem dauerhaften Dienstausfall in der Region müssen Sie das Datenbankfailover manuell aktivieren und den Datenverlust akzeptieren. Die Anwendung ist in der sekundären Region mit Lese-/ Schreibzugriff auf die Datenbank betriebsbereit.
+> Mit der Konfiguration der Failovergruppe wird definiert, welche Region für das Failover verwendet wird. Da sich die neue primäre Datenbank in einem anderen Gebiet befindet, führt das Failover zu längeren Latenzzeiten für OLTP-Workloads und schreibgeschützte Workloads, bis die beeinträchtigte Region wieder online ist.
 >
 
+![Szenario 3: Konfiguration mit der primären Datenbank in „USA, Osten“](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario3-a.png)
+
+Am Tagesende (z.B. um 23:00 Uhr Ortszeit) sollten die aktiven Datenbanken zur nächsten Region („Europa, Norden“) umgeleitet werden. Diese Aufgabe kann mithilfe des [Azure Scheduler-Diensts](../scheduler/scheduler-intro.md) vollständig automatisiert werden.  Diese Aufgabe umfasst die folgenden Schritte:
+* Umleiten des primären Servers in der Failovergruppe nach „Europa, Norden“ mit freundlichem Failover (1)
+* Entfernen der Failovergruppe zwischen „USA, Osten“ und „Europa, Norden“
+* Erstellen einer neuen Failovergruppe mit dem gleichen Namen, jedoch zwischen „Europa, Norden“ und „Asien, Osten“ (2) 
+* Hinzufügen des primären Servers in „Europa, Norden“ und des sekundären Servers in „Asien, Osten“ zu dieser Failovergruppe (3)
+
+
+Das folgende Diagramm veranschaulicht die neue Konfiguration nach dem geplanten Failover:
+
+![Szenario 3: Umleiten des primären Servers nach „Europa, Norden“](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario3-b.png)
+
+Bei einem Ausfall in „Europa, Norden“ wird das automatische Datenbankfailover beispielsweise von der Failovergruppe initiiert. Dies führt dazu, dass die Anwendung vorzeitig in die nächste Region verschoben wird (1).  In diesem Fall ist „USA, Osten“ die einzige verbleibende sekundäre Region, bis „Europa, Norden“ wieder online ist. Die verbleibenden zwei Regionen sind durch das Wechseln ihrer Rollen für die Kunden in allen drei geografischen Gebieten verfügbar. Azure Scheduler muss entsprechend angepasst werden. Da die verbleibenden Regionen zusätzlichen Benutzerdatenverkehr aus Europa erhalten, wird die Leistung der Anwendung nicht nur durch zusätzliche Latenz, sondern auch durch eine erhöhte Anzahl von Endbenutzerverbindungen beeinträchtigt. Nachdem der Ausfall in „Europa, Norden“ behoben wurde, wird die sekundäre Datenbank dort sofort mit der aktuellen primären Datenbank synchronisiert. Das folgende Diagramm veranschaulicht einen Ausfall in „Europa, Norden“:
+
+![Szenario 3: Ausfall in „Europa, Norden“](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario3-c.png)
+
+> [!NOTE]
+> Sie können die Zeit verringern, während der sich die Benutzerfreundlichkeit der Anwendung in Europa durch die langen Latenzzeiten für Endbenutzer verschlechtert. Dazu sollten Sie proaktiv eine Kopie der Anwendung bereitstellen und die sekundären Datenbanken in einer anderen lokalen Region („Europa, Westen“) als Ersatz für die offline geschaltete Anwendungsinstanz in „Europa, Norden“ erstellen. Wenn Letztere wieder online ist, können Sie entscheiden, ob weiterhin „Europa, Westen“ verwendet wird oder ob die Kopie der Anwendung dort entfernt und wieder „Europa, Norden“ verwendet wird.
+>
+
+Die **Hauptvorteile** dieses Entwurfsmusters sind:
+* Die schreibgeschützte Anwendungsworkload greift immer auf Daten in der nächstgelegenen Region zu. 
+* Die Anwendungsworkload mit Lese-/Schreibzugriff greift während des Zeitraums der höchsten Aktivität in jedem Gebiet auf Daten in der nächstgelegenen Region zu.
+* Da die Anwendung in mehreren Regionen bereitgestellt wird, kann ein Ausfall in einer der Regionen ohne erhebliche Ausfallzeiten überbrückt werden. 
+
+Es gibt jedoch auch einige **Nachteile**:
+* Ein regionaler Ausfall führt durch längere Wartezeiten zu Beeinträchtigungen im jeweiligen geografischen Gebiet. Die Lese-/Schreibworkloads sowie die schreibgeschützten Workloads werden von der Anwendung in einem anderen Gebiet bereitgestellt. 
+* Die schreibgeschützten Workloads müssen in jeder Region eine Verbindung mit einem anderen Endpunkt herstellen. 
+
+
 ## <a name="business-continuity-planning-choose-an-application-design-for-cloud-disaster-recovery"></a>Planen der Geschäftskontinuität: Auswählen eines Anwendungsentwurfs für die cloudbasierte Notfallwiederherstellung
-Für Ihre spezifische Strategie einer cloudbasierten Notfallwiederherstellung können diese Muster kombiniert oder erweitert werden, um die Anforderungen Ihrer Anwendung bestmöglich zu erfüllen.  Wie bereits erwähnt, basiert die von Ihnen gewählte Strategie auf der SLA, die Sie Ihren Kunden anbieten möchten, und auf der Topologie der Anwendungsbereitstellung. Um Ihnen die Entscheidung zu erleichtern, werden in der folgenden Tabelle die Optionen basierend auf dem geschätzten Datenverlust bzw. auf der RPO (Recovery Point Objective) und der geschätzten Wiederherstellungszeit verglichen.
+Für Ihre spezifische Strategie einer cloudbasierten Notfallwiederherstellung können diese Muster kombiniert oder erweitert werden, um die Anforderungen Ihrer Anwendung bestmöglich zu erfüllen.  Wie bereits erwähnt, basiert die von Ihnen gewählte Strategie auf der SLA, die Sie Ihren Kunden anbieten möchten, und auf der Topologie der Anwendungsbereitstellung. Um Ihnen die Entscheidung zu erleichtern, werden in der folgenden Tabelle die Optionen basierend auf der RPO (Recovery Point Objective) und der geschätzten Wiederherstellungszeit verglichen.
 
 | Muster | RPO | Geschätzte Wiederherstellungszeit |
 |:--- |:--- |:--- |
@@ -160,10 +161,6 @@ Für Ihre spezifische Strategie einer cloudbasierten Notfallwiederherstellung k�
 |||
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Informationen über automatisierte Sicherungen von Azure SQL-Datenbanken finden Sie unter [Übersicht: Automatisierte SQL-Datenbanksicherungen](sql-database-automated-backups.md)
 * Eine Übersicht und verschiedene Szenarien zum Thema Geschäftskontinuität finden Sie unter [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md)
-* Informationen zum Verwenden automatisierter Sicherungen für die Wiederherstellung finden Sie unter [Wiederherstellen einer Datenbank aus vom Dienst initiierten Sicherungen](sql-database-recovery-using-backups.md)
-* Informationen zu schnelleren Wiederherstellungsoptionen finden Sie unter [Aktive Georeplikation](sql-database-geo-replication-overview.md).  
-* Informationen zum Verwenden automatisierter Sicherungen für die Archivierung finden Sie unter [Datenbankkopie](sql-database-copy.md)
+* Informationen zur Georeplikation und zu Failovergruppen finden Sie unter [Aktive Georeplikation](sql-database-geo-replication-overview.md).  
 * Informationen zur Verwendung der aktiven Georeplikation mit elastischen Pools finden Sie unter [Strategien zur Notfallwiederherstellung mit elastischen Pools](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md).
-

@@ -18,10 +18,10 @@ ms.date: 06/12/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
-ms.openlocfilehash: 8778dcfdb5859d212a2a3eb28a5ed297b5f07460
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: b2f506a90c6b55624c8fe0392511b8098f058812
 ms.contentlocale: de-de
-ms.lasthandoff: 09/02/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 # <a name="azure-functions-hosting-plans-comparison"></a>Vergleich von Hostingplänen für Azure Functions
@@ -48,7 +48,7 @@ Bei Verwendung eines Verbrauchsplans werden Instanzen des Azure Functions-Hosts 
 > [!NOTE]
 > Das Standardtimeout für Funktionen in einem Verbrauchsplan beträgt 5 Minuten. Der Wert kann durch Ändern der Eigenschaft `functionTimeout` in [host.json](https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json) für die Funktions-App auf 10 Minuten erhöht werden.
 
-Die Abrechnung basiert auf der Ausführungszeit und dem verwendeten Arbeitsspeicher. Sie wird für alle Funktionen innerhalb einer Funktions-App zusammengefasst. Weitere Informationen finden Sie unter [Preisseite für Azure Functions].
+Die Abrechnung basiert auf der Ausführungszeit und dem verwendeten Arbeitsspeicher. Sie wird für alle Funktionen innerhalb einer Funktions-App zusammengefasst. Weitere Informationen finden Sie unter [Azure Functions – Preise].
 
 Der Verbrauchsplan ist der Standardplan. Er bietet folgende Vorteile:
 - Sie bezahlen nur, wenn Ihre Funktionen ausgeführt werden.
@@ -56,7 +56,7 @@ Der Verbrauchsplan ist der Standardplan. Er bietet folgende Vorteile:
 
 ## <a name="app-service-plan"></a>App Service-Plan
 
-In einem App Service-Plan werden Ihre Funktions-Apps ähnlich wie Web-Apps auf dedizierten virtuellen Computern für Basic-, Standard- und Premium-SKUs ausgeführt. Die dedizierten virtuellen Computer werden Ihren App Service-Apps zugeordnet, sodass der Functions-Host immer ausgeführt wird.
+In einem App Service-Plan werden Ihre Funktions-Apps ähnlich wie Web-Apps auf dedizierten virtuellen Computern für Basic-, Standard-, Premium- oder isolierten SKUs ausgeführt. Die dedizierten virtuellen Computer werden Ihren App Service-Apps zugeordnet, sodass der Functions-Host immer ausgeführt wird.
 
 Entscheiden Sie sich in den folgenden Fällen für einen App Service-Plan:
 - Sie verfügen über nicht ausgelastete virtuelle Computer, auf denen bereits andere App Service-Instanzen ausgeführt werden.
@@ -96,7 +96,7 @@ Wenn Sie den verbrauchsbasierten Hostingplan verwenden, werden die Funktionscode
 
 ### <a name="runtime-scaling"></a>Laufzeitskalierung
 
-Azure Functions verwendet die Komponente *Skalierungscontroller*, um die Rate der Ereignisse zu überwachen und zu bestimmen, ob eine Hoch- oder Herunterskalierung erforderlich ist. Der Skalierungscontroller verwendet Heuristik für jeden Triggertyp. Bei Verwendung eines Triggers für Azure Queue Storage beispielsweise basieren die Skalen auf der Länge der Warteschlange und dem Alter der ältesten Nachricht in der Warteschlange.
+Azure Functions verwendet die Komponente *Skalierungscontroller*, um die Rate der Ereignisse zu überwachen und zu bestimmen, ob eine horizontale Hoch- oder Herunterskalierung erforderlich ist. Der Skalierungscontroller verwendet Heuristik für jeden Triggertyp. Bei Verwendung eines Triggers für Azure Queue Storage beispielsweise basieren die Skalen auf der Länge der Warteschlange und dem Alter der ältesten Nachricht in der Warteschlange.
 
 Die Skalierungseinheit ist die Funktionen-App. Bei einer horizontalen Hochskalierung der Funktions-App werden zusätzliche Ressourcen zugeordnet, um mehrere Instanzen des Azure Functions-Hosts auszuführen. Umgekehrt entfernt der Skalierungscontroller bei abnehmenden Computeanforderungen Instanzen des Functions-Hosts. Die Anzahl der Instanzen wird schließlich zentral auf null herunterskaliert, wenn in einer Funktionen-App keine Funktionen ausgeführt werden.
 
@@ -104,9 +104,9 @@ Die Skalierungseinheit ist die Funktionen-App. Bei einer horizontalen Hochskalie
 
 ### <a name="billing-model"></a>Abrechnungsmodell
 
-Die Abrechnung des Verbrauchsplans wird detailliert auf der [Preisseite für Azure Functions] beschrieben. Der Verbrauch wird auf Ebene der Funktions-App zusammengefasst, wobei nur die Zeit gezählt wird, für die der Funktionscode ausgeführt wird. Folgende Einheiten werden für die Abrechnung verwendet: 
+Die Abrechnung des Verbrauchsplans wird detailliert auf der [Preisseite für Azure Functions] beschrieben. Der Verbrauch wird auf Ebene der Funktions-App zusammengefasst, wobei nur die Zeit gezählt wird, für die der Funktionscode ausführt wurde. Folgende Einheiten werden für die Abrechnung verwendet: 
 * **Ressourcenverbrauch in Gigabytesekunden (GB-s)** – berechnet als Kombination aus Arbeitsspeichergröße und Ausführungsdauer für alle Funktionen in einer Funktions-App. 
 * **Ausführungen** – werden bei jeder Ausführung einer Funktion als Antwort auf ein Ereignis gezählt, das durch eine Bindung ausgelöst wurde.
 
-[Preisseite für Azure Functions]: https://azure.microsoft.com/pricing/details/functions
+[Azure Functions – Preise]: https://azure.microsoft.com/pricing/details/functions
 

@@ -15,12 +15,11 @@ ms.topic: get-started-article
 ms.date: 05/05/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2c9877f84873c825f96b62b492f49d1733e6c64e
-ms.openlocfilehash: 8a850f8b1cccda631786f89f2c88647604fba9ed
+ms.translationtype: HT
+ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
+ms.openlocfilehash: a99f96db0c1e8bcd0cf29c564e5badf0eb728e56
 ms.contentlocale: de-de
-ms.lasthandoff: 03/15/2017
-
+ms.lasthandoff: 09/14/2017
 
 ---
 # <a name="run-intrinsically-parallel-workloads-with-batch"></a>Ausführen intrinsisch paralleler Workloads mit Batch
@@ -48,7 +47,7 @@ Beispiele für Workloads, die mit diesem Verfahren häufig verarbeitet werden:
 
 Batch kann auch parallele Berechnungen mit einem abschließenden Reduzierungsschritt sowie komplexere HPC-Workloads ausführen, z.B. MPI-Anwendungen ([Message Passing Interface](batch-mpi.md)).
 
-Ein Vergleich zwischen Batch und anderen HPC-Lösungsoptionen in Azure finden Sie unter [Batch und HPC-Lösungen](batch-hpc-solutions.md).
+Ein Vergleich zwischen Batch und anderen HPC-Lösungsoptionen in Azure finden Sie unter [HPC, Batch, and Big Compute solutions using Azure VMs](../virtual-machines/linux/high-performance-computing.md) (HPC-, Batch- und Big Compute-Lösungen mit Azure-VMs).
 
 [!INCLUDE [batch-pricing-include](../../includes/batch-pricing-include.md)]
 

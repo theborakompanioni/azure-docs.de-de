@@ -1,6 +1,6 @@
 ---
 title: "Bereitstellen neuer Mandanten in einer mehrinstanzenfähigen App, die die Azure SQL-Datenbank verwendet | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie neue Mandanten in der Wingtip-SaaS-App bereitstellen und katalogisieren können."
+description: "Erfahren Sie, wie Sie neue Mandanten in einer mehrinstanzenfähigen SaaS-App in Azure SQL-Datenbank bereitstellen und katalogisieren können."
 keywords: Tutorial zur SQL-Datenbank
 services: sql-database
 documentationcenter: 
@@ -17,13 +17,13 @@ ms.topic: article
 ms.date: 08/11/2017
 ms.author: sstein
 ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
-ms.openlocfilehash: 8fa4c4f95386a92c8c818eef1a5b4de5a086fe07
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: febf9d9f8a32a95ae61734cc2d3632bb74f6c8f5
 ms.contentlocale: de-de
-ms.lasthandoff: 08/12/2017
+ms.lasthandoff: 09/13/2017
 
 ---
-# <a name="provision-new-tenants-and-register-them-in-the-catalog"></a>Bereitstellen neuer Mandanten und Registrieren der Mandanten im Katalog
+# <a name="learn-how-to-provision-and-catalog-new-tenants-and-register-them-in-the-catalog"></a>Erfahren Sie, wie Sie neue Mandanten bereitstellen und katalogisieren und im Katalog registrieren können.
 
 In diesem Tutorial erfahren Sie, wie Sie SaaS-Muster bereitstellen und katalogisieren und wie diese Muster in der Wingtip-SaaS-Anwendung implementiert werden. Sie erstellen und initialisieren neue Mandantendatenbanken und registrieren sie im Mandantenkatalog der Anwendung. Der Katalog ist eine Datenbank, in der die Zuordnung zwischen den zahlreichen Mandanten von SaaS-Anwendungen und den dazugehörigen Daten verwaltet wird. Der Katalog spielt eine wichtige Rolle, da er die Anwendungsanforderungen an die richtigen Datenbanken weiterleitet.  
 

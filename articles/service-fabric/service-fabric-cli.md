@@ -1,5 +1,5 @@
 ---
-title: Erste Schritte mit der Azure Service Fabric CLI (sfctl)
+title: Erste Schritte mit der Azure Service Fabric CLI
 description: Hier erfahren Sie, wie Sie die Azure Service Fabric CLI verwenden. Es wird beschrieben, wie Sie eine Verbindung mit einem Cluster herstellen und Anwendungen verwalten.
 services: service-fabric
 author: samedder
@@ -9,44 +9,46 @@ ms.topic: get-started-article
 ms.date: 08/22/2017
 ms.author: edwardsa
 ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
-ms.openlocfilehash: 2faca2887f25b45d833dea7b2259277466290670
+ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
+ms.openlocfilehash: 851f04c8b5eee762ec43060f02c8b83f00c1782e
 ms.contentlocale: de-de
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 09/14/2017
 
 ---
-# <a name="azure-service-fabric-command-line"></a>Azure Service Fabric-Befehlszeile
+# <a name="azure-service-fabric-cli"></a>Azure Service Fabric CLI
 
-Bei der Azure Service Fabric-Befehlszeilenschnittstelle (sfctl) handelt es sich um ein Befehlszeilenprogramm für die Interaktion mit und die Verwaltung von Azure Service Fabric-Entitäten. sfctl kann mit Windows- oder Linux-Clustern verwendet werden. sfctl wird auf jeder Plattform ausgeführt, die Python unterstützt.
+Bei der Azure Service Fabric-Befehlszeilenschnittstelle (CLI) handelt es sich um ein Befehlszeilen-Hilfsprogramm zum Interagieren mit und Verwalten von Service Fabric-Entitäten. Für die Service Fabric CLI ist die Verwendung mit Windows- oder mit Linux-Clustern möglich. Die Service Fabric CLI wird auf allen Plattformen ausgeführt, die Python unterstützen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Stellen Sie vor der Installation sicher, dass in Ihrer Umgebung Python und pip installiert sind. Weitere Informationen finden Sie in der [Schnellstartdokumentation zu pip](https://pip.pypa.io/en/latest/quickstart/) und in der offiziellen [Dokumentation zur Python-Installation](https://wiki.python.org/moin/BeginnersGuide/Download).
+Stellen Sie vor der Installation sicher, dass in Ihrer Umgebung Python und pip installiert sind. Weitere Informationen finden Sie in der [Schnellstartdokumentation zu pip](https://pip.pypa.io/en/latest/quickstart/) und der offiziellen [Python-Installationsdokumentation](https://wiki.python.org/moin/BeginnersGuide/Download).
 
-Python 2.7 und 3.6 werden unterstützt, es wird jedoch die Verwendung von Python 3.6 empfohlen. Im folgenden Abschnitt erfahren Sie mehr über die Installation der erforderlichen Komponenten und der Befehlszeilenschnittstelle.
+Die Versionen Python 2.7 und 3.6 werden zwar unterstützt, aber wir empfehlen Ihnen die Verwendung von Python 3.6. Im folgenden Abschnitt wird beschrieben, wie Sie die erforderlichen Komponenten und die Befehlszeilenschnittstelle installieren.
 
-## <a name="install-pip-python-and-sfctl"></a>Installieren von PIP, Python und SFCTL
+## <a name="install-pip-python-and-the-service-fabric-cli"></a>Installieren von pip, Python und der Service Fabric CLI
 
-Sie haben mehrere Möglichkeiten, PIP und Python auf Ihrer Plattform zu installieren. Die folgenden Schritte ermöglichen einen schnellen Einstieg in Python 3.6 und PIP für gängige Betriebssysteme:
+ Es gibt viele Möglichkeiten, pip und Python auf Ihrer Plattform zu installieren. Hier sind einige Schritte aufgeführt, mit denen Sie die gängigen Betriebssysteme mit Python 3.6 und pip schnell einrichten können.
 
 ### <a name="windows"></a>Windows
 
-Bei Windows 10, Server 2016 und Server 2012 R2 können Sie die offiziellen Installationsanweisungen befolgen. Das Python-Installationsprogramm installiert standardmäßig auch PIP.
+Verwenden Sie für Windows 10, Windows Server 2016 und Windows Server 2012 R2 die offizielle Standardanleitung für die Installation. Mit dem Python-Installationsprogramm wird standardmäßig auch pip installiert.
 
-- Navigieren Sie zur offiziellen [Python-Downloadseite](https://www.python.org/downloads/), und laden Sie die neueste Version von Python 3.6 herunter.
-- Starten Sie das Installationsprogramm.
-- Wählen Sie die Option am unteren Rand der Aufforderung, um `Add Python 3.6 to PATH` auszuführen.
-- Wählen Sie `Install Now`.
-- Schließen Sie die Installation ab.
+1. Navigieren Sie zur offiziellen [Python-Downloadseite](https://www.python.org/downloads/), und laden Sie die neueste Version von Python 3.6 herunter.
 
-Jetzt sollten ein neues Befehlsfenster öffnen und die Version von Python und PIP abrufen können:
+2. Starten Sie das Installationsprogramm.
+
+3. Wählen Sie unten in der Eingabeaufforderung die Option **Add Python 3.6 to PATH** (Python 3.6 zu PATH hinzufügen).
+
+4. Wählen Sie **Jetzt installieren**, und schließen Sie die Installation ab.
+
+Sie können nun ein neues Befehlsfenster öffnen und die Version von Python und PIP abrufen.
 
 ```bat
 python --version
 pip --version
 ```
 
-Installieren Sie dann die Service Fabric-Befehlszeilenschnittstelle mit dem folgenden Befehl:
+Installieren Sie anschließend die Service Fabric-Befehlszeilenschnittstelle mit dem folgenden Befehl:
 
 ```
 pip install sfctl
@@ -55,7 +57,7 @@ sfctl -h
 
 ### <a name="ubuntu"></a>Ubuntu
 
-Bei Ubuntu 16.04 Desktop können Sie Python 3.6 über eine Drittanbieter-PPA installieren:
+Für Ubuntu 16.04 Desktop können Sie Python 3.6 installieren, indem Sie ein PPA (Personal Package Archive) eines Drittanbieters verwenden.
 
 Führen Sie am Terminal die folgenden Befehle aus:
 
@@ -66,24 +68,24 @@ sudo apt-get install python3.6
 sudo apt-get install python3-pip
 ```
 
-Führen Sie dann zum Installieren von SFCTL für Ihre Installation von Python 3.6 den folgenden Befehl aus:
+Führen Sie dann zum Installieren der Service Fabric CLI nur für Ihre Installation von Python 3.6 den folgenden Befehl aus:
 
 ```bash
 python3.6 -m pip install sfctl
 sfctl -h
 ```
 
-Diese Schritte haben keine Auswirkungen auf die vom System installierten Versionen Python 3.5 und 2.7. Versuchen Sie nicht, diese Installationen zu ändern, insofern Sie nicht mit Ubuntu vertraut sind.
+Diese Schritte haben keine Auswirkungen auf die Systeminstallationen von Python 3.5 und 2.7. Versuchen Sie nicht, diese Installationen zu ändern, sofern Sie nicht mit Ubuntu vertraut sind.
 
 ### <a name="macos"></a>macOS
 
-Verwenden Sie bei MacOS den [HomeBrew-Paketmanager](https://brew.sh). Installieren Sie Homebrew, falls nicht bereits installiert, indem Sie den folgenden Befehl ausführen:
+Für MacOS empfehlen wir Ihnen die Nutzung des [HomeBrew-Paket-Managers](https://brew.sh). Wenn HomeBrew nicht bereits installiert ist, können Sie die Installation mit dem folgenden Befehl durchführen:
 
 ```bash
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
-Installieren Sie dann auf dem Terminal Python 3.6, PIP und SFCTL.
+Installieren Sie dann über das Terminal Python 3.6, pip und die Service Fabric CLI, indem Sie die folgenden Befehle ausführen:
 
 ```bash
 brew install python3
@@ -95,9 +97,9 @@ Diese Schritte haben keine Auswirkungen auf die Systeminstallation von Python 2.
 
 ## <a name="cli-syntax"></a>CLI-Syntax
 
-Befehle erhalten stets das Präfix `sfctl`. Allgemeine Informationen zu allen Befehlen, die Sie nutzen können, erhalten Sie mit `sfctl -h`. Hilfe zu einem einzelnen Befehl erhalten Sie mit `sfctl <command> -h`.
+Die Befehle verfügen immer über das Präfix `sfctl`. Allgemeine Informationen zu allen Befehlen, die Sie nutzen können, erhalten Sie mit `sfctl -h`. Hilfe zu einem einzelnen Befehl erhalten Sie mit `sfctl <command> -h`.
 
-Befehle folgen einer wiederholbaren Struktur. Dabei steht das Ziel des Befehls vor dem Verb oder der Aktion:
+Befehle folgen einer wiederholbaren Struktur. Dabei steht das Ziel des Befehls vor dem Verb oder der Aktion.
 
 ```azurecli
 sfctl <object> <action>
@@ -107,7 +109,7 @@ In diesem Beispiel ist `<object>` das Ziel für `<action>`.
 
 ## <a name="select-a-cluster"></a>Auswählen eines Clusters
 
-Bevor Sie Vorgänge durchführen, müssen Sie einen Cluster auswählen, mit dem die Verbindung hergestellt wird. Führen Sie beispielsweise folgenden Befehl aus, um den Cluster `testcluster.com` auszuwählen und eine Verbindung mit ihm herzustellen.
+Bevor Sie Vorgänge durchführen, müssen Sie einen Cluster auswählen, mit dem die Verbindung hergestellt wird. Führen Sie beispielsweise den folgenden Befehl aus, um den Cluster `testcluster.com` auszuwählen und eine Verbindung damit herzustellen:
 
 > [!WARNING]
 > Vermeiden Sie die Verwendung von ungeschützten Service Fabric-Clustern in einer Produktionsumgebung.
@@ -118,7 +120,7 @@ sfctl cluster select --endpoint http://testcluster.com:19080
 
 Der Clusterendpunkt muss das Präfix `http` oder `https` aufweisen. Er muss den Port für das HTTP-Gateway enthalten. Der Port und die Adresse entsprechen der Service Fabric Explorer-URL.
 
-Für Cluster, die mit einem Zertifikat gesichert sind, können Sie ein PEM-codiertes Zertifikat angeben. Das Zertifikat kann als eine einzelne Datei oder als Zertifikat- und Schlüsselpaar angegeben werden.
+Für Cluster, die mit einem Zertifikat gesichert sind, können Sie ein PEM-codiertes Zertifikat angeben. Das Zertifikat kann als eine einzelne Datei oder als Zertifikat und Schlüsselpaar angegeben werden.
 
 ```azurecli
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem
@@ -128,7 +130,7 @@ Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit einem si
 
 ## <a name="basic-operations"></a>Einfache Vorgänge
 
-Informationen zur Clusterverbindung werden über mehrere sfctl-Sitzungen hinweg beibehalten. Nach dem Auswählen eines Service Fabric-Clusters können Sie im Cluster einen beliebigen Service Fabric-Befehl ausführen.
+Informationen zur Clusterverbindung werden über mehrere Service Fabric CLI-Sitzungen hinweg beibehalten. Nach dem Auswählen eines Service Fabric-Clusters können Sie im Cluster einen beliebigen Service Fabric-Befehl ausführen.
 
 Verwenden Sie beispielsweise den folgenden Befehl, um den Integritätsstatus des Service Fabric-Clusters abzurufen:
 
@@ -163,7 +165,7 @@ Mit diesem Befehl wird die folgende Ausgabe zurückgegeben:
 
 ## <a name="tips-and-troubleshooting"></a>Tipps und Problembehandlung
 
-Hier finden Sie einige Vorschläge und Tipps zum Beheben allgemeiner Probleme.
+Hier sind einige Vorschläge und Tipps zum Beheben von allgemeinen Problemen angegeben.
 
 ### <a name="convert-a-certificate-from-pfx-to-pem-format"></a>Konvertieren eines Zertifikats aus dem PFX- in das PEM-Format
 
@@ -175,7 +177,7 @@ openssl pkcs12 -in certificate.pfx -out mycert.pem -nodes
 
 Weitere Informationen finden Sie in der [OpenSSL-Dokumentation](https://www.openssl.org/docs/).
 
-### <a name="connection-issues"></a>Verbindungsprobleme
+### <a name="connection-problems"></a>Verbindungsprobleme
 
 Für einige Vorgänge wird unter Umständen die folgende Meldung generiert:
 
@@ -185,17 +187,17 @@ Stellen Sie sicher, dass der angegebene Clusterendpunkt verfügbar ist und lausc
 
 ### <a name="detailed-logs"></a>Detaillierte Protokolle
 
-Detaillierte Protokolle sind häufig hilfreich, wenn Sie das Debuggen durchführen oder ein Problem melden. Es gibt ein globales `--debug`-Flag, das die Ausführlichkeit von Protokolldateien erhöht.
+Detaillierte Protokolle sind häufig hilfreich, wenn Sie das Debuggen durchführen oder ein Problem melden. Mit einem globalen `--debug`-Flag wird die Ausführlichkeit von Protokolldateien erhöht.
 
 ### <a name="command-help-and-syntax"></a>Befehle – Hilfe und Syntax
 
-Verwenden Sie das `-h`-Flag, um Hilfe zu einem bestimmten Befehl oder einer Gruppe von Befehlen zu erhalten:
+Verwenden Sie das `-h`-Flag, um Hilfe zu einem bestimmten Befehl oder einer Gruppe von Befehlen zu erhalten.
 
 ```azurecli
 sfctl application -h
 ```
 
-Ein weiteres Beispiel:
+Hier ist ein weiteres Beispiel angegeben:
 
 ```azurecli
 sfctl application create -h

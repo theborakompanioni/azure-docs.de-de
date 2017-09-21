@@ -15,10 +15,10 @@ ms.workload: identity
 ms.date: 08/30/2017
 ms.author: billmath
 ms.translationtype: HT
-ms.sourcegitcommit: 763bc597bdfc40395511cdd9d797e5c7aaad0fdf
-ms.openlocfilehash: 6e2a7c5eafee78d342f735b543624d041b9b3fe5
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 895b538680230170cd29817997a7739b1ba89cfc
 ms.contentlocale: de-de
-ms.lasthandoff: 09/06/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Versionsveröffentlichungsverlauf
@@ -44,6 +44,7 @@ Status: 5. September 2017
 * Es besteht ein bekanntes Problem mit dem Azure AD Connect-Upgrade, das Kunden betrifft, die [Nahtloses einmaliges Anmelden](active-directory-aadconnect-sso.md) aktiviert haben. Nach dem Aktualisieren von Azure AD Connect wird das Feature im Assistenten als deaktiviert angezeigt, obwohl das Feature aktiviert bleibt. In einem zukünftigen Release wird dieses Problem behoben. Kunden, die wg. dieses Anzeigeproblems besorgt sind, können es manuell beheben, indem sie „Nahtloses einmaliges Anmelden“ im Assistenten aktivieren.
 
 #### <a name="fixed-issues"></a>Behobene Probleme
+* Das Problem wurde behoben, aufgrund dessen verhindert wurde, dass Azure AD Connect die Anspruchsregeln im lokalen AD FS aktualisiert, wenn die Funktion [msDS-ConsistencyGuid as Source Anchor](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#using-msds-consistencyguid-as-sourceanchor) aktiviert wird. Dieses Problem tritt auf, wenn Sie versuchen, die Funktion für eine vorhandene Azure AD Connect-Bereitstellung zu aktivieren, bei der AD FS als Anmeldemethode konfiguriert ist. Die Ursache des Problems liegt darin, dass der Assistent nicht zur Eingabe der AD FS-Anmeldeinformationen auffordert, bevor versucht wird, die Anspruchsregeln in AD FS zu aktualisieren.
 * Das Problem wurde behoben, aufgrund dessen bei der Azure AD Connect-Installation ein Fehler auftrat, wenn in der lokalen AD-Gesamtstruktur NTLM deaktiviert war. Ursache des Problems ist, dass der Azure AD Connect-Assistent bei der Erstellung der für die Kerberos-Authentifizierung erforderlichen Sicherheitskontexte nicht die vollqualifizierten Anmeldeinformationen angibt. Dies bewirkt, dass bei der Kerberos-Authentifizierung ein Fehler auftritt, und der Azure AD Connect-Assistent auf die Verwendung von NTLM zurückgeht.
 
 ### <a name="azure-ad-connect-sync"></a>Azure AD Connect-Synchronisierung

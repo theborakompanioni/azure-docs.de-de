@@ -16,21 +16,21 @@ ms.topic: article
 ms.date: 08/29/2017
 ms.author: arramac
 ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
-ms.openlocfilehash: 11f2f72073fd23c0a7c61dedb270f64d42b98025
+ms.sourcegitcommit: f2ac16c2f514aaa7e3f90fdf0d0b6d2912ef8485
+ms.openlocfilehash: d52df1d1f9a29a6fc2a7a3a5e7a6d9fdeaa865e3
 ms.contentlocale: de-de
-ms.lasthandoff: 08/30/2017
+ms.lasthandoff: 09/08/2017
 
 ---
 # <a name="performance-and-scale-testing-with-azure-cosmos-db"></a>Leistungs- und Skalierungstests mit Azure Cosmos DB
-Leistungs- und Skalierungstests sind ein wichtiger Schritt bei der Entwicklung von Anwendungen. Die Datenbankebene hat bei vielen Anwendungen einen erheblichen Einfluss auf die allgemeine Leistung und Skalierbarkeit und ist daher eine wichtige Komponente von Leistungstests. [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) wurde speziell für die flexible Skalierung und vorhersagbare Leistung entwickelt und eignet sich deshalb hervorragend für Anwendungen, die eine leistungsstarke Datenbankebene benötigen. 
+Leistungs- und Skalierungstests sind ein wichtiger Schritt bei der Entwicklung von Anwendungen. Bei vielen Anwendungen hat die Datenbankebene einen erheblichen Einfluss auf die allgemeine Leistung und Skalierbarkeit. Daher ist sie eine wichtige Komponente für Leistungstests. [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) ist speziell für elastische Skalierung und vorhersagbare Leistung ausgelegt. Durch diese Eigenschaften eignet es sich hervorragend für Anwendungen, die eine leistungsstarke Datenbankebene benötigen. 
 
-Dieser Artikel ist eine Referenz für Entwickler, die Leistungstestsammlungen für ihre Cosmos DB-Workloads implementieren oder Cosmos DB für leistungsstarke Anwendungsszenarien auswerten. Er konzentriert sich hauptsächlich auf isolierte Leistungstests der Datenbank, enthält jedoch auch bewährte Methoden für Produktionsanwendungen.
+Dieser Artikel stellt eine Referenz für Entwickler dar, die Leistungtestsuites für ihre Azure Cosmos DB-Workloads implementieren. Außerdem kann Azure Cosmos DB damit auf Anwendungsszenarien mit hoher Leistung hin ausgewertet werden. Er konzentriert sich hauptsächlich auf isolierte Leistungstests der Datenbank, enthält jedoch auch bewährte Methoden für Produktionsanwendungen.
 
-Nach dem Lesen dieses Artikels können Sie die folgenden Fragen beantworten:   
+Nach Lesen dieses Artikels können Sie die folgenden Fragen beantworten: 
 
-* Wo kann ich eine Beispiel-.NET-Clientanwendung für Leistungstests von Cosmos DB finden? 
-* Wie erreiche ich über meine Clientanwendung hohe Durchsätze mit Cosmos DB?
+* Wo finde ich eine .NET-Beispielclientanwendung für Leistungstests von Azure Cosmos DB? 
+* Wie erreiche ich über meine Clientanwendung hohe Durchsätze mit Azure Cosmos DB?
 
 Sie können das Projekt aus dem [Azure Cosmos DB-Beispiel zur Leistungsüberprüfung](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark) herunterladen, um mit dem Programmieren zu beginnen. 
 
@@ -39,17 +39,17 @@ Sie können das Projekt aus dem [Azure Cosmos DB-Beispiel zur Leistungsüberprü
 > 
 > 
 
-Die clientseitigen Konfigurationsoptionen zur Verbesserung der Leistung von Cosmos DB finden Sie unter [Tipps zur Leistungssteigerung für Azure Cosmos DB](performance-tips.md).
+Die clientseitigen Konfigurationsoptionen zur Verbesserung der Leistung von Azure Cosmos DB finden Sie unter [Tipps zur Leistungssteigerung für Azure Cosmos DB](performance-tips.md).
 
 ## <a name="run-the-performance-testing-application"></a>Ausführen der Anwendung zur Leistungsüberprüfung
-Der schnellste Einstieg erfolgt durch das Kompilieren und Ausführen des .NET-Beispiels, wie in den folgenden Schritten beschrieben. Sie können auch den Quellcode überprüfen und ähnliche Konfigurationen in Ihren eigenen Clientanwendungen implementieren.
+Den schnellsten Einstieg ermöglicht das Kompilieren und Ausführen des .NET-Beispiels, wie in den folgenden Schritten beschrieben. Sie können auch den Quellcode prüfen und Konfigurationen implementieren, die Ihren eigenen Clientanwendungen ähneln.
 
-**Schritt 1:** Laden Sie das Projekt aus dem [Azure Cosmos DB-Beispiel zur Leistungsüberprüfung](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark) herunter, oder erstellen Sie eine Verzweigung des GitHub-Repositorys.
+**Schritt 1:** Laden Sie das Projekt aus dem [Azure Cosmos DB-Beispiel zur Leistungsüberprüfung](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark) herunter, oder erstellen Sie einen Fork des GitHub-Repositorys.
 
 **Schritt 2:** Ändern Sie in der Datei „App.config“ die Einstellungen für EndpointUrl, AuthorizationKey, CollectionThroughput und DocumentTemplate (optional).
 
 > [!NOTE]
-> Besuchen Sie vor dem Bereitstellen von Sammlungen mit hohem Durchsatz die [Seite mit den Preisinformationen](https://azure.microsoft.com/pricing/details/cosmos-db/), um die Kosten pro Sammlung abschätzen zu können. Azure Cosmos DB rechnet Speicher und Durchsatz unabhängig voneinander auf Stundenbasis ab, sodass Sie Kosten sparen, indem Sie den Durchsatz Ihrer Azure Cosmos DB-Sammlungen nach dem Testen löschen oder verringern.
+> Besuchen Sie vor dem Bereitstellen von Sammlungen mit hohem Durchsatz die [Seite mit den Preisinformationen](https://azure.microsoft.com/pricing/details/cosmos-db/), um die Kosten pro Sammlung abschätzen zu können. Bei Azure Cosmos DB werden Speicher und Durchsatz unabhängig voneinander auf Stundenbasis abgerechnet. Sie können Kosten sparen, indem Sie den Durchsatz Ihrer Azure Cosmos DB-Sammlungen nach dem Testen abbrechen oder verringern.
 > 
 > 
 
@@ -96,12 +96,12 @@ Der schnellste Einstieg erfolgt durch das Kompilieren und Ausführen des .NET-Be
     Press any key to exit...
 
 
-**Schritt 4 (bei Bedarf):** Der vom Tool gemeldete Durchsatz (RU/s) muss mindestens dem bereitgestellten Durchsatz der Sammlung entsprechen. Wenn dies nicht der Fall ist, kann die Erhöhung von „DegreeOfParallelism“ in kleinen Schritten dabei helfen, den Grenzwert zu erreichen. Wenn der Durchsatz Ihrer Client-App stagniert, starten Sie mehrere Instanzen der App auf zusätzlichen Clientcomputern. Wenn Sie bei diesem Schritt Hilfe benötigen, schreiben Sie eine E-Mail an askcosmosdb@microsoft.com, oder legen Sie im [Azure-Portal](https://portal.azure.com) ein Supportticket an.
+**Schritt 4 (bei Bedarf):** Der vom Tool gemeldete Durchsatz (RU/s) muss mindestens dem bereitgestellten Durchsatz der Sammlung entsprechen. Wenn dies nicht der Fall ist, kann die Erhöhung von DegreeOfParallelism in kleinen Schritten dabei helfen, den Grenzwert zu erreichen. Wenn der Durchsatz Ihrer Client-App stagniert, starten Sie mehrere Instanzen der App auf zusätzlichen Clientcomputern. Wenn Sie bei diesem Schritt Hilfe benötigen, schreiben Sie eine E-Mail an askcosmosdb@microsoft.com, oder legen Sie im [Azure-Portal](https://portal.azure.com) ein Supportticket an.
 
 Sobald die App ausgeführt wird, können Sie verschiedene [Indizierungsrichtlinien](indexing-policies.md) und [Konsistenzebenen](consistency-levels.md) ausprobieren, um die Auswirkungen auf Durchsatz und Latenz zu ermitteln. Sie können auch den Quellcode prüfen und Konfigurationen implementieren, die Ihren eigenen Testsammlungen oder Produktionsanwendungen ähneln.
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Artikel haben Sie erfahren, wie Sie mithilfe einer .NET-Konsolenanwendung die Leistung und Skalierung mit Cosmos DB testen können. Weitere Informationen finden Sie in den folgenden Artikeln.
+In diesem Artikel haben Sie erfahren, wie Sie mithilfe einer .NET-Konsolenanwendung die Leistung und Skalierung mit Azure Cosmos DB testen können. Weitere Informationen finden Sie in den folgenden Artikeln:
 
 * [Beispiel zu Leistungstests in Azure Cosmos DB](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark)
 * [Clientkonfigurationsoptionen zur Verbesserung der Leistung von Azure Cosmos DB](performance-tips.md)

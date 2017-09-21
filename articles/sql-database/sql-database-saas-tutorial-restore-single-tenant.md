@@ -1,11 +1,11 @@
 ---
-title: "Wiederherstellen einer Azure SQL-Datenbank in einer mehrinstanzenfähigen App | Microsoft-Dokumentation"
+title: "Wiederherstellen einer Azure SQL-Datenbank-Instanz in einer mehrinstanzenfähigen SaaS-App | Microsoft-Dokumentation"
 description: "Erfahren Sie, wie Sie die SQL-Datenbank-Instanz eines einzelnen Mandanten nach versehentlichem Löschen von Daten wiederherstellen."
 keywords: Tutorial zur SQL-Datenbank
 services: sql-database
 documentationcenter: 
 author: stevestein
-manager: jhubbard
+manager: craigg
 editor: 
 ms.assetid: 
 ms.service: sql-database
@@ -16,15 +16,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: billgib;sstein
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
-ms.openlocfilehash: 547851972f13ec69a8f65d01290874ad7d07f192
+ms.translationtype: HT
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 792476849e796695dde3f2ec80b56431a17e8fc0
 ms.contentlocale: de-de
-ms.lasthandoff: 06/14/2017
-
+ms.lasthandoff: 09/13/2017
 
 ---
-# <a name="restore-a-wingtip-saas-tenants-sql-database"></a>Wiederherstellen einer SQL-Datenbank mit Wingtip SaaS-Mandanten
+# <a name="restore-a-single-tenants-azure-sql-database-in-a-multi-tenant-saas-app"></a>Wiederherstellen einer Azure SQL-Datenbank-Instanz eines einzelnen Mandanten in einer mehrinstanzenfähigen SaaS-App
 
 Die Wingtip SaaS-App wird mittels eines Datenbank-pro-Mandant-Modells erstellt, wobei jeder Mandant seine eigene Datenbank besitzt. Einer der Vorteile dieses Modells ist, dass die Daten eines einzigen Mandanten mühelos isoliert – d.h. ohne Auswirkungen auf andere Mandanten – wiederhergestellt werden können.
 

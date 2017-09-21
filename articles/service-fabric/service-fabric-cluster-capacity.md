@@ -1,6 +1,6 @@
 ---
 title: "Planen der Service Fabric-Clusterkapazität | Microsoft Docs"
-description: "Überlegungen zur Kapazitätsplanung für Service Fabric-Cluster. Knotentypen, Beständigkeit und Zuverlässigkeitsstufen"
+description: "Überlegungen zur Kapazitätsplanung für Service Fabric-Cluster. Knotentypen, Vorgänge, Dauerhaftigkeit und Zuverlässigkeitsstufen"
 services: service-fabric
 documentationcenter: .net
 author: ChackDan
@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/24/2017
+ms.date: 09/12/2017
 ms.author: chackdan
 ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
-ms.openlocfilehash: 36b96360fabdcc64ffd2356540c580594637d48e
+ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
+ms.openlocfilehash: 04964175f06675a486fcf252f194f0d790acea4a
 ms.contentlocale: de-de
-ms.lasthandoff: 08/23/2017
+ms.lasthandoff: 09/14/2017
 
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Überlegungen zur Kapazitätsplanung für Service Fabric-Cluster
@@ -75,7 +75,7 @@ Für diese Berechtigung können die folgenden Werte festgelegt werden:
 * Bronze: Keine Berechtigungen Dies ist die Standardoption. Verwenden Sie diese Dauerhaftigkeitsstufe nur für Knotentypen, die _nur_ zustandslose Workloads ausführen. 
 
 > [!WARNING]
-> Knotentypen, die mit der Dauerhaftigkeitsstufe „Bronze“ ausgeführt werden, erhalten _keine Berechtigungen_. Das bedeutet, dass die Infrastrukturaufträge, die sich auf die zustandslosen Workloads auswirken, nicht angehalten oder verzögert werden. Es ist möglich, dass diese Aufträge sich weiterhin auf die Workloads auswirken und zu Ausfallzeiten oder anderen Problemen führen. Für Produktionsworkloads jeglicher Art empfiehlt sich die Ausführung mit mindestens der Dauerhaftigkeitsstufe „Silber“. 
+> Knotentypen, die mit der Dauerhaftigkeitsstufe „Bronze“ ausgeführt werden, erhalten _keine Berechtigungen_. Das bedeutet, dass die Infrastrukturaufträge, die sich auf die zustandslosen Workloads auswirken, nicht angehalten oder verzögert werden. Es ist möglich, dass diese Aufträge sich weiterhin auf die Workloads auswirken und zu Ausfallzeiten oder anderen Problemen führen. Für Produktionsworkloads jeglicher Art empfiehlt sich die Ausführung mit mindestens der Dauerhaftigkeitsstufe „Silber“. Sie müssen mindestens 5 Knoten für jeden Knotentyp mit der Dauerhaftigkeit „Gold“ oder „Silber“ verwalten. 
 > 
 
 Sie können die Dauerhaftigkeitsstufe für jeden Ihrer Knotentypen auswählen. Für einen Knotentyp kann die Dauerhaftigkeitsstufe „Gold“ oder „Silber“ und für einen anderen Knotentypen im selben Cluster die Stufe „Bronze“ festgelegt werden.**Sie müssen mindestens 5 Knoten für jeden Knotentyp mit der Dauerhaftigkeitsstufe „Gold“ oder „Silber“ verwalten**. 
@@ -99,14 +99,14 @@ Verwenden Sie die Silber- oder Gold-Dauerhaftigkeit für alle Knotentypen, die z
 1. Halten Sie Ihren Cluster und Anwendungen jederzeit fehlerfrei, und stellen Sie sicher, dass Anwendungen rechtzeitig auf alle [Lebenszyklus-Dienstereignisse für Replikate](service-fabric-reliable-services-advanced-usage.md#stateful-service-replica-lifecycle) (z.B. Unterbrechung der Replikaterstellung) reagieren.
 2. Führen Sie sicherere Methoden für VM-SKU-Änderungen (zentrales Hoch-/Herunterskalieren) ein: Das Ändern der VM-SKU einer VM-Skalierungsgruppe ist grundsätzlich ein unsicherer Vorgang und sollte möglichst vermieden werden. Mit dieser Vorgehensweise vermeiden Sie gängige Probleme.
     - **Für nicht primäre Knotentypen:** Es wird empfohlen, eine neue VM-Skalierungsgruppe zu erstellen, die Dienstplatzierungseinschränkungen so zu ändern, dass die neue VM-Skalierungsgruppe/der neue Knotentyp enthalten sind, und dann die Instanzenanzahl der alten VM-Skalierungsgruppe auf 0 zu reduzieren (nacheinander für alle Knoten, um sicherzustellen, dass das Entfernen der Knoten die Zuverlässigkeit des Clusters nicht beeinträchtigt).
-    - **Für den primären Knotentyp:** Eine Änderung der VM-SKU des primären Knotentyps wird nicht empfohlen. Ist Kapazität der Grund für die neue SKU, wird empfohlen, weitere Instanzen hinzuzufügen oder wenn möglich einen neuen Cluster zu erstellen. Wenn es keine andere Möglichkeit gibt, nehmen Sie Änderungen an der Modelldefinition der VM-Skalierungsgruppe vor, um die neue SKU zu übernehmen. Wenn der Cluster nur einen Knotentyp enthält, stellen Sie sicher, dass alle Ihre zustandsbehafteten Anwendungen rechtzeitig auf alle [Lebenszyklus-Dienstereignisse für Replikate](service-fabric-reliable-services-advanced-usage.md#stateful-service-replica-lifecycle) (z.B. Unterbrechung der Replikaterstellung) reagieren und dass die Dauer für die Neuerstellung des Dienstreplikats weniger als fünf Minuten beträgt (für die Dauerhaftigkeitsstufe „Silber“). 
+    - **Für den primären Knotentyp:** Eine Änderung der VM-SKU des primären Knotentyps wird nicht empfohlen. Das Ändern der SKU des primären Knotentyps wird nicht unterstützt. Ist Kapazität der Grund für die neue SKU, wird empfohlen, weitere Instanzen hinzuzufügen. Wenn dies nicht möglich ist, erstellen Sie einen neuen Cluster und führen eine [Wiederherstellung des Anwendungszustands](service-fabric-reliable-services-backup-restore.md) (falls zutreffend) vom alten Cluster durch. Sie müssen keine Systemdienstzustände wiederherstellen, denn diese werden neu erstellt, wenn Sie Ihre Anwendungen im neuen Cluster bereitstellen. Wenn Sie in Ihrem Cluster ausschließlich zustandslose Anwendungen ausführen, stellen Sie lediglich Ihre Anwendungen im neuen Cluster bereit und müssen nichts wiederherstellen. Wenn Sie einen nicht unterstützten Weg einschlagen und die VM-SKU ändern möchten, passen Sie das Modell der VM-Skalierungsgruppe an die neue SKU an. Wenn der Cluster nur einen Knotentyp enthält, stellen Sie sicher, dass alle Ihre zustandsbehafteten Anwendungen rechtzeitig auf alle [Lebenszyklus-Dienstereignisse für Replikate](service-fabric-reliable-services-advanced-usage.md#stateful-service-replica-lifecycle) (z.B. Unterbrechung der Replikaterstellung) reagieren und dass die Dauer für die Neuerstellung des Dienstreplikats weniger als fünf Minuten beträgt (für die Dauerhaftigkeitsstufe „Silber“). 
 
 
 > [!WARNING]
 > Es wird davon abgeraten, die VM-SKU-Größe für VM-Skalierungsgruppen zu ändern, die nicht mindestens mit der Dauerhaftigkeitsstufe „Silber“ ausgeführt werden. Bei der Änderung der VM-SKU-Größe handelt es sich um einen für Daten schädlichen direkten Infrastrukturvorgang. Ohne eine minimale Möglichkeit der Verzögerung oder Überwachung dieser Änderung ist es möglich, dass der Vorgang bei zustandsbehafteten Diensten zu Datenverlusten führt oder selbst bei zustandslosen Workloads unvorhergesehene Probleme auftreten. 
 > 
     
-3. Verwalten Sie mindestens fünf Knoten für alle VM-Skalierungsgruppen, bei denen MR aktiviert ist.
+3. Verwalten Sie mindestens fünf Knoten für alle VM-Skalierungsgruppen, für die die Dauerhaftigkeitsstufen „Gold“ oder „Silber“ aktiviert wurden.
 4. Löschen Sie keine zufälligen VM-Instanzen, verwenden Sie immer die Funktion zum zentralen Herunterskalieren für VM-Skalierungsgruppen. Das Löschen von zufälligen VM-Instanzen kann zu Ungleichheiten in der auf UD und FD verteilten VM-Instanz führen. Eine solche Ungleichheit kann die Fähigkeit des Systems zum ordnungsgemäßen Lastenausgleich zwischen den Dienstinstanzen/Dienstreplikaten beeinträchtigen.
 6. Wenn Sie die automatische Skalierung verwenden, legen Sie die Regeln so fest, dass die horizontale Herunterskalierung (Entfernung von VM-Instanzen) jeweils nur für einen Knoten ausgeführt wird. Es ist nicht sicher, mehrere Instanzen gleichzeitig herunterzuskalieren.
 7. Wenn Sie einen primären Knotentyp herunterskalieren, sollten Sie ihn nie weiter herunterskalieren, als für die Zuverlässigkeitsstufe zulässig ist.
@@ -163,6 +163,9 @@ Für Produktionsworkloads
 - VM-SKUs mit partiellem Kern wie A0 Standard werden für Produktionsworkloads nicht unterstützt.
 - A1 Standard-SKUs werden aus Leistungsgründen für Produktionsworkloads nicht unterstützt.
 
+> [!WARNING]
+> Derzeit wird das Ändern der VM-SKU-Größe des Primärknotens in einem ausgeführten Cluster nicht unterstützt. Wählen Sie daher die VM-SKU des Primärknotentyps sorgfältig aus, und berücksichtigen Sie dabei Ihre zukünftigen Kapazitätsanforderungen. Zum aktuellen Zeitpunkt kann der Primärknotentyp nur in eine neue VM-SKU (kleiner oder größer) verschoben werden, indem ein neuer Cluster mit der richtigen Kapazität erstellt wird. Stellen Sie anschließend Ihre Anwendungen in diesem bereit, und stellen Sie danach den Anwendungsstatus (falls zutreffend) aus den [neuesten Dienstbackups](service-fabric-reliable-services-backup-restore.md) vom alten Cluster wieder her. Sie müssen keine Systemdienstzustände wiederherstellen, denn diese werden neu erstellt, wenn Sie Anwendungen im neuen Cluster bereitstellen. Wenn Sie in Ihrem Cluster ausschließlich zustandslose Anwendungen ausführen, stellen Sie lediglich Ihre Anwendungen im neuen Cluster bereit und müssen nichts wiederherstellen.
+> 
 
 ## <a name="non-primary-node-type---capacity-guidance-for-stateful-workloads"></a>Nicht primärer Knotentyp: Kapazitätsleitfaden für zustandsbehaftete Workloads
 
@@ -211,7 +214,7 @@ Für Produktionsworkloads
 Wenn Sie die Kapazitätsplanung abgeschlossen haben und einen Cluster einrichten, sollten Sie folgende Artikel lesen:
 
 * [Service Fabric-Clustersicherheit](service-fabric-cluster-security.md)
-* [Einführung in das Service Fabric-Integritätsmodell](service-fabric-health-introduction.md)
+* [Planen der Notfallwiederherstellung](service-fabric-disaster-recovery.md)
 * [Beziehung zwischen Knotentypen und der VM-Skalierungsgruppe](service-fabric-cluster-nodetypes.md)
 
 <!--Image references-->

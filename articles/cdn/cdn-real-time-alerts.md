@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-translationtype: Human Translation
-ms.sourcegitcommit: dccb945e170bd3e3f23283359db25e574a2d4296
-ms.openlocfilehash: 6e66eb076ac7220823a848b5047f147d4101cd55
-
+ms.translationtype: HT
+ms.sourcegitcommit: 9b7316a5bffbd689bdb26e9524129ceed06606d5
+ms.openlocfilehash: 51dce1680be5f5f4387c2ba02827195bcdbe9b48
+ms.contentlocale: de-de
+ms.lasthandoff: 09/08/2017
 
 ---
 # <a name="real-time-alerts-in-microsoft-azure-cdn"></a>Echtzeitwarnungen in Microsoft Azure CDN
@@ -34,10 +35,10 @@ In diesem Dokument werden Echtzeitwarnungen in Microsoft Azure CDN erläutert. D
 ## <a name="creating-a-real-time-alert"></a>Erstellen einer Echtzeitwarnung
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com)zu Ihrem CDN-Profil.
    
-    ![CDN-Profilblatt](./media/cdn-real-time-alerts/cdn-profile-blade.png)
-2. Klicken Sie auf dem Blatt „CDN-Profil“ auf die Schaltfläche **Verwalten** .
+    ![CDN-Profil](./media/cdn-real-time-alerts/cdn-profile-blade.png)
+1. Klicken Sie auf dem Blatt „CDN-Profil“ auf die Schaltfläche **Verwalten** .
    
-    ![Schaltfläche „Verwalten“ auf dem CDN-Profilblatt](./media/cdn-real-time-alerts/cdn-manage-btn.png)
+    ![Verwaltungsschaltfläche für CDN-Profile](./media/cdn-real-time-alerts/cdn-manage-btn.png)
    
     Das CDN-Verwaltungsportal wird geöffnet.
 3. Zeigen Sie auf die Registerkarte **Analysen** und dann auf das Flyout **Echtzeitstatistiken**.  Klicken Sie auf **Real-Time Alerts**(Echtzeitwarnungen).
@@ -68,17 +69,17 @@ In diesem Dokument werden Echtzeitwarnungen in Microsoft Azure CDN erläutert. D
    * **Operator** ist der mathematische Operator, der die Beziehung zwischen Metrik und Triggerwert herstellt.
    * **Triggerwert** ist der Schwellenwert, ab dem eine Benachrichtigung gesendet wird.
      
-     Der im folgenden Beispiel erstellte Ausdruck gibt an, dass eine Benachrichtigung erfolgen soll, wenn mehr als 25 Statuscodes vom Typ 404 vorliegen:
+     Im folgenden Beispiel gibt der erstellte Ausdruck an, dass eine Benachrichtigung gesendet wird, wenn die Anzahl der 404-Statuscodes größer als 25 ist.
      
      ![Echtzeitwarnung mit Beispielausdruck](./media/cdn-real-time-alerts/cdn-expression.png)
 9. Geben Sie unter **Intervall**an, wie häufig der Ausdruck ausgewertet werden soll.
 10. Wählen Sie in der Dropdownliste **Notify on** (Benachrichtigungszeitpunkt) aus, wann Sie benachrichtigt werden möchten, wenn der Ausdruck erfüllt ist.
     
-    * **Condition Start** (Bedingungsbeginn) wird eine Benachrichtigung gesendet, wenn die angegebene Bedingung erstmals erkannt wird.
-    * **Condition End** (Bedingungsende) wird eine Benachrichtigung gesendet, wenn die angegebene Bedingung nicht mehr erkannt wird. Diese Benachrichtigung kann nur ausgelöst werden, wenn unser Netzwerküberwachungssystem zuvor erkannt hat, dass die angegebene Bedingung aufgetreten ist.
-    * **Continuous** (Fortlaufend) wird immer dann eine Benachrichtigung gesendet, wenn das Netzwerküberwachungssystem die angegebene Bedingung erkennt. Bedenken Sie, dass pro Intervall immer nur einmal geprüft wird, ob die angegebene Bedingung vorliegt.
-    * **Condition Start and End** (Bedingungsbeginn und -ende) wird eine Benachrichtigung gesendet, wenn die angegebene Bedingung erstmals erkannt wird, und eine weitere Benachrichtigung, wenn die Bedingung nicht mehr erkannt wird.
-11. Wenn Sie Benachrichtigungen per E-Mail erhalten möchten, aktivieren Sie das Kontrollkästchen **Notify by Email** (Per E-Mail benachrichtigen).  
+    * **Condition Start** (Bedingungsbeginn) gibt an, dass eine Benachrichtigung gesendet wird, wenn die angegebene Bedingung erstmals erfüllt wird.
+    * **Condition End** (Bedingungsende) gibt an, dass eine Benachrichtigung gesendet wird, wenn die angegebene Bedingung nicht mehr erfüllt wird. Diese Benachrichtigung kann nur ausgelöst werden, wenn unser Netzwerküberwachungssystem zuvor erkannt hat, dass die angegebene Bedingung aufgetreten ist.
+    * **Continuous** (Fortlaufend) gibt an, dass immer dann eine Benachrichtigung gesendet wird, wenn das Netzwerküberwachungssystem die angegebene Bedingung erkennt. Bedenken Sie, dass pro Intervall immer nur einmal geprüft wird, ob die angegebene Bedingung erfüllt ist.
+    * **Condition Start and End** (Bedingungsbeginn und -ende) gibt an, dass eine Benachrichtigung gesendet wird, wenn die angegebene Bedingung erstmals erfüllt wird, und eine weitere Benachrichtigung, wenn die Bedingung nicht mehr erfüllt wird.
+1. Wenn Sie Benachrichtigungen per E-Mail erhalten möchten, aktivieren Sie das Kontrollkästchen **Notify by Email** (Per E-Mail benachrichtigen).  
     
     ![Formular für E-Mail-Benachrichtigungen](./media/cdn-real-time-alerts/cdn-notify-email.png)
     
@@ -92,7 +93,7 @@ In diesem Dokument werden Echtzeitwarnungen in Microsoft Azure CDN erläutert. D
     
     ![Formular für HTTP Post-Benachrichtigungen](./media/cdn-real-time-alerts/cdn-notify-http.png)
     
-    Geben Sie im Feld **URL** die URL ein, unter der die HTTP-Nachricht veröffentlicht werden soll. Geben Sie im Textfeld **Header** die HTTP-Header ein, die in der Anforderung gesendet werden sollen.  Unter **Text** können Sie die Nachricht mithilfe der Liste **verfügbarer Schlüsselwörter** anpassen, sodass beim Senden der Nachricht automatisch Warnungsdaten eingefügt werden..  **Header** und **Text** werden standardmäßig auf eine XML-Nutzlast festgelegt, die der Angabe im folgenden Beispiel ähnelt.
+    Geben Sie im Feld **URL** die URL ein, unter der die HTTP-Nachricht veröffentlicht werden soll. Geben Sie im Textfeld **Header** die HTTP-Header ein, die in der Anforderung gesendet werden sollen.  Unter **Text** können Sie die Nachricht mithilfe der Liste **verfügbarer Schlüsselwörter** anpassen, sodass beim Senden der Nachricht automatisch Warnungsdaten eingefügt werden.  **Header** und **Text** werden standardmäßig auf eine XML-Nutzlast festgelegt, die der Angabe im folgenden Beispiel ähnelt:
     
     ```
     <string xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
@@ -110,10 +111,5 @@ In diesem Dokument werden Echtzeitwarnungen in Microsoft Azure CDN erläutert. D
 * Analysieren Sie [Echtzeitstatistiken in Azure CDN](cdn-real-time-stats.md)
 * Informieren Sie sich ausführlicher über [erweiterte HTTP-Berichte](cdn-advanced-http-reports.md)
 * Analyse von [Verwendungsmustern](cdn-analyze-usage-patterns.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

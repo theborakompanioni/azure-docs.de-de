@@ -14,19 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: 7c13931aa6d17036e59674cdd917e3ca221ac57f
+ms.translationtype: HT
+ms.sourcegitcommit: f2ac16c2f514aaa7e3f90fdf0d0b6d2912ef8485
+ms.openlocfilehash: 44028b2ef268cb2deff273f755d2f5aeab5bdc17
 ms.contentlocale: de-de
-ms.lasthandoff: 06/16/2017
-
+ms.lasthandoff: 09/08/2017
 
 ---
 # <a name="azure-cdn-pop-locations"></a>Azure CDN-POP-Standorte
 Dieses Thema enthält die aktuellen POP-Standorte für **Azure CDN von Verizon** und **Azure CDN von Akamai**.
 
 > [!IMPORTANT]
-> POP-Standorte für \***Azure CDN von Akamai** werden nicht einzeln offen gelegt.  
+> \* POP-Standorte für **Azure CDN von Akamai** werden nicht einzeln offengelegt.  
 > 
 > Beide Anbieter haben unterschiedliche Methoden zur Erstellung ihrer CDN-Infrastrukturen.  Wir raten davon ab, die Entscheidung zur Verwendung eines Azure CDN-Produkts anhand der POP-Standorte zu treffen – berücksichtigen Sie stattdessen Features und Endbenutzerleistung.  Testen Sie die Leistung bei beiden Anbietern, um das richtige Azure CDN-Produkt für Ihre Benutzer auszuwählen. 
 > 
@@ -34,16 +33,16 @@ Dieses Thema enthält die aktuellen POP-Standorte für **Azure CDN von Verizon**
 
 | Region | Verizon | Akamai |
 | --- | --- | --- |
-| Nordamerika |Atlanta (Georgia, USA)<br />Philadelphia, PA<br />New York, NY<br />Miami, FL<br />Washington DC<br />Boston, MA<br />Denver, CO<br />Chicago, IL<br />Dallas, TX<br />Los Angeles, CA<br />San Jose, Kalifornien, USA<br />Seattle, WA |**&#x2713;**\* |
-| Südamerika |São Paulo, Brasilien<br />Rio de Janeiro, Brasilien<br />Quito, Ecuador<br />Barranquilla, Kolumbien<br />Medellin, Kolumbien<br/>Buenos Aires, Argentinien |**&#x2713;**\* |
-| Nord- und Osteuropa |Kopenhagen, Dänemark<br />Helsinki, Finnland<br />London, Großbritannien<br />Stockholm, Schweden<br />Warschau, Polen |**&#x2713;**\* |
-| Westeuropa |Amsterdam, Niederlande<br />Frankfurt, Deutschland<br />Paris, Frankreich<br />Wien, Österreich |**&#x2713;**\* |
-| Südeuropa |Madrid, Spanien<br />Mailand, Italien |**&#x2713;**\* |
-| Ostasien |Tokio, Japan<br />Osaka, Japan<br />Batam, Indonesien<br />Jakarta, Indonesien<br />Hongkong<br />Kaohsiung, Taiwan<br />Seoul, Südkorea<br />Singapur |**&#x2713;**\* |
-| Süd- und Zentralasien |Bangalore, Indien<br />Chennai, Indien<br />Delhi, Indien<br />Mumbai, Indien |**&#x2713;**\* |
-| Naher Osten/Westasien |Maskat, Oman <br /> Fujirah, Vereinigte Arabische Emirate |**&#x2713;**\* |
-| Afrika | |**&#x2713;**\* |
-| Australien und Neuseeland |Melbourne, Australien<br />Sydney, Australien |**&#x2713;**\* |
+| Nordamerika | Atlanta (Georgia, USA)<br />Boston, MA<br />Chicago, IL<br />Dallas, TX<br />Denver, CO<br />Los Angeles, CA<br />Miami, FL<br />New York, NY<br />Philadelphia, PA<br />San Jose, Kalifornien, USA<br />Seattle, WA<br />Washington DC | Kanada<br />Mexiko<br />USA |
+| Südamerika | Buenos Aires, Argentinien<br />Rio de Janeiro, Brasilien<br />São Paulo, Brasilien<br />Valparaíso, Chile<br />Barranquilla, Kolumbien<br />Medellin, Kolumbien<br />Quito, Ecuador<br />Lima, Peru | Argentinien<br />Brasilien<br />Chile<br />Kolumbien<br />Ecuador<br />Peru<br />Uruguay |
+| Europa, Norden und Osten | Kopenhagen, Dänemark<br />Helsinki, Finnland<br />Warschau, Polen<br />Stockholm, Schweden | Bulgarien<br />Dänemark<br />Finnland<br />Norwegen<br />Polen<br />Schweden<br /> |
+| Europa, Westen | Wien, Österreich<br />Paris, Frankreich<br />Frankfurt, Deutschland<br />Amsterdam, Niederlande<br />London, Großbritannien | Österreich<br />Belgien<br />Frankreich<br />Deutschland<br />Irland<br />Niederlande<br />Schweiz<br />Vereinigtes Königreich |
+| Europa, Süden | Mailand, Italien<br />Madrid, Spanien | Griechenland<br />Italien<br />Portugal<br />Spanien |
+| Ostasien | Hongkong<br />Batam, Indonesien<br />Jakarta, Indonesien<br />Osaka, Japan<br />Tokio, Japan<br />Singapur<br />Seoul, Südkorea<br />Kaohsiung, Taiwan | Hongkong<br />Indonesien<br />Japan<br />Macau<br />Malaysia<br />Philippinen<br />Singapur<br />Südkorea<br />Taiwan<br />Thailand |
+| Süd- und Zentralasien | Bangalore, Indien<br />Chennai, Indien<br />Delhi, Indien<br />Mumbai, Indien<br />Neu-Delhi, Indien | Indien<br />Sri Lanka |
+| Naher Osten/Westasien | Maskat, Oman<br />Fujirah, Vereinigte Arabische Emirate | Israel<br />Kuwait<br />Katar<br />Türkei<br />Vereinigte Arabische Emirate |
+| Afrika | | Ägypten<br />Südafrika |
+| Australien und Neuseeland | Melbourne, Australien<br />Sydney, Australien<br />Auckland, Neuseeland | Australien<br />Neuseeland |
 
 ## <a name="see-also"></a>Weitere Informationen
 * [Azure CDN-Edgeknoten-API zum Abrufen der aktuellen IP-Adressen für Whitelists](https://docs.microsoft.com/en-us/rest/api/cdn/edgenodes)

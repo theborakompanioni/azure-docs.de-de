@@ -11,29 +11,29 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/17/2017
+ms.date: 09/08/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: 9069166259265f5d2b43043b75039e239f397f6c
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: 811adc81424b8e53a740ec34f77a7610fc2a72a8
 ms.contentlocale: de-de
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 
 # <a name="set-a-custom-home-page-for-published-apps-by-using-azure-ad-application-proxy"></a>Festlegen einer benutzerdefinierten Startseite für veröffentlichte Apps mithilfe eines Azure AD-Anwendungsproxys
 
-In diesem Artikel wird erläutert, wie Sie Apps so konfigurieren, dass sie Benutzer zu einer benutzerdefinierten Homepage weiterleiten. Wenn Sie eine Anwendung mit dem Anwendungsproxy veröffentlichen, legen Sie eine interne URL fest. Dies ist jedoch in einigen Fällen nicht die Seite, die den Benutzern zuerst angezeigt werden soll. Legen Sie eine benutzerdefinierte Homepage fest, damit Ihre Benutzer beim Zugreifen auf Apps über den Azure Active Directory-Zugriffsbereich oder den Office 365-App-Starter zur richtigen Seite gelangen.
+In diesem Artikel wird erläutert, wie Sie Apps so konfigurieren, dass sie Benutzer zu einer benutzerdefinierten Homepage weiterleiten. Wenn Sie eine Anwendung mit dem Anwendungsproxy veröffentlichen, legen Sie eine interne URL fest. Dies ist jedoch in einigen Fällen nicht die Seite, die den Benutzern zuerst angezeigt werden soll. Legen Sie eine benutzerdefinierte Startseite fest, sodass die Benutzer zu der richtigen Seite gelangen, wenn sie auf die Apps zugreifen. Für die Benutzer wird die benutzerdefinierte Startseite angezeigt, die Sie festlegen, egal ob ihr Zugriff auf die App über den Azure Active Directory-Zugriffsbereich oder den Office 365-App-Starter erfolgt.
 
 Benutzer, die Ihre Apps starten, werden standardmäßig zur Stammdomänen-URL der veröffentlichten App weitergeleitet. Die Zielseite wird in der Regel als URL der Startseite festgelegt. Definieren Sie mithilfe des Azure AD PowerShell-Moduls benutzerdefinierte Homepage-URLs, wenn die App-Benutzer zu einer bestimmten Seite innerhalb der App gelangen sollen. 
 
-Beispiel:
+Das folgende Beispiel veranschaulicht, warum es für ein Unternehmen sinnvoll sein kann, eine benutzerdefinierte Startseite festzulegen:
 - In Ihrem Unternehmensnetzwerk browsen Benutzer zu *https://ExpenseApp/login/login.aspx*, um sich anzumelden und auf Ihre App zuzugreifen.
 - Da Sie auf oberste Ebene der Ordnerstruktur andere Ressourcen wie Images besitzen, auf die der Anwendungsproxy zugreifen muss, veröffentlichen Sie die App mit *https://ExpenseApp* als interner URL.
-- Die externe Standard-URL ist *https://ExpenseApp-contoso.msappproxy.net*. Hierüber gelangen Ihre Benutzer jedoch nicht auf die Anmeldeseite.  
-- Legen Sie *https://ExpenseApp-contoso.msappproxy.net/login/login.aspx* als Homepage-URL fest, damit Ihre Benutzer ein nahtloses Erlebnis erhalten. 
+- Die externe Standard-URL ist *https://ExpenseApp-contoso.msappproxy.net*. Hierüber gelangen die Benutzer jedoch nicht auf die Anmeldeseite.  
+- Legen Sie *https://ExpenseApp-contoso.msappproxy.net/login/login.aspx* als URL der Startseite fest. 
 
 >[!NOTE]
 >Wenn Sie Benutzern Zugriff auf veröffentlichte Apps erteilen, werden die Apps im [Azure AD-Zugriffsbereich](active-directory-saas-access-panel-introduction.md) und im [Office 365-Startfeld](https://blogs.office.com/2016/09/27/introducing-the-new-office-365-app-launcher) angezeigt.
@@ -79,7 +79,7 @@ Führen Sie diese Schritte aus, um das Paket zu installieren:
 
 Rufen Sie die Objekt-ID der App ab, und suchen Sie in der App nach ihrer Startseite.
 
-1. Öffnen Sie PowerShell, und importieren Sie das Azure AD-Modul.
+1. Importieren Sie in demselben PowerShell-Fenster das Azure AD-Modul.
 
     ```
     Import-Module AzureAD
@@ -105,9 +105,9 @@ Rufen Sie die Objekt-ID der App ab, und suchen Sie in der App nach ihrer Startse
 
 ### <a name="update-the-home-page-url"></a>Schritt 2: Aktualisieren der URL der Startseite
 
-Führen Sie im selben PowerShell-Modul, das Sie für Schritt 1 verwendet haben, folgende Schritte aus:
+Erstellen Sie die URL der Startseite, und aktualisieren Sie die Anwendung mit diesem Wert. Führen Sie diese Befehle in demselben PowerShell-Fenster aus. Wenn Sie stattdessen ein neues PowerShell-Fenster verwenden, melden Sie sich mit `Connect-AzureAD` erneut beim Azure AD-Modul an. 
 
-1. Vergewissern Sie sich, dass Sie die richtige App verwenden, und ersetzen Sie *8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4* durch die Objekt-ID, die Sie im vorherigen Schritt kopiert haben.
+1. Vergewissern Sie sich, dass Sie die richtige App verwenden, und ersetzen Sie *8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4* durch die Objekt-ID, die Sie im vorherigen Abschnitt kopiert haben.
 
     ```
     Get-AzureADApplication -ObjectId 8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4.
@@ -138,7 +138,7 @@ Führen Sie im selben PowerShell-Modul, das Sie für Schritt 1 verwendet haben, 
     ```
 
 >[!NOTE]
->Sämtliche Änderungen, die Sie an der App vornehmen, können die URL der Startseite zurücksetzen. Wenn Ihre Homepage-URL zurückgesetzt wird, wiederholen Sie Schritt 2.
+>Sämtliche Änderungen, die Sie an der App vornehmen, können die URL der Startseite zurücksetzen. Wenn die URL der Startseite zurückgesetzt wird, wiederholen Sie die Schritte in diesem Abschnitt, um sie wiederherzustellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

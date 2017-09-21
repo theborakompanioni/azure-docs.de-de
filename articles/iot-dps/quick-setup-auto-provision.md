@@ -13,10 +13,10 @@ manager: timlt
 ms.devlang: na
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
-ms.openlocfilehash: 519ea43bfaa9d61de6ff962d838c197eb9e4edc0
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: a96f64e41b090cb60bbbb007a3913fd23ce8f609
 ms.contentlocale: de-de
-ms.lasthandoff: 09/07/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 
@@ -63,7 +63,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
 
 2. Wählen Sie auf dem Zusammenfassungsblatt des Device Provisioning-Diensts die Option **Linked IoT hubs** (Verknüpfte IoT Hubs). Klicken Sie oben auf die Schaltfläche **+ Hinzufügen**. 
 
-3. Wählen Sie auf dem Portalblatt **Add link to IoT hub or pool** (Verknüpfung mit IoT Hub oder Pool hinzufügen) entweder das aktuelle Abonnement aus, oder geben Sie den Namen und die Verbindungszeichenfolge für ein anderes Abonnement ein. Geben Sie *IoT Hub* als **Ressourcentyp** an, und wählen Sie den Namen des Hub in der Dropdownliste aus. Klicken Sie auf **Speichern**, wenn Sie fertig sind. 
+3. Wählen Sie auf dem Portalblatt **Add link to IoT hub** (Verknüpfung mit IoT Hub hinzufügen) entweder das aktuelle Abonnement aus, oder geben Sie den Namen und die Verbindungszeichenfolge für ein anderes Abonnement ein. Wählen in der Dropdownliste den Hub-Namen aus. Klicken Sie auf **Speichern**, wenn Sie fertig sind. 
 
     ![Verknüpfen des Hubnamens mit der Instanz des Device Provisioning-Diensts auf dem Portalblatt](./media/quick-setup-auto-provision/link-iot-hub-to-dps-portal.png)  
 
@@ -76,7 +76,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
 Andere Schnellstartanleitungen in dieser Sammlung bauen auf dieser Schnellstartanleitung auf. Wenn Sie planen, mit den nachfolgenden Schnellstarts oder Tutorials fortzufahren, sollten Sie die in diesem Schnellstart erstellten Ressourcen nicht bereinigen. Falls Sie nicht fortfahren möchten, können Sie die folgenden Schritte ausführen, um alle erstellten Ressourcen dieses Schnellstarts im Azure-Portal zu löschen.
 
 1. Klicken Sie im Azure-Portal im linken Menü auf **Alle Ressourcen**, und wählen Sie Ihren Device Provisioning-Dienst aus. Klicken Sie im oberen Bereich des Blatts **Alle Ressourcen** auf **Löschen**.  
-2. Klicken Sie im Azure-Portal im linken Menü auf **Alle Ressourcen**, und wählen Sie Ihre IoT Hub-Instanz aus. Klicken Sie im oberen Bereich des Blatts **Alle Ressourcen** auf **Löschen**.  
+2. Klicken Sie im Azure-Portal im Menü auf der linken Seite auf **Alle Ressourcen**, und wählen Sie Ihre IoT Hub-Instanz aus. Klicken Sie im oberen Bereich des Blatts **Alle Ressourcen** auf **Löschen**.  
 
 ## <a name="next-steps"></a>Nächste Schritte
 

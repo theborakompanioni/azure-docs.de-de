@@ -11,14 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/19/2017
+ms.date: 07/31/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 4a19ab310212b93a53495a6fc6c25c77dfb82e79
+ms.translationtype: HT
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: f2184f426c0e60ea2b6ce029b80d3d63821794d1
 ms.contentlocale: de-de
-ms.lasthandoff: 07/08/2017
-
+ms.lasthandoff: 09/13/2017
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-netsuite"></a>Tutorial: Azure Active Directory-Integration mit NetSuite
@@ -115,7 +114,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     Geben Sie im Textfeld **Antwort-URL** eine URL nach folgendem Muster ein:   `https://<tenant-name>.netsuite.com/saml2/acs` `https://<tenant-name>.na1.netsuite.com/saml2/acs` `https://<tenant-name>.na2.netsuite.com/saml2/acs` `https://<tenant-name>.sandbox.netsuite.com/saml2/acs` `https://<tenant-name>.na1.sandbox.netsuite.com/saml2/acs` `https://<tenant-name>.na2.sandbox.netsuite.com/saml2/acs`
 
     > [!NOTE] 
-    > Dieser Wert entspricht nicht dem tatsächlichen Wert. Aktualisieren Sie den Wert mit der richtigen Antwort-URL. Wenden Sie sich an das [Supportteam von Netsuite](http://www.netsuite.com/portal/services/support.shtml), um diesen Wert zu erhalten.
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Antwort-URL. Wenden Sie sich an das [Supportteam von Netsuite](http://www.netsuite.com/portal/services/support.shtml), um diese Werte zu erhalten.
  
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die XML-Datei dann auf Ihrem Computer.
 
@@ -161,7 +160,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-Netsuite-tutorial/ns-attributes.png)
 
-13. Geben Sie im Feld **Attributname** die Zeichenfolge `account` ein. Geben Sie im Feld **Attributwert** Ihre Netsuite-Konto-ID ein. Hierbei handelt es sich um eine kontospezifische Konstante. Beachten Sie die folgenden Anleitungen, um Ihre Konto-ID zu finden:
+13. Geben Sie im Feld **Attributname** die Zeichenfolge `account` ein. Geben Sie in das Feld **Attributwert** Ihre Konto-ID für NetSuite ein. Dieser Wert ist konstant und vom Konto abhängig. Beachten Sie die folgenden Anleitungen, um Ihre Konto-ID zu finden:
 
       ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-Netsuite-tutorial/ns-add-attribute.png)
 
@@ -298,7 +297,7 @@ Um Ihre Einstellungen für die einmalige Anmeldung zu testen, öffnen Sie den Zu
 
 * [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
-* [Tutorial: Configuring Netsuite for Automatic User Provisioning](active-directory-saas-netsuite-provisioning-tutorial.md) (Tutorial: Konfigurieren von Netsuite für die automatische Benutzerbereitstellung)
+* [Konfigurieren der Benutzerbereitstellung](active-directory-saas-netsuite-provisioning-tutorial.md)
 
 <!--Image references-->
 

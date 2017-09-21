@@ -15,13 +15,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/28/2017
+ms.date: 09/07/2017
 ms.author: nitinme
 ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
-ms.openlocfilehash: b8955acc83b0fbb0612e7042d62170ae8078b9ad
+ms.sourcegitcommit: 9b7316a5bffbd689bdb26e9524129ceed06606d5
+ms.openlocfilehash: 6da4f2527e480b621f4d3a2d74ed3107c970d1b9
 ms.contentlocale: de-de
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 09/08/2017
 
 ---
 # <a name="introduction-to-spark-on-hdinsight"></a>Einführung in Spark in HDInsight
@@ -30,8 +30,17 @@ Dieser Artikel bietet eine Einführung in Spark in HDInsight. <a href="http://sp
 
 Wenn Sie einen Spark-Cluster in HDInsight erstellen, erstellen Sie damit Azure-Computeressourcen, für die Spark installiert und konfiguriert ist. Die Erstellung eines Spark-Clusters in HD Insight dauert etwa 10 Minuten. Die zu verarbeitenden Daten werden in Azure Storage oder Azure Data Lake Store gespeichert. Weitere Informationen finden Sie unter [Verwenden von Azure Storage mit HDInsight](hdinsight-hadoop-use-blob-storage.md).
 
-**Informationen zum Erstellen eines Spark-Clusters in HDInsight** finden Sie unter [Schnellstart: Erstellen eines Spark-Clusters in HDInsight und Ausführen einer interaktiven Abfrage mithilfe von Jupyter](hdinsight-apache-spark-jupyter-spark-sql.md).
+![Spark: ein einheitliches Framework](./media/hdinsight-apache-spark-overview/hdinsight-spark-overview.png)
 
+## <a name="spark-vs-traditional-mapreduce"></a>Vergleich von Spark mit herkömmlichem MapReduce
+
+Wie wird bei Spark die Schnelligkeit erreicht? Wie unterscheidet sich die Architektur von Apache Spark von herkömmlichem MapReduce, sodass eine bessere Leistung für die Datenfreigabe erzielt wird?
+
+![Vergleich von herkömmlichem MapReduce mit Spark](./media/hdinsight-apache-spark-overview/mapreduce-vs-spark.png)
+
+Spark stellt Primitive für das In-Memory-Clustercomputing bereit. Bei einem Spark-Auftrag können Daten in den Arbeitsspeicher geladen und zwischengespeichert und dann wiederholt abgefragt werden. Dieser Vorgang ist deutlich schneller als bei Systemen auf Datenträgerbasis. Spark kann auch in die Scala-Programmiersprache integriert werden, damit Sie verteilte Datasets bearbeiten können, z.B. lokale Sammlungen. Es ist nicht erforderlich, alles in Form von Mapper- und Reducer-Vorgängen zu strukturieren.
+
+In Spark ist die Datenfreigabe zwischen Vorgängen schneller, da es sich um In-Memory-Daten handelt. Bei Hadoop werden Daten dagegen per Hadoop Distributed File System freigegeben, und diese Art der Verarbeitung dauert länger.
 
 ## <a name="what-is-apache-spark-on-azure-hdinsight"></a>Was ist Apache Spark in Azure HDInsight?
 Spark-Cluster in HDInsight bieten einen vollständig verwalteten Spark-Dienst. Die Vorteile der Erstellung eines Spark-Clusters in HDInsight sind hier aufgeführt.
@@ -52,13 +61,27 @@ Spark-Cluster in HDInsight bieten einen vollständig verwalteten Spark-Dienst. D
 | Skalierbarkeit |Obwohl Sie die Anzahl der Knoten im Cluster bei der Erstellung angeben können, sollten Sie den Cluster je nach Workload vergrößern oder verkleinern. Alle HDInsight-Cluster bieten die Möglichkeit, die Anzahl der Knoten im Cluster zu ändern. Darüber hinaus können Spark-Cluster ohne Datenverlust verworfen werden, da alle Daten in Azure Storage oder Data Lake Store gespeichert werden. |
 | Support rund um die Uhr |Für Spark-Cluster in HDInsight ist rund um die Uhr professioneller Support verfügbar, und in der SLA ist eine Betriebszeit von 99,9 % angegeben. |
 
+## <a name="spark-cluster-architecture"></a>Spark-Clusterarchitektur
+
+Hier wird die Spark-Clusterarchitektur und ihre Funktionsweise beschrieben:
+
+![Spark-Clusterarchitektur](./media/hdinsight-apache-spark-overview/spark-architecture.png)
+
+Der Hauptknoten verfügt über den Spark-Master, mit dem die Anzahl von Anwendungen verwaltet wird, und die Apps werden dem Spark-Treiber zugeordnet. Jede App wird vom Spark-Master auf verschiedene Arten verwaltet. Spark kann zusätzlich zu Mesos, YARN oder zum Spark-Cluster-Manager bereitgestellt werden, mit dem Workerknotenressourcen einer Anwendung zugeordnet werden. In HDInsight wird Spark über den YARN-Cluster-Manager ausgeführt. Die Ressourcen im Cluster werden per Spark-Master in HDInsight verwaltet. Dies bedeutet, dass der Spark-Master über das Wissen zu den Ressourcen, z.B. zum Arbeitsspeicher, verfügt, ob diese auf dem Workerknoten belegt oder verfügbar sind.
+
+Der Treiber führt die main-Funktion des Benutzers und dann die verschiedenen parallelen Vorgänge auf den Workerknoten aus. Anschließend sammelt der Treiber die Ergebnisse der Vorgänge. Die Workerknoten lesen und schreiben Daten aus dem und in das Hadoop Distributed File System (HDFS). Außerdem speichern die Workerknoten transformierte Daten im Arbeitsspeicher als RDDs (Resilient Distributed Datasets).
+
+Nachdem die App auf dem Spark-Master erstellt wurde, werden die Ressourcen vom Spark-Master den Apps zugeordnet, und es wird eine Ausführung mit der Bezeichnung „Spark-Treiber“ erstellt. Mit dem Spark-Treiber wird auch der SparkContext erstellt und die Erstellung der RDDs gestartet. Die Metadaten der RDDs werden auf dem Spark-Treiber gespeichert.
+
+Der Spark-Treiber stellt eine Verbindung mit dem Spark-Master her und ist für die Konvertierung einer Anwendung in einen gerichteten Graphen (DAG) mit einzelnen Aufgaben verantwortlich, die auf den Workerknoten in einem Executor-Prozess ausgeführt werden. Jede Anwendung erhält ihre eigenen Executor-Prozesse, die über die gesamte Anwendungsdauer aktiv bleiben und Aufgaben in mehreren Threads ausführen.
+
 ## <a name="what-are-the-use-cases-for-spark-on-hdinsight"></a>Welche Anwendungsfälle gibt es für Spark für HDInsight?
-Spark-Cluster in HDInsight ermöglichen die folgenden Schlüsselszenarien.
+Spark-Cluster in HDInsight ermöglichen die folgenden Schlüsselszenarien:
 
 ### <a name="interactive-data-analysis-and-bi"></a>Interaktive Datenanalyse und BI
 [Lernprogramm anzeigen](hdinsight-apache-spark-use-bi-tools.md)
 
-Apache Spark in HDInsight speichert Daten in Azure Storage oder Azure Data Lake Store. Experten und Entscheidungsträger in Unternehmen können diese Daten analysieren und Berichte damit erstellen und Microsoft Power BI verwenden, um aus den analysierten Daten interaktive Berichte anzufertigen. Analysten können mit unstrukturierten oder teilweise strukturierten Daten im Clusterspeicher beginnen, mit Notebooks ein Schema für die Daten definieren und dann mit Microsoft Power BI Datenmodelle erstellen. Spark-Cluster in HDInsight unterstützen auch eine Reihe von BI-Drittanbietertools wie Tableau. Daher ist es eine ideale Plattform für Datenanalysten, Unternehmensexperten und Entscheidungsträger.
+Apache Spark in HDInsight speichert Daten in Azure Storage oder Azure Data Lake Store. Experten und Entscheidungsträger in Unternehmen können diese Daten analysieren und Berichte damit erstellen und Microsoft Power BI verwenden, um aus den analysierten Daten interaktive Berichte anzufertigen. Analysten können mit unstrukturierten oder teilweise strukturierten Daten im Clusterspeicher beginnen, mit Notebooks ein Schema für die Daten definieren und dann mit Microsoft Power BI Datenmodelle erstellen. Spark-Cluster in HDInsight unterstützen auch eine Reihe von BI-Drittanbietertools, z.B. Tableau. Daher ist dies eine ideale Plattform für Datenanalysten, Unternehmensexperten und Entscheidungsträger.
 
 ### <a name="spark-machine-learning"></a>Spark Machine Learning
 [Tutorial ansehen: Vorhersage von Gebäudetemperaturen mithilfe von HVAC-Daten](hdinsight-apache-spark-ipython-notebook-machine-learning.md)
@@ -70,7 +93,7 @@ Apache Spark verfügt über [MLlib](http://spark.apache.org/mllib/), eine Machin
 ### <a name="spark-streaming-and-real-time-data-analysis"></a>Streaming und Echtzeit-Datenanalysen mit Spark
 [Lernprogramm anzeigen](hdinsight-apache-spark-eventhub-streaming.md)
 
-Spark-Cluster in HDInsight bieten umfassende Unterstützung für die Erstellung von Echtzeit-Analyselösungen. Spark verfügt zwar bereits über Connectors zum Erfassen von Daten aus den unterschiedlichsten Quellen, z. B. Kafka, Flume, Twitter, ZeroMQ oder TCP-Sockets, aber mit Spark in HDInsight wird zusätzlich noch die erstklassige Unterstützung für das Erfassen von Daten aus Azure Event Hubs hinzugefügt. Event Hubs sind der Warteschlangendienst, der in Azure am häufigsten verwendet wird. Da die Unterstützung von Event Hubs im Lieferumfang enthalten ist, sind Spark-Cluster in HDInsight eine ideale Plattform zum Erstellen einer Echtzeit-Analysepipeline.
+Spark-Cluster in HDInsight bieten umfassende Unterstützung für die Erstellung von Echtzeit-Analyselösungen. Spark verfügt zwar bereits über Connectors zum Erfassen von Daten aus den unterschiedlichsten Quellen, z. B. Kafka, Flume, Twitter, ZeroMQ oder TCP-Sockets, aber mit Spark in HDInsight wird zusätzlich noch die erstklassige Unterstützung für das Erfassen von Daten aus Azure Event Hubs hinzugefügt. Event Hubs ist der Warteschlangendienst, der in Azure am häufigsten verwendet wird. Da die Unterstützung von Event Hubs im Lieferumfang enthalten ist, sind Spark-Cluster in HDInsight eine ideale Plattform zum Erstellen einer Echtzeit-Analysepipeline.
 
 ## <a name="next-steps"></a>Welche Komponenten sind Bestandteile eines Spark-Clusters?
 Spark-Cluster in HDInsight enthalten die folgenden Komponenten, die standardmäßig in den Clustern verfügbar sind.

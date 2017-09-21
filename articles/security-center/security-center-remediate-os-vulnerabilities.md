@@ -1,6 +1,6 @@
 ---
 title: Beheben von Betriebssystem-Sicherheitsrisiken in Azure Security Center | Microsoft Docs
-description: "In diesem Dokument wird erläutert, wie Sie die Azure Security Center-Empfehlung **Betriebssystem-Sicherheitsrisiken beheben** umsetzen."
+description: "In diesem Dokument wird erläutert, wie Sie die Azure Security Center-Empfehlung „Betriebssystem-Sicherheitsrisiken beheben“ umsetzen."
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -12,18 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/16/2017
+ms.date: 09/11/2017
 ms.author: terrylan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: e6b251d5b97c57b3b6f79d14e53fbed5ca37ecb0
+ms.translationtype: HT
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 39879c22278a55f841e294cda5a89bec2bdf6988
 ms.contentlocale: de-de
-ms.lasthandoff: 06/17/2017
-
+ms.lasthandoff: 09/13/2017
 
 ---
 # <a name="remediate-os-vulnerabilities-in-azure-security-center"></a>Beheben von Betriebssystem-Sicherheitsrisiken in Azure Security Center
-Azure Security Center untersucht täglich das Betriebssystem Ihres virtuellen Computers (VM) auf Konfigurationen, die bewirken können, dass der virtuelle Computer anfälliger für Angriffe wird, und empfiehlt Konfigurationsänderungen, um diese Sicherheitsrisiken zu bereinigen. Security Center empfiehlt, dass Sie Sicherheitsrisiken beheben, wenn die Betriebssystemkonfiguration Ihres virtuellen Computers nicht den empfohlenen Konfigurationsregeln entspricht.
+Azure Security Center analysiert täglich das Betriebssystem Ihrer virtuellen Computer (VMs) und physischen Computer auf Konfigurationen, die sie möglicherweise anfälliger für Angriffe machen. Security Center empfiehlt die Behandlung von Sicherheitsrisiken, wenn die Betriebssystemkonfiguration nicht den empfohlenen Konfigurationsregeln entspricht, und empfiehlt Konfigurationsänderungen, um diese Sicherheitsrisiken zu beseitigen.
 
 > [!NOTE]
 > Weitere Informationen zu den speziellen Konfigurationen, die überwacht werden, finden Sie in der [Liste der empfohlenen Konfigurationsregeln](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335).
@@ -31,46 +30,67 @@ Azure Security Center untersucht täglich das Betriebssystem Ihres virtuellen Co
 >
 
 ## <a name="implement-the-recommendation"></a>Implementieren der Empfehlung
+„Betriebssystem-Sicherheitsrisiken beheben“ wird als Empfehlung in Security Center präsentiert. Diese Empfehlung wird unter **Empfehlungen** und unter **Compute** angezeigt.
 
-> [!NOTE]
-> Der Dienst wird anhand einer Beispielbereitstellung vorgestellt.  Dieses Dokument ist keine Schritt-für-Schritt-Anleitung.
->
->
+In diesem Beispiel betrachten wir die Empfehlung **Betriebssystem-Sicherheitsrisiken beheben (durch Microsoft)** unter **Compute**.
+1. Klicken Sie im Hauptmenü von Security Center auf **Compute**.
 
-1. Wählen Sie auf dem Blatt **Empfehlungen** die Option **Betriebssystem-Sicherheitsrisiken beheben**.
    ![Betriebssystem-Sicherheitsrisiken beheben][1]
 
-    Auf dem Blatt **Betriebssystem-Sicherheitsrisiken beheben** sind Ihre virtuellen Computer mit Betriebssystemkonfigurationen aufgeführt, die nicht den empfohlenen Konfigurationsregeln entsprechen.  Für jeden virtuellen Computer wird auf dem Blatt Folgendes angegeben:
+2. Klicken Sie unter **Compute** auf **Betriebssystem-Sicherheitsrisiken beheben (durch Microsoft)**. Das Dashboard **Konflikt durch Sicherheitsrisiken für Betriebssystem (von Microsoft)** wird geöffnet.
 
-   * **REGELN MIT FEHLERN** : Die Anzahl der Regeln, bei denen bei der Betriebssystemkonfiguration des virtuellen Computers Fehler aufgetreten sind.
-   * **LETZTE ÜBERPRÜFUNGSZEIT** : Datum und Uhrzeit der letzten Überprüfung der Betriebssystemkonfiguration des virtuellen Computers durch Security Center.
-   * **STATUS** : Der aktuelle Status des Sicherheitsrisikos:
+   ![Betriebssystem-Sicherheitsrisiken beheben][2]
 
-     * Offen: Das Sicherheitsrisiko wurde noch nicht behoben.
-     * In Bearbeitung: Die Empfehlung wird derzeit umgesetzt, sodass keine Aktion Ihrerseits erforderlich ist.
-     * Gelöst: Das Sicherheitsrisiko wurde bereits behoben. (Wenn das Problem behoben wurde, ist der Eintrag grau hinterlegt.)
-   * **SCHWEREGRAD** : Alle Sicherheitsrisiken wurden auf den Schweregrad „Niedrig“ festgelegt, was heißt, dass ein Sicherheitsrisiko behoben werden soll, ohne dass unmittelbar Aufmerksamkeit erforderlich ist.
+  Im oberen Bereich des Dashboards befindet sich Folgendes:
 
-2. Wählen Sie einen virtuellen Computer aus. Für diesen virtuellen Computer wird ein Blatt geöffnet, auf dem die fehlgeschlagenen Regeln angezeigt werden.
-   ![Konfigurationsregeln mit Fehlern][2]
+  - Die Gesamtanzahl von Regeln (nach Schweregrad), denen die Betriebssystemkonfiguration Ihrer virtuellen und physischen Computer nicht entspricht.
+  - Die Gesamtanzahl von Regeln (nach Typ), denen die Betriebssystemkonfiguration Ihrer virtuellen und physischen Computer nicht entspricht.
+  - Die Gesamtanzahl von Regelfehlern, aufgeschlüsselt nach Windows-Betriebssystemkonfigurationen und Linux-Betriebssystemkonfigurationen.
 
-3. Wählen Sie eine Regel aus. Lassen Sie uns bei diesem Beispiel **Kennwort muss Komplexitätsvoraussetzungen entsprechen**auswählen. Ein Blatt mit einer Beschreibung der Regel mit dem Fehler und der Auswirkung wird geöffnet. Überprüfen Sie die Details und wie Betriebssystemkonfigurationen angewendet werden.
-  ![Beschreibung der Regel mit Fehlern][3]
+  Im unteren Bereich des Dashboards werden alle Regelfehler für Ihre virtuellen und physischen Computer sowie der Schweregrad des fehlenden Updates aufgeführt. Die Liste enthält Folgendes:
 
-  Security Center verwendet die Common Configuration Enumeration (CCE), um Konfigurationsregeln eindeutige Bezeichner zuzuweisen. Die folgende Informationen sind auf diesem Blatt angegeben:
+  - **CCIED**: Eindeutiger CCE-Bezeichner für die Regel Security Center verwendet die Common Configuration Enumeration (CCE), um Konfigurationsregeln eindeutige Bezeichner zuzuweisen.
+  - **NAME**: Name des Regelfehlers
+  - **REGELTYP**: Registrierungsschlüssel, Sicherheitsrichtlinie oder Überwachungsrichtlinie
+  - **ANZAHL VON VMS UND COMPUTERN**: Die Gesamtzahl virtueller und physischer Computer mit diesem Regelfehler
+  - **REGELSCHWEREGRAD**: CCE-Schweregrad: „Kritisch“, „Wichtig“ oder „Warnung“
+  - **STATUS**: Der aktuelle Status der Empfehlung:
+
+    - **Offen**: Die Empfehlung wurde noch nicht verarbeitet.
+    - **In Bearbeitung**: Die Empfehlung wird derzeit auf die Ressourcen angewendet, und es ist keine Aktion Ihrerseits erforderlich.
+    - **Behoben**: Die Empfehlung wurde bereits umgesetzt. (Wenn das Problem behoben wurde, wird der Eintrag abgeblendet dargestellt.)
+
+3. Klicken Sie auf einen Regelfehler in der Liste, um weitere Informationen anzuzeigen.
+
+   ![Konfigurationsregeln mit Fehlern][3]
+
+  Die folgende Informationen sind auf diesem Blatt angegeben:
 
   - NAME: Name der Regel
-  - Schweregrad: CCE-Schweregrad: „Kritisch“, „Wichtig“ oder „Warnung“
   - CCIED: Eindeutiger CCE-Bezeichner für die Regel
-  - Beschreibung: Beschreibung der Regel
+  - Betriebssystemversion: Betriebssystemversion des virtuellen oder physischen Computers
+  - REGELSCHWEREGRAD: CCE-Schweregrad: „Kritisch“, „Wichtig“ oder „Warnung“
+  - VOLLSTÄNDIGE BESCHREIBUNG: Beschreibung der Regel
   - SICHERHEITSRISIKO: Erläuterung des Sicherheitsrisikos, wenn die Regel nicht angewendet wird
-  - AUSWIRKUNG: Geschäftliche Auswirkung, wenn die Regel angewendet wird
+  - POTENZIELLE AUSWIRKUNG: Geschäftliche Auswirkung, wenn die Regel angewendet wird
+  - GEGENMASSNAHME: Schritte zur Behebung
   - ERWARTETER WERT: Der erwartete Wert, wenn das Security Center die Betriebssystemkonfiguration Ihres virtuellen Computers mit der Regel abgleicht
-  - REGELVORGANG: Vom Security Center verwendeter Regelvorgang, wenn das Security Center die Betriebssystemkonfiguration Ihres virtuellen Computers mit der Regel abgleicht
   - TATSÄCHLICHER Wert: Zurückgegebener Wert, nachdem das Security Center die Betriebssystemkonfiguration Ihres virtuellen Computers mit der Regel abgeglichen hat
-  - AUSWERTUNGSERGEBNIS: Ergebnis der Analyse: Bestanden oder Fehler
+  - REGELVORGANG: Vom Security Center verwendeter Regelvorgang, wenn das Security Center die Betriebssystemkonfiguration Ihres virtuellen Computers mit der Regel abgleicht
 
-## <a name="see-also"></a>Weitere Informationen
+4. Klicken Sie auf dem oberen Menüband auf das Symbol **Suche**. Die Suche wird mit einer Liste der Arbeitsbereiche geöffnet, die virtuelle und physische Computer mit dem ausgewählten Betriebssystem-Sicherheitsrisiko enthalten. Dieses Blatt für die Arbeitsbereichauswahl wird nur angezeigt, wenn die ausgewählte Regel für mehrere virtuelle Computer gilt, die mit unterschiedlichen Arbeitsbereichen verbunden sind.
+
+  ![Aufgeführte Arbeitsbereiche][4]
+
+5. Wählen Sie einen Arbeitsbereich aus. Eine für den Arbeitsbereich mit dem Betriebssystem-Sicherheitsrisiko gefilterte Log Analytics-Suchabfrage wird geöffnet.
+
+  ![Arbeitsbereich mit Betriebssystem-Sicherheitsrisiko][5]
+
+6. Klicken Sie auf einen Computer in der Liste, um weitere Informationen zu erhalten. Ein weiteres Suchergebnis wird geöffnet, das gefilterte Informationen für diesen speziellen Computer enthält.
+
+  ![Für diesen Computer gefiltert][6]
+
+## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel wurde gezeigt, wie Sie die Security Center-Empfehlung „Betriebssystem-Sicherheitsrisiken beheben“ umsetzen. Sie können den Satz der Konfigurationsregeln [hier](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335)überprüfen. Security Center verwendet die Common Configuration Enumeration (CCE), um Konfigurationsregeln eindeutige Bezeichner zuzuweisen. Auf der Website zu [CCE](https://nvd.nist.gov/cce/index.cfm) finden Sie weitere Informationen.
 
 Weitere Informationen zu Security Center finden Sie in den folgenden Ressourcen:
@@ -85,7 +105,10 @@ Weitere Informationen zu Security Center finden Sie in den folgenden Ressourcen:
 * [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/) (Blog zur Azure-Sicherheit): Hier finden Sie Blogbeiträge zur Sicherheit und Compliance von Azure.
 
 <!--Image references-->
-[1]: ./media/security-center-remediate-os-vulnerabilities/recommendation.png
-[2]:./media/security-center-remediate-os-vulnerabilities/vm-remediate-os-vulnerabilities.png
+[1]: ./media/security-center-remediate-os-vulnerabilities/compute-blade.png
+[2]:./media/security-center-remediate-os-vulnerabilities/os-vulnerabilities.png
 [3]: ./media/security-center-remediate-os-vulnerabilities/vulnerability-details.png
+[4]: ./media/security-center-remediate-os-vulnerabilities/search.png
+[5]: ./media/security-center-remediate-os-vulnerabilities/log-search.png
+[6]: ./media/security-center-remediate-os-vulnerabilities/search-results.png
 

@@ -12,11 +12,13 @@ ms.devlang: rest-api
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 10/27/2016
+ms.date: 08/30/2017
 ms.author: eugenesh
-translationtype: Human Translation
-ms.sourcegitcommit: fc2f30569acc49dd383ba230271989eca8a14423
-ms.openlocfilehash: 57e91f070d9a42882a56e708f12b1ce238ed9191
+ms.translationtype: HT
+ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
+ms.openlocfilehash: 3f2ead208ea1525489a40d1fb637da47cd8a9b24
+ms.contentlocale: de-de
+ms.lasthandoff: 09/14/2017
 
 ---
 
@@ -81,30 +83,46 @@ Diese Funktionen werden derzeit unterstützt:
 
 <a name="base64EncodeFunction"></a>
 
-### <a name="base64encode"></a>base64Encode
+## <a name="base64encode"></a>base64Encode
 Führt eine *URL-sichere* Base64-Codierung der Eingabezeichenfolge durch. Geht davon aus, dass die Eingabe mit UTF-8 codiert ist.
 
-#### <a name="sample-use-case"></a>Beispiel für einen Anwendungsfall
-Nur URL-sichere Zeichen können in einem Azure Search-Dokumentschlüssel enthalten sein (da Kunden das Dokument z.B. über die Lookup-API aufrufen können müssen). Wenn Ihre Daten URL-unsichere Zeichen enthalten und Sie damit ein Schlüsselfeld in Ihrem Suchindex auffüllen möchten, verwenden Sie diese Funktion.   
+### <a name="sample-use-case---document-key-lookup"></a>Beispielanwendungsfall – Suche des Dokumentschlüssels
+Nur URL-sichere Zeichen können in einem Azure Search-Dokumentschlüssel enthalten sein (da Kunden das Dokument z.B. über die [Lookup-API](https://docs.microsoft.com/rest/api/searchservice/lookup-document) aufrufen können müssen). Wenn Ihre Daten URL-unsichere Zeichen enthalten und Sie damit ein Schlüsselfeld in Ihrem Suchindex auffüllen möchten, verwenden Sie diese Funktion. Nach der Codierung des Schlüssels können Sie mit einer Base64-Codierung den ursprünglichen Wert abrufen. Einzelheiten finden Sie im Abschnitt [Base64-Codierung und -Decodierung](#base64details).
 
 #### <a name="example"></a>Beispiel
 ```JSON
 
 "fieldMappings" : [
   {
-    "sourceFieldName" : "Path",
-    "targetFieldName" : "UrlSafePath",
+    "sourceFieldName" : "SourceKey",
+    "targetFieldName" : "IndexKey",
     "mappingFunction" : { "name" : "base64Encode" }
   }]
 ```
 
+### <a name="sample-use-case---retrieve-original-key"></a>Beispielanwendungsfall – Abrufen des Originalschlüssels
+Sie verfügen über einen Blobindexer, der Blobs mit den Metadaten des Blobpfads als Dokumentschlüssel indiziert. Nach dem Abrufen des codierten Dokumentschlüssels möchten Sie den Pfad decodieren und das Blob herunterladen.
+
+#### <a name="example"></a>Beispiel
+```JSON
+
+"fieldMappings" : [
+  {
+    "sourceFieldName" : "SourceKey",
+    "targetFieldName" : "IndexKey",
+    "mappingFunction" : { "name" : "base64Encode", "parameters" : { "useHttpServerUtilityUrlTokenEncode" : false } }
+  }]
+```
+
+Wenn Sie Dokumente nicht mit Schlüsseln suchen müssen und auch den codierten Inhalt nicht decodieren müssen, können Sie einfach `parameters` für die Zuordnungsfunktion auslassen, mit der `useHttpServerUtilityUrlTokenEncode` standardmäßig auf `true` festgelegt wird. Andernfalls finden Sie im Abschnitt mit den [Details zu Base64](#base64details) Informationen zum Festlegen der zu verwendenden Einstellungen.
+
 <a name="base64DecodeFunction"></a>
 
-### <a name="base64decode"></a>base64Decode
+## <a name="base64decode"></a>base64Decode
 Führt die Base64-Decodierung der Eingabezeichenfolge durch. Es wird davon ausgegangen, dass es sich bei der Eingabe um eine *URL-sichere* Base64-codierte Zeichenfolge handelt.
 
-#### <a name="sample-use-case"></a>Beispiel für einen Anwendungsfall
-Benutzerdefinierte Blob-Metadatenwerte müssen ASCII-codiert sein. Sie können die Base64-Codierung verwenden, um beliebige Unicode-Zeichenfolgen in benutzerdefinierten Blobmetadaten darzustellen. Um die Suche aussagekräftig zu gestalten, können Sie mit dieser Funktion die codierten Daten beim Auffüllen des Suchindexes wieder in „normale“ Zeichenfolgen umwandeln.  
+### <a name="sample-use-case"></a>Beispiel für einen Anwendungsfall
+Benutzerdefinierte Blob-Metadatenwerte müssen ASCII-codiert sein. Sie können die Base64-Codierung verwenden, um beliebige UTF-8-Zeichenfolgen in benutzerdefinierten Blobmetadaten darzustellen. Um die Suche aussagekräftig zu gestalten, können Sie mit dieser Funktion die codierten Daten beim Auffüllen des Suchindexes wieder in „normale“ Zeichenfolgen umwandeln.
 
 #### <a name="example"></a>Beispiel
 ```JSON
@@ -113,25 +131,45 @@ Benutzerdefinierte Blob-Metadatenwerte müssen ASCII-codiert sein. Sie können d
   {
     "sourceFieldName" : "Base64EncodedMetadata",
     "targetFieldName" : "SearchableMetadata",
-    "mappingFunction" : { "name" : "base64Decode" }
+    "mappingFunction" : { "name" : "base64Decode", "parameters" : { "useHttpServerUtilityUrlTokenDecode" : false } }
   }]
 ```
 
+Wenn Sie keine `parameters` angeben, ist `true` der Standardwert von `useHttpServerUtilityUrlTokenDecode`. Informationen zum Festlegen der zu verwendenden Einstellungen finden Sie im Abschnitt mit den [Details zu Base64](#base64details).
+
+<a name="base64details"></a>
+
+### <a name="details-of-base64-encoding-and-decoding"></a>Details zur Base64-Codierung und -Decodierung
+Azure Search unterstützt zwei Base64-Codierungen: das HttpServerUtility-URL-Token und die URL-sichere Base64-Codierung ohne Auffüllung. Sie müssen die gleiche Codierung wie die Zuordnungsfunktionen verwenden, wenn Sie einen Dokumentschlüssel für die Suche codieren, einen Wert für die Decodierung durch den Indexer codieren oder ein durch den Indexer codiertes Feld decodieren möchten.
+
+Wenn Sie .NET Framework verwenden, können Sie zum Codieren und Decodieren `useHttpServerUtilityUrlTokenEncode` und `useHttpServerUtilityUrlTokenDecode` auf `true` festlegen. Dann verhält sich `base64Encode` wie [HttpServerUtility.UrlTokenEncode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokenencode.aspx) und `base64Decode` wie [HttpServerUtility.UrlTokenDecode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokendecode.aspx).
+
+Wenn Sie .NET Framework nicht verwenden, sollten Sie `useHttpServerUtilityUrlTokenEncode` und `useHttpServerUtilityUrlTokenDecode` auf `false` festlegen. Je nach verwendeter Bibliothek können sich die Hilfsfunktionen der Base64-Codierung und -Decodierung von Azure Search unterscheiden.
+
+In der folgenden Tabelle werden verschiedene Base64-Codierungen der Zeichenfolge `00>00?00` verglichen. Um die erforderliche weitere Verarbeitung (sofern vorhanden) für die Base64-Funktionen zu ermitteln, wenden Sie die Codierfunktion der Bibliothek auf die Zeichenfolge `00>00?00` an und vergleichen die Ausgabe mit der erwarteten Ausgabe `MDA-MDA_MDA`.
+
+| Codieren | Base64-codierte Ausgabe | Weitere Verarbeitung nach Codierung der Bibliothek | Weitere Verarbeitung vor Decodierung der Bibliothek |
+| --- | --- | --- | --- |
+| Base64 mit Auffüllung | `MDA+MDA/MDA=` | Verwenden URL-sicherer Zeichen und Entfernen der Auffüllung | Verwenden von Base64-Standardzeichen und Hinzufügen der Auffüllung |
+| Base64-Codierung ohne Auffüllung | `MDA+MDA/MDA` | Verwenden URL-sicherer Zeichen | Verwenden von Base64-Standardzeichen |
+| URL-sichere Base64-Codierung mit Auffüllung | `MDA-MDA_MDA=` | Entfernen der Auffüllung | Hinzufügen der Auffüllung |
+| URL-sichere Base64-Codierung ohne Auffüllung | `MDA-MDA_MDA` | Keine | Keine |
+
 <a name="extractTokenAtPositionFunction"></a>
 
-### <a name="extracttokenatposition"></a>extractTokenAtPosition
+## <a name="extracttokenatposition"></a>extractTokenAtPosition
 Teilt ein Zeichenfolgenfeld mithilfe des angegebenen Trennzeichens und wählt das Token an der angegebenen Position in der resultierenden Teilung aus.
 
 Wenn die Eingabe beispielsweise `Jane Doe` lautet, `" "` (Leerzeichen) als Trennzeichen (`delimiter`) dient und die `position` 0 ist, ist das Ergebnis `Jane`. Ist die `position` 1, ist das Ergebnis `Doe`. Wenn die Position auf ein Token verweist, das nicht vorhanden ist, wird ein Fehler zurückgegeben.
 
-#### <a name="sample-use-case"></a>Beispiel für einen Anwendungsfall
+### <a name="sample-use-case"></a>Beispiel für einen Anwendungsfall
 Die Datenquelle enthält ein Feld `PersonName`, und Sie möchten es als zwei separate Felder `FirstName` und `LastName` indizieren. Mit dieser Funktion können Sie die Eingabe mit dem Leerzeichen als Trennzeichen unterteilen.
 
-#### <a name="parameters"></a>Parameter
+### <a name="parameters"></a>Parameter
 * `delimiter`: eine Zeichenfolge, die beim Teilen der Eingabezeichenfolge als Trennzeichen verwendet werden soll.
 * `position`: eine ganzzahlige nullbasierte Position des Tokens, das nach der Teilung der Eingabezeichenfolge ausgewählt werden soll.    
 
-#### <a name="example"></a>Beispiel
+### <a name="example"></a>Beispiel
 ```JSON
 
 "fieldMappings" : [
@@ -149,15 +187,15 @@ Die Datenquelle enthält ein Feld `PersonName`, und Sie möchten es als zwei sep
 
 <a name="jsonArrayToStringCollectionFunction"></a>
 
-### <a name="jsonarraytostringcollection"></a>jsonArrayToStringCollection
+## <a name="jsonarraytostringcollection"></a>jsonArrayToStringCollection
 Wandelt eine Zeichenfolge, die als JSON-Zeichenfolgenarray formatiert ist, in ein Zeichenfolgenarray um, das zum Auffüllen eines Felds `Collection(Edm.String)` im Index verwendet werden kann.
 
 Wenn die Eingabezeichenfolge beispielsweise `["red", "white", "blue"]` lautet, wird das Zielfeld vom Typ `Collection(Edm.String)` mit drei Werten gefüllt: `red`, `white` und `blue`. Für Eingabewerte, die nicht als JSON-Zeichenfolgenarrays analysiert werden können, wird ein Fehler zurückgegeben.
 
-#### <a name="sample-use-case"></a>Beispiel für einen Anwendungsfall
+### <a name="sample-use-case"></a>Beispiel für einen Anwendungsfall
 Die Azure SQL-Datenbank verfügt über keinen integrierten Datentyp, der `Collection(Edm.String)` -Feldern in Azure Search natürlich zugeordnet werden kann. Um Zeichenfolgen-Sammlungsfelder aufzufüllen, formatieren Sie Ihre Quelldaten als JSON-Zeichenfolgenarray, und verwenden Sie diese Funktion.
 
-#### <a name="example"></a>Beispiel
+### <a name="example"></a>Beispiel
 ```JSON
 
 "fieldMappings" : [
@@ -165,11 +203,7 @@ Die Azure SQL-Datenbank verfügt über keinen integrierten Datentyp, der `Collec
 ]
 ```
 
+
 ## <a name="help-us-make-azure-search-better"></a>Helfen Sie uns bei der Verbesserung von Azure Search
 Teilen Sie uns auf unserer [UserVoice-Website](https://feedback.azure.com/forums/263029-azure-search/)mit, wenn Sie sich Features wünschen oder Verbesserungsvorschläge haben.
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

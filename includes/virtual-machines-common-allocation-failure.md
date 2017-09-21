@@ -99,7 +99,7 @@ Falls die Verwendung einer anderen VIP akzeptabel ist, löschen Sie die ursprün
 ## <a name="allocation-scenario-stagingproduction-deployments-platform-as-a-service-only"></a>Zuordnungsszenario: Staging-/Produktionsbereitstellungen (nur Platform-as-a-Service)
 **Fehler**
 
-New_General *oder New_VMSizeNotSupported*
+New_General* oder New_VMSizeNotSupported*
 
 **Ursache der Verknüpfung mit dem Cluster**
 
@@ -112,7 +112,7 @@ Löschen Sie die erste Bereitstellung und den ursprünglichen Clouddienst und st
 ## <a name="allocation-scenario-affinity-group-vmservice-proximity"></a>Zuordnungsszenario: Affinitätsgruppe (Nähe von virtuellem Computer und Dienst)
 **Fehler**
 
-New_General *oder New_VMSizeNotSupported*
+New_General* oder New_VMSizeNotSupported*
 
 **Ursache der Verknüpfung mit dem Cluster**
 
@@ -125,7 +125,7 @@ Falls dies nicht erforderlich ist, verwenden Sie keine Affinitätsgruppe oder gr
 ## <a name="allocation-scenario-affinity-group-based-virtual-network"></a>Zuordnungsszenario: auf Affinitätsgruppen basierendes virtuelles Netzwerk
 **Fehler**
 
-New_General *oder New_VMSizeNotSupported*
+New_General* oder New_VMSizeNotSupported*
 
 **Ursache der Verknüpfung mit dem Cluster**
 
@@ -151,7 +151,7 @@ Solange für den Fehler nicht „Die angeforderte Größe des virtuellen Compute
 ## <a name="allocation-scenario-resize-a-vm-or-add-vms-to-an-existing-availability-set"></a>Zuordnungsszenario: Ändern der Größe eines virtuellen Computers oder Hinzufügen weiterer virtueller Computer zu einer vorhandenen Verfügbarkeitsgruppe
 **Fehler**
 
-Upgrade_VMSizeNotSupported *oder GeneralError*
+Upgrade_VMSizeNotSupported* oder GeneralError*
 
 **Ursache der Verknüpfung mit dem Cluster**
 
@@ -188,6 +188,8 @@ Die vollständige Aufhebung der Zuordnung bedeutet, dass Sie alle virtuellen Com
 **Problemumgehung**
 
 Wählen Sie eine neue Größe des virtuellen Computers für die Zuordnung aus. Wenn das nicht funktioniert, versuchen Sie es bitte später erneut.
+
+<a name="Error string lookup"></a>
 
 ## <a name="error-string-lookup"></a>Fehlerzeichenfolgen
 **New_VMSizeNotSupported***

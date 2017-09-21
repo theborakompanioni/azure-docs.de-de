@@ -15,111 +15,112 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
 ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
-ms.openlocfilehash: 621ff305d7e782f85eeaae6c3fb02031673549c6
+ms.sourcegitcommit: 9b7316a5bffbd689bdb26e9524129ceed06606d5
+ms.openlocfilehash: 5c60e13028c3ccdf3269d74ab4724bb34ca10c19
 ms.contentlocale: de-de
-ms.lasthandoff: 08/28/2017
+ms.lasthandoff: 09/08/2017
 
 ---
 
 # <a name="threat-modeling-tool-feature-overview"></a>Übersicht über die Funktionen des Threat Modeling Tools
 
-Wir freuen uns, dass Sie das Threat Modeling Tool für Ihre Anforderungen an die Bedrohungsmodellierung verwenden möchten. Falls noch nicht geschehen, lesen Sie **[Erste Schritte mit dem Threat Modeling Tool](./azure-security-threat-modeling-tool-getting-started.md)**, um sich mit den Grundlagen vertraut zu machen.
+Das Threat Modeling Tool kann Sie bei der Bedrohungsmodellierung unterstützen. Eine allgemeine Einführung in das Tool finden Sie unter [Erste Schritte mit dem Threat Modeling Tool](./azure-security-threat-modeling-tool-getting-started.md).
 
-> Unser Tool wird häufig aktualisiert, sodass Sie diesen Leitfaden häufig auf unsere neuesten Funktionen und Verbesserungen überprüfen sollten.
+> [!NOTE]
+>Da das Threat Modeling Tool häufig aktualisiert wird, sollten Sie diesen Leitfaden oft auf die neuesten Features und Verbesserungen überprüfen.
 
-Nach Klicken auf die Schaltfläche „Neues Modell erstellen“ wird eine leere Startseite ähnlich wie in der nachstehenden Abbildung geöffnet:
+Um eine leere Seite zu öffnen, wählen Sie **Modell erstellen** aus.
 
-![Leere Startseite](./media/azure-security-threat-modeling-tool/tmtstart.png)
+![Leere Seite](./media/azure-security-threat-modeling-tool/tmtstart.png)
 
-Lassen Sie uns anhand des von unserem Team im Artikel **[Erste Schritte](./azure-security-threat-modeling-tool-getting-started.md)** erstellten Bedrohungsmodells alle Funktionen durchgehen, die das Tool derzeit zu bieten hat.
+In dem von unserem Team im Artikel [Erste Schritte](./azure-security-threat-modeling-tool-getting-started.md) erstellten Bedrohungsmodell finden Sie die Features, die das Tool derzeit zu bieten hat.
 
 ![Grundlegendes Bedrohungsmodell](./media/azure-security-threat-modeling-tool/basictmt.png)
 
 ## <a name="navigation"></a>Navigation
 
-Vor dem Einstieg in die integrierten Funktionen wollen wir auf die wichtigsten Komponenten des Tools eingehen.
+Bevor wir die integrierten Features erläutern, wollen wir die wichtigsten Komponenten des Tools betrachten.
 
 ### <a name="menu-items"></a>Menüelemente
 
-Die Benutzeroberfläche sollte ähnlich wie bei anderen Microsoft-Produkten sein. Zuerst wollen wir uns mit den Menüelementen auf oberster Ebene beschäftigen:
+Die Benutzeroberfläche ist ähnlich wie bei anderen Microsoft-Produkten. Betrachten wir die Menüelemente der obersten Ebene.
 
 ![Menüelemente](./media/azure-security-threat-modeling-tool/menuitems.png)
 
 | Bezeichnung                               | Details      |
 | --------------------------------------- | ------------ |
-| **Datei** | <ul><li>Dateien öffnen, speichern und schließen</li><li>Bei OneDrive-Konten an-/abmelden</li><li>Links teilen (Anzeigen und Bearbeiten)</li><li>Dateiinformationen anzeigen</li><li>Neue Vorlage auf vorhandene Modelle anwenden</li></ul> |
-| **Bearbeiten** | Aktionen rückgängig machen/wiederholen sowie Kopieren, Einfügen und Löschen |
+| **Datei** | <ul><li>Dateien öffnen, speichern und schließen</li><li>Bei OneDrive-Konten an- und abmelden</li><li>Links teilen (Anzeigen und Bearbeiten)</li><li>Dateiinformationen anzeigen</li><li>Neue Vorlage auf vorhandene Modelle anwenden</li></ul> |
+| **Bearbeiten** | Aktionen rückgängig machen und wiederholen sowie Kopieren, Einfügen und Löschen |
 | **Ansicht** | <ul><li>Zwischen den Ansichten **Analyse** und **Entwurf** wechseln</li><li>Geschlossene Fenster öffnen (z.B. Schablonen, Elementeigenschaften und Meldungen)</li><li>Layout auf die Standardeinstellungen zurücksetzen</li></ul> |
-| **Diagramm** | Diagramme hinzufügen/löschen und durch die „Registerkarten“ von Diagrammen navigieren |
+| **Diagramm** | Diagramme hinzufügen und löschen und durch die Registerkarten von Diagrammen navigieren |
 | **Berichte** | HTML-Berichte zum Teilen mit anderen erstellen |
-| **Hilfe** | Für die Nutzung des Tools hilfreiche Anleitungen |
+| **Hilfe** | Anleitungen für die Nutzung des Tools suchen |
 
 Die Symbole sind Verknüpfungen für die Menüs der obersten Ebene:
 
 | Symbol                               | Details      |
 | --------------------------------------- | ------------ |
-| **Öffnen** | Öffnet eine neue Datei |
-| **Speichern** | Speichert die aktuelle Datei |
-| **Entwurf** | Dient zum Wechseln in die Entwurfsansicht, in der Sie Modelle erstellen können |
-| **Analysieren** | Zeigt generierte Bedrohungen und deren Eigenschaften |
-| **Diagramm hinzufügen** | Fügt ein neues Diagramm hinzu (vergleichbar mit neuen Registerkarten in Excel) |
-| **Diagramm löschen** | Löscht das aktuelle Diagramm |
-| **Kopieren/Ausschneiden/Einfügen** | Dient zum Kopieren/Ausschneiden/Einfügen von Elementen |
-| **Rückgängig/Wiederholen** | Dient zum Rückgängigmachen/Wiederholen von Aktionen |
-| **Vergrößern/Verkleinern** | Dient zum Vergrößern und Verkleinern des Diagramms für eine bessere Ansicht |
-| **Feedback** | Öffnet das MSDN-Forum |
+| **Öffnen** | Öffnet eine neue Datei. |
+| **Speichern** | Speichert die aktuelle Datei. |
+| **Entwurf** | Öffnet die **Entwurfsansicht**, in der Sie Modelle erstellen können. |
+| **Analysieren** | Zeigt generierte Bedrohungen und deren Eigenschaften an. |
+| **Diagramm hinzufügen** | Fügt ein neues Diagramm hinzu (vergleichbar mit neuen Registerkarten in Excel). |
+| **Diagramm löschen** | Löscht das aktuelle Diagramm. |
+| **Kopieren/Ausschneiden/Einfügen** | Kopiert Elemente, schneidet Elemente aus bzw. fügt Elemente ein. |
+| **Rückgängig/Wiederholen** | Macht Aktionen rückgängig oder wiederholt sie. |
+| **Vergrößern/Verkleinern** | Dient zum Vergrößern und Verkleinern des Diagramms für eine bessere Ansicht. |
+| **Feedback** | Öffnet das MSDN-Forum. |
 
-### <a name="canvas"></a>Zeichenbereich
+### <a name="canvas"></a>Canvas
 
-Der Bereich, in dem Sie gezogene Elemente ablegen. Ziehen und Ablegen ist der schnellste und effizienteste Weg, Modelle zu erstellen. Sie können auch mit der rechten Maustaste klicken und im Menü eine Option wählen, wodurch generische Versionen der Elemente hinzugefügt werden, die Sie verwenden (siehe unten).
+Dies ist der Bereich, in dem Sie gezogene Elemente ablegen. Ziehen und Ablegen ist der schnellste und effizienteste Weg, Modelle zu erstellen. Sie können auch mit der rechten Maustaste klicken und Elemente im Menü auswählen, um generische Versionen von Elementen hinzuzufügen, wie unten gezeigt:
 
-#### <a name="dropping-the-stencil-on-the-canvas"></a>Ablegen der Schablone im Zeichenbereich
+#### <a name="drop-the-stencil-on-the-canvas"></a>Ablegen der Schablone im Zeichenbereich
 
 ![Ablegen im Zeichenbereich](./media/azure-security-threat-modeling-tool/canvasdrop1.png)
 
-#### <a name="clicking-on-the-stencil"></a>Klicken auf die Schablone
+#### <a name="select-the-stencil"></a>Auswählen der Schablone
 
 ![Elementeigenschaften](./media/azure-security-threat-modeling-tool/canvasdrop2.png)
 
 ### <a name="stencils"></a>Schablonen
 
-Die Ihnen zur Verfügung stehenden Schablonen hängen von der ausgewählten Vorlage ab. Wenn Sie die richtigen Elemente nicht finden können, versuchen Sie es mit einer anderen Vorlage, oder ändern Sie eine Ihren Anforderungen entsprechend. Im Allgemeinen sollten Sie eine Kombination von Kategorien wie die folgenden finden können:
+Die Ihnen zur Verfügung stehenden Schablonen hängen von der ausgewählten Vorlage ab. Wenn Sie die richtigen Elemente nicht finden können, verwenden Sie eine andere Vorlage. Stattdessen können Sie auch eine Vorlage Ihren Anforderungen entsprechend ändern. Im Allgemeinen finden Sie eine Kombination von Kategorien wie die folgenden:
 
-| Schablonennamen                               | Details      |
+| Schablonenname                               | Details      |
 | --------------------------------------- | ------------ |
 | **Prozess** | Anwendungen, Browser-Plug-Ins, Threads, virtuelle Computer |
 | **Externe Einheit** | Authentifizierungsanbieter, Browser, Benutzer, Webanwendungen |
 | **Datenspeicher** | Cache, Speicher, Konfigurationsdateien, Datenbanken, Registrierung |
-| **Datenfluss** | Binärdatei, ALPC, HTTP, HTTPS/TLS/SSL, IOCTL, IPSec, Named Pipe, RPC/DCOM, SMB, UDP |
+| **Datenfluss** | Binärdatei, ALPC, HTTP, HTTPS/TLS/SSL, IOCTL, IPsec, Named Pipe, RPC/DCOM, SMB, UDP |
 | **Vertrauensstellungsgrenze** | Unternehmensnetzwerke, Internet, Computer, Sandkasten, Benutzer-/Kernelmodus |
 
 ### <a name="notesmessages"></a>Notizen/Meldungen
 
 | Komponente                               | Details      |
 | --------------------------------------- | ------------ |
-| **Meldungen** | Interne Toollogik zum Benachrichtigen von Benutzern, wenn ein Fehler vorliegt, wie z.B. kein Datenfluss zwischen Elementen |
-| **Notizen** | Von Entwicklerteams im gesamten Entwurfs- und Überprüfungsprozess hinzugefügte manuelle Notizen |
+| **Meldungen** | Interne Toollogik zum Benachrichtigen von Benutzern, wenn ein Fehler vorliegt, wie z.B. kein Datenfluss zwischen Elementen. |
+| **Hinweise** | Während des gesamten Entwurfs- und Überprüfungsprozesses werden der Datei von Entwicklerteams manuelle Notizen hinzugefügt. |
 
 ### <a name="element-properties"></a>Elementeigenschaften
 
-Diese unterscheiden sich je nach ausgewähltem Element. Abgesehen von Vertrauensstellungsgrenzen enthalten alle anderen Elemente drei allgemeine Optionen:
+Die Elementeigenschaften variieren je nach den ausgewählten Elementen. Abgesehen von Vertrauensstellungsgrenzen enthalten alle anderen Elemente drei allgemeine Optionen:
 
 | Elementeigenschaft                               | Details      |
 | --------------------------------------- | ------------ |
-| **Name** | Nützlich zum Benennen Ihrer Prozesse, Speicher, Einheiten und Flüsse, damit diese einfach erkannt werden |
-| **Außerhalb des gültigen Bereichs** | Falls ausgewählt, wird das Element aus der Bedrohungsgenerierungsmatrix entfernt (nicht empfohlen) |
-| **Grund für „Außerhalb des gültigen Bereichs“** | Feld zur Begründung, um Benutzer wissen zu lassen, warum diese Option gewählt wurde |
+| **Name** | Nützlich zum Benennen Ihrer Prozesse, Speicher, Einheiten und Flüsse, damit diese einfach erkannt werden. |
+| **Außerhalb des gültigen Bereichs** | Falls ausgewählt, wird das Element aus der Bedrohungsgenerierungsmatrix entfernt (nicht empfohlen). |
+| **Grund für „Außerhalb des gültigen Bereichs“** | Feld zur Begründung, um Benutzer wissen zu lassen, warum diese Option gewählt wurde. |
 
-Eigenschaften werden in jeder Elementkategorie geändert. Klicken Sie auf die einzelnen Elemente, um die verfügbaren Optionen zu untersuchen, oder öffnen Sie die Vorlage, um mehr zu erfahren. Sehen wir uns nun die Funktionen an.
+Eigenschaften werden in jeder Elementkategorie geändert. Wählen Sie die einzelnen Elemente aus, um die verfügbaren Optionen zu überprüfen. Alternativ können Sie die Vorlage öffnen, um weitere Informationen zu erhalten. Lassen Sie uns die Features betrachten.
 
-## <a name="welcome-screen"></a>Begrüßungsbildschirm
+## <a name="welcome-screen"></a>Bildschirm „Willkommen“
 
-Der Begrüßungsbildschirm ist das Erste, was Sie sehen, wenn Sie die App öffnen.
+Wenn Sie die App zu öffnen, wird der Bildschirm **Willkommen** angezeigt.
 
 ### <a name="open-a-model"></a>Öffnen eines Modells
 
-Wenn Sie den Mauszeiger über der Schaltfläche „Modell öffnen“ bewegen, werden zwei versteckte Optionen angezeigt: „Auf diesem Computer öffnen“ und „Auf OneDrive öffnen“. Über die erste wird das Dialogfeld „Datei öffnen“ geöffnet, während Sie bei Wahl der zweiten durch den Anmeldevorgang für OneDrive geleitet werden. Nach erfolgreicher Authentifizierung können Sie Ordner und Dateien auswählen.
+Bewegen Sie den Mauszeiger über der Schaltfläche **Modell öffnen**, um zwei Optionen anzuzeigen: **Auf diesem Computer öffnen** und **Auf OneDrive öffnen**. Mit der ersten Option wird der Bildschirm **Datei öffnen** angezeigt. Die zweite Option führt Sie durch den Anmeldevorgang für OneDrive. Nach erfolgreicher Authentifizierung können Sie Ordner und Dateien auswählen.
 
 ![Modell öffnen](./media/azure-security-threat-modeling-tool/openmodel.png)
 
@@ -127,31 +128,31 @@ Wenn Sie den Mauszeiger über der Schaltfläche „Modell öffnen“ bewegen, we
 
 ### <a name="feedback-suggestions-and-issues"></a>Feedback, Vorschläge und Probleme
 
-Bei Wahl dieser Option gelangen Sie zu den MSDN-Foren für SDL-Tools. Sie können erfahren, was andere Benutzer zum Tool zu sagen haben, sowie Problemumgehungen und neue Ideen finden.
+Wenn Sie **Feedback, Vorschläge und Probleme** auswählen, gelangen Sie zum MSDN-Forum für SDL-Tools. Sie können lesen, was andere Benutzer zum Tool zu sagen haben, sowie Problemumgehungen und neue Ideen finden.
 
 ![Feedback](./media/azure-security-threat-modeling-tool/feedback.png)
 
 ## <a name="design-view"></a>Entwurfsansicht
 
-Bei jedem Öffnen oder Erstellen eines neuen Modells gelangen Sie zur Entwurfsansicht.
+Beim Öffnen oder Erstellen eines neuen Modells wird die **Entwurfsansicht** geöffnet.
 
-### <a name="adding-elements"></a>Hinzufügen von Elementen
+### <a name="add-elements"></a>Hinzufügen von Elementen
 
-Es gibt zwei Möglichkeiten zum Hinzufügen von Elementen zum Raster:
+Sie können dem Raster Elemente auf zwei Arten hinzufügen:
 
-- **Ziehen und Ablegen**: Ziehen Sie das gewünschte Element in das Raster. Nutzen Sie dann die Elementeigenschaften, um zusätzliche Informationen bereitzustellen.
-- **Klicken mit der rechten Maustaste**: Klicken Sie mit der rechten Maustaste auf das Raster, und wählen Sie eine Option im Kontextmenü. Eine allgemeine Darstellung des jeweiligen Elements wird auf dem Bildschirm angezeigt.
+- **Drag & Drop**: Ziehen Sie das gewünschte Element in das Raster. Verwenden Sie dann die Elementeigenschaften, um zusätzliche Informationen anzugeben.
+- **Klicken mit der rechten Maustaste**: Klicken Sie mit der rechten Maustaste auf das Raster, und wählen Sie Optionen im Kontextmenü. Auf dem Bildschirm wird eine generische Darstellung des ausgewählten Elements angezeigt.
 
-### <a name="connecting-elements"></a>Verbinden von Elementen
+### <a name="connect-elements"></a>Verbinden von Elementen
 
-Es gibt zwei Möglichkeiten zum Verbinden von Elementen im Tool:
+Sie können Elemente auf zwei Arten verbinden:
 
-- **Ziehen und Ablegen**: Ziehen Sie den gewünschten Datenfluss in das Raster, und verbinden Sie beide Enden mit den entsprechenden Elementen.
-- **Klicken bei gedrückter UMSCHALTTASTE**: Klicken Sie auf das erste Element (Daten werden gesendet), halten Sie die UMSCHALTTASTE gedrückt, und wählen Sie dann das zweite Element aus (Daten werden empfangen). Klicken Sie mit der rechten Maustaste, und wählen Sie „Verbinden“. Wenn Sie einen bidirektionalen Datenfluss verwenden, ist die Reihenfolge nicht so wichtig.
+- **Drag & Drop**: Ziehen Sie den gewünschten Datenfluss in das Raster, und verbinden Sie beide Enden mit den entsprechenden Elementen.
+- **Klicken bei gedrückter UMSCHALTTASTE**: Klicken Sie auf das erste Element (Daten werden gesendet), halten Sie die UMSCHALTTASTE gedrückt, und wählen Sie dann das zweite Element aus (Daten werden empfangen). Klicken Sie mit der rechten Maustaste, und wählen Sie **Verbinden** aus. Wenn Sie einen bidirektionalen Datenfluss verwenden, ist die Reihenfolge nicht so wichtig.
 
 ### <a name="properties"></a>Eigenschaften
 
-Zeigt alle Eigenschaften, die in den auf dem Diagramm platzierten Schablonen geändert werden können. Um die Eigenschaften anzuzeigen, klicken Sie einfach auf die Schablone. Die Informationen werden entsprechend aufgefüllt. Das folgende Beispiel zeigt den Status vor und nach dem Ziehen der Schablone „Datenbank“ auf das Diagramm:
+ Um die Eigenschaften anzuzeigen, die für Schablonen geändert werden können, wählen Sie die Schablone aus, und das Eigenschaftenfenster wird entsprechend aufgefüllt. Das folgende Beispiel zeigt das Fenster vor und nach dem Ziehen der Schablone **Datenbank** auf das Diagramm:
 
 #### <a name="before"></a>Vorher
 
@@ -163,49 +164,50 @@ Zeigt alle Eigenschaften, die in den auf dem Diagramm platzierten Schablonen ge�
 
 ### <a name="messages"></a>Meldungen
 
-Wenn Sie ein Bedrohungsmodell erstellen und vergessen, Datenflüsse mit Elementen zu verbinden, werden Sie im Benachrichtigungsfenster zum Agieren aufgefordert. Sie können dies ignorieren oder die Anweisungen zum Beheben des Problems befolgen. 
+Wenn Sie ein Bedrohungsmodell erstellen und vergessen, Datenflüsse mit Elementen zu verbinden, werden Sie benachrichtigt. Sie können die Meldung ignorieren oder die Anweisungen zum Beheben des Problems befolgen. 
 
 ![Meldungen](./media/azure-security-threat-modeling-tool/messages.png)
 
-### <a name="notes"></a>Notizen
+### <a name="notes"></a>Hinweise
 
-Durch Wechseln von der Registerkarte „Meldungen“ zu „Notizen“ können Sie Ihrem Diagramm Notizen hinzufügen, um Ihre Gedanken zu sammeln.
+Um dem Diagramm Notizen hinzuzufügen, wechseln Sie von der Registerkarte **Meldungen** zur Registerkarte **Notizen**.
 
 ## <a name="analysis-view"></a>Analyseansicht
 
-Sobald Sie mit dem Erstellen Ihres Diagramms fertig sind, wechseln Sie zur Analyseansicht, indem Sie zu den Optionen im obersten Menü navigieren und das Lupensymbol neben der Farbpalette auswählen.
+Nachdem Sie das Diagramm erstellt haben, wählen Sie auf der Symbolleiste das Symbol **Analyse** (die Lupe) aus, um zur **Analyseansicht** zu wechseln.
 
 ![Analyseansicht](./media/azure-security-threat-modeling-tool/analysisview.png)
 
 ### <a name="generated-threat-selection"></a>Generierte Bedrohungsauswahl
 
-Wenn Sie auf eine Bedrohung klicken, können Sie drei besondere Funktionen nutzen:
+Wenn Sie eine Bedrohung auswählen, können Sie drei verschiedene Funktionen verwenden:
 
-| Funktion                               | Information      |
+| Feature                               | Information      |
 | --------------------------------------- | ------------ |
-| **Markierung „Gelesen“** | <p>Die Bedrohung ist nun als „Gelesen“ markiert, wodurch Sie einfacher die Elemente nachverfolgen können, mit denen Sie sich bereits beschäftigt haben.</p><p>![Markierung „Gelesen/Nicht gelesen“](./media/azure-security-threat-modeling-tool/readmode.png)</p> |
-| **Interaktionsfokus** | <p>Die zu dieser Bedrohung gehörende Interaktion wird hervorgehoben.</p><p>![Interaktionsfokus](./media/azure-security-threat-modeling-tool/interactionfocus.png)</p> |
-| **Bedrohungseigenschaften** | <p>Weitere Informationen zur Bedrohung werden im Fenster mit den „Bedrohungseigenschaften“ hinzugefügt.</p><p>![Bedrohungseigenschaften](./media/azure-security-threat-modeling-tool/threatproperties.png)</p> |
+| **Markierung „Gelesen“** | <p>Die Bedrohung ist als „Gelesen“ markiert, sodass Sie leichter den Überblick über die bereits überprüften Elemente behalten.</p><p>![Markierung „Gelesen/Nicht gelesen“](./media/azure-security-threat-modeling-tool/readmode.png)</p> |
+| **Interaktionsfokus** | <p>Die zu einer Bedrohung gehörende Interaktion wird hervorgehoben.</p><p>![Interaktionsfokus](./media/azure-security-threat-modeling-tool/interactionfocus.png)</p> |
+| **Bedrohungseigenschaften** | <p>Im Fenster **Bedrohungseigenschaften** werden zusätzliche Informationen über die Bedrohung angezeigt.</p><p>![Bedrohungseigenschaften](./media/azure-security-threat-modeling-tool/threatproperties.png)</p> |
 
 ### <a name="priority-change"></a>Ändern der Priorität
 
-Bei Änderung der Prioritätsstufe jeder generierten Bedrohung wird auch ihre Farbe geändert, um Bedrohungen mit hoher, mittlerer oder niedriger Priorität einfacher bestimmen zu können.
+Sie können die Prioritätsstufe jeder generierten Bedrohung ändern. Unterschiedliche Farben erleichtern die Unterscheidung zwischen Bedrohungen hoher, mittlerer und niedriger Priorität.
 
 ![Ändern der Priorität](./media/azure-security-threat-modeling-tool/prioritychange.png)
 
 ### <a name="threat-properties-editable-fields"></a>Editierbare Felder von Bedrohungseigenschaften
 
-Wie Sie in der obigen Abbildung sehen können, können Benutzer die vom Tool generierten Informationen ändern und bestimmten Feldern auch Informationen hinzufügen, z.B. eine Begründung. Diese Felder werden von der Vorlage generiert. Wenn Sie weitere Informationen zu Bedrohungen benötigen, müssen Sie Änderungen vornehmen.
+Wie in der vorherigen Abbildung dargestellt, können Sie die vom Tool generierten Informationen ändern. Sie können auch bestimmten Feldern, z.B. dem Feld für die Begründung, Informationen hinzufügen. Diese Felder werden durch die Vorlage generiert. Wenn Sie weitere Informationen für die einzelnen Bedrohungen benötigen, können Sie Änderungen vornehmen.
 
 ![Bedrohungseigenschaften](./media/azure-security-threat-modeling-tool/threatproperties.png)
 
 ## <a name="reports"></a>Berichte
 
-Sobald Sie mit dem Ändern von Prioritäten und Aktualisieren des Status der einzelnen generierten Bedrohungen fertig sind, können Sie die Datei speichern und/oder einen Bericht ausgeben, indem Sie zu „Bericht“ navigieren und dann „Vollständigen Bericht erstellen“ auswählen. Sie werden aufgefordert, den Bericht zu benennen. Anschließend sehen Sie einen Bildschirm, der mit der folgenden Abbildung vergleichbar ist:
+Nachdem Sie das Ändern von Prioritäten und Aktualisieren des Status der einzelnen generierten Bedrohungen abgeschlossen haben, können Sie die Datei speichern und/oder einen Bericht ausgeben. Wechseln Sie zu **Bericht** > **Vollständigen Bericht erstellen**. Benennen Sie den Bericht. Anschließend wird ein Bericht wie etwa in der folgenden Abbildung angezeigt:
 
 ![Bericht](./media/azure-security-threat-modeling-tool/report.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen dazu, wie Sie eine Vorlage zur Community beitragen können, finden Sie auf unserer **[GitHub](https://github.com/Microsoft/threat-modeling-templates)**-Seite. **[Laden Sie das Tool heute noch herunter](https://aka.ms/tmtpreview)**, um die ersten Schritte zu unternehmen.
+* Informationen dazu, wie Sie eine Vorlage zur Community beitragen können, finden Sie auf unserer [GitHub](https://github.com/Microsoft/threat-modeling-templates)-Seite. 
+* Besuchen Sie die [Downloadseite](https://aka.ms/tmtpreview), um mit der Verwendung des Tools zu beginnen.
 

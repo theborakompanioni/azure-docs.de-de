@@ -9,11 +9,11 @@ ms.service: search
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: ashmaka
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
-ms.openlocfilehash: 0cd0cbb05c465d32a9ef02f9350ebdf9ccea36c5
+ms.translationtype: HT
+ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
+ms.openlocfilehash: 15469e8a2d28bdf00d6e8d8c9f823c51975ee90e
 ms.contentlocale: de-de
-ms.lasthandoff: 05/08/2017
+ms.lasthandoff: 09/14/2017
 
 ---
 
@@ -22,40 +22,36 @@ ms.lasthandoff: 05/08/2017
 Das Durchsuchen verschiedenster in Azure Blob Storage gespeicherter Inhalte kann ein schwer zu lösendes Problem sein. Allerdings können Sie den Inhalt Ihrer Blobs mit nur wenigen Klicks indizieren und durchsuchen, und zwar mit Azure Search. Das Durchsuchen von Blob Storage erfordert das Bereitstellen eines Azure Search-Dienstes. Die verschiedenen Dienstgrenzwerte und -tarife von Azure Search finden Sie auf der [Übersicht der Preise](https://aka.ms/azspricing).
 
 ## <a name="what-is-azure-search"></a>Was ist Azure Search?
-[Azure Search](https://aka.ms/whatisazsearch) ist eine Suchlösung, die es Entwicklern leicht macht, widerstandsfähige Möglichkeiten zur Volltextsuchen in Web- und Smartphone-Anwendungen bereitzustellen. Azure Search macht als Dienst das Verwalten der Suchinfrastruktur überflüssig, während es gleichzeitig eine [Betriebszeit-SLA von 99,9 %](https://aka.ms/azuresearchsla) bietet.
+[Azure Search](https://aka.ms/whatisazsearch) ist ein Suchdienst, der es Entwicklern leicht macht, stabile Möglichkeiten zur Volltextsuche in Web- und Mobilanwendungen bereitzustellen. Azure Search macht als Dienst das Verwalten einer Suchinfrastruktur überflüssig und bietet gleichzeitig eine [Betriebszeit-SLA von 99,9 %](https://aka.ms/azuresearchsla).
 
-Mit einer erweiterten Unterstützung für 56 Sprachen kann Azure Search Ihre Inhalte analysieren und sprachspezifische Konstrukte auf intelligente Weise behandeln. Azure Search bietet außerdem die Werkzeuge zum Entwickeln einer für Benutzer angenehmen Suchfunktion. Das Hinzufügen von Funktionen wie z.B. die Facettennavigation, automatische Vervollständigungsvorschläge bei der Suche und die Treffermarkierung auf Benutzeroberflächen ist unkompliziert. Lesen Sie die [Dokumentation](https://aka.ms/azsearchdocs) des Dienstes, um mehr über die Funktionen von Azure Search zu erfahren.
+## <a name="index-and-search-enterprise-document-formats"></a>Unternehmensdokumentformate für Indizierung und Suche
+Mit der Unterstützung für die [Dokumentextrahierung](https://aka.ms/azsblobindexer) in Azure Blob Storage können Sie folgende Inhalte indizieren:
 
-## <a name="crack-open-and-search-through-the-content-of-enterprise-document-formats"></a>Erhalten Sie Einblick in die Formatinhalte von Unternehmensdokumenten, und durchsuchen Sie diese
-Durch die Unterstützung für die [Dokumentextrahierung](https://aka.ms/azsblobindexer) in Azure Blob Storage kann Azure Search den Inhalt von verschiedensten in Blobs gespeicherten Dateitypen indizieren:
-- PDF
-- Microsoft Office: DOCX/DOC, XLSX/XLS, PPTX/PPT, MSG (Outlook-E-Mails)
-- HTML
-- Nur-Text-Dateien
+[!INCLUDE [search-blob-data-sources](../../includes/search-blob-data-sources.md)]
 
-Durch das Extrahieren von Text und Metadaten aus diesen Dateitypen können Sie mit einer einzigen Abfrage formatübergreifend suchen, um die relevantesten Dokumente zu finden, und das unabhängig von deren Typ. Durch das Indizieren des Inhalts und der Metadaten von Dokumenten, PDFs und E-Mails von Microsoft Office ist es möglich, widerstandsfähige Lösungen zur Verwaltung von Unternehmensinhalten mithilfe von Blob Storage und Azure Search zu erstellen.
+Durch Extrahieren von Text und Metadaten aus diesen Dateitypen können Sie mehrere Dateiformate mit einer einzelnen Abfrage durchsuchen. 
 
 ## <a name="search-through-your-blob-metadata"></a>Durchsuchen Ihrer Blob-Metadaten
-Das Indizieren der benutzerdefinierten Blob-Metadaten sowie der Systemeigenschaften für jeden Ihrer Blobs ist ein häufig auftretendes Szenario, mit dem Sie Blobs jedes Inhaltstyps unkompliziert durchsehen können. So werden die Informationen jedes Blobs indiziert, unabhängig vom Dokumententyp im Blob. Dies erleichtert Ihnen das Sortieren und Facettieren des gesamten Inhalts in Blob Storage.
+Das Indizieren von benutzerdefinierten Metadaten sowie von Systemeigenschaften für jedes Blob ist ein häufig auftretendes Szenario, mit dem Sie Blobs jedes Inhaltstyps unkompliziert durchsehen können. Auf diese Weise werden die Informationen für alle Blobs unabhängig vom Dokumenttyp indiziert. Sie können dann den gesamten Blob Storage-Inhalt sortieren und filtern sowie Facets bilden.
 
 [Weitere Informationen zum Indizieren von Blob-Metadaten.](https://aka.ms/azsblobmetadataindexing)
 
 ## <a name="image-search"></a>Bildersuche
 Die Volltextsuche, die Facettennavigation und die Sortierungsfunktionen von Azure Search können auch auf die Metadaten von in Blobs gespeicherten Bildern angewendet werden.
 
-Wenn diese Bilder bereits mithilfe der [Maschinelles Sehen-API](https://www.microsoft.com/cognitive-services/computer-vision-api) von Cognitive Services von Microsoft vorverarbeitet wurden, ist es möglich, den visuellen Inhalt jedes Bildes, einschließlich OCR und Handschrifterkennung, zu indizieren. Es wird daran gearbeitet, OCR und andere Bildverarbeitungsfunktionen in Azure Search hinzuzufügen. Wenn Sie such für diese Funktionen interessieren, können Sie uns gerne eine Anfrage über [UserVoice](https://aka.ms/azsuv) schicken, oder [senden Sie uns eine E-Mail](mailto:azscustquestions@microsoft.com).
+Wenn diese Bilder bereits mithilfe der [Maschinelles Sehen-API](https://www.microsoft.com/cognitive-services/computer-vision-api) von Cognitive Services von Microsoft vorverarbeitet wurden, ist es möglich, den visuellen Inhalt jedes Bildes, einschließlich OCR und Handschrifterkennung, zu indizieren. Es wird daran gearbeitet, OCR und andere Bildverarbeitungsfunktionen direkt in Azure Search hinzuzufügen. Wenn Sie sich für diese Funktionen interessieren, können Sie uns eine Anfrage über [UserVoice](https://aka.ms/azsuv) oder per [E-Mail](mailto:azscustquestions@microsoft.com) übermitteln.
 
 ## <a name="index-and-search-through-json-blobs"></a>Indizieren und Durchsuchen von JSON-Blobs
 Azure Search kann so konfiguriert werden, dass es strukturierten Inhalt aus Blobs extrahiert, die eine JSON-Datei enthalten. Azure Search kann aus JSON-Blobs lesen und den strukturierten Inhalt in den entsprechenden Felder in einem Azure Search-Dokument analysieren. Azure Search kann außerdem Blobs annehmen, die ein Array von JSON-Objekten enthalten und jedes Element mit einem separaten Azure Search-Dokument verknüpfen.
 
-Beachten Sie, dass die JSON-Analyse aktuell nicht über das Portal konfiguriert werden kann. [Erfahren Sie mehr zur JSON-Analyse in Azure Search.](https://aka.ms/azsjsonblobindexing)
+Die JSON-Analyse kann derzeit nicht über das Portal konfiguriert werden. [Erfahren Sie mehr zur JSON-Analyse in Azure Search.](https://aka.ms/azsjsonblobindexing)
 
 ## <a name="quick-start"></a>Schnellstart
-Azure Search kann direkt über das Portalblatt von Blob Storage hinzugefügt werden.
+Azure Search kann Blobs direkt über die Blob Storage-Portalseite hinzugefügt werden.
 
 ![](./media/search-blob-storage-integration/blob-blade.png)
 
-Wenn Sie auf die Option „Azure Search hinzufügen“ klicken, wird ein Vorgang gestartet, in dem Sie zwischen einem vorhandenen Azure Search-Dienst oder dem Erstellen eines neuen Dienstes wählen können. Wenn Sie einen neuen Dienst erstellen, verlassen Sie den Portalbereich Ihres Speicherkontos. Sie müssen zum Portalblatt des Speichers zurücknavigieren, und dann noch einmal die Option „Azure Search hinzufügen“ auswählen, um den vorhandenen Dienst auswählen zu können.
+Klicken Sie auf **Azure Search hinzufügen**, um einen Vorgang zu starten, bei dem Sie einen vorhandenen Azure Search-Dienst auswählen oder einen neuen Dienst erstellen können. Wenn Sie einen neuen Dienst erstellen, verlassen Sie den Portalbereich Ihres Speicherkontos. Sie können zurück zur Storage-Portalseite navigieren, und erneut die Option **Azure Search hinzufügen** auswählen, um den vorhandenen Dienst auszuwählen.
 
 ### <a name="next-steps"></a>Nächste Schritte
 In der vollständigen [Dokumentation](https://aka.ms/azsblobindexer) erfahren Sie mehr zum Azure Search-Blobindexer.

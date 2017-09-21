@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/30/2017
+ms.date: 09/07/2017
 ms.author: tarcher
 ms.translationtype: HT
-ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
-ms.openlocfilehash: 265a968f902f53c7561c8c7e937f8eacfdb37167
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 9657a4681f6bd9cc126de50883ce7a66357156e0
 ms.contentlocale: de-de
-ms.lasthandoff: 08/01/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 # <a name="create-a-lab-in-azure-devtest-labs"></a>Erstellen eines Labs in Azure DevTest Labs
@@ -38,21 +38,22 @@ Die folgenden Schritte beschreiben, wie Sie mithilfe des Azure-Portals ein Lab i
     ![Menüoption „Weitere Dienste“](./media/devtest-lab-create-lab/more-services-menu-option.png)
 
 1. Wählen Sie in der Liste der verfügbaren Dienste **DevTest Labs**.
-1. Wählen Sie auf dem Blatt **DevTest Labs** die Option **Hinzufügen** aus.
+1. Wählen Sie im Bereich **DevTest Labs** die Option **Hinzufügen**.
    
     ![Hinzufügen eines Labs](./media/devtest-lab-create-lab/add-lab-button.png)
 
-1. Führen Sie auf dem Blatt **DevTest Lab erstellen** folgende Schritte aus:
+1. Gehen Sie unter **DevTest Lab erstellen** wie folgt vor:
    
     1. Geben Sie einen **Labnamen** für das neue Lab ein.
     2. Wählen Sie das **Abonnement** aus, das mit dem Lab verknüpft werden soll.
     3. Wählen Sie einen **Speicherort** für das Lab aus.
     4. Geben Sie mithilfe von **Auto-shutdown** (Automatisch herunterfahren) an, ob Sie das automatische Herunterfahren für alle virtuellen Computer im Lab aktivieren und die entsprechenden Parameter festlegen möchten. Die Funktion zum automatischen Herunterfahren dient in erster Linie zum Kostensparen. Mit dieser Funktion können Sie angeben, wann der virtuelle Computer automatisch heruntergefahren werden soll. Nach dem Erstellen des Labs können Sie die Einstellungen zum automatischen Herunterfahren ändern, indem Sie die Schritte im Artikel [Verwalten aller Richtlinien für ein Lab in Azure DevTest Labs](./devtest-lab-set-lab-policy.md#set-auto-shutdown) ausführen.
+    1. Geben Sie **NAME** und **WERT** für **Tags** ein, wenn Sie ein benutzerdefiniertes Tagging erstellen möchten, das jeder im Lab erstellten Ressource hinzugefügt werden soll. Tags sind nützlich zum Verwalten und Organisieren von Lab-Ressourcen nach Kategorie. Weitere Informationen zu Tags, z.B. zum Hinzufügen von Tags nach der Erstellung des Labs, finden Sie unter [Hinzufügen von Tags zu einem Lab](devtest-lab-add-tag.md).
     5. Wählen Sie **An Dashboard anheften**, wenn auf dem Portaldashboard eine Verknüpfung des Labs angezeigt werden soll.
     6. Wählen Sie **Automatisierungsoptionen**, um Azure Resource Manager-Vorlagen für die Konfigurationsautomatisierung abzurufen. 
-    7. Klicken Sie auf **Erstellen**. Nach Auswählen von **Erstellen** wird das Blatt **DevTest Labs** angezeigt. Sie können den Status der Lab-Erstellung im Bereich **Benachrichtigungen** überwachen. Aktualisieren Sie nach Abschluss der Erstellung die Seite, um das neu erstellte Lab in der Liste der Labs anzuzeigen.  
+    7. Klicken Sie auf **Erstellen**. Sie können den Status der Lab-Erstellung im Bereich **Benachrichtigungen** überwachen. Aktualisieren Sie nach Abschluss der Erstellung die Seite, um das neu erstellte Lab in der Liste der Labs anzuzeigen.  
     
-    ![Erstellen eines Lab-Blatts](./media/devtest-lab-create-lab/create-devtestlab-blade.png)
+    ![Erstellen eines Lab-Abschnitts für DevTest Labs](./media/devtest-lab-create-lab/create-devtestlab-blade.png)
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 

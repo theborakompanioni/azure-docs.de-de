@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/26/2017
+ms.date: 08/15/2017
 ms.author: jeedes
 ms.translationtype: HT
-ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
-ms.openlocfilehash: 3c68c3ac7d6be593476d419f8c015931b206eead
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: f5f20fee648cf26b4db49b9a8f5f5e5bcecd453e
 ms.contentlocale: de-de
-ms.lasthandoff: 08/05/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-absorb-lms"></a>Tutorial: Azure Active Directory-Integration mit Absorb LMS
@@ -124,7 +124,7 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im Azur
 
     ![Schaltfläche „Einmaliges Anmelden konfigurieren“](./media/active-directory-saas-absorblms-tutorial/tutorial_general_400.png)
     
-7. Klicken Sie im Abschnitt **Absorb LMS-Konfiguration** auf **Absorb LMS konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **Abmelde-URL und die URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
+7. Klicken Sie im Abschnitt **Absorb LMS-Konfiguration** auf **Absorb LMS konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **Abmelde-URL** aus dem Abschnitt **Kurzübersicht**.
 
     ![Absorb LMS-Konfiguration](./media/active-directory-saas-absorblms-tutorial/tutorial_absorblms_configure.png) 
 
@@ -146,13 +146,13 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im Azur
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-absorblms-tutorial/4.png)
 
-    a. Wählen Sie den geeigneten **Modus** aus.
+    a. Wählen Sie **Vom Identitätsanbieter initiiert** aus.
 
-    b. Öffnen Sie das Zertifikat, dass Sie aus dem Azure-Portal heruntergeladen haben, in Editor, entfernen Sie die Tags **---BEGIN CERTIFICATE---** und **---END CERTIFICATE---**, und fügen Sie dann den restlichen Inhalt in das Textfeld **Schlüssel** ein.
+    b. Öffnen Sie das aus dem Azure-Portal heruntergeladene Zertifikat in Editor, entfernen Sie die Tags **---BEGIN CERTIFICATE---** und **---END CERTIFICATE---**, und fügen Sie dann den restlichen Inhalt im Textfeld **Key** ein.
     
     c. Wählen Sie in **ID-Eigenschaft** das entsprechende Attribut aus, das Sie als die Benutzer-ID in Azure AD konfiguriert haben (wenn z.B. in Azure AD der Benutzerprinzipalname ausgewählt wurde, wird hier der Benutzername ausgewählt).
 
-    d. Fügen Sie als **Anmelde-URL** den Wert für **SAML-Dienst-URL für einmaliges Anmelden** ein, den Sie im Azure-Portal im Fenster **Anmelden konfigurieren** kopiert haben.
+    d. Fügen Sie in der **Anmelde-URL** die **URL für den Benutzerzugriff** von der Seite **Eigenschaften** der Anwendung im Azure-Portal hinzu.
 
     e. Fügen Sie als **Abmelde-URL** den Wert für **Abmelde-URL** ein, den Sie im Azure-Portal im Fenster **Anmelden konfigurieren** kopiert haben.
 
@@ -276,6 +276,7 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Absorb LMS“ klicken, sollten Sie
 
 * [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+
 
 
 <!--Image references-->

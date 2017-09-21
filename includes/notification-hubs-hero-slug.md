@@ -1,7 +1,7 @@
 
-Dieses Thema begleitet Sie durch die ersten Schritte, damit Sie Notification Hubs so schnell wie möglich nutzen können. Dieses Thema enthält ein sehr einfaches Beispiel eines Übertragungsszenarios, das sich auf die grundlegenden Konzepte für Notification Hubs konzentriert.
+In diesem Artikel werden Ihnen die ersten Schritte vermittelt, damit Sie Azure Notification Hubs so schnell wie möglich nutzen können. Der Artikel enthält ein sehr einfaches Übertragungsszenario, in dem es um die grundlegenden Konzepte von Notification Hubs geht.
 
-Wenn Sie mit Notification Hubs bereits vertraut sind, können Sie auf der linken Navigationsleiste ein anderes Thema auswählen oder sich die relevanten Links unter [Nächste Schritte](#next-steps)ansehen.
+Wenn Sie mit Notification Hubs bereits vertraut sind, können Sie auf der linken Navigationsleiste auch ein anderes Thema auswählen oder sich die relevanten Artikel im Abschnitt „Nächste Schritte“ ansehen.
 
-Wir nehmen Ihr Feedback ernst. Wenn Sie beim Durcharbeiten dieses Themas Probleme oder Vorschläge zur Verbesserung dieses Inhalts haben, würden wir uns über Ihr Feedback unten auf der Seite freuen.
+Wir nehmen Ihr Feedback ernst. Falls Sie Schwierigkeiten mit diesem Thema haben oder uns Empfehlungen zur Verbesserung des Inhalts mitteilen möchten, können Sie am Ende des Artikels Feedback hinterlassen.
 

@@ -1,6 +1,6 @@
 ---
 title: 'Problembehandlung bei Azure Backup-Fehlern: Status des Gast-Agents ist unbekannt | Microsoft-Dokumentation'
-description: "Hier erfahren Sie mehr zu den Anzeichen und Ursachen von Azure Backup-Fehlern sowie über deren mögliche Lösungen, speziell in Verbindung mit dem Fehler „Fehler bei der Kommunikation mit dem VM-Agent“"
+description: "Erfahren Sie mehr zu den Anzeichen und Ursachen von Azure Backup-Fehlern sowie über deren mögliche Lösungen, speziell in Verbindung mit dem Agent, der Erweiterung und Datenträgern."
 services: backup
 documentationcenter: 
 author: genlin
@@ -13,13 +13,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/17/2017
+ms.date: 09/08/2017
 ms.author: genli;markgal;
 ms.translationtype: HT
-ms.sourcegitcommit: 368589509b163cacf495fd0be893a8953fe2066e
-ms.openlocfilehash: 6ed651bb8caafd18cec93e68ac70e27f92133e5c
+ms.sourcegitcommit: f2ac16c2f514aaa7e3f90fdf0d0b6d2912ef8485
+ms.openlocfilehash: d2dda47bb3ba5a397ad9626ca4705214dd2560f8
 ms.contentlocale: de-de
-ms.lasthandoff: 08/17/2017
+ms.lasthandoff: 09/08/2017
 
 ---
 
@@ -67,6 +67,10 @@ Nachdem Sie eine VM für den Azure Backup-Dienst registriert und geplant haben, 
 ##### <a name="cause-3-the-agent-installed-in-the-vm-is-out-of-date-for-linux-vmsthe-agent-installed-in-the-vm-is-out-of-date-for-linux-vms"></a>Ursache 3: [Der auf dem virtuellen Computer installierte Agent ist veraltet (bei virtuellen Linux-Computern).](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)
 ##### <a name="cause-4-the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-takenthe-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken"></a>Ursache 4: [Der Momentaufnahmestatus kann nicht abgerufen werden, oder es kann keine Momentaufnahme erstellt werden.](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)
 ##### <a name="cause-5-the-backup-extension-fails-to-update-or-loadthe-backup-extension-fails-to-update-or-load"></a>Ursache 5: [Die Sicherungserweiterung kann nicht aktualisiert oder geladen werden.](#the-backup-extension-fails-to-update-or-load)
+
+## <a name="the-specified-disk-configuration-is-not-supported"></a>Die angegebene Datenträgerkonfiguration wird nicht unterstützt.
+
+Azure Backup unterstützt derzeit keine Datenträgergrößen von mehr als 1.023 GB. Stellen Sie sicher, dass die Datenträger kleiner als der Grenzwert sind, indem Sie die Datenträger teilen. Um Datenträger zu teilen, müssen Sie Daten von Datenträgern, die größer als 1.023 GB sind, in neu erstellte Datenträger mit einer Größe von weniger als 1.023 GB kopieren.
 
 
 ## <a name="causes-and-solutions"></a>Ursachen und Lösungen

@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/24/2017
+ms.date: 09/10/2017
 ms.author: markvi
 ms.reviewer: calebb
 ms.translationtype: HT
-ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
-ms.openlocfilehash: 681e91e3581f80c0cda64f95fed5cc01aaac2367
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 19bc7abbbf7e133018b234399d91604dfdbfe73f
 ms.contentlocale: de-de
-ms.lasthandoff: 09/02/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 # <a name="conditional-access-in-azure-active-directory"></a>Bedingter Zugriff in Azure Active Directory
@@ -46,7 +46,7 @@ Die obige Richtlinienanweisung verdeutlicht die Nützlichkeit des bedingten Zugr
 
 Im Zusammenhang mit dem bedingten Zugriff per Azure Active Directory gilt Folgendes:
 
-- „**When this happens**“ wird als **Bedingungsanweisung**  bezeichnet.
+- „**When this happens**“ wird als **Bedingungsanweisung ** bezeichnet.
 - „**Then do this**“ wird als **Kontrolle** bezeichnet.
 
 ![Kontrolle](./media/active-directory-conditional-access-azure-portal/11.png)
@@ -60,31 +60,22 @@ Die Kombination aus Bedingungsanweisung und Ihren Kontrollen ergibt eine Richtli
 
 Bei einer Richtlinie für den bedingten Zugriff wird mit Kontrollen definiert, was passieren soll, wenn eine Bedingungsanweisung erfüllt wurde.  
 Mit Kontrollen können Sie den Zugriff entweder blockieren oder unter Erfüllung zusätzlicher Anforderungen zulassen.
-Wenn Sie eine Richtlinie konfigurieren, mit der der Zugriff zugelassen wird, müssen Sie mindestens eine Anforderung auswählen.   
+Wenn Sie eine Richtlinie konfigurieren, mit der der Zugriff zugelassen wird, müssen Sie mindestens eine Anforderung auswählen.  
 
-### <a name="grant-controls"></a>Gewährungssteuerelemente
+Es gibt zwei Arten von Kontrollen: 
+
+- **Gewährungssteuerelemente**: Mit Gewährungssteuerelementen steuern Sie, ob ein Benutzer die Authentifizierung durchführen und auf die Ressource zugreifen kann, bei der er sich anmelden möchte. Wenn Sie mehrere Steuerelemente ausgewählt haben, können Sie konfigurieren, ob bei der Verarbeitung der Richtlinie alle erforderlich sind.
 Bei der aktuellen Implementierung von Azure Active Directory können Sie die folgenden Anforderungen für Gewährungssteuerelemente konfigurieren:
 
-![Kontrolle](./media/active-directory-conditional-access-azure-portal/05.png)
+    ![Kontrolle](./media/active-directory-conditional-access-azure-portal/05.png)
 
-- **Multi-Factor Authentication**: Sie können über die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) eine sichere Authentifizierung erzwingen. Als Anbieter können Sie Azure Multi-Factor oder einen lokalen Multi-Factor Authentication-Anbieter in Kombination mit Active Directory-Verbunddienste (AD FS) verwenden. Die mehrstufige Authentifizierung unterstützt den Schutz Ihrer Ressourcen vor dem Zugriff durch einen nicht autorisierten Benutzer, der möglicherweise Zugriff auf die Anmeldeinformationen eines gültigen Benutzers erlangt hat.
+- **Sitzungssteuerelemente**: Sitzungssteuerelemente ermöglichen das Einschränken der Benutzeroberfläche innerhalb einer Cloud-App. Die Sitzungssteuerelemente werden von Cloud-Apps erzwungen und verlassen sich auf zusätzliche Informationen über die Sitzung, die der App von Azure AD bereitgestellt werden.
 
-- **Konformes Gerät**: Sie können die Richtlinien für den bedingten Zugriff auf Geräteebene festlegen. Das Ziel einer gerätebasierten Richtlinie für den bedingten Zugriff ist, den Zugriff auf die konfigurierten Ressourcen nur von vertrauenswürdigen Geräten aus zuzulassen. Eine Möglichkeit, zu definieren, was ein vertrauenswürdiges Gerät ist, besteht darin, ein kompatibles Gerät vorauszusetzen. Weitere Informationen finden Sie unter [Konfigurieren von Richtlinien für den gerätebasierten bedingten Zugriff für Azure Active Directory](active-directory-conditional-access-policy-connected-applications.md).
+    ![Kontrolle](./media/active-directory-conditional-access-azure-portal/31.png)
 
-- **In eine Domäne eingebundenes Gerät**: Ein in eine Domäne eingebundenes Gerät vorauszusetzen ist eine weitere Option, die Ihnen zum Konfigurieren von Richtlinien für den gerätebasierten bedingten Zugriff zur Verfügung steht. Diese Anforderung bezieht sich auf Windows-Desktops, Laptops und Enterprise-Tablets, die mit einem lokalen Active Directory verknüpft sind. Weitere Informationen finden Sie unter [Konfigurieren von Richtlinien für den gerätebasierten bedingten Zugriff für Azure Active Directory](active-directory-conditional-access-policy-connected-applications.md).
 
-Wenn Sie mehrere Steuerelemente ausgewählt haben, können Sie auch konfigurieren, ob bei der Verarbeitung der Richtlinie alle erforderlich sind.
+Weitere Informationen finden Sie unter [Steuerelemente beim bedingten Zugriff mit Azure Active Directory](active-directory-conditional-access-controls.md).
 
-![Kontrolle](./media/active-directory-conditional-access-azure-portal/06.png)
-
-### <a name="session-controls"></a>Sitzungssteuerelemente
-Sitzungssteuerelemente ermöglichen das Einschränken der Benutzeroberfläche innerhalb einer Cloud-App. Die Sitzungssteuerelemente werden von Cloud-Apps erzwungen und verlassen sich auf zusätzliche Informationen über die Sitzung, die der App von Azure AD bereitgestellt werden.
-
-![Kontrolle](./media/active-directory-conditional-access-azure-portal/31.png)
-
-#### <a name="use-app-enforced-restrictions"></a>Verwenden von App-erzwungenen Einschränkungen
-Sie können dieses Steuerelement verwenden, um von Azure AD anzufordern, die Geräteinformationen an die Cloud-App zu übergeben. Dadurch erfährt die Cloud-App, ob der Benutzer von einem konformen Gerät oder einem in eine Domäne eingebundenen Gerät stammt. Dieses Steuerelement wird derzeit nur mit SharePoint als Cloud-App unterstützt. SharePoint verwendet die Geräteinformationen dazu, Benutzern eine eingeschränkte oder vollständige Benutzeroberfläche zur Verfügung zu stellen, je nach Gerätezustand.
-Weitere Informationen zum Anfordern von eingeschränktem Zugriff mit SharePoint finden Sie unter [Steuern des Zugriffs von nicht verwalteten Geräten](https://aka.ms/spolimitedaccessdocs).
 
 ## <a name="condition-statement"></a>Bedingungsanweisung
 

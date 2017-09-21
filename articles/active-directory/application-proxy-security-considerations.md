@@ -11,21 +11,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/03/2017
+ms.date: 09/08/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.translationtype: HT
-ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
-ms.openlocfilehash: c6ead651133eb17fd55f7567cdb14dc3bcd64245
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: 4eef4f00bb407f97a68d09a39f3e99d1bc325d0e
 ms.contentlocale: de-de
-ms.lasthandoff: 08/05/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>Sicherheitsaspekte beim Remotezugriff auf Apps mit dem Azure AD-Anwendungsproxy
 
-In diesem Artikel wird beschrieben, wie mit dem Azure Active Directory-Anwendungsproxy ein sicherer Dienst für die Veröffentlichung und den Remotezugriff auf Anwendungen bereitgestellt wird.
+In diesem Artikel werden die Komponenten beschrieben, die Ihre Benutzer und Anwendungen schützen, wenn Sie den Azure Active Directory-Anwendungsproxy verwenden.
 
 Im folgenden Diagramm ist dargestellt, wie mit Azure AD der sichere Remotezugriff auf Ihre lokalen Anwendungen ermöglicht wird.
 
@@ -61,7 +61,7 @@ Da es sich beim Azure AD-Anwendungsproxy um einen Reverseproxy handelt, wird der
 
 Sie müssen keine eingehenden Verbindungen mit dem Unternehmensnetzwerk öffnen.
 
-Für Anwendungsproxyconnectors werden nur ausgehende Verbindungen mit dem Azure AD-Anwendungsproxydienst verwendet. Dies bedeutet, dass Firewallports nicht für eingehende Verbindungen geöffnet werden müssen. Herkömmliche Proxys erforderten ein Umkreisnetzwerk (auch bekannt als *DMZ*, *demilitarisierte Zone* und *überwachtes Subnetz*) und erlaubten den Zugriff auf nicht authentifizierte Verbindungen am Rand des Netzwerks. Aus diesem Grund mussten viele zusätzliche Investitionen in Web Application Firewall-Produkte getätigt werden, um Datenverkehr zu analysieren und den Schutz der Umgebung auszubauen. Bei Verwenden des Anwendungsproxys benötigen Sie kein Umkreisnetzwerk, da alle Verbindungen ausgehend sind und über einen sicheren Kanal erfolgen.
+Für Anwendungsproxyconnectors werden nur ausgehende Verbindungen mit dem Azure AD-Anwendungsproxydienst verwendet. Dies bedeutet, dass Firewallports nicht für eingehende Verbindungen geöffnet werden müssen. Herkömmliche Proxys erforderten ein Umkreisnetzwerk (auch bekannt als *DMZ*, *demilitarisierte Zone* und *überwachtes Subnetz*) und erlaubten den Zugriff auf nicht authentifizierte Verbindungen am Rand des Netzwerks. Dieses Szenario erfordert Investitionen in Web Application Firewall-Produkte, um Datenverkehr zu analysieren und die Umgebung zu schützen. Bei Verwenden des Anwendungsproxys benötigen Sie kein Umkreisnetzwerk, da alle Verbindungen ausgehend sind und über einen sicheren Kanal erfolgen.
 
 Informationen zu Connectors finden Sie unter [Understand Azure AD Application Proxy connectors (Grundlegendes zu Azure AD-Anwendungsproxyconnectors)](application-proxy-understand-connectors.md).
 
@@ -69,7 +69,7 @@ Informationen zu Connectors finden Sie unter [Understand Azure AD Application Pr
 
 Setzen Sie auf Sicherheit und Schutz auf dem neuesten Stand.
 
-Als Teil von Azure AD kann der Anwendungsproxy [Azure AD Identity Protection](active-directory-identityprotection.md) nutzen. Dabei profitiert er von Informationen des Machine Learning und Daten aus dem Microsoft Security Response Center und Digital Crimes Unit. Zusammen identifizieren wir proaktiv kompromittierte Konten und ermöglichen den Echtzeitschutz vor Anmeldungen mit hohem Risikofaktor. Wir berücksichtigen viele verschiedene Faktoren, z.B. den Zugriff von infizierten Geräten und über Anonymisierungsnetzwerke sowie von ungewöhnlichen und zweifelhaften Standorten.
+Als Teil von Azure Active Directory kann der Anwendungsproxy [Azure AD Identity Protection](active-directory-identityprotection.md) nutzen. Dabei profitiert er von Daten aus dem Microsoft Security Response Center und der Digital Crimes Unit. Zusammen identifizieren wir proaktiv kompromittierte Konten und ermöglichen den Schutz vor Anmeldungen mit hohem Risikofaktor. Wir berücksichtigen zahlreiche Faktoren, um zu bestimmen, welche Anmeldeversuche mit hohem Risiko behaftet sind. Zu diesen Faktoren zählen das Markieren infizierter Geräte, das Anonymisieren von Netzwerken sowie atypische oder unwahrscheinliche Standorte.
 
 Viele dieser Berichte und Ereignisse sind bereits über eine API für die Integration in Ihre Sicherheitsinformations- und Ereignisverwaltungssysteme (Security Information and Event Management, SIEM) verfügbar.
 
@@ -80,6 +80,14 @@ Sie müssen sich nicht mit dem Warten und Patchen von lokalen Servern beschäfti
 Software ohne die richtigen Patches ist immer noch eine häufige Ursache für eine große Zahl von Angriffen. Der Azure AD-Anwendungsproxy ist ein Internetskalierungsdienst, der sich im Besitz von Microsoft befindet. So erhalten Sie immer die neuesten Sicherheitspatches und -upgrades.
 
 Zur Erhöhung der Sicherheit von Anwendungen, die vom Azure AD-Anwendungsproxy veröffentlicht werden, blockieren wir die Indizierung und Archivierung Ihrer Anwendungen durch Webcrawlerroboter. Jedes Mal, wenn ein Webcrawlerroboter versucht, die robots-Einstellungen für eine veröffentlichte App abzurufen, antwortet der Anwendungsproxy mit einer Datei „robots.txt“, die `User-agent: * Disallow: /` enthält.
+
+### <a name="ddos-prevention"></a>DDoS-Prävention
+
+Über den Anwendungsproxy veröffentlichte Anwendungen sind vor verteilten Denial-of-Service-Angriffen (Distributed Denial of Service, DDoS) geschützt.
+
+Der Anwendungsproxydienst überwacht den Umfang des Datenverkehrs, der Ihre Anwendungen und Ihr Netzwerk zu erreichen versucht. Wenn die Anzahl der Geräte, die Remotezugriff auf Ihre Anwendungen anfordern, einen Höchststand erreicht, drosselt Microsoft den Zugriff auf Ihr Netzwerk. 
+
+Microsoft überwacht Datenverkehrsmuster für einzelne Anwendungen und für Ihr gesamtes Abonnement. Wenn eine Anwendung eine außergewöhnlich hohe Anzahl von Anforderungen empfängt, werden für eine kurze Zeitspanne Anforderungen des Zugriffs auf diese Anwendung abgelehnt. Wenn Sie für Ihr gesamtes Abonnement eine außergewöhnlich hohe Anzahl von Anforderungen erhalten, werden die Zugriffsanforderungen für alle Ihre Apps abgelehnt. Diese Vorsichtsmaßnahme verhindert die Überlastung der Anwendungsserver durch Remotezugriffsanforderungen, sodass die lokalen Benutzer weiterhin auf ihre Apps zugreifen können. 
 
 ## <a name="under-the-hood"></a>Im Hintergrund
 
@@ -104,7 +112,7 @@ Der Connector verwendet ein Clientzertifikat, um den Anwendungsproxydienst für 
 Bei der Ersteinrichtung des Connectors treten die folgenden Flow-Ereignisse ein:
 
 1. Die Connectorregistrierung beim Dienst erfolgt im Rahmen der Connectorinstallation. Benutzer werden aufgefordert, ihre Azure AD-Administratoranmeldeinformationen einzugeben. Das aus dieser Authentifizierung abgerufene Token wird dann an den Azure AD-Anwendungsproxydienst übermittelt.
-2. Der Anwendungsproxydienst wertet das Token aus. Hierdurch wird sichergestellt, dass der Benutzer ein Unternehmensadministrator in dem Mandanten ist, für den das Token ausgestellt wurde. Wenn der Benutzer kein Administrator ist, wird der Prozess beendet.
+2. Der Anwendungsproxydienst wertet das Token aus. Er überprüft, ob der Benutzer ein Unternehmensadministrator im Mandanten ist. Wenn der Benutzer kein Administrator ist, wird der Prozess beendet.
 3. Der Connector generiert eine Clientzertifikatanforderung und übergibt sie mit dem Token an den Anwendungsproxydienst. Der Dienst überprüft wiederum das Token und signiert die Clientzertifikatanforderung.
 4. Der Connector verwendet dieses Clientzertifikat für die zukünftige Kommunikation mit dem Anwendungsproxydienst.
 5. Der Connector führt einen ersten Abruf der Systemkonfigurationsdaten vom Dienst durch, indem das dazugehörige Clientzertifikat verwendet wird, und ist jetzt zum Verarbeiten von Anforderungen bereit.

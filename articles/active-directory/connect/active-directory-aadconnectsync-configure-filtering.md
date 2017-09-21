@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: 064642ebb9cafb0c6e1b3ff306241182a95215cc
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: baa3ac6473f180e220ec4973ced51369467bf158
 ms.contentlocale: de-de
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 
@@ -254,7 +254,7 @@ In diesem Beispiel wird die Filterung so geändert, dass nur Benutzer synchronis
 1. Melden Sie sich bei dem Server, auf dem die Azure AD Connect-Synchronisierung ausgeführt wird, mit einem Konto an, das Mitglied der Sicherheitsgruppe **ADSyncAdmins** ist.
 2. Starten Sie den **Synchronisierungsregel-Editor** über das **Startmenü**.
 3. Klicken Sie unter **Rules Type** (Regeltyp) auf **Outbound** (Ausgehend).
-4. Suchen Sie nach der Regel **Out to AAD – User Join**, und klicken Sie auf **Bearbeiten**.
+4. Suchen Sie abhängig von der verwendeten Connect-Version entweder die Regel mit dem Namen **Out to AAD – User Join** oder die Regel mit dem Namen **Out to AAD - User Join SOAInAD**, und klicken Sie auf **Bearbeiten**.
 5. Wählen Sie im Popupfenster die Antwort **Ja** , um eine Kopie der Regel zu erstellen.
 6. Ändern Sie auf der Seite **Beschreibung** die **Rangfolge** in einen nicht verwendeten Wert, z.B. 50.
 7. Klicken Sie im linken Navigationsbereich auf **Scoping filter** (Bereichsfilter) und dann auf **Klausel hinzufügen**. Wählen Sie in **Attribut** den Wert **mail** aus. Wählen Sie in **Operator** die Option **ENDSWITH** aus. Geben Sie in **Wert** die Zeichenfolge **@contoso.com** ein, und klicken Sie dann auf **Klausel hinzufügen**. Wählen Sie in **Attribut** die Option **userPrincipalName** aus. Wählen Sie in **Operator** die Option **ENDSWITH** aus. Geben Sie in **Wert** Folgendes ein: **@contoso.com**.

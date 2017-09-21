@@ -1,6 +1,6 @@
 ---
-title: Service Fabric-Knotentypen und VM-Skalierungsgruppen | Microsoft Docs
-description: Beschreibt, wie Service Fabric-Knotentypen mit VM-Skalierungsgruppen in Zusammenhang stehen, und wie die Remoteverbindung mit einer VM-Skalierungsgruppeninstanz oder einem Clusterknoten hergestellt wird.
+title: Azure Service Fabric-Knotentypen und VM-Skalierungsgruppen | Microsoft-Dokumentation
+description: Erfahren Sie, wie Azure Service Fabric-Knotentypen mit VM-Skalierungsgruppen in Zusammenhang stehen und wie eine Remoteverbindung mit einer Skalierungsgruppeninstanz oder einem Clusterknoten hergestellt wird.
 services: service-fabric
 documentationcenter: .net
 author: ChackDan
@@ -15,51 +15,50 @@ ms.workload: NA
 ms.date: 06/05/2017
 ms.author: chackdan
 ms.translationtype: HT
-ms.sourcegitcommit: ce0189706a3493908422df948c4fe5329ea61a32
-ms.openlocfilehash: 8c9e91d122591a19d34d944e2d9aaeb327cdafe4
+ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
+ms.openlocfilehash: 6cc3be57ed283cafa686d46d4b376c69f06301ea
 ms.contentlocale: de-de
-ms.lasthandoff: 09/05/2017
+ms.lasthandoff: 09/14/2017
 
 ---
-# <a name="the-relationship-between-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Die Beziehung zwischen Service Fabric-Knotentypen und VM-Skalierungsgruppen
-VM-Skalierungsgruppen sind eine Azure-Compute-Ressource. Sie können verwendet werden, um eine Sammlung virtueller Computer als Gruppe bereitzustellen und zu verwalten. Jeder Knotentyp, der in einem Service Fabric-Cluster definiert ist, wird als separate Skalierungsgruppe eines virtuellen Computers eingerichtet. Jeden Knotentyp kann dann unabhängig zentral hoch- oder herunterskaliert werden, bei jedem Typ können unterschiedliche Portgruppen geöffnet sein, und die Typen können verschiedene Kapazitätsmetriken aufweisen.
+# <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Azure Service Fabric-Knotentypen und VM-Skalierungsgruppen
+VM-Skalierungsgruppen sind eine Azure Compute-Ressource. Sie können Skalierungsgruppen verwenden, um eine Sammlung virtueller Computer als Gruppe bereitzustellen und zu verwalten. Richten Sie eine separate Skalierungsgruppe für jeden Knotentyp ein, den Sie in einem Azure Service Fabric-Cluster definieren möchten. Sie können jeden Knotentyp einzeln zentral hoch- oder herunterskalieren, bei jedem Typ unterschiedliche Portgruppen öffnen und verschiedene Kapazitätsmetriken verwenden.
 
-Der folgende Screenshot zeigt einen Cluster mit zwei Knotentypen: FrontEnd und BackEnd.  Jeder Knotentyp verfügt über fünf Knoten.
+Die folgende Abbildung zeigt einen Cluster mit den beiden Knotentypen FrontEnd und BackEnd. Jeder Knotentyp verfügt über fünf Knoten.
 
-![Screenshot eines Clusters mit zwei Knotentypen][NodeTypes]
+![Ein Cluster mit zwei Knotentypen][NodeTypes]
 
-## <a name="mapping-virtual-machine-scale-set-instances-to-nodes"></a>Zuordnen von VM-Skalierungsgruppeninstanzen zu Knoten
-Wie Sie oben sehen können, beginnen VM-Skalierungsgruppeninstanzen bei Instanz 0 und werden dann heraufgezählt. Die Namen spiegeln die Nummerierung wider. Beispiel: BackEnd_0 ist Instanz 0 der VM-Skalierungsgruppe BackEnd. Diese bestimmte VM-Skalierungsgruppe hat fünf Instanzen mit den Namen BackEnd_0, BackEnd_1, BackEnd_2, BackEnd_3 und BackEnd_4.
+## <a name="map-virtual-machine-scale-set-instances-to-nodes"></a>Zuordnen von VM-Skalierungsgruppeninstanzen zu Knoten
+Wie in der Abbildung oben gezeigt, beginnen Skalierungsgruppeninstanzen mit der Instanz 0. Die Instanznummer wird dann jeweils um 1 erhöht. Die Knotennamen spiegeln die Nummerierung wider. Der Knoten „BackEnd_0“ ist z.B. die Instanz 0 der Skalierungsgruppe „BackEnd“. Diese bestimmte Skalierungsgruppe hat fünf Instanzen mit den Namen „BackEnd_0“, „BackEnd_1“, „BackEnd_2“, „BackEnd_3“ und „BackEnd_4“.
 
-Wenn Sie eine VM-Skalierungsgruppe zentral hochskalieren, wird eine neue Instanz erstellt. Der neue VM-Skalierungsgruppen-Instanzname hat in der Regel folgende Struktur: VM-Skalierungsgruppenname + Nummer der nächsten Instanz. In diesem Beispiel lautet er „BackEnd_5“.
+Wenn Sie eine Skalierungsgruppe zentral hochskalieren, wird eine neue Instanz erstellt. Der neue Skalierungsgruppen-Instanzname hat in der Regel folgendes Format: Skalierungsgruppenname + Nummer der nächsten Instanz. In diesem Beispiel lautet er „BackEnd_5“.
 
-## <a name="mapping-virtual-machine-scale-set-load-balancers-to-each-node-typevm-scale-set"></a>Zuordnen des VM-Skalierungsgruppen-Lastenausgleichs zu jedem Knotentyp/jeder VM-Skalierungsgruppe
-Wenn Sie Ihren Cluster aus dem Portal bereitgestellt oder die Resource Manager-Beispielvorlage verwendet haben, erhalten Sie eine Liste aller Ressourcen, die zu einer Ressourcengruppe gehören. Der Lastenausgleich jeder VM-Skalierungsgruppe oder jedes Knotentyps wird angezeigt.
-
-Der Name würde etwa folgendermaßen lauten: **LB-&lt;Knotentypname&gt;**. Z. B. „LB-sfcluster4doc-0“, wie in diesem Screenshot gezeigt:
+## <a name="map-scale-set-load-balancers-to-node-types-and-scale-sets"></a>Zuordnen des Lastenausgleichs von Skalierungsgruppen zu Knotentypen und Skalierungsgruppen
+Wenn Sie Ihren Cluster aus dem Azure-Portal bereitgestellt oder die Azure Resource Manager-Beispielvorlage verwendet haben, werden alle Ressourcen aufgelistet, die zu einer Ressourcengruppe gehören. Der Lastenausgleich jeder Skalierungsgruppe oder jedes Knotentyps wird angezeigt. Für den Namen des Lastenausgleichs wird folgendes Format verwendet: **LB-&lt;Knotentypname&gt;**. Ein Beispiel ist „LB-sfcluster4doc-0“, wie in der folgenden Abbildung gezeigt:
 
 ![Ressourcen][Resources]
-
 ## <a name="remote-connect-to-a-virtual-machine-scale-set-instance-or-a-cluster-node"></a>Herstellen einer Remoteverbindung mit einer VM-Skalierungsgruppeninstanz oder einem Clusterknoten
-Jeder Knotentyp, der in einem Cluster definiert ist, wird als separate VM-Skalierungsgruppe eingerichtet.  Dies bedeutet, dass die Knotentypen unabhängig zentral hoch- bzw. herunterskaliert werden können. Darüber hinaus können sie aus unterschiedlichen VM-SKUs erstellt werden. Im Gegensatz zu Einzelinstanz-VMs erhalten die VM-Skalierungsgruppeninstanzen keine eigene virtuelle IP-Adresse. Daher kann es für Sie eine gewisse Herausforderung sein, nach einer IP-Adresse und einem Port zum Herstellen einer Remoteverbindung mit einer bestimmten Instanz zu suchen.
+Richten Sie eine separate Skalierungsgruppe für jeden Knotentyp ein, den Sie in einem Cluster definiert haben. Sie können die Knotentypen separat zentral hoch- oder herunterskalieren. Sie können auch andere VM-SKUs verwenden. Im Gegensatz zu Einzelinstanz-VMs besitzen Skalierungsgruppeninstanzen keine eigenen virtuellen IP-Adressen. Daher kann es schwierig sein, nach einer IP-Adresse und einem Port zum Herstellen einer Remoteverbindung mit einer bestimmten Instanz zu suchen.
 
-Mit den folgenden Schritten können Sie diese ermitteln.
+Um eine IP-Adresse und einen Port für eine Remoteverbindung mit einer bestimmten Instanz zu finden, führen Sie die folgenden Schritte aus.
 
-### <a name="step-1-find-out-the-virtual-ip-address-for-the-node-type-and-then-inbound-nat-rules-for-rdp"></a>Schritt 1: Suchen der virtuellen IP-Adresse für den Knotentyp und dann der Regeln für eingehenden NAT-Datenverkehr für RDP
-Hierzu müssen Sie die Werte der Regeln für eingehenden NAT-Datenverkehr abrufen, die als Teil der Ressourcendefinition für **Microsoft.Network/loadBalancers**definiert wurden.
+**Schritt 1:** Suchen der virtuellen IP-Adresse für den Knotentyp durch Abrufen der NAT-Eingangsregeln für das Remotedesktopprotokoll (RDP)
 
-Wechseln Sie in das Portal zum Blatt „Load Balancer“ und dann zu **Einstellungen**.
+Rufen Sie zunächst die NAT-Eingangsregelwerte ab, die als Teil der Ressourcendefinition für `Microsoft.Network/loadBalancers` definiert wurden.
 
-![LBBlade][LBBlade]
+Wählen Sie im Azure-Portal auf der Seite für den Lastenausgleich **Einstellungen** > **NAT-Eingangsregeln** aus. Damit erhalten Sie die IP-Adresse und den Port zum Herstellen einer Remoteverbindung mit der ersten Skalierungsgruppeninstanz. 
 
-Klicken Sie in **Einstellungen** auf **NAT-Eingangsregeln**. Jetzt erhalten Sie die IP-Adresse und den Port zum Herstellen einer Remoteverbindung mit der ersten VM-Skalierungsgruppeninstanz. Im folgenden Screenshot sind dies **104.42.106.156** und **3389**.
+![Load Balancer][LBBlade]
 
-![NATRules][NATRules]
+In der folgenden Abbildung lautet die IP-Adresse **104.42.106.156** und der Port **3389**.
 
-### <a name="step-2-find-out-the-port-that-you-can-use-to-remote-connect-to-the-specific-virtual-machine-scale-set-instancenode"></a>Schritt 2: Suchen des Ports, mit dem Sie eine Remoteverbindung mit der bestimmten VM-Skalierungsgruppeninstanz/dem bestimmten Knoten herstellen können
-Weiter oben in diesem Dokument wurde die Zuordnung der VM-Skalierungsgruppeninstanzen zu den Knoten erörtert. Anhand dessen wird der richtige Port ermittelt.
+![NAT-Regeln][NATRules]
 
-Die Zuweisung der Ports erfolgt in der aufsteigenden Reihenfolge der VM-Skalierungsgruppeninstanz. In meinem Beispiel für den Knotentyp „FrontEnd“ erhalten die fünf Instanzen also die folgenden Ports. Jetzt müssen Sie die gleiche Zuordnung für Ihre VM-Skalierungsgruppeninstanz vornehmen.
+**Schritt 2:** Suchen des Ports, mit dem eine Remoteverbindung mit der gewünschten Skalierungsgruppeninstanz bzw. dem gewünschten Knoten hergestellt werden kann
+
+Skalierungsgruppeninstanzen sind Knoten zugeordnet. Verwenden Sie die Informationen zur Skalierungsgruppe, um den zu verwendenden Port zu ermitteln.
+
+Die Zuweisung der Ports erfolgt in der aufsteigenden Reihenfolge gemäß der Skalierungsgruppeninstanz. Im obigen Beispiel für den Knotentyp „FrontEnd“ enthält die folgende Tabelle die Ports der fünf Knoteninstanzen. Wenden Sie dieselbe Zuordnung auf Ihre Skalierungsgruppeninstanz an.
 
 | **VM-Skalierungsgruppeninstanz** | **Port** |
 | --- | --- |
@@ -70,74 +69,79 @@ Die Zuweisung der Ports erfolgt in der aufsteigenden Reihenfolge der VM-Skalieru
 | FrontEnd_4 |3393 |
 | FrontEnd_5 |3394 |
 
-### <a name="step-3-remote-connect-to-the-specific-virtual-machine-scale-set-instance"></a>Schritt 3: Herstellen der Remoteverbindung mit der bestimmten VM-Skalierungsgruppeninstanz
-Im folgenden Screenshot wird die Remotedesktopverbindung zum Herstellen der Verbindung mit „FrontEnd_1“ verwendet:
+**Schritt 3:** Herstellen der Remoteverbindung mit der gewünschten Skalierungsgruppeninstanz
 
-![RDP][RDP]
+Die folgende Abbildung veranschaulicht das Herstellen einer Remotedesktopverbindung mit der Skalierungsgruppeninstanz „FrontEnd_1“:
 
-## <a name="how-to-change-the-rdp-port-range-values"></a>Ändern der Werte des RDP-Portbereichs
+![Remotedesktopverbindung][RDP]
+
+## <a name="change-the-rdp-port-range-values"></a>Ändern der Werte des RDP-Portbereichs
+
 ### <a name="before-cluster-deployment"></a>Vor der Clusterbereitstellung
-Wenn Sie den Cluster mithilfe einer Resource Manager-Vorlage einrichten, können Sie den Bereich in **inboundNatPools** angeben.
+Wenn Sie den Cluster mit einer Resource Manager-Vorlage einrichten, geben Sie den Bereich in `inboundNatPools` an.
 
-Wechseln Sie zur Ressourcendefinition für **Microsoft.Network/loadBalancers**. Darunter finden Sie die Beschreibung für **inboundNatPools**.  Ersetzen Sie die Werte *frontendPortRangeStart* und *frontendPortRangeEnd*.
+Navigieren Sie zur Ressourcendefinition für `Microsoft.Network/loadBalancers`. Suchen Sie die Beschreibung für `inboundNatPools`.  Ersetzen Sie die Werte `frontendPortRangeStart` und `frontendPortRangeEnd`.
 
-![inboundNatPools][InboundNatPools]
+![inboundNatPools-Werte][InboundNatPools]
 
 ### <a name="after-cluster-deployment"></a>Nach der Clusterbereitstellung
-Nach der Clusterbereitstellung ist es etwas komplizierter und kann dazu führen, dass die virtuellen Computern neu gestartet werden. Legen Sie neue Werte mit Azure PowerShell fest. Stellen Sie sicher, dass Azure PowerShell 1.0 oder höher auf Ihrem Computer installiert ist. Falls Sie nicht über Azure PowerShell 1.0 oder höher verfügen, sollten Sie unbedingt die Schritte unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview) ausführen.
+Das Ändern der Werte für den RDP-Portbereich ist nach der Bereitstellung des Clusters deutlich komplexer. Um sicherzustellen, dass die virtuellen Computer nicht wiederverwendet werden, verwenden Sie Azure PowerShell zum Festlegen neuer Werte. 
 
-Melden Sie sich beim Azure-Konto an. Wenn dieser PowerShell-Befehl aus irgendeinem Grund Fehler verursacht, sollten Sie prüfen, ob Azure PowerShell ordnungsgemäß installiert ist.
+> [!NOTE]
+> Stellen Sie sicher, dass Azure PowerShell 1.0 oder höher auf Ihrem Computer installiert ist. Falls Sie nicht über Azure PowerShell 1.0 oder höher verfügen, befolgen Sie die Schritte unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview).
 
-```
-Login-AzureRmAccount
-```
+1. Melden Sie sich beim Azure-Konto an. Wenn beim folgenden PowerShell-Befehl ein Fehler auftritt, überprüfen Sie die ordnungsgemäße Installation von PowerShell.
 
-Wenn Sie Folgendes ausführen, um die Details für den Lastenausgleich abzurufen, sehen Sie die Werte, denn Sie finden die Beschreibung für **inboundNatPools**:
+    ```
+    Login-AzureRmAccount
+    ```
 
-```
-Get-AzureRmResource -ResourceGroupName <RGname> -ResourceType Microsoft.Network/loadBalancers -ResourceName <load balancer name>
-```
+2. Um die Details zum Lastenausgleich abzurufen und die Werte zur Beschreibung für `inboundNatPools` anzuzeigen, führen Sie folgenden Code aus:
 
-Legen Sie jetzt *frontendPortRangeEnd* und *frontendPortRangeStart* auf die gewünschten Werte fest.
+    ```
+    Get-AzureRmResource -ResourceGroupName <resource group name> -ResourceType Microsoft.Network/loadBalancers -ResourceName <load balancer name>
+    ```
 
-```
-$PropertiesObject = @{
-    #Property = value;
-}
-Set-AzureRmResource -PropertyObject $PropertiesObject -ResourceGroupName <RG name> -ResourceType Microsoft.Network/loadBalancers -ResourceName <load Balancer name> -ApiVersion <use the API version that get returned> -Force
-```
+3. Legen Sie `frontendPortRangeEnd` und `frontendPortRangeStart` auf die gewünschten Werte fest.
 
-## <a name="how-to-change-the-rdp-username--password-for-nodes"></a>So ändern Sie den RDP-Benutzernamen und das Kennwort für Knoten
+    ```
+    $PropertiesObject = @{
+        #Property = value;
+    }
+    Set-AzureRmResource -PropertyObject $PropertiesObject -ResourceGroupName <resource group name> -ResourceType Microsoft.Network/loadBalancers -ResourceName <load balancer name> -ApiVersion <use the API version that is returned> -Force
+    ```
 
-Die folgenden Schritte beschreiben, wie Sie das Kennwort für alle Knoten eines bestimmten Knotentyps ändern. Diese Änderungen gelten für alle aktuellen und zukünftigen Knoten in der VM-Skalierungsgruppe.
+## <a name="change-the-rdp-user-name-and-password-for-nodes"></a>Ändern des RDP-Benutzernamens und des Kennworts für Knoten
 
-### <a name="step-1-open-powershell-with-elevated-privileges-administrator-mode"></a>Schritt 1: Öffnen Sie PowerShell mit erhöhten Rechten (im Administratormodus). 
-### <a name="step-2-run-the-following-commands-to-log-in-and-select-your-subscription-for-the-session-change-the-subscriptionid-parameter-to-your-subscription-id"></a>Schritt 2: Führen Sie die folgenden Befehle zum Anmelden aus, und wählen Sie Ihr Abonnement für die Sitzung. Ändern Sie den `SUBSCRIPTIONID`-Parameter in Ihre Abonnement-ID. 
+Führen Sie die folgenden Schritte aus, um das Kennwort für alle Knoten eines bestimmten Knotentyps zu ändern. Diese Änderungen gelten für alle aktuellen und zukünftigen Knoten in der Skalierungsgruppe.
 
-```powershell
-Login-AzureRmAccount
-Get-AzureRmSubscription -SubscriptionId 'SUBSCRIPTIONID' | Select-AzureRmSubscription
-```
+1. Starten Sie PowerShell als Administrator. 
+2. Führen Sie die folgenden Befehle aus, um sich anzumelden und Ihr Abonnement für die Sitzung auszuwählen. Ändern Sie den `SUBSCRIPTIONID`-Parameter in Ihre Abonnement-ID. 
 
-### <a name="step-3-run-the-following-script-with-the-appropriate-nodetypename-resourcegroup-username-and-password-values-the-username-and-password-values-will-be-the-new-credentials-that-should-be-used-in-future-rdp-sessions"></a>Schritt 3: Führen Sie das folgende Skript mit den entsprechenden Werten für `NODETYPENAME`, `RESOURCEGROUP`, `USERNAME` und `PASSWORD` aus. Die Werte `USERNAME` und `PASSWORD` sind die neuen Anmeldeinformationen, die in zukünftigen RDP-Sitzungen verwendet werden sollen. 
+    ```powershell
+    Login-AzureRmAccount
+    Get-AzureRmSubscription -SubscriptionId 'SUBSCRIPTIONID' | Select-AzureRmSubscription
+    ```
 
-```powershell
-$nodeTypeName = 'NODETYPENAME'
-$resourceGroup = 'RESOURCEGROUP'
-$publicConfig = @{'UserName' = 'USERNAME'}
-$privateConfig = @{'Password' = 'PASSWORD'}
-$extName = 'VMAccessAgent'
-$publisher = 'Microsoft.Compute'
-$node = Get-AzureRmVmss -ResourceGroupName $resourceGroup -VMScaleSetName $nodeTypeName
-$node = Add-AzureRmVmssExtension -VirtualMachineScaleSet $node -Name $extName -Publisher $publisher -Setting $publicConfig -ProtectedSetting $privateConfig -Type $extName -TypeHandlerVersion '2.0' -AutoUpgradeMinorVersion $true
+3. Führen Sie das folgende Skript aus. Verwenden Sie die relevanten Werte für `NODETYPENAME`, `RESOURCEGROUP`, `USERNAME` und `PASSWORD`. Die Werte `USERNAME` und `PASSWORD` sind die neuen Anmeldeinformationen, die Sie in zukünftigen RDP-Sitzungen verwenden. 
 
-Update-AzureRmVmss -ResourceGroupName $resourceGroup -Name $nodeTypeName -VirtualMachineScaleSet $node
-```
+    ```powershell
+    $nodeTypeName = 'NODETYPENAME'
+    $resourceGroup = 'RESOURCEGROUP'
+    $publicConfig = @{'UserName' = 'USERNAME'}
+    $privateConfig = @{'Password' = 'PASSWORD'}
+    $extName = 'VMAccessAgent'
+    $publisher = 'Microsoft.Compute'
+    $node = Get-AzureRmVmss -ResourceGroupName $resourceGroup -VMScaleSetName $nodeTypeName
+    $node = Add-AzureRmVmssExtension -VirtualMachineScaleSet $node -Name $extName -Publisher $publisher -Setting $publicConfig -ProtectedSetting $privateConfig -Type $extName -TypeHandlerVersion '2.0' -AutoUpgradeMinorVersion $true
+
+    Update-AzureRmVmss -ResourceGroupName $resourceGroup -Name $nodeTypeName -VirtualMachineScaleSet $node
+    ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Übersicht über das Feature „Deploy Anywhere“ (umgebungsunabhängige Bereitstellung) und ein Vergleich mit Clustern, die von Azure verwaltet werden](service-fabric-deploy-anywhere.md)
-* [Clustersicherheit](service-fabric-cluster-security.md)
-* [ Service Fabric-SDK und erste Schritte](service-fabric-get-started.md)
+* Weitere Informationen finden Sie unter [Übersicht über das Feature „Deploy Anywhere“ (umgebungsunabhängige Bereitstellung) und ein Vergleich mit Clustern, die von Azure verwaltet werden](service-fabric-deploy-anywhere.md).
+* Erfahren Sie mehr über [Clustersicherheit](service-fabric-cluster-security.md).
+* Erfahren Sie mehr über das [Service Fabric-SDK und die ersten Schritte](service-fabric-get-started.md).
 
 <!--Image references-->
 [NodeTypes]: ./media/service-fabric-cluster-nodetypes/NodeTypes.png

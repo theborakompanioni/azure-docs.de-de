@@ -11,25 +11,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/24/2017
+ms.date: 09/07/2017
 ms.author: curtand
 ms.custom: oldportal;it-pro;
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: f1fda3c4192d0dae4fa60788f4d88fb72ddba4ad
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: e5ac068e37d921530272e5eb3dc76d976a86a742
 ms.contentlocale: de-de
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="understanding-resource-access-in-azure"></a>Grundlegendes zum Zugriff auf Ressourcen in Azure
-> [!IMPORTANT]
-> Microsoft empfiehlt, für die Verwaltung von Azure AD anstelle des in diesem Artikel erwähnten klassischen Azure-Portals das [Azure AD Admin Center](https://aad.portal.azure.com) zu verwenden. Das Azure-Portal bietet eine [rollenbasierte Zugriffssteuerung](role-based-access-control-configure.md) für eine präzisere Verwaltung von Azure-Ressourcen.
-> 
-> 
 
-Im Oktober 2013 wurden das klassische Azure-Portal und die Dienstverwaltungs-APIs in Azure Active Directory integriert, um die Benutzerfreundlichkeit bei der Verwaltung des Azure-Ressourcenzugriffs zu verbessern. Azure Active Directory bietet bereits leistungsstarke Funktionen wie Benutzerverwaltung, lokale Verzeichnissynchronisierung, mehrstufige Authentifizierung und Anwendungszugriffssteuerung. Diese Funktionen sollten natürlich auch für die allgemeine Verwaltung von Azure-Ressourcen zur Verfügung stehen.
-
-Die Zugriffssteuerung in Azure unterliegt zunächst den Abrechnungsaspekten. Der Besitzer eines Azure-Kontos, auf das über das [Azure Accounts Center](https://account.windowsazure.com/subscriptions) zugegriffen wird, ist der Kontoadministrator (Account Administrator, AA). Abonnements dienen nicht nur als Container für die Abrechnung, sondern auch als Sicherheitsgrenze: Jedes Abonnement verfügt über einen Dienstadministrator (SA), der Azure-Ressourcen für dieses Abonnement mit dem [klassischen Azure-Portal](https://manage.windowsazure.com/) hinzufügen, entfernen und ändern kann. Der standardmäßige Dienstadministrator eines neuen Abonnements ist der Kontoadministrator. Der Kontoadministrator kann den Dienstadministrator jedoch über das Azure Accounts Center ändern.
+Die Zugriffssteuerung in Azure unterliegt zunächst den Abrechnungsaspekten. Der Besitzer eines Azure-Kontos, auf das über das [Azure Accounts Center](https://account.windowsazure.com/subscriptions) zugegriffen wird, ist der Kontoadministrator (Account Administrator, AA). Abonnements dienen nicht nur als Container für die Abrechnung, sondern auch als Sicherheitsgrenze: Jedes Abonnement verfügt über einen Dienstadministrator (SA), der Azure-Ressourcen für dieses Abonnement mit dem [Azure-Portal](https://portal.azure.com/) hinzufügen, entfernen und ändern kann. Der standardmäßige Dienstadministrator eines neuen Abonnements ist der Kontoadministrator. Der Kontoadministrator kann den Dienstadministrator jedoch über das Azure Accounts Center ändern.
 
 <br><br>![Azure-Konten][1]
 

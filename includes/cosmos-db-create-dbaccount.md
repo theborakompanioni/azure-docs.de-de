@@ -16,7 +16,7 @@
     Einstellung|Empfohlener Wert|Beschreibung
     ---|---|---
     ID|*Eindeutiger Wert*|Ein eindeutiger Name, der das Azure Cosmos DB-Konto identifiziert. Da *documents.azure.com* an die ID angefügt wird, die Sie bereitstellen, um Ihren URI zu erstellen, sollten Sie eine eindeutige, aber identifizierbare ID verwenden. Die ID darf nur Kleinbuchstaben, Zahlen und den Bindestrich (-) enthalten, und sie muss zwischen 3 und 50 Zeichen lang sein.
-    API|SQL (DocumentDB)|Weiter unten in diesem Artikel programmieren Sie mit der [DocumentDB-API](../articles/documentdb/documentdb-introduction.md).|
+    API|SQL (DocumentDB)|Weiter unten in diesem Artikel programmieren Sie mit der [DocumentDB-API](../articles/cosmos-db/documentdb-introduction.md).|
     Abonnement|*Ihr Abonnement*|Das Azure-Abonnement, das Sie für das Azure Cosmos DB-Konto verwenden möchten. 
     Ressourcengruppe|*Derselbe Wert wie die ID*|Der neue Ressourcengruppenname für Ihr Konto. Der Einfachheit halber können Sie denselben Namen wie bei Ihrer ID verwenden. 
     Ort|*Die Region, die Ihren Benutzern am nächsten liegt*|Der geografische Standort, an dem Ihr Azure Cosmos DB-Konto gehostet werden soll. Wählen Sie den Speicherort, der Ihren Benutzern am nächsten liegt, um ihnen einen schnellen Zugriff auf die Daten zu gewähren.
@@ -27,5 +27,5 @@
 
 6.  Wenn im Fenster „Benachrichtigungen“ angezeigt wird, dass die Bereitstellung erfolgreich war, schließen Sie das Benachrichtigungsfenster, und öffnen Sie das neue Konto über die Kachel **Alle Ressourcen** auf dem Dashboard. 
 
-    ![Das DocumentDB-Konto auf der Kachel „Alle Ressourcen“](./media/cosmos-db-create-dbaccount/all-resources.png)
+    ![Azure Cosmos DB-Konto auf der Kachel „Alle Ressourcen“](./media/cosmos-db-create-dbaccount/all-resources.png)
  

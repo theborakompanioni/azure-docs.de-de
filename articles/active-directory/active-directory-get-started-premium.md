@@ -1,5 +1,5 @@
 ---
-title: "Registrieren für Azure Active Directory Premium"
+title: "Registrieren für Azure Active Directory Premium | Microsoft-Dokumentation"
 description: "Hier erfahren Sie, wie Sie sich für die Azure Active Directory Premium-Edition registrieren."
 services: active-directory
 documentationcenter: 
@@ -11,21 +11,25 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/09/2017
+ms.date: 09/07/2017
 ms.author: curtand
+ms.reviewer: piotrci
 ms.custom: it-pro;
 ms.translationtype: HT
-ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
-ms.openlocfilehash: fe9f4fa6f776a0c2edb572d0526c7520d1c1c7a0
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: 4b86ececefd3724b9e7791d2609b146de052f605
 ms.contentlocale: de-de
-ms.lasthandoff: 08/10/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="quickstart-sign-up-for-azure-active-directory-premium"></a>Schnellstartanleitung: Registrieren für Azure Active Directory Premium
-Um Azure Active Directory (Azure AD) Premium verwenden zu können, müssen Sie zunächst Lizenzen erwerben und Ihrem Azure-Abonnement zuordnen. Wenn Sie ein neues Azure-Abonnement erstellen, müssen Sie außerdem Ihren Lizenzplan und den Azure AD-Dienstzugriff aktivieren. Dies wird in den folgenden Abschnitten beschrieben. 
+Um Azure Active Directory (Azure AD) Premium zu verwenden, können Sie Lizenzen erwerben und Ihrem Azure-Abonnement zuordnen. Wenn Sie ein neues Azure-Abonnement erstellen, müssen Sie außerdem Ihren Lizenzplan und den Azure AD-Dienstzugriff aktivieren. Dies wird in den folgenden Abschnitten beschrieben. 
 
 ## <a name="sign-up-for-active-directory-premium"></a>Registrieren für Active Directory Premium
 Es gibt mehrere Möglichkeiten, sich für Active Directory Premium zu registrieren: 
+* Ihr Azure- oder Office 365-Abonnement
+* Enterprise Mobility + Security-Lizenzplan
+* Microsoft-Volumenlizenzierungsplan
 
 ### <a name="azure-or-office-365"></a>Azure oder Office 365 
 Abonnenten von Azure oder Office 365 können Azure Active Directory Premium online erwerben. 
@@ -48,10 +52,8 @@ Weitere Informationen zu Kaufoptionen im Rahmen der Volumenlizenzierung finden S
 
 > [!NOTE]
 > Die Azure Active Directory Premium und Basic Editions stehen für Kunden in China zur Verfügung, die mit der weltweit verfügbaren Instanz von Azure Active Directory arbeiten. Allerdings werden die Azure Active Directory-Editionen Premium und Basic derzeit durch den in China von 21Vianet betriebenen Microsoft Azure-Dienst nicht unterstützt. Wenn Sie weitere Informationen benötigen, kontaktieren Sie uns im [Azure Active Directory-Forum](https://feedback.azure.com/forums/169401-azure-active-directory/).
-> 
-> 
 
-Wenn Sie bereits Azure AD-Lizenzen für das Azure-Abonnement erworben und aktiviert haben, das Sie in den vorherigen Schritten verwendet haben, werden die Lizenzen automatisch im gleichen Verzeichnis aktiviert. In diesem Fall müssen Sie die restlichen Schritte in diesem Artikel nicht ausführen.
+Wenn Sie bereits Azure AD-Lizenzen für das Azure-Abonnement erworben und aktiviert haben, das Sie in den vorherigen Schritten verwendet haben, werden die Lizenzen automatisch im gleichen Verzeichnis aktiviert. Wenn nicht, können Sie die restlichen Schritte in diesem Artikel ausführen.
 
 ## <a name="activate-your-license-plan"></a>Aktivieren Ihres Lizenzplans
 Ist das der erste Azure AD-Lizenzplan, den Sie von Microsoft erworben haben? Falls ja, erhalten Sie nach Abschluss Ihres Kaufs eine Bestätigungs-E-Mail. Sie benötigen diese E-Mail zum Aktivieren Ihres ersten Lizenzplans.
@@ -62,7 +64,7 @@ Ist das der erste Azure AD-Lizenzplan, den Sie von Microsoft erworben haben? Fal
    
     ![Anmelden][1]
 
-    - Wenn Sie bereits über einen Mandanten verfügen, klicken Sie auf **Anmelden** , um sich bei Ihrem vorhandenen Administratorkonto anzumelden. Melden Sie sich mit den Anmeldeinformationen des globalen Administrators für das Verzeichnis an, in dem die Lizenzen aktiviert werden sollen.
+    - Wenn Sie bereits über einen Mandanten verfügen, klicken Sie auf **Anmelden** , um sich bei Ihrem vorhandenen Administratorkonto anzumelden. Melden Sie sich mit Anmeldeinformationen des globalen Administrators für den Mandanten an, für den die Lizenzen aktiviert werden sollen.
 
     - Wenn Sie einen neuen Azure AD-Mandanten für die Verwendung mit Ihrem Lizenzplan erstellen möchten, klicken Sie auf **Registrieren**, um das Dialogfeld **Kontoprofil erstellen** zu öffnen.
 

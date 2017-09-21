@@ -17,10 +17,10 @@ ms.date: 06/02/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
-ms.openlocfilehash: 55e2e095138842f8e2d31a4f79ffb22b81d18dba
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 87cc66752dae1f4bd0903607d8a8ae9bd9125b11
 ms.contentlocale: de-de
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 
@@ -213,6 +213,8 @@ Wenn Sie die gruppenbasierte Lizenzierung verwenden, ist es ratsam, sich mit der
 - Wenn ein Benutzer aus einer Gruppe entfernt wird und die Lizenz verliert, werden die Status der Dienstpläne aus dieser Lizenz (z.B. SharePoint Online) in **Angehalten** geändert. Diese Dienstpläne sind nicht auf einen endgültigen deaktivierten Status festgelegt. Mit dieser Vorsichtsmaßnahme kann ein versehentliches Entfernen von Benutzerdaten vermieden werden, wenn ein Administrator einen Fehler bei der Verwaltung der Gruppenmitgliedschaft macht.
 
 - Wenn Lizenzen für eine große Gruppe zugewiesen oder geändert werden (z.B. 100.000 Benutzer), kann dies die Leistung beeinträchtigen. Vor allem das Volumen der Änderungen, das von der Azure AD-Automation generiert wird, kann sich negativ auf die Leistung Ihrer Verzeichnissynchronisierung zwischen Azure AD und lokalen Systemen auswirken.
+
+- In bestimmten Situationen mit hoher Auslastung kann sich die Lizenzverarbeitung verzögern, und es dauert möglicherweise lange, bis Änderungen wie das Hinzufügen/Entfernen einer Gruppenlizenz oder das Hinzufügen/Entfernen von Benutzern in einer Gruppe verarbeitet werden. Wenn die Verarbeitung von Änderungen länger als 24 Stunden dauert, [öffnen Sie bitte ein Supportticket](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/supportRequest), damit wir den Fall untersuchen können. Wir werden die Leistungsmerkmale dieses Features verbessern, bevor es *allgemein verfügbar* wird.
 
 - Die Automatisierung der Lizenzverwaltung reagiert nicht automatisch auf alle Typen von Änderungen in der Umgebung. Beispielsweise kann es sein, dass Sie keine verfügbaren Lizenzen mehr haben und für einige Benutzer daher ein Fehlerzustand gilt. Sie können einige direkt zugewiesene Lizenzen von anderen Benutzern entfernen, um mehr verfügbare Arbeitsplätze freizugeben. Das System reagiert aber nicht automatisch auf diese Änderung und entfernt nicht den Fehlerstatus von den Benutzern.
 

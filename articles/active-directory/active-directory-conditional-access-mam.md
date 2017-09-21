@@ -1,6 +1,6 @@
 ---
-title: Bedingter Zugriff mit Verwaltung mobiler Apps in Azure Active Directory | Microsoft-Dokumentation
-description: Hier finden Sie Informationen zur Funktionsweise von bedingtem Zugriff mit Verwaltung mobiler Apps in Azure Active Directory.
+title: App-basierter bedingter Zugriff mit Azure Active Directory | Microsoft-Dokumentation
+description: Erfahren Sie, wie der App-basierte bedingte Zugriff mit Azure Active Directory funktioniert.
 services: active-directory
 keywords: "bedingter Zugriff auf Apps, bedingter Zugriff mit Azure AD, sicherer Zugriff auf Unternehmensressourcen, Richtlinien für bedingten Zugriff"
 documentationcenter: 
@@ -13,66 +13,66 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/01/2017
+ms.date: 09/07/2017
 ms.author: markvi
 ms.reviewer: spunukol
 ms.translationtype: HT
-ms.sourcegitcommit: ce0189706a3493908422df948c4fe5329ea61a32
-ms.openlocfilehash: c6bc39dc151c80ffe1306464da60a029e54cc6b1
+ms.sourcegitcommit: f2ac16c2f514aaa7e3f90fdf0d0b6d2912ef8485
+ms.openlocfilehash: 48c9f55e2296b88acc697ab818f13787695643a5
 ms.contentlocale: de-de
-ms.lasthandoff: 09/05/2017
+ms.lasthandoff: 09/08/2017
 
 ---
-# <a name="conditional-access-with-mobile-app-management-in-azure-active-directory"></a>Bedingter Zugriff mit Verwaltung mobiler Apps in Azure Active Directory  
+# <a name="azure-active-directory-app-based-conditional-access"></a>App-basierter bedingter Zugriff mit Azure Active Directory  
 
-Mit einer Kombination aus bedingtem, auf Azure AD-Apps (Azure Active Directory) basierendem Zugriff im Azure-Portal und Intune-Richtlinien für den App-Schutz können Sie den Zugriff auf Cloud-Apps auf mobile Apps beschränken, die den Intune-App-Schutz unterstützen – beispielsweise, um den Zugriff auf Exchange Online auf die Outlook-App zu beschränken. Dadurch kann auch bei Geräten, die nicht für die Verwaltung durch Intune MDM registriert sind, der Schutz von Unternehmensdaten gewährleistet werden.   
+Ihre Mitarbeiter verwenden mobile Geräte sowohl für private als auch für berufliche Zwecke. Während Sie einerseits die Produktivität der Mitarbeiter sicherstellen möchten, sollten Sie andererseits Datenverluste vermeiden. Mit dem App-basierten bedingten Zugriff mit Azure Active Directory (Azure AD) können Sie den Zugriff auf Ihre Cloud-Apps auf Client-Apps beschränken, die Ihre Unternehmensdaten schützen können.  
 
-Der bedingte Zugriff der Verwaltung mobiler Apps lässt sich mit anderen Richtlinien wie etwa gerätebasierten Richtlinien zum bedingten Zugriff kombinieren und sorgt so für Flexibilität beim Schutz von Daten für Privat- und Unternehmensgeräte. 
+In diesem Thema wird erläutert, wie Sie den App-basierten bedingten Zugriff mit Azure AD konfigurieren.
+
+## <a name="overview"></a>Übersicht
+
+Mit dem [bedingten Zugriff von Azure AD](active-directory-conditional-access-azure-portal.md) können Sie präzise steuern, wie autorisierte Benutzer auf Ihre Ressourcen zugreifen können. Sie können z.B. den Zugriff auf Ihre Cloud-Apps auf vertrauenswürdige Geräte beschränken.
+
+Zum Schutz Ihrer Unternehmensdaten können Sie [Intune-Richtlinien für den App-Schutz](https://docs.microsoft.com/intune/app-protection-policy) verwenden. Da die Intune-Richtlinien für den App-Schutz keine MDM-Lösung (Mobile-Device Management, Verwaltung mobiler Geräte) erfordern, sind Ihre Unternehmensdaten unabhängig davon geschützt, ob Sie die Geräte in einer Lösung für die Geräteverwaltung registrieren oder nicht.
+
+Der App-basierte bedingte Zugriff mit Azure Active Directory ermöglicht es Ihnen, den Zugriff auf Ihre Cloud-Apps auf Client-Apps zu beschränken, die Intune-Richtlinien für den App-Schutz unterstützen. Sie können zum Beispiel den Zugriff auf Exchange Online für die Outlook-App einschränken.
+
+Im Kontext des bedingten Zugriffs werden diese Client-Apps als **genehmigte Client-Apps** bezeichnet.  
+
+
+![Bedingter Zugriff](./media/active-directory-conditional-access-mam/05.png)
+
+
+Eine Liste der genehmigten Client-Apps finden Sie unter [Genehmigte Client-App als Voraussetzung](active-directory-conditional-access-technical-reference.md#approved-client-app-requirement).
+
+
+App-basierte bedingte Zugriffsrichtlinien lassen sich mit anderen Richtlinien wie etwa [gerätebasierten Richtlinien zum bedingten Zugriff](active-directory-conditional-access-policy-connected-applications.md) kombinieren und sorgen so für Flexibilität beim Schutz von Daten für Privat- und Unternehmensgeräte.
+
+ 
+
 
 ##<a name="before-you-begin"></a>Voraussetzungen
 
 In diesem Thema wird vorausgesetzt, dass Sie mit Folgendem vertraut sind:
 
+- Der technischen Referenz [Genehmigte Client-App als Voraussetzung](active-directory-conditional-access-technical-reference.md#approved-client-app-requirement)
+
+
 - Den grundlegenden Konzepten des [bedingten Zugriffs in Azure Active Directory](active-directory-conditional-access-azure-portal.md)
 
 - Der Vorgehensweise zum [Konfigurieren einer Richtlinie zum bedingten Zugriff](active-directory-conditional-access-azure-portal-get-started.md)
 
-
-Darüber hinaus empfiehlt es sich unter Umständen, sich mit den [Best Practices für den bedingten Zugriff in Azure Active Directory](active-directory-conditional-access-best-practices.md) vertraut zu machen.  
-
-
+- Der [Migration von Richtlinien für bedingten Zugriff](active-directory-conditional-access-best-practices.md#policy-migration)
+ 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-1.  Zum Erstellen einer App-basierten Richtlinie zum bedingten Zugriff benötigen Sie ein Abonnement vom Typ „Enterprise Mobility + Security“ oder „Azure Active Directory Premium“, und die Benutzer müssen für EMS oder Azure AD lizenziert sein. 
-2.  Machen Sie sich vor dem Erstellen einer Richtlinie zum bedingten Zugriff mit Verwaltung mobiler Apps zunächst mit den Szenarien und den Migrationsüberlegungen vertraut.
-
-## <a name="supported-platforms"></a>Unterstützte Plattformen
-
--   iOS
-
--   Android
-
-## <a name="approved-client-applications"></a>Genehmigte Clientanwendungen 
-
-- Microsoft Outlook
-
-- Microsoft SharePoint
-
-- Microsoft OneDrive
-
-- Microsoft Teams
-
-- Microsoft Word
-
-- Microsoft Excel
-
-- Microsoft PowerPoint
+Zum Erstellen einer Richtlinie zum App-basierten bedingten Zugriff benötigen Sie ein Abonnement vom Typ „Enterprise Mobility + Security“ oder „Azure Active Directory Premium“, und die Benutzer müssen für EMS oder Azure AD lizenziert sein. 
 
 
 ## <a name="exchange-online-policy"></a>Exchange Online-Richtlinie 
 
-Dieses Szenario umfasst eine Richtlinie zum bedingten Zugriff mit Verwaltung mobiler Apps für den Zugriff auf Exchange Online mit genehmigten Apps.
+Dieses Szenario besteht aus einer Richtlinie zum App-basierten bedingten Zugriff für den Zugriff auf Exchange Online.
 
 
 ### <a name="scenario-playbook"></a>Szenario-Playbook
@@ -246,9 +246,9 @@ Für die Richtlinie zum bedingten Zugriff in diesem Schritt müssen folgende Kom
 Weitere Informationen finden Sie unter [Schützen von Apps und Daten mit Microsoft Intune](https://docs.microsoft.com/intune-classic/deploy-use/protect-apps-and-data-with-microsoft-intune).
 
 
-## <a name="mobile-application-management-or-compliant-device-policy-for-exchange-online-and-sharepoint-online"></a>Richtlinie für die mobile Anwendungsverwaltung oder für konforme Geräte für Exchange Online und SharePoint Online
+## <a name="app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online"></a>App-basierte Richtlinie oder Richtlinie für konforme Geräte für Exchange Online und SharePoint Online
 
-Dieses Szenario umfasst eine Richtlinie zum bedingten Zugriff mit Verwaltung mobiler Apps oder konformen Geräten für den Zugriff auf Exchange Online mit genehmigten Apps.
+Dieses Szenario besteht aus einer Richtlinie zum App-basierten bedingten Zugriff oder einer Richtlinie für den bedingten Zugriff für konforme Geräte für den Zugriff auf Exchange Online.
 
 
 ### <a name="scenario-playbook"></a>Szenario-Playbook
@@ -338,9 +338,10 @@ Weitere Informationen finden Sie unter [Schützen von Apps und Daten mit Microso
 
 
 
-## <a name="mobile-application-management-and-compliant-device-policy-for-exchange-online-and-sharepoint-online"></a>Richtlinie für die mobile Anwendungsverwaltung und für konforme Geräte für Exchange Online und SharePoint Online
+## <a name="app-based-and-compliant-device-policy-for-exchange-online-and-sharepoint-online"></a>App-basierte Richtlinie und Richtlinie für konforme Geräte für Exchange Online und SharePoint Online
 
-Dieses Szenario umfasst eine Richtlinie zum bedingten Zugriff mit Verwaltung mobiler Apps und konformen Geräten für den Zugriff auf Exchange Online mit genehmigten Apps.
+Dieses Szenario besteht aus einer Richtlinie zum App-basierten bedingten Zugriff und einer Richtlinie für den bedingten Zugriff für konforme Geräte für den Zugriff auf Exchange Online.
+
 
 ### <a name="scenario-playbook"></a>Szenario-Playbook
 
@@ -436,87 +437,6 @@ Für die Richtlinie zum bedingten Zugriff in diesem Schritt müssen folgende Kom
 Weitere Informationen finden Sie unter [Schützen von Apps und Daten mit Microsoft Intune](https://docs.microsoft.com/intune-classic/deploy-use/protect-apps-and-data-with-microsoft-intune).
 
 
-
-## <a name="migration-considerations"></a>Überlegungen zur Migration
-
-Falls Sie Richtlinien im klassischen Azure-Portal konfiguriert haben, sollten Sie diese aus folgenden Gründen migrieren:
-
-
-- Ein Benutzer, der sowohl in einer Richtlinie des klassischen Azure-Portals als auch in einer Richtlinie des Azure-Portals enthalten ist, muss die Anforderungen beider Richtlinien erfüllen. 
-
-- Wenn Sie Ihre vorhandenen Richtlinien nicht migrieren, können Sie keine Richtlinien für die Zugriffsgewährung implementieren.
-
-
-## <a name="migration-from-the-azure-classic-portal"></a>Migration aus dem klassischen Azure-Portal
-
-Szenario: 
-
-- In Ihrem [klassischen Azure-Portal](https://manage.windowsazure.com) ist Folgendes konfiguriert:
-
-    - SharePoint Online
-
-    ![Bedingter Zugriff](./media/active-directory-conditional-access-mam/14.png)
-
-    - Eine gerätebasierte Richtlinie zum bedingten Zugriff
-
-    ![Bedingter Zugriff](./media/active-directory-conditional-access-mam/15.png)
-
-- Sie möchten im Azure-Portal eine Richtlinie zum bedingten Zugriff mit mobiler Anwendungsverwaltung konfigurieren. 
- 
-
-### <a name="configuration"></a>Konfiguration 
-
-- Überprüfen Sie Ihre gerätebasierten Richtlinien zum bedingten Zugriff.
-
-- Migrieren Sie sie zum Azure-Portal. 
-
-- Fügen Sie Richtlinien zum bedingten Zugriff mit mobiler Anwendungsverwaltung hinzu.
-
-
-## <a name="migrating-from-intune"></a>Migrieren aus Intune 
-
-Szenario:
-
-- In [Intune](https://portal.azure.com/#blade/Microsoft_Intune/SummaryBlade ) ist eine Richtlinie zum bedingten Zugriff mit mobiler Anwendungsverwaltung für Exchange Online oder SharePoint Online konfiguriert.
-
-    ![Bedingter Zugriff](./media/active-directory-conditional-access-mam/15.png)
-
-- Sie möchten im Azure-Portal zur Verwendung von bedingtem Zugriff mit mobiler Anwendungsverwaltung migrieren.
-
-
-### <a name="configuration"></a>Konfiguration 
- 
-- Überprüfen Sie Ihre gerätebasierten Richtlinien zum bedingten Zugriff.
-
-- Migrieren Sie sie zum Azure-Portal. 
-
-- Überprüfen Sie Ihre Richtlinien zum bedingten Zugriff mit mobiler Anwendungsverwaltung, die in Intune für Exchange Online oder SharePoint Online konfiguriert sind.
-
-- Geben Sie zusätzlich zur gerätebasierten Kontrolle an, dass auch genehmigte Anwendungen erforderlich**** sind. 
- 
-
-## <a name="migrating-from-the-azure-classic-portal-and-intune"></a>Migrieren aus dem klassischen Azure-Portal und aus Intune
-
-Szenario:
-
-- Folgendes ist konfiguriert:
-
-    - **Klassisches Azure-Portal:** gerätebasierter bedingter Zugriff 
-
-    - **Intune:** Richtlinien zum bedingten Zugriff mit mobiler Anwendungsverwaltung 
-    
-- Sie möchten beide Richtlinien im Azure-Portal zur Verwendung von Richtlinien zum bedingtem Zugriff mit mobiler Anwendungsverwaltung migrieren.
-
-
-### <a name="configuration"></a>Konfiguration
-
-- Überprüfen Sie Ihre gerätebasierten Richtlinien zum bedingten Zugriff.
-
-- Migrieren Sie sie zum Azure-Portal. 
-
-- Überprüfen Sie Ihre Richtlinie zum bedingten Zugriff mit mobiler Anwendungsverwaltung, die in Intune für Exchange Online oder SharePoint Online konfiguriert ist.
-
-- Geben Sie zusätzlich zur gerätebasierten Kontrolle an, dass auch genehmigte Anwendungen erforderlich**** sind. 
 
 
 
