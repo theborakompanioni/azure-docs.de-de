@@ -77,7 +77,6 @@ Bevor Sie fortfahren, beachten Sie die folgenden wichtigen Hinweise:
  
  
 9.  Sobald die Anmeldeinformationen bereitgestellt sind, wird das rote Kreuzsymbol durch ein grünes Häkchensymbol ersetzt. Klicken Sie auf **Weiter**.
-
 ![Willkommen](media/active-directory-aadconnect-existing-database/db8.png)
  
  
