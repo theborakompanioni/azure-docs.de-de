@@ -95,10 +95,24 @@
 ## Problembehandlung
 ### [Häufige Bereitstellungsfehler](resource-manager-common-deployment-errors.md)
 ### [Grundlegendes zu Bereitstellungsfehlern](resource-manager-troubleshoot-tips.md)
-### [RequestDisallowedByPolicy-Fehler](resource-manager-policy-requestdisallowedbypolicy-error.md)
+### Beheben von Fehlern
+#### [AccountNameInvalid](resource-manager-storage-account-name-errors.md)
+#### [InvalidTemplate](resource-manager-invalid-template-errors.md)
+#### [NoRegisteredProviderFound](resource-manager-register-provider-errors.md)
+#### [NotFound](resource-manager-not-found-errors.md)
+#### [ParentResourceNotFound](resource-manager-parent-resource-errors.md)
+#### [RequestDisallowedByPolicy](resource-manager-policy-requestdisallowedbypolicy-error.md)
+#### [ResourceQuotaExceeded](resource-manager-quota-errors.md)
+#### [SkuNotAvailable](resource-manager-sku-not-available-errors.md)
 ### Bereitstellungsfehler bei virtuellen Computern
-#### [Linux](../virtual-machines/linux/troubleshoot-deploy-vm.md)
-#### [Windows](../virtual-machines/windows/troubleshoot-deploy-vm.md)
+#### Linux
+##### [Bereitstellungsprobleme](../virtual-machines/linux/troubleshoot-deploy-vm.md)
+##### [Bereitstellungs- und Zuteilungsprobleme](../virtual-machines/linux/troubleshoot-deployment-new-vm.md)
+##### [Häufige Fehlermeldungen](../virtual-machines/linux/error-messages.md)
+#### Windows
+##### [Bereitstellungsprobleme](../virtual-machines/windows/troubleshoot-deploy-vm.md)
+##### [Bereitstellungs- und Zuteilungsprobleme](../virtual-machines/windows/troubleshoot-deployment-new-vm.md)
+##### [Häufige Fehlermeldungen](../virtual-machines/windows/error-messages.md)
 
 # Referenz
 ## [Vorlagenformat](/azure/templates/)

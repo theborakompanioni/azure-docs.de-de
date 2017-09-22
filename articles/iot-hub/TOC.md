@@ -32,6 +32,7 @@
 ##### [Einrichten von Intel NUC als Gateway](iot-hub-gateway-kit-c-lesson1-set-up-nuc.md)
 ##### [Herstellen einer Verbindung zwischen Gateway und IoT Hub](iot-hub-gateway-kit-c-iot-gateway-connect-device-to-cloud.md)
 ##### [Verwenden des Gateways für die Datenkonvertierung](iot-hub-gateway-kit-c-use-iot-gateway-for-data-conversion.md)
+##### [Problembehandlung](iot-hub-gateway-kit-c-troubleshooting.md)
 
 ## Erweiterte IoT-Szenarien
 ### [Verwalten von Cloudgerät-Nachrichten mit iothub-explorer](iot-hub-explorer-cloud-device-messaging.md)
@@ -82,7 +83,9 @@
 #### [.NET](iot-hub-csharp-csharp-c2d.md)
 #### [Java](iot-hub-java-java-c2d.md)
 #### [Node.js](iot-hub-node-node-c2d.md)
-### [Hochladen von Dateien von Geräten](iot-hub-csharp-csharp-file-upload.md)
+### [Hochladen von Dateien von Geräten]
+#### [.NET](iot-hub-csharp-csharp-file-upload.md)
+#### [Java](iot-hub-java-java-file-upload.md)
 ### Erste Schritte mit Gerätezwillingen
 #### [Node.js-Back-End/Node.js-Gerät](iot-hub-node-node-twin-getstarted.md)
 #### [.NET-Back-End/Node.js-Gerät](iot-hub-csharp-node-twin-getstarted.md)
@@ -96,11 +99,13 @@
 ### Erste Schritte mit der Geräteverwaltung
 #### [Node.js-Back-End/Node.js-Gerät](iot-hub-node-node-device-management-get-started.md)
 #### [.NET-Back-End/Node.js-Gerät](iot-hub-csharp-node-device-management-get-started.md)
+#### [.NET-Back-End-/.NET-Gerät](iot-hub-csharp-csharp-device-management-get-started.md)
 #### [Java-Back-End-/Java-Gerät](iot-hub-java-java-device-management-getstarted.md)
 ### Verwenden der Eigenschaften von Zwillingen
 #### [Node.js-Back-End/Node.js-Gerät](iot-hub-node-node-twin-how-to-configure.md)
 #### [.NET-Back-End/Node.js-Gerät](iot-hub-csharp-node-twin-how-to-configure.md)
 #### [.NET-Back-End-/.NET-Gerät](iot-hub-csharp-csharp-twin-how-to-configure.md)
+#### [Java-Back-End-/Java-Gerät](iot-hub-java-java-twin-how-to-configure.md)
 ### Aktualisieren der Gerätefirmware mithilfe von Geräteaufträgen
 #### [Node.js-Back-End/Node.js-Gerät](iot-hub-node-node-firmware-update.md)
 #### [.NET-Back-End/Node.js-Gerät](iot-hub-csharp-node-firmware-update.md)

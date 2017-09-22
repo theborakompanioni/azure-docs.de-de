@@ -70,5 +70,5 @@
           href: msi-tutorial-windows-vm-access-nonaad.md
         - name: Mit einem virtuellen Linux-Computer
           href: msi-tutorial-linux-vm-access-nonaad.md
-    - name: Bekannte Probleme
+    - name: Häufig gestellte Fragen und bekannte Probleme
       href: msi-known-issues.md

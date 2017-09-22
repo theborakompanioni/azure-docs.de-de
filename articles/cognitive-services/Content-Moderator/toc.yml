@@ -4,6 +4,30 @@
   items:
     - name: Informationen zu Content Moderator
       href: overview.md
+- name: Schnellstarts
+  items:
+    - name: Überprüfungstool
+      href: quick-start.md
+    - name: Moderations-APIs
+      items:
+        - name: Image-API
+          href: try-image-api.md
+        - name: Imagelisten-API
+          href: try-image-list-api.md
+        - name: Text-API
+          href: try-text-api.md
+        - name: Begriffslisten-API
+          href: try-terms-list-api.md
+    - name: Überprüfen von APIs
+      items:
+        - name: Aufträge
+          href: try-review-api-job.md
+        - name: Überprüfungen
+          href: try-review-api-review.md
+        - name: Workflows
+          href: try-review-api-workflow.md
+- name: Konzepte
+  items:
     - name: Bildmoderation
       href: image-moderation-api.md
     - name: Textmoderation
@@ -14,31 +38,9 @@
       href: video-moderation-api.md
     - name: Überprüfen von APIs
       href: review-api.md
-- name: Erste Schritte
+- name: Anleitungen
   items:
-    - name: Das Überprüfungstool
-      href: quick-start.md
-    - name: Ausprobieren der Moderations-APIs
-      items:
-        - name: Bilder
-          href: try-image-api.md
-        - name: Bilderlisten
-          href: try-image-list-api.md
-        - name: Text
-          href: try-text-api.md
-        - name: Begriffslisten
-          href: try-terms-list-api.md
-    - name: Ausprobieren der Überprüfungs-APIs
-      items:
-        - name: Aufträge
-          href: try-review-api-job.md
-        - name: Überprüfungen
-          href: try-review-api-review.md
-        - name: Workflows
-          href: try-review-api-workflow.md
-- name: Anleitung
-  items:
-    - name: Verwenden des Überprüfungstools
+    - name: Überprüfungstool
       items:
         - name: Human in the Loop
           href: Review-Tool-User-Guide/human-in-the-loop.md

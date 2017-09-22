@@ -13,52 +13,51 @@
 ## [Planung und Betrieb](security-center-planning-and-operations-guide.md)
 ## [Berechtigungen](security-center-permissions.md)
 ## [Unterstützte Plattformen](security-center-os-coverage.md)
+## [Partnerintegration](security-center-partner-integration.md)
 ## [Häufig gestellte Fragen](security-center-faq.md)
 
 # Anleitung
 
 ## Sicherheitsrichtlinie
 ### [Datensammlung](security-center-enable-data-collection.md)
-### [Festlegen von Sicherheitsrichtlinien](security-center-policies.md)
+### [Sicherheitsrichtlinie](security-center-policies.md)
+### [E-Mail-Benachrichtigungen](security-center-provide-security-contact-details.md)
+### [Tarif](security-center-pricing.md)
 
 ## [Integration](security-center-onboarding.md)
 ## [Ereignisse](security-center-events-dashboard.md)
 ## [Suchen,](security-center-search.md)
 
 ## Verhindern
-### [Überwachen der Sicherheitsintegrität](security-center-monitoring.md)
-### [Verwalten von Empfehlungen](security-center-recommendations.md)
-### [Integrieren von Partnerlösungen](security-center-partner-integration.md)
-### [Überwachen von Partnerlösungen](security-center-partner-solutions.md)
+### [Implementieren von Sicherheitsempfehlungen](security-center-recommendations.md)
+### [Anwendungsempfehlungen](security-center-application-recommendations.md)
+#### [Web Application Firewall hinzufügen](security-center-add-web-application-firewall.md)
+#### [Finalize application protection (Anwendungsschutz abschließen)](security-center-add-web-application-firewall.md#finalize-application-protection)
 
-### [Compute](security-center-virtual-machine-recommendations.md)
-#### [Datenträgerverschlüsselung anwenden](security-center-apply-disk-encryption.md)
-#### [Systemupdates anwenden](security-center-apply-system-updates.md)
-#### [Aktivieren der Verschlüsselung für das Speicherkonto](security-center-enable-encryption-for-storage-account.md)
-#### [VM-Agent aktivieren](security-center-enable-vm-agent.md)
-#### [Endpoint Protection installieren](security-center-install-endpoint-protection.md)
-#### [Sicherheitskontaktinformationen bereitstellen](security-center-provide-security-contact-details.md)
-#### [Neustart nach Systemupdates](security-center-apply-system-updates.md#reboot-after-system-updates)
-#### [Betriebssystem-Sicherheitsrisiken beheben](security-center-remediate-os-vulnerabilities.md)
-#### [Auflösen von Endpoint Protection-Integritätswarnungen](security-center-resolve-endpoint-protection-health-alerts.md)
-#### [Betriebssystemversion aktualisieren](security-center-update-os-version.md)
-#### [Sicherheitsrisikobewertung nicht installiert](security-center-vulnerability-assessment-recommendations.md)
-
-### [Netzwerk](security-center-network-recommendations.md)
+### [Netzwerkempfehlungen](security-center-network-recommendations.md)
 #### [Hinzufügen einer Firewall der nächsten Generation](security-center-add-next-generation-firewall.md)
 #### [Aktivieren von Netzwerksicherheitsgruppen](security-center-enable-network-security-groups.md)
 #### [Einschränken des Zugriffs über Endpunkte mit Internetzugriff](security-center-restrict-access-through-internet-facing-endpoints.md)
 #### [Datenverkehr nur durch Firewall der nächsten Generation leiten](security-center-add-next-generation-firewall.md#route-traffic-through-ngfw-only)
 
-### [Speicher und Daten](security-center-sql-service-recommendations.md)
+### [Empfehlungen zum SQL-Dienst](security-center-sql-service-recommendations.md)
 #### [Aktivieren der Überwachung und Bedrohungserkennung in SQL-Datenbanken](security-center-enable-auditing-on-sql-databases.md)
 #### [Aktivieren der Überwachung und Bedrohungserkennung auf SQL-Servern](security-center-enable-auditing-on-sql-servers.md)
 #### [Aktivieren von Transparent Data Encryption](security-center-enable-transparent-data-encryption.md)
 
-### [Anwendungen](security-center-application-recommendations.md)
-#### [Web Application Firewall hinzufügen](security-center-add-web-application-firewall.md)
-#### [Finalize application protection (Anwendungsschutz abschließen)](security-center-add-web-application-firewall.md#finalize-application-protection)
-
+### [Empfehlungen für virtuelle Computer](security-center-virtual-machine-recommendations.md)
+#### [Datenträgerverschlüsselung anwenden](security-center-apply-disk-encryption.md)
+#### [Systemupdates anwenden](security-center-apply-system-updates.md)
+#### [Aktivieren der Verschlüsselung für das Speicherkonto](security-center-enable-encryption-for-storage-account.md)
+#### [VM-Agent aktivieren](security-center-enable-vm-agent.md)
+#### [Endpoint Protection installieren](security-center-install-endpoint-protection.md)
+#### [Neustart nach Systemupdates](security-center-apply-system-updates.md#reboot-after-system-updates)
+#### [Betriebssystem-Sicherheitsrisiken beheben](security-center-remediate-os-vulnerabilities.md)
+#### [Auflösen von Endpoint Protection-Integritätswarnungen](security-center-resolve-endpoint-protection-health-alerts.md)
+#### [Betriebssystemversion aktualisieren](security-center-update-os-version.md)
+#### [Sicherheitsrisikobewertung nicht installiert](security-center-vulnerability-assessment-recommendations.md)
+### [Überwachen der Sicherheitsintegrität](security-center-monitoring.md)
+### [Überwachen von Partnerlösungen](security-center-partner-solutions.md)
 ### [Identität und Zugriff](security-center-identity-access.md)
 
 ## Erkennen und Reagieren
@@ -70,10 +69,14 @@
 ### [Azure-Protokollintegration](security-center-integrating-alerts-with-log-integration.md)
 ### [Threat Intelligence-Karte](security-center-threat-intel.md)
 ### [Bericht über Bedrohungen](security-center-threat-report.md)
+### [Benutzerdefinierte Warnungen](security-center-custom-alert.md)
+### [Untersuchung](security-center-investigation.md)
 
 ## Schutzmaßnahmen für die Cloud
 ### [Bedarfsabhängiger Zugriff](security-center-just-in-time.md)
-### [Adaptive Anwendungssteuerungen](security-center-adaptive-application.md)
+
+## Automatisierung und Orchestrierung
+### [Playbooks](security-center-playbooks.md)
 
 ## Problembehandlung
 ### [Handbuch zur Problembehandlung](security-center-troubleshooting-guide.md)
@@ -87,7 +90,6 @@
 # Ressourcen
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/?category=security-identity)
 ## [Azure-Blog zu Sicherheit, Datenschutz und Compliance](http://blogs.msdn.com/b/azuresecurity/)
-## [Preise](security-center-pricing.md)
 ## [Preisrechner](https://azure.microsoft.com/pricing/calculator/)
 ## [Übersicht über den Dienst](https://azure.microsoft.com/services/security-center/)
 ## [Dienstupdates](https://azure.microsoft.com/updates/?product=security-center)
