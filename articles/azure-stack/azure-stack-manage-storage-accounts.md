@@ -1,6 +1,6 @@
 ---
-title: Manage Azure Stack storage accounts  | Microsoft Docs
-description: Learn how to find, manage, recover and reclaim Azure Stack storage accounts
+title: Verwalten von Azure Stack-Speicherkonten | Microsoft-Dokumentation
+description: Informationen zum Suchen, Verwalten, Wiederherstellen und Freigeben von Azure Stack-Speicherkonten
 services: azure-stack
 documentationcenter: 
 author: AniAnirudh
@@ -18,205 +18,198 @@ ms.translationtype: HT
 ms.sourcegitcommit: d941879aee6042b38b7f5569cd4e31cb78b4ad33
 ms.openlocfilehash: 6e14bd6312135b45984a82099e68a934ec2a4a70
 ms.contentlocale: de-de
-ms.lasthandoff: 07/10/2017
-
+ms.lasthandoff: 09/15/2017
 
 ---
-# Manage Storage Accounts in Azure Stack
-<a id="manage-storage-accounts-in-azure-stack" class="xliff"></a>
-Learn how to manage storage accounts in Azure Stack to find, recover, and reclaim storage capacity based on business needs.
+# <a name="manage-storage-accounts-in-azure-stack"></a>Verwalten von Speicherkonten in Azure Stack
+Erfahren Sie, wie Speicherkonten in Azure Stack verwaltet werden, um Speicherkapazität basierend auf Geschäftsanforderungen zu suchen, wiederherzustellen und freizugeben.
 
-## <a name="find"></a>Find a storage account
-The list of storage accounts in the region can be viewed in Azure Stack by:
+## <a name="find"></a>Suchen eines Speicherkontos
+Die Liste der Speicherkonten in der Region kann in Azure Stack folgendermaßen angezeigt werden:
 
-1. In an Internet browser, navigate to https://adminportal.local.azurestack.external.
-2. Sign in to the Azure Stack administration portal as a cloud operator (using the credentials you provided during deployment)
-3. On the default dashboard – find the **Region management** list and click the region you want to explore. For example **(local**).
+1. Navigieren Sie in einem Internetbrowser zu https://adminportal.local.azurestack.external.
+2. Melden Sie sich als Cloudbetreiber (mit den Anmeldeinformationen, die Sie während der Bereitstellung angegeben haben) beim Azure Stack-Verwaltungsportal an.
+3. Suchen Sie auf dem Standarddashboard nach der Liste **Regionsverwaltung**, und klicken Sie auf die Region, die Sie untersuchen möchten, z.B. **(lokal**).
    
    ![](media/azure-stack-manage-storage-accounts/image1.png)
-4. Select **Storage** from the **Resource Providers** list.
+4. Wählen Sie in der Liste **Ressourcenanbieter** die Option **Speicher** aus.
    
    ![](media/azure-stack-manage-storage-accounts/image2.png)
-5. Now, on the storage Resource Provider administrator blade – scroll down to the **Storage accounts** tab and click it.
+5. Führen Sie dann auf dem Administratorblatt für Speicherressourcenanbieter einen Bildlauf nach unten zur Registerkarte **Speicherkonten** durch, und klicken Sie darauf.
    
    ![](media/azure-stack-manage-storage-accounts/image3.png)
    
-   The resulting page is the list of storage accounts in that region.
+   Daraufhin wird die Seite mit der Liste der Speicherkonten in dieser Region angezeigt.
    
    ![](media/azure-stack-manage-storage-accounts/image4.png)
 
-By default, the first 10 accounts are displayed. You can choose to fetch more by clicking the  **Load more** link at the bottom of the list.
+Standardmäßig werden die ersten 10 Konten angezeigt. Sie können weitere abrufen, indem Sie unten auf der Seite auf den Link **Weitere laden** klicken.
 
 OR
 
-If you are interested in a particular storage account – you can **filter and fetch the relevant accounts** only.
+Wenn Sie an einem bestimmten Speicherkonto interessiert sind, können Sie nur **die entsprechenden Konten abrufen**.
 
 
-**To filter for accounts:**
+**So filtern Sie Konten:**
 
-1. Click **Filter** at the top of the blade.
-2. On the Filter blade, it allows you to specify **account name**, **subscription ID** or **status** to fine-tune the list of storage accounts to be displayed. Use them as appropriate.
-3. Click **Update**. The list should refresh accordingly.
+1. Klicken Sie oben auf dem Blatt auf **Filter**.
+2. Auf dem Blatt „Filter“ können Sie einen **Kontonamen**, eine **Abonnement-ID** oder einen **Status** angeben, um eine Feinabstimmung der angezeigten Liste mit Speicherkonten vorzunehmen. Nutzen Sie die Optionen je nach Bedarf.
+3. Klicken Sie auf **Aktualisieren**. Die Liste sollte entsprechend aktualisiert werden.
    
     ![](media/azure-stack-manage-storage-accounts/image5.png)
-4. To reset the filter: click **Filter**, clear out the  selections and update.
+4. Zum Zurücksetzen des Filters klicken Sie auf **Filter**, deaktivieren die Auswahl und aktualisieren die Liste erneut.
 
-The search text box (on the top of the storage accounts list blade) lets you highlight the selected text in the list of accounts. This is really handy in the case when the full name or id is not easily available.
+Mit dem Suchfeld (oben auf Blatt mit der Speicherkontenliste) können Sie den ausgewählten Text in der Liste der Konten hervorheben. Dies ist äußerst praktisch, wenn der vollständige Name oder die ID nicht einfach verfügbar sind.
 
-You can use free text here to help find the account you are interested in.
+Hier können Sie Freitext verwenden, um das gewünschte Konto zu finden.
 
 ![](media/azure-stack-manage-storage-accounts/image6.png)
 
-## Look at account details
-<a id="look-at-account-details" class="xliff"></a>
-Once you have located the accounts you are interested in viewing, you can click the particular account to view certain details. A new blade opens with the account details such as: the type of the account, creation time, location, etc.
+## <a name="look-at-account-details"></a>Überprüfen der Kontodetails
+Wenn Sie die Konten, die Sie anzeigen möchten, gefunden haben, können Sie auf ein Konto klicken, um bestimmte Details anzuzeigen. Ein neues Blatt mit Kontodetails wird geöffnet, darunter der Typ des Kontos, die Erstellungszeit, der Standort usw.
 
 ![](media/azure-stack-manage-storage-accounts/image7.png)
 
-## Recover a deleted account
-<a id="recover-a-deleted-account" class="xliff"></a>
-You may be in a situation where you need to recover a deleted account.
+## <a name="recover-a-deleted-account"></a>Wiederherstellen eines gelöschten Kontos
+Es gibt Situationen, in denen Sie ein gelöschtes Konto wiederherstellen müssen.
 
-In Azure Stack there is a very simple way to do that:
+In Azure Stack gibt es dazu eine sehr einfache Möglichkeit:
 
-1. Browse to the storage accounts list. See [Find a storage account](#find) in this topic for more information.
-2. Locate that particular account in the list. You may need to filter.
-3. Check the *state* of the account. It should say **Deleted**.
-4. Click the account which opens the account details blade.
-5. On top of this blade, locate the **Recover** button and click it.
-6. Click **Yes** to confirm.
+1. Navigieren Sie zur Liste der Speicherkonten. Weitere Informationen finden Sie in diesem Thema unter [Suchen eines Speicherkontos](#find).
+2. Suchen Sie das gewünschte Konto in der Liste. Möglicherweise müssen Sie filtern.
+3. Überprüfen Sie den *Status* des Kontos. Dieser müsste **Gelöscht** lauten.
+4. Klicken Sie auf das Konto; daraufhin wird das Blatt „Kontodetails“ geöffnet.
+5. Klicken Sie oben auf diesem Blatt auf die Schaltfläche **Wiederherstellen**.
+6. Klicken Sie auf **Ja**, um zu bestätigen.
    
    ![](media/azure-stack-manage-storage-accounts/image8.png)
-7. The recovery is now in *process…wait* for an indication that it was successful.
-   You can also click the “bell” icon at the top of the portal to view progress indications.
+7. Die Wiederherstellung wird jetzt *ausgeführt. Warten* Sie auf den Hinweis, dass sie erfolgreich war.
+   Sie können auch auf das Glockensymbol oben im Portal klicken, um eine Fortschrittsanzeige einzublenden.
    
    ![](media/azure-stack-manage-storage-accounts/image9.png)
    
-   Once the recovered account is successfully synchronized, it can be used again.
+   Sobald das wiederhergestellte Konto erfolgreich synchronisiert wurde, kann es wieder verwendet werden.
 
-### Some Gotchas
-<a id="some-gotchas" class="xliff"></a>
-* Your deleted account shows state as **out of retention**.
+### <a name="some-gotchas"></a>Häufige Fehler
+* Der Status des gelöschten Kontos gibt an, dass es **aus der Aufbewahrung entfernt** wurde.
   
-  This means that the deleted account has exceeded the retention period and may not be recoverable.
-* Your deleted account does not show in the accounts list.
+  Dies bedeutet, dass der Aufbewahrungszeitraum für das gelöschte Konto überschritten ist und es möglicherweise nicht wiederhergestellt werden kann.
+* Das gelöschte Konto wird nicht in der Liste der Benutzerkonten angezeigt.
   
-  This could mean that the deleted account has already been garbage collected. In this case it cannot be recovered. See [Reclaim capacity](#reclaim) in this topic.
+  Dies könnte bedeuten, dass für das gelöschte Konto bereits eine automatische Speicherbereinigung durchgeführt wurde. In diesem Fall kann es nicht wiederhergestellt werden. Siehe [Freigeben von Kapazität](#reclaim) in diesem Thema.
 
-## Set the retention period
-<a id="set-the-retention-period" class="xliff"></a>
-The retention period setting allows a cloud operator to specify a time period in days (between 0 and 9999 days) during which any deleted account can potentially be recovered. The default retention period is set to 15 days. Setting the value to “0” means that any deleted account is immediately out of retention and marked for periodic garbage collection.
+## <a name="set-the-retention-period"></a>Festlegen des Aufbewahrungszeitraums
+Die Einstellung für den Aufbewahrungszeitraum ermöglicht einem Cloudbetreiber das Festlegen eines Zeitraums in Tagen (zwischen 0 und 9999 Tage), in dem gelöschte Konten ggf. wiederhergestellt werden können. Der Standardaufbewahrungszeitraum ist auf 15 Tage festgelegt. Mit dem Wert „0“ wird festgelegt, dass alle gelöschten Konten sofort aus der Aufbewahrung entfernt und für die regelmäßige automatische Speicherbereinigung markiert werden.
 
-**To change the retention period:**
+**Ändern des Aufbewahrungszeitraums:**
 
-1. In an internet browser, navigate to https://adminportal.local.azurestack.external.
-2. Sign in to the Azure Stack administration portal as a cloud operator (using the credentials you provided during deployment)
-3. On the default dashboard – find the **Region management** list and click the region you want to explore – for example **(local**).
-4. Select **Storage** from the **Resource Providers** list.
-5. Click **Settings** at the top to open the setting blade.
-6. Click **Configuration** then edit the retention period value.
+1. Navigieren Sie in einem Internetbrowser zu https://adminportal.local.azurestack.external.
+2. Melden Sie sich als Cloudbetreiber (mit den Anmeldeinformationen, die Sie während der Bereitstellung angegeben haben) beim Azure Stack-Verwaltungsportal an.
+3. Suchen Sie auf dem Standarddashboard nach der Liste **Regionsverwaltung**, und klicken Sie auf die Region, die Sie untersuchen möchten, z.B. **(lokal**).
+4. Wählen Sie in der Liste **Ressourcenanbieter** die Option **Speicher** aus.
+5. Klicken Sie oben auf **Einstellungen**, um das Einstellungsblatt zu öffnen.
+6. Klicken Sie auf **Konfiguration**, und bearbeiten Sie dann den Wert für den Aufbewahrungszeitraum.
 
-   Set the number of days and then save it.
+   Legen Sie die Anzahl von Tagen fest, und speichern Sie sie.
    
-   This value is immediately effective and is set for your entire region.
+   Dieser Wert ist sofort wirksam und gilt für Ihre gesamte Region.
 
    ![](media/azure-stack-manage-storage-accounts/image10.png)
 
-## <a name="reclaim"></a>Reclaim capacity
-One of the side effects of having a retention period is that a deleted account continues to consume capacity until it comes out of the retention period. As a cloud operator you may need a way to reclaim the deleted account space even though the retention period has not yet expired.
+## <a name="reclaim"></a>Freigeben von Kapazität
+Einer der Nebeneffekte eines Aufbewahrungszeitraums ist, dass ein gelöschtes Konto weiterhin Kapazität verbraucht, bis sein Aufbewahrungszeitraum abläuft. Als Cloudbetreiber benötigen Sie möglicherweise eine Möglichkeit zum Freigeben des Speicherplatzes von gelöschten Konten, auch wenn der Aufbewahrungszeitraum noch nicht abgelaufen ist.
 
-You can reclaim capacity using either the portal or PowerShell.
+Sie können Kapazität entweder mithilfe des Azure-Portals oder mit PowerShell freigeben.
 
-**To reclaim capacity using the portal:**
-1. Navigate to the storage accounts blade. See [Find a storage account](#find).
-2. Click **Reclaim space** at the top of the blade.
-3. Read the message and then click **OK**.
+**Freigeben von Kapazität mithilfe des Portals:**
+1. Navigieren Sie zum Blatt „Speicherkonten“. Siehe [Suchen eines Speicherkontos](#find).
+2. Klicken Sie oben auf dem Blatt auf **Speicherplatz freigeben**.
+3. Lesen Sie die Meldung, und klicken Sie dann auf **OK**.
 
     ![](media/azure-stack-manage-storage-accounts/image11.png)
-4. Wait for success notification See the bell icon on the portal.
+4. Warten Sie auf eine Erfolgsmeldung – siehe Glockensymbol im Portal.
 
     ![](media/azure-stack-manage-storage-accounts/image12.png)
-5. Refresh the Storage accounts page. The deleted accounts are no longer shown in the list because they have been purged.
+5. Aktualisieren Sie die Seite „Speicherkonten“. Die gelöschten Konten werden nicht mehr in der Liste angezeigt, da sie endgültig gelöscht wurden.
 
-You can also use PowerShell to explicitly override the retention period and immediately reclaim capacity.
+Sie können auch PowerShell verwenden, um den Aufbewahrungszeitraum explizit außer Kraft zu setzen und sofort Kapazität freizugeben.
 
-**To reclaim capacity using PowerShell:**   
+**Freigeben von Kapazität mithilfe von PowerShell:**   
 
-1. Confirm that you have Azure PowerShell installed and configured. If not, use the following instructions: 
-   * To install the latest Azure PowerShell version and associate it with your Azure subscription, see [How to install and configure Azure PowerShell](http://azure.microsoft.com/documentation/articles/powershell-install-configure/).
-   For more information about Azure Resource Manager cmdlets, see [Using Azure PowerShell with Azure Resource Manager](http://go.microsoft.com/fwlink/?LinkId=394767)
-2. Run the following cmdlet:
+1. Vergewissern Sie sich, dass Azure PowerShell installiert und konfiguriert ist. Ist dies nicht der Fall, gehen Sie folgendermaßen vor: 
+   * Anweisungen zur Installation und zur Zuordnung der aktuellen Azure PowerShell-Version an Ihr Azure-Abonnement finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](http://azure.microsoft.com/documentation/articles/powershell-install-configure/).
+   Weitere Informationen zu Azure Resource Manager-Cmdlets finden Sie unter [Verwenden von Azure PowerShell mit Azure Resource Manager](http://go.microsoft.com/fwlink/?LinkId=394767).
+2. Führen Sie das folgende Cmdlet aus:
 
 > [!NOTE]
-> If you run this cmdlet you permanently delete the account and its contents. It is not recoverable. Use this with care.
+> Wenn Sie dieses Cmdlet ausführen, werden die Konten und deren Inhalte endgültig gelöscht. Es kann nicht wiederhergestellt werden. Verwenden Sie diese Option mit Umsicht.
 
 
         Clear-ACSStorageAccount -ResourceGroupName system.local -FarmName <farm ID>
 
 
-For more details, refer to [Azure Stack powershell documentation.](https://msdn.microsoft.com/library/mt637964.aspx)
+Weitere Informationen finden Sie in der [Azure Stack PowerShell-Dokumentation.](https://msdn.microsoft.com/library/mt637964.aspx)
  
 
-## Migrate a container
-<a id="migrate-a-container" class="xliff"></a>
-Due to uneven storage use by tenants, an cloud operator may find one or more underlying tenant shares using more space than others. If this occurs, the cloud operator can attempt to free up some space on the stressed share by manually migrating some blob containers to another share. 
+## <a name="migrate-a-container"></a>Migrieren eines Containers
+Aufgrund von ungleichmäßiger Speichernutzung durch Mandanten stellt ein Cloudbetreiber möglicherweise fest, dass mindestens ein zugrunde liegender Mandant mehr des gemeinsam genutzten Speicherplatzes belegt als andere. In diesem Fall kann der Cloudbetreiber versuchen, Speicherplatz auf der beanspruchten Freigabe freizugeben, indem einige Blob-Container zu einer anderen Freigabe migriert werden. 
 
-You must use PowerShell to migrate containers.
+Sie müssen PowerShell verwenden, um Container zu migrieren.
 > [!NOTE]
->Blob container migration does not support live migration and currently is an offline operation. During migration and until it is complete the underlying blobs in that container cannot be used and are “offline”. 
+>Die Migration von Blob-Containern unterstützt keine Livemigration und ist zurzeit ein Offlinevorgang. Während der Migration und bis zu ihrem Abschluss können die zugrunde liegenden Blobs in diesem Container nicht verwendet werden und sind „offline“. 
 
-**To migrate containers using PowerShell:**
+**Migrieren von Containern mithilfe von PowerShell:**
 
-1. Confirm that you have Azure PowerShell installed and configured. If not, use the following instructions:
-    * To install the latest Azure PowerShell version and associate it with your Azure subscription, see [How to install and configure Azure PowerShell](http://azure.microsoft.com/documentation/articles/powershell-install-configure/). For more information about Azure Resource Manager cmdlets, see [Using Azure PowerShell with Azure Resource Manager](http://go.microsoft.com/fwlink/?LinkId=394767)
-2. Get the farm name: 
+1. Vergewissern Sie sich, dass Azure PowerShell installiert und konfiguriert ist. Ist dies nicht der Fall, gehen Sie folgendermaßen vor:
+    * Anweisungen zur Installation und zur Zuordnung der aktuellen Azure PowerShell-Version an Ihr Azure-Abonnement finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](http://azure.microsoft.com/documentation/articles/powershell-install-configure/). Weitere Informationen zu Azure Resource Manager-Cmdlets finden Sie unter [Verwenden von Azure PowerShell mit Azure Resource Manager](http://go.microsoft.com/fwlink/?LinkId=394767).
+2. Rufen Sie den Farmnamen ab: 
       
       `$farm = Get-ACSFarm -ResourceGroupName system.local`
-3. Get the shares: 
+3. Rufen Sie die Freigeben ab: 
 
    `$shares = Get-ACSShare -ResourceGroupName system.local -FarmName $farm.FarmName`
 
-4. Get the containers for a given share. Note that count and intent are optional parameters:
+4. Rufen Sie die Container für eine angegebene Freigabe ab. Beachten Sie, dass „count“ und „intent“ optionale Parameter sind:
             
    `$containers = Get-ACSContainer -ResourceGroupName system.local -FarmName $farm.FarmName -ShareName $shares[0].ShareName -Count 4 -Intent Migration`  
 
-   Then examine $containers:
+   Untersuchen Sie dann „$containers“:
 
    `$containers`
 
     ![](media/azure-stack-manage-storage-accounts/image13.png)
-5. Get the best destination shares for the container migration:
+5. Rufen Sie die besten Zielfreigaben für die Containermigration ab:
 
     `$destinationshares= Get-ACSSharesForMigration  -ResourceGroupName system.local -FarmName $farm.farmname -SourceShareName $shares[0].ShareName`
 
-    Then examine $destinationshares:
+    Untersuchen Sie dann „$destinationshares“:
 
     `$destinationshares`
 
     ![](media/azure-stack-manage-storage-accounts/image14.png)
-6. Kick off migration for a container, notice this is an async implementation, so one can loop all containers in a share and track the status using the returned job id.
+6. Starten Sie die Migration für einen Container. Beachten Sie, dass dies eine asynchrone Implementierung ist, damit eine Freigabeschleife für alle Container verwendet und der Status mithilfe der zurückgegebenen Auftrags-ID nachverfolgt werden kann.
 
     `$jobId = Start-ACSContainerMigration -ResourceGroupName system.local -FarmName $farm.farmname -ContainerToMigrate $containers[1] -DestinationShareUncPath $destinationshares.UncPath`
 
-    Then examine $jobId:
+    Untersuchen Sie dann „$jobId“:
 
    ```
    $jobId
    d1d5277f-6b8d-4923-9db3-8bb00fa61b65
    ```
-7. Check status of the migration job by its job id. When the container migration finishes, MigrationStatus is set to “Completed”.
+7. Überprüfen Sie den Status des Migrationsauftrags anhand der Auftrags-ID. Wenn die Containermigration abgeschlossen ist, wird der „MigrationStatus“ auf „Abgeschlossen“ festgelegt.
 
     `Get-ACSContainerMigrationStatus -ResourceGroupName system.local -FarmName $farm.farmname -JobId $jobId`
 
     ![](media/azure-stack-manage-storage-accounts/image15.png)
 
-8. You can cancel an in-progress migration job. This again is an async operation and can be tracked using $jobid:
+8. Sie können die Ausführung eines Migrationsauftrags abbrechen. Auch dabei handelt es sich um einen asynchronen Vorgang, der mithilfe von „$jobid“ nachverfolgt werden kann:
 
     `Stop-ACSContainerMigration-ResourceGroupName system.local -FarmName $farm.farmname -JobId $jobId-Verbose`
 
     ![](media/azure-stack-manage-storage-accounts/image16.png)
 
-    You can check the status of the migration cancel again:
+    Sie können den Status des Migrationsabbruchs erneut überprüfen:
 
     `Get-ACSContainerMigrationStatus-ResourceGroupName system.local -FarmName $farm.farmname -JobId $jobId`
 

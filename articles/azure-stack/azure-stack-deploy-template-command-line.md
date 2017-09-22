@@ -1,6 +1,6 @@
 ---
-title: Deploy templates with the command line in Azure Stack | Microsoft Docs
-description: Learn how to use the cross-platform command line interface (CLI) to deploy templates to Azure Stack.
+title: Bereitstellen von Vorlagen mithilfe der Befehlszeile in Azure Stack | Microsoft-Dokumentation
+description: "Hier erfahren Sie, wie Sie mit der plattformübergreifenden Befehlszeilenschnittstelle (Command Line Interface, CLI) Vorlagen in Azure Stack bereitstellen."
 services: azure-stack
 documentationcenter: 
 author: heathl17
@@ -18,32 +18,31 @@ ms.translationtype: HT
 ms.sourcegitcommit: d941879aee6042b38b7f5569cd4e31cb78b4ad33
 ms.openlocfilehash: cd1b61899ead7b4e86a81125841c1b37d019280b
 ms.contentlocale: de-de
-ms.lasthandoff: 07/10/2017
-
+ms.lasthandoff: 09/15/2017
 
 ---
-# <a name="deploy-templates-in-azure-stack-using-the-command-line"></a>Deploy templates in Azure Stack using the command line
-Use the command line to deploy Azure Resource Manager templates to the Azure Stack Development Kit. Azure Resource Manager templates deploy and provision all the resources for your application in a single, coordinated operation.
+# <a name="deploy-templates-in-azure-stack-using-the-command-line"></a>Bereitstellen von Vorlagen in Azure Stack mithilfe der Befehlszeile
+Verwenden Sie die Befehlszeile zum Bereitstellen von Azure Resource Manager-Vorlagen im Azure Stack Development Kit. Azure Resource Manager-Vorlagen stellen alle Ressourcen für Ihre Anwendung in einem einzigen, koordinierten Vorgang bereit.
 
-## <a name="before-you-begin"></a>Before you begin
- - [Install and connect](azure-stack-connect-cli.md) to Azure Stack with Azure CLI
- - Download the files *azuredeploy.json* and *azuredeploy.parameters.json* from the [create storage account example template](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/101-create-storage-account).
+## <a name="before-you-begin"></a>Voraussetzungen
+ - Verwenden Sie die Azure CLI, um Azure Stack zu [installieren und eine Verbindung herzustellen](azure-stack-connect-cli.md).
+ - Laden Sie die Dateien *azuredeploy.json* und *azuredeploy.parameters.json* aus der [Beispielvorlage zum Erstellen von Speicherkonten](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/101-create-storage-account) herunter.
  
-## <a name="deploy-template"></a>Deploy template
-Navigate to the folder where these files were downloaded and run the following command to deploy the template:
+## <a name="deploy-template"></a>Bereitstellen der Vorlage
+Navigieren Sie zu dem Ordner, in den diese Dateien heruntergeladen wurden, und führen Sie den folgenden Befehl zum Bereitstellen der Vorlage aus:
 
     azure group create "cliRG" "local" –f azuredeploy.json –d "testDeploy" –e azuredeploy.parameters.json
 
-This command deploys the template to the resource group **cliRG** in the Azure Stack POC’s default location.
+Dieser Befehl stellt die Vorlage für die Ressourcengruppe **cliRG** am Standardspeicherort für Azure Stack POC bereit.
 
-## <a name="validate-template-deployment"></a>Validate template deployment
-To see this resource group and storage account, use the following commands:
+## <a name="validate-template-deployment"></a>Überprüfen der Vorlagenbereitstellung
+Um diese Ressourcengruppe und das Speicherkonto anzuzeigen, verwenden Sie die folgenden Befehle:
 
     azure group list
 
     azure storage account list
 
-## <a name="next-steps"></a>Next steps
-[Manage user permissions](azure-stack-manage-permissions.md)
+## <a name="next-steps"></a>Nächste Schritte
+[Verwalten von Benutzerberechtigungen](azure-stack-manage-permissions.md)
 
 

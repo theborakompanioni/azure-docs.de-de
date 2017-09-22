@@ -1,6 +1,6 @@
 ---
-title: Create an offer in Azure Stack | Microsoft Docs
-description: As a cloud administrator, learn how to create an offer for your tenants in Azure Stack.
+title: Erstellen von Angeboten in Azure Stack | Microsoft-Dokumentation
+description: "Erfahren Sie, wie Sie als Cloudadministrator ein Angebot für Ihre Mandanten in Azure Stack erstellen."
 services: azure-stack
 documentationcenter: 
 author: ErikjeMS
@@ -18,38 +18,38 @@ ms.translationtype: HT
 ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
 ms.openlocfilehash: 3d7360a1fb1c0cf42d77b3f39bf92c30438c2e01
 ms.contentlocale: de-de
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 09/15/2017
 
 ---
-# <a name="create-an-offer-in-azure-stack"></a>Create an offer in Azure Stack
-[Offers](azure-stack-key-features.md) are groups of one or more plans that providers present to tenants to purchase or subscribe to. This document shows you how to create an offer that includes the [plan that you created](azure-stack-create-plan.md) in the last step. This offer gives subscribers the ability to provision virtual machines.
+# <a name="create-an-offer-in-azure-stack"></a>Erstellen von Angeboten in Azure Stack
+[Angebote](azure-stack-key-features.md) sind Gruppen mit mindestens einem Plan, die Anbieter Mandanten zum Erwerb oder als Abonnement anbieten. Dieses Dokument zeigt Ihnen, wie Sie ein Angebot erstellen, das den im letzten Schritt [von Ihnen erstellten Plan](azure-stack-create-plan.md) enthält. Durch dieses Angebot erhalten Abonnenten die Möglichkeit, virtuelle Computer bereitzustellen.
 
-1. Sign in to the Azure Stack administrator portal (https://adminportal.local.azurestack.external) > click **New** > **Tenant Offers + Plans** > **Offer**.
+1. Melden Sie sich beim Azure Stack-Administratorportal an (https://adminportal.local.azurestack.external) > klicken Sie auf **Neu** > **Tenant Offers + Plans** (Mandantenangebote und Pläne)  >  **Angebot**.
 
    ![](media/azure-stack-create-offer/image01.png)
-2. In the **New Offer** blade, fill in **Display Name** and **Resource Name**, and then select a new or existing **Resource Group**. The Display Name is the offer's friendly name and is the only information about the offer that the users will see when subscribing. Therefore, be sure to use an intuitive name that helps the user understand what comes with the offer. Only the admin can see the Resource Name. It's the name that admins use to work with the offer as an Azure Resource Manager resource.
+2. Geben Sie auf dem Blatt **Neues Angebot** den **Anzeigenamen** und den **Ressourcenname** an, und wählen Sie anschließend eine neue oder vorhandene **Ressourcengruppe** aus. Der Anzeigename ist der Name des Angebots, der angezeigt wird. Dies ist die einzige Information, die Benutzer beim Abonnieren sehen. Verwenden Sie daher einen intuitiven Namen, anhand dessen die Benutzer wissen, was im Angebot enthalten ist. Nur der Administrator kann den Ressourcennamen einsehen. Es handelt sich um den Namen, mit dem Administratoren das Angebot als Azure-Ressourcen-Manager-Ressource bearbeiten.
 
    ![](media/azure-stack-create-offer/image01a.png)
-3. Click **Base plans** and, in the **Plan** blade, select the plans you want to include in the offer, and then click **Select**. Click **Create** to create the offer.
+3. Klicken Sie auf **Basispläne**, und wählen Sie auf dem Blatt **Plan** die Pläne aus, die im Angebot enthalten sein sollen. Klicken Sie anschließend auf **Auswählen**. Klicken Sie auf **Erstellen** , um das Angebot zu erstellen.
 
    ![](media/azure-stack-create-offer/image02.png)
-4. Click **All Resources**, search for your new offer, click on the new offer, click **Change State**, and then click **Public**.
+4. Klicken Sie auf **Alle Ressourcen**, suchen Sie Ihr neues Angebot, und klicken Sie dann zuerst auf das neue Angebot, dann auf **Status ändern** und anschließend auf **Öffentlich**.
 
    ![](media/azure-stack-create-offer/image03.png)
 
-Offers must be made public for tenants to get the full view when subscribing. Offers can be:
+Angebote müssen öffentlich gemacht werden, damit Mandanten beim Abonnieren die vollständige Ansicht erhalten. Angebote können Folgendes sein:
 
-* **Public**: Visible to tenants.
-* **Private**: Only visible to the cloud administrators. Useful while drafting the plan or offer, or if the cloud administrator wants to approve every subscription.
-* **Decommissioned**: Closed to new subscribers. The cloud administrator can use decommissioned to prevent future subscriptions, but leave current subscribers untouched.
+* **Öffentlich:**für Mandanten sichtbar.
+* **Privat:** nur für die Cloudadministratoren sichtbar. Dies ist hilfreich beim Entwerfen des Plan oder Angebots oder wenn der Cloudadministrator jedes Abonnement genehmigen möchte.
+* **Außer Betrieb:**für neue Abonnenten geschlossen. Der Cloudadministrator kann mit dem Status „Außer Betrieb“ zukünftige Abonnements verhindern und derzeitige Abonnenten unverändert lassen.
 
-Changes to the offer are not immediately visible to the tenant. To see the changes, you might have to logout/login to see the new subscription in the “Subscription picker” when creating resources/resource groups.
+Änderungen am Angebot sind für den Mandanten nicht sofort sichtbar. Damit Ihnen die Änderungen angezeigt werden, müssen Sie sich möglicherweise ab- und wieder anmelden, damit das neue Abonnement in der Abonnementauswahl beim Erstellen von Ressourcen/Ressourcengruppen angezeigt wird.
 
 > [!NOTE]
->You can also create default offers, plans, and quotas by using PowerShell as explained in the [Azure Stack Service Administrator readme](https://github.com/Azure/AzureStack-Tools/tree/master/ServiceAdmin).
+>Sie können mithilfe von PowerShell auch Standardangebote, -pläne und -kontingente erstellen. Informationen dazu finden Sie in der [Infodatei für Azure Stack-Dienstadministratoren](https://github.com/Azure/AzureStack-Tools/tree/master/ServiceAdmin).
 >
 
 
-## <a name="next-steps"></a>Next steps
-[Subscribe to an offer and then provision a VM](azure-stack-subscribe-plan-provision-vm.md)
+## <a name="next-steps"></a>Nächste Schritte
+[Abonnieren eines Angebots und anschließendes Bereitstellen eines virtuellen Computers](azure-stack-subscribe-plan-provision-vm.md)
 

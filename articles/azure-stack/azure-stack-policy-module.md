@@ -1,6 +1,6 @@
 ---
-title: Use the Azure Stack Policy Module| Microsoft Docs
-description: Learn how to constrain an Azure subscription to behave like an Azure Stack subscription
+title: Verwenden des Azure Stack-Richtlinienmoduls | Microsoft-Dokumentation
+description: "Erfahren Sie, wie Sie ein Azure-Abonnement so beschränken, dass es sich wie ein Azure Stack-Abonnement verhält."
 services: azure-stack
 documentationcenter: 
 author: HeathL17
@@ -18,25 +18,25 @@ ms.translationtype: HT
 ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
 ms.openlocfilehash: 22251dd0428b959069dfc392f4ccdda19b08b9de
 ms.contentlocale: de-de
-ms.lasthandoff: 08/23/2017
+ms.lasthandoff: 09/15/2017
 
 ---
-# <a name="manage-azure-policy-using-the-azure-stack-policy-module"></a>Manage Azure policy using the Azure Stack Policy Module
-The Azure Stack Policy module allows you to configure an Azure subscription with the same versioning and service availability as Azure Stack.  The module uses the **New-AzureRMPolicyAssignment** cmdlet to create an Azure policy, which limits the resource types and services available in a subscription.  Once complete, you can use your Azure subscription to develop apps targeted for Azure Stack.  
+# <a name="manage-azure-policy-using-the-azure-stack-policy-module"></a>Verwalten von Azure-Richtlinien mithilfe des Azure Stack-Richtlinienmoduls
+Das Azure Stack-Richtlinienmodul ermöglicht Ihnen die Konfiguration eines Azure-Abonnements mit der gleichen Versionsverwaltung und Dienstverfügbarkeit wie Azure Stack.  Das Modul verwendet das **New-AzureRMPolicyAssignment**-Cmdlet zum Erstellen einer Azure-Richtlinie, das die in einem Abonnement verfügbaren Ressourcentypen und Dienste beschränkt.  Sobald der Vorgang abgeschlossen ist, können Sie Ihr Azure-Abonnement zum Entwickeln von Apps für Azure Stack verwenden.  
 
-## <a name="install-the-module"></a>Install the module
-1. Install the required version of the AzureRM PowerShell module, as described in Step1 of [Install PowerShell for Azure Stack](azure-stack-powershell-install.md).   
-2. [Download the Azure Stack tools from GitHub](azure-stack-powershell-download.md)  
-3. [Configure PowerShell for use with Azure Stack](azure-stack-powershell-configure-user.md)
+## <a name="install-the-module"></a>Installieren des Moduls
+1. Installieren Sie die erforderliche Version des AzureRM PowerShell-Moduls, wie in Schritt 1 von [Install PowerShell for Azure Stack](azure-stack-powershell-install.md) (Installieren von PowerShell für Azure Stack) beschrieben.   
+2. [Laden Sie die Azure Stack-Tools von GitHub herunter.](azure-stack-powershell-download.md)  
+3. [Konfigurieren von PowerShell für die Verwendung mit Azure Stack](azure-stack-powershell-configure-user.md)
 
-4. Import the AzureStack.Policy.psm1 module:
+4. Importieren Sie das AzureStack.Policy.psm1-Modul:
 
    ```PowerShell
    Import-Module .\Policy\AzureStack.Policy.psm1
    ```
 
-## <a name="apply-policy-to-subscription"></a>Apply policy to subscription
-The following command can be used to apply a default Azure Stack policy against your Azure subscription. Before running, replace *Azure Subscription Name* with your Azure subscription.
+## <a name="apply-policy-to-subscription"></a>Übernehmen der Richtlinie für das Abonnement
+Der folgende Befehl kann verwendet werden, um eine Azure Stack-Standardrichtlinie auf Ihr Azure-Abonnement anzuwenden. Ersetzen Sie vor der Ausführung *Azure Subscription Name* durch den Namen Ihres Azure-Abonnements.
 
 ```PowerShell
 $s = Select-AzureRmSubscription -SubscriptionName "<Azure Subscription Name>"
@@ -47,8 +47,8 @@ New-AzureRmPolicyAssignment -Name AzureStack -PolicyDefinition $policy -Scope /s
 
 ```
 
-## <a name="apply-policy-to-a-resource-group"></a>Apply policy to a resource group
-You may want to apply policies in a more granular method.  As an example, you may have other resources running in the same subscription.  You can scope the policy application to a specific resource group, which lets you test your apps for Azure Stack using Azure resources. Before running, replace *Azure Subscription Name* with your Azure subscription name.
+## <a name="apply-policy-to-a-resource-group"></a>Übernehmen einer Richtlinie für eine Ressourcengruppe
+Möglicherweise möchten Sie die Richtlinien in einer präziseren Methode anwenden,  beispielsweise wenn andere Ressourcen im selben Abonnement ausgeführt werden.  Sie können die Anwendung der Richtlinie auf eine bestimmte Ressourcengruppe beschränken, was es Ihnen ermöglicht, Ihre Apps für Azure Stack mithilfe von Azure-Ressourcen zu testen. Ersetzen Sie vor der Ausführung *Azure Subscription Name* durch den Namen Ihres Azure-Abonnements.
 
 ```PowerShell
 $resourceGroupName = ‘myRG01’
@@ -58,15 +58,15 @@ New-AzureRmPolicyAssignment -Name AzureStack -PolicyDefinition $policy -Scope /s
 
 ```
 
-## <a name="policy-in-action"></a>Policy in action
-Once you've deployed the Azure policy, you receive an error when you try to deploy a resource that prohibited by policy.  
+## <a name="policy-in-action"></a>Ausgeführte Richtlinien
+Wenn Sie die Azure-Richtlinie bereitgestellt haben, erhalten Sie eine Fehlermeldung beim Versuch, eine Ressource bereitzustellen, die von der Richtlinie untersagt ist.  
 
-![Result of resource deployment failure because of policy constraint](./media/azure-stack-policy-module/image1.png)
+![Ergebnis eines Ressourcenbereitstellungsfehlers aufgrund einer Richtlinienbeschränkung](./media/azure-stack-policy-module/image1.png)
 
-## <a name="next-steps"></a>Next steps
-[Deploy templates with PowerShell](azure-stack-deploy-template-powershell.md)
+## <a name="next-steps"></a>Nächste Schritte
+[Bereitstellen von Vorlagen mit PowerShell](azure-stack-deploy-template-powershell.md)
 
-[Deploy templates with Azure CLI](azure-stack-deploy-template-command-line.md)
+[Bereitstellen von Vorlagen mit der Azure CLI](azure-stack-deploy-template-command-line.md)
 
-[Deploy Templates with Visual Studio](azure-stack-deploy-template-visual-studio.md)
+[Bereitstellen von Vorlagen mithilfe von Visual Studio](azure-stack-deploy-template-visual-studio.md)
 

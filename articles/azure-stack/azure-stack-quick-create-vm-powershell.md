@@ -1,6 +1,6 @@
 ---
-title: Create a Windows virtual machine by using PowerShell in Azure Stack | Microsoft Docs
-description: Create a Windows virtual machine with PowerShell in Azure Stack.
+title: Erstellen eines virtuellen Windows-Computers mithilfe von PowerShell in Azure Stack | Microsoft-Dokumentation
+description: Erstellen Sie einen virtuellen Windows-Computers mithilfe von PowerShell in Azure Stack.
 services: azure-stack
 documentationcenter: 
 author: SnehaGunda
@@ -18,25 +18,25 @@ ms.translationtype: HT
 ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
 ms.openlocfilehash: 4b6706b289e323706009c40e9d1ad0149f8accc5
 ms.contentlocale: de-de
-ms.lasthandoff: 08/28/2017
+ms.lasthandoff: 09/15/2017
 
 ---
 
-# <a name="create-a-windows-virtual-machine-by-using-powershell-in-azure-stack"></a>Create a Windows virtual machine by using PowerShell in Azure Stack
+# <a name="create-a-windows-virtual-machine-by-using-powershell-in-azure-stack"></a>Erstellen eines virtuellen Windows-Computers mithilfe von PowerShell in Azure Stack
 
-Virtual machines in Azure Stack give you the flexibility of virtualization without having to buy and maintain the physical hardware that runs it. When you use Virtual Machines, understand that there are some differences between the features that are available in Azure and Azure Stack, refer to the [Considerations for virtual machines in Azure Stack](azure-stack-vm-considerations.md) topic to learn about these differences. 
+Virtuelle Computer in Azure Stack bieten Ihnen die Flexibilität der Virtualisierung, ohne dass Sie Zeit und Geld für den Kauf und das Verwalten der Hardware aufwenden zu müssen, die diese hostet. Bei der Verwendung virtueller Computer gibt es einige Unterschiede zwischen den Features, die in Azure bzw. Azure Stack verfügbar sind. Informationen dazu finden Sie im Thema [Considerations for virtual machines in Azure Stack](azure-stack-vm-considerations.md) (Aspekte von virtuellen Computern in Azure Stack). 
 
-This guide details using PowerShell to create a Windows Server 2016 virtual machine in Azure Stack. You can run the steps described in this article either from the Azure Stack Development Kit, or from a Windows-based external client if you are connected through VPN. 
+In dieser Anleitung wird das Erstellen einer Windows Server 2016-VM mithilfe von PowerShell in Azure Stack beschrieben. Führen Sie die in diesem Artikel beschriebenen Schritte entweder über das Azure Stack Development Kit oder über einen Windows-basierten externen Client (wenn Sie über VPN verbunden sind) aus. 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Voraussetzungen
 
-1. The Azure Stack marketplace doesn't contain the Windows Server 2016 image by default. So, before you can create a virtual machine, make sure that the Azure Stack operator [adds the Windows Server 2016 image to the Azure Stack marketplace](azure-stack-add-default-image.md). 
-2. Azure Stack requires specific version of Azure PowerShell module to create and manage the resources. Use the steps described in [Install PowerShell for Azure Stack](azure-stack-powershell-install.md) topic to install the required version.
-3. [Configure the Azure Stack user's PowerShell environment](azure-stack-powershell-configure-user.md) 
+1. Das Windows Server 2016-Image ist standardmäßig nicht im Azure Stack-Marketplace enthalten. Bevor Sie einen virtuellen Computer erstellen, stellen Sie sicher, dass der Azure Stack-Betreiber [das Windows Server 2016-Image zum Azure Stack-Marketplace hinzufügt](azure-stack-add-default-image.md). 
+2. Azure Stack erfordert eine spezifische Version des Azure PowerShell-Moduls, um die Ressourcen zu erstellen und zu verwalten. Führen Sie die im Thema [Install PowerShell for Azure Stack](azure-stack-powershell-install.md) (Installieren von PowerShell für Azure Stack) beschriebenen Schritte aus, um die erforderliche Version zu installieren.
+3. [Konfigurieren der PowerShell-Umgebung des Azure Stack-Benutzers](azure-stack-powershell-configure-user.md) 
 
-## <a name="create-a-resource-group"></a>Create a resource group
+## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-A resource group is a logical container into which Azure Stack resources are deployed and managed. Use the following code block to create a resource group. We have assigned values for all variables in this document, you can use them as is or assign a different value.  
+Eine Ressourcengruppe ist ein logischer Container, in dem Azure Stack-Ressourcen bereitgestellt und verwaltet werden. Mithilfe des folgenden Codes können Sie eine Ressourcengruppe erstellen: Wir haben allen Variablen in diesem Dokument Werte zugewiesen. Sie können entweder diese Werte verwenden oder einen anderen Wert zuweisen.  
 
 ```powershell
 # Create variables to store the location and resource group names.
@@ -48,9 +48,9 @@ New-AzureRmResourceGroup `
   -Location $location
 ```
 
-## <a name="create-storage-resources"></a>Create storage resources 
+## <a name="create-storage-resources"></a>Erstellen von Speicherressourcen 
 
-Create a storage account, and a storage container to store the Windows Server 2016 image.
+Erstellen Sie ein Speicherkonto und einen Speichercontainer zum Speichern des Windows Server 2016-Images.
 
 ```powershell
 # Create variables to store the storage account name and the storage account SKU information
@@ -75,9 +75,9 @@ $container = New-AzureStorageContainer `
   -Permission Blob
 ```
 
-## <a name="create-networking-resources"></a>Create networking resources
+## <a name="create-networking-resources"></a>Erstellen von Netzwerkressourcen
 
-Create a virtual network, subnet, and a public IP address. These resources are used to provide network connectivity to the virtual machine.  
+Erstellen Sie ein virtuelles Netzwerk, ein Subnetz und eine öffentliche IP-Adresse. Diese Ressourcen dienen dazu, Netzwerkkonnektivität für den virtuellen Computer bereitzustellen.  
 
 ```powershell
 # Create a subnet configuration
@@ -102,9 +102,9 @@ $pip = New-AzureRmPublicIpAddress `
   -Name "mypublicdns$(Get-Random)"
 ```
 
-### <a name="create-a-network-security-group-and-a-network-security-group-rule"></a>Create a network security group and a network security group rule
+### <a name="create-a-network-security-group-and-a-network-security-group-rule"></a>Erstellen Sie eine Netzwerksicherheitsgruppe und eine Netzwerksicherheitsgruppen-Regel.
 
-The network security group secures the virtual machine by using inbound and outbound rules. Lets create an inbound rule for port 3389 to allow incoming Remote Desktop connections and an inbound rule for port 80 to allow incoming web traffic.
+Die Netzwerksicherheitsgruppe sichert den virtuellen Computer mithilfe von Regeln für eingehenden und ausgehenden Datenverkehr. Wir erstellen nun eine eingehende Regel für Port 3389, um eingehende Remotedesktopverbindungen zuzulassen, und eine eingehende Regel für Port 80, um eingehenden Webdatenverkehr zuzulassen.
 
 ```powershell
 # Create an inbound network security group rule for port 3389
@@ -139,9 +139,9 @@ $nsg = New-AzureRmNetworkSecurityGroup `
   -SecurityRules $nsgRuleRDP,$nsgRuleWeb 
 ```
  
-### <a name="create-a-network-card-for-the-virtual-machine"></a>Create a network card for the virtual machine
+### <a name="create-a-network-card-for-the-virtual-machine"></a>Erstellen einer Netzwerkkarte für den virtuellen Computer
 
-The network card connects the virtual machine to a subnet, network security group, and public IP address.
+Die Netzwerkkarte verbindet die VM mit einem Subnetz, einer Netzwerksicherheitsgruppe und einer öffentlichen IP-Adresse.
 
 ```powershell
 # Create a virtual network card and associate it with public IP address and NSG
@@ -154,9 +154,9 @@ $nic = New-AzureRmNetworkInterface `
   -NetworkSecurityGroupId $nsg.Id 
 ```
 
-## <a name="create-a-virtual-machine"></a>Create a virtual machine
+## <a name="create-a-virtual-machine"></a>Erstellen eines virtuellen Computers
 
-Create a virtual machine configuration. The configuration includes the settings that are used when deploying the virtual machine such as a virtual machine image, size, credentials.
+Erstellen Sie eine VM-Konfiguration. Diese Konfiguration umfasst die beim Bereitstellen des virtuellen Computers verwendeten Einstellungen, z.B. ein VM-Image, die Größe und die Authentifizierungskonfiguration.
 
 ```powershell
 # Define a credential object to store the username and password for the virtual machine
@@ -205,31 +205,31 @@ New-AzureRmVM `
   -VM $VirtualMachine
 ```
 
-## <a name="connect-to-the-virtual-machine"></a>Connect to the virtual machine
+## <a name="connect-to-the-virtual-machine"></a>Herstellen einer Verbindung mit dem virtuellen Computer
 
-After the virtual machine is successfully created, open a Remote Desktop connection to the virtual machine from the development kit, or from a Windows-based external client if you are connected through VPN. To remote into the virtual machine that you created in the previous step, you need its public IP address. Run the following command to get the public IP address of the virtual machine: 
+Wenn der virtuelle Computer erfolgreich erstellt wurde, öffnen Sie im Development Kit oder über einen Windows-basierten externen Client (wenn Sie über VPN verbunden sind) eine Remotedesktopverbindung mit dem virtuellen Computer. Um eine Remoteverbindung mit dem virtuellen Computer herzustellen, den Sie im vorherigen Schritt erstellt haben, benötigen Sie seine öffentliche IP-Adresse. Führen Sie den folgenden Befehl aus, um die öffentliche IP-Adresse des virtuellen Computers abzurufen: 
 
 ```powershell
 Get-AzureRmPublicIpAddress `
   -ResourceGroupName $ResourceGroupName | Select IpAddress
 ```
  
-Use the following command to create a Remote Desktop session with the virtual machine. Replace the IP address with the publicIPAddress of your virtual machine. When prompted, enter the username and password that you used when creating the virtual machine.
+Erstellen Sie mit dem folgenden Befehl eine Remotedesktopsitzung mit dem virtuellen Computer. Ersetzen Sie die IP-Adresse mit dem publicIPAddress-Wert des virtuellen Computers. Wenn Sie dazu aufgefordert werden, geben Sie den Benutzernamen und das Kennwort ein, das Sie beim Erstellen des virtuellen Computers angegeben haben.
 
 ```powershell
 mstsc /v:<publicIpAddress>
 ```
-## <a name="delete-the-virtual-machine"></a>Delete the virtual machine
+## <a name="delete-the-virtual-machine"></a>Löschen des virtuellen Computers
 
-When no longer needed, use the following command to remove the resource group that contains the virtual machine and its related resources:
+Entfernen Sie die Ressourcengruppe, die den virtuellen Computer und die dazugehörigen Ressourcen enthält, mithilfe des folgenden Befehls, wenn Sie sie nicht mehr benötigen:
 
 ```powershell
 Remove-AzureRmResourceGroup `
   -Name $ResourceGroupName
 ```
 
-## <a name="next-steps"></a>Next steps
+## <a name="next-steps"></a>Nächste Schritte
 
-To learn about Storage in Azure Stack, refer to the [storage overview](azure-stack-storage-overview.md) topic.
+Weitere Informationen zum Speicher in Azure Stack finden Sie in dieser [Übersicht](azure-stack-storage-overview.md).
 
 

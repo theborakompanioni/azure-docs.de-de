@@ -1,6 +1,6 @@
 ---
-title: Manage permissions to resources per user in Azure Stack (service administrator and tenant) | Microsoft Docs
-description: As a service administrator or tenant, learn how to manage RBAC permissions.
+title: "Verwalten von Berechtigungen für Ressourcen pro Benutzer in Azure Stack (Dienstadministrator und Mandant) | Microsoft-Dokumentation"
+description: Hier erfahren Sie, wie Sie als Dienstadministrator oder Mandant RBAC-Berechtigungen verwalten.
 services: azure-stack
 documentationcenter: 
 author: Heathl17
@@ -14,28 +14,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: helaw
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
-ms.openlocfilehash: 80837ff9adb9b02b7a12ce1039e4c50be172bee8
+ms.translationtype: HT
+ms.sourcegitcommit: d941879aee6042b38b7f5569cd4e31cb78b4ad33
+ms.openlocfilehash: 95bdc83351acdec352620feaea3b1e50c0dabad4
 ms.contentlocale: de-de
-ms.lasthandoff: 03/24/2017
-
+ms.lasthandoff: 09/15/2017
 
 ---
-# <a name="manage-role-based-access-control"></a>Manage Role-Based Access Control
-A user in Azure Stack can be a reader, owner, or contributor for each instance of a subscription, resource group, or service. For example, User A might have reader permissions to Subscription 1, but have owner permissions to Virtual Machine 7.
+# <a name="manage-role-based-access-control"></a>Verwalten der rollenbasierten Zugriffssteuerung
+Ein Benutzer in Azure Stack kann ein Leser, ein Besitzer oder ein Mitwirkender an jeder Instanz eines Abonnements, einer Ressourcengruppe oder eines Diensts sein. Beispielsweise kann Benutzer A Leseberechtigungen für Abonnement 1 besitzen, aber auch die Besitzberechtigungen für Virtueller Computer 7.
 
-* Reader: User can view everything, but can’t make any changes.
-* Contributor: User can manage everything except access to resources.
-* Owner: User can manage everything, including access to resources.
+* Leser: Der Benutzer kann alles anzeigen, jedoch keine Änderungen vornehmen.
+* Mitwirkende: Der Benutzer kann alles mit Ausnahme des Zugriffs auf Ressourcen verwalten.
+* Besitzer: Der Benutzer kann alles verwalten, einschließlich des Zugriffs auf Ressourcen.
 
-## <a name="set-access-permissions-for-a-user"></a>Set access permissions for a user
-1. Sign in with an account that has owner permissions to the resource you want to manage.
-2. In the blade for the resource, click the **Access** icon ![](media/azure-stack-manage-permissions/image1.png).
-3. In the **Users** blade, click **Roles**.
-4. In the **Roles** blade, click **Add** to add permissions for the user.
+## <a name="set-access-permissions-for-a-user"></a>Festlegen von Zugriffsberechtigungen für Benutzer
+1. Melden Sie sich mit einem Konto an, das Besitzerberechtigungen für die Ressource hat, die Sie verwalten möchten.
+2. Klicken Sie auf dem Blatt für die Ressource auf das Symbol **Zugriff** ![](media/azure-stack-manage-permissions/image1.png).
+3. Klicken Sie auf dem Blatt **Benutzer** auf **Rollen**.
+4. Klicken Sie auf dem Blatt **Rollen** auf **Hinzufügen**, um Berechtigungen für den Benutzer hinzuzufügen.
 
-## <a name="next-steps"></a>Next steps
-[Add an Azure Stack tenant](azure-stack-add-new-user-aad.md)
+## <a name="next-steps"></a>Nächste Schritte
+[Hinzufügen von Azure Stack-Mandanten](azure-stack-add-new-user-aad.md)
 
 

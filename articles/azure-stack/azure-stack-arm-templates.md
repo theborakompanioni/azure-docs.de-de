@@ -1,6 +1,6 @@
 ---
-title: Use Azure Resource Manager templates in Azure Stack | Microsoft Docs
-description: Learn how to use Azure Resource Manager templates in Azure Stack to provision resources.
+title: Verwenden von Azure Resource Manager-Vorlagen in Azure Stack | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie Azure Resource Manager-Vorlagen in Azure Stack zum Bereitstellen von Ressourcen verwenden.
 services: azure-stack
 documentationcenter: 
 author: heathl17
@@ -14,63 +14,62 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: helaw
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
-ms.openlocfilehash: ab82107c74620522758b02e679689f6eb5013a7f
+ms.translationtype: HT
+ms.sourcegitcommit: d941879aee6042b38b7f5569cd4e31cb78b4ad33
+ms.openlocfilehash: 228e641afefd16edc7b405a2fc1d60184ce41e96
 ms.contentlocale: de-de
-ms.lasthandoff: 06/03/2017
-
+ms.lasthandoff: 09/15/2017
 
 ---
-# <a name="use-azure-resource-manager-templates-in-azure-stack"></a>Use Azure Resource Manager templates in Azure Stack
-Azure Resource Manager templates deploy and provision all the resources for your application in a single, coordinated operation. You can also redeploy templates to make changes to the resources in the resource group.
+# <a name="use-azure-resource-manager-templates-in-azure-stack"></a>Verwenden von Azure-Ressourcen-Manager-Vorlagen in Azure Stack
+Azure Resource Manager-Vorlagen stellen alle Ressourcen für Ihre Anwendung in einem einzigen, koordinierten Vorgang bereit. Sie können Vorlagen auch erneut bereitstellen, um Änderungen an den Ressourcen in der Ressourcengruppe vorzunehmen.
 
-These templates can be deployed with the Microsoft Azure Stack portal, PowerShell, the command line, and Visual Studio.
+Diese Vorlagen können mit dem Microsoft Azure Stack-Portal, PowerShell, über die Befehlszeile und Visual Studio bereitgestellt werden.
 
-The following quickstart templates are available on [GitHub](http://aka.ms/azurestackgithub):
+Die folgenden Schnellstartvorlagen sind auf [GitHub](http://aka.ms/azurestackgithub)verfügbar:
 
-## <a name="deploy-sharepoint-non-high-availability"></a>Deploy SharePoint (non-high availability)
-Use the PowerShell DSC extension to create a SharePoint 2013 farm that includes the following resources:
+## <a name="deploy-sharepoint-non-high-availability"></a>Bereitstellen von SharePoint (ohne hohe Verfügbarkeit)
+Verwenden Sie die PowerShell DSC-Erweiterung, um eine SharePoint 2013-Farm zu erstellen, die folgende Ressourcen enthält:
 
-* A virtual network
-* Three storage accounts
-* Two external load balancers
-* One VM configured as a domain controller for a new forest with a single domain
-* One VM configured as a SQL Server 2014 stand-alone server
-* One VM configured as a one machine SharePoint 2013 farm
+* Ein virtuelles Netzwerk
+* Drei Speicherkonten
+* Zwei externe Load Balancer
+* Einen virtuellen Computer, der als Domänencontroller für eine neue Gesamtstruktur mit einer einzelnen Domäne konfiguriert ist
+* Einen virtuellen Computer, der als eigenständiger Server für SQL Server 2014 konfiguriert ist
+* Einen virtuellen Computer, der als eine SharePoint 2013-Farm mit einem Computer konfiguriert ist
 
-## <a name="deploy-ad-non-high-availability"></a>Deploy AD (non-high availability)
-Use the PowerShell DSC extension to create an AD domain controller server that includes the following resources:
+## <a name="deploy-ad-non-high-availability"></a>Bereitstellen von AD (ohne hohe Verfügbarkeit)
+Verwenden Sie die PowerShell DSC-Erweiterung, um einen Server als AD-Domänencontroller zu erstellen, der folgende Ressourcen enthält:
 
-* A virtual network
-* One storage account
-* One external load balancer
-* One VM configured as a domain controller for a new forest with a single domain
+* Ein virtuelles Netzwerk
+* Ein Speicherkonto
+* Einen externen Load Balancer
+* Einen virtuellen Computer, der als Domänencontroller für eine neue Gesamtstruktur mit einer einzelnen Domäne konfiguriert ist
 
-## <a name="deploy-adsql-non-high-availability"></a>Deploy AD/SQL (non-high availability)
-Use the PowerShell DSC extension to create a SQL Server 2014 stand-alone server that includes the following resources:
+## <a name="deploy-adsql-non-high-availability"></a>Bereitstellen von AD/SQL (ohne hohe Verfügbarkeit)
+Verwenden Sie die PowerShell DSC-Erweiterung, um einen eigenständigen Server für SQL Server 2014 zu erstellen, der folgende Ressourcen enthält:
 
-* A virtual network
-* Two storage accounts
-* One external load balancer
-* One VM configured as a domain controller for a new forest with a single domain
-* One VM configured as a SQL Server 2014 stand-alone server
+* Ein virtuelles Netzwerk
+* Zwei Speicherkonten
+* Einen externen Load Balancer
+* Einen virtuellen Computer, der als Domänencontroller für eine neue Gesamtstruktur mit einer einzelnen Domäne konfiguriert ist
+* Einen virtuellen Computer, der als eigenständiger Server für SQL Server 2014 konfiguriert ist
 
 ## <a name="vm-dsc-extension-azure-automation-pull-server"></a>VM-DSC-Extension-Azure-Automation-Pull-Server
-Use the PowerShell DSC extension to configure an existing virtual machine Local Configuration Manager (LCM) and register it to an Azure Automation Account DSC Pull Server.
+Verwenden Sie die PowerShell DSC-Erweiterung, um einen vorhandenen lokalen Konfigurations-Manager (LCM) für virtuelle Computer zu konfigurieren und auf einem DSC Pull-Server im Azure Automation-Konto zu registrieren.
 
-## <a name="create-a-virtual-machine-from-a-user-image"></a>Create a virtual machine from a user image
-Create a virtual machine from a custom user image. This template also deploys a virtual network (with DNS), public IP address, and a network interface.
+## <a name="create-a-virtual-machine-from-a-user-image"></a>Erstellen eines virtuellen Computers von einem Benutzerimage
+Erstellen Sie einen virtuellen Computer aus einem Benutzerimage. Diese Vorlage stellt auch ein virtuelles Netzwerk (mit DNS), eine öffentliche IP-Adresse und eine Netzwerkschnittstelle bereit.
 
-## <a name="simple-vm"></a>Simple VM
-Deploy a Windows VM that includes a virtual network (with DNS), public IP address, and a network interface.
+## <a name="simple-vm"></a>Einfache VM
+Stellen Sie einen virtuellen Windows-Computer bereit, der ein virtuelles Netzwerk (mit DNS), eine öffentliche IP-Adresse und eine Netzwerkschnittstelle umfasst.
 
-## <a name="cancel-a-running-template-deployment"></a>Cancel a running template deployment
-To cancel a running template deployment, use the `Stop-AzureRmResourceGroupDeployment` PowerShell cmdlet.
+## <a name="cancel-a-running-template-deployment"></a>Abbrechen der Bereitstellung einer Vorlage
+Verwenden Sie zum Abbrechen der Ausführung einer Vorlagenbereitstellung das PowerShell-Cmdlet `Stop-AzureRmResourceGroupDeployment`.
 
-## <a name="next-steps"></a>Next steps
-[Deploy templates with the portal](azure-stack-deploy-template-portal.md)
+## <a name="next-steps"></a>Nächste Schritte
+[Bereitstellen von Vorlagen mit dem Portal](azure-stack-deploy-template-portal.md)
 
-[Azure Resource Manager overview](../azure-resource-manager/resource-group-overview.md)
+[Übersicht über den Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)
 
 

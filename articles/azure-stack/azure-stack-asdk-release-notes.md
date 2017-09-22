@@ -1,5 +1,5 @@
 ---
-title: Microsoft Azure Stack Development Kit release notes | Microsoft Docs
+title: "Microsoft Azure Stack Development Kit – Versionshinweise | Microsoft-Dokumentation"
 description: 
 services: azure-stack
 documentationcenter: 
@@ -18,75 +18,75 @@ ms.translationtype: HT
 ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
 ms.openlocfilehash: 9e82cf367bdc03aaafe1050078194cc3bd746bac
 ms.contentlocale: de-de
-ms.lasthandoff: 08/30/2017
+ms.lasthandoff: 09/15/2017
 
 ---
 
-# <a name="azure-stack-development-kit-release-notes"></a>Azure Stack Development Kit release notes
-These release notes provide information on new features and known issues.
+# <a name="azure-stack-development-kit-release-notes"></a>Versionshinweise für Azure Stack Development Kit
+Diese Versionshinweise enthalten Informationen zu neuen Features und bekannten Problemen.
 
-## <a name="release-build-201706271"></a>Release Build 20170627.1
-Starting with the [20170627.1](azure-stack-updates.md#determine-the-current-version) release, Azure Stack Proof of Concept has been renamed to Azure Stack Development Kit.  Like the Azure Stack POC, Azure Stack Development Kit is intended to be a development and evaluation environment used to explore Azure Stack features, and provide a development platform for Azure Stack.
+## <a name="release-build-201706271"></a>Versionsbuild 20170627.1
+Ab Version [20170627.1](azure-stack-updates.md#determine-the-current-version) wurde Azure Stack Proof of Concept (POC) in Azure Stack Development Kit umbenannt.  Wie Azure Stack POC auch, soll das Azure Stack Development Kit als Entwicklungs- und Evaluierungsumgebung zum Erkunden der Azure Stack-Features und als Entwicklungsplattform für Azure Stack dienen.
 
-### <a name="whats-new"></a>What's new
-- You can now use CLI 2.0 to manage Azure Stack resources from a commandline on popular operating systems.
-- DSV2 virtual machine sizes enable template portability between Azure and Azure Stack.
-- Cloud operators can preview the capacity management experience within the capacity management blade.
-- You can now use the Azure Diagnostics extension to gather diagnostic data from your virtual machines.  Capturing this data is useful when analyzing workload performance and for investigating issues.
-- A new [deployment experience](azure-stack-run-powershell-script.md) replaces previous scripted steps for deployment.  The new deployment experience provides a common graphical interface through the entire deployment lifecycle.
-- Microsoft Accounts (MSA) are now supported during deployment.
-- Multi-Factor Authentication (MFA) is now supported during deployment.  Previously, MFA must be disabled during deployment.
+### <a name="whats-new"></a>Neuigkeiten
+- Sie können CLI 2.0 jetzt verwenden, um Azure Stack-Ressourcen auf gängigen Betriebssystemen über die Befehlszeile zu verwalten.
+- DSV2-VM-Größen ermöglichen die Vorlagenportabilität zwischen Azure und Azure Stack.
+- Cloudbetreiber können eine Vorschau der Benutzeroberfläche für die Kapazitätsverwaltung auf dem entsprechenden Blatt anzeigen.
+- Sie können jetzt die Erweiterung „Azure-Diagnose“ verwenden, um Diagnosedaten von Ihren virtuellen Computern zu sammeln.  Die Erfassung dieser Daten ist nützlich, um die Leistung von Workloads zu analysieren und Probleme zu untersuchen.
+- Eine neue [Benutzeroberfläche für die Bereitstellung](azure-stack-run-powershell-script.md) ersetzt die bisherigen Skriptschritte zum Durchführen der Bereitstellung.  Die neue Umgebung für die Bereitstellung enthält eine allgemeine grafische Benutzeroberfläche für den gesamten Bereitstellungslebenszyklus.
+- Microsoft-Konten (MSA) werden während der Bereitstellung jetzt unterstützt.
+- Multi-Factor Authentication (MFA) wird während der Bereitstellung jetzt unterstützt.  Bisher musste MFA während der Bereitstellung deaktiviert werden.
 
-### <a name="known-issues"></a>Known issues
-#### <a name="deployment"></a>Deployment
-* You may notice deployment taking longer than previous releases. 
-* Get-AzureStackLogs generates diagnostic logs, however, does not log progress to the console.
-* You must use the new [deployment experience](azure-stack-run-powershell-script.md) to deploy Azure Stack, or deployment may fail.
-* Deployments using the *PublicVLANID* parameter will fail.
+### <a name="known-issues"></a>Bekannte Probleme
+#### <a name="deployment"></a>Bereitstellung
+* Unter Umständen fällt Ihnen auf, dass die Bereitstellung länger als bei den vorherigen Versionen dauert. 
+* Get-AzureStackLogs generiert Diagnoseprotokolle, aber der Status wird in der Konsole nicht protokolliert.
+* Sie müssen die neue [Benutzeroberfläche für die Bereitstellung](azure-stack-run-powershell-script.md) verwenden, um Azure Stack bereitzustellen, da der Vorgang ansonsten ggf. nicht erfolgreich ist.
+* Bereitstellungen, für die der Parameter *PublicVLANID* verwendet wird, schlagen fehl.
 
 #### <a name="portal"></a>Portal
-* You may see a blank dashboard in the portal.  You can recover the dashboard by selecting the gear in the upper right of the portal, and selecting "Restore default settings".
-* Tenants are able to browse the full marketplace without a subscription, and will see administrative items like plans and offers.  These items are non-functional to tenants.
-* When selecting an infrastructure role instance,  you see an error showing a reference error. Use the browser’s refresh functionality to refresh the Admin Portal.
-* The "move" button is disabled on the Resource Group blade.  This is expected behavior, because moving resource groups between subscriptions is not currently supported.
-* You will receive repeated notifications for syndicated marketplace items that have completed downloading.
-* You are not able to view permissions to your subscription using the Azure Stack portals.  As a work-around, you can verify permissions using Powershell.
-* You must add `-TenantID` as a flag when exporting a completed deployment as an automation script from the portal.
+* Es kann sein, dass im Portal ein leeres Dashboard angezeigt wird.  Sie können das Dashboard wiederherstellen, indem Sie das Zahnrad oben rechts im Portal und dann die Option „Standardeinstellungen wiederherstellen“ wählen.
+* Mandanten können den gesamten Marketplace ohne Abonnement durchsuchen, und es werden administrative Elemente wie Pläne und Angebote angezeigt.  Diese Elemente sind für Mandanten nicht funktional.
+* Beim Auswählen einer Infrastrukturrolleninstanz wird ein Fehler (Verweisfehler) angezeigt. Nutzen Sie die Aktualisierungsfunktion des Browsers, um das Verwaltungsportal zu aktualisieren.
+* Die Schaltfläche „Verschieben“ ist auf dem Blatt „Ressourcengruppe“ deaktiviert.  Dies ist das erwartete Verhalten, da das Verschieben von Ressourcengruppen zwischen Abonnements derzeit nicht unterstützt wird.
+* Sie erhalten wiederholt Benachrichtigungen für veröffentlichte Marketplace-Elemente, für die der Download abgeschlossen wurde.
+* Sie können mit den Azure Stack-Portalen keine Berechtigungen für Ihr Abonnement anzeigen.  Eine Problemumgehung besteht darin, die Berechtigungen mit PowerShell zu überprüfen.
+* Hierzu müssen Sie `-TenantID` als Flag hinzufügen, wenn Sie eine abgeschlossene Bereitstellung als Automatisierungsskript aus dem Portal exportieren.
 
-#### <a name="services"></a>Services
-* Key Vault services must be created from the tenant portal or tenant API.  If you are logged in as an administrator, make sure to use the tenant portal to create new Key Vault vaults, secrets, and keys.
-* There is no marketplace experience for creating virtual machine scale sets, though they can be created via template.
-* You cannot associate a load balancer with a backend network via the portal.  This task can be completed with PowerShell or with a template.
-* VM Availability sets can only be configured with a fault domain of one and an update domain of one.  
-* A tenant must have an existing storage account before creating a new Azure Function.
-* VM may fail and report "Cannot bind argument to parameter 'VM Network Adapter' because it is null."  Redeployment of the virtual machine succeeds.  
-* Deleting tenant subscriptions results in orphaned resources.  As a workaround, first delete tenant resources or entire resource group, and then delete tenant subscriptions. 
-* You must create a NAT rule when creating a network load balancer, or you will receive an error when you attempt to add a NAT rule after the load balancer is created.
-* Tenants can create virtual machines larger than quota allows.  This behavior is because compute quotas are not enforced.
-* Tenants are given the option to create a virtual machine with geo-redundant storage.  This configuration causes virtual machine creation to fail.
-* It can take up to an hour before tenants can create databases in a new SQL or MySQL SKU. 
-* Creation of items directly on SQL and MySQL hosting servers that are not performed by the resource provider is not supported and may result in mismatched state.
-* AzureRM PowerShell 1.2.10 requires extra configuration steps:
-    * Run this after running Add-AzureRMEnvironment for Azure AD deployments.  Provide the Name and GraphAudience values using the output from `Add-AzureRMEnvironment`.
+#### <a name="services"></a>Dienste
+* Key Vault-Dienste müssen über das Mandantenportal oder die Mandanten-API erstellt werden.  Wenn Sie als Administrator angemeldet sind, sollten Sie unbedingt das Mandantenportal verwenden, um neue Key Vault-Tresore, -Geheimnisse und -Schlüssel zu erstellen.
+* Es ist keine Marketplace-Benutzeroberfläche zum Erstellen von VM-Skalierungsgruppen vorhanden, aber sie können per Vorlage erstellt werden.
+* Es ist für Sie nicht möglich, über das Portal einen Lastenausgleich einem Back-End-Netzwerk zuzuordnen.  Diese Aufgabe kann mit PowerShell oder per Vorlage durchgeführt werden.
+* VM-Verfügbarkeitsgruppen können nur mit einer Fehlerdomäne und einer Updatedomäne konfiguriert werden.  
+* Ein Mandant muss über ein vorhandenes Speicherkonto verfügen, bevor er eine neue Azure-Funktion erstellt.
+* Für die VM tritt ggf. ein Fehler mit dem Hinweis „Das Argument kann nicht an den Parameter 'VM Network Adapter' gebunden werden, da es NULL ist.“ auf.  Die erneute Bereitstellung des virtuellen Computers ist erfolgreich.  
+* Das Löschen von Mandantenabonnements führt zu verwaisten Ressourcen.  Eine Problemumgehung besteht darin, zuerst Mandantenressourcen oder die gesamte Ressourcengruppe zu löschen und anschließend Mandantenabonnements zu löschen. 
+* Sie müssen beim Erstellen eines Lastenausgleichs für das Netzwerk eine NAT-Regel erstellen. Andernfalls erhalten Sie nach der Erstellung des Lastenausgleichs einen Fehler, wenn Sie versuchen, eine NAT-Regel hinzuzufügen.
+* Mandanten können virtuelle Computer erstellen, die die Kontingentvorgabe übersteigen.  Dieses Verhalten ist möglich, weil Computekontingente nicht erzwungen werden.
+* Mandanten haben die Option, einen virtuellen Computer mit georedundantem Speicher zu erstellen.  Diese Konfiguration führt dazu, dass bei der Erstellung des virtuellen Computers ein Fehler auftritt.
+* Es kann bis zu einer Stunde dauern, bevor Mandanten Datenbanken in einer neuen SQL SKU oder MySQL SKU erstellen können. 
+* Die direkte Erstellung von Elementen auf SQL- und MySQL-Hostservern, die nicht vom Ressourcenanbieter durchgeführt wird, wird nicht unterstützt und kann zu einem Konfliktzustand führen.
+* Für AzureRM PowerShell 1.2.10 sind zusätzliche Konfigurationsschritte erforderlich:
+    * Führen Sie Folgendes aus, nachdem Sie Add-AzureRMEnvironment für Azure AD-Bereitstellungen ausgeführt haben.  Geben Sie die Werte für Name und GraphAudience an, indem Sie die Ausgabe von `Add-AzureRMEnvironment` verwenden.
       
       ```PowerShell
       Set-AzureRmEnvironment -Name <Environment Name> -GraphAudience <Graph Endpoint URL>
       ```
-    * Run this after running Add-AzureRMEnvironment for AD FS deployments.  Provide the Name and GraphAudience values using the output of `Add-AzureRMEnvironment`.
+    * Führen Sie Folgendes aus, nachdem Sie Add-AzureRMEnvironment für AD FS-Bereitstellungen ausgeführt haben.  Geben Sie die Werte für Name und GraphAudience an, indem Sie die Ausgabe von `Add-AzureRMEnvironment` verwenden.
       
       ```PowerShell
       Set-AzureRmEnvironment <Environment Name> -GraphAudience <Graph Endpoint URL> -EnableAdfsAuthentication:$true
       ```
     
-    As an example, the following is used for an Azure AD environment:
+    Beispielsweise kann für eine Azure AD-Umgebung Folgendes verwendet werden:
 
     ```PowerShell
       Set-AzureRmEnvironment AzureStack -GraphAudience https://graph.local.azurestack.external/
     ```
 
 #### <a name="fabric"></a>Fabric
-* The compute resource provider displays an unknown state.
-* The BMC IP address & model are not shown in the essential information of a Scale Unit Node.  This behavior is expected in Azure Stack development kit.
-* The restart action on Compute controller infrastructure role (AzS-XRP01 instance) should not be used.
-* The Infrastructure backup blade should not be used.
+* Der Compute-Ressourcenanbieter zeigt einen unbekannten Status an.
+* Die IP-Adresse und das Modell für BMC werden nicht in den Hauptinformationen eines Skalierungseinheitknotens angezeigt.  Dies ist das erwartete Verhalten für das Azure Stack Development Kit.
+* Die Neustartaktion sollte für die Computecontrollerinfrastruktur-Rolle (AzS-XRP01-Instanz) nicht verwendet werden.
+* Das Blatt „Infrastructure backup“ (Infrastruktursicherung) sollte nicht verwendet werden.
 

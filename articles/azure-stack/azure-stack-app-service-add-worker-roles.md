@@ -1,6 +1,6 @@
 ---
-title: Scale out worker roles in App Services - Azure Stack  | Microsoft Docs
-description: Detailed guidance for scaling Azure Stack App Services
+title: "Horizontales Hochskalieren von Workerrollen in App Services – Azure Stack | Microsoft-Dokumentation"
+description: "Ausführliche Anleitung zum Skalieren von Azure Stack App Services"
 services: azure-stack
 documentationcenter: 
 author: kathm
@@ -14,115 +14,115 @@ ms.devlang: na
 ms.topic: article
 ms.date: 4/6/2017
 ms.author: kathm
-translationtype: Human Translation
-ms.sourcegitcommit: 6a06d35eeda2662de89a94c274848c827dc24bfa
-ms.openlocfilehash: 2abcb15789c52b64534b4ff69392ccd49f20142f
-ms.lasthandoff: 01/25/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
+ms.openlocfilehash: f844658c6ad2529fd385476be63095bdae7c88e5
+ms.contentlocale: de-de
+ms.lasthandoff: 09/15/2017
 
 ---
-# <a name="app-service-on-azure-stack-adding-more-worker-roles"></a>App Service on Azure Stack: Adding more worker roles 
+# <a name="app-service-on-azure-stack-adding-more-worker-roles"></a>App Service in Azure Stack: Hinzufügen von weiteren Workerrollen 
 
-This document provides instructions about how to scale App Service on Azure Stack worker roles. It contains steps for creating additional worker roles to support applications of any size.
+Dieses Dokument enthält eine Anleitung zum Skalieren der Workerrollen für App Service in Azure Stack. Es werden die Schritte zum Erstellen von zusätzlichen Workerrollen aufgeführt, um Anwendungen beliebiger Größe zu unterstützen.
 
 > [!NOTE]
-> If your Azure Stack POC Environment does not have more than 96-GB RAM you may have difficulties adding additional capacity.
+> Wenn Ihre Azure Stack POC-Umgebung nicht mehr als 96 GB RAM aufweist, können beim Hinzufügen von zusätzlicher Kapazität Schwierigkeiten auftreten.
 
-App Service on Azure Stack, by default, supports free and shared worker tiers. To add other worker tiers, you need to add more worker roles.
+Standardmäßig unterstützt App Service in Azure Stack kostenlose und gemeinsam genutzte Workerebenen. Um andere Workerebenen hinzufügen zu können, müssen Sie weitere Workerrollen hinzufügen.
 
-If you are not sure what was deployed with the default App Service on Azure Stack installation, you can review additional information in the [App Service on Azure Stack overview](azure-stack-app-service-overview.md).
+Wenn Sie sich nicht sicher sind, welche Elemente mit der App Service-Standardversion bei der Azure Stack-Installation bereitgestellt wurden, helfen Ihnen die zusätzlichen Informationen unter [Übersicht über App Service in Azure Stack](azure-stack-app-service-overview.md) weiter.
 
-There are two ways to add additional capacity to App Service on Azure Stack:
-1.  [Add additional workers directly from with within the App Service Resource Provider Admin](#Add-additional-workers-directly-from-within-the-App-Service-Resource-Provider-Admin).
-2.  [Create additional VMs manually and add them to the App Service Resource Provider](#Create-additional-VMs-manually-and-add-them-to-the-App-Service-Resource-Provider).
+Es gibt zwei Möglichkeiten, für App Service in Azure Stack zusätzliche Kapazität hinzuzufügen:
+1.  [Direktes Hinzufügen von zusätzlichen Workern über den Administrator des App Service-Ressourcenanbieters](#Add-additional-workers-directly-from-within-the-App-Service-Resource-Provider-Admin)
+2.  [Manuelles Erstellen von zusätzlichen VMs und Hinzufügen zum App Service-Ressourcenanbieter](#Create-additional-VMs-manually-and-add-them-to-the-App-Service-Resource-Provider)
 
-## <a name="add-additional-workers-directly-within-the-app-service-resource-provider-admin"></a>Add additional workers directly within the App Service Resource Provider Admin.
+## <a name="add-additional-workers-directly-within-the-app-service-resource-provider-admin"></a>Direktes Hinzufügen von zusätzlichen Workern über den Administrator des App Service-Ressourcenanbieters
 
-1.  Log in to the Azure Stack portal as the service administrator;
-2.  Browse to **Resource Providers** and select the **App Service Resource Provider Admin**. ![Azure Stack Resource Providers][1]
-3.  Click **Roles**.  Here you see the breakdown of all App Service roles deployed.
-4.  Click the option **New Role Instance** ![Add new role instance][2]
-5.  In the **New Role Instance** blade:
-    1. Choose how many additional **role instances** you would like to add.  In the preview, there is a maximum of 10.
-    2. Select the **role type**.  In this preview, this option is limited to Web Worker.
-    3. Select the **worker tier** you would like to deploy this worker into, default choices are Small, Medium, Large, or Shared.  If, you have created your own worker tiers, your worker tiers will also be available for selection.
-    4. Click **OK** to deploy the additional workers
-6.  App Service on Azure Stack will now add the additional VMs, configure them, install all the required software and mark them as ready when this process is complete.  This process can take approximately 80 minutes.
-7.  You can monitor the progress of the readiness of the new workers by viewing the workers in the **roles** blade.
+1.  Melden Sie sich am Azure Stack-Portal als Dienstadministrator an.
+2.  Navigieren Sie zu **Resource Providers** (Ressourcenanbieter), und wählen Sie **App Service Resource Provider Admin** (Administrator von App Service-Ressourcenanbieter) aus. ![Azure Stack-Ressourcenanbieter][1]
+3.  Klicken Sie auf **Rollen**.  Eine Übersicht mit allen bereitgestellten App Service-Rollen wird angezeigt.
+4.  Klicken Sie auf die Option **Neue Rolleninstanz** ![Hinzufügen einer neuen Rolleninstanz][2]
+5.  Gehen Sie auf dem Blatt **Neue Rolleninstanz** wie folgt vor:
+    1. Geben Sie an, wie viele zusätzliche **Rolleninstanzen** Sie hinzufügen möchten.  In der Vorschauversion beträgt der Höchstwert 10.
+    2. Wählen Sie den **Rollentyp** aus.  In dieser Vorschauversion ist diese Option auf Webworker beschränkt.
+    3. Wählen Sie die **Workerebene** aus, auf der Sie diesen Worker bereitstellen möchten. Die Standardoptionen lauten „Klein“, „Mittel“, „Groß“ und „Shared“ (Gemeinsam genutzt).  Wenn Sie Ihre eigenen Workerebenen erstellt haben, können Sie diese ebenfalls auswählen.
+    4. Klicken Sie auf **OK**, um die zusätzlichen Worker bereitzustellen.
+6.  App Service in Azure Stack fügt jetzt die zusätzlichen VMs hinzu, konfiguriert sie, installiert die gesamte erforderliche Software und kennzeichnet sie als bereit, wenn dieser Prozess abgeschlossen ist.  Dieser Prozess kann ca. 80 Minuten dauern.
+7.  Sie können den Bereitschaftsstatus der neuen Worker auf dem Blatt **Rollen** überwachen.
 
 >[!NOTE]
->  In this preview, the integrated New Role Instance flow is limited to Worker Roles and deploy VMs of size A1 only.  We will be expanding this capability in a future release.
+>  In dieser Vorschauversion ist der integrierte Flow „Neue Rolleninstanz“ auf Workerrollen und die ausschließliche Bereitstellung von VMs der Größe A1 beschränkt.  Wir werden diese Funktion in einer zukünftigen Version erweitern.
 
-## <a name="manually-adding-additional-capacity-to-app-service-on-azure-stack"></a>Manually adding additional capacity to App Service on Azure Stack.
+## <a name="manually-adding-additional-capacity-to-app-service-on-azure-stack"></a>Manuelles Hinzufügen von zusätzlicher Kapazität zu App Service in Azure Stack
 
-The following steps are required to add additional roles:
+Die folgenden Schritte sind erforderlich, um zusätzliche Rollen hinzuzufügen:
 
-1. [Create a new virtual machine](#step-1-create-a-new-vm-to-support-the-new-instance-size)
-2. [Configure the virtual machine](#step-2-configure-the-virtual-machine)
-3. [Configure the web worker role in the Azure Stack portal](#step-3-configure-the-web-worker-role-in-the-azure-stack-portal)
-4. [Configure app service plans](#step-4-configure-app-service-plans)
+1. [Erstellen eines neuen virtuellen Computers](#step-1-create-a-new-vm-to-support-the-new-instance-size)
+2. [Konfigurieren des virtuellen Computers](#step-2-configure-the-virtual-machine)
+3. [Konfigurieren der Webworkerrolle im Azure Stack-Portal](#step-3-configure-the-web-worker-role-in-the-azure-stack-portal)
+4. [Konfigurieren von App Service-Plänen](#step-4-configure-app-service-plans)
 
-## <a name="step-1-create-a-new-vm-to-support-the-new-instance-size"></a>Step 1: Create a new VM to support the new instance size
-Create a virtual machine as described in [this article](azure-stack-provision-vm.md), ensuring that the following selections are made:
+## <a name="step-1-create-a-new-vm-to-support-the-new-instance-size"></a>Schritt 1: Erstellen einer neuen VM zum Unterstützen der neuen Instanzgröße
+Erstellen Sie einen virtuellen Computer, wie in [diesem Artikel](azure-stack-provision-vm.md) beschrieben. Achten Sie darauf, dass Sie Folgendes auswählen:
 
-* User name and password: Provide the same user name and password you provided when you installed App Service on Azure Stack.
-* Subscription: Use the default provider subscription.
-* Resource group: Choose **AppService-LOCAL**.
+* Benutzername und Kennwort: Geben Sie den gleichen Benutzernamen und das dazugehörige Kennwort wie bei der Installation von App Service in Azure Stack an.
+* Abonnement: Verwenden Sie das Standard-Anbieterabonnement.
+* Ressourcengruppe: Wählen Sie die Option **AppService-LOCAL**.
 
 > [!NOTE]
-> Store the virtual machines for worker roles in the same resource group as App Service on Azure Stack is deployed to. (This is recommended for this release.)
+> Speichern Sie die virtuellen Computer für Workerrollen in derselben Ressourcengruppe, in der auch App Service in Azure Stack bereitgestellt wurde. (Dies wird für diese Version empfohlen.)
 > 
 > 
 
-## <a name="step-2-configure-the-virtual-machine"></a>Step 2: Configure the Virtual Machine
-Once the deployment has completed, the following configuration is required to support the web worker role:
+## <a name="step-2-configure-the-virtual-machine"></a>Schritt 2: Konfigurieren des virtuellen Computers
+Nach Abschluss der Bereitstellung ist die folgende Konfiguration erforderlich, um die Webworkerrolle zu unterstützen:
 
-1. Browse to the **AppService-LOCAL** resource group in the portal and select the new machine you created in Step 1.
-2. Click connect in the VM blade to download the remote desktop profile.  Open the profile to open a remote desktop session to your VM.
-3. Log in to the VM using the username and password you specified in Step 1.
-4. Open PowerShell by clicking the **Start** button and typing PowerShell. Right-click **PowerShell.exe**, and select **Run as administrator** to open PowerShell in administrator mode.
-5. Copy and paste each of the following commands (one at a time) into the PowerShell window, and press enter:
+1. Navigieren Sie im Portal zur Ressourcengruppe **AppService-LOCAL**, und wählen Sie den neuen Computer aus, den Sie in Schritt 1 erstellt haben.
+2. Klicken Sie auf dem VM-Blatt auf „Verbinden“, um das Remotedesktopprofil herunterzuladen.  Öffnen Sie das Profil, um eine Remotedesktopsitzung für Ihre VM zu öffnen.
+3. Melden Sie sich an der VM an, indem Sie den Benutzernamen mit dem dazugehörigen Kennwort verwenden, den Sie in Schritt 1 angegeben haben.
+4. Öffnen Sie PowerShell, indem Sie auf die Schaltfläche **Start** klicken und „PowerShell“ eingeben. Klicken Sie mit der rechten Maustaste auf **PowerShell.exe**, und wählen Sie die Option **Als Administrator ausführen**, um PowerShell im Administratormodus zu öffnen.
+5. Kopieren Sie die folgenden Befehle (einzeln), und fügen Sie sie in das PowerShell-Fenster ein. Drücken Sie anschließend die EINGABETASTE:
    
    ```netsh advfirewall firewall set rule group="File and Printer Sharing" new enable=Yes```
    ```netsh advfirewall firewall set rule group="Windows Management Instrumentation (WMI)" new enable=yes```
    ```reg add HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\system /v LocalAccountTokenFilterPolicy /t REG\_DWORD /d 1 /f```
    
-6. Close your remote desktop session.
-7. Restart the VM from the portal.
+6. Schließen Sie Ihre Remotedesktopsitzung.
+7. Starten Sie den virtuellen Computer über das Portal.
 
 > [!NOTE]
-> These are minimum requirements for App Service on Azure Stack. They are the default settings of the Windows 2012 R2 image included with Azure Stack. The instructions have been provided for future reference, and for those using a different image.
+> Dies sind Mindestanforderungen für App Service in Azure Stack. Dies sind die Standardeinstellungen des Windows 2012 R2-Image, das in Azure Stack enthalten ist. Die Anleitung wurde zu Referenzzwecken und für Personen angegeben, die ein anderes Image verwenden.
 > 
 > 
 
-## <a name="step-3-configure-the-worker-role-in-the-azure-stack-portal"></a>Step 3: Configure the worker role in the Azure Stack portal
-1. Open the portal as the service administrator on **ClientVM**.
-2. Navigate to **Resource Providers** &gt; **App Service Resource Provider Admin**.![App Service Resource Provider Admin][3]
-3. In the settings blade, click **Roles**.![App Service Resource Provider Roles][4]
-4. Click **Add Role Instance**.
-5. In the textbox for **Server Name** enter the **IP Address** of the server you created earlier (in Section 1).
-6. Select the **Role Type** you would like to add - Controller, Management Server, Front End, Web Worker, Publisher, or File Server.  In this instance, select Web Worker.
-7. Click the **Tier** you would like to deploy the new instance to (small, medium, large, or shared).  If you have created your own worker tiers these will also be available for selection.
-8. Click **OK.**
-9. Go back to the **Roles** view
-10. Click the row corresponding to the Role Type and Worker Tier combination you assigned your VM to.
-11. Look for the Server Name you just added. Review the status column, and wait to move to the next step until the status is "Ready." This can take approximately 80 minutes. ![App Service Resource Provider Role Ready][5]
+## <a name="step-3-configure-the-worker-role-in-the-azure-stack-portal"></a>Schritt 3: Konfigurieren der Workerrolle im Azure Stack-Portal
+1. Öffnen Sie das Portal als Dienstadministrator auf **ClientVM**.
+2. Navigieren Sie zu **Ressourcenanbieter** &gt; **App Service Resource Provider Admin** (Administrator von App Service-Ressourcenanbieter).![Administrator von App Service-Ressourcenanbieter][3]
+3. Klicken Sie auf dem Blatt „Einstellungen“ auf **Rollen**.![Rollen des App Service-Ressourcenanbieters][4]
+4. Klicken Sie auf **Rolleninstanz hinzufügen**.
+5. Geben Sie im Textfeld für **Servername** die **IP-Adresse** des zuvor erstellten Servers ein (in Abschnitt 1).
+6. Wählen Sie den **Rollentyp** aus, den Sie hinzufügen möchten: Controller, Verwaltungsserver, Front-End, Webworker, Herausgeber oder Dateiserver.  Wählen Sie für diese Instanz die Option „Webworker“.
+7. Klicken Sie auf die **Ebene**, auf der Sie die neue Instanz bereitstellen möchten („Klein“, „Mittel“, „Groß“ oder „Shared“ (Gemeinsam genutzt)).  Wenn Sie Ihre eigenen Workerebenen erstellt haben, können Sie diese ebenfalls auswählen.
+8. Klicken Sie auf **OK**.
+9. Wechseln Sie zurück zur Ansicht **Rollen**.
+10. Klicken Sie auf die Zeile mit der Kombination aus Rollentyp und Workerebene, der Sie Ihre VM zugewiesen haben.
+11. Suchen Sie nach dem Servernamen, den Sie gerade hinzugefügt haben. Achten Sie auf die Spalte mit dem Status, und warten Sie, bis der Status „Bereit“ lautet, bevor Sie mit dem nächsten Schritt fortfahren. Dies kann ca. 80 Minuten dauern. ![App Service-Ressourcenanbieter-Rolle: Bereit][5]
 
-## <a name="step-4-configure-app-service-plans"></a>Step 4: Configure app service plans
+## <a name="step-4-configure-app-service-plans"></a>Schritt 4: Konfigurieren von App Service-Plänen
 
-1. Sign in to the portal on the ClientVM.
-2. Navigate to **New** &gt; **Web and Mobile**.
-3. Select the type of application you would like to deploy.
-4. Provide the information for the application, and then select **AppService Plan / Location**.
-    1. Click **Create New**.
-    2. Create your plan, selecting the corresponding pricing tier for the plan.
+1. Melden Sie sich auf der ClientVM am Portal an.
+2. Navigieren Sie zu **Neu** &gt; **Web und mobil**.
+3. Wählen Sie den Anwendungstyp aus, den Sie bereitstellen möchten.
+4. Geben Sie die Informationen für die Anwendung an, und wählen Sie dann die Option **App Service-Plan/Standort**.
+    1. Klicken Sie auf **Neu erstellen**.
+    2. Erstellen Sie Ihren Plan, und wählen Sie den entsprechenden Tarif für den Plan aus.
 
 > [!NOTE]
-> You can create multiple plans while on this blade. Before you deploy, however, ensure you have selected the appropriate plan.
+> Sie können auf diesem Blatt mehrere Pläne erstellen. Stellen Sie vor dem Bereitstellen aber sicher, dass Sie den richtigen Plan ausgewählt haben.
 > 
 > 
 
-The following shows an example of the multiple pricing tiers available by default.  You notice that if there are no available workers for a particular worker tier, the option to choose the corresponding pricing tier is unavailable.![App Service on Azure Stack Default Pricing Tiers][6]
+Unten sehen Sie ein Beispiel für die verschiedenen Tarife, die standardmäßig verfügbar sind.  Sie sehen, dass die Option zum Auswählen des entsprechenden Tarifs nicht verfügbar ist, wenn für eine bestimmte Workerebene keine Worker vorhanden sind.![App Service in Azure Stack – Standardtarife][6]
 
 <!--Image references-->
 [1]: ./media/azure-stack-app-service-add-worker-roles/azure-stack-resource-providers.png

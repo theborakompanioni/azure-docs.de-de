@@ -1,6 +1,6 @@
 ---
-title: Storage accounts in Azure Stack | Microsoft Docs
-description: Learn how to create an Azure Stack storage account.
+title: Speicherkonten in Azure Stack | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie ein Azure Stack-Speicherkonto erstellen.
 services: azure-stack
 documentationcenter: 
 author: vhorne
@@ -18,26 +18,26 @@ ms.translationtype: HT
 ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: de32c0ce79e8357274cc19cd1ea4ec23b85b918f
 ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
+ms.lasthandoff: 09/15/2017
 
 ---
-# <a name="storage-accounts-in-azure-stack"></a>Storage accounts in Azure Stack
-Storage accounts include Blob and Table services, and the unique namespace for your storage data objects. By default, the data in your account is available only to you, the storage account owner.
+# <a name="storage-accounts-in-azure-stack"></a>Speicherkonten in Azure Stack
+Speicherkonten enthalten Blob-und Tabellenspeicherdienste und den eindeutigen Namespace für Ihre Speicherdatenobjekte. Standardmäßig sind die Daten in Ihrem Konto nur für Sie als Speicherkontobesitzer verfügbar.
 
-1. On the Azure Stack POC computer, log in to `https://adminportal.local.azurestack.external` as [an admin](azure-stack-connect-azure-stack.md), and then click **New** > **Data + Storage** > **Storage account**.
+1. Melden Sie sich auf dem Azure Stack POC-Computer unter `https://adminportal.local.azurestack.external` als [Administrator](azure-stack-connect-azure-stack.md) an, und klicken Sie auf **Neu** > **Daten und Speicher** > **Speicherkonto**.
 
    ![](media/azure-stack-provision-storage-account/image01.png)
-2. In the **Create storage account** blade, type a name for your storage account. Create a new **Resource Group**, or select an existing one, then click **Create** to create the storage account.
+2. Geben Sie auf dem Blatt **Speicherkonto erstellen** einen Namen für das Speicherkonto ein. Erstellen Sie eine neue **Ressourcengruppe**, oder wählen Sie eine vorhandene aus, und klicken Sie auf **Erstellen**, um das Speicherkonto zu erstellen.
 
    ![](media/azure-stack-provision-storage-account/image02.png)
-3. To see your new storage account, click **All resources**, then search for the storage account and click its name.
+3. Klicken sie zum Anzeigen des neuen Speicherkontos auf **Alle Ressourcen**, suchen Sie dann nach dem Speicherkonto, und klicken Sie auf seinen Namen.
 
     ![](media/azure-stack-provision-storage-account/image03.png)
 
-### <a name="next-steps"></a>Next steps
-[Use Azure Resource Manager templates](azure-stack-arm-templates.md)
+### <a name="next-steps"></a>Nächste Schritte
+[Verwenden von Azure-Ressourcen-Manager-Vorlagen](azure-stack-arm-templates.md)
 
-[Learn about Azure storage accounts](../storage/common/storage-create-storage-account.md)
+[Informationen zu Azure-Speicherkonten](../storage/common/storage-create-storage-account.md)
 
-[Download the Azure Stack Azure-consistent Storage Validation Guide](http://aka.ms/azurestacktp1doc)
+[Herunterladen des Azure Stack-Überprüfungshandbuchs für mit Azure konsistentem Speicher](http://aka.ms/azurestacktp1doc)
 

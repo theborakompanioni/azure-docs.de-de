@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure Stack Development Kit architecture | Microsoft Docs
-description: View the Microsoft Azure Stack Development Kit architecture.
+title: "Microsoft Azure Stack Development Kit – Architektur | Microsoft-Dokumentation"
+description: Lernen Sie die Architektur des Microsoft Azure Stack Development Kits kennen.
 services: azure-stack
 documentationcenter: 
 author: heathl17
@@ -15,43 +15,43 @@ ms.topic: article
 ms.date: 08/03/2017
 ms.author: helaw
 ms.translationtype: HT
-ms.sourcegitcommit: d941879aee6042b38b7f5569cd4e31cb78b4ad33
-ms.openlocfilehash: ece8cb785ffcceaed476fa729e7471dc7831c155
+ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
+ms.openlocfilehash: feb4f10f9f25515ba85011f467b2ada0cdfcdefb
 ms.contentlocale: de-de
-ms.lasthandoff: 07/10/2017
+ms.lasthandoff: 09/15/2017
 
 ---
-# <a name="microsoft-azure-stack-development-kit-architecture"></a>Microsoft Azure Stack Development Kit architecture
-The Azure Stack Development Kit is a single-node deployment of Azure Stack. All the components are installed in virtual machines running on a single host machine. 
+# <a name="microsoft-azure-stack-development-kit-architecture"></a>Microsoft Azure Stack Development Kit – Architektur
+Das Azure Stack Development Kit ist eine Bereitstellung von Azure Stack mit einem Knoten. Alle Komponenten werden auf virtuellen Computern installiert, die auf einem einzigen Hostcomputer ausgeführt werden. 
 
-## <a name="logical-architecture-diagram"></a>Logical architecture diagram
-The following diagram illustrates the logical architecture of the Azure Stack development kit and its components.
+## <a name="logical-architecture-diagram"></a>Logisches Architekturdiagramm
+Das folgende Diagramm veranschaulicht die logische Architektur des Azure Stack Development Kits und der dazugehörigen Komponenten.
 
 ![](media/azure-stack-architecture/image1.png)
 
-## <a name="virtual-machine-roles"></a>Virtual machine roles
-The Azure Stack development kit offers services using the following VMs on the host:
+## <a name="virtual-machine-roles"></a>Rollen virtueller Computer
+Das Azure Stack Development Kit bietet Dienste mithilfe der folgenden virtuellen Computer auf dem Host:
 
-| Name | Description |
+| Name | Beschreibung |
 | ----- | ----- |
-| **AzS-ACS01** | Azure Stack storage services.|
-| **AzS-ADFS01** | Active Directory Federation Services (ADFS).  |
-| **AzS-BGPNAT01** | Edge router and provides NAT and VPN capabilities for Azure Stack. |
-| **AzS-CA01** | Certificate authority services for Azure Stack role services.|
-| **AzS-DC01** | Active Directory, DNS, and DHCP services for Microsoft Azure Stack.|
-| **AzS-ERCS01** | Emergency Recovery Console VM. |
-| **AzS-GWY01** | Edge gateway services such as VPN site-to-site connections for tenant networks.|
-| **AzS-NC01** | Network Controller, which manages Azure Stack network services.  |
-| **AzS-SLB01** | Load balancing multiplexer services in Azure Stack for both tenants and Azure Stack infrastructure services.  |
-| **AzS-SQL01** | Internal data store for Azure Stack infrastructure roles.  |
-| **AzS-WAS01** | Azure Stack administrative portal and Azure Resource Manager services.|
-| **AzS-WASP01**| Azure Stack user (tenant) portal and Azure Resource Manager services.|
-| **AzS-XRP01** | Infrastructure management controller for Microsoft Azure Stack, including the Compute, Network, and Storage resource providers.|
+| **AzS-ACS01** | Azure Stack-Speicherdienste|
+| **AzS-ADFS01** | Active Directory-Verbunddienste (ADFS)  |
+| **AzS-BGPNAT01** | Edgerouter, bietet NAT- und VPN-Funktionen für Azure Stack |
+| **AzS-CA01** | Zertifizierungsstellendienste für Azure Stack-Rollendienste|
+| **AzS-DC01** | Active Directory, DNS und DHCP-Dienste für Microsoft Azure Stack|
+| **AzS-ERCS01** | Notfallwiederherstellungskonsolen-VM |
+| **AzS-GWY01** | Edge-Gateway-Dienste, z.B. VPN-Site-to-Site-Verbindungen für Mandantennetzwerke|
+| **AzS-NC01** | Netzwerkcontroller, der Azure Stack-Netzwerkdienste verwaltet  |
+| **AzS-SLB01** | Lastenausgleichs-Multiplexerdienste in Azure Stack für beide Mandanten und Azure Stack-Infrastrukturdienste  |
+| **AzS-SQL01** | Interner Datenspeicher für Azure Stack-Infrastrukturrollen  |
+| **AzS-WAS01** | Azure Stack-Verwaltungsportal und Azure Resource Manager-Dienste|
+| **AzS-WASP01**| Azure Stack-Benutzerportal (Mandantenportal) und Azure Resource Manager-Dienste|
+| **AzS-XRP01** | Infrastrukturverwaltungscontroller für Microsoft Azure Stack, einschließlich Compute-, Netzwerk- und Speicherressourcenanbietern|
 
 
-## <a name="next-steps"></a>Next steps
-[Deploy Azure Stack](azure-stack-deploy.md)
+## <a name="next-steps"></a>Nächste Schritte
+[Bereitstellen von Azure Stack](azure-stack-deploy.md)
 
-[First scenarios to try](azure-stack-first-scenarios.md)
+[Erste Testszenarios](azure-stack-first-scenarios.md)
 
 
