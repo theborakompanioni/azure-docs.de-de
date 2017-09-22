@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 04/19/2017
 ms.author: adegeo
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 72ec71814d3c56d1f1df947329eaf66b7dc8f1cf
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: e8053b74e0e4d721523f49bcbb9e33b08bb7a1dc
 ms.contentlocale: de-de
-ms.lasthandoff: 08/21/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="should-i-choose-cloud-services-or-something-else"></a>Sollte ich mich für Clouddienste oder eine andere Lösung entscheiden?
@@ -28,7 +28,7 @@ Ist Azure Cloud Services das Richtige für Sie? Azure bietet verschiedene Hostin
 <a name="tellmecs"></a>
 
 ## <a name="tell-me-about-cloud-services"></a>Informationen zu Cloud Services
-Cloud Services ist ein Beispiel für [Platform-as-a-Service](https://azure.microsoft.com/overview/what-is-paas/) (PaaS). Diese Technologie unterstützt genau wie [App Service](../app-service-web/app-service-web-overview.md) skalierbare und zuverlässige Anwendungen mit geringen Betriebskosten. Cloud Services wird genau wie App Service auf virtuellen Computern gehostet. Allerdings haben Sie bei Cloud Services mehr Kontrolle über die virtuellen Computer. Sie können Ihre eigene Software auf virtuellen Clouddienstcomputern installieren und per Remotezugriff auf sie zugreifen.
+Cloud Services ist ein Beispiel für [Platform-as-a-Service](https://azure.microsoft.com/overview/what-is-paas/) (PaaS). Diese Technologie unterstützt genau wie [App Service](../app-service/app-service-web-overview.md) skalierbare und zuverlässige Anwendungen mit geringen Betriebskosten. Cloud Services wird genau wie App Service auf virtuellen Computern gehostet. Allerdings haben Sie bei Cloud Services mehr Kontrolle über die virtuellen Computer. Sie können Ihre eigene Software auf virtuellen Clouddienstcomputern installieren und per Remotezugriff auf sie zugreifen.
 
 ![cs_diagramcs_diagram](./media/cloud-services-choose-me/diagram.png)
 

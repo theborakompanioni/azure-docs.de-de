@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2015
 ms.author: robb
-translationtype: Human Translation
-ms.sourcegitcommit: 01623fa76175091439d5a571fb8b8f96aee01c4c
-ms.openlocfilehash: 298679883416a871016563aa789522413ff4c019
-
+ms.translationtype: HT
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 2d2cc04887d90b9f005bfe5310a9ce2fb2f7e217
+ms.contentlocale: de-de
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="introducing-microsoft-azure"></a>Einführung in Microsoft Azure
@@ -102,7 +103,7 @@ Beim Erstellen einer Instanz können Sie zwischen zwei Rollen wählen, die beide
 Cloud Services eignen sich ideal für Skalierungen enormen Umfangs, wenn Sie mehr Kontrolle über die Plattform benötigen, als mit Azure Web Apps möglich ist, aber keine Kontrolle des zugrunde liegenden Betriebssystems erforderlich ist.
 
 #### <a name="choosing-a-compute-model"></a>Wählen eines Computemodells
-Die Seite [Azure Web Apps, Cloud Services und Virtual Machines im Vergleich](app-service-web/choose-web-site-cloud-service-vm.md) enthält ausführlichere Informationen zur Auswahl eines Computemodells.
+Die Seite [Azure Web Apps, Cloud Services und Virtual Machines im Vergleich](app-service/choose-web-site-cloud-service-vm.md) enthält ausführlichere Informationen zur Auswahl eines Computemodells.
 
 ## <a name="data-management"></a>Datenverwaltung
 Anwendungen brauchen Daten, und unterschiedliche Arten von Anwendungen benötigen unterschiedliche Arten von Daten. Daher bietet Azure verschiedene Wege, um Daten zu speichern und zu verwalten. Azure bietet viele Speicheroptionen, alle sind jedoch als sehr dauerhafte Speicher ausgelegt.  Bei jeder dieser Optionen werden stets drei Kopien Ihrer Daten in einem Azure-Datencenter synchronisiert – sechs, wenn Sie in Azure die Georedundanz aktivieren, um Sicherungen in einem anderen mindestens 480 Kilometer entfernten Datencenter zu speichern.     
@@ -166,7 +167,7 @@ Gelegentlich möchten Sie große Datenmengen nach Azure verschieben. Dies kann v
 
 ### <a name="file-service"></a>Dateidienst
 ![Azure File Service](./media/fundamentals-introduction-to-azure/FileServiceIntroNew.png)    
-* Abbildung: Azure File Services stellt \\\\server\share-SMB-Pfade für in der Cloud ausgeführte Anwendungen bereit.*
+*Abbildung: Azure File Services stellt \\\\server\share-SMB-Pfade für in der Cloud ausgeführte Anwendungen bereit.*
 
 Lokal stehen häufig große Mengen an Dateispeicher zur Verfügung, auf die über das SMB-Protokoll (Server Message Block) unter Verwendung eines \\\\Server\share-Formats zugegriffen wird. Azure verfügt jetzt über einen Dienst, mit dem Sie dieses Protokoll in der Cloud verwenden können. Anwendungen, die in Azure ausgeführt werden, können damit über bekannte Dateisystem-APIs wie ReadFile und WriteFile Dateien zwischen virtuellen Computern freigeben. Darüber hinaus kann auf die Dateien gleichzeitig über eine REST-Schnittstelle zugegriffen werden. Dies ermöglicht den Zugriff auf die Freigaben über Ihr lokales System, wenn Sie auch ein virtuelles Netzwerk einrichten. Azure-Dateidienste setzt auf den Blobdienst auf und verhält sich daher in Bezug auf Verfügbarkeit, Stabilität, Skalierbarkeit und Georedundanz ebenso wie Azure Storage.
 
@@ -537,9 +538,4 @@ SendGrid ist eine Anwendung in Azure Store, mit der Sie E-Mails senden können. 
 Nachdem Sie nun einen Überblick erhalten haben, besteht der nächste Schritt darin, Ihre erste Azure-Anwendung zu schreiben. Wählen Sie die gewünschte Sprache, [holen Sie sich das entsprechende SDK](/downloads/), und los geht's. Cloud Computing ist der neue Standard – machen Sie jetzt den ersten Schritt.
 
 [Azure Media Services Poster]: http://azure.microsoft.com/documentation/infographics/media-services/
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

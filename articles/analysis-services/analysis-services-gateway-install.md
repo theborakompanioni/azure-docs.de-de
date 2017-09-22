@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 08/22/2017
+ms.date: 09/20/2017
 ms.author: owend
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: 6ef296fb98478be9240f0231c8ad39cd2a0af995
+ms.sourcegitcommit: a29f1e7b39b7f35073aa5aa6c6bd964ffaa6ffd0
+ms.openlocfilehash: d614352a62dc7aca012e9b144473604ae9829af9
 ms.contentlocale: de-de
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 09/21/2017
 
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>Installieren und Konfigurieren eines lokalen Datengateways
@@ -57,11 +57,7 @@ Ein lokales Datengateway ist erforderlich, wenn sich mindestens ein Azure Analys
 
    ![Installationsspeicherort und Lizenzbedingungen](media/analysis-services-gateway-install/aas-gateway-installer-accept.png)
 
-3. Wählen Sie **Lokales Datengateway (empfohlen)** aus. Azure Analysis Services unterstützt nicht den persönlichen Modus.
-
-   ![Wählen des Gatewaytyps](media/analysis-services-gateway-install/aas-gateway-installer-shared.png)
-
-4. Geben Sie ein Konto für die Anmeldung bei Azure ein. Das Konto muss sich in Ihrem Azure Active Directory-Mandanten befinden. Dieses Konto wird vom Gatewayadministrator verwendet. 
+3. Geben Sie ein Konto für die Anmeldung bei Azure ein. Das Konto muss sich in Ihrem Azure Active Directory-Mandanten befinden. Dieses Konto wird vom Gatewayadministrator verwendet. 
 
    ![Eingeben eines Kontos für die Anmeldung bei Azure](media/analysis-services-gateway-install/aas-gateway-installer-account.png)
 

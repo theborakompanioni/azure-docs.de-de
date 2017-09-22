@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 11/11/2016
 ms.author: kraigb
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: d5e9a300dcea137bf0d3db2da2dfb5c2e6a152af
+ms.translationtype: HT
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: ba36ad0f46ce681b61acc576448fd36441b43f72
 ms.contentlocale: de-de
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="using-windows-powershell-scripts-to-publish-to-dev-and-test-environments"></a>Veröffentlichung in Entwicklungs- und Testumgebungen mithilfe von Windows PowerShell-Skripts
@@ -38,7 +38,7 @@ Sie benötigen das Azure SDK nicht, um die Skripts für Webprojekte zu generiere
 Für die Arbeit mit PowerShell in Visual Studio für die Azure-Entwicklung stehen weitere Tools und Ressourcen zur Verfügung. Weitere Informationen finden Sie unter [PowerShell-Tools für Visual Studio](http://go.microsoft.com/fwlink/?LinkId=404012).
 
 ## <a name="generating-the-publish-scripts"></a>Generieren der Veröffentlichungsskripts
-Sie können die Veröffentlichungsskripts für einen virtuellen Computer generieren, der Ihre Website hostet, wenn Sie ein neues Projekt anhand [dieser Anweisungen](virtual-machines/windows/classic/web-app-visual-studio.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) erstellen. Sie können auch [Veröffentlichungsskripts für Web-Apps in Azure App Service generieren](app-service-web/app-service-web-get-started-dotnet.md).
+Sie können die Veröffentlichungsskripts für einen virtuellen Computer generieren, der Ihre Website hostet, wenn Sie ein neues Projekt anhand [dieser Anweisungen](virtual-machines/windows/classic/web-app-visual-studio.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) erstellen. Sie können auch [Veröffentlichungsskripts für Web-Apps in Azure App Service generieren](app-service/app-service-web-get-started-dotnet.md).
 
 ## <a name="scripts-that-visual-studio-generates"></a>Von Visual Studio generierte Skripts
 Visual Studio generiert einen Ordner auf Projektebene namens **PublishScripts** , der zwei Windows PowerShell-Dateien enthält: ein Veröffentlichungsskript für Ihren virtuellen Computer oder die Website und ein Modul mit Funktionen, die Sie in den Skripts verwenden können. Visual Studio generiert außerdem eine Datei im JSON-Format, die die Details des von Ihnen bereitgestellten Projekts angibt.
@@ -141,7 +141,7 @@ Wenn Sie einen virtuellen Computer erstellen, sieht die JSON-Konfigurationsdatei
 
 Sie können die JSON-Konfiguration bearbeiten, um das Verhalten beim Ausführen der Veröffentlichungsskripts zu ändern. Die Abschnitte `cloudService` und `virtualMachine` sind erforderlich, der Abschnitt `databases` kann jedoch gelöscht werden, wenn er nicht benötigt wird. Die Eigenschaften, die in der von Visual Studio generierten Standardkonfigurationsdatei leer sind, sind optional. Die Eigenschaften, die in der Standardkonfigurationsdatei Werte aufweisen, sind erforderlich.
 
-Wenn Sie eine Website mit mehreren Bereitstellungsumgebungen (als Slots bezeichnet) anstelle einer einzelnen Produktionswebsite in Azure verwenden, können Sie den Slotnamen in den Namen der Website in der JSON-Konfigurationsdatei einschließen. Wenn Sie z.B. eine Website mit dem Namen **mysite** und einen zugehörigen Slot namens **test** verwenden, lautet der URI „mysite-test.cloudapp.net“. Der richtige Name zur Verwendung in der Konfigurationsdatei lautet jedoch „mysite(test)“. Diese Vorgehensweise ist nur möglich, wenn die Website und die Slots bereits in Ihrem Abonnement vorhanden sind. Andernfalls erstellen Sie die Website, indem Sie das Skript ausführen, ohne den Slot anzugeben. Erstellen Sie den Slot dann im [klassischen Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885), und führen Sie anschließend das Skript mit dem geänderten Websitenamen aus. Weitere Informationen zu den Bereitstellungsslots für Web-Apps finden Sie unter [Einrichten von Stagingumgebungen für Web-Apps in Azure App Service](app-service-web/web-sites-staged-publishing.md).
+Wenn Sie eine Website mit mehreren Bereitstellungsumgebungen (als Slots bezeichnet) anstelle einer einzelnen Produktionswebsite in Azure verwenden, können Sie den Slotnamen in den Namen der Website in der JSON-Konfigurationsdatei einschließen. Wenn Sie z.B. eine Website mit dem Namen **mysite** und einen zugehörigen Slot namens **test** verwenden, lautet der URI „mysite-test.cloudapp.net“. Der richtige Name zur Verwendung in der Konfigurationsdatei lautet jedoch „mysite(test)“. Diese Vorgehensweise ist nur möglich, wenn die Website und die Slots bereits in Ihrem Abonnement vorhanden sind. Andernfalls erstellen Sie die Website, indem Sie das Skript ausführen, ohne den Slot anzugeben. Erstellen Sie den Slot dann im [klassischen Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885), und führen Sie anschließend das Skript mit dem geänderten Websitenamen aus. Weitere Informationen zu den Bereitstellungsslots für Web-Apps finden Sie unter [Einrichten von Stagingumgebungen für Web-Apps in Azure App Service](app-service/web-sites-staged-publishing.md).
 
 ## <a name="how-to-run-the-publish-scripts"></a>Ausführen der Veröffentlichungsskripts
 Wenn Sie noch nie zuvor ein Windows PowerShell-Skript ausgeführt haben, müssen Sie zuerst die Ausführungsrichtlinie festlegen, damit die Ausführung von Skripts ermöglicht wird. Diese Sicherheitsmaßnahme verhindert die Ausführung von Windows PowerShell-Skripts durch Benutzer, die von Schadsoftware oder Viren betroffen sein könnten, die eine Skriptausführung beinhalten.

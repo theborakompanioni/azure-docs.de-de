@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/04/2017
 ms.author: asirveda;robmcm
 ms.translationtype: HT
-ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
-ms.openlocfilehash: 0c388862d927a1492745832225c686670c071f86
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 8776142d5452bf5057990702c89aa1a541382ffc
 ms.contentlocale: de-de
-ms.lasthandoff: 08/10/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 
@@ -214,18 +214,18 @@ Weitere Informationen zum Konfigurieren zusätzlicher Einstellungen für Ihre We
 
 [Azure App Service]: https://azure.microsoft.com/services/app-service/
 [Azure Container Service]: https://azure.microsoft.com/services/container-service/
-[Azure Java Developer Center]: https://azure.microsoft.com/develop/java/
+[Azure Developer Center für Java]: https://azure.microsoft.com/develop/java/
 [Azure-Portal]: https://portal.azure.com/
-[Konfigurieren von Web-Apps in Azure App Service]: /azure/app-service-web/web-sites-configure
-[Bereitstellen der App in Azure App Service mithilfe von FTP/S]: https://docs.microsoft.com/azure/app-service-web/app-service-deploy-ftp
-[kostenloses Azure-Konto]: https://azure.microsoft.com/pricing/free-trial/
-[Git-Client]: https://github.com/
+[Konfigurieren von Web-Apps in Azure App Service]: /azure/app-service/web-sites-configure
+[Bereitstellen der App in Azure App Service mithilfe von FTP/S]: https://docs.microsoft.com/azure/app-service/app-service-deploy-ftp
+[Kostenloses Azure-Konto]: https://azure.microsoft.com/pricing/free-trial/
+[Git]: https://github.com/
 [Java Developer Kit (JDK)]: http://www.oracle.com/technetwork/java/javase/downloads/
 [Java-Tools für Visual Studio Team Services]: https://java.visualstudio.com/
 [Maven]: http://maven.apache.org/
-[MSDN-Abonnentenvorteile]: https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/
+[Vorteile für MSDN-Abonnenten]: https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/
 [Spring Boot]: http://projects.spring.io/spring-boot/
-[Spring Boot Getting Started]: https://github.com/spring-guides/gs-spring-boot
+[Erste Schritte mit Spring Boot]: https://github.com/spring-guides/gs-spring-boot
 [Spring-Framework]: https://spring.io/
 
 <!-- IMG List -->

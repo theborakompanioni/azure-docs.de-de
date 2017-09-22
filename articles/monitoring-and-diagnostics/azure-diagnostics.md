@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2017
 ms.author: robb
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: e2d3a6725ee53dc6d6986b185fac143901ba6955
-ms.lasthandoff: 03/31/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 0c6e4d9d2a3744f607b72364f3944c700acd070c
+ms.contentlocale: de-de
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="what-is-azure-diagnostics"></a>Was ist die Azure-Diagnose?
@@ -48,7 +48,7 @@ Informationen finden Sie unter [Azure-Diagnose – Versionsverlauf](azure-diagno
 Wählen Sie, zu welchem Dienst Sie Diagnoseinformationen erfassen möchten, und lesen Sie zum Einstieg die folgenden Artikel. Verwenden Sie die allgemeinen Links zur Azure-Diagnose als Referenz für bestimmte Aufgaben.
 
 ## <a name="web-apps"></a>Web-Apps
-Beachten Sie, dass die Azure-Diagnose nicht von Web-Apps verwendet wird. Entsprechende Informationen finden Sie unter [Web-Apps](../app-service-web/web-sites-enable-diagnostic-log.md).
+Beachten Sie, dass die Azure-Diagnose nicht von Web-Apps verwendet wird. Entsprechende Informationen finden Sie unter [Web-Apps](../app-service/web-sites-enable-diagnostic-log.md).
 
 ## <a name="cloud-services-using-azure-diagnostics"></a>Clouddienste mit der Azure-Diagnose
 * Wenn Sie Visual Studio verwenden, finden Sie unter [Verfolgen einer Cloud Services-Anwendung mit Visual Studio](../vs-azure-tools-debug-cloud-services-virtual-machines.md) Informationen für den Einstieg. Andernfalls finden Sie weitere Informationen in folgenden Artikeln:

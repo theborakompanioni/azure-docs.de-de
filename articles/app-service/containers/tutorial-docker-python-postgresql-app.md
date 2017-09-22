@@ -16,15 +16,15 @@ ms.date: 05/03/2017
 ms.author: beverst
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
-ms.openlocfilehash: 7757ecf442314d294432266750502e384e39bde0
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 36cf3c0bb4a28a4ccfd5fc94b72fba023516a9ce
 ms.contentlocale: de-de
-ms.lasthandoff: 09/07/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="build-a-docker-python-and-postgresql-web-app-in-azure"></a>Erstellen einer Docker Python- und PostgreSQL-Web-App in Azure
 
-Azure-Web-Apps bietet einen überaus skalierbaren Webhostingdienst mit eigenständigem Patchen. In diesem Tutorial wird gezeigt, wie eine einfache Docker Python-Web-App in Azure erstellt wird. Sie stellen zudem eine Verbindung dieser App mit einer PostgreSQL-Datenbank her. Wenn Sie fertig sind, verfügen Sie über eine Python Flask-Anwendung, die in einem Docker-Container in [Azure App Service-Web-Apps](../../app-service-web/app-service-web-overview.md) ausgeführt wird.
+Azure-Web-Apps bietet einen überaus skalierbaren Webhostingdienst mit eigenständigem Patchen. In diesem Tutorial wird gezeigt, wie eine einfache Docker Python-Web-App in Azure erstellt wird. Sie stellen zudem eine Verbindung dieser App mit einer PostgreSQL-Datenbank her. Wenn Sie fertig sind, verfügen Sie über eine Python Flask-Anwendung, die in einem Docker-Container in [Azure App Service-Web-Apps](../app-service-web-overview.md) ausgeführt wird.
 
 ![Docker Python Flask-App in Azure App Service](./media/tutorial-docker-python-postgresql-app/docker-flask-in-azure.png)
 
@@ -111,7 +111,7 @@ INFO  [alembic.runtime.migration] Running upgrade  -> 791cd7d80402, empty messag
  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
 ```
 
-Navigieren Sie in einem Browser zu http://127.0.0.1:5000. Klicken Sie auf **Registrieren**, und erstellen Sie einen Testbenutzer.
+Navigieren Sie in einem Browser zu `http://127.0.0.1:5000`. Klicken Sie auf **Registrieren**, und erstellen Sie einen Testbenutzer.
 
 ![Lokal ausgeführte Python Flask-Anwendung](./media/tutorial-docker-python-postgresql-app/local-app.png)
 
@@ -149,7 +149,7 @@ Verwenden Sie den Azure CLI-Befehl [az appservice list-locations](/cli/azure/app
 
 Erstellen Sie mit dem Befehl [az postgresql server create](/cli/azure/documentdb#create) einen PostgreSQL-Server.
 
-Ersetzen Sie im folgenden Befehl den Platzhalter  *\<postgresql_name>* durch einen eindeutigen Servernamen und den Platzhalter  *\<admin_username>*durch einen Benutzernamen. Der Servername dient als Teil Ihrer PostgreSQL-Endpunkts (`https://<postgresql_name>.postgres.database.azure.com`). Daher muss der Name auf allen Servern in Azure eindeutig sein. Der Benutzername ist erforderlich, um das anfängliche Konto des Administratorbenutzers für die Datenbank zu erstellen. Sie werden aufgefordert, ein Kennwort für diesen Benutzer auszuwählen.
+Ersetzen Sie im folgenden Befehl den Platzhalter * \<postgresql_name>* durch einen eindeutigen Servernamen und den Platzhalter * \<admin_username>*durch einen Benutzernamen. Der Servername dient als Teil Ihrer PostgreSQL-Endpunkts (`https://<postgresql_name>.postgres.database.azure.com`). Daher muss der Name auf allen Servern in Azure eindeutig sein. Der Benutzername ist erforderlich, um das anfängliche Konto des Administratorbenutzers für die Datenbank zu erstellen. Sie werden aufgefordert, ein Kennwort für diesen Benutzer auszuwählen.
 
 ```azurecli-interactive
 az postgres server create --resource-group myResourceGroup --name <postgresql_name> --admin-user <admin_username>
@@ -554,5 +554,5 @@ Standardmäßig wird im Portal die Seite **Übersicht** Ihrer Web-App angezeigt.
 Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie Ihrer Web-App einen benutzerdefinierten DNS-Namen zuordnen.
 
 > [!div class="nextstepaction"] 
-> [Zuordnen eines vorhandenen benutzerdefinierten DNS-Namens zu Azure-Web-Apps](../../app-service-web/app-service-web-tutorial-custom-domain.md)
+> [Zuordnen eines vorhandenen benutzerdefinierten DNS-Namens zu Azure-Web-Apps](../app-service-web-tutorial-custom-domain.md)
 

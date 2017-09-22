@@ -15,10 +15,10 @@ ms.date: 09/13/2017
 ms.author: markvi
 ms.reviewer: jairoc
 ms.translationtype: HT
-ms.sourcegitcommit: 47ba7c7004ecf68f4a112ddf391eb645851ca1fb
-ms.openlocfilehash: 8b8ab2883234850fe243c4d7473d737c497204b4
+ms.sourcegitcommit: 4c2be7c35f678430d0ad83a3374ef25f68fd2509
+ms.openlocfilehash: 8eb0e7aa1a0fd55ece4adcfe4619c64845b7d271
 ms.contentlocale: de-de
-ms.lasthandoff: 09/14/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory: Häufig gestellte Fragen zur Geräteverwaltung
@@ -153,10 +153,20 @@ Für andere Windows-Plattformen, die in die lokale AD-Domäne eingebunden sind:
 
 ---
 
-**F: Wo finde ich Anweisungen zum Einrichten der in Azure AD eingebundenen Hybridgeräte?**
+**F: Wo finde ich Anweisungen zum Einrichten der automatischen Geräteregistrierung?**
 
-**A:** Ausführliche Anweisungen finden Sie unter [Einrichten von in Azure Active Directory eingebundenen Hybridgeräten](device-management-hybrid-azuread-joined-devices-setup.md).
+**A:** Detaillierte Anleitungen finden Sie unter [Konfigurieren der automatischen Registrierung von in die Domäne eingebundenen Windows-Geräten mit Azure Active Directory](active-directory-conditional-access-automatic-device-registration-setup.md).
 
+---
+
+**F: Wo finde ich Informationen zur Problembehandlung bei der automatischen Geräteregistrierung?**
+
+**A:** Informationen zur Problembehandlung finden Sie unter:
+
+- [Beheben von Problemen bei der automatischen Registrierung von Computern, die in die Azure AD-Domäne eingebunden sind, für Windows 10 und Windows Server 2016](device-management-troubleshoot-hybrid-join-windows-current.md)
+
+- [Beheben von Problemen bei der automatischen Registrierung von Computern, die in die Azure AD-Domäne eingebunden sind, für kompatible Windows-Clients](device-management-troubleshoot-hybrid-join-windows-legacy.md)
+ 
 ---
 
 

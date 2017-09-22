@@ -15,14 +15,14 @@ ms.workload: multiple
 ms.date: 11/11/2016
 ms.author: kraigb
 ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
-ms.openlocfilehash: 2516c0eb8ce470577731db9b844d5b9038465477
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: d3c85cde864d599871e195df2e81548180e647ba
 ms.contentlocale: de-de
-ms.lasthandoff: 08/28/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="configuring-diagnostics-for-azure-cloud-services-and-virtual-machines"></a>Konfigurieren der Diagnose für Azure Cloud Services und Virtual Machines
-Wenn Sie Probleme bei einem Azure-Clouddienst oder virtuellen Azure-Computer beheben müssen, können Sie mithilfe von Visual Studio Azure-Diagnose leichter konfigurieren. Azure-Diagnose erfasst Systemdaten und Protokollierungsdaten auf den virtuellen Computern und den virtuellen Computerinstanzen, auf denen der Clouddienst ausgeführt wird, und überträgt die Daten in ein Speicherkonto Ihrer Wahl. Weitere Informationen zur Diagnoseprotokollierung in Azure finden Sie unter [Aktivieren der Diagnoseprotokollierung für Web-Apps in Azure App Service](app-service-web/web-sites-enable-diagnostic-log.md) .
+Wenn Sie Probleme bei einem Azure-Clouddienst oder virtuellen Azure-Computer beheben müssen, können Sie mithilfe von Visual Studio Azure-Diagnose leichter konfigurieren. Azure-Diagnose erfasst Systemdaten und Protokollierungsdaten auf den virtuellen Computern und den virtuellen Computerinstanzen, auf denen der Clouddienst ausgeführt wird, und überträgt die Daten in ein Speicherkonto Ihrer Wahl. Weitere Informationen zur Diagnoseprotokollierung in Azure finden Sie unter [Aktivieren der Diagnoseprotokollierung für Web-Apps in Azure App Service](app-service/web-sites-enable-diagnostic-log.md) .
 
 In diesem Thema wird das Aktivieren und Konfigurieren von Azure-Diagnose in Visual Studio vor und nach der Bereitstellung sowie auf virtuellen Azure-Computern veranschaulicht. Sie erfahren auch, wie Sie die Arten von Diagnoseinformationen, die Sie erfassen möchten, auswählen und die Informationen nach der Erfassung anzeigen können.
 
@@ -137,7 +137,7 @@ Nachdem Sie die Sammlung von Diagnosedaten aktiviert haben, können Sie genau au
 
   ![Anwendungsprotokolle](./media/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines/IC758145.png)
 
-  Weitere Informationen zu Anwendungsprotokollen finden Sie unter [Aktivieren der Diagnoseprotokollierung für Web-Apps in Azure App Service](app-service-web/web-sites-enable-diagnostic-log.md) .
+  Weitere Informationen zu Anwendungsprotokollen finden Sie unter [Aktivieren der Diagnoseprotokollierung für Web-Apps in Azure App Service](app-service/web-sites-enable-diagnostic-log.md) .
 
 ### <a name="windows-event-logs"></a>Windows-Ereignisprotokolle
 Wählen Sie das Kontrollkästchen **Übertragung von Windows-Ereignisprotokollen aktivieren** aus, wenn Sie Windows-Ereignisprotokolle erfassen möchten. Sie können die Anzahl der Minuten erhöhen oder verringern, in denen die Ereignisprotokolle an Ihr Speicherkonto übertragen werden, indem Sie den Wert für **Übertragungszeitraum (Min.)** ändern. Wählen Sie die Kontrollkästchen für die Ereignistypen aus, die Sie nachverfolgen möchten.
@@ -301,6 +301,6 @@ Die Methoden von RoleEntryPoint werden im Kontext von WAIISHost.exe und nicht vo
 Legen Sie im Fenster **Eigenschaften** die Eigenschaft **In Ausgabeverzeichnis kopieren** auf **Immer kopieren** fest.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zur Diagnoseprotokollierung in Azure finden Sie unter [Aktivieren der Diagnose in Azure Cloud Services und Virtual Machines](cloud-services/cloud-services-dotnet-diagnostics.md) und [Aktivieren der Diagnoseprotokollierung für Web-Apps in Azure App Service](app-service-web/web-sites-enable-diagnostic-log.md).
+Weitere Informationen zur Diagnoseprotokollierung in Azure finden Sie unter [Aktivieren der Diagnose in Azure Cloud Services und Virtual Machines](cloud-services/cloud-services-dotnet-diagnostics.md) und [Aktivieren der Diagnoseprotokollierung für Web-Apps in Azure App Service](app-service/web-sites-enable-diagnostic-log.md).
 
 

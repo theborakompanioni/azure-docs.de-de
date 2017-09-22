@@ -16,10 +16,10 @@ ms.date: 7/24/2017
 ms.author: mlearned
 ms.custom: Jenkins
 ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
-ms.openlocfilehash: b2035d6bc0d323f2497a1db9b88d3ed015235b16
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: bd4e629e522fb9acea5601be8eac7c70ae61d042
 ms.contentlocale: de-de
-ms.lasthandoff: 09/07/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 
@@ -76,7 +76,7 @@ Vor dem Einrichten des Auftrags in Jenkins benötigen Sie einen Azure App Servic
 
 
 1. Erstellen Sie mit dem CLI-Befehl [az appservice plan create](/cli/azure/appservice/plan#create) einen Azure App Service-Plan mit dem Tarif **FREE**. Der App Service-Plan definiert die physischen Ressourcen, die zum Hosten Ihrer Apps verwendet werden. Alle einem App Service-Plan zugewiesenen Anwendungen teilen sich diese Ressourcen. Das spart Kosten, wenn Sie mehrere Apps hosten.
-2. Erstellen Sie eine Web-App. Sie können entweder das [Azure-Portal](/azure/app-service-web/web-sites-configure) oder den folgenden Azure CLI-Befehl verwenden:
+2. Erstellen Sie eine Web-App. Sie können entweder das [Azure-Portal](/azure/app-service/web-sites-configure) oder den folgenden Azure CLI-Befehl verwenden:
 ```azurecli-interactive 
 az webapp create --name <myAppName> --resource-group <myResourceGroup> --plan <myAppServicePlan>
 ```

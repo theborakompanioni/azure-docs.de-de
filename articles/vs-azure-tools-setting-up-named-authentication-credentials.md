@@ -15,10 +15,10 @@ ms.workload: multiple
 ms.date: 8/22/2017
 ms.author: kraigb
 ms.translationtype: HT
-ms.sourcegitcommit: 4eb426b14ec72aaa79268840f23a39b15fee8982
-ms.openlocfilehash: b75d190724da284324b0337e95a50a64902e19d8
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 953b1aa459ddf5b7be00b9d32432e6dda97143e1
 ms.contentlocale: de-de
-ms.lasthandoff: 09/06/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="set-up-named-authentication-credentials"></a>Einrichten benannter Authentifizierungsanmeldeinformationen
@@ -77,7 +77,7 @@ Bei der folgenden Vorgehensweise wird davon ausgegangen, dass das Dialogfeld **N
    d. Wählen Sie Ihr Azure-Abonnement, fügen Sie den vollständigen Pfad der CER-Datei ein, die Sie soeben erstellt haben, und wählen Sie **Hochladen**.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Allgemeine Übersicht über die Web-Apps](https://docs.microsoft.com/azure/app-service-web/)
-* [Bereitstellen der App in Azure App Service](https://docs.microsoft.com/en-us/azure/app-service-web/web-sites-deploy?toc=%2fazure%2fapp-service-api%2ftoc.json) 
-* [Bereitstellen von Webaufträgen mit Visual Studio](https://docs.microsoft.com/en-us/azure/app-service-web/websites-dotnet-deploy-webjobs)
+* [Allgemeine Übersicht über die Web-Apps](https://docs.microsoft.com/azure/app-service/)
+* [Bereitstellen der App in Azure App Service](https://docs.microsoft.com/en-us/azure/app-service/app-service-deploy-local-git) 
+* [Bereitstellen von Webaufträgen mit Visual Studio](https://docs.microsoft.com/en-us/azure/app-service/websites-dotnet-deploy-webjobs)
 * [Erstellen und Bereitstellen eines Clouddiensts](https://docs.microsoft.com/azure/cloud-services/cloud-services-how-to-create-deploy-portal)

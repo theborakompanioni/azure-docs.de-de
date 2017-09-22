@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 01/18/2017
 ms.author: jdial
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: 1032c4e7d378016e36c92efa9478be72e9a557c4
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 9520e4c2680e1dd0158a35b4ee65496a42a02563
 ms.contentlocale: de-de
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network – häufig gestellte Fragen
@@ -179,9 +179,9 @@ Ja. Für alle in einem VNet bereitgestellten VMs und Cloud Services-Rolleninstan
 ### <a name="can-i-use-azure-app-service-web-apps-with-a-vnet"></a>Kann ich Azure App Service-Web-Apps mit einem VNet verwenden?
 Ja. Sie können Web-Apps in einem VNet mit einer ASE (App Service Environment, App Service-Umgebung) bereitstellen. Für alle Web-Apps kann eine sichere Verbindung hergestellt werden, und der Zugriff auf Ressourcen im Azure-VNet ist möglich, wenn Sie für Ihr VNet eine Punkt-zu-Standort-Verbindung konfiguriert haben. Weitere Informationen finden Sie in den folgenden Artikeln:
 
-* [Erstellen von Web-Apps in einer App Service-Umgebung](../app-service-web/app-service-web-how-to-create-a-web-app-in-an-ase.md)
-* [Integrieren Ihrer App in ein Azure Virtual Network](../app-service-web/web-sites-integrate-with-vnet.md)
-* [Using VNet Integration and Hybrid Connections with Web Apps (in englischer Sprache)](../app-service-web/web-sites-integrate-with-vnet.md#hybrid-connections-and-app-service-environments)
+* [Erstellen von Web-Apps in einer App Service-Umgebung](../app-service/environment/app-service-web-how-to-create-a-web-app-in-an-ase.md)
+* [Integrieren Ihrer App in ein Azure Virtual Network](../app-service/web-sites-integrate-with-vnet.md)
+* [Using VNet Integration and Hybrid Connections with Web Apps (in englischer Sprache)](../app-service/web-sites-integrate-with-vnet.md#hybrid-connections-and-app-service-environments)
 
 ### <a name="can-i-deploy-cloud-services-with-web-and-worker-roles-paas-in-a-vnet"></a>Können Cloud Services mit Web- und Workerrollen (PaaS) in einem VNet bereitgestellt werden?
 Ja. Sie können Cloud Services-Rolleninstanzen (optional) in VNets bereitstellen. Hierfür geben Sie den Namen des VNet und die Rollen-/Subnetzzuordnungen im Netzwerkkonfigurationsabschnitt der Dienstkonfiguration an. Sie müssen keine Binärdateien aktualisieren.

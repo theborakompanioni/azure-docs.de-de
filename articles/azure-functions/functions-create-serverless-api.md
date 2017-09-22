@@ -12,10 +12,10 @@ ms.date: 05/04/2017
 ms.author: mahender
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
-ms.openlocfilehash: 1b4ef5dc0af6bea8af02ad63843acc91713666ad
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: e4fe86b80d8a786da15cdea37619e54e55102e3f
 ms.contentlocale: de-de
-ms.lasthandoff: 09/07/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 
@@ -72,7 +72,7 @@ Im nächsten Abschnitt zeigen Sie Ihre API über einen Proxy an. Azure Functions
 
 Ein Proxy kann auf HTTP-Ressourcen wie die folgenden verweisen:
 - Azure-Funktionen 
-- API-Apps in [Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-value-prop-what-is)
+- API-Apps in [Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-web-overview)
 - Docker-Container in [App Service unter Linux](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-intro)
 - Andere gehostete APIs
 

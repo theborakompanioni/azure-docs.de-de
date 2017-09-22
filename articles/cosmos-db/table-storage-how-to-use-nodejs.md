@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: mimig
 ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
-ms.openlocfilehash: 8cc23d5c284123c7c04dda4b71fdb6275d32bf8d
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: e8b22dad84e89be6051041e60ca9d72ec4aa3c56
 ms.contentlocale: de-de
-ms.lasthandoff: 09/07/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="how-to-use-azure-table-storage-from-nodejs"></a>Verwenden des Azure-Tabellenspeichers mit Node.js
@@ -30,8 +30,7 @@ In diesem Thema wird erläutert, wie allgemeine Szenarios mit dem Azure-Tabellen
 
 Bei den Codebeispielen in diesem Thema wird davon ausgegangen, dass Sie bereits eine Node.js-Anwendung besitzen. Informationen zum Erstellen einer Node.js-Anwendung in Azure finden Sie in folgenden Themen:
 
-* [Erstellen einer Node.js-Web-App in Azure App Service](../app-service-web/app-service-web-get-started-nodejs.md)
-* [Erstellen und Bereitstellen einer Node.js-Web-App für Azure mithilfe von WebMatrix](../app-service-web/web-sites-nodejs-use-webmatrix.md)
+* [Erstellen einer Node.js-Web-App in Azure App Service](../app-service/app-service-web-get-started-nodejs.md)
 * [Erstellen und Bereitstellen einer Node.js-Anwendung in einem Azure-Clouddienst](../cloud-services/cloud-services-nodejs-develop-deploy-app.md) (mit Windows PowerShell)
 
 [!INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
@@ -451,4 +450,4 @@ Weitere Informationen finden Sie in den folgenden Ressourcen.
 * Beim [Microsoft Azure-Speicher-Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) handelt es sich um eine kostenlose eigenständige App von Microsoft, über die Sie ganz einfach visuell mit Azure Storage-Daten arbeiten können – unter Windows, MacOS und Linux.
 * [Azure Storage SDK for Node.js](https://github.com/Azure/azure-storage-node) -Repository auf GitHub (in englischer Sprache)
 * [Node.js Developer Center](/develop/nodejs/)
-* [Erstellen und Bereitstellen einer Node.js-Anwendung auf einer Azure-Website](../app-service-web/app-service-web-get-started-nodejs.md)
+* [Erstellen und Bereitstellen einer Node.js-Anwendung auf einer Azure-Website](../app-service/app-service-web-get-started-nodejs.md)

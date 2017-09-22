@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/16/2017
 ms.author: v-semcev
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 1221f4f50b8b9c4b9f9f88be4d04a65375c36062
+ms.sourcegitcommit: 7429de05ba1d583348b0b03b69135c2bbab0be45
+ms.openlocfilehash: 02cd0fe30a2a14f42a16ed12f714d496bbb23b36
 ms.contentlocale: de-de
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 09/15/2017
 
 ---
 # <a name="media-streaming-optimization-via-the-azure-content-delivery-network"></a>Medienstreaming-Optimierung über das Azure Content Delivery Network 
@@ -61,7 +61,7 @@ Wenn das Azure Content Delivery Network von Akamai erkennt, dass es sich bei der
 Die kurze negative Zwischenspeicherungsdauer ermöglicht die Entlastung des Ursprungsservers, wenn viele Benutzer ein noch nicht vorhandenes Fragment anfordern. Ein Beispiel wäre etwa ein Livestream, dessen Pakete zum Anforderungszeitpunkt noch nicht auf dem Ursprungsserver verfügbar sind. Das längere Cachingintervall sorgt auch für eine Entlastung bei Anforderungen vom Ursprungsserver, da Videoinhalte in der Regel nicht geändert werden.
  
 
-|    | Allgemeine<br> Web-<br>bereitstellung | Allgemeines<br> Medien-<br> streaming | Video on Demand- <br>Medien-<br> streaming  
+|   | Allgemeine Webbereitstellung | Allgemeines Medienstreaming | Video on Demand-Medienstreaming  
 --- | --- | --- | ---
 Caching: positiv <br> HTTP 200, 203, 300, <br> 301, 302 und 410 | 7 Tage |365 Tage | 365 Tage   
 Caching: negativ <br> HTTP 204, 305, 404 <br> und 405 | Keine | 1 Sekunde | 1 Sekunde

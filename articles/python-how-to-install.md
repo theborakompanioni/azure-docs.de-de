@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 09/06/2016
 ms.author: lmazuel
 ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
-ms.openlocfilehash: 523ee51c79fe09d71fa3cd3e202cf155b511956f
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: e69fff29be5b12c3c0004b4101eba69c7da87d3d
 ms.contentlocale: de-de
-ms.lasthandoff: 09/07/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="installing-python-and-the-sdk"></a>Installieren von Python und SDK
@@ -98,7 +98,7 @@ Der [Python Package Index][Python Package Index] (PyPI) verfügt über eine umfa
 
 Die Verwendung von PTVS ist optional, aber empfehlenswert, da Sie so bei Python- und Webprojekten/-lösungen von Support, Debugging, Profilerstellung, interaktiven Fenstern, Vorlagenbearbeitung und IntelliSense profitieren.
 
-PTVS erleichtert auch die Bereitstellung unter Microsoft Azure, mit Unterstützung für die Bereitstellung in [Clouddiensten](cloud-services/cloud-services-python-ptvs.md) und auf [Websites](app-service-web/app-service-web-overview.md).
+PTVS erleichtert auch die Bereitstellung unter Microsoft Azure, mit Unterstützung für die Bereitstellung in [Clouddiensten](cloud-services/cloud-services-python-ptvs.md) und auf [Websites](app-service/app-service-web-overview.md).
 
 PTVS funktioniert mit Ihren vorhandenen Installationen von Visual Studio 2013, 2015 oder 2017.  Dokumentation, Downloads und Diskussionen finden Sie unter [Python-Tools für Visual Studio].  
 
@@ -117,7 +117,7 @@ Informationen zur Einrichtung eines virtuellen Linux-Computers finden Sie im Tut
 
 Mit Git-Bereitstellung können Sie eine Python-Webanwendung entwickeln und sie auf einer Azure-Website von jedem beliebigen Betriebssystem aus veröffentlichen.  Wenn Sie das Repository in Azure übertragen, erstellt es automatisch eine virtuelle Umgebung und installiert die erforderlichen Pakete mit pip.
 
-Weitere Informationen zur Verwendung WSGI-konformer Frameworks finden Sie unter [Konfigurieren von Python mit Azure-Websites](app-service-web/web-sites-python-configure.md).
+Weitere Informationen zur Verwendung WSGI-konformer Frameworks finden Sie unter [Konfigurieren von Python mit Azure-Websites](app-service/web-sites-python-configure.md).
 
 ## <a name="additional-software-and-resources"></a>Weitere Software und Ressourcen:
 * [Azure SDK für Python: ReadTheDocs](http://azure-sdk-for-python.readthedocs.io/en/latest/)
@@ -145,7 +145,7 @@ Weitere Informationen zur Verwendung WSGI-konformer Frameworks finden Sie unter 
 [Django Project - A mature web framework/CMS]: http://www.djangoproject.com
 [IPython - an advanced REPL/Notebook for Python]: http://ipython.org
 [IPython]: http://ipython.org
-[Python-Tools für Visual Studio]: http://aka.ms/ptvs
+[Python Tools für Visual Studio]: http://aka.ms/ptvs
 [Python Tools for Visual Studio on GitHub]: https://github.com/microsoft/ptvs
 [Python Package Index]: http://pypi.python.org/pypi
 [Microsoft Azure SDK for Python 2.7]: http://go.microsoft.com/fwlink/?LinkId=254281

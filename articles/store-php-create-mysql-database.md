@@ -16,14 +16,14 @@ ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm;cephalin
 ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
-ms.openlocfilehash: 017e08b7e1e37c0bcb95ae0d9d702471bb8bc6bc
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: c072cb3a7d376d1e3c2b9f741f5410106e701256
 ms.contentlocale: de-de
-ms.lasthandoff: 09/07/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="create-and-connect-to-a-mysql-database-in-azure"></a>Erstellen einer MySQL-Datenbank und Herstellen einer Verbindung in Azure
-In diesem Tutorial erfahren Sie, wie Sie über das [Azure-Portal](https://portal.azure.com) (Anbieter: [ClearDB](http://www.cleardb.com/)) eine MySQL-Datenbank erstellen und über eine in [Azure App Service](app-service/app-service-value-prop-what-is.md) ausgeführte PHP-Web-App eine Verbindung mit der Datenbank herstellen.
+In diesem Tutorial erfahren Sie, wie Sie über das [Azure-Portal](https://portal.azure.com) (Anbieter: [ClearDB](http://www.cleardb.com/)) eine MySQL-Datenbank erstellen und über eine in [Azure App Service](app-service/app-service-web-overview.md) ausgeführte PHP-Web-App eine Verbindung mit der Datenbank herstellen.
 
 > [!NOTE]
 > Sie können auch eine MySQL-Datenbank auf der Grundlage einer <a href="https://portal.azure.com/#create/WordPress.WordPress" target="_blank">Marketplace-App-Vorlage</a>erstellen.
@@ -68,75 +68,6 @@ Klicken Sie zum Anzeigen der Verbindungsinformationen für Ihre neue MySQL-Daten
 ![Erstellen einer MySQL-Datenbank in Azure – Blatt „MySQL-Datenbank“](./media/store-php-create-mysql-database/create-db-5-finished-db-blade.png)
 
 Die Verbindungsinformationen können in jeder beliebigen Web-App verwendet werden. Ein Beispiel zur Veranschaulichung der Verwendung von Verbindungsinformationen in einer einfachen PHP-App finden Sie [hier](https://github.com/WindowsAzure/azure-sdk-for-php-samples/tree/master/tasklist-mysql).
-
-## <a name="connect-a-laravel-web-app-from-the-php-get-started-tutorial"></a>Herstellen einer Verbindung mit einer Laravel-Web-App (aus dem Tutorial zu ersten Schritten mit PHP)
-Wenn Sie bereits das Tutorial [Erstellen, Konfigurieren und Bereitstellen einer PHP-Web-App in Azure](app-service-web/app-service-web-php-get-started.md) abgeschlossen haben und über eine in Azure ausgeführte Web-App vom Typ [Larave](https://www.laravel.com/) verfügen, können Sie Ihrer Laravel-App problemlos Datenbankfunktionen hinzufügen. Gehen Sie dazu einfach wie folgt vor:
-
-> [!NOTE]
-> Bei den folgenden Schritten wird davon ausgegangen, dass Sie das Tutorial [Erstellen, Konfigurieren und Bereitstellen einer PHP-Web-App in Azure](app-service-web/app-service-web-php-get-started.md)abgeschlossen haben.
->
->
-
-1. Konfigurieren Sie die Laravel-App in Ihrer lokalen Entwicklungsumgebung mit einem Verweis auf die MySQL-Datenbank. Öffnen Sie hierzu `.env` im Stammverzeichnis Ihrer Laravel-App, und konfigurieren Sie die Optionen der MySQL-Datenbank.
-
-        DB_CONNECTION=mysql
-        DB_HOST=<HOSTNAME_from_properties_blade>
-        DB_PORT=<PORT_from_properties_blade>
-        DB_DATABASE=<see_note_below>
-        DB_USERNAME=<USERNAME_from_properties_blade>
-        DB_PASSWORD=<PASSWORD_from_properties_blade>
-
-   > [!NOTE]
-   > Auf dem Blatt **Eigenschaften** wird im Feld **DATENBANKNAME** möglicherweise der Name Ihrer MySQL-Datenbank angezeigt. Es empfiehlt sich allerdings, den Database-Parameter im Feld **VERBINDUNGSZEICHENFOLGE** zu prüfen.    
-   >
-   > ![Erstellen einer MySQL-Datenbank in Azure – in Bearbeitung](./media/store-php-create-mysql-database/connect-db-1-database-name.png)
-   >
-   >
-2. Der MySQL-Zugriff lässt sich am schnellsten mithilfe des [standardmäßigen Authentifizierungsgerüsts von Laravel](https://laravel.com/docs/5.2/authentication#authentication-quickstart)überprüfen.
-   Führen Sie über das Befehlszeilenterminal die folgenden Befehle im Stammverzeichnis Ihrer Laravel-App aus:
-
-         php artisan migrate
-         php artisan make:auth
-
-    Der erste Befehl erstellt die Tabellen in Azure auf der Grundlage vordefinierter Migrationen im Verzeichnis `database/migrations`. Der zweite Befehl erstellt das Gerüst für die grundlegenden Ansichten und Routen für Benutzerregistrierung und -authentifizierung.
-3. Führen Sie nun den Entwicklungsserver aus:
-
-        php artisan serve
-4. Navigieren Sie im Browser zu http://localhost:8000 , und registrieren Sie wie folgt einen neuen Benutzer:
-
-    ![Herstellen einer Verbindung mit der MySQL-Datenbank in Azure – Benutzerregistrierung](./media/store-php-create-mysql-database/connect-db-2-development-server.png)
-
-    Folgen Sie der Aufforderung auf der Benutzeroberfläche, um die Registrierung abzuschließen. Nach Abschluss der Registrierung werden Sie angemeldet.
-
-    ![Herstellen einer Verbindung mit der MySQL-Datenbank in Azure – Benutzerregistrierung](./media/store-php-create-mysql-database/connect-db-3-registered-user.png)
-
-    Sie entwickeln Ihre App nun unter Verwendung der MySQL-Datenbank in Azure.
-5. Nun müssen Sie nur noch Ihre `.env` -Einstellungen in Ihre Azure-Web-App replizieren. Führen Sie über die Azure-Befehlszeilenschnittstelle folgende Befehle aus:
-
-        azure site appsetting add DB_CONNECTION=mysql
-        azure site appsetting add DB_HOST=<HOSTNAME_from_properties_blade>
-        azure site appsetting add DB_PORT=<PORT_from_properties_blade>
-        azure site appsetting add DB_DATABASE=<Database_param_from_CONNECTION_INFO_from_properties_blade>
-        azure site appsetting add DB_USERNAME=<USERNAME_from_properties_blade>
-        azure site appsetting add DB_PASSWORD=<PASSWORD_from_properties_blade>
-
-6. Führen Sie als Nächstes für die lokalen Änderungen, die Sie zuvor beim Ausführen von `php artisan make:auth`vorgenommen haben, ein Commit und einen Pushvorgang an Azure durch.
-
-        git add .
-        git commit -m "scaffold auth views and routes"
-        git push azure master
-7. Navigieren Sie zur Azure-Web-App.
-
-        azure site browse
-8. Melden Sie sich mithilfe der zuvor erstellten Benutzeranmeldeinformationen an.
-
-    ![Herstellen einer Verbindung mit der MySQL-Datenbank in Azure – Navigieren zur Azure-Web-App](./media/store-php-create-mysql-database/connect-db-4-browse-azure-webapp.png)
-
-    Der benutzerfreundliche Bildschirm nach der Anmeldung erscheint.
-
-    ![Herstellen einer Verbindung mit der MySQL-Datenbank in Azure – angemeldet](./media/store-php-create-mysql-database/connect-db-5-logged-in.png)
-
-    Herzlichen Glückwunsch! Ihre PHP-Web-App in Azure greift nun auf Daten aus Ihrer MySQL-Datenbank zu.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen finden Sie im [PHP Developer Center](/develop/php/).

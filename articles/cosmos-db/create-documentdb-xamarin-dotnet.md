@@ -15,11 +15,11 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/10/2017
 ms.author: mimig
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: c8e2e688a7a8b99272c304df37ceff0f9ec52b19
+ms.translationtype: HT
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: ed1d30be780e0882b8e75c01bc7822c3350f3fee
 ms.contentlocale: de-de
-ms.lasthandoff: 05/31/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="azure-cosmos-db-build-a-web-app-with-net-xamarin-and-facebook-authentication"></a>Azure Cosmos DB: Erstellen einer Web-App mit .NET, Xamarin und Authentifizierung mit Facebook
@@ -108,7 +108,7 @@ Sie haben die App nun mit allen erforderlichen Informationen für die Kommunikat
 
 4. Öffnen Sie das Xamarin-Projekt, und navigieren Sie zu „TodoItemManager.cs“. Geben Sie Werte für accountURL, collectionId, databaseId sowie für resourceTokenBrokerURL als zugrundeliegende HTTPS-URL für die Ressourcentokenbroker-Website ein.
 
-5. Führen Sie das Tutorial [Konfigurieren Ihrer App Service-Anwendung zur Verwendung der Facebook-Anmeldung](../app-service-mobile/app-service-mobile-how-to-configure-facebook-authentication.md) durch, um die Authentifizierung mit Facebook einzurichten und die ResourceTokenBroker-Website zu konfigurieren.
+5. Führen Sie das Tutorial [Konfigurieren Ihrer App Service-Anwendung zur Verwendung der Facebook-Anmeldung](../app-service/app-service-mobile-how-to-configure-facebook-authentication.md) durch, um die Authentifizierung mit Facebook einzurichten und die ResourceTokenBroker-Website zu konfigurieren.
 
     Führen Sie die Xamarin-App aus.
 

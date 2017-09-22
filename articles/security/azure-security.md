@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/03/2017
 ms.author: TomSh
 ms.translationtype: HT
-ms.sourcegitcommit: f2ac16c2f514aaa7e3f90fdf0d0b6d2912ef8485
-ms.openlocfilehash: b0749847af81521e0ffe6b5f1e115fff558df5cd
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 54bbd7dd1d0ecad79f86e0ab16be3a48854093ac
 ms.contentlocale: de-de
-ms.lasthandoff: 09/08/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 
@@ -111,7 +111,7 @@ Außerdem hilft das Azure Security Center bei Sicherheitsvorgängen, indem Ihnen
 Dieser Abschnitt enthält zusätzliche Informationen zu den wichtigsten Features der Anwendungssicherheit und zusammenfassende Informationen zu diesen Funktionen.
 
 ### <a name="web-application-vulnerability-scanning"></a>Sicherheitsrisikoprüfung für Webanwendungen
-Eine der einfachsten Möglichkeiten, mit der Sie Ihre [App Service-App](https://docs.microsoft.com/azure/app-service/app-service-value-prop-what-is) auf Sicherheitslücken testen können, ist die Verwendung der [Integration in Tinfoil Security](https://azure.microsoft.com/blog/web-vulnerability-scanning-for-azure-app-service-powered-by-tinfoil-security/), die diese per Mausklick auf Schwachstellen überprüft. Sie können die Testergebnisse in einem leicht verständlichen Bericht anzeigen lassen, und erfahren, wie Sie jede Sicherheitslücke mit einer Schritt-für-Schritt-Anleitung beheben können.
+Eine der einfachsten Möglichkeiten, mit der Sie Ihre [App Service-App](https://docs.microsoft.com/azure/app-service/app-service-web-overview) auf Sicherheitslücken testen können, ist die Verwendung der [Integration in Tinfoil Security](https://azure.microsoft.com/blog/web-vulnerability-scanning-for-azure-app-service-powered-by-tinfoil-security/), die diese per Mausklick auf Schwachstellen überprüft. Sie können die Testergebnisse in einem leicht verständlichen Bericht anzeigen lassen, und erfahren, wie Sie jede Sicherheitslücke mit einer Schritt-für-Schritt-Anleitung beheben können.
 
 ### <a name="penetration-testing"></a>Penetrationstests
 Wenn Sie lieber Ihre eigenen Penetrationstests ausführen möchten oder eine andere Scanner Suite oder einen anderen Anbieter verwenden möchten, befolgen Sie den [Azure Penetrationstests-Genehmigungsprozess](https://security-forms.azure.com/penetration-testing/terms) und erhalten Sie vorherige Genehmigungen zum Ausführen der gewünschten Penetrationstests.
@@ -123,10 +123,10 @@ Die Web Application Firewall (WAF) in [Azure Application Gateway](https://azure.
 Mithilfe des [Authentifizierungs-/Autorisierungsfeatures von App Service](https://docs.microsoft.com/azure/app-service/app-service-authentication-overview) kann Ihre Anwendung Benutzer anmelden, sodass Sie keine Codeänderungen für das Back-End der App vornehmen müssen. Es stellt eine einfache Möglichkeit zum Schutz Ihrer Anwendung und für die Arbeit mit benutzerspezifischen Daten bereit.
 
 ### <a name="layered-security-architecture"></a>Mehrstufige Sicherheitsarchitektur
-Da [App Service-Umgebungen](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-intro) eine in einem [Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) bereitgestellte isolierte Laufzeitumgebung bieten, können Entwickler eine mehrstufige Sicherheitsarchitektur erstellen, in der sie abgestuften Netzwerkzugriff für jede Anwendungsschicht gewähren können. Üblicherweise sollten API-Back-Ends nicht dem allgemeinen Internetzugriff preisgegeben werden, und APIs sollten nur von Upstream-Web-Apps aufgerufen werden können. Um den öffentlichen Zugriff auf API-Anwendungen zu beschränken, können [Netzwerksicherheitsgruppen (Network Security Groups, NSGs)](https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/) in Azure Virtual Network-Subnetzen mit App Service-Umgebungen verwendet werden.
+Da [App Service-Umgebungen](https://docs.microsoft.com/azure/app-service/environment/app-service-app-service-environment-intro) eine in einem [Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) bereitgestellte isolierte Laufzeitumgebung bieten, können Entwickler eine mehrstufige Sicherheitsarchitektur erstellen, in der sie abgestuften Netzwerkzugriff für jede Anwendungsschicht gewähren können. Üblicherweise sollten API-Back-Ends nicht dem allgemeinen Internetzugriff preisgegeben werden, und APIs sollten nur von Upstream-Web-Apps aufgerufen werden können. Um den öffentlichen Zugriff auf API-Anwendungen zu beschränken, können [Netzwerksicherheitsgruppen (Network Security Groups, NSGs)](https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/) in Azure Virtual Network-Subnetzen mit App Service-Umgebungen verwendet werden.
 
 ### <a name="web-server-diagnostics-and-application-diagnostics"></a>Webserver- und Anwendungsdiagnose
-App Service-Web-Apps bieten Diagnosefunktionen zum Protokollieren von Informationen sowohl über den Webserver als auch über die Webanwendung. Diese sind logisch in [Webserverdiagnose](https://docs.microsoft.com/azure/app-service-web/web-sites-enable-diagnostic-log) und [Anwendungsdiagnose](https://technet.microsoft.com/library/hh530058(v=sc.12).aspx) unterteilt. Ein Webserver bezieht zwei wichtige Fortschritte bei der Diagnose und Problembehandlung von Websites und Anwendungen ein.
+App Service-Web-Apps bieten Diagnosefunktionen zum Protokollieren von Informationen sowohl über den Webserver als auch über die Webanwendung. Diese sind logisch in [Webserverdiagnose](https://docs.microsoft.com/azure/app-service/web-sites-enable-diagnostic-log) und [Anwendungsdiagnose](https://technet.microsoft.com/library/hh530058(v=sc.12).aspx) unterteilt. Ein Webserver bezieht zwei wichtige Fortschritte bei der Diagnose und Problembehandlung von Websites und Anwendungen ein.
 
 Das erste neue Feature sind Zustandsinformationen in Echtzeit zu Anwendungspools, Workerprozessen, Websites, Anwendungsdomänen und aktiven Anforderungen. Der zweite Vorteil sind ausführliche Ablaufverfolgungsereignisse, die eine Anforderung während des vollständigen Prozesses (Anforderung und Antwort) nachverfolgen.
 
@@ -142,7 +142,7 @@ Sie können die folgenden Protokollarten aktivieren oder deaktivieren:
 -   Webserverprotokollierung – Informationen über HTTP-Transaktionen im erweiterten W3C-Protokolldateiformat. Dies ist hilfreich, wenn Sie allgemeine Website-Kennzahlen ermitteln möchten, wie die Anzahl der verarbeiteten Anfragen oder wie viele Anforderungen von einer bestimmten IP-Adresse stammen.
 
 #### <a name="application-diagnostics"></a>Anwendungsdiagnose
-Mit der Option [Anwendungsdiagnose](https://docs.microsoft.com/azure/app-service-web/web-sites-enable-diagnostic-log) können Sie die von einer Webanwendung erzeugten Informationen erfassen. ASP.NET-Anwendungen können die Klasse [System.Diagnostics.Trace](https://msdn.microsoft.com/library/system.diagnostics.trace) verwenden, um Informationen im Anwendungs-Diagnoseprotokoll aufzuzeichnen. Bei der Anwendungsdiagnose gibt es zwei Hauptarten von Ereignissen, die sich auf die Anwendungsleistung oder die Anwendungsausfälle und -fehler beziehen. Die Ausfälle und Fehler können weiter in Verbindungsfehler, Sicherheitsfehler und Ausfallprobleme unterteilt werden. Ausfallprobleme beziehen sich in der Regel auf ein Problem mit dem Anwendungscode.
+Mit der Option [Anwendungsdiagnose](https://docs.microsoft.com/azure/app-service/web-sites-enable-diagnostic-log) können Sie die von einer Webanwendung erzeugten Informationen erfassen. ASP.NET-Anwendungen können die Klasse [System.Diagnostics.Trace](https://msdn.microsoft.com/library/system.diagnostics.trace) verwenden, um Informationen im Anwendungs-Diagnoseprotokoll aufzuzeichnen. Bei der Anwendungsdiagnose gibt es zwei Hauptarten von Ereignissen, die sich auf die Anwendungsleistung oder die Anwendungsausfälle und -fehler beziehen. Die Ausfälle und Fehler können weiter in Verbindungsfehler, Sicherheitsfehler und Ausfallprobleme unterteilt werden. Ausfallprobleme beziehen sich in der Regel auf ein Problem mit dem Anwendungscode.
 
 Bei der Anwendungsdiagnose können Ereignisse in den folgenden Kategorien angezeigt werden:
 

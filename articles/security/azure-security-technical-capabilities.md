@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/26/2017
 ms.author: TomSh
 ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
-ms.openlocfilehash: 268299d82ce79b10eb8061467f4bad61194457f8
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: a32693a274c2615a515838306d72dbe64a5d1763
 ms.contentlocale: de-de
-ms.lasthandoff: 09/07/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="azure-security-technical-capabilities"></a>Technische Funktionen der Azure-Sicherheit
@@ -318,12 +318,10 @@ Die Web Application Firewall schützt unter anderem vor folgenden gängigen Sich
 
 Azure bietet Ihnen für Ihre App zudem zahlreiche benutzerfreundliche Funktionen zum Schutz von eingehendem und ausgehendem Datenverkehr. Bei Azure werden Kunden auch dabei unterstützt, ihren Anwendungscode zu schützen, indem extern bereitgestellte Funktionen zur Verfügung gestellt werden, mit denen Ihre Webanwendungen nach Sicherheitsrisiken durchsucht werden.
 
-- [Sichern Ihrer Web-App mithilfe verschiedener Methoden zur Authentifizierung und Autorisierung](https://docs.microsoft.com/azure/app-service-web/web-sites-authentication-authorization)
-
-    - [Einrichten der Azure Active Directory-Authentifizierung für Ihre App](https://azure.microsoft.com/blog/azure-websites-authentication-authorization/)
+- [Einrichten der Azure Active Directory-Authentifizierung für Ihre App](https://azure.microsoft.com/blog/azure-websites-authentication-authorization/)
 
 
-- [Sichern des Datenverkehrs zu Ihrer App durch Aktivierung von Transport Layer Security (TLS/SSL) – HTTPS](https://docs.microsoft.com/azure/app-service-web/web-sites-configure-ssl-certificate)
+- [Sichern des Datenverkehrs zu Ihrer App durch Aktivierung von Transport Layer Security (TLS/SSL) – HTTPS](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-ssl)
 
     - [Erzwingen des gesamten eingehenden Datenverkehrs über HTTPS-Verbindungen](http://microsoftazurewebsitescheatsheet.info/)
 
@@ -336,13 +334,13 @@ Azure bietet Ihnen für Ihre App zudem zahlreiche benutzerfreundliche Funktionen
 
 - [Überprüfen Ihres Web-App-Codes auf Schwachstellen mithilfe der Tinfoil Security-Überprüfung](https://azure.microsoft.com/blog/web-vulnerability-scanning-for-azure-app-service-powered-by-tinfoil-security/)
 
-- [Konfigurieren der gegenseitigen TLS-Authentifizierung mit obligatorischer Clientzertifikatverwendung für die Verbindungsherstellung mit Ihrer Web-App](https://docs.microsoft.com/azure/app-service-web/app-service-web-configure-tls-mutual-auth)
+- [Konfigurieren der gegenseitigen TLS-Authentifizierung mit obligatorischer Clientzertifikatverwendung für die Verbindungsherstellung mit Ihrer Web-App](https://docs.microsoft.com/azure/app-service/app-service-web-configure-tls-mutual-auth)
 
 - [Konfigurieren eines Clientzertifikats, das Ihre App zum Herstellen einer sicheren Verbindung mit externen Ressourcen verwendet](https://azure.microsoft.com/blog/using-certificates-in-azure-websites-applications/)
 
 - [Entfernen von Serverstandardheadern, um zu verhindern, dass Tools Fingerabdrücke Ihrer App erfassen](https://azure.microsoft.com/blog/removing-standard-server-headers-on-windows-azure-web-sites/)
 
-- [Herstellen einer sicheren Verbindung zwischen Ihrer App und Ressourcen in einem privaten Netzwerk mithilfe eines Punkt-zu-Standort-VPNs](https://docs.microsoft.com/azure/app-service-web/web-sites-integrate-with-vnet)
+- [Herstellen einer sicheren Verbindung zwischen Ihrer App und Ressourcen in einem privaten Netzwerk mithilfe eines Punkt-zu-Standort-VPNs](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet)
 
 - [Herstellen einer sicheren Verbindung zwischen Ihrer App und Ressourcen in einem privaten Netzwerk mithilfe von Hybridverbindungen](https://docs.microsoft.com/azure/app-service/app-service-hybrid-connections)
 

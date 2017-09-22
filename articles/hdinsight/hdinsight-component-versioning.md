@@ -18,10 +18,10 @@ ms.topic: article
 ms.date: 04/14/2017
 ms.author: bprakash
 ms.translationtype: HT
-ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
-ms.openlocfilehash: 26512049dba3d4dde575c5a67ba884fb56374236
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 7f4981feb0b2f524bab095d76000e01aa88bc81f
 ms.contentlocale: de-de
-ms.lasthandoff: 08/10/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="what-are-the-hadoop-components-and-versions-available-with-hdinsight"></a>Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?
@@ -112,7 +112,7 @@ Nachdem HDInsight unter Windows deaktiviert wurde, können Sie keine neuen HDIns
 Azure HDInsight-Version 3.3 ist die letzte Version von HDInsight für Windows. Bevor HDInsight für Windows deaktiviert wird, müssen alle HDInsight-Windows-Cluster der Version 3.3 oder früher in HDInsight unter Linux Version 3.5 oder höher migriert werden. Durch das Migrieren Ihrer Cluster zu HDInsight unter Linux haben Sie weiterhin die Möglichkeit, neue Cluster zu erstellen oder die Größe vorhandener Cluster zu ändern. 
 
 ### <a name="what-do-i-need-to-do"></a>Was muss ich tun?
-Migrieren Sie Ihr HDInsight-Windows-Cluster vor dem 31. Juli 2018 in ein unterstütztes HDInsight-Linux-Cluster. Weitere Informationen finden Sie im [HDInsight-Migrationsdokument](https://docs.microsoft.com/en-gb/azure/hdinsight/hdinsight-migrate-from-windows-to-linux). Weitere Informationen zu den Azure HDInsight-Versionen finden Sie in der [Liste der unterstützten Versionen](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-component-versioning#supported-hdinsight-versions). 
+Migrieren Sie Ihr HDInsight-Windows-Cluster vor dem 31. Juli 2018 in ein unterstütztes HDInsight-Linux-Cluster. Weitere Informationen finden Sie im [HDInsight-Migrationsdokument](hdinsight-migrate-from-windows-to-linux.md). Weitere Informationen zu den Azure HDInsight-Versionen finden Sie in der [Liste der unterstützten Versionen](hdinsight-component-versioning.md#supported-hdinsight-versions). 
 
 ### <a name="where-do-i-find-the-cluster-os-type"></a>Wo finde ich den Betriebssystemtyp des Clusters?
 Wechseln Sie im Azure-Portal zur Übersichtsseite des HDInsight-Clusters, und suchen Sie unter **Essentials** nach dem **Clustertyp**. Die Betriebssystemtypen des Clusters werden auf dieser Seite angezeigt. 
@@ -121,7 +121,7 @@ Wechseln Sie im Azure-Portal zur Übersichtsseite des HDInsight-Clusters, und su
 Das HDInsight-Windows-Cluster wird wie gehabt ausgeführt, Sie können aber keine neuen HDInsight-Cluster unter Windows erstellen oder die Größe eines vorhandenen HDInsight-Windows-Clusters ändern. 
 
 ### <a name="my-cluster-has-a-net-dependency-how-do-i-resolve-this-dependency-on-linux"></a>Meine Cluster hat eine .NET-Abhängigkeit. Wie beheben ich diese Abhängigkeit unter Linux?
-Sie können Ihre Linux-Cluster-Abhängigkeit mit dem [Mono-Projekt](http://www.mono-project.com/) beheben. Diese Open-Source-Implementierung von .NET ist für HDInsight-Linux-Cluster verfügbar. Weitere Informationen finden Sie im [HDInsight-Migrationsdokument](https://docs.microsoft.com/en-gb/azure/hdinsight/hdinsight-migrate-from-windows-to-linux). 
+Sie können Ihre Linux-Cluster-Abhängigkeit mit dem [Mono-Projekt](http://www.mono-project.com/) beheben. Diese Open-Source-Implementierung von .NET ist für HDInsight-Linux-Cluster verfügbar. Weitere Informationen finden Sie im [HDInsight-Migrationsdokument](hdinsight-migrate-from-windows-to-linux.md). 
 
 ### <a name="im-a-new-customer-for-hdinsight-on-windows-how-can-i-create-an-hdinsight-windows-cluster"></a>Ich bin ein neuer Kunde von HDInsight unter Windows. Wie kann ich ein HDInsight-Windows-Cluster erstellen?
 Seit dem 3. Juli 2017 können nur bestehende HDInsight-Windows-Kunden neue HDInsight-Windows-Cluster erstellen. Neue Kunden können keine HDInsight-Windows-Cluster über das Azure-Portal mit PowerShell oder dem SDK erstellen. Es wird empfohlen neuen Kunden, ein Linux-HDInsight-Cluster zu erstellen. Bestehende Kunden können bis zum Deaktivierungstermin von HDInsight unter Windows neue HDInsight-Windows-Cluster erstellen. 
@@ -138,7 +138,7 @@ Nein, die Preise für HDInsight sind für alle Betriebssysteme gleich.
 Ab HDInsight Version 3.4 hat Microsoft HDInsight nur für das Linux-Betriebssystem bereitgestellt. Daher sind einige der Komponenten in HDInsight nur für Linux verfügbar. Dies schließt Apache Ranger, Kafka, Interactive Hive, Spark HDInsight-Anwendungen und Azure Data Lake Store als primäres Dateisystem ein. 
 
 ## <a name="service-level-agreement-for-hdinsight-cluster-versions"></a>Die Vereinbarung zum Servicelevel (Service Level Agreement, SLA) für HDInsight-Clusterversionen
-Die Vereinbarung zum Servicelevel (Service Level Agreement, SLA) ist als _Supportfenster_ definiert. Ein Supportfenster ist ein Zeitraum, in dem eine HDInsight-Clusterversion vom Microsoft-Kundendienst und -Support unterstützt wird. Wenn die Version ein verstrichenes _Supportablaufdatum_ hat, befindet sich das HDInsight-Cluster außerhalb des Supportfensters. Weitere Informationen zu unterstützten Versionen finden Sie in der Liste der [unterstützten Versionen von HDInsight-Clustern](https://docs.microsoft.com/en-gb/azure/hdinsight/hdinsight-migrate-from-windows-to-linux). Das Supportablaufdatum für eine bestimmte HDInsight-Version X (nachdem eine neuere X+1-Version verfügbar ist) wird berechnet als das spätere Datum von:  
+Die Vereinbarung zum Servicelevel (Service Level Agreement, SLA) ist als _Supportfenster_ definiert. Ein Supportfenster ist ein Zeitraum, in dem eine HDInsight-Clusterversion vom Microsoft-Kundendienst und -Support unterstützt wird. Wenn die Version ein verstrichenes _Supportablaufdatum_ hat, befindet sich das HDInsight-Cluster außerhalb des Supportfensters. Weitere Informationen zu unterstützten Versionen finden Sie in der Liste der [unterstützten Versionen von HDInsight-Clustern](hdinsight-migrate-from-windows-to-linux.md). Das Supportablaufdatum für eine bestimmte HDInsight-Version X (nachdem eine neuere X+1-Version verfügbar ist) wird berechnet als das spätere Datum von:  
 
 * Formel 1: Addieren Sie 180 Tage zum Releasedatum von HDInsight-Clusterversion X.
 * Formel 2: Addieren Sie 90 Tage zum Releasedatum von HDInsight-Clusterversion X+1 im Azure-Portal.

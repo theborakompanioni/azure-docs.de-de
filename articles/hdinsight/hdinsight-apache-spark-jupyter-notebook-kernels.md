@@ -17,11 +17,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/07/2017
 ms.author: nitinme
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
-ms.openlocfilehash: 6cfd1c1e7b22f5460b78687c815d149e6c6deac9
+ms.translationtype: HT
+ms.sourcegitcommit: 1868e5fd0427a5e1b1eeed244c80a570a39eb6a9
+ms.openlocfilehash: dd1c18e32f3d0386e522dba82ce494394abbf8ed
 ms.contentlocale: de-de
-ms.lasthandoff: 06/07/2017
+ms.lasthandoff: 09/19/2017
 
 ---
 # <a name="kernels-for-jupyter-notebook-on-spark-clusters-in-azure-hdinsight"></a>Kernel für Jupyter-Notebook in Spark-Clustern in Azure HDInsight 
@@ -69,12 +69,13 @@ Hier sind einige Vorteile der Verwendung der neuen Kernel mit einem Jupyter-Note
    
    * **sc** (Spark-Kontext)
    * **sqlContext** – für Hive-Kontext
-
-    Sie müssen also keine Anweisungen wie die folgenden ausführen, um die Kontexte festzulegen:
-
-        sc = SparkContext('yarn-client')    sqlContext = HiveContext(sc)
-
-    Stattdessen können Sie in Ihrer Anwendung direkt die vordefinierten Kontexte verwenden.
+   
+   Sie müssen also keine Anweisungen wie die folgenden ausführen, um die Kontexte festzulegen:
+   
+          sc = SparkContext('yarn-client')
+          sqlContext = HiveContext(sc)
+   
+   Stattdessen können Sie in Ihrer Anwendung direkt die vordefinierten Kontexte verwenden.
 
 - **Zellen-Magics** Der PySpark-Kernel bietet einige vordefinierte „Magics“, spezielle Befehle, die Sie mit `%%` (z.B. `%%MAGIC` <args>) aufrufen können. Der Magic-Befehl muss das erste Wort in einer Codezelle sein und ermöglicht mehrere Inhaltszeilen. Das Magic-Wort sollte das erste Wort in der Zelle sein. Beliebige Hinzufügungen vor dem Magic, auch Kommentare, verursachen einen Fehler.     Weitere Informationen zu Magics finden Sie [hier](http://ipython.readthedocs.org/en/stable/interactive/magics.html).
    

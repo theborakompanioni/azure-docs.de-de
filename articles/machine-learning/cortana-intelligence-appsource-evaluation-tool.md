@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/07/2017
 ms.author: anupams;v-bruham;garye
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: e79ca131bddc9e65dd24da109b9e8a08606f7bc6
+ms.translationtype: HT
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 264bd9ecb413d2685dca351d7f4090efcadf4988
 ms.contentlocale: de-de
-ms.lasthandoff: 07/08/2017
+ms.lasthandoff: 09/20/2017
 
 --- 
 # <a name="cortana-intelligence-solution-evaluation-tool"></a>Lösungsauswertungstool für Cortana Intelligence
@@ -99,7 +99,7 @@ Bei allen Ressourcen von Azure SQL und Azure SQL DW in der Lösung sollte die Az
 | AAD mit der SQL-Datenbank und mit SQL Data Warehouse | [Verwenden der Azure Active Directory-Authentifizierung für die Authentifizierung mit SQL-Datenbank oder SQL Data Warehouse](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-aad-authentication) |
 | Konfigurieren und Verwalten von AAD | [Konfigurieren und Verwalten der Azure Active Directory-Authentifizierung mit SQL-Datenbank oder SQL Data Warehouse](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-aad-authentication-configure) |
 | Azure WebApps-Authentifizierung | [Authentifizierung und Autorisierung in Azure App Service](https://docs.microsoft.com/en-us/azure/app-service/app-service-authentication-overview) |
-| Konfigurieren von WebApps mit AAD | [So konfigurieren Sie Ihre App Service-Anwendung zum Verwenden der Azure Active Directory-Anmeldung](https://docs.microsoft.com/en-us/azure/app-service-mobile/app-service-mobile-how-to-configure-active-directory-authentication)|
+| Konfigurieren von WebApps mit AAD | [So konfigurieren Sie Ihre App Service-Anwendung zum Verwenden der Azure Active Directory-Anmeldung](https://docs.microsoft.com/en-us/azure/app-service/app-service-mobile-how-to-configure-active-directory-authentication)|
 
 ### <a name="datasets-accessible-to-end-users-should-support-role-based-access-control"></a>Datasets, auf die die Endbenutzer zugreifen können, müssen die rollenbasierte Zugriffssteuerung unterstützen
 Beim Ausführung des Auswertungstools werden Sie dazu aufgefordert, alle Reporting- und Veröffentlichungsressourcen anzugeben. Es wird angenommen, dass diese Ressourcen für den Endbenutzerzugriff gedacht sind und nicht für den Entwicklerzugriff. Diese Ressourcen müssen eine rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) bieten, damit sichergestellt werden kann, dass nur die Endbenutzer Zugriff auf die autorisierten Daten erhalten.

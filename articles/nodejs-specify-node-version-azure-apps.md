@@ -14,11 +14,11 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2016
 ms.author: tarcher
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: 7129137e6deca6ae4cbb5096058b58b32056d415
+ms.translationtype: HT
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: a20179c72b227deb14df442bea7b80cf31728aa7
 ms.contentlocale: de-de
-ms.lasthandoff: 04/06/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="specifying-a-nodejs-version-in-an-azure-application"></a>Festlegen einer Node.js-Version in einer Azure-Anwendung
@@ -90,12 +90,12 @@ Obwohl Azure verschiedene Standardversionen von Node.js anbietet, kann es sein, 
     Öffnen Sie die Website nach Veröffentlichung der Anwendung in einem Browser. Sie sollten die folgende Nachricht sehen: "Hello from Azure running node version: v0.8.1".
 
 ## <a name="next-steps"></a>Nächste Schritte
-Nachdem Sie gelernt haben, wie Sie die von ihrer Anwendung verwendete Node.js-Version angeben können, empfehlen wir die Themen [Arbeiten mit Modulen], [Erstellen und Bereitstellen einer Node.js-Website](app-service-web/app-service-web-get-started-nodejs.md) und [Verwenden der Azure-Befehlszeilentools für Mac und Linux].
+Nachdem Sie gelernt haben, wie Sie die von ihrer Anwendung verwendete Node.js-Version angeben können, empfehlen wir die Themen [Arbeiten mit Modulen], [Erstellen und Bereitstellen einer Node.js-Website](app-service/app-service-web-get-started-nodejs.md) und [Verwenden der Azure-Befehlszeilentools für Mac und Linux].
 
 Weitere Informationen finden Sie im [Node.js Developer Center](https://azure.microsoft.com/develop/nodejs/).
 
 [Verwenden der Azure-Befehlszeilentools für Mac und Linux]:cli-install-nodejs.md
 [Azure-Befehlszeilentools]:cli-install-nodejs.md
 [Arbeiten mit Modulen]: nodejs-use-node-modules-azure-apps.md
-[build and deploy a Node.js Web Site]: app-service-web/app-service-web-get-started-nodejs.md
+[build and deploy a Node.js Web Site]: app-service/app-service-web-get-started-nodejs.md
 

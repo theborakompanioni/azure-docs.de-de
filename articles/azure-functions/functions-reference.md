@@ -16,17 +16,17 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/30/2017
 ms.author: chrande
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: 879be48150cfe13e31064475aa637f13f5f5f9d5
+ms.translationtype: HT
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 1cb2ec7aa927eceafdf91c35c1184fceecddc49a
 ms.contentlocale: de-de
-ms.lasthandoff: 05/31/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="azure-functions-developers-guide"></a>Azure Functions: Entwicklerhandbuch
 In Azure Functions nutzen bestimmte Funktionen einige wichtige technische Konzepte und Komponenten gemeinsam, unabhängig von der verwendeten Sprache oder Bindung. Bevor Sie sich mit den spezifischen Details einer bestimmten Sprache oder Bindung beschäftigen, sollten Sie diese Übersicht lesen, die für alle Funktionen gilt.
 
-In diesem Artikel wird davon ausgegangen, dass Sie die [Übersicht zu Azure Functions](functions-overview.md) gelesen haben und mit [WebJobs SDK-Konzepten wie Triggern, Bindungen und der JobHost-Laufzeit](../app-service-web/websites-dotnet-webjobs-sdk.md) vertraut sind. Azure Functions basiert auf dem WebJobs SDK 
+In diesem Artikel wird davon ausgegangen, dass Sie die [Übersicht zu Azure Functions](functions-overview.md) gelesen haben und mit [WebJobs SDK-Konzepten wie Triggern, Bindungen und der JobHost-Laufzeit](https://github.com/Azure/azure-webjobs-sdk/wiki) vertraut sind. Azure Functions basiert auf dem WebJobs SDK 
 
 ## <a name="function-code"></a>Funktionscode
 Ein *Funktion* ist das primäre Konzept in Azure Functions. Sie schreiben Code für eine Funktion in der Sprache Ihrer Wahl und speichern die Code- und Konfigurationsdateien im gleichen Ordner. Die Konfigurationsdatei heißt `function.json` und enthält JSON-Konfigurationsdaten. Verschiedene Sprachen werden unterstützt, und für jede Sprache gibt es leicht voneinander abweichende Optionen, die sich für die jeweilige Sprache am besten eignen. 
@@ -79,11 +79,11 @@ Wenn Sie ein Projekt einrichten, um Funktionen für eine Funktionen-App in Azure
 ## <a id="fileupdate"></a> Aktualisieren von Funktionen-App-Dateien
 Der im Azure-Portal integrierte Funktionen-Editor ermöglicht das Aktualisieren der Datei *function.json* und der Codedatei für eine Funktion. Zum Hochladen oder Aktualisieren anderer Dateien wie *package.json* oder *project.json* oder von Abhängigkeiten müssen Sie andere Bereitstellungsmethoden nutzen.
 
-Funktionen-Apps basieren auf App Service. Daher stehen alle [für Standard-Web-Apps verfügbaren Bereitstellungsoptionen](../app-service-web/web-sites-deploy.md) auch für Funktionen-Apps zur Verfügung. Es folgen einige Methoden, die Sie zum Hochladen oder Aktualisieren von Funktionen-App-Dateien befolgen können. 
+Funktionen-Apps basieren auf App Service. Daher stehen alle [für Standard-Web-Apps verfügbaren Bereitstellungsoptionen](../app-service/app-service-deploy-local-git.md) auch für Funktionen-Apps zur Verfügung. Es folgen einige Methoden, die Sie zum Hochladen oder Aktualisieren von Funktionen-App-Dateien befolgen können. 
 
 #### <a name="to-use-app-service-editor"></a>So verwenden Sie den App Service-Editor
 1. Klicken Sie im Azure Functions-Portal auf **Funktionen-App-Einstellungen**.
-2. Klicken Sie im Abschnitt **Erweiterte Einstellungen** auf **Zu App Service-Einstellungen** wechseln.
+2. Klicken Sie im Abschnitt** Erweiterte Einstellungen** auf **Zu App Service-Einstellungen** wechseln.
 3. Klicken Sie im App-Menü „Nav“ unter **ENTWICKLUNGSTOOLS** auf **App Service-Editor**.
 4. Klicken Sie auf **Start**.
    
