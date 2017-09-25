@@ -3,7 +3,7 @@ title: "Mehrere VIPs für einen Clouddienst"
 description: "Übersicht über MultiVIP und das Festlegen von mehreren virtuellen IP-Adressen für einen Clouddienst"
 services: load-balancer
 documentationcenter: na
-author: kumudd
+author: KumudD
 manager: timlt
 ms.assetid: 85f6d26a-3df5-4b8e-96a1-92b2793b5284
 ms.service: load-balancer
@@ -11,7 +11,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/24/2016
+ms.date: 09/25/2017
 ms.author: kumud
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 8827793d771a2982a3dccb5d5d1674af0cd472ce
@@ -22,6 +22,8 @@ ms.lasthandoff: 07/06/2017
 ---
 
 # <a name="configure-multiple-vips-for-a-cloud-service"></a>Konfigurieren mehrerer VIPs für einen Clouddienst
+
+[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
 Sie können über das öffentliche Internet auf Azure-Clouddienste zugreifen, indem Sie eine von Azure bereitgestellte IP-Adresse verwenden. Diese öffentliche IP-Adresse wird als VIP (virtuelle IP) bezeichnet, da sie nicht mit den VM-Instanzen im Clouddienst, sondern mit dem Azure-Lastenausgleich verknüpft ist. Sie können auf jede VM-Instanz innerhalb eines Clouddiensts über eine einzelne VIP zugreifen.
 

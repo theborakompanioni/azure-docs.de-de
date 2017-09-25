@@ -12,7 +12,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/10/2017
+ms.date: 09/25/2017
 ms.author: kumud
 ms.translationtype: HT
 ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
@@ -23,6 +23,8 @@ ms.lasthandoff: 07/12/2017
 ---
 
 # <a name="troubleshoot-azure-load-balancer"></a>Beheben von Problemen mit Azure Load Balancer
+
+[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
 Diese Seite enthält Informationen zur Problembehandlung für häufige Fragen zu Azure Load Balancer. Wenn die Load Balancer-Konnektivität nicht verfügbar ist, liegen meist die folgenden Symptome vor: 
 - VMs hinter dem Load Balancer antworten nicht auf Integritätstests 

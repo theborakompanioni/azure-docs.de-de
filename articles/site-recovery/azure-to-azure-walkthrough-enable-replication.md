@@ -36,7 +36,7 @@ Nachdem Sie einen [Recovery Services-Tresor](azure-to-azure-walkthrough-vault.md
 > Die Azure-VM-Replikation befindet sich derzeit in der Vorschau.
 
 
-## <a name="select-the-source"></a>Auswählen der Quelle 
+## <a name="select-the-source"></a>Auswählen der Quelle
 
 1. Klicken Sie unter „Recovery Services-Tresore“ auf den Tresornamen > **+Replizieren**.
 2. Wählen Sie unter **Quelle** die Option **Azure – VORSCHAU**.
@@ -62,18 +62,18 @@ Site Recovery ruft eine Liste der virtuellen Computer ab, die dem Abonnement und
 Site Recovery stellt Standardeinstellungen für die Zielregion (basierend auf den Einstellungen der Quellregion) und die Replikationsrichtlinie bereit:
 
    - **Zielspeicherort**: Die Zielregion, die Sie zur Notfallwiederherstellung verwenden möchten. Der Zielspeicherort sollte mit dem Speicherort des Site Recovery-Tresors übereinstimmen.
-   - **Zielressourcengruppe**: Die Ressourcengruppe, zu der Azure-VMs in der Zielregion nach einem Failover gehören werden. Site Recovery erstellt standardmäßig in der Zielregion eine neue Ressourcengruppe mit dem Suffix „asr“. 
-   - **Virtuelles Zielnetzwerk**: Das Netzwerk, in dem sich Azure-VMs nach einem Failover in der Zielregion befinden werden. Site Recovery erstellt standardmäßig in der Zielregion ein neues virtuelles Netzwerk (und Subnetze) mit dem Suffix „asr“. Dieses Netzwerk wird Ihrem Quellnetzwerk zugeordnet. Beachten Sie, dass Sie einem virtuellen Computer nach einem Failover eine bestimmte IP-Adresse zuweisen können, wenn Sie die gleiche IP-Adresse an Quell- und Zielspeicherort beibehalten müssen. 
-   - **Cachespeicherkonten**: Site Recovery verwendet ein Speicherkonto in der Quellregion. Änderungen an Quell-VMs werden vor der Replikation am Zielspeicherort an dieses Konto gesendet. 
+   - **Zielressourcengruppe**: Die Ressourcengruppe, zu der Azure-VMs in der Zielregion nach einem Failover gehören werden. Site Recovery erstellt standardmäßig in der Zielregion eine neue Ressourcengruppe mit dem Suffix „asr“.
+   - **Virtuelles Zielnetzwerk**: Das Netzwerk, in dem sich Azure-VMs nach einem Failover in der Zielregion befinden werden. Site Recovery erstellt standardmäßig in der Zielregion ein neues virtuelles Netzwerk (und Subnetze) mit dem Suffix „asr“. Dieses Netzwerk wird Ihrem Quellnetzwerk zugeordnet. Beachten Sie, dass Sie einem virtuellen Computer nach einem Failover eine bestimmte IP-Adresse zuweisen können, wenn Sie die gleiche IP-Adresse an Quell- und Zielspeicherort beibehalten müssen.
+   - **Cachespeicherkonten**: Site Recovery verwendet ein Speicherkonto in der Quellregion. Änderungen an Quell-VMs werden vor der Replikation am Zielspeicherort an dieses Konto gesendet.
    - **Zielspeicherkonten**: Standardmäßig erstellt Site Recovery ein neues Speicherkonto in der Zielregion, um das Quell-VM-Speicherkonto zu spiegeln.
-   -  **Zielverfügbarkeitsgruppen**: Standardmäßig erstellt Site Recovery in der Zielregion eine neue Verfügbarkeitsgruppe mit dem Suffix „asr“. 
+   -  **Zielverfügbarkeitsgruppen**: Standardmäßig erstellt Site Recovery in der Zielregion eine neue Verfügbarkeitsgruppe mit dem Suffix „asr“.
    - **Replikationsrichtlinienname**: Name der Richtlinie.
    - **Aufbewahrungszeitraum des Wiederherstellungspunkts**: Standardmäßig behält Site Recovery Wiederherstellungspunkte 24 Stunden lang bei. Sie können einen Wert zwischen 1 und 72 Stunden konfigurieren.
    - **App-konsistente Momentaufnahmenhäufigkeit**: Standardmäßig erstellt Site Recovery alle 4 Stunden eine App-konsistente Momentaufnahme. Sie können einen Wert zwischen 1 und 12 Stunden konfigurieren. Daten werden fortlaufend repliziert:
     - Wenn absturzkonsistente Wiederherstellungspunkte erstellt werden, behalten sie eine konsistente Schreibreihenfolge für Daten bei. Diese Art von Wiederherstellungspunkt ist in der Regel ausreichend, wenn Ihre App für die Wiederherstellung nach einem Absturz ohne Dateninkonsistenzen konzipiert ist.
     - Absturzkonsistente Wiederherstellungspunkte werden alle paar Minuten generiert. Die Verwendung dieser Wiederherstellungspunkte für Failover und Wiederherstellung Ihrer virtuellen Computer stellt innerhalb von Minuten eine Recovery Point Objective (RPO) bereit.
     - App-konsistente Wiederherstellungspunkte (zusätzlich zur Konsistenz der Schreibreihenfolge) stellen sicher, dass ausgeführte Apps alle Vorgänge abschließen und Puffer auf Datenträger leeren (Stilllegen der Anwendung). Sie sollten diese Wiederherstellungspunkte für Datenbank-Apps wie SQL Server, Oracle und Exchange verwenden.
-        
+
     ![Konfigurieren von Einstellungen](./media/azure-to-azure-walkthrough-enable-replication/settings.png)
 
 
@@ -87,7 +87,7 @@ Wenn Sie Ziel- und Replikationsrichtlinieneinstellungen ändern möchten, führe
     ![Konfigurieren von Einstellungen](./media/azure-to-azure-walkthrough-enable-replication/customize-target.png)
 
 3. Um Replikationseinstellungen für Wiederherstellungspunkte und App-konsistente Momentaufnahmen außer Kraft zu setzen, klicken Sie neben **Replikationsrichtlinie** auf **Anpassen**.
- 
+
     ![Konfigurieren von Einstellungen](./media/azure-to-azure-walkthrough-enable-replication/customize-policy.png)
 
 4. Um mit der Bereitstellung der Zielressourcen zu beginnen, klicken Sie auf **Zielressourcen erstellen**. Die Bereitstellung dauert ungefähr einige Minuten. Schließen Sie das Blatt während der Bereitstellung nicht, da Sie sonst von vorne anfangen müssen.

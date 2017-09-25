@@ -33,6 +33,8 @@
   items:
     - name: Verwalten der Geräteregistrierungen
       href: how-to-manage-enrollments.md
+    - name: Verwenden von HSM mit SDK
+      href: use-hsm-with-sdk.md
 - name: Referenz
   items:
     - name: REST

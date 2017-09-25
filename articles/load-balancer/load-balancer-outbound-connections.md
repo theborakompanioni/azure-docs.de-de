@@ -12,7 +12,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 5/31/2017
+ms.date: 09/25/2017
 ms.author: kumud
 ms.translationtype: HT
 ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
@@ -23,6 +23,8 @@ ms.lasthandoff: 07/13/2017
 ---
 
 # <a name="understanding-outbound-connections-in-azure"></a>Grundlegendes zu ausgehenden Verbindungen in Azure
+
+[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
 Ein virtueller Computer (VM) in Azure kann mit Endpunkten außerhalb von Azure im öffentlichen IP-Adressraum kommunizieren. Wenn eine VM einen ausgehenden Datenfluss in einen öffentlichen IP-Adressraum einleitet, ordnet Azure die private IP-Adresse der VM einer öffentlichen IP-Adresse zu und lässt zu, das zurückfließender Datenverkehr die VM erreicht.
 
