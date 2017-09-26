@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 08/25/2017
+ms.date: 09/22/2017
 ms.author: carlrab
 ms.translationtype: HT
-ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
-ms.openlocfilehash: 968a7d3611d050d15ee398f9c3c5830d5c8e85fb
+ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
+ms.openlocfilehash: 75575fec0047dd653dca86df1daf234676859600
 ms.contentlocale: de-de
-ms.lasthandoff: 09/14/2017
+ms.lasthandoff: 09/22/2017
 
 ---
 # <a name="azure-sql-database-features"></a>Funktionen von Azure SQL-Datenbank
@@ -120,7 +120,6 @@ Die folgende Tabelle enthält die wichtigsten Features von SQL Server und gibt A
 | [Tabellenpartitionierung](https://docs.microsoft.com/sql/relational-databases/partitions/partitioned-tables-and-indexes) | Ja (nur primäre Dateigruppe) |
 | [Temporäre Tabellen](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql#temporary-tables) | Nur lokale und datenbankbezogene globale temporäre Tabellen |
 | [Temporäre Tabellen](https://docs.microsoft.com/sql/relational-databases/tables/temporal-tables) | Ja |
-| [Transaktionen](https://docs.microsoft.com/sql/t-sql/language-elements/transactions-transact-sql) | Nein |
 | [Variablen](https://docs.microsoft.com/sql/t-sql/language-elements/variables-transact-sql) | Ja | 
 | [Transparent Data Encryption (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) | Ja |
 | [ Windows Server-Failoverclustering](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/windows-server-failover-clustering-wsfc-with-sql-server) | Nein (siehe [Failovergruppen und aktive Georeplikation](sql-database-geo-replication-overview.md)) |

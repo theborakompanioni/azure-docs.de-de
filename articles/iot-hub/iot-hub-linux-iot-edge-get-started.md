@@ -12,15 +12,14 @@ ms.devlang: cpp
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/07/2017
+ms.date: 09/19/2017
 ms.author: andbuc
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
-ms.openlocfilehash: b02d79fcd9cd2a2ef0041aac4e85528263c8d58a
+ms.translationtype: HT
+ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
+ms.openlocfilehash: e2f26c1abe09feff77e1e2633d8bfcf4ca527aee
 ms.contentlocale: de-de
-ms.lasthandoff: 06/09/2017
-
+ms.lasthandoff: 09/22/2017
 
 ---
 # <a name="explore-azure-iot-edge-architecture-on-linux"></a>Untersuchen der Azure IoT Edge-Architektur unter Linux
@@ -75,7 +74,7 @@ Der Prozess „hello\_world\_sample“ akzeptiert den Pfad zu einer JSON-Konfigu
 }
 ```
 
-1. Navigieren Sie zum **Build**-Ordner im Stamm Ihrer lokalen Kopie des Repositorys **iot-edge**.
+1. Navigieren Sie zum **build**-Ordner im Stamm Ihrer lokalen Kopie des Repositorys **iot-edge**.
 
 1. Führen Sie den folgenden Befehl aus:
 

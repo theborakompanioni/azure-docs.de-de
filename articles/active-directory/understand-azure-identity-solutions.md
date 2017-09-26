@@ -14,10 +14,10 @@ ms.technology:
 ms.assetid: 
 ms.custom: it-pro
 ms.translationtype: HT
-ms.sourcegitcommit: 94d1d4c243bede354ae3deba7fbf5da0652567cb
-ms.openlocfilehash: b7328eea378dde886419be8a4ab5b6f69c0b0d24
+ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
+ms.openlocfilehash: e368f14638c480a632afa7c17023aa8ae4c8833f
 ms.contentlocale: de-de
-ms.lasthandoff: 07/18/2017
+ms.lasthandoff: 09/22/2017
 
 ---
 # <a name="understand-azure-identity-solutions"></a>Grundlegendes zu Azure-Identitätslösungen
@@ -40,7 +40,7 @@ Bevor Sie eine Entscheidung hinsichtlich der Azure-Identitätsdienstlösung für
 |Azure AD-Verzeichnis | Jeder Azure-Mandant verfügt über ein dediziertes, vertrauenswürdiges Azure AD-Verzeichnis mit den Benutzern, Gruppen und Anwendungen des Mandanten. Es wird zum Ausführen von Funktionen zur Identitäts- und Zugriffsverwaltung für Mandantenressourcen verwendet. Da automatisch ein eindeutiges Azure AD-Verzeichnis für Ihre Organisation bereitgestellt wird, sobald Sie sich für einen Microsoft-Clouddienst wie Azure, Microsoft Intune oder Office 365 registrieren, werden die Begriffe *Mandant*, *Azure AD* und *Azure AD-Verzeichnis* gelegentlich synonym verwendet. |
 |Benutzerdefinierte Domäne | Wenn Sie sich erstmals für ein Abonnement eines Microsoft-Clouddiensts registrieren, wird für Ihre Domäne ein Name verwendet, der *.onmicrosoft.com* enthält. Die meisten Organisationen besitzen jedoch mindestens einen Domänennamen, der für die Geschäftstätigkeit und von Endbenutzern für den Zugriff auf Unternehmensressourcen verwendet wird. Sie können Ihren benutzerdefinierten Domänennamen in Azure AD hinzufügen, damit Ihre Benutzer mit einer bekannten Domäne arbeiten können, z.B. *alice@contoso.com* anstelle von *alice@contoso.onmicrosoft.com*. |
 |Azure AD-Konto | Hierbei handelt es sich um Identitäten, die über Azure AD oder einen anderen Microsoft-Clouddienst wie Office 365 erstellt werden. Sie werden in Azure AD gespeichert und sind für jedes Clouddienstabonnement der Organisation zugänglich. |
-|Azure-Abonnementadministrator| Der Kontoadministrator ist die Person, die sich für das Azure-Abonnement registriert bzw. die es erworben hat. Er darf über das [Kontocenter](https://account.windowsazure.com/Home/Index) verschiedene Verwaltungsaufgaben ausführen, z.B. Erstellen/Kündigen von Abonnements, Ändern der Abrechnung für ein Abonnement oder Ändern des Dienstadministrators. |
+|Azure-Abonnementadministrator| Der Kontoadministrator ist die Person, die sich für das Azure-Abonnement registriert bzw. die es erworben hat. Er darf über das [Kontocenter](https://account.azure.com/Subscriptions) verschiedene Verwaltungsaufgaben ausführen, z.B. Erstellen/Kündigen von Abonnements, Ändern der Abrechnung für ein Abonnement oder Ändern des Dienstadministrators. |
 |Globaler Azure AD-Administrator | Globale Azure AD-Administratoren besitzen Vollzugriff auf alle Verwaltungsfunktionen von Azure AD. Die Person, die sich für ein Microsoft-Clouddienstabonnement registriert, wird standardmäßig automatisch als globaler Administrator festgelegt. Sie können mehrere globale Administratoren festlegen, aber nur globale Administratoren können Benutzern eine der [weiteren Administratorrollen](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal) zuweisen. |
 |Microsoft-Konto | Microsoft-Konten (von Ihnen privat erstellt) bieten Zugriff auf alle für den normalen Computerbenutzer entwickelten Microsoft-Produkte und Clouddienste wie Outlook (Hotmail), OneDrive, MSN, Xbox LIVE oder Office 365. Diese Identitäten werden im Microsoft-Kontosystem für Endbenutzeridentitäten erstellt und gespeichert, das von Microsoft geführt wird.|
 |Geschäfts-, Schul- oder Unikonten | Geschäfts-, Schul- oder Unikonten (von einem Administrator zu Geschäfts-/Bildungszwecken vergeben) bieten Zugriff auf alle Microsoft-Clouddienste für Unternehmen, darunter Azure, Intune oder Office 365.|

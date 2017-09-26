@@ -18,10 +18,10 @@ ms.date: 03/24/2017
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 9afd12380926d4e16b7384ff07d229735ca94aaa
-ms.openlocfilehash: aa2a6bf3d7d9ec22020036851fc0f2bca37e31bf
+ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
+ms.openlocfilehash: 75c5f00255e1a55dd84ba0cf17dbef56b0253334
 ms.contentlocale: de-de
-ms.lasthandoff: 07/15/2017
+ms.lasthandoff: 09/22/2017
 
 ---
 # <a name="authenticate-with-a-private-docker-container-registry"></a>Authentifizieren mit einer privaten Docker-Containerregistrierung
@@ -53,7 +53,7 @@ Anonymer Zugriff ist für Azure-Containerregistrierungen nicht verfügbar. Für 
 
 Sie können einer Registrierung mehrere Dienstprinzipale zuweisen, damit Sie den Zugriff für unterschiedliche Benutzer oder Anwendungen definieren können. Dienstprinzipale ermöglichen auch „monitorlose“ Verbindungen mit einer Registrierung in Entwickler- oder DevOps-Szenarien, z.B.:
 
-  * Containerbereitstellungen aus einer Registrierung in Orchestrierungssystemen, z.B. DC/OS, Docker Swarm und Kubernetes. Sie können Containerregistrierungen auch per Pullvorgang in andere Azure-Dienste einbinden, z.B. [Container Service](../container-service/index.yml), [App Service](../app-service/index.md), [Batch](../batch/index.md), [Service Fabric](/azure/service-fabric/) und weitere Dienste.
+  * Containerbereitstellungen aus einer Registrierung in Orchestrierungssystemen, z.B. DC/OS, Docker Swarm und Kubernetes. Sie können Containerregistrierungen auch per Pullvorgang in andere Azure-Dienste einbinden, z.B. [Container Service](../container-service/index.yml), [App Service](../app-service/index.yml), [Batch](../batch/index.md), [Service Fabric](/azure/service-fabric/) und weitere Dienste.
 
   * Lösungen für Continuous Integration und Continuous Deployment (z.B. Visual Studio Team Services oder Jenkins), mit denen Containerimages erstellt und per Pushvorgang in eine Registrierung übertragen werden.
 
