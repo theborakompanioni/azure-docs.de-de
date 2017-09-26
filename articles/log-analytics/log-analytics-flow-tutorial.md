@@ -10,7 +10,7 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 08/09/2017
+ms.date: 09/25/2017
 ms.author: bwren
 ms.translationtype: HT
 ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
@@ -57,7 +57,7 @@ Im Tutorial in diesem Artikel wird gezeigt, wie Sie einen Flow erstellen, bei de
     | where EventLevelName == "Error" 
     | where TimeGenerated > ago(1day)
     | summarize count() by Computer
-    | sort by Computerindow. 
+    | sort by Computer
 ```
 
 2. Wählen Sie unter **Diagrammtyp** die Option **HTML-Tabelle**.<br><br>![Log Analytics-Aktion](media/log-analytics-flow-tutorial/flow03.png)
