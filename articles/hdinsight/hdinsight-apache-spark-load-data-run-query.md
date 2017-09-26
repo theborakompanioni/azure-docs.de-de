@@ -14,7 +14,7 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/21/2017
+ms.date: 09/22/2017
 ms.author: nitinme
 ms.translationtype: HT
 ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
@@ -66,6 +66,7 @@ Zum Ausführen von Abfragen verwenden wir Beispieldaten, die standardmäßig im 
 
 5. Fügen Sie den folgenden Code in eine leere Zelle ein, und drücken Sie **UMSCHALT+EINGABE** , um den Code auszuführen. Mit dem Code werden die Typen importiert, die für dieses Szenario benötigt werden:
 
+        from pyspark.sql import *
         from pyspark.sql.types import *
 
     Da Sie ein Notebook mit dem PySpark-Kernel erstellt haben, müssen Sie keine Kontexte explizit erstellen. Die Spark- und Hive-Kontexte werden automatisch für Sie erstellt, wenn Sie die erste Codezelle ausführen.
