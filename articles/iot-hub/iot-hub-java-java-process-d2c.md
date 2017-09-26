@@ -195,6 +195,7 @@ Weitere Informationen zum Nachrichtenrouting in IoT Hub finden Sie unter [Senden
 
 <!-- Links -->
 
+[lnk-free-trial]: https://azure.microsoft.com/de-de/free/
 [lnk-sb-queues-java]: ../service-bus-messaging/service-bus-java-how-to-use-queues.md
 
 [Azure Storage]: https://azure.microsoft.com/documentation/services/storage/
