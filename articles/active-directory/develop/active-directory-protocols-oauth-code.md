@@ -380,3 +380,4 @@ Eine Beispiel für eine Fehlerantwort sieht wie folgt aus:
 
 Eine Beschreibung der Fehlercodes und der jeweils empfohlenen Clientaktion finden Sie unter [Fehlercodes für Token-Endpunktfehler](#error-codes-for-token-endpoint-errors).
 
+<!--aaa-->
